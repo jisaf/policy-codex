@@ -1,0 +1,10 @@
+id: WR-014
+name: Is a veteran with a total disability rating
+identifier: is_veteran_total_disability
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is a veteran with a disability rated as total under 38 U.S.C. 1155.
+supplied_by: Department of Veterans Affairs rating documentation.
+sources: [S2]

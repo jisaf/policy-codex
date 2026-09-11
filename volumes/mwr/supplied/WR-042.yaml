@@ -1,0 +1,11 @@
+id: WR-042
+name: Work program hours
+identifier: work_program_hours
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: Hours of participation in a work program in the month, in compliance with the program's requirements.
+supplied_by: Program provider record.
+sources: [S6, S21]
+open: [OQ-7]

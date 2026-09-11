@@ -1,0 +1,11 @@
+id: WR-018
+name: Has a disabling mental disorder
+identifier: has_disabling_mental_disorder
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person has a disabling mental disorder.
+supplied_by: Clinical documentation or statement.
+sources: [S3]
+tags: [medical]

@@ -1,0 +1,1413 @@
+- id: WR-003-T1
+  item: WR-003
+  identifier: age
+  implemented: assembly
+  as_of: '2026-03-14'
+  given:
+    date_of_birth: '2007-03-15'
+  expect: 18
+- id: WR-003-T2
+  item: WR-003
+  identifier: age
+  implemented: assembly
+  as_of: '2026-03-15'
+  given:
+    date_of_birth: '2007-03-15'
+  expect: 19
+- id: WR-003-T3
+  item: WR-003
+  identifier: age
+  implemented: assembly
+  as_of: '2026-02-28'
+  given:
+    date_of_birth: '2008-02-29'
+  expect: 17
+- id: WR-003-T4
+  item: WR-003
+  identifier: age
+  implemented: assembly
+  as_of: '2026-03-01'
+  given:
+    date_of_birth: '2008-02-29'
+  expect: 18
+- id: WR-004-T1
+  item: WR-004
+  identifier: age_at_month
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    date_of_birth: '2009-02-15'
+  expect: 17
+- id: WR-004-T2
+  item: WR-004
+  identifier: age_at_month
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    date_of_birth: '2009-02-15'
+  expect: 18
+- id: WR-200-T1
+  item: WR-200
+  identifier: medicaid_in_ce_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2008-03-16'
+  expect: false
+- id: WR-200-T2
+  item: WR-200
+  identifier: medicaid_in_ce_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2008-03-15'
+  expect: true
+- id: WR-200-T3
+  item: WR-200
+  identifier: medicaid_in_ce_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1962-03-15'
+  expect: false
+- id: WR-200-T4
+  item: WR-200
+  identifier: medicaid_in_ce_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1962-03-16'
+  expect: true
+- id: WR-201-T1
+  item: WR-201
+  identifier: medicaid_is_dependent_child
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2013-06-01'
+    relies_on_another_for_care: true
+  expect: true
+- id: WR-201-T2
+  item: WR-201
+  identifier: medicaid_is_dependent_child
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2013-03-15'
+    relies_on_another_for_care: true
+  expect: false
+- id: WR-201-T3
+  item: WR-201
+  identifier: medicaid_is_dependent_child
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2017-01-01'
+  expect: unknown
+- id: WR-202-T1
+  item: WR-202
+  identifier: medicaid_is_qualifying_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1987-01-01'
+    is_disabled_individual_ada: true
+  expect: true
+- id: WR-202-T2
+  item: WR-202
+  identifier: medicaid_is_qualifying_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2017-01-01'
+    relies_on_another_for_care: true
+    is_disabled_individual_ada: false
+  expect: true
+- id: WR-202-T3
+  item: WR-202
+  identifier: medicaid_is_qualifying_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '2007-01-01'
+    relies_on_another_for_care: true
+    is_disabled_individual_ada: false
+  expect: false
+- id: WR-203-T1
+  item: WR-203
+  identifier: medicaid_is_parent_or_caretaker_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+  relationships:
+  - - parent
+    - p2
+  others:
+    p2:
+      date_of_birth: '2015-01-01'
+      relies_on_another_for_care: true
+      is_disabled_individual_ada: false
+  expect: true
+- id: WR-203-T2
+  item: WR-203
+  identifier: medicaid_is_parent_or_caretaker_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+  relationships:
+  - - parent
+    - p2
+  others:
+    p2:
+      date_of_birth: '2010-01-01'
+      relies_on_another_for_care: true
+      is_disabled_individual_ada: false
+  expect: false
+- id: WR-203-T3
+  item: WR-203
+  identifier: medicaid_is_parent_or_caretaker_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+  relationships:
+  - - spouse
+    - p2
+  others:
+    p2:
+      date_of_birth: '1988-01-01'
+      is_disabled_individual_ada: true
+  expect: false
+- id: WR-204-T1
+  item: WR-204
+  identifier: medicaid_is_family_caregiver_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+    persons_cared_for:
+    - p2
+    lives_with:
+    - p2
+  others:
+    p2:
+      date_of_birth: '1960-01-01'
+      is_disabled_individual_ada: true
+  expect: true
+- id: WR-204-T2
+  item: WR-204
+  identifier: medicaid_is_family_caregiver_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+    persons_cared_for:
+    - p2
+    lives_with: []
+  relationships:
+  - - relative
+    - p2
+  others:
+    p2:
+      date_of_birth: '1960-01-01'
+      is_disabled_individual_ada: true
+  expect: true
+- id: WR-204-T3
+  item: WR-204
+  identifier: medicaid_is_family_caregiver_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+    persons_cared_for:
+    - p2
+    lives_with: []
+    care_hours_by_person:
+      2027-03:
+        p2: 80
+  others:
+    p2:
+      date_of_birth: '1960-01-01'
+      is_disabled_individual_ada: true
+  expect: true
+- id: WR-204-T4
+  item: WR-204
+  identifier: medicaid_is_family_caregiver_of_dependent
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    date_of_birth: '1990-01-01'
+    persons_cared_for:
+    - p2
+    lives_with: []
+    care_hours_by_person:
+      2027-03:
+        p2: 79
+  relationships: []
+  others:
+    p2:
+      date_of_birth: '1960-01-01'
+      is_disabled_individual_ada: true
+  expect: false
+- id: WR-205-T1
+  item: WR-205
+  identifier: medicaid_in_stable_recovery
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    recovery_start_date: '2022-03-15'
+  expect: true
+- id: WR-205-T2
+  item: WR-205
+  identifier: medicaid_in_stable_recovery
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    recovery_start_date: '2022-03-16'
+  expect: false
+- id: WR-205-T3
+  item: WR-205
+  identifier: medicaid_in_stable_recovery
+  implemented: assembly
+  as_of: '2027-03-15'
+  given: {}
+  expect: false
+- id: WR-206-T1
+  item: WR-206
+  identifier: medicaid_is_medically_frail
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    condition_impairs_ce_compliance: true
+    is_blind_or_disabled_ssa: false
+    has_substance_use_disorder: true
+    recovery_start_date: '2025-01-01'
+    has_disabling_mental_disorder: false
+    has_adl_impairing_disability: false
+    has_serious_or_complex_medical_condition: false
+  expect: true
+- id: WR-206-T2
+  item: WR-206
+  identifier: medicaid_is_medically_frail
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    condition_impairs_ce_compliance: true
+    is_blind_or_disabled_ssa: false
+    has_substance_use_disorder: true
+    recovery_start_date: '2021-01-01'
+    has_disabling_mental_disorder: false
+    has_adl_impairing_disability: false
+    has_serious_or_complex_medical_condition: false
+  expect: false
+- id: WR-206-T3
+  item: WR-206
+  identifier: medicaid_is_medically_frail
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    condition_impairs_ce_compliance: false
+    is_blind_or_disabled_ssa: true
+  expect: false
+- id: WR-206-T4
+  item: WR-206
+  identifier: medicaid_is_medically_frail
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    condition_impairs_ce_compliance: true
+    is_blind_or_disabled_ssa: false
+    has_substance_use_disorder: false
+    has_disabling_mental_disorder: false
+    has_adl_impairing_disability: false
+    has_serious_or_complex_medical_condition: false
+  expect: false
+- id: WR-206-T5
+  item: WR-206
+  identifier: medicaid_is_medically_frail
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    condition_impairs_ce_compliance: true
+    has_substance_use_disorder: false
+    has_disabling_mental_disorder: false
+    has_adl_impairing_disability: false
+    has_serious_or_complex_medical_condition: false
+  expect: unknown
+- id: WR-207-T1
+  item: WR-207
+  identifier: medicaid_was_recent_inmate
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    was_inmate_in_month:
+      2026-12: false
+      2027-01: true
+      2027-02: false
+  expect: true
+- id: WR-207-T2
+  item: WR-207
+  identifier: medicaid_was_recent_inmate
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    was_inmate_in_month:
+      2026-11: true
+      2026-12: false
+      2027-01: false
+      2027-02: false
+  expect: false
+- id: WR-207-T3
+  item: WR-207
+  identifier: medicaid_was_recent_inmate
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    was_inmate_in_month:
+      2026-12: false
+      2027-01: false
+  expect: unknown
+- id: WR-208-T1
+  item: WR-208
+  identifier: medicaid_is_excluded_by_snap_or_tanf
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_complying_with_tanf_work_requirements: true
+  expect: true
+- id: WR-208-T2
+  item: WR-208
+  identifier: medicaid_is_excluded_by_snap_or_tanf
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_complying_with_tanf_work_requirements: false
+    is_member_of_snap_household: true
+    snap_is_subject_to_work_requirement: true
+  expect: true
+- id: WR-208-T3
+  item: WR-208
+  identifier: medicaid_is_excluded_by_snap_or_tanf
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_complying_with_tanf_work_requirements: false
+    is_member_of_snap_household: true
+    snap_is_subject_to_work_requirement: false
+  expect: false
+- id: WR-208-T4
+  item: WR-208
+  identifier: medicaid_is_excluded_by_snap_or_tanf
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_complying_with_tanf_work_requirements: false
+    is_member_of_snap_household: false
+  expect: false
+- id: WR-209-T1
+  item: WR-209
+  identifier: medicaid_is_pregnant_or_postpartum
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_pregnant: false
+    is_entitled_to_postpartum_assistance: true
+  expect: true
+- id: WR-209-T2
+  item: WR-209
+  identifier: medicaid_is_pregnant_or_postpartum
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_pregnant: false
+    is_entitled_to_postpartum_assistance: false
+  expect: false
+- id: WR-210-T1
+  item: WR-210
+  identifier: medicaid_is_excluded_as_indian
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    indian_status: IHS-eligible only
+  expect: true
+- id: WR-210-T2
+  item: WR-210
+  identifier: medicaid_is_excluded_as_indian
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    indian_status: none
+  expect: false
+- id: WR-211-T1
+  item: WR-211
+  identifier: medicaid_is_specified_excluded_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    is_former_foster_care_youth_group: false
+    medicaid_is_excluded_as_indian: false
+    medicaid_is_parent_or_caretaker_of_dependent: false
+    medicaid_is_family_caregiver_of_dependent: false
+    is_veteran_total_disability: false
+    medicaid_is_medically_frail: false
+    medicaid_is_excluded_by_snap_or_tanf: false
+    participates_in_sud_treatment_program: false
+    medicaid_was_recent_inmate: false
+    medicaid_is_pregnant_or_postpartum: false
+  expect: false
+- id: WR-211-T2
+  item: WR-211
+  identifier: medicaid_is_specified_excluded_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_medically_frail: true
+  expect: true
+- id: WR-211-T3
+  item: WR-211
+  identifier: medicaid_is_specified_excluded_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    participates_in_sud_treatment_program: true
+  expect: true
+- id: WR-212-T1
+  item: WR-212
+  identifier: medicaid_is_applicable_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_specified_excluded_individual: false
+    is_adult_group_eligible_or_enrolled: true
+  expect: true
+- id: WR-212-T2
+  item: WR-212
+  identifier: medicaid_is_applicable_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_specified_excluded_individual: true
+    is_adult_group_eligible_or_enrolled: true
+  expect: false
+- id: WR-212-T3
+  item: WR-212
+  identifier: medicaid_is_applicable_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_specified_excluded_individual: false
+    is_adult_group_eligible_or_enrolled: false
+    is_equivalent_waiver_eligible_or_enrolled: true
+    date_of_birth: '1990-01-01'
+    is_pregnant: false
+    is_medicare_entitled_or_enrolled: false
+    is_otherwise_eligible_under_state_plan: false
+  expect: true
+- id: WR-212-T4
+  item: WR-212
+  identifier: medicaid_is_applicable_individual
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_specified_excluded_individual: false
+    is_adult_group_eligible_or_enrolled: false
+    is_equivalent_waiver_eligible_or_enrolled: false
+  expect: false
+- id: WR-213-T1
+  item: WR-213
+  identifier: medicaid_ce_income_threshold
+  implemented: engine
+  as_of: '2027-03-15'
+  given: {}
+  expect: 580
+- id: WR-214-T1
+  item: WR-214
+  identifier: medicaid_countable_education_hours
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    is_enrolled_half_time_education: true
+    education_hours: 40
+  expect: 0
+- id: WR-214-T2
+  item: WR-214
+  identifier: medicaid_countable_education_hours
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    is_enrolled_half_time_education: false
+    education_hours: 40
+  expect: 40
+- id: WR-215-T1
+  item: WR-215
+  identifier: medicaid_total_qualifying_hours
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 30
+    community_service_hours: 20
+    work_program_hours: 10
+    education_hours: 30
+    is_enrolled_half_time_education: false
+  expect: 90
+- id: WR-215-T2
+  item: WR-215
+  identifier: medicaid_total_qualifying_hours
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 30
+    is_enrolled_half_time_education: false
+  expect: 30
+- id: WR-216-T1
+  item: WR-216
+  identifier: medicaid_meets_hours_condition
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    medicaid_total_qualifying_hours: 80
+  expect: true
+- id: WR-216-T2
+  item: WR-216
+  identifier: medicaid_meets_hours_condition
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    medicaid_total_qualifying_hours: 79.5
+  expect: false
+- id: WR-217-T1
+  item: WR-217
+  identifier: medicaid_meets_income_condition
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    monthly_income: 580
+  expect: true
+- id: WR-217-T2
+  item: WR-217
+  identifier: medicaid_meets_income_condition
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    monthly_income: 579.99
+  expect: false
+- id: WR-218-T1
+  item: WR-218
+  identifier: medicaid_six_month_average_income
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    monthly_income:
+      2026-09: 0
+      2026-10: 0
+      2026-11: 1200
+      2026-12: 1200
+      2027-01: 600
+      2027-02: 480
+  expect: 580
+- id: WR-219-T1
+  item: WR-219
+  identifier: medicaid_meets_seasonal_income_condition
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    is_seasonal_worker: true
+    medicaid_six_month_average_income: 580
+  expect: true
+- id: WR-219-T2
+  item: WR-219
+  identifier: medicaid_meets_seasonal_income_condition
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    is_seasonal_worker: false
+    medicaid_six_month_average_income: 900
+  expect: false
+- id: WR-220-T1
+  item: WR-220
+  identifier: medicaid_demonstrates_ce
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 90
+    is_enrolled_half_time_education: false
+    monthly_income: 0
+    is_seasonal_worker: false
+  expect: true
+- id: WR-220-T2
+  item: WR-220
+  identifier: medicaid_demonstrates_ce
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 0
+    community_service_hours: 0
+    work_program_hours: 0
+    education_hours: 0
+    is_enrolled_half_time_education: false
+    monthly_income: 0
+    is_seasonal_worker: false
+  expect: false
+- id: WR-220-T3
+  item: WR-220
+  identifier: medicaid_demonstrates_ce
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 0
+    community_service_hours: 0
+    work_program_hours: 0
+    education_hours: 0
+    is_enrolled_half_time_education: false
+    monthly_income: 600
+    is_seasonal_worker: false
+  expect: true
+- id: WR-221-T1
+  item: WR-221
+  identifier: medicaid_county_unemployment_meets_hardship_threshold
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    county_unemployment_rate: 0.07
+    national_unemployment_rate: 0.04
+  expect: true
+- id: WR-221-T2
+  item: WR-221
+  identifier: medicaid_county_unemployment_meets_hardship_threshold
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    county_unemployment_rate: 0.05
+    national_unemployment_rate: 0.04
+  expect: false
+- id: WR-221-T3
+  item: WR-221
+  identifier: medicaid_county_unemployment_meets_hardship_threshold
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    county_unemployment_rate: 0.08
+    national_unemployment_rate: 0.06
+  expect: true
+- id: WR-221-T4
+  item: WR-221
+  identifier: medicaid_county_unemployment_meets_hardship_threshold
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    county_unemployment_rate: 0.079
+    national_unemployment_rate: 0.06
+  expect: false
+- id: WR-222-T1
+  item: WR-222
+  identifier: medicaid_short_term_hardship_in_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    received_inpatient_or_facility_services: true
+  expect: true
+- id: WR-222-T2
+  item: WR-222
+  identifier: medicaid_short_term_hardship_in_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    received_inpatient_or_facility_services: false
+    county_has_declared_disaster: false
+    county_unemployment_rate: 0.03
+    national_unemployment_rate: 0.04
+    traveled_for_extended_care: false
+  expect: false
+- id: WR-222-T3
+  item: WR-222
+  identifier: medicaid_short_term_hardship_in_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  parameters:
+    state_elects_short_term_hardship: false
+  given:
+    received_inpatient_or_facility_services: true
+  expect: false
+- id: WR-223-T1
+  item: WR-223
+  identifier: medicaid_ce_satisfied_for_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    medicaid_demonstrates_ce: false
+    medicaid_short_term_hardship_in_month: true
+  expect: true
+- id: WR-223-T2
+  item: WR-223
+  identifier: medicaid_ce_satisfied_for_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    medicaid_demonstrates_ce: false
+    medicaid_short_term_hardship_in_month: false
+  expect: false
+- id: WR-224-T1
+  item: WR-224
+  identifier: medicaid_application_lookback_months_list
+  implemented: engine
+  as_of: '2027-03-15'
+  given: {}
+  expect:
+  - 2027-02
+- id: WR-224-T2
+  item: WR-224
+  identifier: medicaid_application_lookback_months_list
+  implemented: engine
+  as_of: '2027-03-15'
+  parameters:
+    medicaid_application_lookback_months: 3
+  given: {}
+  expect:
+  - 2026-12
+  - 2027-01
+  - 2027-02
+- id: WR-225-T1
+  item: WR-225
+  identifier: medicaid_satisfies_ce_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_ce_satisfied_for_month:
+      2027-02: true
+  expect: true
+- id: WR-225-T2
+  item: WR-225
+  identifier: medicaid_satisfies_ce_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  parameters:
+    medicaid_application_lookback_months: 3
+  given:
+    medicaid_ce_satisfied_for_month:
+      2026-12: true
+      2027-01: false
+      2027-02: true
+  expect: false
+- id: WR-225-T3
+  item: WR-225
+  identifier: medicaid_satisfies_ce_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  parameters:
+    medicaid_application_lookback_months: 3
+  given:
+    medicaid_ce_satisfied_for_month:
+      2026-12: true
+      2027-02: true
+  expect: unknown
+- id: WR-226-T1
+  item: WR-226
+  identifier: medicaid_ce_status_at_application
+  implemented: engine
+  as_of: '2026-12-15'
+  given: {}
+  expect: not yet in effect
+- id: WR-226-T2
+  item: WR-226
+  identifier: medicaid_ce_status_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_applicable_individual: false
+  expect: not subject
+- id: WR-226-T3
+  item: WR-226
+  identifier: medicaid_ce_status_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_applicable_individual: true
+    medicaid_satisfies_ce_at_application: true
+  expect: met
+- id: WR-226-T4
+  item: WR-226
+  identifier: medicaid_ce_status_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_applicable_individual: true
+    medicaid_satisfies_ce_at_application: false
+  expect: not met
+- id: WR-226-T5
+  item: WR-226
+  identifier: medicaid_ce_status_at_application
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_applicable_individual: true
+  expect: unknown
+- id: WR-227-T1
+  item: WR-227
+  identifier: medicaid_renewal_review_months
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    most_recent_determination_date: '2026-09-10'
+  expect:
+  - 2026-10
+  - 2026-11
+  - 2026-12
+  - 2027-01
+  - 2027-02
+- id: WR-228-T1
+  item: WR-228
+  identifier: medicaid_months_demonstrated_since_last_determination
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    most_recent_determination_date: '2026-12-10'
+    medicaid_ce_satisfied_for_month:
+      2027-01: true
+      2027-02: false
+  expect: 1
+- id: WR-229-T1
+  item: WR-229
+  identifier: medicaid_satisfies_ce_at_renewal
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_months_demonstrated_since_last_determination: 1
+  expect: true
+- id: WR-229-T2
+  item: WR-229
+  identifier: medicaid_satisfies_ce_at_renewal
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_months_demonstrated_since_last_determination: 0
+  expect: false
+- id: WR-230-T1
+  item: WR-230
+  identifier: medicaid_ce_status_at_renewal
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_applicable_individual: true
+    medicaid_satisfies_ce_at_renewal: true
+  expect: met
+- id: WR-230-T2
+  item: WR-230
+  identifier: medicaid_ce_status_at_renewal
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    medicaid_is_applicable_individual: true
+    medicaid_satisfies_ce_at_renewal: false
+  expect: not met
+- id: WR-300-T1
+  item: WR-300
+  identifier: snap_in_abawd_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    date_of_birth: '2009-03-01'
+  expect: true
+- id: WR-300-T2
+  item: WR-300
+  identifier: snap_in_abawd_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    date_of_birth: '2009-03-01'
+  expect: false
+- id: WR-300-T3
+  item: WR-300
+  identifier: snap_in_abawd_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    date_of_birth: '1962-06-01'
+  expect: true
+- id: WR-300-T4
+  item: WR-300
+  identifier: snap_in_abawd_age_range
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    date_of_birth: '1962-02-01'
+  expect: false
+- id: WR-301-T1
+  item: WR-301
+  identifier: snap_is_unfit_for_employment
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    receives_disability_benefits: false
+    agency_finds_obviously_unfit: false
+    has_medical_statement_of_unfitness: true
+  expect: true
+- id: WR-301-T2
+  item: WR-301
+  identifier: snap_is_unfit_for_employment
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    receives_disability_benefits: false
+    agency_finds_obviously_unfit: false
+    has_medical_statement_of_unfitness: false
+  expect: false
+- id: WR-302-T1
+  item: WR-302
+  identifier: snap_has_responsibility_for_child_under_14
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    snap_household_members:
+    - p2
+    persons_cared_for: []
+  relationships:
+  - - parent
+    - p2
+  others:
+    p2:
+      date_of_birth: '2013-06-01'
+  expect: true
+- id: WR-302-T2
+  item: WR-302
+  identifier: snap_has_responsibility_for_child_under_14
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    snap_household_members:
+    - p2
+    persons_cared_for: []
+  relationships:
+  - - parent
+    - p2
+  others:
+    p2:
+      date_of_birth: '2013-03-01'
+  expect: false
+- id: WR-302-T3
+  item: WR-302
+  identifier: snap_has_responsibility_for_child_under_14
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    snap_household_members:
+    - p2
+    persons_cared_for:
+    - p2
+  relationships: []
+  others:
+    p2:
+      date_of_birth: '2020-01-01'
+  expect: true
+- id: WR-303-T1
+  item: WR-303
+  identifier: snap_has_responsibility_for_child_under_6
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    snap_household_members:
+    - p2
+    persons_cared_for: []
+  relationships:
+  - - parent
+    - p2
+  others:
+    p2:
+      date_of_birth: '2021-04-01'
+  expect: true
+- id: WR-303-T2
+  item: WR-303
+  identifier: snap_has_responsibility_for_child_under_6
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-03
+  given:
+    snap_household_members:
+    - p2
+    persons_cared_for: []
+  relationships:
+  - - parent
+    - p2
+  others:
+    p2:
+      date_of_birth: '2021-02-01'
+  expect: false
+- id: WR-304-T1
+  item: WR-304
+  identifier: snap_weekly_average_hours_worked
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 130
+  expect: 30
+- id: WR-305-T1
+  item: WR-305
+  identifier: snap_weekly_earnings
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    monthly_income: 942.5
+  expect: 217.5
+- id: WR-306-T1
+  item: WR-306
+  identifier: snap_meets_employment_exemption
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 130
+    monthly_income: 0
+  expect: true
+- id: WR-306-T2
+  item: WR-306
+  identifier: snap_meets_employment_exemption
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 100
+    monthly_income: 942.5
+  expect: true
+- id: WR-306-T3
+  item: WR-306
+  identifier: snap_meets_employment_exemption
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 100
+    monthly_income: 900
+  expect: false
+- id: WR-307-T1
+  item: WR-307
+  identifier: snap_is_exempt_from_work_registration
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    receives_unemployment_compensation: true
+  expect: true
+- id: WR-307-T2
+  item: WR-307
+  identifier: snap_is_exempt_from_work_registration
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    date_of_birth: '1990-01-01'
+    is_complying_with_tanf_work_requirements: false
+    receives_unemployment_compensation: false
+    snap_has_responsibility_for_child_under_6: false
+    has_responsibility_for_incapacitated_person: false
+    is_enrolled_half_time_education: false
+    participates_in_sud_treatment_program: false
+    hours_worked: 40
+    monthly_income: 300
+  expect: false
+- id: WR-307-T3
+  item: WR-307
+  identifier: snap_is_exempt_from_work_registration
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    date_of_birth: '2010-06-01'
+    is_head_of_household: false
+    is_complying_with_tanf_work_requirements: false
+    receives_unemployment_compensation: false
+    snap_has_responsibility_for_child_under_6: false
+    has_responsibility_for_incapacitated_person: false
+    is_enrolled_half_time_education: false
+    participates_in_sud_treatment_program: false
+    hours_worked: 0
+    monthly_income: 0
+  expect: true
+- id: WR-308-T1
+  item: WR-308
+  identifier: snap_is_subject_to_work_registration
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    date_of_birth: '1990-01-01'
+    snap_is_unfit_for_employment: false
+    snap_is_exempt_from_work_registration: false
+  expect: true
+- id: WR-308-T2
+  item: WR-308
+  identifier: snap_is_subject_to_work_registration
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    date_of_birth: '1965-01-01'
+    snap_is_unfit_for_employment: false
+    snap_is_exempt_from_work_registration: false
+  expect: false
+- id: WR-309-T1
+  item: WR-309
+  identifier: snap_is_exempt_as_indian
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    indian_status: California Indian
+  expect: true
+- id: WR-309-T2
+  item: WR-309
+  identifier: snap_is_exempt_as_indian
+  implemented: assembly
+  as_of: '2027-03-15'
+  given:
+    indian_status: IHS-eligible only
+  expect: false
+- id: WR-310-T1
+  item: WR-310
+  identifier: snap_is_exempt_from_time_limit
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    is_pregnant: true
+  expect: true
+- id: WR-310-T2
+  item: WR-310
+  identifier: snap_is_exempt_from_time_limit
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    snap_in_abawd_age_range: true
+    snap_is_unfit_for_employment: false
+    snap_has_responsibility_for_child_under_14: false
+    snap_is_exempt_from_work_registration: false
+    is_pregnant: false
+    indian_status: none
+  expect: false
+- id: WR-311-T1
+  item: WR-311
+  identifier: snap_hours_worked_with_good_cause
+  implemented: assembly
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 72
+    hours_missed_for_good_cause: 8
+  expect: 80
+- id: WR-312-T1
+  item: WR-312
+  identifier: snap_fulfills_work_requirement
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 80
+    participates_in_workfare: false
+  expect: true
+- id: WR-312-T2
+  item: WR-312
+  identifier: snap_fulfills_work_requirement
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 79
+    hours_missed_for_good_cause: 0
+    work_program_hours: 0
+    participates_in_workfare: false
+  expect: false
+- id: WR-312-T3
+  item: WR-312
+  identifier: snap_fulfills_work_requirement
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    hours_worked: 0
+    participates_in_workfare: true
+  expect: true
+- id: WR-313-T1
+  item: WR-313
+  identifier: snap_is_countable_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    received_full_month_snap_benefits: true
+    snap_benefits_prorated: false
+    snap_is_exempt_from_time_limit: false
+    covered_by_abawd_waiver: false
+    snap_fulfills_work_requirement: false
+    has_discretionary_exemption: false
+  expect: true
+- id: WR-313-T2
+  item: WR-313
+  identifier: snap_is_countable_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    received_full_month_snap_benefits: false
+  expect: false
+- id: WR-313-T3
+  item: WR-313
+  identifier: snap_is_countable_month
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    received_full_month_snap_benefits: true
+    snap_benefits_prorated: false
+    snap_is_exempt_from_time_limit: false
+    covered_by_abawd_waiver: false
+    snap_fulfills_work_requirement: true
+    has_discretionary_exemption: false
+  expect: false
+- id: WR-314-T1
+  item: WR-314
+  identifier: snap_time_limit_period_months
+  implemented: engine
+  as_of: '2027-03-15'
+  given: {}
+  expect_length: 36
+  expect_first: 2024-03
+  expect_last: 2027-02
+- id: WR-315-T1
+  item: WR-315
+  identifier: snap_countable_months_used
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_is_countable_month:
+      2026-11: true
+      2026-12: true
+      2027-02: true
+  month_defaults:
+    snap_is_countable_month: false
+  expect: 3
+- id: WR-316-T1
+  item: WR-316
+  identifier: snap_has_exhausted_time_limit
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_countable_months_used: 3
+  expect: true
+- id: WR-316-T2
+  item: WR-316
+  identifier: snap_has_exhausted_time_limit
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_countable_months_used: 2
+  expect: false
+- id: WR-317-T1
+  item: WR-317
+  identifier: snap_regains_eligibility
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    hours_worked_last_30_days: 80
+  expect: true
+- id: WR-317-T2
+  item: WR-317
+  identifier: snap_regains_eligibility
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    hours_worked_last_30_days: 40
+    work_program_hours_last_30_days: 0
+    participated_in_workfare_last_30_days: false
+  expect: false
+- id: WR-318-T1
+  item: WR-318
+  identifier: snap_time_limit_status
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_is_exempt_from_time_limit: true
+  expect: not subject
+- id: WR-318-T2
+  item: WR-318
+  identifier: snap_time_limit_status
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_is_exempt_from_time_limit: false
+    snap_has_exhausted_time_limit: false
+  expect: within limit
+- id: WR-318-T3
+  item: WR-318
+  identifier: snap_time_limit_status
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_is_exempt_from_time_limit: false
+    snap_has_exhausted_time_limit: true
+    snap_regains_eligibility: true
+  expect: regained
+- id: WR-318-T4
+  item: WR-318
+  identifier: snap_time_limit_status
+  implemented: engine
+  as_of: '2027-03-15'
+  given:
+    snap_is_exempt_from_time_limit: false
+    snap_has_exhausted_time_limit: true
+    snap_regains_eligibility: false
+  expect: limit exhausted
+- id: WR-319-T1
+  item: WR-319
+  identifier: snap_is_subject_to_work_requirement
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    snap_is_subject_to_work_registration: false
+    snap_is_exempt_from_time_limit: false
+  expect: true
+- id: WR-319-T2
+  item: WR-319
+  identifier: snap_is_subject_to_work_requirement
+  implemented: engine
+  as_of: '2027-03-15'
+  month: 2027-02
+  given:
+    snap_is_subject_to_work_registration: false
+    snap_is_exempt_from_time_limit: true
+  expect: false

@@ -1,0 +1,10 @@
+id: WR-127
+name: SNAP work registration minimum age
+identifier: snap_work_registration_min_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The youngest age subject to general work registration. The statute covers persons over 15.
+value: 16
+sources: [S29, S31]

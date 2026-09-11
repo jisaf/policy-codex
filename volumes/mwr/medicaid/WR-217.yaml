@@ -1,0 +1,14 @@
+id: WR-217
+name: "Medicaid: meets the income condition"
+identifier: medicaid_meets_income_condition
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Monthly income is at least the community engagement income threshold.
+derived: [">=", monthly_income, medicaid_ce_income_threshold]
+sources: [S6]
+implemented: engine
+tests:
+  - {id: WR-217-T1, month: "2027-02", given: {monthly_income: 580}, expect: true}
+  - {id: WR-217-T2, month: "2027-02", given: {monthly_income: 579.99}, expect: false}

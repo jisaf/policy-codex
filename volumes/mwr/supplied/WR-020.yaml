@@ -1,0 +1,11 @@
+id: WR-020
+name: Has a serious or complex medical condition
+identifier: has_serious_or_complex_medical_condition
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person has a medical condition that is life threatening, seriously disabling without necessarily being life threatening, causing significant pain or discomfort that can cause serious interruptions to life activities, requiring a major time or effort commitment from caregivers for a substantial period of time, requiring frequent monitoring, associated with severe consequences or negative consequences for someone else, affecting multiple organ systems, requiring management to tight physiological parameters, requiring coordination of multiple specialties, requiring treatment that carries a risk of serious complications, or requiring adjustment in non-medical environments.
+supplied_by: Clinical documentation or statement.
+sources: [S3]
+tags: [medical]

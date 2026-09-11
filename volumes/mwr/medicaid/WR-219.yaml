@@ -1,0 +1,14 @@
+id: WR-219
+name: "Medicaid: meets the seasonal income condition"
+identifier: medicaid_meets_seasonal_income_condition
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: The person is a seasonal worker and their six-month average income is at least the income threshold.
+derived: [all, is_seasonal_worker, [">=", medicaid_six_month_average_income, medicaid_ce_income_threshold]]
+sources: [S6]
+implemented: engine
+tests:
+  - {id: WR-219-T1, month: "2027-03", given: {is_seasonal_worker: true, medicaid_six_month_average_income: 580}, expect: true}
+  - {id: WR-219-T2, month: "2027-03", given: {is_seasonal_worker: false, medicaid_six_month_average_income: 900}, expect: false}

@@ -1,0 +1,10 @@
+id: WR-126
+name: SNAP hours to regain eligibility
+identifier: snap_regain_hours
+kind: parameter
+type: hours
+scope: global
+program: SNAP
+meaning: Hours of work or work program participation in a 30-day period that regain eligibility.
+value: 80
+sources: [S22]

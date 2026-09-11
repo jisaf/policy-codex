@@ -1,0 +1,13 @@
+id: WR-105
+name: Medicaid application lookback months
+identifier: medicaid_application_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of consecutive months immediately preceding the month of application for which an applicant must demonstrate community engagement. The State specifies 1, 2, or 3.
+assumption: The State elects 1 month. Replace with the actual election.
+value: 1
+sources: [S8]
+tags: [state_election]
+open: [OQ-10]

@@ -1,0 +1,12 @@
+id: WR-017
+name: Recovery start date
+identifier: recovery_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: The date on which the person's recovery from a substance use disorder began. Unknown when the person is not in recovery.
+supplied_by: Clinical documentation or statement.
+sources: [S3]
+tags: [medical]
+open: [OQ-18]

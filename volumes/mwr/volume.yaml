@@ -1,0 +1,39 @@
+volume: work-requirements
+title: Work requirements under H.R.1, Medicaid community engagement and the SNAP ABAWD time limit
+version: "0.1"
+status: Draft. AI first pass. Nothing in this volume is approved.
+default_as_of: "2027-03-15"
+
+approval_policy:
+  roles:
+    - Medicaid policy owner
+    - SNAP policy owner
+    - Legal
+    - Data steward
+  by_program:
+    All: ["Medicaid policy owner", "SNAP policy owner"]
+    Medicaid: ["Medicaid policy owner"]
+    SNAP: ["SNAP policy owner"]
+  by_kind:
+    supplied: ["Data steward"]
+  by_tag:
+    legal: [Legal]
+    state_election: [Legal]
+
+types:
+  - yes/no
+  - whole number
+  - money
+  - hours
+  - rate
+  - calendar date
+  - month
+  - text
+  - one of
+  - person
+  - group of persons
+  - relationships
+  - table keyed by person
+  - list of months
+
+scopes: [person, person-month, case, month, global]

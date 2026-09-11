@@ -1,0 +1,14 @@
+id: WR-316
+name: "SNAP: has exhausted the time limit"
+identifier: snap_has_exhausted_time_limit
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: Countable months used are at least 3.
+derived: [">=", snap_countable_months_used, snap_countable_month_limit]
+sources: [S21]
+implemented: engine
+tests:
+  - {id: WR-316-T1, given: {snap_countable_months_used: 3}, expect: true}
+  - {id: WR-316-T2, given: {snap_countable_months_used: 2}, expect: false}

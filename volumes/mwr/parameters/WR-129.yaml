@@ -1,0 +1,10 @@
+id: WR-129
+name: SNAP general exemption child age
+identifier: snap_general_exemption_child_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: Responsibility for a dependent child under this age exempts a person from general work registration.
+value: 6
+sources: [S30]

@@ -1,0 +1,11 @@
+id: WR-045
+name: Monthly income
+identifier: monthly_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's income for the month.
+supplied_by: Payroll data match or statement.
+sources: [S6, S30]
+open: [OQ-8]

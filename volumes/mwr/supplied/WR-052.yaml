@@ -1,0 +1,10 @@
+id: WR-052
+name: Has a discretionary exemption in month
+identifier: has_discretionary_exemption
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The State agency applied one of its discretionary exemptions to the person for the month.
+supplied_by: SNAP case record.
+sources: [S23]

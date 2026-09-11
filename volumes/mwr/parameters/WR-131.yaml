@@ -1,0 +1,14 @@
+id: WR-131
+name: SNAP time limit clock method
+identifier: snap_clock_method
+kind: parameter
+type: one of
+options: [rolling, fixed]
+scope: global
+program: SNAP
+meaning: Whether the State measures the 36-month period as a rolling window ending at the current month or as a fixed period.
+assumption: Rolling clock. Replace with the State's method.
+value: rolling
+sources: [S27]
+tags: [state_election]
+open: [OQ-14]

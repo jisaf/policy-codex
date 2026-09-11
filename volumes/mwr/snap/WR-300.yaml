@@ -1,0 +1,18 @@
+id: WR-300
+name: "SNAP: is in the ABAWD age range"
+identifier: snap_in_abawd_age_range
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: Age at the month is at least 18 and at most the ABAWD maximum age.
+derived: [all, [">=", age_at_month, snap_abawd_min_age], ["<=", age_at_month, snap_abawd_max_age]]
+sources: [S20]
+implemented: engine
+tags: [legal]
+open: [OQ-13]
+tests:
+  - {id: WR-300-T1, month: "2027-03", given: {date_of_birth: "2009-03-01"}, expect: true}
+  - {id: WR-300-T2, month: "2027-02", given: {date_of_birth: "2009-03-01"}, expect: false}
+  - {id: WR-300-T3, month: "2027-03", given: {date_of_birth: "1962-06-01"}, expect: true}
+  - {id: WR-300-T4, month: "2027-03", given: {date_of_birth: "1962-02-01"}, expect: false}

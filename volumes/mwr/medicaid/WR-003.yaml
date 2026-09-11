@@ -1,0 +1,17 @@
+id: WR-003
+name: Age
+identifier: age
+kind: derived
+type: whole number
+scope: person
+program: All
+meaning: Whole years elapsed from Date of Birth to the Determination Date.
+precision: Day-based. A person turns N on the Nth anniversary of Date of Birth, starting at 12:00am local time. Time of birth is ignored. A February 29 birth turns N on March 1 in a non-leap year.
+derived: [years_between, date_of_birth, [det_date]]
+sources: []
+implemented: assembly
+tests:
+  - {id: WR-003-T1, as_of: "2026-03-14", given: {date_of_birth: "2007-03-15"}, expect: 18}
+  - {id: WR-003-T2, as_of: "2026-03-15", given: {date_of_birth: "2007-03-15"}, expect: 19}
+  - {id: WR-003-T3, as_of: "2026-02-28", given: {date_of_birth: "2008-02-29"}, expect: 17}
+  - {id: WR-003-T4, as_of: "2026-03-01", given: {date_of_birth: "2008-02-29"}, expect: 18}

@@ -1,0 +1,19 @@
+id: WR-206
+name: "Medicaid: is medically frail or has special medical needs"
+identifier: medicaid_is_medically_frail
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person's condition significantly impairs their ability to comply, and the person is blind or disabled under SSA rules, has a substance use disorder and is not in stable recovery, has a disabling mental disorder, has a disability that significantly impairs daily activities, or has a serious or complex medical condition.
+derived: [all, condition_impairs_ce_compliance, [any, is_blind_or_disabled_ssa, [all, has_substance_use_disorder, [not, medicaid_in_stable_recovery]], has_disabling_mental_disorder, has_adl_impairing_disability, has_serious_or_complex_medical_condition]]
+sources: [S2, S3]
+implemented: assembly
+tags: [legal, medical]
+open: [OQ-5]
+tests:
+  - {id: WR-206-T1, given: {condition_impairs_ce_compliance: true, is_blind_or_disabled_ssa: false, has_substance_use_disorder: true, recovery_start_date: "2025-01-01", has_disabling_mental_disorder: false, has_adl_impairing_disability: false, has_serious_or_complex_medical_condition: false}, expect: true}
+  - {id: WR-206-T2, given: {condition_impairs_ce_compliance: true, is_blind_or_disabled_ssa: false, has_substance_use_disorder: true, recovery_start_date: "2021-01-01", has_disabling_mental_disorder: false, has_adl_impairing_disability: false, has_serious_or_complex_medical_condition: false}, expect: false}
+  - {id: WR-206-T3, given: {condition_impairs_ce_compliance: false, is_blind_or_disabled_ssa: true}, expect: false}
+  - {id: WR-206-T4, given: {condition_impairs_ce_compliance: true, is_blind_or_disabled_ssa: false, has_substance_use_disorder: false, has_disabling_mental_disorder: false, has_adl_impairing_disability: false, has_serious_or_complex_medical_condition: false}, expect: false}
+  - {id: WR-206-T5, given: {condition_impairs_ce_compliance: true, has_substance_use_disorder: false, has_disabling_mental_disorder: false, has_adl_impairing_disability: false, has_serious_or_complex_medical_condition: false}, expect: unknown}

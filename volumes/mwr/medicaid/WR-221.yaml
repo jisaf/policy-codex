@@ -1,0 +1,16 @@
+id: WR-221
+name: "Medicaid: county unemployment meets the hardship threshold"
+identifier: medicaid_county_unemployment_meets_hardship_threshold
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: The county unemployment rate is at or above the lesser of the cap and the multiplier times the national unemployment rate.
+derived: [">=", county_unemployment_rate, [min, hardship_unemployment_rate_cap, ["*", hardship_national_rate_multiplier, national_unemployment_rate]]]
+sources: [S10]
+implemented: assembly
+tests:
+  - {id: WR-221-T1, month: "2027-02", given: {county_unemployment_rate: 0.07, national_unemployment_rate: 0.04}, expect: true}
+  - {id: WR-221-T2, month: "2027-02", given: {county_unemployment_rate: 0.05, national_unemployment_rate: 0.04}, expect: false}
+  - {id: WR-221-T3, month: "2027-02", given: {county_unemployment_rate: 0.08, national_unemployment_rate: 0.06}, expect: true}
+  - {id: WR-221-T4, month: "2027-02", given: {county_unemployment_rate: 0.079, national_unemployment_rate: 0.06}, expect: false}

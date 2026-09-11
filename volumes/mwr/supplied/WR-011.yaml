@@ -1,0 +1,11 @@
+id: WR-011
+name: Relies on another individual for care
+identifier: relies_on_another_for_care
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person relies on another individual for care.
+supplied_by: Applicant statement.
+sources: [S4]
+open: [OQ-3]

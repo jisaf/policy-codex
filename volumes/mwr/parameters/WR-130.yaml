@@ -1,0 +1,10 @@
+id: WR-130
+name: SNAP employment exemption weekly hours
+identifier: snap_employment_exemption_weekly_hours
+kind: parameter
+type: hours
+scope: global
+program: SNAP
+meaning: Weekly hours of employment, or the multiple of the minimum wage in weekly earnings, that exempt a person from general work registration.
+value: 30
+sources: [S30]

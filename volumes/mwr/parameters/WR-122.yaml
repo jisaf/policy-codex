@@ -1,0 +1,10 @@
+id: WR-122
+name: SNAP dependent child age limit
+identifier: snap_dependent_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: A dependent child for the time-limit exception is under this age.
+value: 14
+sources: [S20]

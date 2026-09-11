@@ -1,0 +1,14 @@
+id: WR-309
+name: "SNAP: is exempt as an Indian"
+identifier: snap_is_exempt_as_indian
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is an Indian, an Urban Indian, or a California Indian. Eligibility for the Indian Health Service alone does not qualify.
+derived: [in, indian_status, [Indian, "Urban Indian", "California Indian"]]
+sources: [S20]
+implemented: assembly
+tests:
+  - {id: WR-309-T1, given: {indian_status: "California Indian"}, expect: true}
+  - {id: WR-309-T2, given: {indian_status: "IHS-eligible only"}, expect: false}

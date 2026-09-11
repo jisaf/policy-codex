@@ -1,0 +1,10 @@
+id: WR-063
+name: National unemployment rate
+identifier: national_unemployment_rate
+kind: supplied
+type: rate
+scope: month
+program: Medicaid
+meaning: The national unemployment rate for the month, as a fraction.
+supplied_by: Bureau of Labor Statistics.
+sources: [S10]

@@ -1,0 +1,10 @@
+id: WR-027
+name: Receives unemployment compensation
+identifier: receives_unemployment_compensation
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: During the month the person is subject to and complying with the work registration requirements of the Federal-State unemployment compensation system, shown by receipt of unemployment compensation.
+supplied_by: Unemployment insurance data match.
+sources: [S30, S31]

@@ -1,0 +1,15 @@
+id: WR-314
+name: "SNAP: time limit period months"
+identifier: snap_time_limit_period_months
+kind: derived
+type: list of months
+scope: person
+program: SNAP
+meaning: The 36 consecutive months ending with the month before the month containing the Determination Date.
+precision: Rolling clock. A fixed clock would replace this derivation.
+derived: [months_ending, snap_period_months, [month_before, [det_month]]]
+sources: [S21, S27]
+implemented: engine
+open: [OQ-14]
+tests:
+  - {id: WR-314-T1, as_of: "2027-03-15", given: {}, expect_length: 36, expect_first: "2024-03", expect_last: "2027-02"}

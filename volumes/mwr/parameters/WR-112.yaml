@@ -1,0 +1,10 @@
+id: WR-112
+name: Hardship national rate multiplier
+identifier: hardship_national_rate_multiplier
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The multiple of the national unemployment rate compared against the cap.
+value: 1.5
+sources: [S10]

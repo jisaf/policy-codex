@@ -1,0 +1,13 @@
+id: WR-107
+name: Medicaid community engagement implementation date
+identifier: medicaid_ce_implementation_date
+kind: parameter
+type: calendar date
+scope: global
+program: Medicaid
+meaning: The first date on which community engagement is a condition of eligibility in this State. The Federal deadline is January 1, 2027; the State may elect an earlier date or hold a good-faith exemption until December 31, 2028.
+assumption: No earlier election and no good-faith exemption.
+value: "2027-01-01"
+sources: [S11]
+tags: [state_election]
+open: [OQ-11]

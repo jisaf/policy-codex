@@ -1,0 +1,16 @@
+id: WR-004
+name: Age at month
+identifier: age_at_month
+kind: derived
+type: whole number
+scope: person-month
+program: All
+meaning: Whole years elapsed from Date of Birth to the first day of the month.
+precision: Same day-based rule as Age. A person who reaches an age during the month is treated as the younger age for that whole month.
+derived: [years_between, date_of_birth, [first_day, [month]]]
+sources: []
+implemented: assembly
+open: [OQ-1]
+tests:
+  - {id: WR-004-T1, month: "2027-02", given: {date_of_birth: "2009-02-15"}, expect: 17}
+  - {id: WR-004-T2, month: "2027-03", given: {date_of_birth: "2009-02-15"}, expect: 18}

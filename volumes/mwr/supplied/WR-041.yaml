@@ -1,0 +1,10 @@
+id: WR-041
+name: Community service hours
+identifier: community_service_hours
+kind: supplied
+type: hours
+scope: person-month
+program: Medicaid
+meaning: Hours of community service completed in the month.
+supplied_by: Organization verification or statement.
+sources: [S6]

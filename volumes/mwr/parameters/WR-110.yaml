@@ -1,0 +1,10 @@
+id: WR-110
+name: Caregiver minimum hours, non-resident non-relative
+identifier: caregiver_min_hours_nonresident_nonrelative
+kind: parameter
+type: hours
+scope: global
+program: Medicaid
+meaning: The monthly hours of non-incidental assistance a person must provide to a dependent child or disabled individual with whom they neither reside nor are related, to be a family caregiver.
+value: 80
+sources: [S5]

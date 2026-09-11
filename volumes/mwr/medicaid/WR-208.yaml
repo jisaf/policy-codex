@@ -1,0 +1,18 @@
+id: WR-208
+name: "Medicaid: is excluded by SNAP or TANF work requirement compliance"
+identifier: medicaid_is_excluded_by_snap_or_tanf
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: In the month containing the Determination Date the person is complying with TANF work requirements, or is a member of a household receiving SNAP and is subject to a SNAP work requirement.
+derived: [any, [at, is_complying_with_tanf_work_requirements, [det_month]], [all, [at, is_member_of_snap_household, [det_month]], [at, snap_is_subject_to_work_requirement, [det_month]]]]
+sources: [S2]
+implemented: engine
+tags: [legal]
+open: [OQ-19]
+tests:
+  - {id: WR-208-T1, given: {is_complying_with_tanf_work_requirements: true}, expect: true}
+  - {id: WR-208-T2, given: {is_complying_with_tanf_work_requirements: false, is_member_of_snap_household: true, snap_is_subject_to_work_requirement: true}, expect: true}
+  - {id: WR-208-T3, given: {is_complying_with_tanf_work_requirements: false, is_member_of_snap_household: true, snap_is_subject_to_work_requirement: false}, expect: false}
+  - {id: WR-208-T4, given: {is_complying_with_tanf_work_requirements: false, is_member_of_snap_household: false}, expect: false}

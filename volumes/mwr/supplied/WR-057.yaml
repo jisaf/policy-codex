@@ -1,0 +1,10 @@
+id: WR-057
+name: Work program hours in the last 30 days
+identifier: work_program_hours_last_30_days
+kind: supplied
+type: hours
+scope: person
+program: SNAP
+meaning: Hours of work program participation, in compliance with its requirements, during the 30-day period ending on the Determination Date.
+supplied_by: Program provider record.
+sources: [S22]

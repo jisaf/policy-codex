@@ -1,0 +1,17 @@
+id: WR-203
+name: "Medicaid: is a parent, guardian, or caretaker relative of a dependent"
+identifier: medicaid_is_parent_or_caretaker_of_dependent
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: There is a person of whom this person is a parent, guardian, or caretaker relative, and that person is a dependent child or disabled individual.
+derived: [exists_related, [parent, guardian, "caretaker relative"], [of, [P], medicaid_is_qualifying_dependent]]
+sources: [S2]
+implemented: assembly
+tags: [legal]
+open: [OQ-16]
+tests:
+  - {id: WR-203-T1, given: {date_of_birth: "1990-01-01"}, relationships: [[parent, p2]], others: {p2: {date_of_birth: "2015-01-01", relies_on_another_for_care: true, is_disabled_individual_ada: false}}, expect: true}
+  - {id: WR-203-T2, given: {date_of_birth: "1990-01-01"}, relationships: [[parent, p2]], others: {p2: {date_of_birth: "2010-01-01", relies_on_another_for_care: true, is_disabled_individual_ada: false}}, expect: false}
+  - {id: WR-203-T3, given: {date_of_birth: "1990-01-01"}, relationships: [[spouse, p2]], others: {p2: {date_of_birth: "1988-01-01", is_disabled_individual_ada: true}}, expect: false}

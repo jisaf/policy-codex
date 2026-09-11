@@ -1,0 +1,15 @@
+id: WR-312
+name: "SNAP: fulfills the work requirement for month"
+identifier: snap_fulfills_work_requirement
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: For the month hours worked including good cause are at least 80, work program hours are at least 80, or the person participates in workfare.
+derived: [any, [">=", snap_hours_worked_with_good_cause, snap_required_hours_per_month], [">=", [otherwise, work_program_hours, 0], snap_required_hours_per_month], participates_in_workfare]
+sources: [S21, S24, S26]
+implemented: engine
+tests:
+  - {id: WR-312-T1, month: "2027-02", given: {hours_worked: 80, participates_in_workfare: false}, expect: true}
+  - {id: WR-312-T2, month: "2027-02", given: {hours_worked: 79, hours_missed_for_good_cause: 0, work_program_hours: 0, participates_in_workfare: false}, expect: false}
+  - {id: WR-312-T3, month: "2027-02", given: {hours_worked: 0, participates_in_workfare: true}, expect: true}

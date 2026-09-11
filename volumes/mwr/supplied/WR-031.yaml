@@ -1,0 +1,10 @@
+id: WR-031
+name: Is eligible for or enrolled under an equivalent-coverage waiver
+identifier: is_equivalent_waiver_eligible_or_enrolled
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is eligible to enroll or is enrolled under a section 1115 waiver providing coverage equivalent to minimum essential coverage.
+supplied_by: Eligibility system.
+sources: [S1]

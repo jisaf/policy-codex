@@ -1,0 +1,17 @@
+id: WR-205
+name: "Medicaid: is in stable recovery"
+identifier: medicaid_in_stable_recovery
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person has been in recovery from a substance use disorder for 5 or more years as of the Determination Date. A person with no recovery start date is not in stable recovery.
+derived: [otherwise, [">=", [years_between, recovery_start_date, [det_date]], stable_recovery_years], false]
+sources: [S3]
+implemented: assembly
+tags: [medical]
+open: [OQ-18]
+tests:
+  - {id: WR-205-T1, given: {recovery_start_date: "2022-03-15"}, expect: true}
+  - {id: WR-205-T2, given: {recovery_start_date: "2022-03-16"}, expect: false}
+  - {id: WR-205-T3, given: {}, expect: false}

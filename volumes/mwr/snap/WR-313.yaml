@@ -1,0 +1,16 @@
+id: WR-313
+name: "SNAP: is a countable month"
+identifier: snap_is_countable_month
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person received SNAP benefits for the full month, the benefits were not prorated, and the person was not exempt from the time limit, not covered by a waiver, not fulfilling the work requirement, and not given a discretionary exemption.
+derived: [all, received_full_month_snap_benefits, [not, snap_benefits_prorated], [not, snap_is_exempt_from_time_limit], [not, covered_by_abawd_waiver], [not, snap_fulfills_work_requirement], [not, has_discretionary_exemption]]
+sources: [S21, S25]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-313-T1, month: "2027-02", given: {received_full_month_snap_benefits: true, snap_benefits_prorated: false, snap_is_exempt_from_time_limit: false, covered_by_abawd_waiver: false, snap_fulfills_work_requirement: false, has_discretionary_exemption: false}, expect: true}
+  - {id: WR-313-T2, month: "2027-02", given: {received_full_month_snap_benefits: false}, expect: false}
+  - {id: WR-313-T3, month: "2027-02", given: {received_full_month_snap_benefits: true, snap_benefits_prorated: false, snap_is_exempt_from_time_limit: false, covered_by_abawd_waiver: false, snap_fulfills_work_requirement: true, has_discretionary_exemption: false}, expect: false}

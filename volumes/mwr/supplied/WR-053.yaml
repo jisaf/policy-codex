@@ -1,0 +1,10 @@
+id: WR-053
+name: SNAP household members
+identifier: snap_household_members
+kind: supplied
+type: group of persons
+scope: person
+program: SNAP
+meaning: The persons in the case who are members of the same SNAP household as this person, determined under 7 CFR 273.1 outside this volume.
+supplied_by: SNAP household determination.
+sources: [S20, S30]

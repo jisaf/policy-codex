@@ -1,0 +1,11 @@
+id: WR-100
+name: Medicaid community engagement required hours per month
+identifier: medicaid_ce_required_hours
+kind: parameter
+type: hours
+scope: global
+program: Medicaid
+meaning: The hours of work, community service, work program participation, or a combination that demonstrate community engagement for a month.
+value: 80
+sources: [S6]
+effective: {from: "2027-01-01", to: present}

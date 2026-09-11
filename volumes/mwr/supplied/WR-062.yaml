@@ -1,0 +1,10 @@
+id: WR-062
+name: County unemployment rate
+identifier: county_unemployment_rate
+kind: supplied
+type: rate
+scope: person-month
+program: Medicaid
+meaning: The unemployment rate for the month of the county in which the person resides, as a fraction.
+supplied_by: Bureau of Labor Statistics data on the person's county.
+sources: [S10]

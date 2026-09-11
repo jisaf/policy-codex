@@ -1,0 +1,15 @@
+id: WR-310
+name: "SNAP: is exempt from the ABAWD time limit"
+identifier: snap_is_exempt_from_time_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: For the month the person is outside the ABAWD age range, is unfit for employment, has responsibility for a child under 14, is exempt from general work registration, is pregnant, or is exempt as an Indian.
+derived: [any, [not, snap_in_abawd_age_range], snap_is_unfit_for_employment, snap_has_responsibility_for_child_under_14, snap_is_exempt_from_work_registration, is_pregnant, snap_is_exempt_as_indian]
+sources: [S20]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-310-T1, month: "2027-02", given: {is_pregnant: true}, expect: true}
+  - {id: WR-310-T2, month: "2027-02", given: {snap_in_abawd_age_range: true, snap_is_unfit_for_employment: false, snap_has_responsibility_for_child_under_14: false, snap_is_exempt_from_work_registration: false, is_pregnant: false, indian_status: none}, expect: false}

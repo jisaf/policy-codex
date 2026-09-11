@@ -1,0 +1,14 @@
+id: WR-317
+name: "SNAP: regains eligibility"
+identifier: snap_regains_eligibility
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: In the 30 days ending on the Determination Date the person worked at least 80 hours, participated in a work program for at least 80 hours, or participated in workfare.
+derived: [any, [">=", hours_worked_last_30_days, snap_regain_hours], [">=", work_program_hours_last_30_days, snap_regain_hours], participated_in_workfare_last_30_days]
+sources: [S22]
+implemented: engine
+tests:
+  - {id: WR-317-T1, given: {hours_worked_last_30_days: 80}, expect: true}
+  - {id: WR-317-T2, given: {hours_worked_last_30_days: 40, work_program_hours_last_30_days: 0, participated_in_workfare_last_30_days: false}, expect: false}

@@ -1,0 +1,10 @@
+id: WR-030
+name: Is eligible for or enrolled in the adult group
+identifier: is_adult_group_eligible_or_enrolled
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is eligible to enroll or is enrolled under the State plan in the adult group described in section 1902(a)(10)(A)(i)(VIII), determined outside this volume.
+supplied_by: Eligibility system, group determination.
+sources: [S1, S16]

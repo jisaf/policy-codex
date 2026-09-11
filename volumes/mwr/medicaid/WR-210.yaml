@@ -1,0 +1,14 @@
+id: WR-210
+name: "Medicaid: is excluded as an Indian"
+identifier: medicaid_is_excluded_as_indian
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is an Indian, an Urban Indian, a California Indian, or has otherwise been determined eligible as an Indian for the Indian Health Service.
+derived: [in, indian_status, [Indian, "Urban Indian", "California Indian", "IHS-eligible only"]]
+sources: [S2]
+implemented: assembly
+tests:
+  - {id: WR-210-T1, given: {indian_status: "IHS-eligible only"}, expect: true}
+  - {id: WR-210-T2, given: {indian_status: none}, expect: false}

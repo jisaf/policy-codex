@@ -1,0 +1,10 @@
+id: WR-048
+name: Participates in workfare
+identifier: participates_in_workfare
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: During the month the person participates in and complies with a program under 7 U.S.C. 2029 or a comparable State or local program.
+supplied_by: Program provider record.
+sources: [S21]

@@ -1,0 +1,13 @@
+id: WR-121
+name: SNAP ABAWD maximum age
+identifier: snap_abawd_max_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The oldest age subject to the ABAWD time limit.
+assumption: Persons 65 and older are exempt, matching the reported FNS implementation. The statute reads "over 65", which literally exempts only persons 66 and older.
+value: 64
+sources: [S20, S33]
+tags: [legal]
+open: [OQ-13]

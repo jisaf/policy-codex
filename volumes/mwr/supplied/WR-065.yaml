@@ -1,0 +1,10 @@
+id: WR-065
+name: Most recent eligibility determination date
+identifier: most_recent_determination_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: The date of the person's most recent determination or redetermination of eligibility before the current one.
+supplied_by: Case record.
+sources: [S8]

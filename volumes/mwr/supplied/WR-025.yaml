@@ -1,0 +1,11 @@
+id: WR-025
+name: Was an inmate of a public institution in month
+identifier: was_inmate_in_month
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: At any point during the month the person was an inmate of a public institution.
+supplied_by: Corrections data match or statement.
+sources: [S2, S12]
+open: [OQ-6]

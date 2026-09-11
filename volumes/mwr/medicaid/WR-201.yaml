@@ -1,0 +1,17 @@
+id: WR-201
+name: "Medicaid: is a dependent child"
+identifier: medicaid_is_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is 13 years of age or under and relies on another individual for care.
+derived: [all, ["<=", age, medicaid_dependent_child_max_age], relies_on_another_for_care]
+sources: [S4]
+implemented: assembly
+tags: [legal]
+open: [OQ-3]
+tests:
+  - {id: WR-201-T1, given: {date_of_birth: "2013-06-01", relies_on_another_for_care: true}, expect: true}
+  - {id: WR-201-T2, given: {date_of_birth: "2013-03-15", relies_on_another_for_care: true}, expect: false}
+  - {id: WR-201-T3, given: {date_of_birth: "2017-01-01"}, expect: unknown}

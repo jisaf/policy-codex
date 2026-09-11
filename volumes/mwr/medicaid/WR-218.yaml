@@ -1,0 +1,13 @@
+id: WR-218
+name: "Medicaid: six-month average income"
+identifier: medicaid_six_month_average_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: Monthly income averaged over the 6 months before the month.
+derived: [avg, monthly_income, [months_ending, medicaid_seasonal_average_months, [month_before, [month]]]]
+sources: [S6]
+implemented: assembly
+tests:
+  - {id: WR-218-T1, month: "2027-03", given: {monthly_income: {"2026-09": 0, "2026-10": 0, "2026-11": 1200, "2026-12": 1200, "2027-01": 600, "2027-02": 480}}, expect: 580}

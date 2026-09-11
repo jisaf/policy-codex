@@ -1,0 +1,4619 @@
+{
+ "items": [
+  {
+   "id": "WR-001",
+   "name": "Date of Birth",
+   "identifier": "date_of_birth",
+   "kind": "supplied",
+   "type": "calendar date",
+   "scope": "person",
+   "program": "All",
+   "meaning": "The calendar date on which the person was born, in the local date of the place of birth. Time of birth is not recorded.",
+   "supplied_by": "Applicant statement, verified against vital records or SSA data.",
+   "sources": []
+  },
+  {
+   "id": "WR-002",
+   "name": "Determination Date",
+   "identifier": "determination_date",
+   "kind": "supplied",
+   "type": "calendar date",
+   "scope": "case",
+   "program": "All",
+   "meaning": "The date as of which eligibility is being determined. For an application it is the application date; for a renewal it is the redetermination date.",
+   "supplied_by": "Case record.",
+   "sources": []
+  },
+  {
+   "id": "WR-005",
+   "name": "Is pregnant",
+   "identifier": "is_pregnant",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "All",
+   "meaning": "The person is currently pregnant.",
+   "supplied_by": "Applicant statement or medical verification.",
+   "sources": [
+    "S2",
+    "S20"
+   ]
+  },
+  {
+   "id": "WR-006",
+   "name": "Is entitled to postpartum medical assistance",
+   "identifier": "is_entitled_to_postpartum_assistance",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is entitled to postpartum medical assistance under section 1902(e)(5) or (e)(16) of the Social Security Act. Determined by the pregnancy-related eligibility determination, outside this volume.",
+   "supplied_by": "Eligibility system, pregnancy coverage determination.",
+   "sources": [
+    "S2"
+   ],
+   "open": [
+    "OQ-2"
+   ]
+  },
+  {
+   "id": "WR-007",
+   "name": "Lives with",
+   "identifier": "lives_with",
+   "kind": "supplied",
+   "type": "group of persons",
+   "scope": "person",
+   "program": "All",
+   "meaning": "The persons in the case with whom this person primarily resides.",
+   "supplied_by": "Applicant statement.",
+   "sources": [
+    "S5"
+   ]
+  },
+  {
+   "id": "WR-008",
+   "name": "Relationships",
+   "identifier": "relationships",
+   "kind": "supplied",
+   "type": "relationships",
+   "options": [
+    "parent",
+    "guardian",
+    "caretaker relative",
+    "spouse",
+    "relative"
+   ],
+   "scope": "person",
+   "program": "All",
+   "meaning": "For each other person in the case, how this person is related to them. A person may hold several relationships to the same person. \"relative\" means a relative by blood, adoption, or marriage not otherwise listed.",
+   "supplied_by": "Applicant statement.",
+   "sources": [
+    "S2",
+    "S5",
+    "S20"
+   ],
+   "open": [
+    "OQ-17"
+   ]
+  },
+  {
+   "id": "WR-009",
+   "name": "Persons cared for",
+   "identifier": "persons_cared_for",
+   "kind": "supplied",
+   "type": "group of persons",
+   "scope": "person",
+   "program": "All",
+   "meaning": "The persons in the case to whom this person provides assistance that occurs on a regular basis and is not solely incidental in nature.",
+   "supplied_by": "Applicant statement.",
+   "sources": [
+    "S5",
+    "S20",
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-010",
+   "name": "Care hours by person",
+   "identifier": "care_hours_by_person",
+   "kind": "supplied",
+   "type": "table keyed by person",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "For each person in Persons cared for, the hours of assistance this person provided to them in the month.",
+   "supplied_by": "Applicant statement.",
+   "sources": [
+    "S5"
+   ]
+  },
+  {
+   "id": "WR-011",
+   "name": "Relies on another individual for care",
+   "identifier": "relies_on_another_for_care",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person relies on another individual for care.",
+   "supplied_by": "Applicant statement.",
+   "sources": [
+    "S4"
+   ],
+   "open": [
+    "OQ-3"
+   ]
+  },
+  {
+   "id": "WR-012",
+   "name": "Is a disabled individual under the ADA",
+   "identifier": "is_disabled_individual_ada",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person meets the Americans with Disabilities Act definition of disability at 28 CFR 35.108. The person need not be eligible for any program on the basis of disability.",
+   "supplied_by": "Eligibility worker determination from documentation or statement.",
+   "sources": [
+    "S4"
+   ],
+   "open": [
+    "OQ-4"
+   ]
+  },
+  {
+   "id": "WR-013",
+   "name": "Indian status",
+   "identifier": "indian_status",
+   "kind": "supplied",
+   "type": "one of",
+   "options": [
+    "Indian",
+    "Urban Indian",
+    "California Indian",
+    "IHS-eligible only",
+    "none"
+   ],
+   "scope": "person",
+   "program": "All",
+   "meaning": "Whether the person is an Indian or Urban Indian as defined in 25 U.S.C. 1603(13) and (28), a California Indian described in 25 U.S.C. 1679(a), or has otherwise been determined eligible as an Indian for the Indian Health Service. \"IHS-eligible only\" means the last of these without the others.",
+   "supplied_by": "Tribal enrollment or IHS eligibility documentation.",
+   "sources": [
+    "S2",
+    "S20"
+   ]
+  },
+  {
+   "id": "WR-014",
+   "name": "Is a veteran with a total disability rating",
+   "identifier": "is_veteran_total_disability",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is a veteran with a disability rated as total under 38 U.S.C. 1155.",
+   "supplied_by": "Department of Veterans Affairs rating documentation.",
+   "sources": [
+    "S2"
+   ]
+  },
+  {
+   "id": "WR-015",
+   "name": "Is blind or disabled under SSA section 1614",
+   "identifier": "is_blind_or_disabled_ssa",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is blind or disabled as defined in section 1614 of the Social Security Act.",
+   "supplied_by": "SSA determination.",
+   "sources": [
+    "S3"
+   ]
+  },
+  {
+   "id": "WR-016",
+   "name": "Has a substance use disorder",
+   "identifier": "has_substance_use_disorder",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person has a substance use disorder.",
+   "supplied_by": "Clinical documentation or statement under penalty of perjury, per verification rules.",
+   "sources": [
+    "S3"
+   ],
+   "tags": [
+    "medical"
+   ]
+  },
+  {
+   "id": "WR-017",
+   "name": "Recovery start date",
+   "identifier": "recovery_start_date",
+   "kind": "supplied",
+   "type": "calendar date",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The date on which the person's recovery from a substance use disorder began. Unknown when the person is not in recovery.",
+   "supplied_by": "Clinical documentation or statement.",
+   "sources": [
+    "S3"
+   ],
+   "tags": [
+    "medical"
+   ],
+   "open": [
+    "OQ-18"
+   ]
+  },
+  {
+   "id": "WR-018",
+   "name": "Has a disabling mental disorder",
+   "identifier": "has_disabling_mental_disorder",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person has a disabling mental disorder.",
+   "supplied_by": "Clinical documentation or statement.",
+   "sources": [
+    "S3"
+   ],
+   "tags": [
+    "medical"
+   ]
+  },
+  {
+   "id": "WR-019",
+   "name": "Has a disability that significantly impairs daily activities",
+   "identifier": "has_adl_impairing_disability",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person has a physical, intellectual, or developmental disability that significantly impairs their ability to perform one or more activities of daily living.",
+   "supplied_by": "Clinical documentation or statement.",
+   "sources": [
+    "S3"
+   ],
+   "tags": [
+    "medical"
+   ]
+  },
+  {
+   "id": "WR-020",
+   "name": "Has a serious or complex medical condition",
+   "identifier": "has_serious_or_complex_medical_condition",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person has a medical condition that is life threatening, seriously disabling without necessarily being life threatening, causing significant pain or discomfort that can cause serious interruptions to life activities, requiring a major time or effort commitment from caregivers for a substantial period of time, requiring frequent monitoring, associated with severe consequences or negative consequences for someone else, affecting multiple organ systems, requiring management to tight physiological parameters, requiring coordination of multiple specialties, requiring treatment that carries a risk of serious complications, or requiring adjustment in non-medical environments.",
+   "supplied_by": "Clinical documentation or statement.",
+   "sources": [
+    "S3"
+   ],
+   "tags": [
+    "medical"
+   ]
+  },
+  {
+   "id": "WR-021",
+   "name": "Condition significantly impairs ability to comply",
+   "identifier": "condition_impairs_ce_compliance",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person's physical, mental, or other behavioral health condition significantly impairs their ability to comply with the community engagement requirement.",
+   "supplied_by": "Clinical documentation or statement.",
+   "sources": [
+    "S3"
+   ],
+   "tags": [
+    "medical"
+   ],
+   "open": [
+    "OQ-5"
+   ]
+  },
+  {
+   "id": "WR-022",
+   "name": "Receives disability benefits",
+   "identifier": "receives_disability_benefits",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The person is receiving temporary or permanent disability benefits issued by governmental or private sources.",
+   "supplied_by": "Benefit award documentation or data match.",
+   "sources": [
+    "S28"
+   ]
+  },
+  {
+   "id": "WR-023",
+   "name": "Agency finds the person obviously unfit for employment",
+   "identifier": "agency_finds_obviously_unfit",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The State agency has determined that the person is obviously mentally or physically unfit for employment.",
+   "supplied_by": "Eligibility worker determination.",
+   "sources": [
+    "S28"
+   ]
+  },
+  {
+   "id": "WR-024",
+   "name": "Has a medical statement of unfitness for employment",
+   "identifier": "has_medical_statement_of_unfitness",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The person has provided a statement from a physician, physician's assistant, nurse, nurse practitioner, designated representative of the physician's office, a licensed or certified psychologist, a social worker, or other medical personnel the State agency determines appropriate, that they are physically or mentally unfit for employment.",
+   "supplied_by": "Document on file.",
+   "sources": [
+    "S28"
+   ]
+  },
+  {
+   "id": "WR-025",
+   "name": "Was an inmate of a public institution in month",
+   "identifier": "was_inmate_in_month",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "At any point during the month the person was an inmate of a public institution.",
+   "supplied_by": "Corrections data match or statement.",
+   "sources": [
+    "S2",
+    "S12"
+   ],
+   "open": [
+    "OQ-6"
+   ]
+  },
+  {
+   "id": "WR-026",
+   "name": "Is complying with TANF work requirements",
+   "identifier": "is_complying_with_tanf_work_requirements",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "During the month the person is subject to and in compliance with work requirements imposed under title IV-A of the Social Security Act (TANF).",
+   "supplied_by": "TANF case record.",
+   "sources": [
+    "S2",
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-027",
+   "name": "Receives unemployment compensation",
+   "identifier": "receives_unemployment_compensation",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "During the month the person is subject to and complying with the work registration requirements of the Federal-State unemployment compensation system, shown by receipt of unemployment compensation.",
+   "supplied_by": "Unemployment insurance data match.",
+   "sources": [
+    "S30",
+    "S31"
+   ]
+  },
+  {
+   "id": "WR-028",
+   "name": "Is a member of a household receiving SNAP",
+   "identifier": "is_member_of_snap_household",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "During the month the person is a member of a household that receives SNAP benefits.",
+   "supplied_by": "SNAP case record.",
+   "sources": [
+    "S2"
+   ]
+  },
+  {
+   "id": "WR-029",
+   "name": "Participates in a substance use treatment program",
+   "identifier": "participates_in_sud_treatment_program",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "During the month the person is a regular participant in a drug addiction or alcoholic treatment and rehabilitation program as defined in section 3(h) of the Food and Nutrition Act of 2008.",
+   "supplied_by": "Provider verification.",
+   "sources": [
+    "S2",
+    "S30"
+   ],
+   "tags": [
+    "medical"
+   ]
+  },
+  {
+   "id": "WR-030",
+   "name": "Is eligible for or enrolled in the adult group",
+   "identifier": "is_adult_group_eligible_or_enrolled",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is eligible to enroll or is enrolled under the State plan in the adult group described in section 1902(a)(10)(A)(i)(VIII), determined outside this volume.",
+   "supplied_by": "Eligibility system, group determination.",
+   "sources": [
+    "S1",
+    "S16"
+   ]
+  },
+  {
+   "id": "WR-031",
+   "name": "Is eligible for or enrolled under an equivalent-coverage waiver",
+   "identifier": "is_equivalent_waiver_eligible_or_enrolled",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is eligible to enroll or is enrolled under a section 1115 waiver providing coverage equivalent to minimum essential coverage.",
+   "supplied_by": "Eligibility system.",
+   "sources": [
+    "S1"
+   ]
+  },
+  {
+   "id": "WR-032",
+   "name": "Is entitled to or enrolled in Medicare",
+   "identifier": "is_medicare_entitled_or_enrolled",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is entitled to or enrolled for Medicare Part A, or enrolled for Part B.",
+   "supplied_by": "Medicare data match.",
+   "sources": [
+    "S1",
+    "S16"
+   ]
+  },
+  {
+   "id": "WR-033",
+   "name": "Is otherwise eligible under the State plan",
+   "identifier": "is_otherwise_eligible_under_state_plan",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is otherwise eligible to enroll under the State plan in a group other than the adult group.",
+   "supplied_by": "Eligibility system.",
+   "sources": [
+    "S1"
+   ]
+  },
+  {
+   "id": "WR-034",
+   "name": "Is in the former foster care youth group",
+   "identifier": "is_former_foster_care_youth_group",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is described in section 1902(a)(10)(A)(i)(IX), the group for former foster care children.",
+   "supplied_by": "Eligibility system, group determination.",
+   "sources": [
+    "S2"
+   ]
+  },
+  {
+   "id": "WR-040",
+   "name": "Hours worked",
+   "identifier": "hours_worked",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "Hours of work performed in the month.",
+   "supplied_by": "Payroll data match, employer verification, or statement.",
+   "sources": [
+    "S6",
+    "S21"
+   ]
+  },
+  {
+   "id": "WR-041",
+   "name": "Community service hours",
+   "identifier": "community_service_hours",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Hours of community service completed in the month.",
+   "supplied_by": "Organization verification or statement.",
+   "sources": [
+    "S6"
+   ]
+  },
+  {
+   "id": "WR-042",
+   "name": "Work program hours",
+   "identifier": "work_program_hours",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "Hours of participation in a work program in the month, in compliance with the program's requirements.",
+   "supplied_by": "Program provider record.",
+   "sources": [
+    "S6",
+    "S21"
+   ],
+   "open": [
+    "OQ-7"
+   ]
+  },
+  {
+   "id": "WR-043",
+   "name": "Educational program hours",
+   "identifier": "education_hours",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Hours of participation in an educational program in the month.",
+   "supplied_by": "Institution record or statement.",
+   "sources": [
+    "S6",
+    "S7"
+   ]
+  },
+  {
+   "id": "WR-044",
+   "name": "Is enrolled at least half-time in an educational program",
+   "identifier": "is_enrolled_half_time_education",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "During the month the person is enrolled at least half-time in a recognized school, training program, or institution of higher education.",
+   "supplied_by": "Institution record or statement.",
+   "sources": [
+    "S6",
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-045",
+   "name": "Monthly income",
+   "identifier": "monthly_income",
+   "kind": "supplied",
+   "type": "money",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "The person's income for the month.",
+   "supplied_by": "Payroll data match or statement.",
+   "sources": [
+    "S6",
+    "S30"
+   ],
+   "open": [
+    "OQ-8"
+   ]
+  },
+  {
+   "id": "WR-046",
+   "name": "Is a seasonal worker",
+   "identifier": "is_seasonal_worker",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is a seasonal worker as described in section 45R(d)(5)(B) of the Internal Revenue Code.",
+   "supplied_by": "Statement or employer verification.",
+   "sources": [
+    "S6"
+   ]
+  },
+  {
+   "id": "WR-047",
+   "name": "Hours missed for good cause",
+   "identifier": "hours_missed_for_good_cause",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Hours of work, work program, or workfare the person would have completed in the month but missed for good cause as determined by the State agency, where the absence was temporary.",
+   "supplied_by": "Eligibility worker determination.",
+   "sources": [
+    "S26"
+   ],
+   "open": [
+    "OQ-22"
+   ]
+  },
+  {
+   "id": "WR-048",
+   "name": "Participates in workfare",
+   "identifier": "participates_in_workfare",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "During the month the person participates in and complies with a program under 7 U.S.C. 2029 or a comparable State or local program.",
+   "supplied_by": "Program provider record.",
+   "sources": [
+    "S21"
+   ]
+  },
+  {
+   "id": "WR-049",
+   "name": "Received SNAP benefits for the full month",
+   "identifier": "received_full_month_snap_benefits",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "The person received SNAP benefits for the full benefit month.",
+   "supplied_by": "SNAP issuance record.",
+   "sources": [
+    "S25"
+   ]
+  },
+  {
+   "id": "WR-050",
+   "name": "SNAP benefits were prorated in month",
+   "identifier": "snap_benefits_prorated",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "The person's benefits for the month were prorated under 7 CFR 273.10.",
+   "supplied_by": "SNAP issuance record.",
+   "sources": [
+    "S25"
+   ]
+  },
+  {
+   "id": "WR-051",
+   "name": "Covered by an ABAWD waiver in month",
+   "identifier": "covered_by_abawd_waiver",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "During the month the person resided in an area covered by an approved waiver of the time limit.",
+   "supplied_by": "Waiver geography lookup on the person's address.",
+   "sources": [
+    "S25",
+    "S34"
+   ],
+   "open": [
+    "OQ-9"
+   ]
+  },
+  {
+   "id": "WR-052",
+   "name": "Has a discretionary exemption in month",
+   "identifier": "has_discretionary_exemption",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "The State agency applied one of its discretionary exemptions to the person for the month.",
+   "supplied_by": "SNAP case record.",
+   "sources": [
+    "S23"
+   ]
+  },
+  {
+   "id": "WR-053",
+   "name": "SNAP household members",
+   "identifier": "snap_household_members",
+   "kind": "supplied",
+   "type": "group of persons",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The persons in the case who are members of the same SNAP household as this person, determined under 7 CFR 273.1 outside this volume.",
+   "supplied_by": "SNAP household determination.",
+   "sources": [
+    "S20",
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-054",
+   "name": "Has responsibility for the care of an incapacitated person",
+   "identifier": "has_responsibility_for_incapacitated_person",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The person is responsible for the care of an incapacitated person.",
+   "supplied_by": "Applicant statement.",
+   "sources": [
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-055",
+   "name": "Is head of household",
+   "identifier": "is_head_of_household",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The person is the head of the SNAP household.",
+   "supplied_by": "SNAP case record.",
+   "sources": [
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-056",
+   "name": "Hours worked in the last 30 days",
+   "identifier": "hours_worked_last_30_days",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "Hours worked during the 30-day period ending on the Determination Date.",
+   "supplied_by": "Employer verification or statement.",
+   "sources": [
+    "S22"
+   ]
+  },
+  {
+   "id": "WR-057",
+   "name": "Work program hours in the last 30 days",
+   "identifier": "work_program_hours_last_30_days",
+   "kind": "supplied",
+   "type": "hours",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "Hours of work program participation, in compliance with its requirements, during the 30-day period ending on the Determination Date.",
+   "supplied_by": "Program provider record.",
+   "sources": [
+    "S22"
+   ]
+  },
+  {
+   "id": "WR-058",
+   "name": "Participated in workfare in the last 30 days",
+   "identifier": "participated_in_workfare_last_30_days",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "During the 30-day period ending on the Determination Date the person participated in and complied with a workfare program.",
+   "supplied_by": "Program provider record.",
+   "sources": [
+    "S22"
+   ]
+  },
+  {
+   "id": "WR-060",
+   "name": "Received inpatient or facility services in month",
+   "identifier": "received_inpatient_or_facility_services",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "For part or all of the month the person received inpatient hospital services, nursing facility services, services in an intermediate care facility for individuals with intellectual disabilities, inpatient psychiatric hospital services, or other services of similar acuity.",
+   "supplied_by": "Claims or encounter data.",
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-061",
+   "name": "County has a declared emergency or disaster in month",
+   "identifier": "county_has_declared_disaster",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "For part or all of the month the county in which the person resides is under an emergency or disaster declared by the President under the National Emergencies Act or the Stafford Act.",
+   "supplied_by": "Declaration lookup on the person's county.",
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-062",
+   "name": "County unemployment rate",
+   "identifier": "county_unemployment_rate",
+   "kind": "supplied",
+   "type": "rate",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "The unemployment rate for the month of the county in which the person resides, as a fraction.",
+   "supplied_by": "Bureau of Labor Statistics data on the person's county.",
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-063",
+   "name": "National unemployment rate",
+   "identifier": "national_unemployment_rate",
+   "kind": "supplied",
+   "type": "rate",
+   "scope": "month",
+   "program": "Medicaid",
+   "meaning": "The national unemployment rate for the month, as a fraction.",
+   "supplied_by": "Bureau of Labor Statistics.",
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-064",
+   "name": "Traveled outside the community for extended care in month",
+   "identifier": "traveled_for_extended_care",
+   "kind": "supplied",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "For part or all of the month the person or their dependent had to travel outside their community for an extended period to receive medical services necessary to treat a serious or complex medical condition that are not available within their community of residence.",
+   "supplied_by": "Statement with medical verification.",
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-065",
+   "name": "Most recent eligibility determination date",
+   "identifier": "most_recent_determination_date",
+   "kind": "supplied",
+   "type": "calendar date",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The date of the person's most recent determination or redetermination of eligibility before the current one.",
+   "supplied_by": "Case record.",
+   "sources": [
+    "S8"
+   ]
+  },
+  {
+   "id": "WR-100",
+   "name": "Medicaid community engagement required hours per month",
+   "identifier": "medicaid_ce_required_hours",
+   "kind": "parameter",
+   "type": "hours",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The hours of work, community service, work program participation, or a combination that demonstrate community engagement for a month.",
+   "value": 80,
+   "sources": [
+    "S6"
+   ],
+   "effective": {
+    "from": "2027-01-01",
+    "to": "present"
+   }
+  },
+  {
+   "id": "WR-101",
+   "name": "Federal minimum wage",
+   "identifier": "federal_minimum_wage",
+   "kind": "parameter",
+   "type": "money",
+   "scope": "global",
+   "program": "All",
+   "meaning": "The Federal minimum hourly wage under 29 U.S.C. 206(a)(1).",
+   "versions": [
+    {
+     "from": "2009-07-24",
+     "value": 7.25
+    }
+   ],
+   "sources": [
+    "S18"
+   ]
+  },
+  {
+   "id": "WR-102",
+   "name": "Medicaid community engagement minimum age",
+   "identifier": "medicaid_ce_min_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The youngest age at which a person can be an applicable individual. A person must have attained this age.",
+   "value": 19,
+   "sources": [
+    "S1"
+   ]
+  },
+  {
+   "id": "WR-103",
+   "name": "Medicaid community engagement age ceiling",
+   "identifier": "medicaid_ce_max_age_exclusive",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "A person must be under this age to be an applicable individual.",
+   "value": 65,
+   "sources": [
+    "S1"
+   ]
+  },
+  {
+   "id": "WR-104",
+   "name": "Medicaid dependent child maximum age",
+   "identifier": "medicaid_dependent_child_max_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "A dependent child for the caregiver exclusion is 13 years of age or under.",
+   "value": 13,
+   "sources": [
+    "S2",
+    "S4"
+   ]
+  },
+  {
+   "id": "WR-105",
+   "name": "Medicaid application lookback months",
+   "identifier": "medicaid_application_lookback_months",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The number of consecutive months immediately preceding the month of application for which an applicant must demonstrate community engagement. The State specifies 1, 2, or 3.",
+   "assumption": "The State elects 1 month. Replace with the actual election.",
+   "value": 1,
+   "sources": [
+    "S8"
+   ],
+   "tags": [
+    "state_election"
+   ],
+   "open": [
+    "OQ-10"
+   ]
+  },
+  {
+   "id": "WR-106",
+   "name": "Medicaid renewal required months",
+   "identifier": "medicaid_renewal_required_months",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The number of months, consecutive or not, between determinations for which an enrollee must demonstrate community engagement. The State specifies 1 or more.",
+   "assumption": "The State elects 1 month. Replace with the actual election.",
+   "value": 1,
+   "sources": [
+    "S8"
+   ],
+   "tags": [
+    "state_election"
+   ],
+   "open": [
+    "OQ-10"
+   ]
+  },
+  {
+   "id": "WR-107",
+   "name": "Medicaid community engagement implementation date",
+   "identifier": "medicaid_ce_implementation_date",
+   "kind": "parameter",
+   "type": "calendar date",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The first date on which community engagement is a condition of eligibility in this State. The Federal deadline is January 1, 2027; the State may elect an earlier date or hold a good-faith exemption until December 31, 2028.",
+   "assumption": "No earlier election and no good-faith exemption.",
+   "value": "2027-01-01",
+   "sources": [
+    "S11"
+   ],
+   "tags": [
+    "state_election"
+   ],
+   "open": [
+    "OQ-11"
+   ]
+  },
+  {
+   "id": "WR-108",
+   "name": "Stable recovery years",
+   "identifier": "stable_recovery_years",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "A person in recovery from a substance use disorder for this many years or more is in stable recovery and is not medically frail on that basis.",
+   "value": 5,
+   "sources": [
+    "S3"
+   ]
+  },
+  {
+   "id": "WR-109",
+   "name": "Inmate lookback months",
+   "identifier": "inmate_lookback_months",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The number of months before a month during which having been an inmate of a public institution excludes the person for that month.",
+   "value": 3,
+   "sources": [
+    "S12"
+   ]
+  },
+  {
+   "id": "WR-110",
+   "name": "Caregiver minimum hours, non-resident non-relative",
+   "identifier": "caregiver_min_hours_nonresident_nonrelative",
+   "kind": "parameter",
+   "type": "hours",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The monthly hours of non-incidental assistance a person must provide to a dependent child or disabled individual with whom they neither reside nor are related, to be a family caregiver.",
+   "value": 80,
+   "sources": [
+    "S5"
+   ]
+  },
+  {
+   "id": "WR-111",
+   "name": "Hardship unemployment rate cap",
+   "identifier": "hardship_unemployment_rate_cap",
+   "kind": "parameter",
+   "type": "rate",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The county unemployment rate at or above which a short-term hardship exists, unless 1.5 times the national rate is lower.",
+   "value": 0.08,
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-112",
+   "name": "Hardship national rate multiplier",
+   "identifier": "hardship_national_rate_multiplier",
+   "kind": "parameter",
+   "type": "rate",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The multiple of the national unemployment rate compared against the cap.",
+   "value": 1.5,
+   "sources": [
+    "S10"
+   ]
+  },
+  {
+   "id": "WR-113",
+   "name": "State elects the short-term hardship exception",
+   "identifier": "state_elects_short_term_hardship",
+   "kind": "parameter",
+   "type": "yes/no",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "Whether the State has elected the optional short-term hardship exception.",
+   "assumption": "The State elects the exception. Replace with the actual election.",
+   "value": true,
+   "sources": [
+    "S10"
+   ],
+   "tags": [
+    "state_election"
+   ],
+   "open": [
+    "OQ-12"
+   ]
+  },
+  {
+   "id": "WR-114",
+   "name": "Medicaid seasonal income averaging months",
+   "identifier": "medicaid_seasonal_average_months",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The number of preceding months over which a seasonal worker's income is averaged.",
+   "value": 6,
+   "sources": [
+    "S6"
+   ]
+  },
+  {
+   "id": "WR-120",
+   "name": "SNAP ABAWD minimum age",
+   "identifier": "snap_abawd_min_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The youngest age subject to the ABAWD time limit. Persons under 18 are exempt.",
+   "value": 18,
+   "sources": [
+    "S20"
+   ]
+  },
+  {
+   "id": "WR-121",
+   "name": "SNAP ABAWD maximum age",
+   "identifier": "snap_abawd_max_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The oldest age subject to the ABAWD time limit.",
+   "assumption": "Persons 65 and older are exempt, matching the reported FNS implementation. The statute reads \"over 65\", which literally exempts only persons 66 and older.",
+   "value": 64,
+   "sources": [
+    "S20",
+    "S33"
+   ],
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-13"
+   ]
+  },
+  {
+   "id": "WR-122",
+   "name": "SNAP dependent child age limit",
+   "identifier": "snap_dependent_child_age_limit",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "A dependent child for the time-limit exception is under this age.",
+   "value": 14,
+   "sources": [
+    "S20"
+   ]
+  },
+  {
+   "id": "WR-123",
+   "name": "SNAP required hours per month",
+   "identifier": "snap_required_hours_per_month",
+   "kind": "parameter",
+   "type": "hours",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "Twenty hours a week averaged monthly, which the regulation defines as 80 hours a month.",
+   "value": 80,
+   "sources": [
+    "S21",
+    "S24"
+   ]
+  },
+  {
+   "id": "WR-124",
+   "name": "SNAP countable month limit",
+   "identifier": "snap_countable_month_limit",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The number of countable months in the period after which the person is ineligible.",
+   "value": 3,
+   "sources": [
+    "S21"
+   ]
+  },
+  {
+   "id": "WR-125",
+   "name": "SNAP time limit period months",
+   "identifier": "snap_period_months",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The length in months of the period over which countable months accumulate.",
+   "value": 36,
+   "sources": [
+    "S21",
+    "S27"
+   ]
+  },
+  {
+   "id": "WR-126",
+   "name": "SNAP hours to regain eligibility",
+   "identifier": "snap_regain_hours",
+   "kind": "parameter",
+   "type": "hours",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "Hours of work or work program participation in a 30-day period that regain eligibility.",
+   "value": 80,
+   "sources": [
+    "S22"
+   ]
+  },
+  {
+   "id": "WR-127",
+   "name": "SNAP work registration minimum age",
+   "identifier": "snap_work_registration_min_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The youngest age subject to general work registration. The statute covers persons over 15.",
+   "value": 16,
+   "sources": [
+    "S29",
+    "S31"
+   ]
+  },
+  {
+   "id": "WR-128",
+   "name": "SNAP work registration maximum age",
+   "identifier": "snap_work_registration_max_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The oldest age subject to general work registration. The statute covers persons under 60.",
+   "value": 59,
+   "sources": [
+    "S29",
+    "S31"
+   ]
+  },
+  {
+   "id": "WR-129",
+   "name": "SNAP general exemption child age",
+   "identifier": "snap_general_exemption_child_age",
+   "kind": "parameter",
+   "type": "whole number",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "Responsibility for a dependent child under this age exempts a person from general work registration.",
+   "value": 6,
+   "sources": [
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-130",
+   "name": "SNAP employment exemption weekly hours",
+   "identifier": "snap_employment_exemption_weekly_hours",
+   "kind": "parameter",
+   "type": "hours",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "Weekly hours of employment, or the multiple of the minimum wage in weekly earnings, that exempt a person from general work registration.",
+   "value": 30,
+   "sources": [
+    "S30"
+   ]
+  },
+  {
+   "id": "WR-131",
+   "name": "SNAP time limit clock method",
+   "identifier": "snap_clock_method",
+   "kind": "parameter",
+   "type": "one of",
+   "options": [
+    "rolling",
+    "fixed"
+   ],
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "Whether the State measures the 36-month period as a rolling window ending at the current month or as a fixed period.",
+   "assumption": "Rolling clock. Replace with the State's method.",
+   "value": "rolling",
+   "sources": [
+    "S27"
+   ],
+   "tags": [
+    "state_election"
+   ],
+   "open": [
+    "OQ-14"
+   ]
+  },
+  {
+   "id": "WR-132",
+   "name": "SNAP ABAWD changes effective date",
+   "identifier": "snap_abawd_changes_effective_date",
+   "kind": "parameter",
+   "type": "calendar date",
+   "scope": "global",
+   "program": "SNAP",
+   "meaning": "The date on which the Pub. L. 119-21 changes to the time-limit exceptions took effect.",
+   "assumption": "Effective on enactment; section 10102 states no other date.",
+   "value": "2025-07-04",
+   "sources": [
+    "S33"
+   ],
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-15"
+   ]
+  },
+  {
+   "id": "WR-003",
+   "name": "Age",
+   "identifier": "age",
+   "kind": "derived",
+   "type": "whole number",
+   "scope": "person",
+   "program": "All",
+   "meaning": "Whole years elapsed from Date of Birth to the Determination Date.",
+   "precision": "Day-based. A person turns N on the Nth anniversary of Date of Birth, starting at 12:00am local time. Time of birth is ignored. A February 29 birth turns N on March 1 in a non-leap year.",
+   "derived": [
+    "years_between",
+    "date_of_birth",
+    [
+     "det_date"
+    ]
+   ],
+   "sources": [],
+   "implemented": "assembly",
+   "tests": [
+    {
+     "id": "WR-003-T1",
+     "as_of": "2026-03-14",
+     "given": {
+      "date_of_birth": "2007-03-15"
+     },
+     "expect": 18
+    },
+    {
+     "id": "WR-003-T2",
+     "as_of": "2026-03-15",
+     "given": {
+      "date_of_birth": "2007-03-15"
+     },
+     "expect": 19
+    },
+    {
+     "id": "WR-003-T3",
+     "as_of": "2026-02-28",
+     "given": {
+      "date_of_birth": "2008-02-29"
+     },
+     "expect": 17
+    },
+    {
+     "id": "WR-003-T4",
+     "as_of": "2026-03-01",
+     "given": {
+      "date_of_birth": "2008-02-29"
+     },
+     "expect": 18
+    }
+   ]
+  },
+  {
+   "id": "WR-004",
+   "name": "Age at month",
+   "identifier": "age_at_month",
+   "kind": "derived",
+   "type": "whole number",
+   "scope": "person-month",
+   "program": "All",
+   "meaning": "Whole years elapsed from Date of Birth to the first day of the month.",
+   "precision": "Same day-based rule as Age. A person who reaches an age during the month is treated as the younger age for that whole month.",
+   "derived": [
+    "years_between",
+    "date_of_birth",
+    [
+     "first_day",
+     [
+      "month"
+     ]
+    ]
+   ],
+   "sources": [],
+   "implemented": "assembly",
+   "open": [
+    "OQ-1"
+   ],
+   "tests": [
+    {
+     "id": "WR-004-T1",
+     "month": "2027-02",
+     "given": {
+      "date_of_birth": "2009-02-15"
+     },
+     "expect": 17
+    },
+    {
+     "id": "WR-004-T2",
+     "month": "2027-03",
+     "given": {
+      "date_of_birth": "2009-02-15"
+     },
+     "expect": 18
+    }
+   ]
+  },
+  {
+   "id": "WR-200",
+   "name": "Medicaid: is in the community engagement age range",
+   "identifier": "medicaid_in_ce_age_range",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person has attained age 19 and is under age 65.",
+   "derived": [
+    "all",
+    [
+     ">=",
+     "age",
+     "medicaid_ce_min_age"
+    ],
+    [
+     "<",
+     "age",
+     "medicaid_ce_max_age_exclusive"
+    ]
+   ],
+   "sources": [
+    "S1"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-200-T1",
+     "given": {
+      "date_of_birth": "2008-03-16"
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-200-T2",
+     "given": {
+      "date_of_birth": "2008-03-15"
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-200-T3",
+     "given": {
+      "date_of_birth": "1962-03-15"
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-200-T4",
+     "given": {
+      "date_of_birth": "1962-03-16"
+     },
+     "expect": true
+    }
+   ]
+  },
+  {
+   "id": "WR-201",
+   "name": "Medicaid: is a dependent child",
+   "identifier": "medicaid_is_dependent_child",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is 13 years of age or under and relies on another individual for care.",
+   "derived": [
+    "all",
+    [
+     "<=",
+     "age",
+     "medicaid_dependent_child_max_age"
+    ],
+    "relies_on_another_for_care"
+   ],
+   "sources": [
+    "S4"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-3"
+   ],
+   "tests": [
+    {
+     "id": "WR-201-T1",
+     "given": {
+      "date_of_birth": "2013-06-01",
+      "relies_on_another_for_care": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-201-T2",
+     "given": {
+      "date_of_birth": "2013-03-15",
+      "relies_on_another_for_care": true
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-201-T3",
+     "given": {
+      "date_of_birth": "2017-01-01"
+     },
+     "expect": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "WR-202",
+   "name": "Medicaid: is a dependent child or disabled individual",
+   "identifier": "medicaid_is_qualifying_dependent",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is a dependent child or a disabled individual, as those terms are defined for the community engagement subpart.",
+   "derived": [
+    "any",
+    "medicaid_is_dependent_child",
+    "is_disabled_individual_ada"
+   ],
+   "sources": [
+    "S2",
+    "S4"
+   ],
+   "implemented": "assembly",
+   "tests": [
+    {
+     "id": "WR-202-T1",
+     "given": {
+      "date_of_birth": "1987-01-01",
+      "is_disabled_individual_ada": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-202-T2",
+     "given": {
+      "date_of_birth": "2017-01-01",
+      "relies_on_another_for_care": true,
+      "is_disabled_individual_ada": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-202-T3",
+     "given": {
+      "date_of_birth": "2007-01-01",
+      "relies_on_another_for_care": true,
+      "is_disabled_individual_ada": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-203",
+   "name": "Medicaid: is a parent, guardian, or caretaker relative of a dependent",
+   "identifier": "medicaid_is_parent_or_caretaker_of_dependent",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "There is a person of whom this person is a parent, guardian, or caretaker relative, and that person is a dependent child or disabled individual.",
+   "derived": [
+    "exists_related",
+    [
+     "parent",
+     "guardian",
+     "caretaker relative"
+    ],
+    [
+     "of",
+     [
+      "P"
+     ],
+     "medicaid_is_qualifying_dependent"
+    ]
+   ],
+   "sources": [
+    "S2"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-16"
+   ],
+   "tests": [
+    {
+     "id": "WR-203-T1",
+     "given": {
+      "date_of_birth": "1990-01-01"
+     },
+     "relationships": [
+      [
+       "parent",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "2015-01-01",
+       "relies_on_another_for_care": true,
+       "is_disabled_individual_ada": false
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-203-T2",
+     "given": {
+      "date_of_birth": "1990-01-01"
+     },
+     "relationships": [
+      [
+       "parent",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "2010-01-01",
+       "relies_on_another_for_care": true,
+       "is_disabled_individual_ada": false
+      }
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-203-T3",
+     "given": {
+      "date_of_birth": "1990-01-01"
+     },
+     "relationships": [
+      [
+       "spouse",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "1988-01-01",
+       "is_disabled_individual_ada": true
+      }
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-204",
+   "name": "Medicaid: is a family caregiver of a dependent",
+   "identifier": "medicaid_is_family_caregiver_of_dependent",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "There is a person this person cares for who is a dependent child or disabled individual, and this person either resides with them, is their relative, or provided at least 80 hours of assistance to them in the month containing the Determination Date.",
+   "precision": "Care hours are read from the month containing the Determination Date.",
+   "derived": [
+    "exists",
+    "persons_cared_for",
+    [
+     "all",
+     [
+      "of",
+      [
+       "P"
+      ],
+      "medicaid_is_qualifying_dependent"
+     ],
+     [
+      "any",
+      [
+       "in_group",
+       [
+        "P"
+       ],
+       "lives_with"
+      ],
+      [
+       "rel",
+       [
+        "parent",
+        "guardian",
+        "caretaker relative",
+        "spouse",
+        "relative"
+       ],
+       [
+        "P"
+       ]
+      ],
+      [
+       ">=",
+       [
+        "lookup",
+        [
+         "at",
+         "care_hours_by_person",
+         [
+          "det_month"
+         ]
+        ],
+        [
+         "P"
+        ]
+       ],
+       "caregiver_min_hours_nonresident_nonrelative"
+      ]
+     ]
+    ]
+   ],
+   "sources": [
+    "S2",
+    "S4",
+    "S5",
+    "S17"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-17"
+   ],
+   "tests": [
+    {
+     "id": "WR-204-T1",
+     "given": {
+      "date_of_birth": "1990-01-01",
+      "persons_cared_for": [
+       "p2"
+      ],
+      "lives_with": [
+       "p2"
+      ]
+     },
+     "others": {
+      "p2": {
+       "date_of_birth": "1960-01-01",
+       "is_disabled_individual_ada": true
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-204-T2",
+     "given": {
+      "date_of_birth": "1990-01-01",
+      "persons_cared_for": [
+       "p2"
+      ],
+      "lives_with": []
+     },
+     "relationships": [
+      [
+       "relative",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "1960-01-01",
+       "is_disabled_individual_ada": true
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-204-T3",
+     "given": {
+      "date_of_birth": "1990-01-01",
+      "persons_cared_for": [
+       "p2"
+      ],
+      "lives_with": [],
+      "care_hours_by_person": {
+       "2027-03": {
+        "p2": 80
+       }
+      }
+     },
+     "others": {
+      "p2": {
+       "date_of_birth": "1960-01-01",
+       "is_disabled_individual_ada": true
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-204-T4",
+     "given": {
+      "date_of_birth": "1990-01-01",
+      "persons_cared_for": [
+       "p2"
+      ],
+      "lives_with": [],
+      "care_hours_by_person": {
+       "2027-03": {
+        "p2": 79
+       }
+      }
+     },
+     "relationships": [],
+     "others": {
+      "p2": {
+       "date_of_birth": "1960-01-01",
+       "is_disabled_individual_ada": true
+      }
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-205",
+   "name": "Medicaid: is in stable recovery",
+   "identifier": "medicaid_in_stable_recovery",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person has been in recovery from a substance use disorder for 5 or more years as of the Determination Date. A person with no recovery start date is not in stable recovery.",
+   "derived": [
+    "otherwise",
+    [
+     ">=",
+     [
+      "years_between",
+      "recovery_start_date",
+      [
+       "det_date"
+      ]
+     ],
+     "stable_recovery_years"
+    ],
+    false
+   ],
+   "sources": [
+    "S3"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "medical"
+   ],
+   "open": [
+    "OQ-18"
+   ],
+   "tests": [
+    {
+     "id": "WR-205-T1",
+     "given": {
+      "recovery_start_date": "2022-03-15"
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-205-T2",
+     "given": {
+      "recovery_start_date": "2022-03-16"
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-205-T3",
+     "given": {},
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-206",
+   "name": "Medicaid: is medically frail or has special medical needs",
+   "identifier": "medicaid_is_medically_frail",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person's condition significantly impairs their ability to comply, and the person is blind or disabled under SSA rules, has a substance use disorder and is not in stable recovery, has a disabling mental disorder, has a disability that significantly impairs daily activities, or has a serious or complex medical condition.",
+   "derived": [
+    "all",
+    "condition_impairs_ce_compliance",
+    [
+     "any",
+     "is_blind_or_disabled_ssa",
+     [
+      "all",
+      "has_substance_use_disorder",
+      [
+       "not",
+       "medicaid_in_stable_recovery"
+      ]
+     ],
+     "has_disabling_mental_disorder",
+     "has_adl_impairing_disability",
+     "has_serious_or_complex_medical_condition"
+    ]
+   ],
+   "sources": [
+    "S2",
+    "S3"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "legal",
+    "medical"
+   ],
+   "open": [
+    "OQ-5"
+   ],
+   "tests": [
+    {
+     "id": "WR-206-T1",
+     "given": {
+      "condition_impairs_ce_compliance": true,
+      "is_blind_or_disabled_ssa": false,
+      "has_substance_use_disorder": true,
+      "recovery_start_date": "2025-01-01",
+      "has_disabling_mental_disorder": false,
+      "has_adl_impairing_disability": false,
+      "has_serious_or_complex_medical_condition": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-206-T2",
+     "given": {
+      "condition_impairs_ce_compliance": true,
+      "is_blind_or_disabled_ssa": false,
+      "has_substance_use_disorder": true,
+      "recovery_start_date": "2021-01-01",
+      "has_disabling_mental_disorder": false,
+      "has_adl_impairing_disability": false,
+      "has_serious_or_complex_medical_condition": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-206-T3",
+     "given": {
+      "condition_impairs_ce_compliance": false,
+      "is_blind_or_disabled_ssa": true
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-206-T4",
+     "given": {
+      "condition_impairs_ce_compliance": true,
+      "is_blind_or_disabled_ssa": false,
+      "has_substance_use_disorder": false,
+      "has_disabling_mental_disorder": false,
+      "has_adl_impairing_disability": false,
+      "has_serious_or_complex_medical_condition": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-206-T5",
+     "given": {
+      "condition_impairs_ce_compliance": true,
+      "has_substance_use_disorder": false,
+      "has_disabling_mental_disorder": false,
+      "has_adl_impairing_disability": false,
+      "has_serious_or_complex_medical_condition": false
+     },
+     "expect": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "WR-207",
+   "name": "Medicaid: was an inmate within the lookback",
+   "identifier": "medicaid_was_recent_inmate",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "In any of the 3 months before the month containing the Determination Date the person was an inmate of a public institution.",
+   "precision": "The regulation's window ends on the first day of the month; an inmate stay that touches only the first day of the current month is not captured here.",
+   "derived": [
+    "some_month",
+    [
+     "months_ending",
+     "inmate_lookback_months",
+     [
+      "month_before",
+      [
+       "det_month"
+      ]
+     ]
+    ],
+    [
+     "at",
+     "was_inmate_in_month",
+     [
+      "month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S2",
+    "S12"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-6"
+   ],
+   "tests": [
+    {
+     "id": "WR-207-T1",
+     "given": {
+      "was_inmate_in_month": {
+       "2026-12": false,
+       "2027-01": true,
+       "2027-02": false
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-207-T2",
+     "given": {
+      "was_inmate_in_month": {
+       "2026-11": true,
+       "2026-12": false,
+       "2027-01": false,
+       "2027-02": false
+      }
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-207-T3",
+     "given": {
+      "was_inmate_in_month": {
+       "2026-12": false,
+       "2027-01": false
+      }
+     },
+     "expect": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "WR-208",
+   "name": "Medicaid: is excluded by SNAP or TANF work requirement compliance",
+   "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "In the month containing the Determination Date the person is complying with TANF work requirements, or is a member of a household receiving SNAP and is subject to a SNAP work requirement.",
+   "derived": [
+    "any",
+    [
+     "at",
+     "is_complying_with_tanf_work_requirements",
+     [
+      "det_month"
+     ]
+    ],
+    [
+     "all",
+     [
+      "at",
+      "is_member_of_snap_household",
+      [
+       "det_month"
+      ]
+     ],
+     [
+      "at",
+      "snap_is_subject_to_work_requirement",
+      [
+       "det_month"
+      ]
+     ]
+    ]
+   ],
+   "sources": [
+    "S2"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-19"
+   ],
+   "tests": [
+    {
+     "id": "WR-208-T1",
+     "given": {
+      "is_complying_with_tanf_work_requirements": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-208-T2",
+     "given": {
+      "is_complying_with_tanf_work_requirements": false,
+      "is_member_of_snap_household": true,
+      "snap_is_subject_to_work_requirement": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-208-T3",
+     "given": {
+      "is_complying_with_tanf_work_requirements": false,
+      "is_member_of_snap_household": true,
+      "snap_is_subject_to_work_requirement": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-208-T4",
+     "given": {
+      "is_complying_with_tanf_work_requirements": false,
+      "is_member_of_snap_household": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-209",
+   "name": "Medicaid: is pregnant or postpartum",
+   "identifier": "medicaid_is_pregnant_or_postpartum",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is pregnant or is entitled to postpartum medical assistance.",
+   "derived": [
+    "any",
+    "is_pregnant",
+    "is_entitled_to_postpartum_assistance"
+   ],
+   "sources": [
+    "S2"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-209-T1",
+     "given": {
+      "is_pregnant": false,
+      "is_entitled_to_postpartum_assistance": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-209-T2",
+     "given": {
+      "is_pregnant": false,
+      "is_entitled_to_postpartum_assistance": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-210",
+   "name": "Medicaid: is excluded as an Indian",
+   "identifier": "medicaid_is_excluded_as_indian",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is an Indian, an Urban Indian, a California Indian, or has otherwise been determined eligible as an Indian for the Indian Health Service.",
+   "derived": [
+    "in",
+    "indian_status",
+    [
+     "Indian",
+     "Urban Indian",
+     "California Indian",
+     "IHS-eligible only"
+    ]
+   ],
+   "sources": [
+    "S2"
+   ],
+   "implemented": "assembly",
+   "tests": [
+    {
+     "id": "WR-210-T1",
+     "given": {
+      "indian_status": "IHS-eligible only"
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-210-T2",
+     "given": {
+      "indian_status": "none"
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-211",
+   "name": "Medicaid: is a specified excluded individual",
+   "identifier": "medicaid_is_specified_excluded_individual",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is in the former foster care youth group, is excluded as an Indian, is a parent, guardian, or caretaker relative of a dependent, is a family caregiver of a dependent, is a veteran with a total disability rating, is medically frail, is excluded by SNAP or TANF work requirement compliance, participates in a substance use treatment program in the month containing the Determination Date, was an inmate within the lookback, or is pregnant or postpartum.",
+   "derived": [
+    "any",
+    "is_former_foster_care_youth_group",
+    "medicaid_is_excluded_as_indian",
+    "medicaid_is_parent_or_caretaker_of_dependent",
+    "medicaid_is_family_caregiver_of_dependent",
+    "is_veteran_total_disability",
+    "medicaid_is_medically_frail",
+    "medicaid_is_excluded_by_snap_or_tanf",
+    [
+     "at",
+     "participates_in_sud_treatment_program",
+     [
+      "det_month"
+     ]
+    ],
+    "medicaid_was_recent_inmate",
+    "medicaid_is_pregnant_or_postpartum"
+   ],
+   "sources": [
+    "S2"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-211-T1",
+     "given": {
+      "is_former_foster_care_youth_group": false,
+      "medicaid_is_excluded_as_indian": false,
+      "medicaid_is_parent_or_caretaker_of_dependent": false,
+      "medicaid_is_family_caregiver_of_dependent": false,
+      "is_veteran_total_disability": false,
+      "medicaid_is_medically_frail": false,
+      "medicaid_is_excluded_by_snap_or_tanf": false,
+      "participates_in_sud_treatment_program": false,
+      "medicaid_was_recent_inmate": false,
+      "medicaid_is_pregnant_or_postpartum": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-211-T2",
+     "given": {
+      "medicaid_is_medically_frail": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-211-T3",
+     "given": {
+      "participates_in_sud_treatment_program": true
+     },
+     "expect": true
+    }
+   ]
+  },
+  {
+   "id": "WR-212",
+   "name": "Medicaid: is an applicable individual",
+   "identifier": "medicaid_is_applicable_individual",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The person is not a specified excluded individual, and either is eligible for or enrolled in the adult group, or is eligible for or enrolled under an equivalent-coverage waiver while in the age range, not pregnant, not entitled to or enrolled in Medicare, and not otherwise eligible under the State plan.",
+   "derived": [
+    "all",
+    [
+     "not",
+     "medicaid_is_specified_excluded_individual"
+    ],
+    [
+     "any",
+     "is_adult_group_eligible_or_enrolled",
+     [
+      "all",
+      "is_equivalent_waiver_eligible_or_enrolled",
+      "medicaid_in_ce_age_range",
+      [
+       "not",
+       "is_pregnant"
+      ],
+      [
+       "not",
+       "is_medicare_entitled_or_enrolled"
+      ],
+      [
+       "not",
+       "is_otherwise_eligible_under_state_plan"
+      ]
+     ]
+    ]
+   ],
+   "sources": [
+    "S1",
+    "S16"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-212-T1",
+     "given": {
+      "medicaid_is_specified_excluded_individual": false,
+      "is_adult_group_eligible_or_enrolled": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-212-T2",
+     "given": {
+      "medicaid_is_specified_excluded_individual": true,
+      "is_adult_group_eligible_or_enrolled": true
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-212-T3",
+     "given": {
+      "medicaid_is_specified_excluded_individual": false,
+      "is_adult_group_eligible_or_enrolled": false,
+      "is_equivalent_waiver_eligible_or_enrolled": true,
+      "date_of_birth": "1990-01-01",
+      "is_pregnant": false,
+      "is_medicare_entitled_or_enrolled": false,
+      "is_otherwise_eligible_under_state_plan": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-212-T4",
+     "given": {
+      "medicaid_is_specified_excluded_individual": false,
+      "is_adult_group_eligible_or_enrolled": false,
+      "is_equivalent_waiver_eligible_or_enrolled": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-213",
+   "name": "Medicaid: community engagement income threshold",
+   "identifier": "medicaid_ce_income_threshold",
+   "kind": "derived",
+   "type": "money",
+   "scope": "global",
+   "program": "Medicaid",
+   "meaning": "The Federal minimum wage multiplied by the required hours per month.",
+   "derived": [
+    "*",
+    "federal_minimum_wage",
+    "medicaid_ce_required_hours"
+   ],
+   "sources": [
+    "S6",
+    "S18"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-213-T1",
+     "given": {},
+     "expect": 580
+    }
+   ]
+  },
+  {
+   "id": "WR-214",
+   "name": "Medicaid: countable educational program hours",
+   "identifier": "medicaid_countable_education_hours",
+   "kind": "derived",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Educational program hours that may be combined with other activities. When the person is enrolled at least half-time, no education hours are combined because half-time enrollment demonstrates community engagement on its own.",
+   "derived": [
+    "case",
+    [
+     "is_enrolled_half_time_education",
+     0
+    ],
+    [
+     "else",
+     [
+      "otherwise",
+      "education_hours",
+      0
+     ]
+    ]
+   ],
+   "sources": [
+    "S6",
+    "S7"
+   ],
+   "implemented": "assembly",
+   "open": [
+    "OQ-20",
+    "OQ-23"
+   ],
+   "tests": [
+    {
+     "id": "WR-214-T1",
+     "month": "2027-02",
+     "given": {
+      "is_enrolled_half_time_education": true,
+      "education_hours": 40
+     },
+     "expect": 0
+    },
+    {
+     "id": "WR-214-T2",
+     "month": "2027-02",
+     "given": {
+      "is_enrolled_half_time_education": false,
+      "education_hours": 40
+     },
+     "expect": 40
+    }
+   ]
+  },
+  {
+   "id": "WR-215",
+   "name": "Medicaid: total qualifying hours",
+   "identifier": "medicaid_total_qualifying_hours",
+   "kind": "derived",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Hours worked plus community service hours plus work program hours plus countable educational program hours for the month. An activity with no reported hours counts as 0.",
+   "derived": [
+    "+",
+    [
+     "otherwise",
+     "hours_worked",
+     0
+    ],
+    [
+     "otherwise",
+     "community_service_hours",
+     0
+    ],
+    [
+     "otherwise",
+     "work_program_hours",
+     0
+    ],
+    "medicaid_countable_education_hours"
+   ],
+   "sources": [
+    "S6"
+   ],
+   "implemented": "assembly",
+   "open": [
+    "OQ-23"
+   ],
+   "tests": [
+    {
+     "id": "WR-215-T1",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 30,
+      "community_service_hours": 20,
+      "work_program_hours": 10,
+      "education_hours": 30,
+      "is_enrolled_half_time_education": false
+     },
+     "expect": 90
+    },
+    {
+     "id": "WR-215-T2",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 30,
+      "is_enrolled_half_time_education": false
+     },
+     "expect": 30
+    }
+   ]
+  },
+  {
+   "id": "WR-216",
+   "name": "Medicaid: meets the hours condition",
+   "identifier": "medicaid_meets_hours_condition",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Total qualifying hours for the month are at least the required hours.",
+   "derived": [
+    ">=",
+    "medicaid_total_qualifying_hours",
+    "medicaid_ce_required_hours"
+   ],
+   "sources": [
+    "S6"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-216-T1",
+     "month": "2027-02",
+     "given": {
+      "medicaid_total_qualifying_hours": 80
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-216-T2",
+     "month": "2027-02",
+     "given": {
+      "medicaid_total_qualifying_hours": 79.5
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-217",
+   "name": "Medicaid: meets the income condition",
+   "identifier": "medicaid_meets_income_condition",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Monthly income is at least the community engagement income threshold.",
+   "derived": [
+    ">=",
+    "monthly_income",
+    "medicaid_ce_income_threshold"
+   ],
+   "sources": [
+    "S6"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-217-T1",
+     "month": "2027-02",
+     "given": {
+      "monthly_income": 580
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-217-T2",
+     "month": "2027-02",
+     "given": {
+      "monthly_income": 579.99
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-218",
+   "name": "Medicaid: six-month average income",
+   "identifier": "medicaid_six_month_average_income",
+   "kind": "derived",
+   "type": "money",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "Monthly income averaged over the 6 months before the month.",
+   "derived": [
+    "avg",
+    "monthly_income",
+    [
+     "months_ending",
+     "medicaid_seasonal_average_months",
+     [
+      "month_before",
+      [
+       "month"
+      ]
+     ]
+    ]
+   ],
+   "sources": [
+    "S6"
+   ],
+   "implemented": "assembly",
+   "tests": [
+    {
+     "id": "WR-218-T1",
+     "month": "2027-03",
+     "given": {
+      "monthly_income": {
+       "2026-09": 0,
+       "2026-10": 0,
+       "2026-11": 1200,
+       "2026-12": 1200,
+       "2027-01": 600,
+       "2027-02": 480
+      }
+     },
+     "expect": 580
+    }
+   ]
+  },
+  {
+   "id": "WR-219",
+   "name": "Medicaid: meets the seasonal income condition",
+   "identifier": "medicaid_meets_seasonal_income_condition",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "The person is a seasonal worker and their six-month average income is at least the income threshold.",
+   "derived": [
+    "all",
+    "is_seasonal_worker",
+    [
+     ">=",
+     "medicaid_six_month_average_income",
+     "medicaid_ce_income_threshold"
+    ]
+   ],
+   "sources": [
+    "S6"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-219-T1",
+     "month": "2027-03",
+     "given": {
+      "is_seasonal_worker": true,
+      "medicaid_six_month_average_income": 580
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-219-T2",
+     "month": "2027-03",
+     "given": {
+      "is_seasonal_worker": false,
+      "medicaid_six_month_average_income": 900
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-220",
+   "name": "Medicaid: demonstrates community engagement for month",
+   "identifier": "medicaid_demonstrates_ce",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "For the month the person meets the hours condition, is enrolled at least half-time in an educational program, meets the income condition, or meets the seasonal income condition.",
+   "derived": [
+    "any",
+    "medicaid_meets_hours_condition",
+    "is_enrolled_half_time_education",
+    "medicaid_meets_income_condition",
+    "medicaid_meets_seasonal_income_condition"
+   ],
+   "sources": [
+    "S6"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-220-T1",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 90,
+      "is_enrolled_half_time_education": false,
+      "monthly_income": 0,
+      "is_seasonal_worker": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-220-T2",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 0,
+      "community_service_hours": 0,
+      "work_program_hours": 0,
+      "education_hours": 0,
+      "is_enrolled_half_time_education": false,
+      "monthly_income": 0,
+      "is_seasonal_worker": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-220-T3",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 0,
+      "community_service_hours": 0,
+      "work_program_hours": 0,
+      "education_hours": 0,
+      "is_enrolled_half_time_education": false,
+      "monthly_income": 600,
+      "is_seasonal_worker": false
+     },
+     "expect": true
+    }
+   ]
+  },
+  {
+   "id": "WR-221",
+   "name": "Medicaid: county unemployment meets the hardship threshold",
+   "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "The county unemployment rate is at or above the lesser of the cap and the multiplier times the national unemployment rate.",
+   "derived": [
+    ">=",
+    "county_unemployment_rate",
+    [
+     "min",
+     "hardship_unemployment_rate_cap",
+     [
+      "*",
+      "hardship_national_rate_multiplier",
+      "national_unemployment_rate"
+     ]
+    ]
+   ],
+   "sources": [
+    "S10"
+   ],
+   "implemented": "assembly",
+   "tests": [
+    {
+     "id": "WR-221-T1",
+     "month": "2027-02",
+     "given": {
+      "county_unemployment_rate": 0.07,
+      "national_unemployment_rate": 0.04
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-221-T2",
+     "month": "2027-02",
+     "given": {
+      "county_unemployment_rate": 0.05,
+      "national_unemployment_rate": 0.04
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-221-T3",
+     "month": "2027-02",
+     "given": {
+      "county_unemployment_rate": 0.08,
+      "national_unemployment_rate": 0.06
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-221-T4",
+     "month": "2027-02",
+     "given": {
+      "county_unemployment_rate": 0.079,
+      "national_unemployment_rate": 0.06
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-222",
+   "name": "Medicaid: experiences a short-term hardship in month",
+   "identifier": "medicaid_short_term_hardship_in_month",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "The State elects the hardship exception, and for part or all of the month the person received inpatient or facility services, resided in a county with a declared emergency or disaster or with unemployment meeting the threshold, or traveled outside the community for extended care.",
+   "derived": [
+    "all",
+    "state_elects_short_term_hardship",
+    [
+     "any",
+     "received_inpatient_or_facility_services",
+     "county_has_declared_disaster",
+     "medicaid_county_unemployment_meets_hardship_threshold",
+     "traveled_for_extended_care"
+    ]
+   ],
+   "sources": [
+    "S10"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-12"
+   ],
+   "tests": [
+    {
+     "id": "WR-222-T1",
+     "month": "2027-02",
+     "given": {
+      "received_inpatient_or_facility_services": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-222-T2",
+     "month": "2027-02",
+     "given": {
+      "received_inpatient_or_facility_services": false,
+      "county_has_declared_disaster": false,
+      "county_unemployment_rate": 0.03,
+      "national_unemployment_rate": 0.04,
+      "traveled_for_extended_care": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-222-T3",
+     "month": "2027-02",
+     "parameters": {
+      "state_elects_short_term_hardship": false
+     },
+     "given": {
+      "received_inpatient_or_facility_services": true
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-223",
+   "name": "Medicaid: community engagement satisfied for month",
+   "identifier": "medicaid_ce_satisfied_for_month",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "Medicaid",
+   "meaning": "For the month the person demonstrates community engagement or experiences a short-term hardship.",
+   "derived": [
+    "any",
+    "medicaid_demonstrates_ce",
+    "medicaid_short_term_hardship_in_month"
+   ],
+   "sources": [
+    "S6",
+    "S10"
+   ],
+   "implemented": "engine",
+   "open": [
+    "OQ-12"
+   ],
+   "tests": [
+    {
+     "id": "WR-223-T1",
+     "month": "2027-02",
+     "given": {
+      "medicaid_demonstrates_ce": false,
+      "medicaid_short_term_hardship_in_month": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-223-T2",
+     "month": "2027-02",
+     "given": {
+      "medicaid_demonstrates_ce": false,
+      "medicaid_short_term_hardship_in_month": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-224",
+   "name": "Medicaid: application lookback months",
+   "identifier": "medicaid_application_lookback_months_list",
+   "kind": "derived",
+   "type": "list of months",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The consecutive months, as many as the State specifies, ending with the month before the month containing the Determination Date.",
+   "derived": [
+    "months_ending",
+    "medicaid_application_lookback_months",
+    [
+     "month_before",
+     [
+      "det_month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S8"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-224-T1",
+     "given": {},
+     "expect": [
+      "2027-02"
+     ]
+    },
+    {
+     "id": "WR-224-T2",
+     "parameters": {
+      "medicaid_application_lookback_months": 3
+     },
+     "given": {},
+     "expect": [
+      "2026-12",
+      "2027-01",
+      "2027-02"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "WR-225",
+   "name": "Medicaid: satisfies community engagement at application",
+   "identifier": "medicaid_satisfies_ce_at_application",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "Community engagement is satisfied in each of the application lookback months.",
+   "derived": [
+    "each",
+    "medicaid_application_lookback_months_list",
+    [
+     "at",
+     "medicaid_ce_satisfied_for_month",
+     [
+      "month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S8"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-225-T1",
+     "given": {
+      "medicaid_ce_satisfied_for_month": {
+       "2027-02": true
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-225-T2",
+     "parameters": {
+      "medicaid_application_lookback_months": 3
+     },
+     "given": {
+      "medicaid_ce_satisfied_for_month": {
+       "2026-12": true,
+       "2027-01": false,
+       "2027-02": true
+      }
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-225-T3",
+     "parameters": {
+      "medicaid_application_lookback_months": 3
+     },
+     "given": {
+      "medicaid_ce_satisfied_for_month": {
+       "2026-12": true,
+       "2027-02": true
+      }
+     },
+     "expect": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "WR-226",
+   "name": "Medicaid: community engagement status at application",
+   "identifier": "medicaid_ce_status_at_application",
+   "kind": "derived",
+   "type": "one of",
+   "options": [
+    "not yet in effect",
+    "not subject",
+    "met",
+    "not met"
+   ],
+   "scope": "person",
+   "program": "Medicaid",
+   "role": "outcome",
+   "meaning": "Not yet in effect when the Determination Date is before the implementation date; not subject when the person is not an applicable individual; met when community engagement is satisfied at application; otherwise not met.",
+   "derived": [
+    "case",
+    [
+     [
+      "<",
+      [
+       "det_date"
+      ],
+      "medicaid_ce_implementation_date"
+     ],
+     "not yet in effect"
+    ],
+    [
+     [
+      "not",
+      "medicaid_is_applicable_individual"
+     ],
+     "not subject"
+    ],
+    [
+     "medicaid_satisfies_ce_at_application",
+     "met"
+    ],
+    [
+     "else",
+     "not met"
+    ]
+   ],
+   "sources": [
+    "S8",
+    "S9",
+    "S11"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-226-T1",
+     "as_of": "2026-12-15",
+     "given": {},
+     "expect": "not yet in effect"
+    },
+    {
+     "id": "WR-226-T2",
+     "given": {
+      "medicaid_is_applicable_individual": false
+     },
+     "expect": "not subject"
+    },
+    {
+     "id": "WR-226-T3",
+     "given": {
+      "medicaid_is_applicable_individual": true,
+      "medicaid_satisfies_ce_at_application": true
+     },
+     "expect": "met"
+    },
+    {
+     "id": "WR-226-T4",
+     "given": {
+      "medicaid_is_applicable_individual": true,
+      "medicaid_satisfies_ce_at_application": false
+     },
+     "expect": "not met"
+    },
+    {
+     "id": "WR-226-T5",
+     "given": {
+      "medicaid_is_applicable_individual": true
+     },
+     "expect": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "WR-227",
+   "name": "Medicaid: renewal review months",
+   "identifier": "medicaid_renewal_review_months",
+   "kind": "derived",
+   "type": "list of months",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The months after the month of the most recent determination and before the month containing the Determination Date.",
+   "derived": [
+    "months_from_to",
+    [
+     "month_after",
+     [
+      "month_of",
+      "most_recent_determination_date"
+     ]
+    ],
+    [
+     "month_before",
+     [
+      "det_month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S8"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-227-T1",
+     "given": {
+      "most_recent_determination_date": "2026-09-10"
+     },
+     "expect": [
+      "2026-10",
+      "2026-11",
+      "2026-12",
+      "2027-01",
+      "2027-02"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "WR-228",
+   "name": "Medicaid: months demonstrated since last determination",
+   "identifier": "medicaid_months_demonstrated_since_last_determination",
+   "kind": "derived",
+   "type": "whole number",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "The number of renewal review months for which community engagement is satisfied.",
+   "derived": [
+    "count_months",
+    "medicaid_renewal_review_months",
+    [
+     "at",
+     "medicaid_ce_satisfied_for_month",
+     [
+      "month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S8"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-228-T1",
+     "given": {
+      "most_recent_determination_date": "2026-12-10",
+      "medicaid_ce_satisfied_for_month": {
+       "2027-01": true,
+       "2027-02": false
+      }
+     },
+     "expect": 1
+    }
+   ]
+  },
+  {
+   "id": "WR-229",
+   "name": "Medicaid: satisfies community engagement at renewal",
+   "identifier": "medicaid_satisfies_ce_at_renewal",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "Medicaid",
+   "meaning": "Months demonstrated since the last determination are at least the number the State requires.",
+   "derived": [
+    ">=",
+    "medicaid_months_demonstrated_since_last_determination",
+    "medicaid_renewal_required_months"
+   ],
+   "sources": [
+    "S8"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-229-T1",
+     "given": {
+      "medicaid_months_demonstrated_since_last_determination": 1
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-229-T2",
+     "given": {
+      "medicaid_months_demonstrated_since_last_determination": 0
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-230",
+   "name": "Medicaid: community engagement status at renewal",
+   "identifier": "medicaid_ce_status_at_renewal",
+   "kind": "derived",
+   "type": "one of",
+   "options": [
+    "not yet in effect",
+    "not subject",
+    "met",
+    "not met"
+   ],
+   "scope": "person",
+   "program": "Medicaid",
+   "role": "outcome",
+   "meaning": "Not yet in effect when the Determination Date is before the implementation date; not subject when the person is not an applicable individual; met when community engagement is satisfied at renewal; otherwise not met.",
+   "derived": [
+    "case",
+    [
+     [
+      "<",
+      [
+       "det_date"
+      ],
+      "medicaid_ce_implementation_date"
+     ],
+     "not yet in effect"
+    ],
+    [
+     [
+      "not",
+      "medicaid_is_applicable_individual"
+     ],
+     "not subject"
+    ],
+    [
+     "medicaid_satisfies_ce_at_renewal",
+     "met"
+    ],
+    [
+     "else",
+     "not met"
+    ]
+   ],
+   "sources": [
+    "S8",
+    "S9",
+    "S11"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-230-T1",
+     "given": {
+      "medicaid_is_applicable_individual": true,
+      "medicaid_satisfies_ce_at_renewal": true
+     },
+     "expect": "met"
+    },
+    {
+     "id": "WR-230-T2",
+     "given": {
+      "medicaid_is_applicable_individual": true,
+      "medicaid_satisfies_ce_at_renewal": false
+     },
+     "expect": "not met"
+    }
+   ]
+  },
+  {
+   "id": "WR-300",
+   "name": "SNAP: is in the ABAWD age range",
+   "identifier": "snap_in_abawd_age_range",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Age at the month is at least 18 and at most the ABAWD maximum age.",
+   "derived": [
+    "all",
+    [
+     ">=",
+     "age_at_month",
+     "snap_abawd_min_age"
+    ],
+    [
+     "<=",
+     "age_at_month",
+     "snap_abawd_max_age"
+    ]
+   ],
+   "sources": [
+    "S20"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-13"
+   ],
+   "tests": [
+    {
+     "id": "WR-300-T1",
+     "month": "2027-03",
+     "given": {
+      "date_of_birth": "2009-03-01"
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-300-T2",
+     "month": "2027-02",
+     "given": {
+      "date_of_birth": "2009-03-01"
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-300-T3",
+     "month": "2027-03",
+     "given": {
+      "date_of_birth": "1962-06-01"
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-300-T4",
+     "month": "2027-03",
+     "given": {
+      "date_of_birth": "1962-02-01"
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-301",
+   "name": "SNAP: is medically certified unfit for employment",
+   "identifier": "snap_is_unfit_for_employment",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The person receives disability benefits, the agency finds them obviously unfit, or they have a medical statement of unfitness.",
+   "derived": [
+    "any",
+    "receives_disability_benefits",
+    "agency_finds_obviously_unfit",
+    "has_medical_statement_of_unfitness"
+   ],
+   "sources": [
+    "S20",
+    "S28"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "medical"
+   ],
+   "tests": [
+    {
+     "id": "WR-301-T1",
+     "given": {
+      "receives_disability_benefits": false,
+      "agency_finds_obviously_unfit": false,
+      "has_medical_statement_of_unfitness": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-301-T2",
+     "given": {
+      "receives_disability_benefits": false,
+      "agency_finds_obviously_unfit": false,
+      "has_medical_statement_of_unfitness": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-302",
+   "name": "SNAP: has responsibility for a dependent child under 14",
+   "identifier": "snap_has_responsibility_for_child_under_14",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "There is a member of the person's SNAP household who is under 14 at the month and of whom this person is a parent or whom this person cares for.",
+   "derived": [
+    "exists",
+    "snap_household_members",
+    [
+     "all",
+     [
+      "<",
+      [
+       "of",
+       [
+        "P"
+       ],
+       "age_at_month"
+      ],
+      "snap_dependent_child_age_limit"
+     ],
+     [
+      "any",
+      [
+       "rel",
+       [
+        "parent"
+       ],
+       [
+        "P"
+       ]
+      ],
+      [
+       "in_group",
+       [
+        "P"
+       ],
+       "persons_cared_for"
+      ]
+     ]
+    ]
+   ],
+   "sources": [
+    "S20"
+   ],
+   "implemented": "assembly",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-21"
+   ],
+   "tests": [
+    {
+     "id": "WR-302-T1",
+     "month": "2027-03",
+     "given": {
+      "snap_household_members": [
+       "p2"
+      ],
+      "persons_cared_for": []
+     },
+     "relationships": [
+      [
+       "parent",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "2013-06-01"
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-302-T2",
+     "month": "2027-03",
+     "given": {
+      "snap_household_members": [
+       "p2"
+      ],
+      "persons_cared_for": []
+     },
+     "relationships": [
+      [
+       "parent",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "2013-03-01"
+      }
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-302-T3",
+     "month": "2027-03",
+     "given": {
+      "snap_household_members": [
+       "p2"
+      ],
+      "persons_cared_for": [
+       "p2"
+      ]
+     },
+     "relationships": [],
+     "others": {
+      "p2": {
+       "date_of_birth": "2020-01-01"
+      }
+     },
+     "expect": true
+    }
+   ]
+  },
+  {
+   "id": "WR-303",
+   "name": "SNAP: has responsibility for a dependent child under 6",
+   "identifier": "snap_has_responsibility_for_child_under_6",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "There is a member of the person's SNAP household who is under 6 at the month and of whom this person is a parent or whom this person cares for.",
+   "derived": [
+    "exists",
+    "snap_household_members",
+    [
+     "all",
+     [
+      "<",
+      [
+       "of",
+       [
+        "P"
+       ],
+       "age_at_month"
+      ],
+      "snap_general_exemption_child_age"
+     ],
+     [
+      "any",
+      [
+       "rel",
+       [
+        "parent"
+       ],
+       [
+        "P"
+       ]
+      ],
+      [
+       "in_group",
+       [
+        "P"
+       ],
+       "persons_cared_for"
+      ]
+     ]
+    ]
+   ],
+   "sources": [
+    "S30"
+   ],
+   "implemented": "assembly",
+   "open": [
+    "OQ-21"
+   ],
+   "tests": [
+    {
+     "id": "WR-303-T1",
+     "month": "2027-03",
+     "given": {
+      "snap_household_members": [
+       "p2"
+      ],
+      "persons_cared_for": []
+     },
+     "relationships": [
+      [
+       "parent",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "2021-04-01"
+      }
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-303-T2",
+     "month": "2027-03",
+     "given": {
+      "snap_household_members": [
+       "p2"
+      ],
+      "persons_cared_for": []
+     },
+     "relationships": [
+      [
+       "parent",
+       "p2"
+      ]
+     ],
+     "others": {
+      "p2": {
+       "date_of_birth": "2021-02-01"
+      }
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-304",
+   "name": "SNAP: weekly average hours worked",
+   "identifier": "snap_weekly_average_hours_worked",
+   "kind": "derived",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Hours worked in the month converted to a weekly average, using 12 months per 52 weeks. No reported hours counts as 0.",
+   "derived": [
+    "/",
+    [
+     "*",
+     [
+      "otherwise",
+      "hours_worked",
+      0
+     ],
+     12
+    ],
+    52
+   ],
+   "sources": [
+    "S30"
+   ],
+   "implemented": "assembly",
+   "open": [
+    "OQ-8",
+    "OQ-23"
+   ],
+   "tests": [
+    {
+     "id": "WR-304-T1",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 130
+     },
+     "expect": 30
+    }
+   ]
+  },
+  {
+   "id": "WR-305",
+   "name": "SNAP: weekly earnings",
+   "identifier": "snap_weekly_earnings",
+   "kind": "derived",
+   "type": "money",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Monthly income converted to weekly earnings, using 12 months per 52 weeks.",
+   "derived": [
+    "/",
+    [
+     "*",
+     "monthly_income",
+     12
+    ],
+    52
+   ],
+   "sources": [
+    "S30"
+   ],
+   "implemented": "assembly",
+   "open": [
+    "OQ-8"
+   ],
+   "tests": [
+    {
+     "id": "WR-305-T1",
+     "month": "2027-02",
+     "given": {
+      "monthly_income": 942.5
+     },
+     "expect": 217.5
+    }
+   ]
+  },
+  {
+   "id": "WR-306",
+   "name": "SNAP: meets the employment exemption",
+   "identifier": "snap_meets_employment_exemption",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Weekly average hours worked are at least 30, or weekly earnings are at least the Federal minimum wage times 30.",
+   "derived": [
+    "any",
+    [
+     ">=",
+     "snap_weekly_average_hours_worked",
+     "snap_employment_exemption_weekly_hours"
+    ],
+    [
+     ">=",
+     "snap_weekly_earnings",
+     [
+      "*",
+      "federal_minimum_wage",
+      "snap_employment_exemption_weekly_hours"
+     ]
+    ]
+   ],
+   "sources": [
+    "S30"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-306-T1",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 130,
+      "monthly_income": 0
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-306-T2",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 100,
+      "monthly_income": 942.5
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-306-T3",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 100,
+      "monthly_income": 900
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-307",
+   "name": "SNAP: is exempt from general work registration",
+   "identifier": "snap_is_exempt_from_work_registration",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "During the month the person is complying with TANF work requirements, receives unemployment compensation, has responsibility for a child under 6 or an incapacitated person, is enrolled at least half-time in an educational program, participates in a substance use treatment program, meets the employment exemption, or is 16 or 17 and either not head of household or enrolled at least half-time.",
+   "derived": [
+    "any",
+    "is_complying_with_tanf_work_requirements",
+    "receives_unemployment_compensation",
+    "snap_has_responsibility_for_child_under_6",
+    "has_responsibility_for_incapacitated_person",
+    "is_enrolled_half_time_education",
+    "participates_in_sud_treatment_program",
+    "snap_meets_employment_exemption",
+    [
+     "all",
+     [
+      ">=",
+      "age_at_month",
+      16
+     ],
+     [
+      "<=",
+      "age_at_month",
+      17
+     ],
+     [
+      "any",
+      [
+       "not",
+       "is_head_of_household"
+      ],
+      "is_enrolled_half_time_education"
+     ]
+    ]
+   ],
+   "sources": [
+    "S30",
+    "S31"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-307-T1",
+     "month": "2027-02",
+     "given": {
+      "receives_unemployment_compensation": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-307-T2",
+     "month": "2027-02",
+     "given": {
+      "date_of_birth": "1990-01-01",
+      "is_complying_with_tanf_work_requirements": false,
+      "receives_unemployment_compensation": false,
+      "snap_has_responsibility_for_child_under_6": false,
+      "has_responsibility_for_incapacitated_person": false,
+      "is_enrolled_half_time_education": false,
+      "participates_in_sud_treatment_program": false,
+      "hours_worked": 40,
+      "monthly_income": 300
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-307-T3",
+     "month": "2027-02",
+     "given": {
+      "date_of_birth": "2010-06-01",
+      "is_head_of_household": false,
+      "is_complying_with_tanf_work_requirements": false,
+      "receives_unemployment_compensation": false,
+      "snap_has_responsibility_for_child_under_6": false,
+      "has_responsibility_for_incapacitated_person": false,
+      "is_enrolled_half_time_education": false,
+      "participates_in_sud_treatment_program": false,
+      "hours_worked": 0,
+      "monthly_income": 0
+     },
+     "expect": true
+    }
+   ]
+  },
+  {
+   "id": "WR-308",
+   "name": "SNAP: is subject to general work registration",
+   "identifier": "snap_is_subject_to_work_registration",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Age at the month is 16 through 59, the person is not unfit for employment, and the person is not exempt from general work registration.",
+   "derived": [
+    "all",
+    [
+     ">=",
+     "age_at_month",
+     "snap_work_registration_min_age"
+    ],
+    [
+     "<=",
+     "age_at_month",
+     "snap_work_registration_max_age"
+    ],
+    [
+     "not",
+     "snap_is_unfit_for_employment"
+    ],
+    [
+     "not",
+     "snap_is_exempt_from_work_registration"
+    ]
+   ],
+   "sources": [
+    "S29",
+    "S30",
+    "S31"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-308-T1",
+     "month": "2027-02",
+     "given": {
+      "date_of_birth": "1990-01-01",
+      "snap_is_unfit_for_employment": false,
+      "snap_is_exempt_from_work_registration": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-308-T2",
+     "month": "2027-02",
+     "given": {
+      "date_of_birth": "1965-01-01",
+      "snap_is_unfit_for_employment": false,
+      "snap_is_exempt_from_work_registration": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-309",
+   "name": "SNAP: is exempt as an Indian",
+   "identifier": "snap_is_exempt_as_indian",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The person is an Indian, an Urban Indian, or a California Indian. Eligibility for the Indian Health Service alone does not qualify.",
+   "derived": [
+    "in",
+    "indian_status",
+    [
+     "Indian",
+     "Urban Indian",
+     "California Indian"
+    ]
+   ],
+   "sources": [
+    "S20"
+   ],
+   "implemented": "assembly",
+   "tests": [
+    {
+     "id": "WR-309-T1",
+     "given": {
+      "indian_status": "California Indian"
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-309-T2",
+     "given": {
+      "indian_status": "IHS-eligible only"
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-310",
+   "name": "SNAP: is exempt from the ABAWD time limit",
+   "identifier": "snap_is_exempt_from_time_limit",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "For the month the person is outside the ABAWD age range, is unfit for employment, has responsibility for a child under 14, is exempt from general work registration, is pregnant, or is exempt as an Indian.",
+   "derived": [
+    "any",
+    [
+     "not",
+     "snap_in_abawd_age_range"
+    ],
+    "snap_is_unfit_for_employment",
+    "snap_has_responsibility_for_child_under_14",
+    "snap_is_exempt_from_work_registration",
+    "is_pregnant",
+    "snap_is_exempt_as_indian"
+   ],
+   "sources": [
+    "S20"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-310-T1",
+     "month": "2027-02",
+     "given": {
+      "is_pregnant": true
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-310-T2",
+     "month": "2027-02",
+     "given": {
+      "snap_in_abawd_age_range": true,
+      "snap_is_unfit_for_employment": false,
+      "snap_has_responsibility_for_child_under_14": false,
+      "snap_is_exempt_from_work_registration": false,
+      "is_pregnant": false,
+      "indian_status": "none"
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-311",
+   "name": "SNAP: hours worked including good cause",
+   "identifier": "snap_hours_worked_with_good_cause",
+   "kind": "derived",
+   "type": "hours",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "Hours worked plus hours missed for good cause in the month. No reported hours counts as 0.",
+   "derived": [
+    "+",
+    [
+     "otherwise",
+     "hours_worked",
+     0
+    ],
+    [
+     "otherwise",
+     "hours_missed_for_good_cause",
+     0
+    ]
+   ],
+   "sources": [
+    "S24",
+    "S26"
+   ],
+   "implemented": "assembly",
+   "open": [
+    "OQ-22",
+    "OQ-23"
+   ],
+   "tests": [
+    {
+     "id": "WR-311-T1",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 72,
+      "hours_missed_for_good_cause": 8
+     },
+     "expect": 80
+    }
+   ]
+  },
+  {
+   "id": "WR-312",
+   "name": "SNAP: fulfills the work requirement for month",
+   "identifier": "snap_fulfills_work_requirement",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "For the month hours worked including good cause are at least 80, work program hours are at least 80, or the person participates in workfare.",
+   "derived": [
+    "any",
+    [
+     ">=",
+     "snap_hours_worked_with_good_cause",
+     "snap_required_hours_per_month"
+    ],
+    [
+     ">=",
+     [
+      "otherwise",
+      "work_program_hours",
+      0
+     ],
+     "snap_required_hours_per_month"
+    ],
+    "participates_in_workfare"
+   ],
+   "sources": [
+    "S21",
+    "S24",
+    "S26"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-312-T1",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 80,
+      "participates_in_workfare": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-312-T2",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 79,
+      "hours_missed_for_good_cause": 0,
+      "work_program_hours": 0,
+      "participates_in_workfare": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-312-T3",
+     "month": "2027-02",
+     "given": {
+      "hours_worked": 0,
+      "participates_in_workfare": true
+     },
+     "expect": true
+    }
+   ]
+  },
+  {
+   "id": "WR-313",
+   "name": "SNAP: is a countable month",
+   "identifier": "snap_is_countable_month",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "The person received SNAP benefits for the full month, the benefits were not prorated, and the person was not exempt from the time limit, not covered by a waiver, not fulfilling the work requirement, and not given a discretionary exemption.",
+   "derived": [
+    "all",
+    "received_full_month_snap_benefits",
+    [
+     "not",
+     "snap_benefits_prorated"
+    ],
+    [
+     "not",
+     "snap_is_exempt_from_time_limit"
+    ],
+    [
+     "not",
+     "covered_by_abawd_waiver"
+    ],
+    [
+     "not",
+     "snap_fulfills_work_requirement"
+    ],
+    [
+     "not",
+     "has_discretionary_exemption"
+    ]
+   ],
+   "sources": [
+    "S21",
+    "S25"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-313-T1",
+     "month": "2027-02",
+     "given": {
+      "received_full_month_snap_benefits": true,
+      "snap_benefits_prorated": false,
+      "snap_is_exempt_from_time_limit": false,
+      "covered_by_abawd_waiver": false,
+      "snap_fulfills_work_requirement": false,
+      "has_discretionary_exemption": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-313-T2",
+     "month": "2027-02",
+     "given": {
+      "received_full_month_snap_benefits": false
+     },
+     "expect": false
+    },
+    {
+     "id": "WR-313-T3",
+     "month": "2027-02",
+     "given": {
+      "received_full_month_snap_benefits": true,
+      "snap_benefits_prorated": false,
+      "snap_is_exempt_from_time_limit": false,
+      "covered_by_abawd_waiver": false,
+      "snap_fulfills_work_requirement": true,
+      "has_discretionary_exemption": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-314",
+   "name": "SNAP: time limit period months",
+   "identifier": "snap_time_limit_period_months",
+   "kind": "derived",
+   "type": "list of months",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The 36 consecutive months ending with the month before the month containing the Determination Date.",
+   "precision": "Rolling clock. A fixed clock would replace this derivation.",
+   "derived": [
+    "months_ending",
+    "snap_period_months",
+    [
+     "month_before",
+     [
+      "det_month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S21",
+    "S27"
+   ],
+   "implemented": "engine",
+   "open": [
+    "OQ-14"
+   ],
+   "tests": [
+    {
+     "id": "WR-314-T1",
+     "as_of": "2027-03-15",
+     "given": {},
+     "expect_length": 36,
+     "expect_first": "2024-03",
+     "expect_last": "2027-02"
+    }
+   ]
+  },
+  {
+   "id": "WR-315",
+   "name": "SNAP: countable months used",
+   "identifier": "snap_countable_months_used",
+   "kind": "derived",
+   "type": "whole number",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "The number of months in the time limit period that are countable months.",
+   "derived": [
+    "count_months",
+    "snap_time_limit_period_months",
+    [
+     "at",
+     "snap_is_countable_month",
+     [
+      "month"
+     ]
+    ]
+   ],
+   "sources": [
+    "S21"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-315-T1",
+     "given": {
+      "snap_is_countable_month": {
+       "2026-11": true,
+       "2026-12": true,
+       "2027-02": true
+      }
+     },
+     "month_defaults": {
+      "snap_is_countable_month": false
+     },
+     "expect": 3
+    }
+   ]
+  },
+  {
+   "id": "WR-316",
+   "name": "SNAP: has exhausted the time limit",
+   "identifier": "snap_has_exhausted_time_limit",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "Countable months used are at least 3.",
+   "derived": [
+    ">=",
+    "snap_countable_months_used",
+    "snap_countable_month_limit"
+   ],
+   "sources": [
+    "S21"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-316-T1",
+     "given": {
+      "snap_countable_months_used": 3
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-316-T2",
+     "given": {
+      "snap_countable_months_used": 2
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-317",
+   "name": "SNAP: regains eligibility",
+   "identifier": "snap_regains_eligibility",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person",
+   "program": "SNAP",
+   "meaning": "In the 30 days ending on the Determination Date the person worked at least 80 hours, participated in a work program for at least 80 hours, or participated in workfare.",
+   "derived": [
+    "any",
+    [
+     ">=",
+     "hours_worked_last_30_days",
+     "snap_regain_hours"
+    ],
+    [
+     ">=",
+     "work_program_hours_last_30_days",
+     "snap_regain_hours"
+    ],
+    "participated_in_workfare_last_30_days"
+   ],
+   "sources": [
+    "S22"
+   ],
+   "implemented": "engine",
+   "tests": [
+    {
+     "id": "WR-317-T1",
+     "given": {
+      "hours_worked_last_30_days": 80
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-317-T2",
+     "given": {
+      "hours_worked_last_30_days": 40,
+      "work_program_hours_last_30_days": 0,
+      "participated_in_workfare_last_30_days": false
+     },
+     "expect": false
+    }
+   ]
+  },
+  {
+   "id": "WR-318",
+   "name": "SNAP: time limit status",
+   "identifier": "snap_time_limit_status",
+   "kind": "derived",
+   "type": "one of",
+   "options": [
+    "prior law applies",
+    "not subject",
+    "within limit",
+    "regained",
+    "limit exhausted"
+   ],
+   "scope": "person",
+   "program": "SNAP",
+   "role": "outcome",
+   "meaning": "Prior law applies when the Determination Date is before the effective date of the changes; not subject when the person is exempt in the month containing the Determination Date; within limit when the time limit is not exhausted; regained when it is exhausted but the person regains eligibility; otherwise limit exhausted.",
+   "derived": [
+    "case",
+    [
+     [
+      "<",
+      [
+       "det_date"
+      ],
+      "snap_abawd_changes_effective_date"
+     ],
+     "prior law applies"
+    ],
+    [
+     [
+      "at",
+      "snap_is_exempt_from_time_limit",
+      [
+       "det_month"
+      ]
+     ],
+     "not subject"
+    ],
+    [
+     [
+      "not",
+      "snap_has_exhausted_time_limit"
+     ],
+     "within limit"
+    ],
+    [
+     "snap_regains_eligibility",
+     "regained"
+    ],
+    [
+     "else",
+     "limit exhausted"
+    ]
+   ],
+   "sources": [
+    "S20",
+    "S21",
+    "S22",
+    "S33"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "tests": [
+    {
+     "id": "WR-318-T1",
+     "given": {
+      "snap_is_exempt_from_time_limit": true
+     },
+     "expect": "not subject"
+    },
+    {
+     "id": "WR-318-T2",
+     "given": {
+      "snap_is_exempt_from_time_limit": false,
+      "snap_has_exhausted_time_limit": false
+     },
+     "expect": "within limit"
+    },
+    {
+     "id": "WR-318-T3",
+     "given": {
+      "snap_is_exempt_from_time_limit": false,
+      "snap_has_exhausted_time_limit": true,
+      "snap_regains_eligibility": true
+     },
+     "expect": "regained"
+    },
+    {
+     "id": "WR-318-T4",
+     "given": {
+      "snap_is_exempt_from_time_limit": false,
+      "snap_has_exhausted_time_limit": true,
+      "snap_regains_eligibility": false
+     },
+     "expect": "limit exhausted"
+    }
+   ]
+  },
+  {
+   "id": "WR-319",
+   "name": "SNAP: is subject to a SNAP work requirement",
+   "identifier": "snap_is_subject_to_work_requirement",
+   "kind": "derived",
+   "type": "yes/no",
+   "scope": "person-month",
+   "program": "SNAP",
+   "meaning": "For the month the person is subject to general work registration or is not exempt from the ABAWD time limit.",
+   "derived": [
+    "any",
+    "snap_is_subject_to_work_registration",
+    [
+     "not",
+     "snap_is_exempt_from_time_limit"
+    ]
+   ],
+   "sources": [
+    "S2",
+    "S20",
+    "S29"
+   ],
+   "implemented": "engine",
+   "tags": [
+    "legal"
+   ],
+   "open": [
+    "OQ-19"
+   ],
+   "tests": [
+    {
+     "id": "WR-319-T1",
+     "month": "2027-02",
+     "given": {
+      "snap_is_subject_to_work_registration": false,
+      "snap_is_exempt_from_time_limit": false
+     },
+     "expect": true
+    },
+    {
+     "id": "WR-319-T2",
+     "month": "2027-02",
+     "given": {
+      "snap_is_subject_to_work_registration": false,
+      "snap_is_exempt_from_time_limit": true
+     },
+     "expect": false
+    }
+   ]
+  }
+ ],
+ "meta": {
+  "volume": "work-requirements",
+  "title": "Work requirements under H.R.1, Medicaid community engagement and the SNAP ABAWD time limit",
+  "version": "0.1",
+  "status": "Draft. AI first pass. Nothing in this volume is approved.",
+  "default_as_of": "2027-03-15",
+  "approval_policy": {
+   "roles": [
+    "Medicaid policy owner",
+    "SNAP policy owner",
+    "Legal",
+    "Data steward"
+   ],
+   "by_program": {
+    "All": [
+     "Medicaid policy owner",
+     "SNAP policy owner"
+    ],
+    "Medicaid": [
+     "Medicaid policy owner"
+    ],
+    "SNAP": [
+     "SNAP policy owner"
+    ]
+   },
+   "by_kind": {
+    "supplied": [
+     "Data steward"
+    ]
+   },
+   "by_tag": {
+    "legal": [
+     "Legal"
+    ],
+    "state_election": [
+     "Legal"
+    ]
+   }
+  },
+  "types": [
+   "yes/no",
+   "whole number",
+   "money",
+   "hours",
+   "rate",
+   "calendar date",
+   "month",
+   "text",
+   "one of",
+   "person",
+   "group of persons",
+   "relationships",
+   "table keyed by person",
+   "list of months"
+  ],
+  "scopes": [
+   "person",
+   "person-month",
+   "case",
+   "month",
+   "global"
+  ]
+ }
+}

@@ -1,0 +1,10 @@
+id: WR-015
+name: Is blind or disabled under SSA section 1614
+identifier: is_blind_or_disabled_ssa
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is blind or disabled as defined in section 1614 of the Social Security Act.
+supplied_by: SSA determination.
+sources: [S3]

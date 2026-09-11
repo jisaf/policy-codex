@@ -1,0 +1,10 @@
+id: WR-009
+name: Persons cared for
+identifier: persons_cared_for
+kind: supplied
+type: group of persons
+scope: person
+program: All
+meaning: The persons in the case to whom this person provides assistance that occurs on a regular basis and is not solely incidental in nature.
+supplied_by: Applicant statement.
+sources: [S5, S20, S30]

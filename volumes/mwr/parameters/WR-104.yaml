@@ -1,0 +1,10 @@
+id: WR-104
+name: Medicaid dependent child maximum age
+identifier: medicaid_dependent_child_max_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: A dependent child for the caregiver exclusion is 13 years of age or under.
+value: 13
+sources: [S2, S4]

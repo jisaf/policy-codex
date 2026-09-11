@@ -1,0 +1,10 @@
+id: WR-010
+name: Care hours by person
+identifier: care_hours_by_person
+kind: supplied
+type: table keyed by person
+scope: person-month
+program: Medicaid
+meaning: For each person in Persons cared for, the hours of assistance this person provided to them in the month.
+supplied_by: Applicant statement.
+sources: [S5]

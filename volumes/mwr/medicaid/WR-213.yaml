@@ -1,0 +1,13 @@
+id: WR-213
+name: "Medicaid: community engagement income threshold"
+identifier: medicaid_ce_income_threshold
+kind: derived
+type: money
+scope: global
+program: Medicaid
+meaning: The Federal minimum wage multiplied by the required hours per month.
+derived: ["*", federal_minimum_wage, medicaid_ce_required_hours]
+sources: [S6, S18]
+implemented: engine
+tests:
+  - {id: WR-213-T1, given: {}, expect: 580}

@@ -1,0 +1,17 @@
+id: WR-212
+name: "Medicaid: is an applicable individual"
+identifier: medicaid_is_applicable_individual
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is not a specified excluded individual, and either is eligible for or enrolled in the adult group, or is eligible for or enrolled under an equivalent-coverage waiver while in the age range, not pregnant, not entitled to or enrolled in Medicare, and not otherwise eligible under the State plan.
+derived: [all, [not, medicaid_is_specified_excluded_individual], [any, is_adult_group_eligible_or_enrolled, [all, is_equivalent_waiver_eligible_or_enrolled, medicaid_in_ce_age_range, [not, is_pregnant], [not, is_medicare_entitled_or_enrolled], [not, is_otherwise_eligible_under_state_plan]]]]
+sources: [S1, S16]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-212-T1, given: {medicaid_is_specified_excluded_individual: false, is_adult_group_eligible_or_enrolled: true}, expect: true}
+  - {id: WR-212-T2, given: {medicaid_is_specified_excluded_individual: true, is_adult_group_eligible_or_enrolled: true}, expect: false}
+  - {id: WR-212-T3, given: {medicaid_is_specified_excluded_individual: false, is_adult_group_eligible_or_enrolled: false, is_equivalent_waiver_eligible_or_enrolled: true, date_of_birth: "1990-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: false, is_otherwise_eligible_under_state_plan: false}, expect: true}
+  - {id: WR-212-T4, given: {medicaid_is_specified_excluded_individual: false, is_adult_group_eligible_or_enrolled: false, is_equivalent_waiver_eligible_or_enrolled: false}, expect: false}

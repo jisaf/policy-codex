@@ -1,0 +1,10 @@
+id: WR-044
+name: Is enrolled at least half-time in an educational program
+identifier: is_enrolled_half_time_education
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: During the month the person is enrolled at least half-time in a recognized school, training program, or institution of higher education.
+supplied_by: Institution record or statement.
+sources: [S6, S30]

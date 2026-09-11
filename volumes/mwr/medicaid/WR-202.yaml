@@ -1,0 +1,15 @@
+id: WR-202
+name: "Medicaid: is a dependent child or disabled individual"
+identifier: medicaid_is_qualifying_dependent
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is a dependent child or a disabled individual, as those terms are defined for the community engagement subpart.
+derived: [any, medicaid_is_dependent_child, is_disabled_individual_ada]
+sources: [S2, S4]
+implemented: assembly
+tests:
+  - {id: WR-202-T1, given: {date_of_birth: "1987-01-01", is_disabled_individual_ada: true}, expect: true}
+  - {id: WR-202-T2, given: {date_of_birth: "2017-01-01", relies_on_another_for_care: true, is_disabled_individual_ada: false}, expect: true}
+  - {id: WR-202-T3, given: {date_of_birth: "2007-01-01", relies_on_another_for_care: true, is_disabled_individual_ada: false}, expect: false}

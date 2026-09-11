@@ -1,0 +1,10 @@
+id: WR-111
+name: Hardship unemployment rate cap
+identifier: hardship_unemployment_rate_cap
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The county unemployment rate at or above which a short-term hardship exists, unless 1.5 times the national rate is lower.
+value: 0.08
+sources: [S10]

@@ -1,0 +1,13 @@
+id: WR-132
+name: SNAP ABAWD changes effective date
+identifier: snap_abawd_changes_effective_date
+kind: parameter
+type: calendar date
+scope: global
+program: SNAP
+meaning: The date on which the Pub. L. 119-21 changes to the time-limit exceptions took effect.
+assumption: Effective on enactment; section 10102 states no other date.
+value: "2025-07-04"
+sources: [S33]
+tags: [legal]
+open: [OQ-15]

@@ -1,0 +1,10 @@
+id: WR-046
+name: Is a seasonal worker
+identifier: is_seasonal_worker
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is a seasonal worker as described in section 45R(d)(5)(B) of the Internal Revenue Code.
+supplied_by: Statement or employer verification.
+sources: [S6]

@@ -1,0 +1,1139 @@
+[
+ {
+  "id": "WR-003",
+  "identifier": "age",
+  "english": "the number of whole years between Date of Birth and the Determination Date",
+  "compact": "years_between(date_of_birth, det_date)",
+  "expr": [
+   "years_between",
+   "date_of_birth",
+   [
+    "det_date"
+   ]
+  ]
+ },
+ {
+  "id": "WR-004",
+  "identifier": "age_at_month",
+  "english": "the number of whole years between Date of Birth and the first day of the month",
+  "compact": "years_between(date_of_birth, first_day(month))",
+  "expr": [
+   "years_between",
+   "date_of_birth",
+   [
+    "first_day",
+    [
+     "month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-200",
+  "identifier": "medicaid_in_ce_age_range",
+  "english": "all of the following are true:\n  - Age is at least Medicaid community engagement minimum age (19)\n  - Age is less than Medicaid community engagement age ceiling (65)",
+  "compact": "all((age >= medicaid_ce_min_age), (age < medicaid_ce_max_age_exclusive))",
+  "expr": [
+   "all",
+   [
+    ">=",
+    "age",
+    "medicaid_ce_min_age"
+   ],
+   [
+    "<",
+    "age",
+    "medicaid_ce_max_age_exclusive"
+   ]
+  ]
+ },
+ {
+  "id": "WR-201",
+  "identifier": "medicaid_is_dependent_child",
+  "english": "all of the following are true:\n  - Age is at most Medicaid dependent child maximum age (13)\n  - Relies on another individual for care",
+  "compact": "all((age <= medicaid_dependent_child_max_age), relies_on_another_for_care)",
+  "expr": [
+   "all",
+   [
+    "<=",
+    "age",
+    "medicaid_dependent_child_max_age"
+   ],
+   "relies_on_another_for_care"
+  ]
+ },
+ {
+  "id": "WR-202",
+  "identifier": "medicaid_is_qualifying_dependent",
+  "english": "any of the following is true:\n  - Medicaid: is a dependent child\n  - Is a disabled individual under the ADA",
+  "compact": "any(medicaid_is_dependent_child, is_disabled_individual_ada)",
+  "expr": [
+   "any",
+   "medicaid_is_dependent_child",
+   "is_disabled_individual_ada"
+  ]
+ },
+ {
+  "id": "WR-203",
+  "identifier": "medicaid_is_parent_or_caretaker_of_dependent",
+  "english": "there is a person of whom this person is a parent, guardian, or caretaker relative such that\n  that person's Medicaid: is a dependent child or disabled individual",
+  "compact": "exists_related([\"parent\", \"guardian\", \"caretaker relative\"], of(P, medicaid_is_qualifying_dependent))",
+  "expr": [
+   "exists_related",
+   [
+    "parent",
+    "guardian",
+    "caretaker relative"
+   ],
+   [
+    "of",
+    [
+     "P"
+    ],
+    "medicaid_is_qualifying_dependent"
+   ]
+  ]
+ },
+ {
+  "id": "WR-204",
+  "identifier": "medicaid_is_family_caregiver_of_dependent",
+  "english": "there is a person in Persons cared for such that\n  all of the following are true:\n    - that person's Medicaid: is a dependent child or disabled individual\n    - any of the following is true:\n      - that person is in Lives with\n      - this person is a parent or guardian or caretaker relative or spouse or relative of that person\n      - Care hours by person for the month containing the Determination Date, for that person is at least Caregiver minimum hours, non-resident non-relative (80)",
+  "compact": "exists(persons_cared_for, all(of(P, medicaid_is_qualifying_dependent), any(in_group(P, lives_with), rel([\"parent\", \"guardian\", \"caretaker relative\", \"spouse\", \"relative\"], P), (lookup(at(care_hours_by_person, det_month), P) >= caregiver_min_hours_nonresident_nonrelative))))",
+  "expr": [
+   "exists",
+   "persons_cared_for",
+   [
+    "all",
+    [
+     "of",
+     [
+      "P"
+     ],
+     "medicaid_is_qualifying_dependent"
+    ],
+    [
+     "any",
+     [
+      "in_group",
+      [
+       "P"
+      ],
+      "lives_with"
+     ],
+     [
+      "rel",
+      [
+       "parent",
+       "guardian",
+       "caretaker relative",
+       "spouse",
+       "relative"
+      ],
+      [
+       "P"
+      ]
+     ],
+     [
+      ">=",
+      [
+       "lookup",
+       [
+        "at",
+        "care_hours_by_person",
+        [
+         "det_month"
+        ]
+       ],
+       [
+        "P"
+       ]
+      ],
+      "caregiver_min_hours_nonresident_nonrelative"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-205",
+  "identifier": "medicaid_in_stable_recovery",
+  "english": "(the number of whole years between Recovery start date and the Determination Date) is at least Stable recovery years (5), otherwise no",
+  "compact": "otherwise((years_between(recovery_start_date, det_date) >= stable_recovery_years), false)",
+  "expr": [
+   "otherwise",
+   [
+    ">=",
+    [
+     "years_between",
+     "recovery_start_date",
+     [
+      "det_date"
+     ]
+    ],
+    "stable_recovery_years"
+   ],
+   false
+  ]
+ },
+ {
+  "id": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "english": "all of the following are true:\n  - Condition significantly impairs ability to comply\n  - any of the following is true:\n    - Is blind or disabled under SSA section 1614\n    - all of the following are true:\n      - Has a substance use disorder\n      - it is not the case that Medicaid: is in stable recovery\n    - Has a disabling mental disorder\n    - Has a disability that significantly impairs daily activities\n    - Has a serious or complex medical condition",
+  "compact": "all(condition_impairs_ce_compliance, any(is_blind_or_disabled_ssa, all(has_substance_use_disorder, not(medicaid_in_stable_recovery)), has_disabling_mental_disorder, has_adl_impairing_disability, has_serious_or_complex_medical_condition))",
+  "expr": [
+   "all",
+   "condition_impairs_ce_compliance",
+   [
+    "any",
+    "is_blind_or_disabled_ssa",
+    [
+     "all",
+     "has_substance_use_disorder",
+     [
+      "not",
+      "medicaid_in_stable_recovery"
+     ]
+    ],
+    "has_disabling_mental_disorder",
+    "has_adl_impairing_disability",
+    "has_serious_or_complex_medical_condition"
+   ]
+  ]
+ },
+ {
+  "id": "WR-207",
+  "identifier": "medicaid_was_recent_inmate",
+  "english": "in at least one of the Inmate lookback months (3) consecutive months ending with the month before the month containing the Determination Date:\n  Was an inmate of a public institution in month for the month",
+  "compact": "some_month(months_ending(inmate_lookback_months, month_before(det_month)), at(was_inmate_in_month, month))",
+  "expr": [
+   "some_month",
+   [
+    "months_ending",
+    "inmate_lookback_months",
+    [
+     "month_before",
+     [
+      "det_month"
+     ]
+    ]
+   ],
+   [
+    "at",
+    "was_inmate_in_month",
+    [
+     "month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-208",
+  "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+  "english": "any of the following is true:\n  - Is complying with TANF work requirements for the month containing the Determination Date\n  - all of the following are true:\n    - Is a member of a household receiving SNAP for the month containing the Determination Date\n    - SNAP: is subject to a SNAP work requirement for the month containing the Determination Date",
+  "compact": "any(at(is_complying_with_tanf_work_requirements, det_month), all(at(is_member_of_snap_household, det_month), at(snap_is_subject_to_work_requirement, det_month)))",
+  "expr": [
+   "any",
+   [
+    "at",
+    "is_complying_with_tanf_work_requirements",
+    [
+     "det_month"
+    ]
+   ],
+   [
+    "all",
+    [
+     "at",
+     "is_member_of_snap_household",
+     [
+      "det_month"
+     ]
+    ],
+    [
+     "at",
+     "snap_is_subject_to_work_requirement",
+     [
+      "det_month"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-209",
+  "identifier": "medicaid_is_pregnant_or_postpartum",
+  "english": "any of the following is true:\n  - Is pregnant\n  - Is entitled to postpartum medical assistance",
+  "compact": "any(is_pregnant, is_entitled_to_postpartum_assistance)",
+  "expr": [
+   "any",
+   "is_pregnant",
+   "is_entitled_to_postpartum_assistance"
+  ]
+ },
+ {
+  "id": "WR-210",
+  "identifier": "medicaid_is_excluded_as_indian",
+  "english": "Indian status is one of: Indian, Urban Indian, California Indian, IHS-eligible only",
+  "compact": "indian_status in {\"Indian\", \"Urban Indian\", \"California Indian\", \"IHS-eligible only\"}",
+  "expr": [
+   "in",
+   "indian_status",
+   [
+    "Indian",
+    "Urban Indian",
+    "California Indian",
+    "IHS-eligible only"
+   ]
+  ]
+ },
+ {
+  "id": "WR-211",
+  "identifier": "medicaid_is_specified_excluded_individual",
+  "english": "any of the following is true:\n  - Is in the former foster care youth group\n  - Medicaid: is excluded as an Indian\n  - Medicaid: is a parent, guardian, or caretaker relative of a dependent\n  - Medicaid: is a family caregiver of a dependent\n  - Is a veteran with a total disability rating\n  - Medicaid: is medically frail or has special medical needs\n  - Medicaid: is excluded by SNAP or TANF work requirement compliance\n  - Participates in a substance use treatment program for the month containing the Determination Date\n  - Medicaid: was an inmate within the lookback\n  - Medicaid: is pregnant or postpartum",
+  "compact": "any(is_former_foster_care_youth_group, medicaid_is_excluded_as_indian, medicaid_is_parent_or_caretaker_of_dependent, medicaid_is_family_caregiver_of_dependent, is_veteran_total_disability, medicaid_is_medically_frail, medicaid_is_excluded_by_snap_or_tanf, at(participates_in_sud_treatment_program, det_month), medicaid_was_recent_inmate, medicaid_is_pregnant_or_postpartum)",
+  "expr": [
+   "any",
+   "is_former_foster_care_youth_group",
+   "medicaid_is_excluded_as_indian",
+   "medicaid_is_parent_or_caretaker_of_dependent",
+   "medicaid_is_family_caregiver_of_dependent",
+   "is_veteran_total_disability",
+   "medicaid_is_medically_frail",
+   "medicaid_is_excluded_by_snap_or_tanf",
+   [
+    "at",
+    "participates_in_sud_treatment_program",
+    [
+     "det_month"
+    ]
+   ],
+   "medicaid_was_recent_inmate",
+   "medicaid_is_pregnant_or_postpartum"
+  ]
+ },
+ {
+  "id": "WR-212",
+  "identifier": "medicaid_is_applicable_individual",
+  "english": "all of the following are true:\n  - it is not the case that Medicaid: is a specified excluded individual\n  - any of the following is true:\n    - Is eligible for or enrolled in the adult group\n    - all of the following are true:\n      - Is eligible for or enrolled under an equivalent-coverage waiver\n      - Medicaid: is in the community engagement age range\n      - it is not the case that Is pregnant\n      - it is not the case that Is entitled to or enrolled in Medicare\n      - it is not the case that Is otherwise eligible under the State plan",
+  "compact": "all(not(medicaid_is_specified_excluded_individual), any(is_adult_group_eligible_or_enrolled, all(is_equivalent_waiver_eligible_or_enrolled, medicaid_in_ce_age_range, not(is_pregnant), not(is_medicare_entitled_or_enrolled), not(is_otherwise_eligible_under_state_plan))))",
+  "expr": [
+   "all",
+   [
+    "not",
+    "medicaid_is_specified_excluded_individual"
+   ],
+   [
+    "any",
+    "is_adult_group_eligible_or_enrolled",
+    [
+     "all",
+     "is_equivalent_waiver_eligible_or_enrolled",
+     "medicaid_in_ce_age_range",
+     [
+      "not",
+      "is_pregnant"
+     ],
+     [
+      "not",
+      "is_medicare_entitled_or_enrolled"
+     ],
+     [
+      "not",
+      "is_otherwise_eligible_under_state_plan"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-213",
+  "identifier": "medicaid_ce_income_threshold",
+  "english": "Federal minimum wage (7.25) times Medicaid community engagement required hours per month (80)",
+  "compact": "(federal_minimum_wage * medicaid_ce_required_hours)",
+  "expr": [
+   "*",
+   "federal_minimum_wage",
+   "medicaid_ce_required_hours"
+  ]
+ },
+ {
+  "id": "WR-214",
+  "identifier": "medicaid_countable_education_hours",
+  "english": "if Is enrolled at least half-time in an educational program\n  then 0\notherwise Educational program hours, otherwise 0",
+  "compact": "case(is_enrolled_half_time_education -> 0; else otherwise(education_hours, 0))",
+  "expr": [
+   "case",
+   [
+    "is_enrolled_half_time_education",
+    0
+   ],
+   [
+    "else",
+    [
+     "otherwise",
+     "education_hours",
+     0
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-215",
+  "identifier": "medicaid_total_qualifying_hours",
+  "english": "(Hours worked, otherwise 0) plus (Community service hours, otherwise 0) plus (Work program hours, otherwise 0) plus Medicaid: countable educational program hours",
+  "compact": "(otherwise(hours_worked, 0) + otherwise(community_service_hours, 0) + otherwise(work_program_hours, 0) + medicaid_countable_education_hours)",
+  "expr": [
+   "+",
+   [
+    "otherwise",
+    "hours_worked",
+    0
+   ],
+   [
+    "otherwise",
+    "community_service_hours",
+    0
+   ],
+   [
+    "otherwise",
+    "work_program_hours",
+    0
+   ],
+   "medicaid_countable_education_hours"
+  ]
+ },
+ {
+  "id": "WR-216",
+  "identifier": "medicaid_meets_hours_condition",
+  "english": "Medicaid: total qualifying hours is at least Medicaid community engagement required hours per month (80)",
+  "compact": "(medicaid_total_qualifying_hours >= medicaid_ce_required_hours)",
+  "expr": [
+   ">=",
+   "medicaid_total_qualifying_hours",
+   "medicaid_ce_required_hours"
+  ]
+ },
+ {
+  "id": "WR-217",
+  "identifier": "medicaid_meets_income_condition",
+  "english": "Monthly income is at least Medicaid: community engagement income threshold",
+  "compact": "(monthly_income >= medicaid_ce_income_threshold)",
+  "expr": [
+   ">=",
+   "monthly_income",
+   "medicaid_ce_income_threshold"
+  ]
+ },
+ {
+  "id": "WR-218",
+  "identifier": "medicaid_six_month_average_income",
+  "english": "Monthly income averaged over the Medicaid seasonal income averaging months (6) consecutive months ending with the month before the month",
+  "compact": "avg(monthly_income, months_ending(medicaid_seasonal_average_months, month_before(month)))",
+  "expr": [
+   "avg",
+   "monthly_income",
+   [
+    "months_ending",
+    "medicaid_seasonal_average_months",
+    [
+     "month_before",
+     [
+      "month"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-219",
+  "identifier": "medicaid_meets_seasonal_income_condition",
+  "english": "all of the following are true:\n  - Is a seasonal worker\n  - Medicaid: six-month average income is at least Medicaid: community engagement income threshold",
+  "compact": "all(is_seasonal_worker, (medicaid_six_month_average_income >= medicaid_ce_income_threshold))",
+  "expr": [
+   "all",
+   "is_seasonal_worker",
+   [
+    ">=",
+    "medicaid_six_month_average_income",
+    "medicaid_ce_income_threshold"
+   ]
+  ]
+ },
+ {
+  "id": "WR-220",
+  "identifier": "medicaid_demonstrates_ce",
+  "english": "any of the following is true:\n  - Medicaid: meets the hours condition\n  - Is enrolled at least half-time in an educational program\n  - Medicaid: meets the income condition\n  - Medicaid: meets the seasonal income condition",
+  "compact": "any(medicaid_meets_hours_condition, is_enrolled_half_time_education, medicaid_meets_income_condition, medicaid_meets_seasonal_income_condition)",
+  "expr": [
+   "any",
+   "medicaid_meets_hours_condition",
+   "is_enrolled_half_time_education",
+   "medicaid_meets_income_condition",
+   "medicaid_meets_seasonal_income_condition"
+  ]
+ },
+ {
+  "id": "WR-221",
+  "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+  "english": "County unemployment rate is at least (the lesser of Hardship unemployment rate cap (0.08) and Hardship national rate multiplier (1.5) times National unemployment rate)",
+  "compact": "(county_unemployment_rate >= min(hardship_unemployment_rate_cap, (hardship_national_rate_multiplier * national_unemployment_rate)))",
+  "expr": [
+   ">=",
+   "county_unemployment_rate",
+   [
+    "min",
+    "hardship_unemployment_rate_cap",
+    [
+     "*",
+     "hardship_national_rate_multiplier",
+     "national_unemployment_rate"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-222",
+  "identifier": "medicaid_short_term_hardship_in_month",
+  "english": "all of the following are true:\n  - State elects the short-term hardship exception (yes)\n  - any of the following is true:\n    - Received inpatient or facility services in month\n    - County has a declared emergency or disaster in month\n    - Medicaid: county unemployment meets the hardship threshold\n    - Traveled outside the community for extended care in month",
+  "compact": "all(state_elects_short_term_hardship, any(received_inpatient_or_facility_services, county_has_declared_disaster, medicaid_county_unemployment_meets_hardship_threshold, traveled_for_extended_care))",
+  "expr": [
+   "all",
+   "state_elects_short_term_hardship",
+   [
+    "any",
+    "received_inpatient_or_facility_services",
+    "county_has_declared_disaster",
+    "medicaid_county_unemployment_meets_hardship_threshold",
+    "traveled_for_extended_care"
+   ]
+  ]
+ },
+ {
+  "id": "WR-223",
+  "identifier": "medicaid_ce_satisfied_for_month",
+  "english": "any of the following is true:\n  - Medicaid: demonstrates community engagement for month\n  - Medicaid: experiences a short-term hardship in month",
+  "compact": "any(medicaid_demonstrates_ce, medicaid_short_term_hardship_in_month)",
+  "expr": [
+   "any",
+   "medicaid_demonstrates_ce",
+   "medicaid_short_term_hardship_in_month"
+  ]
+ },
+ {
+  "id": "WR-224",
+  "identifier": "medicaid_application_lookback_months_list",
+  "english": "the Medicaid application lookback months (1) consecutive months ending with the month before the month containing the Determination Date",
+  "compact": "months_ending(medicaid_application_lookback_months, month_before(det_month))",
+  "expr": [
+   "months_ending",
+   "medicaid_application_lookback_months",
+   [
+    "month_before",
+    [
+     "det_month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-225",
+  "identifier": "medicaid_satisfies_ce_at_application",
+  "english": "in each of Medicaid: application lookback months:\n  Medicaid: community engagement satisfied for month for the month",
+  "compact": "each(medicaid_application_lookback_months_list, at(medicaid_ce_satisfied_for_month, month))",
+  "expr": [
+   "each",
+   "medicaid_application_lookback_months_list",
+   [
+    "at",
+    "medicaid_ce_satisfied_for_month",
+    [
+     "month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "english": "if the Determination Date is less than Medicaid community engagement implementation date (2027-01-01)\n  then not yet in effect\nelse if it is not the case that Medicaid: is an applicable individual\n  then not subject\nelse if Medicaid: satisfies community engagement at application\n  then met\notherwise not met",
+  "compact": "case((det_date < medicaid_ce_implementation_date) -> \"not yet in effect\"; not(medicaid_is_applicable_individual) -> \"not subject\"; medicaid_satisfies_ce_at_application -> \"met\"; else \"not met\")",
+  "expr": [
+   "case",
+   [
+    [
+     "<",
+     [
+      "det_date"
+     ],
+     "medicaid_ce_implementation_date"
+    ],
+    "not yet in effect"
+   ],
+   [
+    [
+     "not",
+     "medicaid_is_applicable_individual"
+    ],
+    "not subject"
+   ],
+   [
+    "medicaid_satisfies_ce_at_application",
+    "met"
+   ],
+   [
+    "else",
+    "not met"
+   ]
+  ]
+ },
+ {
+  "id": "WR-227",
+  "identifier": "medicaid_renewal_review_months",
+  "english": "the months from the month after the month containing Most recent eligibility determination date through the month before the month containing the Determination Date",
+  "compact": "months_from_to(month_after(month_of(most_recent_determination_date)), month_before(det_month))",
+  "expr": [
+   "months_from_to",
+   [
+    "month_after",
+    [
+     "month_of",
+     "most_recent_determination_date"
+    ]
+   ],
+   [
+    "month_before",
+    [
+     "det_month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-228",
+  "identifier": "medicaid_months_demonstrated_since_last_determination",
+  "english": "the number of months in Medicaid: renewal review months for which Medicaid: community engagement satisfied for month for the month",
+  "compact": "count_months(medicaid_renewal_review_months, at(medicaid_ce_satisfied_for_month, month))",
+  "expr": [
+   "count_months",
+   "medicaid_renewal_review_months",
+   [
+    "at",
+    "medicaid_ce_satisfied_for_month",
+    [
+     "month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-229",
+  "identifier": "medicaid_satisfies_ce_at_renewal",
+  "english": "Medicaid: months demonstrated since last determination is at least Medicaid renewal required months (1)",
+  "compact": "(medicaid_months_demonstrated_since_last_determination >= medicaid_renewal_required_months)",
+  "expr": [
+   ">=",
+   "medicaid_months_demonstrated_since_last_determination",
+   "medicaid_renewal_required_months"
+  ]
+ },
+ {
+  "id": "WR-230",
+  "identifier": "medicaid_ce_status_at_renewal",
+  "english": "if the Determination Date is less than Medicaid community engagement implementation date (2027-01-01)\n  then not yet in effect\nelse if it is not the case that Medicaid: is an applicable individual\n  then not subject\nelse if Medicaid: satisfies community engagement at renewal\n  then met\notherwise not met",
+  "compact": "case((det_date < medicaid_ce_implementation_date) -> \"not yet in effect\"; not(medicaid_is_applicable_individual) -> \"not subject\"; medicaid_satisfies_ce_at_renewal -> \"met\"; else \"not met\")",
+  "expr": [
+   "case",
+   [
+    [
+     "<",
+     [
+      "det_date"
+     ],
+     "medicaid_ce_implementation_date"
+    ],
+    "not yet in effect"
+   ],
+   [
+    [
+     "not",
+     "medicaid_is_applicable_individual"
+    ],
+    "not subject"
+   ],
+   [
+    "medicaid_satisfies_ce_at_renewal",
+    "met"
+   ],
+   [
+    "else",
+    "not met"
+   ]
+  ]
+ },
+ {
+  "id": "WR-300",
+  "identifier": "snap_in_abawd_age_range",
+  "english": "all of the following are true:\n  - Age at month is at least SNAP ABAWD minimum age (18)\n  - Age at month is at most SNAP ABAWD maximum age (64)",
+  "compact": "all((age_at_month >= snap_abawd_min_age), (age_at_month <= snap_abawd_max_age))",
+  "expr": [
+   "all",
+   [
+    ">=",
+    "age_at_month",
+    "snap_abawd_min_age"
+   ],
+   [
+    "<=",
+    "age_at_month",
+    "snap_abawd_max_age"
+   ]
+  ]
+ },
+ {
+  "id": "WR-301",
+  "identifier": "snap_is_unfit_for_employment",
+  "english": "any of the following is true:\n  - Receives disability benefits\n  - Agency finds the person obviously unfit for employment\n  - Has a medical statement of unfitness for employment",
+  "compact": "any(receives_disability_benefits, agency_finds_obviously_unfit, has_medical_statement_of_unfitness)",
+  "expr": [
+   "any",
+   "receives_disability_benefits",
+   "agency_finds_obviously_unfit",
+   "has_medical_statement_of_unfitness"
+  ]
+ },
+ {
+  "id": "WR-302",
+  "identifier": "snap_has_responsibility_for_child_under_14",
+  "english": "there is a person in SNAP household members such that\n  all of the following are true:\n    - that person's Age at month is less than SNAP dependent child age limit (14)\n    - any of the following is true:\n      - this person is a parent of that person\n      - that person is in Persons cared for",
+  "compact": "exists(snap_household_members, all((of(P, age_at_month) < snap_dependent_child_age_limit), any(rel([\"parent\"], P), in_group(P, persons_cared_for))))",
+  "expr": [
+   "exists",
+   "snap_household_members",
+   [
+    "all",
+    [
+     "<",
+     [
+      "of",
+      [
+       "P"
+      ],
+      "age_at_month"
+     ],
+     "snap_dependent_child_age_limit"
+    ],
+    [
+     "any",
+     [
+      "rel",
+      [
+       "parent"
+      ],
+      [
+       "P"
+      ]
+     ],
+     [
+      "in_group",
+      [
+       "P"
+      ],
+      "persons_cared_for"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-303",
+  "identifier": "snap_has_responsibility_for_child_under_6",
+  "english": "there is a person in SNAP household members such that\n  all of the following are true:\n    - that person's Age at month is less than SNAP general exemption child age (6)\n    - any of the following is true:\n      - this person is a parent of that person\n      - that person is in Persons cared for",
+  "compact": "exists(snap_household_members, all((of(P, age_at_month) < snap_general_exemption_child_age), any(rel([\"parent\"], P), in_group(P, persons_cared_for))))",
+  "expr": [
+   "exists",
+   "snap_household_members",
+   [
+    "all",
+    [
+     "<",
+     [
+      "of",
+      [
+       "P"
+      ],
+      "age_at_month"
+     ],
+     "snap_general_exemption_child_age"
+    ],
+    [
+     "any",
+     [
+      "rel",
+      [
+       "parent"
+      ],
+      [
+       "P"
+      ]
+     ],
+     [
+      "in_group",
+      [
+       "P"
+      ],
+      "persons_cared_for"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-304",
+  "identifier": "snap_weekly_average_hours_worked",
+  "english": "((Hours worked, otherwise 0) times 12) divided by 52",
+  "compact": "((otherwise(hours_worked, 0) * 12) / 52)",
+  "expr": [
+   "/",
+   [
+    "*",
+    [
+     "otherwise",
+     "hours_worked",
+     0
+    ],
+    12
+   ],
+   52
+  ]
+ },
+ {
+  "id": "WR-305",
+  "identifier": "snap_weekly_earnings",
+  "english": "(Monthly income times 12) divided by 52",
+  "compact": "((monthly_income * 12) / 52)",
+  "expr": [
+   "/",
+   [
+    "*",
+    "monthly_income",
+    12
+   ],
+   52
+  ]
+ },
+ {
+  "id": "WR-306",
+  "identifier": "snap_meets_employment_exemption",
+  "english": "any of the following is true:\n  - SNAP: weekly average hours worked is at least SNAP employment exemption weekly hours (30)\n  - SNAP: weekly earnings is at least (Federal minimum wage (7.25) times SNAP employment exemption weekly hours (30))",
+  "compact": "any((snap_weekly_average_hours_worked >= snap_employment_exemption_weekly_hours), (snap_weekly_earnings >= (federal_minimum_wage * snap_employment_exemption_weekly_hours)))",
+  "expr": [
+   "any",
+   [
+    ">=",
+    "snap_weekly_average_hours_worked",
+    "snap_employment_exemption_weekly_hours"
+   ],
+   [
+    ">=",
+    "snap_weekly_earnings",
+    [
+     "*",
+     "federal_minimum_wage",
+     "snap_employment_exemption_weekly_hours"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-307",
+  "identifier": "snap_is_exempt_from_work_registration",
+  "english": "any of the following is true:\n  - Is complying with TANF work requirements\n  - Receives unemployment compensation\n  - SNAP: has responsibility for a dependent child under 6\n  - Has responsibility for the care of an incapacitated person\n  - Is enrolled at least half-time in an educational program\n  - Participates in a substance use treatment program\n  - SNAP: meets the employment exemption\n  - all of the following are true:\n    - Age at month is at least 16\n    - Age at month is at most 17\n    - any of the following is true:\n      - it is not the case that Is head of household\n      - Is enrolled at least half-time in an educational program",
+  "compact": "any(is_complying_with_tanf_work_requirements, receives_unemployment_compensation, snap_has_responsibility_for_child_under_6, has_responsibility_for_incapacitated_person, is_enrolled_half_time_education, participates_in_sud_treatment_program, snap_meets_employment_exemption, all((age_at_month >= 16), (age_at_month <= 17), any(not(is_head_of_household), is_enrolled_half_time_education)))",
+  "expr": [
+   "any",
+   "is_complying_with_tanf_work_requirements",
+   "receives_unemployment_compensation",
+   "snap_has_responsibility_for_child_under_6",
+   "has_responsibility_for_incapacitated_person",
+   "is_enrolled_half_time_education",
+   "participates_in_sud_treatment_program",
+   "snap_meets_employment_exemption",
+   [
+    "all",
+    [
+     ">=",
+     "age_at_month",
+     16
+    ],
+    [
+     "<=",
+     "age_at_month",
+     17
+    ],
+    [
+     "any",
+     [
+      "not",
+      "is_head_of_household"
+     ],
+     "is_enrolled_half_time_education"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-308",
+  "identifier": "snap_is_subject_to_work_registration",
+  "english": "all of the following are true:\n  - Age at month is at least SNAP work registration minimum age (16)\n  - Age at month is at most SNAP work registration maximum age (59)\n  - it is not the case that SNAP: is medically certified unfit for employment\n  - it is not the case that SNAP: is exempt from general work registration",
+  "compact": "all((age_at_month >= snap_work_registration_min_age), (age_at_month <= snap_work_registration_max_age), not(snap_is_unfit_for_employment), not(snap_is_exempt_from_work_registration))",
+  "expr": [
+   "all",
+   [
+    ">=",
+    "age_at_month",
+    "snap_work_registration_min_age"
+   ],
+   [
+    "<=",
+    "age_at_month",
+    "snap_work_registration_max_age"
+   ],
+   [
+    "not",
+    "snap_is_unfit_for_employment"
+   ],
+   [
+    "not",
+    "snap_is_exempt_from_work_registration"
+   ]
+  ]
+ },
+ {
+  "id": "WR-309",
+  "identifier": "snap_is_exempt_as_indian",
+  "english": "Indian status is one of: Indian, Urban Indian, California Indian",
+  "compact": "indian_status in {\"Indian\", \"Urban Indian\", \"California Indian\"}",
+  "expr": [
+   "in",
+   "indian_status",
+   [
+    "Indian",
+    "Urban Indian",
+    "California Indian"
+   ]
+  ]
+ },
+ {
+  "id": "WR-310",
+  "identifier": "snap_is_exempt_from_time_limit",
+  "english": "any of the following is true:\n  - it is not the case that SNAP: is in the ABAWD age range\n  - SNAP: is medically certified unfit for employment\n  - SNAP: has responsibility for a dependent child under 14\n  - SNAP: is exempt from general work registration\n  - Is pregnant\n  - SNAP: is exempt as an Indian",
+  "compact": "any(not(snap_in_abawd_age_range), snap_is_unfit_for_employment, snap_has_responsibility_for_child_under_14, snap_is_exempt_from_work_registration, is_pregnant, snap_is_exempt_as_indian)",
+  "expr": [
+   "any",
+   [
+    "not",
+    "snap_in_abawd_age_range"
+   ],
+   "snap_is_unfit_for_employment",
+   "snap_has_responsibility_for_child_under_14",
+   "snap_is_exempt_from_work_registration",
+   "is_pregnant",
+   "snap_is_exempt_as_indian"
+  ]
+ },
+ {
+  "id": "WR-311",
+  "identifier": "snap_hours_worked_with_good_cause",
+  "english": "(Hours worked, otherwise 0) plus (Hours missed for good cause, otherwise 0)",
+  "compact": "(otherwise(hours_worked, 0) + otherwise(hours_missed_for_good_cause, 0))",
+  "expr": [
+   "+",
+   [
+    "otherwise",
+    "hours_worked",
+    0
+   ],
+   [
+    "otherwise",
+    "hours_missed_for_good_cause",
+    0
+   ]
+  ]
+ },
+ {
+  "id": "WR-312",
+  "identifier": "snap_fulfills_work_requirement",
+  "english": "any of the following is true:\n  - SNAP: hours worked including good cause is at least SNAP required hours per month (80)\n  - (Work program hours, otherwise 0) is at least SNAP required hours per month (80)\n  - Participates in workfare",
+  "compact": "any((snap_hours_worked_with_good_cause >= snap_required_hours_per_month), (otherwise(work_program_hours, 0) >= snap_required_hours_per_month), participates_in_workfare)",
+  "expr": [
+   "any",
+   [
+    ">=",
+    "snap_hours_worked_with_good_cause",
+    "snap_required_hours_per_month"
+   ],
+   [
+    ">=",
+    [
+     "otherwise",
+     "work_program_hours",
+     0
+    ],
+    "snap_required_hours_per_month"
+   ],
+   "participates_in_workfare"
+  ]
+ },
+ {
+  "id": "WR-313",
+  "identifier": "snap_is_countable_month",
+  "english": "all of the following are true:\n  - Received SNAP benefits for the full month\n  - it is not the case that SNAP benefits were prorated in month\n  - it is not the case that SNAP: is exempt from the ABAWD time limit\n  - it is not the case that Covered by an ABAWD waiver in month\n  - it is not the case that SNAP: fulfills the work requirement for month\n  - it is not the case that Has a discretionary exemption in month",
+  "compact": "all(received_full_month_snap_benefits, not(snap_benefits_prorated), not(snap_is_exempt_from_time_limit), not(covered_by_abawd_waiver), not(snap_fulfills_work_requirement), not(has_discretionary_exemption))",
+  "expr": [
+   "all",
+   "received_full_month_snap_benefits",
+   [
+    "not",
+    "snap_benefits_prorated"
+   ],
+   [
+    "not",
+    "snap_is_exempt_from_time_limit"
+   ],
+   [
+    "not",
+    "covered_by_abawd_waiver"
+   ],
+   [
+    "not",
+    "snap_fulfills_work_requirement"
+   ],
+   [
+    "not",
+    "has_discretionary_exemption"
+   ]
+  ]
+ },
+ {
+  "id": "WR-314",
+  "identifier": "snap_time_limit_period_months",
+  "english": "the SNAP time limit period months (36) consecutive months ending with the month before the month containing the Determination Date",
+  "compact": "months_ending(snap_period_months, month_before(det_month))",
+  "expr": [
+   "months_ending",
+   "snap_period_months",
+   [
+    "month_before",
+    [
+     "det_month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-315",
+  "identifier": "snap_countable_months_used",
+  "english": "the number of months in SNAP: time limit period months for which SNAP: is a countable month for the month",
+  "compact": "count_months(snap_time_limit_period_months, at(snap_is_countable_month, month))",
+  "expr": [
+   "count_months",
+   "snap_time_limit_period_months",
+   [
+    "at",
+    "snap_is_countable_month",
+    [
+     "month"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": "WR-316",
+  "identifier": "snap_has_exhausted_time_limit",
+  "english": "SNAP: countable months used is at least SNAP countable month limit (3)",
+  "compact": "(snap_countable_months_used >= snap_countable_month_limit)",
+  "expr": [
+   ">=",
+   "snap_countable_months_used",
+   "snap_countable_month_limit"
+  ]
+ },
+ {
+  "id": "WR-317",
+  "identifier": "snap_regains_eligibility",
+  "english": "any of the following is true:\n  - Hours worked in the last 30 days is at least SNAP hours to regain eligibility (80)\n  - Work program hours in the last 30 days is at least SNAP hours to regain eligibility (80)\n  - Participated in workfare in the last 30 days",
+  "compact": "any((hours_worked_last_30_days >= snap_regain_hours), (work_program_hours_last_30_days >= snap_regain_hours), participated_in_workfare_last_30_days)",
+  "expr": [
+   "any",
+   [
+    ">=",
+    "hours_worked_last_30_days",
+    "snap_regain_hours"
+   ],
+   [
+    ">=",
+    "work_program_hours_last_30_days",
+    "snap_regain_hours"
+   ],
+   "participated_in_workfare_last_30_days"
+  ]
+ },
+ {
+  "id": "WR-318",
+  "identifier": "snap_time_limit_status",
+  "english": "if the Determination Date is less than SNAP ABAWD changes effective date (2025-07-04)\n  then prior law applies\nelse if SNAP: is exempt from the ABAWD time limit for the month containing the Determination Date\n  then not subject\nelse if it is not the case that SNAP: has exhausted the time limit\n  then within limit\nelse if SNAP: regains eligibility\n  then regained\notherwise limit exhausted",
+  "compact": "case((det_date < snap_abawd_changes_effective_date) -> \"prior law applies\"; at(snap_is_exempt_from_time_limit, det_month) -> \"not subject\"; not(snap_has_exhausted_time_limit) -> \"within limit\"; snap_regains_eligibility -> \"regained\"; else \"limit exhausted\")",
+  "expr": [
+   "case",
+   [
+    [
+     "<",
+     [
+      "det_date"
+     ],
+     "snap_abawd_changes_effective_date"
+    ],
+    "prior law applies"
+   ],
+   [
+    [
+     "at",
+     "snap_is_exempt_from_time_limit",
+     [
+      "det_month"
+     ]
+    ],
+    "not subject"
+   ],
+   [
+    [
+     "not",
+     "snap_has_exhausted_time_limit"
+    ],
+    "within limit"
+   ],
+   [
+    "snap_regains_eligibility",
+    "regained"
+   ],
+   [
+    "else",
+    "limit exhausted"
+   ]
+  ]
+ },
+ {
+  "id": "WR-319",
+  "identifier": "snap_is_subject_to_work_requirement",
+  "english": "any of the following is true:\n  - SNAP: is subject to general work registration\n  - it is not the case that SNAP: is exempt from the ABAWD time limit",
+  "compact": "any(snap_is_subject_to_work_registration, not(snap_is_exempt_from_time_limit))",
+  "expr": [
+   "any",
+   "snap_is_subject_to_work_registration",
+   [
+    "not",
+    "snap_is_exempt_from_time_limit"
+   ]
+  ]
+ }
+]

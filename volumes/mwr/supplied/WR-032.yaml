@@ -1,0 +1,10 @@
+id: WR-032
+name: Is entitled to or enrolled in Medicare
+identifier: is_medicare_entitled_or_enrolled
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is entitled to or enrolled for Medicare Part A, or enrolled for Part B.
+supplied_by: Medicare data match.
+sources: [S1, S16]

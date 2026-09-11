@@ -1,0 +1,602 @@
+[
+ {
+  "id": "WR-003",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "date_of_birth"
+  ]
+ },
+ {
+  "id": "WR-004",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "date_of_birth"
+  ]
+ },
+ {
+  "id": "WR-200",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age",
+   "medicaid_ce_max_age_exclusive",
+   "medicaid_ce_min_age"
+  ]
+ },
+ {
+  "id": "WR-201",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age",
+   "medicaid_dependent_child_max_age",
+   "relies_on_another_for_care"
+  ]
+ },
+ {
+  "id": "WR-202",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_disabled_individual_ada",
+   "medicaid_is_dependent_child"
+  ]
+ },
+ {
+  "id": "WR-203",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_is_qualifying_dependent",
+   "relationships"
+  ]
+ },
+ {
+  "id": "WR-204",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "care_hours_by_person",
+   "caregiver_min_hours_nonresident_nonrelative",
+   "lives_with",
+   "medicaid_is_qualifying_dependent",
+   "persons_cared_for",
+   "relationships"
+  ]
+ },
+ {
+  "id": "WR-205",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "recovery_start_date",
+   "stable_recovery_years"
+  ]
+ },
+ {
+  "id": "WR-206",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "condition_impairs_ce_compliance",
+   "has_adl_impairing_disability",
+   "has_disabling_mental_disorder",
+   "has_serious_or_complex_medical_condition",
+   "has_substance_use_disorder",
+   "is_blind_or_disabled_ssa",
+   "medicaid_in_stable_recovery"
+  ]
+ },
+ {
+  "id": "WR-207",
+  "type": "yes/no",
+  "errors": [
+   "\"the month\" used outside a per-month context"
+  ],
+  "warnings": [],
+  "refs": [
+   "inmate_lookback_months",
+   "was_inmate_in_month"
+  ]
+ },
+ {
+  "id": "WR-208",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_complying_with_tanf_work_requirements",
+   "is_member_of_snap_household",
+   "snap_is_subject_to_work_requirement"
+  ]
+ },
+ {
+  "id": "WR-209",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_entitled_to_postpartum_assistance",
+   "is_pregnant"
+  ]
+ },
+ {
+  "id": "WR-210",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "indian_status"
+  ]
+ },
+ {
+  "id": "WR-211",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_former_foster_care_youth_group",
+   "is_veteran_total_disability",
+   "medicaid_is_excluded_as_indian",
+   "medicaid_is_excluded_by_snap_or_tanf",
+   "medicaid_is_family_caregiver_of_dependent",
+   "medicaid_is_medically_frail",
+   "medicaid_is_parent_or_caretaker_of_dependent",
+   "medicaid_is_pregnant_or_postpartum",
+   "medicaid_was_recent_inmate",
+   "participates_in_sud_treatment_program"
+  ]
+ },
+ {
+  "id": "WR-212",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_adult_group_eligible_or_enrolled",
+   "is_equivalent_waiver_eligible_or_enrolled",
+   "is_medicare_entitled_or_enrolled",
+   "is_otherwise_eligible_under_state_plan",
+   "is_pregnant",
+   "medicaid_in_ce_age_range",
+   "medicaid_is_specified_excluded_individual"
+  ]
+ },
+ {
+  "id": "WR-213",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "federal_minimum_wage",
+   "medicaid_ce_required_hours"
+  ]
+ },
+ {
+  "id": "WR-214",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "education_hours",
+   "is_enrolled_half_time_education"
+  ]
+ },
+ {
+  "id": "WR-215",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "community_service_hours",
+   "hours_worked",
+   "medicaid_countable_education_hours",
+   "work_program_hours"
+  ]
+ },
+ {
+  "id": "WR-216",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_ce_required_hours",
+   "medicaid_total_qualifying_hours"
+  ]
+ },
+ {
+  "id": "WR-217",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_ce_income_threshold",
+   "monthly_income"
+  ]
+ },
+ {
+  "id": "WR-218",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_seasonal_average_months",
+   "monthly_income"
+  ]
+ },
+ {
+  "id": "WR-219",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_seasonal_worker",
+   "medicaid_ce_income_threshold",
+   "medicaid_six_month_average_income"
+  ]
+ },
+ {
+  "id": "WR-220",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_enrolled_half_time_education",
+   "medicaid_meets_hours_condition",
+   "medicaid_meets_income_condition",
+   "medicaid_meets_seasonal_income_condition"
+  ]
+ },
+ {
+  "id": "WR-221",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "county_unemployment_rate",
+   "hardship_national_rate_multiplier",
+   "hardship_unemployment_rate_cap",
+   "national_unemployment_rate"
+  ]
+ },
+ {
+  "id": "WR-222",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "county_has_declared_disaster",
+   "medicaid_county_unemployment_meets_hardship_threshold",
+   "received_inpatient_or_facility_services",
+   "state_elects_short_term_hardship",
+   "traveled_for_extended_care"
+  ]
+ },
+ {
+  "id": "WR-223",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_demonstrates_ce",
+   "medicaid_short_term_hardship_in_month"
+  ]
+ },
+ {
+  "id": "WR-224",
+  "type": "months",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_application_lookback_months"
+  ]
+ },
+ {
+  "id": "WR-225",
+  "type": "yes/no",
+  "errors": [
+   "\"the month\" used outside a per-month context"
+  ],
+  "warnings": [],
+  "refs": [
+   "medicaid_application_lookback_months_list",
+   "medicaid_ce_satisfied_for_month"
+  ]
+ },
+ {
+  "id": "WR-226",
+  "type": "enum",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_ce_implementation_date",
+   "medicaid_is_applicable_individual",
+   "medicaid_satisfies_ce_at_application"
+  ]
+ },
+ {
+  "id": "WR-227",
+  "type": "months",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "most_recent_determination_date"
+  ]
+ },
+ {
+  "id": "WR-228",
+  "type": "number",
+  "errors": [
+   "\"the month\" used outside a per-month context"
+  ],
+  "warnings": [],
+  "refs": [
+   "medicaid_ce_satisfied_for_month",
+   "medicaid_renewal_review_months"
+  ]
+ },
+ {
+  "id": "WR-229",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_months_demonstrated_since_last_determination",
+   "medicaid_renewal_required_months"
+  ]
+ },
+ {
+  "id": "WR-230",
+  "type": "enum",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "medicaid_ce_implementation_date",
+   "medicaid_is_applicable_individual",
+   "medicaid_satisfies_ce_at_renewal"
+  ]
+ },
+ {
+  "id": "WR-300",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age_at_month",
+   "snap_abawd_max_age",
+   "snap_abawd_min_age"
+  ]
+ },
+ {
+  "id": "WR-301",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "agency_finds_obviously_unfit",
+   "has_medical_statement_of_unfitness",
+   "receives_disability_benefits"
+  ]
+ },
+ {
+  "id": "WR-302",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age_at_month",
+   "persons_cared_for",
+   "relationships",
+   "snap_dependent_child_age_limit",
+   "snap_household_members"
+  ]
+ },
+ {
+  "id": "WR-303",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age_at_month",
+   "persons_cared_for",
+   "relationships",
+   "snap_general_exemption_child_age",
+   "snap_household_members"
+  ]
+ },
+ {
+  "id": "WR-304",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "hours_worked"
+  ]
+ },
+ {
+  "id": "WR-305",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "monthly_income"
+  ]
+ },
+ {
+  "id": "WR-306",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "federal_minimum_wage",
+   "snap_employment_exemption_weekly_hours",
+   "snap_weekly_average_hours_worked",
+   "snap_weekly_earnings"
+  ]
+ },
+ {
+  "id": "WR-307",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age_at_month",
+   "has_responsibility_for_incapacitated_person",
+   "is_complying_with_tanf_work_requirements",
+   "is_enrolled_half_time_education",
+   "is_head_of_household",
+   "participates_in_sud_treatment_program",
+   "receives_unemployment_compensation",
+   "snap_has_responsibility_for_child_under_6",
+   "snap_meets_employment_exemption"
+  ]
+ },
+ {
+  "id": "WR-308",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "age_at_month",
+   "snap_is_exempt_from_work_registration",
+   "snap_is_unfit_for_employment",
+   "snap_work_registration_max_age",
+   "snap_work_registration_min_age"
+  ]
+ },
+ {
+  "id": "WR-309",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "indian_status"
+  ]
+ },
+ {
+  "id": "WR-310",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "is_pregnant",
+   "snap_has_responsibility_for_child_under_14",
+   "snap_in_abawd_age_range",
+   "snap_is_exempt_as_indian",
+   "snap_is_exempt_from_work_registration",
+   "snap_is_unfit_for_employment"
+  ]
+ },
+ {
+  "id": "WR-311",
+  "type": "number",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "hours_missed_for_good_cause",
+   "hours_worked"
+  ]
+ },
+ {
+  "id": "WR-312",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "participates_in_workfare",
+   "snap_hours_worked_with_good_cause",
+   "snap_required_hours_per_month",
+   "work_program_hours"
+  ]
+ },
+ {
+  "id": "WR-313",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "covered_by_abawd_waiver",
+   "has_discretionary_exemption",
+   "received_full_month_snap_benefits",
+   "snap_benefits_prorated",
+   "snap_fulfills_work_requirement",
+   "snap_is_exempt_from_time_limit"
+  ]
+ },
+ {
+  "id": "WR-314",
+  "type": "months",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "snap_period_months"
+  ]
+ },
+ {
+  "id": "WR-315",
+  "type": "number",
+  "errors": [
+   "\"the month\" used outside a per-month context"
+  ],
+  "warnings": [],
+  "refs": [
+   "snap_is_countable_month",
+   "snap_time_limit_period_months"
+  ]
+ },
+ {
+  "id": "WR-316",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "snap_countable_month_limit",
+   "snap_countable_months_used"
+  ]
+ },
+ {
+  "id": "WR-317",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "hours_worked_last_30_days",
+   "participated_in_workfare_last_30_days",
+   "snap_regain_hours",
+   "work_program_hours_last_30_days"
+  ]
+ },
+ {
+  "id": "WR-318",
+  "type": "enum",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "snap_abawd_changes_effective_date",
+   "snap_has_exhausted_time_limit",
+   "snap_is_exempt_from_time_limit",
+   "snap_regains_eligibility"
+  ]
+ },
+ {
+  "id": "WR-319",
+  "type": "yes/no",
+  "errors": [],
+  "warnings": [],
+  "refs": [
+   "snap_is_exempt_from_time_limit",
+   "snap_is_subject_to_work_registration"
+  ]
+ }
+]

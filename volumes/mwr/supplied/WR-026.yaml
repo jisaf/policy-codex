@@ -1,0 +1,10 @@
+id: WR-026
+name: Is complying with TANF work requirements
+identifier: is_complying_with_tanf_work_requirements
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: During the month the person is subject to and in compliance with work requirements imposed under title IV-A of the Social Security Act (TANF).
+supplied_by: TANF case record.
+sources: [S2, S30]

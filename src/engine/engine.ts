@@ -1,0 +1,97 @@
+import { buildIndex, indexWith, nextIdFrom, type LedgerIndex } from "./ledger-index";
+import { block, compact, inline } from "./render";
+import { parseDerivation, parseInline } from "./parse";
+import { check, usesOf, type CheckResult } from "./check";
+import { runTest, type TestResult } from "./evaluate";
+import {
+  formatTest, itemBlock, parseItemBlock, parseTestLine,
+  type ItemBlockExtra, type ParsedItemBlock,
+} from "./item-block";
+import { approvals, constraints, type Constraint } from "./constraints";
+import {
+  aCodes, buildGraph, impactOf, projectionA, type AProjection, type DependencyGraph,
+} from "./graph";
+import { baseType, fmt, lit, paramValue, slug } from "./values";
+import type {
+  BaseType, EngineRefs, Expr, Item, Scope, TestSpec, VolumeMeta,
+} from "./types";
+
+export interface Engine {
+  readonly meta: VolumeMeta;
+  readonly index: LedgerIndex;
+  items(): Item[];
+  item(identifier: string): Item | undefined;
+  itemById(id: string): Item | undefined;
+  withDrafts(drafts: Item[]): Engine;
+  withItems(items: Item[]): Engine;
+  baseType(it: { type?: string }): BaseType;
+  lit(v: unknown): string;
+  fmt(v: unknown): string;
+  paramValue(it: Item): unknown;
+  slug(name: string): string;
+  nextId(): string;
+  inline(e: Expr): string;
+  block(e: Expr): string[];
+  compact(e: Expr): string;
+  parseInline(s: string, options?: readonly string[]): Expr;
+  parseDerivation(text: string, options?: readonly string[]): Expr;
+  check(e: Expr, scope: Scope | undefined): CheckResult;
+  uses(e: Expr): string[];
+  runTest(it: Item, t: TestSpec): TestResult;
+  itemBlock(it: Item, extra?: ItemBlockExtra): string;
+  parseItemBlock(text: string): ParsedItemBlock;
+  formatTest(t: TestSpec): string;
+  parseTestLine(line: string): TestSpec;
+  approvals(it: Item): string[];
+  constraints(it: Item): Constraint[];
+  readonly graph: DependencyGraph;
+  usedBy(identifier: string): string[];
+  usesOfItem(identifier: string): string[];
+  impact(identifiers: readonly string[]): string[];
+  aCode(identifier: string): string;
+  projectionA(identifier: string, sourceTitles?: Record<string, string>): AProjection;
+}
+
+export function createEngine(
+  items: Item[], meta: VolumeMeta, refs: EngineRefs | null = null,
+): Engine {
+  const ix = buildIndex(items);
+  const graph = buildGraph(ix);
+  const codes = aCodes(ix);
+  return {
+    meta,
+    index: ix,
+    items: () => ix.items,
+    item: (identifier) => ix.byIdentifier.get(identifier),
+    itemById: (id) => ix.byId.get(id),
+    withDrafts: (drafts) => createEngine(indexWith(ix, drafts).items, meta, refs),
+    withItems: (next) => createEngine(next, meta, refs),
+    baseType,
+    lit,
+    fmt,
+    paramValue,
+    slug,
+    nextId: () => nextIdFrom(ix),
+    inline: (e) => inline(ix, e),
+    block: (e) => block(ix, e),
+    compact: (e) => compact(ix, e),
+    parseInline: (s, options) => parseInline(ix, s, options),
+    parseDerivation: (text, options) => parseDerivation(ix, text, options),
+    check: (e, scope) => check(ix, e, scope),
+    uses: (e) => usesOf(ix, e),
+    runTest: (it, t) => runTest(ix, it, t, meta.default_as_of),
+    itemBlock: (it, extra) => itemBlock(ix, it, extra),
+    parseItemBlock: (text) => parseItemBlock(ix, meta, text),
+    formatTest,
+    parseTestLine: (line) => parseTestLine(ix, line),
+    approvals: (it) => approvals(meta, it),
+    constraints: (it) => constraints(ix, meta, refs, it),
+    graph,
+    usedBy: (identifier) => graph.usedBy.get(identifier) ?? [],
+    usesOfItem: (identifier) => graph.uses.get(identifier) ?? [],
+    impact: (identifiers) => impactOf(graph, identifiers),
+    aCode: (identifier) => codes.get(identifier) ?? "",
+    projectionA: (identifier, sourceTitles) =>
+      projectionA(ix, meta, graph, codes, identifier, sourceTitles),
+  };
+}

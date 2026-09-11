@@ -1,0 +1,10 @@
+id: WR-061
+name: County has a declared emergency or disaster in month
+identifier: county_has_declared_disaster
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: For part or all of the month the county in which the person resides is under an emergency or disaster declared by the President under the National Emergencies Act or the Stafford Act.
+supplied_by: Declaration lookup on the person's county.
+sources: [S10]

@@ -1,0 +1,11 @@
+id: WR-012
+name: Is a disabled individual under the ADA
+identifier: is_disabled_individual_ada
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person meets the Americans with Disabilities Act definition of disability at 28 CFR 35.108. The person need not be eligible for any program on the basis of disability.
+supplied_by: Eligibility worker determination from documentation or statement.
+sources: [S4]
+open: [OQ-4]

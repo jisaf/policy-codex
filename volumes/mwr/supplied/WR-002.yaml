@@ -1,0 +1,10 @@
+id: WR-002
+name: Determination Date
+identifier: determination_date
+kind: supplied
+type: calendar date
+scope: case
+program: All
+meaning: The date as of which eligibility is being determined. For an application it is the application date; for a renewal it is the redetermination date.
+supplied_by: Case record.
+sources: []

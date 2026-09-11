@@ -1,0 +1,10 @@
+id: WR-040
+name: Hours worked
+identifier: hours_worked
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: Hours of work performed in the month.
+supplied_by: Payroll data match, employer verification, or statement.
+sources: [S6, S21]

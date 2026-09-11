@@ -1,0 +1,11 @@
+id: WR-013
+name: Indian status
+identifier: indian_status
+kind: supplied
+type: one of
+options: [Indian, "Urban Indian", "California Indian", "IHS-eligible only", none]
+scope: person
+program: All
+meaning: Whether the person is an Indian or Urban Indian as defined in 25 U.S.C. 1603(13) and (28), a California Indian described in 25 U.S.C. 1679(a), or has otherwise been determined eligible as an Indian for the Indian Health Service. "IHS-eligible only" means the last of these without the others.
+supplied_by: Tribal enrollment or IHS eligibility documentation.
+sources: [S2, S20]

@@ -1,0 +1,14 @@
+id: WR-216
+name: "Medicaid: meets the hours condition"
+identifier: medicaid_meets_hours_condition
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Total qualifying hours for the month are at least the required hours.
+derived: [">=", medicaid_total_qualifying_hours, medicaid_ce_required_hours]
+sources: [S6]
+implemented: engine
+tests:
+  - {id: WR-216-T1, month: "2027-02", given: {medicaid_total_qualifying_hours: 80}, expect: true}
+  - {id: WR-216-T2, month: "2027-02", given: {medicaid_total_qualifying_hours: 79.5}, expect: false}

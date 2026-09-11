@@ -1,0 +1,10 @@
+id: WR-056
+name: Hours worked in the last 30 days
+identifier: hours_worked_last_30_days
+kind: supplied
+type: hours
+scope: person
+program: SNAP
+meaning: Hours worked during the 30-day period ending on the Determination Date.
+supplied_by: Employer verification or statement.
+sources: [S22]

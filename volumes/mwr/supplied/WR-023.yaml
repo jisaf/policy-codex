@@ -1,0 +1,10 @@
+id: WR-023
+name: Agency finds the person obviously unfit for employment
+identifier: agency_finds_obviously_unfit
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The State agency has determined that the person is obviously mentally or physically unfit for employment.
+supplied_by: Eligibility worker determination.
+sources: [S28]

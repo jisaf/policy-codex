@@ -1,0 +1,651 @@
+# Household-level cases. Each describes a whole case and the expected value of every outcome for every person.
+# These exercise the fact-assembly layer and the determination engine together. Shared by both approaches.
+#
+# Conventions: dates are quoted ISO strings; per-month facts are under months/<YYYY-MM>; month_defaults gives the
+# value of a per-month fact for any month not listed, so that a 36-month SNAP window can be stated without
+# 36 entries. Anything not stated is unknown.
+
+- id: C-01
+  title: Single adult, 30, not on SNAP, works 90 hours a month, applies for Medicaid
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1996-08-02"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        is_seasonal_worker: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+        hours_worked: 90
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 1400
+  expect:
+    p1:
+      medicaid_is_specified_excluded_individual: false
+      medicaid_is_applicable_individual: true
+      medicaid_demonstrates_ce: {"2027-02": true}
+      medicaid_ce_status_at_application: met
+
+- id: C-02
+  title: Same adult, 0 hours and no income in the lookback month
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1996-08-02"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        is_seasonal_worker: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        received_inpatient_or_facility_services: false
+        county_has_declared_disaster: false
+        county_unemployment_rate: 0.04
+        traveled_for_extended_care: false
+  month_facts:
+    "2027-02": {national_unemployment_rate: 0.041}
+  expect:
+    p1:
+      medicaid_is_applicable_individual: true
+      medicaid_short_term_hardship_in_month: {"2027-02": false}
+      medicaid_ce_status_at_application: not met
+
+- id: C-03
+  title: Parent of a 13-year-old on SNAP, no work. Exempt in both programs.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-05-20"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: [c1]
+        persons_cared_for: [c1]
+        snap_household_members: [c1]
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        receives_disability_benefits: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        has_responsibility_for_incapacitated_person: false
+        is_head_of_household: true
+        hours_worked_last_30_days: 0
+        work_program_hours_last_30_days: 0
+        participated_in_workfare_last_30_days: false
+      relationships: [[parent, c1]]
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: true
+        participates_in_sud_treatment_program: false
+        receives_unemployment_compensation: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        hours_missed_for_good_cause: 0
+        participates_in_workfare: false
+        received_full_month_snap_benefits: true
+        snap_benefits_prorated: false
+        covered_by_abawd_waiver: false
+        has_discretionary_exemption: false
+    c1:
+      facts:
+        date_of_birth: "2013-09-01"
+        relies_on_another_for_care: true
+        is_disabled_individual_ada: false
+  expect:
+    p1:
+      medicaid_is_parent_or_caretaker_of_dependent: true
+      medicaid_is_specified_excluded_individual: true
+      medicaid_ce_status_at_application: not subject
+      snap_has_responsibility_for_child_under_14: {"2027-03": true}
+      snap_is_exempt_from_time_limit: {"2027-03": true}
+      snap_time_limit_status: not subject
+
+- id: C-04
+  title: Same parent, but the child turned 14 last month. Subject to the SNAP time limit from March, and excluded from Medicaid community engagement precisely because she is a SNAP household member who is subject to SNAP work rules.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-05-20"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: [c1]
+        persons_cared_for: [c1]
+        snap_household_members: [c1]
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        receives_disability_benefits: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        has_responsibility_for_incapacitated_person: false
+        is_head_of_household: true
+        hours_worked_last_30_days: 0
+        work_program_hours_last_30_days: 0
+        participated_in_workfare_last_30_days: false
+      relationships: [[parent, c1]]
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: true
+        participates_in_sud_treatment_program: false
+        receives_unemployment_compensation: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        hours_missed_for_good_cause: 0
+        participates_in_workfare: false
+        received_full_month_snap_benefits: false
+        snap_benefits_prorated: false
+        covered_by_abawd_waiver: false
+        has_discretionary_exemption: false
+        received_inpatient_or_facility_services: false
+        county_has_declared_disaster: false
+        county_unemployment_rate: 0.04
+        traveled_for_extended_care: false
+      months:
+        "2026-12": {received_full_month_snap_benefits: true}
+        "2027-01": {received_full_month_snap_benefits: true}
+        "2027-02": {received_full_month_snap_benefits: true}
+    c1:
+      facts:
+        date_of_birth: "2013-02-10"
+        relies_on_another_for_care: true
+        is_disabled_individual_ada: false
+  month_facts:
+    "2027-02": {national_unemployment_rate: 0.041}
+  expect:
+    p1:
+      medicaid_is_parent_or_caretaker_of_dependent: false
+      snap_is_subject_to_work_requirement: {"2027-03": true}
+      medicaid_is_excluded_by_snap_or_tanf: true
+      medicaid_is_specified_excluded_individual: true
+      medicaid_ce_status_at_application: not subject
+      snap_has_responsibility_for_child_under_14: {"2027-02": true, "2027-03": false}
+      snap_is_countable_month: {"2026-12": false, "2027-01": false, "2027-02": false}
+      snap_countable_months_used: 0
+      snap_time_limit_status: within limit
+
+- id: C-05
+  title: Medically frail for Medicaid, not unfit for SNAP. The two definitions diverge.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1979-11-11"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        snap_household_members: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: true
+        recovery_start_date: "2025-06-01"
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: true
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        receives_disability_benefits: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        has_responsibility_for_incapacitated_person: false
+        is_head_of_household: true
+        hours_worked_last_30_days: 0
+        work_program_hours_last_30_days: 0
+        participated_in_workfare_last_30_days: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: true
+        participates_in_sud_treatment_program: false
+        receives_unemployment_compensation: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        hours_missed_for_good_cause: 0
+        participates_in_workfare: false
+        received_full_month_snap_benefits: true
+        snap_benefits_prorated: false
+        covered_by_abawd_waiver: false
+        has_discretionary_exemption: false
+  expect:
+    p1:
+      medicaid_in_stable_recovery: false
+      medicaid_is_medically_frail: true
+      medicaid_ce_status_at_application: not subject
+      snap_is_unfit_for_employment: false
+      snap_is_exempt_from_time_limit: {"2027-03": false}
+      snap_countable_months_used: 36
+      snap_time_limit_status: limit exhausted
+
+- id: C-06
+  title: Age 62, no work. Subject to Medicaid, and to the SNAP time limit under the statute even though past the general work registration age.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1964-09-30"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        snap_household_members: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        receives_disability_benefits: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        has_responsibility_for_incapacitated_person: false
+        is_head_of_household: true
+        hours_worked_last_30_days: 0
+        work_program_hours_last_30_days: 0
+        participated_in_workfare_last_30_days: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: true
+        participates_in_sud_treatment_program: false
+        receives_unemployment_compensation: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        hours_missed_for_good_cause: 0
+        participates_in_workfare: false
+        received_full_month_snap_benefits: false
+        snap_benefits_prorated: false
+        covered_by_abawd_waiver: false
+        has_discretionary_exemption: false
+        received_inpatient_or_facility_services: false
+        county_has_declared_disaster: false
+        county_unemployment_rate: 0.04
+        traveled_for_extended_care: false
+      months:
+        "2027-01": {received_full_month_snap_benefits: true}
+        "2027-02": {received_full_month_snap_benefits: true}
+  month_facts:
+    "2027-02": {national_unemployment_rate: 0.041}
+  expect:
+    p1:
+      snap_is_subject_to_work_registration: {"2027-02": false}
+      snap_in_abawd_age_range: {"2027-02": true}
+      snap_is_exempt_from_time_limit: {"2027-02": false}
+      snap_is_subject_to_work_requirement: {"2027-03": true}
+      medicaid_is_excluded_by_snap_or_tanf: true
+      medicaid_ce_status_at_application: not subject
+      snap_countable_months_used: 2
+      snap_time_limit_status: within limit
+
+- id: C-07
+  title: Eligible for IHS only, not enrolled in a tribe. Excluded from Medicaid community engagement, not exempt from the SNAP time limit.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1990-03-03"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        snap_household_members: []
+        indian_status: IHS-eligible only
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        receives_disability_benefits: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        has_responsibility_for_incapacitated_person: false
+        is_head_of_household: true
+        hours_worked_last_30_days: 0
+        work_program_hours_last_30_days: 0
+        participated_in_workfare_last_30_days: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+        receives_unemployment_compensation: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        hours_missed_for_good_cause: 0
+        participates_in_workfare: false
+        received_full_month_snap_benefits: false
+        snap_benefits_prorated: false
+        covered_by_abawd_waiver: false
+        has_discretionary_exemption: false
+  expect:
+    p1:
+      medicaid_is_excluded_as_indian: true
+      medicaid_ce_status_at_application: not subject
+      snap_is_exempt_as_indian: false
+      snap_is_exempt_from_time_limit: {"2027-03": false}
+      snap_time_limit_status: within limit
+
+- id: C-08
+  title: Pregnant applicant. Not subject in either program.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "2001-01-15"
+        is_pregnant: true
+        is_entitled_to_postpartum_assistance: false
+        indian_status: none
+        is_adult_group_eligible_or_enrolled: false
+        is_equivalent_waiver_eligible_or_enrolled: false
+        lives_with: []
+        persons_cared_for: []
+        snap_household_members: []
+        is_veteran_total_disability: false
+        is_former_foster_care_youth_group: false
+        is_disabled_individual_ada: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+        received_full_month_snap_benefits: false
+  expect:
+    p1:
+      medicaid_is_specified_excluded_individual: true
+      medicaid_ce_status_at_application: not subject
+      snap_time_limit_status: not subject
+
+- id: C-09
+  title: Seasonal worker with no hours in February but a qualifying six-month average
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1985-07-07"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        is_seasonal_worker: true
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+      months:
+        "2026-08": {monthly_income: 1500, hours_worked: 160}
+        "2026-09": {monthly_income: 1500, hours_worked: 160}
+        "2026-10": {monthly_income: 1500, hours_worked: 160}
+        "2026-11": {monthly_income: 0}
+        "2026-12": {monthly_income: 0}
+        "2027-01": {monthly_income: 0}
+        "2027-02": {monthly_income: 0}
+  expect:
+    p1:
+      medicaid_six_month_average_income: {"2027-02": 750}
+      medicaid_meets_seasonal_income_condition: {"2027-02": true}
+      medicaid_ce_status_at_application: met
+
+- id: C-10
+  title: Application dated before the implementation date
+  as_of: "2026-11-02"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1990-01-01"
+        is_adult_group_eligible_or_enrolled: true
+      relationships: []
+  expect:
+    p1:
+      medicaid_ce_status_at_application: not yet in effect
+
+- id: C-11
+  title: Renewal. Enrollee demonstrated engagement in one of the five months since the last determination.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1993-04-04"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        is_seasonal_worker: false
+        most_recent_determination_date: "2026-09-10"
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+        hours_worked: 0
+        community_service_hours: 0
+        work_program_hours: 0
+        education_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        received_inpatient_or_facility_services: false
+        county_has_declared_disaster: false
+        county_unemployment_rate: 0.04
+        traveled_for_extended_care: false
+      months:
+        "2026-12": {hours_worked: 85}
+  month_facts:
+    "2026-10": {national_unemployment_rate: 0.041}
+    "2026-11": {national_unemployment_rate: 0.041}
+    "2026-12": {national_unemployment_rate: 0.041}
+    "2027-01": {national_unemployment_rate: 0.041}
+    "2027-02": {national_unemployment_rate: 0.041}
+  expect:
+    p1:
+      medicaid_months_demonstrated_since_last_determination: 1
+      medicaid_ce_status_at_renewal: met
+
+- id: C-12
+  title: SNAP time limit exhausted, then 80 hours worked in the last 30 days
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1997-12-12"
+        is_pregnant: false
+        lives_with: []
+        persons_cared_for: []
+        snap_household_members: []
+        indian_status: none
+        receives_disability_benefits: false
+        agency_finds_obviously_unfit: false
+        has_medical_statement_of_unfitness: false
+        has_responsibility_for_incapacitated_person: false
+        is_head_of_household: true
+        hours_worked_last_30_days: 80
+        work_program_hours_last_30_days: 0
+        participated_in_workfare_last_30_days: false
+      relationships: []
+      month_defaults:
+        is_complying_with_tanf_work_requirements: false
+        participates_in_sud_treatment_program: false
+        receives_unemployment_compensation: false
+        hours_worked: 0
+        work_program_hours: 0
+        is_enrolled_half_time_education: false
+        monthly_income: 0
+        hours_missed_for_good_cause: 0
+        participates_in_workfare: false
+        received_full_month_snap_benefits: false
+        snap_benefits_prorated: false
+        covered_by_abawd_waiver: false
+        has_discretionary_exemption: false
+      months:
+        "2026-06": {received_full_month_snap_benefits: true}
+        "2026-07": {received_full_month_snap_benefits: true}
+        "2026-08": {received_full_month_snap_benefits: true}
+  expect:
+    p1:
+      snap_countable_months_used: 3
+      snap_has_exhausted_time_limit: true
+      snap_regains_eligibility: true
+      snap_time_limit_status: regained
+
+- id: C-13
+  title: Unknown propagation. Applicant with no activity data at all, so the outcome cannot be determined.
+  as_of: "2027-03-15"
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1990-01-01"
+        is_pregnant: false
+        is_entitled_to_postpartum_assistance: false
+        lives_with: []
+        persons_cared_for: []
+        indian_status: none
+        is_veteran_total_disability: false
+        is_blind_or_disabled_ssa: false
+        has_substance_use_disorder: false
+        has_disabling_mental_disorder: false
+        has_adl_impairing_disability: false
+        has_serious_or_complex_medical_condition: false
+        condition_impairs_ce_compliance: false
+        is_disabled_individual_ada: false
+        is_adult_group_eligible_or_enrolled: true
+        is_former_foster_care_youth_group: false
+        is_seasonal_worker: false
+      relationships: []
+      month_defaults:
+        was_inmate_in_month: false
+        is_complying_with_tanf_work_requirements: false
+        is_member_of_snap_household: false
+        participates_in_sud_treatment_program: false
+  expect:
+    p1:
+      medicaid_is_applicable_individual: true
+      medicaid_ce_status_at_application: unknown

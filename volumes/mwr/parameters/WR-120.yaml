@@ -1,0 +1,10 @@
+id: WR-120
+name: SNAP ABAWD minimum age
+identifier: snap_abawd_min_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The youngest age subject to the ABAWD time limit. Persons under 18 are exempt.
+value: 18
+sources: [S20]

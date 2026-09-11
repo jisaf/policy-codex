@@ -1,0 +1,10 @@
+id: WR-123
+name: SNAP required hours per month
+identifier: snap_required_hours_per_month
+kind: parameter
+type: hours
+scope: global
+program: SNAP
+meaning: Twenty hours a week averaged monthly, which the regulation defines as 80 hours a month.
+value: 80
+sources: [S21, S24]

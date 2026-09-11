@@ -1,0 +1,10 @@
+id: WR-124
+name: SNAP countable month limit
+identifier: snap_countable_month_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of countable months in the period after which the person is ineligible.
+value: 3
+sources: [S21]

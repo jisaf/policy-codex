@@ -1,0 +1,10 @@
+id: WR-001
+name: Date of Birth
+identifier: date_of_birth
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The calendar date on which the person was born, in the local date of the place of birth. Time of birth is not recorded.
+supplied_by: Applicant statement, verified against vital records or SSA data.
+sources: []

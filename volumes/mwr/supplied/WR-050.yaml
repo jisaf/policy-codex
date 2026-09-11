@@ -1,0 +1,10 @@
+id: WR-050
+name: SNAP benefits were prorated in month
+identifier: snap_benefits_prorated
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person's benefits for the month were prorated under 7 CFR 273.10.
+supplied_by: SNAP issuance record.
+sources: [S25]

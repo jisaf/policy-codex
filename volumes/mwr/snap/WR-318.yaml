@@ -1,0 +1,19 @@
+id: WR-318
+name: "SNAP: time limit status"
+identifier: snap_time_limit_status
+kind: derived
+type: one of
+options: ["prior law applies", "not subject", "within limit", regained, "limit exhausted"]
+scope: person
+program: SNAP
+role: outcome
+meaning: Prior law applies when the Determination Date is before the effective date of the changes; not subject when the person is exempt in the month containing the Determination Date; within limit when the time limit is not exhausted; regained when it is exhausted but the person regains eligibility; otherwise limit exhausted.
+derived: [case, [["<", [det_date], snap_abawd_changes_effective_date], "prior law applies"], [[at, snap_is_exempt_from_time_limit, [det_month]], "not subject"], [[not, snap_has_exhausted_time_limit], "within limit"], [snap_regains_eligibility, regained], [else, "limit exhausted"]]
+sources: [S20, S21, S22, S33]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-318-T1, given: {snap_is_exempt_from_time_limit: true}, expect: "not subject"}
+  - {id: WR-318-T2, given: {snap_is_exempt_from_time_limit: false, snap_has_exhausted_time_limit: false}, expect: "within limit"}
+  - {id: WR-318-T3, given: {snap_is_exempt_from_time_limit: false, snap_has_exhausted_time_limit: true, snap_regains_eligibility: true}, expect: regained}
+  - {id: WR-318-T4, given: {snap_is_exempt_from_time_limit: false, snap_has_exhausted_time_limit: true, snap_regains_eligibility: false}, expect: "limit exhausted"}

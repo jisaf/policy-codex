@@ -1,0 +1,14 @@
+id: WR-209
+name: "Medicaid: is pregnant or postpartum"
+identifier: medicaid_is_pregnant_or_postpartum
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is pregnant or is entitled to postpartum medical assistance.
+derived: [any, is_pregnant, is_entitled_to_postpartum_assistance]
+sources: [S2]
+implemented: engine
+tests:
+  - {id: WR-209-T1, given: {is_pregnant: false, is_entitled_to_postpartum_assistance: true}, expect: true}
+  - {id: WR-209-T2, given: {is_pregnant: false, is_entitled_to_postpartum_assistance: false}, expect: false}

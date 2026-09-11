@@ -1,0 +1,10 @@
+id: WR-128
+name: SNAP work registration maximum age
+identifier: snap_work_registration_max_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The oldest age subject to general work registration. The statute covers persons under 60.
+value: 59
+sources: [S29, S31]

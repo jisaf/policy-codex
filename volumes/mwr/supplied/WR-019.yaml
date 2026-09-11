@@ -1,0 +1,11 @@
+id: WR-019
+name: Has a disability that significantly impairs daily activities
+identifier: has_adl_impairing_disability
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person has a physical, intellectual, or developmental disability that significantly impairs their ability to perform one or more activities of daily living.
+supplied_by: Clinical documentation or statement.
+sources: [S3]
+tags: [medical]

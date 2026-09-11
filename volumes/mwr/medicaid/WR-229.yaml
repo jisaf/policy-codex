@@ -1,0 +1,15 @@
+id: WR-229
+name: "Medicaid: satisfies community engagement at renewal"
+identifier: medicaid_satisfies_ce_at_renewal
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Months demonstrated since the last determination are at least the number the State requires.
+derived: [">=", medicaid_months_demonstrated_since_last_determination, medicaid_renewal_required_months]
+sources: [S8]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-229-T1, given: {medicaid_months_demonstrated_since_last_determination: 1}, expect: true}
+  - {id: WR-229-T2, given: {medicaid_months_demonstrated_since_last_determination: 0}, expect: false}

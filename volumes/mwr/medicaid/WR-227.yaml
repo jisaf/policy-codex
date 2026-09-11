@@ -1,0 +1,13 @@
+id: WR-227
+name: "Medicaid: renewal review months"
+identifier: medicaid_renewal_review_months
+kind: derived
+type: list of months
+scope: person
+program: Medicaid
+meaning: The months after the month of the most recent determination and before the month containing the Determination Date.
+derived: [months_from_to, [month_after, [month_of, most_recent_determination_date]], [month_before, [det_month]]]
+sources: [S8]
+implemented: engine
+tests:
+  - {id: WR-227-T1, given: {most_recent_determination_date: "2026-09-10"}, expect: ["2026-10", "2026-11", "2026-12", "2027-01", "2027-02"]}

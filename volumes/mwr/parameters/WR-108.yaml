@@ -1,0 +1,10 @@
+id: WR-108
+name: Stable recovery years
+identifier: stable_recovery_years
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: A person in recovery from a substance use disorder for this many years or more is in stable recovery and is not medically frail on that basis.
+value: 5
+sources: [S3]

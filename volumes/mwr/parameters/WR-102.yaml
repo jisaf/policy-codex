@@ -1,0 +1,10 @@
+id: WR-102
+name: Medicaid community engagement minimum age
+identifier: medicaid_ce_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The youngest age at which a person can be an applicable individual. A person must have attained this age.
+value: 19
+sources: [S1]

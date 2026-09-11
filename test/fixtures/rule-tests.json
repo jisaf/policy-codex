@@ -1,0 +1,1066 @@
+[
+ {
+  "itemId": "WR-003",
+  "identifier": "age",
+  "testId": "WR-003-T1",
+  "ok": true,
+  "got": "18",
+  "err": null
+ },
+ {
+  "itemId": "WR-003",
+  "identifier": "age",
+  "testId": "WR-003-T2",
+  "ok": true,
+  "got": "19",
+  "err": null
+ },
+ {
+  "itemId": "WR-003",
+  "identifier": "age",
+  "testId": "WR-003-T3",
+  "ok": true,
+  "got": "17",
+  "err": null
+ },
+ {
+  "itemId": "WR-003",
+  "identifier": "age",
+  "testId": "WR-003-T4",
+  "ok": true,
+  "got": "18",
+  "err": null
+ },
+ {
+  "itemId": "WR-004",
+  "identifier": "age_at_month",
+  "testId": "WR-004-T1",
+  "ok": true,
+  "got": "17",
+  "err": null
+ },
+ {
+  "itemId": "WR-004",
+  "identifier": "age_at_month",
+  "testId": "WR-004-T2",
+  "ok": true,
+  "got": "18",
+  "err": null
+ },
+ {
+  "itemId": "WR-200",
+  "identifier": "medicaid_in_ce_age_range",
+  "testId": "WR-200-T1",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-200",
+  "identifier": "medicaid_in_ce_age_range",
+  "testId": "WR-200-T2",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-200",
+  "identifier": "medicaid_in_ce_age_range",
+  "testId": "WR-200-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-200",
+  "identifier": "medicaid_in_ce_age_range",
+  "testId": "WR-200-T4",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-201",
+  "identifier": "medicaid_is_dependent_child",
+  "testId": "WR-201-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-201",
+  "identifier": "medicaid_is_dependent_child",
+  "testId": "WR-201-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-201",
+  "identifier": "medicaid_is_dependent_child",
+  "testId": "WR-201-T3",
+  "ok": true,
+  "got": "unknown",
+  "err": null
+ },
+ {
+  "itemId": "WR-202",
+  "identifier": "medicaid_is_qualifying_dependent",
+  "testId": "WR-202-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-202",
+  "identifier": "medicaid_is_qualifying_dependent",
+  "testId": "WR-202-T2",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-202",
+  "identifier": "medicaid_is_qualifying_dependent",
+  "testId": "WR-202-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-203",
+  "identifier": "medicaid_is_parent_or_caretaker_of_dependent",
+  "testId": "WR-203-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-203",
+  "identifier": "medicaid_is_parent_or_caretaker_of_dependent",
+  "testId": "WR-203-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-203",
+  "identifier": "medicaid_is_parent_or_caretaker_of_dependent",
+  "testId": "WR-203-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-204",
+  "identifier": "medicaid_is_family_caregiver_of_dependent",
+  "testId": "WR-204-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-204",
+  "identifier": "medicaid_is_family_caregiver_of_dependent",
+  "testId": "WR-204-T2",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-204",
+  "identifier": "medicaid_is_family_caregiver_of_dependent",
+  "testId": "WR-204-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-204",
+  "identifier": "medicaid_is_family_caregiver_of_dependent",
+  "testId": "WR-204-T4",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-205",
+  "identifier": "medicaid_in_stable_recovery",
+  "testId": "WR-205-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-205",
+  "identifier": "medicaid_in_stable_recovery",
+  "testId": "WR-205-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-205",
+  "identifier": "medicaid_in_stable_recovery",
+  "testId": "WR-205-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "testId": "WR-206-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "testId": "WR-206-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "testId": "WR-206-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "testId": "WR-206-T4",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "testId": "WR-206-T5",
+  "ok": true,
+  "got": "unknown",
+  "err": null
+ },
+ {
+  "itemId": "WR-207",
+  "identifier": "medicaid_was_recent_inmate",
+  "testId": "WR-207-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-207",
+  "identifier": "medicaid_was_recent_inmate",
+  "testId": "WR-207-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-207",
+  "identifier": "medicaid_was_recent_inmate",
+  "testId": "WR-207-T3",
+  "ok": true,
+  "got": "unknown",
+  "err": null
+ },
+ {
+  "itemId": "WR-208",
+  "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+  "testId": "WR-208-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-208",
+  "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+  "testId": "WR-208-T2",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-208",
+  "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+  "testId": "WR-208-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-208",
+  "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+  "testId": "WR-208-T4",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-209",
+  "identifier": "medicaid_is_pregnant_or_postpartum",
+  "testId": "WR-209-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-209",
+  "identifier": "medicaid_is_pregnant_or_postpartum",
+  "testId": "WR-209-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-210",
+  "identifier": "medicaid_is_excluded_as_indian",
+  "testId": "WR-210-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-210",
+  "identifier": "medicaid_is_excluded_as_indian",
+  "testId": "WR-210-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-211",
+  "identifier": "medicaid_is_specified_excluded_individual",
+  "testId": "WR-211-T1",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-211",
+  "identifier": "medicaid_is_specified_excluded_individual",
+  "testId": "WR-211-T2",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-211",
+  "identifier": "medicaid_is_specified_excluded_individual",
+  "testId": "WR-211-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-212",
+  "identifier": "medicaid_is_applicable_individual",
+  "testId": "WR-212-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-212",
+  "identifier": "medicaid_is_applicable_individual",
+  "testId": "WR-212-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-212",
+  "identifier": "medicaid_is_applicable_individual",
+  "testId": "WR-212-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-212",
+  "identifier": "medicaid_is_applicable_individual",
+  "testId": "WR-212-T4",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-213",
+  "identifier": "medicaid_ce_income_threshold",
+  "testId": "WR-213-T1",
+  "ok": true,
+  "got": "580",
+  "err": null
+ },
+ {
+  "itemId": "WR-214",
+  "identifier": "medicaid_countable_education_hours",
+  "testId": "WR-214-T1",
+  "ok": true,
+  "got": "0",
+  "err": null
+ },
+ {
+  "itemId": "WR-214",
+  "identifier": "medicaid_countable_education_hours",
+  "testId": "WR-214-T2",
+  "ok": true,
+  "got": "40",
+  "err": null
+ },
+ {
+  "itemId": "WR-215",
+  "identifier": "medicaid_total_qualifying_hours",
+  "testId": "WR-215-T1",
+  "ok": true,
+  "got": "90",
+  "err": null
+ },
+ {
+  "itemId": "WR-215",
+  "identifier": "medicaid_total_qualifying_hours",
+  "testId": "WR-215-T2",
+  "ok": true,
+  "got": "30",
+  "err": null
+ },
+ {
+  "itemId": "WR-216",
+  "identifier": "medicaid_meets_hours_condition",
+  "testId": "WR-216-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-216",
+  "identifier": "medicaid_meets_hours_condition",
+  "testId": "WR-216-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-217",
+  "identifier": "medicaid_meets_income_condition",
+  "testId": "WR-217-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-217",
+  "identifier": "medicaid_meets_income_condition",
+  "testId": "WR-217-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-218",
+  "identifier": "medicaid_six_month_average_income",
+  "testId": "WR-218-T1",
+  "ok": true,
+  "got": "580",
+  "err": null
+ },
+ {
+  "itemId": "WR-219",
+  "identifier": "medicaid_meets_seasonal_income_condition",
+  "testId": "WR-219-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-219",
+  "identifier": "medicaid_meets_seasonal_income_condition",
+  "testId": "WR-219-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-220",
+  "identifier": "medicaid_demonstrates_ce",
+  "testId": "WR-220-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-220",
+  "identifier": "medicaid_demonstrates_ce",
+  "testId": "WR-220-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-220",
+  "identifier": "medicaid_demonstrates_ce",
+  "testId": "WR-220-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-221",
+  "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+  "testId": "WR-221-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-221",
+  "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+  "testId": "WR-221-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-221",
+  "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+  "testId": "WR-221-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-221",
+  "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+  "testId": "WR-221-T4",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-222",
+  "identifier": "medicaid_short_term_hardship_in_month",
+  "testId": "WR-222-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-222",
+  "identifier": "medicaid_short_term_hardship_in_month",
+  "testId": "WR-222-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-222",
+  "identifier": "medicaid_short_term_hardship_in_month",
+  "testId": "WR-222-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-223",
+  "identifier": "medicaid_ce_satisfied_for_month",
+  "testId": "WR-223-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-223",
+  "identifier": "medicaid_ce_satisfied_for_month",
+  "testId": "WR-223-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-224",
+  "identifier": "medicaid_application_lookback_months_list",
+  "testId": "WR-224-T1",
+  "ok": true,
+  "got": "[2027-02]",
+  "err": null
+ },
+ {
+  "itemId": "WR-224",
+  "identifier": "medicaid_application_lookback_months_list",
+  "testId": "WR-224-T2",
+  "ok": true,
+  "got": "[2026-12, 2027-01, 2027-02]",
+  "err": null
+ },
+ {
+  "itemId": "WR-225",
+  "identifier": "medicaid_satisfies_ce_at_application",
+  "testId": "WR-225-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-225",
+  "identifier": "medicaid_satisfies_ce_at_application",
+  "testId": "WR-225-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-225",
+  "identifier": "medicaid_satisfies_ce_at_application",
+  "testId": "WR-225-T3",
+  "ok": true,
+  "got": "unknown",
+  "err": null
+ },
+ {
+  "itemId": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "testId": "WR-226-T1",
+  "ok": true,
+  "got": "not yet in effect",
+  "err": null
+ },
+ {
+  "itemId": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "testId": "WR-226-T2",
+  "ok": true,
+  "got": "not subject",
+  "err": null
+ },
+ {
+  "itemId": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "testId": "WR-226-T3",
+  "ok": true,
+  "got": "met",
+  "err": null
+ },
+ {
+  "itemId": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "testId": "WR-226-T4",
+  "ok": true,
+  "got": "not met",
+  "err": null
+ },
+ {
+  "itemId": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "testId": "WR-226-T5",
+  "ok": true,
+  "got": "unknown",
+  "err": null
+ },
+ {
+  "itemId": "WR-227",
+  "identifier": "medicaid_renewal_review_months",
+  "testId": "WR-227-T1",
+  "ok": true,
+  "got": "[2026-10, 2026-11, 2026-12, 2027-01, 2027-02]",
+  "err": null
+ },
+ {
+  "itemId": "WR-228",
+  "identifier": "medicaid_months_demonstrated_since_last_determination",
+  "testId": "WR-228-T1",
+  "ok": true,
+  "got": "1",
+  "err": null
+ },
+ {
+  "itemId": "WR-229",
+  "identifier": "medicaid_satisfies_ce_at_renewal",
+  "testId": "WR-229-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-229",
+  "identifier": "medicaid_satisfies_ce_at_renewal",
+  "testId": "WR-229-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-230",
+  "identifier": "medicaid_ce_status_at_renewal",
+  "testId": "WR-230-T1",
+  "ok": true,
+  "got": "met",
+  "err": null
+ },
+ {
+  "itemId": "WR-230",
+  "identifier": "medicaid_ce_status_at_renewal",
+  "testId": "WR-230-T2",
+  "ok": true,
+  "got": "not met",
+  "err": null
+ },
+ {
+  "itemId": "WR-300",
+  "identifier": "snap_in_abawd_age_range",
+  "testId": "WR-300-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-300",
+  "identifier": "snap_in_abawd_age_range",
+  "testId": "WR-300-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-300",
+  "identifier": "snap_in_abawd_age_range",
+  "testId": "WR-300-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-300",
+  "identifier": "snap_in_abawd_age_range",
+  "testId": "WR-300-T4",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-301",
+  "identifier": "snap_is_unfit_for_employment",
+  "testId": "WR-301-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-301",
+  "identifier": "snap_is_unfit_for_employment",
+  "testId": "WR-301-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-302",
+  "identifier": "snap_has_responsibility_for_child_under_14",
+  "testId": "WR-302-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-302",
+  "identifier": "snap_has_responsibility_for_child_under_14",
+  "testId": "WR-302-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-302",
+  "identifier": "snap_has_responsibility_for_child_under_14",
+  "testId": "WR-302-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-303",
+  "identifier": "snap_has_responsibility_for_child_under_6",
+  "testId": "WR-303-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-303",
+  "identifier": "snap_has_responsibility_for_child_under_6",
+  "testId": "WR-303-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-304",
+  "identifier": "snap_weekly_average_hours_worked",
+  "testId": "WR-304-T1",
+  "ok": true,
+  "got": "30",
+  "err": null
+ },
+ {
+  "itemId": "WR-305",
+  "identifier": "snap_weekly_earnings",
+  "testId": "WR-305-T1",
+  "ok": true,
+  "got": "217.5",
+  "err": null
+ },
+ {
+  "itemId": "WR-306",
+  "identifier": "snap_meets_employment_exemption",
+  "testId": "WR-306-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-306",
+  "identifier": "snap_meets_employment_exemption",
+  "testId": "WR-306-T2",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-306",
+  "identifier": "snap_meets_employment_exemption",
+  "testId": "WR-306-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-307",
+  "identifier": "snap_is_exempt_from_work_registration",
+  "testId": "WR-307-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-307",
+  "identifier": "snap_is_exempt_from_work_registration",
+  "testId": "WR-307-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-307",
+  "identifier": "snap_is_exempt_from_work_registration",
+  "testId": "WR-307-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-308",
+  "identifier": "snap_is_subject_to_work_registration",
+  "testId": "WR-308-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-308",
+  "identifier": "snap_is_subject_to_work_registration",
+  "testId": "WR-308-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-309",
+  "identifier": "snap_is_exempt_as_indian",
+  "testId": "WR-309-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-309",
+  "identifier": "snap_is_exempt_as_indian",
+  "testId": "WR-309-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-310",
+  "identifier": "snap_is_exempt_from_time_limit",
+  "testId": "WR-310-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-310",
+  "identifier": "snap_is_exempt_from_time_limit",
+  "testId": "WR-310-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-311",
+  "identifier": "snap_hours_worked_with_good_cause",
+  "testId": "WR-311-T1",
+  "ok": true,
+  "got": "80",
+  "err": null
+ },
+ {
+  "itemId": "WR-312",
+  "identifier": "snap_fulfills_work_requirement",
+  "testId": "WR-312-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-312",
+  "identifier": "snap_fulfills_work_requirement",
+  "testId": "WR-312-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-312",
+  "identifier": "snap_fulfills_work_requirement",
+  "testId": "WR-312-T3",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-313",
+  "identifier": "snap_is_countable_month",
+  "testId": "WR-313-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-313",
+  "identifier": "snap_is_countable_month",
+  "testId": "WR-313-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-313",
+  "identifier": "snap_is_countable_month",
+  "testId": "WR-313-T3",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-314",
+  "identifier": "snap_time_limit_period_months",
+  "testId": "WR-314-T1",
+  "ok": true,
+  "got": "[2024-03, 2024-04, 2024-05, 2024-06, 2024-07, 2024-08, 2024-09, 2024-10, 2024-11, 2024-12, 2025-01, 2025-02, 2025-03, 2025-04, 2025-05, 2025-06, 2025-07, 2025-08, 2025-09, 2025-10, 2025-11, 2025-12, 2026-01, 2026-02, 2026-03, 2026-04, 2026-05, 2026-06, 2026-07, 2026-08, 2026-09, 2026-10, 2026-11, 2026-12, 2027-01, 2027-02]",
+  "err": null
+ },
+ {
+  "itemId": "WR-315",
+  "identifier": "snap_countable_months_used",
+  "testId": "WR-315-T1",
+  "ok": true,
+  "got": "3",
+  "err": null
+ },
+ {
+  "itemId": "WR-316",
+  "identifier": "snap_has_exhausted_time_limit",
+  "testId": "WR-316-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-316",
+  "identifier": "snap_has_exhausted_time_limit",
+  "testId": "WR-316-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-317",
+  "identifier": "snap_regains_eligibility",
+  "testId": "WR-317-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-317",
+  "identifier": "snap_regains_eligibility",
+  "testId": "WR-317-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ },
+ {
+  "itemId": "WR-318",
+  "identifier": "snap_time_limit_status",
+  "testId": "WR-318-T1",
+  "ok": true,
+  "got": "not subject",
+  "err": null
+ },
+ {
+  "itemId": "WR-318",
+  "identifier": "snap_time_limit_status",
+  "testId": "WR-318-T2",
+  "ok": true,
+  "got": "within limit",
+  "err": null
+ },
+ {
+  "itemId": "WR-318",
+  "identifier": "snap_time_limit_status",
+  "testId": "WR-318-T3",
+  "ok": true,
+  "got": "regained",
+  "err": null
+ },
+ {
+  "itemId": "WR-318",
+  "identifier": "snap_time_limit_status",
+  "testId": "WR-318-T4",
+  "ok": true,
+  "got": "limit exhausted",
+  "err": null
+ },
+ {
+  "itemId": "WR-319",
+  "identifier": "snap_is_subject_to_work_requirement",
+  "testId": "WR-319-T1",
+  "ok": true,
+  "got": "yes",
+  "err": null
+ },
+ {
+  "itemId": "WR-319",
+  "identifier": "snap_is_subject_to_work_requirement",
+  "testId": "WR-319-T2",
+  "ok": true,
+  "got": "no",
+  "err": null
+ }
+]

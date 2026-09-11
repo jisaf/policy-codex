@@ -1,0 +1,15 @@
+id: WR-215
+name: "Medicaid: total qualifying hours"
+identifier: medicaid_total_qualifying_hours
+kind: derived
+type: hours
+scope: person-month
+program: Medicaid
+meaning: Hours worked plus community service hours plus work program hours plus countable educational program hours for the month. An activity with no reported hours counts as 0.
+derived: ["+", [otherwise, hours_worked, 0], [otherwise, community_service_hours, 0], [otherwise, work_program_hours, 0], medicaid_countable_education_hours]
+sources: [S6]
+implemented: assembly
+open: [OQ-23]
+tests:
+  - {id: WR-215-T1, month: "2027-02", given: {hours_worked: 30, community_service_hours: 20, work_program_hours: 10, education_hours: 30, is_enrolled_half_time_education: false}, expect: 90}
+  - {id: WR-215-T2, month: "2027-02", given: {hours_worked: 30, is_enrolled_half_time_education: false}, expect: 30}

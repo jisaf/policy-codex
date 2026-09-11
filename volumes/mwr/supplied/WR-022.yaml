@@ -1,0 +1,10 @@
+id: WR-022
+name: Receives disability benefits
+identifier: receives_disability_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is receiving temporary or permanent disability benefits issued by governmental or private sources.
+supplied_by: Benefit award documentation or data match.
+sources: [S28]

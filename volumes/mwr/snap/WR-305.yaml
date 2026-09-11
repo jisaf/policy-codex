@@ -1,0 +1,14 @@
+id: WR-305
+name: "SNAP: weekly earnings"
+identifier: snap_weekly_earnings
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: Monthly income converted to weekly earnings, using 12 months per 52 weeks.
+derived: ["/", ["*", monthly_income, 12], 52]
+sources: [S30]
+implemented: assembly
+open: [OQ-8]
+tests:
+  - {id: WR-305-T1, month: "2027-02", given: {monthly_income: 942.5}, expect: 217.5}

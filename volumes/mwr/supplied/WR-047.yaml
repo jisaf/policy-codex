@@ -1,0 +1,11 @@
+id: WR-047
+name: Hours missed for good cause
+identifier: hours_missed_for_good_cause
+kind: supplied
+type: hours
+scope: person-month
+program: SNAP
+meaning: Hours of work, work program, or workfare the person would have completed in the month but missed for good cause as determined by the State agency, where the absence was temporary.
+supplied_by: Eligibility worker determination.
+sources: [S26]
+open: [OQ-22]

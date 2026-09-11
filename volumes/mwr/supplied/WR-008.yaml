@@ -1,0 +1,12 @@
+id: WR-008
+name: Relationships
+identifier: relationships
+kind: supplied
+type: relationships
+options: [parent, guardian, "caretaker relative", spouse, relative]
+scope: person
+program: All
+meaning: For each other person in the case, how this person is related to them. A person may hold several relationships to the same person. "relative" means a relative by blood, adoption, or marriage not otherwise listed.
+supplied_by: Applicant statement.
+sources: [S2, S5, S20]
+open: [OQ-17]

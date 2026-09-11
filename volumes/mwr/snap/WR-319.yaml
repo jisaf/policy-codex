@@ -1,0 +1,16 @@
+id: WR-319
+name: "SNAP: is subject to a SNAP work requirement"
+identifier: snap_is_subject_to_work_requirement
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: For the month the person is subject to general work registration or is not exempt from the ABAWD time limit.
+derived: [any, snap_is_subject_to_work_registration, [not, snap_is_exempt_from_time_limit]]
+sources: [S2, S20, S29]
+implemented: engine
+tags: [legal]
+open: [OQ-19]
+tests:
+  - {id: WR-319-T1, month: "2027-02", given: {snap_is_subject_to_work_registration: false, snap_is_exempt_from_time_limit: false}, expect: true}
+  - {id: WR-319-T2, month: "2027-02", given: {snap_is_subject_to_work_registration: false, snap_is_exempt_from_time_limit: true}, expect: false}

@@ -1,0 +1,10 @@
+id: WR-049
+name: Received SNAP benefits for the full month
+identifier: received_full_month_snap_benefits
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person received SNAP benefits for the full benefit month.
+supplied_by: SNAP issuance record.
+sources: [S25]

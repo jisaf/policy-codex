@@ -1,0 +1,692 @@
+[
+ {
+  "id": "WR-001",
+  "identifier": "date_of_birth",
+  "block": "ID            WR-001\nFact          Date of Birth\nIdentifier    date_of_birth\nKind          Supplied\nType          calendar date\nScope         person\nProgram       All\nMeaning       The calendar date on which the person was born, in the local date of the place of birth. Time of birth is not recorded.\nSupplied by   Applicant statement, verified against vital records or SSA data."
+ },
+ {
+  "id": "WR-002",
+  "identifier": "determination_date",
+  "block": "ID            WR-002\nFact          Determination Date\nIdentifier    determination_date\nKind          Supplied\nType          calendar date\nScope         case\nProgram       All\nMeaning       The date as of which eligibility is being determined. For an application it is the application date; for a renewal it is the redetermination date.\nSupplied by   Case record."
+ },
+ {
+  "id": "WR-005",
+  "identifier": "is_pregnant",
+  "block": "ID            WR-005\nFact          Is pregnant\nIdentifier    is_pregnant\nKind          Supplied\nType          yes/no\nScope         person\nProgram       All\nMeaning       The person is currently pregnant.\nSupplied by   Applicant statement or medical verification.\nSource        S2, S20"
+ },
+ {
+  "id": "WR-006",
+  "identifier": "is_entitled_to_postpartum_assistance",
+  "block": "ID            WR-006\nFact          Is entitled to postpartum medical assistance\nIdentifier    is_entitled_to_postpartum_assistance\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is entitled to postpartum medical assistance under section 1902(e)(5) or (e)(16) of the Social Security Act. Determined by the pregnancy-related eligibility determination, outside this volume.\nSupplied by   Eligibility system, pregnancy coverage determination.\nSource        S2\nOpen          OQ-2"
+ },
+ {
+  "id": "WR-007",
+  "identifier": "lives_with",
+  "block": "ID            WR-007\nFact          Lives with\nIdentifier    lives_with\nKind          Supplied\nType          group of persons\nScope         person\nProgram       All\nMeaning       The persons in the case with whom this person primarily resides.\nSupplied by   Applicant statement.\nSource        S5"
+ },
+ {
+  "id": "WR-008",
+  "identifier": "relationships",
+  "block": "ID            WR-008\nFact          Relationships\nIdentifier    relationships\nKind          Supplied\nType          relationships: parent, guardian, caretaker relative, spouse, relative\nScope         person\nProgram       All\nMeaning       For each other person in the case, how this person is related to them. A person may hold several relationships to the same person. \"relative\" means a relative by blood, adoption, or marriage not otherwise listed.\nSupplied by   Applicant statement.\nSource        S2, S5, S20\nOpen          OQ-17"
+ },
+ {
+  "id": "WR-009",
+  "identifier": "persons_cared_for",
+  "block": "ID            WR-009\nFact          Persons cared for\nIdentifier    persons_cared_for\nKind          Supplied\nType          group of persons\nScope         person\nProgram       All\nMeaning       The persons in the case to whom this person provides assistance that occurs on a regular basis and is not solely incidental in nature.\nSupplied by   Applicant statement.\nSource        S5, S20, S30"
+ },
+ {
+  "id": "WR-010",
+  "identifier": "care_hours_by_person",
+  "block": "ID            WR-010\nFact          Care hours by person\nIdentifier    care_hours_by_person\nKind          Supplied\nType          table keyed by person\nScope         person-month\nProgram       Medicaid\nMeaning       For each person in Persons cared for, the hours of assistance this person provided to them in the month.\nSupplied by   Applicant statement.\nSource        S5"
+ },
+ {
+  "id": "WR-011",
+  "identifier": "relies_on_another_for_care",
+  "block": "ID            WR-011\nFact          Relies on another individual for care\nIdentifier    relies_on_another_for_care\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person relies on another individual for care.\nSupplied by   Applicant statement.\nSource        S4\nOpen          OQ-3"
+ },
+ {
+  "id": "WR-012",
+  "identifier": "is_disabled_individual_ada",
+  "block": "ID            WR-012\nFact          Is a disabled individual under the ADA\nIdentifier    is_disabled_individual_ada\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person meets the Americans with Disabilities Act definition of disability at 28 CFR 35.108. The person need not be eligible for any program on the basis of disability.\nSupplied by   Eligibility worker determination from documentation or statement.\nSource        S4\nOpen          OQ-4"
+ },
+ {
+  "id": "WR-013",
+  "identifier": "indian_status",
+  "block": "ID            WR-013\nFact          Indian status\nIdentifier    indian_status\nKind          Supplied\nType          one of: Indian, Urban Indian, California Indian, IHS-eligible only, none\nScope         person\nProgram       All\nMeaning       Whether the person is an Indian or Urban Indian as defined in 25 U.S.C. 1603(13) and (28), a California Indian described in 25 U.S.C. 1679(a), or has otherwise been determined eligible as an Indian for the Indian Health Service. \"IHS-eligible only\" means the last of these without the others.\nSupplied by   Tribal enrollment or IHS eligibility documentation.\nSource        S2, S20"
+ },
+ {
+  "id": "WR-014",
+  "identifier": "is_veteran_total_disability",
+  "block": "ID            WR-014\nFact          Is a veteran with a total disability rating\nIdentifier    is_veteran_total_disability\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is a veteran with a disability rated as total under 38 U.S.C. 1155.\nSupplied by   Department of Veterans Affairs rating documentation.\nSource        S2"
+ },
+ {
+  "id": "WR-015",
+  "identifier": "is_blind_or_disabled_ssa",
+  "block": "ID            WR-015\nFact          Is blind or disabled under SSA section 1614\nIdentifier    is_blind_or_disabled_ssa\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is blind or disabled as defined in section 1614 of the Social Security Act.\nSupplied by   SSA determination.\nSource        S3"
+ },
+ {
+  "id": "WR-016",
+  "identifier": "has_substance_use_disorder",
+  "block": "ID            WR-016\nFact          Has a substance use disorder\nIdentifier    has_substance_use_disorder\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person has a substance use disorder.\nSupplied by   Clinical documentation or statement under penalty of perjury, per verification rules.\nSource        S3\nTags          medical"
+ },
+ {
+  "id": "WR-017",
+  "identifier": "recovery_start_date",
+  "block": "ID            WR-017\nFact          Recovery start date\nIdentifier    recovery_start_date\nKind          Supplied\nType          calendar date\nScope         person\nProgram       Medicaid\nMeaning       The date on which the person's recovery from a substance use disorder began. Unknown when the person is not in recovery.\nSupplied by   Clinical documentation or statement.\nSource        S3\nTags          medical\nOpen          OQ-18"
+ },
+ {
+  "id": "WR-018",
+  "identifier": "has_disabling_mental_disorder",
+  "block": "ID            WR-018\nFact          Has a disabling mental disorder\nIdentifier    has_disabling_mental_disorder\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person has a disabling mental disorder.\nSupplied by   Clinical documentation or statement.\nSource        S3\nTags          medical"
+ },
+ {
+  "id": "WR-019",
+  "identifier": "has_adl_impairing_disability",
+  "block": "ID            WR-019\nFact          Has a disability that significantly impairs daily activities\nIdentifier    has_adl_impairing_disability\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person has a physical, intellectual, or developmental disability that significantly impairs their ability to perform one or more activities of daily living.\nSupplied by   Clinical documentation or statement.\nSource        S3\nTags          medical"
+ },
+ {
+  "id": "WR-020",
+  "identifier": "has_serious_or_complex_medical_condition",
+  "block": "ID            WR-020\nFact          Has a serious or complex medical condition\nIdentifier    has_serious_or_complex_medical_condition\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person has a medical condition that is life threatening, seriously disabling without necessarily being life threatening, causing significant pain or discomfort that can cause serious interruptions to life activities, requiring a major time or effort commitment from caregivers for a substantial period of time, requiring frequent monitoring, associated with severe consequences or negative consequences for someone else, affecting multiple organ systems, requiring management to tight physiological parameters, requiring coordination of multiple specialties, requiring treatment that carries a risk of serious complications, or requiring adjustment in non-medical environments.\nSupplied by   Clinical documentation or statement.\nSource        S3\nTags          medical"
+ },
+ {
+  "id": "WR-021",
+  "identifier": "condition_impairs_ce_compliance",
+  "block": "ID            WR-021\nFact          Condition significantly impairs ability to comply\nIdentifier    condition_impairs_ce_compliance\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person's physical, mental, or other behavioral health condition significantly impairs their ability to comply with the community engagement requirement.\nSupplied by   Clinical documentation or statement.\nSource        S3\nTags          medical\nOpen          OQ-5"
+ },
+ {
+  "id": "WR-022",
+  "identifier": "receives_disability_benefits",
+  "block": "ID            WR-022\nFact          Receives disability benefits\nIdentifier    receives_disability_benefits\nKind          Supplied\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The person is receiving temporary or permanent disability benefits issued by governmental or private sources.\nSupplied by   Benefit award documentation or data match.\nSource        S28"
+ },
+ {
+  "id": "WR-023",
+  "identifier": "agency_finds_obviously_unfit",
+  "block": "ID            WR-023\nFact          Agency finds the person obviously unfit for employment\nIdentifier    agency_finds_obviously_unfit\nKind          Supplied\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The State agency has determined that the person is obviously mentally or physically unfit for employment.\nSupplied by   Eligibility worker determination.\nSource        S28"
+ },
+ {
+  "id": "WR-024",
+  "identifier": "has_medical_statement_of_unfitness",
+  "block": "ID            WR-024\nFact          Has a medical statement of unfitness for employment\nIdentifier    has_medical_statement_of_unfitness\nKind          Supplied\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The person has provided a statement from a physician, physician's assistant, nurse, nurse practitioner, designated representative of the physician's office, a licensed or certified psychologist, a social worker, or other medical personnel the State agency determines appropriate, that they are physically or mentally unfit for employment.\nSupplied by   Document on file.\nSource        S28"
+ },
+ {
+  "id": "WR-025",
+  "identifier": "was_inmate_in_month",
+  "block": "ID            WR-025\nFact          Was an inmate of a public institution in month\nIdentifier    was_inmate_in_month\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       At any point during the month the person was an inmate of a public institution.\nSupplied by   Corrections data match or statement.\nSource        S2, S12\nOpen          OQ-6"
+ },
+ {
+  "id": "WR-026",
+  "identifier": "is_complying_with_tanf_work_requirements",
+  "block": "ID            WR-026\nFact          Is complying with TANF work requirements\nIdentifier    is_complying_with_tanf_work_requirements\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       All\nMeaning       During the month the person is subject to and in compliance with work requirements imposed under title IV-A of the Social Security Act (TANF).\nSupplied by   TANF case record.\nSource        S2, S30"
+ },
+ {
+  "id": "WR-027",
+  "identifier": "receives_unemployment_compensation",
+  "block": "ID            WR-027\nFact          Receives unemployment compensation\nIdentifier    receives_unemployment_compensation\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       During the month the person is subject to and complying with the work registration requirements of the Federal-State unemployment compensation system, shown by receipt of unemployment compensation.\nSupplied by   Unemployment insurance data match.\nSource        S30, S31"
+ },
+ {
+  "id": "WR-028",
+  "identifier": "is_member_of_snap_household",
+  "block": "ID            WR-028\nFact          Is a member of a household receiving SNAP\nIdentifier    is_member_of_snap_household\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       During the month the person is a member of a household that receives SNAP benefits.\nSupplied by   SNAP case record.\nSource        S2"
+ },
+ {
+  "id": "WR-029",
+  "identifier": "participates_in_sud_treatment_program",
+  "block": "ID            WR-029\nFact          Participates in a substance use treatment program\nIdentifier    participates_in_sud_treatment_program\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       All\nMeaning       During the month the person is a regular participant in a drug addiction or alcoholic treatment and rehabilitation program as defined in section 3(h) of the Food and Nutrition Act of 2008.\nSupplied by   Provider verification.\nSource        S2, S30\nTags          medical"
+ },
+ {
+  "id": "WR-030",
+  "identifier": "is_adult_group_eligible_or_enrolled",
+  "block": "ID            WR-030\nFact          Is eligible for or enrolled in the adult group\nIdentifier    is_adult_group_eligible_or_enrolled\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is eligible to enroll or is enrolled under the State plan in the adult group described in section 1902(a)(10)(A)(i)(VIII), determined outside this volume.\nSupplied by   Eligibility system, group determination.\nSource        S1, S16"
+ },
+ {
+  "id": "WR-031",
+  "identifier": "is_equivalent_waiver_eligible_or_enrolled",
+  "block": "ID            WR-031\nFact          Is eligible for or enrolled under an equivalent-coverage waiver\nIdentifier    is_equivalent_waiver_eligible_or_enrolled\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is eligible to enroll or is enrolled under a section 1115 waiver providing coverage equivalent to minimum essential coverage.\nSupplied by   Eligibility system.\nSource        S1"
+ },
+ {
+  "id": "WR-032",
+  "identifier": "is_medicare_entitled_or_enrolled",
+  "block": "ID            WR-032\nFact          Is entitled to or enrolled in Medicare\nIdentifier    is_medicare_entitled_or_enrolled\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is entitled to or enrolled for Medicare Part A, or enrolled for Part B.\nSupplied by   Medicare data match.\nSource        S1, S16"
+ },
+ {
+  "id": "WR-033",
+  "identifier": "is_otherwise_eligible_under_state_plan",
+  "block": "ID            WR-033\nFact          Is otherwise eligible under the State plan\nIdentifier    is_otherwise_eligible_under_state_plan\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is otherwise eligible to enroll under the State plan in a group other than the adult group.\nSupplied by   Eligibility system.\nSource        S1"
+ },
+ {
+  "id": "WR-034",
+  "identifier": "is_former_foster_care_youth_group",
+  "block": "ID            WR-034\nFact          Is in the former foster care youth group\nIdentifier    is_former_foster_care_youth_group\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is described in section 1902(a)(10)(A)(i)(IX), the group for former foster care children.\nSupplied by   Eligibility system, group determination.\nSource        S2"
+ },
+ {
+  "id": "WR-040",
+  "identifier": "hours_worked",
+  "block": "ID            WR-040\nFact          Hours worked\nIdentifier    hours_worked\nKind          Supplied\nType          hours\nScope         person-month\nProgram       All\nMeaning       Hours of work performed in the month.\nSupplied by   Payroll data match, employer verification, or statement.\nSource        S6, S21"
+ },
+ {
+  "id": "WR-041",
+  "identifier": "community_service_hours",
+  "block": "ID            WR-041\nFact          Community service hours\nIdentifier    community_service_hours\nKind          Supplied\nType          hours\nScope         person-month\nProgram       Medicaid\nMeaning       Hours of community service completed in the month.\nSupplied by   Organization verification or statement.\nSource        S6"
+ },
+ {
+  "id": "WR-042",
+  "identifier": "work_program_hours",
+  "block": "ID            WR-042\nFact          Work program hours\nIdentifier    work_program_hours\nKind          Supplied\nType          hours\nScope         person-month\nProgram       All\nMeaning       Hours of participation in a work program in the month, in compliance with the program's requirements.\nSupplied by   Program provider record.\nSource        S6, S21\nOpen          OQ-7"
+ },
+ {
+  "id": "WR-043",
+  "identifier": "education_hours",
+  "block": "ID            WR-043\nFact          Educational program hours\nIdentifier    education_hours\nKind          Supplied\nType          hours\nScope         person-month\nProgram       Medicaid\nMeaning       Hours of participation in an educational program in the month.\nSupplied by   Institution record or statement.\nSource        S6, S7"
+ },
+ {
+  "id": "WR-044",
+  "identifier": "is_enrolled_half_time_education",
+  "block": "ID            WR-044\nFact          Is enrolled at least half-time in an educational program\nIdentifier    is_enrolled_half_time_education\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       All\nMeaning       During the month the person is enrolled at least half-time in a recognized school, training program, or institution of higher education.\nSupplied by   Institution record or statement.\nSource        S6, S30"
+ },
+ {
+  "id": "WR-045",
+  "identifier": "monthly_income",
+  "block": "ID            WR-045\nFact          Monthly income\nIdentifier    monthly_income\nKind          Supplied\nType          money\nScope         person-month\nProgram       All\nMeaning       The person's income for the month.\nSupplied by   Payroll data match or statement.\nSource        S6, S30\nOpen          OQ-8"
+ },
+ {
+  "id": "WR-046",
+  "identifier": "is_seasonal_worker",
+  "block": "ID            WR-046\nFact          Is a seasonal worker\nIdentifier    is_seasonal_worker\nKind          Supplied\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is a seasonal worker as described in section 45R(d)(5)(B) of the Internal Revenue Code.\nSupplied by   Statement or employer verification.\nSource        S6"
+ },
+ {
+  "id": "WR-047",
+  "identifier": "hours_missed_for_good_cause",
+  "block": "ID            WR-047\nFact          Hours missed for good cause\nIdentifier    hours_missed_for_good_cause\nKind          Supplied\nType          hours\nScope         person-month\nProgram       SNAP\nMeaning       Hours of work, work program, or workfare the person would have completed in the month but missed for good cause as determined by the State agency, where the absence was temporary.\nSupplied by   Eligibility worker determination.\nSource        S26\nOpen          OQ-22"
+ },
+ {
+  "id": "WR-048",
+  "identifier": "participates_in_workfare",
+  "block": "ID            WR-048\nFact          Participates in workfare\nIdentifier    participates_in_workfare\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       During the month the person participates in and complies with a program under 7 U.S.C. 2029 or a comparable State or local program.\nSupplied by   Program provider record.\nSource        S21"
+ },
+ {
+  "id": "WR-049",
+  "identifier": "received_full_month_snap_benefits",
+  "block": "ID            WR-049\nFact          Received SNAP benefits for the full month\nIdentifier    received_full_month_snap_benefits\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       The person received SNAP benefits for the full benefit month.\nSupplied by   SNAP issuance record.\nSource        S25"
+ },
+ {
+  "id": "WR-050",
+  "identifier": "snap_benefits_prorated",
+  "block": "ID            WR-050\nFact          SNAP benefits were prorated in month\nIdentifier    snap_benefits_prorated\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       The person's benefits for the month were prorated under 7 CFR 273.10.\nSupplied by   SNAP issuance record.\nSource        S25"
+ },
+ {
+  "id": "WR-051",
+  "identifier": "covered_by_abawd_waiver",
+  "block": "ID            WR-051\nFact          Covered by an ABAWD waiver in month\nIdentifier    covered_by_abawd_waiver\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       During the month the person resided in an area covered by an approved waiver of the time limit.\nSupplied by   Waiver geography lookup on the person's address.\nSource        S25, S34\nOpen          OQ-9"
+ },
+ {
+  "id": "WR-052",
+  "identifier": "has_discretionary_exemption",
+  "block": "ID            WR-052\nFact          Has a discretionary exemption in month\nIdentifier    has_discretionary_exemption\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       The State agency applied one of its discretionary exemptions to the person for the month.\nSupplied by   SNAP case record.\nSource        S23"
+ },
+ {
+  "id": "WR-053",
+  "identifier": "snap_household_members",
+  "block": "ID            WR-053\nFact          SNAP household members\nIdentifier    snap_household_members\nKind          Supplied\nType          group of persons\nScope         person\nProgram       SNAP\nMeaning       The persons in the case who are members of the same SNAP household as this person, determined under 7 CFR 273.1 outside this volume.\nSupplied by   SNAP household determination.\nSource        S20, S30"
+ },
+ {
+  "id": "WR-054",
+  "identifier": "has_responsibility_for_incapacitated_person",
+  "block": "ID            WR-054\nFact          Has responsibility for the care of an incapacitated person\nIdentifier    has_responsibility_for_incapacitated_person\nKind          Supplied\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The person is responsible for the care of an incapacitated person.\nSupplied by   Applicant statement.\nSource        S30"
+ },
+ {
+  "id": "WR-055",
+  "identifier": "is_head_of_household",
+  "block": "ID            WR-055\nFact          Is head of household\nIdentifier    is_head_of_household\nKind          Supplied\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The person is the head of the SNAP household.\nSupplied by   SNAP case record.\nSource        S30"
+ },
+ {
+  "id": "WR-056",
+  "identifier": "hours_worked_last_30_days",
+  "block": "ID            WR-056\nFact          Hours worked in the last 30 days\nIdentifier    hours_worked_last_30_days\nKind          Supplied\nType          hours\nScope         person\nProgram       SNAP\nMeaning       Hours worked during the 30-day period ending on the Determination Date.\nSupplied by   Employer verification or statement.\nSource        S22"
+ },
+ {
+  "id": "WR-057",
+  "identifier": "work_program_hours_last_30_days",
+  "block": "ID            WR-057\nFact          Work program hours in the last 30 days\nIdentifier    work_program_hours_last_30_days\nKind          Supplied\nType          hours\nScope         person\nProgram       SNAP\nMeaning       Hours of work program participation, in compliance with its requirements, during the 30-day period ending on the Determination Date.\nSupplied by   Program provider record.\nSource        S22"
+ },
+ {
+  "id": "WR-058",
+  "identifier": "participated_in_workfare_last_30_days",
+  "block": "ID            WR-058\nFact          Participated in workfare in the last 30 days\nIdentifier    participated_in_workfare_last_30_days\nKind          Supplied\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       During the 30-day period ending on the Determination Date the person participated in and complied with a workfare program.\nSupplied by   Program provider record.\nSource        S22"
+ },
+ {
+  "id": "WR-060",
+  "identifier": "received_inpatient_or_facility_services",
+  "block": "ID            WR-060\nFact          Received inpatient or facility services in month\nIdentifier    received_inpatient_or_facility_services\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       For part or all of the month the person received inpatient hospital services, nursing facility services, services in an intermediate care facility for individuals with intellectual disabilities, inpatient psychiatric hospital services, or other services of similar acuity.\nSupplied by   Claims or encounter data.\nSource        S10"
+ },
+ {
+  "id": "WR-061",
+  "identifier": "county_has_declared_disaster",
+  "block": "ID            WR-061\nFact          County has a declared emergency or disaster in month\nIdentifier    county_has_declared_disaster\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       For part or all of the month the county in which the person resides is under an emergency or disaster declared by the President under the National Emergencies Act or the Stafford Act.\nSupplied by   Declaration lookup on the person's county.\nSource        S10"
+ },
+ {
+  "id": "WR-062",
+  "identifier": "county_unemployment_rate",
+  "block": "ID            WR-062\nFact          County unemployment rate\nIdentifier    county_unemployment_rate\nKind          Supplied\nType          rate\nScope         person-month\nProgram       Medicaid\nMeaning       The unemployment rate for the month of the county in which the person resides, as a fraction.\nSupplied by   Bureau of Labor Statistics data on the person's county.\nSource        S10"
+ },
+ {
+  "id": "WR-063",
+  "identifier": "national_unemployment_rate",
+  "block": "ID            WR-063\nFact          National unemployment rate\nIdentifier    national_unemployment_rate\nKind          Supplied\nType          rate\nScope         month\nProgram       Medicaid\nMeaning       The national unemployment rate for the month, as a fraction.\nSupplied by   Bureau of Labor Statistics.\nSource        S10"
+ },
+ {
+  "id": "WR-064",
+  "identifier": "traveled_for_extended_care",
+  "block": "ID            WR-064\nFact          Traveled outside the community for extended care in month\nIdentifier    traveled_for_extended_care\nKind          Supplied\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       For part or all of the month the person or their dependent had to travel outside their community for an extended period to receive medical services necessary to treat a serious or complex medical condition that are not available within their community of residence.\nSupplied by   Statement with medical verification.\nSource        S10"
+ },
+ {
+  "id": "WR-065",
+  "identifier": "most_recent_determination_date",
+  "block": "ID            WR-065\nFact          Most recent eligibility determination date\nIdentifier    most_recent_determination_date\nKind          Supplied\nType          calendar date\nScope         person\nProgram       Medicaid\nMeaning       The date of the person's most recent determination or redetermination of eligibility before the current one.\nSupplied by   Case record.\nSource        S8"
+ },
+ {
+  "id": "WR-100",
+  "identifier": "medicaid_ce_required_hours",
+  "block": "ID            WR-100\nFact          Medicaid community engagement required hours per month\nIdentifier    medicaid_ce_required_hours\nKind          Parameter\nType          hours\nScope         global\nProgram       Medicaid\nMeaning       The hours of work, community service, work program participation, or a combination that demonstrate community engagement for a month.\nValue         80\nSource        S6\nEffective     2027-01-01 to present"
+ },
+ {
+  "id": "WR-101",
+  "identifier": "federal_minimum_wage",
+  "block": "ID            WR-101\nFact          Federal minimum wage\nIdentifier    federal_minimum_wage\nKind          Parameter\nType          money\nScope         global\nProgram       All\nMeaning       The Federal minimum hourly wage under 29 U.S.C. 206(a)(1).\nValue         7.25\nSource        S18"
+ },
+ {
+  "id": "WR-102",
+  "identifier": "medicaid_ce_min_age",
+  "block": "ID            WR-102\nFact          Medicaid community engagement minimum age\nIdentifier    medicaid_ce_min_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       The youngest age at which a person can be an applicable individual. A person must have attained this age.\nValue         19\nSource        S1"
+ },
+ {
+  "id": "WR-103",
+  "identifier": "medicaid_ce_max_age_exclusive",
+  "block": "ID            WR-103\nFact          Medicaid community engagement age ceiling\nIdentifier    medicaid_ce_max_age_exclusive\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       A person must be under this age to be an applicable individual.\nValue         65\nSource        S1"
+ },
+ {
+  "id": "WR-104",
+  "identifier": "medicaid_dependent_child_max_age",
+  "block": "ID            WR-104\nFact          Medicaid dependent child maximum age\nIdentifier    medicaid_dependent_child_max_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       A dependent child for the caregiver exclusion is 13 years of age or under.\nValue         13\nSource        S2, S4"
+ },
+ {
+  "id": "WR-105",
+  "identifier": "medicaid_application_lookback_months",
+  "block": "ID            WR-105\nFact          Medicaid application lookback months\nIdentifier    medicaid_application_lookback_months\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       The number of consecutive months immediately preceding the month of application for which an applicant must demonstrate community engagement. The State specifies 1, 2, or 3.\nAssumption    The State elects 1 month. Replace with the actual election.\nValue         1\nSource        S8\nTags          state_election\nOpen          OQ-10"
+ },
+ {
+  "id": "WR-106",
+  "identifier": "medicaid_renewal_required_months",
+  "block": "ID            WR-106\nFact          Medicaid renewal required months\nIdentifier    medicaid_renewal_required_months\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       The number of months, consecutive or not, between determinations for which an enrollee must demonstrate community engagement. The State specifies 1 or more.\nAssumption    The State elects 1 month. Replace with the actual election.\nValue         1\nSource        S8\nTags          state_election\nOpen          OQ-10"
+ },
+ {
+  "id": "WR-107",
+  "identifier": "medicaid_ce_implementation_date",
+  "block": "ID            WR-107\nFact          Medicaid community engagement implementation date\nIdentifier    medicaid_ce_implementation_date\nKind          Parameter\nType          calendar date\nScope         global\nProgram       Medicaid\nMeaning       The first date on which community engagement is a condition of eligibility in this State. The Federal deadline is January 1, 2027; the State may elect an earlier date or hold a good-faith exemption until December 31, 2028.\nAssumption    No earlier election and no good-faith exemption.\nValue         2027-01-01\nSource        S11\nTags          state_election\nOpen          OQ-11"
+ },
+ {
+  "id": "WR-108",
+  "identifier": "stable_recovery_years",
+  "block": "ID            WR-108\nFact          Stable recovery years\nIdentifier    stable_recovery_years\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       A person in recovery from a substance use disorder for this many years or more is in stable recovery and is not medically frail on that basis.\nValue         5\nSource        S3"
+ },
+ {
+  "id": "WR-109",
+  "identifier": "inmate_lookback_months",
+  "block": "ID            WR-109\nFact          Inmate lookback months\nIdentifier    inmate_lookback_months\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       The number of months before a month during which having been an inmate of a public institution excludes the person for that month.\nValue         3\nSource        S12"
+ },
+ {
+  "id": "WR-110",
+  "identifier": "caregiver_min_hours_nonresident_nonrelative",
+  "block": "ID            WR-110\nFact          Caregiver minimum hours, non-resident non-relative\nIdentifier    caregiver_min_hours_nonresident_nonrelative\nKind          Parameter\nType          hours\nScope         global\nProgram       Medicaid\nMeaning       The monthly hours of non-incidental assistance a person must provide to a dependent child or disabled individual with whom they neither reside nor are related, to be a family caregiver.\nValue         80\nSource        S5"
+ },
+ {
+  "id": "WR-111",
+  "identifier": "hardship_unemployment_rate_cap",
+  "block": "ID            WR-111\nFact          Hardship unemployment rate cap\nIdentifier    hardship_unemployment_rate_cap\nKind          Parameter\nType          rate\nScope         global\nProgram       Medicaid\nMeaning       The county unemployment rate at or above which a short-term hardship exists, unless 1.5 times the national rate is lower.\nValue         0.08\nSource        S10"
+ },
+ {
+  "id": "WR-112",
+  "identifier": "hardship_national_rate_multiplier",
+  "block": "ID            WR-112\nFact          Hardship national rate multiplier\nIdentifier    hardship_national_rate_multiplier\nKind          Parameter\nType          rate\nScope         global\nProgram       Medicaid\nMeaning       The multiple of the national unemployment rate compared against the cap.\nValue         1.5\nSource        S10"
+ },
+ {
+  "id": "WR-113",
+  "identifier": "state_elects_short_term_hardship",
+  "block": "ID            WR-113\nFact          State elects the short-term hardship exception\nIdentifier    state_elects_short_term_hardship\nKind          Parameter\nType          yes/no\nScope         global\nProgram       Medicaid\nMeaning       Whether the State has elected the optional short-term hardship exception.\nAssumption    The State elects the exception. Replace with the actual election.\nValue         yes\nSource        S10\nTags          state_election\nOpen          OQ-12"
+ },
+ {
+  "id": "WR-114",
+  "identifier": "medicaid_seasonal_average_months",
+  "block": "ID            WR-114\nFact          Medicaid seasonal income averaging months\nIdentifier    medicaid_seasonal_average_months\nKind          Parameter\nType          whole number\nScope         global\nProgram       Medicaid\nMeaning       The number of preceding months over which a seasonal worker's income is averaged.\nValue         6\nSource        S6"
+ },
+ {
+  "id": "WR-120",
+  "identifier": "snap_abawd_min_age",
+  "block": "ID            WR-120\nFact          SNAP ABAWD minimum age\nIdentifier    snap_abawd_min_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       The youngest age subject to the ABAWD time limit. Persons under 18 are exempt.\nValue         18\nSource        S20"
+ },
+ {
+  "id": "WR-121",
+  "identifier": "snap_abawd_max_age",
+  "block": "ID            WR-121\nFact          SNAP ABAWD maximum age\nIdentifier    snap_abawd_max_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       The oldest age subject to the ABAWD time limit.\nAssumption    Persons 65 and older are exempt, matching the reported FNS implementation. The statute reads \"over 65\", which literally exempts only persons 66 and older.\nValue         64\nSource        S20, S33\nTags          legal\nOpen          OQ-13"
+ },
+ {
+  "id": "WR-122",
+  "identifier": "snap_dependent_child_age_limit",
+  "block": "ID            WR-122\nFact          SNAP dependent child age limit\nIdentifier    snap_dependent_child_age_limit\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       A dependent child for the time-limit exception is under this age.\nValue         14\nSource        S20"
+ },
+ {
+  "id": "WR-123",
+  "identifier": "snap_required_hours_per_month",
+  "block": "ID            WR-123\nFact          SNAP required hours per month\nIdentifier    snap_required_hours_per_month\nKind          Parameter\nType          hours\nScope         global\nProgram       SNAP\nMeaning       Twenty hours a week averaged monthly, which the regulation defines as 80 hours a month.\nValue         80\nSource        S21, S24"
+ },
+ {
+  "id": "WR-124",
+  "identifier": "snap_countable_month_limit",
+  "block": "ID            WR-124\nFact          SNAP countable month limit\nIdentifier    snap_countable_month_limit\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       The number of countable months in the period after which the person is ineligible.\nValue         3\nSource        S21"
+ },
+ {
+  "id": "WR-125",
+  "identifier": "snap_period_months",
+  "block": "ID            WR-125\nFact          SNAP time limit period months\nIdentifier    snap_period_months\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       The length in months of the period over which countable months accumulate.\nValue         36\nSource        S21, S27"
+ },
+ {
+  "id": "WR-126",
+  "identifier": "snap_regain_hours",
+  "block": "ID            WR-126\nFact          SNAP hours to regain eligibility\nIdentifier    snap_regain_hours\nKind          Parameter\nType          hours\nScope         global\nProgram       SNAP\nMeaning       Hours of work or work program participation in a 30-day period that regain eligibility.\nValue         80\nSource        S22"
+ },
+ {
+  "id": "WR-127",
+  "identifier": "snap_work_registration_min_age",
+  "block": "ID            WR-127\nFact          SNAP work registration minimum age\nIdentifier    snap_work_registration_min_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       The youngest age subject to general work registration. The statute covers persons over 15.\nValue         16\nSource        S29, S31"
+ },
+ {
+  "id": "WR-128",
+  "identifier": "snap_work_registration_max_age",
+  "block": "ID            WR-128\nFact          SNAP work registration maximum age\nIdentifier    snap_work_registration_max_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       The oldest age subject to general work registration. The statute covers persons under 60.\nValue         59\nSource        S29, S31"
+ },
+ {
+  "id": "WR-129",
+  "identifier": "snap_general_exemption_child_age",
+  "block": "ID            WR-129\nFact          SNAP general exemption child age\nIdentifier    snap_general_exemption_child_age\nKind          Parameter\nType          whole number\nScope         global\nProgram       SNAP\nMeaning       Responsibility for a dependent child under this age exempts a person from general work registration.\nValue         6\nSource        S30"
+ },
+ {
+  "id": "WR-130",
+  "identifier": "snap_employment_exemption_weekly_hours",
+  "block": "ID            WR-130\nFact          SNAP employment exemption weekly hours\nIdentifier    snap_employment_exemption_weekly_hours\nKind          Parameter\nType          hours\nScope         global\nProgram       SNAP\nMeaning       Weekly hours of employment, or the multiple of the minimum wage in weekly earnings, that exempt a person from general work registration.\nValue         30\nSource        S30"
+ },
+ {
+  "id": "WR-131",
+  "identifier": "snap_clock_method",
+  "block": "ID            WR-131\nFact          SNAP time limit clock method\nIdentifier    snap_clock_method\nKind          Parameter\nType          one of: rolling, fixed\nScope         global\nProgram       SNAP\nMeaning       Whether the State measures the 36-month period as a rolling window ending at the current month or as a fixed period.\nAssumption    Rolling clock. Replace with the State's method.\nValue         rolling\nSource        S27\nTags          state_election\nOpen          OQ-14"
+ },
+ {
+  "id": "WR-132",
+  "identifier": "snap_abawd_changes_effective_date",
+  "block": "ID            WR-132\nFact          SNAP ABAWD changes effective date\nIdentifier    snap_abawd_changes_effective_date\nKind          Parameter\nType          calendar date\nScope         global\nProgram       SNAP\nMeaning       The date on which the Pub. L. 119-21 changes to the time-limit exceptions took effect.\nAssumption    Effective on enactment; section 10102 states no other date.\nValue         2025-07-04\nSource        S33\nTags          legal\nOpen          OQ-15"
+ },
+ {
+  "id": "WR-003",
+  "identifier": "age",
+  "block": "ID            WR-003\nFact          Age\nIdentifier    age\nKind          Derived\nType          whole number\nScope         person\nProgram       All\nMeaning       Whole years elapsed from Date of Birth to the Determination Date.\nPrecision     Day-based. A person turns N on the Nth anniversary of Date of Birth, starting at 12:00am local time. Time of birth is ignored. A February 29 birth turns N on March 1 in a non-leap year.\nDerived as    the number of whole years between Date of Birth and the Determination Date\nImplemented   Fact assembly\nExamples\n  WR-003-T1: given as of 2026-03-14; date_of_birth=\"2007-03-15\" => 18\n  WR-003-T2: given as of 2026-03-15; date_of_birth=\"2007-03-15\" => 19\n  WR-003-T3: given as of 2026-02-28; date_of_birth=\"2008-02-29\" => 17\n  WR-003-T4: given as of 2026-03-01; date_of_birth=\"2008-02-29\" => 18"
+ },
+ {
+  "id": "WR-004",
+  "identifier": "age_at_month",
+  "block": "ID            WR-004\nFact          Age at month\nIdentifier    age_at_month\nKind          Derived\nType          whole number\nScope         person-month\nProgram       All\nMeaning       Whole years elapsed from Date of Birth to the first day of the month.\nPrecision     Same day-based rule as Age. A person who reaches an age during the month is treated as the younger age for that whole month.\nDerived as    the number of whole years between Date of Birth and the first day of the month\nImplemented   Fact assembly\nExamples\n  WR-004-T1: given month 2027-02; date_of_birth=\"2009-02-15\" => 17\n  WR-004-T2: given month 2027-03; date_of_birth=\"2009-02-15\" => 18\nOpen          OQ-1"
+ },
+ {
+  "id": "WR-200",
+  "identifier": "medicaid_in_ce_age_range",
+  "block": "ID            WR-200\nFact          Medicaid: is in the community engagement age range\nIdentifier    medicaid_in_ce_age_range\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person has attained age 19 and is under age 65.\nDerived as    all of the following are true:\n                - Age is at least Medicaid community engagement minimum age (19)\n                - Age is less than Medicaid community engagement age ceiling (65)\nSource        S1\nImplemented   Determination engine\nExamples\n  WR-200-T1: given date_of_birth=\"2008-03-16\" => false\n  WR-200-T2: given date_of_birth=\"2008-03-15\" => true\n  WR-200-T3: given date_of_birth=\"1962-03-15\" => false\n  WR-200-T4: given date_of_birth=\"1962-03-16\" => true"
+ },
+ {
+  "id": "WR-201",
+  "identifier": "medicaid_is_dependent_child",
+  "block": "ID            WR-201\nFact          Medicaid: is a dependent child\nIdentifier    medicaid_is_dependent_child\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is 13 years of age or under and relies on another individual for care.\nDerived as    all of the following are true:\n                - Age is at most Medicaid dependent child maximum age (13)\n                - Relies on another individual for care\nSource        S4\nImplemented   Fact assembly\nTags          legal\nExamples\n  WR-201-T1: given date_of_birth=\"2013-06-01\"; relies_on_another_for_care=true => true\n  WR-201-T2: given date_of_birth=\"2013-03-15\"; relies_on_another_for_care=true => false\n  WR-201-T3: given date_of_birth=\"2017-01-01\" => unknown\nOpen          OQ-3"
+ },
+ {
+  "id": "WR-202",
+  "identifier": "medicaid_is_qualifying_dependent",
+  "block": "ID            WR-202\nFact          Medicaid: is a dependent child or disabled individual\nIdentifier    medicaid_is_qualifying_dependent\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is a dependent child or a disabled individual, as those terms are defined for the community engagement subpart.\nDerived as    any of the following is true:\n                - Medicaid: is a dependent child\n                - Is a disabled individual under the ADA\nSource        S2, S4\nImplemented   Fact assembly\nExamples\n  WR-202-T1: given date_of_birth=\"1987-01-01\"; is_disabled_individual_ada=true => true\n  WR-202-T2: given date_of_birth=\"2017-01-01\"; relies_on_another_for_care=true; is_disabled_individual_ada=false => true\n  WR-202-T3: given date_of_birth=\"2007-01-01\"; relies_on_another_for_care=true; is_disabled_individual_ada=false => false"
+ },
+ {
+  "id": "WR-203",
+  "identifier": "medicaid_is_parent_or_caretaker_of_dependent",
+  "block": "ID            WR-203\nFact          Medicaid: is a parent, guardian, or caretaker relative of a dependent\nIdentifier    medicaid_is_parent_or_caretaker_of_dependent\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       There is a person of whom this person is a parent, guardian, or caretaker relative, and that person is a dependent child or disabled individual.\nDerived as    there is a person of whom this person is a parent, guardian, or caretaker relative such that\n                that person's Medicaid: is a dependent child or disabled individual\nSource        S2\nImplemented   Fact assembly\nTags          legal\nExamples\n  WR-203-T1: given date_of_birth=\"1990-01-01\"; relationships [[\"parent\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"2015-01-01\",\"relies_on_another_for_care\":true,\"is_disabled_individual_ada\":false}} => true\n  WR-203-T2: given date_of_birth=\"1990-01-01\"; relationships [[\"parent\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"2010-01-01\",\"relies_on_another_for_care\":true,\"is_disabled_individual_ada\":false}} => false\n  WR-203-T3: given date_of_birth=\"1990-01-01\"; relationships [[\"spouse\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"1988-01-01\",\"is_disabled_individual_ada\":true}} => false\nOpen          OQ-16"
+ },
+ {
+  "id": "WR-204",
+  "identifier": "medicaid_is_family_caregiver_of_dependent",
+  "block": "ID            WR-204\nFact          Medicaid: is a family caregiver of a dependent\nIdentifier    medicaid_is_family_caregiver_of_dependent\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       There is a person this person cares for who is a dependent child or disabled individual, and this person either resides with them, is their relative, or provided at least 80 hours of assistance to them in the month containing the Determination Date.\nPrecision     Care hours are read from the month containing the Determination Date.\nDerived as    there is a person in Persons cared for such that\n                all of the following are true:\n                  - that person's Medicaid: is a dependent child or disabled individual\n                  - any of the following is true:\n                    - that person is in Lives with\n                    - this person is a parent or guardian or caretaker relative or spouse or relative of that person\n                    - Care hours by person for the month containing the Determination Date, for that person is at least Caregiver minimum hours, non-resident non-relative (80)\nSource        S2, S4, S5, S17\nImplemented   Fact assembly\nTags          legal\nExamples\n  WR-204-T1: given date_of_birth=\"1990-01-01\"; persons_cared_for=[\"p2\"]; lives_with=[\"p2\"]; others {\"p2\":{\"date_of_birth\":\"1960-01-01\",\"is_disabled_individual_ada\":true}} => true\n  WR-204-T2: given date_of_birth=\"1990-01-01\"; persons_cared_for=[\"p2\"]; lives_with=[]; relationships [[\"relative\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"1960-01-01\",\"is_disabled_individual_ada\":true}} => true\n  WR-204-T3: given date_of_birth=\"1990-01-01\"; persons_cared_for=[\"p2\"]; lives_with=[]; care_hours_by_person={\"2027-03\":{\"p2\":80}}; others {\"p2\":{\"date_of_birth\":\"1960-01-01\",\"is_disabled_individual_ada\":true}} => true\n  WR-204-T4: given date_of_birth=\"1990-01-01\"; persons_cared_for=[\"p2\"]; lives_with=[]; care_hours_by_person={\"2027-03\":{\"p2\":79}}; relationships []; others {\"p2\":{\"date_of_birth\":\"1960-01-01\",\"is_disabled_individual_ada\":true}} => false\nOpen          OQ-17"
+ },
+ {
+  "id": "WR-205",
+  "identifier": "medicaid_in_stable_recovery",
+  "block": "ID            WR-205\nFact          Medicaid: is in stable recovery\nIdentifier    medicaid_in_stable_recovery\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person has been in recovery from a substance use disorder for 5 or more years as of the Determination Date. A person with no recovery start date is not in stable recovery.\nDerived as    (the number of whole years between Recovery start date and the Determination Date) is at least Stable recovery years (5), otherwise no\nSource        S3\nImplemented   Fact assembly\nTags          medical\nExamples\n  WR-205-T1: given recovery_start_date=\"2022-03-15\" => true\n  WR-205-T2: given recovery_start_date=\"2022-03-16\" => false\n  WR-205-T3: given  => false\nOpen          OQ-18"
+ },
+ {
+  "id": "WR-206",
+  "identifier": "medicaid_is_medically_frail",
+  "block": "ID            WR-206\nFact          Medicaid: is medically frail or has special medical needs\nIdentifier    medicaid_is_medically_frail\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person's condition significantly impairs their ability to comply, and the person is blind or disabled under SSA rules, has a substance use disorder and is not in stable recovery, has a disabling mental disorder, has a disability that significantly impairs daily activities, or has a serious or complex medical condition.\nDerived as    all of the following are true:\n                - Condition significantly impairs ability to comply\n                - any of the following is true:\n                  - Is blind or disabled under SSA section 1614\n                  - all of the following are true:\n                    - Has a substance use disorder\n                    - it is not the case that Medicaid: is in stable recovery\n                  - Has a disabling mental disorder\n                  - Has a disability that significantly impairs daily activities\n                  - Has a serious or complex medical condition\nSource        S2, S3\nImplemented   Fact assembly\nTags          legal, medical\nExamples\n  WR-206-T1: given condition_impairs_ce_compliance=true; is_blind_or_disabled_ssa=false; has_substance_use_disorder=true; recovery_start_date=\"2025-01-01\"; has_disabling_mental_disorder=false; has_adl_impairing_disability=false; has_serious_or_complex_medical_condition=false => true\n  WR-206-T2: given condition_impairs_ce_compliance=true; is_blind_or_disabled_ssa=false; has_substance_use_disorder=true; recovery_start_date=\"2021-01-01\"; has_disabling_mental_disorder=false; has_adl_impairing_disability=false; has_serious_or_complex_medical_condition=false => false\n  WR-206-T3: given condition_impairs_ce_compliance=false; is_blind_or_disabled_ssa=true => false\n  WR-206-T4: given condition_impairs_ce_compliance=true; is_blind_or_disabled_ssa=false; has_substance_use_disorder=false; has_disabling_mental_disorder=false; has_adl_impairing_disability=false; has_serious_or_complex_medical_condition=false => false\n  WR-206-T5: given condition_impairs_ce_compliance=true; has_substance_use_disorder=false; has_disabling_mental_disorder=false; has_adl_impairing_disability=false; has_serious_or_complex_medical_condition=false => unknown\nOpen          OQ-5"
+ },
+ {
+  "id": "WR-207",
+  "identifier": "medicaid_was_recent_inmate",
+  "block": "ID            WR-207\nFact          Medicaid: was an inmate within the lookback\nIdentifier    medicaid_was_recent_inmate\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       In any of the 3 months before the month containing the Determination Date the person was an inmate of a public institution.\nPrecision     The regulation's window ends on the first day of the month; an inmate stay that touches only the first day of the current month is not captured here.\nDerived as    in at least one of the Inmate lookback months (3) consecutive months ending with the month before the month containing the Determination Date:\n                Was an inmate of a public institution in month for the month\nSource        S2, S12\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-207-T1: given was_inmate_in_month={\"2026-12\":false,\"2027-01\":true,\"2027-02\":false} => true\n  WR-207-T2: given was_inmate_in_month={\"2026-11\":true,\"2026-12\":false,\"2027-01\":false,\"2027-02\":false} => false\n  WR-207-T3: given was_inmate_in_month={\"2026-12\":false,\"2027-01\":false} => unknown\nOpen          OQ-6"
+ },
+ {
+  "id": "WR-208",
+  "identifier": "medicaid_is_excluded_by_snap_or_tanf",
+  "block": "ID            WR-208\nFact          Medicaid: is excluded by SNAP or TANF work requirement compliance\nIdentifier    medicaid_is_excluded_by_snap_or_tanf\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       In the month containing the Determination Date the person is complying with TANF work requirements, or is a member of a household receiving SNAP and is subject to a SNAP work requirement.\nDerived as    any of the following is true:\n                - Is complying with TANF work requirements for the month containing the Determination Date\n                - all of the following are true:\n                  - Is a member of a household receiving SNAP for the month containing the Determination Date\n                  - SNAP: is subject to a SNAP work requirement for the month containing the Determination Date\nSource        S2\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-208-T1: given is_complying_with_tanf_work_requirements=true => true\n  WR-208-T2: given is_complying_with_tanf_work_requirements=false; is_member_of_snap_household=true; snap_is_subject_to_work_requirement=true => true\n  WR-208-T3: given is_complying_with_tanf_work_requirements=false; is_member_of_snap_household=true; snap_is_subject_to_work_requirement=false => false\n  WR-208-T4: given is_complying_with_tanf_work_requirements=false; is_member_of_snap_household=false => false\nOpen          OQ-19"
+ },
+ {
+  "id": "WR-209",
+  "identifier": "medicaid_is_pregnant_or_postpartum",
+  "block": "ID            WR-209\nFact          Medicaid: is pregnant or postpartum\nIdentifier    medicaid_is_pregnant_or_postpartum\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is pregnant or is entitled to postpartum medical assistance.\nDerived as    any of the following is true:\n                - Is pregnant\n                - Is entitled to postpartum medical assistance\nSource        S2\nImplemented   Determination engine\nExamples\n  WR-209-T1: given is_pregnant=false; is_entitled_to_postpartum_assistance=true => true\n  WR-209-T2: given is_pregnant=false; is_entitled_to_postpartum_assistance=false => false"
+ },
+ {
+  "id": "WR-210",
+  "identifier": "medicaid_is_excluded_as_indian",
+  "block": "ID            WR-210\nFact          Medicaid: is excluded as an Indian\nIdentifier    medicaid_is_excluded_as_indian\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is an Indian, an Urban Indian, a California Indian, or has otherwise been determined eligible as an Indian for the Indian Health Service.\nDerived as    Indian status is one of: Indian, Urban Indian, California Indian, IHS-eligible only\nSource        S2\nImplemented   Fact assembly\nExamples\n  WR-210-T1: given indian_status=\"IHS-eligible only\" => true\n  WR-210-T2: given indian_status=\"none\" => false"
+ },
+ {
+  "id": "WR-211",
+  "identifier": "medicaid_is_specified_excluded_individual",
+  "block": "ID            WR-211\nFact          Medicaid: is a specified excluded individual\nIdentifier    medicaid_is_specified_excluded_individual\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is in the former foster care youth group, is excluded as an Indian, is a parent, guardian, or caretaker relative of a dependent, is a family caregiver of a dependent, is a veteran with a total disability rating, is medically frail, is excluded by SNAP or TANF work requirement compliance, participates in a substance use treatment program in the month containing the Determination Date, was an inmate within the lookback, or is pregnant or postpartum.\nDerived as    any of the following is true:\n                - Is in the former foster care youth group\n                - Medicaid: is excluded as an Indian\n                - Medicaid: is a parent, guardian, or caretaker relative of a dependent\n                - Medicaid: is a family caregiver of a dependent\n                - Is a veteran with a total disability rating\n                - Medicaid: is medically frail or has special medical needs\n                - Medicaid: is excluded by SNAP or TANF work requirement compliance\n                - Participates in a substance use treatment program for the month containing the Determination Date\n                - Medicaid: was an inmate within the lookback\n                - Medicaid: is pregnant or postpartum\nSource        S2\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-211-T1: given is_former_foster_care_youth_group=false; medicaid_is_excluded_as_indian=false; medicaid_is_parent_or_caretaker_of_dependent=false; medicaid_is_family_caregiver_of_dependent=false; is_veteran_total_disability=false; medicaid_is_medically_frail=false; medicaid_is_excluded_by_snap_or_tanf=false; participates_in_sud_treatment_program=false; medicaid_was_recent_inmate=false; medicaid_is_pregnant_or_postpartum=false => false\n  WR-211-T2: given medicaid_is_medically_frail=true => true\n  WR-211-T3: given participates_in_sud_treatment_program=true => true"
+ },
+ {
+  "id": "WR-212",
+  "identifier": "medicaid_is_applicable_individual",
+  "block": "ID            WR-212\nFact          Medicaid: is an applicable individual\nIdentifier    medicaid_is_applicable_individual\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       The person is not a specified excluded individual, and either is eligible for or enrolled in the adult group, or is eligible for or enrolled under an equivalent-coverage waiver while in the age range, not pregnant, not entitled to or enrolled in Medicare, and not otherwise eligible under the State plan.\nDerived as    all of the following are true:\n                - it is not the case that Medicaid: is a specified excluded individual\n                - any of the following is true:\n                  - Is eligible for or enrolled in the adult group\n                  - all of the following are true:\n                    - Is eligible for or enrolled under an equivalent-coverage waiver\n                    - Medicaid: is in the community engagement age range\n                    - it is not the case that Is pregnant\n                    - it is not the case that Is entitled to or enrolled in Medicare\n                    - it is not the case that Is otherwise eligible under the State plan\nSource        S1, S16\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-212-T1: given medicaid_is_specified_excluded_individual=false; is_adult_group_eligible_or_enrolled=true => true\n  WR-212-T2: given medicaid_is_specified_excluded_individual=true; is_adult_group_eligible_or_enrolled=true => false\n  WR-212-T3: given medicaid_is_specified_excluded_individual=false; is_adult_group_eligible_or_enrolled=false; is_equivalent_waiver_eligible_or_enrolled=true; date_of_birth=\"1990-01-01\"; is_pregnant=false; is_medicare_entitled_or_enrolled=false; is_otherwise_eligible_under_state_plan=false => true\n  WR-212-T4: given medicaid_is_specified_excluded_individual=false; is_adult_group_eligible_or_enrolled=false; is_equivalent_waiver_eligible_or_enrolled=false => false"
+ },
+ {
+  "id": "WR-213",
+  "identifier": "medicaid_ce_income_threshold",
+  "block": "ID            WR-213\nFact          Medicaid: community engagement income threshold\nIdentifier    medicaid_ce_income_threshold\nKind          Derived\nType          money\nScope         global\nProgram       Medicaid\nMeaning       The Federal minimum wage multiplied by the required hours per month.\nDerived as    Federal minimum wage (7.25) times Medicaid community engagement required hours per month (80)\nSource        S6, S18\nImplemented   Determination engine\nExamples\n  WR-213-T1: given  => 580"
+ },
+ {
+  "id": "WR-214",
+  "identifier": "medicaid_countable_education_hours",
+  "block": "ID            WR-214\nFact          Medicaid: countable educational program hours\nIdentifier    medicaid_countable_education_hours\nKind          Derived\nType          hours\nScope         person-month\nProgram       Medicaid\nMeaning       Educational program hours that may be combined with other activities. When the person is enrolled at least half-time, no education hours are combined because half-time enrollment demonstrates community engagement on its own.\nDerived as    if Is enrolled at least half-time in an educational program\n                then 0\n              otherwise Educational program hours, otherwise 0\nSource        S6, S7\nImplemented   Fact assembly\nExamples\n  WR-214-T1: given month 2027-02; is_enrolled_half_time_education=true; education_hours=40 => 0\n  WR-214-T2: given month 2027-02; is_enrolled_half_time_education=false; education_hours=40 => 40\nOpen          OQ-20, OQ-23"
+ },
+ {
+  "id": "WR-215",
+  "identifier": "medicaid_total_qualifying_hours",
+  "block": "ID            WR-215\nFact          Medicaid: total qualifying hours\nIdentifier    medicaid_total_qualifying_hours\nKind          Derived\nType          hours\nScope         person-month\nProgram       Medicaid\nMeaning       Hours worked plus community service hours plus work program hours plus countable educational program hours for the month. An activity with no reported hours counts as 0.\nDerived as    (Hours worked, otherwise 0) plus (Community service hours, otherwise 0) plus (Work program hours, otherwise 0) plus Medicaid: countable educational program hours\nSource        S6\nImplemented   Fact assembly\nExamples\n  WR-215-T1: given month 2027-02; hours_worked=30; community_service_hours=20; work_program_hours=10; education_hours=30; is_enrolled_half_time_education=false => 90\n  WR-215-T2: given month 2027-02; hours_worked=30; is_enrolled_half_time_education=false => 30\nOpen          OQ-23"
+ },
+ {
+  "id": "WR-216",
+  "identifier": "medicaid_meets_hours_condition",
+  "block": "ID            WR-216\nFact          Medicaid: meets the hours condition\nIdentifier    medicaid_meets_hours_condition\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       Total qualifying hours for the month are at least the required hours.\nDerived as    Medicaid: total qualifying hours is at least Medicaid community engagement required hours per month (80)\nSource        S6\nImplemented   Determination engine\nExamples\n  WR-216-T1: given month 2027-02; medicaid_total_qualifying_hours=80 => true\n  WR-216-T2: given month 2027-02; medicaid_total_qualifying_hours=79.5 => false"
+ },
+ {
+  "id": "WR-217",
+  "identifier": "medicaid_meets_income_condition",
+  "block": "ID            WR-217\nFact          Medicaid: meets the income condition\nIdentifier    medicaid_meets_income_condition\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       Monthly income is at least the community engagement income threshold.\nDerived as    Monthly income is at least Medicaid: community engagement income threshold\nSource        S6\nImplemented   Determination engine\nExamples\n  WR-217-T1: given month 2027-02; monthly_income=580 => true\n  WR-217-T2: given month 2027-02; monthly_income=579.99 => false"
+ },
+ {
+  "id": "WR-218",
+  "identifier": "medicaid_six_month_average_income",
+  "block": "ID            WR-218\nFact          Medicaid: six-month average income\nIdentifier    medicaid_six_month_average_income\nKind          Derived\nType          money\nScope         person-month\nProgram       Medicaid\nMeaning       Monthly income averaged over the 6 months before the month.\nDerived as    Monthly income averaged over the Medicaid seasonal income averaging months (6) consecutive months ending with the month before the month\nSource        S6\nImplemented   Fact assembly\nExamples\n  WR-218-T1: given month 2027-03; monthly_income={\"2026-09\":0,\"2026-10\":0,\"2026-11\":1200,\"2026-12\":1200,\"2027-01\":600,\"2027-02\":480} => 580"
+ },
+ {
+  "id": "WR-219",
+  "identifier": "medicaid_meets_seasonal_income_condition",
+  "block": "ID            WR-219\nFact          Medicaid: meets the seasonal income condition\nIdentifier    medicaid_meets_seasonal_income_condition\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       The person is a seasonal worker and their six-month average income is at least the income threshold.\nDerived as    all of the following are true:\n                - Is a seasonal worker\n                - Medicaid: six-month average income is at least Medicaid: community engagement income threshold\nSource        S6\nImplemented   Determination engine\nExamples\n  WR-219-T1: given month 2027-03; is_seasonal_worker=true; medicaid_six_month_average_income=580 => true\n  WR-219-T2: given month 2027-03; is_seasonal_worker=false; medicaid_six_month_average_income=900 => false"
+ },
+ {
+  "id": "WR-220",
+  "identifier": "medicaid_demonstrates_ce",
+  "block": "ID            WR-220\nFact          Medicaid: demonstrates community engagement for month\nIdentifier    medicaid_demonstrates_ce\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       For the month the person meets the hours condition, is enrolled at least half-time in an educational program, meets the income condition, or meets the seasonal income condition.\nDerived as    any of the following is true:\n                - Medicaid: meets the hours condition\n                - Is enrolled at least half-time in an educational program\n                - Medicaid: meets the income condition\n                - Medicaid: meets the seasonal income condition\nSource        S6\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-220-T1: given month 2027-02; hours_worked=90; is_enrolled_half_time_education=false; monthly_income=0; is_seasonal_worker=false => true\n  WR-220-T2: given month 2027-02; hours_worked=0; community_service_hours=0; work_program_hours=0; education_hours=0; is_enrolled_half_time_education=false; monthly_income=0; is_seasonal_worker=false => false\n  WR-220-T3: given month 2027-02; hours_worked=0; community_service_hours=0; work_program_hours=0; education_hours=0; is_enrolled_half_time_education=false; monthly_income=600; is_seasonal_worker=false => true"
+ },
+ {
+  "id": "WR-221",
+  "identifier": "medicaid_county_unemployment_meets_hardship_threshold",
+  "block": "ID            WR-221\nFact          Medicaid: county unemployment meets the hardship threshold\nIdentifier    medicaid_county_unemployment_meets_hardship_threshold\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       The county unemployment rate is at or above the lesser of the cap and the multiplier times the national unemployment rate.\nDerived as    County unemployment rate is at least (the lesser of Hardship unemployment rate cap (0.08) and Hardship national rate multiplier (1.5) times National unemployment rate)\nSource        S10\nImplemented   Fact assembly\nExamples\n  WR-221-T1: given month 2027-02; county_unemployment_rate=0.07; national_unemployment_rate=0.04 => true\n  WR-221-T2: given month 2027-02; county_unemployment_rate=0.05; national_unemployment_rate=0.04 => false\n  WR-221-T3: given month 2027-02; county_unemployment_rate=0.08; national_unemployment_rate=0.06 => true\n  WR-221-T4: given month 2027-02; county_unemployment_rate=0.079; national_unemployment_rate=0.06 => false"
+ },
+ {
+  "id": "WR-222",
+  "identifier": "medicaid_short_term_hardship_in_month",
+  "block": "ID            WR-222\nFact          Medicaid: experiences a short-term hardship in month\nIdentifier    medicaid_short_term_hardship_in_month\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       The State elects the hardship exception, and for part or all of the month the person received inpatient or facility services, resided in a county with a declared emergency or disaster or with unemployment meeting the threshold, or traveled outside the community for extended care.\nDerived as    all of the following are true:\n                - State elects the short-term hardship exception (yes)\n                - any of the following is true:\n                  - Received inpatient or facility services in month\n                  - County has a declared emergency or disaster in month\n                  - Medicaid: county unemployment meets the hardship threshold\n                  - Traveled outside the community for extended care in month\nSource        S10\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-222-T1: given month 2027-02; received_inpatient_or_facility_services=true => true\n  WR-222-T2: given month 2027-02; received_inpatient_or_facility_services=false; county_has_declared_disaster=false; county_unemployment_rate=0.03; national_unemployment_rate=0.04; traveled_for_extended_care=false => false\n  WR-222-T3: given month 2027-02; parameters {\"state_elects_short_term_hardship\":false}; received_inpatient_or_facility_services=true => false\nOpen          OQ-12"
+ },
+ {
+  "id": "WR-223",
+  "identifier": "medicaid_ce_satisfied_for_month",
+  "block": "ID            WR-223\nFact          Medicaid: community engagement satisfied for month\nIdentifier    medicaid_ce_satisfied_for_month\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       Medicaid\nMeaning       For the month the person demonstrates community engagement or experiences a short-term hardship.\nDerived as    any of the following is true:\n                - Medicaid: demonstrates community engagement for month\n                - Medicaid: experiences a short-term hardship in month\nSource        S6, S10\nImplemented   Determination engine\nExamples\n  WR-223-T1: given month 2027-02; medicaid_demonstrates_ce=false; medicaid_short_term_hardship_in_month=true => true\n  WR-223-T2: given month 2027-02; medicaid_demonstrates_ce=false; medicaid_short_term_hardship_in_month=false => false\nOpen          OQ-12"
+ },
+ {
+  "id": "WR-224",
+  "identifier": "medicaid_application_lookback_months_list",
+  "block": "ID            WR-224\nFact          Medicaid: application lookback months\nIdentifier    medicaid_application_lookback_months_list\nKind          Derived\nType          list of months\nScope         person\nProgram       Medicaid\nMeaning       The consecutive months, as many as the State specifies, ending with the month before the month containing the Determination Date.\nDerived as    the Medicaid application lookback months (1) consecutive months ending with the month before the month containing the Determination Date\nSource        S8\nImplemented   Determination engine\nExamples\n  WR-224-T1: given  => [\"2027-02\"]\n  WR-224-T2: given parameters {\"medicaid_application_lookback_months\":3} => [\"2026-12\",\"2027-01\",\"2027-02\"]"
+ },
+ {
+  "id": "WR-225",
+  "identifier": "medicaid_satisfies_ce_at_application",
+  "block": "ID            WR-225\nFact          Medicaid: satisfies community engagement at application\nIdentifier    medicaid_satisfies_ce_at_application\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       Community engagement is satisfied in each of the application lookback months.\nDerived as    in each of Medicaid: application lookback months:\n                Medicaid: community engagement satisfied for month for the month\nSource        S8\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-225-T1: given medicaid_ce_satisfied_for_month={\"2027-02\":true} => true\n  WR-225-T2: given parameters {\"medicaid_application_lookback_months\":3}; medicaid_ce_satisfied_for_month={\"2026-12\":true,\"2027-01\":false,\"2027-02\":true} => false\n  WR-225-T3: given parameters {\"medicaid_application_lookback_months\":3}; medicaid_ce_satisfied_for_month={\"2026-12\":true,\"2027-02\":true} => unknown"
+ },
+ {
+  "id": "WR-226",
+  "identifier": "medicaid_ce_status_at_application",
+  "block": "ID            WR-226\nFact          Medicaid: community engagement status at application\nIdentifier    medicaid_ce_status_at_application\nKind          Derived\nType          one of: not yet in effect, not subject, met, not met\nScope         person\nProgram       Medicaid\nRole          outcome\nMeaning       Not yet in effect when the Determination Date is before the implementation date; not subject when the person is not an applicable individual; met when community engagement is satisfied at application; otherwise not met.\nDerived as    if the Determination Date is less than Medicaid community engagement implementation date (2027-01-01)\n                then not yet in effect\n              else if it is not the case that Medicaid: is an applicable individual\n                then not subject\n              else if Medicaid: satisfies community engagement at application\n                then met\n              otherwise not met\nSource        S8, S9, S11\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-226-T1: given as of 2026-12-15 => \"not yet in effect\"\n  WR-226-T2: given medicaid_is_applicable_individual=false => \"not subject\"\n  WR-226-T3: given medicaid_is_applicable_individual=true; medicaid_satisfies_ce_at_application=true => \"met\"\n  WR-226-T4: given medicaid_is_applicable_individual=true; medicaid_satisfies_ce_at_application=false => \"not met\"\n  WR-226-T5: given medicaid_is_applicable_individual=true => unknown"
+ },
+ {
+  "id": "WR-227",
+  "identifier": "medicaid_renewal_review_months",
+  "block": "ID            WR-227\nFact          Medicaid: renewal review months\nIdentifier    medicaid_renewal_review_months\nKind          Derived\nType          list of months\nScope         person\nProgram       Medicaid\nMeaning       The months after the month of the most recent determination and before the month containing the Determination Date.\nDerived as    the months from the month after the month containing Most recent eligibility determination date through the month before the month containing the Determination Date\nSource        S8\nImplemented   Determination engine\nExamples\n  WR-227-T1: given most_recent_determination_date=\"2026-09-10\" => [\"2026-10\",\"2026-11\",\"2026-12\",\"2027-01\",\"2027-02\"]"
+ },
+ {
+  "id": "WR-228",
+  "identifier": "medicaid_months_demonstrated_since_last_determination",
+  "block": "ID            WR-228\nFact          Medicaid: months demonstrated since last determination\nIdentifier    medicaid_months_demonstrated_since_last_determination\nKind          Derived\nType          whole number\nScope         person\nProgram       Medicaid\nMeaning       The number of renewal review months for which community engagement is satisfied.\nDerived as    the number of months in Medicaid: renewal review months for which Medicaid: community engagement satisfied for month for the month\nSource        S8\nImplemented   Determination engine\nExamples\n  WR-228-T1: given most_recent_determination_date=\"2026-12-10\"; medicaid_ce_satisfied_for_month={\"2027-01\":true,\"2027-02\":false} => 1"
+ },
+ {
+  "id": "WR-229",
+  "identifier": "medicaid_satisfies_ce_at_renewal",
+  "block": "ID            WR-229\nFact          Medicaid: satisfies community engagement at renewal\nIdentifier    medicaid_satisfies_ce_at_renewal\nKind          Derived\nType          yes/no\nScope         person\nProgram       Medicaid\nMeaning       Months demonstrated since the last determination are at least the number the State requires.\nDerived as    Medicaid: months demonstrated since last determination is at least Medicaid renewal required months (1)\nSource        S8\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-229-T1: given medicaid_months_demonstrated_since_last_determination=1 => true\n  WR-229-T2: given medicaid_months_demonstrated_since_last_determination=0 => false"
+ },
+ {
+  "id": "WR-230",
+  "identifier": "medicaid_ce_status_at_renewal",
+  "block": "ID            WR-230\nFact          Medicaid: community engagement status at renewal\nIdentifier    medicaid_ce_status_at_renewal\nKind          Derived\nType          one of: not yet in effect, not subject, met, not met\nScope         person\nProgram       Medicaid\nRole          outcome\nMeaning       Not yet in effect when the Determination Date is before the implementation date; not subject when the person is not an applicable individual; met when community engagement is satisfied at renewal; otherwise not met.\nDerived as    if the Determination Date is less than Medicaid community engagement implementation date (2027-01-01)\n                then not yet in effect\n              else if it is not the case that Medicaid: is an applicable individual\n                then not subject\n              else if Medicaid: satisfies community engagement at renewal\n                then met\n              otherwise not met\nSource        S8, S9, S11\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-230-T1: given medicaid_is_applicable_individual=true; medicaid_satisfies_ce_at_renewal=true => \"met\"\n  WR-230-T2: given medicaid_is_applicable_individual=true; medicaid_satisfies_ce_at_renewal=false => \"not met\""
+ },
+ {
+  "id": "WR-300",
+  "identifier": "snap_in_abawd_age_range",
+  "block": "ID            WR-300\nFact          SNAP: is in the ABAWD age range\nIdentifier    snap_in_abawd_age_range\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       Age at the month is at least 18 and at most the ABAWD maximum age.\nDerived as    all of the following are true:\n                - Age at month is at least SNAP ABAWD minimum age (18)\n                - Age at month is at most SNAP ABAWD maximum age (64)\nSource        S20\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-300-T1: given month 2027-03; date_of_birth=\"2009-03-01\" => true\n  WR-300-T2: given month 2027-02; date_of_birth=\"2009-03-01\" => false\n  WR-300-T3: given month 2027-03; date_of_birth=\"1962-06-01\" => true\n  WR-300-T4: given month 2027-03; date_of_birth=\"1962-02-01\" => false\nOpen          OQ-13"
+ },
+ {
+  "id": "WR-301",
+  "identifier": "snap_is_unfit_for_employment",
+  "block": "ID            WR-301\nFact          SNAP: is medically certified unfit for employment\nIdentifier    snap_is_unfit_for_employment\nKind          Derived\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The person receives disability benefits, the agency finds them obviously unfit, or they have a medical statement of unfitness.\nDerived as    any of the following is true:\n                - Receives disability benefits\n                - Agency finds the person obviously unfit for employment\n                - Has a medical statement of unfitness for employment\nSource        S20, S28\nImplemented   Fact assembly\nTags          medical\nExamples\n  WR-301-T1: given receives_disability_benefits=false; agency_finds_obviously_unfit=false; has_medical_statement_of_unfitness=true => true\n  WR-301-T2: given receives_disability_benefits=false; agency_finds_obviously_unfit=false; has_medical_statement_of_unfitness=false => false"
+ },
+ {
+  "id": "WR-302",
+  "identifier": "snap_has_responsibility_for_child_under_14",
+  "block": "ID            WR-302\nFact          SNAP: has responsibility for a dependent child under 14\nIdentifier    snap_has_responsibility_for_child_under_14\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       There is a member of the person's SNAP household who is under 14 at the month and of whom this person is a parent or whom this person cares for.\nDerived as    there is a person in SNAP household members such that\n                all of the following are true:\n                  - that person's Age at month is less than SNAP dependent child age limit (14)\n                  - any of the following is true:\n                    - this person is a parent of that person\n                    - that person is in Persons cared for\nSource        S20\nImplemented   Fact assembly\nTags          legal\nExamples\n  WR-302-T1: given month 2027-03; snap_household_members=[\"p2\"]; persons_cared_for=[]; relationships [[\"parent\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"2013-06-01\"}} => true\n  WR-302-T2: given month 2027-03; snap_household_members=[\"p2\"]; persons_cared_for=[]; relationships [[\"parent\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"2013-03-01\"}} => false\n  WR-302-T3: given month 2027-03; snap_household_members=[\"p2\"]; persons_cared_for=[\"p2\"]; relationships []; others {\"p2\":{\"date_of_birth\":\"2020-01-01\"}} => true\nOpen          OQ-21"
+ },
+ {
+  "id": "WR-303",
+  "identifier": "snap_has_responsibility_for_child_under_6",
+  "block": "ID            WR-303\nFact          SNAP: has responsibility for a dependent child under 6\nIdentifier    snap_has_responsibility_for_child_under_6\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       There is a member of the person's SNAP household who is under 6 at the month and of whom this person is a parent or whom this person cares for.\nDerived as    there is a person in SNAP household members such that\n                all of the following are true:\n                  - that person's Age at month is less than SNAP general exemption child age (6)\n                  - any of the following is true:\n                    - this person is a parent of that person\n                    - that person is in Persons cared for\nSource        S30\nImplemented   Fact assembly\nExamples\n  WR-303-T1: given month 2027-03; snap_household_members=[\"p2\"]; persons_cared_for=[]; relationships [[\"parent\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"2021-04-01\"}} => true\n  WR-303-T2: given month 2027-03; snap_household_members=[\"p2\"]; persons_cared_for=[]; relationships [[\"parent\",\"p2\"]]; others {\"p2\":{\"date_of_birth\":\"2021-02-01\"}} => false\nOpen          OQ-21"
+ },
+ {
+  "id": "WR-304",
+  "identifier": "snap_weekly_average_hours_worked",
+  "block": "ID            WR-304\nFact          SNAP: weekly average hours worked\nIdentifier    snap_weekly_average_hours_worked\nKind          Derived\nType          hours\nScope         person-month\nProgram       SNAP\nMeaning       Hours worked in the month converted to a weekly average, using 12 months per 52 weeks. No reported hours counts as 0.\nDerived as    ((Hours worked, otherwise 0) times 12) divided by 52\nSource        S30\nImplemented   Fact assembly\nExamples\n  WR-304-T1: given month 2027-02; hours_worked=130 => 30\nOpen          OQ-8, OQ-23"
+ },
+ {
+  "id": "WR-305",
+  "identifier": "snap_weekly_earnings",
+  "block": "ID            WR-305\nFact          SNAP: weekly earnings\nIdentifier    snap_weekly_earnings\nKind          Derived\nType          money\nScope         person-month\nProgram       SNAP\nMeaning       Monthly income converted to weekly earnings, using 12 months per 52 weeks.\nDerived as    (Monthly income times 12) divided by 52\nSource        S30\nImplemented   Fact assembly\nExamples\n  WR-305-T1: given month 2027-02; monthly_income=942.5 => 217.5\nOpen          OQ-8"
+ },
+ {
+  "id": "WR-306",
+  "identifier": "snap_meets_employment_exemption",
+  "block": "ID            WR-306\nFact          SNAP: meets the employment exemption\nIdentifier    snap_meets_employment_exemption\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       Weekly average hours worked are at least 30, or weekly earnings are at least the Federal minimum wage times 30.\nDerived as    any of the following is true:\n                - SNAP: weekly average hours worked is at least SNAP employment exemption weekly hours (30)\n                - SNAP: weekly earnings is at least (Federal minimum wage (7.25) times SNAP employment exemption weekly hours (30))\nSource        S30\nImplemented   Determination engine\nExamples\n  WR-306-T1: given month 2027-02; hours_worked=130; monthly_income=0 => true\n  WR-306-T2: given month 2027-02; hours_worked=100; monthly_income=942.5 => true\n  WR-306-T3: given month 2027-02; hours_worked=100; monthly_income=900 => false"
+ },
+ {
+  "id": "WR-307",
+  "identifier": "snap_is_exempt_from_work_registration",
+  "block": "ID            WR-307\nFact          SNAP: is exempt from general work registration\nIdentifier    snap_is_exempt_from_work_registration\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       During the month the person is complying with TANF work requirements, receives unemployment compensation, has responsibility for a child under 6 or an incapacitated person, is enrolled at least half-time in an educational program, participates in a substance use treatment program, meets the employment exemption, or is 16 or 17 and either not head of household or enrolled at least half-time.\nDerived as    any of the following is true:\n                - Is complying with TANF work requirements\n                - Receives unemployment compensation\n                - SNAP: has responsibility for a dependent child under 6\n                - Has responsibility for the care of an incapacitated person\n                - Is enrolled at least half-time in an educational program\n                - Participates in a substance use treatment program\n                - SNAP: meets the employment exemption\n                - all of the following are true:\n                  - Age at month is at least 16\n                  - Age at month is at most 17\n                  - any of the following is true:\n                    - it is not the case that Is head of household\n                    - Is enrolled at least half-time in an educational program\nSource        S30, S31\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-307-T1: given month 2027-02; receives_unemployment_compensation=true => true\n  WR-307-T2: given month 2027-02; date_of_birth=\"1990-01-01\"; is_complying_with_tanf_work_requirements=false; receives_unemployment_compensation=false; snap_has_responsibility_for_child_under_6=false; has_responsibility_for_incapacitated_person=false; is_enrolled_half_time_education=false; participates_in_sud_treatment_program=false; hours_worked=40; monthly_income=300 => false\n  WR-307-T3: given month 2027-02; date_of_birth=\"2010-06-01\"; is_head_of_household=false; is_complying_with_tanf_work_requirements=false; receives_unemployment_compensation=false; snap_has_responsibility_for_child_under_6=false; has_responsibility_for_incapacitated_person=false; is_enrolled_half_time_education=false; participates_in_sud_treatment_program=false; hours_worked=0; monthly_income=0 => true"
+ },
+ {
+  "id": "WR-308",
+  "identifier": "snap_is_subject_to_work_registration",
+  "block": "ID            WR-308\nFact          SNAP: is subject to general work registration\nIdentifier    snap_is_subject_to_work_registration\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       Age at the month is 16 through 59, the person is not unfit for employment, and the person is not exempt from general work registration.\nDerived as    all of the following are true:\n                - Age at month is at least SNAP work registration minimum age (16)\n                - Age at month is at most SNAP work registration maximum age (59)\n                - it is not the case that SNAP: is medically certified unfit for employment\n                - it is not the case that SNAP: is exempt from general work registration\nSource        S29, S30, S31\nImplemented   Determination engine\nExamples\n  WR-308-T1: given month 2027-02; date_of_birth=\"1990-01-01\"; snap_is_unfit_for_employment=false; snap_is_exempt_from_work_registration=false => true\n  WR-308-T2: given month 2027-02; date_of_birth=\"1965-01-01\"; snap_is_unfit_for_employment=false; snap_is_exempt_from_work_registration=false => false"
+ },
+ {
+  "id": "WR-309",
+  "identifier": "snap_is_exempt_as_indian",
+  "block": "ID            WR-309\nFact          SNAP: is exempt as an Indian\nIdentifier    snap_is_exempt_as_indian\nKind          Derived\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       The person is an Indian, an Urban Indian, or a California Indian. Eligibility for the Indian Health Service alone does not qualify.\nDerived as    Indian status is one of: Indian, Urban Indian, California Indian\nSource        S20\nImplemented   Fact assembly\nExamples\n  WR-309-T1: given indian_status=\"California Indian\" => true\n  WR-309-T2: given indian_status=\"IHS-eligible only\" => false"
+ },
+ {
+  "id": "WR-310",
+  "identifier": "snap_is_exempt_from_time_limit",
+  "block": "ID            WR-310\nFact          SNAP: is exempt from the ABAWD time limit\nIdentifier    snap_is_exempt_from_time_limit\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       For the month the person is outside the ABAWD age range, is unfit for employment, has responsibility for a child under 14, is exempt from general work registration, is pregnant, or is exempt as an Indian.\nDerived as    any of the following is true:\n                - it is not the case that SNAP: is in the ABAWD age range\n                - SNAP: is medically certified unfit for employment\n                - SNAP: has responsibility for a dependent child under 14\n                - SNAP: is exempt from general work registration\n                - Is pregnant\n                - SNAP: is exempt as an Indian\nSource        S20\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-310-T1: given month 2027-02; is_pregnant=true => true\n  WR-310-T2: given month 2027-02; snap_in_abawd_age_range=true; snap_is_unfit_for_employment=false; snap_has_responsibility_for_child_under_14=false; snap_is_exempt_from_work_registration=false; is_pregnant=false; indian_status=\"none\" => false"
+ },
+ {
+  "id": "WR-311",
+  "identifier": "snap_hours_worked_with_good_cause",
+  "block": "ID            WR-311\nFact          SNAP: hours worked including good cause\nIdentifier    snap_hours_worked_with_good_cause\nKind          Derived\nType          hours\nScope         person-month\nProgram       SNAP\nMeaning       Hours worked plus hours missed for good cause in the month. No reported hours counts as 0.\nDerived as    (Hours worked, otherwise 0) plus (Hours missed for good cause, otherwise 0)\nSource        S24, S26\nImplemented   Fact assembly\nExamples\n  WR-311-T1: given month 2027-02; hours_worked=72; hours_missed_for_good_cause=8 => 80\nOpen          OQ-22, OQ-23"
+ },
+ {
+  "id": "WR-312",
+  "identifier": "snap_fulfills_work_requirement",
+  "block": "ID            WR-312\nFact          SNAP: fulfills the work requirement for month\nIdentifier    snap_fulfills_work_requirement\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       For the month hours worked including good cause are at least 80, work program hours are at least 80, or the person participates in workfare.\nDerived as    any of the following is true:\n                - SNAP: hours worked including good cause is at least SNAP required hours per month (80)\n                - (Work program hours, otherwise 0) is at least SNAP required hours per month (80)\n                - Participates in workfare\nSource        S21, S24, S26\nImplemented   Determination engine\nExamples\n  WR-312-T1: given month 2027-02; hours_worked=80; participates_in_workfare=false => true\n  WR-312-T2: given month 2027-02; hours_worked=79; hours_missed_for_good_cause=0; work_program_hours=0; participates_in_workfare=false => false\n  WR-312-T3: given month 2027-02; hours_worked=0; participates_in_workfare=true => true"
+ },
+ {
+  "id": "WR-313",
+  "identifier": "snap_is_countable_month",
+  "block": "ID            WR-313\nFact          SNAP: is a countable month\nIdentifier    snap_is_countable_month\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       The person received SNAP benefits for the full month, the benefits were not prorated, and the person was not exempt from the time limit, not covered by a waiver, not fulfilling the work requirement, and not given a discretionary exemption.\nDerived as    all of the following are true:\n                - Received SNAP benefits for the full month\n                - it is not the case that SNAP benefits were prorated in month\n                - it is not the case that SNAP: is exempt from the ABAWD time limit\n                - it is not the case that Covered by an ABAWD waiver in month\n                - it is not the case that SNAP: fulfills the work requirement for month\n                - it is not the case that Has a discretionary exemption in month\nSource        S21, S25\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-313-T1: given month 2027-02; received_full_month_snap_benefits=true; snap_benefits_prorated=false; snap_is_exempt_from_time_limit=false; covered_by_abawd_waiver=false; snap_fulfills_work_requirement=false; has_discretionary_exemption=false => true\n  WR-313-T2: given month 2027-02; received_full_month_snap_benefits=false => false\n  WR-313-T3: given month 2027-02; received_full_month_snap_benefits=true; snap_benefits_prorated=false; snap_is_exempt_from_time_limit=false; covered_by_abawd_waiver=false; snap_fulfills_work_requirement=true; has_discretionary_exemption=false => false"
+ },
+ {
+  "id": "WR-314",
+  "identifier": "snap_time_limit_period_months",
+  "block": "ID            WR-314\nFact          SNAP: time limit period months\nIdentifier    snap_time_limit_period_months\nKind          Derived\nType          list of months\nScope         person\nProgram       SNAP\nMeaning       The 36 consecutive months ending with the month before the month containing the Determination Date.\nPrecision     Rolling clock. A fixed clock would replace this derivation.\nDerived as    the SNAP time limit period months (36) consecutive months ending with the month before the month containing the Determination Date\nSource        S21, S27\nImplemented   Determination engine\nExamples\n  WR-314-T1: given as of 2027-03-15 => 36 months, 2024-03 through 2027-02\nOpen          OQ-14"
+ },
+ {
+  "id": "WR-315",
+  "identifier": "snap_countable_months_used",
+  "block": "ID            WR-315\nFact          SNAP: countable months used\nIdentifier    snap_countable_months_used\nKind          Derived\nType          whole number\nScope         person\nProgram       SNAP\nMeaning       The number of months in the time limit period that are countable months.\nDerived as    the number of months in SNAP: time limit period months for which SNAP: is a countable month for the month\nSource        S21\nImplemented   Determination engine\nExamples\n  WR-315-T1: given snap_is_countable_month={\"2026-11\":true,\"2026-12\":true,\"2027-02\":true}; other months {\"snap_is_countable_month\":false} => 3"
+ },
+ {
+  "id": "WR-316",
+  "identifier": "snap_has_exhausted_time_limit",
+  "block": "ID            WR-316\nFact          SNAP: has exhausted the time limit\nIdentifier    snap_has_exhausted_time_limit\nKind          Derived\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       Countable months used are at least 3.\nDerived as    SNAP: countable months used is at least SNAP countable month limit (3)\nSource        S21\nImplemented   Determination engine\nExamples\n  WR-316-T1: given snap_countable_months_used=3 => true\n  WR-316-T2: given snap_countable_months_used=2 => false"
+ },
+ {
+  "id": "WR-317",
+  "identifier": "snap_regains_eligibility",
+  "block": "ID            WR-317\nFact          SNAP: regains eligibility\nIdentifier    snap_regains_eligibility\nKind          Derived\nType          yes/no\nScope         person\nProgram       SNAP\nMeaning       In the 30 days ending on the Determination Date the person worked at least 80 hours, participated in a work program for at least 80 hours, or participated in workfare.\nDerived as    any of the following is true:\n                - Hours worked in the last 30 days is at least SNAP hours to regain eligibility (80)\n                - Work program hours in the last 30 days is at least SNAP hours to regain eligibility (80)\n                - Participated in workfare in the last 30 days\nSource        S22\nImplemented   Determination engine\nExamples\n  WR-317-T1: given hours_worked_last_30_days=80 => true\n  WR-317-T2: given hours_worked_last_30_days=40; work_program_hours_last_30_days=0; participated_in_workfare_last_30_days=false => false"
+ },
+ {
+  "id": "WR-318",
+  "identifier": "snap_time_limit_status",
+  "block": "ID            WR-318\nFact          SNAP: time limit status\nIdentifier    snap_time_limit_status\nKind          Derived\nType          one of: prior law applies, not subject, within limit, regained, limit exhausted\nScope         person\nProgram       SNAP\nRole          outcome\nMeaning       Prior law applies when the Determination Date is before the effective date of the changes; not subject when the person is exempt in the month containing the Determination Date; within limit when the time limit is not exhausted; regained when it is exhausted but the person regains eligibility; otherwise limit exhausted.\nDerived as    if the Determination Date is less than SNAP ABAWD changes effective date (2025-07-04)\n                then prior law applies\n              else if SNAP: is exempt from the ABAWD time limit for the month containing the Determination Date\n                then not subject\n              else if it is not the case that SNAP: has exhausted the time limit\n                then within limit\n              else if SNAP: regains eligibility\n                then regained\n              otherwise limit exhausted\nSource        S20, S21, S22, S33\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-318-T1: given snap_is_exempt_from_time_limit=true => \"not subject\"\n  WR-318-T2: given snap_is_exempt_from_time_limit=false; snap_has_exhausted_time_limit=false => \"within limit\"\n  WR-318-T3: given snap_is_exempt_from_time_limit=false; snap_has_exhausted_time_limit=true; snap_regains_eligibility=true => \"regained\"\n  WR-318-T4: given snap_is_exempt_from_time_limit=false; snap_has_exhausted_time_limit=true; snap_regains_eligibility=false => \"limit exhausted\""
+ },
+ {
+  "id": "WR-319",
+  "identifier": "snap_is_subject_to_work_requirement",
+  "block": "ID            WR-319\nFact          SNAP: is subject to a SNAP work requirement\nIdentifier    snap_is_subject_to_work_requirement\nKind          Derived\nType          yes/no\nScope         person-month\nProgram       SNAP\nMeaning       For the month the person is subject to general work registration or is not exempt from the ABAWD time limit.\nDerived as    any of the following is true:\n                - SNAP: is subject to general work registration\n                - it is not the case that SNAP: is exempt from the ABAWD time limit\nSource        S2, S20, S29\nImplemented   Determination engine\nTags          legal\nExamples\n  WR-319-T1: given month 2027-02; snap_is_subject_to_work_registration=false; snap_is_exempt_from_time_limit=false => true\n  WR-319-T2: given month 2027-02; snap_is_subject_to_work_registration=false; snap_is_exempt_from_time_limit=true => false\nOpen          OQ-19"
+ }
+]

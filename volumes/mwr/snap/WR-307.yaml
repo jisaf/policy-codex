@@ -1,0 +1,16 @@
+id: WR-307
+name: "SNAP: is exempt from general work registration"
+identifier: snap_is_exempt_from_work_registration
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: During the month the person is complying with TANF work requirements, receives unemployment compensation, has responsibility for a child under 6 or an incapacitated person, is enrolled at least half-time in an educational program, participates in a substance use treatment program, meets the employment exemption, or is 16 or 17 and either not head of household or enrolled at least half-time.
+derived: [any, is_complying_with_tanf_work_requirements, receives_unemployment_compensation, snap_has_responsibility_for_child_under_6, has_responsibility_for_incapacitated_person, is_enrolled_half_time_education, participates_in_sud_treatment_program, snap_meets_employment_exemption, [all, [">=", age_at_month, 16], ["<=", age_at_month, 17], [any, [not, is_head_of_household], is_enrolled_half_time_education]]]
+sources: [S30, S31]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-307-T1, month: "2027-02", given: {receives_unemployment_compensation: true}, expect: true}
+  - {id: WR-307-T2, month: "2027-02", given: {date_of_birth: "1990-01-01", is_complying_with_tanf_work_requirements: false, receives_unemployment_compensation: false, snap_has_responsibility_for_child_under_6: false, has_responsibility_for_incapacitated_person: false, is_enrolled_half_time_education: false, participates_in_sud_treatment_program: false, hours_worked: 40, monthly_income: 300}, expect: false}
+  - {id: WR-307-T3, month: "2027-02", given: {date_of_birth: "2010-06-01", is_head_of_household: false, is_complying_with_tanf_work_requirements: false, receives_unemployment_compensation: false, snap_has_responsibility_for_child_under_6: false, has_responsibility_for_incapacitated_person: false, is_enrolled_half_time_education: false, participates_in_sud_treatment_program: false, hours_worked: 0, monthly_income: 0}, expect: true}

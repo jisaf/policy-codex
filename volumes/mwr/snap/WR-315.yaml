@@ -1,0 +1,13 @@
+id: WR-315
+name: "SNAP: countable months used"
+identifier: snap_countable_months_used
+kind: derived
+type: whole number
+scope: person
+program: SNAP
+meaning: The number of months in the time limit period that are countable months.
+derived: [count_months, snap_time_limit_period_months, [at, snap_is_countable_month, [month]]]
+sources: [S21]
+implemented: engine
+tests:
+  - {id: WR-315-T1, given: {snap_is_countable_month: {"2026-11": true, "2026-12": true, "2027-02": true}}, month_defaults: {snap_is_countable_month: false}, expect: 3}

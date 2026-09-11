@@ -1,0 +1,16 @@
+id: WR-220
+name: "Medicaid: demonstrates community engagement for month"
+identifier: medicaid_demonstrates_ce
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: For the month the person meets the hours condition, is enrolled at least half-time in an educational program, meets the income condition, or meets the seasonal income condition.
+derived: [any, medicaid_meets_hours_condition, is_enrolled_half_time_education, medicaid_meets_income_condition, medicaid_meets_seasonal_income_condition]
+sources: [S6]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-220-T1, month: "2027-02", given: {hours_worked: 90, is_enrolled_half_time_education: false, monthly_income: 0, is_seasonal_worker: false}, expect: true}
+  - {id: WR-220-T2, month: "2027-02", given: {hours_worked: 0, community_service_hours: 0, work_program_hours: 0, education_hours: 0, is_enrolled_half_time_education: false, monthly_income: 0, is_seasonal_worker: false}, expect: false}
+  - {id: WR-220-T3, month: "2027-02", given: {hours_worked: 0, community_service_hours: 0, work_program_hours: 0, education_hours: 0, is_enrolled_half_time_education: false, monthly_income: 600, is_seasonal_worker: false}, expect: true}

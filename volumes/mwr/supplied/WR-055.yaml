@@ -1,0 +1,10 @@
+id: WR-055
+name: Is head of household
+identifier: is_head_of_household
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is the head of the SNAP household.
+supplied_by: SNAP case record.
+sources: [S30]

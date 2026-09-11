@@ -1,0 +1,11 @@
+id: WR-006
+name: Is entitled to postpartum medical assistance
+identifier: is_entitled_to_postpartum_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is entitled to postpartum medical assistance under section 1902(e)(5) or (e)(16) of the Social Security Act. Determined by the pregnancy-related eligibility determination, outside this volume.
+supplied_by: Eligibility system, pregnancy coverage determination.
+sources: [S2]
+open: [OQ-2]

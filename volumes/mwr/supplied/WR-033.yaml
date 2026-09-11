@@ -1,0 +1,10 @@
+id: WR-033
+name: Is otherwise eligible under the State plan
+identifier: is_otherwise_eligible_under_state_plan
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is otherwise eligible to enroll under the State plan in a group other than the adult group.
+supplied_by: Eligibility system.
+sources: [S1]

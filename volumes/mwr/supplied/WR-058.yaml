@@ -1,0 +1,10 @@
+id: WR-058
+name: Participated in workfare in the last 30 days
+identifier: participated_in_workfare_last_30_days
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: During the 30-day period ending on the Determination Date the person participated in and complied with a workfare program.
+supplied_by: Program provider record.
+sources: [S22]

@@ -1,0 +1,11 @@
+id: WR-029
+name: Participates in a substance use treatment program
+identifier: participates_in_sud_treatment_program
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: During the month the person is a regular participant in a drug addiction or alcoholic treatment and rehabilitation program as defined in section 3(h) of the Food and Nutrition Act of 2008.
+supplied_by: Provider verification.
+sources: [S2, S30]
+tags: [medical]

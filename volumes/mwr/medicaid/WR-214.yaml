@@ -1,0 +1,15 @@
+id: WR-214
+name: "Medicaid: countable educational program hours"
+identifier: medicaid_countable_education_hours
+kind: derived
+type: hours
+scope: person-month
+program: Medicaid
+meaning: Educational program hours that may be combined with other activities. When the person is enrolled at least half-time, no education hours are combined because half-time enrollment demonstrates community engagement on its own.
+derived: [case, [is_enrolled_half_time_education, 0], [else, [otherwise, education_hours, 0]]]
+sources: [S6, S7]
+implemented: assembly
+open: [OQ-20, OQ-23]
+tests:
+  - {id: WR-214-T1, month: "2027-02", given: {is_enrolled_half_time_education: true, education_hours: 40}, expect: 0}
+  - {id: WR-214-T2, month: "2027-02", given: {is_enrolled_half_time_education: false, education_hours: 40}, expect: 40}

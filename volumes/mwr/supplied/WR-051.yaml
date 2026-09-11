@@ -1,0 +1,11 @@
+id: WR-051
+name: Covered by an ABAWD waiver in month
+identifier: covered_by_abawd_waiver
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: During the month the person resided in an area covered by an approved waiver of the time limit.
+supplied_by: Waiver geography lookup on the person's address.
+sources: [S25, S34]
+open: [OQ-9]

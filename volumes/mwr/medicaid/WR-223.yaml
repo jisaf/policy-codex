@@ -1,0 +1,15 @@
+id: WR-223
+name: "Medicaid: community engagement satisfied for month"
+identifier: medicaid_ce_satisfied_for_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: For the month the person demonstrates community engagement or experiences a short-term hardship.
+derived: [any, medicaid_demonstrates_ce, medicaid_short_term_hardship_in_month]
+sources: [S6, S10]
+implemented: engine
+open: [OQ-12]
+tests:
+  - {id: WR-223-T1, month: "2027-02", given: {medicaid_demonstrates_ce: false, medicaid_short_term_hardship_in_month: true}, expect: true}
+  - {id: WR-223-T2, month: "2027-02", given: {medicaid_demonstrates_ce: false, medicaid_short_term_hardship_in_month: false}, expect: false}

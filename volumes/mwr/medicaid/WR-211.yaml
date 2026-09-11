@@ -1,0 +1,16 @@
+id: WR-211
+name: "Medicaid: is a specified excluded individual"
+identifier: medicaid_is_specified_excluded_individual
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person is in the former foster care youth group, is excluded as an Indian, is a parent, guardian, or caretaker relative of a dependent, is a family caregiver of a dependent, is a veteran with a total disability rating, is medically frail, is excluded by SNAP or TANF work requirement compliance, participates in a substance use treatment program in the month containing the Determination Date, was an inmate within the lookback, or is pregnant or postpartum.
+derived: [any, is_former_foster_care_youth_group, medicaid_is_excluded_as_indian, medicaid_is_parent_or_caretaker_of_dependent, medicaid_is_family_caregiver_of_dependent, is_veteran_total_disability, medicaid_is_medically_frail, medicaid_is_excluded_by_snap_or_tanf, [at, participates_in_sud_treatment_program, [det_month]], medicaid_was_recent_inmate, medicaid_is_pregnant_or_postpartum]
+sources: [S2]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-211-T1, given: {is_former_foster_care_youth_group: false, medicaid_is_excluded_as_indian: false, medicaid_is_parent_or_caretaker_of_dependent: false, medicaid_is_family_caregiver_of_dependent: false, is_veteran_total_disability: false, medicaid_is_medically_frail: false, medicaid_is_excluded_by_snap_or_tanf: false, participates_in_sud_treatment_program: false, medicaid_was_recent_inmate: false, medicaid_is_pregnant_or_postpartum: false}, expect: false}
+  - {id: WR-211-T2, given: {medicaid_is_medically_frail: true}, expect: true}
+  - {id: WR-211-T3, given: {participates_in_sud_treatment_program: true}, expect: true}

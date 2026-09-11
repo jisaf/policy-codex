@@ -1,0 +1,10 @@
+id: WR-125
+name: SNAP time limit period months
+identifier: snap_period_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The length in months of the period over which countable months accumulate.
+value: 36
+sources: [S21, S27]

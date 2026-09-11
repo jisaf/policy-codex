@@ -1,0 +1,13 @@
+id: WR-228
+name: "Medicaid: months demonstrated since last determination"
+identifier: medicaid_months_demonstrated_since_last_determination
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: The number of renewal review months for which community engagement is satisfied.
+derived: [count_months, medicaid_renewal_review_months, [at, medicaid_ce_satisfied_for_month, [month]]]
+sources: [S8]
+implemented: engine
+tests:
+  - {id: WR-228-T1, given: {most_recent_determination_date: "2026-12-10", medicaid_ce_satisfied_for_month: {"2027-01": true, "2027-02": false}}, expect: 1}

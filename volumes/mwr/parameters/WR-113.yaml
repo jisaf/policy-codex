@@ -1,0 +1,13 @@
+id: WR-113
+name: State elects the short-term hardship exception
+identifier: state_elects_short_term_hardship
+kind: parameter
+type: yes/no
+scope: global
+program: Medicaid
+meaning: Whether the State has elected the optional short-term hardship exception.
+assumption: The State elects the exception. Replace with the actual election.
+value: true
+sources: [S10]
+tags: [state_election]
+open: [OQ-12]

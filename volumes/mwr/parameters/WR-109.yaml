@@ -1,0 +1,10 @@
+id: WR-109
+name: Inmate lookback months
+identifier: inmate_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of months before a month during which having been an inmate of a public institution excludes the person for that month.
+value: 3
+sources: [S12]

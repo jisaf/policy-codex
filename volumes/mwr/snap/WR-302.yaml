@@ -1,0 +1,17 @@
+id: WR-302
+name: "SNAP: has responsibility for a dependent child under 14"
+identifier: snap_has_responsibility_for_child_under_14
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: There is a member of the person's SNAP household who is under 14 at the month and of whom this person is a parent or whom this person cares for.
+derived: [exists, snap_household_members, [all, ["<", [of, [P], age_at_month], snap_dependent_child_age_limit], [any, [rel, [parent], [P]], [in_group, [P], persons_cared_for]]]]
+sources: [S20]
+implemented: assembly
+tags: [legal]
+open: [OQ-21]
+tests:
+  - {id: WR-302-T1, month: "2027-03", given: {snap_household_members: [p2], persons_cared_for: []}, relationships: [[parent, p2]], others: {p2: {date_of_birth: "2013-06-01"}}, expect: true}
+  - {id: WR-302-T2, month: "2027-03", given: {snap_household_members: [p2], persons_cared_for: []}, relationships: [[parent, p2]], others: {p2: {date_of_birth: "2013-03-01"}}, expect: false}
+  - {id: WR-302-T3, month: "2027-03", given: {snap_household_members: [p2], persons_cared_for: [p2]}, relationships: [], others: {p2: {date_of_birth: "2020-01-01"}}, expect: true}

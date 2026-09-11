@@ -1,0 +1,56 @@
+# Policy Codex
+
+> **This is an exploration, not a product.** It was vibe coded: an AI first pass at both the policy ledger and the app, with a human steering rather than reviewing line by line. Nothing in the ledger is an approved interpretation of any statute, the code has had no security review, and it is **not intended for production use**. Read it as a working sketch of an idea: policy text as the authority, a machine-checkable codex as the interpretation, and git as the only store.
+
+A codex is the approved, engine-agnostic statement of how benefit policy is interpreted: policy text is the authority, the codex is the interpretation, code is the implementation. This repository is one codex and the app that reads, searches, authors, and reviews it.
+
+**App:** https://jisaf.github.io/policy-codex/
+
+The app is static. The repository is its only store: reading needs nothing, proposing a change opens a pull request from your browser with your own GitHub token, and AI drafting uses your own provider key through a CORS-only relay that holds no secrets.
+
+## Layout
+
+```
+codex.json          manifest: the volumes and their chapters
+volumes/mwr/        Medicaid community engagement + SNAP ABAWD work requirements
+  volume.yaml       metadata, approval policy, types, scopes
+  sources.md        statute and regulation excerpts, S1..S34
+  open-questions.md interpretation gaps and the assumptions taken, OQ-1..
+  supplied/         one YAML file per supplied fact
+  parameters/       one per parameter
+  medicaid/         one per Medicaid derived fact
+  snap/             one per SNAP derived fact
+  tests/            household-level case tests (data; not run by the app yet)
+src/                the app (engine, ledger, github, changes, ai, credentials, ui)
+worker/             the Cloudflare Worker that adds CORS for AI providers
+scripts/            migration record, handoff export, reference checker
+docs/               conventions, the A-vs-B+ comparison, the design
+```
+
+Every item is one file. Add an item by adding a file and listing it in `codex.json`; the app does the same when you propose from the browser.
+
+## Develop
+
+```bash
+npm install
+npm run dev        # http://localhost:5173, reads the ledger from GitHub main
+npm test           # engine fixtures + module tests
+npm run typecheck
+npm run e2e        # one Playwright smoke test against a local build
+```
+
+If Playwright's bundled Chromium is unavailable, point `PLAYWRIGHT_CHROMIUM_PATH` at a Chrome binary.
+
+The engine under `src/engine/` is pinned to `test/fixtures/` (53 derivation round trips, 138 item blocks, 133 rule tests). The fixtures are frozen; see `scripts/README.md` for how they were produced.
+
+## Deploy
+
+```bash
+npm run deploy     # builds and pushes dist/ to the gh-pages branch
+```
+
+The Worker deploys separately: `cd worker && npx wrangler deploy`, then paste its URL into the app's settings sheet.
+
+## Status
+
+An exploration; see the note at the top. Draft throughout. The volume was produced as an AI first pass and nothing in it is approved; the app shows the seven items with known constraint failures in red on purpose. See `docs/conventions.md` for the ledger grammar, `docs/volume-mwr.md` for the volume's own scope and reading order, `docs/comparison.md` and `docs/one-ledger.md` for why one ledger, and `docs/design.md` for the design.

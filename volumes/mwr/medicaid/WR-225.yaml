@@ -1,0 +1,16 @@
+id: WR-225
+name: "Medicaid: satisfies community engagement at application"
+identifier: medicaid_satisfies_ce_at_application
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Community engagement is satisfied in each of the application lookback months.
+derived: [each, medicaid_application_lookback_months_list, [at, medicaid_ce_satisfied_for_month, [month]]]
+sources: [S8]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-225-T1, given: {medicaid_ce_satisfied_for_month: {"2027-02": true}}, expect: true}
+  - {id: WR-225-T2, parameters: {medicaid_application_lookback_months: 3}, given: {medicaid_ce_satisfied_for_month: {"2026-12": true, "2027-01": false, "2027-02": true}}, expect: false}
+  - {id: WR-225-T3, parameters: {medicaid_application_lookback_months: 3}, given: {medicaid_ce_satisfied_for_month: {"2026-12": true, "2027-02": true}}, expect: unknown}

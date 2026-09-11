@@ -1,0 +1,10 @@
+id: WR-043
+name: Educational program hours
+identifier: education_hours
+kind: supplied
+type: hours
+scope: person-month
+program: Medicaid
+meaning: Hours of participation in an educational program in the month.
+supplied_by: Institution record or statement.
+sources: [S6, S7]

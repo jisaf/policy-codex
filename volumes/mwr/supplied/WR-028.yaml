@@ -1,0 +1,10 @@
+id: WR-028
+name: Is a member of a household receiving SNAP
+identifier: is_member_of_snap_household
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: During the month the person is a member of a household that receives SNAP benefits.
+supplied_by: SNAP case record.
+sources: [S2]

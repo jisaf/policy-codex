@@ -1,0 +1,15 @@
+id: WR-306
+name: "SNAP: meets the employment exemption"
+identifier: snap_meets_employment_exemption
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: Weekly average hours worked are at least 30, or weekly earnings are at least the Federal minimum wage times 30.
+derived: [any, [">=", snap_weekly_average_hours_worked, snap_employment_exemption_weekly_hours], [">=", snap_weekly_earnings, ["*", federal_minimum_wage, snap_employment_exemption_weekly_hours]]]
+sources: [S30]
+implemented: engine
+tests:
+  - {id: WR-306-T1, month: "2027-02", given: {hours_worked: 130, monthly_income: 0}, expect: true}
+  - {id: WR-306-T2, month: "2027-02", given: {hours_worked: 100, monthly_income: 942.5}, expect: true}
+  - {id: WR-306-T3, month: "2027-02", given: {hours_worked: 100, monthly_income: 900}, expect: false}

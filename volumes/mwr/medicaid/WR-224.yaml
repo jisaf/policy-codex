@@ -1,0 +1,14 @@
+id: WR-224
+name: "Medicaid: application lookback months"
+identifier: medicaid_application_lookback_months_list
+kind: derived
+type: list of months
+scope: person
+program: Medicaid
+meaning: The consecutive months, as many as the State specifies, ending with the month before the month containing the Determination Date.
+derived: [months_ending, medicaid_application_lookback_months, [month_before, [det_month]]]
+sources: [S8]
+implemented: engine
+tests:
+  - {id: WR-224-T1, given: {}, expect: ["2027-02"]}
+  - {id: WR-224-T2, parameters: {medicaid_application_lookback_months: 3}, given: {}, expect: ["2026-12", "2027-01", "2027-02"]}

@@ -1,0 +1,14 @@
+id: WR-308
+name: "SNAP: is subject to general work registration"
+identifier: snap_is_subject_to_work_registration
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: Age at the month is 16 through 59, the person is not unfit for employment, and the person is not exempt from general work registration.
+derived: [all, [">=", age_at_month, snap_work_registration_min_age], ["<=", age_at_month, snap_work_registration_max_age], [not, snap_is_unfit_for_employment], [not, snap_is_exempt_from_work_registration]]
+sources: [S29, S30, S31]
+implemented: engine
+tests:
+  - {id: WR-308-T1, month: "2027-02", given: {date_of_birth: "1990-01-01", snap_is_unfit_for_employment: false, snap_is_exempt_from_work_registration: false}, expect: true}
+  - {id: WR-308-T2, month: "2027-02", given: {date_of_birth: "1965-01-01", snap_is_unfit_for_employment: false, snap_is_exempt_from_work_registration: false}, expect: false}

@@ -1,0 +1,11 @@
+id: WR-016
+name: Has a substance use disorder
+identifier: has_substance_use_disorder
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person has a substance use disorder.
+supplied_by: Clinical documentation or statement under penalty of perjury, per verification rules.
+sources: [S3]
+tags: [medical]

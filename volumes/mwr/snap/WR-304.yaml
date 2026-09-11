@@ -1,0 +1,14 @@
+id: WR-304
+name: "SNAP: weekly average hours worked"
+identifier: snap_weekly_average_hours_worked
+kind: derived
+type: hours
+scope: person-month
+program: SNAP
+meaning: Hours worked in the month converted to a weekly average, using 12 months per 52 weeks. No reported hours counts as 0.
+derived: ["/", ["*", [otherwise, hours_worked, 0], 12], 52]
+sources: [S30]
+implemented: assembly
+open: [OQ-8, OQ-23]
+tests:
+  - {id: WR-304-T1, month: "2027-02", given: {hours_worked: 130}, expect: 30}

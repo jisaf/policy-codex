@@ -1,0 +1,17 @@
+id: WR-222
+name: "Medicaid: experiences a short-term hardship in month"
+identifier: medicaid_short_term_hardship_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: The State elects the hardship exception, and for part or all of the month the person received inpatient or facility services, resided in a county with a declared emergency or disaster or with unemployment meeting the threshold, or traveled outside the community for extended care.
+derived: [all, state_elects_short_term_hardship, [any, received_inpatient_or_facility_services, county_has_declared_disaster, medicaid_county_unemployment_meets_hardship_threshold, traveled_for_extended_care]]
+sources: [S10]
+implemented: engine
+tags: [legal]
+open: [OQ-12]
+tests:
+  - {id: WR-222-T1, month: "2027-02", given: {received_inpatient_or_facility_services: true}, expect: true}
+  - {id: WR-222-T2, month: "2027-02", given: {received_inpatient_or_facility_services: false, county_has_declared_disaster: false, county_unemployment_rate: 0.03, national_unemployment_rate: 0.04, traveled_for_extended_care: false}, expect: false}
+  - {id: WR-222-T3, month: "2027-02", parameters: {state_elects_short_term_hardship: false}, given: {received_inpatient_or_facility_services: true}, expect: false}

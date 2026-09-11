@@ -1,0 +1,15 @@
+id: WR-301
+name: "SNAP: is medically certified unfit for employment"
+identifier: snap_is_unfit_for_employment
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person receives disability benefits, the agency finds them obviously unfit, or they have a medical statement of unfitness.
+derived: [any, receives_disability_benefits, agency_finds_obviously_unfit, has_medical_statement_of_unfitness]
+sources: [S20, S28]
+implemented: assembly
+tags: [medical]
+tests:
+  - {id: WR-301-T1, given: {receives_disability_benefits: false, agency_finds_obviously_unfit: false, has_medical_statement_of_unfitness: true}, expect: true}
+  - {id: WR-301-T2, given: {receives_disability_benefits: false, agency_finds_obviously_unfit: false, has_medical_statement_of_unfitness: false}, expect: false}

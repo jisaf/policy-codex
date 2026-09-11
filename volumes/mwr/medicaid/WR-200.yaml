@@ -1,0 +1,16 @@
+id: WR-200
+name: "Medicaid: is in the community engagement age range"
+identifier: medicaid_in_ce_age_range
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person has attained age 19 and is under age 65.
+derived: [all, [">=", age, medicaid_ce_min_age], ["<", age, medicaid_ce_max_age_exclusive]]
+sources: [S1]
+implemented: engine
+tests:
+  - {id: WR-200-T1, given: {date_of_birth: "2008-03-16"}, expect: false}
+  - {id: WR-200-T2, given: {date_of_birth: "2008-03-15"}, expect: true}
+  - {id: WR-200-T3, given: {date_of_birth: "1962-03-15"}, expect: false}
+  - {id: WR-200-T4, given: {date_of_birth: "1962-03-16"}, expect: true}

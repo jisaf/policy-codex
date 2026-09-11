@@ -1,0 +1,10 @@
+id: WR-103
+name: Medicaid community engagement age ceiling
+identifier: medicaid_ce_max_age_exclusive
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: A person must be under this age to be an applicable individual.
+value: 65
+sources: [S1]

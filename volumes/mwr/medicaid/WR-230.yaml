@@ -1,0 +1,17 @@
+id: WR-230
+name: "Medicaid: community engagement status at renewal"
+identifier: medicaid_ce_status_at_renewal
+kind: derived
+type: one of
+options: ["not yet in effect", "not subject", met, "not met"]
+scope: person
+program: Medicaid
+role: outcome
+meaning: Not yet in effect when the Determination Date is before the implementation date; not subject when the person is not an applicable individual; met when community engagement is satisfied at renewal; otherwise not met.
+derived: [case, [["<", [det_date], medicaid_ce_implementation_date], "not yet in effect"], [[not, medicaid_is_applicable_individual], "not subject"], [medicaid_satisfies_ce_at_renewal, met], [else, "not met"]]
+sources: [S8, S9, S11]
+implemented: engine
+tags: [legal]
+tests:
+  - {id: WR-230-T1, given: {medicaid_is_applicable_individual: true, medicaid_satisfies_ce_at_renewal: true}, expect: met}
+  - {id: WR-230-T2, given: {medicaid_is_applicable_individual: true, medicaid_satisfies_ce_at_renewal: false}, expect: "not met"}

@@ -1,0 +1,10 @@
+id: WR-060
+name: Received inpatient or facility services in month
+identifier: received_inpatient_or_facility_services
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: For part or all of the month the person received inpatient hospital services, nursing facility services, services in an intermediate care facility for individuals with intellectual disabilities, inpatient psychiatric hospital services, or other services of similar acuity.
+supplied_by: Claims or encounter data.
+sources: [S10]

@@ -1,0 +1,10 @@
+id: WR-114
+name: Medicaid seasonal income averaging months
+identifier: medicaid_seasonal_average_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of preceding months over which a seasonal worker's income is averaged.
+value: 6
+sources: [S6]

@@ -1,0 +1,12 @@
+id: WR-021
+name: Condition significantly impairs ability to comply
+identifier: condition_impairs_ce_compliance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: The person's physical, mental, or other behavioral health condition significantly impairs their ability to comply with the community engagement requirement.
+supplied_by: Clinical documentation or statement.
+sources: [S3]
+tags: [medical]
+open: [OQ-5]

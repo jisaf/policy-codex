@@ -1,0 +1,13 @@
+id: WR-106
+name: Medicaid renewal required months
+identifier: medicaid_renewal_required_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of months, consecutive or not, between determinations for which an enrollee must demonstrate community engagement. The State specifies 1 or more.
+assumption: The State elects 1 month. Replace with the actual election.
+value: 1
+sources: [S8]
+tags: [state_election]
+open: [OQ-10]

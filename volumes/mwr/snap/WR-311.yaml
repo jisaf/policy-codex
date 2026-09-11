@@ -1,0 +1,14 @@
+id: WR-311
+name: "SNAP: hours worked including good cause"
+identifier: snap_hours_worked_with_good_cause
+kind: derived
+type: hours
+scope: person-month
+program: SNAP
+meaning: Hours worked plus hours missed for good cause in the month. No reported hours counts as 0.
+derived: ["+", [otherwise, hours_worked, 0], [otherwise, hours_missed_for_good_cause, 0]]
+sources: [S24, S26]
+implemented: assembly
+open: [OQ-22, OQ-23]
+tests:
+  - {id: WR-311-T1, month: "2027-02", given: {hours_worked: 72, hours_missed_for_good_cause: 8}, expect: 80}

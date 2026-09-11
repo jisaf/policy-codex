@@ -1,0 +1,19 @@
+id: WR-204
+name: "Medicaid: is a family caregiver of a dependent"
+identifier: medicaid_is_family_caregiver_of_dependent
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: There is a person this person cares for who is a dependent child or disabled individual, and this person either resides with them, is their relative, or provided at least 80 hours of assistance to them in the month containing the Determination Date.
+precision: Care hours are read from the month containing the Determination Date.
+derived: [exists, persons_cared_for, [all, [of, [P], medicaid_is_qualifying_dependent], [any, [in_group, [P], lives_with], [rel, [parent, guardian, "caretaker relative", spouse, relative], [P]], [">=", [lookup, [at, care_hours_by_person, [det_month]], [P]], caregiver_min_hours_nonresident_nonrelative]]]]
+sources: [S2, S4, S5, S17]
+implemented: assembly
+tags: [legal]
+open: [OQ-17]
+tests:
+  - {id: WR-204-T1, given: {date_of_birth: "1990-01-01", persons_cared_for: [p2], lives_with: [p2]}, others: {p2: {date_of_birth: "1960-01-01", is_disabled_individual_ada: true}}, expect: true}
+  - {id: WR-204-T2, given: {date_of_birth: "1990-01-01", persons_cared_for: [p2], lives_with: []}, relationships: [[relative, p2]], others: {p2: {date_of_birth: "1960-01-01", is_disabled_individual_ada: true}}, expect: true}
+  - {id: WR-204-T3, given: {date_of_birth: "1990-01-01", persons_cared_for: [p2], lives_with: [], care_hours_by_person: {"2027-03": {p2: 80}}}, others: {p2: {date_of_birth: "1960-01-01", is_disabled_individual_ada: true}}, expect: true}
+  - {id: WR-204-T4, given: {date_of_birth: "1990-01-01", persons_cared_for: [p2], lives_with: [], care_hours_by_person: {"2027-03": {p2: 79}}}, relationships: [], others: {p2: {date_of_birth: "1960-01-01", is_disabled_individual_ada: true}}, expect: false}

@@ -1,0 +1,10 @@
+id: WR-024
+name: Has a medical statement of unfitness for employment
+identifier: has_medical_statement_of_unfitness
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person has provided a statement from a physician, physician's assistant, nurse, nurse practitioner, designated representative of the physician's office, a licensed or certified psychologist, a social worker, or other medical personnel the State agency determines appropriate, that they are physically or mentally unfit for employment.
+supplied_by: Document on file.
+sources: [S28]
