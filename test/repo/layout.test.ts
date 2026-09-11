@@ -25,7 +25,8 @@ describe("repository layout after the rebuild", () => {
     const readme = readFileSync(join(ROOT, "README.md"), "utf8");
     expect(readme).toContain("codex.json");
     expect(readme).toContain("docs/conventions.md");
-    expect(readme).toContain("npm run deploy");
+    expect(readme).toContain(".github/workflows/deploy.yml");
+    expect(existsSync(join(ROOT, ".github/workflows/deploy.yml"))).toBe(true);
     expect(readme).not.toContain("approach-a");
     expect(readme).not.toContain("site_build.py");
   });

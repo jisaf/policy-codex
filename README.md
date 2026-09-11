@@ -39,15 +39,15 @@ npm run typecheck
 npm run e2e        # one Playwright smoke test against a local build
 ```
 
+There is no `deploy` script; see Deploy below.
+
 If Playwright's bundled Chromium is unavailable, point `PLAYWRIGHT_CHROMIUM_PATH` at a Chrome binary.
 
 The engine under `src/engine/` is pinned to `test/fixtures/` (53 derivation round trips, 138 item blocks, 133 rule tests). The fixtures are frozen; see `scripts/README.md` for how they were produced.
 
 ## Deploy
 
-```bash
-npm run deploy     # builds and pushes dist/ to the gh-pages branch
-```
+Every push to `main` runs `.github/workflows/deploy.yml`: typecheck, unit tests, build, and publish `dist/` to GitHub Pages. Merging a pull request is the deploy. The workflow can also be run by hand from the Actions tab.
 
 The Worker deploys separately: `cd worker && npx wrangler deploy`, then paste its URL into the app's settings sheet.
 
