@@ -3,11 +3,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { createEngine } from "../../src/engine/engine";
 import { parseCases } from "../../src/engine/cases";
-import { buildSuite } from "../../src/export/conformance";
+import { buildSuite, gradeCase } from "../../src/export/conformance";
 import { evaluateCase } from "../../scripts/adapters/codex-self-lib";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
-import type { Item, VolumeMeta } from "../../src/engine/types";
+import type { Item, TestSpec, VolumeMeta } from "../../src/engine/types";
 import type { LoadedVolume } from "../../src/ledger/load";
 
 const root = path.resolve(__dirname, "../..");
@@ -94,6 +94,36 @@ describe("buildSuite", () => {
   it("has no stale expectations today (every value is the codex's current evaluation)", () => {
     expect(suite.notes).toEqual([]);
   });
+
+  it("merges a rule test's own `persons` into the case after `others`", () => {
+    // WR-203-T1 (in the ledger already) puts p2 in `others`; a synthetic
+    // second test on the same item instead states p2 through `persons`
+    // (which should win, same as makeCase) and adds a brand-new p3 the same
+    // way.
+    const wr203 = (ledger.items as unknown as Item[]).find((it) => it.id === "WR-203")!;
+    const synthTest: TestSpec = {
+      id: "SYNTH-T1",
+      month: "2027-03",
+      given: {},
+      others: { p2: { date_of_birth: "1990-01-01" } },
+      persons: {
+        p2: { facts: { date_of_birth: "2015-01-01", relies_on_another_for_care: true } },
+        p3: { facts: { is_disabled_individual_ada: false } },
+      },
+      expect: true,
+    };
+    const items = (ledger.items as unknown as Item[]).map((it) =>
+      it.id === wr203.id ? { ...it, tests: [...(it.tests ?? []), synthTest] } : it);
+    const synthEngine = createEngine(items, ledger.meta as unknown as VolumeMeta, refs);
+    const synthVol = { ...vol, items, cases: [] } as unknown as LoadedVolume;
+    const synthSuite = buildSuite(synthEngine, synthVol, "deadbeef");
+    const c = synthSuite.cases.find((x) => x.id === "SYNTH-T1")!;
+    // `persons.p2` overrode what `others` would have built for p2.
+    expect(c.persons.p2.facts).toEqual({
+      date_of_birth: "2015-01-01", relies_on_another_for_care: true,
+    });
+    expect(c.persons.p3.facts).toEqual({ is_disabled_individual_ada: false });
+  });
 });
 
 describe("the codex-self adapter, called in-process", () => {
@@ -113,5 +143,23 @@ describe("the codex-self adapter, called in-process", () => {
     }
     expect(checked).toBeGreaterThan(0);
     expect(failed).toBe(0);
+  });
+
+  it("reports a nonexistent identifier as unimplemented, via conform's own grading", () => {
+    const real = suite.cases.find((c) => c.kind === "rule-test")!;
+    const withBogus = {
+      ...real,
+      expect: [
+        ...real.expect,
+        { person: "p1", identifier: "nonexistent_identifier", month: null, value: true },
+      ],
+    };
+    const values = evaluateCase(withBogus);
+    // The bogus identifier throws inside evaluateCase and is omitted, not
+    // reported as `value: null`.
+    expect(values.some((v) => v.identifier === "nonexistent_identifier")).toBe(false);
+    const graded = gradeCase(withBogus, values);
+    expect(graded.unimplemented).toBe(1);
+    expect(graded.failed).toBe(0);
   });
 });
