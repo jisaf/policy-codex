@@ -21,5 +21,11 @@ volumes/mwr/supplied/       @jisaf
 # Parameter steward(s): numeric and date thresholds shared across rules.
 volumes/mwr/parameters/     @jisaf
 
+# Household cases: touches every program's outcomes at once.
+volumes/mwr/tests/          @jisaf
+
 # The engine: anyone editing evaluation, constraints, or governance rules.
 src/engine/                 @jisaf
+
+# The manifest: which item files are in the ledger at all.
+codex.json                  @jisaf
