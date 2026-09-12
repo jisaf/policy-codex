@@ -1,3 +1,4 @@
+import { useMemo } from "preact/hooks";
 import type { Engine } from "../engine/engine";
 import type { Expr, Item } from "../engine/types";
 import { RELS } from "../engine/types";
@@ -7,6 +8,14 @@ import {
 } from "./patterns";
 
 interface Props { engine: Engine; draft: Item; onChange: (next: Item) => void }
+
+interface FormProps extends Props {
+  /** A new item answers to the governance rules that only adds carry: it needs
+   *  a rationale and it acknowledges the items it may duplicate. */
+  isNew?: boolean;
+  /** Leave the editor for an existing item instead of adding this one. */
+  onOpenInstead?: (id: string) => void;
+}
 
 function Slot({
   engine, draft, onChange, path, want, ctx, label,
@@ -285,9 +294,19 @@ function RESULTOF(op: string): string {
   return RESULT[op] ?? "*";
 }
 
-export function FormEditor({ engine, draft, onChange }: Props) {
+export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: FormProps) {
   const set = (patch: Partial<Item>) => onChange({ ...draft, ...patch });
   const monthOk = draft.scope === "person-month" || draft.scope === "month";
+  // The candidate search walks the whole ledger, so it is recomputed only when
+  // one of the fields it reads changes, not on every keystroke elsewhere.
+  const near = useMemo(
+    () => (isNew ? engine.nearest(draft) : []),
+    [
+      isNew, engine, draft.name, draft.identifier, draft.meaning,
+      JSON.stringify(draft.derived ?? null),
+    ],
+  );
+  const acknowledged = new Set(draft.nearest ?? []);
 
   return (
     <div class="form">
@@ -367,6 +386,42 @@ export function FormEditor({ engine, draft, onChange }: Props) {
           onInput={(e) => set({ precision: (e.target as HTMLTextAreaElement).value || undefined })}
         />
       </label>
+      {isNew && (
+        <label class="wide">Rationale
+          <textarea
+            name="rationale" rows={3} required value={draft.rationale ?? ""}
+            onInput={(e) => set({ rationale: (e.target as HTMLTextAreaElement).value })}
+          />
+        </label>
+      )}
+      {isNew && (
+        <div class="wide similar">
+          <h4>Similar existing items</h4>
+          {near.length === 0
+            ? <p class="muted">Nothing in the ledger looks like this item yet.</p>
+            : (
+              <ul class="candidates">
+                {near.map((c) => (
+                  <li key={c.id} class="candidate">
+                    <span class="tag">{c.reason}</span>
+                    <span class="score">{c.score.toFixed(2)}</span>
+                    <strong>{engine.itemById(c.id)?.name ?? c.identifier}</strong>
+                    <small>{c.identifier}</small>
+                    <button
+                      class="btn small open"
+                      onClick={() => onOpenInstead?.(c.id)}
+                    >Open instead</button>
+                    <button
+                      class="btn small ack"
+                      disabled={acknowledged.has(c.id)}
+                      onClick={() => set({ nearest: [...(draft.nearest ?? []), c.id] })}
+                    >{acknowledged.has(c.id) ? "Acknowledged" : "Acknowledge"}</button>
+                  </li>
+                ))}
+              </ul>
+            )}
+        </div>
+      )}
       {draft.kind === "supplied" && (
         <label class="wide">Supplied by
           <input

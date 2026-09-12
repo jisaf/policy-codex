@@ -30,7 +30,7 @@ export const RESERVED: ReadonlySet<string> = new Set([
   "exists", "exists_related", "rel", "in_group", "of", "lookup",
 ]);
 
-const NAME_RE = /^[a-z][a-z0-9_]*$/;
+export const NAME_RE = /^[a-z][a-z0-9_]*$/;
 
 const STOPWORDS: ReadonlySet<string> = new Set([
   "is", "has", "of", "in", "for", "the", "a", "an", "to", "and", "or", "per", "at", "by",
