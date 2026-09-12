@@ -7,10 +7,24 @@ import {
   trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 
-const NAV: Array<{ view: ViewName; label: string }> = [
+interface NavItem {
+  view: ViewName;
+  label: string;
+  /** "program" is the one entry whose link target isn't just its own view:
+   *  it opens the first declared program, computed from the engine at
+   *  render time. Given the render-time `firstProgram`, this returns the
+   *  route `arg` to use; every other entry falls back to `null`. Declaring
+   *  it here keeps the nav's order as one array stewards can read top to
+   *  bottom, instead of two `NAV.slice()` calls with the "Programs" link
+   *  spliced in by hand between them. */
+  arg?: (firstProgram: string | null) => string | null;
+}
+
+const NAV: NavItem[] = [
   { view: "table", label: "Table" },
   { view: "graph", label: "Graph" },
   { view: "cases", label: "Cases" },
+  { view: "program", label: "Programs", arg: (firstProgram) => firstProgram },
   { view: "source", label: "Sources" },
   { view: "documents", label: "Documents" },
   { view: "search", label: "Search" },
@@ -42,26 +56,11 @@ export function Header() {
       <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
       {r.ref && <span class="tag ref">{r.ref}</span>}
       <nav>
-        {NAV.slice(0, 3).map((n) => (
+        {NAV.map((n) => (
           <a
             key={n.view}
             class={r.view === n.view ? "on" : ""}
-            href={buildHash({ ...r, view: n.view, arg: null, params: {} })}
-          >
-            {n.label}
-          </a>
-        ))}
-        <a
-          class={r.view === "program" ? "on" : ""}
-          href={buildHash({ ...r, view: "program", arg: firstProgram, params: {} })}
-        >
-          Programs
-        </a>
-        {NAV.slice(3).map((n) => (
-          <a
-            key={n.view}
-            class={r.view === n.view ? "on" : ""}
-            href={buildHash({ ...r, view: n.view, arg: null, params: {} })}
+            href={buildHash({ ...r, view: n.view, arg: n.arg ? n.arg(firstProgram) : null, params: {} })}
           >
             {n.label}
           </a>
