@@ -3,9 +3,31 @@ import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
 import { buildHash } from "./router";
 import {
-  engineSig, openEditor, route, sourceTitles, viewEngine, volumeSig,
+  engineSig, openEditor, putChangeEntry, route, sourceTitles, trayOpenSig, viewEngine,
+  volumeSig,
 } from "./state";
 import { itemValidation } from "./validation";
+
+interface RenameNote { msg: string; blocking: boolean }
+
+/** The live checks shown under the rename form's input: the governance
+ *  findings for a copy of `item` under the candidate identifier, plus a
+ *  uniqueness check governance() does not itself make (it checks one item,
+ *  never against the rest of the ledger). Empty candidates and the item's own
+ *  current identifier show no notes. */
+function renameNotes(engine: Engine, item: Item, candidate: string): RenameNote[] {
+  if (!candidate || candidate === item.identifier) return [];
+  const notes: RenameNote[] = engine.governance({ ...item, identifier: candidate }, { isNew: false })
+    .map((f) => ({ msg: f.msg, blocking: f.level === "error" }));
+  const existing = engine.item(candidate);
+  if (existing) {
+    notes.push({
+      msg: `"${candidate}" is already the identifier of ${existing.id} (${existing.name})`,
+      blocking: true,
+    });
+  }
+  return notes;
+}
 
 export function TestTable({ engine, item }: { engine: Engine; item: Item }) {
   const tests = item.tests ?? [];
@@ -41,6 +63,8 @@ export function TestTable({ engine, item }: { engine: Engine; item: Item }) {
 
 export function ItemView() {
   const tab = useSignal<"b" | "a">("b");
+  const renameOpen = useSignal(false);
+  const renameValue = useSignal("");
   const engine = viewEngine() ?? engineSig.value;
   const vol = volumeSig.value;
   const r = route.value;
@@ -85,7 +109,57 @@ export function ItemView() {
           >Approach A</button>
         </div>
         <button class="btn" onClick={() => openEditor(item.id)}>Edit</button>
+        <button
+          class="btn rename"
+          onClick={() => { renameValue.value = item.identifier; renameOpen.value = true; }}
+        >Rename</button>
       </div>
+
+      {renameOpen.value && (() => {
+        const candidate = renameValue.value.trim();
+        const notes = renameNotes(engine, item, candidate);
+        const ready = candidate !== "" && candidate !== item.identifier &&
+          !notes.some((n) => n.blocking);
+        return (
+          <div class="rename-form card">
+            <label>New identifier
+              <input
+                class="mono rename-input"
+                value={renameValue.value}
+                onInput={(e) => { renameValue.value = (e.target as HTMLInputElement).value; }}
+              />
+            </label>
+            {notes.length > 0 && (
+              <ul class="problems">
+                {notes.map((n) => (
+                  <li key={n.msg} class={n.blocking ? "bad" : "warn"}>{n.msg}</li>
+                ))}
+              </ul>
+            )}
+            <button
+              class="btn confirm-rename"
+              disabled={!ready}
+              onClick={() => {
+                const result = engine.rename(item.identifier, candidate);
+                if (result.errors.length) return;
+                const base = engineSig.value ?? engine;
+                for (const changedItem of result.changed) {
+                  putChangeEntry({
+                    id: changedItem.id,
+                    chapter: vol.chapterOf[changedItem.id] ?? "supplied",
+                    before: base.itemById(changedItem.id) ?? null,
+                    after: changedItem,
+                  });
+                }
+                trayOpenSig.value = true;
+                renameOpen.value = false;
+                renameValue.value = "";
+              }}
+            >Confirm rename</button>
+            <button class="btn" onClick={() => { renameOpen.value = false; }}>Cancel</button>
+          </div>
+        );
+      })()}
 
       {tab.value === "a" ? (
         <>
