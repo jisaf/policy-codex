@@ -1,6 +1,6 @@
 # Policy Codex, phase 2: governance, audit, documents, conformance
 
-Date: 2026-09-12. Status: approved in conversation; this document is the binding spec for phase 2.
+Date: 2026-09-12. Status: implemented; name.prefix ruling applied (error on derived items, warn on parameters, exempt on supplied facts); name.digits errors left editable under ratchet.
 
 ## Goal
 

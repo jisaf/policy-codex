@@ -1,10 +1,12 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
+import { referencesInCases, renameInCasesText } from "../engine/rename";
 import type { Item } from "../engine/types";
+import { fileEntries } from "../changes/types";
 import { buildHash } from "./router";
 import {
-  engineSig, openEditor, putChangeEntry, route, sourceTitles, trayOpenSig, viewEngine,
-  volumeSig,
+  changeSetSig, engineSig, openEditor, putChangeEntry, putFileChange, route, sourceTitles,
+  trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 import { itemValidation } from "./validation";
 
@@ -150,6 +152,23 @@ export function ItemView() {
                     before: base.itemById(changedItem.id) ?? null,
                     after: changedItem,
                   });
+                }
+                // A rename that reaches household cases rewrites
+                // tests/cases.yaml too, textually (so its comments survive),
+                // staged on top of whatever the tray already holds for it.
+                const cases = vol.cases ?? [];
+                if (referencesInCases(cases, item.identifier).length > 0) {
+                  const path = `${vol.path}/tests/cases.yaml`;
+                  const staging = fileEntries(changeSetSig.value).find((f) => f.path === path);
+                  const before = staging?.after ?? vol.casesText;
+                  if (before != null) {
+                    putFileChange({
+                      path,
+                      before: vol.casesText,
+                      after: renameInCasesText(before, cases, item.identifier, candidate),
+                      label: `${path}: rename ${item.identifier} to ${candidate}`,
+                    });
+                  }
                 }
                 trayOpenSig.value = true;
                 renameOpen.value = false;

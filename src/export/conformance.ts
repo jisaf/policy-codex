@@ -56,6 +56,70 @@ export interface ConformanceResults {
   }>;
 }
 
+/** One value an adapter reports for one expectation. `person`/`month` are
+ *  carried again (not just `value`) so `expKey` can match an adapter's
+ *  answer back to the expectation it answers, independent of order. */
+export interface AdapterValue {
+  person: string | null; identifier: string; month: string | null; value: unknown;
+}
+
+/** Deep equality between two of the suite's own values, with float
+ *  tolerance. Unlike `src/engine/values.ts`'s `valuesEqual`, both sides here
+ *  are real evaluated values (never the ledger's `"unknown"` authoring
+ *  sentinel), so a `null` must equal a `null`. */
+export function valuesMatch(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (a === null || a === undefined || b === null || b === undefined) return false;
+  if (typeof a === "number" && typeof b === "number") return Math.abs(a - b) < 1e-9;
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return a.length === b.length && a.every((x, i) => valuesMatch(x, b[i]));
+  }
+  if (typeof a === "object" && typeof b === "object") {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  return false;
+}
+
+export function expKey(e: { person: string | null; identifier: string; month: string | null }): string {
+  return `${e.person ?? ""}|${e.identifier}|${e.month ?? ""}`;
+}
+
+export interface GradeResult {
+  passed: number;
+  failed: number;
+  /** an expectation the adapter reported no value for at all: `scripts/
+   *  adapters/codex-self-lib.ts` (and any adapter) omits the entry rather
+   *  than reporting `value: null`, so an unknown identifier is graded as
+   *  unimplemented, never as a spurious pass or fail against `null`. */
+  unimplemented: number;
+  failures: ConformanceResults["failures"];
+}
+
+/** Grades one case's expectations against one adapter's answers for it.
+ *  Shared by `scripts/conform.ts` (the CLI) and tests, so both agree on what
+ *  counts as passed, failed, or unimplemented. */
+export function gradeCase(c: SuiteCase, values: readonly AdapterValue[]): GradeResult {
+  const byKey = new Map(values.map((v) => [expKey(v), v.value]));
+  let passed = 0;
+  let failed = 0;
+  let unimplemented = 0;
+  const failures: ConformanceResults["failures"] = [];
+  for (const e of c.expect) {
+    const k = expKey(e);
+    if (!byKey.has(k)) { unimplemented++; continue; }
+    const got = byKey.get(k);
+    if (valuesMatch(got, e.value)) passed++;
+    else {
+      failed++;
+      failures.push({
+        case: c.id, person: e.person, identifier: e.identifier, month: e.month,
+        expected: e.value, got,
+      });
+    }
+  }
+  return { passed, failed, unimplemented, failures };
+}
+
 /** Reads `conformance/results.json` from a volume's source, or `null` when
  *  the ref has never had a conformance run committed (a 404, like any other
  *  missing file). For the Program view: "Conformance: adapter X on
@@ -141,6 +205,19 @@ function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: Suite
   };
   for (const [pid, facts] of Object.entries(t.others || {})) {
     persons[pid] = personFromGiven(engine, facts, undefined, undefined, evalMonth, monthFacts);
+  }
+  // `t.persons` is merged in after `others`, mirroring `makeCase`'s own
+  // order (evaluate.ts): a person named here replaces whatever `others`
+  // built for the same id, and its own `months` are layered on afterward.
+  for (const [pid, p] of Object.entries(t.persons || {})) {
+    const person = personFromGiven(
+      engine, p.facts, p.relationships, p.month_defaults, evalMonth, monthFacts,
+    );
+    for (const [m, mf] of Object.entries(p.months || {})) {
+      person.months ??= {};
+      for (const [k, v] of Object.entries(mf)) (person.months[m] ??= {})[k] = v;
+    }
+    persons[pid] = person;
   }
   const { got, ok, err } = engine.runTest(it, t);
   const person = ["global", "case", "month"].includes(it.scope) ? null : "p1";

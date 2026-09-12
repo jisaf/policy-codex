@@ -1,11 +1,14 @@
 import { useSignal } from "@preact/signals";
+import { useLayoutEffect } from "preact/hooks";
 import type { HouseholdCase } from "../engine/cases";
 import { programsOfCase } from "../engine/cases";
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
+import { loadConformanceResults, type ConformanceResults } from "../export/conformance";
+import type { LedgerSource } from "../ledger/source";
 import { programCounts, programOutcomes } from "./CasesView";
 import { buildHash, type Route } from "./router";
-import { engineSig, route, viewEngine, volumeSig } from "./state";
+import { engineSig, ledgerSource, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
 
 /** The value of a parameter in force on a date: the latest version whose
@@ -219,11 +222,33 @@ function Health({ engine, programId }: { engine: Engine; programId: string }) {
   );
 }
 
+/** "Conformance: <adapter> on codex@<sha>: N passed, N failed, N
+ *  unimplemented", read from `conformance/results.json` at whatever ref the
+ *  route shows. Renders nothing when the ref has never had a conformance run
+ *  committed (loadConformanceResults resolves null on a missing file). */
+function ConformanceSummary({ source }: { source: LedgerSource }) {
+  const results = useSignal<ConformanceResults | null>(null);
+  useLayoutEffect(() => {
+    let live = true;
+    results.value = null;
+    loadConformanceResults(source).then((r) => { if (live) results.value = r; });
+    return () => { live = false; };
+  }, [source]);
+  if (!results.value) return null;
+  const r = results.value;
+  return (
+    <p class="conformance muted">
+      Conformance: {r.adapter} on codex@{r.codex.sha}: {r.summary.passed} passed,{" "}
+      {r.summary.failed} failed, {r.summary.unimplemented} unimplemented
+    </p>
+  );
+}
+
 function ProgramPage(
-  { engine, programId, programs, cases, route: r }:
+  { engine, programId, programs, cases, route: r, source }:
   {
     engine: Engine; programId: string; programs: Array<{ id: string; outcomes: string[] }>;
-    cases: HouseholdCase[]; route: Route;
+    cases: HouseholdCase[]; route: Route; source: LedgerSource;
   },
 ) {
   const program = programs.find((p) => p.id === programId);
@@ -235,6 +260,7 @@ function ProgramPage(
         <span class="spacer" />
       </div>
       <ProgramSwitcher programs={programs} current={program.id} route={r} />
+      <ConformanceSummary source={source} />
 
       <h3>Outcomes</h3>
       <Outcomes engine={engine} outcomes={program.outcomes} cases={cases} route={r} />
@@ -254,7 +280,7 @@ function ProgramPage(
   );
 }
 
-export function ProgramView() {
+export function ProgramView({ source }: { source?: LedgerSource } = {}) {
   const engine = viewEngine() ?? engineSig.value;
   const vol = volumeSig.value;
   const r = route.value;
@@ -265,6 +291,7 @@ export function ProgramView() {
   return (
     <ProgramPage
       engine={engine} programId={programId} programs={programs} cases={vol.cases ?? []} route={r}
+      source={source ?? ledgerSource()}
     />
   );
 }

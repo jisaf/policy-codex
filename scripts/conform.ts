@@ -5,24 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import type { ConformanceResults, Suite, SuiteCase } from "../src/export/conformance";
-
-/** Deep equality between two of the suite's own values, with float
- *  tolerance. Unlike `src/engine/values.ts`'s `valuesEqual`, both sides here
- *  are real evaluated values (never the ledger's `"unknown"` authoring
- *  sentinel), so a `null` must equal a `null`. */
-function valuesMatch(a: unknown, b: unknown): boolean {
-  if (a === b) return true;
-  if (a === null || a === undefined || b === null || b === undefined) return false;
-  if (typeof a === "number" && typeof b === "number") return Math.abs(a - b) < 1e-9;
-  if (Array.isArray(a) && Array.isArray(b)) {
-    return a.length === b.length && a.every((x, i) => valuesMatch(x, b[i]));
-  }
-  if (typeof a === "object" && typeof b === "object") {
-    return JSON.stringify(a) === JSON.stringify(b);
-  }
-  return false;
-}
+import { gradeCase, type AdapterValue, type ConformanceResults, type Suite, type SuiteCase } from "../src/export/conformance";
 
 interface Args { adapter: string; suite: string; out: string; batch: boolean }
 
@@ -41,9 +24,6 @@ function parseArgs(argv: string[]): Args {
   if (!args.adapter) throw new Error("--adapter <command> is required");
   return args as Args;
 }
-
-interface AdapterValue { person: string | null; identifier: string; month: string | null; value: unknown }
-type Failure = ConformanceResults["failures"][number];
 
 const root = path.resolve(import.meta.dirname, "..");
 const args = parseArgs(process.argv.slice(2));
@@ -68,27 +48,17 @@ function runAdapter(command: string, input: unknown): unknown {
   }
 }
 
-function expKey(e: { person: string | null; identifier: string; month: string | null }): string {
-  return `${e.person ?? ""}|${e.identifier}|${e.month ?? ""}`;
-}
-
 let passed = 0;
 let failed = 0;
 let unimplemented = 0;
-const failures: Failure[] = [];
+const failures: ConformanceResults["failures"] = [];
 
 function grade(c: SuiteCase, values: AdapterValue[]): void {
-  const byKey = new Map(values.map((v) => [expKey(v), v.value]));
-  for (const e of c.expect) {
-    const k = expKey(e);
-    if (!byKey.has(k)) { unimplemented++; continue; }
-    const got = byKey.get(k);
-    if (valuesMatch(got, e.value)) passed++;
-    else {
-      failed++;
-      failures.push({ case: c.id, person: e.person, identifier: e.identifier, month: e.month, expected: e.value, got });
-    }
-  }
+  const r = gradeCase(c, values);
+  passed += r.passed;
+  failed += r.failed;
+  unimplemented += r.unimplemented;
+  failures.push(...r.failures);
 }
 
 if (args.batch) {

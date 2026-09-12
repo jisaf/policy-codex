@@ -1,7 +1,17 @@
-export interface Source { id: string; title: string; citation: string; text: string }
+export interface Source {
+  id: string;
+  title: string;
+  citation: string;
+  text: string;
+  /** The document this excerpt was taken from (`D-n`), when sources.md names
+   *  one. Excerpts written before the documents library are undefined. */
+  document?: string;
+}
 export interface OpenQuestion { id: string; title: string; body: string; items: string[] }
 
 const SOURCE_HEAD = /^### (S\d+)\.\s*(.*)$/;
+/** `Document: D-n` directly under an excerpt heading names its document. */
+const SOURCE_DOCUMENT = /^Document:\s*(D-\d+)$/;
 const QUESTION_HEAD = /^### (OQ-\d+)\.?\s+(.*)$/;
 
 export function parseSources(md: string): Source[] {
@@ -16,7 +26,10 @@ export function parseSources(md: string): Source[] {
       continue;
     }
     if (!cur) continue;
-    if (line.startsWith(">")) {
+    const d = SOURCE_DOCUMENT.exec(line.trim());
+    if (d) {
+      cur.document = d[1];
+    } else if (line.startsWith(">")) {
       cur.text += line.slice(1).trim() + "\n";
     } else if (line.trim() && !cur.citation && !line.startsWith("#")) {
       cur.citation = line.trim();
@@ -60,5 +73,35 @@ export function parseOpenQuestions(md: string): OpenQuestion[] {
 export function sourceTitleMap(sources: readonly Source[]): Record<string, string> {
   const out: Record<string, string> = {};
   for (const s of sources) out[s.id] = s.title;
+  return out;
+}
+
+/** The next free `S-n`, so an excerpt appended by the AI panel never collides
+ *  with one already in sources.md. */
+export function nextSourceId(sources: readonly Source[]): string {
+  let max = 0;
+  for (const s of sources) {
+    const m = /^S(\d+)$/.exec(s.id);
+    if (m) max = Math.max(max, Number(m[1]));
+  }
+  return `S${max + 1}`;
+}
+
+/** Appends one excerpt per `{citation, text}` pair as a `### S<n>. <citation>`
+ *  section with a `Document: D-n` line, in the exact shape `parseSources`
+ *  reads back, starting at `startId`. Nothing else in the file is touched. */
+export function appendExcerpts(
+  sourcesMd: string, docId: string, startId: string,
+  excerpts: readonly { citation: string; text: string }[],
+): string {
+  const m = /^S(\d+)$/.exec(startId);
+  let n = m ? Number(m[1]) : 1;
+  let out = sourcesMd.replace(/\n*$/, "\n");
+  for (const ex of excerpts) {
+    const id = `S${n++}`;
+    const citation = ex.citation.trim();
+    const quoted = ex.text.trim().split("\n").map((l) => `> ${l}`).join("\n");
+    out += `\n### ${id}. ${citation}\n\nDocument: ${docId}\n\n${citation}\n\n${quoted}\n`;
+  }
   return out;
 }

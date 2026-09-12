@@ -1,7 +1,9 @@
 import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { parseOpenQuestions, parseSources, sourceTitleMap } from "../../src/ledger/markdown";
+import {
+  appendExcerpts, nextSourceId, parseOpenQuestions, parseSources, sourceTitleMap,
+} from "../../src/ledger/markdown";
 
 const root = path.resolve(__dirname, "../..");
 const sourcesMd = fs.readFileSync(path.join(root, "volumes/mwr/sources.md"), "utf8");
@@ -28,8 +30,62 @@ describe("parseSources", () => {
     expect(s1.text).not.toContain(">");
   });
 
+  it("reads the document each excerpt was taken from", () => {
+    expect(sources[0].document).toBe("D-1");
+    expect(sources.find((s) => s.id === "S24")!.document).toBe("D-7");
+    expect(sources.every((s) => /^D-\d+$/.test(s.document ?? ""))).toBe(true);
+  });
+
+  it("keeps the Document line out of the citation and the text", () => {
+    const s24 = sources.find((s) => s.id === "S24")!;
+    expect(s24.citation.startsWith("7 CFR 273.24(a)(1)(i).")).toBe(true);
+    expect(s24.citation).not.toContain("Document:");
+    expect(s24.text).not.toContain("Document:");
+  });
+
+  it("leaves document undefined when an excerpt names none", () => {
+    const [only] = parseSources("### S9. Untitled\n\n42 U.S.C. 1\n\n> text\n");
+    expect(only.document).toBeUndefined();
+    expect(only.citation).toBe("42 U.S.C. 1");
+  });
+
   it("maps ids to titles", () => {
     expect(sourceTitleMap(sources).S1).toBe("Applicable individual");
+  });
+});
+
+describe("nextSourceId", () => {
+  it("picks the id one past the highest, ignoring gaps", () => {
+    expect(nextSourceId(parseSources(sourcesMd))).toBe("S35");
+    expect(nextSourceId([])).toBe("S1");
+  });
+});
+
+describe("appendExcerpts", () => {
+  it("appends one section per excerpt, readable back by parseSources", () => {
+    const after = appendExcerpts(sourcesMd, "D-9", "S35", [
+      { citation: "MWR-2027-09, sec. 2", text: "Line one.\nLine two." },
+      { citation: "MWR-2027-09, sec. 3", text: "Second excerpt." },
+    ]);
+    expect(after.startsWith(sourcesMd.replace(/\n*$/, "\n"))).toBe(true);
+    const parsed = parseSources(after);
+    expect(parsed).toHaveLength(35);
+    const s35 = parsed.find((s) => s.id === "S35")!;
+    expect(s35.title).toBe("MWR-2027-09, sec. 2");
+    expect(s35.citation).toBe("MWR-2027-09, sec. 2");
+    expect(s35.document).toBe("D-9");
+    expect(s35.text).toBe("Line one.\nLine two.");
+    const s36 = parsed.find((s) => s.id === "S36")!;
+    expect(s36.text).toBe("Second excerpt.");
+  });
+
+  it("never rewrites anything before the appended section", () => {
+    const after = appendExcerpts(sourcesMd, "D-9", "S35", [
+      { citation: "c", text: "t" },
+    ]);
+    const original = parseSources(sourcesMd);
+    const untouched = parseSources(after).slice(0, original.length);
+    expect(untouched).toEqual(original);
   });
 });
 

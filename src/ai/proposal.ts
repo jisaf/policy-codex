@@ -50,11 +50,19 @@ export const PROPOSAL_SCHEMA: Record<string, unknown> = {
               "'T1: given fact=value; other=value => expected'.",
           },
           rationale: { type: "string" },
+          nearest_hint: {
+            type: "array",
+            items: { type: "string" },
+            description:
+              "Identifiers of existing glossary items you think this one may duplicate or " +
+              "closely resemble. The checker computes the real nearest items independently; " +
+              "this is your guess, for the reviewer to compare against it.",
+          },
         },
         required: [
           "name", "identifier", "kind", "type", "options", "scope", "program", "role",
           "meaning", "precision", "supplied_by", "value", "derived_text", "sources",
-          "implemented", "tags", "open_questions", "examples", "rationale",
+          "implemented", "tags", "open_questions", "examples", "rationale", "nearest_hint",
         ],
         additionalProperties: false,
       },
@@ -70,6 +78,9 @@ export interface ProposalItem {
   supplied_by: string; value: string; derived_text: string; sources: string[];
   implemented: string; tags: string[]; open_questions: string[]; examples: string[];
   rationale: string;
+  /** The model's own guess at duplicates; `proposalToItems` ignores it and
+   *  computes `nearest` from the ledger instead. */
+  nearest_hint?: string[];
 }
 
 export interface Proposal { notes: string; items: ProposalItem[] }
@@ -123,6 +134,7 @@ export function proposalToItem(
   if (p.supplied_by) item.supplied_by = p.supplied_by;
   if (p.tags?.length) item.tags = p.tags;
   if (p.open_questions?.length) item.open = p.open_questions;
+  if ((p.rationale || "").trim()) item.rationale = p.rationale;
   if (p.value !== "" && p.value !== undefined && item.kind === "parameter") {
     item.value = /^-?\d+(\.\d+)?$/.test(p.value) ? Number(p.value)
       : p.value === "yes" ? true : p.value === "no" ? false : p.value;
@@ -148,4 +160,62 @@ export function proposalToItem(
   }
   item.tests = tests;
   return { item, errors };
+}
+
+/** Converts a whole proposal into codex items: sequential ids starting at
+ *  `startId`, and `nearest` set to the ledger's own computed candidates (not
+ *  the model's `nearest_hint`), so an AI-drafted item acknowledges exactly
+ *  the duplicates a human would have to, and enters through the same
+ *  governance gate. */
+export function proposalToItems(
+  engine: Engine, proposal: Proposal, startId: string,
+): { item: Item; errors: string[] }[] {
+  const m = /^([A-Za-z]+)-(\d+)$/.exec(startId);
+  const prefix = m ? m[1] : "WR";
+  const width = m ? m[2].length : 3;
+  let n = m ? Number(m[2]) : 1;
+  return proposal.items.map((p) => {
+    const id = `${prefix}-${String(n++).padStart(width, "0")}`;
+    const { item, errors } = proposalToItem(engine, p, id);
+    item.nearest = engine.nearest(item).map((c) => c.id);
+    return { item, errors };
+  });
+}
+
+export const EXCERPTS_SCHEMA: Record<string, unknown> = {
+  type: "object",
+  properties: {
+    excerpts: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          citation: { type: "string" },
+          text: {
+            type: "string",
+            description: "The exact quotation, verbatim, no summarising or paraphrasing.",
+          },
+        },
+        required: ["citation", "text"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["excerpts"],
+  additionalProperties: false,
+};
+
+export interface ExcerptProposal { excerpts: { citation: string; text: string }[] }
+
+export function parseExcerpts(text: string): ExcerptProposal {
+  const raw = extractJson(text) as Partial<ExcerptProposal>;
+  if (!raw || typeof raw !== "object" || !Array.isArray(raw.excerpts)) {
+    throw new Error("the model returned JSON without an excerpts list");
+  }
+  const excerpts = raw.excerpts.filter(
+    (e): e is { citation: string; text: string } =>
+      Boolean(e) && typeof e.citation === "string" && typeof e.text === "string"
+      && e.text.trim() !== "",
+  );
+  return { excerpts };
 }

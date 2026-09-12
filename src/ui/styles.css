@@ -141,6 +141,17 @@ article.diff h3 { margin: 0 0 6px; font-size: 15px; }
 .aipanel .actions { flex-wrap: wrap; }
 blockquote.notes { border-left: 3px solid var(--accent); margin: 8px 0; padding: 4px 10px;
   background: var(--bg); white-space: pre-wrap; }
+.aipanel .review { border: 1px solid var(--line); border-radius: 4px; padding: 8px;
+  margin-top: 10px; background: var(--bg); }
+.proposalitems { list-style: none; padding: 0; margin: 0; }
+li.proposalitem { display: flex; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); }
+li.proposalitem:first-child { border-top: 0; }
+li.proposalitem .body { flex: 1; min-width: 0; }
+li.proposalitem .head { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+li.proposalitem .derivation { font-size: 12px; white-space: pre-wrap; }
+.excerptlist { list-style: none; padding: 0; margin: 0; }
+.excerptlist li { padding: 6px 0; border-top: 1px solid var(--line); }
+.excerptlist li:first-child { border-top: 0; }
 .settings label.wide { display: flex; flex-direction: column; gap: 3px; margin: 8px 0;
   color: var(--muted); }
 .settings input { font: inherit; padding: 5px; border: 1px solid var(--line);
@@ -170,3 +181,16 @@ blockquote.notes { border-left: 3px solid var(--accent); margin: 8px 0; padding:
 .tsources { margin: 2px 0; display: flex; gap: 4px; }
 .outcome { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
 .outcome h4 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.documents td.citation { font-size: 12px; }
+.document .doctext pre.statute { margin: 6px 0; }
+.document .excerpt { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
+.document .excerpt h4 { margin: 0 0 2px; }
+.newdoc { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+.newdoc summary { cursor: pointer; font-weight: 600; }
+.newdoc .form { margin-top: 8px; }
+.newdoc textarea { min-height: 140px; }
+.tag.doclink { text-decoration: none; color: var(--accent); }
+.tray li.entry.file code { font-size: 12px; }
+.newcase .actions label { display: flex; gap: 4px; align-items: center; color: var(--muted); }
+.newcase .actions input { font: inherit; padding: 4px; border: 1px solid var(--line);
+  border-radius: 4px; min-width: 260px; }

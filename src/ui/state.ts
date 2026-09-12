@@ -8,12 +8,13 @@ import { idbCache } from "../ledger/cache";
 import { loadManifest, loadVolume, type LoadedVolume } from "../ledger/load";
 import type { Manifest } from "../ledger/manifest";
 import { sourceTitleMap } from "../ledger/markdown";
-import { pickSource } from "../ledger/source";
+import { pickSource, type LedgerSource } from "../ledger/source";
 import { applyChangeSet } from "../changes/apply";
 import {
-  clearEntries, discardEntry, loadChangeSet, putEntry, saveChangeSet,
+  clearEntries, discardEntry, discardFileEntry, loadChangeSet, putEntry, putFileEntry,
+  saveChangeSet,
 } from "../changes/store";
-import type { ChangeEntry, ChangeSet } from "../changes/types";
+import type { ChangeEntry, ChangeSet, FileEntry } from "../changes/types";
 import { emptyChangeSet } from "../changes/types";
 import { validateChangeSet, type ChangeSetReport } from "../changes/validate";
 import { buildSearchIndex, type SearchIndex } from "./search";
@@ -28,6 +29,9 @@ export interface EditingState {
   /** A new item starts on "start", a search of the ledger, so a steward looks
    *  before adding. An existing item opens straight into "edit". */
   step: "start" | "edit";
+  /** Preselects the AI panel's context selector when the editor was opened
+   *  from a source or a document rather than from the ledger search. */
+  context?: { kind: "source" | "document"; id: string };
 }
 
 export const WORKER_BASE_KEY = "codex.worker";
@@ -66,6 +70,15 @@ export const credentials: Credentials = createCredentials();
 
 export function githubClient(): GitHubClient {
   return createGitHubClient(REPO, credentials.get("github"));
+}
+
+/** A reader for the ref the current route shows, so a view can fetch a file
+ *  the volume load deliberately left behind (a document's text). */
+export function ledgerSource(): LedgerSource {
+  const r = route.value;
+  const pr = pullRequestSig.value;
+  const ref = prNumberOf(r.ref) !== null && pr ? pr.headRef : baseRefOf(r);
+  return pickSource(REPO, ref, credentials.get("github"));
 }
 
 /** The git ref a route reads from, before a pull request is resolved. */
@@ -107,6 +120,20 @@ export function discardChangeEntry(id: string): void {
   recomputeReport();
 }
 
+export function putFileChange(entry: FileEntry): void {
+  const cs = putFileEntry(changeSetSig.value, entry);
+  changeSetSig.value = cs;
+  saveChangeSet(cs);
+  recomputeReport();
+}
+
+export function discardFileChange(path: string): void {
+  const cs = discardFileEntry(changeSetSig.value, path);
+  changeSetSig.value = cs;
+  saveChangeSet(cs);
+  recomputeReport();
+}
+
 export function clearTray(): void {
   const cs = clearEntries(changeSetSig.value);
   changeSetSig.value = cs;
@@ -135,6 +162,24 @@ export function openEditor(id: string | null): void {
       },
     };
   }
+}
+
+/** Opens a new item straight into the AI panel with a document preselected,
+ *  for the Documents view's "Draft from this document" button: the analyst
+ *  came here to draft from a specific text, not to search the ledger first. */
+export function openEditorForDocument(docId: string): void {
+  const engine = viewEngine();
+  const vol = volumeSig.value;
+  if (!engine || !vol) return;
+  editingSig.value = {
+    id: null, chapter: "medicaid", surface: "ai", step: "edit",
+    context: { kind: "document", id: docId },
+    draft: {
+      id: engine.nextId(), name: "", identifier: "", kind: "derived", type: "yes/no",
+      scope: "person", program: "Medicaid", meaning: "", sources: [], tests: [],
+      implemented: null,
+    },
+  };
 }
 
 export function closeEditor(): void {

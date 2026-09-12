@@ -9,11 +9,15 @@ volumes/mwr/
   volume.yaml          metadata, approval policy, types, scopes
   sources.md           verbatim excerpts, cited by items as S1..S34
   open-questions.md    23 interpretation questions with the assumption each item uses
+  documents.yaml       source documents: statute, regulation, guidance, memo
+  documents/           full text of each document (D-1, D-2, …)
   supplied/            one YAML file per supplied fact
   parameters/          one per parameter
   medicaid/            one per Medicaid derived fact
   snap/                one per SNAP derived fact
-  tests/               household-level cases and the exported rule tests (data)
+  tests/
+    cases.yaml         household-level case tests: facts and expected outcomes
+    rule-tests.yaml    rule tests exported from items
 docs/
   volume-mwr.md        this file
   one-ledger.md        why one ledger, and the expression and test conventions

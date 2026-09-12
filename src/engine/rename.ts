@@ -184,6 +184,50 @@ export function renameIdentifier(ix: LedgerIndex, from: string, to: string): Ren
   return { changed, errors: [] };
 }
 
+/** Rewrites every reference to `from` into `to` inside the raw text of
+ *  `tests/cases.yaml`, without reparsing and re-serialising the file (which
+ *  would lose its comments). Two shapes cover every place an identifier can
+ *  appear as a key in that file: a YAML mapping key at any indent
+ *  (`  from:`, `    from: {...}`) and an inline flow-map key
+ *  (`{from: 1, other: 2}`). `cases` is accepted (parallel to
+ *  `referencesInCases`) but not needed by the textual rewrite itself; callers
+ *  use it to decide whether to call this at all. Correctness is checked in
+ *  `test/engine/rename.test.ts` by parsing before and after and comparing
+ *  against `renameCase` applied to the original parse, key by key. */
+export function renameInCasesText(
+  casesText: string, cases: readonly HouseholdCase[], from: string, to: string,
+): string {
+  void cases;
+  const escaped = from.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const mappingKey = new RegExp(`^(\\s*)${escaped}:`, "gm");
+  const inlineKey = new RegExp(`\\b${escaped}:`, "g");
+  return casesText
+    .replace(mappingKey, (_m, indent: string) => `${indent}${to}:`)
+    .replace(inlineKey, `${to}:`);
+}
+
+/** The same key walk `renameTestSpec` applies to a rule test's
+ *  `parameters`/`month_facts`/`persons`, applied to a whole household case,
+ *  plus each person's `expect` keys (a household case has no `given`, and its
+ *  expectations are per person rather than a single flat object). This is the
+ *  reference the textual `renameInCasesText` above is checked against, not
+ *  something `renameInCasesText` itself calls. */
+export function renameCase(c: HouseholdCase, from: string, to: string): HouseholdCase {
+  const asSpec: TestSpec = { id: c.id, parameters: c.parameters, month_facts: c.month_facts, persons: c.persons };
+  const { spec } = renameTestSpec(asSpec, from, to);
+  const expect: Record<string, Record<string, unknown>> = {};
+  for (const [pid, exp] of Object.entries(c.expect || {})) {
+    expect[pid] = renameKeys(exp, from, to).obj as Record<string, unknown>;
+  }
+  return {
+    ...c,
+    parameters: spec.parameters,
+    month_facts: spec.month_facts,
+    persons: spec.persons ?? c.persons,
+    expect,
+  };
+}
+
 /** The ids of the household cases whose data references `from`: a fact key
  *  under a person, month, or defaults, a month-scoped fact, a parameter, or an
  *  expectation. Cases are a single data file today (`tests/cases.yaml`), so

@@ -16,6 +16,7 @@
     "conformance": "vite-node scripts/conformance.ts",
     "conform": "vite-node scripts/conform.ts",
     "conform:self": "npm run conform -- --adapter \"npx vite-node scripts/adapters/codex-self.ts\" --batch",
+    "check": "vite-node scripts/check.ts",
     "e2e": "playwright test"
   },
   "dependencies": {

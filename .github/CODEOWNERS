@@ -1,0 +1,31 @@
+# Code owners gate merges to main once branch protection requires review
+# from the owning team (see "Branch protection" in docs/governance.md).
+# @jisaf is a placeholder everywhere below; replace each line with the real
+# steward team or usernames once assigned. Nothing here is a review lane by
+# itself — docs/governance.md names those.
+
+# Volume-wide metadata: vocabulary, approval policy, source excerpts.
+volumes/mwr/volume.yaml     @jisaf
+volumes/mwr/sources.md      @jisaf
+volumes/mwr/documents.yaml  @jisaf
+
+# Medicaid steward(s) go here.
+volumes/mwr/medicaid/       @jisaf
+
+# SNAP steward(s) go here.
+volumes/mwr/snap/           @jisaf
+
+# Data steward(s): supplied facts are the interface to outside systems.
+volumes/mwr/supplied/       @jisaf
+
+# Parameter steward(s): numeric and date thresholds shared across rules.
+volumes/mwr/parameters/     @jisaf
+
+# Household cases: touches every program's outcomes at once.
+volumes/mwr/tests/          @jisaf
+
+# The engine: anyone editing evaluation, constraints, or governance rules.
+src/engine/                 @jisaf
+
+# The manifest: which item files are in the ledger at all.
+codex.json                  @jisaf

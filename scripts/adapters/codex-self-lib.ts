@@ -10,7 +10,7 @@ import { evaluate, makeCase } from "../../src/engine/evaluate";
 import { parseItemFile } from "../../src/engine/yaml";
 import type { LedgerIndex } from "../../src/engine/ledger-index";
 import type { Item } from "../../src/engine/types";
-import type { SuiteCase } from "../../src/export/conformance";
+import type { AdapterValue, SuiteCase } from "../../src/export/conformance";
 
 const root = path.resolve(import.meta.dirname, "../..");
 
@@ -28,20 +28,24 @@ function loadIndex(): LedgerIndex {
 
 const ix = loadIndex();
 
-export interface AdapterValue { person: string | null; identifier: string; month: string | null; value: unknown }
-
-/** Evaluates every expectation of one suite case against the codex engine. */
+/** Evaluates every expectation of one suite case against the codex engine.
+ *  An expectation this codex build cannot evaluate (an identifier it no
+ *  longer knows, or any other evaluation error) is omitted from the result
+ *  entirely, not reported as `value: null`: `gradeCase`'s `unimplemented`
+ *  count is exactly the expectations no entry answers, so a bare `null`
+ *  entry would instead be graded as a spurious pass or fail. */
 export function evaluateCase(c: SuiteCase): AdapterValue[] {
   const data = makeCase(ix, {
     id: c.id, as_of: c.as_of, parameters: c.parameters, month_facts: c.month_facts, persons: c.persons,
   });
-  return c.expect.map((e) => {
-    let value: unknown;
+  const values: AdapterValue[] = [];
+  for (const e of c.expect) {
     try {
-      value = evaluate(ix, data, e.identifier, e.person, e.month);
+      const value = evaluate(ix, data, e.identifier, e.person, e.month);
+      values.push({ person: e.person, identifier: e.identifier, month: e.month, value });
     } catch {
-      value = null; // an identifier this codex build no longer knows: not implemented
+      // unimplemented: omitted, not reported as a value.
     }
-    return { person: e.person, identifier: e.identifier, month: e.month, value };
-  });
+  }
+  return values;
 }

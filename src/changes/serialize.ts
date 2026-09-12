@@ -1,7 +1,9 @@
 import type { Engine } from "../engine/engine";
 import { stringifyItem } from "../engine/yaml";
 import { changedIdentifiers } from "./apply";
-import { entryKind, isUnchanged, type ChangeEntry, type ChangeSet } from "./types";
+import {
+  entryKind, fileEntries, isFileUnchanged, isUnchanged, type ChangeEntry, type ChangeSet,
+} from "./types";
 import type { ChangeSetReport } from "./validate";
 
 export interface FileWrite {
@@ -11,8 +13,9 @@ export interface FileWrite {
   content: string | null;
 }
 
-/** One write per changed item. An entry whose after equals its before is
- *  skipped, so a file with no changes is never rewritten. */
+/** One write per changed item, then one per staged file entry. An entry whose
+ *  after equals its before is skipped, so a file with no changes is never
+ *  rewritten. A file entry names its own path, so it is written verbatim. */
 export function entryFiles(cs: ChangeSet, volumePath: string): FileWrite[] {
   const out: FileWrite[] = [];
   for (const e of cs.entries) {
@@ -22,6 +25,10 @@ export function entryFiles(cs: ChangeSet, volumePath: string): FileWrite[] {
       path: `${volumePath}/${e.chapter}/${e.id}.yaml`,
       content: e.after ? stringifyItem(e.after) : null,
     });
+  }
+  for (const f of fileEntries(cs)) {
+    if (isFileUnchanged(f)) continue;
+    out.push({ id: f.path, path: f.path, content: f.after });
   }
   return out;
 }
@@ -71,7 +78,7 @@ export function proposalBody(
   const added = additions(cs);
   if (added.length) {
     lines.push("");
-    lines.push("### Rationale");
+    lines.push("## Rationale");
     for (const e of added) {
       const item = e.after!;
       const why = (item.rationale ?? "").trim();
@@ -84,7 +91,7 @@ export function proposalBody(
       .filter((x) => x.near.length > 0);
     if (withNearest.length) {
       lines.push("");
-      lines.push("### Nearest existing items");
+      lines.push("## Nearest existing items");
       for (const { entry, near } of withNearest) {
         lines.push(`- \`${entry.id}\` ${entry.after!.name}`);
         const acknowledged = new Set(entry.after!.nearest ?? []);
@@ -95,6 +102,16 @@ export function proposalBody(
           );
         }
       }
+    }
+  }
+
+  const files = fileEntries(cs).filter((f) => !isFileUnchanged(f));
+  if (files.length) {
+    lines.push("");
+    lines.push("## Files");
+    for (const f of files) {
+      const kind = f.after === null ? "delete" : f.before === null ? "add" : "edit";
+      lines.push(`- \`${f.path}\` ${f.label} — ${kind}`);
     }
   }
 
@@ -114,7 +131,7 @@ export function proposalBody(
   const touched = new Set([...changedIdentifiers(cs), ...report.impact]);
   const affected = declaredOutcomes(base).filter((o) => touched.has(o));
   lines.push("");
-  lines.push("### Outcomes affected");
+  lines.push("## Outcomes affected");
   if (affected.length === 0) {
     lines.push("No declared program outcome is changed or downstream of a change.");
   } else {

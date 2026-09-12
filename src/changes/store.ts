@@ -1,4 +1,6 @@
-import { emptyChangeSet, type ChangeEntry, type ChangeSet } from "./types";
+import {
+  emptyChangeSet, fileEntries, type ChangeEntry, type ChangeSet, type FileEntry,
+} from "./types";
 
 export function changeSetKey(volume: string, baseRef: string): string {
   return `codex.changes.${volume}@${baseRef}`;
@@ -20,7 +22,10 @@ export function loadChangeSet(
     if (!raw) return emptyChangeSet(volume, baseRef);
     const cs = JSON.parse(raw) as ChangeSet;
     if (!cs || !Array.isArray(cs.entries)) return emptyChangeSet(volume, baseRef);
-    return { ...emptyChangeSet(volume, baseRef), ...cs, volume, baseRef };
+    return {
+      ...emptyChangeSet(volume, baseRef), ...cs, volume, baseRef,
+      files: Array.isArray(cs.files) ? cs.files : [],
+    };
   } catch {
     return emptyChangeSet(volume, baseRef);
   }
@@ -45,6 +50,16 @@ export function discardEntry(cs: ChangeSet, id: string): ChangeSet {
   return { ...cs, entries: cs.entries.filter((e) => e.id !== id) };
 }
 
+export function putFileEntry(cs: ChangeSet, entry: FileEntry): ChangeSet {
+  const files = fileEntries(cs).filter((f) => f.path !== entry.path);
+  files.push(entry);
+  return { ...cs, files };
+}
+
+export function discardFileEntry(cs: ChangeSet, path: string): ChangeSet {
+  return { ...cs, files: fileEntries(cs).filter((f) => f.path !== path) };
+}
+
 export function clearEntries(cs: ChangeSet): ChangeSet {
-  return { ...cs, entries: [], branch: null, prNumber: null };
+  return { ...cs, entries: [], files: [], branch: null, prNumber: null };
 }

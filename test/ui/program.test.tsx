@@ -11,6 +11,8 @@ import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
 import type { Item, ProgramVocabulary, VolumeMeta } from "../../src/engine/types";
 import type { LoadedVolume } from "../../src/ledger/load";
+import type { LedgerSource } from "../../src/ledger/source";
+import type { ConformanceResults } from "../../src/export/conformance";
 
 const root = path.resolve(__dirname, "../..");
 const cases = parseCases(
@@ -43,10 +45,31 @@ const vol = {
   cases, chapterOf: {},
 } as unknown as LoadedVolume;
 
-function show(arg: string | null) {
+/** No `conformance/results.json` at this ref: `loadConformanceResults`
+ *  resolves null on any read failure, which is what a ref that never had a
+ *  conformance run committed looks like. Every test below that does not care
+ *  about the conformance line uses this, so none of them touch the network
+ *  through the real `ledgerSource()`. */
+const noResults: LedgerSource = {
+  ref: "main",
+  readText: () => Promise.reject(new Error("not found")),
+  head: () => Promise.resolve(null),
+};
+
+function fakeSource(results: ConformanceResults): LedgerSource {
+  return {
+    ref: "main",
+    readText: (p) => p === "conformance/results.json"
+      ? Promise.resolve(JSON.stringify(results))
+      : Promise.reject(new Error(`unexpected read: ${p}`)),
+    head: () => Promise.resolve(null),
+  };
+}
+
+function show(arg: string | null, source: LedgerSource = noResults) {
   route.value = { ...defaultRoute(), view: "program", arg, params: {} };
   const host = document.createElement("div");
-  render(<ProgramView />, host);
+  render(<ProgramView source={source} />, host);
   return host;
 }
 
@@ -127,5 +150,28 @@ describe("ProgramView", () => {
   it("defaults to the first declared program when no program is chosen", () => {
     const host = show(null);
     expect(host.querySelector(".tabs a.on")!.textContent).toBe("Medicaid");
+  });
+
+  it("shows nothing for conformance when the ref has no results.json", async () => {
+    const host = show("Medicaid");
+    await new Promise((r) => setTimeout(r));
+    expect(host.querySelector(".conformance")).toBeNull();
+  });
+
+  it("shows the conformance summary fetched from the ledger source", async () => {
+    const results: ConformanceResults = {
+      codex: { volume: "mwr", sha: "deadbeef", generated: "2027-03-15T00:00:00.000Z" },
+      adapter: "npx vite-node scripts/adapters/codex-self.ts",
+      summary: { cases: 146, checked: 193, passed: 190, failed: 2, unimplemented: 1 },
+      failures: [],
+    };
+    const host = show("Medicaid", fakeSource(results));
+    await new Promise((r) => setTimeout(r));
+    const line = host.querySelector(".conformance")!.textContent!;
+    expect(line).toContain("npx vite-node scripts/adapters/codex-self.ts");
+    expect(line).toContain("codex@deadbeef");
+    expect(line).toContain("190 passed");
+    expect(line).toContain("2 failed");
+    expect(line).toContain("1 unimplemented");
   });
 });

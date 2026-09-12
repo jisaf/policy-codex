@@ -5,7 +5,8 @@ import { render } from "preact";
 import { CasesView, buildSpec, programOutcomes, upstreamCone } from "../../src/ui/CasesView";
 import { createEngine } from "../../src/engine/engine";
 import { caseToSpec, parseCases } from "../../src/engine/cases";
-import { engineSig, route, volumeSig } from "../../src/ui/state";
+import { emptyChangeSet } from "../../src/changes/types";
+import { changeSetSig, engineSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
@@ -14,9 +15,8 @@ import type { TraceNode } from "../../src/engine/explain";
 import type { LoadedVolume } from "../../src/ledger/load";
 
 const root = path.resolve(__dirname, "../..");
-const cases = parseCases(
-  fs.readFileSync(path.join(root, "volumes/mwr/tests/cases.yaml"), "utf8"),
-);
+const casesText = fs.readFileSync(path.join(root, "volumes/mwr/tests/cases.yaml"), "utf8");
+const cases = parseCases(casesText);
 
 // The fixture ledger is the phase-1 one and predates the declared vocabulary,
 // so the programs the volume now declares are supplied beside it.
@@ -37,7 +37,8 @@ const meta = { ...(ledger.meta as unknown as VolumeMeta), programs };
 const engine = createEngine(ledger.items as unknown as Item[], meta, refs);
 const vol = {
   volumeId: "mwr", title: "t", path: "volumes/mwr", ref: "main", sha: null,
-  meta, items: ledger.items, sources: [], openQuestions: [], cases, chapterOf: {},
+  meta, items: ledger.items, sources: [], openQuestions: [], cases, casesText,
+  documents: [], chapterOf: {},
 } as unknown as LoadedVolume;
 
 function show(arg: string | null, params: Record<string, string> = {}) {
@@ -74,6 +75,7 @@ describe("CasesView", () => {
     route.value = defaultRoute();
     volumeSig.value = vol;
     engineSig.value = engine;
+    changeSetSig.value = emptyChangeSet("mwr", "main");
   });
 
   it("lists every household case with its per-program counts", () => {
@@ -182,8 +184,7 @@ describe("CasesView", () => {
     const host = show("new", { programs: "Medicaid" });
     expect(host.querySelector('[data-fact="date_of_birth"]')).not.toBeNull();
     expect(host.querySelector('[data-fact="hours_worked"]')).not.toBeNull();
-    expect((host.querySelector("button[disabled]") as HTMLButtonElement).title)
-      .toBe("Available once documents land");
+    expect((host.querySelector("button.stage-case") as HTMLButtonElement).disabled).toBe(true);
 
     const p1 = cases.find((c) => c.id === "C-01")!.persons.p1;
     for (const [k, v] of Object.entries(p1.facts ?? {})) fill(host, k, v);
@@ -202,6 +203,81 @@ describe("CasesView", () => {
     )!;
     expect(outcome.querySelector(".tval")!.textContent).toBe("met");
     expect(outcome.querySelector(".trace .origin")).not.toBeNull();
+  });
+
+  it("stages the evaluated household as a new case appended to cases.yaml", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    const p1 = cases.find((c) => c.id === "C-01")!.persons.p1;
+    for (const [k, v] of Object.entries(p1.facts ?? {})) fill(host, k, v);
+    for (const [k, v] of Object.entries(p1.month_defaults ?? {})) fill(host, k, v);
+    fill(host, "relationships", []);
+    const title = host.querySelector('[data-field="case_title"]') as HTMLInputElement;
+    title.value = "Staged from the app: a working adult";
+    title.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+
+    const stage = host.querySelector("button.stage-case") as HTMLButtonElement;
+    expect(stage.disabled).toBe(true);
+    (([...host.querySelectorAll("button")].find((b) => b.textContent === "Evaluate")
+      ) as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    expect((host.querySelector("button.stage-case") as HTMLButtonElement).disabled).toBe(false);
+
+    (host.querySelector("button.stage-case") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+
+    const files = changeSetSig.value.files ?? [];
+    expect(files).toHaveLength(1);
+    expect(files[0].path).toBe("volumes/mwr/tests/cases.yaml");
+    expect(files[0].before).toBe(casesText);
+    expect(files[0].label).toBe("C-14 Staged from the app: a working adult");
+
+    const parsed = parseCases(files[0].after!);
+    expect(parsed).toHaveLength(14);
+    const staged = parsed.at(-1)!;
+    expect(staged.id).toBe("C-14");
+    expect(staged.title).toBe("Staged from the app: a working adult");
+    expect(staged.as_of).toBe("2027-03-15");
+    expect(staged.persons.p1.facts!.date_of_birth).toBe("1996-08-02");
+    expect(staged.persons.p1.month_defaults!.hours_worked).toBe(90);
+    // The expectations are the values just evaluated, so the staged case is a
+    // regression: it passes on the ledger it was cut from.
+    expect(staged.expect.p1.medicaid_ce_status_at_application).toBe("met");
+    // An outcome the facts do not decide is staged as `unknown`, the way
+    // cases.yaml already states one.
+    expect(staged.expect.p1.medicaid_ce_status_at_renewal).toBe("unknown");
+    expect(engine.runCase(staged).failed).toBe(0);
+    expect(host.textContent).toContain("C-14 staged.");
+  });
+
+  it("appends a second staged household after the first, with the next id", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    const click = (sel: string) => (host.querySelector(sel) as HTMLButtonElement).click();
+    (([...host.querySelectorAll("button")].find((b) => b.textContent === "Evaluate")
+      ) as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    click("button.stage-case");
+    await new Promise((r) => setTimeout(r));
+    click("button.stage-case");
+    await new Promise((r) => setTimeout(r));
+
+    const files = changeSetSig.value.files ?? [];
+    expect(files).toHaveLength(1);
+    const parsed = parseCases(files[0].after!);
+    expect(parsed).toHaveLength(15);
+    expect(parsed.slice(-2).map((c) => c.id)).toEqual(["C-14", "C-15"]);
+    expect(files[0].label).toBe("2 new cases, through C-15");
+  });
+
+  it("titles a staged case by its date when the steward leaves the title blank", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    (([...host.querySelectorAll("button")].find((b) => b.textContent === "Evaluate")
+      ) as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    (host.querySelector("button.stage-case") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    expect((changeSetSig.value.files ?? [])[0].label)
+      .toBe("C-14 Household evaluated as of 2027-03-15");
   });
 
   it("asks for a program before it asks for facts", () => {

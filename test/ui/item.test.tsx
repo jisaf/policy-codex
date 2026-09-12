@@ -1,7 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { render } from "preact";
 import { ItemView } from "../../src/ui/ItemView";
 import { createEngine } from "../../src/engine/engine";
+import { parseCases } from "../../src/engine/cases";
+import { fileEntries } from "../../src/changes/types";
 import {
   changeSetSig, engineSig, route, trayOpenSig, volumeSig,
 } from "../../src/ui/state";
@@ -12,6 +16,10 @@ import refs from "../fixtures/refs.json";
 import type { Item, VolumeMeta } from "../../src/engine/types";
 import type { LoadedVolume } from "../../src/ledger/load";
 
+const root = path.resolve(__dirname, "../..");
+const casesText = fs.readFileSync(path.join(root, "volumes/mwr/tests/cases.yaml"), "utf8");
+const cases = parseCases(casesText);
+
 const engine = createEngine(
   ledger.items as unknown as Item[], ledger.meta as unknown as VolumeMeta, refs,
 );
@@ -20,7 +28,8 @@ const vol = {
   meta: ledger.meta, items: ledger.items,
   sources: [{ id: "S1", title: "Applicable individual", citation: "42 U.S.C. 1396a", text: "statute text here" }],
   openQuestions: [{ id: "OQ-1", title: "Age during a month", body: "Assumption: …", items: ["WR-004"] }],
-  chapterOf: { "WR-200": "medicaid", "WR-003": "medicaid" },
+  chapterOf: { "WR-200": "medicaid", "WR-003": "medicaid", "WR-302": "snap" },
+  cases, casesText,
 } as unknown as LoadedVolume;
 
 function show(id: string) {
@@ -121,6 +130,32 @@ describe("ItemView", () => {
     const ageEntry = changeSetSig.value.entries.find((e) => e.after?.identifier === "age");
     expect(ageEntry).toBeDefined();
     expect(ageEntry!.after!.derived).not.toEqual(ageEntry!.before!.derived);
+    expect(trayOpenSig.value).toBe(true);
+  });
+
+  it("stages a rewritten cases.yaml when the rename reaches household cases", async () => {
+    const host = show("WR-302");
+    (host.querySelector("button.rename") as HTMLButtonElement).click();
+    render(<ItemView />, host);
+
+    const input = host.querySelector("input.rename-input") as HTMLInputElement;
+    input.value = "snap_responsible_for_young_child";
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemView />, host);
+
+    const confirm = host.querySelector("button.confirm-rename") as HTMLButtonElement;
+    expect(confirm.disabled).toBe(false);
+    confirm.click();
+    await new Promise((r) => setTimeout(r));
+
+    const file = fileEntries(changeSetSig.value).find((f) => f.path === "volumes/mwr/tests/cases.yaml");
+    expect(file).toBeDefined();
+    expect(file!.after).toContain("snap_responsible_for_young_child");
+    // The old name survives only as a substring of the new one (e.g. inside
+    // a comment or another identifier), never at a key position.
+    const keyLines = file!.after!.split("\n").filter((l) => /^\s*snap_has_responsibility_for_child_under_14:/.test(l));
+    expect(keyLines).toEqual([]);
     expect(trayOpenSig.value).toBe(true);
   });
 

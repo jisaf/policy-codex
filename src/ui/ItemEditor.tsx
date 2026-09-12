@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import type { ChangeEntry } from "../changes/types";
+import { ratchetGovernance } from "../changes/validate";
 import { AiPanel } from "./AiPanel";
 import { FormEditor } from "./FormEditor";
 import { TextEditor } from "./TextEditor";
@@ -106,9 +107,23 @@ export function ItemEditor() {
   const setDraft = (draft: EditingState["draft"]) => {
     editingSig.value = { ...state, draft };
   };
-  const isNew = !state.id;
+  // Not `!state.id`: reopening a staged new item from the tray (openEditor)
+  // sets `state.id` to that item's own id, since it already exists in
+  // viewEngine() (the base ledger with the tray applied). Whether it is new
+  // is about the *base* ledger, before the tray: no base version means the
+  // rationale rule still applies, exactly as it did when the item was first
+  // staged.
+  const baseItem = baseEngine.itemById(state.id ?? "");
+  const isNew = !baseItem;
   const report = engine.constraints(state.draft);
-  const findings = engine.governance(state.draft, { isNew });
+  // Same ratchet the tray applies (src/changes/validate.ts): an edit does
+  // not gain a new blocking error for a rule the base version already
+  // failed, so the editor's problem count agrees with what Propose will
+  // actually block on.
+  const rawFindings = engine.governance(state.draft, { isNew });
+  const findings = baseItem
+    ? ratchetGovernance(rawFindings, baseEngine.governance(baseItem))
+    : rawFindings;
   const blocking = report.filter((c) => !c.ok && c.level === "error").length +
     findings.filter((f) => f.level === "error").length;
 

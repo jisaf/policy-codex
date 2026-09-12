@@ -4,7 +4,7 @@ import { updateManifestFiles } from "../../src/ledger/manifest";
 import { createEngine } from "../../src/engine/engine";
 import { stringifyItem } from "../../src/engine/yaml";
 import { emptyChangeSet } from "../../src/changes/types";
-import { putEntry } from "../../src/changes/store";
+import { putEntry, putFileEntry } from "../../src/changes/store";
 import { validateChangeSet } from "../../src/changes/validate";
 import type { GitHubClient, PullRequest } from "../../src/github/client";
 import type { Manifest } from "../../src/ledger/manifest";
@@ -162,6 +162,50 @@ describe("proposeChangeSet", () => {
       onBranch: (b) => seen.push(`onBranch ${b} after ${calls.length} calls`),
     });
     expect(seen).toEqual(["onBranch codex/mwr/ab12cd after 0 calls"]);
+  });
+
+  it("writes a staged file entry beside the item files and deletes a null one", async () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putFileEntry(cs, {
+      path: "volumes/mwr/documents.yaml",
+      before: "- id: D-1\n",
+      after: "- id: D-1\n- id: D-2\n",
+      label: "documents.yaml (D-2 State hardship guidance)",
+    });
+    cs = putFileEntry(cs, {
+      path: "volumes/mwr/documents/D-2.md",
+      before: null, after: "Pasted text.\n", label: "D-2 State hardship guidance",
+    });
+    cs = putFileEntry(cs, {
+      path: "volumes/mwr/documents/D-0.md", before: "old\n", after: null, label: "D-0 withdrawn",
+    });
+    const { client, calls } = fakeClient();
+    const bodies: Record<string, string> = {};
+    const withBody: GitHubClient = {
+      ...client,
+      async putFile(a) { bodies[a.path] = a.content; return client.putFile(a); },
+    };
+    const result = await proposeChangeSet({
+      client: withBody, volume, manifest, changeSet: cs,
+      report: validateChangeSet(engine, cs), engine, newBranchId: () => "ab12cd",
+    });
+    expect(calls).toEqual([
+      "getRefSha main",
+      "branchExists codex/mwr/ab12cd",
+      "createBranch codex/mwr/ab12cd basesha",
+      "getFileSha volumes/mwr/documents.yaml",
+      "putFile volumes/mwr/documents.yaml",
+      "getFileSha volumes/mwr/documents/D-2.md",
+      "putFile volumes/mwr/documents/D-2.md",
+      "getFileSha volumes/mwr/documents/D-0.md",
+      "deleteFile volumes/mwr/documents/D-0.md",
+      "findPullRequest codex/mwr/ab12cd",
+      "createPullRequest",
+    ]);
+    expect(bodies["volumes/mwr/documents/D-2.md"]).toBe("Pasted text.\n");
+    expect(result.paths).toContain("volumes/mwr/documents.yaml");
+    // A file entry is not an item, so the manifest is left alone.
+    expect(calls).not.toContain("putFile codex.json");
   });
 
   it("reuses an existing branch and updates the open pull request", async () => {
