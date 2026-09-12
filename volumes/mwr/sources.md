@@ -10,6 +10,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S1. Applicable individual
 
+Document: D-1
+
 42 U.S.C. 1396a(xx)(9)(A)(i), added by Pub. L. 119-21 sec. 71119. https://www.law.cornell.edu/uscode/text/42/1396a
 
 > The term "applicable individual" means an individual (other than a specified excluded individual (as defined in clause (ii)))—
@@ -19,6 +21,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 > (bb) has attained the age of 19 and is under 65 years of age, is not pregnant, is not entitled to, or enrolled for, benefits under part A of subchapter XVIII, or enrolled for benefits under part B of subchapter XVIII, and is not otherwise eligible to enroll under such plan.
 
 ### S2. Specified excluded individual
+
+Document: D-1
 
 42 U.S.C. 1396a(xx)(9)(A)(ii). https://www.law.cornell.edu/uscode/text/42/1396a
 
@@ -35,6 +39,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S3. Medically frail, regulatory definition
 
+Document: D-2
+
 42 CFR 435.554(c)(5), interim final rule, 91 FR 33348, 33472 (June 3, 2026). https://www.federalregister.gov/documents/2026/06/03/2026-11094/medicaid-program-community-engagement-requirement-for-certain-individuals
 
 > An individual who is medically frail or otherwise has special medical needs is defined as an individual whose physical, mental, or other behavioral health condition significantly impairs the individual's ability to comply with the community engagement requirement in this subpart and is an individual:
@@ -46,6 +52,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S4. Dependent child, disabled individual, family caregiver (community engagement subpart)
 
+Document: D-2
+
 42 CFR 435.554(a), 91 FR 33348, 33472. Same URL as S3.
 
 > Dependent child means a child 13 years of age or under who relies on another individual for care.
@@ -54,6 +62,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S5. Family caregiver criteria
 
+Document: D-2
+
 42 CFR 435.554(c)(3)(i), 91 FR 33348, 33472. Same URL as S3.
 
 > (A) The individual primarily resides with a dependent child or disabled individual ... for whom he or she provides assistance that occurs on a regular basis and is not solely incidental in nature.
@@ -61,6 +71,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 > (C) The individual does not reside with and is not a relative ... of a dependent child or disabled individual ... for whom he or she provides not less than 80 hours of assistance that is not solely incidental in nature per month.
 
 ### S6. Demonstrating community engagement for a month
+
+Document: D-1
 
 42 U.S.C. 1396a(xx)(2). https://www.law.cornell.edu/uscode/text/42/1396a
 
@@ -75,11 +87,15 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S7. Combination restriction for education
 
+Document: D-2
+
 42 CFR 435.552(a)(5), 91 FR 33348, 33471. Same URL as S3.
 
 > (5) ... however, States are not permitted to combine educational program hours with another activity if the individual is enrolled in an educational program at least half-time.
 
 ### S8. Lookback windows
+
+Document: D-1
 
 42 U.S.C. 1396a(xx)(1). https://www.law.cornell.edu/uscode/text/42/1396a
 
@@ -88,6 +104,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 > (B) in the case of an applicable individual enrolled and receiving medical assistance ... for 1 or more (as specified by the State) months, whether or not consecutive—(i) during the period between such individual's most recent determination (or redetermination) of eligibility and such individual's next regularly scheduled redetermination of eligibility ...; or (ii) in the case of a State that has elected under paragraph (4) to conduct more frequent verifications ..., during the period between the most recent and next such verification.
 
 ### S9. Noncompliance and the 30-day cure period
+
+Document: D-1
 
 42 U.S.C. 1396a(xx)(6)(A). https://www.law.cornell.edu/uscode/text/42/1396a
 
@@ -98,6 +116,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S10. Short-term hardship event (State option)
 
+Document: D-1
+
 42 U.S.C. 1396a(xx)(3)(B)(ii). https://www.law.cornell.edu/uscode/text/42/1396a
 
 > an applicable individual experiences a short-term hardship event during a month if, for part or all of such month—
@@ -107,6 +127,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S11. Implementation timing
 
+Document: D-2
+
 42 CFR 435.559(a)-(b), 91 FR 33348, 33473. Same URL as S3.
 
 > (a) Unless granted an exemption under Sec. 435.560, the agency must require applicable individuals ... to comply with the requirement to demonstrate community engagement ... as a condition of eligibility for medical assistance furnished on or after January 1, 2027.
@@ -114,11 +136,15 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S12. Inmate mandatory exception window
 
+Document: D-2
+
 42 CFR 435.553(b), 91 FR 33348, 33472. Same URL as S3.
 
 > At any point during the 3-month period ending on the first day of that month, the individual was an inmate of a public institution.
 
 ### S13. Medically frail reverification cadence
+
+Document: D-2
 
 42 CFR 435.557(f)(1)(ii)-(iii), 91 FR 33348, 33476-33477. Same URL as S3.
 
@@ -126,11 +152,15 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S14. Medically frail, alternative benefit plan definition (context only)
 
+Document: D-3
+
 42 CFR 440.315(f). https://www.law.cornell.edu/cfr/text/42/440.315
 
 > (f) The individual is medically frail or otherwise an individual with special medical needs. For these purposes, the State's definition of individuals who are medically frail or otherwise have special medical needs must at least include those individuals described in § 438.50(d)(3) of this chapter, individuals with disabling mental disorders (including children with serious emotional disturbances and adults with serious mental illness), individuals with chronic substance use disorders, individuals with serious and complex medical conditions, individuals with a physical, intellectual or developmental disability that significantly impairs their ability to perform 1 or more activities of daily living, or individuals with a disability determination based on Social Security criteria or in States that apply more restrictive criteria than the Supplemental Security Income program, the State plan criteria.
 
 ### S15. Caretaker relative and dependent child, general Medicaid definitions (context; S4 governs in this volume)
+
+Document: D-2
 
 42 CFR 435.4. https://www.law.cornell.edu/cfr/text/42/435.4
 
@@ -147,6 +177,8 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S16. Adult group
 
+Document: D-2
+
 42 CFR 435.119(b), (d). https://www.law.cornell.edu/cfr/text/42/435.119
 
 > (b) Eligibility. Effective January 1, 2014, the agency must provide Medicaid to individuals who:
@@ -159,11 +191,15 @@ Draft status applies to every excerpt: a reviewer must confirm each quote agains
 
 ### S17. Family caregiver, RAISE Family Caregivers Act
 
+Document: D-4
+
 Pub. L. 115-119, sec. 2(2). https://www.congress.gov/115/plaws/publ119/PLAW-115publ119.htm
 
 > The term "family caregiver" means an adult family member or other individual who has a significant relationship with, and who provides a broad range of assistance to, an individual with a chronic or other health condition, disability, or functional limitation.
 
 ### S18. Federal minimum wage
+
+Document: D-5
 
 29 U.S.C. 206(a)(1)(C). https://www.law.cornell.edu/uscode/text/29/206
 
@@ -176,6 +212,8 @@ In effect since July 24, 2009.
 ## SNAP work requirements
 
 ### S20. Exceptions to the ABAWD time limit
+
+Document: D-6
 
 7 U.S.C. 2015(o)(3), as amended by Pub. L. 119-21 sec. 10102(a). Verified directly against the Office of the Law Revision Counsel text on 2026-09-02. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title7-section2015&num=0&edition=prelim
 
@@ -197,6 +235,8 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 
 ### S21. The ABAWD work requirement and time limit
 
+Document: D-6
+
 7 U.S.C. 2015(o)(2). Same URL as S20.
 
 > (2) Work requirement
@@ -207,6 +247,8 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 > (D) receive benefits pursuant to paragraph (3), (4), (5), or (6).
 
 ### S22. Regaining eligibility
+
+Document: D-6
 
 7 U.S.C. 2015(o)(5). Same URL as S20.
 
@@ -225,6 +267,8 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 
 ### S23. Discretionary exemptions
 
+Document: D-6
+
 7 U.S.C. 2015(o)(6)(F). Same URL as S20.
 
 > (F) Subsequent fiscal years
@@ -232,11 +276,15 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 
 ### S24. Twenty hours a week means eighty hours a month
 
+Document: D-7
+
 7 CFR 273.24(a)(1)(i). eCFR issue date 2026-08-31. https://www.ecfr.gov/current/title-7/part-273/section-273.24
 
 > (i) Working 20 hours per week, averaged monthly; for purposes of this provision, 20 hours a week averaged monthly means 80 hours a month;
 
 ### S25. Countable months
+
+Document: D-7
 
 7 CFR 273.24(b)(1). Same URL as S24.
 
@@ -249,17 +297,23 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 
 ### S26. Good cause
 
+Document: D-7
+
 7 CFR 273.24(b)(2). Same URL as S24.
 
 > (2) Good cause. As determined by the State agency, if an individual would have fulfilled the work requirement as defined in paragraph (a)(1) of this section, but missed some hours for good cause, the individual shall be considered to have fulfilled the work requirement if the absence from work, the work program, or the workfare program is temporary. Good cause shall include circumstances beyond the individual's control, such as, but not limited to, illness, illness of another household member requiring the presence of the member, a household emergency, or the unavailability of transportation.
 
 ### S27. Measuring the three-year period
 
+Document: D-7
+
 7 CFR 273.24(b)(3). Same URL as S24.
 
 > (3) Measuring the three-year period. The State agency may measure and track the three-year period as it deems appropriate. The State agency may use either a "fixed" or "rolling" clock. If the State agency chooses to switch tracking methods it must inform FNS in writing.
 
 ### S28. Medically certified as unfit for employment
+
+Document: D-7
 
 7 CFR 273.24(c)(2). Same URL as S24.
 
@@ -269,6 +323,8 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 > (iii) If the unfitness is not obvious, provides a statement from a physician, physician's assistant, nurse, nurse practitioner, designated representative of the physician's office, a licensed or certified psychologist, a social worker, or any other medical personnel the State agency determines appropriate, that he or she is physically or mentally unfit for employment.
 
 ### S29. General work requirement, age scope
+
+Document: D-6
 
 7 U.S.C. 2015(d)(1)(A). Same URL as S20. Not amended by Pub. L. 119-21.
 
@@ -282,11 +338,15 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 
 ### S30. General work requirement exemptions
 
+Document: D-6
+
 7 U.S.C. 2015(d)(2). Same URL as S20.
 
 > (2) A person who otherwise would be required to comply with the requirements of paragraph (1) of this subsection shall be exempt from such requirements if he or she is (A) currently subject to and complying with a work registration requirement under title IV of the Social Security Act, as amended (42 U.S.C. 602), or the Federal-State unemployment compensation system, in which case, failure by such person to comply with any work requirement to which such person is subject shall be the same as failure to comply with that requirement of paragraph (1); (B) a parent or other member of a household with responsibility for the care of a dependent child under age six or of an incapacitated person; (C) a bona fide student enrolled at least half time in any recognized school, training program, or institution of higher education (except that any such person enrolled in an institution of higher education shall be ineligible to participate in the supplemental nutrition assistance program unless he or she meets the requirements of subsection (e) of this section); (D) a regular participant in a drug addiction or alcoholic treatment and rehabilitation program; (E) employed a minimum of thirty hours per week or receiving weekly earnings which equal the minimum hourly rate under the Fair Labor Standards Act of 1938, as amended (29 U.S.C. 206(a)(1)), multiplied by thirty hours; or (F) a person between the ages of sixteen and eighteen who is not a head of a household or who is attending school, or enrolled in an employment training program, on at least a half-time basis.
 
 ### S31. Work registration age exemption in regulation
+
+Document: D-7
 
 7 CFR 273.7(b)(1)(i), (v). https://www.ecfr.gov/current/title-7/part-273/section-273.7
 
@@ -294,6 +354,8 @@ The former paragraph (3), still visible in the not-yet-updated regulation (S32),
 > (v) A person receiving unemployment compensation...
 
 ### S32. Regulation currency note
+
+Document: D-7
 
 7 CFR 273.24(c), eCFR issue date 2026-08-31. Same URL as S24. The regulation has not been updated for Pub. L. 119-21. It still reads, in part:
 
@@ -308,6 +370,8 @@ Where the regulation and the amended statute conflict, this volume follows the s
 
 ### S33. Amending language
 
+Document: D-8
+
 Pub. L. 119-21 sec. 10102(a), enrolled bill. https://www.govinfo.gov/content/pkg/BILLS-119hr1enr/html/BILLS-119hr1enr.htm
 
 > SEC. 10102. MODIFICATIONS TO SNAP WORK REQUIREMENTS FOR ABLE-BODIED ADULTS.
@@ -318,6 +382,8 @@ Pub. L. 119-21 sec. 10102(a), enrolled bill. https://www.govinfo.gov/content/pkg
 Section 10102 carries no effective-date subsection and the U.S. Code carries no 2025 effective-date note; absent one, the amendment took effect on enactment, July 4, 2025. The USDA FNS implementation memorandum (reported date October 3, 2025) could not be retrieved; its text is not quoted here.
 
 ### S34. Area waivers (context only)
+
+Document: D-6
 
 7 U.S.C. 2015(o)(4)(A), as amended by Pub. L. 119-21 sec. 10102(b). Same URL as S20.
 

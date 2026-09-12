@@ -5,12 +5,15 @@ import { createEngine } from "../../src/engine/engine";
 import { parseVolumeFile, stringifyItem } from "../../src/engine/yaml";
 import { memoryStorage } from "../../src/credentials";
 import {
-  emptyChangeSet, entryKind, isUnchanged, type ChangeEntry,
+  emptyChangeSet, entryKind, fileEntries, isFileUnchanged, isUnchanged, type ChangeEntry,
+  type FileEntry,
 } from "../../src/changes/types";
 import {
-  changeSetKey, discardEntry, loadChangeSet, putEntry, saveChangeSet,
+  changeSetKey, discardEntry, discardFileEntry, loadChangeSet, putEntry, putFileEntry,
+  saveChangeSet,
 } from "../../src/changes/store";
 import { applyChangeSet, changedIds } from "../../src/changes/apply";
+import { clearEntries } from "../../src/changes/store";
 import { validateChangeSet } from "../../src/changes/validate";
 import { branchName, entryFiles, proposalBody } from "../../src/changes/serialize";
 import ledger from "../fixtures/ledger.json";
@@ -282,5 +285,97 @@ describe("change-set", () => {
     cs = putEntry(cs, addEntry({ rationale: "Kept separate on purpose.", nearest: ["WR-200"] }));
     const body = proposalBody(governed, cs, validateChangeSet(governed, cs));
     expect(body).toContain("No declared program outcome is changed or downstream of a change.");
+  });
+});
+
+/** A staged document: the two files the Documents view produces. */
+const docYaml: FileEntry = {
+  path: "volumes/mwr/documents.yaml",
+  before: "- id: D-1\n  title: old\n  kind: statute\n  citation: c\n  file: documents/D-1.md\n",
+  after: "- id: D-1\n  title: old\n  kind: statute\n  citation: c\n  file: documents/D-1.md\n" +
+    "- id: D-2\n  title: new\n  kind: guidance\n  citation: g\n  file: documents/D-2.md\n",
+  label: "documents.yaml (D-2 new)",
+};
+const docText: FileEntry = {
+  path: "volumes/mwr/documents/D-2.md",
+  before: null,
+  after: "Pasted text.\n",
+  label: "D-2 new",
+};
+
+describe("file entries", () => {
+  it("replaces by path, discards by path, and survives a save and load", () => {
+    const storage = memoryStorage();
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putFileEntry(cs, docYaml);
+    cs = putFileEntry(cs, docText);
+    cs = putFileEntry(cs, { ...docYaml, label: "documents.yaml (D-2 renamed)" });
+    expect(fileEntries(cs)).toHaveLength(2);
+    expect(fileEntries(cs)[1].label).toBe("documents.yaml (D-2 renamed)");
+
+    saveChangeSet(cs, storage);
+    const back = loadChangeSet("mwr", "main", storage);
+    expect(fileEntries(back).map((f) => f.path)).toEqual([
+      "volumes/mwr/documents/D-2.md", "volumes/mwr/documents.yaml",
+    ]);
+
+    expect(fileEntries(discardFileEntry(back, "volumes/mwr/documents.yaml"))).toHaveLength(1);
+    expect(fileEntries(clearEntries(back))).toHaveLength(0);
+  });
+
+  it("reads a change set persisted before file entries existed", () => {
+    const storage = memoryStorage();
+    storage.setItem(
+      changeSetKey("mwr", "main"),
+      JSON.stringify({ volume: "mwr", baseRef: "main", branch: null, prNumber: null, entries: [] }),
+    );
+    expect(fileEntries(loadChangeSet("mwr", "main", storage))).toEqual([]);
+  });
+
+  it("writes one file per staged entry, verbatim, after the item files", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, editEntry({ meaning: "A restated meaning long enough to sign." }));
+    cs = putFileEntry(cs, docYaml);
+    cs = putFileEntry(cs, docText);
+    cs = putFileEntry(cs, { path: "volumes/mwr/gone.md", before: "x\n", after: null, label: "gone" });
+    cs = putFileEntry(cs, { path: "volumes/mwr/same.md", before: "s\n", after: "s\n", label: "same" });
+    const files = entryFiles(cs, "volumes/mwr");
+    expect(files.map((f) => f.path)).toEqual([
+      "volumes/mwr/medicaid/WR-003.yaml",
+      "volumes/mwr/documents.yaml",
+      "volumes/mwr/documents/D-2.md",
+      "volumes/mwr/gone.md",
+    ]);
+    expect(files[2].content).toBe("Pasted text.\n");
+    expect(files[3].content).toBeNull();
+    expect(isFileUnchanged({ ...docText, before: docText.after })).toBe(true);
+  });
+
+  it("lists the staged files in the proposal body under their own heading", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, editEntry({ meaning: "A restated meaning long enough to sign." }));
+    cs = putFileEntry(cs, docYaml);
+    cs = putFileEntry(cs, docText);
+    const body = proposalBody(engine, cs, validateChangeSet(engine, cs));
+    expect(body).toContain("### Files");
+    expect(body).toContain("- `volumes/mwr/documents.yaml` documents.yaml (D-2 new) — edit");
+    expect(body).toContain("- `volumes/mwr/documents/D-2.md` D-2 new — add");
+    expect(body.indexOf("### Files")).toBeLessThan(body.indexOf("## Impact"));
+  });
+
+  it("leaves the Files heading out when nothing but items is staged", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, editEntry({ meaning: "A restated meaning long enough to sign." }));
+    expect(proposalBody(engine, cs, validateChangeSet(engine, cs))).not.toContain("### Files");
+  });
+
+  it("carries no impact: validation reads items only", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putFileEntry(cs, docYaml);
+    cs = putFileEntry(cs, docText);
+    const report = validateChangeSet(engine, cs);
+    expect(report.items).toEqual([]);
+    expect(report.impact).toEqual([]);
+    expect(report.valid).toBe(true);
   });
 });

@@ -8,12 +8,13 @@ import { idbCache } from "../ledger/cache";
 import { loadManifest, loadVolume, type LoadedVolume } from "../ledger/load";
 import type { Manifest } from "../ledger/manifest";
 import { sourceTitleMap } from "../ledger/markdown";
-import { pickSource } from "../ledger/source";
+import { pickSource, type LedgerSource } from "../ledger/source";
 import { applyChangeSet } from "../changes/apply";
 import {
-  clearEntries, discardEntry, loadChangeSet, putEntry, saveChangeSet,
+  clearEntries, discardEntry, discardFileEntry, loadChangeSet, putEntry, putFileEntry,
+  saveChangeSet,
 } from "../changes/store";
-import type { ChangeEntry, ChangeSet } from "../changes/types";
+import type { ChangeEntry, ChangeSet, FileEntry } from "../changes/types";
 import { emptyChangeSet } from "../changes/types";
 import { validateChangeSet, type ChangeSetReport } from "../changes/validate";
 import { buildSearchIndex, type SearchIndex } from "./search";
@@ -68,6 +69,15 @@ export function githubClient(): GitHubClient {
   return createGitHubClient(REPO, credentials.get("github"));
 }
 
+/** A reader for the ref the current route shows, so a view can fetch a file
+ *  the volume load deliberately left behind (a document's text). */
+export function ledgerSource(): LedgerSource {
+  const r = route.value;
+  const pr = pullRequestSig.value;
+  const ref = prNumberOf(r.ref) !== null && pr ? pr.headRef : baseRefOf(r);
+  return pickSource(REPO, ref, credentials.get("github"));
+}
+
 /** The git ref a route reads from, before a pull request is resolved. */
 export function baseRefOf(r: Route): string {
   return r.ref ?? DEFAULT_BRANCH;
@@ -102,6 +112,20 @@ export function putChangeEntry(entry: ChangeEntry): void {
 
 export function discardChangeEntry(id: string): void {
   const cs = discardEntry(changeSetSig.value, id);
+  changeSetSig.value = cs;
+  saveChangeSet(cs);
+  recomputeReport();
+}
+
+export function putFileChange(entry: FileEntry): void {
+  const cs = putFileEntry(changeSetSig.value, entry);
+  changeSetSig.value = cs;
+  saveChangeSet(cs);
+  recomputeReport();
+}
+
+export function discardFileChange(path: string): void {
+  const cs = discardFileEntry(changeSetSig.value, path);
   changeSetSig.value = cs;
   saveChangeSet(cs);
   recomputeReport();

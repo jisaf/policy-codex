@@ -12,6 +12,7 @@ const NAV: Array<{ view: ViewName; label: string }> = [
   { view: "graph", label: "Graph" },
   { view: "cases", label: "Cases" },
   { view: "source", label: "Sources" },
+  { view: "documents", label: "Documents" },
   { view: "search", label: "Search" },
 ];
 

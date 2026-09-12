@@ -1,12 +1,17 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import {
-  caseToSpec, programsOfCase, type HouseholdCase, type PersonSpec,
+  appendCase, caseToSpec, nextCaseId, parseCases, programsOfCase, type HouseholdCase,
+  type PersonSpec,
 } from "../engine/cases";
 import type { TraceNode } from "../engine/explain";
 import type { Item, TestSpec } from "../engine/types";
 import { buildHash, type Route } from "./router";
-import { engineSig, navigate, route, viewEngine, volumeSig } from "./state";
+import type { LoadedVolume } from "../ledger/load";
+import { fileEntries } from "../changes/types";
+import {
+  changeSetSig, engineSig, navigate, putFileChange, route, trayOpenSig, viewEngine, volumeSig,
+} from "./state";
 import { Trace } from "./Trace";
 
 export interface ProgramCount { program: string; passed: number; failed: number }
@@ -359,8 +364,12 @@ function FactFields(
   );
 }
 
-function NewHousehold({ engine, route: r }: { engine: Engine; route: Route }) {
+function NewHousehold(
+  { engine, vol, route: r }: { engine: Engine; vol: LoadedVolume; route: Route },
+) {
   const values = useSignal<Record<string, string>>({});
+  const caseTitle = useSignal("");
+  const staged = useSignal("");
   const asOf = useSignal(engine.meta.default_as_of);
   const answer = useSignal<Array<{ identifier: string; month: string | null; root: TraceNode }> | null>(null);
 
@@ -383,6 +392,7 @@ function NewHousehold({ engine, route: r }: { engine: Engine; route: Route }) {
   };
   const set = (identifier: string, raw: string) => {
     values.value = { ...values.value, [identifier]: raw };
+    staged.value = "";
   };
   const evaluate = () => {
     const spec = buildSpec(engine, cone, values.value, asOf.value);
@@ -392,6 +402,44 @@ function NewHousehold({ engine, route: r }: { engine: Engine; route: Route }) {
       const person = it && (it.scope === "person" || it.scope === "person-month") ? "p1" : null;
       return { identifier, month, root: engine.explain(spec, identifier, person, month) };
     });
+    staged.value = "";
+  };
+
+  /** The evaluated household as a new case, appended to `tests/cases.yaml`.
+   *  Its expectations are the values just computed: a staged case records what
+   *  the ledger does today, which is exactly what a regression pins. */
+  const stage = () => {
+    if (!answer.value) return;
+    const spec = buildSpec(engine, cone, values.value, asOf.value);
+    // A second household is staged on top of the first: the base is whatever
+    // the tray already holds for the file, so neither case is lost.
+    const path = `${vol.path}/tests/cases.yaml`;
+    const staging = fileEntries(changeSetSig.value).find((f) => f.path === path);
+    const base = staging?.after ?? vol.casesText;
+    const id = nextCaseId(base == null ? [] : parseCases(base));
+    const expect: Record<string, unknown> = {};
+    for (const o of answer.value) {
+      // `unknown` is how cases.yaml states an outcome the facts do not decide;
+      // a bare null would be an expectation no evaluation can ever meet.
+      const v = o.root.value === null || o.root.value === undefined ? "unknown" : o.root.value;
+      expect[o.identifier] = o.month ? { [o.month]: v } : v;
+    }
+    const hc: HouseholdCase = {
+      id,
+      title: caseTitle.value.trim() || `Household evaluated as of ${asOf.value}`,
+      as_of: asOf.value,
+      persons: spec.persons ?? {},
+      expect: { p1: expect },
+    };
+    const after = appendCase(base, hc);
+    const added = parseCases(after).length - (vol.cases ?? []).length;
+    putFileChange({
+      path,
+      before: vol.casesText,
+      after,
+      label: added > 1 ? `${added} new cases, through ${id}` : `${id} ${hc.title}`,
+    });
+    staged.value = id;
   };
 
   return (
@@ -449,9 +497,33 @@ function NewHousehold({ engine, route: r }: { engine: Engine; route: Route }) {
 
           <div class="actions">
             <button class="btn" onClick={evaluate}>Evaluate</button>
-            <button class="btn" disabled title="Available once documents land">
+            <label>
+              Title
+              <input
+                data-field="case_title" value={caseTitle.value}
+                onInput={(e) => {
+                  caseTitle.value = (e.target as HTMLInputElement).value;
+                  staged.value = "";
+                }}
+              />
+            </label>
+            <button
+              class="btn stage-case" disabled={!answer.value}
+              title={answer.value
+                ? "Stage this household as a new case in tests/cases.yaml"
+                : "Evaluate the household first, so the expectations state what it does"}
+              onClick={stage}
+            >
               Stage as case
             </button>
+            {staged.value && (
+              <span class="ok">
+                {staged.value} staged.{" "}
+                <button class="linkish" onClick={() => { trayOpenSig.value = true; }}>
+                  Open the tray
+                </button>
+              </span>
+            )}
           </div>
 
           {answer.value && (
@@ -481,7 +553,7 @@ export function CasesView() {
   const vol = volumeSig.value;
   const r = route.value;
   if (!engine || !vol) return <p class="status">No ledger loaded.</p>;
-  if (r.arg === "new") return <NewHousehold engine={engine} route={r} />;
+  if (r.arg === "new") return <NewHousehold engine={engine} vol={vol} route={r} />;
   const cases = vol.cases ?? [];
   if (r.arg) {
     const hc = cases.find((c) => c.id === r.arg);

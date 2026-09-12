@@ -170,3 +170,16 @@ blockquote.notes { border-left: 3px solid var(--accent); margin: 8px 0; padding:
 .tsources { margin: 2px 0; display: flex; gap: 4px; }
 .outcome { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
 .outcome h4 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.documents td.citation { font-size: 12px; }
+.document .doctext pre.statute { margin: 6px 0; }
+.document .excerpt { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
+.document .excerpt h4 { margin: 0 0 2px; }
+.newdoc { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+.newdoc summary { cursor: pointer; font-weight: 600; }
+.newdoc .form { margin-top: 8px; }
+.newdoc textarea { min-height: 140px; }
+.tag.doclink { text-decoration: none; color: var(--accent); }
+.tray li.entry.file code { font-size: 12px; }
+.newcase .actions label { display: flex; gap: 4px; align-items: center; color: var(--muted); }
+.newcase .actions input { font: inherit; padding: 4px; border: 1px solid var(--line);
+  border-radius: 4px; min-width: 260px; }

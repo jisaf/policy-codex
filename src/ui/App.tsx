@@ -1,5 +1,6 @@
 import "./styles.css";
 import { CasesView } from "./CasesView";
+import { DocumentsView } from "./DocumentsView";
 import { GraphView } from "./GraphView";
 import { Header } from "./Header";
 import { ItemEditor } from "./ItemEditor";
@@ -22,6 +23,7 @@ function ViewSlot() {
   if (r.view === "program") return <ProgramView />;
   if (r.view === "item") return <ItemView />;
   if (r.view === "source") return <SourcesView />;
+  if (r.view === "documents" || r.view === "document") return <DocumentsView />;
   return <SearchView />;
 }
 

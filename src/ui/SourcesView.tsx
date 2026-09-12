@@ -24,7 +24,20 @@ export function SourcesView() {
         return (
           <article class="source" key={s.id} id={s.id}>
             <h3>{s.id}. {s.title}</h3>
-            <p class="citation">{s.citation}</p>
+            <p class="citation">
+              {s.citation}
+              {s.document && (
+                <>
+                  {" "}
+                  <a
+                    class="tag doclink"
+                    href={buildHash({ ...r, view: "document", arg: s.document, params: {} })}
+                  >
+                    {s.document}
+                  </a>
+                </>
+              )}
+            </p>
             <details open={r.arg === s.id}>
               <summary>Statute text</summary>
               <pre class="statute">{s.text}</pre>
