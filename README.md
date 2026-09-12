@@ -36,6 +36,7 @@ npm install
 npm run dev        # http://localhost:5173, reads the ledger from GitHub main
 npm test           # engine fixtures + module tests
 npm run typecheck
+npm run check      # constraints, governance, rule tests, and household cases over the ledger on disk
 npm run e2e        # one Playwright smoke test against a local build
 ```
 
@@ -50,6 +51,12 @@ The engine under `src/engine/` is pinned to `test/fixtures/` (53 derivation roun
 Every push to `main` runs `.github/workflows/deploy.yml`: typecheck, unit tests, build, and publish `dist/` to GitHub Pages. Merging a pull request is the deploy. The workflow can also be run by hand from the Actions tab.
 
 The Worker deploys separately: `cd worker && npx wrangler deploy`, then paste its URL into the app's settings sheet.
+
+## Governance
+
+Pull requests to `main` also run `.github/workflows/check.yml` (`npm run
+check` against the PR's base). See `docs/governance.md` for roles, review
+lanes, the ratchet rule, and what blocks a merge and why.
 
 ## Status
 
