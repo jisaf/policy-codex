@@ -78,7 +78,7 @@ export function proposalBody(
   const added = additions(cs);
   if (added.length) {
     lines.push("");
-    lines.push("### Rationale");
+    lines.push("## Rationale");
     for (const e of added) {
       const item = e.after!;
       const why = (item.rationale ?? "").trim();
@@ -91,7 +91,7 @@ export function proposalBody(
       .filter((x) => x.near.length > 0);
     if (withNearest.length) {
       lines.push("");
-      lines.push("### Nearest existing items");
+      lines.push("## Nearest existing items");
       for (const { entry, near } of withNearest) {
         lines.push(`- \`${entry.id}\` ${entry.after!.name}`);
         const acknowledged = new Set(entry.after!.nearest ?? []);
@@ -108,7 +108,7 @@ export function proposalBody(
   const files = fileEntries(cs).filter((f) => !isFileUnchanged(f));
   if (files.length) {
     lines.push("");
-    lines.push("### Files");
+    lines.push("## Files");
     for (const f of files) {
       const kind = f.after === null ? "delete" : f.before === null ? "add" : "edit";
       lines.push(`- \`${f.path}\` ${f.label} — ${kind}`);
@@ -131,7 +131,7 @@ export function proposalBody(
   const touched = new Set([...changedIdentifiers(cs), ...report.impact]);
   const affected = declaredOutcomes(base).filter((o) => touched.has(o));
   lines.push("");
-  lines.push("### Outcomes affected");
+  lines.push("## Outcomes affected");
   if (affected.length === 0) {
     lines.push("No declared program outcome is changed or downstream of a change.");
   } else {

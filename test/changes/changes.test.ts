@@ -269,14 +269,14 @@ describe("change-set", () => {
     }));
     cs = putEntry(cs, editEntry({ meaning: "edited meaning that is long enough" }));
     const body = proposalBody(governed, cs, validateChangeSet(governed, cs));
-    expect(body).toContain("### Rationale");
+    expect(body).toContain("## Rationale");
     expect(body).toContain(
       "- `WR-960` Medicaid: is in the community engagement age range (alternate): " +
         "The renewal path uses a different lower bound, so WR-200 does not serve.",
     );
-    expect(body).toContain("### Nearest existing items");
+    expect(body).toContain("## Nearest existing items");
     expect(body).toContain("  - `WR-200` medicaid_in_ce_age_range — same-shape (0.90), acknowledged");
-    expect(body).toContain("### Outcomes affected");
+    expect(body).toContain("## Outcomes affected");
     expect(body).toContain("- `medicaid_ce_status_at_application`");
   });
 
@@ -357,16 +357,16 @@ describe("file entries", () => {
     cs = putFileEntry(cs, docYaml);
     cs = putFileEntry(cs, docText);
     const body = proposalBody(engine, cs, validateChangeSet(engine, cs));
-    expect(body).toContain("### Files");
+    expect(body).toContain("## Files");
     expect(body).toContain("- `volumes/mwr/documents.yaml` documents.yaml (D-2 new) — edit");
     expect(body).toContain("- `volumes/mwr/documents/D-2.md` D-2 new — add");
-    expect(body.indexOf("### Files")).toBeLessThan(body.indexOf("## Impact"));
+    expect(body.indexOf("## Files")).toBeLessThan(body.indexOf("## Impact"));
   });
 
   it("leaves the Files heading out when nothing but items is staged", () => {
     let cs = emptyChangeSet("mwr", "main");
     cs = putEntry(cs, editEntry({ meaning: "A restated meaning long enough to sign." }));
-    expect(proposalBody(engine, cs, validateChangeSet(engine, cs))).not.toContain("### Files");
+    expect(proposalBody(engine, cs, validateChangeSet(engine, cs))).not.toContain("## Files");
   });
 
   it("carries no impact: validation reads items only", () => {
