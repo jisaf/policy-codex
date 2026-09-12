@@ -47,15 +47,21 @@ expectation itself and records any mismatch as a line in `suite.notes`. Read
 array means every expectation is current.
 
 `conformance/suite.json` also carries `codex: { volume, sha, generated }` —
-`sha` is `git rev-parse HEAD` at generation time (`"unknown"` outside a git
-checkout) — and one row per ledger item (`id`, `identifier`, `kind`,
-`program`, `implemented`, `implemented_by`), so an adapter or a report can
-say which items it covers.
+`sha` is `git rev-parse HEAD` at generation time, with `-dirty` appended when
+`git status --porcelain` is non-empty (so a suite built from uncommitted
+edits does not silently claim to be pinned to a clean commit), or "unknown"
+outside a git checkout — and one row per ledger item (`id`, `identifier`,
+`kind`, `program`, `implemented`, `implemented_by`), so an adapter or a
+report can say which items it covers.
 
-`conformance/` is git-ignored: `suite.json` carries a fresh `generated`
-timestamp on every run, so it is never byte-identical across two runs even
-against the same commit. Regenerate it whenever you need it; don't expect it
-committed.
+Only `conformance/suite.json` and `conformance/results.json` are git-ignored:
+`suite.json` carries a fresh `generated` timestamp on every run, so it is
+never byte-identical across two runs even against the same commit; both are
+regenerated on demand, never expected committed.
+`conformance/known-failures.json` is the exception — it is tracked, and
+`npm run check`/CI read it (docs/governance.md's "How CI enforces it") to
+decide which already-known rule-test or case failures do not block a pull
+request.
 
 ## The adapter contract
 

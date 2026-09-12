@@ -32,7 +32,8 @@ src/                the app (engine, ledger, github, changes, ai, credentials, u
 worker/             the Cloudflare Worker that adds CORS for AI providers
 scripts/            check runner, conformance harness, reference checker, adapters
 docs/               conventions, governance, conformance, the design
-conformance/        suite export and result logs (gitignored; regenerate on demand)
+conformance/        suite export and result logs (suite.json and results.json are
+                    gitignored, regenerate on demand; known-failures.json is tracked)
 ```
 
 Every item is one file. Add an item by adding a file and listing it in `codex.json`; the app does the same when you propose from the browser.
