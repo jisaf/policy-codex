@@ -1,5 +1,6 @@
 import { MANIFEST_PATH } from "../config";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
+import { parseCases, type HouseholdCase } from "../engine/cases";
 import type { Item, VolumeMeta } from "../engine/types";
 import { parseManifest, type Manifest, type VolumeEntry } from "./manifest";
 import { parseOpenQuestions, parseSources, type OpenQuestion, type Source } from "./markdown";
@@ -16,6 +17,8 @@ export interface LoadedVolume {
   items: Item[];
   sources: Source[];
   openQuestions: OpenQuestion[];
+  /** Household cases from `tests/cases.yaml`; empty when the file is absent. */
+  cases: HouseholdCase[];
   /** item id -> chapter directory, so a file path is reconstructible. */
   chapterOf: Record<string, string>;
 }
@@ -62,10 +65,11 @@ export async function loadVolume(
     if (hit) return { ...hit, ref: src.ref };
   }
 
-  const [volumeText, sourcesText, questionsText] = await Promise.all([
+  const [volumeText, sourcesText, questionsText, casesText] = await Promise.all([
     src.readText(`${entry.path}/volume.yaml`),
     src.readText(`${entry.path}/sources.md`),
     src.readText(`${entry.path}/open-questions.md`),
+    src.readText(`${entry.path}/tests/cases.yaml`).catch(() => null),
   ]);
 
   const targets = entry.chapters.flatMap((c) => c.files.map((f) => ({ dir: c.dir, file: f })));
@@ -91,6 +95,7 @@ export async function loadVolume(
     items,
     sources: parseSources(sourcesText),
     openQuestions: parseOpenQuestions(questionsText),
+    cases: casesText == null ? [] : parseCases(casesText),
     chapterOf,
   };
   if (sha && opts.cache) {

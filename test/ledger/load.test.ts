@@ -20,6 +20,18 @@ function diskSource(sha: string | null): LedgerSource & { reads: string[] } {
   };
 }
 
+/** Like `diskSource`, but 404s on `tests/cases.yaml` as though the volume had none. */
+function diskSourceNoCases(sha: string | null): LedgerSource {
+  return {
+    ref: "main",
+    async readText(p: string) {
+      if (p.endsWith("tests/cases.yaml")) throw new Error(`${p} not found at main (404)`);
+      return fs.readFileSync(path.join(root, p), "utf8");
+    },
+    async head() { return sha; },
+  };
+}
+
 describe("loadVolume", () => {
   it("loads the whole volume from the manifest", async () => {
     const src = diskSource("sha1");
@@ -31,8 +43,16 @@ describe("loadVolume", () => {
     expect(vol.meta.default_as_of).toBe("2027-03-15");
     expect(vol.sources).toHaveLength(33);
     expect(vol.openQuestions).toHaveLength(23);
+    expect(vol.cases).toHaveLength(13);
     expect(vol.chapterOf["WR-003"]).toBe("medicaid");
     expect(itemFilePath(vol, "WR-003")).toBe("volumes/mwr/medicaid/WR-003.yaml");
+  });
+
+  it("loads an empty cases array when tests/cases.yaml is missing", async () => {
+    const src = diskSourceNoCases("sha2");
+    const manifest = await loadManifest(src);
+    const vol = await loadVolume(src, manifest, "mwr");
+    expect(vol.cases).toEqual([]);
   });
 
   it("serves a second load of the same sha from the cache without refetching", async () => {

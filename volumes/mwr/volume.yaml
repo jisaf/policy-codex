@@ -37,3 +37,15 @@ types:
   - list of months
 
 scopes: [person, person-month, case, month, global]
+
+programs:
+  - id: All
+    prefix: null
+  - id: Medicaid
+    prefix: medicaid_
+    outcomes: [medicaid_ce_status_at_application, medicaid_ce_status_at_renewal]
+  - id: SNAP
+    prefix: snap_
+    outcomes: [snap_time_limit_status, snap_is_subject_to_work_requirement]
+
+tags: [legal, medical, state_election]

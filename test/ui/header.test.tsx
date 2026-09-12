@@ -26,11 +26,14 @@ describe("Header", () => {
     searchIndexSig.value = buildSearchIndex(vol, engine);
   });
 
-  it("renders the four view links", () => {
+  it("renders the six view links, Programs opening the first program", () => {
     const host = document.createElement("div");
     render(<Header />, host);
-    const labels = [...host.querySelectorAll("nav a")].map((a) => a.textContent);
-    expect(labels).toEqual(["Table", "Graph", "Sources", "Search"]);
+    const links = [...host.querySelectorAll("nav a")];
+    expect(links.map((a) => a.textContent))
+      .toEqual(["Table", "Graph", "Cases", "Programs", "Sources", "Search"]);
+    const programs = links.find((a) => a.textContent === "Programs")!;
+    expect(programs.getAttribute("href")).toContain("/program/Medicaid");
   });
 
   it("shows grouped results as the analyst types", async () => {

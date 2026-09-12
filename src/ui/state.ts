@@ -25,6 +25,9 @@ export interface EditingState {
   chapter: string;
   draft: Item;
   surface: "form" | "text" | "ai";
+  /** A new item starts on "start", a search of the ledger, so a steward looks
+   *  before adding. An existing item opens straight into "edit". */
+  step: "start" | "edit";
 }
 
 export const WORKER_BASE_KEY = "codex.worker";
@@ -120,11 +123,11 @@ export function openEditor(id: string | null): void {
     if (!item) return;
     editingSig.value = {
       id, chapter: vol.chapterOf[id] ?? "supplied",
-      draft: JSON.parse(JSON.stringify(item)) as Item, surface: "form",
+      draft: JSON.parse(JSON.stringify(item)) as Item, surface: "form", step: "edit",
     };
   } else {
     editingSig.value = {
-      id: null, chapter: "medicaid", surface: "form",
+      id: null, chapter: "medicaid", surface: "form", step: "start",
       draft: {
         id: engine.nextId(), name: "", identifier: "", kind: "derived", type: "yes/no",
         scope: "person", program: "Medicaid", meaning: "", sources: [], tests: [],

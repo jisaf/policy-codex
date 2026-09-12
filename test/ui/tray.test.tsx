@@ -31,6 +31,31 @@ function withEntry(meaning: string) {
   reportSig.value = validateChangeSet(engine, cs);
 }
 
+/** An add that repeats WR-200's tree with a different constant: governance
+ *  warns "parameterise" without blocking the change. */
+function withGovernanceWarning() {
+  const after: Item = {
+    id: "WR-960",
+    name: "Medicaid: is in the community engagement age range (alternate)",
+    identifier: "medicaid_in_ce_age_range_alt",
+    kind: "derived",
+    type: "yes/no",
+    scope: "person",
+    program: "Medicaid",
+    meaning: "The person has attained age 21 and is under the community engagement maximum age.",
+    derived: ["all", [">=", "age", 21], ["<", "age", "medicaid_ce_max_age_exclusive"]],
+    sources: ["S1"],
+    implemented: "engine",
+    tests: [{ id: "WR-960-T1", given: { date_of_birth: "2008-03-15" }, expect: false }],
+    rationale: "The renewal path uses a different lower bound, so WR-200 does not serve.",
+    nearest: ["WR-200"],
+  };
+  let cs = emptyChangeSet("mwr", "main");
+  cs = putEntry(cs, { id: after.id, chapter: "medicaid", before: null, after });
+  changeSetSig.value = cs;
+  reportSig.value = validateChangeSet(engine, cs);
+}
+
 describe("Tray", () => {
   beforeEach(() => {
     route.value = defaultRoute();
@@ -74,6 +99,18 @@ describe("Tray", () => {
     expect(host.querySelector("li.entry")!.textContent).toContain(
       "Meaning is a full sentence an approver can sign",
     );
+  });
+
+  it("shows governance warnings under the errors and counts them on the entry", () => {
+    withGovernanceWarning();
+    const host = document.createElement("div");
+    render(<Tray />, host);
+    const entry = host.querySelector("li.entry")!;
+    expect(entry.textContent).toContain("1 warning");
+    const warn = entry.querySelector("ul.errors li.warn")!;
+    expect(warn.textContent).toContain("dup.shape");
+    expect(warn.textContent).toContain("parameterise");
+    expect(entry.querySelectorAll("ul.errors li.bad")).toHaveLength(0);
   });
 
   it("discards an entry", () => {

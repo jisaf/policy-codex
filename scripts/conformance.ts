@@ -1,11 +1,13 @@
-/* Writes handoff.md from the checked-in ledger. Run with `npm run handoff`. */
+/* Writes conformance/suite.json from the checked-in ledger, pinned to the
+ * current git commit. Run with `npm run conformance`. */
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { createEngine } from "../src/engine/engine";
 import { parseCases } from "../src/engine/cases";
 import { parseItemFile, parseVolumeFile } from "../src/engine/yaml";
 import { parseOpenQuestions, parseSources } from "../src/ledger/markdown";
-import { handoffMarkdown } from "../src/export/handoff";
+import { buildSuite } from "../src/export/conformance";
 import type { LoadedVolume } from "../src/ledger/load";
 import type { Item } from "../src/engine/types";
 
@@ -22,12 +24,8 @@ for (const ch of entry.chapters) {
     chapterOf[it.id] = ch.dir;
   }
 }
-const meta = parseVolumeFile(
-  fs.readFileSync(path.join(root, entry.path, "volume.yaml"), "utf8"),
-);
-const sources = parseSources(
-  fs.readFileSync(path.join(root, entry.path, "sources.md"), "utf8"),
-);
+const meta = parseVolumeFile(fs.readFileSync(path.join(root, entry.path, "volume.yaml"), "utf8"));
+const sources = parseSources(fs.readFileSync(path.join(root, entry.path, "sources.md"), "utf8"));
 const openQuestions = parseOpenQuestions(
   fs.readFileSync(path.join(root, entry.path, "open-questions.md"), "utf8"),
 );
@@ -43,6 +41,22 @@ const engine = createEngine(items, meta, {
   questionIds: openQuestions.map((q) => q.id),
 });
 
-const out = path.join(root, "handoff.md");
-fs.writeFileSync(out, handoffMarkdown(engine, vol));
-console.log(`wrote handoff.md for ${items.length} items`);
+let sha = "unknown";
+try {
+  sha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+} catch {
+  // no git available (or not a repo) — leave "unknown"
+}
+
+const suite = buildSuite(engine, vol, sha);
+const outDir = path.join(root, "conformance");
+fs.mkdirSync(outDir, { recursive: true });
+fs.writeFileSync(path.join(outDir, "suite.json"), JSON.stringify(suite, null, 2));
+
+console.log(
+  `wrote conformance/suite.json: ${suite.cases.length} cases ` +
+    `(${suite.cases.filter((c) => c.kind === "rule-test").length} rule-test, ` +
+    `${suite.cases.filter((c) => c.kind === "household").length} household), ` +
+    `codex@${sha}` +
+    (suite.notes.length ? `, ${suite.notes.length} stale expectation(s) noted` : ""),
+);

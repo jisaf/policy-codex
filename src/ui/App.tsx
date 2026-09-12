@@ -1,9 +1,11 @@
 import "./styles.css";
+import { CasesView } from "./CasesView";
 import { GraphView } from "./GraphView";
 import { Header } from "./Header";
 import { ItemEditor } from "./ItemEditor";
 import { ItemView } from "./ItemView";
 import { PrReview } from "./PrReview";
+import { ProgramView } from "./ProgramView";
 import { isPrRef } from "./router";
 import { SearchView } from "./SearchView";
 import { Settings } from "./Settings";
@@ -16,6 +18,8 @@ function ViewSlot() {
   const r = route.value;
   if (r.view === "table") return <TableView />;
   if (r.view === "graph") return <GraphView />;
+  if (r.view === "cases") return <CasesView />;
+  if (r.view === "program") return <ProgramView />;
   if (r.view === "item") return <ItemView />;
   if (r.view === "source") return <SourcesView />;
   return <SearchView />;

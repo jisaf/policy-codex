@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { createEngine } from "../../src/engine/engine";
-import { stringifyItem } from "../../src/engine/yaml";
+import { parseVolumeFile, stringifyItem } from "../../src/engine/yaml";
 import { memoryStorage } from "../../src/credentials";
 import {
   emptyChangeSet, entryKind, isUnchanged, type ChangeEntry,
@@ -18,6 +20,35 @@ import type { Item, VolumeMeta } from "../../src/engine/types";
 const items = ledger.items as unknown as Item[];
 const engine = createEngine(items, ledger.meta as unknown as VolumeMeta, refs);
 const age = engine.itemById("WR-003")!;
+
+/** The governance rules read the declared vocabulary, so the change-set tests
+ *  that exercise them build their engine on the real volume.yaml rather than
+ *  the phase-1 fixture meta, which declares no programs. */
+const governedMeta = parseVolumeFile(
+  fs.readFileSync(path.resolve(__dirname, "../../volumes/mwr/volume.yaml"), "utf8"),
+);
+const governed = createEngine(items, governedMeta, refs);
+
+/** A new Medicaid rule that repeats WR-200's tree with a different constant:
+ *  a same-shape candidate the steward must acknowledge, not a clean add. */
+const twin: Item = {
+  id: "WR-960",
+  name: "Medicaid: is in the community engagement age range (alternate)",
+  identifier: "medicaid_in_ce_age_range_alt",
+  kind: "derived",
+  type: "yes/no",
+  scope: "person",
+  program: "Medicaid",
+  meaning: "The person has attained age 21 and is under the community engagement maximum age.",
+  derived: ["all", [">=", "age", 21], ["<", "age", "medicaid_ce_max_age_exclusive"]],
+  sources: ["S1"],
+  implemented: "engine",
+  tests: [{ id: "WR-960-T1", given: { date_of_birth: "2008-03-15" }, expect: false }],
+};
+
+function addEntry(patch: Partial<Item> = {}): ChangeEntry {
+  return { id: twin.id, chapter: "medicaid", before: null, after: { ...twin, ...patch } };
+}
 
 function editEntry(patch: Partial<Item>): ChangeEntry {
   return {
@@ -143,6 +174,66 @@ describe("change-set", () => {
     expect(validateChangeSet(engine, cs).valid).toBe(true);
   });
 
+  it("refuses an added item that carries no rationale", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, addEntry());
+    const report = validateChangeSet(governed, cs);
+    expect(report.valid).toBe(false);
+    const entry = report.items.find((i) => i.id === "WR-960")!;
+    expect(entry.governance.map((f) => f.rule)).toContain("rationale.required");
+    expect(entry.errors.some((m) => m.startsWith("A new item carries a rationale"))).toBe(true);
+    expect(entry.errors.some((m) => m.startsWith("acknowledge nearest"))).toBe(true);
+  });
+
+  it("accepts the same add once it has a rationale and acknowledges the nearest", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, addEntry({
+      rationale: "The renewal path uses a different lower bound, so WR-200 does not serve.",
+      nearest: ["WR-200"],
+    }));
+    const report = validateChangeSet(governed, cs);
+    expect(report.valid).toBe(true);
+    const entry = report.items.find((i) => i.id === "WR-960")!;
+    expect(entry.errors).toEqual([]);
+    // The duplicate warning survives: it is reported, it does not block.
+    expect(entry.governance.map((f) => f.rule)).toContain("dup.shape");
+    expect(entry.warnings.some((m) => m.startsWith("parameterise:"))).toBe(true);
+  });
+
+  it("ratchets: a governance error the base version already carried is a warning", () => {
+    // A Medicaid rule that never took the program prefix. Editing its meaning
+    // must not be blocked by a naming failure the edit did not introduce.
+    const legacy: Item = {
+      id: "WR-950",
+      name: "Medicaid: is old enough for community engagement",
+      identifier: "in_ce_age_range",
+      kind: "derived",
+      type: "yes/no",
+      scope: "person",
+      program: "Medicaid",
+      meaning: "The person has attained the community engagement minimum age.",
+      derived: [">=", "age", "medicaid_ce_min_age"],
+      sources: ["S1"],
+      implemented: "engine",
+      tests: [{ id: "WR-950-T1", given: { date_of_birth: "2008-03-15" }, expect: true }],
+    };
+    const base = createEngine([...items, legacy], governedMeta, refs);
+    expect(base.governance(legacy).map((f) => f.rule)).toContain("name.prefix");
+
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, {
+      id: "WR-950", chapter: "medicaid", before: legacy,
+      after: { ...legacy, meaning: "The person has attained the community engagement minimum age, restated." },
+    });
+    const report = validateChangeSet(base, cs);
+    const entry = report.items.find((i) => i.id === "WR-950")!;
+    const prefix = entry.governance.filter((f) => f.rule === "name.prefix");
+    expect(prefix).toHaveLength(1);
+    expect(prefix[0].level).toBe("warn");
+    expect(entry.errors).toEqual([]);
+    expect(report.valid).toBe(true);
+  });
+
   it("writes one file per changed item and skips unchanged entries", () => {
     let cs = emptyChangeSet("mwr", "main");
     cs = putEntry(cs, editEntry({ meaning: "edited meaning that is long enough" }));
@@ -165,5 +256,31 @@ describe("change-set", () => {
     expect(body).toContain("- `WR-003` Age — edit");
     expect(body).toContain("## Impact");
     expect(body).toContain("medicaid_is_dependent_child");
+  });
+
+  it("writes the rationale, the nearest items, and the outcomes a change reaches", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, addEntry({
+      rationale: "The renewal path uses a different lower bound, so WR-200 does not serve.",
+      nearest: ["WR-200"],
+    }));
+    cs = putEntry(cs, editEntry({ meaning: "edited meaning that is long enough" }));
+    const body = proposalBody(governed, cs, validateChangeSet(governed, cs));
+    expect(body).toContain("### Rationale");
+    expect(body).toContain(
+      "- `WR-960` Medicaid: is in the community engagement age range (alternate): " +
+        "The renewal path uses a different lower bound, so WR-200 does not serve.",
+    );
+    expect(body).toContain("### Nearest existing items");
+    expect(body).toContain("  - `WR-200` medicaid_in_ce_age_range — same-shape (0.90), acknowledged");
+    expect(body).toContain("### Outcomes affected");
+    expect(body).toContain("- `medicaid_ce_status_at_application`");
+  });
+
+  it("says so plainly when nothing an outcome depends on changed", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putEntry(cs, addEntry({ rationale: "Kept separate on purpose.", nearest: ["WR-200"] }));
+    const body = proposalBody(governed, cs, validateChangeSet(governed, cs));
+    expect(body).toContain("No declared program outcome is changed or downstream of a change.");
   });
 });
