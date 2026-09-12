@@ -2,8 +2,11 @@ import { buildIndex, indexWith, nextIdFrom, type LedgerIndex } from "./ledger-in
 import { block, compact, inline } from "./render";
 import { parseDerivation, parseInline } from "./parse";
 import { check, usesOf, type CheckResult } from "./check";
-import { runTest, type TestResult } from "./evaluate";
+import { makeCase, runTest, type TestResult } from "./evaluate";
 import { runCase, type CaseReport, type HouseholdCase } from "./cases";
+import {
+  explain, explainCase, type CaseExplanation, type TraceNode,
+} from "./explain";
 import {
   formatTest, itemBlock, parseItemBlock, parseTestLine,
   type ItemBlockExtra, type ParsedItemBlock,
@@ -41,6 +44,11 @@ export interface Engine {
   runTest(it: Item, t: TestSpec): TestResult;
   runCase(c: HouseholdCase): CaseReport;
   runCases(cases: HouseholdCase[]): CaseReport[];
+  explain(
+    spec: TestSpec & { as_of?: string }, identifier: string,
+    person: string | null, month: string | null,
+  ): TraceNode;
+  explainCase(hc: HouseholdCase): CaseExplanation[];
   itemBlock(it: Item, extra?: ItemBlockExtra): string;
   parseItemBlock(text: string): ParsedItemBlock;
   formatTest(t: TestSpec): string;
@@ -85,6 +93,13 @@ export function createEngine(
     runTest: (it, t) => runTest(ix, it, t, meta.default_as_of),
     runCase: (c) => runCase(ix, c),
     runCases: (cases) => cases.map((c) => runCase(ix, c)),
+    explain: (spec, identifier, person, month) =>
+      explain(
+        ix,
+        makeCase(ix, Object.assign({}, spec, { as_of: spec.as_of || meta.default_as_of })),
+        identifier, person, month,
+      ),
+    explainCase: (hc) => explainCase(ix, hc),
     itemBlock: (it, extra) => itemBlock(ix, it, extra),
     parseItemBlock: (text) => parseItemBlock(ix, meta, text),
     formatTest,

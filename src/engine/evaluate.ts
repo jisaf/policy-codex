@@ -106,9 +106,26 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   return c;
 }
 
+/** One resolution the evaluator performed, emitted after the value is known.
+ *  Literals and operators are not facts and are never emitted. */
+export interface TraceEvent {
+  key: string;                 // the memo key (id|person|month) or id for month/case facts
+  identifier: string; person: string | null; month: string | null;
+  kind: "supplied" | "parameter" | "derived" | "case" | "month";
+  value: unknown;              // the resolved value (null = unknown)
+  origin: "case" | "default" | "parameter" | "evaluated" | "memo" | "missing";
+    // case: read from case data; default: month_defaults/monthFactsDefault; parameter: paramOf;
+    // evaluated: derived computed now; memo: derived already computed (subtree not re-expanded);
+    // missing: supplied fact absent (unknown)
+  parentKey: string | null;    // the derived fact whose evaluation asked for this one
+  error?: string;              // when evaluation of this node threw
+}
+
+export type TraceHook = (e: TraceEvent) => void;
+
 export function evaluate(
   ix: LedgerIndex, c: CaseData, identifier: string,
-  person: string | null, month: string | null,
+  person: string | null, month: string | null, trace?: TraceHook,
 ): unknown {
   const memo: Record<string, unknown> = {};
   const stack: string[] = [];
@@ -129,13 +146,44 @@ export function evaluate(
     const it = ix.byIdentifier.get(id);
     if (!it) throw new Error("unknown fact " + id);
     const sc = it.scope;
-    if (it.kind === "parameter") return paramOf(it);
-    if (sc === "case") return id === "determination_date" ? c.det : null;
+    // The derived fact currently under evaluation, captured before this one
+    // pushes its own key, so every emit below reports the same parent.
+    const parentKey = trace && stack.length ? stack[stack.length - 1] : null;
+    /** Emits one event for this resolution, then returns the value unchanged.
+     *  Each resolution is reported in its own scope's context, so key, person
+     *  and month agree: a person fact carries no month, a month fact no
+     *  person, a parameter or case fact neither. */
+    const seen = (v: unknown, origin: TraceEvent["origin"], error?: string): unknown => {
+      if (!trace) return v;
+      const e: TraceEvent = {
+        key: sc === "case" || sc === "month" ? id
+          : sc === "person-month" ? id + "|" + (p ?? "") + "|" + (m ?? "")
+          : sc === "person" ? id + "|" + (p ?? "") + "|"
+          : id + "||",
+        identifier: id,
+        person: sc === "person" || sc === "person-month" ? p : null,
+        month: sc === "month" || sc === "person-month" ? m : null,
+        kind: it.kind === "parameter" ? "parameter"
+          : sc === "case" ? "case" : sc === "month" ? "month" : it.kind,
+        value: v,
+        origin,
+        parentKey,
+      };
+      if (error !== undefined) e.error = error;
+      trace(e);
+      return v;
+    };
+    if (it.kind === "parameter") return seen(paramOf(it), "parameter");
+    if (sc === "case") {
+      return id === "determination_date" ? seen(c.det, "case") : seen(null, "missing");
+    }
     if (sc === "month") {
       if (m == null) throw new Error(id + " needs a month");
       const mf = c.monthFacts[m] || {};
-      if (id in mf) return mf[id];
-      return id in c.monthFactsDefault ? c.monthFactsDefault[id] : null;
+      if (id in mf) return seen(mf[id], "case");
+      return id in c.monthFactsDefault
+        ? seen(c.monthFactsDefault[id], "default")
+        : seen(null, "missing");
     }
     let key: string;
     if (sc === "global") key = id + "||";
@@ -148,21 +196,28 @@ export function evaluate(
     }
     if (sc === "person") {
       const pf = c.persons[p!] || {};
-      if (id in pf) return pf[id];
+      if (id in pf) return seen(pf[id], "case");
     } else if (sc === "person-month") {
       const mf = (c.months[p!] || {})[m!] || {};
-      if (id in mf) return mf[id];
+      if (id in mf) return seen(mf[id], "case");
       const md = c.monthDefaults[p!] || {};
-      if (id in md) return md[id];
+      if (id in md) return seen(md[id], "default");
     }
-    if (it.kind === "supplied") return null;
-    if (key in memo) return memo[key];
+    if (it.kind === "supplied") return seen(null, "missing");
+    if (key in memo) return seen(memo[key], "memo");
     if (stack.includes(key)) throw new Error("cycle at " + id);
     stack.push(key);
     let v: unknown;
-    try { v = ev(it.derived ?? null, p, m, P); } finally { stack.pop(); }
+    try {
+      v = ev(it.derived ?? null, p, m, P);
+    } catch (ex) {
+      seen(null, "evaluated", (ex as Error).message);
+      throw ex;
+    } finally {
+      stack.pop();
+    }
     memo[key] = v;
-    return v;
+    return seen(v, "evaluated");
   }
 
   function ev(e: Expr, p: string | null, m: string | null, P: string | null): any {
