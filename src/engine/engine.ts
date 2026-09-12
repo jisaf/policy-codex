@@ -18,6 +18,7 @@ import {
 import {
   aCodes, buildGraph, impactOf, projectionA, type AProjection, type DependencyGraph,
 } from "./graph";
+import { renameIdentifier, type RenameResult } from "./rename";
 import { baseType, fmt, lit, paramValue, slug } from "./values";
 import type {
   BaseType, EngineRefs, Expr, Item, Scope, TestSpec, VolumeMeta,
@@ -60,6 +61,7 @@ export interface Engine {
   constraints(it: Item): Constraint[];
   governance(it: Item, opts?: { isNew?: boolean }): Finding[];
   nearest(it: Item): Candidate[];
+  rename(from: string, to: string): RenameResult;
   readonly graph: DependencyGraph;
   usedBy(identifier: string): string[];
   usesOfItem(identifier: string): string[];
@@ -113,6 +115,7 @@ export function createEngine(
     constraints: (it) => constraints(ix, meta, refs, it),
     governance: (it, opts) => governance(ix, meta, it, opts),
     nearest: (it) => nearest(ix, it, meta),
+    rename: (from, to) => renameIdentifier(ix, from, to),
     graph,
     usedBy: (identifier) => graph.usedBy.get(identifier) ?? [],
     usesOfItem: (identifier) => graph.uses.get(identifier) ?? [],
