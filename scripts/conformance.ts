@@ -2,13 +2,13 @@
  * current git commit. Run with `npm run conformance`. */
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
 import { createEngine } from "../src/engine/engine";
 import { parseDocuments } from "../src/ledger/documents";
 import { parseCases } from "../src/engine/cases";
 import { parseItemFile, parseVolumeFile } from "../src/engine/yaml";
 import { parseOpenQuestions, parseSources } from "../src/ledger/markdown";
 import { buildSuite } from "../src/export/conformance";
+import { gitShaWithDirtySuffix } from "./git-sha";
 import type { LoadedVolume } from "../src/ledger/load";
 import type { Item } from "../src/engine/types";
 
@@ -48,12 +48,7 @@ const engine = createEngine(items, meta, {
   questionIds: openQuestions.map((q) => q.id),
 });
 
-let sha = "unknown";
-try {
-  sha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
-} catch {
-  // no git available (or not a repo) — leave "unknown"
-}
+const sha = gitShaWithDirtySuffix(root);
 
 const suite = buildSuite(engine, vol, sha);
 const outDir = path.join(root, "conformance");
