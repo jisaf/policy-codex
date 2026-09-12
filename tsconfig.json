@@ -15,5 +15,5 @@
     "noEmit": true,
     "allowJs": true
   },
-  "include": ["src", "test", "vite.config.ts", "scripts/handoff.ts", "worker", "e2e", "playwright.config.ts"]
+  "include": ["src", "test", "vite.config.ts", "scripts/handoff.ts", "scripts/governance-report.ts", "worker", "e2e", "playwright.config.ts"]
 }

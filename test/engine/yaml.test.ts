@@ -1,6 +1,10 @@
 import { describe, it, expect } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { parse as parseYaml } from "yaml";
-import { parseItemFile, stringifyItem, yamlScalar, flowValue } from "../../src/engine/yaml";
+import {
+  parseItemFile, parseVolumeFile, stringifyItem, stringifyVolume, yamlScalar, flowValue,
+} from "../../src/engine/yaml";
 import ledger from "../fixtures/ledger.json";
 import type { Item } from "../../src/engine/types";
 
@@ -41,6 +45,30 @@ describe("yaml", () => {
       const text = stringifyItem(it);
       expect(stringifyItem(parseItemFile(text)), it.id).toBe(text);
     }
+  });
+
+  it("writes the governance keys after open and before tests", () => {
+    const it0: Item = {
+      ...items.find((x) => x.id === "WR-003")!,
+      rationale: "Nothing else turns a date of birth into whole years.",
+      nearest: ["WR-001", "WR-002"],
+    };
+    const text = stringifyItem(it0);
+    expect(text).toContain("nearest: [WR-001, WR-002]");
+    expect(text.indexOf("rationale:")).toBeLessThan(text.indexOf("nearest:"));
+    expect(text.indexOf("nearest:")).toBeLessThan(text.indexOf("tests:"));
+    expect(parseYaml(text)).toEqual(JSON.parse(JSON.stringify(it0)));
+    expect(stringifyItem(parseItemFile(text))).toBe(text);
+  });
+
+  it("round-trips the volume file, declared vocabulary included", () => {
+    const p = path.resolve(__dirname, "../../volumes/mwr/volume.yaml");
+    const text = fs.readFileSync(p, "utf8");
+    const meta = parseVolumeFile(text);
+    expect(meta.programs?.map((x) => x.id)).toEqual(["All", "Medicaid", "SNAP"]);
+    expect(meta.programs?.[0].prefix).toBe(null);
+    expect(meta.tags).toEqual(["legal", "medical", "state_election"]);
+    expect(stringifyVolume(meta)).toBe(text);
   });
 
   it("ends every item file with exactly one newline", () => {

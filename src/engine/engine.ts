@@ -10,6 +10,9 @@ import {
 } from "./item-block";
 import { approvals, constraints, type Constraint } from "./constraints";
 import {
+  governance, nearest, type Candidate, type Finding,
+} from "./governance";
+import {
   aCodes, buildGraph, impactOf, projectionA, type AProjection, type DependencyGraph,
 } from "./graph";
 import { baseType, fmt, lit, paramValue, slug } from "./values";
@@ -47,6 +50,8 @@ export interface Engine {
   parseTestLine(line: string): TestSpec;
   approvals(it: Item): string[];
   constraints(it: Item): Constraint[];
+  governance(it: Item, opts?: { isNew?: boolean }): Finding[];
+  nearest(it: Item): Candidate[];
   readonly graph: DependencyGraph;
   usedBy(identifier: string): string[];
   usesOfItem(identifier: string): string[];
@@ -91,6 +96,8 @@ export function createEngine(
     parseTestLine: (line) => parseTestLine(ix, line),
     approvals: (it) => approvals(meta, it),
     constraints: (it) => constraints(ix, meta, refs, it),
+    governance: (it, opts) => governance(ix, meta, it, opts),
+    nearest: (it) => nearest(ix, it, meta),
     graph,
     usedBy: (identifier) => graph.usedBy.get(identifier) ?? [],
     usesOfItem: (identifier) => graph.uses.get(identifier) ?? [],
