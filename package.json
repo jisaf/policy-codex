@@ -13,6 +13,7 @@
     "migrate": "vite-node scripts/migrate-ledger.mjs",
     "handoff": "vite-node scripts/handoff.ts",
     "governance": "vite-node scripts/governance-report.ts",
+    "check": "vite-node scripts/check.ts",
     "e2e": "playwright test"
   },
   "dependencies": {
