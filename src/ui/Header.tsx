@@ -9,6 +9,7 @@ import {
 const NAV: Array<{ view: ViewName; label: string }> = [
   { view: "table", label: "Table" },
   { view: "graph", label: "Graph" },
+  { view: "cases", label: "Cases" },
   { view: "source", label: "Sources" },
   { view: "search", label: "Search" },
 ];

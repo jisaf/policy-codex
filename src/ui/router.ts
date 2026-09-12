@@ -1,6 +1,6 @@
 import { DEFAULT_VOLUME } from "../config";
 
-export type ViewName = "table" | "graph" | "item" | "source" | "search";
+export type ViewName = "table" | "graph" | "cases" | "item" | "source" | "search";
 
 export interface Route {
   volume: string;
@@ -11,7 +11,7 @@ export interface Route {
   params: Record<string, string>;
 }
 
-const VIEWS: ViewName[] = ["table", "graph", "item", "source", "search"];
+const VIEWS: ViewName[] = ["table", "graph", "cases", "item", "source", "search"];
 
 export function defaultRoute(): Route {
   return { volume: DEFAULT_VOLUME, view: "table", arg: null, ref: null, params: {} };

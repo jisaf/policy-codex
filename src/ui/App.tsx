@@ -1,4 +1,5 @@
 import "./styles.css";
+import { CasesView } from "./CasesView";
 import { GraphView } from "./GraphView";
 import { Header } from "./Header";
 import { ItemEditor } from "./ItemEditor";
@@ -16,6 +17,7 @@ function ViewSlot() {
   const r = route.value;
   if (r.view === "table") return <TableView />;
   if (r.view === "graph") return <GraphView />;
+  if (r.view === "cases") return <CasesView />;
   if (r.view === "item") return <ItemView />;
   if (r.view === "source") return <SourcesView />;
   return <SearchView />;

@@ -131,3 +131,28 @@ blockquote.notes { border-left: 3px solid var(--accent); margin: 8px 0; padding:
   color: var(--muted); }
 .settings input { font: inherit; padding: 5px; border: 1px solid var(--line);
   border-radius: 3px; background: var(--bg); color: var(--ink); }
+.cases td.counts { display: flex; gap: 6px; flex-wrap: wrap; }
+.expectations tr.expectation { cursor: pointer; }
+.expectations tr.expectation.on { background: var(--med); }
+.expectations tr.tracerow td { background: var(--bg); }
+.case .person h4, .newcase h4 { margin: 10px 0 4px; }
+.params { list-style: none; padding: 0; margin: 4px 0; font-size: 13px; }
+.trace { font-size: 13px; }
+.tnode { margin: 2px 0; }
+.thead { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; padding: 1px 0; }
+.thead.openable { cursor: pointer; }
+.thead.openable:hover { background: var(--med); }
+.twist { width: 10px; color: var(--muted); }
+.tname { font-weight: 600; }
+.tval { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.origin { border: 1px solid var(--line); border-radius: 8px; padding: 0 6px;
+  font-size: 11px; color: var(--muted); }
+.origin-evaluated { background: var(--all); }
+.origin-case { background: var(--med); }
+.origin-parameter { background: var(--snap); }
+.origin-missing { color: var(--warn); border-color: var(--warn); }
+.tbody { margin-left: 10px; border-left: 2px solid var(--line); padding-left: 8px; }
+.tbody pre.derivation { margin: 4px 0; font-size: 12px; }
+.tsources { margin: 2px 0; display: flex; gap: 4px; }
+.outcome { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
+.outcome h4 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }

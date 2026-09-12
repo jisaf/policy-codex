@@ -26,11 +26,11 @@ describe("Header", () => {
     searchIndexSig.value = buildSearchIndex(vol, engine);
   });
 
-  it("renders the four view links", () => {
+  it("renders the five view links", () => {
     const host = document.createElement("div");
     render(<Header />, host);
     const labels = [...host.querySelectorAll("nav a")].map((a) => a.textContent);
-    expect(labels).toEqual(["Table", "Graph", "Sources", "Search"]);
+    expect(labels).toEqual(["Table", "Graph", "Cases", "Sources", "Search"]);
   });
 
   it("shows grouped results as the analyst types", async () => {
