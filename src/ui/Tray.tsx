@@ -20,6 +20,11 @@ export function Tray() {
   const manifest = manifestSig.value;
   const r = route.value;
   const errorsById = new Map((report?.items ?? []).map((i) => [i.id, i.errors]));
+  // Governance warnings are what an edit inherits or a duplicate earns: they do
+  // not block Propose, but a steward reads them beside the errors.
+  const warningsById = new Map(
+    (report?.items ?? []).map((i) => [i.id, i.governance.filter((f) => f.level === "warn")]),
+  );
 
   const reason = proposeBlockedReason({
     hasToken: Boolean(credentials.get("github")),
@@ -72,24 +77,37 @@ export function Tray() {
         )}
 
         <ul class="entries">
-          {cs.entries.map((e) => (
-            <li class="entry" key={e.id}>
-              <a href={buildHash({ ...r, view: "item", arg: e.id, params: {} })}>
-                {entryLabel(e)}
-              </a>
-              <span class="tag">{entryKind(e)}</span>
-              {isUnchanged(e) && <span class="tag">no change</span>}
-              <button class="btn small" onClick={() => { trayOpenSig.value = false; openEditor(e.id); }}>
-                Edit
-              </button>
-              <button class="btn small discard" onClick={() => discardChangeEntry(e.id)}>
-                Discard
-              </button>
-              <ul class="errors">
-                {(errorsById.get(e.id) ?? []).map((m) => <li key={m} class="bad">{m}</li>)}
-              </ul>
-            </li>
-          ))}
+          {cs.entries.map((e) => {
+            const warnings = warningsById.get(e.id) ?? [];
+            return (
+              <li class="entry" key={e.id}>
+                <a href={buildHash({ ...r, view: "item", arg: e.id, params: {} })}>
+                  {entryLabel(e)}
+                </a>
+                <span class="tag">{entryKind(e)}</span>
+                {isUnchanged(e) && <span class="tag">no change</span>}
+                {warnings.length > 0 && (
+                  <span class="tag warncount">
+                    {warnings.length} warning{warnings.length === 1 ? "" : "s"}
+                  </span>
+                )}
+                <button class="btn small" onClick={() => { trayOpenSig.value = false; openEditor(e.id); }}>
+                  Edit
+                </button>
+                <button class="btn small discard" onClick={() => discardChangeEntry(e.id)}>
+                  Discard
+                </button>
+                <ul class="errors">
+                  {(errorsById.get(e.id) ?? []).map((m) => <li key={m} class="bad">{m}</li>)}
+                  {warnings.map((f) => (
+                    <li key={`${f.rule} ${f.msg}`} class="warn">
+                      <span class="tag">{f.rule}</span> {f.msg}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
         </ul>
 
         {report && (
