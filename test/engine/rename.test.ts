@@ -1,13 +1,19 @@
 import { describe, it, expect } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { buildIndex, indexWith } from "../../src/engine/ledger-index";
 import { buildGraph } from "../../src/engine/graph";
 import { block } from "../../src/engine/render";
-import { renameIdentifier, referencesInCases } from "../../src/engine/rename";
+import {
+  renameCase, renameIdentifier, referencesInCases, renameInCasesText,
+} from "../../src/engine/rename";
+import { parseCases } from "../../src/engine/cases";
 import type { Item } from "../../src/engine/types";
 import type { HouseholdCase } from "../../src/engine/cases";
 import ledger from "../fixtures/ledger.json";
 
 const items = ledger.items as unknown as Item[];
+const root = path.resolve(__dirname, "..", "..");
 
 describe("renameIdentifier", () => {
   it("renames the item's own identifier and every item that derives from it", () => {
@@ -128,5 +134,32 @@ describe("referencesInCases", () => {
     expect(referencesInCases(cases, "date_of_birth")).toEqual(["C-01", "C-03", "C-04"]);
     expect(referencesInCases(cases, "is_pregnant")).toEqual(["C-02", "C-04"]);
     expect(referencesInCases(cases, "nonexistent_identifier")).toEqual([]);
+  });
+});
+
+describe("renameInCasesText", () => {
+  const casesText = fs.readFileSync(path.join(root, "volumes/mwr/tests/cases.yaml"), "utf8");
+  const cases = parseCases(casesText);
+  const FROM = "snap_has_responsibility_for_child_under_14";
+  const TO = "snap_responsible_for_child_under_14";
+
+  it("touches the real cases.yaml file at the key positions the identifier occurs", () => {
+    expect(referencesInCases(cases, FROM).length).toBeGreaterThan(0);
+    const rewritten = renameInCasesText(casesText, cases, FROM, TO);
+    expect(rewritten).toContain(TO);
+    expect(rewritten.split("\n").some((l) => new RegExp(`^\\s*${FROM}:`).test(l))).toBe(false);
+  });
+
+  it("parses to exactly what renaming every case's keys directly (renameCase) would produce", () => {
+    const rewritten = renameInCasesText(casesText, cases, FROM, TO);
+    const got = parseCases(rewritten);
+    const expected = cases.map((c) => renameCase(c, FROM, TO));
+    expect(got).toEqual(expected);
+  });
+
+  it("leaves a case untouched when it never references the identifier", () => {
+    const untouched = cases.find((c) => !referencesInCases(cases, FROM).includes(c.id));
+    expect(untouched).toBeDefined();
+    expect(renameCase(untouched!, FROM, TO)).toEqual(untouched);
   });
 });
