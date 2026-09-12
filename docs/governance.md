@@ -137,7 +137,13 @@ The run fails when an error-level constraint or governance finding lands on
 a changed or added item, or when a rule test or case expectation fails that
 is not listed in `conformance/known-failures.json` (a pinned list of ids
 already known to fail, so the ledger's existing, known-bad state does not
-block unrelated work — see the ratchet, above). `npm run check` prints a
+block unrelated work — see the ratchet, above). Both the file-level gate
+(step 1, above: only files the diff touched can block at all) and the
+finding-level ratchet (`src/changes/validate.ts`'s `ratchetGovernance`,
+reused by `buildCheckReport` for every changed-but-not-added item against its
+base version read with `git show <base>:<path>`) apply here, same as in the
+app: an edit to an item that already carried a given governance error does
+not block CI for that same error either. `npm run check` prints a
 short summary locally; `npm run check -- --json` writes the full report
 (every item's findings, every test and case result, the impact set) to
 stdout.
@@ -152,3 +158,18 @@ setting. The repository owner should require, on `main`:
 
 before a pull request can merge. Without this, `check.yml` and `CODEOWNERS`
 are advisory only.
+
+## Known follow-ups
+
+Noted at the end of the phase-2 fix round, left as-is on purpose:
+
+- Governance's duplicate-candidate scan (`nearest`/`candidates` in
+  `src/engine/governance.ts`) is quadratic in the number of items: every item
+  is compared against every other item. Fine at 138 items; would need an
+  index (by derivation shape, by identifier/meaning tokens) at real scale.
+- `paramInForce` (parameter value resolution as of a date) is duplicated
+  rather than shared between the evaluator and the explain/trace path. A
+  single implementation would remove the risk of the two drifting apart.
+- A markdown citation's title is used as-is rather than validated against
+  the document it cites; a document rename or retitle can leave a citation's
+  title stale without anything flagging it.

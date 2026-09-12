@@ -23,25 +23,34 @@ export interface ChangeSetReport {
 /** Two findings are the same finding when rule and message both match. The
  *  message names the other item or the offending token, so a dup finding
  *  against one item never cancels a dup finding against another. */
-function findingKey(f: Finding): string {
+export function findingKey(f: Finding): string {
   return `${f.rule}|${f.msg}`;
+}
+
+/** The ratchet: any error-level finding in `current` that also appears (same
+ *  rule and message) in `base` is downgraded to a warning. An edit to an item
+ *  that already carried a governance error does not gain a new blocking error
+ *  for the same rule and message, so the ledger improves incrementally rather
+ *  than being frozen by its own known-bad items. A finding new to `current`
+ *  (not present in `base`) is never downgraded. */
+export function ratchetGovernance(current: Finding[], base: Finding[]): Finding[] {
+  const known = new Set(base.map(findingKey));
+  return current.map((f) =>
+    f.level === "error" && known.has(findingKey(f))
+      ? { ...f, level: "warn" as const }
+      : f);
 }
 
 /** Governance for one entry. An add is checked with `isNew`, so the rationale
  *  rules apply and every error stands. An edit inherits what its base version
- *  already carried: an error that also holds on `before` is downgraded to a
- *  warning, so the ledger ratchets rather than freezes. */
+ *  already carried via `ratchetGovernance`. */
 function governanceOf(
   base: Engine, applied: Engine, e: ChangeEntry, item: Item,
 ): Finding[] {
   const found = applied.governance(item, { isNew: !e.before });
   if (!e.before) return found;
   const baseItem = base.itemById(e.id) ?? e.before;
-  const known = new Set(base.governance(baseItem).map(findingKey));
-  return found.map((f) =>
-    f.level === "error" && known.has(findingKey(f))
-      ? { ...f, level: "warn" as const }
-      : f);
+  return ratchetGovernance(found, base.governance(baseItem));
 }
 
 /** Runs the full constraint set over the whole ledger with the change-set

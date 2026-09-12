@@ -10,6 +10,7 @@ import { createEngine } from "../engine/engine";
 import { parseCases, type HouseholdCase } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources } from "../ledger/markdown";
+import { ratchetGovernance } from "../changes/validate";
 import type { Item, VolumeMeta } from "../engine/types";
 
 export interface LoadedLedger {
@@ -176,10 +177,42 @@ export function caseResultKey(
   return `${caseId}:${person}:${identifier}${month ? `@${month}` : ""}`;
 }
 
+export interface BuildCheckReportOptions {
+  /** the repository root, needed to run `git show` against `base`. Omit (or
+   *  omit `base`) to skip the ratchet below entirely — every changed item's
+   *  governance errors then block, same as before this option existed. */
+  root?: string;
+  /** the base ref the diff was computed against (same ref `diffAgainstBase`
+   *  used). */
+  base?: string;
+}
+
+/** Reads a changed item's base version with `git show <base>:<path>` (the
+ *  same path `diffAgainstBase` diffs against), the same way as
+ *  `diffAgainstBase` does. Returns `null` when the base ref, the file at that
+ *  ref, or the parse is unavailable — the caller then skips the ratchet for
+ *  that item rather than failing the check. */
+function loadBaseItem(
+  root: string, base: string, filePath: string,
+): Item | null {
+  try {
+    const text = execFileSync(
+      "git", ["show", `${base}:${filePath}`], { cwd: root, encoding: "utf8" },
+    );
+    return parseItemFile(text);
+  } catch {
+    return null;
+  }
+}
+
 /** Builds the full report from already-loaded ledger data and an already-
- *  computed diff, so it needs no filesystem or git access itself. */
+ *  computed diff, so it needs no filesystem or git access itself unless
+ *  `opts` names a `root` and `base` to ratchet changed items' governance
+ *  errors against (MAJOR 1: `npm run check` applies the same ratchet
+ *  `src/changes/validate.ts` applies in the app). */
 export function buildCheckReport(
   ledger: LoadedLedger, diff: DiffEntry[] | null, knownFailures: readonly string[],
+  opts: BuildCheckReportOptions = {},
 ): CheckReport {
   const engine = createEngine(ledger.items, ledger.meta, {
     sourceIds: ledger.sourceIds, questionIds: ledger.questionIds,
@@ -205,12 +238,26 @@ export function buildCheckReport(
 
   const items: ItemCheck[] = ledger.items.map((it) => {
     const isNew = addedItems.has(it.id);
+    const isChanged = changedItems.has(it.id);
     const constraintResults = engine.constraints(it);
-    const findings = engine.governance(it, { isNew });
+    let findings = engine.governance(it, { isNew });
+    // The ratchet: a *changed* (not added) item's base version is read from
+    // git and governed too — on the current engine's index with the base
+    // item substituted (cheaper than a second engine, and acceptable per the
+    // brief: duplicate-candidate detection excludes an item from comparing
+    // against itself by id, which the base item still shares). Any error
+    // also present on the base version downgrades to a warning, matching
+    // `src/changes/validate.ts`'s `ratchetGovernance`. When the base ref or
+    // file is unavailable, the item's findings stand as computed above.
+    if (isChanged && !isNew && opts.root && opts.base) {
+      const filePath = `${ledger.volumePath}/${ledger.chapterOf[it.id]}/${it.id}.yaml`;
+      const baseItem = loadBaseItem(opts.root, opts.base, filePath);
+      if (baseItem) findings = ratchetGovernance(findings, engine.governance(baseItem));
+    }
     return {
       id: it.id,
       identifier: it.identifier,
-      isChanged: changedItems.has(it.id),
+      isChanged,
       isNew,
       errors: constraintResults.filter((r) => !r.ok && r.level === "error").map((r) => r.msg),
       warnings: constraintResults.filter((r) => r.level === "warn").map((r) => r.msg),
@@ -325,7 +372,9 @@ export function runCheck(opts: RunCheckOptions): CheckReport {
   const knownFailures: string[] = fs.existsSync(knownFailuresPath)
     ? JSON.parse(fs.readFileSync(knownFailuresPath, "utf8"))
     : [];
-  const report = buildCheckReport(ledger, diff, knownFailures);
+  const report = buildCheckReport(
+    ledger, diff, knownFailures, diff ? { root: opts.root, base } : {},
+  );
   return { ...report, base: diff ? base : null };
 }
 

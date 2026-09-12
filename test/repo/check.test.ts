@@ -82,4 +82,44 @@ describe("npm run check", () => {
     // appear in `newFailures` if it ever did fail.
     expect(report.newFailures).not.toContain("WR-003-T1");
   });
+
+  it("ratchets a pre-existing governance error on a merely-modified item", () => {
+    // WR-302 (snap_has_responsibility_for_child_under_14) already fails
+    // name.digits on HEAD, unchanged in this test's working tree, so marking
+    // it modified against base "HEAD" must not block: the finding also holds
+    // on the base version and downgrades to a warning.
+    const ledger = loadLedgerFromDisk(ROOT);
+    const wr302 = ledger.items.find((it) => it.id === "WR-302")!;
+    const filePath = `${ledger.volumePath}/${ledger.chapterOf[wr302.id]}/${wr302.id}.yaml`;
+    const report = buildCheckReport(
+      ledger, [{ status: "M", path: filePath }], [], { root: ROOT, base: "HEAD" },
+    );
+    const check = report.items.find((it) => it.id === "WR-302")!;
+    expect(check.isChanged).toBe(true);
+    expect(check.isNew).toBe(false);
+    expect(check.governanceErrors.some((m) => m.startsWith("name.digits"))).toBe(false);
+    expect(check.governanceWarnings.some((m) => m.startsWith("name.digits"))).toBe(true);
+    expect(report.blockingItemErrors.some((e) => e.id === "WR-302")).toBe(false);
+  });
+
+  it("still blocks a NEW governance error on a modified item, ratchet or not", () => {
+    // Same item, but with an undeclared tag added in the working copy only
+    // (the ledger object, not the file on disk) — vocab.tag does not hold on
+    // the base version, so it is not ratcheted away.
+    const ledger = loadLedgerFromDisk(ROOT);
+    const wr302 = ledger.items.find((it) => it.id === "WR-302")!;
+    const filePath = `${ledger.volumePath}/${ledger.chapterOf[wr302.id]}/${wr302.id}.yaml`;
+    const dirtyLedger = {
+      ...ledger,
+      items: ledger.items.map((it) =>
+        it.id === wr302.id ? { ...it, tags: [...(it.tags || []), "not_a_declared_tag"] } : it),
+    };
+    const report = buildCheckReport(
+      dirtyLedger, [{ status: "M", path: filePath }], [], { root: ROOT, base: "HEAD" },
+    );
+    const check = report.items.find((it) => it.id === "WR-302")!;
+    expect(check.governanceErrors.some((m) => m.startsWith("vocab.tag"))).toBe(true);
+    expect(report.blockingItemErrors.some((e) => e.id === "WR-302")).toBe(true);
+    expect(report.ok).toBe(false);
+  });
 });
