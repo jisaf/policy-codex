@@ -13,6 +13,9 @@
     "migrate": "vite-node scripts/migrate-ledger.mjs",
     "handoff": "vite-node scripts/handoff.ts",
     "governance": "vite-node scripts/governance-report.ts",
+    "conformance": "vite-node scripts/conformance.ts",
+    "conform": "vite-node scripts/conform.ts",
+    "conform:self": "npm run conform -- --adapter \"npx vite-node scripts/adapters/codex-self.ts\" --batch",
     "e2e": "playwright test"
   },
   "dependencies": {

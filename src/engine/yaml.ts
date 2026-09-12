@@ -4,7 +4,8 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
   "meaning", "precision", "assumption", "supplied_by", "value", "versions", "derived",
-  "sources", "effective", "implemented", "tags", "open", "rationale", "nearest", "tests",
+  "sources", "effective", "implemented", "implemented_by", "tags", "open", "rationale",
+  "nearest", "tests",
 ];
 
 const FLOW_KEYS = new Set([
