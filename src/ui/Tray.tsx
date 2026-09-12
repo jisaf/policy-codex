@@ -1,11 +1,12 @@
 import { useSignal } from "@preact/signals";
-import { entryKind, entryLabel, isUnchanged } from "../changes/types";
+import { entryKind, entryLabel, fileEntries, isFileUnchanged, isUnchanged } from "../changes/types";
 import { buildHash, isPrRef } from "./router";
 import { saveChangeSet } from "../changes/store";
 import { proposeBlockedReason, proposeChangeSet } from "./propose";
 import {
-  changeSetSig, clearTray, credentials, discardChangeEntry, engineSig, githubClient,
-  manifestSig, navigate, openEditor, reportSig, route, statusSig, trayOpenSig, volumeSig,
+  changeSetSig, clearTray, credentials, discardChangeEntry, discardFileChange, engineSig,
+  githubClient, manifestSig, navigate, openEditor, reportSig, route, statusSig, trayOpenSig,
+  volumeSig,
 } from "./state";
 
 export function Tray() {
@@ -26,9 +27,13 @@ export function Tray() {
     (report?.items ?? []).map((i) => [i.id, i.governance.filter((f) => f.level === "warn")]),
   );
 
+  // A file entry is a change to propose like any other, so it counts towards
+  // an empty tray even though it carries no impact of its own.
+  const files = fileEntries(cs);
   const reason = proposeBlockedReason({
     hasToken: Boolean(credentials.get("github")),
-    entryCount: cs.entries.filter((e) => !isUnchanged(e)).length,
+    entryCount: cs.entries.filter((e) => !isUnchanged(e)).length
+      + files.filter((f) => !isFileUnchanged(f)).length,
     valid: report ? report.valid : true,
     isPrRef: isPrRef(r.ref),
   });
@@ -72,7 +77,7 @@ export function Tray() {
           <button class="btn" onClick={() => { trayOpenSig.value = false; }}>Close</button>
         </div>
 
-        {cs.entries.length === 0 && (
+        {cs.entries.length === 0 && files.length === 0 && (
           <p class="muted">Nothing staged. Open an item and press Edit, or add a new item.</p>
         )}
 
@@ -110,6 +115,24 @@ export function Tray() {
           })}
         </ul>
 
+        {files.length > 0 && (
+          <ul class="entries files">
+            {files.map((f) => (
+              <li class="entry file" key={f.path}>
+                <code>{f.path}</code>
+                <span>{f.label}</span>
+                <span class="tag">
+                  {f.after === null ? "delete" : f.before === null ? "add" : "edit"}
+                </span>
+                {isFileUnchanged(f) && <span class="tag">no change</span>}
+                <button class="btn small discard" onClick={() => discardFileChange(f.path)}>
+                  Discard
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
         {report && (
           <div class="impact">
             <h4>Impact</h4>
@@ -138,7 +161,9 @@ export function Tray() {
           <button class="btn propose" disabled={Boolean(reason) || busy.value} onClick={propose}>
             {busy.value ? "Proposing…" : "Propose"}
           </button>
-          <button class="btn" disabled={!cs.entries.length} onClick={clearTray}>
+          <button
+            class="btn" disabled={!cs.entries.length && !files.length} onClick={clearTray}
+          >
             Discard all
           </button>
           {reason && <span class="muted">{reason}</span>}

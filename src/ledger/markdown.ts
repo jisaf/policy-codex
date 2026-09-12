@@ -1,7 +1,17 @@
-export interface Source { id: string; title: string; citation: string; text: string }
+export interface Source {
+  id: string;
+  title: string;
+  citation: string;
+  text: string;
+  /** The document this excerpt was taken from (`D-n`), when sources.md names
+   *  one. Excerpts written before the documents library are undefined. */
+  document?: string;
+}
 export interface OpenQuestion { id: string; title: string; body: string; items: string[] }
 
 const SOURCE_HEAD = /^### (S\d+)\.\s*(.*)$/;
+/** `Document: D-n` directly under an excerpt heading names its document. */
+const SOURCE_DOCUMENT = /^Document:\s*(D-\d+)$/;
 const QUESTION_HEAD = /^### (OQ-\d+)\.?\s+(.*)$/;
 
 export function parseSources(md: string): Source[] {
@@ -16,7 +26,10 @@ export function parseSources(md: string): Source[] {
       continue;
     }
     if (!cur) continue;
-    if (line.startsWith(">")) {
+    const d = SOURCE_DOCUMENT.exec(line.trim());
+    if (d) {
+      cur.document = d[1];
+    } else if (line.startsWith(">")) {
       cur.text += line.slice(1).trim() + "\n";
     } else if (line.trim() && !cur.citation && !line.startsWith("#")) {
       cur.citation = line.trim();

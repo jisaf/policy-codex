@@ -3,7 +3,7 @@ import { render } from "preact";
 import { Tray } from "../../src/ui/Tray";
 import { createEngine } from "../../src/engine/engine";
 import { emptyChangeSet } from "../../src/changes/types";
-import { putEntry } from "../../src/changes/store";
+import { putEntry, putFileEntry } from "../../src/changes/store";
 import { validateChangeSet } from "../../src/changes/validate";
 import {
   changeSetSig, engineSig, reportSig, route, trayOpenSig, volumeSig,
@@ -111,6 +111,34 @@ describe("Tray", () => {
     expect(warn.textContent).toContain("dup.shape");
     expect(warn.textContent).toContain("parameterise");
     expect(entry.querySelectorAll("ul.errors li.bad")).toHaveLength(0);
+  });
+
+  it("lists a staged file with its label and discards it by path", () => {
+    let cs = emptyChangeSet("mwr", "main");
+    cs = putFileEntry(cs, {
+      path: "volumes/mwr/documents.yaml", before: "- id: D-1\n",
+      after: "- id: D-1\n- id: D-2\n", label: "documents.yaml (D-2 State hardship guidance)",
+    });
+    cs = putFileEntry(cs, {
+      path: "volumes/mwr/documents/D-2.md", before: null, after: "Pasted text.\n",
+      label: "D-2 State hardship guidance",
+    });
+    changeSetSig.value = cs;
+    reportSig.value = validateChangeSet(engine, cs);
+    const host = document.createElement("div");
+    render(<Tray />, host);
+    const files = host.querySelectorAll("li.entry.file");
+    expect(files).toHaveLength(2);
+    expect(files[0].textContent).toContain("volumes/mwr/documents.yaml");
+    expect(files[0].textContent).toContain("D-2 State hardship guidance");
+    expect(files[0].textContent).toContain("edit");
+    expect(files[1].textContent).toContain("add");
+    // Files carry no impact, so Propose is blocked only by the missing token.
+    expect(host.textContent).toContain("Add a GitHub token in Settings to propose changes.");
+    expect(host.textContent).not.toContain("Nothing staged.");
+
+    (files[1].querySelector("button.discard") as HTMLButtonElement).click();
+    expect(changeSetSig.value.files).toHaveLength(1);
   });
 
   it("discards an entry", () => {

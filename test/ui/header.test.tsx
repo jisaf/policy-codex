@@ -26,11 +26,16 @@ describe("Header", () => {
     searchIndexSig.value = buildSearchIndex(vol, engine);
   });
 
-  it("renders the five view links", () => {
+  it("renders a link for every view, Documents among them", () => {
     const host = document.createElement("div");
     render(<Header />, host);
     const labels = [...host.querySelectorAll("nav a")].map((a) => a.textContent);
-    expect(labels).toEqual(["Table", "Graph", "Cases", "Sources", "Search"]);
+    expect(labels).toContain("Documents");
+    expect(labels.slice(0, 4)).toEqual(["Table", "Graph", "Cases", "Sources"]);
+    expect(labels.at(-1)).toBe("Search");
+    const docs = [...host.querySelectorAll("nav a")]
+      .find((a) => a.textContent === "Documents")!;
+    expect(docs.getAttribute("href")).toBe("#/mwr/documents");
   });
 
   it("shows grouped results as the analyst types", async () => {

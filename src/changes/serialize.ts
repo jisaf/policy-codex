@@ -1,7 +1,9 @@
 import type { Engine } from "../engine/engine";
 import { stringifyItem } from "../engine/yaml";
 import { changedIdentifiers } from "./apply";
-import { entryKind, isUnchanged, type ChangeEntry, type ChangeSet } from "./types";
+import {
+  entryKind, fileEntries, isFileUnchanged, isUnchanged, type ChangeEntry, type ChangeSet,
+} from "./types";
 import type { ChangeSetReport } from "./validate";
 
 export interface FileWrite {
@@ -11,8 +13,9 @@ export interface FileWrite {
   content: string | null;
 }
 
-/** One write per changed item. An entry whose after equals its before is
- *  skipped, so a file with no changes is never rewritten. */
+/** One write per changed item, then one per staged file entry. An entry whose
+ *  after equals its before is skipped, so a file with no changes is never
+ *  rewritten. A file entry names its own path, so it is written verbatim. */
 export function entryFiles(cs: ChangeSet, volumePath: string): FileWrite[] {
   const out: FileWrite[] = [];
   for (const e of cs.entries) {
@@ -22,6 +25,10 @@ export function entryFiles(cs: ChangeSet, volumePath: string): FileWrite[] {
       path: `${volumePath}/${e.chapter}/${e.id}.yaml`,
       content: e.after ? stringifyItem(e.after) : null,
     });
+  }
+  for (const f of fileEntries(cs)) {
+    if (isFileUnchanged(f)) continue;
+    out.push({ id: f.path, path: f.path, content: f.after });
   }
   return out;
 }
@@ -95,6 +102,16 @@ export function proposalBody(
           );
         }
       }
+    }
+  }
+
+  const files = fileEntries(cs).filter((f) => !isFileUnchanged(f));
+  if (files.length) {
+    lines.push("");
+    lines.push("### Files");
+    for (const f of files) {
+      const kind = f.after === null ? "delete" : f.before === null ? "add" : "edit";
+      lines.push(`- \`${f.path}\` ${f.label} — ${kind}`);
     }
   }
 

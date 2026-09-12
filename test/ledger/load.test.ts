@@ -32,6 +32,18 @@ function diskSourceNoCases(sha: string | null): LedgerSource {
   };
 }
 
+/** Like `diskSource`, but 404s on one file of the volume. */
+function diskSourceMissing(name: string): LedgerSource {
+  return {
+    ref: "main",
+    async readText(p: string) {
+      if (p.endsWith(name)) throw new Error(`${p} not found at main (404)`);
+      return fs.readFileSync(path.join(root, p), "utf8");
+    },
+    async head() { return null; },
+  };
+}
+
 describe("loadVolume", () => {
   it("loads the whole volume from the manifest", async () => {
     const src = diskSource("sha1");
@@ -44,6 +56,11 @@ describe("loadVolume", () => {
     expect(vol.sources).toHaveLength(33);
     expect(vol.openQuestions).toHaveLength(23);
     expect(vol.cases).toHaveLength(13);
+    expect(vol.casesText!.startsWith("# Household-level cases.")).toBe(true);
+    expect(vol.documents).toHaveLength(8);
+    expect(vol.documents[0].id).toBe("D-1");
+    // The metadata loads; the text of a document does not.
+    expect(src.reads.some((p) => p.startsWith("volumes/mwr/documents/"))).toBe(false);
     expect(vol.chapterOf["WR-003"]).toBe("medicaid");
     expect(itemFilePath(vol, "WR-003")).toBe("volumes/mwr/medicaid/WR-003.yaml");
   });
@@ -53,6 +70,14 @@ describe("loadVolume", () => {
     const manifest = await loadManifest(src);
     const vol = await loadVolume(src, manifest, "mwr");
     expect(vol.cases).toEqual([]);
+    expect(vol.casesText).toBeNull();
+  });
+
+  it("loads an empty documents array when documents.yaml is missing", async () => {
+    const src = diskSourceMissing("documents.yaml");
+    const manifest = await loadManifest(src);
+    const vol = await loadVolume(src, manifest, "mwr");
+    expect(vol.documents).toEqual([]);
   });
 
   it("serves a second load of the same sha from the cache without refetching", async () => {

@@ -1,4 +1,4 @@
-import { parse as parseYaml } from "yaml";
+import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import type { LedgerIndex } from "./ledger-index";
 import { evaluate, makeCase } from "./evaluate";
 import { valuesEqual } from "./values";
@@ -102,4 +102,33 @@ export function programsOfCase(ix: LedgerIndex, c: HouseholdCase): string[] {
     }
   }
   return [...set].sort();
+}
+
+/** One household case as a YAML sequence entry, ready to append to
+ *  `tests/cases.yaml`. Every string is quoted, so the ISO dates and months the
+ *  file's conventions ask for stay quoted strings on a round trip. */
+export function stringifyCase(c: HouseholdCase): string {
+  return stringifyYaml([c], {
+    defaultStringType: "QUOTE_DOUBLE",
+    defaultKeyType: "PLAIN",
+    lineWidth: 0,
+  });
+}
+
+/** The next free `C-nn`, padded as the existing ids are. */
+export function nextCaseId(cases: readonly HouseholdCase[]): string {
+  let max = 0;
+  for (const c of cases) {
+    const m = /^C-(\d+)$/.exec(c.id);
+    if (m) max = Math.max(max, Number(m[1]));
+  }
+  return `C-${String(max + 1).padStart(2, "0")}`;
+}
+
+/** `tests/cases.yaml` with one case appended. A volume whose file is absent
+ *  gets a file holding just the new case. */
+export function appendCase(casesText: string | null, c: HouseholdCase): string {
+  const block = stringifyCase(c);
+  if (casesText == null || casesText.trim() === "") return block;
+  return casesText.replace(/\n*$/, "\n") + "\n" + block;
 }

@@ -28,6 +28,25 @@ describe("parseSources", () => {
     expect(s1.text).not.toContain(">");
   });
 
+  it("reads the document each excerpt was taken from", () => {
+    expect(sources[0].document).toBe("D-1");
+    expect(sources.find((s) => s.id === "S24")!.document).toBe("D-7");
+    expect(sources.every((s) => /^D-\d+$/.test(s.document ?? ""))).toBe(true);
+  });
+
+  it("keeps the Document line out of the citation and the text", () => {
+    const s24 = sources.find((s) => s.id === "S24")!;
+    expect(s24.citation.startsWith("7 CFR 273.24(a)(1)(i).")).toBe(true);
+    expect(s24.citation).not.toContain("Document:");
+    expect(s24.text).not.toContain("Document:");
+  });
+
+  it("leaves document undefined when an excerpt names none", () => {
+    const [only] = parseSources("### S9. Untitled\n\n42 U.S.C. 1\n\n> text\n");
+    expect(only.document).toBeUndefined();
+    expect(only.citation).toBe("42 U.S.C. 1");
+  });
+
   it("maps ids to titles", () => {
     expect(sourceTitleMap(sources).S1).toBe("Applicable individual");
   });
