@@ -172,6 +172,35 @@ describe("ItemEditor", () => {
     expect(reportSig.value!.valid).toBe(false);
   });
 
+  it("still treats a staged new item as new when reopened from the tray", async () => {
+    openEditor(null);
+    editingSig.value = {
+      ...editingSig.value!,
+      step: "edit",
+      draft: {
+        ...editingSig.value!.draft,
+        name: "Medicaid: is in the renewal window",
+        identifier: "medicaid_in_renewal_window",
+        meaning: "The person is inside the renewal window for community engagement.",
+      },
+    };
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    (host.querySelector("button.save") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    expect(changeSetSig.value.entries).toHaveLength(1);
+    const newId = changeSetSig.value.entries[0].id;
+
+    // Reopen the staged item from the tray: openEditor(newId) finds it
+    // through viewEngine() (the base ledger with the tray applied), which
+    // sets `state.id` to `newId` even though the base ledger has no such
+    // item yet.
+    openEditor(newId);
+    render(<ItemEditor />, host);
+    expect(host.querySelector("textarea[name=rationale]")).not.toBeNull();
+    expect(host.querySelector(".constraints")!.textContent).toContain("rationale.required");
+  });
+
   it("acknowledges a nearest candidate from the similar-items panel", async () => {
     openEditor(null);
     editingSig.value = {
