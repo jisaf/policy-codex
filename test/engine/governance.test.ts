@@ -75,8 +75,12 @@ describe("governance", () => {
   });
 
   it("requires the program prefix on a program-owned item", () => {
-    const f = engine.governance(draft({ program: "Medicaid", identifier: "in_ce_age_range" }));
+    const f = engine.governance(draft({
+      program: "Medicaid", identifier: "in_ce_age_range", kind: "derived",
+      derived: ["all", "is_pregnant"], tests: [],
+    }));
     expect(rule(f, "name.prefix")[0].msg).toContain("medicaid_");
+    expect(rule(f, "name.prefix")[0].level).toBe("error");
   });
 
   it("leaves supplied facts program-neutral and only warns on parameters", () => {
