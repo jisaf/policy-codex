@@ -53,9 +53,9 @@ table.grid th { position: sticky; top: 0; background: var(--panel); }
 .cardhead { display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
   border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 10px; }
 .spacer { flex: 1; }
-.tabs button { border: 1px solid var(--line); background: var(--panel); font: inherit;
-  padding: 3px 8px; cursor: pointer; }
-.tabs button.on { background: var(--med); }
+.tabs button, .tabs a { border: 1px solid var(--line); background: var(--panel); font: inherit;
+  padding: 3px 8px; cursor: pointer; text-decoration: none; color: inherit; }
+.tabs button.on, .tabs a.on { background: var(--med); }
 .meaning { font-size: 15px; }
 .muted { color: var(--muted); }
 pre.derivation, pre.projection, pre.statute { background: var(--bg);

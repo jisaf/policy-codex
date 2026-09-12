@@ -1,9 +1,10 @@
 import { useSignal } from "@preact/signals";
+import { programOutcomes } from "./CasesView";
 import { buildHash, type ViewName } from "./router";
 import { groupHits, hitHash, search } from "./search";
 import {
-  changeSetSig, editingSig, openEditor, route, searchIndexSig, settingsOpenSig, trayOpenSig,
-  volumeSig,
+  changeSetSig, editingSig, engineSig, openEditor, route, searchIndexSig, settingsOpenSig,
+  trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 
 const NAV: Array<{ view: ViewName; label: string }> = [
@@ -22,6 +23,10 @@ export function Header() {
   const index = searchIndexSig.value;
   const hits = index ? search(index, q.value, 12) : [];
   const grouped = groupHits(hits);
+  const engine = viewEngine() ?? engineSig.value;
+  // The nav opens the first declared program; the program page itself has
+  // the switcher across every program.
+  const firstProgram = (engine ? programOutcomes(engine) : [])[0]?.id ?? null;
 
   const open = (hash: string) => {
     q.value = "";
@@ -36,7 +41,22 @@ export function Header() {
       <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
       {r.ref && <span class="tag ref">{r.ref}</span>}
       <nav>
-        {NAV.map((n) => (
+        {NAV.slice(0, 3).map((n) => (
+          <a
+            key={n.view}
+            class={r.view === n.view ? "on" : ""}
+            href={buildHash({ ...r, view: n.view, arg: null, params: {} })}
+          >
+            {n.label}
+          </a>
+        ))}
+        <a
+          class={r.view === "program" ? "on" : ""}
+          href={buildHash({ ...r, view: "program", arg: firstProgram, params: {} })}
+        >
+          Programs
+        </a>
+        {NAV.slice(3).map((n) => (
           <a
             key={n.view}
             class={r.view === n.view ? "on" : ""}
