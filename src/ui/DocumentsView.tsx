@@ -11,8 +11,8 @@ import { fileEntries } from "../changes/types";
 import { buildHash, type Route } from "./router";
 import { citingItems } from "./SourcesView";
 import {
-  changeSetSig, engineSig, ledgerSource, putFileChange, route, trayOpenSig, viewEngine,
-  volumeSig,
+  changeSetSig, engineSig, ledgerSource, openEditorForDocument, putFileChange, route,
+  trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 
 /** The excerpts taken from one document, in sources.md order. */
@@ -207,6 +207,9 @@ function DocumentPage(
         <span class="tag">{doc.kind}</span>
         {doc.date && <span class="tag">{doc.date}</span>}
         <span class="spacer" />
+        <button class="btn draft-from-document" onClick={() => openEditorForDocument(doc.id)}>
+          Draft from this document
+        </button>
         <a class="btn" href={buildHash({ ...r, view: "documents", arg: null, params: {} })}>
           All documents
         </a>

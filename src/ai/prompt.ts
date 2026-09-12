@@ -1,5 +1,6 @@
 import type { Engine } from "../engine/engine";
-import type { Item } from "../engine/types";
+import type { Item, VolumeMeta } from "../engine/types";
+import type { DocumentMeta } from "../ledger/documents";
 import type { Source } from "../ledger/markdown";
 
 export const GRAMMAR = `
@@ -88,6 +89,99 @@ RULES
 12. Decide quickly. Do not deliberate at length over naming or structure; a deterministic checker validates the proposal and a human corrects it. Make a reasonable choice, record any doubt as an open question, and write the JSON.
 `;
 
+/** Programs (with their prefix and the outcomes each owns), the declared tag
+ *  vocabulary, types, and scopes: everything a proposal's `program`, `tags`,
+ *  `type`, and `scope` fields must stay inside. A volume written before
+ *  phase 2 declares no programs or tags, so those lines are omitted. */
+export function vocabularyText(meta: VolumeMeta): string {
+  const lines: string[] = [];
+  if (meta.programs?.length) {
+    lines.push("Programs:");
+    for (const p of meta.programs) {
+      const prefix = p.prefix ? `prefix "${p.prefix}"` : "no prefix";
+      const outcomes = p.outcomes?.length ? `; outcomes: ${p.outcomes.join(", ")}` : "";
+      lines.push(`  ${p.id} (${prefix})${outcomes}`);
+    }
+  }
+  if (meta.tags?.length) lines.push(`Tags: ${meta.tags.join(", ")}`);
+  lines.push(`Types: ${meta.types.join(", ")}`);
+  lines.push(`Scopes: ${meta.scopes.join(", ")}`);
+  return "VOCABULARY\n" + lines.join("\n") + "\n";
+}
+
+/** The naming grammar in one paragraph, so a proposal's `identifier` needs no
+ *  separate governance pass to be readable: lower_snake_case, no reserved
+ *  operator, no bare digit token, and the owning program's prefix. */
+export function namingRulesText(): string {
+  return (
+    "NAMING\n" +
+    "Every identifier is lower_snake_case (lowercase letters, digits, and underscores, " +
+    "starting with a letter) and never a bare numeral token standing for a value; name the " +
+    "rule and put the number in a parameter instead. An identifier may not reuse a reserved " +
+    "pattern operator (e.g. all, any, case, month, in). A derived rule owned by a program " +
+    "starts with that program's declared prefix (e.g. \"medicaid_\", \"snap_\"); a program " +
+    "with no declared prefix carries none, and a supplied fact stays program-neutral " +
+    "regardless of which program reads it. Names read as predicates for yes/no facts " +
+    "(\"is …\", \"has …\", \"meets …\") and as a plain noun phrase for everything else.\n"
+  );
+}
+
+const PARA_SPLIT = /\n{2,}/;
+
+/** A document's metadata plus its text, for a prompt. When `text` is longer
+ *  than fits in `maxChars`, it is cut at the last paragraph boundary that
+ *  still fits and a note says so, rather than leaving the model an object cut
+ *  mid-sentence with no way to tell. */
+export function documentContext(doc: DocumentMeta, text: string, maxChars = 60000): string {
+  const header =
+    `DOCUMENT ${doc.id}: ${doc.title} (${doc.kind})\n${doc.citation}` +
+    (doc.date ? ` — ${doc.date}` : "") + "\n\n";
+  const budget = Math.max(0, maxChars - header.length);
+  if (text.length <= budget) return header + text;
+
+  const paras = text.split(PARA_SPLIT);
+  let body = "";
+  for (const p of paras) {
+    const next = body ? `${body}\n\n${p}` : p;
+    if (next.length > budget) break;
+    body = next;
+  }
+  if (!body) body = text.slice(0, budget);
+  return (
+    header + body +
+    `\n\n[TRUNCATED at ${body.length} of ${text.length} characters, at a paragraph ` +
+    "boundary; ask again with a smaller chunk of the document to read the rest.]"
+  );
+}
+
+export interface DocumentChunk { heading: string; text: string }
+
+/** Splits a document's text at each `#`/`##` heading, so a document too long
+ *  for one prompt can be sent to the model one chunk at a time; the analyst
+ *  picks the chunk in the panel. A document with no headings is one chunk:
+ *  its whole text. */
+export function chunkByHeadings(text: string): DocumentChunk[] {
+  const chunks: DocumentChunk[] = [];
+  let heading = "(start)";
+  let body: string[] = [];
+  const flush = () => {
+    const t = body.join("\n").trim();
+    if (t) chunks.push({ heading, text: t });
+    body = [];
+  };
+  for (const line of text.split("\n")) {
+    const m = /^#{1,2}\s+(.*)$/.exec(line);
+    if (m) {
+      flush();
+      heading = m[1].trim();
+    } else {
+      body.push(line);
+    }
+  }
+  flush();
+  return chunks.length ? chunks : [{ heading: "(whole document)", text: text.trim() }];
+}
+
 export function glossaryText(
   items: readonly Item[],
   lit: (v: unknown) => string,
@@ -119,7 +213,7 @@ export function systemPrompt(engine: Engine, sources: readonly Source[]): string
     engine.meta.types.join(", ") + ". " +
     "Scopes: " + engine.meta.scopes.join(", ") + ". Every fact is known or unknown; a derivation with an unknown input is unknown unless an explicit " +
     "otherwise supplies a default.\n" +
-    GRAMMAR + RULES +
+    GRAMMAR + RULES + "\n" + vocabularyText(engine.meta) + "\n" + namingRulesText() +
     "\nEXISTING GLOSSARY (id | name | identifier | kind | type | scope | program)\n" +
     glossaryText(engine.items(), engine.lit, engine.paramValue) +
     "\n\nEXISTING SOURCES\n" + sourcesText(sources)
@@ -132,6 +226,26 @@ export function draftFromSourcePrompt(source: Source, hints: string): string {
     `${source.citation}\n\n${source.text}\n\n` +
     (hints ? `HINTS FROM THE ANALYST\n${hints}\n\n` : "") +
     "Return only the JSON object."
+  );
+}
+
+export function draftFromDocumentPrompt(doc: DocumentMeta, text: string, hints: string): string {
+  return (
+    "Draft the codex items this document establishes.\n\n" +
+    documentContext(doc, text) + "\n\n" +
+    (hints ? `HINTS FROM THE ANALYST\n${hints}\n\n` : "") +
+    "Return only the JSON object."
+  );
+}
+
+export function extractExcerptsPrompt(doc: DocumentMeta, text: string, hints: string): string {
+  return (
+    "Extract the passages of this document an analyst would cite as a source excerpt: " +
+    "the operative text a derivation could reference, each as a short, exact quotation " +
+    "(no summarising or paraphrasing).\n\n" +
+    documentContext(doc, text) + "\n\n" +
+    (hints ? `HINTS FROM THE ANALYST\n${hints}\n\n` : "") +
+    'Return only the JSON object {"excerpts": [{"citation": "...", "text": "..."}, ...]}.'
   );
 }
 

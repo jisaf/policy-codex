@@ -75,3 +75,33 @@ export function sourceTitleMap(sources: readonly Source[]): Record<string, strin
   for (const s of sources) out[s.id] = s.title;
   return out;
 }
+
+/** The next free `S-n`, so an excerpt appended by the AI panel never collides
+ *  with one already in sources.md. */
+export function nextSourceId(sources: readonly Source[]): string {
+  let max = 0;
+  for (const s of sources) {
+    const m = /^S(\d+)$/.exec(s.id);
+    if (m) max = Math.max(max, Number(m[1]));
+  }
+  return `S${max + 1}`;
+}
+
+/** Appends one excerpt per `{citation, text}` pair as a `### S<n>. <citation>`
+ *  section with a `Document: D-n` line, in the exact shape `parseSources`
+ *  reads back, starting at `startId`. Nothing else in the file is touched. */
+export function appendExcerpts(
+  sourcesMd: string, docId: string, startId: string,
+  excerpts: readonly { citation: string; text: string }[],
+): string {
+  const m = /^S(\d+)$/.exec(startId);
+  let n = m ? Number(m[1]) : 1;
+  let out = sourcesMd.replace(/\n*$/, "\n");
+  for (const ex of excerpts) {
+    const id = `S${n++}`;
+    const citation = ex.citation.trim();
+    const quoted = ex.text.trim().split("\n").map((l) => `> ${l}`).join("\n");
+    out += `\n### ${id}. ${citation}\n\nDocument: ${docId}\n\n${citation}\n\n${quoted}\n`;
+  }
+  return out;
+}

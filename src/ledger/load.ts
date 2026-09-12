@@ -17,6 +17,9 @@ export interface LoadedVolume {
   meta: VolumeMeta;
   items: Item[];
   sources: Source[];
+  /** The exact `sources.md` body, so the AI panel's "Extract excerpts" appends
+   *  to the file the volume was read from rather than re-serialising it. */
+  sourcesText: string;
   openQuestions: OpenQuestion[];
   /** Household cases from `tests/cases.yaml`; empty when the file is absent. */
   cases: HouseholdCase[];
@@ -102,6 +105,7 @@ export async function loadVolume(
     meta: parseVolumeFile(volumeText),
     items,
     sources: parseSources(sourcesText),
+    sourcesText,
     openQuestions: parseOpenQuestions(questionsText),
     cases: casesText == null ? [] : parseCases(casesText),
     casesText,

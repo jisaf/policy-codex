@@ -29,6 +29,9 @@ export interface EditingState {
   /** A new item starts on "start", a search of the ledger, so a steward looks
    *  before adding. An existing item opens straight into "edit". */
   step: "start" | "edit";
+  /** Preselects the AI panel's context selector when the editor was opened
+   *  from a source or a document rather than from the ledger search. */
+  context?: { kind: "source" | "document"; id: string };
 }
 
 export const WORKER_BASE_KEY = "codex.worker";
@@ -159,6 +162,24 @@ export function openEditor(id: string | null): void {
       },
     };
   }
+}
+
+/** Opens a new item straight into the AI panel with a document preselected,
+ *  for the Documents view's "Draft from this document" button: the analyst
+ *  came here to draft from a specific text, not to search the ledger first. */
+export function openEditorForDocument(docId: string): void {
+  const engine = viewEngine();
+  const vol = volumeSig.value;
+  if (!engine || !vol) return;
+  editingSig.value = {
+    id: null, chapter: "medicaid", surface: "ai", step: "edit",
+    context: { kind: "document", id: docId },
+    draft: {
+      id: engine.nextId(), name: "", identifier: "", kind: "derived", type: "yes/no",
+      scope: "person", program: "Medicaid", meaning: "", sources: [], tests: [],
+      implemented: null,
+    },
+  };
 }
 
 export function closeEditor(): void {
