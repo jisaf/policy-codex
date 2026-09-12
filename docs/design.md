@@ -239,3 +239,7 @@ move to `docs/`.
 - Index generation in CI once a volume exceeds a few thousand items.
 - OAuth provider and PR merge inside the app.
 - Concurrent edits to the same item across proposals (git conflict for now).
+
+## Phase 2
+
+This document describes the MVP (Phase 1). Phase 2 adds governance, audit, documents, and conformance; see `docs/design-governance.md` for the spec.
