@@ -4,10 +4,12 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
   "meaning", "precision", "assumption", "supplied_by", "value", "versions", "derived",
-  "sources", "effective", "implemented", "tags", "open", "tests",
+  "sources", "effective", "implemented", "tags", "open", "rationale", "nearest", "tests",
 ];
 
-const FLOW_KEYS = new Set(["options", "derived", "sources", "effective", "tags", "open"]);
+const FLOW_KEYS = new Set([
+  "options", "derived", "sources", "effective", "tags", "open", "nearest",
+]);
 const SEQ_OF_FLOW_KEYS = new Set(["versions", "tests"]);
 /** Key order of a test row as the ledger files write it; a parsed example
  *  line arrives in a different order and must serialise identically. */
@@ -129,5 +131,18 @@ export function stringifyVolume(meta: VolumeMeta): string {
   for (const t of meta.types) L.push(`  - ${yamlScalar(t)}`);
   L.push("");
   L.push(`scopes: ${flowValue(meta.scopes)}`);
+  if (meta.programs) {
+    L.push("");
+    L.push("programs:");
+    for (const p of meta.programs) {
+      L.push(`  - id: ${yamlScalar(p.id)}`);
+      L.push(`    prefix: ${yamlScalar(p.prefix)}`);
+      if (p.outcomes) L.push(`    outcomes: ${flowValue(p.outcomes)}`);
+    }
+  }
+  if (meta.tags) {
+    L.push("");
+    L.push(`tags: ${flowValue(meta.tags)}`);
+  }
   return L.join("\n") + "\n";
 }

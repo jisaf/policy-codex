@@ -59,6 +59,10 @@ export interface Item {
   implemented?: "assembly" | "engine" | null;
   tags?: string[];
   open?: string[];
+  /** Why this item exists and why the nearest existing items do not serve. */
+  rationale?: string;
+  /** Ids of the nearest existing items, acknowledged when the item was added. */
+  nearest?: string[];
   tests?: TestSpec[];
 }
 
@@ -67,6 +71,14 @@ export interface ApprovalPolicy {
   by_program: Record<string, string[]>;
   by_kind: Record<string, string[]>;
   by_tag: Record<string, string[]>;
+}
+
+export interface ProgramVocabulary {
+  id: string;
+  /** Identifiers owned by this program start with it; null for shared items. */
+  prefix: string | null;
+  /** The items this program's administrators are accountable for. */
+  outcomes?: string[];
 }
 
 export interface VolumeMeta {
@@ -78,6 +90,10 @@ export interface VolumeMeta {
   approval_policy: ApprovalPolicy;
   types: string[];
   scopes: Scope[];
+  /** Declared programs. Absent on volumes written before phase 2. */
+  programs?: ProgramVocabulary[];
+  /** Declared tag vocabulary. Absent on volumes written before phase 2. */
+  tags?: string[];
 }
 
 /** Ids the constraint checker validates citations against. When omitted the
