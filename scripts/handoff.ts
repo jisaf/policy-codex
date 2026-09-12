@@ -26,9 +26,8 @@ for (const ch of entry.chapters) {
 const meta = parseVolumeFile(
   fs.readFileSync(path.join(root, entry.path, "volume.yaml"), "utf8"),
 );
-const sources = parseSources(
-  fs.readFileSync(path.join(root, entry.path, "sources.md"), "utf8"),
-);
+const sourcesText = fs.readFileSync(path.join(root, entry.path, "sources.md"), "utf8");
+const sources = parseSources(sourcesText);
 const openQuestions = parseOpenQuestions(
   fs.readFileSync(path.join(root, entry.path, "open-questions.md"), "utf8"),
 );
@@ -42,7 +41,7 @@ const documents = fs.existsSync(documentsPath)
 
 const vol: LoadedVolume = {
   volumeId: entry.id, title: entry.title, path: entry.path, ref: "local", sha: null,
-  meta, items, sources, openQuestions, cases, casesText, documents, chapterOf,
+  meta, items, sources, sourcesText, openQuestions, cases, casesText, documents, chapterOf,
 };
 const engine = createEngine(items, meta, {
   sourceIds: sources.map((s) => s.id),

@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { extractJson, parseProposal, proposalToItem, PROPOSAL_SCHEMA } from "../../src/ai/proposal";
+import {
+  extractJson, parseExcerpts, parseProposal, proposalToItem, proposalToItems, PROPOSAL_SCHEMA,
+} from "../../src/ai/proposal";
 import { createEngine } from "../../src/engine/engine";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
@@ -72,5 +74,71 @@ describe("proposal parsing", () => {
     expect(item.derived).toBeUndefined();
     expect(errors[0]).toContain('cannot read "wibble wobble"');
     expect(errors[1]).toContain("example line must look like");
+  });
+
+  it("carries the rationale onto the item", () => {
+    const { item } = proposalToItem(engine, good as never, "WR-320");
+    expect(item.rationale).toBe("Mirrors WR-200.");
+  });
+});
+
+describe("proposalToItems", () => {
+  const dup = {
+    ...good,
+    name: "Duplicate age fact", identifier: "duplicate_age_fact", type: "whole number",
+    meaning: "Whole years elapsed from Date of Birth to the Determination Date, restated.",
+    derived_text: "the number of whole years between Date of Birth and the Determination Date",
+    sources: [], implemented: "assembly",
+    examples: ['T1: given date_of_birth="2000-01-01"; as of 2020-01-01 => 20'],
+    rationale: "Needed for a second reading of the same rule.",
+  };
+  const other = {
+    ...good,
+    name: "Medicaid: has reached the adult threshold", identifier: "medicaid_reached_adult_age",
+    meaning: "A second, unrelated proposed fact: the person has reached age 21.",
+    derived_text: "Age is at least 21",
+    sources: [], rationale: "A second item in the same proposal.",
+  };
+
+  it("assigns sequential ids from the given start id", () => {
+    const built = proposalToItems(engine, { notes: "", items: [dup, other] as never }, "WR-320");
+    expect(built.map((b) => b.item.id)).toEqual(["WR-320", "WR-321"]);
+  });
+
+  it("computes nearest from the ledger, not the model, for a derivation duplicate", () => {
+    const built = proposalToItems(engine, { notes: "", items: [dup] as never }, "WR-320");
+    expect(built[0].errors).toEqual([]);
+    expect(built[0].item.nearest).toContain("WR-003");
+    const candidates = engine.nearest(built[0].item);
+    const wr003 = candidates.find((c) => c.id === "WR-003");
+    expect(wr003?.reason).toBe("identical-derivation");
+  });
+
+  it("carries each item's rationale, so governance's rationale.required is satisfied", () => {
+    const built = proposalToItems(engine, { notes: "", items: [dup, other] as never }, "WR-320");
+    for (const { item } of built) {
+      expect(item.rationale).toBeTruthy();
+      const findings = engine.governance(item, { isNew: true });
+      expect(findings.map((f) => f.rule)).not.toContain("rationale.required");
+    }
+  });
+});
+
+describe("parseExcerpts", () => {
+  it("reads a list of citation/text excerpts", () => {
+    const parsed = parseExcerpts(JSON.stringify({
+      excerpts: [{ citation: "42 U.S.C. 1396a(x)", text: "quoted text" }],
+    }));
+    expect(parsed.excerpts).toEqual([{ citation: "42 U.S.C. 1396a(x)", text: "quoted text" }]);
+  });
+
+  it("drops malformed entries and refuses a response with no excerpts list", () => {
+    const parsed = parseExcerpts(JSON.stringify({
+      excerpts: [{ citation: "ok", text: "text" }, { citation: "bad" }, { text: "" }],
+    }));
+    expect(parsed.excerpts).toEqual([{ citation: "ok", text: "text" }]);
+    expect(() => parseExcerpts('{"notes":"n"}')).toThrow(
+      "the model returned JSON without an excerpts list",
+    );
   });
 });
