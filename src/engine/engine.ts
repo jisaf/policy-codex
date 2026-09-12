@@ -3,6 +3,7 @@ import { block, compact, inline } from "./render";
 import { parseDerivation, parseInline } from "./parse";
 import { check, usesOf, type CheckResult } from "./check";
 import { runTest, type TestResult } from "./evaluate";
+import { runCase, type CaseReport, type HouseholdCase } from "./cases";
 import {
   formatTest, itemBlock, parseItemBlock, parseTestLine,
   type ItemBlockExtra, type ParsedItemBlock,
@@ -38,6 +39,8 @@ export interface Engine {
   check(e: Expr, scope: Scope | undefined): CheckResult;
   uses(e: Expr): string[];
   runTest(it: Item, t: TestSpec): TestResult;
+  runCase(c: HouseholdCase): CaseReport;
+  runCases(cases: HouseholdCase[]): CaseReport[];
   itemBlock(it: Item, extra?: ItemBlockExtra): string;
   parseItemBlock(text: string): ParsedItemBlock;
   formatTest(t: TestSpec): string;
@@ -80,6 +83,8 @@ export function createEngine(
     check: (e, scope) => check(ix, e, scope),
     uses: (e) => usesOf(ix, e),
     runTest: (it, t) => runTest(ix, it, t, meta.default_as_of),
+    runCase: (c) => runCase(ix, c),
+    runCases: (cases) => cases.map((c) => runCase(ix, c)),
     itemBlock: (it, extra) => itemBlock(ix, it, extra),
     parseItemBlock: (text) => parseItemBlock(ix, meta, text),
     formatTest,

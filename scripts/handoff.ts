@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createEngine } from "../src/engine/engine";
+import { parseCases } from "../src/engine/cases";
 import { parseItemFile, parseVolumeFile } from "../src/engine/yaml";
 import { parseOpenQuestions, parseSources } from "../src/ledger/markdown";
 import { handoffMarkdown } from "../src/export/handoff";
@@ -30,10 +31,12 @@ const sources = parseSources(
 const openQuestions = parseOpenQuestions(
   fs.readFileSync(path.join(root, entry.path, "open-questions.md"), "utf8"),
 );
+const casesPath = path.join(root, entry.path, "tests/cases.yaml");
+const cases = fs.existsSync(casesPath) ? parseCases(fs.readFileSync(casesPath, "utf8")) : [];
 
 const vol: LoadedVolume = {
   volumeId: entry.id, title: entry.title, path: entry.path, ref: "local", sha: null,
-  meta, items, sources, openQuestions, chapterOf,
+  meta, items, sources, openQuestions, cases, chapterOf,
 };
 const engine = createEngine(items, meta, {
   sourceIds: sources.map((s) => s.id),
