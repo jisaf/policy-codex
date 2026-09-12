@@ -57,6 +57,10 @@ export interface Item {
   sources?: string[];
   effective?: Effective;
   implemented?: "assembly" | "engine" | null;
+  /** Free-form locator into the implementing system, e.g.
+   *  `rules/medicaid/ce.drl#status` or a function path. No governance rule
+   *  requires it yet; it exists for the conformance suite to carry through. */
+  implemented_by?: string;
   tags?: string[];
   open?: string[];
   /** Why this item exists and why the nearest existing items do not serve. */
