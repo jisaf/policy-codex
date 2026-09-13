@@ -49,8 +49,8 @@ interface TourStep {
 // (docs/design-onboarding.md, "Guided first run, hints, help").
 const STEPS: TourStep[] = [
   {
-    target: 'nav.primary a[href*="/program"]',
-    body: "Programs shows what each program decides, in plain language.",
+    target: '.door[data-door="reader"]',
+    body: "Pick a door to start. \"Read the rules for a program\" shows what each program decides, in plain language.",
     go: null,
   },
   {
