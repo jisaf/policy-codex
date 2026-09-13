@@ -8,6 +8,19 @@ A codex is the approved, engine-agnostic statement of how benefit policy is inte
 
 The app is static. The repository is its only store: reading needs nothing, proposing a change opens a pull request from your browser with your own GitHub token, and AI drafting uses your own provider key through a CORS-only relay that holds no secrets.
 
+## Start here
+
+The app opens with four doors. Pick the one that fits what brings you here today; you can change it any time from "change how you use this" in the header.
+
+- **Check how a household is decided** (program administrator): Opens Cases, with an example household one click away. See the facts that led to each outcome and the plain-English story behind it.
+- **Read the rules for a program** (anyone): Opens Programs, the home view. See what each program decides, the parameters currently in force, household cases that test it, and open questions still outstanding.
+- **Change a rule or fact** (subject-matter expert): Turns edit mode on and opens Programs. Author and review items; stewards vocabulary, checks implementation against the codex, and answers "does the codex match the statute?"
+- **Implement the rules** (engineer): Opens the Handoff view, then item decision records back to statute. The handoff view renders the engineer handoff in the app, offers both the handoff document and the conformance suite as downloads, and lists every rule with its implementation locator.
+
+The app opens in **reader mode**: New item, Tray, Rename, Settings, and the editor are hidden. A single control turns edit mode on; the choice persists in the browser. Every reader view and URL behaves exactly as before.
+
+On first visit, a five-step tour walks one real example (a program, a case, an outcome, its story). See [docs/onboarding.md](docs/onboarding.md) for a guide to the app and its concepts.
+
 ## Audiences
 
 - **Program administrator:** answers "is program X calculated properly?" by reviewing household cases with pass/fail and plain-English traces.

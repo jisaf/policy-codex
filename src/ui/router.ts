@@ -1,7 +1,8 @@
 import { DEFAULT_VOLUME } from "../config";
 
 export type ViewName =
-  | "table" | "graph" | "cases" | "program" | "item" | "source" | "documents" | "document" | "search";
+  | "start" | "table" | "graph" | "cases" | "program" | "item" | "source" | "documents"
+  | "document" | "search" | "handoff";
 
 export interface Route {
   volume: string;
@@ -12,8 +13,9 @@ export interface Route {
   params: Record<string, string>;
 }
 
-const VIEWS: ViewName[] = [
-  "table", "graph", "cases", "program", "item", "source", "documents", "document", "search",
+export const VIEWS: ViewName[] = [
+  "start", "table", "graph", "cases", "program", "item", "source", "documents", "document",
+  "search", "handoff",
 ];
 
 export function defaultRoute(): Route {

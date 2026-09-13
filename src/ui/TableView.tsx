@@ -1,5 +1,6 @@
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
+import { Term } from "./labels";
 import { buildHash, type Route } from "./router";
 import { engineSig, navigate, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
@@ -49,7 +50,6 @@ export function filterItems(engine: Engine, f: TableFilters): Item[] {
 }
 
 const COLUMNS = [
-  { key: "id", label: "ID" },
   { key: "name", label: "Fact" },
   { key: "kind", label: "Kind" },
   { key: "type", label: "Type" },
@@ -124,12 +124,15 @@ export function TableView() {
             return (
               <tr key={it.id}>
                 <td>
-                  <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>{it.id}</a>
+                  <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>
+                    <b>{it.name}</b>
+                  </a>
+                  <br />
+                  <small>{it.id} · {it.identifier}</small>
                 </td>
-                <td>{it.name}</td>
-                <td>{it.kind}</td>
+                <td><Term kind={it.kind} /></td>
                 <td>{it.type}</td>
-                <td>{it.scope}</td>
+                <td><Term scope={it.scope} /></td>
                 <td class={`prog-${it.program.toLowerCase()}`}>{it.program}</td>
                 <td>{(it.open ?? []).join(", ")}</td>
                 <td class={v && v.errors ? "bad" : v && v.warnings ? "warn" : "ok"}>

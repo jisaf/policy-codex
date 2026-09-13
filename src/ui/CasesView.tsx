@@ -4,13 +4,14 @@ import {
   appendCase, caseToSpec, nextCaseId, parseCases, programsOfCase, type HouseholdCase,
   type PersonSpec,
 } from "../engine/cases";
-import type { TraceNode } from "../engine/explain";
+import { missingFacts, type TraceNode } from "../engine/explain";
 import type { Item, TestSpec } from "../engine/types";
 import { buildHash, type Route } from "./router";
 import type { LoadedVolume } from "../ledger/load";
 import { fileEntries } from "../changes/types";
 import {
-  changeSetSig, engineSig, navigate, putFileChange, route, trayOpenSig, viewEngine, volumeSig,
+  changeSetSig, engineSig, modeSig, navigate, putFileChange, route, trayOpenSig, viewEngine,
+  volumeSig,
 } from "./state";
 import { Trace } from "./Trace";
 
@@ -109,6 +110,17 @@ export function buildSpec(
     else facts[it.identifier] = v;
   }
   return { id: "household", as_of: asOf, persons: { p1: person } };
+}
+
+/** Whether "Try an example" can fill the one-person form from this case: a
+ *  single person `p1`, with no month-scoped facts the form has no field
+ *  for (`persons.p1.months` or `month_facts`). A household with a second
+ *  person, or facts that vary by month, would silently drop data the form
+ *  cannot represent. */
+export function isRepresentableCase(c: HouseholdCase): boolean {
+  const personIds = Object.keys(c.persons ?? {});
+  return personIds.length === 1 && personIds[0] === "p1"
+    && !c.persons.p1.months && !c.month_facts;
 }
 
 function CaseList(
@@ -277,8 +289,9 @@ function CasePage(
                 >
                   <td>{res.person}</td>
                   <td>
-                    {engine.item(res.identifier)?.name ?? res.identifier}{" "}
-                    <code>{res.identifier}</code>
+                    <b>{engine.item(res.identifier)?.name ?? res.identifier}</b>
+                    <br />
+                    <small>{engine.item(res.identifier)?.id ?? ""} · {res.identifier}</small>
                   </td>
                   <td>{res.month ?? "—"}</td>
                   <td>{engine.fmt(res.expect)}</td>
@@ -313,7 +326,7 @@ function fieldInput(
   const base = engine.baseType(it);
   if (base === "yes/no") {
     return (
-      <select data-fact={it.identifier} value={value} onChange={onInput}>
+      <select id={it.identifier} data-fact={it.identifier} value={value} onChange={onInput}>
         <option value="">unknown</option>
         <option value="yes">yes</option>
         <option value="no">no</option>
@@ -322,7 +335,7 @@ function fieldInput(
   }
   if (base === "enum") {
     return (
-      <select data-fact={it.identifier} value={value} onChange={onInput}>
+      <select id={it.identifier} data-fact={it.identifier} value={value} onChange={onInput}>
         <option value="">unknown</option>
         {(it.options ?? []).map((o) => <option key={o} value={o}>{o}</option>)}
       </select>
@@ -331,7 +344,7 @@ function fieldInput(
   const type = base === "number" ? "number" : base === "date" ? "date" : "text";
   return (
     <input
-      data-fact={it.identifier} type={type} value={value}
+      id={it.identifier} data-fact={it.identifier} type={type} value={value}
       placeholder={base === "month" ? "YYYY-MM"
         : base === "group" || base === "table" || base === "relationships" || base === "months"
           ? "JSON, e.g. []" : ""}
@@ -364,6 +377,16 @@ function FactFields(
   );
 }
 
+/** A ledger value formatted the way a form field holds it: the inverse of
+ *  `parseField`, so a case's own facts can be poured straight into the form
+ *  ("Try an example" below). */
+function fieldValue(v: unknown): string {
+  if (v === true) return "yes";
+  if (v === false) return "no";
+  if (Array.isArray(v) || (v !== null && typeof v === "object")) return JSON.stringify(v);
+  return String(v);
+}
+
 function NewHousehold(
   { engine, vol, route: r }: { engine: Engine; vol: LoadedVolume; route: Route },
 ) {
@@ -371,6 +394,7 @@ function NewHousehold(
   const caseTitle = useSignal("");
   const staged = useSignal("");
   const asOf = useSignal(engine.meta.default_as_of);
+  const exampleId = useSignal("");
   const answer = useSignal<Array<{ identifier: string; month: string | null; root: TraceNode }> | null>(null);
 
   const programs = programOutcomes(engine);
@@ -392,6 +416,32 @@ function NewHousehold(
   };
   const set = (identifier: string, raw: string) => {
     values.value = { ...values.value, [identifier]: raw };
+    staged.value = "";
+  };
+  /** Fills the form from an existing household case's p1 facts and month
+   *  defaults, mapped through the same cone the fields are built from, so
+   *  evaluating immediately works (docs/design-onboarding.md, "Guided first
+   *  run, hints, help"). A field the example does not answer is left as it
+   *  was; picking a different example does not need a page reload. */
+  const applyExample = (id: string) => {
+    exampleId.value = id;
+    answer.value = null;
+    if (!id) return;
+    const hc = (vol.cases ?? []).find((c) => c.id === id);
+    const p1 = hc?.persons.p1;
+    if (!hc || !p1) return;
+    const next: Record<string, string> = {};
+    for (const it of cone) {
+      if (it.kind === "parameter") continue;
+      if (engine.baseType(it) === "relationships") {
+        next[it.identifier] = fieldValue(p1.relationships ?? []);
+        continue;
+      }
+      const v = it.scope === "person-month" ? p1.month_defaults?.[it.identifier] : p1.facts?.[it.identifier];
+      if (v !== undefined) next[it.identifier] = fieldValue(v);
+    }
+    values.value = { ...values.value, ...next };
+    if (hc.as_of) asOf.value = hc.as_of;
     staged.value = "";
   };
   const evaluate = () => {
@@ -479,6 +529,19 @@ function NewHousehold(
             left blank is unknown.
           </p>
 
+          <label class="example">
+            Try an example
+            <select
+              value={exampleId.value}
+              onChange={(e) => applyExample((e.target as HTMLSelectElement).value)}
+            >
+              <option value="">choose a household…</option>
+              {(vol.cases ?? []).filter(isRepresentableCase).map((c) => (
+                <option key={c.id} value={c.id}>{c.id} {c.title}</option>
+              ))}
+            </select>
+          </label>
+
           <h3>Facts about the person</h3>
           <FactFields engine={engine} items={personFacts} values={values.value} set={set} />
 
@@ -507,16 +570,18 @@ function NewHousehold(
                 }}
               />
             </label>
-            <button
-              class="btn stage-case" disabled={!answer.value}
-              title={answer.value
-                ? "Stage this household as a new case in tests/cases.yaml"
-                : "Evaluate the household first, so the expectations state what it does"}
-              onClick={stage}
-            >
-              Stage as case
-            </button>
-            {staged.value && (
+            {modeSig.value === "edit" && (
+              <button
+                class="btn stage-case" disabled={!answer.value}
+                title={answer.value
+                  ? "Stage this household as a new case in tests/cases.yaml"
+                  : "Evaluate the household first, so the expectations state what it does"}
+                onClick={stage}
+              >
+                Stage as case
+              </button>
+            )}
+            {modeSig.value === "edit" && staged.value && (
               <span class="ok">
                 {staged.value} staged.{" "}
                 <button class="linkish" onClick={() => { trayOpenSig.value = true; }}>
@@ -529,17 +594,37 @@ function NewHousehold(
           {answer.value && (
             <div class="outcomes">
               <h3>Outcomes</h3>
-              {answer.value.map((o) => (
-                <div key={o.identifier} class="outcome">
-                  <h4>
-                    {engine.item(o.identifier)?.name ?? o.identifier}{" "}
-                    <code>{o.identifier}</code>
-                    {o.month && <span class="tag">{o.month}</span>}
-                    <span class="tval">{engine.fmt(o.root.value)}</span>
-                  </h4>
-                  <Trace engine={engine} node={o.root} route={r} />
-                </div>
-              ))}
+              {answer.value.map((o) => {
+                const unknown = o.root.value === null || o.root.value === undefined;
+                const unanswered = unknown ? missingFacts(o.root) : [];
+                return (
+                  <div key={o.identifier} class="outcome">
+                    <h4>
+                      {engine.item(o.identifier)?.name ?? o.identifier}{" "}
+                      <code>{o.identifier}</code>
+                      {o.month && <span class="tag">{o.month}</span>}
+                      <span class="tval">{engine.fmt(o.root.value)}</span>
+                    </h4>
+                    {unanswered.length > 0 && (
+                      <p class="unknown-hint muted">
+                        Not answered:{" "}
+                        {unanswered.map((m, i) => (
+                          <span key={m.identifier}>
+                            {i > 0 && ", "}
+                            <button
+                              type="button" class="linkish"
+                              onClick={() => {
+                                (document.getElementById(m.identifier) as HTMLElement | null)?.focus();
+                              }}
+                            >{m.name}</button>
+                          </span>
+                        ))}
+                      </p>
+                    )}
+                    <Trace engine={engine} node={o.root} route={r} />
+                  </div>
+                );
+              })}
             </div>
           )}
         </>

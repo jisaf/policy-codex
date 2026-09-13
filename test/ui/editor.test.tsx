@@ -48,6 +48,18 @@ describe("ItemEditor", () => {
     expect(host.querySelector(".constraints")!.textContent).toContain("Identifier is unique");
   });
 
+  it("opens an existing item with all its fields, not just its own kind's", () => {
+    // WR-200 is a derived item; the "All fields" toggle defaults on for an
+    // existing item, so supplied- and parameter-only fields stay reachable.
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    expect((host.querySelector("input.allfieldstoggle") as HTMLInputElement).checked).toBe(true);
+    expect(host.querySelector("input[name=supplied_by]")).not.toBeNull();
+    expect(host.querySelector("input[name=value]")).not.toBeNull();
+    expect(host.querySelector(".tree")).not.toBeNull();
+  });
+
   it("edits the meaning and carries it to the text surface", async () => {
     openEditor("WR-200");
     const host = document.createElement("div");
@@ -124,7 +136,7 @@ describe("ItemEditor", () => {
     expect(hits[0].querySelector("a.openhit")!.getAttribute("href")).toContain("WR-003");
   });
 
-  it("moves from the start step to the form with the typed text as the name", async () => {
+  it("moves from the start step to the kind step with the typed text as the name", async () => {
     openEditor(null);
     const host = document.createElement("div");
     render(<ItemEditor />, host);
@@ -135,13 +147,101 @@ describe("ItemEditor", () => {
     (host.querySelector("button.create") as HTMLButtonElement).click();
     await new Promise((r) => setTimeout(r));
     render(<ItemEditor />, host);
-    expect(editingSig.value!.step).toBe("edit");
-    expect((host.querySelector("input[name=name]") as HTMLInputElement).value)
-      .toBe("Medicaid: is in the renewal window");
-    expect((host.querySelector("input[name=identifier]") as HTMLInputElement).value)
+    expect(editingSig.value!.step).toBe("kind");
+    expect(editingSig.value!.draft.name).toBe("Medicaid: is in the renewal window");
+    expect(editingSig.value!.draft.identifier)
       .toBe(engine.slug("Medicaid: is in the renewal window"));
+    expect(host.textContent).toContain("What are you adding?");
+    expect(host.querySelector("button[data-kind=supplied]")!.textContent)
+      .toContain("A fact we are told");
+    expect(host.querySelector("button[data-kind=derived]")!.textContent).toContain("A rule");
+    expect(host.querySelector("button[data-kind=parameter]")!.textContent)
+      .toContain("A number set by policy");
+  });
+
+  it("choosing \"A rule\" moves to edit, defaults scope to person, and shows the " +
+    "derivation builder while hiding supplied_by", async () => {
+    openEditor(null);
+    editingSig.value = {
+      ...editingSig.value!, step: "kind",
+      draft: {
+        ...editingSig.value!.draft, name: "Medicaid: is in the renewal window",
+        identifier: "medicaid_in_renewal_window",
+      },
+    };
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    (host.querySelector("button[data-kind=derived]") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    expect(editingSig.value!.step).toBe("edit");
+    expect(editingSig.value!.draft.kind).toBe("derived");
+    expect(editingSig.value!.draft.scope).toBe("person");
     expect(host.querySelector("textarea[name=rationale]")).not.toBeNull();
     expect(host.querySelector(".similar")!.textContent).toContain("Similar existing items");
+    expect(host.querySelector(".tree")).not.toBeNull();
+    expect(host.querySelector("input[name=supplied_by]")).toBeNull();
+  });
+
+  it("choosing \"A fact we are told\" shows supplied_by and hides the derivation builder",
+    async () => {
+      openEditor(null);
+      editingSig.value = {
+        ...editingSig.value!, step: "kind",
+        draft: {
+          ...editingSig.value!.draft, name: "Medicaid: reports household size",
+          identifier: "medicaid_reports_household_size",
+        },
+      };
+      const host = document.createElement("div");
+      render(<ItemEditor />, host);
+      (host.querySelector("button[data-kind=supplied]") as HTMLButtonElement).click();
+      await new Promise((r) => setTimeout(r));
+      render(<ItemEditor />, host);
+      expect(editingSig.value!.draft.kind).toBe("supplied");
+      expect(editingSig.value!.draft.scope).toBe("person");
+      expect(host.querySelector("input[name=supplied_by]")).not.toBeNull();
+      expect(host.querySelector(".tree")).toBeNull();
+      // "Implemented in" applies to every kind, not only derived rules.
+      expect(host.querySelector("select[name=implemented]")).not.toBeNull();
+    });
+
+  it("choosing \"A number set by policy\" defaults scope to global and shows the value field",
+    async () => {
+      openEditor(null);
+      editingSig.value = {
+        ...editingSig.value!, step: "kind",
+        draft: {
+          ...editingSig.value!.draft, name: "Medicaid: renewal grace period",
+          identifier: "medicaid_renewal_grace_period",
+        },
+      };
+      const host = document.createElement("div");
+      render(<ItemEditor />, host);
+      (host.querySelector("button[data-kind=parameter]") as HTMLButtonElement).click();
+      await new Promise((r) => setTimeout(r));
+      render(<ItemEditor />, host);
+      expect(editingSig.value!.draft.kind).toBe("parameter");
+      expect(editingSig.value!.draft.scope).toBe("global");
+      expect(host.querySelector("input[name=value]")).not.toBeNull();
+      expect(host.querySelector("select[name=scope]")).toBeNull();
+      expect(host.querySelector(".tree")).toBeNull();
+      // "Implemented in" applies to every kind, not only derived rules.
+      expect(host.querySelector("select[name=implemented]")).not.toBeNull();
+    });
+
+  it("groups Text and AI under an Advanced disclosure", async () => {
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    const details = host.querySelector("details.advanced") as HTMLDetailsElement;
+    expect(details).not.toBeNull();
+    expect(details.open).toBe(false);
+    expect(details.querySelector("summary")!.textContent).toContain("Advanced");
+    expect(details.querySelector("button[data-surface=text]")!.textContent).toBe("Text");
+    expect(details.querySelector("button[data-surface=ai]")!.textContent).toBe("AI");
+    details.querySelector("summary")!.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    expect(details.open).toBe(true);
   });
 
   it("stages a new item without a rationale and reports the rule against it", async () => {

@@ -1,9 +1,11 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
+import type { Item } from "../engine/types";
 import type { ChangeEntry } from "../changes/types";
 import { ratchetGovernance } from "../changes/validate";
 import { AiPanel } from "./AiPanel";
 import { FormEditor } from "./FormEditor";
+import { kindBlurb, kindLabel } from "./labels";
 import { TextEditor } from "./TextEditor";
 import { buildHash } from "./router";
 import { search } from "./search";
@@ -21,10 +23,27 @@ export function draftEntry(state: EditingState, engine: Engine): ChangeEntry {
   };
 }
 
-const SURFACES: Array<{ key: EditingState["surface"]; label: string }> = [
-  { key: "form", label: "Form" },
+const PRIMARY_SURFACE: { key: EditingState["surface"]; label: string } = { key: "form", label: "Form" };
+/** Text and AI are the same surfaces as always; the wizard just tucks them
+ *  under a disclosure so a first-time steward meets the guided form first. */
+const ADVANCED_SURFACES: Array<{ key: EditingState["surface"]; label: string }> = [
   { key: "text", label: "Text" },
   { key: "ai", label: "AI" },
+];
+
+/** Capitalises kindLabel's first letter for use as a standalone heading
+ *  (the label otherwise reads mid-sentence, lower case, as docs/design-
+ *  onboarding.md quotes it). */
+function titleCase(kind: Item["kind"]): string {
+  const label = kindLabel(kind);
+  return label[0].toUpperCase() + label.slice(1);
+}
+
+/** One sentence each, in the order the wizard offers them. */
+const KIND_CHOICES: Array<{ kind: Item["kind"]; title: string; blurb: string }> = [
+  { kind: "supplied", title: titleCase("supplied"), blurb: kindBlurb("supplied") },
+  { kind: "derived", title: titleCase("derived"), blurb: kindBlurb("derived") },
+  { kind: "parameter", title: titleCase("parameter"), blurb: kindBlurb("parameter") },
 ];
 
 /** How many existing items the start step offers before the steward may add. */
@@ -43,7 +62,7 @@ function StartStep({ engine, state }: { engine: Engine; state: EditingState }) {
   const create = () => {
     const name = q.value.trim();
     editingSig.value = {
-      ...state, step: "edit",
+      ...state, step: "kind",
       draft: { ...state.draft, name, identifier: engine.slug(name) },
     };
   };
@@ -81,6 +100,40 @@ function StartStep({ engine, state }: { engine: Engine; state: EditingState }) {
   );
 }
 
+/** The wizard's "what are you adding?" choice: a new item's kind decides the
+ *  fields FormEditor shows next, so it is picked before the form opens. */
+function KindStep({ state }: { state: EditingState }) {
+  const choose = (kind: Item["kind"]) => {
+    editingSig.value = {
+      ...state, step: "edit",
+      draft: { ...state.draft, kind, scope: kind === "parameter" ? "global" : "person" },
+    };
+  };
+
+  return (
+    <div class="kindstep">
+      <p class="muted">What are you adding?</p>
+      <div class="kindchoices">
+        {KIND_CHOICES.map((c) => (
+          <button
+            key={c.kind} class="kindchoice" data-kind={c.kind}
+            onClick={() => choose(c.kind)}
+          >
+            <strong>{c.title}</strong>
+            <span>{c.blurb}</span>
+          </button>
+        ))}
+      </div>
+      <div class="actions">
+        <button class="btn" onClick={() => { editingSig.value = { ...state, step: "start" }; }}>
+          Back
+        </button>
+        <button class="btn" onClick={closeEditor}>Cancel</button>
+      </div>
+    </div>
+  );
+}
+
 export function ItemEditor() {
   const state = editingSig.value;
   const engine = viewEngine() ?? engineSig.value;
@@ -95,6 +148,19 @@ export function ItemEditor() {
             <h2>New item {state.draft.id}</h2>
           </div>
           <StartStep engine={engine} state={state} />
+        </div>
+      </div>
+    );
+  }
+
+  if (state.step === "kind") {
+    return (
+      <div class="overlay">
+        <div class="sheet editor">
+          <div class="cardhead">
+            <h2>New item {state.draft.id}</h2>
+          </div>
+          <KindStep state={state} />
         </div>
       </div>
     );
@@ -134,13 +200,23 @@ export function ItemEditor() {
           <h2>{state.id ? `Edit ${state.id}` : `New item ${state.draft.id}`}</h2>
           <span class="spacer" />
           <div class="tabs">
-            {SURFACES.map((s) => (
-              <button
-                key={s.key} data-surface={s.key}
-                class={state.surface === s.key ? "on" : ""}
-                onClick={() => { editingSig.value = { ...state, surface: s.key }; }}
-              >{s.label}</button>
-            ))}
+            <button
+              data-surface={PRIMARY_SURFACE.key}
+              class={state.surface === PRIMARY_SURFACE.key ? "on" : ""}
+              onClick={() => { editingSig.value = { ...state, surface: PRIMARY_SURFACE.key }; }}
+            >{PRIMARY_SURFACE.label}</button>
+            <details class="advanced" open={state.surface !== "form"}>
+              <summary>Advanced</summary>
+              <div class="advtabs">
+                {ADVANCED_SURFACES.map((s) => (
+                  <button
+                    key={s.key} data-surface={s.key}
+                    class={state.surface === s.key ? "on" : ""}
+                    onClick={() => { editingSig.value = { ...state, surface: s.key }; }}
+                  >{s.label}</button>
+                ))}
+              </div>
+            </details>
           </div>
           <label>Chapter
             <select

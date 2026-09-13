@@ -24,6 +24,12 @@ describe("router", () => {
     expect(parseHash("#/mwr/search?q=abawd").params.q).toBe("abawd");
   });
 
+  it("parses the handoff view", () => {
+    expect(parseHash("#/mwr/handoff").view).toBe("handoff");
+    expect(buildHash({ volume: "mwr", view: "handoff", arg: null, ref: null, params: {} }))
+      .toBe("#/mwr/handoff");
+  });
+
   it("parses a branch ref and a pull request ref", () => {
     expect(parseHash("#/mwr/item/WR-041@feature-x").ref).toBe("feature-x");
     const pr = parseHash("#/mwr/item/WR-041@pr/12");
@@ -45,6 +51,7 @@ describe("router", () => {
       "#/mwr/search?q=abawd",
       "#/mwr/item/WR-041@feature-x",
       "#/mwr/item/WR-041@pr/12",
+      "#/mwr/handoff",
     ]) {
       expect(buildHash(parseHash(h)), h).toBe(h);
     }

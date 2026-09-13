@@ -2,11 +2,13 @@ import { describe, it, expect, beforeEach } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { render } from "preact";
-import { CasesView, buildSpec, programOutcomes, upstreamCone } from "../../src/ui/CasesView";
+import {
+  CasesView, buildSpec, isRepresentableCase, programOutcomes, upstreamCone,
+} from "../../src/ui/CasesView";
 import { createEngine } from "../../src/engine/engine";
 import { caseToSpec, parseCases } from "../../src/engine/cases";
 import { emptyChangeSet } from "../../src/changes/types";
-import { changeSetSig, engineSig, route, volumeSig } from "../../src/ui/state";
+import { changeSetSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
@@ -56,6 +58,14 @@ function raw(v: unknown): string {
   return String(v);
 }
 
+/** The trace leads with the story and keeps the tree behind a toggle; these
+ *  cases are about the tree, so they open it first. */
+async function showEverything(host: HTMLElement): Promise<void> {
+  const button = host.querySelector("button.showall") as HTMLButtonElement;
+  button.click();
+  await new Promise((r) => setTimeout(r));
+}
+
 function countNodes(n: TraceNode): number {
   return 1 + n.children.reduce((s, k) => s + countNodes(k), 0);
 }
@@ -76,6 +86,10 @@ describe("CasesView", () => {
     volumeSig.value = vol;
     engineSig.value = engine;
     changeSetSig.value = emptyChangeSet("mwr", "main");
+    // "Stage as case" and "Open the tray" only render in edit mode; every
+    // existing test here exercises that staging flow, so edit mode is on
+    // throughout and the reader-mode gate gets its own test below.
+    modeSig.value = "edit";
   });
 
   it("lists every household case with its per-program counts", () => {
@@ -119,6 +133,11 @@ describe("CasesView", () => {
     await new Promise((r) => setTimeout(r));
     const trace = host.querySelector(".trace")!;
     expect(trace).not.toBeNull();
+    // The story names what decided the outcome, and the tree is still folded.
+    expect(trace.querySelector("ul.story li")!.textContent)
+      .toContain("Medicaid: satisfies community engagement at application is yes");
+    expect(trace.querySelector(".tnode")).toBeNull();
+    await showEverything(host);
     expect(trace.querySelector(".tnode")!.getAttribute("data-identifier"))
       .toBe("medicaid_ce_status_at_application");
     expect(trace.querySelectorAll(".origin").length).toBeGreaterThan(0);
@@ -132,6 +151,7 @@ describe("CasesView", () => {
     )! as HTMLTableRowElement;
     row.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     await new Promise((r) => setTimeout(r));
+    await showEverything(host);
 
     // The 36-month SNAP window is more than a thousand resolutions; the tree
     // shows the first two levels and renders a subtree only when asked.
@@ -202,7 +222,7 @@ describe("CasesView", () => {
       (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
     expect(outcome.querySelector(".tval")!.textContent).toBe("met");
-    expect(outcome.querySelector(".trace .origin")).not.toBeNull();
+    expect(outcome.querySelector(".trace ul.story li")).not.toBeNull();
   });
 
   it("stages the evaluated household as a new case appended to cases.yaml", async () => {
@@ -280,10 +300,137 @@ describe("CasesView", () => {
       .toBe("C-14 Household evaluated as of 2027-03-15");
   });
 
+  it("fills the form from an example case's facts, mapped through the same cone", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    // Several <select>s exist on this form (kind pickers etc. do not, but be
+    // explicit): find the example picker by an option it alone offers.
+    const example = [...host.querySelectorAll("select")].find(
+      (s) => [...s.options].some((o) => o.value === "C-01"),
+    )! as HTMLSelectElement;
+    example.value = "C-01";
+    example.dispatchEvent(new Event("change", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+
+    expect((host.querySelector('[data-fact="date_of_birth"]') as HTMLInputElement).value)
+      .toBe("1996-08-02");
+    expect((host.querySelector('[data-fact="hours_worked"]') as HTMLInputElement).value)
+      .toBe("90");
+
+    const evaluate = [...host.querySelectorAll("button")].find(
+      (b) => b.textContent === "Evaluate",
+    )! as HTMLButtonElement;
+    evaluate.click();
+    await new Promise((r) => setTimeout(r));
+    const outcome = [...host.querySelectorAll(".outcome")].find(
+      (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    expect(outcome.querySelector(".tval")!.textContent).toBe("met");
+  });
+
+  it("offers only the households the one-person form can represent", () => {
+    const host = show("new", { programs: "Medicaid,SNAP" });
+    const example = [...host.querySelectorAll("select")].find(
+      (s) => [...s.options].some((o) => o.value === "C-01"),
+    )! as HTMLSelectElement;
+    const listed = [...example.options].map((o) => o.value).filter(Boolean);
+    expect(listed).toEqual(cases.filter(isRepresentableCase).map((c) => c.id));
+    expect(listed).toContain("C-01");
+    expect(listed).not.toContain("C-03");
+    expect(listed).not.toContain("C-06");
+  });
+
+  it("evaluates every listed example to the same outcome values runCase gets", async () => {
+    const host = show("new", { programs: "Medicaid,SNAP" });
+    const example = [...host.querySelectorAll("select")].find(
+      (s) => [...s.options].some((o) => o.value === "C-01"),
+    )! as HTMLSelectElement;
+    const listed = [...example.options].map((o) => o.value).filter(Boolean);
+    expect(listed.length).toBeGreaterThan(0);
+
+    for (const id of listed) {
+      example.value = id;
+      example.dispatchEvent(new Event("change", { bubbles: true }));
+      await new Promise((r) => setTimeout(r));
+
+      const evaluate = [...host.querySelectorAll("button")].find(
+        (b) => b.textContent === "Evaluate",
+      )! as HTMLButtonElement;
+      evaluate.click();
+      await new Promise((r) => setTimeout(r));
+
+      const hc = cases.find((c) => c.id === id)!;
+      const report = engine.runCase(hc);
+      const gotByKey = new Map(
+        report.results.map((res) => [`${res.identifier}|${res.month ?? ""}`, res.got]),
+      );
+
+      const outcomeEls = [...host.querySelectorAll(".outcome")];
+      expect(outcomeEls.length).toBeGreaterThan(0);
+      for (const el of outcomeEls) {
+        const identifier = el.querySelector("code")!.textContent!;
+        const month = el.querySelector(".tag")?.textContent ?? "";
+        const key = `${identifier}|${month}`;
+        if (!gotByKey.has(key)) continue; // not one of this case's expectations
+        expect(el.querySelector(".tval")!.textContent).toBe(engine.fmt(gotByKey.get(key)));
+      }
+    }
+  });
+
+  it("names the unanswered facts of an unknown outcome and focuses one on click", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    const evaluate = [...host.querySelectorAll("button")].find(
+      (b) => b.textContent === "Evaluate",
+    )! as HTMLButtonElement;
+    evaluate.click();
+    await new Promise((r) => setTimeout(r));
+
+    const outcome = [...host.querySelectorAll(".outcome")].find(
+      (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    expect(outcome.querySelector(".tval")!.textContent).toBe("unknown");
+    const hint = outcome.querySelector(".unknown-hint")!;
+    expect(hint.textContent).toContain("Not answered:");
+    const dobButton = [...hint.querySelectorAll("button")].find(
+      (b) => b.textContent === "Date of Birth",
+    )! as HTMLButtonElement;
+    document.body.appendChild(host);
+    dobButton.click();
+    expect(document.activeElement?.id).toBe("date_of_birth");
+    host.remove();
+  });
+
   it("asks for a program before it asks for facts", () => {
     const host = show("new");
     expect(host.textContent).toContain("Choose a program");
     expect(host.querySelector("[data-fact]")).toBeNull();
     expect(host.querySelector('input[data-program="Medicaid"]')).not.toBeNull();
+  });
+
+  it("hides 'Stage as case' and 'Open the tray' in read mode and shows them in edit mode", async () => {
+    modeSig.value = "read";
+    route.value = { ...defaultRoute(), view: "cases", arg: "new", params: { programs: "Medicaid" } };
+    const host = document.createElement("div");
+    render(<CasesView />, host);
+    expect(host.querySelector("button.stage-case")).toBeNull();
+
+    // Toggling the signal (not re-rendering by hand) is how the real app
+    // reacts to "Turn on edit mode"; give the resulting update a tick.
+    modeSig.value = "edit";
+    await new Promise((r) => setTimeout(r));
+    expect(host.querySelector("button.stage-case")).not.toBeNull();
+
+    (([...host.querySelectorAll("button")].find((b) => b.textContent === "Evaluate")
+      ) as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    (host.querySelector("button.stage-case") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    expect(host.textContent).toContain("Open the tray");
+
+    // Switching back to read mode hides both the button and the confirmation,
+    // even though the household is still staged.
+    modeSig.value = "read";
+    await new Promise((r) => setTimeout(r));
+    expect(host.querySelector("button.stage-case")).toBeNull();
+    expect(host.textContent).not.toContain("Open the tray");
   });
 });

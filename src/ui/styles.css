@@ -19,6 +19,21 @@ main { padding: 16px; flex: 1; }
 nav { display: flex; gap: 10px; }
 nav a { text-decoration: none; padding: 2px 6px; border-radius: 4px; }
 nav a.on { background: var(--med); }
+details.browse { position: relative; }
+details.browse summary { cursor: pointer; list-style: none; padding: 2px 6px; }
+details.browse summary::-webkit-details-marker { display: none; }
+details.browse nav.dropdown { position: absolute; top: 100%; left: 0; z-index: 20;
+  flex-direction: column; gap: 2px; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 4px; padding: 6px; min-width: 120px; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+.hdrfoot { padding: 2px 16px; background: var(--panel); border-bottom: 1px solid var(--line);
+  font-size: 12px; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;
+  margin-top: 12px; }
+.door { text-align: left; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 6px; padding: 14px; cursor: pointer; font: inherit; color: inherit; }
+.door:hover { background: var(--med); }
+.door h3 { margin: 0 0 6px; }
+.door p { margin: 0; color: var(--muted); }
 .searchbox { position: relative; flex: 1; min-width: 220px; }
 .searchbox input { width: 100%; padding: 6px 8px; border: 1px solid var(--line);
   border-radius: 4px; font: inherit; background: var(--bg); }
@@ -125,6 +140,18 @@ li.candidate .score { color: var(--muted); font-variant-numeric: tabular-nums; }
   .form { grid-template-columns: 1fr; }
   .textsurface { grid-template-columns: 1fr; }
 }
+.kindchoices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px; margin: 10px 0; }
+.kindchoice { display: flex; flex-direction: column; gap: 4px; text-align: left;
+  padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+  font: inherit; cursor: pointer; }
+.kindchoice:hover { background: var(--med); }
+.kindchoice span { color: var(--muted); font-size: 13px; }
+.form label.allfields { flex-direction: row; align-items: center; gap: 6px; }
+.form .also { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+.form .also h4 { margin: 0 0 6px; }
+details.advanced summary { cursor: pointer; }
+.advtabs { display: inline-flex; gap: 4px; margin-left: 6px; }
 .tray .entries { list-style: none; padding: 0; margin: 8px 0; }
 .tray li.entry { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
   padding: 6px 0; border-bottom: 1px solid var(--line); }
@@ -179,6 +206,14 @@ li.proposalitem .derivation { font-size: 12px; white-space: pre-wrap; }
 .tbody { margin-left: 10px; border-left: 2px solid var(--line); padding-left: 8px; }
 .tbody pre.derivation { margin: 4px 0; font-size: 12px; }
 .tsources { margin: 2px 0; display: flex; gap: 4px; }
+.storyhead { margin: 0 0 4px; }
+ul.story { list-style: none; margin: 0 0 8px; padding: 0; }
+ul.story li { padding: 1px 0 1px 10px; border-left: 2px solid var(--med); }
+ul.story li.sub { margin-left: 14px; color: var(--muted); }
+button.showall { border: 1px solid var(--line); background: var(--panel); font: inherit;
+  font-size: 12px; padding: 2px 8px; border-radius: 4px; cursor: pointer; }
+.tmark { color: var(--warn); font-size: 11px; }
+.thead.decisive .tname { text-decoration: underline; text-decoration-color: var(--warn); }
 .outcome { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
 .outcome h4 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 .documents td.citation { font-size: 12px; }
@@ -194,3 +229,34 @@ li.proposalitem .derivation { font-size: 12px; white-space: pre-wrap; }
 .newcase .actions label { display: flex; gap: 4px; align-items: center; color: var(--muted); }
 .newcase .actions input { font: inherit; padding: 4px; border: 1px solid var(--line);
   border-radius: 4px; min-width: 260px; }
+.handoff-toc { margin: 8px 0 16px; padding: 10px 14px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; }
+.handoff-toc h2 { margin: 0 0 4px; font-size: 14px; }
+.handoff-toc ul { margin: 0; padding-left: 18px; }
+.handoff-toc > ul { display: flex; flex-wrap: wrap; gap: 4px 20px; padding-left: 0; list-style: none; }
+.handoff-toc > ul > li { min-width: 140px; }
+.handoff .program-group { margin-top: 12px; }
+.handoff .chapter-group { margin-top: 8px; }
+.handoff .chapter-group h4 { margin: 0 0 4px; color: var(--muted); font-weight: 400; }
+.handoff-md { margin-top: 8px; }
+.handoff-md table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+.handoff-md th, .handoff-md td { text-align: left; padding: 4px 8px;
+  border-bottom: 1px solid var(--line); }
+.handoff-md pre { background: var(--bg); border: 1px solid var(--line); padding: 10px;
+  overflow-x: auto; white-space: pre-wrap; }
+label.example { display: flex; gap: 6px; align-items: center; color: var(--muted);
+  margin: 8px 0; }
+.unknown-hint button { margin: 0 2px; }
+code.alias { font-size: 11px; color: var(--muted); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; }
+.tourbox { position: fixed; right: 16px; bottom: 16px; z-index: 60; width: min(320px, calc(100vw - 32px));
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+/* Room for the fixed tour box, so it sits beside the page's content
+   instead of over its last rows; the height is measured, not guessed. */
+.app.tour-open main { padding-bottom: calc(var(--tourbox-h, 160px) + 16px); }
+.tourstep { margin: 0 0 4px; color: var(--muted); font-size: 12px;
+  text-transform: uppercase; letter-spacing: .04em; }
+.tour-target { outline: 2px solid var(--warn); outline-offset: 2px; border-radius: 3px; }
+.help-overlay .sheet.help { width: min(420px, 100%); }
+.help.sheet p { line-height: 1.6; }

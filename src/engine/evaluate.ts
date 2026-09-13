@@ -106,19 +106,42 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   return c;
 }
 
-/** One resolution the evaluator performed, emitted after the value is known.
- *  Literals and operators are not facts and are never emitted. */
+/** One resolution the evaluator performed, emitted after the value is known,
+ *  or one decision an operator made between the resolutions it asked for.
+ *  Literals are not facts and are never emitted. */
 export interface TraceEvent {
   key: string;                 // the memo key (id|person|month) or id for month/case facts
   identifier: string; person: string | null; month: string | null;
-  kind: "supplied" | "parameter" | "derived" | "case" | "month";
+  kind: "supplied" | "parameter" | "derived" | "case" | "month" | "decision";
   value: unknown;              // the resolved value (null = unknown)
-  origin: "case" | "default" | "parameter" | "evaluated" | "memo" | "missing";
+  origin: "case" | "default" | "parameter" | "evaluated" | "memo" | "missing" | "decision";
     // case: read from case data; default: month_defaults/monthFactsDefault; parameter: paramOf;
     // evaluated: derived computed now; memo: derived already computed (subtree not re-expanded);
-    // missing: supplied fact absent (unknown)
+    // missing: supplied fact absent (unknown); decision: an operator's choice, not a fact
   parentKey: string | null;    // the derived fact whose evaluation asked for this one
   error?: string;              // when evaluation of this node threw
+  /** The resolution settled the value of every operator it happened inside:
+   *  it was the input each of them chose. Only set when a hook is present. */
+  decisive?: boolean;
+  /** The part the resolution played in the innermost operator that asked for
+   *  it: "input", "condition", "result", "left" or "right". */
+  role?: string;
+  op?: string;                 // decision events: the operator that decided
+  chosen?: number | null;      // decision events: which input decided, if one did
+  detail?: string;             // decision events: how, when the index does not say it
+}
+
+/** One operator's decision, reported after the inputs it weighed and only
+ *  when a hook is present. `key`, `identifier`, `person` and `month` are the
+ *  derived fact whose rule the operator belongs to; `value` is `chosen`. */
+export interface DecisionEvent extends TraceEvent {
+  kind: "decision";
+  op: string;
+  chosen: number | null;
+}
+
+export function isDecision(e: TraceEvent): e is DecisionEvent {
+  return e.kind === "decision";
 }
 
 export type TraceHook = (e: TraceEvent) => void;
@@ -129,6 +152,62 @@ export function evaluate(
 ): unknown {
   const memo: Record<string, unknown> = {};
   const stack: string[] = [];
+
+  /** One event held until the operator that asked for it knows which of its
+   *  inputs decided. `live` stays true while every operator the event
+   *  happened inside chose the input it happened in. */
+  interface Held { branch: number; live: boolean; e: TraceEvent }
+  /** One operator's decision, open while its inputs are being evaluated.
+   *  `branch` is the input under evaluation now, `role` the part it plays. */
+  interface Frame { op: string; branch: number; role: string | undefined; held: Held[] }
+
+  // Only ever non-empty when a hook is present: without one nothing is held,
+  // no frame is opened, and evaluation runs exactly as it did before.
+  const frames: Frame[] = [];
+
+  function emit(e: TraceEvent): void {
+    const f = frames[frames.length - 1];
+    if (!f) { trace!(e); return; }
+    if (f.role !== undefined && e.kind !== "decision") e.role = f.role;
+    f.held.push({ branch: f.branch, live: true, e });
+  }
+
+  function openFrame(op: string): Frame {
+    const f: Frame = { op, branch: 0, role: undefined, held: [] };
+    frames.push(f);
+    return f;
+  }
+
+  /** Closes a frame: what was resolved for an input that did not decide loses
+   *  its claim to be decisive, what is left is passed outward still claiming
+   *  it, and the decision itself is reported after the inputs it weighed. */
+  function closeFrame(
+    f: Frame, chosen: number | null, decided: (branch: number) => boolean,
+    p: string | null, m: string | null, detail?: string,
+  ): void {
+    frames.pop();
+    for (const h of f.held) if (!decided(h.branch)) h.live = false;
+    const out = frames[frames.length - 1];
+    if (out) {
+      for (const h of f.held) out.held.push({ branch: out.branch, live: h.live, e: h.e });
+    } else {
+      for (const h of f.held) {
+        if (h.live && h.e.kind !== "decision") h.e.decisive = true;
+        trace!(h.e);
+      }
+    }
+    const parentKey = stack.length ? stack[stack.length - 1] : null;
+    const bar = parentKey ? parentKey.indexOf("|") : -1;
+    const d: TraceEvent = {
+      key: parentKey ?? "",
+      identifier: bar < 0 ? "" : parentKey!.slice(0, bar),
+      person: p, month: m,
+      kind: "decision", value: chosen, origin: "decision",
+      parentKey, op: f.op, chosen,
+    };
+    if (detail !== undefined) d.detail = detail;
+    emit(d);
+  }
 
   function paramOf(it: Item): unknown {
     if (it.identifier in c.params) return c.params[it.identifier];
@@ -170,7 +249,7 @@ export function evaluate(
         parentKey,
       };
       if (error !== undefined) e.error = error;
-      trace(e);
+      emit(e);
       return v;
     };
     if (it.kind === "parameter") return seen(paramOf(it), "parameter");
@@ -238,31 +317,79 @@ export function evaluate(
         if (m == null) throw new Error("no month in context");
         return m;
       case "all": {
-        let unk = false;
-        for (const s of e.slice(1)) {
-          const v = g(s);
-          if (v === false) return false;
-          if (v === null) unk = true;
+        // The first false input settles it, so it is the last one evaluated.
+        const f = trace ? openFrame("all") : null;
+        let chosen: number | null = null;
+        try {
+          let unk = false;
+          const xs = e.slice(1);
+          for (let i = 0; i < xs.length; i++) {
+            if (f) { f.branch = i; f.role = "input"; }
+            const v = g(xs[i]);
+            if (v === false) { chosen = i; return false; }
+            if (v === null) unk = true;
+          }
+          return unk ? null : true;
+        } finally {
+          if (f) closeFrame(f, chosen, (b) => b === chosen, p, m);
         }
-        return unk ? null : true;
       }
       case "any": {
-        let unk = false;
-        for (const s of e.slice(1)) {
-          const v = g(s);
-          if (v === true) return true;
-          if (v === null) unk = true;
+        const f = trace ? openFrame("any") : null;
+        let chosen: number | null = null;
+        try {
+          let unk = false;
+          const xs = e.slice(1);
+          for (let i = 0; i < xs.length; i++) {
+            if (f) { f.branch = i; f.role = "input"; }
+            const v = g(xs[i]);
+            if (v === true) { chosen = i; return true; }
+            if (v === null) unk = true;
+          }
+          return unk ? null : false;
+        } finally {
+          if (f) closeFrame(f, chosen, (b) => b === chosen, p, m);
         }
-        return unk ? null : false;
       }
-      case "not": { const v = g(e[1]); return v === null ? null : !v; }
-      case "otherwise": { const v = g(e[1]); return v === null ? g(e[2]) : v; }
+      case "not": {
+        const f = trace ? openFrame("not") : null;
+        try {
+          if (f) f.role = "input";
+          const v = g(e[1]);
+          return v === null ? null : !v;
+        } finally {
+          if (f) closeFrame(f, 0, (b) => b === 0, p, m);
+        }
+      }
+      case "otherwise": {
+        const f = trace ? openFrame("otherwise") : null;
+        let chosen: number | null = null;
+        try {
+          if (f) f.role = "left";
+          const v = g(e[1]);
+          if (v !== null) { chosen = 0; return v; }
+          if (f) { f.branch = 1; f.role = "right"; }
+          chosen = 1;
+          return g(e[2]);
+        } finally {
+          if (f) closeFrame(f, chosen, (b) => b === chosen, p, m);
+        }
+      }
       case "unknown": return g(e[1]) === null;
       case "<": case "<=": case ">": case ">=": case "=": {
-        const a = g(e[1]); const b = g(e[2]);
-        if (a === null || b === null) return null;
-        return op === "<" ? a < b : op === "<=" ? a <= b
-          : op === ">" ? a > b : op === ">=" ? a >= b : a === b;
+        // Neither side decides a comparison on its own; both operands matter.
+        const f = trace ? openFrame(op) : null;
+        try {
+          if (f) f.role = "left";
+          const a = g(e[1]);
+          if (f) { f.branch = 1; f.role = "right"; }
+          const b = g(e[2]);
+          if (a === null || b === null) return null;
+          return op === "<" ? a < b : op === "<=" ? a <= b
+            : op === ">" ? a > b : op === ">=" ? a >= b : a === b;
+        } finally {
+          if (f) closeFrame(f, null, () => true, p, m, "both");
+        }
       }
       case "in": { const a = g(e[1]); return a === null ? null : (e[2] as unknown[]).includes(a); }
       case "+": case "*": {
@@ -315,13 +442,33 @@ export function evaluate(
         return vs.reduce((a: number, b: number) => a + b, 0) / vs.length;
       }
       case "case": {
-        for (const arm of e.slice(1)) {
-          if (arm[0] === "else") return g(arm[1]);
-          const cv = g(arm[0]);
-          if (cv === null) return null;
-          if (cv) return g(arm[1]);
+        // One arm is a branch: the condition that selected it and the result
+        // it produced both decided the value.
+        const f = trace ? openFrame("case") : null;
+        let chosen: number | null = null;
+        let detail: string | undefined;
+        try {
+          const arms = e.slice(1);
+          for (let i = 0; i < arms.length; i++) {
+            const arm = arms[i];
+            if (f) { f.branch = i; f.role = "condition"; }
+            if (arm[0] === "else") {
+              chosen = i; detail = "else";
+              if (f) f.role = "result";
+              return g(arm[1]);
+            }
+            const cv = g(arm[0]);
+            if (cv === null) return null;
+            if (cv) {
+              chosen = i;
+              if (f) f.role = "result";
+              return g(arm[1]);
+            }
+          }
+          return null;
+        } finally {
+          if (f) closeFrame(f, chosen, (b) => b === chosen, p, m, detail);
         }
-        return null;
       }
       case "exists": {
         const grp = g(e[1]);
