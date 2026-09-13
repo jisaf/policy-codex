@@ -52,14 +52,13 @@ describe("StartView", () => {
     expect(location.hash).toBe("#/mwr/program");
   });
 
-  it("the engineer door sets the door (Task 4 wires the Handoff route)", () => {
+  it("the engineer door keeps reader mode and opens Handoff", () => {
     const host = document.createElement("div");
     render(<StartView />, host);
     click(host, "engineer");
     expect(doorSig.value).toBe("engineer");
     expect(modeSig.value).toBe("read");
-    // TODO(handoff): this should become "#/mwr/handoff" once Task 4 builds it.
-    expect(location.hash).toBe("#/mwr/table");
+    expect(location.hash).toBe("#/mwr/handoff");
   });
 });
 

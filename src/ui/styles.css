@@ -229,3 +229,12 @@ button.showall { border: 1px solid var(--line); background: var(--panel); font: 
 .newcase .actions label { display: flex; gap: 4px; align-items: center; color: var(--muted); }
 .newcase .actions input { font: inherit; padding: 4px; border: 1px solid var(--line);
   border-radius: 4px; min-width: 260px; }
+.handoff .program-group { margin-top: 12px; }
+.handoff .chapter-group { margin-top: 8px; }
+.handoff .chapter-group h4 { margin: 0 0 4px; color: var(--muted); font-weight: 400; }
+.handoff-md { margin-top: 8px; }
+.handoff-md table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+.handoff-md th, .handoff-md td { text-align: left; padding: 4px 8px;
+  border-bottom: 1px solid var(--line); }
+.handoff-md pre { background: var(--bg); border: 1px solid var(--line); padding: 10px;
+  overflow-x: auto; white-space: pre-wrap; }

@@ -50,12 +50,19 @@ describe("Header", () => {
     expect(docs.getAttribute("href")).toBe("#/mwr/documents");
   });
 
-  it("leaves Handoff out of the primary nav even for the engineer door (Task 4 adds the view)", () => {
+  it("adds Handoff to the primary nav for the engineer door only", () => {
     doorSig.value = "engineer";
     const host = document.createElement("div");
     render(<Header />, host);
-    const labels = [...host.querySelectorAll("nav.primary a")].map((a) => a.textContent);
-    expect(labels).not.toContain("Handoff");
+    const links = [...host.querySelectorAll("nav.primary a")];
+    expect(links.map((a) => a.textContent)).toEqual(["Programs", "Cases", "Search", "Handoff"]);
+    const handoff = links.find((a) => a.textContent === "Handoff")!;
+    expect(handoff.getAttribute("href")).toBe("#/mwr/handoff");
+
+    doorSig.value = "reader";
+    render(<Header />, host);
+    expect([...host.querySelectorAll("nav.primary a")].map((a) => a.textContent))
+      .not.toContain("Handoff");
   });
 
   it("sends the brand link and the 'change how you use this' link to start", () => {

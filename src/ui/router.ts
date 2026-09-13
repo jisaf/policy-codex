@@ -13,12 +13,9 @@ export interface Route {
   params: Record<string, string>;
 }
 
-// "handoff" is deliberately left out until Task 4 builds the view it names:
-// a hash segment of "handoff" falls back to "table" until then, and Header's
-// nav hook (`VIEWS.includes("handoff")`) stays off meanwhile.
 export const VIEWS: ViewName[] = [
   "start", "table", "graph", "cases", "program", "item", "source", "documents", "document",
-  "search",
+  "search", "handoff",
 ];
 
 export function defaultRoute(): Route {

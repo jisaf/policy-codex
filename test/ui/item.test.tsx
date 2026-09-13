@@ -147,6 +147,25 @@ describe("ItemView", () => {
     );
   });
 
+  it("opens the decision record section when asked via route.params.section", () => {
+    route.value = { ...defaultRoute(), view: "item", arg: "WR-200", params: {} };
+    volumeSig.value = vol;
+    engineSig.value = engine;
+    const host = document.createElement("div");
+    render(<ItemView />, host);
+    const closed = [...host.querySelectorAll("details.section")].find(
+      (d) => d.querySelector("summary")!.textContent === "Decision record",
+    ) as HTMLDetailsElement;
+    expect(closed.open).toBe(false);
+
+    route.value = { ...defaultRoute(), view: "item", arg: "WR-200", params: { section: "record" } };
+    render(<ItemView />, host);
+    const open = [...host.querySelectorAll("details.section")].find(
+      (d) => d.querySelector("summary")!.textContent === "Decision record",
+    ) as HTMLDetailsElement;
+    expect(open.open).toBe(true);
+  });
+
   it("says when an item is missing", () => {
     const host = show("WR-999");
     expect(host.textContent).toContain("No item WR-999 in this volume.");

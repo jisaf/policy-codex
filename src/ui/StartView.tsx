@@ -32,8 +32,7 @@ function choose(door: Door): void {
   if (door === "admin") {
     navigate({ view: "cases", arg: null, params: {} });
   } else if (door === "engineer") {
-    // TODO(handoff): route to `#/mwr/handoff` once Task 4 builds that view.
-    navigate({ view: "table", arg: null, params: {} });
+    navigate({ view: "handoff", arg: null, params: {} });
   } else {
     navigate({ view: "program", arg: null, params: {} });
   }

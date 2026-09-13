@@ -265,7 +265,7 @@ export function ItemView() {
         </pre>
       </details>
 
-      <details class="section">
+      <details class="section" open={r.params.section === "record"}>
         <summary>Decision record</summary>
         <DecisionRecord item={item} vol={vol} route={r} />
       </details>

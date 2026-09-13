@@ -18,9 +18,9 @@ interface NavItem {
 }
 
 // Primary: the home view (Programs) plus the two other everyday
-// destinations. The engineer door adds Handoff once Task 4 builds it (see
-// the `VIEWS.includes("handoff")` check below); everything else a reader
-// used before phase 3 moved under the Browse dropdown.
+// destinations. The engineer door adds Handoff (see the
+// `VIEWS.includes("handoff")` check below); everything else a reader used
+// before phase 3 moved under the Browse dropdown.
 const PRIMARY: NavItem[] = [
   { view: "program", label: "Programs", arg: (firstProgram) => firstProgram },
   { view: "cases", label: "Cases" },
