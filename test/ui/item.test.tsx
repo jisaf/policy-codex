@@ -140,6 +140,18 @@ describe("ItemView", () => {
     expect(record).toContain("a person keeps the age they hold on the first day of the month");
   });
 
+  it("shows the scope in Details with its plain label and the ledger term alongside", () => {
+    const host = show("WR-200");
+    const details = [...host.querySelectorAll("details.section")].find(
+      (d) => d.querySelector("summary")!.textContent === "Details",
+    )!;
+    const scopeLine = [...details.querySelectorAll("p")].find(
+      (p) => p.querySelector("b")?.textContent === "Scope.",
+    )!;
+    expect(scopeLine.textContent).toContain("per person");
+    expect(scopeLine.querySelector("code.alias")!.textContent).toBe("person");
+  });
+
   it("shows the Approach A projection in its own section", () => {
     const host = show("WR-200");
     expect(host.querySelector("pre.projection")!.textContent).toContain(

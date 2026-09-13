@@ -461,30 +461,28 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           />
         </label>
       )}
+      <label>Implemented in
+        <select
+          name="implemented" value={draft.implemented ?? ""}
+          onChange={(e) => set({
+            implemented: ((e.target as HTMLSelectElement).value || null) as Item["implemented"],
+          })}
+        >
+          <option value="">choose…</option>
+          <option value="assembly">Fact assembly</option>
+          <option value="engine">Determination engine</option>
+        </select>
+      </label>
       {showDerivation && (
-        <>
-          <label>Implemented in
-            <select
-              name="implemented" value={draft.implemented ?? ""}
-              onChange={(e) => set({
-                implemented: ((e.target as HTMLSelectElement).value || null) as Item["implemented"],
-              })}
-            >
-              <option value="">choose…</option>
-              <option value="assembly">Fact assembly</option>
-              <option value="engine">Determination engine</option>
-            </select>
-          </label>
-          <div class="wide tree">
-            <h4>Derivation</h4>
-            <Slot
-              engine={engine} draft={draft} onChange={onChange}
-              path={[]} want={engine.baseType(draft)}
-              ctx={{ root: true, monthOk, personOk: false, ctxType: engine.baseType(draft) }}
-              label="result"
-            />
-          </div>
-        </>
+        <div class="wide tree">
+          <h4>Derivation</h4>
+          <Slot
+            engine={engine} draft={draft} onChange={onChange}
+            path={[]} want={engine.baseType(draft)}
+            ctx={{ root: true, monthOk, personOk: false, ctxType: engine.baseType(draft) }}
+            label="result"
+          />
+        </div>
       )}
       <div class="wide also">
         <h4>Also</h4>

@@ -215,7 +215,7 @@ export function ItemView() {
         <p><b>Type.</b> {item.type}
           {item.options && item.options.length ? `: ${item.options.join(", ")}` : ""}
         </p>
-        <p><b>Scope.</b> {item.scope}</p>
+        <p><b>Scope.</b> <Term scope={item.scope} /></p>
         <p><b>Program.</b> <span class={`tag prog-${item.program.toLowerCase()}`}>{item.program}</span></p>
         {item.tags && item.tags.length > 0 && <p><b>Tags.</b> {item.tags.join(", ")}</p>}
         {item.precision && <p><b>Precision.</b> {item.precision}</p>}

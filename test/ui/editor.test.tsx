@@ -202,6 +202,8 @@ describe("ItemEditor", () => {
       expect(editingSig.value!.draft.scope).toBe("person");
       expect(host.querySelector("input[name=supplied_by]")).not.toBeNull();
       expect(host.querySelector(".tree")).toBeNull();
+      // "Implemented in" applies to every kind, not only derived rules.
+      expect(host.querySelector("select[name=implemented]")).not.toBeNull();
     });
 
   it("choosing \"A number set by policy\" defaults scope to global and shows the value field",
@@ -224,6 +226,8 @@ describe("ItemEditor", () => {
       expect(host.querySelector("input[name=value]")).not.toBeNull();
       expect(host.querySelector("select[name=scope]")).toBeNull();
       expect(host.querySelector(".tree")).toBeNull();
+      // "Implemented in" applies to every kind, not only derived rules.
+      expect(host.querySelector("select[name=implemented]")).not.toBeNull();
     });
 
   it("groups Text and AI under an Advanced disclosure", async () => {
