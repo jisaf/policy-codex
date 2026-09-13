@@ -1,8 +1,9 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import { referencesInCases, renameInCasesText } from "../engine/rename";
-import type { Item } from "../engine/types";
+import type { Item, TestSpec } from "../engine/types";
 import { fileEntries } from "../changes/types";
+import { DecisionRecord } from "./DecisionRecord";
 import { buildHash } from "./router";
 import {
   changeSetSig, engineSig, openEditor, putChangeEntry, putFileChange, route, sourceTitles,
@@ -63,8 +64,35 @@ export function TestTable({ engine, item }: { engine: Engine; item: Item }) {
   );
 }
 
+/** The derivation rendered as one leading claim: the block's first line
+ *  folded into "<Name> is true when …" (yes/no items) or "<Name> is …"
+ *  (everything else), the remaining lines kept indented beneath it exactly
+ *  as `engine.block` produced them. */
+function DerivedSentence({ engine, item }: { engine: Engine; item: Item }) {
+  let lines: string[];
+  try {
+    lines = item.derived ? engine.block(item.derived) : ["(no derivation yet)"];
+  } catch (e) {
+    lines = [`(invalid: ${(e as Error).message})`];
+  }
+  const verb = engine.baseType(item) === "yes/no" ? "is true when" : "is";
+  const head = item.derived ? `${item.name} ${verb} ${lines[0]}` : lines[0];
+  return <pre class="derivation lead-sentence">{[head, ...lines.slice(1)].join("\n")}</pre>;
+}
+
+/** One worked example from the item's first test, "Given …, the answer is
+ *  …", built the same way the test table reads a spec back to English. */
+function workedExample(engine: Engine, t: TestSpec | undefined): string | null {
+  if (!t) return null;
+  const given = engine.formatTest(t)
+    .replace(/^[^:]+: given /, "").replace(/ => .*$/, "");
+  const expected = "expect_length" in t
+    ? `${t.expect_length} months`
+    : engine.fmt(t.expect === "unknown" ? null : t.expect);
+  return `Given ${given}, the answer is ${expected}.`;
+}
+
 export function ItemView() {
-  const tab = useSignal<"b" | "a">("b");
   const renameOpen = useSignal(false);
   const renameValue = useSignal("");
   const engine = viewEngine() ?? engineSig.value;
@@ -77,39 +105,20 @@ export function ItemView() {
   const validation = itemValidation(engine, item.id);
   const uses = engine.usesOfItem(item.identifier);
   const usedBy = engine.usedBy(item.identifier);
-  const questions = vol.openQuestions.filter((q) => (item.open ?? []).includes(q.id));
   const sources = vol.sources.filter((s) => (item.sources ?? []).includes(s.id));
   const link = (id: string) => buildHash({ ...r, view: "item", arg: id, params: {} });
   const nameOf = (identifier: string) => engine.item(identifier)?.name ?? identifier;
   const idOf = (identifier: string) => engine.item(identifier)?.id ?? identifier;
-
-  let english = "";
-  if (item.kind === "derived" && item.derived) {
-    try { english = engine.block(item.derived).join("\n"); }
-    catch (e) { english = `(invalid: ${(e as Error).message})`; }
-  }
+  const example = workedExample(engine, (item.tests ?? [])[0]);
 
   return (
     <section class="view card">
       <div class="cardhead">
         <h1>{item.name}</h1>
-        <span class="tag">{item.id}</span>
-        <span class="tag">{item.kind}</span>
-        <span class="tag">{item.type}</span>
-        <span class="tag">{item.scope}</span>
-        <span class={`tag prog-${item.program.toLowerCase()}`}>{item.program}</span>
-        {item.role && <span class="tag">{item.role}</span>}
+        <p class="idline muted">
+          <span class="mono">{item.id}</span> · <span class="mono">{item.identifier}</span>
+        </p>
         <span class="spacer" />
-        <div class="tabs">
-          <button
-            data-tab="b" class={tab.value === "b" ? "on" : ""}
-            onClick={() => { tab.value = "b"; }}
-          >B+ codex</button>
-          <button
-            data-tab="a" class={tab.value === "a" ? "on" : ""}
-            onClick={() => { tab.value = "a"; }}
-          >Approach A</button>
-        </div>
         <button class="btn" onClick={() => openEditor(item.id)}>Edit</button>
         <button
           class="btn rename"
@@ -180,103 +189,90 @@ export function ItemView() {
         );
       })()}
 
-      {tab.value === "a" ? (
-        <>
-          <p class="muted">{engine.projectionA(item.identifier, sourceTitles()).ledger}</p>
-          <pre class="projection">
-            {engine.projectionA(item.identifier, sourceTitles()).text}
-          </pre>
-        </>
-      ) : (
-        <>
-          <p class="meaning">{item.meaning}</p>
-          {item.precision && <p class="muted"><b>Precision.</b> {item.precision}</p>}
-          {item.assumption && <p class="muted"><b>Assumption.</b> {item.assumption}</p>}
-          {item.kind === "supplied" && (
-            <p><b>Supplied by.</b> {item.supplied_by}</p>
-          )}
-          {item.kind === "parameter" && (
-            <p><b>Value.</b> {engine.lit(engine.paramValue(item))}</p>
-          )}
-          {item.kind === "derived" && (
-            <>
-              <h3>Derivation</h3>
-              <pre class="derivation">{english}</pre>
-              <p class="muted">
-                Implemented in {item.implemented === "assembly"
-                  ? "fact assembly" : "the determination engine"}.
-              </p>
-            </>
-          )}
-
-          {questions.length > 0 && (
-            <div class="questions">
-              <h3>Open questions</h3>
-              {questions.map((q) => (
-                <details key={q.id}>
-                  <summary>{q.id} {q.title}</summary>
-                  <p>{q.body}</p>
-                </details>
-              ))}
-            </div>
-          )}
-
-          <h3>Sources</h3>
-          {sources.length === 0 && <p class="muted">No source cited.</p>}
-          {sources.map((s) => (
-            <details key={s.id} class="source">
-              <summary>{s.id}. {s.title}</summary>
-              <p class="citation">{s.citation}</p>
-              <pre class="statute">{s.text}</pre>
-              <a href={buildHash({ ...r, view: "source", arg: s.id, params: {} })}>
-                Open in Sources
-              </a>
-            </details>
-          ))}
-
-          <h3>Examples</h3>
-          <TestTable engine={engine} item={item} />
-
-          <h3>Dependencies</h3>
-          <p class="uses">
-            <b>Uses:</b>{" "}
-            {uses.length
-              ? uses.map((u, i) => (
-                  <span key={u}>
-                    {i > 0 && ", "}
-                    <a href={link(idOf(u))}>{nameOf(u)}</a>
-                  </span>
-                ))
-              : "nothing"}
+      <div class="leading">
+        {item.kind === "derived" && <DerivedSentence engine={engine} item={item} />}
+        {item.kind === "supplied" && (
+          <p class="lead-sentence">A fact we are told: {item.meaning}</p>
+        )}
+        {item.kind === "parameter" && (
+          <p class="lead-sentence">
+            A number set by policy: {engine.lit(engine.paramValue(item))}{" "}
+            ({sources.length ? sources.map((s) => s.id).join(", ") : "no source cited"})
           </p>
-          <p class="used-by">
-            <b>Used by:</b>{" "}
-            {usedBy.length
-              ? usedBy.map((u, i) => (
-                  <span key={u}>
-                    {i > 0 && ", "}
-                    <a href={link(idOf(u))}>{nameOf(u)}</a>
-                  </span>
-                ))
-              : "nothing"}
-          </p>
-          <p>
-            <a
-              href={buildHash({
-                ...r, view: "graph", arg: null, params: { focus: item.identifier },
-              })}
-            >View in the graph</a>
-          </p>
+        )}
+        {example && <p class="worked-example"><b>Example.</b> {example}</p>}
+      </div>
 
-          {validation.messages.length > 0 && (
-            <div class="problems">
-              <h3>Problems</h3>
-              <ul>
-                {validation.messages.map((m) => <li key={m} class="bad">{m}</li>)}
-              </ul>
-            </div>
-          )}
-        </>
+      <details class="section">
+        <summary>Details</summary>
+        <p><b>Type.</b> {item.type}
+          {item.options && item.options.length ? `: ${item.options.join(", ")}` : ""}
+        </p>
+        <p><b>Scope.</b> {item.scope}</p>
+        <p><b>Program.</b> <span class={`tag prog-${item.program.toLowerCase()}`}>{item.program}</span></p>
+        {item.tags && item.tags.length > 0 && <p><b>Tags.</b> {item.tags.join(", ")}</p>}
+        {item.precision && <p><b>Precision.</b> {item.precision}</p>}
+        {item.assumption && <p><b>Assumption.</b> {item.assumption}</p>}
+      </details>
+
+      <details class="section">
+        <summary>Tests</summary>
+        <TestTable engine={engine} item={item} />
+      </details>
+
+      <details class="section">
+        <summary>Dependencies</summary>
+        <p class="uses">
+          <b>Uses:</b>{" "}
+          {uses.length
+            ? uses.map((u, i) => (
+                <span key={u}>
+                  {i > 0 && ", "}
+                  <a href={link(idOf(u))}>{nameOf(u)}</a> <small class="mono">{idOf(u)}</small>
+                </span>
+              ))
+            : "nothing"}
+        </p>
+        <p class="used-by">
+          <b>Used by:</b>{" "}
+          {usedBy.length
+            ? usedBy.map((u, i) => (
+                <span key={u}>
+                  {i > 0 && ", "}
+                  <a href={link(idOf(u))}>{nameOf(u)}</a> <small class="mono">{idOf(u)}</small>
+                </span>
+              ))
+            : "nothing"}
+        </p>
+        <p>
+          <a
+            href={buildHash({
+              ...r, view: "graph", arg: null, params: { focus: item.identifier },
+            })}
+          >View in the graph</a>
+        </p>
+      </details>
+
+      <details class="section">
+        <summary>Approach A projection</summary>
+        <p class="muted">{engine.projectionA(item.identifier, sourceTitles()).ledger}</p>
+        <pre class="projection">
+          {engine.projectionA(item.identifier, sourceTitles()).text}
+        </pre>
+      </details>
+
+      <details class="section">
+        <summary>Decision record</summary>
+        <DecisionRecord item={item} vol={vol} route={r} />
+      </details>
+
+      {validation.messages.length > 0 && (
+        <div class="problems">
+          <h3>Problems</h3>
+          <ul>
+            {validation.messages.map((m) => <li key={m} class="bad">{m}</li>)}
+          </ul>
+        </div>
       )}
     </section>
   );
