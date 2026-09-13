@@ -1,4 +1,4 @@
-import { useMemo } from "preact/hooks";
+import { useMemo, useState } from "preact/hooks";
 import type { Engine } from "../engine/engine";
 import type { Expr, Item } from "../engine/types";
 import { RELS } from "../engine/types";
@@ -308,6 +308,15 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
   );
   const acknowledged = new Set(draft.nearest ?? []);
 
+  // A new item is guided to the fields its chosen kind needs; an existing
+  // item opens with everything reachable, since it may carry fields outside
+  // its kind's usual set. Either way the toggle can override the default.
+  const [allFields, setAllFields] = useState(!isNew);
+  const showScope = allFields || draft.kind !== "parameter";
+  const showSuppliedBy = allFields || draft.kind === "supplied";
+  const showValue = allFields || draft.kind === "parameter";
+  const showDerivation = allFields || draft.kind === "derived";
+
   return (
     <div class="form">
       <label>Fact name
@@ -337,6 +346,18 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           <option value="parameter">parameter</option>
         </select>
       </label>
+      <label class="wide allfields">
+        <input
+          type="checkbox" class="allfieldstoggle" checked={allFields}
+          onChange={(e) => setAllFields((e.target as HTMLInputElement).checked)}
+        /> All fields
+      </label>
+      <label class="wide">Meaning
+        <textarea
+          name="meaning" rows={2} value={draft.meaning ?? ""}
+          onInput={(e) => set({ meaning: (e.target as HTMLTextAreaElement).value })}
+        />
+      </label>
       <label>Type
         <select
           name="type" value={draft.type}
@@ -356,14 +377,16 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           />
         </label>
       )}
-      <label>Scope
-        <select
-          name="scope" value={draft.scope}
-          onChange={(e) => set({ scope: (e.target as HTMLSelectElement).value as Item["scope"] })}
-        >
-          {engine.meta.scopes.map((s) => <option key={s} value={s}>{s}</option>)}
-        </select>
-      </label>
+      {showScope && (
+        <label>Scope
+          <select
+            name="scope" value={draft.scope}
+            onChange={(e) => set({ scope: (e.target as HTMLSelectElement).value as Item["scope"] })}
+          >
+            {engine.meta.scopes.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+        </label>
+      )}
       <label>Program
         <select
           name="program" value={draft.program}
@@ -373,12 +396,6 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           <option value="Medicaid">Medicaid</option>
           <option value="SNAP">SNAP</option>
         </select>
-      </label>
-      <label class="wide">Meaning
-        <textarea
-          name="meaning" rows={2} value={draft.meaning ?? ""}
-          onInput={(e) => set({ meaning: (e.target as HTMLTextAreaElement).value })}
-        />
       </label>
       <label class="wide">Precision
         <textarea
@@ -422,7 +439,7 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
             )}
         </div>
       )}
-      {draft.kind === "supplied" && (
+      {showSuppliedBy && (
         <label class="wide">Supplied by
           <input
             name="supplied_by" value={draft.supplied_by ?? ""}
@@ -430,7 +447,7 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           />
         </label>
       )}
-      {draft.kind === "parameter" && (
+      {showValue && (
         <label>Value
           <input
             name="value" value={draft.value == null ? "" : engine.lit(draft.value)}
@@ -444,25 +461,7 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           />
         </label>
       )}
-      <label class="wide">Sources (comma separated ids)
-        <input
-          name="sources" value={(draft.sources ?? []).join(", ")}
-          onInput={(e) => set({
-            sources: (e.target as HTMLInputElement).value
-              .split(",").map((x) => x.trim()).filter(Boolean),
-          })}
-        />
-      </label>
-      <label class="wide">Open questions (comma separated ids)
-        <input
-          name="open" value={(draft.open ?? []).join(", ")}
-          onInput={(e) => set({
-            open: (e.target as HTMLInputElement).value
-              .split(",").map((x) => x.trim()).filter(Boolean),
-          })}
-        />
-      </label>
-      {draft.kind === "derived" && (
+      {showDerivation && (
         <>
           <label>Implemented in
             <select
@@ -487,6 +486,36 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           </div>
         </>
       )}
+      <div class="wide also">
+        <h4>Also</h4>
+        <label class="wide">Sources (comma separated ids)
+          <input
+            name="sources" value={(draft.sources ?? []).join(", ")}
+            onInput={(e) => set({
+              sources: (e.target as HTMLInputElement).value
+                .split(",").map((x) => x.trim()).filter(Boolean),
+            })}
+          />
+        </label>
+        <label class="wide">Open questions (comma separated ids)
+          <input
+            name="open" value={(draft.open ?? []).join(", ")}
+            onInput={(e) => set({
+              open: (e.target as HTMLInputElement).value
+                .split(",").map((x) => x.trim()).filter(Boolean),
+            })}
+          />
+        </label>
+        <label class="wide">Tags (comma separated)
+          <input
+            name="tags" value={(draft.tags ?? []).join(", ")}
+            onInput={(e) => set({
+              tags: (e.target as HTMLInputElement).value
+                .split(",").map((x) => x.trim()).filter(Boolean),
+            })}
+          />
+        </label>
+      </div>
     </div>
   );
 }

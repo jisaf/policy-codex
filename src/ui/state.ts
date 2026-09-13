@@ -27,8 +27,9 @@ export interface EditingState {
   draft: Item;
   surface: "form" | "text" | "ai";
   /** A new item starts on "start", a search of the ledger, so a steward looks
-   *  before adding. An existing item opens straight into "edit". */
-  step: "start" | "edit";
+   *  before adding, then "kind", the wizard's "what are you adding?" choice.
+   *  An existing item opens straight into "edit". */
+  step: "start" | "kind" | "edit";
   /** Preselects the AI panel's context selector when the editor was opened
    *  from a source or a document rather than from the ledger search. */
   context?: { kind: "source" | "document"; id: string };

@@ -125,6 +125,18 @@ li.candidate .score { color: var(--muted); font-variant-numeric: tabular-nums; }
   .form { grid-template-columns: 1fr; }
   .textsurface { grid-template-columns: 1fr; }
 }
+.kindchoices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px; margin: 10px 0; }
+.kindchoice { display: flex; flex-direction: column; gap: 4px; text-align: left;
+  padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+  font: inherit; cursor: pointer; }
+.kindchoice:hover { background: var(--med); }
+.kindchoice span { color: var(--muted); font-size: 13px; }
+.form label.allfields { flex-direction: row; align-items: center; gap: 6px; }
+.form .also { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+.form .also h4 { margin: 0 0 6px; }
+details.advanced summary { cursor: pointer; }
+.advtabs { display: inline-flex; gap: 4px; margin-left: 6px; }
 .tray .entries { list-style: none; padding: 0; margin: 8px 0; }
 .tray li.entry { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
   padding: 6px 0; border-bottom: 1px solid var(--line); }
