@@ -149,6 +149,35 @@ describe("HandoffView", () => {
     expect(rendered.querySelector("pre code")).not.toBeNull();
   });
 
+  it("keeps the rendered handoff collapsed behind a closed details element", () => {
+    const host = show();
+    const details = host.querySelector("details.section") as HTMLDetailsElement;
+    expect(details).not.toBeNull();
+    expect(details.querySelector("summary")!.textContent).toBe("Rendered handoff");
+    expect(details.open).toBe(false);
+    expect(details.querySelector(".handoff-md")).not.toBeNull();
+  });
+
+  it("offers a table of contents above the checklist, linking each chapter to its section", () => {
+    const host = show();
+    const toc = host.querySelector("nav.handoff-toc")!;
+    expect(toc).not.toBeNull();
+    // The table of contents comes before the checklist it points into.
+    const checklistHeading = [...host.querySelectorAll("h2")].find(
+      (h) => h.textContent === "Implementation checklist",
+    )!;
+    expect(
+      toc.compareDocumentPosition(checklistHeading) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+
+    const medicaidLink = [...toc.querySelectorAll("a")].find((a) => a.textContent === "medicaid")!;
+    const href = medicaidLink.getAttribute("href")!;
+    expect(href.startsWith("#")).toBe(true);
+    const target = host.querySelector(href);
+    expect(target).not.toBeNull();
+    expect(target!.querySelector("h4")!.textContent).toBe("medicaid");
+  });
+
   it("says nothing is loaded when there is no engine or volume", () => {
     engineSig.value = null;
     volumeSig.value = null;

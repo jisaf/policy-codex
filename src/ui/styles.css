@@ -229,6 +229,12 @@ button.showall { border: 1px solid var(--line); background: var(--panel); font: 
 .newcase .actions label { display: flex; gap: 4px; align-items: center; color: var(--muted); }
 .newcase .actions input { font: inherit; padding: 4px; border: 1px solid var(--line);
   border-radius: 4px; min-width: 260px; }
+.handoff-toc { margin: 8px 0 16px; padding: 10px 14px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; }
+.handoff-toc h2 { margin: 0 0 4px; font-size: 14px; }
+.handoff-toc ul { margin: 0; padding-left: 18px; }
+.handoff-toc > ul { display: flex; flex-wrap: wrap; gap: 4px 20px; padding-left: 0; list-style: none; }
+.handoff-toc > ul > li { min-width: 140px; }
 .handoff .program-group { margin-top: 12px; }
 .handoff .chapter-group { margin-top: 8px; }
 .handoff .chapter-group h4 { margin: 0 0 4px; color: var(--muted); font-weight: 400; }

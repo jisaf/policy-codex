@@ -34,6 +34,12 @@ function groupDerived(engine: Engine, vol: LoadedVolume): ProgramGroup[] {
     .filter((g) => g.chapters.length > 0);
 }
 
+/** A stable, URL-safe id for a program/chapter pair's section, used by both
+ *  the table of contents and the chapter heading it jumps to. */
+function chapterAnchor(program: string, chapter: string): string {
+  return `chapter-${program}-${chapter}`.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
 function implementationLabel(it: Item): string {
   if (!it.implemented) return "not recorded";
   return it.implemented_by ? `${it.implemented} — ${it.implemented_by}` : it.implemented;
@@ -110,12 +116,30 @@ export function HandoffView() {
         </a>
       </div>
 
+      <nav class="handoff-toc">
+        <h2>Contents</h2>
+        <ul>
+          {groups.map((g) => (
+            <li key={g.program}>
+              {g.program}
+              <ul>
+                {g.chapters.map((c) => (
+                  <li key={c.chapter}>
+                    <a href={`#${chapterAnchor(g.program, c.chapter)}`}>{c.chapter}</a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <h2>Implementation checklist</h2>
       {groups.map((g) => (
         <div key={g.program} class="program-group">
           <h3>{g.program}</h3>
           {g.chapters.map((c) => (
-            <div key={c.chapter} class="chapter-group">
+            <div key={c.chapter} class="chapter-group" id={chapterAnchor(g.program, c.chapter)}>
               <h4>{c.chapter}</h4>
               <ChecklistTable items={c.items} route={r} />
             </div>
@@ -123,8 +147,10 @@ export function HandoffView() {
         </div>
       ))}
 
-      <h2>Rendered handoff</h2>
-      <div class="handoff-md" dangerouslySetInnerHTML={{ __html: renderMarkdown(md) }} />
+      <details class="section">
+        <summary>Rendered handoff</summary>
+        <div class="handoff-md" dangerouslySetInnerHTML={{ __html: renderMarkdown(md) }} />
+      </details>
     </section>
   );
 }
