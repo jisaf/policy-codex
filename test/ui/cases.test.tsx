@@ -2,7 +2,9 @@ import { describe, it, expect, beforeEach } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { render } from "preact";
-import { CasesView, buildSpec, programOutcomes, upstreamCone } from "../../src/ui/CasesView";
+import {
+  CasesView, buildSpec, isRepresentableCase, programOutcomes, upstreamCone,
+} from "../../src/ui/CasesView";
 import { createEngine } from "../../src/engine/engine";
 import { caseToSpec, parseCases } from "../../src/engine/cases";
 import { emptyChangeSet } from "../../src/changes/types";
@@ -323,6 +325,55 @@ describe("CasesView", () => {
       (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
     expect(outcome.querySelector(".tval")!.textContent).toBe("met");
+  });
+
+  it("offers only the households the one-person form can represent", () => {
+    const host = show("new", { programs: "Medicaid,SNAP" });
+    const example = [...host.querySelectorAll("select")].find(
+      (s) => [...s.options].some((o) => o.value === "C-01"),
+    )! as HTMLSelectElement;
+    const listed = [...example.options].map((o) => o.value).filter(Boolean);
+    expect(listed).toEqual(cases.filter(isRepresentableCase).map((c) => c.id));
+    expect(listed).toContain("C-01");
+    expect(listed).not.toContain("C-03");
+    expect(listed).not.toContain("C-06");
+  });
+
+  it("evaluates every listed example to the same outcome values runCase gets", async () => {
+    const host = show("new", { programs: "Medicaid,SNAP" });
+    const example = [...host.querySelectorAll("select")].find(
+      (s) => [...s.options].some((o) => o.value === "C-01"),
+    )! as HTMLSelectElement;
+    const listed = [...example.options].map((o) => o.value).filter(Boolean);
+    expect(listed.length).toBeGreaterThan(0);
+
+    for (const id of listed) {
+      example.value = id;
+      example.dispatchEvent(new Event("change", { bubbles: true }));
+      await new Promise((r) => setTimeout(r));
+
+      const evaluate = [...host.querySelectorAll("button")].find(
+        (b) => b.textContent === "Evaluate",
+      )! as HTMLButtonElement;
+      evaluate.click();
+      await new Promise((r) => setTimeout(r));
+
+      const hc = cases.find((c) => c.id === id)!;
+      const report = engine.runCase(hc);
+      const gotByKey = new Map(
+        report.results.map((res) => [`${res.identifier}|${res.month ?? ""}`, res.got]),
+      );
+
+      const outcomeEls = [...host.querySelectorAll(".outcome")];
+      expect(outcomeEls.length).toBeGreaterThan(0);
+      for (const el of outcomeEls) {
+        const identifier = el.querySelector("code")!.textContent!;
+        const month = el.querySelector(".tag")?.textContent ?? "";
+        const key = `${identifier}|${month}`;
+        if (!gotByKey.has(key)) continue; // not one of this case's expectations
+        expect(el.querySelector(".tval")!.textContent).toBe(engine.fmt(gotByKey.get(key)));
+      }
+    }
   });
 
   it("names the unanswered facts of an unknown outcome and focuses one on click", async () => {

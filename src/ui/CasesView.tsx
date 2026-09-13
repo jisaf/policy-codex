@@ -112,6 +112,17 @@ export function buildSpec(
   return { id: "household", as_of: asOf, persons: { p1: person } };
 }
 
+/** Whether "Try an example" can fill the one-person form from this case: a
+ *  single person `p1`, with no month-scoped facts the form has no field
+ *  for (`persons.p1.months` or `month_facts`). A household with a second
+ *  person, or facts that vary by month, would silently drop data the form
+ *  cannot represent. */
+export function isRepresentableCase(c: HouseholdCase): boolean {
+  const personIds = Object.keys(c.persons ?? {});
+  return personIds.length === 1 && personIds[0] === "p1"
+    && !c.persons.p1.months && !c.month_facts;
+}
+
 function CaseList(
   { engine, cases, route: r }:
   { engine: Engine; cases: HouseholdCase[]; route: Route },
@@ -525,7 +536,9 @@ function NewHousehold(
               onChange={(e) => applyExample((e.target as HTMLSelectElement).value)}
             >
               <option value="">choose a household…</option>
-              {(vol.cases ?? []).map((c) => <option key={c.id} value={c.id}>{c.id} {c.title}</option>)}
+              {(vol.cases ?? []).filter(isRepresentableCase).map((c) => (
+                <option key={c.id} value={c.id}>{c.id} {c.title}</option>
+              ))}
             </select>
           </label>
 
