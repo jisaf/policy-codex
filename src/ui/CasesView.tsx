@@ -277,8 +277,9 @@ function CasePage(
                 >
                   <td>{res.person}</td>
                   <td>
-                    {engine.item(res.identifier)?.name ?? res.identifier}{" "}
-                    <code>{res.identifier}</code>
+                    <b>{engine.item(res.identifier)?.name ?? res.identifier}</b>
+                    <br />
+                    <small>{engine.item(res.identifier)?.id ?? ""} · {res.identifier}</small>
                   </td>
                   <td>{res.month ?? "—"}</td>
                   <td>{engine.fmt(res.expect)}</td>

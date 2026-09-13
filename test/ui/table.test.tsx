@@ -63,4 +63,12 @@ describe("TableView", () => {
     expect(first.getAttribute("href")).toBe("#/mwr/item/WR-001");
     expect(host.textContent).toContain("138 items");
   });
+
+  it("shows the name first (bold), then id and identifier in small type", () => {
+    const host = document.createElement("div");
+    render(<TableView />, host);
+    const row = host.querySelector("tbody tr")!;
+    expect(row.querySelector("a b")!.textContent).toBe("Date of Birth");
+    expect(row.querySelector("small")!.textContent).toBe("WR-001 · date_of_birth");
+  });
 });

@@ -1,7 +1,8 @@
 import { DEFAULT_VOLUME } from "../config";
 
 export type ViewName =
-  | "table" | "graph" | "cases" | "program" | "item" | "source" | "documents" | "document" | "search";
+  | "start" | "table" | "graph" | "cases" | "program" | "item" | "source" | "documents"
+  | "document" | "search" | "handoff";
 
 export interface Route {
   volume: string;
@@ -12,8 +13,12 @@ export interface Route {
   params: Record<string, string>;
 }
 
-const VIEWS: ViewName[] = [
-  "table", "graph", "cases", "program", "item", "source", "documents", "document", "search",
+// "handoff" is deliberately left out until Task 4 builds the view it names:
+// a hash segment of "handoff" falls back to "table" until then, and Header's
+// nav hook (`VIEWS.includes("handoff")`) stays off meanwhile.
+export const VIEWS: ViewName[] = [
+  "start", "table", "graph", "cases", "program", "item", "source", "documents", "document",
+  "search",
 ];
 
 export function defaultRoute(): Route {

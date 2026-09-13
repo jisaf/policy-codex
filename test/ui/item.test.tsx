@@ -8,7 +8,7 @@ import { createEngine } from "../../src/engine/engine";
 import { parseCases } from "../../src/engine/cases";
 import { fileEntries } from "../../src/changes/types";
 import {
-  changeSetSig, engineSig, route, trayOpenSig, volumeSig,
+  changeSetSig, engineSig, modeSig, route, trayOpenSig, volumeSig,
 } from "../../src/ui/state";
 import { emptyChangeSet } from "../../src/changes/types";
 import { defaultRoute } from "../../src/ui/router";
@@ -58,6 +58,10 @@ describe("ItemView", () => {
     route.value = defaultRoute();
     changeSetSig.value = emptyChangeSet("mwr", "main");
     trayOpenSig.value = false;
+    // Edit and Rename only render in edit mode; every existing test here
+    // exercises the reader page or an editing flow, so edit mode is on
+    // throughout and the reader-mode gate gets its own test in header.test.tsx.
+    modeSig.value = "edit";
   });
 
   it("leads with the name, its id and identifier, and one sentence from the derivation", () => {

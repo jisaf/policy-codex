@@ -49,7 +49,6 @@ export function filterItems(engine: Engine, f: TableFilters): Item[] {
 }
 
 const COLUMNS = [
-  { key: "id", label: "ID" },
   { key: "name", label: "Fact" },
   { key: "kind", label: "Kind" },
   { key: "type", label: "Type" },
@@ -124,9 +123,12 @@ export function TableView() {
             return (
               <tr key={it.id}>
                 <td>
-                  <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>{it.id}</a>
+                  <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>
+                    <b>{it.name}</b>
+                  </a>
+                  <br />
+                  <small>{it.id} · {it.identifier}</small>
                 </td>
-                <td>{it.name}</td>
                 <td>{it.kind}</td>
                 <td>{it.type}</td>
                 <td>{it.scope}</td>

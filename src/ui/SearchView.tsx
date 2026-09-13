@@ -23,7 +23,7 @@ export function SearchView() {
             <ul class="hits">
               {grouped[kind].map((h) => (
                 <li key={h.id}>
-                  <a href={hitHash(h, r)}>{h.title}</a>
+                  <a href={hitHash(h, r)}><b>{h.title}</b></a>
                   <small>{h.subtitle}</small>
                   {h.snippet && <p class="snippet">{h.snippet}</p>}
                 </li>
