@@ -19,7 +19,9 @@ export function helpKeyFor(view: ViewName, editing: boolean): string | null {
   if (editing) return "editing";
   const known: Partial<Record<ViewName, string>> = {
     start: "start", program: "programs", cases: "cases", item: "item",
-    graph: "graph", handoff: "handoff",
+    table: "table", graph: "graph", source: "sources",
+    documents: "documents", document: "documents", search: "search",
+    handoff: "handoff",
   };
   return known[view] ?? null;
 }

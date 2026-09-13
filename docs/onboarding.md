@@ -24,6 +24,12 @@ program. Open one to see its facts and its expectations; any expectation
 opens the trace behind its value. "New household" builds one from scratch,
 including a "Try an example" fill from a household already in the ledger.
 
+## search
+
+Search finds items, sources, and open questions by name, identifier, or
+excerpt text, from the box in the header. Press Enter to open the first
+result, or browse every match grouped by kind on this page.
+
 ## item
 
 Every item's page leads with one plain sentence and one worked example
@@ -32,11 +38,28 @@ what uses it, and the Approach A projection. The "Decision record" section
 is the path back to source: rationale, cited excerpts, open questions, and
 the file's change history.
 
+## table
+
+Table is the complete ledger, one row per item: filter by kind, program,
+scope, or open question, sort any column, and follow a row to its own page.
+
 ## graph
 
 The graph draws the ledger's dependency structure. Focus on one item to see
 its upstream and downstream cone, or choose "Whole ledger" to see everything
 at once.
+
+## sources
+
+Sources are the verbatim excerpts of the governing text an item cites,
+nothing interpreted. Each excerpt names the document it came from and every
+item that cites it.
+
+## documents
+
+Documents are the governing texts themselves: statute, regulation, and
+guidance in full, with the excerpts Sources draws from them linked back to
+where they sit in the text.
 
 ## handoff
 

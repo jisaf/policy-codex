@@ -43,7 +43,11 @@ describe("helpKeyFor", () => {
   it("maps a view to its section key, and the editor to \"editing\" regardless of the view", () => {
     expect(helpKeyFor("cases", false)).toBe("cases");
     expect(helpKeyFor("program", false)).toBe("programs");
-    expect(helpKeyFor("table", false)).toBeNull();
+    expect(helpKeyFor("table", false)).toBe("table");
+    expect(helpKeyFor("search", false)).toBe("search");
+    expect(helpKeyFor("source", false)).toBe("sources");
+    expect(helpKeyFor("documents", false)).toBe("documents");
+    expect(helpKeyFor("document", false)).toBe("documents");
     expect(helpKeyFor("cases", true)).toBe("editing");
   });
 });
