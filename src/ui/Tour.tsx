@@ -18,6 +18,11 @@ function markSeen(): void {
  *  reaching into the component. */
 export const tourOpenSig = signal(false);
 
+/** The tour box's own rendered height in pixels, 0 while closed. The app
+ *  root reads this to pad the page by the same amount, so the fixed box
+ *  never sits over the last rows of a table instead of beside them. */
+export const tourBoxHeightSig = signal(0);
+
 export function startTour(): void {
   tourOpenSig.value = true;
 }
@@ -92,6 +97,18 @@ export function Tour() {
   useLayoutEffect(() => {
     if (!tourOpenSig.value) return;
     return highlight(STEPS[step.value].target);
+  }, [tourOpenSig.value, step.value]);
+
+  // Re-measured on every step (its body text, and so its height, changes)
+  // and cleared to 0 the moment the tour closes. Queried by class, the way
+  // `highlight` above already reaches real DOM the render just committed,
+  // rather than a ref (whose timing with a signal-driven re-render is not
+  // guaranteed the same way).
+  useLayoutEffect(() => {
+    if (!tourOpenSig.value) { tourBoxHeightSig.value = 0; return; }
+    let box: Element | null = null;
+    try { box = document.querySelector(".tourbox"); } catch { box = null; }
+    tourBoxHeightSig.value = (box as HTMLElement | null)?.offsetHeight ?? 0;
   }, [tourOpenSig.value, step.value]);
 
   if (!tourOpenSig.value) return null;

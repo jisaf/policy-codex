@@ -16,7 +16,7 @@ import { SourcesView } from "./SourcesView";
 import { StartView } from "./StartView";
 import { route, statusSig, volumeSig } from "./state";
 import { TableView } from "./TableView";
-import { Tour } from "./Tour";
+import { Tour, tourBoxHeightSig, tourOpenSig } from "./Tour";
 import { Tray } from "./Tray";
 
 function ViewSlot() {
@@ -35,8 +35,12 @@ function ViewSlot() {
 
 export function App() {
   const status = statusSig.value;
+  const tourOpen = tourOpenSig.value;
   return (
-    <div class="app">
+    <div
+      class={`app${tourOpen ? " tour-open" : ""}`}
+      style={tourOpen ? { "--tourbox-h": `${tourBoxHeightSig.value}px` } : undefined}
+    >
       <Header />
       <main>
         {status.kind === "loading" && <p class="status">{status.message}</p>}
