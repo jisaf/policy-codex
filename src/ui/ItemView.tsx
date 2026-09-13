@@ -133,7 +133,7 @@ export function ItemView() {
         )}
       </div>
 
-      {renameOpen.value && (() => {
+      {modeSig.value === "edit" && renameOpen.value && (() => {
         const candidate = renameValue.value.trim();
         const notes = renameNotes(engine, item, candidate);
         const ready = candidate !== "" && candidate !== item.identifier &&

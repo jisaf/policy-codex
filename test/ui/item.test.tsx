@@ -238,6 +238,18 @@ describe("ItemView", () => {
     expect((host.querySelector("button.confirm-rename") as HTMLButtonElement).disabled).toBe(true);
     expect(changeSetSig.value.entries).toHaveLength(0);
   });
+
+  it("hides the rename form when mode switches to read while it is open", () => {
+    const host = show("WR-001");
+    (host.querySelector("button.rename") as HTMLButtonElement).click();
+    render(<ItemView />, host);
+    expect(host.querySelector(".rename-form")).not.toBeNull();
+
+    // renameOpen is still true here: only the mode gate keeps the form shut.
+    modeSig.value = "read";
+    render(<ItemView />, host);
+    expect(host.querySelector(".rename-form")).toBeNull();
+  });
 });
 
 describe("DecisionRecord history", () => {
