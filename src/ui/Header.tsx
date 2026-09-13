@@ -1,5 +1,6 @@
 import { useSignal } from "@preact/signals";
 import { programOutcomes } from "./CasesView";
+import { toggleHelp } from "./Help";
 import { buildHash, VIEWS, type ViewName } from "./router";
 import { groupHits, hitHash, search } from "./search";
 import {
@@ -136,6 +137,7 @@ export function Header() {
         >
           {modeSig.value === "edit" ? "Turn off edit mode" : "Turn on edit mode"}
         </button>
+        <button class="btn help-toggle" title="Help" onClick={toggleHelp}>?</button>
       </header>
       <div class="hdrfoot">
         <a class="linkish" href={startHref}>change how you use this</a>

@@ -1,5 +1,6 @@
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
+import { Term } from "./labels";
 import { buildHash, type Route } from "./router";
 import { engineSig, navigate, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
@@ -129,9 +130,9 @@ export function TableView() {
                   <br />
                   <small>{it.id} · {it.identifier}</small>
                 </td>
-                <td>{it.kind}</td>
+                <td><Term kind={it.kind} /></td>
                 <td>{it.type}</td>
-                <td>{it.scope}</td>
+                <td><Term scope={it.scope} /></td>
                 <td class={`prog-${it.program.toLowerCase()}`}>{it.program}</td>
                 <td>{(it.open ?? []).join(", ")}</td>
                 <td class={v && v.errors ? "bad" : v && v.warnings ? "warn" : "ok"}>

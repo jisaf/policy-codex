@@ -4,6 +4,7 @@ import { DocumentsView } from "./DocumentsView";
 import { GraphView } from "./GraphView";
 import { HandoffView } from "./HandoffView";
 import { Header } from "./Header";
+import { HelpPanel } from "./Help";
 import { ItemEditor } from "./ItemEditor";
 import { ItemView } from "./ItemView";
 import { PrReview } from "./PrReview";
@@ -15,6 +16,7 @@ import { SourcesView } from "./SourcesView";
 import { StartView } from "./StartView";
 import { route, statusSig, volumeSig } from "./state";
 import { TableView } from "./TableView";
+import { Tour } from "./Tour";
 import { Tray } from "./Tray";
 
 function ViewSlot() {
@@ -44,6 +46,8 @@ export function App() {
       <ItemEditor />
       {isPrRef(route.value.ref) ? <PrReview /> : <Tray />}
       <Settings />
+      <Tour />
+      <HelpPanel />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { render } from "preact";
 import { StartView } from "../../src/ui/StartView";
 import { defaultRoute } from "../../src/ui/router";
 import { doorSig, modeSig, resolveEmptyHash, route, setDoor } from "../../src/ui/state";
+import { tourOpenSig } from "../../src/ui/Tour";
 
 function click(host: HTMLElement, door: string) {
   (host.querySelector(`button[data-door="${door}"]`) as HTMLButtonElement).dispatchEvent(
@@ -50,6 +51,15 @@ describe("StartView", () => {
     expect(doorSig.value).toBe("sme");
     expect(modeSig.value).toBe("edit");
     expect(location.hash).toBe("#/mwr/program");
+  });
+
+  it("\"Take the tour\" restarts the tour", () => {
+    tourOpenSig.value = false;
+    const host = document.createElement("div");
+    render(<StartView />, host);
+    ([...host.querySelectorAll("button")].find((b) => b.textContent === "Take the tour")!)
+      .dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    expect(tourOpenSig.value).toBe(true);
   });
 
   it("the engineer door keeps reader mode and opens Handoff", () => {

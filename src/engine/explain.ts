@@ -166,6 +166,25 @@ export function story(node: TraceNode): Array<{ node: TraceNode; depth: number }
   return out;
 }
 
+/** The supplied facts this value's trace never got an answer for: every node
+ *  under it (including itself) that is a supplied fact resolved with origin
+ *  "missing", deduplicated by identifier (a person-month fact can be asked
+ *  for in several months, but the form has one field for it). Used to name
+ *  what an unknown outcome is still waiting on. */
+export function missingFacts(node: TraceNode): TraceNode[] {
+  const out: TraceNode[] = [];
+  const seen = new Set<string>();
+  const walk = (n: TraceNode): void => {
+    if (n.kind === "supplied" && n.origin === "missing" && !seen.has(n.identifier)) {
+      seen.add(n.identifier);
+      out.push(n);
+    }
+    for (const k of n.children) walk(k);
+  };
+  walk(node);
+  return out;
+}
+
 /** How many lines the story may take before it stops and counts the rest. */
 export const STORY_LINES = 12;
 

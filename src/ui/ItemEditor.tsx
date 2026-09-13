@@ -5,6 +5,7 @@ import type { ChangeEntry } from "../changes/types";
 import { ratchetGovernance } from "../changes/validate";
 import { AiPanel } from "./AiPanel";
 import { FormEditor } from "./FormEditor";
+import { kindBlurb, kindLabel } from "./labels";
 import { TextEditor } from "./TextEditor";
 import { buildHash } from "./router";
 import { search } from "./search";
@@ -30,23 +31,19 @@ const ADVANCED_SURFACES: Array<{ key: EditingState["surface"]; label: string }> 
   { key: "ai", label: "AI" },
 ];
 
+/** Capitalises kindLabel's first letter for use as a standalone heading
+ *  (the label otherwise reads mid-sentence, lower case, as docs/design-
+ *  onboarding.md quotes it). */
+function titleCase(kind: Item["kind"]): string {
+  const label = kindLabel(kind);
+  return label[0].toUpperCase() + label.slice(1);
+}
+
 /** One sentence each, in the order the wizard offers them. */
 const KIND_CHOICES: Array<{ kind: Item["kind"]; title: string; blurb: string }> = [
-  {
-    kind: "supplied",
-    title: "A fact we are told",
-    blurb: "Something a person or agency tells us directly, like a birthdate or an address.",
-  },
-  {
-    kind: "derived",
-    title: "A rule",
-    blurb: "Something the ledger works out from other facts, like an age range or a test the household must pass.",
-  },
-  {
-    kind: "parameter",
-    title: "A number set by policy",
-    blurb: "A number or setting fixed by policy, like an income limit or a benefit amount.",
-  },
+  { kind: "supplied", title: titleCase("supplied"), blurb: kindBlurb("supplied") },
+  { kind: "derived", title: titleCase("derived"), blurb: kindBlurb("derived") },
+  { kind: "parameter", title: titleCase("parameter"), blurb: kindBlurb("parameter") },
 ];
 
 /** How many existing items the start step offers before the steward may add. */
