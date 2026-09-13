@@ -31,6 +31,14 @@ describe("repository layout after the rebuild", () => {
     expect(readme).not.toContain("site_build.py");
   });
 
+  it("README's engineer-door line names both downloads the Handoff view offers", () => {
+    const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+    const line = readme.split("\n").find((l) => l.includes("**Implement the rules**"))!;
+    expect(line).toBeDefined();
+    expect(line).toContain("handoff");
+    expect(line).toContain("conformance suite");
+  });
+
   it("the manifest lists every item file that exists and nothing else", () => {
     const manifest = JSON.parse(readFileSync(join(ROOT, "codex.json"), "utf8"));
     const vol = manifest.volumes.find((v: { id: string }) => v.id === "mwr");
