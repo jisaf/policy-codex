@@ -46,7 +46,7 @@ const STEPS: TourStep[] = [
   {
     target: 'nav.primary a[href*="/program"]',
     body: "Programs shows what each program decides, in plain language.",
-    go: { view: "program", arg: null, params: {} },
+    go: null,
   },
   {
     target: ".tabs a.on",
