@@ -10,7 +10,8 @@ import { buildHash, type Route } from "./router";
 import type { LoadedVolume } from "../ledger/load";
 import { fileEntries } from "../changes/types";
 import {
-  changeSetSig, engineSig, navigate, putFileChange, route, trayOpenSig, viewEngine, volumeSig,
+  changeSetSig, engineSig, modeSig, navigate, putFileChange, route, trayOpenSig, viewEngine,
+  volumeSig,
 } from "./state";
 import { Trace } from "./Trace";
 
@@ -556,16 +557,18 @@ function NewHousehold(
                 }}
               />
             </label>
-            <button
-              class="btn stage-case" disabled={!answer.value}
-              title={answer.value
-                ? "Stage this household as a new case in tests/cases.yaml"
-                : "Evaluate the household first, so the expectations state what it does"}
-              onClick={stage}
-            >
-              Stage as case
-            </button>
-            {staged.value && (
+            {modeSig.value === "edit" && (
+              <button
+                class="btn stage-case" disabled={!answer.value}
+                title={answer.value
+                  ? "Stage this household as a new case in tests/cases.yaml"
+                  : "Evaluate the household first, so the expectations state what it does"}
+                onClick={stage}
+              >
+                Stage as case
+              </button>
+            )}
+            {modeSig.value === "edit" && staged.value && (
               <span class="ok">
                 {staged.value} staged.{" "}
                 <button class="linkish" onClick={() => { trayOpenSig.value = true; }}>

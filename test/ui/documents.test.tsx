@@ -8,7 +8,7 @@ import { createEngine } from "../../src/engine/engine";
 import { parseDocuments } from "../../src/ledger/documents";
 import { parseSources } from "../../src/ledger/markdown";
 import { emptyChangeSet } from "../../src/changes/types";
-import { changeSetSig, engineSig, route, volumeSig } from "../../src/ui/state";
+import { changeSetSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
@@ -122,6 +122,9 @@ describe("Propose new document", () => {
     volumeSig.value = vol;
     engineSig.value = engine;
     changeSetSig.value = emptyChangeSet("mwr", "main");
+    // The disclosure only renders in edit mode; the reader-mode gate gets its
+    // own test below.
+    modeSig.value = "edit";
   });
 
   function type(host: HTMLElement, field: string, value: string) {
@@ -207,6 +210,35 @@ describe("Propose new document", () => {
     await new Promise((r) => setTimeout(r));
     expect((host.querySelector("button.stage-document") as HTMLButtonElement).disabled).toBe(true);
     expect(changeSetSig.value.files ?? []).toHaveLength(0);
+  });
+});
+
+describe("DocumentsView reader mode gates", () => {
+  beforeEach(() => {
+    volumeSig.value = vol;
+    engineSig.value = engine;
+    changeSetSig.value = emptyChangeSet("mwr", "main");
+  });
+
+  it("hides 'Propose new document' in read mode and shows it in edit mode", () => {
+    modeSig.value = "read";
+    let host = show("documents");
+    expect(host.querySelector(".newdoc")).toBeNull();
+
+    modeSig.value = "edit";
+    host = show("documents");
+    expect(host.querySelector(".newdoc")).not.toBeNull();
+    expect(host.textContent).toContain("Propose new document");
+  });
+
+  it("hides 'Draft from this document' in read mode and shows it in edit mode", () => {
+    modeSig.value = "read";
+    let host = show("document", "D-1");
+    expect(host.querySelector("button.draft-from-document")).toBeNull();
+
+    modeSig.value = "edit";
+    host = show("document", "D-1");
+    expect(host.querySelector("button.draft-from-document")).not.toBeNull();
   });
 });
 

@@ -6,7 +6,7 @@ import { CasesView, buildSpec, programOutcomes, upstreamCone } from "../../src/u
 import { createEngine } from "../../src/engine/engine";
 import { caseToSpec, parseCases } from "../../src/engine/cases";
 import { emptyChangeSet } from "../../src/changes/types";
-import { changeSetSig, engineSig, route, volumeSig } from "../../src/ui/state";
+import { changeSetSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
@@ -84,6 +84,10 @@ describe("CasesView", () => {
     volumeSig.value = vol;
     engineSig.value = engine;
     changeSetSig.value = emptyChangeSet("mwr", "main");
+    // "Stage as case" and "Open the tray" only render in edit mode; every
+    // existing test here exercises that staging flow, so edit mode is on
+    // throughout and the reader-mode gate gets its own test below.
+    modeSig.value = "edit";
   });
 
   it("lists every household case with its per-program counts", () => {
@@ -349,5 +353,33 @@ describe("CasesView", () => {
     expect(host.textContent).toContain("Choose a program");
     expect(host.querySelector("[data-fact]")).toBeNull();
     expect(host.querySelector('input[data-program="Medicaid"]')).not.toBeNull();
+  });
+
+  it("hides 'Stage as case' and 'Open the tray' in read mode and shows them in edit mode", async () => {
+    modeSig.value = "read";
+    route.value = { ...defaultRoute(), view: "cases", arg: "new", params: { programs: "Medicaid" } };
+    const host = document.createElement("div");
+    render(<CasesView />, host);
+    expect(host.querySelector("button.stage-case")).toBeNull();
+
+    // Toggling the signal (not re-rendering by hand) is how the real app
+    // reacts to "Turn on edit mode"; give the resulting update a tick.
+    modeSig.value = "edit";
+    await new Promise((r) => setTimeout(r));
+    expect(host.querySelector("button.stage-case")).not.toBeNull();
+
+    (([...host.querySelectorAll("button")].find((b) => b.textContent === "Evaluate")
+      ) as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    (host.querySelector("button.stage-case") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    expect(host.textContent).toContain("Open the tray");
+
+    // Switching back to read mode hides both the button and the confirmation,
+    // even though the household is still staged.
+    modeSig.value = "read";
+    await new Promise((r) => setTimeout(r));
+    expect(host.querySelector("button.stage-case")).toBeNull();
+    expect(host.textContent).not.toContain("Open the tray");
   });
 });

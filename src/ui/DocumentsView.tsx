@@ -11,7 +11,7 @@ import { fileEntries } from "../changes/types";
 import { buildHash, type Route } from "./router";
 import { citingItems } from "./SourcesView";
 import {
-  changeSetSig, engineSig, ledgerSource, openEditorForDocument, putFileChange, route,
+  changeSetSig, engineSig, ledgerSource, modeSig, openEditorForDocument, putFileChange, route,
   trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 
@@ -207,9 +207,11 @@ function DocumentPage(
         <span class="tag">{doc.kind}</span>
         {doc.date && <span class="tag">{doc.date}</span>}
         <span class="spacer" />
-        <button class="btn draft-from-document" onClick={() => openEditorForDocument(doc.id)}>
-          Draft from this document
-        </button>
+        {modeSig.value === "edit" && (
+          <button class="btn draft-from-document" onClick={() => openEditorForDocument(doc.id)}>
+            Draft from this document
+          </button>
+        )}
         <a class="btn" href={buildHash({ ...r, view: "documents", arg: null, params: {} })}>
           All documents
         </a>
@@ -286,7 +288,7 @@ export function DocumentsView(
       {vol.documents.length === 0
         ? <p class="muted">This volume has no documents.yaml.</p>
         : <DocumentList vol={vol} route={r} />}
-      <ProposeDocument vol={vol} />
+      {modeSig.value === "edit" && <ProposeDocument vol={vol} />}
     </section>
   );
 }
