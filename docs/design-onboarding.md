@@ -1,6 +1,6 @@
 # Policy Codex, phase 3: onboarding and comprehension
 
-Date: 2026-09-13. Status: approved in conversation; binding for phase 3.
+Date: 2026-09-13. Status: implemented.
 
 ## Goal
 

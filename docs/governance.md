@@ -4,6 +4,22 @@ How the ledger is kept correct as more than one person changes it. This is
 the operational companion to `docs/design-governance.md` (the spec) and
 `docs/conventions.md` (the ledger grammar); read those first for the "why".
 
+## Vocabulary
+
+Plain-language labels used throughout the app and docs, with the ledger's
+technical term as an alias:
+
+| Plain language | Technical term |
+|---|---|
+| a fact we are told | `supplied` |
+| a rule | `derived` |
+| a number set by policy | `parameter` |
+| per person | `person` |
+| per person, per month | `person-month` |
+| per household | `case` |
+| per month | `month` |
+| for everyone | `global` |
+
 ## Roles
 
 - **Program administrator.** Owns a program's outcomes (`medicaid_ce_status_at_application`
