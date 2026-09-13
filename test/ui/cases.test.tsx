@@ -294,6 +294,56 @@ describe("CasesView", () => {
       .toBe("C-14 Household evaluated as of 2027-03-15");
   });
 
+  it("fills the form from an example case's facts, mapped through the same cone", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    // Several <select>s exist on this form (kind pickers etc. do not, but be
+    // explicit): find the example picker by an option it alone offers.
+    const example = [...host.querySelectorAll("select")].find(
+      (s) => [...s.options].some((o) => o.value === "C-01"),
+    )! as HTMLSelectElement;
+    example.value = "C-01";
+    example.dispatchEvent(new Event("change", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+
+    expect((host.querySelector('[data-fact="date_of_birth"]') as HTMLInputElement).value)
+      .toBe("1996-08-02");
+    expect((host.querySelector('[data-fact="hours_worked"]') as HTMLInputElement).value)
+      .toBe("90");
+
+    const evaluate = [...host.querySelectorAll("button")].find(
+      (b) => b.textContent === "Evaluate",
+    )! as HTMLButtonElement;
+    evaluate.click();
+    await new Promise((r) => setTimeout(r));
+    const outcome = [...host.querySelectorAll(".outcome")].find(
+      (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    expect(outcome.querySelector(".tval")!.textContent).toBe("met");
+  });
+
+  it("names the unanswered facts of an unknown outcome and focuses one on click", async () => {
+    const host = show("new", { programs: "Medicaid" });
+    const evaluate = [...host.querySelectorAll("button")].find(
+      (b) => b.textContent === "Evaluate",
+    )! as HTMLButtonElement;
+    evaluate.click();
+    await new Promise((r) => setTimeout(r));
+
+    const outcome = [...host.querySelectorAll(".outcome")].find(
+      (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    expect(outcome.querySelector(".tval")!.textContent).toBe("unknown");
+    const hint = outcome.querySelector(".unknown-hint")!;
+    expect(hint.textContent).toContain("Not answered:");
+    const dobButton = [...hint.querySelectorAll("button")].find(
+      (b) => b.textContent === "Date of Birth",
+    )! as HTMLButtonElement;
+    document.body.appendChild(host);
+    dobButton.click();
+    expect(document.activeElement?.id).toBe("date_of_birth");
+    host.remove();
+  });
+
   it("asks for a program before it asks for facts", () => {
     const host = show("new");
     expect(host.textContent).toContain("Choose a program");

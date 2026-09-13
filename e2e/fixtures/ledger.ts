@@ -7,6 +7,10 @@ const RAW = "https://raw.githubusercontent.com/jisaf/policy-codex/";
 
 /** Answer every raw.githubusercontent.com read from the checked-in ledger. */
 export async function serveLedgerFromDisk(page: Page): Promise<void> {
+  // The guided tour is a first-visit overlay (docs/design-onboarding.md,
+  // "Guided first run, hints, help"); the smoke test drives the app itself,
+  // not onboarding, so it marks the tour already seen before anything loads.
+  await page.addInitScript(() => { localStorage.setItem("codex.tour", "1"); });
   await page.route(`${RAW}**`, (route) => {
     const url = route.request().url();
     const rel = url.slice(RAW.length).split("/").slice(1).join("/"); // drop the ref segment

@@ -7,6 +7,7 @@ import type { Item } from "../engine/types";
 import { loadConformanceResults, type ConformanceResults } from "../export/conformance";
 import type { LedgerSource } from "../ledger/source";
 import { programCounts, programOutcomes } from "./CasesView";
+import { Term } from "./labels";
 import { buildHash, type Route } from "./router";
 import { engineSig, ledgerSource, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
@@ -207,8 +208,10 @@ function Health({ engine, programId }: { engine: Engine; programId: string }) {
   }
   return (
     <ul class="health params">
-      <li>{items.length} items: {byKind.supplied} supplied, {byKind.derived} derived,{" "}
-        {byKind.parameter} parameter</li>
+      <li>
+        {items.length} items: {byKind.supplied} <Term kind="supplied" />,{" "}
+        {byKind.derived} <Term kind="derived" />, {byKind.parameter} <Term kind="parameter" />
+      </li>
       <li class={withErrors.length ? "bad" : "ok"}>
         {withErrors.length} item{withErrors.length === 1 ? "" : "s"} with constraint errors
       </li>

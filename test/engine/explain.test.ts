@@ -4,7 +4,7 @@ import path from "node:path";
 import { buildIndex, indexWith } from "../../src/engine/ledger-index";
 import { evaluate, makeCase, type TraceEvent } from "../../src/engine/evaluate";
 import { caseToSpec, parseCases, runCase } from "../../src/engine/cases";
-import { explain, explainCase, type TraceNode } from "../../src/engine/explain";
+import { explain, explainCase, missingFacts, type TraceNode } from "../../src/engine/explain";
 import { createEngine } from "../../src/engine/engine";
 import ledger from "../fixtures/ledger.json";
 import ruleTests from "../fixtures/rule-tests.json";
@@ -173,6 +173,34 @@ describe("explain", () => {
     expect(node.identifier).toBe("no_such_fact");
     expect(node.error).toMatch(/unknown fact no_such_fact/);
     expect(node.value).toBeNull();
+  });
+});
+
+describe("missingFacts", () => {
+  it("names the unanswered supplied fact behind an unknown value", () => {
+    const data = makeCase(ix, { id: "T", as_of: "2026-03-15" });
+    const node = explain(ix, data, "age", "p1", null);
+    expect(node.value).toBeNull();
+    const missing = missingFacts(node);
+    expect(missing.map((n) => n.identifier)).toEqual(["date_of_birth"]);
+    expect(missing[0].origin).toBe("missing");
+  });
+
+  it("returns nothing for a value every input answered", () => {
+    const { data } = caseOf("C-01");
+    const node = explain(ix, data, "age", "p1", null);
+    expect(node.value).not.toBeNull();
+    expect(missingFacts(node)).toEqual([]);
+  });
+
+  it("lists a person-month fact once even when many months ask for it", () => {
+    const data = makeCase(ix, { id: "T", as_of: "2027-03-15" });
+    const node = explain(ix, data, "snap_time_limit_status", "p1", null);
+    const missing = missingFacts(node);
+    const ids = missing.map((n) => n.identifier);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids).toContain("hours_worked");
+    expect(ids.filter((id) => id === "hours_worked")).toHaveLength(1);
   });
 });
 

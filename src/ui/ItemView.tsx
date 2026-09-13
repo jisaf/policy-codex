@@ -4,6 +4,7 @@ import { referencesInCases, renameInCasesText } from "../engine/rename";
 import type { Item, TestSpec } from "../engine/types";
 import { fileEntries } from "../changes/types";
 import { DecisionRecord } from "./DecisionRecord";
+import { Term } from "./labels";
 import { buildHash } from "./router";
 import {
   changeSetSig, engineSig, modeSig, openEditor, putChangeEntry, putFileChange, route,
@@ -118,6 +119,8 @@ export function ItemView() {
         <p class="idline muted">
           <span class="mono">{item.id}</span> · <span class="mono">{item.identifier}</span>
         </p>
+        <span class="tag"><Term kind={item.kind} /></span>
+        <span class="tag"><Term scope={item.scope} /></span>
         <span class="spacer" />
         {modeSig.value === "edit" && (
           <>

@@ -1,3 +1,5 @@
+import { useLayoutEffect } from "preact/hooks";
+import { offerTourOnFirstVisit, startTour } from "./Tour";
 import { navigate, setDoor, setMode, type Door } from "./state";
 
 interface DoorInfo { id: Door; title: string; body: string }
@@ -40,6 +42,10 @@ function choose(door: Door): void {
 }
 
 export function StartView() {
+  // The tour is "shown once": a brand-new visitor gets it here, unasked;
+  // anyone who has already seen or skipped it just gets "Take the tour".
+  useLayoutEffect(() => { offerTourOnFirstVisit(); }, []);
+
   return (
     <section class="view start">
       <h1>What brings you here today?</h1>
@@ -52,6 +58,9 @@ export function StartView() {
           </button>
         ))}
       </div>
+      <p class="muted">
+        <button class="linkish" onClick={startTour}>Take the tour</button>
+      </p>
     </section>
   );
 }
