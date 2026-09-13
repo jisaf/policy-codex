@@ -95,6 +95,21 @@ describe("Header", () => {
     expect(host.textContent).toContain("Turn off edit mode");
   });
 
+  it("hides the primary nav and the edit-mode toggle on the start view, keeping the brand and '?'", () => {
+    route.value = { ...defaultRoute(), view: "start" };
+    const host = document.createElement("div");
+    render(<Header />, host);
+    expect(host.querySelector("nav.primary")).toBeNull();
+    expect(host.querySelector("button.modebtn")).toBeNull();
+    expect(host.querySelector("a.brand")).not.toBeNull();
+    expect(host.querySelector("button.help-toggle")).not.toBeNull();
+
+    route.value = { ...defaultRoute(), view: "program" };
+    render(<Header />, host);
+    expect(host.querySelector("nav.primary")).not.toBeNull();
+    expect(host.querySelector("button.modebtn")).not.toBeNull();
+  });
+
   it("shows grouped results as the analyst types", async () => {
     const host = document.createElement("div");
     render(<Header />, host);

@@ -66,17 +66,19 @@ export function Header() {
         <a class="brand" href={startHref}>Benefits Codex</a>
         <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
         {r.ref && <span class="tag ref">{r.ref}</span>}
-        <nav class="primary">
-          {primary.map((n) => (
-            <a
-              key={n.view}
-              class={r.view === n.view ? "on" : ""}
-              href={buildHash({ ...r, view: n.view, arg: n.arg ? n.arg(firstProgram) : null, params: {} })}
-            >
-              {n.label}
-            </a>
-          ))}
-        </nav>
+        {r.view !== "start" && (
+          <nav class="primary">
+            {primary.map((n) => (
+              <a
+                key={n.view}
+                class={r.view === n.view ? "on" : ""}
+                href={buildHash({ ...r, view: n.view, arg: n.arg ? n.arg(firstProgram) : null, params: {} })}
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
+        )}
         <details class="browse">
           <summary>Browse</summary>
           <nav class="dropdown">
@@ -131,12 +133,14 @@ export function Header() {
             </button>
           </>
         )}
-        <button
-          class="btn modebtn"
-          onClick={() => { setMode(modeSig.value === "edit" ? "read" : "edit"); }}
-        >
-          {modeSig.value === "edit" ? "Turn off edit mode" : "Turn on edit mode"}
-        </button>
+        {r.view !== "start" && (
+          <button
+            class="btn modebtn"
+            onClick={() => { setMode(modeSig.value === "edit" ? "read" : "edit"); }}
+          >
+            {modeSig.value === "edit" ? "Turn off edit mode" : "Turn on edit mode"}
+          </button>
+        )}
         <button class="btn help-toggle" title="Help" onClick={toggleHelp}>?</button>
       </header>
       <div class="hdrfoot">
