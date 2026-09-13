@@ -1,6 +1,6 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
-import { story, type TraceNode } from "../engine/explain";
+import { story, STORY_LINES, type TraceNode } from "../engine/explain";
 import { buildHash, type Route } from "./router";
 
 /** What each origin badge means, in the reader's words. */
@@ -89,8 +89,13 @@ export function Trace(
   { engine, node, route: r }: { engine: Engine; node: TraceNode; route: Route },
 ) {
   const all = useSignal(false);
-  const lines = story(node);
-  if (!lines.length) {
+  const fullStory = story(node);
+  // Capped the same way `narrative`'s plain-text version is: keep the first
+  // STORY_LINES - 1 and say how many more there were, rather than let a
+  // long chain of decisive derived facts run the page on.
+  const lines = fullStory.length > STORY_LINES ? fullStory.slice(0, STORY_LINES - 1) : fullStory;
+  const more = fullStory.length - lines.length;
+  if (!fullStory.length) {
     return (
       <div class="trace">
         <TraceRow engine={engine} node={node} depth={0} route={r} />
@@ -113,6 +118,7 @@ export function Trace(
             {l.node.month && <span class="tag">{l.node.month}</span>}
           </li>
         ))}
+        {more > 0 && <li class="muted">… and {more} more</li>}
       </ul>
       <button
         type="button" class="showall"

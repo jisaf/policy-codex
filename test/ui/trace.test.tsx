@@ -74,6 +74,14 @@ describe("Trace", () => {
     expect(host.querySelector(".tnode")).toBeNull();
   });
 
+  it("caps a long story at STORY_LINES, with an '... and N more' line", () => {
+    const host = show("C-12", "snap_has_exhausted_time_limit");
+    const lines = [...host.querySelectorAll("ul.story li")];
+    // 12 kept lines plus the "… and N more" summary line, at most.
+    expect(lines.length).toBeLessThanOrEqual(13);
+    expect(lines.at(-1)!.textContent).toMatch(/^… and \d+ more$/);
+  });
+
   it("shows a value nothing was asked for as the tree alone", () => {
     const host = show("C-03", "date_of_birth");
     expect(host.querySelector("ul.story")).toBeNull();
