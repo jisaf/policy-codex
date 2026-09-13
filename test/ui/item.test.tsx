@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { render } from "preact";
 import { ItemView } from "../../src/ui/ItemView";
+import { DecisionRecord } from "../../src/ui/DecisionRecord";
 import { createEngine } from "../../src/engine/engine";
 import { parseCases } from "../../src/engine/cases";
 import { fileEntries } from "../../src/changes/types";
@@ -26,8 +27,19 @@ const engine = createEngine(
 const vol = {
   volumeId: "mwr", title: "t", path: "volumes/mwr", ref: "main", sha: null,
   meta: ledger.meta, items: ledger.items,
-  sources: [{ id: "S1", title: "Applicable individual", citation: "42 U.S.C. 1396a", text: "statute text here" }],
-  openQuestions: [{ id: "OQ-1", title: "Age during a month", body: "Assumption: …", items: ["WR-004"] }],
+  sources: [{
+    id: "S1", title: "Applicable individual", citation: "42 U.S.C. 1396a",
+    text: "statute text here", document: "D-1",
+  }],
+  documents: [{
+    id: "D-1", title: "State plans for medical assistance", kind: "statute",
+    citation: "42 U.S.C. 1396a", file: "documents/D-1.md",
+  }],
+  openQuestions: [{
+    id: "OQ-1", title: "Age during a month",
+    body: "Assumption: a person keeps the age they hold on the first day of the month.",
+    items: ["WR-004"],
+  }],
   chapterOf: { "WR-200": "medicaid", "WR-003": "medicaid", "WR-302": "snap" },
   cases, casesText,
 } as unknown as LoadedVolume;
@@ -48,25 +60,38 @@ describe("ItemView", () => {
     trayOpenSig.value = false;
   });
 
-  it("shows the identity, meaning, and pattern English", () => {
+  it("leads with the name, its id and identifier, and one sentence from the derivation", () => {
     const host = show("WR-200");
-    expect(host.textContent).toContain("Medicaid: is in the community engagement age range");
-    expect(host.textContent).toContain("The person has attained age 19 and is under age 65.");
+    expect(host.querySelector("h1")!.textContent).toBe(
+      "Medicaid: is in the community engagement age range",
+    );
+    expect(host.querySelector(".idline")!.textContent).toContain("WR-200");
+    expect(host.querySelector(".idline")!.textContent).toContain("medicaid_in_ce_age_range");
     expect(host.querySelector("pre.derivation")!.textContent).toBe(
-      "all of the following are true:\n" +
+      "Medicaid: is in the community engagement age range is true when " +
+        "all of the following are true:\n" +
         "  - Age is at least Medicaid community engagement minimum age (19)\n" +
         "  - Age is less than Medicaid community engagement age ceiling (65)",
     );
   });
 
-  it("puts the statute text one tap away", () => {
+  it("leads a supplied item with 'a fact we are told'", () => {
+    const host = show("WR-001");
+    expect(host.textContent).toContain(
+      "A fact we are told: The calendar date on which the person was born",
+    );
+  });
+
+  it("leads a parameter item with its value and its source", () => {
+    const host = show("WR-102");
+    expect(host.textContent).toContain("A number set by policy: 19 (S1)");
+  });
+
+  it("shows one worked example from the item's first test", () => {
     const host = show("WR-200");
-    expect(host.textContent).toContain("S1. Applicable individual");
-    expect((host.querySelector("details.source") as HTMLDetailsElement).open).toBe(false);
-    (host.querySelector("details.source summary") as HTMLElement).click();
-    (host.querySelector("details.source") as HTMLDetailsElement).open = true;
-    render(<ItemView />, host);
-    expect(host.querySelector("details.source")!.textContent).toContain("42 U.S.C. 1396a");
+    expect(host.textContent).toContain(
+      'Given date_of_birth="2008-03-16", the answer is no.',
+    );
   });
 
   it("shows every rule test with a pass mark", () => {
@@ -76,7 +101,7 @@ describe("ItemView", () => {
     expect([...rows].every((r) => r.textContent!.includes("pass"))).toBe(true);
   });
 
-  it("lists what the item uses and what uses it", () => {
+  it("lists what the item uses and what uses it, names first", () => {
     const host = show("WR-200");
     const uses = host.querySelector(".uses")!.textContent!;
     expect(uses).toContain("Age");
@@ -86,17 +111,33 @@ describe("ItemView", () => {
     );
   });
 
-  it("shows the open question badge", () => {
-    const host = show("WR-003");
-    expect(host.textContent).not.toContain("OQ-1");
-    const four = show("WR-004");
-    expect(four.textContent).toContain("OQ-1 Age during a month");
+  it("shows the decision record with the item's excerpt and its document link", () => {
+    const host = show("WR-200");
+    const record = host.querySelector(".decision-record")!;
+    expect(record.textContent).toContain("S1. Applicable individual");
+    expect(record.textContent).toContain("statute text here");
+    const docLink = [...record.querySelectorAll("a")].find(
+      (a) => a.textContent === "State plans for medical assistance",
+    ) as HTMLAnchorElement;
+    expect(docLink.getAttribute("href")).toBe("#/mwr/document/D-1");
   });
 
-  it("renders the Approach A projection on its tab", () => {
+  it("shows none recorded when an item carries no rationale", () => {
     const host = show("WR-200");
-    (host.querySelector("button[data-tab=a]") as HTMLButtonElement).click();
-    render(<ItemView />, host);
+    expect(host.querySelector(".decision-record")!.textContent).toContain("none recorded");
+  });
+
+  it("shows the open question's title and the assumption taken", () => {
+    const host = show("WR-003");
+    expect(host.querySelector(".decision-record")!.textContent).not.toContain("OQ-1");
+    const four = show("WR-004");
+    const record = four.querySelector(".decision-record")!.textContent!;
+    expect(record).toContain("OQ-1 Age during a month");
+    expect(record).toContain("a person keeps the age they hold on the first day of the month");
+  });
+
+  it("shows the Approach A projection in its own section", () => {
+    const host = show("WR-200");
     expect(host.querySelector("pre.projection")!.textContent).toContain(
       "Rule           RL-001 Medicaid: is in the community engagement age range",
     );
@@ -173,5 +214,57 @@ describe("ItemView", () => {
     expect(host.querySelector(".problems")!.textContent).toContain("age");
     expect((host.querySelector("button.confirm-rename") as HTMLButtonElement).disabled).toBe(true);
     expect(changeSetSig.value.entries).toHaveLength(0);
+  });
+});
+
+describe("DecisionRecord history", () => {
+  beforeEach(() => {
+    route.value = defaultRoute();
+  });
+
+  it("renders commits from a fake fetch, with the pull request it named", async () => {
+    const item = engine.itemById("WR-200")!;
+    const host = document.createElement("div");
+    render(
+      <DecisionRecord
+        item={item}
+        vol={vol}
+        route={defaultRoute()}
+        fetchHistory={async () => [
+          {
+            sha: "abc1234567", date: "2027-01-02",
+            message: "Merge pull request #42 from x/y",
+            url: "https://github.com/jisaf/policy-codex/commit/abc1234567",
+            pr: { number: 42, url: "https://github.com/jisaf/policy-codex/pull/42" },
+          },
+        ]}
+      />,
+      host,
+    );
+    await new Promise((r) => setTimeout(r));
+    expect(host.textContent).toContain("Merge pull request #42 from x/y");
+    const commitLink = host.querySelector("ul.history li a") as HTMLAnchorElement;
+    expect(commitLink.getAttribute("href")).toBe(
+      "https://github.com/jisaf/policy-codex/commit/abc1234567",
+    );
+    expect(host.textContent).toContain("#42");
+  });
+
+  it("renders nothing extra, with no error, when the fetch fails", async () => {
+    const item = engine.itemById("WR-200")!;
+    const host = document.createElement("div");
+    render(
+      <DecisionRecord
+        item={item}
+        vol={vol}
+        route={defaultRoute()}
+        fetchHistory={async () => null}
+      />,
+      host,
+    );
+    await new Promise((r) => setTimeout(r));
+    expect(host.querySelector("ul.history")).toBeNull();
+    expect(host.querySelector(".bad")).toBeNull();
+    expect(host.textContent).toContain("Rationale");
   });
 });
