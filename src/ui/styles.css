@@ -179,6 +179,14 @@ li.proposalitem .derivation { font-size: 12px; white-space: pre-wrap; }
 .tbody { margin-left: 10px; border-left: 2px solid var(--line); padding-left: 8px; }
 .tbody pre.derivation { margin: 4px 0; font-size: 12px; }
 .tsources { margin: 2px 0; display: flex; gap: 4px; }
+.storyhead { margin: 0 0 4px; }
+ul.story { list-style: none; margin: 0 0 8px; padding: 0; }
+ul.story li { padding: 1px 0 1px 10px; border-left: 2px solid var(--med); }
+ul.story li.sub { margin-left: 14px; color: var(--muted); }
+button.showall { border: 1px solid var(--line); background: var(--panel); font: inherit;
+  font-size: 12px; padding: 2px 8px; border-radius: 4px; cursor: pointer; }
+.tmark { color: var(--warn); font-size: 11px; }
+.thead.decisive .tname { text-decoration: underline; text-decoration-color: var(--warn); }
 .outcome { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
 .outcome h4 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 .documents td.citation { font-size: 12px; }

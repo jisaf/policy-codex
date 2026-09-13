@@ -56,6 +56,14 @@ function raw(v: unknown): string {
   return String(v);
 }
 
+/** The trace leads with the story and keeps the tree behind a toggle; these
+ *  cases are about the tree, so they open it first. */
+async function showEverything(host: HTMLElement): Promise<void> {
+  const button = host.querySelector("button.showall") as HTMLButtonElement;
+  button.click();
+  await new Promise((r) => setTimeout(r));
+}
+
 function countNodes(n: TraceNode): number {
   return 1 + n.children.reduce((s, k) => s + countNodes(k), 0);
 }
@@ -119,6 +127,11 @@ describe("CasesView", () => {
     await new Promise((r) => setTimeout(r));
     const trace = host.querySelector(".trace")!;
     expect(trace).not.toBeNull();
+    // The story names what decided the outcome, and the tree is still folded.
+    expect(trace.querySelector("ul.story li")!.textContent)
+      .toContain("Medicaid: satisfies community engagement at application is yes");
+    expect(trace.querySelector(".tnode")).toBeNull();
+    await showEverything(host);
     expect(trace.querySelector(".tnode")!.getAttribute("data-identifier"))
       .toBe("medicaid_ce_status_at_application");
     expect(trace.querySelectorAll(".origin").length).toBeGreaterThan(0);
@@ -132,6 +145,7 @@ describe("CasesView", () => {
     )! as HTMLTableRowElement;
     row.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     await new Promise((r) => setTimeout(r));
+    await showEverything(host);
 
     // The 36-month SNAP window is more than a thousand resolutions; the tree
     // shows the first two levels and renders a subtree only when asked.
@@ -202,7 +216,7 @@ describe("CasesView", () => {
       (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
     expect(outcome.querySelector(".tval")!.textContent).toBe("met");
-    expect(outcome.querySelector(".trace .origin")).not.toBeNull();
+    expect(outcome.querySelector(".trace ul.story li")).not.toBeNull();
   });
 
   it("stages the evaluated household as a new case appended to cases.yaml", async () => {
