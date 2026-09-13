@@ -1,6 +1,6 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
-import type { TraceNode } from "../engine/explain";
+import { story, type TraceNode } from "../engine/explain";
 import { buildHash, type Route } from "./router";
 
 /** What each origin badge means, in the reader's words. */
@@ -38,10 +38,14 @@ function TraceRow(
   return (
     <div class="tnode" data-identifier={node.identifier}>
       <div
-        class={`thead${body ? " openable" : ""}${node.error !== undefined ? " bad" : ""}`}
+        class={`thead${body ? " openable" : ""}${node.error !== undefined ? " bad" : ""}` +
+          `${node.decisive ? " decisive" : ""}`}
         onClick={toggle}
       >
         <span class="twist">{body ? (open.value ? "▾" : "▸") : "·"}</span>
+        {node.decisive && (
+          <span class="tmark" title="this is what decided the value above">★</span>
+        )}
         <span class="tname">{node.name}</span>
         <code>{node.identifier}</code>
         {node.person && <span class="tag">{node.person}</span>}
@@ -77,14 +81,44 @@ function TraceRow(
   );
 }
 
-/** The derivation of one value: every resolution the evaluator performed,
- *  in evaluation order, with the rule that asked for it. */
+/** The derivation of one value: the story of what decided it first, and
+ *  behind "Show everything" the whole tree — every resolution the evaluator
+ *  performed, in evaluation order, with the rule that asked for it. A value
+ *  nothing was asked for has no story, so it is shown as the tree alone. */
 export function Trace(
   { engine, node, route: r }: { engine: Engine; node: TraceNode; route: Route },
 ) {
+  const all = useSignal(false);
+  const lines = story(node);
+  if (!lines.length) {
+    return (
+      <div class="trace">
+        <TraceRow engine={engine} node={node} depth={0} route={r} />
+      </div>
+    );
+  }
   return (
     <div class="trace">
-      <TraceRow engine={engine} node={node} depth={0} route={r} />
+      <p class="storyhead">
+        <span class="tname">{node.name}</span>{" is "}
+        <span class="tval">{engine.fmt(node.value)}</span>{" because:"}
+      </p>
+      <ul class="story">
+        {lines.map((l, i) => (
+          <li key={`${l.node.key}#${i}`} class={l.depth ? "sub" : undefined}>
+            <a href={buildHash({ ...r, view: "item", arg: l.node.identifier, params: {} })}>
+              {l.node.name}
+            </a>{" is "}
+            <span class="tval">{engine.fmt(l.node.value)}</span>
+            {l.node.month && <span class="tag">{l.node.month}</span>}
+          </li>
+        ))}
+      </ul>
+      <button
+        type="button" class="showall"
+        onClick={() => { all.value = !all.value; }}
+      >{all.value ? "Hide everything" : "Show everything"}</button>
+      {all.value && <TraceRow engine={engine} node={node} depth={0} route={r} />}
     </div>
   );
 }
