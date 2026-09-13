@@ -8,6 +8,11 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   // Loaded: the table shows every item in the volume.
   await expect(page.locator("tbody tr")).toHaveCount(138);
 
+  // Reader mode is the default: turn edit mode on through the header control
+  // before anything below (New item, Tray, Settings, Edit, Rename) can show.
+  await page.getByRole("button", { name: "Turn on edit mode" }).click();
+  await expect(page.getByRole("button", { name: "Turn off edit mode" })).toBeVisible();
+
   // Search finds an item by id and opens it on Enter. ("age" also ranks
   // OQ-1 "Age during a month" first by title-hit proximity, so the id
   // itself is the deterministic query.)
@@ -18,7 +23,7 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   await expect(page.getByRole("heading", { name: "Age" })).toBeVisible();
 
   // Edit opens the editor overlay; the tray is empty.
-  await page.getByRole("button", { name: "Edit" }).click();
+  await page.getByRole("button", { name: "Edit", exact: true }).click();
   const meaning = page.getByLabel("Meaning");
   await expect(meaning).toHaveValue(/Whole years elapsed/);
   await meaning.fill("Whole years elapsed from Date of Birth to the Determination Date. (smoke)");

@@ -11,12 +11,14 @@ import { isPrRef } from "./router";
 import { SearchView } from "./SearchView";
 import { Settings } from "./Settings";
 import { SourcesView } from "./SourcesView";
+import { StartView } from "./StartView";
 import { route, statusSig, volumeSig } from "./state";
 import { TableView } from "./TableView";
 import { Tray } from "./Tray";
 
 function ViewSlot() {
   const r = route.value;
+  if (r.view === "start") return <StartView />;
   if (r.view === "table") return <TableView />;
   if (r.view === "graph") return <GraphView />;
   if (r.view === "cases") return <CasesView />;

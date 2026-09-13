@@ -5,8 +5,8 @@ import type { Item } from "../engine/types";
 import { fileEntries } from "../changes/types";
 import { buildHash } from "./router";
 import {
-  changeSetSig, engineSig, openEditor, putChangeEntry, putFileChange, route, sourceTitles,
-  trayOpenSig, viewEngine, volumeSig,
+  changeSetSig, engineSig, modeSig, openEditor, putChangeEntry, putFileChange, route,
+  sourceTitles, trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 import { itemValidation } from "./validation";
 
@@ -110,11 +110,15 @@ export function ItemView() {
             onClick={() => { tab.value = "a"; }}
           >Approach A</button>
         </div>
-        <button class="btn" onClick={() => openEditor(item.id)}>Edit</button>
-        <button
-          class="btn rename"
-          onClick={() => { renameValue.value = item.identifier; renameOpen.value = true; }}
-        >Rename</button>
+        {modeSig.value === "edit" && (
+          <>
+            <button class="btn" onClick={() => openEditor(item.id)}>Edit</button>
+            <button
+              class="btn rename"
+              onClick={() => { renameValue.value = item.identifier; renameOpen.value = true; }}
+            >Rename</button>
+          </>
+        )}
       </div>
 
       {renameOpen.value && (() => {

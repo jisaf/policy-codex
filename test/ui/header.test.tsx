@@ -3,7 +3,9 @@ import { render } from "preact";
 import { Header } from "../../src/ui/Header";
 import { buildSearchIndex } from "../../src/ui/search";
 import { createEngine } from "../../src/engine/engine";
-import { engineSig, route, searchIndexSig, volumeSig } from "../../src/ui/state";
+import {
+  doorSig, engineSig, modeSig, route, searchIndexSig, volumeSig,
+} from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
@@ -24,22 +26,66 @@ describe("Header", () => {
     volumeSig.value = vol;
     engineSig.value = engine;
     searchIndexSig.value = buildSearchIndex(vol, engine);
+    modeSig.value = "read";
+    doorSig.value = null;
   });
 
-  it("renders a link for every view, Programs and Documents among them", () => {
+  it("puts Programs, Cases, and Search in the primary nav", () => {
     const host = document.createElement("div");
     render(<Header />, host);
-    const links = [...host.querySelectorAll("nav a")];
+    const links = [...host.querySelectorAll("nav.primary a")];
     const labels = links.map((a) => a.textContent);
-    expect(labels.slice(0, 3)).toEqual(["Table", "Graph", "Cases"]);
-    expect(labels).toContain("Programs");
-    expect(labels).toContain("Sources");
-    expect(labels).toContain("Documents");
-    expect(labels.at(-1)).toBe("Search");
+    expect(labels).toEqual(["Programs", "Cases", "Search"]);
     const programs = links.find((a) => a.textContent === "Programs")!;
     expect(programs.getAttribute("href")).toContain("/program/Medicaid");
+  });
+
+  it("puts Table, Graph, Sources, and Documents in the Browse dropdown", () => {
+    const host = document.createElement("div");
+    render(<Header />, host);
+    const links = [...host.querySelectorAll("details.browse a")];
+    const labels = links.map((a) => a.textContent);
+    expect(labels).toEqual(["Table", "Graph", "Sources", "Documents"]);
     const docs = links.find((a) => a.textContent === "Documents")!;
     expect(docs.getAttribute("href")).toBe("#/mwr/documents");
+  });
+
+  it("leaves Handoff out of the primary nav even for the engineer door (Task 4 adds the view)", () => {
+    doorSig.value = "engineer";
+    const host = document.createElement("div");
+    render(<Header />, host);
+    const labels = [...host.querySelectorAll("nav.primary a")].map((a) => a.textContent);
+    expect(labels).not.toContain("Handoff");
+  });
+
+  it("sends the brand link and the 'change how you use this' link to start", () => {
+    const host = document.createElement("div");
+    render(<Header />, host);
+    expect((host.querySelector("a.brand") as HTMLAnchorElement).getAttribute("href"))
+      .toBe("#/mwr/start");
+    const footLink = [...host.querySelectorAll(".hdrfoot a")].find(
+      (a) => a.textContent === "change how you use this",
+    )!;
+    expect(footLink.getAttribute("href")).toBe("#/mwr/start");
+  });
+
+  it("hides edit controls in read mode and shows them in edit mode", () => {
+    modeSig.value = "read";
+    const host = document.createElement("div");
+    render(<Header />, host);
+    expect(host.textContent).not.toContain("New item");
+    expect([...host.querySelectorAll("button")].some((b) => b.textContent!.startsWith("Tray")))
+      .toBe(false);
+    expect(host.textContent).not.toContain("Settings");
+    expect(host.textContent).toContain("Turn on edit mode");
+
+    modeSig.value = "edit";
+    render(<Header />, host);
+    expect(host.textContent).toContain("New item");
+    expect([...host.querySelectorAll("button")].some((b) => b.textContent!.startsWith("Tray")))
+      .toBe(true);
+    expect(host.textContent).toContain("Settings");
+    expect(host.textContent).toContain("Turn off edit mode");
   });
 
   it("shows grouped results as the analyst types", async () => {

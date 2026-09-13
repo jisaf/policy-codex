@@ -28,7 +28,7 @@ export function buildSearchIndex(vol: LoadedVolume, engine: Engine): SearchIndex
       kind: "item",
       id: it.id,
       title: it.name,
-      subtitle: `${it.kind} · ${it.type} · ${it.scope} · ${it.program}`,
+      subtitle: `${it.id} · ${it.identifier} · ${it.kind} · ${it.type} · ${it.scope} · ${it.program}`,
       haystack: [
         it.id, it.name, it.identifier, it.meaning ?? "", it.precision ?? "",
         (it.tags ?? []).join(" "), derivationText(engine, it.identifier),

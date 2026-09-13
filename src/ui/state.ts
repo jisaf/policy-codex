@@ -66,6 +66,57 @@ export const workerBaseSig: Signal<string> = signal(
   })(),
 );
 
+export const MODE_KEY = "codex.mode";
+export const DOOR_KEY = "codex.door";
+
+export type Door = "admin" | "reader" | "sme" | "engineer";
+
+function readMode(): "read" | "edit" {
+  try {
+    return localStorage.getItem(MODE_KEY) === "edit" ? "edit" : "read";
+  } catch {
+    return "read";
+  }
+}
+
+function readDoor(): Door | null {
+  try {
+    const v = localStorage.getItem(DOOR_KEY);
+    return v === "admin" || v === "reader" || v === "sme" || v === "engineer" ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Reader mode is the default: New item, Tray, Rename, Settings, and the
+ *  editor stay hidden until a visitor turns edit mode on (or the sme door
+ *  turns it on for them). The choice persists across visits. */
+export const modeSig: Signal<"read" | "edit"> = signal(readMode());
+/** Which of the four doors (see docs/design-onboarding.md) a visitor chose,
+ *  or null before they have chosen one. Persists so a returning visit skips
+ *  the picker (see `resolveEmptyHash`). */
+export const doorSig: Signal<Door | null> = signal(readDoor());
+
+export function setMode(mode: "read" | "edit"): void {
+  modeSig.value = mode;
+  try { localStorage.setItem(MODE_KEY, mode); } catch { /* blocked */ }
+}
+
+export function setDoor(door: Door | null): void {
+  doorSig.value = door;
+  try {
+    if (door === null) localStorage.removeItem(DOOR_KEY);
+    else localStorage.setItem(DOOR_KEY, door);
+  } catch { /* blocked */ }
+}
+
+/** The route an empty hash (a first visit, or the bare app URL) resolves to:
+ *  the door picker until a door has been chosen, the Programs home once one
+ *  has. `#/mwr/start` itself, and every other address, is unaffected. */
+export function resolveEmptyHash(): Route {
+  return { ...defaultRoute(), view: doorSig.value === null ? "start" : "program" };
+}
+
 export const credentials: Credentials = createCredentials();
 
 export function githubClient(): GitHubClient {
@@ -251,8 +302,14 @@ export function sourceTitles(): Record<string, string> {
   return sourceTitleMap(volumeSig.value?.sources ?? []);
 }
 
+function currentRoute(): Route {
+  const raw = location.hash.startsWith("#") ? location.hash.slice(1) : location.hash;
+  if (!raw || raw === "/") return resolveEmptyHash();
+  return parseHash(location.hash);
+}
+
 export function startRouter(): void {
-  const handle = () => { void openRoute(parseHash(location.hash)); };
+  const handle = () => { void openRoute(currentRoute()); };
   addEventListener("hashchange", handle);
   handle();
 }
