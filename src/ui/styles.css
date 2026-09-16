@@ -317,3 +317,37 @@ code.alias { font-size: 11px; color: var(--muted); background: var(--bg);
 .tour-target { outline: 2px solid var(--warn); outline-offset: 2px; border-radius: 3px; }
 .help-overlay .sheet.help { width: min(420px, 100%); }
 .help.sheet p { line-height: 1.6; }
+
+/* Rich tokens: the vocabulary the editor paints, wherever the app shows
+   pattern English, an identifier, a source id, or a field key. A token is a
+   button so Tab reaches it and Enter opens its card. */
+.tok { font: inherit; color: inherit; background: none; border: 0; padding: 0 1px;
+  margin: 0; cursor: pointer; border-radius: 3px; text-align: inherit; }
+.tok:hover, .tok:focus-visible { text-decoration: underline dotted; }
+.tok.key, .tokpop .tk.key { color: #6b6b66; font-weight: 600; }
+.tok.fact, .tokpop .tk.fact { color: #5a4a2c; background: #f3eee2; }
+.tok.derived, .tokpop .tk.derived { color: #3b2f7a; background: #ebe8f7; }
+.tok.param, .tokpop .tk.param { color: #8a3b12; background: #f7e7dd; }
+.tok.phrase, .tokpop .tk.phrase { color: var(--accent); font-weight: 600; }
+.tok.const, .tokpop .tk.const { color: var(--accent); font-style: italic; }
+.tok.literal, .tokpop .tk.literal { color: var(--ok); }
+.tok.tag, .tokpop .tk.tag { color: var(--warn); }
+.tok.source, .tokpop .tk.source { color: var(--accent); text-decoration: underline dotted; }
+.tok.error, .tokpop .tk.error { color: var(--bad); background: #fff0f0; }
+.tok.unknown, .tokpop .tk.unknown { color: var(--bad); }
+.rich { font: inherit; }
+pre.rich { margin: 0; white-space: pre-wrap; }
+pre.rich.derivation, pre.rich.projection { margin: 0 0 8px; }
+/* Above the tray, the editor, and the help sheet, which sit at 50. */
+.tokpop { position: fixed; z-index: 60; max-width: 360px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+.tokpop .tip-title .tk { padding: 1px 6px; border-radius: 3px; }
+.tokpop-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
+.tokpop-actions a, .tokpop-actions button { font: inherit; color: var(--accent);
+  background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.tokpop-actions .tokpop-close { color: var(--muted); }
+/* The excerpt a source token traced into. */
+article.excerpt.on { background: var(--med); border-left: 3px solid var(--accent);
+  padding-left: 8px; }

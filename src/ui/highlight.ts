@@ -376,6 +376,34 @@ export function tokenize(engine: Engine, text: string, opts: TokenizeOptions = {
   return out;
 }
 
+/** What a stretch of text is, for a caller that has one but not a whole item
+ *  block: pattern English (`expr`, or `inline` where it sits inside a line
+ *  already), example lines, or a whole block. */
+export type TextMode = "expr" | "example" | "block" | "inline";
+
+/** Tokenises text that is not a whole item block. `block` is `tokenize`
+ *  itself; the other modes run one stretch of pattern English, or one example
+ *  line, per line, which is what the reader views show. */
+export function tokenizeAs(
+  engine: Engine, text: string, mode: TextMode, opts: TokenizeOptions = {},
+): Line[] {
+  if (mode === "block") return tokenize(engine, text, opts);
+  const names = nameTable(engine);
+  const ctx: ExprCtx = { options: [] };
+  const out: Line[] = [];
+  let base = 0;
+  text.split("\n").forEach((line, k) => {
+    const tokens = !line
+      ? []
+      : mode === "example"
+        ? tokenizeExample(engine, line, base)
+        : tokenizeExpr(engine, names, line, base, ctx);
+    out.push({ number: k + 1, text: line, error: false, tokens });
+    base += line.length + 1;
+  });
+  return out;
+}
+
 /** The token containing `offset`, or null between tokens. */
 export function tokenAt(engine: Engine, text: string, offset: number): Token | null {
   for (const line of tokenize(engine, text)) {

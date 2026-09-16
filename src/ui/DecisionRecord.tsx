@@ -4,6 +4,7 @@ import { REPO } from "../config";
 import { fileHistory, type HistoryEntry } from "../github/history";
 import { itemFilePath, type LoadedVolume } from "../ledger/load";
 import type { Item } from "../engine/types";
+import { Ident, Tok } from "./Rich";
 import { buildHash, type Route } from "./router";
 
 export type FetchHistory = (path: string, ref: string) => Promise<HistoryEntry[] | null>;
@@ -50,8 +51,10 @@ export function DecisionRecord(
         return (
           <div class="record-source" key={s.id}>
             <p class="citation">
+              <Tok text={s.id} cls="source" vol={vol} />
+              {". "}
               <a href={buildHash({ ...r, view: "source", arg: s.id, params: {} })}>
-                {s.id}. {s.title}
+                {s.title}
               </a>
               {" — "}{s.citation}
               {doc && (
@@ -74,6 +77,14 @@ export function DecisionRecord(
         <details key={q.id}>
           <summary>{q.id} {q.title}</summary>
           <p>{q.body}</p>
+          {q.items.length > 0 && (
+            <p class="question-items">
+              <b>Items:</b>{" "}
+              {q.items.map((id, i) => (
+                <span key={id}>{i > 0 && ", "}<Ident id={id} vol={vol} /></span>
+              ))}
+            </p>
+          )}
         </details>
       ))}
 

@@ -5,7 +5,8 @@ import { buildSuite } from "../export/conformance";
 import { handoffMarkdown } from "../export/handoff";
 import type { LoadedVolume } from "../ledger/load";
 import { programOutcomes } from "./CasesView";
-import { renderMarkdown } from "./markdown";
+import { renderMarkdownNodes } from "./markdown";
+import { Ident, Rich } from "./Rich";
 import { buildHash, type Route } from "./router";
 import { engineSig, route, viewEngine, volumeSig } from "./state";
 
@@ -70,7 +71,7 @@ function ChecklistTable({ items, route: r }: { items: Item[]; route: Route }) {
               <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>{it.name}</a>{" "}
               <small class="mono">{it.id}</small>
             </td>
-            <td class="mono">{it.identifier}</td>
+            <td class="mono"><Ident id={it.identifier} /></td>
             <td>{implementationLabel(it)}</td>
             <td>{(it.tests ?? []).length}</td>
             <td>
@@ -149,7 +150,15 @@ export function HandoffView() {
 
       <details class="section">
         <summary>Rendered handoff</summary>
-        <div class="handoff-md" dangerouslySetInnerHTML={{ __html: renderMarkdown(md) }} />
+        <div class="handoff-md">
+          {renderMarkdownNodes(md, (text, block) => (block
+            ? <Rich engine={engine} vol={vol} text={text} mode="inline" />
+            : (
+              <code>
+                {engine.item(text) ? <Ident id={text} engine={engine} vol={vol} /> : text}
+              </code>
+            )))}
+        </div>
       </details>
     </section>
   );

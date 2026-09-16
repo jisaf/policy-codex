@@ -1,7 +1,23 @@
-import { groupHits, hitHash, search } from "./search";
+import { Ident } from "./Rich";
+import { groupHits, hitHash, search, type SearchHit } from "./search";
 import { route, searchIndexSig } from "./state";
 
 const KIND_LABEL = { item: "Items", source: "Sources", question: "Open questions" } as const;
+
+/** An item's subtitle reads "<id> · <identifier> · <kind> · …", so the
+ *  identifier in it becomes a token while the rest stays the plain summary
+ *  it always was. */
+function Subtitle({ hit }: { hit: SearchHit }) {
+  const parts = hit.subtitle.split(" · ");
+  if (hit.kind !== "item" || parts.length < 2) return <small>{hit.subtitle}</small>;
+  const rest = parts.slice(2);
+  return (
+    <small>
+      {parts[0]}{" · "}<Ident id={parts[1]} />
+      {rest.length ? ` · ${rest.join(" · ")}` : ""}
+    </small>
+  );
+}
 
 export function SearchView() {
   const r = route.value;
@@ -24,7 +40,7 @@ export function SearchView() {
               {grouped[kind].map((h) => (
                 <li key={h.id}>
                   <a href={hitHash(h, r)}><b>{h.title}</b></a>
-                  <small>{h.subtitle}</small>
+                  <Subtitle hit={h} />
                   {h.snippet && <p class="snippet">{h.snippet}</p>}
                 </li>
               ))}

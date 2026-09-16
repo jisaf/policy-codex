@@ -105,6 +105,30 @@ describe("DocumentsView page", () => {
     expect(excerpts[0].querySelector(".cited-by")!.textContent).toContain("community engagement");
   });
 
+  it("marks and scrolls to the excerpt a source token traced into", async () => {
+    // jsdom has no scrollIntoView, so the page's request is recorded instead.
+    // Every document page this file has rendered is still mounted on the
+    // route signal, so the excerpt can be asked for more than once.
+    const seen: string[] = [];
+    const proto = Element.prototype as unknown as { scrollIntoView?: unknown };
+    proto.scrollIntoView = function (this: Element) { seen.push(this.id); };
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    route.value = {
+      ...defaultRoute(), view: "document", arg: "D-1", params: { excerpt: "S2" },
+    };
+    render(<DocumentsView fetchText={async () => TEXT} />, host);
+    await new Promise((r) => setTimeout(r));
+
+    expect(seen).toContain("S2");
+    expect((host.querySelector("#S2") as HTMLElement).className).toBe("excerpt on");
+    const others = [...host.querySelectorAll("article.excerpt")].filter((a) => a.id !== "S2");
+    expect(others.length).toBeGreaterThan(0);
+    expect(others.every((a) => a.className === "excerpt")).toBe(true);
+    delete proto.scrollIntoView;
+    host.remove();
+  });
+
   it("says so when the text cannot be read, and still shows the excerpts", async () => {
     const host = show("document", "D-3", async () => { throw new Error("D-3.md not found at main (404)"); });
     await new Promise((r) => setTimeout(r));

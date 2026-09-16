@@ -9,6 +9,7 @@ import { ItemEditor } from "./ItemEditor";
 import { ItemView } from "./ItemView";
 import { PrReview } from "./PrReview";
 import { ProgramView } from "./ProgramView";
+import { TokenPopover } from "./Rich";
 import { isPrRef } from "./router";
 import { SearchView } from "./SearchView";
 import { Settings } from "./Settings";
@@ -52,6 +53,7 @@ export function App() {
       <Settings />
       <Tour />
       <HelpPanel />
+      <TokenPopover />
     </div>
   );
 }

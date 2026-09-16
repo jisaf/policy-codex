@@ -5,6 +5,7 @@ import type { Item, TestSpec } from "../engine/types";
 import { fileEntries } from "../changes/types";
 import { DecisionRecord } from "./DecisionRecord";
 import { Term } from "./labels";
+import { Ident, Rich } from "./Rich";
 import { buildHash } from "./router";
 import {
   changeSetSig, engineSig, modeSig, openEditor, putChangeEntry, putFileChange, route,
@@ -52,8 +53,8 @@ export function TestTable({ engine, item }: { engine: Engine; item: Item }) {
           return (
             <tr key={t.id}>
               <td>{t.id}</td>
-              <td class="mono">{given}</td>
-              <td>{expected}</td>
+              <td class="mono"><Rich engine={engine} text={given} mode="example" as="span" /></td>
+              <td><Rich engine={engine} text={expected} mode="example" as="span" /></td>
               <td class={r.ok ? "ok" : "bad"}>
                 {r.err ? r.err : r.ok ? "pass" : `got ${engine.fmt(r.got)}`}
               </td>
@@ -78,7 +79,12 @@ function DerivedSentence({ engine, item }: { engine: Engine; item: Item }) {
   }
   const verb = engine.baseType(item) === "yes/no" ? "is true when" : "is";
   const head = item.derived ? `${item.name} ${verb} ${lines[0]}` : lines[0];
-  return <pre class="derivation lead-sentence">{[head, ...lines.slice(1)].join("\n")}</pre>;
+  return (
+    <Rich
+      engine={engine} text={[head, ...lines.slice(1)].join("\n")} mode="expr"
+      class="derivation lead-sentence"
+    />
+  );
 }
 
 /** One worked example from the item's first test, "Given …, the answer is
@@ -107,7 +113,6 @@ export function ItemView() {
   const uses = engine.usesOfItem(item.identifier);
   const usedBy = engine.usedBy(item.identifier);
   const sources = vol.sources.filter((s) => (item.sources ?? []).includes(s.id));
-  const link = (id: string) => buildHash({ ...r, view: "item", arg: id, params: {} });
   const nameOf = (identifier: string) => engine.item(identifier)?.name ?? identifier;
   const idOf = (identifier: string) => engine.item(identifier)?.id ?? identifier;
   const example = workedExample(engine, (item.tests ?? [])[0]);
@@ -207,7 +212,11 @@ export function ItemView() {
             ({sources.length ? sources.map((s) => s.id).join(", ") : "no source cited"})
           </p>
         )}
-        {example && <p class="worked-example"><b>Example.</b> {example}</p>}
+        {example && (
+          <p class="worked-example">
+            <b>Example.</b> <Rich engine={engine} text={example} mode="example" as="span" />
+          </p>
+        )}
       </div>
 
       <details class="section">
@@ -235,7 +244,8 @@ export function ItemView() {
             ? uses.map((u, i) => (
                 <span key={u}>
                   {i > 0 && ", "}
-                  <a href={link(idOf(u))}>{nameOf(u)}</a> <small class="mono">{idOf(u)}</small>
+                  <Ident id={u} label={nameOf(u)} engine={engine} />{" "}
+                  <small class="mono">{idOf(u)}</small>
                 </span>
               ))
             : "nothing"}
@@ -246,7 +256,8 @@ export function ItemView() {
             ? usedBy.map((u, i) => (
                 <span key={u}>
                   {i > 0 && ", "}
-                  <a href={link(idOf(u))}>{nameOf(u)}</a> <small class="mono">{idOf(u)}</small>
+                  <Ident id={u} label={nameOf(u)} engine={engine} />{" "}
+                  <small class="mono">{idOf(u)}</small>
                 </span>
               ))
             : "nothing"}

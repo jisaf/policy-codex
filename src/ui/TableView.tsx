@@ -1,6 +1,7 @@
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
 import { Term } from "./labels";
+import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
 import { engineSig, navigate, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
@@ -128,7 +129,7 @@ export function TableView() {
                     <b>{it.name}</b>
                   </a>
                   <br />
-                  <small>{it.id} · {it.identifier}</small>
+                  <small>{it.id} · <Ident id={it.identifier} engine={engine} /></small>
                 </td>
                 <td><Term kind={it.kind} /></td>
                 <td>{it.type}</td>

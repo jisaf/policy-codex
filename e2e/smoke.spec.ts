@@ -22,6 +22,18 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   await expect(page).toHaveURL(/#\/mwr\/item\/WR-003/);
   await expect(page.getByRole("heading", { name: "Age" })).toBeVisible();
 
+  // The derivation is rich text: a fact in it opens one card, which links to
+  // the definition and to the decision record, and closes on Escape.
+  await page.locator("pre.derivation button.tok.fact").first().click();
+  const card = page.locator(".tokpop");
+  await expect(card).toBeVisible();
+  await expect(card.getByRole("link", { name: "Open definition" }))
+    .toHaveAttribute("href", "#/mwr/item/WR-001");
+  await expect(card.getByRole("link", { name: "Trace to source" }))
+    .toHaveAttribute("href", "#/mwr/item/WR-001?section=record");
+  await page.keyboard.press("Escape");
+  await expect(card).toHaveCount(0);
+
   // Edit opens the editor overlay on the text surface, which is the default:
   // the item block is the document, so the Meaning line is edited in place.
   await page.getByRole("button", { name: "Edit", exact: true }).click();

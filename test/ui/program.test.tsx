@@ -98,6 +98,20 @@ describe("ProgramView", () => {
     expect(testCount).toMatch(/\d+\/\d+/);
   });
 
+  it("makes every identifier it shows a token", () => {
+    const host = show("Medicaid");
+    const row = [...host.querySelectorAll("table.outcomes tbody tr")].find(
+      (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    const outcome = row.querySelector("code button.tok") as HTMLButtonElement;
+    expect(outcome.textContent).toBe("medicaid_ce_status_at_application");
+    expect(outcome.className).toBe("tok derived");
+    const param = [...host.querySelectorAll("table.parameters tbody tr")].find(
+      (tr) => tr.textContent!.includes("medicaid_ce_required_hours"),
+    )!.querySelector("code button.tok") as HTMLButtonElement;
+    expect(param.className).toBe("tok param");
+  });
+
   it("lists the household cases touching the program, linking to the case page", () => {
     const host = show("Medicaid");
     const rows = host.querySelectorAll("table.progcases tbody tr");

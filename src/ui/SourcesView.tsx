@@ -1,5 +1,6 @@
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
+import { Ident } from "./Rich";
 import { buildHash } from "./router";
 import { engineSig, route, viewEngine, volumeSig } from "./state";
 
@@ -47,9 +48,7 @@ export function SourcesView() {
               {citing.map((it, i) => (
                 <span key={it.id}>
                   {i > 0 && ", "}
-                  <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>
-                    {it.name}
-                  </a>
+                  <Ident id={it.identifier} label={it.name} engine={engine} />
                 </span>
               ))}
             </p>
