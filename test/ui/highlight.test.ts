@@ -206,3 +206,17 @@ describe("tokenAt and details", () => {
     expect(tokenAt(engine, "", 0)).toBeNull();
   });
 });
+
+describe("tokenize tie-breaks", () => {
+  it("classifies an enumeration option as a literal even when an item shares its name", () => {
+    const base = engine.items();
+    const status = { ...base.find((i) => i.identifier === "age")!, id: "X-1", name: "Status",
+      identifier: "status_x", type: "one of", options: ["Met", "Not met"], derived: undefined, tests: [] };
+    const met = { ...status, id: "X-2", name: "Met", identifier: "met_x", options: undefined };
+    const e2 = engine.withItems([...base, status as never, met as never]);
+    const lines = tokenize(e2, "Derived as    Status is one of: Met, Not met");
+    const toks = lines[0].tokens.filter((t) => t.text === "Met");
+    expect(toks.length).toBeGreaterThan(0);
+    expect(toks.every((t) => t.cls === "literal")).toBe(true);
+  });
+});

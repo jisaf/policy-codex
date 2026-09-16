@@ -339,7 +339,8 @@ code.alias { font-size: 11px; color: var(--muted); background: var(--bg);
 pre.rich { margin: 0; white-space: pre-wrap; }
 pre.rich.derivation, pre.rich.projection { margin: 0 0 8px; }
 /* Above the tray, the editor, and the help sheet, which sit at 50. */
-.tokpop { position: fixed; z-index: 60; max-width: 360px; background: var(--panel);
+.tokpop { position: fixed; z-index: 60; max-width: 360px; max-height: min(70vh, 420px);
+  overflow-y: auto; background: var(--panel);
   border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
 .tokpop .tip-title .tk { padding: 1px 6px; border-radius: 3px; }

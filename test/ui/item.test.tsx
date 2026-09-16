@@ -128,6 +128,10 @@ describe("ItemView", () => {
     expect(age.getAttribute("data-id")).toBe("WR-003");
     expect(host.querySelector(".used-by button.tok")).not.toBeNull();
     expect(host.querySelector(".worked-example button.tok")).not.toBeNull();
+    // Only the machine-syntax fragments are tokenised; the prose around them
+    // ("Given", "the answer is") must not be painted as unknown identifiers.
+    expect(host.querySelector(".worked-example .tok.unknown")).toBeNull();
+    expect(host.querySelector(".worked-example")!.textContent).toMatch(/^Example\. Given .*, the answer is .*\.$/);
     expect(host.querySelector("table.tests td.mono button.tok")).not.toBeNull();
   });
 

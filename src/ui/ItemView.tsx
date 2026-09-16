@@ -89,14 +89,15 @@ function DerivedSentence({ engine, item }: { engine: Engine; item: Item }) {
 
 /** One worked example from the item's first test, "Given …, the answer is
  *  …", built the same way the test table reads a spec back to English. */
-function workedExample(engine: Engine, t: TestSpec | undefined): string | null {
+function workedExample(
+  engine: Engine, t: TestSpec | undefined,
+): { given: string; expected: string; expectedIsProse: boolean } | null {
   if (!t) return null;
   const given = engine.formatTest(t)
     .replace(/^[^:]+: given /, "").replace(/ => .*$/, "");
-  const expected = "expect_length" in t
-    ? `${t.expect_length} months`
-    : engine.fmt(t.expect === "unknown" ? null : t.expect);
-  return `Given ${given}, the answer is ${expected}.`;
+  return "expect_length" in t
+    ? { given, expected: `${t.expect_length} months`, expectedIsProse: true }
+    : { given, expected: engine.fmt(t.expect === "unknown" ? null : t.expect), expectedIsProse: false };
 }
 
 export function ItemView() {
@@ -214,7 +215,11 @@ export function ItemView() {
         )}
         {example && (
           <p class="worked-example">
-            <b>Example.</b> <Rich engine={engine} text={example} mode="example" as="span" />
+            <b>Example.</b> Given{" "}
+            <Rich engine={engine} text={example.given} mode="example" as="span" />, the answer is{" "}
+            {example.expectedIsProse
+              ? example.expected
+              : <Rich engine={engine} text={example.expected} mode="example" as="span" />}.
           </p>
         )}
       </div>

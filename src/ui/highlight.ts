@@ -191,7 +191,12 @@ function tokenizeExpr(
     }
     let best: { cls: TokenClass; len: number; item?: Item } | null = null;
     const consider = (cls: TokenClass, len: number, item?: Item) => {
-      if (len > 0 && boundary(s, i + len) && (!best || len > best.len)) best = { cls, len, item };
+      if (len <= 0 || !boundary(s, i + len)) return;
+      // An enumeration option that spells the same as an item name is the
+      // literal, not a reference: the option list is the narrower context.
+      const wins = !best || len > best.len ||
+        (len === best.len && cls === "literal" && best.cls !== "literal");
+      if (wins) best = { cls, len, item };
     };
     for (const c of CONSTS) if (s.startsWith(c, i)) consider("const", c.length);
     const low = s.slice(i).toLowerCase();
@@ -754,7 +759,7 @@ function itemDetails(engine: Engine, vol: DetailsVolume | null, it: Item, cls: T
     it.assumption ? ["assumption", it.assumption] : null,
     it.supplied_by ? ["supplied by", it.supplied_by] : null,
     uses.length ? ["uses", uses.map((u) => engine.item(u)?.name ?? u).join(", ")] : null,
-    usedBy.length ? ["used by", `${usedBy.length} items`] : null,
+    usedBy.length ? ["used by", `${usedBy.length} item${usedBy.length === 1 ? "" : "s"}`] : null,
     ["sources", (it.sources ?? []).join(", ") || "-"],
     ["approval", engine.approvals(it).join(", ") || "-"],
     (it.open ?? []).length ? ["open", it.open!.join(", ")] : null,
