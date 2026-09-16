@@ -117,9 +117,66 @@ ul.hits small { display: block; color: var(--muted); }
 .btn.small { padding: 1px 6px; font-size: 12px; }
 .btn.danger { color: var(--bad); }
 label.inline { display: inline-flex; gap: 4px; margin-right: 10px; }
-.textsurface { display: grid; grid-template-columns: 1fr 320px; gap: 12px; }
-textarea.block { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
-  width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 4px; }
+.textsurface { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 12px; }
+.textsurface .editorcol { position: relative; min-width: 0; }
+.textsurface .statusline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin-bottom: 6px; font-size: 12px; }
+.textsurface .legend { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pill { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 12px; }
+.pill.ok { background: #e2f0ea; color: var(--ok); }
+.pill.bad { background: #fde2e2; color: var(--bad); }
+/* The overlay technique: a painted copy behind a transparent-text textarea,
+   both with identical font metrics and padding so the glyphs line up. */
+.edwrap { position: relative; height: 420px; border: 1px solid var(--line); border-radius: 4px;
+  background: var(--panel); overflow: hidden; }
+.edwrap pre.hl, .edwrap textarea.block { position: absolute; inset: 0; margin: 0;
+  padding: 8px 10px; font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre; overflow: auto; tab-size: 4; border: 0; border-radius: 0;
+  background: transparent; word-break: normal; }
+.edwrap pre.hl { color: var(--ink); pointer-events: none; }
+.edwrap textarea.block { color: transparent; caret-color: var(--ink); resize: none;
+  outline: none; width: 100%; height: 100%; }
+.edwrap textarea.block::selection { background: rgba(11, 93, 122, .18); }
+.edwrap .line { display: inline-block; min-width: 100%; }
+.edwrap .line.errline { background: #fde2e2; }
+/* Token classes, carried over from the retired editor's author.css. */
+.textsurface .tk.key { color: #6b6b66; font-weight: 600; }
+.textsurface .tk.fact { color: #5a4a2c; background: #f3eee2; border-radius: 3px; }
+.textsurface .tk.derived { color: #3b2f7a; background: #ebe8f7; border-radius: 3px; }
+.textsurface .tk.param { color: #8a3b12; background: #f7e7dd; border-radius: 3px; }
+.textsurface .tk.phrase { color: var(--accent); font-weight: 600; }
+.textsurface .tk.const { color: var(--accent); font-style: italic; }
+.textsurface .tk.literal { color: var(--ok); }
+.textsurface .tk.tag { color: var(--warn); }
+.textsurface .tk.source { color: var(--accent); text-decoration: underline dotted; }
+.textsurface .tk.error { color: var(--bad); background: #fff0f0; border-radius: 3px; }
+.textsurface .tk.unknown { color: var(--bad); background: #fff0f0;
+  text-decoration: underline wavy var(--bad); }
+.textsurface ul.ac { position: absolute; z-index: 20; list-style: none; margin: 0; padding: 0;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .12); min-width: 260px; max-width: 460px;
+  max-height: 260px; overflow: auto; font-size: 13px; }
+.textsurface ul.ac li { display: flex; gap: 10px; justify-content: space-between;
+  padding: 4px 9px; cursor: pointer; border-bottom: 1px solid var(--line); }
+.textsurface ul.ac li.on, .textsurface ul.ac li:hover { background: var(--med); }
+.textsurface ul.ac small { color: var(--muted); white-space: nowrap; }
+.textsurface .tip { position: absolute; z-index: 30; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .14);
+  padding: 8px 10px; max-width: 420px; font-size: 12px; pointer-events: none; }
+.textsurface .inspector { border: 1px solid var(--line); border-radius: 4px;
+  background: var(--panel); padding: 8px 10px; font-size: 12px; min-height: 56px;
+  margin-top: 8px; }
+.tokcard .tip-title { font-weight: 600; margin-bottom: 4px; font-size: 13px; }
+.tokcard .tip-title .tk { padding: 1px 6px; border-radius: 3px; }
+.tokcard .tip-row { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 6px;
+  padding: 1px 0; }
+.tokcard .tip-k { color: var(--muted); }
+.textsurface .diagnostics .ln { color: var(--muted); margin-right: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.textsurface .tabs.subtabs { margin-bottom: 8px; }
+.textsurface aside { min-width: 0; }
+.textsurface aside h4 { margin: 8px 0 4px; }
+.textsurface table.examples { font-size: 12px; }
 .constraints, .diagnostics { list-style: none; padding: 0; margin: 4px 0; font-size: 13px; }
 .form .similar { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 4px;
   padding: 8px; background: var(--bg); }
@@ -260,3 +317,38 @@ code.alias { font-size: 11px; color: var(--muted); background: var(--bg);
 .tour-target { outline: 2px solid var(--warn); outline-offset: 2px; border-radius: 3px; }
 .help-overlay .sheet.help { width: min(420px, 100%); }
 .help.sheet p { line-height: 1.6; }
+
+/* Rich tokens: the vocabulary the editor paints, wherever the app shows
+   pattern English, an identifier, a source id, or a field key. A token is a
+   button so Tab reaches it and Enter opens its card. */
+.tok { font: inherit; color: inherit; background: none; border: 0; padding: 0 1px;
+  margin: 0; cursor: pointer; border-radius: 3px; text-align: inherit; }
+.tok:hover, .tok:focus-visible { text-decoration: underline dotted; }
+.tok.key, .tokpop .tk.key { color: #6b6b66; font-weight: 600; }
+.tok.fact, .tokpop .tk.fact { color: #5a4a2c; background: #f3eee2; }
+.tok.derived, .tokpop .tk.derived { color: #3b2f7a; background: #ebe8f7; }
+.tok.param, .tokpop .tk.param { color: #8a3b12; background: #f7e7dd; }
+.tok.phrase, .tokpop .tk.phrase { color: var(--accent); font-weight: 600; }
+.tok.const, .tokpop .tk.const { color: var(--accent); font-style: italic; }
+.tok.literal, .tokpop .tk.literal { color: var(--ok); }
+.tok.tag, .tokpop .tk.tag { color: var(--warn); }
+.tok.source, .tokpop .tk.source { color: var(--accent); text-decoration: underline dotted; }
+.tok.error, .tokpop .tk.error { color: var(--bad); background: #fff0f0; }
+.tok.unknown, .tokpop .tk.unknown { color: var(--bad); }
+.rich { font: inherit; }
+pre.rich { margin: 0; white-space: pre-wrap; }
+pre.rich.derivation, pre.rich.projection { margin: 0 0 8px; }
+/* Above the tray, the editor, and the help sheet, which sit at 50. */
+.tokpop { position: fixed; z-index: 60; max-width: 360px; max-height: min(70vh, 420px);
+  overflow-y: auto; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+.tokpop .tip-title .tk { padding: 1px 6px; border-radius: 3px; }
+.tokpop-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
+.tokpop-actions a, .tokpop-actions button { font: inherit; color: var(--accent);
+  background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.tokpop-actions .tokpop-close { color: var(--muted); }
+/* The excerpt a source token traced into. */
+article.excerpt.on { background: var(--med); border-left: 3px solid var(--accent);
+  padding-left: 8px; }

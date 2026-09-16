@@ -46,9 +46,12 @@ describe("Trace", () => {
     const told = narrative(nodeOf("C-03", "snap_time_limit_status"), engine.fmt);
     expect(lines.map((l) => l.textContent!.replace(/2\d{3}-\d\d$/, "").trim()))
       .toEqual(told.map((l) => l.trim()));
-    // Each line links to the item behind it.
-    const first = lines[0].querySelector("a") as HTMLAnchorElement;
-    expect(first.getAttribute("href")).toContain("/item/snap_is_exempt_from_time_limit");
+    // Each line names the item behind it as a token, which carries the ledger
+    // id the item page answers to (the identifier alone is not an address).
+    const first = lines[0].querySelector("button.tok") as HTMLButtonElement;
+    expect(first.textContent).toBe("SNAP: is exempt from the ABAWD time limit");
+    expect(first.getAttribute("data-id"))
+      .toBe(engine.item("snap_is_exempt_from_time_limit")!.id);
 
     // Nothing of the tree is on the page yet.
     expect(host.querySelector(".tnode")).toBeNull();
@@ -80,6 +83,16 @@ describe("Trace", () => {
     // 12 kept lines plus the "… and N more" summary line, at most.
     expect(lines.length).toBeLessThanOrEqual(13);
     expect(lines.at(-1)!.textContent).toMatch(/^… and \d+ more$/);
+  });
+
+  it("makes the rule lines of a node clickable, token by token", async () => {
+    const host = show("C-03", "snap_time_limit_status");
+    (host.querySelector("button.showall") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    const rule = host.querySelector("pre.derivation")!;
+    expect(rule.querySelectorAll("button.tok").length).toBeGreaterThan(0);
+    // The identifier beside each node name is a token too.
+    expect(host.querySelector(".thead code button.tok")).not.toBeNull();
   });
 
   it("shows a value nothing was asked for as the tree alone", () => {

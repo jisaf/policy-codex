@@ -124,6 +124,18 @@ describe("CasesView", () => {
     expect(host.querySelector(".trace")).toBeNull();
   });
 
+  it("makes the identifiers in the facts and expectation tables tokens", () => {
+    const host = show("C-01");
+    const fact = host.querySelector("table.facts tbody code button.tok") as HTMLButtonElement;
+    expect(fact.textContent).toBe("date_of_birth");
+    expect(fact.getAttribute("data-id")).toBe("WR-001");
+    const row = [...host.querySelectorAll("tr.expectation")].find(
+      (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    expect(row.querySelector("small button.tok")!.textContent)
+      .toBe("medicaid_ce_status_at_application");
+  });
+
   it("opens the trace of an expectation when its row is clicked", async () => {
     const host = show("C-01");
     const row = [...host.querySelectorAll("tr.expectation")].find(

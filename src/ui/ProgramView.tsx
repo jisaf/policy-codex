@@ -8,6 +8,7 @@ import { loadConformanceResults, type ConformanceResults } from "../export/confo
 import type { LedgerSource } from "../ledger/source";
 import { programCounts, programOutcomes } from "./CasesView";
 import { Term } from "./labels";
+import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
 import { engineSig, ledgerSource, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
@@ -98,7 +99,7 @@ function Outcomes(
                       {it.name}
                     </a>
                   : identifier}{" "}
-                <code>{identifier}</code>
+                <code><Ident id={identifier} engine={engine} /></code>
               </td>
               <td class={`cases ${cs.failed ? "bad" : "ok"}`}>{statLabel(cs)}</td>
               <td class={`tests ${ts.failed ? "bad" : "ok"}`}>{statLabel(ts)}</td>
@@ -158,7 +159,7 @@ function ParametersInForce(
         <tbody>
           {parameters.map((it) => (
             <tr key={it.identifier}>
-              <td>{it.name} <code>{it.identifier}</code></td>
+              <td>{it.name} <code><Ident id={it.identifier} engine={engine} /></code></td>
               <td>{it.program}</td>
               <td class="value">{engine.fmt(paramInForce(it, asOf.value))}</td>
               <td>{(it.sources ?? []).join(", ")}</td>

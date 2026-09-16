@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render } from "preact";
-import { HelpPanel, helpKeyFor, helpOpenSig, parseHelpSections } from "../../src/ui/Help";
+import {
+  HelpPanel, helpKeyFor, helpOpenSig, helpTargetSig, openHelp, parseHelpSections, sectionOf,
+} from "../../src/ui/Help";
 import { defaultRoute } from "../../src/ui/router";
 import { editingSig, route } from "../../src/ui/state";
 import type { EditingState } from "../../src/ui/state";
@@ -52,9 +54,38 @@ describe("helpKeyFor", () => {
   });
 });
 
+const CONVENTIONS = [
+  "# Codex conventions",
+  "",
+  "## Item shape",
+  "One item, one file.",
+  "",
+  "### Types",
+  "The declared types.",
+  "",
+  "## Pattern catalog",
+  "Every pattern the parser accepts.",
+  "",
+  "## Tests",
+  "Examples are the rule's tests.",
+  "",
+].join("\n");
+
+describe("sectionOf", () => {
+  it("takes a heading's body up to the next heading at its level or above", () => {
+    expect(sectionOf(CONVENTIONS, "Pattern catalog")).toBe("Every pattern the parser accepts.");
+    // A deeper heading belongs to the section it sits under.
+    expect(sectionOf(CONVENTIONS, "Item shape")).toBe(
+      "One item, one file.\n\n### Types\nThe declared types.",
+    );
+    expect(sectionOf(CONVENTIONS, "Nothing written")).toBeNull();
+  });
+});
+
 describe("HelpPanel", () => {
   beforeEach(() => {
     helpOpenSig.value = false;
+    helpTargetSig.value = null;
     route.value = defaultRoute();
     editingSig.value = null;
   });
@@ -87,6 +118,28 @@ describe("HelpPanel", () => {
     await tick();
     (host.querySelector("button") as HTMLButtonElement).click();
     expect(helpOpenSig.value).toBe(false);
+  });
+
+  it("opens on a doc and a heading a token asked for, not the section of the view", async () => {
+    route.value = { ...defaultRoute(), view: "cases" };
+    openHelp("docs/conventions.md", "Pattern catalog");
+    const asked: string[] = [];
+    const host = show((p) => { asked.push(p); return Promise.resolve(CONVENTIONS); });
+    await tick();
+    expect(asked).toEqual(["docs/conventions.md"]);
+    expect(host.textContent).toContain("Every pattern the parser accepts.");
+    expect(host.querySelector("h2")!.textContent).toBe("Pattern catalog");
+    expect(host.textContent).not.toContain("Cases shows real households.");
+  });
+
+  it("forgets a token's section when help is closed", async () => {
+    openHelp("docs/governance.md", "Vocabulary");
+    const host = show(() => Promise.resolve("## Vocabulary\nTags are declared here.\n"));
+    await tick();
+    expect(host.textContent).toContain("Tags are declared here.");
+    (host.querySelector("button") as HTMLButtonElement).click();
+    expect(helpOpenSig.value).toBe(false);
+    expect(helpTargetSig.value).toBeNull();
   });
 
   it("shows the editing section while the editor is open, whatever the view", async () => {

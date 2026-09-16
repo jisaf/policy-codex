@@ -149,6 +149,29 @@ describe("HandoffView", () => {
     expect(rendered.querySelector("pre code")).not.toBeNull();
   });
 
+  it("marks identifiers and pattern English inside the rendered handoff", () => {
+    const host = show();
+    const rendered = host.querySelector(".handoff-md")!;
+    // A code span that names an item is a token carrying that item's id.
+    const span = [...rendered.querySelectorAll("code button.tok")].find(
+      (b) => b.textContent === "medicaid_in_ce_age_range",
+    )!;
+    expect(span).toBeDefined();
+    expect(span.getAttribute("data-id")).toBe("WR-200");
+    // A fenced derivation keeps its text and gains a token per phrase and fact.
+    const fence = [...rendered.querySelectorAll("pre code")].find(
+      (c) => c.textContent!.includes("Medicaid community engagement minimum age (19)"),
+    )!;
+    expect(fence).toBeDefined();
+    expect(fence.textContent).toBe(
+      "all of the following are true:\n" +
+        "  - Age is at least Medicaid community engagement minimum age (19)\n" +
+        "  - Age is less than Medicaid community engagement age ceiling (65)",
+    );
+    expect([...fence.querySelectorAll("button.tok")].map((b) => b.textContent))
+      .toContain("Age");
+  });
+
   it("keeps the rendered handoff collapsed behind a closed details element", () => {
     const host = show();
     const details = host.querySelector("details.section") as HTMLDetailsElement;

@@ -45,6 +45,17 @@ describe("SourcesView", () => {
     expect(host.textContent).toContain("42 U.S.C. 1396a");
   });
 
+  it("names each citing item with a token", () => {
+    const host = document.createElement("div");
+    render(<SourcesView />, host);
+    const cited = host.querySelector("article.source .cited-by")!;
+    const tok = [...cited.querySelectorAll("button.tok")].find(
+      (b) => b.textContent === "Medicaid: is in the community engagement age range",
+    ) as HTMLButtonElement;
+    expect(tok).toBeDefined();
+    expect(tok.getAttribute("data-id")).toBe("WR-200");
+  });
+
   it("opens one source expanded when the route names it", () => {
     route.value = { ...defaultRoute(), view: "source", arg: "S2" };
     const host = document.createElement("div");
@@ -70,6 +81,17 @@ describe("SearchView", () => {
     expect(host.textContent).toContain("Items");
     expect(host.textContent).toContain("Sources");
     expect(host.textContent).toContain("Applicable individual");
+  });
+
+  it("makes the identifier in a result row a token, leaving the name as the link", () => {
+    route.value = { ...defaultRoute(), view: "search", params: { q: "date of birth" } };
+    const host = document.createElement("div");
+    render(<SearchView />, host);
+    const li = host.querySelector("ul.hits li")!;
+    expect(li.querySelector("a b")!.textContent).toBe("Date of Birth");
+    const tok = li.querySelector("small button.tok") as HTMLButtonElement;
+    expect(tok.textContent).toBe("date_of_birth");
+    expect(li.querySelector("small")!.textContent).toContain("WR-001 · date_of_birth · supplied");
   });
 
   it("says so when nothing matches", () => {

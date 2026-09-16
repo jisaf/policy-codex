@@ -115,6 +115,26 @@ describe("ItemView", () => {
     );
   });
 
+  it("makes the derivation, the example, and the dependency lists clickable", () => {
+    const host = show("WR-200");
+    const lead = host.querySelector("pre.derivation")!;
+    expect([...lead.querySelectorAll("button.tok.phrase")].map((b) => b.textContent))
+      .toContain("all of the following are true:");
+    expect([...lead.querySelectorAll("button.tok.param")].map((b) => b.textContent))
+      .toContain("Medicaid community engagement minimum age (19)");
+    // Uses and Used by name each item with a token that carries its id.
+    const uses = host.querySelector(".uses")!;
+    const age = [...uses.querySelectorAll("button.tok")].find((b) => b.textContent === "Age")!;
+    expect(age.getAttribute("data-id")).toBe("WR-003");
+    expect(host.querySelector(".used-by button.tok")).not.toBeNull();
+    expect(host.querySelector(".worked-example button.tok")).not.toBeNull();
+    // Only the machine-syntax fragments are tokenised; the prose around them
+    // ("Given", "the answer is") must not be painted as unknown identifiers.
+    expect(host.querySelector(".worked-example .tok.unknown")).toBeNull();
+    expect(host.querySelector(".worked-example")!.textContent).toMatch(/^Example\. Given .*, the answer is .*\.$/);
+    expect(host.querySelector("table.tests td.mono button.tok")).not.toBeNull();
+  });
+
   it("shows the decision record with the item's excerpt and its document link", () => {
     const host = show("WR-200");
     const record = host.querySelector(".decision-record")!;
@@ -124,6 +144,14 @@ describe("ItemView", () => {
       (a) => a.textContent === "State plans for medical assistance",
     ) as HTMLAnchorElement;
     expect(docLink.getAttribute("href")).toBe("#/mwr/document/D-1");
+  });
+
+  it("makes an excerpt id in the decision record a token", () => {
+    const host = show("WR-200");
+    const tok = host.querySelector(".decision-record button.tok.source") as HTMLButtonElement;
+    expect(tok.textContent).toBe("S1");
+    expect(host.querySelector(".decision-record")!.textContent)
+      .toContain("S1. Applicable individual");
   });
 
   it("shows none recorded when an item carries no rationale", () => {

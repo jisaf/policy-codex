@@ -8,6 +8,7 @@ import {
 } from "../ledger/documents";
 import type { LoadedVolume } from "../ledger/load";
 import { fileEntries } from "../changes/types";
+import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
 import { citingItems } from "./SourcesView";
 import {
@@ -198,6 +199,17 @@ function DocumentPage(
   }, [path]);
 
   const excerpts = excerptsOf(vol.sources, doc.id);
+  // `?excerpt=S-n` is how a source token traces into the document it was
+  // taken from: the excerpt is marked, and brought into view once the page
+  // has laid out.
+  const marked = r.params.excerpt ?? null;
+  useLayoutEffect(() => {
+    if (!marked) return;
+    const el = document.getElementById(marked);
+    if (el && typeof el.scrollIntoView === "function") {
+      el.scrollIntoView({ block: "center" });
+    }
+  }, [marked, doc.id]);
 
   return (
     <section class="view document">
@@ -234,7 +246,7 @@ function DocumentPage(
       {excerpts.map((s) => {
         const citing = citingItems(engine, s.id);
         return (
-          <article class="excerpt" key={s.id}>
+          <article class={`excerpt${marked === s.id ? " on" : ""}`} key={s.id} id={s.id}>
             <h4>
               <a href={buildHash({ ...r, view: "source", arg: s.id, params: {} })}>
                 {s.id}. {s.title}
@@ -247,9 +259,7 @@ function DocumentPage(
               {citing.length === 0 ? "nothing yet" : citing.map((it, i) => (
                 <span key={it.id}>
                   {i > 0 && ", "}
-                  <a href={buildHash({ ...r, view: "item", arg: it.id, params: {} })}>
-                    {it.name}
-                  </a>
+                  <Ident id={it.identifier} label={it.name} engine={engine} />
                 </span>
               ))}
             </p>

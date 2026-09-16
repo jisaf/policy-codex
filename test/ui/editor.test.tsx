@@ -22,6 +22,31 @@ const vol = {
   chapterOf: { "WR-200": "medicaid" },
 } as unknown as LoadedVolume;
 
+/** Text is the primary surface, so anything asserting on the guided form
+ *  opens Advanced -> Form first. */
+function openForm(host: HTMLElement): void {
+  (host.querySelector("button[data-surface=form]") as HTMLButtonElement).click();
+  render(<ItemEditor />, host);
+}
+
+/** WR-200's block with the derivation replaced, so a test can drive the
+ *  checker without depending on the rest of the item. */
+function blockWith(derivedAs: string): string {
+  return [
+    "ID            WR-200",
+    "Fact          Medicaid: is in the community engagement age range",
+    "Identifier    medicaid_in_ce_age_range",
+    "Kind          Derived",
+    "Type          yes/no",
+    "Scope         person",
+    "Program       Medicaid",
+    "Meaning       The person has attained age 19 and is under age 65.",
+    "Source        S1",
+    "Implemented   Determination engine",
+    `Derived as    ${derivedAs}`,
+  ].join("\n");
+}
+
 describe("ItemEditor", () => {
   beforeEach(() => {
     route.value = defaultRoute();
@@ -39,13 +64,27 @@ describe("ItemEditor", () => {
     expect(host.textContent).toBe("");
   });
 
-  it("opens an existing item into the form surface", () => {
+  it("opens an existing item into the text surface", () => {
+    openEditor("WR-200");
+    expect(editingSig.value!.surface).toBe("text");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    const doc = host.querySelector("textarea.block") as HTMLTextAreaElement;
+    expect(doc.value).toContain("Fact          Medicaid: is in the community engagement age range");
+    expect(host.querySelector(".constraints")!.textContent).toContain("Identifier is unique");
+    // The painted copy behind the textarea carries the same text, tokenised.
+    const painted = host.querySelector("pre.hl")!;
+    expect(painted.textContent).toContain("all of the following are true:");
+    expect(painted.querySelector("span.tk.key")!.textContent).toBe("ID");
+  });
+
+  it("reaches the guided form through Advanced", () => {
     openEditor("WR-200");
     const host = document.createElement("div");
     render(<ItemEditor />, host);
+    openForm(host);
     const name = host.querySelector("input[name=name]") as HTMLInputElement;
     expect(name.value).toBe("Medicaid: is in the community engagement age range");
-    expect(host.querySelector(".constraints")!.textContent).toContain("Identifier is unique");
   });
 
   it("opens an existing item with all its fields, not just its own kind's", () => {
@@ -54,6 +93,7 @@ describe("ItemEditor", () => {
     openEditor("WR-200");
     const host = document.createElement("div");
     render(<ItemEditor />, host);
+    openForm(host);
     expect((host.querySelector("input.allfieldstoggle") as HTMLInputElement).checked).toBe(true);
     expect(host.querySelector("input[name=supplied_by]")).not.toBeNull();
     expect(host.querySelector("input[name=value]")).not.toBeNull();
@@ -64,6 +104,7 @@ describe("ItemEditor", () => {
     openEditor("WR-200");
     const host = document.createElement("div");
     render(<ItemEditor />, host);
+    openForm(host);
     const meaning = host.querySelector("textarea[name=meaning]") as HTMLTextAreaElement;
     meaning.value = "A restated meaning that is comfortably long enough to sign.";
     meaning.dispatchEvent(new Event("input", { bubbles: true }));
@@ -86,6 +127,109 @@ describe("ItemEditor", () => {
     await new Promise((r) => setTimeout(r));
     render(<ItemEditor />, host);
     expect(host.querySelector(".diagnostics")!.textContent).toContain('unknown field "Wobble"');
+  });
+
+  it("lists a type-check error when the derivation compares a date with a number", async () => {
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    const doc = host.querySelector("textarea.block") as HTMLTextAreaElement;
+    doc.value = blockWith("Date of Birth is at least 21");
+    doc.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    // The block still parses, so the error can only come from engine.check.
+    expect(host.querySelector(".diagnostics")!.textContent)
+      .toContain("comparison mixes date and number");
+  });
+
+  it("turns the status pill red once an unknown identifier appears", async () => {
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    expect(host.querySelector(".pill.ok")!.textContent)
+      .toBe("parses, all constraints satisfied");
+    const doc = host.querySelector("textarea.block") as HTMLTextAreaElement;
+    doc.value = blockWith("wobbly thing is at least 21");
+    doc.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    expect(host.querySelector(".pill.ok")).toBeNull();
+    expect(host.querySelector(".pill.bad")!.textContent).toContain("problem(s)");
+    // The offending line is painted with the error background.
+    expect(host.querySelector("pre.hl .line.errline")).not.toBeNull();
+    expect(host.querySelector("pre.hl .tk.unknown")!.textContent).toBe("wobbly");
+  });
+
+  it("evaluates the examples of the item being edited", async () => {
+    openEditor("WR-003");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    (host.querySelector("button[data-tab=examples]") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    const rows = [...host.querySelectorAll("table.examples tbody tr")];
+    expect(rows).toHaveLength(4);
+    expect(rows.map((tr) => tr.lastElementChild!.textContent)).toEqual([
+      "pass", "pass", "pass", "pass",
+    ]);
+    expect(rows[0].firstElementChild!.textContent).toBe("WR-003-T1");
+  });
+
+  it("completes a fact after a prefix, and Enter inserts it", async () => {
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    const doc = host.querySelector("textarea.block") as HTMLTextAreaElement;
+    // Setting .value leaves the caret at the end, which is where the prefix is.
+    doc.value = blockWith("date");
+    doc.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    const options = [...host.querySelectorAll("ul.ac li")];
+    expect(options.length).toBeGreaterThan(0);
+    expect(options[0].textContent).toContain("Date of Birth");
+
+    doc.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    expect(doc.value).toContain("Derived as    Date of Birth");
+    expect(host.querySelectorAll("ul.ac li")).toHaveLength(0);
+    // A clean parse reaches the draft, so the identifier is what was stored.
+    expect(editingSig.value!.draft.derived).toBe("date_of_birth");
+  });
+
+  it("completes an identifier, not a name, inside an Examples line", async () => {
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    const doc = host.querySelector("textarea.block") as HTMLTextAreaElement;
+    doc.value = `${blockWith("yes")}\nExamples\n  T1: given date_of`;
+    doc.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    expect(host.querySelector("ul.ac li")!.textContent).toContain("date_of_birth");
+    doc.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    expect(doc.value.endsWith("date_of_birth=")).toBe(true);
+  });
+
+  it("shows the token under the caret in the inspector", async () => {
+    openEditor("WR-200");
+    const host = document.createElement("div");
+    render(<ItemEditor />, host);
+    const doc = host.querySelector("textarea.block") as HTMLTextAreaElement;
+    doc.value = blockWith("Date of Birth is at least 21");
+    doc.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    doc.selectionStart = doc.selectionEnd = doc.value.indexOf("Date of Birth") + 2;
+    doc.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowLeft", bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    render(<ItemEditor />, host);
+    const inspector = host.querySelector(".inspector")!;
+    expect(inspector.textContent).toContain("WR-001 · Date of Birth");
+    expect(inspector.textContent).toContain("supplied");
   });
 
   it("builds a change entry keyed by item id and chapter", () => {
@@ -174,6 +318,8 @@ describe("ItemEditor", () => {
     (host.querySelector("button[data-kind=derived]") as HTMLButtonElement).click();
     await new Promise((r) => setTimeout(r));
     render(<ItemEditor />, host);
+    expect(editingSig.value!.surface).toBe("text");
+    openForm(host);
     expect(editingSig.value!.step).toBe("edit");
     expect(editingSig.value!.draft.kind).toBe("derived");
     expect(editingSig.value!.draft.scope).toBe("person");
@@ -198,6 +344,7 @@ describe("ItemEditor", () => {
       (host.querySelector("button[data-kind=supplied]") as HTMLButtonElement).click();
       await new Promise((r) => setTimeout(r));
       render(<ItemEditor />, host);
+      openForm(host);
       expect(editingSig.value!.draft.kind).toBe("supplied");
       expect(editingSig.value!.draft.scope).toBe("person");
       expect(host.querySelector("input[name=supplied_by]")).not.toBeNull();
@@ -221,6 +368,7 @@ describe("ItemEditor", () => {
       (host.querySelector("button[data-kind=parameter]") as HTMLButtonElement).click();
       await new Promise((r) => setTimeout(r));
       render(<ItemEditor />, host);
+      openForm(host);
       expect(editingSig.value!.draft.kind).toBe("parameter");
       expect(editingSig.value!.draft.scope).toBe("global");
       expect(host.querySelector("input[name=value]")).not.toBeNull();
@@ -230,15 +378,16 @@ describe("ItemEditor", () => {
       expect(host.querySelector("select[name=implemented]")).not.toBeNull();
     });
 
-  it("groups Text and AI under an Advanced disclosure", async () => {
+  it("groups Form and AI under an Advanced disclosure", async () => {
     openEditor("WR-200");
     const host = document.createElement("div");
     render(<ItemEditor />, host);
+    expect(host.querySelector(".tabs > button[data-surface=text]")!.textContent).toBe("Text");
     const details = host.querySelector("details.advanced") as HTMLDetailsElement;
     expect(details).not.toBeNull();
     expect(details.open).toBe(false);
     expect(details.querySelector("summary")!.textContent).toContain("Advanced");
-    expect(details.querySelector("button[data-surface=text]")!.textContent).toBe("Text");
+    expect(details.querySelector("button[data-surface=form]")!.textContent).toBe("Form");
     expect(details.querySelector("button[data-surface=ai]")!.textContent).toBe("AI");
     details.querySelector("summary")!.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     expect(details.open).toBe(true);
@@ -297,6 +446,7 @@ describe("ItemEditor", () => {
     // item yet.
     openEditor(newId);
     render(<ItemEditor />, host);
+    openForm(host);
     expect(host.querySelector("textarea[name=rationale]")).not.toBeNull();
     expect(host.querySelector(".constraints")!.textContent).toContain("rationale.required");
   });
@@ -316,6 +466,7 @@ describe("ItemEditor", () => {
     };
     const host = document.createElement("div");
     render(<ItemEditor />, host);
+    openForm(host);
     const candidate = host.querySelector("li.candidate")!;
     expect(candidate.textContent).toContain("same-shape");
     expect(candidate.textContent).toContain("Medicaid: is in the community engagement age range");

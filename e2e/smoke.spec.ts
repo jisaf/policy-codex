@@ -22,11 +22,46 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   await expect(page).toHaveURL(/#\/mwr\/item\/WR-003/);
   await expect(page.getByRole("heading", { name: "Age" })).toBeVisible();
 
-  // Edit opens the editor overlay; the tray is empty.
+  // The derivation is rich text: a fact in it opens one card, which links to
+  // the definition and to the decision record, and closes on Escape.
+  await page.locator("pre.derivation button.tok.fact").first().click();
+  const card = page.locator(".tokpop");
+  await expect(card).toBeVisible();
+  await expect(card.getByRole("link", { name: "Open definition" }))
+    .toHaveAttribute("href", "#/mwr/item/WR-001");
+  await expect(card.getByRole("link", { name: "Trace to source" }))
+    .toHaveAttribute("href", "#/mwr/item/WR-001?section=record");
+  await page.keyboard.press("Escape");
+  await expect(card).toHaveCount(0);
+
+  // Edit opens the editor overlay on the text surface, which is the default:
+  // the item block is the document, so the Meaning line is edited in place.
   await page.getByRole("button", { name: "Edit", exact: true }).click();
-  const meaning = page.getByLabel("Meaning");
-  await expect(meaning).toHaveValue(/Whole years elapsed/);
-  await meaning.fill("Whole years elapsed from Date of Birth to the Determination Date. (smoke)");
+  const doc = page.locator("textarea.block");
+  await expect(doc).toHaveValue(/Whole years elapsed/);
+
+  // The painted copy behind the textarea carries the same text, tokenised.
+  await expect(page.locator("pre.hl .tk.phrase").first())
+    .toHaveText("the number of whole years between");
+
+  // WR-003's four examples evaluate against the draft being edited.
+  await page.getByRole("button", { name: "Examples", exact: true }).click();
+  await expect(page.locator("table.examples tbody tr")).toHaveCount(4);
+  await expect(page.locator("table.examples tbody td.ok")).toHaveCount(4);
+
+  // WR-003 cites no source, so the checker and the pill both say so.
+  await page.getByRole("button", { name: "Checker", exact: true }).click();
+  await expect(page.locator(".diagnostics")).toContainText(
+    "At least one source excerpt is cited",
+  );
+  await expect(page.locator(".pill")).toHaveText("1 problem(s)");
+
+  const block = await doc.inputValue();
+  await doc.fill(block.replace(
+    /^Meaning {7}.*$/m,
+    "Meaning       Whole years elapsed from Date of Birth to the Determination Date. (smoke)",
+  ));
+  await expect(page.locator("pre.hl")).toContainText("(smoke)");
   await page.getByRole("button", { name: "Save to tray" }).click();
 
   // The tray count reflects the entry.

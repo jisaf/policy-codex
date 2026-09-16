@@ -23,11 +23,11 @@ export function draftEntry(state: EditingState, engine: Engine): ChangeEntry {
   };
 }
 
-const PRIMARY_SURFACE: { key: EditingState["surface"]; label: string } = { key: "form", label: "Form" };
-/** Text and AI are the same surfaces as always; the wizard just tucks them
- *  under a disclosure so a first-time steward meets the guided form first. */
+const PRIMARY_SURFACE: { key: EditingState["surface"]; label: string } = { key: "text", label: "Text" };
+/** The item block is the document, so Text is what a steward meets first; the
+ *  guided form and the AI panel keep working, tucked under a disclosure. */
 const ADVANCED_SURFACES: Array<{ key: EditingState["surface"]; label: string }> = [
-  { key: "text", label: "Text" },
+  { key: "form", label: "Form" },
   { key: "ai", label: "AI" },
 ];
 
@@ -105,7 +105,7 @@ function StartStep({ engine, state }: { engine: Engine; state: EditingState }) {
 function KindStep({ state }: { state: EditingState }) {
   const choose = (kind: Item["kind"]) => {
     editingSig.value = {
-      ...state, step: "edit",
+      ...state, step: "edit", surface: "text",
       draft: { ...state.draft, kind, scope: kind === "parameter" ? "global" : "person" },
     };
   };
@@ -205,7 +205,7 @@ export function ItemEditor() {
               class={state.surface === PRIMARY_SURFACE.key ? "on" : ""}
               onClick={() => { editingSig.value = { ...state, surface: PRIMARY_SURFACE.key }; }}
             >{PRIMARY_SURFACE.label}</button>
-            <details class="advanced" open={state.surface !== "form"}>
+            <details class="advanced" open={state.surface !== PRIMARY_SURFACE.key}>
               <summary>Advanced</summary>
               <div class="advtabs">
                 {ADVANCED_SURFACES.map((s) => (
@@ -246,7 +246,10 @@ export function ItemEditor() {
           />
         )}
         {state.surface === "text" && (
-          <TextEditor engine={engine} draft={state.draft} onChange={setDraft} />
+          <TextEditor
+            engine={engine} draft={state.draft} onChange={setDraft}
+            vol={vol} isNew={isNew}
+          />
         )}
         {state.surface === "ai" && (
           <AiPanel engine={engine} state={state} onDraft={setDraft} />

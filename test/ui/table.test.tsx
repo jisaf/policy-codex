@@ -71,4 +71,15 @@ describe("TableView", () => {
     expect(row.querySelector("a b")!.textContent).toBe("Date of Birth");
     expect(row.querySelector("small")!.textContent).toBe("WR-001 · date_of_birth");
   });
+
+  it("makes the identifier in each row a token, leaving the name as the link", () => {
+    const host = document.createElement("div");
+    render(<TableView />, host);
+    const row = host.querySelector("tbody tr")!;
+    const tok = row.querySelector("small button.tok") as HTMLButtonElement;
+    expect(tok.textContent).toBe("date_of_birth");
+    expect(tok.className).toBe("tok fact");
+    expect(tok.getAttribute("data-id")).toBe("WR-001");
+    expect(row.querySelector("a")!.getAttribute("href")).toBe("#/mwr/item/WR-001");
+  });
 });

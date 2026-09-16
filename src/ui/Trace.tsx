@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import { story, STORY_LINES, type TraceNode } from "../engine/explain";
+import { Ident, Rich } from "./Rich";
 import { buildHash, type Route } from "./router";
 
 /** What each origin badge means, in the reader's words. */
@@ -47,7 +48,7 @@ function TraceRow(
           <span class="tmark" title="this is what decided the value above">★</span>
         )}
         <span class="tname">{node.name}</span>
-        <code>{node.identifier}</code>
+        <code><Ident id={node.identifier} engine={engine} /></code>
         {node.person && <span class="tag">{node.person}</span>}
         {node.month && <span class="tag">{node.month}</span>}
         <span class="tval">{engine.fmt(node.value)}</span>
@@ -60,7 +61,7 @@ function TraceRow(
         <div class="tbody">
           {node.error !== undefined && <p class="bad">{node.error}</p>}
           {node.rule && node.rule.length > 0 && (
-            <pre class="derivation">{node.rule.join("\n")}</pre>
+            <Rich engine={engine} text={node.rule.join("\n")} mode="expr" class="derivation" />
           )}
           {node.sources.length > 0 && (
             <p class="tsources">
@@ -111,9 +112,7 @@ export function Trace(
       <ul class="story">
         {lines.map((l, i) => (
           <li key={`${l.node.key}#${i}`} class={l.depth ? "sub" : undefined}>
-            <a href={buildHash({ ...r, view: "item", arg: l.node.identifier, params: {} })}>
-              {l.node.name}
-            </a>{" is "}
+            <Ident id={l.node.identifier} label={l.node.name} engine={engine} />{" is "}
             <span class="tval">{engine.fmt(l.node.value)}</span>
             {l.node.month && <span class="tag">{l.node.month}</span>}
           </li>

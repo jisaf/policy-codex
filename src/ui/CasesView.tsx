@@ -6,6 +6,7 @@ import {
 } from "../engine/cases";
 import { missingFacts, type TraceNode } from "../engine/explain";
 import type { Item, TestSpec } from "../engine/types";
+import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
 import type { LoadedVolume } from "../ledger/load";
 import { fileEntries } from "../changes/types";
@@ -187,7 +188,7 @@ function FactRows(
       {rows.map((row, i) => (
         <tr key={`${row.identifier}|${row.month}|${i}`}>
           <td>{engine.item(row.identifier)?.name ?? row.identifier}</td>
-          <td><code>{row.identifier}</code></td>
+          <td><code><Ident id={row.identifier} engine={engine} /></code></td>
           <td>{row.month}</td>
           <td>{engine.fmt(row.value)}</td>
         </tr>
@@ -225,7 +226,7 @@ function CasePage(
           <ul class="params">
             {parameters.map(([k, v]) => (
               <li key={k}>
-                <code>{k}</code> {engine.fmt(v)}
+                <code><Ident id={k} engine={engine} /></code> {engine.fmt(v)}
               </li>
             ))}
           </ul>
@@ -260,7 +261,9 @@ function CasePage(
               {Object.entries(hc.month_facts ?? {}).flatMap(([m, mf]) =>
                 Object.entries(mf).map(([k, v]) => (
                   <tr key={`${m}|${k}`}>
-                    <td>{m}</td><td><code>{k}</code></td><td>{engine.fmt(v)}</td>
+                    <td>{m}</td>
+                    <td><code><Ident id={k} engine={engine} /></code></td>
+                    <td>{engine.fmt(v)}</td>
                   </tr>
                 )))}
             </tbody>
@@ -291,7 +294,10 @@ function CasePage(
                   <td>
                     <b>{engine.item(res.identifier)?.name ?? res.identifier}</b>
                     <br />
-                    <small>{engine.item(res.identifier)?.id ?? ""} · {res.identifier}</small>
+                    <small>
+                      {engine.item(res.identifier)?.id ?? ""}{" · "}
+                      <Ident id={res.identifier} engine={engine} />
+                    </small>
                   </td>
                   <td>{res.month ?? "—"}</td>
                   <td>{engine.fmt(res.expect)}</td>
@@ -367,7 +373,7 @@ function FactFields(
         {items.map((it) => (
           <tr key={it.identifier}>
             <td>{it.name}</td>
-            <td><code>{it.identifier}</code></td>
+            <td><code><Ident id={it.identifier} engine={engine} /></code></td>
             <td class="muted">{it.type}</td>
             <td>{fieldInput(engine, it, values, set)}</td>
           </tr>
@@ -552,7 +558,7 @@ function NewHousehold(
           <ul class="params">
             {parameters.map((it) => (
               <li key={it.identifier}>
-                {it.name} <code>{it.identifier}</code>{" "}
+                {it.name} <code><Ident id={it.identifier} engine={engine} /></code>{" "}
                 <b>{engine.fmt(engine.paramValue(it))}</b>
               </li>
             ))}
@@ -601,7 +607,7 @@ function NewHousehold(
                   <div key={o.identifier} class="outcome">
                     <h4>
                       {engine.item(o.identifier)?.name ?? o.identifier}{" "}
-                      <code>{o.identifier}</code>
+                      <code><Ident id={o.identifier} engine={engine} /></code>
                       {o.month && <span class="tag">{o.month}</span>}
                       <span class="tval">{engine.fmt(o.root.value)}</span>
                     </h4>
@@ -616,7 +622,8 @@ function NewHousehold(
                               onClick={() => {
                                 (document.getElementById(m.identifier) as HTMLElement | null)?.focus();
                               }}
-                            >{m.name}</button>
+                            >{m.name}</button>{" "}
+                            <code><Ident id={m.identifier} engine={engine} /></code>
                           </span>
                         ))}
                       </p>

@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { renderMarkdown } from "../../src/ui/markdown";
+import { h, render } from "preact";
+import { inlineParts, renderMarkdown, renderMarkdownNodes } from "../../src/ui/markdown";
 
 describe("renderMarkdown", () => {
   it("renders headings at every level used by the handoff export", () => {
@@ -52,5 +53,60 @@ describe("renderMarkdown", () => {
     expect(html).toContain("<h2>Supplied facts");
     expect(html).toContain("<table>");
     expect(html).toContain("<pre><code>");
+  });
+});
+
+describe("renderMarkdownNodes", () => {
+  function show(md: string): HTMLElement {
+    const host = document.createElement("div");
+    render(
+      h("div", null, renderMarkdownNodes(md, (text, block) =>
+        h("b", { class: block ? "fence" : "span" }, text))),
+      host,
+    );
+    return host;
+  }
+
+  it("splits a line into its literal stretches and its code spans", () => {
+    expect(inlineParts("Uses: `age`, `dob`.")).toEqual([
+      { code: false, text: "Uses: " },
+      { code: true, text: "age" },
+      { code: false, text: ", " },
+      { code: true, text: "dob" },
+      { code: false, text: "." },
+    ]);
+  });
+
+  it("renders the same document as elements, handing code to the caller", () => {
+    const host = show([
+      "# Engineer handoff: t",
+      "",
+      "Uses: `age`.",
+      "",
+      "| Identifier | Type |",
+      "|---|---|",
+      "| `age` | number |",
+      "",
+      "- one `two`",
+      "",
+      "```",
+      "Age is at least 19",
+      "  - a nested line",
+      "```",
+    ].join("\n"));
+    expect(host.querySelector("h1")!.textContent).toBe("Engineer handoff: t");
+    expect(host.querySelector("p")!.textContent).toBe("Uses: age.");
+    expect(host.querySelector("p b.span")!.textContent).toBe("age");
+    expect(host.querySelector("table th")!.textContent).toBe("Identifier");
+    expect(host.querySelector("table td b.span")!.textContent).toBe("age");
+    expect(host.querySelector("ul li")!.textContent).toBe("one two");
+    expect(host.querySelector("pre code b.fence")!.textContent)
+      .toBe("Age is at least 19\n  - a nested line");
+  });
+
+  it("escapes what it renders, because Preact writes text as text", () => {
+    const host = show("a < b & c > d");
+    expect(host.querySelector("p")!.textContent).toBe("a < b & c > d");
+    expect(host.innerHTML).toContain("a &lt; b &amp; c &gt; d");
   });
 });
