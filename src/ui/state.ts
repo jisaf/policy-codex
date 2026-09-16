@@ -202,11 +202,11 @@ export function openEditor(id: string | null): void {
     if (!item) return;
     editingSig.value = {
       id, chapter: vol.chapterOf[id] ?? "supplied",
-      draft: JSON.parse(JSON.stringify(item)) as Item, surface: "form", step: "edit",
+      draft: JSON.parse(JSON.stringify(item)) as Item, surface: "text", step: "edit",
     };
   } else {
     editingSig.value = {
-      id: null, chapter: "medicaid", surface: "form", step: "start",
+      id: null, chapter: "medicaid", surface: "text", step: "start",
       draft: {
         id: engine.nextId(), name: "", identifier: "", kind: "derived", type: "yes/no",
         scope: "person", program: "Medicaid", meaning: "", sources: [], tests: [],

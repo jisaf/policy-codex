@@ -76,9 +76,11 @@ section of the docs in a side panel.
 ## Editor wizard
 
 New items start with search (unchanged), then "What are you adding?": a fact
-we are told, a rule, a number set by policy. The form shows only that kind's
-fields; the derivation builder appears for rules. Text and AI surfaces move
-under "Advanced". Existing items open as before.
+we are told, a rule, a number set by policy. The item block is the primary
+surface: the kind step opens Text, with the item already shaped for that kind.
+The guided form (which shows only that kind's fields, with the derivation
+builder for rules) and the AI panel move under "Advanced". Existing items open
+the same way.
 
 ## Non-goals
 
