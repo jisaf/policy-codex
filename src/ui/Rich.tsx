@@ -325,7 +325,7 @@ export function TokenPopover() {
       // A click on another token swaps the card; the token's own handler does
       // that, so this one only closes on a click that is neither.
       const inside = t && typeof t.closest === "function"
-        && (t.closest(".tokpop") || t.closest("button.tok"));
+        && (t.closest(".tokpop") || t.closest("button.tok") || t.closest(".tourbox"));
       if (inside) return;
       closePopover();
     };

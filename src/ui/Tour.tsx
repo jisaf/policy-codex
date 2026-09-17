@@ -1,7 +1,8 @@
 import { signal, useSignal } from "@preact/signals";
 import { useLayoutEffect } from "preact/hooks";
 import type { Route } from "./router";
-import { navigate } from "./state";
+import { closeEditor, editingSig, modeSig, navigate, openEditor } from "./state";
+import { closePopover } from "./Rich";
 
 export const TOUR_KEY = "codex.tour";
 
@@ -43,6 +44,10 @@ interface TourStep {
   /** The route this step's target lives on; entered when the step becomes
    *  current, never by simulating a click on the real nav. */
   go: Partial<Route> | null;
+  /** A small demonstration performed after the page has rendered: opening
+   *  the definition card on the first token, or the editor. The tour does
+   *  this itself so the visitor sees the thing described, not a promise. */
+  act?: "open-token" | "close-popover" | "open-editor";
 }
 
 // Programs -> open Medicaid -> Cases -> open C-01 -> click the outcome
@@ -73,7 +78,71 @@ const STEPS: TourStep[] = [
     body: "Click an outcome's row to see the story behind its value.",
     go: null,
   },
+  {
+    target: ".derivation button.tok[data-id]",
+    body: "Every coloured word is a token: a fact, a rule, a number set by policy, or a pattern phrase. Click one, anywhere in the app, to see what it means.",
+    go: { view: "item", arg: "WR-200", params: {} },
+  },
+  {
+    target: ".tokpop",
+    body: "The definition card: what the token is, its type and scope, its meaning, and its value. \"Open definition\" goes to its own page.",
+    go: null,
+    act: "open-token",
+  },
+  {
+    target: ".tokpop-actions a[href*=\"section=record\"]",
+    body: "\"Trace to source\" walks back to the statute: the rationale, the excerpts cited, their documents, and the change history.",
+    go: null,
+  },
+  {
+    target: "details.section[open] > summary",
+    body: "The decision record is where that trace lands. Every rule has one.",
+    go: { view: "item", arg: "WR-200", params: { section: "record" } },
+    act: "close-popover",
+  },
+  {
+    target: ".edwrap",
+    body: "In the editor the same tokens are painted as you type, with completion and a checker that flags problems live.",
+    go: null,
+    act: "open-editor",
+  },
 ];
+
+/** The editor step only opens the editor when the visitor already turned
+ *  edit mode on; in reader mode it points at the switch instead of flipping
+ *  it behind their back. */
+function stepFor(index: number): TourStep {
+  const s = STEPS[index];
+  if (s.act === "open-editor" && modeSig.value !== "edit") {
+    return {
+      target: "button.mode-toggle",
+      body: "Turn on edit mode to open any item in a text editor with the same coloured tokens, completion, and live checking.",
+      go: null,
+    };
+  }
+  return s;
+}
+
+function perform(act: TourStep["act"]): void {
+  if (!act) return;
+  try {
+    if (act === "open-token") {
+      // A token that names an item, so the card shows a definition and a
+      // trace to source rather than a pattern phrase's grammar note.
+      // The lead sentence starts with the item's own name, so prefer the
+      // second item token: a fact the rule depends on, whose card offers
+      // both "Open definition" and "Trace to source".
+      const toks = document.querySelectorAll(".derivation button.tok[data-id]");
+      const tok = (toks[1] ?? toks[0]) as HTMLElement | undefined;
+      tok?.click();
+    } else if (act === "close-popover") {
+      closePopover();
+    } else if (act === "open-editor") {
+      closePopover();
+      if (!editingSig.value) openEditor("WR-200");
+    }
+  } catch { /* the page may not have the element; the step still reads */ }
+}
 
 /** Toggles a highlight class on the step's real target, when the current
  *  page happens to have it, so the tour points at something real without
@@ -87,6 +156,8 @@ function highlight(selector: string): () => void {
 
 export function Tour() {
   const step = useSignal(0);
+  // Whether this tour opened the editor (so finishing closes it again).
+  const openedEditor = useSignal(false);
 
   useLayoutEffect(() => {
     if (!tourOpenSig.value) return;
@@ -94,9 +165,19 @@ export function Tour() {
     navigate(STEPS[0].go ?? {});
   }, [tourOpenSig.value]);
 
+  // The act runs after a tick so the page the step navigated to has rendered;
+  // the highlight is re-applied afterwards so it can find what the act opened.
   useLayoutEffect(() => {
     if (!tourOpenSig.value) return;
-    return highlight(STEPS[step.value].target);
+    const s = stepFor(step.value);
+    let undo = highlight(s.target);
+    let cancelled = false;
+    const t = setTimeout(() => {
+      if (cancelled) return;
+      perform(s.act);
+      setTimeout(() => { if (!cancelled) { undo(); undo = highlight(s.target); } });
+    });
+    return () => { cancelled = true; clearTimeout(t); undo(); };
   }, [tourOpenSig.value, step.value]);
 
   // Re-measured on every step (its body text, and so its height, changes)
@@ -113,18 +194,21 @@ export function Tour() {
 
   if (!tourOpenSig.value) return null;
 
-  const s = STEPS[step.value];
+  const s = stepFor(step.value);
   const last = step.value === STEPS.length - 1;
 
   const finish = () => {
     markSeen();
     tourOpenSig.value = false;
+    closePopover();
+    if (openedEditor.value) { closeEditor(); openedEditor.value = false; }
   };
 
   const next = () => {
     if (last) { finish(); return; }
-    const to = STEPS[step.value + 1];
+    const to = stepFor(step.value + 1);
     step.value += 1;
+    if (to.act === "open-editor" && !editingSig.value && modeSig.value === "edit") openedEditor.value = true;
     if (to.go) navigate(to.go);
   };
 

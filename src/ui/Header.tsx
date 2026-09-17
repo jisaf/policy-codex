@@ -135,7 +135,7 @@ export function Header() {
         )}
         {r.view !== "start" && (
           <button
-            class="btn modebtn"
+            class="btn modebtn mode-toggle"
             onClick={() => { setMode(modeSig.value === "edit" ? "read" : "edit"); }}
           >
             {modeSig.value === "edit" ? "Turn off edit mode" : "Turn on edit mode"}
