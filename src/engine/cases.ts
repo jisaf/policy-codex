@@ -15,6 +15,10 @@ export interface HouseholdCase {
   parameters?: Record<string, unknown>;
   month_facts?: Record<string, Record<string, unknown>>;
   persons: Record<string, PersonSpec>;
+  /** The household graph, one `[role, from, to]` edge per line: "from is the
+   *  role of to". Each edge reaches both persons, with the inverse role on
+   *  the second, beside whatever relationships the persons state themselves. */
+  relationships?: Array<[string, string, string]>;
   expect: Record<string, Record<string, unknown>>;
 }
 
@@ -50,6 +54,7 @@ export function caseToSpec(c: HouseholdCase): TestSpec & { as_of: string } {
     parameters: c.parameters,
     month_facts: c.month_facts,
     persons: c.persons,
+    relationships: c.relationships,
   };
 }
 

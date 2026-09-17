@@ -1,4 +1,5 @@
 import type { Engine } from "../engine/engine";
+import { tagAncestors, tagLabel } from "../engine/tags";
 import type { LoadedVolume } from "../ledger/load";
 import { buildHash, type Route } from "./router";
 
@@ -21,6 +22,18 @@ function derivationText(engine: Engine, id: string): string {
   try { return engine.block(it.derived).join(" "); } catch { return ""; }
 }
 
+/** An item's own tags plus every declared label along their tag hierarchy
+ *  (the tag's own label and each ancestor's), so searching a group's label
+ *  (e.g. "Medicaid" for the `ma` group) finds items tagged under it. */
+function tagText(vol: LoadedVolume, it: { tags?: string[] }): string {
+  const out: string[] = [];
+  for (const t of it.tags ?? []) {
+    out.push(t, tagLabel(vol.meta, t));
+    for (const a of tagAncestors(vol.meta, t)) out.push(a, tagLabel(vol.meta, a));
+  }
+  return out.join(" ");
+}
+
 export function buildSearchIndex(vol: LoadedVolume, engine: Engine): SearchIndex {
   const entries: SearchEntry[] = [];
   for (const it of vol.items) {
@@ -31,7 +44,7 @@ export function buildSearchIndex(vol: LoadedVolume, engine: Engine): SearchIndex
       subtitle: `${it.id} · ${it.identifier} · ${it.kind} · ${it.type} · ${it.scope} · ${it.program}`,
       haystack: [
         it.id, it.name, it.identifier, it.meaning ?? "", it.precision ?? "",
-        (it.tags ?? []).join(" "), derivationText(engine, it.identifier),
+        tagText(vol, it), derivationText(engine, it.identifier),
       ].join(" ").toLowerCase(),
     });
   }

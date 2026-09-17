@@ -3,31 +3,17 @@ import { useLayoutEffect } from "preact/hooks";
 import type { HouseholdCase } from "../engine/cases";
 import { programsOfCase } from "../engine/cases";
 import type { Engine } from "../engine/engine";
+import { tagAncestors, tagGroups, tagLabel } from "../engine/tags";
 import type { Item } from "../engine/types";
+import { inForce, paramInForce } from "../engine/versions";
 import { loadConformanceResults, type ConformanceResults } from "../export/conformance";
 import type { LedgerSource } from "../ledger/source";
 import { programCounts, programOutcomes } from "./CasesView";
 import { Term } from "./labels";
 import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
-import { engineSig, ledgerSource, route, viewEngine, volumeSig } from "./state";
+import { engineSig, ledgerSource, navigate, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
-
-/** The value of a parameter in force on a date: the latest version whose
- *  `from` does not exceed the date. This is the `paramOf` rule in
- *  src/engine/evaluate.ts (minus the per-case override, which has no meaning
- *  outside a case) restated here because that selection lives in a closure
- *  the engine does not export. */
-export function paramInForce(it: Item, date: string): unknown {
-  if (it.versions && it.versions.length) {
-    let best: { from: string; value: unknown } | null = null;
-    for (const v of it.versions) {
-      if (v.from <= date && (!best || v.from >= best.from)) best = v;
-    }
-    return best ? best.value : null;
-  }
-  return it.value === undefined ? null : it.value;
-}
 
 interface Stat { passed: number; failed: number }
 
@@ -78,16 +64,50 @@ function ProgramSwitcher(
   );
 }
 
+/** The "Group" select above the outcomes table: every parent tag declared in
+ *  this volume's hierarchy, filtering outcomes down to those carrying that
+ *  tag or one declared under it. Hidden when the volume declares no tag
+ *  hierarchy (a flat, pre-Colorado vocabulary has no parents to group by). */
+function GroupFilter({ engine, route: r }: { engine: Engine; route: Route }) {
+  const groups = [...tagGroups(engine.meta).keys()];
+  if (!groups.length) return null;
+  const current = r.params.group ?? "";
+  return (
+    <label class="group-filter">
+      Group
+      <select
+        value={current}
+        onChange={(e) => {
+          const params = { ...r.params };
+          const v = (e.target as HTMLSelectElement).value;
+          if (v) params.group = v; else delete params.group;
+          navigate({ params });
+        }}
+      >
+        <option value="">any</option>
+        {groups.map((g) => <option key={g} value={g}>{tagLabel(engine.meta, g)}</option>)}
+      </select>
+    </label>
+  );
+}
+
+function outcomeInGroup(engine: Engine, identifier: string, group: string): boolean {
+  const tags = engine.item(identifier)?.tags ?? [];
+  return tags.some((t) => t === group || tagAncestors(engine.meta, t).includes(group));
+}
+
 function Outcomes(
   { engine, outcomes, cases, route: r }:
   { engine: Engine; outcomes: string[]; cases: HouseholdCase[]; route: Route },
 ) {
   const stats = caseStatsByOutcome(engine, cases);
+  const group = r.params.group ?? "";
+  const visible = group ? outcomes.filter((id) => outcomeInGroup(engine, id, group)) : outcomes;
   return (
     <table class="outcomes grid">
-      <thead><tr><th>Outcome</th><th>Case results</th><th>Rule tests</th></tr></thead>
+      <thead><tr><th>Outcome</th><th>Tags</th><th>Case results</th><th>Rule tests</th></tr></thead>
       <tbody>
-        {outcomes.map((identifier) => {
+        {visible.map((identifier) => {
           const it = engine.item(identifier);
           const cs = stats.get(identifier) ?? { passed: 0, failed: 0 };
           const ts = testStats(engine, it);
@@ -100,6 +120,11 @@ function Outcomes(
                     </a>
                   : identifier}{" "}
                 <code><Ident id={identifier} engine={engine} /></code>
+              </td>
+              <td class="tags">
+                {(it?.tags ?? []).map((t) => (
+                  <span key={t} class="chip">{tagLabel(engine.meta, t)}</span>
+                ))}
               </td>
               <td class={`cases ${cs.failed ? "bad" : "ok"}`}>{statLabel(cs)}</td>
               <td class={`tests ${ts.failed ? "bad" : "ok"}`}>{statLabel(ts)}</td>
@@ -142,8 +167,15 @@ function ParametersInForce(
   { engine, programId }: { engine: Engine; programId: string },
 ) {
   const asOf = useSignal(engine.meta.default_as_of);
+  const ofProgram = (it: Item) => it.program === programId || it.program === "All";
   const parameters = engine.items()
-    .filter((it) => it.kind === "parameter" && (it.program === programId || it.program === "All"))
+    .filter((it) => it.kind === "parameter" && ofProgram(it))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  // Rules and parameters alike carry effective ranges, and one outside the
+  // chosen date states nothing on it, so the page says so rather than
+  // showing a value the codex does not have in force.
+  const dormant = engine.items()
+    .filter((it) => ofProgram(it) && !inForce(it, asOf.value))
     .sort((a, b) => a.name.localeCompare(b.name));
   return (
     <>
@@ -167,6 +199,16 @@ function ParametersInForce(
           ))}
         </tbody>
       </table>
+      {dormant.length > 0 && (
+        <ul class="notinforce">
+          {dormant.map((it) => (
+            <li key={it.id}>
+              {it.name} <code><Ident id={it.identifier} engine={engine} /></code>:{" "}
+              not in force on {asOf.value}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
@@ -267,6 +309,7 @@ function ProgramPage(
       <ConformanceSummary source={source} />
 
       <h3>Outcomes</h3>
+      <GroupFilter engine={engine} route={r} />
       <Outcomes engine={engine} outcomes={program.outcomes} cases={cases} route={r} />
 
       <h3>Cases</h3>

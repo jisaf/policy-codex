@@ -4,7 +4,7 @@ import { Header } from "../../src/ui/Header";
 import { buildSearchIndex } from "../../src/ui/search";
 import { createEngine } from "../../src/engine/engine";
 import {
-  doorSig, engineSig, modeSig, route, searchIndexSig, volumeSig,
+  doorSig, engineSig, manifestSig, modeSig, route, searchIndexSig, volumeSig,
 } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import ledger from "../fixtures/ledger.json";
@@ -28,6 +28,7 @@ describe("Header", () => {
     searchIndexSig.value = buildSearchIndex(vol, engine);
     modeSig.value = "read";
     doorSig.value = null;
+    manifestSig.value = null;
   });
 
   it("puts Programs, Cases, and Search in the primary nav", () => {
@@ -125,5 +126,49 @@ describe("Header", () => {
     const host = document.createElement("div");
     render(<Header />, host);
     expect(host.textContent).toContain("pr/12");
+  });
+
+  it("shows no volume selector, only the title, when the manifest lists one volume", () => {
+    manifestSig.value = {
+      volumes: [{ id: "mwr", title: "Work requirements", path: "volumes/mwr", chapters: [] }],
+    };
+    const host = document.createElement("div");
+    render(<Header />, host);
+    expect(host.querySelector("select.volume-select")).toBeNull();
+    expect(host.querySelector("span.volume")!.textContent).toBe("Work requirements");
+  });
+
+  it("shows a volume selector when the manifest lists more than one, marking a draft volume", () => {
+    manifestSig.value = {
+      volumes: [
+        { id: "mwr", title: "Work requirements", path: "volumes/mwr", chapters: [] },
+        { id: "co", title: "Colorado", path: "volumes/co", status: "draft", chapters: [] },
+      ],
+    };
+    const host = document.createElement("div");
+    render(<Header />, host);
+    const select = host.querySelector("select.volume-select") as HTMLSelectElement;
+    expect(select).not.toBeNull();
+    expect([...select.options].map((o) => o.textContent)).toEqual([
+      "Work requirements", "Colorado (draft)",
+    ]);
+    expect(select.value).toBe("mwr");
+  });
+
+  it("switching the volume selector navigates to the chosen volume's Programs view", async () => {
+    manifestSig.value = {
+      volumes: [
+        { id: "mwr", title: "Work requirements", path: "volumes/mwr", chapters: [] },
+        { id: "co", title: "Colorado", path: "volumes/co", status: "draft", chapters: [] },
+      ],
+    };
+    location.hash = "#/mwr/table";
+    const host = document.createElement("div");
+    render(<Header />, host);
+    const select = host.querySelector("select.volume-select") as HTMLSelectElement;
+    select.value = "co";
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    expect(location.hash).toBe("#/co/program");
   });
 });

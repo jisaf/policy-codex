@@ -52,6 +52,17 @@ describe("governance", () => {
     expect(engine.governance(draft({ tags: ["legal"] }))).toEqual([]);
   });
 
+  it("closes the tag vocabulary the same way when it is declared as a hierarchy", () => {
+    const hierEngine = createEngine(
+      ledger.items as unknown as Item[],
+      { ...meta, tags: [{ id: "ma" }, { id: "magi", parent: "ma", label: "MAGI" }] },
+      refs,
+    );
+    expect(hierEngine.governance(draft({ tags: ["magi"] }))).toEqual([]);
+    const f = hierEngine.governance(draft({ tags: ["foo"] }));
+    expect(rule(f, "vocab.tag")[0].msg).toContain('"foo"');
+  });
+
   it("skips the program and tag checks on a volume that declares neither", () => {
     const older = createEngine(
       ledger.items as unknown as Item[],

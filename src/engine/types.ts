@@ -11,7 +11,12 @@ export interface ExprNode extends ReadonlyArray<any> {}
 export type Expr = boolean | number | string | null | ExprNode;
 export type Value = unknown;
 
-export interface ItemVersion { from: string; value: unknown }
+/** One dated value of a parameter. `from` is the first day the value is in
+ *  force and `to` the first day it is not, so consecutive versions share a
+ *  date; a version may cite the excerpt (an S-id) that states its own value. */
+export interface ItemVersion { from: string; to?: string; value: unknown; source?: string }
+/** An item's own effective range: `from` the first day it is in force, `to`
+ *  the last, or `present` while it has no end. */
 export interface Effective { from: string; to: string }
 
 export interface TestSpec {
@@ -26,7 +31,10 @@ export interface TestSpec {
     relationships?: Array<[string, string]>;
     month_defaults?: Record<string, unknown>;
   }>;
-  relationships?: Array<[string, string]>;
+  /** The person named first states `[role, other]` pairs of its own, as every
+   *  person may; a `[role, from, to]` triple is a case-level edge that
+   *  `makeCase` expands into both persons' lists. */
+  relationships?: Array<[string, string] | [string, string, string]>;
   parameters?: Record<string, unknown>;
   month_defaults?: Record<string, unknown>;
   month_facts?: Record<string, Record<string, unknown>>;
@@ -85,6 +93,10 @@ export interface ProgramVocabulary {
   outcomes?: string[];
 }
 
+/** A tag in a declared hierarchy: an id, the parent tag's id (absent for a
+ *  top-level tag), and an optional display label (falls back to the id). */
+export interface TagDecl { id: string; parent?: string; label?: string }
+
 export interface VolumeMeta {
   volume: string;
   title: string;
@@ -96,8 +108,10 @@ export interface VolumeMeta {
   scopes: Scope[];
   /** Declared programs. Absent on volumes written before phase 2. */
   programs?: ProgramVocabulary[];
-  /** Declared tag vocabulary. Absent on volumes written before phase 2. */
-  tags?: string[];
+  /** Declared tag vocabulary: a flat list of ids (as every volume before the
+   *  Colorado build wrote it) or a hierarchy of {id, parent?, label?}.
+   *  Absent on volumes written before phase 2. */
+  tags?: Array<string | TagDecl>;
 }
 
 /** Ids the constraint checker validates citations against. When omitted the

@@ -1,6 +1,7 @@
 import type { LedgerIndex } from "./ledger-index";
 import { buildGraph } from "./graph";
 import { compact } from "./render";
+import { tagIds } from "./tags";
 import type { Expr, Item, VolumeMeta } from "./types";
 
 /** A governance rule that did not hold. Only failures are returned, so `ok`
@@ -181,7 +182,7 @@ export function governance(
     if (!meta.programs.some((p) => p.id === it.program)) {
       err("vocab.program", `Program "${it.program}" is not declared in volume.yaml`);
     }
-    const declared = meta.tags || [];
+    const declared = tagIds(meta);
     for (const t of it.tags || []) {
       if (!declared.includes(t)) err("vocab.tag", `Tag "${t}" is not declared in volume.yaml`);
     }
@@ -285,7 +286,34 @@ export function governance(
     }
   }
 
-  // 7. Bespoke inputs stay visible: a supplied fact with a single consumer.
+  // 7. A dated parameter states one continuous history: consecutive versions
+  //    meet exactly, the earlier one's `to` being the later one's `from`.
+  const versions = (it.versions ?? []).slice()
+    .sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
+  for (let i = 1; i < versions.length; i++) {
+    const prev = versions[i - 1];
+    const next = versions[i];
+    if (prev.to === undefined) {
+      warn(
+        "versions.overlap",
+        `The version from ${prev.from} never ends, so it overlaps the version ` +
+          `from ${next.from}; give it a "to"`,
+      );
+    } else if (prev.to > next.from) {
+      warn(
+        "versions.overlap",
+        `The version from ${prev.from} runs to ${prev.to}, past the start of ` +
+          `the version from ${next.from}`,
+      );
+    } else if (prev.to < next.from) {
+      warn(
+        "versions.gap",
+        `No version is in force between ${prev.to} and ${next.from}`,
+      );
+    }
+  }
+
+  // 8. Bespoke inputs stay visible: a supplied fact with a single consumer.
   if (it.kind === "supplied") {
     const consumers = buildGraph(ix).usedBy.get(identifier) ?? [];
     if (consumers.length === 1) {

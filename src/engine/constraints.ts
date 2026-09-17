@@ -2,7 +2,7 @@ import type { LedgerIndex } from "./ledger-index";
 import { check } from "./check";
 import { runTest } from "./evaluate";
 import { baseType, fmt } from "./values";
-import type { EngineRefs, Item, VolumeMeta } from "./types";
+import { DATE_RE, type EngineRefs, type Item, type VolumeMeta } from "./types";
 
 export interface Constraint { ok: boolean; msg: string; level: "error" | "warn" }
 
@@ -47,6 +47,17 @@ export function constraints(
   }
   if (it.kind !== "supplied") {
     add(!!(it.sources && it.sources.length), "At least one source excerpt is cited");
+  }
+  // An effective range is reported only when it is malformed, so an item that
+  // states a well-formed one reads exactly as an item that states none.
+  if (it.effective) {
+    if (!DATE_RE.test(it.effective.from || "")) {
+      add(false, `Effective start "${it.effective.from}" is not a calendar date`);
+    }
+    const to = it.effective.to;
+    if (to !== "present" && !DATE_RE.test(to || "")) {
+      add(false, `Effective end "${to}" is not a calendar date or "present"`);
+    }
   }
   if (refs) {
     for (const s of it.sources || []) add(refs.sourceIds.includes(s), `Source ${s} exists`);

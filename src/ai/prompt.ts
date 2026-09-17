@@ -1,3 +1,4 @@
+import { normalizeTags } from "../engine/tags";
 import type { Engine } from "../engine/engine";
 import type { Item, VolumeMeta } from "../engine/types";
 import type { DocumentMeta } from "../ledger/documents";
@@ -103,7 +104,10 @@ export function vocabularyText(meta: VolumeMeta): string {
       lines.push(`  ${p.id} (${prefix})${outcomes}`);
     }
   }
-  if (meta.tags?.length) lines.push(`Tags: ${meta.tags.join(", ")}`);
+  if (meta.tags?.length) {
+    const tags = normalizeTags(meta).map((t) => (t.parent ? `${t.id} (under ${t.parent})` : t.id));
+    lines.push(`Tags: ${tags.join(", ")}`);
+  }
   lines.push(`Types: ${meta.types.join(", ")}`);
   lines.push(`Scopes: ${meta.scopes.join(", ")}`);
   return "VOCABULARY\n" + lines.join("\n") + "\n";

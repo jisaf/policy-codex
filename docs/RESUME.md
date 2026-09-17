@@ -1,0 +1,7 @@
+# Resuming the Colorado build in a fresh session
+
+1. Confirm network access first: `curl -sS -o /dev/null -w '%{http_code}\n' https://www.ecfr.gov/api/versioner/v1/titles.json` must print 200 (and likewise sos.state.co.us, law.cornell.edu, hcpf.colorado.gov). If any print 000 or 403, stop and report; authoring must not proceed from memory.
+2. Read, in order: docs/design-colorado.md, docs/plan-colorado.md, docs/colorado-notes.md, docs/governance.md, docs/conventions.md, volumes/co/volume.yaml, volumes/co/tests/cases.yaml.
+3. Phase 2 (SNAP) starts by fetching the documents named in the plan into `volumes/co/documents/D-n.md` and appending excerpts to `volumes/co/sources.md` with `Document: D-n` lines, then authoring in batches of about 30 items under `volumes/co/snap` (and shared facts under `supplied`/`parameters`), each with rationale and rule tests, running `npm run governance -- --volume co` and `npm run check` after each batch.
+4. Use subagents: one author per chapter batch (sonnet), one policy reviewer per program (opus) reviewing against the fetched text, and haiku for transcription-only work. Pace dispatches to avoid rate limits: no more than three concurrent authors.
+5. Every phase ends with the target household's expectations for that program filled in `volumes/co/tests/cases.yaml`, a policy review, a fix round, a phase note in docs/colorado-notes.md, and a pull request into main.

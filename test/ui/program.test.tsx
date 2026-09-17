@@ -143,6 +143,20 @@ describe("ProgramView", () => {
     expect(wageRow().querySelector("td.value")!.textContent).toBe("unknown");
   });
 
+  it("lists the items whose effective range does not cover the chosen date", async () => {
+    const host = show("Medicaid");
+    // WR-100 runs from 2027-01-01, and the page opens on 2027-03-15.
+    expect(host.querySelector("ul.notinforce")).toBeNull();
+
+    const dateInput = host.querySelector('input[type="date"]') as HTMLInputElement;
+    dateInput.value = "2026-12-31";
+    dateInput.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    const dormant = host.querySelector("ul.notinforce")!;
+    expect(dormant.textContent).toContain("medicaid_ce_required_hours");
+    expect(dormant.textContent).toContain("not in force on 2026-12-31");
+  });
+
   it("lists open questions referenced by the program's items", () => {
     const host = show("Medicaid");
     expect(host.querySelector(".questions")!.textContent).toContain("OQ-2");
@@ -164,6 +178,57 @@ describe("ProgramView", () => {
   it("defaults to the first declared program when no program is chosen", () => {
     const host = show(null);
     expect(host.querySelector(".tabs a.on")!.textContent).toBe("Medicaid");
+  });
+
+  it("shows a tag chip per outcome", () => {
+    const host = show("Medicaid");
+    const row = [...host.querySelectorAll("table.outcomes tbody tr")].find(
+      (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
+    )!;
+    const chips = [...row.querySelectorAll("td.tags .chip")].map((c) => c.textContent);
+    expect(chips).toEqual(["legal"]);
+  });
+
+  it("narrows the outcomes list with a group filter, by tag ancestry", async () => {
+    // WR-226 and WR-230, this program's two outcomes, both carry only the
+    // "legal" tag; a hierarchy where "legal" sits under "docgroup" and
+    // "medical" sits under an unrelated "medgroup" lets the group filter
+    // both include (an outcome's tag is a declared descendant of the group)
+    // and exclude (no outcome's tag descends from it) meaningfully.
+    const hierMeta: VolumeMeta = {
+      ...meta,
+      tags: [
+        { id: "docgroup" }, { id: "legal", parent: "docgroup" },
+        { id: "medgroup" }, { id: "medical", parent: "medgroup" },
+      ],
+    };
+    const hierEngine = createEngine(ledger.items as unknown as Item[], hierMeta, refs);
+    volumeSig.value = { ...vol, meta: hierMeta };
+    engineSig.value = hierEngine;
+
+    function showWithGroup(group: string) {
+      route.value = { ...defaultRoute(), view: "program", arg: "Medicaid", params: group ? { group } : {} };
+      const host = document.createElement("div");
+      render(<ProgramView source={noResults} />, host);
+      return host;
+    }
+
+    const bare = showWithGroup("");
+    const select = bare.querySelector(".group-filter select") as HTMLSelectElement;
+    expect(select).not.toBeNull();
+    expect([...select.options].map((o) => o.value)).toEqual(["", "docgroup", "medgroup"]);
+
+    const withDoc = showWithGroup("docgroup");
+    expect(withDoc.querySelectorAll("table.outcomes tbody tr").length).toBe(2);
+
+    const withMed = showWithGroup("medgroup");
+    expect(withMed.querySelectorAll("table.outcomes tbody tr").length).toBe(0);
+
+    // The control itself writes `group=` into the route via `navigate`.
+    select.value = "docgroup";
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    expect(location.hash).toContain("group=docgroup");
   });
 
   it("shows nothing for conformance when the ref has no results.json", async () => {
