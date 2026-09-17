@@ -12,6 +12,7 @@ const ORIGIN_TITLE: Record<string, string> = {
   evaluated: "computed from the rule below",
   memo: "already computed above in this trace",
   missing: "not supplied, so unknown",
+  "not-in-force": "outside its effective range on this date, so unknown",
 };
 
 /** Depth at which children stop being expanded on first render. A SNAP

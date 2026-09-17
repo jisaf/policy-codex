@@ -180,6 +180,48 @@ describe("ItemView", () => {
     expect(scopeLine.querySelector("code.alias")!.textContent).toBe("person");
   });
 
+  it("shows a parameter's dated values and its effective range in Details", () => {
+    const details = (host: HTMLElement) => [...host.querySelectorAll("details.section")].find(
+      (d) => d.querySelector("summary")!.textContent === "Details",
+    )!;
+    // WR-101's one version starts 2009-07-24 and has never ended.
+    const rows = [...details(show("WR-101")).querySelectorAll("table.versions tbody tr")];
+    expect(rows).toHaveLength(1);
+    expect([...rows[0].children].map((td) => td.textContent))
+      .toEqual(["2009-07-24", "present", "7.25", ""]);
+
+    // WR-100 carries an effective range and no versions.
+    const hundred = details(show("WR-100"));
+    expect(hundred.querySelector("table.versions")).toBeNull();
+    const effective = [...hundred.querySelectorAll("p")].find(
+      (p) => p.querySelector("b")?.textContent === "Effective.",
+    )!;
+    expect(effective.textContent).toContain("2027-01-01 to present");
+  });
+
+  it("shows each version's own end date and excerpt when it states them", () => {
+    const amended = engine.items().map((it) => it.identifier === "federal_minimum_wage"
+      ? {
+          ...it,
+          versions: [
+            { from: "2009-07-24", to: "2026-01-01", value: 7.25, source: "S18" },
+            { from: "2026-01-01", value: 9.5 },
+          ],
+        }
+      : it);
+    route.value = { ...defaultRoute(), view: "item", arg: "WR-101" };
+    volumeSig.value = vol;
+    engineSig.value = engine.withItems(amended);
+    const host = document.createElement("div");
+    render(<ItemView />, host);
+    const rows = [...host.querySelectorAll("table.versions tbody tr")];
+    expect(rows.map((tr) => [...tr.children].map((td) => td.textContent))).toEqual([
+      ["2009-07-24", "2026-01-01", "7.25", "S18"],
+      ["2026-01-01", "present", "9.5", ""],
+    ]);
+    engineSig.value = engine;
+  });
+
   it("shows the Approach A projection in its own section", () => {
     const host = show("WR-200");
     expect(host.querySelector("pre.projection")!.textContent).toContain(

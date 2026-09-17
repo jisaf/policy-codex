@@ -4,6 +4,7 @@ import type { HouseholdCase } from "../engine/cases";
 import { programsOfCase } from "../engine/cases";
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
+import { inForce, paramInForce } from "../engine/versions";
 import { loadConformanceResults, type ConformanceResults } from "../export/conformance";
 import type { LedgerSource } from "../ledger/source";
 import { programCounts, programOutcomes } from "./CasesView";
@@ -12,22 +13,6 @@ import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
 import { engineSig, ledgerSource, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
-
-/** The value of a parameter in force on a date: the latest version whose
- *  `from` does not exceed the date. This is the `paramOf` rule in
- *  src/engine/evaluate.ts (minus the per-case override, which has no meaning
- *  outside a case) restated here because that selection lives in a closure
- *  the engine does not export. */
-export function paramInForce(it: Item, date: string): unknown {
-  if (it.versions && it.versions.length) {
-    let best: { from: string; value: unknown } | null = null;
-    for (const v of it.versions) {
-      if (v.from <= date && (!best || v.from >= best.from)) best = v;
-    }
-    return best ? best.value : null;
-  }
-  return it.value === undefined ? null : it.value;
-}
 
 interface Stat { passed: number; failed: number }
 
@@ -142,8 +127,15 @@ function ParametersInForce(
   { engine, programId }: { engine: Engine; programId: string },
 ) {
   const asOf = useSignal(engine.meta.default_as_of);
+  const ofProgram = (it: Item) => it.program === programId || it.program === "All";
   const parameters = engine.items()
-    .filter((it) => it.kind === "parameter" && (it.program === programId || it.program === "All"))
+    .filter((it) => it.kind === "parameter" && ofProgram(it))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  // Rules and parameters alike carry effective ranges, and one outside the
+  // chosen date states nothing on it, so the page says so rather than
+  // showing a value the codex does not have in force.
+  const dormant = engine.items()
+    .filter((it) => ofProgram(it) && !inForce(it, asOf.value))
     .sort((a, b) => a.name.localeCompare(b.name));
   return (
     <>
@@ -167,6 +159,16 @@ function ParametersInForce(
           ))}
         </tbody>
       </table>
+      {dormant.length > 0 && (
+        <ul class="notinforce">
+          {dormant.map((it) => (
+            <li key={it.id}>
+              {it.name} <code><Ident id={it.identifier} engine={engine} /></code>:{" "}
+              not in force on {asOf.value}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

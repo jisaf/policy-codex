@@ -1,5 +1,6 @@
 import { indexWith, type LedgerIndex } from "./ledger-index";
 import { valuesEqual } from "./values";
+import { inForce, paramInForce } from "./versions";
 import { DATE_RE, MONTH_RE, type Expr, type Item, type TestSpec } from "./types";
 
 export interface CaseData {
@@ -49,6 +50,51 @@ export function yearsBetween(d1: string, d2: string): number {
   return years;
 }
 
+/** The inverse of each relationship role the household model names. A
+ *  case-level edge states one direction and both persons carry it, so
+ *  `[parent, p2, p3]` records "p2 is the parent of p3" on p2 and "p3 is the
+ *  child of p2" on p3. A role with no inverse here is recorded on the person
+ *  named first alone. */
+export const INVERSE_ROLE: Readonly<Record<string, string>> = {
+  parent: "child",
+  child: "parent",
+  spouse: "spouse",
+  grandparent: "grandchild",
+  grandchild: "grandparent",
+  caretaker: "dependent",
+  dependent: "caretaker",
+  tax_filer: "tax_dependent",
+  tax_dependent: "tax_filer",
+  buys_prepares_with: "buys_prepares_with",
+};
+
+/** One relationship as the person it is recorded on states it. */
+export interface RelationshipEdge { person: string; role: string; other: string }
+
+/** The `[role, other]` pairs a spec states for the person named first, or
+ *  undefined when the spec states no relationships at all (which is not the
+ *  same as stating none: unstated relationships are unknown). */
+export function statedRelationships(
+  rels: TestSpec["relationships"],
+): Array<[string, string]> | undefined {
+  if (rels === undefined) return undefined;
+  return rels.filter((r) => r.length === 2).map((r) => [r[0], r[1]] as [string, string]);
+}
+
+/** Every case-level `[role, from, to]` edge of a spec, each with its inverse,
+ *  as the entries the two persons carry. */
+export function relationshipEdges(rels: TestSpec["relationships"]): RelationshipEdge[] {
+  const out: RelationshipEdge[] = [];
+  for (const r of rels ?? []) {
+    if (r.length !== 3) continue;
+    const [role, from, to] = r;
+    out.push({ person: from, role, other: to });
+    const inverse = INVERSE_ROLE[role];
+    if (inverse) out.push({ person: to, role: inverse, other: from });
+  }
+  return out;
+}
+
 export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): CaseData {
   const given = spec.given || {};
   const c: CaseData = {
@@ -88,7 +134,7 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
     c.rels[pid] = rels === undefined ? null : rels;
     for (const [k, v] of Object.entries(facts || {})) setFact(pid, k, v, spec.month ?? null);
   }
-  addPerson("p1", spec.given, spec.relationships, spec.month_defaults);
+  addPerson("p1", spec.given, statedRelationships(spec.relationships), spec.month_defaults);
   for (const [pid, facts] of Object.entries(spec.others || {})) {
     addPerson(pid, facts, undefined, {});
   }
@@ -103,6 +149,14 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   for (const [m, mf] of Object.entries(spec.month_facts || {})) {
     c.monthFacts[m] = Object.assign({}, c.monthFacts[m] || {}, mf);
   }
+  // The case-level graph is expanded last, so an edge reaches a person whose
+  // own pairs are already in place and adds only what they do not say.
+  for (const e of relationshipEdges(spec.relationships)) {
+    const list = c.rels[e.person] ?? (c.rels[e.person] = []);
+    if (!list.some(([r, other]) => r === e.role && other === e.other)) {
+      list.push([e.role, e.other]);
+    }
+  }
   return c;
 }
 
@@ -114,10 +168,14 @@ export interface TraceEvent {
   identifier: string; person: string | null; month: string | null;
   kind: "supplied" | "parameter" | "derived" | "case" | "month" | "decision";
   value: unknown;              // the resolved value (null = unknown)
-  origin: "case" | "default" | "parameter" | "evaluated" | "memo" | "missing" | "decision";
+  origin:
+    | "case" | "default" | "parameter" | "evaluated" | "memo" | "missing"
+    | "not-in-force" | "decision";
     // case: read from case data; default: month_defaults/monthFactsDefault; parameter: paramOf;
     // evaluated: derived computed now; memo: derived already computed (subtree not re-expanded);
-    // missing: supplied fact absent (unknown); decision: an operator's choice, not a fact
+    // missing: supplied fact absent (unknown); not-in-force: the item's effective range does not
+    // cover the determination date (unknown, and its rule never runs);
+    // decision: an operator's choice, not a fact
   parentKey: string | null;    // the derived fact whose evaluation asked for this one
   error?: string;              // when evaluation of this node threw
   /** The resolution settled the value of every operator it happened inside:
@@ -211,14 +269,7 @@ export function evaluate(
 
   function paramOf(it: Item): unknown {
     if (it.identifier in c.params) return c.params[it.identifier];
-    if (it.versions) {
-      let best: { from: string; value: unknown } | null = null;
-      for (const v of it.versions) {
-        if (v.from <= c.det && (!best || v.from >= best.from)) best = v;
-      }
-      return best ? best.value : null;
-    }
-    return it.value === undefined ? null : it.value;
+    return paramInForce(it, c.det);
   }
 
   function value(id: string, p: string | null, m: string | null, P: string | null): unknown {
@@ -252,6 +303,9 @@ export function evaluate(
       emit(e);
       return v;
     };
+    // An item whose effective range does not cover the determination date
+    // states nothing on that date, so it is unknown and its rule never runs.
+    if (!inForce(it, c.det)) return seen(null, "not-in-force");
     if (it.kind === "parameter") return seen(paramOf(it), "parameter");
     if (sc === "case") {
       return id === "determination_date" ? seen(c.det, "case") : seen(null, "missing");

@@ -143,6 +143,20 @@ describe("ProgramView", () => {
     expect(wageRow().querySelector("td.value")!.textContent).toBe("unknown");
   });
 
+  it("lists the items whose effective range does not cover the chosen date", async () => {
+    const host = show("Medicaid");
+    // WR-100 runs from 2027-01-01, and the page opens on 2027-03-15.
+    expect(host.querySelector("ul.notinforce")).toBeNull();
+
+    const dateInput = host.querySelector('input[type="date"]') as HTMLInputElement;
+    dateInput.value = "2026-12-31";
+    dateInput.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
+    const dormant = host.querySelector("ul.notinforce")!;
+    expect(dormant.textContent).toContain("medicaid_ce_required_hours");
+    expect(dormant.textContent).toContain("not in force on 2026-12-31");
+  });
+
   it("lists open questions referenced by the program's items", () => {
     const host = show("Medicaid");
     expect(host.querySelector(".questions")!.textContent).toContain("OQ-2");
