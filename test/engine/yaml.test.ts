@@ -6,7 +6,7 @@ import {
   parseItemFile, parseVolumeFile, stringifyItem, stringifyVolume, yamlScalar, flowValue,
 } from "../../src/engine/yaml";
 import ledger from "../fixtures/ledger.json";
-import type { Item } from "../../src/engine/types";
+import type { Item, VolumeMeta } from "../../src/engine/types";
 
 const items = ledger.items as unknown as Item[];
 
@@ -69,6 +69,23 @@ describe("yaml", () => {
     expect(meta.programs?.[0].prefix).toBe(null);
     expect(meta.tags).toEqual(["legal", "medical", "state_election"]);
     expect(stringifyVolume(meta)).toBe(text);
+  });
+
+  it("round-trips a tag vocabulary declared as a hierarchy", () => {
+    const p = path.resolve(__dirname, "../../volumes/mwr/volume.yaml");
+    const meta = parseVolumeFile(fs.readFileSync(p, "utf8"));
+    const withHierarchy: VolumeMeta = {
+      ...meta,
+      tags: [
+        { id: "ma" },
+        { id: "magi", parent: "ma", label: "MAGI" },
+        { id: "non_magi", parent: "ma" },
+        { id: "household" },
+      ],
+    };
+    const text = stringifyVolume(withHierarchy);
+    expect(parseVolumeFile(text)).toEqual(withHierarchy);
+    expect(text).toContain("tags: [{id: ma}, {id: magi, parent: ma, label: MAGI}");
   });
 
   it("ends every item file with exactly one newline", () => {

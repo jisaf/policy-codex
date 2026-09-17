@@ -1,4 +1,5 @@
 import type { Engine } from "../engine/engine";
+import { tagAncestors, tagGroups, tagIds, tagLabel } from "../engine/tags";
 import type { Item } from "../engine/types";
 import { Term } from "./labels";
 import { Ident } from "./Rich";
@@ -8,6 +9,11 @@ import { validationMap } from "./validation";
 
 export interface TableFilters {
   kind: string; program: string; scope: string; open: string; state: string;
+  /** Comma-separated tag ids; AND semantics (an item must carry every one). */
+  tags: string;
+  /** A parent tag id; matches an item that carries that tag itself or any
+   *  tag declared under it. */
+  group: string;
   sort: string; dir: string;
 }
 
@@ -16,6 +22,7 @@ export function readFilters(r: Route): TableFilters {
   return {
     kind: p.kind ?? "", program: p.program ?? "", scope: p.scope ?? "",
     open: p.open ?? "", state: p.state ?? "",
+    tags: p.tags ?? "", group: p.group ?? "",
     sort: p.sort ?? "id", dir: p.dir === "desc" ? "desc" : "asc",
   };
 }
@@ -34,12 +41,20 @@ function cell(it: Item, key: string): string {
 
 export function filterItems(engine: Engine, f: TableFilters): Item[] {
   const validation = validationMap(engine);
+  const wantedTags = f.tags ? f.tags.split(",").filter(Boolean) : [];
   const rows = engine.items().filter((it) => {
     if (f.kind && it.kind !== f.kind) return false;
     if (f.program && it.program !== f.program) return false;
     if (f.scope && it.scope !== f.scope) return false;
     if (f.open === "any" && !(it.open ?? []).length) return false;
     if (f.open && f.open !== "any" && !(it.open ?? []).includes(f.open)) return false;
+    if (wantedTags.length && !wantedTags.every((t) => (it.tags ?? []).includes(t))) return false;
+    if (f.group) {
+      const under = (it.tags ?? []).some(
+        (t) => t === f.group || tagAncestors(engine.meta, t).includes(f.group),
+      );
+      if (!under) return false;
+    }
     const v = validation.get(it.id);
     if (f.state === "invalid" && !(v && v.errors > 0)) return false;
     if (f.state === "warn" && !(v && v.errors === 0 && v.warnings > 0)) return false;
@@ -90,6 +105,10 @@ export function TableView() {
     </label>
   );
 
+  const allTags = tagIds(vol.meta);
+  const groups = [...tagGroups(vol.meta).keys()];
+  const selectedTags = new Set(f.tags ? f.tags.split(",").filter(Boolean) : []);
+
   return (
     <section class="view">
       <div class="controls">
@@ -103,6 +122,27 @@ export function TableView() {
         {select("state", "Validation", [
           ["invalid", "errors"], ["warn", "warnings only"], ["clean", "clean"],
         ])}
+        {allTags.length > 0 && (
+          <label>
+            Tags
+            <select
+              class="tag-filter"
+              multiple
+              onChange={(e) => {
+                const opts = [...(e.target as HTMLSelectElement).selectedOptions].map((o) => o.value);
+                set("tags", opts.join(","));
+              }}
+            >
+              {allTags.map((t) => (
+                <option key={t} value={t} selected={selectedTags.has(t)}>
+                  {tagLabel(vol.meta, t)}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        {groups.length > 0 &&
+          select("group", "Group", groups.map((g) => [g, tagLabel(vol.meta, g)] as [string, string]))}
         <span class="tag">{rows.length} items</span>
       </div>
       <table class="grid">

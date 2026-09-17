@@ -1,5 +1,13 @@
 export interface Chapter { dir: string; title: string; files: string[] }
-export interface VolumeEntry { id: string; title: string; path: string; chapters: Chapter[] }
+export interface VolumeEntry {
+  id: string;
+  title: string;
+  path: string;
+  /** e.g. "draft", while a volume is still being built. Absent means
+   *  published; the volume selector shows a "(draft)" suffix when set. */
+  status?: string;
+  chapters: Chapter[];
+}
 export interface Manifest { volumes: VolumeEntry[] }
 
 export function parseManifest(raw: unknown): Manifest {

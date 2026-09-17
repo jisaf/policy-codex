@@ -1,6 +1,7 @@
 import type { LedgerIndex } from "./ledger-index";
 import { buildGraph } from "./graph";
 import { compact } from "./render";
+import { tagIds } from "./tags";
 import type { Expr, Item, VolumeMeta } from "./types";
 
 /** A governance rule that did not hold. Only failures are returned, so `ok`
@@ -181,7 +182,7 @@ export function governance(
     if (!meta.programs.some((p) => p.id === it.program)) {
       err("vocab.program", `Program "${it.program}" is not declared in volume.yaml`);
     }
-    const declared = meta.tags || [];
+    const declared = tagIds(meta);
     for (const t of it.tags || []) {
       if (!declared.includes(t)) err("vocab.tag", `Tag "${t}" is not declared in volume.yaml`);
     }
