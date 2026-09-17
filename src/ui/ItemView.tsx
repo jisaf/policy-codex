@@ -66,6 +66,29 @@ export function TestTable({ engine, item }: { engine: Engine; item: Item }) {
   );
 }
 
+/** The dated values of a parameter, oldest first: the range each value is in
+ *  force for, and the excerpt that states it when the version cites one of
+ *  its own. An open `to` is the value still in force. */
+function VersionTable({ engine, item }: { engine: Engine; item: Item }) {
+  return (
+    <table class="versions grid">
+      <thead>
+        <tr><th>From</th><th>To</th><th>Value</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        {(item.versions ?? []).map((v) => (
+          <tr key={v.from}>
+            <td>{v.from}</td>
+            <td>{v.to ?? "present"}</td>
+            <td class="value">{engine.lit(v.value)}</td>
+            <td>{v.source ?? ""}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 /** The derivation rendered as one leading claim: the block's first line
  *  folded into "<Name> is true when …" (yes/no items) or "<Name> is …"
  *  (everything else), the remaining lines kept indented beneath it exactly
@@ -232,8 +255,17 @@ export function ItemView() {
         <p><b>Scope.</b> <Term scope={item.scope} /></p>
         <p><b>Program.</b> <span class={`tag prog-${item.program.toLowerCase()}`}>{item.program}</span></p>
         {item.tags && item.tags.length > 0 && <p><b>Tags.</b> {item.tags.join(", ")}</p>}
+        {item.effective && (
+          <p><b>Effective.</b> {item.effective.from} to {item.effective.to}</p>
+        )}
         {item.precision && <p><b>Precision.</b> {item.precision}</p>}
         {item.assumption && <p><b>Assumption.</b> {item.assumption}</p>}
+        {item.versions && item.versions.length > 0 && (
+          <>
+            <p><b>Versions.</b></p>
+            <VersionTable engine={engine} item={item} />
+          </>
+        )}
       </details>
 
       <details class="section">

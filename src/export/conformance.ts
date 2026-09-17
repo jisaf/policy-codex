@@ -1,5 +1,6 @@
 import { MONTH_RE, type Item, type Kind, type Program, type TestSpec } from "../engine/types";
 import type { Engine } from "../engine/engine";
+import { relationshipEdges, statedRelationships } from "../engine/evaluate";
 import type { PersonSpec, HouseholdCase } from "../engine/cases";
 import type { LoadedVolume } from "../ledger/load";
 import type { LedgerSource } from "../ledger/source";
@@ -184,6 +185,28 @@ function personFromGiven(
   return person;
 }
 
+/** The persons with every case-level relationship edge recorded on both of
+ *  them, exactly as `makeCase` expands the graph, so an adapter reads the
+ *  household the codex evaluated. Neither the persons passed in nor their own
+ *  relationship lists are mutated. */
+function withRelationshipEdges(
+  persons: Record<string, PersonSpec>, rels: TestSpec["relationships"],
+): Record<string, PersonSpec> {
+  const edges = relationshipEdges(rels);
+  if (!edges.length) return persons;
+  const out: Record<string, PersonSpec> = {};
+  for (const [pid, p] of Object.entries(persons)) out[pid] = { ...p };
+  for (const e of edges) {
+    const person = (out[e.person] ??= {});
+    const list = [...(person.relationships ?? [])];
+    if (!list.some(([r, other]) => r === e.role && other === e.other)) {
+      list.push([e.role, e.other]);
+    }
+    person.relationships = list;
+  }
+  return out;
+}
+
 function staleNote(
   caseId: string, person: string | null, identifier: string, month: string | null, got: unknown,
 ): string {
@@ -201,7 +224,10 @@ function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: Suite
   }
   const evalMonth = t.month ?? null;
   const persons: Record<string, PersonSpec> = {
-    p1: personFromGiven(engine, t.given, t.relationships, t.month_defaults, evalMonth, monthFacts),
+    p1: personFromGiven(
+      engine, t.given, statedRelationships(t.relationships), t.month_defaults,
+      evalMonth, monthFacts,
+    ),
   };
   for (const [pid, facts] of Object.entries(t.others || {})) {
     persons[pid] = personFromGiven(engine, facts, undefined, undefined, evalMonth, monthFacts);
@@ -228,7 +254,7 @@ function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: Suite
     id: t.id,
     kind: "rule-test",
     as_of: t.as_of || engine.meta.default_as_of,
-    persons,
+    persons: withRelationshipEdges(persons, t.relationships),
     expect: [{ person, identifier: it.identifier, month: evalMonth, value: err ? null : got }],
   };
   if (t.parameters) suiteCase.parameters = t.parameters;
@@ -244,7 +270,10 @@ function householdSuiteCase(engine: Engine, c: HouseholdCase): { suiteCase: Suit
     else if (!r.ok) notes.push(staleNote(c.id, r.person, r.identifier, r.month, r.got));
     return { person: r.person, identifier: r.identifier, month: r.month, value: r.err ? null : r.got };
   });
-  const suiteCase: SuiteCase = { id: c.id, kind: "household", as_of: c.as_of, persons: c.persons, expect };
+  const suiteCase: SuiteCase = {
+    id: c.id, kind: "household", as_of: c.as_of,
+    persons: withRelationshipEdges(c.persons, c.relationships), expect,
+  };
   if (c.parameters) suiteCase.parameters = c.parameters;
   if (c.month_facts) suiteCase.month_facts = c.month_facts;
   return { suiteCase, notes };
