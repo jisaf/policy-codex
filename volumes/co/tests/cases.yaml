@@ -1,0 +1,170 @@
+# Household-level cases for the Colorado volume. The first case in this file is
+# the target household every program phase must handle: three generations, five
+# people, mixed immigration status, a minor parent, and a grandparent entering
+# nursing facility care. Its `expect` blocks are filled in as each program's
+# rules land; an outcome listed as `unknown` is one the rules do not yet decide.
+#
+# Conventions follow volumes/mwr/tests/cases.yaml: dates are quoted ISO strings;
+# per-month facts are under months/<YYYY-MM> or month_defaults; anything not
+# stated is unknown. Case-level relationships are [role, from, to] and the
+# engine adds the inverse (parent/child, spouse/spouse, grandparent/grandchild,
+# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same).
+
+- id: CO-01
+  title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
+  as_of: "2026-10-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p2, p3]
+    - [parent, p3, p4]
+    - [parent, p4, p5]
+    - [grandparent, p1, p4]
+    - [grandparent, p2, p4]
+    - [grandparent, p3, p5]
+    - [tax_filer, p3, p4]
+    - [tax_filer, p3, p5]
+    - [buys_prepares_with, p1, p2]
+    - [buys_prepares_with, p2, p3]
+    - [buys_prepares_with, p3, p4]
+    - [buys_prepares_with, p4, p5]
+  persons:
+    p1:
+      # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
+      facts:
+        date_of_birth: "1947-03-12"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: true
+        receives_ssi: false
+        meets_nursing_facility_level_of_care: true
+        in_medical_institution: true
+        institution_entry_date: "2026-10-01"
+        countable_resources_individual: 1900
+        countable_resources_couple: 46000
+        home_equity: 210000
+        transfers_within_lookback: []
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+      month_defaults:
+        social_security_income: 1420
+        pension_income: 610
+        earned_income: 0
+    p2:
+      # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
+      facts:
+        date_of_birth: "1945-07-30"
+        sex: male
+        citizenship_status: lawful_permanent_resident
+        lpr_entry_date: "1998-05-14"
+        qualifying_quarters: 40
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: true
+        receives_ssi: false
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+      month_defaults:
+        social_security_income: 1180
+        earned_income: 0
+    p3:
+      # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
+      facts:
+        date_of_birth: "1985-01-22"
+        sex: female
+        citizenship_status: undocumented
+        state_of_residence: CO
+        is_tax_filer: true
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 2380
+        hours_worked: 138
+    p4:
+      # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
+      facts:
+        date_of_birth: "2009-04-08"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_enrolled_in_school: true
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+    p5:
+      # Great-grandson, 8 months, U.S. citizen.
+      facts:
+        date_of_birth: "2026-02-03"
+        sex: male
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+  # Filled in per phase. Left empty in the skeleton so the case is a target,
+  # not a claim; the review for each phase adds the outcomes it decides.
+  expect: {}
+
+- id: CO-02
+  title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
+  as_of: "2026-11-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p2, p3]
+    - [parent, p3, p4]
+    - [parent, p4, p5]
+    - [buys_prepares_with, p2, p3]
+    - [buys_prepares_with, p3, p4]
+    - [buys_prepares_with, p4, p5]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1947-03-12"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: true
+        in_medical_institution: true
+        institution_entry_date: "2026-10-01"
+        meets_nursing_facility_level_of_care: true
+        countable_resources_couple: 46000
+      month_defaults:
+        social_security_income: 1420
+        pension_income: 610
+    p2:
+      facts:
+        date_of_birth: "1945-07-30"
+        citizenship_status: lawful_permanent_resident
+        lpr_entry_date: "1998-05-14"
+        state_of_residence: CO
+        in_medical_institution: false
+      month_defaults:
+        social_security_income: 1180
+    p3:
+      facts:
+        date_of_birth: "1985-01-22"
+        citizenship_status: undocumented
+        state_of_residence: CO
+      month_defaults:
+        earned_income: 2380
+        hours_worked: 138
+    p4:
+      facts:
+        date_of_birth: "2009-04-08"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_enrolled_in_school: true
+    p5:
+      facts:
+        date_of_birth: "2026-02-03"
+        citizenship_status: citizen
+        state_of_residence: CO
+  expect: {}

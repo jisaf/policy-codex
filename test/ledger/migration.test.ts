@@ -10,7 +10,7 @@ import type { Item, VolumeMeta } from "../../src/engine/types";
 
 const root = path.resolve(__dirname, "../..");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "codex.json"), "utf8"));
-const volume = manifest.volumes[0];
+const volume = manifest.volumes.find((v: { id: string }) => v.id === "mwr")!;
 
 function readItems(): Item[] {
   const out: Item[] = [];
@@ -24,7 +24,7 @@ function readItems(): Item[] {
 
 describe("migrated ledger", () => {
   it("has one manifest volume with four chapters covering 138 files", () => {
-    expect(manifest.volumes).toHaveLength(1);
+    expect(manifest.volumes.find((v: { id: string }) => v.id === "mwr")).toBeDefined();
     expect(volume.id).toBe("mwr");
     expect(volume.chapters.map((c: { dir: string }) => c.dir)).toEqual([
       "supplied", "parameters", "medicaid", "snap",

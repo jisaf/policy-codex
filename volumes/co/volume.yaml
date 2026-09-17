@@ -1,0 +1,102 @@
+volume: colorado
+title: Colorado eligibility rules for the programs served by PEAK and CBMS
+version: "0.1"
+status: Draft. Skeleton only; program chapters are authored one phase at a time from cited sources. Nothing in this volume is approved.
+default_as_of: "2026-10-01"
+
+approval_policy:
+  roles:
+    - Medicaid policy owner
+    - CHP+ policy owner
+    - SNAP policy owner
+    - Cash programs policy owner
+    - Child care policy owner
+    - Legal
+    - Data steward
+  by_program:
+    All: ["Medicaid policy owner", "SNAP policy owner", "Cash programs policy owner"]
+    Medicaid: ["Medicaid policy owner"]
+    CHP+: ["CHP+ policy owner"]
+    SNAP: ["SNAP policy owner"]
+    ColoradoWorks: ["Cash programs policy owner"]
+    AdultFinancial: ["Cash programs policy owner"]
+    CCCAP: ["Child care policy owner"]
+    LEAP: ["Cash programs policy owner"]
+  by_kind:
+    supplied: ["Data steward"]
+  by_tag:
+    legal: [Legal]
+    state_election: [Legal]
+    immigration: [Legal]
+
+programs:
+  - id: All
+    prefix: null
+  - id: Medicaid
+    prefix: ma_
+    outcomes: []
+  - id: CHP+
+    prefix: chp_
+    outcomes: []
+  - id: SNAP
+    prefix: snap_
+    outcomes: []
+  - id: ColoradoWorks
+    prefix: cw_
+    outcomes: []
+  - id: AdultFinancial
+    prefix: af_
+    outcomes: []
+  - id: CCCAP
+    prefix: cccap_
+    outcomes: []
+  - id: LEAP
+    prefix: leap_
+    outcomes: []
+
+# Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
+tags:
+  - { id: ma, label: Medical assistance }
+  - { id: magi, parent: ma, label: MAGI groups }
+  - { id: non_magi, parent: ma, label: SSI-related groups }
+  - { id: ltc, parent: ma, label: Long-term care }
+  - { id: hcbs, parent: ma, label: Home and community-based waivers }
+  - { id: buy_in, parent: ma, label: Buy-In programs }
+  - { id: msp, parent: ma, label: Medicare Savings Programs }
+  - { id: emergency, parent: ma, label: Emergency and limited coverage }
+  - { id: snap, label: SNAP }
+  - { id: abawd, parent: snap, label: ABAWD time limit }
+  - { id: work_registration, parent: snap, label: Work registration }
+  - { id: student, parent: snap, label: Students }
+  - { id: cash, label: Cash assistance }
+  - { id: tanf, parent: cash, label: Colorado Works }
+  - { id: oap, parent: cash, label: Old Age Pension }
+  - { id: and, parent: cash, label: Aid to the Needy Disabled }
+  - { id: ab, parent: cash, label: Aid to the Blind }
+  - { id: household, label: Assistance unit composition }
+  - { id: income, label: Income counting }
+  - { id: resources, label: Resources and transfers }
+  - { id: immigration, label: Immigration status }
+  - { id: age, label: Age rules }
+  - { id: disability, label: Disability and level of care }
+  - { id: legal, label: Legal review }
+  - { id: medical, label: Medical determination }
+  - { id: state_election, label: State election }
+
+types:
+  - yes/no
+  - whole number
+  - money
+  - hours
+  - rate
+  - calendar date
+  - month
+  - text
+  - one of
+  - person
+  - group of persons
+  - relationships
+  - table keyed by person
+  - list of months
+
+scopes: [person, person-month, case, month, global]
