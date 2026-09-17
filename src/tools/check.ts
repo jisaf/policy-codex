@@ -29,9 +29,12 @@ export interface LoadedLedger {
  *  `open-questions.md`, and `tests/cases.yaml` for the manifest's first
  *  volume, the same way `scripts/handoff.ts` and `scripts/governance-report.ts`
  *  do. `root` is the repository root. */
-export function loadLedgerFromDisk(root: string): LoadedLedger {
+export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedger {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "codex.json"), "utf8"));
-  const entry = manifest.volumes[0];
+  const entry = volumeId
+    ? manifest.volumes.find((v: { id: string }) => v.id === volumeId)
+    : manifest.volumes[0];
+  if (!entry) throw new Error(`no volume ${volumeId} in codex.json`);
 
   const items: Item[] = [];
   const chapterOf: Record<string, string> = {};
@@ -354,6 +357,9 @@ export function buildCheckReport(
 
 export interface RunCheckOptions {
   root: string;
+  /** one volume id; default is the manifest's first volume. `runCheckAll`
+   *  runs every volume the manifest lists. */
+  volume?: string;
   /** defaults to `process.env.CHECK_BASE`, then `origin/main`. */
   base?: string;
   /** defaults to `<root>/conformance/known-failures.json`. */
@@ -365,7 +371,7 @@ export interface RunCheckOptions {
  *  tests can supply their own ledger and diff without touching git. */
 export function runCheck(opts: RunCheckOptions): CheckReport {
   const base = opts.base ?? process.env.CHECK_BASE ?? "origin/main";
-  const ledger = loadLedgerFromDisk(opts.root);
+  const ledger = loadLedgerFromDisk(opts.root, opts.volume);
   const diff = diffAgainstBase(opts.root, base);
   const knownFailuresPath =
     opts.knownFailuresPath ?? path.join(opts.root, "conformance/known-failures.json");
@@ -409,4 +415,16 @@ export function formatSummary(r: CheckReport): string {
   }
   lines.push(r.ok ? "check: OK" : "check: FAILED");
   return lines.join("\n");
+}
+
+/** The ids of every volume in the manifest, in order. */
+export function volumeIds(root: string): string[] {
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, "codex.json"), "utf8"));
+  return manifest.volumes.map((v: { id: string }) => v.id);
+}
+
+/** One report per volume. A volume with no item files still runs (its
+ *  cases and governance are checked over an empty ledger). */
+export function runCheckAll(opts: Omit<RunCheckOptions, "volume">): Array<{ volume: string; report: CheckReport }> {
+  return volumeIds(opts.root).map((volume) => ({ volume, report: runCheck({ ...opts, volume }) }));
 }

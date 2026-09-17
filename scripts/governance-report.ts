@@ -7,9 +7,20 @@ import { createEngine } from "../src/engine/engine";
 import { parseItemFile, parseVolumeFile } from "../src/engine/yaml";
 import type { Item } from "../src/engine/types";
 
+function volumeArg(): string | null {
+  const i = process.argv.indexOf("--volume");
+  if (i >= 0 && process.argv[i + 1]) return process.argv[i + 1];
+  const env = process.env.CODEX_VOLUME;
+  return env && env.length ? env : null;
+}
+
 const root = path.resolve(import.meta.dirname, "..");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "codex.json"), "utf8"));
-const entry = manifest.volumes[0];
+const wanted = volumeArg();
+const entry = wanted
+  ? manifest.volumes.find((v: { id: string }) => v.id === wanted)
+  : manifest.volumes[0];
+if (!entry) throw new Error(`no volume ${wanted} in codex.json`);
 
 const items: Item[] = [];
 for (const ch of entry.chapters) {
