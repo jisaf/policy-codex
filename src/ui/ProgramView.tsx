@@ -3,6 +3,7 @@ import { useLayoutEffect } from "preact/hooks";
 import type { HouseholdCase } from "../engine/cases";
 import { programsOfCase } from "../engine/cases";
 import type { Engine } from "../engine/engine";
+import { tagAncestors, tagGroups, tagLabel } from "../engine/tags";
 import type { Item } from "../engine/types";
 import { loadConformanceResults, type ConformanceResults } from "../export/conformance";
 import type { LedgerSource } from "../ledger/source";
@@ -10,7 +11,7 @@ import { programCounts, programOutcomes } from "./CasesView";
 import { Term } from "./labels";
 import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
-import { engineSig, ledgerSource, route, viewEngine, volumeSig } from "./state";
+import { engineSig, ledgerSource, navigate, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
 
 /** The value of a parameter in force on a date: the latest version whose
@@ -78,16 +79,50 @@ function ProgramSwitcher(
   );
 }
 
+/** The "Group" select above the outcomes table: every parent tag declared in
+ *  this volume's hierarchy, filtering outcomes down to those carrying that
+ *  tag or one declared under it. Hidden when the volume declares no tag
+ *  hierarchy (a flat, pre-Colorado vocabulary has no parents to group by). */
+function GroupFilter({ engine, route: r }: { engine: Engine; route: Route }) {
+  const groups = [...tagGroups(engine.meta).keys()];
+  if (!groups.length) return null;
+  const current = r.params.group ?? "";
+  return (
+    <label class="group-filter">
+      Group
+      <select
+        value={current}
+        onChange={(e) => {
+          const params = { ...r.params };
+          const v = (e.target as HTMLSelectElement).value;
+          if (v) params.group = v; else delete params.group;
+          navigate({ params });
+        }}
+      >
+        <option value="">any</option>
+        {groups.map((g) => <option key={g} value={g}>{tagLabel(engine.meta, g)}</option>)}
+      </select>
+    </label>
+  );
+}
+
+function outcomeInGroup(engine: Engine, identifier: string, group: string): boolean {
+  const tags = engine.item(identifier)?.tags ?? [];
+  return tags.some((t) => t === group || tagAncestors(engine.meta, t).includes(group));
+}
+
 function Outcomes(
   { engine, outcomes, cases, route: r }:
   { engine: Engine; outcomes: string[]; cases: HouseholdCase[]; route: Route },
 ) {
   const stats = caseStatsByOutcome(engine, cases);
+  const group = r.params.group ?? "";
+  const visible = group ? outcomes.filter((id) => outcomeInGroup(engine, id, group)) : outcomes;
   return (
     <table class="outcomes grid">
-      <thead><tr><th>Outcome</th><th>Case results</th><th>Rule tests</th></tr></thead>
+      <thead><tr><th>Outcome</th><th>Tags</th><th>Case results</th><th>Rule tests</th></tr></thead>
       <tbody>
-        {outcomes.map((identifier) => {
+        {visible.map((identifier) => {
           const it = engine.item(identifier);
           const cs = stats.get(identifier) ?? { passed: 0, failed: 0 };
           const ts = testStats(engine, it);
@@ -100,6 +135,11 @@ function Outcomes(
                     </a>
                   : identifier}{" "}
                 <code><Ident id={identifier} engine={engine} /></code>
+              </td>
+              <td class="tags">
+                {(it?.tags ?? []).map((t) => (
+                  <span key={t} class="chip">{tagLabel(engine.meta, t)}</span>
+                ))}
               </td>
               <td class={`cases ${cs.failed ? "bad" : "ok"}`}>{statLabel(cs)}</td>
               <td class={`tests ${ts.failed ? "bad" : "ok"}`}>{statLabel(ts)}</td>
@@ -267,6 +307,7 @@ function ProgramPage(
       <ConformanceSummary source={source} />
 
       <h3>Outcomes</h3>
+      <GroupFilter engine={engine} route={r} />
       <Outcomes engine={engine} outcomes={program.outcomes} cases={cases} route={r} />
 
       <h3>Cases</h3>

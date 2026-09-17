@@ -8,6 +8,7 @@
  *  are derived from the pattern table in ./patterns.ts, and types, scopes and
  *  tags come from the volume's own `meta`. */
 import { FIELD_W } from "../engine/item-block";
+import { tagIds } from "../engine/tags";
 import { RELS } from "../engine/types";
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
@@ -148,7 +149,7 @@ function nameTable(engine: Engine): NameEntry[] {
 }
 
 function knownTags(engine: Engine): Set<string> {
-  const t = new Set<string>(engine.meta.tags ?? []);
+  const t = new Set<string>(tagIds(engine.meta));
   for (const k of Object.keys(engine.meta.approval_policy?.by_tag ?? {})) t.add(k);
   for (const it of engine.items()) for (const x of it.tags ?? []) t.add(x);
   return t;

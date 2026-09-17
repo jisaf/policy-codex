@@ -85,6 +85,10 @@ export interface ProgramVocabulary {
   outcomes?: string[];
 }
 
+/** A tag in a declared hierarchy: an id, the parent tag's id (absent for a
+ *  top-level tag), and an optional display label (falls back to the id). */
+export interface TagDecl { id: string; parent?: string; label?: string }
+
 export interface VolumeMeta {
   volume: string;
   title: string;
@@ -96,8 +100,10 @@ export interface VolumeMeta {
   scopes: Scope[];
   /** Declared programs. Absent on volumes written before phase 2. */
   programs?: ProgramVocabulary[];
-  /** Declared tag vocabulary. Absent on volumes written before phase 2. */
-  tags?: string[];
+  /** Declared tag vocabulary: a flat list of ids (as every volume before the
+   *  Colorado build wrote it) or a hierarchy of {id, parent?, label?}.
+   *  Absent on volumes written before phase 2. */
+  tags?: Array<string | TagDecl>;
 }
 
 /** Ids the constraint checker validates citations against. When omitted the

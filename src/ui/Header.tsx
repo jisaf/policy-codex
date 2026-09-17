@@ -4,8 +4,8 @@ import { toggleHelp } from "./Help";
 import { buildHash, VIEWS, type ViewName } from "./router";
 import { groupHits, hitHash, search } from "./search";
 import {
-  changeSetSig, doorSig, editingSig, engineSig, modeSig, openEditor, route, searchIndexSig,
-  setMode, settingsOpenSig, trayOpenSig, viewEngine, volumeSig,
+  changeSetSig, doorSig, editingSig, engineSig, manifestSig, modeSig, navigate, openEditor,
+  route, searchIndexSig, setMode, settingsOpenSig, trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 
 interface NavItem {
@@ -64,7 +64,24 @@ export function Header() {
     <>
       <header class="topbar">
         <a class="brand" href={startHref}>Benefits Codex</a>
-        <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
+        {manifestSig.value && manifestSig.value.volumes.length > 1 ? (
+          <select
+            class="volume-select"
+            value={r.volume}
+            onChange={(e) => {
+              const volume = (e.target as HTMLSelectElement).value;
+              navigate({ volume, view: "program", arg: null, params: {} });
+            }}
+          >
+            {manifestSig.value.volumes.map((v) => (
+              <option key={v.id} value={v.id}>
+                {v.title}{v.status === "draft" ? " (draft)" : ""}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
+        )}
         {r.ref && <span class="tag ref">{r.ref}</span>}
         {r.view !== "start" && (
           <nav class="primary">
