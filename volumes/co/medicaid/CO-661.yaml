@@ -7,7 +7,7 @@ scope: person
 program: Medicaid
 meaning: Whether this person's institutionalization removes them from a spouse's SSI-related household as of the determination date - true only beginning the first day of the month following the month they entered the institution, per 10 CCR 2505-10 § 8.100.7.C.2.b.
 precision: "8.100.7.C.2.b: 'Beginning the first month following the month the couple ceases to live together, only the income of the individual spouse is counted.' In the admission month itself the couple's income is still mutually available under 8.100.5.H.1.a, so this item is false until the first day of the month after institution_entry_date, per the [first_day, [month_after, ...]] pattern CO-509 already uses for a similar month-boundary test."
-derived: [all, in_medical_institution, [">=", [det_date], [first_day, [month_after, institution_entry_date]]]]
+derived: [all, in_medical_institution, [">=", [det_date], [first_day, [month_after, [month_of, institution_entry_date]]]]]
 sources: [S308, S498]
 implemented: engine
 tags: [ma, non_magi, ltc, household]
