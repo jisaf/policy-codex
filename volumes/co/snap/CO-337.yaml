@@ -1,0 +1,16 @@
+id: CO-337
+name: "SNAP: household has a BCE/ECE-disqualifying member"
+identifier: snap_household_has_bce_ece_disqualifying_member
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: At least one member of this person's SNAP household is, at the time of application, disqualified for an intentional program violation or has been convicted of a drug-related felony involving SNAP benefits, either of which bars the household from Basic or Expanded Categorical Eligibility.
+derived: [exists, snap_household_members, [any, [of, [P], is_disqualified_for_intentional_program_violation], [of, [P], is_disqualified_drug_felony]]]
+sources: [S47, S48]
+implemented: engine
+tags: [income, state_election, legal]
+rationale: 10 CCR 2506-1 4.206,C,1,c and 4.206,C,2,c (S47, S48) state the identical IPV/drug-felony exclusion for both BCE and ECE; this item is the single fact snap_meets_bce_eligibility and snap_meets_ece_eligibility both read, instead of repeating the exists/any test in each.
+tests:
+  - {id: CO-337-T1, as_of: "2026-10-01", given: {in_medical_institution: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false}, others: {p2: {in_medical_institution: false, is_disqualified_for_intentional_program_violation: true, is_disqualified_drug_felony: false}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-337-T2, as_of: "2026-10-01", given: {in_medical_institution: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: false}

@@ -1,0 +1,19 @@
+id: CO-336
+name: "SNAP: household all members receive categorical assistance"
+identifier: snap_household_all_members_receive_categorical_assistance
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: Every member of this person's SNAP household receives, or is authorized to receive, SSI, TANF cash assistance (Colorado Works), or general assistance (standing in for Old Age Pension, Aid to the Needy Disabled, or Aid to the Blind; see OQ-11), the Basic Categorical Eligibility test.
+precision: Tests every member of snap_household_members, including ineligible members, matching 4.206,C,1,a's "all members" wording rather than snap_eligible_household_members.
+assumption: receives_general_assistance stands in for Old Age Pension, Aid to the Needy Disabled, and Aid to the Blind recipiency, which this volume's supplied-fact interface does not separately state (OQ-11).
+derived: [not, [exists, snap_household_members, [not, [any, [of, [P], receives_ssi], [of, [P], receives_tanf_cash], [of, [P], receives_general_assistance]]]]]
+sources: [S47]
+open: [OQ-11]
+implemented: engine
+tags: [income, state_election]
+rationale: 10 CCR 2506-1 4.206,C,1,a (S47) is the BCE test's "all members" condition; no existing item tests a household-wide "every member receives X" condition, which snap_meets_bce_eligibility needs isolated from the IPV/drug-felony exclusion of 4.206,C,1,c.
+tests:
+  - {id: CO-336-T1, as_of: "2026-10-01", given: {in_medical_institution: false, receives_ssi: true, receives_tanf_cash: false, receives_general_assistance: false}, others: {p2: {in_medical_institution: false, receives_ssi: false, receives_tanf_cash: true, receives_general_assistance: false}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-336-T2, as_of: "2026-10-01", given: {in_medical_institution: false, receives_ssi: false, receives_tanf_cash: false, receives_general_assistance: false}, others: {p2: {in_medical_institution: false, receives_ssi: false, receives_tanf_cash: true, receives_general_assistance: false}}, relationships: [[spouse, p1, p2]], expect: false}

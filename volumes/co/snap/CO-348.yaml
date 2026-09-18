@@ -1,0 +1,20 @@
+id: CO-348
+name: "SNAP: is entitled to expedited service"
+identifier: snap_is_entitled_to_expedited_service
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household is entitled to expedited service for the month - its gross income is under $150 and its liquid resources are at or below $100, or it is a destitute migrant or seasonal farmworker household with liquid resources at or below $100, or its combined gross income and liquid resources are less than its shelter costs (rent or mortgage plus the utility allowance).
+precision: Uses shelter_cost_monthly and utility_allowance_amount for "monthly rent or mortgage, and utilities (including entitlement to a SUA)"; this treats the household's SUA entitlement as reflected in utility_allowance_amount rather than separately testing SUA eligibility, which this batch does not otherwise model.
+assumption: shelter_cost_monthly plus utility_allowance_amount stands in for 7 CFR 273.2(i)(1)(iii)'s "monthly rent or mortgage, and utilities (including entitlement to a SUA, as appropriate)."
+derived: [any, [all, [<, snap_household_gross_income, snap_expedited_income_ceiling], [<=, snap_household_countable_resources, snap_expedited_resource_ceiling]], [all, is_destitute_migrant_or_seasonal_farmworker, [<=, snap_household_countable_resources, snap_expedited_resource_ceiling]], [<, [+, snap_household_gross_income, snap_household_countable_resources], [+, shelter_cost_monthly, utility_allowance_amount]]]
+sources: [S58]
+open: [OQ-14]
+implemented: engine
+tags: [income, resources]
+rationale: 7 CFR 273.2(i)(1) (S58) states the three independent grounds for expedited service as an eligibility rule (distinct from the processing-timeline provisions of 273.2(i)(2)-(4), which are out of this volume's scope); no existing item combines household gross income, household resources, and shelter costs into this single entitlement fact.
+tests:
+  - {id: CO-348-T1, as_of: "2026-10-01", month: "2026-10", given: {in_medical_institution: false, citizenship_status: citizen, earned_income: 100, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false, countable_liquid_resources: 50, is_destitute_migrant_or_seasonal_farmworker: false, shelter_cost_monthly: 0, utility_allowance_amount: 0}, others: {}, relationships: [], expect: true}
+  - {id: CO-348-T2, as_of: "2026-10-01", month: "2026-10", given: {in_medical_institution: false, citizenship_status: citizen, earned_income: 2380, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false, countable_liquid_resources: 500, is_destitute_migrant_or_seasonal_farmworker: false, shelter_cost_monthly: 200, utility_allowance_amount: 100}, others: {}, relationships: [], expect: false}
+  - {id: CO-348-T3, as_of: "2026-10-01", month: "2026-10", given: {in_medical_institution: false, citizenship_status: citizen, earned_income: 2000, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false, countable_liquid_resources: 0, is_destitute_migrant_or_seasonal_farmworker: false, shelter_cost_monthly: 2500, utility_allowance_amount: 200}, others: {}, relationships: [], expect: true}

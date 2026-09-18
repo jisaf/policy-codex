@@ -1,0 +1,12 @@
+id: CO-120
+name: SNAP expedited service income ceiling
+identifier: snap_expedited_income_ceiling
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The monthly gross income amount below which a household qualifies for expedited service on the low-income/low-resource ground of 7 CFR 273.2(i)(1)(i), together with the liquid resource ceiling.
+value: 150
+sources: [S58]
+tags: [income, snap]
+rationale: 7 CFR 273.2(i)(1)(i) (S58) states the $150 figure that triggers expedited service; snap_is_entitled_to_expedited_service (CO-347) needs it as a named parameter rather than a literal so it can be dated if FNS later adjusts it.

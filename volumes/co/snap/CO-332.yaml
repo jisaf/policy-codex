@@ -1,0 +1,16 @@
+id: CO-332
+name: "SNAP: person gross income"
+identifier: snap_person_gross_income
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The person's total countable gross income for the month, earned plus unearned income, before any deduction.
+derived: ["+", snap_person_earned_income, snap_person_unearned_income]
+sources: [S41, S42]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.9(b) (S41, S42) defines household income as earned plus unearned income; this item is the per-person total snap_household_gross_income and snap_counted_income_of_ineligible_member aggregate, kept separate from the earned/unearned split so later deduction rules can read the split without recomputing it.
+tests:
+  - {id: CO-332-T1, month: "2026-10", given: {earned_income: 2380, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 2380}
+  - {id: CO-332-T2, month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, social_security_income: 1180, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 1180}

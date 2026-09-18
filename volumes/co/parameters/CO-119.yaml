@@ -1,0 +1,15 @@
+id: CO-119
+name: SNAP resource limit, household with an elderly or disabled member
+identifier: snap_resource_limit_elderly_disabled
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The countable resource limit for a Standard Eligibility household that includes a member who is elderly or disabled.
+versions:
+  - from: "2025-10-01"
+    value: 4500
+    source: S56
+rationale: Companion figure to snap_resource_limit (CO-118); 10 CCR 2506-1 4.408,E (S57) states the higher limit for a household with an elderly or disabled member, and D-20's table 5 (S56) is the FY2026 dollar figure.
+sources: [S56, S57]
+tags: [resources, snap]

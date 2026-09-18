@@ -1,0 +1,16 @@
+id: CO-123
+name: SNAP BBCE gross income limit, each additional household member (200% FPL)
+identifier: snap_bbce_gross_income_limit_each_additional
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The amount added to the 8-person 200% FPL BBCE gross income limit for each household member above 8.
+versions:
+  - from: "2024-10-01"
+    value: 898
+    source: S59
+rationale: Companion figure to snap_bbce_gross_income_limit_table (CO-122), from the same codified 4.401.1 table (S59); see OQ-15 for the same dating caveat.
+open: [OQ-15]
+sources: [S59]
+tags: [income, snap, state_election]

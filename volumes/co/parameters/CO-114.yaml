@@ -1,0 +1,15 @@
+id: CO-114
+name: SNAP elderly/disabled separate-household income limit by household size (165% FPL)
+identifier: snap_elderly_disabled_separate_household_income_limit_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: SNAP
+meaning: The 165% of the federal poverty level dollar figure used in the 7 CFR 273.1(b)(2) elderly/disabled separate-household income test, by the size of the "others" household.
+versions:
+  - from: "2025-10-01"
+    value: { "1": 2152, "2": 2909, "3": 3665, "4": 4421, "5": 5177, "6": 5934, "7": 6690, "8": 7446 }
+    source: S54
+rationale: 7 CFR 273.1(b)(2) (S20, already cited by batch 1) and 10 CCR 2506-1 4.401,A,4 state the 165% test as a percentage; this table gives the dollar figures D-21 publishes for it, parallel to the 130%/100% tables, for the household sizes the fetched extract carries.
+sources: [S54]
+tags: [income, snap]

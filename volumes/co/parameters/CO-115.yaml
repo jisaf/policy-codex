@@ -1,0 +1,12 @@
+id: CO-115
+name: SNAP BBCE gross income limit percentage (200% FPL)
+identifier: snap_bbce_gross_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: The percentage of the federal poverty level, expressed as a decimal rate, that a household's combined gross income must be at or below to meet the income prong of Colorado's Expanded Categorical Eligibility (broad-based categorical eligibility).
+value: 2.00
+sources: [S48]
+tags: [income, snap, state_election]
+rationale: 10 CCR 2506-1 4.206,C,2,a,1) (S48) is Colorado's election to extend categorical eligibility to households at or below 200% of the federal poverty level, the state option federal law (7 CFR 273.9(a), S41 area) leaves to the state; snap_meets_ece_eligibility (CO-339) needs the rate as its own parameter rather than a literal in the derivation.

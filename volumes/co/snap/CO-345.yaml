@@ -1,0 +1,18 @@
+id: CO-345
+name: "SNAP: gross income limit"
+identifier: snap_gross_income_limit
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: The monthly gross income limit, 130% of the federal poverty level, this person's SNAP household must be at or below under Standard Eligibility, for the household's size.
+precision: Sizes above 8 add snap_gross_income_limit_each_additional per member above 8, using snap_household_size (eligible members only).
+derived: [+, [lookup, snap_gross_income_limit_table, [min, snap_household_size, 8]], ["*", snap_gross_income_limit_each_additional, [max, 0, ["-", snap_household_size, 8]]]]
+sources: [S50, S53]
+nearest: [CO-339, CO-346]
+implemented: engine
+tags: [income]
+rationale: 10 CCR 2506-1 4.401,A,3,a (S50) and 7 CFR 273.9(a)(1) require this 130% comparison; no existing item composes snap_gross_income_limit_table with its each-additional parameter into the single dollar figure snap_meets_gross_income_test reads. Shares its table-plus-each-additional shape with snap_bbce_gross_income_limit (CO-339, 200%) and snap_net_income_limit (CO-346, 100%); all three are kept separate because they test different statutory percentages against different parameter tables, not the same rule with different constants applied to the same table.
+tests:
+  - {id: CO-345-T1, as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: 1696}
+  - {id: CO-345-T2, as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {p2: {in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}}, relationships: [[spouse, p1, p2]], expect: 2292}

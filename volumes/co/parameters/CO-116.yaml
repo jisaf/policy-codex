@@ -1,0 +1,16 @@
+id: CO-116
+name: HHS poverty guideline by household size, annual (48 states and D.C.)
+identifier: snap_poverty_guideline_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: SNAP
+meaning: The annual HHS federal poverty guideline for the 48 contiguous states and the District of Columbia, by household size 1 through 8, the base figure the 100%/130%/165%/200% SNAP income standards are percentages of.
+precision: Annual dollars; a monthly figure divides by 12. Sizes above 8 add snap_poverty_guideline_each_additional per additional member.
+versions:
+  - from: "2026-01-01"
+    value: { "1": 15960, "2": 21640, "3": 27320, "4": 33000, "5": 38680, "6": 44360, "7": 50040, "8": 55720 }
+    source: S55
+rationale: 10 CCR 2506-1 4.401.1 (batch 1's D-19 area) and 7 CFR 273.9(a) base every SNAP income standard on the annual HHS poverty guidelines; D-21's derived tables already give the 100%/130%/165% dollar figures directly for sizes 1-8, but the 200% BBCE figure (snap_bbce_gross_income_limit_pct, CO-115) is not separately published by FNS for SNAP, so this table (S55, the 2026 HHS guidelines themselves) is what snap_gross_income_limit and a 200% computation would need for household sizes beyond what D-21 states, and is cited directly for transparency about the underlying figure.
+sources: [S55]
+tags: [income, snap]

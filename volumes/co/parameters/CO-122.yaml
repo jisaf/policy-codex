@@ -1,0 +1,18 @@
+id: CO-122
+name: SNAP BBCE gross income limit by household size (200% FPL)
+identifier: snap_bbce_gross_income_limit_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: SNAP
+meaning: The monthly gross income limit (200% of the federal poverty level) a household's combined gross income must be at or below to meet the income prong of Colorado's Expanded Categorical Eligibility, by household size 1 through 8.
+precision: Colorado's codified table (10 CCR 2506-1 4.401.1) states this figure directly, captioned effective October 1, 2024, a year behind the FY2026 130%/100% tables this batch draws from D-21; see OQ-15.
+assumption: Uses the directly quoted 200% column of Colorado's own codified 4.401.1 table rather than computing 200% of the FY2026 HHS poverty guideline (snap_poverty_guideline_table, CO-116), because the codified state text is the more direct citation for a state-elected BBCE figure and Colorado's rule manual has not yet been updated to a later-dated table (OQ-15).
+versions:
+  - from: "2024-10-01"
+    value: { "1": 2510, "2": 3408, "3": 4304, "4": 5200, "5": 6098, "6": 6994, "7": 7890, "8": 8788 }
+    source: S59
+rationale: 10 CCR 2506-1 4.206,C,2,a,1) (S48) is Colorado's Expanded Categorical Eligibility election at 200% of the federal poverty level; snap_bbce_gross_income_limit (CO-339) needs the dollar table snap_meets_ece_eligibility (CO-340) compares household income against, parallel to snap_gross_income_limit_table and snap_net_income_limit_table.
+open: [OQ-15]
+sources: [S59]
+tags: [income, snap, state_election]

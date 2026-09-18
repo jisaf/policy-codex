@@ -1,0 +1,15 @@
+id: CO-118
+name: SNAP resource limit
+identifier: snap_resource_limit
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The countable resource limit for a Standard Eligibility household that does not include an elderly or disabled member.
+versions:
+  - from: "2025-10-01"
+    value: 3000
+    source: S56
+rationale: 10 CCR 2506-1 4.408,E (S57) and 7 CFR 273.8(b) set a resource limit only SE households are tested against (BCE/ECE households are exempt, S57 paragraph A); D-20's table 5 (S56) is the FY2026 FNS-published figure, and snap_meets_resource_limit (CO-343) needs it as a dated parameter rather than a literal.
+sources: [S56, S57]
+tags: [resources, snap]

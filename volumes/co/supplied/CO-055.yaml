@@ -1,0 +1,14 @@
+id: CO-055
+name: Is a destitute migrant or seasonal farmworker
+identifier: is_destitute_migrant_or_seasonal_farmworker
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person's household is a migrant or seasonal farmworker household determined destitute for the month under 7 CFR 273.10(e)(3), a ground for expedited service that this volume's fetched documents do not include the text of.
+precision: 7 CFR 273.10(e)(3), which defines "destitute" for this purpose, is not among this volume's fetched documents (D-1..D-25); the fact is supplied as an eligibility-technician determination until that text is fetched and the test can be modeled as a derived rule.
+supplied_by: County eligibility technician determination under 7 CFR 273.10(e)(3).
+rationale: snap_is_entitled_to_expedited_service (CO-347) needs the third, migrant/seasonal-farmworker ground for expedited service stated at 7 CFR 273.2(i)(1)(ii) (S58); no existing supplied fact captures destitute migrant/seasonal farmworker status, and the governing destitution test itself (273.10(e)(3)) is outside this volume's fetched document set (OQ-14).
+sources: [S58]
+tags: [income]
+open: [OQ-14]
