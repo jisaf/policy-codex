@@ -35,7 +35,8 @@ export function constraints(
   add(["supplied", "derived", "parameter"].includes(it.kind), "Kind is set");
   add(!!it.type && meta.types.includes(it.type), "Type is a codex type");
   add(!!it.scope && meta.scopes.includes(it.scope), "Scope is set");
-  add(["All", "Medicaid", "SNAP"].includes(it.program), "Program is set");
+  const programs = meta.programs?.map((p) => p.id) ?? ["All", "Medicaid", "SNAP"];
+  add(programs.includes(it.program), "Program is set");
   add(!!(it.meaning && it.meaning.trim().length > 15),
     "Meaning is a full sentence an approver can sign");
   if (it.type === "one of") {
@@ -43,7 +44,16 @@ export function constraints(
   }
   if (it.kind === "supplied") add(!!it.supplied_by, "Supplied facts say where the value comes from");
   if (it.kind === "parameter") {
-    add(it.value !== undefined && it.value !== null && it.value !== "", "Parameter has a value");
+    // A parameter states its value once, or as dated versions (each with a
+    // value); either satisfies the constraint, but not both, and not neither.
+    const hasValue = it.value !== undefined && it.value !== null && it.value !== "";
+    const versions = it.versions ?? [];
+    const hasVersions = versions.length > 0 &&
+      versions.every((v) => v.value !== undefined && v.value !== null && v.value !== "");
+    // One message, so the pinned fixture reports of unversioned parameters
+    // read exactly as before; a parameter stating both is reported as having
+    // no value, since the two cannot both be its value.
+    add((hasValue || hasVersions) && !(hasValue && hasVersions), "Parameter has a value");
   }
   if (it.kind !== "supplied") {
     add(!!(it.sources && it.sources.length), "At least one source excerpt is cited");

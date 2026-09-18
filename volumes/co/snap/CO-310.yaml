@@ -1,0 +1,16 @@
+id: CO-310
+name: "SNAP: is an ineligible non-citizen"
+identifier: snap_is_ineligible_non_citizen
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person does not meet the citizenship requirement of 7 U.S.C. 2015(f), so their own income and resources are counted toward the household under 7 CFR 273.11(c) but they are not counted as an eligible household member.
+derived: [not, snap_meets_citizenship_requirement]
+sources: [S8, S19]
+implemented: engine
+tags: [immigration, legal]
+rationale: A plain negation of snap_meets_citizenship_requirement, kept as its own item because snap_is_ineligible_member reads "ineligible non-citizen" as one of several disjoined reasons a household member is ineligible, matching the structure of 7 CFR 273.11(c) and 273.1(b)(7)(i).
+tests:
+  - {id: CO-310-T1, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: true}
+  - {id: CO-310-T2, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: false}

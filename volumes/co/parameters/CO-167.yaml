@@ -1,0 +1,12 @@
+id: CO-167
+name: SNAP ABAWD dependent child exemption age
+identifier: snap_abawd_dependent_child_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which responsibility for a dependent child exempts an individual from the ABAWD time limit.
+value: 14
+sources: [S127, S128]
+tags: [abawd, age]
+rationale: 7 U.S.C. 2015(o)(3)(C) (S127, S128) sets 14 as the ABAWD dependent-child exemption age, distinct from the work-registration child-care age (6, CO-164).

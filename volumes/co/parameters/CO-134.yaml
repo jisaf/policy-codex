@@ -1,0 +1,15 @@
+id: CO-134
+name: SNAP homeless shelter deduction amount
+identifier: snap_homeless_shelter_deduction_amount
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The flat monthly shelter deduction available to a household in which all members are homeless and the household does not claim actual shelter costs.
+versions:
+  - from: "2025-10-01"
+    value: 198.99
+    source: S84
+rationale: 7 CFR 273.9(d)(6)(i) (S92) authorizes a state-elected standard homeless shelter deduction (the federal text itself states $143); Colorado's own 4.407.3,C (S97) and D-20's Table 4 (S84) state the FY2026 dollar figure CDHS actually uses, which snap_homeless_shelter_deduction (CO-378) needs as a named, dated parameter distinct from the unadjusted federal figure.
+sources: [S84, S92, S97]
+tags: [income, snap, state_election]

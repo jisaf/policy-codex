@@ -457,6 +457,67 @@ export function evaluate(
         const a = g(e[1]); const b = g(e[2]);
         return a === null || b === null ? null : Math.min(a, b);
       }
+      case "max": {
+        const a = g(e[1]); const b = g(e[2]);
+        return a === null || b === null ? null : Math.max(a, b);
+      }
+      case "ceil": { const a = g(e[1]); return a === null ? null : Math.ceil(a - 1e-9); }
+      case "round": { const a = g(e[1]); return a === null ? null : Math.floor(a + 0.5 + 1e-9); }
+      case "persons": return Object.keys(c.persons);
+      case "count": { const grp = g(e[1]); return grp === null ? null : grp.length; }
+      case "filter": {
+        // Every member is tested; an unknown test on any member makes the
+        // group unknown, since its membership cannot be stated.
+        const grp = g(e[1]);
+        if (grp === null) return null;
+        const out: string[] = [];
+        let unk = false;
+        for (const pid of grp) {
+          const v = ev(e[2], p, m, pid);
+          if (v === null) unk = true;
+          else if (v === true) out.push(pid);
+        }
+        return unk ? null : out;
+      }
+      case "sum": {
+        const grp = g(e[1]);
+        if (grp === null) return null;
+        let total = 0;
+        for (const pid of grp) {
+          const v = ev(e[2], p, m, pid);
+          if (v === null) return null;
+          total += v;
+        }
+        return total;
+      }
+      case "reachable": {
+        // The persons joined to this person by a chain of the named
+        // relationships, this person included. Unknown when this person's
+        // relationships are unstated.
+        if (!p || c.rels[p] == null) return null;
+        // With a condition, an edge is crossed only when the condition holds
+        // with "this person" the person the chain has reached and "that
+        // person" the one at the other end; an unknown condition on any edge
+        // makes the group unknown.
+        const roles = e[1] as string[];
+        const cond = e.length > 2 ? e[2] : undefined;
+        const seenSet = new Set<string>([p]);
+        const queue = [p];
+        while (queue.length) {
+          const cur = queue.shift()!;
+          for (const [r, other] of c.rels[cur] ?? []) {
+            if (!roles.includes(r) || seenSet.has(other)) continue;
+            if (cond !== undefined) {
+              const v = ev(cond, cur, m, other);
+              if (v === null) return null;
+              if (v !== true) continue;
+            }
+            seenSet.add(other);
+            queue.push(other);
+          }
+        }
+        return Object.keys(c.persons).filter((pid) => seenSet.has(pid));
+      }
       case "years_between": {
         const a = g(e[1]); const b = g(e[2]);
         return a === null || b === null ? null : yearsBetween(a, b);

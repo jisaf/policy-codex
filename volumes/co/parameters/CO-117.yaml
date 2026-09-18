@@ -1,0 +1,15 @@
+id: CO-117
+name: HHS poverty guideline, each additional household member, annual (48 states and D.C.)
+identifier: snap_poverty_guideline_each_additional
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The annual amount added to the 8-person HHS poverty guideline for each household member above 8, for the 48 contiguous states and the District of Columbia.
+versions:
+  - from: "2026-01-01"
+    value: 5680
+    source: S55
+rationale: Companion figure to snap_poverty_guideline_table (CO-116), from the same HHS notice (S55), needed to extend the poverty guideline to household sizes above 8.
+sources: [S55]
+tags: [income, snap]

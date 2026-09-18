@@ -1,0 +1,18 @@
+id: CO-374
+name: "SNAP: dependent care deduction"
+identifier: snap_dependent_care_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The deduction for this person's SNAP household's actual monthly dependent care costs necessary for a household member to work, seek work, or attend training or education preparatory to employment - the amount billed, with no maximum.
+precision: Sums dependent_care_expense over every member of snap_household_members (a dependent care expense is allowed "as billed to a household member or as paid by or billed to a person disqualified," 10 CCR 2506-1 4.407.4,A), rather than snap_eligible_household_members only; does not prorate out a disqualified member's own share of an expense billed to that member (OQ-28).
+derived: [sum, snap_household_members, [of, [P], dependent_care_expense]]
+sources: [S98]
+open: [OQ-28]
+implemented: engine
+tags: [income]
+rationale: 7 U.S.C. 2014(e)(3) removed the federal dependent care cap effective the date noted in that provision, and 10 CCR 2506-1 4.407.4,B (S98) confirms Colorado allows "the total dollar amount that the household is responsible to pay," with no cap; no existing item sums the dependent_care_expense supplied fact to the household level.
+tests:
+  - {id: CO-374-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1, p2], dependent_care_expense: 0}, others: {p2: {dependent_care_expense: 450}}, relationships: [[spouse, p1, p2]], expect: 450}
+  - {id: CO-374-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], dependent_care_expense: 0}, others: {}, relationships: [], expect: 0}

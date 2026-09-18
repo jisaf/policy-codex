@@ -1,0 +1,12 @@
+id: CO-168
+name: SNAP ABAWD work requirement hours per month
+identifier: snap_abawd_work_hours_per_month
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The monthly hours of work, work-program participation, or a combination of the two that fulfill the ABAWD work requirement (20 hours a week averaged monthly).
+value: 80
+sources: [S129, S132]
+tags: [abawd]
+rationale: 7 CFR 273.24(a)(1)(i) and 10 CCR 2506-1 4.311.B.1 (S129, S132) both convert "20 hours per week, averaged monthly" into the stated monthly figure of 80 hours, which snap_meets_abawd_work_requirement reads directly rather than re-deriving the weekly-to-monthly conversion.

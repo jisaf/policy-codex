@@ -1,0 +1,18 @@
+id: CO-331
+name: "SNAP: person unearned income"
+identifier: snap_person_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The person's countable unearned income for the month, the sum of Social Security, pension, unemployment, child support received, cash assistance, and other unearned income.
+precision: Reads the supplied unearned-income facts, which this volume's interface already states as countable amounts; income exclusions this volume cannot model from the supplied facts go unmodeled here, per assumption.
+assumption: The six supplied unearned-income facts are already the countable amounts 7 CFR 273.9(b)(2) (S42) describes (assistance payments, annuities/pensions/disability/retirement/Social Security benefits, support/alimony payments, and other direct money payments); exclusions this volume's interface does not expose as separate facts (for example infrequent/irregular income under $30 a quarter) are not separately subtracted.
+derived: ["+", social_security_income, pension_income, unemployment_income, child_support_received, cash_assistance_income, other_unearned_income]
+sources: [S42]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.9(b)(2) (S42) defines unearned income to include assistance payments, benefits, and support payments; no existing item sums this volume's six unearned-income supplied facts into the single figure snap_person_gross_income needs.
+tests:
+  - {id: CO-331-T1, month: "2026-10", given: {social_security_income: 1180, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 1180}
+  - {id: CO-331-T2, month: "2026-10", given: {social_security_income: 1420, pension_income: 610, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 2030}

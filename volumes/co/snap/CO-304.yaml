@@ -1,0 +1,18 @@
+id: CO-304
+name: "SNAP: is a household member (not excluded as an institution resident)"
+identifier: snap_is_household_member
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is not excluded from every SNAP household as a resident of an institution that provides the majority of their meals. Batch 1 models only the institution-resident exclusion of 7 CFR 273.1(b)(7)(vi); the other 273.1(b)(7) exclusions (disqualified for work-requirement noncompliance, intentional program violation, fleeing felon, drug felony) are folded into snap_is_ineligible_member instead, because those persons stay in the household for purposes of assembling the unit and counting income (273.11(c), S19) but are excluded only from the count of eligible members.
+precision: A person who entered the institution on or before the determination date is excluded starting that date; institution_entry_date after the determination date does not yet exclude them.
+derived: [not, [all, in_medical_institution, ["<=", institution_entry_date, [det_date]]]]
+sources: [S3, S5]
+implemented: engine
+tags: [household]
+rationale: 273.1(b)(7)(vi) (S3) and 10 CCR 2506-1 4.304.4.D (S5) remove institution residents from every household, including their own; this is the one 273.1(b)(7) exclusion that must apply before the P36/P37 closure builds snap_household_members (an institutionalized person cannot be a member of anyone's unit, including their own), so it is computed first and used as the P37 filter condition.
+tests:
+  - {id: CO-304-T1, as_of: "2026-10-01", given: {in_medical_institution: true, institution_entry_date: "2026-10-01"}, expect: false}
+  - {id: CO-304-T2, as_of: "2026-10-01", given: {in_medical_institution: false, institution_entry_date: "2026-10-01"}, expect: true}
+  - {id: CO-304-T3, as_of: "2026-09-15", given: {in_medical_institution: true, institution_entry_date: "2026-10-01"}, expect: true}

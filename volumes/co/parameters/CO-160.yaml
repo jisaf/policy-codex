@@ -1,0 +1,14 @@
+id: CO-160
+name: Federal minimum wage
+identifier: federal_minimum_wage
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: The Federal minimum hourly wage under section 6(a)(1) of the Fair Labor Standards Act of 1938, 29 U.S.C. 206(a)(1), which the work-registration, ABAWD, and student employment exemptions use to convert an hours threshold into a weekly-earnings threshold.
+assumption: The fetched excerpts (S122, S135) refer to "the minimum hourly rate under section 6(a)(1) of the Fair Labor Standards Act" without stating the dollar figure. No document in this volume's document set quotes the current $7.25 rate. The draft uses $7.25 (the rate in effect since 2009-07-24 under 29 U.S.C. 206(a)(1)) without a document citation for the number itself; see OQ-35.
+value: 7.25
+sources: [S122]
+open: [OQ-35]
+tags: [work_registration, student]
+rationale: The work-registration employment exemption (7 CFR 273.7(b)(1)(vii)) and the student employment exemption (7 U.S.C. 2015(e)(4)) both test weekly earnings against the Federal minimum wage times an hours figure; no existing item in this volume carries the wage rate itself.

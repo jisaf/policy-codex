@@ -1,0 +1,16 @@
+id: CO-112
+name: SNAP net income limit by household size (100% FPL)
+identifier: snap_net_income_limit_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: SNAP
+meaning: The monthly net income limit (100% of the federal poverty level, 48 states and D.C.) for a Standard Eligibility household, by household size 1 through 8.
+precision: Sizes above 8 add snap_net_income_limit_each_additional per additional member; see snap_net_income_limit (CO-346).
+versions:
+  - from: "2025-10-01"
+    value: { "1": 1305, "2": 1763, "3": 2221, "4": 2680, "5": 3138, "6": 3596, "7": 4055, "8": 4513 }
+    source: S52
+rationale: 10 CCR 2506-1 4.401,A,3,a-b (S50) and 7 CFR 273.9(a)(2) require every SE household to meet a 100% net income standard; D-21's table 1 (S52) is the FY2026 FNS table for the 48 states and D.C.
+sources: [S52]
+tags: [income, snap]

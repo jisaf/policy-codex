@@ -1,0 +1,12 @@
+id: CO-074
+name: Countable non-liquid resources
+identifier: countable_nonliquid_resources_snap
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: The person's own countable non-liquid resources under 7 CFR 273.8 - non-excluded vehicles, non-homestead real property, and other non-excluded resources that are not cash, a bank account, or a similar liquid asset - before combining with other household members' resources. Excludes any resource 273.8(e) excludes (the home, most vehicles, and other listed exclusions).
+supplied_by: Applicant statement, county worker determination (vehicle and property valuation).
+sources: [S56, S57]
+tags: [resources]
+rationale: "C-7: countable_liquid_resources (CO-031) is, by its own stated meaning, limited to 'cash, bank accounts, and similar' liquid resources, but snap_household_countable_resources (CO-343) summed only that fact and compared it to the 273.8/4.408,E resource limits, which are limits on all countable resources under 273.8, not only liquid ones. This under-counted resources for every Standard Eligibility household. Rather than re-mean countable_liquid_resources (which snap_is_entitled_to_expedited_service, CO-348, correctly uses for the liquid-resources expedited-service test), this adds a second fact for the non-liquid countable component, and CO-343 now sums both."

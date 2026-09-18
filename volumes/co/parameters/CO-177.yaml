@@ -1,0 +1,11 @@
+id: CO-177
+name: SNAP immigrant child exemption age
+identifier: snap_immigrant_child_exemption_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which a qualified non-citizen is exempt from the five-year/40-quarter waiting period on non-citizen eligibility for SNAP, regardless of the person's date of entry or qualifying status.
+value: 18
+sources: [S14, S24]
+rationale: "C-8: CO-306 (snap_is_exempt_from_immigrant_waiting_period) borrowed snap_parental_control_age (CO-102) for its under-18 arm. CO-102 is the household-composition parameter for 7 CFR 273.1(b)(1)(iii)/10 CCR 2506-1 4.304.1.A.2 (S2, S4), an unrelated rule that happens to share the value 18 today. The immigrant under-18 exemption is a distinct rule with its own source, 8 U.S.C. 1612(a)(2)(J) (S24: 'shall not apply to any individual who is under 18 years of age') and 10 CCR 2506-1 4.305,B,3,c (S14). This parameter lets CO-306 cite and read its own age rather than borrowing CO-102's, so a reader tracing CO-306's provenance is not sent to the household-composition rule."

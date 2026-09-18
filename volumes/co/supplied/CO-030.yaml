@@ -1,0 +1,12 @@
+id: CO-030
+name: Other unearned income
+identifier: other_unearned_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly unearned income not otherwise itemized (for example, interest, dividends, or contributions from someone outside the household).
+supplied_by: Applicant statement, verification of the specific income source.
+sources: []
+tags: [income]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."

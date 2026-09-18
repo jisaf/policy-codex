@@ -1,0 +1,12 @@
+id: CO-001
+name: Date of birth
+identifier: date_of_birth
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The calendar date on which the person was born.
+supplied_by: Applicant statement, verified against vital records, SSA, or immigration records.
+sources: []
+tags: [age]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is exempt from the non-citizen waiting period, SNAP: age."

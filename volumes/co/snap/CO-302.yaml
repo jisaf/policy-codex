@@ -1,0 +1,17 @@
+id: CO-302
+name: "SNAP: is a disabled member"
+identifier: snap_is_disabled_member
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person meets one of the disability-based prongs of the 7 CFR 271.2 "elderly or disabled member" definition (SSI, Social Security or state disability/blindness payments, VA disability, or SSA-criteria disability), independent of age.
+precision: Does not by itself test the age prong; combined with snap_is_elderly in snap_is_elderly_or_disabled.
+derived: [any, receives_ssi, receives_social_security_disability, receives_general_assistance, receives_va_disability_benefits, is_disabled_ssa, is_blind]
+sources: [S6]
+implemented: engine
+tags: [disability]
+rationale: The 271.2 definition's disability prongs (2), (3), (5), (6) are receipt-of-benefit tests distinct from the age prong; this item isolates them so snap_is_elderly_or_disabled reads as "elderly OR disabled" per the definition's structure, and so other chapters that need "is this member disabled" (deductions, ABAWD exemptions) do not retest age.
+tests:
+  - {id: CO-302-T1, given: {receives_ssi: true, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, expect: true}
+  - {id: CO-302-T2, given: {receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, expect: false}

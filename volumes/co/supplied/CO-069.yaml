@@ -1,0 +1,12 @@
+id: CO-069
+name: Is enrolled full time in higher education
+identifier: is_enrolled_higher_education_full_time
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is enrolled full time (as determined by the institution) in an institution of higher education.
+supplied_by: Institution enrollment verification.
+sources: []
+tags: [student]
+rationale: The single-parent student exemption (7 U.S.C. 2015(e)(8); 10 CCR 2506-1 4.306.1.D, S133, S135) requires full-time enrollment, which is a different threshold from is_enrolled_higher_education_half_time (batch 1) and cannot be derived from it.

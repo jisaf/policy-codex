@@ -1,0 +1,12 @@
+id: CO-070
+name: Is approved for work study
+identifier: is_approved_for_work_study
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is approved for a State or federally financed work-study program for the current school term and anticipates actually working during that time.
+supplied_by: Institution financial-aid record.
+sources: []
+tags: [student]
+rationale: 7 U.S.C. 2015(e)(4) and 10 CCR 2506-1 4.306.1.C (S133, S135) exempt a student approved for work study independent of hours actually worked; no existing fact captures program approval as distinct from hours_worked.

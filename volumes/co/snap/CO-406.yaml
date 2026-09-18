@@ -1,0 +1,16 @@
+id: CO-406
+name: "SNAP: is a work registrant"
+identifier: snap_is_work_registrant
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is subject to general SNAP work registration - age 16 through 59 and not exempt under snap_is_exempt_from_work_registration.
+derived: [all, [">=", snap_age, snap_work_registration_min_age], ["<=", snap_age, snap_work_registration_max_age], [not, snap_is_exempt_from_work_registration]]
+sources: [S122, S123, S126]
+implemented: engine
+tags: [work_registration]
+rationale: No existing item states the pass/fail work-registration outcome itself; this combines the age band (7 CFR 273.7(b)(1)(i), 10 CCR 2506-1 4.310.3.A, S123/S126) with snap_is_exempt_from_work_registration, matching the structure of the mwr volume's WR-308.
+tests:
+  - {id: CO-406-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", snap_is_exempt_from_work_registration: false}, expect: true}
+  - {id: CO-406-T2, as_of: "2026-10-01", given: {date_of_birth: "1945-07-30", snap_is_exempt_from_work_registration: false}, expect: false}

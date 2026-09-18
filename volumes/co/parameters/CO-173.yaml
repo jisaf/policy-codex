@@ -1,0 +1,12 @@
+id: CO-173
+name: SNAP student dependent care exemption, younger child age
+identifier: snap_student_young_child_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which responsibility for a dependent household member exempts a student from the ineligible-student rule outright.
+value: 6
+sources: [S133, S135]
+tags: [student, age]
+rationale: 7 U.S.C. 2015(e)(5)(A) (S133) and 10 CCR 2506-1 4.306.1.D (S135) set 6 as the age below which the student care exemption applies without an adequate-child-care condition, distinct from the older-child band (CO-174).

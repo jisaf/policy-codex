@@ -1,0 +1,18 @@
+id: CO-347
+name: "SNAP: meets the gross income test"
+identifier: snap_meets_gross_income_test
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household passes the gross income eligibility test for the month - deemed met if the household is categorically eligible or has an elderly or disabled member (for whom no gross income standard applies), and otherwise met only if household gross income is at or below the 130% gross income limit.
+assumption: 10 CCR 2506-1 4.206,C,3,b,1) and 4.401,A,3,b (S49, S50) state only a net-income standard for a Standard Eligibility household with an elderly or disabled member, with no gross-income figure; the draft reads this as the gross income test not applying to that household at all, rather than applying at an unstated percentage (OQ-13).
+derived: [any, snap_is_categorically_eligible, snap_household_has_elderly_or_disabled_member, [<=, snap_household_gross_income, snap_gross_income_limit]]
+sources: [S41, S49, S50, S103]
+open: [OQ-13]
+implemented: engine
+tags: [income]
+rationale: "7 CFR 273.9(a) and 10 CCR 2506-1 4.401,A (S50) require the gross income test for a household that is neither categorically eligible nor has an elderly or disabled member; no existing item combines the categorical exemption, the elderly/disabled exemption, and the numeric comparison into the single pass/fail fact deductions and allotment rules read. R-3 (fix-round): OQ-13 previously treated the elderly/disabled exemption as an assumption drawn from the Colorado manual's silence; 7 CFR 273.10(e)(2)(i)(B) (S103) confirms it in terms ('households which do not contain an elderly or disabled member shall have their gross income ... compared to the gross monthly income standards'), so this item is unchanged but now cites S103 and OQ-13 is closed as resolved."
+tests:
+  - {id: CO-347-T1, as_of: "2026-10-01", month: "2026-10", given: {in_medical_institution: false, receives_ssi: true, receives_tanf_cash: false, receives_general_assistance: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false, citizenship_status: citizen, earned_income: 50000, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_work_requirement_noncompliance: false}, others: {}, relationships: [], expect: true}
+  - {id: CO-347-T2, as_of: "2026-10-01", month: "2026-10", given: {is_enrolled_higher_education_half_time: false, in_medical_institution: false, receives_ssi: false, receives_tanf_cash: false, receives_general_assistance: false, receives_state_cash_assistance: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false, citizenship_status: citizen, earned_income: 4000, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_work_requirement_noncompliance: false, date_of_birth: "1985-01-01", receives_social_security_disability: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, others: {}, relationships: [], expect: false}

@@ -1,0 +1,19 @@
+id: CO-333
+name: "SNAP: counted income of an ineligible member"
+identifier: snap_counted_income_of_ineligible_member
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The amount of an ineligible household member's own gross income that is counted as income to the remaining, eligible household members - the full amount for an IPV, work-sanction, or fleeing-felon disqualification, and a pro rata share (all but the disqualified member's own share, dividing evenly by the number of household members) for an ineligible non-citizen. Zero for a member who is not an ineligible member.
+precision: The pro rata share divides the member's income evenly among every household member counted by snap_household_members (including the ineligible member), then counts all but that one share; n is the count of that person's whole purchase-and-prepare unit, not just the eligible members.
+assumption: Colorado's election at 10 CCR 2506-1 4.411.1,B,2,b (S46) to prorate an ineligible non-citizen's income, rather than count it in full, is modeled here; snap_is_ineligible_member's other grounds this volume already models (IPV, work-requirement sanction, fleeing felon) fall under 4.411.1,B,1,a (S45), which counts income in full. This item does not yet reach the ABAWD-sanction or missing-SSN pro rata grounds 4.411.1,B,2 also lists, because those disqualifications are not modeled in snap_is_ineligible_member.
+derived: [case, [[any, is_disqualified_for_intentional_program_violation, is_disqualified_for_work_requirement_noncompliance, is_fleeing_felon_or_probation_violator], snap_person_gross_income], [snap_is_ineligible_non_citizen, ["*", snap_person_gross_income, ["/", ["-", [count, snap_household_members], 1], [count, snap_household_members]]]], [else, 0]]
+sources: [S45, S46]
+open: [OQ-1]
+implemented: engine
+tags: [income, state_election]
+rationale: 10 CCR 2506-1 4.411.1,B,1-2 (S45, S46) states two different treatments of a disqualified or ineligible member's income depending on the reason for exclusion; no existing item distinguishes full-count from pro rata treatment, and snap_household_gross_income needs this per-member figure to aggregate correctly.
+tests:
+  - {id: CO-333-T1, as_of: "2026-10-01", month: "2026-10", given: {citizenship_status: undocumented, earned_income: 2380, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false, in_medical_institution: false}, others: {p2: {date_of_birth: "1945-07-30", citizenship_status: citizen, in_medical_institution: false}, p4: {date_of_birth: "2009-04-08", citizenship_status: citizen, in_medical_institution: false}, p5: {date_of_birth: "2026-02-03", citizenship_status: citizen, in_medical_institution: false}}, relationships: [[parent, p2, p1], [parent, p1, p4], [parent, p4, p5], [buys_prepares_with, p2, p1], [buys_prepares_with, p1, p4], [buys_prepares_with, p4, p5]], expect: 1785}
+  - {id: CO-333-T2, as_of: "2026-10-01", month: "2026-10", given: {citizenship_status: citizen, earned_income: 0, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: true, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false, in_medical_institution: false}, others: {p2: {date_of_birth: "1985-01-01", citizenship_status: citizen, in_medical_institution: false}}, relationships: [[spouse, p1, p2]], expect: 0}

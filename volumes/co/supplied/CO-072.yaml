@@ -1,0 +1,12 @@
+id: CO-072
+name: Is assigned to higher education through an employment and training program
+identifier: is_assigned_to_higher_education_through_et_program
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is assigned to or placed in the institution of higher education through, or in compliance with the requirements of, WIOA, SNAP E&T, TAA, or another listed employment and training program (7 U.S.C. 2015(e)(3); 10 CCR 2506-1 4.306.1.G).
+supplied_by: County SNAP E&T or WIOA case record.
+sources: []
+tags: [student]
+rationale: This is a case-management fact about which program placed the student, not derivable from enrollment status alone; 7 U.S.C. 2015(e)(3) and 10 CCR 2506-1 4.306.1.G (S133, S135) make it a distinct student exemption.

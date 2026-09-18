@@ -1,0 +1,15 @@
+id: CO-111
+name: SNAP gross income limit, each additional household member (130% FPL)
+identifier: snap_gross_income_limit_each_additional
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The amount added to the 8-person gross income limit for each household member above 8.
+versions:
+  - from: "2025-10-01"
+    value: 596
+    source: S53
+rationale: 7 CFR 273.9(a)(3)(i) requires the increment for households over 8 persons; D-21's table 2 (S53) states the FY2026 dollar increment, which snap_gross_income_limit_table alone does not carry.
+sources: [S53]
+tags: [income, snap]

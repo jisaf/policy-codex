@@ -1,0 +1,12 @@
+id: CO-053
+name: ABAWD discretionary exemption for the month
+identifier: abawd_discretionary_exemption_month
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The state agency applied one of its limited discretionary ABAWD exemptions to the person for the month.
+supplied_by: CBMS ABAWD exemption tracking.
+sources: []
+tags: [abawd, state_election]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."

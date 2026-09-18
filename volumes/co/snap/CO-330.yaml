@@ -1,0 +1,18 @@
+id: CO-330
+name: "SNAP: person earned income"
+identifier: snap_person_earned_income
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The person's countable earned income for the month, wages and salaries plus self-employment net income.
+precision: Reads the supplied earned_income and self_employment_net_income facts, which this volume's interface already states as countable (after the cost of doing business) amounts; income exclusions this volume cannot model from the supplied facts (for example the work-study or training-allowance exclusions of 7 CFR 273.9(c)) are not separately subtracted here.
+assumption: earned_income and self_employment_net_income are already the countable, post-exclusion amounts 7 CFR 273.9(b)(1) (S41) and 10 CCR 2506-1 4.403 describe; this item combines them rather than re-deriving exclusions the supplied-fact interface does not expose.
+derived: ["+", earned_income, self_employment_net_income]
+sources: [S41]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.9(b)(1) (S41) defines earned income as wages/salaries plus self-employment net income; no existing item combines the two supplied income facts into the single countable earned-income figure snap_household_earned_income and snap_person_gross_income need.
+tests:
+  - {id: CO-330-T1, month: "2026-10", given: {earned_income: 2380, child_support_paid_legally_obligated: 0, self_employment_net_income: 0}, expect: 2380}
+  - {id: CO-330-T2, month: "2026-10", given: {earned_income: 500, child_support_paid_legally_obligated: 0, self_employment_net_income: 300}, expect: 800}

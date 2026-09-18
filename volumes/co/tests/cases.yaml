@@ -32,6 +32,37 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        # Reconciled with countable_resources_couple (46000, Medicaid chapter) below (cases fix): p1 is
+        # outside every SNAP unit (institutionalized, CO-304), so this does not change any SNAP
+        # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
+        countable_liquid_resources: 46000
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
         sex: female
         citizenship_status: citizen
@@ -49,12 +80,58 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        self_employment_net_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
         social_security_income: 1420
         pension_income: 610
         earned_income: 0
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: true
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        qualified_status_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         sex: male
         citizenship_status: lawful_permanent_resident
@@ -68,11 +145,58 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        self_employment_net_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 1400
         social_security_income: 1180
         earned_income: 0
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        in_medical_institution: false
         date_of_birth: "1985-01-22"
         sex: female
         citizenship_status: undocumented
@@ -83,11 +207,58 @@
         is_disabled_ssa: false
         receives_ssi: false
       month_defaults:
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
         earned_income: 2380
         hours_worked: 138
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: [p5]
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        in_medical_institution: false
         date_of_birth: "2009-04-08"
         sex: female
         citizenship_status: citizen
@@ -98,10 +269,58 @@
         is_disabled_ssa: false
         receives_ssi: false
       month_defaults:
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
         earned_income: 0
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        in_medical_institution: false
         date_of_birth: "2026-02-03"
         sex: male
         citizenship_status: citizen
@@ -110,9 +329,99 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
   # Filled in per phase. Left empty in the skeleton so the case is a target,
   # not a claim; the review for each phase adds the outcomes it decides.
-  expect: {}
+  # SNAP (phase 2). The grandmother p1 is an institution resident and so not a
+  # household member; her own unit is empty. The unit is p2, p3, p4, p5 with p3
+  # an ineligible non-citizen whose income counts pro rata (2380 x 3/4 = 1785).
+  # Gross 1180 + 1785 = 2965 (expanded categorical eligibility: at or below 200%
+  # FPL for 3); earned income deduction 20% of 1785 = 357; standard deduction 209;
+  # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
+  # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
+  # net rounded up (660) = 125.
+  expect:
+    p1:
+      snap_household_members: []
+      snap_eligible_household_members: []
+      snap_household_size: 0
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_status: {"2026-10": no_eligible_members}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false
+    p2:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-10": 2965}
+      snap_household_net_income: {"2026-10": 2199}
+      snap_allotment: {"2026-10": 125}
+      snap_eligibility_status: {"2026-10": eligible}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false
+    p3:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: true
+      snap_meets_citizenship_requirement: false
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-10": 2965}
+      snap_household_net_income: {"2026-10": 2199}
+      snap_allotment: {"2026-10": 125}
+      snap_eligibility_status: {"2026-10": eligible}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false
+    p4:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-10": 2965}
+      snap_household_net_income: {"2026-10": 2199}
+      snap_allotment: {"2026-10": 125}
+      snap_eligibility_status: {"2026-10": eligible}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false
+    p5:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-10": 2965}
+      snap_household_net_income: {"2026-10": 2199}
+      snap_allotment: {"2026-10": 125}
+      snap_eligibility_status: {"2026-10": eligible}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false
 
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
@@ -128,6 +437,41 @@
   persons:
     p1:
       facts:
+        receives_ssi: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_pregnant: false
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        # Reconciled with countable_resources_couple (46000, Medicaid chapter) below (cases fix): p1 is
+        # outside every SNAP unit (institutionalized, CO-304), so this does not change any SNAP
+        # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
+        countable_liquid_resources: 46000
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
         citizenship_status: citizen
         state_of_residence: CO
@@ -137,34 +481,516 @@
         meets_nursing_facility_level_of_care: true
         countable_resources_couple: 46000
       month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
         social_security_income: 1420
         pension_income: 610
     p2:
       facts:
+        qualifying_quarters: 40
+        receives_ssi: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_pregnant: false
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: true
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        qualified_status_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         citizenship_status: lawful_permanent_resident
         lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         in_medical_institution: false
       month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 1400
         social_security_income: 1180
     p3:
       facts:
+        receives_ssi: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_pregnant: false
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        in_medical_institution: false
         date_of_birth: "1985-01-22"
         citizenship_status: undocumented
         state_of_residence: CO
       month_defaults:
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
         earned_income: 2380
         hours_worked: 138
     p4:
       facts:
+        receives_ssi: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_pregnant: false
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: [p5]
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        in_medical_institution: false
         date_of_birth: "2009-04-08"
         citizenship_status: citizen
         state_of_residence: CO
         is_enrolled_in_school: true
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
     p5:
       facts:
+        receives_ssi: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_pregnant: false
+        is_enrolled_higher_education_half_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        in_medical_institution: false
         date_of_birth: "2026-02-03"
         citizenship_status: citizen
         state_of_residence: CO
-  expect: {}
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
+  # SNAP (phase 2). The grandmother p1 is an institution resident and so not a
+  # household member; her own unit is empty. The unit is p2, p3, p4, p5 with p3
+  # an ineligible non-citizen whose income counts pro rata (2380 x 3/4 = 1785).
+  # Gross 1180 + 1785 = 2965 (expanded categorical eligibility: at or below 200%
+  # FPL for 3); earned income deduction 20% of 1785 = 357; standard deduction 209;
+  # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
+  # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
+  # net rounded up (660) = 125.
+  expect:
+    p1:
+      snap_household_members: []
+      snap_eligible_household_members: []
+      snap_household_size: 0
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_status: {"2026-11": no_eligible_members}
+      snap_abawd_time_limit_status: {"2026-11": not_subject}
+      snap_is_work_registrant: false
+    p2:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-11": 2965}
+      snap_household_net_income: {"2026-11": 2199}
+      snap_allotment: {"2026-11": 125}
+      snap_eligibility_status: {"2026-11": eligible}
+      snap_abawd_time_limit_status: {"2026-11": not_subject}
+      snap_is_work_registrant: false
+    p3:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: true
+      snap_meets_citizenship_requirement: false
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-11": 2965}
+      snap_household_net_income: {"2026-11": 2199}
+      snap_allotment: {"2026-11": 125}
+      snap_eligibility_status: {"2026-11": eligible}
+      snap_abawd_time_limit_status: {"2026-11": not_subject}
+      snap_is_work_registrant: false
+    p4:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-11": 2965}
+      snap_household_net_income: {"2026-11": 2199}
+      snap_allotment: {"2026-11": 125}
+      snap_eligibility_status: {"2026-11": eligible}
+      snap_abawd_time_limit_status: {"2026-11": not_subject}
+      snap_is_work_registrant: false
+    p5:
+      snap_household_members: [p2, p3, p4, p5]
+      snap_eligible_household_members: [p2, p4, p5]
+      snap_household_size: 3
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-11": 2965}
+      snap_household_net_income: {"2026-11": 2199}
+      snap_allotment: {"2026-11": 125}
+      snap_eligibility_status: {"2026-11": eligible}
+      snap_abawd_time_limit_status: {"2026-11": not_subject}
+      snap_is_work_registrant: false
+
+- id: CO-03
+  title: Elderly couple, one with Medicare and out-of-pocket medical expenses; no SUA rule yet
+  as_of: "2026-10-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [buys_prepares_with, p1, p2]
+  persons:
+    p1:
+      # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
+      facts:
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 4200
+        countable_nonliquid_resources_snap: 0
+        # No CDHS standard utility allowance rule exists yet in this volume (fix-round OQ-36); the
+        # household's stated shelter cost is rent only, so the utility allowance is stated as 0
+        # rather than estimated.
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: true
+        date_of_birth: "1956-01-01"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: true
+        meets_nursing_facility_level_of_care: false
+        in_medical_institution: false
+        earned_income: 0
+        self_employment_net_income: 0
+        social_security_income: 1650
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 180
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 1100
+    p2:
+      # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
+      facts:
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        is_disabled_ssa: false
+        is_blind: false
+        is_homeless: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        utility_allowance_amount: 0
+        persons_cared_for: []
+        is_head_of_household: false
+        date_of_birth: "1958-01-01"
+        sex: male
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        in_medical_institution: false
+        earned_income: 0
+        self_employment_net_income: 0
+        social_security_income: 900
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        workfare_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        is_in_snap_employment_and_training: false
+        shelter_cost_monthly: 0
+  # SNAP (fix-round case, C-10/group 10). Both are U.S. citizens living together as spouses, so the
+  # unit is [p1, p2] under 273.1(a)-(b)(1); both are 60+ (snap_elderly_age), so
+  # snap_household_has_elderly_or_disabled_member is true for the unit and the gross income test
+  # (7 CFR 273.10(e)(2)(i)(B), S103) does not apply to them at all.
+  # No member receives SSI/TANF/state cash assistance, so not BCE. Gross income = 1650 + 900 = 2550,
+  # at or below 200% FPL for household size 2 ($3,408, CO-122) -> Expanded Categorical Eligibility
+  # (category: expanded_categorical). Categorically eligible households are deemed to meet the gross,
+  # net, and resource tests (10 CCR 2506-1 4.401,A,2 and 4.408,A), so the resource test does not bite
+  # here even though countable resources (4200) are under the elderly/disabled limit (4500) anyway.
+  # Deductions: no earned income, so no earned income deduction. Standard deduction (size 2) = 209.
+  # Excess medical deduction: only p1's $180 counts (p1 is elderly); 180 - 35 threshold = 145.
+  # Adjusted income before shelter = 2550 - 209 - 145 = 2196.
+  # Shelter: rent 1100 (utility allowance 0, no SUA rule yet - OQ-36); shelter costs = 1100.
+  # Household has an elderly member, so the shelter deduction is uncapped:
+  # excess shelter = max(0, 1100 - 0.5*2196) = max(0, 1100 - 1098) = 2.
+  # Net income = max(0, 2196 - 2) = 2194 (already a whole dollar, no rounding adjustment).
+  # Maximum allotment (size 2) = 546; benefit reduction = ceil(0.3 * 2194) = ceil(658.2) = 659.
+  # Maximum-allotment-less-reduction = max(0, 546 - 659) = 0. Household size 2 is at or below the
+  # minimum-allotment limit (2) and passes every applicable test (deemed via categorical eligibility),
+  # so the minimum allotment floor applies: allotment = max(0, 24) = 24.
+  # Eligible (categorically eligible, allotment > 0). Both are over snap_abawd_max_age (64), so
+  # not_subject to the ABAWD time limit; both are over snap_work_registration_max_age (59), so not
+  # work registrants.
+  expect:
+    p1:
+      snap_household_members: [p1, p2]
+      snap_eligible_household_members: [p1, p2]
+      snap_household_size: 2
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-10": 2550}
+      snap_household_net_income: {"2026-10": 2194}
+      snap_allotment: {"2026-10": 24}
+      snap_eligibility_status: {"2026-10": eligible}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false
+    p2:
+      snap_household_members: [p1, p2]
+      snap_eligible_household_members: [p1, p2]
+      snap_household_size: 2
+      snap_is_ineligible_member: false
+      snap_meets_citizenship_requirement: true
+      snap_eligibility_category: expanded_categorical
+      snap_household_gross_income: {"2026-10": 2550}
+      snap_household_net_income: {"2026-10": 2194}
+      snap_allotment: {"2026-10": 24}
+      snap_eligibility_status: {"2026-10": eligible}
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_is_work_registrant: false

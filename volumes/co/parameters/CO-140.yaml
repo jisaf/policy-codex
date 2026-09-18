@@ -1,0 +1,12 @@
+id: CO-140
+name: SNAP minimum allotment household size limit
+identifier: snap_minimum_allotment_household_size_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The largest household size (in eligible members) to which the minimum allotment applies.
+value: 2
+sources: [S104]
+rationale: 7 CFR 273.10(e)(2)(ii)(C) (S104) limits the minimum benefit to one- and two-person households; kept as a parameter so snap_allotment (CO-385) carries no digit in its identifier (governance name.digits).
+tags: [income, snap]

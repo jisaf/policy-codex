@@ -47,3 +47,24 @@ describe("constraints", () => {
     expect(clash?.msg).toContain("WR-003");
   });
 });
+
+describe("versioned parameters", () => {
+  it("accepts dated versions in place of a single value, but not both", async () => {
+    const { buildIndex } = await import("../../src/engine/ledger-index");
+    const { constraints } = await import("../../src/engine/constraints");
+    const meta = {
+      volume: "t", title: "t", version: "0", status: "", default_as_of: "2026-10-01",
+      approval_policy: { roles: [], by_program: {}, by_kind: {}, by_tag: {} },
+      types: ["money"], scopes: ["global" as const],
+    };
+    const base = { id: "V-1", name: "Cap", identifier: "cap", kind: "parameter" as const, type: "money", scope: "global" as const, program: "SNAP", meaning: "A capped amount stated by the memo.", sources: ["S1"] };
+    const ix = buildIndex([base]);
+    const refs = { sourceIds: ["S1"], questionIds: [] };
+    const fails = (it: object) => constraints(ix, meta, refs, it as never).filter((c) => !c.ok).map((c) => c.msg);
+    expect(fails({ ...base, versions: [{ from: "2025-10-01", value: 744 }] })).toEqual([]);
+    expect(fails({ ...base, value: 744 })).toEqual([]);
+    expect(fails({ ...base })).toContain("Parameter has a value");
+    expect(fails({ ...base, value: 1, versions: [{ from: "2025-10-01", value: 744 }] }))
+      .toContain("Parameter has a value");
+  });
+});

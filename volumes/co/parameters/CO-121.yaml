@@ -1,0 +1,12 @@
+id: CO-121
+name: SNAP expedited service resource ceiling
+identifier: snap_expedited_resource_ceiling
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The liquid resource amount at or below which a household qualifies for expedited service on either the low-income (273.2(i)(1)(i)) or destitute migrant/seasonal farmworker (273.2(i)(1)(ii)) ground.
+value: 100
+sources: [S58]
+tags: [resources, snap]
+rationale: 7 CFR 273.2(i)(1)(i)-(ii) (S58) both state the $100 liquid-resource ceiling; snap_is_entitled_to_expedited_service (CO-347) needs it as a named parameter shared by both grounds.

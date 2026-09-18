@@ -1,0 +1,18 @@
+id: CO-384
+name: "SNAP: benefit reduction"
+identifier: snap_benefit_reduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The amount subtracted from this person's SNAP household's maximum allotment to compute the allotment - 30 percent of household net income, rounded up to the next whole dollar.
+assumption: 7 CFR 273.10(e)(2)(ii)(A) (S102) gives two rounding options for this figure; no fetched Colorado document states which Colorado elected, so the draft takes option (1), rounding 30% of net income up to the next dollar before subtracting it from the maximum allotment (OQ-23).
+derived: [ceil, ["*", snap_benefit_reduction_rate, snap_household_net_income]]
+sources: [S102, S104]
+open: [OQ-23]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) computes the allotment as the maximum allotment "reduced by 30 percent of the household's net monthly income"; no existing item states this intermediate figure, kept separate from snap_allotment so the rounding choice (OQ-23) and its two tests are isolated from the subtraction and floor snap_allotment performs.
+tests:
+  - {id: CO-384-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2199}, expect: 660}
+  - {id: CO-384-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2000}, expect: 600}

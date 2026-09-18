@@ -1,0 +1,20 @@
+id: CO-380
+name: "SNAP: homeless shelter deduction"
+identifier: snap_homeless_shelter_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The flat monthly homeless shelter deduction available in place of the computed excess shelter deduction, for a SNAP household in which every member is experiencing homelessness - taken only when it is larger than the household's own computed excess shelter deduction.
+precision: Tests that no member of snap_household_members is_homeless is false (i.e., every member is homeless); a household that has not stated is_homeless for every member is unknown on this condition, not deemed all-homeless.
+assumption: This volume's interface has no fact recording a household's election between the flat estimate and actual shelter costs (10 CCR 2506-1 4.407.3,C, S97); the draft takes whichever of the flat amount or the computed snap_excess_shelter_deduction is larger, approximating the household's own best election (OQ-24).
+derived: [case, [[all, [not, [exists, snap_household_members, [not, [of, [P], is_homeless]]]], [">", snap_shelter_costs, 0], [">", snap_homeless_shelter_deduction_amount, snap_excess_shelter_deduction]], snap_homeless_shelter_deduction_amount], [else, 0]]
+sources: [S92, S97]
+open: [OQ-24]
+implemented: engine
+tags: [income, state_election]
+rationale: "7 CFR 273.9(d)(6)(i) (S92) and 10 CCR 2506-1 4.407.3,C (S97) provide a flat homeless shelter deduction in place of actual shelter costs; no existing item tests whether every household member is homeless and compares the flat amount to the computed excess shelter deduction. Fix-round (C-5): added a snap_shelter_costs > 0 condition. S97 closes with 'Households experiencing homelessness that incur no shelter costs during the month shall not be eligible for the homeless shelter deduction,' and S92 limits the deduction to households 'not receiving free shelter throughout the month'; without this guard a homeless household with $0 in stated shelter costs (every person in CO-01/CO-02 other than p2) would draw the flat $198.99 deduction it incurred no costs to justify."
+tests:
+  - {id: CO-380-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], is_homeless: true, snap_shelter_costs: 50, snap_excess_shelter_deduction: 0}, others: {}, relationships: [], expect: 198.99}
+  - {id: CO-380-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], is_homeless: false, snap_shelter_costs: 50, snap_excess_shelter_deduction: 300}, others: {}, relationships: [], expect: 0}
+  - {id: CO-380-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], is_homeless: true, snap_shelter_costs: 0, snap_excess_shelter_deduction: 0}, others: {}, relationships: [], expect: 0}

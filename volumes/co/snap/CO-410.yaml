@@ -1,0 +1,16 @@
+id: CO-410
+name: "SNAP: is exempt from the ineligible-student rule"
+identifier: snap_is_student_exempt
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: A person enrolled at least half time in an institution of higher education is exempt from the ineligible-student rule because they are under 18 or 50 or older, unfit for employment, receiving TANF cash assistance, meet the student employment exemption, have a qualifying care responsibility, are a single parent enrolled full time, or are placed in the institution through a qualifying employment and training program.
+derived: [any, ["<", snap_age, snap_student_min_age], [">", snap_age, snap_student_max_age], snap_is_unfit_for_employment, receives_tanf_cash, snap_meets_student_employment_exemption, snap_has_care_responsibility_for_student_exemption, snap_is_single_parent_full_time_student_exemption, is_assigned_to_higher_education_through_et_program]
+sources: [S133, S134, S135]
+implemented: engine
+tags: [student, legal]
+rationale: 7 U.S.C. 2015(e)(1)-(8), 7 CFR 273.5(b), and 10 CCR 2506-1 4.306.1 (S133, S134, S135) list eight student exemptions; this item is the single fact snap_is_ineligible_student reads, combining the age, unfitness, TANF, employment, care-responsibility, single-parent, and program-placement branches into one disjunction rather than repeating them inline.
+tests:
+  - {id: CO-410-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [], date_of_birth: "2009-04-08", receives_tanf_cash: false, has_medical_statement_of_unfitness: false, agency_finds_obviously_unfit: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false, hours_worked: 0, is_approved_for_work_study: false, is_enrolled_higher_education_full_time: false, is_assigned_to_higher_education_through_et_program: false}, others: {}, relationships: [], expect: true}
+  - {id: CO-410-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [], date_of_birth: "1985-01-22", receives_tanf_cash: false, has_medical_statement_of_unfitness: false, agency_finds_obviously_unfit: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false, hours_worked: 0, is_approved_for_work_study: false, is_enrolled_higher_education_full_time: false, is_assigned_to_higher_education_through_et_program: false}, others: {}, relationships: [], expect: false}

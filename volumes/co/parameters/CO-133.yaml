@@ -1,0 +1,15 @@
+id: CO-133
+name: SNAP excess shelter deduction cap
+identifier: snap_excess_shelter_cap
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The maximum excess shelter deduction a Standard Eligibility household without an elderly or disabled member may claim.
+versions:
+  - from: "2025-10-01"
+    value: 744
+    source: S83
+rationale: 7 U.S.C. 2014(e)(6)(B) and 7 CFR 273.9(d)(6)(ii) (S93) cap the excess shelter deduction for households without an elderly or disabled member; D-20's Table 3 (S83) is the FY2026 FNS-published dollar figure (48 states and D.C. column), which snap_excess_shelter_deduction (CO-377) needs as a named, dated parameter.
+sources: [S83, S93]
+tags: [income, snap]

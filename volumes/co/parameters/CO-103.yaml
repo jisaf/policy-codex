@@ -1,0 +1,11 @@
+id: CO-103
+name: SNAP non-citizen qualifying-quarters threshold
+identifier: snap_qualifying_quarters_threshold
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of qualifying work quarters under Title II of the Social Security Act that satisfies the non-citizen additional condition for a lawful permanent resident (or other non-citizen subject to the additional condition).
+value: 40
+sources: [S13]
+rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). It is read by SNAP: meets the non-citizen additional condition."

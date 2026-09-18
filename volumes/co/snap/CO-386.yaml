@@ -1,0 +1,19 @@
+id: CO-386
+name: "SNAP: is eligible"
+identifier: snap_is_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household is eligible for the month - it has at least one eligible member, passes the gross income test, the net income test, and the resource test, and its computed allotment is greater than $0.
+precision: The allotment already reflects the minimum-allotment floor for one- and two-person households (snap_allotment, CO-385), so testing snap_allotment > 0 alone correctly admits a household entitled only to the minimum allotment and excludes a three-or-more-member household computed at $0 (OQ-26).
+derived: [all, [">=", snap_household_size, 1], snap_meets_gross_income_test, snap_meets_net_income_test, snap_meets_resource_limit, [">", snap_allotment, 0]]
+sources: [S103, S104, S105]
+open: [OQ-26]
+implemented: engine
+tags: [income, resources]
+rationale: No existing item combines the household-composition, income, resource, and allotment tests into the single eligibility outcome a determination must report; snap_eligibility_status (CO-387) reports the same outcome as an enumerated reason instead of a boolean, and both are proposed SNAP outcomes because a program administrator needs both the yes/no answer and, when the answer is no, the reason.
+tests:
+  - {id: CO-386-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 125}, expect: true}
+  - {id: CO-386-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: false, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 125}, expect: false}
+  - {id: CO-386-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 0, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 0}, expect: false}

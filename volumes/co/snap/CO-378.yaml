@@ -1,0 +1,18 @@
+id: CO-378
+name: "SNAP: adjusted income before the shelter deduction"
+identifier: snap_adjusted_income_before_shelter
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household's monthly income after the standard, earned income, dependent care, child support, and excess medical deductions have all been subtracted, but before any shelter deduction - the figure 50 percent of which sets the excess shelter deduction's threshold.
+precision: Floored at $0; the fetched text does not address a negative intermediate figure, and the draft reads "income after deductions" as never negative for this purpose (OQ-30).
+derived: [max, 0, ["-", ["-", ["-", ["-", snap_household_gross_income, snap_earned_income_deduction], snap_standard_deduction], snap_dependent_care_deduction], snap_excess_medical_deduction]]
+sources: [S101]
+open: [OQ-30]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.10(e)(1)(i)(A)-(F) (S101) computes net income by subtracting the earned income, standard, medical, dependent care, and child support deductions from gross income, in that order, before the shelter deduction is figured; no existing item states this intermediate figure, which snap_excess_shelter_deduction and snap_homeless_shelter_deduction both need for the 50%-of-income comparison.
+tests:
+  - {id: CO-378-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 2965, snap_earned_income_deduction: 357, snap_standard_deduction: 209, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 2399}
+  - {id: CO-378-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 100, snap_earned_income_deduction: 0, snap_standard_deduction: 209, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 0}

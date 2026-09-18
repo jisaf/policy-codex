@@ -1,0 +1,16 @@
+id: CO-408
+name: "SNAP: has a care responsibility that exempts a student"
+identifier: snap_has_care_responsibility_for_student_exemption
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The student is a parent or caretaker of a household member under snap_student_young_child_age (6), or of a household member at least that age but under snap_student_older_child_age (12) for whom adequate child care is not available.
+derived: [exists, snap_household_members, [all, [any, [rel, [parent], [P]], [in_group, [P], persons_cared_for]], [any, ["<", [of, [P], snap_age], snap_student_young_child_age], [all, [">=", [of, [P], snap_age], snap_student_young_child_age], ["<", [of, [P], snap_age], snap_student_older_child_age], [not, adequate_child_care_available]]]]]
+sources: [S133, S135]
+implemented: engine
+tags: [student, age]
+rationale: 7 U.S.C. 2015(e)(5) and 10 CCR 2506-1 4.306.1.D-E (S133, S135) state two dependent-care student exemptions with different age bands and different conditions (the older band requires unavailable child care); this item combines both into the single fact snap_is_student_exempt reads.
+tests:
+  - {id: CO-408-T1, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", in_medical_institution: false, adequate_child_care_available: false}, others: {p2: {date_of_birth: "2024-01-01", in_medical_institution: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-408-T2, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", in_medical_institution: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2017-01-01", in_medical_institution: false}}, relationships: [[parent, p1, p2]], expect: false}

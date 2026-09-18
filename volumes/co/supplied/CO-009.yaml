@@ -1,0 +1,11 @@
+id: CO-009
+name: Is pregnant
+identifier: is_pregnant
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is currently pregnant.
+supplied_by: Applicant statement or medical verification.
+sources: []
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."

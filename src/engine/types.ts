@@ -1,6 +1,6 @@
 export type Kind = "supplied" | "derived" | "parameter";
 export type Scope = "person" | "person-month" | "case" | "month" | "global";
-export type Program = "All" | "Medicaid" | "SNAP";
+export type Program = string;
 export type BaseType =
   | "yes/no" | "number" | "date" | "month" | "text" | "enum"
   | "person" | "group" | "relationships" | "table" | "months" | "unknown";
@@ -125,18 +125,22 @@ export interface EngineRefs {
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 export const MONTH_RE = /^\d{4}-\d{2}$/;
 export const BLOCK_OPS: ReadonlySet<string> = new Set([
-  "all", "any", "case", "exists", "exists_related", "each", "some_month",
+  "all", "any", "case", "exists", "exists_related", "each", "some_month", "filter", "sum",
+  "reachable",
 ]);
 export const MONTH_BINDING: ReadonlySet<string> = new Set([
   "each", "some_month", "count_months", "avg",
 ]);
 export const RELS: readonly string[] = [
-  "parent", "guardian", "caretaker relative", "spouse", "relative",
+  "parent", "child", "guardian", "caretaker relative", "spouse", "relative",
+  "grandparent", "grandchild", "caretaker", "dependent", "tax_filer", "tax_dependent",
+  "buys_prepares_with",
 ];
 export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
-  "+", "-", "*", "/", "otherwise", "min", "years_between", "count_months", "avg",
+  "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "count_months", "avg",
+  "count", "sum",
 ]);
 
 export const BASE: Record<string, BaseType> = {
@@ -144,5 +148,6 @@ export const BASE: Record<string, BaseType> = {
   "rate": "number", "calendar date": "date", "month": "month", "text": "text",
   "one of": "enum", "person": "person", "group of persons": "group",
   "relationships": "relationships", "table keyed by person": "table",
+  "table keyed by household size": "table",
   "list of months": "months",
 };

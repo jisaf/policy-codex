@@ -1,0 +1,12 @@
+id: CO-172
+name: SNAP ineligible student maximum age
+identifier: snap_student_max_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The oldest age at which a half-time higher-education student is subject to the ineligible-student rule; persons 50 and older are exempt.
+value: 49
+sources: [S133, S134, S135]
+tags: [student, age]
+rationale: 7 U.S.C. 2015(e)(1) (S133), 7 CFR 273.5(b)(1) (S134), and 10 CCR 2506-1 4.306,A/B,2 (S135) all place the ceiling at 49 (exempt at 50 or older).

@@ -1,0 +1,16 @@
+id: CO-132
+name: SNAP standard deduction by household size
+identifier: snap_standard_deduction_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: SNAP
+meaning: The standard deduction subtracted from every SNAP household's income, by household size 1 through 6 (a household of 6 or more eligible members uses the key "6").
+precision: 7 CFR 273.9(d)(1)(i) (S89) and 10 CCR 2506-1 4.407.1 (S94) state the deduction is 8.31% of the net income eligibility standard for sizes 1 through 6, with sizes above 6 using the 6-person figure; this parameter states the already-computed FY2026 dollar table (D-20's Table 2, S81) rather than re-deriving the 8.31% calculation, so snap_standard_deduction looks the value up by `[min, snap_household_size, 6]`.
+versions:
+  - from: "2025-10-01"
+    value: { "1": 209, "2": 209, "3": 209, "4": 223, "5": 261, "6": 299 }
+    source: S81
+rationale: No existing parameter states the standard deduction dollar table by household size; snap_standard_deduction (CO-370) needs it. D-20's Table 2 (S81) is the FY2026 FNS-published figure (48 states and D.C. column), distinct in shape from Colorado's own 4.407.1 table (S94), which states 1-3/4/5/6+ bands with different FY2025 dollar figures superseded by the FY2026 table this batch uses per the brief's instruction to use D-20/D-22.
+sources: [S81, S89, S94]
+tags: [income, snap]

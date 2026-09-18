@@ -1,0 +1,17 @@
+id: CO-416
+name: "SNAP: is a countable ABAWD month"
+identifier: snap_abawd_countable_month
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person received SNAP benefits for the full month, was not exempt from the ABAWD time limit, was not living in an approved waiver area, did not meet the ABAWD work requirement, and was not given a discretionary exemption for the month.
+derived: [all, received_full_snap_benefit_month, [not, snap_is_exempt_from_abawd_time_limit], [not, abawd_waiver_area_month], [not, snap_meets_abawd_work_requirement], [not, abawd_discretionary_exemption_month]]
+sources: [S130, S132]
+implemented: engine
+tags: [abawd, legal]
+rationale: 7 CFR 273.24(b)(1) and 10 CCR 2506-1 4.311.3.A (S130, S132) define "countable month" as this five-part conjunction; snap_abawd_countable_months_in_period reads this fact for each month in the 36-month window, matching the mwr volume's WR-313.
+tests:
+  - {id: CO-416-T1, month: "2026-10", given: {received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: true}
+  - {id: CO-416-T2, month: "2026-10", given: {received_full_snap_benefit_month: false, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: false}
+  - {id: CO-416-T3, month: "2026-10", given: {received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: true, abawd_discretionary_exemption_month: false}, expect: false}

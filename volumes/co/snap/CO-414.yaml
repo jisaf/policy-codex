@@ -1,0 +1,20 @@
+id: CO-414
+name: "SNAP: is exempt from the ABAWD time limit"
+identifier: snap_is_exempt_from_abawd_time_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: For the month the person is outside the ABAWD age range, unfit for employment, responsible for a dependent child under 14, otherwise exempt from general work registration, pregnant, or an Indian or Urban Indian.
+precision: Does not model the pre-H.R.1 homeless, veteran, or former-foster-youth exemptions still stated in the CFR and Colorado's rule manual, because the amended statute struck them; see OQ-32. Does not separately model "California Indian" (7 U.S.C. 2015(o)(3)(G)), since this volume's supplied-fact interface has only is_indian_or_urban_indian.
+assumption: Reads 7 U.S.C. 2015(o)(3)(D)'s "otherwise exempt under subsection (d)(2)" as satisfied by snap_is_exempt_from_work_registration; see OQ-33.
+derived: [any, [not, snap_is_in_abawd_age_range], snap_is_unfit_for_employment, snap_has_responsibility_for_abawd_dependent_child, snap_is_exempt_from_work_registration, is_pregnant, is_indian_or_urban_indian]
+sources: [S127, S128, S132]
+open: [OQ-32, OQ-33]
+implemented: engine
+tags: [abawd, legal]
+rationale: No existing item states the ABAWD exemption test itself; snap_abawd_countable_month and snap_abawd_time_limit_status both read this fact, following the disjunctive structure of 7 U.S.C. 2015(o)(3) (S127, S128) as amended, which the mwr volume's WR-310 models for the pre-amendment exceptions this item deliberately does not reuse.
+tests:
+  - {id: CO-414-T1, month: "2026-10", given: {is_pregnant: true, snap_is_in_abawd_age_range: true, snap_is_unfit_for_employment: false, snap_has_responsibility_for_abawd_dependent_child: false, snap_is_exempt_from_work_registration: false, is_indian_or_urban_indian: false}, expect: true}
+  - {id: CO-414-T2, month: "2026-10", given: {is_pregnant: false, snap_is_in_abawd_age_range: true, snap_is_unfit_for_employment: false, snap_has_responsibility_for_abawd_dependent_child: false, snap_is_exempt_from_work_registration: false, is_indian_or_urban_indian: false}, expect: false}
+  - {id: CO-414-T3, month: "2026-10", given: {is_pregnant: false, snap_is_in_abawd_age_range: false, snap_is_unfit_for_employment: false, snap_has_responsibility_for_abawd_dependent_child: false, snap_is_exempt_from_work_registration: false, is_indian_or_urban_indian: false}, expect: true}

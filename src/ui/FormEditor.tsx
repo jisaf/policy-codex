@@ -256,6 +256,42 @@ function Slot({
             {child(2, "yes/no", { ...sub, personOk: true }, "such that")}
           </>
         )}
+        {op === "filter" && (
+          <>
+            {child(1, "group", sub, "group")}
+            {child(2, "yes/no", { ...sub, personOk: true }, "such that")}
+          </>
+        )}
+        {op === "sum" && (
+          <>
+            {child(1, "group", sub, "group")}
+            {child(2, "number", { ...sub, personOk: true }, "value")}
+          </>
+        )}
+        {op === "reachable" && (
+          <div class="slot">
+            <span class="lbl">relationships</span>
+            {RELS.map((rel) => (
+              <label key={rel} class="inline">
+                <input
+                  type="checkbox"
+                  checked={(node[1] as string[]).includes(rel)}
+                  onChange={() =>
+                    onChange({
+                      ...draft,
+                      derived: setAt(
+                        draft.derived ?? null, [...path, 1],
+                        RELS.filter((x) =>
+                          x === rel ? !(node[1] as string[]).includes(rel)
+                            : (node[1] as string[]).includes(x)),
+                      ),
+                    })
+                  }
+                /> {rel}
+              </label>
+            ))}
+          </div>
+        )}
         {op === "at" && (
           <>
             {child(1, "pm-fact", { ...sub, monthOk: true }, "per-month fact")}
@@ -282,7 +318,7 @@ function Slot({
         )}
         {!NARY.has(op) &&
           !["case", "in", "exists", "exists_related", "rel", "at", "each", "some_month",
-            "count_months", "avg", "of"].includes(op) &&
+            "count_months", "avg", "of", "filter", "sum", "reachable"].includes(op) &&
           (SLOTS[op] ?? []).map((st, k) =>
             child(k + 1, st, sub, (SLOTNAME[op] ?? [])[k] ?? `slot ${k + 1}`))}
       </div>

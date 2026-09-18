@@ -1,0 +1,21 @@
+id: CO-340
+name: "SNAP: meets Expanded Categorical Eligibility"
+identifier: snap_meets_ece_eligibility
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person's SNAP household qualifies for Expanded Categorical Eligibility because it has at least one member, its combined gross income is at or below 200% of the federal poverty level, and no member is disqualified for an IPV or a SNAP-related drug felony."
+precision: "Reads snap_household_gross_income (a per-person-month fact) for the determination month via `at`, since this item is person-scoped like the rest of the categorical-eligibility chain. Requires at least one household member (count of snap_household_members), matching CO-338 (C-1): otherwise a household with no members has gross income 0, which is vacuously at or below any limit."
+assumption: "Treats every applicant as having been offered the non-cash TANF/MOE service notice 10 CCR 2506-1 4.206,C,2,a,2) (S48) requires (see OQ-12), so this item tests only the income and disqualification prongs."
+derived: [all, [">=", [count, snap_household_members], 1], [<=, [at, snap_household_gross_income, [det_month]], snap_bbce_gross_income_limit], [not, snap_household_has_bce_ece_disqualifying_member]]
+sources: [S48]
+open: [OQ-12]
+nearest: [CO-338]
+rationale: "10 CCR 2506-1 4.206,C,2 (S48) states ECE's income and disqualification prongs; combines snap_bbce_gross_income_limit and snap_household_has_bce_ece_disqualifying_member the way snap_meets_bce_eligibility (CO-338, same shape, different first condition) combines its own two prongs, needed separately because BCE and ECE are distinct categories with different first-prong tests. Fix-round (C-1): added the same count(snap_household_members) >= 1 guard as CO-338."
+implemented: engine
+tags: [income, state_election]
+tests:
+  - {id: CO-340-T1, as_of: "2026-10-01", month: "2026-10", given: {is_enrolled_higher_education_half_time: false, in_medical_institution: false, citizenship_status: citizen, earned_income: 1000, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: true}
+  - {id: CO-340-T2, as_of: "2026-10-01", month: "2026-10", given: {is_enrolled_higher_education_half_time: false, in_medical_institution: false, citizenship_status: citizen, earned_income: 3000, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: false}
+  - {id: CO-340-T3, as_of: "2026-10-01", month: "2026-10", given: {is_enrolled_higher_education_half_time: false, in_medical_institution: true, institution_entry_date: "2020-01-01", citizenship_status: citizen, earned_income: 0, child_support_paid_legally_obligated: 0, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: false}

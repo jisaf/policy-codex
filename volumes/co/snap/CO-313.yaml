@@ -1,0 +1,16 @@
+id: CO-313
+name: "SNAP: household size"
+identifier: snap_household_size
+kind: derived
+type: whole number
+scope: person
+program: SNAP
+meaning: The count of this person's SNAP household members who are eligible to participate, used to look up the maximum allotment, income limits, and deductions for the unit.
+derived: [count, snap_eligible_household_members]
+sources: [S19]
+implemented: engine
+tags: [household]
+rationale: The income-limit, allotment, and deduction tables in later batches are keyed by household size, which must be the count of eligible members (not every purchase-and-prepare member, since an ineligible non-citizen or disqualified member is not counted for benefit-level purposes under 7 CFR 273.11(c)); no existing item states this count.
+tests:
+  - {id: CO-313-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", in_medical_institution: false, citizenship_status: undocumented, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {p2: {date_of_birth: "2009-04-08", in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}}, relationships: [[parent, p1, p2]], expect: 1}
+  - {id: CO-313-T2, as_of: "2026-10-01", given: {is_enrolled_higher_education_half_time: false, date_of_birth: "1985-01-22", in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {p2: {is_enrolled_higher_education_half_time: false, date_of_birth: "2009-04-08", in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}}, relationships: [[parent, p1, p2]], expect: 2}

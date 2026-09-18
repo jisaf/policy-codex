@@ -1,0 +1,12 @@
+id: CO-138
+name: SNAP shelter cost income share rate
+identifier: snap_shelter_share_rate
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: The share of a household's income after all other deductions that its shelter costs must exceed before an excess shelter deduction applies.
+value: 0.5
+sources: [S88, S93, S96]
+rationale: 7 U.S.C. 2014(e)(6)(A) (S88), 7 CFR 273.9(d)(6)(ii) (S93), and 10 CCR 2506-1 4.407.3,A-B (S96) all state the 50% figure; kept as a parameter so snap_excess_shelter_deduction and snap_adjusted_income_before_shelter carry no digit in their identifiers (governance name.digits).
+tags: [income, snap]

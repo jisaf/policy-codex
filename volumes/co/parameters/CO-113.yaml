@@ -1,0 +1,15 @@
+id: CO-113
+name: SNAP net income limit, each additional household member (100% FPL)
+identifier: snap_net_income_limit_each_additional
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The amount added to the 8-person net income limit for each household member above 8.
+versions:
+  - from: "2025-10-01"
+    value: 459
+    source: S52
+rationale: 7 CFR 273.9(a)(3)(ii) requires the increment for households over 8 persons; D-21's table 1 (S52) states the FY2026 dollar increment.
+sources: [S52]
+tags: [income, snap]

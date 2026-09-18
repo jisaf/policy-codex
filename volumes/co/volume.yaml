@@ -40,7 +40,7 @@ programs:
     outcomes: []
   - id: SNAP
     prefix: snap_
-    outcomes: []
+    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
   - id: ColoradoWorks
     prefix: cw_
     outcomes: []
@@ -97,6 +97,7 @@ types:
   - group of persons
   - relationships
   - table keyed by person
+  - table keyed by household size
   - list of months
 
 scopes: [person, person-month, case, month, global]

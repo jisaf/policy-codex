@@ -1,0 +1,12 @@
+id: CO-162
+name: SNAP work registration maximum age
+identifier: snap_work_registration_max_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The oldest age at which a household member is subject to general SNAP work registration; persons 60 and older are exempt.
+value: 59
+sources: [S122, S123]
+tags: [work_registration, age]
+rationale: 7 CFR 273.7(b)(1)(i) (S123) and 10 CCR 2506-1 4.310.3.A (S126) exempt a person 60 or older from work registration, so the subject-to range's ceiling is 59; a distinct parameter from snap_elderly_age (batch 1, CO-100) even though both currently carry the value 60/59 boundary, because the two rules can diverge if either policy changes independently.

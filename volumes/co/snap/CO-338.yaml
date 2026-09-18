@@ -1,0 +1,19 @@
+id: CO-338
+name: "SNAP: meets Basic Categorical Eligibility"
+identifier: snap_meets_bce_eligibility
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person's SNAP household qualifies for Basic Categorical Eligibility because it has at least one member, every member receives, or is authorized to receive, one of the qualifying cash-benefit programs, and no member is disqualified for an IPV or a SNAP-related drug felony."
+precision: "Requires at least one household member (count of snap_household_members) (10 CCR 2506-1 4.206,C,1,a presupposes a household of 'members'); otherwise the 'every member' test over an empty group is vacuously true and a person with no SNAP unit (e.g. an institution resident) would be reported categorically eligible (C-1)."
+derived: [all, [">=", [count, snap_household_members], 1], snap_household_all_members_receive_categorical_assistance, [not, snap_household_has_bce_ece_disqualifying_member]]
+sources: [S47]
+nearest: [CO-339]
+rationale: "10 CCR 2506-1 4.206,C,1 (S47) states BCE as this two-part test (every member's assistance receipt, and no IPV/drug-felony exclusion); combines snap_household_all_members_receive_categorical_assistance and snap_household_has_bce_ece_disqualifying_member the way snap_meets_ece_eligibility (CO-340, similar shape, different income-based first condition) combines its own two prongs; both are needed because BCE and ECE are legally distinct categories of eligibility with different tests, per 4.206,A. Fix-round (C-1): added the count(snap_household_members) >= 1 guard so an empty unit is never categorically eligible."
+implemented: engine
+tags: [income, state_election]
+tests:
+  - {id: CO-338-T1, as_of: "2026-10-01", given: {in_medical_institution: false, receives_ssi: true, receives_tanf_cash: false, receives_general_assistance: false, receives_state_cash_assistance: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: true}
+  - {id: CO-338-T2, as_of: "2026-10-01", given: {in_medical_institution: false, receives_ssi: true, receives_tanf_cash: false, receives_general_assistance: false, receives_state_cash_assistance: false, is_disqualified_for_intentional_program_violation: true, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: false}
+  - {id: CO-338-T3, as_of: "2026-10-01", given: {in_medical_institution: true, institution_entry_date: "2020-01-01", receives_ssi: true, receives_tanf_cash: false, receives_general_assistance: false, receives_state_cash_assistance: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: false}

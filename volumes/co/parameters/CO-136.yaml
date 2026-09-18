@@ -1,0 +1,12 @@
+id: CO-136
+name: SNAP earned income deduction rate
+identifier: snap_earned_income_deduction_rate
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: The share of countable earned income (including the prorated earned share attributed from a disqualified or ineligible member) subtracted as the earned income deduction.
+value: 0.20
+sources: [S86, S90, S95]
+rationale: 7 U.S.C. 2014(e)(2)(B) (S86), 7 CFR 273.9(d)(2) (S90), and 10 CCR 2506-1 4.407.2 (S95) all state the 20% figure; kept as a parameter so snap_earned_income_deduction (CO-373) carries no digit in its identifier (governance name.digits).
+tags: [income, snap]

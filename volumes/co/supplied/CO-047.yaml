@@ -1,0 +1,12 @@
+id: CO-047
+name: Is in SNAP Employment and Training
+identifier: is_in_snap_employment_and_training
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person is participating in the SNAP Employment and Training program for the month.
+supplied_by: SNAP E&T case record.
+sources: []
+tags: [work_registration]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."

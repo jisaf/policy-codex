@@ -121,6 +121,17 @@ Added during the work-requirements spike, because the policy needed them
 - P33 `if [condition] then [value]; else if ...; otherwise [value]` for enumerated outcomes
 - P34 unknown propagation through every pattern unless `otherwise` supplies a default
 
+Added for the Colorado SNAP chapter (phase 2), because household composition, income aggregation, and the allotment arithmetic needed them
+
+- P35 `every person in the case` the group of every person the case names
+- P36 `the persons joined to this person by [relationship or relationship]` the persons reachable from this person over a chain of the named relationships, this person included; unknown when this person's relationships are unstated
+- P37 `all persons in [group] such that [condition]` the members for whom the condition holds, with `that person` bound to each member in turn (inline, or as a block with the condition indented); unknown when the condition is unknown for any member
+- P38 `the number of persons in [group]`
+- P39 `the sum of [number] for each person in [group]` with `that person` bound to each member (inline, or as a block `the sum for each person in [group] of` with the value indented); unknown when any member's value is unknown
+- P40 `the greater of [number] and [number]`
+- P41 `[number] rounded up to the next whole dollar`, `[number] rounded to the nearest whole dollar` (halves round up)
+- P42 `[table keyed by household size], for [whole number]` a lookup in a global table keyed by a number; the `table keyed by household size` type joins `table keyed by person`
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

@@ -1,0 +1,16 @@
+id: CO-373
+name: "SNAP: earned income deduction"
+identifier: snap_earned_income_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The deduction of 20 percent of this person's SNAP household's earned income (including the prorated or full earned share attributed from any ineligible or disqualified member), to compensate for taxes, other mandatory salary deductions, and work expenses.
+derived: ["*", snap_household_earned_income_for_deduction, snap_earned_income_deduction_rate]
+sources: [S86, S90, S95, S107]
+implemented: engine
+tags: [income]
+rationale: 7 U.S.C. 2014(e)(2)(B) (S86), 7 CFR 273.9(d)(2) (S90), and 10 CCR 2506-1 4.407.2,A and 4.411.1,B,2,c (S95, S107) require the 20% earned income deduction on the full earned-income base, including a disqualified member's attributed share; no existing item multiplies snap_household_earned_income_for_deduction by snap_earned_income_deduction_rate.
+tests:
+  - {id: CO-373-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_earned_income_for_deduction: 1785}, expect: 357}
+  - {id: CO-373-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_earned_income_for_deduction: 0}, expect: 0}

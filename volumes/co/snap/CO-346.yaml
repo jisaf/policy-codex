@@ -1,0 +1,18 @@
+id: CO-346
+name: "SNAP: net income limit"
+identifier: snap_net_income_limit
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: The monthly net income limit, 100% of the federal poverty level, this person's SNAP household must be at or below, for the household's size.
+precision: Sizes above 8 add snap_net_income_limit_each_additional per member above 8, using snap_household_size (eligible members only). Batch 3 authors snap_household_net_income and snap_meets_net_income_test, which reads this item.
+derived: [+, [lookup, snap_net_income_limit_table, [min, snap_household_size, 8]], ["*", snap_net_income_limit_each_additional, [max, 0, ["-", snap_household_size, 8]]]]
+sources: [S49, S50, S52]
+nearest: [CO-339, CO-345]
+implemented: engine
+tags: [income]
+rationale: 10 CCR 2506-1 4.401,A,3,a-b (S50) and 4.206,C,3,b (S49) require every Standard Eligibility household to meet a 100% net income standard; no existing item composes snap_net_income_limit_table with its each-additional parameter into the dollar figure batch 3's snap_meets_net_income_test will read. Shares its table-plus-each-additional shape with snap_gross_income_limit (CO-345, 130%) and snap_bbce_gross_income_limit (CO-339, 200%); all three are kept separate because they test different statutory percentages against different parameter tables.
+tests:
+  - {id: CO-346-T1, as_of: "2026-10-01", given: {is_enrolled_higher_education_half_time: false, in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {}, relationships: [], expect: 1305}
+  - {id: CO-346-T2, as_of: "2026-10-01", given: {is_enrolled_higher_education_half_time: false, in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {p2: {is_enrolled_higher_education_half_time: false, in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}}, relationships: [[spouse, p1, p2]], expect: 1763}

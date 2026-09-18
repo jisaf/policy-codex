@@ -93,6 +93,7 @@ export function parseInline(
   if (s === "the Determination Date") return ["det_date"];
   if (s === "the month containing the Determination Date") return ["det_month"];
   if (s === "the month") return ["month"];
+  if (s === "every person in the case") return ["persons"];
   if (s === "yes") return true;
   if (s === "no") return false;
   if (/^-?\d+(\.\d+)?$/.test(s)) return Number(s);
@@ -122,6 +123,26 @@ export function parseInline(
   if ((m = s.match(/^the lesser of (.+)$/))) {
     const q = splitTop(m[1], " and ");
     if (q) return ["min", p(q[0]), p(q[1])];
+  }
+  if ((m = s.match(/^the greater of (.+)$/))) {
+    const q = splitTop(m[1], " and ");
+    if (q) return ["max", p(q[0]), p(q[1])];
+  }
+  if (s.endsWith(" rounded up to the next whole dollar")) return ["ceil", p(s.slice(0, -36))];
+  if (s.endsWith(" rounded to the nearest whole dollar")) return ["round", p(s.slice(0, -36))];
+  if ((m = s.match(/^the number of persons in (.+)$/))) return ["count", p(m[1])];
+  if ((m = s.match(/^the persons joined to this person by (.+)$/))) {
+    const q = splitTop(m[1], " such that ");
+    const roles = (q ? q[0] : m[1]).split(" or ").map((x) => x.trim());
+    return q ? ["reachable", roles, p(q[1])] : ["reachable", roles];
+  }
+  if ((m = s.match(/^all persons in (.+)$/))) {
+    const q = splitTop(m[1], " such that ");
+    if (q) return ["filter", p(q[0]), p(q[1])];
+  }
+  if ((m = s.match(/^the sum of (.+)$/))) {
+    const q = splitTop(m[1], " for each person in ", true);
+    if (q) return ["sum", p(q[1]), p(q[0])];
   }
   if ((m = s.match(/^the number of months in (.+) for which (.+)$/))) {
     return ["count_months", p(m[1]), p(m[2])];
@@ -161,6 +182,8 @@ export function parseInline(
   if ((sp = splitTop(s, ", for ", true))) {
     const at = parseAt(ix, sp[0], options);
     if (at) return ["lookup", at, p(sp[1])];
+    const tbl = resolveName(ix, sp[0]);
+    if (tbl) return ["lookup", tbl, p(sp[1])];
   }
   const at = parseAt(ix, s, options);
   if (at) return at;
@@ -210,6 +233,19 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
       .replace(/, or /g, ", ").replace(/ or /g, ", ")
       .split(",").map((x) => x.trim()).filter(Boolean);
     return ["exists_related", rels, parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the persons joined to this person by (.+) such that$/))) {
+    if (!rest.length) throw new Error("such that: missing condition");
+    const roles = m[1].split(" or ").map((x) => x.trim());
+    return ["reachable", roles, parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^all persons in (.+) such that$/))) {
+    if (!rest.length) throw new Error("such that: missing condition");
+    return ["filter", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the sum for each person in (.+) of$/))) {
+    if (!rest.length) throw new Error("the sum: missing value");
+    return ["sum", p(m[1]), parseBlockLines(ix, rest, options)];
   }
   if ((m = txt.match(/^in each of (.+):$/))) {
     return ["each", p(m[1]), parseBlockLines(ix, rest, options)];

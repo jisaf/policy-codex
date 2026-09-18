@@ -1,0 +1,21 @@
+id: CO-412
+name: "SNAP: is in the ABAWD age range"
+identifier: snap_is_in_abawd_age_range
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person's age at the first day of the month is at least 18 and at most snap_abawd_max_age (65), the range 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102, leaves subject to the ABAWD time limit.
+precision: Age is computed for the first day of the month in context, not the determination date, so this fact can be evaluated for months other than the determination month (needed by snap_abawd_countable_months_in_period's 36-month window).
+assumption: See CO-166 and OQ-31 for the reading of "over 65" as excluding only ages 66 and up.
+derived: [all, [">=", [years_between, date_of_birth, [first_day, [month]]], snap_abawd_min_age], ["<=", [years_between, date_of_birth, [first_day, [month]]], snap_abawd_max_age]]
+sources: [S127, S128]
+effective: {from: "2025-07-04", to: present}
+open: [OQ-31]
+implemented: engine
+tags: [abawd, age, legal]
+rationale: No existing item in this volume tests the amended ABAWD age band; every other ABAWD item in this batch reads this fact, and it carries the H.R.1 effective date per the design brief's requirement that at least one ABAWD rule in this volume state one.
+tests:
+  - {id: CO-412-T1, month: "2026-10", given: {date_of_birth: "1985-01-22"}, expect: true}
+  - {id: CO-412-T2, month: "2026-10", given: {date_of_birth: "2015-01-01"}, expect: false}
+  - {id: CO-412-T3, month: "2026-10", given: {date_of_birth: "1945-07-30"}, expect: false}

@@ -1,0 +1,12 @@
+id: CO-012
+name: Receives Supplemental Security Income
+identifier: receives_ssi
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives supplemental security income benefits under Title XVI of the Social Security Act.
+supplied_by: SSA benefit record, CBMS interface.
+sources: [S6]
+tags: [disability]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is a disabled member."

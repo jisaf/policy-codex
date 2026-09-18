@@ -64,7 +64,7 @@ An edit to an item that already has a governance error before the edit does
 not gain a new error for the same rule and message — it is downgraded to a
 warning instead (`src/changes/validate.ts`, `governanceOf`). This is what
 lets the ledger improve incrementally: today's ledger has known-bad items
-(see `docs/conventions.md`'s note on the seven pinned constraint failures),
+(see `docs/conventions.md`'s note on the six pinned constraint failures; a seventh, WR-101's versioned value, was a constraint gap fixed in the Colorado phase 2),
 and an editor who touches one of them for an unrelated reason is not made to
 fix everything else about it first. The ratchet only ever loosens what was
 already broken; it never lets a genuinely new problem through, and it does

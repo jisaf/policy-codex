@@ -1,0 +1,17 @@
+id: CO-411
+name: "SNAP: is an ineligible student"
+identifier: snap_is_ineligible_student
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is age 18 through 49, enrolled at least half time in an institution of higher education, and not exempt under snap_is_student_exempt, and so may not participate in SNAP as a member of any household under 7 U.S.C. 2015(e).
+derived: [all, [">=", snap_age, snap_student_min_age], ["<=", snap_age, snap_student_max_age], is_enrolled_higher_education_half_time, [not, snap_is_student_exempt]]
+sources: [S133, S134, S135]
+implemented: engine
+tags: [student, legal]
+rationale: No existing item states the ineligible-student outcome itself. snap_is_exempt_from_work_registration reads this item to condition the general work-registration student exemption on 7 U.S.C. 2015(e), and batch 1's snap_is_ineligible_member (CO-311) reads it as one of the reasons a household member is ineligible per the note left in that item's precision field.
+tests:
+  - {id: CO-411-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [], date_of_birth: "2003-01-01", is_enrolled_higher_education_half_time: true, receives_tanf_cash: false, has_medical_statement_of_unfitness: false, agency_finds_obviously_unfit: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false, hours_worked: 0, is_approved_for_work_study: false, is_enrolled_higher_education_full_time: false, is_assigned_to_higher_education_through_et_program: false}, others: {}, relationships: [], expect: true}
+  - {id: CO-411-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2003-01-01", is_enrolled_higher_education_half_time: false}, others: {}, relationships: [], expect: false}
+  - {id: CO-411-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_enrolled_higher_education_half_time: true, receives_tanf_cash: false, has_medical_statement_of_unfitness: false, agency_finds_obviously_unfit: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false, hours_worked: 0, is_approved_for_work_study: false, is_enrolled_higher_education_full_time: false, is_assigned_to_higher_education_through_et_program: false}, others: {}, relationships: [], expect: false}

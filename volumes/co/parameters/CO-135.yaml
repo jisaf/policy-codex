@@ -1,0 +1,15 @@
+id: CO-135
+name: SNAP minimum allotment
+identifier: snap_minimum_allotment
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The minimum monthly allotment an eligible one- or two-person household receives, outside an initial certification month.
+versions:
+  - from: "2025-10-01"
+    value: 24
+    source: S85
+rationale: 7 CFR 273.10(e)(2)(ii)(C) (S104) requires a minimum benefit for one- and two-person households, computed as 8% of the one-person maximum allotment rounded to the nearest whole dollar; D-22's Table 1 (S85) is the FY2026 FNS-published dollar figure (48 states and D.C. column) already computed, which snap_allotment (CO-385) needs as a named, dated parameter rather than re-deriving 8% of snap_maximum_allotment_table.
+sources: [S85, S104]
+tags: [income, snap]

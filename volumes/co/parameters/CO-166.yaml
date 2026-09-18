@@ -1,0 +1,14 @@
+id: CO-166
+name: SNAP ABAWD maximum age
+identifier: snap_abawd_max_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The oldest age subject to the ABAWD time limit under 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102.
+assumption: The amended statute exempts an individual "over 65" years of age (S127, S128), which literally exempts only persons who have turned 66; the draft reads the age range subject to the time limit as 18 through 65 inclusive (max age parameter 65, exemption applies when age is more than 65). This differs from the pre-H.R.1 regulation and Colorado's rule manual (7 CFR 273.24(c)(1), 10 CCR 2506-1 4.311.A.2, S131, S132), which still state "55 years of age or older" and have not been updated to the amended statute; the statute controls. See OQ-31.
+value: 65
+sources: [S127, S128]
+open: [OQ-31]
+tags: [abawd, age, legal]
+rationale: 7 U.S.C. 2015(o)(3)(A) as amended (S127, S128) is the current-law ceiling for the ABAWD age range; batch 1's snap_elderly_age (60) and this batch's snap_work_registration_max_age (59) are different thresholds for different rules and do not serve this one.

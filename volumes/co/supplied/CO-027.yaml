@@ -1,0 +1,12 @@
+id: CO-027
+name: Unemployment income
+identifier: unemployment_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly unemployment compensation.
+supplied_by: State unemployment insurance record.
+sources: []
+tags: [income]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."

@@ -1,0 +1,12 @@
+id: CO-170
+name: SNAP ABAWD time limit period, months
+identifier: snap_abawd_period_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The length, in months, of the rolling period over which countable months are counted for the ABAWD time limit.
+value: 36
+sources: [S127, S130, S132]
+tags: [abawd]
+rationale: 7 U.S.C. 2015(o)(2) (S127), 7 CFR 273.24(b) (S130), and 10 CCR 2506-1 4.311.3 (S132) all state the 36-month period; snap_abawd_countable_months_in_period reads it to build the months_ending window.
