@@ -1,0 +1,12 @@
+id: CO-073
+name: Receives state cash assistance
+identifier: receives_state_cash_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives, or is authorized to receive, a Colorado Adult Financial cash payment - Old Age Pension (OAP-A/OAP-B), Aid to the Needy Disabled (AND-SO/AND-CS), or Aid to the Blind (AB). Distinct from Colorado Works (TANF) cash assistance, which receives_tanf_cash (CO-013) states.
+supplied_by: CBMS Adult Financial or Colorado Works case record.
+sources: [S47]
+tags: [income, state_election]
+rationale: "C-6: CO-336 (snap_household_all_members_receive_categorical_assistance) read receives_general_assistance as standing in for OAP/AND/AB receipt for Basic Categorical Eligibility, but CO-014's own stated meaning is 'general assistance benefits based on disability or blindness criteria' (the 271.2 elderly-or-disabled prong CO-302 needs), which is not OAP (an age-based program, 65 and over or 60 with AND). A household of pure OAP recipients -- the commonest BCE household in Colorado -- was therefore not BCE under the model as written. This new fact is the OAP/AND/AB/TANF prong 10 CCR 2506-1 4.206,C,1,a (S47) actually names for BCE, kept separate from CO-014's disability-criteria meaning so the two prongs (disability status vs. BCE cash-program receipt) are not conflated."

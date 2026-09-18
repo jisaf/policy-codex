@@ -8,12 +8,12 @@ program: SNAP
 meaning: A qualified non-citizen subject to the additional condition (10 CCR 2506-1 4.305,B,3) is exempt from the five-year/40-quarter waiting period because they are under 18, have a military connection, or were born on or before August 22, 1931 and obtained their qualifying status on or before August 22, 1996.
 precision: The "born on or before August 22, 1931 and lawfully resided in the U.S. on August 22, 1996" test (S15) is modeled as date_of_birth on or before 1931-08-22 and qualified_status_date on or before 1996-08-22 (see OQ-2 for why qualified_status_date stands in for a fact this volume does not separately collect).
 assumption: Follows 8 U.S.C. 1612(a)(2)(C), (I), (J) as Colorado restates them at 10 CCR 2506-1 4.305,B,3 (S14, S15, S16); the elderly exception (S24) is stated as "65 or older on August 22, 1996", which the draft models as born on or before 1931-08-22 and in qualified status by 1996-08-22 (OQ-2).
-derived: [any, ["<", snap_age, snap_parental_control_age], is_veteran_or_active_duty, [all, ["<=", date_of_birth, "1931-08-22"], ["<=", qualified_status_date, "1996-08-22"]]]
+derived: [any, ["<", snap_age, snap_immigrant_child_exemption_age], is_veteran_or_active_duty, [all, ["<=", date_of_birth, "1931-08-22"], ["<=", qualified_status_date, "1996-08-22"]]]
 sources: [S24, S14, S15, S16]
 open: [OQ-1, OQ-2]
 implemented: engine
 tags: [immigration, legal]
-rationale: Isolates the additional condition's exemptions (10 CCR 2506-1 4.305,B,3,c/e/f) as one fact so snap_meets_immigrant_additional_condition can read "exempt, or meets the waiting period" as a single disjunction without repeating each exemption's text inline.
+rationale: "Isolates the additional condition's exemptions (10 CCR 2506-1 4.305,B,3,c/e/f) as one fact so snap_meets_immigrant_additional_condition can read 'exempt, or meets the waiting period' as a single disjunction without repeating each exemption's text inline. Fix-round (C-8): reads the new parameter snap_immigrant_child_exemption_age (CO-177) instead of snap_parental_control_age (CO-102), which is an unrelated household-composition parameter that happened to share the value 18."
 tests:
   - {id: CO-306-T1, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01", is_veteran_or_active_duty: false, qualified_status_date: "2020-01-01"}, expect: true}
   - {id: CO-306-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", is_veteran_or_active_duty: false, qualified_status_date: "2020-01-01"}, expect: false}

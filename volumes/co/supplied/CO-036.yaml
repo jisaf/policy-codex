@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person
 program: SNAP
-meaning: The CDHS standard utility allowance (heating/cooling, basic, or telephone-only) that applies to the person's unit, stated on the head of household.
+meaning: The CDHS standard utility allowance (heating/cooling, basic, or telephone-only) that applies to the person's unit, stated on the head of household. Excludes any internet connection service fee, which Pub. L. 119-21 sec. 10104 (S137) bars from the excess shelter expense computation even where Colorado's limited utility allowance would otherwise include internet costs (7 CFR 273.9(d)(6)(iii)(A)(3), S138).
 supplied_by: CBMS, applying the CDHS standard utility allowance table for the utility expense the unit incurs.
-sources: []
+sources: [S136, S137, S138]
 tags: [income, state_election]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Fix-round (P-1/P-2/P-3): this fact still decides the entire SUA question (entitlement, tier, and amount) as a supplied number rather than a rule, because the CDHS SUA table is not among this volume's fetched documents; OQ-36 records what a derived rule would need, including sec. 10103's (S136) limit of the LIHEAP-triggered HCSUA to households with an elderly or disabled member and sec. 10104's (S137) internet-fee exclusion, which this meaning now states directly so a worker supplying the figure applies it correctly in the meantime."

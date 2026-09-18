@@ -5,13 +5,14 @@ kind: derived
 type: money
 scope: person
 program: SNAP
-meaning: Earned income in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported income counts as 0.
-precision: Reads earned_income (a person-month fact) for the determination date's month via the "at" pattern.
-derived: ["/", ["*", [otherwise, [at, earned_income, [det_month]], 0], 12], 52]
+meaning: Earned income and self-employment net income in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported income counts as 0.
+precision: Reads earned_income and self_employment_net_income (person-month facts) for the determination date's month via the "at" pattern.
+derived: ["/", ["*", [+, [otherwise, [at, earned_income, [det_month]], 0], [otherwise, [at, self_employment_net_income, [det_month]], 0]], 12], 52]
 sources: [S121, S123, S126]
 implemented: engine
 tags: [work_registration]
-rationale: The work-registration employment exemption's earnings-equivalent test (7 U.S.C. 2015(d)(1)(E); 7 CFR 273.7(b)(1)(vii), S121/S123/S126) needs weekly earnings, not monthly, to compare against the Federal minimum wage times 30 hours; no existing item converts earned_income to a weekly figure.
+rationale: "The work-registration employment exemption's earnings-equivalent test (7 U.S.C. 2015(d)(1)(E); 7 CFR 273.7(b)(1)(vii), S121/S123/S126) needs weekly earnings, not monthly, to compare against the Federal minimum wage times 30 hours; no existing item converts earned_income to a weekly figure. Fix-round (C-10): 7 CFR 273.7(b)(1)(vii) (S123) covers 'An employed or self-employed person working... or earning weekly wages at least equal to...'; this item omitted self_employment_net_income, so a self-employed applicant with no W-2 wages failed the earnings prong. Now sums earned_income and self_employment_net_income the same way snap_person_earned_income (CO-330) does for income purposes."
 tests:
-  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 942.5, child_support_paid_legally_obligated: 0}, expect: 217.5}
-  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, child_support_paid_legally_obligated: 0}, expect: 0}
+  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 942.5, self_employment_net_income: 0, child_support_paid_legally_obligated: 0}, expect: 217.5}
+  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, child_support_paid_legally_obligated: 0}, expect: 0}
+  - {id: CO-403-T3, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, self_employment_net_income: 942.5, child_support_paid_legally_obligated: 0}, expect: 217.5}

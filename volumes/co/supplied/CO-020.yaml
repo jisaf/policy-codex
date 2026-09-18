@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: The person is enrolled in a secondary (elementary through 12th grade or equivalent) school program.
+meaning: The person is enrolled at least half time, as defined by the school, in a secondary (elementary through 12th grade or equivalent) school program.
 supplied_by: Applicant statement, school enrollment record.
-sources: []
+sources: [S125, S126]
 tags: [student]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Fix-round (C-9): the meaning did not state the half-time condition 7 CFR 273.7(b)(1)(viii) (S125) and 10 CCR 2506-1 4.310.3,D (S126) require ('A student enrolled at least half-time in any recognized school...'), so CO-405's exemption would read a bare enrollment (e.g. one evening class) as sufficient. Added the half-time qualifier to the fact's own meaning rather than adding a second fact, since no other item reads is_enrolled_in_school."

@@ -6,7 +6,7 @@ type: table keyed by household size
 scope: global
 program: SNAP
 meaning: The monthly gross income limit (130% of the federal poverty level, 48 states and D.C.) for a Standard Eligibility household without an elderly or disabled member, by household size 1 through 8.
-precision: Sizes above 8 add snap_gross_income_limit_each_additional per additional member; see snap_gross_income_limit (CO-344), which composes this table with that parameter.
+precision: Sizes above 8 add snap_gross_income_limit_each_additional per additional member; see snap_gross_income_limit (CO-345), which composes this table with that parameter.
 versions:
   - from: "2025-10-01"
     value: { "1": 1696, "2": 2292, "3": 2888, "4": 3483, "5": 4079, "6": 4675, "7": 5271, "8": 5867 }

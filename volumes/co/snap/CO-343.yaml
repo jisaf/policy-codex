@@ -5,13 +5,14 @@ kind: derived
 type: money
 scope: person
 program: SNAP
-meaning: This person's SNAP household's total countable liquid resources, the sum of every household member's own countable resources, including ineligible or disqualified members.
-precision: Sums countable_liquid_resources over the whole purchase-and-prepare unit (snap_household_members), not snap_eligible_household_members, because 10 CCR 2506-1 4.411.1,B,1,a and B,2,a (S45, S46) count a disqualified or ineligible member's resources in full to the household whenever the household must meet a resource standard.
-derived: [sum, snap_household_members, [of, [P], countable_liquid_resources]]
-sources: [S45, S46]
+meaning: This person's SNAP household's total countable resources under 7 CFR 273.8 (liquid and non-liquid), the sum of every household member's own countable resources, including ineligible or disqualified members.
+precision: Sums countable_liquid_resources plus countable_nonliquid_resources_snap over the whole purchase-and-prepare unit (snap_household_members), not snap_eligible_household_members, because 10 CCR 2506-1 4.411.1,B,1,a and B,2,a (S45, S46) count a disqualified or ineligible member's resources in full to the household whenever the household must meet a resource standard.
+derived: [sum, snap_household_members, [+, [of, [P], countable_liquid_resources], [of, [P], countable_nonliquid_resources_snap]]]
+sources: [S45, S46, S56, S57]
 implemented: engine
 tags: [resources, state_election]
-rationale: No existing item aggregates resources to the household level; snap_meets_resource_limit and snap_is_entitled_to_expedited_service both need this single total, built by summing the person-level countable_liquid_resources supplied fact over every household member per 4.411.1's full-inclusion rule.
+rationale: "No existing item aggregates resources to the household level; snap_meets_resource_limit and snap_is_entitled_to_expedited_service both need this single total, built by summing the person-level countable_liquid_resources supplied fact over every household member per 4.411.1's full-inclusion rule. Fix-round (C-7): this item previously summed only countable_liquid_resources, but the 273.8/4.408,E limits it feeds are limits on all countable resources, not only liquid ones (that fact's own meaning says 'liquid'). Now also sums the new countable_nonliquid_resources_snap (CO-074). snap_is_entitled_to_expedited_service (CO-348) is unaffected and correctly continues to read only the liquid-resources fact, per 7 CFR 273.2(i)(1) (S58)."
 tests:
-  - {id: CO-343-T1, as_of: "2026-10-01", given: {in_medical_institution: false, countable_liquid_resources: 500}, others: {p2: {in_medical_institution: false, countable_liquid_resources: 300}}, relationships: [[spouse, p1, p2]], expect: 800}
-  - {id: CO-343-T2, as_of: "2026-10-01", given: {in_medical_institution: false, countable_liquid_resources: 0}, others: {}, relationships: [], expect: 0}
+  - {id: CO-343-T1, as_of: "2026-10-01", given: {in_medical_institution: false, countable_liquid_resources: 500, countable_nonliquid_resources_snap: 0}, others: {p2: {in_medical_institution: false, countable_liquid_resources: 300, countable_nonliquid_resources_snap: 0}}, relationships: [[spouse, p1, p2]], expect: 800}
+  - {id: CO-343-T2, as_of: "2026-10-01", given: {in_medical_institution: false, countable_liquid_resources: 0, countable_nonliquid_resources_snap: 0}, others: {}, relationships: [], expect: 0}
+  - {id: CO-343-T3, as_of: "2026-10-01", given: {in_medical_institution: false, countable_liquid_resources: 500, countable_nonliquid_resources_snap: 4000}, others: {}, relationships: [], expect: 4500}

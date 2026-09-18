@@ -6,13 +6,13 @@ type: money
 scope: person-month
 program: SNAP
 meaning: This person's SNAP household's monthly allotment - the maximum allotment less the benefit reduction, floored at $0, with a one- or two-person household that meets the net income test receiving at least the minimum allotment.
-precision: The minimum allotment floor applies only to a household of snap_minimum_allotment_household_size_limit (2) or fewer eligible members that meets the net income test; a three-or-more-member household whose maximum-allotment-less-reduction is $0 (or negative, already floored at $0) simply receives $0, which snap_eligibility_status reads as "zero_allotment" rather than this item applying any floor to it (OQ-26).
-derived: [case, [[all, [<=, snap_household_size, snap_minimum_allotment_household_size_limit], snap_meets_net_income_test], [max, [max, 0, ["-", snap_maximum_allotment, snap_benefit_reduction]], snap_minimum_allotment]], [else, [max, 0, ["-", snap_maximum_allotment, snap_benefit_reduction]]]]
+precision: "The minimum allotment floor applies only to a household of snap_minimum_allotment_household_size_limit (2) or fewer eligible members that passes every applicable eligibility test - the gross income test, the net income test, and the resource test - not the net income test alone; a household that fails any of those tests is not \"eligible\" within the meaning of S104's \"all eligible one-person and two-person households\" and gets $0, not the floor. A three-or-more-member household whose maximum-allotment-less-reduction is $0 (or negative, already floored at $0) simply receives $0, which snap_eligibility_status reads as \"zero_allotment\" rather than this item applying any floor to it (OQ-26)."
+derived: [case, [[not, [all, snap_meets_gross_income_test, snap_meets_net_income_test, snap_meets_resource_limit]], 0], [[all, [<=, snap_household_size, snap_minimum_allotment_household_size_limit], snap_meets_net_income_test], [max, [max, 0, ["-", snap_maximum_allotment, snap_benefit_reduction]], snap_minimum_allotment]], [else, [max, 0, ["-", snap_maximum_allotment, snap_benefit_reduction]]]]
 sources: [S85, S104, S105]
 open: [OQ-26]
 implemented: engine
 tags: [income]
-rationale: 7 CFR 273.10(e)(2)(ii)(A) and (C) (S104) state the maximum-allotment-less-reduction formula and the one-/two-person minimum allotment floor; no existing item combines snap_maximum_allotment, snap_benefit_reduction, and snap_minimum_allotment into the single dollar figure snap_is_eligible and snap_eligibility_status both read.
+rationale: "7 CFR 273.10(e)(2)(ii)(A) and (C) (S104) state the maximum-allotment-less-reduction formula and the one-/two-person minimum allotment floor; no existing item combines snap_maximum_allotment, snap_benefit_reduction, and snap_minimum_allotment into the single dollar figure snap_is_eligible and snap_eligibility_status both read. Fix-round (C-4): added a leading arm that floors the allotment at 0 whenever the household fails the gross income, net income, or resource test, so a one- or two-person household that fails a test other than the net income test (for example, over the resource limit or over 130% gross income under Standard Eligibility) is not given the $24 minimum allotment. CO-386's [\">\", snap_allotment, 0] stays non-circular because this gate does not read snap_is_eligible or snap_eligibility_status."
 tests:
   - id: CO-385-T1
     # Worked target household (batch 3's household, per volumes/co/tests/cases.yaml CO-02's composition without p1):
@@ -26,8 +26,8 @@ tests:
     # Household has an elderly member (p1, 81) so the shelter cap does not apply:
     # excess shelter deduction = max(0, 1400 - 0.5*2399) = max(0, 1400 - 1199.5) = 200.5.
     # No member is homeless, so the homeless shelter deduction is 0; net income =
-    # max(0, 2399 - max(200.5, 0)) = 2198.5, at or below the size-3 net income limit of 2221.
-    # Maximum allotment (size 3) = 785; benefit reduction = ceil(0.3 * 2198.5) = ceil(659.55) = 660.
+    # max(0, 2399 - max(200.5, 0)) = 2198.5, rounded to 2199 per S102, at or below the size-3 net income limit of 2221.
+    # Maximum allotment (size 3) = 785; benefit reduction = ceil(0.3 * 2199) = ceil(659.70) = 660.
     # Household size 3 is not <= the minimum-allotment limit of 2, so no minimum floor applies.
     # Allotment = max(0, 785 - 660) = 125.
     as_of: "2026-10-01"
@@ -41,6 +41,8 @@ tests:
       snap_is_categorically_eligible: false
       snap_household_gross_income: 2965
       snap_household_earned_income: 0
+      snap_meets_gross_income_test: true
+      snap_meets_net_income_test: true
       snap_meets_resource_limit: true
       shelter_cost_monthly: 1400
       utility_allowance_amount: 0
@@ -77,4 +79,5 @@ tests:
         medical_expenses_out_of_pocket: 0
     relationships: []
     expect: 125
-  - {id: CO-385-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 1, snap_meets_net_income_test: true, snap_maximum_allotment: 298, snap_benefit_reduction: 298}, expect: 24}
+  - {id: CO-385-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 1, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 298, snap_benefit_reduction: 298}, expect: 24}
+  - {id: CO-385-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 2, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: false, snap_maximum_allotment: 546, snap_benefit_reduction: 546}, expect: 0}

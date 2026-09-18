@@ -6,7 +6,7 @@ type: table keyed by household size
 scope: global
 program: SNAP
 meaning: The monthly net income limit (100% of the federal poverty level, 48 states and D.C.) for a Standard Eligibility household, by household size 1 through 8.
-precision: Sizes above 8 add snap_net_income_limit_each_additional per additional member; see snap_net_income_limit (CO-345).
+precision: Sizes above 8 add snap_net_income_limit_each_additional per additional member; see snap_net_income_limit (CO-346).
 versions:
   - from: "2025-10-01"
     value: { "1": 1305, "2": 1763, "3": 2221, "4": 2680, "5": 3138, "6": 3596, "7": 4055, "8": 4513 }

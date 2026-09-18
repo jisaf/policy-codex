@@ -933,3 +933,29 @@ Document: D-19
 10 CCR 2506-1-4.411.1,B,2,c. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.411
 
 > c. Deductible Expenses The earned income deduction shall apply to the prorated income earned by the disqualified and/or sanctioned member that is attributed to the household. That portion of the household's allowable shelter and dependent care expenses which are either paid by or billed to the disqualified member shall be divided evenly among the household members, including the disqualified member. Legally obligated child support payments are deducted before prorating income. The shelter expense will be prorated except for the standard utility allowance (SUA). The full SUA will be added to the other prorated shelter components if the household qualifies for the SUA. All but the disqualified member's share is counted as a deductible expense for the remaining household members.
+
+### S136. LIHEAP-triggered standard utility allowance limited to households with an elderly or disabled member (H.R.1 sec. 10103)
+
+Document: D-5
+
+Pub. L. 119-21 sec. 10103(a). H.R.1, 119th Cong. (2025).
+
+> (a) Standard Utility Allowance.--Section 5(e)(6)(C)(iv)(I) of the Food and Nutrition Act of 2008 (7 U.S.C. 2014(e)(6)(C)(iv)(I)) is amended by inserting ``with an elderly or disabled member'' after ``households''.
+
+### S137. Internet service fees excluded from the excess shelter deduction (H.R.1 sec. 10104)
+
+Document: D-5
+
+Pub. L. 119-21 sec. 10104. H.R.1, 119th Cong. (2025).
+
+> Section 5(e)(6) of the Food and Nutrition Act of 2008 (7 U.S.C. 2014(e)(6)) is amended by adding at the end the following:
+> ``(E) Restrictions on internet expenses.--Any service fee associated with internet connection shall not be used in computing the excess shelter expense deduction under this paragraph.''.
+
+### S138. Standard utility allowance tiers: HCSUA and LUA
+
+Document: D-13
+
+7 CFR 273.9(d)(6)(iii)(A)(2)-(3). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (*2*) A standard utility allowance for all utilities that includes heating or cooling costs (HCSUA); and
+> (*3*) A limited utility allowance (LUA) that includes electricity and fuel for purposes other than heating or cooling, water, sewerage, well and septic tank installation and maintenance, and garbage or trash collection. The LUA may also include telephone and/or internet costs. The LUA must include expenses for at least two utilities.

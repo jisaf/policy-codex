@@ -14,5 +14,5 @@ implemented: engine
 tags: [income]
 rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) computes the allotment as the maximum allotment "reduced by 30 percent of the household's net monthly income"; no existing item states this intermediate figure, kept separate from snap_allotment so the rounding choice (OQ-23) and its two tests are isolated from the subtraction and floor snap_allotment performs.
 tests:
-  - {id: CO-384-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2198.5}, expect: 660}
+  - {id: CO-384-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2199}, expect: 660}
   - {id: CO-384-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_net_income: 2000}, expect: 600}

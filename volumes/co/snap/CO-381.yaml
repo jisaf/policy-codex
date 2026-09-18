@@ -7,11 +7,11 @@ scope: person-month
 program: SNAP
 meaning: This person's SNAP household's net monthly income - income after all deductions (standard, earned income, dependent care, child support, excess medical, and whichever of the excess shelter or homeless shelter deduction is larger) - floored at $0.
 precision: Takes the greater of snap_excess_shelter_deduction and snap_homeless_shelter_deduction rather than both, since 7 CFR 273.9(d)(6)(i) (S92) bars a household receiving the homeless shelter deduction from also claiming its actual shelter expenses under (d)(6)(ii).
-derived: [max, 0, ["-", snap_adjusted_income_before_shelter, [max, snap_excess_shelter_deduction, snap_homeless_shelter_deduction]]]
-sources: [S101]
+derived: [round, [max, 0, ["-", snap_adjusted_income_before_shelter, [max, snap_excess_shelter_deduction, snap_homeless_shelter_deduction]]]]
+sources: [S101, S102]
 implemented: engine
 tags: [income]
-rationale: 7 CFR 273.10(e)(1)(i)(H)-(I) (S101) completes the net income calculation by subtracting the shelter deduction (excess shelter or, where elected, homeless) from income after all other deductions; no existing item combines snap_adjusted_income_before_shelter with the greater of the two shelter deductions into the single net income figure the net income test and allotment both read.
+rationale: "7 CFR 273.10(e)(1)(i)(H)-(I) (S101) completes the net income calculation by subtracting the shelter deduction (excess shelter or, where elected, homeless) from income after all other deductions; no existing item combines snap_adjusted_income_before_shelter with the greater of the two shelter deductions into the single net income figure the net income test and allotment both read. Fix-round (C-3): wrapped in `round` per 7 CFR 273.10(e)(1)(ii)(A) (S102), which requires rounding each income calculation to the nearest dollar (50 cents up); no fetched Colorado document states its own rounding rule, so this item rounds net income itself rather than each intermediate deduction (see CO-379's rationale). In CO-01/CO-02 this changes snap_household_net_income from 2198.5 to 2199."
 tests:
-  - {id: CO-381-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_before_shelter: 2399, snap_excess_shelter_deduction: 200.5, snap_homeless_shelter_deduction: 0}, expect: 2198.5}
+  - {id: CO-381-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_before_shelter: 2399, snap_excess_shelter_deduction: 200.5, snap_homeless_shelter_deduction: 0}, expect: 2199}
   - {id: CO-381-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_before_shelter: 100, snap_excess_shelter_deduction: 744, snap_homeless_shelter_deduction: 0}, expect: 0}
