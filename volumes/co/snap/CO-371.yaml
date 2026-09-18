@@ -1,0 +1,20 @@
+id: CO-371
+name: "SNAP: counted earned income of an ineligible member"
+identifier: snap_counted_earned_income_of_ineligible_member
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The portion of an ineligible household member's own earned income that is counted, for the earned income deduction, as earned income of the remaining household members - the full amount for an IPV, work-sanction, or fleeing-felon disqualification, and the same pro rata share (all but the disqualified member's own share, dividing evenly by the number of household members) snap_counted_income_of_ineligible_member uses for an ineligible non-citizen's total income. Zero for a member who is not an ineligible member.
+precision: Mirrors snap_counted_income_of_ineligible_member's case structure and pro rata arithmetic exactly, but applied to snap_person_earned_income alone rather than snap_person_gross_income, so snap_household_earned_income_for_deduction can isolate the earned share for the 20% earned income deduction, separate from the unearned share that reaches the household only through snap_counted_income_of_ineligible_member and snap_household_gross_income.
+assumption: 10 CCR 2506-1 4.411.1,B,2,c (S107) states that "the earned income deduction shall apply to the prorated income earned by the disqualified and/or sanctioned member," without restating whether the same pro rata fraction (or a different one) applies; the draft applies the identical fraction 4.411.1,B,2,b (S46) uses for the member's total income, since (c) describes the same prorated share as (b), applied only to the earned-income component of it.
+derived: [case, [[any, is_disqualified_for_intentional_program_violation, is_disqualified_for_work_requirement_noncompliance, is_fleeing_felon_or_probation_violator], snap_person_earned_income], [snap_is_ineligible_non_citizen, ["*", snap_person_earned_income, ["/", ["-", [count, snap_household_members], 1], [count, snap_household_members]]]], [else, 0]]
+sources: [S46, S107]
+open: [OQ-27]
+nearest: [CO-333]
+rationale: 10 CCR 2506-1 4.411.1,B,2,c (S107) requires the earned income deduction to reach the prorated earned share of a disqualified or ineligible member's income attributed to the household, which snap_counted_income_of_ineligible_member (CO-333) does not isolate (it mixes earned and unearned income together for the gross-income aggregate). This item is needed in addition to CO-333, not instead of it, because CO-333 and this item feed two different totals (household gross income vs. the earned income deduction's base) that are computed and used at different points in the deduction chain.
+implemented: engine
+tags: [income, state_election]
+tests:
+  - {id: CO-371-T1, as_of: "2026-10-01", month: "2026-10", given: {citizenship_status: undocumented, earned_income: 2380, self_employment_net_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, snap_household_members: [p1, p2, p3, p4]}, expect: 1785}
+  - {id: CO-371-T2, as_of: "2026-10-01", month: "2026-10", given: {citizenship_status: citizen, earned_income: 0, self_employment_net_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, snap_household_members: [p1]}, expect: 0}

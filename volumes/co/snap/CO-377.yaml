@@ -1,0 +1,18 @@
+id: CO-377
+name: "SNAP: shelter costs"
+identifier: snap_shelter_costs
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household's total monthly shelter costs - rent or mortgage, taxes, and insurance, plus the standard utility allowance - used to compute the excess shelter deduction.
+precision: shelter_cost_monthly and utility_allowance_amount are stated once per unit, on the household's head (see this volume's supplied-fact interface); since the P39 sum over a group is unknown if any member's value is unknown, this item sums each fact only over the members of snap_household_members whose value of it is actually known, so the head's stated figure is picked up without the unasked members' unknown values making the whole sum unknown (OQ-29).
+derived: [+, [sum, [filter, snap_household_members, [not, [unknown, [of, [P], shelter_cost_monthly]]]], [of, [P], shelter_cost_monthly]], [sum, [filter, snap_household_members, [not, [unknown, [of, [P], utility_allowance_amount]]]], [of, [P], utility_allowance_amount]]]
+sources: [S96]
+open: [OQ-29]
+implemented: engine
+tags: [income]
+rationale: 10 CCR 2506-1 4.407.3,A and E (S96) and 7 CFR 273.9(d)(6)(ii)-(iii) define allowable shelter costs, including the standard utility allowance, as a single household-level shelter cost figure; no existing item combines shelter_cost_monthly and utility_allowance_amount into the total snap_excess_shelter_deduction and snap_is_entitled_to_expedited_service (CO-348, which reads the two facts separately) need as one sum.
+tests:
+  - {id: CO-377-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1, p2, p3], shelter_cost_monthly: 1400, utility_allowance_amount: 0}, others: {p2: {}, p3: {}}, relationships: [], expect: 1400}
+  - {id: CO-377-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], shelter_cost_monthly: 0, utility_allowance_amount: 0}, others: {}, relationships: [], expect: 0}

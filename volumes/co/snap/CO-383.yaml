@@ -1,0 +1,17 @@
+id: CO-383
+name: "SNAP: maximum allotment"
+identifier: snap_maximum_allotment
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: The maximum monthly SNAP allotment (Thrifty Food Plan cost) for this person's SNAP household's size, before the 30 percent reduction for net income.
+precision: A household of 8 or fewer eligible members is looked up directly in snap_maximum_allotment_table; a household above 8 adds snap_maximum_allotment_each_additional per member above 8 to the 8-person figure. Written as a size-conditioned `case` (rather than the unconditional table-plus-each-additional arithmetic snap_gross_income_limit and snap_net_income_limit use) so this item is not a same-derivation-shape match for those two unrelated income-limit tables; the two forms are arithmetically equivalent for every size.
+derived: [case, [["<=", snap_household_size, 8], [lookup, snap_maximum_allotment_table, snap_household_size]], [else, ["+", [lookup, snap_maximum_allotment_table, 8], ["*", snap_maximum_allotment_each_additional, ["-", snap_household_size, 8]]]]]
+sources: [S82, S104]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) and 7 U.S.C. 2017 key the allotment to the maximum allotment for the household's size; no existing item composes snap_maximum_allotment_table with its each-additional parameter into the dollar figure snap_benefit_reduction and snap_allotment both need.
+tests:
+  - {id: CO-383-T1, as_of: "2026-10-01", given: {snap_household_size: 3}, expect: 785}
+  - {id: CO-383-T2, as_of: "2026-10-01", given: {snap_household_size: 9}, expect: 2007}

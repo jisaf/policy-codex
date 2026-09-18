@@ -1,0 +1,19 @@
+id: CO-375
+name: "SNAP: child support deduction"
+identifier: snap_child_support_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The amount subtracted from this person's SNAP household's income for legally obligated child support payments made by a household member to or for a non-household member.
+precision: Sums child_support_paid_legally_obligated over every member of snap_household_members. Colorado treats this as an exclusion from gross income taken before the gross income test, not a post-gross-income deduction (10 CCR 2506-1 4.407.5,A, S99); because batch 2's snap_household_gross_income does not subtract it, this item subtracts it at the net-income deduction stage instead, reaching the same net income and allotment while leaving the gross income test unaffected (OQ-22).
+assumption: 4.407.5,A's wording ("exclusion ... prior to any gross income test") is not carried into snap_household_gross_income (batch 2, not editable by this batch); modeling the same dollar amount as a deduction here produces the identical household net income and allotment, so this item stands in for Colorado's exclusion without duplicating or omitting the amount (OQ-22).
+derived: [sum, snap_household_members, [of, [P], child_support_paid_legally_obligated]]
+sources: [S99]
+open: [OQ-22]
+implemented: engine
+tags: [income, state_election]
+rationale: 10 CCR 2506-1 4.407.5,A (S99) is Colorado's election, under 7 U.S.C. 2014(e)(4), to treat legally obligated child support paid as excluded/deducted income; no existing item sums the child_support_paid_legally_obligated supplied fact to the household level.
+tests:
+  - {id: CO-375-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], child_support_paid_legally_obligated: 300}, others: {}, relationships: [], expect: 300}
+  - {id: CO-375-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], child_support_paid_legally_obligated: 0}, others: {}, relationships: [], expect: 0}

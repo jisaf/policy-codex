@@ -1,0 +1,17 @@
+id: CO-382
+name: "SNAP: meets the net income test"
+identifier: snap_meets_net_income_test
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household passes the net income eligibility test for the month - deemed met if the household is categorically eligible, and otherwise met only if household net income is at or below the net income limit for the household's size.
+derived: [any, snap_is_categorically_eligible, [<=, snap_household_net_income, snap_net_income_limit]]
+sources: [S49, S50, S103]
+implemented: engine
+tags: [income]
+rationale: 7 CFR 273.10(e)(2)(i)(A) (S103) and 10 CCR 2506-1 4.401,A,3,a-b (S49, S50) require every Standard Eligibility household to meet the net income standard (unlike the gross income test, which does not apply to a household with an elderly or disabled member); no existing item combines the categorical exemption with the numeric comparison against snap_net_income_limit (CO-346, batch 2) into this single pass/fail fact, which snap_allotment and snap_eligibility_status both read.
+tests:
+  - {id: CO-382-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: false, snap_household_net_income: 2000, snap_net_income_limit: 2221}, expect: true}
+  - {id: CO-382-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: false, snap_household_net_income: 2300, snap_net_income_limit: 2221}, expect: false}
+  - {id: CO-382-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_is_categorically_eligible: true, snap_household_net_income: 5000, snap_net_income_limit: 2221}, expect: true}

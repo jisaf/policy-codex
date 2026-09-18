@@ -692,3 +692,244 @@ Document: D-18
 > E. The student is responsible for more than half of the physical care of a dependent household member who has reached the age of six (6) but is under the age of twelve (12) where the local office has determined that adequate childcare is not available to enable the individual to attend class and satisfy the requirement of item B or item C, above.
 > F. The student is receiving a Title IV-A TANF cash grant.
 > G. The student is assigned to or placed in an institution of higher education through a program under the Workforce Innovation and Opportunity Act (WIOA), Employment First (EF), a program under Section 236 of the Trade Act of 1974 (19 U.S.C. 2296), another program for the purpose of employment and training operated by the state or local government.
+
+### S81. FY2026 standard deduction table
+
+Document: D-20
+
+FNS, SNAP FY 2026 Maximum Allotments and Deductions, Table 2: Standard Deductions (48 States and District of Columbia column). https://www.fna.usda.gov/sites/default/files/resource-files/snap-fy26maximumAllotments-deductions.pdf
+
+> 1 $209
+> 2 $209
+> 3 $209
+> 4 $223
+> 5 $261
+> 6+ $299
+
+### S82. FY2026 maximum monthly allotment table
+
+Document: D-20
+
+FNS, SNAP FY 2026 Maximum Allotments and Deductions, Table 1: Maximum Monthly Allotment (48 States and District of Columbia column). https://www.fna.usda.gov/sites/default/files/resource-files/snap-fy26maximumAllotments-deductions.pdf
+
+> 1 $298
+> 2 $546
+> 3 $785
+> 4 $994
+> 5 $1,183
+> 6 $1,421
+> 7 $1,571
+> 8 $1,789
+> Each Additional Member $218
+
+### S83. FY2026 maximum excess shelter deduction
+
+Document: D-20
+
+FNS, SNAP FY 2026 Maximum Allotments and Deductions, Table 3: Maximum Excess Shelter Deductions (48 States and District of Columbia column). https://www.fna.usda.gov/sites/default/files/resource-files/snap-fy26maximumAllotments-deductions.pdf
+
+> $744
+
+### S84. FY2026 homeless shelter deduction
+
+Document: D-20
+
+FNS, SNAP FY 2026 Maximum Allotments and Deductions, Table 4: Homeless Shelter Deduction (48 States and District of Columbia column). https://www.fna.usda.gov/sites/default/files/resource-files/snap-fy26maximumAllotments-deductions.pdf
+
+> $198.99
+
+### S85. FY2026 minimum monthly allotment
+
+Document: D-22
+
+FNS, SNAP FY 2026 Minimum Allotments, Table 1: Minimum Monthly Allotment (48 States and District of Columbia column). https://www.fna.usda.gov/sites/default/files/resource-files/snap-fy26MinimumAllotments.pdf
+
+> 1-2 $24
+
+### S86. Earned income deduction, statutory rule
+
+Document: D-2
+
+7 U.S.C. 2014(e)(2)(B). https://www.law.cornell.edu/uscode/text/7/2014
+
+> Except as provided in subparagraph (C), a household with earned income shall be allowed a deduction of 20 percent of all earned income to compensate for taxes, other mandatory deductions from salary, and work expenses.
+
+### S87. Excess medical expense deduction, statutory rule
+
+Document: D-2
+
+7 U.S.C. 2014(e)(5)(A). https://www.law.cornell.edu/uscode/text/7/2014
+
+> A household containing an elderly or disabled member shall be entitled, with respect to expenses other than expenses paid on behalf of the household by a third party, to an excess medical expense deduction for the portion of the actual costs of allowable medical expenses, incurred by the elderly or disabled member, exclusive of special diets, that exceeds $35 per month.
+
+### S88. Excess shelter expense deduction, statutory rule
+
+Document: D-2
+
+7 U.S.C. 2014(e)(6)(A). https://www.law.cornell.edu/uscode/text/7/2014
+
+> A household shall be entitled, with respect to expenses other than expenses paid on behalf of the household by a third party, to an excess shelter expense deduction to the extent that the monthly amount expended by a household for shelter exceeds an amount equal to 50 percent of monthly household income after all other applicable deductions have been allowed.
+
+### S89. Standard deduction, regulatory rule
+
+Document: D-13
+
+7 CFR 273.9(d)(1)(i). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (1) Standard deduction—(i) 48 States, District of Columbia, Alaska, Hawaii, and the Virgin Islands. Effective October 1, 2002, in the 48 States and the District of Columbia, Alaska, Hawaii, and the Virgin Islands, the standard deduction for household sizes one through six shall be equal to 8.31 percent of the monthly net income eligibility standard for each household size established under paragraph (a)(2) of this section rounded up to the nearest whole dollar. For household sizes greater than six, the standard deduction shall be equal to the standard deduction for a six-person household.
+
+### S90. Earned income deduction, regulatory rule
+
+Document: D-13
+
+7 CFR 273.9(d)(2). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (2) Earned income deduction. Twenty percent of gross earned income as defined in paragraph (b)(1) of this section. Earnings excluded in paragraph (c) of this section shall not be included in gross earned income for purposes of computing the earned income deduction, except that the State agency must count any earnings used to pay child support that were excluded from the household's income in accordance with the child support exclusion in paragraph (c)(17) of this section.
+
+### S91. Excess medical deduction, regulatory rule
+
+Document: D-13
+
+7 CFR 273.9(d)(3). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (3) Excess medical deduction. That portion of medical expenses in excess of $35 per month, excluding special diets, incurred by any household member who is elderly or disabled as defined in § 271.2. Spouses or other persons receiving benefits as a dependent of the SSI or disability and blindness recipient are not eligible to receive this deduction but persons receiving emergency SSI benefits based on presumptive eligibility are eligible for this deduction.
+
+### S92. Homeless shelter deduction, regulatory rule
+
+Document: D-13
+
+7 CFR 273.9(d)(6)(i). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (i) Homeless shelter deduction. A State agency may provide a standard homeless shelter deduction of $143 a month to households in which all members are homeless individuals but are not receiving free shelter throughout the month. The deduction must be subtracted from net income in determining eligibility and allotments for the households. The State agency may make a household with extremely low shelter costs ineligible for the deduction. A household receiving the homeless shelter deduction cannot have its shelter expenses considered under paragraphs (d)(6)(ii) or (d)(6)(iii) of this section. However, a homeless household may choose to claim actual costs under paragraph (d)(6)(ii) of this section instead of the homeless shelter deduction if actual costs are higher and verified.
+
+### S93. Excess shelter deduction cap, regulatory rule
+
+Document: D-13
+
+7 CFR 273.9(d)(6)(ii). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (ii) Excess shelter deduction. Monthly shelter expenses in excess of 50 percent of the household's income after all other deductions in paragraphs (d)(1) through (d)(5) of this section have been allowed. If the household does not contain an elderly or disabled member, as defined in § 271.2 of this chapter, the shelter deduction cannot exceed the maximum shelter deduction limit established for the area.
+
+### S94. Colorado standard deduction
+
+Document: D-19
+
+10 CCR 2506-1-4.407.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> 4.407.1 Standard Deduction A standard deduction of 8.31% of the federal poverty income guidelines for the household size as described in Section 4.401.2 will be used to calculate the amount that is allowed to all households. The established standard amount will be adjusted annually as announced by FNS, USDA. The calculation of 8.31% of the federal poverty income guidelines for eligible members will be used for all households up to the household size of six (6). All households with six (6) or more eligible members will use the six (6) person standard deduction.
+
+### S95. Colorado earned income deduction, including prorated disqualified member income
+
+Document: D-19
+
+10 CCR 2506-1-4.407.2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> 4.407.2 Earned Income Deduction
+> A. A household with earned income shall receive a deduction of twenty percent (20%) of its gross nonexempt earned income. The twenty percent (20%) deduction shall also apply to prorated income earned by the disqualified member and attributed to the household.
+
+### S96. Colorado excess shelter deduction and cap
+
+Document: D-19
+
+10 CCR 2506-1-4.407.3,A-B. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> 4.407.3 Excess Shelter Deduction
+> A. Households shall receive a deduction for the allowable monthly shelter costs that are in excess of fifty percent (50%) of the household's income after all other deductions. Shelter expenses are allowed as billed to a household member or as paid or billed to a disqualified individual.
+> B. A shelter deduction cap, as specified below, applies to households that do not contain a person who is aged sixty (60) and older or a person with a disability as defined in Section 4.000.1. Those households containing a person who is aged sixty (60) and older and/or a person with a disability shall receive an excess shelter deduction for the monthly cost of shelter that exceeds fifty percent (50%) of the household's monthly income after all other applicable deductions.
+
+### S97. Colorado homeless shelter deduction
+
+Document: D-19
+
+10 CCR 2506-1-4.407.3,C. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> C. Households in which all individuals are experiencing homelessness and are not receiving free shelter throughout the calendar month shall be entitled to use a standard estimate of shelter expenses. The FNS, USDA, provides an update of this estimated figure annually when the shelter cap for other households is adjusted. All households experiencing homelessness that incur, or reasonably expect to incur, shelter costs during a month shall be eligible for the estimate, unless higher shelter costs are verified, at which point the household may use actual shelter costs rather than the estimate. Households experiencing homelessness that incur no shelter costs during the month shall not be eligible for the homeless shelter deduction.
+
+### S98. Colorado dependent care deduction
+
+Document: D-19
+
+10 CCR 2506-1-4.407.4,A-B. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> 4.407.4 Dependent Care Deduction Refer to Section 4.407.6 if the attendant care is for a household member who is age sixty (60) or older or who receives SSI or Social Security disability payments.
+> A. Dependent care expenses, as billed to a household member or as paid by or billed to a person disqualified for being an ineligible non-citizen or failure to provide or apply for a SSN, for the care of a child or dependent with disabilities shall be considered when the dependent care expenses are necessary for a household member to accept or continue employment, seek employment, or attend training or pursue education which is preparatory to employment.
+> B. The total dollar amount that the household is responsible to pay for dependent care expenses is deductible.
+
+### S99. Colorado child support expense exclusion
+
+Document: D-19
+
+10 CCR 2506-1-4.407.5,A. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> 4.407.5 Child Support Expense Exclusion
+> A. A household shall receive an exclusion from income for legally binding child support payments made to or for non-household members. The child support exclusion will be made from the household's total countable gross income and prior to any gross income test to determine eligibility. The court-ordered amount and the most recent amounts that have been paid must be verified by the household.
+
+### S100. Colorado excess medical deduction
+
+Document: D-19
+
+10 CCR 2506-1-4.407.6. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+
+> 4.407.6 Excess Medical Deduction A household shall receive a deduction for total medical expenses more than thirty-five dollars ($35) per month, incurred by any household member(s) who is aged sixty (60) and older or a person with disabilities. Other household members who are not aged sixty (60) and older or a person with disabilities, including spouses and dependents, cannot claim costs of their medical treatment and services.
+
+### S101. Net monthly income computation order
+
+Document: D-14
+
+7 CFR 273.10(e)(1)(i)(A)-(I). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (A) Add the gross monthly income earned by all household members and the total monthly unearned income of all household members, minus income exclusions, to determine the household's total gross income.
+> (B) Multiply the total gross monthly earned income by 20 percent and subtract that amount from the total gross income; or multiply the total gross monthly earned income by 80 percent and add that to the total monthly unearned income, minus income exclusions.
+> (C) Subtract the standard deduction.
+> (D) If the household is entitled to an excess medical deduction as provided in § 273.9(d)(3), determine if total medical expenses exceed $35. If so, subtract that portion which exceeds $35.
+> (E) Subtract allowable monthly dependent care expenses, if any, as specified under § 273.9(d)(4) for each dependent.
+> (F) If the State agency has chosen to treat legally obligated child support payments as a deduction rather than an exclusion in accordance with § 273.9(d)(5), subtract allowable monthly child support payments in accordance with § 273.9(d)(5).
+> (G) Subtract the homeless shelter deduction, if any, up to the maximum of $143.
+> (H) Total the allowable shelter expenses to determine shelter costs, unless a deduction has been subtracted in accordance with paragraph (e)(1)(i)(G) of this section. Subtract from total shelter costs 50 percent of the household's monthly income after all the above deductions have been subtracted. The remaining amount, if any, is the excess shelter cost. If there is no excess shelter cost, the net monthly income has been determined. If there is excess shelter cost, compute the shelter deduction according to paragraph (e)(1)(i)(I) of this section.
+> (I) Subtract the excess shelter cost up to the maximum amount allowed for the area (unless the household is entitled to the full amount of its excess shelter expenses) from the household's monthly income after all other applicable deductions. Households not subject to a capped shelter expense shall have the full amount exceeding 50 percent of their net income subtracted. The household's net monthly income has been determined.
+
+### S102. Net income and allotment rounding
+
+Document: D-14
+
+7 CFR 273.10(e)(1)(ii)(A), (e)(2)(ii)(A). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (A) Round down each income and allotment calculation that ends in 1 through 49 cents and round up each calculation that ends in 50 through 99 cents; or
+> (ii)(A) Except as provided in paragraphs (a)(1), (e)(2)(iii) and (e)(2)(vi) of this section, the household's monthly allotment shall be equal to the maximum SNAP allotment for the household's size reduced by 30 percent of the household's net monthly income as calculated in paragraph (e)(1) of this section. If 30 percent of the household's net income ends in cents, the State agency shall round in one of the following ways:
+> (1) The State agency shall round the 30 percent of net income up to the nearest higher dollar; or
+> (2) The State agency shall not round the 30 percent of net income at all. Instead, after subtracting the 30 percent of net income from the appropriate Thrifty Food Plan, the State agency shall round the allotment down to the nearest lower dollar.
+
+### S103. Gross and net income eligibility comparison
+
+Document: D-14
+
+7 CFR 273.10(e)(2)(i)(A)-(B). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (i)(A) Households which contain an elderly or disabled member as defined in § 271.2, shall have their net income, as calculated in paragraph (e)(1) of this section (except for households considered destitute in accordance with paragraph (e)(3) of this section), compared to the monthly income eligibility standards defined in § 273.9(a)(2) for the appropriate household size to determine eligibility for the month.
+> (B) In addition to meeting the net income eligibility standards, households which do not contain an elderly or disabled member shall have their gross income, as calculated in accordance with paragraph (e)(1)(i)(A) of this section, compared to the gross monthly income standards defined in § 273.9(a)(1) for the appropriate household size to determine eligibility for the month.
+
+### S104. Minimum benefit for one- and two-person households
+
+Document: D-14
+
+7 CFR 273.10(e)(2)(ii)(C). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (C) Except during an initial month, all eligible one-person and two-person households shall receive minimum monthly allotments equal to the minimum benefit. The minimum benefit is 8 percent of the maximum allotment for a household of one, rounded to the nearest whole dollar.
+
+### S105. Households of three or more entitled to no benefit
+
+Document: D-14
+
+7 CFR 273.10(e)(2)(iii). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (iii) For an eligible household with three or more members which is entitled to no benefits (except because of the proration requirements of paragraph (a)(1) and the provision precluding issuances of less than $10 in an initial month of paragraph (e)(2)(ii)(B)) of this section:
+> (A) The State agency shall deny the household's application on the grounds that its net income exceeds the level at which benefits are issued; or
+> (B) The State agency shall certify the household but suspend its participation, subject to the following conditions:
+
+### S107. Colorado earned income deduction on prorated income attributed from a disqualified member
+
+Document: D-19
+
+10 CCR 2506-1-4.411.1,B,2,c. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.411
+
+> c. Deductible Expenses The earned income deduction shall apply to the prorated income earned by the disqualified and/or sanctioned member that is attributed to the household. That portion of the household's allowable shelter and dependent care expenses which are either paid by or billed to the disqualified member shall be divided evenly among the household members, including the disqualified member. Legally obligated child support payments are deducted before prorating income. The shelter expense will be prorated except for the standard utility allowance (SUA). The full SUA will be added to the other prorated shelter components if the household qualifies for the SUA. All but the disqualified member's share is counted as a deductible expense for the remaining household members.

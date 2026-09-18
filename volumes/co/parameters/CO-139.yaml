@@ -1,0 +1,12 @@
+id: CO-139
+name: SNAP benefit reduction rate
+identifier: snap_benefit_reduction_rate
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: The share of household net monthly income subtracted from the maximum allotment to compute the allotment.
+value: 0.3
+sources: [S104]
+rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) states the allotment equals the maximum allotment reduced by 30 percent of net income; kept as a parameter so snap_benefit_reduction (CO-382) carries no digit in its identifier (governance name.digits).
+tags: [income, snap]

@@ -1,0 +1,17 @@
+id: CO-376
+name: "SNAP: excess medical deduction"
+identifier: snap_excess_medical_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The deduction for this person's SNAP household's out-of-pocket medical expenses incurred by its elderly or disabled members, to the extent those expenses (summed across every elderly or disabled member) exceed $35 a month.
+precision: Sums medical_expenses_out_of_pocket only over the members of snap_household_members who are themselves elderly or disabled (snap_is_elderly_or_disabled); a non-elderly, non-disabled member's own medical expenses are not deductible, matching 4.407.6's "other household members ... cannot claim costs of their medical treatment."
+derived: [max, 0, ["-", [sum, [filter, snap_household_members, [of, [P], snap_is_elderly_or_disabled]], [of, [P], medical_expenses_out_of_pocket]], snap_medical_deduction_threshold]]
+sources: [S87, S91, S100]
+implemented: engine
+tags: [income, disability]
+rationale: 7 U.S.C. 2014(e)(5)(A) (S87), 7 CFR 273.9(d)(3) (S91), and 10 CCR 2506-1 4.407.6 (S100) require this deduction only for elderly or disabled members' own expenses, floored at the $35 threshold; no existing item sums medical_expenses_out_of_pocket over the household's elderly/disabled subgroup and applies the floor.
+tests:
+  - {id: CO-376-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 120}, others: {}, relationships: [], expect: 85}
+  - {id: CO-376-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], snap_is_elderly_or_disabled: false, medical_expenses_out_of_pocket: 120}, others: {}, relationships: [], expect: 0}

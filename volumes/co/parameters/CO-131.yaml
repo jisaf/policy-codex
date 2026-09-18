@@ -1,0 +1,16 @@
+id: CO-131
+name: SNAP maximum allotment, each additional household member
+identifier: snap_maximum_allotment_each_additional
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The amount added to the 8-person maximum allotment for each household member above 8.
+versions:
+  - from: "2025-10-01"
+    value: 218
+    source: S82
+rationale: Companion figure to snap_maximum_allotment_table (CO-130); D-20's Table 1 (S82) states the FY2026 "Each Additional Member" increment, which the table alone does not carry, matching the each-additional shape snap_gross_income_limit_each_additional (CO-111) and the other income-limit tables already use.
+sources: [S82]
+tags: [income, snap]
+open: [OQ-21]

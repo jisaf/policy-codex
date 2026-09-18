@@ -1,0 +1,16 @@
+id: CO-379
+name: "SNAP: excess shelter deduction"
+identifier: snap_excess_shelter_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: The deduction for this person's SNAP household's monthly shelter costs that exceed 50 percent of its income after all other deductions - uncapped for a household with an elderly or disabled member, otherwise capped at the excess shelter deduction cap.
+derived: [case, [snap_household_has_elderly_or_disabled_member, [max, 0, ["-", snap_shelter_costs, ["*", snap_shelter_share_rate, snap_adjusted_income_before_shelter]]]], [else, [min, snap_excess_shelter_cap, [max, 0, ["-", snap_shelter_costs, ["*", snap_shelter_share_rate, snap_adjusted_income_before_shelter]]]]]]
+sources: [S88, S93, S96]
+implemented: engine
+tags: [income, disability]
+rationale: 7 U.S.C. 2014(e)(6)(A)-(B) (S88), 7 CFR 273.9(d)(6)(ii) (S93), and 10 CCR 2506-1 4.407.3,A-B (S96) state the 50%-of-income threshold and the elderly/disabled-household exemption from the dollar cap; no existing item combines snap_shelter_costs, snap_adjusted_income_before_shelter, and the elderly/disabled-conditioned cap into the deduction snap_household_net_income needs.
+tests:
+  - {id: CO-379-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_has_elderly_or_disabled_member: true, snap_shelter_costs: 1400, snap_adjusted_income_before_shelter: 2399}, expect: 200.5}
+  - {id: CO-379-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_has_elderly_or_disabled_member: false, snap_shelter_costs: 2000, snap_adjusted_income_before_shelter: 400}, expect: 744}

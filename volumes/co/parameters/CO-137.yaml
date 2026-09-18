@@ -1,0 +1,12 @@
+id: CO-137
+name: SNAP medical deduction threshold
+identifier: snap_medical_deduction_threshold
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The monthly dollar amount of an elderly or disabled household member's out-of-pocket medical expenses that must be exceeded before any excess medical deduction applies.
+value: 35
+sources: [S87, S91, S100]
+rationale: 7 U.S.C. 2014(e)(5)(A) (S87), 7 CFR 273.9(d)(3) (S91), and 10 CCR 2506-1 4.407.6 (S100) all state the $35 threshold; kept as a parameter so snap_excess_medical_deduction (CO-376) carries no digit in its identifier (governance name.digits).
+tags: [income, snap, disability]

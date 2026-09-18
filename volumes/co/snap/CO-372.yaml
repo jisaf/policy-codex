@@ -1,0 +1,19 @@
+id: CO-372
+name: "SNAP: household earned income for the earned income deduction"
+identifier: snap_household_earned_income_for_deduction
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: This person's SNAP household's earned income base for the 20% earned income deduction - snap_household_earned_income (the eligible members' own earned income) plus the counted, prorated-or-full earned share attributed from each ineligible household member.
+precision: Sums snap_counted_earned_income_of_ineligible_member over the ineligible members of snap_household_members (mirroring snap_household_gross_income's split between eligible and ineligible members) and adds it to snap_household_earned_income, so an eligible member's earned income is never counted twice.
+derived: [+, snap_household_earned_income, [sum, [filter, snap_household_members, [of, [P], snap_is_ineligible_member]], [of, [P], snap_counted_earned_income_of_ineligible_member]]]
+sources: [S46, S107]
+open: [OQ-27]
+nearest: [CO-334]
+rationale: 10 CCR 2506-1 4.411.1,B,2,c (S107) requires the earned income deduction's base to include the prorated earned share of a disqualified or ineligible member, which snap_household_earned_income (CO-335, batch 2, unavailable to edit) does not include by design; this item adds that share on top of CO-335's total using the same eligible/ineligible split snap_household_gross_income (CO-334) uses for the household's overall gross income, but applied to the earned-only components.
+implemented: engine
+tags: [income, state_election]
+tests:
+  - {id: CO-372-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1, p2, p3, p4], snap_household_earned_income: 0, snap_is_ineligible_member: false}, others: {p2: {snap_is_ineligible_member: true, citizenship_status: undocumented, earned_income: 2380, self_employment_net_income: 0, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, snap_household_members: [p1, p2, p3, p4]}, p3: {snap_is_ineligible_member: false}, p4: {snap_is_ineligible_member: false}}, relationships: [], expect: 1785}
+  - {id: CO-372-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], snap_household_earned_income: 500, snap_is_ineligible_member: false}, others: {}, relationships: [], expect: 500}

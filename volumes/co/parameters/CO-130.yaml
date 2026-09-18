@@ -1,0 +1,17 @@
+id: CO-130
+name: SNAP maximum allotment by household size
+identifier: snap_maximum_allotment_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: SNAP
+meaning: The maximum monthly SNAP allotment (Thrifty Food Plan cost) for a household of the stated size, before the 30% net-income reduction, for household sizes 1 through 8.
+precision: Sizes above 8 add snap_maximum_allotment_each_additional per additional member; see snap_maximum_allotment.
+versions:
+  - from: "2025-10-01"
+    value: { "1": 298, "2": 546, "3": 785, "4": 994, "5": 1183, "6": 1421, "7": 1571, "8": 1789 }
+    source: S82
+rationale: 7 CFR 273.10(e)(2)(ii)(A) (S104) and 7 U.S.C. 2017 require an allotment computed against the maximum allotment for the household's size; D-20's Table 1 (S82) is the FY2026 FNS-published dollar table (48 states and D.C. column) no existing parameter states.
+sources: [S82]
+tags: [income, snap]
+open: [OQ-21]

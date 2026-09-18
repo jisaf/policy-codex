@@ -1,0 +1,25 @@
+id: CO-387
+name: "SNAP: eligibility status"
+identifier: snap_eligibility_status
+kind: derived
+type: one of
+options: [eligible, no_eligible_members, over_gross_income_limit, over_net_income_limit, over_resource_limit, zero_allotment]
+scope: person-month
+program: SNAP
+role: outcome
+meaning: The single reason this person's SNAP household is eligible or not for the month, tested in order - no eligible household member, over the gross income limit, over the net income limit, over the resource limit, a computed allotment of $0, or otherwise eligible.
+precision: Tested in this order because a household can fail more than one ground at once (for example, over both the gross and net income limits); the first ground that applies is reported, matching the "otherwise" ordering pattern (P33) other eligibility-category items in this volume use.
+derived: [case, [[<, snap_household_size, 1], "no_eligible_members"], [[not, snap_meets_gross_income_test], "over_gross_income_limit"], [[not, snap_meets_net_income_test], "over_net_income_limit"], [[not, snap_meets_resource_limit], "over_resource_limit"], [[<=, snap_allotment, 0], "zero_allotment"], [else, "eligible"]]
+sources: [S103, S104, S105]
+open: [OQ-26]
+nearest: [CO-386]
+rationale: 10 CCR 2506-1 4.206,A and 7 CFR 273.10(e)(2)(i)-(iii) each test a household against several distinct standards that can each independently bar eligibility; no existing item reports which single standard a household failed (or that it passed all of them) as one enumerated outcome. Needed alongside snap_is_eligible (CO-386, a plain yes/no) because a program administrator reviewing a denial needs the reason, not only the boolean.
+implemented: engine
+tags: [income, resources]
+tests:
+  - {id: CO-387-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 125}, expect: eligible}
+  - {id: CO-387-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 0, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 0}, expect: no_eligible_members}
+  - {id: CO-387-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: false, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 0}, expect: over_gross_income_limit}
+  - {id: CO-387-T4, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: false, snap_meets_resource_limit: true, snap_allotment: 0}, expect: over_net_income_limit}
+  - {id: CO-387-T5, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: false, snap_allotment: 0}, expect: over_resource_limit}
+  - {id: CO-387-T6, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_allotment: 0}, expect: zero_allotment}

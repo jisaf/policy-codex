@@ -1,0 +1,17 @@
+id: CO-370
+name: "SNAP: standard deduction"
+identifier: snap_standard_deduction
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: The flat monthly deduction every SNAP household receives before any other income-based deduction, looked up by household size (a household of 6 or more eligible members uses the 6-person figure).
+precision: Reads snap_household_size (eligible members only) and looks up snap_standard_deduction_table at `[min, snap_household_size, 6]`, matching 10 CCR 2506-1 4.407.1's "six (6) or more eligible members" language.
+derived: [lookup, snap_standard_deduction_table, [min, snap_household_size, 6]]
+sources: [S81, S89, S94]
+implemented: engine
+tags: [income]
+rationale: 7 U.S.C. 2014(e)(1) and 7 CFR 273.9(d)(1)(i) (S89) require a standard deduction for every household, and 10 CCR 2506-1 4.407.1 (S94) states Colorado applies it up to a six-person cap; no existing item composes snap_standard_deduction_table with the household size lookup snap_household_net_income needs.
+tests:
+  - {id: CO-370-T1, as_of: "2026-10-01", given: {snap_household_size: 3}, expect: 209}
+  - {id: CO-370-T2, as_of: "2026-10-01", given: {snap_household_size: 8}, expect: 299}
