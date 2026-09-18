@@ -1,0 +1,11 @@
+id: CO-030
+name: Other unearned income
+identifier: other_unearned_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly unearned income not otherwise itemized (for example, interest, dividends, or contributions from someone outside the household).
+supplied_by: Applicant statement, verification of the specific income source.
+sources: []
+tags: [income]

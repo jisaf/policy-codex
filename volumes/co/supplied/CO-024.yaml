@@ -1,0 +1,11 @@
+id: CO-024
+name: Self-employment net income
+identifier: self_employment_net_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's net income from self-employment for the month, gross proceeds less the cost of producing the income.
+supplied_by: Applicant-provided business records, tax records.
+sources: []
+tags: [income]

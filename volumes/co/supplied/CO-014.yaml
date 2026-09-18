@@ -1,0 +1,11 @@
+id: CO-014
+name: Receives general assistance
+identifier: receives_general_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives state general assistance benefits based on disability or blindness criteria.
+supplied_by: CBMS Adult Financial case record.
+sources: []
+tags: [disability]

@@ -1,0 +1,11 @@
+id: CO-008
+name: Institution entry date
+identifier: institution_entry_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The date the person entered the medical institution named by in_medical_institution.
+supplied_by: Institution admission record.
+sources: []
+tags: [household]

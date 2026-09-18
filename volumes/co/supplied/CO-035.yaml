@@ -1,0 +1,11 @@
+id: CO-035
+name: Shelter cost, monthly
+identifier: shelter_cost_monthly
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The monthly rent or mortgage payment, plus property taxes and insurance, for the home the person's unit occupies. Stated once per unit, carried on the head of household.
+supplied_by: Lease, mortgage statement, applicant statement.
+sources: []
+tags: [income]

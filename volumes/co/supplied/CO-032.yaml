@@ -1,0 +1,11 @@
+id: CO-032
+name: Dependent care expense
+identifier: dependent_care_expense
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly out-of-pocket dependent care expense necessary for a household member to work, look for work, or attend training or education.
+supplied_by: Provider receipts, applicant statement.
+sources: []
+tags: [income]

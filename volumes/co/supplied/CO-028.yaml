@@ -1,0 +1,11 @@
+id: CO-028
+name: Child support received
+identifier: child_support_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The monthly amount of legally obligated child support the person receives on behalf of a household member.
+supplied_by: Child support enforcement record, applicant statement.
+sources: []
+tags: [income]

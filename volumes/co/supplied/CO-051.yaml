@@ -1,0 +1,10 @@
+id: CO-051
+name: Received a full SNAP benefit for the month
+identifier: received_full_snap_benefit_month
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person received a full, non-prorated SNAP benefit for the month.
+supplied_by: CBMS benefit issuance record.
+sources: []

@@ -1,0 +1,11 @@
+id: CO-029
+name: Cash assistance income
+identifier: cash_assistance_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly cash assistance income (for example TANF or Adult Financial) counted as unearned income for another program's budget.
+supplied_by: CBMS cash assistance case record.
+sources: []
+tags: [income]

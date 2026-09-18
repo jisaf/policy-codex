@@ -1,0 +1,11 @@
+id: CO-034
+name: Medical expenses out of pocket
+identifier: medical_expenses_out_of_pocket
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly out-of-pocket medical expenses, for a person who is elderly or disabled.
+supplied_by: Receipts, insurance statements.
+sources: []
+tags: [income, disability]

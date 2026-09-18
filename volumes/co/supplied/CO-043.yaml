@@ -1,0 +1,11 @@
+id: CO-043
+name: Has a medical statement of unfitness for employment
+identifier: has_medical_statement_of_unfitness
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: A physician, physician's assistant, nurse practitioner, or other sufficiently qualified professional has certified that the person is mentally or physically unfit for employment.
+supplied_by: Medical statement.
+sources: []
+tags: [work_registration]

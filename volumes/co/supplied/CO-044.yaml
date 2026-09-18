@@ -1,0 +1,11 @@
+id: CO-044
+name: Agency finds the person obviously unfit
+identifier: agency_finds_obviously_unfit
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The eligibility technician determines the person is obviously mentally or physically unfit for employment, without requiring a medical statement.
+supplied_by: County worker determination.
+sources: []
+tags: [work_registration]

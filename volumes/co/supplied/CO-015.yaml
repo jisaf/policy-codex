@@ -1,0 +1,11 @@
+id: CO-015
+name: Receives Social Security disability benefits
+identifier: receives_social_security_disability
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives disability payments under title I, II, X, XIV, or XVI of the Social Security Act, or federally or state-administered supplemental benefits based on those disability or blindness criteria.
+supplied_by: SSA benefit record.
+sources: [S6]
+tags: [disability]

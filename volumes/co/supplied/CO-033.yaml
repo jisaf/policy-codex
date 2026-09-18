@@ -1,0 +1,11 @@
+id: CO-033
+name: Child support paid, legally obligated
+identifier: child_support_paid_legally_obligated
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The monthly amount of legally obligated child support the person pays to or for a person living outside the household.
+supplied_by: Court order, payment record.
+sources: []
+tags: [income]

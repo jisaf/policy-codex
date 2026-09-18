@@ -1,0 +1,11 @@
+id: CO-036
+name: Utility allowance amount
+identifier: utility_allowance_amount
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: The CDHS standard utility allowance (heating/cooling, basic, or telephone-only) that applies to the person's unit, stated on the head of household.
+supplied_by: CBMS, applying the CDHS standard utility allowance table for the utility expense the unit incurs.
+sources: []
+tags: [income, state_election]

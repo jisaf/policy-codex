@@ -1,0 +1,19 @@
+id: CO-309
+name: "SNAP: meets the citizenship requirement"
+identifier: snap_meets_citizenship_requirement
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is a U.S. citizen or non-citizen national, or is an eligible non-citizen, and so may participate in SNAP as far as citizenship and immigration status alone determine.
+precision: Does not itself test U.S. residency (7 U.S.C. 2015(f)(1)); see OQ-3.
+derived: [any, [in, citizenship_status, [citizen, us_national]], snap_is_eligible_non_citizen]
+sources: [S8]
+open: [OQ-3]
+implemented: engine
+tags: [immigration, legal]
+rationale: Combines citizen/national status with snap_is_eligible_non_citizen into the single pass/fail citizenship test 7 U.S.C. 2015(f) states, which snap_is_ineligible_non_citizen and snap_is_ineligible_member read.
+tests:
+  - {id: CO-309-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-309-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
+  - {id: CO-309-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1945-07-30", is_veteran_or_active_duty: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40}, expect: true}

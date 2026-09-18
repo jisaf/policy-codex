@@ -1,0 +1,11 @@
+id: CO-027
+name: Unemployment income
+identifier: unemployment_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly unemployment compensation.
+supplied_by: State unemployment insurance record.
+sources: []
+tags: [income]

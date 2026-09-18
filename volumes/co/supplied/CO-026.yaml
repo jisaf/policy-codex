@@ -1,0 +1,11 @@
+id: CO-026
+name: Pension income
+identifier: pension_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly pension or retirement income other than Social Security.
+supplied_by: Pension statement, applicant statement.
+sources: []
+tags: [income]

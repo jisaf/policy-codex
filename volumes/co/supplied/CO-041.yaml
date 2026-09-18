@@ -1,0 +1,10 @@
+id: CO-041
+name: Is disqualified for a drug-related felony
+identifier: is_disqualified_drug_felony
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person was convicted of a felony involving the possession, use, or distribution of a controlled substance, based on conduct after August 22, 1996, and is subject to the resulting disqualification.
+supplied_by: Court record, county worker determination.
+sources: []

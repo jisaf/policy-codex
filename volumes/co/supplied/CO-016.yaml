@@ -1,0 +1,11 @@
+id: CO-016
+name: Receives VA disability benefits
+identifier: receives_va_disability_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is a veteran (or a veteran's surviving spouse or child) receiving VA disability compensation or pension, or rated by the VA as totally disabled, or considered by the VA to need regular aid and attendance or to be permanently housebound.
+supplied_by: VA award letter.
+sources: [S6]
+tags: [disability]

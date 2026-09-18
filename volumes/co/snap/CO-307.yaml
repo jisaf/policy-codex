@@ -1,0 +1,18 @@
+id: CO-307
+name: "SNAP: meets the non-citizen additional condition"
+identifier: snap_meets_immigrant_additional_condition
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: A lawful permanent resident clears the five-year bar of 8 U.S.C. 1613(a) by having resided in the U.S. in a qualified status for five years (8 U.S.C. 1612(a)(2)(L)), by having 40 qualifying quarters (1612(a)(2)(B)), or by one of the exceptions in snap_is_exempt_from_immigrant_waiting_period. Colorado states the same tests at 10 CCR 2506-1 4.305,B,3.
+assumption: "The amended 7 U.S.C. 2015(f) states no waiting period itself; the bar comes from 8 U.S.C. 1613(a), which Pub. L. 119-21 did not amend (S21). The 40-quarter exception's further condition (no Federal means-tested benefit during a post-1996 quarter) is treated as already reflected in the supplied count of qualifying quarters."
+derived: [any, snap_is_exempt_from_immigrant_waiting_period, [">=", qualifying_quarters, snap_qualifying_quarters_threshold], [">=", [years_between, qualified_status_date, [det_date]], snap_five_year_bar_years]]
+sources: [S21, S22, S23, S11, S12, S13]
+open: [OQ-1]
+implemented: engine
+tags: [immigration, legal]
+rationale: Combines the three ways 10 CCR 2506-1 4.305,B,3 lets a qualified non-citizen subject to the additional condition satisfy it (five years, 40 quarters, or an exemption), so snap_is_eligible_non_citizen can read one fact for "LPR who has cleared the additional condition."
+tests:
+  - {id: CO-307-T1, as_of: "2026-10-01", given: {date_of_birth: "1945-07-30", is_veteran_or_active_duty: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40}, expect: true}
+  - {id: CO-307-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_veteran_or_active_duty: false, qualified_status_date: "2025-06-01", qualifying_quarters: 0}, expect: false}

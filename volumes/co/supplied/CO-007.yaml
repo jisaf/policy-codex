@@ -1,0 +1,11 @@
+id: CO-007
+name: In medical institution
+identifier: in_medical_institution
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person resides in a hospital, nursing facility, or other medical institution that provides the person with the majority of their meals as part of the institution's normal services.
+supplied_by: Case record, institution admission record.
+sources: [S3]
+tags: [household]

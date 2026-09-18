@@ -1,0 +1,10 @@
+id: CO-006
+name: State of residence
+identifier: state_of_residence
+kind: supplied
+type: text
+scope: person
+program: All
+meaning: The state in which the person resides for purposes of SNAP administration.
+supplied_by: Applicant statement, case record.
+sources: []

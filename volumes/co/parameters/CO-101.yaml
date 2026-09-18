@@ -1,0 +1,11 @@
+id: CO-101
+name: SNAP mandatory child age
+identifier: snap_mandatory_child_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which a person living with their natural, adoptive, or step-parent must be included as a mandatory household member with that parent, regardless of separate purchase and preparation.
+precision: The person is a mandatory member while their age is strictly less than this value (federal text reads "under 22"; Colorado's 4.304.1.A reads "twenty-one and under", the same boundary).
+value: 22
+sources: [S2, S4]

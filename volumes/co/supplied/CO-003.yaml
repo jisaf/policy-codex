@@ -1,0 +1,12 @@
+id: CO-003
+name: Qualified status date
+identifier: qualified_status_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The date the person obtained the qualified non-citizen status they currently hold (for a lawful permanent resident, the date of admission for permanent residence).
+precision: Where a person has held more than one qualifying status in sequence, this is the date of the status held now, per 10 CCR 2506-1 4.305,B,3,a.
+supplied_by: SAVE, immigration documents (Form I-551 or equivalent).
+sources: [S12]
+tags: [immigration]

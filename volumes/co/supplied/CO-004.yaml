@@ -1,0 +1,11 @@
+id: CO-004
+name: Qualifying quarters
+identifier: qualifying_quarters
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: The number of qualifying work quarters credited to the person under Title II of the Social Security Act, including quarters credited from a parent's or spouse's work as allowed under the non-citizen 40-quarter test.
+supplied_by: SSA quarters-of-coverage record, verified by the eligibility technician.
+sources: [S13]
+tags: [immigration]

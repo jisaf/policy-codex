@@ -1,0 +1,10 @@
+id: CO-017
+name: Is Medicare entitled or enrolled
+identifier: is_medicare_entitled_or_enrolled
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is entitled to or enrolled in Medicare.
+supplied_by: SSA/CMS Medicare enrollment record.
+sources: []

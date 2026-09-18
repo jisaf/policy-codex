@@ -1,0 +1,10 @@
+id: CO-102
+name: SNAP parental control age
+identifier: snap_parental_control_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which a child living with and under the parental control of a household member other than their own parent must be a mandatory member of that household member's unit.
+value: 18
+sources: [S2, S4]

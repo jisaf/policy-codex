@@ -1,0 +1,10 @@
+id: CO-040
+name: Is disqualified for work-requirement noncompliance
+identifier: is_disqualified_for_work_requirement_noncompliance
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is currently serving a disqualification period for failing to comply with the SNAP work requirements of 7 CFR 273.7.
+supplied_by: Case record.
+sources: []

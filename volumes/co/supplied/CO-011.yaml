@@ -1,0 +1,11 @@
+id: CO-011
+name: Is disabled under Social Security criteria
+identifier: is_disabled_ssa
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person has a disability considered permanent under the Social Security Act (title II) disability criteria.
+supplied_by: SSA determination, medical verification.
+sources: []
+tags: [disability]

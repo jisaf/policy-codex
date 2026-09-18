@@ -1,0 +1,10 @@
+id: CO-009
+name: Is pregnant
+identifier: is_pregnant
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is currently pregnant.
+supplied_by: Applicant statement or medical verification.
+sources: []

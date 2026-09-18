@@ -1,0 +1,11 @@
+id: CO-010
+name: Is blind
+identifier: is_blind
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person meets the disability criteria for blindness used under Title XVI of the Social Security Act.
+supplied_by: SSA determination, medical verification.
+sources: []
+tags: [disability]

@@ -1,0 +1,11 @@
+id: CO-053
+name: ABAWD discretionary exemption for the month
+identifier: abawd_discretionary_exemption_month
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The state agency applied one of its limited discretionary ABAWD exemptions to the person for the month.
+supplied_by: CBMS ABAWD exemption tracking.
+sources: []
+tags: [abawd, state_election]

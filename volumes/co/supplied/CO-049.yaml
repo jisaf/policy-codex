@@ -1,0 +1,11 @@
+id: CO-049
+name: Workfare hours
+identifier: workfare_hours
+kind: supplied
+type: hours
+scope: person-month
+program: SNAP
+meaning: The hours the person worked in a workfare placement for the month.
+supplied_by: Workfare placement record.
+sources: []
+tags: [work_registration]

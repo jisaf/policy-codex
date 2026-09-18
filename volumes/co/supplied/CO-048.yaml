@@ -1,0 +1,11 @@
+id: CO-048
+name: Work program hours
+identifier: work_program_hours
+kind: supplied
+type: hours
+scope: person-month
+program: SNAP
+meaning: The hours the person participated in a qualifying employment and training activity for the month.
+supplied_by: SNAP E&T case record.
+sources: []
+tags: [work_registration]

@@ -1,0 +1,11 @@
+id: CO-050
+name: Is Indian or urban Indian
+identifier: is_indian_or_urban_indian
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is a member of a federally recognized tribe, an Alaska Native, or an urban Indian eligible for the ABAWD exemption for Indians and urban Indians.
+supplied_by: Tribal enrollment verification, applicant statement.
+sources: []
+tags: [abawd]

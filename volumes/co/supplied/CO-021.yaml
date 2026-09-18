@@ -1,0 +1,11 @@
+id: CO-021
+name: Is enrolled at least half-time in higher education
+identifier: is_enrolled_higher_education_half_time
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is enrolled at least half-time in an institution of higher education.
+supplied_by: School enrollment verification.
+sources: []
+tags: [student]

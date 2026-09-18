@@ -1,0 +1,11 @@
+id: CO-105
+name: SNAP elderly/disabled separate household income limit percentage
+identifier: snap_elderly_disabled_separate_household_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: The percentage of the federal poverty line that the income of the others an elderly or disabled member lives with must not exceed for that member to be a separate household under 7 CFR 273.1(b)(2).
+precision: Expressed as a decimal rate (1.65 = 165%). Not used by any batch-1 item; provided because 10 CCR 2506-1 4.304.1.C and 4.304.3.A both state the figure and a later batch's income test will read it.
+value: 1.65
+sources: [S20]

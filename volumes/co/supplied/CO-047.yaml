@@ -1,0 +1,11 @@
+id: CO-047
+name: Is in SNAP Employment and Training
+identifier: is_in_snap_employment_and_training
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person is participating in the SNAP Employment and Training program for the month.
+supplied_by: SNAP E&T case record.
+sources: []
+tags: [work_registration]

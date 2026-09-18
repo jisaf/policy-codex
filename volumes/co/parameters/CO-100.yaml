@@ -1,0 +1,10 @@
+id: CO-100
+name: SNAP elderly age
+identifier: snap_elderly_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age at which a household member is "elderly" for SNAP household-composition and separate-household purposes.
+value: 60
+sources: [S6]

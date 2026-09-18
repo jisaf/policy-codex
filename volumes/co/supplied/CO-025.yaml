@@ -1,0 +1,11 @@
+id: CO-025
+name: Social Security income
+identifier: social_security_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly Social Security benefit (retirement, survivors, or disability) under Title II of the Social Security Act.
+supplied_by: SSA benefit record.
+sources: []
+tags: [income]

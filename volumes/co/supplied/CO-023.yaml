@@ -1,0 +1,11 @@
+id: CO-023
+name: Earned income
+identifier: earned_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's gross earned income (wages and salaries) for the month, before self-employment net income.
+supplied_by: Pay stubs, the Work Number, employer verification.
+sources: []
+tags: [income]

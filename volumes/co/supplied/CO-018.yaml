@@ -1,0 +1,11 @@
+id: CO-018
+name: Is under the parental control of a household member
+identifier: is_under_parental_control_of_household_member
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: For a child under 18 living with someone other than their own parent, the child is financially or otherwise dependent on that household member and is not emancipated under state law.
+supplied_by: Applicant statement, county worker determination.
+sources: [S2, S4]
+tags: [household, age]

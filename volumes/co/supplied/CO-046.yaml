@@ -1,0 +1,11 @@
+id: CO-046
+name: Receives unemployment compensation or has applied
+identifier: receives_unemployment_compensation_or_applied
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person receives unemployment compensation, or has registered for work as part of applying for or receiving unemployment compensation.
+supplied_by: State unemployment insurance record.
+sources: []
+tags: [work_registration]

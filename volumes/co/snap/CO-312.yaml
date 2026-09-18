@@ -1,0 +1,16 @@
+id: CO-312
+name: "SNAP: eligible household members"
+identifier: snap_eligible_household_members
+kind: derived
+type: group of persons
+scope: person
+program: SNAP
+meaning: The members of this person's SNAP household (snap_household_members) who are not ineligible members under snap_is_ineligible_member.
+derived: [filter, snap_household_members, [not, [of, [P], snap_is_ineligible_member]]]
+sources: [S19]
+implemented: engine
+tags: [household, immigration]
+rationale: No existing item narrows snap_household_members to the members actually counted for eligibility and benefit purposes; snap_household_size and the income/deduction rules in later batches need this narrower group, not the full purchase-and-prepare unit.
+tests:
+  - {id: CO-312-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", in_medical_institution: false, citizenship_status: undocumented, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {p2: {date_of_birth: "2009-04-08", in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}}, relationships: [[parent, p1, p2]], expect: [p2]}
+  - {id: CO-312-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}, others: {p2: {date_of_birth: "2009-04-08", in_medical_institution: false, citizenship_status: citizen, is_fleeing_felon_or_probation_violator: false, is_disqualified_for_intentional_program_violation: false, is_disqualified_for_work_requirement_noncompliance: false, is_disqualified_drug_felony: false}}, relationships: [[parent, p1, p2]], expect: [p1, p2]}

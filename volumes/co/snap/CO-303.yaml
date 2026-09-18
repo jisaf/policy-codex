@@ -1,0 +1,16 @@
+id: CO-303
+name: "SNAP: is elderly or disabled"
+identifier: snap_is_elderly_or_disabled
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person is an elderly or disabled member under 7 CFR 271.2 and 7 U.S.C. 2012(j): 60 or older, or meets one of the disability-based prongs."
+derived: [any, snap_is_elderly, snap_is_disabled_member]
+sources: [S6, S7]
+implemented: engine
+tags: [age, disability]
+rationale: Combines snap_is_elderly and snap_is_disabled_member into the single "elderly or disabled member" status the 271.2 definition (S6) states as one term, which snap_household_has_elderly_or_disabled_member and later income/resource/deduction rules read as a unit.
+tests:
+  - {id: CO-303-T1, given: {date_of_birth: "1945-07-30", receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, as_of: "2026-10-01", expect: true}
+  - {id: CO-303-T2, given: {date_of_birth: "1985-01-22", receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, as_of: "2026-10-01", expect: false}

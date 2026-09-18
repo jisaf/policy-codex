@@ -1,0 +1,17 @@
+id: CO-314
+name: "SNAP: household has an elderly or disabled member"
+identifier: snap_household_has_elderly_or_disabled_member
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: At least one member of this person's SNAP household (snap_household_members) is an elderly or disabled member under 7 CFR 271.2 / 7 U.S.C. 2012(j).
+precision: Tests every member of the purchase-and-prepare unit, not only eligible members, since an elderly or disabled ineligible non-citizen still triggers the household's elderly/disabled-only deduction and income rules under 273.11(c).
+derived: [exists, snap_household_members, [of, [P], snap_is_elderly_or_disabled]]
+sources: [S6, S7]
+implemented: engine
+tags: [age, disability, household]
+rationale: The elderly/disabled-household deduction and resource-limit rules a later batch authors apply at the household level, not per person; this item is the single household-level fact those rules read, built from the per-person snap_is_elderly_or_disabled rather than duplicating its logic across the household.
+tests:
+  - {id: CO-314-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", in_medical_institution: false}, others: {p2: {date_of_birth: "1945-07-30", in_medical_institution: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-314-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", in_medical_institution: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, others: {}, relationships: [], expect: false}

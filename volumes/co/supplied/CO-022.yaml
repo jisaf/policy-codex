@@ -1,0 +1,10 @@
+id: CO-022
+name: Hours worked
+identifier: hours_worked
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: The number of hours the person worked in the month, for pay or in a work program.
+supplied_by: Employer verification, pay stubs, applicant statement.
+sources: []

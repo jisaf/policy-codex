@@ -1,0 +1,10 @@
+id: CO-013
+name: Receives TANF cash assistance
+identifier: receives_tanf_cash
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives a cash grant under a state program funded under part A of title IV of the Social Security Act (Colorado Works).
+supplied_by: CBMS Colorado Works case record.
+sources: []

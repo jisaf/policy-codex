@@ -1,0 +1,16 @@
+id: CO-301
+name: "SNAP: is elderly"
+identifier: snap_is_elderly
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is 60 years of age or older, the age threshold in the federal and state "elderly or disabled member" definitions.
+derived: [">=", snap_age, snap_elderly_age]
+sources: [S6, S7]
+implemented: engine
+tags: [age]
+rationale: Isolates the age prong of "elderly or disabled member" (7 CFR 271.2, S6) as its own fact so snap_is_elderly_or_disabled can combine it with the disability prongs, and so other chapters (household composition, deductions) can read age alone without re-testing disability.
+tests:
+  - {id: CO-301-T1, as_of: "2026-10-01", given: {date_of_birth: "1945-07-30"}, expect: true}
+  - {id: CO-301-T2, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: false}

@@ -1,0 +1,10 @@
+id: CO-038
+name: Is a fleeing felon or probation/parole violator
+identifier: is_fleeing_felon_or_probation_violator
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is fleeing to avoid prosecution or custody for a felony, or is violating a condition of probation or parole.
+supplied_by: Law enforcement notice, county worker determination.
+sources: [S19]

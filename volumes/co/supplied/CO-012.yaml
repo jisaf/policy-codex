@@ -1,0 +1,11 @@
+id: CO-012
+name: Receives Supplemental Security Income
+identifier: receives_ssi
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives supplemental security income benefits under Title XVI of the Social Security Act.
+supplied_by: SSA benefit record, CBMS interface.
+sources: [S6]
+tags: [disability]

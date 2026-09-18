@@ -1,0 +1,10 @@
+id: CO-104
+name: SNAP non-citizen five-year waiting period
+identifier: snap_five_year_bar_years
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of years a qualified non-citizen subject to the additional condition must have held qualified non-citizen status (or resided in the U.S. in a qualifying status) before satisfying the five-year-residence additional condition.
+value: 5
+sources: [S12]

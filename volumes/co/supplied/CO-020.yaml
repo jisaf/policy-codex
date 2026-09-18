@@ -1,0 +1,11 @@
+id: CO-020
+name: Is enrolled in school
+identifier: is_enrolled_in_school
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is enrolled in a secondary (elementary through 12th grade or equivalent) school program.
+supplied_by: Applicant statement, school enrollment record.
+sources: []
+tags: [student]

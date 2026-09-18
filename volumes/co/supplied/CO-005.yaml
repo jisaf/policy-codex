@@ -1,0 +1,11 @@
+id: CO-005
+name: Is veteran or active duty
+identifier: is_veteran_or_active_duty
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is on active duty (other than training) in the U.S. Armed Forces, or is an honorably discharged veteran, or is the spouse, surviving spouse, or unmarried dependent child of such a person, within the military-connection category.
+supplied_by: DD Form 214 or other military service verification, applicant statement.
+sources: [S16]
+tags: [immigration]
