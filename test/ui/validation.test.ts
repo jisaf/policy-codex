@@ -18,16 +18,17 @@ describe("validation summary", () => {
     expect(validationMap(engine)).toBe(validationMap(engine));
   });
 
-  it("counts the seven known error items", () => {
+  it("counts the six known error items", () => {
     const bad = [...validationMap(engine)].filter(([, v]) => v.errors > 0).map(([id]) => id);
     expect(bad.sort()).toEqual(
-      ["WR-003", "WR-004", "WR-101", "WR-207", "WR-225", "WR-228", "WR-315"].sort(),
+      ["WR-003", "WR-004", "WR-207", "WR-225", "WR-228", "WR-315"].sort(),
     );
   });
 
   it("reports the messages for one item", () => {
+    // WR-101 states its value as dated versions; that satisfies the constraint.
     const v = itemValidation(engine, "WR-101");
-    expect(v.errors).toBe(1);
-    expect(v.messages).toContain("Parameter has a value");
+    expect(v.errors).toBe(0);
+    expect(v.messages).not.toContain("Parameter has a value");
   });
 });

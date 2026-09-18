@@ -1,0 +1,12 @@
+id: CO-174
+name: SNAP student dependent care exemption, older child age
+identifier: snap_student_older_child_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which responsibility for a dependent household member (age 6 or older) exempts a student from the ineligible-student rule when adequate child care is not available, and the age used for the single-parent full-time-student exemption.
+value: 12
+sources: [S133, S135]
+tags: [student, age]
+rationale: 7 U.S.C. 2015(e)(5)(B), (e)(8) (S133) and 10 CCR 2506-1 4.306.1.D-E (S135) both use age 12 as the ceiling for the older-child dependent-care and single-parent exemptions.

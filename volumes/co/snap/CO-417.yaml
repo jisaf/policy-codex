@@ -1,0 +1,17 @@
+id: CO-417
+name: "SNAP: countable ABAWD months in the 36-month period"
+identifier: snap_abawd_countable_months_in_period
+kind: derived
+type: whole number
+scope: person-month
+program: SNAP
+meaning: The number of countable ABAWD months in the snap_abawd_period_months (36) consecutive months ending with the month before the month in context.
+precision: Evaluated per month, not only as of the determination date, so the count can be checked for any month (a rolling clock, per 7 CFR 273.24(b)(3)).
+derived: [count_months, [months_ending, snap_abawd_period_months, [month_before, [month]]], [at, snap_abawd_countable_month, [month]]]
+sources: [S127, S130, S132]
+implemented: engine
+tags: [abawd]
+rationale: 7 U.S.C. 2015(o)(2), 7 CFR 273.24(b), and 10 CCR 2506-1 4.311.3 (S127, S130, S132) all state the 3-in-36 test as a count of countable months in a rolling 36-month period; this item is that count, read by snap_abawd_time_limit_status, following the mwr volume's WR-314/WR-315 shape but combined into one pm-scoped item per the design brief's interface.
+tests:
+  - {id: CO-417-T1, month: "2026-10", given: {snap_abawd_countable_month: {"2026-07": true, "2026-08": true, "2026-06": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 3}
+  - {id: CO-417-T2, month: "2026-10", given: {snap_abawd_countable_month: {"2026-07": true}}, month_defaults: {snap_abawd_countable_month: false}, expect: 1}

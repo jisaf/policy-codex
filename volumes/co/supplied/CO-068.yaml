@@ -1,0 +1,12 @@
+id: CO-068
+name: Participates in workfare
+identifier: participates_in_workfare
+kind: supplied
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: The person participated in and complied with a workfare program (7 CFR 273.24(a)(4); 10 CCR 2506-1 4.311.B.4) for the month.
+supplied_by: County workfare program participation record.
+sources: []
+tags: [abawd]
+rationale: 10 CCR 2506-1 4.311.B.4 (S132) lets an ABAWD fulfill the monthly work requirement by participating in and complying with the Colorado Workfare program, which is a program-participation status rather than an hours count already covered by workfare_hours (batch 1); the ABAWD work-requirement rule reads this fact directly, matching how the mwr volume's WR-312 reads an equivalent fact.

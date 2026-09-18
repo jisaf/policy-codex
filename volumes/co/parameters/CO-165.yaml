@@ -1,0 +1,12 @@
+id: CO-165
+name: SNAP ABAWD minimum age
+identifier: snap_abawd_min_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The youngest age subject to the ABAWD time limit under 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102.
+value: 18
+sources: [S127, S128]
+tags: [abawd, age, legal]
+rationale: 7 U.S.C. 2015(o)(3)(A) as amended (S127, S128) exempts individuals "under 18," which snap_is_in_abawd_age_range reads as its floor parameter.

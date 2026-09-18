@@ -44,7 +44,16 @@ export function constraints(
   }
   if (it.kind === "supplied") add(!!it.supplied_by, "Supplied facts say where the value comes from");
   if (it.kind === "parameter") {
-    add(it.value !== undefined && it.value !== null && it.value !== "", "Parameter has a value");
+    // A parameter states its value once, or as dated versions (each with a
+    // value); either satisfies the constraint, but not both, and not neither.
+    const hasValue = it.value !== undefined && it.value !== null && it.value !== "";
+    const versions = it.versions ?? [];
+    const hasVersions = versions.length > 0 &&
+      versions.every((v) => v.value !== undefined && v.value !== null && v.value !== "");
+    // One message, so the pinned fixture reports of unversioned parameters
+    // read exactly as before; a parameter stating both is reported as having
+    // no value, since the two cannot both be its value.
+    add((hasValue || hasVersions) && !(hasValue && hasVersions), "Parameter has a value");
   }
   if (it.kind !== "supplied") {
     add(!!(it.sources && it.sources.length), "At least one source excerpt is cited");

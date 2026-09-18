@@ -1,0 +1,12 @@
+id: CO-175
+name: SNAP student employment exemption hours per week
+identifier: snap_student_employment_hours_per_week
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The weekly hours of employment (or work study) that exempt a half-time higher-education student from the ineligible-student rule.
+value: 20
+sources: [S133, S134, S135]
+tags: [student]
+rationale: 7 U.S.C. 2015(e)(4) (S133), 7 CFR 273.5(b)(5) (S134), and 10 CCR 2506-1 4.306.1.B (S135) all state the 20-hour figure for the student employment exemption, distinct from the 30-hour work-registration figure (CO-163).

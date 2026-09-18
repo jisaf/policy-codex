@@ -1,0 +1,20 @@
+id: CO-418
+name: "SNAP: ABAWD time limit status"
+identifier: snap_abawd_time_limit_status
+kind: derived
+type: one of
+options: [not_subject, within_limit, limit_reached]
+scope: person-month
+program: SNAP
+role: outcome
+meaning: Not subject when the person is outside the ABAWD age range or otherwise exempt from the time limit for the month; within limit when countable months in the preceding 36-month period are below the 3-month limit; otherwise limit reached.
+derived: [case, [[not, snap_is_in_abawd_age_range], "not_subject"], [snap_is_exempt_from_abawd_time_limit, "not_subject"], [["<", snap_abawd_countable_months_in_period, snap_abawd_countable_month_limit], "within_limit"], [else, "limit_reached"]]
+sources: [S127, S130, S132]
+implemented: engine
+tags: [abawd, legal]
+rationale: "No existing item states the ABAWD time-limit outcome; this is the SNAP program's ABAWD status result, proposed as a program outcome, combining snap_is_in_abawd_age_range, snap_is_exempt_from_abawd_time_limit, and snap_abawd_countable_months_in_period the way the mwr volume's WR-318 combines its equivalent facts (that item's additional \"prior law applies\" and \"regained\" branches are out of scope here, since this volume's default_as_of postdates sec. 10102's enactment, and this batch does not model ABAWD's 30-day regain-eligibility rule, which the design brief's item list does not include)."
+tests:
+  - {id: CO-418-T1, month: "2026-10", given: {snap_is_in_abawd_age_range: false, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 0}, expect: not_subject}
+  - {id: CO-418-T2, month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: true, snap_abawd_countable_months_in_period: 0}, expect: not_subject}
+  - {id: CO-418-T3, month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 2}, expect: within_limit}
+  - {id: CO-418-T4, month: "2026-10", given: {snap_is_in_abawd_age_range: true, snap_is_exempt_from_abawd_time_limit: false, snap_abawd_countable_months_in_period: 3}, expect: limit_reached}

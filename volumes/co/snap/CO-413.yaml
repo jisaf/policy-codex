@@ -1,0 +1,16 @@
+id: CO-413
+name: "SNAP: has responsibility for an ABAWD-exempting dependent child"
+identifier: snap_has_responsibility_for_abawd_dependent_child
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: There is a member of the person's SNAP household who is under snap_abawd_dependent_child_age (14) at the month and of whom this person is a parent or whom this person cares for.
+derived: [exists, snap_household_members, [all, ["<", [years_between, [of, [P], date_of_birth], [first_day, [month]]], snap_abawd_dependent_child_age], [any, [rel, [parent], [P]], [in_group, [P], persons_cared_for]]]]
+sources: [S127, S128]
+implemented: engine
+tags: [abawd, age]
+rationale: 7 U.S.C. 2015(o)(3)(C) (S127, S128) states the dependent-child-under-14 ABAWD exception separately from the work-registration child-under-6 exemption (CO-401); this item is the ABAWD-specific fact snap_is_exempt_from_abawd_time_limit reads, matching the shape of the mwr volume's WR-302 but computed for an arbitrary month in context rather than only the determination month.
+tests:
+  - {id: CO-413-T1, month: "2026-10", given: {snap_household_members: [p2], persons_cared_for: []}, relationships: [[parent, p2]], others: {p2: {date_of_birth: "2013-06-01"}}, expect: true}
+  - {id: CO-413-T2, month: "2026-10", given: {snap_household_members: [p2], persons_cared_for: []}, relationships: [[parent, p2]], others: {p2: {date_of_birth: "2012-09-01"}}, expect: false}

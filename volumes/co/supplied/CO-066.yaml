@@ -1,0 +1,12 @@
+id: CO-066
+name: Is complying with TANF work requirements
+identifier: is_complying_with_tanf_work_requirements
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is currently subject to and complying with a work registration requirement under title IV-A of the Social Security Act (Colorado Works) or the Colorado Refugee Services Program work program.
+supplied_by: Colorado Works (CBMS) case record.
+sources: []
+tags: [work_registration]
+rationale: 7 U.S.C. 2015(d)(2)(A) and 10 CCR 2506-1 4.310.3.H (S121, S126) exempt a person subject to and complying with a TANF or refugee-program work requirement; this is a fact about a different benefit program's case status that SNAP eligibility reads but does not itself determine, so it is supplied rather than derived.

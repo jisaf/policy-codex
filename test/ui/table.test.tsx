@@ -52,7 +52,7 @@ describe("TableView", () => {
       .map((i) => i.id)).toEqual(["WR-004"]);
     expect(filterItems(engine, { ...readFilters(route.value), state: "invalid" })
       .map((i) => i.id).sort()).toEqual(
-      ["WR-003", "WR-004", "WR-101", "WR-207", "WR-225", "WR-228", "WR-315"].sort(),
+      ["WR-003", "WR-004", "WR-207", "WR-225", "WR-228", "WR-315"].sort(),
     );
   });
 

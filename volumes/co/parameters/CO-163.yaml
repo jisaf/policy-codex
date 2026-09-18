@@ -1,0 +1,12 @@
+id: CO-163
+name: SNAP work registration employment exemption hours per week
+identifier: snap_work_registration_hours_per_week
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The weekly hours (or their earnings equivalent at the Federal minimum wage) that exempt an employed or self-employed household member from work registration.
+value: 30
+sources: [S121, S123, S126]
+tags: [work_registration]
+rationale: 7 U.S.C. 2015(d)(1)(E) (S121), 7 CFR 273.7(b)(1)(vii) (S123 continuation), and 10 CCR 2506-1 4.310.3.E (S126) all state the 30-hour figure that snap_meets_work_registration_employment_exemption reads; no existing item carries it.

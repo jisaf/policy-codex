@@ -1,0 +1,12 @@
+id: CO-067
+name: Is head of household
+identifier: is_head_of_household
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is the head of the SNAP household, as the household selects or the State agency assigns under 7 U.S.C. 2015(d)(1)(v).
+supplied_by: PEAK application (household's designation of head of household).
+sources: []
+tags: [work_registration, household]
+rationale: The 16-17-year-old work-registration exemption (7 CFR 273.7(b)(1)(i), S123) turns on whether the person is the head of household, a household-level designation this volume does not otherwise derive from relationships alone (the statute lets the household choose any adult parent).

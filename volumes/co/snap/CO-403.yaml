@@ -1,0 +1,17 @@
+id: CO-403
+name: "SNAP: weekly earnings"
+identifier: snap_weekly_earnings_worked
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: Earned income in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported income counts as 0.
+precision: Reads earned_income (a person-month fact) for the determination date's month via the "at" pattern.
+derived: ["/", ["*", [otherwise, [at, earned_income, [det_month]], 0], 12], 52]
+sources: [S121, S123, S126]
+implemented: engine
+tags: [work_registration]
+rationale: The work-registration employment exemption's earnings-equivalent test (7 U.S.C. 2015(d)(1)(E); 7 CFR 273.7(b)(1)(vii), S121/S123/S126) needs weekly earnings, not monthly, to compare against the Federal minimum wage times 30 hours; no existing item converts earned_income to a weekly figure.
+tests:
+  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 942.5}, expect: 217.5}
+  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0}, expect: 0}

@@ -1,0 +1,17 @@
+id: CO-400
+name: "SNAP: is unfit for employment"
+identifier: snap_is_unfit_for_employment
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is medically certified as physically or mentally unfit for employment, whether by a medical statement, an obvious agency finding, or by qualifying as a disabled member under 7 CFR 271.2.
+precision: Reuses snap_is_disabled_member (batch 1) rather than re-testing the disability-benefit facts, since a person receiving SSI, Social Security disability, or a similar benefit is unfit for employment for this purpose as well as elderly-or-disabled for household purposes.
+derived: [any, has_medical_statement_of_unfitness, agency_finds_obviously_unfit, snap_is_disabled_member]
+sources: [S123, S126, S127]
+implemented: engine
+tags: [disability, work_registration, abawd]
+rationale: The medical-unfitness exemption is worded almost identically for general work registration (7 CFR 273.7(b)(1)(ii), S123; 10 CCR 2506-1 4.310.3.C, S126) and for the ABAWD time limit (7 U.S.C. 2015(o)(3)(B), S127); this item is the single shared fact both snap_is_exempt_from_work_registration and snap_is_exempt_from_abawd_time_limit read, instead of duplicating the same disjunction twice.
+tests:
+  - {id: CO-400-T1, as_of: "2026-10-01", given: {has_medical_statement_of_unfitness: true, agency_finds_obviously_unfit: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, expect: true}
+  - {id: CO-400-T2, as_of: "2026-10-01", given: {has_medical_statement_of_unfitness: false, agency_finds_obviously_unfit: false, receives_ssi: false, receives_social_security_disability: false, receives_general_assistance: false, receives_va_disability_benefits: false, is_disabled_ssa: false, is_blind: false}, expect: false}

@@ -42,13 +42,13 @@ describe("engine fixtures", () => {
     expect(failing).toEqual(["WR-207", "WR-225", "WR-228", "WR-315"]);
   });
 
-  it("pins the seven known constraint failures", () => {
+  it("pins the six known constraint failures", () => {
     expect(constraints).toHaveLength(138);
     const failing = constraints
       .filter((c) => c.report.some((r) => !r.ok && r.level === "error"))
       .map((c) => c.id);
     expect(failing.sort()).toEqual(
-      ["WR-003", "WR-004", "WR-101", "WR-207", "WR-225", "WR-228", "WR-315"].sort(),
+      ["WR-003", "WR-004", "WR-207", "WR-225", "WR-228", "WR-315"].sort(),
     );
   });
 });

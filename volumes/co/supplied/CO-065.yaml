@@ -1,0 +1,12 @@
+id: CO-065
+name: Has responsibility for an incapacitated person
+identifier: has_responsibility_for_incapacitated_person
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person is responsible for the care of an incapacitated household member (not a dependent child), the second prong of the 7 U.S.C. 2015(d)(2)(B) / 7 CFR 273.7(b)(1)(iv) work-registration exemption.
+supplied_by: Applicant statement, verified by the eligibility technician at 10 CCR 2506-1 4.310.1 if questionable.
+sources: []
+tags: [work_registration]
+rationale: The work-registration exemption for caring for a dependent child under 6 reads "or an incapacitated person" (S121, S124); no existing fact in this volume's interface captures the incapacitated-person branch, and unlike the child-under-6 branch it cannot be derived from age alone.

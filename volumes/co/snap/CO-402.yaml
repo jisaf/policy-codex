@@ -1,0 +1,17 @@
+id: CO-402
+name: "SNAP: weekly average hours worked"
+identifier: snap_weekly_hours_worked
+kind: derived
+type: hours
+scope: person
+program: SNAP
+meaning: Hours worked in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported hours counts as 0.
+precision: Reads hours_worked (a person-month fact) for the determination date's month via the "at" pattern, since this item's own scope is person.
+derived: ["/", ["*", [otherwise, [at, hours_worked, [det_month]], 0], 12], 52]
+sources: [S121, S123, S126, S133, S135]
+implemented: engine
+tags: [work_registration, student]
+rationale: Both the work-registration employment exemption (30 hours/week, S121/S123/S126) and the student employment exemption (20 hours/week, S133/S135) test a weekly-average-hours figure computed the same way; this item is the shared conversion both snap_meets_work_registration_employment_exemption and snap_meets_student_employment_exemption read, following the same 12/52 conversion as the mwr volume's WR-304.
+tests:
+  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 130}, expect: 30}
+  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138}, expect: 31.846153846153847}

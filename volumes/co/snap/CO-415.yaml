@@ -1,0 +1,17 @@
+id: CO-415
+name: "SNAP: meets the ABAWD work requirement for the month"
+identifier: snap_meets_abawd_work_requirement
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: For the month the person worked, participated in a work program, or did a combination of the two for at least snap_abawd_work_hours_per_month (80) hours, or participated in and complied with the Colorado Workfare program.
+derived: [any, [">=", ["+", [otherwise, hours_worked, 0], [otherwise, work_program_hours, 0]], snap_abawd_work_hours_per_month], participates_in_workfare]
+sources: [S129, S132]
+implemented: engine
+tags: [abawd]
+rationale: 7 CFR 273.24(a)(1) and 10 CCR 2506-1 4.311.B (S129, S132) state the 20-hours-a-week-averaged-monthly requirement as 80 hours combining work and work-program participation, or workfare participation; this item is the fact snap_abawd_countable_month reads, matching the structure of the mwr volume's WR-312.
+tests:
+  - {id: CO-415-T1, month: "2026-10", given: {hours_worked: 80, work_program_hours: 0, participates_in_workfare: false}, expect: true}
+  - {id: CO-415-T2, month: "2026-10", given: {hours_worked: 40, work_program_hours: 30, participates_in_workfare: false}, expect: false}
+  - {id: CO-415-T3, month: "2026-10", given: {hours_worked: 0, work_program_hours: 0, participates_in_workfare: true}, expect: true}

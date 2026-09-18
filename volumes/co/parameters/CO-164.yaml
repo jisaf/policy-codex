@@ -1,0 +1,12 @@
+id: CO-164
+name: SNAP work registration dependent child exemption age
+identifier: snap_work_registration_child_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The age below which responsibility for a dependent child exempts a household member from work registration.
+value: 6
+sources: [S121, S124]
+tags: [work_registration, age]
+rationale: 7 U.S.C. 2015(d)(2)(B) (S121) and 7 CFR 273.7(b)(1)(iv) (S124) set the age-6 threshold for the work-registration child-care exemption, distinct from the ABAWD dependent-child age (14) and the student dependent-care ages (6, 12) this batch also parameterizes.

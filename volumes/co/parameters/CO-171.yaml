@@ -1,0 +1,12 @@
+id: CO-171
+name: SNAP ineligible student minimum age
+identifier: snap_student_min_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The youngest age at which a half-time higher-education student is subject to the ineligible-student rule.
+value: 18
+sources: [S133, S134, S135]
+tags: [student, age]
+rationale: 7 U.S.C. 2015(e)(1) (S133), 7 CFR 273.5(b)(1) (S134), and 10 CCR 2506-1 4.306,A/B,1 (S135) each place the floor at 18 for the student rule, distinct from the ABAWD and work-registration age parameters.

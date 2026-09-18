@@ -1,0 +1,17 @@
+id: CO-407
+name: "SNAP: meets the student employment exemption"
+identifier: snap_meets_student_employment_exemption
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The student works at least 20 hours a week on average and is paid for that employment, or is approved for a State or federally financed work-study program.
+derived: [any, [">=", snap_weekly_hours_worked, snap_student_employment_hours_per_week], is_approved_for_work_study]
+sources: [S133, S134, S135]
+implemented: engine
+tags: [student]
+rationale: 7 U.S.C. 2015(e)(4), 7 CFR 273.5(b)(5)-(6), and 10 CCR 2506-1 4.306.1.B-C (S133, S134, S135) state the employment and work-study student exemptions together as alternative ways to satisfy the same 20-hour figure; combining them lets snap_is_student_exempt read one fact, reusing snap_weekly_hours_worked (CO-402) rather than re-deriving the hours conversion.
+tests:
+  - {id: CO-407-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 92, is_approved_for_work_study: false}, expect: true}
+  - {id: CO-407-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_approved_for_work_study: false}, expect: false}
+  - {id: CO-407-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_approved_for_work_study: true}, expect: true}

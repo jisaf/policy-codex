@@ -1,0 +1,12 @@
+id: CO-161
+name: SNAP work registration minimum age
+identifier: snap_work_registration_min_age
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The youngest age at which a household member is subject to general SNAP work registration, absent the 16-17 exemption.
+value: 16
+sources: [S122, S123]
+tags: [work_registration, age]
+rationale: 7 CFR 273.7(b)(1)(i) (S123) and 10 CCR 2506-1 4.310.3.A (S126) set the age floor for work registration as its own numeric threshold, separate from the ABAWD and student age parameters this batch also authors.

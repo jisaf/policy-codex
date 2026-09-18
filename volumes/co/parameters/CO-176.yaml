@@ -1,0 +1,13 @@
+id: CO-176
+name: SNAP ABAWD H.R.1 changes effective date
+identifier: snap_abawd_hr1_effective_date
+kind: parameter
+type: calendar date
+scope: global
+program: SNAP
+meaning: The date from which the Pub. L. 119-21 sec. 10102 amendments to the ABAWD exceptions (7 U.S.C. 2015(o)(3)) apply.
+assumption: Sec. 10102 states no separate effective date for its ABAWD amendments and no general effective-date section covering it was found in the fetched text of Pub. L. 119-21; the draft uses the Act's enactment date, July 4, 2025 (per documents.yaml's D-5 date), as the effective date.
+value: "2025-07-04"
+sources: [S128]
+tags: [abawd, legal]
+rationale: At least one ABAWD rule in this volume must carry an effective date per the design brief; snap_is_in_abawd_age_range's effective range reads this parameter rather than a literal date, so a later correction (if a stated effective date is found) changes one place.

@@ -1,0 +1,18 @@
+id: CO-404
+name: "SNAP: meets the work registration employment exemption"
+identifier: snap_meets_work_registration_employment_exemption
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person works at least 30 hours a week on average, or earns weekly wages at least equal to the Federal minimum wage multiplied by 30 hours.
+derived: [any, [">=", snap_weekly_hours_worked, snap_work_registration_hours_per_week], [">=", snap_weekly_earnings_worked, ["*", federal_minimum_wage, snap_work_registration_hours_per_week]]]
+sources: [S121, S123, S126]
+implemented: engine
+tags: [work_registration]
+open: [OQ-35]
+rationale: 7 U.S.C. 2015(d)(1)(E), 7 CFR 273.7(b)(1)(vii), and 10 CCR 2506-1 4.310.3.E (S121, S123, S126) state this exemption as a single either/or test; combining the two arms here, reading snap_weekly_hours_worked and snap_weekly_earnings_worked, lets snap_is_exempt_from_work_registration read one fact instead of repeating both comparisons.
+tests:
+  - {id: CO-404-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, earned_income: 0}, expect: true}
+  - {id: CO-404-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 100, earned_income: 942.5}, expect: true}
+  - {id: CO-404-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 100, earned_income: 900}, expect: false}
