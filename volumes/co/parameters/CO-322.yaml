@@ -5,6 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: CCCAP
+meaning: The upper age limit (exclusive) under which a parent with physical custody of an eligible child can qualify as a CCCAP teen parent.
 value: 21
 sources: [S481]
 tags: [age]

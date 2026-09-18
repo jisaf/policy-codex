@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: LEAP
 meaning: Whether at least one member of the LEAP household is a U.S. citizen, national, or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17 - an applicant who does not meet lawful permanent residency or citizenship requirements is excluded as a household member (their income is still counted), so the household needs at least one member who does.
-derived: [exists, leap_household_members, [of, [P], ["in", citizenship_status, [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]]]
+derived: [exists, leap_household_members, ["in", [of, [P], citizenship_status], [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]]
 sources: [S493, S494]
 implemented: engine
 tags: [immigration, legal]

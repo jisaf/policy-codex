@@ -2482,3 +2482,153 @@ Document: D-62
 > A. If the client has income, apply the following income disregards:
 > 1. To determine countable earned income: a. Deduct $65 from the monthly gross income; and, b. Divide the remainder by two (2). c. The result is the countable earned income.
 > 2. To determine countable unearned income: a. Determine the client's unearned income from all sources. b. Subtract any amount received from SSI. c. Deduct $20 from the remainder.
+
+### S481. CCCAP adult caretaker and teen parent definitions
+
+Document: D-64
+
+8 CCR 1403-1-3.103.C, ZZZZ. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.103
+
+> C. "Adult caretaker" means a person in the home who is financially contributing to the welfare of the child and is the parent, adoptive parent, step-parent, legal guardian, or person who is acting in "loco parentis" and has physical custody of the child during the period of time child care is being requested.
+> ZZZZ. "Teen parent" means a parent under twenty-one (21) years of age who has physical custody of his/her child(ren) for the period that care is requested and is in an eligible activity such as attending junior high/middle school, high school, GED program, vocational/technical training activity, employment, self-employment, or job search.
+
+### S482. CCCAP eligible activity and eligible child definitions
+
+Document: D-64
+
+8 CCR 1403-1-3.103.OO; 3.111.F. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.103
+
+> OO. "Eligible activity,", for the purpose of Low-Income Child Care, means the activity in which the teen parent(s) or adult caretaker(s) are involved. This may include job search; employment; self-employment; training; basic education; or, post-secondary education. For teen parents, training and teen parent education are approved activities for all counties.
+> F. Eligible Child An "eligible child" is a child from birth to the age thirteen (13) years who needs child care services during a portion of the day, but less than twenty four (24) hours, and is physically residing with the eligible adult caretaker(s) or teen parent(s); or a child with verified additional care needs under the age of nineteen (19) who is physically or mentally incapable of caring for themselves or is under court supervision and is physically residing with the eligible adult caretaker(s) or teen parent(s).
+
+### S483. CCCAP eligible participants
+
+Document: D-64
+
+8 CCR 1403-1-3.110. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.110
+
+> Eligible CCCAP participants must: be an adult caretaker(s) or teen parent(s) of a child; meet program guidelines; be a low-income adult caretaker(s) or teen parent(s) participating in a low-income eligible activity; and need child care assistance.
+
+### S484. CCCAP low-income eligibility criteria
+
+Document: D-64
+
+8 CCR 1403-1-3.111.A-B. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> To be eligible for Low-Income Child Care assistance the following criteria shall be met:
+> A. The adult caretaker(s) and teen parent(s) shall be verified residents of the county from which assistance is sought and received at the time of application and re-determination.
+> B. The adult caretaker(s) or teen parent(s) shall:
+> 1. Be actively participating in an eligible activity;
+> 2. Meet the income eligibility guidelines set by the Department; and
+> 3. Have physical custody of the child for the period they are requesting care.
+
+### S485. CCCAP low-income eligibility guidelines, income table
+
+Document: D-64
+
+8 CCR 1403-1-3.111.H. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> H. Low-Income Eligibility Guidelines
+> 1. Adult caretaker(s) or teen parent(s) gross income must not exceed eighty-five percent (85%) of the state median income.
+> a. Entry eligibility shall be set by the Department at a level based on the self-sufficiency standard, not to be set below one hundred eighty-five percent (185%) of the federal poverty level.
+> b. Exit income eligibility must be eighty-five percent (85%) of the state median income.
+> 2. Effective October 1, 2024, monthly gross income levels, for one-hundred percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-five percent (85%) of State Median Income (SMI) for the corresponding household size are as follows: Family Size 100% Federal Poverty Guideline (FPG) 85% State Median Income (SMI) (State and Federal Maximum Income Limit) 1 $1,255.00 $4,792.16 2 $1,703.33 $6,266.68 3 $2,151.67 $7,741.19 4 $2,600.00 $9,215.70 5 $3,048.33 $10,690.21 6 $3,496.67 $12,164.72 7 $3,945.00 $12,441.20 8 $4,393.33 $12,717.67 Each Additional person $448.33 $276.47
+
+### S486. CCCAP income inclusions and exclusions (child earnings excluded)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.I.1, J.1. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> I. Income Inclusions Each of the following are considered countable income and are taken into consideration for eligibility for child care.
+> 1. Gross earnings, salary, armed forces pay (including but not limited to basic pay, basic assistance for housing (BAH) and basic assistance for subsistence (BAS), hazard duty pay, and separation pay), commissions, tips, and cash bonuses are counted before deductions are made for taxes, bonds, pensions, union dues and similar deductions.
+> J. Income Exclusions Each of the following are not considered countable income and are not taken into consideration for eligibility for child care.
+> 1. Earnings of a child in the household when not a teen parent
+
+### S487. CCCAP Colorado Works Child Care eligibility
+
+Document: D-64
+
+8 CCR 1403-1-3.115.A; 3.116.A. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.115
+
+> A. Adult caretakers or teen parents who are approved for Colorado Works and are determined work eligible per Colorado Works rule (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB) are eligible to receive Colorado Works Child Care for at least twelve (12) months unless the adult caretaker or teen parent has been determined eligible for transition to Low-Income Child Care prior to the end of the twelve (12) month period.
+> A. Adult caretakers or teen parents that have been determined eligible for Colorado Works, have entered into a current individualized plan, are participating in allowable work activities as defined in Colorado Works rules (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB), and have been referred for child care by the county Colorado Works worker will be considered to be participating in an eligible activity and must receive Colorado Works Child Care for at least twelve (12) months unless the adult caretaker or teen parent transitions to Low-Income Child Care prior to the end of the twelve (12) month period.
+
+### S488. CCCAP protective services households
+
+Document: D-64
+
+8 CCR 1403-1-3.118.A; 3.119.A, D-E. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.118
+
+> A. Protective services households refers to households in which child(ren) have been placed by the county in foster home care, kinship foster home care, or non-certified kinship care, and have an open child welfare case. At the option of the county, the county may provide protective services child care utilizing Child Care Development Funds (CCDF) rather than Child Welfare funds.
+> A. Protective services households are considered a household of one for purposes of determining income eligibility. The only countable income for a protective services household is the income that is received by the child(ren) that have been placed in kinship or foster care. Child support income shall not be included as income. Child support income is intercepted by the county child welfare department.
+> D. Protective services households are not subject to low-income eligible activity requirements.
+> E. Protective services households are not subject to residency verification requirements. The county with the open child welfare case shall be considered the county of residency.
+
+### S489. LEAP definitions: household, primary heating source, elderly
+
+Document: D-63
+
+9 CCR 2503-7-3.751.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.751
+
+> "Elderly": For the purposes of these rules, the term elderly means aged 60 or over. "Household": The term "household" shall mean any individual or group of individuals who are living together as one economic unit for whom primary heating fuel is customarily purchased in common or who make undesignated payments for heat in the form of rent. "Primary Heating Source": The primary heating system that provides heat to the dwelling such as a furnace, wood burning stove or boiler. Temporary or portable heating sources are not considered a primary heating source and, therefore, are not eligible for LEAP assistance.
+
+### S490. LEAP households: composition rules
+
+Document: D-63
+
+9 CCR 2503-7-3.751.2. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.751
+
+> D. The following cannot be classified as separate households:
+> 1. Husband and wife living together;
+> 2. Children under eighteen (18) years of age and living in the same dwelling as the parent or guardian, unless emancipated;
+> 3. Individuals that enter into civil unions.
+
+### S491. LEAP program eligibility requirements and income/household-size test
+
+Document: D-63
+
+9 CCR 2503-7-3.752.2; 3.752.22.D. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> 3.752.2 PROGRAM ELIGIBILITY REQUIREMENTS [Rev. eff. 12/1/14] To be determined eligible for a Heating Fuel Assistance Program payment, households must, at time of application, be vulnerable to the rising costs of home heating, and meet income and other requirements of the program as defined in these regulations. The following factors shall be considered as of the date of application: Colorado state residency, U.S. citizenship/alien status, income, vulnerability, fuel type, household composition, shared living arrangements, dwelling type, and estimated home heating costs.
+> D. All applicant households whose countable income for the eligibility period is up to and including 60 percent (60%) of the state median income level released by the U.S Department of Health and Human Services for federal fiscal year 2023 shall meet the income requirements for the heating fuel assistance program. The state department shall adjust the income limits annually based on funds available and the state median income guidelines.
+
+### S492. LEAP vulnerability to heating cost
+
+Document: D-63
+
+9 CCR 2503-7-3.752.25.A, B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> A. A household shall be vulnerable in order to qualify for Heating Fuel Assistance Program benefits. Vulnerability shall mean the household must be responsible for the costs of home heating as defined below:
+> 1. The household is paying home heating costs directly to a vendor and is subject to home heating cost increases.
+> 2. The household is living in non-subsidized housing and is paying home heating costs either in the form of rent or as a separate charge in addition to rent.
+> B. Households in the following living arrangements shall not be considered to be vulnerable:
+> 6. Any applicant, or applicant household who is considered homeless or resides in non-traditional dwellings;
+
+### S493. LEAP qualified alien definition
+
+Document: D-63
+
+9 CCR 2503-7-3.753.16. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
+
+> 3.753.16 Qualified Alien [Eff. 12/1/14] A "qualified alien" is defined as follows:
+> A. An alien lawfully admitted for permanent residence;
+> D. A refugee;
+> E. An asylee;
+> G. A Cuban or Haitian entrant;
+
+### S494. LEAP citizenship requirement, household exclusion but income counted
+
+Document: D-63
+
+9 CCR 2503-7-3.753.17 (Citizenship Requirements). https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
+
+> An applicant who does not meet lawful permanent residency or citizenship requirements shall not be included as a household member; however, all countable income of this individual shall be counted as part of the household's total income. The household's application shall not be denied due to lack of documentation regarding citizenship requirements if there are other household members who meet the citizenship requirements (i.e., minors born in the United States).
+
+### S495. LEAP Colorado residency
+
+Document: D-63
+
+9 CCR 2503-7-3.753.21. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
+
+> 3.753.21 Colorado Residency [Eff. 12/1/14] To be eligible for assistance, an applicant shall be a resident of Colorado at the time application is made. There shall be no durational residence requirement. An applicant or recipient who establishes intent to remain in Colorado shall, for public assistance purposes, is considered a current resident.

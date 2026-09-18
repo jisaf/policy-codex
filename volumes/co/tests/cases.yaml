@@ -32,6 +32,23 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        expects_institutional_stay_of_thirty_days: true
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        csra_maximum_standard: 150000
+        mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
@@ -92,7 +109,14 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -120,6 +144,26 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        expects_institutional_stay_of_thirty_days: false
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        csra_maximum_standard: 150000
+        mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        home_equity: 210000
+        countable_resources_couple: 46000
+        countable_resources_individual: 44100
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
@@ -174,7 +218,14 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -456,8 +507,33 @@
   # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
   # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
   # children are Medicaid-eligible and so not CHP+ eligible.
+  # Non-MAGI Medicaid (phase 4). p1 is institutionalized from 2026-10-01 with
+  # gross income 2030, within the special income group (3 x 994 = 2982). The
+  # couple's resources are 46000; with the ILLUSTRATIVE spousal standards
+  # stated above (CSRA minimum 30000, maximum 150000, MMMNA 2600 and cap 4000,
+  # home equity limit 700000: the CMS 2026 figures are not in this volume,
+  # OQ-91) the CSRA is max(30000, 23000) = 30000, leaving 16000 countable to
+  # p1, over the 2000 limit: ineligible on resources until spend-down. Were she
+  # eligible, MMMNA = 2600 + (1100 shelter - 30% of 2600) = 2920, the spouse
+  # allowance 2920 - 1180 = 1740, and the patient payment 2030 - 75 - 1740 =
+  # 215. p2 (community spouse, income 1180, individual resources 44100 over the
+  # illustrative MSP limit 10000) is in no MSP, SSI-related or Buy-In group.
   expect:
     p1:
+      ma_is_institutionalized: true
+      ma_meets_special_income_group: {"2026-10": true}
+      ma_ltc_couple: true
+      ma_csra: 30000
+      ma_institutionalized_spouse_countable_resources: 16000
+      ma_meets_ltc_resource_standard: false
+      ma_home_equity_disqualifies: false
+      ma_ltc_eligibility_status: {"2026-10": ineligible_resources}
+      ma_mmmna: {"2026-10": 2920}
+      ma_community_spouse_income_allowance: {"2026-10": 1740}
+      ma_patient_payment: {"2026-10": 215}
+      ma_ssi_related_category: {"2026-10": none}
+      ma_msp_category: {"2026-10": none}
+      ma_buy_in_category: {"2026-10": none}
       ma_magi_household_members: [p1, p2]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 3210}
@@ -476,6 +552,12 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p2:
+      ma_is_institutionalized: false
+      ma_ltc_couple: false
+      ma_ltc_eligibility_status: {"2026-10": not_institutionalized_or_waiver}
+      ma_ssi_related_category: {"2026-10": none}
+      ma_msp_category: {"2026-10": none}
+      ma_buy_in_category: {"2026-10": none}
       ma_magi_household_members: [p1, p2]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 3210}
@@ -584,6 +666,25 @@
   persons:
     p1:
       facts:
+        expects_institutional_stay_of_thirty_days: true
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        csra_maximum_standard: 150000
+        mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        home_equity: 210000
+        countable_resources_individual: 1900
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
@@ -640,7 +741,14 @@
         institution_entry_date: "2026-10-01"
         meets_nursing_facility_level_of_care: true
         countable_resources_couple: 46000
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -667,6 +775,26 @@
         pension_income: 610
     p2:
       facts:
+        expects_institutional_stay_of_thirty_days: false
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        csra_maximum_standard: 150000
+        mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        home_equity: 210000
+        countable_resources_couple: 46000
+        countable_resources_individual: 44100
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
@@ -719,7 +847,14 @@
         lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         in_medical_institution: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -992,8 +1127,33 @@
   # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
   # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
   # children are Medicaid-eligible and so not CHP+ eligible.
+  # Non-MAGI Medicaid (phase 4). p1 is institutionalized from 2026-10-01 with
+  # gross income 2030, within the special income group (3 x 994 = 2982). The
+  # couple's resources are 46000; with the ILLUSTRATIVE spousal standards
+  # stated above (CSRA minimum 30000, maximum 150000, MMMNA 2600 and cap 4000,
+  # home equity limit 700000: the CMS 2026 figures are not in this volume,
+  # OQ-91) the CSRA is max(30000, 23000) = 30000, leaving 16000 countable to
+  # p1, over the 2000 limit: ineligible on resources until spend-down. Were she
+  # eligible, MMMNA = 2600 + (1100 shelter - 30% of 2600) = 2920, the spouse
+  # allowance 2920 - 1180 = 1740, and the patient payment 2030 - 75 - 1740 =
+  # 215. p2 (community spouse, income 1180, individual resources 44100 over the
+  # illustrative MSP limit 10000) is in no MSP, SSI-related or Buy-In group.
   expect:
     p1:
+      ma_is_institutionalized: true
+      ma_meets_special_income_group: {"2026-11": true}
+      ma_ltc_couple: true
+      ma_csra: 30000
+      ma_institutionalized_spouse_countable_resources: 16000
+      ma_meets_ltc_resource_standard: false
+      ma_home_equity_disqualifies: false
+      ma_ltc_eligibility_status: {"2026-11": ineligible_resources}
+      ma_mmmna: {"2026-11": 2920}
+      ma_community_spouse_income_allowance: {"2026-11": 1740}
+      ma_patient_payment: {"2026-11": 215}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": none}
+      ma_buy_in_category: {"2026-11": none}
       ma_magi_household_members: [p1, p2]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-11": 3210}
@@ -1012,6 +1172,12 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p2:
+      ma_is_institutionalized: false
+      ma_ltc_couple: false
+      ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": none}
+      ma_buy_in_category: {"2026-11": none}
       ma_magi_household_members: [p1, p2]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-11": 3210}

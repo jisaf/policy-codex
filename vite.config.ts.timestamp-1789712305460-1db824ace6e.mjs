@@ -1,0 +1,17 @@
+// vite.config.ts
+import { defineConfig } from "file:///home/user/policy-codex/node_modules/vitest/dist/config.js";
+import preact from "file:///home/user/policy-codex/node_modules/@preact/preset-vite/dist/esm/index.mjs";
+var vite_config_default = defineConfig({
+  base: "./",
+  plugins: [preact()],
+  build: { outDir: "dist", emptyOutDir: true },
+  test: {
+    environment: "node",
+    environmentMatchGlobs: [["test/ui/**", "jsdom"]],
+    include: ["test/**/*.test.ts", "test/**/*.test.tsx"]
+  }
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCIvaG9tZS91c2VyL3BvbGljeS1jb2RleFwiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9maWxlbmFtZSA9IFwiL2hvbWUvdXNlci9wb2xpY3ktY29kZXgvdml0ZS5jb25maWcudHNcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfaW1wb3J0X21ldGFfdXJsID0gXCJmaWxlOi8vL2hvbWUvdXNlci9wb2xpY3ktY29kZXgvdml0ZS5jb25maWcudHNcIjtpbXBvcnQgeyBkZWZpbmVDb25maWcsIHR5cGUgUGx1Z2luIH0gZnJvbSBcInZpdGVzdC9jb25maWdcIjtcbmltcG9ydCBwcmVhY3QgZnJvbSBcIkBwcmVhY3QvcHJlc2V0LXZpdGVcIjtcblxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHtcbiAgYmFzZTogXCIuL1wiLFxuICBwbHVnaW5zOiBbcHJlYWN0KCkgYXMgdW5rbm93biBhcyBQbHVnaW5dLFxuICBidWlsZDogeyBvdXREaXI6IFwiZGlzdFwiLCBlbXB0eU91dERpcjogdHJ1ZSB9LFxuICB0ZXN0OiB7XG4gICAgZW52aXJvbm1lbnQ6IFwibm9kZVwiLFxuICAgIGVudmlyb25tZW50TWF0Y2hHbG9iczogW1tcInRlc3QvdWkvKipcIiwgXCJqc2RvbVwiXV0sXG4gICAgaW5jbHVkZTogW1widGVzdC8qKi8qLnRlc3QudHNcIiwgXCJ0ZXN0LyoqLyoudGVzdC50c3hcIl0sXG4gIH0sXG59KTtcbiJdLAogICJtYXBwaW5ncyI6ICI7QUFBdVAsU0FBUyxvQkFBaUM7QUFDalMsT0FBTyxZQUFZO0FBRW5CLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzFCLE1BQU07QUFBQSxFQUNOLFNBQVMsQ0FBQyxPQUFPLENBQXNCO0FBQUEsRUFDdkMsT0FBTyxFQUFFLFFBQVEsUUFBUSxhQUFhLEtBQUs7QUFBQSxFQUMzQyxNQUFNO0FBQUEsSUFDSixhQUFhO0FBQUEsSUFDYix1QkFBdUIsQ0FBQyxDQUFDLGNBQWMsT0FBTyxDQUFDO0FBQUEsSUFDL0MsU0FBUyxDQUFDLHFCQUFxQixvQkFBb0I7QUFBQSxFQUNyRDtBQUNGLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==

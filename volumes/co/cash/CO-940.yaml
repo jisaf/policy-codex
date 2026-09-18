@@ -11,8 +11,8 @@ derived: [">=", age, af_oap_age]
 sources: [S441, S449, S455]
 implemented: engine
 tags: [cash, oap, age]
-rationale: "No existing item states the OAP age test. af_oap_group (CO-941) and af_category (CO-953) need it. Same shape as ma_is_aged (CO-600, age >= a parameter), acknowledged: Medicaid's SSI-related aged category floor is 65 (42 CFR 435.520) while OAP's is 60 (26-2-111(2)(a)(I)), so the two are distinct policy thresholds owned by different programs."
-nearest: [CO-600]
+rationale: "No existing item states the OAP age test. af_oap_group (CO-941) and af_category (CO-953) need it. Same shape as ma_is_aged (CO-600, age >= a parameter) and snap_is_elderly (CO-301, age >= a parameter), acknowledged: SNAP's elderly age is 60 (7 CFR 271.2), Medicaid's SSI-related aged category floor is 65 (42 CFR 435.520), and OAP's age floor is 60 (26-2-111(2)(a)(I)) - three distinct policy thresholds, each owned by a different program (OAP's coinciding numerically with SNAP's, but stated by its own statute)."
+nearest: [CO-600, CO-301]
 tests:
   - {id: CO-940-T1, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12"}, expect: true}
   - {id: CO-940-T2, as_of: "2026-10-01", given: {date_of_birth: "1980-01-01"}, expect: false}

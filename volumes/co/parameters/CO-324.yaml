@@ -5,6 +5,7 @@ kind: parameter
 type: money
 scope: global
 program: CCCAP
+meaning: The monthly dollar amount added to cccap_poverty_guideline_table for each household member above eight.
 precision: Monthly dollars added per household member above 8, effective October 1, 2024.
 versions:
   - from: "2024-10-01"

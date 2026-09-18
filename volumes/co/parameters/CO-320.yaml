@@ -5,6 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: CCCAP
+meaning: The upper age limit (exclusive) under which a child qualifies as a CCCAP eligible child without needing verified additional care needs.
 value: 13
 sources: [S482]
 tags: [age]

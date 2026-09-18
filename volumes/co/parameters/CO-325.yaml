@@ -5,6 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: LEAP
+meaning: The upper age limit (exclusive) under which a child living with a parent or guardian cannot be a separate LEAP household and whose earned income is excluded from LEAP household income.
 value: 18
 sources: [S490]
 tags: [age, household]
