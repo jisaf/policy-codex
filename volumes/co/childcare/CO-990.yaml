@@ -1,0 +1,19 @@
+id: CO-990
+name: "CCCAP: household child"
+identifier: cccap_is_household_child
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: The person is a child who belongs to the CCCAP household of the adult caretaker or teen parent they live with under 8 CCR 1403-1 3.103.GGG - under eighteen, or under nineteen and still in high school.
+precision: is_enrolled_in_school is read as "still in high school" for an eighteen-year-old; the volume does not separately state the school level.
+derived: [any, ["<", age, cccap_household_child_age_limit], [all, ["<", age, cccap_household_student_age_limit], is_enrolled_in_school]]
+sources: [S496]
+implemented: engine
+tags: [household, age]
+rationale: "Nearest is cw_is_dependent_child (CO-901), the same shape from the Colorado Works definition (under 18, or 18 in secondary school expected to finish before 19); CCCAP's household definition is a different rule with its own limits and no completion-before-19 test, so a separate item keeps each program's household tied to its own text. cccap_household_members (CO-982) reads it as the edge condition of its closure."
+tests:
+  - {id: CO-990-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-990-T2, as_of: "2026-10-01", given: {date_of_birth: "2008-04-08", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-990-T3, as_of: "2026-10-01", given: {date_of_birth: "2008-04-08", is_enrolled_in_school: false}, expect: false}
+  - {id: CO-990-T4, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", is_enrolled_in_school: true}, expect: false}

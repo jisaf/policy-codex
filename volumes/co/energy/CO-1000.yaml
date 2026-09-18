@@ -7,7 +7,7 @@ scope: person
 program: LEAP
 meaning: The individuals living together as one economic unit for whom primary heating fuel is customarily purchased in common, or who make undesignated payments for heat in the form of rent, under 9 CCR 2503-7 3.751.1's "Household" definition - a spouse, or a child under eighteen living in the same dwelling as the parent or guardian (unless emancipated), per 3.751.2.D, reciprocally closed.
 precision: As with snap_household_members (CO-305), a stated spouse or parent/child relationship edge is read as living together for LEAP purposes; this volume does not separately model 3.751.2.E's separate-household election for a parent living with an ex-spouse after divorce or legal separation, or 3.751.21's permanent-separation test.
-derived: [reachable, [spouse, parent, child], [any, [rel, [spouse], [P]], [all, [rel, [parent, child], [P]], ["<", [of, [P], age], leap_household_child_age_limit]]]]
+derived: [reachable, [spouse, parent, child], [any, [rel, [spouse], [P]], [all, [rel, [parent], [P]], ["<", [of, [P], age], leap_household_child_age_limit]], [all, [rel, [child], [P]], ["<", age, leap_household_child_age_limit]]]]
 sources: [S489, S490]
 implemented: engine
 tags: [household]
@@ -15,3 +15,7 @@ rationale: No existing item in this volume builds the LEAP household closure; le
 tests:
   - {id: CO-1000-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, others: {p2: {date_of_birth: "1981-03-01"}, p4: {date_of_birth: "2009-04-08"}}, relationships: [[spouse, p1, p2], [parent, p1, p4]], expect: [p1, p2, p4]}
   - {id: CO-1000-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01"}, relationships: [], expect: [p1]}
+  # From the child's own perspective the edge to the parent is crossed because the child is under eighteen.
+  - {id: CO-1000-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, others: {p3: {date_of_birth: "1985-01-22"}, p5: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p3, p1], [parent, p1, p5]], expect: [p1, p3, p5]}
+  # An adult child living with her parents may be a separate LEAP household (3.751.2.D.2 joins only children under eighteen).
+  - {id: CO-1000-T4, as_of: "2026-10-01", given: {date_of_birth: "1947-05-10"}, others: {p2: {date_of_birth: "1945-08-30"}, p3: {date_of_birth: "1984-06-15"}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p2]}

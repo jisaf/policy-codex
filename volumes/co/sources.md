@@ -2632,3 +2632,26 @@ Document: D-63
 9 CCR 2503-7-3.753.21. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
 
 > 3.753.21 Colorado Residency [Eff. 12/1/14] To be eligible for assistance, an applicant shall be a resident of Colorado at the time application is made. There shall be no durational residence requirement. An applicant or recipient who establishes intent to remain in Colorado shall, for public assistance purposes, is considered a current resident.
+
+### S496. CCCAP "Household" definition
+
+Document: D-64
+
+8 CCR 1403-1-3.103.GGG. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.103
+
+> GGG. "Household" includes: all children in the home who are under eighteen (18) years of age; all children under nineteen (19) years of age who are still in high school and the responsibility of the adult caretaker(s); and the adult caretaker(s) or teen parent(s).
+
+### S497. CCCAP eligible household compositions (one or two caretakers)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.D.1. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> D. Eligible Households
+> 1. The following household compositions qualify as eligible households:
+> a. Households with one adult caretaker or teen parent, where the adult caretaker or teen parent is engaged in a low-income eligible activity, meets low-income eligibility guidelines, has physical custody of the child, and needs child care assistance.
+> b. Households with two adult caretakers or teen parents, when one adult caretaker or teen parent is involuntarily out of the home. Such a household shall be considered a household with one adult caretaker or teen parent.
+> c. Households with two (2) adult caretakers or teen parents that need child care, where:
+> 1) Both adult caretakers or teen parents are engaged in a low-income eligible activity;
+> 2) One adult caretaker or teen parent is voluntarily absent from the home, but both adult caretakers or teen parents are in a low-income eligible activity; or
+> 3) One adult caretaker or teen parent is engaged in a low-income eligible activity and the other adult caretaker or teen parent is incapacitated such that, according to a physician's statement or other medical verification, they are unable to care for the child(ren).

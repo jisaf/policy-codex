@@ -6,12 +6,12 @@ type: yes/no
 scope: person-month
 program: CCCAP
 meaning: This adult caretaker or teen parent meets the Low-Income Child Care eligibility criteria of 8 CCR 1403-1 3.111 - actively in an eligible activity, at or below the county entry income limit, and having physical custody of at least one eligible child in the household.
-derived: [all, cccap_caretaker_in_eligible_activity, cccap_income_within_entry_limit, [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]]
+derived: [all, cccap_household_caretakers_in_eligible_activity, cccap_income_within_entry_limit, [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]]
 sources: [S483, S484]
 implemented: engine
 tags: [household, income]
 rationale: No existing item combines the CCCAP Low-Income Child Care criteria; cccap_eligibility_status (CO-989) reads it.
 tests:
-  - {id: CO-987-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: true}
-  - {id: CO-987-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
+  - {id: CO-987-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1985-01-22", hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: true}
+  - {id: CO-987-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1985-01-22", hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
   - {id: CO-987-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: false}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}

@@ -32,6 +32,23 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
         expects_institutional_stay_of_thirty_days: true
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
@@ -144,6 +161,23 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
         expects_institutional_stay_of_thirty_days: false
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
@@ -253,6 +287,23 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: false
@@ -332,6 +383,22 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         files_jointly_with_spouse: false
@@ -412,6 +479,23 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         files_jointly_with_spouse: false
@@ -520,6 +604,18 @@
   # illustrative MSP limit 10000) is in no MSP, SSI-related or Buy-In group.
   expect:
     p1:
+      cw_assistance_unit_members: [p1]
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-10": 0}
+      af_oap_group: oap_a
+      af_meets_resource_limit: false
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-10": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_household_income: {"2026-10": 3210}
+      leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-10": true}
       ma_ltc_couple: true
@@ -552,6 +648,14 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p2:
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      af_oap_group: oap_a
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-10": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: false
       ma_ltc_couple: false
       ma_ltc_eligibility_status: {"2026-10": not_institutionalized_or_waiver}
@@ -580,6 +684,17 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p3:
+      cw_assistance_unit_members: [p3]
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      af_category: {"2026-10": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_household_size: 3
+      cccap_household_income: {"2026-10": 2380}
+      cccap_is_teen_parent: false
+      cccap_eligibility_status: {"2026-10": eligible_low_income}
+      leap_household_members: [p3, p4, p5]
+      leap_household_income: {"2026-10": 2380}
+      leap_is_eligible: {"2026-10": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-10": 2380}
@@ -602,6 +717,21 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p4:
+      cw_assistance_unit_members: [p4, p5]
+      cw_unit_size: 2
+      cw_minor_parent_living_arrangement_met: true
+      cw_deemed_parent_income_of_minor_parent: {"2026-10": 2037}
+      cw_countable_income: {"2026-10": 2037}
+      cw_need_standard: 331
+      cw_grant_standard: 488
+      cw_grant_amount: {"2026-10": 0}
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      af_category: {"2026-10": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_is_teen_parent: true
+      cccap_eligibility_status: {"2026-10": eligible_low_income}
+      leap_household_members: [p3, p4, p5]
+      leap_is_eligible: {"2026-10": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-10": 2380}
@@ -624,6 +754,13 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p5:
+      cw_assistance_unit_members: [p4, p5]
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      af_category: {"2026-10": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_eligibility_status: {"2026-10": eligible_low_income}
+      leap_household_members: [p3, p4, p5]
+      leap_is_eligible: {"2026-10": true}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 0}
@@ -666,6 +803,23 @@
   persons:
     p1:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
         expects_institutional_stay_of_thirty_days: true
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
@@ -775,6 +929,23 @@
         pension_income: 610
     p2:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
         expects_institutional_stay_of_thirty_days: false
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
@@ -881,6 +1052,23 @@
         social_security_income: 1180
     p3:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
         is_medicare_entitled_or_enrolled: false
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -958,6 +1146,22 @@
         hours_worked: 138
     p4:
       facts:
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
         is_medicare_entitled_or_enrolled: false
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
@@ -1035,6 +1239,23 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        leap_income_limit_monthly: 3000
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
         is_medicare_entitled_or_enrolled: false
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
@@ -1140,6 +1361,18 @@
   # illustrative MSP limit 10000) is in no MSP, SSI-related or Buy-In group.
   expect:
     p1:
+      cw_assistance_unit_members: [p1]
+      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-11": 0}
+      af_oap_group: oap_a
+      af_meets_resource_limit: false
+      af_category: {"2026-11": none}
+      af_oap_grant: {"2026-11": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-11": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_household_income: {"2026-11": 3210}
+      leap_is_eligible: {"2026-11": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-11": true}
       ma_ltc_couple: true
@@ -1172,6 +1405,14 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p2:
+      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      af_oap_group: oap_a
+      af_category: {"2026-11": none}
+      af_oap_grant: {"2026-11": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-11": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_is_eligible: {"2026-11": false}
       ma_is_institutionalized: false
       ma_ltc_couple: false
       ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
@@ -1200,6 +1441,17 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p3:
+      cw_assistance_unit_members: [p3]
+      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      af_category: {"2026-11": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_household_size: 3
+      cccap_household_income: {"2026-11": 2380}
+      cccap_is_teen_parent: false
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      leap_household_members: [p3, p4, p5]
+      leap_household_income: {"2026-11": 2380}
+      leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-11": 2380}
@@ -1222,6 +1474,21 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p4:
+      cw_assistance_unit_members: [p4, p5]
+      cw_unit_size: 2
+      cw_minor_parent_living_arrangement_met: true
+      cw_deemed_parent_income_of_minor_parent: {"2026-11": 2037}
+      cw_countable_income: {"2026-11": 2037}
+      cw_need_standard: 331
+      cw_grant_standard: 488
+      cw_grant_amount: {"2026-11": 0}
+      cw_eligibility_status: {"2026-11": ineligible_income}
+      af_category: {"2026-11": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_is_teen_parent: true
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      leap_household_members: [p3, p4, p5]
+      leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-11": 2380}
@@ -1244,6 +1511,13 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p5:
+      cw_assistance_unit_members: [p4, p5]
+      cw_eligibility_status: {"2026-11": ineligible_income}
+      af_category: {"2026-11": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      leap_household_members: [p3, p4, p5]
+      leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-11": 0}
