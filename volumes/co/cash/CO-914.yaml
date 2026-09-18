@@ -1,0 +1,19 @@
+id: CO-914
+name: "Colorado Works: basic cash assistance grant amount"
+identifier: cw_grant_amount
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: The authorized Colorado Works basic cash assistance grant for this person's assistance unit for the month - the grant standard for the unit's size minus net countable income, floored at zero, with cents dropped, per 9 CCR 2503-6 3.606.1.I and 3.606.1.K.
+precision: "Drops cents by flooring rather than rounding (3.606.1.K.2's 'drop the cents'); the engine has a round-up (ceil) operator but no floor, so this item computes floor(x) as -ceil(-x), which is exact for any real x."
+derived: [max, 0, ["*", -1, [ceil, ["*", -1, ["-", cw_grant_standard, cw_countable_income]]]]]
+sources: [S415]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing item computes the Colorado Works grant amount; this is the program's central payment outcome (declared under ColoradoWorks' outcomes in the report back).
+tests:
+  - {id: CO-914-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_grant_standard: 488, cw_countable_income: 0}, expect: 488}
+  - {id: CO-914-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_grant_standard: 488, cw_countable_income: 2037}, expect: 0}
+  - {id: CO-914-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_grant_standard: 488, cw_countable_income: 100.75}, expect: 387}

@@ -1,0 +1,17 @@
+id: CO-918
+name: "Colorado Works: time limit reached"
+identifier: cw_time_limit_reached
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: This person's assistance unit has used sixty or more cumulative months of federal TANF assistance and is not exempt from (or extended beyond) the time limit, per 26-2-706.5(1) and 9 CCR 2503-6 3.606.6.A, C.
+derived: [all, [">=", cw_months_of_assistance_used, cw_time_limit_months], [not, cw_time_limit_exempt]]
+sources: [S404, S417]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing item states this; cw_eligibility_status (CO-921) needs it.
+tests:
+  - {id: CO-918-T1, as_of: "2026-10-01", given: {cw_months_of_assistance_used: 60, cw_time_limit_exempt: false}, expect: true}
+  - {id: CO-918-T2, as_of: "2026-10-01", given: {cw_months_of_assistance_used: 42, cw_time_limit_exempt: false}, expect: false}
+  - {id: CO-918-T3, as_of: "2026-10-01", given: {cw_months_of_assistance_used: 60, cw_time_limit_exempt: true}, expect: false}

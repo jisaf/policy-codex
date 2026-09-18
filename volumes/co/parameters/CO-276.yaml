@@ -1,0 +1,17 @@
+id: CO-276
+name: Colorado Works grant standard by unit size (one caretaker)
+identifier: cw_grant_standard_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: ColoradoWorks
+meaning: The maximum basic cash assistance grant for a unit of zero income under 9 CCR 2503-6 3.606.1.F's Colorado Works Standards of Assistance Chart, for the "One Caretaker" row, keyed the same way as cw_need_standard_table (CO-274) - the amount 3.606.1.I and .K deduct net countable income from to compute the authorized grant.
+precision: Same one-caretaker-row limitation as cw_need_standard_table (CO-274); see OQ-101.
+versions:
+  - from: "2025-07-01"
+    value: { "1": 374, "2": 488, "3": 620, "4": 754, "5": 894, "6": 1031, "7": 1138, "8": 1248, "9": 1359, "10": 1467, "11": 1574 }
+    source: S414
+open: [OQ-101]
+rationale: "The Colorado Works brief's fixed interface lists only cw_need_standard, but 3.606.1.F states two distinct dollar figures per unit size (a need standard the income test compares against, and a separate, larger grant standard the payment calculation starts from); cw_grant_amount (CO-914) needs the grant-standard figure to compute a payment that matches the text's own arithmetic (3.606.1.I.3, .K.1), and reusing the need standard for that step would produce the wrong dollar amount. This item is added beyond the fixed interface list for that reason."
+sources: [S414]
+tags: [cash, tanf, household]

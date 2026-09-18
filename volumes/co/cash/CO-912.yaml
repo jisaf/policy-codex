@@ -1,0 +1,18 @@
+id: CO-912
+name: "Colorado Works: grant standard"
+identifier: cw_grant_standard
+kind: derived
+type: money
+scope: person
+program: ColoradoWorks
+meaning: The maximum basic cash assistance grant for a unit of zero income at this person's assistance unit size, per 9 CCR 2503-6 3.606.1.F - the figure 3.606.1.I.3 and 3.606.1.K.1 deduct net countable income from to compute the authorized grant.
+precision: Reads cw_grant_standard_table's One Caretaker row only; see OQ-101.
+open: [OQ-101]
+derived: [lookup, cw_grant_standard_table, cw_unit_size]
+sources: [S414, S415]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "Added beyond the fixed interface list (see cw_grant_standard_table, CO-276) because the grant standard and need standard are two distinct dollar figures in 3.606.1.F's chart; cw_grant_amount (CO-914) needs this one."
+tests:
+  - {id: CO-912-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 488}
+  - {id: CO-912-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 374}

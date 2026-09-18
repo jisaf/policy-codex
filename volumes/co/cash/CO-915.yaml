@@ -1,0 +1,16 @@
+id: CO-915
+name: "Colorado Works: months of assistance used"
+identifier: cw_months_of_assistance_used
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: The number of months already counted toward this person's sixty-month federal TANF lifetime limit, per 26-2-706.5, C.R.S. and 9 CCR 2503-6 3.606.6.A - reads the statewide automated system's running count.
+derived: [+, months_of_assistance_received, 0]
+sources: [S404, S417]
+implemented: engine
+tags: [cash, tanf]
+rationale: The fixed interface names this identifier as a Colorado Works-owned item reading "a supplied count of months"; because a program-prefixed identifier must be program-neutral to be a supplied fact (governance convention, brief.md), the count itself is carried by the program-neutral supplied fact months_of_assistance_received (CO-840) and this item is the program-owned rule cw_time_limit_reached (CO-918) reads.
+tests:
+  - {id: CO-915-T1, as_of: "2026-10-01", given: {months_of_assistance_received: 42}, expect: 42}
+  - {id: CO-915-T2, as_of: "2026-10-01", given: {months_of_assistance_received: 0}, expect: 0}

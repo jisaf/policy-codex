@@ -1,0 +1,11 @@
+id: CO-279
+name: PRWORA qualified-alien entry date cutoff
+identifier: cw_non_citizen_entry_date_cutoff
+kind: parameter
+type: calendar date
+scope: global
+program: ColoradoWorks
+meaning: The date on or after which a qualified alien's entry into the United States triggers the five-year waiting period; a qualified alien who entered before this date is not subject to it, per 26-2-706(1.5)(b), C.R.S. and 9 CCR 2503-6 3.604.1.B.2-3.
+value: "1996-08-22"
+sources: [S402, S407]
+rationale: No existing parameter states this date for Colorado Works; cw_meets_citizenship_requirement (CO-905) needs it. Distinct from the SNAP and Medicaid citizenship rules, which test the qualified-alien waiting period without this volume's SNAP/Medicaid items ever comparing against an admission-date cutoff parameter of their own.

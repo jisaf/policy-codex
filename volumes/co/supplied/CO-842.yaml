@@ -1,0 +1,11 @@
+id: CO-842
+name: Received TANF from another state this month
+identifier: received_tanf_from_another_state_this_month
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: Another state paid this person TANF benefits for the month at issue, which bars Colorado Works eligibility for that month under 9 CCR 2503-6 3.604.1.A.3.
+supplied_by: SAVE / interstate TANF data match reported to the county department.
+sources: [S407]
+rationale: No existing fact captures this cross-state check; cw_meets_residency (CO-904) needs it as the rule text's residency section states this additional bar alongside the basic Colorado-residence test.

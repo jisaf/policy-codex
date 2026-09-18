@@ -2016,3 +2016,469 @@ Document: D-52
 42 CFR 435.1005, 435.1009-435.1010. https://www.ecfr.gov/current/title-42/part-435
 
 > § 435.1006 Beneficiaries of optional State supplements only.
+
+### S401. Colorado Works: "assistance unit" and "dependent child" definitions
+
+Document: D-59
+
+C.R.S. 26-2-703(2.5), (9). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (2.5)    "Assistance  unit"  means  those  family  members  who  are  participants  in  the  Colorado works program and who are receiving cash assistance.
+> (9)  "Dependent child" means a person who resides with a parent or a specified caretaker and who is under the age of eighteen years or, if the person is a full-time student at a secondary school or vocational or technical equivalent and is reasonably expected to complete the school or vocational  or  technical  equivalent  before attaining  the  age  of  nineteen  years, is  under  nineteen years.
+
+### S402. Colorado Works statutory eligibility criteria including citizenship
+
+Document: D-59
+
+C.R.S. 26-2-706(1.5). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (1.5)  To participate in the Colorado works program an applicant or person shall:
+> (a)  Be a resident of Colorado;
+> (b)    Be  a  citizen  of  the  United  States,  a  qualified  alien  who  entered  the  United  States prior to August 22, 1996, or a qualified alien who entered the United States on or after August 22, 1996, who has been in a qualified alien status for a period of five years or, if less than five years, is in a federal exempt category pursuant to 8 U.S.C. sec. 1613 (b), as amended;
+
+### S403. Colorado Works: no asset test, minor parent living-arrangement rule, income conversion
+
+Document: D-59
+
+C.R.S. 26-2-706(2). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (2) (a)  The state department shall promulgate rules to identify with specificity who may be a participant in the works program and the income requirements for participation in the works program.  An  asset  test  shall  not  be  applied  as  a  condition  of  eligibility  for  participation  in  the works program.
+> (b)  The rules shall provide that an unmarried parent under eighteen years of age shall not receive assistance unless such unmarried parent resides with his or her parent or other specified caretaker  in  an  adult-supervised  home  or  in  any  other  arrangement  approved  by  the  county department.
+> (c)  In determining the income requirements pursuant to subsection (2)(a) of this section, the  state  department  shall  use  an  income  conversion  ratio  for  converting  weekly  and  biweekly income  to  a  monthly  amount  using  the  lowest  ratio  or  methodology  that  results  in  the  lowest monthly income amount allowable under federal law.
+
+### S404. Colorado Works sixty-month time limit and hardship/domestic violence extensions
+
+Document: D-59
+
+C.R.S. 26-2-706.5(1), (4). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (1)  Unless cash assistance is provided through segregated funds pursuant to federal law and section 26-2-714, as of June 3, 1997,  each  month  of  cash  assistance  received  by  an  assistance  unit  that  includes  a  specified caretaker who  has  received assistance  under  Title  IV-A  of  the  social  security  act,  as  amended, shall count toward that specified caretaker's sixty-month lifetime maximum of TANF benefits as established in federal law.
+> (4)  No later than July 1, 2023, the state board shall promulgate rules:
+> (a)    Establishing  statewide  standards  and  procedures  that  require  counties  to  offer extensions beyond the sixty-month lifetime maximum for all households that demonstrate good cause, which includes, but is not limited to, an applicant or participant who is:
+> (I)  A child-only case;
+> (II)  The head of a single parent household unit and has a child under one year of age; or
+> (III)  Experiencing hardship, as defined in rules promulgated by the state board; and
+
+### S405. Colorado Works standard of need delegated to state department rules
+
+Document: D-59
+
+C.R.S. 26-2-709(1)(a). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> Standard of need - basic cash assistance grant. (a)  The state department shall promulgate rules determining the  standard  of  need  for  eligibility  for  a  basic  cash  assistance  grant,  whether  an  applicant  or participant  meets  the  standard  of  need,  and  the  amount  of  the  basic  cash  assistance  grant.
+
+### S406. Colorado Works rule manual: "dependent child(ren)" and "minor" definitions
+
+Document: D-61
+
+9 CCR 2503-6 3.601. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.601
+
+> "Dependent child(ren)" means a person who resides with a parent or non-parent caretaker and who is: A. Under eighteen (18) years of age; or, B. Between the ages of eighteen (18) and nineteen (19) and a full-time student in a secondary school or in the equivalent level of vocational or technical training (including seeking to obtain high school equivalency) and expected to complete the program before age nineteen (19).
+> "Minor" means a person who is under the age of eighteen (18).
+
+### S407. Colorado Works residency and lawful presence criteria
+
+Document: D-61
+
+9 CCR 2503-6 3.604.1.A, B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> A. Be a resident of Colorado.
+> 1. There shall be no durational residency requirement and a client who establishes intent to remain in Colorado shall be considered a resident.
+> 2. Residence shall be retained until abandoned.
+> 3. Persons receiving TANF benefits from another state shall not be eligible for Colorado Works grant payments during any month a payment was made by the other state.
+> B. Be lawfully present in the United States as:
+> 1. A citizen of the United States (including persons born in the United States, Puerto Rico, Guam, Virgin Islands (U.S.), American Samoa, or Swain's Island; persons who have become citizens through the naturalization process; persons born to U/S. citizens outside the United States with appropriate documentation); or,
+> 2. A qualified legal non-citizen who entered the United States prior to August 22, 1996; or,
+> 3. A qualified legal non-citizen who entered the United States on or after August 22, 1996, who has been in a qualified non-citizen status for a period of five years, unless they meet one of the exceptions to the five-year bar consistent with 8 U.S.C. 1613(b).
+
+### S408. Colorado Works household composition: mandatory assistance unit members
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.A, C.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> A. A Colorado Works household consists of clients who are part of the assistance unit and/or budgetary unit.
+> 1. The assistance unit consists of individuals who live together and who must apply for and receive Colorado Works grant payments as a single household. Members of the same assistance unit who meet the requirements of the Colorado Works program shall receive basic cash assistance or shall be considered when determining diversion grant amounts. Persons not required to be in one assistance unit, but residing in the same household, shall have the option of applying for Colorado Works as separate units. Each assistance unit shall be budgeted using the appropriate need standard for the unit.
+> C. Members of the Assistance Unit
+> 1. The following individuals must be included in the assistance unit when living in the home:
+> a. Dependent child(ren) who live in the home of a caretaker.
+> b. Parents of dependent child(ren) who live in the home unless the child is a minor parent who is requesting assistance for their own child or responsibility is established with another caretaker through court order, child welfare, or adoption.
+> c. Siblings of dependent child(ren) who live in the home and are legally in the care of the requesting caretaker.
+> d. Half siblings of the dependent child(ren) who live in the home that do not receive child support payments.
+> e. The spouse of a pregnant parent.
+
+### S409. Colorado Works household composition: optional and excluded assistance unit members
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.C.2, C.3. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> 2. The following individuals are optional members of the assistance unit. These individuals are included in the assistance unit when living in the home and requesting assistance:
+> g. Parent(s) of a minor parent who is requesting assistance for their own child.
+> 3. The following individuals are excluded from the assistance unit.
+> a. Individuals receiving SSI payments.
+> b. Individuals who receive other title iv benefits such as foster care, adoption subsidy or Title IV kinship payments.
+
+### S410. Colorado Works budgetary unit: non-recipient parent of a minor parent
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.D.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> 1. The following individuals must be included in the budgetary unit:
+> a. Any individual who is part of the assistance unit (to include optional members of the assistance unit who requested assistance) regardless of whether or not the individual is eligible to receive assistance.
+> d. The non-recipient parent(s) of a minor parent.
+
+### S411. Colorado Works minor parent living arrangement
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.N. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> N. Minor Parent Applicants/Participants A minor who is also a parent may apply for Colorado Works.
+> 1. When a minor parent is not emancipated and has a marital status of single, grant payments may not be approved unless the minor parent resides with another adult caretaker or the minor parent resides in another setting which the county has determined is an appropriate setting.
+> 2. When a minor parent does not live in the home of another caretaker:
+> a. The minor parent may not receive benefits until deemed to be in a county approved setting by the county department unless the minor is emancipated, has a marital status other than single, or resides with an adult relative.
+> b. A minor parent who is emancipated or has a marital status other than single is not considered to be living in the home of a caretaker even if they are living in the home of their parent.
+> c. A minor who is a parent and does not live in the home of a caretaker will receive assistance as an adult if approved.
+> 3. Minor Parents and Caretakers
+> a. If the minor parent lives with an unrelated non-parent caretaker who chooses not to be a member of the assistance unit, the minor must be in a county approved setting.
+> b. If the minor parent lives with an unrelated non-parent caretaker who chooses to be a member of the assistance unit, the county department may choose if it is necessary to approve the setting before grant payments are provided per county policy.
+> c. If the minor parent lives with his or her parent, the county department does not need to approve a setting even if the minor's parent chooses not to be a member of the assistance unit.
+> d. A minor parent who is the dependent child of a caretaker will receive assistance as a child if approved even if the caretaker is not included in the assistance unit.
+
+### S412. Colorado Works income: consideration and availability
+
+Document: D-61
+
+9 CCR 2503-6 3.605.1.A.1, A.2. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.605
+
+> 1. Consideration of income - for purpose of determining need, all countable gross income received in the month prior to, if available, and in the month of application shall be used to determine eligibility of members of the assistance unit.
+> 2. Availability of income - income shall be countable when actually available, when the client has a legal interest in a sum, and has the legal ability to make such sum available for support and maintenance. Income, in general, is the receipt by a client of a gain or benefit in cash or in-kind during a calendar month. Received means the date on which the income becomes legally available.
+
+### S413. Colorado Works income of a non-participant parent of an unmarried minor parent (deeming)
+
+Document: D-61
+
+9 CCR 2503-6 3.605.1.A.4. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.605
+
+> 4. Income of a non-participant stepparent and a non-participant parent of an unmarried minor parent
+> a. A stepparent's countable income is considered available to stepchildren included in the assistance unit as dependent children. The countable income of a non-participant parent(s) of an unmarried minor parent who is living in the same home as the minor parent, shall also be deemed to the assistance unit. The countable income equals gross earned income minus the employment disregard of $90, minus the maintenance or child support paid to others outside the assistance unit, minus the amounts actually paid by the individual to other individuals not living in the home and who could be claimed by the individual for federal income tax purposes, plus any unearned income received by the stepparent or non-participant parent. The needs of the stepparent or parent of the minor parent, and the needs of individuals living in the home for whom the stepparent or parent are responsible shall be deducted from the result to determine the amount attributed to the assistance unit.
+> b. Income of parents living in the same home as the unmarried minor parent shall be attributed to the assistance unit of the minor parent.
+
+### S414. Colorado Works standards of assistance chart (need standard and grant standard)
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> F. Determining Eligibility for Basic Cash Assistance Grant Based on the Need Standard The State department shall annually review and as necessary update the need standard to reflect the current economic situations in the state. The basic cash assistance grant shall be determined based upon income using the following need standard. If the client has zero income the following cash payment shall be received based upon those included in the assistance unit: COLORADO WORKS STANDARDS OF ASSISTANCE CHART Number of Children 0 1 2 3 4 5 6 7 8 9 10 Each Additional Child No Caretaker Need Standard 0 117 245 368 490 587 678 755 830 904 977 67 Grant Standard 0 173 362 543 724 869 1003 1117 1226 1337 1460 90 One Caretaker Need Standard 253 331 421 510 605 697 770 844 920 992 1065 67 Grant Standard 374 488 620 754 894 1031 1138 1248 1359 1467 1574 90 Two Caretakers Need Standard 357 439 533 628 716 787 861 937 1009 1082 1155 67 Grant Standard 527 649 788 927 1057 1163 1273 1387 1492 1598 1707 90
+
+### S415. Colorado Works gross income test and grant calculation steps
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.H, I, J.4, K. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> H. Gross Income To be eligible for Colorado Works basic cash assistance, the countable gross earned and unearned income together shall not exceed the need standard for the household size after disregards have been applied in accordance with section 3.606.2.
+> I. Calculation of the Basic Cash Assistance Grant for an Eligible Assistance Unit To calculate the basic cash assistance amount for an eligible assistance unit:
+> 1. Deduct the earned income disregard(s) from the gross earned income, received or expected to be received by members of the assistance unit, in the month of application;
+> 2. Add to the result from step 1, above, the unearned income received or expected to be received by members of the assistance unit;
+> 3. Deduct the total from step 2, above, from the grant amount for the household size.
+> J. Reporting of Earned Income When the assistance unit reports earned income:
+> 4. If the net countable income equals or exceeds the need standard, the assistance unit is not eligible for Colorado Works basic cash assistance.
+> K. Calculation of an Eligible Assistance Unit To calculate the basic cash assistance grant amount for an eligible assistance unit:
+> 1. Deduct the net countable income from the grant amount for the assistance unit; and,
+> 2. Drop the cents, and the remainder is the authorized grant.
+
+### S416. Colorado Works earned income disregards at application and ongoing
+
+Document: D-61
+
+9 CCR 2503-6 3.606.2.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> A. Earned Income Disregards Calculations The following earned income disregards shall be applied to gross wages for clients:
+> 1. At application the gross earned income minus the ninety dollar ($90) earned income disregard, plus any countable unearned income received or expected to be received by members of the assistance unit, shall not exceed the need standard for the household size and shall be applied at application. If income does not exceed the need standard for the household size, the sixty seven percent (67%) disregard shall be applied to determine payment amount.
+> 2. For an assistance unit currently receiving basic cash assistance, the gross earned income minus the sixty seven percent (67%) earned income disregard, plus any countable unearned income received or expected to be received by members of the assistance unit, shall not exceed the need standard for the household size and shall be applied during the certification period. If income does not exceed the need standard for the household size, the 67% disregard shall be applied to determine payment amount.
+
+### S417. Colorado Works time limits, extensions, and exemptions
+
+Document: D-61
+
+9 CCR 2503-6 3.606.6.A, C, F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> A. Time Limits Each month for which a basic cash assistance grant is received shall be counted toward the time limits of adult members who are part of the assistance unit regardless of whether or not the adult is eligible to receive assistance. Any assistance unit containing an adult may receive Federal TANF grant payments for up to sixty (60) cumulative months.
+> C. Extensions An assistance unit containing an individual who has received Federal TANF assistance in Colorado or another state as an adult for sixty (60) or more cumulative months shall not be eligible for Colorado Works assistance in Colorado unless granted an extension by the county department due to hardship or domestic violence. Assistance units that contain disqualified members shall not be eligible for consideration of an extension.
+> F. Exemptions From the 60-Month Time Limit Any month of receipt of assistance by an adult while living in Indian Country, or a Native Alaskan village where at least fifty percent (50%) of the adults were not employed, shall not be counted toward the sixty (60) cumulative months of Federal TANF assistance. Indian Country is defined in 18 U.S.C. Section 1151.
+
+### S418. Federal TANF "work-eligible individual" definition
+
+Document: D-60
+
+45 CFR 261.2(n). https://www.ecfr.gov/current/title-45/part-260
+
+> (n)(1) *Work-eligible individual* means an adult (or minor child head-of-household) receiving assistance under TANF or a separate State program or a non-recipient parent living with a child receiving such assistance unless the parent is:
+> (i) A minor parent and not the head-of-household;
+> (ii) A non-citizen who is ineligible to receive assistance due to his or her immigration status; or
+> (iii) At State option on a case-by-case basis, a recipient of Supplemental Security Income (SSI) benefits or Aid to the Aged, Blind or Disabled in the Territories.
+
+### S419. Federal TANF work participation hours
+
+Document: D-60
+
+45 CFR 261.31(a), (b). https://www.ecfr.gov/current/title-45/part-260
+
+> (a) Subject to paragraph (d) of this section, a family with a work-eligible individual counts as engaged in work for a month for the overall rate if:
+> (1) He or she participates in work activities during the month for at least a minimum average of 30 hours per week; and
+> (2) At least 20 of the above hours per week come from participation in the activities listed in paragraph (b) of this section.
+
+### S420. Federal TANF reduced hours for a single custodial parent with a young child
+
+Document: D-60
+
+45 CFR 261.35. https://www.ecfr.gov/current/title-45/part-260
+
+> Yes. A single custodial parent or caretaker relative with a child under age six will count as engaged in work if he or she participates for at least an average of 20 hours per week.
+
+### S421. Federal TANF sixty-month time limit and who it applies to
+
+Document: D-60
+
+45 CFR 264.1(a)(1), (2), (b)(1)(i). https://www.ecfr.gov/current/title-45/part-260
+
+> (a)(1) Subject to the exceptions in this section, no State may use any of its Federal TANF funds to provide assistance (as defined in § 260.31 of this chapter) to a family that includes an adult head-of-household or a spouse of the head-of-household who has received Federal assistance for a total of five years (i.e., 60 cumulative months, whether or not consecutive).
+> (2) The provision in paragraph (a)(1) of this section also applies to a family that includes a pregnant minor head-of-household, minor parent head-of-household, or spouse of such a head-of-household who has received Federal assistance for a total of five years.
+> (b)(1) States must not count toward the five-year limit:
+> (i) Any month of receipt of assistance by an individual who is not the head-of-household or married to the head-of-household;
+
+### S441. Old Age Pension: age, citizenship, and SSI resource eligibility
+
+Document: D-59
+
+C.R.S. 26-2-111(1)(a)-(b), (2)(a)(I). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (a) The person is a resident of the state of Colorado or, if a dependent child, the parent or other relatives with whom said child is living is a resident of the state of Colorado or the person is a legal immigrant who would be otherwise eligible in all respects except for citizenship;
+> (b) The person has insufficient income, property, or other resources to meet his or her needs as determined pursuant to rules and regulations of the state department; except that resource eligibility for the program of aid to the needy disabled shall be as specified in paragraph (d) of subsection (4) of this section, resource eligibility for the program of aid to the blind shall be as specified in subparagraph (III) of paragraph (a) of subsection (5) of this section, and resource eligibility requirements for the old age pension program shall be as specified in paragraph (a) of subsection (2) of this section;
+> (I) The person is a United States citizen or a qualified alien, has attained the age of sixty years or more, and meets the resource eligibility requirements of the federal supplemental security income program; or
+
+### S442. Aid to the needy disabled: total disability, age, and SSI resource eligibility
+
+Document: D-59
+
+C.R.S. 26-2-111(4)(a), (b), (d). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (a) He or she has a total disability, as defined by section 26-2-103 (14) and the rules and regulations of the state department, that has lasted or can be expected to last for a period of six months or more or he or she is determined to be disabled and eligible for social security disability insurance benefits under Title II of the social security act.
+> (b) He or she is eighteen years of age or older.
+> (d) He or she meets the resource eligibility requirements of the federal supplemental security income program.
+
+### S443. Aid to the blind eligibility
+
+Document: D-59
+
+C.R.S. 26-2-111(5)(a)(I)-(III). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (I) Is blind as defined by section 26-2-103 (3) or is determined to be blind and eligible for social security disability insurance benefits under Title II of the social security act; except that any person who is a member of a household that is receiving public assistance under the aid to families with dependent children program set forth in this article shall not be eligible to receive public assistance pursuant to this subsection (5);
+> (II) Has applied for supplemental security income benefits and complied with any recommendations for referrals made by the county department except for good cause shown; and
+> (III) Meets the resource eligibility requirements of the federal supplemental security program.
+
+### S444. "Blind" defined
+
+Document: D-59
+
+C.R.S. 26-2-103(3). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> "Blind" means any individual who has not more than ten percent visual acuity in the better eye with correction, or not more than 20/200 central visual acuity in the better eye with correction, or a limitation in the fields of vision such that the widest diameter of the visual field subtends an angle no greater than twenty degrees.
+
+### S445. "Total disability" defined
+
+Document: D-59
+
+C.R.S. 26-2-103(14)(a). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> "Total disability", for the purpose of providing public assistance to persons not receiving federal financial benefits pursuant to Title XVI of the social security act, means a physical or mental impairment which is disabling and which, because of other factors such as age, training, experience, and social setting, substantially precludes the person having such disability from engaging in a useful occupation as a homemaker or as a wage earner in any employment which exists in the community for which he has competence.
+
+### S446. Old age pension grant amount: net income deducted
+
+Document: D-59
+
+C.R.S. 26-2-114(1), (2)(b)(I). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> The basic minimum award payable to those persons qualified to receive an old age pension shall be one hundred dollars monthly; but the state board may adjust the said basic minimum award above one hundred dollars if, in its discretion, living costs have changed sufficiently to justify such adjustment.
+> (I) The amount of net income from whatever source, either in cash or in kind, which any person qualified for an old age pension may receive shall be deducted from the amount of monthly pension which such person would otherwise receive.
+
+### S447. Aid to the needy disabled grant amount: budgetary need
+
+Document: D-59
+
+C.R.S. 26-2-119(1)(a). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> The amount of assistance payments that shall be granted to a recipient under the program for aid to the needy disabled shall be on the basis of budgetary need, as determined by the county department with due regard to any income, property, or other resources available to the recipient, within available appropriations, and in accordance with rules of the state department.
+
+### S448. "SSI benefit standard" and "Grant standard" defined
+
+Document: D-62
+
+9 CCR 2503-5-3.510. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.510
+
+> "Grant payment" means the Adult Financial program payment and may also be referred to as the benefit.
+> "Grant standard" means the maximum Adult Financial grant payment that can be provided to a client based on each specific Adult Financial program.
+> "SSI benefit standard" means the maximum monthly Federal amount for a SSI recipient as listed in Federal Regulations found at 20 CFR 416.405-415 (2019), which are herein incorporated by reference.
+
+### S449. Adult Financial non-financial eligibility requirements
+
+Document: D-62
+
+9 CCR 2503-5-3.520.61. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Be eighteen (18) through fifty-nine (59) years of age for AND-SO (unless diagnosed with blindness, then age zero (0) through 59 years of age); age 0 through 59 years of age for AND-CS; and age sixty (60) years of age or older for OAP; and,
+> B. Be a resident of Colorado, except that inmates of a city, municipal, county, State, or Federal correctional institution, and fleeing felons, shall not be eligible for Adult Financial programs; and,
+> C. For AND only, be a citizen of the United States or be a qualified non-citizen or legal immigrant as outlined in Sections 3.520.67; and,
+> E. For AND only, have a disability, as outlined in Section 3.541; and,
+> I. Meet all other program eligibility requirements, including income and resource limits.
+
+### S450. Adult Financial residency requirements
+
+Document: D-62
+
+9 CCR 2503-5-3.520.64.A-B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. To be eligible for Adult Financial programs, a client shall be a resident of Colorado.
+> B. Residency is established on the first day the client declares him/herself to be a resident of Colorado.
+
+### S451. Citizenship, qualified non-citizens, and non-citizens
+
+Document: D-62
+
+9 CCR 2503-5-3.520.67.A, E. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. The following are citizens of the United States and are eligible to apply for AND.
+> E. Qualified non-citizens who are considered legal immigrants by USCIS are eligible to apply for Adult Financial programs and all non-citizens are eligible to apply for OAP.
+
+### S452. Five year bar from eligibility
+
+Document: D-62
+
+9 CCR 2503-5-3.520.68.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Qualified non-citizens arriving in the U.S. on or after August 22, 1996, are barred from receiving AND for five years beginning on the qualified non-citizen's date of admission into the United States for legal permanent residence, as verified through SAVE.
+
+### S453. Financial eligibility requirements and SSI benefit standard age reference
+
+Document: D-62
+
+9 CCR 2503-5-3.520.71.A, B.4. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. To receive Adult Financial program assistance, the client shall meet all financial requirements in addition to all other program eligibility requirements. The client shall:
+> 1. Have countable resources below the resource limit as outlined in Section 3.520.72; and,
+> 2. Have income below the income limit, as outlined in Section 3.520.78; and,
+> 4. Clients sixty-five (65) years of age and older may be eligible for SSI benefits when the client's income from any source is less than the SSI benefit standard, as defined in Section 3.510, plus $20.00.
+
+### S454. Adult Financial resource limit
+
+Document: D-62
+
+9 CCR 2503-5-3.520.72.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Unless otherwise specified, a resource is countable, and together with all other countable resources of the client, spouse, and sponsor(s) shall be considered against the resource limit. The resource limit is:
+> 1. $2,000 for: a. An unmarried client;
+> 2. $3,000 for: a. A married client; or,
+
+### S455. Old Age Pension: age and grant standard
+
+Document: D-62
+
+9 CCR 2503-5-3.530. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.530
+
+> The Old Age Pension (OAP) program provides financial assistance and may provide health care benefits for low-income Colorado residents who are sixty (60) years of age or older who meet all financial and non-financial eligibility requirements.
+> A. The total monthly OAP grant standard, as set by the State Board of Human Services, is $1,005.00 effective January 1, 2025.
+
+### S456. OAP grant payment computation
+
+Document: D-62
+
+9 CCR 2503-5-3.532.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.532
+
+> B. When a client has been found eligible based upon eligibility rules as outlined in Sections 3.520.6 and 3.520.7, the amount of the client's authorized OAP grant payment shall be determined by deducting the client's total countable income from the OAP grant standard listed in Section 3.530.A.
+
+### S457. OAP income disregards
+
+Document: D-62
+
+9 CCR 2503-5-3.533. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.533
+
+> Disregards shall be applied before determining a client's total countable income. If a client's total countable income equals or exceeds the OAP grant standard after the disregards are applied, he or she shall be denied or discontinued following the policies outlined in Section 3.554.
+> A. If the client has income, apply the following income disregards:
+> 1. To determine countable earned income: a. Deduct $65 from the gross earned income; and, b. Divide the remainder by two (2). c. The result is the countable earned income.
+> 2. To determine countable unearned income: a. Determine the client's gross unearned income from all sources. b. Subtract any amount received from SSI. c. Deduct $20.00 from the remainder.
+> B. Subtract the countable earned and countable unearned income from the OAP grant standard to determine the grant payment amount.
+
+### S458. AND-SO program: age and grant standard
+
+Document: D-62
+
+9 CCR 2503-5-3.540. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.540
+
+> The Aid to the Needy Disabled State Only (AND-SO) program provides interim assistance to clients age eighteen (18) through fifty-nine (59) years of age (unless diagnosed with blindness, then age zero (0) through 59 years of age); who are disabled or blind but have not been approved for Supplemental Security Income (SSI) or Social Security Disability Insurance (SSDI).
+> A. The total AND-SO grant standard is $248.00, effective April 1, 2022.
+
+### S459. AND-SO total disability requirement
+
+Document: D-62
+
+9 CCR 2503-5-3.541.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.541
+
+> A. To qualify for AND-SO, the client must meet both the non-financial and financial eligibility requirements and have a total disability as defined in Section 3.540.1 and pursuant to Sections 26-2-103(14)(a) and 26-2-111(4)(a), C.R.S.
+
+### S460. AND-SO grant payment computation
+
+Document: D-62
+
+9 CCR 2503-5-3.543.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.543
+
+> B. When a client has been found eligible, the amount of the client's authorized AND-SO grant payment shall be determined by deducting the client's total countable income from the AND-SO grant standard.
+
+### S461. AND-SO income disregards
+
+Document: D-62
+
+9 CCR 2503-5-3.544.A-C. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.544
+
+> Disregards shall be applied before calculating a client's total countable income. If a client's total countable income equals or exceeds the AND-SO grant standard after the disregards are applied, he or she shall be denied following the policies outlined in Section 3.554.
+> A. If the client has earned income, apply the following income disregards: 1. Deduct $65 from the gross earned income; and, 2. Divide the remainder by two (2). 3. The result is the countable earned income.
+> B. If the client has unearned income, apply the following income disregards: 1. Determine the client's gross unearned income from all sources. 2. Deduct $20.00. If the client is married, the $20.00 disregard shall be split between the client and the spouse so that no more than a $20.00 disregard is applied. 3. The result is countable unearned income.
+> C. Subtract the countable earned and countable unearned income from the AND-SO grant standard to determine the grant payment amount.
+
+### S462. AND-CS program: age and grant standard
+
+Document: D-62
+
+9 CCR 2503-5-3.546. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.546
+
+> The Aid to the Needy Disabled-Colorado Supplement (AND-CS) program provides a supplemental payment for clients age zero (0) to fifty-nine (59) who are receiving SSI due to a disability or blindness, but are not receiving the full SSI benefit standard, as defined in Section 3.510.
+> A. The total AND-CS grant standard is $967.00, effective January 1, 2025.
+
+### S463. AND-CS disability/SSI eligibility requirement
+
+Document: D-62
+
+9 CCR 2503-5-3.547.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.547
+
+> A. To meet the disability eligibility requirement for AND-CS, the client must be approved for SSI due to a disability or blindness. The county department shall verify SSI eligibility through SVES or SDX and document in the statewide automated system case comments.
+
+### S464. AND-CS grant payment computation
+
+Document: D-62
+
+9 CCR 2503-5-3.548.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.548
+
+> B. When a client has been found eligible the amount of the client's authorized AND-CS grant payment shall be determined by deducting the client's total countable income from the AND-CS grant standard.
+
+### S465. AND-CS income disregards
+
+Document: D-62
+
+9 CCR 2503-5-3.549.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.549
+
+> A. If the client has income, apply the following income disregards:
+> 1. To determine countable earned income: a. Deduct $65 from the monthly gross income; and, b. Divide the remainder by two (2). c. The result is the countable earned income.
+> 2. To determine countable unearned income: a. Determine the client's unearned income from all sources. b. Subtract any amount received from SSI. c. Deduct $20 from the remainder.

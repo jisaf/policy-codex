@@ -1,0 +1,11 @@
+id: CO-843
+name: Is an emancipated minor
+identifier: is_emancipated_minor
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person, though under 18, is legally emancipated, which under 9 CCR 2503-6 3.604.2.N.2.a-b means they are not considered to be living in the home of a caretaker even if they in fact live with a parent, and so are not subject to the minor-parent living-arrangement rule.
+supplied_by: Applicant statement; court order of emancipation, verified by the county worker.
+sources: [S411]
+rationale: No existing fact in this volume's interface carries emancipation status; cw_minor_parent_living_arrangement_met (CO-906) needs it.

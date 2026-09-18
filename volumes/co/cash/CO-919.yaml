@@ -1,0 +1,17 @@
+id: CO-919
+name: "Colorado Works: is a work-eligible individual"
+identifier: cw_is_work_eligible_individual
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The person is a "work-eligible individual" under 45 CFR 261.2(n) - an adult (or minor child head-of-household) receiving assistance, or a non-recipient parent living with a child receiving it - unless the person is a minor parent who is not the head of household, a non-citizen ineligible for assistance due to immigration status, or an SSI recipient (Colorado's state-option exclusion, read as elected because it tracks the same SSI exclusion 3.604.2.C.3.a states for assistance unit membership).
+derived: [all, [any, [">=", age, 18], is_head_of_household], [not, [all, ["<", age, cw_minor_parent_age_limit], [not, is_head_of_household]]], cw_meets_citizenship_requirement, [not, receives_ssi]]
+sources: [S418]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing item states this federal work-participation gateway definition; cw_meets_work_participation (CO-920) is meaningful only for a work-eligible individual, though this batch does not gate cw_eligibility_status on it (Colorado Works eligibility and the work-participation-rate calculation are governed by different sections of the text).
+tests:
+  - {id: CO-919-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, citizenship_status: citizen, receives_ssi: false}, expect: true}
+  - {id: CO-919-T2, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_head_of_household: false, citizenship_status: citizen, receives_ssi: false}, expect: false}
+  - {id: CO-919-T3, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, citizenship_status: citizen, receives_ssi: true}, expect: false}

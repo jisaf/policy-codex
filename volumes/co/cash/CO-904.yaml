@@ -1,0 +1,18 @@
+id: CO-904
+name: "Colorado Works: meets residency requirement"
+identifier: cw_meets_residency
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The person is a Colorado resident for Colorado Works purposes under 26-2-706(1.5)(a), C.R.S. and 9 CCR 2503-6 3.604.1.A - living in Colorado with no durational requirement - and is not, for the month at issue, a person another state already paid TANF benefits to (3.604.1.A.3).
+precision: Does not model the 3.604.1.A.1-2 intent-to-remain and retained-until-abandoned tests beyond reading the stated state_of_residence fact, consistent with ma_meets_residency's (CO-505) treatment of the parallel Medicaid rule.
+derived: [all, ["=", state_of_residence, colorado_state_code], [not, received_tanf_from_another_state_this_month]]
+sources: [S407]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "No existing item states Colorado Works residency; cw_eligibility_status (CO-920) needs it. Not a dup.compact of ma_meets_residency (CO-505, state_of_residence equals colorado_state_code) because 3.604.1.A.3's interstate-TANF-payment bar (S407) is a genuine additional Colorado Works-specific prong ma_meets_residency does not carry, so the derivation is not identical."
+tests:
+  - {id: CO-904-T1, as_of: "2026-10-01", given: {state_of_residence: "CO", received_tanf_from_another_state_this_month: false}, expect: true}
+  - {id: CO-904-T2, as_of: "2026-10-01", given: {state_of_residence: "WY", received_tanf_from_another_state_this_month: false}, expect: false}
+  - {id: CO-904-T3, as_of: "2026-10-01", given: {state_of_residence: "CO", received_tanf_from_another_state_this_month: true}, expect: false}

@@ -1,0 +1,16 @@
+id: CO-902
+name: "Colorado Works: has a dependent child"
+identifier: cw_has_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The person is the parent or caretaker of at least one dependent child under 9 CCR 2503-6 3.601's "Caretaker" definition and 3.604.2.C.1.a-b - used to identify a minor parent (a dependent child who is herself a parent) for the assistance-unit composition and income-deeming rules.
+derived: [exists_related, [parent, caretaker], [of, [P], cw_is_dependent_child]]
+sources: [S406, S408]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: No existing item states this; cw_assistance_unit_members (CO-900), cw_minor_parent_living_arrangement_met (CO-906), cw_deemed_parent_income_of_minor_parent (CO-909), and cw_child_only_unit (CO-921) all read it to find a minor parent.
+tests:
+  - {id: CO-902-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, others: {p2: {date_of_birth: "2026-02-03", is_enrolled_in_school: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-902-T2, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03"}, others: {p2: {date_of_birth: "2009-04-08"}}, relationships: [[parent, p2, p1]], expect: false}

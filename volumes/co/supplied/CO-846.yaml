@@ -1,0 +1,11 @@
+id: CO-846
+name: Has an approved domestic violence time-limit waiver
+identifier: has_domestic_violence_waiver
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The county department has granted this person a good-cause domestic violence extension of the sixty-month time limit under 26-2-706.5(4)(a)(III), C.R.S. and 9 CCR 2503-6 3.606.6.C's hardship/domestic-violence extension provisions.
+supplied_by: County department Family Violence Option determination (case record).
+sources: [S417]
+rationale: No existing fact captures this determination; cw_time_limit_exempt (CO-918) needs it.

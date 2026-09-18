@@ -1,0 +1,17 @@
+id: CO-910
+name: "Colorado Works: countable income"
+identifier: cw_countable_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: The total net countable income of this person's assistance unit for the month - the sum of each member's countable earned and unearned income (CO-907, CO-908), plus any income deemed under 3.605.1.A.4 from a minor-parent member's non-participant parent (CO-909) - the figure 3.606.1.H compares against the need standard and 3.606.1.I-K use to compute the grant.
+open: [OQ-103]
+derived: [+, [sum, cw_assistance_unit_members, [+, [of, [P], cw_countable_earned_income], [of, [P], cw_countable_unearned_income]]], [sum, cw_assistance_unit_members, [of, [P], cw_deemed_parent_income_of_minor_parent]]]
+sources: [S412, S413, S415]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: No existing item aggregates Colorado Works countable income at the unit level; cw_meets_income_test (CO-913) and cw_grant_amount (CO-914) both need it. Does not model sponsor deeming (3.605.1.A.5) or disqualified-member deeming (3.605.1.A.6) - see OQ-103.
+tests:
+  - {id: CO-910-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, p3: {date_of_birth: "1985-01-22", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 2380, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}}, relationships: [[parent, p1, p2], [parent, p3, p1]], expect: 2037}
+  - {id: CO-910-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, relationships: [], expect: 0}

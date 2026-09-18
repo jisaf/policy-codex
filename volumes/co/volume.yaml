@@ -43,7 +43,7 @@ programs:
     outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: []
+    outcomes: [cw_grant_amount, cw_eligibility_status]
   - id: AdultFinancial
     prefix: af_
     outcomes: []

@@ -258,3 +258,63 @@ Body: 8.100.7.G.1.a requires an income trust user's gross income to be "above th
 ### OQ-100. ma_ltc_eligibility_status's outcome for a person who is both financially and functionally eligible for more than one setting picks institutional first
 
 Body: brief4.md's options (eligible_institutional, eligible_hcbs, eligible_pace, ...) are mutually exclusive, but a person meeting the nursing facility level of care, the HCBS target group, and PACE criteria simultaneously (as the target household's p1 might, once enrolled) is not disambiguated by any cited text; ma_ltc_eligibility_status (CO-652) tests PACE, then HCBS, then institutional, in that order, which is an authoring choice, not a reading of 8.100.7. Items: CO-652.
+
+### OQ-101. Colorado Works need/grant standard tables model only the "One Caretaker" row
+
+Body: 9 CCR 2503-6 3.606.1.F's Standards of Assistance Chart (S414) states three separate rows of need and grant standards - No Caretaker, One Caretaker, Two Caretakers - keyed by number of children, not one table keyed by total unit size. cw_need_standard_table (CO-274) and cw_grant_standard_table (CO-276) carry only the One Caretaker row (households with one caretaker plus their dependent children, which the type "table keyed by household size" fits directly since unit size = children + 1). A child-only unit with no caretaker member (a case-manager payee, no adult in the assistance unit) and a two-parent unit both need the other two rows' amounts, which are not modeled this batch. cw_child_only_unit (CO-921) is derived so a future item can select the correct row once a second table-keyed rule exists; until then, cw_need_standard (CO-911) and cw_grant_standard (CO-912) use the One Caretaker figures for every unit, understating the standard for a no-caretaker unit and overstating it for a two-caretaker unit. Items: CO-274, CO-276, CO-911, CO-912.
+
+### OQ-102. The minor-parent income-deeming "needs" deduction has no stated dollar figure
+
+Body: 9 CCR 2503-6 3.605.1.A.4.a (S413) says the needs of the non-participant parent of a minor parent, and of others in that parent's home for whom the parent is responsible, "shall be deducted from the result to determine the amount attributed to the assistance unit," but does not state which figure "needs" refers to. cw_deemed_parent_income_of_minor_parent (CO-909) reads the One Caretaker need standard for a unit of one (cw_need_standard_table's size-1 value, $253) as the non-participant parent's own needs deduction, on the reading that "needs" in this deeming formula means the same need standard 3.606.1.F otherwise uses for a unit of that composition. It does not add a further deduction for other people in the non-participant parent's home for whom the parent is responsible (none exist in this batch's target household). Items: CO-909.
+
+### OQ-103. Sponsor deeming and disqualified/ineligible-member deeming not modeled this batch
+
+Body: 9 CCR 2503-6 3.605.1.A.5 (sponsor deeming to a sponsored non-citizen) and 3.605.1.A.6 (deeming the net income of a required assistance-unit member who is disqualified for citizenship, non-citizen status, lawful presence, or SSN reasons) are separate income-attribution rules this batch's fixed interface (cw_countable_income) does not name a dedicated item for. Only the 3.605.1.A.4 non-participant-parent-of-a-minor-parent deeming (cw_deemed_parent_income_of_minor_parent, CO-909) is modeled. Items: CO-910.
+
+### OQ-104. Work participation monthly-hour equivalent is an assumption
+
+Body: 45 CFR 261.31 and 261.35 (S419, S420) state weekly hour minimums (30, or 20 for a single parent with a child under six); no fetched document states a monthly equivalent, and 26-2-706(2)(c) (S403) only requires an income conversion ratio, not an hours conversion ratio. cw_meets_work_participation (CO-919) assumes a monthly equivalent of the weekly figure times four, which is not stated in any fetched document. Items: CO-919.
+
+### OQ-105. Only the at-application earned income disregard is modeled
+
+Body: 9 CCR 2503-6 3.606.2.A (S416) states two different earned income disregards: a flat $90 at application (3.606.2.A.1) and a 67% disregard for a unit currently receiving basic cash assistance (3.606.2.A.2). cw_countable_earned_income (CO-907) models only the $90 at-application disregard; the ongoing 67% disregard for a currently-receiving unit is not modeled this batch. Items: CO-907.
+
+### OQ-111. OAP-A/OAP-B distinction not stated in the fetched text
+
+Body: Neither C.R.S. 26-2-111(2) nor 9 CCR 2503-5 §§ 3.530-3.534 (D-59, D-62) states an "OAP-A"/"OAP-B" split; OAP is a single age-60-and-older category. af_oap_group (CO-941) nonetheless assumes the split the phase-5 brief describes (65+ vs 60-64), using the age-65 threshold 3.520.71.B.4 (S453) states for enhanced SSI-benefit eligibility as the closest textual anchor, because af_category's fixed option list names oap_a/oap_b separately. If a later-fetched document states the actual OAP-A/OAP-B definition, af_oap_group_age_split (CO-286) and af_oap_group (CO-941) should be revised to match it. Items: CO-286, CO-941.
+
+### OQ-112. Aid to the Blind has no separate operative provisions in 9 CCR 2503-5
+
+Body: D-62 states OAP (3.530-3.534), AND-SO (3.540-3.543), and AND-CS (3.546-3.549) as the three Adult Financial programs; there is no "3.545" or other AB-specific section, and 3.540's AND-SO description explicitly folds blindness into the AND-SO age range ("unless diagnosed with blindness, then age zero (0) through 59 years of age"). af_ab_eligible (CO-945) is modeled from the statute alone (26-2-111(5)(a), 26-2-103(3), S443, S444), and af_category's "ab" branch uses the AND-SO grant standard (af_and_so_grant_standard) since D-62 states no separate AB grant standard. Items: CO-945, CO-953.
+
+### OQ-113. AND-SO's own medical certification process is not modeled
+
+Body: 9 CCR 2503-5 3.541.1 (not excerpted) requires a State-prescribed medical certification form signed by a medical provider, reviewed and weighed by the county department, as the basis for the total-disability finding. af_and_so_disability_met (CO-944) instead reads the shared supplied facts is_disabled_ssa and receives_social_security_disability directly, treating an SSA/SSDI disability determination as evidence of Colorado's own total-disability standard (which 26-2-103(14)(a), S445, defines independently of the federal standard for persons not receiving Title XVI benefits). This is an assumption; the county's own medical certification process is out of scope for this batch. Items: CO-944.
+
+### OQ-114. Spousal and sponsor income/resource deeming is not modeled
+
+Body: 9 CCR 2503-5 3.534 (OAP), 3.544.D-G (AND-SO), and 3.549.C-G (AND-CS) each state detailed rules for deeming a non-recipient spouse's or a non-citizen client's sponsor's income to the client, with separate SSI-benefit-standard-based deductions for the spouse's or sponsor's own needs and dependents. af_countable_income (CO-946) and af_countable_resources (CO-947) read only the client's own income and the household's countable_resources_individual/_couple figures; they do not add a computed deemed amount from a non-recipient spouse or sponsor. Items: CO-946, CO-947.
+
+### OQ-115. The unearned-income "subtract SSI, add back" and "$20 rollover to earned income" steps are not modeled
+
+Body: 3.533.A.2, 3.544.B, and 3.549.A.2 (S457, S461, S465) each describe subtracting any SSI amount from gross unearned income before applying the $20 disregard, then adding the full SSI amount back; 3.533.A.1.f and 3.549.A.2.f also roll an unused portion of the $20 disregard (when unearned income is under $20) into the earned-income calculation. No supplied fact in this volume states a person's dollar amount of SSI income (only the yes/no receives_ssi), so af_countable_income (CO-946) applies the $20 general disregard to the sum of all unearned income sources without separating out or adding back an SSI amount, and does not model the disregard rollover. This mainly affects AND-CS clients (who by definition receive SSI); af_and_cs_eligible (CO-950) does not depend on af_countable_income for that reason. Items: CO-946.
+
+### OQ-116. AND-CS's "not receiving the full SSI benefit standard" test is not modeled
+
+Body: 3.546 (S462) defines AND-CS as for SSI recipients "not receiving the full SSI benefit standard," but no supplied fact states the dollar amount of SSI a person receives (only receives_ssi, yes/no) against which the SSI benefit standard could be compared. af_and_cs_eligible (CO-950) tests SSI recipiency, disability or blindness, age, and residency only. Items: CO-950.
+
+### OQ-117. Aid to the Blind's Colorado Works household carve-out is not modeled
+
+Body: 26-2-111(5)(a)(I) (S443) excludes from AB "any person who is a member of a household that is receiving public assistance under the aid to families with dependent children program." af_ab_eligible (CO-945) does not read cw_eligibility_status or any Colorado Works fact to apply this carve-out. Items: CO-945.
+
+### OQ-118. OAP and AND-SO/AND-CS grant standards are appropriation-adjustable
+
+Body: 3.531.C, 3.540 (implicitly, "adjusted as needed to remain within available appropriations"), and 3.546.B each say the grant standard may be adjusted to stay within available appropriations, with no appeal right for such an adjustment. af_oap_grant_standard (CO-289), af_and_so_grant_standard (CO-290) and af_and_cs_grant_standard (CO-291) carry only the dollar figures 3.530.A/3.540.A/3.546.A state (S455, S458, S462) as of their stated effective dates; an appropriations-driven adjustment for a later period is not modeled. Items: CO-289, CO-290, CO-291.
+
+### OQ-119. Tension between the statute's citizen/qualified-alien OAP test and the regulation's "all non-citizens are eligible to apply for OAP"
+
+Body: 26-2-111(2)(a)(I) (S441) grants OAP only to "a United States citizen or a qualified alien"; 3.520.67.E (S451) instead says "all non-citizens are eligible to apply for OAP." af_meets_citizenship_requirement (CO-943) is modeled on the statute's citizen-or-qualified-non-citizen test (the controlling law, per the phase-2 brief's rule that the statute controls where regulation and statute disagree), reading 3.520.67.E's language as describing a right to apply rather than a right to be found eligible; this is an assumption. Items: CO-943.
+
+### OQ-120. Mid-month proration and the OAP first-of-month birthday transition are not modeled
+
+Body: 3.532.B.2-3 (not separately excerpted) prorates a client's first grant payment by days remaining in the month for a mid-month eligibility determination and transitions a client from another Adult Financial program to OAP effective the first day of the birthday month. af_oap_grant (CO-951) and af_and_grant (CO-952) compute only the full-month grant standard minus countable income; proration and same-month program transition are out of scope for this batch. Items: CO-951, CO-952.

@@ -1,0 +1,18 @@
+id: CO-911
+name: "Colorado Works: need standard"
+identifier: cw_need_standard
+kind: derived
+type: money
+scope: person
+program: ColoradoWorks
+meaning: The monthly need standard for this person's assistance unit size, per 9 CCR 2503-6 3.606.1.F and 3.606.1.H - the figure countable income is compared against to determine eligibility.
+precision: Reads cw_need_standard_table's One Caretaker row only; see OQ-101.
+open: [OQ-101]
+derived: [lookup, cw_need_standard_table, cw_unit_size]
+sources: [S414, S415]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: No existing item looks up the Colorado Works need standard; cw_meets_income_test (CO-913) needs it.
+tests:
+  - {id: CO-911-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 331}
+  - {id: CO-911-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 253}

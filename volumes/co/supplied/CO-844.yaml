@@ -1,0 +1,12 @@
+id: CO-844
+name: Marital status
+identifier: marital_status
+kind: supplied
+type: one of
+options: [single, married, other]
+scope: person
+program: All
+meaning: The person's marital status, as 9 CCR 2503-6 3.604.2.N distinguishes a minor parent with a marital status of "single" (subject to the living-arrangement rule) from one with any other marital status (not subject to it).
+supplied_by: Applicant statement, verified by the county worker.
+sources: [S411]
+rationale: No existing fact in this volume's interface carries marital status; cw_minor_parent_living_arrangement_met (CO-906) needs it.

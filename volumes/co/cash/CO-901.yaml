@@ -1,0 +1,19 @@
+id: CO-901
+name: "Colorado Works: is a dependent child"
+identifier: cw_is_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The person is a "dependent child" under 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 - under 18, or 18 and a full-time secondary (or vocational/technical equivalent) student reasonably expected to complete before turning 19.
+precision: Uses is_enrolled_in_school (secondary school enrollment) for the 18-year-old prong; this volume does not separately model vocational or technical training enrollment, home school, or GED programs, which 3.604.2.F also treats as satisfying school attendance.
+derived: [any, ["<", age, cw_dependent_child_age_limit], [all, [">=", age, cw_dependent_child_age_limit], ["<", age, cw_dependent_child_student_age_limit], is_enrolled_in_school]]
+sources: [S401, S406]
+implemented: engine
+tags: [cash, tanf, household, age]
+rationale: No existing item in this volume states the Colorado Works dependent-child test; cw_assistance_unit_members (CO-900), cw_has_dependent_child (CO-902), and cw_child_only_unit (CO-921) all read it.
+tests:
+  - {id: CO-901-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-901-T2, as_of: "2026-10-01", given: {date_of_birth: "2008-01-01", is_enrolled_in_school: false}, expect: false}
+  - {id: CO-901-T3, as_of: "2026-10-01", given: {date_of_birth: "2008-01-01", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-901-T4, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_enrolled_in_school: false}, expect: false}

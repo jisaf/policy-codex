@@ -1,0 +1,19 @@
+id: CO-906
+name: "Colorado Works: minor parent living arrangement met"
+identifier: cw_minor_parent_living_arrangement_met
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: Whether a minor parent's living arrangement satisfies 9 CCR 2503-6 3.604.2.N - not applicable (vacuously satisfied) unless the person is both under 18 and has a dependent child; if so, satisfied when the minor is emancipated, has a marital status other than single, lives with her own parent, or is in a county-approved setting.
+precision: "'Lives with her own parent' is read from a stated parent relationship edge to this person, matching this volume's convention (snap_household_members, ma_magi_household_members) that a stated relationship edge means living together; 3.604.2.N.3.c does not require county approval in that case regardless of whether the parent joins the assistance unit."
+derived: [any, [">=", age, cw_minor_parent_age_limit], [not, cw_has_dependent_child], is_emancipated_minor, [not, ["=", marital_status, single]], [exists_related, [child], true], county_approved_living_arrangement]
+sources: [S406, S411]
+implemented: engine
+tags: [cash, tanf, household, age]
+rationale: No existing item states this rule; cw_eligibility_status (CO-920) would need it if a future item gates eligibility on it (not modeled as a gate in this batch's cw_eligibility_status, since 3.604.2.N.2.c lets an unhoused minor parent "receive assistance as an adult" rather than being denied outright, which this batch does not model further - see the batch report).
+tests:
+  - {id: CO-906-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_emancipated_minor: false, marital_status: single, county_approved_living_arrangement: false}, others: {p2: {date_of_birth: "2026-02-03"}, p3: {date_of_birth: "1985-01-22"}}, relationships: [[parent, p1, p2], [parent, p3, p1]], expect: true}
+  - {id: CO-906-T2, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_emancipated_minor: false, marital_status: single, county_approved_living_arrangement: false}, others: {p2: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-906-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_emancipated_minor: false, marital_status: married, county_approved_living_arrangement: false}, others: {p2: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-906-T4, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_emancipated_minor: false, marital_status: single, county_approved_living_arrangement: false}, relationships: [], expect: true}

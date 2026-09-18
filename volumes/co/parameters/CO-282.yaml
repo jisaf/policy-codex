@@ -1,0 +1,11 @@
+id: CO-282
+name: Colorado Works young child age limit (reduced work hours)
+identifier: cw_young_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The age below which a dependent child triggers the reduced weekly participation hours of 45 CFR 261.35 for the child's single custodial parent or caretaker relative.
+value: 6
+sources: [S420]
+rationale: No existing parameter states this age; cw_meets_work_participation (CO-919) needs it, kept out of that rule's identifier per governance name.digits.

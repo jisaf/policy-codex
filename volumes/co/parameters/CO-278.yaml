@@ -1,0 +1,11 @@
+id: CO-278
+name: Colorado Works lifetime time limit
+identifier: cw_time_limit_months
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The cumulative number of months of federal TANF assistance an assistance unit containing an adult (or a minor head-of-household) may receive under 26-2-706.5(1), C.R.S., 9 CCR 2503-6 3.606.6.A, and 45 CFR 264.1(a)(1).
+value: 60
+sources: [S404, S417, S421]
+rationale: No existing parameter states this figure; cw_time_limit_reached (CO-917) needs it.

@@ -1,0 +1,21 @@
+id: CO-905
+name: "Colorado Works: meets citizenship/qualified-immigrant requirement"
+identifier: cw_meets_citizenship_requirement
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The person is a U.S. citizen or U.S. national, or a qualified alien who entered the United States before the PRWORA cutoff date, or who is exempt from the five-year waiting period under 8 U.S.C. 1613(b), or who has held qualified status for five years, per 26-2-706(1.5)(b), C.R.S. and 9 CCR 2503-6 3.604.1.B.
+precision: Reads snap_is_exempt_from_immigrant_waiting_period (CO-307's companion item) for the 8 U.S.C. 1613(b) federal exempt categories rather than restating them, since Colorado Works' text states the same 1613(b) exception SNAP's rule already models.
+assumption: Does not separately model the 40-qualifying-quarters exception 8 U.S.C. 1612(a)(2)(B) provides for SNAP because 3.604.1.B.3 states only the five-year and 1613(b) tests for Colorado Works; a qualifying-quarters route is not read for this program.
+derived: [any, [in, citizenship_status, [citizen, us_national]], [all, [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]], ["<", qualified_status_date, cw_non_citizen_entry_date_cutoff]], [all, [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]], snap_is_exempt_from_immigrant_waiting_period], [all, [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]], [">=", [years_between, qualified_status_date, [det_date]], snap_five_year_bar_years]]]
+sources: [S402, S407]
+open: []
+implemented: engine
+tags: [cash, tanf, immigration, legal]
+rationale: "No existing item states Colorado Works citizenship/immigrant eligibility; cw_eligibility_status (CO-920) needs it. Cross-program reads of snap_is_exempt_from_immigrant_waiting_period and snap_five_year_bar_years (both already govern the same 8 U.S.C. 1613 text 3.604.1.B.3 cross-references) avoid restating identical federal exception logic under a new name; the entry-date-cutoff branch (cw_non_citizen_entry_date_cutoff, CO-279) is Colorado Works-specific and not present in the SNAP or Medicaid citizenship items, so this derivation is not a dup.compact of either."
+tests:
+  - {id: CO-905-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-905-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
+  - {id: CO-905-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1970-01-01", qualified_status_date: "1990-01-01", qualifying_quarters: 0, is_veteran_or_active_duty: false}, expect: true}
+  - {id: CO-905-T4, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1970-01-01", qualified_status_date: "2025-06-01", qualifying_quarters: 0, is_veteran_or_active_duty: false}, expect: false}

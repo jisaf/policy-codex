@@ -1,0 +1,15 @@
+id: CO-275
+name: Colorado Works need standard, each additional child (one caretaker)
+identifier: cw_need_standard_each_additional
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: The amount added to the One Caretaker need standard for each unit member beyond the eleventh (ten children), per 9 CCR 2503-6 3.606.1.F's chart.
+versions:
+  - from: "2025-07-01"
+    value: 67
+    source: S414
+rationale: The chart's "Each Additional Child" column for the One Caretaker Need Standard row; no existing item carries it and cw_need_standard_table (CO-274) only tabulates sizes 1-11.
+sources: [S414]
+tags: [cash, tanf, household]
