@@ -1,0 +1,18 @@
+id: CO-557
+name: "Medicaid: retroactive coverage start month"
+identifier: ma_retroactive_coverage_start_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: The first month of the retroactive Medical Assistance coverage period under 10 CCR 2505-10 8.100.3.E.1 and 42 CFR 435.915(a) - ma_retroactive_coverage_months (3) months before the month of application, for a person who received covered medical services in that period and met every applicable eligibility requirement at the time.
+precision: "8.100.3.E.1's 'or as of the date the person became eligible for Medical Assistance, whichever is later' is not modeled: this item states the earliest month the three-month rule alone reaches, since this volume does not track a separate 'became eligible' date distinct from the eligibility rules this batch and batch 5 already state month by month - a determination of whether the person actually met eligibility in a given retroactive month is made by evaluating ma_magi_is_eligible (CO-553) for that month, not by this item."
+derived: [month_before, [month_before, [month_before, [month_of, application_date]]]]
+sources: [S217, S218]
+open: [OQ-55]
+implemented: engine
+tags: [ma]
+rationale: "No existing item computes a retroactive coverage start month. Written as three single-step month_before applications, matching ma_child_continuous_eligibility_end_month's (CO-556) treatment of the missing 'N months before/after' catalog pattern - see the batch report's engine-gap note."
+tests:
+  - {id: CO-557-T1, as_of: "2026-10-01", given: {application_date: "2026-10-15"}, expect: "2026-07"}
+  - {id: CO-557-T2, as_of: "2026-10-01", given: {application_date: "2027-01-05"}, expect: "2026-10"}

@@ -1,0 +1,14 @@
+id: CO-190
+name: MAGI dependent child age limit for the parent/caretaker category
+identifier: ma_dependent_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The age, in whole years, under which a child is a "dependent child" for the Parents and Caretaker Relatives MAGI category under 42 CFR 435.4's definition, incorporated by 10 CCR 2505-10 8.100.4.G.3 - distinct from ma_magi_child_age_limit (CO-180), which governs household composition and the Children's MAGI category's own age cutoff.
+precision: 42 CFR 435.4 sets 18, or 18 plus a full-time-secondary-student extension through 19; this parameter carries the plain 18 and ma_is_dependent_child (CO-544) applies the student extension as its own condition rather than folding it into this parameter, so the parameter states only the base age.
+value: 18
+sources: [S206]
+tags: [ma, magi, household, age]
+rationale: "No existing item carries this age. ma_is_dependent_child (CO-544) and ma_is_parent_caretaker_category (CO-547) need it as a parameter, not an inline digit (governance name.digits). Not the same parameter as ma_magi_child_age_limit (CO-180, batch 5, value 19): the two ages serve different purposes in different sections (8.100.4.E.1's household-composition child age vs. 42 CFR 435.4's dependent-child definition the parent/caretaker category incorporates), and the phase-3 brief's own text uses '18 (or 18 in school)' for the parent/caretaker category separately from the household and Children's-category age of 19."
+nearest: [CO-180]

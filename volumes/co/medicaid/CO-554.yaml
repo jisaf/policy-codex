@@ -1,0 +1,22 @@
+id: CO-554
+name: "Medicaid: MAGI eligibility status"
+identifier: ma_magi_eligibility_status
+kind: derived
+type: one of
+options: [eligible, emergency_only, ineligible_income, ineligible_residency, ineligible_no_category]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: The reason code for the person's MAGI Medical Assistance eligibility this month - full eligibility, emergency-Medicaid-only, ineligible because household income exceeds every category the person could otherwise fit, ineligible because the person is not a Colorado resident, or ineligible because the person fits no MAGI category's demographic requirements at all.
+precision: Residency is checked first because it is a threshold requirement of every category; emergency-only is checked next because 8.100.3.G.1.g.viii.2 (S175) grants it to a resident who fails citizenship regardless of category or income, matching ma_is_emergency_medicaid_only's own scope (CO-510, batch 5); the income/no-category distinction (ma_meets_some_category_demographics, CO-552) is checked last, only once residency and citizenship are settled.
+derived: [case, [[not, ma_meets_residency], "ineligible_residency"], [ma_is_emergency_medicaid_only, "emergency_only"], [[all, [=, ma_magi_category, "none"], ma_meets_some_category_demographics], "ineligible_income"], [[=, ma_magi_category, "none"], "ineligible_no_category"], [else, "eligible"]]
+sources: [S171, S172, S173, S175]
+implemented: engine
+tags: [ma, magi, immigration]
+rationale: "No existing item reports a MAGI eligibility reason code. Declared an outcome per the batch instructions (ma_magi_category and ma_magi_eligibility_status carry role: outcome). Distinct from ma_magi_is_eligible (CO-553), which only reports pass/fail: the target household's p3 (an undocumented adult over the Parents/Caretaker income standard) needs to be reported as emergency_only, not as ineligible_income or ineligible_no_category, since the checked-first citizenship carve-out governs regardless of her category or income."
+tests:
+  - {id: CO-554-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: false, ma_is_emergency_medicaid_only: false, ma_magi_category: "none", ma_meets_some_category_demographics: false}, expect: ineligible_residency}
+  - {id: CO-554-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_is_emergency_medicaid_only: true, ma_magi_category: "none", ma_meets_some_category_demographics: true}, expect: emergency_only}
+  - {id: CO-554-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_is_emergency_medicaid_only: false, ma_magi_category: "none", ma_meets_some_category_demographics: true}, expect: ineligible_income}
+  - {id: CO-554-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_is_emergency_medicaid_only: false, ma_magi_category: "none", ma_meets_some_category_demographics: false}, expect: ineligible_no_category}
+  - {id: CO-554-T5, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_is_emergency_medicaid_only: false, ma_magi_category: child, ma_meets_some_category_demographics: true}, expect: eligible}

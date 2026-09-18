@@ -1,0 +1,19 @@
+id: CO-548
+name: "Medicaid: meets the Adults MAGI category"
+identifier: ma_is_adult_category
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person meets the Adults MAGI Medical Assistance category under 10 CCR 2505-10 8.100.4.G.4 and 42 CFR 435.119(b) - age ma_magi_child_age_limit (19) through under ma_adult_upper_age_limit (65), not pregnant, not entitled to or enrolled in Medicare, not otherwise eligible under the Children's, Pregnant Women, or Parents/Caretaker Relatives categories, with household income at or below ma_magi_income_standard_adult, applying the 5% income disregard of 42 CFR 435.603(d)(4) and 8.100.4.D as the last step only if income above the plain standard would otherwise make the person ineligible.
+precision: 8.100.4.G.4 also folds in a parent or caretaker relative whose income exceeds the Parents/Caretaker standard but who otherwise meets this category's own criteria (income at or below 133%), which this rule reaches automatically since it does not exclude someone for having a dependent child, only for already qualifying under ma_is_parent_caretaker_category. This batch does not separately model the Former Foster Care category as a 435.119(b)(4) exclusion because 435.150(b)(2) instead makes Former Foster Care itself conditional on not being eligible under 435.110-435.145 (the mandatory groups including Adults); this rule's own mandatory-group exclusions (Children's, Pregnant Women, Parents/Caretaker) are the ones 435.119(b)(4) names.
+derived: [all, [">=", age, ma_magi_child_age_limit], [<, age, ma_adult_upper_age_limit], [not, is_pregnant], [not, is_medicare_entitled_or_enrolled], [not, ma_is_child_category], [not, ma_is_pregnant_category], [not, ma_is_parent_caretaker_category], [any, ["<=", ma_magi_household_income_pct_fpl, ma_magi_income_standard_adult], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_magi_income_standard_adult]]]
+sources: [S207, S208, S165, S168]
+implemented: engine
+tags: [ma, magi, income, age]
+rationale: "No existing item states the Adults-category test. ma_magi_category (CO-551) needs it, listed last among the mandatory groups per the phase-3 brief's ordering, and its exclusion of the other mandatory categories reads ma_is_child_category, ma_is_pregnant_category, and ma_is_parent_caretaker_category directly rather than ma_magi_category itself, to avoid a circular reference (ma_magi_category's own case expression reads this item)."
+tests:
+  - {id: CO-548-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: false, ma_is_child_category: false, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_magi_household_income_pct_fpl: 1.00}, expect: true}
+  - {id: CO-548-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1947-03-12", is_pregnant: false, is_medicare_entitled_or_enrolled: true, ma_is_child_category: false, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_magi_household_income_pct_fpl: 0.50}, expect: false}
+  - {id: CO-548-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: false, ma_is_child_category: false, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_magi_household_income_pct_fpl: 1.50}, expect: false}
+  - {id: CO-548-T4, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, is_medicare_entitled_or_enrolled: false, ma_is_child_category: true, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_magi_household_income_pct_fpl: 0.20}, expect: false}

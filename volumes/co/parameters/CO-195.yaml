@@ -1,0 +1,13 @@
+id: CO-195
+name: Federal MAGI income floor, percent of FPL (Children, Adults, and Pregnant Women groups)
+identifier: ma_federal_magi_floor_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The federal minimum MAGI-equivalent income standard, as a decimal fraction of the federal poverty level, that 42 CFR 435.118(c)(1)(i) (children), 435.119(b)(5) (adults), and 435.116(c)(1)(i) (pregnant women) each independently set at 133 percent FPL, below which a state may not set its own income standard for that mandatory group.
+precision: One parameter shared by ma_magi_income_standard_child (CO-540), ma_magi_income_standard_adult (CO-542), and ma_magi_income_standard_pregnant (CO-543), because all three federal sections state the identical 133 percent FPL floor; a future amendment to any one of the three sections would need a rule review, but this batch has no basis in the fetched text to expect the floors to diverge.
+value: 1.33
+sources: [S202, S208, S210]
+tags: [ma, magi, income]
+rationale: "No existing item carries the federal MAGI income floor. The phase-3 brief directs modeling Colorado's rule and citing both where 8.100.4.G's percentages and the federal minimum floors differ (or, as here, agree); ma_magi_income_standard_child, _adult, and _pregnant each take the greater of this floor and Colorado's own percentage so the rule is a real (if here non-binding) comparison rather than a bare restatement of the state parameter, and so a future federal floor increase above Colorado's stated percentage would be caught rather than silently ignored. No parallel federal-floor parameter is created for the Parents/Caretaker Relatives group because 42 CFR 435.110(c) states the floor as a State's 1988 AFDC standard converted to a MAGI-equivalent, not a flat percentage this volume can state as a number without the underlying AFDC standard, which no fetched document supplies; see the assumption on ma_magi_income_standard_parent_caretaker (CO-541)."

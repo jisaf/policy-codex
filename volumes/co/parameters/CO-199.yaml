@@ -1,0 +1,12 @@
+id: CO-199
+name: MAGI Adults category upper age limit
+identifier: ma_adult_upper_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The age, in whole years, at or above which a person is no longer eligible for the Adults MAGI Medical Assistance category, under 42 CFR 435.119(b)(1) ("age 19 or older and under age 65").
+value: 65
+sources: [S208]
+tags: [ma, magi, age]
+rationale: "No existing item carries this age. ma_is_adult_category (CO-548) needs it as a parameter rather than an inline digit (governance name.digits)."

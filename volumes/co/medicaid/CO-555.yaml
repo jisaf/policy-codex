@@ -1,0 +1,19 @@
+id: CO-555
+name: "Medicaid: continuous eligibility applies"
+identifier: ma_continuous_eligibility_applies
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether continuous eligibility under 10 CCR 2505-10 8.100.3.Q and 42 CFR 435.926 applies to the person this month - under 19, currently eligible for the Children's MAGI category, and a Colorado resident.
+precision: "This batch models only the age, category, and residency conditions of 8.100.3.Q.1 and 435.926(b), and the residency exception of 8.100.3.Q.1.b.iv/435.926(d)(3); the remaining exceptions (death, becoming an inmate, leaving the required household, being unable to be located, requesting withdrawal, agency error or fraud) are not modeled because this volume has no supplied fact for any of them - see OQ-53."
+derived: [all, [<, age, ma_magi_child_age_limit], [=, ma_magi_category, "child"], ma_meets_residency]
+sources: [S215, S216]
+open: [OQ-53]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item states whether continuous eligibility applies. ma_child_continuous_eligibility_end_month (CO-556) needs it as the gate on whether an end month is even meaningful for this person."
+tests:
+  - {id: CO-555-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", ma_magi_category: child, ma_meets_residency: true}, expect: true}
+  - {id: CO-555-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", ma_magi_category: "none", ma_meets_residency: true}, expect: false}
+  - {id: CO-555-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", ma_magi_category: adult, ma_meets_residency: true}, expect: false}

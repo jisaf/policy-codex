@@ -1,0 +1,21 @@
+id: CO-551
+name: "Medicaid: MAGI covered group"
+identifier: ma_magi_category
+kind: derived
+type: one of
+options: [needy_newborn, child, pregnant, parent_caretaker, former_foster_care, adult, none]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Which MAGI Medical Assistance covered group, if any, the person qualifies under this month, evaluated under 10 CCR 2505-10 8.100.4.G's mandatory groups - needy newborn, children, pregnant women, parents and caretaker relatives, former foster care children, and adults - or "none" if the person qualifies under none of them.
+precision: Evaluated in the order 8.100.4.G lists the mandatory groups, with needy newborn checked first because 8.100.4.G.7 grants it without an income test and it can otherwise overlap with the Children's category for an infant under 1; each subsequent category's own test already excludes anyone who qualified under an earlier-listed category (see ma_is_adult_category, CO-548, and ma_is_former_foster_care_category's federal basis, 435.150(b)(2)), so a person who could qualify under more than one category is placed in the first (highest-priority) one this case expression checks, not necessarily the one with the highest income standard.
+derived: [case, [ma_is_needy_newborn, "needy_newborn"], [ma_is_child_category, "child"], [ma_is_pregnant_category, "pregnant"], [ma_is_parent_caretaker_category, "parent_caretaker"], [ma_is_former_foster_care_category, "former_foster_care"], [ma_is_adult_category, "adult"], [else, "none"]]
+sources: [S211, S201, S209, S203, S213, S207]
+implemented: engine
+tags: [ma, magi, income, age]
+rationale: "No existing item reports which MAGI covered group a person qualifies under; every batch-6/7 consumer of category (ma_magi_is_eligible, ma_magi_eligibility_status, and CHP+'s cross-program 'not eligible for Medicaid' test) needs this single outcome rather than checking each of the six category rules itself. The order (needy newborn, child, pregnant, parent/caretaker, former foster care, adult, none) follows 8.100.4.G's own paragraph order (G.7, G.2, G.5, G.3, and 8.100.4.H.2 for former foster care between the mandatory MAGI groups and Adults, then G.4) rather than an income-standard ranking, because 8.100.4.G states the groups in that sequence and every downstream category test (ma_is_adult_category's own exclusions, 435.150(b)(2)'s 'not eligible for mandatory coverage') is written to compose correctly only in this order."
+tests:
+  - {id: CO-551-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_needy_newborn: true, ma_is_child_category: true, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_is_former_foster_care_category: false, ma_is_adult_category: false}, expect: needy_newborn}
+  - {id: CO-551-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_is_needy_newborn: false, ma_is_child_category: true, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_is_former_foster_care_category: false, ma_is_adult_category: false}, expect: child}
+  - {id: CO-551-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_is_needy_newborn: false, ma_is_child_category: false, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_is_former_foster_care_category: false, ma_is_adult_category: true}, expect: adult}
+  - {id: CO-551-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_is_needy_newborn: false, ma_is_child_category: false, ma_is_pregnant_category: false, ma_is_parent_caretaker_category: false, ma_is_former_foster_care_category: false, ma_is_adult_category: false}, expect: none}

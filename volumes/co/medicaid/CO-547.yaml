@@ -1,0 +1,20 @@
+id: CO-547
+name: "Medicaid: meets the Parents and Caretaker Relatives MAGI category"
+identifier: ma_is_parent_caretaker_category
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person meets the Parents and Caretaker Relatives MAGI Medical Assistance category under 10 CCR 2505-10 8.100.4.G.3 - a parent or caretaker relative of a dependent child living with them who has minimum essential coverage, with household income at or below ma_magi_income_standard_parent_caretaker, applying the 5% income disregard of 42 CFR 435.603(d)(4) and 8.100.4.D as the last step only if income above the plain standard would otherwise make the person ineligible.
+precision: "'Living with them' is read from the case's stated parent or caretaker relationship edge, per this volume's convention (see ma_magi_household_members, CO-500) that a stated relationship edge is read as living together. 'Parent or caretaker relative' reads the case's parent and caretaker relationship roles; this batch does not separately test 42 CFR 435.4's caretaker-relative list of specific relations (grandparent, aunt, and so on) because this volume's relationship model already narrows caretaker to that meaning - see OQ-51."
+derived: [all, [exists_related, [parent, caretaker], [all, [of, [P], ma_is_dependent_child], [of, [P], dependent_child_has_minimum_essential_coverage]]], [any, ["<=", ma_magi_household_income_pct_fpl, ma_magi_income_standard_parent_caretaker], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_magi_income_standard_parent_caretaker]]]
+sources: [S203, S205, S165, S168]
+open: [OQ-51]
+implemented: engine
+tags: [ma, magi, income, household]
+rationale: "No existing item states the Parents/Caretaker-category test. ma_magi_category (CO-551) needs it, listed after the Pregnant Women category and before Former Foster Care and Adults per the phase-3 brief's mandatory-group ordering. Uses exists_related (P26) over both the parent and caretaker relationship roles because 8.100.4.G.3 and 435.110(b)/435.4 read 'parent' and 'caretaker relative' as alternative bases for the same category."
+tests:
+  - {id: CO-547-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income_pct_fpl: 0.50}, others: {p2: {date_of_birth: "2015-01-01", is_enrolled_in_school: false, dependent_child_has_minimum_essential_coverage: true}}, relationships: [[parent, p2]], expect: true}
+  - {id: CO-547-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income_pct_fpl: 0.63}, others: {p2: {date_of_birth: "2015-01-01", is_enrolled_in_school: false, dependent_child_has_minimum_essential_coverage: true}}, relationships: [[parent, p2]], expect: true}
+  - {id: CO-547-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income_pct_fpl: 0.80}, others: {p2: {date_of_birth: "2015-01-01", is_enrolled_in_school: false, dependent_child_has_minimum_essential_coverage: true}}, relationships: [[parent, p2]], expect: false}
+  - {id: CO-547-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income_pct_fpl: 0.30}, others: {}, relationships: [], expect: false}

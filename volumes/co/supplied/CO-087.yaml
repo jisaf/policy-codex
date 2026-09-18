@@ -1,0 +1,13 @@
+id: CO-087
+name: Mother was enrolled in Medicaid at birth
+identifier: mother_was_enrolled_in_medicaid_at_birth
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: For a child, whether the child's mother was eligible for and receiving Medical Assistance at the time of the child's birth (including through retroactive Medical Assistance covering the birth), the condition 10 CCR 2505-10 8.100.4.G.7 and 42 CFR 435.117(b)(1) make an "Eligible Needy Newborn."
+precision: Stated on the child's own record; the child need not live with the mother to qualify, per 8.100.4.G.7's third sentence, so this fact is read directly rather than derived from the mother's own current eligibility or from a stated parent/child relationship.
+supplied_by: Newborn report to the County Department of Human Services or eligibility site, cross-checked against CBMS.
+sources: []
+tags: [ma, magi, age]
+rationale: "No existing item carries this fact. ma_is_needy_newborn (CO-550) needs it; it cannot be derived from the mother's current ma_magi_is_eligible because the newborn category depends on the mother's status specifically at the time of birth (or during a retroactive coverage period covering the birth), which this volume does not otherwise track as a historical snapshot."

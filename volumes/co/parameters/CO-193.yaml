@@ -1,0 +1,14 @@
+id: CO-193
+name: MAGI income limit, Adults category, percent of FPL
+identifier: ma_income_limit_adult_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: Colorado's income limit for the Adults MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level, under 10 CCR 2505-10 8.100.4.G.4.
+precision: A percentage-of-FPL figure (1.33 = 133%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
+value: 1.33
+sources: [S207]
+tags: [ma, magi, income, state_election]
+rationale: "No existing item carries Colorado's Adults-category income percentage. ma_magi_income_standard_adult (CO-542) needs it as a parameter rather than an inline digit (governance name.digits). Numerically the same figure as ma_income_limit_child_pct (CO-191), but a separate parameter because 8.100.4.G.2 and 8.100.4.G.4 are independent state elections that happen to state the same percentage and a future rule change to one need not change the other."
+nearest: [CO-191]

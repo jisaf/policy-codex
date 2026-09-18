@@ -1,0 +1,16 @@
+id: CO-556
+name: "Medicaid: child continuous eligibility end month"
+identifier: ma_child_continuous_eligibility_end_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: The last month of a child's continuous eligibility period under 10 CCR 2505-10 8.100.3.Q.2 and 42 CFR 435.926(c) - ma_continuous_eligibility_months (12) months after the determination month, when ma_continuous_eligibility_applies.
+precision: "8.100.3.Q.2 begins the period 'on the first day of the month the application is received, or from the date all criteria are met'; this item uses the determination month ([det_month]) as that anchor, consistent with this volume's other determination-date-anchored items, rather than a separate application-received month for continuous eligibility specifically."
+derived: [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [det_month]]]]]]]]]]]]]
+sources: [S215, S216]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item computes a continuous eligibility end month. Written as twelve single-step month_after applications because the pattern catalog has no 'N months after' operator (only single-step month_before/month_after, per docs/conventions.md P32); a months_after(n, month) pattern, parallel to month_before/month_after, would state this more directly - see the batch report's engine-gap note. ma_continuous_eligibility_months (CO-196) is not read inside the derivation itself for this reason, but is cited as the parameter stating the figure the twelve nested steps implement."
+tests:
+  - {id: CO-556-T1, as_of: "2026-10-01", given: {}, expect: "2027-10"}

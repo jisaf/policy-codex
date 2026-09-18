@@ -1,0 +1,13 @@
+id: CO-088
+name: Application date
+identifier: application_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The date the person's (or their household's) Medical Assistance application was filed, the date 10 CCR 2505-10 8.100.3.E.1 and 42 CFR 435.915(a) measure the three-month retroactive coverage period backward from.
+precision: The date recorded when the Single Streamlined Application is filed (CBMS/PEAK), not the date of a later eligibility determination.
+supplied_by: Single Streamlined Application filing date (CBMS/PEAK).
+sources: []
+tags: [ma, magi]
+rationale: "No existing item carries the application date. ma_retroactive_coverage_start_month (CO-557) needs it as the anchor 8.100.3.E.1 and 435.915(a) both measure 'the three months preceding the date of application' from."

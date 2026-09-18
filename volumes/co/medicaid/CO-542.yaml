@@ -1,0 +1,17 @@
+id: CO-542
+name: "Medicaid: MAGI Adults category income standard"
+identifier: ma_magi_income_standard_adult
+kind: derived
+type: rate
+scope: global
+program: Medicaid
+meaning: The income standard, as a decimal fraction of the federal poverty level, that governs the Adults MAGI Medical Assistance category - the greater of the federal floor 42 CFR 435.119(b)(5) sets and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.4.
+precision: Both the federal floor and Colorado's percentage are 133% FPL.
+derived: [max, ma_federal_magi_floor_pct, ma_income_limit_adult_pct]
+sources: [S207, S208]
+implemented: engine
+tags: [ma, magi, income, state_election]
+rationale: "No existing item states the Adults-category income standard. ma_is_adult_category (CO-548) needs it. Same shape as ma_magi_income_standard_child (CO-540) and ma_magi_income_standard_pregnant (CO-543) because all three compare Colorado's own percentage against a flat federal-floor percentage; each is a distinct rule because each cites a different federal section and a different Colorado percentage parameter."
+nearest: [CO-540, CO-543]
+tests:
+  - {id: CO-542-T1, as_of: "2026-10-01", given: {}, expect: 1.33}

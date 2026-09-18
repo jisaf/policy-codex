@@ -1,0 +1,18 @@
+id: CO-550
+name: "Medicaid: is an Eligible Needy Newborn"
+identifier: ma_is_needy_newborn
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is an "Eligible Needy Newborn" under 10 CCR 2505-10 8.100.4.G.7 and 42 CFR 435.117(b) - under ma_needy_newborn_age_limit_years (1), whose mother was enrolled in Medicaid at the time of the person's birth (including through retroactive coverage).
+precision: 8.100.4.G.7's third sentence ("not required to live with the mother") means this item does not read any parent/child relationship or household membership - mother_was_enrolled_in_medicaid_at_birth is read directly as the child's own fact.
+derived: [all, [<, age, ma_needy_newborn_age_limit_years], mother_was_enrolled_in_medicaid_at_birth]
+sources: [S211, S212]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item states the Eligible Needy Newborn test. ma_magi_category (CO-551) needs it, listed first per the phase-3 brief's mandatory-group ordering, ahead of the Children's category, since 8.100.4.G.7 makes it 'continuously eligible for one year' without regard to income - a stronger, unconditional entitlement that the Children's category's income test should not override."
+tests:
+  - {id: CO-550-T1, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", mother_was_enrolled_in_medicaid_at_birth: true}, expect: true}
+  - {id: CO-550-T2, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", mother_was_enrolled_in_medicaid_at_birth: false}, expect: false}
+  - {id: CO-550-T3, as_of: "2026-10-01", given: {date_of_birth: "2024-02-03", mother_was_enrolled_in_medicaid_at_birth: true}, expect: false}

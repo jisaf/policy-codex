@@ -1,0 +1,18 @@
+id: CO-549
+name: "Medicaid: meets the Former Foster Care Children category"
+identifier: ma_is_former_foster_care_category
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets the Former Foster Care Children Medical Assistance category under 42 CFR 435.150(b) and 10 CCR 2505-10 8.100.4.H.2.a - under ma_former_foster_care_age_limit (26), was a foster youth at 18, and was enrolled in Medicaid at the point their foster care assistance ended.
+precision: Not subject to an income or resource test, per 8.100.4.H.2.b - this item's own test does not read income at all, and no income test is added downstream for a person in this category.
+derived: [all, [<, age, ma_former_foster_care_age_limit], was_foster_youth_at_eighteen, was_enrolled_in_medicaid_at_foster_care_exit]
+sources: [S213, S214]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item states the Former Foster Care category test. ma_magi_category (CO-551) needs it, listed after Parents/Caretaker Relatives and before Adults per the phase-3 brief's mandatory-group ordering (matching 435.150(b)(2)'s condition that a person not otherwise be eligible for mandatory coverage under 435.110-435.145, which this volume reaches by listing this category before Adults but after the other mandatory groups in the case expression)."
+tests:
+  - {id: CO-549-T1, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", was_foster_youth_at_eighteen: true, was_enrolled_in_medicaid_at_foster_care_exit: true}, expect: true}
+  - {id: CO-549-T2, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", was_foster_youth_at_eighteen: true, was_enrolled_in_medicaid_at_foster_care_exit: false}, expect: false}
+  - {id: CO-549-T3, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", was_foster_youth_at_eighteen: true, was_enrolled_in_medicaid_at_foster_care_exit: true}, expect: false}
