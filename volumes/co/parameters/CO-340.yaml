@@ -6,15 +6,19 @@ type: table keyed by household size
 scope: global
 program: CCCAP
 meaning: The monthly dollar amount of 85% of the state median income (SMI) by household size, the "State and Federal Maximum Income Limit" of 8 CCR 1403-1 3.111.H.1 - the cap 3.111.H.1's opening sentence puts on the entry limit and the exit income eligibility limit of 3.111.H.1.b.
-precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_smi_income_limit_each_additional (CO-341) per additional member. The text states these as the 85% SMI figures effective October 1, 2024, alongside the 100% FPG figures cccap_poverty_guideline_table (CO-323) carries; the Colorado SOS current edition (D-76, effective 08/14/2026) restates the same table effective October 1, 2026 with higher figures (3.111.H.2-3).
+precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_smi_income_limit_each_additional (CO-341) per additional member. The text states these as the 85% SMI figures effective October 1, 2024, then (per D-76's revision history, 3.111.H amended effective 09/14/2025) a middle table effective through September 30, 2026, alongside the 100% FPG figures cccap_poverty_guideline_table (CO-323) carries; the Colorado SOS current edition (D-76, effective 08/14/2026) restates the same table effective October 1, 2026 with higher figures still (3.111.H.2-3).
 versions:
   - from: "2024-10-01"
-    to: "2026-10-01"
+    to: "2025-09-14"
     value: { "1": 4792.16, "2": 6266.68, "3": 7741.19, "4": 9215.70, "5": 10690.21, "6": 12164.72, "7": 12441.20, "8": 12717.67 }
     source: S485
+  - from: "2025-09-14"
+    to: "2026-10-01"
+    value: { "1": 5100.99, "2": 6683.61, "3": 8256.22, "4": 9828.83, "5": 11401.45, "6": 12974.06, "7": 13268.93, "8": 13563.79 }
+    source: S582
   - from: "2026-10-01"
     value: { "1": 5347.35, "2": 6992.69, "3": 8638.03, "4": 10283.37, "5": 11928.71, "6": 13574.05, "7": 13882.55, "8": 14191.05 }
     source: S581
-sources: [S485, S581]
+sources: [S485, S582, S581]
 tags: [income]
-rationale: "8 CCR 1403-1 3.111.H.2's income table (S485) states this 85% SMI column verbatim alongside the 100% FPG column cccap_poverty_guideline_table (CO-323, the nearest existing item) already carries; the review (docs/reviews/cccap-leap-phase-6.md, C-5) found the 85% SMI figures were stated in the fetched text and dropped from the ledger. cccap_income_within_entry_limit (CO-986) reads it as the cap 3.111.H.1's opening sentence puts on the entry limit, and cccap_income_within_exit_limit (CO-993) reads it as the exit limit. The Colorado SOS current edition (D-76) carries the same table effective October 1, 2026 (S581), which this item now versions."
+rationale: "8 CCR 1403-1 3.111.H.2's income table (S485) states this 85% SMI column verbatim alongside the 100% FPG column cccap_poverty_guideline_table (CO-323, the nearest existing item) already carries; the review (docs/reviews/cccap-leap-phase-6.md, C-5) found the 85% SMI figures were stated in the fetched text and dropped from the ledger. cccap_income_within_entry_limit (CO-986) reads it as the cap 3.111.H.1's opening sentence puts on the entry limit, and cccap_income_within_exit_limit (CO-993) reads it as the exit limit. The Colorado SOS current edition (D-76) carries a 'Through September 30, 2026' table (S582) immediately before the October 1, 2026 table (S581); per D-76's own revision history ('Rules 3.111 F, 3.111 H eff. 09/14/2025', OQ-179) this now closes the 2024-10-01 version at that stated amendment date and adds the intermediate table as its own version."

@@ -119,4 +119,4 @@ Did not fit cleanly:
 - The HCPF April 2026 chart file is named "Draft" though its body is not marked (OQ-173); whether the chart's percentages already include the 5% disregard is stated nowhere (OQ-172).
 - The Department chart's percentages apply to categories whose rule text carries no "refer to the chart" sentence (parents, pregnant); the extension is an inference from the chart's scope, recorded as such.
 - The CBwD Buy-In memo describes an SSI-style income method where the rule directs the MAGI household income (OQ-174); the rule text was followed.
-- Subagent rate limits ended the round before the through-September-2026 CCCAP table (OQ-179) and the rewritten teen-parent definition (OQ-178) were applied.
+- The through-September-2026 CCCAP table is versioned from the amendment's rule-effective date (2025-09-14), which the text states, rather than a table start date it does not (OQ-179); the teen-parent definition now follows the 2025 rewrite with two defaulted facts (OQ-180).

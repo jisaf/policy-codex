@@ -3459,3 +3459,39 @@ Document: D-76
 Reconstruction note: the PDF extraction is column-major (pdfminer reads down each column before moving to the next), so the raw text runs 100% FPG values for sizes 1-4, then the size labels 1-4, then 85% SMI values for sizes 1-4, then (after a page break) 100% FPG values for sizes 5-8, then 85% SMI values for sizes 5-8, then the two "Each Additional person" figures, then the size labels 5-8. Reassembling by matching each value's row position against the repeated column headers gives, by family size: 1 = $1,330.00 / $5,347.35; 2 = $1,803.33 / $6,992.69; 3 = $2,276.67 / $8,638.03; 4 = $2,750.00 / $10,283.37; 5 = $3,223.33 / $11,928.71; 6 = $3,696.67 / $13,574.05; 7 = $4,170.00 / $13,882.55; 8 = $4,643.33 / $14,191.05; each additional person = $473.33 (100% FPG) / $308.50 (85% SMI).
 
 > 3. Effective October 1, 2026, monthly gross income levels, for one-hundred percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-five percent (85%) of State Median Income (SMI), the state and federal maximum income limits, for the corresponding household size are as follows: Family Size 100% Federal Poverty Guideline (FPG) 85% State Median Income (SMI) (State and Federal Maximum Income Limit) 1 $1,330.00 $1,803.33 $2,276.67 $2,750.00 $3,223.33 $3,696.67 $4,170.00 $4,643.33 $5,347.35 $6,992.69 $8,638.03 $10,283.37 $11,928.71 $13,574.05 $13,882.55 $14,191.05 $473.33 $308.50 2 3 4 5 6 7 8 Each Additional person
+
+### S582. CCCAP low-income eligibility guidelines, income table through September 30, 2026 (SOS edition)
+
+Document: D-76
+
+8 CCR 1403-1 3.111.H.2, Colorado SOS edition effective 08/14/2026. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+Reconstruction note: the PDF extraction is column-major (pdfminer reads down each column before moving to the next), so the raw text runs 100% FPG values for sizes 1-8, then 85% SMI values for sizes 1-8, then the two "Each Additional person" figures, then the size labels 1-8. Reassembling by matching each value's row position against the repeated column headers gives, by family size: 1 = $1,304.17 / $5,100.99; 2 = $1,762.50 / $6,683.61; 3 = $2,220.83 / $8,256.22; 4 = $2,679.17 / $9,828.83; 5 = $3,137.50 / $11,401.45; 6 = $3,595.83 / $12,974.06; 7 = $4,054.17 / $13,268.93; 8 = $4,512.50 / $13,563.79; each additional person = $458.33 (100% FPG) / $294.87 (85% SMI). D-76's revision history (documents/D-76.md:11127) separately states "Rules 3.111 F, 3.111 H eff. 09/14/2025," the amendment this table's own effective date is read from (OQ-179).
+
+> 2. Through September 30, 2026, monthly gross income levels, for one-hundred percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-five percent (85%) of State Median Income (SMI), the state and federal maximum income limits, for the corresponding household size are as follows: Family Size 100% Federal Poverty Guideline (FPG) 85% State Median Income (SMI) (State and Federal Maximum Income Limit) $1,304.17 $1,762.50 $2,220.83 $2,679.17 $3,137.50 $3,595.83 $4,054.17 $4,512.50 $5,100.99 $6,683.61 $8,256.22 $9,828.83 $11,401.45 $12,974.06 $13,268.93 $13,563.79 $458.33 $294.87 1 2 3 4 5 6 7 8 Each Additional person
+>
+> Rules 3.111 F, 3.111 H eff. 09/14/2025.
+
+### S583. CCCAP teen parent definition (SOS edition)
+
+Document: D-76
+
+8 CCR 1403-1 3.103.EEEEE, Colorado SOS edition effective 08/14/2026. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> EEEEE. "Teen parent" means a person under twenty-one (21) years of age who is financially contributing to the welfare of the child and is the parent, adoptive parent, stepparent, legal guardian, or person who is acting "in loco parentis," has custody of the child(ren) for the period that care is requested and is in an eligible activity such as attending basic education, employment, self-employment, or job search. If the person participates in workforce training or post-secondary education, they are considered to be an adult caretaker as defined in rule section 3.103(C).
+
+### S584. CCCAP one-caretaker household: voluntary temporary absence
+
+Document: D-76
+
+8 CCR 1403-1 3.111.D.1.a, Colorado SOS edition effective 08/14/2026. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> a. Households with one (1) adult caretaker or teen parent, where the adult caretaker or teen parent is engaged in a low-income eligible activity, meets low-income eligibility guidelines, has custody of the child, and needs child care assistance. If the adult caretaker or teen parent is voluntarily out of the home temporarily to participate in an eligible low-income activity, serve in the uniformed services of the United States, or receive medical treatment, and has an established intent to return, they are considered to be part of the household and are considered an adult caretaker or teen parent while they are voluntarily out of the home. Any individual temporarily caring for the children shall not be considered a household member.
+
+### S585. CCCAP county residency, grace period on a reported move
+
+Document: D-76
+
+8 CCR 1403-1 3.111.A, Colorado SOS edition effective 08/14/2026. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. The adult caretaker(s) and teen parent(s) shall be verified residents of the county from which assistance is sought and received at the time of application and re-determination. Adult caretaker(s) or teen parent(s) shall remain eligible for the duration of the eligibility period if they report that they are no longer residents of the county in which they are actively receiving assistance per rule section 3.125(GG).
