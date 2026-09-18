@@ -1,0 +1,13 @@
+id: CO-230
+name: SSI-related general income exclusion
+identifier: ma_ssi_general_income_exclusion
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The first $20 of a person's (or couple's) unearned income in a month, disregarded before comparing countable income to the SSI-related income standard, per 20 CFR 416.1124(c)(12) and 10 CCR 2505-10 8.100.5.H.4.a.
+precision: One $20 disregard per couple, not per person (8.100.5.H.4.a.iii); applied to unearned income first, with any unused portion applied to earned income.
+value: 20
+sources: [S308, S310]
+tags: [ma, non_magi, income]
+rationale: "No existing item states the $20 general income exclusion. ma_ssi_countable_unearned_income (CO-606) needs it as a parameter rather than a literal, since 8.100.5.H and 416.1124(c)(12) both state it as a fixed policy figure that could itself be legislatively changed."

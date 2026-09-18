@@ -959,3 +959,1878 @@ Document: D-13
 
 > (*2*) A standard utility allowance for all utilities that includes heating or cooling costs (HCSUA); and
 > (*3*) A limited utility allowance (LUA) that includes electricity and fuel for purposes other than heating or cooling, water, sewerage, well and septic tank installation and maintenance, and garbage or trash collection. The LUA may also include telephone and/or internet costs. The LUA must include expenses for at least two utilities.
+
+### S161. MAGI household: family size and pregnant-woman definitions
+
+Document: D-34
+
+42 CFR 435.603(b). https://www.ecfr.gov/current/title-42/section-435.603
+
+> *Family size* means the number of persons counted as members of an individual's household. In the case of determining the family size of a pregnant woman, the pregnant woman is counted as herself plus the number of children she is expected to deliver. In the case of determining the family size of other individuals who have a pregnant woman in their household, the pregnant woman is counted, at State option, as either 1 or 2 person(s) or as herself plus the number of children she is expected to deliver.
+
+### S162. MAGI household: filer not claimed, and claimed dependent, basic rules
+
+Document: D-34
+
+42 CFR 435.603(f)(1)-(2). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (1) *Basic rule for taxpayers not claimed as a tax dependent.* In the case of an individual who expects to file a tax return for the taxable year in which an initial determination or renewal of eligibility is being made, and who does not expect to be claimed as a tax dependent by another taxpayer, the household consists of the taxpayer and, subject to paragraph (f)(5) of this section, all persons whom such individual expects to claim as a tax dependent.
+>
+> (2) *Basic rule for individuals claimed as a tax dependent.* In the case of an individual who expects to be claimed as a tax dependent by another taxpayer for the taxable year in which an initial determination or renewal of eligibility is being made, the household is the household of the taxpayer claiming such individual as a tax dependent, except that the household must be determined in accordance with paragraph (f)(3) of this section in the case of—
+>
+> (i) Individuals other than a spouse or child who expect to be claimed as a tax dependent by another taxpayer; and
+>
+> (ii) Individuals under the age specified by the State under paragraph (f)(3)(iv) of this section who expect to be claimed by one parent as a tax dependent and are living with both parents but whose parents do not expect to file a joint tax return; and
+>
+> (iii) Individuals under the age specified by the State under paragraph (f)(3)(iv) of this section who expect to be claimed as a tax dependent by a non-custodial parent.
+
+### S163. MAGI household: non-filer rules and married couples
+
+Document: D-34
+
+42 CFR 435.603(f)(3)-(4). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (3) *Rules for individuals who neither file a tax return nor are claimed as a tax dependent.* In the case of individuals who do not expect to file a Federal tax return and do not expect to be claimed as a tax dependent for the taxable year in which an initial determination or renewal of eligibility is being made, or who are described in paragraph (f)(2)(i), (f)(2)(ii), or (f)(2)(iii) of this section, the household consists of the individual and, if living with the individual—
+>
+> (i) The individual's spouse;
+>
+> (ii) The individual's children under the age specified in paragraph (f)(3)(iv) of this section; and
+>
+> (iii) In the case of individuals under the age specified in paragraph (f)(3)(iv) of this section, the individual's parents and siblings under the age specified in paragraph (f)(3)(iv) of this section.
+>
+> (4) *Married couples.* In the case of a married couple living together, each spouse will be included in the household of the other spouse, regardless of whether they expect to file a joint tax return under section 6013 of the Code or whether one spouse expects to be claimed as a tax dependent by the other spouse.
+
+### S164. MAGI household income and the income of children and tax dependents
+
+Document: D-34
+
+42 CFR 435.603(d)(1)-(2). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (1) *General rule.* Except as provided in paragraphs (d)(2) through (d)(4) of this section, household income is the sum of the MAGI-based income, as defined in paragraph (e) of this section, of every individual included in the individual's household.
+>
+> (2) *Income of children and tax dependents.* (i) The MAGI-based income of an individual who is included in the household of his or her natural, adopted or step parent and is not expected to be required to file a tax return under section 6012(a)(1) of the Code for the taxable year in which eligibility for Medicaid is being determined, is not included in household income whether or not the individual files a tax return.
+>
+> (ii) The MAGI-based income of a tax dependent described in paragraph (f)(2)(i) of this section who is not expected to be required to file a tax return under section 6012(a)(1) of the Code for the taxable year in which eligibility for Medicaid is being determined is not included in the household income of the taxpayer whether or not such tax dependent files a tax return.
+
+### S165. MAGI-based income and the income disregard
+
+Document: D-34
+
+42 CFR 435.603(e) intro, (e)(1); 435.603(d)(4). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (e) *MAGI-based income.* For the purposes of this section, MAGI-based income means income calculated using the same financial methodologies used to determine modified adjusted gross income as defined in section 36B(d)(2)(B) of the Code, with the following exceptions—
+>
+> (1) An amount received as a lump sum is counted as income only in the month received.
+>
+> (4) Effective January 1, 2014, in determining the eligibility of an individual using MAGI-based income, a state must subtract an amount equivalent to 5 percentage points of the Federal poverty level for the applicable family size only to determine the eligibility of an individual for medical assistance under the eligibility group with the highest income standard using MAGI-based methodologies in the applicable Title of the Act, but not to determine eligibility for a particular eligibility group.
+
+### S166. Colorado MAGI income calculation: earned, unearned, additional income and exclusions
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.C.1.a-d. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> a. Earned Income:
+> i) Wages, salaries, tips;
+> ii) Gross income derived from business;
+> iii) Gains derived from dealings in property;
+> iv) Distributive share of partnership gross income (not a limited partner);
+> v) Compensation for services, including fees, commissions, fringe benefits and similar items; and
+> vi) Taxable private disability income.
+>
+> b. Unearned Income:
+> i) Interest (includes tax exempt interest);
+> ii) Rents;
+> iii) Royalties;
+> iv) Dividends;
+> v) Alimony received counts as unearned income if the divorce or legal separation is executed on or before December 31, 2018. Alimony received will not be countable income if the divorce or legal separation is modified or executed on or after January 1, 2019;
+> vi) Pensions and annuities;
+> vii) Income from life insurance and endowment contracts;
+> viii) Income from discharge of indebtedness;
+> ix) Income in respect of a decedent;
+> x) Income from an interest in an estate or trust;
+> xi) Social Security (SSA) income; and
+> xii) Distributive share of partnership gross income (limited partner).
+>
+> c. Additional Income: In addition to the types of income identified in section 8.100.4.C.1.a-b., the following income is included in the MAGI calculation.
+> i) Any tax exempt interest income.
+> ii) Untaxed foreign wages and salaries.
+> iii) Social Security Title II Benefits (Old Age, Disability and Survivor's benefits).
+>
+> d. The following are Income exclusions:
+> i) An amount received as a lump sum is counted as income only in the month received;
+> ii) Scholarships, awards, or fellowship grants used for educational purposes and not for living expenses;
+> iii) Child support received;
+> iv) Worker's Compensation;
+> v) Supplemental Security Income (SSI);
+> vi) Veteran's Benefits;
+
+### S167. Colorado MAGI income of children and tax dependents
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.C.1.f. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> f. Income of children and tax dependents:
+> i) The income of a child who is included in the household of their natural, adopted, or step parent will not be included in the household income unless that child has income above the tax filing threshold.
+> 1) Income from Title II Social Security benefits and Tier I Railroad benefits are excluded when determining if a child is required to file taxes.
+> ii) The income of a person, other than a child or spouse, who expects to be claimed as a tax dependent will not be included in the household income of the taxpayer unless that tax dependent has income above the tax filing threshold.
+> 1) Income from Title II Social Security benefits and Tier I Railroad benefits are excluded when determining if a tax dependent is required to file taxes.
+> iii) The income of a child or tax dependent who does not live with their natural, adopted, or step parent will always count towards the determination of their own eligibility, even if the child's or tax dependent's income is below the tax filing threshold.
+
+### S168. Colorado MAGI income disregard (5%)
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.D. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 8.100.4.D. Income Disregard
+>
+> 1. An income disregard equivalent to five percentage points of the Federal Poverty Level for the applicable family size will be subtracted from MAGI-based income.
+> a. If an individual's MAGI-based countable income is above the income threshold for the applicable MAGI program under title XIX (Medicaid) or title XXI (CHP+) of the Social Security Act, the five percent (5%) disregard will be applied for each qualifying MAGI program as the last step to determine eligibility.
+> b. If the countable income is below the income threshold for the applicable MAGI program, the individual is income eligible and the five percent (5%) disregard will not be applied to determine eligibility.
+
+### S169. Colorado MAGI household composition: filer, dependent, exceptions, non-filer rules
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.E.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 8.100.4.E. Determining MAGI Household Composition.
+>
+> 1. MAGI household composition is similar to, but not necessarily the same as a tax household. To determine MAGI household composition, the individual's relationship to the tax filer must be established as declared on the Single Streamlined Application.
+> a. In the case of an applicant who expects to file a tax return for the taxable year in which an initial determination or renewal of eligibility is being made, and does not expect to be claimed as a tax dependent by anyone else, then the applicant's MAGI household shall consist of the following:
+> i) The Tax-Filer;
+> ii) The Tax-Filer's spouse if living in the home;
+> iii) All persons whom the Tax-Filer expects to claim as a tax dependent on their personal income tax return
+> b. In the case of an applicant who expects to be claimed as a tax dependent by another taxpayer for the taxable year in which an initial determination or renewal of eligibility is being made, the applicant's MAGI household shall be:
+> i) The Tax Dependent;
+> ii) The Tax-Filer and their spouse if living in the home;
+> iii) The Tax-Filer's other tax dependents;
+> iv) The Tax Dependent's spouse, if living with the Tax Dependent.
+> c. The MAGI household of an applicant who expects to be claimed as a tax dependent is as outlined in 8.100.4.E.b above, except in the following circumstances:
+> i) The applicant expects to be claimed as a tax dependent by someone other than a spouse, biological, adoptive or step parent.
+> ii) The applicant is a child under 19 who is expected to be claimed by one parent as a tax dependent and is living with both parents, but the parents do not expect to file a joint tax return.
+> iii) The applicant is a child under 19 and who expects to be claimed as a tax dependent by anon-custodial parent.
+> d. If the applicant meets one of the exceptions in 8.100.4.E.c above or is a non-filer, household composition shall be determined using the following non-filer rules and the applicant's household shall consist of the following:
+> i) The applicant;
+> ii) The applicant's spouse who lives in the household;
+> iii) The applicant's natural, adopted, and step children under the age of 19, who live in the household; and
+> iv) In the case of applicants under the age of 19, the applicant's natural, adoptive, and step parents and natural, adoptive, and step siblings under age 19, who live in the household.
+
+### S170. Colorado MAGI household composition: pregnant members, married couples, and shared custody
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.E.2-5. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 2. When a household includes a pregnant woman, regardless of the Medical Assistance category, the pregnant woman is counted as herself plus the number of children she is expected to deliver.
+> 3. Married couples living together will each be included in the other's MAGI household regardless of whether or not they expect to file taxes jointly, separately or if one expects to be claimed as a tax dependent of the other.
+> 4. If a child is claimed as a tax dependent by both parents who are married and who will file taxes jointly but one parent lives outside of the household due to separation or pending divorce, the child's household composition is determined by non-filer rules. The parent living outside of the household will not be counted as part of the household.
+> 5. An individual who is both a tax dependent and a tax filer will be considered a tax dependent for the purpose of determining eligibility for Medical Assistance.
+
+### S171. Federal Medicaid state residence rule
+
+Document: D-33
+
+42 CFR 435.403(a), (d). https://www.ecfr.gov/current/title-42/section-435.403
+
+> (a) *Requirement.* The agency must provide Medicaid to eligible residents of the State, including residents who are absent from the State. The conditions under which payment for services is provided to out-of-State residents are set forth in § 431.52 of this chapter.
+>
+> (d) *Who is a State resident.* A resident of a State is any individual who:
+> (1) Meets the conditions in paragraphs (e) through (i) of this section; or
+> (2) Meets the criteria specified in an interstate agreement under paragraph (k) of this section.
+
+### S172. Colorado Medical Assistance residency requirement
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.B.1-2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. Individuals shall make application in the county in which they live. Individuals who reside in a county but who do not reside in a permanent dwelling nor have a fixed mailing address shall be considered eligible for the Medical Assistance Program, provided all other eligibility requirements are met. In no instance shall there be a durational residency requirement imposed upon the applicant, nor shall there be a requirement for the applicant to reside in a permanent dwelling or have a fixed mailing address.
+>
+> 2. A resident of Colorado is defined as a person that is living within the state of Colorado and considers Colorado to be their place of residence at the time of application.
+
+### S173. Federal Medicaid citizenship and noncitizen eligibility, including the five-year bar and emergency services
+
+Document: D-33
+
+42 CFR 435.406(a)(1), (a)(2), (b). https://www.ecfr.gov/current/title-42/section-435.406
+
+> (a) The agency must provide Medicaid to otherwise eligible individuals who are—
+> (1) Citizens and nationals of the United States, provided that—
+> (i) The individual has made a declaration of United States citizenship, as defined in § 435.4, or an individual described in paragraph (a)(3) of this section has made such declaration on the individual's behalf, and such status is verified in accordance with paragraph (c) of this section; and
+>
+> (2)(i) Except as specified in 8 U.S.C. 1612(b)(1) (permitting States an option with respect to coverage of certain qualified noncitizens), qualified noncitizens as described in 42 CFR 435.4 (including qualified noncitizens subject to the 5-year bar) who have provided satisfactory documentary evidence of qualified noncitizen status, which status has been verified with the Department of Homeland Security (DHS) under a declaration required by section 1137(d) of the Act that the applicant or beneficiary is a noncitizen in a satisfactory immigration status.
+> (ii) The eligibility of qualified noncitizens who are subject to the 5-year bar in 8 U.S.C. 1613 is limited to the benefits described in paragraph (b) of this section.
+>
+> (b) The agency must provide payment for the services described in § 440.255(c) of this chapter to residents of the State who otherwise meet the eligibility requirements of the State plan (except for receipt of AFDC, SSI, or State Supplementary payments) who are qualified noncitizens subject to the 5-year bar or who are non-qualified noncitizens who meet all Medicaid eligibility criteria, except non-qualified noncitizens need not present a social security number or document immigration status.
+
+### S174. Colorado citizenship and lawful-status categories
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.G.1.g.i-iii. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> g. Fall into one of the following categories:
+> i) Be a citizen or national of the United States, the District of Columbia, Puerto Rico, Guam, the Virgin Islands, the Northern Mariana Islands, American Samoa or Swain's Island; or
+> ii) Be a lawfully admitted non-citizen who entered the United States prior to August 22, 1996, or
+> iii) Be a non-citizen who entered the United States on or after August 22, 1996 and is applying for Medical Assistance benefits to begin no earlier than five years after the non-citizen's date of entry into the United States who falls into one of the following categories:
+> 1) lawfully admitted for permanent residence under the Immigration and Nationality Act (hereafter referred to as the "INA");
+
+### S175. Colorado Cover All Coloradans exception and emergency-only coverage
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.G.1.g.viii. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> viii) Exception: Criteria set forth at 8.100.3.G.1.g does not apply to persons who apply for and meet the criteria for one of the specific Medical Assistance programs:
+> 1) Persons who are under the age of 19, whose 19th birthday occurred in the current month, who are pregnant, or who are within 12 months of the beginning of their postpartum period shall not be excluded from the following Medical Assistance Categories on the basis of immigration status:
+> a) MAGI Children, MAGI Pregnant, Psych <21, Transitional Medical Assistance, 4 Month Extended Medical Assistance, MAGI Prenatal Presumptive Eligibility, MAGI Child Presumptive Eligibility
+> b) Medical Buy-In Program for Working Adults with Disabilities (including with Home and Community Based Services), Medicaid Buy-In Program for Children with Disabilities, and Long-Term Care waivers except Program of All Inclusive Care for the Elderly (PACE)
+> 2) Persons requesting limited emergency medical care only and/or reproductive care shall not be excluded on the basis of immigration status. For non-qualified non-citizens receiving Medical Assistance emergency only benefits, the following medical conditions will be covered: An emergency medical condition (including labor and delivery) which manifests itself by acute symptoms of sufficient severity (including severe pain) such that the absence of immediate medical attention could reasonably be expected to result in:
+> a) placing the patient's health in serious jeopardy;
+> b) serious impairment of bodily function; or
+> c) serious dysfunction of any bodily organ or part.
+
+### S176. Five-year limited eligibility of qualified aliens
+
+Document: D-25
+
+8 U.S.C. 1613(a). https://www.law.cornell.edu/uscode/text/8/1613
+
+> Notwithstanding any other provision of law and except as provided in subsections (b), (c), and (d), an alien who is a qualified alien (as defined in section 1641 of this title) and who enters the United States on or after August 22, 1996, is not eligible for any Federal means-tested public benefit for a period of 5 years beginning on the date of the alien's entry into the United States with a status within the meaning of the term "qualified alien".
+
+### S241. CHP+ definitions: child, dependent child, household, presumptive eligibility
+
+Document: D-42
+
+10 CCR 2505-3-50. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-50
+
+> 50.3 "Child" means a person who is less than nineteen years of age.
+> 50.6 "Dependent child" shall mean a child who lives with a parent, legal guardian, caretaker relative or foster parent and is under the age of 18, or, is age 18 and a full-time student, and expected to graduate by age 19
+> 50.13 "Household" shall be determined by relationships to the tax filer as declared on the Single Streamlined Application and as required in 10 CCR 2505-10-8.100.4 .E.
+> 50.16 "Presumptive Eligibility" shall mean children and pregnant women who have applied and appear to be eligible for the Children's Basic Health Plan shall be presumed eligible and may receive immediate temporary medical coverage.
+
+### S242. CHP+ eligible person: age/pregnancy and the Cover All Coloradans exception
+
+Document: D-42
+
+10 CCR 2505-3-110.1.A-B. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-110
+
+> 110.1 To be eligible for the Children's Basic Health Plan, an eligible person shall:
+> A.
+> 1. Be less than 19 years of age; or
+> 2. Be a pregnant woman
+> B. Fall into one of the following categories:
+> p. Exception: Persons who are under the age of 19, whose 19 th birthday occurred in the current month, who are pregnant, or who are within 12 months of the beginning of their postpartum period, and who meet the criteria for one of the specific Child Basic Health Plan Programs, but who are not citizens or qualified non-citizens according to the criteria set forth in 110.1.B, shall receive Medical Assistance benefits for programs included under the CRS 25.5-8-109 .
+
+### S243. CHP+ residency and income bands
+
+Document: D-42
+
+10 CCR 2505-3-110.1.D-F. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-110
+
+> D. Be a resident of Colorado; and residence shall be retained until abandoned. A person temporarily absent from the state, inside or outside the United States, retains Colorado residence. Temporarily absent means that at the time he/she leaves, the person intends to return.
+> E. Have a household income greater than 142% but not exceeding 260% of the Federal Poverty Level, adjusted for household size for children under the age of 19; or
+> F. Have a household income greater than 195% but not exceeding 260% of the Federal Poverty Level, adjusted for household size for pregnant women.
+
+### S244. CHP+ exclusions: other coverage, Medicaid eligibility, institutions
+
+Document: D-42
+
+10 CCR 2505-3-120.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-120
+
+> 120.1 To be eligible for the Children's Basic Health Plan, an eligible person shall not:
+> A. Be covered under a group health plan or under health insurance coverage excluding Consolidated Omnibus Budget Reconciliation Act (COBRA) at the time of application or at redetermination; or
+> B. Be eligible to receive assistance under Title XIX of the Social Security Act; or
+> C. Be an inmate of a public institution or a patient in an institution for mental diseases.
+
+### S245. CHP+ household income calculation and disregards adopt the MAGI Medicaid rule
+
+Document: D-42
+
+10 CCR 2505-3-150. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-150
+
+> 150.1 Calculation of income for the Children's Basic Health Plan shall be determined as required in 10 CCR 2505-10-8.100.4 .C
+> 150.2 Income disregards for the Children's Basic Health Plan shall be determined as required in 10 CCR 2505-10-8.100.4 .D
+
+### S246. CHP+ presumptive eligibility conditions
+
+Document: D-42
+
+10 CCR 2505-3-170.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-170
+
+> 170.1 A pregnant applicant or a child under the age of 19 may apply for presumptive eligibility for immediate temporary medical services through designated presumptive eligibility sites.
+> A. To qualify for presumptive eligibility, a child under the age of 19 shall have a declared household income that shall be greater than 142% but not exceed 260% of Federal Poverty Level ; or
+> B. To qualify for presumptive eligibility, a pregnant women shall have an attested pregnancy, declare that her household's income shall be greater than 195% but not exceed 260% of the Federal Poverty Level ; and
+> C. He/she shall be a United States citizen or a documented immigrant as defined in Section 110.
+
+### S247. CHP+ maximum yearly cost sharing (5% of income)
+
+Document: D-42
+
+10 CCR 2505-3-330.2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-330
+
+> 330.2 The maximum yearly cost sharing requirements for families of enrollees shall be 5% of income.
+
+### S248. CHIP targeted low-income child: financial need and no-other-coverage standards
+
+Document: D-36
+
+42 CFR 457.310(a), (b)(1)(i), (b)(2). https://www.ecfr.gov/current/title-42/part-457
+
+> (a) *Definition.* A targeted low-income child is a child who meets the standards set forth below and the eligibility standards established by the State under § 457.320.
+> (1) *Financial need standard.* A targeted low-income child:
+> (i) Has a household income, as determined in accordance with § 457.315 of this subpart, at or below 200 percent of the Federal poverty level for a family of the size involved;
+> (2) *No other coverage standard.* A targeted low-income child must not be—
+> (i) Found eligible or potentially eligible for Medicaid under policies of the State plan (determined through either the Medicaid application process or the screening process described at § 457.350), except for eligibility under § 435.214 of this chapter (related to coverage for family planning services);
+> (ii) Covered under a group health plan or under health insurance coverage, as defined in section 2791 of the Public Health Service Act, unless the plan or health insurance coverage program has been in operation since before July 1, 1997 and is administered by a State that receives no Federal funds for the program's operation. A child is not considered covered under a group health plan or health insurance coverage if the child does not have reasonable geographic access to care under that plan.
+
+### S249. CHIP eligibility standards a State plan may adopt
+
+Document: D-36
+
+42 CFR 457.320(a)(2),(3),(7). https://www.ecfr.gov/current/title-42/part-457
+
+> (2) Age (up to, but not including, age 19);
+> (3) Income;
+> (7) Access to, or coverage under, other health coverage; and
+
+### S250. CHIP cumulative cost-sharing maximum (5% of family income)
+
+Document: D-37
+
+42 CFR 457.560(a). https://www.ecfr.gov/current/title-42/part-457
+
+> (a) A State may not impose premiums, enrollment fees, copayments, coinsurance, deductibles, or similar cost-sharing charges that, in the aggregate, exceed 5 percent of a family's total income for the length of a child's eligibility period in the State.
+
+### S251. CHIP statutory definitions: child, creditable health coverage, low-income child
+
+Document: D-30
+
+42 U.S.C. 1397jj(c)(1), (2), (4). https://www.law.cornell.edu/uscode/text/42/1397jj
+
+> (1) Child
+> The term “ child ” means an individual under 19 years of age.
+> (2) Creditable health coverage
+> The term “ creditable health coverage ” has the meaning given the term “creditable coverage” under section 2701(c) [2] of the Public Health Service Act ( 42 U.S.C. 300gg(c) ) and includes coverage that meets the requirements of section 1397cc of this title provided to a targeted low-income child under this subchapter or under a waiver approved under section 1397ee(c)(2)(B) of this title (relating to a direct service waiver).
+> (4) Low-income child
+> The term “ low-income child ” means a child whose family income is at or below 200 percent of the poverty line for a family of the size involved.
+
+### S252. CHIP statutory 5% aggregate cost-sharing cap
+
+Document: D-30
+
+42 U.S.C. 1397cc(e)(3)(B). https://www.law.cornell.edu/uscode/text/42/1397cc
+
+> (B) Other children
+> For children not described in subparagraph (A), subject to paragraphs (1)(B) and (2), any premiums, deductibles, cost sharing or similar charges imposed under the State child health plan may be imposed on a sliding scale related to income, except that the total annual aggregate cost-sharing with respect to all targeted low-income children in a family under this subchapter may not exceed 5 percent of such family’s income for the year involved.
+
+### S201. Colorado MAGI Children category income limit and age cutoff
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 2. Children applying for Medical Assistance whose total household income does not exceed 133% of the federal poverty level (MAGI-equivalent) shall be determined financially eligible for Medical Assistance. Refer to the MAGI-Medicaid income guidelines chart available on the Department's website.
+>
+> a. Children are eligible for Children's MAGI Medical Assistance through the end of the month in which they turn 19 years old. After turning 19, the individual may be eligible for a different Medical Assistance category.
+
+### S202. Federal infants and children under 19 income standard
+
+Document: D-31
+
+42 CFR 435.118(b)-(c)(1). https://www.ecfr.gov/current/title-42/section-435.118
+
+> (b) *Scope.* The agency must provide Medicaid to children under age 19 whose household income is at or below the income standard established by the agency in its State plan, in accordance with paragraph (c) of this section.
+>
+> (c) *Income standard.* (1) The minimum income standard is the higher of—
+>
+> (i) 133 percent FPL for the applicable family size; or
+>
+> (ii) For infants under age 1, such higher income standard up to 185 percent FPL, if any, as the State had established as of December 19, 1989 for determining eligibility for infants, or, as of July 1, 1989 had authorizing legislation to do so.
+
+### S203. Colorado MAGI Parents and Caretaker Relatives category income limit
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.3. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 3. Parents and Caretaker Relatives applying for Medical Assistance whose total household income does not exceed 60% of the federal poverty level (MAGI-equivalent) shall be determined financially eligible for Medical Assistance. Parents or Caretaker Relatives eligible for this category shall have a dependent child in the household.
+
+### S204. Federal parents and other caretaker relatives scope
+
+Document: D-31
+
+42 CFR 435.110(b). https://www.ecfr.gov/current/title-42/section-435.110
+
+> (b) *Scope.* The agency must provide Medicaid to parents and other caretaker relatives, as defined in § 435.4, and, if living with such parent or other caretaker relative, his or her spouse, whose household income is at or below the income standard established by the agency in the State plan, in accordance with paragraph (c) of this section.
+
+### S205. Federal caretaker relative definition
+
+Document: D-35
+
+42 CFR 435.4. https://www.ecfr.gov/current/title-42/section-435.4
+
+> *Caretaker relative* means a relative of a dependent child by blood, adoption, or marriage with whom the child is living, who assumes primary responsibility for the child's care (as may, but is not required to, be indicated by claiming the child as a tax dependent for Federal income tax purposes), and who is one of the following—
+>
+> (1) The child's father, mother, grandfather, grandmother, brother, sister, stepfather, stepmother, stepbrother, stepsister, uncle, aunt, first cousin, nephew, or niece.
+>
+> (2) The spouse of such parent or relative, even after the marriage is terminated by death or divorce.
+
+### S206. Federal dependent child definition
+
+Document: D-35
+
+42 CFR 435.4. https://www.ecfr.gov/current/title-42/section-435.4
+
+> *Dependent child* means a child who meets both of the following criteria:
+>
+> (1) Is under the age of 18, or, at State option, is age 18 and a full-time student in secondary school (or equivalent vocational or technical training), if before attaining age 19 the child may reasonably be expected to complete such school or training.
+
+### S207. Colorado MAGI Adults category income limit and dependent-child coverage condition
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 4. Adults applying for Medical Assistance whose total household income does not exceed 133% of the federal poverty level shall be determined financially eligible for Medical Assistance. This category includes adults who are parents or caretaker relatives of dependent children whose income exceeds the income threshold to qualify for the Parents and Caretaker Relatives MAGI category and who meet all other eligibility criteria.
+>
+> a. A dependent child living in the household of a parent or caretaker relative shall have minimum essential coverage, in order for the parent or caretaker relative to be eligible for Medical Assistance under this category. Refer to section 8.100.4.G.3.a on who is considered a dependent child.
+
+### S208. Federal adult group eligibility conditions
+
+Document: D-31
+
+42 CFR 435.119(b). https://www.ecfr.gov/current/title-42/section-435.119
+
+> (b) *Eligibility.* Effective January 1, 2014, the agency must provide Medicaid to individuals who:
+>
+> (1) Are age 19 or older and under age 65;
+>
+> (2) Are not pregnant;
+>
+> (3) Are not entitled to or enrolled for Medicare benefits under part A or B of title XVIII of the Act;
+>
+> (4) Are not otherwise eligible for and enrolled for mandatory coverage under a State's Medicaid State plan in accordance with subpart B of this part; and
+>
+> (5) Have household income that is at or below 133 percent FPL for the applicable family size.
+
+### S209. Colorado MAGI Pregnant Women category income limit and coverage period
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.5. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 5. Pregnant Women whose household income does not exceed 185% of the federal poverty level (MAGI-equivalent) are eligible for the Pregnant Women MAGI Medical Assistance program. Medical Assistance shall be provided to a pregnant woman for a period beginning with the date of application for Medical Assistance through the last day of the month following 60 days from the date the pregnancy ends. Once eligibility has been approved, Medical Assistance coverage will be provided regardless of changes in the woman's financial circumstances once the income verification requirements are met.
+
+### S210. Federal pregnant women income standard
+
+Document: D-31
+
+42 CFR 435.116(c)(1). https://www.ecfr.gov/current/title-42/section-435.116
+
+> (c) *Income standard.* The agency must establish in its State plan the income standard as follows:
+>
+> (1) The minimum income standard is the higher of:
+>
+> (i) 133 percent FPL for the applicable family size; or
+>
+> (ii) Such higher income standard up to 185 percent FPL, if any, as the State had established as of December 19, 1989 for determining eligibility for pregnant women, or, as of July 1, 1989, had authorizing legislation to do so.
+
+### S211. Colorado Eligible Needy Newborn
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.7. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 7. A child whose mother is receiving Medical Assistance at the time of the child's birth is continuously eligible for one year. This population is referred to as "Eligible Needy Newborn". This coverage also applies in instances where the mother received Medical Assistance to cover the child's birth through retroactive Medical Assistance. The child is not required to live with the mother receiving Medical Assistance to qualify as an Eligible Needy Newborn.
+
+### S212. Federal deemed newborn children eligibility
+
+Document: D-31
+
+42 CFR 435.117(b)(1). https://www.ecfr.gov/current/title-42/section-435.117
+
+> (b) *Eligibility.* (1) The agency must provide Medicaid to children from birth until the child's first birthday without application if, for the date of the child's birth, the child's mother was eligible for and received covered services under—
+>
+> (i) The Medicaid State plan (including during a period of retroactive eligibility under § 435.915) regardless of whether payment for services for the mother is limited to services necessary to treat an emergency medical condition, as defined in section 1903(v)(3) of the Act; or
+
+### S213. Colorado former foster care extension to age 26
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.H.2.a. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 2. Medical Assistance shall be extended to certain needy persons until the end of the month of the individual's 26 th birthday, including the following:
+>
+> a. Those individuals that were formerly in foster care under the responsibility of Colorado or Tribe on their 18 th , 19 th , 20 th or up to their 21 st birthday and were receiving Medical Assistance.
+
+### S214. Federal former foster care children eligibility
+
+Document: D-31
+
+42 CFR 435.150(b). https://www.ecfr.gov/current/title-42/section-435.150
+
+> (b) *Eligibility.* The agency must provide Medicaid to individuals who:
+>
+> (1) Are under age 26;
+>
+> (2) Are not eligible and enrolled for mandatory coverage under §§ 435.110 through 435.118 or §§ 435.120 through 435.145; and
+>
+> (3) Were in foster care under the responsibility of the State or a Tribe within the State and enrolled in Medicaid under the State's Medicaid State plan or under a section 1115 demonstration project upon attaining:
+>
+> (i) Age 18; or
+
+### S215. Colorado continuous eligibility for children
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.Q.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. Continuous eligibility applies to children under age 19, who through an eligibility determination, reassessment or redetermination, are found eligible for a Medical Assistance program. The continuous eligibility period may last for up to 12 months.
+>
+> a. The continuous eligibility period applies without regard to changes in income or other factors that would otherwise cause the child to be ineligible.
+>
+> b. Exception: A child's continuous eligibility period will end effective the earliest possible month if any of the following occur:
+>
+> i) Child is deceased;
+>
+> iii) The child is no longer part of the Medical Assistance required household;
+>
+> iv) Is no longer a Colorado resident;
+
+### S216. Federal continuous eligibility for children
+
+Document: D-35
+
+42 CFR 435.926(b)-(c). https://www.ecfr.gov/current/title-42/section-435.926
+
+> (b) *Eligibility.* The agency must provide continuous eligibility for the period specified in paragraph (c) of this section for an individual who is:
+>
+> (1) Under age 19; and
+>
+> (2) Eligible and enrolled for mandatory or optional coverage under the State plan in accordance with subpart B or C of this part.
+>
+> (c) *Continuous eligibility period.* (1) The length of the continuous eligibility period is 12 months.
+>
+> (2) A continuous eligibility period begins on the effective date of the individual's eligibility under § 435.915 or most recent redetermination or renewal of eligibility under § 435.916 and ends after the period specified by the agency under paragraph (c)(1) of this section.
+
+### S217. Colorado retroactive Medical Assistance coverage
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.E.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. An applicant for Medical Assistance shall be provided such assistance any time during the three months preceding the date of application, or as of the date the person became eligible for Medical Assistance, whichever is later. That person shall have received medical services at any time during that period and met all applicable eligibility requirements.
+
+### S218. Federal effective date, retroactive coverage
+
+Document: D-35
+
+42 CFR 435.915(a). https://www.ecfr.gov/current/title-42/section-435.915
+
+> (a) The agency must make eligibility for Medicaid effective no later than the third month before the month of application if the individual—
+>
+> (1) Received Medicaid services, at any time during that period, of a type covered under the plan; and
+>
+> (2) Would have been eligible for Medicaid at the time he received the services if he had applied (or someone had applied for him), regardless of whether the individual is alive when application for Medicaid is made.
+
+### S219. Colorado MAGI category presumptive eligibility
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.F.1-2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. A pregnant applicant may apply for presumptive eligibility for ambulatory services through Medical Assistance presumptive eligibility sites. A child under the age of 19 may apply or have an adult apply on their behalf for presumptive eligibility for State Plan approved medical services through presumptive eligibility sites.
+>
+> 2. To be eligible for presumptive eligibility:
+>
+> a. a pregnant woman shall have an attested pregnancy, declare that her household's income shall not exceed 185% of the federal poverty level (MAGI-equivalent) and declare that she is a United States citizen or a documented immigrant. Refer to the MAGI-Medicaid income guidelines chart available on the Department's website
+>
+> b. a child under the age of 19 shall have a declared household income that does not exceed 133% of federal poverty level (MAGI-equivalent) and declare that the child is a United States citizen or a documented immigrant.
+
+### S220. Federal children covered under presumptive eligibility
+
+Document: D-35
+
+42 CFR 435.1102(a). https://www.ecfr.gov/current/title-42/section-435.1102
+
+> (a) The agency may elect to provide Medicaid services for children under age 19 or a younger age specified by the State during a presumptive eligibility period following a determination by a qualified entity, on the basis of preliminary information, that the individual has gross income (or, at state option, a reasonable estimate of household income, as defined in § 435.603 of this part, determined using simplified methods prescribed by the agency) at or below the income standard established by the State for the age of the child under § 435.118(c) or under § 435.229 if applicable and higher.
+
+### S221. Federal presumptive eligibility for pregnant women
+
+Document: D-35
+
+42 CFR 435.1103(a). https://www.ecfr.gov/current/title-42/section-435.1103
+
+> (a) The terms of §§ 435.1101 and 435.1102 apply to pregnant women such that the agency may provide Medicaid to pregnant women during a presumptive eligibility period following a determination by a qualified entity that the pregnant woman has income at or below the income standard established by the State under § 435.116(c), except that coverage of services provided to such women is limited to ambulatory prenatal care and the number of presumptive eligibility periods that may be authorized for pregnant women is one per pregnancy.
+
+### S222. Presumptive eligibility for pregnant women, statute
+
+Document: D-28
+
+42 U.S.C. 1396r-1(a). https://www.law.cornell.edu/uscode/text/42/1396r-1
+
+> (a) Ambulatory prenatal care
+>
+> A State plan approved under section 1396a of this title may provide for making ambulatory prenatal care available to a pregnant woman during a presumptive eligibility period.
+
+### S223. Presumptive eligibility for children, statute
+
+Document: D-29
+
+42 U.S.C. 1396r-1a(a). https://www.law.cornell.edu/uscode/text/42/1396r-1a
+
+> (a) In general
+>
+> A State plan approved under section 1396a of this title may provide for making medical assistance with respect to health care items and services covered under the State plan available to a child during a presumptive eligibility period.
+
+### S224. Extending coverage for pregnant and postpartum women to 12 months
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(16). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (16) Extending certain coverage for pregnant and postpartum women.—
+>
+> At the option of the State , the State plan (or waiver of such State plan) may provide, that an individual who, while pregnant, is eligible for and has received medical assistance under the State plan approved under this subchapter (or a waiver of such plan) (including during a period of retroactive eligibility under subsection (a)(34)) shall, in addition to remaining eligible under paragraph (5) for all pregnancy-related and postpartum medical assistance available under the State plan (or waiver) through the last day of the month in which the 60-day period (beginning on the last day of her pregnancy) ends, remain eligible under the State plan (or waiver) for medical assistance for the period beginning on the first day occurring after the end of such 60-day period and ending on the last day of the month in which the 12-month period (beginning on the last day of her pregnancy) ends.
+
+### S301. SSI-related resource limits and the MSP resource limits' CPI indexing
+
+Document: D-41
+
+10 CCR 2505-10 8.100.5.M.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Consideration of resources: Resources are defined as cash or other assets or any real or personal property that an individual or spouse owns. The resource limit for an individual is $2,000. For a married couple, the resource limit is $3,000. If one spouse is institutionalized, refer to Spousal Protection-Treatment of Income and Resources for Institutionalized Spouses. Effective January 1, 2011, the resource limits for the Qualified Medicare Beneficiaries (QMB), Specified Low Income Medicare Beneficiaries (SLMB), and Qualified Individuals 1 (QI-1) programs are $8,180 for a single individual and $13,020 for a married individual living with a spouse and no other dependents. The resource limits for the QMB, SLMB, and QI programs shall be adjusted annually by the Centers for Medicare and Medicaid Services on January 1 of each year. These resource limits are based upon the change in the annual consumer price index (CPI) as of September of the previous year. Resources are not counted for the Medicaid Buy-In Program for Working Adults with Disabilities or the Medicaid Buy-In Program for Children with Disabilities.
+
+### S302. SSI resource limit, federal regulation
+
+Document: D-54
+
+20 CFR 416.1205(c). https://www.law.cornell.edu/cfr/text/20/416.1205
+
+> Jan. 1, 1989
+> 2,000
+> $3,000
+
+### S303. ABD general information
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.A.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance for ABD includes SSI eligible individuals, OAP recipients, and the Medicare Savings Program (MSP) individuals. Refer to section 8.100.5 of this volume for income and resource criteria for these categories of assistance.
+
+### S304. Aged, blind, or disabled individual, statutory definition
+
+Document: D-45
+
+42 U.S.C. 1382c(a)(1). https://www.law.cornell.edu/uscode/text/42/1382c
+
+> (1) For purposes of this subchapter, the term "aged, blind, or disabled individual" means an individual who— (A) is 65 years of age or older, is blind (as determined under paragraph (2)), or is disabled (as determined under paragraph (3)), and (B) (i) is a resident of the United States, and is either (I) a citizen or (II) an alien lawfully admitted for permanent residence or otherwise permanently residing in the United States under color of law (including any alien who is lawfully present in the United States as a result of the application of the provisions of section 1182(d)(5) of title 8), or (ii) is a child who is a citizen of the United States, and who is living with a parent of the child who is a member of the Armed Forces of the United States assigned to permanent duty ashore outside the United States.
+
+### S305. Federal categorical requirements: age, blindness, disability
+
+Document: D-49
+
+42 CFR 435.520, 435.530(a), 435.540(a). https://www.ecfr.gov/current/title-42/part-435
+
+> The agency must not impose an age requirement of more than 65 years.
+>
+> (a) *Definition.* The agency must use the same definition of blindness as used under SSI, except that—
+>
+> (a) *Definition.* The agency must use the same definition of disability as used under SSI, except that—
+
+### S306. Support and maintenance in kind, Colorado's one-third FBR rule
+
+Document: D-41
+
+10 CCR 2505-10 8.100.5.F.5.k. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Support and maintenance in kind - The support and maintenance in kind amount should not be greater than one third of the Federal Benefit Rate (FBR). Use the Presumed Maximum Value (PMV) of 1/3 of the recipient's portion of the rent to determine the support and maintenance in kind amount. Use one third of the FBR if an amount is not declared by the client.
+
+### S307. Presumed value rule, federal regulation
+
+Document: D-53
+
+20 CFR 416.1140(a)(1). https://www.law.cornell.edu/cfr/text/20/416.1140
+
+> (a) *How we apply the presumed value rule.* (1) When you receive in-kind support and maintenance and the one-third reduction rule does not apply, we use the presumed value rule. Instead of determining the actual dollar value of any shelter you receive, we presume that it is worth a maximum value. This maximum value is one-third of your Federal benefit rate plus the amount of the general income exclusion described in § 416.1124(c)(12).
+
+### S308. Income allocations and disregards: mutual availability of spouses' income, and the $20 and $65-plus-one-half disregards
+
+Document: D-41
+
+10 CCR 2505-10 8.100.5.H.1.a, 8.100.5.H.4.a-b. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Income of spouses living together is considered mutually available for SSI related, OAP, and Medicare Savings Programs (MSP).
+>
+> $20 General Income Disregard If there is unearned income left after the Ineligible Child and Parent(s) Allocation Disregards are applied, a General Income Disregard of $20 shall be applied as follows: The first $20 of total available unearned income (except for SSI income) must be disregarded. The remaining amount of unearned income is countable.
+>
+> $65 Plus One Half Remainder Earned Income Disregard If there is earned income left after the Ineligible Child and Parent(s) Allocation Disregards are applied: Deduct the first $65 of all earned income. Divide the remaining income in half. The result is the amount of earned income used for determining eligibility.
+
+### S309. The $65 and one-half remainder earned income exclusion, federal regulation
+
+Document: D-53
+
+20 CFR 416.1112(c)(5), (7). https://www.law.cornell.edu/cfr/text/20/416.1112
+
+> (5) $65 of earned income in a month;
+>
+> (7) One-half of remaining earned income in a month;
+
+### S310. The $20 general income exclusion, federal regulation
+
+Document: D-53
+
+20 CFR 416.1124(c)(12). https://www.law.cornell.edu/cfr/text/20/416.1124
+
+> (12) The first $20 of any unearned income in a month other than income in the form of in-kind support and maintenance received in the household of another (see § 416.1131) and income based on need. Income based on need is a benefit that uses financial need as measured by your income as a factor to determine your eligibility. The $20 exclusion does not apply to a benefit based on need that is totally or partially funded by the Federal government or by a nongovernmental agency. However, assistance which is based on need and funded wholly by a State or one of its political subdivisions is excluded totally from income as described in § 416.1124(c)(2). If you have less than $20 of unearned income in a month and you have earned income in that month, we will use the rest of the $20 exclusion to reduce the amount of your countable earned income;
+
+### S311. Earned and unearned income, statutory definitions
+
+Document: D-43
+
+42 U.S.C. 1382a(a)(1)-(2). https://www.law.cornell.edu/uscode/text/42/1382a
+
+> (a) For purposes of this subchapter, income means both earned income and unearned income; and— (1) earned income means only— (A) wages as determined under section 403(f)(5)(C) of this title but without the application of section 410(j)(3) of this title (and, in the case of cash remuneration paid for service as a member of a uniformed service (other than payments described in paragraph (2)(H) of this subsection or subsection (b)(20)), without regard to the limitations contained in section 409(d) of this title); (B) net earnings from self-employment, as defined in section 411 of this title...; and (2) unearned income means all other income, including— (A) support and maintenance furnished in cash or kind...; (B) any payments received as an annuity, pension, retirement, or disability benefit, including veterans' compensation and pensions, workmen's compensation payments, old-age, survivors, and disability insurance benefits, railroad retirement annuities and pensions, and unemployment insurance benefits;
+
+### S312. Qualified Medicare Beneficiaries (QMB)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.L.1-4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage for QMB members is payment of Medicare part B premiums, co-insurance and deductibles. In order to be eligible as a Qualified Medicare Beneficiary, the individual must meet the following: is entitled to Part A Medicare; and resources may not exceed the standard for an individual or couple who have resources, as described in section 8.100.5.M; and has income at or below the percentage of the federal poverty level for the size family as mandated for QMB by federal regulations. Poverty level is established by the Executive Office of Management and Budget. is enrolled in the mandatory SSI program with premium-free Medicare Part A. For QMB purposes, couples shall have their income compared against the federal poverty level couples income maximum. This procedure shall be applied whether one or both members apply for QMB. For QMB purposes, income of the applicant and/or the spouse shall be determined as described under Income Requirements in section 8.100.5. If two or more individuals have earned income, the income of all the individuals shall be added together and the $65 plus one half remainder earned income disregard shall be applied to the total amount of earned income.
+
+### S313. Specified Low Income Medicare Beneficiaries (SLMB)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.M.1-2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage for SLMB clients is limited to payment of monthly Medicare Part B (Supplemental Medical Insurance Benefits) premiums. Effective January 1, 1993, a Specified Low Income Medicare Beneficiary (SLMB) is an individual who: is entitled to Medicare Part A; resources may not exceed the standard for an individual or couple who has resources as described in section 8.100.5.M of this volume. has income at or below a percentage of the federal poverty level for the family size as mandated by federal regulations for SLMB. Income limits have been defined through CY 1995, as follows: CY 1993 and 1994 100-110% of FPL, CY 1995 100-120% of FPL.
+
+### S314. Medicare Qualifying Individuals 1 (QI1)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.N.1, 4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage is limited to monthly payment of Medicare Part B premiums. Payment of the premium shall be made by the Department on behalf of the individual. In order to qualify as a Medicare Qualifying Individual 1, the individual must meet the following: a. be entitled to Part A of Medicare, b. income of at least 120%, but less than 135% of the FPL. c. resources may not exceed the standard as described in section 8.100.5.M, and d. he/she cannot otherwise be eligible for Medical Assistance.
+
+### S315. Qualified Disabled and Working Individuals (QDWI)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.O.1-4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage is limited to monthly payment of Medicare Part A premiums, and any other Medicare cost sharing expenses determined necessary by CMS. Effective July 1, 1990, a Qualified Disabled and Working Individual (QDWI) is an individual who: a. was a recipient of federal Social Security Disability Insurance (SSDI) benefits, who continues to be disabled but lost SSDI entitlement due to earned income in excess of the Social Security Administration's Substantial Gainful Activity (SGA) threshold, and; b. has exhausted SSA's allowed extension of "premium free" Medicare Part A coverage under SSDI, and; c. has resources at or below twice the SSI resource limit as described in section 8.100.5., and; d. has income less than 200% of FPL. An individual may be eligible under this section only if he/she is not otherwise eligible under another Medical Assistance category of eligibility.
+
+### S316. Qualified medicare beneficiary, statutory definition (income and resource tests)
+
+Document: D-27
+
+42 U.S.C. 1396d(p)(1)-(2). https://www.law.cornell.edu/uscode/text/42/1396d
+
+> (1) The term "qualified medicare beneficiary" means an individual— (A) who is entitled to hospital insurance benefits under part A of subchapter XVIII..., (B) whose income (as determined under section 1382a of this title for purposes of the supplemental security income program, except as provided in paragraph (2)(D)) does not exceed an income level established by the State consistent with paragraph (2), and (C) whose resources (as determined under section 1382b of this title for purposes of the supplemental security income program) do not exceed twice the maximum amount of resources that an individual may have and obtain benefits under that program....
+>
+> (2) (A) The income level established under paragraph (1)(B) shall be at least the percent provided under subparagraph (B) (but not more than 100 percent) of the official poverty line (as defined by the Office of Management and Budget, and revised annually in accordance with section 9902(2) of this title) applicable to a family of the size involved.
+
+### S317. Medicaid Buy-In Program for Working Adults with Disabilities
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.P.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> To be eligible for the Medicaid Buy-In Program for Working Adults with Disabilities: a. Applicants must be at least age 16. b. Income must be less than or equal to 450% of FPL after income allocations and disregards. See 8.100.5.F for Income Requirements and 8.100.5.H for Income allocations and disregards. Only the applicant's income will be considered. c. Resources are not counted in determining eligibility. d. Individuals must have a disability as defined by Social Security Administration medical listing or a limited disability as determined by a state contractor. e. Individuals must be employed. Please see Verification Requirements at 8.100.5.B.1.c. f. Individuals will be required to pay monthly premiums on a sliding scale based on income. i) The amount of premiums cannot exceed 7.5% of the individual's income. iii) Premium amounts are as follows: 1) There is no monthly premium for individuals with income at or below 40% FPL. 2) A monthly premium of $25 is applied to individuals with income above 40% of FPL but at or below 133% of FPL. 3) A monthly premium of $90 is applied to individuals with income above 133% of FPL but at or below 200% of FPL. 4) A monthly premium of $130 is applied to individuals with income above 200% of FPL but at or below 300% of FPL. 5) A monthly premium of $200 is applied to individuals with income above 300% of FPL but at or below 450% of FPL.
+
+### S318. Medicaid Buy-In Program for Children with Disabilities
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.Q.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> To be eligible for the Medicaid Buy-In Program for Children with Disabilities: a. Applicants must be age 18 or younger. b. Household income will be considered and must be less than or equal to 300% of FPL after income disregards. ... c. Resources are not counted in determining eligibility. d. Individuals must have a disability as defined by Social Security Administration medical listing. g. Families will be required to pay monthly premiums on a sliding scale based on household size and income. iv) Premium amounts are as follows: 1) There is no monthly premium for households with income at or below 133% of FPL. 2) A monthly premium of $70 is applied to households with income above 133% of FPL but at or below 185% of FPL. 3) A monthly premium of $90 is applied to individuals with income above 185% of FPL but at or below 250% of FPL. 4) A monthly premium of $120 is applied to individuals with income above 250% of FPL but at or below 300% of FPL.
+
+### S319. SSI federal benefit rates for 2026
+
+Document: D-58
+
+SSA, 90 FR (Nov. 3, 2025), Cost-of-Living Increase and Other Determinations for 2026. https://www.ssa.gov/OACT/COLA/colasummary.html
+
+> (1) The maximum Federal Supplemental Security Income (SSI) monthly payment amounts for 2026 under title XVI of the Act will be $994 for an eligible individual; $1,491 for an eligible individual with an eligible spouse; and $498 for an essential person.
+
+### S351. The 300% Institutionalized Special Income category
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.A. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. For Long-Term Care services to be covered in a Long-Term Care institution, a client must be determined eligible under the 300% Institutionalized Special Income category. ... For purposes of applying the special income standard for the aged, disabled or blind persons in Long-Term Care Institutions, gross income means income before application of deductions, exemptions or disregards appropriate to the SSI program.
+> 2. Eligibility under the 300% Institutionalized Special Income category will be provided to applicants who:
+> c. Have been institutionalized for at least 30 consecutive full days in a Long-Term Care institution. The 30 consecutive full day stay may be a combination of days in a hospital, Long-Term Care institution, or receiving services from a Home and Community Based Services (HCBS) program or Program of All Inclusive Care for the Elderly (PACE).
+> e. Have gross income that does not exceed 300% of the current individual SSI benefit level or; Are in a Long-Term Care institution (excluding hospital) whose gross income exceeds the 300% level and who establishes an income trust in accordance with the rules on income trusts in section 8.100.7 of this volume;
+
+### S352. Special income group population, general information
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.6.K.5. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 5. Medical Assistance must be provided to persons in a facility eligible for Medical Assistance reimbursement whose income is under 300% of the SSI benefit level and who, but for the level of their income, would be eligible for OAP "A" or OAP "B" and SSI financial assistance.
+
+### S353. HCBS/PACE eligibility through the 300% special income category or spousal impoverishment
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.B. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. HCBS or PACE shall be provided to persons who have been assessed by the Single Entry Point/Case Management Agency to have met the institutional level of care and will remain in the community by receiving HCBS or PACE; and
+> a. are SSI (including 1619b) or OAP Medicaid eligible; or
+> b. are eligible under the Institutionalized 300% Special Income category described at 8.100.7.A; or
+> c. are eligible under the Medicaid Buy-In Program for Working Adults with Disabilities described at 8.100.6.P. For this group, access to HCBS: i) Is limited to the Elderly, Blind and Disabled (EBD), Community Mental Health Supports (CMHS), Brain Injury (BI), Spinal Cord Injury (SCI), Supported Living Services (SLS), and Developmental Disabilities waivers; and ii) Is contingent on the Department receiving all necessary federal approval for the waiver amendments that extend access to HCBS to the Working Adults with Disabilities population described at 8.100.6.P.
+
+### S354. Institutionalized spouse and community spouse defined
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.K. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The spousal protection regulations apply to married couples where one spouse is institutionalized or likely to be institutionalized for at least 30 consecutive days and the other spouse remains in the community. Being a community spouse does not prohibit Medicaid eligibility if all criteria are met.
+> 2. For purposes of spousal protection, an institutionalized spouse is an individual who:
+> a. Begins a stay in a medical institution or nursing facility on or after September 30, 1989, or
+> b. Is first enrolled as a Medical Assistance client in the Program of All Inclusive Care for the Elderly (PACE) on or after October 10, 1997, or
+> c. Receives Home and Community Based Services on or after July 1, 1999; and
+> d. Is married to a spouse who is not in a medical institution or nursing facility; but does not include any such individual who is not likely to meet the requirements of subparagraphs 8.100.7.K.2.a thru c for at least 30 consecutive days.
+> 3. A community spouse is defined as the spouse of an institutionalized spouse.
+
+### S355. Calculation of the Community Spouse Resource Allowance
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.M.1. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. A Community Spouse Resource Allowance (CSRA) shall be allocated based on the total resources owned by the couple as of the time of Medical Assistance application. ... the CSRA is the largest of the following amounts:
+> a. The total resources of the couple but no more than the current maximum allowance which, changes each year beginning January 1st.; or
+
+### S356. Home and other exempt resources not counted toward the CSRA
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.N. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> The CSRA shall not include the value of exempt resources including the home. It is not necessary for the home to be transferred to the community spouse.
+
+### S357. Institutionalized spouse's resource and income eligibility
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.O. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The institutionalized spouse is resource eligible for Medical Assistance when the total resources owned by the couple are at or below the amount of the Community Spouse Resource Allowance plus the Medical Assistance resource allowance for an individual of $2,000.
+> 2. ... The institutionalized spouse shall be income eligible if his/her gross income is at or below the Medical Assistance income limit for recipients of long-term care.
+
+### S358. Calculating the community spouse's minimum monthly needs
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.Q. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The community spouse's total minimum monthly needs shall be determined as follows:
+> a. The current minimum monthly maintenance needs allowance (MMMNA), which is equal to 150% of the federal poverty level for a family of two and is adjusted in July of each year;
+> b. An excess shelter allowance, in cases where the community spouse's expenses for shelter exceed 30% of the MMMNA.
+> iii) The excess shelter allowance is the amount, if any, that exceeds 30% of the MMMNA.
+
+### S359. MMMNA maximum cap
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.Q.4. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 4. The total that results from adding the current MMMNA and the excess shelter allowance shall not exceed the current maximum MMMNA which is $2,175.00 for the year 2001 and is adjusted by the Health Care Financing Administration in January of each year.
+
+### S360. Deductions from the institutionalized spouse's monthly income, in order
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.T.1. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. During each month after the institutionalized spouse becomes Medical Assistance eligible, deductions shall be made from the institutionalized spouse's monthly income in the following order.
+> a. A personal needs allowance or the client maintenance allowance as allowed by program eligibility.
+> b. A Monthly Income Allowance (MIA) for the community spouse, but only to the extent that income of the institutionalized spouse is actually made available to, or for the benefit of, the community spouse;
+> c. A family allowance for each dependent family member who lives with the community spouse.
+> i) The allowance for each dependent family member shall be equal to one third of the amount of the MMMNA and shall be reduced by the monthly income of that family member.
+
+### S361. Personal needs allowance base amount
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.d.i. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> i) Non-Veteran related personal needs allowance
+> 2) Effective January 1, 2015 the personal needs allowance base amount is $75 per month and will be adjusted annually at the same rate as the statewide average of the nursing facility per diem rate net of patient payment pursuant to C.R.S. §25.5-6-202(9)(b)(I). Each yearly adjustment will set a new base amount.
+
+### S362. Veterans-related personal needs allowance
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.d.ii. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> ii) Veterans-related personal needs allowance Effective 07/01/91, the personal needs allowance shall be $90 per month for a veteran in a Long-Term Care institution who has no spouse or dependent child and who receives a non-service connected disability pension from the U.S. Veterans Administration.
+
+### S363. Patient payment reduced to zero
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.4.a. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> a. Patient payment may be reduced only under the following conditions:
+> i) A resident's income is equal to or less than the personal needs allowance and there is no long term care insurance payment, in which case the patient payment is zero; or
+
+### S364. VA Aid and Attendance/Unusual Medical Expenses excluded from patient payment
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.6.C (VA pension). https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall not be used as patient payment to the medical facility:
+
+### S365. Transfers of assets: definitions, look-back and penalty period
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.1-2. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> d. "Look-back period" means the number of months prior to the month of application for long-term care services that the Department will consider for transfer of assets.
+> e. "Penalty period" means a period of time for which an applicant or client will not be eligible to receive long-term care services.
+> f. "Uncompensated value" shall mean the fair market value of an asset at the time of the transfer minus the value of compensation the individual receives in exchange for the asset.
+> 2. General Provisions If an institutionalized individual or the spouse of such individual disposes of assets without fair consideration on or after the look-back period, the individual shall be subject to a period of ineligibility for Long-Term Care services, including Long-Term Care institution care, Home and Community Based Services (HCBS), and the Program of All Inclusive Care for the Elderly (PACE).
+
+### S366. Penalty period calculation, uncompensated value divided by the average private pay rate
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.2.c. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> c. If an institutionalized individual or such individual's spouse transfers assets without fair consideration on or after the look-back period, the transfer shall be evaluated as follows:
+> i) The fair market value of the transferred asset, less the actual amount received, if any, shall be divided by the average of the regions, defined at 8.100.7.E, monthly private pay cost for Long-Term Care institution care in the state of Colorado at the time of application.
+
+### S367. Apportionment of penalty period between spouses
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.8. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> a. If a transfer results in a period of ineligibility for an individual, and the individual's spouse becomes institutionalized and is otherwise eligible for Medical Assistance, the period of ineligibility shall be apportioned equally between the spouses.
+
+### S368. Federal 60-month look-back and disqualification for transfers without fair consideration
+
+Document: D-46
+
+42 U.S.C. 1396p(c)(1)(B). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> the look-back date specified in this subparagraph is a date that is 60 months (or, in the case of payments from a trust or portions of a trust that are treated as assets disposed of by the individual ... 60 months) before the date specified in subparagraph (A).
+
+### S369. Home equity disqualification and its base/cap figures with CPI indexing
+
+Document: D-46
+
+42 U.S.C. 1396p(f)(1). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> (A) Notwithstanding any other provision of this subchapter, subject to subparagraphs (B) and (C) of this paragraph and paragraph (2), in determining eligibility of an individual for medical assistance with respect to nursing facility services or other long-term care services, the individual shall not be eligible for such assistance if the individual's equity interest in the individual's home exceeds $500,000.
+> (B) A State may elect ... to apply subparagraph (A) by substituting for "$500,000", an amount that exceeds such amount, but does not exceed $750,000.
+> (C) The dollar amounts specified in this paragraph shall be increased, beginning with 2011, from year to year based on the percentage increase in the consumer price index for all urban consumers (all items; United States city average), rounded to the nearest $1,000.
+
+### S370. Home equity exception for a spouse or child lawfully residing in the home
+
+Document: D-46
+
+42 U.S.C. 1396p(f)(2). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> Paragraph (1) shall not apply with respect to an individual if— (A) the spouse of such individual, or (B) such individual's child who is under age 21, or ... is blind or permanently and totally disabled ... is lawfully residing in the individual's home.
+
+### S371. Community spouse resource allowance: base and maximum figures with indexing
+
+Document: D-47
+
+42 U.S.C. 1396r-5(f)(2), (g). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (2) Community spouse resource allowance defined In paragraph (1), the "community spouse resource allowance" for a community spouse is an amount (if any) by which— (A) the greatest of— (i) $12,000 (subject to adjustment under subsection (g)), ... (ii) the lesser of (I) the spousal share computed under subsection (c)(1), or (II) $60,000 (subject to adjustment under subsection (g)), ... exceeds (B) the amount of the resources otherwise available to the community spouse.
+> (g) Indexing dollar amounts For services furnished during a calendar year after 1989, the dollar amounts specified in subsections (d)(3)(C), (f)(2)(A)(i), and (f)(2)(A)(ii)(II) shall be increased by the same percentage as the percentage increase in the consumer price index for all urban consumers (all items; U.S. city average) between September 1988 and the September before the calendar year involved.
+
+### S372. Minimum monthly maintenance needs allowance: applicable percent and cap
+
+Document: D-47
+
+42 U.S.C. 1396r-5(d)(3). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (A) In general Each State shall establish a minimum monthly maintenance needs allowance for each community spouse which, subject to subparagraph (C), is equal to or exceeds— (i) the applicable percent (described in subparagraph (B)) of 1⁄12 of the income official poverty line ... for a family unit of 2 members; plus (ii) an excess shelter allowance (as defined in paragraph (4)).
+> (B) Applicable percent ... effective as of— (iii) July 1, 1992, is 150 percent.
+> (C) Cap on minimum monthly maintenance needs allowance The minimum monthly maintenance needs allowance established under subparagraph (A) may not exceed $1,500 (subject to adjustment under subsections (e) and (g)).
+
+### S373. Spousal share and resource attribution at initial eligibility
+
+Document: D-47
+
+42 U.S.C. 1396r-5(c)(1)-(2). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1)(A) Total joint resources There shall be computed (as of the beginning of the first continuous period of institutionalization ... of the institutionalized spouse)— (i) the total value of the resources to the extent either the institutionalized spouse or the community spouse has an ownership interest, and (ii) a spousal share which is equal to ½ of such total value.
+> (2)(A) ... all the resources held by either the institutionalized spouse, community spouse, or both, shall be considered to be available to the institutionalized spouse, and (B) resources shall be considered to be available to an institutionalized spouse, but only to the extent that the amount of such resources exceeds the amount computed under subsection (f)(2)(A) (as of the time of application for benefits).
+
+### S374. Federal post-eligibility deduction order, institutionalized individuals
+
+Document: D-50
+
+42 CFR 435.725(c). https://www.ecfr.gov/current/title-42/part-435
+
+> (c) Required deductions. In reducing its payment to the institution, the agency must deduct the following amounts, in the following order, from the individual's total income, as determined under paragraph (e) of this section.
+> (1) Personal needs allowance. A personal needs allowance that is reasonable in amount for clothing and other personal needs of the individual while in the institution. This protected personal needs allowance must be at least— (i) $30 a month for an aged, blind, or disabled individual ...
+> (2) Maintenance needs of spouse. For an individual with only a spouse at home, an additional amount for the maintenance needs of the spouse.
+
+### S375. HCBS waiver Level of Care and target group determination
+
+Document: D-56
+
+10 CCR 2505-10 § 8.7100.D. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.7000
+
+> 9. The Case Management Agency shall certify HCBS waiver eligibility only for those individuals:
+> a. Determined by the Case Management Agency to meet the target group designation for one or more waiver programs detailed in the Target Group Criteria section of each HCBS waiver program at Section 8.7101.
+> b. Determined by a Level of Care Assessment to require the Level of Care available in an Institution according to Section 8.401; or
+
+### S376. Spousal impoverishment applies to the HCBS special income group
+
+Document: D-56
+
+10 CCR 2505-10 § 8.7100.C.3. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.7000
+
+> 3. Spousal impoverishment rules set forth at § 1924 of the Act are used to determine the eligibility of individuals with a community spouse for the special HCBS waiver group. In the case of a participant with a community spouse, the state shall use spousal post-eligibility rules as set forth at §1924 of the Act. Spousal impoverishment rules do not apply to people in the Medicaid Buy-In program.
+
+### S377. Institutionalized individuals eligible under a special income standard
+
+Document: D-52
+
+42 CFR 435.1005. https://www.ecfr.gov/current/title-42/part-435
+
+> § 435.1005 Beneficiaries in institutions eligible under a special income standard.
+
+### S378. Federal special income standard: 300 percent of the SSI benefit rate (FFP limit)
+
+Document: D-52
+
+42 CFR 435.1005. https://www.ecfr.gov/current/title-42/part-435
+
+> § 435.1005 Beneficiaries in institutions eligible under a special income standard.
+> For beneficiaries in institutions whose Medicaid eligibility is based on a special income standard established under § 435.236, FFP is available in expenditures for services provided to those individuals only if their income before deductions, as determined by SSI budget methodology, does not exceed 300 percent of the SSI benefit amount payable under section 1611(b)(1) of the Act to an individual in his own home who has no income or resources.
+
+### S401. Colorado Works: "assistance unit" and "dependent child" definitions
+
+Document: D-59
+
+C.R.S. 26-2-703(2.5), (9). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (2.5)    "Assistance  unit"  means  those  family  members  who  are  participants  in  the  Colorado works program and who are receiving cash assistance.
+> (9)  "Dependent child" means a person who resides with a parent or a specified caretaker and who is under the age of eighteen years or, if the person is a full-time student at a secondary school or vocational or technical equivalent and is reasonably expected to complete the school or vocational  or  technical  equivalent  before attaining  the  age  of  nineteen  years, is  under  nineteen years.
+
+### S402. Colorado Works statutory eligibility criteria including citizenship
+
+Document: D-59
+
+C.R.S. 26-2-706(1.5). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (1.5)  To participate in the Colorado works program an applicant or person shall:
+> (a)  Be a resident of Colorado;
+> (b)    Be  a  citizen  of  the  United  States,  a  qualified  alien  who  entered  the  United  States prior to August 22, 1996, or a qualified alien who entered the United States on or after August 22, 1996, who has been in a qualified alien status for a period of five years or, if less than five years, is in a federal exempt category pursuant to 8 U.S.C. sec. 1613 (b), as amended;
+
+### S403. Colorado Works: no asset test, minor parent living-arrangement rule, income conversion
+
+Document: D-59
+
+C.R.S. 26-2-706(2). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (2) (a)  The state department shall promulgate rules to identify with specificity who may be a participant in the works program and the income requirements for participation in the works program.  An  asset  test  shall  not  be  applied  as  a  condition  of  eligibility  for  participation  in  the works program.
+> (b)  The rules shall provide that an unmarried parent under eighteen years of age shall not receive assistance unless such unmarried parent resides with his or her parent or other specified caretaker  in  an  adult-supervised  home  or  in  any  other  arrangement  approved  by  the  county department.
+> (c)  In determining the income requirements pursuant to subsection (2)(a) of this section, the  state  department  shall  use  an  income  conversion  ratio  for  converting  weekly  and  biweekly income  to  a  monthly  amount  using  the  lowest  ratio  or  methodology  that  results  in  the  lowest monthly income amount allowable under federal law.
+
+### S404. Colorado Works sixty-month time limit and hardship/domestic violence extensions
+
+Document: D-59
+
+C.R.S. 26-2-706.5(1), (4). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (1)  Unless cash assistance is provided through segregated funds pursuant to federal law and section 26-2-714, as of June 3, 1997,  each  month  of  cash  assistance  received  by  an  assistance  unit  that  includes  a  specified caretaker who  has  received assistance  under  Title  IV-A  of  the  social  security  act,  as  amended, shall count toward that specified caretaker's sixty-month lifetime maximum of TANF benefits as established in federal law.
+> (4)  No later than July 1, 2023, the state board shall promulgate rules:
+> (a)    Establishing  statewide  standards  and  procedures  that  require  counties  to  offer extensions beyond the sixty-month lifetime maximum for all households that demonstrate good cause, which includes, but is not limited to, an applicant or participant who is:
+> (I)  A child-only case;
+> (II)  The head of a single parent household unit and has a child under one year of age; or
+> (III)  Experiencing hardship, as defined in rules promulgated by the state board; and
+
+### S405. Colorado Works standard of need delegated to state department rules
+
+Document: D-59
+
+C.R.S. 26-2-709(1)(a). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> Standard of need - basic cash assistance grant. (a)  The state department shall promulgate rules determining the  standard  of  need  for  eligibility  for  a  basic  cash  assistance  grant,  whether  an  applicant  or participant  meets  the  standard  of  need,  and  the  amount  of  the  basic  cash  assistance  grant.
+
+### S406. Colorado Works rule manual: "dependent child(ren)" and "minor" definitions
+
+Document: D-61
+
+9 CCR 2503-6 3.601. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.601
+
+> "Dependent child(ren)" means a person who resides with a parent or non-parent caretaker and who is: A. Under eighteen (18) years of age; or, B. Between the ages of eighteen (18) and nineteen (19) and a full-time student in a secondary school or in the equivalent level of vocational or technical training (including seeking to obtain high school equivalency) and expected to complete the program before age nineteen (19).
+> "Minor" means a person who is under the age of eighteen (18).
+
+### S407. Colorado Works residency and lawful presence criteria
+
+Document: D-61
+
+9 CCR 2503-6 3.604.1.A, B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> A. Be a resident of Colorado.
+> 1. There shall be no durational residency requirement and a client who establishes intent to remain in Colorado shall be considered a resident.
+> 2. Residence shall be retained until abandoned.
+> 3. Persons receiving TANF benefits from another state shall not be eligible for Colorado Works grant payments during any month a payment was made by the other state.
+> B. Be lawfully present in the United States as:
+> 1. A citizen of the United States (including persons born in the United States, Puerto Rico, Guam, Virgin Islands (U.S.), American Samoa, or Swain's Island; persons who have become citizens through the naturalization process; persons born to U/S. citizens outside the United States with appropriate documentation); or,
+> 2. A qualified legal non-citizen who entered the United States prior to August 22, 1996; or,
+> 3. A qualified legal non-citizen who entered the United States on or after August 22, 1996, who has been in a qualified non-citizen status for a period of five years, unless they meet one of the exceptions to the five-year bar consistent with 8 U.S.C. 1613(b).
+
+### S408. Colorado Works household composition: mandatory assistance unit members
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.A, C.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> A. A Colorado Works household consists of clients who are part of the assistance unit and/or budgetary unit.
+> 1. The assistance unit consists of individuals who live together and who must apply for and receive Colorado Works grant payments as a single household. Members of the same assistance unit who meet the requirements of the Colorado Works program shall receive basic cash assistance or shall be considered when determining diversion grant amounts. Persons not required to be in one assistance unit, but residing in the same household, shall have the option of applying for Colorado Works as separate units. Each assistance unit shall be budgeted using the appropriate need standard for the unit.
+> C. Members of the Assistance Unit
+> 1. The following individuals must be included in the assistance unit when living in the home:
+> a. Dependent child(ren) who live in the home of a caretaker.
+> b. Parents of dependent child(ren) who live in the home unless the child is a minor parent who is requesting assistance for their own child or responsibility is established with another caretaker through court order, child welfare, or adoption.
+> c. Siblings of dependent child(ren) who live in the home and are legally in the care of the requesting caretaker.
+> d. Half siblings of the dependent child(ren) who live in the home that do not receive child support payments.
+> e. The spouse of a pregnant parent.
+
+### S409. Colorado Works household composition: optional and excluded assistance unit members
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.C.2, C.3. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> 2. The following individuals are optional members of the assistance unit. These individuals are included in the assistance unit when living in the home and requesting assistance:
+> g. Parent(s) of a minor parent who is requesting assistance for their own child.
+> 3. The following individuals are excluded from the assistance unit.
+> a. Individuals receiving SSI payments.
+> b. Individuals who receive other title iv benefits such as foster care, adoption subsidy or Title IV kinship payments.
+
+### S410. Colorado Works budgetary unit: non-recipient parent of a minor parent
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.D.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> 1. The following individuals must be included in the budgetary unit:
+> a. Any individual who is part of the assistance unit (to include optional members of the assistance unit who requested assistance) regardless of whether or not the individual is eligible to receive assistance.
+> d. The non-recipient parent(s) of a minor parent.
+
+### S411. Colorado Works minor parent living arrangement
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.N. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604_v2
+
+> N. Minor Parent Applicants/Participants A minor who is also a parent may apply for Colorado Works.
+> 1. When a minor parent is not emancipated and has a marital status of single, grant payments may not be approved unless the minor parent resides with another adult caretaker or the minor parent resides in another setting which the county has determined is an appropriate setting.
+> 2. When a minor parent does not live in the home of another caretaker:
+> a. The minor parent may not receive benefits until deemed to be in a county approved setting by the county department unless the minor is emancipated, has a marital status other than single, or resides with an adult relative.
+> b. A minor parent who is emancipated or has a marital status other than single is not considered to be living in the home of a caretaker even if they are living in the home of their parent.
+> c. A minor who is a parent and does not live in the home of a caretaker will receive assistance as an adult if approved.
+> 3. Minor Parents and Caretakers
+> a. If the minor parent lives with an unrelated non-parent caretaker who chooses not to be a member of the assistance unit, the minor must be in a county approved setting.
+> b. If the minor parent lives with an unrelated non-parent caretaker who chooses to be a member of the assistance unit, the county department may choose if it is necessary to approve the setting before grant payments are provided per county policy.
+> c. If the minor parent lives with his or her parent, the county department does not need to approve a setting even if the minor's parent chooses not to be a member of the assistance unit.
+> d. A minor parent who is the dependent child of a caretaker will receive assistance as a child if approved even if the caretaker is not included in the assistance unit.
+
+### S412. Colorado Works income: consideration and availability
+
+Document: D-61
+
+9 CCR 2503-6 3.605.1.A.1, A.2. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.605
+
+> 1. Consideration of income - for purpose of determining need, all countable gross income received in the month prior to, if available, and in the month of application shall be used to determine eligibility of members of the assistance unit.
+> 2. Availability of income - income shall be countable when actually available, when the client has a legal interest in a sum, and has the legal ability to make such sum available for support and maintenance. Income, in general, is the receipt by a client of a gain or benefit in cash or in-kind during a calendar month. Received means the date on which the income becomes legally available.
+
+### S413. Colorado Works income of a non-participant parent of an unmarried minor parent (deeming)
+
+Document: D-61
+
+9 CCR 2503-6 3.605.1.A.4. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.605
+
+> 4. Income of a non-participant stepparent and a non-participant parent of an unmarried minor parent
+> a. A stepparent's countable income is considered available to stepchildren included in the assistance unit as dependent children. The countable income of a non-participant parent(s) of an unmarried minor parent who is living in the same home as the minor parent, shall also be deemed to the assistance unit. The countable income equals gross earned income minus the employment disregard of $90, minus the maintenance or child support paid to others outside the assistance unit, minus the amounts actually paid by the individual to other individuals not living in the home and who could be claimed by the individual for federal income tax purposes, plus any unearned income received by the stepparent or non-participant parent. The needs of the stepparent or parent of the minor parent, and the needs of individuals living in the home for whom the stepparent or parent are responsible shall be deducted from the result to determine the amount attributed to the assistance unit.
+> b. Income of parents living in the same home as the unmarried minor parent shall be attributed to the assistance unit of the minor parent.
+
+### S414. Colorado Works standards of assistance chart (need standard and grant standard)
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> F. Determining Eligibility for Basic Cash Assistance Grant Based on the Need Standard The State department shall annually review and as necessary update the need standard to reflect the current economic situations in the state. The basic cash assistance grant shall be determined based upon income using the following need standard. If the client has zero income the following cash payment shall be received based upon those included in the assistance unit: COLORADO WORKS STANDARDS OF ASSISTANCE CHART Number of Children 0 1 2 3 4 5 6 7 8 9 10 Each Additional Child No Caretaker Need Standard 0 117 245 368 490 587 678 755 830 904 977 67 Grant Standard 0 173 362 543 724 869 1003 1117 1226 1337 1460 90 One Caretaker Need Standard 253 331 421 510 605 697 770 844 920 992 1065 67 Grant Standard 374 488 620 754 894 1031 1138 1248 1359 1467 1574 90 Two Caretakers Need Standard 357 439 533 628 716 787 861 937 1009 1082 1155 67 Grant Standard 527 649 788 927 1057 1163 1273 1387 1492 1598 1707 90
+
+### S415. Colorado Works gross income test and grant calculation steps
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.H, I, J.4, K. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> H. Gross Income To be eligible for Colorado Works basic cash assistance, the countable gross earned and unearned income together shall not exceed the need standard for the household size after disregards have been applied in accordance with section 3.606.2.
+> I. Calculation of the Basic Cash Assistance Grant for an Eligible Assistance Unit To calculate the basic cash assistance amount for an eligible assistance unit:
+> 1. Deduct the earned income disregard(s) from the gross earned income, received or expected to be received by members of the assistance unit, in the month of application;
+> 2. Add to the result from step 1, above, the unearned income received or expected to be received by members of the assistance unit;
+> 3. Deduct the total from step 2, above, from the grant amount for the household size.
+> J. Reporting of Earned Income When the assistance unit reports earned income:
+> 4. If the net countable income equals or exceeds the need standard, the assistance unit is not eligible for Colorado Works basic cash assistance.
+> K. Calculation of an Eligible Assistance Unit To calculate the basic cash assistance grant amount for an eligible assistance unit:
+> 1. Deduct the net countable income from the grant amount for the assistance unit; and,
+> 2. Drop the cents, and the remainder is the authorized grant.
+
+### S416. Colorado Works earned income disregards at application and ongoing
+
+Document: D-61
+
+9 CCR 2503-6 3.606.2.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> A. Earned Income Disregards Calculations The following earned income disregards shall be applied to gross wages for clients:
+> 1. At application the gross earned income minus the ninety dollar ($90) earned income disregard, plus any countable unearned income received or expected to be received by members of the assistance unit, shall not exceed the need standard for the household size and shall be applied at application. If income does not exceed the need standard for the household size, the sixty seven percent (67%) disregard shall be applied to determine payment amount.
+> 2. For an assistance unit currently receiving basic cash assistance, the gross earned income minus the sixty seven percent (67%) earned income disregard, plus any countable unearned income received or expected to be received by members of the assistance unit, shall not exceed the need standard for the household size and shall be applied during the certification period. If income does not exceed the need standard for the household size, the 67% disregard shall be applied to determine payment amount.
+
+### S417. Colorado Works time limits, extensions, and exemptions
+
+Document: D-61
+
+9 CCR 2503-6 3.606.6.A, C, F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606_v2
+
+> A. Time Limits Each month for which a basic cash assistance grant is received shall be counted toward the time limits of adult members who are part of the assistance unit regardless of whether or not the adult is eligible to receive assistance. Any assistance unit containing an adult may receive Federal TANF grant payments for up to sixty (60) cumulative months.
+> C. Extensions An assistance unit containing an individual who has received Federal TANF assistance in Colorado or another state as an adult for sixty (60) or more cumulative months shall not be eligible for Colorado Works assistance in Colorado unless granted an extension by the county department due to hardship or domestic violence. Assistance units that contain disqualified members shall not be eligible for consideration of an extension.
+> F. Exemptions From the 60-Month Time Limit Any month of receipt of assistance by an adult while living in Indian Country, or a Native Alaskan village where at least fifty percent (50%) of the adults were not employed, shall not be counted toward the sixty (60) cumulative months of Federal TANF assistance. Indian Country is defined in 18 U.S.C. Section 1151.
+
+### S418. Federal TANF "work-eligible individual" definition
+
+Document: D-60
+
+45 CFR 261.2(n). https://www.ecfr.gov/current/title-45/part-260
+
+> (n)(1) *Work-eligible individual* means an adult (or minor child head-of-household) receiving assistance under TANF or a separate State program or a non-recipient parent living with a child receiving such assistance unless the parent is:
+> (i) A minor parent and not the head-of-household;
+> (ii) A non-citizen who is ineligible to receive assistance due to his or her immigration status; or
+> (iii) At State option on a case-by-case basis, a recipient of Supplemental Security Income (SSI) benefits or Aid to the Aged, Blind or Disabled in the Territories.
+
+### S419. Federal TANF work participation hours
+
+Document: D-60
+
+45 CFR 261.31(a), (b). https://www.ecfr.gov/current/title-45/part-260
+
+> (a) Subject to paragraph (d) of this section, a family with a work-eligible individual counts as engaged in work for a month for the overall rate if:
+> (1) He or she participates in work activities during the month for at least a minimum average of 30 hours per week; and
+> (2) At least 20 of the above hours per week come from participation in the activities listed in paragraph (b) of this section.
+
+### S420. Federal TANF reduced hours for a single custodial parent with a young child
+
+Document: D-60
+
+45 CFR 261.35. https://www.ecfr.gov/current/title-45/part-260
+
+> Yes. A single custodial parent or caretaker relative with a child under age six will count as engaged in work if he or she participates for at least an average of 20 hours per week.
+
+### S421. Federal TANF sixty-month time limit and who it applies to
+
+Document: D-60
+
+45 CFR 264.1(a)(1), (2), (b)(1)(i). https://www.ecfr.gov/current/title-45/part-260
+
+> (a)(1) Subject to the exceptions in this section, no State may use any of its Federal TANF funds to provide assistance (as defined in § 260.31 of this chapter) to a family that includes an adult head-of-household or a spouse of the head-of-household who has received Federal assistance for a total of five years (i.e., 60 cumulative months, whether or not consecutive).
+> (2) The provision in paragraph (a)(1) of this section also applies to a family that includes a pregnant minor head-of-household, minor parent head-of-household, or spouse of such a head-of-household who has received Federal assistance for a total of five years.
+> (b)(1) States must not count toward the five-year limit:
+> (i) Any month of receipt of assistance by an individual who is not the head-of-household or married to the head-of-household;
+
+### S441. Old Age Pension: age, citizenship, and SSI resource eligibility
+
+Document: D-59
+
+C.R.S. 26-2-111(1)(a)-(b), (2)(a)(I). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (a) The person is a resident of the state of Colorado or, if a dependent child, the parent or other relatives with whom said child is living is a resident of the state of Colorado or the person is a legal immigrant who would be otherwise eligible in all respects except for citizenship;
+> (b) The person has insufficient income, property, or other resources to meet his or her needs as determined pursuant to rules and regulations of the state department; except that resource eligibility for the program of aid to the needy disabled shall be as specified in paragraph (d) of subsection (4) of this section, resource eligibility for the program of aid to the blind shall be as specified in subparagraph (III) of paragraph (a) of subsection (5) of this section, and resource eligibility requirements for the old age pension program shall be as specified in paragraph (a) of subsection (2) of this section;
+> (I) The person is a United States citizen or a qualified alien, has attained the age of sixty years or more, and meets the resource eligibility requirements of the federal supplemental security income program; or
+
+### S442. Aid to the needy disabled: total disability, age, and SSI resource eligibility
+
+Document: D-59
+
+C.R.S. 26-2-111(4)(a), (b), (d). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (a) He or she has a total disability, as defined by section 26-2-103 (14) and the rules and regulations of the state department, that has lasted or can be expected to last for a period of six months or more or he or she is determined to be disabled and eligible for social security disability insurance benefits under Title II of the social security act.
+> (b) He or she is eighteen years of age or older.
+> (d) He or she meets the resource eligibility requirements of the federal supplemental security income program.
+
+### S443. Aid to the blind eligibility
+
+Document: D-59
+
+C.R.S. 26-2-111(5)(a)(I)-(III). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (I) Is blind as defined by section 26-2-103 (3) or is determined to be blind and eligible for social security disability insurance benefits under Title II of the social security act; except that any person who is a member of a household that is receiving public assistance under the aid to families with dependent children program set forth in this article shall not be eligible to receive public assistance pursuant to this subsection (5);
+> (II) Has applied for supplemental security income benefits and complied with any recommendations for referrals made by the county department except for good cause shown; and
+> (III) Meets the resource eligibility requirements of the federal supplemental security program.
+
+### S444. "Blind" defined
+
+Document: D-59
+
+C.R.S. 26-2-103(3). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> "Blind" means any individual who has not more than ten percent visual acuity in the better eye with correction, or not more than 20/200 central visual acuity in the better eye with correction, or a limitation in the fields of vision such that the widest diameter of the visual field subtends an angle no greater than twenty degrees.
+
+### S445. "Total disability" defined
+
+Document: D-59
+
+C.R.S. 26-2-103(14)(a). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> "Total disability", for the purpose of providing public assistance to persons not receiving federal financial benefits pursuant to Title XVI of the social security act, means a physical or mental impairment which is disabling and which, because of other factors such as age, training, experience, and social setting, substantially precludes the person having such disability from engaging in a useful occupation as a homemaker or as a wage earner in any employment which exists in the community for which he has competence.
+
+### S446. Old age pension grant amount: net income deducted
+
+Document: D-59
+
+C.R.S. 26-2-114(1), (2)(b)(I). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> The basic minimum award payable to those persons qualified to receive an old age pension shall be one hundred dollars monthly; but the state board may adjust the said basic minimum award above one hundred dollars if, in its discretion, living costs have changed sufficiently to justify such adjustment.
+> (I) The amount of net income from whatever source, either in cash or in kind, which any person qualified for an old age pension may receive shall be deducted from the amount of monthly pension which such person would otherwise receive.
+
+### S447. Aid to the needy disabled grant amount: budgetary need
+
+Document: D-59
+
+C.R.S. 26-2-119(1)(a). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> The amount of assistance payments that shall be granted to a recipient under the program for aid to the needy disabled shall be on the basis of budgetary need, as determined by the county department with due regard to any income, property, or other resources available to the recipient, within available appropriations, and in accordance with rules of the state department.
+
+### S448. "SSI benefit standard" and "Grant standard" defined
+
+Document: D-62
+
+9 CCR 2503-5-3.510. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.510
+
+> "Grant payment" means the Adult Financial program payment and may also be referred to as the benefit.
+> "Grant standard" means the maximum Adult Financial grant payment that can be provided to a client based on each specific Adult Financial program.
+> "SSI benefit standard" means the maximum monthly Federal amount for a SSI recipient as listed in Federal Regulations found at 20 CFR 416.405-415 (2019), which are herein incorporated by reference.
+
+### S449. Adult Financial non-financial eligibility requirements
+
+Document: D-62
+
+9 CCR 2503-5-3.520.61. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Be eighteen (18) through fifty-nine (59) years of age for AND-SO (unless diagnosed with blindness, then age zero (0) through 59 years of age); age 0 through 59 years of age for AND-CS; and age sixty (60) years of age or older for OAP; and,
+> B. Be a resident of Colorado, except that inmates of a city, municipal, county, State, or Federal correctional institution, and fleeing felons, shall not be eligible for Adult Financial programs; and,
+> C. For AND only, be a citizen of the United States or be a qualified non-citizen or legal immigrant as outlined in Sections 3.520.67; and,
+> E. For AND only, have a disability, as outlined in Section 3.541; and,
+> I. Meet all other program eligibility requirements, including income and resource limits.
+
+### S450. Adult Financial residency requirements
+
+Document: D-62
+
+9 CCR 2503-5-3.520.64.A-B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. To be eligible for Adult Financial programs, a client shall be a resident of Colorado.
+> B. Residency is established on the first day the client declares him/herself to be a resident of Colorado.
+
+### S451. Citizenship, qualified non-citizens, and non-citizens
+
+Document: D-62
+
+9 CCR 2503-5-3.520.67.A, E. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. The following are citizens of the United States and are eligible to apply for AND.
+> E. Qualified non-citizens who are considered legal immigrants by USCIS are eligible to apply for Adult Financial programs and all non-citizens are eligible to apply for OAP.
+
+### S452. Five year bar from eligibility
+
+Document: D-62
+
+9 CCR 2503-5-3.520.68.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Qualified non-citizens arriving in the U.S. on or after August 22, 1996, are barred from receiving AND for five years beginning on the qualified non-citizen's date of admission into the United States for legal permanent residence, as verified through SAVE.
+
+### S453. Financial eligibility requirements and SSI benefit standard age reference
+
+Document: D-62
+
+9 CCR 2503-5-3.520.71.A, B.4. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. To receive Adult Financial program assistance, the client shall meet all financial requirements in addition to all other program eligibility requirements. The client shall:
+> 1. Have countable resources below the resource limit as outlined in Section 3.520.72; and,
+> 2. Have income below the income limit, as outlined in Section 3.520.78; and,
+> 4. Clients sixty-five (65) years of age and older may be eligible for SSI benefits when the client's income from any source is less than the SSI benefit standard, as defined in Section 3.510, plus $20.00.
+
+### S454. Adult Financial resource limit
+
+Document: D-62
+
+9 CCR 2503-5-3.520.72.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Unless otherwise specified, a resource is countable, and together with all other countable resources of the client, spouse, and sponsor(s) shall be considered against the resource limit. The resource limit is:
+> 1. $2,000 for: a. An unmarried client;
+> 2. $3,000 for: a. A married client; or,
+
+### S455. Old Age Pension: age and grant standard
+
+Document: D-62
+
+9 CCR 2503-5-3.530. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.530
+
+> The Old Age Pension (OAP) program provides financial assistance and may provide health care benefits for low-income Colorado residents who are sixty (60) years of age or older who meet all financial and non-financial eligibility requirements.
+> A. The total monthly OAP grant standard, as set by the State Board of Human Services, is $1,005.00 effective January 1, 2025.
+
+### S456. OAP grant payment computation
+
+Document: D-62
+
+9 CCR 2503-5-3.532.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.532
+
+> B. When a client has been found eligible based upon eligibility rules as outlined in Sections 3.520.6 and 3.520.7, the amount of the client's authorized OAP grant payment shall be determined by deducting the client's total countable income from the OAP grant standard listed in Section 3.530.A.
+
+### S457. OAP income disregards
+
+Document: D-62
+
+9 CCR 2503-5-3.533. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.533
+
+> Disregards shall be applied before determining a client's total countable income. If a client's total countable income equals or exceeds the OAP grant standard after the disregards are applied, he or she shall be denied or discontinued following the policies outlined in Section 3.554.
+> A. If the client has income, apply the following income disregards:
+> 1. To determine countable earned income: a. Deduct $65 from the gross earned income; and, b. Divide the remainder by two (2). c. The result is the countable earned income.
+> 2. To determine countable unearned income: a. Determine the client's gross unearned income from all sources. b. Subtract any amount received from SSI. c. Deduct $20.00 from the remainder.
+> B. Subtract the countable earned and countable unearned income from the OAP grant standard to determine the grant payment amount.
+
+### S458. AND-SO program: age and grant standard
+
+Document: D-62
+
+9 CCR 2503-5-3.540. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.540
+
+> The Aid to the Needy Disabled State Only (AND-SO) program provides interim assistance to clients age eighteen (18) through fifty-nine (59) years of age (unless diagnosed with blindness, then age zero (0) through 59 years of age); who are disabled or blind but have not been approved for Supplemental Security Income (SSI) or Social Security Disability Insurance (SSDI).
+> A. The total AND-SO grant standard is $248.00, effective April 1, 2022.
+
+### S459. AND-SO total disability requirement
+
+Document: D-62
+
+9 CCR 2503-5-3.541.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.541
+
+> A. To qualify for AND-SO, the client must meet both the non-financial and financial eligibility requirements and have a total disability as defined in Section 3.540.1 and pursuant to Sections 26-2-103(14)(a) and 26-2-111(4)(a), C.R.S.
+
+### S460. AND-SO grant payment computation
+
+Document: D-62
+
+9 CCR 2503-5-3.543.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.543
+
+> B. When a client has been found eligible, the amount of the client's authorized AND-SO grant payment shall be determined by deducting the client's total countable income from the AND-SO grant standard.
+
+### S461. AND-SO income disregards
+
+Document: D-62
+
+9 CCR 2503-5-3.544.A-C. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.544
+
+> Disregards shall be applied before calculating a client's total countable income. If a client's total countable income equals or exceeds the AND-SO grant standard after the disregards are applied, he or she shall be denied following the policies outlined in Section 3.554.
+> A. If the client has earned income, apply the following income disregards: 1. Deduct $65 from the gross earned income; and, 2. Divide the remainder by two (2). 3. The result is the countable earned income.
+> B. If the client has unearned income, apply the following income disregards: 1. Determine the client's gross unearned income from all sources. 2. Deduct $20.00. If the client is married, the $20.00 disregard shall be split between the client and the spouse so that no more than a $20.00 disregard is applied. 3. The result is countable unearned income.
+> C. Subtract the countable earned and countable unearned income from the AND-SO grant standard to determine the grant payment amount.
+
+### S462. AND-CS program: age and grant standard
+
+Document: D-62
+
+9 CCR 2503-5-3.546. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.546
+
+> The Aid to the Needy Disabled-Colorado Supplement (AND-CS) program provides a supplemental payment for clients age zero (0) to fifty-nine (59) who are receiving SSI due to a disability or blindness, but are not receiving the full SSI benefit standard, as defined in Section 3.510.
+> A. The total AND-CS grant standard is $967.00, effective January 1, 2025.
+
+### S463. AND-CS disability/SSI eligibility requirement
+
+Document: D-62
+
+9 CCR 2503-5-3.547.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.547
+
+> A. To meet the disability eligibility requirement for AND-CS, the client must be approved for SSI due to a disability or blindness. The county department shall verify SSI eligibility through SVES or SDX and document in the statewide automated system case comments.
+
+### S464. AND-CS grant payment computation
+
+Document: D-62
+
+9 CCR 2503-5-3.548.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.548
+
+> B. When a client has been found eligible the amount of the client's authorized AND-CS grant payment shall be determined by deducting the client's total countable income from the AND-CS grant standard.
+
+### S465. AND-CS income disregards
+
+Document: D-62
+
+9 CCR 2503-5-3.549.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.549
+
+> A. If the client has income, apply the following income disregards:
+> 1. To determine countable earned income: a. Deduct $65 from the monthly gross income; and, b. Divide the remainder by two (2). c. The result is the countable earned income.
+> 2. To determine countable unearned income: a. Determine the client's unearned income from all sources. b. Subtract any amount received from SSI. c. Deduct $20 from the remainder.
+
+### S481. CCCAP adult caretaker and teen parent definitions
+
+Document: D-64
+
+8 CCR 1403-1-3.103.C, ZZZZ. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.103
+
+> C. "Adult caretaker" means a person in the home who is financially contributing to the welfare of the child and is the parent, adoptive parent, step-parent, legal guardian, or person who is acting in "loco parentis" and has physical custody of the child during the period of time child care is being requested.
+> ZZZZ. "Teen parent" means a parent under twenty-one (21) years of age who has physical custody of his/her child(ren) for the period that care is requested and is in an eligible activity such as attending junior high/middle school, high school, GED program, vocational/technical training activity, employment, self-employment, or job search.
+
+### S482. CCCAP eligible activity and eligible child definitions
+
+Document: D-64
+
+8 CCR 1403-1-3.103.OO; 3.111.F. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.103
+
+> OO. "Eligible activity,", for the purpose of Low-Income Child Care, means the activity in which the teen parent(s) or adult caretaker(s) are involved. This may include job search; employment; self-employment; training; basic education; or, post-secondary education. For teen parents, training and teen parent education are approved activities for all counties.
+> F. Eligible Child An "eligible child" is a child from birth to the age thirteen (13) years who needs child care services during a portion of the day, but less than twenty four (24) hours, and is physically residing with the eligible adult caretaker(s) or teen parent(s); or a child with verified additional care needs under the age of nineteen (19) who is physically or mentally incapable of caring for themselves or is under court supervision and is physically residing with the eligible adult caretaker(s) or teen parent(s).
+
+### S483. CCCAP eligible participants
+
+Document: D-64
+
+8 CCR 1403-1-3.110. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.110
+
+> Eligible CCCAP participants must: be an adult caretaker(s) or teen parent(s) of a child; meet program guidelines; be a low-income adult caretaker(s) or teen parent(s) participating in a low-income eligible activity; and need child care assistance.
+
+### S484. CCCAP low-income eligibility criteria
+
+Document: D-64
+
+8 CCR 1403-1-3.111.A-B. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> To be eligible for Low-Income Child Care assistance the following criteria shall be met:
+> A. The adult caretaker(s) and teen parent(s) shall be verified residents of the county from which assistance is sought and received at the time of application and re-determination.
+> B. The adult caretaker(s) or teen parent(s) shall:
+> 1. Be actively participating in an eligible activity;
+> 2. Meet the income eligibility guidelines set by the Department; and
+> 3. Have physical custody of the child for the period they are requesting care.
+
+### S485. CCCAP low-income eligibility guidelines, income table
+
+Document: D-64
+
+8 CCR 1403-1-3.111.H. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> H. Low-Income Eligibility Guidelines
+> 1. Adult caretaker(s) or teen parent(s) gross income must not exceed eighty-five percent (85%) of the state median income.
+> a. Entry eligibility shall be set by the Department at a level based on the self-sufficiency standard, not to be set below one hundred eighty-five percent (185%) of the federal poverty level.
+> b. Exit income eligibility must be eighty-five percent (85%) of the state median income.
+> 2. Effective October 1, 2024, monthly gross income levels, for one-hundred percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-five percent (85%) of State Median Income (SMI) for the corresponding household size are as follows: Family Size 100% Federal Poverty Guideline (FPG) 85% State Median Income (SMI) (State and Federal Maximum Income Limit) 1 $1,255.00 $4,792.16 2 $1,703.33 $6,266.68 3 $2,151.67 $7,741.19 4 $2,600.00 $9,215.70 5 $3,048.33 $10,690.21 6 $3,496.67 $12,164.72 7 $3,945.00 $12,441.20 8 $4,393.33 $12,717.67 Each Additional person $448.33 $276.47
+
+### S486. CCCAP income inclusions and exclusions (child earnings excluded)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.I.1, J.1. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> I. Income Inclusions Each of the following are considered countable income and are taken into consideration for eligibility for child care.
+> 1. Gross earnings, salary, armed forces pay (including but not limited to basic pay, basic assistance for housing (BAH) and basic assistance for subsistence (BAS), hazard duty pay, and separation pay), commissions, tips, and cash bonuses are counted before deductions are made for taxes, bonds, pensions, union dues and similar deductions.
+> J. Income Exclusions Each of the following are not considered countable income and are not taken into consideration for eligibility for child care.
+> 1. Earnings of a child in the household when not a teen parent
+
+### S487. CCCAP Colorado Works Child Care eligibility
+
+Document: D-64
+
+8 CCR 1403-1-3.115.A; 3.116.A. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.115
+
+> A. Adult caretakers or teen parents who are approved for Colorado Works and are determined work eligible per Colorado Works rule (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB) are eligible to receive Colorado Works Child Care for at least twelve (12) months unless the adult caretaker or teen parent has been determined eligible for transition to Low-Income Child Care prior to the end of the twelve (12) month period.
+> A. Adult caretakers or teen parents that have been determined eligible for Colorado Works, have entered into a current individualized plan, are participating in allowable work activities as defined in Colorado Works rules (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB), and have been referred for child care by the county Colorado Works worker will be considered to be participating in an eligible activity and must receive Colorado Works Child Care for at least twelve (12) months unless the adult caretaker or teen parent transitions to Low-Income Child Care prior to the end of the twelve (12) month period.
+
+### S488. CCCAP protective services households
+
+Document: D-64
+
+8 CCR 1403-1-3.118.A; 3.119.A, D-E. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.118
+
+> A. Protective services households refers to households in which child(ren) have been placed by the county in foster home care, kinship foster home care, or non-certified kinship care, and have an open child welfare case. At the option of the county, the county may provide protective services child care utilizing Child Care Development Funds (CCDF) rather than Child Welfare funds.
+> A. Protective services households are considered a household of one for purposes of determining income eligibility. The only countable income for a protective services household is the income that is received by the child(ren) that have been placed in kinship or foster care. Child support income shall not be included as income. Child support income is intercepted by the county child welfare department.
+> D. Protective services households are not subject to low-income eligible activity requirements.
+> E. Protective services households are not subject to residency verification requirements. The county with the open child welfare case shall be considered the county of residency.
+
+### S489. LEAP definitions: household, primary heating source, elderly
+
+Document: D-63
+
+9 CCR 2503-7-3.751.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.751
+
+> "Elderly": For the purposes of these rules, the term elderly means aged 60 or over. "Household": The term "household" shall mean any individual or group of individuals who are living together as one economic unit for whom primary heating fuel is customarily purchased in common or who make undesignated payments for heat in the form of rent. "Primary Heating Source": The primary heating system that provides heat to the dwelling such as a furnace, wood burning stove or boiler. Temporary or portable heating sources are not considered a primary heating source and, therefore, are not eligible for LEAP assistance.
+
+### S490. LEAP households: composition rules
+
+Document: D-63
+
+9 CCR 2503-7-3.751.2. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.751
+
+> D. The following cannot be classified as separate households:
+> 1. Husband and wife living together;
+> 2. Children under eighteen (18) years of age and living in the same dwelling as the parent or guardian, unless emancipated;
+> 3. Individuals that enter into civil unions.
+
+### S491. LEAP program eligibility requirements and income/household-size test
+
+Document: D-63
+
+9 CCR 2503-7-3.752.2; 3.752.22.D. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> 3.752.2 PROGRAM ELIGIBILITY REQUIREMENTS [Rev. eff. 12/1/14] To be determined eligible for a Heating Fuel Assistance Program payment, households must, at time of application, be vulnerable to the rising costs of home heating, and meet income and other requirements of the program as defined in these regulations. The following factors shall be considered as of the date of application: Colorado state residency, U.S. citizenship/alien status, income, vulnerability, fuel type, household composition, shared living arrangements, dwelling type, and estimated home heating costs.
+> D. All applicant households whose countable income for the eligibility period is up to and including 60 percent (60%) of the state median income level released by the U.S Department of Health and Human Services for federal fiscal year 2023 shall meet the income requirements for the heating fuel assistance program. The state department shall adjust the income limits annually based on funds available and the state median income guidelines.
+
+### S492. LEAP vulnerability to heating cost
+
+Document: D-63
+
+9 CCR 2503-7-3.752.25.A, B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> A. A household shall be vulnerable in order to qualify for Heating Fuel Assistance Program benefits. Vulnerability shall mean the household must be responsible for the costs of home heating as defined below:
+> 1. The household is paying home heating costs directly to a vendor and is subject to home heating cost increases.
+> 2. The household is living in non-subsidized housing and is paying home heating costs either in the form of rent or as a separate charge in addition to rent.
+> B. Households in the following living arrangements shall not be considered to be vulnerable:
+> 6. Any applicant, or applicant household who is considered homeless or resides in non-traditional dwellings;
+
+### S493. LEAP qualified alien definition
+
+Document: D-63
+
+9 CCR 2503-7-3.753.16. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
+
+> 3.753.16 Qualified Alien [Eff. 12/1/14] A "qualified alien" is defined as follows:
+> A. An alien lawfully admitted for permanent residence;
+> D. A refugee;
+> E. An asylee;
+> G. A Cuban or Haitian entrant;
+
+### S494. LEAP citizenship requirement, household exclusion but income counted
+
+Document: D-63
+
+9 CCR 2503-7-3.753.17 (Citizenship Requirements). https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
+
+> An applicant who does not meet lawful permanent residency or citizenship requirements shall not be included as a household member; however, all countable income of this individual shall be counted as part of the household's total income. The household's application shall not be denied due to lack of documentation regarding citizenship requirements if there are other household members who meet the citizenship requirements (i.e., minors born in the United States).
+
+### S495. LEAP Colorado residency
+
+Document: D-63
+
+9 CCR 2503-7-3.753.21. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.753
+
+> 3.753.21 Colorado Residency [Eff. 12/1/14] To be eligible for assistance, an applicant shall be a resident of Colorado at the time application is made. There shall be no durational residence requirement. An applicant or recipient who establishes intent to remain in Colorado shall, for public assistance purposes, is considered a current resident.
+
+### S496. CCCAP "Household" definition
+
+Document: D-64
+
+8 CCR 1403-1-3.103.GGG. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.103
+
+> GGG. "Household" includes: all children in the home who are under eighteen (18) years of age; all children under nineteen (19) years of age who are still in high school and the responsibility of the adult caretaker(s); and the adult caretaker(s) or teen parent(s).
+
+### S497. CCCAP eligible household compositions (one or two caretakers)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.D.1. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> D. Eligible Households
+> 1. The following household compositions qualify as eligible households:
+> a. Households with one adult caretaker or teen parent, where the adult caretaker or teen parent is engaged in a low-income eligible activity, meets low-income eligibility guidelines, has physical custody of the child, and needs child care assistance.
+> b. Households with two adult caretakers or teen parents, when one adult caretaker or teen parent is involuntarily out of the home. Such a household shall be considered a household with one adult caretaker or teen parent.
+> c. Households with two (2) adult caretakers or teen parents that need child care, where:
+> 1) Both adult caretakers or teen parents are engaged in a low-income eligible activity;
+> 2) One adult caretaker or teen parent is voluntarily absent from the home, but both adult caretakers or teen parents are in a low-income eligible activity; or
+> 3) One adult caretaker or teen parent is engaged in a low-income eligible activity and the other adult caretaker or teen parent is incapacitated such that, according to a physician's statement or other medical verification, they are unable to care for the child(ren).
+
+### S522. Family Violence Option waiver does not stop the TANF time clock
+
+Document: D-61
+
+9 CCR 2503-6 3.604.5.A.1.b. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604
+
+> b. TANF time clock. Assistance received while the FVO waiver is in effect does not prevent the TANF time clock from advancing, but is an allowable reason to extend assistance beyond the sixtieth (60th) month.
+
+### S379. Transfer penalty period: start date and partial-month day calculation
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.2.c.ii, d. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> ii) The resulting number is the number of months that the individual shall be ineligible for Medical Assistance. For transfers made before February 8, 2006, the period of ineligibility shall begin with the first day of the month following the month in which the transfer occurred. For transfers made on or after February 8, 2006, the period of ineligibility shall begin on the later of the following dates: a) The first day of the month following the month in which the transfer occurred or is discovered. For transfers discovered after the date the transfer occurred, the date of transfer shall be the discovery date. b) The date on which the individual would initially be eligible for HCBS, PACE or institutional services based on an approved application for such assistance that were it not for the imposition of the penalty period, would be covered by Medical Assistance; c) Which does not occur during any other period of ineligibility for services by reason of a transfer of assets penalty.
+> d. The period of ineligibility shall also include partial months, which shall be calculated by multiplying 30 days by the decimal fractional share of the partial month. The result is the number of days of ineligibility. For transfers occurring on or after April 1, 2006, the result shall be rounded up to the nearest whole number.
+
+### S510. LEAP eligibility period and program year (November through April)
+
+Document: D-63
+
+9 CCR 2503-7-3.751.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.751
+
+> "Eligibility Period": There shall be one eligibility period for the Basic Low-Income Energy Assistance Programs from November 1st through April 30th. If April 30 th for a particular calendar year falls on a holiday or weekend, then the eligibility period shall be extended until midnight the next business day. This program is contingent upon the continued availability of funds in accordance with Sections 3.750.15 and 3.758.48. "Program Year": means from November 1st through April 30th for the Heating Fuel Assistance Program. If April 30th for a particular calendar year falls on a holiday or weekend, then the eligibility periods shall be extended until midnight the next business day. This program is contingent upon the continued availability of funds in accordance with Sections 3.750.15 and 3.758.48.
+
+### S511. CCCAP caretaker not work-eligible for Colorado Works falls to Low-Income Child Care
+
+Document: D-64
+
+8 CCR 1403-1-3.111.D.6. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> 6. Adult caretakers or teen parents that are not determined work eligible per Colorado Works Program rule (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB) above, who are caring for children receiving Basic Cash Assistance through the Colorado Works Program are not eligible for Colorado Works Child Care but may be eligible for Low-Income Child Care if the adult caretaker or teen parent meets all other Low-Income program criteria.
+
+### S523. Disqualified or ineligible persons removed from the assistance unit
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.M. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604
+
+> M. Penalties for Disqualified or Ineligible Persons Persons who are required members of the assistance unit, but who are disqualified from receiving or are ineligible to receive Colorado Works basic cash assistance or diversion due to program prohibitions or violations, shall be removed from the assistance unit for the purposes of determining the assistance unit size. Disqualified individual's' income must be considered when determining eligibility without applying income disregards. The following disqualified or ineligible individuals shall have such month counted as a month of participation in the calculation of their overall sixty-month (60) lifetime maximum as referenced in section 3.606.6 when a grant payment is received for others in the assistance unit.
+
+### S524. Pregnancy allowance
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.G. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> G. Pregnancy Allowance Upon verification of pregnancy, pregnant parents are eligible for the basic cash assistance grant plus a ten dollar ($10.00) pregnancy allowance. The client is eligible for the pregnancy allowance through the month in which the pregnancy ends.
+
+### S525. Exemption from the sixty-month time limit for Indian Country
+
+Document: D-61
+
+9 CCR 2503-6 3.606.6.F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> F. Exemptions From the 60-Month Time Limit Any month of receipt of assistance by an adult while living in Indian Country, or a Native Alaskan village where at least fifty percent (50%) of the adults were not employed, shall not be counted toward the sixty (60) cumulative months of Federal TANF assistance. Indian Country is defined in 18 U.S.C. Section 1151.
+
+### S526. Twenty percent statewide cap on extensions
+
+Document: D-61
+
+9 CCR 2503-6 3.606.6.G. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> G. Twenty Percent (20%) Allocation of Extensions Up to twenty percent (20%) of the Statewide caseload receiving Colorado Works may be granted an extension beyond the sixty (60) month time limit due to hardship or domestic violence.
+
+### S527. Members of the budgetary unit
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.D.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604
+
+> D. Members of the Budgetary Unit
+> 1. The following individuals must be included in the budgetary unit:
+> a. Any individual who is part of the assistance unit (to include optional members of the assistance unit who requested assistance) regardless of whether or not the individual is eligible to receive assistance.
+> b. The spouse of a parent or non-parent caretaker who requested assistance, regardless of whether or not the spouse has requested assistance for themselves.
+> c. The unborn child of a pregnant parent.
+> d. The non-recipient parent(s) of a minor parent.
+> e. The sponsor of a non-citizen who is part of the assistance unit (whether or not the non-citizen is themselves eligible to receive Colorado Works grant payments).
+
+### S528. Budgetary unit income reported and compared to the need standard
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.J.1-3. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> J. Reporting of Earned Income When the assistance unit reports earned income:
+> 1. Apply the appropriate earned income disregards to the gross earned income of each employed member of the budgetary unit as described in Section 3.606.2; and,
+> 2. Add the unearned income received by each member of the budgetary unit; and,
+> 3. Compare the total to the need standard for the household size.
+
+### S529. AND-SO client's duty to apply for SSI and SSDI
+
+Document: D-62
+
+9 CCR 2503-5 3.520.75.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> B. The AND-SO client shall apply for Supplemental Security Income (SSI) benefits. If the client has work hours during his or her lifetime, the client shall also apply for Social Security Disability Insurance (SSDI). The client shall report any denial for SSI benefits. The client shall appeal all negative decisions regarding their SSI eligibility.
+
+### S530. Adult Financial age ranges, including blindness within the AND-SO band
+
+Document: D-62
+
+9 CCR 2503-5 3.520.61.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Be eighteen (18) through fifty-nine (59) years of age for AND-SO (unless diagnosed with blindness, then age zero (0) through 59 years of age); age 0 through 59 years of age for AND-CS; and age sixty (60) years of age or older for OAP; and,
+
+### S512. LEAP non-vulnerable living arrangements (full list, B.1-B.8)
+
+Document: D-63
+
+9 CCR 2503-7-3.752.25.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> B. Households in the following living arrangements shall not be considered to be vulnerable:
+> 1. Institutional group care facilities, public or private, such as nursing homes, foster care homes, group homes, substance abuse treatment centers, or other such living arrangements where the provider is liable for the costs of shelter and home heating, in part or in full, on behalf of such individuals;
+> 2. Room and board, bed and breakfast;
+> 3. Correctional facilities;
+> 4. Dormitory, fraternity or sorority house;
+> 5. Subsidized housing as defined in the "Definitions" section of these rules which does not have an individual check meter for heat for each unit or which cannot provide other evidence of responsibility for paying home heating surcharges;
+> 6. Any applicant, or applicant household who is considered homeless or resides in non-traditional dwellings;
+> 7. Commercial accounts or commercial properties that also serve as the client's dwelling;
+> 8. Hotels, unless proof that the household has lived or will live in the hotel continuously for thirty (30) calendar days at the time of application and that heat is included in rent. Proof may be shown by providing a monthly statement, billing statement or receipt indicating the monthly arrangement.
+
+### S513. LEAP vulnerability: subsidized housing with an individual check meter or surcharge (3.752.25.A.3)
+
+Document: D-63
+
+9 CCR 2503-7-3.752.25.A.3. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> 3. The household resides in subsidized housing as defined in the "Definitions" Section of these rules; and, 1) the unit has an individual meter which identifies specific heating usage of that unit and the household is subject to increased cost for home heating, or 2) the tenant is subject to a heating surcharge assessed by means other than an individual meter. Such surcharges may include percentage fees assessed to the tenant for home heating. Excess utility charges are to be specific to home heating and verified by the County Department/Contractor. Under no circumstances shall rental costs be assumed to be subject to change due to an increase in home heating costs unless otherwise verified by the county department/Contractor.
+
+### S514. CCCAP child citizenship/legal residency verification (3.111.F.1)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.F.1. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> 1. All children who have had an application made on their behalf or are receiving child care assistance shall verify that they are a citizen/legal resident and provide proof of identity if inconsistent, in accordance with rule section 3.111©(2)(b).
+
+### S515. CCCAP asset self-declaration (3.111.H.4.c)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.H.4.c. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> c. Adult caretakers or teen parents shall self-declare that their liquid and non-liquid assets do not exceed one million dollars. If assets exceed one million dollars the household is ineligible for CCCAP.
+
+### S533. AND-CS SSI verification through SVES or SDX
+
+Document: D-62
+
+9 CCR 2503-5 3.547.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.547
+
+> A. To meet the disability eligibility requirement for AND-CS, the client must be approved for SSI due to a disability or blindness. The county department shall verify SSI eligibility through SVES or SDX and document in the statewide automated system case comments.
+
+### S498. Married couples' income treatment: institutionalization ends mutual availability the month after
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.C.2.b. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 2. The income and resources of both spouses are counted in determining eligibility for either or both spouses with the following exceptions:
+> b. Beginning the first month following the month the couple ceases to live together, only the income of the individual spouse is counted in determining his or her eligibility.
+
+### S499. 2026 Substantial Gainful Activity (SGA) monthly amounts
+
+Document: D-58
+
+91 Fed. Reg. (SSA 2026 COLA determination). https://www.ssa.gov/OACT/COLA/sga.html
+
+> (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,830 in 2026. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,690.

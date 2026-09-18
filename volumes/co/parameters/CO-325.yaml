@@ -1,0 +1,12 @@
+id: CO-325
+name: LEAP household child age limit
+identifier: leap_household_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: The upper age limit (exclusive) under which a child living with a parent or guardian cannot be a separate LEAP household and whose earned income is excluded from LEAP household income.
+value: 18
+sources: [S490]
+tags: [age, household]
+rationale: 9 CCR 2503-7 3.751.2.D.2 (S490) treats a child under eighteen living in the same dwelling as the parent or guardian as unable to be a separate household, and 3.752.23.Q excludes the earned income of a child under eighteen living with a parent or guardian; leap_household_members (CO-1000) and leap_household_income (CO-1002) both read it.

@@ -1,0 +1,19 @@
+id: CO-926
+name: "Colorado Works: unit caretaker count"
+identifier: cw_unit_caretaker_count
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: The number of adults in this person's assistance unit who are not themselves dependent children, capped at two, for selecting the "No Caretaker" (0), "One Caretaker" (1), or "Two Caretakers" (2) row of 9 CCR 2503-6 3.606.1.F's Standards of Assistance Chart.
+precision: "3.606.1.F's chart states only three caretaker rows (0, 1, 2); a unit with more than two non-dependent-child members (not modeled elsewhere in this volume, since cw_assistance_unit_members, CO-900, only builds a single caretaker/dependent-child parent pair - see CO-900's own precision on unmodeled optional members) is capped at 2 rather than looked up in a row the chart does not have."
+derived: [min, 2, [count, [filter, cw_assistance_unit_members, [not, [of, [P], cw_is_dependent_child]]]]]
+sources: [S414]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "No existing item counts a Colorado Works unit's caretakers; cw_need_standard (CO-911) and cw_grant_standard (CO-912) need it to select among the three per-caretaker-count tables under the fix-round C-5 finding that 3.606.1.F's chart is keyed by caretaker count as well as child count. Same shape as cw_unit_size (CO-903, a count over cw_assistance_unit_members), acknowledged as the nearest same-shape item, but counts only the non-dependent-child subset and caps it at 2 rather than counting every member."
+nearest: [CO-903]
+tests:
+  - {id: CO-926-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "1992-01-01", is_head_of_household: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, p3: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p3], [parent, p2, p3]], expect: 2}
+  - {id: CO-926-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 1}
+  - {id: CO-926-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 0}

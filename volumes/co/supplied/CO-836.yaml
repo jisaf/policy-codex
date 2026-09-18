@@ -1,0 +1,12 @@
+id: CO-836
+name: Receives VA Aid and Attendance
+identifier: receives_va_aid_and_attendance
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person receives a VA pension with an Aid and Attendance (A&A) or Unusual Medical Expenses (UME) portion, as determined by the VA, per 10 CCR 2505-10 § 8.100.6.C - the condition for excluding that portion from patient payment (unless the person is a veteran or surviving spouse of a veteran with no dependents in a State Veterans Home, where it is instead used as patient payment).
+supplied_by: VA pension award letter, verified by the Eligibility Site.
+sources: [S364]
+tags: [ma, ltc, income]
+rationale: "The phase-4 brief's interface directs creating a VA Aid and Attendance fact 'as the text requires.' ma_ltc_gross_income (CO-641) needs it to gate the va_aid_and_attendance_amount (CO-837) exclusion."

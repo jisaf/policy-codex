@@ -1,0 +1,12 @@
+id: CO-200
+name: Former foster care Medical Assistance upper age limit
+identifier: ma_former_foster_care_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The age, in whole years, through the end of the month of which a former foster youth remains eligible for the Former Foster Care Children Medical Assistance category, under 42 CFR 435.150(b)(1) ("under age 26") and 10 CCR 2505-10 8.100.4.H.2 ("until the end of the month of the individual's 26th birthday").
+value: 26
+sources: [S213, S214]
+tags: [ma, magi, age]
+rationale: "No existing item carries this age. ma_is_former_foster_care_category (CO-549) needs it as a parameter rather than an inline digit (governance name.digits)."

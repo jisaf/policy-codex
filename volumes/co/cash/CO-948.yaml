@@ -1,0 +1,18 @@
+id: CO-948
+name: "Adult Financial: meets resource limit"
+identifier: af_meets_resource_limit
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person's af_countable_resources is at or below the $2,000 unmarried / $3,000 married Adult Financial resource limit, per 9 CCR 2503-5 3.520.72.A and C.R.S. 26-2-111(1)(b), (2)(a)(I).
+precision: Reuses ma_ssi_resource_limit_individual (CO-233) and ma_ssi_resource_limit_couple (CO-234) cross-program, since 3.520.72.A's $2,000/$3,000 figures are the identical dollar amounts the SSI-related Medicaid chapter's own resource limits carry (42 U.S.C. 1382b, 20 CFR 416.1205(c)); a duplicate Adult-Financial-prefixed parameter of the same value is not created.
+derived: [<=, af_countable_resources, [case, [af_is_married, ma_ssi_resource_limit_couple], [else, ma_ssi_resource_limit_individual]]]
+sources: [S441, S442, S443, S454]
+implemented: engine
+tags: [cash, oap, and, ab, resources]
+rationale: "No existing item compares Adult Financial countable resources to the $2,000/$3,000 limit. af_category (CO-953) needs it. Not identical to ma_meets_ssi_resource_standard (CO-610), which compares against ma_ssi_household_size's living-together test rather than af_countable_resources's plain-marriage test; acknowledged as reusing CO-610's two resource-limit parameters directly (CO-233/CO-234), per the phase-5 brief's cross-program reuse instruction, rather than restating $2,000/$3,000 a second time. Fix round (M-6): reads af_is_married (CO-930) instead of re-deriving [exists_related, [spouse], true] a second time, matching af_countable_resources (CO-947)."
+nearest: [CO-610]
+tests:
+  - {id: CO-948-T1, as_of: "2026-10-01", given: {countable_resources_individual: 1900, countable_resources_couple: 46000}, others: {}, relationships: [], expect: true}
+  - {id: CO-948-T2, as_of: "2026-10-01", given: {countable_resources_individual: 1900, countable_resources_couple: 46000}, others: {p2: {}}, relationships: [[spouse, p2]], expect: false}

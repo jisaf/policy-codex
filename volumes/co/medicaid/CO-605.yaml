@@ -1,0 +1,19 @@
+id: CO-605
+name: "Medicaid: SSI-related countable earned income"
+identifier: ma_ssi_countable_earned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's (and, if living together, their spouse's) combined gross earned income for the month, after the $65 earned income exclusion, the unused portion of the $20 general income exclusion carried over from unearned income, and the one-half remainder disregard of 20 CFR 416.1112(c), 416.1124(c)(12) and 10 CCR 2505-10 8.100.5.H.4.b.
+precision: Combines earned_income across ma_ssi_household_size's spouse-living-together group (8.100.5.H.1.a's "mutually available" rule) before applying one $65 exclusion, plus any part of the combined group's $20 general exclusion not already used against unearned income (20 CFR 416.1124(c)(12), "If you have less than $20 of unearned income in a month and you have earned income in that month, we will use the rest of the $20 exclusion to reduce the amount of your countable earned income"), and one one-half disregard, to the combined total. The unearned-income sum recomputed here to find the unused $20 is the same group sum ma_ssi_countable_unearned_income (CO-606) uses. Does not model the Ineligible Child/Parent(s) Allocation deductions of 8.100.5.H.3 (see OQ-83).
+derived: ["*", ["max", 0, ["-", [sum, [reachable, [spouse], [all, [not, in_medical_institution], [not, [of, [P], in_medical_institution]]]], [of, [P], earned_income]], ["+", ma_ssi_earned_income_exclusion, ["max", 0, ["-", ma_ssi_general_income_exclusion, ma_ssi_household_unearned_income_sum]]]]], ma_ssi_earned_income_disregard_rate]
+sources: [S308, S309, S310]
+open: [OQ-83]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item applies the $65-plus-one-half SSI earned income disregard. ma_ssi_countable_income (CO-607) needs it. Carries the unused part of the $20 general exclusion to earned income per 20 CFR 416.1124(c)(12) (S310), which CO-230's own precision already stated but neither this item nor CO-606 implemented - the phase-4 review's C-9 finding."
+tests:
+  - {id: CO-605-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {}, relationships: [], expect: 0}
+  - {id: CO-605-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 465, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {}, relationships: [], expect: 190}
+  - {id: CO-605-T3, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 465, social_security_income: 20, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {}, relationships: [], expect: 200}

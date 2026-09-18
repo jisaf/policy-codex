@@ -1,0 +1,12 @@
+id: CO-331
+name: MMMNA applicable percentage of the size-2 poverty guideline
+identifier: ma_mmmna_applicable_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The percentage of the federal poverty level for a family of two the minimum monthly maintenance needs allowance is set at, per 10 CCR 2505-10 § 8.100.7.Q.1.a and 42 U.S.C. 1396r-5(d)(3)(A)(i)/(B)(iii).
+value: 1.5
+sources: [S358, S372]
+tags: [ma, ltc, income]
+rationale: "No existing item states the MMMNA's 150% figure as a standalone parameter; it was folded into the ma_mmmna_standard supplied fact (CO-829, withdrawn). ma_mmmna_standard (CO-662) needs it as a separate factor so the underlying poverty-guideline table can be updated without re-deriving the percentage - the phase-4 review's G-1 finding."

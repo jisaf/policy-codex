@@ -1,0 +1,12 @@
+id: CO-872
+name: Has verified additional care needs
+identifier: has_additional_care_needs
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether this child has a verified physical and/or mental disability requiring a higher level of individualized care than peers of the same age, or is under court supervision with additional care needs identified by an IHCP, IEP, physician's/professional's statement, child welfare, or IFSP, per 8 CCR 1403-1 3.103.B.
+supplied_by: County-verified individual health care plan, individual education plan, physician's or other professional's statement, child welfare determination, or individualized family service plan.
+sources: [S481]
+tags: [age, disability]
+rationale: "3.111.F extends 'eligible child' to age 19 for a child with verified additional care needs (3.103.B's defined term); no shared supplied fact states this. cccap_is_eligible_child (CO-980) needs it."

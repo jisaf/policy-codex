@@ -1,0 +1,17 @@
+id: CO-274
+name: Colorado Works need standard by number of children (one caretaker)
+identifier: cw_need_standard_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: ColoradoWorks
+meaning: The monthly need standard an assistance unit's net countable income is compared against under 9 CCR 2503-6 3.606.1.F's Colorado Works Standards of Assistance Chart, for the "One Caretaker" row, keyed by the number of dependent children in the unit (key 0 is one caretaker with no children, key 1 is one caretaker with one child, and so on, through 10 children).
+precision: "The chart states three separate rows (No Caretaker, One Caretaker, Two Caretakers), each keyed by number of children rather than total unit size. This table carries the One Caretaker row; cw_need_standard_table_no_caretaker (CO-351) and cw_need_standard_table_two_caretakers (CO-353) carry the other two, and cw_need_standard (CO-911) selects among the three by cw_unit_caretaker_count (CO-926). Re-keyed from household size (1-11) to number of children (0-10) under the fix-round C-5 finding, so the same key selects the matching row of all three tables; cw_deemed_parent_income_of_minor_parent (CO-909)'s size-1/zero-children lookup was updated from key 1 to key 0 to match."
+versions:
+  - from: "2025-07-01"
+    value: { "0": 253, "1": 331, "2": 421, "3": 510, "4": 605, "5": 697, "6": 770, "7": 844, "8": 920, "9": 992, "10": 1065 }
+    source: S414
+open: [OQ-101]
+rationale: "No existing parameter states the Colorado Works need standard; cw_need_standard (CO-911) and the minor-parent deeming calculation (CO-909, using the zero-children value for a non-participant parent's own needs) both read it. 3.606.1.F states the amounts directly, so this is a parameter versioned from the rule's stated effective date, not a supplied fact."
+sources: [S414]
+tags: [cash, tanf, household]

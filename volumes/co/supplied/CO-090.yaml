@@ -1,0 +1,13 @@
+id: CO-090
+name: Has other creditable health coverage
+identifier: has_other_creditable_health_coverage
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person is covered under a group health plan or other health insurance coverage (other than COBRA) at the time of application or redetermination, within the meaning of 10 CCR 2505-3-120.1.A and the "creditable health coverage"/"no other coverage standard" of 42 U.S.C. 1397jj(c)(2) and 42 CFR 457.310(b)(2).
+precision: "As of the application or redetermination date; a plan or coverage program in operation since before July 1, 1997 and administered by a State receiving no federal funds for its operation does not count (457.310(b)(2)(ii)), nor does coverage the child has no reasonable geographic access to - this volume treats those as already reflected in the supplied value rather than deriving them."
+supplied_by: Applicant statement on the Single Streamlined Application (CBMS/PEAK), cross-checked against third-party insurance data sources.
+sources: [S244, S248]
+tags: [chp]
+rationale: "No existing item in this volume carries this fact. chp_child_is_eligible (CO-705) and chp_prenatal_is_eligible (CO-706) need it for 10 CCR 2505-3-120.1.A's 'shall not be covered under a group health plan or under health insurance coverage' exclusion, which 42 CFR 457.310(b)(2)'s 'no other coverage standard' and 42 U.S.C. 1397jj(c)(2)'s creditable-health-coverage definition both restate at the federal level."

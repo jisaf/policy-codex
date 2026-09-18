@@ -1,0 +1,12 @@
+id: CO-196
+name: MAGI continuous eligibility period for children, months
+identifier: ma_continuous_eligibility_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The length, in months, of the continuous eligibility period a child under 19 receives once found eligible for a MAGI Medical Assistance program, under 10 CCR 2505-10 8.100.3.Q.1 and 42 CFR 435.926(c)(1).
+value: 12
+sources: [S215, S216]
+tags: [ma, magi, age]
+rationale: "No existing item carries this figure. ma_child_continuous_eligibility_end_month (CO-556) needs it as a parameter rather than an inline digit (governance name.digits)."

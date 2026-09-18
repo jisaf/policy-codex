@@ -1,0 +1,19 @@
+id: CO-539
+name: "Medicaid: highest MAGI income standard the person could qualify under"
+identifier: ma_magi_highest_income_standard_pct
+kind: derived
+type: rate
+scope: person-month
+program: Medicaid
+meaning: The greatest MAGI income standard, as a decimal fraction of FPL, among the covered groups whose non-income (demographic) criteria this person meets this month - the standard 42 CFR 435.603(d)(4) means by "the eligibility group with the highest income standard" for the 5% disregard.
+precision: Tests each of the four income-tested groups' own non-income criteria directly (not their full category rules, which already fold in the income test the disregard would otherwise be deciding), and takes the greatest of the standards for the groups the person could qualify under, 0 for the rest, via P40 (the greater of two numbers, nested). The Former Foster Care and Needy Newborn groups take no income test at all (8.100.4.H.2.b, 8.100.4.G.7) and so never bound the disregard; they are not inputs to this item.
+derived: [max, [max, [case, [[<, age, ma_magi_child_age_limit], ma_magi_income_standard_child], [else, 0]], [case, [is_pregnant, ma_magi_income_standard_pregnant], [else, 0]]], [max, [case, [[exists_related, [parent, caretaker], [of, [P], ma_is_dependent_child]], ma_magi_income_standard_parent_caretaker], [else, 0]], [case, [[all, [">=", age, ma_magi_child_age_limit], [<, age, ma_adult_upper_age_limit], [not, is_pregnant], [not, is_medicare_entitled_or_enrolled]], ma_magi_income_standard_adult], [else, 0]]]]
+sources: [S165, S201, S203, S207, S209]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item states the highest MAGI income standard a person could qualify under; the phase-3 review's C-2 finding is that CO-545/546/547/548 each apply 42 CFR 435.603(d)(4)'s 5% disregard at their own category's standard rather than only at this highest one, which changes the reported covered group (a parent between 60% and 65% of FPL is placed in the Adults group, not Parents/Caretaker, once the disregard is gated correctly). CO-545/546/547/548 are all edited by this fix round to gate their own disregard disjunct on [=, <their own standard>, ma_magi_highest_income_standard_pct]. Uses [case, [cond, standard], [else, 0]] (P33's enumerated-outcome pattern specialized to a two-branch numeric choice) rather than the category rules themselves (ma_is_child_category and siblings) to avoid a circular reference, since those rules are exactly what this item's output feeds."
+tests:
+  - {id: CO-539-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: false}, relationships: [], expect: 1.33}
+  - {id: CO-539-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1958-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: true}, others: {p2: {date_of_birth: "2015-01-01", is_enrolled_in_school: false}}, relationships: [[parent, p2]], expect: 0.60}
+  - {id: CO-539-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: false}, others: {p2: {date_of_birth: "2015-01-01", is_enrolled_in_school: false}}, relationships: [[parent, p2]], expect: 1.33}
+  - {id: CO-539-T4, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: true, is_medicare_entitled_or_enrolled: false}, relationships: [], expect: 1.85}

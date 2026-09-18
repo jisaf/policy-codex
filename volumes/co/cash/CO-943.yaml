@@ -1,0 +1,21 @@
+id: CO-943
+name: "Adult Financial: meets citizenship requirement (AND)"
+identifier: af_meets_citizenship_requirement_and
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person is a United States citizen or national, or a qualified non-citizen who has held that status for at least the five-year bar period, per C.R.S. 26-2-111(2)(a)(I) and 26-2-111.8, and 9 CCR 2503-5 3.520.61.C, 3.520.67, and 3.520.68.A. Applies to AND-SO, AND-CS, and Aid to the Blind only - 3.520.61.C's citizenship prong and 3.520.68.A's five-year bar are both stated "for AND only"; OAP's own citizenship test is af_meets_citizenship_requirement_oap (CO-929).
+precision: "See OQ-119 - modeled on the statute's citizen-or-qualified-non-citizen test rather than 3.520.67.E's broader 'all non-citizens are eligible to apply for OAP' language, on the reading that the regulation describes a right to apply rather than a right to be found eligible. Reuses ma_is_qualified_non_citizen (CO-506) and ma_meets_five_year_bar (CO-508) cross-program, since both statutes define 'qualified non-citizen' by reference to 8 U.S.C. 1641 and the same 8 U.S.C. 1613 five-year bar, rather than restating the qualified-non-citizen categories and the bar a second time for this chapter. Does not model 26-2-111(2)(c)(II)-(III)'s hardship and SSI-eligibility exceptions to the bar. Fix round (C-10): renamed from af_meets_citizenship_requirement, and its five-year bar confined to the AND/AB branches of af_category (CO-953), because 3.520.61.C ('For AND only, be a citizen...') and 3.520.68.A ('Qualified non-citizens arriving in the U.S. on or after August 22, 1996, are barred from receiving AND for five years') both expressly state the bar applies to AND, not to OAP; no OAP provision states a five-year bar, and 3.520.67.E affirmatively opens OAP to non-citizens."
+derived: [any, [in, citizenship_status, [citizen, us_national]], [all, ma_is_qualified_non_citizen, ma_meets_five_year_bar]]
+sources: [S441, S449, S451, S452]
+open: [OQ-119]
+implemented: engine
+tags: [cash, and, ab, immigration, legal]
+rationale: No existing item states Adult Financial's AND-program citizenship test. af_category (CO-953) needs it for the and_so/and_cs/ab branches. Not identical to ma_meets_citizenship_requirement (CO-509), which additionally carries the MAGI chapter's Cover All Coloradans age/pregnancy/postpartum exception and the emergency-Medicaid carve-out that have no Adult Financial counterpart; acknowledged as reusing two of CO-509's own building blocks (ma_is_qualified_non_citizen, ma_meets_five_year_bar) rather than restating them. Not identical to af_meets_citizenship_requirement_oap (CO-929, the acknowledged nearest same-shape item after the fix-round split), which tests citizenship/qualified-non-citizen status with no five-year bar, per 3.520.68.A's "for AND only" scoping (C-10).
+nearest: [CO-509, CO-929]
+tests:
+  - {id: CO-943-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-943-T2, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, qualified_status_date: "1998-01-01"}, expect: true}
+  - {id: CO-943-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, qualified_status_date: "2024-01-01"}, expect: false}
+  - {id: CO-943-T4, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}

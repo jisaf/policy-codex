@@ -1,0 +1,21 @@
+id: CO-566
+name: "Medicaid: is in the pregnancy coverage period"
+identifier: ma_is_in_pregnancy_coverage_period
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the month falls within a pregnant or recently-pregnant person's locked-in Medical Assistance coverage period under 10 CCR 2505-10 8.100.4.G.5 - from ma_pregnancy_coverage_period_start_month through ma_postpartum_coverage_end_month, during which "coverage will be provided regardless of changes in the woman's financial circumstances."
+assumption: "8.100.4.G.5 conditions the lock-in on eligibility having 'been approved' and income verification requirements being met - a distinct, prior determination this item does not itself track (it does not read ma_is_pregnant_category or ma_magi_is_eligible for an earlier month, to avoid circularity through CO-551/CO-554, which are this item's own consumers). This item instead treats a stated is_pregnant/pregnancy_end_date and application_date as sufficient evidence the period is open, the same simplification ma_child_is_in_continuous_eligibility_period (fix round, C-4) makes for the child continuous-eligibility period. A reviewer with a distinct 'date first found eligible while pregnant' fact could tighten this. Carries OQ-52's open 60-day/12-month postpartum-period question, since the end month (CO-560) is itself built on that assumption."
+precision: True for every month from ma_pregnancy_coverage_period_start_month (inclusive) through ma_postpartum_coverage_end_month (inclusive) for a currently pregnant person, or a person whose pregnancy has ended within that window; false, not unknown, before the person has an application_date (the period cannot have started) and once pregnancy_end_date and postpartum coverage have both run out.
+derived: [all, [not, [unknown, application_date]], [">=", [month], ma_pregnancy_coverage_period_start_month], [any, is_pregnant, [all, [not, [unknown, pregnancy_end_date]], ["<=", [month], ma_postpartum_coverage_end_month]]]]
+sources: [S209]
+open: [OQ-52]
+implemented: engine
+tags: [ma, magi]
+rationale: "No existing item models 8.100.4.G.5's income-change lock-in for pregnancy-based eligibility - CO-546 (ma_is_pregnant_category) is a plain per-month income test that flips to false the month household income crosses 185% FPL, which the phase-3 review's C-13 finding identifies as the pregnant-category analogue of the continuous-eligibility defect (C-4) fixed for children this round. ma_magi_category (CO-551) and ma_magi_eligibility_status (CO-554) read this item the same way they read ma_child_is_in_continuous_eligibility_period (CO-561)."
+tests:
+  - {id: CO-566-T1, as_of: "2026-11-01", month: "2026-11", title: "Still pregnant, income now over 185% FPL - the coverage period protects her anyway", given: {application_date: "2026-10-09", is_pregnant: true}, expect: true}
+  - {id: CO-566-T2, as_of: "2027-01-01", month: "2027-01", title: "Pregnancy ended 2026-03-15; postpartum end month is 2027-03, so January is still in the period", given: {application_date: "2026-01-05", is_pregnant: false, pregnancy_end_date: "2026-03-15"}, expect: true}
+  - {id: CO-566-T3, as_of: "2027-05-01", month: "2027-05", title: "Past the postpartum end month", given: {application_date: "2026-01-05", is_pregnant: false, pregnancy_end_date: "2026-03-15"}, expect: false}
+  - {id: CO-566-T4, as_of: "2026-09-01", month: "2026-09", title: "Before the application month - the period has not started", given: {application_date: "2026-10-09", is_pregnant: true}, expect: false}

@@ -1,0 +1,19 @@
+id: CO-564
+name: "Medicaid: under the child age limit, or turns 19 this month"
+identifier: ma_is_under_child_age_or_turns_nineteen_this_month
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is under ma_magi_child_age_limit (19), or is exactly 19 and their 19th birthday fell within the determination month - the age condition 8.100.4.G.2.a states as "eligible ... through the end of the month in which they turn 19 years old," which 8.100.3.G.1.g.viii.1's Cover All Coloradans exception and 10 CCR 2505-3-110.1.B.5.p (CHP+) repeat in identical words.
+precision: "Age (CO-300) is whole years completed as of the determination date, so a person is not yet 19 on the day of their 19th birthday's own month until the birthday itself, and is exactly 19 from the birthday through the rest of that month. `[=, age, ma_magi_child_age_limit]` combined with `[=, [month_of, date_of_birth], [month_of, [det_date]]]` therefore isolates precisely the window '19, and the birthday was this month' without needing a date-plus-N-years engine operator: before the birthday day in that month, age is still 18 and the first disjunct already covers it; from the birthday day through the end of that month, age is 19 and the birth month matches the determination month; the following month, the birth month no longer matches and the person is correctly excluded."
+derived: [any, [<, age, ma_magi_child_age_limit], [all, [=, age, ma_magi_child_age_limit], [=, [month_of, date_of_birth], [month_of, [det_date]]]]]
+sources: [S201, S175, S242]
+implemented: engine
+tags: [ma, magi, age, chp]
+rationale: "No existing item extends the plain [<, age, ma_magi_child_age_limit] test through the month of the 19th birthday. CO-545 (Medicaid Children's category), CO-509 (citizenship/Cover All Coloradans), and the CHP+ child rules (CO-704..CO-708, which now read this item directly) all used the plain age test with no extension, so a child whose 19th birthday fell on, say, the 3rd of the determination month lost the Children's category, the immigration-status protection, and CHP+ child status for the rest of that month - though all three source provisions state coverage runs 'through the end of the month' the birthday occurs in, and 8.100.4.G.1 independently forbids a mid-month eligibility drop (K-1, not fixed in this round). Fixed per the phase-3 review's C-8 finding by factoring the shared test into this single item so the three places do not drift."
+tests:
+  - {id: CO-564-T1, as_of: "2026-10-01", given: {date_of_birth: "2007-10-20"}, expect: true}
+  - {id: CO-564-T2, as_of: "2026-11-01", given: {date_of_birth: "2007-10-20"}, expect: false}
+  - {id: CO-564-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: true}
+  - {id: CO-564-T4, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, expect: false}

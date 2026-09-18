@@ -1,0 +1,12 @@
+id: CO-252
+name: Transfer look-back period, months
+identifier: ma_transfer_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of months before the month of application for Long-Term Care services that the Department considers for a transfer of assets without fair consideration, per 42 U.S.C. 1396p(c)(1)(B) and 10 CCR 2505-10 § 8.100.7.F.1.d.
+value: 60
+sources: [S365, S368]
+tags: [ma, ltc, legal]
+rationale: "No existing item states the transfer-of-assets look-back period. Named directly by the phase-4 brief's interface. Not currently read by a derivation in this batch (uncompensated_transfer_value_in_lookback (CO-824) is supplied as the already-look-back-scoped total), but stated as a parameter so a future item computing the look-back window from the application date can cite it rather than a literal 60."

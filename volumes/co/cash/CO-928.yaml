@@ -1,0 +1,20 @@
+id: CO-928
+name: "Colorado Works: is a disqualified or ineligible member"
+identifier: cw_is_disqualified_member
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: Whether this person is a disqualified or ineligible required assistance-unit member under 9 CCR 2503-6 3.604.2.M - an intentional program violation (including a two-state-residence misrepresentation), a drug felony conviction, or a fleeing felon or probation/parole violator.
+precision: "Reads the three shared supplied facts this volume's SNAP chapter already carries (is_disqualified_for_intentional_program_violation, CO-038; is_disqualified_drug_felony, CO-039; is_fleeing_felon_or_probation_violator, CO-041), since 3.604.2.M.1-3's IPV, drug-felony, and fleeing-felon categories are the same underlying facts SNAP's own disqualification rules read, not a Colorado Works-specific determination. Does not model 3.604.2.M's other two categories (no SSN, non-qualified non-citizen ineligible for citizenship reasons) because this volume's cw_meets_citizenship_requirement (CO-905) already denies an ineligible non-citizen at the person's own eligibility status rather than through unit membership, and no supplied fact for 'lacks an SSN' exists in this volume."
+derived: [any, is_disqualified_for_intentional_program_violation, is_disqualified_drug_felony, is_fleeing_felon_or_probation_violator]
+sources: [S523]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "No existing item in this volume states which persons are disqualified or ineligible members for Colorado Works purposes; cw_unit_time_limit_extended (CO-925) needs it for 3.604.2.M's last-sentence bar on granting a time-limit extension to a unit containing a disqualified member (the phase-5 review's C-3(c) finding). Reuses three existing SNAP-chapter supplied facts cross-program rather than restating the same IPV/drug-felony/fleeing-felon categories under new Colorado-Works-prefixed facts, since 3.604.2.M.1-3 and this volume's SNAP disqualification rules read the identical underlying determinations. K-3: does not model 3.604.2.M's other two consequences (removal from the assistance unit for unit-size purposes while still counting undisregarded income, and counting the disqualified member's own month toward their sixty-month maximum) - see OQ-143."
+nearest: [CO-038]
+open: [OQ-143]
+tests:
+  - {id: CO-928-T1, as_of: "2026-10-01", given: {is_disqualified_for_intentional_program_violation: true, is_disqualified_drug_felony: false, is_fleeing_felon_or_probation_violator: false}, expect: true}
+  - {id: CO-928-T2, as_of: "2026-10-01", given: {is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false, is_fleeing_felon_or_probation_violator: true}, expect: true}
+  - {id: CO-928-T3, as_of: "2026-10-01", given: {is_disqualified_for_intentional_program_violation: false, is_disqualified_drug_felony: false, is_fleeing_felon_or_probation_violator: false}, expect: false}

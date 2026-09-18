@@ -1,0 +1,11 @@
+id: CO-841
+name: Receives Title IV foster care, adoption subsidy, or kinship payment
+identifier: receives_title_iv_foster_adoption_kinship_payment
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person receives Title IV-E foster care maintenance payments, an adoption assistance subsidy, or a Title IV kinship payment, which excludes them from a Colorado Works assistance unit and budgetary unit under 9 CCR 2503-6 3.604.2.C.3.b and exempts their income from consideration under 3.605.4.B.11 and .32.
+supplied_by: CBMS cross-program benefit record (Colorado's child welfare and adoption assistance systems).
+sources: [S409]
+rationale: No existing fact in this volume's interface captures this exclusion; cw_assistance_unit_members (CO-900) needs it to correctly exclude a foster or kinship child from the assistance unit.

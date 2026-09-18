@@ -1,0 +1,22 @@
+id: CO-704
+name: "CHP+: household income is within the CHP+ limit"
+identifier: chp_income_within_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: Whether this person's chp_household_income, as a percentage of the poverty guideline, falls within the band 10 CCR 2505-3-110.1.E states for a child (greater than 142%, not exceeding 260% of FPL) or 110.1.F states for a pregnant woman (greater than 195%, not exceeding 260% of FPL), applying the 42 CFR 435.603(d)(4)/10 CCR 2505-10 8.100.4.D 5% disregard only when it makes the difference for CHP+, the highest MAGI income standard a child or pregnant person in this band could qualify under.
+precision: "The 5% disregard (ma_magi_income_disregard_pct) is tested as an alternative to the plain ratio, not always subtracted, because subtracting it unconditionally could push a household that already qualifies without it below the lower bound (a household at 142.5% of FPL, for example, would fail the 142% floor once 5 points are subtracted, which is not what the disregard is for). This item is therefore true when either the plain ma_magi_household_income_pct_fpl falls in the band, or the ratio less the disregard does; both compare against the same lower/upper parameters for the person's category (child or pregnant)."
+derived: [case, [ma_is_under_child_age_or_turns_nineteen_this_month, [any, [all, [">", ma_magi_household_income_pct_fpl, chp_income_limit_pct_child_lower], ["<=", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper]], [all, [">", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_child_lower], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_upper]]]], [is_pregnant, [any, [all, [">", ma_magi_household_income_pct_fpl, chp_income_limit_pct_pregnant_lower], ["<=", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper]], [all, [">", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_pregnant_lower], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], chp_income_limit_pct_upper]]]], [else, false]]
+sources: [S243, S246]
+open: [OQ-63]
+implemented: engine
+tags: [chp, magi, income]
+rationale: "No existing item tests CHP+'s income band. chp_child_is_eligible (CO-705), chp_prenatal_is_eligible (CO-706) and chp_eligibility_status (CO-707) need this single yes/no rather than each re-deriving the child/pregnant band selection and the disregard's benefit-only application. Not the same test as any Medicaid income-standard rule (batch 6's ma_is_child_category and siblings), because CHP+'s band has both a floor and a ceiling (110.1.E-F), where Medicaid's MAGI standards are ceilings only."
+tests:
+  - {id: CO-704-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, ma_magi_household_income_pct_fpl: 2.00}, expect: true}
+  - {id: CO-704-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, ma_magi_household_income_pct_fpl: 1.045}, expect: false}
+  - {id: CO-704-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: true, ma_magi_household_income_pct_fpl: 2.10}, expect: true}
+  - {id: CO-704-T4, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, ma_magi_household_income_pct_fpl: 1.43}, expect: true}
+  - {id: CO-704-T5, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, ma_magi_household_income_pct_fpl: 2.63}, expect: true}
+  - {id: CO-704-T6, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, ma_magi_household_income_pct_fpl: 2.70}, expect: false}

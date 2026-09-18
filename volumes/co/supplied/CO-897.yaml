@@ -1,0 +1,14 @@
+id: CO-897
+name: Financially contributing to the child's welfare
+identifier: is_financially_contributing_to_child
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether this person is financially contributing to the welfare of the eligible child they are the parent, adoptive parent, step-parent, legal guardian, or loco-parentis caretaker of, per 8 CCR 1403-1 3.103.C's "adult caretaker" definition.
+precision: Defaulted to true when a case does not state it (see OQ-135), so this fix round's edit scope does not turn every other case's CCCAP household-caretaker determination unknown.
+supplied_by: Applicant statement of household financial responsibility for the child.
+sources: [S481]
+open: [OQ-135]
+tags: [household]
+rationale: "3.103.C's adult-caretaker definition has a financial-contribution prong no existing item carries (cccap_is_teen_parent, CO-981, models only the physical-custody prong of the parallel teen-parent definition); the review (docs/reviews/cccap-leap-phase-6.md, C-7) found the chapter's caretaker set was simply 'not a household child,' with no test of 3.103.C's own terms. cccap_is_adult_caretaker (CO-992) reads it."

@@ -1,0 +1,21 @@
+id: CO-622
+name: "Medicaid: Buy-In category"
+identifier: ma_buy_in_category
+kind: derived
+type: one of
+options: [working_adults_with_disabilities, children_with_disabilities, none]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: The single Medicaid Buy-In Program this person qualifies under for the month - Working Adults with Disabilities, Children with Disabilities, or none - per 10 CCR 2505-10 8.100.6.P and 8.100.6.Q.
+precision: The two programs' age ranges (16+ for WAwD, 18 or younger for CBwD) overlap at 16-18, where 8.100.6.Q.1.e routes an employed 16-18-year-old to WAwD instead; this item tests WAwD first, which reaches the same result for an employed applicant in the overlap (ma_wawd_eligible requires is_employed, which CBwD does not test), but does not independently enforce 8.100.6.Q.1.e's exclusion for an unemployed 16-18-year-old who happens to also satisfy both tests.
+derived: [case, [ma_wawd_eligible, "working_adults_with_disabilities"], [ma_cbwd_eligible, "children_with_disabilities"], [else, "none"]]
+sources: [S317, S318]
+implemented: engine
+tags: [ma, non_magi, buy_in]
+rationale: "No existing item reports which Buy-In program a person qualifies under. Needed as the batch's Buy-In outcome per the phase-4 brief's interface (role: outcome)."
+nearest: [CO-387, CO-612, CO-617]
+tests:
+  - {id: CO-622-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_wawd_eligible: true, ma_cbwd_eligible: false}, expect: working_adults_with_disabilities}
+  - {id: CO-622-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_wawd_eligible: false, ma_cbwd_eligible: true}, expect: children_with_disabilities}
+  - {id: CO-622-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_wawd_eligible: false, ma_cbwd_eligible: false}, expect: none}

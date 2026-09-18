@@ -1,0 +1,20 @@
+id: CO-946
+name: "Adult Financial: countable income"
+identifier: af_countable_income
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: The person's total countable income for the month for Adult Financial purposes - gross earned income after the $65 exclusion and one-half remainder disregard, plus gross unearned income after the $20 disregard - per 9 CCR 2503-5 3.533 (OAP), 3.544 (AND-SO), and 3.549 (AND-CS), which state the same two disregards.
+precision: See OQ-115 - does not separate out or add back a dollar amount of SSI income (no supplied fact states one) before applying the $20 unearned-income disregard, and does not model the disregard's rollover from unearned to earned income when unearned income is under $20. See OQ-114 - does not add a deemed amount from a non-recipient spouse or a sponsor. Reuses ma_ssi_earned_income_exclusion (CO-231, $65), ma_ssi_earned_income_disregard_rate (CO-232, one-half), and ma_ssi_general_income_exclusion (CO-230, $20) cross-program, because 3.533/3.544/3.549's disregard amounts are the identical dollar figures the SSI-related Medicaid chapter's own $65 and $20 disregards carry (20 CFR 416.1112(c), 416.1124(c)(12)), so a Adult-Financial-prefixed duplicate parameter of the same value is not created.
+derived: ["+", ["*", ["max", 0, ["-", earned_income, ma_ssi_earned_income_exclusion]], ma_ssi_earned_income_disregard_rate], ["max", 0, ["-", ["+", social_security_income, pension_income, unemployment_income, cash_assistance_income, child_support_received, other_unearned_income], ma_ssi_general_income_exclusion]]]
+sources: [S457, S461, S465]
+open: [OQ-114, OQ-115]
+implemented: engine
+tags: [cash, oap, and, ab, income]
+rationale: No existing item states the Adult Financial income-disregard formula. af_category (CO-953), af_oap_grant (CO-951), and af_and_grant (CO-952) need it. Not identical to ma_ssi_countable_earned_income/ma_ssi_countable_unearned_income (CO-605/CO-606), which combine a living-together spouse's income into one couple-level disregard per SSI's "mutually available" rule (8.100.5.H.1.a); Adult Financial instead deems a spouse's income separately (3.534, 3.544.D-G, 3.549.C-G, not modeled this batch per OQ-114), so this item reads only the person's own income.
+nearest: [CO-605, CO-606]
+tests:
+  - {id: CO-946-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, social_security_income: 1420, pension_income: 610, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, expect: 2010}
+  - {id: CO-946-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 465, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, expect: 200}
+  - {id: CO-946-T3, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, social_security_income: 1180, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, expect: 1160}

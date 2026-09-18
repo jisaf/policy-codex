@@ -99,6 +99,36 @@ describe("group patterns", () => {
     expect(inline(ix, parseInline(ix, "the persons joined to this person by spouse such that that person's Age is at least 18")))
       .toBe("the persons joined to this person by spouse such that that person's Age is at least 18");
   });
+  it("finds the persons who share a parent", () => {
+    const c6 = makeCase(ix, {
+      id: "S", as_of: "2026-10-01",
+      relationships: [["parent", "p1", "p2"], ["parent", "p1", "p3"], ["parent", "p4", "p3"]] as Array<[string, string, string]>,
+      persons: { p1: { facts: {} }, p2: { facts: {} }, p3: { facts: {} }, p4: { facts: {} } },
+    });
+    const sib = buildIndex([...items, { id: "G-12", name: "Siblings", identifier: "siblings", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["shared_relative", "parent"], implemented: "engine" }]);
+    expect(evaluate(sib, c6, "siblings", "p2", null)).toEqual(["p3"]);
+    expect(evaluate(sib, c6, "siblings", "p3", null)).toEqual(["p2"]);
+    expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
+    expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
+  });
+  it("joins the bound person to a group by relationship", () => {
+    const c8 = makeCase(ix, {
+      id: "J", as_of: "2026-10-01",
+      relationships: [["parent", "p1", "p2"], ["tax_filer", "p3", "p2"]] as Array<[string, string, string]>,
+      persons: { p1: { facts: {} }, p2: { facts: {} }, p3: { facts: {} } },
+    });
+    const jx = buildIndex([...items, { id: "G-15", name: "Kids with a parent here", identifier: "kids_with_parent", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["filter", ["persons"], ["has_relative_in", ["child"], ["persons"]]], implemented: "engine" }, { id: "G-16", name: "Claimed by p1 or p2", identifier: "claimed_here", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["filter", ["persons"], ["has_relative_in", ["tax_dependent"], ["filter", ["persons"], ["not", ["=", ["P"], "x"]]]]], implemented: "engine" }]);
+    expect(evaluate(jx, c8, "kids_with_parent", "p1", null)).toEqual(["p2"]);
+    expect(evaluate(jx, c8, "claimed_here", "p1", null)).toEqual(["p2"]);
+    expect(inline(jx, parseInline(jx, "that person is a child or dependent of a person in every person in the case"))).toBe("that person is a child or dependent of a person in every person in the case");
+  });
+  it("adds and subtracts months", () => {
+    const c7 = makeCase(ix, { id: "M", as_of: "2026-10-01", persons: { p1: { facts: {} } } });
+    const mx = buildIndex([...items, { id: "G-13", name: "Later", identifier: "later", kind: "derived", type: "month", scope: "person", program: "All", derived: ["months_after", 12, ["det_month"]], implemented: "engine" }, { id: "G-14", name: "Earlier", identifier: "earlier", kind: "derived", type: "month", scope: "person", program: "All", derived: ["months_before", 3, ["det_month"]], implemented: "engine" }]);
+    expect(evaluate(mx, c7, "later", "p1", null)).toBe("2027-10");
+    expect(evaluate(mx, c7, "earlier", "p1", null)).toBe("2026-07");
+    expect(inline(mx, parseInline(mx, "3 months before the month containing the Determination Date"))).toBe("3 months before the month containing the Determination Date");
+  });
   it("rounds half up and up", () => {
     const c4 = makeCase(ix, spec);
     expect(evaluate(ix, c4, "allotment", "p4", "2026-10")).toBe(0);

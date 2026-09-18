@@ -1,0 +1,12 @@
+id: CO-253
+name: MMMNA excess shelter threshold, percentage
+identifier: ma_mmmna_shelter_threshold_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The percentage of the MMMNA standard a community spouse's shelter expenses must exceed before an excess shelter allowance is added, per 42 U.S.C. 1396r-5(d)(4) and 10 CCR 2505-10 § 8.100.7.Q.1.b.iii.
+value: 0.30
+sources: [S358, S372]
+tags: [ma, ltc, income]
+rationale: "No existing item states the 30% excess shelter threshold. ma_mmmna (CO-655) needs it."

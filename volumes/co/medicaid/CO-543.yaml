@@ -1,0 +1,17 @@
+id: CO-543
+name: "Medicaid: MAGI Pregnant Women category income standard"
+identifier: ma_magi_income_standard_pregnant
+kind: derived
+type: rate
+scope: global
+program: Medicaid
+meaning: The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Pregnant Women MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.116(c)(1)(i) sets (133% FPL) and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.5 (185% FPL, which 435.116(c)(1)(ii) permits up to).
+precision: Colorado's 185% exceeds the 133% federal floor, so this rule resolves to Colorado's own percentage; the max pattern states that comparison explicitly rather than assuming it.
+derived: [max, ma_federal_magi_floor_pct, ma_income_limit_pregnant_pct]
+sources: [S209, S210]
+implemented: engine
+tags: [ma, magi, income, state_election]
+rationale: "No existing item states the Pregnant-Women-category income standard. ma_is_pregnant_category (CO-546) needs it. Same shape as ma_magi_income_standard_child (CO-540) and ma_magi_income_standard_adult (CO-542), but the only one of the three where Colorado's own percentage (185%) actually exceeds the federal floor (133%), which is the case the phase-3 brief's 'model Colorado's rule and cite both, where they differ' instruction is written for. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
+nearest: [CO-540, CO-541, CO-542]
+tests:
+  - {id: CO-543-T1, as_of: "2026-10-01", given: {}, expect: 1.85}

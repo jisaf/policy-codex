@@ -1,0 +1,20 @@
+id: CO-559
+name: "Medicaid: is presumptively eligible, child"
+identifier: ma_is_presumptively_eligible_child
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether a child under 19 is presumptively eligible for State Plan approved medical services under 10 CCR 2505-10 8.100.4.F.2.b, 42 CFR 435.1102(a), and 42 U.S.C. 1396r-1a(a) - under ma_magi_child_age_limit and household income at or below ma_magi_income_standard_child.
+assumption: "Fix round (C-15): reads attested_household_income_pct_fpl (CO-092) instead of ma_magi_household_income_pct_fpl (CO-504), retiring the OQ-54 assumption on this item, for the same reason given on ma_is_presumptively_eligible_pregnant (CO-558). No income disregard is applied, for the same reason given there."
+derived: [all, [<, age, ma_magi_child_age_limit], ["<=", attested_household_income_pct_fpl, ma_magi_income_standard_child]]
+sources: [S219, S220, S223, S246]
+open: [OQ-56]
+implemented: engine
+tags: [ma, magi, income, age]
+rationale: "No existing item states presumptive eligibility for a child. Not the same test as ma_is_child_category (CO-545), which applies the 5% disregard as the last step of a full determination; parallel in shape to ma_is_presumptively_eligible_pregnant (CO-558) but keyed on age rather than pregnancy, since 8.100.4.F.2.a/.b and 435.1102/1103 state the two presumptive-eligibility populations as parallel but separate rules. Fix round (C-15): switched from ma_magi_household_income_pct_fpl to attested_household_income_pct_fpl (CO-092), matching CO-558 and CO-708."
+nearest: [CO-558]
+tests:
+  - {id: CO-559-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2015-01-01", attested_household_income_pct_fpl: 1.00}, expect: true}
+  - {id: CO-559-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2015-01-01", attested_household_income_pct_fpl: 1.50}, expect: false}
+  - {id: CO-559-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", attested_household_income_pct_fpl: 0.50}, expect: false}

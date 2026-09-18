@@ -1,0 +1,17 @@
+id: CO-927
+name: "Colorado Works: unit child count"
+identifier: cw_unit_child_count
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: The number of dependent children in this person's assistance unit, for selecting the column of 9 CCR 2503-6 3.606.1.F's Standards of Assistance Chart (Number of Children 0 through 10, plus "Each Additional Child").
+derived: [count, [filter, cw_assistance_unit_members, [of, [P], cw_is_dependent_child]]]
+sources: [S414]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "No existing item counts a Colorado Works unit's dependent children alone (cw_unit_size, CO-903, the acknowledged nearest same-shape item, counts every member); cw_need_standard (CO-911) and cw_grant_standard (CO-912) need this narrower count to key 3.606.1.F's 'Number of Children' columns under the fix-round C-5 finding, since unit size (children plus caretakers) is not the chart's key."
+nearest: [CO-903]
+tests:
+  - {id: CO-927-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "1992-01-01", is_head_of_household: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, p3: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p3], [parent, p2, p3]], expect: 1}
+  - {id: CO-927-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 0}

@@ -1,0 +1,13 @@
+id: CO-083
+name: Expected number of children
+identifier: expected_number_of_children
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: For a pregnant person, the number of children the person is expected to deliver, used to count the pregnant person's family size as herself plus that number.
+precision: As declared at application or renewal; zero for a person who is not pregnant.
+supplied_by: Applicant statement (CBMS/PEAK), consistent with the person's is_pregnant status.
+sources: []
+tags: [ma, magi, household]
+rationale: "No existing item carries this fact. 42 CFR 435.603(b) ('family size') and 10 CCR 2505-10 8.100.4.E.2 count a pregnant household member as herself plus the number of children she is expected to deliver, for every household whose size calculation includes her, not only her own; ma_magi_household_size (CO-501) needs this fact for any pregnant member of a household."

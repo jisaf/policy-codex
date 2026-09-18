@@ -1,0 +1,16 @@
+id: CO-565
+name: "Medicaid: pregnancy coverage period start month"
+identifier: ma_pregnancy_coverage_period_start_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: The first month of a pregnant applicant's Medical Assistance coverage period under 10 CCR 2505-10 8.100.4.G.5 - "a period beginning with the date of application for Medical Assistance" - stated as the month containing the person's application_date.
+precision: Month-level, matching this volume's month-keyed person-month outcomes; a coverage period that begins mid-month is treated as beginning with that whole month, consistent with 8.100.4.G.1's whole-month-eligibility rule (K-1, not otherwise modeled in this round).
+derived: [month_of, application_date]
+sources: [S209]
+implemented: engine
+tags: [ma, magi]
+rationale: "No existing item states when a pregnant applicant's coverage period begins. ma_is_in_pregnancy_coverage_period (CO-566) needs this single anchor month. Fix round (C-13): added per the phase-3 review's finding that 8.100.4.G.5's lock-in sentence ('once eligibility has been approved, ... coverage will be provided regardless of changes in the woman's financial circumstances') had no item modeling the coverage period it protects, only its end month (ma_postpartum_coverage_end_month, CO-560)."
+tests:
+  - {id: CO-565-T1, as_of: "2026-10-01", given: {application_date: "2026-10-09"}, expect: "2026-10"}

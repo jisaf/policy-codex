@@ -1,0 +1,13 @@
+id: CO-804
+name: Entitled to Medicare Part A on the basis of disability
+identifier: is_entitled_to_medicare_part_a_on_basis_of_disability
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person was a recipient of Social Security Disability Insurance (SSDI) benefits, continues to be disabled, lost SSDI entitlement because earned income exceeded the Substantial Gainful Activity threshold, and has exhausted SSA's extension of premium-free Medicare Part A coverage under SSDI - the history 10 CCR 2505-10 8.100.6.O.2.a-b requires for QDWI eligibility.
+supplied_by: SSA benefit record (SSDI history and Part A entitlement basis), county eligibility worker's QDWI determination.
+sources: [S315]
+tags: [non_magi, msp, disability]
+rationale: "8.100.6.O.2.a-b (S315) conditions QDWI on this specific SSDI/Part-A history, which receives_medicare_part_a (CO-803, current premium-free entitlement) does not capture - a QDWI applicant by definition is losing or has lost that free entitlement. ma_qdwi_eligible (CO-616) needs it. See OQ-84 on the scope of what this fact is taken to mean. The SGA threshold this history turns on is now a parameter, ma_sga_non_blind/ma_sga_blind (CO-332/CO-333, from documents/D-58.md:71) - the phase-4 review's G-4 finding - although this item still abstracts the whole history as a single supplied fact rather than deriving it from SGA and earnings."
+open: [OQ-84]

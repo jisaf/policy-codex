@@ -1,0 +1,19 @@
+id: CO-558
+name: "Medicaid: is presumptively eligible, pregnant"
+identifier: ma_is_presumptively_eligible_pregnant
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether a pregnant person is presumptively eligible for ambulatory prenatal care under 10 CCR 2505-10 8.100.4.F.2.a, 42 CFR 435.1103(a), and 42 U.S.C. 1396r-1(a) - an attested pregnancy and household income at or below ma_magi_income_standard_pregnant.
+assumption: "8.100.4.F.2.a and 435.1101's 'period of presumptive eligibility' both key on preliminary, attested (not verified) information. Fix round (C-15): reads attested_household_income_pct_fpl (CO-092) instead of ma_magi_household_income_pct_fpl (CO-504), retiring the OQ-54 assumption on this item - the phase-3 review found that CO-708 (CHP+'s own presumptive-eligibility item, reading the identical 'declared' language from the same pair of regulations) already reads the attested fact, and two presumptive-eligibility rules built on the same regulatory language should not read two different income facts. The 5% income disregard is still not applied: 8.100.4.F.2.a and 435.1103(a) state 185% as the presumptive-eligibility standard itself, not as a plain MAGI category standard to which the disregard's 'last step' language (8.100.4.D.1.a) would separately apply - that part of the retired assumption remains correct."
+derived: [all, is_pregnant, ["<=", attested_household_income_pct_fpl, ma_magi_income_standard_pregnant]]
+sources: [S219, S221, S222, S246]
+open: [OQ-56]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item states presumptive eligibility for a pregnant person. Not the same test as ma_is_pregnant_category (CO-546): that item applies the 5% disregard as the last step of a full determination, while this item states the site-level attested-income test 8.100.4.F.2.a describes, without the disregard. Fix round (C-15): switched from ma_magi_household_income_pct_fpl to attested_household_income_pct_fpl (CO-092), matching chp_presumptive_eligibility (CO-708)."
+tests:
+  - {id: CO-558-T1, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: true, attested_household_income_pct_fpl: 1.50}, expect: true}
+  - {id: CO-558-T2, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: true, attested_household_income_pct_fpl: 2.00}, expect: false}
+  - {id: CO-558-T3, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: false, attested_household_income_pct_fpl: 0.50}, expect: false}

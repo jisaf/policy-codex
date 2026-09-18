@@ -1,0 +1,11 @@
+id: CO-271
+name: Colorado Works dependent child secondary-student age limit
+identifier: cw_dependent_child_student_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The age below which a full-time secondary (or vocational/technical equivalent) student who is reasonably expected to finish before reaching it is still a dependent child, per 26-2-703(9)(B), C.R.S. and 9 CCR 2503-6 3.601's "Dependent child(ren)" definition, part B.
+value: 19
+sources: [S401, S406]
+rationale: No existing parameter states this age; cw_is_dependent_child (CO-901) needs it.

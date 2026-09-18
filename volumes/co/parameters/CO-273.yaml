@@ -1,0 +1,12 @@
+id: CO-273
+name: Colorado Works earned income disregard (at application / minor-parent deeming)
+identifier: cw_earned_income_disregard_dollar
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: The flat dollar amount deducted from gross earned income at application under 9 CCR 2503-6 3.606.2.A.1, and the identically-stated employment disregard deducted from a non-participant parent's gross earned income before it is deemed to a minor parent's assistance unit under 3.605.1.A.4.a.
+precision: The rule manual states the same ninety-dollar figure in both places; this volume uses one parameter for both rather than two identical parameters.
+value: 90
+sources: [S413, S416]
+rationale: No existing parameter states this figure; cw_countable_earned_income (CO-907) and cw_deemed_parent_income_of_minor_parent (CO-909) both read it.

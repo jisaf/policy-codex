@@ -1,0 +1,18 @@
+id: CO-561
+name: "Medicaid: child is in a continuous eligibility period"
+identifier: ma_child_is_in_continuous_eligibility_period
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this month falls inside a child's 12-month continuous eligibility period under 42 CFR 435.926(d) and 10 CCR 2505-10 8.100.3.Q.1.a - continuous eligibility applied at the period's start month, the person is still under ma_magi_child_age_limit, still meets residency, and this month is on or before ma_child_continuous_eligibility_end_month.
+precision: "435.926(d) is the operative sentence: 'A child's eligibility may not be terminated during a continuous eligibility period, regardless of any changes in circumstances,' subject to the listed exceptions (age 19, residency, and the others OQ-53 names). Reads ma_continuous_eligibility_applies [at] the period's start month (not this month), per the note on CO-555, so a later month's income rise cannot retroactively make the period never have applied. The start month is the same anchor ma_child_continuous_eligibility_end_month (CO-556) uses: continuous_eligibility_period_start_month if stated, otherwise [month_of, application_date]."
+derived: [all, [at, ma_continuous_eligibility_applies, [otherwise, continuous_eligibility_period_start_month, [month_of, application_date]]], [<, age, ma_magi_child_age_limit], ma_meets_residency, ["<=", [month], ma_child_continuous_eligibility_end_month]]
+sources: [S215, S216]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item states whether a given month falls inside an already-open continuous eligibility period; without it, continuous eligibility is computed (CO-555, CO-556) but nothing reads it, which is the phase-3 review's C-4(a) finding. ma_magi_category (CO-551) and ma_magi_eligibility_status (CO-554) both need this single per-month yes/no so that a child in the period stays child/eligible 'without regard to changes in income' (8.100.3.Q.1.a) even in a month their own current-month category test would otherwise report none/ineligible_income."
+tests:
+  - {id: CO-561-T1, as_of: "2027-01-15", month: "2027-01", given: {date_of_birth: "2010-03-02", application_date: "2026-04-10", continuous_eligibility_period_start_month: "2026-04", state_of_residence: "CO", ma_is_child_category: {"2026-04": true, "2027-01": false}}, expect: true}
+  - {id: CO-561-T2, as_of: "2027-05-15", month: "2027-05", given: {date_of_birth: "2010-03-02", application_date: "2026-04-10", continuous_eligibility_period_start_month: "2026-04", state_of_residence: "CO", ma_is_child_category: {"2026-04": true, "2027-05": false}}, expect: false}
+  - {id: CO-561-T3, as_of: "2026-10-15", month: "2026-10", given: {date_of_birth: "1990-01-01", application_date: "2026-10-10", state_of_residence: "CO", ma_is_child_category: false}, expect: false}

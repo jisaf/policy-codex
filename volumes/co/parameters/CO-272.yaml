@@ -1,0 +1,11 @@
+id: CO-272
+name: Colorado Works minor age limit
+identifier: cw_minor_parent_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The age below which a person is a "minor" for the Colorado Works minor-parent living-arrangement rule, per 9 CCR 2503-6 3.601's "Minor" definition and 3.604.2.N.
+value: 18
+sources: [S406, S411]
+rationale: No existing parameter states this age; cw_minor_parent_living_arrangement_met (CO-906) and cw_deemed_parent_income_of_minor_parent (CO-909) need it.

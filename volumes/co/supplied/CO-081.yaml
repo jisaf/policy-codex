@@ -1,0 +1,13 @@
+id: CO-081
+name: Tax-exempt interest
+identifier: tax_exempt_interest
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly tax-exempt interest income (for example municipal bond interest), which is excluded from federal taxable income but added back into MAGI-based income.
+precision: Monthly amount for the month in context.
+supplied_by: Applicant statement (CBMS/PEAK), verified through an electronic data source or tax documents.
+sources: []
+tags: [ma, magi, income]
+rationale: "No existing item carries tax-exempt interest. 42 CFR 435.603(e) defines MAGI-based income by reference to 26 U.S.C. 36B(d)(2)(B), and 10 CCR 2505-10 8.100.4.C.1.c.i lists 'any tax exempt interest income' as additional income included in the MAGI calculation even though it is excluded from ordinary taxable gross income; ma_person_magi_income (CO-502) needs this fact separately from earned/unearned income because it is added back, not merely counted."

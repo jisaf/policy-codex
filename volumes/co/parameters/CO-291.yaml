@@ -1,0 +1,16 @@
+id: CO-291
+name: AND-CS grant standard
+identifier: af_and_cs_grant_standard
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: The total AND-CS grant standard, per 9 CCR 2503-5 3.546.A, before deducting a client's countable income.
+precision: See OQ-118 - adjustable within available appropriations per 3.546.B's general adjustment language; this parameter carries only the stated dollar figure as of its effective date.
+versions:
+  - from: "2025-01-01"
+    value: 967
+    source: S462
+open: [OQ-118]
+sources: [S462]
+rationale: No existing item states the AND-CS grant standard. af_grant_standard (CO-949) and af_and_grant (CO-952) need it.

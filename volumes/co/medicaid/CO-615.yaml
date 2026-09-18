@@ -1,0 +1,19 @@
+id: CO-615
+name: "Medicaid: is Qualifying Individual 1 (QI-1) eligible"
+identifier: ma_qi_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible as a Qualifying Individual 1 - entitled to Medicare Part A, income at least 120% but less than 135% of the federal poverty level for their household size, resources at or below the MSP resource limit, and not otherwise eligible for Medical Assistance - per 10 CCR 2505-10 8.100.6.N.
+precision: "'Not otherwise eligible for Medical Assistance' (8.100.6.N.4.d) is read as not SSI-related eligible, not MAGI-eligible, and not eligible for institutional, HCBS or PACE long-term care - the phase-4 review's C-10 finding; a person eligible under the MAGI chapter (ma_magi_eligibility_status, CO-554) or under the LTC chapter (ma_ltc_eligibility_status, CO-652) is 'otherwise eligible' just as an SSI-related-eligible person is."
+derived: [all, receives_medicare_part_a, [">=", ma_ssi_countable_income, ["*", [/, [lookup, ma_poverty_guideline_table, ma_ssi_household_size], 12], ma_slmb_income_limit_pct]], [<, ma_ssi_countable_income, ["*", [/, [lookup, ma_poverty_guideline_table, ma_ssi_household_size], 12], ma_qi_income_limit_pct]], [<=, ma_ssi_countable_resources, [case, [[=, ma_ssi_household_size, 2], msp_resource_limit_couple], [else, msp_resource_limit_individual]]], [not, ma_is_ssi_related_eligible], [not, [=, ma_magi_eligibility_status, "eligible"]], [not, [in, ma_ltc_eligibility_status, [eligible_institutional, eligible_hcbs, eligible_pace]]]]
+sources: [S314]
+implemented: engine
+tags: [ma, non_magi, msp, income, resources]
+rationale: "No existing item states the QI-1 eligibility test. ma_msp_category (CO-617) needs it. The 120% floor reuses ma_slmb_income_limit_pct (CO-239) per 8.100.6.N.4.b's own text ('at least 120%'), matching that parameter's own nearest note."
+open: [OQ-81]
+tests:
+  - {id: CO-615-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_ssi_countable_income: 1600, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000, msp_resource_limit_individual: 9660, ma_is_ssi_related_eligible: false, ma_magi_eligibility_status: ineligible_income, ma_ltc_eligibility_status: not_institutionalized_or_waiver}, expect: true}
+  - {id: CO-615-T2, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_ssi_countable_income: 1200, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000, msp_resource_limit_individual: 9660, ma_is_ssi_related_eligible: false, ma_magi_eligibility_status: ineligible_income, ma_ltc_eligibility_status: not_institutionalized_or_waiver}, expect: false}
+  - {id: CO-615-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_ssi_countable_income: 1600, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000, msp_resource_limit_individual: 9660, ma_is_ssi_related_eligible: false, ma_magi_eligibility_status: eligible, ma_ltc_eligibility_status: not_institutionalized_or_waiver}, expect: false}

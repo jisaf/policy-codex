@@ -1,0 +1,17 @@
+id: CO-1010
+name: "LEAP: meets the citizenship requirement"
+identifier: leap_meets_citizenship_requirement
+kind: derived
+type: yes/no
+scope: person
+program: LEAP
+meaning: Whether this person is a U.S. citizen, national, or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17, so that this person counts as a member of a LEAP household rather than being excluded under 3.753.17.
+derived: ["in", citizenship_status, [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]
+sources: [S493, S494]
+implemented: engine
+tags: [immigration, legal]
+rationale: "The same citizenship/qualified-alien status list leap_has_lawfully_present_member (CO-1005) already tested for the whole household, restated per person so leap_household_members (CO-1000) can filter 3.753.17's excluded individual out of household membership while leap_household_members_for_income (CO-1009) still counts his income, per the review (docs/reviews/cccap-leap-phase-6.md, C-2, blocking): '3.753.17 ... is stated in three items' meaning and implemented in none.' leap_household_members (CO-1000) filters by it; leap_household_size (CO-1001) counts the filtered group."
+tests:
+  - {id: CO-1010-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-1010-T2, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: true}
+  - {id: CO-1010-T3, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}

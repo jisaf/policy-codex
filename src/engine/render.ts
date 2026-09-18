@@ -44,6 +44,9 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "round": return `${i(e[1])} rounded to the nearest whole dollar`;
     case "persons": return "every person in the case";
     case "count": return `the number of persons in ${i(e[1])}`;
+    case "has_relative_in":
+      return "that person is a " + (e[1] as string[]).join(" or ") + ` of a person in ${i(e[2])}`;
+    case "shared_relative": return `the persons who share a ${e[1]} with this person`;
     case "reachable": {
       const head = "the persons joined to this person by " + (e[1] as string[]).join(" or ");
       return e.length > 2 ? `${head} such that ${i(e[2])}` : head;
@@ -53,6 +56,8 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "month_of": return `the month containing ${i(e[1])}`;
     case "month_before": return `the month before ${i(e[1])}`;
     case "month_after": return `the month after ${i(e[1])}`;
+    case "months_after": return `${i(e[1])} months after ${i(e[2])}`;
+    case "months_before": return `${i(e[1])} months before ${i(e[2])}`;
     case "months_ending": return `the ${i(e[1])} consecutive months ending with ${i(e[2])}`;
     case "months_from_to": return `the months from ${i(e[1])} through ${i(e[2])}`;
     case "at": return `${i(e[1])} for ${i(e[2])}`;
@@ -173,6 +178,10 @@ export function compact(ix: LedgerIndex, e: Expr): string {
       a[0] === "else" ? "else " + c(a[1]) : `${c(a[0])} -> ${c(a[1])}`).join("; ") + ")";
   }
   if (op === "rel" || op === "exists_related") {
+    return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
+  }
+  if (op === "shared_relative") return `${op}(${JSON.stringify(e[1])})`;
+  if (op === "has_relative_in") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
   }
   if (op === "reachable") {

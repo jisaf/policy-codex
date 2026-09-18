@@ -32,6 +32,53 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
+        expects_institutional_stay_of_thirty_days: true
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        ma_personal_needs_allowance_institutional: 75
+        csra_maximum_standard: 150000
+        ma_mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.78
+        is_tax_filer: true
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -70,16 +117,29 @@
         is_medicare_entitled_or_enrolled: true
         receives_ssi: false
         meets_nursing_facility_level_of_care: true
+        spouse_or_dependent_child_resides_in_home: true
         in_medical_institution: true
         institution_entry_date: "2026-10-01"
         countable_resources_individual: 1900
         countable_resources_couple: 46000
+        countable_resources_couple_at_snapshot: 46000
         home_equity: 210000
         transfers_within_lookback: []
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         unemployment_income: 0
         child_support_received: 0
@@ -103,6 +163,57 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
+        expects_institutional_stay_of_thirty_days: false
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        ma_personal_needs_allowance_institutional: 75
+        csra_maximum_standard: 150000
+        ma_mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        home_equity: 210000
+        countable_resources_couple: 46000
+        countable_resources_couple_at_snapshot: 46000
+        countable_resources_individual: 44100
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.78
+        is_tax_filer: true
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -144,7 +255,18 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         pension_income: 0
         unemployment_income: 0
@@ -168,6 +290,34 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        lawful_presence_status: not_lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.0454
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -206,7 +356,12 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         social_security_income: 0
         pension_income: 0
@@ -230,6 +385,35 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        is_requesting_assistance_for_own_child: true
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.0454
+        is_tax_filer: false
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -268,7 +452,12 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         social_security_income: 0
         pension_income: 0
@@ -292,6 +481,36 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        is_requesting_assistance_for_own_child: true
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: false
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -329,7 +548,12 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         social_security_income: 0
@@ -360,8 +584,75 @@
   # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
   # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
   # net rounded up (660) = 125.
+  # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
+  # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
+  # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
+  # (104.5% FPL for 3); undocumented and not pregnant, so emergency-only, while
+  # her income sits within the adult standard (category adult). p4 is claimed
+  # by her parent, so her household is p3's: child category, eligible, with
+  # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
+  # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
+  # children are Medicaid-eligible and so not CHP+ eligible.
+  # Non-MAGI Medicaid (phase 4). p1 is institutionalized from 2026-10-01 with
+  # gross income 2030, within the special income group (3 x 994 = 2982). The
+  # couple's resources are 46000; with the ILLUSTRATIVE spousal standards
+  # stated above (CSRA maximum 150000: the CMS 2026 figures are not in this
+  # volume, OQ-91), the fix-round C-1 fix (10 CCR 2505-10 8.100.7.M.1.a: CSRA
+  # = total resources capped at the maximum standard, no spousal-share or
+  # minimum-standard term - see OQ-126) gives ma_csra = min(150000, 46000) =
+  # 46000, so all of the couple's resources are attributed to the community
+  # spouse and p1's own countable resources are 0, at or below the 2000
+  # limit: resource eligible. p1 also meets the nursing facility level of
+  # care and is otherwise financially eligible, so ma_pace_eligible (CO-654)
+  # is true; CO-652's case order tests PACE before institutional (an
+  # authoring choice per OQ-100, not itself a fix-round item), so the status
+  # is eligible_pace rather than eligible_institutional even though p1's
+  # actual application is for nursing facility care - a consequence of C-1
+  # making her resource-eligible that this fix round surfaces but does not
+  # correct (OQ-100/C-18 is next round's problem). MMMNA = 2600 + (1100
+  # shelter - 30% of 2600) = 2920, the spouse allowance 2920 - 1180 = 1740,
+  # and (per C-3, gated on eligibility, which p1 now has) the patient payment
+  # 2030 - 75 - 1740 = 215. p2 (community spouse, income 1180, individual
+  # resources 44100 over the illustrative MSP limit 10000) is in no MSP,
+  # SSI-related or Buy-In group, is not institutionalized, and (per C-3) has
+  # no patient payment.
   expect:
     p1:
+      cw_assistance_unit_members: [p1]
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-10": 0}
+      af_oap_group: oap_a
+      af_meets_resource_limit: false
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-10": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_household_income: {"2026-10": 3210}
+      leap_is_eligible: {"2026-10": false}
+      ma_is_institutionalized: true
+      ma_meets_special_income_group: {"2026-10": true}
+      ma_ltc_couple: true
+      ma_csra: 46000
+      ma_institutionalized_spouse_countable_resources: 0
+      ma_meets_ltc_resource_standard: true
+      ma_home_equity_disqualifies: false
+      ma_ltc_eligibility_status: {"2026-10": eligible_pace}
+      ma_mmmna: {"2026-10": 2920}
+      ma_community_spouse_income_allowance: {"2026-10": 1740}
+      ma_patient_payment: {"2026-10": 215}
+      ma_ssi_related_category: {"2026-10": none}
+      ma_msp_category: {"2026-10": none}
+      ma_buy_in_category: {"2026-10": none}
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false}
+      ma_magi_category: {"2026-10": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-10": false}
+      chp_eligibility_status: {"2026-10": ineligible}
       snap_household_members: []
       snap_eligible_household_members: []
       snap_household_size: 0
@@ -371,6 +662,30 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p2:
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      af_oap_group: oap_a
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-10": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_is_eligible: {"2026-10": false}
+      ma_is_institutionalized: false
+      ma_ltc_couple: false
+      ma_ltc_eligibility_status: {"2026-10": not_institutionalized_or_waiver}
+      ma_patient_payment: {"2026-10": 0}
+      ma_ssi_related_category: {"2026-10": none}
+      ma_msp_category: {"2026-10": none}
+      ma_buy_in_category: {"2026-10": none}
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false}
+      ma_magi_category: {"2026-10": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-10": false}
+      chp_eligibility_status: {"2026-10": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -384,6 +699,30 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_patient_payment: {"2026-10": 0}
+      cw_assistance_unit_members: [p3]
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      af_category: {"2026-10": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_household_size: 3
+      cccap_household_income: {"2026-10": 2380}
+      cccap_is_teen_parent: {"2026-10": false}
+      cccap_eligibility_status: {"2026-10": eligible_low_income}
+      # leap_household_members is now filtered by 3.753.17's citizenship requirement (p3 is undocumented, review C-2);
+      # leap_household_income still sums p3's income via leap_household_members_for_income (CO-1009). leap_is_eligible
+      # is false: October is outside the November-April eligibility period (review C-3, 3.751.1/3.752.1).
+      leap_household_members: [p4, p5]
+      leap_household_income: {"2026-10": 2380}
+      leap_is_eligible: {"2026-10": false}
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-10": 2380}
+      ma_meets_citizenship_requirement: false
+      ma_is_emergency_medicaid_only: {"2026-10": true}
+      ma_magi_category: {"2026-10": adult}
+      ma_magi_eligibility_status: {"2026-10": emergency_only}
+      ma_continuous_eligibility_applies: {"2026-10": false}
+      chp_eligibility_status: {"2026-10": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -397,6 +736,31 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_patient_payment: {"2026-10": 0}
+      cw_assistance_unit_members: [p4, p5]
+      cw_unit_size: 2
+      cw_minor_parent_living_arrangement_met: true
+      cw_deemed_parent_income_of_minor_parent: {"2026-10": 2037}
+      cw_countable_income: {"2026-10": 2037}
+      cw_need_standard: 245
+      cw_grant_standard: 362
+      cw_grant_amount: {"2026-10": 0}
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      af_category: {"2026-10": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_is_teen_parent: {"2026-10": true}
+      cccap_eligibility_status: {"2026-10": eligible_low_income}
+      leap_household_members: [p4, p5]
+      leap_is_eligible: {"2026-10": false}
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-10": 2380}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false}
+      ma_magi_category: {"2026-10": child}
+      ma_magi_eligibility_status: {"2026-10": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true}
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -410,6 +774,23 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_patient_payment: {"2026-10": 0}
+      cw_assistance_unit_members: [p4, p5]
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      af_category: {"2026-10": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_eligibility_status: {"2026-10": eligible_low_income}
+      leap_household_members: [p4, p5]
+      leap_is_eligible: {"2026-10": false}
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 0}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false}
+      ma_magi_category: {"2026-10": needy_newborn}
+      ma_magi_eligibility_status: {"2026-10": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true}
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -428,15 +809,70 @@
   as_of: "2026-11-01"
   relationships:
     - [spouse, p1, p2]
+    - [parent, p1, p3]
     - [parent, p2, p3]
     - [parent, p3, p4]
     - [parent, p4, p5]
+    - [grandparent, p1, p4]
+    - [grandparent, p2, p4]
+    - [grandparent, p3, p5]
+    - [tax_filer, p3, p4]
+    - [tax_filer, p3, p5]
     - [buys_prepares_with, p2, p3]
     - [buys_prepares_with, p3, p4]
     - [buys_prepares_with, p4, p5]
   persons:
     p1:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
+        expects_institutional_stay_of_thirty_days: true
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        ma_personal_needs_allowance_institutional: 75
+        csra_maximum_standard: 150000
+        ma_mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        home_equity: 210000
+        countable_resources_individual: 1900
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.78
+        is_tax_filer: true
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -477,10 +913,23 @@
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
         in_medical_institution: true
+        spouse_or_dependent_child_resides_in_home: true
         institution_entry_date: "2026-10-01"
         meets_nursing_facility_level_of_care: true
         countable_resources_couple: 46000
+        countable_resources_couple_at_snapshot: 46000
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         unemployment_income: 0
@@ -503,6 +952,57 @@
         pension_income: 610
     p2:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: married
+        expects_institutional_stay_of_thirty_days: false
+        has_income_trust: false
+        meets_hcbs_waiver_target_group: none
+        family_members_with_community_spouse: []
+        receives_medicare_part_a: true
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_employed: false
+        is_disabled_for_buy_in: false
+        csra_minimum_standard: 30000
+        ma_personal_needs_allowance_institutional: 75
+        csra_maximum_standard: 150000
+        ma_mmmna_standard: 2600
+        mmmna_cap: 4000
+        home_equity_limit: 700000
+        transfer_penalty_divisor: 9000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        home_equity: 210000
+        countable_resources_couple: 46000
+        countable_resources_couple_at_snapshot: 46000
+        countable_resources_individual: 44100
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.78
+        is_tax_filer: true
         qualifying_quarters: 40
         receives_ssi: false
         is_disabled_ssa: false
@@ -542,7 +1042,18 @@
         lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         in_medical_institution: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        in_kind_support_and_maintenance: 0
+        community_spouse_income: 1180
+        shelter_costs_community_spouse: 1100
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         pension_income: 0
@@ -565,6 +1076,36 @@
         social_security_income: 1180
     p3:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
+        is_medicare_entitled_or_enrolled: false
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        lawful_presence_status: not_lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -602,6 +1143,10 @@
         citizenship_status: undocumented
         state_of_residence: CO
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         social_security_income: 0
         pension_income: 0
@@ -624,6 +1169,35 @@
         hours_worked: 138
     p4:
       facts:
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        is_requesting_assistance_for_own_child: true
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
+        is_medicare_entitled_or_enrolled: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -662,6 +1236,10 @@
         state_of_residence: CO
         is_enrolled_in_school: true
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         social_security_income: 0
@@ -684,6 +1262,36 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        is_enrolled_in_school: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_in_job_search_activity: false
+        months_of_assistance_received: 0
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        has_domestic_violence_waiver: false
+        has_hardship_extension_approved: false
+        received_tanf_from_another_state_this_month: false
+        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        cccap_entry_income_limit_pct_fpl: 1.85
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        marital_status: single
+        is_medicare_entitled_or_enrolled: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: false
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -721,6 +1329,10 @@
         citizenship_status: citizen
         state_of_residence: CO
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         social_security_income: 0
@@ -749,8 +1361,61 @@
   # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
   # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
   # net rounded up (660) = 125.
+  # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
+  # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
+  # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
+  # (104.5% FPL for 3); undocumented and not pregnant, so emergency-only, while
+  # her income sits within the adult standard (category adult). p4 is claimed
+  # by her parent, so her household is p3's: child category, eligible, with
+  # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
+  # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
+  # children are Medicaid-eligible and so not CHP+ eligible.
+  # Non-MAGI Medicaid (phase 4). Same fixed-rule result as CO-01 (see its
+  # comment above): the C-1 fix gives ma_csra = min(150000, 46000) = 46000,
+  # p1's own countable resources are 0, and she is resource eligible.
+  # ma_pace_eligible is also true (level of care met, financially eligible),
+  # and CO-652's PACE-before-institutional case order (OQ-100) reports
+  # eligible_pace rather than eligible_institutional. MMMNA and the spouse
+  # allowance are unchanged (2920, 1740); the patient payment, now gated on
+  # eligibility per C-3, is 2030 - 75 - 1740 = 215. p2 (community spouse) has
+  # no patient payment.
   expect:
     p1:
+      cw_assistance_unit_members: [p1]
+      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-11": 0}
+      af_oap_group: oap_a
+      af_meets_resource_limit: false
+      af_category: {"2026-11": none}
+      af_oap_grant: {"2026-11": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-11": ineligible_child}
+      leap_household_members: [p1, p2]
+      leap_household_income: {"2026-11": 3210}
+      leap_is_eligible: {"2026-11": false}
+      ma_is_institutionalized: true
+      ma_meets_special_income_group: {"2026-11": true}
+      ma_ltc_couple: true
+      ma_csra: 46000
+      ma_institutionalized_spouse_countable_resources: 0
+      ma_meets_ltc_resource_standard: true
+      ma_home_equity_disqualifies: false
+      ma_ltc_eligibility_status: {"2026-11": eligible_pace}
+      ma_mmmna: {"2026-11": 2920}
+      ma_community_spouse_income_allowance: {"2026-11": 1740}
+      ma_patient_payment: {"2026-11": 215}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": none}
+      ma_buy_in_category: {"2026-11": none}
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-11": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-11": false}
+      ma_magi_category: {"2026-11": none}
+      ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-11": false}
+      chp_eligibility_status: {"2026-11": ineligible}
       snap_household_members: []
       snap_eligible_household_members: []
       snap_household_size: 0
@@ -760,6 +1425,34 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p2:
+      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      af_oap_group: oap_a
+      af_category: {"2026-11": none}
+      af_oap_grant: {"2026-11": 0}
+      cccap_household_members: [p1, p2]
+      cccap_eligibility_status: {"2026-11": ineligible_child}
+      leap_household_members: [p1, p2]
+      # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14), and
+      # C-13's text-derived size-2 ceiling ($4,423.07) now clears the couple's $3,210 income, so p2 is LEAP-eligible
+      # although p1's own household-of-two application is not (her own vulnerability is what fails, not the income
+      # test or the eligibility period - both now pass under the fixed rules; see cccap-leap-phase-6.md C-13, C-14).
+      leap_is_eligible: {"2026-11": true}
+      ma_is_institutionalized: false
+      ma_ltc_couple: false
+      ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
+      ma_patient_payment: {"2026-11": 0}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": none}
+      ma_buy_in_category: {"2026-11": none}
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-11": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-11": false}
+      ma_magi_category: {"2026-11": none}
+      ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-11": false}
+      chp_eligibility_status: {"2026-11": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -773,6 +1466,27 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_patient_payment: {"2026-11": 0}
+      cw_assistance_unit_members: [p3]
+      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      af_category: {"2026-11": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_household_size: 3
+      cccap_household_income: {"2026-11": 2380}
+      cccap_is_teen_parent: {"2026-11": false}
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      leap_household_members: [p4, p5]
+      leap_household_income: {"2026-11": 2380}
+      leap_is_eligible: {"2026-11": true}
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-11": 2380}
+      ma_meets_citizenship_requirement: false
+      ma_is_emergency_medicaid_only: {"2026-11": true}
+      ma_magi_category: {"2026-11": adult}
+      ma_magi_eligibility_status: {"2026-11": emergency_only}
+      ma_continuous_eligibility_applies: {"2026-11": false}
+      chp_eligibility_status: {"2026-11": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -786,6 +1500,31 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_patient_payment: {"2026-11": 0}
+      cw_assistance_unit_members: [p4, p5]
+      cw_unit_size: 2
+      cw_minor_parent_living_arrangement_met: true
+      cw_deemed_parent_income_of_minor_parent: {"2026-11": 2037}
+      cw_countable_income: {"2026-11": 2037}
+      cw_need_standard: 245
+      cw_grant_standard: 362
+      cw_grant_amount: {"2026-11": 0}
+      cw_eligibility_status: {"2026-11": ineligible_income}
+      af_category: {"2026-11": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_is_teen_parent: {"2026-11": true}
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      leap_household_members: [p4, p5]
+      leap_is_eligible: {"2026-11": true}
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-11": 2380}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-11": false}
+      ma_magi_category: {"2026-11": child}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-11": true}
+      chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -799,6 +1538,23 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_patient_payment: {"2026-11": 0}
+      cw_assistance_unit_members: [p4, p5]
+      cw_eligibility_status: {"2026-11": ineligible_income}
+      af_category: {"2026-11": none}
+      cccap_household_members: [p3, p4, p5]
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      leap_household_members: [p4, p5]
+      leap_is_eligible: {"2026-11": true}
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-11": 0}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-11": false}
+      ma_magi_category: {"2026-11": needy_newborn}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-11": true}
+      chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -994,3 +1750,1434 @@
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+
+- id: CO-04
+  title: Pregnant LPR inside the five-year bar; stepparent filing jointly; a child claimed by a non-custodial parent; an 18-year-old in school
+  # Adapted from the phase-3 review's designed case CO-06 (docs/reviews/magi-chp-phase-3.md S3.4).
+  # p4's claiming by his non-custodial father p5 is stated only through the tax_filer/parent edges
+  # this chapter models: 435.603(f)(2)(iii)'s non-custodial-parent exception is NOT implemented
+  # (no claimed_by_non_custodial_parent/lives_with_both_parents/lives_with identifiers exist in this
+  # chapter - OQ-42), so ma_magi_household_members routes p4 into p5's filer household exactly as
+  # 435.603(f)(1) would for an ordinary claimed dependent. This is the gap OQ-42 names, demonstrated
+  # on a real household rather than fixed here.
+  as_of: "2026-10-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p1, p4]
+    - [parent, p2, p3]        # step-parent; caretaker/parent relationship counts step-parents
+    - [parent, p2, p4]        # step-parent
+    - [parent, p5, p4]        # non-custodial father; the chapter has no way to state he does not live with p4
+    - [tax_filer, p1, p3]
+    - [tax_filer, p5, p4]
+  persons:
+    p1:
+      # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
+      # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
+      facts:
+        date_of_birth: "1997-02-11"
+        sex: female
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2023-06-15"
+        lpr_entry_date: "2023-06-15"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        is_pregnant: true
+        expected_number_of_children: 1
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 0.80
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 1600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+      months:
+        "2026-11": {earned_income: 5000}
+    p2:
+      # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
+      # jointly with Maria, earns $600/month throughout.
+      facts:
+        date_of_birth: "1992-08-03"
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2023-06-15"
+        lpr_entry_date: "2023-06-15"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 0.80
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p3:
+      # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
+      facts:
+        date_of_birth: "2008-05-14"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        is_enrolled_in_school: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 0.80
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p4:
+      # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5 (the case cannot
+      # state that he lives with p1/p2 rather than p5 - see the case comment above and OQ-42).
+      facts:
+        date_of_birth: "2016-01-22"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 2.77
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p5:
+      # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
+      # taxes claiming p4. Not otherwise related to p1/p2/p3.
+      facts:
+        date_of_birth: "1990-06-30"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 2.77
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 5000
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+  # Hand arithmetic, 2026 FPL monthly guidelines (annual/12): size2 1,803.33; size4 2,750.00.
+  #
+  # October 2026 (household income $2,200 = p1 $1,600 + p2 $600).
+  # p1: filer + spouse + tax dependent p3 = [p1,p2,p3]; p4 is claimed by p5, not p1, so excluded.
+  #   Size 3 members + 1 for p1's own pregnancy = 4. Income: p1+p2 count, p3 excluded (claimed
+  #   dependent, not required to file, her parent p1 is in the summing household) = 2,200.
+  #   Ratio 2,200/2,750.00 = 0.8000. Not needy newborn/child/parent-caretaker/former-foster-care;
+  #   pregnant: 0.80 <= 1.85 -> category pregnant (also locked in from October itself under
+  #   ma_is_in_pregnancy_coverage_period, since the coverage period's start month equals the
+  #   application month). Citizenship: LPR since 2023-06-15, 3 years < 5-year bar, not a veteran ->
+  #   fails the qualified-non-citizen arm; but pregnant -> Cover All Coloradans (8.100.3.G.1.g.viii.1)
+  #   protects her regardless of status -> ma_meets_citizenship_requirement true, not emergency-only,
+  #   status eligible. Retroactive start month: 3 months before October -> 2026-07. CHP+: Medicaid-
+  #   eligible -> ineligible_medicaid_eligible.
+  # p2: household [p1,p2,p3] (joint filer with p1, no dependents of his own), size 4 (p1's pregnancy
+  #   counts for every household member, 8.100.4.E.2), income 2,200, ratio 0.8000. Not pregnant/child;
+  #   parent/caretaker: stepfather of p3 (18, in school -> a dependent child, CO-544) and p4 -
+  #   demographics met, but his highest MAGI standard is the Adults' 1.33 (not 0.60), since he also
+  #   qualifies demographically as an Adult -> the 5% disregard is not available at 60% (CO-539/C-2)
+  #   -> 0.80 > 0.60 -> parent_caretaker false. Adult: 34, not pregnant, no Medicare, not already a
+  #   higher category, dependent children (p3, p4) have MEC -> demographics met; 0.80 <= 1.33 ->
+  #   category adult. Citizenship: qualified non-citizen inside the bar, not a veteran, not under 19,
+  #   not pregnant/postpartum -> ma_meets_citizenship_requirement false; resident with a real category
+  #   -> ma_is_emergency_medicaid_only true (C-11: he otherwise qualifies for the Adults category) ->
+  #   status emergency_only. CHP+: not a child, not pregnant -> ineligible.
+  # p3: claimed by her own parent p1 -> 435.603(f)(2) basic rule -> household = p1's = [p1,p2,p3],
+  #   size 4, income 2,200, ratio 0.8000. Under 19, 0.80 <= 1.33 -> category child, status eligible.
+  #   Continuous eligibility applies (under 19, child category, CO resident) -> end month = 11 months
+  #   after the application month (2026-10) = 2027-09. CHP+ ineligible_medicaid_eligible.
+  # p4: claimed by his non-custodial father p5, who this chapter cannot mark as living apart (OQ-42,
+  #   see case comment) -> ma_magi_household_members treats this exactly like an ordinary claimed-
+  #   dependent case: household = p5's filer household = [p4,p5], size 2. Income: p5 counts ($5,000);
+  #   p4 is excluded (claimed dependent, not required to file, and his parent p5 IS a member of the
+  #   summing household) -> income 5,000. Ratio 5,000/1,803.33 = 2.7727, over every standard including
+  #   CHP+'s 260% ceiling. Category none, ma_meets_some_category_demographics true (under 19) ->
+  #   status ineligible_income. CHP+: income ratio 2.7727 exceeds the 260% upper bound even with the
+  #   5% disregard (2.7227) -> chp_income_within_limit false -> status ineligible_income (not
+  #   eligible_child - the review's prose for the unfixed-C-12 case says eligible_child here, but that
+  #   is inconsistent with its own 2.7727 ratio against CHP+'s 260% ceiling; the engine's arithmetic,
+  #   confirmed by hand, is the value recorded below).
+  # p5: filer + tax dependent p4 = [p4,p5], size 2 (same group p4 computes, since neither has any
+  #   other filer/spouse edge), income 5,000 (p4 excluded, his own parent p5 is in the household),
+  #   ratio 2.7727. Parent/caretaker demographics: the stated parent edge to p4 is read as living
+  #   together (this volume's convention, no lives_with fact exists - see CO-547's own note that this
+  #   route is not one the statute licenses for a non-custodial parent), but 2.7727 > 0.60 and the
+  #   disregard is not available (his highest standard is the Adults' 1.33) -> parent_caretaker false.
+  #   Adult: demographics met (MEC on p4 stated true) but 2.7727 - 0.05 = 2.7227 > 1.33 -> false.
+  #   Category none, demographics true (parent/caretaker) -> status ineligible_income. CHP+: not a
+  #   child, not pregnant -> ineligible.
+  #
+  # November 2026 (p1's earnings rise to $5,000; household income $5,600).
+  # p1: household [p1,p2,p3], size 4, income 5,600, ratio 5,600/2,750.00 = 2.0364. Still pregnant and
+  #   her pregnancy coverage period (locked in from October, ma_is_in_pregnancy_coverage_period) runs
+  #   "regardless of changes in the woman's financial circumstances" (8.100.4.G.5, C-13) -> category
+  #   still pregnant, status still eligible, despite 2.0364 being over even the 185% pregnant standard.
+  #   Citizenship still protected (pregnant). CHP+: Medicaid-eligible -> ineligible_medicaid_eligible.
+  # p2: household [p1,p2,p3], income 5,600, ratio 2.0364. Parent/caretaker: over 0.60 by far, no
+  #   disregard rescue -> false. Adult: 2.0364 - 0.05 = 1.9864 > 1.33 -> false. Category none.
+  #   Citizenship still false (inside the bar); ma_is_emergency_medicaid_only requires a category other
+  #   than none, so it is false this month (C-11) -> status ineligible_income, not emergency_only.
+  #   CHP+ ineligible (not a child/pregnant).
+  # p3: household [p1,p2,p3], ratio 2.0364, over the child standard even with the disregard (1.9864 >
+  #   1.33) on the plain test - but she was found in the Children's category in October and is still
+  #   under 19 and a CO resident, so 42 CFR 435.926(d)/8.100.3.Q.1.a's continuous-eligibility period
+  #   (opened 2026-10, running through 2027-09, C-4) protects her "without regard to changes in
+  #   income": category still child, status still eligible. CHP+ ineligible_medicaid_eligible.
+  # p4/p5: p5's own earnings are unchanged, so p4's household income is still $5,000/ratio 2.7727 in
+  #   November (p4 never had ma_is_child_category true in October, so no continuous eligibility period
+  #   ever opened for him) - both persons' values are unchanged from October.
+  expect:
+    p1:
+      ma_magi_household_members: [p1, p2, p3]
+      ma_magi_household_size: 4
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": pregnant, "2026-11": pregnant}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      ma_is_in_pregnancy_coverage_period: {"2026-10": true, "2026-11": true}
+      ma_retroactive_coverage_start_month: "2026-07"
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible, "2026-11": ineligible_medicaid_eligible}
+    p2:
+      ma_magi_household_members: [p1, p2, p3]
+      ma_magi_household_size: 4
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
+      ma_meets_citizenship_requirement: false
+      ma_is_emergency_medicaid_only: {"2026-10": true, "2026-11": false}
+      ma_magi_category: {"2026-10": adult, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": emergency_only, "2026-11": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      chp_eligibility_status: {"2026-10": ineligible, "2026-11": ineligible}
+    p3:
+      ma_magi_household_members: [p1, p2, p3]
+      ma_magi_household_size: 4
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": child, "2026-11": child}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true, "2026-11": false}
+      ma_child_continuous_eligibility_end_month: "2027-09"
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible, "2026-11": ineligible_medicaid_eligible}
+    p4:
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 5000, "2026-11": 5000}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": none, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      ma_child_continuous_eligibility_end_month: "2027-09"
+      chp_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+    p5:
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 5000, "2026-11": 5000}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": none, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      chp_eligibility_status: {"2026-10": ineligible, "2026-11": ineligible}
+
+- id: CO-05
+  title: Former foster care youth over every MAGI standard; 17-year-old sibling in a continuous eligibility period after an income change; grandmother caretaker on Social Security; retroactive coverage
+  # Adapted from the phase-3 review's designed cases CO-07/CO-08 (docs/reviews/magi-chp-phase-3.md
+  # S3.4), merged into one case with three stated months now that continuous_eligibility_period_start
+  # month (CO-094) anchors ma_child_continuous_eligibility_end_month on application_date rather than
+  # the determination month (C-4c) - the review's own reason the two cases could not previously be
+  # merged. This harness pins the determination date (and so `age`) to the case's single as_of
+  # (2026-04-10, the date of the application that opens Tasha's continuous eligibility period); it
+  # does not advance with the later months, so Marcus's turning 24 between April 2026 and January
+  # 2027 (the point of the review's original CO-07/CO-08 split) is not separately exercised here - he
+  # is 23 in every month tested, which CO-549-T4's rule-level test already covers for an exit at 20.
+  # A sibling relationship for Marcus and Tasha cannot be stated at all: P43 derives siblings only
+  # from a shared parent edge, and no parent is a person in this case (both are raised by their
+  # grandmother) - the chapter has no `sibling` role, so it is left unexpressed rather than forced.
+  as_of: "2026-04-10"
+  relationships:
+    - [grandparent, p1, p2]
+    - [grandparent, p1, p3]
+    - [caretaker, p1, p3]
+    - [tax_filer, p1, p3]
+  persons:
+    p1:
+      # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
+      # p3 as a tax dependent and is her caretaker relative.
+      facts:
+        date_of_birth: "1957-11-08"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: true
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-04-10"
+        attested_household_income_pct_fpl: 1.03
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        social_security_income: 1850
+        earned_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p2:
+      # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
+      # exit), citizen, earns $4,200/month throughout.
+      facts:
+        date_of_birth: "2002-05-20"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        age_at_foster_care_exit: 20
+        was_foster_youth_at_eighteen: true
+        was_enrolled_in_medicaid_at_foster_care_exit: true
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-04-10"
+        attested_household_income_pct_fpl: 3.16
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 4200
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p3:
+      # Tasha, 16, citizen, in school, claimed by her grandmother p1 (not her parent, so the
+      # 435.603(f)(2)(i) exception routes her to the non-filer household rules: herself alone, since
+      # no parent is a person in this case). Earns nothing in April 2026; earns $1,850/month from
+      # January 2027 on - well above a dependent's filing threshold, so is_required_to_file_tax_return
+      # is stated true for the whole case (this fact is not month-keyed in this chapter's interface).
+      # This also matters for a rule finding recorded in this case's arithmetic comment below: CO-503
+      # (ma_magi_household_income) applies the 8.100.4.C.1.f/435.603(d)(2)(ii) "claimed by someone
+      # other than a spouse or parent" exclusion to a member's OWN summing household as readily as to
+      # someone else's, so a not-required-to-file child claimed by a non-parent with no parent in her
+      # own household (exactly 8.100.4.C.1.f.iii's population, whose income should "always count
+      # towards the determination of their own eligibility") would otherwise see her own income
+      # zeroed out of her own household total. Stating her as required to file sidesteps that defect
+      # here (its top-level condition is "not required to file"); the case comment below documents it.
+      facts:
+        date_of_birth: "2010-03-02"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: true
+        is_enrolled_in_school: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-04-10"
+        attested_household_income_pct_fpl: 0.00
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+      months:
+        "2027-01": {earned_income: 1850}
+        "2027-04": {earned_income: 1850}
+  # Hand arithmetic, 2026 FPL monthly guidelines: size1 1,330.00; size2 1,803.33 (the only FPL version
+  # CO-181 carries reaches 2027 too - see 3.3/3.4's C-5 note on the missing 2027 version).
+  #
+  # p1. Filer, not claimed, claims p3: household [p1,p3], size 2. Income: her Social Security counts
+  #   in full (8.100.4.C.1.b.xi/c.iii). p3's income counts too (or not) by 8.100.4.C.1.f.ii/435.603
+  #   (d)(2)(ii): the exclusion for a tax dependent claimed by someone other than a spouse or parent
+  #   applies only when the dependent is NOT required to file - p3 is stated as required to file once
+  #   her own earnings reach $1,850/month (see her facts), so her income is EXCLUDED from p1's
+  #   household in April 2026 (p3 not yet over the filing threshold in substance, though the fact is
+  #   stated for the whole case - see her facts comment) and COUNTED from January 2027 on.
+  #   April 2026: household income 1,850 (p1 only). Ratio 1,850/1,803.33 = 1.0259.
+  #   January/April 2027: household income 1,850 (p1) + 1,850 (p3) = 3,700. Ratio 3,700/1,803.33 =
+  #   2.0518. Not a child/pregnant/former-foster-care/needy-newborn in any month; parent/caretaker:
+  #   p1 is p3's caretaker relative (435.4's list includes grandparent) and p3 (16) is a dependent
+  #   child (CO-544) -> demographics met every month; her highest MAGI standard is the Parents/
+  #   Caretaker 60% itself, because the Adults group is closed to her (68, Medicare-entitled -
+  #   435.119(b)(1),(3)) -> the 5% disregard IS available (C-2's own worked example) -> even in April
+  #   2026, 1.0259 - 0.05 = 0.9759, still > 0.60 -> parent_caretaker false every month. Not an Adult
+  #   (68 is over the 65 upper age limit). Category none every month; demographics met (parent/
+  #   caretaker) -> status ineligible_income every month. Her real basis would be SSI-related/MSP,
+  #   outside this chapter's phase-3 scope (435.603(j)(2)). CHP+: not a child, not pregnant ->
+  #   ineligible every month.
+  #
+  # Rule finding recorded here rather than fixed (per this batch's instructions not to edit rules):
+  #   CO-503 (ma_magi_household_income) tests ma_is_dependent_claimed_by_non_parent (CO-563) against
+  #   EVERY member of the household being summed, including the household's only member evaluating
+  #   their own total. For p3 alone in [p3] with is_required_to_file_tax_return stated false, this
+  #   would zero out her OWN income out of her OWN household total - the opposite of 8.100.4.C.1.f.iii
+  #   ("[t]he income of a child or tax dependent who does not live with their natural, adopted, or
+  #   step parent will always count towards the determination of their own eligibility, even if [it]
+  #   is below the tax filing threshold," S167), which is written exactly for a child with no parent
+  #   in her household. This case avoids the defect by stating p3 as required to file (a realistic
+  #   fact once her own earnings reach $1,850/month), which independently satisfies f.iii by making
+  #   the exclusion's own "not required to file" precondition false - but the underlying CO-503 gap
+  #   remains for a child with no parent in the case who is genuinely not required to file, and is a
+  #   review question this batch flags rather than resolves.
+  #
+  # p2 (every month, income unchanged). Filer alone: household [p2], size 1, income 4,200, ratio
+  #   4,200/1,330.00 = 3.1579. Not needy newborn/child/pregnant; parent/caretaker: no dependent-child
+  #   relation -> false; former foster care: under 26, exited Colorado's extended foster care at 20
+  #   (within the 18-21 band 8.100.4.H.2.a states, CO-095/C-9) and was enrolled in Medicaid at exit ->
+  #   true. 8.100.4.H.2.b/435.150(b) take no income test at all, so the category holds despite 316% of
+  #   FPL -> category former_foster_care, status eligible (proves CO-551's mandatory-group order is
+  #   not income-ranked and CO-549 takes no income test). CHP+: not a child, not pregnant -> ineligible.
+  #
+  # p3, April 2026 (the determination that opens her continuous eligibility period). Claimed by her
+  #   grandmother (not her parent) -> non-filer household rules: herself, her spouse (none), her own
+  #   children (none), and (being under 19) her parents and siblings under 19 living with her - no
+  #   parent is a person in this case, so neither term adds anyone. Household [p3], size 1, income 0
+  #   (her own), ratio 0.0000. Category child (16 < 19, 0 <= 1.33); continuous eligibility applies
+  #   (under 19, child category, CO resident) -> status eligible. End month: continuous_eligibility_
+  #   period_start_month is unstated, so ma_child_continuous_eligibility_end_month falls back to the
+  #   application month (2026-04) and adds 11 -> 2027-03 (a 12-month period inclusive of its start
+  #   month, C-4b). Retroactive coverage start month: 3 months before April -> 2026-01 (this chapter
+  #   does not track whether she actually received services or met every requirement in that specific
+  #   retroactive month - OQ-55 - so this is the earliest month the 3-month rule alone reaches).
+  #   CHP+: Medicaid-eligible -> ineligible_medicaid_eligible.
+  #
+  # p3, January 2027 (same continuous eligibility period; her own earnings rise to $1,850/month).
+  #   Household still [p3] (her own household is unaffected by whether her income counts toward
+  #   someone ELSE's household - only p1's household total changes, above), size 1, income 1,850,
+  #   ratio 1,850/1,330.00 = 1.3910 (2026 FPL table, the only version this chapter carries). On the
+  #   plain test alone: 1.3910 > 1.33, and the 5% disregard (1.3410) still exceeds 1.33 -> she would
+  #   fail the Children's category and CHP+'s floor (which requires > 1.42) alike - eligible for
+  #   nothing, the coverage gap C-5 raises. But she was found eligible for the Children's category in
+  #   April 2026, is still under 19, and her continuous eligibility period (April 2026 through March
+  #   2027) has not ended: 42 CFR 435.926(d)/8.100.3.Q.1.a protect her "without regard to changes in
+  #   income" -> category still child, status still eligible, notwithstanding her own income now
+  #   exceeding the standard. CHP+ ineligible_medicaid_eligible (she remains Medicaid-eligible under
+  #   the CE period).
+  #
+  # p3, April 2027 (one month after the continuous eligibility period ends 2027-03). Household still
+  #   [p3], size 1, income unchanged at 1,850, ratio 1.3910 (age is pinned to the case's single
+  #   determination date, 2026-04-10, so she is still evaluated as 16 here even though she would
+  #   actually be 17 by April 2027 - see the case comment above). The continuous eligibility period
+  #   has ended (April 2027 is after 2027-03), so it no longer protects her: on the plain test,
+  #   1.3910 > 1.33 and the disregard (1.3410) still exceeds 1.33 -> Medicaid category none, status
+  #   ineligible_income. CHP+: 1.3910 does not exceed the 142% floor (nor does 1.3910 - 0.05 = 1.3410)
+  #   -> chp_income_within_limit false -> status ineligible_income too. This is C-5's coverage gap
+  #   (a child between 133% and 142% of FPL eligible for neither program), demonstrated on a real
+  #   household rather than resolved - C-5 is not among the fixes this round made, and the review's
+  #   note that the chapter needs the HCPF MAGI-Medicaid income guidelines chart 8.100.4.G.2
+  #   incorporates by reference (or a blocking OQ) still stands. The values below are the engine's
+  #   actual output under the currently-implemented 133% (CCR text, CO-540/CO-191) reading, recorded
+  #   as-is per the review's own C-5 finding rather than corrected here.
+  expect:
+    p1:
+      ma_magi_household_members: [p1, p3]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-04": 1850, "2027-01": 3700, "2027-04": 3700}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": none, "2027-01": none, "2027-04": none}
+      ma_magi_eligibility_status: {"2026-04": ineligible_income, "2027-01": ineligible_income, "2027-04": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-04": false, "2027-01": false, "2027-04": false}
+      chp_eligibility_status: {"2026-04": ineligible, "2027-01": ineligible, "2027-04": ineligible}
+    p2:
+      ma_magi_household_members: [p2]
+      ma_magi_household_size: 1
+      ma_magi_household_income: {"2026-04": 4200, "2027-01": 4200, "2027-04": 4200}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": former_foster_care, "2027-01": former_foster_care, "2027-04": former_foster_care}
+      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": eligible}
+      ma_continuous_eligibility_applies: {"2026-04": false, "2027-01": false, "2027-04": false}
+      chp_eligibility_status: {"2026-04": ineligible, "2027-01": ineligible, "2027-04": ineligible}
+    p3:
+      ma_magi_household_members: [p3]
+      ma_magi_household_size: 1
+      ma_magi_household_income: {"2026-04": 0, "2027-01": 1850, "2027-04": 1850}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": child, "2027-01": child, "2027-04": none}
+      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-04": true, "2027-01": false, "2027-04": false}
+      ma_child_continuous_eligibility_end_month: "2027-03"
+      ma_retroactive_coverage_start_month: "2026-01"
+      chp_eligibility_status: {"2026-04": ineligible_medicaid_eligible, "2027-01": ineligible_medicaid_eligible, "2027-04": ineligible_income}
+- id: CO-06
+  title: Nursing facility admission with a transfer penalty; community spouse on QMB below the MMMNA; working disabled adult son on the Buy-In
+  # Designed by the phase-4 non-MAGI/LTC review (docs/reviews/non-magi-ltc-phase-4.md S3),
+  # added by the fix round that implemented C-9..C-14 and the minor/completeness findings.
+  # Expectations are what the FIXED items compute, not always what the review derived by hand,
+  # because two fixes this round change figures the review worked out under the unfixed rules:
+  #   - p3 ma_ssi_countable_income is 1157.5, not the review's 1167.5. C-9 (CO-605) now carries
+  #     the unused part of the $20 general income exclusion to earned income, per 20 CFR
+  #     416.1124(c)(12) (S310): p3 has no unearned income, so the full $20 (not just $65) is
+  #     subtracted from his $2,400 earnings before the one-half disregard: (2400 - 65 - 20) x
+  #     0.5 = 1157.5. This does not change ma_wawd_eligible/ma_wawd_premium, which read WAwD's
+  #     own applicant-only income computation (8.100.6.P.1.b), not ma_ssi_countable_income.
+  #   - p1's CSRA and attributed resources use the C-13 fix's snapshot fact
+  #     (countable_resources_couple_at_snapshot), not the current-month countable_resources_couple;
+  #     both are supplied as 180000 here (no spend-down since the snapshot), so the figures the
+  #     review derived (ma_csra 157920, attributed resources 22080) are unchanged.
+  #   - p1's home equity exception is read through spouse_or_dependent_child_resides_in_home
+  #     (C-20), supplied true because Linda (p2) lives in the home; this does not change the
+  #     outcome here since home_equity (240000) is under home_equity_limit (730000) either way.
+  as_of: "2026-11-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p2, p3]
+  persons:
+    p1:
+      # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
+      # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
+      facts:
+        date_of_birth: "1952-04-18"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_pregnant: false
+        is_veteran_or_active_duty: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        is_medicare_entitled_or_enrolled: true
+        receives_medicare_part_a: true
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
+        is_employed: false
+        is_disabled_for_buy_in: false
+        in_medical_institution: true
+        institution_entry_date: "2026-10-05"
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        family_members_with_community_spouse: []
+        countable_resources_individual: 172500
+        countable_resources_couple: 180000
+        countable_resources_couple_at_snapshot: 180000
+        home_equity: 240000
+        spouse_or_dependent_child_resides_in_home: true
+        uncompensated_transfer_value_in_lookback: 54000
+        transfer_was_exempt: false
+        # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
+        # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
+        transfer_penalty_period_start_date: "2026-11-01"
+        # Illustrative 2026 standards, not from the fetched text (OQ-91, OQ-81).
+        csra_minimum_standard: 31584
+        csra_maximum_standard: 157920
+        mmmna_cap: 3948
+        home_equity_limit: 730000
+        transfer_penalty_divisor: 9000
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        ma_personal_needs_allowance_institutional: 75
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-11-02"
+        attested_household_income_pct_fpl: 1.71
+      month_defaults:
+        social_security_income: 1900
+        pension_income: 700
+        earned_income: 0
+        self_employment_net_income: 0
+        unemployment_income: 0
+        other_unearned_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        in_kind_support_and_maintenance: 0
+        other_taxable_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        community_spouse_income: 1100
+        shelter_costs_community_spouse: 1250
+    p2:
+      # Linda, 69, citizen, community spouse at home; $1,100 Social Security, Medicare Part A,
+      # $7,500 in her own name (the rest of the couple's $180,000 is in Robert's name and the CSRA
+      # has not yet been transferred under 8.100.7.M.3).
+      facts:
+        date_of_birth: "1957-01-09"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_pregnant: false
+        is_veteran_or_active_duty: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        is_medicare_entitled_or_enrolled: true
+        receives_medicare_part_a: true
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
+        is_employed: false
+        is_disabled_for_buy_in: false
+        in_medical_institution: false
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        family_members_with_community_spouse: []
+        countable_resources_individual: 7500
+        countable_resources_couple: 180000
+        countable_resources_couple_at_snapshot: 180000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        csra_minimum_standard: 31584
+        csra_maximum_standard: 157920
+        mmmna_cap: 3948
+        home_equity_limit: 730000
+        transfer_penalty_divisor: 9000
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-11-02"
+        attested_household_income_pct_fpl: 1.71
+      month_defaults:
+        social_security_income: 1100
+        pension_income: 0
+        earned_income: 0
+        self_employment_net_income: 0
+        unemployment_income: 0
+        other_unearned_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        in_kind_support_and_maintenance: 0
+        other_taxable_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        community_spouse_income: 1100
+        shelter_costs_community_spouse: 1250
+    p3:
+      # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
+      # in the Buy-In for Working Adults with Disabilities. No Medicare.
+      facts:
+        date_of_birth: "1992-08-23"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_pregnant: false
+        is_veteran_or_active_duty: false
+        is_blind: false
+        is_disabled_ssa: true
+        receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        is_entitled_to_medicare_part_a_on_basis_of_disability: false
+        is_employed: true
+        is_disabled_for_buy_in: true
+        in_medical_institution: false
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        family_members_with_community_spouse: []
+        countable_resources_individual: 4200
+        countable_resources_couple: 4200
+        home_equity: 0
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        csra_minimum_standard: 31584
+        csra_maximum_standard: 157920
+        mmmna_cap: 3948
+        home_equity_limit: 730000
+        transfer_penalty_divisor: 9000
+        msp_resource_limit_individual: 10000
+        msp_resource_limit_couple: 15000
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-11-02"
+        attested_household_income_pct_fpl: 1.80
+      month_defaults:
+        social_security_income: 0
+        pension_income: 0
+        earned_income: 2400
+        self_employment_net_income: 0
+        unemployment_income: 0
+        other_unearned_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        in_kind_support_and_maintenance: 0
+        other_taxable_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        community_spouse_income: 0
+        shelter_costs_community_spouse: 0
+  expect:
+    p1:
+      ma_is_institutionalized: true
+      ma_ltc_couple: true
+      ma_ltc_gross_income: {"2026-11": 2600}
+      ma_meets_special_income_group: {"2026-11": true}
+      ma_csra: 157920
+      ma_institutionalized_spouse_countable_resources: 22080
+      ma_meets_ltc_resource_standard: false
+      ma_home_equity_disqualifies: false
+      ma_transfer_penalty_months: 6
+      ma_mmmna: {"2026-11": 3143.5}
+      ma_community_spouse_income_allowance: {"2026-11": 2043.5}
+      ma_family_allowance: {"2026-11": 0}
+      ma_ltc_eligibility_status: {"2026-11": transfer_penalty}
+      ma_patient_payment: {"2026-11": 0}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": none}
+      ma_buy_in_category: {"2026-11": none}
+    p2:
+      ma_is_institutionalized: false
+      ma_ltc_couple: false
+      ma_ssi_household_size: 1
+      ma_is_aged: true
+      ma_ssi_countable_income: {"2026-11": 1080}
+      ma_meets_ssi_income_standard: {"2026-11": false}
+      ma_ssi_countable_resources: 7500
+      ma_qmb_eligible: {"2026-11": true}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": qmb}
+      ma_buy_in_category: {"2026-11": none}
+      ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
+      ma_patient_payment: {"2026-11": 0}
+    p3:
+      ma_ssi_household_size: 1
+      ma_ssi_countable_income: {"2026-11": 1157.5}
+      ma_ssi_related_category: {"2026-11": none}
+      ma_msp_category: {"2026-11": none}
+      ma_wawd_eligible: {"2026-11": true}
+      ma_wawd_premium: {"2026-11": 25}
+      ma_buy_in_category: {"2026-11": working_adults_with_disabilities}
+      ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
+      ma_patient_payment: {"2026-11": 0}
+
+- id: CO-07
+  title: Two-parent Colorado Works unit with a sanctioned parent, an SSI child, months straddling the sixty-month limit and a DV extension on one parent; a 62-year-old grandparent on OAP-B
+  # Adapted from the phase-5 review's designed case in S3.2 (docs/reviews/cash-phase-5.md), renumbered
+  # CO-06 -> CO-07 for this fix round. Facts are updated for the fix round's renamed/added identifiers:
+  # has_domestic_violence_waiver -> has_domestic_violence_extension_approved (C-3(b)); is_indian_or_urban_indian,
+  # is_disqualified_for_intentional_program_violation/is_disqualified_drug_felony/is_fleeing_felon_or_probation_violator
+  # added on every person (K-3/K-5 now read them); ssi_income added on p3 (K-6). Expectations below are what the
+  # FIXED items at this commit produce (evaluated with scripts/eval-case.ts), not the review's hand derivation -
+  # each place they differ is called out in a comment citing the governing text.
+  as_of: "2026-10-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p1, p4]
+    - [parent, p2, p3]
+    - [parent, p2, p4]
+    - [parent, p5, p1]        # Rosa is Dana's mother, same home; not a CW unit member
+    - [grandparent, p5, p3]
+    - [grandparent, p5, p4]
+  persons:
+    p1:
+      # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
+      # granted a domestic violence extension of the time limit.
+      facts:
+        date_of_birth: "1992-03-14"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        marital_status: married
+        is_head_of_household: true
+        is_enrolled_in_school: false
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 58
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: true
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disabled_ssa: false
+        is_blind: false
+        receives_social_security_disability: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_pregnant: false
+        countable_resources_individual: 900
+        countable_resources_couple: 1400
+      month_defaults:
+        earned_income: 400
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        hours_worked: 60
+        work_program_hours: 0
+    p2:
+      # Marco, 36, citizen, under a Workforce Development sanction (no Colorado Works sanction item
+      # exists - K-2/OQ-141), 61 counted months, no extension of his own.
+      facts:
+        date_of_birth: "1990-07-02"
+        sex: male
+        citizenship_status: citizen
+        state_of_residence: CO
+        marital_status: married
+        is_head_of_household: false
+        is_enrolled_in_school: false
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 61
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disabled_ssa: false
+        is_blind: false
+        receives_social_security_disability: false
+        is_disqualified_for_work_requirement_noncompliance: true
+        is_pregnant: false
+        countable_resources_individual: 500
+        countable_resources_couple: 1400
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        hours_worked: 0
+        work_program_hours: 0
+    p3:
+      # Alma, 9, citizen, receives SSI on her own disability: excluded from the
+      # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
+      facts:
+        date_of_birth: "2017-05-09"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        marital_status: single
+        is_head_of_household: false
+        is_enrolled_in_school: true
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        receives_ssi: true
+        ssi_income: 700
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disabled_ssa: true
+        is_blind: false
+        receives_social_security_disability: false
+        is_pregnant: false
+        countable_resources_individual: 1500
+        countable_resources_couple: 0
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        hours_worked: 0
+        work_program_hours: 0
+    p4:
+      # Theo, 4, citizen, the unit's only countable dependent child.
+      facts:
+        date_of_birth: "2022-01-18"
+        sex: male
+        citizenship_status: citizen
+        state_of_residence: CO
+        marital_status: single
+        is_head_of_household: false
+        is_enrolled_in_school: false
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disabled_ssa: false
+        is_blind: false
+        receives_social_security_disability: false
+        is_pregnant: false
+        countable_resources_individual: 0
+        countable_resources_couple: 0
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        hours_worked: 0
+        work_program_hours: 0
+    p5:
+      # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
+      # determination and $900/month SSDI; $1,200 countable resources.
+      facts:
+        date_of_birth: "1964-05-20"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        marital_status: other
+        is_head_of_household: false
+        is_enrolled_in_school: false
+        is_emancipated_minor: false
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disabled_ssa: true
+        is_blind: false
+        receives_social_security_disability: true
+        is_pregnant: false
+        countable_resources_individual: 1200
+        countable_resources_couple: 0
+      month_defaults:
+        earned_income: 0
+        social_security_income: 900
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        hours_worked: 0
+        work_program_hours: 0
+  expect:
+    p1:
+      cw_assistance_unit_members: [p1, p2, p4]
+      cw_unit_size: 3
+      cw_countable_income: {"2026-10": 310}
+      cw_need_standard: 439          # C-5 fixed: Two Caretakers/1 child row (D-61.md:955); matches the review's own derivation
+      cw_grant_standard: 649         # C-5 fixed: Two Caretakers/1 child row
+      cw_grant_amount: {"2026-10": 517}   # C-1 fixed: 649 - (400 x 0.33 = 132) = 517; matches the review's own derivation
+      # C-2/C-3 fixed: cw_eligibility_status is "eligible", not "time_limit_reached" as the review derived.
+      # Under the OLD rules the review reviewed, p2's own 61 months (read person-by-person) drove the unit
+      # to time_limit_reached with no unit-wide effect from p1's extension. C-2/C-3 make both the sixty-month
+      # test AND the extension unit-level (3.606.6.C, "an assistance unit containing an individual ... shall
+      # not be eligible ... unless granted an extension"; the extension itself is granted "for" the unit,
+      # D-61.md:1179, :1183). p1's approved domestic-violence extension (has_domestic_violence_extension_approved)
+      # is therefore an extension of THIS unit, which now also covers p2's 61 months - the unit is not
+      # time_limit_reached, it is extended. The review's derivation predates the C-3(a) fix that made the
+      # extension read over cw_assistance_unit_members rather than the person asked.
+      cw_eligibility_status: {"2026-10": eligible}
+      cw_time_limit_reached: false
+      cw_is_work_eligible_individual: {"2026-10": true}
+      cw_meets_work_participation: {"2026-10": false}
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      af_and_grant: {"2026-10": 0}
+    p2:
+      cw_assistance_unit_members: [p1, p2, p4]
+      cw_unit_size: 3
+      cw_countable_income: {"2026-10": 310}
+      cw_grant_amount: {"2026-10": 517}
+      cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: the unit's extension (p1's) now covers p2 too - see p1's comment
+      cw_time_limit_reached: false
+      cw_is_work_eligible_individual: {"2026-10": true}
+      cw_meets_work_participation: {"2026-10": false}   # K-2: no Colorado Works sanction item exists, so his work-program noncompliance (is_disqualified_for_work_requirement_noncompliance, a SNAP-chapter fact) does not reduce cw_grant_amount - OQ-141
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      af_and_grant: {"2026-10": 0}
+    p3:
+      cw_assistance_unit_members: []
+      cw_unit_size: 0
+      cw_countable_income: {"2026-10": 0}
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      cw_time_limit_reached: false
+      af_category: {"2026-10": and_cs}    # C-4/K-6 fixed: eligible - ssi_income $700 < the $994 federal benefit rate (ma_ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
+      af_oap_grant: {"2026-10": 0}
+      # af_and_grant is still the full $967 standard, not standard-minus-700 as a hand reading of 3.546 might
+      # suggest. af_countable_income (CO-946) does not read ssi_income at all (it sums social_security_income,
+      # pension_income, unemployment_income, cash_assistance_income, child_support_received, and
+      # other_unearned_income - none of which carries the SSI amount) and 3.549.A.2.b's subtract-SSI-then-add-
+      # back step is unmodeled (OQ-115, OQ before this fix round and still open after it). K-6 closes the
+      # AND-CS *eligibility* gate (3.546's "not receiving the full SSI benefit standard") but not the AND-CS
+      # *payment* computation, which OQ-115 already recorded as a gap this round does not close.
+      af_and_grant: {"2026-10": 967}
+    p4:
+      cw_assistance_unit_members: [p1, p2, p4]
+      cw_unit_size: 3
+      cw_countable_income: {"2026-10": 310}
+      cw_grant_amount: {"2026-10": 517}
+      cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: same unit-level extension as p1/p2
+      cw_time_limit_reached: false
+      cw_is_work_eligible_individual: {"2026-10": false}
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+      af_and_grant: {"2026-10": 0}
+    p5:
+      cw_assistance_unit_members: [p5]
+      cw_unit_size: 1
+      cw_countable_income: {"2026-10": 900}
+      cw_grant_amount: {"2026-10": 0}
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      cw_time_limit_reached: false
+      cw_is_work_eligible_individual: {"2026-10": true}   # C-6: she receives no TANF and lives with no TANF child of her own
+      af_oap_group: oap_b
+      af_countable_income: {"2026-10": 880}
+      af_meets_resource_limit: true
+      af_category: {"2026-10": oap_b}
+      af_oap_grant: {"2026-10": 125}
+      af_and_grant: {"2026-10": 0}
+- id: CO-08
+  title: Two caretakers (one employed, one in job search); a 14-year-old with additional care needs; an 18-year-old in high school with earnings; an undocumented adult relative in the home; heat included in rent
+  # Designed in the phase-6 review (docs/reviews/cccap-leap-phase-6.md S3.3), renumbered from CO-06 to CO-08
+  # (CO-06/CO-07 taken by concurrent medicaid/cash fix rounds). Expectations below are what this batch's
+  # FIXED rules actually produce (verified with npx vite-node scripts/eval-case.ts co CO-08 ... against a
+  # scratch copy of this file, then restored), not the review's hand-derived pre-fix numbers - see the
+  # per-person comments below for the two places the two differ and why.
+  # p6 is an undocumented adult relative living in the dwelling. shares_heating_fuel_with (CO-895) is the
+  # per-person fact that extends the LEAP closure's spouse/parent/child edges to an over-age child or an
+  # affirmatively-stated economic-unit member (OQ-132); it cannot join two people with no relationship edge
+  # between them at all, and p6 has none to p1-p4 (only a buys_prepares_with co-residence edge, added so the
+  # engine registers him as a graph node at all - it is not one of the roles the CCCAP/LEAP closures cross).
+  # So p6 is his own one-person LEAP/CCCAP household on this batch's facts, per OQ-132's own limitation, not
+  # the single five/six-person household 3.751.1's "living together as one economic unit" text would produce
+  # if the engine could register a symmetric relationship role for it.
+  as_of: "2026-12-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p1, p4]
+    - [parent, p2, p3]
+    - [parent, p2, p4]        # step-parent; adult caretaker under 3.103.C
+    - [buys_prepares_with, p1, p6]
+  persons:
+    p1:
+      # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
+      facts:
+        date_of_birth: "1992-06-11"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: "CO"
+        is_enrolled_in_school: false
+        is_in_job_search_activity: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_emancipated_minor: false
+        is_homeless: false
+        in_medical_institution: false
+        is_responsible_for_heating_costs: true      # heat included in rent, non-subsidized (3.752.25.A.2)
+        has_primary_heating_source: true            # building furnace (3.751.1 "Primary Heating Source")
+        cccap_entry_income_limit_pct_fpl: 1.85       # 3.111.H.1.a's stated floor (185% FPL)
+        cw_eligibility_status: ineligible_income
+        cw_grant_amount: 0
+        countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
+        countable_nonliquid_resources_snap: 0
+      month_defaults:
+        earned_income: 2600
+        hours_worked: 150
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+    p2:
+      # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
+      facts:
+        date_of_birth: "1990-02-27"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: "CO"
+        is_enrolled_in_school: false
+        is_in_job_search_activity: true
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_emancipated_minor: false
+        is_homeless: false
+        in_medical_institution: false
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        cccap_entry_income_limit_pct_fpl: 1.85
+        cw_eligibility_status: ineligible_income
+        cw_grant_amount: 0
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+      month_defaults:
+        earned_income: 0
+        hours_worked: 0
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+    p3:
+      # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
+      # second arm of 3.111.F (under 19 with additional care needs). No income.
+      facts:
+        date_of_birth: "2012-05-20"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: "CO"
+        is_enrolled_in_school: true
+        is_in_job_search_activity: false
+        has_additional_care_needs: true
+        is_protective_services_child_care_case: false
+        is_emancipated_minor: false
+        is_homeless: false
+        in_medical_institution: false
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        cccap_entry_income_limit_pct_fpl: 1.85
+        cw_eligibility_status: ineligible_income
+        cw_grant_amount: 0
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+      month_defaults:
+        earned_income: 0
+        hours_worked: 0
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+    p4:
+      # Elena, 18, citizen, still in high school, works weekends for $400 a month. A "child in the
+      # household" under 3.103.GGG (under 19 and in high school) but NOT an "eligible child" under
+      # 3.111.F (over 13, no additional care needs). Not joined to the LEAP household by 3.751.2.D's
+      # unconditional under-18 join (she is 18), so shares_heating_fuel_with states the case's own fact
+      # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
+      # test), per CO-1000/CO-895 (review C-1).
+      facts:
+        date_of_birth: "2008-03-14"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: "CO"
+        is_enrolled_in_school: true
+        is_in_job_search_activity: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_emancipated_minor: false
+        is_homeless: false
+        in_medical_institution: false
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        shares_heating_fuel_with: true
+        cccap_entry_income_limit_pct_fpl: 1.85
+        cw_eligibility_status: ineligible_income
+        cw_grant_amount: 0
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+      month_defaults:
+        earned_income: 400
+        hours_worked: 24
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+    p6:
+      # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
+      facts:
+        date_of_birth: "1981-09-05"
+        sex: male
+        citizenship_status: undocumented
+        lawful_presence_status: not_lawfully_present
+        state_of_residence: "CO"
+        is_enrolled_in_school: false
+        is_in_job_search_activity: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_emancipated_minor: false
+        is_homeless: false
+        in_medical_institution: false
+        is_responsible_for_heating_costs: true
+        has_primary_heating_source: true
+        cccap_entry_income_limit_pct_fpl: 1.85
+        cw_eligibility_status: ineligible_income
+        cw_grant_amount: 0
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+      month_defaults:
+        earned_income: 1500
+        hours_worked: 160
+        self_employment_net_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+  expect:
+    p1:
+      cccap_household_members: [p1, p2, p3, p4]
+      cccap_household_size: 4
+      # $2,600 (p1's earnings only): C-4's fix keys the earnings exclusion to cccap_is_household_child
+      # (3.103.GGG), so p4's $400 in wages is excluded even though she is not a cccap_is_eligible_child -
+      # matching 3.111.J.1 as written, unlike the review's own pre-fix arithmetic (which the review itself
+      # flagged would change from $3,000 to $2,600 once C-4 landed).
+      cccap_household_income: {"2026-12": 2600}
+      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      # p4 (18) joins via the case's own shares_heating_fuel_with: true, not 3.751.2.D's unconditional
+      # under-18 join; p6 does not join (see the case-level comment above on OQ-132's engine limitation).
+      leap_household_members: [p1, p2, p3, p4]
+      # $3,000 = p1 $2,600 + p4 $400 (18, so 3.752.23.Q's under-18 earnings zeroing does not reach her).
+      leap_household_income: {"2026-12": 3000}
+      leap_is_eligible: {"2026-12": true}
+    p2:
+      cccap_household_members: [p1, p2, p3, p4]
+      cccap_household_size: 4
+      cccap_household_income: {"2026-12": 2600}
+      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      leap_household_members: [p1, p2, p3, p4]
+      leap_household_income: {"2026-12": 3000}
+      leap_is_eligible: {"2026-12": true}
+    p3:
+      cccap_is_eligible_child: true
+      cccap_household_members: [p1, p2, p3, p4]
+      cccap_household_size: 4
+      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      leap_household_members: [p1, p2, p3, p4]
+      leap_is_eligible: {"2026-12": true}
+    p4:
+      cccap_is_eligible_child: false
+      cccap_household_members: [p1, p2, p3, p4]
+      cccap_household_size: 4
+      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      leap_household_members: [p1, p2, p3, p4]
+      leap_household_income: {"2026-12": 3000}
+      leap_is_eligible: {"2026-12": true}
+    p6:
+      # His own one-person household on both programs, per the case-level comment above: no LEAP or CCCAP
+      # closure crosses buys_prepares_with, and his citizenship_status (undocumented) then filters him out
+      # of even his own solo leap_household_members (3.753.17), so leap_household_members is empty rather
+      # than [p6] - this differs from the review's hand-derived answer, which assumed a shares-heat edge to
+      # p1's household that this batch's engine has no relationship role to express (OQ-132).
+      cccap_household_members: [p6]
+      cccap_household_size: 1
+      cccap_household_income: {"2026-12": 1500}
+      cccap_eligibility_status: {"2026-12": ineligible_child}
+      leap_household_members: []
+      leap_household_income: {"2026-12": 1500}
+      leap_is_eligible: {"2026-12": false}

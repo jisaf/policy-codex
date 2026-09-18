@@ -1,0 +1,18 @@
+id: CO-1009
+name: "LEAP: household members for income"
+identifier: leap_household_members_for_income
+kind: derived
+type: group of persons
+scope: person
+program: LEAP
+meaning: The individuals living together as one economic unit for whom primary heating fuel is customarily purchased in common, or who make undesignated payments for heat in the form of rent, under 9 CCR 2503-7 3.751.1's "Household" definition - the same economic unit leap_household_members (CO-1000) computes, but unfiltered by 3.753.17's citizenship exclusion, since 3.753.17's second clause counts an excluded individual's income even though he is not a household member.
+precision: As with leap_household_members (CO-1000), a stated spouse or parent/child relationship edge is read as living together for LEAP purposes, extended beyond 3.751.2.D's unconditional age-based joins by the supplied shares_heating_fuel_with (CO-895, see OQ-132); this volume does not separately model 3.751.2.E's separate-household election or 3.751.21's permanent-separation test.
+derived: [reachable, [spouse, parent, child], [any, [rel, [spouse], [P]], [all, [rel, [parent], [P]], [any, ["<", [of, [P], age], leap_household_child_age_limit], [otherwise, [of, [P], shares_heating_fuel_with], false]], [not, [otherwise, [of, [P], is_emancipated_minor], false]]], [all, [rel, [child], [P]], [any, ["<", age, leap_household_child_age_limit], [otherwise, shares_heating_fuel_with, false]], [not, [otherwise, is_emancipated_minor, false]]]]]
+sources: [S489, S490, S494]
+implemented: engine
+tags: [household]
+rationale: "No existing item builds the LEAP economic unit unfiltered by citizenship; the review (docs/reviews/cccap-leap-phase-6.md, C-2, blocking) found 3.753.17's income-still-counted clause was only accidentally honoured because the citizenship exclusion was never implemented, and would silently break once leap_household_members (CO-1000) was filtered to fix that. leap_household_income (CO-1002) sums over it."
+tests:
+  - {id: CO-1009-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, others: {p2: {date_of_birth: "1981-03-01", citizenship_status: undocumented}}, relationships: [[spouse, p1, p2]], expect: [p1, p2]}
+  - {id: CO-1009-T2, as_of: "2026-10-01", given: {date_of_birth: "1947-05-10"}, others: {p2: {date_of_birth: "1945-08-30"}, p3: {date_of_birth: "1984-06-15", shares_heating_fuel_with: true}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p2, p3]}
+  - {id: CO-1009-T3, as_of: "2026-10-01", given: {date_of_birth: "1947-05-10"}, others: {p2: {date_of_birth: "1945-08-30"}, p3: {date_of_birth: "1984-06-15", shares_heating_fuel_with: false}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p2]}

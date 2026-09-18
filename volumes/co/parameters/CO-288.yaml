@@ -1,0 +1,11 @@
+id: CO-288
+name: Aid to the Needy Disabled maximum age
+identifier: af_and_max_age
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The maximum age for AND-SO, AND-CS, and (per this batch's OQ-112 reading) Aid to the Blind eligibility, per 9 CCR 2503-5 3.520.61.A, 3.540, and 3.546 (each stating "fifty-nine (59) years of age" as the upper bound).
+value: 59
+sources: [S449, S458, S462]
+rationale: No existing item states the AND upper age bound. af_category (CO-953) and af_and_cs_eligible (CO-950) need it.

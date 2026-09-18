@@ -1,0 +1,13 @@
+id: CO-192
+name: MAGI income limit, Parents and Caretaker Relatives category, percent of FPL
+identifier: ma_income_limit_parent_caretaker_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: Colorado's income limit for the Parents and Caretaker Relatives MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.3.
+precision: A percentage-of-FPL figure (0.60 = 60%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
+value: 0.60
+sources: [S203]
+tags: [ma, magi, income, state_election]
+rationale: "No existing item carries Colorado's Parents/Caretaker-category income percentage. ma_magi_income_standard_parent_caretaker (CO-541) needs it as a parameter rather than an inline digit (governance name.digits)."

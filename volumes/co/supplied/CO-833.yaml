@@ -1,0 +1,14 @@
+id: CO-833
+name: Community spouse income
+identifier: community_spouse_income
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The community spouse's own gross monthly income from sources other than the institutionalized spouse, less mandatory FICA and Medicare tax deductions, per 10 CCR 2505-10 § 8.100.7.R.2 - the amount ma_community_spouse_income_allowance (CO-656) compares against the MMMNA.
+precision: Stated for the institutionalized spouse's own record (per OQ-97) rather than read from the community spouse's own income facts across the spouse relationship.
+supplied_by: Eligibility Site's verification of the community spouse's income (pay stubs, benefit award letters).
+sources: [S358]
+open: [OQ-97]
+tags: [ma, ltc, income]
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch, offering exactly this supplied-fact reading as an alternative to a cross-person derived read (see OQ-97). ma_community_spouse_income_allowance (CO-656) and ma_family_allowance (CO-657) need it."

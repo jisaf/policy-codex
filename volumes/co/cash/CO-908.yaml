@@ -1,0 +1,17 @@
+id: CO-908
+name: "Colorado Works: countable unearned income"
+identifier: cw_countable_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: This person's countable unearned income for the month under 9 CCR 2503-6 3.605.3 - Social Security, pension, unemployment, cash assistance, and other unearned income, plus current child support received (countable at initial application under 3.605.5.A).
+precision: Does not model the 3.605.5.B-C treatment of child support once the unit is already found eligible (disregarded in the grant calculation and, at redetermination, only counted if consistently received and averaging over $500) - see OQ-105's sibling assumption; this item is scoped to the initial-application reading.
+derived: [+, social_security_income, pension_income, unemployment_income, cash_assistance_income, child_support_received, other_unearned_income]
+sources: [S412]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: No existing item sums Colorado Works countable unearned income; cw_countable_income (CO-910) needs it.
+tests:
+  - {id: CO-908-T1, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, expect: 0}
+  - {id: CO-908-T2, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 200, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 100, other_unearned_income: 0}, expect: 300}

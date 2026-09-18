@@ -1,0 +1,14 @@
+id: CO-821
+name: Meets HCBS waiver target group
+identifier: meets_hcbs_waiver_target_group
+kind: supplied
+type: one of
+options: [none, ebd, cmhs, sls, dd, ces, clli, bi, sci, cih, chrp]
+scope: person
+program: Medicaid
+meaning: Which Home and Community-Based Services waiver's Target Group Criteria (10 CCR 2505-10 § 8.7101) the Case Management Agency's functional assessment finds this person meets - Elderly, Blind and Disabled; Community Mental Health Supports; Supported Living Services; Developmental Disabilities; Children's Extensive Support; Children with Life-Limiting Illness; Brain Injury; Spinal Cord Injury; Children's Habilitation Residential; Children's Home and Community Based Services Respite Care - or none.
+precision: A person may meet more than one waiver's target group in fact, but 8.7100.C.1.o limits enrollment to one waiver at a time, so this fact carries the single waiver the case management agency has certified.
+supplied_by: Case Management Agency's functional assessment and Target Group Criteria certification (10 CCR 2505-10 § 8.7101).
+sources: [S375]
+tags: [ma, ltc, hcbs]
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch as a supplied fact (level of care and target group are supplied, not derived, per the brief). ma_hcbs_waiver_eligible (CO-653) and ma_ltc_eligibility_status (CO-652) need it."

@@ -1,0 +1,16 @@
+id: CO-983
+name: "CCCAP: household size"
+identifier: cccap_household_size
+kind: derived
+type: whole number
+scope: person
+program: CCCAP
+meaning: The number of persons in this person's CCCAP household (cccap_household_members, CO-982), the key the entry income limit's household-size table is read by.
+derived: [count, cccap_household_members]
+sources: [S485]
+implemented: engine
+tags: [household]
+rationale: No existing item counts the CCCAP household; cccap_income_within_entry_limit (CO-986) looks up this size in cccap_poverty_guideline_table (CO-323).
+tests:
+  - {id: CO-983-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, others: {p4: {date_of_birth: "2009-04-08"}, p5: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p4], [parent, p4, p5]], expect: 3}
+  - {id: CO-983-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01"}, relationships: [], expect: 1}

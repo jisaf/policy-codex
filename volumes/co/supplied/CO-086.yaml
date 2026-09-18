@@ -1,0 +1,13 @@
+id: CO-086
+name: Was enrolled in Medicaid at foster care exit
+identifier: was_enrolled_in_medicaid_at_foster_care_exit
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person was enrolled in Medicaid, under Colorado's or a Tribe's responsibility, at the age (18, or the higher age at which the state's or Tribe's foster care assistance ends) at which they exited foster care, per 42 CFR 435.150(b)(3) and 10 CCR 2505-10 8.100.4.H.2.a.
+precision: A one-time historical fact about the person's foster-care exit, not a per-month status.
+supplied_by: County department foster-care case record, cross-checked against CBMS Medicaid enrollment history.
+sources: []
+tags: [ma, magi, household, age]
+rationale: "No existing item carries this fact. was_foster_youth_at_eighteen (CO-shared, batch 1) states only that the person was a foster youth at 18; ma_is_former_foster_care_category (CO-549) also needs the separate condition 435.150(b)(3) and 8.100.4.H.2.a state - that the person was enrolled in Medicaid at the time foster care assistance ended - which is not the same fact as having been a foster youth at all."

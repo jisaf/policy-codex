@@ -8,7 +8,7 @@ program: SNAP
 meaning: The student is enrolled full time in an institution of higher education and is a single parent responsible for the care of a dependent child under snap_student_older_child_age (12).
 precision: Single parent is modeled as having no spouse relationship recorded, because this volume's relationships do not let a rule count how many parents of the child are in the household directly (see OQ-34).
 assumption: Approximates 7 U.S.C. 2015(e)(8) and 10 CCR 2506-1 4.306.1.D's "only one ... parent ... in the same SNAP household as the child" as "this person has no spouse in the household," rather than counting other parents of the specific child.
-derived: [all, is_enrolled_higher_education_full_time, [exists, snap_household_members, [all, [rel, [parent], [P]], ["<", [of, [P], snap_age], snap_student_older_child_age]]], [not, [exists, snap_household_members, [rel, [spouse], [P]]]]]
+derived: [all, is_enrolled_higher_education_full_time, [exists, snap_household_members, [all, [rel, [parent], [P]], ["<", [of, [P], age], snap_student_older_child_age]]], [not, [exists, snap_household_members, [rel, [spouse], [P]]]]]
 sources: [S133, S135]
 open: [OQ-34]
 implemented: engine

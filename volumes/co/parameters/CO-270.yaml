@@ -1,0 +1,11 @@
+id: CO-270
+name: Colorado Works dependent child age limit
+identifier: cw_dependent_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The age below which a person is a dependent child regardless of school status, per 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601's "Dependent child(ren)" definition, part A.
+value: 18
+sources: [S401, S406]
+rationale: No existing parameter states this age; cw_is_dependent_child (CO-901) needs it so the rule carries no digit in its identifier (governance name.digits).

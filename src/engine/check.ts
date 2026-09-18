@@ -117,6 +117,9 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "months_ending":
         need(e[1], ["number"], "consecutive months"); need(e[2], ["month"], "ending with");
         return "months";
+      case "months_after": case "months_before":
+        need(e[1], ["number"], op); need(e[2], ["month"], op);
+        return "month";
       case "months_from_to":
         need(e[1], ["month"], "months from"); need(e[2], ["month"], "through");
         return "months";
@@ -207,6 +210,15 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "sum":
         need(e[1], ["group"], "for each person in"); need(e[2], ["number"], "the sum of");
         return "number";
+      case "has_relative_in":
+        if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
+        need(e[2], ["group"], "of a person in");
+        refs.add("relationships");
+        return "yes/no";
+      case "shared_relative":
+        if (typeof e[1] !== "string" || !e[1]) errors.push("shared relative: relationship missing");
+        refs.add("relationships");
+        return "group";
       case "reachable":
         if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
         if (e.length > 2) need(e[2], ["yes/no"], "joined such that");

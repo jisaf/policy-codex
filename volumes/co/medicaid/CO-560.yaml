@@ -1,0 +1,18 @@
+id: CO-560
+name: "Medicaid: postpartum coverage end month"
+identifier: ma_postpartum_coverage_end_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: The last month of a person's postpartum Medical Assistance coverage period under 42 U.S.C. 1396a(e)(16) - ma_postpartum_coverage_months (12) months after the month the person's pregnancy ended, for a person who was eligible for and received Medical Assistance while pregnant.
+precision: "10 CCR 2505-10 8.100.4.G.5's own sentence still states a 60-day (not 12-month) postpartum period, but 8.100.3.G.1.g.viii.1's Cover All Coloradans exception (S175, cited on ma_meets_citizenship_requirement, CO-509) refers to a person 'within 12 months of the beginning of their postpartum period,' matching the federal 12-month election 1396a(e)(16) permits and describes; this item follows the 12-month reading as the more specific and more recently amended text, treating 8.100.4.G.5's 60-day sentence as stale - see OQ-52."
+derived: [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_of, pregnancy_end_date]]]]]]]]]]]]]
+sources: [S224, S175]
+open: [OQ-52]
+implemented: engine
+tags: [ma, magi]
+rationale: "No existing item computes a postpartum coverage end month. Needed to complete the postpartum extension OQ-43 (batch 5) flagged as not yet modeled; ma_meets_citizenship_requirement (CO-509) is edited by this batch to read it (see the batch report). Written as twelve single-step month_after applications for the same engine-gap reason as ma_child_continuous_eligibility_end_month (CO-556)."
+nearest: [CO-556]
+tests:
+  - {id: CO-560-T1, as_of: "2026-10-01", given: {pregnancy_end_date: "2026-03-15"}, expect: "2027-03"}

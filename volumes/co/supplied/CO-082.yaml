@@ -1,0 +1,13 @@
+id: CO-082
+name: Excluded foreign earned income
+identifier: foreign_earned_income_excluded
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The person's monthly foreign earned income and housing costs excluded from federal gross income under 26 U.S.C. 911, which 10 CCR 2505-10 8.100.4.C.1.c.ii ('untaxed foreign wages and salaries') and 42 CFR 435.603(e)'s MAGI definition add back into MAGI-based income.
+precision: Monthly amount for the month in context.
+supplied_by: Applicant statement (CBMS/PEAK), verified through documentation where questionable.
+sources: []
+tags: [ma, magi, income]
+rationale: "No existing item carries excluded foreign earned income. Needed by ma_person_magi_income (CO-502) as a separate add-back fact, parallel to tax_exempt_interest (CO-081), because both are amounts excluded from ordinary taxable income but included in MAGI."

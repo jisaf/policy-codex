@@ -1,0 +1,19 @@
+id: CO-643
+name: "Medicaid: LTC couple with a community spouse"
+identifier: ma_ltc_couple
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether this institutionalized person has a community spouse - a spouse who is not in a medical institution or nursing facility - triggering the spousal impoverishment rules of 42 U.S.C. 1396r-5 and 10 CCR 2505-10 § 8.100.7.K.
+precision: Does not create a separate ma_community_spouse item naming the spouse as a value (see OQ-97); downstream items read the community spouse's income and shelter facts as supplied facts stated for the institutionalized spouse instead.
+derived: [all, ma_is_institutionalized_spouse, [exists_related, [spouse], [not, [of, [P], in_medical_institution]]]]
+sources: [S354]
+open: [OQ-97]
+implemented: engine
+tags: [ma, ltc, legal]
+rationale: "No existing item states the spousal-impoverishment gate. ma_csra (CO-646), ma_institutionalized_spouse_countable_resources (CO-647), ma_home_equity_disqualifies (CO-650) and ma_patient_payment (CO-658) need it. The target household's p1/p2 (p1 institutionalized, p2 a community spouse) is the worked example in the batch report. Reads ma_is_institutionalized_spouse (CO-644), not ma_is_institutionalized (CO-640), per the phase-4 review's C-2 finding: § 8.100.7.K.2.b-c reach an HCBS or PACE participant, which CO-640's medical-institution-only test does not."
+tests:
+  - {id: CO-643-T1, as_of: "2026-10-01", given: {in_medical_institution: true, meets_hcbs_waiver_target_group: "none", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: true}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: true}
+  - {id: CO-643-T2, as_of: "2026-10-01", given: {in_medical_institution: true, meets_hcbs_waiver_target_group: "none", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: true}, others: {}, relationships: [], expect: false}
+  - {id: CO-643-T3, as_of: "2026-10-01", given: {in_medical_institution: false, meets_hcbs_waiver_target_group: "ebd", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: true}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: true}

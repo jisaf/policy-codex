@@ -132,6 +132,12 @@ Added for the Colorado SNAP chapter (phase 2), because household composition, in
 - P41 `[number] rounded up to the next whole dollar`, `[number] rounded to the nearest whole dollar` (halves round up)
 - P42 `[table keyed by household size], for [whole number]` a lookup in a global table keyed by a number; the `table keyed by household size` type joins `table keyed by person`
 
+Added for the MAGI household (phase 3)
+
+- P43 `the persons who share a [relationship] with this person` the persons, other than this person, who have a person in that role in common with this person (with `parent`, the siblings); unknown when this person's relationships are unstated
+- P45 `that person is a [relationship or relationship] of a person in [group]` inside a filter, sum or exists: the bound person stands in one of the roles to some member of the group (a join between the bound person and the group without rebinding either); unknown when that person's relationships are unstated
+- P44 `[whole number] months after [month]`, `[whole number] months before [month]` (P11 as stated in the catalog, now implemented; the single-step forms of P32 remain)
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

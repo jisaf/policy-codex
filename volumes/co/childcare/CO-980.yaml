@@ -1,0 +1,22 @@
+id: CO-980
+name: "CCCAP: is an eligible child"
+identifier: cccap_is_eligible_child
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: The person is an "eligible child" under 8 CCR 1403-1 3.111.F - a child from birth to age thirteen who needs child care during part of the day, or a child with verified additional care needs under age nineteen who is physically or mentally incapable of self-care or under court supervision - and has verified citizen/legal-resident status under 3.111.F.1.
+precision: "This volume does not separately model \"physically residing with the eligible adult caretaker(s) or teen parent(s)\"; that is read from the case's stated caretaker/dependent or parent/child relationships in cccap_household_members (CO-982), which this item does not itself check. The citizenship conjunct defaults to met (cccap_child_meets_citizenship_requirement, CO-998, read with `[otherwise, ..., true]`) when a case does not state the child's citizenship_status/lawful_presence_status, for the same case-coverage reason as OQ-134/OQ-135/OQ-136: most existing cases in this chapter do not state those facts for the children they mark eligible, and an unknown value would turn every one of those cases' downstream CCCAP outcomes unknown (see OQ-160)."
+derived: [all, [any, ["<", age, cccap_eligible_child_age_limit], [all, ["<", age, cccap_disabled_child_age_limit], has_additional_care_needs]], [otherwise, cccap_child_meets_citizenship_requirement, true]]
+sources: [S482, S514]
+open: [OQ-160]
+implemented: engine
+tags: [age, disability, immigration]
+rationale: "No existing item in this volume states the CCCAP eligible-child age/disability test; cccap_household_income (CO-985) excludes an eligible child's own earnings, and cccap_low_income_child_care_eligible (CO-987) and cccap_eligibility_status (CO-989) both need at least one eligible child in the household. The citizenship conjunct was added per the review (docs/reviews/cccap-leap-phase-6.md, K-1): 3.111.F.1 requires every child applying for or receiving CCCAP to verify citizen/legal-resident status, and the chapter had no CCCAP citizenship item at all."
+tests:
+  - {id: CO-980-T1, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: true}
+  - {id: CO-980-T2, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", has_additional_care_needs: false, citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: false}
+  - {id: CO-980-T3, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", has_additional_care_needs: true, citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: true}
+  - {id: CO-980-T4, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", has_additional_care_needs: true, citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: false}
+  # 3.111.F.1: an otherwise-eligible child without verified citizen/legal-resident status is not an eligible child.
+  - {id: CO-980-T5, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}

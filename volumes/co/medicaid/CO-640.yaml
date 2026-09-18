@@ -1,0 +1,17 @@
+id: CO-640
+name: "Medicaid: is institutionalized"
+identifier: ma_is_institutionalized
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether this person is institutionalized for Long-Term Care purposes - currently in a medical institution or Long-Term Care institution and expected to remain, or to receive HCBS/PACE, for at least 30 consecutive full days - per 42 CFR 435.1005/435.1009 and 10 CCR 2505-10 §§ 8.100.7.A.2.c and 8.100.7.K.2.
+precision: Does not model the retroactive 30-day finding for a person who dies before the 30th day (8.100.7.A.2.c.i-iii); uses the worker's or case manager's current expectation.
+derived: [all, in_medical_institution, expects_institutional_stay_of_thirty_days]
+sources: [S351]
+implemented: engine
+tags: [ma, ltc]
+rationale: "No existing item states the institutionalized-for-LTC-purposes test (in_medical_institution alone, used by SNAP and the MAGI chapter for institution exclusion, does not test the 30-day expectation). ma_meets_special_income_group's institutional gate, ma_ltc_couple (CO-643) and ma_ltc_eligibility_status (CO-652) need it."
+tests:
+  - {id: CO-640-T1, as_of: "2026-10-01", given: {in_medical_institution: true, expects_institutional_stay_of_thirty_days: true}, expect: true}
+  - {id: CO-640-T2, as_of: "2026-10-01", given: {in_medical_institution: true, expects_institutional_stay_of_thirty_days: false}, expect: false}

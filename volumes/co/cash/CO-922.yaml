@@ -1,0 +1,18 @@
+id: CO-922
+name: "Colorado Works: payment countable earned income"
+identifier: cw_payment_countable_earned_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: This person's gross earned income for the month, minus the sixty-seven percent (67%) earned income disregard, floored at zero, per 9 CCR 2503-6 3.606.2.A.1's second sentence (applied at application, once the unit has passed the $90 eligibility test) and 3.606.2.A.2's second sentence (applied for a unit already receiving assistance) - the figure the grant payment is computed from, distinct from cw_countable_earned_income (CO-907), which carries the $90 eligibility-test figure.
+precision: Applies the disregard to every person's own earned income, the same assumption cw_countable_earned_income (CO-907) states for the $90 disregard, since 3.606.2.A's two paragraphs both read "gross earned income ... of members of the assistance unit" without an adult-only limitation.
+derived: [max, 0, ["-", earned_income, ["*", earned_income, cw_earned_income_disregard_rate]]]
+sources: [S416]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "No existing item states the 67% payment-computation earned income disregard; cw_countable_earned_income (CO-907) is the nearest same-shape item (an earned-income disregard derivation) but implements the $90 eligibility-test figure only, per the phase-5 review's C-1 finding that the payment is computed on a different, larger disregard than the eligibility test. cw_payment_countable_income (CO-923) needs this per-person figure."
+nearest: [CO-907]
+tests:
+  - {id: CO-922-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 400}, expect: 132}
+  - {id: CO-922-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0}, expect: 0}

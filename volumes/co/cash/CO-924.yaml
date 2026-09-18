@@ -1,0 +1,19 @@
+id: CO-924
+name: "Colorado Works: is an adult member for the time limit"
+identifier: cw_is_adult_member
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: Whether this person is an "adult" (or a minor child head-of-household) for the sixty-month time limit - eighteen or older, or a minor who is the assistance unit's head of household and has a dependent child of their own - per 45 CFR 264.1(a)(1)-(2) and 9 CCR 2503-6 3.606.6.A, C.
+precision: The minor-head-of-household branch reads cw_has_dependent_child (the minor parent has a dependent child of her own), per 264.1(a)(2)'s "minor parent head-of-household."
+derived: [any, [">=", age, cw_dependent_child_age_limit], [all, is_head_of_household, cw_has_dependent_child]]
+sources: [S417, S421]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing item states who counts as an 'adult' for the Colorado Works time limit; cw_months_of_assistance_used (CO-915) and cw_time_limit_reached (CO-918) both need it under the fix-round C-2 finding that the sixty-month test is a unit-level test over the unit's adult members, not a person-level test read off whoever is asked. Reuses cw_dependent_child_age_limit (CO-270) rather than a bare 18, the same convention cw_is_work_eligible_individual (CO-919, fixed under C-6) follows."
+nearest: [CO-919]
+tests:
+  - {id: CO-924-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true}, relationships: [], expect: true}
+  - {id: CO-924-T2, as_of: "2026-10-01", given: {date_of_birth: "2015-06-01", is_head_of_household: false}, relationships: [], expect: false}
+  - {id: CO-924-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_head_of_household: true}, others: {p2: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p2]], expect: true}

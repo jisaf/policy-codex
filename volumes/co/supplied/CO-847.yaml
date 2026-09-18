@@ -1,0 +1,11 @@
+id: CO-847
+name: Has an approved hardship time-limit extension
+identifier: has_hardship_extension_approved
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The county department has granted this person a good-cause hardship extension of the sixty-month time limit under 26-2-706.5(4)(a)(III), C.R.S. and 9 CCR 2503-6 3.606.6.C.
+supplied_by: County department hardship determination (case record).
+sources: [S417]
+rationale: No existing fact captures this determination; cw_time_limit_exempt (CO-918) needs it, distinct from the domestic violence waiver (CO-846) because 3.606.6.C lists hardship and domestic violence as separate grounds.

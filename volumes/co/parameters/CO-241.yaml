@@ -1,0 +1,12 @@
+id: CO-241
+name: QDWI income limit, percentage of FPL
+identifier: ma_qdwi_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The income limit for Qualified Disabled and Working Individual eligibility, as a decimal fraction of the federal poverty level, per 10 CCR 2505-10 8.100.6.O.2.d ("income less than 200% of FPL").
+value: 2.0
+sources: [S315]
+tags: [ma, non_magi, msp, income]
+rationale: "No existing item states the QDWI income limit. ma_qdwi_eligible (CO-616) needs it."

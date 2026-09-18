@@ -1,0 +1,13 @@
+id: CO-183
+name: MAGI income disregard percentage
+identifier: ma_magi_income_disregard_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The percentage of the federal poverty level, expressed as a decimal fraction of one percentage point per percent, subtracted from a household's MAGI-based income as the last step in determining eligibility for the MAGI program with the highest income standard the person could qualify under, under 42 CFR 435.603(d)(4) and 10 CCR 2505-10 8.100.4.D.
+precision: A percentage-of-FPL disregard, not a percentage of income; applying it means subtracting (this rate times the monthly federal poverty guideline for the applicable family size) from countable income, per 8.100.4.D.1.
+value: 0.05
+sources: [S168, S165]
+tags: [ma, magi, income]
+rationale: "No existing item carries this figure. 42 CFR 435.603(d)(4) (S165) and 10 CCR 2505-10 8.100.4.D (S168) both state five percentage points of the federal poverty level; kept as a parameter so no rule's identifier encodes the value (governance name.digits). Batch 6 owns the rule that actually applies this disregard (ma_is_child_category and its siblings, per the phase-3 brief); this batch creates the parameter because 8.100.4.D is one of this batch's cited sections."

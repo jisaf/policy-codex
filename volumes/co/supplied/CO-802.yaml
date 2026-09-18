@@ -1,0 +1,13 @@
+id: CO-802
+name: In-kind support and maintenance
+identifier: in_kind_support_and_maintenance
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The value of food or shelter this person receives from someone else without paying its full value, valued for a month as unearned income under 20 CFR 416.1130-416.1140 and 10 CCR 2505-10 8.100.5.F.5.k - ordinarily the presumed maximum value of one-third of the Federal Benefit Rate, unless the person declares and verifies a different amount.
+precision: Zero for a person who pays their own shelter costs or lives alone; the worker states the amount actually used in the determination (the PMV or a declared lower amount), not a formula this fact re-derives.
+supplied_by: County eligibility worker's living-arrangement and in-kind income determination (CBMS), from the applicant's declaration and the one-third-of-FBR presumed maximum value rule.
+sources: [S306, S307]
+tags: [non_magi, income]
+rationale: "The phase-4 brief's interface fixes this identifier for this batch. ma_ssi_countable_unearned_income (CO-606) needs a person's in-kind support and maintenance amount to include it as unearned income before applying the general income exclusion, per 8.100.5.F.5.k and 416.1130-416.1140; no existing supplied fact in this volume carries in-kind income."

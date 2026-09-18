@@ -1,0 +1,12 @@
+id: CO-239
+name: SLMB income limit, percentage of FPL
+identifier: ma_slmb_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The income limit for Specified Low-Income Medicare Beneficiary eligibility, as a decimal fraction of the federal poverty level, per 10 CCR 2505-10 8.100.6.M.2.c (100-120% of FPL, current as of CY 1995).
+value: 1.2
+sources: [S313]
+tags: [ma, non_magi, msp, income]
+rationale: "No existing item states the SLMB income limit. ma_slmb_eligible (CO-614) needs it."

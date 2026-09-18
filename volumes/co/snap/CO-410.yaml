@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: A person enrolled at least half time in an institution of higher education is exempt from the ineligible-student rule because they are under 18 or 50 or older, unfit for employment, receiving TANF cash assistance, meet the student employment exemption, have a qualifying care responsibility, are a single parent enrolled full time, or are placed in the institution through a qualifying employment and training program.
-derived: [any, ["<", snap_age, snap_student_min_age], [">", snap_age, snap_student_max_age], snap_is_unfit_for_employment, receives_tanf_cash, snap_meets_student_employment_exemption, snap_has_care_responsibility_for_student_exemption, snap_is_single_parent_full_time_student_exemption, is_assigned_to_higher_education_through_et_program]
+derived: [any, ["<", age, snap_student_min_age], [">", age, snap_student_max_age], snap_is_unfit_for_employment, receives_tanf_cash, snap_meets_student_employment_exemption, snap_has_care_responsibility_for_student_exemption, snap_is_single_parent_full_time_student_exemption, is_assigned_to_higher_education_through_et_program]
 sources: [S133, S134, S135]
 implemented: engine
 tags: [student, legal]

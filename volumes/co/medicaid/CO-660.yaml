@@ -1,0 +1,21 @@
+id: CO-660
+name: "Medicaid: transfer penalty currently applies"
+identifier: ma_transfer_penalty_applies
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person is currently inside a transfer-of-assets penalty period for the month - the penalty period is positive in length and the month falls within its start date through the last month the penalty's whole-month length covers - per 10 CCR 2505-10 § 8.100.7.F.1.e and § 8.100.7.F.2.c.ii.
+precision: Tests only the whole-month span (ma_transfer_penalty_months from transfer_penalty_period_start_date); ma_transfer_penalty_days's partial-month day count is not folded into the month test, since this item's scope is monthly - see OQ-94, which also notes the between-spouses apportionment (§ 8.100.7.F.8) this item does not model.
+derived: [all, [">", ma_transfer_penalty_months, 0], [">=", [month], [month_of, transfer_penalty_period_start_date]], ["<", [month], [months_after, ma_transfer_penalty_months, [month_of, transfer_penalty_period_start_date]]]]
+sources: [S365, S366, S379]
+open: [OQ-94]
+implemented: engine
+tags: [ma, ltc, legal]
+rationale: "No existing item tests whether a transfer penalty is currently in effect for the month; ma_transfer_penalty_months (CO-649) states only the penalty's length, and ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) previously read that raw length with no month bound, per the phase-4 review's C-7 finding, so a person with any positive penalty length was treated as permanently ineligible in every month, including years after the penalty period ended."
+nearest: [CO-649]
+tests:
+  - {id: CO-660-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_transfer_penalty_months: 2, transfer_penalty_period_start_date: "2021-03-01"}, expect: false}
+  - {id: CO-660-T2, as_of: "2021-04-01", month: "2021-04", given: {ma_transfer_penalty_months: 2, transfer_penalty_period_start_date: "2021-03-01"}, expect: true}
+  - {id: CO-660-T3, as_of: "2021-03-01", month: "2021-02", given: {ma_transfer_penalty_months: 2, transfer_penalty_period_start_date: "2021-03-01"}, expect: false}
+  - {id: CO-660-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_transfer_penalty_months: 0, transfer_penalty_period_start_date: "2026-10-01"}, expect: false}

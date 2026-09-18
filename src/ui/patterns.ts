@@ -10,10 +10,11 @@ export const RESULT: Record<string, string> = {
   "+": "number", "*": "number", "-": "number", "/": "number", min: "number",
   years_between: "number", count_months: "number", avg: "number", lookup: "number",
   first_day: "date", month_of: "month", month_before: "month", month_after: "month",
-  months_ending: "months", months_from_to: "months",
+  months_ending: "months", months_from_to: "months", months_after: "month", months_before: "month",
   at: "*", of: "*", otherwise: "*", case: "*",
   max: "number", ceil: "number", round: "number", count: "number", sum: "number",
-  persons: "group", filter: "group", reachable: "group",
+  persons: "group", filter: "group", reachable: "group", shared_relative: "group",
+  has_relative_in: "yes/no",
 };
 
 export const LABEL: Record<string, string> = {
@@ -34,7 +35,7 @@ export const LABEL: Record<string, string> = {
   first_day: "the first day of [month]", month_of: "the month containing [date]",
   month_before: "the month before [month]", month_after: "the month after [month]",
   months_ending: "the N consecutive months ending with [month]",
-  months_from_to: "the months from … through …",
+  months_from_to: "the months from … through …", months_after: "N months after [month]", months_before: "N months before [month]",
   at: "[per-month fact] for [month]", of: "that person's [fact]",
   otherwise: "…, otherwise …", case: "if … then …; otherwise …",
   max: "the greater of … and …", ceil: "… rounded up to the next whole dollar",
@@ -42,6 +43,8 @@ export const LABEL: Record<string, string> = {
   sum: "the sum of … for each person in [group]", persons: "every person in the case",
   filter: "all persons in [group] such that …",
   reachable: "the persons joined to this person by [relationship] (such that …)",
+  shared_relative: "the persons who share a [relationship] with this person",
+  has_relative_in: "that person is a [relationship] of a person in [group]",
 };
 
 export const SLOTS: Record<string, string[]> = {
@@ -55,9 +58,11 @@ export const SLOTS: Record<string, string[]> = {
   count_months: ["months", "yes/no"], avg: ["pm-number", "months"], lookup: ["table", "person"],
   first_day: ["month"], month_of: ["date"], month_before: ["month"], month_after: ["month"],
   months_ending: ["number", "month"], months_from_to: ["month", "month"],
+  months_after: ["number", "month"], months_before: ["number", "month"],
   at: ["pm-fact", "month"], of: ["person", "fact"], otherwise: ["same", "same"], case: [],
   max: ["number", "number"], ceil: ["number"], round: ["number"], count: ["group"],
   sum: ["group", "number"], persons: [], filter: ["group", "yes/no"], reachable: [],
+  shared_relative: [], has_relative_in: ["group"],
 };
 
 export const SLOTNAME: Record<string, string[]> = {
@@ -156,6 +161,8 @@ export function template(op: string): Expr {
   if (op === "of") return ["of", ["P"], null];
   if (op === "in_group") return ["in_group", ["P"], null];
   if (op === "reachable") return ["reachable", ["buys_prepares_with"]];
+  if (op === "shared_relative") return ["shared_relative", "parent"];
+  if (op === "has_relative_in") return ["has_relative_in", ["child"], null];
   if (["det_date", "det_month", "month", "P", "persons"].includes(op)) return [op];
   return [op, ...(SLOTS[op] ?? []).map(() => null)];
 }

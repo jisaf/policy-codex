@@ -1,0 +1,14 @@
+id: CO-830
+name: MMMNA cap
+identifier: mmmna_cap
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The current maximum minimum monthly maintenance needs allowance (standard plus excess shelter allowance combined) - the $1,500 base 42 U.S.C. 1396r-5(d)(3)(C) sets, CPI-indexed under subsection (g), restated in 10 CCR 2505-10 § 8.100.7.Q.4 as "$2,175.00 for the year 2001" and adjusted annually.
+precision: Not a fetched-document figure for the case's as-of date; the case states the CMS-published figure in effect on the determination date. See OQ-91.
+supplied_by: CMS annual spousal impoverishment standards publication, as loaded in CBMS.
+sources: [S359, S372]
+open: [OQ-91]
+tags: [ma, ltc, income, legal]
+rationale: "No fetched document states the 2026 MMMNA cap; 1396r-5(d)(3)(C)/(g) state the 1988 base and indexing rule and 8.100.7.Q.4 (S359) restates a stale 2001 figure explicitly superseded by annual adjustment. ma_mmmna (CO-655) needs it."

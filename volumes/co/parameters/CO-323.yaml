@@ -1,0 +1,16 @@
+id: CO-323
+name: CCCAP monthly federal poverty guideline by household size
+identifier: cccap_poverty_guideline_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: CCCAP
+meaning: The monthly 100% federal poverty guideline dollar amount by household size, the base the CCCAP county entry income limit percentage is applied to.
+precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_poverty_guideline_each_additional per additional member. The text states these as the 100% FPG figures effective October 1, 2024.
+versions:
+  - from: "2024-10-01"
+    value: { "1": 1255.00, "2": 1703.33, "3": 2151.67, "4": 2600.00, "5": 3048.33, "6": 3496.67, "7": 3945.00, "8": 4393.33 }
+    source: S485
+sources: [S485]
+tags: [income]
+rationale: 8 CCR 1403-1 3.111.H.2 (S485) states the monthly 100% FPG dollar figures directly, effective October 1, 2024, unlike the SNAP and Medicaid poverty guideline tables which are annual; cccap_income_within_entry_limit (CO-986) multiplies this table by the supplied county entry percentage (CO-870) to compute the county's entry income limit.

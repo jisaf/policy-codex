@@ -1,0 +1,13 @@
+id: CO-886
+name: Transfer penalty period start date
+identifier: transfer_penalty_period_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The date the Eligibility Site determines the transfer-of-assets penalty period begins - the later of the first day of the month after the transfer (or its discovery), the date the person would otherwise have become eligible for LTC services, and the end of any other transfer penalty period - per 10 CCR 2505-10 § 8.100.7.F.2.c.ii.
+precision: States the Eligibility Site's determination directly, rather than deriving it from the three-way "later of" test § 8.100.7.F.2.c.ii states, since the third prong (the end of any other penalty period) is itself a case-history fact this volume does not otherwise track.
+supplied_by: Eligibility Site's transfer-of-assets penalty determination (CBMS).
+sources: [S366, S379]
+tags: [ma, ltc, legal]
+rationale: "No existing item states when a transfer penalty period begins; ma_transfer_penalty_months (CO-649) states only its length. ma_transfer_penalty_applies (CO-660) needs it, per the phase-4 review's C-7 finding that a positive ma_transfer_penalty_months was otherwise read as a permanent disqualification with no month test."

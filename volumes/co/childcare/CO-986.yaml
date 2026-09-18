@@ -1,0 +1,24 @@
+id: CO-986
+name: "CCCAP: income within the county entry limit"
+identifier: cccap_income_within_entry_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: Whether the CCCAP household's countable income (cccap_household_income, CO-985) is at or below the lesser of the county's entry income eligibility limit for the household's size and eighty-five percent of the state median income, under 8 CCR 1403-1 3.111.H.1 and H.1.a.
+precision: The county entry limit is computed as the supplied county percentage (cccap_entry_income_limit_pct_fpl, CO-870) of the monthly 100% FPG table (cccap_poverty_guideline_table, CO-323) for cccap_household_size, adding cccap_poverty_guideline_each_additional (CO-324) per member above 8; that figure is capped at the 85% SMI table (cccap_smi_income_limit_table, CO-340, plus cccap_smi_income_limit_each_additional, CO-341, per member above 8), per 3.111.H.1's opening sentence ("gross income must not exceed eighty-five percent (85%) of the state median income"). Does not distinguish this entry-limit test from the separate 3.111.H.1.b exit limit a continuing household is held to instead (see cccap_income_within_exit_limit, CO-993, and OQ-133).
+derived: ["<=", cccap_household_income, [min, ["*", cccap_entry_income_limit_pct_fpl, [+, [lookup, cccap_poverty_guideline_table, [min, cccap_household_size, 8]], ["*", cccap_poverty_guideline_each_additional, [max, 0, ["-", cccap_household_size, 8]]]]], [+, [lookup, cccap_smi_income_limit_table, [min, cccap_household_size, 8]], ["*", cccap_smi_income_limit_each_additional, [max, 0, ["-", cccap_household_size, 8]]]]]]
+sources: [S485]
+open: [OQ-121, OQ-133]
+implemented: engine
+tags: [income]
+rationale: "No existing item computes the CCCAP entry income test; cccap_low_income_child_care_eligible (CO-987) and cccap_eligibility_status (CO-989) both need it. The 85% SMI cap was added per the review (docs/reviews/cccap-leap-phase-6.md, C-5, should-fix): 3.111.H.1's cap ('gross income must not exceed 85% of the state median income') was stated in the fetched text (S485) but applied nowhere, so a county percentage above the cap was honoured without limit."
+tests:
+  - {id: CO-986-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 2380, cccap_household_size: 3, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
+  - {id: CO-986-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 10000, cccap_household_size: 3, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}
+  # A county percentage set above the 85% SMI cap (H.1's opening sentence) does not raise the limit past the cap.
+  - {id: CO-986-T3, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 6000, cccap_household_size: 2, cccap_entry_income_limit_pct_fpl: 5.0}, expect: true}
+  - {id: CO-986-T4, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 7000, cccap_household_size: 2, cccap_entry_income_limit_pct_fpl: 5.0}, expect: false}
+  # Household size above 8 exercises cccap_poverty_guideline_each_additional and cccap_smi_income_limit_each_additional together.
+  - {id: CO-986-T5, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 9786, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
+  - {id: CO-986-T6, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 9800, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}

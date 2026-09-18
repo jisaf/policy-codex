@@ -1,0 +1,23 @@
+id: CO-987
+name: "CCCAP: low-income child care eligible"
+identifier: cccap_low_income_child_care_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: This adult caretaker or teen parent meets the Low-Income Child Care eligibility criteria of 8 CCR 1403-1 3.111 - a verified Colorado resident, within the self-declared asset limit, actively in an eligible activity, at or below the county entry income limit, and having physical custody of at least one eligible child in the household.
+precision: "Reads ma_meets_residency (CO-505, Medicaid's chapter) rather than a separate cccap_meets_residency item, the same cross-program reuse leap_is_eligible (CO-1007) makes for LEAP's parallel 3.753.21 test: 3.111.A's state-residency prong and 8.100.3.B's test derive identically (state_of_residence = colorado_state_code), and governance's dup.compact check flags an identical derivation as an error, so this batch reuses the existing item rather than duplicating it. Does not implement 3.111.A's county-of-application prong, which this volume has no fact for (see OQ-159)."
+derived: [all, ma_meets_residency, cccap_meets_asset_limit, cccap_household_caretakers_in_eligible_activity, cccap_income_within_entry_limit, [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]]
+sources: [S483, S484, S515]
+open: [OQ-159]
+implemented: engine
+tags: [household, income]
+rationale: "No existing item combines the CCCAP Low-Income Child Care criteria; cccap_eligibility_status (CO-989) reads it - as of this batch, as the item that assembles all of 3.111's criteria into one place, per the review (docs/reviews/cccap-leap-phase-6.md, C-10, should-fix): CO-989 previously re-derived the Low-Income conditions inline rather than reading this item, so it was dead code no outcome consumed. The residency (3.111.A, C-11) and asset (cccap_meets_asset_limit, CO-996, K-3) conjuncts were added per the review's findings, which this item's own prior sources (S484) already cited without ever testing. Residency reads ma_meets_residency (CO-505) directly rather than a new cccap_meets_residency item, since governance's dup.compact check rejects an identical derivation under a new id (see this item's precision)."
+tests:
+  - {id: CO-987-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1985-01-22", hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true, state_of_residence: "CO", countable_liquid_resources: 0, countable_nonliquid_resources_snap: 0}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: true}
+  - {id: CO-987-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1985-01-22", hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true, state_of_residence: "CO", countable_liquid_resources: 0, countable_nonliquid_resources_snap: 0}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
+  - {id: CO-987-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: false, state_of_residence: "CO", countable_liquid_resources: 0, countable_nonliquid_resources_snap: 0}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
+  # 3.111.A: not a Colorado resident.
+  - {id: CO-987-T4, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1985-01-22", hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true, state_of_residence: "WY", countable_liquid_resources: 0, countable_nonliquid_resources_snap: 0}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
+  # 3.111.H.4.c: assets over the self-declaration limit.
+  - {id: CO-987-T5, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1985-01-22", hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false, cccap_income_within_entry_limit: true, state_of_residence: "CO", countable_liquid_resources: 600000, countable_nonliquid_resources_snap: 500000}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}

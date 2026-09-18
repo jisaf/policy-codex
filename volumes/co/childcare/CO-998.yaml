@@ -1,0 +1,18 @@
+id: CO-998
+name: "CCCAP: child meets citizenship requirement"
+identifier: cccap_child_meets_citizenship_requirement
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether this child has verified citizen/legal-resident status, under 8 CCR 1403-1 3.111.F.1 - required of "all children who have had an application made on their behalf or are receiving child care assistance."
+precision: Reads citizenship_status and lawful_presence_status the way this volume's other citizenship tests do (for example leap_meets_citizenship_requirement, CO-1010); 3.111.F.1 imposes no citizenship test on the adult caretaker, only the child (see the review's note in docs/reviews/cccap-leap-phase-6.md 1.3, "CCCAP has no citizenship test for the caretaker, and that is correct").
+derived: [any, ["=", citizenship_status, citizen], ["=", lawful_presence_status, lawfully_present]]
+sources: [S514]
+implemented: engine
+tags: [immigration, legal]
+rationale: "No existing item states 3.111.F.1's child citizenship/legal-residency verification; the review (docs/reviews/cccap-leap-phase-6.md, K-1) called this 'the single largest gap in the CCCAP chapter' - the chapter has no CCCAP citizenship item of any kind, though LEAP's parallel leap_meets_citizenship_requirement (CO-1010, the nearest same-shape item) exists. cccap_is_eligible_child (CO-980) reads it as a conjunct, so a child without verified status is not an eligible child."
+tests:
+  - {id: CO-998-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: true}
+  - {id: CO-998-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}
+  - {id: CO-998-T3, as_of: "2026-10-01", given: {citizenship_status: other_non_qualified_non_citizen, lawful_presence_status: lawfully_present}, expect: true}

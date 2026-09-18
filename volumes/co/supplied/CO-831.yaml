@@ -1,0 +1,14 @@
+id: CO-831
+name: Home equity limit
+identifier: home_equity_limit
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: The current published home equity limit disqualifying a person from Long-Term Care assistance if exceeded - the $500,000 base 42 U.S.C. 1396p(f)(1)(A) sets, which a state may elect to raise up to $750,000 under subparagraph (B), CPI-indexed annually since 2011 under subparagraph (C).
+precision: Not a fetched-document figure; no fetched Colorado document states which base Colorado elected ($500,000 or a higher amount up to $750,000) or the current indexed figure. See OQ-91.
+supplied_by: HCPF's published home equity limit, as loaded in CBMS.
+sources: [S369]
+open: [OQ-91]
+tags: [ma, ltc, resources, legal]
+rationale: "No fetched document states Colorado's election or the 2026 indexed home equity limit; 1396p(f)(1) states only the base figures and indexing rule (S369). ma_home_equity_disqualifies (CO-650) needs it."

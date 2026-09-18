@@ -1,0 +1,12 @@
+id: CO-243
+name: Children with Disabilities Buy-In income limit, percentage of FPL
+identifier: ma_cbwd_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The household income ceiling for the Medicaid Buy-In Program for Children with Disabilities, as a decimal fraction of the federal poverty level, per 10 CCR 2505-10 8.100.6.Q.1.b ("must be less than or equal to 300% of FPL").
+value: 3.0
+sources: [S318]
+tags: [ma, non_magi, buy_in, income]
+rationale: "No existing item states the CBwD income ceiling. ma_cbwd_eligible (CO-620) and the top band of ma_cbwd_premium (CO-621) need it."

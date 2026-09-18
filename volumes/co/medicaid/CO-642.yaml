@@ -1,0 +1,19 @@
+id: CO-642
+name: "Medicaid: meets the 300% special income group"
+identifier: ma_meets_special_income_group
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person's gross income meets the 300% Institutionalized Special Income standard - gross income at or below 300% of the individual SSI federal benefit rate, or, for a person in a Long-Term Care institution (excluding a hospital) whose income exceeds that level, has established a qualifying income trust - per 10 CCR 2505-10 §§ 8.100.6.K.5 and 8.100.7.A.2.e.
+precision: Does not separately enforce the income trust's own upper ceiling (gross income must also be below the average regional private-pay rate, 8.100.7.G.1.a) - see OQ-99.
+derived: [any, ["<=", ma_ltc_gross_income, ["*", ma_ssi_federal_benefit_rate_individual, ma_special_income_group_pct]], has_income_trust]
+sources: [S351, S352, S378]
+open: [OQ-99]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item states the 300% special income group test. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it. The target household's p1 (2030 <= 994 x 3 = 2982) is the worked example in the batch report."
+tests:
+  - {id: CO-642-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 2030, has_income_trust: false, ma_ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, expect: true}
+  - {id: CO-642-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 3200, has_income_trust: false, ma_ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, expect: false}
+  - {id: CO-642-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 3200, has_income_trust: true, ma_ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, expect: true}

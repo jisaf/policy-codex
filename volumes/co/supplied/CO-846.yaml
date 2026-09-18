@@ -1,0 +1,11 @@
+id: CO-846
+name: Has an approved domestic violence time-limit extension
+identifier: has_domestic_violence_extension_approved
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The county department has granted this person's assistance unit a good-cause domestic violence extension of the sixty-month time limit under 26-2-706.5(4)(a)(III), C.R.S. and 9 CCR 2503-6 3.606.6.C's hardship/domestic-violence extension provisions - distinct from a Family Violence Option (FVO) waiver of program requirements under 3.604.5, which does not itself extend the time limit and does not stop the TANF time clock from advancing (3.604.5.A.1.b, S522), though it is an allowable reason a county may grant this extension for.
+supplied_by: County department domestic violence extension determination (case record).
+sources: [S417, S522]
+rationale: "No existing fact captures this determination; cw_unit_time_limit_extended (CO-925) needs it. Renamed from has_domestic_violence_waiver per the phase-5 review's C-3(b) finding - the prior identifier named the FVO waiver (3.604.5), a different instrument that this item's own meaning field already correctly described as a granted extension, so an engineer reading the identifier alone would have wired in the wrong fact and stopped the clock the regulation says keeps running."

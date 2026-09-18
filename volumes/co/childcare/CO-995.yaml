@@ -1,0 +1,17 @@
+id: CO-995
+name: "CCCAP: protective services income within the size-1 limit"
+identifier: cccap_protective_services_income_within_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: Whether the Protective Services household's countable income (cccap_protective_services_income, CO-994) is at or below the county entry income limit for a household of one, since 3.119.A makes every Protective Services household a household of one for income eligibility.
+precision: Reads the same entry-limit computation as cccap_income_within_entry_limit (CO-986) - the supplied county percentage of the size-1 100% FPG figure, capped at the size-1 85% SMI figure - fixed at household size 1 rather than cccap_household_size (CO-983), per 3.119.A.
+derived: ["<=", cccap_protective_services_income, [min, ["*", cccap_entry_income_limit_pct_fpl, [lookup, cccap_poverty_guideline_table, 1]], [lookup, cccap_smi_income_limit_table, 1]]]
+sources: [S488, S485]
+implemented: engine
+tags: [income]
+rationale: "No existing item states 3.119.A's household-of-one income test; the review (docs/reviews/cccap-leap-phase-6.md, C-9) found the Protective Services branch of cccap_eligibility_status (CO-989) short-circuited the income test entirely, which 3.119.A does not waive (only 3.119.D's activity test and 3.119.E's residency verification are waived). Modeled on cccap_income_within_entry_limit (CO-986), the nearest same-shape item, fixed to size 1 instead of reading cccap_household_size. cccap_eligibility_status (CO-989) reads it as a conjunct of the protective-services branch, with a fall-through to the ordinary rows when it fails."
+tests:
+  - {id: CO-995-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_protective_services_income: 800, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
+  - {id: CO-995-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_protective_services_income: 3000, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}

@@ -1,0 +1,13 @@
+id: CO-078
+name: Is required to file a tax return
+identifier: is_required_to_file_tax_return
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person is expected to be required to file a federal tax return under 26 U.S.C. 6012(a)(1) for the taxable year in which the Medicaid eligibility determination or renewal is being made.
+precision: Determined by the filing thresholds of 26 U.S.C. 6012(a)(1) (income, filing status, age, and dependency), which this volume treats as an external fact rather than a derived tax-law computation.
+supplied_by: Applicant statement (CBMS/PEAK), cross-checked against IRS filing-threshold guidance by the eligibility worker.
+sources: []
+tags: [ma, magi, household, income]
+rationale: "No existing item carries this fact. 42 CFR 435.603(d)(2) and 10 CCR 2505-10 8.100.4.C.1.f exclude a child's or tax dependent's income from household income unless the child or dependent is required to file; ma_magi_household_income (CO-503) reads this fact directly rather than re-deriving the IRS filing thresholds, which are out of this volume's scope."

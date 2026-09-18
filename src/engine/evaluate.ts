@@ -490,6 +490,31 @@ export function evaluate(
         }
         return total;
       }
+      case "has_relative_in": {
+        // That person (the bound member) stands in one of the named roles to
+        // some person in the group: a join between the bound person and the
+        // group's members without rebinding either. Unknown when that
+        // person's relationships are unstated or the group is unknown.
+        if (!P) throw new Error("has_relative_in needs a bound person");
+        const grp = g(e[2]);
+        if (grp === null || c.rels[P] == null) return null;
+        const roles = e[1] as string[];
+        return (c.rels[P] ?? []).some(([r, other]) => roles.includes(r) && grp.includes(other));
+      }
+      case "shared_relative": {
+        // The persons, other than this person, who have a person in the named
+        // role in common with this person: with "parent", this person's
+        // siblings. Unknown when this person's relationships are unstated.
+        if (!p || c.rels[p] == null) return null;
+        const role = e[1] as string;
+        const inverse = INVERSE_ROLE[role];
+        const out = new Set<string>();
+        for (const [r, y] of c.rels[p] ?? []) {
+          if (r !== inverse) continue;
+          for (const [r2, x] of c.rels[y] ?? []) if (r2 === role && x !== p) out.add(x);
+        }
+        return Object.keys(c.persons).filter((pid) => out.has(pid));
+      }
       case "reachable": {
         // The persons joined to this person by a chain of the named
         // relationships, this person included. Unknown when this person's
@@ -526,6 +551,8 @@ export function evaluate(
       case "month_of": { const d = g(e[1]); return d === null ? null : d.slice(0, 7); }
       case "month_before": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, -1); }
       case "month_after": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, 1); }
+      case "months_after": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, n); }
+      case "months_before": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, -n); }
       case "months_ending": {
         const n = g(e[1]); const mm = g(e[2]);
         return n === null || mm === null ? null : monthsEnding(n, mm);

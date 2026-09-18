@@ -1,0 +1,18 @@
+id: CO-606
+name: "Medicaid: SSI-related countable unearned income"
+identifier: ma_ssi_countable_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's (and, if living together, their spouse's) combined unearned income for the month - Social Security, pension, unemployment, other unearned income, and in-kind support and maintenance - after the $20 general income exclusion of 20 CFR 416.1124(c)(12) and 10 CCR 2505-10 8.100.5.H.4.a.
+precision: Combines the same spouse-living-together group ma_ssi_countable_earned_income (CO-605) uses, before applying one $20 exclusion to the combined total. Excludes cash_assistance_income (SSI, OAP-A, TANF and General Assistance are exempt under 8.100.5.F.6.y) and child_support_received (8.100.5.H.4.c reduces it by one-third instead of applying the general disregard, which this item does not model - see OQ-83).
+derived: [max, 0, ["-", ma_ssi_household_unearned_income_sum, ma_ssi_general_income_exclusion]]
+sources: [S308, S310]
+open: [OQ-83]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item applies the $20 SSI general income disregard. ma_ssi_countable_income (CO-607) needs it. CO-01's p1 (social_security_income 1420 + pension_income 610 = 2030, no spouse combination once institutionalized) is the worked example in the batch report."
+tests:
+  - {id: CO-606-T1, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 1420, pension_income: 610, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: true}, others: {}, relationships: [], expect: 2010}
+  - {id: CO-606-T2, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 1180, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {p2: {in_medical_institution: true}}, relationships: [[spouse, p2]], expect: 1160}

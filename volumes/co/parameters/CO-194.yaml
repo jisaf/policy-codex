@@ -1,0 +1,13 @@
+id: CO-194
+name: MAGI income limit, Pregnant Women category, percent of FPL
+identifier: ma_income_limit_pregnant_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: Colorado's income limit for the Pregnant Women MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.5.
+precision: A percentage-of-FPL figure (1.85 = 185%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
+value: 1.85
+sources: [S209]
+tags: [ma, magi, income, state_election]
+rationale: "No existing item carries Colorado's Pregnant-Women-category income percentage. ma_magi_income_standard_pregnant (CO-543) needs it as a parameter rather than an inline digit (governance name.digits)."

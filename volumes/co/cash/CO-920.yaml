@@ -1,0 +1,19 @@
+id: CO-920
+name: "Colorado Works: meets work participation requirement"
+identifier: cw_meets_work_participation
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: A work-eligible individual's participation hours for the month meet the 45 CFR 261.31 weekly-hours requirement (30 hours, at least 20 from core activities not separately modeled here) - or the reduced 20-hour requirement of 45 CFR 261.35 for a single custodial parent or caretaker relative with a child under six.
+precision: Compares countable monthly hours (hours_worked plus work_program_hours) against the weekly requirement multiplied by four to approximate a monthly figure; see OQ-104.
+open: [OQ-104]
+derived: [case, [[exists_related, [parent, caretaker], [all, [of, [P], cw_is_dependent_child], ["<", [of, [P], age], cw_young_child_age_limit]]], [">=", [+, hours_worked, work_program_hours], ["*", cw_work_participation_hours_per_week_young_child, 4]]], [else, [">=", [+, hours_worked, work_program_hours], ["*", cw_work_participation_hours_per_week, 4]]]]
+sources: [S419, S420]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing item states the Colorado Works work-participation hours test; useful to the program administrator for the federal work-participation-rate calculation even though this batch does not gate cw_eligibility_status on it (nonparticipation is a sanction under 26-2-711, C.R.S. and 3.607-3.608, which reduce the grant rather than terminate eligibility outright, and is out of this batch's scope).
+tests:
+  - {id: CO-920-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, work_program_hours: 0}, relationships: [], expect: true}
+  - {id: CO-920-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 60, work_program_hours: 0}, relationships: [], expect: false}
+  - {id: CO-920-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 90, work_program_hours: 0}, others: {p2: {date_of_birth: "2026-02-03"}}, relationships: [[parent, p1, p2]], expect: true}

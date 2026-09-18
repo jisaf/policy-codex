@@ -1,0 +1,11 @@
+id: CO-840
+name: Months of federal TANF assistance received
+identifier: months_of_assistance_received
+kind: supplied
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: The cumulative number of months of federal TANF assistance already counted toward this person's sixty-month lifetime limit under 26-2-706.5, C.R.S. and 9 CCR 2503-6 3.606.6.A, as tracked by the statewide automated system across Colorado and any other state.
+supplied_by: CBMS TANF time-limit tracking (statewide automated system), including months reported from another state's TANF case record.
+sources: [S404, S417]
+rationale: A running count the statewide automated system maintains, not a fact this volume's rules can derive from case data; cw_months_of_assistance_used (CO-916) and cw_time_limit_reached (CO-917) need it.

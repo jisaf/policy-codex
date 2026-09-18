@@ -1,0 +1,12 @@
+id: CO-326
+name: CCCAP household child age limit
+identifier: cccap_household_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: The upper age limit (exclusive) under which a child in the home is a member of the CCCAP household without regard to school attendance.
+value: 18
+sources: [S496]
+tags: [age, household]
+rationale: 8 CCR 1403-1 3.103.GGG (S496) counts in the CCCAP household "all children in the home who are under eighteen (18) years of age"; cccap_is_household_child (CO-990) reads it. Nearest is leap_household_child_age_limit (CO-325), also 18, but that figure comes from the LEAP rule and the two are versioned by different regulations.

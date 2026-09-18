@@ -1,0 +1,13 @@
+id: CO-211
+name: CHP+ income limit, lower bound, pregnant women (percentage of FPL)
+identifier: chp_income_limit_pct_pregnant_lower
+kind: parameter
+type: rate
+scope: global
+program: CHP+
+meaning: The lower bound, as a decimal fraction of the federal poverty guideline, of the household-income band 10 CCR 2505-3-110.1.F states for a pregnant woman to be eligible for the Children's Basic Health Plan (household income must be greater than this percentage).
+precision: A percentage-of-FPL threshold; household income at or below this percentage falls to Medicaid instead (batch 6's ma_magi_income_standard_pregnant), and CHP+ requires income strictly greater than it.
+value: 1.95
+sources: [S243]
+tags: [chp, income, state_election]
+rationale: "No existing item carries this figure. chp_income_within_limit (CO-704) needs it as a parameter, not an inline digit, so the identifier does not encode a value (governance name.digits). 10 CCR 2505-3-110.1.F states 'greater than 195%... for pregnant women' (S243)."

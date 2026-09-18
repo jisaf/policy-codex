@@ -1,0 +1,18 @@
+id: CO-654
+name: "Medicaid: is PACE eligible"
+identifier: ma_pace_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person is eligible to enroll in the Program of All-Inclusive Care for the Elderly for the month - meets the nursing facility level of care and is financially eligible for Long-Term Care - per 10 CCR 2505-10 §§ 8.7100.B/8.7100.C.9 and 8.497.
+precision: Does not test a minimum age; no fetched document states PACE's participant age floor - see OQ-93.
+derived: [all, meets_nursing_facility_level_of_care, ma_ltc_financially_eligible]
+sources: [S351]
+open: [OQ-93]
+implemented: engine
+tags: [ma, ltc]
+rationale: "No existing item states a PACE eligibility test. ma_ltc_eligibility_status (CO-652) needs it."
+tests:
+  - {id: CO-654-T1, as_of: "2026-10-01", month: "2026-10", given: {meets_nursing_facility_level_of_care: true, ma_ltc_financially_eligible: true}, expect: true}
+  - {id: CO-654-T2, as_of: "2026-10-01", month: "2026-10", given: {meets_nursing_facility_level_of_care: false, ma_ltc_financially_eligible: true}, expect: false}

@@ -1,0 +1,14 @@
+id: CO-832
+name: Transfer penalty divisor
+identifier: transfer_penalty_divisor
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: The average of the four Bureau of Economic Analysis regions' monthly private-pay cost of Long-Term Care institution care in Colorado at the time of application, calculated annually by HCPF per 10 CCR 2505-10 § 8.100.7.E - the divisor ma_transfer_penalty_months (CO-646) uses to convert an uncompensated transfer's value into a number of penalty months, per § 8.100.7.F.2.c.i.
+precision: Not a fetched-document figure; the regional rate table itself is not in any fetched document. See OQ-91.
+supplied_by: HCPF's published average private-pay nursing facility rate by region, as loaded in CBMS.
+sources: [S366]
+open: [OQ-91]
+tags: [ma, ltc, legal]
+rationale: "No fetched document states the current average private-pay rate; 8.100.7.F.2.c.i states only the formula (uncompensated value divided by this rate). ma_transfer_penalty_months (CO-649) needs it."

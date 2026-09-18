@@ -1,0 +1,13 @@
+id: CO-089
+name: Pregnancy end date
+identifier: pregnancy_end_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The date the person's most recent pregnancy ended (by birth, miscarriage, or termination), the date 10 CCR 2505-10 8.100.4.G.5, 8.100.3.G.1.g.viii.1's postpartum extension, and 42 U.S.C. 1396a(e)(16) measure the postpartum coverage period from.
+precision: The most recently ended pregnancy; a person who is currently pregnant has no pregnancy_end_date (is_pregnant governs instead) until the current pregnancy ends.
+supplied_by: Applicant statement (CBMS/PEAK), or medical provider report of the birth, miscarriage, or termination date.
+sources: []
+tags: [ma, magi]
+rationale: "No existing item carries this fact. ma_postpartum_coverage_end_month (CO-560) and the postpartum extension of ma_meets_citizenship_requirement (CO-509, batch 5, edited by this batch per OQ-43) both need the date a pregnancy ended, which is_pregnant alone (a current-status yes/no fact) cannot supply once the pregnancy is over."

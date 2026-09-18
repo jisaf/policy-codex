@@ -1,0 +1,17 @@
+id: CO-556
+name: "Medicaid: child continuous eligibility end month"
+identifier: ma_child_continuous_eligibility_end_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: The last month of a child's continuous eligibility period under 10 CCR 2505-10 8.100.3.Q.2 and 42 CFR 435.926(c) - 11 months after the period's start month (a 12-month period inclusive of its start month), anchored on the month application_date falls in, or on continuous_eligibility_period_start_month when that fact states an earlier month (a period already open from a prior determination or redetermination).
+precision: "8.100.3.Q.2 begins the period 'on the first day of the month the application is received, or from the date all criteria are met'; this item anchors on [month_of, application_date] (P10), not [det_month], per the phase-3 review's C-4(c) finding, falling back to that anchor only when continuous_eligibility_period_start_month (CO-094) is unknown (P4, 'otherwise'). The end month is 11, not 12, months after the start month: 42 CFR 435.926(c)(1) states the period's length as 12 months and (c)(2) begins it on the application/all-criteria-met date, so a period beginning in month M covers M through M+11 inclusive (twelve months total) and ends with M+11, not M+12 - the phase-3 review's C-4(b) finding."
+derived: [months_after, 11, [otherwise, continuous_eligibility_period_start_month, [month_of, application_date]]]
+sources: [S215, S216]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item computes a continuous eligibility end month correctly. Rewritten in the fix round per the phase-3 review's C-4(b)/(c) findings: the prior derivation was twelve nested month_after steps off [det_month], which (b) counted a thirteen-month period and (c) anchored on the wrong date (8.100.3.Q.2 names the application-received month, not the determination month). Uses months_after (P44, now implemented per docs/conventions.md) rather than nested month_after steps, and application_date (CO-088) with continuous_eligibility_period_start_month (CO-094) as the anchor, matching ma_retroactive_coverage_start_month's (CO-557) own use of application_date."
+tests:
+  - {id: CO-556-T1, as_of: "2026-10-01", given: {application_date: "2026-10-15"}, expect: "2027-09"}
+  - {id: CO-556-T2, as_of: "2027-01-15", given: {application_date: "2027-01-05", continuous_eligibility_period_start_month: "2026-04"}, expect: "2027-03"}

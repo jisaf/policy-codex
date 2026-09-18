@@ -1,0 +1,16 @@
+id: CO-916
+name: "Colorado Works: child-only unit"
+identifier: cw_child_only_unit
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: This person's assistance unit consists entirely of dependent children, with no member who is not themselves a dependent child - a "child-only case" for the 26-2-706.5(4)(a)(I) hardship-extension good-cause category and the parallel 45 CFR 264.1(b)(1)(i) exemption's practical effect (no head-of-household adult whose own clock is ticking).
+derived: ["=", [count, [filter, cw_assistance_unit_members, [not, [of, [P], cw_is_dependent_child]]]], 0]
+sources: [S404, S408]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: No existing item states this; cw_time_limit_exempt (CO-917) reads it. A minor parent and her own child are both dependent children under 3.601's definition, so a minor-parent-only unit (this batch's target household) correctly reads as child-only.
+tests:
+  - {id: CO-916-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-916-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_enrolled_in_school: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2015-06-01", is_enrolled_in_school: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: false}

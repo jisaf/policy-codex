@@ -1,0 +1,22 @@
+id: CO-952
+name: "Adult Financial: AND grant amount"
+identifier: af_and_grant
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: The monthly Aid to the Needy Disabled (or Aid to the Blind) grant payment - the applicable AND-SO, AND-CS, or AND-SO-standard (for "ab", per OQ-112) grant standard minus the client's total countable income, floored at zero - per 9 CCR 2503-5 3.543.B, 3.544, 3.548.B, and 3.549.
+precision: "See OQ-120 - does not model the equivalent mid-month proration rules 3.543.D.2 and 3.548.B.2 state. M-7: Adult Financial grants carry cents (no AF provision states a 'drop the cents' rule, unlike Colorado Works' 3.606.1.K.2, which cw_grant_amount, CO-914, implements by flooring) - deliberate, not an oversight."
+derived: [case, [[in, af_category, [and_so, and_cs, ab]], ["max", 0, ["-", af_grant_standard, af_countable_income]]], [else, 0]]
+sources: [S458, S460, S461, S462, S464, S465]
+open: [OQ-112, OQ-120]
+implemented: engine
+tags: [cash, and, ab, income]
+rationale: "No existing item computes the AND-SO/AND-CS/AB grant amount. Named directly by the phase-5 brief's interface as an outcome. Not identical to af_oap_grant (CO-951), which tests af_category against the oap_a/oap_b group instead of and_so/and_cs/ab and would otherwise compute an AND-style grant off the OAP standard for an OAP client if this item's condition did not exclude oap_a/oap_b. Fix round (M-3): reads af_grant_standard (CO-949) instead of separately re-selecting among af_and_so_grant_standard/af_and_cs_grant_standard (for and_so/and_cs) and af_and_so_grant_standard again (for ab, per OQ-112) by category a second time, since CO-949 already performs that selection and was otherwise read by nothing - the phase-5 review's M-3 finding."
+nearest: [CO-951]
+tests:
+  - {id: CO-952-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_so, af_countable_income: 100, af_grant_standard: 248}, expect: 148}
+  - {id: CO-952-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_cs, af_countable_income: 500, af_grant_standard: 967}, expect: 467}
+  - {id: CO-952-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: none, af_countable_income: 100, af_grant_standard: 0}, expect: 0}
+  - {id: CO-952-T4, as_of: "2026-10-01", month: "2026-10", given: {af_category: ab, af_countable_income: 50, af_grant_standard: 248}, expect: 198}

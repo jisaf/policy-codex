@@ -1,0 +1,12 @@
+id: CO-197
+name: Retroactive Medical Assistance coverage period, months
+identifier: ma_retroactive_coverage_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of months before the month of application for which Medical Assistance is available retroactively, under 10 CCR 2505-10 8.100.3.E.1 and 42 CFR 435.915(a).
+value: 3
+sources: [S217, S218]
+tags: [ma]
+rationale: "No existing item carries this figure. ma_retroactive_coverage_start_month (CO-557) needs it as a parameter rather than an inline digit (governance name.digits)."

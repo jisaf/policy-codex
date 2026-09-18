@@ -1,0 +1,13 @@
+id: CO-835
+name: Health insurance premiums paid
+identifier: health_insurance_premiums_paid
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's monthly Medicare, Long-Term Care insurance, and other health insurance premiums that are deductible from patient payment or from the community spouse's monthly needs, per 10 CCR 2505-10 §§ 8.100.7.Q.2.b and 8.100.7.V.3.b.
+precision: For the institutionalized spouse this deducts from ma_patient_payment (CO-658); for the community spouse it deducts from the community spouse's minimum monthly needs under § 8.100.7.Q.2.b (not separately modeled - see rationale).
+supplied_by: Eligibility Site's verification of premium payments (Medicare premium statements, insurance bills).
+sources: [S358]
+tags: [ma, ltc, income]
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_patient_payment (CO-658) needs the institutionalized person's own premiums as a deduction; this batch does not separately add the community spouse's premiums to ma_mmmna (CO-655), since § 8.100.7.Q.2 describes them as an additional amount 'approved' rather than part of the MMMNA formula itself."

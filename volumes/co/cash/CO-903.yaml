@@ -1,0 +1,16 @@
+id: CO-903
+name: "Colorado Works: assistance unit size"
+identifier: cw_unit_size
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: The number of persons in this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900), the key 3.606.1.F's need and grant standard chart is read by.
+derived: [count, cw_assistance_unit_members]
+sources: [S408, S414]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: No existing item counts the Colorado Works assistance unit; cw_need_standard (CO-911) and cw_grant_standard (CO-912) both look up this size in the standards-of-assistance tables.
+tests:
+  - {id: CO-903-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 2}
+  - {id: CO-903-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 1}

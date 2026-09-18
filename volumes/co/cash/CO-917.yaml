@@ -1,0 +1,17 @@
+id: CO-917
+name: "Colorado Works: time limit exempt"
+identifier: cw_time_limit_exempt
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: Whether this person's assistance unit is exempt from (or has an approved extension beyond) the sixty-month time limit - a child-only unit, or a county-approved domestic violence or hardship extension, per 26-2-706.5(4) and 9 CCR 2503-6 3.606.6.C.
+derived: [any, cw_child_only_unit, has_domestic_violence_extension_approved, has_hardship_extension_approved]
+sources: [S404, S417]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing item states the Colorado Works time-limit exceptions; cw_time_limit_reached (CO-918) needs it.
+tests:
+  - {id: CO-917-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, has_domestic_violence_extension_approved: false, has_hardship_extension_approved: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-917-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_enrolled_in_school: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, has_domestic_violence_extension_approved: false, has_hardship_extension_approved: false}, others: {p2: {date_of_birth: "2015-06-01", is_enrolled_in_school: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-917-T3, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_enrolled_in_school: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, has_domestic_violence_extension_approved: true, has_hardship_extension_approved: false}, others: {p2: {date_of_birth: "2015-06-01", is_enrolled_in_school: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: true}

@@ -1,0 +1,11 @@
+id: CO-848
+name: Has applied for Supplemental Security Income benefits
+identifier: has_applied_for_ssi
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: The person has applied for Supplemental Security Income (SSI) benefits and complied with any recommendations for referrals made by the county department, per C.R.S. 26-2-111(5)(a)(II) - a mandatory prong of Aid to the Blind eligibility, separate from the "good cause shown" exception the statute allows for noncompliance (see OQ-139).
+supplied_by: County department case record (SSI application confirmation, SDX match).
+sources: [S443]
+rationale: "No existing fact in this volume's interface captures the 26-2-111(5)(a)(II) SSI-application requirement; af_ab_eligible (CO-945) needs it. Acknowledged as the nearest same-shape fact to the AND-SO program's own SSI/SSDI application duty (3.520.75.B), which no supplied fact yet carries either (K-7, out of this round's scope) - this fact is scoped to Aid to the Blind's own statutory prong (II), not AND-SO's regulatory duty."

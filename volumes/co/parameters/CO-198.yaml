@@ -1,0 +1,13 @@
+id: CO-198
+name: Postpartum Medical Assistance coverage period, months
+identifier: ma_postpartum_coverage_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of months, beginning on the last day of a pregnancy, for which a person who was eligible for and received Medical Assistance while pregnant remains eligible for pregnancy-related and postpartum coverage, under 42 U.S.C. 1396a(e)(16) and Colorado's Cover All Coloradans clause, 10 CCR 2505-10 8.100.3.G.1.g.viii.1 ("within 12 months of the beginning of their postpartum period").
+precision: "This batch models the 12-month postpartum period 1396a(e)(16) and 8.100.3.G.1.g.viii.1 both state, rather than the 60-day period 8.100.4.G.5's own sentence still states; see the assumption on ma_postpartum_coverage_end_month (CO-560) and OQ-52."
+value: 12
+sources: [S224, S175]
+tags: [ma, magi]
+rationale: "No existing item carries this figure. ma_postpartum_coverage_end_month (CO-560) and the postpartum extension added to ma_meets_citizenship_requirement (CO-509, batch 5, edited by this batch per OQ-43) both need it as a parameter rather than an inline digit (governance name.digits)."

@@ -1,0 +1,13 @@
+id: CO-824
+name: Uncompensated transfer value in look-back
+identifier: uncompensated_transfer_value_in_lookback
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: The total fair market value of assets this person (or their spouse) transferred without fair consideration during the 60-month look-back period, less any compensation received, per 42 U.S.C. 1396p(c)(1)(B) and 10 CCR 2505-10 § 8.100.7.F.1.f's "uncompensated value" - the numerator of the transfer-penalty-period calculation.
+precision: Zero for a person with no disqualifying transfers in the look-back period; does not itself state whether an exception (8.100.7.F's undue-hardship, sole-benefit-of-spouse, or other exemptions) applies - see transfer_was_exempt (CO-825).
+supplied_by: Eligibility Site's review of the applicant's financial records for the 60-month look-back period.
+sources: [S365, S368]
+tags: [ma, ltc, legal]
+rationale: "Models the transfers-within-lookback interface the phase-4 brief directs (a money value rather than the MAGI-phase list fact transfers_within_lookback). ma_transfer_penalty_months (CO-649) needs it."

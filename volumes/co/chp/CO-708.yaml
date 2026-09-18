@@ -1,0 +1,18 @@
+id: CO-708
+name: "CHP+: presumptive eligibility"
+identifier: chp_presumptive_eligibility
+kind: derived
+type: yes/no
+scope: person
+program: CHP+
+meaning: Whether the person qualifies for immediate, temporary presumptive Children's Basic Health Plan coverage under 10 CCR 2505-3-170.1 - a child under 19 or a pregnant applicant, meeting the citizenship requirement, whose declared or attested household income falls within the applicable CHP+ income band.
+precision: "170.1.C's 'United States citizen or a documented immigrant as defined in Section 110' is read as ma_meets_citizenship_requirement (CO-509), the same reading chp_child_is_eligible (CO-705) and chp_prenatal_is_eligible (CO-706) take of 110.1.B, for the reason stated on CO-705 (Cover All Coloradans reaches every child and pregnant applicant, which is 170.1's whole population). Uses attested_household_income_pct_fpl (CO-092), the applicant's declared/attested figure at the presumptive eligibility site, not ma_magi_household_income_pct_fpl (CO-504), because 170.1.A-B key presumptive eligibility on a declaration made before the verified MAGI computation exists."
+derived: [all, [any, ma_is_under_child_age_or_turns_nineteen_this_month, is_pregnant], ma_meets_citizenship_requirement, [case, [ma_is_under_child_age_or_turns_nineteen_this_month, [all, [">", attested_household_income_pct_fpl, chp_income_limit_pct_child_lower], ["<=", attested_household_income_pct_fpl, chp_income_limit_pct_upper]]], [is_pregnant, [all, [">", attested_household_income_pct_fpl, chp_income_limit_pct_pregnant_lower], ["<=", attested_household_income_pct_fpl, chp_income_limit_pct_upper]]], [else, false]]]
+sources: [S241, S246]
+implemented: engine
+tags: [chp, magi, income, immigration]
+rationale: "No existing item states CHP+ presumptive eligibility. Distinct from chp_child_is_eligible/chp_prenatal_is_eligible (CO-705/CO-706) because 170.1 tests a declared/attested income figure at a presumptive eligibility site rather than the verified MAGI computation, and (per 170.1's own text) does not itself test 'not eligible for Medicaid' or 'no other creditable coverage' the way the full determination does."
+tests:
+  - {id: CO-708-T1, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01", is_pregnant: false, citizenship_status: citizen, lawful_presence_status: unknown, attested_household_income_pct_fpl: 2.00}, expect: true}
+  - {id: CO-708-T2, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01", is_pregnant: false, citizenship_status: citizen, lawful_presence_status: unknown, attested_household_income_pct_fpl: 1.00}, expect: false}
+  - {id: CO-708-T3, as_of: "2026-10-01", given: {date_of_birth: "1998-06-01", is_pregnant: true, citizenship_status: citizen, lawful_presence_status: unknown, attested_household_income_pct_fpl: 2.10}, expect: true}

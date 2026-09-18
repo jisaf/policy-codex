@@ -1,0 +1,17 @@
+id: CO-996
+name: "CCCAP: meets the asset self-declaration limit"
+identifier: cccap_meets_asset_limit
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether this adult caretaker's or teen parent's combined liquid and non-liquid assets do not exceed the cccap_asset_limit, under 8 CCR 1403-1 3.111.H.4.c's self-declaration requirement.
+precision: Sums countable_liquid_resources and countable_nonliquid_resources_snap for this person only, the same facts snap_household_resources (CO-343) reads; 3.111.H.4.c is a self-declaration by the adult caretaker(s) or teen parent(s), not a household-wide sum, so this item is not summed over cccap_household_members.
+derived: ["<=", [+, countable_liquid_resources, countable_nonliquid_resources_snap], cccap_asset_limit]
+sources: [S515]
+implemented: engine
+tags: [resources]
+rationale: "No existing item states 3.111.H.4.c's asset ceiling (docs/reviews/cccap-leap-phase-6.md, K-3): 'a stated, unambiguous, dollar-valued eligibility condition with a directly available fact ... no item.' The nearest same-shape item is snap_household_resources (CO-343), which reads the same two supplied facts at the household level; this item reads them per person instead, per 3.111.H.4.c's own 'adult caretakers or teen parents shall self-declare' language. cccap_low_income_child_care_eligible (CO-987) reads it."
+tests:
+  - {id: CO-996-T1, as_of: "2026-10-01", given: {countable_liquid_resources: 5000, countable_nonliquid_resources_snap: 10000}, expect: true}
+  - {id: CO-996-T2, as_of: "2026-10-01", given: {countable_liquid_resources: 600000, countable_nonliquid_resources_snap: 500000}, expect: false}

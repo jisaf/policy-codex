@@ -1,0 +1,12 @@
+id: CO-201
+name: Needy newborn age limit, years
+identifier: ma_needy_newborn_age_limit_years
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The age, in whole years, under which a child whose mother was enrolled in Medicaid at birth is continuously eligible as an "Eligible Needy Newborn," under 10 CCR 2505-10 8.100.4.G.7 ("continuously eligible for one year") and 42 CFR 435.117(b) ("until the child's first birthday").
+value: 1
+sources: [S211, S212]
+tags: [ma, magi, age]
+rationale: "No existing item carries this age. ma_is_needy_newborn (CO-550) needs it as a parameter rather than an inline digit (governance name.digits)."

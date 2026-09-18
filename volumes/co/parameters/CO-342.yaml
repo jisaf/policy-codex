@@ -1,0 +1,16 @@
+id: CO-342
+name: LEAP eligibility period start month (November)
+identifier: leap_eligibility_period_start_month
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: The calendar month number (1-12) the annual LEAP "Eligibility Period" and "Program Year" begin - November - under 9 CCR 2503-7 3.751.1.
+precision: A month-of-year number, not a specific year's month; leap_month_in_eligibility_period (CO-1008) and leap_program_year_start_month (CO-1006) read it together with leap_eligibility_period_end_month (CO-343) to compute the six-month November-through-April window for any program year.
+versions:
+  - from: "2014-12-01"
+    value: 11
+    source: S510
+sources: [S510]
+tags: [household]
+rationale: No existing item in this volume states the LEAP program year's start month; the review (docs/reviews/cccap-leap-phase-6.md, C-3) found the chapter had no eligibility-period test at all and proposed exactly this parameter. leap_program_year_start_month (CO-1006) and leap_month_in_eligibility_period (CO-1008) read it.

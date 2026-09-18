@@ -1,0 +1,13 @@
+id: CO-244
+name: Working Adults with Disabilities minimum age
+identifier: ma_wawd_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The minimum age for the Medicaid Buy-In Program for Working Adults with Disabilities, per 10 CCR 2505-10 8.100.6.P.1.a ("Applicants must be at least age 16").
+precision: The cited text states no upper age bound for WAwD; this item does not invent one.
+value: 16
+sources: [S317]
+tags: [ma, non_magi, buy_in, age]
+rationale: "No existing item states the WAwD minimum age. ma_wawd_eligible (CO-618) needs it."

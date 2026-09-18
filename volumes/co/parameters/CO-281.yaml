@@ -1,0 +1,11 @@
+id: CO-281
+name: Colorado Works work participation hours per week, single parent with a child under six
+identifier: cw_work_participation_hours_per_week_young_child
+kind: parameter
+type: hours
+scope: global
+program: ColoradoWorks
+meaning: The reduced minimum weekly average hours of participation for a single custodial parent or caretaker relative with a child under six, per 45 CFR 261.35.
+value: 20
+sources: [S420]
+rationale: "No existing parameter states this figure; cw_meets_work_participation (CO-920) needs it, distinct from the general cw_work_participation_hours_per_week (CO-280). Fix round (M-5): corrected the item id in this rationale (was CO-919, which is cw_is_work_eligible_individual, a different item)."

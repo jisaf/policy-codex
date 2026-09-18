@@ -1,0 +1,21 @@
+id: CO-644
+name: "Medicaid: is institutionalized spouse for spousal protection"
+identifier: ma_is_institutionalized_spouse
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether this person is an "institutionalized spouse" for purposes of spousal protection - in a medical institution or nursing facility, receiving Home and Community Based Services, or enrolled in PACE, and expected to remain so for at least 30 consecutive days - per 10 CCR 2505-10 § 8.100.7.K.2.a-c.
+precision: § 8.100.7.K.2.d's further condition, that the person is married to a spouse who is not institutionalized, is tested separately by ma_ltc_couple (CO-643), which also requires this fact.
+derived: [all, [any, in_medical_institution, [not, [=, meets_hcbs_waiver_target_group, "none"]], is_enrolled_in_pace], expects_institutional_stay_of_thirty_days]
+sources: [S354]
+implemented: engine
+tags: [ma, ltc, legal]
+rationale: "No existing item states § 8.100.7.K.2.a-c's institutionalized-spouse-for-spousal-protection test on its own; ma_is_institutionalized (CO-640) tests only the medical-institution setting (§ 8.100.7.A.2.c), and misses the PACE and HCBS routes § 8.100.7.K.2.b-c add for spousal protection specifically - the gap the phase-4 review's C-2 finding identifies. ma_ltc_couple (CO-643) needs this broader test instead of CO-640, so that an HCBS or PACE participant with a community spouse reaches the CSRA, MIA and home-equity spouse exception."
+nearest: [CO-640]
+tests:
+  - {id: CO-644-T1, as_of: "2026-10-01", given: {in_medical_institution: true, meets_hcbs_waiver_target_group: "none", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: true}, expect: true}
+  - {id: CO-644-T2, as_of: "2026-10-01", given: {in_medical_institution: false, meets_hcbs_waiver_target_group: "ebd", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: true}, expect: true}
+  - {id: CO-644-T3, as_of: "2026-10-01", given: {in_medical_institution: false, meets_hcbs_waiver_target_group: "none", is_enrolled_in_pace: true, expects_institutional_stay_of_thirty_days: true}, expect: true}
+  - {id: CO-644-T4, as_of: "2026-10-01", given: {in_medical_institution: false, meets_hcbs_waiver_target_group: "none", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: true}, expect: false}
+  - {id: CO-644-T5, as_of: "2026-10-01", given: {in_medical_institution: true, meets_hcbs_waiver_target_group: "none", is_enrolled_in_pace: false, expects_institutional_stay_of_thirty_days: false}, expect: false}

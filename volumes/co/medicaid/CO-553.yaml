@@ -1,0 +1,19 @@
+id: CO-553
+name: "Medicaid: is eligible for MAGI Medical Assistance"
+identifier: ma_magi_is_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible for Medical Assistance under the MAGI rules this volume models - meets Colorado residency, meets the citizenship requirement (or is limited to emergency Medicaid only), and qualifies under at least one MAGI covered group.
+precision: True for both full and emergency-only coverage; ma_magi_eligibility_status (CO-554) is where the two are distinguished.
+derived: [all, ma_meets_residency, [any, ma_meets_citizenship_requirement, ma_is_emergency_medicaid_only], [not, [=, ma_magi_category, "none"]]]
+sources: [S171, S172, S173, S175]
+implemented: engine
+tags: [ma, magi, immigration]
+rationale: "No existing item combines residency, citizenship, and category into a single yes/no fact. Not itself a declared outcome (the batch instructions name only ma_magi_category and ma_magi_eligibility_status as role: outcome), but ma_magi_eligibility_status (CO-554) and CHP+'s cross-program 'not eligible for Medicaid' test both need it as a plain pass/fail, distinct from ma_magi_eligibility_status's more granular reason code."
+tests:
+  - {id: CO-553-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_is_emergency_medicaid_only: false, ma_magi_category: child}, expect: true}
+  - {id: CO-553-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: false, ma_is_emergency_medicaid_only: true, ma_magi_category: "none"}, expect: false}
+  - {id: CO-553-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: false, ma_meets_citizenship_requirement: true, ma_is_emergency_medicaid_only: false, ma_magi_category: adult}, expect: false}
+  - {id: CO-553-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_is_emergency_medicaid_only: false, ma_magi_category: "none"}, expect: false}

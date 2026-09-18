@@ -1,0 +1,19 @@
+id: CO-562
+name: "Medicaid: is fully eligible for MAGI Medical Assistance (not emergency-only)"
+identifier: ma_magi_is_fully_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible for full-scope MAGI Medical Assistance benefits, as distinct from the emergency-only benefit 42 CFR 435.406(b) and 10 CCR 2505-10 8.100.3.G.1.g.viii.2 grant to a person who otherwise qualifies but fails citizenship - meets Colorado residency, meets the citizenship requirement itself (not merely the emergency-only carve-out), and qualifies under at least one MAGI covered group.
+precision: Distinct from ma_magi_is_eligible (CO-553), which is true for both full and emergency-only coverage. This item is what 10 CCR 2505-3-120.1.B's "eligible to receive assistance under Title XIX" exclusion and 42 CFR 457.310(b)(2)(i)'s "found eligible or potentially eligible for Medicaid" mean for CHP+'s purposes, per the phase-3 review's C-10 finding - a person whose only Title XIX entitlement is emergency services has nothing CHP+ needs to defer to.
+derived: [all, ma_meets_residency, ma_meets_citizenship_requirement, [not, [=, ma_magi_category, "none"]]]
+sources: [S171, S172, S173, S175]
+implemented: engine
+tags: [ma, magi, immigration]
+rationale: "No existing item distinguishes full Medicaid eligibility from emergency-only eligibility for a downstream reader that needs only the former. Added in the fix round per the phase-3 review's C-10 finding: CO-553 (ma_magi_is_eligible) is true for an emergency-only person, and CHP+'s chp_child_is_eligible/chp_prenatal_is_eligible/chp_eligibility_status (CO-705/706/707) had been reading it directly for their 'not eligible for Medicaid' test, which would wrongly deny CHP+ to a pregnant or child applicant whose only Title XIX entitlement is emergency services. Those three items are edited by this fix round to read ma_magi_is_fully_eligible instead."
+tests:
+  - {id: CO-562-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_magi_category: child}, expect: true}
+  - {id: CO-562-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: false, ma_magi_category: adult}, expect: false}
+  - {id: CO-562-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_magi_category: "none"}, expect: false}
+  - {id: CO-562-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: false, ma_meets_citizenship_requirement: true, ma_magi_category: adult}, expect: false}

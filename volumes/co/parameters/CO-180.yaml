@@ -1,0 +1,13 @@
+id: CO-180
+name: MAGI household child age limit
+identifier: ma_magi_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The age, in whole years, under which a person counts as a "child" for MAGI household-composition purposes under 42 CFR 435.603(f)(3)(ii)-(iii) and 10 CCR 2505-10 8.100.4.E.1.c-d.
+precision: 42 CFR 435.603(f)(3)(iv) lets a state elect 19, or 19 (21 for full-time students); Colorado's 8.100.4.E.1.d states 19 without a student extension, so this parameter carries 19 for every case.
+value: 19
+sources: [S161, S169]
+tags: [ma, magi, household, age, state_election]
+rationale: "No existing item carries this age; ma_magi_household_members (CO-500) needs it as a parameter, not an inline digit, so the identifier does not encode a value (governance name.digits). Colorado's rule text (8.100.4.E.1.d, S169) does not adopt the federal option's full-time-student extension to 21, so this parameter states Colorado's plain 19 rather than the two-branch federal default."

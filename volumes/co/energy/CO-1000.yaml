@@ -1,0 +1,26 @@
+id: CO-1000
+name: "LEAP: household members"
+identifier: leap_household_members
+kind: derived
+type: group of persons
+scope: person
+program: LEAP
+meaning: The individuals living together as one economic unit for whom primary heating fuel is customarily purchased in common, or who make undesignated payments for heat in the form of rent, under 9 CCR 2503-7 3.751.1's "Household" definition, excluding a member who does not meet the citizenship/lawful-presence requirement of 3.753.17 (whose income is still counted, see leap_household_members_for_income, CO-1009) - a spouse, or a child under eighteen living in the same dwelling as the parent or guardian (unless emancipated), per 3.751.2.D, or anyone the case states shares heating fuel in common under 3.751.1's general economic-unit test, reciprocally closed.
+precision: As with snap_household_members (CO-305), a stated spouse or parent/child relationship edge is read as living together for LEAP purposes, extended beyond 3.751.2.D's unconditional age-based joins by the supplied shares_heating_fuel_with (CO-895, see OQ-132, which also notes this cannot join two people with no relationship edge at all); this volume does not separately model 3.751.2.E's separate-household election for a parent living with an ex-spouse after divorce or legal separation, or 3.751.21's permanent-separation test.
+derived: [filter, [reachable, [spouse, parent, child], [any, [rel, [spouse], [P]], [all, [rel, [parent], [P]], [any, ["<", [of, [P], age], leap_household_child_age_limit], [otherwise, [of, [P], shares_heating_fuel_with], false]], [not, [otherwise, [of, [P], is_emancipated_minor], false]]], [all, [rel, [child], [P]], [any, ["<", age, leap_household_child_age_limit], [otherwise, shares_heating_fuel_with, false]], [not, [otherwise, is_emancipated_minor, false]]]]], [of, [P], leap_meets_citizenship_requirement]]
+sources: [S489, S490, S494]
+open: [OQ-132]
+implemented: engine
+tags: [household]
+rationale: "No existing item in this volume built the LEAP household closure from 3.751.1's own household definition; the prior version was built from 3.751.2.D's floor on splitting instead (review docs/reviews/cccap-leap-phase-6.md, C-1, blocking) and counted a 3.753.17-excluded individual as a member (C-2, blocking). leap_household_size (CO-1001) and leap_household_income (CO-1002, via leap_household_members_for_income, CO-1009) both need this fixed closure."
+tests:
+  - {id: CO-1000-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", citizenship_status: citizen}, others: {p2: {date_of_birth: "1981-03-01", citizenship_status: citizen}, p4: {date_of_birth: "2009-04-08", citizenship_status: citizen}}, relationships: [[spouse, p1, p2], [parent, p1, p4]], expect: [p1, p2, p4]}
+  - {id: CO-1000-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", citizenship_status: citizen}, relationships: [], expect: [p1]}
+  # From the child's own perspective the edge to the parent is crossed because the child is under eighteen.
+  - {id: CO-1000-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", citizenship_status: citizen}, others: {p3: {date_of_birth: "1985-01-22", citizenship_status: citizen}, p5: {date_of_birth: "2026-02-03", citizenship_status: citizen}}, relationships: [[parent, p3, p1], [parent, p1, p5]], expect: [p1, p3, p5]}
+  # An adult child living with her parents may be a separate LEAP household unless the case states she shares heating fuel with them (3.751.2.D.2 joins only children under eighteen unconditionally).
+  - {id: CO-1000-T4, as_of: "2026-10-01", given: {date_of_birth: "1947-05-10", citizenship_status: citizen}, others: {p2: {date_of_birth: "1945-08-30", citizenship_status: citizen}, p3: {date_of_birth: "1984-06-15", citizenship_status: citizen, shares_heating_fuel_with: false}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p2]}
+  # Same facts, but the adult daughter's household states she shares heating fuel with her parents.
+  - {id: CO-1000-T5, as_of: "2026-10-01", given: {date_of_birth: "1947-05-10", citizenship_status: citizen}, others: {p2: {date_of_birth: "1945-08-30", citizenship_status: citizen}, p3: {date_of_birth: "1984-06-15", citizenship_status: citizen, shares_heating_fuel_with: true}}, relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], expect: [p1, p2, p3]}
+  # 3.753.17: an undocumented spouse is excluded from household membership although the economic unit reaches him.
+  - {id: CO-1000-T6, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", citizenship_status: citizen}, others: {p2: {date_of_birth: "1981-03-01", citizenship_status: undocumented}}, relationships: [[spouse, p1, p2]], expect: [p1]}

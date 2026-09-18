@@ -1,0 +1,16 @@
+id: CO-607
+name: "Medicaid: SSI-related countable income"
+identifier: ma_ssi_countable_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's total countable income for SSI-related, OAP and Medicare Savings Program purposes for the month - the sum of ma_ssi_countable_earned_income and ma_ssi_countable_unearned_income - compared against the income standards of 10 CCR 2505-10 8.100.5.H and 8.100.6.
+derived: [+, ma_ssi_countable_earned_income, ma_ssi_countable_unearned_income]
+sources: [S308]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item combines the earned and unearned countable income totals. ma_meets_ssi_income_standard (CO-609) and the MSP/Buy-In income tests all need this single figure. CO-01's p1 (gross unearned income 1420+610=2030, countable income 2010 after the $20 general exclusion) is the worked example in the batch report; either figure exceeds the $994 FBR, so ma_meets_ssi_income_standard's result is the same."
+tests:
+  - {id: CO-607-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, social_security_income: 1420, pension_income: 610, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: true}, others: {}, relationships: [], expect: 2010}
+  - {id: CO-607-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, social_security_income: 1180, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {p2: {in_medical_institution: true}}, relationships: [[spouse, p2]], expect: 1160}

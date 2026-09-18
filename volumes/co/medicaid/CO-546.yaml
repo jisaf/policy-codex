@@ -1,0 +1,19 @@
+id: CO-546
+name: "Medicaid: meets the Pregnant Women MAGI category"
+identifier: ma_is_pregnant_category
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person meets the Pregnant Women MAGI Medical Assistance category under 10 CCR 2505-10 8.100.4.G.5 - currently pregnant, with household income at or below ma_magi_income_standard_pregnant, applying the 5% income disregard of 42 CFR 435.603(d)(4) and 8.100.4.D as the last step only if income above the plain standard would otherwise make the person ineligible.
+precision: "Reads is_pregnant directly; this item does not itself extend coverage through the postpartum period (see ma_postpartum_coverage_end_month, CO-560, and 8.100.4.G.5's coverage-period sentence). Per 42 CFR 435.603(d)(4), the disregard disjunct is gated on ma_magi_income_standard_pregnant being this person's highest standard (ma_magi_highest_income_standard_pct, CO-539, fix round) - the phase-3 review's C-2 finding; in practice this is always true for a pregnant person, since 185% exceeds every other group's standard, but the gate is stated so the rule does not silently rely on that being permanently true."
+derived: [all, is_pregnant, [any, ["<=", ma_magi_household_income_pct_fpl, ma_magi_income_standard_pregnant], [all, [=, ma_magi_income_standard_pregnant, ma_magi_highest_income_standard_pct], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_magi_income_standard_pregnant]]]]
+sources: [S209, S165, S168]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item states the Pregnant-Women-category test. ma_magi_category (CO-551) needs it, listed after the Children's category per the phase-3 brief's mandatory-group ordering. Fix round: gated the disregard disjunct on ma_magi_highest_income_standard_pct (CO-539) per the phase-3 review's C-2 finding."
+tests:
+  - {id: CO-546-T1, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: true, ma_magi_household_income_pct_fpl: 1.80, ma_magi_highest_income_standard_pct: 1.85}, expect: true}
+  - {id: CO-546-T2, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: true, ma_magi_household_income_pct_fpl: 1.89, ma_magi_highest_income_standard_pct: 1.85}, expect: true}
+  - {id: CO-546-T3, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: true, ma_magi_household_income_pct_fpl: 2.00, ma_magi_highest_income_standard_pct: 1.85}, expect: false}
+  - {id: CO-546-T4, as_of: "2026-10-01", month: "2026-10", given: {is_pregnant: false, ma_magi_household_income_pct_fpl: 0.50, ma_magi_highest_income_standard_pct: 1.85}, expect: false}

@@ -1,0 +1,15 @@
+id: CO-350
+name: Colorado Works earned income disregard rate (payment computation)
+identifier: cw_earned_income_disregard_rate
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: The fraction of gross earned income disregarded when computing the payment amount, both at application (once the unit has passed the $90 eligibility test) and for a unit already receiving basic cash assistance, per 9 CCR 2503-6 3.606.2.A.1's second sentence and 3.606.2.A.2's second sentence.
+versions:
+  - from: "2025-07-01"
+    value: 0.67
+    source: S416
+sources: [S416]
+rationale: "No existing parameter states the 67% payment disregard rate; cw_earned_income_disregard_dollar (CO-273) carries only the flat $90 eligibility-test figure 3.606.2.A.1's first sentence states, acknowledged as the nearest same-shape parameter, but it is a different dollar-versus-rate figure for a different step (the eligibility test, not the payment). cw_payment_countable_earned_income (CO-922) needs this rate."
+nearest: [CO-273]

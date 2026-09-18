@@ -1,0 +1,17 @@
+id: CO-552
+name: "Medicaid: meets a MAGI category's non-income requirements"
+identifier: ma_meets_some_category_demographics
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person meets at least one MAGI covered group's non-income requirements (age, pregnancy, dependent-child relationship, or former-foster-care history) regardless of whether their household income is within that group's standard - used to distinguish a person who has no income-eligible category from a person who has no category at all, whatever their income.
+precision: "Restates each category rule's own non-income conditions rather than reading the category rules themselves, because ma_is_child_category and its siblings already combine the demographic test with the income test and cannot be asked for only one half. The Parents/Caretaker demographic term no longer tests minimum essential coverage, mirroring CO-547's fix-round edit (C-3): the MEC condition belongs to the Adults category's own demographic term instead."
+derived: [any, [<, age, ma_magi_child_age_limit], is_pregnant, [exists_related, [parent, caretaker], [of, [P], ma_is_dependent_child]], [all, [">=", age, ma_magi_child_age_limit], [<, age, ma_adult_upper_age_limit], [not, is_pregnant], [not, is_medicare_entitled_or_enrolled], [not, [exists_related, [parent, caretaker], [all, [<, [of, [P], age], ma_magi_child_age_limit], [not, [of, [P], dependent_child_has_minimum_essential_coverage]]]]]], [all, [<, age, ma_former_foster_care_age_limit], was_foster_youth_at_eighteen, was_enrolled_in_medicaid_at_foster_care_exit], [all, [<, age, ma_needy_newborn_age_limit_years], mother_was_enrolled_in_medicaid_at_birth]]
+sources: [S201, S209, S203, S207, S213, S211]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item separates a category's demographic conditions from its income test. ma_magi_eligibility_status (CO-554) needs this to report 'ineligible_income' (fits a category's demographics but is over income) rather than 'ineligible_no_category' (fits none at all, such as an elderly Medicare-entitled person excluded from the Adults category by age and Medicare status alone) for a person whose ma_magi_category is 'none'. Fix round: mirrored CO-547/CO-548's C-3 MEC relocation."
+tests:
+  - {id: CO-552-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_pregnant: false, is_medicare_entitled_or_enrolled: false, was_foster_youth_at_eighteen: false, was_enrolled_in_medicaid_at_foster_care_exit: false, mother_was_enrolled_in_medicaid_at_birth: false}, relationships: [], expect: true}
+  - {id: CO-552-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1947-03-12", is_pregnant: false, is_medicare_entitled_or_enrolled: true, was_foster_youth_at_eighteen: false, was_enrolled_in_medicaid_at_foster_care_exit: false, mother_was_enrolled_in_medicaid_at_birth: false}, relationships: [], expect: false}

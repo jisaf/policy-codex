@@ -1,0 +1,20 @@
+id: CO-544
+name: "Medicaid: is a dependent child"
+identifier: ma_is_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is a "dependent child" for purposes of the Parents and Caretaker Relatives and Adults MAGI categories, under 42 CFR 435.4's definition - under ma_dependent_child_age_limit (18), or that age and a full-time secondary student.
+precision: "This batch does not model 435.4's second dependent-child criterion (deprivation of parental support by reason of a parent's death, absence, incapacity, or unemployment): Colorado's MAGI conversion of the categorically needy groups (8.100.4.G.3) states the dependent-child test without a deprivation clause, consistent with MAGI's general elimination of AFDC-era deprivation and resource rules, so this item follows Colorado's simpler test - see OQ-50."
+derived: [any, [<, age, ma_dependent_child_age_limit], [all, [=, age, ma_dependent_child_age_limit], is_enrolled_in_school]]
+sources: [S206]
+open: [OQ-50]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item states the dependent-child test. ma_is_parent_caretaker_category (CO-547) and ma_is_adult_category's minimum-essential-coverage condition (via ma_is_parent_caretaker_category's own test) both need it. Not the same test as ma_is_child_category (CO-545), which uses the household-composition child age (ma_magi_child_age_limit, 19) and an income test rather than the parent/caretaker category's own dependent-child age (ma_dependent_child_age_limit, 18) and school-enrollment extension."
+tests:
+  - {id: CO-544-T1, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01", is_enrolled_in_school: false}, expect: true}
+  - {id: CO-544-T2, as_of: "2026-10-01", given: {date_of_birth: "2008-10-01", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-544-T3, as_of: "2026-10-01", given: {date_of_birth: "2008-10-01", is_enrolled_in_school: false}, expect: false}
+  - {id: CO-544-T4, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_enrolled_in_school: false}, expect: false}

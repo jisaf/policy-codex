@@ -1,0 +1,12 @@
+id: CO-320
+name: CCCAP eligible child age limit
+identifier: cccap_eligible_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: The upper age limit (exclusive) under which a child qualifies as a CCCAP eligible child without needing verified additional care needs.
+value: 13
+sources: [S482]
+tags: [age]
+rationale: 8 CCR 1403-1 3.111.F (S482) sets the base "eligible child" age at birth to thirteen years; cccap_is_eligible_child (CO-980) reads it.

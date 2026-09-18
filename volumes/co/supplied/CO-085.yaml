@@ -1,0 +1,13 @@
+id: CO-085
+name: Dependent child has minimum essential coverage
+identifier: dependent_child_has_minimum_essential_coverage
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether a dependent child under 19 living in the household of a parent or caretaker relative has minimum essential coverage, as 10 CCR 2505-10 8.100.4.G.4.a and 42 CFR 435.119(c)(1) require in order for the parent or caretaker relative to qualify for the Adults MAGI category - not the Parents and Caretaker Relatives category, which 8.100.4.G.3 states with no MEC condition (corrected in the fix round per the phase-3 review's C-3 finding, which found this item's own meaning had attached the condition to both categories).
+precision: Stated once per dependent child, on that child's own record; a parent or caretaker relative's category rule reads it through the child's own supplied fact (`of` a related person), not as a fact about the parent.
+supplied_by: Applicant statement (CBMS/PEAK); minimum essential coverage per 42 CFR 435.4 (26 U.S.C. 5000A(f)) is verified through an electronic data source where available.
+sources: []
+tags: [ma, magi, household]
+rationale: "No existing item carries this fact. 10 CCR 2505-10 8.100.4.G.3 and 8.100.4.G.4.a (batch 6's own cited sections) condition the Parents and Caretaker Relatives and Adults MAGI categories on a dependent child having minimum essential coverage; ma_is_parent_caretaker_category (CO-547) needs a single fact rather than re-deriving 'minimum essential coverage' from the child's own Medical Assistance eligibility, which the phase-3 brief offers as an alternative this batch does not take because it would make the parent/caretaker rule depend on the child's own category rule circularly through the shared household."

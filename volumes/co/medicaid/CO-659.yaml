@@ -1,0 +1,19 @@
+id: CO-659
+name: "Medicaid: transfer penalty period, partial-month days"
+identifier: ma_transfer_penalty_days
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: The number of additional days of ineligibility, beyond the whole months of ma_transfer_penalty_months, for an uncompensated transfer of assets - thirty days times the decimal fractional share of the partial month, rounded up to the nearest whole number - per 10 CCR 2505-10 § 8.100.7.F.2.d.
+precision: Recomputes the raw (unfloored) division 8.100.7.F.2.c.i states and subtracts ma_transfer_penalty_months (CO-649), the floor of that same division, to isolate the fractional part, since the pattern catalog has no operator that returns a division's fractional remainder directly.
+derived: [case, [transfer_was_exempt, 0], [else, ["ceil", ["*", 30, ["-", ["/", uncompensated_transfer_value_in_lookback, transfer_penalty_divisor], ma_transfer_penalty_months]]]]]
+sources: [S365, S366, S379]
+implemented: engine
+tags: [ma, ltc, legal]
+rationale: "No existing item states § 8.100.7.F.2.d's partial-month day arithmetic; ma_transfer_penalty_months (CO-649) reports only whole months as of the phase-4 review's C-6 fix. Not a bare alias of CO-649: it recomputes the raw uncompensated-value-over-divisor figure to recover the fractional remainder CO-649's floor discards, then applies § 8.100.7.F.2.d's 30-day multiplication and round-up."
+nearest: [CO-649]
+tests:
+  - {id: CO-659-T1, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 56500, transfer_penalty_divisor: 9000, transfer_was_exempt: false, ma_transfer_penalty_months: 6}, expect: 9}
+  - {id: CO-659-T2, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: false, ma_transfer_penalty_months: 5}, expect: 0}
+  - {id: CO-659-T3, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: true, ma_transfer_penalty_months: 0}, expect: 0}

@@ -1,0 +1,20 @@
+id: CO-549
+name: "Medicaid: meets the Former Foster Care Children category"
+identifier: ma_is_former_foster_care_category
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets the Former Foster Care Children Medical Assistance category under 42 CFR 435.150(b) and 10 CCR 2505-10 8.100.4.H.2.a - under ma_former_foster_care_age_limit (26), exited foster care at an age from 18 through ma_former_foster_care_exit_age_max (21), and was enrolled in Medicaid at the point their foster care assistance ended.
+precision: "Not subject to an income or resource test, per 8.100.4.H.2.b - this item's own test does not read income at all, and no income test is added downstream for a person in this category. Fix round (C-9): the exit-age test now reads age_at_foster_care_exit (CO-095) against the range [18, ma_former_foster_care_exit_age_max], replacing was_foster_youth_at_eighteen's single age-18 test, per 8.100.4.H.2.a's own text ('on their 18th, 19th, 20th or up to their 21st birthday'), which Colorado's extended foster care program makes a real population, not an edge case."
+derived: [all, [<, age, ma_former_foster_care_age_limit], [">=", age_at_foster_care_exit, 18], ["<=", age_at_foster_care_exit, ma_former_foster_care_exit_age_max], was_enrolled_in_medicaid_at_foster_care_exit]
+sources: [S213, S214]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item states the Former Foster Care category test. ma_magi_category (CO-551) needs it, listed after Parents/Caretaker Relatives and before Adults per the phase-3 brief's mandatory-group ordering (matching 435.150(b)(2)'s condition that a person not otherwise be eligible for mandatory coverage under 435.110-435.145, which this volume reaches by listing this category before Adults but after the other mandatory groups in the case expression). Fix round (C-9): replaced was_foster_youth_at_eighteen (which only ever tested exit at exactly 18) with age_at_foster_care_exit (CO-095) compared against the 18-21 band 8.100.4.H.2.a states, plus the new parameter ma_former_foster_care_exit_age_max (CO-225, value 21), per the phase-3 review's finding that the item's own identifier name was the policy error (was_foster_youth_at_eighteen cannot represent an exit at 19 or 20 at all)."
+tests:
+  - {id: CO-549-T1, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", age_at_foster_care_exit: 18, was_enrolled_in_medicaid_at_foster_care_exit: true}, expect: true}
+  - {id: CO-549-T2, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", age_at_foster_care_exit: 18, was_enrolled_in_medicaid_at_foster_care_exit: false}, expect: false}
+  - {id: CO-549-T3, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", age_at_foster_care_exit: 18, was_enrolled_in_medicaid_at_foster_care_exit: true}, expect: false}
+  - {id: CO-549-T4, as_of: "2026-10-01", title: "Fix round (C-9): Colorado extended foster care - exit at 20 is covered, not only exit at 18", given: {date_of_birth: "2002-05-20", age_at_foster_care_exit: 20, was_enrolled_in_medicaid_at_foster_care_exit: true}, expect: true}
+  - {id: CO-549-T5, as_of: "2026-10-01", title: "Fix round (C-9): exit at 22 is over ma_former_foster_care_exit_age_max (21)", given: {date_of_birth: "2004-05-20", age_at_foster_care_exit: 22, was_enrolled_in_medicaid_at_foster_care_exit: true}, expect: false}

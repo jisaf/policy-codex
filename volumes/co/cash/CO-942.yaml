@@ -1,0 +1,19 @@
+id: CO-942
+name: "Adult Financial: meets residency requirement"
+identifier: af_meets_residency
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person is a resident of Colorado and not barred from Adult Financial programs as a fleeing felon, per C.R.S. 26-2-111(1)(a) and 9 CCR 2503-5 3.520.61.B and 3.520.64.A-B.
+precision: Reads state_of_residence directly, the same as ma_meets_residency (CO-505); adds the 3.520.61.B fleeing-felon exclusion, which the Medicaid residency test does not carry, so this item's derivation is not identical to CO-505's.
+derived: [all, [=, state_of_residence, colorado_state_code], [not, is_fleeing_felon_or_probation_violator]]
+sources: [S441, S449, S450]
+implemented: engine
+tags: [cash, oap, and, ab, household]
+rationale: No existing item states Adult Financial residency. af_category (CO-953) needs it. Reuses colorado_state_code (CO-184) rather than a bare literal, the same as ma_meets_residency (CO-505); acknowledged as a similar-shaped test to CO-505, but not identical to it because 3.520.61.B's fleeing-felon exclusion has no Medicaid counterpart in this volume.
+nearest: [CO-505]
+tests:
+  - {id: CO-942-T1, as_of: "2026-10-01", given: {state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: true}
+  - {id: CO-942-T2, as_of: "2026-10-01", given: {state_of_residence: "WY", is_fleeing_felon_or_probation_violator: false}, expect: false}
+  - {id: CO-942-T3, as_of: "2026-10-01", given: {state_of_residence: "CO", is_fleeing_felon_or_probation_violator: true}, expect: false}

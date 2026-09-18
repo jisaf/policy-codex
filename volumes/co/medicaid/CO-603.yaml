@@ -1,0 +1,16 @@
+id: CO-603
+name: "Medicaid: is aged, blind, or disabled"
+identifier: ma_is_aged_blind_or_disabled
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets any one of the three SSI-related non-financial categories - aged, blind, or disabled - per 42 U.S.C. 1382c(a)(1)(A) and 10 CCR 2505-10 8.100.6.A.
+derived: [any, ma_is_aged, is_blind, is_disabled_ssa]
+sources: [S303, S304, S305]
+implemented: engine
+tags: [ma, non_magi, age, disability]
+rationale: "No existing item combines the three prongs. ma_is_ssi_related_eligible (CO-611) needs the combined test. Reads is_blind and is_disabled_ssa directly rather than through ma_is_blind/ma_is_disabled, per the phase-4 review's minor finding (fix-round C-15): those two items were single-element [all, x] wrappers with no added meaning over the supplied SSA/SSI determination, and were withdrawn (formerly CO-601, CO-602)."
+tests:
+  - {id: CO-603-T1, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12", is_blind: false, is_disabled_ssa: false}, expect: true}
+  - {id: CO-603-T2, as_of: "2026-10-01", given: {date_of_birth: "1980-01-01", is_blind: false, is_disabled_ssa: false}, expect: false}

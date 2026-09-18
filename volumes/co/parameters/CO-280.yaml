@@ -1,0 +1,11 @@
+id: CO-280
+name: Colorado Works work participation hours per week
+identifier: cw_work_participation_hours_per_week
+kind: parameter
+type: hours
+scope: global
+program: ColoradoWorks
+meaning: The minimum weekly average hours of participation in work activities for a work-eligible individual's family to count as engaged in work in the overall participation rate, per 45 CFR 261.31(a)(1).
+value: 30
+sources: [S419]
+rationale: "No existing parameter states this figure; cw_meets_work_participation (CO-920) needs it. Fix round (M-5): corrected the item id in this rationale (was CO-919, which is cw_is_work_eligible_individual, a different item)."

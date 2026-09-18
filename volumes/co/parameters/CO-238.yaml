@@ -1,0 +1,12 @@
+id: CO-238
+name: QMB income limit, percentage of FPL
+identifier: ma_qmb_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The income limit for Qualified Medicare Beneficiary eligibility, as a decimal fraction of the federal poverty level, per 42 U.S.C. 1396d(p)(2)(B)(iii) (100% for medical assistance on or after January 1, 1991) and 10 CCR 2505-10 8.100.6.L.2.c.
+value: 1.0
+sources: [S312, S316]
+tags: [ma, non_magi, msp, income]
+rationale: "No existing item states the QMB income limit. ma_qmb_eligible (CO-613) needs it as a parameter rather than a literal 1.0, matching how the batch-6 MAGI standards parameterize their FPL percentages."

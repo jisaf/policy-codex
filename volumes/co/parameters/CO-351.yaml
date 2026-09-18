@@ -1,0 +1,17 @@
+id: CO-351
+name: Colorado Works need standard by number of children (no caretaker)
+identifier: cw_need_standard_table_no_caretaker
+kind: parameter
+type: table keyed by household size
+scope: global
+program: ColoradoWorks
+meaning: The monthly need standard for a child-only assistance unit with no caretaker member, under 9 CCR 2503-6 3.606.1.F's Colorado Works Standards of Assistance Chart's "No Caretaker" row, keyed by the number of dependent children (0-10) - a unit of zero children and zero caretakers is $0, since there is then no one in the unit.
+versions:
+  - from: "2025-07-01"
+    value: { "0": 0, "1": 117, "2": 245, "3": 368, "4": 490, "5": 587, "6": 678, "7": 755, "8": 830, "9": 904, "10": 977 }
+    source: S414
+open: [OQ-101]
+rationale: "No existing parameter states the 'No Caretaker' row; cw_need_standard_table (CO-274, the acknowledged nearest same-shape parameter) carries only the 'One Caretaker' row of the same 3.606.1.F chart. Added under the fix-round C-5 finding that the chart's three rows (No Caretaker, One Caretaker, Two Caretakers) are all needed, keyed by number of children, not one row keyed by total unit size. cw_need_standard (CO-911) needs it for a unit with a payee who is not a caretaker member."
+nearest: [CO-274]
+sources: [S414]
+tags: [cash, tanf, household]

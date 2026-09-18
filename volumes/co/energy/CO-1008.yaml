@@ -1,0 +1,20 @@
+id: CO-1008
+name: "LEAP: month is in the eligibility period"
+identifier: leap_month_in_eligibility_period
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+meaning: Whether this month falls within the LEAP "Eligibility Period" / "Program Year" - November 1st through April 30th - under 9 CCR 2503-7 3.751.1, the period 3.752.1 also states applications are accepted for (with eligibility not effective before November 1st) and 3.754.1.J makes a denial factor.
+precision: "Computed as the six consecutive months from leap_program_year_start_month (CO-1006) through the following April; does not separately model the April 30 weekend/holiday extension 3.751.1 states (a day-level extension this volume's month-scoped facts cannot express) or 3.752.1's application-timing denial factor (3.754.1.J) beyond the month test itself. Modeled at scope person-month rather than month for the same engine-constraint reason as CO-1006 (see its precision and OQ-132); the value does not depend on the person."
+derived: ["<=", [count_months, [months_from_to, leap_program_year_start_month, [month]], true], [+, [+, ["-", leap_eligibility_period_end_month, leap_eligibility_period_start_month], 12], 1]]
+sources: [S510, S491]
+implemented: engine
+tags: [household]
+rationale: "No existing item tests the LEAP eligibility period; the review (docs/reviews/cccap-leap-phase-6.md, C-3, blocking) found leap_is_eligible (CO-1007) had no month condition at all, so the chapter found households eligible for a heating-season benefit in October. leap_is_eligible (CO-1007) reads it as a conjunct."
+tests:
+  - {id: CO-1008-T1, as_of: "2026-10-01", month: "2026-10", given: {}, expect: false}
+  - {id: CO-1008-T2, as_of: "2026-11-01", month: "2026-11", given: {}, expect: true}
+  - {id: CO-1008-T3, as_of: "2026-12-01", month: "2026-12", given: {}, expect: true}
+  - {id: CO-1008-T4, as_of: "2027-04-01", month: "2027-04", given: {}, expect: true}
+  - {id: CO-1008-T5, as_of: "2027-05-01", month: "2027-05", given: {}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-344
+name: LEAP income limit, 60 percent state median income, each additional person (illustrative)
+identifier: leap_income_limit_monthly_each_additional
+kind: parameter
+type: money
+scope: global
+program: LEAP
+meaning: The monthly dollar amount added to the LEAP 60% state median income ceiling for each household member above eight, under 9 CCR 2503-7 3.752.22.D.
+precision: Backed out of CCCAP's 85% SMI each-additional figure (8 CCR 1403-1 3.111.H.2, S485, $276.47) the same way leap_income_limit_monthly (CO-875) backs out its table - $276.47 / 0.85 x 0.60 = $195.16. See CO-875's precision for why this is illustrative rather than LEAP's own fetched figure.
+versions:
+  - from: "2024-10-01"
+    value: 195.16
+    source: S485
+sources: [S485]
+open: [OQ-122]
+tags: [income, household]
+rationale: "The nearest existing item is cccap_smi_income_limit_each_additional (CO-341), the CCCAP each-additional figure this parameter is backed out of; leap_income_limit_monthly (CO-875) needs its own each-additional figure for a household above size 8, the same shape cccap_income_within_entry_limit (CO-986) already uses for CO-323/CO-324 and CO-340/CO-341."

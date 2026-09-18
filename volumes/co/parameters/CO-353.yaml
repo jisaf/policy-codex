@@ -1,0 +1,17 @@
+id: CO-353
+name: Colorado Works need standard by number of children (two caretakers)
+identifier: cw_need_standard_table_two_caretakers
+kind: parameter
+type: table keyed by household size
+scope: global
+program: ColoradoWorks
+meaning: The monthly need standard for a two-caretaker assistance unit (a two-parent case under 9 CCR 2503-6 3.604.2.B), under 3.606.1.F's Colorado Works Standards of Assistance Chart's "Two Caretakers" row, keyed by the number of dependent children (0-10).
+versions:
+  - from: "2025-07-01"
+    value: { "0": 357, "1": 439, "2": 533, "3": 628, "4": 716, "5": 787, "6": 861, "7": 937, "8": 1009, "9": 1082, "10": 1155 }
+    source: S414
+open: [OQ-101]
+rationale: "No existing parameter states the 'Two Caretakers' row; cw_need_standard_table (CO-274, the acknowledged nearest same-shape parameter) carries only the 'One Caretaker' row of the same 3.606.1.F chart. Added under the fix-round C-5 finding, since 3.604.2.B expressly contemplates two-parent cases ('Two parent household cases will be paid with county maintenance of effort (MOE) funds') and 3.606.1.F states a distinct standard for them. cw_need_standard (CO-911) needs it."
+nearest: [CO-274]
+sources: [S414]
+tags: [cash, tanf, household]

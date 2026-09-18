@@ -34,25 +34,25 @@ programs:
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: []
+    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment]
   - id: CHP+
     prefix: chp_
-    outcomes: []
+    outcomes: [chp_eligibility_status]
   - id: SNAP
     prefix: snap_
     outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: []
+    outcomes: [cw_grant_amount, cw_eligibility_status]
   - id: AdultFinancial
     prefix: af_
-    outcomes: []
+    outcomes: [af_category, af_oap_grant, af_and_grant]
   - id: CCCAP
     prefix: cccap_
-    outcomes: []
+    outcomes: [cccap_eligibility_status]
   - id: LEAP
     prefix: leap_
-    outcomes: []
+    outcomes: [leap_is_eligible]
 
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
 tags:
@@ -64,6 +64,7 @@ tags:
   - { id: buy_in, parent: ma, label: Buy-In programs }
   - { id: msp, parent: ma, label: Medicare Savings Programs }
   - { id: emergency, parent: ma, label: Emergency and limited coverage }
+  - { id: chp, label: Child Health Plan Plus }
   - { id: snap, label: SNAP }
   - { id: abawd, parent: snap, label: ABAWD time limit }
   - { id: work_registration, parent: snap, label: Work registration }
