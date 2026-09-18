@@ -55,7 +55,7 @@ Worked:
 Did not fit cleanly:
 - The 133%/142% child gap: Colorado's rule defers to an HCPF income chart this session cannot fetch (403), so children between the MAGI-equivalent 133% standard and the CHP+ 142% floor fall in a gap the volume cannot close (OQ-63, blocking).
 - The CHP+ enrollment fee: the fetched § 300 has no operative text on Cornell's mirror; the item was removed and OQ-57 records the provenance gap to re-fetch from the Colorado SOS.
-- Governance's `derived.alias` rule pushes authors to wrap a bare reference in `[all, x]` (CO-601, CO-602, CO-700); the wrapper is an alias in disguise and the right fix is to read the underlying fact directly. Flagged for the final cross-volume review.
+- Governance's `derived.alias` rule pushes authors to wrap a bare reference in `[all, x]` (CO-601, CO-602, CO-700); the wrapper is an alias in disguise and the right fix is to read the underlying fact directly. CO-700 was removed in the phase 6 wrap-up (the CHP+ rules read the MAGI age rule directly); CO-601 and CO-602 go in the phase 4 fix round.
 - Not modeled, recorded as open questions: the (f)(2)(ii)/(iii) household exceptions and a `lives_with` fact (OQ-42), the community engagement requirement of 42 CFR 435.119(d) for the adult group (OQ-65; the mwr volume models it), cost-sharing exemptions and copayments (OQ-64), the SSA-benefit exclusion from the dependent filing threshold.
 - Concurrency: three authors in one working tree collide on half-written YAML during another author's check run; each batch was committed from a staged, isolated tree. A per-author worktree would remove the noise.
 
