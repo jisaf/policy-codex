@@ -32,6 +32,18 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: true
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -80,6 +92,10 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         unemployment_income: 0
         child_support_received: 0
@@ -103,6 +119,18 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: true
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -145,6 +173,10 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         pension_income: 0
         unemployment_income: 0
@@ -168,6 +200,17 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        lawful_presence_status: not_lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -206,7 +249,12 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         social_security_income: 0
         pension_income: 0
@@ -230,6 +278,18 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: false
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -268,7 +328,12 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         social_security_income: 0
         pension_income: 0
@@ -292,6 +357,18 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: false
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -329,7 +406,12 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        is_medicare_entitled_or_enrolled: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         social_security_income: 0
@@ -360,8 +442,26 @@
   # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
   # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
   # net rounded up (660) = 125.
+  # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
+  # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
+  # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
+  # (104.5% FPL for 3); undocumented and not pregnant, so emergency-only, while
+  # her income sits within the adult standard (category adult). p4 is claimed
+  # by her parent, so her household is p3's: child category, eligible, with
+  # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
+  # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
+  # children are Medicaid-eligible and so not CHP+ eligible.
   expect:
     p1:
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-10": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-10": false}
+      chp_eligibility_status: {"2026-10": ineligible}
       snap_household_members: []
       snap_eligible_household_members: []
       snap_household_size: 0
@@ -371,6 +471,15 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p2:
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-10": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-10": false}
+      chp_eligibility_status: {"2026-10": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -384,6 +493,15 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-10": 2380}
+      ma_meets_citizenship_requirement: false
+      ma_is_emergency_medicaid_only: true
+      ma_magi_category: {"2026-10": adult}
+      ma_magi_eligibility_status: {"2026-10": emergency_only}
+      ma_continuous_eligibility_applies: {"2026-10": false}
+      chp_eligibility_status: {"2026-10": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -397,6 +515,15 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-10": 2380}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-10": child}
+      ma_magi_eligibility_status: {"2026-10": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true}
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -410,6 +537,15 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 0}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-10": child}
+      ma_magi_eligibility_status: {"2026-10": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true}
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -431,12 +567,26 @@
     - [parent, p2, p3]
     - [parent, p3, p4]
     - [parent, p4, p5]
+    - [tax_filer, p3, p4]
+    - [tax_filer, p3, p5]
     - [buys_prepares_with, p2, p3]
     - [buys_prepares_with, p3, p4]
     - [buys_prepares_with, p4, p5]
   persons:
     p1:
       facts:
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: true
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -481,6 +631,10 @@
         meets_nursing_facility_level_of_care: true
         countable_resources_couple: 46000
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         unemployment_income: 0
@@ -503,6 +657,18 @@
         pension_income: 610
     p2:
       facts:
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: true
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: true
         qualifying_quarters: 40
         receives_ssi: false
         is_disabled_ssa: false
@@ -543,6 +709,10 @@
         state_of_residence: CO
         in_medical_institution: false
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         pension_income: 0
@@ -565,6 +735,19 @@
         social_security_income: 1180
     p3:
       facts:
+        is_medicare_entitled_or_enrolled: false
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        lawful_presence_status: not_lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -602,6 +785,10 @@
         citizenship_status: undocumented
         state_of_residence: CO
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         self_employment_net_income: 0
         social_security_income: 0
         pension_income: 0
@@ -624,6 +811,18 @@
         hours_worked: 138
     p4:
       facts:
+        is_medicare_entitled_or_enrolled: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: true
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -662,6 +861,10 @@
         state_of_residence: CO
         is_enrolled_in_school: true
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         social_security_income: 0
@@ -684,6 +887,19 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        is_medicare_entitled_or_enrolled: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        lawful_presence_status: lawfully_present
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-01"
+        attested_household_income_pct_fpl: 0
+        is_tax_filer: false
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -721,6 +937,10 @@
         citizenship_status: citizen
         state_of_residence: CO
       month_defaults:
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
         earned_income: 0
         self_employment_net_income: 0
         social_security_income: 0
@@ -749,8 +969,26 @@
   # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
   # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
   # net rounded up (660) = 125.
+  # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
+  # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
+  # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
+  # (104.5% FPL for 3); undocumented and not pregnant, so emergency-only, while
+  # her income sits within the adult standard (category adult). p4 is claimed
+  # by her parent, so her household is p3's: child category, eligible, with
+  # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
+  # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
+  # children are Medicaid-eligible and so not CHP+ eligible.
   expect:
     p1:
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-11": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-11": none}
+      ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-11": false}
+      chp_eligibility_status: {"2026-11": ineligible}
       snap_household_members: []
       snap_eligible_household_members: []
       snap_household_size: 0
@@ -760,6 +998,15 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p2:
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-11": 3210}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-11": none}
+      ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
+      ma_continuous_eligibility_applies: {"2026-11": false}
+      chp_eligibility_status: {"2026-11": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -773,6 +1020,15 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-11": 2380}
+      ma_meets_citizenship_requirement: false
+      ma_is_emergency_medicaid_only: true
+      ma_magi_category: {"2026-11": adult}
+      ma_magi_eligibility_status: {"2026-11": emergency_only}
+      ma_continuous_eligibility_applies: {"2026-11": false}
+      chp_eligibility_status: {"2026-11": ineligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -786,6 +1042,15 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_magi_household_members: [p3, p4, p5]
+      ma_magi_household_size: 3
+      ma_magi_household_income: {"2026-11": 2380}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-11": child}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-11": true}
+      chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
@@ -799,6 +1064,15 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-11": 0}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: false
+      ma_magi_category: {"2026-11": child}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-11": true}
+      chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
       snap_household_members: [p2, p3, p4, p5]
       snap_eligible_household_members: [p2, p4, p5]
       snap_household_size: 3
