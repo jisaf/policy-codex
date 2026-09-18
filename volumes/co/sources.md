@@ -2696,3 +2696,141 @@ Document: D-64
 8 CCR 1403-1-3.111.D.6. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
 
 > 6. Adult caretakers or teen parents that are not determined work eligible per Colorado Works Program rule (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB) above, who are caring for children receiving Basic Cash Assistance through the Colorado Works Program are not eligible for Colorado Works Child Care but may be eligible for Low-Income Child Care if the adult caretaker or teen parent meets all other Low-Income program criteria.
+
+### S523. Disqualified or ineligible persons removed from the assistance unit
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.M. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604
+
+> M. Penalties for Disqualified or Ineligible Persons Persons who are required members of the assistance unit, but who are disqualified from receiving or are ineligible to receive Colorado Works basic cash assistance or diversion due to program prohibitions or violations, shall be removed from the assistance unit for the purposes of determining the assistance unit size. Disqualified individual's' income must be considered when determining eligibility without applying income disregards. The following disqualified or ineligible individuals shall have such month counted as a month of participation in the calculation of their overall sixty-month (60) lifetime maximum as referenced in section 3.606.6 when a grant payment is received for others in the assistance unit.
+
+### S524. Pregnancy allowance
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.G. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> G. Pregnancy Allowance Upon verification of pregnancy, pregnant parents are eligible for the basic cash assistance grant plus a ten dollar ($10.00) pregnancy allowance. The client is eligible for the pregnancy allowance through the month in which the pregnancy ends.
+
+### S525. Exemption from the sixty-month time limit for Indian Country
+
+Document: D-61
+
+9 CCR 2503-6 3.606.6.F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> F. Exemptions From the 60-Month Time Limit Any month of receipt of assistance by an adult while living in Indian Country, or a Native Alaskan village where at least fifty percent (50%) of the adults were not employed, shall not be counted toward the sixty (60) cumulative months of Federal TANF assistance. Indian Country is defined in 18 U.S.C. Section 1151.
+
+### S526. Twenty percent statewide cap on extensions
+
+Document: D-61
+
+9 CCR 2503-6 3.606.6.G. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> G. Twenty Percent (20%) Allocation of Extensions Up to twenty percent (20%) of the Statewide caseload receiving Colorado Works may be granted an extension beyond the sixty (60) month time limit due to hardship or domestic violence.
+
+### S527. Members of the budgetary unit
+
+Document: D-61
+
+9 CCR 2503-6 3.604.2.D.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604
+
+> D. Members of the Budgetary Unit
+> 1. The following individuals must be included in the budgetary unit:
+> a. Any individual who is part of the assistance unit (to include optional members of the assistance unit who requested assistance) regardless of whether or not the individual is eligible to receive assistance.
+> b. The spouse of a parent or non-parent caretaker who requested assistance, regardless of whether or not the spouse has requested assistance for themselves.
+> c. The unborn child of a pregnant parent.
+> d. The non-recipient parent(s) of a minor parent.
+> e. The sponsor of a non-citizen who is part of the assistance unit (whether or not the non-citizen is themselves eligible to receive Colorado Works grant payments).
+
+### S528. Budgetary unit income reported and compared to the need standard
+
+Document: D-61
+
+9 CCR 2503-6 3.606.1.J.1-3. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.606
+
+> J. Reporting of Earned Income When the assistance unit reports earned income:
+> 1. Apply the appropriate earned income disregards to the gross earned income of each employed member of the budgetary unit as described in Section 3.606.2; and,
+> 2. Add the unearned income received by each member of the budgetary unit; and,
+> 3. Compare the total to the need standard for the household size.
+
+### S529. AND-SO client's duty to apply for SSI and SSDI
+
+Document: D-62
+
+9 CCR 2503-5 3.520.75.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> B. The AND-SO client shall apply for Supplemental Security Income (SSI) benefits. If the client has work hours during his or her lifetime, the client shall also apply for Social Security Disability Insurance (SSDI). The client shall report any denial for SSI benefits. The client shall appeal all negative decisions regarding their SSI eligibility.
+
+### S530. Adult Financial age ranges, including blindness within the AND-SO band
+
+Document: D-62
+
+9 CCR 2503-5 3.520.61.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.520
+
+> A. Be eighteen (18) through fifty-nine (59) years of age for AND-SO (unless diagnosed with blindness, then age zero (0) through 59 years of age); age 0 through 59 years of age for AND-CS; and age sixty (60) years of age or older for OAP; and,
+
+### S512. LEAP non-vulnerable living arrangements (full list, B.1-B.8)
+
+Document: D-63
+
+9 CCR 2503-7-3.752.25.B. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> B. Households in the following living arrangements shall not be considered to be vulnerable:
+> 1. Institutional group care facilities, public or private, such as nursing homes, foster care homes, group homes, substance abuse treatment centers, or other such living arrangements where the provider is liable for the costs of shelter and home heating, in part or in full, on behalf of such individuals;
+> 2. Room and board, bed and breakfast;
+> 3. Correctional facilities;
+> 4. Dormitory, fraternity or sorority house;
+> 5. Subsidized housing as defined in the "Definitions" section of these rules which does not have an individual check meter for heat for each unit or which cannot provide other evidence of responsibility for paying home heating surcharges;
+> 6. Any applicant, or applicant household who is considered homeless or resides in non-traditional dwellings;
+> 7. Commercial accounts or commercial properties that also serve as the client's dwelling;
+> 8. Hotels, unless proof that the household has lived or will live in the hotel continuously for thirty (30) calendar days at the time of application and that heat is included in rent. Proof may be shown by providing a monthly statement, billing statement or receipt indicating the monthly arrangement.
+
+### S513. LEAP vulnerability: subsidized housing with an individual check meter or surcharge (3.752.25.A.3)
+
+Document: D-63
+
+9 CCR 2503-7-3.752.25.A.3. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.752
+
+> 3. The household resides in subsidized housing as defined in the "Definitions" Section of these rules; and, 1) the unit has an individual meter which identifies specific heating usage of that unit and the household is subject to increased cost for home heating, or 2) the tenant is subject to a heating surcharge assessed by means other than an individual meter. Such surcharges may include percentage fees assessed to the tenant for home heating. Excess utility charges are to be specific to home heating and verified by the County Department/Contractor. Under no circumstances shall rental costs be assumed to be subject to change due to an increase in home heating costs unless otherwise verified by the county department/Contractor.
+
+### S514. CCCAP child citizenship/legal residency verification (3.111.F.1)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.F.1. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> 1. All children who have had an application made on their behalf or are receiving child care assistance shall verify that they are a citizen/legal resident and provide proof of identity if inconsistent, in accordance with rule section 3.111©(2)(b).
+
+### S515. CCCAP asset self-declaration (3.111.H.4.c)
+
+Document: D-64
+
+8 CCR 1403-1-3.111.H.4.c. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> c. Adult caretakers or teen parents shall self-declare that their liquid and non-liquid assets do not exceed one million dollars. If assets exceed one million dollars the household is ineligible for CCCAP.
+
+### S533. AND-CS SSI verification through SVES or SDX
+
+Document: D-62
+
+9 CCR 2503-5 3.547.A. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.547
+
+> A. To meet the disability eligibility requirement for AND-CS, the client must be approved for SSI due to a disability or blindness. The county department shall verify SSI eligibility through SVES or SDX and document in the statewide automated system case comments.
+
+### S498. Married couples' income treatment: institutionalization ends mutual availability the month after
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.C.2.b. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 2. The income and resources of both spouses are counted in determining eligibility for either or both spouses with the following exceptions:
+> b. Beginning the first month following the month the couple ceases to live together, only the income of the individual spouse is counted in determining his or her eligibility.
+
+### S499. 2026 Substantial Gainful Activity (SGA) monthly amounts
+
+Document: D-58
+
+91 Fed. Reg. (SSA 2026 COLA determination). https://www.ssa.gov/OACT/COLA/sga.html
+
+> (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,830 in 2026. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,690.

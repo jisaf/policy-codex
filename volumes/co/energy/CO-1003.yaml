@@ -6,13 +6,16 @@ type: yes/no
 scope: person-month
 program: LEAP
 meaning: Whether the LEAP household's countable income (leap_household_income, CO-1002) is at or below sixty percent of the state median income level for the household's size, under 9 CCR 2503-7 3.752.22.D.
-precision: Reads the supplied leap_income_limit_monthly (CO-877) fact, the already-computed 60% SMI dollar ceiling for this person's household size (see OQ-122).
-derived: ["<=", leap_household_income, leap_income_limit_monthly]
-sources: [S491]
+precision: Reads leap_income_limit_monthly (CO-875, corrected citation - not CO-877, which is has_primary_heating_source), a parameter table keyed by household size (see OQ-122), looked up by this person's leap_household_size (CO-1001) with leap_income_limit_monthly_each_additional (CO-344) added per member above 8, the same shape cccap_income_within_entry_limit (CO-986) uses.
+derived: ["<=", leap_household_income, [+, [lookup, leap_income_limit_monthly, [min, leap_household_size, 8]], ["*", leap_income_limit_monthly_each_additional, [max, 0, ["-", leap_household_size, 8]]]]]
+sources: [S491, S485]
 open: [OQ-122]
 implemented: engine
 tags: [income]
-rationale: No existing item states the LEAP income test; leap_is_eligible (CO-1007) needs it.
+rationale: "No existing item states the LEAP income test. Keyed to leap_household_size per the review (docs/reviews/cccap-leap-phase-6.md, C-13, should-fix): the ceiling is a function of household size but the prior per-person supplied fact was never tied to leap_household_size (CO-1001), so two members of the same household could be given different ceilings and a fix to the household closure could silently strand every case's supplied figure."
 tests:
-  - {id: CO-1003-T1, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 1180, leap_income_limit_monthly: 3200}, expect: true}
-  - {id: CO-1003-T2, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 5000, leap_income_limit_monthly: 3200}, expect: false}
+  - {id: CO-1003-T1, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 1180, leap_household_size: 2}, expect: true}
+  - {id: CO-1003-T2, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 5000, leap_household_size: 2}, expect: false}
+  # Household size above 8 exercises leap_income_limit_monthly_each_additional.
+  - {id: CO-1003-T3, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 9160, leap_household_size: 10}, expect: true}
+  - {id: CO-1003-T4, as_of: "2026-10-01", month: "2026-10", given: {leap_household_income: 9400, leap_household_size: 10}, expect: false}

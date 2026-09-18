@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: LEAP
-meaning: Whether this household pays home heating costs directly to a vendor and is subject to home heating cost increases, or pays them in the form of rent or a separate charge in a non-subsidized dwelling, or has a comparable subsidized-housing heating surcharge, per 9 CCR 2503-7 3.752.25.A.
+meaning: Whether this household pays home heating costs directly to a vendor and is subject to home heating cost increases (3.752.25.A.1), or pays them in the form of rent or a separate charge in a non-subsidized dwelling (A.2), or, in subsidized housing, has an individual check meter for heat or another verified basis for a heating surcharge (A.3, S513) - as distinct from the 3.752.25.B.5 subsidized-housing arrangement leap_is_vulnerable_to_heating_cost (CO-1004) still does not model, where no check meter or surcharge evidence exists and the household is accordingly not vulnerable.
 supplied_by: County department/contractor's verification of the household's heating cost responsibility (3.752.25.D).
-sources: [S492]
+sources: [S492, S513]
 tags: [household]
-rationale: "3.752.25.A's vulnerability test turns on the household actually being responsible for home heating costs, a determination this volume has no shared fact for. leap_is_vulnerable_to_heating_cost (CO-1004) needs it."
+rationale: "3.752.25.A's vulnerability test turns on the household actually being responsible for home heating costs, a determination this volume has no shared fact for. leap_is_vulnerable_to_heating_cost (CO-1004) needs it. Meaning clarified per the review (docs/reviews/cccap-leap-phase-6.md, C-14, should-fix): the same fact cannot both establish vulnerability under A.3's check-meter/surcharge arm and be silent about B.5's no-check-meter exclusion, so this item's meaning now names A.3 explicitly and defers B.5 to OQ-158 rather than implying it already covers both."

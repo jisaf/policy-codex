@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: This person's (and, if living together, their spouse's) combined unearned income for the month - Social Security, pension, unemployment, other unearned income, and in-kind support and maintenance - after the $20 general income exclusion of 20 CFR 416.1124(c)(12) and 10 CCR 2505-10 8.100.5.H.4.a.
 precision: Combines the same spouse-living-together group ma_ssi_countable_earned_income (CO-605) uses, before applying one $20 exclusion to the combined total. Excludes cash_assistance_income (SSI, OAP-A, TANF and General Assistance are exempt under 8.100.5.F.6.y) and child_support_received (8.100.5.H.4.c reduces it by one-third instead of applying the general disregard, which this item does not model - see OQ-83).
-derived: [max, 0, ["-", [sum, [reachable, [spouse], [all, [not, in_medical_institution], [not, [of, [P], in_medical_institution]]]], [+, [of, [P], social_security_income], [of, [P], pension_income], [of, [P], unemployment_income], [of, [P], other_unearned_income], [of, [P], in_kind_support_and_maintenance]]], ma_ssi_general_income_exclusion]]
+derived: [max, 0, ["-", ma_ssi_household_unearned_income_sum, ma_ssi_general_income_exclusion]]
 sources: [S308, S310]
 open: [OQ-83]
 implemented: engine

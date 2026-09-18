@@ -5,15 +5,16 @@ kind: derived
 type: whole number
 scope: person
 program: Medicaid
-meaning: 1 for a person with no spouse, or with a spouse who is not living with them (including an institutionalized spouse), or 2 for a person living together with a spouse who is not institutionalized - the household size 10 CCR 2505-10 8.100.5.H.1.a's "mutually available" rule and 8.100.6.L.3's couple income comparison for QMB, SLMB and QI1 both key off.
-precision: Living together is modeled as neither spouse being in a medical institution (in_medical_institution), since a spouse who has entered a facility is no longer sharing a household for SSI-related income purposes; batch 9's spousal impoverishment rules govern the LTC couple's resource and income treatment once one spouse is institutionalized, so this item's size-1 result for an institutionalized couple is intentional, not an omission.
-derived: [count, [reachable, [spouse], [all, [not, in_medical_institution], [not, [of, [P], in_medical_institution]]]]]
-sources: [S308]
+meaning: 1 for a person with no spouse, or with a spouse who is not living with them (including an institutionalized spouse, beginning the month after admission), or 2 for a person living together with a spouse who is not institutionalized or was admitted this same month - the household size 10 CCR 2505-10 8.100.5.H.1.a's "mutually available" rule and 8.100.6.L.3's couple income comparison for QMB, SLMB and QI1 both key off.
+precision: Living together is modeled as neither spouse counting as ma_excluded_from_ssi_household (CO-661), which is true for an institutionalized spouse only beginning the first day of the month after institution_entry_date per § 8.100.7.C.2.b - the phase-4 review's C-21 finding; in the admission month itself the couple's incomes are still mutually available (§ 8.100.5.H.1.a) and household size stays 2. Batch 9's spousal impoverishment rules govern the LTC couple's resource and income treatment from that point.
+derived: [count, [reachable, [spouse], [all, [not, ma_excluded_from_ssi_household], [not, [of, [P], ma_excluded_from_ssi_household]]]]]
+sources: [S308, S498]
 implemented: engine
 tags: [ma, non_magi, income, resources, household]
 rationale: "No existing item states the SSI-related household size test. ma_ssi_countable_earned_income, ma_ssi_countable_unearned_income (CO-605, CO-606), ma_ssi_countable_resources (CO-608), and the QMB/SLMB/QI/QDWI rules (CO-613-CO-616) all need the same 1-or-2 test rather than each re-deriving the spouse-living-together closure."
 tests:
-  - {id: CO-604-T1, as_of: "2026-10-01", given: {in_medical_institution: false}, others: {}, relationships: [], expect: 1}
-  - {id: CO-604-T2, as_of: "2026-10-01", given: {in_medical_institution: false}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 2}
-  - {id: CO-604-T3, as_of: "2026-10-01", given: {in_medical_institution: false}, others: {p2: {in_medical_institution: true}}, relationships: [[spouse, p2]], expect: 1}
-  - {id: CO-604-T4, as_of: "2026-11-01", given: {in_medical_institution: true}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 1}
+  - {id: CO-604-T1, as_of: "2026-10-01", given: {ma_excluded_from_ssi_household: false}, others: {}, relationships: [], expect: 1}
+  - {id: CO-604-T2, as_of: "2026-10-01", given: {ma_excluded_from_ssi_household: false}, others: {p2: {ma_excluded_from_ssi_household: false}}, relationships: [[spouse, p2]], expect: 2}
+  - {id: CO-604-T3, as_of: "2026-10-01", given: {ma_excluded_from_ssi_household: false}, others: {p2: {ma_excluded_from_ssi_household: true}}, relationships: [[spouse, p2]], expect: 1}
+  - {id: CO-604-T4, as_of: "2026-10-15", given: {in_medical_institution: true, institution_entry_date: "2026-10-05"}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 2}
+  - {id: CO-604-T5, as_of: "2026-11-01", given: {in_medical_institution: true, institution_entry_date: "2026-10-05"}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 1}

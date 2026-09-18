@@ -1,0 +1,12 @@
+id: CO-889
+name: Spouse or dependent child resides in the individual's home
+identifier: spouse_or_dependent_child_resides_in_home
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether this person's spouse, or a child of this person who is under 21 or blind or permanently and totally disabled of any age, is lawfully residing in this person's home, per 42 U.S.C. 1396p(f)(2).
+supplied_by: County eligibility worker's household-composition determination (CBMS household screen), from the applicant's statement and verification of who resides in the home.
+sources: [S370]
+tags: [ma, ltc, resources, legal, household]
+rationale: "ma_home_equity_disqualifies (CO-650) read ma_ltc_couple - whether a spouse exists and is not in an institution - as the 1396p(f)(2) exception, but that fact asks nothing about who lives in the home: it excuses a couple whose community spouse lives with relatives and disqualifies an unmarried applicant whose disabled adult child lives in the home - the phase-4 review's C-20 finding. No existing item asks whether anyone specifically resides in the individual's home."

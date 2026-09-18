@@ -1,0 +1,11 @@
+id: CO-850
+name: Is requesting assistance for their own child
+identifier: is_requesting_assistance_for_own_child
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: A minor parent has applied for Colorado Works assistance on behalf of her own dependent child, per 9 CCR 2503-6 3.604.2.C.1.b's exception ("unless the child is a minor parent who is requesting assistance for their own child") and 3.604.2.N.3.d (a minor parent who is not requesting assistance for her own child "will receive assistance as a child" in her own parent's unit if approved).
+supplied_by: Colorado Works application (which child(ren) the household is requesting assistance for), county case record.
+sources: [S408, S411]
+rationale: "No existing fact captures whether a minor parent is requesting assistance for her own child; cw_assistance_unit_members (CO-900) needs it under the phase-5 review's C-12 finding, which shows the prior edge condition (severing a minor parent from her own caretaker parent whenever she cw_has_dependent_child, with no reference to a request) gives the wrong unit composition once the baby is itself excluded from every assistance unit (e.g., an SSI-receiving infant) - the minor parent is then not requesting assistance for that child at all, and 3.604.2.N.3.d puts her back in her own parent's unit as a child."

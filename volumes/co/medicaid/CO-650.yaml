@@ -6,14 +6,13 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether this person's home equity exceeds the current home equity limit, disqualifying them from nursing facility or other Long-Term Care assistance, unless a spouse is lawfully residing in the home, per 42 U.S.C. 1396p(f) and 10 CCR 2505-10 § 8.100.5.M.3.
-precision: Models only the spouse-in-the-home exception (via ma_ltc_couple); does not model the dependent-child-in-the-home exception 1396p(f)(2)(B) states, since no fact for it exists in this batch - see OQ-92.
-derived: [all, [">", home_equity, home_equity_limit], [not, ma_ltc_couple]]
+precision: Reads spouse_or_dependent_child_resides_in_home (CO-889), not ma_ltc_couple, per the phase-4 review's C-20 finding - 1396p(f)(2) excuses the disqualification when the spouse, or a child under 21, or a blind or permanently disabled child of any age, "is lawfully residing in the individual's home," which is a question about who lives in the home, not whether a community spouse exists apart from the institution. This also resolves OQ-92's dependent-child gap, since the new fact's meaning already covers the child branch.
+derived: [all, [">", home_equity, home_equity_limit], [not, spouse_or_dependent_child_resides_in_home]]
 sources: [S369, S370]
-open: [OQ-92]
 implemented: engine
 tags: [ma, ltc, resources, legal]
 rationale: "No existing item tests the home equity disqualification. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it. The target household's p1 (home equity 210000, well under any plausible limit, and a community spouse living there) is the worked example in the batch report."
 tests:
-  - {id: CO-650-T1, as_of: "2026-10-01", given: {home_equity: 900000, home_equity_limit: 730000, ma_ltc_couple: false}, expect: true}
-  - {id: CO-650-T2, as_of: "2026-10-01", given: {home_equity: 900000, home_equity_limit: 730000, ma_ltc_couple: true}, expect: false}
-  - {id: CO-650-T3, as_of: "2026-10-01", given: {home_equity: 210000, home_equity_limit: 730000, ma_ltc_couple: false}, expect: false}
+  - {id: CO-650-T1, as_of: "2026-10-01", given: {home_equity: 900000, home_equity_limit: 730000, spouse_or_dependent_child_resides_in_home: false}, expect: true}
+  - {id: CO-650-T2, as_of: "2026-10-01", given: {home_equity: 900000, home_equity_limit: 730000, spouse_or_dependent_child_resides_in_home: true}, expect: false}
+  - {id: CO-650-T3, as_of: "2026-10-01", given: {home_equity: 210000, home_equity_limit: 730000, spouse_or_dependent_child_resides_in_home: false}, expect: false}

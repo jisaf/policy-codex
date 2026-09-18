@@ -1,0 +1,16 @@
+id: CO-355
+name: Colorado Works pregnancy allowance
+identifier: cw_pregnancy_allowance
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: The additional monthly amount added to the basic cash assistance grant for a pregnant parent, upon verification of pregnancy, through the month the pregnancy ends, per 9 CCR 2503-6 3.606.1.G.
+versions:
+  - from: "2025-07-01"
+    value: 10
+    source: S524
+rationale: "No existing parameter states this figure; cw_grant_amount (CO-914) needs it under the phase-5 review's K-4 finding, which names 3.606.1.G's ten-dollar pregnancy allowance as unmodeled. Same shape as cw_need_standard_each_additional (CO-275), the acknowledged nearest same-shape parameter (a flat dollar add-on the same chart section states), but a flat per-unit addition rather than a per-child table entry."
+nearest: [CO-275]
+sources: [S524]
+tags: [cash, tanf]

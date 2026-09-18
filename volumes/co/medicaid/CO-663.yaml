@@ -1,0 +1,17 @@
+id: CO-663
+name: "Medicaid: SSI-related household gross unearned income"
+identifier: ma_ssi_household_unearned_income_sum
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's (and, if living together, their spouse's) combined gross unearned income for the month - Social Security, pension, unemployment, other unearned income, and in-kind support and maintenance - before any exclusion, per 10 CCR 2505-10 8.100.5.H.4.a.
+precision: The same spouse-living-together group sum ma_ssi_countable_unearned_income (CO-606) applies the $20 general exclusion to, extracted as its own item so ma_ssi_countable_earned_income (CO-605) can read the pre-exclusion total directly, per 20 CFR 416.1124(c)(12)'s carryover of any unused part of the $20 exclusion to earned income - the phase-4 review's C-9 finding.
+derived: [sum, [reachable, [spouse], [all, [not, in_medical_institution], [not, [of, [P], in_medical_institution]]]], [+, [of, [P], social_security_income], [of, [P], pension_income], [of, [P], unemployment_income], [of, [P], other_unearned_income], [of, [P], in_kind_support_and_maintenance]]]
+sources: [S308, S310]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item exposes the SSI-related household's combined unearned income before the $20 exclusion; ma_ssi_countable_unearned_income (CO-606) previously computed it inline and discarded it. ma_ssi_countable_earned_income (CO-605) needs the pre-exclusion figure to find how much of the $20 exclusion is unused."
+tests:
+  - {id: CO-663-T1, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 1420, pension_income: 610, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {}, relationships: [], expect: 2030}
+  - {id: CO-663-T2, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0, in_medical_institution: false}, others: {}, relationships: [], expect: 0}

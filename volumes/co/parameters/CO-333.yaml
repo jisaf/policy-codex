@@ -1,0 +1,16 @@
+id: CO-333
+name: Substantial Gainful Activity (SGA) monthly amount, blind
+identifier: ma_sga_blind
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a statutorily blind person, per 42 U.S.C. 423(d)(4) as published annually.
+versions:
+  - from: "2026-01-01"
+    value: 2830
+    source: S499
+sources: [S499]
+tags: [ma, non_magi, disability]
+rationale: "documents/D-58.md:71 states the 2026 SGA amounts for blind and non-blind workers separately; nearest: ma_sga_non_blind (CO-332) - the phase-4 review's G-4 finding."
+nearest: [CO-332]

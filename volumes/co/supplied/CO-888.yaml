@@ -1,0 +1,12 @@
+id: CO-888
+name: Countable resources (couple), snapshot at institutionalization
+identifier: countable_resources_couple_at_snapshot
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: The couple's total countable resources as assessed at the start of the institutionalized spouse's first continuous period of institutionalization - the § 8.100.7.L snapshot the CSRA is computed from and, per § 8.100.7.M.1, "established at intake only."
+supplied_by: County eligibility worker's Resource Assessment (CBMS resource screen completed at the § 8.100.7.L assessment), from verified account statements and property records for both spouses as of the snapshot date.
+sources: [S355]
+tags: [ma, ltc, resources]
+rationale: "countable_resources_couple (CO-801) is read both as the § 8.100.7.L intake snapshot (by ma_csra, CO-646) and as the current-month figure § 8.100.7.O.1 tests each month (by ma_institutionalized_spouse_countable_resources, CO-647), so the two can never differ and spend-down cannot be expressed - the phase-4 review's C-13 finding. This item is the snapshot only; CO-801 becomes the current-month figure CO-647 subtracts the CSRA from. ma_csra (CO-646) needs it."

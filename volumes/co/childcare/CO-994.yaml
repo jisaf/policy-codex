@@ -1,0 +1,17 @@
+id: CO-994
+name: "CCCAP: protective services household income"
+identifier: cccap_protective_services_income
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: For a Protective Services household, the only countable income under 8 CCR 1403-1 3.119.A - the income received by the placed child(ren), excluding child support (which is intercepted by the county child welfare department and not counted).
+precision: A Protective Services household is a household of one for income purposes (3.119.A), so this reads the evaluated person's own income directly rather than summing cccap_household_members (CO-982); when the branch is evaluated for the placed child, that child's own income is what counts, per 3.119.A's plain terms.
+derived: [+, earned_income, self_employment_net_income, social_security_income, pension_income, unemployment_income, other_unearned_income]
+sources: [S488]
+implemented: engine
+tags: [income, household]
+rationale: "No existing item states 3.119.A's protective-services income test; the review (docs/reviews/cccap-leap-phase-6.md, C-9, should-fix) found cccap_eligibility_status (CO-989) granted eligible_protective_services on the supplied flag alone, with no income test at all, although 3.119.A only redefines the income test (household of one, placed child's income only, no child support) rather than waiving it - 3.119.D waives only the activity test and 3.119.E only residency verification. Modeled on cccap_household_income (CO-985), the nearest same-shape item, but summing the person directly rather than a household and dropping child_support_received per 3.119.A's own text rather than J.1's earnings-only exclusion. cccap_protective_services_income_within_limit (CO-995) reads it."
+tests:
+  - {id: CO-994-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, social_security_income: 800, pension_income: 0, unemployment_income: 0, child_support_received: 500, other_unearned_income: 0}, expect: 800}
+  - {id: CO-994-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 300, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, other_unearned_income: 0}, expect: 300}

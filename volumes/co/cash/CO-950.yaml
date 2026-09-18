@@ -3,17 +3,17 @@ name: "Adult Financial: AND-CS eligible"
 identifier: af_and_cs_eligible
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: AdultFinancial
 meaning: Whether the person is age zero through fifty-nine, receives SSI due to disability or blindness, and is a Colorado resident, so as to qualify for the AND-CS state supplement, per 9 CCR 2503-5 3.546 and 3.547.A.
-precision: See OQ-116 - does not test whether the person is "not receiving the full SSI benefit standard" (no supplied fact states a person's dollar amount of SSI income).
-derived: [all, [<=, age, af_and_max_age], receives_ssi, [any, is_disabled_ssa, is_blind], af_meets_residency]
-sources: [S462, S463]
-open: [OQ-116]
+precision: "K-6 fix round: 3.546 (S462) limits AND-CS to SSI recipients 'not receiving the full SSI benefit standard.' ssi_income (CO-849) now carries the dollar amount, tested against ma_ssi_federal_benefit_rate_individual (CO-235, the 2026 federal benefit rate from D-58, reused cross-program because 3.546 does not restate a Colorado-specific figure) rather than a state figure of its own. This closes OQ-116. OQ-115's rollover/subtract-and-add-back mechanics for af_countable_income (CO-946) remain unmodeled; this item tests ssi_income directly rather than going through af_countable_income. Scope changed from person to person-month because ssi_income (CO-849) is a per-month fact."
+derived: [all, [<=, age, af_and_max_age], receives_ssi, [any, is_disabled_ssa, is_blind], af_meets_residency, ["<", ssi_income, ma_ssi_federal_benefit_rate_individual]]
+sources: [S462, S463, S533]
 implemented: engine
 tags: [cash, and, age, disability]
-rationale: No existing item states the AND-CS eligibility test. af_category (CO-953) needs it.
+rationale: "No existing item states the AND-CS eligibility test. af_category (CO-953) needs it. Fix round (K-6): adds the 'not receiving the full SSI benefit standard' test now that ssi_income (CO-849) exists, reusing ma_ssi_federal_benefit_rate_individual (CO-235) cross-program as the comparison figure rather than restating the SSI federal benefit rate under a new AND-CS-prefixed parameter."
 tests:
-  - {id: CO-950-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: true}
-  - {id: CO-950-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: false}
-  - {id: CO-950-T3, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: false}
+  - {id: CO-950-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, ssi_income: 700}, expect: true}
+  - {id: CO-950-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", receives_ssi: false, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, ssi_income: 0}, expect: false}
+  - {id: CO-950-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1947-03-12", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, ssi_income: 700}, expect: false}
+  - {id: CO-950-T4, title: "K-6/C-4: full SSI federal benefit rate - not eligible, not receiving the full SSI benefit standard", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, ssi_income: 994}, expect: false}

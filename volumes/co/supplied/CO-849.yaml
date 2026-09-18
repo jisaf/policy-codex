@@ -1,0 +1,12 @@
+id: CO-849
+name: Supplemental Security Income amount received
+identifier: ssi_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: The dollar amount of Supplemental Security Income (SSI) this person receives for the month, distinct from the yes/no receives_ssi fact - needed to compare against the SSI federal benefit rate under 9 CCR 2503-5 3.546 ("not receiving the full SSI benefit standard") and to apply 3.533.A.2.b/3.549.A.2.b's subtract-SSI-then-add-back step in the Adult Financial income disregard.
+supplied_by: SDX/SVES federal data match, per 9 CCR 2503-5 3.547.A.
+sources: [S462, S533]
+rationale: "No existing fact in this volume states a dollar amount of SSI income; only the yes/no receives_ssi (already supplied) exists. af_and_cs_eligible (CO-950) needs this figure to test 3.546's 'not receiving the full SSI benefit standard' (the phase-5 review's K-6 finding, and a precondition for its C-4 finding's resource/citizenship/income tests to reach the right AND-CS answer for a partial-rate SSI recipient). Acknowledged as the nearest same-shape fact to social_security_income and the other program-neutral unearned-income supplied facts this volume already carries, but SSI is deliberately not folded into social_security_income because 3.546 needs the SSI figure isolated, not summed with other unearned income."
+nearest: [CO-841]

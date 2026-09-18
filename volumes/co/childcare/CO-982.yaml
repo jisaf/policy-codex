@@ -9,7 +9,7 @@ meaning: The persons who make up this person's CCCAP household under 8 CCR 1403-
 precision: "As with snap_household_members (CO-305) and cw_assistance_unit_members (CO-900), a stated parent/child, caretaker/dependent, or spouse relationship edge is read as physical custody/co-residence; this volume does not separately model the involuntarily-absent, voluntarily-absent, or incapacitated second-caretaker shapes of 3.111.D.1.b-c, or the unrelated-caretaker verification of 3.111.D.5 (see OQ-125). Each member's value of this item is the same set (their own household)."
 open: [OQ-125]
 derived: [reachable, [parent, child, caretaker, dependent, spouse], [any, [rel, [spouse], [P]], [all, [rel, [parent, caretaker], [P]], [of, [P], cccap_is_household_child]], [all, [rel, [child, dependent], [P]], cccap_is_household_child]]]
-sources: [S496, S481, S484]
+sources: [S496, S481, S497]
 implemented: engine
 tags: [household]
 rationale: No existing item builds the CCCAP household closure; cccap_household_size (CO-983) and cccap_household_income (CO-985) both need it, and cccap_low_income_child_care_eligible (CO-987) needs it to find an eligible child in the household.

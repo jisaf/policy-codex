@@ -5,14 +5,17 @@ kind: derived
 type: yes/no
 scope: person
 program: LEAP
-meaning: Whether the household is vulnerable to rising home heating costs under 9 CCR 2503-7 3.752.25.A - responsible for home heating costs - and is not in one of the living arrangements 3.752.25.B excludes from vulnerability (an institutional group care facility, a household considered homeless, or one residing in a non-traditional dwelling).
-precision: Models only the homelessness exclusion of 3.752.25.B.6 among the several excluded living arrangements 3.752.25.B lists (institutional group care, room and board, correctional facilities, dormitories, certain subsidized housing, non-traditional dwellings, hotels); the others are out of scope for this batch.
-derived: [all, is_responsible_for_heating_costs, [not, is_homeless]]
-sources: [S492]
+meaning: Whether the household is vulnerable to rising home heating costs under 9 CCR 2503-7 3.752.25.A - responsible for home heating costs - and is not in one of the living arrangements 3.752.25.B excludes from vulnerability (institutional group care, room and board, a correctional facility, a dormitory, certain subsidized housing, homelessness or a non-traditional dwelling, a commercial property, or a hotel absent thirty days' proof).
+precision: "Models the homelessness exclusion of 3.752.25.B.6 and, per the review (docs/reviews/cccap-leap-phase-6.md, C-14, should-fix), the institutional group care exclusion of 3.752.25.B.1 (in_medical_institution, the same fact the Medicaid chapter reads and the SNAP chapter excludes a resident on); B.1's own text limits the exclusion to arrangements 'where the provider is liable for the costs of shelter and home heating,' which this item reads as always true for institutionalization rather than a separately verified sub-condition. The other six B.2-B.5, B.7, B.8 living arrangements (room and board, correctional facilities, dormitories, subsidized housing without a check meter, commercial properties, hotels) remain unmodeled - this volume has no living_arrangement fact to distinguish them (see OQ-158)."
+derived: [all, is_responsible_for_heating_costs, [not, is_homeless], [not, [otherwise, in_medical_institution, false]]]
+sources: [S492, S512]
+open: [OQ-158]
 implemented: engine
 tags: [household]
-rationale: No existing item states the LEAP vulnerability test; leap_is_eligible (CO-1007) needs it.
+rationale: "No existing item states the LEAP vulnerability test. The institutional-group-care conjunct was added per the review's C-14 finding: CO-1004 modeled only 3.752.25.B.6's homelessness exclusion among 3.752.25.B's eight non-vulnerable living arrangements, and the target household's own p1 (a nursing-facility resident, in_medical_institution) was the case this gap missed - she was found vulnerable although the provider is liable for her shelter and heating costs under B.1. leap_is_eligible (CO-1007) needs it."
 tests:
-  - {id: CO-1004-T1, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: false}, expect: true}
-  - {id: CO-1004-T2, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: true}, expect: false}
-  - {id: CO-1004-T3, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: false, is_homeless: false}, expect: false}
+  - {id: CO-1004-T1, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: false, in_medical_institution: false}, expect: true}
+  - {id: CO-1004-T2, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: true, in_medical_institution: false}, expect: false}
+  - {id: CO-1004-T3, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: false, is_homeless: false, in_medical_institution: false}, expect: false}
+  # 3.752.25.B.1: an institutional group care resident is not vulnerable even though she is otherwise responsible for heating costs.
+  - {id: CO-1004-T4, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: false, in_medical_institution: true}, expect: false}

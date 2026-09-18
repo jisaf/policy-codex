@@ -17,3 +17,5 @@ tests:
   - {id: CO-984-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false}, expect: true}
   - {id: CO-984-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: true}, expect: true}
   - {id: CO-984-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: false}, expect: false}
+  # Job search alone, isolated from employment/school (§1.4 gap - is_in_job_search_activity was false in every prior test here).
+  - {id: CO-984-T4, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_in_job_search_activity: true, is_enrolled_in_school: false}, expect: true}

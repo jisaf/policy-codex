@@ -1,0 +1,12 @@
+id: CO-330
+name: Working Adults with Disabilities Buy-In premium cap, percent of income
+identifier: ma_wawd_premium_cap_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The maximum share of a Working Adults with Disabilities Buy-In participant's countable income the monthly premium can be, per 10 CCR 2505-10 § 8.100.6.P.1.f.i.
+value: 0.075
+sources: [S317]
+tags: [ma, non_magi, buy_in, income]
+rationale: "No existing item states the 7.5%-of-income premium cap 8.100.6.P.1.f.i states. ma_wawd_premium (CO-619) needs it - the phase-4 review's C-16 finding."

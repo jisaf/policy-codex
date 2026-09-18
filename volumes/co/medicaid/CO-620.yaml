@@ -7,12 +7,13 @@ scope: person-month
 program: Medicaid
 meaning: Whether the child is eligible for the Medicaid Buy-In Program for Children with Disabilities - 18 or younger, disabled, and with MAGI household income at or below 300% of the federal poverty level - per 10 CCR 2505-10 8.100.6.Q.1.
 precision: "8.100.6.Q.1.b directs the MAGI household rules of 8.100.4.E for CBwD's income test, unlike WAwD's applicant-only rule; this item reuses ma_magi_household_income_pct_fpl (CO-504, batch 5-6) rather than the SSI-methodology income items this batch otherwise builds. Resources are not counted (8.100.6.Q.1.c). Does not model 8.100.6.Q.1.e's employment carve-out for a 16-18-year-old (who is instead evaluated for WAwD if employed) - out of scope for this item's eligibility test, which assumes the applicant is being evaluated for CBwD in the first place."
-derived: [all, [<=, age, 18], is_disabled_for_buy_in, [<=, ma_magi_household_income_pct_fpl, ma_cbwd_income_limit_pct]]
+derived: [all, ma_meets_residency, ma_meets_citizenship_requirement, [<=, age, 18], is_disabled_for_buy_in, [<=, ma_magi_household_income_pct_fpl, ma_cbwd_income_limit_pct]]
 sources: [S318]
 implemented: engine
 tags: [ma, non_magi, buy_in, income, disability]
-rationale: "No existing item states the CBwD eligibility test. ma_buy_in_category (CO-622) needs it."
+rationale: "No existing item states the CBwD eligibility test. ma_buy_in_category (CO-622) needs it. Conjoins ma_meets_residency (CO-505) and ma_meets_citizenship_requirement (CO-509) as CO-611 does, per the phase-4 review's C-19 finding."
 nearest: [CO-618]
 tests:
-  - {id: CO-620-T1, as_of: "2026-10-01", month: "2026-10", given: {age: 10, is_disabled_for_buy_in: true, ma_magi_household_income_pct_fpl: 2.0}, expect: true}
-  - {id: CO-620-T2, as_of: "2026-10-01", month: "2026-10", given: {age: 10, is_disabled_for_buy_in: true, ma_magi_household_income_pct_fpl: 3.5}, expect: false}
+  - {id: CO-620-T1, as_of: "2026-10-01", month: "2026-10", given: {age: 10, is_disabled_for_buy_in: true, ma_magi_household_income_pct_fpl: 2.0, ma_meets_residency: true, ma_meets_citizenship_requirement: true}, expect: true}
+  - {id: CO-620-T2, as_of: "2026-10-01", month: "2026-10", given: {age: 10, is_disabled_for_buy_in: true, ma_magi_household_income_pct_fpl: 3.5, ma_meets_residency: true, ma_meets_citizenship_requirement: true}, expect: false}
+  - {id: CO-620-T3, as_of: "2026-10-01", month: "2026-10", given: {age: 10, is_disabled_for_buy_in: true, ma_magi_household_income_pct_fpl: 2.0, ma_meets_residency: false, ma_meets_citizenship_requirement: true}, expect: false}

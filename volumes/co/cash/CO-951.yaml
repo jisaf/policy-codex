@@ -7,14 +7,14 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: The monthly Old Age Pension grant payment - the OAP grant standard minus the client's total countable income, floored at zero, for a client in the oap_a or oap_b category - per 9 CCR 2503-5 3.532.B and 3.533.
-precision: See OQ-120 - does not model 3.532.B.2's mid-month proration for a client determined eligible on a day other than the first of the month, or 3.532.B.3's same-month program-transition rule.
-derived: [case, [[in, af_category, [oap_a, oap_b]], ["max", 0, ["-", af_oap_grant_standard, af_countable_income]]], [else, 0]]
-sources: [S456, S457]
+precision: "See OQ-120 - does not model 3.532.B.2's mid-month proration for a client determined eligible on a day other than the first of the month, or 3.532.B.3's same-month program-transition rule. M-7: Adult Financial grants carry cents (no AF provision states a 'drop the cents' rule, unlike Colorado Works' 3.606.1.K.2, which cw_grant_amount, CO-914, implements by flooring) - deliberate, not an oversight."
+derived: [case, [[in, af_category, [oap_a, oap_b]], ["max", 0, ["-", af_grant_standard, af_countable_income]]], [else, 0]]
+sources: [S455, S456, S457]
 open: [OQ-120]
 implemented: engine
 tags: [cash, oap, income]
-rationale: No existing item computes the OAP grant amount. Named directly by the phase-5 brief's interface as an outcome.
+rationale: "No existing item computes the OAP grant amount. Named directly by the phase-5 brief's interface as an outcome. Fix round (M-3): reads af_grant_standard (CO-949) instead of af_oap_grant_standard (CO-289) directly, since CO-949 already selects the right standard for af_category and was otherwise read by nothing - the phase-5 review's M-3 finding. af_category's own oap_a/oap_b test in the case condition above is unaffected (unchanged from before)."
 tests:
-  - {id: CO-951-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a, af_countable_income: 400}, parameters: {af_oap_grant_standard: 1005}, expect: 605}
-  - {id: CO-951-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a, af_countable_income: 2010}, parameters: {af_oap_grant_standard: 1005}, expect: 0}
-  - {id: CO-951-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: none, af_countable_income: 400}, parameters: {af_oap_grant_standard: 1005}, expect: 0}
+  - {id: CO-951-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a, af_countable_income: 400, af_grant_standard: 1005}, expect: 605}
+  - {id: CO-951-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a, af_countable_income: 2010, af_grant_standard: 1005}, expect: 0}
+  - {id: CO-951-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: none, af_countable_income: 400, af_grant_standard: 0}, expect: 0}

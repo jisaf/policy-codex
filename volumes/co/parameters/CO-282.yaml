@@ -8,4 +8,4 @@ program: ColoradoWorks
 meaning: The age below which a dependent child triggers the reduced weekly participation hours of 45 CFR 261.35 for the child's single custodial parent or caretaker relative.
 value: 6
 sources: [S420]
-rationale: No existing parameter states this age; cw_meets_work_participation (CO-919) needs it, kept out of that rule's identifier per governance name.digits.
+rationale: "No existing parameter states this age; cw_meets_work_participation (CO-920) needs it, kept out of that rule's identifier per governance name.digits. Fix round (M-5): corrected the item id in this rationale (was CO-919, which is cw_is_work_eligible_individual, a different item)."

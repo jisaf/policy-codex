@@ -3,16 +3,19 @@ name: "CCCAP: is a teen parent"
 identifier: cccap_is_teen_parent
 kind: derived
 type: yes/no
-scope: person
+scope: person-month
 program: CCCAP
-meaning: The person is a "teen parent" under 8 CCR 1403-1 3.103.ZZZZ - a parent under twenty-one years of age who has physical custody, for the period care is requested, of a child of theirs who is themselves a CCCAP eligible child.
-precision: Physical custody is read from a stated parent/child or caretaker/dependent relationship to a CCCAP-eligible child, the same convention cw_has_dependent_child (CO-902) uses for Colorado Works; the eligible-activity prong of the 3.103.ZZZZ definition is checked separately by cccap_caretaker_in_eligible_activity (CO-984), not here.
-derived: [all, ["<", age, cccap_teen_parent_age_limit], [exists_related, [parent, caretaker], [of, [P], cccap_is_eligible_child]]]
+meaning: The person is a "teen parent" under 8 CCR 1403-1 3.103.ZZZZ - a parent under twenty-one years of age who has physical custody, for the period care is requested, of a child of theirs, and is in an eligible activity such as attending junior high/middle school, high school, GED program, vocational/technical training, employment, self-employment, or job search.
+precision: "Physical custody is read from a stated parent/child or caretaker/dependent relationship to a CCCAP-eligible child, the same convention cw_has_dependent_child (CO-902) uses for Colorado Works. Requires the custodial child to be a cccap_is_eligible_child, which 3.103.ZZZZ's own text ('his/her child(ren)') does not state; this narrows the term slightly, but costs nothing in practice, since a teen parent with no eligible child also has no eligible child in the household under 3.103.GGG. The eligible-activity conjunct is read with [otherwise, ..., false] (defaults to not-in-an-activity when the case does not state hours_worked/is_in_job_search_activity/is_enrolled_in_school for this person), for the same case-coverage reason as OQ-134/OQ-135/OQ-136 - most existing cases in this chapter's own item tests do not state activity facts for a custodial minor whose teen-parent status was previously age-and-custody-only - see OQ-157."
+derived: [all, ["<", age, cccap_teen_parent_age_limit], [exists_related, [parent, caretaker], [of, [P], cccap_is_eligible_child]], [otherwise, cccap_caretaker_in_eligible_activity, false]]
 sources: [S481]
+open: [OQ-157]
 implemented: engine
 tags: [age, household]
-rationale: No existing item states the CCCAP teen-parent test; cccap_caretaker_in_eligible_activity (CO-984) reads it to let a teen parent's own school attendance count as an eligible activity.
+rationale: "No existing item states the CCCAP teen-parent test; cccap_household_income (CO-985) and cccap_household_caretakers_in_eligible_activity (CO-991) both use this term to decide whose income counts and who must be in an activity. Moved from scope: person to scope: person-month and the eligible-activity prong of 3.103.ZZZZ was added as a conjunct, reading cccap_caretaker_in_eligible_activity (CO-984, itself person-month, so there is no cycle - it reads no household fact), per the review (docs/reviews/cccap-leap-phase-6.md, C-8, should-fix): the prior item implemented only age plus custody and deferred the activity prong to CO-984's own test, but CO-985 and CO-991 both used the truncated term as a live classifier, so a nineteen-year-old parent in no activity was still called a caretaker (denying the whole household on her inactivity) and her earnings were still excluded (they should not be, since she is not a teen parent under the full definition)."
 tests:
-  - {id: CO-981-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: true}
-  - {id: CO-981-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01"}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
-  - {id: CO-981-T3, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, relationships: [], expect: false}
+  - {id: CO-981-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, hours_worked: 0, is_in_job_search_activity: false}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: true}
+  - {id: CO-981-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_enrolled_in_school: true, hours_worked: 0, is_in_job_search_activity: false}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
+  - {id: CO-981-T3, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, hours_worked: 0, is_in_job_search_activity: false}, relationships: [], expect: false}
+  # 3.103.ZZZZ's activity prong: an under-21 parent with custody who is in no eligible activity is not a teen parent.
+  - {id: CO-981-T4, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: false, hours_worked: 0, is_in_job_search_activity: false}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}

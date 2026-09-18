@@ -1,0 +1,15 @@
+id: CO-332
+name: Substantial Gainful Activity (SGA) monthly amount, non-blind
+identifier: ma_sga_non_blind
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a non-blind disabled person, the threshold QDWI's history (8.100.6.O.2.a) and the Working Adults with Disabilities Buy-In both turn on.
+versions:
+  - from: "2026-01-01"
+    value: 1690
+    source: S499
+sources: [S499]
+tags: [ma, non_magi, disability]
+rationale: "documents/D-58.md:71 states the 2026 SGA amounts, but no item in this volume carried them as a parameter; ma_qdwi_eligible (CO-616) and CO-804's meaning both refer to the SGA threshold without a figure - the phase-4 review's G-4 finding."

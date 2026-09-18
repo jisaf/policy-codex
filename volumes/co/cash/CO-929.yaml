@@ -1,0 +1,19 @@
+id: CO-929
+name: "Adult Financial: meets citizenship requirement (OAP)"
+identifier: af_meets_citizenship_requirement_oap
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person meets OAP's own citizenship/immigration test - a U.S. citizen or national, or a qualified non-citizen - per C.R.S. 26-2-111(1)(a) and 9 CCR 2503-5 3.520.67.E, with no five-year bar, since 3.520.68.A's bar and 3.520.61.C's citizenship prong are both stated "for AND only."
+precision: "C-10 fix round: OQ-119 records the statute/regulation tension for the AND programs (26-2-111(2)(a)(I) vs. 3.520.67.E); this item does not carry that tension, because 3.520.67.E's 'all non-citizens are eligible to apply for OAP' is read straightforwardly for OAP - no bar provision (3.520.68.A) applies to it - and 26-2-111(1)(a) itself defines a residency-qualified person to include 'the person is a legal immigrant who would be otherwise eligible in all respects except for citizenship,' consistent with a non-citizen being OAP-eligible."
+derived: [any, [in, citizenship_status, [citizen, us_national]], ma_is_qualified_non_citizen]
+sources: [S441, S451]
+implemented: engine
+tags: [cash, oap, immigration, legal]
+rationale: "No existing item states OAP's own citizenship test without the AND programs' five-year bar; af_meets_citizenship_requirement_and (CO-943, the acknowledged nearest same-shape item, and the item this one replaces the shared use of on af_category, CO-953) carries the bar 3.520.68.A confines to AND. Added under the phase-5 review's C-10 finding: 3.520.61.C ('For AND only, be a citizen...') and 3.520.68.A ('barred from receiving AND for five years') both scope the bar to AND, so applying af_meets_citizenship_requirement_and's bar to the OAP branch of af_category denied OAP to a qualified non-citizen within the bar period on a provision that, by its own text, does not reach OAP."
+nearest: [CO-943]
+tests:
+  - {id: CO-929-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-929-T2, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, qualified_status_date: "2024-01-01"}, expect: true}
+  - {id: CO-929-T3, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
