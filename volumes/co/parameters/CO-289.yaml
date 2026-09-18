@@ -9,8 +9,12 @@ meaning: The total monthly OAP grant standard the State Board of Human Services 
 precision: See OQ-118 - the State Board may adjust this figure to remain within available appropriations, with no appeal right for such an adjustment; this parameter carries only the stated dollar figure as of its effective date.
 versions:
   - from: "2025-01-01"
+    to: "2026-01-01"
     value: 1005
     source: S455
+  - from: "2026-01-01"
+    value: 1032
+    source: S558
 open: [OQ-118]
-sources: [S455]
-rationale: No existing item states the OAP grant standard. af_grant_standard (CO-949), af_oap_grant (CO-951), and af_category's income test (CO-953) need it. Versioned (not a bare value) because 3.530.A states an explicit effective date.
+sources: [S455, S558]
+rationale: "No existing item states the OAP grant standard. af_grant_standard (CO-949), af_oap_grant (CO-951), and af_category's income test (CO-953) need it. Versioned (not a bare value) because 3.530.A states an explicit effective date. Fix round: adds a 2026-01-01 version per D-69 (CDHS's Adult Financial Programs page, an Internet Archive capture), which states the State Board's current $1,032 figure that 3.530.A's regulatory text itself does not carry - see OQ-118."

@@ -6,9 +6,9 @@ type: rate
 scope: global
 program: Medicaid
 meaning: Colorado's income limit for the Adults MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level, under 10 CCR 2505-10 8.100.4.G.4.
-precision: A percentage-of-FPL figure (1.33 = 133%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
+precision: "A percentage-of-FPL figure (1.33 = 133%), compared directly against ma_magi_household_income_pct_fpl (CO-504). Unlike ma_income_limit_child_pct (CO-191), ma_income_limit_parent_caretaker_pct (CO-192) and ma_income_limit_pregnant_pct (CO-194), the fix round's OQ-63 re-read of the HCPF chart (D-68/D-70, S564/S566) does not change this figure: the chart's 'Adults (Ages 19-65) 133% Poverty Level' column states the same 133% 8.100.4.G.4's own text states, so the CCR text and the MAGI-converted chart agree here and no version is needed - kept as a single value rather than a versions list carrying two identical entries."
 value: 1.33
-sources: [S207]
+sources: [S207, S564, S566]
 tags: [ma, magi, income, state_election]
-rationale: "No existing item carries Colorado's Adults-category income percentage. ma_magi_income_standard_adult (CO-542) needs it as a parameter rather than an inline digit (governance name.digits). Numerically the same figure as ma_income_limit_child_pct (CO-191), but a separate parameter because 8.100.4.G.2 and 8.100.4.G.4 are independent state elections that happen to state the same percentage and a future rule change to one need not change the other."
+rationale: "No existing item carries Colorado's Adults-category income percentage. ma_magi_income_standard_adult (CO-542) needs it as a parameter rather than an inline digit (governance name.digits). Numerically the same figure as ma_income_limit_child_pct (CO-191), but a separate parameter because 8.100.4.G.2 and 8.100.4.G.4 are independent state elections that happen to state the same percentage and a future rule change to one need not change the other. Fix round: added the D-68/D-70 chart citations (S564/S566) confirming the Adults figure is unchanged by the OQ-63 re-read that raises CO-191/CO-192/CO-194."
 nearest: [CO-191]

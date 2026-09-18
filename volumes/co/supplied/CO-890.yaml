@@ -1,0 +1,13 @@
+id: CO-890
+name: Home maintenance allowance amount
+identifier: home_maintenance_allowance_amount
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The amount, if any, of this institutionalized person's Home Maintenance Allowance deduction from the monthly patient payment for the month, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.4).
+supplied_by: Eligibility Site's determination of the Home Maintenance Allowance ("Status of Long-Term Care institution Care" Form AP-5615), 0 when not applicable.
+sources: [S540]
+tags: [ma, ltc, income]
+rationale: "No existing item states the Home Maintenance Allowance. § 8.100.7.V.3.b.ii.4) names the deduction ('If applicable, Home Maintenance Allowance') but does not state an amount or formula anywhere in the fetched text, unlike the trustee/maintenance fee cap (8.100.7.V.3.b.ii.5), $20) or the personal needs allowance base (8.100.7.V.3.d.i.2), $75) - so, per the ledger's rule that a figure the text does not state is a supplied fact, this is supplied rather than computed. ma_home_maintenance_allowance (CO-664) reads it. Nearest existing item: ma_personal_needs_allowance_institutional (CO-887), itself a supplied fact for an amount-not-stated patient-payment deduction, per the phase-4 review's C-11 finding."
+nearest: [CO-887]

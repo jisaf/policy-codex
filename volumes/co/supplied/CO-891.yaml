@@ -1,0 +1,13 @@
+id: CO-891
+name: Trustee or maintenance fees paid
+identifier: trustee_maintenance_fees_paid
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The actual monthly trustee or maintenance fees this institutionalized person paid for the month, before the § 8.100.7.V.3.b.ii.5) $20 cap is applied, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.5).
+supplied_by: Eligibility Site's verification of trustee or maintenance fee payments (trust accounting or fee statements), 0 when not applicable.
+sources: [S540]
+tags: [ma, ltc, income]
+rationale: "No existing item states the actual trustee/maintenance fee an institutionalized person paid. § 8.100.7.V.3.b.ii.5) states the deduction as 'actual fees, with a maximum of $20 per month' - the cap is a stated parameter (ltc_trustee_fee_monthly_cap, CO-1011), but the actual fee amount itself is case-specific and not in any fetched document. ma_ltc_trustee_fee_deduction (CO-665) reads it, applying the cap."
+nearest: [CO-887]

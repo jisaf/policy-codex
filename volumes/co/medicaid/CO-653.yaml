@@ -6,10 +6,10 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: Whether this person is eligible for a Home and Community-Based Services waiver for the month - meets a waiver's target group, meets the nursing facility level of care, and is eligible through the special income group, SSI/OAP eligibility, or the Working Adults with Disabilities Buy-In (for the EBD, CMHS, BI, SCI, SLS and DD waivers) - per 10 CCR 2505-10 §§ 8.100.7.B.1, 8.7100.C.9 and 8.7100.D.
-precision: § 8.100.7.B.1.c's Buy-In route is not gated on ma_ltc_financially_eligible (which requires the special income group and the LTC resource standard) because § 8.100.6.P.1.c states Buy-In resources are not counted and its income test is 450% FPL, not 300% of the SSI benefit rate; it is limited instead to the waivers § 8.100.7.B.1.c.i names.
+precision: § 8.100.7.B.1.c's Buy-In route is not gated on ma_ltc_financially_eligible (which requires the special income group and the LTC resource standard) because § 8.100.6.P.1.c states Buy-In resources are not counted and its income test is 450% FPL, not 300% of the SSI benefit rate; it is limited instead to the waivers § 8.100.7.B.1.c.i names. Does not separately test § 8.7100.D.4's "at risk of placement in an Institution within one month" condition (S546) beyond meets_nursing_facility_level_of_care - see OQ-165.
 derived: [all, [not, [=, meets_hcbs_waiver_target_group, "none"]], meets_nursing_facility_level_of_care, [any, ma_ltc_financially_eligible, ma_is_ssi_related_eligible, [all, ma_wawd_eligible, [in, meets_hcbs_waiver_target_group, [ebd, cmhs, bi, sci, sls, dd]]]]]
-sources: [S353, S375]
-open: [OQ-127]
+sources: [S353, S375, S546]
+open: [OQ-127, OQ-165]
 implemented: engine
 tags: [ma, ltc, hcbs]
 rationale: "No existing item combines the target group, level of care and financial tests for HCBS waiver eligibility. ma_ltc_eligibility_status (CO-652) needs it. Widened per the phase-4 review's C-4 finding: § 8.100.7.B.1 gives two routes into HCBS besides the special income group - SSI/OAP eligibility (1.a) and the Working Adults with Disabilities Buy-In for named waivers (1.c) - that the special-income/resource-only gate excluded."

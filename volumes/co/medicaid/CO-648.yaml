@@ -6,8 +6,10 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether this person's countable resources for Long-Term Care eligibility do not exceed the SSI-related individual resource limit - the institutionalized spouse is resource eligible when the couple's total resources are at or below the CSRA plus the $2,000 individual resource allowance - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1.
+precision: "Applies the § 8.100.7.O.1 institutional \"at or below\" $2,000 individual test to every Long-Term Care pathway, including HCBS. § 8.7100.C.2 (S545) instead states HCBS's own resource test as a strict \"less than\" $2,000 individual / $3,000 couple figure - a genuine conflict with this item's comparison and its couple treatment - see OQ-164, which also records why the two are not reconciled this round."
 derived: ["<=", ma_institutionalized_spouse_countable_resources, ma_ssi_resource_limit_individual]
-sources: [S357]
+sources: [S357, S545]
+open: [OQ-164, OQ-170]
 implemented: engine
 tags: [ma, ltc, resources]
 rationale: "No existing item compares ma_institutionalized_spouse_countable_resources to the individual resource limit. ma_ltc_financially_eligible (CO-651) needs it. Reuses ma_ssi_resource_limit_individual (CO-233, batch 8) rather than a new parameter, since 8.100.7.O.1's '$2,000' is the same SSI-related individual limit 8.100.5.M.1 states."

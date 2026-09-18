@@ -1,0 +1,13 @@
+id: CO-892
+name: Mandatory income tax withheld
+identifier: mandatory_income_tax_withheld
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The amount of mandatory income tax withheld from this institutionalized person's income for the month, deductible from the patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.6).
+supplied_by: Eligibility Site's verification of mandatory income tax withholding (income statements, payer withholding records), 0 when not applicable.
+sources: [S541]
+tags: [ma, ltc, income]
+rationale: "No existing item states an institutionalized person's mandatory income tax withholding. § 8.100.7.V.3.b.ii.6) names the deduction without a formula or cap; it is a case-specific withholding amount, not a stated figure. ma_mandatory_tax_withholding_deduction (CO-666) reads it."
+nearest: [CO-887]

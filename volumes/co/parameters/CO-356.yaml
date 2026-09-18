@@ -1,0 +1,16 @@
+id: CO-356
+name: Colorado Works sanction reduction rate, first through third level
+identifier: cw_sanction_reduction_rate_levels_one_to_three
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: The fraction of an assistance unit's grant payment a first, second, or third level Workforce Development sanction removes for the month, per 9 CCR 2503-6 3.608.4.C.1.
+versions:
+  - from: "2025-07-01"
+    value: 0.25
+    source: S551
+sources: [S551]
+rationale: "No existing parameter states a Colorado Works sanction rate; cw_sanction_reduction (CO-932) needs it. Same shape as cw_earned_income_disregard_rate (CO-350), the nearest same-shape parameter (a global fraction 9 CCR 2503-6 states as a flat percentage), acknowledged here, but this rate reduces the grant payment rather than disregarding earned income."
+nearest: [CO-350]
+tags: [cash, tanf]

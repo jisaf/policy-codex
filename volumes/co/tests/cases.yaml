@@ -53,12 +53,9 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
         csra_minimum_standard: 30000
-        ma_personal_needs_allowance_institutional: 75
         csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
         mmmna_cap: 4000
@@ -130,6 +127,7 @@
         is_disabled_ssa: false
         is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        work_sanction_level_this_month: 0
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -184,12 +182,9 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
         csra_minimum_standard: 30000
-        ma_personal_needs_allowance_institutional: 75
         csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
         mmmna_cap: 4000
@@ -257,6 +252,7 @@
         is_disabled_ssa: false
         is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        work_sanction_level_this_month: 0
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -358,6 +354,7 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
       month_defaults:
+        work_sanction_level_this_month: 0
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -454,6 +451,7 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
       month_defaults:
+        work_sanction_level_this_month: 0
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -550,6 +548,7 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
       month_defaults:
+        work_sanction_level_this_month: 0
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -612,7 +611,7 @@
   # correct (OQ-100/C-18 is next round's problem). MMMNA = 2600 + (1100
   # shelter - 30% of 2600) = 2920, the spouse allowance 2920 - 1180 = 1740,
   # and (per C-3, gated on eligibility, which p1 now has) the patient payment
-  # 2030 - 75 - 1740 = 215. p2 (community spouse, income 1180, individual
+  # 2030 - 79 - 1740 = 211. p2 (community spouse, income 1180, individual
   # resources 44100 over the illustrative MSP limit 10000) is in no MSP,
   # SSI-related or Buy-In group, is not institutionalized, and (per C-3) has
   # no patient payment.
@@ -640,7 +639,7 @@
       ma_ltc_eligibility_status: {"2026-10": eligible_pace}
       ma_mmmna: {"2026-10": 2920}
       ma_community_spouse_income_allowance: {"2026-10": 1740}
-      ma_patient_payment: {"2026-10": 215}
+      ma_patient_payment: {"2026-10": 211}
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
@@ -674,6 +673,13 @@
       ma_ltc_couple: false
       ma_ltc_eligibility_status: {"2026-10": not_institutionalized_or_waiver}
       ma_patient_payment: {"2026-10": 0}
+      ma_is_aged: true
+      # In the admission month itself p1 is not yet excluded from p2's SSI-related household (C-21:
+      # 8.100.7.C.2.b's exclusion begins the month after institution_entry_date, 2026-10-01), so
+      # ma_ssi_household_size is still 2 and the couple FBR applies to their combined income - p2 meets
+      # the income standard this month even though he fails it alone against the individual FBR
+      # (see CO-02's November expectation, where household size drops to 1).
+      ma_meets_ssi_income_standard: {"2026-10": true}
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
@@ -707,6 +713,10 @@
       cccap_household_size: 3
       cccap_household_income: {"2026-10": 2380}
       cccap_is_teen_parent: {"2026-10": false}
+      # cccap_poverty_guideline_table/cccap_smi_income_limit_table (CO-323/CO-340) now version to D-76's
+      # October 1, 2026 figures (S581) as of this case's 2026-10-01 as_of date: size-3 entry limit rises from
+      # 1.85 x $2,151.67 = $3,980.59 to 1.85 x $2,276.67 = $4,211.84, still well above $2,380, so the outcome
+      # below is unchanged either way.
       cccap_eligibility_status: {"2026-10": eligible_low_income}
       # leap_household_members is now filtered by 3.753.17's citizenship requirement (p3 is undocumented, review C-2);
       # leap_household_income still sums p3's income via leap_household_members_for_income (CO-1009). leap_is_eligible
@@ -845,12 +855,9 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
         csra_minimum_standard: 30000
-        ma_personal_needs_allowance_institutional: 75
         csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
         mmmna_cap: 4000
@@ -920,6 +927,7 @@
         countable_resources_couple_at_snapshot: 46000
         is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        work_sanction_level_this_month: 0
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -973,12 +981,9 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
         csra_minimum_standard: 30000
-        ma_personal_needs_allowance_institutional: 75
         csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
         mmmna_cap: 4000
@@ -1044,6 +1049,7 @@
         in_medical_institution: false
         is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
+        work_sanction_level_this_month: 0
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -1143,6 +1149,7 @@
         citizenship_status: undocumented
         state_of_residence: CO
       month_defaults:
+        work_sanction_level_this_month: 0
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -1236,6 +1243,7 @@
         state_of_residence: CO
         is_enrolled_in_school: true
       month_defaults:
+        work_sanction_level_this_month: 0
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -1329,6 +1337,7 @@
         citizenship_status: citizen
         state_of_residence: CO
       month_defaults:
+        work_sanction_level_this_month: 0
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -1377,7 +1386,7 @@
   # and CO-652's PACE-before-institutional case order (OQ-100) reports
   # eligible_pace rather than eligible_institutional. MMMNA and the spouse
   # allowance are unchanged (2920, 1740); the patient payment, now gated on
-  # eligibility per C-3, is 2030 - 75 - 1740 = 215. p2 (community spouse) has
+  # eligibility per C-3, is 2030 - 79 - 1740 = 211. p2 (community spouse) has
   # no patient payment.
   expect:
     p1:
@@ -1403,7 +1412,7 @@
       ma_ltc_eligibility_status: {"2026-11": eligible_pace}
       ma_mmmna: {"2026-11": 2920}
       ma_community_spouse_income_allowance: {"2026-11": 1740}
-      ma_patient_payment: {"2026-11": 215}
+      ma_patient_payment: {"2026-11": 211}
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
@@ -1441,6 +1450,8 @@
       ma_ltc_couple: false
       ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
       ma_patient_payment: {"2026-11": 0}
+      ma_is_aged: true
+      ma_meets_ssi_income_standard: {"2026-11": false}
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
@@ -1474,6 +1485,9 @@
       cccap_household_size: 3
       cccap_household_income: {"2026-11": 2380}
       cccap_is_teen_parent: {"2026-11": false}
+      # cccap_poverty_guideline_table/cccap_smi_income_limit_table (CO-323/CO-340) version to D-76's October
+      # 1, 2026 figures (S581) at this case's 2026-11-01 as_of date; the size-3 entry limit (1.85 x $2,276.67
+      # = $4,211.84) still exceeds $2,380 by a wide margin, so the outcome below is unchanged.
       cccap_eligibility_status: {"2026-11": eligible_low_income}
       leap_household_members: [p4, p5]
       leap_household_income: {"2026-11": 2380}
@@ -2258,13 +2272,14 @@
   #   2.0518. Not a child/pregnant/former-foster-care/needy-newborn in any month; parent/caretaker:
   #   p1 is p3's caretaker relative (435.4's list includes grandparent) and p3 (16) is a dependent
   #   child (CO-544) -> demographics met every month; her highest MAGI standard is the Parents/
-  #   Caretaker 60% itself, because the Adults group is closed to her (68, Medicare-entitled -
+  #   Caretaker standard itself, because the Adults group is closed to her (68, Medicare-entitled -
   #   435.119(b)(1),(3)) -> the 5% disregard IS available (C-2's own worked example) -> even in April
-  #   2026, 1.0259 - 0.05 = 0.9759, still > 0.60 -> parent_caretaker false every month. Not an Adult
-  #   (68 is over the 65 upper age limit). Category none every month; demographics met (parent/
-  #   caretaker) -> status ineligible_income every month. Her real basis would be SSI-related/MSP,
-  #   outside this chapter's phase-3 scope (435.603(j)(2)). CHP+: not a child, not pregnant ->
-  #   ineligible every month.
+  #   2026, 1.0259 - 0.05 = 0.9759, still above the fix round's chart-sourced 68% standard (ma_income_
+  #   limit_parent_caretaker_pct, CO-192, OQ-63) -> parent_caretaker false every month (it was false at
+  #   the pre-chart 60% too, so this fix round changes no outcome here). Not an Adult (68 is over the
+  #   65 upper age limit). Category none every month; demographics met (parent/caretaker) -> status
+  #   ineligible_income every month. Her real basis would be SSI-related/MSP, outside this chapter's
+  #   phase-3 scope (435.603(j)(2)). CHP+: not a child, not pregnant -> ineligible every month.
   #
   # Rule finding recorded here rather than fixed (per this batch's instructions not to edit rules):
   #   CO-503 (ma_magi_household_income) tests ma_is_dependent_claimed_by_non_parent (CO-563) against
@@ -2304,30 +2319,33 @@
   # p3, January 2027 (same continuous eligibility period; her own earnings rise to $1,850/month).
   #   Household still [p3] (her own household is unaffected by whether her income counts toward
   #   someone ELSE's household - only p1's household total changes, above), size 1, income 1,850,
-  #   ratio 1,850/1,330.00 = 1.3910 (2026 FPL table, the only version this chapter carries). On the
-  #   plain test alone: 1.3910 > 1.33, and the 5% disregard (1.3410) still exceeds 1.33 -> she would
-  #   fail the Children's category and CHP+'s floor (which requires > 1.42) alike - eligible for
-  #   nothing, the coverage gap C-5 raises. But she was found eligible for the Children's category in
-  #   April 2026, is still under 19, and her continuous eligibility period (April 2026 through March
-  #   2027) has not ended: 42 CFR 435.926(d)/8.100.3.Q.1.a protect her "without regard to changes in
-  #   income" -> category still child, status still eligible, notwithstanding her own income now
-  #   exceeding the standard. CHP+ ineligible_medicaid_eligible (she remains Medicaid-eligible under
-  #   the CE period).
+  #   ratio 1,850/1,330.00 = 1.3910 (2026 FPL table, the only version this chapter carries). Fix round
+  #   (OQ-63): on the plain test alone, 1.3910 is now BELOW the chart-sourced Children's standard
+  #   (1.42, ma_income_limit_child_pct, CO-191) - she is Medicaid-eligible on the plain test with no
+  #   disregard needed, not only because continuous eligibility protects her. (Before this fix round,
+  #   at the pre-chart 133% standard, 1.3910 > 1.33 and the disregard - 1.3410 - still exceeded 1.33,
+  #   so continuous eligibility was the only thing keeping her eligible this month; this case's
+  #   comment previously demonstrated that mechanism and the C-5 coverage gap on this household's real
+  #   numbers.) Category child, status eligible - now on the plain test, and separately protected by
+  #   continuous eligibility (under 19, child category, CO resident) regardless. CHP+ ineligible_
+  #   medicaid_eligible (Medicaid-eligible either way).
   #
   # p3, April 2027 (one month after the continuous eligibility period ends 2027-03). Household still
   #   [p3], size 1, income unchanged at 1,850, ratio 1.3910 (age is pinned to the case's single
   #   determination date, 2026-04-10, so she is still evaluated as 16 here even though she would
-  #   actually be 17 by April 2027 - see the case comment above). The continuous eligibility period
-  #   has ended (April 2027 is after 2027-03), so it no longer protects her: on the plain test,
-  #   1.3910 > 1.33 and the disregard (1.3410) still exceeds 1.33 -> Medicaid category none, status
-  #   ineligible_income. CHP+: 1.3910 does not exceed the 142% floor (nor does 1.3910 - 0.05 = 1.3410)
-  #   -> chp_income_within_limit false -> status ineligible_income too. This is C-5's coverage gap
-  #   (a child between 133% and 142% of FPL eligible for neither program), demonstrated on a real
-  #   household rather than resolved - C-5 is not among the fixes this round made, and the review's
-  #   note that the chapter needs the HCPF MAGI-Medicaid income guidelines chart 8.100.4.G.2
-  #   incorporates by reference (or a blocking OQ) still stands. The values below are the engine's
-  #   actual output under the currently-implemented 133% (CCR text, CO-540/CO-191) reading, recorded
-  #   as-is per the review's own C-5 finding rather than corrected here.
+  #   actually be 17 by April 2027 - see the case comment above). Fix round (OQ-63): the continuous
+  #   eligibility period has ended (April 2027 is after 2027-03), but this no longer matters to the
+  #   outcome - on the plain test, 1.3910 is below the chart-sourced 1.42 standard, so she is Medicaid-
+  #   eligible on the plain test alone: category child, status eligible. CHP+: 1.3910 does not exceed
+  #   the 142% floor -> chp_income_within_limit false -> status ineligible_medicaid_eligible (she
+  #   remains Medicaid-eligible, so CHP+ reports the Medicaid-eligible reason rather than ineligible_
+  #   income). Before this fix round, at the pre-chart 133% Medicaid standard, this same household
+  #   demonstrated C-5's coverage gap exactly (a child between 133% and 142% of FPL eligible for
+  #   neither program) once continuous eligibility no longer protected her; the chart's 142% standard
+  #   (D-68/D-70) now closes that gap for this household, as OQ-63's rewrite explains. This is also why
+  #   ma_continuous_eligibility_applies (CO-555, a per-month test independent of the continuous-
+  #   eligibility mechanism itself) is now true at January and April 2027 as well as April 2026: it
+  #   reads ma_is_child_category directly, which the plain income test alone now satisfies every month.
   expect:
     p1:
       ma_magi_household_members: [p1, p3]
@@ -2355,12 +2373,12 @@
       ma_magi_household_income: {"2026-04": 0, "2027-01": 1850, "2027-04": 1850}
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
-      ma_magi_category: {"2026-04": child, "2027-01": child, "2027-04": none}
-      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": ineligible_income}
-      ma_continuous_eligibility_applies: {"2026-04": true, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": child, "2027-01": child, "2027-04": child}
+      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": eligible}
+      ma_continuous_eligibility_applies: {"2026-04": true, "2027-01": true, "2027-04": true}
       ma_child_continuous_eligibility_end_month: "2027-03"
       ma_retroactive_coverage_start_month: "2026-01"
-      chp_eligibility_status: {"2026-04": ineligible_medicaid_eligible, "2027-01": ineligible_medicaid_eligible, "2027-04": ineligible_income}
+      chp_eligibility_status: {"2026-04": ineligible_medicaid_eligible, "2027-01": ineligible_medicaid_eligible, "2027-04": ineligible_medicaid_eligible}
 - id: CO-06
   title: Nursing facility admission with a transfer penalty; community spouse on QMB below the MMMNA; working disabled adult son on the Buy-In
   # Designed by the phase-4 non-MAGI/LTC review (docs/reviews/non-magi-ltc-phase-4.md S3),
@@ -2428,9 +2446,6 @@
         mmmna_cap: 3948
         home_equity_limit: 730000
         transfer_penalty_divisor: 9000
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
-        ma_personal_needs_allowance_institutional: 75
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -2499,8 +2514,6 @@
         mmmna_cap: 3948
         home_equity_limit: 730000
         transfer_penalty_divisor: 9000
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -2567,8 +2580,6 @@
         mmmna_cap: 3948
         home_equity_limit: 730000
         transfer_penalty_divisor: 9000
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -2650,9 +2661,11 @@
   # CO-06 -> CO-07 for this fix round. Facts are updated for the fix round's renamed/added identifiers:
   # has_domestic_violence_waiver -> has_domestic_violence_extension_approved (C-3(b)); is_indian_or_urban_indian,
   # is_disqualified_for_intentional_program_violation/is_disqualified_drug_felony/is_fleeing_felon_or_probation_violator
-  # added on every person (K-3/K-5 now read them); ssi_income added on p3 (K-6). Expectations below are what the
-  # FIXED items at this commit produce (evaluated with scripts/eval-case.ts), not the review's hand derivation -
-  # each place they differ is called out in a comment citing the governing text.
+  # added on every person (K-3/K-5 now read them); ssi_income added on p3 (K-6). work_sanction_level_this_month
+  # added on every person this fix round (OQ-141 resolved) - p2, "under a Workforce Development sanction" per
+  # this case's own title, is now actually sanctioned (level 1), which subtracts 25% of the unit's payment.
+  # Expectations below are what the FIXED items at this commit produce (evaluated with scripts/eval-case.ts),
+  # not the review's hand derivation - each place they differ is called out in a comment citing the governing text.
   as_of: "2026-10-01"
   relationships:
     - [spouse, p1, p2]
@@ -2695,6 +2708,7 @@
         countable_resources_individual: 900
         countable_resources_couple: 1400
       month_defaults:
+        work_sanction_level_this_month: 0
         earned_income: 400
         social_security_income: 0
         pension_income: 0
@@ -2705,8 +2719,8 @@
         hours_worked: 60
         work_program_hours: 0
     p2:
-      # Marco, 36, citizen, under a Workforce Development sanction (no Colorado Works sanction item
-      # exists - K-2/OQ-141), 61 counted months, no extension of his own.
+      # Marco, 36, citizen, under a first-level Workforce Development sanction (OQ-141 resolved this fix
+      # round - work_sanction_level_this_month: 1), 61 counted months, no extension of his own.
       facts:
         date_of_birth: "1990-07-02"
         sex: male
@@ -2735,6 +2749,7 @@
         countable_resources_individual: 500
         countable_resources_couple: 1400
       month_defaults:
+        work_sanction_level_this_month: 1
         earned_income: 0
         social_security_income: 0
         pension_income: 0
@@ -2775,6 +2790,7 @@
         countable_resources_individual: 1500
         countable_resources_couple: 0
       month_defaults:
+        work_sanction_level_this_month: 0
         earned_income: 0
         social_security_income: 0
         pension_income: 0
@@ -2813,6 +2829,7 @@
         countable_resources_individual: 0
         countable_resources_couple: 0
       month_defaults:
+        work_sanction_level_this_month: 0
         earned_income: 0
         social_security_income: 0
         pension_income: 0
@@ -2852,6 +2869,7 @@
         countable_resources_individual: 1200
         countable_resources_couple: 0
       month_defaults:
+        work_sanction_level_this_month: 0
         earned_income: 0
         social_security_income: 900
         pension_income: 0
@@ -2868,7 +2886,7 @@
       cw_countable_income: {"2026-10": 310}
       cw_need_standard: 439          # C-5 fixed: Two Caretakers/1 child row (D-61.md:955); matches the review's own derivation
       cw_grant_standard: 649         # C-5 fixed: Two Caretakers/1 child row
-      cw_grant_amount: {"2026-10": 517}   # C-1 fixed: 649 - (400 x 0.33 = 132) = 517; matches the review's own derivation
+      cw_grant_amount: {"2026-10": 387}   # OQ-141 resolved this fix round: 649 - (400 x 0.33 = 132) = 517 pre-sanction (C-1's own figure), then p2's first-level sanction (work_sanction_level_this_month: 1, set this round) subtracts 25% of that payment (517 x 0.25 = 129.25) per 3.608.4.C.1, floor(517 - 129.25) = 387
       # C-2/C-3 fixed: cw_eligibility_status is "eligible", not "time_limit_reached" as the review derived.
       # Under the OLD rules the review reviewed, p2's own 61 months (read person-by-person) drove the unit
       # to time_limit_reached with no unit-wide effect from p1's extension. C-2/C-3 make both the sixty-month
@@ -2889,11 +2907,11 @@
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
       cw_countable_income: {"2026-10": 310}
-      cw_grant_amount: {"2026-10": 517}
+      cw_grant_amount: {"2026-10": 387}   # OQ-141 resolved: p2 is the sanctioned parent (work_sanction_level_this_month: 1); see p1's comment for the arithmetic
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: the unit's extension (p1's) now covers p2 too - see p1's comment
       cw_time_limit_reached: false
       cw_is_work_eligible_individual: {"2026-10": true}
-      cw_meets_work_participation: {"2026-10": false}   # K-2: no Colorado Works sanction item exists, so his work-program noncompliance (is_disqualified_for_work_requirement_noncompliance, a SNAP-chapter fact) does not reduce cw_grant_amount - OQ-141
+      cw_meets_work_participation: {"2026-10": false}   # OQ-141 resolved: his work-program noncompliance (is_disqualified_for_work_requirement_noncompliance, a SNAP-chapter fact) still does not itself drive cw_meets_work_participation or the sanction - the sanction is imposed by the county's own re-engagement process (3.608.3) and read here as work_sanction_level_this_month, a supplied fact, not from this item
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
       af_and_grant: {"2026-10": 0}
@@ -2905,19 +2923,20 @@
       cw_time_limit_reached: false
       af_category: {"2026-10": and_cs}    # C-4/K-6 fixed: eligible - ssi_income $700 < the $994 federal benefit rate (ma_ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
       af_oap_grant: {"2026-10": 0}
-      # af_and_grant is still the full $967 standard, not standard-minus-700 as a hand reading of 3.546 might
-      # suggest. af_countable_income (CO-946) does not read ssi_income at all (it sums social_security_income,
-      # pension_income, unemployment_income, cash_assistance_income, child_support_received, and
-      # other_unearned_income - none of which carries the SSI amount) and 3.549.A.2.b's subtract-SSI-then-add-
-      # back step is unmodeled (OQ-115, OQ before this fix round and still open after it). K-6 closes the
-      # AND-CS *eligibility* gate (3.546's "not receiving the full SSI benefit standard") but not the AND-CS
-      # *payment* computation, which OQ-115 already recorded as a gap this round does not close.
-      af_and_grant: {"2026-10": 967}
+      # af_and_grant is still the full $994 standard (CO-291's 2026-01-01 version per D-69), not
+      # standard-minus-700 as a hand reading of 3.546 might suggest. af_countable_income (CO-946) does
+      # not read ssi_income at all (it sums social_security_income, pension_income, unemployment_income,
+      # cash_assistance_income, child_support_received, and other_unearned_income - none of which
+      # carries the SSI amount) and 3.549.A.2.b's subtract-SSI-then-add-back step is unmodeled (OQ-115,
+      # OQ before this fix round and still open after it). K-6 closes the AND-CS *eligibility* gate
+      # (3.546's "not receiving the full SSI benefit standard") but not the AND-CS *payment* computation,
+      # which OQ-115 already recorded as a gap this round does not close.
+      af_and_grant: {"2026-10": 994}
     p4:
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
       cw_countable_income: {"2026-10": 310}
-      cw_grant_amount: {"2026-10": 517}
+      cw_grant_amount: {"2026-10": 387}   # OQ-141 resolved: same unit-level sanction as p1/p2 - see p1's comment
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: same unit-level extension as p1/p2
       cw_time_limit_reached: false
       cw_is_work_eligible_individual: {"2026-10": false}
@@ -2936,7 +2955,7 @@
       af_countable_income: {"2026-10": 880}
       af_meets_resource_limit: true
       af_category: {"2026-10": oap_b}
-      af_oap_grant: {"2026-10": 125}
+      af_oap_grant: {"2026-10": 152}
       af_and_grant: {"2026-10": 0}
 - id: CO-08
   title: Two caretakers (one employed, one in job search); a 14-year-old with additional care needs; an 18-year-old in high school with earnings; an undocumented adult relative in the home; heat included in rent
@@ -3138,6 +3157,10 @@
       # matching 3.111.J.1 as written, unlike the review's own pre-fix arithmetic (which the review itself
       # flagged would change from $3,000 to $2,600 once C-4 landed).
       cccap_household_income: {"2026-12": 2600}
+      # cccap_poverty_guideline_table/cccap_smi_income_limit_table (CO-323/CO-340) version to D-76's October
+      # 1, 2026 figures (S581) at this case's 2026-12-01 as_of date: size-4 entry limit rises from
+      # 1.85 x $2,600.00 = $4,810.00 to 1.85 x $2,750.00 = $5,087.50, still well above $2,600, so the outcome
+      # below is unchanged.
       cccap_eligibility_status: {"2026-12": eligible_low_income}
       # p4 (18) joins via the case's own shares_heating_fuel_with: true, not 3.751.2.D's unconditional
       # under-18 join; p6 does not join (see the case-level comment above on OQ-132's engine limitation).

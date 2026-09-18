@@ -6,9 +6,16 @@ type: rate
 scope: global
 program: Medicaid
 meaning: Colorado's income limit for the Children's MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.2.
-precision: A percentage-of-FPL figure (1.33 = 133%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
-value: 1.33
-sources: [S201]
+precision: "A percentage-of-FPL figure (1.42 = 142%), compared directly against ma_magi_household_income_pct_fpl (CO-504). 8.100.4.G.2's own text states 133% but directs the reader to 'the MAGI-Medicaid income guidelines chart available on the Department's website' (S201); the fix round's OQ-63 finding reads that chart (HCPF's MAGI Medicaid Monthly Maximum Income Guidelines, D-68/D-70, S564/S566) as the operative, MAGI-converted standard the rule text incorporates by reference, and the 133% in the CCR text as the pre-conversion statutory floor 42 CFR 435.118(c)(1)(i) states (S202) - the same floor ma_magi_income_standard_child (CO-540) already compares this parameter against via [max, ...], so raising this parameter to the chart's 142% leaves that comparison intact and correctly non-binding. This reading is corroborated exactly: CHP+'s own floor, 10 CCR 2505-3-110.1.E's 'greater than 142%' (S243, OQ-63), meets the chart's 142% Medicaid ceiling with no gap and no overlap, which the un-converted 133% figure does not. The chart does not state whether the 5% income disregard (ma_magi_income_disregard_pct) is already folded into 142%, or whether 142% is itself the pre-disregard figure 8.100.4.D then subtracts 5 points from; 8.100.4 and 42 CFR 435.603(d)(4) (D-3x) are both silent on this, so the disregard is left modeled exactly as before (an alternative disjunct in ma_is_child_category, CO-545, gated on the highest-standard test) and the question is carried forward in OQ-63's rewrite rather than resolved here."
+versions:
+  - from: "2025-04-01"
+    to: "2026-04-01"
+    value: 1.42
+    source: S566
+  - from: "2026-04-01"
+    value: 1.42
+    source: S564
+sources: [S201, S564, S566]
 open: [OQ-63]
 tags: [ma, magi, income, state_election]
-rationale: "No existing item carries Colorado's Children's-category income percentage. ma_magi_income_standard_child (CO-540) needs it as a parameter rather than an inline digit (governance name.digits)."
+rationale: "No existing item carries Colorado's Children's-category income percentage. ma_magi_income_standard_child (CO-540) needs it as a parameter rather than an inline digit (governance name.digits). Fix round: versioned from the HCPF MAGI-Medicaid income guidelines chart (D-68/D-70) the rule text at 8.100.4.G.2 (S201) directs the reader to, per the phase-3 review's OQ-63 finding and this fix round's re-reading of it; the prior bare 133% value is not kept as a version because no fetched document states when that pre-chart figure took effect on its own, so this parameter's history begins with the earliest chart edition fetched (D-70, effective 2025-04-01) rather than an invented earlier date."

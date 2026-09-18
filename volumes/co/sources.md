@@ -2834,3 +2834,628 @@ Document: D-58
 91 Fed. Reg. (SSA 2026 COLA determination). https://www.ssa.gov/OACT/COLA/sga.html
 
 > (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,830 in 2026. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,690.
+
+### S536. Institutionalized spouse's income deemed made available to the community spouse before the MIA
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.R.1. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The Monthly Income Allowance (MIA) is the amount of money necessary to raise the community spouse's income to the level of his/her monthly needs, and shall be obtained from the monthly income of the institutionalized spouse. For individuals who become institutionalized on or after February 8, 2006, all income of the institutionalized spouse that could be made available to the community spouse must be considered to have been made available to the community spouse before an MIA is allocated to the community spouse.
+
+### S537. Court-ordered MIA floor and the $50 change-in-circumstance threshold
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.R.3-4. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 3. If a court has entered an order against the institutionalized spouse for monthly support of the community spouse, the MIA shall not be less than the monthly amount ordered by the court.
+> 4. The eligibility site shall make adjustments to the MMMNA and/or the MIA on a monthly basis for any continuing change in circumstances that exceeds $50 a month. Continuing changes of less than $50 in a month, and any infrequent or irregular changes, shall be considered at redetermination.
+
+### S538. Increasing the CSRA above the maximum, and the court-ordered CSRA branch
+
+Document: D-41
+
+10 CCR 2505-10 §§ 8.100.7.M.1.b-c, 8.100.7.S.1. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> b. The increased CSRA calculated pursuant to section 8.100.7.S; or
+> c. The amount a court has ordered the institutionalized spouse to transfer to the community spouse for monthly support of the community spouse or a dependent family member.
+> 8.100.7.S.1. The CSRA shall be increased above the maximum amount if additional resources are needed to raise the community spouse's monthly income to the level of the Minimum Monthly Maintenance Needs Allowance (MMMNA).
+
+### S539. Community spouse's additional approved medical expenses and insurance premiums
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.Q.2.a-b. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 2. An additional amount may be approved for the following expenses:
+> a. Medical expenses of the community spouse or dependent family member for necessary medical or remedial care. ... An expense may be deducted only if it is: i) Provided by a medical practitioner licensed to furnish the care; ii) Not subject to payment by any third party, including Medical Assistance and Medicare;
+> b. The cost of Medicare, Long Term Care insurance, and health insurance premiums. A health insurance premium may be allowed in the month the premium is paid or may be prorated and allowed for the months the premium covers.
+
+### S540. Patient payment deductions: Home Maintenance Allowance and Trustee/Maintenance Fees
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.b.ii.4)-5). https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 4) If applicable, Home Maintenance Allowance
+> 5) If applicable, Trustee/Maintenance Fees: actual fees, with a maximum of $20 per month
+
+### S541. Patient payment deductions: mandatory income tax withheld and mandatory garnishments
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.b.ii.6)-7). https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 6) If applicable, Mandatory Income Tax Withheld
+> 7) Mandatory garnishments repaying Federal assistance overpayment
+
+### S542. Patient payment deductions: Medicare Part B (first two months only) and Part D premiums
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.b.ii.8). https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 8) Medical or remedial care expenses that are not subject to payment by a third party:
+> a) Medicare Part B Premium expenses, if applicable, are deductible only for the first and second month in the Nursing Facility.
+> b) Medicare Part D Premium expenses, if applicable, are ongoing deductions.
+> c) Other medical and remedial expenses covered under the Nursing Facility PETI (NF PETI) program are not deductible.
+
+### S543. Long-Term Care insurance payments: not income for eligibility, but income for patient payment
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.c. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> c. Long-Term Care Insurance Long-Term Care insurance payments are not counted as income for eligibility purposes. However, they are income available for a patient payment. The patient payment shall include the client's income after the allowable deductions and any Long-Term Care insurance payments for the month.
+
+### S544. Alternative Care Facility room and board capped at the Old Age Pension standard
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.B.3. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 3. For individuals served in Alternative Care Facilities (ACF), income in excess of the personal needs allowance and room and board amount for the ACF shall be applied to the Medical Assistance charges for ACF services. The total amount allowed for personal need and room and board cannot exceed the State's Old Age Pension Standard.
+
+### S545. HCBS financial eligibility: strict resource test, individual and couple
+
+Document: D-56
+
+10 CCR 2505-10 § 8.7100.C.2. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.7100
+
+> 2. The Applicant's income must be less than 300% of the current Supplemental Security Income Federal Benefit Rate and countable resources less than $2,000 for a single person or $3,000 for a couple.
+
+### S546. HCBS Level of Care and Target Group: at-risk-of-institutional-placement condition
+
+Document: D-56
+
+10 CCR 2505-10 § 8.7100.D.4. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.7100
+
+> 4. The individual also must be at risk of placement in an Institution within one month, but for the availability of Waiver Services. See individual waiver program for specific Level of Care requirements.
+
+### S547. Undue hardship exception to denial for a community spouse's uncooperative resources
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.M.4. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 4. If the community spouse is in control of resources attributed to the institutionalized spouse, but fails to make such resources available for his/her cost of care, this fact shall not make the institutionalized spouse ineligible for Medical Assistance, where: ... c. The eligibility site determines that the denial of eligibility would work an undue hardship upon the institutionalized spouse. For the purposes of this subparagraph, undue hardship means that an institutionalized spouse, who meets all the Medical Assistance eligibility criteria except for resource eligibility, has no alternative living arrangement other than the medical institution or Long Term Care institution.
+
+### S548. 300% special income group's income-trust override excludes a person in a hospital
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.A.2.e. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> e. Have gross income that does not exceed 300% of the current individual SSI benefit level or; Are in a Long-Term Care institution (excluding hospital) whose gross income exceeds the 300% level and who establishes an income trust in accordance with the rules on income trusts in section 8.100.7 of this volume;
+
+### S551. Colorado Works first, second, and third level sanctions
+
+Document: D-65
+
+9 CCR 2503-6 3.608.4.C.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.608
+
+> 1. First, Second, and Third level sanctions The reduction for the first, second, and third instance of sanction shall be 25% of an assistance unit's grant payment. the sanction shall be in effect for one month for each level sanction. A first, second, or third instance of sanction shall progress to the next level of sanction if the client does not re-engage in the Workforce Development program as defined in subsection G. Below by the end of the month that the sanction is being served.
+
+### S552. Colorado Works fourth level sanction
+
+Document: D-65
+
+9 CCR 2503-6 3.608.4.C.2. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.608
+
+> 2. Fourth level sanction The reduction for a fourth instance of sanction is 100% and shall result in case closure of the Colorado Works grant payment. The closure shall be in effect for one month. A new application for Colorado Works grant payments is required according to section 3.602.1.
+
+### S553. Colorado Works one sanction level per case per month
+
+Document: D-65
+
+9 CCR 2503-6 3.608.4.F. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.608
+
+> F. Sanctioning more than one client in an assistance unit Each Colorado Works case can experience no more than one sanction level in a month. If multiple clients in the same assistance unit have sanctions, the sanctions will be served simultaneously and at the higher sanction level when multiple levels exist.
+
+### S554. Colorado Works re-engagement following a sanction
+
+Document: D-65
+
+9 CCR 2503-6 3.608.4.G. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.608
+
+> G. Re-engagement following a sanction When a client who is serving a sanction contacts the county worker and indicates an interest in participating in the Workforce Development program, an Individualized Plan will be developed. Once the Individualized Plan is signed, the sanction will not progress to the next sanction level unless a new instance of non-compliance occurs. The county worker will enter the re-engagement date into the Statewide Automated System and resume ongoing case management. When a client is serving a sanction based on exceptional dis-engagement defined in section 3.601 and outlined in 3.608.3.H, the client is considered re-engaged based on their attendance at the most recent re-engagement appointment.
+
+### S555. Colorado Works good cause bars a sanction
+
+Document: D-65
+
+9 CCR 2503-6 3.608.3.C. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.608
+
+> C. Good cause does not constitute an exemption from Workforce Development program requirements or time limits. However, good cause should be considered when granting an extension as defined in 3.606.6.C. If there is good cause for not participating in the Workforce Development program, a sanction or closure will not be imposed. Once good cause is determined, the re-engagement process ends. County departments must follow the state prescribed process for re-engagement to include good cause, re-engagement, sanctioning, and closing a case.
+
+### S556. Colorado Works sanction imposed after unsuccessful re-engagement
+
+Document: D-65
+
+9 CCR 2503-6 3.608.3.I. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.608
+
+> I. If the client misses the re-engagement appointment, there are no attempts to reschedule prior to the scheduled appointment, and the client does not provide good cause, a sanction, as defined in section 3.608.4 will be applied to the grant payment. The following process shall occur:
+> 1. The unsuccessful outcome of the re-engagement attempts shall be documented in the statewide automated system within five (5) working days of the determination by the county worker.
+> 2. A notice of grant payment reduction based on the sanction will be sent according to section 3.609.7.
+> 3. If good cause is provided after the unsuccessful outcome of the re-engagement attempts is entered into the Statewide Automated System, the sanction shall be reversed.
+
+### S557. LEAP 2026-27 season income limits, 60% state median income
+
+Document: D-67
+
+CDHS, Colorado Low-income Energy Assistance Program (LEAP), 2026-27 season. https://web.archive.org/web/20260822062447/https://cdhs.colorado.gov/leap
+
+> If your income is up to 60% of the state median income level, you may qualify for heating assistance through LEAP. The state median income level used for the 2026-27 LEAP season was released by the U.S. Department of Health and Human Services in April 2026. The amount of the energy assistance benefit varies depending on a variety of factors, including the primary heating fuel costs and income.
+>
+> Use the table below to determine your monthly gross income according to your household size. Household refers to all people living with you and for whom you are financially responsible. The table below displays updated income guidelines for the 2026-2027 season that begins November 1, 2026 and ends April 30, 2027.
+> Household Size
+> Maximum Gross Monthly Income
+> 1
+> $3,774
+> 2
+> $4,936
+> 3
+> $6,097
+> 4
+> $7,258
+> 5
+> $8,420
+> 6
+> $9,581
+> 7
+> $9,799
+> 8
+> $10,017
+> 9
+> $10,234
+> 10
+> $10,452
+> 11
+> $10,670
+> 12
+> $10,888
+> 13
+> $11,106
+> 14
+> $11,323
+> 15
+> $11,541
+
+### S558. CDHS Adult Financial Programs page: OAP grant standard, 2026
+
+Document: D-69
+
+CDHS, Adult Financial Programs, https://cdhs.colorado.gov/adult-financial-programs (Internet Archive capture 2026-08-22, https://web.archive.org/web/20260822062443/https://cdhs.colorado.gov/adult-financial-programs).
+
+> The total OAP grant standard is $1,032, effective January 1, 2026.
+
+### S559. CDHS Adult Financial Programs page: AND-SO grant standard, 2022
+
+Document: D-69
+
+CDHS, Adult Financial Programs, https://cdhs.colorado.gov/adult-financial-programs (Internet Archive capture 2026-08-22, https://web.archive.org/web/20260822062443/https://cdhs.colorado.gov/adult-financial-programs).
+
+> The total AND-SO grant standard is $248.00, effective April 1, 2022.
+
+### S560. CDHS Adult Financial Programs page: AND-CS grant standard, 2026
+
+Document: D-69
+
+CDHS, Adult Financial Programs, https://cdhs.colorado.gov/adult-financial-programs (Internet Archive capture 2026-08-22, https://web.archive.org/web/20260822062443/https://cdhs.colorado.gov/adult-financial-programs).
+
+> The total AND-CS grant standard is $994, effective January 1, 2026.
+
+### S561. CDHS Adult Financial Programs page: resource maximums
+
+Document: D-69
+
+CDHS, Adult Financial Programs, https://cdhs.colorado.gov/adult-financial-programs (Internet Archive capture 2026-08-22, https://web.archive.org/web/20260822062443/https://cdhs.colorado.gov/adult-financial-programs).
+
+> The maximum amount of resources a client may have is:
+> $2,000 for an unmarried client.
+> $3,000 for a married client.
+
+### S563. CDHS Adult Financial Programs page: 2026 Personal Needs Allowance
+
+Document: D-69
+
+CDHS, Adult Financial Programs, https://cdhs.colorado.gov/adult-financial-programs (Internet Archive capture 2026-08-22, https://web.archive.org/web/20260822062443/https://cdhs.colorado.gov/adult-financial-programs).
+
+> The maximum 2026 PNA grant is $79 per month.
+
+### S564. HCPF MAGI Medicaid Monthly Maximum Income Guidelines, effective April 1, 2026: category percentages
+
+Document: D-68
+
+Colorado Department of Health Care Policy and Financing, "April 2026 Medicaid Income Chart_Draft.pdf", https://hcpf.colorado.gov/sites/hcpf/files/April%202026%20Medicaid%20Income%20Chart_Draft.pdf, as captured by the Internet Archive on 2026-08-22 (https://web.archive.org/web/20260822053152/https://hcpf.colorado.gov/sites/hcpf/files/April%202026%20Medicaid%20Income%20Chart_Draft.pdf).
+
+> MAGI MEDICAID
+>
+> Monthly Maximum Income Guidelines1
+> Effective April 1, 2026
+>
+> Family Size
+>
+> Parents & Caretaker
+> Relatives
+> 68% Poverty Level
+>
+> Adults
+> (Ages 19-65)
+> 133% Poverty Level
+>
+> Children
+> (Ages 0-18)
+> 142% Poverty Level
+>
+> Pregnant Women
+> 195% Poverty Level
+
+### S565. HCPF MAGI Medicaid Monthly Maximum Income Guidelines, effective April 1, 2026: dependent tax filing thresholds
+
+Document: D-68
+
+Colorado Department of Health Care Policy and Financing, "April 2026 Medicaid Income Chart_Draft.pdf", https://hcpf.colorado.gov/sites/hcpf/files/April%202026%20Medicaid%20Income%20Chart_Draft.pdf, as captured by the Internet Archive on 2026-08-22 (https://web.archive.org/web/20260822053152/https://hcpf.colorado.gov/sites/hcpf/files/April%202026%20Medicaid%20Income%20Chart_Draft.pdf).
+
+> 1 Co-payments may apply; no co-pays for American Indians, Alaska Natives, or for a pregnant woman and her household.
+>    Effective 1/1/2026 to 12/31/2026 Tax Filing Thresholds for a Tax Dependent or Child:
+>
+> •  Earned Income $16,100
+> •  Unearned Income $1,350
+
+### S566. HCPF MAGI Medicaid Monthly Maximum Income Guidelines, effective April 1, 2025: category percentages
+
+Document: D-70
+
+Colorado Department of Health Care Policy and Financing, "April 2025 Medicaid Income Chart_1.pdf", https://hcpf.colorado.gov/sites/hcpf/files/April%202025%20Medicaid%20Income%20Chart_1.pdf, as captured by the Internet Archive on 2025-03-29 (https://web.archive.org/web/20250329192423/https://hcpf.colorado.gov/sites/hcpf/files/April%202025%20Medicaid%20Income%20Chart_1.pdf).
+
+> MAGI MEDICAID
+>
+> Monthly Maximum Income Guidelines1
+> Effective April 1, 2025
+>
+> Family Size
+>
+> Parents & Caretaker
+> Relatives
+> 68% Poverty Level
+>
+> Adults
+> (Ages 19-65)
+> 133% Poverty Level
+>
+> Children
+> (Ages 0-18)
+> 142% Poverty Level
+>
+> Pregnant Women
+> 195% Poverty Level
+
+### S567. HCPF MAGI Medicaid Monthly Maximum Income Guidelines, effective April 1, 2025: dependent tax filing thresholds
+
+Document: D-70
+
+Colorado Department of Health Care Policy and Financing, "April 2025 Medicaid Income Chart_1.pdf", https://hcpf.colorado.gov/sites/hcpf/files/April%202025%20Medicaid%20Income%20Chart_1.pdf, as captured by the Internet Archive on 2025-03-29 (https://web.archive.org/web/20250329192423/https://hcpf.colorado.gov/sites/hcpf/files/April%202025%20Medicaid%20Income%20Chart_1.pdf).
+
+> 1 Co-payments may apply; no co-pays for American Indians, Alaska Natives, or for a pregnant woman and her household.
+>    Effective 1/1/2025 to 12/31/2025 Tax Filing Thresholds for a Tax Dependent or Child:
+>
+> •  Earned Income $15,000
+> •  Unearned Income $1,350
+
+### S569. HCPF OM 25-078: QMB/SLMB/QI-1 resource limits, 2025 and 2026
+
+Document: D-72
+
+HCPF OM 25-078, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2025-078%202026%20Increase%20to%20Resource%20Limits%20-%20Medicare%20Savings%20Programs%20and%20Low-Income%20Subsidy.pdf, as captured by the Internet Archive on 2026-01-17.
+
+> The resource test was increased effective January 1, 2026, for QMB, SLMB, QI-1 and LIS and is listed below.
+>
+> Qualified Medicare Beneficiaries (QMB)
+>
+> Specified Low-Income Medicare Beneficiaries (SLMB)
+>
+> Qualified Individuals (QI-1)
+>
+> Individual
+>
+> Couple
+>
+> 2025
+>
+> $11,160
+>
+> $17,470
+>
+> 2026
+>
+> $11,450
+>
+> $17,910
+>
+> (MSP Resource limits in this memo include $1,500 burial expenses for individuals and $3,000 burial expenses for couples)
+
+### S570. HCPF OM 25-078: QDWI resource limits, 2025 and 2026
+
+Document: D-72
+
+HCPF OM 25-078, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2025-078%202026%20Increase%20to%20Resource%20Limits%20-%20Medicare%20Savings%20Programs%20and%20Low-Income%20Subsidy.pdf, as captured by the Internet Archive on 2026-01-17.
+
+> The resource limit does not apply for the Qualified Disabled Working Individuals (QDWI) program.
+>
+> Qualified Disabled Working Individuals (QDWI)
+>
+> Individual
+>
+> Couple
+>
+> 2025
+>
+> $4,000
+>
+> $6,000
+>
+> 2026
+>
+> $4,000
+>
+> $6,000
+
+### S571. HCPF OM 26-025: MSP monthly income limits, 2025 and 2026, inclusive of the $20 disregard
+
+Document: D-75
+
+HCPF OM 26-025, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2026-025%202026%20Increase%20to%20Income%20Limits-Medicare%20Savings%20Programs%20and%20Low-Income%20Subsidy_Accessible.pdf, as captured by the Internet Archive on 2026-08-22.
+
+> The MSP income limits listed below include the $20 unearned income disregard. The QDWI program does not include the earned income disregard, as this is already programmed in CBMS when earned income is entered.
+>
+> 2025
+>
+> 2026
+>
+> QMB
+>
+> Individual
+>
+> $1,325
+>
+> $1,350
+>
+> 100% FPL
+>
+> Couple
+>
+> $1,783
+>
+> $1,824
+>
+> QI-1
+>
+> Individual
+>
+> $1,781
+>
+> $1,816
+>
+> 135% FPL
+>
+> Couple
+>
+> $2,400
+>
+> $2,455
+>
+> SLMB
+>
+> Individual
+>
+> $1,585
+>
+> $1,616
+>
+> 120% FPL
+>
+> Couple
+>
+> $2,135
+>
+> $2,184
+>
+> QDWI
+>
+> Individual
+>
+> $2,609
+>
+> $2,660
+>
+> 200% FPL
+>
+> Couple
+>
+> $3,525
+>
+> $3,607
+
+### S572. HCPF OM 26-023: WAwD income adjustment methodology (the $20 and $65-plus-one-half disregards, including the unused-disregard carryover)
+
+Document: D-73
+
+HCPF OM 26-023, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2026-023%20Health%20First%20Colorado%20Buy-In%20for%20Working%20Adults%20with%20Disabilities%202026%20Income%20Chart%20and%20Premium%20Guide_Accessible.pdf, as captured by the Internet Archive on 2026-08-22.
+
+> Financial eligibility and monthly premium calculation:
+>
+> A. Family Size: All eligible individuals are a family size of one for the Adult Buy-In. Only the individual applicant's information should be used.
+>
+> B. Income Adjustments:
+>
+> i. Unearned Income (any income received that is not from a job): Subtract $20 General Income Disregard from the total amount of monthly income received.
+>
+> ii. Earned Income (monthly income from a job before taxes): Step 1: If there is less than or no Unearned income, apply any remaining part of the General Income Disregard to the Earned income. If the estimated monthly Unearned Income results in a negative number, subtract the negative number from the Earned Income. Step 2. Subtract $65 from the Earned Income. (This can only be done once, regardless of how many jobs a person has) Step 3. Divide the remaining amount in the previous step by 2. This will give you the Estimated Monthly Earned Income.
+>
+> C. Estimate the Total Monthly Income after Income Adjustments: Add the monthly Unearned and Earned incomes from the previous steps.
+>
+> Example: A member reports $10,255 in earned income and $650 in unearned income. We would subtract the $20 dollars from the $650, leaving $630 of unearned income. We would then subtract the $65 from the earned income of $10,255, leaving $10,190. Next, we divide the result of $10,190 by half, leaving $5,095. Finally, we would add the adjusted unearned income and the adjusted earned income $630 + $5,095 = $5,725. The resulting amount of $5,725 will be the total counted income.
+
+### S573. HCPF OM 26-023: WAwD 2026 income chart and premium guide
+
+Document: D-73
+
+HCPF OM 26-023, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2026-023%20Health%20First%20Colorado%20Buy-In%20for%20Working%20Adults%20with%20Disabilities%202026%20Income%20Chart%20and%20Premium%20Guide_Accessible.pdf, as captured by the Internet Archive on 2026-08-22.
+
+> The WAwD Program is an Adult Medical Assistance program that provides Health First Colorado (Colorado's Medicaid Program) benefits for working individuals ages 16 and above that have a qualifying disability and whose adjusted monthly income is at or below 450% of the FPL.
+>
+> The 2026 maximum FPL of 450% is $5,985, so this member would be financially eligible with a premium of $200.
+>
+> 2026 Income Chart and Premium Guide
+>
+> Monthly Income After Income Adjustment
+>
+> Federal Poverty
+> Level (FPL)
+>
+> 0% - 40%
+>
+> 41% - 133%  134% - 200%
+>
+> 201% -
+> 300%
+>
+> 301% - 450%
+>
+> Family Size: 1
+>
+> $0 - $532
+>
+> $533 -
+> $1,769
+>
+> $1,770 -
+> $2,660
+>
+> $2,661 -
+> $3,990
+>
+> $3,991 -
+> $5,985
+>
+> Monthly
+> Premium
+>
+> $0
+>
+> $25
+>
+> $90
+>
+> $130
+>
+> $200
+
+### S574. HCPF OM 26-024: CBwD income adjustment methodology (household income, $20 and $65-plus-one-half disregards)
+
+Document: D-74
+
+HCPF OM 26-024, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2026-024%20Health%20First%20Colorado%20Children%20with%20Disabilities%20Buy-In%202026%20Income%20Chart%20and%20Premium%20Guide.pdf, as captured by the Internet Archive on 2026-08-22.
+
+> The CBwD Program is a Child Medical Assistance program that provides Health First Colorado (Colorado's Medicaid Program) benefits for children who are under age 19, have a qualifying disability and whose adjusted family income is at or below 300% of the FPL.
+>
+> A. Family Size: Determine the number of family members in your household, including the child.
+>
+> B. Estimate of Monthly Income: 1. Add the monthly income (before taxes) for all family members in the household. 2. Calculate the adjusted unearned income by subtracting $20 from any unearned income. If unearned income is less than $20, then the remaining amount of the disregard should be applied towards earned income. 3. Calculate the adjusted earned income by deducting $65 from any earned income and then divide any remaining earned income in half. 4. Add adjusted unearned income amount and adjusted earned income amounts together. The result is the amount of income used for determining eligibility.
+
+### S575. HCPF OM 26-024: CBwD 2026 income chart and premium guide by family size
+
+Document: D-74
+
+HCPF OM 26-024, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2026-024%20Health%20First%20Colorado%20Children%20with%20Disabilities%20Buy-In%202026%20Income%20Chart%20and%20Premium%20Guide.pdf, as captured by the Internet Archive on 2026-08-22.
+
+> Monthly Income After Income Adjustments
+>
+> 0% - 133%
+>
+> 134% - 185%
+>
+> 186% - 250%
+>
+> 251% - 300%
+>
+> $0
+>
+> $70
+>
+> $90
+>
+> $120
+>
+> Federal
+> Poverty Level
+> (FPL)
+>
+> Monthly
+> Premium
+>
+> Family Size: 1
+>
+> $0 - $1,769
+>
+> $1,770 -
+> $2,461
+>
+> $2,462 -
+> $3,325
+>
+> $3,326 -
+> $3,990
+>
+> Family Size: 2
+>
+> $0 - $2,399
+>
+> $2,400 -
+> $3,337
+>
+> $3,338 -
+> $4,509
+>
+> $4,510 -
+> $5,410
+
+### S576. HCPF OM 26-032: MMMNA formula and 2026 figure, effective July 1, 2026
+
+Document: D-71
+
+HCPF OM 26-032, https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2026-032%202026%20Minimum%20Monthly%20Maintenance%20Needs%20Allowance%20%28MMMNA%29_0.pdf, as captured by the Internet Archive on 2026-08-22.
+
+> The standard maintenance allowance for the community spouse is based on the Federal Poverty Level (FPL) and is adjusted annually on July 1. The MMMNA is set at 150 percent (150%) of the FPL for a family of two. Eligibility Sites must refer to the following updated MMMNA and Shelter Allowance guidelines as of July 1, 2026, when making an eligibility determination for LTC. 2026 MMMNA $2705.00
+
+### S581. CCCAP low-income eligibility guidelines, income table effective October 1, 2026 (SOS edition)
+
+Document: D-76
+
+8 CCR 1403-1 3.111.H.2-3, Colorado SOS edition effective 08/14/2026. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+Reconstruction note: the PDF extraction is column-major (pdfminer reads down each column before moving to the next), so the raw text runs 100% FPG values for sizes 1-4, then the size labels 1-4, then 85% SMI values for sizes 1-4, then (after a page break) 100% FPG values for sizes 5-8, then 85% SMI values for sizes 5-8, then the two "Each Additional person" figures, then the size labels 5-8. Reassembling by matching each value's row position against the repeated column headers gives, by family size: 1 = $1,330.00 / $5,347.35; 2 = $1,803.33 / $6,992.69; 3 = $2,276.67 / $8,638.03; 4 = $2,750.00 / $10,283.37; 5 = $3,223.33 / $11,928.71; 6 = $3,696.67 / $13,574.05; 7 = $4,170.00 / $13,882.55; 8 = $4,643.33 / $14,191.05; each additional person = $473.33 (100% FPG) / $308.50 (85% SMI).
+
+> 3. Effective October 1, 2026, monthly gross income levels, for one-hundred percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-five percent (85%) of State Median Income (SMI), the state and federal maximum income limits, for the corresponding household size are as follows: Family Size 100% Federal Poverty Guideline (FPG) 85% State Median Income (SMI) (State and Federal Maximum Income Limit) 1 $1,330.00 $1,803.33 $2,276.67 $2,750.00 $3,223.33 $3,696.67 $4,170.00 $4,643.33 $5,347.35 $6,992.69 $8,638.03 $10,283.37 $11,928.71 $13,574.05 $13,882.55 $14,191.05 $473.33 $308.50 2 3 4 5 6 7 8 Each Additional person

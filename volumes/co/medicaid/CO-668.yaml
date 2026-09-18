@@ -1,0 +1,19 @@
+id: CO-668
+name: "Medicaid: patient payment deduction, Medicare Part B premium (first two months)"
+identifier: ma_medicare_part_b_ltc_deduction
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This institutionalized person's Medicare Part B premium, deducted from the monthly patient payment only for the first and second calendar month of the Nursing Facility stay, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.8)a).
+precision: "\"The first and second month in the Nursing Facility\" is read as the month containing institution_entry_date and the month after it, the same month_of/month_after pattern ma_excluded_from_ssi_household (CO-661) and ma_transfer_penalty_applies (CO-660) use for institution-date month boundaries."
+derived: [case, [[all, [not, [unknown, institution_entry_date]], [any, ["=", [month], [month_of, institution_entry_date]], ["=", [month], [month_after, [month_of, institution_entry_date]]]]], ["max", 0, [otherwise, medicare_part_b_premium_paid, 0]]], [else, 0]]
+sources: [S542]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item states § 8.100.7.V.3.b.ii.8)a)'s first-two-months-only Medicare Part B deduction. ma_patient_payment (CO-658) needs it, per the phase-4 review's G-2 finding; distinct from health_insurance_premiums_paid (CO-835), which carries no first-two-months limitation."
+nearest: [CO-835, CO-661]
+tests:
+  - {id: CO-668-T1, as_of: "2026-10-05", month: "2026-10", given: {institution_entry_date: "2026-10-05", medicare_part_b_premium_paid: 185}, expect: 185}
+  - {id: CO-668-T2, as_of: "2026-11-01", month: "2026-11", given: {institution_entry_date: "2026-10-05", medicare_part_b_premium_paid: 185}, expect: 185}
+  - {id: CO-668-T3, as_of: "2026-12-01", month: "2026-12", given: {institution_entry_date: "2026-10-05", medicare_part_b_premium_paid: 185}, expect: 0}

@@ -1,0 +1,13 @@
+id: CO-894
+name: Medicare Part B premium paid
+identifier: medicare_part_b_premium_paid
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: This institutionalized person's monthly Medicare Part B premium, deductible from the patient payment only for the first and second month in the Nursing Facility, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.8)a).
+supplied_by: Eligibility Site's verification of the Medicare Part B premium amount (SSA benefit statement or premium billing), 0 when not applicable.
+sources: [S542]
+tags: [ma, ltc, income]
+rationale: "No existing item states the institutionalized person's Medicare Part B premium as a patient-payment deduction (health_insurance_premiums_paid, CO-835, is a general health-insurance-premium figure without § 8.100.7.V.3.b.ii.8)a)'s first-two-months-only limitation). The 2026 premium figure is not in any fetched document, so per the ledger's rule this is a supplied fact rather than an invented parameter. ma_medicare_part_b_ltc_deduction (CO-668) reads it, gated on the first two months of institution_entry_date."
+nearest: [CO-835]

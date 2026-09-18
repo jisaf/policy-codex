@@ -1,0 +1,17 @@
+id: CO-667
+name: "Medicaid: patient payment deduction, mandatory garnishments"
+identifier: ma_mandatory_garnishment_deduction
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The mandatory garnishment repaying a federal assistance overpayment from this institutionalized person's income for the month, deducted from the monthly patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.7).
+derived: ["max", 0, [otherwise, mandatory_garnishment_repaying_federal_overpayment, 0]]
+sources: [S541]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item states § 8.100.7.V.3.b.ii.7)'s mandatory-garnishment deduction. ma_patient_payment (CO-658) needs it, per the phase-4 review's G-2 finding."
+nearest: [CO-887]
+tests:
+  - {id: CO-667-T1, as_of: "2026-10-01", month: "2026-10", given: {mandatory_garnishment_repaying_federal_overpayment: 45}, expect: 45}
+  - {id: CO-667-T2, as_of: "2026-10-01", month: "2026-10", given: {mandatory_garnishment_repaying_federal_overpayment: 0}, expect: 0}

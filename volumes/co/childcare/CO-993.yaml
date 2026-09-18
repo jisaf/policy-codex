@@ -15,4 +15,5 @@ tags: [income]
 rationale: "No existing item states 3.111.H.1.b's exit income test; the review (docs/reviews/cccap-leap-phase-6.md, C-5) found the 85% SMI figures were stated in the fetched text (S485) but neither the cap nor the exit limit was represented anywhere in the ledger. Modeled on cccap_income_within_entry_limit (CO-986), the nearest same-shape item, reading the new cccap_smi_income_limit_table (CO-340) instead of cccap_poverty_guideline_table (CO-323)."
 tests:
   - {id: CO-993-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 6000, cccap_household_size: 3}, expect: true}
-  - {id: CO-993-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 8000, cccap_household_size: 3}, expect: false}
+  # $8,638.03 is cccap_smi_income_limit_table's size-3 figure under CO-340's October 1, 2026 version (S581).
+  - {id: CO-993-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 8700, cccap_household_size: 3}, expect: false}

@@ -1,0 +1,19 @@
+id: CO-932
+name: "Colorado Works: sanction reduction"
+identifier: cw_sanction_reduction
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: The dollar amount by which this person's assistance unit's grant payment is reduced for the month because of a Workforce Development sanction, per 9 CCR 2503-6 3.608.4.C - 25% of the grant payment for a first, second, or third level sanction, 100% (a full-month case closure) for a fourth level sanction.
+precision: "Computed on the same pre-sanction grant-payment base cw_grant_amount (CO-914) otherwise arrives at after the pregnancy allowance (grant standard plus pregnancy allowance, minus payment countable income, floored at zero) - 3.608.4.C.1 states the reduction as a percentage 'of an assistance unit's grant payment,' not of the grant standard alone, so a unit already reduced to a low payment by income is sanctioned on that same lower figure, not the full standard. A level-four (100%) reduction equals the base itself, so cw_grant_amount nets to zero - the case-closure effect 3.608.4.C.2 states - without a separate closure flag; this item does not model the certification-period consequences of closure (a new application requirement under 3.602.1), only the payment-month arithmetic 3.608.4.C states."
+derived: [case, [[all, [">", cw_unit_sanction_level, 0], ["<", cw_unit_sanction_level, 4]], ["*", cw_sanction_reduction_rate_levels_one_to_three, [max, 0, ["-", ["+", cw_grant_standard, ["*", cw_pregnancy_allowance, [count, [filter, cw_assistance_unit_members, [of, [P], is_pregnant]]]]], cw_payment_countable_income]]]], [[">=", cw_unit_sanction_level, 4], ["*", cw_sanction_reduction_rate_level_four, [max, 0, ["-", ["+", cw_grant_standard, ["*", cw_pregnancy_allowance, [count, [filter, cw_assistance_unit_members, [of, [P], is_pregnant]]]]], cw_payment_countable_income]]]], [else, 0]]
+sources: [S551, S552]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing item states a Colorado Works sanction's dollar effect; cw_grant_amount (CO-914) needs it - K-2/OQ-141's gap. Nearest same-shape item is cw_pregnancy_allowance's own addition into CO-914 (a flat/rate adjustment folded into the grant computation), acknowledged, but a pregnancy allowance is added while a sanction is a rate applied to the base payment itself, so it is modeled as its own item read by CO-914 rather than a bare parameter."
+nearest: [CO-914]
+tests:
+  - {id: CO-932-T1, title: "No sanction", as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: 0, cw_grant_standard: 488, cw_payment_countable_income: 0, cw_pregnancy_allowance: 10}, others: {}, relationships: [], expect: 0}
+  - {id: CO-932-T2, title: "First level - 25% of the pre-sanction payment", as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: 1, cw_grant_standard: 488, cw_payment_countable_income: 0, cw_pregnancy_allowance: 10, is_pregnant: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {}, relationships: [], expect: 122}
+  - {id: CO-932-T3, title: "Fourth level - 100%, equal to the full pre-sanction payment", as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: 4, cw_grant_standard: 488, cw_payment_countable_income: 132, cw_pregnancy_allowance: 10, is_pregnant: false, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {}, relationships: [], expect: 356}

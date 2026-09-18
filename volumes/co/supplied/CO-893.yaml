@@ -1,0 +1,13 @@
+id: CO-893
+name: Mandatory garnishment repaying a federal assistance overpayment
+identifier: mandatory_garnishment_repaying_federal_overpayment
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The amount of this institutionalized person's income mandatorily garnished for the month to repay a federal assistance overpayment, deductible from the patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.7).
+supplied_by: Eligibility Site's verification of a mandatory garnishment order repaying a federal assistance overpayment, 0 when not applicable.
+sources: [S541]
+tags: [ma, ltc, income]
+rationale: "No existing item states an institutionalized person's mandatory garnishment for a federal assistance overpayment. § 8.100.7.V.3.b.ii.7) names the deduction (only garnishments repaying a federal assistance overpayment, not garnishments generally) without a formula or cap; it is a case-specific amount. ma_mandatory_garnishment_deduction (CO-667) reads it."
+nearest: [CO-887]

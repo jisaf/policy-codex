@@ -6,8 +6,17 @@ type: rate
 scope: global
 program: Medicaid
 meaning: Colorado's income limit for the Parents and Caretaker Relatives MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.3.
-precision: A percentage-of-FPL figure (0.60 = 60%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
-value: 0.60
-sources: [S203]
+precision: "A percentage-of-FPL figure (0.68 = 68%), compared directly against ma_magi_household_income_pct_fpl (CO-504). 8.100.4.G.3's own text states 60% and, unlike G.2 (S201), does not itself carry a 'Refer to the MAGI-Medicaid income guidelines chart' sentence (verified against the fetched S203 excerpt: it has none). The fix round's OQ-63 finding is nonetheless extended to this parameter, because the chart D-68/D-70 fetch (S564/S566) is not a children-only document - it is HCPF's single 'MAGI Medicaid Monthly Maximum Income Guidelines' chart, with one column per category including 'Parents & Caretaker Relatives 68% Poverty Level,' and G.3's own text already uses the same 'MAGI-equivalent' qualifier G.2 uses for the figure the chart converts. Reading the chart as the operative, MAGI-converted standard here and 60% as the pre-conversion floor is therefore the same inference the Children's category rests on, not a textual cross-reference this paragraph itself states - carried forward as part of OQ-63's rewrite rather than presented as settled by G.3's own text. Whether the 5% income disregard is already inside 68% is not stated by the chart, 8.100.4.D, or 42 CFR 435.603(d)(4) (D-3x); left modeled exactly as before."
+versions:
+  - from: "2025-04-01"
+    to: "2026-04-01"
+    value: 0.68
+    source: S566
+  - from: "2026-04-01"
+    value: 0.68
+    source: S564
+sources: [S203, S564, S566]
+open: [OQ-63]
 tags: [ma, magi, income, state_election]
-rationale: "No existing item carries Colorado's Parents/Caretaker-category income percentage. ma_magi_income_standard_parent_caretaker (CO-541) needs it as a parameter rather than an inline digit (governance name.digits)."
+rationale: "No existing item carries Colorado's Parents/Caretaker-category income percentage. ma_magi_income_standard_parent_caretaker (CO-541) needs it as a parameter rather than an inline digit (governance name.digits). Fix round: versioned from the HCPF chart (D-68/D-70) on the same reasoning as ma_income_limit_child_pct (CO-191, nearest same-shape item, acknowledged here), extended from G.2's explicit cross-reference to G.3 because the chart itself is a single document covering all four categories, not one this volume has any basis to read as children-only (see precision). History begins at D-70's effective date (2025-04-01) for the same reason CO-191 does not carry an earlier version."
+nearest: [CO-191]

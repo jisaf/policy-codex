@@ -6,11 +6,15 @@ type: money
 scope: global
 program: CCCAP
 meaning: The monthly dollar amount 8 CCR 1403-1 3.111.H.2 adds to the 85% state median income limit for each household member above eight.
-precision: Effective October 1, 2024, alongside cccap_smi_income_limit_table (CO-340).
+precision: Effective October 1, 2024, alongside cccap_smi_income_limit_table (CO-340); the Colorado SOS current edition (D-76, effective 08/14/2026) restates it effective October 1, 2026 at $308.50 (3.111.H.3).
 versions:
   - from: "2024-10-01"
+    to: "2026-10-01"
     value: 276.47
     source: S485
-sources: [S485]
+  - from: "2026-10-01"
+    value: 308.50
+    source: S581
+sources: [S485, S581]
 tags: [income]
-rationale: "The nearest existing item is cccap_poverty_guideline_each_additional (CO-324), the 100% FPG column's each-additional figure from the same table row (S485); the 85% SMI column's own each-additional figure ($276.47) is a separate stated number cccap_income_within_entry_limit's new cap (C-5) and cccap_income_within_exit_limit (CO-993) both need for a household above size 8."
+rationale: "The nearest existing item is cccap_poverty_guideline_each_additional (CO-324), the 100% FPG column's each-additional figure from the same table row (S485); the 85% SMI column's own each-additional figure ($276.47) is a separate stated number cccap_income_within_entry_limit's new cap (C-5) and cccap_income_within_exit_limit (CO-993) both need for a household above size 8. The Colorado SOS current edition (D-76) restates the same figure effective October 1, 2026 (S581), which this item now versions."

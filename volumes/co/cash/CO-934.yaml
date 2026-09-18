@@ -1,0 +1,17 @@
+id: CO-934
+name: "Colorado Works: budgetary unit size"
+identifier: cw_budgetary_unit_size
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: The number of persons in this person's Colorado Works budgetary unit (cw_budgetary_unit_members, CO-933), plus one for each assistance-unit member's unborn child, per 9 CCR 2503-6 3.604.2.D.1.c - "the unborn child of a pregnant parent" is a required budgetary-unit member even though it is not a person this volume's case model can name.
+precision: Counts an unborn child toward size only, as the brief for this fix round directs - an unborn child is never itself a case person with its own facts, so it can contribute nothing but +1 per pregnant assistance-unit member to any sum or count that reads this item. Not read by any other item this batch (see cw_meets_work_participation, CO-920, for the same read-by-nothing convention when the fetched text supports a figure without naming a consumer for it); a future batch computing a budgetary-unit-keyed need standard, if the text is found to require one, would read it.
+derived: [+, [count, cw_budgetary_unit_members], [count, [filter, cw_assistance_unit_members, [of, [P], is_pregnant]]]]
+sources: [S527]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "No existing item counts the Colorado Works budgetary unit; nearest same-shape item is cw_unit_size (CO-903, a count over cw_assistance_unit_members), acknowledged here, but this item counts the wider budgetary unit (CO-933) and adds an unborn-child increment CO-903 has no counterpart for. Not wired into cw_need_standard (CO-911): 3.606.1.F's own text states the standards-of-assistance chart 'based upon those included in the assistance unit,' so the need standard stays keyed to the assistance unit's caretaker/child composition (cw_unit_caretaker_count, cw_unit_child_count) rather than this budgetary headcount - see cw_meets_income_test (CO-913)'s rationale for why the budgetary-unit income test still compares against that same, unchanged need standard."
+tests:
+  - {id: CO-934-T1, title: "No spouse, no minor-parent deeming, no pregnancy", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, marital_status: single, is_pregnant: false}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, is_pregnant: false}}, relationships: [[parent, p1, p2]], expect: 2}
+  - {id: CO-934-T2, title: "S527.c: a pregnant assistance-unit member's unborn child counts toward size", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, marital_status: single, is_pregnant: true}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, is_pregnant: false}}, relationships: [[parent, p1, p2]], expect: 3}

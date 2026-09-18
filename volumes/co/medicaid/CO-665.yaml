@@ -1,0 +1,18 @@
+id: CO-665
+name: "Medicaid: patient payment deduction, trustee/maintenance fees"
+identifier: ma_ltc_trustee_fee_deduction
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The trustee or maintenance fee deducted from this institutionalized person's monthly patient payment, when applicable - the actual fee paid, capped at $20 a month - per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.5).
+derived: ["min", ["max", 0, [otherwise, trustee_maintenance_fees_paid, 0]], ma_ltc_trustee_fee_monthly_cap]
+sources: [S540]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item states § 8.100.7.V.3.b.ii.5)'s trustee/maintenance fee deduction. ma_patient_payment (CO-658) needs it, per the phase-4 review's G-2 finding."
+nearest: [CO-887]
+tests:
+  - {id: CO-665-T1, as_of: "2026-10-01", month: "2026-10", given: {trustee_maintenance_fees_paid: 12, ma_ltc_trustee_fee_monthly_cap: 20}, expect: 12}
+  - {id: CO-665-T2, as_of: "2026-10-01", month: "2026-10", given: {trustee_maintenance_fees_paid: 35, ma_ltc_trustee_fee_monthly_cap: 20}, expect: 20}
+  - {id: CO-665-T3, as_of: "2026-10-01", month: "2026-10", given: {trustee_maintenance_fees_paid: 0, ma_ltc_trustee_fee_monthly_cap: 20}, expect: 0}

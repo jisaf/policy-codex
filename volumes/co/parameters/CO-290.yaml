@@ -12,5 +12,5 @@ versions:
     value: 248
     source: S458
 open: [OQ-118]
-sources: [S458]
-rationale: No existing item states the AND-SO grant standard. af_grant_standard (CO-949), af_and_grant (CO-952), and af_category's income test (CO-953) need it.
+sources: [S458, S559]
+rationale: "No existing item states the AND-SO grant standard. af_grant_standard (CO-949), af_and_grant (CO-952), and af_category's income test (CO-953) need it. Fix round: D-69 (CDHS's Adult Financial Programs page, an Internet Archive capture) corroborates this figure with the identical value and effective date ($248.00, April 1, 2022, S559) - no new version added since nothing changed. See OQ-118."

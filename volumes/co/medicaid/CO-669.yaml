@@ -1,0 +1,18 @@
+id: CO-669
+name: "Medicaid: patient payment deduction, Medicare Part D premium"
+identifier: ma_medicare_part_d_ltc_deduction
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This institutionalized person's Medicare Part D premium, deducted from the monthly patient payment as an ongoing deduction, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.8)b).
+precision: Unlike ma_medicare_part_b_ltc_deduction (CO-668), this deduction is ongoing and not limited to the first two months.
+derived: ["max", 0, [otherwise, medicare_part_d_premium_paid, 0]]
+sources: [S542]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item states § 8.100.7.V.3.b.ii.8)b)'s Medicare Part D deduction. ma_patient_payment (CO-658) needs it, per the phase-4 review's G-2 finding."
+nearest: [CO-835, CO-668]
+tests:
+  - {id: CO-669-T1, as_of: "2026-10-01", month: "2026-10", given: {medicare_part_d_premium_paid: 42}, expect: 42}
+  - {id: CO-669-T2, as_of: "2026-10-01", month: "2026-10", given: {medicare_part_d_premium_paid: 0}, expect: 0}

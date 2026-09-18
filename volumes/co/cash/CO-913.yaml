@@ -5,14 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: ColoradoWorks
-meaning: Whether this person's assistance unit's net countable income is strictly below the need standard for its size, per 9 CCR 2503-6 3.606.1.H and 3.606.1.J.4 (income equal to or exceeding the need standard is ineligible).
-derived: ["<", cw_countable_income, cw_need_standard]
-sources: [S415]
+meaning: Whether this person's budgetary unit's net countable income is strictly below the assistance unit's need standard, per 9 CCR 2503-6 3.606.1.J.1-4 (income equal to or exceeding the need standard is ineligible).
+precision: "Fix round (OQ-140 resolved): reads cw_budgetary_unit_countable_income (CO-935) rather than cw_countable_income (CO-910) - 3.606.1.J.1-2 (S528) states the reported-income test is computed 'over ... each employed member of the budgetary unit' and 'each member of the budgetary unit,' not the assistance unit alone, which this fix round's OQ-140 finding named as unmodeled. Still compares against cw_need_standard (CO-911), unchanged: 3.606.1.F's own text states its chart is 'based upon those included in the assistance unit,' and J.3's 'the need standard for the household size' does not restate a different, budgetary-unit-keyed figure - D-61's glossary line 115 ('A Colorado Works household consists of clients who are part of the assistance unit and/or budgetary unit') uses 'household' as an umbrella term for the chapter, not a new size key with its own chart. cw_countable_income (CO-910) keeps its own assistance-unit-only meaning for the grant computation (cw_grant_amount, CO-914, via cw_payment_countable_income, CO-923) - the text's own I.1-3/K.1 steps read only 'members of the assistance unit,' not the budgetary unit."
+derived: ["<", cw_budgetary_unit_countable_income, cw_need_standard]
+sources: [S415, S528]
 open: [OQ-153]
 implemented: engine
 tags: [cash, tanf, income]
-rationale: "No existing item states the Colorado Works income test; cw_eligibility_status (CO-920) needs it. Fix round (M-2): the fetched text states this boundary two ways - 3.606.1.H's 'shall not exceed' (equal passes) and 3.606.1.J.4's 'equals or exceeds ... not eligible' (equal fails) - see the new OQ-153; this item keeps J.4's strict-less-than reading, unchanged from before."
+rationale: "No existing item states the Colorado Works income test; cw_eligibility_status (CO-920) needs it. Fix round (M-2): the fetched text states this boundary two ways - 3.606.1.H's 'shall not exceed' (equal passes) and 3.606.1.J.4's 'equals or exceeds ... not eligible' (equal fails) - see the new OQ-153; this item keeps J.4's strict-less-than reading, unchanged from before. Fix round (OQ-140 resolved): switched the income side of the test from cw_countable_income (CO-910, assistance-unit-only) to cw_budgetary_unit_countable_income (CO-935, new), per 3.606.1.J.1-2's own 'budgetary unit' language; the need-standard side is unchanged, per this item's own precision note on why the chart itself stays assistance-unit-keyed."
 tests:
-  - {id: CO-913-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_countable_income: 100, cw_need_standard: 331}, expect: true}
-  - {id: CO-913-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_countable_income: 331, cw_need_standard: 331}, expect: false}
-  - {id: CO-913-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_countable_income: 2037, cw_need_standard: 331}, expect: false}
+  - {id: CO-913-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_budgetary_unit_countable_income: 100, cw_need_standard: 331}, expect: true}
+  - {id: CO-913-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_budgetary_unit_countable_income: 331, cw_need_standard: 331}, expect: false}
+  - {id: CO-913-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_budgetary_unit_countable_income: 2037, cw_need_standard: 331}, expect: false}

@@ -6,14 +6,14 @@ type: rate
 scope: global
 program: Medicaid
 meaning: The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Parents and Caretaker Relatives MAGI Medical Assistance category, stated at 10 CCR 2505-10 8.100.4.G.3.
-precision: 42 CFR 435.110(c) states the federal floor as a State's 1988 AFDC income standard for the applicable family size, converted to a MAGI-equivalent standard - a historical dollar figure, not a flat percentage, that no fetched document states, so no federal-floor comparison parallel to ma_magi_income_standard_child (CO-540) is modeled here; Colorado's 60% is applied directly.
+precision: "42 CFR 435.110(c) states the federal floor as a State's 1988 AFDC income standard for the applicable family size, converted to a MAGI-equivalent standard - a historical dollar figure, not a flat percentage, that no fetched document states, so no federal-floor comparison parallel to ma_magi_income_standard_child (CO-540) is modeled here; Colorado's own percentage is applied directly. Fix round: ma_income_limit_parent_caretaker_pct (CO-192) is now versioned to the HCPF MAGI-Medicaid income guidelines chart's 68% (D-68/D-70, S564/S566) as of 2025-04-01, per the fix round's OQ-63 re-read extended to the Parents/Caretaker category; this item reads the parameter directly so the change flows through with no edit to the derivation itself."
 assumption: Modeled as the greater of ma_income_limit_parent_caretaker_pct and itself (rather than a bare reference to that parameter) so the derivation is a rule, not a governance-flagged alias, given there is no numeric federal floor in the fetched text to compare it against.
 derived: [max, ma_income_limit_parent_caretaker_pct, ma_income_limit_parent_caretaker_pct]
-sources: [S203, S204]
-open: [OQ-49]
+sources: [S203, S204, S564, S566]
+open: [OQ-49, OQ-63]
 implemented: engine
 tags: [ma, magi, income, state_election]
 rationale: "No existing item states the Parents/Caretaker-category income standard. ma_is_parent_caretaker_category (CO-547) needs it. Not the same shape as ma_magi_income_standard_child/_adult/_pregnant (CO-540, CO-542, CO-543), which compare against a real federal-floor parameter, because this category's federal floor is an AFDC-conversion this volume cannot state as a number; see OQ-49. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
 nearest: [CO-540, CO-542, CO-543]
 tests:
-  - {id: CO-541-T1, as_of: "2026-10-01", given: {}, expect: 0.60}
+  - {id: CO-541-T1, as_of: "2026-10-01", given: {}, expect: 0.68}
