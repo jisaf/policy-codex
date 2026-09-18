@@ -60,3 +60,43 @@ Did not fit cleanly:
 - Concurrency: three authors in one working tree collide on half-written YAML during another author's check run; each batch was committed from a staged, isolated tree. A per-author worktree would remove the noise.
 
 Open questions cluster in: state-published figures the session cannot fetch (the HCPF income chart, the CHP+ fee schedule); federal rule text the Colorado manual has not caught up with (435.119(d), the H.R.1-era provisions); and modeling gaps that need a co-residence fact.
+
+## Phase 4: non-MAGI Medicaid, long-term care, MSP and Buy-In (2026-09-18)
+
+Built: volumes/co/medicaid CO-600–CO-622 (SSI-related aged, blind and disabled categories with the SSI income and resource methodology of 20 CFR 416 subparts K and L: the $20 general and $65-plus-half earned exclusions, in-kind support, the individual and couple resource limits; the Medicare Savings Programs QMB, SLMB and QI; Medicaid Buy-In for working adults with disabilities and for children with disabilities) and CO-640–CO-660 (institutionalized status with the 30-day expectation, the special income group at 300% of the SSI federal benefit rate, HCBS waiver eligibility and its target groups, PACE, spousal impoverishment with the CSRA, the MMMNA and the community spouse income allowance, transfer of assets with the penalty divisor, the home equity limit, the patient payment with the personal needs allowance) from D-43–D-58 (42 U.S.C. 1382a–c, 1396p, 1396r-5; 42 CFR 435 subparts D, F, H, I and 435.1005–435.1012; 20 CFR 416 K and L; 10 CCR 2505-10 8.100.5–8.100.7, 8.400, 8.7000, 8.500/8.508/8.509/8.497; SSA's 2026 COLA notice for the SSI federal benefit rate). Outcomes: `ma_ssi_related_category`, `ma_msp_category`, `ma_buy_in_category`, `ma_ltc_eligibility_status`, `ma_patient_payment`. State-set figures the fetched text does not state (the CSRA minimum and maximum, the MMMNA standard and cap, the home equity limit, the transfer penalty divisor, the MSP resource limits) are supplied facts with open questions; the target household carries illustrative values marked as such. Review at docs/reviews/non-magi-ltc-phase-4.md.
+
+Worked:
+- The SSI methodology as a chain of small items (gross, exclusions, countable, deemed) was reused as-is by Adult Financial in phase 5.
+- The review again found what governance and check could not: the CSRA followed the federal half-of-resources formula where Colorado's 8.100.7.M.1.a gives the community spouse the couple's total resources up to the maximum; the patient payment was computed for the community spouse; HCBS and PACE couples never reached spousal impoverishment; the SSI/OAP and Buy-In routes into HCBS were run through the 300% test. All four passed every mechanical check.
+
+Did not fit cleanly:
+- Colorado's CSRA is a single "min of total and maximum" while 1396r-5(f)(2)(A) has a spousal share and a floor; the volume follows the state text and records the tension (OQ-126). The federal floor remains a supplied fact with no consumer.
+- The PACE-before-institutional ordering in `ma_ltc_eligibility_status` decides the target household's grandmother's status (`eligible_pace`, not `eligible_institutional`) and is an authoring choice the text does not force (OQ-100).
+- The transfer penalty needed a start date and a partial-month day count; the engine has no floor operator, so whole months use `-ceil(-x)`.
+- Buy-In's exemption from spousal impoverishment (8.7100.C.3) is recorded, not modeled, because wiring it reverses the dependency between the couple test and waiver eligibility (OQ-127).
+
+## Phase 5: Colorado Works and Adult Financial (2026-09-18)
+
+Built: volumes/co/cash CO-900–CO-927 (Colorado Works: the assistance unit closed over parent/child and caretaker/dependent with the minor-parent split and the SSI and Title IV exclusions, dependent child, minor-parent living arrangement and deeming of the minor parent's parents' income, residency, the qualified-non-citizen rule with the August 22, 1996 cutoff, the $90 eligibility disregard and the 67% payment disregard, the need and grant standards of 3.606.1.F as three tables by caretaker count keyed by child count, the unit-level sixty-month limit counting only the head and spouse with the hardship and domestic-violence extensions, work-eligible individual and work participation hours) and CO-940–CO-953 (Adult Financial: OAP-A/B by age and SSI eligibility, AND-SO with the six-month disability standard excluding SSDI and SSI recipients, AND-CS for SSI recipients under the state standard, AB, SSI-methodology income with the state disregards, the resource limit, the grant standards as supplied facts) from D-59–D-62 (C.R.S. 26-2 parts 1 and 7; 45 CFR 260, 261, 263, 264; 9 CCR 2503-6 and 2503-5) with D-53/D-54/D-58. Outcomes: `cw_grant_amount`, `cw_eligibility_status`, `af_category`, `af_oap_grant`, `af_and_grant`. Review at docs/reviews/cash-phase-5.md.
+
+Worked:
+- The 3.606.1.F chart is in the fetched text with all three caretaker rows, so the standards are parameters, not supplied facts. A two-key table type was not needed: three one-key tables selected by a caretaker count do the job (K-10).
+- The minor-parent unit in the target household (a 17-year-old and her infant living with the 17-year-old's undocumented mother) exercised the deeming rule end to end: the mother's income less the $90 disregard less a one-person needs allowance is deemed to the unit, which is then over the need standard.
+
+Did not fit cleanly:
+- The grant was first computed with the $90 eligibility disregard; 3.606.2.A.1 applies the 67% disregard to the payment. The review caught it; the two disregards are now separate items.
+- 3.608 (sanctions) is not in the fetched text; there is no sanction rule (OQ recorded). The FVO waiver and the domestic-violence time-limit extension are different things in 3.604.5; the supplied fact now names the extension.
+- The sixty-month clock is per unit and counts the head of household and spouse only (45 CFR 264.1(b)); the first draft ran it per person.
+
+## Phase 6: CCCAP and LEAP (2026-09-18)
+
+Built: volumes/co/childcare CO-980–CO-993 (CCCAP: eligible child under 13 or under 19 with additional care needs, teen parent, adult caretaker, the household of 3.103.GGG closed over minor children only, the household-level eligible-activity test of 3.111.D.1, household income with children's earnings excluded, the entry limit as the county percentage of the 3.111.H.2 poverty table capped at 85% SMI, the exit limit, the Colorado Works Child Care and protective-services routes) and volumes/co/energy CO-1000–CO-1010 (LEAP: the economic-unit household sharing heating fuel with the 3.753.17 citizenship filter, household income summed over the unfiltered unit with children's earnings excluded, the income limit as a supplied figure, vulnerability to heating cost, lawful presence, residency, the November–April eligibility period) from D-63 (9 CCR 2503-7) and D-64 (8 CCR 1403-1). Outcomes: `cccap_eligibility_status`, `leap_is_eligible`. Review at docs/reviews/cccap-leap-phase-6.md.
+
+Worked:
+- The `reachable` edge condition (P36) carried both households once the condition tested the child's age on whichever end of the edge is the child; the first draft joined the grandparents, their adult daughter and the daughter's children into one CCCAP and one LEAP household, and tested the wrong end of the edge from the child's perspective.
+- Lifting a per-person test to the household (CO-991) fixed a class of defect worth naming: an outcome evaluated for an infant read the infant's own work hours.
+
+Did not fit cleanly:
+- LEAP has an eligibility period; the target household's month (October) is outside it, so the LEAP expectations for CO-01 are ineligible for that reason alone and CO-02 (November) carries the substantive answer. Whether LEAP is a monthly re-evaluation or a point-in-time program-year determination is OQ-137.
+- The engine has no way to declare a new relationship role from a volume, so "shares heating fuel with" is a per-person supplied override on existing spouse/parent/child edges; unrelated roommates cannot join a LEAP household (OQ-132). A `month`-scope derived item is not evaluated by the engine (only case-stated month facts are read), so the eligibility-period rule is person-month scoped.
+- The county CCCAP entry limit and the LEAP income ceiling are state- or county-published; supplied with open questions.
