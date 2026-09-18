@@ -5,12 +5,13 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The person's total countable gross income for the month, earned plus unearned income, before any deduction.
-derived: ["+", snap_person_earned_income, snap_person_unearned_income]
-sources: [S41, S42]
+meaning: "The person's total countable gross income for the month, earned plus unearned income, less the legally obligated child support the person pays to or for a non-household member, which Colorado excludes from income before the gross income test. Never below zero."
+derived: [max, 0, ["-", ["+", snap_person_earned_income, snap_person_unearned_income], child_support_paid_legally_obligated]]
+sources: [S41, S42, S99]
 implemented: engine
-tags: [income]
-rationale: 7 CFR 273.9(b) (S41, S42) defines household income as earned plus unearned income; this item is the per-person total snap_household_gross_income and snap_counted_income_of_ineligible_member aggregate, kept separate from the earned/unearned split so later deduction rules can read the split without recomputing it.
+tags: [income, state_election]
+rationale: "7 CFR 273.9(b) (S41, S42) defines household income as earned plus unearned income, and 10 CCR 2506-1 4.407.5,A (S99) excludes legally obligated child support from countable gross income before any gross income test (Colorado's election under 7 U.S.C. 2014(e)(4)), so the exclusion is applied here, per person, before an ineligible member's share is prorated (4.411.1,B,2,c: child support is deducted before prorating); this item is the per-person total snap_household_gross_income and snap_counted_income_of_ineligible_member aggregate, kept separate from the earned/unearned split so later deduction rules can read the split without recomputing it."
 tests:
-  - {id: CO-332-T1, month: "2026-10", given: {earned_income: 2380, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 2380}
-  - {id: CO-332-T2, month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, social_security_income: 1180, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 1180}
+  - {id: CO-332-T1, month: "2026-10", given: {earned_income: 2380, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, child_support_paid_legally_obligated: 0}, expect: 2380}
+  - {id: CO-332-T2, month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, social_security_income: 1180, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, child_support_paid_legally_obligated: 0}, expect: 1180}
+  - {id: CO-332-T3, month: "2026-10", given: {earned_income: 2000, self_employment_net_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0, child_support_paid_legally_obligated: 300}, expect: 1700}

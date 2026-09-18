@@ -40,7 +40,7 @@ programs:
     outcomes: []
   - id: SNAP
     prefix: snap_
-    outcomes: []
+    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
   - id: ColoradoWorks
     prefix: cw_
     outcomes: []

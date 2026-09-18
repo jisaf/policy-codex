@@ -13,5 +13,5 @@ implemented: engine
 tags: [work_registration]
 rationale: The work-registration employment exemption's earnings-equivalent test (7 U.S.C. 2015(d)(1)(E); 7 CFR 273.7(b)(1)(vii), S121/S123/S126) needs weekly earnings, not monthly, to compare against the Federal minimum wage times 30 hours; no existing item converts earned_income to a weekly figure.
 tests:
-  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 942.5}, expect: 217.5}
-  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0}, expect: 0}
+  - {id: CO-403-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 942.5, child_support_paid_legally_obligated: 0}, expect: 217.5}
+  - {id: CO-403-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, child_support_paid_legally_obligated: 0}, expect: 0}

@@ -14,5 +14,5 @@ implemented: engine
 tags: [income]
 rationale: 7 CFR 273.9(b)(1) (S41) defines earned income as wages/salaries plus self-employment net income; no existing item combines the two supplied income facts into the single countable earned-income figure snap_household_earned_income and snap_person_gross_income need.
 tests:
-  - {id: CO-330-T1, month: "2026-10", given: {earned_income: 2380, self_employment_net_income: 0}, expect: 2380}
-  - {id: CO-330-T2, month: "2026-10", given: {earned_income: 500, self_employment_net_income: 300}, expect: 800}
+  - {id: CO-330-T1, month: "2026-10", given: {earned_income: 2380, child_support_paid_legally_obligated: 0, self_employment_net_income: 0}, expect: 2380}
+  - {id: CO-330-T2, month: "2026-10", given: {earned_income: 500, child_support_paid_legally_obligated: 0, self_employment_net_income: 300}, expect: 800}
