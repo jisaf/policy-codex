@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person is 60 years of age or older, the age threshold in the federal and state "elderly or disabled member" definitions.
-derived: [">=", snap_age, snap_elderly_age]
+derived: [">=", age, snap_elderly_age]
 sources: [S6, S7]
 implemented: engine
 tags: [age]

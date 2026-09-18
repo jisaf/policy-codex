@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person is age 18 through 49, enrolled at least half time in an institution of higher education, and not exempt under snap_is_student_exempt, and so may not participate in SNAP as a member of any household under 7 U.S.C. 2015(e).
-derived: [all, [">=", snap_age, snap_student_min_age], ["<=", snap_age, snap_student_max_age], is_enrolled_higher_education_half_time, [not, snap_is_student_exempt]]
+derived: [all, [">=", age, snap_student_min_age], ["<=", age, snap_student_max_age], is_enrolled_higher_education_half_time, [not, snap_is_student_exempt]]
 sources: [S133, S134, S135]
 implemented: engine
 tags: [student, legal]

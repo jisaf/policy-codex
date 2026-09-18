@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person is subject to general SNAP work registration - age 16 through 59 and not exempt under snap_is_exempt_from_work_registration.
-derived: [all, [">=", snap_age, snap_work_registration_min_age], ["<=", snap_age, snap_work_registration_max_age], [not, snap_is_exempt_from_work_registration]]
+derived: [all, [">=", age, snap_work_registration_min_age], ["<=", age, snap_work_registration_max_age], [not, snap_is_exempt_from_work_registration]]
 sources: [S122, S123, S126]
 implemented: engine
 tags: [work_registration]

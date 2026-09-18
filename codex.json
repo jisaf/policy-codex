@@ -302,10 +302,16 @@
           ]
         },
         {
+          "dir": "shared",
+          "title": "Shared rules",
+          "files": [
+            "CO-300.yaml"
+          ]
+        },
+        {
           "dir": "snap",
           "title": "SNAP",
           "files": [
-            "CO-300.yaml",
             "CO-301.yaml",
             "CO-302.yaml",
             "CO-303.yaml",
