@@ -1,0 +1,22 @@
+id: CO-1013
+name: Dependent tax filing threshold, earned income
+identifier: ma_dependent_tax_filing_threshold_earned
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The annual earned-income amount above which a child or tax dependent is required to file a federal tax return, as HCPF states it on the MAGI Medicaid income guidelines chart, for the purpose of 10 CCR 2505-10 8.100.4.C.1.f's "tax filing threshold" (i-ii) and 26 U.S.C. 6012(a)(1).
+precision: "A whole-dollar annual figure, not a monthly one; is_required_to_file_tax_return (CO-078) does not yet read this parameter (see OQ-171) but the figure is now carried as a versioned, sourced value rather than only implicit in that supplied fact's worker-judgment rationale."
+versions:
+  - from: "2025-04-01"
+    to: "2026-04-01"
+    value: 15000
+    source: S567
+  - from: "2026-04-01"
+    value: 16100
+    source: S565
+sources: [S565, S567]
+open: [OQ-171]
+tags: [ma, magi, income, household]
+rationale: "No existing item carries the dependent/child tax filing threshold as a number; is_required_to_file_tax_return (CO-078) treats the IRS filing threshold as an external fact a worker cross-checks, 'which this volume treats as an external fact rather than a derived tax-law computation' (CO-078's own rationale), and no numeric threshold item exists anywhere in this volume - confirmed by search. The HCPF MAGI Medicaid income guidelines chart (D-68/D-70) states this figure directly ('Effective 1/1/2026 to 12/31/2026 Tax Filing Thresholds for a Tax Dependent or Child: Earned Income $16,100', S565; the 2025 edition states $15,000, S567), so it is added as its own versioned parameter rather than left unstated, in case a future batch wires is_required_to_file_tax_return or ma_magi_household_income (CO-503) to compare against it directly (OQ-171). Kept separate from ma_dependent_tax_filing_threshold_unearned (CO-1014, the sibling this same fix introduces) because 26 U.S.C. 6012(a)(1) and the chart both state earned and unearned income as two independent thresholds, not one figure."
+nearest: [CO-1014]

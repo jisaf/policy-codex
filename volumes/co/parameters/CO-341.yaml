@@ -6,11 +6,19 @@ type: money
 scope: global
 program: CCCAP
 meaning: The monthly dollar amount 8 CCR 1403-1 3.111.H.2 adds to the 85% state median income limit for each household member above eight.
-precision: Effective October 1, 2024, alongside cccap_smi_income_limit_table (CO-340).
+precision: Effective October 1, 2024, alongside cccap_smi_income_limit_table (CO-340); per D-76's revision history (3.111.H amended effective 09/14/2025) a middle figure of $294.87 applies through September 30, 2026; the Colorado SOS current edition (D-76, effective 08/14/2026) restates it effective October 1, 2026 at $308.50 (3.111.H.3).
 versions:
   - from: "2024-10-01"
+    to: "2025-09-14"
     value: 276.47
     source: S485
-sources: [S485]
+  - from: "2025-09-14"
+    to: "2026-10-01"
+    value: 294.87
+    source: S582
+  - from: "2026-10-01"
+    value: 308.50
+    source: S581
+sources: [S485, S582, S581]
 tags: [income]
-rationale: "The nearest existing item is cccap_poverty_guideline_each_additional (CO-324), the 100% FPG column's each-additional figure from the same table row (S485); the 85% SMI column's own each-additional figure ($276.47) is a separate stated number cccap_income_within_entry_limit's new cap (C-5) and cccap_income_within_exit_limit (CO-993) both need for a household above size 8."
+rationale: "The nearest existing item is cccap_poverty_guideline_each_additional (CO-324), the 100% FPG column's each-additional figure from the same table row (S485); the 85% SMI column's own each-additional figure ($276.47) is a separate stated number cccap_income_within_entry_limit's new cap (C-5) and cccap_income_within_exit_limit (CO-993) both need for a household above size 8. The Colorado SOS current edition (D-76) carries a 'Through September 30, 2026' figure (S582) immediately before the October 1, 2026 figure (S581); per D-76's own revision history ('Rules 3.111 F, 3.111 H eff. 09/14/2025', OQ-179) this now closes the 2024-10-01 version at that stated amendment date and adds the intermediate figure as its own version."

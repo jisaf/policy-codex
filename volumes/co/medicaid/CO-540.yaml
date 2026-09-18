@@ -6,13 +6,13 @@ type: rate
 scope: global
 program: Medicaid
 meaning: The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Children's MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.118(c)(1)(i) sets and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.2.
-precision: Both the federal floor and Colorado's percentage are 133% FPL, so this rule is not binding for this batch's household, but it is modeled as a comparison (not a restatement) so a future federal floor increase above Colorado's own percentage would be caught.
+precision: "The federal floor is 133% FPL (42 CFR 435.118(c)(1)(i), S202); Colorado's own percentage, ma_income_limit_child_pct (CO-191), is versioned to the HCPF MAGI-Medicaid income guidelines chart's 142% as of the fix round (OQ-63), so this rule now resolves to 142%, not to a tie - it is modeled as a comparison (not a restatement) so a future federal floor increase above Colorado's own percentage would still be caught."
 derived: [max, ma_federal_magi_floor_pct, ma_income_limit_child_pct]
-sources: [S201, S202]
+sources: [S201, S202, S564, S566]
 open: [OQ-63]
 implemented: engine
 tags: [ma, magi, income, state_election]
-rationale: "No existing item states the Children's-category income standard. ma_is_child_category (CO-545) needs it. Written as the greater of the federal floor and Colorado's percentage, per the phase-3 brief's direction to model Colorado's rule against the federal minimum floor and cite both, rather than as a bare reference to ma_income_limit_child_pct (CO-191), which would trip governance's derived.alias check. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
+rationale: "No existing item states the Children's-category income standard. ma_is_child_category (CO-545) needs it. Written as the greater of the federal floor and Colorado's percentage, per the phase-3 brief's direction to model Colorado's rule against the federal minimum floor and cite both, rather than as a bare reference to ma_income_limit_child_pct (CO-191), which would trip governance's derived.alias check. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for. Fix round: no change to this item's derivation; ma_income_limit_child_pct (CO-191) now resolves to 142% as of 2025-04-01 per the fix round's OQ-63 re-read, so this rule's own [max, ...] shape now does real work (142% > 133% federal floor) rather than restating a tie, and the test below is updated to match."
 nearest: [CO-541, CO-542, CO-543]
 tests:
-  - {id: CO-540-T1, as_of: "2026-10-01", given: {}, expect: 1.33}
+  - {id: CO-540-T1, as_of: "2026-10-01", given: {}, expect: 1.42}

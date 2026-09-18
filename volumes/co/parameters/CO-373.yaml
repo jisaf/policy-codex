@@ -1,0 +1,18 @@
+id: CO-373
+name: Personal needs allowance, institutional (non-veteran)
+identifier: ma_personal_needs_allowance_institutional
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The base personal needs allowance deducted first from a Long-Term Care institution resident's income before computing patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.d.i and 42 CFR 435.725(c)(1).
+precision: "§ 8.100.7.V.3.d.i.2 (S361) states the base was $75 effective January 1, 2015 and 'will be adjusted annually at the same rate as the statewide average of the nursing facility per diem rate net of patient payment ... Each yearly adjustment will set a new base amount,' per C.R.S. 25.5-6-202(9)(b)(I). D-69 (CDHS's Adult Financial Programs page, an Internet Archive capture) publishes '$79' as 'the maximum 2026 PNA grant' - CDHS's own statewide figure for the personal needs allowance, indexed under the same C.R.S. 25.5-6-202(9)(b)(I) authority S361 cites, for a facility resident who also must meet OAP/AND-SO/AND-CS requirements. Treated as the same annually-adjusted allowance this item models, not a separate program: the federal floor is $30/month for an individual (42 CFR 435.725(c)(1)(i)); Colorado's $79 2026 base exceeds it, consistent with the pre-2026 $75 base."
+versions:
+  - from: "2026-01-01"
+    value: 79
+    source: S563
+open: [OQ-91]
+sources: [S361, S374, S563]
+tags: [ma, ltc, income]
+rationale: "The previous item (CO-887, withdrawn) modeled this figure as a supplied fact under OQ-91 because § 8.100.7.V.3.d.i.2's own text requires a new base amount every year and no fetched document stated the current figure. D-69 now states the 2026 figure ($79) CDHS itself publishes for this allowance, so it converts to a versioned parameter, acknowledging CO-887 as the nearest (identical-derivation, kind-only) predecessor. csra_maximum_standard (CO-828), mmmna_cap (CO-830) and home_equity_limit (CO-831) remain supplied facts under OQ-91 - no fetched document yet states their 2026 figures. ma_patient_payment (CO-658) needs it."
+nearest: [CO-887]

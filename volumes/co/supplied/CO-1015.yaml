@@ -1,0 +1,14 @@
+id: CO-1015
+name: In workforce training or post-secondary education
+identifier: is_in_post_secondary_education_or_workforce_training
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether this person's eligible activity is workforce training or post-secondary education, as distinct from basic education, employment, self-employment, or job search, per 8 CCR 1403-1 3.103.EEEEE's "teen parent" definition - a person who otherwise meets 3.103.EEEEE is reclassified as an adult caretaker under 3.103.C, not a teen parent, when this holds.
+precision: Defaulted to false when a case does not state it (see OQ-180), so cccap_is_teen_parent (CO-981) is not turned unknown for every existing case that predates this fact.
+supplied_by: Applicant statement of the teen parent's activity type (school enrollment records or program verification distinguishing post-secondary/workforce training from basic education).
+sources: [S583]
+open: [OQ-180]
+tags: [household]
+rationale: "No existing item distinguishes workforce training or post-secondary education from basic education or other schooling; is_enrolled_in_school (read by cccap_caretaker_in_eligible_activity, CO-984) is a single flag for enrollment generally and does not say which kind, and OQ-124 already notes CO-984 has no separate flag for training/post-secondary education specifically. cccap_is_teen_parent (CO-981) reads it to apply 3.103.EEEEE's reclassification clause (a teen parent in workforce training or post-secondary education is an adult caretaker, not a teen parent)."

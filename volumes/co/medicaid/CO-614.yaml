@@ -6,13 +6,14 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: Whether the person is eligible as a Specified Low-Income Medicare Beneficiary - entitled to Medicare Part A, countable income above the QMB limit but at or below 120% of the federal poverty level for their household size, and countable resources at or below the MSP resource limit - per 10 CCR 2505-10 8.100.6.M.
-precision: Same monthly-guideline shape as ma_qmb_eligible (CO-613); the "above QMB" floor is read from ma_qmb_eligible directly rather than restating the 100% comparison, so a person who qualifies for QMB is not also reported SLMB-eligible (ma_msp_category, CO-617, tests QMB first regardless, but this item's own floor keeps it accurate standing alone).
+precision: "Same monthly-guideline shape as ma_qmb_eligible (CO-613); the \"above QMB\" floor is read from ma_qmb_eligible directly rather than restating the 100% comparison, so a person who qualifies for QMB is not also reported SLMB-eligible (ma_msp_category, CO-617, tests QMB first regardless, but this item's own floor keeps it accurate standing alone). HCPF OM 26-025 (D-75, S571) confirms this reproduces the 2026 published SLMB income limits once the $20 general income exclusion is added back: 120% of the 2026 size-1 monthly guideline is $1,596.00, and $1,596.00 + $20 = $1,616.00, D-75's individual figure exactly; 120% of the size-2 monthly guideline is $2,164.00, and $2,164.00 + $20 = $2,184.00, D-75's couple figure exactly."
 derived: [all, receives_medicare_part_a, [not, ma_qmb_eligible], [<=, ma_ssi_countable_income, ["*", [/, [lookup, ma_poverty_guideline_table, ma_ssi_household_size], 12], ma_slmb_income_limit_pct]], [<=, ma_ssi_countable_resources, [case, [[=, ma_ssi_household_size, 2], msp_resource_limit_couple], [else, msp_resource_limit_individual]]]]
-sources: [S313]
+sources: [S313, S571]
 implemented: engine
 tags: [ma, non_magi, msp, income, resources]
-rationale: "No existing item states the SLMB eligibility test. ma_msp_category (CO-617) needs it."
-open: [OQ-81]
+rationale: "No existing item states the SLMB eligibility test. ma_msp_category (CO-617) needs it. Fix round: D-75 (S571) added as a confirming source for the income test; msp_resource_limit_individual/_couple are now versioned parameters per D-72 (OQ-81 resolved for resources)."
 tests:
   - {id: CO-614-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_qmb_eligible: false, ma_ssi_countable_income: 1500, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000, msp_resource_limit_individual: 9660}, expect: true}
   - {id: CO-614-T2, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_qmb_eligible: true, ma_ssi_countable_income: 1200, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000, msp_resource_limit_individual: 9660}, expect: false}
+  - {id: CO-614-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_qmb_eligible: false, ma_ssi_countable_income: 1596, ma_ssi_household_size: 1, ma_ssi_countable_resources: 11450, msp_resource_limit_individual: 11450}, expect: true}
+  - {id: CO-614-T4, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_qmb_eligible: false, ma_ssi_countable_income: 1596.01, ma_ssi_household_size: 1, ma_ssi_countable_resources: 11450, msp_resource_limit_individual: 11450}, expect: false}

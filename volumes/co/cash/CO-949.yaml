@@ -14,7 +14,7 @@ implemented: engine
 tags: [cash, oap, and, ab]
 rationale: No existing item selects which grant standard applies to a person's Adult Financial category. Needed for af_oap_grant (CO-951) and af_and_grant (CO-952) to report a single "the standard that applied" figure per the phase-5 brief's interface, distinct from testing income against a specific program's standard (which af_category, CO-953, does directly).
 tests:
-  - {id: CO-949-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a}, expect: 1005}
+  - {id: CO-949-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a}, expect: 1032}
   - {id: CO-949-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_so}, expect: 248}
-  - {id: CO-949-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_cs}, expect: 967}
+  - {id: CO-949-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_cs}, expect: 994}
   - {id: CO-949-T4, as_of: "2026-10-01", month: "2026-10", given: {af_category: none}, expect: 0}

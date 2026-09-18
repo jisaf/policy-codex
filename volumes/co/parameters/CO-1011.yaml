@@ -1,0 +1,12 @@
+id: CO-1011
+name: LTC trustee/maintenance fee monthly cap
+identifier: ma_ltc_trustee_fee_monthly_cap
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The maximum monthly trustee or maintenance fee deduction from the patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.b.ii.5).
+value: 20
+sources: [S540]
+tags: [ma, ltc, income]
+rationale: "No existing item states § 8.100.7.V.3.b.ii.5)'s stated $20 monthly cap on the trustee/maintenance fee deduction - a fixed, stated figure, unlike the actual fee paid (trustee_maintenance_fees_paid, CO-891), which is case-specific and supplied. ma_ltc_trustee_fee_deduction (CO-665) needs it."

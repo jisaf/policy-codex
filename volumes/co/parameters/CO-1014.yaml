@@ -1,0 +1,22 @@
+id: CO-1014
+name: Dependent tax filing threshold, unearned income
+identifier: ma_dependent_tax_filing_threshold_unearned
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The annual unearned-income amount above which a child or tax dependent is required to file a federal tax return, as HCPF states it on the MAGI Medicaid income guidelines chart, for the purpose of 10 CCR 2505-10 8.100.4.C.1.f's "tax filing threshold" (i-ii) and 26 U.S.C. 6012(a)(1).
+precision: "A whole-dollar annual figure. Unchanged between the 2025 and 2026 chart editions ($1,350 both years); is_required_to_file_tax_return (CO-078) does not yet read this parameter (see OQ-171)."
+versions:
+  - from: "2025-04-01"
+    to: "2026-04-01"
+    value: 1350
+    source: S567
+  - from: "2026-04-01"
+    value: 1350
+    source: S565
+sources: [S565, S567]
+open: [OQ-171]
+tags: [ma, magi, income, household]
+rationale: "No existing item carries the dependent/child unearned-income tax filing threshold as a number. Nearest same-shape item is ma_dependent_tax_filing_threshold_earned (CO-1013, this same fix, acknowledged here); kept as its own parameter rather than folded into it because 26 U.S.C. 6012(a)(1) and the chart both state earned and unearned income as two independently-stated thresholds, and the two figures do not move together (unearned stayed at $1,350 across both editions while earned rose from $15,000 to $16,100)."
+nearest: [CO-1013]

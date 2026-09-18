@@ -1,0 +1,20 @@
+id: CO-931
+name: "Colorado Works: unit sanction level"
+identifier: cw_unit_sanction_level
+kind: derived
+type: whole number
+scope: person-month
+program: ColoradoWorks
+meaning: The greatest Workforce Development sanction level (0-4) among this person's assistance unit's members for the month, per 9 CCR 2503-6 3.608.4.F - "each Colorado Works case can experience no more than one sanction level in a month," served "at the higher sanction level when multiple levels exist."
+precision: "Reads work_sanction_level_this_month (CO-142) - a supplied county determination - for each unit member; the level a client is at is itself the product of the county's re-engagement and good-cause process (3.608.3) and the progression rule of 3.608.4.C.1/G (whether the client re-engaged before the sanction month ended), neither of which this volume models (OQ-141, carried on CO-142). cw_meets_work_participation (CO-920) is not an input here: 3.608.3's re-engagement/good-cause process, not an hours test, is what determines whether a sanction is imposed, so the level is read as a supplied fact rather than derived from participation hours."
+derived: [case, [[exists, cw_assistance_unit_members, [">=", [of, [P], work_sanction_level_this_month], 4]], 4], [[exists, cw_assistance_unit_members, [">=", [of, [P], work_sanction_level_this_month], 3]], 3], [[exists, cw_assistance_unit_members, [">=", [of, [P], work_sanction_level_this_month], 2]], 2], [[exists, cw_assistance_unit_members, [">=", [of, [P], work_sanction_level_this_month], 1]], 1], [else, 0]]
+sources: [S551, S552, S553]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing item aggregates a Colorado Works sanction to the unit level; cw_sanction_reduction (CO-932) needs the single unit-wide level 3.608.4.F requires (one level per case per month, the higher level governing when members differ) to compute the grant reduction. Nearest same-shape item is cw_unit_time_limit_extended (CO-925), which also collapses a per-member county determination to a single unit-level value via [exists, cw_assistance_unit_members, ...], acknowledged here; that item tests a single boolean condition, while this one needs the greatest of an ordinal 0-4 scale, which the pattern catalog has no direct 'max over a group' operator for (P40 is pairwise only), so it is built as a descending existence test instead."
+nearest: [CO-925]
+tests:
+  - {id: CO-931-T1, title: "No member sanctioned", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 0}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 0}}, relationships: [[parent, p1, p2]], expect: 0}
+  - {id: CO-931-T2, title: "One member at level 2", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 2}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 0}}, relationships: [[parent, p1, p2]], expect: 2}
+  - {id: CO-931-T3, title: "F: two members with different levels - higher level governs", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 1}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 3}}, relationships: [[parent, p1, p2]], expect: 3}
+  - {id: CO-931-T4, title: "Fourth level", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, work_sanction_level_this_month: 4}, relationships: [], expect: 4}

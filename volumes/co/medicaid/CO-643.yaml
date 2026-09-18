@@ -6,10 +6,10 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether this institutionalized person has a community spouse - a spouse who is not in a medical institution or nursing facility - triggering the spousal impoverishment rules of 42 U.S.C. 1396r-5 and 10 CCR 2505-10 § 8.100.7.K.
-precision: Does not create a separate ma_community_spouse item naming the spouse as a value (see OQ-97); downstream items read the community spouse's income and shelter facts as supplied facts stated for the institutionalized spouse instead.
+precision: "Does not create a separate ma_community_spouse item naming the spouse as a value (see OQ-97); downstream items read the community spouse's income and shelter facts as supplied facts stated for the institutionalized spouse instead. Does not bypass this test for a Working Adults with Disabilities Buy-In HCBS participant per § 8.7100.C.3 - attempted and abandoned this fix round; see OQ-127, which now also records a scope obstacle beyond the dependency cycle it originally described - this item's own scope is person (a couple-status snapshot, not month-varying), but the Buy-In route's own eligibility test (ma_wawd_eligible, CO-618) is inherently scope person-month (an income test), and the engine rejects a person-scope item referencing a person-month fact without naming a month. Bypassing this item for Buy-In participants would need ma_ltc_couple itself promoted to person-month, which ripples through every downstream item (CO-646, CO-647, CO-648, CO-650, CO-651, CO-658) - a larger restructuring than this fix round should attempt."
 derived: [all, ma_is_institutionalized_spouse, [exists_related, [spouse], [not, [of, [P], in_medical_institution]]]]
 sources: [S354]
-open: [OQ-97]
+open: [OQ-97, OQ-127]
 implemented: engine
 tags: [ma, ltc, legal]
 rationale: "No existing item states the spousal-impoverishment gate. ma_csra (CO-646), ma_institutionalized_spouse_countable_resources (CO-647), ma_home_equity_disqualifies (CO-650) and ma_patient_payment (CO-658) need it. The target household's p1/p2 (p1 institutionalized, p2 a community spouse) is the worked example in the batch report. Reads ma_is_institutionalized_spouse (CO-644), not ma_is_institutionalized (CO-640), per the phase-4 review's C-2 finding: § 8.100.7.K.2.b-c reach an HCBS or PACE participant, which CO-640's medical-institution-only test does not."

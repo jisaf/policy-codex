@@ -6,9 +6,10 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: The amount of the institutionalized spouse's income allocated to the community spouse - the amount, if any, by which the MMMNA exceeds the community spouse's own income - per 42 U.S.C. 1396r-5(d)(1)(B)-(2) and 10 CCR 2505-10 § 8.100.7.R.
+precision: "§ 8.100.7.R.1 (S536) is what disposes of § 8.100.7.T.1.b's \"actually made available\" qualifier for individuals institutionalized on or after February 8, 2006: all income of the institutionalized spouse that could be made available to the community spouse is treated as made available before the MIA is figured, so this item's unconditional MMMNA-minus-income formula needs no further actual-availability test. Does not model § 8.100.7.R.3's court-ordered MIA floor or R.4's $50 change-in-circumstance threshold (S537) - see OQ-167."
 derived: ["max", 0, ["-", ma_mmmna, community_spouse_income]]
-sources: [S358]
-open: [OQ-97]
+sources: [S358, S536, S537]
+open: [OQ-97, OQ-167]
 implemented: engine
 tags: [ma, ltc, income, legal]
 rationale: "No existing item computes the Monthly Income Allowance. ma_patient_payment (CO-658) needs it. The target household's p1/p2 (MMMNA minus 1180, if positive) is the worked example in the batch report."

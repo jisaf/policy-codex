@@ -20,5 +20,7 @@ tests:
   - {id: CO-986-T3, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 6000, cccap_household_size: 2, cccap_entry_income_limit_pct_fpl: 5.0}, expect: true}
   - {id: CO-986-T4, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 7000, cccap_household_size: 2, cccap_entry_income_limit_pct_fpl: 5.0}, expect: false}
   # Household size above 8 exercises cccap_poverty_guideline_each_additional and cccap_smi_income_limit_each_additional together.
-  - {id: CO-986-T5, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 9786, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
-  - {id: CO-986-T6, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 9800, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}
+  # Boundary is 1.85 x (cccap_poverty_guideline_table[8] + 2 x cccap_poverty_guideline_each_additional) = 1.85 x
+  # ($4,643.33 + 2 x $473.33) = $10,341.48 under CO-323/CO-324's October 1, 2026 version (S581).
+  - {id: CO-986-T5, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 10341, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
+  - {id: CO-986-T6, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 10342, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}

@@ -8,7 +8,7 @@ program: CHP+
 meaning: The lower bound, as a decimal fraction of the federal poverty guideline, of the household-income band 10 CCR 2505-3-110.1.E states for a child under 19 to be eligible for the Children's Basic Health Plan (household income must be greater than this percentage).
 precision: A percentage-of-FPL threshold; household income at or below this percentage falls to Medicaid instead (batch 6's ma_magi_income_standard_child), and CHP+ requires income strictly greater than it.
 value: 1.42
-sources: [S243]
+sources: [S243, S564, S566]
 open: [OQ-63]
 tags: [chp, income, state_election]
-rationale: "No existing item carries this figure. chp_income_within_limit (CO-704) needs it as a parameter, not an inline digit, so the identifier does not encode a value (governance name.digits). 10 CCR 2505-3-110.1.E states 'greater than 142%... for children under the age of 19' (S243)."
+rationale: "No existing item carries this figure. chp_income_within_limit (CO-704) needs it as a parameter, not an inline digit, so the identifier does not encode a value (governance name.digits). 10 CCR 2505-3-110.1.E states 'greater than 142%... for children under the age of 19' (S243). Fix round: added the D-68/D-70 chart citations (S564/S566) - the fix round's OQ-63 re-read raises ma_income_limit_child_pct (CO-191) to the chart's 142% 'Children' column, which is exactly this parameter's own value, so no change is needed here, but the two figures are now cited to the same chart rather than agreeing only by coincidence between two independently-drafted CCR sections."

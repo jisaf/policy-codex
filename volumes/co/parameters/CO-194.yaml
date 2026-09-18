@@ -6,8 +6,17 @@ type: rate
 scope: global
 program: Medicaid
 meaning: Colorado's income limit for the Pregnant Women MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.5.
-precision: A percentage-of-FPL figure (1.85 = 185%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
-value: 1.85
-sources: [S209]
+precision: "A percentage-of-FPL figure (1.95 = 195%), compared directly against ma_magi_household_income_pct_fpl (CO-504). 8.100.4.G.5's own text states 185% and, like G.3 (S203), carries no 'Refer to the MAGI-Medicaid income guidelines chart' sentence of its own (verified against the fetched S209 excerpt: it has none). The fix round's OQ-63 finding is extended here on the same basis as ma_income_limit_parent_caretaker_pct (CO-192): the chart D-68/D-70 fetch (S564/S566) states 'Pregnant Women 195% Poverty Level' as one column of the Department's single MAGI Medicaid chart, and G.5's own '(MAGI-equivalent)' qualifier is the same language G.2 uses for the figure the chart converts. Whether the 5% income disregard is already inside 195% is not stated by the chart, 8.100.4.D, or 42 CFR 435.603(d)(4) (D-3x); left modeled exactly as before and carried forward in OQ-63's rewrite."
+versions:
+  - from: "2025-04-01"
+    to: "2026-04-01"
+    value: 1.95
+    source: S566
+  - from: "2026-04-01"
+    value: 1.95
+    source: S564
+sources: [S209, S564, S566]
+open: [OQ-63]
 tags: [ma, magi, income, state_election]
-rationale: "No existing item carries Colorado's Pregnant-Women-category income percentage. ma_magi_income_standard_pregnant (CO-543) needs it as a parameter rather than an inline digit (governance name.digits)."
+rationale: "No existing item carries Colorado's Pregnant-Women-category income percentage. ma_magi_income_standard_pregnant (CO-543) needs it as a parameter rather than an inline digit (governance name.digits). Fix round: versioned from the HCPF chart (D-68/D-70) on the same reasoning as ma_income_limit_child_pct (CO-191) and ma_income_limit_parent_caretaker_pct (CO-192, nearest same-shape items, acknowledged here). History begins at D-70's effective date (2025-04-01) for the same reason CO-191 does not carry an earlier version."
+nearest: [CO-191, CO-192]

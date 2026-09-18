@@ -1,0 +1,20 @@
+id: CO-807
+name: Medicare Savings Program resource limit (individual)
+identifier: msp_resource_limit_individual
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: The current-year QMB/SLMB/QI resource limit for a single individual, published annually by CMS as an indexation (by the change in the September consumer price index) of the $8,180 base 10 CCR 2505-10 8.100.5.M.1 states effective January 1, 2011, and includes a $1,500 burial-expense allowance.
+precision: HCPF OM 25-078 (D-72, S569) states the 2025 and 2026 calendar-year figures directly; earlier years are not in any fetched document.
+versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: 11160
+    source: S569
+  - from: "2026-01-01"
+    value: 11450
+    source: S569
+sources: [S301, S569]
+tags: [non_magi, msp, resources]
+rationale: "Was msp_resource_limit_individual (CO-807, unchanged id), previously a supplied fact under OQ-81 because 8.100.5.M.1 (S301) states the base figure and CPI-indexing rule but not a current-year dollar amount, and no CMS 2026 publication could be fetched. HCPF OM 25-078 (D-72), fetched this fix round, states the 2025 and 2026 figures directly (S569), so it is now a versioned parameter rather than a supplied fact - the same 'a later document states the figure' shape as af_and_cs_grant_standard's (CO-291) 2026 version. ma_qmb_eligible, ma_slmb_eligible and ma_qi_eligible (CO-613-CO-615) need it."

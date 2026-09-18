@@ -6,11 +6,19 @@ type: money
 scope: global
 program: CCCAP
 meaning: The monthly dollar amount added to cccap_poverty_guideline_table for each household member above eight.
-precision: Monthly dollars added per household member above 8, effective October 1, 2024.
+precision: Monthly dollars added per household member above 8, effective October 1, 2024; per D-76's revision history (3.111.H amended effective 09/14/2025) a middle figure of $458.33 applies through September 30, 2026; the Colorado SOS current edition (D-76, effective 08/14/2026) restates it effective October 1, 2026 at $473.33 (3.111.H.3).
 versions:
   - from: "2024-10-01"
+    to: "2025-09-14"
     value: 448.33
     source: S485
-sources: [S485]
+  - from: "2025-09-14"
+    to: "2026-10-01"
+    value: 458.33
+    source: S582
+  - from: "2026-10-01"
+    value: 473.33
+    source: S581
+sources: [S485, S582, S581]
 tags: [income]
-rationale: 8 CCR 1403-1 3.111.H.2 (S485) states this "Each Additional person" figure alongside the sizes 1-8 table (cccap_poverty_guideline_table, CO-323); cccap_income_within_entry_limit (CO-986) reads it for households above size 8.
+rationale: 8 CCR 1403-1 3.111.H.2 (S485) states this "Each Additional person" figure alongside the sizes 1-8 table (cccap_poverty_guideline_table, CO-323); cccap_income_within_entry_limit (CO-986) reads it for households above size 8. The Colorado SOS current edition (D-76) carries a "Through September 30, 2026" figure (S582) immediately before the October 1, 2026 figure (S581); per D-76's own revision history ("Rules 3.111 F, 3.111 H eff. 09/14/2025", OQ-179) this now closes the 2024-10-01 version at that stated amendment date and adds the intermediate figure as its own version.

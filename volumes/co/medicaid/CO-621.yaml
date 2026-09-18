@@ -8,11 +8,11 @@ program: Medicaid
 meaning: The monthly premium a Children with Disabilities Buy-In household owes, on the sliding scale by household income-as-a-percentage-of-FPL band 10 CCR 2505-10 8.100.6.Q.1.g.iv states.
 precision: Uses the same ma_magi_household_income_pct_fpl figure ma_cbwd_eligible (CO-620) tests eligibility against, which is already keyed by household size (CO-504 divides by the size-adjusted poverty guideline). § 8.100.6.Q.1.g (S318) states the schedule is "on a sliding scale based on household size and income," and its own text for the third and fourth bands says "individuals" where the first two say "households" - quoted here as fetched rather than harmonized, per OQ-144. See OQ-82 on why the band boundaries and dollar amounts are literal values cited to S318 rather than a separate parameter table.
 derived: [case, [[<=, ma_magi_household_income_pct_fpl, 1.33], 0], [[<=, ma_magi_household_income_pct_fpl, 1.85], 70], [[<=, ma_magi_household_income_pct_fpl, 2.50], 90], [else, 120]]
-sources: [S318]
-open: [OQ-82, OQ-144]
+sources: [S318, S575]
+open: [OQ-82, OQ-144, OQ-174]
 implemented: engine
 tags: [ma, non_magi, buy_in, income]
-rationale: "No existing item states the CBwD premium schedule. Named directly by the phase-4 brief's interface."
+rationale: "No existing item states the CBwD premium schedule. Named directly by the phase-4 brief's interface. Fix round: D-74's 2026 income chart and premium guide (S575) confirms the band boundaries and dollar amounts this item's literal case values already state (0-133% $0, 134-185% $70, 186-250% $90, 251-300% $120) for household income expressed as a percentage of FPL, though see OQ-174 on the memo's different income methodology."
 tests:
   - {id: CO-621-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income_pct_fpl: 1.0}, expect: 0}
   - {id: CO-621-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income_pct_fpl: 2.9}, expect: 120}

@@ -1,0 +1,16 @@
+id: CO-357
+name: Colorado Works sanction reduction rate, fourth level
+identifier: cw_sanction_reduction_rate_level_four
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: The fraction of an assistance unit's grant payment a fourth level Workforce Development sanction removes for the month (a full 100% reduction, resulting in case closure), per 9 CCR 2503-6 3.608.4.C.2.
+versions:
+  - from: "2025-07-01"
+    value: 1.0
+    source: S552
+sources: [S552]
+rationale: "No existing parameter states a Colorado Works sanction rate; cw_sanction_reduction (CO-932) needs it. Nearest same-shape item is cw_sanction_reduction_rate_levels_one_to_three (CO-356), the sibling parameter this same fix introduces for the 25% first-through-third-level rate, acknowledged here; kept as its own parameter rather than folded together because 3.608.4.C states the two rates in separate, differently-numbered paragraphs (C.1 and C.2) with different consequences (a reduced payment versus full closure), not one figure with two readings."
+nearest: [CO-356]
+tags: [cash, tanf]

@@ -6,11 +6,19 @@ type: table keyed by household size
 scope: global
 program: CCCAP
 meaning: The monthly 100% federal poverty guideline dollar amount by household size, the base the CCCAP county entry income limit percentage is applied to.
-precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_poverty_guideline_each_additional per additional member. The text states these as the 100% FPG figures effective October 1, 2024.
+precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_poverty_guideline_each_additional per additional member. The text states these as the 100% FPG figures effective October 1, 2024, then (per D-76's revision history, 3.111.H amended effective 09/14/2025) a middle table effective through September 30, 2026, and the Colorado SOS current edition (D-76, effective 08/14/2026) restates the same table effective October 1, 2026 with higher figures still (3.111.H.2-3).
 versions:
   - from: "2024-10-01"
+    to: "2025-09-14"
     value: { "1": 1255.00, "2": 1703.33, "3": 2151.67, "4": 2600.00, "5": 3048.33, "6": 3496.67, "7": 3945.00, "8": 4393.33 }
     source: S485
-sources: [S485]
+  - from: "2025-09-14"
+    to: "2026-10-01"
+    value: { "1": 1304.17, "2": 1762.50, "3": 2220.83, "4": 2679.17, "5": 3137.50, "6": 3595.83, "7": 4054.17, "8": 4512.50 }
+    source: S582
+  - from: "2026-10-01"
+    value: { "1": 1330.00, "2": 1803.33, "3": 2276.67, "4": 2750.00, "5": 3223.33, "6": 3696.67, "7": 4170.00, "8": 4643.33 }
+    source: S581
+sources: [S485, S582, S581]
 tags: [income]
-rationale: 8 CCR 1403-1 3.111.H.2 (S485) states the monthly 100% FPG dollar figures directly, effective October 1, 2024, unlike the SNAP and Medicaid poverty guideline tables which are annual; cccap_income_within_entry_limit (CO-986) multiplies this table by the supplied county entry percentage (CO-870) to compute the county's entry income limit.
+rationale: 8 CCR 1403-1 3.111.H.2 (S485) states the monthly 100% FPG dollar figures directly, effective October 1, 2024, unlike the SNAP and Medicaid poverty guideline tables which are annual; cccap_income_within_entry_limit (CO-986) multiplies this table by the supplied county entry percentage (CO-870) to compute the county's entry income limit. The Colorado SOS current edition (D-76) carries a "Through September 30, 2026" table (S582) immediately before the October 1, 2026 table (S581) this fix round already versions; D-76's own revision history states "Rules 3.111 F, 3.111 H eff. 09/14/2025" (OQ-179), so this now closes the 2024-10-01 version at that stated amendment date and adds the intermediate table as its own version rather than leaving the two-tier gap OQ-179 previously flagged.

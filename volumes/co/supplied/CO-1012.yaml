@@ -1,0 +1,13 @@
+id: CO-1012
+name: Is in a hospital
+identifier: is_in_hospital
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person's current institutional stay is in a hospital (as distinct from a nursing facility or other Long-Term Care institution), per 10 CCR 2505-10 § 8.100.7.A.2.e.
+supplied_by: Eligibility Site's or Case Management Agency's record of the institutional setting (hospital admission/discharge records), false when not in a hospital.
+sources: [S548]
+tags: [ma, ltc, legal]
+rationale: "No existing item distinguishes a hospital stay from a nursing facility or other Long-Term Care institution stay; in_medical_institution (CO-007) covers both without distinguishing them. § 8.100.7.A.2.e's income-trust override for the 300% special income group applies only to a person 'in a Long-Term Care institution (excluding hospital)' - the phase-4 review's G-7 finding notes this exclusion is untested and, in fact, unimplemented. ma_meets_special_income_group (CO-642) needs it to gate the has_income_trust branch."
+nearest: [CO-007]
