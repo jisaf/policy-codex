@@ -135,6 +135,7 @@ Added for the Colorado SNAP chapter (phase 2), because household composition, in
 Added for the MAGI household (phase 3)
 
 - P43 `the persons who share a [relationship] with this person` the persons, other than this person, who have a person in that role in common with this person (with `parent`, the siblings); unknown when this person's relationships are unstated
+- P44 `[whole number] months after [month]`, `[whole number] months before [month]` (P11 as stated in the catalog, now implemented; the single-step forms of P32 remain)
 
 ## Tests
 

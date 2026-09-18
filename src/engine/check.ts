@@ -117,6 +117,9 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "months_ending":
         need(e[1], ["number"], "consecutive months"); need(e[2], ["month"], "ending with");
         return "months";
+      case "months_after": case "months_before":
+        need(e[1], ["number"], op); need(e[2], ["month"], op);
+        return "month";
       case "months_from_to":
         need(e[1], ["month"], "months from"); need(e[2], ["month"], "through");
         return "months";

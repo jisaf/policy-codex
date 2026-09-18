@@ -34,10 +34,10 @@ programs:
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: []
+    outcomes: [ma_magi_category, ma_magi_eligibility_status]
   - id: CHP+
     prefix: chp_
-    outcomes: []
+    outcomes: [chp_eligibility_status]
   - id: SNAP
     prefix: snap_
     outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]

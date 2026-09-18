@@ -13,6 +13,7 @@ sources: [S203, S204]
 open: [OQ-49]
 implemented: engine
 tags: [ma, magi, income, state_election]
-rationale: "No existing item states the Parents/Caretaker-category income standard. ma_is_parent_caretaker_category (CO-547) needs it. Not the same shape as ma_magi_income_standard_child/_adult/_pregnant (CO-540, CO-542, CO-543), which compare against a real federal-floor parameter, because this category's federal floor is an AFDC-conversion this volume cannot state as a number; see OQ-49."
+rationale: "No existing item states the Parents/Caretaker-category income standard. ma_is_parent_caretaker_category (CO-547) needs it. Not the same shape as ma_magi_income_standard_child/_adult/_pregnant (CO-540, CO-542, CO-543), which compare against a real federal-floor parameter, because this category's federal floor is an AFDC-conversion this volume cannot state as a number; see OQ-49. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
+nearest: [CO-540, CO-542, CO-543]
 tests:
   - {id: CO-541-T1, as_of: "2026-10-01", given: {}, expect: 0.60}

@@ -164,6 +164,8 @@ export function parseInline(
   }
   if ((m = s.match(/^the month containing (.+)$/))) return ["month_of", p(m[1])];
   if ((m = s.match(/^the month before (.+)$/))) return ["month_before", p(m[1])];
+  if ((m = s.match(/^(.+?) months after (.+)$/))) return ["months_after", p(m[1]), p(m[2])];
+  if ((m = s.match(/^(.+?) months before (.+)$/))) return ["months_before", p(m[1]), p(m[2])];
   if ((m = s.match(/^the month after (.+)$/))) return ["month_after", p(m[1])];
   if ((m = s.match(/^the first day of (.+)$/))) return ["first_day", p(m[1])];
   if ((m = s.match(/^the (.+?) consecutive months ending with (.+)$/))) {

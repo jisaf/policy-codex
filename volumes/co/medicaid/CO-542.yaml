@@ -11,7 +11,7 @@ derived: [max, ma_federal_magi_floor_pct, ma_income_limit_adult_pct]
 sources: [S207, S208]
 implemented: engine
 tags: [ma, magi, income, state_election]
-rationale: "No existing item states the Adults-category income standard. ma_is_adult_category (CO-548) needs it. Same shape as ma_magi_income_standard_child (CO-540) and ma_magi_income_standard_pregnant (CO-543) because all three compare Colorado's own percentage against a flat federal-floor percentage; each is a distinct rule because each cites a different federal section and a different Colorado percentage parameter."
-nearest: [CO-540, CO-543]
+rationale: "No existing item states the Adults-category income standard. ma_is_adult_category (CO-548) needs it. Same shape as ma_magi_income_standard_child (CO-540) and ma_magi_income_standard_pregnant (CO-543) because all three compare Colorado's own percentage against a flat federal-floor percentage; each is a distinct rule because each cites a different federal section and a different Colorado percentage parameter. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
+nearest: [CO-540, CO-541, CO-543]
 tests:
   - {id: CO-542-T1, as_of: "2026-10-01", given: {}, expect: 1.33}

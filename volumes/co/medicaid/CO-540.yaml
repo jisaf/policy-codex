@@ -11,6 +11,7 @@ derived: [max, ma_federal_magi_floor_pct, ma_income_limit_child_pct]
 sources: [S201, S202]
 implemented: engine
 tags: [ma, magi, income, state_election]
-rationale: "No existing item states the Children's-category income standard. ma_is_child_category (CO-545) needs it. Written as the greater of the federal floor and Colorado's percentage, per the phase-3 brief's direction to model Colorado's rule against the federal minimum floor and cite both, rather than as a bare reference to ma_income_limit_child_pct (CO-191), which would trip governance's derived.alias check."
+rationale: "No existing item states the Children's-category income standard. ma_is_child_category (CO-545) needs it. Written as the greater of the federal floor and Colorado's percentage, per the phase-3 brief's direction to model Colorado's rule against the federal minimum floor and cite both, rather than as a bare reference to ma_income_limit_child_pct (CO-191), which would trip governance's derived.alias check. The four MAGI income standards (CO-540, CO-541, CO-542, CO-543) share one shape (the greater of a Colorado percentage and the federal floor) and differ only in which covered group's parameters they read; each is kept as its own item so a category rule cites its own standard, per the same-shape acknowledgement governance asks for."
+nearest: [CO-541, CO-542, CO-543]
 tests:
   - {id: CO-540-T1, as_of: "2026-10-01", given: {}, expect: 1.33}

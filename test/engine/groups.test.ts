@@ -111,6 +111,13 @@ describe("group patterns", () => {
     expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
     expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
   });
+  it("adds and subtracts months", () => {
+    const c7 = makeCase(ix, { id: "M", as_of: "2026-10-01", persons: { p1: { facts: {} } } });
+    const mx = buildIndex([...items, { id: "G-13", name: "Later", identifier: "later", kind: "derived", type: "month", scope: "person", program: "All", derived: ["months_after", 12, ["det_month"]], implemented: "engine" }, { id: "G-14", name: "Earlier", identifier: "earlier", kind: "derived", type: "month", scope: "person", program: "All", derived: ["months_before", 3, ["det_month"]], implemented: "engine" }]);
+    expect(evaluate(mx, c7, "later", "p1", null)).toBe("2027-10");
+    expect(evaluate(mx, c7, "earlier", "p1", null)).toBe("2026-07");
+    expect(inline(mx, parseInline(mx, "3 months before the month containing the Determination Date"))).toBe("3 months before the month containing the Determination Date");
+  });
   it("rounds half up and up", () => {
     const c4 = makeCase(ix, spec);
     expect(evaluate(ix, c4, "allotment", "p4", "2026-10")).toBe(0);

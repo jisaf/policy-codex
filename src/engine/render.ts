@@ -54,6 +54,8 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "month_of": return `the month containing ${i(e[1])}`;
     case "month_before": return `the month before ${i(e[1])}`;
     case "month_after": return `the month after ${i(e[1])}`;
+    case "months_after": return `${i(e[1])} months after ${i(e[2])}`;
+    case "months_before": return `${i(e[1])} months before ${i(e[2])}`;
     case "months_ending": return `the ${i(e[1])} consecutive months ending with ${i(e[2])}`;
     case "months_from_to": return `the months from ${i(e[1])} through ${i(e[2])}`;
     case "at": return `${i(e[1])} for ${i(e[2])}`;
