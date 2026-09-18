@@ -12,7 +12,8 @@ derived: [lookup, cw_grant_standard_table, cw_unit_size]
 sources: [S414, S415]
 implemented: engine
 tags: [cash, tanf, household]
-rationale: "Added beyond the fixed interface list (see cw_grant_standard_table, CO-276) because the grant standard and need standard are two distinct dollar figures in 3.606.1.F's chart; cw_grant_amount (CO-914) needs this one."
+rationale: "Added beyond the fixed interface list (see cw_grant_standard_table, CO-276) because the grant standard and need standard are two distinct dollar figures in 3.606.1.F's chart; cw_grant_amount (CO-914) needs this one. Same shape as cw_need_standard (CO-911): 3.606.1.F states two figures per unit size, the need standard for the income test and the grant standard for the payment, so both lookups exist and each category rule reads its own."
+nearest: [CO-911]
 tests:
   - {id: CO-912-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 488}
   - {id: CO-912-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 374}
