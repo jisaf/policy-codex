@@ -97,6 +97,7 @@ types:
   - group of persons
   - relationships
   - table keyed by person
+  - table keyed by household size
   - list of months
 
 scopes: [person, person-month, case, month, global]

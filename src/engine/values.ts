@@ -7,6 +7,10 @@ export function baseType(it: { type?: string }): BaseType {
 export function lit(v: unknown): string {
   if (v === true) return "yes";
   if (v === false) return "no";
+  // A table's rows are the item's own content; the name suffix says only
+  // that it is one, so the suffix stays free of the parentheses the parser
+  // strips.
+  if (v !== null && typeof v === "object") return "table";
   return String(v);
 }
 

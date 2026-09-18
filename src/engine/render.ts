@@ -39,6 +39,15 @@ export function inline(ix: LedgerIndex, e: Expr): string {
       return e.slice(1).map((x: Expr) => o(x)).join(w);
     }
     case "min": return `the lesser of ${i(e[1])} and ${i(e[2])}`;
+    case "max": return `the greater of ${i(e[1])} and ${i(e[2])}`;
+    case "ceil": return `${i(e[1])} rounded up to the next whole dollar`;
+    case "round": return `${i(e[1])} rounded to the nearest whole dollar`;
+    case "persons": return "every person in the case";
+    case "count": return `the number of persons in ${i(e[1])}`;
+    case "reachable": {
+      const head = "the persons joined to this person by " + (e[1] as string[]).join(" or ");
+      return e.length > 2 ? `${head} such that ${i(e[2])}` : head;
+    }
     case "years_between": return `the number of whole years between ${i(e[1])} and ${i(e[2])}`;
     case "first_day": return `the first day of ${i(e[1])}`;
     case "month_of": return `the month containing ${i(e[1])}`;
@@ -54,6 +63,8 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "of": return `${i(e[1])}'s ${i(e[2])}`;
     case "lookup": return `${i(e[1])}, for ${i(e[2])}`;
   }
+  if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
+  if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
   if (BLOCK_OPS.has(op)) return "(" + block(ix, e).join("; ") + ")";
   throw new Error("unknown operator " + op);
 }
@@ -107,6 +118,28 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
       ...block(ix, e[2], indent + 1),
     ];
   }
+  if (op === "reachable") {
+    if (e.length < 3 || !(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `the persons joined to this person by ${(e[1] as string[]).join(" or ")} such that`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "filter") {
+    // Inline unless the condition is itself a block.
+    if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `all persons in ${inline(ix, e[1])} such that`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "sum") {
+    if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `the sum for each person in ${inline(ix, e[1])} of`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
   if (op === "each") {
     return [pad + `in each of ${inline(ix, e[1])}:`, ...block(ix, e[2], indent + 1)];
   }
@@ -141,6 +174,10 @@ export function compact(ix: LedgerIndex, e: Expr): string {
   }
   if (op === "rel" || op === "exists_related") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
+  }
+  if (op === "reachable") {
+    const roles = `[${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}]`;
+    return e.length > 2 ? `${op}(${roles}, ${c(e[2])})` : `${op}(${roles})`;
   }
   return op + "(" + e.slice(1).map(c).join(", ") + ")";
 }

@@ -12,6 +12,8 @@ export const RESULT: Record<string, string> = {
   first_day: "date", month_of: "month", month_before: "month", month_after: "month",
   months_ending: "months", months_from_to: "months",
   at: "*", of: "*", otherwise: "*", case: "*",
+  max: "number", ceil: "number", round: "number", count: "number", sum: "number",
+  persons: "group", filter: "group", reachable: "group",
 };
 
 export const LABEL: Record<string, string> = {
@@ -35,6 +37,11 @@ export const LABEL: Record<string, string> = {
   months_from_to: "the months from … through …",
   at: "[per-month fact] for [month]", of: "that person's [fact]",
   otherwise: "…, otherwise …", case: "if … then …; otherwise …",
+  max: "the greater of … and …", ceil: "… rounded up to the next whole dollar",
+  round: "… rounded to the nearest whole dollar", count: "the number of persons in [group]",
+  sum: "the sum of … for each person in [group]", persons: "every person in the case",
+  filter: "all persons in [group] such that …",
+  reachable: "the persons joined to this person by [relationship] (such that …)",
 };
 
 export const SLOTS: Record<string, string[]> = {
@@ -49,6 +56,8 @@ export const SLOTS: Record<string, string[]> = {
   first_day: ["month"], month_of: ["date"], month_before: ["month"], month_after: ["month"],
   months_ending: ["number", "month"], months_from_to: ["month", "month"],
   at: ["pm-fact", "month"], of: ["person", "fact"], otherwise: ["same", "same"], case: [],
+  max: ["number", "number"], ceil: ["number"], round: ["number"], count: ["group"],
+  sum: ["group", "number"], persons: [], filter: ["group", "yes/no"], reachable: [],
 };
 
 export const SLOTNAME: Record<string, string[]> = {
@@ -64,6 +73,8 @@ export const SLOTNAME: Record<string, string[]> = {
   "<": ["this", "compared with"], "<=": ["this", "compared with"],
   ">=": ["this", "compared with"], ">": ["this", "compared with"],
   "=": ["this", "compared with"],
+  max: ["a", "b"], ceil: ["value"], round: ["value"], count: ["group"],
+  sum: ["group", "value"], filter: ["group", "condition"],
 };
 
 export const NARY: ReadonlySet<string> = new Set(["all", "any", "+", "*"]);
@@ -144,7 +155,8 @@ export function template(op: string): Expr {
   if (op === "lookup") return ["lookup", null, ["P"]];
   if (op === "of") return ["of", ["P"], null];
   if (op === "in_group") return ["in_group", ["P"], null];
-  if (["det_date", "det_month", "month", "P"].includes(op)) return [op];
+  if (op === "reachable") return ["reachable", ["buys_prepares_with"]];
+  if (["det_date", "det_month", "month", "P", "persons"].includes(op)) return [op];
   return [op, ...(SLOTS[op] ?? []).map(() => null)];
 }
 

@@ -38,6 +38,11 @@ function renameExpr(
       const b = renameExpr(ix, e[2] as Expr, from, to);
       return { expr: b.changed ? [op, e[1], b.expr] : e, changed: b.changed };
     }
+    if (op === "reachable") {
+      if (e.length < 3) return { expr: e, changed: false };
+      const b = renameExpr(ix, e[2] as Expr, from, to);
+      return { expr: b.changed ? [op, e[1], b.expr] : e, changed: b.changed };
+    }
     let changed = false;
     const rest = (e.slice(1) as Expr[]).map((x) => {
       const r = renameExpr(ix, x, from, to);

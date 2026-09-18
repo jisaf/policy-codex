@@ -189,8 +189,29 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         return "unknown";
       }
       case "lookup":
-        need(e[1], ["table"], "table"); need(e[2], ["person"], "for person");
+        need(e[1], ["table"], "table"); need(e[2], ["person", "number"], "for person or size");
         return "number";
+      case "max":
+        need(e[1], ["number"], "greater of"); need(e[2], ["number"], "greater of");
+        return "number";
+      case "ceil": case "round":
+        need(e[1], ["number"], op === "ceil" ? "rounded up" : "rounded");
+        return "number";
+      case "persons": return "group";
+      case "count":
+        need(e[1], ["group"], "the number of persons in");
+        return "number";
+      case "filter":
+        need(e[1], ["group"], "all persons in"); need(e[2], ["yes/no"], "such that");
+        return "group";
+      case "sum":
+        need(e[1], ["group"], "for each person in"); need(e[2], ["number"], "the sum of");
+        return "number";
+      case "reachable":
+        if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
+        if (e.length > 2) need(e[2], ["yes/no"], "joined such that");
+        refs.add("relationships");
+        return "group";
     }
     errors.push(`unknown pattern "${op}"`);
     return "unknown";
