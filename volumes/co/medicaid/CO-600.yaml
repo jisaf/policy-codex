@@ -11,7 +11,8 @@ derived: [">=", age, ma_aged_age]
 sources: [S304, S305]
 implemented: engine
 tags: [ma, non_magi, age]
-rationale: "No existing item states the SSI-related aged-category age test (the MAGI chapter's category rules use different age floors for children, adults and former foster youth). ma_is_aged_blind_or_disabled (CO-603) needs it."
+rationale: "No existing item states the SSI-related aged-category age test (the MAGI chapter's category rules use different age floors for children, adults and former foster youth). ma_is_aged_blind_or_disabled (CO-603) needs it. Same shape as snap_is_elderly (CO-301, age at least a parameter), acknowledged: SNAP's elderly age is 60 (7 CFR 271.2) and Medicaid's aged category is 65 (42 CFR 435.520), so the two are distinct policy thresholds owned by different programs."
+nearest: [CO-301]
 tests:
   - {id: CO-600-T1, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12"}, expect: true}
   - {id: CO-600-T2, as_of: "2026-10-01", given: {date_of_birth: "1980-01-01"}, expect: false}
