@@ -1,0 +1,11 @@
+id: CO-184
+name: Colorado state code
+identifier: colorado_state_code
+kind: parameter
+type: text
+scope: global
+program: All
+meaning: The two-letter code that identifies Colorado in the supplied fact state of residence; a person is a Colorado resident when their state of residence equals it.
+value: CO
+sources: [S171, S172]
+rationale: The pattern catalog compares a text fact only against another fact or parameter, not against a bare literal; this parameter carries the one value the residency rules compare against so ma_meets_residency and every later program's residency rule read the same constant.

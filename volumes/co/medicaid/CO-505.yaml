@@ -7,7 +7,7 @@ scope: person
 program: Medicaid
 meaning: Whether the person is a resident of Colorado for Medical Assistance purposes under 42 CFR 435.403 and 10 CCR 2505-10 8.100.3.B - living in Colorado and considering it their place of residence at the time of application, with no durational requirement.
 precision: Reads state_of_residence directly; this volume does not model the 435.403(e)-(j) special rules for an institutionalized person incapable of indicating intent (the target household's grandmother, p1, is capable of indicating intent), so those are out of scope for this batch.
-derived: [=, state_of_residence, "CO"]
+derived: [=, state_of_residence, colorado_state_code]
 sources: [S171, S172]
 implemented: engine
 tags: [ma, immigration, household]
