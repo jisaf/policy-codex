@@ -1282,3 +1282,614 @@
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+
+- id: CO-04
+  title: Pregnant LPR inside the five-year bar; stepparent filing jointly; a child claimed by a non-custodial parent; an 18-year-old in school
+  # Adapted from the phase-3 review's designed case CO-06 (docs/reviews/magi-chp-phase-3.md S3.4).
+  # p4's claiming by his non-custodial father p5 is stated only through the tax_filer/parent edges
+  # this chapter models: 435.603(f)(2)(iii)'s non-custodial-parent exception is NOT implemented
+  # (no claimed_by_non_custodial_parent/lives_with_both_parents/lives_with identifiers exist in this
+  # chapter - OQ-42), so ma_magi_household_members routes p4 into p5's filer household exactly as
+  # 435.603(f)(1) would for an ordinary claimed dependent. This is the gap OQ-42 names, demonstrated
+  # on a real household rather than fixed here.
+  as_of: "2026-10-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p1, p4]
+    - [parent, p2, p3]        # step-parent; caretaker/parent relationship counts step-parents
+    - [parent, p2, p4]        # step-parent
+    - [parent, p5, p4]        # non-custodial father; the chapter has no way to state he does not live with p4
+    - [tax_filer, p1, p3]
+    - [tax_filer, p5, p4]
+  persons:
+    p1:
+      # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
+      # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
+      facts:
+        date_of_birth: "1997-02-11"
+        sex: female
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2023-06-15"
+        lpr_entry_date: "2023-06-15"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        is_pregnant: true
+        expected_number_of_children: 1
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 0.80
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 1600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+      months:
+        "2026-11": {earned_income: 5000}
+    p2:
+      # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
+      # jointly with Maria, earns $600/month throughout.
+      facts:
+        date_of_birth: "1992-08-03"
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2023-06-15"
+        lpr_entry_date: "2023-06-15"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 0.80
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p3:
+      # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
+      facts:
+        date_of_birth: "2008-05-14"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        is_enrolled_in_school: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 0.80
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p4:
+      # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5 (the case cannot
+      # state that he lives with p1/p2 rather than p5 - see the case comment above and OQ-42).
+      facts:
+        date_of_birth: "2016-01-22"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 2.77
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p5:
+      # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
+      # taxes claiming p4. Not otherwise related to p1/p2/p3.
+      facts:
+        date_of_birth: "1990-06-30"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-09"
+        attested_household_income_pct_fpl: 2.77
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 5000
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+  # Hand arithmetic, 2026 FPL monthly guidelines (annual/12): size2 1,803.33; size4 2,750.00.
+  #
+  # October 2026 (household income $2,200 = p1 $1,600 + p2 $600).
+  # p1: filer + spouse + tax dependent p3 = [p1,p2,p3]; p4 is claimed by p5, not p1, so excluded.
+  #   Size 3 members + 1 for p1's own pregnancy = 4. Income: p1+p2 count, p3 excluded (claimed
+  #   dependent, not required to file, her parent p1 is in the summing household) = 2,200.
+  #   Ratio 2,200/2,750.00 = 0.8000. Not needy newborn/child/parent-caretaker/former-foster-care;
+  #   pregnant: 0.80 <= 1.85 -> category pregnant (also locked in from October itself under
+  #   ma_is_in_pregnancy_coverage_period, since the coverage period's start month equals the
+  #   application month). Citizenship: LPR since 2023-06-15, 3 years < 5-year bar, not a veteran ->
+  #   fails the qualified-non-citizen arm; but pregnant -> Cover All Coloradans (8.100.3.G.1.g.viii.1)
+  #   protects her regardless of status -> ma_meets_citizenship_requirement true, not emergency-only,
+  #   status eligible. Retroactive start month: 3 months before October -> 2026-07. CHP+: Medicaid-
+  #   eligible -> ineligible_medicaid_eligible.
+  # p2: household [p1,p2,p3] (joint filer with p1, no dependents of his own), size 4 (p1's pregnancy
+  #   counts for every household member, 8.100.4.E.2), income 2,200, ratio 0.8000. Not pregnant/child;
+  #   parent/caretaker: stepfather of p3 (18, in school -> a dependent child, CO-544) and p4 -
+  #   demographics met, but his highest MAGI standard is the Adults' 1.33 (not 0.60), since he also
+  #   qualifies demographically as an Adult -> the 5% disregard is not available at 60% (CO-539/C-2)
+  #   -> 0.80 > 0.60 -> parent_caretaker false. Adult: 34, not pregnant, no Medicare, not already a
+  #   higher category, dependent children (p3, p4) have MEC -> demographics met; 0.80 <= 1.33 ->
+  #   category adult. Citizenship: qualified non-citizen inside the bar, not a veteran, not under 19,
+  #   not pregnant/postpartum -> ma_meets_citizenship_requirement false; resident with a real category
+  #   -> ma_is_emergency_medicaid_only true (C-11: he otherwise qualifies for the Adults category) ->
+  #   status emergency_only. CHP+: not a child, not pregnant -> ineligible.
+  # p3: claimed by her own parent p1 -> 435.603(f)(2) basic rule -> household = p1's = [p1,p2,p3],
+  #   size 4, income 2,200, ratio 0.8000. Under 19, 0.80 <= 1.33 -> category child, status eligible.
+  #   Continuous eligibility applies (under 19, child category, CO resident) -> end month = 11 months
+  #   after the application month (2026-10) = 2027-09. CHP+ ineligible_medicaid_eligible.
+  # p4: claimed by his non-custodial father p5, who this chapter cannot mark as living apart (OQ-42,
+  #   see case comment) -> ma_magi_household_members treats this exactly like an ordinary claimed-
+  #   dependent case: household = p5's filer household = [p4,p5], size 2. Income: p5 counts ($5,000);
+  #   p4 is excluded (claimed dependent, not required to file, and his parent p5 IS a member of the
+  #   summing household) -> income 5,000. Ratio 5,000/1,803.33 = 2.7727, over every standard including
+  #   CHP+'s 260% ceiling. Category none, ma_meets_some_category_demographics true (under 19) ->
+  #   status ineligible_income. CHP+: income ratio 2.7727 exceeds the 260% upper bound even with the
+  #   5% disregard (2.7227) -> chp_income_within_limit false -> status ineligible_income (not
+  #   eligible_child - the review's prose for the unfixed-C-12 case says eligible_child here, but that
+  #   is inconsistent with its own 2.7727 ratio against CHP+'s 260% ceiling; the engine's arithmetic,
+  #   confirmed by hand, is the value recorded below).
+  # p5: filer + tax dependent p4 = [p4,p5], size 2 (same group p4 computes, since neither has any
+  #   other filer/spouse edge), income 5,000 (p4 excluded, his own parent p5 is in the household),
+  #   ratio 2.7727. Parent/caretaker demographics: the stated parent edge to p4 is read as living
+  #   together (this volume's convention, no lives_with fact exists - see CO-547's own note that this
+  #   route is not one the statute licenses for a non-custodial parent), but 2.7727 > 0.60 and the
+  #   disregard is not available (his highest standard is the Adults' 1.33) -> parent_caretaker false.
+  #   Adult: demographics met (MEC on p4 stated true) but 2.7727 - 0.05 = 2.7227 > 1.33 -> false.
+  #   Category none, demographics true (parent/caretaker) -> status ineligible_income. CHP+: not a
+  #   child, not pregnant -> ineligible.
+  #
+  # November 2026 (p1's earnings rise to $5,000; household income $5,600).
+  # p1: household [p1,p2,p3], size 4, income 5,600, ratio 5,600/2,750.00 = 2.0364. Still pregnant and
+  #   her pregnancy coverage period (locked in from October, ma_is_in_pregnancy_coverage_period) runs
+  #   "regardless of changes in the woman's financial circumstances" (8.100.4.G.5, C-13) -> category
+  #   still pregnant, status still eligible, despite 2.0364 being over even the 185% pregnant standard.
+  #   Citizenship still protected (pregnant). CHP+: Medicaid-eligible -> ineligible_medicaid_eligible.
+  # p2: household [p1,p2,p3], income 5,600, ratio 2.0364. Parent/caretaker: over 0.60 by far, no
+  #   disregard rescue -> false. Adult: 2.0364 - 0.05 = 1.9864 > 1.33 -> false. Category none.
+  #   Citizenship still false (inside the bar); ma_is_emergency_medicaid_only requires a category other
+  #   than none, so it is false this month (C-11) -> status ineligible_income, not emergency_only.
+  #   CHP+ ineligible (not a child/pregnant).
+  # p3: household [p1,p2,p3], ratio 2.0364, over the child standard even with the disregard (1.9864 >
+  #   1.33) on the plain test - but she was found in the Children's category in October and is still
+  #   under 19 and a CO resident, so 42 CFR 435.926(d)/8.100.3.Q.1.a's continuous-eligibility period
+  #   (opened 2026-10, running through 2027-09, C-4) protects her "without regard to changes in
+  #   income": category still child, status still eligible. CHP+ ineligible_medicaid_eligible.
+  # p4/p5: p5's own earnings are unchanged, so p4's household income is still $5,000/ratio 2.7727 in
+  #   November (p4 never had ma_is_child_category true in October, so no continuous eligibility period
+  #   ever opened for him) - both persons' values are unchanged from October.
+  expect:
+    p1:
+      ma_magi_household_members: [p1, p2, p3]
+      ma_magi_household_size: 4
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": pregnant, "2026-11": pregnant}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      ma_is_in_pregnancy_coverage_period: {"2026-10": true, "2026-11": true}
+      ma_retroactive_coverage_start_month: "2026-07"
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible, "2026-11": ineligible_medicaid_eligible}
+    p2:
+      ma_magi_household_members: [p1, p2, p3]
+      ma_magi_household_size: 4
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
+      ma_meets_citizenship_requirement: false
+      ma_is_emergency_medicaid_only: {"2026-10": true, "2026-11": false}
+      ma_magi_category: {"2026-10": adult, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": emergency_only, "2026-11": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      chp_eligibility_status: {"2026-10": ineligible, "2026-11": ineligible}
+    p3:
+      ma_magi_household_members: [p1, p2, p3]
+      ma_magi_household_size: 4
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": child, "2026-11": child}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true, "2026-11": false}
+      ma_child_continuous_eligibility_end_month: "2027-09"
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible, "2026-11": ineligible_medicaid_eligible}
+    p4:
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 5000, "2026-11": 5000}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": none, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      ma_child_continuous_eligibility_end_month: "2027-09"
+      chp_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+    p5:
+      ma_magi_household_members: [p4, p5]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-10": 5000, "2026-11": 5000}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": none, "2026-11": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      chp_eligibility_status: {"2026-10": ineligible, "2026-11": ineligible}
+
+- id: CO-05
+  title: Former foster care youth over every MAGI standard; 17-year-old sibling in a continuous eligibility period after an income change; grandmother caretaker on Social Security; retroactive coverage
+  # Adapted from the phase-3 review's designed cases CO-07/CO-08 (docs/reviews/magi-chp-phase-3.md
+  # S3.4), merged into one case with three stated months now that continuous_eligibility_period_start
+  # month (CO-094) anchors ma_child_continuous_eligibility_end_month on application_date rather than
+  # the determination month (C-4c) - the review's own reason the two cases could not previously be
+  # merged. This harness pins the determination date (and so `age`) to the case's single as_of
+  # (2026-04-10, the date of the application that opens Tasha's continuous eligibility period); it
+  # does not advance with the later months, so Marcus's turning 24 between April 2026 and January
+  # 2027 (the point of the review's original CO-07/CO-08 split) is not separately exercised here - he
+  # is 23 in every month tested, which CO-549-T4's rule-level test already covers for an exit at 20.
+  # A sibling relationship for Marcus and Tasha cannot be stated at all: P43 derives siblings only
+  # from a shared parent edge, and no parent is a person in this case (both are raised by their
+  # grandmother) - the chapter has no `sibling` role, so it is left unexpressed rather than forced.
+  as_of: "2026-04-10"
+  relationships:
+    - [grandparent, p1, p2]
+    - [grandparent, p1, p3]
+    - [caretaker, p1, p3]
+    - [tax_filer, p1, p3]
+  persons:
+    p1:
+      # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
+      # p3 as a tax dependent and is her caretaker relative.
+      facts:
+        date_of_birth: "1957-11-08"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: true
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-04-10"
+        attested_household_income_pct_fpl: 1.03
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        social_security_income: 1850
+        earned_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p2:
+      # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
+      # exit), citizen, earns $4,200/month throughout.
+      facts:
+        date_of_birth: "2002-05-20"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        age_at_foster_care_exit: 20
+        was_foster_youth_at_eighteen: true
+        was_enrolled_in_medicaid_at_foster_care_exit: true
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-04-10"
+        attested_household_income_pct_fpl: 3.16
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 4200
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+    p3:
+      # Tasha, 16, citizen, in school, claimed by her grandmother p1 (not her parent, so the
+      # 435.603(f)(2)(i) exception routes her to the non-filer household rules: herself alone, since
+      # no parent is a person in this case). Earns nothing in April 2026; earns $1,850/month from
+      # January 2027 on - well above a dependent's filing threshold, so is_required_to_file_tax_return
+      # is stated true for the whole case (this fact is not month-keyed in this chapter's interface).
+      # This also matters for a rule finding recorded in this case's arithmetic comment below: CO-503
+      # (ma_magi_household_income) applies the 8.100.4.C.1.f/435.603(d)(2)(ii) "claimed by someone
+      # other than a spouse or parent" exclusion to a member's OWN summing household as readily as to
+      # someone else's, so a not-required-to-file child claimed by a non-parent with no parent in her
+      # own household (exactly 8.100.4.C.1.f.iii's population, whose income should "always count
+      # towards the determination of their own eligibility") would otherwise see her own income
+      # zeroed out of her own household total. Stating her as required to file sidesteps that defect
+      # here (its top-level condition is "not required to file"); the case comment below documents it.
+      facts:
+        date_of_birth: "2010-03-02"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: true
+        is_enrolled_in_school: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        has_other_creditable_health_coverage: false
+        application_date: "2026-04-10"
+        attested_household_income_pct_fpl: 0.00
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+      months:
+        "2027-01": {earned_income: 1850}
+        "2027-04": {earned_income: 1850}
+  # Hand arithmetic, 2026 FPL monthly guidelines: size1 1,330.00; size2 1,803.33 (the only FPL version
+  # CO-181 carries reaches 2027 too - see 3.3/3.4's C-5 note on the missing 2027 version).
+  #
+  # p1. Filer, not claimed, claims p3: household [p1,p3], size 2. Income: her Social Security counts
+  #   in full (8.100.4.C.1.b.xi/c.iii). p3's income counts too (or not) by 8.100.4.C.1.f.ii/435.603
+  #   (d)(2)(ii): the exclusion for a tax dependent claimed by someone other than a spouse or parent
+  #   applies only when the dependent is NOT required to file - p3 is stated as required to file once
+  #   her own earnings reach $1,850/month (see her facts), so her income is EXCLUDED from p1's
+  #   household in April 2026 (p3 not yet over the filing threshold in substance, though the fact is
+  #   stated for the whole case - see her facts comment) and COUNTED from January 2027 on.
+  #   April 2026: household income 1,850 (p1 only). Ratio 1,850/1,803.33 = 1.0259.
+  #   January/April 2027: household income 1,850 (p1) + 1,850 (p3) = 3,700. Ratio 3,700/1,803.33 =
+  #   2.0518. Not a child/pregnant/former-foster-care/needy-newborn in any month; parent/caretaker:
+  #   p1 is p3's caretaker relative (435.4's list includes grandparent) and p3 (16) is a dependent
+  #   child (CO-544) -> demographics met every month; her highest MAGI standard is the Parents/
+  #   Caretaker 60% itself, because the Adults group is closed to her (68, Medicare-entitled -
+  #   435.119(b)(1),(3)) -> the 5% disregard IS available (C-2's own worked example) -> even in April
+  #   2026, 1.0259 - 0.05 = 0.9759, still > 0.60 -> parent_caretaker false every month. Not an Adult
+  #   (68 is over the 65 upper age limit). Category none every month; demographics met (parent/
+  #   caretaker) -> status ineligible_income every month. Her real basis would be SSI-related/MSP,
+  #   outside this chapter's phase-3 scope (435.603(j)(2)). CHP+: not a child, not pregnant ->
+  #   ineligible every month.
+  #
+  # Rule finding recorded here rather than fixed (per this batch's instructions not to edit rules):
+  #   CO-503 (ma_magi_household_income) tests ma_is_dependent_claimed_by_non_parent (CO-563) against
+  #   EVERY member of the household being summed, including the household's only member evaluating
+  #   their own total. For p3 alone in [p3] with is_required_to_file_tax_return stated false, this
+  #   would zero out her OWN income out of her OWN household total - the opposite of 8.100.4.C.1.f.iii
+  #   ("[t]he income of a child or tax dependent who does not live with their natural, adopted, or
+  #   step parent will always count towards the determination of their own eligibility, even if [it]
+  #   is below the tax filing threshold," S167), which is written exactly for a child with no parent
+  #   in her household. This case avoids the defect by stating p3 as required to file (a realistic
+  #   fact once her own earnings reach $1,850/month), which independently satisfies f.iii by making
+  #   the exclusion's own "not required to file" precondition false - but the underlying CO-503 gap
+  #   remains for a child with no parent in the case who is genuinely not required to file, and is a
+  #   review question this batch flags rather than resolves.
+  #
+  # p2 (every month, income unchanged). Filer alone: household [p2], size 1, income 4,200, ratio
+  #   4,200/1,330.00 = 3.1579. Not needy newborn/child/pregnant; parent/caretaker: no dependent-child
+  #   relation -> false; former foster care: under 26, exited Colorado's extended foster care at 20
+  #   (within the 18-21 band 8.100.4.H.2.a states, CO-095/C-9) and was enrolled in Medicaid at exit ->
+  #   true. 8.100.4.H.2.b/435.150(b) take no income test at all, so the category holds despite 316% of
+  #   FPL -> category former_foster_care, status eligible (proves CO-551's mandatory-group order is
+  #   not income-ranked and CO-549 takes no income test). CHP+: not a child, not pregnant -> ineligible.
+  #
+  # p3, April 2026 (the determination that opens her continuous eligibility period). Claimed by her
+  #   grandmother (not her parent) -> non-filer household rules: herself, her spouse (none), her own
+  #   children (none), and (being under 19) her parents and siblings under 19 living with her - no
+  #   parent is a person in this case, so neither term adds anyone. Household [p3], size 1, income 0
+  #   (her own), ratio 0.0000. Category child (16 < 19, 0 <= 1.33); continuous eligibility applies
+  #   (under 19, child category, CO resident) -> status eligible. End month: continuous_eligibility_
+  #   period_start_month is unstated, so ma_child_continuous_eligibility_end_month falls back to the
+  #   application month (2026-04) and adds 11 -> 2027-03 (a 12-month period inclusive of its start
+  #   month, C-4b). Retroactive coverage start month: 3 months before April -> 2026-01 (this chapter
+  #   does not track whether she actually received services or met every requirement in that specific
+  #   retroactive month - OQ-55 - so this is the earliest month the 3-month rule alone reaches).
+  #   CHP+: Medicaid-eligible -> ineligible_medicaid_eligible.
+  #
+  # p3, January 2027 (same continuous eligibility period; her own earnings rise to $1,850/month).
+  #   Household still [p3] (her own household is unaffected by whether her income counts toward
+  #   someone ELSE's household - only p1's household total changes, above), size 1, income 1,850,
+  #   ratio 1,850/1,330.00 = 1.3910 (2026 FPL table, the only version this chapter carries). On the
+  #   plain test alone: 1.3910 > 1.33, and the 5% disregard (1.3410) still exceeds 1.33 -> she would
+  #   fail the Children's category and CHP+'s floor (which requires > 1.42) alike - eligible for
+  #   nothing, the coverage gap C-5 raises. But she was found eligible for the Children's category in
+  #   April 2026, is still under 19, and her continuous eligibility period (April 2026 through March
+  #   2027) has not ended: 42 CFR 435.926(d)/8.100.3.Q.1.a protect her "without regard to changes in
+  #   income" -> category still child, status still eligible, notwithstanding her own income now
+  #   exceeding the standard. CHP+ ineligible_medicaid_eligible (she remains Medicaid-eligible under
+  #   the CE period).
+  #
+  # p3, April 2027 (one month after the continuous eligibility period ends 2027-03). Household still
+  #   [p3], size 1, income unchanged at 1,850, ratio 1.3910 (age is pinned to the case's single
+  #   determination date, 2026-04-10, so she is still evaluated as 16 here even though she would
+  #   actually be 17 by April 2027 - see the case comment above). The continuous eligibility period
+  #   has ended (April 2027 is after 2027-03), so it no longer protects her: on the plain test,
+  #   1.3910 > 1.33 and the disregard (1.3410) still exceeds 1.33 -> Medicaid category none, status
+  #   ineligible_income. CHP+: 1.3910 does not exceed the 142% floor (nor does 1.3910 - 0.05 = 1.3410)
+  #   -> chp_income_within_limit false -> status ineligible_income too. This is C-5's coverage gap
+  #   (a child between 133% and 142% of FPL eligible for neither program), demonstrated on a real
+  #   household rather than resolved - C-5 is not among the fixes this round made, and the review's
+  #   note that the chapter needs the HCPF MAGI-Medicaid income guidelines chart 8.100.4.G.2
+  #   incorporates by reference (or a blocking OQ) still stands. The values below are the engine's
+  #   actual output under the currently-implemented 133% (CCR text, CO-540/CO-191) reading, recorded
+  #   as-is per the review's own C-5 finding rather than corrected here.
+  expect:
+    p1:
+      ma_magi_household_members: [p1, p3]
+      ma_magi_household_size: 2
+      ma_magi_household_income: {"2026-04": 1850, "2027-01": 3700, "2027-04": 3700}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": none, "2027-01": none, "2027-04": none}
+      ma_magi_eligibility_status: {"2026-04": ineligible_income, "2027-01": ineligible_income, "2027-04": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-04": false, "2027-01": false, "2027-04": false}
+      chp_eligibility_status: {"2026-04": ineligible, "2027-01": ineligible, "2027-04": ineligible}
+    p2:
+      ma_magi_household_members: [p2]
+      ma_magi_household_size: 1
+      ma_magi_household_income: {"2026-04": 4200, "2027-01": 4200, "2027-04": 4200}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": former_foster_care, "2027-01": former_foster_care, "2027-04": former_foster_care}
+      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": eligible}
+      ma_continuous_eligibility_applies: {"2026-04": false, "2027-01": false, "2027-04": false}
+      chp_eligibility_status: {"2026-04": ineligible, "2027-01": ineligible, "2027-04": ineligible}
+    p3:
+      ma_magi_household_members: [p3]
+      ma_magi_household_size: 1
+      ma_magi_household_income: {"2026-04": 0, "2027-01": 1850, "2027-04": 1850}
+      ma_meets_citizenship_requirement: true
+      ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": child, "2027-01": child, "2027-04": none}
+      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": ineligible_income}
+      ma_continuous_eligibility_applies: {"2026-04": true, "2027-01": false, "2027-04": false}
+      ma_child_continuous_eligibility_end_month: "2027-03"
+      ma_retroactive_coverage_start_month: "2026-01"
+      chp_eligibility_status: {"2026-04": ineligible_medicaid_eligible, "2027-01": ineligible_medicaid_eligible, "2027-04": ineligible_income}
