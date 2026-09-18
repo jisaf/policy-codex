@@ -1,0 +1,18 @@
+id: CO-993
+name: "CCCAP: income within the exit limit"
+identifier: cccap_income_within_exit_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: Whether the CCCAP household's countable income (cccap_household_income, CO-985) is at or below eighty-five percent of the state median income for the household's size, under 8 CCR 1403-1 3.111.H.1.b's exit income eligibility standard.
+precision: Not yet read by cccap_eligibility_status (CO-989), which still applies the entry limit (cccap_income_within_entry_limit, CO-986, now itself capped at this same 85% SMI figure per the review's C-5 fix) to every determination; distinguishing an application from a redetermination needs a fact this batch's interface does not have (see OQ-133).
+open: [OQ-133]
+derived: ["<=", cccap_household_income, [+, [lookup, cccap_smi_income_limit_table, [min, cccap_household_size, 8]], ["*", cccap_smi_income_limit_each_additional, [max, 0, ["-", cccap_household_size, 8]]]]]
+sources: [S485]
+implemented: engine
+tags: [income]
+rationale: "No existing item states 3.111.H.1.b's exit income test; the review (docs/reviews/cccap-leap-phase-6.md, C-5) found the 85% SMI figures were stated in the fetched text (S485) but neither the cap nor the exit limit was represented anywhere in the ledger. Modeled on cccap_income_within_entry_limit (CO-986), the nearest same-shape item, reading the new cccap_smi_income_limit_table (CO-340) instead of cccap_poverty_guideline_table (CO-323)."
+tests:
+  - {id: CO-993-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 6000, cccap_household_size: 3}, expect: true}
+  - {id: CO-993-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 8000, cccap_household_size: 3}, expect: false}

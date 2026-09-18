@@ -1,0 +1,14 @@
+id: CO-896
+name: Referred for Colorado Works Child Care
+identifier: is_referred_for_colorado_works_child_care
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether the county Colorado Works worker has referred this adult caretaker or teen parent for child care, per 8 CCR 1403-1 3.116.A.
+precision: Defaulted to true when a case does not state it (see OQ-134), so this fix round's edit scope does not turn every other case's cccap_eligibility_status unknown.
+supplied_by: County Colorado Works worker's referral record.
+sources: [S487]
+open: [OQ-134]
+tags: [household]
+rationale: "No existing item carries 3.116.A's county-referral condition on Colorado Works Child Care; the review (docs/reviews/cccap-leap-phase-6.md, C-6) found cccap_colorado_works_child_care_eligible (CO-988) read no work-eligibility or referral fact at all. cccap_colorado_works_child_care_eligible (CO-988) reads it."

@@ -5,16 +5,17 @@ kind: derived
 type: yes/no
 scope: person
 program: AdultFinancial
-meaning: Whether the person is blind, or determined blind and eligible for Social Security Disability Insurance benefits, per C.R.S. 26-2-111(5)(a)(I) and 26-2-103(3).
-precision: See OQ-112 - 9 CCR 2503-5 has no separate Aid to the Blind section; this item is modeled from the statute alone. See OQ-117 - does not read a Colorado Works household fact to apply 26-2-111(5)(a)(I)'s carve-out for a member of a household receiving Colorado Works.
-derived: [any, is_blind, [all, is_disabled_ssa, receives_social_security_disability]]
+meaning: Whether the person is blind, per C.R.S. 26-2-111(5)(a)(I) and 26-2-103(3), and has applied for SSI per 26-2-111(5)(a)(II).
+precision: "See OQ-112 - 9 CCR 2503-5 has no separate Aid to the Blind section; this item is modeled from the statute alone. See OQ-117 - does not read a Colorado Works household fact to apply 26-2-111(5)(a)(I)'s carve-out for a member of a household receiving Colorado Works. See OQ-139 - does not model 26-2-111(5)(a)(II)'s 'except for good cause shown' exception to the SSI-application requirement. Fix round (C-8): 26-2-111(5)(a)(I)'s second disjunct - 'or is determined to be blind and eligible for social security disability insurance benefits' - reads a blindness determination, not a disability determination; the prior derivation's second disjunct ([all, is_disabled_ssa, receives_social_security_disability]) tested disability instead, which is 26-2-111(4)(a)'s AND-SO test, not this one, and made AB and AND-SO coextensive for a disabled-and-SSDI population that need not be blind at all. Because that disjunct read blindness nowhere, it is dropped rather than reworded to a redundant 'is_blind and receives_social_security_disability' clause that would add nothing to is_blind alone; a future batch could add a determined_blind_by_ssa supplied fact if the SSDI-determined route is to be modeled as a distinct path, per the review's note."
+derived: [all, is_blind, has_applied_for_ssi]
 sources: [S443, S444]
-open: [OQ-112, OQ-117]
+open: [OQ-112, OQ-117, OQ-139]
 implemented: engine
 tags: [cash, ab, disability]
-rationale: No existing item states the Aid to the Blind eligibility test. af_category (CO-953) needs it. Not identical to ma_is_blind (CO-601, [all, is_blind] alone), which reads the SSI-related Medicaid blind category (42 CFR 435.530); this item additionally reads the SSDI-determined-blind alternative 26-2-111(5)(a)(I) states.
-nearest: [CO-601]
+rationale: "No existing item states the Aid to the Blind eligibility test. af_category (CO-953) needs it. This item additionally reads has_applied_for_ssi (CO-848) per 26-2-111(5)(a)(II), which the SSI-related Medicaid blind category (42 CFR 435.530) has no counterpart to."
+nearest: []
 tests:
-  - {id: CO-945-T1, as_of: "2026-10-01", given: {is_blind: true, is_disabled_ssa: false, receives_social_security_disability: false}, expect: true}
-  - {id: CO-945-T2, as_of: "2026-10-01", given: {is_blind: false, is_disabled_ssa: true, receives_social_security_disability: true}, expect: true}
-  - {id: CO-945-T3, as_of: "2026-10-01", given: {is_blind: false, is_disabled_ssa: false, receives_social_security_disability: false}, expect: false}
+  - {id: CO-945-T1, as_of: "2026-10-01", given: {is_blind: true, has_applied_for_ssi: true, is_disabled_ssa: false, receives_social_security_disability: false}, expect: true}
+  - {id: CO-945-T2, as_of: "2026-10-01", given: {is_blind: false, has_applied_for_ssi: true, is_disabled_ssa: true, receives_social_security_disability: true}, expect: false}
+  - {id: CO-945-T3, as_of: "2026-10-01", given: {is_blind: false, has_applied_for_ssi: true, is_disabled_ssa: false, receives_social_security_disability: false}, expect: false}
+  - {id: CO-945-T4, title: "C-8: blind but has not applied for SSI - prong (II) unmet", as_of: "2026-10-01", given: {is_blind: true, has_applied_for_ssi: false, is_disabled_ssa: false, receives_social_security_disability: false}, expect: false}

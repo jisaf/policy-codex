@@ -5,13 +5,16 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CCCAP
-meaning: This adult caretaker or teen parent is eligible for Colorado Works Child Care under 8 CCR 1403-1 3.115.A, 3.116.A - determined work eligible per Colorado Works and receiving Colorado Works basic cash assistance.
-precision: Reads Colorado Works' own eligibility outcome and grant amount for this same person (cross-program), rather than re-deriving Colorado Works work-eligibility here.
-derived: [any, ["=", cw_eligibility_status, eligible], [">", cw_grant_amount, 0]]
-sources: [S487]
+meaning: This adult caretaker or teen parent is eligible for Colorado Works Child Care under 8 CCR 1403-1 3.115.A, 3.116.A - determined work eligible per Colorado Works, receiving Colorado Works basic cash assistance, and referred for child care by the county Colorado Works worker.
+precision: Reads Colorado Works' own eligibility outcome, grant amount, and work-eligibility determination for this same person (cross-program), rather than re-deriving Colorado Works work-eligibility here. Per 3.111.D.6, a caretaker or teen parent caring for a child receiving Colorado Works cash assistance who is not determined work eligible falls through to the Low-Income Child Care determination instead of this branch, rather than being denied outright.
+derived: [all, [any, ["=", cw_eligibility_status, eligible], [">", cw_grant_amount, 0]], cw_is_work_eligible_individual, [otherwise, is_referred_for_colorado_works_child_care, true]]
+sources: [S487, S511]
+open: [OQ-134]
 implemented: engine
 tags: [household]
-rationale: No existing item cross-reads Colorado Works into CCCAP; cccap_eligibility_status (CO-989) reads it to route a Colorado Works household to Colorado Works Child Care ahead of the Low-Income determination, per 3.111.D.6.
+rationale: "No existing item cross-reads Colorado Works into CCCAP; cccap_eligibility_status (CO-989) reads it to route a Colorado Works household to Colorado Works Child Care ahead of the Low-Income determination, per 3.111.D.6. The work-eligibility conjunct was added per the review (docs/reviews/cccap-leap-phase-6.md, C-6, should-fix): a household with a Colorado Works grant was routed to this branch with no work-eligibility test at all, though 3.111.D.6 (S511) states the negative case expressly and cw_is_work_eligible_individual (CO-919) already exists for it."
 tests:
-  - {id: CO-988-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_eligibility_status: eligible, cw_grant_amount: 488}, expect: true}
-  - {id: CO-988-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_eligibility_status: ineligible_income, cw_grant_amount: 0}, expect: false}
+  - {id: CO-988-T1, as_of: "2026-10-01", month: "2026-10", given: {cw_eligibility_status: eligible, cw_grant_amount: 488, cw_is_work_eligible_individual: true, is_referred_for_colorado_works_child_care: true}, expect: true}
+  - {id: CO-988-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_eligibility_status: ineligible_income, cw_grant_amount: 0, cw_is_work_eligible_individual: false, is_referred_for_colorado_works_child_care: true}, expect: false}
+  # 3.111.D.6: a grant alone, without work-eligibility, falls through rather than routing here (CO-988-T1 previously tested this disjunct only together with cw_eligibility_status: eligible).
+  - {id: CO-988-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_eligibility_status: ineligible_no_dependent_child, cw_grant_amount: 488, cw_is_work_eligible_individual: false, is_referred_for_colorado_works_child_care: true}, expect: false}

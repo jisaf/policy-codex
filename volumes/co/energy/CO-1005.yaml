@@ -5,12 +5,13 @@ kind: derived
 type: yes/no
 scope: person
 program: LEAP
-meaning: Whether at least one member of the LEAP household is a U.S. citizen, national, or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17 - an applicant who does not meet lawful permanent residency or citizenship requirements is excluded as a household member (their income is still counted), so the household needs at least one member who does.
-derived: [exists, leap_household_members, ["in", [of, [P], citizenship_status], [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]]
+meaning: Whether at least one member of the LEAP household is a U.S. citizen, national, or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17, so the household is not denied under 3.754.1.C for having no qualifying member.
+precision: Reduces to "the household is non-empty" because leap_household_members (CO-1000) is now itself filtered to members who meet leap_meets_citizenship_requirement (CO-1010), per the review's C-2 fix; kept as its own item, rather than folded into leap_is_eligible (CO-1007) directly, as the explicit 3.754.1.C denial factor.
+derived: [">", leap_household_size, 0]
 sources: [S493, S494]
 implemented: engine
 tags: [immigration, legal]
-rationale: No existing item states the LEAP household lawful-presence test; leap_is_eligible (CO-1007) needs it.
+rationale: "Previously stated the 3.753.16-17 status list directly, duplicating the test leap_household_members (CO-1000) now applies as its own filter condition (leap_meets_citizenship_requirement, CO-1010); the review (docs/reviews/cccap-leap-phase-6.md, C-2, blocking) found the citizenship rule was stated in three items' meaning and implemented in none, and proposed re-deriving this item as the household-non-empty test once CO-1000 carries the filter itself. leap_is_eligible (CO-1007) reads it."
 tests:
-  - {id: CO-1005-T1, as_of: "2026-10-01", given: {citizenship_status: undocumented}, others: {p2: {citizenship_status: lawful_permanent_resident}}, relationships: [[spouse, p1, p2]], expect: true}
-  - {id: CO-1005-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, relationships: [], expect: false}
+  - {id: CO-1005-T1, as_of: "2026-10-01", given: {leap_household_size: 1}, expect: true}
+  - {id: CO-1005-T2, as_of: "2026-10-01", given: {leap_household_size: 0}, expect: false}

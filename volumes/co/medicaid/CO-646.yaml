@@ -5,14 +5,15 @@ kind: derived
 type: money
 scope: person
 program: Medicaid
-meaning: The amount of the couple's total resources protected for the community spouse - half countable_resources_couple, no less than the current CSRA minimum standard and no more than the current CSRA maximum standard - per 42 U.S.C. 1396r-5(f)(2) and 10 CCR 2505-10 § 8.100.7.M.1.a.
-precision: Does not model 8.100.7.M.1.b's increased CSRA (calculated under § 8.100.7.S when the community spouse's income remains below the MMMNA even with the full CSRA) or 8.100.7.M.1.c's court-ordered amount; implements only the "greatest of the total resources ... but no more than the current maximum allowance" branch, expressed as half of total resources floored at the minimum and capped at the maximum, which is the CSRA formula's ordinary case.
-derived: ["min", csra_maximum_standard, ["max", csra_minimum_standard, ["/", countable_resources_couple, 2]]]
-sources: [S355, S371, S373]
+meaning: The amount of the couple's total resources protected for the community spouse - the couple's total resources, but no more than the current CSRA maximum standard - per 10 CCR 2505-10 § 8.100.7.M.1.a.
+precision: Implements only § 8.100.7.M.1.a, "the total resources of the couple but no more than the current maximum allowance"; this is a floor on the CSRA, not a ceiling - § 8.100.7.M.1.b's increased CSRA (calculated under § 8.100.7.S when the community spouse's income remains below the MMMNA even with the full CSRA) and § 8.100.7.M.1.c's court-ordered amount can only raise it, and neither is modeled. § 8.100.7.M.1.a has no spousal-share (half-of-total) term and no minimum-standard floor; that shape belongs to 42 U.S.C. 1396r-5(f)(2)(A) (S371), which Colorado's fetched text does not adopt - see OQ-126. csra_minimum_standard (CO-827) is accordingly not read here.
+derived: ["min", csra_maximum_standard, countable_resources_couple]
+sources: [S355, S371]
+open: [OQ-126]
 implemented: engine
 tags: [ma, ltc, resources, legal]
-rationale: "No existing item states the CSRA formula. ma_institutionalized_spouse_countable_resources (CO-647) needs it. The target household's p1/p2 (half of 46000 = 23000, floored at the case's supplied minimum standard) is the worked example in the batch report."
+rationale: "No existing item states the CSRA formula. ma_institutionalized_spouse_countable_resources (CO-647) needs it. The target household's p1/p2 (total resources 46000, capped at the case's supplied maximum standard) is the worked example in the batch report."
 tests:
-  - {id: CO-646-T1, as_of: "2026-10-01", given: {countable_resources_couple: 46000, csra_minimum_standard: 30000, csra_maximum_standard: 155000}, expect: 30000}
-  - {id: CO-646-T2, as_of: "2026-10-01", given: {countable_resources_couple: 400000, csra_minimum_standard: 30000, csra_maximum_standard: 155000}, expect: 155000}
-  - {id: CO-646-T3, as_of: "2026-10-01", given: {countable_resources_couple: 100000, csra_minimum_standard: 30000, csra_maximum_standard: 155000}, expect: 50000}
+  - {id: CO-646-T1, as_of: "2026-10-01", given: {countable_resources_couple: 46000, csra_maximum_standard: 155000}, expect: 46000}
+  - {id: CO-646-T2, as_of: "2026-10-01", given: {countable_resources_couple: 400000, csra_maximum_standard: 155000}, expect: 155000}
+  - {id: CO-646-T3, as_of: "2026-10-01", given: {countable_resources_couple: 100000, csra_maximum_standard: 155000}, expect: 100000}

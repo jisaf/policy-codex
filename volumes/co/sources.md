@@ -1789,7 +1789,9 @@ Document: D-41
 10 CCR 2505-10 § 8.100.7.B. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
 
 > 1. HCBS or PACE shall be provided to persons who have been assessed by the Single Entry Point/Case Management Agency to have met the institutional level of care and will remain in the community by receiving HCBS or PACE; and
+> a. are SSI (including 1619b) or OAP Medicaid eligible; or
 > b. are eligible under the Institutionalized 300% Special Income category described at 8.100.7.A; or
+> c. are eligible under the Medicaid Buy-In Program for Working Adults with Disabilities described at 8.100.6.P. For this group, access to HCBS: i) Is limited to the Elderly, Blind and Disabled (EBD), Community Mental Health Supports (CMHS), Brain Injury (BI), Spinal Cord Injury (SCI), Supported Living Services (SLS), and Developmental Disabilities waivers; and ii) Is contingent on the Department receiving all necessary federal approval for the waiver amendments that extend access to HCBS to the Working Adults with Disabilities population described at 8.100.6.P.
 
 ### S354. Institutionalized spouse and community spouse defined
 
@@ -1798,6 +1800,11 @@ Document: D-41
 10 CCR 2505-10 § 8.100.7.K. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
 
 > 1. The spousal protection regulations apply to married couples where one spouse is institutionalized or likely to be institutionalized for at least 30 consecutive days and the other spouse remains in the community. Being a community spouse does not prohibit Medicaid eligibility if all criteria are met.
+> 2. For purposes of spousal protection, an institutionalized spouse is an individual who:
+> a. Begins a stay in a medical institution or nursing facility on or after September 30, 1989, or
+> b. Is first enrolled as a Medical Assistance client in the Program of All Inclusive Care for the Elderly (PACE) on or after October 10, 1997, or
+> c. Receives Home and Community Based Services on or after July 1, 1999; and
+> d. Is married to a spouse who is not in a medical institution or nursing facility; but does not include any such individual who is not likely to meet the requirements of subparagraphs 8.100.7.K.2.a thru c for at least 30 consecutive days.
 > 3. A community spouse is defined as the spouse of an institutionalized spouse.
 
 ### S355. Calculation of the Community Spouse Resource Allowance
@@ -2656,3 +2663,36 @@ Document: D-64
 > 1) Both adult caretakers or teen parents are engaged in a low-income eligible activity;
 > 2) One adult caretaker or teen parent is voluntarily absent from the home, but both adult caretakers or teen parents are in a low-income eligible activity; or
 > 3) One adult caretaker or teen parent is engaged in a low-income eligible activity and the other adult caretaker or teen parent is incapacitated such that, according to a physician's statement or other medical verification, they are unable to care for the child(ren).
+
+### S522. Family Violence Option waiver does not stop the TANF time clock
+
+Document: D-61
+
+9 CCR 2503-6 3.604.5.A.1.b. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-6-3.604
+
+> b. TANF time clock. Assistance received while the FVO waiver is in effect does not prevent the TANF time clock from advancing, but is an allowable reason to extend assistance beyond the sixtieth (60th) month.
+
+### S379. Transfer penalty period: start date and partial-month day calculation
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.2.c.ii, d. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> ii) The resulting number is the number of months that the individual shall be ineligible for Medical Assistance. For transfers made before February 8, 2006, the period of ineligibility shall begin with the first day of the month following the month in which the transfer occurred. For transfers made on or after February 8, 2006, the period of ineligibility shall begin on the later of the following dates: a) The first day of the month following the month in which the transfer occurred or is discovered. For transfers discovered after the date the transfer occurred, the date of transfer shall be the discovery date. b) The date on which the individual would initially be eligible for HCBS, PACE or institutional services based on an approved application for such assistance that were it not for the imposition of the penalty period, would be covered by Medical Assistance; c) Which does not occur during any other period of ineligibility for services by reason of a transfer of assets penalty.
+> d. The period of ineligibility shall also include partial months, which shall be calculated by multiplying 30 days by the decimal fractional share of the partial month. The result is the number of days of ineligibility. For transfers occurring on or after April 1, 2006, the result shall be rounded up to the nearest whole number.
+
+### S510. LEAP eligibility period and program year (November through April)
+
+Document: D-63
+
+9 CCR 2503-7-3.751.1. https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-7-3.751
+
+> "Eligibility Period": There shall be one eligibility period for the Basic Low-Income Energy Assistance Programs from November 1st through April 30th. If April 30 th for a particular calendar year falls on a holiday or weekend, then the eligibility period shall be extended until midnight the next business day. This program is contingent upon the continued availability of funds in accordance with Sections 3.750.15 and 3.758.48. "Program Year": means from November 1st through April 30th for the Heating Fuel Assistance Program. If April 30th for a particular calendar year falls on a holiday or weekend, then the eligibility periods shall be extended until midnight the next business day. This program is contingent upon the continued availability of funds in accordance with Sections 3.750.15 and 3.758.48.
+
+### S511. CCCAP caretaker not work-eligible for Colorado Works falls to Low-Income Child Care
+
+Document: D-64
+
+8 CCR 1403-1-3.111.D.6. https://www.law.cornell.edu/regulations/colorado/8-CCR-1403-1-3.111
+
+> 6. Adult caretakers or teen parents that are not determined work eligible per Colorado Works Program rule (9 CCR 2503-6), incorporated by reference in rule section 3.103(BB) above, who are caring for children receiving Basic Cash Assistance through the Colorado Works Program are not eligible for Colorado Works Child Care but may be eligible for Low-Income Child Care if the adult caretaker or teen parent meets all other Low-Income program criteria.

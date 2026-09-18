@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: ColoradoWorks
 meaning: This person's gross earned income for the month, minus the $90 at-application earned income disregard, floored at zero, per 9 CCR 2503-6 3.606.2.A.1.
-precision: Models only the at-application $90 disregard, not the 67% ongoing disregard 3.606.2.A.2 states for a unit already receiving assistance (see OQ-105).
+precision: "Models the $90 eligibility-test disregard 3.606.2.A.1's first sentence and 3.606.2.A.2's first sentence state; this is the figure cw_countable_income (CO-910) compares against the need standard (cw_meets_income_test, CO-913). The 67% disregard both paragraphs' second sentences apply to compute the payment amount is a separate figure, modeled by cw_payment_countable_earned_income (CO-922) and read by cw_grant_amount (CO-914) - the phase-5 review's C-1 finding that one figure had been doing both jobs; OQ-105 is rewritten accordingly."
 assumption: Applies the disregard to every person's own earned income rather than only to adult clients, since 3.606.1.E's general calculation ("countable earned income minus applicable earned income disregards, plus countable unearned income") is not stated as adult-only, and 3.605.2.D.4 counts a non-student dependent child's own earned income in full; a student dependent child's earned income is separately exempt under 3.605.4.B.24.b, not modeled here.
 derived: [max, 0, ["-", earned_income, cw_earned_income_disregard_dollar]]
 sources: [S416]

@@ -1,0 +1,17 @@
+id: CO-354
+name: Colorado Works grant standard by number of children (two caretakers)
+identifier: cw_grant_standard_table_two_caretakers
+kind: parameter
+type: table keyed by household size
+scope: global
+program: ColoradoWorks
+meaning: The maximum basic cash assistance grant for a zero-income, two-caretaker assistance unit (a two-parent case under 9 CCR 2503-6 3.604.2.B), under 3.606.1.F's Colorado Works Standards of Assistance Chart's "Two Caretakers" row, keyed by the number of dependent children (0-10).
+versions:
+  - from: "2025-07-01"
+    value: { "0": 527, "1": 649, "2": 788, "3": 927, "4": 1057, "5": 1163, "6": 1273, "7": 1387, "8": 1492, "9": 1598, "10": 1707 }
+    source: S414
+open: [OQ-101]
+rationale: "No existing parameter states the 'Two Caretakers' grant-standard row; cw_grant_standard_table (CO-276, the acknowledged nearest same-shape parameter) carries only the 'One Caretaker' row of the same 3.606.1.F chart. Added under the fix-round C-5 finding, the grant-standard companion to cw_need_standard_table_two_caretakers (CO-353). cw_grant_standard (CO-912) needs it."
+nearest: [CO-276]
+sources: [S414]
+tags: [cash, tanf, household]

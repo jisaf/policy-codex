@@ -12,8 +12,8 @@ sources: [S442, S445, S459]
 open: [OQ-113]
 implemented: engine
 tags: [cash, and, disability]
-rationale: No existing item states the AND-SO total-disability test. af_category (CO-953) needs it. Not identical to ma_is_disabled (CO-602, [all, is_disabled_ssa] alone), which reads the federal SSI/SSA disability definition (42 U.S.C. 1382c(a)(3)) rather than Colorado's own "total disability" definition (26-2-103(14)(a), S445), and additionally reads the SSDI-determined alternative 26-2-111(4)(a) states.
-nearest: [CO-602]
+rationale: No existing item states the AND-SO total-disability test. af_category (CO-953) needs it.
+nearest: []
 tests:
   - {id: CO-944-T1, as_of: "2026-10-01", given: {is_disabled_ssa: true, receives_social_security_disability: false}, expect: true}
   - {id: CO-944-T2, as_of: "2026-10-01", given: {is_disabled_ssa: false, receives_social_security_disability: true}, expect: true}

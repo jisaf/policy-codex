@@ -1,0 +1,14 @@
+id: CO-895
+name: Shares heating fuel with the household
+identifier: shares_heating_fuel_with
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: Whether this person customarily purchases primary heating fuel in common with, or makes an undesignated payment for heat as part of rent jointly with, the household they are joined to by a stated spouse, parent, or child relationship - the general "living together as one economic unit" test of 9 CCR 2503-7 3.751.1's "Household" definition, read alongside 3.751.2.D's unconditional age-based joins.
+precision: Read as an additional join condition on an existing spouse/parent/child relationship edge, not as a freestanding co-residence edge of its own; it lets a household affirmatively state that a member 3.751.2.D's unconditional rules would not otherwise join (an adult child, a parent not otherwise captured) in fact shares heat in common with the rest. It cannot join two people with no stated relationship edge between them at all (see OQ-132).
+supplied_by: Applicant statement of who purchases primary heating fuel in common or pays undesignated rent-included heat jointly.
+sources: [S489]
+open: [OQ-132]
+tags: [household]
+rationale: "No existing item carries 3.751.1's general economic-unit test; the nearest same-shape item is is_under_parental_control_of_household_member (used by the SNAP chapter's household closure for an analogous case-stated override), and the review (docs/reviews/cccap-leap-phase-6.md, C-1) proposed a new relationship edge for the same purpose, which this volume's engine cannot register without a change outside volumes/co (OQ-132); modeled instead as a per-person fact. leap_household_members (CO-1000) and leap_household_members_for_income (CO-1009) both read it."

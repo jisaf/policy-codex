@@ -5,15 +5,17 @@ kind: derived
 type: money
 scope: person
 program: ColoradoWorks
-meaning: The maximum basic cash assistance grant for a unit of zero income at this person's assistance unit size, per 9 CCR 2503-6 3.606.1.F - the figure 3.606.1.I.3 and 3.606.1.K.1 deduct net countable income from to compute the authorized grant.
-precision: Reads cw_grant_standard_table's One Caretaker row only; see OQ-101.
-open: [OQ-101]
-derived: [lookup, cw_grant_standard_table, cw_unit_size]
+meaning: The maximum basic cash assistance grant for a unit of zero income at this person's assistance unit, per 9 CCR 2503-6 3.606.1.F - the figure 3.606.1.I.3 and 3.606.1.K.1 deduct net countable income from to compute the authorized grant - selecting the chart's No Caretaker, One Caretaker, or Two Caretakers row by cw_unit_caretaker_count (CO-926) and its Number of Children column by cw_unit_child_count (CO-927), with the Each Additional Child amount (cw_grant_standard_each_additional, CO-277) added for each child beyond ten.
+precision: A person outside every assistance unit (cw_unit_size 0) reads cw_grant_standard_table_no_caretaker's zero-children value ($0); see M-1 in the phase-5 review, not fixed this round.
+derived: [case, [["=", cw_unit_caretaker_count, 0], [case, [["<=", cw_unit_child_count, 10], [lookup, cw_grant_standard_table_no_caretaker, cw_unit_child_count]], [else, [+, [lookup, cw_grant_standard_table_no_caretaker, 10], ["*", cw_grant_standard_each_additional, ["-", cw_unit_child_count, 10]]]]]], [["=", cw_unit_caretaker_count, 1], [case, [["<=", cw_unit_child_count, 10], [lookup, cw_grant_standard_table, cw_unit_child_count]], [else, [+, [lookup, cw_grant_standard_table, 10], ["*", cw_grant_standard_each_additional, ["-", cw_unit_child_count, 10]]]]]], [else, [case, [["<=", cw_unit_child_count, 10], [lookup, cw_grant_standard_table_two_caretakers, cw_unit_child_count]], [else, [+, [lookup, cw_grant_standard_table_two_caretakers, 10], ["*", cw_grant_standard_each_additional, ["-", cw_unit_child_count, 10]]]]]]]
 sources: [S414, S415]
 implemented: engine
 tags: [cash, tanf, household]
-rationale: "Added beyond the fixed interface list (see cw_grant_standard_table, CO-276) because the grant standard and need standard are two distinct dollar figures in 3.606.1.F's chart; cw_grant_amount (CO-914) needs this one. Same shape as cw_need_standard (CO-911): 3.606.1.F states two figures per unit size, the need standard for the income test and the grant standard for the payment, so both lookups exist and each category rule reads its own."
+rationale: "Added beyond the fixed interface list (see cw_grant_standard_table, CO-276) because the grant standard and need standard are two distinct dollar figures in 3.606.1.F's chart; cw_grant_amount (CO-914) needs this one. Same shape as cw_need_standard (CO-911): both select among 3.606.1.F's three rows by caretaker count and key within each by child count. Fix round (C-5): re-keyed the same way as cw_need_standard (CO-911), reading cw_grant_standard_table (CO-276), cw_grant_standard_table_no_caretaker (CO-352), and cw_grant_standard_table_two_caretakers (CO-354), and now applies cw_grant_standard_each_additional (CO-277) above ten children (M-4)."
 nearest: [CO-911]
 tests:
-  - {id: CO-912-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_enrolled_in_school: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 488}
-  - {id: CO-912-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 374}
+  - {id: CO-912-T1, title: "One caretaker, one child", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 488}
+  - {id: CO-912-T2, title: "One caretaker, no children", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 374}
+  - {id: CO-912-T3, title: "C-5: two caretakers, one child", as_of: "2026-10-01", given: {cw_unit_caretaker_count: 2, cw_unit_child_count: 1}, expect: 649}
+  - {id: CO-912-T4, title: "C-5: no caretaker, two children", as_of: "2026-10-01", given: {cw_unit_caretaker_count: 0, cw_unit_child_count: 2}, expect: 362}
+  - {id: CO-912-T5, title: "M-4: one caretaker, twelve children", as_of: "2026-10-01", given: {cw_unit_caretaker_count: 1, cw_unit_child_count: 12}, expect: 1754}

@@ -1,0 +1,14 @@
+id: CO-898
+name: Absent from the home
+identifier: is_absent_from_home
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Whether this adult caretaker or teen parent is involuntarily or voluntarily absent from the home, per 8 CCR 1403-1 3.111.D.1.b (involuntary absence) and c.2 (voluntary absence, where both caretakers remain in an eligible activity).
+precision: Does not distinguish involuntary absence (which reduces the household to one caretaker) from voluntary absence (which does not); both are read the same way, as an exemption from the absent caretaker's own activity requirement when a second caretaker is present (see OQ-136). No verification standard is modeled. Defaulted to false when a case does not state it, for the same case-coverage reason as CO-896/CO-897 (see OQ-136).
+supplied_by: Applicant statement or county verification of a caretaker's absence from the home.
+sources: [S497]
+open: [OQ-136]
+tags: [household]
+rationale: "No existing item carries 3.111.D.1.b/c.2's absent-caretaker household shapes; the review (docs/reviews/cccap-leap-phase-6.md, C-7) found cccap_household_caretakers_in_eligible_activity (CO-991) required every caretaker's own activity with no absence or incapacity exemption, only the incapacity prong (has_medical_statement_of_unfitness, already supplied) being named in OQ-125. cccap_household_caretakers_in_eligible_activity (CO-991) reads it."

@@ -594,14 +594,26 @@
   # Non-MAGI Medicaid (phase 4). p1 is institutionalized from 2026-10-01 with
   # gross income 2030, within the special income group (3 x 994 = 2982). The
   # couple's resources are 46000; with the ILLUSTRATIVE spousal standards
-  # stated above (CSRA minimum 30000, maximum 150000, MMMNA 2600 and cap 4000,
-  # home equity limit 700000: the CMS 2026 figures are not in this volume,
-  # OQ-91) the CSRA is max(30000, 23000) = 30000, leaving 16000 countable to
-  # p1, over the 2000 limit: ineligible on resources until spend-down. Were she
-  # eligible, MMMNA = 2600 + (1100 shelter - 30% of 2600) = 2920, the spouse
-  # allowance 2920 - 1180 = 1740, and the patient payment 2030 - 75 - 1740 =
-  # 215. p2 (community spouse, income 1180, individual resources 44100 over the
-  # illustrative MSP limit 10000) is in no MSP, SSI-related or Buy-In group.
+  # stated above (CSRA maximum 150000: the CMS 2026 figures are not in this
+  # volume, OQ-91), the fix-round C-1 fix (10 CCR 2505-10 8.100.7.M.1.a: CSRA
+  # = total resources capped at the maximum standard, no spousal-share or
+  # minimum-standard term - see OQ-126) gives ma_csra = min(150000, 46000) =
+  # 46000, so all of the couple's resources are attributed to the community
+  # spouse and p1's own countable resources are 0, at or below the 2000
+  # limit: resource eligible. p1 also meets the nursing facility level of
+  # care and is otherwise financially eligible, so ma_pace_eligible (CO-654)
+  # is true; CO-652's case order tests PACE before institutional (an
+  # authoring choice per OQ-100, not itself a fix-round item), so the status
+  # is eligible_pace rather than eligible_institutional even though p1's
+  # actual application is for nursing facility care - a consequence of C-1
+  # making her resource-eligible that this fix round surfaces but does not
+  # correct (OQ-100/C-18 is next round's problem). MMMNA = 2600 + (1100
+  # shelter - 30% of 2600) = 2920, the spouse allowance 2920 - 1180 = 1740,
+  # and (per C-3, gated on eligibility, which p1 now has) the patient payment
+  # 2030 - 75 - 1740 = 215. p2 (community spouse, income 1180, individual
+  # resources 44100 over the illustrative MSP limit 10000) is in no MSP,
+  # SSI-related or Buy-In group, is not institutionalized, and (per C-3) has
+  # no patient payment.
   expect:
     p1:
       cw_assistance_unit_members: [p1]
@@ -619,11 +631,11 @@
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-10": true}
       ma_ltc_couple: true
-      ma_csra: 30000
-      ma_institutionalized_spouse_countable_resources: 16000
-      ma_meets_ltc_resource_standard: false
+      ma_csra: 46000
+      ma_institutionalized_spouse_countable_resources: 0
+      ma_meets_ltc_resource_standard: true
       ma_home_equity_disqualifies: false
-      ma_ltc_eligibility_status: {"2026-10": ineligible_resources}
+      ma_ltc_eligibility_status: {"2026-10": eligible_pace}
       ma_mmmna: {"2026-10": 2920}
       ma_community_spouse_income_allowance: {"2026-10": 1740}
       ma_patient_payment: {"2026-10": 215}
@@ -659,6 +671,7 @@
       ma_is_institutionalized: false
       ma_ltc_couple: false
       ma_ltc_eligibility_status: {"2026-10": not_institutionalized_or_waiver}
+      ma_patient_payment: {"2026-10": 0}
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
@@ -684,6 +697,7 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p3]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       af_category: {"2026-10": none}
@@ -692,9 +706,12 @@
       cccap_household_income: {"2026-10": 2380}
       cccap_is_teen_parent: false
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p3, p4, p5]
+      # leap_household_members is now filtered by 3.753.17's citizenship requirement (p3 is undocumented, review C-2);
+      # leap_household_income still sums p3's income via leap_household_members_for_income (CO-1009). leap_is_eligible
+      # is false: October is outside the November-April eligibility period (review C-3, 3.751.1/3.752.1).
+      leap_household_members: [p4, p5]
       leap_household_income: {"2026-10": 2380}
-      leap_is_eligible: {"2026-10": true}
+      leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-10": 2380}
@@ -717,21 +734,22 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
       cw_minor_parent_living_arrangement_met: true
       cw_deemed_parent_income_of_minor_parent: {"2026-10": 2037}
       cw_countable_income: {"2026-10": 2037}
-      cw_need_standard: 331
-      cw_grant_standard: 488
+      cw_need_standard: 245
+      cw_grant_standard: 362
       cw_grant_amount: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_income}
       af_category: {"2026-10": none}
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: true
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p3, p4, p5]
-      leap_is_eligible: {"2026-10": true}
+      leap_household_members: [p4, p5]
+      leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-10": 2380}
@@ -754,13 +772,14 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_eligibility_status: {"2026-10": ineligible_income}
       af_category: {"2026-10": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p3, p4, p5]
-      leap_is_eligible: {"2026-10": true}
+      leap_household_members: [p4, p5]
+      leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 0}
@@ -1348,17 +1367,15 @@
   # 12-month continuous eligibility. p5 is claimed by a grandparent, so the
   # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
   # children are Medicaid-eligible and so not CHP+ eligible.
-  # Non-MAGI Medicaid (phase 4). p1 is institutionalized from 2026-10-01 with
-  # gross income 2030, within the special income group (3 x 994 = 2982). The
-  # couple's resources are 46000; with the ILLUSTRATIVE spousal standards
-  # stated above (CSRA minimum 30000, maximum 150000, MMMNA 2600 and cap 4000,
-  # home equity limit 700000: the CMS 2026 figures are not in this volume,
-  # OQ-91) the CSRA is max(30000, 23000) = 30000, leaving 16000 countable to
-  # p1, over the 2000 limit: ineligible on resources until spend-down. Were she
-  # eligible, MMMNA = 2600 + (1100 shelter - 30% of 2600) = 2920, the spouse
-  # allowance 2920 - 1180 = 1740, and the patient payment 2030 - 75 - 1740 =
-  # 215. p2 (community spouse, income 1180, individual resources 44100 over the
-  # illustrative MSP limit 10000) is in no MSP, SSI-related or Buy-In group.
+  # Non-MAGI Medicaid (phase 4). Same fixed-rule result as CO-01 (see its
+  # comment above): the C-1 fix gives ma_csra = min(150000, 46000) = 46000,
+  # p1's own countable resources are 0, and she is resource eligible.
+  # ma_pace_eligible is also true (level of care met, financially eligible),
+  # and CO-652's PACE-before-institutional case order (OQ-100) reports
+  # eligible_pace rather than eligible_institutional. MMMNA and the spouse
+  # allowance are unchanged (2920, 1740); the patient payment, now gated on
+  # eligibility per C-3, is 2030 - 75 - 1740 = 215. p2 (community spouse) has
+  # no patient payment.
   expect:
     p1:
       cw_assistance_unit_members: [p1]
@@ -1376,11 +1393,11 @@
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-11": true}
       ma_ltc_couple: true
-      ma_csra: 30000
-      ma_institutionalized_spouse_countable_resources: 16000
-      ma_meets_ltc_resource_standard: false
+      ma_csra: 46000
+      ma_institutionalized_spouse_countable_resources: 0
+      ma_meets_ltc_resource_standard: true
       ma_home_equity_disqualifies: false
-      ma_ltc_eligibility_status: {"2026-11": ineligible_resources}
+      ma_ltc_eligibility_status: {"2026-11": eligible_pace}
       ma_mmmna: {"2026-11": 2920}
       ma_community_spouse_income_allowance: {"2026-11": 1740}
       ma_patient_payment: {"2026-11": 215}
@@ -1416,6 +1433,7 @@
       ma_is_institutionalized: false
       ma_ltc_couple: false
       ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
+      ma_patient_payment: {"2026-11": 0}
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
@@ -1441,6 +1459,7 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p3]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       af_category: {"2026-11": none}
@@ -1449,7 +1468,7 @@
       cccap_household_income: {"2026-11": 2380}
       cccap_is_teen_parent: false
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p3, p4, p5]
+      leap_household_members: [p4, p5]
       leap_household_income: {"2026-11": 2380}
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
@@ -1474,20 +1493,21 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
       cw_minor_parent_living_arrangement_met: true
       cw_deemed_parent_income_of_minor_parent: {"2026-11": 2037}
       cw_countable_income: {"2026-11": 2037}
-      cw_need_standard: 331
-      cw_grant_standard: 488
+      cw_need_standard: 245
+      cw_grant_standard: 362
       cw_grant_amount: {"2026-11": 0}
       cw_eligibility_status: {"2026-11": ineligible_income}
       af_category: {"2026-11": none}
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: true
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p3, p4, p5]
+      leap_household_members: [p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1511,12 +1531,13 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_eligibility_status: {"2026-11": ineligible_income}
       af_category: {"2026-11": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p3, p4, p5]
+      leap_household_members: [p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2

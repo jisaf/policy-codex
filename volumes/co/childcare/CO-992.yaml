@@ -1,0 +1,20 @@
+id: CO-992
+name: "CCCAP: is an adult caretaker"
+identifier: cccap_is_adult_caretaker
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: The person is an "adult caretaker" under 8 CCR 1403-1 3.103.C - a person in the home who is financially contributing to the welfare of an eligible child in the household and is the parent, adoptive parent, step-parent, legal guardian, or a person acting in loco parentis with physical custody of the child, and who is not themselves a household child.
+precision: Physical custody is read from a stated parent/child or caretaker/dependent relationship to a CCCAP eligible child, the same convention cccap_is_teen_parent (CO-981) uses; "financially contributing to the welfare of the child" is read from the supplied is_financially_contributing_to_child (CO-897, defaulted to true absent a stated value, see OQ-135).
+open: [OQ-135]
+derived: [all, [not, cccap_is_household_child], [exists_related, [parent, caretaker], [of, [P], cccap_is_eligible_child]], [otherwise, is_financially_contributing_to_child, true]]
+sources: [S481]
+implemented: engine
+tags: [household]
+rationale: "No existing item states the CCCAP adult-caretaker test on its own terms; cccap_household_caretakers_in_eligible_activity (CO-991) previously used 'not a household child' as a stand-in for this term (review docs/reviews/cccap-leap-phase-6.md, C-7), which wrongly counted an unrelated adult in the home as a caretaker. cccap_household_caretakers_in_eligible_activity (CO-991) reads it."
+tests:
+  - {id: CO-992-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", is_financially_contributing_to_child: true}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: true}
+  - {id: CO-992-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", is_financially_contributing_to_child: false}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}
+  - {id: CO-992-T3, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, relationships: [], expect: false}
+  - {id: CO-992-T4, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", is_financially_contributing_to_child: true}, others: {p5: {date_of_birth: "2026-02-03", has_additional_care_needs: false}}, relationships: [[parent, p1, p5]], expect: false}

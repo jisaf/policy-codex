@@ -1,0 +1,18 @@
+id: CO-923
+name: "Colorado Works: payment countable income"
+identifier: cw_payment_countable_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: The total net countable income of this person's assistance unit for the month, computed with the payment-computation earned income disregard (CO-922) rather than the eligibility-test disregard (CO-907) - the sum of each member's payment countable earned income and countable unearned income (CO-908), plus any income deemed under 3.605.1.A.4 from a minor-parent member's non-participant parent (CO-909) - the figure 3.606.1.I.3 and 3.606.1.K.1 subtract from the grant standard to compute the authorized grant.
+open: [OQ-103]
+derived: [+, [sum, cw_assistance_unit_members, [+, [of, [P], cw_payment_countable_earned_income], [of, [P], cw_countable_unearned_income]]], [sum, cw_assistance_unit_members, [of, [P], cw_deemed_parent_income_of_minor_parent]]]
+sources: [S415, S416]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "No existing item aggregates Colorado Works countable income at the unit level using the payment disregard; cw_countable_income (CO-910) is the nearest same-shape item (unit-level income aggregation) but sums cw_countable_earned_income (CO-907), the eligibility-test figure, which 3.606.1.I.3/.K.1's payment computation does not read - the phase-5 review's C-1 finding. cw_grant_amount (CO-914) needs this figure; cw_meets_income_test (CO-913) and cw_eligibility_status (CO-921) keep reading cw_countable_income (CO-910) unchanged, since the eligibility test uses the $90 figure."
+nearest: [CO-910]
+tests:
+  - {id: CO-923-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", is_head_of_household: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 400, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, others: {p2: {date_of_birth: "2015-06-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}}, relationships: [[parent, p1, p2]], expect: 132}
+  - {id: CO-923-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0}, relationships: [], expect: 0}

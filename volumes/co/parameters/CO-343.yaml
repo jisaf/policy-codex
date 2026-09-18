@@ -1,0 +1,16 @@
+id: CO-343
+name: LEAP eligibility period end month (April)
+identifier: leap_eligibility_period_end_month
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: The calendar month number (1-12) the annual LEAP "Eligibility Period" and "Program Year" end - April - under 9 CCR 2503-7 3.751.1.
+precision: A month-of-year number, not a specific year's month; read together with leap_eligibility_period_start_month (CO-342). The April 30 weekend/holiday extension 3.751.1 also states is a precision note on leap_month_in_eligibility_period (CO-1008), not a rule, since this volume has no per-day calendar-holiday fact.
+versions:
+  - from: "2014-12-01"
+    value: 4
+    source: S510
+sources: [S510]
+tags: [household]
+rationale: No existing item in this volume states the LEAP program year's end month; paired with leap_eligibility_period_start_month (CO-342) per the review's C-3 fix. leap_program_year_start_month (CO-1006) and leap_month_in_eligibility_period (CO-1008) read it.
