@@ -3,13 +3,13 @@ name: "Medicaid: LTC eligibility status"
 identifier: ma_ltc_eligibility_status
 kind: derived
 type: one of
-options: [eligible_institutional, eligible_hcbs, eligible_pace, ineligible_income, ineligible_resources, transfer_penalty, home_equity, not_institutionalized_or_waiver]
+options: [eligible_institutional, eligible_hcbs, eligible_pace, ineligible_income, ineligible_resources, transfer_penalty, home_equity_exceeds_limit, not_institutionalized_or_waiver]
 scope: person-month
 program: Medicaid
 role: outcome
 meaning: The single Long-Term Care eligibility outcome for this person for the month - eligible for institutional, HCBS, or PACE services, or the reason for ineligibility - per 10 CCR 2505-10 § 8.100.7.
 precision: Tests, in order, whether the person is institutionalized or meets an HCBS/PACE target group at all; the transfer penalty; home equity; the income test; the resource test; then which setting (PACE first, then HCBS, then institutional) the person is otherwise eligible for. The PACE-before-HCBS ordering for a person who could be either is an authoring choice, not a reading of the text - see OQ-100.
-derived: [case, [[not, [any, ma_is_institutionalized, [not, [=, meets_hcbs_waiver_target_group, "none"]]]], "not_institutionalized_or_waiver"], [[">", ma_transfer_penalty_months, 0], "transfer_penalty"], [ma_home_equity_disqualifies, "home_equity"], [[not, ma_meets_special_income_group], "ineligible_income"], [[not, ma_meets_ltc_resource_standard], "ineligible_resources"], [ma_pace_eligible, "eligible_pace"], [ma_hcbs_waiver_eligible, "eligible_hcbs"], [ma_is_institutionalized, "eligible_institutional"], [else, "ineligible_income"]]
+derived: [case, [[not, [any, ma_is_institutionalized, [not, [=, meets_hcbs_waiver_target_group, "none"]]]], "not_institutionalized_or_waiver"], [[">", ma_transfer_penalty_months, 0], "transfer_penalty"], [ma_home_equity_disqualifies, "home_equity_exceeds_limit"], [[not, ma_meets_special_income_group], "ineligible_income"], [[not, ma_meets_ltc_resource_standard], "ineligible_resources"], [ma_pace_eligible, "eligible_pace"], [ma_hcbs_waiver_eligible, "eligible_hcbs"], [ma_is_institutionalized, "eligible_institutional"], [else, "ineligible_income"]]
 sources: [S351]
 open: [OQ-100]
 implemented: engine
