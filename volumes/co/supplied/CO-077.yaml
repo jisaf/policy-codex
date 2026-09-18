@@ -1,0 +1,13 @@
+id: CO-077
+name: Files jointly with spouse
+identifier: files_jointly_with_spouse
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person expects to file a joint federal tax return with their spouse for the taxable year in which the Medicaid eligibility determination or renewal is being made.
+precision: Meaningful only when the person is married and living with their spouse; otherwise unknown or not applicable.
+supplied_by: Applicant statement on the Single Streamlined Application (CBMS/PEAK).
+sources: []
+tags: [ma, magi, household]
+rationale: "No existing item carries this fact. 42 CFR 435.603(f)(2)(ii) and 10 CCR 2505-10 8.100.4.E.1.c.ii route a child under 19 to the non-filer household rules when the child is claimed by one parent, lives with both parents, but the parents do not expect to file jointly; this is the fact that test needs. Not yet wired into ma_magi_household_members (CO-500) in this batch - see OQ-42 - but is created now so the identifier is fixed for whoever completes that exception."

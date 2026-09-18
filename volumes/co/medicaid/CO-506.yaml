@@ -1,0 +1,18 @@
+id: CO-506
+name: "Medicaid: is a qualified non-citizen"
+identifier: ma_is_qualified_non_citizen
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person holds one of the "qualified non-citizen" categories 42 CFR 435.406(a)(2) and 10 CCR 2505-10 8.100.3.G.1.g.ii-iii recognize (lawful permanent resident, refugee, asylee, Cuban/Haitian entrant, Compact of Free Association migrant, or another status this volume's citizenship_status option treats as qualified), as distinct from a citizen/national or an undocumented or other non-qualified non-citizen.
+precision: Reads citizenship_status (CO-002, batch 1); does not itself decide whether the person also satisfies the five-year bar or an exception - see ma_meets_five_year_bar (CO-508) and ma_meets_citizenship_requirement (CO-509).
+derived: [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]
+sources: [S173, S174]
+implemented: engine
+tags: [ma, immigration]
+rationale: "No existing item in this volume states the qualified-non-citizen test for Medicaid; ma_meets_citizenship_requirement (CO-509) needs it as a precondition to the five-year bar and its exceptions. Not the same test as any SNAP citizenship item (SNAP is a separate federal statute, 7 U.S.C. 2015(f), with its own qualified-alien definitions), so this is a Medicaid-specific rule rather than a shared one, per 42 CFR 435.406(a)(2)(i)'s cross-reference to 42 CFR 435.4's definition."
+tests:
+  - {id: CO-506-T1, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: true}
+  - {id: CO-506-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
+  - {id: CO-506-T3, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: false}

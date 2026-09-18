@@ -38,6 +38,7 @@ function renameExpr(
       const b = renameExpr(ix, e[2] as Expr, from, to);
       return { expr: b.changed ? [op, e[1], b.expr] : e, changed: b.changed };
     }
+    if (op === "shared_relative") return { expr: e, changed: false };
     if (op === "reachable") {
       if (e.length < 3) return { expr: e, changed: false };
       const b = renameExpr(ix, e[2] as Expr, from, to);

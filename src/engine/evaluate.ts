@@ -490,6 +490,20 @@ export function evaluate(
         }
         return total;
       }
+      case "shared_relative": {
+        // The persons, other than this person, who have a person in the named
+        // role in common with this person: with "parent", this person's
+        // siblings. Unknown when this person's relationships are unstated.
+        if (!p || c.rels[p] == null) return null;
+        const role = e[1] as string;
+        const inverse = INVERSE_ROLE[role];
+        const out = new Set<string>();
+        for (const [r, y] of c.rels[p] ?? []) {
+          if (r !== inverse) continue;
+          for (const [r2, x] of c.rels[y] ?? []) if (r2 === role && x !== p) out.add(x);
+        }
+        return Object.keys(c.persons).filter((pid) => out.has(pid));
+      }
       case "reachable": {
         // The persons joined to this person by a chain of the named
         // relationships, this person included. Unknown when this person's

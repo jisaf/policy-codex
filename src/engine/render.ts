@@ -44,6 +44,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "round": return `${i(e[1])} rounded to the nearest whole dollar`;
     case "persons": return "every person in the case";
     case "count": return `the number of persons in ${i(e[1])}`;
+    case "shared_relative": return `the persons who share a ${e[1]} with this person`;
     case "reachable": {
       const head = "the persons joined to this person by " + (e[1] as string[]).join(" or ");
       return e.length > 2 ? `${head} such that ${i(e[2])}` : head;
@@ -175,6 +176,7 @@ export function compact(ix: LedgerIndex, e: Expr): string {
   if (op === "rel" || op === "exists_related") {
     return `${op}([${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}], ${c(e[2])})`;
   }
+  if (op === "shared_relative") return `${op}(${JSON.stringify(e[1])})`;
   if (op === "reachable") {
     const roles = `[${(e[1] as string[]).map((x) => JSON.stringify(x)).join(", ")}]`;
     return e.length > 2 ? `${op}(${roles}, ${c(e[2])})` : `${op}(${roles})`;

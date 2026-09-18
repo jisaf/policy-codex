@@ -99,6 +99,18 @@ describe("group patterns", () => {
     expect(inline(ix, parseInline(ix, "the persons joined to this person by spouse such that that person's Age is at least 18")))
       .toBe("the persons joined to this person by spouse such that that person's Age is at least 18");
   });
+  it("finds the persons who share a parent", () => {
+    const c6 = makeCase(ix, {
+      id: "S", as_of: "2026-10-01",
+      relationships: [["parent", "p1", "p2"], ["parent", "p1", "p3"], ["parent", "p4", "p3"]] as Array<[string, string, string]>,
+      persons: { p1: { facts: {} }, p2: { facts: {} }, p3: { facts: {} }, p4: { facts: {} } },
+    });
+    const sib = buildIndex([...items, { id: "G-12", name: "Siblings", identifier: "siblings", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["shared_relative", "parent"], implemented: "engine" }]);
+    expect(evaluate(sib, c6, "siblings", "p2", null)).toEqual(["p3"]);
+    expect(evaluate(sib, c6, "siblings", "p3", null)).toEqual(["p2"]);
+    expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
+    expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
+  });
   it("rounds half up and up", () => {
     const c4 = makeCase(ix, spec);
     expect(evaluate(ix, c4, "allotment", "p4", "2026-10")).toBe(0);

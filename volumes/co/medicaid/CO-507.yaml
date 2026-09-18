@@ -1,0 +1,18 @@
+id: CO-507
+name: "Medicaid: is lawfully present"
+identifier: ma_is_lawfully_present
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is a citizen or national, a qualified non-citizen, or otherwise holds a lawfully present immigration status recognized by 10 CCR 2505-10 8.100.3.G.1.g.iv/.vi (a broader set of categories than "qualified non-citizen," for example a person with a pending asylum application and employment authorization, or Temporary Protected Status).
+precision: Reads lawful_presence_status (CO-084) for the categories 8.100.3.G.1.g.iv/.vi list that are not qualified-non-citizen statuses; those categories are not individually modeled as separate citizenship_status options in this volume (see CO-084's assumption).
+derived: [any, [in, citizenship_status, [citizen, us_national]], ma_is_qualified_non_citizen, [=, lawful_presence_status, "lawfully_present"]]
+sources: [S174, S175]
+implemented: engine
+tags: [ma, immigration]
+rationale: "No existing item states 'lawfully present' as distinct from 'qualified non-citizen'. ma_meets_citizenship_requirement (CO-509) needs it for the persons the Cover All Coloradans exception (8.100.3.G.1.g.viii.1, S175) reaches without regard to a five-year bar, since that exception's 'any status' language is broader than the qualified-non-citizen categories alone."
+tests:
+  - {id: CO-507-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, lawful_presence_status: unknown}, expect: true}
+  - {id: CO-507-T2, as_of: "2026-10-01", given: {citizenship_status: other_non_qualified_non_citizen, lawful_presence_status: lawfully_present}, expect: true}
+  - {id: CO-507-T3, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}

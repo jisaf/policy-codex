@@ -1,0 +1,17 @@
+id: CO-181
+name: HHS poverty guideline by household size, annual, for MAGI Medical Assistance (48 states and D.C.)
+identifier: ma_poverty_guideline_table
+kind: parameter
+type: table keyed by household size
+scope: global
+program: Medicaid
+meaning: The annual HHS federal poverty guideline for the 48 contiguous states and the District of Columbia, by household size 1 through 8 - the base figure the MAGI Medical Assistance income standards (10 CCR 2505-10 8.100.4.G) and ma_magi_household_income_pct_fpl (CO-504) are percentages of.
+precision: Annual dollars; a monthly figure divides by 12. Sizes above 8 add ma_poverty_guideline_each_additional per additional member.
+versions:
+  - from: "2026-01-01"
+    value: { "1": 15960, "2": 21640, "3": 27320, "4": 33000, "5": 38680, "6": 44360, "7": 50040, "8": 55720 }
+    source: S55
+rationale: "10 CCR 2505-10 8.100.4.G's income limits (batch 6) and this batch's ma_magi_household_income_pct_fpl (CO-504) need the same annual HHS poverty guideline snap_poverty_guideline_table (CO-116) already carries for SNAP; the two tables' derivation (a supplied-value parameter, not a rule) is identical only in shape, and the phase-3 brief directs creating a Medicaid-prefixed parameter of the same value because dup.compact flags identical derivations, not identical parameter values, and Medicaid parameters should carry the ma_ prefix (name.prefix, warn-level for parameters) so program administrators find them under their own program. nearest: [CO-116]."
+nearest: [CO-116]
+sources: [S55]
+tags: [ma, magi, income]

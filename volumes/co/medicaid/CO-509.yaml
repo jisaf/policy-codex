@@ -1,0 +1,20 @@
+id: CO-509
+name: "Medicaid: meets the citizenship requirement"
+identifier: ma_meets_citizenship_requirement
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets Medical Assistance's citizenship/immigration-status requirement for full benefits under 42 CFR 435.406 and 10 CCR 2505-10 8.100.3.G.1.g - a citizen or national; a qualified non-citizen who meets the five-year bar or an exception to it (this batch models the veteran/active-duty exception); or, regardless of status, a person under ma_magi_child_age_limit or a pregnant person, per Colorado's Cover All Coloradans rule ("Persons who are under the age of 19 ... or who are pregnant ... shall not be excluded from the following Medical Assistance Categories on the basis of immigration status," 8.100.3.G.1.g.viii.1).
+precision: "The Cover All Coloradans clause also reaches a person within 12 months postpartum; that extension is not modeled in this batch because no supplied fact for postpartum status exists yet (pregnancy_end_date is a batch-6 identifier) - see OQ-43. The five-year-bar exceptions this batch models are limited to the veteran/active-duty category (8.100.3.G.1.g.iv.1-2); the other iv/vi exceptions (asylee, refugee, trafficking victim, and so on) are reached instead through ma_is_lawfully_present's broader lawful-presence test where lawful_presence_status states them."
+derived: [any, [in, citizenship_status, [citizen, us_national]], [all, ma_is_qualified_non_citizen, [any, ma_meets_five_year_bar, is_veteran_or_active_duty]], ma_is_lawfully_present, [<, age, ma_magi_child_age_limit], is_pregnant]
+sources: [S173, S174, S175]
+open: [OQ-43]
+implemented: engine
+tags: [ma, magi, immigration, age]
+rationale: "No existing Medicaid item combines the citizen/national test, the qualified-non-citizen five-year-bar test and its exceptions, and Colorado's Cover All Coloradans age/pregnancy exception into the single yes/no test ma_is_emergency_medicaid_only (CO-510) and batch 6's category-eligibility rules need. Not the same test as any SNAP citizenship item (snap_meets_citizenship_requirement, batch 1) because Colorado's Cover All Coloradans rule and the 435.406(b) emergency-only carve-out are Medicaid-specific text with no SNAP counterpart."
+tests:
+  - {id: CO-509-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, lawful_presence_status: unknown, date_of_birth: "1980-01-01", is_pregnant: false}, expect: true}
+  - {id: CO-509-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present, date_of_birth: "1985-01-22", is_pregnant: false}, expect: false}
+  - {id: CO-509-T3, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present, date_of_birth: "2009-04-08", is_pregnant: false}, expect: true}
+  - {id: CO-509-T4, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present, date_of_birth: "2026-02-03", is_pregnant: false}, expect: true}

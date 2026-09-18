@@ -959,3 +959,244 @@ Document: D-13
 
 > (*2*) A standard utility allowance for all utilities that includes heating or cooling costs (HCSUA); and
 > (*3*) A limited utility allowance (LUA) that includes electricity and fuel for purposes other than heating or cooling, water, sewerage, well and septic tank installation and maintenance, and garbage or trash collection. The LUA may also include telephone and/or internet costs. The LUA must include expenses for at least two utilities.
+
+### S161. MAGI household: family size and pregnant-woman definitions
+
+Document: D-34
+
+42 CFR 435.603(b). https://www.ecfr.gov/current/title-42/section-435.603
+
+> *Family size* means the number of persons counted as members of an individual's household. In the case of determining the family size of a pregnant woman, the pregnant woman is counted as herself plus the number of children she is expected to deliver. In the case of determining the family size of other individuals who have a pregnant woman in their household, the pregnant woman is counted, at State option, as either 1 or 2 person(s) or as herself plus the number of children she is expected to deliver.
+
+### S162. MAGI household: filer not claimed, and claimed dependent, basic rules
+
+Document: D-34
+
+42 CFR 435.603(f)(1)-(2). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (1) *Basic rule for taxpayers not claimed as a tax dependent.* In the case of an individual who expects to file a tax return for the taxable year in which an initial determination or renewal of eligibility is being made, and who does not expect to be claimed as a tax dependent by another taxpayer, the household consists of the taxpayer and, subject to paragraph (f)(5) of this section, all persons whom such individual expects to claim as a tax dependent.
+>
+> (2) *Basic rule for individuals claimed as a tax dependent.* In the case of an individual who expects to be claimed as a tax dependent by another taxpayer for the taxable year in which an initial determination or renewal of eligibility is being made, the household is the household of the taxpayer claiming such individual as a tax dependent, except that the household must be determined in accordance with paragraph (f)(3) of this section in the case of—
+>
+> (i) Individuals other than a spouse or child who expect to be claimed as a tax dependent by another taxpayer; and
+>
+> (ii) Individuals under the age specified by the State under paragraph (f)(3)(iv) of this section who expect to be claimed by one parent as a tax dependent and are living with both parents but whose parents do not expect to file a joint tax return; and
+>
+> (iii) Individuals under the age specified by the State under paragraph (f)(3)(iv) of this section who expect to be claimed as a tax dependent by a non-custodial parent.
+
+### S163. MAGI household: non-filer rules and married couples
+
+Document: D-34
+
+42 CFR 435.603(f)(3)-(4). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (3) *Rules for individuals who neither file a tax return nor are claimed as a tax dependent.* In the case of individuals who do not expect to file a Federal tax return and do not expect to be claimed as a tax dependent for the taxable year in which an initial determination or renewal of eligibility is being made, or who are described in paragraph (f)(2)(i), (f)(2)(ii), or (f)(2)(iii) of this section, the household consists of the individual and, if living with the individual—
+>
+> (i) The individual's spouse;
+>
+> (ii) The individual's children under the age specified in paragraph (f)(3)(iv) of this section; and
+>
+> (iii) In the case of individuals under the age specified in paragraph (f)(3)(iv) of this section, the individual's parents and siblings under the age specified in paragraph (f)(3)(iv) of this section.
+>
+> (4) *Married couples.* In the case of a married couple living together, each spouse will be included in the household of the other spouse, regardless of whether they expect to file a joint tax return under section 6013 of the Code or whether one spouse expects to be claimed as a tax dependent by the other spouse.
+
+### S164. MAGI household income and the income of children and tax dependents
+
+Document: D-34
+
+42 CFR 435.603(d)(1)-(2). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (1) *General rule.* Except as provided in paragraphs (d)(2) through (d)(4) of this section, household income is the sum of the MAGI-based income, as defined in paragraph (e) of this section, of every individual included in the individual's household.
+>
+> (2) *Income of children and tax dependents.* (i) The MAGI-based income of an individual who is included in the household of his or her natural, adopted or step parent and is not expected to be required to file a tax return under section 6012(a)(1) of the Code for the taxable year in which eligibility for Medicaid is being determined, is not included in household income whether or not the individual files a tax return.
+>
+> (ii) The MAGI-based income of a tax dependent described in paragraph (f)(2)(i) of this section who is not expected to be required to file a tax return under section 6012(a)(1) of the Code for the taxable year in which eligibility for Medicaid is being determined is not included in the household income of the taxpayer whether or not such tax dependent files a tax return.
+
+### S165. MAGI-based income and the income disregard
+
+Document: D-34
+
+42 CFR 435.603(e) intro, (e)(1); 435.603(d)(4). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (e) *MAGI-based income.* For the purposes of this section, MAGI-based income means income calculated using the same financial methodologies used to determine modified adjusted gross income as defined in section 36B(d)(2)(B) of the Code, with the following exceptions—
+>
+> (1) An amount received as a lump sum is counted as income only in the month received.
+>
+> (4) Effective January 1, 2014, in determining the eligibility of an individual using MAGI-based income, a state must subtract an amount equivalent to 5 percentage points of the Federal poverty level for the applicable family size only to determine the eligibility of an individual for medical assistance under the eligibility group with the highest income standard using MAGI-based methodologies in the applicable Title of the Act, but not to determine eligibility for a particular eligibility group.
+
+### S166. Colorado MAGI income calculation: earned, unearned, additional income and exclusions
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.C.1.a-d. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> a. Earned Income:
+> i) Wages, salaries, tips;
+> ii) Gross income derived from business;
+> iii) Gains derived from dealings in property;
+> iv) Distributive share of partnership gross income (not a limited partner);
+> v) Compensation for services, including fees, commissions, fringe benefits and similar items; and
+> vi) Taxable private disability income.
+>
+> b. Unearned Income:
+> i) Interest (includes tax exempt interest);
+> ii) Rents;
+> iii) Royalties;
+> iv) Dividends;
+> v) Alimony received counts as unearned income if the divorce or legal separation is executed on or before December 31, 2018. Alimony received will not be countable income if the divorce or legal separation is modified or executed on or after January 1, 2019;
+> vi) Pensions and annuities;
+> vii) Income from life insurance and endowment contracts;
+> viii) Income from discharge of indebtedness;
+> ix) Income in respect of a decedent;
+> x) Income from an interest in an estate or trust;
+> xi) Social Security (SSA) income; and
+> xii) Distributive share of partnership gross income (limited partner).
+>
+> c. Additional Income: In addition to the types of income identified in section 8.100.4.C.1.a-b., the following income is included in the MAGI calculation.
+> i) Any tax exempt interest income.
+> ii) Untaxed foreign wages and salaries.
+> iii) Social Security Title II Benefits (Old Age, Disability and Survivor's benefits).
+>
+> d. The following are Income exclusions:
+> i) An amount received as a lump sum is counted as income only in the month received;
+> ii) Scholarships, awards, or fellowship grants used for educational purposes and not for living expenses;
+> iii) Child support received;
+> iv) Worker's Compensation;
+> v) Supplemental Security Income (SSI);
+> vi) Veteran's Benefits;
+
+### S167. Colorado MAGI income of children and tax dependents
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.C.1.f. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> f. Income of children and tax dependents:
+> i) The income of a child who is included in the household of their natural, adopted, or step parent will not be included in the household income unless that child has income above the tax filing threshold.
+> 1) Income from Title II Social Security benefits and Tier I Railroad benefits are excluded when determining if a child is required to file taxes.
+> ii) The income of a person, other than a child or spouse, who expects to be claimed as a tax dependent will not be included in the household income of the taxpayer unless that tax dependent has income above the tax filing threshold.
+> 1) Income from Title II Social Security benefits and Tier I Railroad benefits are excluded when determining if a tax dependent is required to file taxes.
+> iii) The income of a child or tax dependent who does not live with their natural, adopted, or step parent will always count towards the determination of their own eligibility, even if the child's or tax dependent's income is below the tax filing threshold.
+
+### S168. Colorado MAGI income disregard (5%)
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.D. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 8.100.4.D. Income Disregard
+>
+> 1. An income disregard equivalent to five percentage points of the Federal Poverty Level for the applicable family size will be subtracted from MAGI-based income.
+> a. If an individual's MAGI-based countable income is above the income threshold for the applicable MAGI program under title XIX (Medicaid) or title XXI (CHP+) of the Social Security Act, the five percent (5%) disregard will be applied for each qualifying MAGI program as the last step to determine eligibility.
+> b. If the countable income is below the income threshold for the applicable MAGI program, the individual is income eligible and the five percent (5%) disregard will not be applied to determine eligibility.
+
+### S169. Colorado MAGI household composition: filer, dependent, exceptions, non-filer rules
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.E.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 8.100.4.E. Determining MAGI Household Composition.
+>
+> 1. MAGI household composition is similar to, but not necessarily the same as a tax household. To determine MAGI household composition, the individual's relationship to the tax filer must be established as declared on the Single Streamlined Application.
+> a. In the case of an applicant who expects to file a tax return for the taxable year in which an initial determination or renewal of eligibility is being made, and does not expect to be claimed as a tax dependent by anyone else, then the applicant's MAGI household shall consist of the following:
+> i) The Tax-Filer;
+> ii) The Tax-Filer's spouse if living in the home;
+> iii) All persons whom the Tax-Filer expects to claim as a tax dependent on their personal income tax return
+> b. In the case of an applicant who expects to be claimed as a tax dependent by another taxpayer for the taxable year in which an initial determination or renewal of eligibility is being made, the applicant's MAGI household shall be:
+> i) The Tax Dependent;
+> ii) The Tax-Filer and their spouse if living in the home;
+> iii) The Tax-Filer's other tax dependents;
+> iv) The Tax Dependent's spouse, if living with the Tax Dependent.
+> c. The MAGI household of an applicant who expects to be claimed as a tax dependent is as outlined in 8.100.4.E.b above, except in the following circumstances:
+> i) The applicant expects to be claimed as a tax dependent by someone other than a spouse, biological, adoptive or step parent.
+> ii) The applicant is a child under 19 who is expected to be claimed by one parent as a tax dependent and is living with both parents, but the parents do not expect to file a joint tax return.
+> iii) The applicant is a child under 19 and who expects to be claimed as a tax dependent by anon-custodial parent.
+> d. If the applicant meets one of the exceptions in 8.100.4.E.c above or is a non-filer, household composition shall be determined using the following non-filer rules and the applicant's household shall consist of the following:
+> i) The applicant;
+> ii) The applicant's spouse who lives in the household;
+> iii) The applicant's natural, adopted, and step children under the age of 19, who live in the household; and
+> iv) In the case of applicants under the age of 19, the applicant's natural, adoptive, and step parents and natural, adoptive, and step siblings under age 19, who live in the household.
+
+### S170. Colorado MAGI household composition: pregnant members, married couples, and shared custody
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.E.2-5. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 2. When a household includes a pregnant woman, regardless of the Medical Assistance category, the pregnant woman is counted as herself plus the number of children she is expected to deliver.
+> 3. Married couples living together will each be included in the other's MAGI household regardless of whether or not they expect to file taxes jointly, separately or if one expects to be claimed as a tax dependent of the other.
+> 4. If a child is claimed as a tax dependent by both parents who are married and who will file taxes jointly but one parent lives outside of the household due to separation or pending divorce, the child's household composition is determined by non-filer rules. The parent living outside of the household will not be counted as part of the household.
+> 5. An individual who is both a tax dependent and a tax filer will be considered a tax dependent for the purpose of determining eligibility for Medical Assistance.
+
+### S171. Federal Medicaid state residence rule
+
+Document: D-33
+
+42 CFR 435.403(a), (d). https://www.ecfr.gov/current/title-42/section-435.403
+
+> (a) *Requirement.* The agency must provide Medicaid to eligible residents of the State, including residents who are absent from the State. The conditions under which payment for services is provided to out-of-State residents are set forth in § 431.52 of this chapter.
+>
+> (d) *Who is a State resident.* A resident of a State is any individual who:
+> (1) Meets the conditions in paragraphs (e) through (i) of this section; or
+> (2) Meets the criteria specified in an interstate agreement under paragraph (k) of this section.
+
+### S172. Colorado Medical Assistance residency requirement
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.B.1-2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. Individuals shall make application in the county in which they live. Individuals who reside in a county but who do not reside in a permanent dwelling nor have a fixed mailing address shall be considered eligible for the Medical Assistance Program, provided all other eligibility requirements are met. In no instance shall there be a durational residency requirement imposed upon the applicant, nor shall there be a requirement for the applicant to reside in a permanent dwelling or have a fixed mailing address.
+>
+> 2. A resident of Colorado is defined as a person that is living within the state of Colorado and considers Colorado to be their place of residence at the time of application.
+
+### S173. Federal Medicaid citizenship and noncitizen eligibility, including the five-year bar and emergency services
+
+Document: D-33
+
+42 CFR 435.406(a)(1), (a)(2), (b). https://www.ecfr.gov/current/title-42/section-435.406
+
+> (a) The agency must provide Medicaid to otherwise eligible individuals who are—
+> (1) Citizens and nationals of the United States, provided that—
+> (i) The individual has made a declaration of United States citizenship, as defined in § 435.4, or an individual described in paragraph (a)(3) of this section has made such declaration on the individual's behalf, and such status is verified in accordance with paragraph (c) of this section; and
+>
+> (2)(i) Except as specified in 8 U.S.C. 1612(b)(1) (permitting States an option with respect to coverage of certain qualified noncitizens), qualified noncitizens as described in 42 CFR 435.4 (including qualified noncitizens subject to the 5-year bar) who have provided satisfactory documentary evidence of qualified noncitizen status, which status has been verified with the Department of Homeland Security (DHS) under a declaration required by section 1137(d) of the Act that the applicant or beneficiary is a noncitizen in a satisfactory immigration status.
+> (ii) The eligibility of qualified noncitizens who are subject to the 5-year bar in 8 U.S.C. 1613 is limited to the benefits described in paragraph (b) of this section.
+>
+> (b) The agency must provide payment for the services described in § 440.255(c) of this chapter to residents of the State who otherwise meet the eligibility requirements of the State plan (except for receipt of AFDC, SSI, or State Supplementary payments) who are qualified noncitizens subject to the 5-year bar or who are non-qualified noncitizens who meet all Medicaid eligibility criteria, except non-qualified noncitizens need not present a social security number or document immigration status.
+
+### S174. Colorado citizenship and lawful-status categories
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.G.1.g.i-iii. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> g. Fall into one of the following categories:
+> i) Be a citizen or national of the United States, the District of Columbia, Puerto Rico, Guam, the Virgin Islands, the Northern Mariana Islands, American Samoa or Swain's Island; or
+> ii) Be a lawfully admitted non-citizen who entered the United States prior to August 22, 1996, or
+> iii) Be a non-citizen who entered the United States on or after August 22, 1996 and is applying for Medical Assistance benefits to begin no earlier than five years after the non-citizen's date of entry into the United States who falls into one of the following categories:
+> 1) lawfully admitted for permanent residence under the Immigration and Nationality Act (hereafter referred to as the "INA");
+
+### S175. Colorado Cover All Coloradans exception and emergency-only coverage
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.G.1.g.viii. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> viii) Exception: Criteria set forth at 8.100.3.G.1.g does not apply to persons who apply for and meet the criteria for one of the specific Medical Assistance programs:
+> 1) Persons who are under the age of 19, whose 19th birthday occurred in the current month, who are pregnant, or who are within 12 months of the beginning of their postpartum period shall not be excluded from the following Medical Assistance Categories on the basis of immigration status:
+> a) MAGI Children, MAGI Pregnant, Psych <21, Transitional Medical Assistance, 4 Month Extended Medical Assistance, MAGI Prenatal Presumptive Eligibility, MAGI Child Presumptive Eligibility
+> b) Medical Buy-In Program for Working Adults with Disabilities (including with Home and Community Based Services), Medicaid Buy-In Program for Children with Disabilities, and Long-Term Care waivers except Program of All Inclusive Care for the Elderly (PACE)
+> 2) Persons requesting limited emergency medical care only and/or reproductive care shall not be excluded on the basis of immigration status. For non-qualified non-citizens receiving Medical Assistance emergency only benefits, the following medical conditions will be covered: An emergency medical condition (including labor and delivery) which manifests itself by acute symptoms of sufficient severity (including severe pain) such that the absence of immediate medical attention could reasonably be expected to result in:
+> a) placing the patient's health in serious jeopardy;
+> b) serious impairment of bodily function; or
+> c) serious dysfunction of any bodily organ or part.
+
+### S176. Five-year limited eligibility of qualified aliens
+
+Document: D-25
+
+8 U.S.C. 1613(a). https://www.law.cornell.edu/uscode/text/8/1613
+
+> Notwithstanding any other provision of law and except as provided in subsections (b), (c), and (d), an alien who is a qualified alien (as defined in section 1641 of this title) and who enters the United States on or after August 22, 1996, is not eligible for any Federal means-tested public benefit for a period of 5 years beginning on the date of the alien's entry into the United States with a status within the meaning of the term "qualified alien".

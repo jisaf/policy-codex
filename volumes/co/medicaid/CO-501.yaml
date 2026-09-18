@@ -1,0 +1,17 @@
+id: CO-501
+name: "Medicaid: MAGI family size"
+identifier: ma_magi_household_size
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: This person's MAGI family size under 42 CFR 435.603(b) and 10 CCR 2505-10 8.100.4.E.2 - the count of this person's ma_magi_household_members, except that any pregnant member of the household counts as herself plus the number of children she is expected to deliver.
+precision: Applies the pregnant-member addition to every pregnant member of the household, not only to the person the size is computed for, per 8.100.4.E.2 ("regardless of the Medical Assistance category" and without limiting it to the pregnant woman's own family size).
+derived: [sum, ma_magi_household_members, [case, [[of, [P], is_pregnant], [+, 1, [of, [P], expected_number_of_children]]], [else, 1]]]
+sources: [S161, S170]
+implemented: engine
+tags: [ma, magi, household]
+rationale: "No existing item counts MAGI family size; ma_magi_household_income_pct_fpl (CO-504) and batch 6's income-standard rules need it as the key into ma_poverty_guideline_table (CO-181). Distinct from a plain count of ma_magi_household_members because of the pregnant-member addition 435.603(b) and 8.100.4.E.2 both require."
+tests:
+  - {id: CO-501-T1, as_of: "2026-10-01", given: {is_tax_filer: true, expects_to_be_claimed_as_dependent: false, date_of_birth: "1985-01-22", is_pregnant: false}, others: {p4: {date_of_birth: "2009-04-08", is_pregnant: false}, p5: {date_of_birth: "2026-02-03", is_pregnant: false}}, relationships: [[tax_filer, p1, p4], [tax_filer, p1, p5]], expect: 3}
+  - {id: CO-501-T2, as_of: "2026-10-01", given: {is_tax_filer: true, expects_to_be_claimed_as_dependent: false, date_of_birth: "1990-01-01", is_pregnant: true, expected_number_of_children: 2}, others: {}, relationships: [], expect: 3}

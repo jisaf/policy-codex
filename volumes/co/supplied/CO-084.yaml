@@ -1,0 +1,15 @@
+id: CO-084
+name: Lawful presence status
+identifier: lawful_presence_status
+kind: supplied
+type: one of
+options: [lawfully_present, not_lawfully_present, unknown]
+scope: person
+program: All
+meaning: Whether the person holds a lawfully present immigration status recognized by 10 CCR 2505-10 8.100.3.G.1.g.iv or .vi (a category broader than the "qualified non-citizen" statuses citizenship_status enumerates, for example a person with employment authorization or Temporary Protected Status) - the status that lets a person under 19 or a pregnant/postpartum person qualify under Colorado's Cover All Coloradans rule (8.100.3.G.1.g.viii) without meeting the five-year bar or the qualified-non-citizen categories at all.
+precision: Reflects the person's status as of the determination date, verified through the Verify Lawful Presence (VLP) interface per 8.100.3.G.2 where the person is not already a citizen or national.
+assumption: Modeled as a fact separate from citizenship_status (CO-002, batch 1's shared supplied fact) rather than folding "lawfully present" and "dependent of qualified" options into citizenship_status's closed option list, because citizenship_status is shared across every program in this volume (SNAP's citizenship rules use a narrower "qualified non-citizen" test that does not recognize most of 8.100.3.G.1.g.iv/.vi's categories) and widening its options would change what every program's rules must handle. See the batch report for the tradeoff.
+supplied_by: Verify Lawful Presence (VLP) interface / SAVE, or applicant self-declaration per 10 CCR 2505-10 8.100.3.G.1-2.
+sources: [S174, S175]
+tags: [ma, magi, immigration]
+rationale: "No existing item in this volume states lawful presence as distinct from the narrower qualified-non-citizen categories citizenship_status carries. ma_is_lawfully_present (CO-507) and ma_meets_citizenship_requirement (CO-509) need it because 8.100.3.G.1.g.iv/.vi list many lawfully-present categories (parolee, TPS, asylum applicant with work authorization, COFA migrant, and others) that are not 'qualified non-citizen' statuses at all and so are not expressible from citizenship_status alone."

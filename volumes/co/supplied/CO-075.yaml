@@ -1,0 +1,13 @@
+id: CO-075
+name: Is tax filer
+identifier: is_tax_filer
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person expects to file a federal tax return for the taxable year in which the Medicaid eligibility determination or renewal is being made.
+precision: "Expectation as of the determination date, per 42 CFR 435.603(f)(1); a later change in filing intent is a new fact, not a correction of this one."
+supplied_by: Applicant statement on the Single Streamlined Application (CBMS/PEAK).
+sources: []
+tags: [ma, magi, household]
+rationale: "No existing item in this volume carries tax-filing status; ma_magi_household_members (CO-500) needs it to distinguish 42 CFR 435.603(f)(1) taxpayer households from 435.603(f)(3) non-filer households. Cases.yaml already states it for p3, confirming the identifier this batch must create."

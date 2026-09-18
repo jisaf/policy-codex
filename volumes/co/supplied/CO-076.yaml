@@ -1,0 +1,13 @@
+id: CO-076
+name: Expects to be claimed as a tax dependent
+identifier: expects_to_be_claimed_as_dependent
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person expects to be claimed as a tax dependent by another taxpayer for the taxable year in which the Medicaid eligibility determination or renewal is being made.
+precision: "42 CFR 435.603(f)(2) and 10 CCR 2505-10 8.100.4.E.1.b key household composition off this expectation, not off whether a tax_filer/tax_dependent relationship happens to be recorded on the case; ma_magi_household_members (CO-500) reads this fact directly (rather than only inferring it from relationships) because a person can expect to be claimed even when the case has not yet recorded who will claim them."
+supplied_by: Applicant statement on the Single Streamlined Application (CBMS/PEAK).
+sources: []
+tags: [ma, magi, household]
+rationale: "No existing item carries this fact. The interface note in the phase-3 brief asks that 'is claimed as a tax dependent' prefer the case's tax_filer/tax_dependent relationship edges where they are stated; this supplied fact is the fallback the household rule also reads so the rule still works when the relationship is not (yet) recorded, and is what 8.100.4.E.1.b's 'expects to be claimed' actually tests."

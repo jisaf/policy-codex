@@ -1,0 +1,17 @@
+id: CO-502
+name: "Medicaid: person's MAGI-based income"
+identifier: ma_person_magi_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's own MAGI-based income for the month under 42 CFR 435.603(e) and 10 CCR 2505-10 8.100.4.C - taxable earned and unearned income (including Social Security benefits, whether or not taxable), plus tax-exempt interest and excluded foreign earned income added back in, minus above-the-line pretax deductions.
+precision: Monthly amount for the month in context. Child support received, Supplemental Security Income, and TANF cash assistance are excluded per 8.100.4.C.1.d; a lump sum is counted only in the month received (8.100.4.C.1.d.i and 435.603(e)(1)) - this item reads its supplied income facts as already stating that convention, per this volume's shared income-fact meanings. Rounded to the nearest dollar following this volume's snap_household_gross_income convention (halves up), since no MAGI-specific rounding election is stated in the cited text.
+derived: [round, ["-", [+, earned_income, self_employment_net_income, other_taxable_income, social_security_income, pension_income, unemployment_income, other_unearned_income, tax_exempt_interest, foreign_earned_income_excluded], pretax_deductions]]
+sources: [S164, S165, S166, S167]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item computes a single person's MAGI-based income; ma_magi_household_income (CO-503) sums this fact over each countable household member. Built from the shared batch-1 income facts plus this batch's own MAGI-specific additions (other_taxable_income, tax_exempt_interest, foreign_earned_income_excluded, pretax_deductions) rather than reusing a SNAP income item, because MAGI counts Social Security and tax-exempt interest that SNAP's countable-income facts do not and excludes SSI/TANF/child support that SNAP counts differently."
+tests:
+  - {id: CO-502-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 2380, self_employment_net_income: 0, other_taxable_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, tax_exempt_interest: 0, foreign_earned_income_excluded: 0, pretax_deductions: 0}, expect: 2380}
+  - {id: CO-502-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, self_employment_net_income: 0, other_taxable_income: 0, social_security_income: 1420, pension_income: 610, unemployment_income: 0, other_unearned_income: 0, tax_exempt_interest: 50, foreign_earned_income_excluded: 0, pretax_deductions: 100}, expect: 1980}

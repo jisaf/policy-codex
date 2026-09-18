@@ -1,0 +1,13 @@
+id: CO-079
+name: Other taxable income
+identifier: other_taxable_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: Taxable income of a type in 10 CCR 2505-10 8.100.4.C.1's Modified Adjusted Gross Income list (for example rents, royalties, dividends, alimony received before 2019, income from discharge of indebtedness, or a distributive share of partnership income) that no other MAGI income fact in this volume already names.
+precision: Countable, already-net-of-exclusions monthly amount for the month in context, following this volume's convention for supplied income facts (see docs/colorado-notes.md, phase 2).
+supplied_by: Applicant statement (CBMS/PEAK), verified through an electronic data source or documentation per 10 CCR 2505-10 8.100.4.B.1.d.
+sources: []
+tags: [ma, magi, income]
+rationale: "No existing item carries a catch-all for the 8.100.4.C.1.b-c unearned/additional income categories this volume does not already name individually (social_security_income, pension_income, unemployment_income, cash_assistance_income, child_support_received, other_unearned_income are all shared batch-1 SNAP facts); ma_person_magi_income (CO-502) needs a MAGI-specific catch-all so a rent or dividend amount is not forced into a SNAP-shaped fact whose meaning does not match."

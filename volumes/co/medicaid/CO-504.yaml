@@ -1,0 +1,17 @@
+id: CO-504
+name: "Medicaid: MAGI household income as a percentage of the poverty guideline"
+identifier: ma_magi_household_income_pct_fpl
+kind: derived
+type: rate
+scope: person-month
+program: Medicaid
+meaning: This person's ma_magi_household_income for the month, expressed as a decimal fraction of the monthly federal poverty guideline for ma_magi_household_size (1.00 = 100% of the guideline) - the figure 10 CCR 2505-10 8.100.4.G's covered-group income limits (batch 6) and the 8.100.4.D 5% disregard are stated against.
+precision: Monthly poverty guideline is the annual ma_poverty_guideline_table figure (plus ma_poverty_guideline_each_additional for a household size above 8) divided by 12; no rounding is applied to the ratio itself.
+derived: ["/", ma_magi_household_income, ["/", [+, [lookup, ma_poverty_guideline_table, [min, ma_magi_household_size, 8]], ["*", ma_poverty_guideline_each_additional, [max, 0, ["-", ma_magi_household_size, 8]]]], 12]]
+sources: [S55, S161]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item expresses MAGI household income as a percentage of the poverty guideline; every batch-6 covered-group income test (child 133%, parent/caretaker 60%, adult 133%, pregnant 185%) needs this single ratio rather than re-deriving the monthly guideline lookup in each rule. Parallel in shape to how snap_bbce_gross_income_limit (CO-339) looks up snap_poverty_guideline_table, but expresses a ratio rather than a dollar limit because Colorado's MAGI limits (8.100.4.G) are stated as percentages, not dollar tables."
+tests:
+  - {id: CO-504-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income: 2750, ma_magi_household_size: 4}, expect: 1.0}
+  - {id: CO-504-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income: 1375, ma_magi_household_size: 4}, expect: 0.5}

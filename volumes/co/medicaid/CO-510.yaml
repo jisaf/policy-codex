@@ -1,0 +1,18 @@
+id: CO-510
+name: "Medicaid: is emergency Medicaid only"
+identifier: ma_is_emergency_medicaid_only
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets every Medical Assistance requirement this batch models except citizenship, and so is limited to emergency medical services (and reproductive health care) under 42 CFR 435.406(b) and 10 CCR 2505-10 8.100.3.G.1.g.viii.2, rather than full Medical Assistance benefits.
+precision: "Limited to residency and citizenship, the requirements this batch models; a person who also fails residency, or another requirement batch 6 models (category, income), is not \"emergency Medicaid only\" under this item alone - batch 6's ma_magi_eligibility_status is where those requirements combine. 8.100.3.G.1.g.viii.2's emergency-only benefit is itself further limited to a true emergency medical condition (including labor and delivery); this item states eligibility for the coverage category, not a claim-by-claim emergency determination."
+derived: [all, ma_meets_residency, [not, ma_meets_citizenship_requirement]]
+sources: [S173, S175]
+implemented: engine
+tags: [ma, immigration, emergency]
+rationale: "No existing item states emergency-only Medicaid eligibility. 42 CFR 435.406(b) (S173) and 8.100.3.G.1.g.viii.2 (S175) both carve out limited emergency coverage for a person who is otherwise eligible but fails citizenship; batch 6's ma_magi_eligibility_status needs a single fact to report emergency_only rather than ineligible for a person like the target household's p3 (an undocumented Colorado resident)."
+tests:
+  - {id: CO-510-T1, as_of: "2026-10-01", given: {state_of_residence: "CO", citizenship_status: undocumented, lawful_presence_status: not_lawfully_present, date_of_birth: "1985-01-22", is_pregnant: false}, expect: true}
+  - {id: CO-510-T2, as_of: "2026-10-01", given: {state_of_residence: "CO", citizenship_status: citizen, lawful_presence_status: unknown, date_of_birth: "1985-01-22", is_pregnant: false}, expect: false}
+  - {id: CO-510-T3, as_of: "2026-10-01", given: {state_of_residence: "WY", citizenship_status: undocumented, lawful_presence_status: not_lawfully_present, date_of_birth: "1985-01-22", is_pregnant: false}, expect: false}
