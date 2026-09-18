@@ -8,3 +8,4 @@ program: SNAP
 meaning: The age at which a household member is "elderly" for SNAP household-composition and separate-household purposes.
 value: 60
 sources: [S6]
+rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). It is read by SNAP: is elderly."

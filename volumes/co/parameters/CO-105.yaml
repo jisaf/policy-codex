@@ -9,3 +9,4 @@ meaning: The percentage of the federal poverty line that the income of the other
 precision: Expressed as a decimal rate (1.65 = 165%). Not used by any batch-1 item; provided because 10 CCR 2506-1 4.304.1.C and 4.304.3.A both state the figure and a later batch's income test will read it.
 value: 1.65
 sources: [S20]
+rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). It is reserved for a later batch that reads it by this identifier."

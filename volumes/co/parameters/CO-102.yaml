@@ -8,3 +8,4 @@ program: SNAP
 meaning: The age below which a child living with and under the parental control of a household member other than their own parent must be a mandatory member of that household member's unit.
 value: 18
 sources: [S2, S4]
+rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). It is read by SNAP: is exempt from the non-citizen waiting period."

@@ -9,3 +9,4 @@ meaning: The age below which a person living with their natural, adoptive, or st
 precision: The person is a mandatory member while their age is strictly less than this value (federal text reads "under 22"; Colorado's 4.304.1.A reads "twenty-one and under", the same boundary).
 value: 22
 sources: [S2, S4]
+rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). It is read by SNAP: household members."
