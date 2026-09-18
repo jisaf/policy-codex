@@ -39,10 +39,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
@@ -126,10 +127,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
@@ -207,10 +209,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.0454
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
         is_disqualified_for_intentional_program_violation: false
@@ -285,10 +288,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.0454
         is_tax_filer: false
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon_or_probation_violator: false
@@ -364,7 +368,8 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: true
         has_other_creditable_health_coverage: false
         application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
@@ -542,7 +547,7 @@
       ma_magi_household_income: {"2026-10": 0}
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-10": false}
-      ma_magi_category: {"2026-10": child}
+      ma_magi_category: {"2026-10": needy_newborn}
       ma_magi_eligibility_status: {"2026-10": eligible}
       ma_continuous_eligibility_applies: {"2026-10": true}
       chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible}
@@ -564,9 +569,13 @@
   as_of: "2026-11-01"
   relationships:
     - [spouse, p1, p2]
+    - [parent, p1, p3]
     - [parent, p2, p3]
     - [parent, p3, p4]
     - [parent, p4, p5]
+    - [grandparent, p1, p4]
+    - [grandparent, p2, p4]
+    - [grandparent, p3, p5]
     - [tax_filer, p3, p4]
     - [tax_filer, p3, p5]
     - [buys_prepares_with, p2, p3]
@@ -582,10 +591,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         receives_ssi: false
         is_disabled_ssa: false
@@ -664,10 +674,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         qualifying_quarters: 40
         receives_ssi: false
@@ -744,10 +755,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -819,10 +831,11 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
+        attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         is_disabled_ssa: false
         is_blind: false
@@ -895,7 +908,8 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        mother_was_enrolled_in_medicaid_at_birth: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: true
         has_other_creditable_health_coverage: false
         application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
@@ -1069,7 +1083,7 @@
       ma_magi_household_income: {"2026-11": 0}
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-11": false}
-      ma_magi_category: {"2026-11": child}
+      ma_magi_category: {"2026-11": needy_newborn}
       ma_magi_eligibility_status: {"2026-11": eligible}
       ma_continuous_eligibility_applies: {"2026-11": true}
       chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}

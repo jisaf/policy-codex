@@ -6,13 +6,15 @@ type: yes/no
 scope: person
 program: CHP+
 meaning: Whether the person is a "child" for Children's Basic Health Plan purposes under 10 CCR 2505-3-50.3 and 110.1.A.1 - less than 19 years of age.
-precision: Reuses ma_magi_child_age_limit (CO-180, Medicaid's own "under 19" parameter) rather than a second CHP+-prefixed parameter of the same value, because 10 CCR 2505-3-50.3's "less than nineteen years of age" and 42 U.S.C. 1397jj(c)(1)'s "under 19 years of age" state the identical age as 42 CFR 435.603(f)(3) and 10 CCR 2505-10 8.100.4.E already do for Medicaid; this is a cross-program parameter reference (a governance warning, not an error), consistent with how ma_meets_five_year_bar (CO-508) reuses snap_five_year_bar_years.
-derived: [<, age, ma_magi_child_age_limit]
-sources: [S241, S251]
+precision: "Reuses ma_magi_child_age_limit (CO-180, Medicaid's own \"under 19\" parameter) rather than a second CHP+-prefixed parameter of the same value, because 10 CCR 2505-3-50.3's \"less than nineteen years of age\" and 42 U.S.C. 1397jj(c)(1)'s \"under 19 years of age\" state the identical age as 42 CFR 435.603(f)(3) and 10 CCR 2505-10 8.100.4.E already do for Medicaid; this is a cross-program parameter reference (a governance warning, not an error), consistent with how ma_meets_five_year_bar (CO-508) reuses snap_five_year_bar_years. Fix round (C-8): reuses ma_is_under_child_age_or_turns_nineteen_this_month (CO-564, Medicaid) for the same reason - 10 CCR 2505-3-110.1.B.5.p states the identical \"whose 19th birthday occurred in the current month\" extension as 8.100.4.G.2.a and 8.100.3.G.1.g.viii.1 (S201, S175, cited on CO-564), word for word."
+derived: [all, ma_is_under_child_age_or_turns_nineteen_this_month]
+sources: [S241, S251, S242]
 implemented: engine
 tags: [chp, age]
-rationale: "No existing item states the CHP+ 'child' age test. chp_household_size... does not need it, but chp_child_is_eligible (CO-705) and chp_eligibility_status (CO-707) both need a single yes/no distinguishing the child category from the prenatal category. nearest: [CO-180] (the parameter reused, not a rule with the same shape)."
-nearest: [CO-180]
+rationale: "No existing item states the CHP+ 'child' age test. chp_household_size... does not need it, but chp_child_is_eligible (CO-705) and chp_eligibility_status (CO-707) both need a single yes/no distinguishing the child category from the prenatal category. nearest: [CO-180] (the parameter reused, not a rule with the same shape). Fix round (C-8): reuses ma_is_under_child_age_or_turns_nineteen_this_month (CO-564) rather than the plain age test, per the phase-3 review's finding that 10 CCR 2505-3-110.1.B.5.p states the same month-of-19th-birthday extension for CHP+ that Medicaid's own text states."
+nearest: [CO-180, CO-564]
 tests:
   - {id: CO-700-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: true}
   - {id: CO-700-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, expect: false}
+  - {id: CO-700-T3, as_of: "2026-10-01", title: "Fix round (C-8): 19th birthday this month (2007-10-20) - still a 'child' for October", given: {date_of_birth: "2007-10-20"}, expect: true}
+  - {id: CO-700-T4, as_of: "2026-11-01", title: "Fix round (C-8): same person the next month", given: {date_of_birth: "2007-10-20"}, expect: false}

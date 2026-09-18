@@ -1,0 +1,14 @@
+id: CO-225
+name: Former foster care category maximum foster-care-exit age
+identifier: ma_former_foster_care_exit_age_max
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The oldest age at which a Colorado foster care exit still qualifies a youth for the Former Foster Care Children Medical Assistance category, per 10 CCR 2505-10 8.100.4.H.2.a's "18th, 19th, 20th or up to their 21st birthday."
+precision: Distinct from ma_former_foster_care_age_limit (CO-200, the age 26 through which the category itself extends coverage) - this parameter bounds the exit age that qualifies a person for the category in the first place, not the age through which qualifying coverage runs.
+value: 21
+sources: [S213]
+tags: [ma, magi, age]
+rationale: "No existing parameter carries this age. ma_is_former_foster_care_category (CO-549, fix round) needs it as a parameter rather than an inline digit (governance name.digits), per the phase-3 review's C-9 finding that the item's prior was_foster_youth_at_eighteen-only test missed the 19/20/21 exit ages 8.100.4.H.2.a's own text states. nearest: [CO-200] (the category's other age bound, not a duplicate - one bounds the exit age, the other bounds ongoing coverage)."
+nearest: [CO-200]

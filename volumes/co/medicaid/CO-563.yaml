@@ -1,0 +1,18 @@
+id: CO-563
+name: "Medicaid: is a dependent claimed by someone other than a spouse or parent"
+identifier: ma_is_dependent_claimed_by_non_parent
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether this person is claimed as a tax dependent by someone who is not their spouse or parent, per the 42 CFR 435.603(f)(2)(i)/10 CCR 2505-10 8.100.4.E.1.c.i exception that routes such a dependent to the non-filer household rules instead of the claiming filer's household.
+precision: "Extracted from ma_magi_household_members' (CO-500) own inline branch test, which already distinguishes 'claimed by a spouse or child (i.e. by their own parent)' from the else case, so this item restates that same test as its own reusable yes/no rather than a second, independent derivation - true when this person is claimed by a filer and that filer is not this person's spouse or parent."
+derived: [all, [any, expects_to_be_claimed_as_dependent, [exists_related, [tax_dependent], true]], [not, [exists_related, [tax_dependent], [rel, [spouse, child], [P]]]]]
+sources: [S161, S169]
+implemented: engine
+tags: [ma, magi, household]
+rationale: "No existing item states the (f)(2)(i) exception as its own reusable fact; it exists today only inline inside ma_magi_household_members' (CO-500) case expression. ma_magi_household_income (CO-503, fix round) needs it separately per the phase-3 review's C-6 finding, to state 8.100.4.C.1.f.iii's second income-counting clause ('a child or tax dependent who does not live with their natural, adopted, or step parent will always count towards the determination of their own eligibility') as its own condition rather than re-deriving it. nearest: [CO-500] (the branch test this item extracts, not a duplicate rule - CO-500 still needs its own inline test to pick the correct case branch for the person's OWN household, while this item is read about OTHER members of a household being summed)."
+nearest: [CO-500]
+tests:
+  - {id: CO-563-T1, as_of: "2026-10-01", given: {is_tax_filer: false, expects_to_be_claimed_as_dependent: true, date_of_birth: "2026-02-03"}, others: {p3: {is_tax_filer: true, expects_to_be_claimed_as_dependent: false, date_of_birth: "1985-01-22"}}, relationships: [[tax_filer, p3, p1], [grandparent, p3, p1]], expect: true}
+  - {id: CO-563-T2, as_of: "2026-10-01", given: {is_tax_filer: false, expects_to_be_claimed_as_dependent: true, date_of_birth: "2009-04-08"}, others: {p3: {is_tax_filer: true, expects_to_be_claimed_as_dependent: false, date_of_birth: "1985-01-22"}}, relationships: [[tax_filer, p3, p1], [parent, p3, p1]], expect: false}
