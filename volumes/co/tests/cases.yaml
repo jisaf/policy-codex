@@ -457,7 +457,7 @@
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 3210}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-10": false}
       ma_magi_category: {"2026-10": none}
       ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-10": false}
@@ -475,7 +475,7 @@
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 3210}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-10": false}
       ma_magi_category: {"2026-10": none}
       ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-10": false}
@@ -497,7 +497,7 @@
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-10": 2380}
       ma_meets_citizenship_requirement: false
-      ma_is_emergency_medicaid_only: true
+      ma_is_emergency_medicaid_only: {"2026-10": true}
       ma_magi_category: {"2026-10": adult}
       ma_magi_eligibility_status: {"2026-10": emergency_only}
       ma_continuous_eligibility_applies: {"2026-10": false}
@@ -519,7 +519,7 @@
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-10": 2380}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-10": false}
       ma_magi_category: {"2026-10": child}
       ma_magi_eligibility_status: {"2026-10": eligible}
       ma_continuous_eligibility_applies: {"2026-10": true}
@@ -541,7 +541,7 @@
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-10": 0}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-10": false}
       ma_magi_category: {"2026-10": child}
       ma_magi_eligibility_status: {"2026-10": eligible}
       ma_continuous_eligibility_applies: {"2026-10": true}
@@ -984,7 +984,7 @@
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-11": 3210}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-11": false}
       ma_magi_category: {"2026-11": none}
       ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-11": false}
@@ -1002,7 +1002,7 @@
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-11": 3210}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-11": false}
       ma_magi_category: {"2026-11": none}
       ma_magi_eligibility_status: {"2026-11": ineligible_no_category}
       ma_continuous_eligibility_applies: {"2026-11": false}
@@ -1024,7 +1024,7 @@
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-11": 2380}
       ma_meets_citizenship_requirement: false
-      ma_is_emergency_medicaid_only: true
+      ma_is_emergency_medicaid_only: {"2026-11": true}
       ma_magi_category: {"2026-11": adult}
       ma_magi_eligibility_status: {"2026-11": emergency_only}
       ma_continuous_eligibility_applies: {"2026-11": false}
@@ -1046,7 +1046,7 @@
       ma_magi_household_size: 3
       ma_magi_household_income: {"2026-11": 2380}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-11": false}
       ma_magi_category: {"2026-11": child}
       ma_magi_eligibility_status: {"2026-11": eligible}
       ma_continuous_eligibility_applies: {"2026-11": true}
@@ -1068,7 +1068,7 @@
       ma_magi_household_size: 2
       ma_magi_household_income: {"2026-11": 0}
       ma_meets_citizenship_requirement: true
-      ma_is_emergency_medicaid_only: false
+      ma_is_emergency_medicaid_only: {"2026-11": false}
       ma_magi_category: {"2026-11": child}
       ma_magi_eligibility_status: {"2026-11": eligible}
       ma_continuous_eligibility_applies: {"2026-11": true}

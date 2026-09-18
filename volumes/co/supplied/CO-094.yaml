@@ -1,0 +1,13 @@
+id: CO-094
+name: Continuous eligibility period start month
+identifier: continuous_eligibility_period_start_month
+kind: supplied
+type: month
+scope: person
+program: Medicaid
+meaning: The month a child's current 12-month continuous eligibility period under 10 CCR 2505-10 8.100.3.Q.2 and 42 CFR 435.926(c)(2) began - the month of the determination, redetermination, or renewal that most recently opened the period - stated only when that month predates the month application_date falls in (for example, a period already open from an earlier redetermination, being tested again in a later month).
+precision: Left unstated (unknown) for a person whose continuous eligibility period, if any, is opened by the current application itself; ma_child_continuous_eligibility_end_month (CO-556) falls back to [month_of, application_date] (P4, "otherwise") when this fact is unknown, per 8.100.3.Q.2's "first day of the month the application is received, or from the date all criteria are met."
+supplied_by: CBMS's own tracking of the most recent determination or redetermination that opened the person's current continuous eligibility period.
+sources: [S215, S216]
+tags: [ma, magi]
+rationale: "No existing item carries a continuous-eligibility period's start month distinct from application_date. Fix-round item, added to resolve the phase-3 review's C-4(c) finding that ma_child_continuous_eligibility_end_month (CO-556) was anchored to [det_month] rather than to 8.100.3.Q.2's application-received/all-criteria-met anchor: this fact lets the period's start be tested (as in the review's designed case CO-08, where a period opened in April 2026 is tested again in January 2027) without re-anchoring on a later application_date that would not have opened a new period."

@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: Whether a dependent child living in the household of a parent or caretaker relative has minimum essential coverage, as 10 CCR 2505-10 8.100.4.G.4.a requires in order for the parent or caretaker relative to qualify for the Adults MAGI category, and which this volume also reads for the Parents and Caretaker Relatives category's dependent-child requirement.
+meaning: Whether a dependent child under 19 living in the household of a parent or caretaker relative has minimum essential coverage, as 10 CCR 2505-10 8.100.4.G.4.a and 42 CFR 435.119(c)(1) require in order for the parent or caretaker relative to qualify for the Adults MAGI category - not the Parents and Caretaker Relatives category, which 8.100.4.G.3 states with no MEC condition (corrected in the fix round per the phase-3 review's C-3 finding, which found this item's own meaning had attached the condition to both categories).
 precision: Stated once per dependent child, on that child's own record; a parent or caretaker relative's category rule reads it through the child's own supplied fact (`of` a related person), not as a fact about the parent.
 supplied_by: Applicant statement (CBMS/PEAK); minimum essential coverage per 42 CFR 435.4 (26 U.S.C. 5000A(f)) is verified through an electronic data source where available.
 sources: []
