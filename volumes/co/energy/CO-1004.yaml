@@ -1,0 +1,18 @@
+id: CO-1004
+name: "LEAP: vulnerable to heating cost"
+identifier: leap_is_vulnerable_to_heating_cost
+kind: derived
+type: yes/no
+scope: person
+program: LEAP
+meaning: Whether the household is vulnerable to rising home heating costs under 9 CCR 2503-7 3.752.25.A - responsible for home heating costs - and is not in one of the living arrangements 3.752.25.B excludes from vulnerability (an institutional group care facility, a household considered homeless, or one residing in a non-traditional dwelling).
+precision: Models only the homelessness exclusion of 3.752.25.B.6 among the several excluded living arrangements 3.752.25.B lists (institutional group care, room and board, correctional facilities, dormitories, certain subsidized housing, non-traditional dwellings, hotels); the others are out of scope for this batch.
+derived: [all, is_responsible_for_heating_costs, [not, is_homeless]]
+sources: [S492]
+implemented: engine
+tags: [household]
+rationale: No existing item states the LEAP vulnerability test; leap_is_eligible (CO-1007) needs it.
+tests:
+  - {id: CO-1004-T1, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: false}, expect: true}
+  - {id: CO-1004-T2, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: true, is_homeless: true}, expect: false}
+  - {id: CO-1004-T3, as_of: "2026-10-01", given: {is_responsible_for_heating_costs: false, is_homeless: false}, expect: false}

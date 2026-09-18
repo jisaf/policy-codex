@@ -1,0 +1,11 @@
+id: CO-285
+name: Old Age Pension minimum age
+identifier: af_oap_age
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The minimum age at which a person may qualify for the Old Age Pension program, per C.R.S. 26-2-111(2)(a)(I) and 9 CCR 2503-5 3.530 and 3.520.61.A.
+value: 60
+sources: [S441, S449, S455]
+rationale: No existing item states the OAP age floor. af_is_oap_age (CO-940) needs it as a parameter rather than a literal so the identifier carries no digit run (name.digits).

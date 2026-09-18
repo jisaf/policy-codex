@@ -29,7 +29,7 @@ export const RESERVED: ReadonlySet<string> = new Set([
   "months_ending", "months_from_to", "months_after", "months_before",
   "at", "each", "some_month", "count_months", "avg",
   "exists", "exists_related", "rel", "in_group", "of", "lookup",
-  "max", "ceil", "round", "persons", "count", "filter", "sum", "reachable", "shared_relative",
+  "max", "ceil", "round", "persons", "count", "filter", "sum", "reachable", "shared_relative", "has_relative_in",
 ]);
 
 export const NAME_RE = /^[a-z][a-z0-9_]*$/;
@@ -87,6 +87,7 @@ function mask(ix: LedgerIndex, e: Expr): Expr {
     return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   }
   if (op === "shared_relative") return [op, MASK];
+  if (op === "has_relative_in") return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   if (op === "reachable") {
     const out: unknown[] = [op, (e[1] as unknown[] || []).map(() => MASK)];
     if (e.length > 2) out.push(m(e[2]));

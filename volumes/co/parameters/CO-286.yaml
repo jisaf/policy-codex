@@ -1,0 +1,14 @@
+id: CO-286
+name: Old Age Pension A/B group age split
+identifier: af_oap_group_age_split
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The assumed age at which an OAP client is treated as group A rather than group B, per the reading OQ-111 records of 9 CCR 2503-5 3.520.71.B.4's age-65 enhanced SSI-eligibility threshold, since no fetched document states an OAP-A/OAP-B definition directly.
+precision: See OQ-111 - this figure is an assumption, not a stated OAP-A/OAP-B definition.
+value: 65
+sources: [S453]
+open: [OQ-111]
+tags: [oap, age, state_election]
+rationale: No existing item states an age split for af_oap_group (CO-941), which the phase-5 brief's fixed af_category options (oap_a, oap_b) require even though the fetched text does not state the A/B definition; see OQ-111.

@@ -1,0 +1,19 @@
+id: CO-950
+name: "Adult Financial: AND-CS eligible"
+identifier: af_and_cs_eligible
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person is age zero through fifty-nine, receives SSI due to disability or blindness, and is a Colorado resident, so as to qualify for the AND-CS state supplement, per 9 CCR 2503-5 3.546 and 3.547.A.
+precision: See OQ-116 - does not test whether the person is "not receiving the full SSI benefit standard" (no supplied fact states a person's dollar amount of SSI income).
+derived: [all, [<=, age, af_and_max_age], receives_ssi, [any, is_disabled_ssa, is_blind], af_meets_residency]
+sources: [S462, S463]
+open: [OQ-116]
+implemented: engine
+tags: [cash, and, age, disability]
+rationale: No existing item states the AND-CS eligibility test. af_category (CO-953) needs it.
+tests:
+  - {id: CO-950-T1, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: true}
+  - {id: CO-950-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: false}
+  - {id: CO-950-T3, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12", receives_ssi: true, is_disabled_ssa: true, is_blind: false, state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false}, expect: false}

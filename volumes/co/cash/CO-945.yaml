@@ -1,0 +1,20 @@
+id: CO-945
+name: "Adult Financial: Aid to the Blind eligible"
+identifier: af_ab_eligible
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person is blind, or determined blind and eligible for Social Security Disability Insurance benefits, per C.R.S. 26-2-111(5)(a)(I) and 26-2-103(3).
+precision: See OQ-112 - 9 CCR 2503-5 has no separate Aid to the Blind section; this item is modeled from the statute alone. See OQ-117 - does not read a Colorado Works household fact to apply 26-2-111(5)(a)(I)'s carve-out for a member of a household receiving Colorado Works.
+derived: [any, is_blind, [all, is_disabled_ssa, receives_social_security_disability]]
+sources: [S443, S444]
+open: [OQ-112, OQ-117]
+implemented: engine
+tags: [cash, ab, disability]
+rationale: No existing item states the Aid to the Blind eligibility test. af_category (CO-953) needs it. Not identical to ma_is_blind (CO-601, [all, is_blind] alone), which reads the SSI-related Medicaid blind category (42 CFR 435.530); this item additionally reads the SSDI-determined-blind alternative 26-2-111(5)(a)(I) states.
+nearest: [CO-601]
+tests:
+  - {id: CO-945-T1, as_of: "2026-10-01", given: {is_blind: true, is_disabled_ssa: false, receives_social_security_disability: false}, expect: true}
+  - {id: CO-945-T2, as_of: "2026-10-01", given: {is_blind: false, is_disabled_ssa: true, receives_social_security_disability: true}, expect: true}
+  - {id: CO-945-T3, as_of: "2026-10-01", given: {is_blind: false, is_disabled_ssa: false, receives_social_security_disability: false}, expect: false}

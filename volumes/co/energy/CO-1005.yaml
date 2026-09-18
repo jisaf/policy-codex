@@ -1,0 +1,16 @@
+id: CO-1005
+name: "LEAP: has a lawfully present household member"
+identifier: leap_has_lawfully_present_member
+kind: derived
+type: yes/no
+scope: person
+program: LEAP
+meaning: Whether at least one member of the LEAP household is a U.S. citizen, national, or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17 - an applicant who does not meet lawful permanent residency or citizenship requirements is excluded as a household member (their income is still counted), so the household needs at least one member who does.
+derived: [exists, leap_household_members, [of, [P], ["in", citizenship_status, [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]]]
+sources: [S493, S494]
+implemented: engine
+tags: [immigration, legal]
+rationale: No existing item states the LEAP household lawful-presence test; leap_is_eligible (CO-1007) needs it.
+tests:
+  - {id: CO-1005-T1, as_of: "2026-10-01", given: {citizenship_status: undocumented}, others: {p2: {citizenship_status: lawful_permanent_resident}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-1005-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, relationships: [], expect: false}

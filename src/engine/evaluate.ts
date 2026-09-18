@@ -490,6 +490,17 @@ export function evaluate(
         }
         return total;
       }
+      case "has_relative_in": {
+        // That person (the bound member) stands in one of the named roles to
+        // some person in the group: a join between the bound person and the
+        // group's members without rebinding either. Unknown when that
+        // person's relationships are unstated or the group is unknown.
+        if (!P) throw new Error("has_relative_in needs a bound person");
+        const grp = g(e[2]);
+        if (grp === null || c.rels[P] == null) return null;
+        const roles = e[1] as string[];
+        return (c.rels[P] ?? []).some(([r, other]) => roles.includes(r) && grp.includes(other));
+      }
       case "shared_relative": {
         // The persons, other than this person, who have a person in the named
         // role in common with this person: with "parent", this person's

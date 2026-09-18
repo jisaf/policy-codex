@@ -14,6 +14,7 @@ export const RESULT: Record<string, string> = {
   at: "*", of: "*", otherwise: "*", case: "*",
   max: "number", ceil: "number", round: "number", count: "number", sum: "number",
   persons: "group", filter: "group", reachable: "group", shared_relative: "group",
+  has_relative_in: "yes/no",
 };
 
 export const LABEL: Record<string, string> = {
@@ -43,6 +44,7 @@ export const LABEL: Record<string, string> = {
   filter: "all persons in [group] such that …",
   reachable: "the persons joined to this person by [relationship] (such that …)",
   shared_relative: "the persons who share a [relationship] with this person",
+  has_relative_in: "that person is a [relationship] of a person in [group]",
 };
 
 export const SLOTS: Record<string, string[]> = {
@@ -60,7 +62,7 @@ export const SLOTS: Record<string, string[]> = {
   at: ["pm-fact", "month"], of: ["person", "fact"], otherwise: ["same", "same"], case: [],
   max: ["number", "number"], ceil: ["number"], round: ["number"], count: ["group"],
   sum: ["group", "number"], persons: [], filter: ["group", "yes/no"], reachable: [],
-  shared_relative: [],
+  shared_relative: [], has_relative_in: ["group"],
 };
 
 export const SLOTNAME: Record<string, string[]> = {
@@ -160,6 +162,7 @@ export function template(op: string): Expr {
   if (op === "in_group") return ["in_group", ["P"], null];
   if (op === "reachable") return ["reachable", ["buys_prepares_with"]];
   if (op === "shared_relative") return ["shared_relative", "parent"];
+  if (op === "has_relative_in") return ["has_relative_in", ["child"], null];
   if (["det_date", "det_month", "month", "P", "persons"].includes(op)) return [op];
   return [op, ...(SLOTS[op] ?? []).map(() => null)];
 }

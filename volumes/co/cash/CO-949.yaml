@@ -1,0 +1,20 @@
+id: CO-949
+name: "Adult Financial: grant standard"
+identifier: af_grant_standard
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: The Adult Financial grant standard that applies to this person's af_category - the OAP, AND-SO, or AND-CS grant standard, or 0 if the person qualifies under none of them - per 9 CCR 2503-5 3.530.A, 3.540.A, and 3.546.A.
+precision: Reads af_category, which is itself determined without reference to this item (af_category compares af_countable_income directly to each program's grant standard parameter), so there is no circular dependency. Reports the AND-SO grant standard for the "ab" category, per OQ-112 (no separate AB grant standard is stated).
+derived: [case, [[in, af_category, [oap_a, oap_b]], af_oap_grant_standard], [[=, af_category, "and_so"], af_and_so_grant_standard], [[=, af_category, "and_cs"], af_and_cs_grant_standard], [[=, af_category, "ab"], af_and_so_grant_standard], [else, 0]]
+sources: [S455, S458, S462]
+open: [OQ-112]
+implemented: engine
+tags: [cash, oap, and, ab]
+rationale: No existing item selects which grant standard applies to a person's Adult Financial category. Needed for af_oap_grant (CO-951) and af_and_grant (CO-952) to report a single "the standard that applied" figure per the phase-5 brief's interface, distinct from testing income against a specific program's standard (which af_category, CO-953, does directly).
+tests:
+  - {id: CO-949-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap_a}, expect: 1005}
+  - {id: CO-949-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_so}, expect: 248}
+  - {id: CO-949-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_cs}, expect: 967}
+  - {id: CO-949-T4, as_of: "2026-10-01", month: "2026-10", given: {af_category: none}, expect: 0}

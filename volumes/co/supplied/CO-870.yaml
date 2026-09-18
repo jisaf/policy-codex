@@ -1,0 +1,13 @@
+id: CO-870
+name: CCCAP county entry income limit, percent of FPL
+identifier: cccap_entry_income_limit_pct_fpl
+kind: supplied
+type: rate
+scope: person
+program: CCCAP
+meaning: The percentage of the federal poverty guideline the county's current CCCAP plan sets as the entry income eligibility limit for this person's household size, per 8 CCR 1403-1 3.111.H.1.a - set by the Department, not below 185% of FPL, and county-specific.
+supplied_by: The county's Department-approved CCCAP plan entry income limit schedule, as loaded in CHATS.
+sources: [S485]
+open: [OQ-121]
+tags: [income, household]
+rationale: "3.111.H.1.a states only a floor (not below 185% FPL), not a single figure; the actual entry percentage is set by the Department per county and is not stated in the fetched text. Modeled as a supplied fact, the same treatment phase 2 gave the SNAP standard utility allowance and phase 4 gave the CSRA/MMMNA standards, with an OQ recording the figure to replace it with once the current schedule is fetched. cccap_income_within_entry_limit (CO-986) reads it."

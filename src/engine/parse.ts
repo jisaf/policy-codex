@@ -131,6 +131,9 @@ export function parseInline(
   if (s.endsWith(" rounded up to the next whole dollar")) return ["ceil", p(s.slice(0, -36))];
   if (s.endsWith(" rounded to the nearest whole dollar")) return ["round", p(s.slice(0, -36))];
   if ((m = s.match(/^the number of persons in (.+)$/))) return ["count", p(m[1])];
+  if ((m = s.match(/^that person is a (.+?) of a person in (.+)$/))) {
+    return ["has_relative_in", m[1].split(" or ").map((x) => x.trim()), p(m[2])];
+  }
   if ((m = s.match(/^the persons who share a (.+) with this person$/))) {
     return ["shared_relative", m[1].trim()];
   }

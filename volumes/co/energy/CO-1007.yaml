@@ -1,0 +1,20 @@
+id: CO-1007
+name: "LEAP: is eligible"
+identifier: leap_is_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+role: outcome
+meaning: Whether this person's LEAP household is eligible for a Heating Fuel Assistance Program payment for the month under 9 CCR 2503-7 3.752.2 - Colorado resident, at least one lawfully present household member, at or below the income limit, vulnerable to heating cost, and having a primary heating source.
+precision: "Does not model every 3.754.1 denial reason (application-period timing, duplicate household, weatherization refusal, fraud conviction, and the others listed there); only the five factors 3.752.2's opening sentence names that this batch has items for. Reads ma_meets_residency (CO-505, Medicaid's chapter) rather than a separate leap_meets_residency item: 3.753.21's Colorado-residency-with-intent-to-remain test and 10 CCR 2505-10 8.100.3.B's test derive identically (state_of_residence = colorado_state_code), and governance's dup.compact check flags an identical derivation as an error, not merely a warning, so this batch reuses the existing item and accepts the cross-program read rather than duplicating it (see the batch report)."
+derived: [all, ma_meets_residency, leap_has_lawfully_present_member, leap_income_within_limit, leap_is_vulnerable_to_heating_cost, has_primary_heating_source]
+sources: [S491, S495]
+implemented: engine
+tags: [household, income, immigration]
+rationale: No existing item combines the LEAP eligibility checks into one outcome; this is the program's central eligibility outcome (declared under LEAP's outcomes in the report back).
+tests:
+  - {id: CO-1007-T1, as_of: "2026-10-01", month: "2026-10", given: {state_of_residence: "CO", leap_has_lawfully_present_member: true, leap_income_within_limit: true, leap_is_vulnerable_to_heating_cost: true, has_primary_heating_source: true}, expect: true}
+  - {id: CO-1007-T2, as_of: "2026-10-01", month: "2026-10", given: {state_of_residence: "CO", leap_has_lawfully_present_member: true, leap_income_within_limit: false, leap_is_vulnerable_to_heating_cost: true, has_primary_heating_source: true}, expect: false}
+  - {id: CO-1007-T3, as_of: "2026-10-01", month: "2026-10", given: {state_of_residence: "CO", leap_has_lawfully_present_member: false, leap_income_within_limit: true, leap_is_vulnerable_to_heating_cost: true, has_primary_heating_source: true}, expect: false}
+  - {id: CO-1007-T4, as_of: "2026-10-01", month: "2026-10", given: {state_of_residence: "WY", leap_has_lawfully_present_member: true, leap_income_within_limit: true, leap_is_vulnerable_to_heating_cost: true, has_primary_heating_source: true}, expect: false}

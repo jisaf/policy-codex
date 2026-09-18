@@ -1,0 +1,12 @@
+id: CO-876
+name: Responsible for home heating costs
+identifier: is_responsible_for_heating_costs
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: Whether this household pays home heating costs directly to a vendor and is subject to home heating cost increases, or pays them in the form of rent or a separate charge in a non-subsidized dwelling, or has a comparable subsidized-housing heating surcharge, per 9 CCR 2503-7 3.752.25.A.
+supplied_by: County department/contractor's verification of the household's heating cost responsibility (3.752.25.D).
+sources: [S492]
+tags: [household]
+rationale: "3.752.25.A's vulnerability test turns on the household actually being responsible for home heating costs, a determination this volume has no shared fact for. leap_is_vulnerable_to_heating_cost (CO-1004) needs it."

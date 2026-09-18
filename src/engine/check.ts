@@ -210,6 +210,11 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "sum":
         need(e[1], ["group"], "for each person in"); need(e[2], ["number"], "the sum of");
         return "number";
+      case "has_relative_in":
+        if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
+        need(e[2], ["group"], "of a person in");
+        refs.add("relationships");
+        return "yes/no";
       case "shared_relative":
         if (typeof e[1] !== "string" || !e[1]) errors.push("shared relative: relationship missing");
         refs.add("relationships");

@@ -1,0 +1,20 @@
+id: CO-944
+name: "Adult Financial: AND-SO total disability met"
+identifier: af_and_so_disability_met
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the person has a total disability that has lasted or can be expected to last six months or more, or is determined disabled and eligible for Social Security Disability Insurance benefits, per C.R.S. 26-2-111(4)(a) and 9 CCR 2503-5 3.541.A.
+precision: See OQ-113 - reads is_disabled_ssa as standing in for 3.541.1's own state-prescribed medical certification process, and receives_social_security_disability for the SSDI-determined alternative 26-2-111(4)(a) states; the six-month duration requirement itself is not separately modeled (no supplied duration fact exists).
+derived: [any, is_disabled_ssa, receives_social_security_disability]
+sources: [S442, S445, S459]
+open: [OQ-113]
+implemented: engine
+tags: [cash, and, disability]
+rationale: No existing item states the AND-SO total-disability test. af_category (CO-953) needs it. Not identical to ma_is_disabled (CO-602, [all, is_disabled_ssa] alone), which reads the federal SSI/SSA disability definition (42 U.S.C. 1382c(a)(3)) rather than Colorado's own "total disability" definition (26-2-103(14)(a), S445), and additionally reads the SSDI-determined alternative 26-2-111(4)(a) states.
+nearest: [CO-602]
+tests:
+  - {id: CO-944-T1, as_of: "2026-10-01", given: {is_disabled_ssa: true, receives_social_security_disability: false}, expect: true}
+  - {id: CO-944-T2, as_of: "2026-10-01", given: {is_disabled_ssa: false, receives_social_security_disability: true}, expect: true}
+  - {id: CO-944-T3, as_of: "2026-10-01", given: {is_disabled_ssa: false, receives_social_security_disability: false}, expect: false}

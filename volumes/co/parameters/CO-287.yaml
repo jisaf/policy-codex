@@ -1,0 +1,11 @@
+id: CO-287
+name: AND-SO non-blind minimum age
+identifier: af_and_so_min_age
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The minimum age for AND-SO eligibility for a client who is not diagnosed with blindness, per 9 CCR 2503-5 3.520.61.A and 3.540 ("eighteen (18) through fifty-nine (59) years of age ... unless diagnosed with blindness, then age zero (0) through 59 years of age").
+value: 18
+sources: [S449, S458]
+rationale: No existing item states the AND-SO minimum age. af_category (CO-953) needs it, together with is_blind, to test 3.520.61.A's age range for a non-blind AND-SO applicant.

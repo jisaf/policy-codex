@@ -318,7 +318,7 @@ function Slot({
         )}
         {!NARY.has(op) &&
           !["case", "in", "exists", "exists_related", "rel", "at", "each", "some_month",
-            "count_months", "avg", "of", "filter", "sum", "reachable", "shared_relative"].includes(op) &&
+            "count_months", "avg", "of", "filter", "sum", "reachable", "shared_relative", "has_relative_in"].includes(op) &&
           (SLOTS[op] ?? []).map((st, k) =>
             child(k + 1, st, sub, (SLOTNAME[op] ?? [])[k] ?? `slot ${k + 1}`))}
       </div>

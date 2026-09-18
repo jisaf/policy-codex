@@ -1,0 +1,19 @@
+id: CO-984
+name: "CCCAP: caretaker or teen parent is in an eligible activity"
+identifier: cccap_caretaker_in_eligible_activity
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: This adult caretaker or teen parent is actively participating in a low-income eligible activity under 8 CCR 1403-1 3.111.B.1, G - employment or self-employment (hours worked), job search, or training/education (for a teen parent, attending school itself qualifies per 3.103.ZZZZ).
+precision: "Does not verify the federal-minimum-wage-per-hour test of 3.111.G.1.b/2.d (no minimum wage parameter or per-hour income check is modeled); is_enrolled_in_school stands in for training, basic education, and post-secondary education generally, since this volume has no separate flag for those (see OQ-124)."
+open: [OQ-124]
+derived: [any, [">", hours_worked, 0], is_in_job_search_activity, is_enrolled_in_school]
+sources: [S482]
+implemented: engine
+tags: [household]
+rationale: No existing item states the CCCAP eligible-activity test; cccap_low_income_child_care_eligible (CO-987) and cccap_eligibility_status (CO-989) both need it.
+tests:
+  - {id: CO-984-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, is_in_job_search_activity: false, is_enrolled_in_school: false}, expect: true}
+  - {id: CO-984-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: true}, expect: true}
+  - {id: CO-984-T3, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 0, is_in_job_search_activity: false, is_enrolled_in_school: false}, expect: false}

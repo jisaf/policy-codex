@@ -1,0 +1,18 @@
+id: CO-986
+name: "CCCAP: income within the county entry limit"
+identifier: cccap_income_within_entry_limit
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: Whether the CCCAP household's countable income (cccap_household_income, CO-985) is at or below the county's entry income eligibility limit for the household's size, under 8 CCR 1403-1 3.111.H.1.a.
+precision: The entry limit is computed as the supplied county percentage (cccap_entry_income_limit_pct_fpl, CO-870) of the monthly 100% FPG table (cccap_poverty_guideline_table, CO-323) for cccap_household_size, adding cccap_poverty_guideline_each_additional (CO-324) per member above 8.
+derived: ["<=", cccap_household_income, ["*", cccap_entry_income_limit_pct_fpl, [+, [lookup, cccap_poverty_guideline_table, [min, cccap_household_size, 8]], ["*", cccap_poverty_guideline_each_additional, [max, 0, ["-", cccap_household_size, 8]]]]]]
+sources: [S485]
+open: [OQ-121]
+implemented: engine
+tags: [income]
+rationale: No existing item computes the CCCAP entry income test; cccap_low_income_child_care_eligible (CO-987) and cccap_eligibility_status (CO-989) both need it.
+tests:
+  - {id: CO-986-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 2380, cccap_household_size: 3, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
+  - {id: CO-986-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 10000, cccap_household_size: 3, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}

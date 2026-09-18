@@ -1,0 +1,15 @@
+id: CO-324
+name: CCCAP monthly federal poverty guideline, each additional household member
+identifier: cccap_poverty_guideline_each_additional
+kind: parameter
+type: money
+scope: global
+program: CCCAP
+precision: Monthly dollars added per household member above 8, effective October 1, 2024.
+versions:
+  - from: "2024-10-01"
+    value: 448.33
+    source: S485
+sources: [S485]
+tags: [income]
+rationale: 8 CCR 1403-1 3.111.H.2 (S485) states this "Each Additional person" figure alongside the sizes 1-8 table (cccap_poverty_guideline_table, CO-323); cccap_income_within_entry_limit (CO-986) reads it for households above size 8.

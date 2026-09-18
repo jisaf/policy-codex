@@ -1,0 +1,20 @@
+id: CO-941
+name: "Adult Financial: Old Age Pension A/B group"
+identifier: af_oap_group
+kind: derived
+type: one of
+options: [oap_a, oap_b, none]
+scope: person
+program: AdultFinancial
+meaning: Which Old Age Pension age group the person falls into - oap_a for a client af_oap_group_age_split (assumed 65) or older, oap_b for an OAP-age client younger than that, or none for a client under OAP age - per the assumption OQ-111 records, since no fetched document states Colorado's OAP-A/OAP-B definition.
+precision: See OQ-111. This item is an assumption pending the actual OAP-A/OAP-B text.
+derived: [case, [[not, af_is_oap_age], "none"], [[">=", age, af_oap_group_age_split], "oap_a"], [else, "oap_b"]]
+sources: [S453]
+open: [OQ-111]
+implemented: engine
+tags: [cash, oap, age]
+rationale: No existing item splits OAP into A/B groups. af_category (CO-953) needs it as the phase-5 brief's interface fixes af_category's options to name oap_a/oap_b separately; see OQ-111 for why the split itself is an assumption.
+tests:
+  - {id: CO-941-T1, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12"}, expect: oap_a}
+  - {id: CO-941-T2, as_of: "2026-10-01", given: {date_of_birth: "1963-01-01"}, expect: oap_b}
+  - {id: CO-941-T3, as_of: "2026-10-01", given: {date_of_birth: "1980-01-01"}, expect: none}

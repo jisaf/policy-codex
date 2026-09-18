@@ -1,0 +1,12 @@
+id: CO-877
+name: Has a primary heating source
+identifier: has_primary_heating_source
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: Whether the dwelling has a primary heating system such as a furnace, wood-burning stove, or boiler; a temporary or portable heating source does not qualify, per 9 CCR 2503-7 3.751.1's "Primary Heating Source" definition.
+supplied_by: County department/contractor's home visit or applicant statement of heating equipment, verified per LEAP intake procedures.
+sources: [S489]
+tags: []
+rationale: "3.751.1 excludes temporary/portable heating sources from LEAP assistance entirely (3.754.1.R, denial reason). No shared fact states equipment type; leap_is_eligible (CO-1007) needs it."

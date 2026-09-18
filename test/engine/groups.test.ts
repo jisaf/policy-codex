@@ -111,6 +111,17 @@ describe("group patterns", () => {
     expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
     expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
   });
+  it("joins the bound person to a group by relationship", () => {
+    const c8 = makeCase(ix, {
+      id: "J", as_of: "2026-10-01",
+      relationships: [["parent", "p1", "p2"], ["tax_filer", "p3", "p2"]] as Array<[string, string, string]>,
+      persons: { p1: { facts: {} }, p2: { facts: {} }, p3: { facts: {} } },
+    });
+    const jx = buildIndex([...items, { id: "G-15", name: "Kids with a parent here", identifier: "kids_with_parent", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["filter", ["persons"], ["has_relative_in", ["child"], ["persons"]]], implemented: "engine" }, { id: "G-16", name: "Claimed by p1 or p2", identifier: "claimed_here", kind: "derived", type: "group of persons", scope: "person", program: "All", derived: ["filter", ["persons"], ["has_relative_in", ["tax_dependent"], ["filter", ["persons"], ["not", ["=", ["P"], "x"]]]]], implemented: "engine" }]);
+    expect(evaluate(jx, c8, "kids_with_parent", "p1", null)).toEqual(["p2"]);
+    expect(evaluate(jx, c8, "claimed_here", "p1", null)).toEqual(["p2"]);
+    expect(inline(jx, parseInline(jx, "that person is a child or dependent of a person in every person in the case"))).toBe("that person is a child or dependent of a person in every person in the case");
+  });
   it("adds and subtracts months", () => {
     const c7 = makeCase(ix, { id: "M", as_of: "2026-10-01", persons: { p1: { facts: {} } } });
     const mx = buildIndex([...items, { id: "G-13", name: "Later", identifier: "later", kind: "derived", type: "month", scope: "person", program: "All", derived: ["months_after", 12, ["det_month"]], implemented: "engine" }, { id: "G-14", name: "Earlier", identifier: "earlier", kind: "derived", type: "month", scope: "person", program: "All", derived: ["months_before", 3, ["det_month"]], implemented: "engine" }]);
