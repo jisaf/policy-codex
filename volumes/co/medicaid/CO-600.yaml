@@ -1,0 +1,17 @@
+id: CO-600
+name: "Medicaid: is aged"
+identifier: ma_is_aged
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets the SSI-related "aged" category's age requirement - 65 years or older, per 42 U.S.C. 1382c(a)(1)(A) and the federal ceiling of 42 CFR 435.520.
+precision: Uses the shared age (CO-300) fact, evaluated as of the determination date.
+derived: [">=", age, ma_aged_age]
+sources: [S304, S305]
+implemented: engine
+tags: [ma, non_magi, age]
+rationale: "No existing item states the SSI-related aged-category age test (the MAGI chapter's category rules use different age floors for children, adults and former foster youth). ma_is_aged_blind_or_disabled (CO-603) needs it."
+tests:
+  - {id: CO-600-T1, as_of: "2026-10-01", given: {date_of_birth: "1947-03-12"}, expect: true}
+  - {id: CO-600-T2, as_of: "2026-10-01", given: {date_of_birth: "1980-01-01"}, expect: false}

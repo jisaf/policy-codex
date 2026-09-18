@@ -1596,3 +1596,169 @@ Document: D-26
 > (16) Extending certain coverage for pregnant and postpartum women.—
 >
 > At the option of the State , the State plan (or waiver of such State plan) may provide, that an individual who, while pregnant, is eligible for and has received medical assistance under the State plan approved under this subchapter (or a waiver of such plan) (including during a period of retroactive eligibility under subsection (a)(34)) shall, in addition to remaining eligible under paragraph (5) for all pregnancy-related and postpartum medical assistance available under the State plan (or waiver) through the last day of the month in which the 60-day period (beginning on the last day of her pregnancy) ends, remain eligible under the State plan (or waiver) for medical assistance for the period beginning on the first day occurring after the end of such 60-day period and ending on the last day of the month in which the 12-month period (beginning on the last day of her pregnancy) ends.
+
+### S301. SSI-related resource limits and the MSP resource limits' CPI indexing
+
+Document: D-41
+
+10 CCR 2505-10 8.100.5.M.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Consideration of resources: Resources are defined as cash or other assets or any real or personal property that an individual or spouse owns. The resource limit for an individual is $2,000. For a married couple, the resource limit is $3,000. If one spouse is institutionalized, refer to Spousal Protection-Treatment of Income and Resources for Institutionalized Spouses. Effective January 1, 2011, the resource limits for the Qualified Medicare Beneficiaries (QMB), Specified Low Income Medicare Beneficiaries (SLMB), and Qualified Individuals 1 (QI-1) programs are $8,180 for a single individual and $13,020 for a married individual living with a spouse and no other dependents. The resource limits for the QMB, SLMB, and QI programs shall be adjusted annually by the Centers for Medicare and Medicaid Services on January 1 of each year. These resource limits are based upon the change in the annual consumer price index (CPI) as of September of the previous year. Resources are not counted for the Medicaid Buy-In Program for Working Adults with Disabilities or the Medicaid Buy-In Program for Children with Disabilities.
+
+### S302. SSI resource limit, federal regulation
+
+Document: D-54
+
+20 CFR 416.1205(c). https://www.law.cornell.edu/cfr/text/20/416.1205
+
+> Jan. 1, 1989
+> 2,000
+> $3,000
+
+### S303. ABD general information
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.A.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance for ABD includes SSI eligible individuals, OAP recipients, and the Medicare Savings Program (MSP) individuals. Refer to section 8.100.5 of this volume for income and resource criteria for these categories of assistance.
+
+### S304. Aged, blind, or disabled individual, statutory definition
+
+Document: D-45
+
+42 U.S.C. 1382c(a)(1). https://www.law.cornell.edu/uscode/text/42/1382c
+
+> (1) For purposes of this subchapter, the term "aged, blind, or disabled individual" means an individual who— (A) is 65 years of age or older, is blind (as determined under paragraph (2)), or is disabled (as determined under paragraph (3)), and (B) (i) is a resident of the United States, and is either (I) a citizen or (II) an alien lawfully admitted for permanent residence or otherwise permanently residing in the United States under color of law (including any alien who is lawfully present in the United States as a result of the application of the provisions of section 1182(d)(5) of title 8), or (ii) is a child who is a citizen of the United States, and who is living with a parent of the child who is a member of the Armed Forces of the United States assigned to permanent duty ashore outside the United States.
+
+### S305. Federal categorical requirements: age, blindness, disability
+
+Document: D-49
+
+42 CFR 435.520, 435.530(a), 435.540(a). https://www.ecfr.gov/current/title-42/part-435
+
+> The agency must not impose an age requirement of more than 65 years.
+>
+> (a) *Definition.* The agency must use the same definition of blindness as used under SSI, except that—
+>
+> (a) *Definition.* The agency must use the same definition of disability as used under SSI, except that—
+
+### S306. Support and maintenance in kind, Colorado's one-third FBR rule
+
+Document: D-41
+
+10 CCR 2505-10 8.100.5.F.5.k. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Support and maintenance in kind - The support and maintenance in kind amount should not be greater than one third of the Federal Benefit Rate (FBR). Use the Presumed Maximum Value (PMV) of 1/3 of the recipient's portion of the rent to determine the support and maintenance in kind amount. Use one third of the FBR if an amount is not declared by the client.
+
+### S307. Presumed value rule, federal regulation
+
+Document: D-53
+
+20 CFR 416.1140(a)(1). https://www.law.cornell.edu/cfr/text/20/416.1140
+
+> (a) *How we apply the presumed value rule.* (1) When you receive in-kind support and maintenance and the one-third reduction rule does not apply, we use the presumed value rule. Instead of determining the actual dollar value of any shelter you receive, we presume that it is worth a maximum value. This maximum value is one-third of your Federal benefit rate plus the amount of the general income exclusion described in § 416.1124(c)(12).
+
+### S308. Income allocations and disregards: mutual availability of spouses' income, and the $20 and $65-plus-one-half disregards
+
+Document: D-41
+
+10 CCR 2505-10 8.100.5.H.1.a, 8.100.5.H.4.a-b. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Income of spouses living together is considered mutually available for SSI related, OAP, and Medicare Savings Programs (MSP).
+>
+> $20 General Income Disregard If there is unearned income left after the Ineligible Child and Parent(s) Allocation Disregards are applied, a General Income Disregard of $20 shall be applied as follows: The first $20 of total available unearned income (except for SSI income) must be disregarded. The remaining amount of unearned income is countable.
+>
+> $65 Plus One Half Remainder Earned Income Disregard If there is earned income left after the Ineligible Child and Parent(s) Allocation Disregards are applied: Deduct the first $65 of all earned income. Divide the remaining income in half. The result is the amount of earned income used for determining eligibility.
+
+### S309. The $65 and one-half remainder earned income exclusion, federal regulation
+
+Document: D-53
+
+20 CFR 416.1112(c)(5), (7). https://www.law.cornell.edu/cfr/text/20/416.1112
+
+> (5) $65 of earned income in a month;
+>
+> (7) One-half of remaining earned income in a month;
+
+### S310. The $20 general income exclusion, federal regulation
+
+Document: D-53
+
+20 CFR 416.1124(c)(12). https://www.law.cornell.edu/cfr/text/20/416.1124
+
+> (12) The first $20 of any unearned income in a month other than income in the form of in-kind support and maintenance received in the household of another (see § 416.1131) and income based on need. Income based on need is a benefit that uses financial need as measured by your income as a factor to determine your eligibility. The $20 exclusion does not apply to a benefit based on need that is totally or partially funded by the Federal government or by a nongovernmental agency. However, assistance which is based on need and funded wholly by a State or one of its political subdivisions is excluded totally from income as described in § 416.1124(c)(2). If you have less than $20 of unearned income in a month and you have earned income in that month, we will use the rest of the $20 exclusion to reduce the amount of your countable earned income;
+
+### S311. Earned and unearned income, statutory definitions
+
+Document: D-43
+
+42 U.S.C. 1382a(a)(1)-(2). https://www.law.cornell.edu/uscode/text/42/1382a
+
+> (a) For purposes of this subchapter, income means both earned income and unearned income; and— (1) earned income means only— (A) wages as determined under section 403(f)(5)(C) of this title but without the application of section 410(j)(3) of this title (and, in the case of cash remuneration paid for service as a member of a uniformed service (other than payments described in paragraph (2)(H) of this subsection or subsection (b)(20)), without regard to the limitations contained in section 409(d) of this title); (B) net earnings from self-employment, as defined in section 411 of this title...; and (2) unearned income means all other income, including— (A) support and maintenance furnished in cash or kind...; (B) any payments received as an annuity, pension, retirement, or disability benefit, including veterans' compensation and pensions, workmen's compensation payments, old-age, survivors, and disability insurance benefits, railroad retirement annuities and pensions, and unemployment insurance benefits;
+
+### S312. Qualified Medicare Beneficiaries (QMB)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.L.1-4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage for QMB members is payment of Medicare part B premiums, co-insurance and deductibles. In order to be eligible as a Qualified Medicare Beneficiary, the individual must meet the following: is entitled to Part A Medicare; and resources may not exceed the standard for an individual or couple who have resources, as described in section 8.100.5.M; and has income at or below the percentage of the federal poverty level for the size family as mandated for QMB by federal regulations. Poverty level is established by the Executive Office of Management and Budget. is enrolled in the mandatory SSI program with premium-free Medicare Part A. For QMB purposes, couples shall have their income compared against the federal poverty level couples income maximum. This procedure shall be applied whether one or both members apply for QMB. For QMB purposes, income of the applicant and/or the spouse shall be determined as described under Income Requirements in section 8.100.5. If two or more individuals have earned income, the income of all the individuals shall be added together and the $65 plus one half remainder earned income disregard shall be applied to the total amount of earned income.
+
+### S313. Specified Low Income Medicare Beneficiaries (SLMB)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.M.1-2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage for SLMB clients is limited to payment of monthly Medicare Part B (Supplemental Medical Insurance Benefits) premiums. Effective January 1, 1993, a Specified Low Income Medicare Beneficiary (SLMB) is an individual who: is entitled to Medicare Part A; resources may not exceed the standard for an individual or couple who has resources as described in section 8.100.5.M of this volume. has income at or below a percentage of the federal poverty level for the family size as mandated by federal regulations for SLMB. Income limits have been defined through CY 1995, as follows: CY 1993 and 1994 100-110% of FPL, CY 1995 100-120% of FPL.
+
+### S314. Medicare Qualifying Individuals 1 (QI1)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.N.1, 4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage is limited to monthly payment of Medicare Part B premiums. Payment of the premium shall be made by the Department on behalf of the individual. In order to qualify as a Medicare Qualifying Individual 1, the individual must meet the following: a. be entitled to Part A of Medicare, b. income of at least 120%, but less than 135% of the FPL. c. resources may not exceed the standard as described in section 8.100.5.M, and d. he/she cannot otherwise be eligible for Medical Assistance.
+
+### S315. Qualified Disabled and Working Individuals (QDWI)
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.O.1-4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> Medical Assistance coverage is limited to monthly payment of Medicare Part A premiums, and any other Medicare cost sharing expenses determined necessary by CMS. Effective July 1, 1990, a Qualified Disabled and Working Individual (QDWI) is an individual who: a. was a recipient of federal Social Security Disability Insurance (SSDI) benefits, who continues to be disabled but lost SSDI entitlement due to earned income in excess of the Social Security Administration's Substantial Gainful Activity (SGA) threshold, and; b. has exhausted SSA's allowed extension of "premium free" Medicare Part A coverage under SSDI, and; c. has resources at or below twice the SSI resource limit as described in section 8.100.5., and; d. has income less than 200% of FPL. An individual may be eligible under this section only if he/she is not otherwise eligible under another Medical Assistance category of eligibility.
+
+### S316. Qualified medicare beneficiary, statutory definition (income and resource tests)
+
+Document: D-27
+
+42 U.S.C. 1396d(p)(1)-(2). https://www.law.cornell.edu/uscode/text/42/1396d
+
+> (1) The term "qualified medicare beneficiary" means an individual— (A) who is entitled to hospital insurance benefits under part A of subchapter XVIII..., (B) whose income (as determined under section 1382a of this title for purposes of the supplemental security income program, except as provided in paragraph (2)(D)) does not exceed an income level established by the State consistent with paragraph (2), and (C) whose resources (as determined under section 1382b of this title for purposes of the supplemental security income program) do not exceed twice the maximum amount of resources that an individual may have and obtain benefits under that program....
+>
+> (2) (A) The income level established under paragraph (1)(B) shall be at least the percent provided under subparagraph (B) (but not more than 100 percent) of the official poverty line (as defined by the Office of Management and Budget, and revised annually in accordance with section 9902(2) of this title) applicable to a family of the size involved.
+
+### S317. Medicaid Buy-In Program for Working Adults with Disabilities
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.P.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> To be eligible for the Medicaid Buy-In Program for Working Adults with Disabilities: a. Applicants must be at least age 16. b. Income must be less than or equal to 450% of FPL after income allocations and disregards. See 8.100.5.F for Income Requirements and 8.100.5.H for Income allocations and disregards. Only the applicant's income will be considered. c. Resources are not counted in determining eligibility. d. Individuals must have a disability as defined by Social Security Administration medical listing or a limited disability as determined by a state contractor. e. Individuals must be employed. Please see Verification Requirements at 8.100.5.B.1.c. f. Individuals will be required to pay monthly premiums on a sliding scale based on income. i) The amount of premiums cannot exceed 7.5% of the individual's income. iii) Premium amounts are as follows: 1) There is no monthly premium for individuals with income at or below 40% FPL. 2) A monthly premium of $25 is applied to individuals with income above 40% of FPL but at or below 133% of FPL. 3) A monthly premium of $90 is applied to individuals with income above 133% of FPL but at or below 200% of FPL. 4) A monthly premium of $130 is applied to individuals with income above 200% of FPL but at or below 300% of FPL. 5) A monthly premium of $200 is applied to individuals with income above 300% of FPL but at or below 450% of FPL.
+
+### S318. Medicaid Buy-In Program for Children with Disabilities
+
+Document: D-41
+
+10 CCR 2505-10 8.100.6.Q.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> To be eligible for the Medicaid Buy-In Program for Children with Disabilities: a. Applicants must be age 18 or younger. b. Household income will be considered and must be less than or equal to 300% of FPL after income disregards. ... c. Resources are not counted in determining eligibility. d. Individuals must have a disability as defined by Social Security Administration medical listing. g. Families will be required to pay monthly premiums on a sliding scale based on household size and income. iv) Premium amounts are as follows: 1) There is no monthly premium for households with income at or below 133% of FPL. 2) A monthly premium of $70 is applied to households with income above 133% of FPL but at or below 185% of FPL. 3) A monthly premium of $90 is applied to individuals with income above 185% of FPL but at or below 250% of FPL. 4) A monthly premium of $120 is applied to individuals with income above 250% of FPL but at or below 300% of FPL.
+
+### S319. SSI federal benefit rates for 2026
+
+Document: D-58
+
+SSA, 90 FR (Nov. 3, 2025), Cost-of-Living Increase and Other Determinations for 2026. https://www.ssa.gov/OACT/COLA/colasummary.html
+
+> (1) The maximum Federal Supplemental Security Income (SSI) monthly payment amounts for 2026 under title XVI of the Act will be $994 for an eligible individual; $1,491 for an eligible individual with an eligible spouse; and $498 for an essential person.

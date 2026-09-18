@@ -1,0 +1,12 @@
+id: CO-237
+name: Aged category age floor
+identifier: ma_aged_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The minimum age at which a person is treated as aged for the SSI-related Aged, Blind and Disabled category, per 42 U.S.C. 1382c(a)(1)(A) and 42 CFR 435.520's federal ceiling ("must not impose an age requirement of more than 65 years").
+value: 65
+sources: [S304, S305]
+tags: [ma, non_magi, age]
+rationale: "No existing Medicaid item states the aged-category age floor (the MAGI chapter's shared age rule, CO-300, is age-neutral). ma_is_aged (CO-600) needs it."

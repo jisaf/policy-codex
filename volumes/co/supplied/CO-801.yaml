@@ -1,0 +1,12 @@
+id: CO-801
+name: Countable resources (couple)
+identifier: countable_resources_couple
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: The combined countable resources of this person and a spouse living together (or, for the batch-9 long-term care rules, the couple's total resources at the start of the first continuous period of institutionalization), after the 20 CFR 416.1210 and 8.100.5.M.2 exclusions - the figure 8.100.5.M.1's $3,000 couple resource limit is compared against.
+supplied_by: County eligibility worker's resource determination (CBMS resource screen), from verified account statements and property records for both spouses.
+sources: [S301]
+tags: [non_magi, resources]
+rationale: "The case already states this fact for CO-01's p1 and p2 (46000), but no item in this volume carries it yet; the phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_ssi_countable_resources (CO-608) needs it for a married applicant whose spouse is living with them; batch 9's ma_spousal_total_resources reads the same fact for the CSRA computation."

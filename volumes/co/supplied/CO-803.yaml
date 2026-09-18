@@ -1,0 +1,14 @@
+id: CO-803
+name: Receives Medicare Part A
+identifier: receives_medicare_part_a
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is entitled to hospital insurance benefits under Medicare Part A, including premium-free Part A - the entitlement condition 42 U.S.C. 1396d(p)(1)(A) and 10 CCR 2505-10 8.100.6.L.2.a require for QMB, SLMB and QI1.
+precision: Distinct from the broader is_medicare_entitled_or_enrolled (CO-017), which does not distinguish Part A from Part B; QMB, SLMB and QI1 each specifically require Part A entitlement, so this batch reads this narrower fact rather than CO-017 for those rules.
+supplied_by: SSA/CMS Medicare enrollment record (Part A entitlement specifically).
+sources: [S316]
+tags: [non_magi, msp]
+rationale: "42 U.S.C. 1396d(p)(1)(A) (S316) and 8.100.6.L.2.a/8.100.6.M.2.a/8.100.6.N.4.a (S312-S314) each condition QMB/SLMB/QI1 on Part A entitlement specifically, which the existing is_medicare_entitled_or_enrolled fact (CO-017, Part A or B, unspecified) does not isolate. ma_qmb_eligible, ma_slmb_eligible and ma_qi_eligible (CO-613-CO-615) need it."
+nearest: [CO-017]

@@ -1,0 +1,12 @@
+id: CO-800
+name: Countable resources (individual)
+identifier: countable_resources_individual
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: This person's own countable resources after the exclusions 20 CFR 416.1210 and 10 CCR 2505-10 8.100.5.M.2 describe, as an individual (not combined with a spouse's resources) - the figure 10 CCR 2505-10 8.100.5.M.1's $2,000 individual resource limit is compared against.
+supplied_by: County eligibility worker's resource determination (CBMS resource screen), from verified account statements and property records.
+sources: [S301]
+tags: [non_magi, resources]
+rationale: "The case already states this fact for CO-01's p1 (1900), but no item in this volume carries it yet; the phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_ssi_countable_resources (CO-608) and ma_meets_ssi_resource_standard (CO-610) need it for a person not treated as part of a couple for SSI-related resource purposes."

@@ -1,0 +1,16 @@
+id: CO-608
+name: "Medicaid: SSI-related countable resources"
+identifier: ma_ssi_countable_resources
+kind: derived
+type: money
+scope: person
+program: Medicaid
+meaning: This person's countable resources for SSI-related, OAP and Medicare Savings Program purposes - countable_resources_couple if the person has ma_ssi_household_size 2 (married and living together, not institutionalized), otherwise countable_resources_individual - compared against the resource standards of 10 CCR 2505-10 8.100.5.M.1.
+derived: [case, [[=, ma_ssi_household_size, 2], countable_resources_couple], [else, countable_resources_individual]]
+sources: [S301]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "No existing item selects between the individual and couple resource figures based on household size. ma_meets_ssi_resource_standard (CO-610) needs it."
+tests:
+  - {id: CO-608-T1, as_of: "2026-10-01", given: {countable_resources_individual: 1900, countable_resources_couple: 46000, in_medical_institution: true}, others: {}, relationships: [], expect: 1900}
+  - {id: CO-608-T2, as_of: "2026-10-01", given: {countable_resources_individual: 100, countable_resources_couple: 46000, in_medical_institution: false}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 46000}

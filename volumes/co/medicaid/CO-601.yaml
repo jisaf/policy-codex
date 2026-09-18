@@ -1,0 +1,18 @@
+id: CO-601
+name: "Medicaid: is blind"
+identifier: ma_is_blind
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets the SSI-related "blind" category, using the same definition of blindness as SSI, per 42 CFR 435.530(a) and 10 CCR 2505-10 8.100.6.B.
+precision: Reads is_blind (the shared SSA/SSI blindness determination fact) directly, since Colorado's disability determination unit makes the finding per 8.100.6.B.1.
+derived: [all, is_blind]
+sources: [S305]
+implemented: engine
+tags: [ma, non_magi, disability]
+rationale: "No existing item states the SSI-related blind-category test as its own named rule; ma_is_aged_blind_or_disabled (CO-603) reads it by name rather than reading is_blind directly, so the category composition rule documents which of the three prongs each fact represents."
+nearest: []
+tests:
+  - {id: CO-601-T1, as_of: "2026-10-01", given: {is_blind: true}, expect: true}
+  - {id: CO-601-T2, as_of: "2026-10-01", given: {is_blind: false}, expect: false}

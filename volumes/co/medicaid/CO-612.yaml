@@ -1,0 +1,22 @@
+id: CO-612
+name: "Medicaid: SSI-related category"
+identifier: ma_ssi_related_category
+kind: derived
+type: one of
+options: [ssi_recipient, aged, blind, disabled, none]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: The single SSI-related Aged, Blind and Disabled category this person qualifies under for the month, tested in the order 10 CCR 2505-10 8.100.6.C-8.100.6.A lists them - an SSI recipient first, then aged, blind, or disabled (in that order, for a person who independently meets both SSI standards), or none.
+precision: A person can meet more than one of aged/blind/disabled at once (for example, an aged blind person); this item reports the first the case order lists, matching the "otherwise" ordering pattern (P33) other category outcomes in this volume use (see snap_eligibility_status, CO-387).
+derived: [case, [receives_ssi, "ssi_recipient"], [[not, ma_is_ssi_related_eligible], "none"], [ma_is_aged, "aged"], [ma_is_blind, "blind"], [ma_is_disabled, "disabled"], [else, "none"]]
+sources: [S303]
+implemented: engine
+tags: [ma, non_magi, age, disability]
+rationale: "No existing item reports which SSI-related category a person qualifies under as a single enumerated outcome. Needed as the batch's SSI-related outcome per the phase-4 brief's interface (role: outcome)."
+nearest: [CO-387]
+tests:
+  - {id: CO-612-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: true, ma_is_ssi_related_eligible: true, ma_is_aged: false, ma_is_blind: false, ma_is_disabled: false}, expect: ssi_recipient}
+  - {id: CO-612-T2, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, ma_is_ssi_related_eligible: true, ma_is_aged: true, ma_is_blind: false, ma_is_disabled: false}, expect: aged}
+  - {id: CO-612-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, ma_is_ssi_related_eligible: false, ma_is_aged: true, ma_is_blind: false, ma_is_disabled: false}, expect: none}
+  - {id: CO-612-T4, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, ma_is_ssi_related_eligible: true, ma_is_aged: false, ma_is_blind: false, ma_is_disabled: true}, expect: disabled}

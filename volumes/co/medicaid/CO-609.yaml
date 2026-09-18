@@ -1,0 +1,16 @@
+id: CO-609
+name: "Medicaid: meets the SSI income standard"
+identifier: ma_meets_ssi_income_standard
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person's ma_ssi_countable_income for the month does not exceed the SSI Federal Benefit Rate for their ma_ssi_household_size - the income test 10 CCR 2505-10 8.100.6.C.1.a-b and 8.100.6.K.3-4 apply for SSI/OAP eligibility.
+derived: [<=, ma_ssi_countable_income, [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ma_ssi_federal_benefit_rate_individual]]]
+sources: [S303, S319]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item compares SSI-related countable income to the Federal Benefit Rate. ma_is_ssi_related_eligible (CO-611) needs it. CO-01's p1 (2030 > 994) is the worked example the batch report discusses: p1 fails this test and is not SSI-related eligible on income (batch 9's 300%-of-FBR long-term-care special income group takes over)."
+tests:
+  - {id: CO-609-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 990, in_medical_institution: true}, others: {}, relationships: [], expect: true}
+  - {id: CO-609-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 2030, in_medical_institution: true}, others: {}, relationships: [], expect: false}

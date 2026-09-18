@@ -1,0 +1,13 @@
+id: CO-806
+name: Disabled for Buy-In purposes
+identifier: is_disabled_for_buy_in
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person has a disability as defined by the Social Security Administration's medical listings, or (for the Working Adults with Disabilities program only) a limited disability as determined by a state contractor - the disability condition 10 CCR 2505-10 8.100.6.P.1.d and 8.100.6.Q.1.d require for the Buy-In programs.
+precision: Distinct from is_disabled_ssa (CO-... the shared SSI/OAP disability fact), because 8.100.6.P.1.d admits a second, state-contractor "limited disability" standard for WAwD that the SSA medical-listing standard alone does not describe; a person who fails is_disabled_ssa can still be is_disabled_for_buy_in for WAwD.
+supplied_by: SSA disability determination, or (for WAwD) a state contractor's limited-disability determination.
+sources: [S317, S318]
+tags: [non_magi, buy_in, disability]
+rationale: "8.100.6.P.1.d and 8.100.6.Q.1.d (S317, S318) each require a disability finding for the Buy-In programs, using a standard (SSA medical listing, plus WAwD's alternative limited-disability standard) that is not identical to the SSI/OAP disability standard is_disabled_ssa carries (1382c(a)(3)'s inability to engage in substantial gainful activity). ma_wawd_eligible and ma_cbwd_eligible (CO-618, CO-620) need it."

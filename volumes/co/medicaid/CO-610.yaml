@@ -1,0 +1,16 @@
+id: CO-610
+name: "Medicaid: meets the SSI resource standard"
+identifier: ma_meets_ssi_resource_standard
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether this person's ma_ssi_countable_resources do not exceed the SSI-related resource limit for their ma_ssi_household_size, per 42 U.S.C. 1382b, 20 CFR 416.1205 and 10 CCR 2505-10 8.100.5.M.1.
+derived: [<=, ma_ssi_countable_resources, [case, [[=, ma_ssi_household_size, 2], ma_ssi_resource_limit_couple], [else, ma_ssi_resource_limit_individual]]]
+sources: [S301, S302]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "No existing item compares SSI-related countable resources to the $2,000/$3,000 limit. ma_is_ssi_related_eligible (CO-611) needs it. CO-01's p1 (1900 <= 2000) is the worked example in the batch report."
+tests:
+  - {id: CO-610-T1, as_of: "2026-10-01", given: {ma_ssi_countable_resources: 1900, in_medical_institution: true}, others: {}, relationships: [], expect: true}
+  - {id: CO-610-T2, as_of: "2026-10-01", given: {ma_ssi_countable_resources: 2500, in_medical_institution: true}, others: {}, relationships: [], expect: false}

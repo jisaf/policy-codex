@@ -1,0 +1,17 @@
+id: CO-618
+name: "Medicaid: is Working Adults with Disabilities Buy-In eligible"
+identifier: ma_wawd_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible for the Medicaid Buy-In Program for Working Adults with Disabilities - at least 16, employed, disabled, and with countable income at or below 450% of the federal poverty level for a single individual - per 10 CCR 2505-10 8.100.6.P.1.
+precision: "'Only the applicant's income will be considered' (8.100.6.P.1.b), and 8.100.5.H.1's carve-out ('the applicant's spouse's income does not count toward the applicant') means this item computes the applicant's own earned/unearned income and disregards without combining a living-together spouse's income, unlike ma_ssi_countable_income (CO-607); it applies the same $65-plus-one-half and $20 disregard structure to the applicant's own income only. Resources are not counted (8.100.6.P.1.c), so no resource test is included."
+derived: [all, [">=", age, ma_wawd_min_age], is_employed, is_disabled_for_buy_in, [<=, [+, ["*", [max, 0, ["-", earned_income, ma_ssi_earned_income_exclusion]], ma_ssi_earned_income_disregard_rate], [max, 0, ["-", [+, social_security_income, pension_income, unemployment_income, other_unearned_income, in_kind_support_and_maintenance], ma_ssi_general_income_exclusion]]], ["*", [/, [lookup, ma_poverty_guideline_table, 1], 12], ma_wawd_income_limit_pct]]]
+sources: [S317]
+implemented: engine
+tags: [ma, non_magi, buy_in, income, disability]
+rationale: "No existing item states the WAwD eligibility test. ma_buy_in_category (CO-622) needs it. ma_wawd_premium (CO-619) reuses the same applicant-only income computation this item makes inline, since both read the identical 8.100.6.P.1.b definition of countable income for this program."
+tests:
+  - {id: CO-618-T1, as_of: "2026-10-01", month: "2026-10", given: {age: 30, is_employed: true, is_disabled_for_buy_in: true, earned_income: 2000, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0}, expect: true}
+  - {id: CO-618-T2, as_of: "2026-10-01", month: "2026-10", given: {age: 30, is_employed: false, is_disabled_for_buy_in: true, earned_income: 2000, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income: 0, in_kind_support_and_maintenance: 0}, expect: false}

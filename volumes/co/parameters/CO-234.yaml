@@ -1,0 +1,12 @@
+id: CO-234
+name: SSI-related resource limit, couple
+identifier: ma_ssi_resource_limit_couple
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The countable resource limit for a married SSI-related or OAP applicant living with a spouse, per 42 U.S.C. 1382b, 20 CFR 416.1205(c) and 10 CCR 2505-10 8.100.5.M.1.
+value: 3000
+sources: [S301, S302]
+tags: [ma, non_magi, resources]
+rationale: "No existing item states the $3,000 couple SSI-related resource limit. ma_meets_ssi_resource_standard (CO-610) needs it."

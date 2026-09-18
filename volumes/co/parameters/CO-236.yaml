@@ -1,0 +1,16 @@
+id: CO-236
+name: SSI federal benefit rate, couple
+identifier: ma_ssi_federal_benefit_rate_couple
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The maximum monthly SSI federal benefit rate for an eligible individual with an eligible spouse - the income standard the SSI-related income test compares a couple's countable income against.
+precision: Set annually by SSA's cost-of-living notice; versioned by effective date.
+versions:
+  - from: "2026-01-01"
+    value: 1491
+    source: S319
+sources: [S319]
+tags: [ma, non_magi, income]
+rationale: "Companion figure to ma_ssi_federal_benefit_rate_individual (CO-235), for a married couple both SSI-eligible or living together and mutually available under 8.100.5.H.1.a. ma_meets_ssi_income_standard (CO-609) needs it."

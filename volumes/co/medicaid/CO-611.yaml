@@ -1,0 +1,18 @@
+id: CO-611
+name: "Medicaid: is SSI-related eligible"
+identifier: ma_is_ssi_related_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible for Medical Assistance under the SSI-related Aged, Blind and Disabled category - an SSI recipient, or aged/blind/disabled and meeting both the SSI income and resource standards, plus residency and citizenship - per 10 CCR 2505-10 8.100.6.C and 8.100.5.
+precision: A person receiving SSI is categorically eligible under 8.100.6.C.1.a-b without a separate income/resource test this item performs (SSA has already determined it); a person not receiving SSI must independently meet ma_is_aged_blind_or_disabled and both standards.
+derived: [all, ma_meets_residency, ma_meets_citizenship_requirement, [any, receives_ssi, [all, ma_is_aged_blind_or_disabled, ma_meets_ssi_income_standard, ma_meets_ssi_resource_standard]]]
+sources: [S303]
+implemented: engine
+tags: [ma, non_magi, income, resources, age, disability]
+rationale: "No existing item combines SSI recipiency or the independent aged/blind/disabled-plus-both-standards path with residency and citizenship into one SSI-related eligibility test. ma_ssi_related_category (CO-612) needs it. Reuses ma_meets_residency (CO-505) and ma_meets_citizenship_requirement (CO-509) from the MAGI chapter rather than restating Colorado's single residency/citizenship rule a second time for the non-MAGI chapter."
+nearest: [CO-505, CO-509]
+tests:
+  - {id: CO-611-T1, as_of: "2026-10-01", month: "2026-10", given: {state_of_residence: "CO", citizenship_status: citizen, lawful_presence_status: unknown, date_of_birth: "1985-01-22", is_pregnant: false, receives_ssi: true, ma_is_aged_blind_or_disabled: false, ma_meets_ssi_income_standard: false, ma_meets_ssi_resource_standard: false}, expect: true}
+  - {id: CO-611-T2, as_of: "2026-10-01", month: "2026-10", given: {state_of_residence: "CO", citizenship_status: citizen, lawful_presence_status: unknown, date_of_birth: "1947-03-12", is_pregnant: false, receives_ssi: false, ma_is_aged_blind_or_disabled: true, ma_meets_ssi_income_standard: false, ma_meets_ssi_resource_standard: true}, expect: false}

@@ -1,0 +1,18 @@
+id: CO-605
+name: "Medicaid: SSI-related countable earned income"
+identifier: ma_ssi_countable_earned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: This person's (and, if living together, their spouse's) combined gross earned income for the month, after the $65 earned income exclusion and the one-half remainder disregard of 20 CFR 416.1112(c) and 10 CCR 2505-10 8.100.5.H.4.b.
+precision: Combines earned_income across ma_ssi_household_size's spouse-living-together group (8.100.5.H.1.a's "mutually available" rule) before applying one $65 exclusion and one one-half disregard to the combined total, per 8.100.5.H.4.a.iii's "only one ... disregard is allowed per couple." Does not model the Ineligible Child/Parent(s) Allocation deductions of 8.100.5.H.3 (see OQ-83).
+derived: ["*", ["max", 0, ["-", [sum, [reachable, [spouse], [all, [not, in_medical_institution], [not, [of, [P], in_medical_institution]]]], [of, [P], earned_income]], ma_ssi_earned_income_exclusion]], ma_ssi_earned_income_disregard_rate]
+sources: [S308, S309]
+open: [OQ-83]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item applies the $65-plus-one-half SSI earned income disregard. ma_ssi_countable_income (CO-607) needs it."
+tests:
+  - {id: CO-605-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0, in_medical_institution: false}, others: {}, relationships: [], expect: 0}
+  - {id: CO-605-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 465, in_medical_institution: false}, others: {}, relationships: [], expect: 200}

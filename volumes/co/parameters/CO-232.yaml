@@ -1,0 +1,12 @@
+id: CO-232
+name: SSI-related earned income disregard rate
+identifier: ma_ssi_earned_income_disregard_rate
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The fraction of earned income remaining after the $65 exclusion that is further disregarded (one-half) before the remainder is counted as earned income, per 20 CFR 416.1112(c)(7) and 10 CCR 2505-10 8.100.5.H.4.b.i)2).
+value: 0.5
+sources: [S308, S309]
+tags: [ma, non_magi, income]
+rationale: "No existing item states the one-half earned income disregard rate. ma_ssi_countable_earned_income (CO-605) needs it."

@@ -1,0 +1,13 @@
+id: CO-240
+name: QI-1 income limit, percentage of FPL
+identifier: ma_qi_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The income ceiling for Qualifying Individual 1 eligibility, as a decimal fraction of the federal poverty level, per 10 CCR 2505-10 8.100.6.N.4.b ("at least 120%, but less than 135% of the FPL").
+value: 1.35
+sources: [S314]
+tags: [ma, non_magi, msp, income]
+rationale: "No existing item states the QI-1 income ceiling. ma_qi_eligible (CO-615) needs it; the 120% floor is read directly from ma_slmb_income_limit_pct (CO-239), which states the same figure, rather than a second parameter of the same value, per the phase-3 brief's cross-reference convention."
+nearest: [CO-239]

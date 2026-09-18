@@ -1,0 +1,12 @@
+id: CO-242
+name: Working Adults with Disabilities income limit, percentage of FPL
+identifier: ma_wawd_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The income ceiling for the Medicaid Buy-In Program for Working Adults with Disabilities, as a decimal fraction of the federal poverty level, per 10 CCR 2505-10 8.100.6.P.1.b ("Income must be less than or equal to 450% of FPL").
+value: 4.5
+sources: [S317]
+tags: [ma, non_magi, buy_in, income]
+rationale: "No existing item states the WAwD income ceiling. ma_wawd_eligible (CO-618) and the top band of ma_wawd_premium (CO-619) need it."

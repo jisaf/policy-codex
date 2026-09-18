@@ -1,0 +1,17 @@
+id: CO-602
+name: "Medicaid: is disabled"
+identifier: ma_is_disabled
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person meets the SSI-related "disabled" category under 42 U.S.C. 1382c(a)(3)'s inability to engage in substantial gainful activity, using SSA's disability determination as 42 CFR 435.540(a) and 8.100.6.B direct.
+precision: Reads is_disabled_ssa directly, for the same reason ma_is_blind (CO-601) reads is_blind.
+derived: [all, is_disabled_ssa]
+sources: [S304, S305]
+implemented: engine
+tags: [ma, non_magi, disability]
+rationale: "No existing item states the SSI-related disabled-category test as its own named rule. ma_is_aged_blind_or_disabled (CO-603) needs it."
+tests:
+  - {id: CO-602-T1, as_of: "2026-10-01", given: {is_disabled_ssa: true}, expect: true}
+  - {id: CO-602-T2, as_of: "2026-10-01", given: {is_disabled_ssa: false}, expect: false}

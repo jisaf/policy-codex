@@ -1,0 +1,21 @@
+id: CO-617
+name: "Medicaid: Medicare Savings Program category"
+identifier: ma_msp_category
+kind: derived
+type: one of
+options: [qmb, slmb, qi, qdwi, none]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: The single Medicare Savings Program category this person qualifies under for the month, tested in the order Colorado's tiers of Medicare cost-sharing assistance run (10 CCR 2505-10 8.100.6.L-8.100.6.O) - QMB first (the most generous), then SLMB, then QI-1, then QDWI, or none.
+precision: QMB and SLMB/QI-1 are structured as increasing income bands that cannot overlap by construction (ma_slmb_eligible and ma_qi_eligible each exclude the tier below); QDWI is a separate track (Part A entitlement on a disability basis that has been or is being lost) that can coincide with none of the others, so testing it last is a matter of the category list's order, not exclusivity.
+derived: [case, [ma_qmb_eligible, "qmb"], [ma_slmb_eligible, "slmb"], [ma_qi_eligible, "qi"], [ma_qdwi_eligible, "qdwi"], [else, "none"]]
+sources: [S312, S313, S314, S315]
+implemented: engine
+tags: [ma, non_magi, msp]
+rationale: "No existing item reports which single MSP category a person qualifies under. Needed as the batch's MSP outcome per the phase-4 brief's interface (role: outcome). CO-01's p2 (QMB by income, given the resource test the coordinator's case will supply) is the worked example in the batch report."
+nearest: [CO-387, CO-612]
+tests:
+  - {id: CO-617-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_qmb_eligible: true, ma_slmb_eligible: false, ma_qi_eligible: false, ma_qdwi_eligible: false}, expect: qmb}
+  - {id: CO-617-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_qmb_eligible: false, ma_slmb_eligible: true, ma_qi_eligible: false, ma_qdwi_eligible: false}, expect: slmb}
+  - {id: CO-617-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_qmb_eligible: false, ma_slmb_eligible: false, ma_qi_eligible: false, ma_qdwi_eligible: false}, expect: none}

@@ -1,0 +1,12 @@
+id: CO-805
+name: Is employed
+identifier: is_employed
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: The person is currently employed (working for wages or self-employed) - the condition 10 CCR 2505-10 8.100.6.P.1.e requires for the Medicaid Buy-In Program for Working Adults with Disabilities, and 8.100.6.O.2.a's SGA-threshold earned income implies for QDWI.
+supplied_by: Employer verification (the Work Number, pay stubs) or self-employment declaration, per 8.100.5.B.1.c's verification requirements.
+sources: [S317]
+tags: [non_magi, buy_in]
+rationale: "8.100.6.P.1.e (S317) requires WAwD applicants to be employed. ma_wawd_eligible (CO-618) needs a plain employment fact; the volume's existing hours_worked (person-month, SNAP-oriented) does not state whether the person is currently employed as a yes/no condition for a program that does not otherwise track hours."
