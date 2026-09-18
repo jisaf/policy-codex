@@ -1,0 +1,16 @@
+id: CO-251
+name: Personal needs allowance, institutional (non-veteran)
+identifier: ma_personal_needs_allowance_institutional
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The base personal needs allowance deducted first from a Long-Term Care institution resident's income before computing patient payment, per 10 CCR 2505-10 § 8.100.7.V.3.d.i and 42 CFR 435.725(c)(1).
+precision: Adjusted annually at the same rate as the statewide average nursing facility per diem rate net of patient payment (C.R.S. § 25.5-6-202(9)(b)(I)); versioned by effective date. The federal floor is $30/month for an individual (42 CFR 435.725(c)(1)(i)); Colorado's $75 base exceeds it.
+versions:
+  - from: "2015-01-01"
+    value: 75
+    source: S361
+sources: [S361, S374]
+tags: [ma, ltc, income]
+rationale: "No existing item states the institutional personal needs allowance. ma_patient_payment (CO-658) needs it. Text states the current base figure directly (unlike the CSRA/MMMNA/home-equity figures, which are supplied per OQ-91), so this is a parameter, not a supplied fact, per the phase-4 brief's instruction."

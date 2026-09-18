@@ -1,0 +1,14 @@
+id: CO-838
+name: Family members with community spouse
+identifier: family_members_with_community_spouse
+kind: supplied
+type: group of persons
+scope: person
+program: Medicaid
+meaning: The dependent children (minor or adult), dependent parents, or dependent siblings of either spouse who reside with the community spouse and can be claimed by either spouse as a federal tax dependent, per 10 CCR 2505-10 § 8.100.7.T.1.c.ii - the group ma_family_allowance (CO-657) sums the per-member allowance over.
+precision: An empty group for an institutionalized spouse whose community spouse has no qualifying dependents living with them (the target household's p2 has none).
+supplied_by: Eligibility Site's determination of household composition at the community spouse's residence and tax-dependency claims.
+sources: [S360]
+open: [OQ-95]
+tags: [ma, ltc, income]
+rationale: "8.100.7.T.1.c.ii's family-member definition (dependent, residing with the community spouse, claimable by either spouse) is not fully composable from this volume's existing relationship edges without a cross-batch 'lives with' read this batch does not add (OQ-95); modeled as a supplied group fact instead. ma_family_allowance (CO-657) needs it."

@@ -1,0 +1,14 @@
+id: CO-834
+name: Shelter costs, community spouse
+identifier: shelter_costs_community_spouse
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The community spouse's monthly rent or mortgage payment (principal and interest), taxes, insurance, condominium/cooperative maintenance fee, and utility allowance for their principal residence, per 10 CCR 2505-10 § 8.100.7.Q.1.b - the figure the excess shelter allowance compares against 30% of the MMMNA standard.
+precision: Already combines the utility component (the greater of Colorado's standard utility allowance or the community spouse's actual verified utilities per § 8.100.7.Q.1.b.ii); does not separately state rent and utilities.
+supplied_by: Eligibility Site's verification of the community spouse's shelter and utility expenses.
+sources: [S358]
+open: [OQ-97]
+tags: [ma, ltc, income]
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_mmmna (CO-655) needs it for the excess shelter allowance."

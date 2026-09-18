@@ -1,0 +1,12 @@
+id: CO-250
+name: Special income group percentage of SSI benefit
+identifier: ma_special_income_group_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: The percentage of the individual SSI federal benefit rate that a Long-Term Care institution, HCBS, or PACE applicant's gross income must not exceed to meet the 300% Institutionalized Special Income category, per 10 CCR 2505-10 §§ 8.100.6.K.5 and 8.100.7.A.2.e and 42 CFR 435.1005.
+value: 3.0
+sources: [S351, S352, S377]
+tags: [ma, ltc, income]
+rationale: "No existing item states the 300% special income group percentage. ma_meets_special_income_group (CO-642) needs it as a parameter rather than a literal 3.0, since the statute and regulation both state it as a fixed policy figure."

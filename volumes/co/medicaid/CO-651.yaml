@@ -1,0 +1,19 @@
+id: CO-651
+name: "Medicaid: is financially eligible for LTC"
+identifier: ma_ltc_financially_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person meets every financial condition for Long-Term Care assistance for the month - the special income group income test, the LTC resource standard, no disqualifying home equity, and no current transfer-of-assets penalty - per 10 CCR 2505-10 § 8.100.7.
+precision: Treats any positive ma_transfer_penalty_months as a current disqualification rather than tracking the penalty period's calendar span - see OQ-94.
+derived: [all, ma_meets_special_income_group, ma_meets_ltc_resource_standard, [not, ma_home_equity_disqualifies], ["<=", ma_transfer_penalty_months, 0]]
+sources: [S351]
+open: [OQ-94]
+implemented: engine
+tags: [ma, ltc, income, resources, legal]
+rationale: "No existing item combines the special income group, resource, home equity and transfer-penalty tests into one financial-eligibility gate. ma_hcbs_waiver_eligible (CO-653), ma_pace_eligible (CO-654) and ma_ltc_eligibility_status (CO-652) need it."
+tests:
+  - {id: CO-651-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_home_equity_disqualifies: false, ma_transfer_penalty_months: 0}, expect: true}
+  - {id: CO-651-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_home_equity_disqualifies: false, ma_transfer_penalty_months: 5}, expect: false}
+  - {id: CO-651-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_special_income_group: false, ma_meets_ltc_resource_standard: true, ma_home_equity_disqualifies: false, ma_transfer_penalty_months: 0}, expect: false}

@@ -1762,3 +1762,257 @@ Document: D-58
 SSA, 90 FR (Nov. 3, 2025), Cost-of-Living Increase and Other Determinations for 2026. https://www.ssa.gov/OACT/COLA/colasummary.html
 
 > (1) The maximum Federal Supplemental Security Income (SSI) monthly payment amounts for 2026 under title XVI of the Act will be $994 for an eligible individual; $1,491 for an eligible individual with an eligible spouse; and $498 for an essential person.
+
+### S351. The 300% Institutionalized Special Income category
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.A. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. For Long-Term Care services to be covered in a Long-Term Care institution, a client must be determined eligible under the 300% Institutionalized Special Income category. ... For purposes of applying the special income standard for the aged, disabled or blind persons in Long-Term Care Institutions, gross income means income before application of deductions, exemptions or disregards appropriate to the SSI program.
+> 2. Eligibility under the 300% Institutionalized Special Income category will be provided to applicants who:
+> c. Have been institutionalized for at least 30 consecutive full days in a Long-Term Care institution. The 30 consecutive full day stay may be a combination of days in a hospital, Long-Term Care institution, or receiving services from a Home and Community Based Services (HCBS) program or Program of All Inclusive Care for the Elderly (PACE).
+> e. Have gross income that does not exceed 300% of the current individual SSI benefit level or; Are in a Long-Term Care institution (excluding hospital) whose gross income exceeds the 300% level and who establishes an income trust in accordance with the rules on income trusts in section 8.100.7 of this volume;
+
+### S352. Special income group population, general information
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.6.K.5. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 5. Medical Assistance must be provided to persons in a facility eligible for Medical Assistance reimbursement whose income is under 300% of the SSI benefit level and who, but for the level of their income, would be eligible for OAP "A" or OAP "B" and SSI financial assistance.
+
+### S353. HCBS/PACE eligibility through the 300% special income category or spousal impoverishment
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.B. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. HCBS or PACE shall be provided to persons who have been assessed by the Single Entry Point/Case Management Agency to have met the institutional level of care and will remain in the community by receiving HCBS or PACE; and
+> b. are eligible under the Institutionalized 300% Special Income category described at 8.100.7.A; or
+
+### S354. Institutionalized spouse and community spouse defined
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.K. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The spousal protection regulations apply to married couples where one spouse is institutionalized or likely to be institutionalized for at least 30 consecutive days and the other spouse remains in the community. Being a community spouse does not prohibit Medicaid eligibility if all criteria are met.
+> 3. A community spouse is defined as the spouse of an institutionalized spouse.
+
+### S355. Calculation of the Community Spouse Resource Allowance
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.M.1. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. A Community Spouse Resource Allowance (CSRA) shall be allocated based on the total resources owned by the couple as of the time of Medical Assistance application. ... the CSRA is the largest of the following amounts:
+> a. The total resources of the couple but no more than the current maximum allowance which, changes each year beginning January 1st.; or
+
+### S356. Home and other exempt resources not counted toward the CSRA
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.N. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> The CSRA shall not include the value of exempt resources including the home. It is not necessary for the home to be transferred to the community spouse.
+
+### S357. Institutionalized spouse's resource and income eligibility
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.O. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The institutionalized spouse is resource eligible for Medical Assistance when the total resources owned by the couple are at or below the amount of the Community Spouse Resource Allowance plus the Medical Assistance resource allowance for an individual of $2,000.
+> 2. ... The institutionalized spouse shall be income eligible if his/her gross income is at or below the Medical Assistance income limit for recipients of long-term care.
+
+### S358. Calculating the community spouse's minimum monthly needs
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.Q. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The community spouse's total minimum monthly needs shall be determined as follows:
+> a. The current minimum monthly maintenance needs allowance (MMMNA), which is equal to 150% of the federal poverty level for a family of two and is adjusted in July of each year;
+> b. An excess shelter allowance, in cases where the community spouse's expenses for shelter exceed 30% of the MMMNA.
+> iii) The excess shelter allowance is the amount, if any, that exceeds 30% of the MMMNA.
+
+### S359. MMMNA maximum cap
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.Q.4. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 4. The total that results from adding the current MMMNA and the excess shelter allowance shall not exceed the current maximum MMMNA which is $2,175.00 for the year 2001 and is adjusted by the Health Care Financing Administration in January of each year.
+
+### S360. Deductions from the institutionalized spouse's monthly income, in order
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.T.1. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. During each month after the institutionalized spouse becomes Medical Assistance eligible, deductions shall be made from the institutionalized spouse's monthly income in the following order.
+> a. A personal needs allowance or the client maintenance allowance as allowed by program eligibility.
+> b. A Monthly Income Allowance (MIA) for the community spouse, but only to the extent that income of the institutionalized spouse is actually made available to, or for the benefit of, the community spouse;
+> c. A family allowance for each dependent family member who lives with the community spouse.
+> i) The allowance for each dependent family member shall be equal to one third of the amount of the MMMNA and shall be reduced by the monthly income of that family member.
+
+### S361. Personal needs allowance base amount
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.d.i. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> i) Non-Veteran related personal needs allowance
+> 2) Effective January 1, 2015 the personal needs allowance base amount is $75 per month and will be adjusted annually at the same rate as the statewide average of the nursing facility per diem rate net of patient payment pursuant to C.R.S. §25.5-6-202(9)(b)(I). Each yearly adjustment will set a new base amount.
+
+### S362. Veterans-related personal needs allowance
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.3.d.ii. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> ii) Veterans-related personal needs allowance Effective 07/01/91, the personal needs allowance shall be $90 per month for a veteran in a Long-Term Care institution who has no spouse or dependent child and who receives a non-service connected disability pension from the U.S. Veterans Administration.
+
+### S363. Patient payment reduced to zero
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.V.4.a. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> a. Patient payment may be reduced only under the following conditions:
+> i) A resident's income is equal to or less than the personal needs allowance and there is no long term care insurance payment, in which case the patient payment is zero; or
+
+### S364. VA Aid and Attendance/Unusual Medical Expenses excluded from patient payment
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.6.C (VA pension). https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> 1. The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall not be used as patient payment to the medical facility:
+
+### S365. Transfers of assets: definitions, look-back and penalty period
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.1-2. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> d. "Look-back period" means the number of months prior to the month of application for long-term care services that the Department will consider for transfer of assets.
+> e. "Penalty period" means a period of time for which an applicant or client will not be eligible to receive long-term care services.
+> f. "Uncompensated value" shall mean the fair market value of an asset at the time of the transfer minus the value of compensation the individual receives in exchange for the asset.
+> 2. General Provisions If an institutionalized individual or the spouse of such individual disposes of assets without fair consideration on or after the look-back period, the individual shall be subject to a period of ineligibility for Long-Term Care services, including Long-Term Care institution care, Home and Community Based Services (HCBS), and the Program of All Inclusive Care for the Elderly (PACE).
+
+### S366. Penalty period calculation, uncompensated value divided by the average private pay rate
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.2.c. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> c. If an institutionalized individual or such individual's spouse transfers assets without fair consideration on or after the look-back period, the transfer shall be evaluated as follows:
+> i) The fair market value of the transferred asset, less the actual amount received, if any, shall be divided by the average of the regions, defined at 8.100.7.E, monthly private pay cost for Long-Term Care institution care in the state of Colorado at the time of application.
+
+### S367. Apportionment of penalty period between spouses
+
+Document: D-41
+
+10 CCR 2505-10 § 8.100.7.F.8. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.400
+
+> a. If a transfer results in a period of ineligibility for an individual, and the individual's spouse becomes institutionalized and is otherwise eligible for Medical Assistance, the period of ineligibility shall be apportioned equally between the spouses.
+
+### S368. Federal 60-month look-back and disqualification for transfers without fair consideration
+
+Document: D-46
+
+42 U.S.C. 1396p(c)(1)(B). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> the look-back date specified in this subparagraph is a date that is 60 months (or, in the case of payments from a trust or portions of a trust that are treated as assets disposed of by the individual ... 60 months) before the date specified in subparagraph (A).
+
+### S369. Home equity disqualification and its base/cap figures with CPI indexing
+
+Document: D-46
+
+42 U.S.C. 1396p(f)(1). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> (A) Notwithstanding any other provision of this subchapter, subject to subparagraphs (B) and (C) of this paragraph and paragraph (2), in determining eligibility of an individual for medical assistance with respect to nursing facility services or other long-term care services, the individual shall not be eligible for such assistance if the individual's equity interest in the individual's home exceeds $500,000.
+> (B) A State may elect ... to apply subparagraph (A) by substituting for "$500,000", an amount that exceeds such amount, but does not exceed $750,000.
+> (C) The dollar amounts specified in this paragraph shall be increased, beginning with 2011, from year to year based on the percentage increase in the consumer price index for all urban consumers (all items; United States city average), rounded to the nearest $1,000.
+
+### S370. Home equity exception for a spouse or child lawfully residing in the home
+
+Document: D-46
+
+42 U.S.C. 1396p(f)(2). https://www.law.cornell.edu/uscode/text/42/1396p
+
+> Paragraph (1) shall not apply with respect to an individual if— (A) the spouse of such individual, or (B) such individual's child who is under age 21, or ... is blind or permanently and totally disabled ... is lawfully residing in the individual's home.
+
+### S371. Community spouse resource allowance: base and maximum figures with indexing
+
+Document: D-47
+
+42 U.S.C. 1396r-5(f)(2), (g). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (2) Community spouse resource allowance defined In paragraph (1), the "community spouse resource allowance" for a community spouse is an amount (if any) by which— (A) the greatest of— (i) $12,000 (subject to adjustment under subsection (g)), ... (ii) the lesser of (I) the spousal share computed under subsection (c)(1), or (II) $60,000 (subject to adjustment under subsection (g)), ... exceeds (B) the amount of the resources otherwise available to the community spouse.
+> (g) Indexing dollar amounts For services furnished during a calendar year after 1989, the dollar amounts specified in subsections (d)(3)(C), (f)(2)(A)(i), and (f)(2)(A)(ii)(II) shall be increased by the same percentage as the percentage increase in the consumer price index for all urban consumers (all items; U.S. city average) between September 1988 and the September before the calendar year involved.
+
+### S372. Minimum monthly maintenance needs allowance: applicable percent and cap
+
+Document: D-47
+
+42 U.S.C. 1396r-5(d)(3). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (A) In general Each State shall establish a minimum monthly maintenance needs allowance for each community spouse which, subject to subparagraph (C), is equal to or exceeds— (i) the applicable percent (described in subparagraph (B)) of 1⁄12 of the income official poverty line ... for a family unit of 2 members; plus (ii) an excess shelter allowance (as defined in paragraph (4)).
+> (B) Applicable percent ... effective as of— (iii) July 1, 1992, is 150 percent.
+> (C) Cap on minimum monthly maintenance needs allowance The minimum monthly maintenance needs allowance established under subparagraph (A) may not exceed $1,500 (subject to adjustment under subsections (e) and (g)).
+
+### S373. Spousal share and resource attribution at initial eligibility
+
+Document: D-47
+
+42 U.S.C. 1396r-5(c)(1)-(2). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1)(A) Total joint resources There shall be computed (as of the beginning of the first continuous period of institutionalization ... of the institutionalized spouse)— (i) the total value of the resources to the extent either the institutionalized spouse or the community spouse has an ownership interest, and (ii) a spousal share which is equal to ½ of such total value.
+> (2)(A) ... all the resources held by either the institutionalized spouse, community spouse, or both, shall be considered to be available to the institutionalized spouse, and (B) resources shall be considered to be available to an institutionalized spouse, but only to the extent that the amount of such resources exceeds the amount computed under subsection (f)(2)(A) (as of the time of application for benefits).
+
+### S374. Federal post-eligibility deduction order, institutionalized individuals
+
+Document: D-50
+
+42 CFR 435.725(c). https://www.ecfr.gov/current/title-42/part-435
+
+> (c) Required deductions. In reducing its payment to the institution, the agency must deduct the following amounts, in the following order, from the individual's total income, as determined under paragraph (e) of this section.
+> (1) Personal needs allowance. A personal needs allowance that is reasonable in amount for clothing and other personal needs of the individual while in the institution. This protected personal needs allowance must be at least— (i) $30 a month for an aged, blind, or disabled individual ...
+> (2) Maintenance needs of spouse. For an individual with only a spouse at home, an additional amount for the maintenance needs of the spouse.
+
+### S375. HCBS waiver Level of Care and target group determination
+
+Document: D-56
+
+10 CCR 2505-10 § 8.7100.D. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.7000
+
+> 9. The Case Management Agency shall certify HCBS waiver eligibility only for those individuals:
+> a. Determined by the Case Management Agency to meet the target group designation for one or more waiver programs detailed in the Target Group Criteria section of each HCBS waiver program at Section 8.7101.
+> b. Determined by a Level of Care Assessment to require the Level of Care available in an Institution according to Section 8.401; or
+
+### S376. Spousal impoverishment applies to the HCBS special income group
+
+Document: D-56
+
+10 CCR 2505-10 § 8.7100.C.3. https://www.law.cornell.edu/regulations/colorado/department-2505/division-2505_1/10-CCR-2505-10-8.7000
+
+> 3. Spousal impoverishment rules set forth at § 1924 of the Act are used to determine the eligibility of individuals with a community spouse for the special HCBS waiver group. In the case of a participant with a community spouse, the state shall use spousal post-eligibility rules as set forth at §1924 of the Act. Spousal impoverishment rules do not apply to people in the Medicaid Buy-In program.
+
+### S377. Institutionalized individuals eligible under a special income standard
+
+Document: D-52
+
+42 CFR 435.1005. https://www.ecfr.gov/current/title-42/part-435
+
+> § 435.1005 Beneficiaries in institutions eligible under a special income standard.
+
+### S378. Federal 30-day institutional stay requirement for the special income standard
+
+Document: D-52
+
+42 CFR 435.1005, 435.1009-435.1010. https://www.ecfr.gov/current/title-42/part-435
+
+> § 435.1006 Beneficiaries of optional State supplements only.

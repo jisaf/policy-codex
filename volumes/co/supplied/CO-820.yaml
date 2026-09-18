@@ -1,0 +1,12 @@
+id: CO-820
+name: Meets nursing facility level of care
+identifier: meets_nursing_facility_level_of_care
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the Single Entry Point/Case Management Agency's Long-Term Services and Supports Level of Care Eligibility Determination Screen finds this person requires the level of institutional care 10 CCR 2505-10 § 8.401 defines, for admission to a nursing facility or as the functional-eligibility gate for HCBS or PACE.
+supplied_by: Case Management Agency's Long-Term Services and Supports Level of Care Eligibility Determination Screen and the Professional Medical Information Page.
+sources: [S351, S375]
+tags: [ma, ltc, hcbs]
+rationale: "The case already states this fact for CO-01's p1, but no item in this volume carries it yet; the phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_hcbs_waiver_eligible (CO-653) and ma_pace_eligible (CO-654) need the functional gate; ma_is_institutionalized (CO-640) and ma_meets_special_income_group's institutional branch assume it is true for a nursing facility applicant."

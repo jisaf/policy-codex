@@ -1,0 +1,13 @@
+id: CO-254
+name: Family allowance divisor of MMMNA
+identifier: ma_family_allowance_divisor
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The divisor applied to the MMMNA standard to compute each dependent family member's allowance before reducing it by that member's own income, per 42 U.S.C. 1396r-5(d)(1)(C) ("equal to at least ⅓") and 10 CCR 2505-10 § 8.100.7.T.1.c.i.
+precision: Expressed as a divisor (3) rather than a decimal fraction so the family allowance's arithmetic (mmmna_standard divided by 3) does not carry a repeating-decimal rounding error.
+value: 3
+sources: [S360]
+tags: [ma, ltc, income]
+rationale: "No existing item states the one-third family allowance divisor. ma_family_allowance (CO-657) needs it as a parameter rather than an inline literal, since the divisor is itself a stated policy figure (and a floor - 'at least ⅓' - which this item takes as exact, per the family-allowance text's own 'shall be equal to' wording)."

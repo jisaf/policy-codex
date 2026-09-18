@@ -1,0 +1,19 @@
+id: CO-655
+name: "Medicaid: Minimum Monthly Maintenance Needs Allowance (MMMNA)"
+identifier: ma_mmmna
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The community spouse's minimum monthly income needs - the MMMNA standard plus an excess shelter allowance for shelter costs above 30% of the standard, capped at the current MMMNA maximum - per 42 U.S.C. 1396r-5(d)(3)-(4) and 10 CCR 2505-10 § 8.100.7.Q.
+precision: Does not model 8.100.7.Q.2's additional approved amounts for the community spouse's medical expenses or insurance premiums (those instead deduct from health_insurance_premiums_paid, per CO-835's rationale, or are out of scope) or 8.100.7.Q.3's exceptional-circumstances fair-hearing increase.
+derived: ["min", mmmna_cap, ["+", mmmna_standard, ["max", 0, ["-", shelter_costs_community_spouse, ["*", ma_mmmna_shelter_threshold_pct, mmmna_standard]]]]]
+sources: [S358, S372]
+open: [OQ-97]
+implemented: engine
+tags: [ma, ltc, income, legal]
+rationale: "No existing item computes the MMMNA. ma_community_spouse_income_allowance (CO-656) needs it."
+tests:
+  - {id: CO-655-T1, as_of: "2026-10-01", month: "2026-10", given: {mmmna_standard: 2100, mmmna_cap: 3948, shelter_costs_community_spouse: 800, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2270}
+  - {id: CO-655-T2, as_of: "2026-10-01", month: "2026-10", given: {mmmna_standard: 2100, mmmna_cap: 3948, shelter_costs_community_spouse: 400, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2100}
+  - {id: CO-655-T3, as_of: "2026-10-01", month: "2026-10", given: {mmmna_standard: 2100, mmmna_cap: 2200, shelter_costs_community_spouse: 5000, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2200}

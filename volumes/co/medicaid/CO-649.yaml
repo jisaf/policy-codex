@@ -1,0 +1,18 @@
+id: CO-649
+name: "Medicaid: transfer penalty period, months"
+identifier: ma_transfer_penalty_months
+kind: derived
+type: rate
+scope: person
+program: Medicaid
+meaning: The number of months (including a partial month) this person is ineligible for Long-Term Care services because of an uncompensated transfer of assets within the 60-month look-back period - the uncompensated value divided by the average regional monthly private-pay rate - per 42 U.S.C. 1396p(c)(1)(E) and 10 CCR 2505-10 § 8.100.7.F.2.c.i. Zero if the transfer was exempt.
+precision: A rate, not a whole number, because 8.100.7.F.2.c.i's division is not stated as rounded and the statute's "partial months" language (1396p(c)(1)(E)) implies a fractional penalty period. Does not model the penalty period's start date (8.100.7.F.2.c.b-c) or the between-spouses apportionment of 8.100.7.F.8 - see OQ-94.
+derived: [case, [transfer_was_exempt, 0], [else, ["/", uncompensated_transfer_value_in_lookback, transfer_penalty_divisor]]]
+sources: [S365, S366, S367]
+open: [OQ-94]
+implemented: engine
+tags: [ma, ltc, legal]
+rationale: "No existing item states the transfer-penalty-months arithmetic. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it."
+tests:
+  - {id: CO-649-T1, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: false}, expect: 5}
+  - {id: CO-649-T2, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: true}, expect: 0}

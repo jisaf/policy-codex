@@ -1,0 +1,14 @@
+id: CO-828
+name: CSRA maximum standard
+identifier: csra_maximum_standard
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: The current published community spouse resource allowance maximum standard - the cap 42 U.S.C. 1396r-5(f)(2)(A)(ii)(II) sets at $60,000 "subject to adjustment under subsection (g)," CPI-indexed annually since 1989. ma_csra (CO-646) may not allocate more than this amount to the community spouse even where half the couple's total resources exceeds it.
+precision: Not a fetched-document figure for the case's as-of date; the case states the CMS-published figure in effect on the determination date. See OQ-91.
+supplied_by: CMS annual spousal impoverishment standards publication, as loaded in CBMS.
+sources: [S371]
+open: [OQ-91]
+tags: [ma, ltc, resources, legal]
+rationale: "Companion figure to csra_minimum_standard (CO-827), for the same reason (OQ-91). ma_csra (CO-646) needs it."

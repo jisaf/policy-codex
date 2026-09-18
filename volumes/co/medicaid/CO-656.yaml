@@ -1,0 +1,17 @@
+id: CO-656
+name: "Medicaid: community spouse monthly income allowance"
+identifier: ma_community_spouse_income_allowance
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The amount of the institutionalized spouse's income allocated to the community spouse - the amount, if any, by which the MMMNA exceeds the community spouse's own income - per 42 U.S.C. 1396r-5(d)(1)(B)-(2) and 10 CCR 2505-10 § 8.100.7.R.
+derived: ["max", 0, ["-", ma_mmmna, community_spouse_income]]
+sources: [S358]
+open: [OQ-97]
+implemented: engine
+tags: [ma, ltc, income, legal]
+rationale: "No existing item computes the Monthly Income Allowance. ma_patient_payment (CO-658) needs it. The target household's p1/p2 (MMMNA minus 1180, if positive) is the worked example in the batch report."
+tests:
+  - {id: CO-656-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna: 2270, community_spouse_income: 1180}, expect: 1090}
+  - {id: CO-656-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna: 2270, community_spouse_income: 2500}, expect: 0}

@@ -1,0 +1,24 @@
+id: CO-652
+name: "Medicaid: LTC eligibility status"
+identifier: ma_ltc_eligibility_status
+kind: derived
+type: one of
+options: [eligible_institutional, eligible_hcbs, eligible_pace, ineligible_income, ineligible_resources, transfer_penalty, home_equity, not_institutionalized_or_waiver]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: The single Long-Term Care eligibility outcome for this person for the month - eligible for institutional, HCBS, or PACE services, or the reason for ineligibility - per 10 CCR 2505-10 § 8.100.7.
+precision: Tests, in order, whether the person is institutionalized or meets an HCBS/PACE target group at all; the transfer penalty; home equity; the income test; the resource test; then which setting (PACE first, then HCBS, then institutional) the person is otherwise eligible for. The PACE-before-HCBS ordering for a person who could be either is an authoring choice, not a reading of the text - see OQ-100.
+derived: [case, [[not, [any, ma_is_institutionalized, [not, [=, meets_hcbs_waiver_target_group, "none"]]]], "not_institutionalized_or_waiver"], [[">", ma_transfer_penalty_months, 0], "transfer_penalty"], [ma_home_equity_disqualifies, "home_equity"], [[not, ma_meets_special_income_group], "ineligible_income"], [[not, ma_meets_ltc_resource_standard], "ineligible_resources"], [ma_pace_eligible, "eligible_pace"], [ma_hcbs_waiver_eligible, "eligible_hcbs"], [ma_is_institutionalized, "eligible_institutional"], [else, "ineligible_income"]]
+sources: [S351]
+open: [OQ-100]
+implemented: engine
+tags: [ma, ltc, hcbs]
+rationale: "No existing item reports Long-Term Care eligibility status. Named directly by the phase-4 brief's interface as role: outcome."
+nearest: [CO-622]
+tests:
+  - {id: CO-652-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_institutionalized: true, meets_hcbs_waiver_target_group: "none", ma_transfer_penalty_months: 0, ma_home_equity_disqualifies: false, ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_pace_eligible: false, ma_hcbs_waiver_eligible: false}, expect: eligible_institutional}
+  - {id: CO-652-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_is_institutionalized: false, meets_hcbs_waiver_target_group: "none", ma_transfer_penalty_months: 0, ma_home_equity_disqualifies: false, ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_pace_eligible: false, ma_hcbs_waiver_eligible: false}, expect: not_institutionalized_or_waiver}
+  - {id: CO-652-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_is_institutionalized: true, meets_hcbs_waiver_target_group: "none", ma_transfer_penalty_months: 6, ma_home_equity_disqualifies: false, ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_pace_eligible: false, ma_hcbs_waiver_eligible: false}, expect: transfer_penalty}
+  - {id: CO-652-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_is_institutionalized: true, meets_hcbs_waiver_target_group: "none", ma_transfer_penalty_months: 0, ma_home_equity_disqualifies: false, ma_meets_special_income_group: false, ma_meets_ltc_resource_standard: true, ma_pace_eligible: false, ma_hcbs_waiver_eligible: false}, expect: ineligible_income}
+  - {id: CO-652-T5, as_of: "2026-10-01", month: "2026-10", given: {ma_is_institutionalized: false, meets_hcbs_waiver_target_group: "ebd", ma_transfer_penalty_months: 0, ma_home_equity_disqualifies: false, ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_pace_eligible: false, ma_hcbs_waiver_eligible: true}, expect: eligible_hcbs}

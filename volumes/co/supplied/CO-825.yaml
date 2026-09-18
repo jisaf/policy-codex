@@ -1,0 +1,12 @@
+id: CO-825
+name: Transfer was exempt
+identifier: transfer_was_exempt
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the Eligibility Site determined the person's transfer within the look-back period falls under one of 10 CCR 2505-10 § 8.100.7's exceptions (for example, transfer to or for the sole benefit of a spouse or disabled child, a transfer with a satisfactory showing of intent, or an approved undue-hardship waiver), so no transfer penalty applies despite uncompensated_transfer_value_in_lookback being greater than zero.
+supplied_by: Eligibility Site's determination on the applicant's transfer-of-assets documentation.
+sources: [S365]
+tags: [ma, ltc, legal]
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_transfer_penalty_months (CO-649) needs it to zero out the penalty for an exempt transfer without re-deriving every exception 8.100.7.F.3 through F.7 list."

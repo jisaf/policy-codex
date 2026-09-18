@@ -1,0 +1,12 @@
+id: CO-826
+name: Home equity
+identifier: home_equity
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: This person's equity interest in their home (fair market value minus encumbrances), the figure 42 U.S.C. 1396p(f)(1) and 10 CCR 2505-10 § 8.100.5.M.3 compare against the home equity limit for Long-Term Care eligibility.
+supplied_by: Eligibility Site's review of property records and any mortgage or lien balance.
+sources: [S369]
+tags: [ma, ltc, resources]
+rationale: "The case already states this fact for CO-01's p1, but no item in this volume carries it yet; the phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_home_equity_disqualifies (CO-650) needs it."

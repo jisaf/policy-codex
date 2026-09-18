@@ -1,0 +1,17 @@
+id: CO-657
+name: "Medicaid: family allowance"
+identifier: ma_family_allowance
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The sum of the allowance for each dependent family member living with the community spouse - one third of the MMMNA standard, reduced by that member's own monthly income, per family member - per 42 U.S.C. 1396r-5(d)(1)(C) and 10 CCR 2505-10 § 8.100.7.T.1.c.
+derived: ["sum", family_members_with_community_spouse, ["max", 0, ["-", ["/", mmmna_standard, ma_family_allowance_divisor], ["+", ["of", ["P"], social_security_income], ["of", ["P"], pension_income], ["of", ["P"], earned_income], ["of", ["P"], other_unearned_income]]]]]
+sources: [S360]
+open: [OQ-95]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item computes the family allowance. ma_patient_payment (CO-658) needs it. The target household has no dependent family member living with p2, so this item's contribution is zero (the batch report's worked example)."
+tests:
+  - {id: CO-657-T1, as_of: "2026-10-01", month: "2026-10", given: {family_members_with_community_spouse: [], mmmna_standard: 2100}, expect: 0}
+  - {id: CO-657-T2, as_of: "2026-10-01", month: "2026-10", given: {mmmna_standard: 2100, family_members_with_community_spouse: [p3]}, others: {p3: {mmmna_standard: 2100, social_security_income: 0, pension_income: 0, earned_income: 200, other_unearned_income: 0}}, relationships: [], expect: 500}

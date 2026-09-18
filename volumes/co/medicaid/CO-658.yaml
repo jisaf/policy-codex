@@ -1,0 +1,21 @@
+id: CO-658
+name: "Medicaid: patient payment"
+identifier: ma_patient_payment
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: The amount of an institutionalized person's income applied monthly to the cost of Long-Term Care institution care - gross income minus the personal needs allowance, the community spouse monthly income allowance, the family allowance and deductible health insurance premiums, floored at zero - per 10 CCR 2505-10 §§ 8.100.7.T.1 and 8.100.7.V.3 and 42 CFR 435.725(c).
+precision: Uses the non-veteran base personal needs allowance (ma_personal_needs_allowance_institutional, CO-251), not the veterans-related $90 allowance (OQ-98). Omits 8.100.7.T.1.d's "allowable deductions identified in section 8.100.7.V" beyond health insurance premiums (the Home Maintenance Allowance, trustee/maintenance fees, mandatory tax withholding and Medicare Part B/D premium deductions are not separately modeled). The community spouse income allowance term is included only when ma_ltc_couple is true.
+derived: ["max", 0, ["-", ma_ltc_gross_income, ["+", ma_personal_needs_allowance_institutional, ["case", [ma_ltc_couple, ma_community_spouse_income_allowance], ["else", 0]], ma_family_allowance, health_insurance_premiums_paid]]]
+sources: [S360, S361, S374]
+open: [OQ-98]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "No existing item computes patient payment. Named directly by the phase-4 brief's interface as role: outcome. The target household's p1 (2030 minus the personal needs allowance, minus the spouse allowance, no family allowance or premiums) is the worked example in the batch report."
+nearest: [CO-621]
+tests:
+  - {id: CO-658-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 2030, ma_personal_needs_allowance_institutional: 75, ma_ltc_couple: true, ma_community_spouse_income_allowance: 1090, ma_family_allowance: 0, health_insurance_premiums_paid: 0}, expect: 865}
+  - {id: CO-658-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 800, ma_personal_needs_allowance_institutional: 75, ma_ltc_couple: false, ma_community_spouse_income_allowance: 0, ma_family_allowance: 0, health_insurance_premiums_paid: 0}, expect: 725}
+  - {id: CO-658-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 60, ma_personal_needs_allowance_institutional: 75, ma_ltc_couple: false, ma_community_spouse_income_allowance: 0, ma_family_allowance: 0, health_insurance_premiums_paid: 0}, expect: 0}

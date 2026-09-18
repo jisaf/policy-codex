@@ -1,0 +1,16 @@
+id: CO-653
+name: "Medicaid: is HCBS waiver eligible"
+identifier: ma_hcbs_waiver_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether this person is eligible for a Home and Community-Based Services waiver for the month - meets a waiver's target group, meets the nursing facility level of care, and is financially eligible - per 10 CCR 2505-10 §§ 8.7100.C.9 and 8.7100.D.
+derived: [all, [not, [=, meets_hcbs_waiver_target_group, "none"]], meets_nursing_facility_level_of_care, ma_ltc_financially_eligible]
+sources: [S375]
+implemented: engine
+tags: [ma, ltc, hcbs]
+rationale: "No existing item combines the target group, level of care and financial tests for HCBS waiver eligibility. ma_ltc_eligibility_status (CO-652) needs it."
+tests:
+  - {id: CO-653-T1, as_of: "2026-10-01", month: "2026-10", given: {meets_hcbs_waiver_target_group: "ebd", meets_nursing_facility_level_of_care: true, ma_ltc_financially_eligible: true}, expect: true}
+  - {id: CO-653-T2, as_of: "2026-10-01", month: "2026-10", given: {meets_hcbs_waiver_target_group: "none", meets_nursing_facility_level_of_care: true, ma_ltc_financially_eligible: true}, expect: false}

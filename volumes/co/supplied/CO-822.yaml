@@ -1,0 +1,13 @@
+id: CO-822
+name: Expects institutional stay of thirty days
+identifier: expects_institutional_stay_of_thirty_days
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether this person is expected to remain institutionalized, or to receive HCBS or PACE, for at least 30 consecutive full days, per 10 CCR 2505-10 § 8.100.7.A.2.c and § 8.100.7.K.2.d.
+precision: Colorado also treats a person as meeting this requirement retroactively if they die before the 30th day but a physician or case manager certifies they would have met it; that retroactive branch is not modeled (the fact states the worker's or case manager's expectation as of the determination date).
+supplied_by: Case Management Agency's Long-Term Services and Supports Level of Care Eligibility Determination and supporting physician/case manager documentation.
+sources: [S351]
+tags: [ma, ltc]
+rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_is_institutionalized (CO-640) and ma_ltc_couple (CO-643) need the 30-consecutive-day expectation distinctly from in_medical_institution (which states only that the person is currently in a facility)."

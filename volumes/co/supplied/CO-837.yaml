@@ -1,0 +1,13 @@
+id: CO-837
+name: VA Aid and Attendance amount
+identifier: va_aid_and_attendance_amount
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The dollar amount of this person's VA pension attributable to Aid and Attendance or Unusual Medical Expenses, as determined by the VA, per 10 CCR 2505-10 § 8.100.6.C.1 - excluded from gross income used to compute patient payment for a person who is not a veteran/surviving spouse with no dependents in a State Veterans Home.
+precision: Zero for a person who does not receive an A&A/UME VA pension portion (receives_va_aid_and_attendance false).
+supplied_by: VA pension award letter, verified by the Eligibility Site.
+sources: [S364]
+tags: [ma, ltc, income]
+rationale: "Companion figure to receives_va_aid_and_attendance (CO-836), needed as the dollar amount ma_ltc_gross_income (CO-641) excludes."

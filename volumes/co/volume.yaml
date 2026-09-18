@@ -34,7 +34,7 @@ programs:
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: [ma_magi_category, ma_magi_eligibility_status]
+    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment]
   - id: CHP+
     prefix: chp_
     outcomes: [chp_eligibility_status]
