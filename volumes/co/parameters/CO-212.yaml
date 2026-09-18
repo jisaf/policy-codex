@@ -1,0 +1,13 @@
+id: CO-212
+name: CHP+ income limit, upper bound (percentage of FPL)
+identifier: chp_income_limit_pct_upper
+kind: parameter
+type: rate
+scope: global
+program: CHP+
+meaning: The upper bound, as a decimal fraction of the federal poverty guideline, of the household-income band 10 CCR 2505-3-110.1.E-F state for both children and pregnant women (household income must not exceed this percentage).
+precision: A percentage-of-FPL threshold; household income above this percentage is ineligible for CHP+ on income, subject to the 5% MAGI disregard applied at this, the highest income standard the person could qualify under (42 CFR 435.603(d)(4), 10 CCR 2505-10 8.100.4.D).
+value: 2.60
+sources: [S243]
+tags: [chp, income, state_election]
+rationale: "No existing item carries this figure. chp_income_within_limit (CO-704) needs it as a parameter shared by both the child and pregnant-woman bands, since 10 CCR 2505-3-110.1.E and .F both cap eligibility at 260% of FPL (S243), so a single upper-bound parameter avoids stating the same number twice under two different identifiers."

@@ -1200,3 +1200,399 @@ Document: D-25
 8 U.S.C. 1613(a). https://www.law.cornell.edu/uscode/text/8/1613
 
 > Notwithstanding any other provision of law and except as provided in subsections (b), (c), and (d), an alien who is a qualified alien (as defined in section 1641 of this title) and who enters the United States on or after August 22, 1996, is not eligible for any Federal means-tested public benefit for a period of 5 years beginning on the date of the alien's entry into the United States with a status within the meaning of the term "qualified alien".
+
+### S241. CHP+ definitions: child, dependent child, household, presumptive eligibility
+
+Document: D-42
+
+10 CCR 2505-3-50. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-50
+
+> 50.3 "Child" means a person who is less than nineteen years of age.
+> 50.6 "Dependent child" shall mean a child who lives with a parent, legal guardian, caretaker relative or foster parent and is under the age of 18, or, is age 18 and a full-time student, and expected to graduate by age 19
+> 50.13 "Household" shall be determined by relationships to the tax filer as declared on the Single Streamlined Application and as required in 10 CCR 2505-10-8.100.4 .E.
+> 50.16 "Presumptive Eligibility" shall mean children and pregnant women who have applied and appear to be eligible for the Children's Basic Health Plan shall be presumed eligible and may receive immediate temporary medical coverage.
+
+### S242. CHP+ eligible person: age/pregnancy and the Cover All Coloradans exception
+
+Document: D-42
+
+10 CCR 2505-3-110.1.A-B. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-110
+
+> 110.1 To be eligible for the Children's Basic Health Plan, an eligible person shall:
+> A.
+> 1. Be less than 19 years of age; or
+> 2. Be a pregnant woman
+> B. Fall into one of the following categories:
+> p. Exception: Persons who are under the age of 19, whose 19 th birthday occurred in the current month, who are pregnant, or who are within 12 months of the beginning of their postpartum period, and who meet the criteria for one of the specific Child Basic Health Plan Programs, but who are not citizens or qualified non-citizens according to the criteria set forth in 110.1.B, shall receive Medical Assistance benefits for programs included under the CRS 25.5-8-109 .
+
+### S243. CHP+ residency and income bands
+
+Document: D-42
+
+10 CCR 2505-3-110.1.D-F. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-110
+
+> D. Be a resident of Colorado; and residence shall be retained until abandoned. A person temporarily absent from the state, inside or outside the United States, retains Colorado residence. Temporarily absent means that at the time he/she leaves, the person intends to return.
+> E. Have a household income greater than 142% but not exceeding 260% of the Federal Poverty Level, adjusted for household size for children under the age of 19; or
+> F. Have a household income greater than 195% but not exceeding 260% of the Federal Poverty Level, adjusted for household size for pregnant women.
+
+### S244. CHP+ exclusions: other coverage, Medicaid eligibility, institutions
+
+Document: D-42
+
+10 CCR 2505-3-120.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-120
+
+> 120.1 To be eligible for the Children's Basic Health Plan, an eligible person shall not:
+> A. Be covered under a group health plan or under health insurance coverage excluding Consolidated Omnibus Budget Reconciliation Act (COBRA) at the time of application or at redetermination; or
+> B. Be eligible to receive assistance under Title XIX of the Social Security Act; or
+> C. Be an inmate of a public institution or a patient in an institution for mental diseases.
+
+### S245. CHP+ household income calculation and disregards adopt the MAGI Medicaid rule
+
+Document: D-42
+
+10 CCR 2505-3-150. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-150
+
+> 150.1 Calculation of income for the Children's Basic Health Plan shall be determined as required in 10 CCR 2505-10-8.100.4 .C
+> 150.2 Income disregards for the Children's Basic Health Plan shall be determined as required in 10 CCR 2505-10-8.100.4 .D
+
+### S246. CHP+ presumptive eligibility conditions
+
+Document: D-42
+
+10 CCR 2505-3-170.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-170
+
+> 170.1 A pregnant applicant or a child under the age of 19 may apply for presumptive eligibility for immediate temporary medical services through designated presumptive eligibility sites.
+> A. To qualify for presumptive eligibility, a child under the age of 19 shall have a declared household income that shall be greater than 142% but not exceed 260% of Federal Poverty Level ; or
+> B. To qualify for presumptive eligibility, a pregnant women shall have an attested pregnancy, declare that her household's income shall be greater than 195% but not exceed 260% of the Federal Poverty Level ; and
+> C. He/she shall be a United States citizen or a documented immigrant as defined in Section 110.
+
+### S247. CHP+ maximum yearly cost sharing (5% of income)
+
+Document: D-42
+
+10 CCR 2505-3-330.2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-3-330
+
+> 330.2 The maximum yearly cost sharing requirements for families of enrollees shall be 5% of income.
+
+### S248. CHIP targeted low-income child: financial need and no-other-coverage standards
+
+Document: D-36
+
+42 CFR 457.310(a), (b)(1)(i), (b)(2). https://www.ecfr.gov/current/title-42/part-457
+
+> (a) *Definition.* A targeted low-income child is a child who meets the standards set forth below and the eligibility standards established by the State under § 457.320.
+> (1) *Financial need standard.* A targeted low-income child:
+> (i) Has a household income, as determined in accordance with § 457.315 of this subpart, at or below 200 percent of the Federal poverty level for a family of the size involved;
+> (2) *No other coverage standard.* A targeted low-income child must not be—
+> (i) Found eligible or potentially eligible for Medicaid under policies of the State plan (determined through either the Medicaid application process or the screening process described at § 457.350), except for eligibility under § 435.214 of this chapter (related to coverage for family planning services);
+> (ii) Covered under a group health plan or under health insurance coverage, as defined in section 2791 of the Public Health Service Act, unless the plan or health insurance coverage program has been in operation since before July 1, 1997 and is administered by a State that receives no Federal funds for the program's operation. A child is not considered covered under a group health plan or health insurance coverage if the child does not have reasonable geographic access to care under that plan.
+
+### S249. CHIP eligibility standards a State plan may adopt
+
+Document: D-36
+
+42 CFR 457.320(a)(2),(3),(7). https://www.ecfr.gov/current/title-42/part-457
+
+> (2) Age (up to, but not including, age 19);
+> (3) Income;
+> (7) Access to, or coverage under, other health coverage; and
+
+### S250. CHIP cumulative cost-sharing maximum (5% of family income)
+
+Document: D-37
+
+42 CFR 457.560(a). https://www.ecfr.gov/current/title-42/part-457
+
+> (a) A State may not impose premiums, enrollment fees, copayments, coinsurance, deductibles, or similar cost-sharing charges that, in the aggregate, exceed 5 percent of a family's total income for the length of a child's eligibility period in the State.
+
+### S251. CHIP statutory definitions: child, creditable health coverage, low-income child
+
+Document: D-30
+
+42 U.S.C. 1397jj(c)(1), (2), (4). https://www.law.cornell.edu/uscode/text/42/1397jj
+
+> (1) Child
+> The term “ child ” means an individual under 19 years of age.
+> (2) Creditable health coverage
+> The term “ creditable health coverage ” has the meaning given the term “creditable coverage” under section 2701(c) [2] of the Public Health Service Act ( 42 U.S.C. 300gg(c) ) and includes coverage that meets the requirements of section 1397cc of this title provided to a targeted low-income child under this subchapter or under a waiver approved under section 1397ee(c)(2)(B) of this title (relating to a direct service waiver).
+> (4) Low-income child
+> The term “ low-income child ” means a child whose family income is at or below 200 percent of the poverty line for a family of the size involved.
+
+### S252. CHIP statutory 5% aggregate cost-sharing cap
+
+Document: D-30
+
+42 U.S.C. 1397cc(e)(3)(B). https://www.law.cornell.edu/uscode/text/42/1397cc
+
+> (B) Other children
+> For children not described in subparagraph (A), subject to paragraphs (1)(B) and (2), any premiums, deductibles, cost sharing or similar charges imposed under the State child health plan may be imposed on a sliding scale related to income, except that the total annual aggregate cost-sharing with respect to all targeted low-income children in a family under this subchapter may not exceed 5 percent of such family’s income for the year involved.
+
+### S201. Colorado MAGI Children category income limit and age cutoff
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 2. Children applying for Medical Assistance whose total household income does not exceed 133% of the federal poverty level (MAGI-equivalent) shall be determined financially eligible for Medical Assistance. Refer to the MAGI-Medicaid income guidelines chart available on the Department's website.
+>
+> a. Children are eligible for Children's MAGI Medical Assistance through the end of the month in which they turn 19 years old. After turning 19, the individual may be eligible for a different Medical Assistance category.
+
+### S202. Federal infants and children under 19 income standard
+
+Document: D-31
+
+42 CFR 435.118(b)-(c)(1). https://www.ecfr.gov/current/title-42/section-435.118
+
+> (b) *Scope.* The agency must provide Medicaid to children under age 19 whose household income is at or below the income standard established by the agency in its State plan, in accordance with paragraph (c) of this section.
+>
+> (c) *Income standard.* (1) The minimum income standard is the higher of—
+>
+> (i) 133 percent FPL for the applicable family size; or
+>
+> (ii) For infants under age 1, such higher income standard up to 185 percent FPL, if any, as the State had established as of December 19, 1989 for determining eligibility for infants, or, as of July 1, 1989 had authorizing legislation to do so.
+
+### S203. Colorado MAGI Parents and Caretaker Relatives category income limit
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.3. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 3. Parents and Caretaker Relatives applying for Medical Assistance whose total household income does not exceed 60% of the federal poverty level (MAGI-equivalent) shall be determined financially eligible for Medical Assistance. Parents or Caretaker Relatives eligible for this category shall have a dependent child in the household.
+
+### S204. Federal parents and other caretaker relatives scope
+
+Document: D-31
+
+42 CFR 435.110(b). https://www.ecfr.gov/current/title-42/section-435.110
+
+> (b) *Scope.* The agency must provide Medicaid to parents and other caretaker relatives, as defined in § 435.4, and, if living with such parent or other caretaker relative, his or her spouse, whose household income is at or below the income standard established by the agency in the State plan, in accordance with paragraph (c) of this section.
+
+### S205. Federal caretaker relative definition
+
+Document: D-35
+
+42 CFR 435.4. https://www.ecfr.gov/current/title-42/section-435.4
+
+> *Caretaker relative* means a relative of a dependent child by blood, adoption, or marriage with whom the child is living, who assumes primary responsibility for the child's care (as may, but is not required to, be indicated by claiming the child as a tax dependent for Federal income tax purposes), and who is one of the following—
+>
+> (1) The child's father, mother, grandfather, grandmother, brother, sister, stepfather, stepmother, stepbrother, stepsister, uncle, aunt, first cousin, nephew, or niece.
+>
+> (2) The spouse of such parent or relative, even after the marriage is terminated by death or divorce.
+
+### S206. Federal dependent child definition
+
+Document: D-35
+
+42 CFR 435.4. https://www.ecfr.gov/current/title-42/section-435.4
+
+> *Dependent child* means a child who meets both of the following criteria:
+>
+> (1) Is under the age of 18, or, at State option, is age 18 and a full-time student in secondary school (or equivalent vocational or technical training), if before attaining age 19 the child may reasonably be expected to complete such school or training.
+
+### S207. Colorado MAGI Adults category income limit and dependent-child coverage condition
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.4. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 4. Adults applying for Medical Assistance whose total household income does not exceed 133% of the federal poverty level shall be determined financially eligible for Medical Assistance. This category includes adults who are parents or caretaker relatives of dependent children whose income exceeds the income threshold to qualify for the Parents and Caretaker Relatives MAGI category and who meet all other eligibility criteria.
+>
+> a. A dependent child living in the household of a parent or caretaker relative shall have minimum essential coverage, in order for the parent or caretaker relative to be eligible for Medical Assistance under this category. Refer to section 8.100.4.G.3.a on who is considered a dependent child.
+
+### S208. Federal adult group eligibility conditions
+
+Document: D-31
+
+42 CFR 435.119(b). https://www.ecfr.gov/current/title-42/section-435.119
+
+> (b) *Eligibility.* Effective January 1, 2014, the agency must provide Medicaid to individuals who:
+>
+> (1) Are age 19 or older and under age 65;
+>
+> (2) Are not pregnant;
+>
+> (3) Are not entitled to or enrolled for Medicare benefits under part A or B of title XVIII of the Act;
+>
+> (4) Are not otherwise eligible for and enrolled for mandatory coverage under a State's Medicaid State plan in accordance with subpart B of this part; and
+>
+> (5) Have household income that is at or below 133 percent FPL for the applicable family size.
+
+### S209. Colorado MAGI Pregnant Women category income limit and coverage period
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.5. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 5. Pregnant Women whose household income does not exceed 185% of the federal poverty level (MAGI-equivalent) are eligible for the Pregnant Women MAGI Medical Assistance program. Medical Assistance shall be provided to a pregnant woman for a period beginning with the date of application for Medical Assistance through the last day of the month following 60 days from the date the pregnancy ends. Once eligibility has been approved, Medical Assistance coverage will be provided regardless of changes in the woman's financial circumstances once the income verification requirements are met.
+
+### S210. Federal pregnant women income standard
+
+Document: D-31
+
+42 CFR 435.116(c)(1). https://www.ecfr.gov/current/title-42/section-435.116
+
+> (c) *Income standard.* The agency must establish in its State plan the income standard as follows:
+>
+> (1) The minimum income standard is the higher of:
+>
+> (i) 133 percent FPL for the applicable family size; or
+>
+> (ii) Such higher income standard up to 185 percent FPL, if any, as the State had established as of December 19, 1989 for determining eligibility for pregnant women, or, as of July 1, 1989, had authorizing legislation to do so.
+
+### S211. Colorado Eligible Needy Newborn
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.G.7. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 7. A child whose mother is receiving Medical Assistance at the time of the child's birth is continuously eligible for one year. This population is referred to as "Eligible Needy Newborn". This coverage also applies in instances where the mother received Medical Assistance to cover the child's birth through retroactive Medical Assistance. The child is not required to live with the mother receiving Medical Assistance to qualify as an Eligible Needy Newborn.
+
+### S212. Federal deemed newborn children eligibility
+
+Document: D-31
+
+42 CFR 435.117(b)(1). https://www.ecfr.gov/current/title-42/section-435.117
+
+> (b) *Eligibility.* (1) The agency must provide Medicaid to children from birth until the child's first birthday without application if, for the date of the child's birth, the child's mother was eligible for and received covered services under—
+>
+> (i) The Medicaid State plan (including during a period of retroactive eligibility under § 435.915) regardless of whether payment for services for the mother is limited to services necessary to treat an emergency medical condition, as defined in section 1903(v)(3) of the Act; or
+
+### S213. Colorado former foster care extension to age 26
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.H.2.a. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 2. Medical Assistance shall be extended to certain needy persons until the end of the month of the individual's 26 th birthday, including the following:
+>
+> a. Those individuals that were formerly in foster care under the responsibility of Colorado or Tribe on their 18 th , 19 th , 20 th or up to their 21 st birthday and were receiving Medical Assistance.
+
+### S214. Federal former foster care children eligibility
+
+Document: D-31
+
+42 CFR 435.150(b). https://www.ecfr.gov/current/title-42/section-435.150
+
+> (b) *Eligibility.* The agency must provide Medicaid to individuals who:
+>
+> (1) Are under age 26;
+>
+> (2) Are not eligible and enrolled for mandatory coverage under §§ 435.110 through 435.118 or §§ 435.120 through 435.145; and
+>
+> (3) Were in foster care under the responsibility of the State or a Tribe within the State and enrolled in Medicaid under the State's Medicaid State plan or under a section 1115 demonstration project upon attaining:
+>
+> (i) Age 18; or
+
+### S215. Colorado continuous eligibility for children
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.Q.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. Continuous eligibility applies to children under age 19, who through an eligibility determination, reassessment or redetermination, are found eligible for a Medical Assistance program. The continuous eligibility period may last for up to 12 months.
+>
+> a. The continuous eligibility period applies without regard to changes in income or other factors that would otherwise cause the child to be ineligible.
+>
+> b. Exception: A child's continuous eligibility period will end effective the earliest possible month if any of the following occur:
+>
+> i) Child is deceased;
+>
+> iii) The child is no longer part of the Medical Assistance required household;
+>
+> iv) Is no longer a Colorado resident;
+
+### S216. Federal continuous eligibility for children
+
+Document: D-35
+
+42 CFR 435.926(b)-(c). https://www.ecfr.gov/current/title-42/section-435.926
+
+> (b) *Eligibility.* The agency must provide continuous eligibility for the period specified in paragraph (c) of this section for an individual who is:
+>
+> (1) Under age 19; and
+>
+> (2) Eligible and enrolled for mandatory or optional coverage under the State plan in accordance with subpart B or C of this part.
+>
+> (c) *Continuous eligibility period.* (1) The length of the continuous eligibility period is 12 months.
+>
+> (2) A continuous eligibility period begins on the effective date of the individual's eligibility under § 435.915 or most recent redetermination or renewal of eligibility under § 435.916 and ends after the period specified by the agency under paragraph (c)(1) of this section.
+
+### S217. Colorado retroactive Medical Assistance coverage
+
+Document: D-39
+
+10 CCR 2505-10 8.100.3.E.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. An applicant for Medical Assistance shall be provided such assistance any time during the three months preceding the date of application, or as of the date the person became eligible for Medical Assistance, whichever is later. That person shall have received medical services at any time during that period and met all applicable eligibility requirements.
+
+### S218. Federal effective date, retroactive coverage
+
+Document: D-35
+
+42 CFR 435.915(a). https://www.ecfr.gov/current/title-42/section-435.915
+
+> (a) The agency must make eligibility for Medicaid effective no later than the third month before the month of application if the individual—
+>
+> (1) Received Medicaid services, at any time during that period, of a type covered under the plan; and
+>
+> (2) Would have been eligible for Medicaid at the time he received the services if he had applied (or someone had applied for him), regardless of whether the individual is alive when application for Medicaid is made.
+
+### S219. Colorado MAGI category presumptive eligibility
+
+Document: D-40
+
+10 CCR 2505-10 8.100.4.F.1-2. https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.100
+
+> 1. A pregnant applicant may apply for presumptive eligibility for ambulatory services through Medical Assistance presumptive eligibility sites. A child under the age of 19 may apply or have an adult apply on their behalf for presumptive eligibility for State Plan approved medical services through presumptive eligibility sites.
+>
+> 2. To be eligible for presumptive eligibility:
+>
+> a. a pregnant woman shall have an attested pregnancy, declare that her household's income shall not exceed 185% of the federal poverty level (MAGI-equivalent) and declare that she is a United States citizen or a documented immigrant. Refer to the MAGI-Medicaid income guidelines chart available on the Department's website
+>
+> b. a child under the age of 19 shall have a declared household income that does not exceed 133% of federal poverty level (MAGI-equivalent) and declare that the child is a United States citizen or a documented immigrant.
+
+### S220. Federal children covered under presumptive eligibility
+
+Document: D-35
+
+42 CFR 435.1102(a). https://www.ecfr.gov/current/title-42/section-435.1102
+
+> (a) The agency may elect to provide Medicaid services for children under age 19 or a younger age specified by the State during a presumptive eligibility period following a determination by a qualified entity, on the basis of preliminary information, that the individual has gross income (or, at state option, a reasonable estimate of household income, as defined in § 435.603 of this part, determined using simplified methods prescribed by the agency) at or below the income standard established by the State for the age of the child under § 435.118(c) or under § 435.229 if applicable and higher.
+
+### S221. Federal presumptive eligibility for pregnant women
+
+Document: D-35
+
+42 CFR 435.1103(a). https://www.ecfr.gov/current/title-42/section-435.1103
+
+> (a) The terms of §§ 435.1101 and 435.1102 apply to pregnant women such that the agency may provide Medicaid to pregnant women during a presumptive eligibility period following a determination by a qualified entity that the pregnant woman has income at or below the income standard established by the State under § 435.116(c), except that coverage of services provided to such women is limited to ambulatory prenatal care and the number of presumptive eligibility periods that may be authorized for pregnant women is one per pregnancy.
+
+### S222. Presumptive eligibility for pregnant women, statute
+
+Document: D-28
+
+42 U.S.C. 1396r-1(a). https://www.law.cornell.edu/uscode/text/42/1396r-1
+
+> (a) Ambulatory prenatal care
+>
+> A State plan approved under section 1396a of this title may provide for making ambulatory prenatal care available to a pregnant woman during a presumptive eligibility period.
+
+### S223. Presumptive eligibility for children, statute
+
+Document: D-29
+
+42 U.S.C. 1396r-1a(a). https://www.law.cornell.edu/uscode/text/42/1396r-1a
+
+> (a) In general
+>
+> A State plan approved under section 1396a of this title may provide for making medical assistance with respect to health care items and services covered under the State plan available to a child during a presumptive eligibility period.
+
+### S224. Extending coverage for pregnant and postpartum women to 12 months
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(16). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (16) Extending certain coverage for pregnant and postpartum women.—
+>
+> At the option of the State , the State plan (or waiver of such State plan) may provide, that an individual who, while pregnant, is eligible for and has received medical assistance under the State plan approved under this subchapter (or a waiver of such plan) (including during a period of retroactive eligibility under subsection (a)(34)) shall, in addition to remaining eligible under paragraph (5) for all pregnancy-related and postpartum medical assistance available under the State plan (or waiver) through the last day of the month in which the 60-day period (beginning on the last day of her pregnancy) ends, remain eligible under the State plan (or waiver) for medical assistance for the period beginning on the first day occurring after the end of such 60-day period and ending on the last day of the month in which the 12-month period (beginning on the last day of her pregnancy) ends.

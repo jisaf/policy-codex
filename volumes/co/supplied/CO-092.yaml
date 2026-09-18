@@ -1,0 +1,13 @@
+id: CO-092
+name: Attested household income as a percentage of the poverty guideline
+identifier: attested_household_income_pct_fpl
+kind: supplied
+type: rate
+scope: person
+program: CHP+
+meaning: The household income the applicant declares or attests to, at a presumptive eligibility site, expressed as a decimal fraction of the federal poverty guideline for the household's size (1.00 = 100%), used only for the presumptive-eligibility determination of 10 CCR 2505-3-170.1.A-B.
+precision: A self-declared or attested figure taken at face value for the immediate, temporary presumptive-eligibility determination; it is not verified and is distinct from ma_magi_household_income_pct_fpl (CO-504), which the full eligibility determination computes from verified income facts.
+supplied_by: Applicant declaration or attestation at a certified presumptive eligibility site, per 10 CCR 2505-3-170.1.A-B.
+sources: [S246]
+tags: [chp, magi, income]
+rationale: "No existing item carries a declared/attested income percentage. chp_presumptive_eligibility (CO-708) needs this fact rather than ma_magi_household_income_pct_fpl (CO-504) because 10 CCR 2505-3-170.1.A-B keys presumptive eligibility on the applicant's own declared or attested household income at the presumptive eligibility site, before the verified MAGI computation the full determination performs."

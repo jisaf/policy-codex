@@ -1,0 +1,13 @@
+id: CO-213
+name: CHP+ maximum aggregate yearly cost sharing (percentage of income)
+identifier: chp_cost_sharing_aggregate_cap_pct
+kind: parameter
+type: rate
+scope: global
+program: CHP+
+meaning: The maximum share of a family's income, per year, that CHP+ cost sharing (enrollment fee, copayments and similar charges) may require in the aggregate, under 10 CCR 2505-3-330.2, 42 CFR 457.560(a) and 42 U.S.C. 1397cc(e)(3)(B).
+precision: A percentage of the family's total income for the relevant period (10 CCR 2505-3-330.2 states "yearly"; 42 CFR 457.560(a) states "for the length of a child's eligibility period"); this volume does not model the enforcement of the cap against a running cost-sharing total in this batch (see OQ-60), and carries this parameter only so the figure is available when that rule is built.
+value: 0.05
+sources: [S247, S250, S252]
+tags: [chp, income, state_election]
+rationale: "No existing item carries this figure. 10 CCR 2505-3-330.2 (S247), 42 CFR 457.560(a) (S250) and 42 U.S.C. 1397cc(e)(3)(B) (S252) all state 5 percent; kept as a parameter so no rule's identifier encodes the value (governance name.digits), matching this volume's ma_magi_income_disregard_pct (CO-183) convention for a percentage-of-income figure."

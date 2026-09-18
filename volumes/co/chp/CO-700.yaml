@@ -1,0 +1,18 @@
+id: CO-700
+name: "CHP+: is a child"
+identifier: chp_is_child
+kind: derived
+type: yes/no
+scope: person
+program: CHP+
+meaning: Whether the person is a "child" for Children's Basic Health Plan purposes under 10 CCR 2505-3-50.3 and 110.1.A.1 - less than 19 years of age.
+precision: Reuses ma_magi_child_age_limit (CO-180, Medicaid's own "under 19" parameter) rather than a second CHP+-prefixed parameter of the same value, because 10 CCR 2505-3-50.3's "less than nineteen years of age" and 42 U.S.C. 1397jj(c)(1)'s "under 19 years of age" state the identical age as 42 CFR 435.603(f)(3) and 10 CCR 2505-10 8.100.4.E already do for Medicaid; this is a cross-program parameter reference (a governance warning, not an error), consistent with how ma_meets_five_year_bar (CO-508) reuses snap_five_year_bar_years.
+derived: [<, age, ma_magi_child_age_limit]
+sources: [S241, S251]
+implemented: engine
+tags: [chp, age]
+rationale: "No existing item states the CHP+ 'child' age test. chp_household_size... does not need it, but chp_child_is_eligible (CO-705) and chp_eligibility_status (CO-707) both need a single yes/no distinguishing the child category from the prenatal category. nearest: [CO-180] (the parameter reused, not a rule with the same shape)."
+nearest: [CO-180]
+tests:
+  - {id: CO-700-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: true}
+  - {id: CO-700-T2, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22"}, expect: false}
