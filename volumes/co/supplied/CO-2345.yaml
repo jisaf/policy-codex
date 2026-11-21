@@ -1,0 +1,13 @@
+id: CO-2345
+name: "LEAP: excluded income"
+identifier: leap_excluded_income
+kind: supplied
+type: money
+scope: person-month
+program: LEAP
+meaning: "The part of this person's gross earned and unearned income for the month, as stated in the income facts, that 9 CCR 2503-7 3.752.23 excludes, other than the wages of a child under eighteen, which leap_household_income already leaves out (3.752.23.Q)."
+precision: "If not stated, LEAP reads this as 0 (no excluded income). The member's counted income never falls below zero."
+supplied_by: "Eligibility technician's application of the program's exclusion list to the income reported."
+sources: [S1624]
+tags: [income]
+rationale: "OQ-390: supplied income facts state the gross amount received before any program's exclusions (vocabulary review R-1), and 9 CCR 2503-7 3.752.23 (S1624) has its own exclusion list; leap_household_income (CO-1002) subtracts this program's own excluded amount."

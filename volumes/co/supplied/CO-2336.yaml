@@ -1,0 +1,13 @@
+id: CO-2336
+name: "Sponsor has died"
+identifier: sponsor_has_died
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The individual who executed this non-citizen's affidavit of support has died."
+precision: "If not stated, a program reads this as false."
+supplied_by: "Applicant statement, death record."
+sources: [S1619]
+tags: [immigration]
+rationale: "OQ-380: 4.305.2.E (S1619) lists the non-citizens to whom the sponsor's income and resources are not deemed; no fact stated this exemption, so snap_requires_verification_of_sponsor (CO-1616) asked every sponsored member for the sponsor's information."

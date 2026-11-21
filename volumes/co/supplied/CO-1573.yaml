@@ -6,9 +6,8 @@ type: yes/no
 scope: person
 program: All
 meaning: Whether the person is a non-citizen whose sponsor signed an affidavit of support (Form I-864 or a similar agreement), so the sponsor's income and resources may be deemed to the person.
-precision: The exemptions from deeming (indigence, forty qualifying quarters, battered non-citizens) are not modeled here (OQ-380).
+precision: "States only that an affidavit of support was executed; whether deeming applies is each program's rule: for SNAP snap_sponsor_deeming_applies (CO-2337) applies the exemptions of 10 CCR 2506-1 4.305.2.E (phase-10 sweep, OQ-380)."
 supplied_by: Immigration documents and SAVE response as recorded in CBMS.
 sources: [S1061, S1062, S1063]
 tags: [verification, immigration]
-open: [OQ-380]
 rationale: "No existing fact in the volume states this; the phase-9 verification review (K-2: SNAP, Colorado Works and Adult Financial each require the sponsor's information) needs it as a supplied fact."

@@ -7,9 +7,8 @@ scope: person-month
 program: ColoradoWorks
 meaning: "This person's countable unearned income for the month under 9 CCR 2503-6 3.605.3 - Social Security, pension, unemployment, Adult Financial grants, other unearned income (taxable or not), plus current child support received (countable at initial application under 3.605.5.A). The unit's own Colorado Works grant is not income to it."
 precision: "Does not model the 3.605.5.B-C treatment of child support once the unit is already found eligible (disregarded in the grant calculation and, at redetermination, only counted if consistently received and averaging over $500) - see OQ-105's sibling assumption; this item is scoped to the initial-application reading. Vocabulary fix round (R-1): Colorado Works' own grant (tanf_cash_income) is no longer counted against the unit; Adult Financial grants are, since 3.605.4 does not exempt them. SSI is not counted: 3.605.4.B.27 exempts an SSI recipient's income."
-derived: [+, social_security_income, pension_income, unemployment_income, adult_financial_cash_income, child_support_received, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest]
-sources: [S412]
-open: [OQ-390]
+derived: [max, 0, ["-", [+, social_security_income, pension_income, unemployment_income, adult_financial_cash_income, child_support_received, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], [otherwise, cw_excluded_unearned_income, 0]]]
+sources: [S1621, S412]
 implemented: engine
 tags: [cash, tanf, income]
 rationale: No existing item sums Colorado Works countable unearned income; cw_countable_income (CO-910) needs it.
@@ -17,3 +16,5 @@ tests:
   - {id: CO-908-T1, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, ssi_income: 0, child_support_received: 0, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, expect: 0}
   - {id: CO-908-T2, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 200, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, ssi_income: 0, child_support_received: 100, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, expect: 300}
   - {id: CO-908-T3, title: "Vocabulary fix round (R-1): the unit's own Colorado Works grant is not counted; an Adult Financial grant is", as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 500, adult_financial_cash_income: 300, child_support_received: 0, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, expect: 300}
+  # Phase-10 sweep (OQ-390): $250 of other nontaxable income is exempt under 3.605.4.A.
+  - {id: CO-908-T4, as_of: "2026-10-01", month: "2026-10", given: {social_security_income: 400, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, ssi_income: 0, child_support_received: 0, other_unearned_income_nontaxable: 250, other_unearned_income_taxable: 0, tax_exempt_interest: 0, cw_excluded_unearned_income: 250}, expect: 400}

@@ -1,0 +1,13 @@
+id: CO-2327
+name: "SNAP: legally obligated child support paid information is outdated at recertification"
+identifier: snap_child_support_paid_information_is_outdated
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "At a SNAP recertification, the legally obligated child support paid information last verified for this person is incomplete, inaccurate, inconsistent or outdated, so it is verified again (10 CCR 2506-1 4.502.B.1; 7 CFR 273.2(f)(8)(i)(A), (D)). Questionable information is stated separately, by the questionable-attestation facts."
+precision: "If not stated, SNAP reads this as false: unchanged information is not verified again (4.502.B.1). Read only at a recertification."
+supplied_by: "Eligibility technician's review of the case record at recertification."
+sources: [S1618, S1055]
+tags: [verification, snap]
+rationale: "OQ-371: 4.502.B.1 (S1618) re-verifies an unchanged factor at recertification when it is \"incomplete, inaccurate, questionable, inconsistent, or outdated\"; only the questionable case had a fact. snap_requires_verification_of_child_support_paid (CO-1382) reads it."

@@ -9539,3 +9539,142 @@ Document: D-14
 7 CFR 273.10(a)(1)(iii)(C). https://www.ecfr.gov/current/title-7/section-273.10
 
 > (C) If after using the appropriate formula the result ends in 1 through 99 cents, the State agency shall round the product down to the nearest lower whole dollar. If the computation results in an allotment of less than $10, then no issuance shall be made for the initial month.
+
+### S1618. Colorado SNAP recertification: factors re-verified only when incomplete, inaccurate, questionable, inconsistent or outdated; income on a $50 change; dependent care, medical and child support on a changed source or a change over $25
+
+Document: D-82
+
+10 CCR 2506-1 4.502.B.1-3 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 1. Eligibility factors not verified by the Income and Eligibility Verification
+> System (IEVS) should be verified at recertification only if they are
+> incomplete, inaccurate, questionable, inconsistent, or outdated and would
+> affect a household's eligibility or benefit level. Unchanged information shall
+> not be verified unless the information is outdated.
+>
+> 2 A change in total monthly income of fifty ($50) or more for each member
+> must be verified at recertification. If the source of income has not changed
+> and if the amount is unchanged or has changed by fifty dollars ($50) or
+> less, verification is not required unless the information is unclear,
+> questionable, or outdated.
+>
+> 3. At recertification, all households shall verify the following information if the
+> source has changed, or the amount has changed by more than twenty-five
+> dollars ($25) since the last time they were verified:
+>
+> a. Dependent care expenses; and
+>
+> b. Allowable medical expenses; and
+>
+> c. Legally obligated child support.
+
+### S1619. Colorado SNAP sponsored non-citizen: sponsor income and resources not counted for a member of the sponsor's household, an organization's sponsoree, an indigent or battered non-citizen, after the sponsor's death, or with forty quarters
+
+Document: D-82
+
+10 CCR 2506-1 4.305.2.A, C, E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. The provisions of this section apply only to those non-citizens for whom a
+> sponsor has executed an affidavit of support (INS Form I-864 or I-864A) on
+> behalf of the non-citizen pursuant to Section 213A of the Immigration and
+> Nationality Act (INA) on or after December 19, 1997.
+>
+> C. Only when a sponsored non-citizen is an eligible non-citizen will the local office
+> consider the income and resources of the sponsor and sponsor's spouse
+> available to the household.
+>
+> E. The counting of a sponsor’s income and resource provisions do not apply to a
+> non-citizen who is:
+>
+> 1. A member of his or her sponsor's SNAP household;
+>
+> 2. Sponsored by an organization or group as opposed to an individual;
+>
+> 3. Not required to have a sponsor under the Immigration and Nationality Act
+> (INA), such as a refugee, a parolee, an asylee, or a Cuban or Haitian
+> entrant;
+>
+> 4. Considered as an “indigent” non-citizen;
+>
+> 5. A child of a battered parent is exempt from the provision of sponsorship. A
+> battered non-citizen spouse, non-citizen parent of a battered child, or child
+> of a battered non-citizen will not have sponsor's income and resources
+> counted during a twelve (12) month period after the local office determines
+> that the battering is substantially connected to the need for benefits, and
+> the battered individual does not live with the batterer. After twelve (12)
+> months, the local office shall not deem the batterer's income and
+> resources if the battery is recognized by a court or the INS and has a
+> substantial connection to the need for benefits, and the non-citizen does
+> not live with the batterer;
+>
+> 6. Had been sponsored but has since obtained citizenship;
+>
+> 7. A person whose sponsor has died; or,
+>
+> 8. Who has worked or can receive credit for a total of forty (40) work quarters
+> under Title II of the Social Security Act.
+
+### S1620. Colorado SNAP exempt income: only the listed sources are not considered as income
+
+Document: D-82
+
+10 CCR 2506-1 4.405 (introduction) (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.405 Exempt Income
+> Income from certain sources will be excluded for SNAP eligibility purposes under
+> mandate of law. Only the following will not be considered as income:
+
+### S1621. Colorado Works exempt income: the listed sources are exempt from consideration as income, a student dependent child's earnings among them
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.A (introduction), A.24 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.605.4 Exempt Unearned Income
+>
+> A. For the purpose of determining eligibility for Colorado Works, the following shall be exempt from
+> consideration as income:
+>
+> 24. Income of A client who is attending school (student in a secondary education or
+> undergraduate degree program) shall be considered as follows:
+>
+> a. Income received from a college work-study program grant shall be exempt.
+>
+> b. All earned income, including earned income from WIOA, that is received by a
+> dependent child who is a full-time student or a part-time student who is not a
+> fulltime employee shall be disregarded.
+
+### S1622. Adult Financial exempt income: earned and unearned income of the client, spouse or sponsor that the list exempts
+
+Document: D-80
+
+9 CCR 2503-5 3.520.786 (introduction) (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.786 EXEMPT INCOME
+>
+> Certain earned and unearned income that is not countable to the client, client’s spouse,
+> or sponsor(s) in whole or in part is exempt. Such exempt income is limited to the
+> following:
+
+### S1623. CCCAP income exclusions: the listed items are not countable income
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J (introduction) (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Income Exclusions
+>
+> Each of the following are not considered countable income and are not taken into
+> consideration for eligibility for child care.
+
+### S1624. LEAP income exclusions: the listed items are exempt from consideration as income
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23 (introduction) (version effective 2025-11-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.23 Income Exclusions [Rev. eff. 11/1/15]
+>
+> To determine eligibility for financial assistance and the amount of the assistance payment, the following
+> shall be exempt from consideration as either resources or income. Verification is not required in the case
+> file but must be notated in the Report of Contact (ROC).
