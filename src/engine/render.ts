@@ -72,8 +72,14 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "rel": return "this person is a " + (e[1] as string[]).join(" or ") + ` of ${i(e[2])}`;
     case "in_group": return `${i(e[1])} is in ${i(e[2])}`;
     case "of": return `${i(e[1])}'s ${i(e[2])}`;
-    case "lookup": return `${i(e[1])}, for ${i(e[2])}`;
+    case "lookup": return `${o(e[1])}, for ${i(e[2])}`;
     case "band": return `${i(e[1])}, for the band containing ${i(e[2])}`;
+    case "lookup_extended":
+      return e.length > 3
+        ? `${o(e[1])}, for ${o(e[2])}, adding ${o(e[3])} for each beyond its last row`
+        : `${o(e[1])}, for ${o(e[2])}, or its last row beyond it`;
+    case "latest_month_of_year": return `the most recent month number ${o(e[1])} on or before ${o(e[2])}`;
+    case "as_of": return `${i(e[1])} as of ${o(e[2])}`;
   }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;

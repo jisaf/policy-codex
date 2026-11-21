@@ -68,7 +68,13 @@ export function stringifyItem(it: Item): string {
   for (const key of ITEM_KEY_ORDER) {
     const v = rec[key];
     if (v === undefined || v === null) continue;
-    if (Array.isArray(v) && v.length === 0 && key !== "sources") continue;
+    // An empty list of versions is a parameter awaiting its figure, so it is
+    // written (and read back) rather than dropped like other empty lists.
+    if (Array.isArray(v) && v.length === 0 && key !== "sources" && key !== "versions") continue;
+    if (key === "versions" && Array.isArray(v) && v.length === 0) {
+      lines.push("versions: []");
+      continue;
+    }
     if (SEQ_OF_FLOW_KEYS.has(key)) {
       lines.push(`${key}:`);
       for (const entry of v as unknown[]) {
@@ -87,7 +93,7 @@ function stripEmpty(o: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(o)) {
     if (v === null || v === undefined) continue;
-    if (Array.isArray(v) && v.length === 0 && k !== "sources") continue;
+    if (Array.isArray(v) && v.length === 0 && k !== "sources" && k !== "versions") continue;
     out[k] = v;
   }
   return out;

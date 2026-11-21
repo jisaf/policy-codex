@@ -49,7 +49,7 @@ the YAML.
 | person | the person's id in the case (`"p1"`) |
 | group of persons | an array of person ids, in the order the case declares its persons (never sorted, never a set) |
 | list of months | an array of months, ascending |
-| table keyed by household size / by person | an object; keys are strings (`"1"`, `"2"`, ..., or person ids) |
+| table keyed by household size / by person / by option | an object; keys are strings (`"1"`, `"2"`, ..., person ids, or the options of a `one of` fact such as a county or a dwelling type); a row is an amount, or an option (a county's region) |
 
 Dates and months are compared as strings, which is chronological for these
 fixed-width forms.
@@ -79,11 +79,15 @@ An expression is evaluated for:
    parameter with `versions` takes the version in force **on the
    determination date**: `from <= date < to` (`from` inclusive, `to`
    exclusive; the latest `from` wins). A date no version covers gives
-   unknown and a `no-version` warning. A parameter without versions has its
-   one `value`. The version is chosen by the determination date even when
+   unknown and a `no-version` warning. A parameter whose `versions` is an
+   empty list (a figure the State sets but has not published where it can be
+   fetched; the item names the open question) is covered on no date: unknown,
+   with a `no-version` warning, every time. A parameter without versions has
+   its one `value`. The version is chosen by the determination date even when
    the expression is evaluating another month (an ABAWD look-back, a
-   retroactive month, a future month of a case): there is no
-   "parameter as of the month" in the engine.
+   retroactive month, a future month of a case); a rule that applies a figure
+   from another date says so with `as_of` (P25, Tables), which picks the
+   version in force on the date it names.
 3. **Case scope.** `determination_date` is the determination date; any other
    `case`-scope item is unknown (a stated value is not read).
 4. **Month scope.** `month_facts[the month][id]`, else the case-wide
@@ -151,12 +155,15 @@ they differ, binary64 in written order is the codex's answer.
 | Operator | Arguments | Result | Unknown |
 |---|---|---|---|
 | `lookup` | table, key | the row for the key | unknown if the table or the key is unknown. **A key with no row is unknown** and reported as a `lookup-miss` warning. |
-| `band` (P48) | table keyed by income band, number | the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number (bounds compared with a 1e-9 tolerance) | unknown if the table or the number is unknown. **A number above the last bound is unknown** and reported as a `lookup-miss` warning. |
+| `band` (P48) | table keyed by income band, number | the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number (bounds compared with a 1e-9 tolerance). A row keyed `"above"` is the open top band: its value is the value for every number above the last bound | unknown if the table or the number is unknown. **A number above the last bound of a table with no `"above"` row is unknown** and reported as a `lookup-miss` warning. |
+| `lookup_extended` (P51) | table keyed by a whole number, number, optionally an amount | up to the table's last (largest whole-number) row, the row for the number, as `lookup`; above it, the last row plus the amount for each number beyond the last row, or, with no amount, the last row itself ("6 or more") | unknown if the table or the number is unknown, or (above the last row) the amount is. **A number at or below the last row with no row is unknown** and reported as a `lookup-miss` warning. |
+| `as_of` (P25) | a parameter's identifier (not evaluated), a date | the parameter's version in force on that date, chosen as on the determination date (`from` inclusive, `to` exclusive); a case's `parameters` override still wins, and the item's own effective range is still read on the determination date | unknown if the date is unknown; **a date no version covers is unknown** and reported as a `no-version` warning. |
 
 Table keys are strings. A number key is looked up as its decimal string (a
 household size of 3 reads row `"3"`, and 3.0 is the same key); a person key
 is the person's id. The step beyond the last row is a separate
-`_each_additional` parameter that the rule applies itself.
+`_each_additional` parameter that the rule applies itself, written with
+`lookup_extended` so the rule never restates the table's last row.
 
 ## Persons and groups
 
@@ -236,6 +243,7 @@ members' groups need not be equal.
 | `first_day` | month | its first day | unknown in, unknown out |
 | `month_of` | date | the month containing it | unknown in, unknown out |
 | `month_of_year` | month | its calendar month number, 1 (January) to 12 (December) | unknown in, unknown out |
+| `latest_month_of_year` (P50) | n (1 to 12), month or date | the most recent month, on or before the month (or the month containing the date), whose calendar month number is n: the month itself when its number is n | unknown if either is |
 | `month_before`, `month_after` | month | the month before or after | unknown in, unknown out |
 | `months_before`, `months_after` | n, month | the month n months before or after | unknown if either is |
 | `months_ending` | n, month | the n consecutive months ending with the month, ascending (`[]` for n ≤ 0) | unknown if either is |
@@ -254,8 +262,11 @@ and no time zone (computed in UTC).
 ## Unknowns that no supplied fact explains
 
 Three unknowns have no unstated supplied fact behind them: a `lookup` key
-with no row (or a `band` number above the last bound), a versioned parameter with no version on the determination
-date, and a division by zero. The engine reports each one: as a warning in
+with no row (or a `band` number above the last bound of a table with no open
+top band, or a `lookup_extended` number below the last row with no row), a
+versioned parameter with no version on the determination date (or on the date
+`as_of` names; a parameter awaiting its figure has none on any date), and a
+division by zero. The engine reports each one: as a warning in
 `npm run check` (with the rule test or case that hit it), on the trace (a
 parameter's origin is `no-version`; the derived fact whose rule hit a lookup
 miss or a division by zero carries the warning), and through the

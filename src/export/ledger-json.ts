@@ -135,7 +135,7 @@ export function buildLedgerJson(engine: Engine, vol: LoadedVolume, sha: string):
       if (it[k]) row[k] = it[k];
     }
     if (it.kind === "parameter") {
-      if (it.versions && it.versions.length) row.versions = it.versions;
+      if (Array.isArray(it.versions)) row.versions = it.versions;
       else if (it.value !== undefined) row.value = it.value;
     }
     if (it.derived !== undefined && it.derived !== null) {

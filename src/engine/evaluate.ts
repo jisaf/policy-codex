@@ -380,7 +380,7 @@ export function evaluate(
       // A versioned parameter with no version on the determination date has
       // no value; that unknown is reported, never silent.
       if (
-        !(it.identifier in c.params) && it.versions && it.versions.length &&
+        !(it.identifier in c.params) && Array.isArray(it.versions) &&
         !versionInForce(it, c.det)
       ) {
         raise("no-version", `no version in force on ${c.det}`, {
@@ -434,6 +434,40 @@ export function evaluate(
     }
     memo[key] = v;
     return seen(v, "evaluated", undefined, warningsByKey.get(key));
+  }
+
+  /** P25: a parameter's value in force on a date other than the
+   *  determination date. The item's own effective range is still read on the
+   *  determination date, and a case's `parameters` override still wins (it
+   *  states one value for every date). A date no version covers is unknown
+   *  and reported, as on the determination date. */
+  function paramOn(id: string, date: string | null): unknown {
+    const it = ix.byIdentifier.get(id);
+    if (!it || it.kind !== "parameter") throw new Error(`"as of" needs a parameter, not ${id}`);
+    const parentKey = trace && stack.length ? stack[stack.length - 1] : null;
+    const seen = (v: unknown, origin: TraceEvent["origin"]): unknown => {
+      if (trace) {
+        emit({
+          key: id + "||", identifier: id, person: null, month: null,
+          kind: "parameter", value: v, origin, parentKey,
+        });
+      }
+      return v;
+    };
+    if (date === null) return null;
+    if (!inForce(it, c.det)) return seen(null, "not-in-force");
+    if (it.identifier in c.params) return seen(c.params[it.identifier], "parameter");
+    if (Array.isArray(it.versions)) {
+      const v = versionInForce(it, date);
+      if (!v) {
+        raise("no-version", `no version in force on ${date}`, {
+          identifier: id, person: null, month: null,
+        });
+        return seen(null, "no-version");
+      }
+      return seen(v.value, "parameter");
+    }
+    return seen(it.value === undefined ? null : it.value, "parameter");
   }
 
   function ev(e: Expr, p: string | null, m: string | null, P: string | null): any {
@@ -647,6 +681,16 @@ export function evaluate(
       case "first_day": { const mm = g(e[1]); return mm === null ? null : mm + "-01"; }
       case "month_of": { const d = g(e[1]); return d === null ? null : d.slice(0, 7); }
       case "month_of_year": { const mm = g(e[1]); return mm === null ? null : Number(String(mm).slice(5, 7)); }
+      case "latest_month_of_year": {
+        // P50: the most recent month, on or before the given month (or the
+        // month of the given date), whose calendar month number is n.
+        const n = g(e[1]); const x = g(e[2]);
+        if (n === null || x === null) return null;
+        const mm = String(x).slice(0, 7);
+        const back = ((Number(mm.slice(5, 7)) - Number(n)) % 12 + 12) % 12;
+        return addMonths(mm, -back);
+      }
+      case "as_of": return paramOn(e[1] as string, g(e[2]));
       case "month_before": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, -1); }
       case "month_after": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, 1); }
       case "months_after": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, n); }
@@ -762,21 +806,51 @@ export function evaluate(
       case "band": {
         // A table keyed by income band: each key is a band's inclusive upper
         // bound; the value is the first band (in ascending bound order) whose
-        // bound is at least the number. Past the last bound there is no band.
+        // bound is at least the number. A row keyed "above" is the open top
+        // band, for every number above the last bound; without one there is
+        // no band past the last bound.
         const tbl = g(e[1]); const k = g(e[2]);
         if (tbl === null || k === null) return null;
-        const bounds = Object.keys(tbl).map(Number).filter((x) => !Number.isNaN(x)).sort((a, b) => a - b);
+        const bounds = Object.keys(tbl).filter((x) => x !== "above").map(Number)
+          .filter((x) => !Number.isNaN(x)).sort((a, b) => a - b);
         for (const b of bounds) {
           if (Number(k) <= b + 1e-9) {
-            const key = Object.keys(tbl).find((x) => Number(x) === b)!;
+            const key = Object.keys(tbl).find((x) => x !== "above" && Number(x) === b)!;
             return tbl[key];
           }
         }
-        // Past the last bound there is no band: unknown, and reported like a
-        // lookup with no row (docs/operators.md, Tables).
+        if ("above" in tbl) return tbl.above;
+        // Past the last bound with no open top band there is no band:
+        // unknown, and reported like a lookup with no row (docs/operators.md,
+        // Tables).
         raise("lookup-miss", `no band contains ${JSON.stringify(k)}` +
           (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
         return null;
+      }
+      case "lookup_extended": {
+        // P51: a table keyed by a whole number read beyond its last row. Up
+        // to the last row it is a lookup; past it, the last row plus the
+        // third argument for each number beyond it, or the last row itself
+        // when there is no third argument ("or more").
+        const tbl = g(e[1]); const k = g(e[2]);
+        if (tbl === null || k === null) return null;
+        const keys = Object.keys(tbl).map(Number).filter((x) => Number.isInteger(x));
+        if (!keys.length) {
+          raise("lookup-miss", "the table has no whole-number rows" +
+            (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+          return null;
+        }
+        const last = Math.max(...keys);
+        if (Number(k) <= last) {
+          if (String(k) in tbl) return tbl[String(k)];
+          raise("lookup-miss", `no row for key ${JSON.stringify(k)}` +
+            (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+          return null;
+        }
+        if (e.length < 4) return tbl[String(last)];
+        const each = g(e[3]);
+        if (each === null) return null;
+        return tbl[String(last)] + each * (Number(k) - last);
       }
     }
     throw new Error("unknown operator " + op);

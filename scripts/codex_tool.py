@@ -389,8 +389,8 @@ class Evaluator:
             return self.case.params[ident]
         if "versions" in it:
             best = None
-            for v in it["versions"]:
-                if to_date(v["from"]) <= self.case.det_date:
+            for v in it["versions"] or []:
+                if to_date(v["from"]) <= self.case.det_date and ("to" not in v or self.case.det_date < to_date(v["to"])):
                     if best is None or to_date(v["from"]) >= to_date(best["from"]):
                         best = v
             return None if best is None else best["value"]
@@ -548,6 +548,38 @@ class Evaluator:
         if op == "month_of_year":
             m = ev(e[1])
             return None if m is None else int(m[5:7])
+        if op == "latest_month_of_year":
+            n, m = ev(e[1]), ev(e[2])
+            if n is None or m is None:
+                return None
+            m = month_of(m) if not isinstance(m, str) else m[:7]
+            return add_months(m, -((int(m[5:7]) - int(n)) % 12))
+        if op == "as_of":
+            it = self.led.by_identifier[e[1]]
+            d = ev(e[2])
+            if d is None:
+                return None
+            if it["identifier"] in self.case.params:
+                return self.case.params[it["identifier"]]
+            if "versions" in it:
+                best = None
+                for v in it["versions"]:
+                    if to_date(v["from"]) <= d and ("to" not in v or d < to_date(v["to"])):
+                        if best is None or to_date(v["from"]) >= to_date(best["from"]):
+                            best = v
+                return None if best is None else best["value"]
+            return it["value"]
+        if op == "lookup_extended":
+            table, key = ev(e[1]), ev(e[2])
+            if table is None or key is None:
+                return None
+            last = max(int(k) for k in table if str(k).lstrip("-").isdigit())
+            if key <= last:
+                return table.get(str(int(key))) if str(int(key)) in table else table.get(key)
+            if len(e) < 4:
+                return table[str(last)]
+            each = ev(e[3])
+            return None if each is None else table[str(last)] + each * (key - last)
         if op == "month_before":
             m = ev(e[1])
             return None if m is None else add_months(m, -1)
@@ -805,6 +837,14 @@ class Renderer:
             return f"the month containing {i(e[1])}"
         if op == "month_of_year":
             return f"the calendar month number of {i(e[1])}"
+        if op == "latest_month_of_year":
+            return f"the most recent month number {self.operand(e[1])} on or before {self.operand(e[2])}"
+        if op == "as_of":
+            return f"{i(e[1])} as of {self.operand(e[2])}"
+        if op == "lookup_extended":
+            if len(e) > 3:
+                return f"{i(e[1])}, for {self.operand(e[2])}, adding {self.operand(e[3])} for each beyond its last row"
+            return f"{i(e[1])}, for {self.operand(e[2])}, or its last row beyond it"
         if op == "month_before":
             return f"the month before {i(e[1])}"
         if op == "month_after":

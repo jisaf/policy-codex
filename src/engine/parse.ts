@@ -115,7 +115,31 @@ export function parseInline(
     return ["in", p(sp[0]), sp[1].split(",").map((x) => x.trim()).filter(Boolean)];
   }
   if (s.endsWith(" is unknown")) return ["unknown", p(s.slice(0, -11))];
+  // P51, read before arithmetic: its own words hold no arithmetic phrase at
+  // the top level, but its operands may.
+  // A table slot is a table's name, or a parenthesised expression giving one
+  // (a table as of a date).
+  const table = (x: string): Expr | null =>
+    resolveName(ix, x) ?? (x.trim().startsWith("(") ? p(stripParens(x)) : null);
+  if (s.endsWith(" for each beyond its last row")) {
+    const q = splitTop(s.slice(0, -29), ", adding ", true);
+    const r = q && splitTop(q[0], ", for ", true);
+    const tbl = r && table(r[0]);
+    if (q && r && tbl) return ["lookup_extended", tbl, p(r[1]), p(q[1])];
+  }
+  if (s.endsWith(", or its last row beyond it")) {
+    const r = splitTop(s.slice(0, -27), ", for ", true);
+    const tbl = r && table(r[0]);
+    if (r && tbl) return ["lookup_extended", tbl, p(r[1])];
+  }
+  if ((sp = splitTop(s, " as of ", true))) {
+    const prm = resolveName(ix, sp[0]);
+    if (prm && ix.byIdentifier.get(prm)?.kind === "parameter") return ["as_of", prm, p(sp[1])];
+  }
   let m: RegExpMatchArray | null;
+  if ((m = s.match(/^the most recent month number (.+?) on or before (.+)$/))) {
+    return ["latest_month_of_year", p(m[1]), p(m[2])];
+  }
   if ((m = s.match(/^the number of whole years between (.+)$/))) {
     const q = splitTop(m[1], " and ");
     if (q) return ["years_between", p(q[0]), p(q[1])];
@@ -202,7 +226,8 @@ export function parseInline(
   if ((sp = splitTop(s, ", for ", true))) {
     const at = parseAt(ix, sp[0], options);
     if (at) return ["lookup", at, p(sp[1])];
-    const tbl = resolveName(ix, sp[0]);
+    const tbl = resolveName(ix, sp[0]) ??
+      (sp[0].trim().startsWith("(") && sp[0].includes(" as of ") ? p(stripParens(sp[0])) : null);
     if (tbl) return ["lookup", tbl, p(sp[1])];
   }
   const at = parseAt(ix, s, options);

@@ -30,7 +30,8 @@ export const RESERVED: ReadonlySet<string> = new Set([
   "years_between", "first_day", "month_of", "month_of_year", "month_before", "month_after",
   "months_ending", "months_from_to", "months_after", "months_before", "days_after", "days_between",
   "at", "each", "some_month", "count_months", "avg",
-  "exists", "exists_related", "rel", "in_group", "of", "lookup", "band",
+  "exists", "exists_related", "rel", "in_group", "of", "lookup", "band", "lookup_extended",
+  "latest_month_of_year", "as_of",
   "max", "ceil", "round", "persons", "count", "filter", "sum", "reachable", "shared_relative", "has_relative_in",
 ]);
 
