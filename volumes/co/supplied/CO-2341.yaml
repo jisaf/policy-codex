@@ -1,0 +1,13 @@
+id: CO-2341
+name: "Colorado Works: excluded unearned income"
+identifier: cw_excluded_unearned_income
+kind: supplied
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The part of this person's gross unearned income for the month, as stated in the unearned income facts, that 9 CCR 2503-6 3.605.4.A excludes from Colorado Works income."
+precision: "If not stated, Colorado Works reads this as 0 (no excluded unearned income). It cannot exceed the gross amount it is taken from; the income item never falls below zero."
+supplied_by: "Eligibility technician's application of the program's exclusion list to the income reported."
+sources: [S1621]
+tags: [cash, tanf, income]
+rationale: "OQ-390: supplied income facts state the gross amount received before any program's exclusions (vocabulary review R-1), and each program's exclusion list (S1621) differs, so a case with excluded income could not be right for two programs at once; this program's own excluded amount lets cw_countable_unearned_income (CO-908) subtract it."

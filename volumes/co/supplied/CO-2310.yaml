@@ -1,0 +1,13 @@
+id: CO-2310
+name: "SNAP: first month of the ABAWD additional three months"
+identifier: snap_abawd_additional_months_start_month
+kind: supplied
+type: month
+scope: person
+program: SNAP
+meaning: "The first month of the single period of three consecutive months for which this person, having regained ABAWD eligibility and then failed to keep meeting the work requirement, remains eligible after notifying the local office (10 CCR 2506-1 4.311.3.D.3), in the current thirty-six month clock period."
+precision: "Not stated when the provision has not been applied; SNAP then reads that the person is not in the additional months. The provision applies once in a thirty-six month period, so one month is stated."
+supplied_by: "County ABAWD tracking, from the date the individual notified the local office."
+sources: [S1613]
+tags: [snap, abawd]
+rationale: "OQ-38 (P-7): 4.311.3.D.3 (S1613) allows one three-month period after the person notifies the office; no fact stated when it began."

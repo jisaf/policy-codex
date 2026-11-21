@@ -1,0 +1,13 @@
+id: CO-2387
+name: "Sponsor's dependents"
+identifier: sponsor_dependent_count
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The number of persons who are dependents of this non-citizen's sponsor, other than the non-citizen and the non-citizen's spouse (9 CCR 2503-5 3.534.D.2.C, 3.544.G.2.c, 3.549.G.2.c)."
+precision: "If not stated, a program reads this as 0."
+supplied_by: "Sponsor's tax return or statement."
+sources: [S1632]
+tags: [immigration]
+rationale: "OQ-114: Adult Financial deducts half the SSI benefit standard for each of the sponsor's dependents before deeming (S1632); no fact stated them."

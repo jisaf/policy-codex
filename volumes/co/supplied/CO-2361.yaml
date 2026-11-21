@@ -1,0 +1,13 @@
+id: CO-2361
+name: "Colorado Works: sponsor income availability rebutted"
+identifier: cw_sponsor_income_availability_rebutted
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "The client has rebutted the county department's determination that the sponsor's income is available, so it is not deemed (9 CCR 2503-6 3.605.1.A.5.b)."
+precision: "If not stated, Colorado Works reads this as false."
+supplied_by: "County determination on the client's rebuttal."
+sources: [S1627]
+tags: [cash, tanf, immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it."

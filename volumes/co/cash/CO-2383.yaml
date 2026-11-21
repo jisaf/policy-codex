@@ -1,0 +1,16 @@
+id: CO-2383
+name: "Colorado Works: is a parent of a dependent child in the home"
+identifier: cw_is_parent_of_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "This person is the parent of a dependent child living in the home (9 CCR 2503-6 3.604.2.C.1.b), as distinct from a non-parent caretaker."
+derived: [exists_related, [parent], [of, [P], cw_is_dependent_child]]
+sources: [S1625]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "OQ-140: cw_budgetary_member_deemed_income (CO-2353) treats the spouse of a parent (a stepparent, 3.605.1.A.4.a) differently from the spouse of a non-parent caretaker; cw_has_dependent_child (CO-902) joins the two roles."
+tests:
+  - {id: CO-2383-T1, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-2383-T2, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[caretaker, p1, p2]], expect: false}

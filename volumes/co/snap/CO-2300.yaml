@@ -1,0 +1,21 @@
+id: CO-2300
+name: "SNAP: counted shelter cost of a member"
+identifier: snap_counted_shelter_cost_of_member
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The part of the shelter costs billed to or paid by this household member (shelter_cost_monthly) that counts as a shelter cost of the household: all of it for an eligible member and for a member disqualified for IPV or fraud, a work-requirement sanction (a voluntary quit included) or as a fleeing felon or probation or parole violator; for a member disqualified as an ineligible non-citizen, the cost divided evenly among every household member, the disqualified member included, less the disqualified member's own share; nothing for an ineligible student, who is not a household member, or for any other ineligible member."
+precision: "n is the count of snap_household_members, the disqualified member included, as in snap_counted_income_of_ineligible_member (CO-333). Each disqualified member's cost loses that member's one share, the reading CO-333 gives the income of 4.411.1.B.2.b. The standard utility allowance is not prorated (4.411.1.B.2.c); snap_shelter_costs (CO-377) adds it once in full. A drug-felony disqualification counts nothing, matching CO-333, which counts none of that member's income. Unknown when this member's shelter_cost_monthly is unstated."
+derived: [case, [[not, snap_is_ineligible_member], shelter_cost_monthly], [snap_is_disqualified_member_counted_in_full, shelter_cost_monthly], [snap_is_ineligible_non_citizen, ["*", shelter_cost_monthly, ["/", ["-", [count, snap_household_members], 1], [count, snap_household_members]]]], [else, 0]]
+sources: [S1600, S1602, S1603]
+nearest: [CO-333]
+implemented: engine
+tags: [snap, income]
+rationale: "OQ-28: 4.407.3.A (S1600) allows shelter expenses \"as billed to a household member or as paid or billed to a disqualified individual\", in full for fraud and divided evenly among all members for an ineligible non-citizen, and 4.411.1.B.1.a and B.2.c (S1602) say the same for the other disqualifications; no item attributed a shelter cost to the member billed for it. shelter_cost_monthly (CO-035) now states each member's own billed or paid amount, and this item counts it the way the member's disqualification requires."
+tests:
+  - {id: CO-2300-T1, title: "An eligible member's billed rent counts in full", as_of: "2026-10-01", month: "2026-10", given: {shelter_cost_monthly: 1200, snap_is_ineligible_member: false}, expect: 1200}
+  - {id: CO-2300-T2, title: "4.407.3.A - rent billed to an ineligible non-citizen in a household of four counts three quarters", as_of: "2026-10-01", month: "2026-10", given: {shelter_cost_monthly: 1200, snap_is_ineligible_member: true, snap_is_disqualified_member_counted_in_full: false, snap_is_ineligible_non_citizen: true, snap_household_members: [p1, p2, p3, p4]}, expect: 900}
+  - {id: CO-2300-T3, title: "4.411.1.B.1.a - rent billed to a member disqualified for IPV counts in full", as_of: "2026-10-01", month: "2026-10", given: {shelter_cost_monthly: 1200, snap_is_ineligible_member: true, snap_is_disqualified_member_counted_in_full: true, snap_household_members: [p1, p2, p3, p4]}, expect: 1200}
+  - {id: CO-2300-T4, title: "4.411.2.A, C - rent paid by an ineligible student is not the household's", as_of: "2026-10-01", month: "2026-10", given: {shelter_cost_monthly: 1200, snap_is_ineligible_member: true, snap_is_disqualified_member_counted_in_full: false, snap_is_ineligible_non_citizen: false, snap_household_members: [p1, p2]}, expect: 0}
+  - {id: CO-2300-T5, title: "An unstated shelter cost is unknown, not zero (OQ-29)", as_of: "2026-10-01", month: "2026-10", given: {snap_is_ineligible_member: false}, expect: unknown}

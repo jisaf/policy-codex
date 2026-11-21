@@ -1,0 +1,20 @@
+id: CO-2349
+name: "Colorado Works: is an optional assistance-unit member"
+identifier: cw_is_optional_assistance_unit_member
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "This person, living in the home, is an optional member of the assistance unit under 9 CCR 2503-6 3.604.2.C.2: a non-parent caretaker of a dependent child who is not also a parent of a dependent child in the home (C.2.b); the spouse of a parent or of a non-parent caretaker of a dependent child, who is not a parent or caretaker of a dependent child in the home and whose spouse is not pregnant (C.2.a, c; the spouse of a pregnant parent is mandatory, C.1.e); or a member made optional by custody or child support (C.2.d-f, cw_is_optional_member_by_custody_or_support)."
+precision: "A pregnancy left unstated is read as no pregnancy (is_pregnant, CO-009). The parent of a minor parent requesting assistance for her own child (C.2.g) is optional too; cw_assistance_unit_members (CO-900) reaches that parent only when the parent requests inclusion, so this item need not name it."
+derived: [any, [all, [exists_related, [caretaker], [of, [P], cw_is_dependent_child]], [not, [exists_related, [parent], [of, [P], cw_is_dependent_child]]]], [all, [not, cw_has_dependent_child], [exists_related, [spouse], [all, [of, [P], cw_has_dependent_child], [not, [otherwise, [of, [P], is_pregnant], false]]]]], [otherwise, cw_is_optional_member_by_custody_or_support, false]]
+sources: [S1625]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "OQ-152, OQ-101: cw_assistance_unit_members (CO-900) treated every caretaker as mandatory and reached no spouse; 3.604.2.C.2 (S1625) makes these persons members only on request."
+tests:
+  - {id: CO-2349-T1, title: "A grandmother caring for her grandchild - a non-parent caretaker (C.2.b)", as_of: "2026-10-01", given: {date_of_birth: "1960-01-01"}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[caretaker, p1, p2]], expect: true}
+  - {id: CO-2349-T2, title: "A stepfather - the spouse of a parent, not himself a parent (C.2.a)", as_of: "2026-10-01", given: {date_of_birth: "1985-01-01"}, others: {p2: {date_of_birth: "1988-01-01", is_pregnant: false}, p3: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[spouse, p1, p2], [parent, p2, p3]], expect: true}
+  - {id: CO-2349-T3, title: "The spouse of a pregnant parent is mandatory (C.1.e)", as_of: "2026-10-01", given: {date_of_birth: "1985-01-01"}, others: {p2: {date_of_birth: "1988-01-01", is_pregnant: true}, p3: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[spouse, p1, p2], [parent, p2, p3]], expect: false}
+  - {id: CO-2349-T4, title: "A parent of a dependent child is mandatory", as_of: "2026-10-01", given: {date_of_birth: "1985-01-01"}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-2349-T5, title: "A half sibling receiving child support (C.2.d)", as_of: "2026-10-01", given: {date_of_birth: "2016-01-01", cw_is_optional_member_by_custody_or_support: true}, others: {p2: {date_of_birth: "1988-01-01"}}, relationships: [[parent, p2, p1]], expect: true}

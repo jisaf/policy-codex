@@ -5,10 +5,10 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: A household member counted for household composition but excluded from the count of eligible members and from receiving benefits directly, because they are an ineligible non-citizen, an ineligible student, or are disqualified (fleeing felon or probation/parole violator, intentional program violation, work-requirement noncompliance, or a disqualifying drug felony).
-precision: Batch 4 added the ineligible-student prong (snap_is_ineligible_student, 7 CFR 273.5, 7 U.S.C. 2015(e)) as a further "any" arm below, alongside the reasons batch 1 authored.
-derived: [any, snap_is_ineligible_non_citizen, snap_is_ineligible_student, is_fleeing_felon, is_probation_or_parole_violator, snap_is_serving_ipv_disqualification, is_disqualified_for_work_requirement_noncompliance, snap_is_disqualified_drug_felony]
-sources: [S19, S133, S134, S135]
+meaning: A household member counted for household composition but excluded from the count of eligible members and from receiving benefits directly, because they are an ineligible non-citizen, an ineligible student, or are disqualified (fleeing felon or probation/parole violator, intentional program violation, work-requirement noncompliance, a voluntary quit, or a disqualifying drug felony).
+precision: "Batch 4 added the ineligible-student prong (snap_is_ineligible_student, 7 CFR 273.5, 7 U.S.C. 2015(e)) as a further \"any\" arm below, alongside the reasons batch 1 authored. Phase-10 open-question sweep (OQ-38, P-8): a voluntary quit without good cause (snap_is_disqualified_for_voluntary_quit, CO-2318) is a further arm; 4.310.8.A (S1612) treats the person as a disqualified member."
+derived: [any, snap_is_ineligible_non_citizen, snap_is_ineligible_student, is_fleeing_felon, is_probation_or_parole_violator, snap_is_serving_ipv_disqualification, is_disqualified_for_work_requirement_noncompliance, snap_is_disqualified_for_voluntary_quit, snap_is_disqualified_drug_felony]
+sources: [S19, S133, S134, S135, S1611, S1612]
 implemented: engine
 tags: [immigration, legal]
 rationale: 7 CFR 273.1(b)(7) and 273.11(c) (S19) list several independent reasons a household member is individually ineligible while remaining part of the household for composition and (per 273.11(c)) income-counting purposes; this item is the single fact the rest of the chapter reads as "count this member out of the eligible group." Batch 4's snap_is_ineligible_student (7 U.S.C. 2015(e); 7 CFR 273.5, S133/S134/S135) is one more independent reason of the same kind, so it joins the same "any" rather than needing a separate wrapper fact.

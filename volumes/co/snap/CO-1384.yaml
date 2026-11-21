@@ -6,11 +6,14 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: "Whether the person's disability must be verified for SNAP: at application, whenever the person is treated as a disabled member, by proof of the disability-based benefit; unchanged disability is not verified again at recertification."
-derived: [all, snap_is_household_member, snap_is_disabled_member, [not, snap_determination_is_recertification]]
-sources: [S807, S1055]
+derived: [all, snap_is_household_member, snap_is_disabled_member, [any, [not, snap_determination_is_recertification], [otherwise, snap_disability_information_is_outdated, false]]]
+sources: [S1618, S807, S1055]
 implemented: engine
 tags: [verification, snap, disability]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
 tests:
   - {id: CO-1384-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_disabled_member: true, snap_determination_is_recertification: false}, expect: true}
   - {id: CO-1384-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_disabled_member: false, snap_determination_is_recertification: false}, expect: false}
+  # Phase-10 sweep (OQ-371): at recertification an unchanged disability is not verified again unless the information is outdated (4.502.B.1).
+  - {id: CO-1384-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_disabled_member: true, snap_determination_is_recertification: true}, expect: false}
+  - {id: CO-1384-T4, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_disabled_member: true, snap_determination_is_recertification: true, snap_disability_information_is_outdated: true}, expect: true}

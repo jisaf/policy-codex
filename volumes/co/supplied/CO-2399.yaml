@@ -1,0 +1,13 @@
+id: CO-2399
+name: "CCCAP: custody or parenting schedule outstanding"
+identifier: cccap_custody_schedule_is_outstanding
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "A custody arrangement or parenting schedule applies to this eligible child (shared or court-ordered custody) and the county has not received it (8 CCR 1403-1 3.111.C.2.h, \"if applicable\")."
+precision: "If not stated, CCCAP reads this as false."
+supplied_by: "Custody order or parenting plan, county caseworker's record."
+sources: [S1637]
+tags: [verification]
+rationale: "OQ-378: 3.111.C.2 and the paragraphs it points to (S1637) require this verification; no fact stated it, so the worker carried it outside the volume. Whether a custody arrangement applies is the worker's finding from the household's circumstances, so the requirement and its receipt are stated together."

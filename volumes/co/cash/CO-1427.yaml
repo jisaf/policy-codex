@@ -12,7 +12,6 @@ derived: [case, [[not, [exists, cw_assistance_unit_members, [any, [of, [P], cw_i
 sources: [S871, S872, S1064]
 implemented: engine
 tags: [verification, cash, tanf]
-open: [OQ-316]
 rationale: "No existing item reports a Colorado Works unit's verification standing. Fix round: not_applicable (review C-4) and the thirty days and individual exclusion of 3.604.3.K (C-9)."
 tests:
   - {id: CO-1427-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1], cw_is_dependent_child: false, is_pregnant: false}, expect: not_applicable}

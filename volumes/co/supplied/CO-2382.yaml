@@ -1,0 +1,13 @@
+id: CO-2382
+name: "Adult Financial: verification request date"
+identifier: af_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The date the county department requested the missing Adult Financial verifications in writing (9 CCR 2503-5 3.520.4.D.1)."
+precision: "If not stated, Adult Financial reads the shared verification_request_date (CO-1343)."
+supplied_by: "Adult Financial verification request notice."
+sources: [S879]
+tags: [cash, verification]
+rationale: "OQ-300: Adult Financial runs its period from its own written request; one shared verification_request_date (CO-1343) could not state a request on a different date from the other programs'."

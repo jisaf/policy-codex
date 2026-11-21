@@ -9801,3 +9801,983 @@ Document: D-26
 >   (iii) Hardship exemption.—
 >
 >   An individual whose income, by application of clause (i), exceeds the applicable eligibility threshold established by the State , shall continue to be eligible for medical assistance to the extent that the State determines, under procedures established by the State (in accordance with standards specified by the Secretary) , that the denial of eligibility of the individual would cause an undue medical or financial hardship as determined on the basis of criteria established by the Secretary.
+### S1600. Colorado SNAP shelter costs: allowed as billed to a household member or a disqualified individual; fraud in full, ineligible non-citizen or no SSN prorated
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Households shall receive a deduction for the allowable monthly shelter costs that
+> are in excess of fifty percent (50%) of the household's income after all other
+> deductions. Shelter expenses are allowed as billed to a household member or as
+> paid or billed to a disqualified individual. Shelter costs that are paid by or billed to
+> a person disqualified for fraud shall be allowed as a deduction for eligible
+> members in their entirety. Shelter costs, paid or billed to a person disqualified for
+> being an ineligible non-citizen or for failure to provide a Social Security Number
+> shall be divided evenly among all household members and the disqualified
+> individual. All except the disqualified person's pro rata share is counted as a
+> shelter cost of the household.
+
+### S1601. Colorado SNAP dependent care: billed to a household member or a disqualified person; prorated for an ineligible non-citizen or no SSN, in full for IPV/fraud
+
+Document: D-82
+
+10 CCR 2506-1 4.407.4.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Dependent care expenses, as billed to a household member or as paid by or
+> billed to a person disqualified for being an ineligible non-citizen or failure to
+> provide or apply for a SSN, for the care of a child or dependent with disabilities
+> shall be considered when the dependent care expenses are necessary for a
+> household member to accept or continue employment, seek employment, or
+> attend training or pursue education which is preparatory to employment.
+> Dependent care expenses that are paid by or billed to the disqualified person
+> shall be divided equally among all household members and the disqualified
+> person. All except the disqualified member's pro rata share is considered for a
+> deduction.
+>
+> The dependent care deduction that is paid by or billed to individuals disqualified
+> for intentional Program violation/fraud will be allowed in its entirety.
+
+### S1602. Colorado SNAP disqualified members: IPV, work sanction or fleeing felon counted in full with deductions in their entirety; ineligible non-citizen, SSN or ABAWD-sanctioned expenses prorated
+
+Document: D-82
+
+10 CCR 2506-1 4.411.1.B.1.a, B.2.c (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 1. Households containing members disqualified for IPV or fraud, or a work
+> requirement sanction, or classified as a fleeing felon:
+>
+> a. Income, Resources, and Deductible Expenses
+>
+> The income and resources of the disqualified household member(s)
+> shall be counted in their entirety. Resources shall only be
+> considered if the household is required to meet the resource
+> standard. The allowable earned income, standard, medical,
+> dependent care, and shelter deductions shall be allowed in their
+> entirety.
+>
+> c. Deductible Expenses
+>
+> The earned income deduction shall apply to the prorated income
+> earned by the disqualified and/or sanctioned member that is
+> attributed to the household. That portion of the household's
+> allowable shelter and dependent care expenses which are either
+> paid by or billed to the disqualified member shall be divided evenly
+> among the household members, including the disqualified member.
+> Legally obligated child support payments are deducted before
+> prorating income. The shelter expense will be prorated except for
+> the standard utility allowance (SUA). The full SUA will be added to
+> the other prorated shelter components if the household qualifies for
+> the SUA. All but the disqualified member's share is counted as a
+> deductible expense for the remaining household members.
+
+### S1603. Colorado SNAP non-household members: only the amount the household pays of a shared expense is deducted; an ineligible student's income and deductions are not the household's
+
+Document: D-82
+
+10 CCR 2506-1 4.411.2.A, C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. For those non-household members that have not been disqualified, such as live-
+> in attendants and ineligible students, the income and resources of the non-
+> household member shall not be considered available to the household. Cash
+> payments from the non-household member to the household will be considered
+> as income to the household. Vendor payments, as defined in Sections 4.405, H
+> and 4.405, I, shall be excluded as income. Except for the mandatory telephone
+> allowance, if the household shares deductible expenses with the non-household
+> member, only the amount actually paid or contributed by the household shall be
+> deducted as a household expense.
+>
+> C. A person who is an ineligible student for SNAP purposes shall be treated as a
+> non-household member. The other members of a household containing the
+> ineligible student may be certified. The income and resources of the ineligible
+> student shall not be considered available to the other household members for
+> determining the household's income resources and deductions nor shall the
+> student be considered in determining the household's allotment.
+
+### S1604. SNAP elderly and disabled separate household: 60 or older, unable to purchase and prepare meals, may be a separate household with the spouse
+
+Document: D-7
+
+7 CFR 273.1(b)(2). https://www.ecfr.gov/current/title-7/section-273.1
+
+> (2) *Elderly and disabled persons.* Notwithstanding the provisions of paragraph (a) of this section, an otherwise eligible member of a household who is 60 years of age or older and is unable to purchase and prepare meals because he or she suffers from a disability considered permanent under the Social Security Act or a non disease-related, severe, permanent disability may be considered, together with his or her spouse (if living there), a separate household from the others with whom the individual lives. Separate household status under this provision must not be granted when the income of the others with whom the elderly disabled individual resides (excluding the income of the elderly and disabled individual and his or her spouse) exceeds 165 percent of the poverty line.
+
+### S1605. Colorado SNAP optional household members: a person sixty or older with a disability living with others at or below 165% FPL can be a separate household
+
+Document: D-82
+
+10 CCR 2506-1 4.304.3 (introduction), 4.304.3.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> The following individuals residing with a household shall not be considered household
+> members in determining the household's eligibility or allotment, unless otherwise stated:
+>
+> A. Persons aged sixty (60) and older experiencing a disability who live with others
+> whose income does not exceed 165% Federal Poverty Level (FPL).
+>
+> 1. Persons aged sixty (60) and older who are also persons with disabilities
+> who are unable to purchase and prepare their own meals and are residing
+> with other individuals whose income does not exceed 165% of the FPL
+> can be in a separate household.
+
+### S1611. Colorado SNAP voluntary quit: a quit or reduction below thirty hours without good cause within sixty days before application or after is sanctioned, in the same manner as a work requirement failure
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1 ("Voluntary quit"), 4.308.A, B, E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Voluntary quit” means when a SNAP client voluntarily quit a job of 30 or more hours a
+> week or reduced work effort to less than 30 hours a week without good cause.
+>
+> A. No individual who quit his or her most recent job without good cause or reduces
+> work effort and, after the reduction, is working less than thirty (30) hours each
+> week, without good cause, or earning less than the federal minimum wage
+> multiplied by thirty (30) hours, shall be eligible for participation in SNAP.
+>
+> B. When a household files an application, or when a participating household reports
+> the loss of a source of income or reduction in hours, the local office shall
+> determine whether any household member voluntarily quit or reduced his or her
+> hours or income. Benefits shall not be delayed pending the outcome of this
+> determination. A sanction shall be imposed if the quit or reduction in hours or
+> wages occurred within sixty (60) calendar days prior to the date of application or
+> anytime thereafter, and the quit or reduction was without good cause.
+>
+> E. Upon a determination that the individual voluntarily quit employment, reduced
+> work hours below thirty (30) hours, or reduced wages to the point at which the
+> person is earning less than the federal minimum wage multiplied by thirty (30)
+> hours, the local office shall determine if the voluntary quit was with good cause.
+>
+> If an individual voluntarily quits or reduces work hours/wages without good
+> cause, the individual will be disqualified in the same manner as individuals failing
+> to comply with work registration or EF requirements.
+
+### S1612. Colorado SNAP level sanction periods: one month the first time, three the second, six the third or later; the period begins the month after the notice of adverse action expires
+
+Document: D-82
+
+10 CCR 2506-1 4.310.8.A-B (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. If the local office determines that an individual has voluntarily quit or failed to
+> accept suitable employment without good cause, that individual shall be ineligible
+> to participate in SNAP and shall be treated as a disqualified member. If the
+> disqualified member joins another household, the disqualification period for that
+> individual shall continue until the disqualification period is completed.
+>
+> 1. The first (1st) time, the individual shall be disqualified for a period of one
+> (1) month after the date the individual became ineligible.
+>
+> 2. The second (2nd) time an individual fails without good cause to comply
+> with work requirements, the individual shall be disqualified for a period of
+> three (3) months after the date the individual became ineligible.
+>
+> 3. The third (3rd) or subsequent time an individual fails without good cause
+> to comply with work requirements, the individual shall be disqualified for a
+> period of six (6) months after the date the individual became ineligible.
+>
+> B. The disqualification period shall begin the month following the expiration of the
+> Notice of Adverse Action unless a fair hearing is requested.
+
+### S1613. Colorado SNAP ABAWD regaining eligibility and the single additional three months
+
+Document: D-82
+
+10 CCR 2506-1 4.311.3 (introduction), 4.311.3.D (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> ABAWDs are not eligible to participate in SNAP if they have received SNAP benefits for
+> more than three countable months during a thirty-six (36) month period.
+>
+> However, ABAWDs may be eligible for up to three additional consecutive months after
+> regaining eligibility in accordance with paragraph (C) of this section.
+>
+> D. Regaining Eligibility
+>
+> 1. An individual who is denied eligibility under this provision can regain
+> eligibility if in a thirty (30) calendar day period, the individual:
+>
+> a. Worked eighty (80) or more hours;
+>
+> b. Participates in and complies with the requirements of a work
+> program for eighty (80) or more hours;
+>
+> c. Participates and complies with the Workfare Program as described
+> in section 4.313; or
+>
+> d. Becomes exempt.
+>
+> 2. The individual will be reinstated if otherwise eligible and will continue to be
+> eligible if the individual continues to meet the work requirement or is
+> exempt.
+>
+> 3. If an individual regains eligibility but then fails to continue meeting these
+> requirements, the individual shall remain eligible for a consecutive three-
+> month period after the individual notifies the local office. The individual can
+> only have this provision applied for a single three-month period in the
+> thirty-six (36) calendar month period.
+
+### S1614. Colorado SNAP initial month of application: the first month certified after no prior benefits or a break; a timely recertification's first month is not one
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1 ("Initial month of application") (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Initial month of application” means the first month for which the household is certified
+> for participation in the program for those who have not received SNAP benefits in the
+> state previously or following any break after the end of the certification period where the
+> household was not certified for participation. If the household applies for recertification
+> prior to the expiration of its certification period and is found eligible for the first month
+> following the end of the certification period, that month shall not be an initial month.
+
+### S1615. Colorado SNAP initial month allotment prorated from the date of application; migrant job-stream exception; the exact-days formula
+
+Document: D-82
+
+10 CCR 2506-1 4.207.2.A-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. The household benefit level for the initial month of application shall be based on
+> the day of the month it applies for benefits. Benefits for the initial month shall be
+> prorated from the date of application to the end of the month.
+>
+> B. The only exception to the proration policy shall be migrant and seasonal farm
+> worker households who are in the job stream and the break in participation does
+> not exceed thirty (30) days. These households are entitled to a full month
+> allotment.
+>
+> C. The state automated system will utilize the exact number of days in the calendar
+> month to determine the proration of benefits. The following formula shall be used
+> to determine the amount of prorated benefits:
+>
+> 1. Number of days in month plus one;
+>
+> 2. Subtract the date of application;
+>
+> 3. Multiply by the full month's benefits the household is eligible to receive;
+>
+> 4. Divide by the number of days in the application month.
+
+### S1616. Colorado SNAP initial month below the minimum allotment: no benefits; the one- and two-person minimum applies except in an initial month
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.B-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. If the calculation of benefits for an initial month yields an allotment of less than
+> the federal minimum allotment referenced in 4.207.3(D), no benefits shall be
+> issued to the household for the initial month.
+>
+> C. Except for an initial month, if the allotment for a one- or two-person household is
+> less than the federal minimum allotment referenced in 4.207.3 D, round the
+> allotment up to the minimum benefit allowed for a one- or two-person household.
+
+### S1617. SNAP prorated initial-month allotment rounded down to the lower whole dollar
+
+Document: D-14
+
+7 CFR 273.10(a)(1)(iii)(C). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (C) If after using the appropriate formula the result ends in 1 through 99 cents, the State agency shall round the product down to the nearest lower whole dollar. If the computation results in an allotment of less than $10, then no issuance shall be made for the initial month.
+
+### S1618. Colorado SNAP recertification: factors re-verified only when incomplete, inaccurate, questionable, inconsistent or outdated; income on a $50 change; dependent care, medical and child support on a changed source or a change over $25
+
+Document: D-82
+
+10 CCR 2506-1 4.502.B.1-3 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 1. Eligibility factors not verified by the Income and Eligibility Verification
+> System (IEVS) should be verified at recertification only if they are
+> incomplete, inaccurate, questionable, inconsistent, or outdated and would
+> affect a household's eligibility or benefit level. Unchanged information shall
+> not be verified unless the information is outdated.
+>
+> 2 A change in total monthly income of fifty ($50) or more for each member
+> must be verified at recertification. If the source of income has not changed
+> and if the amount is unchanged or has changed by fifty dollars ($50) or
+> less, verification is not required unless the information is unclear,
+> questionable, or outdated.
+>
+> 3. At recertification, all households shall verify the following information if the
+> source has changed, or the amount has changed by more than twenty-five
+> dollars ($25) since the last time they were verified:
+>
+> a. Dependent care expenses; and
+>
+> b. Allowable medical expenses; and
+>
+> c. Legally obligated child support.
+
+### S1619. Colorado SNAP sponsored non-citizen: sponsor income and resources not counted for a member of the sponsor's household, an organization's sponsoree, an indigent or battered non-citizen, after the sponsor's death, or with forty quarters
+
+Document: D-82
+
+10 CCR 2506-1 4.305.2.A, C, E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. The provisions of this section apply only to those non-citizens for whom a
+> sponsor has executed an affidavit of support (INS Form I-864 or I-864A) on
+> behalf of the non-citizen pursuant to Section 213A of the Immigration and
+> Nationality Act (INA) on or after December 19, 1997.
+>
+> C. Only when a sponsored non-citizen is an eligible non-citizen will the local office
+> consider the income and resources of the sponsor and sponsor's spouse
+> available to the household.
+>
+> E. The counting of a sponsor’s income and resource provisions do not apply to a
+> non-citizen who is:
+>
+> 1. A member of his or her sponsor's SNAP household;
+>
+> 2. Sponsored by an organization or group as opposed to an individual;
+>
+> 3. Not required to have a sponsor under the Immigration and Nationality Act
+> (INA), such as a refugee, a parolee, an asylee, or a Cuban or Haitian
+> entrant;
+>
+> 4. Considered as an “indigent” non-citizen;
+>
+> 5. A child of a battered parent is exempt from the provision of sponsorship. A
+> battered non-citizen spouse, non-citizen parent of a battered child, or child
+> of a battered non-citizen will not have sponsor's income and resources
+> counted during a twelve (12) month period after the local office determines
+> that the battering is substantially connected to the need for benefits, and
+> the battered individual does not live with the batterer. After twelve (12)
+> months, the local office shall not deem the batterer's income and
+> resources if the battery is recognized by a court or the INS and has a
+> substantial connection to the need for benefits, and the non-citizen does
+> not live with the batterer;
+>
+> 6. Had been sponsored but has since obtained citizenship;
+>
+> 7. A person whose sponsor has died; or,
+>
+> 8. Who has worked or can receive credit for a total of forty (40) work quarters
+> under Title II of the Social Security Act.
+
+### S1620. Colorado SNAP exempt income: only the listed sources are not considered as income
+
+Document: D-82
+
+10 CCR 2506-1 4.405 (introduction) (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.405 Exempt Income
+> Income from certain sources will be excluded for SNAP eligibility purposes under
+> mandate of law. Only the following will not be considered as income:
+
+### S1621. Colorado Works exempt income: the listed sources are exempt from consideration as income, a student dependent child's earnings among them
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.A (introduction), A.24 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.605.4 Exempt Unearned Income
+>
+> A. For the purpose of determining eligibility for Colorado Works, the following shall be exempt from
+> consideration as income:
+>
+> 24. Income of A client who is attending school (student in a secondary education or
+> undergraduate degree program) shall be considered as follows:
+>
+> a. Income received from a college work-study program grant shall be exempt.
+>
+> b. All earned income, including earned income from WIOA, that is received by a
+> dependent child who is a full-time student or a part-time student who is not a
+> fulltime employee shall be disregarded.
+
+### S1622. Adult Financial exempt income: earned and unearned income of the client, spouse or sponsor that the list exempts
+
+Document: D-80
+
+9 CCR 2503-5 3.520.786 (introduction) (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.786 EXEMPT INCOME
+>
+> Certain earned and unearned income that is not countable to the client, client’s spouse,
+> or sponsor(s) in whole or in part is exempt. Such exempt income is limited to the
+> following:
+
+### S1623. CCCAP income exclusions: the listed items are not countable income
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J (introduction) (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Income Exclusions
+>
+> Each of the following are not considered countable income and are not taken into
+> consideration for eligibility for child care.
+
+### S1624. LEAP income exclusions: the listed items are exempt from consideration as income
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23 (introduction) (version effective 2025-11-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.23 Income Exclusions [Rev. eff. 11/1/15]
+>
+> To determine eligibility for financial assistance and the amount of the assistance payment, the following
+> shall be exempt from consideration as either resources or income. Verification is not required in the case
+> file but must be notated in the Report of Contact (ROC).
+
+### S1625. Colorado Works assistance unit: mandatory, optional (included when living in the home and requesting assistance) and excluded members
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.C (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Members of the Assistance Unit
+>
+> 1. The following individuals must be included in the assistance unit when living in the home:
+>
+> a. Dependent child(ren) who live in the home of a caretaker.
+>
+> b. Parents of dependent child(ren) who live in the home unless the child is a minor
+> parent who is requesting assistance for their own child or responsibility is
+> established with another caretaker through court order, child welfare, or adoption.
+>
+> c. Siblings of dependent child(ren) who live in the home and are legally in the care
+> of the requesting caretaker.
+>
+> d. Half siblings of the dependent child(ren) who live in the home that do not receive
+> child support payments.
+>
+> e. The spouse of a pregnant parent.
+>
+> 2. The following individuals are optional members of the assistance unit. These individuals
+> are included in the assistance unit when living in the home and requesting assistance:
+>
+> a. The spouse of a parent who is not themselves a parent of dependent child(ren)
+> who live in the home.
+>
+> b. A non-parent caretaker.
+>
+> c. The spouse of a non-parent caretaker.
+>
+> d. Half siblings of the dependent child(ren) who live in the home and are receiving
+> child support. The parent or non-parent caretaker of the half sibling receiving
+> child support shall decide whether to include such half sibling receiving child
+> support in the assistance unit.
+>
+> e. Siblings of the dependent child(ren) who live in the home but are not in the legal
+> custody of the requesting caretaker due to an established court order, child
+> welfare involvement or an adoption.
+>
+> f. A parent who lives in the home of another caretaker and no longer has legal
+> custody of the dependent child(ren) who live in the home.
+>
+> g. Parent(s) of a minor parent who is requesting assistance for their own child.
+>
+> 3. The following individuals are excluded from the assistance unit.
+>
+> a. Individuals receiving SSI payments.
+>
+> b. Individuals who receive other Title IV benefits such as foster care, adoption
+> subsidy or Title IV kinship payments.
+
+### S1626. Colorado Works budgetary unit: the assistance unit, the spouse of a requesting parent or caretaker, the unborn child, a minor parent's parents and a sponsor
+
+Document: D-81
+
+9 CCR 2503-6 3.601 ("Budgetary unit"), 3.604.2.D (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Budgetary unit” means those people whose income is considered in the determination of eligibility and
+> grant payment calculation because they are considered financially responsible for members of an
+> assistance unit. Members of the budgetary unit can be in the assistance unit or outside of the assistance
+> unit.
+>
+> D. Members of the Budgetary Unit
+>
+> 1. The following individuals must be included in the budgetary unit:
+>
+> a. Any individual who is part of the assistance unit (to include optional members of
+> the assistance unit who requested assistance) regardless of whether or not the
+> individual is eligible to receive assistance.
+>
+> b. The spouse of a parent or non-parent caretaker who requested assistance,
+> regardless of whether or not the spouse has requested assistance for
+> themselves.
+>
+> c. The unborn child of a pregnant parent.
+>
+> d. The non-recipient parent(s) of a minor parent.
+>
+> e. The sponsor of a non-citizen who is part of the assistance unit (whether or not
+> the non-citizen is themselves eligible to receive Colorado Works grant
+> payments).
+>
+> 2. The following individuals are excluded from the budgetary unit:
+>
+> a. An optional member of the assistance unit who chooses not to receive
+> assistance for himself or herself.
+>
+> b. Individuals who are excluded from the assistance unit as identified in Section
+> 3.604.2.C.3.
+
+### S1627. Colorado Works sponsored non-citizens: the sponsor's net income deemed; the exemptions
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.5.a-c (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 5. Sponsored non-citizens
+>
+> a. It shall be presumed that an affidavit of support demonstrates the sponsor's
+> ability to make income available to a non-citizen whom he or she sponsors at a
+> minimum of one hundred twenty-five percent (125%) of the Federal Poverty
+> Level. Therefore, the net income of a non-citizen’s sponsor and the sponsor's
+> spouse shall be deemed to the assistance unit.
+>
+> b. Sponsor net income equals gross earned income minus twenty percent (20%) or
+> $175, whichever is less, minus support paid to dependents not living in the
+> sponsor's home, plus any unearned income. The remaining income shall be
+> considered available as unearned income to the non-citizen for the purpose of
+> establishing eligibility and payment for Colorado Works.
+>
+> The client may rebut the county department's determination that the income of
+> the sponsor is available. If such a determination is made, the sponsor’s income
+> will not be deemed to the assistance unit.
+>
+> c. The income of the sponsor will not be deemed to the assistance unit if any of the
+> following are true:
+>
+> 1) The non-citizen is a qualified non-citizen who is not a legal permanent
+> resident (i.e. refugees, asylees, parolees and Cuban and Haitian
+> entrants).
+>
+> 2) The non-citizen adjusted their status to legal permanent resident from
+> refugee or asylee status.
+>
+> 3) The non-citizen’s sponsor signed the sponsorship agreement prior to
+> December 19, 1997.
+>
+> 4) The non-citizen is a victim of battery or extreme cruelty.
+>
+> 5) The total income of the non-citizen and non-citizen’s spouse, together
+> with the total income of the sponsor and the sponsor’s spouse (who is
+> also a sponsor) is less than one hundred twenty-five percent (125%) of
+> the Federal Poverty Guidelines for the household size of both the non-
+> citizen and the sponsor.
+>
+> 6) The non-citizen earned or can be credited with forty (40) qualifying
+> quarters of coverage as defined under Title II of the Social Security Act.
+>
+> 7) The non-citizen was sponsored on an affidavit of support other than the
+> I-864. Or the non-citizen entered in a nonfamily or employment
+> classification that did not require the sponsor to sign form I-864.
+
+### S1628. Colorado Works disqualified members: net income of required members disqualified for status or SSN deemed; disregards not for disqualified individuals
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.6, 3.606.2 (introduction) (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 6. Net income of persons who are required to be included in the assistance unit, but who
+> are disqualified due to failure to meet citizenship, non-citizen status, lawful presence or
+> Social Security Number requirements, or are ineligible as defined in section 3.604.2.C,
+> shall be deemed to the assistance unit. Net income equals gross earned income minus
+> employment disregards and employment incentives plus any unearned income.
+>
+> 3.606.2 Earned Income Disregards
+>
+> For all cases with eligible members that have earned income (not including disqualified individuals),
+> payment and eligibility will be determined using the income disregards as described below. All payments
+> shall be calculated by using applicable disregards.
+
+### S1629. Colorado Works verification time: eleven days, to the twentieth day after application on good cause; a county may extend processing beyond forty-five days to obtain verification
+
+Document: D-104
+
+9 CCR 2503-6 3.602.1.I.2, 3.604.3.B.4 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> The county department shall allow the client eleven
+> (11) calendar days to provide the missing verifications, unless the client can provide good
+> cause or the verification falls under the programs verification at an individual level
+> described in Section 3.604.3 . If good cause is provided, the client shall have until the
+> twentieth (20th) calendar day following the date of application to provide the necessary
+> verification.
+>
+> 4. An applicant may request an extension of time beyond the forty-five (45) day maximum to
+> process an application for Colorado Works benefits in order to obtain necessary
+> verification. The extension may be provided at county discretion. The worker must
+> document the reason for the extension in the statewide automated system and/or case
+> file.
+
+### S1630. Colorado Works SSN: a client who applied for an SSN at initial determination must have it verified before the next recertification
+
+Document: D-104
+
+9 CCR 2503-6 3.604.3.B.2.c.1-2 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 1) For clients that made application for a SSN at initial eligibility
+> determination, verification of the SSN must be received prior to the next
+> recertification.
+>
+> 2) For clients added to the assistance unit within sixty (60) days of the
+> certification period expiring, verification of the SSN must be received by
+> the following recertification.
+
+### S1631. CCCAP verification at redetermination: the case closes after the fifteen-day noticing period; child support re-verified at each redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.5.e.2, 3.111.K.2.c (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2) At re-determination, if all verifications are not received within
+> the fifteen (15) day noticing period, the CCCAP case will be
+> closed.
+>
+> c. Such verification shall be made at the time of initial approval of
+> eligibility for services and at the time of each re-determination of
+> eligibility.
+
+### S1632. Adult Financial OAP deeming: a spouse's earned income less $65 halved; unearned income less the OAP grant standard, children's needs, medical payments and court-ordered support; exemption for a spouse on AF, SSI or Medicaid; sponsor deeming less SSI-standard deductions
+
+Document: D-80
+
+9 CCR 2503-5 3.534 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.534 DEEMING INCOME
+>
+> A. To determine the amount of income to deem to a client from a the client’s spouse
+> who does not meet the criteria described below in ‘C’, calculate the countable
+> earned income of the spouse as follows:
+>
+> 1. Deduct $65 from the client’s spouse's gross earned income; and,
+>
+> 2. Divide the remainder by two (2); and,
+>
+> 3. The result is the amount of earned income deemed to the client.
+>
+> 4. The deemed earned income shall be considered income to the client and
+> shall be deducted, together with any other income, from the grant of the
+> client.
+>
+> 5. Wages being garnished by the court are countable earned income.
+>
+> B. To determine the amount of unearned income to deem to a client from the client’s
+> spouse who does not meet the criteria as described below in ‘C’, calculate the
+> countable unearned income of the spouse as follows:
+>
+> 1. Calculate the total amount of unearned income of the spouse;
+>
+> 2. Deduct the OAP grant standard from the total unearned income of the
+> spouse;
+>
+> 3. Deduct an amount to meet the needs of each dependent child living in the
+> household of the spouse equal to half the maximum SSI grant benefit
+> standard, as defined in Section 3.510, less the dependent child's own
+> income;
+>
+> 4. Deduct any medical care payments by the spouse for his or her
+> dependents who are not covered by Medicare, Medicaid, or other health
+> programs;
+>
+> 5. Deduct any amount of obligation of the spouse due to orders of judgment
+> or for support by a court, unless there is a garnishment. Income garnished
+> by the court is countable as unearned income.
+>
+> 6. The remainder is the amount of unearned income deemed to the client.
+>
+> 7. The deemed unearned income shall be considered income to the client
+> and shall be deducted, together with any other income, from the grant of
+> the client.
+>
+> C. If a client’s spouse is receiving Adult Financial grant payments, SSI benefits, or
+> Medicaid assistance and has income no greater than the OAP limit, his or her
+> income shall not be considered as available to the client and shall not be
+> deemed. If a client’s spouse is institutionalized and the client has retained the
+> minimum monthly maintenance needs allowance (MMMNA), the MMMNA shall
+> be deducted from the institutionalized spouse’s total income.
+>
+> D. A sponsor's income can only be deemed to the non-citizen client he or she
+> sponsors. The amount of earned and unearned income to deem from a
+> sponsor(s) to a non-citizen client is calculated as follows:
+>
+> 1. The total gross earned and unearned income of the sponsor are added
+> together.
+>
+> 2. The following deductions are subtracted from the total gross income of the
+> sponsor:
+>
+> A. A deduction for the sponsor equal to the current SSI benefit
+> standard, as defined in Section 3.510, for an individual for the
+> month in which eligibility is being determined; plus,
+>
+> B. A deduction for the sponsor's spouse living in the same household
+> with the sponsor, equal to one-half the current SSI benefit standard.
+> As defined in Section 3.510, for an individual; or a deduction for the
+> sponsor's spouse, who is also a co-sponsor of the non-citizen,
+> equal to the current SSI benefit standard for an individual; plus,
+>
+> C. A deduction equal to one-half the SSI benefit standard, as defined
+> in Section 3.510, for an individual for each person who is a
+> dependent of the sponsor (other than the non-citizen client and the
+> non-citizen client's spouse), as defined in Section 3.520.68.B.2.b.1.
+>
+> 3. The difference between the total income and the total deductions is
+> deemed as unearned income to the non-citizen client. This deemed
+> income is added to the non-citizen client's own income to determine the
+> total countable income.
+>
+> 4. The non-citizen client's countable income is compared to the income
+> standard of the Adult Financial program for which the non-citizen client is
+> applying to determine eligibility and/or the grant payment amount.
+>
+> 5. If more than one non-citizen client has the same sponsor, all of the
+
+### S1633. Adult Financial AND-SO deeming: spouse's earned income less $65 halved; unearned less $20 unless the client has unearned income; exemption; sponsor deeming
+
+Document: D-80
+
+9 CCR 2503-5 3.544.D-G (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. A portion of the earned income of the AND-SO client's spouse shall be deemed
+> to the client, as follows:
+>
+> 1. Deduct sixty five dollars ($65) from the spouse's gross earned income;
+> and,
+>
+> 2. Divide the remainder by two (2); and,
+>
+> 3. The result is the amount of earned income deemed to the client.
+>
+> 4. The deemed earned income shall be considered income to the client and
+> shall be deducted, together with any other income, from the grant of the
+> client.
+>
+> 5. Wages being garnished by the court are countable earned income.
+>
+> E. A portion of the unearned income of the AND-SO client's spouse shall be
+> deemed to the client, as follows:
+>
+> 1. Determine the spouse's unearned monthly gross income.
+>
+> 2. Deduct $20.00 unless the client also has unearned income. The $20.00
+> disregard shall be split between the client and the client’s spouse so that
+> no more than a $20.00 disregard is applied.
+>
+> 3. The result is deemed to the client.
+>
+> F. If a client’s spouse is receiving Adult Financial grant payments, SSI benefits, or
+> Medicaid assistance and has income no greater than the SSI limit, their income
+> shall not be considered as available to the client and shall not be deemed. If a
+> client’s spouse is institutionalized and the client has retained the minimum
+> monthly maintenance needs allowance (MMMNA), the MMMNA shall be
+> deducted from the institutionalized spouse’s total income.
+>
+> G. A sponsor's income can only be deemed to the non-citizen client he or she
+> sponsors. The amount of earned and unearned income to deem from a
+> sponsor(s) to a non-citizen client is calculated as follows:
+>
+> 1. The total gross earned and unearned income of the sponsor are added
+> together.
+>
+> 2. The following deductions are subtracted from the total income of the
+> sponsor:
+>
+> a. A deduction for the sponsor equal to the current SSI benefit
+> standard for an individual, as defined in Section 3.510; plus
+> b. A deduction for the sponsor's spouse living in the same household
+> with the sponsor, equal to one-half the current SSI benefit standard
+> for an individual, as defined in Section 3.510; or a deduction for the
+> sponsor's spouse, who is also a co-sponsor of the non-citizen,
+> equal to the current SSI benefit standard for an individual; plus
+> c. A deduction equal to one-half the SSI benefit standard for an
+> individual, as defined in Section 3.510, for each person who is a
+> dependent of the sponsor (other than the non-citizen client and the
+> non-citizen client's spouse).
+>
+> 3. The difference between the total income and the total deductions is
+> deemed as unearned income to the non-citizen client. This deemed
+> income is added to the non-citizen client's own income to determine the
+> total countable income.
+>
+> 4. The non-citizen client's countable income is compared to the income
+> standard of the Adult Financial program for which the non-citizen client is
+> applying to determine eligibility and/or the grant payment amount.
+>
+> 5. If more than one non-citizen client has the same sponsor, all of the
+> sponsor's income is deemed to each non-citizen client. Do not divide the
+> sponsor's income among the non-citizen clients.
+
+### S1634. Adult Financial AND-CS deeming: spouse's (or an unemancipated child's parents') earned income less $65 halved; unearned less the client's unused $20; exemption; sponsor deeming
+
+Document: D-80
+
+9 CCR 2503-5 3.549.C-G (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. A portion of the earned income of an AND-CS client's spouse shall be deemed to
+> the client, as follows:
+>
+> 1. Determine the spouse's monthly gross income.
+>
+> 2. Deduct $65.00 from the monthly gross income; and,
+>
+> 3. Divide the remainder by two (2).
+>
+> 4. The result is the amount deemed to the client.
+>
+> D. A portion of the unearned income for the AND-CS client's spouse shall be
+> deemed to the client, as follows:
+>
+> 1. Determine the spouse's monthly gross unearned income.
+>
+> 2. Deduct any remaining unearned income disregard remaining from the
+> client or $20.00, whichever is less. A couple shall be allowed a combined
+> $20.00 disregard, which is split between the client and the spouse.
+>
+> 3. The result is countable unearned income and is deemed to the client.
+>
+> E. When the AND-CS client is an unemancipated child under eighteen (18) years of
+> age, the earned and unearned income of the child and the child's parents shall
+> be subject to disregards and deeming, as outlined above. The parents' income
+> shall be deemed using the same calculations as a spouse.
+>
+> F. If a spouse or parent is receiving Adult Financial grant payments, SSI benefits, or
+> Medicaid assistance and has income no greater than the SSI limit, their income
+> shall not be considered as available to the AND-CS client and shall not be
+> deemed. If a spouse is institutionalized and the client has retained the MMMNA,
+> the MMMNA shall be deducted from the institutionalized spouse’s total income.
+>
+> G. A sponsor's income can only be deemed towards the non-citizen client he or she
+> sponsors. The amount of earned and unearned income to deem from a
+> sponsor(s) to a client is calculated as follows:
+>
+> 1. The total gross earned and unearned income of the sponsor are added
+> together.
+>
+> 2. The following deductions are subtracted from the total income of the
+> sponsor:
+>
+> a. A deduction for the sponsor equal to the current SSI benefit
+> standard, as defined in Section 3.510, for an individual for the
+> month in which eligibility is being determined; plus
+> b. A deduction for the sponsor's spouse living in the same household
+> with the sponsor, equal to one-half the current SSI benefit standard,
+> as defined in Section 3.510, for an individual; or a deduction for the
+> sponsor's spouse, who is also a co-sponsor of the non-citizen
+> client, equal to the current SSI benefit standard for an individual;
+> plus
+> c. A deduction equal to one-half the SSI benefit standard, as defined
+> in Section 3.510, for an individual for each person who is a
+> dependent of the sponsor (other than the non-citizen client and the
+> non-citizen client's spouse).
+>
+> 3. The difference between the total income and the total deductions is
+> deemed as unearned income to the non-citizen client. This deemed
+> income is added to the non-citizen client's own income to determine the
+> total countable income.
+>
+> 4. Compare the non-citizen client's countable income to the income standard
+> of the Adult Financial program for which the non-citizen client is applying
+> to determine eligibility and/or the grant payment amount.
+>
+> 5. If more than one non-citizen client has the same sponsor, all of the
+> sponsor's income is deemed to each non-citizen client. Do not divide the
+> sponsor's income among the non-citizen clients.
+
+### S1635. Adult Financial first-month proration by days remaining and the OAP transition in the month of the sixtieth birthday
+
+Document: D-80
+
+9 CCR 2503-5 3.532.B.1-3, 3.543.B.1-2, 3.548.B.1-2 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 1. If determined eligible on the first of the month, the client shall receive his
+> or her authorized grant payment in the initial and subsequent months.
+>
+> 2. If determined eligible on any other day of the month, the client's first month
+> grant payment shall be prorated according to the number of days
+> remaining in the month; the client shall receive their authorized grant
+> payments in subsequent months.
+>
+> 3. If a client is receiving services in another Adult Financial (AF) program in
+> the month he or she turns sixty (60) years of age and is otherwise eligible
+> for OAP, the client shall transition from the other AF program to OAP
+> effective the first day of the client's birth month, and receive his or her
+> authorized grant payment for the birthday month and subsequent months.
+>
+> 1. If determined eligible on the first of the month, the client shall receive his
+> or her authorized grant payment in the initial and subsequent months.
+>
+> 2. If determined eligible on any other day of the month, the client's first month
+> grant payment shall be prorated according to the number of days
+> remaining in the month; the client shall receive their full authorized grant
+> payment in subsequent months.
+>
+> 1. If determined eligible on the first of the month, the client shall receive his
+> or her authorized grant payment in the initial and subsequent months.
+>
+> 2. If determined eligible on any other day of the month, the client's first month
+> grant payment shall be prorated according to the number of days
+> remaining in the month; the client shall receive their authorized grant
+> payment in subsequent months.
+
+### S1636. Adult Financial resources of the client, spouse and sponsors: $2,000 and $3,000 limits; a sponsor's countable resources over the sponsor's limit deemed to the non-citizen client
+
+Document: D-80
+
+9 CCR 2503-5 3.520.72.A, E (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.72 RESOURCES
+>
+> A. Unless otherwise specified, a resource is countable, and together with all other
+> countable resources of the client, spouse, and sponsor(s) shall be considered
+> against the resource limit. The resource limit is:
+>
+> 1. $2,000 for:
+>
+> a. An unmarried client;
+>
+> b. An unmarried sponsor; and,
+>
+> c. A married sponsor whose spouse is a co-sponsor. Each sponsor
+> shall receive the $2,000 resource limit for a combined resource limit
+> of $4,000.
+>
+> 2. $3,000 for:
+>
+> a. A married client; or,
+>
+> b. A married sponsor whose spouse is not a co-sponsor.
+>
+> E. A sponsor(s)'s resources are only counted toward the non-citizen client they
+> sponsor. Resources are attributed to the sponsor in the same manner as the
+> non-citizen client, as outlined in Section 3.520.7. All countable resources over the
+> sponsor(s) resource limit, as outlined in Section 3.520.72.A, are then deemed to
+> the non-citizen client. The deemed amount from the client’s sponsor(s) is then
+> added to the non-citizen client’s countable resources and compared to the non-
+> citizen client’s resource limit, as outlined in Section 3.520.72.A.
+
+### S1637. CCCAP verifications at application and redetermination: immunizations, the activity schedule for non-traditional hours, custody or parenting schedule; immunization records for children in unrelated exempt care outside the home; an unrelated caretaker's verification; the self-employment schedule and expenses
+
+Document: D-87
+
+8 CCR 1403-1 3.111.C.2.c, e, h, 3.111.D.5, 3.111.F.2, 3.111.G.2.a-b (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> c. Up-to-date immunizations, if applicable;
+>
+> e. Work or low-income activity schedule (if non-traditional care hours
+> are requested at application or redetermination and the county
+> has been approved by the Department through their county rate
+> plan to reimburse child care providers for non-traditional care
+> hours at a higher reimbursement rate);
+>
+> h. Custody arrangement and/or parenting schedule, if applicable.
+>
+> 5. Any unrelated individual who is acting as a primary adult caretaker for an
+> eligible child is required to obtain verification from the child’s biological or
+> adoptive parent, legal guardian, or a court order which identifies the
+> unrelated individual as the child’s adult caretaker.
+>
+> 2. Children who are not attending school as defined by the Colorado
+> Department of Education and who are receiving child care outside of the
+> child’s home from a qualified exempt child care provider who is unrelated
+> to the child must provide a copy of their immunization record to the county,
+> indicating that the children are age-appropriately immunized or have a
+> religious or medical exemption (see sections 25-4-902 and 25-4-908,
+> C.R.S., for exemption requirements).
+>
+> a. The adult caretaker(s) or teen parent(s) shall submit documentation
+> listing their income and work-related expenses. The county shall
+> obtain verification of all expenses from the adult caretaker(s) or
+> teen parent(s) or they will not be considered.
+>
+> b. The adult caretaker(s) or teen parent(s) shall submit an expected
+> weekly employment schedule that includes approximate
+> employment hours. This is required upon beginning self-
+> employment, at application, and at redetermination.

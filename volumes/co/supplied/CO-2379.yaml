@@ -1,0 +1,13 @@
+id: CO-2379
+name: "CCCAP: redetermination date"
+identifier: cccap_redetermination_date
+kind: supplied
+type: calendar date
+scope: person
+program: CCCAP
+meaning: "The date of the CCCAP redetermination of eligibility being processed for this person's household (8 CCR 1403-1 3.111.H.5.e.2, 3.111.K.2.c); not stated at an initial application."
+precision: "Not stated at an initial application; CCCAP then reads the determination as an application."
+supplied_by: "CHATS redetermination record."
+sources: [S1631]
+tags: [verification]
+rationale: "OQ-373: at redetermination unreturned verification closes the case rather than denying an application (3.111.H.5.e.2, S1631), and court-ordered child support is verified again at each redetermination (K.2.c); no fact said a CCCAP determination was a redetermination or when."

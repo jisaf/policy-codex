@@ -1,0 +1,13 @@
+id: CO-2391
+name: "Adult Financial: eligibility date"
+identifier: af_eligibility_date
+kind: supplied
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The day of the month from which this client was determined eligible for Old Age Pension, AND-SO or AND-CS, so that the first month's grant is prorated by the days remaining in the month unless it is the first (9 CCR 2503-5 3.532.B.1-2, 3.543.B.1-2, 3.548.B.1-2)."
+precision: "Not stated for a client whose grant months are all full months; Adult Financial then pays the full grant."
+supplied_by: "CBMS eligibility record."
+sources: [S1635]
+tags: [cash]
+rationale: "OQ-120: the first-month proration of S1635 needs the day eligibility begins; no Adult Financial date stated it."

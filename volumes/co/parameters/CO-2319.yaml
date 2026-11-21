@@ -1,0 +1,12 @@
+id: CO-2319
+name: "SNAP level sanction period, third or later violation, months"
+identifier: snap_level_sanction_third_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The SNAP disqualification period for the third or a later failure without good cause to comply with the work requirements: \"a period of six (6) months\" (10 CCR 2506-1 4.310.8.A.3)."
+value: 6
+sources: [S1612]
+tags: [snap, work_registration]
+rationale: "OQ-38 (P-8): snap_is_disqualified_for_voluntary_quit (CO-2318) needs the period's length."

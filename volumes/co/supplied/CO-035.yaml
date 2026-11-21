@@ -5,8 +5,9 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "Monthly rent or mortgage, property tax and home insurance for the dwelling, entered once per SNAP household on the SNAP head of household (snap_is_head_of_household, CO-067) and zero on the other members."
+meaning: "The part of the monthly rent or mortgage, property tax and home insurance for the dwelling that is billed to or paid by this person; zero for a person who is billed for and pays none of it."
+precision: "Stated for every member of the household, including a disqualified member or a non-household member such as an ineligible student, since SNAP counts a member's billed costs according to that member's status (snap_counted_shelter_cost_of_member, CO-2300; 10 CCR 2506-1 4.407.3.A, 4.411.1.B, 4.411.2.A). An unstated value is unknown, not zero."
 supplied_by: Lease, mortgage statement, applicant statement.
-sources: [S137]
+sources: [S137, S1600]
 tags: [income]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Fix-round (P-3): added the internet-fee exclusion sec. 10104 requires, so a worker stating this fact knows not to include it; see OQ-36. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1, C-6): the meaning says which person carries the household's figure."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Fix-round (P-3): added the internet-fee exclusion sec. 10104 requires, so a worker stating this fact knows not to include it; see OQ-36. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1, C-6): the meaning says which person carries the household's figure. Phase-10 open-question sweep (OQ-28, OQ-29): the household-level figure on the head is replaced by each member's billed or paid amount, as 4.407.3.A allows shelter expenses \"as billed to a household member or as paid or billed to a disqualified individual\"."

@@ -136,6 +136,13 @@ describe("group patterns", () => {
     expect(evaluate(dx, c8, "before", "p1", null)).toBe("2028-01-01");
     expect(inline(dx, parseInline(dx, "10 days after the Determination Date"))).toBe("10 days after the Determination Date");
   });
+  it("counts the days between two dates", () => {
+    const c9 = makeCase(ix, { id: "D", as_of: "2026-10-15", persons: { p1: { facts: {} } } });
+    const dx = buildIndex([...items, { id: "G-17", name: "Left", identifier: "left_in_month", kind: "derived", type: "whole number", scope: "person", program: "All", derived: ["days_between", ["det_date"], ["first_day", ["month_after", ["det_month"]]]], implemented: "engine" }, { id: "G-18", name: "Back", identifier: "back", kind: "derived", type: "whole number", scope: "person", program: "All", derived: ["days_between", "2028-03-01", "2028-02-01"], implemented: "engine" }]);
+    expect(evaluate(dx, c9, "left_in_month", "p1", null)).toBe(17);
+    expect(evaluate(dx, c9, "back", "p1", null)).toBe(-29);
+    expect(inline(dx, parseInline(dx, "the number of days from the Determination Date to the first day of the month after the month containing the Determination Date"))).toBe("the number of days from the Determination Date to the first day of the month after the month containing the Determination Date");
+  });
   it("rounds half up and up", () => {
     const c4 = makeCase(ix, spec);
     expect(evaluate(ix, c4, "allotment", "p4", "2026-10")).toBe(0);

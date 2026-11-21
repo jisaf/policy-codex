@@ -1,0 +1,13 @@
+id: CO-2363
+name: "Is a victim of battery or extreme cruelty"
+identifier: is_victim_of_battery_or_extreme_cruelty
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "This non-citizen has been battered or subjected to extreme cruelty (by a spouse, parent or a member of the spouse's or parent's family), the condition 9 CCR 2503-6 3.605.1.A.5.c.4 names."
+precision: "If not stated, a program reads this as false. SNAP's narrower twelve-month exemption is its own fact (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335)."
+supplied_by: "Applicant statement, protective orders, USCIS records."
+sources: [S1627]
+tags: [immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it. A.5.c.4 exempts a victim of battery or extreme cruelty."

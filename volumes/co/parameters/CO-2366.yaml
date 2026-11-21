@@ -1,0 +1,12 @@
+id: CO-2366
+name: "Colorado Works sponsor deeming exemption, share of the poverty guidelines"
+identifier: cw_sponsor_deeming_fpl_pct
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: "The share of the federal poverty guidelines below which the combined income of a sponsored non-citizen, the non-citizen's spouse, the sponsor and the sponsor's co-sponsor spouse exempts the non-citizen from sponsor deeming: \"less than one hundred twenty-five percent (125%)\" (9 CCR 2503-6 3.605.1.A.5.c.5)."
+value: 1.25
+sources: [S1627]
+tags: [cash, tanf, immigration]
+rationale: "OQ-103: cw_sponsor_deeming_applies (CO-2364) needs the 125% figure."

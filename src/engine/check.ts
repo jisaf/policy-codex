@@ -123,6 +123,9 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "days_after":
         need(e[1], ["number"], "days after"); need(e[2], ["date"], "days after");
         return "date";
+      case "days_between":
+        need(e[1], ["date"], "days from"); need(e[2], ["date"], "days from");
+        return "number";
       case "months_from_to":
         need(e[1], ["month"], "months from"); need(e[2], ["month"], "through");
         return "months";

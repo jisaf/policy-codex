@@ -1,0 +1,16 @@
+id: CO-2351
+name: "Colorado Works: assistance unit members counted for size"
+identifier: cw_assistance_unit_members_for_size
+kind: derived
+type: group of persons
+scope: person
+program: ColoradoWorks
+meaning: "The members of this person's assistance unit counted for its size: every member except one who is disqualified from or ineligible for basic cash assistance (cw_is_disqualified_member), whom 9 CCR 2503-6 3.604.2.M removes \"from the assistance unit for the purposes of determining the assistance unit size\"."
+derived: [filter, cw_assistance_unit_members, [not, [of, [P], cw_is_disqualified_member]]]
+sources: [S1004]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "OQ-143: the need and grant standards are read by the number of caretakers and children in the unit (S414); 3.604.2.M (S1004) leaves a disqualified or ineligible required member out of that count while the member's income still counts."
+tests:
+  - {id: CO-2351-T1, title: "An undocumented parent is removed from the size", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2, p3], cw_is_disqualified_member: true}, others: {p2: {cw_is_disqualified_member: false}, p3: {cw_is_disqualified_member: false}}, expect: [p2, p3]}
+  - {id: CO-2351-T2, as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_disqualified_member: false}, others: {p2: {cw_is_disqualified_member: false}}, expect: [p1, p2]}

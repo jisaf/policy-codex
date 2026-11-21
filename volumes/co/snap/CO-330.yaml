@@ -8,12 +8,13 @@ program: SNAP
 meaning: "The person's earned income for the month for SNAP: gross wages plus net self-employment income (gross receipts less the allowable costs of producing it, snap_self_employment_income, CO-1702)."
 precision: "Vocabulary fix round (R-1): reads gross wages (wages_gross, CO-023) and SNAP's own self-employment net (CO-1702). The 7 CFR 273.9(c) exclusions of earned income (for example work-study and training allowances) are not modeled: a case that has such income leaves it out of wages_gross (OQ-390)."
 assumption: "No 273.9(c) earned income exclusion applies to the stated wages (OQ-390)."
-derived: ["+", wages_gross, snap_self_employment_income]
-sources: [S41]
-open: [OQ-390]
+derived: [max, 0, ["-", ["+", wages_gross, snap_self_employment_income], [otherwise, snap_excluded_earned_income, 0]]]
+sources: [S1620, S41]
 implemented: engine
 tags: [income]
 rationale: 7 CFR 273.9(b)(1) (S41) defines earned income as wages/salaries plus self-employment net income; no existing item combines the two supplied income facts into the single countable earned-income figure snap_household_earned_income and snap_person_gross_income need.
 tests:
   - {id: CO-330-T1, month: "2026-10", given: {wages_gross: 2380, child_support_paid_legally_obligated: 0, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0}, expect: 2380}
   - {id: CO-330-T2, month: "2026-10", given: {wages_gross: 500, child_support_paid_legally_obligated: 0, self_employment_gross_receipts: 300, snap_self_employment_costs: 0}, expect: 800}
+  # Phase-10 sweep (OQ-390): $380 of the wages is excluded under 4.405 (for example an elementary or secondary student's earnings).
+  - {id: CO-330-T3, month: "2026-10", given: {wages_gross: 2380, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, snap_excluded_earned_income: 380}, expect: 2000}

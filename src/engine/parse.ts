@@ -120,6 +120,10 @@ export function parseInline(
     const q = splitTop(m[1], " and ");
     if (q) return ["years_between", p(q[0]), p(q[1])];
   }
+  if ((m = s.match(/^the number of days from (.+)$/))) {
+    const q = splitTop(m[1], " to ");
+    if (q) return ["days_between", p(q[0]), p(q[1])];
+  }
   if ((m = s.match(/^the lesser of (.+)$/))) {
     const q = splitTop(m[1], " and ");
     if (q) return ["min", p(q[0]), p(q[1])];
