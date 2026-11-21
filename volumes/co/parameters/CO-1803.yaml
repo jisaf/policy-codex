@@ -1,4 +1,4 @@
-id: CO-333
+id: CO-1803
 name: Substantial Gainful Activity (SGA) monthly amount, blind
 identifier: ma_sga_blind
 kind: parameter
@@ -12,5 +12,5 @@ versions:
     source: S499
 sources: [S499]
 tags: [ma, non_magi, disability]
-rationale: "documents/D-58.md:71 states the 2026 SGA amounts for blind and non-blind workers separately; nearest: ma_sga_non_blind (CO-332) - the phase-4 review's G-4 finding."
+rationale: "documents/D-58.md:71 states the 2026 SGA amounts for blind and non-blind workers separately; nearest: ma_sga_non_blind (CO-1802) - the phase-4 review's G-4 finding."
 nearest: [CO-332]

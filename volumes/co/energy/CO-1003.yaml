@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: LEAP
 meaning: Whether the LEAP household's countable income (leap_household_income, CO-1002) is at or below sixty percent of the state median income level for the household's size, under 9 CCR 2503-7 3.752.22.D.
-precision: Reads leap_income_limit_monthly (CO-875, corrected citation - not CO-877, which is has_primary_heating_source), a parameter table keyed by household size (see OQ-122), looked up by this person's leap_household_size (CO-1001) with leap_income_limit_monthly_each_additional (CO-344) added per member above 8, the same shape cccap_income_within_entry_limit (CO-986) uses.
+precision: Reads leap_income_limit_monthly (CO-875, corrected citation - not CO-877, which is has_primary_heating_source), a parameter table keyed by household size (see OQ-122), looked up by this person's leap_household_size (CO-1001) with leap_income_limit_monthly_each_additional (CO-1808) added per member above 8, the same shape cccap_income_within_entry_limit (CO-986) uses.
 derived: ["<=", leap_household_income, [+, [lookup, leap_income_limit_monthly, [min, leap_household_size, 8]], ["*", leap_income_limit_monthly_each_additional, [max, 0, ["-", leap_household_size, 8]]]]]
 sources: [S491, S485]
 open: [OQ-122]

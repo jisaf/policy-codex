@@ -203,7 +203,12 @@ export function governance(
     err("vocab.scope", `Scope "${it.scope}" is not declared in volume.yaml`);
   }
 
-  // 2. Naming grammar.
+  // 2. Naming grammar. An id names one item for good; a second item with the
+  //    same id makes every citation of it ambiguous.
+  const sameId = ix.items.filter((o) => o.id === it.id && o !== it && o.identifier !== it.identifier);
+  if (sameId.length) {
+    err("id.duplicate", `Id ${it.id} is also used by ${sameId.map((o) => o.identifier).join(", ")}`);
+  }
   if (!NAME_RE.test(identifier)) {
     err("name.grammar", `Identifier "${identifier}" is not lower_snake_case`);
   }

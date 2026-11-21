@@ -200,3 +200,7 @@ Did not fit cleanly:
 - Governance treats a moved file (CO-505, CO-506, CO-508, CO-905 into shared/) as changed and prints a git "path exists on disk, but not in origin/main" line while ratcheting; the check still passes.
 - The alias rule decided two shapes: a program item that only restates a shared one cannot exist, so where a shared item was the whole rule (residency, the AND/Colorado Works citizenship test) the program items were merged into it rather than kept as wrappers; LEAP's citizenship list (CO-1010) keeps its explicit list because reading the shared items would make it identical to OAP's (CO-929).
 - The exclusion lists of each program's income rule (OQ-390), county residence for CCCAP and SNAP residency (OQ-393) and per-program relationship roles (R-15, OQ-396) remain open.
+
+### Duplicate ids renumbered (2026-11-21)
+
+Ten parameters added in phases 4–6 reused ids that SNAP items already held (CO-330–333, CO-340–345). The parameters moved to CO-1800–CO-1809 with their identifiers unchanged: ma_wawd_premium_cap_pct CO-330 → CO-1800, ma_mmmna_applicable_pct CO-331 → CO-1801, ma_sga_non_blind CO-332 → CO-1802, ma_sga_blind CO-333 → CO-1803, cccap_smi_income_limit_table CO-340 → CO-1804, cccap_smi_income_limit_each_additional CO-341 → CO-1805, leap_eligibility_period_start_month CO-342 → CO-1806, leap_eligibility_period_end_month CO-343 → CO-1807, leap_income_limit_monthly_each_additional CO-344 → CO-1808, cccap_asset_limit CO-345 → CO-1809. The SNAP items keep CO-330–345. Governance now reports a reused id as an error (`id.duplicate`).

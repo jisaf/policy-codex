@@ -134,6 +134,16 @@ describe("governance", () => {
       .toEqual([]);
   });
 
+  it("rejects an id another item already uses", () => {
+    const taken = (ledger.items as unknown as Item[])[0];
+    const f = rule(engine.governance(draft({ id: taken.id })), "id.duplicate");
+    expect(f).toHaveLength(1);
+    expect(f[0].level).toBe("error");
+    expect(f[0].msg).toContain(taken.identifier);
+    // The item itself, re-checked under its own id, is not a duplicate of itself.
+    expect(rule(engine.governance(taken), "id.duplicate")).toEqual([]);
+  });
+
   it("reserves the pattern operators", () => {
     expect(rulesOf(engine.governance(draft({ identifier: "all" })))).toContain("name.reserved");
     expect(RESERVED.has("years_between")).toBe(true);

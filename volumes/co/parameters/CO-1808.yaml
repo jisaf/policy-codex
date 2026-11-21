@@ -1,4 +1,4 @@
-id: CO-344
+id: CO-1808
 name: LEAP income limit, 60 percent state median income, each additional person (illustrative)
 identifier: leap_income_limit_monthly_each_additional
 kind: parameter
@@ -14,4 +14,4 @@ versions:
 sources: [S485]
 open: [OQ-122]
 tags: [income, household]
-rationale: "The nearest existing item is cccap_smi_income_limit_each_additional (CO-341), the CCCAP each-additional figure this parameter is backed out of; leap_income_limit_monthly (CO-875) needs its own each-additional figure for a household above size 8, the same shape cccap_income_within_entry_limit (CO-986) already uses for CO-323/CO-324 and CO-340/CO-341."
+rationale: "The nearest existing item is cccap_smi_income_limit_each_additional (CO-1805), the CCCAP each-additional figure this parameter is backed out of; leap_income_limit_monthly (CO-875) needs its own each-additional figure for a household above size 8, the same shape cccap_income_within_entry_limit (CO-986) already uses for CO-323/CO-324 and CO-340/CO-341."
