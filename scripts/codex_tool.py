@@ -22,6 +22,13 @@ import sys
 
 import yaml
 
+# YAML 1.1 (PyYAML) resolves a bare `=` to the `tag:yaml.org,2002:value` tag,
+# which safe_load cannot construct, so `[=, a, b]` in a derivation would fail
+# to load. The ledger is YAML 1.2, where `=` is a plain string; read it as one.
+yaml.SafeLoader.add_constructor(
+    "tag:yaml.org,2002:value", lambda loader, node: loader.construct_scalar(node)
+)
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 VOLUME_DIR = os.path.dirname(HERE)
 LEDGER_DIR = os.path.join(HERE, "ledger")
