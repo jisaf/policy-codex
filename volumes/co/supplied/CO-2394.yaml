@@ -1,0 +1,13 @@
+id: CO-2394
+name: "CCCAP: care from an unrelated exempt provider outside the home"
+identifier: cccap_care_is_from_unrelated_exempt_provider_outside_home
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "This child receives, or is to receive, child care outside the child's home from a qualified exempt child care provider who is not related to the child (8 CCR 1403-1 3.111.F.2, 3.112.D)."
+precision: "If not stated, CCCAP reads this as false (care from a licensed provider, a relative, or in the home)."
+supplied_by: "Provider selection on the CCCAP application."
+sources: [S1637]
+tags: [verification]
+rationale: "OQ-378: 3.111.C.2 and the paragraphs it points to (S1637) require this verification; no fact stated it, so the worker carried it outside the volume."

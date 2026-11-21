@@ -1,0 +1,12 @@
+id: CO-2395
+name: "CCCAP: immunization record received"
+identifier: cccap_immunization_record_received
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "The county has received a copy of this child's immunization record showing the child is age-appropriately immunized or has a religious or medical exemption (8 CCR 1403-1 3.111.F.2; C.R.S. 25-4-902, 25-4-908)."
+supplied_by: "Immunization record or exemption form."
+sources: [S1637]
+tags: [verification]
+rationale: "OQ-378: 3.111.C.2 and the paragraphs it points to (S1637) require this verification; no fact stated it, so the worker carried it outside the volume."

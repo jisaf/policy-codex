@@ -11,7 +11,6 @@ derived: [all, [">=", age, leap_household_child_age_limit], ["=", leap_household
 sources: [S1083]
 implemented: engine
 tags: [verification, income]
-open: [OQ-381]
 rationale: "Review C-14: 3.755.21.H requires zero income to be verified for every adult member; no item asked for it."
 tests:
   - {id: CO-1693-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", leap_household_income: 0, zero_income_verified: false}, expect: true}

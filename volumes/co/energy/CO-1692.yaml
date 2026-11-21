@@ -12,7 +12,6 @@ derived: [all, leap_requires_verification_of_heating_costs, [not, heating_costs_
 sources: [S897]
 implemented: engine
 tags: [verification]
-open: [OQ-381]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
   - {id: CO-1692-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_heating_costs: true, heating_costs_verification_document_received: false}, expect: true}

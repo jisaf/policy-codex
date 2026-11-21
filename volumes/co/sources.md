@@ -10207,3 +10207,42 @@ Document: D-80
 > the non-citizen client. The deemed amount from the client’s sponsor(s) is then
 > added to the non-citizen client’s countable resources and compared to the non-
 > citizen client’s resource limit, as outlined in Section 3.520.72.A.
+
+### S1637. CCCAP verifications at application and redetermination: immunizations, the activity schedule for non-traditional hours, custody or parenting schedule; immunization records for children in unrelated exempt care outside the home; an unrelated caretaker's verification; the self-employment schedule and expenses
+
+Document: D-87
+
+8 CCR 1403-1 3.111.C.2.c, e, h, 3.111.D.5, 3.111.F.2, 3.111.G.2.a-b (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> c. Up-to-date immunizations, if applicable;
+>
+> e. Work or low-income activity schedule (if non-traditional care hours
+> are requested at application or redetermination and the county
+> has been approved by the Department through their county rate
+> plan to reimburse child care providers for non-traditional care
+> hours at a higher reimbursement rate);
+>
+> h. Custody arrangement and/or parenting schedule, if applicable.
+>
+> 5. Any unrelated individual who is acting as a primary adult caretaker for an
+> eligible child is required to obtain verification from the child’s biological or
+> adoptive parent, legal guardian, or a court order which identifies the
+> unrelated individual as the child’s adult caretaker.
+>
+> 2. Children who are not attending school as defined by the Colorado
+> Department of Education and who are receiving child care outside of the
+> child’s home from a qualified exempt child care provider who is unrelated
+> to the child must provide a copy of their immunization record to the county,
+> indicating that the children are age-appropriately immunized or have a
+> religious or medical exemption (see sections 25-4-902 and 25-4-908,
+> C.R.S., for exemption requirements).
+>
+> a. The adult caretaker(s) or teen parent(s) shall submit documentation
+> listing their income and work-related expenses. The county shall
+> obtain verification of all expenses from the adult caretaker(s) or
+> teen parent(s) or they will not be considered.
+>
+> b. The adult caretaker(s) or teen parent(s) shall submit an expected
+> weekly employment schedule that includes approximate
+> employment hours. This is required upon beginning self-
+> employment, at application, and at redetermination.
