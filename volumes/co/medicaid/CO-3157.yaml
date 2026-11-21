@@ -1,0 +1,19 @@
+id: CO-3157
+name: "Medicaid and CHP+: verification applies to the person"
+identifier: ma_verification_is_applicable
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether coverage is requested for the person, so that verification of the person's own eligibility elements (citizenship and identity, immigration status, residency, age) applies: Medical Assistance is requested (ma_is_requesting_coverage, else the shared is_requesting_health_coverage), or CHP+ is (chp_is_requesting_coverage, else the same shared request), since CHP+ reads the same per-element items. A person who only appears on the application owes none of those documents (10 CCR 2505-10 § 8.100.3.H.1 and G.2, a person who declares citizenship or a status; § 8.100.3.I.1, \"does not apply to those individuals who are not requesting Medical Assistance yet appear on the application\"; 42 CFR 435.907(e)(1), only the information necessary to make an eligibility determination)."
+precision: "Not a gate on the elements that enter another person's determination: earned and unearned income (the member's income counts in an applicant's MAGI household), resources and real property (a spouse's resources count for an aged, blind or disabled applicant), pregnancy (a pregnant member enlarges every household member's MAGI household, § 8.100.4.E.2) and household composition stay owed for a non-requesting member. The long-term care elements already read ma_is_long_term_care_applicant. Unlike ma_verification_status (CO-1415), which reports not_applicable from the Medical Assistance request alone, this counts a CHP+-only request, because CHP+'s verification status reads these elements."
+derived: [any, [otherwise, ma_is_requesting_coverage, is_requesting_health_coverage], [otherwise, chp_is_requesting_coverage, is_requesting_health_coverage]]
+sources: [S854, S852, S860, S2103, S1051]
+implemented: engine
+tags: [ma, chp, verification]
+accepts_from: [chp_is_requesting_coverage]
+rationale: "Heavier-definitions audit H-13 (audit fix round 4; the caseworker review's B2 left open for Medicaid): the citizenship, identity, immigration status, residency and age elements flagged a household member who asked for no coverage (a parent applying only for a child) as owing documents. The SSN element (CO-1401) and every other program's verification (CO-2583 to CO-2587) were already gated; no existing item states the gate for these Medicaid and CHP+ elements."
+tests:
+  - {id: CO-3157-T1, as_of: "2026-10-01", title: "A parent applying only for her child", given: {is_requesting_health_coverage: false}, expect: false}
+  - {id: CO-3157-T2, as_of: "2026-10-01", title: "Medical Assistance requested", given: {is_requesting_health_coverage: true}, expect: true}
+  - {id: CO-3157-T3, as_of: "2026-10-01", title: "Declined Medicaid, requested CHP+", given: {ma_is_requesting_coverage: false, chp_is_requesting_coverage: true}, expect: true}

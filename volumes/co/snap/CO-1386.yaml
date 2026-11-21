@@ -5,13 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: "Whether the person's work hours must be verified for SNAP: for an individual subject to the time limit who meets the work requirement by working."
-derived: [all, snap_is_household_member, [not, snap_is_exempt_from_abawd_time_limit], [">", hours_worked, 0]]
+meaning: "Whether the person's work hours must be verified for SNAP: for an individual subject to the time limit who meets the work requirement by working, by combining work and a work program, or by participating in a work or workfare program that the State agency does not operate or supervise (7 CFR 273.2(f)(1)(xiv)(A))."
+derived: [all, snap_is_household_member, [not, snap_is_exempt_from_abawd_time_limit], [any, [">", hours_worked, 0], [all, [">", work_program_hours, 0], [not, snap_work_program_is_operated_or_supervised_by_state_agency]]]]
 sources: [S810]
 implemented: engine
 tags: [verification, snap, abawd]
-rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
+rationale: "No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived. Heavier-definitions audit L-6 (audit fix round 4): the hours of a work or workfare program the State agency does not operate or supervise are verified too."
 tests:
   - {id: CO-1386-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_exempt_from_abawd_time_limit: false, hours_worked: 90}, expect: true}
   - {id: CO-1386-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_exempt_from_abawd_time_limit: true, hours_worked: 90}, expect: false}
-  - {id: CO-1386-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_exempt_from_abawd_time_limit: false, hours_worked: 0}, expect: false}
+  - {id: CO-1386-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_is_exempt_from_abawd_time_limit: false, hours_worked: 0, work_program_hours: 0}, expect: false}
+  - {id: CO-1386-T4, month: "2026-10", as_of: "2026-10-01", title: "L-6: no paid work; 80 hours in a nonprofit workfare program the State agency does not run", given: {snap_resides_in_institution_providing_meals: false, snap_is_exempt_from_abawd_time_limit: false, hours_worked: 0, work_program_hours: 80, snap_work_program_is_operated_or_supervised_by_state_agency: false}, expect: true}
+  - {id: CO-1386-T5, month: "2026-10", as_of: "2026-10-01", title: "L-6: 80 hours in SNAP Employment and Training, which the State agency operates", given: {snap_resides_in_institution_providing_meals: false, snap_is_exempt_from_abawd_time_limit: false, hours_worked: 0, work_program_hours: 80, snap_work_program_is_operated_or_supervised_by_state_agency: true}, expect: false}

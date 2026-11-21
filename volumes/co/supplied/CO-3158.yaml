@@ -1,0 +1,13 @@
+id: CO-3158
+name: Taxable interest and dividends received
+identifier: taxable_interest_and_dividend_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of other_unearned_income_taxable (CO-1714) that is interest or dividends the person received for the month (taxable interest, not tax-exempt interest, which is tax_exempt_interest, CO-081). It is a part of CO-1714, not an addition to it: no income sum adds it, since CO-1714 already includes it. If not stated, Medicaid reads it as none (all of CO-1714 is other income)."
+precision: "Stated so a Medicare Savings Program applicant's interest and dividends can be taken on attestation (42 CFR 435.952(e)(1)(i)) while other unearned income is verified; at most other_unearned_income_taxable for the month."
+supplied_by: "The applicant's statement; bank or brokerage statements, Form 1099-INT or 1099-DIV."
+sources: [S1089]
+tags: [income, msp]
+rationale: "Heavier-definitions audit H-14 (audit fix round 4): ma_requires_verification_of_unearned_income (CO-1404) required verification of all unearned income of an aged, blind or disabled applicant, an MSP-only applicant's interest and dividends included, although the agency must accept the attestation of their value. CO-1714 carries interest and dividends together with rents, royalties, alimony and estate income, so no fact separated them. Stated as a part of CO-1714 rather than split out of it, so the twenty income sums that read CO-1714 and the cases that state it are unchanged."

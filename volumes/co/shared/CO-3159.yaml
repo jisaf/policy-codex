@@ -1,0 +1,19 @@
+id: CO-3159
+name: Has unearned income other than interest and dividends
+identifier: has_unearned_income_other_than_interest_and_dividends
+kind: derived
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether the person received unearned income for the month other than interest and dividends: the income has_unearned_income (CO-1357) counts, less tax-exempt interest (CO-081) and the taxable interest and dividends within other_unearned_income_taxable (taxable_interest_and_dividend_income, CO-3158)."
+precision: "If taxable_interest_and_dividend_income is not stated it is read as none, so all of other_unearned_income_taxable counts here, as its meaning says."
+derived: [">", ["+", social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, ["-", other_unearned_income_taxable, [otherwise, taxable_interest_and_dividend_income, 0]], other_unearned_income_nontaxable], 0]
+sources: [S1089]
+implemented: engine
+tags: [income, msp, verification]
+nearest: [CO-1357]
+rationale: "Heavier-definitions audit H-14 (audit fix round 4): the Medicare Savings Program arm of ma_requires_verification_of_unearned_income (CO-1404) needs the unearned income that is not interest or dividends, which 42 CFR 435.952(e)(1)(i) takes on attestation; has_unearned_income (CO-1357) counts them all."
+tests:
+  - {id: CO-3159-T1, month: "2026-10", as_of: "2026-10-01", title: "Only $40 of savings interest", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 40, taxable_interest_and_dividend_income: 40, other_unearned_income_nontaxable: 0}, expect: false}
+  - {id: CO-3159-T2, month: "2026-10", as_of: "2026-10-01", title: "Social Security and interest", given: {social_security_income: 1200, pension_income: 0, unemployment_income: 0, child_support_received: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 40, taxable_interest_and_dividend_income: 40, other_unearned_income_nontaxable: 0}, expect: true}
+  - {id: CO-3159-T3, month: "2026-10", as_of: "2026-10-01", title: "Rent of $300 with the interest part not stated", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 300, other_unearned_income_nontaxable: 0}, expect: true}

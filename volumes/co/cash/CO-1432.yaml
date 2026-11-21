@@ -5,12 +5,17 @@ kind: derived
 type: yes/no
 scope: person-month
 program: AdultFinancial
-meaning: "Whether the client's declared immigration status must be verified through SAVE for Adult Financial: for Aid to the Needy Disabled; Old Age Pension is open to all non-citizens."
-derived: [all, [not, af_is_oap_age], claims_lawful_immigration_status]
-sources: [S881, S887]
+meaning: "Whether the client's declared immigration status must be verified for Adult Financial: for Aid to the Needy Disabled, through SAVE (9 CCR 2503-5 3.520.5.D, 3.520.67.F); and for an Old Age Pension applicant who claims a qualified status, unless the pension does not turn on it, because the client also receives SSI (C.R.S. 26-2-111(2)(c)(III)) or the county has found a sponsor-related or significant financial hardship ((2)(c)(II)): C.R.S. 26-2-111(2)(c)(I) grants the pension to a qualified alien only where \"it is shown\" that the entry-date or five-year-bar requirement is met (OQ-591)."
+precision: "Heavier-definitions audit L-4 (audit fix round 4): the item had exempted every client of Old Age Pension age (\"all non-citizens are eligible to apply for OAP\", 3.520.67.E), although af_meets_citizenship_requirement_oap (CO-929) applies the statute's bar (OQ-430), so a qualified non-citizen's status and qualified_status_date decided the pension without being verified. A non-citizen who claims no lawful status is not asked for status documents, as before. If the hardship finding is not stated, Adult Financial reads it as not made, as CO-929 does. The means of verification for Old Age Pension is not named by the rule; SAVE is the means 3.520.5.D names for AND."
+derived: [all, claims_lawful_immigration_status, [any, [not, af_is_oap_age], [all, [not, receives_ssi], [not, [otherwise, af_oap_qualified_alien_hardship_exception, false]]]]]
+sources: [S881, S887, S1316]
 implemented: engine
-tags: [verification, cash, and, immigration]
-rationale: No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications.
+tags: [verification, cash, and, oap, immigration, legal]
+open: [OQ-591]
+rationale: "No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications. Heavier-definitions audit L-4 (audit fix round 4): Old Age Pension applicants whose pension turns on their status now verify it."
 tests:
   - {id: CO-1432-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1980-01-01", immigration_status: lawful_permanent_resident}, expect: true}
-  - {id: CO-1432-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1950-01-01", immigration_status: lawful_permanent_resident}, expect: false}
+  - {id: CO-1432-T2, month: "2026-10", as_of: "2026-10-01", title: "L-4: an LPR of 76 applying for the pension, no SSI, no hardship finding: the five-year bar turns on her status", given: {date_of_birth: "1950-01-01", immigration_status: lawful_permanent_resident, receives_ssi: false}, expect: true}
+  - {id: CO-1432-T3, month: "2026-10", as_of: "2026-10-01", title: "L-4: the same applicant receives SSI (26-2-111(2)(c)(III)): status does not decide the pension", given: {date_of_birth: "1950-01-01", immigration_status: lawful_permanent_resident, receives_ssi: true}, expect: false}
+  - {id: CO-1432-T4, month: "2026-10", as_of: "2026-10-01", title: "L-4: the county found a significant financial hardship ((2)(c)(II))", given: {date_of_birth: "1950-01-01", immigration_status: lawful_permanent_resident, receives_ssi: false, af_oap_qualified_alien_hardship_exception: true}, expect: false}
+  - {id: CO-1432-T5, month: "2026-10", as_of: "2026-10-01", title: "A citizen of 76", given: {date_of_birth: "1950-01-01", immigration_status: us_citizen}, expect: false}

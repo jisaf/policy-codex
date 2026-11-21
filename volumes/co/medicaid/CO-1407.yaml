@@ -6,12 +6,13 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the person's Colorado residency must be documented for Medical Assistance: attestation is accepted unless questionable, and not where documentation is not reasonably available (the case-by-case special-circumstances exception)."
-derived: [all, residency_attestation_is_questionable, [not, documentation_not_reasonably_available]]
-sources: [S842, S863, S839]
+derived: [all, ma_verification_is_applicable, residency_attestation_is_questionable, [not, documentation_not_reasonably_available]]
+sources: [S2103, S842, S863, S839]
 implemented: engine
 tags: [verification, ma]
-rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
+rationale: "No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived. Heavier-definitions audit H-13 (audit fix round 4): applies only to a person for whom coverage is requested (ma_verification_is_applicable, CO-3157); a member who only appears on the application owes no residency document."
 tests:
-  - {id: CO-1407-T1, month: "2026-10", as_of: "2026-10-01", given: {residency_attestation_is_questionable: true, documentation_not_reasonably_available: false}, expect: true}
+  - {id: CO-1407-T1, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, residency_attestation_is_questionable: true, documentation_not_reasonably_available: false}, expect: true}
   - {id: CO-1407-T2, month: "2026-10", as_of: "2026-10-01", given: {residency_attestation_is_questionable: true, documentation_not_reasonably_available: true}, expect: false}
   - {id: CO-1407-T3, month: "2026-10", as_of: "2026-10-01", given: {residency_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1407-T9, month: "2026-10", as_of: "2026-10-01", title: "H-13: a parent on the application who requests no coverage for herself", given: {is_requesting_health_coverage: false, residency_attestation_is_questionable: true, documentation_not_reasonably_available: false}, expect: false}
