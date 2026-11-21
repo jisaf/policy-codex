@@ -205,8 +205,12 @@ export function governance(
 
   // 2. Naming grammar. An id names one item for good; a second item with the
   //    same id makes every citation of it ambiguous.
-  const sameId = ix.items.filter((o) => o.id === it.id && o !== it && o.identifier !== it.identifier);
-  if (sameId.length) {
+  //    An edit or rename of an existing item is checked under that item's id
+  //    while the old version is still in the index, so one other holder is
+  //    expected then; a new item and an item already in the ledger expect none.
+  const sameId = ix.items.filter((o) => o.id === it.id && o !== it);
+  const expected = ix.items.includes(it) || opts.isNew ? 0 : 1;
+  if (sameId.length > expected) {
     err("id.duplicate", `Id ${it.id} is also used by ${sameId.map((o) => o.identifier).join(", ")}`);
   }
   if (!NAME_RE.test(identifier)) {

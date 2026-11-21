@@ -136,12 +136,14 @@ describe("governance", () => {
 
   it("rejects an id another item already uses", () => {
     const taken = (ledger.items as unknown as Item[])[0];
-    const f = rule(engine.governance(draft({ id: taken.id })), "id.duplicate");
+    const f = rule(engine.governance(draft({ id: taken.id }), { isNew: true }), "id.duplicate");
     expect(f).toHaveLength(1);
     expect(f[0].level).toBe("error");
     expect(f[0].msg).toContain(taken.identifier);
-    // The item itself, re-checked under its own id, is not a duplicate of itself.
+    // The item itself, re-checked under its own id, is not a duplicate of itself,
+    // and neither is an edited or renamed copy of it.
     expect(rule(engine.governance(taken), "id.duplicate")).toEqual([]);
+    expect(rule(engine.governance({ ...taken, identifier: "renamed_fact" }), "id.duplicate")).toEqual([]);
   });
 
   it("reserves the pattern operators", () => {
