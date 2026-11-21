@@ -64,8 +64,8 @@ describe("the co suite", () => {
   });
 
   it("lists the derived items a case states, whose values replace their rules", () => {
-    // CO-01 no longer overrides ma_mmmna_standard (HCPF fix round); CO-08 still states CO Works results (known-failures.json lists them for the CDHS round).
-    expect(byId("CO-08").overrides).toContainEqual({ person: "p1", identifier: "cw_eligibility_status" });
+    // No household case states a derived value any more (engineering follow-up pass, task 3: CO-08, CO-83).
+    expect(suite.cases.filter((c) => c.kind === "household" && c.overrides?.length)).toEqual([]);
     expect(byId("CO-387-T1").overrides?.map((o) => o.identifier)).toContain("snap_eligible_household_size");
   });
 

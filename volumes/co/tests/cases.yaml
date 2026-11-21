@@ -6038,6 +6038,14 @@
   # So p6 is his own one-person LEAP/CCCAP household on this batch's facts, per OQ-132's own limitation, not
   # the single five/six-person household 3.751.1's "living together as one economic unit" text would produce
   # if the engine could register a symmetric relationship role for it.
+  # Engineering follow-up pass, task 3: the case no longer states cw_eligibility_status and cw_grant_amount
+  # (Corticon B-3); it states the facts Colorado Works reads (no SSI, Title IV, TANF elsewhere,
+  # disqualification, sanction or prior months; p1 head of the unit; all four request inclusion, p6 does
+  # not) and the rules derive them. Unit [p1, p2, p3, p4] (size 4); countable income (2,600 - 90) +
+  # (400 - 90) = 2,820 (3.606.2's $90 employment disregard each) against the 3.606.1.F need standard of
+  # 533 for four: ineligible_income, grant 0 for p1-p4, as the case stated before. p6 (no child of his own,
+  # not in the unit) was stated ineligible_income and now derives ineligible_no_dependent_child, grant 0;
+  # no expectation reads his Colorado Works status (his CCCAP status is ineligible_child either way).
   as_of: "2026-12-01"
   relationships:
     - [spouse, p1, p2]
@@ -6050,6 +6058,26 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        receives_tanf_cash: false
+        work_sanction_level_served: "none"
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        months_of_assistance_received: 0
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: true
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
@@ -6076,8 +6104,6 @@
         is_responsible_for_heating_costs: true      # heat included in rent, non-subsidized (3.752.25.A.2)
         has_primary_heating_source: true            # building furnace (3.751.1 "Primary Heating Source")
         cccap_entry_income_limit_pct_fpl: 1.85       # 3.111.H.1.a's stated floor (185% FPL)
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6099,6 +6125,25 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        work_sanction_level_served: "none"
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        months_of_assistance_received: 0
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
         cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
@@ -6127,8 +6172,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6151,6 +6194,23 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        work_sanction_level_served: "none"
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
@@ -6178,8 +6238,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6206,6 +6264,24 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        receives_tanf_cash: false
+        work_sanction_level_served: "none"
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
         is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
@@ -6234,8 +6310,6 @@
         has_primary_heating_source: true
         shares_heating_fuel_with: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6257,6 +6331,14 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        received_tanf_from_another_state_this_month: false
+        is_pregnant: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: false
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
@@ -6281,8 +6363,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6317,6 +6397,8 @@
       # $3,000 = p1 $2,600 + p4 $400 (18, so 3.752.23.Q's under-18 earnings zeroing does not reach her).
       leap_household_income: {"2026-12": 3000}
       leap_is_eligible: {"2026-12": true}
+      cw_eligibility_status: {"2026-12": ineligible_income}
+      cw_grant_amount: {"2026-12": 0}
     p2:
       cccap_household_members: [p1, p2, p3, p4]
       cccap_household_size: 4
@@ -6353,6 +6435,8 @@
       leap_household_members: []
       leap_household_income: {"2026-12": 1500}
       leap_is_eligible: {"2026-12": false}
+      cw_eligibility_status: {"2026-12": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-12": 0}
 
 - id: CO-71
   title: Undocumented pregnant mother on CHP+ prenatal with a CHP+ son; her LPR mother in breast cancer treatment; her LPR grandfather inside the five-year bar on OAP health care
@@ -8324,6 +8408,8 @@
   # stepfather is an optional member who does not request assistance (3.604.2.C.2.a, OQ-152), so the assistance
   # unit is the mother and child, but he is in the budgetary unit (3.604.2.D.1.b, OQ-140) and his income is deemed
   # under 3.605.1.A.4.a.
+  # Engineering follow-up pass, task 3: meets_public_assistance_citizenship_requirement is no longer stated; all three
+  # are citizens (citizenship_status citizen), so CO-905 derives true for each, the value the case stated.
   as_of: "2026-10-15"
   relationships:
     - [spouse, p1, p2]
@@ -8415,7 +8501,6 @@
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
-        meets_public_assistance_citizenship_requirement: true
         is_sponsored_non_citizen: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
@@ -8506,7 +8591,6 @@
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
-        meets_public_assistance_citizenship_requirement: true
         is_sponsored_non_citizen: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
@@ -8596,7 +8680,6 @@
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
-        meets_public_assistance_citizenship_requirement: true
         is_sponsored_non_citizen: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
