@@ -1,6 +1,6 @@
 id: CO-871
 name: In a CCCAP job search low-income eligible activity
-identifier: is_in_job_search_activity
+identifier: cccap_is_in_job_search_activity
 kind: supplied
 type: yes/no
 scope: person
@@ -9,4 +9,4 @@ meaning: Whether this adult caretaker or teen parent is currently in the job sea
 supplied_by: County child care technician's determination and the household's statement of low-income eligible activity (3.111.C.2.d).
 sources: [S482]
 tags: [household]
-rationale: "3.111.G lists job search as one of the low-income eligible activities alongside employment, self-employment, and training/education; none of this volume's shared supplied facts state it. cccap_caretaker_in_eligible_activity (CO-984) needs it as an alternative to hours_worked > 0."
+rationale: "3.111.G lists job search as one of the low-income eligible activities alongside employment, self-employment, and training/education; none of this volume's shared supplied facts state it. cccap_caretaker_in_eligible_activity (CO-984) needs it as an alternative to hours_worked > 0. Same-word audit SW-37: renamed from is_in_job_search_activity so the identifier carries the prefix of the program (or method) whose meaning it states."
