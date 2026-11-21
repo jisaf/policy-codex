@@ -567,3 +567,128 @@ case notes, and the grouped §2.2 note). Of the twelve questions phase 8 marked 
 by the text and one (OQ-15) is overclaimed; eight further open questions are answered by the current text
 (OQ-14, 33, 105, 112, 115, 116, 117, 139) and eight more are open only for modeling (OQ-38, 103, 114, 120, 140,
 143, 151, 162).
+
+---
+
+## Disposition (phase-8 fix round, 2026-11-21)
+
+Every blocking and should-fix finding is acted on; each note is acted on or answered below. New items CO-1500–CO-1520,
+excerpts S1000–S1021 (verbatim from D-80, D-81, D-82, D-87 and D-62; no new documents were fetched), open questions
+OQ-350–OQ-358. `npm run check` passes with every rule test and case expectation.
+
+### Blocking
+
+- **B-1 — fixed.** S1000/S1019 (current 3.606.2 and its 2023-06-01 amendment) replace S416. New
+  `cw_new_earnings_disregard_rate` (CO-1503, 1.00 from 2023-06-01), `cw_in_first_certification_period` (CO-1501) and
+  `cw_is_new_earned_income_source` (CO-1502). CO-922 disregards 100% for an applicant (A.1: the payment for the first
+  certification period), for a recipient in its first certification period, and for a new source; 67% (CO-350,
+  re-cited) for a current source after it. CO-907 keeps the $90 only at application; a unit currently receiving
+  (`receives_tanf_cash`) is tested against the need standard with the CO-922 figure (3.606.1.J, S1001). The review's
+  three rule tests are CO-1260-T3..T5 (488 / 356 / 488 for one caretaker and one child) and CO-922-T1..T5. OQ-105
+  rewritten and resolved; OQ-350 records a month mixing a new and a current source.
+- **B-2 — fixed.** CO-946 now subtracts SSI (`ssi_income` when `receives_ssi`, zero otherwise, so no default is
+  needed), applies the $20 to the non-SSI remainder, adds SSI back, and rolls an unused $20 onto earnings before the
+  $65 (S1002, S1003). Rule tests: SSI 700 → 700; SSDI 500 + SSI 514 → 994; SSI 700 + pension 10 → 700. One departure
+  from the review: A.2.f tests "the client's gross unearned income", which A.2.a defines "from all sources", so the
+  SSI-plus-$10 client has no unused $20 to roll over (the review rolled $10); OQ-351 records both readings. CO-07 p3 is
+  294. OQ-115 and OQ-116 resolved.
+
+### Should-fix
+
+- **S-1 — fixed.** CO-1270 accepts the county limit only when `cw_eligibility_status` is `ineligible_income`; tests
+  for no dependent child and time limit reached with the county limit met → false. OQ-252(2) amended.
+- **S-2 — fixed.** CO-928 reads only the IPV and fleeing-felon facts, re-cited to S1004/S1019 (CO-925 likewise); the
+  drug-felony fact stays a SNAP fact. OQ-143 amended. The fact names are left for the vocabulary round.
+- **S-3 — fixed.** The SUA (now CO-1500) is household-level - the highest tier any member's utility facts reach - and
+  CO-377 adds it once. Tests: CO-1500-T7 and CO-377-T3 (two members stating heat → rent + 616 = 2,016). OQ-29 amended.
+- **S-4 — fixed.** New guideline-year tables `sebt_poverty_guideline_table` / `_each_additional` (CO-1519/CO-1520,
+  versioned 2026-07-01 to 2027-07-01 from S798 with the S55 figures); CO-1297 reads them. A 2027-03-01 determination
+  gives 5,088 for four (CO-1297-T3); a date outside the fetched guideline year is unknown rather than wrong. OQ-255(4)
+  closed.
+- **S-5 — fixed.** CO-1217's setting branch reads `[any, in_medical_institution, is_homeless]`; OQ-250 keeps only
+  "other temporary setting".
+- **S-6 — fixed.** The derived rule is CO-1500 (`snap_utility_allowance_amount`, identifier unchanged); CO-036 is
+  retired (file removed, not reused), references re-pointed, the rename recorded in docs/colorado-notes.md and OQ-36.
+- **S-7 — answered, not fixed.** This round had no document range, so the SOS version effective 12/30/2025 was not
+  fetched; OQ-15 is retitled ("current from October 1, 2026; the FY2026 table ... is still missing") and stays open.
+- **K-1 — fixed.** `is_deceased_colorado_works_client` (CO-1504), `cw_death_reimbursement_max` ($1,500, CO-1505),
+  `cw_death_reimbursement_cost_limit` ($2,500, CO-1506), outcomes `cw_death_reimbursement_amount` (CO-1508) and
+  `cw_death_reimbursement_eligible` (CO-1507), reusing the burial cost, plot, insurance, estate and responsible-person
+  facts (CO-1221..1226) and CO-1229. Correction to the review: 3.606.7.F.2.d (S1007) does exempt a prepaid plot of
+  $2,000 or less and a donated one ("not counted toward the total funeral, cemetery, or burial expenses"), so the plot
+  is excluded from the $2,500 test as for Adult Financial. Insurance and excess resources "reduce the maximum" (F.2.c,
+  f); the order against the estate is OQ-354.
+- **K-2 — fixed.** `af_personal_needs_allowance_maximum` ($79 from 2016-10-01, CO-1509) and
+  `resides_in_care_facility_thirty_consecutive_days` (CO-1510); CO-951 and CO-952 pay only the PNA, less countable
+  income and with no floor, to a full-month facility resident - for AND-CS too, since 3.548.D-F (S1010) states the same
+  PNA. The inmate bar is in `af_meets_residency` (CO-942, now person-month), reading `is_inmate_of_public_institution`;
+  that fact's CHP+ reentry carve-out is the vocabulary review's R-14. Income deduction, psychiatric and unlicensed
+  facilities: OQ-352.
+- **K-3 — fixed.** `af_barred_by_colorado_works` (CO-1511: receiving, or `cw_eligibility_status` eligible or
+  `sanction_closure`) is the last conjunct of every `af_category` branch and of `af_and_so_eligible` (CO-1203), so a
+  person failing an earlier test is not asked the Colorado Works facts. OQ-117 resolved; OQ-357 records what is not
+  modeled (demonstrable-evidence and disqualification closures, withdrawal, the HCA and burial programs).
+- **K-4 — fixed.** `af_ism_maximum` (CO-1513: $342 in 2025, S1020; $351 from 2026-01-01, S700/S707) and the county's ISM
+  as `af_in_kind_support_and_maintenance` (CO-1512). 3.520.79.A counts ISM "as unearned income" (not a deduction), so
+  CO-946 adds it, capped, to the non-SSI unearned income of an OAP-age or AND-CS client before the $20; it lowers the
+  grant. The Medicaid fact `in_kind_support_and_maintenance` (CO-802, SSI valuation) is not reused.
+- **K-5 — fixed.** `snap_standard_medical_deduction` ($165, CO-1514); CO-376 gives the greater of the SMED and the
+  expenses less $35 once they exceed $35 ($100 → 165). Expenses between $165 and $200 fall under neither sentence of
+  4.407.61.A: OQ-353. CO-03's net income moves 2182 → 2152 ($180 of expenses), allotment unchanged at the minimum.
+- **K-6 — fixed.** `snap_abawd_clock_start_month` (2023-07, CO-1515); CO-417 counts from the latest reset
+  (2023-07, 2026-07, ...) through the month before, keeping the rolling count only before July 2023; CO-416 accrues no
+  countable month in the month of the 18th birthday. Tests CO-417-T1/T3/T4, CO-416-T4/T5.
+- **K-7 — fixed.** `is_in_sud_treatment_iop_or_higher` (CO-1516) and `cccap_sud_treatment_activity_start_date`
+  (2026-07-01, CO-1517): CO-984 accepts the treatment for an adult caretaker from July 2026. CO-981 follows 3.103.EEEEE
+  (S1016): financially contributing (CO-897, OQ-135's default) and not in workforce training or post-secondary
+  education (`is_in_workforce_training_or_post_secondary_education`, CO-1518), which CO-992 now makes an adult
+  caretaker. OQ-124 extended; the one-year limit stays with OQ-162.
+- **C-1 — fixed.** CO-13 p1 born 1950-03-02 (every figure unchanged); CO-1215's grandfathered route requires age 60 on
+  2013-12-31 (CO-1215-T5).
+- **C-2 — fixed.** CO-01/CO-02 state `shares_heating_fuel_with: true`: the family buys heat in common and is one LEAP
+  household [p1, p2, p4, p5] (p3 excluded for status, income counted: 5,590, 203% FPL for four, within the volume's
+  size-4 ceiling). November benefit 450 for p2-p5 (was 450 and 540); the LEAP pending verification count is the one
+  household's (7 in October, 1 in November; p1/p2 move from complete to past_due). p1 stays in her husband's household
+  through the spouse edge although she is in a nursing facility (OQ-358; 3.751.2.D.1 "Husband and wife living
+  together"). OQ-253 amended.
+- **C-3 — fixed.** CO-07: Marco serves a second-level sanction; the unit is an ongoing case past its first
+  certification period with a current source, so countable income 132 (was 310) and grant 517 × 0.75 → 387 (was 517);
+  p3's AND-CS grant 294 (was 994); retitled (OAP, not OAP-B).
+
+### Notes
+
+- **N-1** — OQ-355 (F.1 vs A.4, and whether a prepaid plot belongs in the total cost); CO-1231 lists it. Unchanged.
+- **N-2** — recorded in OQ-254: one final cents drop is kept.
+- **N-3** — recorded in OQ-250: per-program floors kept, since each program states its own floor.
+- **N-4** — recorded in OQ-255: no fact states the school meal household's members, so the household reading cannot be
+  modeled yet.
+- **N-5** — answered: the LEAP ceiling stays the illustrative back-out of OQ-122; replacing it with another backed-out
+  column would not make it the LEAP table, which is still unfetched (OQ-122 open).
+- **N-6** — fixed: CO-385-T1 is a September 2026 allotment.
+- **N-7** — fixed: CO-1281's meaning says the figure is one season's benefit reported on each month.
+- **N-8** — fixed: CO-925, CO-846 and CO-847 cite the current 3.606.6.C-D (S1021).
+- **N-9** — OQ-356; CO-340 lists it.
+- **N-10** — answered: the `work_sanction_level_served` and `leap_living_arrangement` defaults stay with OQ-252 and
+  OQ-158 until the case-coverage defaults (OQ-134..136) are retired together; CO-07 and CO-13 now state the sanction
+  level on every unit member.
+- **N-11** — fixed: CO-348's stale `assumption` deleted.
+- **N-12** — no change needed.
+- **C-4** — CO-13 p1 states `has_applied_for_ssi: true` (application pending), so no SSI is counted; the case comment
+  gives the post-award figures. The burial boundary is OQ-355.
+- **C-5** — CO-03 states the four utility facts instead of the allowance and is retitled; CO-91's deleted
+  `utility_allowance_amount` lines are removed.
+- **§2.2 notes** — answered: OQ-14 now cites 4.406 (destitute households, resolved; the fact stays supplied); OQ-38
+  cites the initial-month, regaining and voluntary-quit text; Colorado Works strikers (3.604.2.L.2), the OAP SSI
+  application duty (3.520.71.B.4, D; CO-13 states it), the AND SSN requirement, AF disaster payments, the LEAP denial
+  factors (OQ-163) and the CCCAP fee rules (OQ-254) stay unmodeled with their existing questions; Family Preservation
+  BCE and lottery winnings are left for the SNAP chapter's next round.
+
+### Open questions
+
+Resolved with citations: OQ-14 (4.406, S1018), OQ-33 (4.311.1.A, S750), OQ-105 (3.606.2.A, S1000/S1001/S1019),
+OQ-112 (3.500, S1017; 3.520.61.A, S711), OQ-115 (3.533.A.2, 3.549.A.2, S1002/S1003), OQ-116 (CO-950; 3.546, S706),
+OQ-117 (3.520.61.F, 3.520.71.F, S711/S1011), OQ-139 (3.500, S1017). Un-resolved: OQ-15 (retitled, open). Amended:
+OQ-29, OQ-36, OQ-124, OQ-143, OQ-250, OQ-252, OQ-253, OQ-254, OQ-255; re-cited OQ-38, OQ-103, OQ-114, OQ-120,
+OQ-140, OQ-151, OQ-162. New: OQ-350 (new and current source in one month), OQ-351 ($20 rollover and SSI), OQ-352
+(PNA), OQ-353 (SMED gap), OQ-354 (death reimbursement offsets), OQ-355 (burial F.1 vs A.4), OQ-356 (ECE below vs at
+or below), OQ-357 (Adult Financial bar on Colorado Works), OQ-358 (LEAP spouse in a nursing facility).
