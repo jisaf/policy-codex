@@ -7620,3 +7620,228 @@ Document: D-87
 >
 > 1) Depreciation of equipment;
 
+### S1300. Proposed 7 CFR 273.24 (2026): the rule would codify USDA's implementation of the 2025 Act; the age-based exception becomes 65 or older
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), Summary and sec. II "Age-Based Exceptions". https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> SUMMARY: The proposed rule would
+>
+> codify USDA’s regulatory
+> implementation of provisions of the One
+> Big Beautiful Bill Act of 2025 (OBBB)
+> changing the three-month time limit for
+> certain participants subject to work
+> requirements in the Supplemental
+> Nutrition Assistance Program (SNAP).
+> ...
+> Age-Based Exceptions
+> The OBBB increases the upper age
+> limit for time-limited participants at
+> Section 6(o)(3)(A) of the Act from over
+> 55 years of age to over 65 years of age.
+> This proposed rule would amend
+> paragraph 7 CFR 273.24(c)(1) to increase
+> the upper age limit to 65 years of age or
+> older.
+
+### S1301. Proposed 7 CFR 273.24 (2026): the time limit reaches age 64; persons aged 60 to 64 are not excepted by age alone
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), sec. II "Age-Based Exceptions". https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> Individuals aged 60 to 64 are not
+> subject to the general work
+> requirements, per section 6(d)(1)(A) of
+> the Act. Although the OBBB did not
+> change who is subject to the general
+> work requirements, it increased the
+> upper age limit for the time limit to
+> include individuals through age 64. In
+> other words, the OBBB created a new
+> group of individuals, aged 60 to 64, who
+> are not subject to the general work
+> requirements but are time-limited
+> participants.
+> Individuals aged 60 through 64 are
+> excepted from the time limit if they
+> meet one of the exemptions from the
+> general work requirements at Section
+> 6(d)(2), as would be individuals aged 18
+> through 59. For instance, a 63-year old
+> already working 30 hours a week or
+> complying with work requirements for
+> unemployment compensation is
+> excepted from the time limit. However,
+> since age is not a listed exemption from
+> the general work requirements at
+> Section 6(d)(2), individuals aged 60 to
+> 64 are not excepted from the time limit
+> based solely on age. When the
+> Department initially wrote the
+> regulations around general work
+> requirements, it included age as an
+> exemption for simplification purposes
+> in program rules at 7 CFR 273.7(b)(1)(i).
+> To help clarify that individuals aged 60
+> to 64 are not subject to the general work
+> ...
+> requirements but subject to the time
+> limit, this proposed rule would revise
+> the exception at 7 CFR 273.24(c)(5) to
+> reference 7 CFR 273.7(b)(1)(ii) through
+> (vii) instead of the entire paragraph 7
+> CFR 273.7(b).
+
+### S1302. Proposed 7 CFR 273.24(c)(1) (2026): "Under 18 or 65 years of age or older"
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), proposed regulatory text of 7 CFR 273.24(c)(1). https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> (c) Exceptions. The time limit does
+> not apply to an individual if he or she
+> is:
+> (1) Under 18 or 65 years of age or
+> older;
+
+### S1303. Proposed 7 CFR 273.24 (2026): the homeless, veteran and former-foster-youth exceptions ended with the 2025 Act
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), sec. II "End of Exceptions Implemented by the Fiscal Responsibility Act of 2023". https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> End of Exceptions Implemented by the
+> Fiscal Responsibility Act of 2023
+> The OBBB removes the temporary
+> exceptions at Section 6(o)(3) of the Act
+> for homeless individuals, veterans, and
+> individuals 24 years of age or younger
+> and in foster care on their 18th birthday
+> (or higher age if the State offers
+> extended foster care to a higher age).
+> This proposed rule would codify
+> USDA’s regulatory implementation of
+> these changes by replacing paragraphs 7
+> CFR 273.24(c)(7) through (8) with new
+> exceptions for ‘‘an Indian or Urban
+> Indian’’ or ‘‘a California Indian’’ as
+> described in the section below and
+> strike paragraph 7 CFR 273.24(c)(9).
+
+### S1304. Colorado SNAP gross income levels effective October 1, 2025 (130%, 200% and 165% of poverty)
+
+Document: D-133
+
+10 CCR 2506-1 4.401.1 (rule version 12299, effective 2025-12-30; the 10/03/2025 emergency version states the same table). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12299&fileName=10%20CCR%202506-1
+
+> 4.401.1 Gross Income Limits
+>
+> Effective October 1, 2025, the gross income levels for one hundred thirty percent (130%), two hundred
+> percent (200%), and one hundred sixty-five percent (165%) of the federal poverty level for the
+> corresponding household size are as follows:
+> ...
+> Household 130% Gross Income 200% Gross Income 165% Gross Income
+> Size Level Level Level
+> 1 $1,696 $2,610 $2,152
+> 2 $2,292 $3,526 $2,909
+> 3 $2,888 $4,442 $3,665
+> 4 $3,483 $5,360 $4,421
+> 5 $4,079 $6,276 $5,177
+> 6 $4,675 $7,192 $5,934
+> 7 $5,271 $8,110 $6,690
+> 8 $5,867 $9,026 $7,446
+> Each additional +$596 +$918 +$757
+> person
+
+### S1305. Colorado SNAP non-citizen additional condition: the blind or disabled exception (regardless of entry date) and the 1931 birth-date exception
+
+Document: D-82
+
+10 CCR 2506-1 4.305.B.3.d-e (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> d. Blind or Person with Disabilities
+>
+> A non-citizen who is blind or a person with a disability if the non-
+> citizen is receiving benefits or assistance for their condition
+> regardless of entry date.
+>
+> e. Born on or before August 22, 1931 who lawfully resided in the U.S.
+> on August 22, 1996.
+
+### S1306. 8 U.S.C. 1612(a)(2)(F)(ii): a non-citizen receiving benefits for blindness or disability is excepted for SNAP
+
+Document: D-24
+
+8 U.S.C. 1612(a)(2)(F). https://www.law.cornell.edu/uscode/text/8/1612
+
+> (F) Disabled aliens lawfully residing in the United States on August 22, 1996 With respect to eligibility for benefits for the specified Federal programs described in paragraph (3), paragraph (1) shall not apply to an alien who—
+> ...
+> (ii)
+>
+> in the case of the specified Federal program described in paragraph (3)(B), is receiving benefits or assistance for blindness or disability (within the meaning of section 3(j) of the Food Stamp Act of 1977 1 ( 7 U.S.C. 2012(r) )). [2]
+
+### S1307. Colorado Works minor-parent deeming: the needs of the parent and of the individuals in the home the parent is responsible for are deducted
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.4.a (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. Income of a non-participant stepparent and a non-participant parent of an unmarried
+> minor parent
+>
+> a. A stepparent’s countable income is considered available to stepchildren included
+> in the assistance unit as dependent children. The countable income of a non-
+> participant parent(s) of an unmarried minor parent who is living in the same home
+> as the minor parent, shall also be deemed to the assistance unit.
+>
+> The countable income equals gross earned income minus the employment
+> disregard of $90, minus the maintenance or child support paid to others outside
+> the assistance unit, minus the amounts actually paid by the individual to other
+> individuals not living in the home and who could be claimed by the individual for
+> federal income tax purposes, plus any unearned income received by the
+> stepparent or non-participant parent. The needs of the stepparent or parent of
+> the minor parent, and the needs of individuals living in the home for whom the
+> stepparent or parent are responsible shall be deducted from the result to
+> determine the amount attributed to the assistance unit.
+
+### S1308. Proposed 7 CFR 273.2(j) (2026): categorical eligibility limited to households receiving TANF assistance; non-cash TANF benefits would no longer confer it
+
+Document: D-132
+
+91 FR 72454 (Nov. 10, 2026) (proposed rule), Summary and sec. "Eliminating Categorical Eligibility From Non-Cash or In-Kind Benefits or Services"; comments close 2026-12-10. https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22936.pdf
+
+> SUMMARY: Under section 5(a) of the Food
+>
+> and Nutrition Act of 2008, households
+> in which each member receives benefits
+> under a State program funded by
+> Temporary Assistance for Needy
+> Families (TANF) are categorically
+> eligible for the Supplemental Nutrition
+> Assistance Program (SNAP). Current
+> SNAP regulations consider TANF
+> benefits to include both cash assistance
+> and non-cash or in-kind benefits or
+> services from TANF-funded programs.
+> This proposal would limit categorical
+> eligibility to only households that
+> receive TANF assistance, as defined at
+> 45 CFR 260.31. These revisions would
+> ensure that SNAP benefits are targeted
+> to needy households that have qualified
+> for TANF assistance while still aligning
+> categorical eligibility’s statutory
+> purpose of simplifying program
+> administration.
+> ...
+> The proposed rule would remove 7
+> CFR 273.2(j)(2)(i)(B), (2)(i)(C), and
+> (2)(ii), meaning States would no longer
+> be permitted to confer categorical
+> eligibility for SNAP to households that
+> receive non-cash or in-kind TANF- or
+> State MOE-funded benefits or services,
+
