@@ -211,6 +211,18 @@ export function putChangeEntry(entry: ChangeEntry): void {
   recomputeReport();
 }
 
+/** Several entries in one write and one validation, for an action that
+ *  stages a chapter at once (the approvals inbox's bulk sign-off).
+ *  `discard` drops entries by id first. */
+export function putChangeEntries(entries: readonly ChangeEntry[], discard: readonly string[] = []): void {
+  let cs = changeSetSig.value;
+  for (const id of discard) cs = discardEntry(cs, id);
+  for (const e of entries) cs = putEntry(cs, e);
+  changeSetSig.value = cs;
+  saveChangeSet(cs);
+  recomputeReport();
+}
+
 export function discardChangeEntry(id: string): void {
   const cs = discardEntry(changeSetSig.value, id);
   changeSetSig.value = cs;
