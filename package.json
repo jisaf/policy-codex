@@ -15,7 +15,8 @@
     "governance": "vite-node scripts/governance-report.ts",
     "conformance": "vite-node scripts/conformance.ts",
     "conform": "vite-node scripts/conform.ts",
-    "conform:self": "npm run conform -- --adapter \"npx vite-node scripts/adapters/codex-self.ts\" --batch",
+    "conform:self": "vite-node scripts/conform.ts --build --batch --adapter \"npx vite-node scripts/adapters/codex-self.ts\"",
+    "export": "vite-node scripts/export.ts",
     "check": "vite-node scripts/check.ts",
     "e2e": "playwright test"
   },

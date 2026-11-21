@@ -11,7 +11,10 @@ import { parseCases, type HouseholdCase } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseOpenQuestions, parseSources } from "../ledger/markdown";
 import { ratchetGovernance } from "../changes/validate";
-import type { Item, VolumeMeta } from "../engine/types";
+import { householdInputs, ruleTestInputs, type Audit } from "../export/conformance";
+import { versionInForce } from "../engine/versions";
+import type { Engine } from "../engine/engine";
+import type { Item, TestSpec, VolumeMeta } from "../engine/types";
 
 export interface LoadedLedger {
   items: Item[];
@@ -26,9 +29,9 @@ export interface LoadedLedger {
 }
 
 /** Reads the manifest, every item file, `volume.yaml`, `sources.md`,
- *  `open-questions.md`, and `tests/cases.yaml` for the manifest's first
- *  volume, the same way `scripts/handoff.ts` and `scripts/governance-report.ts`
- *  do. `root` is the repository root. */
+ *  `open-questions.md`, and `tests/cases.yaml` for one volume (the manifest's
+ *  first when none is named; `runCheckAll` and `npm run check` run every
+ *  volume). `root` is the repository root. */
 export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedger {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "codex.json"), "utf8"));
   const entry = volumeId
@@ -204,8 +207,76 @@ export interface CheckReport {
   /** duplicated question headings (errors, blocking) and `open:` references
    *  to questions that do not exist (warnings). */
   openQuestions: OpenQuestionFindings;
+  /** Non-blocking findings about tests and cases: inputs no engine reads
+   *  (parameters stated as person facts, unknown identifiers, persons named
+   *  only in a relationship triple, ...), and unknowns produced with no
+   *  supplied fact behind them (a table lookup with no row, a parameter with
+   *  no version in force, a division by zero). One line each. */
+  warnings: string[];
   /** true when there is nothing to block a merge. */
   ok: boolean;
+}
+
+const IGNORED_ADVICE: Record<string, string> = {
+  "unknown identifier": "no item has this identifier, so it is ignored",
+  parameter: "is a parameter, so a value stated for a person is ignored (state an override under `parameters:`)",
+  "not in force": "is outside its effective range on the determination date, so the stated value is ignored",
+  scope: "has a scope the engine never reads from a person's facts, so it is ignored",
+  "undeclared person": "is named in a relationship triple but not declared as a person of the case, so no relationships are recorded on them",
+};
+
+function auditLines(id: string, audit: Audit): string[] {
+  return audit.ignored.map((i) =>
+    `${id}: ${i.person ? i.person + "." : ""}${i.identifier} ${IGNORED_ADVICE[i.reason] ?? i.reason}`);
+}
+
+function roleLines(
+  id: string, declared: Set<string> | null,
+  rels: Array<readonly string[]> | undefined,
+): string[] {
+  if (!declared || !rels) return [];
+  return rels.filter((r) => !declared.has(r[0])).map((r) =>
+    `${id}: relationship role "${r[0]}" is not declared in volume.yaml relationship_roles`);
+}
+
+/** The non-blocking warnings `buildCheckReport` adds for one volume's tests,
+ *  cases and parameters (see CheckReport.warnings). Evaluation warnings come
+ *  from the rule-test and case runs, passed in so nothing is evaluated twice. */
+export function inputWarnings(engine: Engine, ledger: LoadedLedger): string[] {
+  const out: string[] = [];
+  const declared = engine.index.roles ? new Set(engine.index.roles.map((r) => r.id)) : null;
+  for (const it of ledger.items) {
+    for (const t of it.tests || []) {
+      if (t.others && "p1" in t.others) {
+        out.push(`${t.id}: others restates p1, which replaces everything given for p1 (including its relationships)`);
+      }
+      try {
+        out.push(...auditLines(t.id, ruleTestInputs(engine, t).audit));
+      } catch (ex) {
+        out.push(`${t.id}: ${(ex as Error).message}`);
+      }
+      out.push(...roleLines(t.id, declared, t.relationships as TestSpec["relationships"]));
+      for (const [pid, p] of Object.entries(t.persons || {})) {
+        out.push(...roleLines(`${t.id} ${pid}`, declared, p.relationships));
+      }
+    }
+  }
+  for (const c of ledger.cases) {
+    out.push(...auditLines(c.id, householdInputs(engine, c).audit));
+    out.push(...roleLines(c.id, declared, c.relationships));
+    for (const [pid, p] of Object.entries(c.persons || {})) {
+      out.push(...roleLines(`${c.id} ${pid}`, declared, p.relationships));
+    }
+  }
+  // A versioned parameter with no version on the volume's default date is
+  // unknown in every test that does not set its own date.
+  for (const it of ledger.items) {
+    if (it.kind === "parameter" && it.versions && it.versions.length &&
+      !versionInForce(it, ledger.meta.default_as_of)) {
+      out.push(`${it.id} ${it.identifier}: no version in force on default_as_of ${ledger.meta.default_as_of}`);
+    }
+  }
+  return out;
 }
 
 export function caseResultKey(
@@ -234,7 +305,8 @@ function loadBaseItem(
 ): Item | null {
   try {
     const text = execFileSync(
-      "git", ["show", `${base}:${filePath}`], { cwd: root, encoding: "utf8" },
+      "git", ["show", `${base}:${filePath}`],
+      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
     );
     return parseItemFile(text);
   } catch {
@@ -306,11 +378,13 @@ export function buildCheckReport(
   });
 
   const ruleFailures: RuleTestFailure[] = [];
+  const warnings: string[] = [];
   let ruleTotal = 0;
   for (const it of ledger.items) {
     for (const t of it.tests || []) {
       ruleTotal++;
       const result = engine.runTest(it, t);
+      for (const w of result.warnings ?? []) warnings.push(`${t.id}: ${w}`);
       if (!result.ok) {
         ruleFailures.push({
           itemId: it.id, identifier: it.identifier, testId: t.id,
@@ -326,6 +400,9 @@ export function buildCheckReport(
     const report = engine.runCase(c);
     for (const r of report.results) {
       caseTotal++;
+      for (const w of r.warnings ?? []) {
+        warnings.push(`${caseResultKey(c.id, r.person, r.identifier, r.month)}: ${w}`);
+      }
       if (!r.ok) {
         caseFailures.push({
           caseId: c.id, person: r.person, identifier: r.identifier, month: r.month,
@@ -357,6 +434,7 @@ export function buildCheckReport(
   }
 
   const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);
+  warnings.push(...inputWarnings(engine, ledger));
 
   const ok = blockingItemErrors.length === 0
     && newRuleFailures.length === 0
@@ -389,6 +467,7 @@ export function buildCheckReport(
     newFailures: [...newRuleFailures.map((f) => f.testId), ...newCaseFailures.map((f) => f.key)],
     blockingItemErrors,
     openQuestions,
+    warnings: [...new Set(warnings)],
     ok,
   };
 }
@@ -453,6 +532,10 @@ export function formatSummary(r: CheckReport): string {
   if (r.openQuestions.warnings.length) {
     lines.push(`open-question warnings:`);
     for (const w of r.openQuestions.warnings) lines.push(`  ${w}`);
+  }
+  if (r.warnings.length) {
+    lines.push(`warnings (${r.warnings.length}, not blocking):`);
+    for (const w of r.warnings) lines.push(`  ${w}`);
   }
   if (r.newFailures.length) {
     lines.push(

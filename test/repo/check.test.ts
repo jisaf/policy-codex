@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { join } from "node:path";
+import { createEngine } from "../../src/engine/engine";
 import {
-  buildCheckReport, checkOpenQuestions, diffAgainstBase, loadLedgerFromDisk, runCheck,
+  buildCheckReport, checkOpenQuestions, diffAgainstBase, inputWarnings, loadLedgerFromDisk,
+  runCheck,
 } from "../../src/tools/check";
 
 const ROOT = join(import.meta.dirname, "..", "..");
@@ -37,7 +39,7 @@ describe("npm run check", () => {
     expect(Object.keys(parsed).sort()).toEqual([
       "addedItems", "base", "blockingItemErrors", "cases", "changedFiles",
       "changedItems", "impact", "items", "knownFailures", "newFailures",
-      "ok", "openQuestions", "outcomesAffected", "ruleTests",
+      "ok", "openQuestions", "outcomesAffected", "ruleTests", "warnings",
     ]);
     expect(Object.keys(parsed.ruleTests).sort()).toEqual([
       "failing", "failingIds", "failures", "passing", "total",
@@ -146,5 +148,31 @@ describe("npm run check", () => {
       `${item.id} ${item.identifier}: open names OQ-99999, which open-questions.md does not have`,
     ]);
     expect(warned.ok).toBe(true);
+  });
+});
+
+describe("check warnings about test inputs", () => {
+  const ledger = loadLedgerFromDisk(ROOT, "co");
+  const engine = createEngine(ledger.items, ledger.meta);
+  const warnings = inputWarnings(engine, ledger);
+
+  it("reports a parameter stated as a person fact instead of ignoring it silently", () => {
+    expect(warnings).toContain(
+      "CO-642-T1: p1.ssi_federal_benefit_rate_individual is a parameter, so a value stated " +
+        "for a person is ignored (state an override under `parameters:`)",
+    );
+  });
+
+  it("reports a person named only in a relationship triple, and an identifier no item has", () => {
+    expect(warnings.some((w) =>
+      w.startsWith("CO-305-T1: p2.relationships is named in a relationship triple"))).toBe(true);
+    expect(warnings).toContain(
+      "CO-01: p1.has_domestic_violence_waiver no item has this identifier, so it is ignored",
+    );
+  });
+
+  it("reports a versioned parameter with no version on the volume's default date", () => {
+    expect(warnings.some((w) =>
+      w.includes("leap_income_limit_monthly: no version in force on default_as_of"))).toBe(true);
   });
 });

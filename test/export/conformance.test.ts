@@ -132,7 +132,7 @@ describe("the codex-self adapter, called in-process", () => {
     let checked = 0;
     let failed = 0;
     for (const c of sample) {
-      const values = evaluateCase(c);
+      const values = evaluateCase(c, "mwr");
       for (const e of c.expect) {
         const v = values.find(
           (x) => x.person === e.person && x.identifier === e.identifier && x.month === e.month,
@@ -154,7 +154,7 @@ describe("the codex-self adapter, called in-process", () => {
         { person: "p1", identifier: "nonexistent_identifier", month: null, value: true },
       ],
     };
-    const values = evaluateCase(withBogus);
+    const values = evaluateCase(withBogus, "mwr");
     // The bogus identifier throws inside evaluateCase and is omitted, not
     // reported as `value: null`.
     expect(values.some((v) => v.identifier === "nonexistent_identifier")).toBe(false);

@@ -2,6 +2,8 @@
 
 Generated from `volumes/mwr/`. One line per item. `@assembly` items are implemented in the fact-assembly layer; `@engine` items in the determination engine. Types and scopes are those of the codex. `unknown` propagates: any derivation whose inputs are unknown is unknown unless an `otherwise` supplies a default, and an unknown outcome is reported as *cannot determine* with the list of unknown supplied facts.
 
+Each derivation is given twice: in pattern English, and as the expression tree the ledger stores, which is the form to generate code from. Every operator in the tree is defined in `docs/operators.md` (arguments, unknown propagation, empty groups, numeric and date rules). The same items, trees and parameter versions are available as JSON (`npm run export` writes `conformance/<volume>/ledger.json`), and the conformance suite is `npm run conformance` (`docs/conformance.md`).
+
 ## Supplied facts (the interface the fact-assembly layer must deliver)
 
 | Identifier | Type | Scope | Program | Consumed by |
@@ -112,6 +114,10 @@ Uses: `date_of_birth`, `determination_date`.
 the number of whole years between Date of Birth and the Determination Date
 ```
 
+```json
+["years_between","date_of_birth",["det_date"]]
+```
+
 Examples: 4, all passing.
 
 ### WR-004 Age at month `@assembly`
@@ -125,6 +131,10 @@ Uses: `date_of_birth`.
 
 ```
 the number of whole years between Date of Birth and the first day of the month
+```
+
+```json
+["years_between","date_of_birth",["first_day",["month"]]]
 ```
 
 Examples: 2, all passing.
@@ -142,6 +152,10 @@ all of the following are true:
   - Age is less than Medicaid community engagement age ceiling (65)
 ```
 
+```json
+["all",[">=","age","medicaid_ce_min_age"],["<","age","medicaid_ce_max_age_exclusive"]]
+```
+
 Examples: 4, all passing.
 
 ### WR-201 Medicaid: is a dependent child `@assembly`
@@ -155,6 +169,10 @@ Uses: `age`, `medicaid_dependent_child_max_age`, `relies_on_another_for_care`.
 all of the following are true:
   - Age is at most Medicaid dependent child maximum age (13)
   - Relies on another individual for care
+```
+
+```json
+["all",["<=","age","medicaid_dependent_child_max_age"],"relies_on_another_for_care"]
 ```
 
 Examples: 3, all passing.
@@ -172,6 +190,10 @@ any of the following is true:
   - Is a disabled individual under the ADA
 ```
 
+```json
+["any","medicaid_is_dependent_child","is_disabled_individual_ada"]
+```
+
 Examples: 3, all passing.
 
 ### WR-203 Medicaid: is a parent, guardian, or caretaker relative of a dependent `@assembly`
@@ -184,6 +206,10 @@ Uses: `medicaid_is_qualifying_dependent`, `relationships`.
 ```
 there is a person of whom this person is a parent, guardian, or caretaker relative such that
   that person's Medicaid: is a dependent child or disabled individual
+```
+
+```json
+["exists_related",["parent","guardian","caretaker relative"],["of",["P"],"medicaid_is_qualifying_dependent"]]
 ```
 
 Examples: 3, all passing.
@@ -207,6 +233,10 @@ there is a person in Persons cared for such that
       - Care hours by person for the month containing the Determination Date, for that person is at least Caregiver minimum hours, non-resident non-relative (80)
 ```
 
+```json
+["exists","persons_cared_for",["all",["of",["P"],"medicaid_is_qualifying_dependent"],["any",["in_group",["P"],"lives_with"],["rel",["parent","guardian","caretaker relative","spouse","relative"],["P"]],[">=",["lookup",["at","care_hours_by_person",["det_month"]],["P"]],"caregiver_min_hours_nonresident_nonrelative"]]]]
+```
+
 Examples: 4, all passing.
 
 ### WR-205 Medicaid: is in stable recovery `@assembly`
@@ -218,6 +248,10 @@ Uses: `determination_date`, `recovery_start_date`, `stable_recovery_years`.
 
 ```
 (the number of whole years between Recovery start date and the Determination Date) is at least Stable recovery years (5), otherwise no
+```
+
+```json
+["otherwise",[">=",["years_between","recovery_start_date",["det_date"]],"stable_recovery_years"],false]
 ```
 
 Examples: 3, all passing.
@@ -242,6 +276,10 @@ all of the following are true:
     - Has a serious or complex medical condition
 ```
 
+```json
+["all","condition_impairs_ce_compliance",["any","is_blind_or_disabled_ssa",["all","has_substance_use_disorder",["not","medicaid_in_stable_recovery"]],"has_disabling_mental_disorder","has_adl_impairing_disability","has_serious_or_complex_medical_condition"]]
+```
+
 Examples: 5, all passing.
 
 ### WR-207 Medicaid: was an inmate within the lookback `@engine`
@@ -256,6 +294,10 @@ Uses: `determination_date`, `inmate_lookback_months`, `was_inmate_in_month`.
 ```
 in at least one of the Inmate lookback months (3) consecutive months ending with the month before the month containing the Determination Date:
   Was an inmate of a public institution in month for the month
+```
+
+```json
+["some_month",["months_ending","inmate_lookback_months",["month_before",["det_month"]]],["at","was_inmate_in_month",["month"]]]
 ```
 
 Examples: 3, all passing.
@@ -275,6 +317,10 @@ any of the following is true:
     - SNAP: is subject to a SNAP work requirement for the month containing the Determination Date
 ```
 
+```json
+["any",["at","is_complying_with_tanf_work_requirements",["det_month"]],["all",["at","is_member_of_snap_household",["det_month"]],["at","snap_is_subject_to_work_requirement",["det_month"]]]]
+```
+
 Examples: 4, all passing.
 
 ### WR-209 Medicaid: is pregnant or postpartum `@engine`
@@ -290,6 +336,10 @@ any of the following is true:
   - Is entitled to postpartum medical assistance
 ```
 
+```json
+["any","is_pregnant","is_entitled_to_postpartum_assistance"]
+```
+
 Examples: 2, all passing.
 
 ### WR-210 Medicaid: is excluded as an Indian `@assembly`
@@ -301,6 +351,10 @@ Uses: `indian_status`.
 
 ```
 Indian status is one of: Indian, Urban Indian, California Indian, IHS-eligible only
+```
+
+```json
+["in","indian_status",["Indian","Urban Indian","California Indian","IHS-eligible only"]]
 ```
 
 Examples: 2, all passing.
@@ -326,6 +380,10 @@ any of the following is true:
   - Medicaid: is pregnant or postpartum
 ```
 
+```json
+["any","is_former_foster_care_youth_group","medicaid_is_excluded_as_indian","medicaid_is_parent_or_caretaker_of_dependent","medicaid_is_family_caregiver_of_dependent","is_veteran_total_disability","medicaid_is_medically_frail","medicaid_is_excluded_by_snap_or_tanf",["at","participates_in_sud_treatment_program",["det_month"]],"medicaid_was_recent_inmate","medicaid_is_pregnant_or_postpartum"]
+```
+
 Examples: 3, all passing.
 
 ### WR-212 Medicaid: is an applicable individual `@engine`
@@ -348,6 +406,10 @@ all of the following are true:
       - it is not the case that Is otherwise eligible under the State plan
 ```
 
+```json
+["all",["not","medicaid_is_specified_excluded_individual"],["any","is_adult_group_eligible_or_enrolled",["all","is_equivalent_waiver_eligible_or_enrolled","medicaid_in_ce_age_range",["not","is_pregnant"],["not","is_medicare_entitled_or_enrolled"],["not","is_otherwise_eligible_under_state_plan"]]]]
+```
+
 Examples: 4, all passing.
 
 ### WR-213 Medicaid: community engagement income threshold `@engine`
@@ -359,6 +421,10 @@ Uses: `federal_minimum_wage`, `medicaid_ce_required_hours`.
 
 ```
 Federal minimum wage (7.25) times Medicaid community engagement required hours per month (80)
+```
+
+```json
+["*","federal_minimum_wage","medicaid_ce_required_hours"]
 ```
 
 Examples: 1, all passing.
@@ -376,6 +442,10 @@ if Is enrolled at least half-time in an educational program
 otherwise Educational program hours, otherwise 0
 ```
 
+```json
+["case",["is_enrolled_half_time_education",0],["else",["otherwise","education_hours",0]]]
+```
+
 Examples: 2, all passing.
 
 ### WR-215 Medicaid: total qualifying hours `@assembly`
@@ -387,6 +457,10 @@ Uses: `community_service_hours`, `hours_worked`, `medicaid_countable_education_h
 
 ```
 (Hours worked, otherwise 0) plus (Community service hours, otherwise 0) plus (Work program hours, otherwise 0) plus Medicaid: countable educational program hours
+```
+
+```json
+["+",["otherwise","hours_worked",0],["otherwise","community_service_hours",0],["otherwise","work_program_hours",0],"medicaid_countable_education_hours"]
 ```
 
 Examples: 2, all passing.
@@ -402,6 +476,10 @@ Uses: `medicaid_ce_required_hours`, `medicaid_total_qualifying_hours`.
 Medicaid: total qualifying hours is at least Medicaid community engagement required hours per month (80)
 ```
 
+```json
+[">=","medicaid_total_qualifying_hours","medicaid_ce_required_hours"]
+```
+
 Examples: 2, all passing.
 
 ### WR-217 Medicaid: meets the income condition `@engine`
@@ -413,6 +491,10 @@ Uses: `medicaid_ce_income_threshold`, `monthly_income`.
 
 ```
 Monthly income is at least Medicaid: community engagement income threshold
+```
+
+```json
+[">=","monthly_income","medicaid_ce_income_threshold"]
 ```
 
 Examples: 2, all passing.
@@ -428,6 +510,10 @@ Uses: `medicaid_seasonal_average_months`, `monthly_income`.
 Monthly income averaged over the Medicaid seasonal income averaging months (6) consecutive months ending with the month before the month
 ```
 
+```json
+["avg","monthly_income",["months_ending","medicaid_seasonal_average_months",["month_before",["month"]]]]
+```
+
 Examples: 1, all passing.
 
 ### WR-219 Medicaid: meets the seasonal income condition `@engine`
@@ -441,6 +527,10 @@ Uses: `is_seasonal_worker`, `medicaid_ce_income_threshold`, `medicaid_six_month_
 all of the following are true:
   - Is a seasonal worker
   - Medicaid: six-month average income is at least Medicaid: community engagement income threshold
+```
+
+```json
+["all","is_seasonal_worker",[">=","medicaid_six_month_average_income","medicaid_ce_income_threshold"]]
 ```
 
 Examples: 2, all passing.
@@ -460,6 +550,10 @@ any of the following is true:
   - Medicaid: meets the seasonal income condition
 ```
 
+```json
+["any","medicaid_meets_hours_condition","is_enrolled_half_time_education","medicaid_meets_income_condition","medicaid_meets_seasonal_income_condition"]
+```
+
 Examples: 3, all passing.
 
 ### WR-221 Medicaid: county unemployment meets the hardship threshold `@assembly`
@@ -471,6 +565,10 @@ Uses: `county_unemployment_rate`, `hardship_national_rate_multiplier`, `hardship
 
 ```
 County unemployment rate is at least (the lesser of Hardship unemployment rate cap (0.08) and Hardship national rate multiplier (1.5) times National unemployment rate)
+```
+
+```json
+[">=","county_unemployment_rate",["min","hardship_unemployment_rate_cap",["*","hardship_national_rate_multiplier","national_unemployment_rate"]]]
 ```
 
 Examples: 4, all passing.
@@ -492,6 +590,10 @@ all of the following are true:
     - Traveled outside the community for extended care in month
 ```
 
+```json
+["all","state_elects_short_term_hardship",["any","received_inpatient_or_facility_services","county_has_declared_disaster","medicaid_county_unemployment_meets_hardship_threshold","traveled_for_extended_care"]]
+```
+
 Examples: 3, all passing.
 
 ### WR-223 Medicaid: community engagement satisfied for month `@engine`
@@ -507,6 +609,10 @@ any of the following is true:
   - Medicaid: experiences a short-term hardship in month
 ```
 
+```json
+["any","medicaid_demonstrates_ce","medicaid_short_term_hardship_in_month"]
+```
+
 Examples: 2, all passing.
 
 ### WR-224 Medicaid: application lookback months `@engine`
@@ -518,6 +624,10 @@ Uses: `determination_date`, `medicaid_application_lookback_months`.
 
 ```
 the Medicaid application lookback months (1) consecutive months ending with the month before the month containing the Determination Date
+```
+
+```json
+["months_ending","medicaid_application_lookback_months",["month_before",["det_month"]]]
 ```
 
 Examples: 2, all passing.
@@ -532,6 +642,10 @@ Uses: `medicaid_application_lookback_months_list`, `medicaid_ce_satisfied_for_mo
 ```
 in each of Medicaid: application lookback months:
   Medicaid: community engagement satisfied for month for the month
+```
+
+```json
+["each","medicaid_application_lookback_months_list",["at","medicaid_ce_satisfied_for_month",["month"]]]
 ```
 
 Examples: 3, all passing.
@@ -553,6 +667,10 @@ else if Medicaid: satisfies community engagement at application
 otherwise not met
 ```
 
+```json
+["case",[["<",["det_date"],"medicaid_ce_implementation_date"],"not yet in effect"],[["not","medicaid_is_applicable_individual"],"not subject"],["medicaid_satisfies_ce_at_application","met"],["else","not met"]]
+```
+
 Examples: 5, all passing.
 
 ### WR-227 Medicaid: renewal review months `@engine`
@@ -564,6 +682,10 @@ Uses: `determination_date`, `most_recent_determination_date`.
 
 ```
 the months from the month after the month containing Most recent eligibility determination date through the month before the month containing the Determination Date
+```
+
+```json
+["months_from_to",["month_after",["month_of","most_recent_determination_date"]],["month_before",["det_month"]]]
 ```
 
 Examples: 1, all passing.
@@ -579,6 +701,10 @@ Uses: `medicaid_ce_satisfied_for_month`, `medicaid_renewal_review_months`.
 the number of months in Medicaid: renewal review months for which Medicaid: community engagement satisfied for month for the month
 ```
 
+```json
+["count_months","medicaid_renewal_review_months",["at","medicaid_ce_satisfied_for_month",["month"]]]
+```
+
 Examples: 1, all passing.
 
 ### WR-229 Medicaid: satisfies community engagement at renewal `@engine`
@@ -590,6 +716,10 @@ Uses: `medicaid_months_demonstrated_since_last_determination`, `medicaid_renewal
 
 ```
 Medicaid: months demonstrated since last determination is at least Medicaid renewal required months (1)
+```
+
+```json
+[">=","medicaid_months_demonstrated_since_last_determination","medicaid_renewal_required_months"]
 ```
 
 Examples: 2, all passing.
@@ -611,6 +741,10 @@ else if Medicaid: satisfies community engagement at renewal
 otherwise not met
 ```
 
+```json
+["case",[["<",["det_date"],"medicaid_ce_implementation_date"],"not yet in effect"],[["not","medicaid_is_applicable_individual"],"not subject"],["medicaid_satisfies_ce_at_renewal","met"],["else","not met"]]
+```
+
 Examples: 2, all passing.
 
 ### WR-300 SNAP: is in the ABAWD age range `@engine`
@@ -624,6 +758,10 @@ Uses: `age_at_month`, `snap_abawd_max_age`, `snap_abawd_min_age`.
 all of the following are true:
   - Age at month is at least SNAP ABAWD minimum age (18)
   - Age at month is at most SNAP ABAWD maximum age (64)
+```
+
+```json
+["all",[">=","age_at_month","snap_abawd_min_age"],["<=","age_at_month","snap_abawd_max_age"]]
 ```
 
 Examples: 4, all passing.
@@ -640,6 +778,10 @@ any of the following is true:
   - Receives disability benefits
   - Agency finds the person obviously unfit for employment
   - Has a medical statement of unfitness for employment
+```
+
+```json
+["any","receives_disability_benefits","agency_finds_obviously_unfit","has_medical_statement_of_unfitness"]
 ```
 
 Examples: 2, all passing.
@@ -660,6 +802,10 @@ there is a person in SNAP household members such that
       - that person is in Persons cared for
 ```
 
+```json
+["exists","snap_household_members",["all",["<",["of",["P"],"age_at_month"],"snap_dependent_child_age_limit"],["any",["rel",["parent"],["P"]],["in_group",["P"],"persons_cared_for"]]]]
+```
+
 Examples: 3, all passing.
 
 ### WR-303 SNAP: has responsibility for a dependent child under 6 `@assembly`
@@ -678,6 +824,10 @@ there is a person in SNAP household members such that
       - that person is in Persons cared for
 ```
 
+```json
+["exists","snap_household_members",["all",["<",["of",["P"],"age_at_month"],"snap_general_exemption_child_age"],["any",["rel",["parent"],["P"]],["in_group",["P"],"persons_cared_for"]]]]
+```
+
 Examples: 2, all passing.
 
 ### WR-304 SNAP: weekly average hours worked `@assembly`
@@ -689,6 +839,10 @@ Uses: `hours_worked`.
 
 ```
 ((Hours worked, otherwise 0) times 12) divided by 52
+```
+
+```json
+["/",["*",["otherwise","hours_worked",0],12],52]
 ```
 
 Examples: 1, all passing.
@@ -704,6 +858,10 @@ Uses: `monthly_income`.
 (Monthly income times 12) divided by 52
 ```
 
+```json
+["/",["*","monthly_income",12],52]
+```
+
 Examples: 1, all passing.
 
 ### WR-306 SNAP: meets the employment exemption `@engine`
@@ -717,6 +875,10 @@ Uses: `federal_minimum_wage`, `snap_employment_exemption_weekly_hours`, `snap_we
 any of the following is true:
   - SNAP: weekly average hours worked is at least SNAP employment exemption weekly hours (30)
   - SNAP: weekly earnings is at least (Federal minimum wage (7.25) times SNAP employment exemption weekly hours (30))
+```
+
+```json
+["any",[">=","snap_weekly_average_hours_worked","snap_employment_exemption_weekly_hours"],[">=","snap_weekly_earnings",["*","federal_minimum_wage","snap_employment_exemption_weekly_hours"]]]
 ```
 
 Examples: 3, all passing.
@@ -745,6 +907,10 @@ any of the following is true:
       - Is enrolled at least half-time in an educational program
 ```
 
+```json
+["any","is_complying_with_tanf_work_requirements","receives_unemployment_compensation","snap_has_responsibility_for_child_under_6","has_responsibility_for_incapacitated_person","is_enrolled_half_time_education","participates_in_sud_treatment_program","snap_meets_employment_exemption",["all",[">=","age_at_month",16],["<=","age_at_month",17],["any",["not","is_head_of_household"],"is_enrolled_half_time_education"]]]
+```
+
 Examples: 3, all passing.
 
 ### WR-308 SNAP: is subject to general work registration `@engine`
@@ -762,6 +928,10 @@ all of the following are true:
   - it is not the case that SNAP: is exempt from general work registration
 ```
 
+```json
+["all",[">=","age_at_month","snap_work_registration_min_age"],["<=","age_at_month","snap_work_registration_max_age"],["not","snap_is_unfit_for_employment"],["not","snap_is_exempt_from_work_registration"]]
+```
+
 Examples: 2, all passing.
 
 ### WR-309 SNAP: is exempt as an Indian `@assembly`
@@ -773,6 +943,10 @@ Uses: `indian_status`.
 
 ```
 Indian status is one of: Indian, Urban Indian, California Indian
+```
+
+```json
+["in","indian_status",["Indian","Urban Indian","California Indian"]]
 ```
 
 Examples: 2, all passing.
@@ -794,6 +968,10 @@ any of the following is true:
   - SNAP: is exempt as an Indian
 ```
 
+```json
+["any",["not","snap_in_abawd_age_range"],"snap_is_unfit_for_employment","snap_has_responsibility_for_child_under_14","snap_is_exempt_from_work_registration","is_pregnant","snap_is_exempt_as_indian"]
+```
+
 Examples: 2, all passing.
 
 ### WR-311 SNAP: hours worked including good cause `@assembly`
@@ -805,6 +983,10 @@ Uses: `hours_missed_for_good_cause`, `hours_worked`.
 
 ```
 (Hours worked, otherwise 0) plus (Hours missed for good cause, otherwise 0)
+```
+
+```json
+["+",["otherwise","hours_worked",0],["otherwise","hours_missed_for_good_cause",0]]
 ```
 
 Examples: 1, all passing.
@@ -821,6 +1003,10 @@ any of the following is true:
   - SNAP: hours worked including good cause is at least SNAP required hours per month (80)
   - (Work program hours, otherwise 0) is at least SNAP required hours per month (80)
   - Participates in workfare
+```
+
+```json
+["any",[">=","snap_hours_worked_with_good_cause","snap_required_hours_per_month"],[">=",["otherwise","work_program_hours",0],"snap_required_hours_per_month"],"participates_in_workfare"]
 ```
 
 Examples: 3, all passing.
@@ -842,6 +1028,10 @@ all of the following are true:
   - it is not the case that Has a discretionary exemption in month
 ```
 
+```json
+["all","received_full_month_snap_benefits",["not","snap_benefits_prorated"],["not","snap_is_exempt_from_time_limit"],["not","covered_by_abawd_waiver"],["not","snap_fulfills_work_requirement"],["not","has_discretionary_exemption"]]
+```
+
 Examples: 3, all passing.
 
 ### WR-314 SNAP: time limit period months `@engine`
@@ -857,6 +1047,10 @@ Uses: `determination_date`, `snap_period_months`.
 the SNAP time limit period months (36) consecutive months ending with the month before the month containing the Determination Date
 ```
 
+```json
+["months_ending","snap_period_months",["month_before",["det_month"]]]
+```
+
 Examples: 1, all passing.
 
 ### WR-315 SNAP: countable months used `@engine`
@@ -870,6 +1064,10 @@ Uses: `snap_is_countable_month`, `snap_time_limit_period_months`.
 the number of months in SNAP: time limit period months for which SNAP: is a countable month for the month
 ```
 
+```json
+["count_months","snap_time_limit_period_months",["at","snap_is_countable_month",["month"]]]
+```
+
 Examples: 1, all passing.
 
 ### WR-316 SNAP: has exhausted the time limit `@engine`
@@ -881,6 +1079,10 @@ Uses: `snap_countable_month_limit`, `snap_countable_months_used`.
 
 ```
 SNAP: countable months used is at least SNAP countable month limit (3)
+```
+
+```json
+[">=","snap_countable_months_used","snap_countable_month_limit"]
 ```
 
 Examples: 2, all passing.
@@ -897,6 +1099,10 @@ any of the following is true:
   - Hours worked in the last 30 days is at least SNAP hours to regain eligibility (80)
   - Work program hours in the last 30 days is at least SNAP hours to regain eligibility (80)
   - Participated in workfare in the last 30 days
+```
+
+```json
+["any",[">=","hours_worked_last_30_days","snap_regain_hours"],[">=","work_program_hours_last_30_days","snap_regain_hours"],"participated_in_workfare_last_30_days"]
 ```
 
 Examples: 2, all passing.
@@ -920,6 +1126,10 @@ else if SNAP: regains eligibility
 otherwise limit exhausted
 ```
 
+```json
+["case",[["<",["det_date"],"snap_abawd_changes_effective_date"],"prior law applies"],[["at","snap_is_exempt_from_time_limit",["det_month"]],"not subject"],[["not","snap_has_exhausted_time_limit"],"within limit"],["snap_regains_eligibility","regained"],["else","limit exhausted"]]
+```
+
 Examples: 4, all passing.
 
 ### WR-319 SNAP: is subject to a SNAP work requirement `@engine`
@@ -933,6 +1143,10 @@ Uses: `snap_is_exempt_from_time_limit`, `snap_is_subject_to_work_registration`.
 any of the following is true:
   - SNAP: is subject to general work registration
   - it is not the case that SNAP: is exempt from the ABAWD time limit
+```
+
+```json
+["any","snap_is_subject_to_work_registration",["not","snap_is_exempt_from_time_limit"]]
 ```
 
 Examples: 2, all passing.

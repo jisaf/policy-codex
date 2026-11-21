@@ -1,17 +1,22 @@
-/* Feeds `conformance/suite.json` to an external adapter and diffs its answers
+/* Feeds a conformance suite to an external adapter and diffs its answers
  * against the codex's own. See docs/conformance.md for the adapter contract.
- * Run with `npm run conform -- --adapter "<command>" [--suite path]
- * [--out path] [--batch]`. */
+ * Run with
+ *   npm run conform -- --adapter "<command>" [--volume <id>] [--batch] [--build]
+ *   npm run conform -- --adapter "<command>" --suite <path> [--out <path>] [--batch]
+ * Without --suite it grades conformance/<volume>/suite.json for every volume
+ * in codex.json (or the ones --volume / CODEX_VOLUME name), writing
+ * conformance/<volume>/results.json; --build (re)builds each suite first. */
 import fs from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
-import { gradeCase, type AdapterValue, type ConformanceResults, type Suite, type SuiteCase } from "../src/export/conformance";
+import type { Suite } from "../src/export/conformance";
+import { conformanceDir, selectedVolumeIds, withoutVolumeArgs } from "../src/tools/volumes";
+import { formatResults, runConformance, writeSuite } from "../src/tools/conform";
 
-interface Args { adapter: string; suite: string; out: string; batch: boolean }
+interface Args { adapter: string; suite: string | null; out: string | null; batch: boolean; build: boolean }
 
 function parseArgs(argv: string[]): Args {
-  const args: { adapter?: string; suite: string; out: string; batch: boolean } = {
-    suite: "conformance/suite.json", out: "conformance/results.json", batch: false,
+  const args: Partial<Args> & { batch: boolean; build: boolean } = {
+    suite: null, out: null, batch: false, build: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -19,71 +24,43 @@ function parseArgs(argv: string[]): Args {
     else if (a === "--suite") args.suite = argv[++i];
     else if (a === "--out") args.out = argv[++i];
     else if (a === "--batch") args.batch = true;
+    else if (a === "--build") args.build = true;
     else throw new Error(`unknown argument "${a}"`);
   }
   if (!args.adapter) throw new Error("--adapter <command> is required");
+  if (args.out && !args.suite) throw new Error("--out needs --suite (each volume's results go beside its suite)");
   return args as Args;
 }
 
 const root = path.resolve(import.meta.dirname, "..");
-const args = parseArgs(process.argv.slice(2));
-const suite: Suite = JSON.parse(fs.readFileSync(path.resolve(root, args.suite), "utf8"));
+const args = parseArgs(withoutVolumeArgs(process.argv.slice(2)));
 
-/** Runs the adapter command once, writing `input` as JSON on its stdin and
- *  parsing its stdout as JSON. Throws with the adapter's stderr on a nonzero
- *  exit or unparsable output. */
-function runAdapter(command: string, input: unknown): unknown {
-  const res = spawnSync(command, [], {
-    shell: true, input: JSON.stringify(input), encoding: "utf8", maxBuffer: 64 * 1024 * 1024,
-  });
-  if (res.error) throw res.error;
-  if (res.status !== 0) {
-    throw new Error(`adapter "${command}" exited ${res.status}: ${(res.stderr || "").slice(0, 2000)}`);
-  }
-  const out = res.stdout.trim();
-  try {
-    return JSON.parse(out);
-  } catch {
-    throw new Error(`adapter "${command}" did not print JSON on stdout: ${out.slice(0, 500)}`);
-  }
-}
-
-let passed = 0;
-let failed = 0;
-let unimplemented = 0;
-const failures: ConformanceResults["failures"] = [];
-
-function grade(c: SuiteCase, values: AdapterValue[]): void {
-  const r = gradeCase(c, values);
-  passed += r.passed;
-  failed += r.failed;
-  unimplemented += r.unimplemented;
-  failures.push(...r.failures);
-}
-
-if (args.batch) {
-  const out = runAdapter(args.adapter, { cases: suite.cases }) as {
-    results: Array<{ id: string; values: AdapterValue[] }>;
-  };
-  const byId = new Map((out.results || []).map((r) => [r.id, r.values]));
-  for (const c of suite.cases) grade(c, byId.get(c.id) || []);
+const runs: Array<{ suite: Suite; out: string }> = [];
+if (args.suite) {
+  const suite: Suite = JSON.parse(fs.readFileSync(path.resolve(root, args.suite), "utf8"));
+  runs.push({ suite, out: path.resolve(root, args.out ?? path.join(path.dirname(args.suite), "results.json")) });
 } else {
-  for (const c of suite.cases) {
-    const out = runAdapter(args.adapter, { case: c }) as { values: AdapterValue[] };
-    grade(c, out.values || []);
+  for (const volume of selectedVolumeIds(root)) {
+    const file = path.join(conformanceDir(root, volume), "suite.json");
+    let suite: Suite;
+    if (args.build) suite = writeSuite(root, volume).suite;
+    else if (fs.existsSync(file)) suite = JSON.parse(fs.readFileSync(file, "utf8"));
+    else {
+      throw new Error(
+        `no suite for volume ${volume} at ${path.relative(root, file)}: ` +
+          "run `npm run conformance` first, or pass --build",
+      );
+    }
+    runs.push({ suite, out: path.join(conformanceDir(root, volume), "results.json") });
   }
 }
 
-const summary = { cases: suite.cases.length, checked: passed + failed, passed, failed, unimplemented };
-const results: ConformanceResults = { codex: suite.codex, adapter: args.adapter, summary, failures };
-
-const outPath = path.resolve(root, args.out);
-fs.mkdirSync(path.dirname(outPath), { recursive: true });
-fs.writeFileSync(outPath, JSON.stringify(results, null, 2));
-
-console.log(
-  `conform (${args.adapter}) on codex@${suite.codex.sha}: ${summary.cases} cases, ` +
-    `${summary.checked} checked, ${summary.passed} passed, ${summary.failed} failed, ` +
-    `${summary.unimplemented} unimplemented`,
-);
-if (summary.failed > 0) process.exit(1);
+let failed = 0;
+for (const { suite, out } of runs) {
+  const results = runConformance(suite, args.adapter, args.batch, root);
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, JSON.stringify(results, null, 2));
+  console.log(formatResults(results));
+  failed += results.summary.failed;
+}
+if (failed > 0) process.exit(1);

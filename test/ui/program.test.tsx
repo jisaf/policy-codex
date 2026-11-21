@@ -61,7 +61,7 @@ function fakeSource(results: ConformanceResults): LedgerSource {
     ref: "main",
     readText: (p) => p === "conformance/results.json"
       ? Promise.resolve(JSON.stringify(results))
-      : Promise.reject(new Error(`unexpected read: ${p}`)),
+      : Promise.reject(new Error(`not found: ${p}`)),
     head: () => Promise.resolve(null),
   };
 }

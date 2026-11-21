@@ -15,3 +15,6 @@ playwright-report/
 # across runs (each carries a fresh `generated` timestamp)
 conformance/suite.json
 conformance/results.json
+conformance/*/suite.json
+conformance/*/results.json
+conformance/*/ledger.json

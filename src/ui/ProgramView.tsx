@@ -269,17 +269,18 @@ function Health({ engine, programId }: { engine: Engine; programId: string }) {
 }
 
 /** "Conformance: <adapter> on codex@<sha>: N passed, N failed, N
- *  unimplemented", read from `conformance/results.json` at whatever ref the
- *  route shows. Renders nothing when the ref has never had a conformance run
- *  committed (loadConformanceResults resolves null on a missing file). */
-function ConformanceSummary({ source }: { source: LedgerSource }) {
+ *  unimplemented", read from `conformance/<volume>/results.json` (or the
+ *  single-volume `conformance/results.json`) at whatever ref the route shows.
+ *  Renders nothing when the ref has never had a conformance run committed
+ *  (loadConformanceResults resolves null on a missing file). */
+function ConformanceSummary({ source, volumeId }: { source: LedgerSource; volumeId?: string }) {
   const results = useSignal<ConformanceResults | null>(null);
   useLayoutEffect(() => {
     let live = true;
     results.value = null;
-    loadConformanceResults(source).then((r) => { if (live) results.value = r; });
+    loadConformanceResults(source, volumeId).then((r) => { if (live) results.value = r; });
     return () => { live = false; };
-  }, [source]);
+  }, [source, volumeId]);
   if (!results.value) return null;
   const r = results.value;
   return (
@@ -306,7 +307,7 @@ function ProgramPage(
         <span class="spacer" />
       </div>
       <ProgramSwitcher programs={programs} current={program.id} route={r} />
-      <ConformanceSummary source={source} />
+      <ConformanceSummary source={source} volumeId={volumeSig.value?.volumeId} />
 
       <h3>Outcomes</h3>
       <GroupFilter engine={engine} route={r} />
