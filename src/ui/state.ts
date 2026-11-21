@@ -8,8 +8,10 @@ import { idbCache } from "../ledger/cache";
 import { loadManifest, loadVolume, type LoadedVolume } from "../ledger/load";
 import type { Manifest } from "../ledger/manifest";
 import { sourceTitleMap, unverifiedSourceIds } from "../ledger/markdown";
-import { defaultRef, preferredVolume, PREFERRED_VOLUME } from "../ledger/mode";
-import { pickSource, probeLocal, type LedgerSource, type LocalInfo } from "../ledger/source";
+import { defaultRef, preferredVolume, PREFERRED_VOLUME, refLabel } from "../ledger/mode";
+import {
+  isLocalRef, pickSource, probeLocal, type LedgerSource, type LocalInfo,
+} from "../ledger/source";
 import { applyChangeSet } from "../changes/apply";
 import {
   clearEntries, discardEntry, discardFileEntry, loadChangeSet, putEntry, putFileEntry,
@@ -298,7 +300,10 @@ async function openRoute(r: Route): Promise<void> {
     return;
   }
 
-  statusSig.value = { kind: "loading", message: `Loading ${r.volume} at ${wantRef}…` };
+  statusSig.value = {
+    kind: "loading",
+    message: `Loading ${r.volume} from ${refLabel(wantRef, localInfoSig.value)}…`,
+  };
   try {
     const token = credentials.get("github");
     let gitRef = wantRef;
@@ -335,7 +340,10 @@ async function openRoute(r: Route): Promise<void> {
         return;
       }
     }
-    const vol = await loadVolume(src, manifest, r.volume, { cache: idbCache() });
+    // The working tree is served from this machine: many reads at once.
+    const vol = await loadVolume(src, manifest, r.volume, {
+      cache: idbCache(), concurrency: isLocalRef(gitRef) ? 64 : 12,
+    });
     // Keep the route ref (which may be `pr/12`) as the volume's ref so the
     // change-set key and the header badge match the address bar.
     const withRouteRef: LoadedVolume = { ...vol, ref: wantRef };
