@@ -837,6 +837,9 @@
   file: documents/D-143.md
   date: 2026-11-21
 # D-144: the host cdhs.nxt-dev.colorado.gov appears to be CDHS's next-generation site (cdhs.colorado.gov refuses this session).
+# CDHS fix round (2026-11-21, S-7): https://cdhs.colorado.gov/leap was tried once and refused (HTTP 403), so the production page could not
+# replace this copy. Its figures agree with the CCCAP 85% SMI column (D-87) scaled to 60%, and the LEAP rule effective 2026-11-01 (D-173)
+# names the same April 2026 HHS state median income release; see OQ-532.
 - id: D-144
   title: "CDHS — Colorado Low-income Energy Assistance Program (LEAP) web page: income limits for the 2026-2027 season"
   kind: guidance
@@ -844,3 +847,25 @@
   url: https://cdhs.nxt-dev.colorado.gov/leap
   file: documents/D-144.md
   date: 2026-11-21
+- id: D-171
+  title: "Senate Bill 26-181 (Session Laws 2026, ch. 313): Colorado Works modifications, including no cost-of-living adjustment to basic cash assistance for State fiscal years 2026-27 and 2027-28"
+  kind: statute
+  citation: "Session Laws of Colorado 2026, ch. 313 (SB 26-181), amending C.R.S. 26-2-709(1)(b), approved June 2, 2026"
+  url: https://leg.colorado.gov/laws/session-laws/SB26-181/313/download
+  file: documents/D-171.md
+  date: 2026-06-02
+- id: D-172
+  title: "9 CCR 2503-6: Secretary of State rule-version page (current version effective July 1, 2025) and eDocket 2026-00094 (SFY 2026-27 grant-standard rulemaking terminated as moot after SB 26-181)"
+  kind: regulation
+  citation: "Colorado Secretary of State, Code of Colorado Regulations, 9 CCR 2503-6 rule information; eDocket tracking number 2026-00094"
+  url: https://www.sos.state.co.us/CCR/eDocketDetails.do?trackingNum=2026-00094
+  file: documents/D-172.md
+  date: 2026-11-21
+# D-173: the adopted text of a rule the SOS rule page did not yet list as current on 2026-11-21; its effective date is the eDocket record's.
+- id: D-173
+  title: "9 CCR 2503-7 (LEAP): rules adopted September 4, 2026, effective November 1, 2026 (eDocket 2026-00287), including the 60% state median income standard for federal fiscal year 2026"
+  kind: regulation
+  citation: "9 CCR 2503-7 3.752.211.J, 3.752.22.D, 3.755.21.I-J, 3.756.12.B (adopted rules, eDocket 2026-00287, effective 2026-11-01)"
+  url: https://www.sos.state.co.us/CCR/Upload/AGORequest/AdoptedRules02026-00287.docx
+  file: documents/D-173.md
+  date: 2026-11-01
