@@ -1,0 +1,13 @@
+id: CO-2703
+name: Parole end date
+identifier: parole_end_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "For a person paroled into the United States under INA 212(d)(5), the last day of the current parole period, as the parole document (Form I-94) or SAVE states it."
+precision: "Read only for an Afghan humanitarian parolee (immigration_status afghan_humanitarian_parolee), whose five-year-rule exemption runs through the later of March 31, 2023 and the end of parole (10 CCR 2505-10 § 8.100.3.G.1.g.viii)."
+supplied_by: "Form I-94 or the SAVE response."
+sources: [S1905]
+tags: [immigration]
+rationale: "OQ-44 fix: § 8.100.3.G.1.g.viii (S1905), which the volume did not model, exempts an Afghan humanitarian parolee from the five-year waiting period \"until March 31, 2023, or through the termination of their parole period, whichever is later\"; no fact stated the end of parole."

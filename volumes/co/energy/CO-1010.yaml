@@ -5,15 +5,19 @@ kind: derived
 type: yes/no
 scope: person
 program: LEAP
-meaning: Whether this person is a U.S. citizen, national, or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17, so that this person counts as a member of a LEAP household rather than being excluded under 3.753.17.
-precision: " CDHS review S-3: a Compact of Free Association migrant is not in 3.753.16's list A-L (S493) and is not a qualified alien for LEAP, so is not a household member (the income still counts, 3.753.18)."
-derived: ["in", citizenship_status, [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, other_qualified_non_citizen]]
-sources: [S493, S494]
+meaning: "Whether this person is a U.S. citizen, national or qualified alien under 9 CCR 2503-7 3.753.16-3.753.17, so that this person counts as a member of a LEAP household rather than being excluded: a lawful permanent resident; a parolee for at least one year; a conditional entrant; a refugee; an asylee; a person whose deportation is withheld; a Cuban or Haitian entrant; a trafficking victim certified by HHS; an Iraqi or Afghan granted Special Immigrant Visa status; a battered non-citizen; an Amerasian immigrant (a lawful permanent resident); or an American Indian born in Canada or tribal member (3.753.16.A-L)."
+precision: "Reads immigration_status (CO-002). A Compact of Free Association migrant is not in 3.753.16's list A-L (S1909) and is not a qualified alien for LEAP, so is not a household member (the income still counts, 3.753.18) (CDHS review S-3). An Afghan or Ukrainian humanitarian parolee is read as paroled for at least one year (B) (OQ-550). An applicant for a status, a non-citizen with no status verification and a temporary visitor, student or worker are not eligible (3.753.17); none of the lawfully present categories of other programs is on LEAP's list. LIHEAP is a Federal public benefit (63 Fed. Reg. 41658, S1912), for which 8 U.S.C. 1611 allows only qualified aliens."
+derived: [any, is_us_citizen_or_national, [in, immigration_status, [lawful_permanent_resident, parolee_one_year_or_more, afghan_humanitarian_parolee, ukrainian_humanitarian_parolee, conditional_entrant, refugee, asylee, deportation_withheld, cuban_haitian_entrant, trafficking_victim, iraqi_afghan_special_immigrant, battered_non_citizen]], [otherwise, is_american_indian_born_in_canada_or_tribal_member, false]]
+sources: [S1909, S494, S1911, S1912]
+open: [OQ-550]
 implemented: engine
 tags: [immigration, legal]
-rationale: "The same citizenship/qualified-alien status list leap_has_countable_household_member (CO-1005) already tested for the whole household, restated per person so leap_household_members (CO-1000) can filter 3.753.17's excluded individual out of household membership while leap_household_members_for_income (CO-1009) still counts his income, per the review (docs/reviews/cccap-leap-phase-6.md, C-2, blocking): '3.753.17 ... is stated in three items' meaning and implemented in none.' leap_household_members (CO-1000) filters by it; leap_household_size (CO-1001) counts the filtered group."
+rationale: "The same citizenship/qualified-alien status list leap_has_countable_household_member (CO-1005) already tested for the whole household, restated per person so leap_household_members (CO-1000) can filter 3.753.17's excluded individual out of household membership while leap_household_members_for_income (CO-1009) still counts his income, per the review (docs/reviews/cccap-leap-phase-6.md, C-2, blocking): '3.753.17 ... is stated in three items' meaning and implemented in none.' leap_household_members (CO-1000) filters by it; leap_household_size (CO-1001) counts the filtered group.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170). LEAP's own list (3.753.16.A-L, current SOS text S1909) is now read option by option; it had accepted the lumped other_qualified_non_citizen and could not represent trafficking victims, special immigrants or the American Indian category."
 tests:
-  - {id: CO-1010-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
-  - {id: CO-1010-T2, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: true}
-  - {id: CO-1010-T3, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
-  - {id: CO-1010-T4, title: "S-3: a COFA migrant is not in 3.753.16", as_of: "2026-10-01", given: {citizenship_status: compact_of_free_association_migrant}, expect: false}
+  - {id: CO-1010-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: true}
+  - {id: CO-1010-T2, as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident}, expect: true}
+  - {id: CO-1010-T3, as_of: "2026-10-01", given: {immigration_status: undocumented}, expect: false}
+  - {id: CO-1010-T4, title: "S-3: a COFA migrant is not in 3.753.16", as_of: "2026-10-01", given: {immigration_status: compact_of_free_association_migrant}, expect: false}
+  - {id: CO-1010-T5, as_of: "2026-10-01", title: "Certified trafficking victim (3.753.16.H)", given: {immigration_status: trafficking_victim}, expect: true}
+  - {id: CO-1010-T6, as_of: "2026-10-01", title: "Temporary Protected Status is not on LEAP's list", given: {immigration_status: temporary_protected_status}, expect: false}
+  - {id: CO-1010-T7, as_of: "2026-10-01", title: "American Indian born in Canada (3.753.16.L)", given: {immigration_status: undocumented, is_american_indian_born_in_canada_or_tribal_member: true}, expect: true}

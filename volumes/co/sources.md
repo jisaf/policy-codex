@@ -12364,3 +12364,416 @@ Document: D-80
 >
 > E. All payments, including partial payments, shall have any cents dropped to the
 > nearest dollar, except in cases where SSI income reduces the grant.
+
+### S1900. Qualified alien: the eight categories of 8 U.S.C. 1641(b)
+
+Document: D-181
+
+8 U.S.C. 1641(b). https://www.law.cornell.edu/uscode/text/8/1641
+
+> (b) Qualified alienFor purposes of this chapter, the term “qualified alien” means an alien who, at the time the alien applies for, receives, or attempts to receive a Federal public benefit, is—
+>
+> (1)
+>
+> an alien who is lawfully admitted for permanent residence under the Immigration and Nationality Act [8 U.S.C. 1101 et seq.],
+>
+> (2)
+>
+> an alien who is granted asylum under section 208 of such Act [8 U.S.C. 1158],
+>
+> (3)
+>
+> a refugee who is admitted to the United States under section 207 of such Act [8 U.S.C. 1157],
+>
+> (4)
+>
+> an alien who is paroled into the United States under section 212(d)(5) of such Act [8 U.S.C. 1182(d)(5)] for a period of at least 1 year,
+>
+> (5)
+>
+> an alien whose deportation is being withheld under section 243(h) of such Act [8 U.S.C. 1253] (as in effect immediately before the effective date of section 307 of division C of Public Law 104–208) or section 241(b)(3) of such Act [8 U.S.C. 1231(b)(3)] (as amended by section 305(a) of division C of Public Law 104–208),
+>
+> (6)
+>
+> an alien who is granted conditional entry pursuant to section 203(a)(7) of such Act [8 U.S.C. 1153(a)(7)] as in effect prior to April 1, 1980,
+>
+> (7)
+>
+> an alien who is a Cuban and Haitian entrant (as defined in section 501(e) of the Refugee Education Assistance Act of 1980), or
+>
+> (8)
+>
+> an individual who lawfully resides in the United States in accordance with a Compact of Free Association referred to in section 1612(b)(2)(G) of this title.
+
+### S1901. Qualified alien: battered aliens and their children, and T nonimmigrants, 8 U.S.C. 1641(c); not while the batterer lives in the household
+
+Document: D-181
+
+8 U.S.C. 1641(c)(1)(A), (c)(4) and the paragraph following (c)(4). https://www.law.cornell.edu/uscode/text/8/1641
+
+> (c) Treatment of certain battered aliens as qualified aliensFor purposes of this chapter, the term “qualified alien” includes—
+>
+> (1) an alien who—
+>
+> (A)
+>
+> has been battered or subjected to extreme cruelty in the United States by a spouse or a parent, or by a member of the spouse or parent’s family residing in the same household as the alien and the spouse or parent consented to, or acquiesced in, such battery or cruelty, but only if (in the opinion of the agency providing such benefits) there is a substantial connection between such battery or cruelty and the need for the benefits to be provided; and
+>
+> an alien who has been granted nonimmigrant status under section 101(a)(15)(T) of the Immigration and Nationality Act (8 U.S.C. 1101(a)(15)(T)) or who has a pending application that sets forth a prima facie case for eligibility for such nonimmigrant status.
+>
+> This subsection shall not apply to an alien during any period in which the individual responsible for such battery or cruelty resides in the same household or family eligibility unit as the individual subjected to such battery or cruelty.
+
+### S1902. Medical Assistance: a lawfully residing non-citizen who entered before August 22, 1996 (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.ii (rule version effective 11/14/2026; re-fetched 2026-11-21 from the same address to confirm the text). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> ii) Be a lawfully residing non-citizen who entered the United States prior to August 22, 1996; or
+
+### S1903. Medical Assistance lawfully residing categories for pregnant women and children: temporary residents through parolees for less than a year (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.vii.1, 3-12, 14 (rule version effective 11/14/2026; re-fetched 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1) granted temporary resident status in accordance with 8 U.S.C. § 1160 or 1255a; or
+>
+> 3) granted employment authorization under 8 CFR 274a.12(c) (July 1, 2015, which is hereby incorporated by reference; or
+>
+> 4) Family Unity beneficiary in accordance with section 301 of Pub. L. 101-649, as amended; or
+>
+> 5) Deferred Enforced Departure (DED), pursuant to a decision made by the President; or
+>
+> 6) granted Deferred Action status (excluding Deferred Action for Childhood Arrivals (DACA)) as described in the Secretary of Homeland Security’s June 15, 2012 memorandum, which is hereby incorporated by reference; or
+>
+> 7) granted an administrative stay of removal under 8 CFR 241.6 (2016), which is hereby incorporated by reference; or
+>
+> 8) beneficiary of approved visa petition who has a pending application for adjustment of status; or
+>
+> 9) pending an application for asylum under 8 U.S.C. § 1158, or for withholding of removal under 8 U.S.C. § 1231, or under the Convention Against Torture who-
+>
+> a) has been granted employment authorization; or
+>
+> b) is under the age of 14 and has had an application pending for at least 180 days; or
+>
+> 10) granted withholding of removal under the Convention Against Torture; or
+>
+> 11) a child who has a pending application for Special Immigrant Juvenile status under 8 U.S.C. § 1101(a)(27)(J); or
+>
+> 12) is lawfully present American Samoa under the immigration of laws of American Samoa; or
+>
+> 14) paroled into the United States for under section 212(d)(5) of the Immigration and Nationality Act (8 U.S.C. § 1182(d)(5)) and considered lawfully residing, except for an individual paroled for prosecution, deferred inspection, or pending removal proceedings; or
+
+### S1904. Medical Assistance lawfully residing categories for pregnant women and children: conditional entrants, battered non-citizens, veterans, refugees and asylees, withholding, American Indians born in Canada, Amerasians, Hmong veterans, trafficking victims, Iraqi and Afghan special immigrants, Ukrainian parolees (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.vii.15-28 (rule version effective 11/14/2026; re-fetched 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 15) granted conditional entry under section 203(a)(7) of the INA, as in effect prior to April 1, 1980; or
+>
+> 16) determined by the eligibility site, in accordance with guidelines issued by the U.S. Attorney General, to be a spouse, child, parent of a child, or child of a parent who, in circumstances specifically described in 8 U.S.C. § 1641(c), has been battered or subjected to extreme cruelty which necessitates the provision of Medical Assistance (Medicaid).
+>
+> 17) lawfully residing in Colorado and is an honorably discharged military veteran (also includes spouse, unremarried surviving spouse and unmarried, dependent children); or
+>
+> 18) lawfully residing in Colorado and is on active duty (excluding training) in the U.S. Armed Forces (also includes spouse, unremarried surviving spouse and unmarried, dependent children); or
+>
+> 19) granted asylum under section 208 of the INA; or
+>
+> 20) refugee under section 207 of the INA; or
+>
+> 21) deportation withheld under section 243(h) (as in effect prior to September 30, 1996) or section 241(b)(3) (as amended by P.L. 104-208) of the INA; or
+>
+> 22) an individual who (1) was born in Canada and possesses at least 50 percent American Indian blood, or is a member of an Indian tribe as defined in 25 U.S.C. § 5304(e) (2016); or
+>
+> 23) admitted to the United States as an Amerasian immigrant pursuant to section 584 of the Foreign Operations, Export Financing, and Related Programs Appropriations Act of 1988 (as amended by P.L. 100-461); or
+>
+> 24) lawfully admitted resident who is a Hmong or Highland Lao veteran of the Vietnam conflict; or
+>
+> 25) a victim of a severe form of trafficking in persons, as defined in section 103 of the Victims of Trafficking and Violence Protection Act of 2000, Pub. L.106-386 (as amended by 22 U.S.C. § 7105(b) (2016)); or
+>
+> 26) an non-citizen who arrived in the United States on or after December 26, 2007 who is an Iraqi special immigrant under section 101(a)(27) of the INA who has yet to adjust to LPR; or
+>
+> 27) an non-citizen who arrived in the United States on or after December 26, 2007 who is an Afghan special immigrant under section 101(a)(27) of the INA who has yet to adjust to LPR;
+>
+> 28) a Ukrainian parolee who falls under section 401 of the Additional Ukraine Supplemental Appropriations Act; as amended by section 301 of the Ukraine Security Supplemental Appropriations Act, 2024
+
+### S1905. Medical Assistance: Afghan humanitarian parolees exempt from the five-year waiting period until March 31, 2023 or the end of parole (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.viii (rule version effective 11/14/2026; re-fetched 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> viii) Be an Afghan Humanitarian Parolee who falls into one of the following categories listed below, as defined in Section 2502 of the Extending Government Funding and Delivering Emergency Assistance Act of 2021 (HR 5305). These individuals are exempt from the 5-year waiting period until March 31, 2023, or through the termination of their parole period, whichever is later:
+>
+> 1) paroled into the United States between July 31, 2021 – September 30, 2022; or
+>
+> 2) paroled into the United States after September 30, 2022, and
+>
+> a) is the spouse or child of an individual in subparagraph 1 as defined under section 101(b) of the Immigration and Nationality Act (8 U.S.C. § 4 1101(b)); or
+>
+> b) is the parent or legal guardian of an individual in subparagraph 1 who is determined to be an unaccompanied child under 6 U.S.C. § 279(g)(2).
+
+### S1906. Child Health Plan Plus citizenship and immigration categories: citizens and nationals, pre-1996 entrants, and post-1996 lawful permanent residents, parolees, conditional entrants and battered non-citizens (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 110.1.B.1-3 (rule version effective 08/30/2026; re-fetched 2026-11-21 from the same address to confirm the text). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> B. Fall into one of the following categories:
+>
+> 1. Be a citizen or national of the United States, the District of Columbia, Puerto Rico, Guam, the United States Virgin Islands, the Northern Mariana Islands, American Samoa, or Swain's Island; or
+>
+> 2. Be a lawfully admitted non-citizen who entered the United States prior to August 22, 1996, or
+>
+> 3. Be a non-citizen who entered the United States on or after August 22, 1996 and is applying for Medical Assistance who falls into one of the following categories:
+>
+> a. Lawfully admitted for permanent residence (LPR) under the U.S. Immigration and Nationality Act (hereafter referred to as the “INA”); or
+>
+> b. Paroled into the United States for at least one year under 8 U.S.C § 1182(d)(5); or
+>
+> c. Granted conditional entry under Section 203(a)(7) of the INA, as in effect prior to April 1, 1980; or
+>
+> d. determined by the Eligibility site, in accordance with guidelines issued by the U.S. Attorney General, to be a spouse, child, parent of a child, or child of a parent who, in circumstances specifically described in 8 U.S.C. §1641(c), has been battered or subjected to extreme cruelty which necessitates the provision of Medical Assistance (Children’s Basic Health Plan); or
+
+### S1907. Child Health Plan Plus: non-citizens who arrived on any date (veterans and active duty, asylees, refugees, withholding, Cuban and Haitian entrants, American Indians born in Canada, Amerasians, Hmong veterans, Iraqi and Afghan special immigrants, COFA migrants) (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 110.1.B.4 (rule version effective 08/30/2026; re-fetched 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 4. Be a non-citizen who arrived in the United States on any date, who falls into one of the following categories:
+>
+> a. Lawfully residing in Colorado and is an honorably discharged military veteran; or
+>
+> 1. A spouse of such military veteran; or
+>
+> 2. An unremarried surviving spouse of such military veteran; or
+>
+> 3. An unmarried dependent child of such military veteran.7
+>
+> b. Lawfully residing in Colorado and is on active duty in the United States Armed Forces, excluding military training; or
+>
+> 1. A spouse of such individual; or
+>
+> 2. An unremarried surviving spouse of such individual; or
+>
+> 3. An unmarried dependent child of such individual.
+>
+> c. Granted asylum under Section 208 of the INA; or
+>
+> d. Refugee under Section 207 of the INA; or
+>
+> e. An individual with deportation withheld:
+>
+> 1. Under Section 243(h) of the INA, as in effect prior to September 30, 1996; or
+>
+> 2. Under Section 241(b)(3), as amended by P.L. 104-208 of the INA.
+>
+> f. A Cuban or Haitian entrant, as defined under Section 501(e) of the U.S. Refugee Education Assistance Act of 1980; or
+>
+> g. An individual who:
+>
+> 1. Was born in Canada and possesses at least 50 percent American Indian blood; or
+>
+> 2. Is a member of an Indian tribe, as defined in 25 U.S.C. Section 5304(e) (2016); or
+>
+> h. Admitted into the United States as an Amerasian immigrant under Section 584 of the U.S. Foreign Operations, Export Financing, and Related Programs Appropriation Act of 1988, as amended by P.L. 100-461; or
+>
+> i. A lawfully admitted, permanent resident, who is a Hmong or Highland Lao veteran of the Vietnam conflict; or
+>
+> j. An non-citizen who was admitted in the United States on or after December 26, 2007 who is an Iraqi Special Immigrant under section 101(a)(27) of the /
+>
+> k. An non-citizen who was admitted in the United States on or after December 26,2007 who is an Afghan Special Immigrant under section 101(a)(27) of the INA; and
+>
+> l. Compact of Free Association (COFA) migrants, including citizens of Micronesia, the Marshall Islands, and Palau, pursuant to section 208 of the Consolidated Appropriations Act of 2021 (in effect December 27, 2020).
+
+### S1908. Child Health Plan Plus: lawfully residing non-citizens under the CHIPRA 214 option (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 110.1.B.5.a-n (rule version effective 08/30/2026; re-fetched 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 5. Be a lawfully residing non-citizen in the United States who may qualify for coverage under Children’s Health Insurance Program Reauthorization Act of 2009 (CHIPRA) Section 214 option, if otherwise eligible and who falls into one of the categories:
+>
+> a. granted temporary resident status in accordance with section 8 U.S.C. 1160 or 1255a; or
+>
+> b. granted Temporary Protected Status (TPS) in accordance with section 8 U.S.C 1254a and pending applicants for TPS granted employment authorization;
+>
+> c. granted employment authorization under section 8 CFR 274a.12(c);or
+>
+> d. Family Unity beneficiary in accordance with section 301 of Pub. L. 101-649, as amended.
+>
+> e. Deferred Enforced Departure (DED), pursuant to a decision made by the President
+>
+> f. Granted Deferred Action status (excluding Deferred Action for Childhood Arrivals (DACA)) as described in the Secretary of Homeland Security’s June 15,2012 memorandum;
+>
+> g. Granted an administrative stay of removal under section 8 CFR 241; or
+>
+> h. Beneficiary of approved visa petition who has a pending application for adjustment of status.
+>
+> i. Pending an application for asylum under section 8 U.S.C. 1158, or for withholding of removal under section 8 U.S.C. 1231, or under the Convention Against Torture who-
+>
+> 1. Has been granted employment authorization; or
+>
+> 2. Is under the age of 14 and has had an application pending for at least 180 days.
+>
+> j. Granted withholding of removal under the Convention Against Torture;
+>
+> k. Is lawfully present American Samoa under the immigration of laws of American Samoa.
+>
+> l. A non-citizen in a valid nonimmigrant status, as defined in section 8 U.S.C. 1101(a)(15) or under section 8 U.S.C. 1101(a)(17); or
+>
+> m. A non-citizen who has been paroled into the United States for less than one year under section 212(d)(5 of the Immigration and Nationality Act (8 U.S.C. 1182(d)(5)) and considered lawfully residing, except for an individual paroled for prosecution, deferred inspection, or pending removal proceedings; or
+>
+> n. A child who has a pending application for Special Immigrant Juvenile status under 8 U.S.C 1101(a)(27)(J).
+
+### S1909. LEAP qualified alien categories A-L and the non-citizens not eligible (current text)
+
+Document: D-86
+
+9 CCR 2503-7 3.753.16 and 3.753.17 (Aliens and Temporary Residents Not Eligible for Assistance) (version effective November 1, 2025; re-fetched 2026-11-21 from the same address to confirm the text). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.753.16 Qualified Alien [Eff. 12/1/14]
+>
+> A “qualified alien” is defined as follows:
+>
+> A. An alien lawfully admitted for permanent residence;
+>
+> B. An alien paroled into the United States under the Immigration and Naturalization Act (INA) for a
+> period of at least one year;
+>
+> C. An alien granted conditional entry pursuant to Section 203(a) (7) of the INA prior to April 1, 1980;
+>
+> D. A refugee;
+>
+> E. An asylee;
+>
+> F. An alien whose deportation is being withheld;
+>
+> G. A Cuban or Haitian entrant;
+>
+> H. A victim of severe form of trafficking who has been certified as such by the U.S. Department of
+> health and Human Services (HHS);
+>
+> I. Iraqis and Afghans granted Special Immigrant Visa status;
+>
+> J. An alien who has been battered or subjected to extreme cruelty in the U.S. by a family member;
+>
+> K. An alien admitted to the U.S. as an Amerasian immigrant;
+>
+> L. An individual who was born in Canada and possesses at least fifty percent (50%) American
+> Indian blood or is a member of an Indian tribe;
+>
+> 3.753.17 Aliens and Temporary Residents Not Eligible for Assistance [Eff. 12/1/14]
+>
+> The following individuals are not eligible for public assistance or social services programs:
+>
+> A. An alien with no status verification from the U.S. Citizenship and Immigration Service;
+>
+> B. An alien granted a specific voluntary departure date;
+>
+> C. An alien applying for a status; or,
+
+### S1910. CCCAP definition of citizen/legal resident: lawfully present pursuant to Title IV of PRWORA; the requirement applies only to the child (current text)
+
+Document: D-87
+
+8 CCR 1403-1 3.103.Z (version effective August 14, 2026; re-fetched 2026-11-21 from the same address to confirm the text). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> Z. “Citizen/legal resident” means a citizen of the United States, current legal
+> resident of the United States, or a person lawfully present in the United States
+> pursuant to Title IV of the Personal Responsibility and Work Opportunity
+> Reconciliation Act (PRWORA) of 1996, Public Law 104-193; and Federal
+> Register notices 62 Fed. Reg. 61344 (Nov. 17, 1997) and 63 Fed. Reg. 41658
+> (Aug. 4, 1998). Herein incorporated by reference. No later amendments or
+> editions are incorporated. These documents are available at no cost from the
+> Office of the Federal Register at: 7 G Street, NW, Ste. A-734, Washington, D.C.
+> 20401, or at https://www.federalregister.gov/. These documents are also
+> available for inspection and copying at the Colorado Department of Early
+> Childhood , 710 S. Ash Street, Bldg. C, Denver, Colorado 80246. Since the child
+> is the beneficiary of child care assistance, the citizen/legal resident requirement
+> only applies to the child who is being considered for assistance.
+
+### S1911. A non-citizen who is not a qualified alien is not eligible for any Federal public benefit; the definition of Federal public benefit
+
+Document: D-182
+
+8 U.S.C. 1611(a), (c)(1). https://www.law.cornell.edu/uscode/text/8/1611
+
+> Notwithstanding any other provision of law and except as provided in subsection (b), an alien who is not a qualified alien (as defined in section 1641 of this title) is not eligible for any Federal public benefit (as defined in subsection (c)).
+>
+> (c) “Federal public benefit” defined
+>
+> (1) Except as provided in paragraph (2), for purposes of this chapter the term “Federal public benefit” means—
+>
+> (A)
+>
+> any grant, contract, loan, professional license, or commercial license provided by an agency of the United States or by appropriated funds of the United States; and
+>
+> (B)
+>
+> any retirement, welfare, health, disability, public or assisted housing, postsecondary education, food assistance, unemployment benefit, or any other similar benefit for which payments or assistance are provided to an individual, household, or family eligibility unit by an agency of the United States or by appropriated funds of the United States.
+
+### S1912. HHS: the Child Care and Development Fund and LIHEAP provide Federal public benefits; providers must verify qualified alien status
+
+Document: D-184
+
+HHS, Personal Responsibility and Work Opportunity Reconciliation Act of 1996 (PRWORA); Interpretation of "Federal Public Benefit", 63 Fed. Reg. 41658 (Aug. 4, 1998), Summary. https://www.govinfo.gov/content/pkg/FR-1998-08-04/html/98-20491.htm
+
+> SUMMARY: This notice with comment period interprets the term ``Federal
+> public benefit'' as used in Title IV of the Personal Responsibility and
+> Work Opportunity Reconciliation Act of 1996 (PRWORA), Pub. L. 104-193,
+> and identifies the HHS programs that provide such benefits under this
+> interpretation. According to section 401 of PRWORA, aliens who are not
+> ``qualified aliens'' are not eligible for any ``Federal public
+> benefit,'' unless the ``Federal public benefit'' falls within a
+> specified exception. A ``Federal public benefit'' includes ``any grant,
+> contract, loan, professional license, or commercial license'' provided
+> to an individual, and also ``any retirement, welfare, health,
+> disability, public or assisted housing, postsecondary education, food
+> assistance, unemployment benefit, or any other similar benefit for
+> which payments or assistance are provided to an individual, household,
+> or family eligibility unit.'' Under section 432, providers of a non-
+> exempt ``Federal public benefit'' must verify that a person applying
+> for the benefit is a qualified alien and is eligible to receive the
+> benefit.
+> The HHS programs that provide ``Federal public benefits'' and are
+> not otherwise excluded from the definition by the exceptions provided
+> in section 401(b) are:
+>
+> Adoption Assistance
+> Administration on Developmental Disabilities (ADD)--State
+> Developmental Disabilities Councils (direct services only)
+> ADD--Special Projects (direct services only)
+> ADD--University Affiliated Programs (clinical disability assessment
+> services only)
+> Adult Programs/Payments to Territories
+> Agency for Health Care Policy and Research Dissertation Grants
+> Child Care and Development Fund
+>
+> Low Income Home Energy Assistance Program (LIHEAP)
+
+### S1913. School lunch and breakfast without regard to status; other National School Lunch Act programs to non-qualified non-citizens at the State's option
+
+Document: D-183
+
+8 U.S.C. 1615(a), (b)(1), (b)(2)(A). https://www.law.cornell.edu/uscode/text/8/1615
+
+> (a) School lunch and breakfast programs
+>
+> Notwithstanding any other provision of this Act, an individual who is eligible to receive free public education benefits under State or local law shall not be ineligible to receive benefits provided under the school lunch program under the Richard B. Russell National School Lunch Act (42 U.S.C. 1751 et seq.) or the school breakfast program under section 4 of the Child Nutrition Act of 1966 (42 U.S.C. 1773) on the basis of citizenship, alienage, or immigration status.
+>
+> (b) Other programs
+>
+> (1) In general
+>
+> Nothing in this Act shall prohibit or require a State to provide to an individual who is not a citizen or a qualified alien, as defined in section 1641(b) of this title, benefits under programs established under the provisions of law described in paragraph (2).
+>
+> (2) Provisions of law describedThe provisions of law described in this paragraph are the following:
+>
+> (A)
+>
+> Programs (other than the school lunch program and the school breakfast program) under the Richard B. Russell National School Lunch Act (42 U.S.C. 1751 et seq.) and the Child Nutrition Act of 1966 (42 U.S.C. 1771 et seq.).
+

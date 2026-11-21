@@ -1,0 +1,15 @@
+id: CO-2704
+name: Iraqi and Afghan special immigrant arrival start date
+identifier: iraqi_afghan_special_immigrant_entry_start_date
+kind: parameter
+type: calendar date
+scope: global
+program: All
+meaning: "The date on or after which an Iraqi or Afghan special immigrant under INA 101(a)(27) must have arrived in the United States for the special immigrant categories of 10 CCR 2505-10 § 8.100.3.G.1.g.iv.7-8 and vii.26-27 (\"arrived in the United States on or after December 26, 2007\") and 10 CCR 2505-3 § 110.1.B.4.j-k (\"admitted in the United States on or after December 26, 2007\")."
+versions:
+  - from: "2007-12-26"
+    value: "2007-12-26"
+    source: S656
+sources: [S656, S1904, S1907]
+tags: [immigration]
+rationale: "OQ-44 fix: the arrival date the Medicaid and CHP+ special immigrant categories state, read against us_entry_date (CO-1726). The retired ma_five_year_bar_exempt_category (CO-1170) carried it inside its option meaning, where no rule could test it; Medicaid and CHP+ state the same date, so it is one neutral parameter."

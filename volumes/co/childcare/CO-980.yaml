@@ -14,11 +14,11 @@ implemented: engine
 tags: [age, disability, immigration]
 rationale: "No existing item in this volume states the CCCAP eligible-child age/disability test; cccap_household_income (CO-985) excludes an eligible child's own earnings, and cccap_low_income_child_care_eligible (CO-987) and cccap_eligibility_status (CO-989) both need at least one eligible child in the household. The citizenship conjunct was added per the review (docs/reviews/cccap-leap-phase-6.md, K-1): 3.111.F.1 requires every child applying for or receiving CCCAP to verify citizen/legal-resident status, and the chapter had no CCCAP citizenship item at all."
 tests:
-  - {id: CO-980-T1, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, citizenship_status: citizen, lawful_presence_status: lawfully_present, cccap_child_needs_care_for_part_of_day: true}, expect: true}
-  - {id: CO-980-T2, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", has_additional_care_needs: false, citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: false}
-  - {id: CO-980-T3, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", has_additional_care_needs: true, citizenship_status: citizen, lawful_presence_status: lawfully_present, cccap_child_needs_care_for_part_of_day: true}, expect: true}
-  - {id: CO-980-T4, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", has_additional_care_needs: true, citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: false}
+  - {id: CO-980-T1, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, immigration_status: us_citizen, cccap_child_needs_care_for_part_of_day: true}, expect: true}
+  - {id: CO-980-T2, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", has_additional_care_needs: false, immigration_status: us_citizen}, expect: false}
+  - {id: CO-980-T3, as_of: "2026-10-01", given: {date_of_birth: "2012-01-01", has_additional_care_needs: true, immigration_status: us_citizen, cccap_child_needs_care_for_part_of_day: true}, expect: true}
+  - {id: CO-980-T4, as_of: "2026-10-01", given: {date_of_birth: "2005-01-01", has_additional_care_needs: true, immigration_status: us_citizen}, expect: false}
   # 3.111.F.1: an otherwise-eligible child without verified citizen/legal-resident status is not an eligible child.
-  - {id: CO-980-T5, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}
+  - {id: CO-980-T5, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, immigration_status: undocumented}, expect: false}
   # 3.111.F (K-4): a child for whom no part-day care is needed is not an eligible child.
-  - {id: CO-980-T6, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, citizenship_status: citizen, cccap_child_needs_care_for_part_of_day: false}, expect: false}
+  - {id: CO-980-T6, as_of: "2026-10-01", given: {date_of_birth: "2026-02-03", has_additional_care_needs: false, immigration_status: us_citizen, cccap_child_needs_care_for_part_of_day: false}, expect: false}

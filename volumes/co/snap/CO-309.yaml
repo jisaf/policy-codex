@@ -13,7 +13,7 @@ implemented: engine
 tags: [immigration, legal]
 rationale: Combines citizen/national status with snap_is_eligible_non_citizen into the single pass/fail citizenship test 7 U.S.C. 2015(f) states, which snap_is_ineligible_non_citizen and snap_is_ineligible_member read.
 tests:
-  - {id: CO-309-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, state_of_residence: CO}, expect: true}
-  - {id: CO-309-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented, state_of_residence: CO}, expect: false}
-  - {id: CO-309-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1945-07-30", has_military_connection: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40, state_of_residence: CO}, expect: true}
-  - {id: CO-309-T4, title: "OQ-3: a citizen who does not live in Colorado does not meet 2015(f) for Colorado SNAP", as_of: "2026-10-01", given: {citizenship_status: citizen, state_of_residence: WY}, expect: false}
+  - {id: CO-309-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, state_of_residence: CO}, expect: true}
+  - {id: CO-309-T2, as_of: "2026-10-01", given: {immigration_status: undocumented, state_of_residence: CO}, expect: false}
+  - {id: CO-309-T3, as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident, date_of_birth: "1945-07-30", has_military_connection: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40, state_of_residence: CO}, expect: true}
+  - {id: CO-309-T4, title: "OQ-3: a citizen who does not live in Colorado does not meet 2015(f) for Colorado SNAP", as_of: "2026-10-01", given: {immigration_status: us_citizen, state_of_residence: WY}, expect: false}

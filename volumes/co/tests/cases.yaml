@@ -175,7 +175,6 @@
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -204,7 +203,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -228,7 +226,7 @@
         is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
         receives_ssi: false
@@ -437,7 +435,6 @@
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -466,7 +463,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -494,7 +490,7 @@
         us_entry_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         sex: male
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualifying_quarters: 40
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
@@ -682,7 +678,6 @@
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: false
-        lawful_presence_status: not_lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -710,7 +705,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -733,7 +727,7 @@
         resides_in_medical_institution: false
         date_of_birth: "1985-01-22"
         sex: female
-        citizenship_status: undocumented
+        immigration_status: undocumented
         state_of_residence: CO
         is_tax_filer: true
         is_pregnant: false
@@ -915,7 +909,6 @@
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         files_jointly_with_spouse: false
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -944,7 +937,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -967,7 +959,7 @@
         resides_in_medical_institution: false
         date_of_birth: "2009-04-08"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: true
@@ -1152,7 +1144,6 @@
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         files_jointly_with_spouse: false
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -1181,7 +1172,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -1204,7 +1194,7 @@
         resides_in_medical_institution: false
         date_of_birth: "2026-02-03"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         is_blind: false
@@ -2367,7 +2357,6 @@
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -2401,7 +2390,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -2424,7 +2412,7 @@
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
         snap_resides_in_institution_providing_meals: true
@@ -2627,7 +2615,6 @@
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: true
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -2662,7 +2649,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -2689,7 +2675,7 @@
         qualified_status_date: "1998-05-14"
         us_entry_date: "1998-05-14"
         date_of_birth: "1945-07-30"
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         state_of_residence: CO
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
@@ -2873,7 +2859,6 @@
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
         files_jointly_with_spouse: false
-        lawful_presence_status: not_lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -2906,7 +2891,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -2928,7 +2912,7 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         date_of_birth: "1985-01-22"
-        citizenship_status: undocumented
+        immigration_status: undocumented
         state_of_residence: CO
         is_in_workforce_training_or_post_secondary_education: false
         is_deceased_colorado_works_client: false
@@ -3105,7 +3089,6 @@
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         files_jointly_with_spouse: false
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -3138,7 +3121,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -3160,7 +3142,7 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         date_of_birth: "2009-04-08"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: true
@@ -3340,7 +3322,6 @@
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         files_jointly_with_spouse: false
-        lawful_presence_status: lawfully_present
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -3374,7 +3355,6 @@
         receives_va_disability_benefits: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -3396,7 +3376,7 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         date_of_birth: "2026-02-03"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_in_workforce_training_or_post_secondary_education: false
         is_deceased_colorado_works_client: false
@@ -4395,7 +4375,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -4420,7 +4399,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1956-01-01"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
         meets_nursing_facility_level_of_care: false
@@ -4477,7 +4456,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -4496,7 +4474,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1958-01-01"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -4606,12 +4584,10 @@
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1997-02-11"
         sex: female
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         us_entry_date: "2023-06-15"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
-        lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -4621,7 +4597,6 @@
         expected_number_of_children: 1
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4662,12 +4637,10 @@
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-03"
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         us_entry_date: "2023-06-15"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
-        lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -4677,7 +4650,6 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4721,7 +4693,7 @@
         ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2008-05-14"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
@@ -4776,7 +4748,7 @@
         ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2016-01-22"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
@@ -4823,7 +4795,7 @@
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1990-06-30"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -4833,7 +4805,6 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -5015,7 +4986,7 @@
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-11-08"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -5025,7 +4996,6 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: true
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -5062,7 +5032,7 @@
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2002-05-20"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -5072,7 +5042,6 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         age_at_foster_care_exit: 20
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -5127,7 +5096,7 @@
         ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2010-03-02"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
@@ -5339,12 +5308,10 @@
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1952-04-18"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -5419,12 +5386,10 @@
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-01-09"
         sex: female
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -5491,12 +5456,10 @@
         date_of_birth: "1992-08-23"
         ma_buy_in_determination_month: "2026-11"  # HCPF fix round (S-8): applied 2026-11-02, determined in November
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         is_blind: false
         meets_ssa_disability_criteria: true
         af_has_total_disability_six_months: true
@@ -5643,7 +5606,7 @@
         receives_medicaid: true
         date_of_birth: "1992-03-14"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         marital_status: married
         snap_is_head_of_household: true
@@ -5706,7 +5669,7 @@
         receives_medicaid: true  # phase-10 sweep (OQ-114), see p1
         date_of_birth: "1990-07-02"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         marital_status: married
         snap_is_head_of_household: false
@@ -5768,7 +5731,7 @@
       facts:
         date_of_birth: "2017-05-09"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         marital_status: single
         snap_is_head_of_household: false
@@ -5829,7 +5792,7 @@
       facts:
         date_of_birth: "2022-01-18"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         marital_status: single
         snap_is_head_of_household: false
@@ -5890,7 +5853,7 @@
       facts:
         date_of_birth: "1964-05-20"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         marital_status: other
         snap_is_head_of_household: false
@@ -6086,9 +6049,8 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-06-11"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
-        lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -6154,9 +6116,8 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1990-02-27"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
-        lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -6220,9 +6181,8 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2012-05-20"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
-        lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: true
@@ -6291,9 +6251,8 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2008-03-14"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
-        lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: true
@@ -6346,8 +6305,7 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1981-09-05"
         sex: male
-        citizenship_status: undocumented
-        lawful_presence_status: not_lawfully_present
+        immigration_status: undocumented
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -6424,7 +6382,7 @@
       leap_is_eligible: {"2026-12": true}
     p6:
       # His own one-person household on both programs, per the case-level comment above: no LEAP or CCCAP
-      # closure crosses buys_prepares_with, and his citizenship_status (undocumented) then filters him out
+      # closure crosses buys_prepares_with, and his immigration_status (undocumented) then filters him out
       # of even his own solo leap_household_members (3.753.17), so leap_household_members is empty rather
       # than [p6] - this differs from the review's hand-derived answer, which assumed a shares-heat edge to
       # p1's household that this batch's engine has no relationship role to express (OQ-132).
@@ -6493,8 +6451,7 @@
         ssi_countable_resources_couple: 0
         date_of_birth: "1997-02-11"
         sex: female
-        citizenship_status: undocumented
-        lawful_presence_status: not_lawfully_present
+        immigration_status: undocumented
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -6504,7 +6461,6 @@
         expected_number_of_children: 1
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6558,10 +6514,9 @@
         ssi_countable_resources_couple: 0
         date_of_birth: "1968-05-20"
         sex: female
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualified_status_date: "2010-04-01"
         us_entry_date: "2010-04-01"
-        lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: false
@@ -6571,7 +6526,6 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6625,12 +6579,10 @@
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualified_status_date: "2023-03-01"
         us_entry_date: "2023-03-01"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
-        lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -6643,7 +6595,6 @@
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6716,8 +6667,7 @@
         ssi_countable_resources_couple: 0
         date_of_birth: "2020-03-09"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
@@ -6727,7 +6677,6 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6835,8 +6784,7 @@
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1956-04-01"
         sex: female
-        citizenship_status: undocumented
-        lawful_presence_status: not_lawfully_present
+        immigration_status: undocumented
         state_of_residence: CO
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -6849,7 +6797,6 @@
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6951,7 +6898,7 @@
     p1:
       facts:
         date_of_birth: "1950-03-02"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -7012,7 +6959,7 @@
     p3:
       facts:
         date_of_birth: "1991-05-01"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
@@ -7059,7 +7006,7 @@
     p4:
       facts:
         date_of_birth: "2018-02-11"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -7143,8 +7090,7 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-08-15"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         state_of_residence: CO
         is_homeless: true
         snap_is_head_of_household: true
@@ -7167,7 +7113,6 @@
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: false
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -7304,8 +7249,7 @@
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2020-05-20"
         sex: female
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         state_of_residence: CO
         is_homeless: true
         snap_is_head_of_household: false
@@ -7328,7 +7272,6 @@
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -7573,10 +7516,9 @@
         received_energy_assistance_within_twelve_months: false
         date_of_birth: "1994-05-10"
         sex: female
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualified_status_date: "2015-03-01"
         us_entry_date: "2015-03-01"
-        lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_homeless: false
         snap_is_head_of_household: true
@@ -7599,7 +7541,6 @@
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: false
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -7753,10 +7694,9 @@
         received_energy_assistance_within_twelve_months: false
         date_of_birth: "2018-04-02"
         sex: female
-        citizenship_status: lawful_permanent_resident
+        immigration_status: lawful_permanent_resident
         qualified_status_date: "2015-03-01"
         us_entry_date: "2015-03-01"
-        lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_homeless: false
         snap_is_head_of_household: false
@@ -7779,7 +7719,6 @@
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -8152,7 +8091,7 @@
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1991-05-10"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -8212,7 +8151,7 @@
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1986-09-20"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -8271,7 +8210,7 @@
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1996-11-02"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -8335,7 +8274,7 @@
         ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2021-08-14"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
@@ -8406,7 +8345,7 @@
   # unit is the mother and child, but he is in the budgetary unit (3.604.2.D.1.b, OQ-140) and his income is deemed
   # under 3.605.1.A.4.a.
   # Engineering follow-up pass, task 3: meets_public_assistance_citizenship_requirement is no longer stated; all three
-  # are citizens (citizenship_status citizen), so CO-905 derives true for each, the value the case stated.
+  # are citizens (immigration_status us_citizen), so CO-905 derives true for each, the value the case stated.
   as_of: "2026-10-15"
   relationships:
     - [spouse, p1, p2]
@@ -8443,7 +8382,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -8466,7 +8404,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1995-04-02"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -8532,7 +8470,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -8555,7 +8492,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1990-07-19"
         sex: male
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -8622,7 +8559,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -8645,7 +8581,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2018-05-09"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -8720,7 +8656,7 @@
   # p1 Amina, 34, refugee admitted 2024-03-01, not adjusted to LPR; works for $1,800 a month; files jointly
   # with p2 and claims p3. p2 Yusuf, 36, asylee since 2025-06-01, no income. p3 Leila, 9, asylee with her
   # father. p4 Omar, 40, p1's brother, paroled for more than a year on 2019-01-15 (a qualified non-citizen,
-  # recorded as other_qualified_non_citizen), no income, files his own return, lives with them.
+  # recorded as parolee_one_year_or_more), no income, files his own return, lives with them.
   # MAGI household of p1, p2 and p3: 3 persons, income 1,800 / (27,320 / 12 = 2,276.67) = 79.1% FPL.
   # - p1, p2: over the parent/caretaker standard (68%, and 73% with the 5% disregard), within the adult
   #   standard (133%): the Adults group. Status on 2026-09-15: refugee and asylee are qualified and exempt
@@ -8745,8 +8681,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -8767,8 +8701,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
         sex: female
-        citizenship_status: refugee
-        lawful_presence_status: lawfully_present
+        immigration_status: refugee
         qualified_status_date: "2024-03-01"
         is_tax_filer: true
         files_jointly_with_spouse: true
@@ -8807,8 +8740,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -8829,8 +8760,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
         sex: male
-        citizenship_status: asylee
-        lawful_presence_status: lawfully_present
+        immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: true
         files_jointly_with_spouse: true
@@ -8869,8 +8799,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -8891,8 +8819,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
         sex: female
-        citizenship_status: asylee
-        lawful_presence_status: lawfully_present
+        immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: false
         files_jointly_with_spouse: false
@@ -8932,8 +8859,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -8954,8 +8879,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
         sex: male
-        citizenship_status: other_qualified_non_citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: parolee_one_year_or_more
         qualified_status_date: "2019-01-15"
         is_tax_filer: true
         files_jointly_with_spouse: false
@@ -9040,8 +8964,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9062,8 +8984,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
         sex: female
-        citizenship_status: refugee
-        lawful_presence_status: lawfully_present
+        immigration_status: refugee
         qualified_status_date: "2024-03-01"
         is_tax_filer: true
         files_jointly_with_spouse: true
@@ -9102,8 +9023,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9124,8 +9043,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
         sex: male
-        citizenship_status: asylee
-        lawful_presence_status: lawfully_present
+        immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: true
         files_jointly_with_spouse: true
@@ -9164,8 +9082,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9186,8 +9102,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
         sex: female
-        citizenship_status: asylee
-        lawful_presence_status: lawfully_present
+        immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: false
         files_jointly_with_spouse: false
@@ -9227,8 +9142,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9249,8 +9162,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
         sex: male
-        citizenship_status: other_qualified_non_citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: parolee_one_year_or_more
         qualified_status_date: "2019-01-15"
         is_tax_filer: true
         files_jointly_with_spouse: false
@@ -9342,8 +9254,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9364,8 +9274,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1996-08-14"
         sex: female
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: true
         files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
@@ -9405,8 +9314,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9427,8 +9334,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1994-03-02"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: true
         files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
@@ -9468,8 +9374,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9490,8 +9394,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2026-12-03"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: false
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
@@ -9531,8 +9434,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9553,8 +9454,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2016-05-20"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: false
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
@@ -9628,8 +9528,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9650,8 +9548,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1991-01-11"
         sex: female
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: true
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: true
@@ -9699,8 +9596,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9721,8 +9616,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2019-06-30"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: false
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
@@ -9761,8 +9655,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9783,8 +9675,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2011-03-09"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         is_tax_filer: false
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
@@ -9855,8 +9746,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9877,8 +9766,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1981-04-04"
         sex: female
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
         ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
@@ -9919,8 +9807,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -9941,8 +9827,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2001-02-14"
         sex: male
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
         ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
@@ -9983,8 +9868,6 @@
         is_pregnant: true
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -10005,8 +9888,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2004-09-09"
         sex: female
-        citizenship_status: citizen
-        lawful_presence_status: lawfully_present
+        immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
         ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
@@ -10047,8 +9929,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         has_military_connection: false
-        federal_five_year_bar_exempt_category: "none"
-        ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
@@ -10069,8 +9949,7 @@
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-12-01"
         sex: male
-        citizenship_status: undocumented
-        lawful_presence_status: not_lawfully_present
+        immigration_status: undocumented
         ma_is_applying_at_hospital_pe_site: true
         ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
@@ -10154,7 +10033,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -10177,7 +10055,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1996-03-10"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -10243,7 +10121,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -10266,7 +10143,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2021-06-01"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -10333,7 +10210,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -10356,7 +10232,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1990-01-15"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -10424,7 +10300,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -10447,7 +10322,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2015-09-09"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -10516,7 +10391,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -10539,7 +10413,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1993-11-20"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: NM
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -10605,7 +10479,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -10628,7 +10501,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2019-02-14"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: NM
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -10705,7 +10578,7 @@
       # Applicant mother, no income.
       facts:
         date_of_birth: "1991-05-01"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
@@ -10753,7 +10626,7 @@
       # Her son; $200 a month of current support.
       facts:
         date_of_birth: "2018-02-11"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -10796,7 +10669,7 @@
       # Recipient mother at redetermination.
       facts:
         date_of_birth: "1991-05-01"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
@@ -10846,7 +10719,7 @@
       # Support in 6 of 6 months, average $550.
       facts:
         date_of_birth: "2018-02-11"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -10892,7 +10765,7 @@
       # Recipient mother at redetermination.
       facts:
         date_of_birth: "1991-05-01"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
@@ -10942,7 +10815,7 @@
       # Support in 5 of 6 months, average $600.
       facts:
         date_of_birth: "2018-02-11"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -10988,7 +10861,7 @@
       # Recipient mother at redetermination.
       facts:
         date_of_birth: "1991-05-01"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
@@ -11038,7 +10911,7 @@
       # Support in 6 of 6 months, average $450.
       facts:
         date_of_birth: "2018-02-11"
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_pregnant: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -11138,7 +11011,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11161,7 +11033,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "2002-02-02"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11228,7 +11100,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11251,7 +11122,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1986-05-05"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11346,7 +11217,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11369,7 +11239,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11457,7 +11327,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11480,7 +11349,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11580,7 +11449,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11603,7 +11471,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1991-04-04"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11670,7 +11538,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11693,7 +11560,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2016-01-20"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11759,7 +11626,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11782,7 +11648,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1981-07-07"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11884,7 +11750,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11907,7 +11772,7 @@
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1994-12-12"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -11973,7 +11838,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -11996,7 +11860,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2020-10-10"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -12083,7 +11947,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -12106,7 +11969,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
@@ -12201,7 +12064,6 @@
         is_blind: false
         is_homeless: false
         has_military_connection: false
-        federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
@@ -12224,7 +12086,7 @@
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
         sex: female
-        citizenship_status: citizen
+        immigration_status: us_citizen
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
