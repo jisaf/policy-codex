@@ -3393,3 +3393,1829 @@ C.R.S. 25.5-2-104(1)-(2). https://leg.colorado.gov/sites/default/files/images/ol
 
 > 25.5-2-104. State-funded health and medical care. (1) Beginning no later than January 1, 2025, there is created the state medical assistance program, referred to in this section as "state medical assistance". State medical assistance includes all benefits and services at the same cost to the beneficiary as are offered pursuant to the medical assistance program defined in section 25.5-4-103 (13), such that, to the maximum extent possible, eligible individuals must not be able to tell that the person is enrolled in a different program from medical assistance pursuant to section 25.5-4-103 (13).
 > (2) A child who is less than nineteen years of age is eligible to receive state medical assistance if the child would be eligible for medical assistance as defined in section 25.5-4-103 (13) but is not eligible due solely to the child's immigration status.
+### S700. Old Age Pension: grant standard, ISM maximum and payment floor effective January 1, 2026
+
+Document: D-80
+
+9 CCR 2503-5 3.530 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.530 OLD AGE PENSION (OAP) PROGRAM
+>
+> The Old Age Pension (OAP) program provides financial assistance and may provide
+> health care benefits for low-income Colorado residents who are sixty (60) years of age
+> or older who meet all financial and non-financial eligibility requirements.
+>
+> A. The total monthly OAP grant standard, as set by the State Board of Human
+> Services, is $1,032 effective January 1, 2026.
+>
+> B. Effective January 1, 2026, the maximum monthly In-Kind Support and
+> Maintenance (ISM) deduction amount for shelter costs is $351.
+>
+> C. Effective January 1, 2026, the payment floor standard for OAP is $189.
+
+### S701. Old Age Pension: the program's only categories are OAP and OAP-C
+
+Document: D-80
+
+9 CCR 2503-5 3.530.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.530.1 DEFINITIONS
+>
+> “OAP” is a program for a client sixty (60) years of age or older.
+>
+> “OAP-C” is a program for a client age sixty (60) or older who has been committed to the
+> Colorado Mental Health Institute or to a Regional Center by order of the district or
+> probate court.
+
+### S702. OAP grant standard adjusted to appropriations; State Supplementary Payment raises a grant to the payment floor
+
+Document: D-80
+
+9 CCR 2503-5 3.531.C-D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. The grant standard for OAP, as listed in Section 3.530.A, shall be adjusted to
+> remain within available appropriations. Appeals shall not be allowed for grant
+> standard adjustments necessary to stay within available appropriations.
+>
+> D. In addition to the regular monthly OAP grant payments, supplemental payments
+> necessary to comply with the Federal pass-along requirements may be provided.
+> These payments are supplements to regular grant payments and may be
+> provided to eligible Adult Financial recipients in two (2) forms:
+>
+> 1. Maintenance Of Effort (MOE) Lump Sum Payments – these irregular lump
+> sum payments cannot be anticipated, are not an entitlement, and do not
+> affect grant standards. Appeals shall not be allowed for MOE payment
+> adjustments. The Federal pass-along requirements are located in the
+> Federal Regulations found at 20 C.F.R. § 416.2095-2099 (October 2025),
+> which are hereby incorporated by reference. No later amendments or
+> editions are incorporated. These regulations are available at no cost at
+> https://www.ecfr.gov. These regulations are also available for public
+> inspection and copying at the Colorado Department of Human Services,
+> Division of Economic and Workforce Support, 1575 Sherman Street,
+> Denver, Colorado 80203, during regular business hours.
+>
+> 2. State Supplementary Payment – These monthly payments are included as
+> supplements to regular grant payments when an OAP, AND-CS, or HCA
+> client’s Adult Financial grant is less than the payment floor standard. The
+> supplemental payment is in addition to the grant payment and brings the
+> client’s monthly benefit amount equal to the payment floor standard
+> defined for the program(s) in which the client is enrolled.
+
+### S703. OAP grant payment: grant standard less countable income, raised to the payment floor
+
+Document: D-80
+
+9 CCR 2503-5 3.532.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.532 GRANT PAYMENT DETERMINATION
+>
+> A. OAP grant payments shall be calculated on an individual basis, with just one
+> client per case.
+>
+> B. When a client has been found eligible based upon eligibility rules as outlined in
+> Sections 3.520.6 and 3.520.7, the amount of the client's authorized OAP grant
+> payment shall be determined by deducting the client's total countable income
+> from the OAP grant standard listed in Section 3.530.A. If the grant payment is
+> less than the OAP payment floor standard outlined in section 3.530, a state
+> supplementary payment will be issued to raise the grant payment to meet the
+> payment floor standard.
+
+### S704. Payment Floor Standard (definition)
+
+Document: D-80
+
+9 CCR 2503-5 3.510. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Payment Floor Standard” means the minimum Adult Financial grant payment that an
+> eligible Old Age Pension (OAP), Aid to the Needy Disabled-Colorado Supplement
+> (AND-CS), or Home Care Allowance (HCA) client may receive. The payment floor
+> standard is updated annually for each program based on the cost-of-living adjustment.
+
+### S705. AND-SO program: age, grant standard effective April 1, 2022, appropriations adjustment
+
+Document: D-80
+
+9 CCR 2503-5 3.540.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.540 AID TO THE NEEDY DISABLED STATE ONLY (AND-SO) PROGRAM
+>
+> The Aid to the Needy Disabled State Only (AND-SO) program provides interim
+> assistance to clients age eighteen (18) through fifty-nine (59) years of age (unless
+> diagnosed with blindness, then age zero (0) through 59 years of age); who are disabled
+> or blind but have not been approved for Supplemental Security Income (SSI) or Social
+> Security Disability Insurance (SSDI). Individuals are required to meet the total disability
+> requirements identified in this section, in addition to the non-financial and financial
+> eligibility requirements in this section and sections 3.520.71 and 3.520.72. Individuals
+> who are partially disabled or have a short-term disability are not eligible.
+>
+> A. The total AND-SO grant standard is $248.00, effective April 1, 2022.
+>
+> B. The grant standard for AND-SO shall be adjusted as needed to remain within
+> available appropriations. Appeals shall not be allowed for grant standard
+> adjustments necessary to stay within available appropriations.
+
+### S706. AND-CS program: grant standard effective January 1, 2026, appropriations adjustment
+
+Document: D-80
+
+9 CCR 2503-5 3.546.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.546 AID TO THE NEEDY DISABLED-COLORADO SUPPLEMENT (AND-CS)
+> PROGRAM
+>
+> The Aid to the Needy Disabled-Colorado Supplement (AND-CS) program provides a
+> supplemental payment for clients age zero (0) to fifty-nine (59) who are receiving SSI
+> due to a disability or blindness, but are not receiving the full SSI benefit standard, as
+> defined in Section 3.510.
+>
+> A. The total AND-CS grant standard is $994, effective January 1, 2026.
+>
+> B. The grant standard for AND-CS shall be adjusted as needed to remain within
+> available appropriations. Appeals shall not be allowed for grant standard
+> adjustments necessary to stay within available appropriations.
+
+### S707. AND-CS: ISM maximum and payment floor effective January 1, 2026
+
+Document: D-80
+
+9 CCR 2503-5 3.546.D-E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. Effective January 1, 2026, the maximum ISM amount for shelter costs is $351.
+>
+> E. Effective January 1, 2026, the payment floor standard for AND-CS is $13.
+
+### S708. AND-CS grant: grant standard less countable income, raised to the payment floor
+
+Document: D-80
+
+9 CCR 2503-5 3.548.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. When a client has been found eligible the amount of the client's authorized AND-
+> CS grant payment shall be determined by deducting the client's total countable
+> income from the AND-CS grant standard.
+
+### S709. AND-SO grant: grant standard less countable income (no payment floor)
+
+Document: D-80
+
+9 CCR 2503-5 3.543.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.543 GRANT PAYMENT DETERMINATION
+>
+> A. AND-SO grant payments shall be calculated on an individual basis with just one
+> client per case.
+>
+> B. When a client has been found eligible, the amount of the client's authorized AND-
+> SO grant payment shall be determined by deducting the client's total countable
+> income from the AND-SO grant standard.
+
+### S710. AND-SO client's duty to apply for SSI (and SSDI) and appeal denials
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. The AND-SO client shall apply for Supplemental Security Income (SSI) benefits.
+> If the client has work hours during his or her lifetime, the client shall also apply for
+> Social Security Disability Insurance (SSDI). The client shall report any denial for
+> SSI benefits. The client shall appeal all negative decisions regarding their SSI
+> eligibility. Failure to appeal all negative decisions within thirty (30) calendar days
+> of such decision, unless additional time is given for good cause, shall result in
+
+### S711. Non-financial eligibility: age bands, residency, citizenship and SSN for AND only, not eligible for Colorado Works
+
+Document: D-80
+
+9 CCR 2503-5 3.520.61.A-F. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.61 NON-FINANCIAL ELIGIBILITY REQUIREMENTS
+>
+> To be eligible for Adult Financial programs, a client shall:
+>
+> A. Be eighteen (18) through fifty-nine (59) years of age for AND-SO (unless
+> diagnosed with blindness, then age zero (0) through 59 years of age); age 0
+> through 59 years of age for AND-CS; and age sixty (60) years of age or older for
+> OAP; and,
+>
+> B. Be a resident of Colorado, except that inmates of a city, municipal, county, State,
+> or Federal correctional institution, and fleeing felons, shall not be eligible for Adult
+> Financial programs; and,
+>
+> C. For AND only, be a citizen of the United States or be a qualified non-citizen or
+> legal immigrant as outlined in Sections 3.520.67; and,
+>
+> D. For AND only, have a valid SSN, as outlined in Section 3.520.65; and,
+>
+> E. For AND only, have a disability, as outlined in Section 3.541; and,
+>
+> F. Not be currently receiving or eligible for financial assistance from Colorado
+> Works, as outlined in Section 3.520.71.F; and,
+
+### S712. Home Care Allowance: purpose, minimum age five, HCBS screen first
+
+Document: D-80
+
+9 CCR 2503-5 3.570.11.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. Home Care Allowance (HCA) is a special cash payment made to a client, five (5)
+> years of age or older for the purpose of securing in-home, personal care
+> services.
+>
+> 1. HCA is a non-entitlement program;
+>
+> 2. Clients must be evaluated for Home and Community Based Services
+> through Health First Colorado (Medicaid) before the HCA program can be
+> considered.
+>
+> a. At application, if the client is functionally eligible for Home and
+> Community Based Services (HCBS) through Health First Colorado
+> (Medicaid), the client is not eligible for HCA.
+>
+> b. At reassessment on or after 05/01/2022, clients must be evaluated
+> for Home and Community Based Services through Health First
+> Colorado (Medicaid) and if functionally eligible, the clients are no
+> longer eligible for the HCA program. Clients who are determined
+> eligible for HCBS through Health First Colorado at reassessment
+> may remain on HCA for up to three (3) months while they transition
+> to HCBS if the delay in transition is not within the client’s control.
+>
+> c. HCA cannot be received while receiving Home and Community
+> Based Services; and,
+
+### S713. Home Care Allowance: payment floor standard and appropriations adjustment
+
+Document: D-80
+
+9 CCR 2503-5 3.570.11.B, D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Effective January 1, 2026, all tiers of HCA are eligible for the payment floor
+> standard. The payment floor standard for HCA is $977.
+>
+> C. The HCA grant is not taxable income to the client. The payment made to the care
+> provider using the HCA grant received by the client is income to the care provider
+> and subject to taxation under State and Federal laws.
+>
+> D. The HCA grant standards shall be adjusted to stay within available
+> appropriations. Appeals shall not be granted for these adjustments.
+
+### S714. Home Care Allowance: financial and functional eligibility; tier table
+
+Document: D-80
+
+9 CCR 2503-5 3.570.13.A-C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. Eligibility for HCA shall be based on both financial need and the client's functional
+> needs. The client shall meet eligibility for both financial and functional
+> requirements to be approved for an HCA payment.
+>
+> B. To be financially eligible, the client shall:
+>
+> 1. Be approved for Supplemental Security Income (SSI) benefits; or,
+>
+> 2. Meet all eligibility criteria required for Aid to the Needy Disabled – State
+> Only (AND-SO) program; or,
+>
+> 3. Have been receiving both Old Age Pension (OAP) grant payments and
+> HCA as of December 31, 2013 and remain continuously eligible for both
+> benefits.
+>
+> C. To be functionally eligible, the client shall have an HCA eligible functional
+> assessment score. The functional assessment score is calculated by determining
+> the client's functional capacity score and need for paid care score, as follows:
+>
+> 1. Functional Capacity: determined by assessing the client's ability to
+> complete all activities of daily living (ADLs) and applying a score to his or
+>
+> her ability to complete the ADLs using the functional impairment scale;
+> and,
+>
+> 2. Need for Paid Care: determined by identifying the unmet need for paid
+> care and applying a score to the unmet need using the need for paid care
+> scale, as outlined in Section 3.570.14; and,
+>
+> 3. Combining the functional capacity score and the need for paid care score
+> to determine whether the client meets the minimum scores for eligibility
+> and, if eligible, the tier of grant payments to be approved, as follows:
+>
+> Tier Capacity Score Need for Paid Care
+> Score
+>
+> 1 21 or Higher 1 to 23
+>
+> 2 21 or Higher 24 to 37
+>
+> 3 21 or Higher 38 to 51
+
+### S715. Home Care Allowance: minimum functional capacity score of 21 and the functional impairment scale
+
+Document: D-80
+
+9 CCR 2503-5 3.570.14.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.570.14 FUNCTIONAL ASSESSMENT SCORING
+>
+> A. The need for skilled personal care shall not be included in the scoring of the need
+> for paid care.
+>
+> B. In order to be eligible for the Home Care Allowance program, each client shall
+> score a minimum of twenty one (21) points when assessed for the ability to
+> complete the ADL using the following functional impairment scale:
+
+### S716. Home Care Allowance: children under five are not scored and not eligible
+
+Document: D-80
+
+9 CCR 2503-5 3.570.14.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. For children age five (5) through eighteen (18) years, functional capacity and
+> need for paid care shall be scored according to age appropriate criteria. Children
+> under the age of 5 shall not be scored and are not eligible to receive Home Care
+> Allowance.
+
+### S717. Home Care Allowance: both financial and functional eligibility required
+
+Document: D-80
+
+9 CCR 2503-5 3.570.13.E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> E. Each client who meets the minimum functional assessment scoring requirements
+> for the HCA program shall be functionally eligible for an HCA grant.
+>
+> 1. The authorization by the CMA shall be forwarded to the county department
+> to determine financial eligibility.
+>
+> 2. Clients shall not be approved for HCA if financially ineligible, even if the
+> client is functionally eligible.
+>
+> 3. Clients shall not be approved for HCA if functionally ineligible, even if the
+> client is financially eligible.
+
+### S718. Home (definition for Home Care Allowance)
+
+Document: D-80
+
+9 CCR 2503-5 3.570.12. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Home” means a non-facility residence. A home cannot include a homeless shelter or
+> other temporary setting.
+
+### S719. Burial assistance: eligibility conditions and the $2,500 total cost limit
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. A burial benefit shall be available to cover all or part of reasonable and necessary
+> costs for burial services when:
+>
+> 1. A deceased client was receiving Old Age Pension (OAP), Aid to the Needy
+> Disabled (AND-SO OR AND-CS), Home Care Allowance, and/or Colorado
+> Medicaid assistance at the time of death; and,
+>
+> 2. The deceased client's estate is insufficient to pay all or part of the burial
+> services; and,
+>
+> 3. The resources of the legally responsible person(s) for the support of the
+> deceased client are insufficient, even with contributions from the client's
+> estate, to enable the legally responsible person(s) to pay all or part of
+> such expenses; and,
+>
+> 4. The total cost for all burial services does not total more than two thousand
+> five hundred dollars ($2,500), except that the cost of a burial plot shall not
+> be included in the $2,500 maximum cost limit when:
+>
+> a. The client has a prepaid burial plot valued at two thousand dollars
+> ($2,000) or less at the time of purchase; or,
+>
+> b. A burial plot was purchased by someone other than the deceased
+
+### S720. Burial assistance: benefit maximum $1,500 effective March 1, 2020
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. The total burial benefit shall not exceed the current burial benefit rate.
+>
+> 1. Effective March 1, 2020, the burial benefit shall not exceed one thousand
+> five hundred dollars ($1,500).
+>
+> 2. The reimbursement rate shall be adjusted by the State Department as
+> needed to stay within the available appropriations. There shall be no
+> appeal granted for this adjustment.
+
+### S721. Burial assistance: monies applied against the full burial costs, in order
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The county department shall reduce the burial grant payment by applying the
+> following monies toward the full burial costs in the order listed:
+>
+> 1. First, subtract monies due from any insurance policy of the deceased
+> client to a legally responsible person or any other person who makes a
+> contribution to burial services and is named as beneficiary or a joint
+> beneficiary; then if costs remain,
+>
+> 2. Subtract the value of the deceased client's estate as of the date of death
+> that are available, including any cash or property of any kind which the
+> deceased client owned or proportionate share of resources held in joint
+> ownership at the time of death; then if costs remain,
+>
+> 3. Subtract monies from the legally responsible person(s) for the client, as
+> follows:
+>
+> a. Social Security lump sum death benefits payable to a legally
+> responsible person shall be exempt.
+>
+> b. If the legally responsible person(s) has resources below the SSI
+> resource limit of $2,000 for an individual or $3,000 for a couple any
+> resources would not be used to reduce the burial grant payment.
+> These limits are consistent with the provisions of Federal
+> Regulations found at 20 CFR 416.1205 (2019), which are herein
+> incorporated by reference. This rule does not contain any later
+> amendments or editions. These regulations are available for no
+> cost at https://www.ecfr.gov/. These regulations are also available
+> for public inspection and copying at the Colorado Department of
+>
+> Human Services, Director of the Employment and Benefits Division,
+> 1575 Sherman Street, Denver, Colorado, 80203, or at any State
+> publications library during regular business hours.
+>
+> 1) If the legally responsible person is the widow(er), the
+> individual resource limit shall apply.
+>
+> 2) The legally responsible person(s) may voluntarily contribute
+> monies toward the cost of the burial services.
+>
+> c. If the legally responsible person(s) has resources over the SSI limit,
+> the amount of resources over the limit shall be used to reduce the
+> burial grant payment; then if costs remain,
+>
+> 4. The county department shall issue a written authorization for the amount
+> of the burial grant payment, up to the burial grant payment limit, as set
+> forth in Section 3.570.43.B.1.
+
+### S722. Burial assistance: legally responsible person (definition)
+
+Document: D-80
+
+9 CCR 2503-5 3.570.42. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Legally responsible person(s)” means a person who is the decedent’s spouse or the
+> decedent’s parent if the decedent is an unemancipated minor who is under the age of
+> eighteen; and bears legal responsibility for the charges associated with the decedent’s
+> funeral, cremation, or burial expenses.
+
+### S723. Burial assistance: charges over $2,500 bar any payment
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.F.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 1. If the combined charges from the provider(s) exceed two thousand five
+> hundred dollars ($2,500), no burial grant payment shall be paid.
+
+### S730. FY 2027 maximum monthly allotments (48 States and DC column)
+
+Document: D-83
+
+FNS, SNAP FY 2027 Maximum Allotments and Deductions, Table 1 (effective October 1, 2026 through September 30, 2027). https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27maximumAllotments-deductions.pdf
+
+> Year (FY) 2027 Maximum Allotments and Deductions
+> The following tables provide the monthly maximum allotment and allowable deductions
+> for FY 2027 (effective October 1, 2026, through September 30, 2027).
+>
+> Maximum Allotments
+>                              Table 1: Maximum Monthly Allotment
+>               48 States &
+>  Household                     Alaska       Alaska       Alaska                                  Virgin
+>                District of                                             Guam         Hawaii
+>    Size                       (Urban)      (Rural 1)    (Rural 2)                               Islands
+>                Columbia
+>      1           $306           $392         $499         $608          $452         $496        $394
+>      2           $562           $718         $916        $1,115         $829         $910        $723
+>      3           $808          $1,032       $1,316       $1,602        $1,191       $1,307       $1,039
+>      4          $1,023         $1,306       $1,666       $2,027        $1,507       $1,655       $1,315
+>      5          $1,217         $1,555       $1,982       $2,413        $1,794       $1,969       $1,565
+>      6          $1,463         $1,868       $2,382       $2,900        $2,156       $2,367       $1,880
+>      7          $1,616         $2,064       $2,632       $3,204        $2,382       $2,615       $2,078
+>      8          $1,841         $2,352       $2,999       $3,650        $2,714       $2,979       $2,367
+>                $225 per       $287 per $366 per $446 per $331 per $364 per $289 per
+>    9-17        additional     additional additional additional additional additional additional
+>                 person         person     person     person     person     person     person
+>     18+         $3,887         $4,965       $6,331       $7,705        $5,729       $6,289       $4,997
+
+### S731. FY 2027 standard deductions
+
+Document: D-83
+
+FNS, SNAP FY 2027 Maximum Allotments and Deductions, Table 2. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27maximumAllotments-deductions.pdf
+
+>                                      Table 2: Standard Deductions
+>                   48 States &
+>    Household                                                                                  Virgin
+>                    District of          Alaska           Guam              Hawaii
+>      Size                                                                                    Islands
+>                    Columbia
+>           1           $217              $371              $435              $306              $191
+>           2           $217              $371              $435              $306              $191
+>           3           $217              $371              $435              $306              $191
+>           4           $229              $371              $457              $306              $229
+>
+>                 Food and Nutrition Administration, 1400 Jefferson Dr, Washington, DC 20250
+>                        USDA is an equal opportunity provider, employer, and lender.
+>                                                                               Page 2 of 2
+>
+>                48 States &
+> Household                                                                     Virgin
+>                 District of       Alaska         Guam             Hawaii
+>   Size                                                                       Islands
+>                 Columbia
+>     5             $268             $371             $536          $309        $268
+>    6+             $308             $385             $614          $354        $308
+
+### S732. FY 2027 excess shelter deduction cap, homeless shelter deduction and asset limits
+
+Document: D-83
+
+FNS, SNAP FY 2027 Maximum Allotments and Deductions, Tables 3-4 and the asset-limit table. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27maximumAllotments-deductions.pdf
+
+>                   Table 3: Maximum Excess Shelter Deductions
+>    48 States &
+>                                                                             Virgin
+>     District of           Alaska            Guam            Hawaii
+>                                                                            Islands
+>     Columbia
+>         $769              $1,229             $903           $1,306          $606
+>
+>                       Table 4: Homeless Shelter Deduction
+>   48 States &
+>                                                                             Virgin
+>    District of           Alaska            Guam            Hawaii
+>                                                                            Islands
+>    Columbia
+>    $205.66             $205.66             $205.66         $205.66         $205.66
+>
+>                           Table 2: Maximum Asset Limits
+>                       Household with at
+>                                                       All other
+>                        least 1 member
+>                                                      households
+>                      age 60+ or disabled
+>                               $4,750                   $3,000
+
+### S733. FY 2027 minimum monthly allotment
+
+Document: D-83
+
+FNS, SNAP FY 2027 Minimum Allotments, Table 1. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27MinimumAllotments.pdf
+
+> Year (FY) 2027 Minimum Allotments
+> The following table provides the monthly minimum allotment for FY 2027 (effective
+> October 1, 2026, through September 30, 2027).
+>
+> Minimum Allotments
+>                          Table 1: Minimum Monthly Allotment
+>               48 States &
+>  Household                  Alaska  Alaska    Alaska                                          Virgin
+>                District of                                              Guam        Hawaii
+>    Size                    (Urban) (Rural 1) (Rural 2)                                       Islands
+>                Columbia
+>      1-2          $25            $31           $40           $49          $36         $40     $32
+
+### S734. FY 2027 net monthly income limits (100% of poverty)
+
+Document: D-84
+
+FNS, SNAP FY 2027 Income Eligibility Standards, Table 1. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27-incomeEligibilityStandards.pdf
+
+> Year (FY) 2027 Income Eligibility Standards
+> The following tables provide the monthly income eligibility standards for FY 2027
+> (effective October 1, 2026, through September 30, 2027).
+>
+>          Table 1: Net Monthly Income Limit (100% of Federal Poverty Level)
+>
+>                                           48 States,
+>          Household Size             District of Columbia,            Alaska                 Hawaii
+>                                     Guam, Virgin Islands
+>                 1                           $1,330                   $1,663                 $1,530
+>                 2                           $1,804                   $2,255                 $2,075
+>                 3                           $2,277                   $2,846                 $2,619
+>                 4                           $2,750                   $3,438                 $3,163
+>                 5                           $3,224                   $4,030                 $3,707
+>                 6                           $3,697                   $4,621                 $4,251
+>                 7                           $4,170                   $5,213                 $4,795
+>                 8                           $4,644                   $5,805                 $5,340
+>     Each Additional Member                   $474                     $592                  $545
+
+### S735. FY 2027 gross monthly income limits (130% of poverty)
+
+Document: D-84
+
+FNS, SNAP FY 2027 Income Eligibility Standards, Table 2. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27-incomeEligibilityStandards.pdf
+
+>         Table 2: Gross Monthly Income Limit (130% of Federal Poverty Level)
+>
+>                                            48 States,
+>          Household Size              District of Columbia,             Alaska               Hawaii
+>                                      Guam, Virgin Islands
+>                 1                             $1,729                   $2,162               $1,989
+>                 2                             $2,345                   $2,931               $2,697
+>                 3                             $2,960                   $3,700               $3,404
+>                 4                             $3,575                   $4,469               $4,112
+>                 5                             $4,191                   $5,238               $4,819
+>                 6                             $4,806                   $6,008               $5,527
+>                 7                             $5,421                   $6,777               $6,234
+>                 8                             $6,037                   $7,546               $6,941
+>      Each Additional Member                    $616                     $770                 $708
+
+### S736. FY 2027 gross income limits where elderly/disabled members are a separate household (165%)
+
+Document: D-84
+
+FNS, SNAP FY 2027 Income Eligibility Standards, Table 3. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27-incomeEligibilityStandards.pdf
+
+> Table 3: Gross Monthly Income Limit Where Elderly/Disabled Members Are a
+>             Separate Household (165% of Federal Poverty Level)
+>
+>                               48 States,
+>    Household Size       District of Columbia,   Alaska        Hawaii
+>                         Guam, Virgin Islands
+>           1                    $2,195           $2,744        $2,525
+>           2                    $2,976           $3,720        $3,423
+>           3                    $3,757           $4,696        $4,321
+>           4                    $4,538           $5,672        $5,219
+>           5                    $5,319           $6,649        $6,116
+>           6                    $6,100           $7,625        $7,014
+>           7                    $6,881           $8,601        $7,912
+>           8                    $7,662           $9,577        $8,810
+>    Each Additional
+>                                $781             $977           $898
+
+### S737. Colorado benefit allotment formula: 30% of net income, rounded down after subtraction; zero-benefit denial except BCE/ECE
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.A-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.207.3 Benefit Allotment
+>
+> A. After eligibility has been established, the monthly SNAP benefit allotment will be
+> determined. The state automated system will compute the household’s allotment.
+> The following formula shall be used to determine a household’s benefit allotment.
+>
+> 1. Multiply the net monthly income by thirty percent (30%)
+>
+> 2. Subtract the result from the maximum benefit allowed for the appropriate
+> household size, as shown in D below.
+>
+> 3. Round the result down to the nearest dollar.
+>
+> B. If the calculation of benefits for an initial month yields an allotment of less than
+> the federal minimum allotment referenced in 4.207.3(D), no benefits shall be
+> issued to the household for the initial month.
+>
+> For eligible households that are entitled to no benefits in their initial month of
+> application, but are entitled to benefits in subsequent months, the local office
+> shall certify the household for a certification period beginning with the month of
+> application.
+>
+> Except for households that are eligible under BCE or ECE, households with three
+> or more members who are entitled to zero benefits shall have their SNAP
+> application denied. This provision does not apply if zero benefits are due to the
+> pro-ration requirements or due to the initial month's allotment being less than the
+> federal minimum allotment referenced in 4.207.3(D).
+>
+> C. Except for an initial month, if the allotment for a one- or two-person household is
+> less than the federal minimum allotment referenced in 4.207.3 D, round the
+> allotment up to the minimum benefit allowed for a one- or two-person household.
+
+### S738. Colorado maximum and minimum allotment tables effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. The SNAP maximum and minimum monthly benefit allotment tables will be
+> adjusted as announced by the USDA, FNA.
+>
+> Household Maximum Monthly Allotment Effective October 1, 2026
+> Size
+>
+> 1 $306
+>
+> 2 $562
+>
+> 3 $808
+>
+> 4 $1,023
+>
+> 5 $1,217
+>
+> 6 $1,463
+>
+> 7 $1,616
+>
+> 8 $1,841
+>
+> 9-17 $225 per additional person
+>
+> 18+ $3,887
+>
+> Household Size Minimum Monthly Allotment Effective October 1, 2026
+>
+> 1-2 $25
+
+### S739. Colorado gross income limits (130%, 200%, 165%) effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.401.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.401.1 Gross Income Limits
+>
+> Effective October 1, 2026, the gross income levels for one hundred thirty percent
+> (130%), two hundred percent (200%), and one hundred sixty-five percent (165%) of the
+> federal poverty level for the corresponding household size are as follows:
+>
+> Household 130% Gross Income 200% Gross Income 165% Gross Income
+> Size Level Level Level
+>
+> 1 $1,729 $2,660 $2,195
+>
+> 2 $2,345 $3,608 $2,976
+>
+> 3 $2,960 $4,554 $3,757
+>
+> 4 $3,575 $5,500 $4,538
+>
+> 5 $4,191 $6,448 $5,319
+>
+> 6 $4,806 $7,394 $6,100
+>
+> 7 $5,421 $8,340 $6,881
+>
+> 8 $6,037 $9,288 $7,662
+>
+> Each additional +$616 +$948 +$781
+> person
+
+### S740. Colorado net income level (100%) effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.401.2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.401.2 Net Income Levels
+>
+> Effective October 1, 2026, the net income level of one hundred percent (100%) of the
+> federal poverty level for the corresponding household size is as follows:
+>
+> Household Size 100% Net Income Level
+>
+> 1 $1,330
+>
+> 2 $1,804
+>
+> 3 $2,277
+>
+> 4 $2,750
+>
+> 5 $3,224
+>
+> 6 $3,697
+>
+> 7 $4,170
+
+### S741. Colorado standard deduction effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.407.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A standard deduction of 8.31% of the federal poverty income guidelines for the
+> household size as described in Section 4.401.2 will be used to calculate the amount that
+> is allowed to all households. The established standard amount will be adjusted annually
+> as announced by FNA, USDA. The calculation of 8.31% of the federal poverty income
+> guidelines for eligible members will be used for all households up to the household size
+> of six (6). All households with six (6) or more eligible members will use the six (6)
+> person standard deduction.
+>
+> Standard Deduction Amount
+>
+> Household Size 1-3 4 5 6+
+>
+> Effective October 1, 2026 $217 $229 $268 $308
+
+### S742. Colorado shelter deduction cap and homeless shelter deduction effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.B-C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. A shelter deduction cap, as specified below, applies to households that do not
+> contain a person who is aged sixty (60) and older or a person with a disability as
+> defined in Section 4.000.1. Those households containing a person who is aged
+> sixty (60) and older and/or a person with a disability shall receive an excess
+> shelter deduction for the monthly cost of shelter that exceeds fifty percent (50%)
+> of the household's monthly income after all other applicable deductions.
+>
+> Shelter Deduction Cap
+>
+> Effective October 1, 2026 $769
+>
+> C. Households in which all individuals are experiencing homelessness and are not
+> receiving free shelter throughout the calendar month shall be entitled to use a
+> standard estimate of shelter expenses.
+>
+> The FNA, USDA, provides an update of this estimated figure annually when the
+> shelter cap for other households is adjusted. The Homeless Shelter Deduction is
+> as follows:
+>
+> Homeless Shelter Deduction
+>
+> Effective October 1, 2026 $205.66
+>
+> All households experiencing homelessness that incur, or reasonably expect to
+> incur, shelter costs during a month shall be eligible for the estimate, unless
+> higher shelter costs are verified, at which point the household may use actual
+> shelter costs rather than the estimate.
+>
+> Households experiencing homelessness that incur no shelter costs during the
+> month shall not be eligible for the homeless shelter deduction.
+
+### S743. Four-tiered mandatory standard utility allowance; Heating and Cooling Utility Allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31 (introduction) and A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.407.31 Four-Tiered Mandatory Standard Utility Allowance
+>
+> Effective October 1, 2008, a four-tiered mandatory standard utility allowance deduction
+> was implemented in determining a household’s excess shelter deduction. Households
+> cannot claim actual utility expenses and are only entitled to one (1) of the four (4) utility
+> allowances. The four (4) utility allowances shall be reviewed annually and adjusted each
+> year, based on federal approval, to reflect Colorado's cost of utilities. No utility expenses
+>
+> can be allowed as an income exclusion for self-employed households when a
+> mandatory utility allowance is given to the household.
+>
+> When determining expedited eligibility, the appropriate utility allowance shall be applied
+> when establishing the household’s shelter costs.
+>
+> The four (4) allowances are as follows:
+>
+> A. Heating and Cooling Utility Allowance (HCUA)
+>
+> 1. “Cooling costs” are defined as utility costs relating to the operation of air
+> conditioning systems, room air conditioners, swamp coolers, or
+> evaporative coolers. Fans are not an allowable cooling cost. A heating and
+> cooling utility allowance (HCUA) is available only to households that:
+>
+> a. Incur or anticipate heating or cooling costs separate and apart from
+> their rent or mortgage;
+>
+> b. Received a Low-Income Energy Assistance Program (LEAP) or an
+> Energy Electronic Benefit Transfer (E-EBT) payment within the
+> previous twelve (12) month period, regardless of whether the
+> individual is still residing at the address for which they received
+> the LEAP or E-EBT payment;
+>
+> c. Live in private rental housing and are billed by their landlords on the
+> basis of individual usage or charged a flat rate separately from
+> their rent for heating and cooling;
+>
+> d. Share a residence and incur at least a portion of the heating or
+> cooling cost, in which case each household will be entitled to the
+> full HCUA; or,
+>
+> e. Live in public housing and are responsible for excess heating
+> and/or cooling costs.
+>
+> 2. A SNAP household, which incurs or anticipates heating or cooling costs
+> on an irregular basis, may continue to receive the HCUA between billing
+> periods.
+>
+> 3. The operation of a space heater, electric blanket, heat lamp, cooking
+> stove, and similar appliances, as a supplemental heating source, are
+> allowable costs when determining eligibility for the basic utility allowance
+> (BUA), but do not qualify a household for the HCUA.
+>
+> 4. The HCUA standard is as follows:
+>
+> HCUA Standard
+>
+> Effective October 1, 2026 $616
+
+### S744. Basic Utility Allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Basic Utility Allowance (BUA)
+>
+> 1. The Basic Utility Allowance (BUA) is mandated for any households that
+> are not entitled to the HCUA and that incur at least two (2) non-heating or
+> non-cooling utility costs, such as electricity, water, sewer, trash, cooking
+> fuel, or telephone.
+>
+> 2. If more than one SNAP household shares in paying non-heating or non-
+> cooling utility costs of the dwelling, the full BUA will be allowed for each
+> SNAP household sharing in the utility costs.
+>
+> 3. The BUA standard is as follows:
+>
+> BUA Standard
+>
+> Effective October 1, 2026 $390
+
+### S745. One Utility Allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31.C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. One Utility Allowance (OUA)
+>
+> 1. The OUA is mandated for any household that is not entitled to the HCUA
+> or BUA but is responsible for only one (1) non-heating or one (1) non-
+> cooling utility expense. The OUA is not allowed if the household’s only
+> utility expense is a telephone.
+>
+> 2. If more than one (1) SNAP household shares in paying one (1) non-
+> heating or one (1) non-cooling utility cost of the dwelling, the full OUA will
+> be allowed for each SNAP household sharing in the utility cost.
+>
+> 3. The OUA standard is as follows:
+>
+> OUA Standard
+>
+> Effective October 1, 2026 $73
+
+### S746. Telephone allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Telephone allowance
+>
+> 1. The telephone allowance is available to households whose only utility cost is for
+> a telephone. If more than one SNAP household shares in paying the telephone
+> costs, and that is the only utility cost of the dwelling, the full phone standard will
+> be allowed for each SNAP household sharing in the telephone costs.
+>
+> 2. The telephone allowance is as follows:
+>
+> Telephone Standard
+>
+> Effective October 1, 2026 $100
+
+### S747. FNS FY 2026 standard utility allowances, Colorado row
+
+Document: D-85
+
+FNS, SNAP FY 2026 Standard Utility Allowances (SUA) by State (effective October 1, 2025 - September 30, 2026). https://www.fns.usda.gov/sites/default/files/resource-files/2026-05-21-SUA-Table-FY26.xlsx
+
+> FNS, Supplemental Nutrition Assistance Program (SNAP) FY 2026 Standard Utility Allowances (SUA) by State (spreadsheet linked from https://www.fns.usda.gov/snap/eligibility/deduction/standard-utility-allowances). https://www.fns.usda.gov/sites/default/files/resource-files/2026-05-21-SUA-Table-FY26.xlsx
+>
+> Retrieved 2026-11-21 from the source above. The single worksheet ('SUA FY26') is rendered one spreadsheet row per line, cells separated by ' | ', empty rows dropped; values as stored. Excerpts in sources.md quote this file.
+>
+> ```
+> Supplemental Nutrition Assistance Program (SNAP) FY 2026 Standard Utility Allowances (SUA) by State |  |  |  |  |  |  |  |  | 
+> Effective October 1, 2025 - September 30, 2026 |  |  |  |  |  |  |  |  | 
+> State (with Region and Household Size) | Heating and Cooling Utility Allowance  (HCSUA) | Basic/ Limited Utility Allowance (BUA/LUA) | Electricity | Gas and Fuel | Water | Sewage | Trash | Phone | SMD Offset
+> Alabama | 637 | 466 | 0 | 0 | 0 | 0 | 0 | 53 | 4
+> Alaska - Central | 625 | 0 | 134 | 310 | 59 | 61 | 37 | 26 | 0
+> Alaska - Northern | 825 | 0 | 170 | 492 | 44 | 45 | 38 | 35 | 0
+> Alaska - Northwest | 1107 | 0 | 158 | 761 | 63 | 48 | 40 | 37 | 0
+> Alaska - Southcentral | 591 | 0 | 109 | 308 | 42 | 65 | 40 | 27 | 0
+> Alaska - Southeast | 517 | 0 | 72 | 244 | 49 | 81 | 34 | 36 | 0
+> Alaska - Southwest | 1064 | 0 | 169 | 676 | 111 | 54 | 17 | 36 | 0
+> Arizona - 1 to 3 members | 323 | 149 | 0 | 0 | 0 | 0 | 0 | 44 | 6
+> Arizona - 4 or more members | 438 | 201 | 0 | 0 | 0 | 0 | 0 | 44 | 6
+> Arkansas | 342 | 274 | 0 | 0 | 0 | 0 | 0 | 51 | 4
+> California | 663 | 170 | 0 | 0 | 0 | 0 | 0 | 20 | 4
+> Colorado | 594 | 377 | 71 | 71 | 71 | 71 | 71 | 97 | 7
+
+### S748. Colorado SNAP resource limits still stated as effective October 1, 2024
+
+Document: D-82
+
+10 CCR 2506-1 4.408.E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. The resource limits are as follows:
+>
+> Effective October 1, 2024, the resource limit for households that include a
+> member who is aged sixty (60) and older and/or a person with a disability is four
+>
+> thousand and five hundred dollars ($4,500). The resource limit for households
+> that do not include a member who is aged sixty (60) and older and/or a person
+> with a disability is three thousand dollars ($3,000).
+
+### S749. Colorado ABAWD definition as of October 1, 2026: under 18 and 55 or older excluded, and residing with a minor
+
+Document: D-82
+
+10 CCR 2506-1 4.311.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.311 ABAWD WORK REQUIREMENTS
+> ABAWDs must fulfill an ABAWD work requirement in addition to the general work
+> requirements. For the remainder of this section, client statement is considered
+> acceptable verification unless questionable. If verification is requested from the client,
+> case documentation must thoroughly explain why the original client statement was
+> considered questionable.
+>
+> A. The following individuals are not considered ABAWDs and are therefore not
+> subject to the ABAWD work requirement:
+>
+> 1. Aged seventeen (17) or younger.
+>
+> 2. Aged fifty-five (55) or older.
+>
+> 3. Determined to be medically certified as physically or mentally unfit for
+> employment. An individual is medically certified as physically or mentally
+> unfit for employment if they:
+>
+> A. Are receiving temporary or permanent disability benefits issued by
+> governmental or private sources;
+>
+> B. Are obviously mentally or physically unfit for employment as
+> determined by the local office; or
+>
+> C. Provide a statement from a physician, physician’s assistant, nurse,
+> nurse practitioner, designated representative of the physician’s
+> office, a licensed or certified psychologist, a social worker, or any
+> other qualified health professional as defined in 12-200-101
+> through 12-315-126, C.R.S., that the client is physically or
+> mentally unfit for employment.
+>
+> 4. Residing in the same physical household with an individual who is under
+> the age of eighteen (18). The minor individual does not have to be
+> included in the same SNAP household for this exclusion to apply.
+
+### S750. Colorado ABAWD exemptions as of October 1, 2026, including homelessness, veterans and former foster youth
+
+Document: D-82
+
+10 CCR 2506-1 4.311.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.311.1 ABAWD Exemptions
+>
+> Any individual who meets the definition of an ABAWD can be exempt from the ABAWD
+> work requirement by meeting one of the follow exemptions:
+>
+> A. Exempt from the general work requirements;
+>
+> B. Pregnancy;
+>
+> C. A person experiencing homelessness, as defined in Section 4.000.1;
+>
+> D. Veterans;
+>
+> E. Aged twenty-four (24) years and younger and in Foster Care on their eighteenth
+> (18th) birthday;
+>
+> F. Exempt under a waiver approved by the USDA, FNS; or
+>
+> G. Exempt using Colorado defined state exemptions as identified in the current
+> SNAP Employment and Training State Plan.
+
+### S751. Colorado still lists Compact of Free Association citizens among non-citizens ineligible for SNAP
+
+Document: D-82
+
+10 CCR 2506-1 4.305.1.H. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> H. Citizens of nations under Compact of Free Association agreements (Palau,
+> Micronesia, and the Marshall Islands) who have been admitted under those
+> agreements are not qualified non-citizens. These individuals may otherwise
+> reside, work, and study in the U.S.; and,
+
+### S752. Rule history: the October 1, 2026 emergency amendments cover definitions, the COLA tables and the utility allowances only
+
+Document: D-82
+
+10 CCR 2506-1, Editor's Notes (history). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> Rules 4.207.3, 4.401.1-2, 4.407.1, 4.407.3, 4.407.31 emer. rules eff. 10/03/2025.
+>
+> Rules 4.207.3 D, 4.401.1, 4.401.2, 4.407.1, 4.407.3, 4.404.31 eff. 12/30/2025.
+>
+> Rules 4.000.1, 4.207.3 D, 4.401.1, 4.401.2, 4.407.1, 4.407.3 B, 4.407.3 C, 4.407.31 A.4,
+> 4.407.31 B.3, 4.407.31 C.3, 4.407.31 D.2 emer. rules eff. 10/01/2026.
+
+### S753. Telephone and VOIP costs deductible; internet connectivity fees not deductible
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.E.5. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 5. A telephone allowance for one telephone or the cost of telephone service
+> that is associated with a specific device, which includes land-line service
+> or cellular service, including disposable cell phones, and voice over
+> internet protocol (VOIP). Households are not allowed to deduct the cost of
+> pay phones and of phone cards that are not associated with a specific
+> device. One-time deposits shall not be included as shelter costs. With
+> regard to VOIP, only the cost of VOIP is deductible; other charges such as
+> Internet connectivity fees and monthly cable/internet fees are not
+> deductible.
+
+### S760. Colorado Works sanction: effect on the grant payment by level
+
+Document: D-81
+
+9 CCR 2503-6 3.608.4.C-F (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Effect of a sanction on the Colorado Works grant payment
+>
+> The Colorado Works grant payment for the entire household shall be reduced due to a sanction
+> imposed against a member of the assistance unit as follows:
+>
+> 1. First, Second, and Third level sanctions
+>
+> The reduction for the first level sanction shall be one dollar ($1.00), second and third
+> instance of sanction shall be twenty five percent (25%) of an assistance unit’s grant
+> payment.The sanction shall be in effect for one month for each level sanction. A first,
+> second, or third instance of sanction shall progress to the next level of sanction if the
+> client does not re-engage in the Workforce Development program as defined in
+> subsection G. Below by the end of the month that the sanction is being served.
+>
+> 2. Fourth level sanction
+>
+> The reduction for a fourth instance of sanction is 100% and shall result in case closure of
+> the Colorado Works grant payment. The closure shall be in effect for one month. A new
+> application for Colorado Works grant payments is required according to section 3.602.1.
+>
+> D. Serving a sanction
+>
+> All sanctions imposed by a county must be served by the client. If a client has had a break in
+> grant payment for one month or more, the sanction shall be considered served. If a client
+> reapplies for benefits anytime within the calendar month that they are serving a sanction, the
+> client must serve the sanction by having a reduction in benefits according to the first, second, or
+> third level sanctions, or by having a case closed for a fourth level sanction.
+>
+> E. Sanctioning a client that has been sanctioned previously
+>
+> Once a sanction is served, all subsequent occurrences shall be in accordance with the level
+> following the sanction previously served as outlined in 3.608.4.C. and D.
+>
+> F. Sanctioning more than one client in an assistance unit
+>
+> Each Colorado Works case can experience no more than one sanction level in a month. If
+> multiple clients in the same assistance unit have sanctions, the sanctions will be served
+> simultaneously and at the higher sanction level when multiple levels exist.
+
+### S761. Sanction (definition)
+
+Document: D-81
+
+9 CCR 2503-6 3.601. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Sanction” means a reduction in Colorado Works grant payments for an established period of time as a
+> result of not participating in the Workforce Development program.
+
+### S762. Colorado Works diversion payment: terms and conditions
+
+Document: D-81
+
+9 CCR 2503-6 3.606.8.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. A Colorado Works client may receive a diversion payment to address a specific crisis situation or
+> episode of need. Such payments are not designed to meet clients’ basic ongoing needs. A
+> diversion payment may address needs over a period of no more than four (4) months. In addition
+> to a diversion payment, a client who is eligible for diversion may receive supportive payments
+> based on a defined need.
+>
+> A Colorado Works client may receive a diversion payment (diversion grant) under the following
+> terms and conditions:
+>
+> 1. The client does not need long-term cash assistance or basic cash assistance as
+> determined by the assessment.
+>
+> 2. The client demonstrates a need for a specific item or type of assistance, including but not
+> limited to, cash, housing, or transportation. Such assistance may be provided in the form
+> of cash payment, vendor payments, or in-kind services.
+>
+> 3. The client enters into a written or verbal agreement with the county department. The
+> agreement shall be documented in the statewide automated system and shall:
+>
+> a. Document the reason why the client does not need basic cash assistance; and,
+>
+> b. Define the expectations and the terms of the diversion payment; and,
+>
+> c. Specify the need(s) for and the specific type(s) of non-recurring cash payment.
+>
+> 4. The client shall agree not to receive any further Colorado Works assistance in the county
+> where he or she received the diversion payment or any other county for a period of time
+> to be established by the county that issued the diversion payment. This Period of
+> Ineligibility (POI) shall start in the month that the payment is provided and shall not be
+> longer than the equivalent maximum grant payment for the household size over the same
+> period of time.
+>
+> 5. If the client is unable to sustain the agreement because of circumstances beyond his or
+> her control, he or she may apply for and the county may grant basic cash assistance or
+> another diversion payment prior to the end of the POI. The county department can end
+> the POI before it expires if good cause exists and is granted by the county department.
+>
+> 6. A diversion payment is a needs-based, cash or cash-equivalent payment made to a client
+> who is eligible for basic cash assistance, or, at county option, and based on the county’s
+> policy, a higher income limit not to exceed the maximum criteria established in the State
+> plan for non-recurrent short-term benefits. All diversion clients who receive a one-time
+> cash payment are not required to assign child support rights, and receipt of such
+> payment does not count toward their Federal TANF assistance time limit.
+>
+> 7. Two Payments of Assistance in the Same Month
+>
+> A client shall not receive a diversion grant for any month in which he/she receives basic
+
+### S763. Diversion (definition)
+
+Document: D-81
+
+9 CCR 2503-6 3.601. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Diversion” means a short-term cash payment (not to extend beyond four (4) months) intended to meet an
+> episode of need.
+
+### S764. Basic cash assistance grant: drop the cents
+
+Document: D-81
+
+9 CCR 2503-6 3.606.1.K. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> K. Calculation of an Eligible Assistance Unit
+>
+> To calculate the basic cash assistance grant amount for an eligible assistance unit:
+>
+> 1. Deduct the net countable income from the grant amount for the assistance unit; and,
+>
+> 2. Drop the cents, and the remainder is the authorized grant.
+
+### S765. Sanctions are served; a break in payment of a month or more serves it
+
+Document: D-81
+
+9 CCR 2503-6 3.608.4.D-E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> D. Serving a sanction
+>
+> All sanctions imposed by a county must be served by the client. If a client has had a break in
+> grant payment for one month or more, the sanction shall be considered served. If a client
+> reapplies for benefits anytime within the calendar month that they are serving a sanction, the
+> client must serve the sanction by having a reduction in benefits according to the first, second, or
+> third level sanctions, or by having a case closed for a fourth level sanction.
+>
+> E. Sanctioning a client that has been sanctioned previously
+>
+> Once a sanction is served, all subsequent occurrences shall be in accordance with the level
+> following the sanction previously served as outlined in 3.608.4.C. and D.
+
+### S770. LEAP benefit methodology, Steps A-B: estimated home heating costs and the statewide adjustment
+
+Document: D-86
+
+9 CCR 2503-7 3.758.47 Steps A-B (version effective 2025-11-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.758.47 Methodology for Calculating Heating Fuel Assistance Program Benefits [Rev. eff.
+> 11/1/15]
+>
+> The payment amount for an eligible Heating Fuel Assistance Program household shall be determined in
+> accordance with the following method:
+>
+> Step A. Determine Estimated Home Heating Costs (EHHC)
+>
+> The county department/Contractor shall determine estimated home heating costs for November
+> 1st through April 30th for the household's current residence at the time of application. The
+> methodology for calculating estimated home heating costs is outlined below.
+>
+> The county department/Contractor shall determine the applicant household's estimated home
+> heating costs as follows:
+>
+> 1. An applicant household's estimated home heating cost shall consist of the total actual
+> home heating costs for the primary heating fuel for November 1st through April 30th, of
+> the prior year's heating season. Vendors serving applicant households shall be required
+> to supply actual home heating costs for November 1st through April 30th of the prior
+> year's heating season.
+>
+> 2. For any applicant whose home heating costs for the prior year's heating season are not
+> available or determined by the county department to be invalid, the county department
+> shall use the flat rate amount. The State Department shall adjust the flat rate amounts
+> annually, based on the average actual home heating costs found in the LEAP system by
+> dwelling type for the prior year's heating season contained in the annual LEAP training
+> manual.
+>
+> 3. The State Department shall adjust the standard rates for heating costs that are included
+> in rent annually, based on the flat rate amounts adjustment contained in the annual LEAP
+> training manual.
+>
+> Step B Initial Statewide Adjustment
+>
+> The State LEAP office will adjust benefit levels at the beginning of each LEAP program year based upon
+> the projected number of LEAP applications to be received and the estimated level of funding. Annually,
+> this calculation determines the percentage of the estimated home heating costs (EHHC) of the applicant
+> household to be adjusted.
+
+### S771. LEAP benefit methodology, Steps C-D: electric heat portion and household income contribution
+
+Document: D-86
+
+9 CCR 2503-7 3.758.47 Steps C-D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Step C. Adjustment for Electric Heat
+>
+> Households using electric heat will have their electric usage costs reduced to the percentage
+> amounts listed below.
+>
+> HEAT PORTION OF TOTAL ELECTRIC EHHC
+> House/mobile home 62% for heat
+> Townhouse / duplex / triplex / fourplex 48% for heat
+> Apartment, condominium, hotel, Cabin, Tiny Home 43% for heat
+> RV, 5th wheel, camper 50% for heat
+>
+> Step D. Adjustment Household Income Contribution
+>
+> The state department shall reduce the amount the of estimated home heating costs (EHHC) based on the
+> chart below to determine the household income contribution:
+>
+> LEVEL OF FEDERAL POVERTY LEVEL EHHC ADJUSTMENT
+> 0 – 75% FPL 0%
+> 75.01 – 125% FPL 10%
+> 125.01– 175% FPL 20%
+> 175.01+% + 30%
+
+### S772. LEAP benefit methodology, Steps E-G: shared living, subsidized housing allowance, minimum and maximum
+
+Document: D-86
+
+9 CCR 2503-7 3.758.47 Steps E-G. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Step E. Adjustment for Shared Living Arrangements
+>
+> The estimated home heating costs shall be adjusted if the household shares living arrangements
+> with other households but is determined to be a separate household as defined in the
+> “Definitions” section of these rules. If the household shares living arrangements with other
+> households, the estimated home heating cost shall be divided by the number of separate
+> households sharing the living arrangements, whether or not all households sharing the living
+> arrangements are eligible for the Heating Fuel Assistance Program.
+>
+> Step F. Adjustment for Subsidized Housing Home Heating Allowance
+>
+> The State Department shall adjust the amount of estimated home heating cost remaining after
+> Step B if the household resides in subsidized housing (as defined in the “Definitions” section of
+> these rules). A flat rate rental cost allowance for heating ($30 per month or $180 per heating
+> season) shall be deducted from the remaining amount of estimated home heating costs. If the
+> household does not live in subsidized housing, the amount remaining after Step B shall be the
+> estimated home heating cost.
+>
+> Step G. Determine Heating Fuel Assistance Program Amount
+>
+> The State Department shall determine a benefit amount for each eligible household by
+> subtracting the applicable adjustments listed above, in Steps B-F from the household’s estimated
+> home heating costs (EHHC) determined in Step A, 1-3. Any eligible household will receive at
+> least the minimum, up to and including, the maximum benefit amount established by the
+> Department for the LEAP program year.
+
+### S773. LEAP income limit: 60% of the FFY 2023 state median income, incorporating 45 CFR 96.85 (2025) and LIHEAP IM 2025-02
+
+Document: D-86
+
+9 CCR 2503-7 3.752.22.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> D. All applicant households whose countable income for the eligibility period is up to and including
+> 60 percent (60%) of the state median income level released by the U.S Department of Health and
+> Human Services for federal fiscal year 2023 shall meet the income requirements for the heating
+> fuel assistance program. The state department shall adjust the income limits annually based on
+> funds available and the state median income guidelines.
+>
+> The state median income level means the income level for a household as set forth in 45 C.F.R. §
+> 96.85 (2025), and the Low Income Home Energy Assistance Program Information Memorandum
+> 2025, which are hereby incorporated by reference, no later amendments or editions are
+> incorporated. The regulation and memorandum are from the U.S. Department of Health and
+> Human Services. The federal regulation is available for no cost at HTTPS://WWW.ECFR.GOV/.
+> The memorandum is available for no cost at HTTPS://ACF.GOV/OCS/POLICY-
+> GUIDANCE/LIHEAP-IM2025-02-FEDERAL-POVERTY-GUIDELINES-AND-STATE-MEDIAN-
+> INCOME-ESTIMATES. The federal regulation and memorandum are also available for public
+> inspection and copying at the Colorado Department of Human Services, Food and Energy
+> Assistance Division,1575 Sherman Street, Denver, Colorado, 80203, during regular business
+> hours.
+
+### S774. LEAP: living arrangements that are not vulnerable
+
+Document: D-86
+
+9 CCR 2503-7 3.752.25.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> B. Households in the following living arrangements shall not be considered to be vulnerable:
+>
+> 1. Institutional group care facilities, public or private, such as nursing homes, foster care
+> homes, group homes, substance abuse treatment centers , or other such living
+> arrangements where the provider is liable for the costs of shelter and home heating, in
+> part or in full, on behalf of such individuals;
+>
+> 2. Room and board, bed and breakfast;
+>
+> 3. Correctional facilities;
+>
+> 4. Dormitory, fraternity or sorority house;
+>
+> 5. Subsidized housing as defined in the “Definitions” section of these rules which does not
+> have an individual check meter for heat for each unit or which cannot provide other
+> evidence of responsibility for paying home heating surcharges;
+>
+> 6. Any applicant, or applicant household who is considered homeless or resides in non-
+> traditional dwellings;
+>
+> 7. Commercial accounts or commercial properties that also serve as the client’s dwelling;
+>
+> Income Maintenance
+>
+> 8. Hotels, unless proof that the household has lived or will live in the hotel continuously for
+> thirty (30) calendar days at the time of application and that heat is included in rent. Proof
+> may be shown by providing a monthly statement, billing statement or receipt indicating
+> the monthly arrangement.
+
+### S775. Subsidized Housing (LEAP definition)
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Subsidized Housing”: Subsidized housing means housing in which a tenant receives an ongoing
+> governmental or other subsidy (e.g., assistance provided by a church) and the amount of rent paid is
+> based on the amount of the tenant's income.
+
+### S776. LEAP: Point in Time (definition)
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Point in Time”: Point in time indicates that eligibility is determined by accounting for the circumstances of
+> the household on the date of the application, regardless of any changes thereafter.
+
+### S780. CCCAP entry and exit income eligibility; FPG and 85% SMI table through September 30, 2026
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.1-2 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> H. Low-Income Eligibility Guidelines
+>
+> 1. Adult caretaker(s) or teen parent(s) gross income must not exceed eighty-
+> five percent (85%) of the state median income.
+>
+> a. Entry eligibility shall be set by the Department at a level based on
+> the self-sufficiency standard, not to be set below one hundred
+> eighty-five percent (185%) of the federal poverty level.
+>
+> b. Exit income eligibility must be eighty-five percent (85%) of the state
+> median income.
+>
+> 2. Through September 30, 2026, monthly gross income levels, for one-
+> hundred percent (100%) of the Federal Poverty Guideline (FPG), as well
+> as eighty-five percent (85%) of State Median Income (SMI), the state and
+> federal maximum income limits, for the corresponding household size are
+> as follows:
+>
+> Family 100% Federal 85% State Median Income (SMI) (State
+> Size Poverty Guideline and Federal Maximum Income Limit)
+> (FPG)
+>
+> 1 $1,304.17 $5,100.99
+>
+> 2 $1,762.50 $6,683.61
+>
+> 3 $2,220.83 $8,256.22
+>
+> 4 $2,679.17 $9,828.83
+>
+> 5 $3,137.50 $11,401.45
+>
+> 6 $3,595.83 $12,974.06
+>
+> Family 100% Federal 85% State Median Income (SMI) (State
+> Size Poverty Guideline and Federal Maximum Income Limit)
+> (FPG)
+>
+> 7 $4,054.17 $13,268.93
+>
+> 8 $4,512.50 $13,563.79
+>
+> Each
+> Additional $458.33 $294.87
+
+### S781. CCCAP FPG and 85% SMI table effective October 1, 2026
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.3. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3. Effective October 1, 2026, monthly gross income levels, for one-hundred
+> percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-
+> five percent (85%) of State Median Income (SMI), the state and federal
+> maximum income limits, for the corresponding household size are as
+> follows:
+>
+> Family 100% Federal 85% State Median Income (SMI) (State
+> Size Poverty Guideline and Federal Maximum Income Limit)
+> (FPG)
+>
+> 1 $1,330.00 $5,347.35
+>
+> 2 $1,803.33 $6,992.69
+>
+> 3 $2,276.67 $8,638.03
+>
+> 4 $2,750.00 $10,283.37
+>
+> 5 $3,223.33 $11,928.71
+>
+> 6 $3,696.67 $13,574.05
+>
+> 7 $4,170.00 $13,882.55
+>
+> 8 $4,643.33 $14,191.05
+>
+> Each
+> Additional $473.33 $308.50
+
+### S782. CCCAP parent fees: basis and dropping the cents
+
+Document: D-87
+
+8 CCR 1403-1 3.124.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.124 PARENT FEES
+> A. Parent fees are based on gross countable income for the child care household
+> compared to the household size, taking the number of children in care into
+> account. Parent fees must be calculated in whole dollars by dropping the cents.
+
+### S783. CCCAP parent fee: 20% reduction for a top-three quality-rated provider
+
+Document: D-87
+
+8 CCR 1403-1 3.124.H. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> H. For a Low-Income or Colorado Works Child Care household utilizing a child care
+> provider in the top three levels of the Department’s quality rating system, the
+> parent fee shall be reduced by twenty percent (20%) of the regularly calculated
+> parent fee. For households utilizing multiple child care providers, only one child
+> care provider is required to be in the top three quality levels for the reduced
+
+### S784. CCCAP parent fee exceptions
+
+Document: D-87
+
+8 CCR 1403-1 3.124.I. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> I. All adult caretakers and teen parents are required to pay the parent fee as
+> determined by the formula listed in rule section 3.124(P), except in the following
+> cases:
+>
+> 1. When one (1) or two (2) teen parent households who are in middle/junior
+> high, high school, GED, or vocational/technical training activity and
+> payment of a fee produces a hardship, the parent fee may be waived
+> entirely and documented in the case file. The parent fee waiver shall be
+> reviewed during each re-determination.
+>
+> 2. The Low-Income or Colorado Works Child Care household is eligible for a
+> reduced parent fee based on the quality level of the child care provider.
+>
+> 3. Colorado Works households where the adult caretaker or teen parent has
+> entered into a current individualized plan and is participating in an
+> allowable work activity as defined in Colorado Works rule (9 CCR 2503-6),
+> incorporated by reference in rule section 3.103(CC), above, other than
+> paid employment, shall not have a parent fee.
+>
+> 4. Child Welfare Child Care households as defined in the Social Services
+> rule manual, rule section 7.302 (12 CCR 2509-4), incorporated by
+> reference in rule section 3.103 (Y), above, shall not have a parent fee.
+>
+> 5. Families Experiencing Homelessness as defined in rule section 3.121
+> shall not have a parent fee during the stabilization period.
+>
+> 6. Protective service households as defined in rule section 3.118 shall not
+> have a parent fee unless the child(ren) has countable income.
+>
+> 7. Families that have no income shall have no parent fee.
+
+### S785. CCCAP parent fee formula through July 31, 2028
+
+Document: D-87
+
+8 CCR 1403-1 3.124.P. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> P. Beginning July 1, 2021, through July 31, 2028, the county must assess parent
+> fees based upon a marginal rate increase of fourteen percent (14%) for every
+> dollar of gross countable household income above one hundred percent (100%)
+>
+> of the federal poverty guidelines (FPG) outlined in rule sections 3.111(H)(2) and
+> (3).
+>
+> 1. The county must assess a parent fee of one percent (1%) of gross income
+> to eligible households with gross income that is at or below one hundred
+> percent (100%) of the FPG.
+>
+> 2. For eligible households with gross income that is above one hundred
+> percent (100%) of the FPG, the county must assess a parent fee at one
+> percent (1%) of their income plus a marginal rate increase of fourteen
+> percent (14%) for every dollar of gross countable household income
+> above one hundred percent (100%) of the FPG.
+>
+> 3. An additional fifteen-dollar ($15) fee shall be added to the parent fee for
+> each additional child when households are requesting care for more than
+> one (1) child and have income above one hundred percent (100%) of the
+> FPG. If care is only requested for one (1) child, the additional fifteen-dollar
+> ($15) fee does not apply.
+
+### S786. CCCAP parent fee formula beginning August 1, 2028
+
+Document: D-87
+
+8 CCR 1403-1 3.124.Q. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> Q. Beginning August 1, 2028, parent fees shall be assessed based on the following
+> formula:
+>
+> Income Level Marginal Rate
+>
+> (% of Federal Poverty (Assessed % for Each
+> Level) Additional Dollar)
+>
+> Less than or equal to 1%
+> 100% FPL
+>
+> 101%-130 FPL 3%
+>
+> 131%-160% FPL 5%
+>
+> 161% and above 7%
+
+### S787. CCCAP parent fee: part-time care at 55%
+
+Document: D-87
+
+8 CCR 1403-1 3.124.U. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> U. When all children in a household are in part-time care, the parent fee shall be
+> assessed at fifty-five percent (55%) of the above-calculated fee. Part-time care is
+> defined as an average of less than thirteen (13) full-time equivalent units of care
+> per month.
+
+### S790. Summer EBT eligibility: school-aged categorical children and children enrolled in NSLP/SBP schools
+
+Document: D-88
+
+7 CFR 292.6 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/part-292/section-292.6
+
+> § 292.6 Eligibility.
+>
+> Children eligible for Summer EBT include those who, at any time during the period of eligibility, are:
+>
+> (a) School-aged and categorically eligible.
+>
+> (b) Enrolled in an NSLP/SBP-participating school, except for special provision schools, and:
+>
+> (1) Categorically eligible;
+>
+> (2) Meet the requirements to receive free or reduced price meals at § 292.5(a), as determined through an NSLP/SBP application;
+>
+> (3) Otherwise are determined eligible to receive a free or reduced price meal; or
+>
+> (4) Determined eligible through a Summer EBT application, consistent with § 292.13.
+>
+> (c) Enrolled in a special provision school, and:
+>
+> (1) Categorically eligible;
+>
+> (2) Otherwise meet the requirements to receive free or reduced price meals at § 292.5(a), as determined through an NSLP/SBP application; or
+>
+> (3) Determined eligible through a Summer EBT application, consistent with § 292.13.
+
+### S791. Summer EBT eligibility follows the NSLP/SBP free and reduced-price standards
+
+Document: D-88
+
+7 CFR 292.5. https://www.ecfr.gov/current/title-7/part-292/section-292.5
+
+> § 292.5 General purpose and scope.
+>
+> (a) Summer EBT eligibility is based on the eligibility standards for the NSLP/SBP, which includes children who are income eligible for free or reduced-price school meals based on the Income Eligibility Guidelines published by the Department by notice in the Federal Register and in accordance with the household size and income standards for free and reduced price school meals, and children who are categorically eligible, as defined in § 292.2.
+>
+> (b) The Income Eligibility Guidelines are published annually and change on July 1. The guidelines in effect on the date of application must be used to determine eligibility.
+
+### S792. Categorically eligible (Summer EBT definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/part-292/section-292.2
+
+> Categorically eligible means considered income eligible for Summer EBT, as applicable, based on documentation that a child is a member of a household, as defined in this section, and one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR, or another means tested program, as approved by the Secretary. A foster child, homeless child, a migrant child, a Head Start child and a runaway child, as defined in § 245.2 of this chapter, are also categorically eligible. Categorical eligibility and automatic eligibility may be used synonymously.
+
+### S793. School aged (Summer EBT definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/part-292/section-292.2
+
+> School aged means the years in which a child is required to attend school, or an equivalent program as defined by State or Tribal law. Also known as the age requirement for compulsory education.
+
+### S794. Summer EBT benefit amount: $40 a month in 2024, adjusted annually by the Thrifty Food Plan
+
+Document: D-88
+
+7 CFR 292.15(e). https://www.ecfr.gov/current/title-7/part-292/section-292.15
+
+> (e) Benefit amount. (1) In 2024, the benefit will be $40 per month in the summer operational period for each eligible child, and will be adjusted in subsequent years to reflect changes in the cost of food as measured by the Thrifty Food Plan (TFP). Any year-to-year decrease of the TFP will not be implemented.
+>
+> (2) In Alaska, Hawaii, Guam, American Samoa, Puerto Rico, the Virgin Islands of the United States, and the Commonwealth of the Northern Mariana Islands, the Secretary may establish appropriate adjustments for each such State to the national average payment rates to reflect the differences between the costs of foods in those States and the costs of foods in all other States.
+>
+> (3) Benefit amounts will be issued in an amount equal to the unrounded benefit amount from the prior year, adjusted to the nearest lower dollar increment to reflect changes to the cost of the diet described in section 3(u) of the Food and Nutrition Act of 2008 (7 U.S.C. 2012(u)) for the 12-month period ending on November 30 of the preceding calendar year and rounded to the nearest lower dollar increment. Rates will be effective January 1 through December 31 of each year.
+
+### S795. Summer EBT: a full three months of benefits for the summer operational period
+
+Document: D-88
+
+7 CFR 292.15(d). https://www.ecfr.gov/current/title-7/part-292/section-292.15
+
+> (iii) The Summer EBT agency's issuance schedule does not need to align with the start of calendar months and may include staggered benefit issuance across multiple days. Regardless of the issuance schedule, Summer EBT agencies may only issue a full three months of benefits for the summer operational period.
+
+### S796. Summer EBT 2026 benefit levels: rounding, three months, and the contiguous States at $40 a month and $120 a summer
+
+Document: D-89
+
+91 Fed. Reg. 21397 (Apr. 22, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-22/pdf/2026-07843.pdf
+
+> This notice provides the 2026
+> Summer EBT monthly and total summer
+> benefit levels. The law requires the
+> adjusted level to be rounded down to
+> the nearest dollar amount. The total
+> summer benefit level is the rounded
+> down monthly level multiplied by
+> three.
+> Calculation of Benefit Levels
+> Contiguous States and Indian Tribal
+> Organizations: The adjustment is based
+> on the monthly TFP cost for a reference
+> family of four. The change for the 12month period ending on November 30th
+> of the preceding calendar year is used
+> to adjust the benefit level from the
+> previous year. The November 2024 to
+> November 2025 percent change is .49
+> percent, which results in no change in
+> monthly benefit levels for 2026. The
+> benefits for 2026 remain at $40
+> (rounded down from $40.82) monthly
+> and $120 total.
+
+### S797. Summer EBT 2026 benefit levels are in effect for calendar year 2026
+
+Document: D-89
+
+91 Fed. Reg. 21396-21397 (Apr. 22, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-22/pdf/2026-07843.pdf
+
+> DATES: These benefit levels are in effect
+> January 1, 2026, through December 31,
+> 2026.
+
+### S798. School meal income eligibility guidelines July 1, 2026 - June 30, 2027: 130% and 185% of the 2026 poverty guidelines
+
+Document: D-90
+
+91 Fed. Reg. 17933 (Apr. 9, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-09/pdf/2026-06842.pdf
+
+> The Income Eligibility Guidelines
+> The following are the Income
+> Eligibility Guidelines to be effective
+> from July 1, 2026 through June 30, 2027.
+> The Department’s guidelines for free
+> meals and milk, and reduced price
+> meals were obtained by multiplying the
+> year 2026 Federal income poverty
+> guidelines by 1.30 and 1.85,
+> respectively, and by rounding the result
+> upward to the next whole dollar.
+
+### S799. School meal income eligibility guidelines: monthly figure is annual divided by 12, rounded up
+
+Document: D-90
+
+91 Fed. Reg. 17933 (Apr. 9, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-09/pdf/2026-06842.pdf
+
+> Income calculations are made based
+> on the following formulas: monthly
+> income is calculated by dividing the
+> annual income by 12; twice monthly
+> income is computed by dividing annual
+> income by 24; income received every
+> two weeks is calculated by dividing
+> annual income by 26; and weekly
+> income is computed by dividing annual
+> income by 52. All numbers are rounded
+> upward to the next whole dollar. The

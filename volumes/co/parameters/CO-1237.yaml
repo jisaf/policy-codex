@@ -1,0 +1,22 @@
+id: CO-1237
+name: SNAP one utility allowance
+identifier: snap_sua_one_utility
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: Colorado's One Utility Allowance (OUA), for a household not entitled to the HCUA or BUA that is responsible for only one non-heating, non-cooling utility expense other than a telephone, per 10 CCR 2506-1 4.407.31.C.
+precision: The FNS FY2026 table (S747) states a single-utility figure per utility type (electricity, gas and fuel, water, sewage, trash), all $71 for Colorado; that common figure is the FY2026 OUA.
+versions:
+  - from: "2025-10-01"
+    to: "2026-10-01"
+    value: 71
+    source: S747
+  - from: "2026-10-01"
+    value: 73
+    source: S745
+sources: [S745, S747]
+implemented: engine
+tags: [income, snap, state_election]
+rationale: No existing parameter states it (OQ-36); snap_utility_allowance_amount (CO-036) needs it. Same table as CO-1235, a different tier.
+nearest: [CO-1235]

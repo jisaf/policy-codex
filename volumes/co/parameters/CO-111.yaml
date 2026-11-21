@@ -8,8 +8,12 @@ program: SNAP
 meaning: The amount added to the 8-person gross income limit for each household member above 8.
 versions:
   - from: "2025-10-01"
+    to: "2026-10-01"
     value: 596
     source: S53
-rationale: 7 CFR 273.9(a)(3)(i) requires the increment for households over 8 persons; D-21's table 2 (S53) states the FY2026 dollar increment, which snap_gross_income_limit_table alone does not carry.
-sources: [S53]
+  - from: "2026-10-01"
+    value: 616
+    source: S735
+rationale: "7 CFR 273.9(a)(3)(i) requires the increment for households over 8 persons; D-21's table 2 (S53) states the FY2026 dollar increment, which snap_gross_income_limit_table alone does not carry. Phase 8 adds the FY2027 version (S735, S739)."
+sources: [S53, S735, S739]
 tags: [income, snap]

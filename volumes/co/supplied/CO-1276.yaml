@@ -1,0 +1,13 @@
+id: CO-1276
+name: LEAP minimum benefit for the program year
+identifier: leap_benefit_minimum
+kind: supplied
+type: money
+scope: person
+program: LEAP
+meaning: The minimum Heating Fuel Assistance benefit the Department establishes for the LEAP program year, per 9 CCR 2503-7 3.758.47 Step G. Stated on the household head.
+supplied_by: Department's annual LEAP program-year benefit levels.
+sources: [S772]
+open: [OQ-253]
+tags: [income]
+rationale: The rule does not state the figure (OQ-253); leap_benefit_amount (CO-1281) needs it.

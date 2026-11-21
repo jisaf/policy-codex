@@ -1,0 +1,13 @@
+id: CO-1282
+name: LEAP subsidized housing heating allowance
+identifier: leap_subsidized_housing_heating_allowance
+kind: parameter
+type: money
+scope: global
+program: LEAP
+meaning: The flat rental-cost allowance for heating deducted from a subsidized-housing household's estimated home heating costs - $30 a month, $180 a heating season - per 9 CCR 2503-7 3.758.47 Step F.
+value: 180
+sources: [S772]
+implemented: engine
+tags: [income]
+rationale: No existing parameter states it; leap_benefit_amount (CO-1281) needs the seasonal figure.

@@ -1,0 +1,13 @@
+id: CO-1295
+name: School meal household monthly income
+identifier: school_meal_household_income
+kind: supplied
+type: money
+scope: person
+program: SunBucks
+meaning: The current monthly gross income of the child's school meal household, as reported on an NSLP/SBP or Summer EBT application, per 7 CFR 292.5 and the Income Eligibility Guidelines.
+supplied_by: NSLP/SBP or Summer EBT application.
+sources: [S791, S799]
+tags: [sebt, income]
+rationale: As for school_meal_household_size (CO-1294), the school-meal household's income is stated, not derived; sebt_eligibility_status (CO-1298) needs it.
+nearest: [CO-1294]

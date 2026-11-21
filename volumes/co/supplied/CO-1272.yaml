@@ -1,0 +1,13 @@
+id: CO-1272
+name: LEAP statewide adjustment rate
+identifier: leap_statewide_adjustment_rate
+kind: supplied
+type: rate
+scope: person
+program: LEAP
+meaning: The percentage of a household's estimated home heating costs the State LEAP office sets at the start of the program year, from the projected number of applications and the estimated funding, to adjust benefit levels (3.758.47 Step B), expressed as a fraction. Not appealable (3.758.48). Stated on the household head.
+supplied_by: State LEAP office's annual benefit-level notice to county departments (3.758.48).
+sources: [S770]
+open: [OQ-253]
+tags: [income]
+rationale: The rule does not state the annual figure (OQ-123), so it enters as a supplied fact; leap_benefit_amount (CO-1281) needs it.

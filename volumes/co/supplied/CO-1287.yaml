@@ -1,0 +1,12 @@
+id: CO-1287
+name: Uses a top-three quality-rated child care provider
+identifier: uses_top_quality_rated_provider
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: The CCCAP household uses at least one child care provider rated in the top three levels of the Department's quality rating system, which reduces the parent fee by 20%, per 8 CCR 1403-1 3.124.H. Stated on the household's adult caretaker or teen parent.
+supplied_by: Child care authorization and the provider's quality rating in the Department's system.
+sources: [S783]
+tags: [income]
+rationale: No existing fact states a provider's quality level; cccap_parent_fee (CO-1290) needs it.

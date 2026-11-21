@@ -1,0 +1,13 @@
+id: CO-1293
+name: Enrolled in an NSLP or SBP school
+identifier: is_enrolled_in_nslp_school
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: The child was enrolled, at some time during the period of eligibility (from the first day of the preceding instructional year through the last day of the summer operational period), in a school participating in the National School Lunch Program or School Breakfast Program, including a special provision (CEP or Provision 1-3) school, per 7 CFR 292.2 and 292.6(b)-(c).
+supplied_by: State NSLP/SBP enrollment database (7 CFR 292.12(c)) or school records.
+sources: [S790]
+tags: [sebt]
+rationale: No existing fact states school-meal-program enrollment (is_enrolled_in_school says only that a person attends school); sebt_eligibility_status (CO-1298) needs it.
+nearest: [CO-020]

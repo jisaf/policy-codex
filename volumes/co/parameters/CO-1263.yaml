@@ -1,0 +1,13 @@
+id: CO-1263
+name: Colorado Works second- and third-level sanction rate
+identifier: cw_sanction_reduction_rate
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: The share of the assistance unit's grant payment removed for a second or third sanction - twenty-five percent - per 9 CCR 2503-6 3.608.4.C.1.
+value: 0.25
+sources: [S760]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing parameter states it; cw_sanction_reduction (CO-1265) needs it.

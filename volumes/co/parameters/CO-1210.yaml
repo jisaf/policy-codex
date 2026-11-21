@@ -1,0 +1,13 @@
+id: CO-1210
+name: Home Care Allowance minimum functional capacity score
+identifier: af_hca_min_capacity_score
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The minimum functional capacity score for every HCA tier - 21 - per 9 CCR 2503-5 3.570.13.C.3 and 3.570.14.B.
+value: 21
+sources: [S714, S715]
+implemented: engine
+tags: [cash, disability]
+rationale: No existing parameter states the HCA capacity score floor; af_hca_tier (CO-1216) needs it.

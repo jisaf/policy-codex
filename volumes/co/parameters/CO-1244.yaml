@@ -1,0 +1,21 @@
+id: CO-1244
+name: Summer EBT monthly benefit level (48 States and DC)
+identifier: sebt_monthly_benefit
+kind: parameter
+type: money
+scope: global
+program: SunBucks
+meaning: The Summer EBT monthly benefit per eligible child in the 48 contiguous States and the District of Columbia for the calendar year - $40 in 2024, adjusted each January 1 by the change in the Thrifty Food Plan and rounded down to the dollar - per 7 CFR 292.15(e) and the annual benefit levels notice.
+precision: The 2025 level was also $40 (the 2026 notice's table, S796); the 2024 version therefore runs to 2026-01-01 and the 2026 version carries the notice's figure for calendar year 2026 with no end date until the 2027 notice.
+versions:
+  - from: "2024-01-01"
+    to: "2026-01-01"
+    value: 40
+    source: S794
+  - from: "2026-01-01"
+    value: 40
+    source: S796
+sources: [S794, S796, S797]
+implemented: engine
+tags: [sebt, income]
+rationale: No existing parameter states the Summer EBT benefit; sebt_benefit_amount (CO-1299) needs it. Versioned by calendar year because the rate is reset each January 1 (292.15(e)(3)).

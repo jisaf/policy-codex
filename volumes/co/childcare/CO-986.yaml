@@ -21,4 +21,4 @@ tests:
   - {id: CO-986-T4, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 7000, cccap_household_size: 2, cccap_entry_income_limit_pct_fpl: 5.0}, expect: false}
   # Household size above 8 exercises cccap_poverty_guideline_each_additional and cccap_smi_income_limit_each_additional together.
   - {id: CO-986-T5, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 9786, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: true}
-  - {id: CO-986-T6, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_income: 9800, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}
+  - {id: CO-986-T6, title: "Figures effective October 1, 2024 (S485)", as_of: "2025-09-30", month: "2025-09", given: {cccap_household_income: 9800, cccap_household_size: 10, cccap_entry_income_limit_pct_fpl: 1.85}, expect: false}

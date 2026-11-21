@@ -1,0 +1,13 @@
+id: CO-1218
+name: Home Care Allowance authorized amount
+identifier: hca_authorized_amount
+kind: supplied
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: The monthly Home Care Allowance amount the Case Management Agency authorizes for the client within the client's tier - the maximum authorized amount for the tier, or less where the provider can deliver the authorized services for less or the client is unwilling or unable to use the maximum - per 9 CCR 2503-5 3.570.13.D.
+supplied_by: Case Management Agency authorization on the State-approved form, forwarded to the county department.
+sources: [S714]
+open: [OQ-250]
+tags: [cash, income]
+rationale: The rule states no dollar figure for any tier's maximum authorized amount (OQ-250), so the CMA's authorized amount enters as a supplied fact; af_hca_grant (CO-1219) needs it.
