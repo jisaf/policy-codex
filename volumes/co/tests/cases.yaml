@@ -13,6 +13,10 @@
 - id: CO-01
   title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
   as_of: "2026-10-01"
+  # Hard-coded numbers audit H-18: the county entry limit is a State figure (cccap_entry_income_limit_pct_fpl_table, CO-3004)
+  # awaiting the CDEC county schedule (OQ-121), no longer stated on each person. The case states the adams row it
+  # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
+  parameters: {cccap_entry_income_limit_pct_fpl_table: {adams: 1.85}}
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -158,7 +162,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: married
@@ -417,7 +420,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: married
@@ -675,7 +677,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
@@ -908,7 +909,6 @@
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
@@ -1145,7 +1145,6 @@
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
@@ -2203,6 +2202,10 @@
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
   as_of: "2026-11-01"
+  # Hard-coded numbers audit H-18: the county entry limit is a State figure (cccap_entry_income_limit_pct_fpl_table, CO-3004)
+  # awaiting the CDEC county schedule (OQ-121), no longer stated on each person. The case states the adams row it
+  # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
+  parameters: {cccap_entry_income_limit_pct_fpl_table: {adams: 1.85}}
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -2348,7 +2351,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: married
@@ -2607,7 +2609,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: married
@@ -2864,7 +2865,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
@@ -3097,7 +3097,6 @@
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
@@ -3332,7 +3331,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
@@ -6047,6 +6045,10 @@
   # not in the unit) was stated ineligible_income and now derives ineligible_no_dependent_child, grant 0;
   # no expectation reads his Colorado Works status (his CCCAP status is ineligible_child either way).
   as_of: "2026-12-01"
+  # Hard-coded numbers audit H-18: the county entry limit is a State figure (cccap_entry_income_limit_pct_fpl_table, CO-3004)
+  # awaiting the CDEC county schedule (OQ-121), no longer stated on each person. The case states the denver row it
+  # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
+  parameters: {cccap_entry_income_limit_pct_fpl_table: {denver: 1.85}}
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -6103,7 +6105,6 @@
         resides_in_medical_institution: false
         is_responsible_for_heating_costs: true      # heat included in rent, non-subsidized (3.752.25.A.2)
         has_primary_heating_source: true            # building furnace (3.751.1 "Primary Heating Source")
-        cccap_entry_income_limit_pct_fpl: 1.85       # 3.111.H.1.a's stated floor (185% FPL)
         snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6171,7 +6172,6 @@
         resides_in_medical_institution: false
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
-        cccap_entry_income_limit_pct_fpl: 1.85
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6237,7 +6237,6 @@
         resides_in_medical_institution: false
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
-        cccap_entry_income_limit_pct_fpl: 1.85
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6309,7 +6308,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         shares_heating_fuel_with: true
-        cccap_entry_income_limit_pct_fpl: 1.85
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6362,7 +6360,6 @@
         resides_in_medical_institution: false
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
-        cccap_entry_income_limit_pct_fpl: 1.85
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0

@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CCCAP
-meaning: Whether the Protective Services household's countable income (cccap_protective_services_income, CO-994) is at or below the county entry income limit for a household of one, since 3.119.A makes every Protective Services household a household of one for income eligibility.
-precision: Reads the same entry-limit computation as cccap_income_within_entry_limit (CO-986) - the supplied county percentage of the size-1 100% FPG figure, capped at the size-1 85% SMI figure - fixed at household size 1 rather than cccap_household_size (CO-983), per 3.119.A.
-derived: ["<=", cccap_protective_services_income, [min, ["*", cccap_entry_income_limit_pct_fpl, [lookup, cccap_poverty_guideline_monthly_table, 1]], [lookup, cccap_smi_income_limit_table, 1]]]
+meaning: Whether the Protective Services household's countable income (cccap_protective_services_income, CO-994) is at or below the county entry income limit for a household of cccap_protective_services_household_size (CO-3008), since 3.119.A makes every Protective Services household a household of one for income eligibility.
+precision: "Reads the same entry-limit computation as cccap_income_within_entry_limit (CO-986) - the county percentage of the 100% FPG figure, capped at the 85% SMI figure - fixed at the protective services household size rather than cccap_household_size (CO-983), per 3.119.A. The 100% guideline is computed as cccap_poverty_guideline_monthly (CO-3007) computes it, for the protective services household size instead of the household's own size: the HHS guideline in force on the most recent October 1, divided by twelve and rounded to the cent. Hard-coded numbers audit H-21: the size was a literal 1."
+derived: ["<=", cccap_protective_services_income, [min, ["*", cccap_entry_income_limit_pct_fpl, ["/", [round, ["/", ["*", [lookup_extended, [as_of, federal_poverty_guideline_annual_table, [first_day, [latest_month_of_year, cccap_poverty_guideline_start_month, [det_month]]]], cccap_protective_services_household_size, [as_of, federal_poverty_guideline_annual_each_additional, [first_day, [latest_month_of_year, cccap_poverty_guideline_start_month, [det_month]]]]], 100], 12]], 100]], [lookup_extended, cccap_smi_income_limit_table, cccap_protective_services_household_size, cccap_smi_income_limit_each_additional]]]
 sources: [S488, S485]
 implemented: engine
 tags: [income]

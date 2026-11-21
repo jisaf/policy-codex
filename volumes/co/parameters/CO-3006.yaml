@@ -1,0 +1,12 @@
+id: CO-3006
+name: CCCAP poverty guideline year, starting month
+identifier: cccap_poverty_guideline_start_month
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The calendar month number (10, October) on whose first day CCCAP applies a new year's federal poverty guideline: 8 CCR 1403-1 3.111.H.2 states the monthly 100% FPG figures \"Through September 30, 2026\" and 3.111.H.3 those \"Effective October 1, 2026\", each the HHS guideline of that calendar year divided by twelve."
+value: 10
+sources: [S780, S781]
+tags: [income]
+rationale: "Hard-coded numbers audit D-1: CCCAP restated the HHS guideline as its own dated monthly table (CO-323, CO-324) because the engine read every parameter on the determination date; with as_of (P25) and P50, cccap_poverty_guideline_monthly (CO-3007) reads the federal table in force on the most recent October 1, which this parameter names."

@@ -1,0 +1,14 @@
+id: CO-3004
+name: CCCAP county entry income limit by county, percent of FPL
+identifier: cccap_entry_income_limit_pct_fpl_table
+kind: parameter
+type: table keyed by option
+scope: global
+program: CCCAP
+meaning: "The entry income eligibility limit the Department sets for each county's CCCAP households, as a share of the federal poverty guideline, keyed by the county (the options of cccap_application_county, CO-2106), per 8 CCR 1403-1 3.111.H.1.a: \"set by the Department at a level based on the self-sufficiency standard\"."
+precision: "The county figures are published only by the Colorado Department of Early Childhood in its county entry-eligibility schedule (cdec.colorado.gov), which refuses automated requests, so no version is loaded (OQ-121): the limit is unknown on every date, with a no-version warning, until the schedule is fetched. A rule test or household case that needs a county's figure states the row under parameters:."
+versions: []
+sources: [S780]
+tags: [income, household]
+open: [OQ-121]
+rationale: "Hard-coded numbers audit H-18 (vocabulary review C-5): cccap_entry_income_limit_pct_fpl (CO-870) was a supplied fact, so a figure the Department sets per county was entered on each person (fifteen persons in the household cases stated 1.85). It is now a county table awaiting the schedule, and CO-870 is derived from it."
