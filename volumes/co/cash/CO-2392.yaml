@@ -5,9 +5,9 @@ kind: derived
 type: money
 scope: person-month
 program: AdultFinancial
-meaning: "For this person, the spouse of an OAP client, the amount 9 CCR 2503-5 3.534.B.3 deducts for the needs of each dependent child living in the household: for each of the person's children under eighteen in the household, half the SSI benefit standard for an individual less the child's own income, never below zero."
-precision: "A dependent child is read as the person's child under eighteen in the case; the SSI benefit standard of 3.510 is ssi_federal_benefit_rate_individual. The child's own income is gross earned and unearned income."
-derived: [sum, [filter, [persons], [all, [rel, [parent], [P]], ["<", [of, [P], age], 18]]], [max, 0, ["-", ["/", ssi_federal_benefit_rate_individual, 2], [+, [+, [of, [P], wages_gross], [of, [P], af_self_employment_net_profit]], [+, [of, [P], social_security_income], [of, [P], pension_income], [of, [P], unemployment_income], [of, [P], tanf_cash_income], [of, [P], adult_financial_cash_income], [of, [P], child_support_received], [of, [P], other_unearned_income_taxable], [of, [P], other_unearned_income_nontaxable], [of, [P], tax_exempt_interest], [of, [P], ssi_income]]]]]]
+meaning: "For this person, the spouse of an OAP client, the amount 9 CCR 2503-5 3.534.B.3 deducts for the needs of each dependent child living in the household: for each of the person's children under af_dependent_child_age_limit (CO-3054) in the household, af_dependent_child_needs_rate (CO-3050) of the SSI benefit standard for an individual less the child's own income, never below zero."
+precision: "A dependent child is read as the person's child under af_dependent_child_age_limit in the case (the assumption that parameter states); the SSI benefit standard of 3.510 is ssi_federal_benefit_rate_individual. The child's own income is gross earned and unearned income."
+derived: [sum, [filter, [persons], [all, [rel, [parent], [P]], ["<", [of, [P], age], af_dependent_child_age_limit]]], [max, 0, ["-", ["*", ssi_federal_benefit_rate_individual, af_dependent_child_needs_rate], [+, [+, [of, [P], wages_gross], [of, [P], af_self_employment_net_profit]], [+, [of, [P], social_security_income], [of, [P], pension_income], [of, [P], unemployment_income], [of, [P], tanf_cash_income], [of, [P], adult_financial_cash_income], [of, [P], child_support_received], [of, [P], other_unearned_income_taxable], [of, [P], other_unearned_income_nontaxable], [of, [P], tax_exempt_interest], [of, [P], ssi_income]]]]]]
 sources: [S1632]
 implemented: engine
 tags: [cash, income]

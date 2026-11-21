@@ -6,7 +6,7 @@ type: money
 scope: global
 program: Medicaid
 meaning: The average of the regions' monthly private-pay cost of Long-Term Care institution care in Colorado, calculated by HCPF each calendar year (10 CCR 2505-10 § 8.100.7.E), by which an uncompensated transfer's value is divided to give the number of penalty months (§ 8.100.7.F.2.c.i).
-precision: § 8.100.7.F.2.c.i (D-65, S648) states only how the divisor is defined. The 2025 and 2026 figures come from HCPF Operational Memo OM 25-073, which could not be retrieved (hcpf.colorado.gov refuses automated requests); they were supplied by the product owner and are unverified (S1228). 
+precision: "§ 8.100.7.F.2.c.i (D-65, S648) states only how the divisor is defined. The 2025 and 2026 figures come from HCPF Operational Memo OM 25-073, which could not be retrieved (hcpf.colorado.gov refuses automated requests); they were supplied by the product owner and are unverified (S1228). The memo states the divisor as its own figure, beside the regional rates (S1230), so it is kept as published rather than derived from ma_income_trust_limit_table (CO-3022): the 2026 figure is the mean of the four regional rates to the cent, and the 2025 figure is their mean with the half cent dropped (hard-coded numbers audit D-2)."
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 10475.11, source: S1228}
   - {from: "2026-01-01", value: 10814.64, source: S1228}

@@ -1,0 +1,12 @@
+id: CO-3023
+name: "Medicaid transfer penalty: days per partial month"
+identifier: ma_transfer_penalty_days_per_month
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The days by which the decimal fractional share of a partial month of a transfer penalty is multiplied to give the days of ineligibility: \"calculated by multiplying 30 days by the decimal fractional share of the partial month\" (10 CCR 2505-10 § 8.100.7.F.2.d)."
+value: 30
+sources: [S1758]
+tags: [ma, ltc, legal]
+rationale: "Hard-coded numbers audit H-12: ma_transfer_penalty_days (CO-659) multiplied by a literal 30; no existing parameter states it."

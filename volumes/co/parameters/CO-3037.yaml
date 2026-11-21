@@ -1,0 +1,12 @@
+id: CO-3037
+name: "SNAP expedited service: month of participation verification may be postponed to, early-month application"
+identifier: snap_expedited_postponement_months_early
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "For a household applying on or before the fifteenth of the month, the month of participation until which postponed verification may be satisfied: \"the second month of participation\" (7 CFR 273.2(i)(4)(iii)(A)), the application month being the first."
+value: 2
+sources: [S1310]
+tags: [verification, snap]
+rationale: "Hard-coded numbers audit H-8: snap_expedited_postponement_end_date (CO-1393) wrote the second month as a literal 2."

@@ -5,7 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: Medicaid
-meaning: "The months between renewals for a person whose renewal is not made every 6 months: once every 12 months (42 CFR 435.916(a), \"once every 12 months\")."
+meaning: "The months between renewals for a person whose renewal is not made at the expansion adult interval (ma_expansion_adult_renewal_interval_months, CO-2453): 42 CFR 435.916(a), \"once every 12 months\"."
 value: 12
 sources: [S1707]
 tags: [ma]

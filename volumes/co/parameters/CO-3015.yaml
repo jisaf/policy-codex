@@ -1,0 +1,12 @@
+id: CO-3015
+name: School meal income guideline year, starting month
+identifier: sebt_income_guideline_start_month
+kind: parameter
+type: whole number
+scope: global
+program: SunBucks
+meaning: "The calendar month number (7, July) on whose first day the school meal Income Eligibility Guidelines change: they \"are published annually and change on July 1\" (7 CFR 292.5(b)), each year's computed from that calendar year's HHS poverty guidelines (the July 1, 2026 - June 30, 2027 guidelines from the year 2026 guidelines, S798)."
+value: 7
+sources: [S791, S798]
+tags: [sebt, income]
+rationale: "Hard-coded numbers audit D-1: sebt_poverty_guideline_table and _each_additional (CO-1519, CO-1520) restated the HHS guideline dated by the guideline year because the engine read every parameter on the determination date; with as_of (P25) and P50, sebt_income_eligibility_limit (CO-1297) reads the federal table in force on the most recent July 1, which this parameter names. CO-1519 and CO-1520 are retired."

@@ -180,7 +180,7 @@ export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
   "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "days_between", "count_months", "avg",
-  "count", "sum", "band",
+  "count", "sum", "band", "lookup_extended", "latest_month_of_year", "as_of",
 ]);
 
 export const BASE: Record<string, BaseType> = {
@@ -192,5 +192,6 @@ export const BASE: Record<string, BaseType> = {
   "table keyed by income band": "table",
   "table keyed by year": "table",
   "table keyed by number of days": "table",
+  "table keyed by option": "table",
   "list of months": "months",
 };

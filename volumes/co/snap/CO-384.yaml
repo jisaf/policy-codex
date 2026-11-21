@@ -5,8 +5,8 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The amount subtracted from this person's SNAP household's maximum allotment to compute the allotment - 30 percent of household net income, unrounded; Colorado rounds the result of the subtraction down to the nearest dollar instead (10 CCR 2506-1 4.207.3.A, S737; snap_allotment, CO-385).
-precision: "OQ-23 resolved: 10 CCR 2506-1 4.207.3.A (S737) states Colorado's formula - multiply net income by 30%, subtract from the maximum allotment, round the result down to the nearest dollar - which is 7 CFR 273.10(e)(2)(ii)(A)'s option (2), so this figure is not rounded."
+meaning: "The amount subtracted from this person's SNAP household's maximum allotment to compute the allotment - snap_benefit_reduction_rate of household net income, unrounded; Colorado rounds the result of the subtraction down to the nearest dollar instead (10 CCR 2506-1 4.207.3.A, S737; snap_allotment, CO-385)."
+precision: "OQ-23 resolved: 10 CCR 2506-1 4.207.3.A (S737) states Colorado's formula - multiply net income by snap_benefit_reduction_rate, subtract from the maximum allotment, round the result down to the nearest dollar - which is 7 CFR 273.10(e)(2)(ii)(A)'s option (2), so this figure is not rounded."
 derived: ["*", snap_benefit_reduction_rate, snap_household_net_income]
 sources: [S102, S104, S737]
 implemented: engine

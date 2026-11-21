@@ -110,4 +110,11 @@ describe("the = operator in derivations", () => {
     expect(stringifyItem(parseItemFile(bare))).toContain('derived: ["=", a, b]');
     expect(stringifyItem(parseItemFile(bare))).toBe(stringifyItem(parseItemFile(quoted)));
   });
+  it("keeps an empty list of versions (a parameter awaiting its figure) through a round trip", () => {
+    const text = "id: X-1\nname: n\nidentifier: x\nkind: parameter\ntype: money\nscope: global\nprogram: All\n" +
+      "meaning: m\nversions: []\nsources: [S1]\nopen: [OQ-1]\n";
+    const it = parseItemFile(text);
+    expect(it.versions).toEqual([]);
+    expect(stringifyItem(it)).toBe(text);
+  });
 });

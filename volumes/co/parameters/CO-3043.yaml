@@ -1,0 +1,14 @@
+id: CO-3043
+name: SNAP elderly/disabled separate-household income limit, each additional member (165% FPL)
+identifier: snap_elderly_disabled_separate_household_income_limit_each_additional
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The amount added to the largest row of snap_elderly_disabled_separate_household_income_limit_table (CO-114) for each member beyond it, in the 7 CFR 273.1(b)(2) elderly/disabled separate-household income test (165% of the federal poverty level): the \"Each Additional Member\" row of FNS's Table 3 and 10 CCR 2506-1 4.401.1."
+versions:
+  - {from: "2025-10-01", to: "2026-10-01", value: 757, source: S54}
+  - {from: "2026-10-01", value: 781, source: S736}
+sources: [S54, S736, S739]
+tags: [income, snap]
+rationale: "Hard-coded numbers audit S-1 (footnote): snap_meets_elderly_disabled_separate_household_election (CO-419) read CO-114 with no step beyond its last row, so an 'others' group of nine or more was a lookup miss; the tables state the step."

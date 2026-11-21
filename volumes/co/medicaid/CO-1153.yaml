@@ -5,9 +5,9 @@ kind: derived
 type: rate
 scope: person-month
 program: Medicaid
-meaning: The person's MAGI household income as a fraction of the monthly poverty guideline for a household one larger than the person's MAGI household - 10 CCR 2505-10 § 8.100.4.E.3 counts an individual applying for the limited Family Planning category "as a household of two in addition to any other household members".
-precision: "\"A household of two in addition to any other household members\" is read as the applicant counting as two people, so the size is ma_magi_household_size (CO-501) plus one (OQ-204). Sizes above 8 add federal_poverty_guideline_annual_each_additional per member, as ma_magi_household_income_pct_fpl (CO-504) does; no rounding."
-derived: ["/", ma_magi_household_income, ["/", [+, [lookup, federal_poverty_guideline_annual_table, [min, [+, ma_magi_household_size, 1], 8]], ["*", federal_poverty_guideline_annual_each_additional, [max, 0, ["-", [+, ma_magi_household_size, 1], 8]]]], 12]]
+meaning: The person's MAGI household income as a fraction of the monthly poverty guideline for the person's MAGI household with the applicant counted as ma_family_planning_applicant_household_count persons - 10 CCR 2505-10 § 8.100.4.E.3 counts an individual applying for the limited Family Planning category "as a household of two in addition to any other household members".
+precision: "\"A household of two in addition to any other household members\" is read as the applicant counting as two people, so the size is ma_magi_household_size (CO-501), which counts the applicant once, plus ma_family_planning_applicant_household_count (CO-3029) less one (OQ-204). The table is read beyond its last row with federal_poverty_guideline_annual_each_additional (P51), as ma_magi_household_income_pct_fpl (CO-504) reads it; no rounding."
+derived: ["/", ma_magi_household_income, ["/", [lookup_extended, federal_poverty_guideline_annual_table, ["-", [+, ma_magi_household_size, ma_family_planning_applicant_household_count], 1], federal_poverty_guideline_annual_each_additional], 12]]
 sources: [S614, S613]
 open: [OQ-204]
 implemented: engine

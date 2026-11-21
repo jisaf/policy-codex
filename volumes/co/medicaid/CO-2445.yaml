@@ -5,7 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: Medicaid
-meaning: The date 90 days after the Express Lane enrollment date, the end of the eligibility an Express Lane child receives while U.S. citizenship and identity verification is awaited (10 CCR 2505-10 § 8.100.4.J.1.a.iii, J.2.a.iii).
+meaning: "The date ma_express_lane_verification_days days after the Express Lane enrollment date, the end of the eligibility an Express Lane child receives while U.S. citizenship and identity verification is awaited (10 CCR 2505-10 § 8.100.4.J.1.a.iii, J.2.a.iii)."
 derived: [days_after, ma_express_lane_verification_days, ma_express_lane_enrollment_date]
 sources: [S1723]
 implemented: engine

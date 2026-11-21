@@ -1,0 +1,14 @@
+id: CO-3044
+name: "Colorado Works weeks per month for the participation hours test"
+identifier: cw_weeks_per_month
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: "The factor by which the weekly participation hours of 45 CFR 261.31 and 261.35 (\"a minimum average of 30 hours per week\") are multiplied to give a month's requirement in cw_meets_work_participation (CO-920)."
+precision: "The federal rule states the requirement as an average per week and no monthly conversion; four weeks is the draft reading (OQ-104), lower than SNAP's 4.3 (7 CFR 273.10(c)(2)) and Medical Assistance's 4.33 (42 CFR 435.552(d)(1)(ii)), which cite other programs' text."
+value: 4
+sources: [S419]
+tags: [cash, tanf]
+open: [OQ-104]
+rationale: "Hard-coded numbers audit H-19: cw_meets_work_participation (CO-920) multiplied by a literal 4. The federal rule states only a weekly average; the factor is the reading OQ-104 records, now a parameter carrying that question."

@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: ColoradoWorks
-meaning: The person is a "dependent child" under 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 - under 18, or 18 and a full-time secondary (or vocational/technical equivalent) student reasonably expected to complete before turning 19.
+meaning: "The person is a \"dependent child\" under 26-2-703(9), C.R.S. and 9 CCR 2503-6 3.601 - under 18, or cw_dependent_child_age_limit and a full-time secondary (or vocational/technical equivalent) student reasonably expected to complete before turning 19."
 precision: "Reads is_full_time_secondary_student_finishing_before_nineteen (CO-1720) for the 18-year-old prong (vocabulary fix round R-2; it had read half-time secondary enrollment), which includes vocational or technical training and high school equivalency as 3.601 states."
 derived: [any, ["<", age, cw_dependent_child_age_limit], [all, [">=", age, cw_dependent_child_age_limit], ["<", age, cw_dependent_child_student_age_limit], is_full_time_secondary_student_finishing_before_nineteen]]
 sources: [S401, S406]

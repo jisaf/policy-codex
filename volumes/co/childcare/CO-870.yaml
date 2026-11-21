@@ -1,0 +1,20 @@
+id: CO-870
+name: CCCAP county entry income limit, percent of FPL
+identifier: cccap_entry_income_limit_pct_fpl
+kind: derived
+type: rate
+scope: person
+program: CCCAP
+meaning: "The entry income eligibility limit, as a share of the federal poverty guideline, that applies to this person's CCCAP household: the figure the Department sets for the county the household applies to (cccap_entry_income_limit_pct_fpl_table, CO-3004, for cccap_application_county), never below the floor of 8 CCR 1403-1 3.111.H.1.a (cccap_entry_income_limit_min_pct_fpl, CO-3005)."
+precision: "Unknown while the county schedule is not loaded (OQ-121). The floor applies the rule's own limit on the Department's figure, so a county row set below it reads as the floor."
+derived: [max, cccap_entry_income_limit_min_pct_fpl, [lookup, cccap_entry_income_limit_pct_fpl_table, cccap_application_county]]
+sources: [S780, S485]
+open: [OQ-121]
+implemented: engine
+tags: [income, household]
+rationale: "3.111.H.1.a states only a floor and leaves the figure to the Department per county. Hard-coded numbers audit H-18: the item was a supplied fact, so the State's county figure was entered on each person (fifteen persons in the household cases); it now reads the county table (CO-3004) and keeps its ID and identifier, so cccap_income_within_entry_limit (CO-986) and cccap_protective_services_income_within_limit (CO-995) read it unchanged."
+tests:
+  - {id: CO-870-T1, title: "The county's figure", as_of: "2026-10-01", parameters: {cccap_entry_income_limit_pct_fpl_table: {denver: 2.25}}, given: {cccap_application_county: denver}, expect: 2.25}
+  - {id: CO-870-T2, title: "A county row below the 185% floor reads as the floor", as_of: "2026-10-01", parameters: {cccap_entry_income_limit_pct_fpl_table: {mesa: 1.5}}, given: {cccap_application_county: mesa}, expect: 1.85}
+  - {id: CO-870-T3, title: "OQ-121: with the county schedule not loaded, unknown", as_of: "2026-10-01", given: {cccap_application_county: denver}, expect: unknown}
+  - {id: CO-870-T4, title: "County not stated", as_of: "2026-10-01", parameters: {cccap_entry_income_limit_pct_fpl_table: {denver: 2.25}}, given: {}, expect: unknown}

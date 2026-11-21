@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: "Whether the person's legally obligated child support payments must be verified for SNAP: the obligation and the payments are verified whenever the deduction is claimed at application; at recertification only a change of more than $25 since last verified."
+meaning: "Whether the person's legally obligated child support payments must be verified for SNAP: the obligation and the payments are verified whenever the deduction is claimed at application; at recertification only a change of more than snap_recertification_expense_change_threshold since last verified."
 derived: [all, snap_is_household_member, [">", child_support_paid_legally_obligated, 0], [any, [not, snap_determination_is_recertification], snap_child_support_paid_source_changed_since_last_certification, [">", ["-", child_support_paid_legally_obligated, snap_child_support_paid_at_last_certification], snap_recertification_expense_change_threshold], [">", ["-", snap_child_support_paid_at_last_certification, child_support_paid_legally_obligated], snap_recertification_expense_change_threshold], [otherwise, snap_child_support_paid_information_is_outdated, false]]]
 sources: [S1618, S809, S818, S833, S1055, S1056]
 implemented: engine

@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The deduction of 20 percent of this person's SNAP household's earned income (including the prorated or full earned share attributed from any ineligible or disqualified member), to compensate for taxes, other mandatory salary deductions, and work expenses.
+meaning: "The deduction of snap_earned_income_deduction_rate of this person's SNAP household's earned income (including the prorated or full earned share attributed from any ineligible or disqualified member), to compensate for taxes, other mandatory salary deductions, and work expenses."
 derived: ["*", snap_household_earned_income_for_deduction, snap_earned_income_deduction_rate]
 sources: [S86, S90, S95, S107]
 implemented: engine

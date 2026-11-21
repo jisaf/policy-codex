@@ -1,0 +1,12 @@
+id: CO-3053
+name: "Adult Financial AND-CS: age under which a client is an unemancipated child for parental deeming"
+identifier: af_and_cs_unemancipated_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The age under which an AND-CS client is \"an unemancipated child under eighteen (18) years of age\" whose parents' income in the home is deemed to the client (9 CCR 2503-5 3.549.E)."
+value: 18
+sources: [S1634]
+tags: [cash, income, age]
+rationale: "Hard-coded numbers audit H-14: af_deemed_relative_income (CO-2384) wrote [\"<\", age, 18]. Convention 8: _age_limit is exclusive."

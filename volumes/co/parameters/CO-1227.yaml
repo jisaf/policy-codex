@@ -5,8 +5,10 @@ kind: parameter
 type: money
 scope: global
 program: AdultFinancial
-meaning: The maximum total cost of all burial services for which a burial benefit may be paid - $2,500, excluding an exempt burial plot - per 9 CCR 2503-5 3.570.43.A.4 and F.1.
-value: 2500
+meaning: "The maximum total cost of all burial services for which a burial benefit may be paid, excluding an exempt burial plot, per 9 CCR 2503-5 3.570.43.A.4 and F.1; combined charges above it bar any payment."
+precision: "Dated from the rule version effective March 2, 2026 (D-80), the version fetched; the rule states no effective date of its own for the figure, unlike the burial benefit maximum (CO-1228), and the Colorado Works pair (cw_death_reimbursement_max, _cost_limit) is dated. Hard-coded numbers audit D-5."
+versions:
+  - {from: "2026-03-02", value: 2500, source: S719}
 sources: [S719, S723]
 tags: [cash]
-rationale: No existing parameter states it; af_burial_eligible (CO-1231) needs it.
+rationale: "No existing parameter states it; af_burial_eligible (CO-1231) needs it. Hard-coded numbers audit D-5: the one parameter of the burial and death-reimbursement pairs without a version; now dated, and the meaning no longer restates the figure."

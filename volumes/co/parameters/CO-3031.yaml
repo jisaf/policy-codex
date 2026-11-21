@@ -1,0 +1,12 @@
+id: CO-3031
+name: MMMNA adjustment month
+identifier: ma_mmmna_adjustment_month
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The calendar month number (7, July) in which the minimum monthly maintenance needs allowance is adjusted each year: the MMMNA \"is adjusted in July of each year\" (10 CCR 2505-10 § 8.100.7.Q.1.a), from the poverty guideline published that January (42 U.S.C. 1396r-5(g))."
+value: 7
+sources: [S651, S358]
+tags: [ma, ltc, income]
+rationale: "Hard-coded numbers audit D-1: ma_mmmna_poverty_guideline_family_of_two_annual (CO-1954) restated the size-2 HHS guideline dated from each July 1 because the engine read every parameter on the determination date; with as_of (P25) and P50, ma_mmmna_standard (CO-662) reads the federal table in force on the most recent July 1, which this parameter names. CO-1954 is retired."

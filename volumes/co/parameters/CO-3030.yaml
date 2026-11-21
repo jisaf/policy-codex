@@ -1,0 +1,12 @@
+id: CO-3030
+name: "Medicaid Buy-In for Working Adults with Disabilities: household size for the income test"
+identifier: ma_wawd_household_size
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The household size whose poverty guideline a Working Adults with Disabilities Buy-In applicant's income is measured against: \"Only the applicant's income will be considered\" (10 CCR 2505-10 § 8.100.6.P.1.b), so the guideline for one person."
+value: 1
+sources: [S1751]
+tags: [ma, non_magi, buy_in, household]
+rationale: "Hard-coded numbers audit H-21: ma_wawd_eligible (CO-618) and ma_wawd_premium (CO-619) looked up the size-1 guideline with a literal 1; no existing parameter states the size."

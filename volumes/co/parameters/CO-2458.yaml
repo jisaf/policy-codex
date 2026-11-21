@@ -5,7 +5,7 @@ kind: parameter
 type: table keyed by income band
 scope: global
 program: Medicaid
-meaning: "The monthly household premium for the Children with Disabilities Buy-In by the band of household income as a share of the poverty guideline, each key the band's inclusive upper bound (10 CCR 2505-10 § 8.100.6.Q.1.g.iv): $0 at or below 133%, $70 above 133% through 185%, $90 above 185% through 250%, $120 above 250% through 300%. Re-based at the start of each State fiscal year (Q.1.g.v)."
+meaning: "The monthly household premium for the Children with Disabilities Buy-In by the band of household income as a share of the poverty guideline, each key the band's inclusive upper bound (10 CCR 2505-10 § 8.100.6.Q.1.g.iv); the bands and amounts are the rows of each version, re-based at the start of each State fiscal year (Q.1.g.v)."
 precision: Dated from the start of State fiscal year 2026-27, as ma_wawd_premium_table (CO-2457) is.
 versions:
   - {from: "2026-07-01", value: {"1.33": 0, "1.85": 70, "2.50": 90, "3.00": 120}, source: S1728}
