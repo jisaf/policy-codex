@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person
 program: AdultFinancial
-meaning: Whether the person's af_countable_resources is at or below the $2,000 unmarried / $3,000 married Adult Financial resource limit, per 9 CCR 2503-5 3.520.72.A and C.R.S. 26-2-111(1)(b), (2)(a)(I).
-precision: Reuses ssi_resource_limit_individual (CO-233) and ssi_resource_limit_couple (CO-234) cross-program, since 3.520.72.A's $2,000/$3,000 figures are the identical dollar amounts the SSI-related Medicaid chapter's own resource limits carry (42 U.S.C. 1382b, 20 CFR 416.1205(c)); a duplicate Adult-Financial-prefixed parameter of the same value is not created.
-derived: [<=, af_countable_resources, [case, [af_is_married, ssi_resource_limit_couple], [else, ssi_resource_limit_individual]]]
+meaning: "Whether the person's af_countable_resources is at or below the Adult Financial resource limit - af_resource_limit_couple (CO-3046) for a married client, af_resource_limit_individual (CO-3045) otherwise - per 9 CCR 2503-5 3.520.72.A and C.R.S. 26-2-111(1)(b), (2)(a)(I)."
+precision: "Hard-coded numbers audit D-4: the item read the SSI-method limits (ssi_resource_limit_individual, _couple) on the ground that 3.520.72.A's figures are the same dollar amounts; the rule states its own figures and an SSI change would not change them without an amendment, so it reads Adult Financial's own parameters."
+derived: [<=, af_countable_resources, [case, [af_is_married, af_resource_limit_couple], [else, af_resource_limit_individual]]]
 sources: [S441, S442, S443, S454]
 implemented: engine
 tags: [cash, oap, and, ab, resources]
