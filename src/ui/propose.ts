@@ -9,6 +9,8 @@ import {
 } from "../changes/serialize";
 import type { ChangeSet } from "../changes/types";
 import type { ChangeSetReport } from "../changes/validate";
+import { DEFAULT_BRANCH } from "../config";
+import { gitRefOf } from "../ledger/source";
 
 export interface ProposeDeps {
   client: GitHubClient;
@@ -46,7 +48,9 @@ export async function proposeChangeSet(deps: ProposeDeps): Promise<ProposeResult
   const branch = cs.branch ?? branchName(cs, (deps.newBranchId ?? shortId)());
   deps.onBranch?.(branch);
 
-  const baseSha = await client.getRefSha(cs.baseRef);
+  // A change set staged against the working tree proposes against main.
+  const baseRef = gitRefOf(cs.baseRef, DEFAULT_BRANCH);
+  const baseSha = await client.getRefSha(baseRef);
   if (!(await client.branchExists(branch))) {
     await client.createBranch(branch, baseSha);
   }
@@ -91,7 +95,7 @@ export async function proposeChangeSet(deps: ProposeDeps): Promise<ProposeResult
   const pr = existing
     ? await client.updatePullRequest(existing.number, body)
     : await client.createPullRequest({
-        title: proposalTitle(cs), body, headRef: branch, baseRef: cs.baseRef,
+        title: proposalTitle(cs), body, headRef: branch, baseRef,
       });
 
   return { pr, branch, paths, manifest };
