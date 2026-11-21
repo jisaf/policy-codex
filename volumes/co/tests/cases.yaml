@@ -32,6 +32,26 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -162,6 +182,27 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -293,6 +334,28 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -387,6 +450,30 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: true
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
+        school_meal_household_size: 4
+        school_meal_household_income: 3560
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -482,6 +569,28 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -588,6 +697,13 @@
   # p2 states heat plus three other utilities, so the HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016;
   # excess shelter 2016 - 1195.50 = 820.50; net 1570.50, rounded to 1571; maximum allotment 808 (S730) less
   # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
+  # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
+  # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
+  # (OQ-253); in November the grandparents' LEAP household gets 900 x (1 - 0.2 - 0.3) = 450 and p3's household
+  # 900 x (1 - 0.2 - 0.2) = 540. CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
+  # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
+  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
+  # eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing assistance).
   # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
   # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
   # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
@@ -622,6 +738,17 @@
   # no patient payment.
   expect:
     p1:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-10": ineligible_setting}
+      af_hca_grant: {"2026-10": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-10": false}
+      leap_benefit_amount: {"2026-10": 0}
+      cccap_parent_fee: {"2026-10": 0}
+      sebt_eligibility_status: {"2026-10": ineligible}
+      sebt_benefit_amount: {"2026-10": 0}
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-10": 0}
@@ -665,6 +792,17 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p2:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-10": ineligible_functional}
+      af_hca_grant: {"2026-10": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-10": false}
+      leap_benefit_amount: {"2026-10": 0}
+      cccap_parent_fee: {"2026-10": 0}
+      sebt_eligibility_status: {"2026-10": ineligible}
+      sebt_benefit_amount: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
@@ -701,6 +839,17 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p3:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-10": ineligible_functional}
+      af_hca_grant: {"2026-10": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-10": false}
+      leap_benefit_amount: {"2026-10": 0}
+      cccap_parent_fee: {"2026-10": 30}
+      sebt_eligibility_status: {"2026-10": ineligible}
+      sebt_benefit_amount: {"2026-10": 0}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p3]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
@@ -738,6 +887,17 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p4:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-10": ineligible_functional}
+      af_hca_grant: {"2026-10": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-10": false}
+      leap_benefit_amount: {"2026-10": 0}
+      cccap_parent_fee: {"2026-10": 30}
+      sebt_eligibility_status: {"2026-10": eligible_categorical}
+      sebt_benefit_amount: {"2026-10": 120}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
@@ -776,6 +936,17 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p5:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-10": ineligible_age}
+      af_hca_grant: {"2026-10": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-10": false}
+      leap_benefit_amount: {"2026-10": 0}
+      cccap_parent_fee: {"2026-10": 30}
+      sebt_eligibility_status: {"2026-10": ineligible}
+      sebt_benefit_amount: {"2026-10": 0}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_eligibility_status: {"2026-10": ineligible_income}
@@ -826,6 +997,26 @@
   persons:
     p1:
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -953,6 +1144,27 @@
         pension_income: 610
     p2:
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1081,6 +1293,28 @@
         social_security_income: 1180
     p3:
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1173,6 +1407,30 @@
         hours_worked: 138
     p4:
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: true
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
+        school_meal_household_size: 4
+        school_meal_household_income: 3560
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -1265,6 +1523,28 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        # Phase 8 facts (illustrative where marked in the case comment).
+        died_while_receiving_af_or_medicaid: false
+        hca_functional_capacity_score: 0
+        hca_need_for_paid_care_score: 0
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        uses_top_quality_rated_provider: true
+        all_children_in_part_time_care: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+        sebt_other_categorical_basis: false
+        estimated_home_heating_costs: 900
+        leap_statewide_adjustment_rate: 0.2
+        leap_electric_heat_dwelling_type: not_electric
+        leap_households_sharing_living_arrangement: 1
+        lives_in_subsidized_housing: false
+        leap_benefit_minimum: 100
+        leap_benefit_maximum: 1000
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1367,6 +1647,13 @@
   # p2 states heat plus three other utilities, so the HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016;
   # excess shelter 2016 - 1195.50 = 820.50; net 1570.50, rounded to 1571; maximum allotment 808 (S730) less
   # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
+  # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
+  # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
+  # (OQ-253); in November the grandparents' LEAP household gets 900 x (1 - 0.2 - 0.3) = 450 and p3's household
+  # 900 x (1 - 0.2 - 0.2) = 540. CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
+  # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
+  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
+  # eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing assistance).
   # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
   # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
   # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
@@ -1387,6 +1674,17 @@
   # no patient payment.
   expect:
     p1:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-11": ineligible_setting}
+      af_hca_grant: {"2026-11": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-11": false}
+      leap_benefit_amount: {"2026-11": 0}
+      cccap_parent_fee: {"2026-11": 0}
+      sebt_eligibility_status: {"2026-11": ineligible}
+      sebt_benefit_amount: {"2026-11": 0}
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-11": 0}
@@ -1430,6 +1728,17 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p2:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-11": ineligible_functional}
+      af_hca_grant: {"2026-11": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-11": false}
+      leap_benefit_amount: {"2026-11": 450}
+      cccap_parent_fee: {"2026-11": 0}
+      sebt_eligibility_status: {"2026-11": ineligible}
+      sebt_benefit_amount: {"2026-11": 0}
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       af_category: {"2026-11": none}
       af_oap_grant: {"2026-11": 0}
@@ -1470,6 +1779,17 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p3:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-11": ineligible_functional}
+      af_hca_grant: {"2026-11": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-11": false}
+      leap_benefit_amount: {"2026-11": 540}
+      cccap_parent_fee: {"2026-11": 30}
+      sebt_eligibility_status: {"2026-11": ineligible}
+      sebt_benefit_amount: {"2026-11": 0}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p3]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
@@ -1504,6 +1824,17 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p4:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-11": ineligible_functional}
+      af_hca_grant: {"2026-11": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-11": false}
+      leap_benefit_amount: {"2026-11": 540}
+      cccap_parent_fee: {"2026-11": 30}
+      sebt_eligibility_status: {"2026-11": eligible_categorical}
+      sebt_benefit_amount: {"2026-11": 120}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
@@ -1542,6 +1873,17 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p5:
+      # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
+      af_hca_tier: none
+      af_hca_eligibility_status: {"2026-11": ineligible_age}
+      af_hca_grant: {"2026-11": 0}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+      cw_diversion_eligible: {"2026-11": false}
+      leap_benefit_amount: {"2026-11": 540}
+      cccap_parent_fee: {"2026-11": 30}
+      sebt_eligibility_status: {"2026-11": ineligible}
+      sebt_benefit_amount: {"2026-11": 0}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_eligibility_status: {"2026-11": ineligible_income}
