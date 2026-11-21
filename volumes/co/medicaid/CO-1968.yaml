@@ -1,0 +1,20 @@
+id: CO-1968
+name: "Medicaid community engagement: demonstrates community engagement for the month"
+identifier: ma_demonstrates_community_engagement
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person demonstrates community engagement for the month under 42 CFR 435.552(a): 80 or more combined hours of work, community service, work program and less than half-time education; enrollment at least half-time in an educational program; MAGI-based income for the month at least the Federal minimum wage times 80; or, for a seasonal worker, average MAGI-based income over the 6 preceding months at least the Federal minimum wage times 80."
+precision: Monthly income is the person's own MAGI-based income for the month (ma_person_magi_income, CO-502), as 435.552(f)(2) directs. The applicable minimum wage of 29 U.S.C. 206(a)(1)(C) is federal_minimum_wage (CO-160). The six months are the months before the month assessed.
+derived: [any, [">=", ma_community_engagement_activity_hours, ma_community_engagement_required_hours], [in, [otherwise, ma_educational_program_enrollment_type, not_enrolled], [full_time, half_time]], [">=", ma_person_magi_income, ["*", federal_minimum_wage, ma_community_engagement_required_hours]], [all, ma_is_seasonal_worker, [">=", [avg, ma_person_magi_income, [months_ending, ma_community_engagement_seasonal_average_months, [month_before, [month]]]], ["*", federal_minimum_wage, ma_community_engagement_required_hours]]]]
+sources: [S1202, S1205]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "OQ-65: the four ways of 435.552(a) to demonstrate community engagement for a month."
+tests:
+  - {id: CO-1968-T1, month: "2027-02", as_of: "2027-03-01", given: {ma_community_engagement_activity_hours: 85}, title: "85 hours", expect: true}
+  - {id: CO-1968-T2, month: "2027-02", as_of: "2027-03-01", given: {ma_community_engagement_activity_hours: 0, ma_educational_program_enrollment_type: half_time}, title: "Half-time student with no work", expect: true}
+  - {id: CO-1968-T3, month: "2027-02", as_of: "2027-03-01", given: {ma_community_engagement_activity_hours: 30, ma_educational_program_enrollment_type: not_enrolled, ma_person_magi_income: 600}, title: "Income of $600 is above 7.25 x 80 = 580", expect: true}
+  - {id: CO-1968-T4, month: "2027-02", as_of: "2027-03-01", given: {ma_community_engagement_activity_hours: 30, ma_educational_program_enrollment_type: not_enrolled, ma_person_magi_income: 300, ma_is_seasonal_worker: false}, title: "30 hours, $300 income, not seasonal", expect: false}
+  - {id: CO-1968-T5, month: "2027-02", as_of: "2027-03-01", given: {ma_community_engagement_activity_hours: 0, ma_educational_program_enrollment_type: not_enrolled, ma_is_seasonal_worker: true, ma_person_magi_income: {"2027-02": 0, "2026-08": 1400, "2026-09": 1400, "2026-10": 1400, "2026-11": 0, "2026-12": 0, "2027-01": 0}}, title: "Seasonal worker: no income this month, six-month average 700", expect: true}

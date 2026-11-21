@@ -1,0 +1,12 @@
+id: CO-1906
+name: "Medicaid community engagement: weekly education hours per credit hour"
+identifier: ma_community_engagement_hours_per_credit_hour
+kind: parameter
+type: hours
+scope: global
+program: Medicaid
+meaning: "The weekly education hours counted for each credit hour of instruction in an educational program the person attends less than half-time (42 CFR 435.552(d)(1)(i)): 3."
+value: 3
+sources: [S1204]
+tags: [ma, magi]
+rationale: "OQ-65: ma_community_engagement_education_hours (CO-1966) converts credit hours with it."

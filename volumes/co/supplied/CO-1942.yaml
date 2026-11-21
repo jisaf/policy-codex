@@ -1,0 +1,12 @@
+id: CO-1942
+name: Travelled outside the community for medical care
+identifier: ma_traveled_outside_community_for_medical_care
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether, for part or all of the month, the person, or the person's dependent, had to travel outside their community of residence for an extended period to receive medical services for a serious or complex medical condition not available there, and, where the dependent travelled alone, the person took leave from work or other community engagement activities for reasons related to the dependent's condition or travel (42 CFR 435.555(d)(4)).
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1210]
+tags: [ma, magi]
+rationale: "OQ-65: a short-term hardship event of the optional exception; no fact states it."

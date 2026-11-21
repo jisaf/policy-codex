@@ -1,0 +1,14 @@
+id: CO-1911
+name: "Medicaid community engagement: State elects the short-term hardship exception"
+identifier: ma_elects_short_term_hardship_exception
+kind: parameter
+type: yes/no
+scope: global
+program: Medicaid
+meaning: Whether Colorado's State plan provides the optional exception of 42 CFR 435.555 that deems an applicable individual to have demonstrated community engagement for a month with a short-term hardship event.
+assumption: No published Colorado rule or State plan amendment elects the option (OQ-411); the draft reads it as not elected.
+value: false
+sources: [S1210]
+tags: [ma, magi, state_election]
+open: [OQ-411]
+rationale: "OQ-65: the hardship exception applies only at State option; ma_is_deemed_community_engaged_by_short_term_hardship (CO-1971) reads the election."

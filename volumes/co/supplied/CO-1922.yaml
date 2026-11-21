@@ -1,0 +1,12 @@
+id: CO-1922
+name: Relies on another individual for care
+identifier: ma_relies_on_another_for_care
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person, a child, relies on another individual for care: the second half of the definition of dependent child in 42 CFR 435.554(a)."
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1207]
+tags: [ma, magi]
+rationale: "OQ-65: the 435.554 dependent child is a child 13 or under who relies on another for care; no fact states the reliance."

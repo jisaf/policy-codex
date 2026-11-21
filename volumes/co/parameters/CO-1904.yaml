@@ -1,0 +1,12 @@
+id: CO-1904
+name: "Medicaid community engagement: inmate look-back months"
+identifier: ma_community_engagement_inmate_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The length of the period ending on the first day of a month during which having been an inmate of a public institution at any point deems an applicable individual to have demonstrated community engagement for that month (42 CFR 435.553(b)): 3 months."
+value: 3
+sources: [S1206]
+tags: [ma, magi]
+rationale: "OQ-65: the mandatory exception for a recent inmate (CO-1969) counts back this many months."

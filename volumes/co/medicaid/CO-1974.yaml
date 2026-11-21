@@ -1,0 +1,25 @@
+id: CO-1974
+name: Medicaid community engagement status
+identifier: ma_community_engagement_status
+kind: derived
+type: one of
+options: [not_assessed, excluded, met, not_met]
+scope: person
+program: Medicaid
+role: outcome
+meaning: "The community engagement result for the person at this determination under 42 CFR 435.550-435.559: not_assessed (no application, renewal or change-in-circumstances review at this determination, including an enrolled beneficiary before the first renewal on or after the implementation date, 435.559(c)); excluded (a specified excluded individual in the determination month, so not an applicable individual, 435.551, 435.554(b)); met (at application, every month of the look-back met; at renewal or a change-in-circumstances redetermination, at least ma_community_engagement_renewal_required_months months met); or not_met."
+precision: "Specified excluded status is tested in the determination month; in a look-back month it is a mandatory exception (435.553(a)(4)), so a person excluded in some look-back months and not now still meets those months. The noncompliance procedures of 435.558 (a 30-day notice period, continued coverage until a determination of ineligibility, and consideration of every other basis of eligibility) and the verification rules of 435.557 are not modeled: not_met is the result once the information is in, not the notice that precedes it."
+derived: [case, [["=", ma_community_engagement_review_type, none], not_assessed], [[at, ma_is_specified_excluded_individual, [det_month]], excluded], [["=", ma_community_engagement_review_type, application], [case, [[each, ma_community_engagement_review_months, ma_meets_community_engagement_for_month], met], [else, not_met]]], [[">=", [count_months, ma_community_engagement_review_months, ma_meets_community_engagement_for_month], ma_community_engagement_renewal_required_months], met], [else, not_met]]
+sources: [S1201, S1208, S1211, S1212]
+effective: {from: "2027-01-01", to: present}
+implemented: engine
+tags: [ma, magi]
+open: [OQ-410, OQ-411]
+rationale: "OQ-65: one outcome states the requirement's result with its reason, for the Adults-group condition (CO-1975) and for notices (435.556(d))."
+tests:
+  - {id: CO-1974-T1, as_of: "2027-03-01", given: {ma_community_engagement_review_type: application, ma_application_date: "2027-03-01", ma_is_specified_excluded_individual: {"2027-03": false}, ma_meets_community_engagement_for_month: {"2027-02": true}}, title: "Application, the one look-back month met", expect: met}
+  - {id: CO-1974-T2, as_of: "2027-03-01", given: {ma_community_engagement_review_type: application, ma_application_date: "2027-03-01", ma_is_specified_excluded_individual: {"2027-03": false}, ma_meets_community_engagement_for_month: {"2027-02": false}}, title: "Application, look-back month not met", expect: not_met}
+  - {id: CO-1974-T3, as_of: "2027-03-01", given: {ma_community_engagement_review_type: application, ma_is_specified_excluded_individual: {"2027-03": true}}, title: "Excluded as a parent of a young child", expect: excluded}
+  - {id: CO-1974-T4, as_of: "2027-09-15", given: {ma_community_engagement_review_type: renewal, ma_most_recent_determination_effective_date: "2027-06-01", ma_is_specified_excluded_individual: {"2027-09": false}, ma_meets_community_engagement_for_month: {"2027-06": false, "2027-07": true, "2027-08": false}}, title: "Renewal: one of three months met is enough", expect: met}
+  - {id: CO-1974-T5, as_of: "2027-09-15", given: {ma_community_engagement_review_type: renewal, ma_most_recent_determination_effective_date: "2027-06-01", ma_is_specified_excluded_individual: {"2027-09": false}, ma_meets_community_engagement_for_month: {"2027-06": false, "2027-07": false, "2027-08": false}}, title: "Renewal: no month met", expect: not_met}
+  - {id: CO-1974-T6, as_of: "2027-03-01", given: {ma_community_engagement_review_type: none}, title: "Enrolled beneficiary between reviews", expect: not_assessed}

@@ -1,0 +1,12 @@
+id: CO-1931
+name: Substance use disorder recovery start date
+identifier: ma_substance_use_recovery_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: The date the person's current recovery from a substance use disorder began, from which 42 CFR 435.554(c)(5)(i)(B) counts the five years of stable recovery. If not stated, Medicaid reads the person as not in stable recovery.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1209]
+tags: [ma, magi, medical]
+rationale: "OQ-65: the stable recovery carve-out needs the start of recovery."

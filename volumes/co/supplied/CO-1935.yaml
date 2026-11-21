@@ -1,0 +1,12 @@
+id: CO-1935
+name: Complies with TANF work requirements
+identifier: complies_with_tanf_work_requirements
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether, this month, the person is complying with the work requirements Colorado imposes under section 407 of the Social Security Act (the Colorado Works work participation requirements). A fact about the person's Colorado Works case, not this volume's determination.
+supplied_by: The Colorado Works case record (CBMS).
+sources: [S1209]
+tags: [ma, tanf]
+rationale: "OQ-65: is_complying_with_tanf_work_requirements (CO-066) is SNAP's exemption fact and also counts the Colorado Refugee Services Program work program, which 42 CFR 435.554(c)(6) does not."

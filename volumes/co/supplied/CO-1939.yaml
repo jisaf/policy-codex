@@ -1,0 +1,12 @@
+id: CO-1939
+name: Received inpatient or similar acuity services
+identifier: ma_received_inpatient_or_similar_acuity_services
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether, for part or all of the month, the person received inpatient hospital, nursing facility, ICF/IID or inpatient psychiatric services, or other services of similar acuity (critical access or emergency hospital inpatient services, inpatient services in an institution for mental diseases or another recognized facility, or noninstitutional services without which the person would likely receive those services), as 42 CFR 435.555(d)(1) lists them.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1210]
+tags: [ma, magi]
+rationale: "OQ-65: a short-term hardship event of the optional exception; no fact states it."

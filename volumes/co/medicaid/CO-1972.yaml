@@ -1,0 +1,16 @@
+id: CO-1972
+name: "Medicaid community engagement: met for the month"
+identifier: ma_meets_community_engagement_for_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person demonstrated community engagement for the month (ma_demonstrates_community_engagement, CO-1968) or is deemed to have demonstrated it by a mandatory exception (CO-1969) or a short-term hardship (CO-1971), the alternatives 42 CFR 435.556(a) assesses for each month of the look-back.
+derived: [any, ma_demonstrates_community_engagement, ma_meets_community_engagement_mandatory_exception, ma_is_deemed_community_engaged_by_short_term_hardship]
+sources: [S1202, S1206, S1210, S1211]
+implemented: engine
+tags: [ma, magi]
+rationale: "OQ-65: the look-back counts months that are met in any of the three ways."
+tests:
+  - {id: CO-1972-T1, month: "2027-02", as_of: "2027-03-01", given: {ma_demonstrates_community_engagement: false, ma_meets_community_engagement_mandatory_exception: true}, expect: true}
+  - {id: CO-1972-T2, month: "2027-02", as_of: "2027-03-01", given: {ma_demonstrates_community_engagement: false, ma_meets_community_engagement_mandatory_exception: false, ma_is_deemed_community_engaged_by_short_term_hardship: false}, expect: false}

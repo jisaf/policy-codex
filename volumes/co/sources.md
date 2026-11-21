@@ -7620,3 +7620,683 @@ Document: D-87
 >
 > 1) Depreciation of equipment;
 
+
+### S1200. Adults group: eligibility is subject to the community engagement requirement from the implementation date
+
+Document: D-121
+
+42 CFR 435.119(d) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.119
+
+> (d) Community engagement. As of the implementation date in accordance with § 435.559, the 50 States and the District of Columbia must provide that eligibility under this section is subject to the community engagement requirement described at §§ 435.550 through 435.563.
+
+### S1201. Community engagement: applicable individual
+
+Document: D-121
+
+42 CFR 435.551 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.551
+
+> An applicable individual is an individual who is not a specified excluded individual as defined at § 435.554 and who is—
+>
+> (a) Eligible to enroll or is enrolled under the State plan under § 435.119; or
+>
+> (b) Otherwise eligible to enroll or is enrolled in a demonstration project under section 1115(a)(2) of the Act that provides coverage that meets minimum essential coverage requirements as defined under § 435.4, and who is:
+>
+> (1) At least 19 and under 65 years of age;
+>
+> (2) Not pregnant;
+>
+> (3) Not entitled to or enrolled for benefits under part A of title XVIII or enrolled for benefits under part B of title XVIII; and
+>
+> (4) Not otherwise eligible to enroll under the State plan.
+
+### S1202. Community engagement: the ways to demonstrate it for a month (80 hours, half-time education, income, seasonal workers)
+
+Document: D-121
+
+42 CFR 435.552(a) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.552
+
+> (a) General rule. An applicable individual demonstrates community engagement for a month if the individual meets one or more of the following conditions:
+>
+> (1) The individual works not less than 80 hours.
+>
+> (2) The individual completes not less than 80 hours of community service.
+>
+> (3) The individual participates in a work program for not less than 80 hours.
+>
+> (4) The individual is enrolled in an educational program at least half-time.
+>
+> (5) The individual engages in any combination of the activities described in paragraphs (a)(1) through (4) of this section, for a total of not less than 80 hours; however, States are not permitted to combine educational program hours with another activity if the individual is enrolled in an educational program at least half-time.
+>
+> (6) The individual has a monthly income that is not less than the applicable minimum wage requirement under section 6 of the Fair Labor Standards Act of 1938 (29 U.S.C. 206(a)(1)(C)), multiplied by 80 hours.
+>
+> (7) The individual had an average monthly income over the preceding 6 months that is not less than the applicable minimum wage requirement under 29 U.S.C. 206(a)(1)(C) multiplied by 80 hours, and is a seasonal worker, as described in section 45R(d)(5)(B) of the Internal Revenue Code of 1986 (26 U.S.C. 45R(d)(5)(B)).
+
+### S1203. Community engagement: definitions of community service, educational program, work and work program
+
+Document: D-121
+
+42 CFR 435.552(b) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.552
+
+> (b) Definitions. For purposes of this section—
+>
+> Community service means unpaid work, completed voluntarily or because of a mandate by court order, with a structured program that is completed for the direct benefit of the community under the auspices of public or nonprofit organizations (including embedded activities of the program that allow an individual to develop skills necessary to complete community service). The public or nonprofit organizations:
+>
+> (i) Include organizations described in section 501(c)(3) of the Internal Revenue Code of 1986 (26 U.S.C. 501(c)(3)) and other organizations.
+>
+> (ii) Must provide oversight of the activity, which must not serve a partisan purpose, and have a process in place to track the community service completed by individuals, including the type of community service activity, dates and hours the community service is completed, and a point of contact who can confirm the hours completed.
+>
+> Educational program means a program that is one of the following:
+>
+> (i) An institution of higher education as defined in section 101 of the Higher Education Act of 1965 (20 U.S.C. 1001);
+>
+> (ii) A program of career and technical education as defined in section 3(5) of the Carl D. Perkins Career and Technical Education Act of 2006 (20 U.S.C. 2302(5));
+>
+> (iii) A high school as defined in title VIII of the Elementary and Secondary Education Act (20 U.S.C. 7801 et seq.); and
+>
+> (iv) A State-approved program of study leading to a certificate of high school equivalence for an applicable individual who has not received a high school diploma.
+>
+> Work means:
+>
+> (i) Work in exchange for money;
+>
+> (ii) Work in exchange for goods or services (“in-kind” work); and
+>
+> (iii) Unpaid work (other than community service as defined in this paragraph (b)).
+>
+> Work program means a program that is one of the following:
+>
+> (i) A program under title I of the Workforce Innovation and Opportunity Act (WIOA) (Pub. L. 113-128) (29 U.S.C. 3111 et seq.);
+>
+> (ii) A program under section 236 of the Trade Act of 1974 (19 U.S.C. 2296);
+>
+> (iii) A program of employment and training operated or supervised by a State or political subdivision of a State that meets standards approved by the Governor of the State, including a program under subsection (d)(4) of section 6 of the Food and Nutrition Act of 2008 (7 U.S.C. 2015(d)(4)), other than a supervised job search program or job search training program. However, a program under this subsection may include supervised job search or job search training as subsidiary activities as long as such activity is less than half the required hours of the program;
+>
+> (iv) A program of employment and training for veterans operated by the Department of Labor or the Department of Veterans Affairs. For the purposes of this paragraph, any employment and training program of the Department of Labor or Veterans Affairs that serves veterans must be an approved work program; and
+>
+> (v) A workforce partnership under subsection (d)(4)(N) of section 6 of the Food and Nutrition Act of 2008 (7 U.S.C. 2015(d)(4)(N)).
+
+### S1204. Community engagement: educational enrollment status, less than half-time hours, and combining activities
+
+Document: D-121
+
+42 CFR 435.552(c)-(e) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.552
+
+> (c) Enrollment in an educational program. An applicable individual's enrollment status in an educational program (full-time, half-time, less than half-time) is determined by the school or institution.
+>
+> (1) The enrollment status of the individual begins on the first day of the school term for the educational program.
+>
+> (2) The enrollment status will continue through normal periods of attendance, vacation, and recess. During periods of vacation and recess, the enrollment status shall be based on the individual's status just prior to the school break.
+>
+> (3) The enrollment status will end at the end of the month that the student is expelled, withdraws, completes the school term and is not registered for the next school term (excluding optional terms such as winter or summer sessions), or graduates (unless the student is enrolled in another educational program).
+>
+> (d) Less than half-time enrollment in an educational program. If an applicable individual is enrolled in an educational program for less than half-time as determined by the school, the educational program hours shall be the following:
+>
+> (1) For educational programs that use credit hours:
+>
+> (i) Multiply the number of each one credit hour of instruction by 3 to get the total of education hours in a week.
+>
+> (ii) Multiply the weekly total as determined under paragraph (d)(1)(i) of this section by 4.33 weeks to get total hours in a 1-month period.
+>
+> (2) For educational programs that do not use credit hours, the hours spent attending class and participating in educational activities will count towards meeting this requirement.
+>
+> (e) Combination of activities. An applicable individual may demonstrate community engagement for a month if the individual engages in any combination of activities described in paragraphs (a)(1) through (4) of this section for a total of not less than 80 hours.
+>
+> (1) The hours for work under paragraph (a)(1) of this section, community service under paragraph (a)(2) of this section, and participating in a work program under paragraph (a)(3) of this section, need only be combined with educational program hours if the individual is enrolled in an educational program less than half-time.
+>
+> (2) The hours for work under paragraph (a)(1) of this section, community service under paragraph (a)(2) of this section, and participating in a work program under paragraph (a)(3) of this section must be determined separately and based on the time spent on the specific activity in such month.
+>
+> (i) If the monthly income is less than the applicable Federal minimum wage requirement under 29 U.S.C. 206(a)(1)(C) multiplied by 80 hours, and the agency does not have documentation regarding the number of hours worked, the agency may calculate the hours for work under paragraph (a)(1) of this section based on the monthly income as determined under paragraph (f)(2) of this section provided that the agency must use a reasonable method to allocate work hours between members of the household.
+>
+> (ii) If the agency uses the option under paragraph (e)(2)(i) of this section, the agency must calculate the hours for work by dividing the monthly income as determined under paragraph (f)(2) of this section by the applicable Federal minimum wage requirement under 29 U.S.C. 206(a)(1)(C).
+>
+> (3) The hours for less than half-time enrollment in an educational program must be calculated as provided in paragraph (d) of this section.
+>
+> (4) After the agency determines an applicable individual's hours for work, completing community service, participating in a work program, and less than half-time enrollment in an educational program, the hours must be added together. Adding the hours will provide the total hours for the combined activities.
+
+### S1205. Community engagement: monthly income and the seasonal worker's six-month average, both from MAGI-based income
+
+Document: D-121
+
+42 CFR 435.552(f)-(g) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.552
+
+> (f) Monthly income. (1) An applicable individual demonstrates community engagement for a month if the individual has a monthly income that is not less than the applicable Federal minimum wage requirement under 29 U.S.C. 206(a)(1)(C) multiplied by 80 hours.
+>
+> (2) The agency must determine the monthly income based on the individual's MAGI-based income, for their MAGI-based household, as defined at § 435.603, and applied to a month in the period under § 435.556(a), as applicable for demonstrating community engagement.
+>
+> (g) Average monthly income for seasonal workers. (1) An applicable individual demonstrates community engagement for a month if the individual is a seasonal worker as described in 26 U.S.C. 45R(d)(5)(B) and had an average monthly income over the preceding six months that is not less than the applicable Federal minimum wage requirement under 29 U.S.C. 206(a)(1)(C) multiplied by 80 hours.
+>
+> (2) The agency must determine the average monthly income based on the individual's MAGI-based income, for their MAGI-based household, as defined at § 435.603, and applied to a month in the period under § 435.556(a), as applicable for demonstrating community engagement.
+
+### S1206. Community engagement: mandatory exceptions (under 19, Medicare, a mandatory group, a specified excluded individual, recent inmate)
+
+Document: D-121
+
+42 CFR 435.553 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.553
+
+> A State must deem an applicable individual to have demonstrated community engagement under § 435.552 for a month if—
+>
+> (a) For part or all of that month, the individual was:
+>
+> (1) Under the age of 19 years;
+>
+> (2) Entitled to or enrolled for Medicare benefits under part A or enrolled for benefits under part B of title XVIII of the Act;
+>
+> (3) Described in any mandatory coverage groups in subclauses (I) through (VII) of section 1902(a)(10)(A)(i) of the Act under the Medicaid State plan; or,
+>
+> (4) A specified excluded individual as defined at § 435.554.
+>
+> (b) At any point during the 3-month period ending on the first day of that month, the individual was an inmate of a public institution.
+
+### S1207. Specified excluded individuals: definitions of caretaker relative, dependent child, disabled individual, family caregiver, guardian and parent
+
+Document: D-121
+
+42 CFR 435.554(a) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.554
+
+> (a) For purposes of this section—
+>
+> Caretaker relative means a relative of a dependent child or a disabled individual, as those terms are defined in this section, by blood, adoption, or marriage with whom the child or disabled individual is living, who assumes primary responsibility for the dependent child's or disabled individual's care, and who is one of the following—
+>
+> (i) The dependent child's or disabled individual's father, mother, grandfather, grandmother, brother, sister, stepfather, stepmother, stepbrother, stepsister, uncle, aunt, first cousin, nephew, or niece.
+>
+> (ii) The disabled individual's husband, wife, son, daughter, stepson, stepdaughter, grandson, or granddaughter.
+>
+> (iii) The spouse of such parent or relative, even after the marriage is terminated by death or divorce.
+>
+> (iv) At State option, another relative of the dependent child or disabled individual based on blood (including those of half-blood), adoption, or marriage; the domestic partner of the parent or other caretaker relative; or an adult with whom the dependent child or disabled individual is living and who assumes the primary responsibility for the dependent child or disabled individual's care. To the extent a State has elected to include any of these relationships for the purpose of eligibility for the group at § 435.110, the same elections shall apply for this definition for such State.
+>
+> Dependent child means a child 13 years of age or under who relies on another individual for care.
+>
+> Disabled individual means an individual who meets the Americans with Disabilities Act definition of disability at 28 CFR 35.108. An individual need not be eligible for Medicaid or other Federal programs on the basis of a disability to be a disabled individual under this definition.
+>
+> Family caregiver means an adult family member or other individual who has a significant relationship with, and who provides care within a broad range of assistance to, a dependent child or a disabled individual as both terms are defined in this section.
+>
+> Guardian means an adult appointed by a court to care for and make personal decisions for a dependent child or disabled individual, as defined in this section, who cannot care for themselves, in accordance with applicable State law.
+>
+> Parent means an individual with the legal status of a mother or father, including by adoption, in accordance with applicable State law, who provides some level of care to a dependent child or disabled individual, as defined in this section.
+
+### S1208. Specified excluded individuals: excluded from the definition of applicable individual; former foster care, Indian, parent, guardian, caretaker relative and family caregiver
+
+Document: D-121
+
+42 CFR 435.554(b), (c)(1)-(3) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.554
+
+> (b) An individual who meets the criteria for one or more of the categories described in paragraph (c) of this section is excluded from the definition of an applicable individual as defined at § 435.551. Community engagement is not a condition of eligibility for specified excluded individuals.
+>
+> (c) An individual is a specified excluded individual if he or she meets one of the following:
+>
+> (1) The individual meets the definition of the eligibility group serving former foster care children, described at section 1902(a)(10)(A)(i)(IX) of the Act as amended by Public Law 115-271, regardless of whether the individual turned age 18 on or after January 1, 2023.
+>
+> (2) The individual meets the definition of Indian at § 447.51 of this subchapter.
+>
+> (3) The individual is a parent, guardian, caretaker relative, or family caregiver, as each is defined in this section, and for family caregivers, meets one of the criteria identified at paragraphs (c)(1)(i)(A) through (C) of this section. For purposes of this exclusion:
+>
+> (i) An individual who is a family caregiver as defined in this section is a specified excluded individual if he or she meets one of the following criteria:
+>
+> (A) The individual primarily resides with a dependent child or disabled individual, as these terms are defined in this section, for whom he or she provides assistance that occurs on a regular basis and is not solely incidental in nature.
+>
+> (B) The individual is a relative (as specified in the “caretaker relative” definition in this section, without regard to the requirements to live with and to assume primary responsibility) of a dependent child or disabled individual, as these terms are defined in this section, for whom he or she provides assistance that occurs on a regular basis and is not solely incidental in nature, and with whom he or she does not reside.
+>
+> (C) The individual does not reside with and is not a relative (as specified in the “caretaker relative” definition in this section, without regard to the requirements to live with and to assume primary responsibility) of a dependent child or disabled individual, as these terms are defined in this section, for whom he or she provides not less than 80 hours of assistance that is not solely incidental in nature per month.
+>
+> (ii) In residences with more than one parent, guardian, caretaker relative, or family caregiver, multiple individuals who meet the relevant definitions at paragraph (a) of this section may qualify as a specified excluded individual as described in this section.
+
+### S1209. Specified excluded individuals: disabled veteran, medically frail, TANF work compliance, SNAP work requirement, treatment program, inmate, pregnant or postpartum
+
+Document: D-121
+
+42 CFR 435.554(c)(4)-(10) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.554
+
+> (4) The individual is a veteran with a temporary or permanent disability from the Department of Veterans Affairs, rated as 100 percent (total) under 38 U.S.C. 1155.
+>
+> (5) The individual is medically frail or otherwise has special medical needs. For purposes of this exclusion:
+>
+> (i) An individual who is medically frail or otherwise has special medical needs is defined as an individual whose physical, mental, or other behavioral health condition significantly impairs the individual's ability to comply with the community engagement requirement in this subpart and is an individual:
+>
+> (A) Who is blind or disabled (as defined in section 1614 of the Social Security Act);
+>
+> (B) With a substance use disorder, excluding an individual in stable recovery (which means, an individual who is in recovery for 5 or more years);
+>
+> (C) With a disabling mental disorder;
+>
+> (D) With a physical, intellectual, or developmental disability that significantly impairs their ability to perform one or more activities of daily living; or
+>
+> (E) With a serious or complex medical condition which is a medical condition that is life threatening, seriously disabling without necessarily being life threatening, causing significant pain or discomfort that can cause serious interruptions to life activities, requiring a major time or effort commitment from caregivers for a substantial period of time, requiring frequent monitoring, associated with severe consequences or negative consequences for someone else, affecting multiple organ systems, requiring management to tight physiological parameters, requiring coordination of multiple specialties, requiring treatment that carries a risk of serious complications, or requiring adjustment in non-medical environments.
+>
+> (ii) The State must develop a list of diseases, diagnoses, disorders, or other health conditions to identify individuals who meet the criteria in paragraphs (a)(5)(i)(A) through (E) of this section.
+>
+> (A) The list must be auditable, justifiable, and consistent with the definitions established in paragraphs (a)(5)(i)(A) through (E) of this section.
+>
+> (B) The State must revise this list on a regular basis to add or remove diseases, diagnoses, disorders, or health conditions based on the State's experience applying this exclusion.
+>
+> (C) If an individual does not have a disease, diagnosis, disorder, or health condition on this list, the State must have reasonable processes and criteria in place for such individual to request consideration for the exclusion for individuals who are medically frail or otherwise have special medical needs.
+>
+> (6) The individual is compliant with any requirements imposed by the State, in accordance with section 407 of the Act.
+>
+> (7) The individual is a member of a household that receives Supplemental Nutrition Assistance Program (SNAP) benefits under 7 U.S.C. 2015 and is not exempt from a work requirement under such Act.
+>
+> (8) The individual is participating in a drug addiction or alcoholic treatment and rehabilitation program, as defined in section 3(h) of the Food and Nutrition Act of 2008 (7 U.S.C. 2012(h)). States may establish a minimum time commitment, consistent with appropriate clinical guidelines, for participation in such a program.
+>
+> (9) The individual is an inmate of a public institution, as defined at § 435.1010.
+>
+> (10) The individual is pregnant or entitled to postpartum medical assistance under section 1902(e)(5) or (16) of the Act.
+
+### S1210. Optional short-term hardship exception: State option and the hardship events
+
+Document: D-121
+
+42 CFR 435.555(a), (d)-(f) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.555
+
+> (a) Scope. At State option, the agency may provide that an applicable individual, as defined at § 435.551, is deemed to have demonstrated community engagement, as defined at § 435.552, for a month in which, for all or part of such month, the individual experiences any one of the short-term hardship events described in paragraph (d) of this section.
+>
+> (d) Short-term hardship event. A short-term hardship event exists when, for all or part of a month, and subject to a request in the circumstances described in paragraphs (d)(1) and (4) of this section by an applicable individual or an individual acting on behalf of the applicable individual, the criteria for any of the following circumstances are met:
+>
+> (1) The applicable individual receives:
+>
+> (i) Inpatient hospital services as defined at § 440.10 of this subchapter, nursing facility services as defined at § 440.155 of this subchapter, services in an intermediate care facility for individuals with intellectual disabilities as defined at § 440.150 of this subchapter, or inpatient psychiatric hospital services including the services defined at § 440.160 of this subchapter for individuals under the age of 21 without regard to whether such services are in an institution for mental diseases; or
+>
+> (ii) Other services of similar acuity, including:
+>
+> (A) Inpatient services furnished in a critical access hospital consistent with § 440.170(g) of this subchapter;
+>
+> (B) Inpatient services furnished in an emergency hospital consistent with § 440.170(e) of this subchapter;
+>
+> (C) Inpatient services furnished in an institution for mental diseases;
+>
+> (D) Inpatient services furnished by other facilities that are not covered under Medicaid but are otherwise recognized by the State; and,
+>
+> (E) Noninstitutional services that an applicable individual receives that, but for the receipt of such services, would likely result in the applicable individual receiving services specified in paragraphs (d)(1)(i) and (d)(1)(ii)(A) through (D) of this section, regardless of whether they are received in an institutional setting.
+>
+> (iii) States must use the definition of “inpatient” at § 440.2 of this subchapter for any inpatient services described in paragraphs (d)(1)(i) and (ii) of this section.
+>
+> (2) The applicable individual resides in a county or equivalent unit of local government in which there exists an emergency or disaster declared by the President pursuant to the National Emergencies Act (50 U.S.C. 1601 et seq.) or the Robert T. Stafford Disaster and Emergency Assistance Act (42 U.S.C. 5121 et seq.).
+>
+> (i) A short-term hardship exception based on an emergency declared pursuant to the National Emergencies Act (50 U.S.C. 1601 et seq.) exists when the emergency affects the ability of applicable individuals to demonstrate community engagement in a particular county or other equivalent unit of local government, or multiple counties, or statewide.
+>
+> (ii) A State must timely notify CMS of its plan to effectuate a short-term hardship exception based on an emergency declared pursuant to the National Emergencies Act.
+>
+> (iii) CMS will review States' use and implementation of a short-term hardship exception based on an emergency declared pursuant to the National Emergencies Act to ensure compliance with paragraph (d)(2)(i) of this section.
+>
+> (iv) The duration of an exception for an emergency or disaster declared by the President pursuant to the Robert T. Stafford Disaster and Emergency Assistance Act (42 U.S.C. 5121 et seq.) will be the first month in which the incident period begins and through at least the end of the month in which the incident period ends, and may extend beyond such month if approved by CMS upon request of the State, based on information the State provides in support of an extended period. The State must base its request for a longer duration on information showing that barriers to demonstrating the community engagement requirement under § 435.552 in the relevant area persist.
+>
+> (3) Through a request from the State to CMS made in an electronic or hard-copy format, the State demonstrates and CMS determines, based on data from the U.S. Bureau of Labor Statistics or another reliable source such as a State labor department, that the applicable individual resides in a county or equivalent unit of local government in which the unemployment rate is at or above the lesser of—
+>
+> (i) 8 percent; or
+>
+> (ii) 1.5 times the national unemployment rate.
+>
+> (4) The applicable individual, or the dependent of such individual, must travel outside of their community of residence for an extended period of time (which could be for part or all of a month or longer) to receive medical services necessary to treat a serious or complex medical condition, as defined at § 435.554(c)(5)(i)(E), that are not available within their community of residence.
+>
+> (i) If the applicable individual does not travel with the dependent, then, during the month or months in which the dependent must travel, the applicable individual must demonstrate having taken leave from employment or having absented themselves from other community engagement activities for reasons related to the dependent's condition or travel, such as, but not limited to:
+>
+> (A) Taking the dependent to local medical appointments related to or in preparation for the medical appointment that requires the travel;
+>
+> (B) Conducting logistical activities relating to the travel;
+>
+> (C) Maintaining primary responsibility for communicating with the dependent's medical providers.
+>
+> (ii) [Reserved]
+>
+> (e) Request from applicable individual not required. A State must not require an applicable individual, or an individual acting on behalf of the applicable individual, to make a request for the circumstances described in paragraphs (d)(2) and (3) of this section.
+>
+> (f) Excluded individuals. A State must not apply paragraph (a) of this section to a specified excluded individual defined at § 435.554.
+
+### S1211. Assessing compliance: the look-back months at application and at renewal, as specified in the State plan
+
+Document: D-121
+
+42 CFR 435.556(a)-(c) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.556
+
+> (a) A State must require applicable individuals, as defined at § 435.551, to demonstrate community engagement under § 435.552, or be deemed to demonstrate community engagement under § 435.553 or, if applicable, § 435.555, as a condition of eligibility for medical assistance. The State must require—
+>
+> (1) For an applicable individual who files an application for medical assistance under a State plan, or a waiver of such plan, demonstration of community engagement for at least one, but not more than 3 consecutive months, as specified in the State plan, immediately preceding the month of application.
+>
+> (2) For an applicable individual who is enrolled and receiving medical assistance under a State plan, or waiver of such plan, demonstration of community engagement for 1 or more months, as specified in the State plan and subject to paragraph (b) of this section, whether or not consecutive—
+>
+> (i) During the period between the effective date of such individual's most recent determination or redetermination at renewal, as applicable, and the date the individual's renewal is due, consistent with section 1902(e)(14)(L) of the Act and § 435.916, as applicable, if the State has not opted to conduct more frequent verifications of community engagement compliance under § 435.557(d);
+>
+> (ii) During the period between the most recent demonstration of community engagement and the date the individual's next demonstration of community engagement is due, consistent with § 435.557(d), if the State has opted to conduct more frequent verifications of community engagement compliance as provided in § 435.557(d); or
+>
+> (iii) During the period between the effective date of such individual's most recent determination or redetermination at renewal, as applicable, and the end of the month prior to the month in which the individual becomes an applicable individual as a result of a redetermination based on a change in circumstances in accordance with § 435.916(d).
+>
+> (b) A State must not require an applicable individual to demonstrate community engagement for a period that exceeds the period specified in paragraph (a)(2)(i), (ii), or (iii) of this section, as applicable.
+>
+> (c) A State may not apply the requirements in paragraph (a) of this section to a specified excluded individual defined at § 435.554.
+
+### S1212. Implementation timing: January 1, 2027; enrolled beneficiaries at the first renewal on or after it
+
+Document: D-121
+
+42 CFR 435.559 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.559
+
+> (a) Unless granted an exemption under § 435.560, the agency must require applicable individuals, as defined at § 435.551, to comply with the requirement to demonstrate community engagement under §§ 435.552 and 435.556, or be deemed to have demonstrated community engagement under § 435.553 or, if applicable, § 435.555, as a condition of eligibility for medical assistance furnished on or after January 1, 2027.
+>
+> (b) The agency may elect to implement §§ 435.550 through 435.563 before January 1, 2027, under the State plan or a demonstration project under section 1115 of the Act.
+>
+> (c) For a beneficiary who is enrolled as of the State's implementation date, the agency must verify compliance with the community engagement requirement at the applicable individual's first renewal initiated on or after the implementation date.
+
+### S1213. Good faith effort exemption: CMS may exempt a State until no later than December 31, 2028
+
+Document: D-121
+
+42 CFR 435.560(a), (c) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.560
+
+> (a) General. CMS temporarily may exempt a State from the requirement to implement §§ 435.550 through 435.559 and 435.561 through 435.563 in accordance with § 435.559 if—
+>
+> (1) A State submits a request that includes information on all of the criteria specified in paragraph (b) of this section; and
+>
+> (2) CMS determines that, based on the information submitted, the State is demonstrating a good faith effort to comply with the implementing the requirements of §§ 435.550 through 435.559 and 435.561 through 435.563.
+>
+> (c) Duration of exemption. An exemption granted under paragraph (a) of this section shall expire no later than December 31, 2028, and may not be renewed beyond such date.
+>
+> (1) CMS will approve initial good faith effort exemptions for a period not to exceed 6 months.
+
+### S1214. Definition of Indian (adopted by 42 CFR 435.554(c)(2))
+
+Document: D-122
+
+42 CFR 447.51 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-447.51
+
+> Indian means any individual defined at 25 U.S.C. 1603(13), 1603(28), or 1679(a), or who has been determined eligible as an Indian, under 42 CFR 136.12. This means the individual:
+>
+> (1) Is a member of a Federally-recognized Indian tribe;
+>
+> (2) Resides in an urban center and meets one or more of the following four criteria:
+>
+> (i) Is a member of a tribe, band, or other organized group of Indians, including those tribes, bands, or groups terminated since 1940 and those recognized now or in the future by the State in which they reside, or who is a descendant, in the first or second degree, of any such member;
+>
+> (ii) Is an Eskimo or Aleut or other Alaska Native;
+>
+> (iii) Is considered by the Secretary of the Interior to be an Indian for any purpose; or
+>
+> (iv) Is determined to be an Indian under regulations promulgated by the Secretary;
+>
+> (3) Is considered by the Secretary of the Interior to be an Indian for any purpose; or
+>
+> (4) Is considered by the Secretary of Health and Human Services to be an Indian for purposes of eligibility for Indian health care services, including as a California Indian, Eskimo, Aleut, or other Alaska Native.
+
+### S1215. Statute: community engagement as a condition of eligibility from the first quarter after December 31, 2026; the State specifies the look-back months
+
+Document: D-26
+
+42 U.S.C. 1396a(xx)(1). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (xx) Community engagement requirement for applicable individuals
+>
+> (1) In general Except as provided in paragraph (11), beginning not later than the first day of the first quarter that begins after December 31, 2026 , or, at the option of the State under a waiver or demonstration project under section 1315 of this title or the State plan, such earlier date as the State may specify, subject to the succeeding provisions of this subsection, a State shall provide, as a condition of eligibility for medical assistance for an applicable individual, that such individual is required to demonstrate community engagement under paragraph (2)—
+>
+> (A)
+>
+> in the case of an applicable individual who has filed an application for medical assistance under a State plan (or a waiver of such plan) under this subchapter, for 1 or more but not more than 3 (as specified by the State) consecutive months immediately preceding the month during which such individual applies for such medical assistance; and
+>
+> (B) in the case of an applicable individual enrolled and receiving medical assistance under a State plan (or under a waiver of such plan) under this subchapter, for 1 or more (as specified by the State) months, whether or not consecutive—
+>
+> (i)
+>
+> during the period between such individual’s most recent determination (or redetermination, as applicable) of eligibility and such individual’s next regularly scheduled redetermination of eligibility (as verified by the State as part of such regularly scheduled redetermination of eligibility); or
+>
+> (ii)
+>
+> in the case of a State that has elected under paragraph (4) to conduct more frequent verifications of compliance with the requirement to demonstrate community engagement, during the period between the most recent and next such verification with respect to such individual.
+
+### S1216. Community engagement verification options: more frequent verification, and not seeking further information for a mandatory exception
+
+Document: D-121
+
+42 CFR 435.557(d), (g)(1) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.557
+
+> (d) State option to conduct more frequent verifications. States may verify that an applicable individual has met the requirement to demonstrate community engagement more frequently than each regularly scheduled redetermination, consistent with § 435.556(a)(2)(ii).
+>
+> (g) Verification of mandatory and optional exceptions. (1) States must comply with the requirements in paragraph (b)(2) of this section when verifying qualification for a mandatory exception under § 435.553 except that if the individual provided information on an application, renewal or other State form, or when reporting a change in circumstances in accordance with paragraph (b)(4) of this section indicating they qualify for an exception and there is no reliable information available to the State, the State may elect the option under section 1902(xx)(3)(A) of the Act not to seek further information from the applicable individual.
+
+### S1217. State medical assistance: a child under 19 who would be eligible for medical assistance but for immigration status
+
+Document: D-69
+
+C.R.S. 25.5-2-104(1)-(2) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> (2) A child who is less than nineteen years of age is eligible to receive state medical assistance if the child would be eligible for medical assistance as defined in section 25.5-4-103 (13) but is not eligible due solely to the child's immigration status.
+
+### S1218. Medical assistance for a pregnant non-citizen who meets the eligibility requirements other than citizenship and immigration status, with twelve months postpartum
+
+Document: D-123
+
+C.R.S. 25.5-5-201(4.5)(a), (6)(a)-(b) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> (4.5) (a) Subject to the receipt of federal financial participation, to the maximum extent allowed under federal law, a person who was eligible for the medical assistance program for the sixty days following the pregnancy remains continuously eligible for all services under the medical assistance program for the twelve-month postpartum period.
+>
+> (6) (a) Beginning no later than January 1, 2025, a pregnant person who is not a citizen and who is not eligible for medical assistance pursuant to subsection (4) of this section is eligible to receive medical assistance pursuant to this subsection (6)(a) if the individual meets the eligibility requirements other than those related to citizenship and immigration status. (b) A pregnant person who is eligible for medical assistance pursuant to this subsection (6) remains continuously eligible for all medical services pursuant to the medical assistance program for the twelve-month postpartum period, so long as eligibility remains in effect pursuant to subsection (4.5)(a) of this section.
+
+### S1219. 2025 HHS poverty guidelines, 48 contiguous states and D.C.
+
+Document: D-124
+
+HHS, Annual Update of the HHS Poverty Guidelines, 90 FR 5917 (Jan. 17, 2025). https://www.govinfo.gov/content/pkg/FR-2025-01-17/pdf/2025-01377.pdf
+
+> DATES: January 15, 2025 unless an office
+>
+> administering a program using the
+>
+> guidelines specifies a different effective
+>
+> date for that particular program.
+>
+> 2025 POVERTY GUIDELINES FOR THE
+>
+> 48 CONTIGUOUS STATES AND THE
+>
+> DISTRICT OF COLUMBIA
+>
+> Persons in family/household
+>
+> 1 ............................................
+>
+> 2 ............................................
+>
+> 3 ............................................
+>
+> 4 ............................................
+>
+> 5 ............................................
+>
+> 6 ............................................
+>
+> 7 ............................................
+>
+> 8 ............................................
+>
+> Poverty
+>
+> guideline
+>
+> $15,650
+>
+> 21,150
+>
+> 26,650
+>
+> 32,150
+>
+> 37,650
+>
+> 43,150
+>
+> 48,650
+>
+> 54,150
+>
+> For families/households with more
+>
+> than 8 persons, add $5,500 for each
+>
+> additional person.
+
+### S1220. CSRA: the largest of the capped total resources, the increased CSRA, and a court-ordered amount (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.M.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> For persons whose Medical Assistance application is for an individual who meets the definition of an institutionalized spouse, the CSRA is the largest of the following amounts:
+>
+> a. The total resources of the couple but no more than the current maximum allowance which, changes each year beginning January 1st.; or
+>
+> b. The increased CSRA calculated pursuant to section 8.100.7.S; or
+>
+> c. The amount a court has ordered the institutionalized spouse to transfer to the community spouse for monthly support of the community spouse or a dependent family member.
+
+### S1221. Increasing the CSRA when the community spouse's income with the income allowance stays below the MMMNA (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.S.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.7.S. Increasing the Community Spouse Resource Allowance
+>
+> 1. The CSRA shall be increased above the maximum amount if additional resources are needed to raise the community spouse's monthly income to the level of the Minimum Monthly Maintenance Needs Allowance (MMMNA). In making this determination the items listed below are calculated in the following order:
+>
+> a. The community spouse's MMMNA;
+>
+> b. The community spouse’s own income; and
+>
+> c. The Monthly Income Allowance (MIA) contribution that the community spouse is eligible to receive from the institutionalized spouse.
+>
+> d. If the community spouse’s own income, and the Monthly Income Allowance contribution from the institutionalized spouse’s income is less than the Minimum Monthly Maintenance Needs Allowance, additional available resources shall be shifted to the community spouse to bring his/her income up to the level of the MMMNA. The additional resources necessary to raise the community spouse’s monthly income to the level of the MMMNA shall be based upon the cost of a single-premium lifetime annuity with monthly payments equal to the difference between the MMMNA and the community spouse’s income. The following steps shall be followed to determine the amount of resources to be shifted:
+>
+> i) The applicant shall obtain three estimates of the cost of an annuity that would generate enough income to make up the difference between the MMMNA and the combined community spouse’s income as described above.
+>
+> ii) The amount of the lowest estimate shall be used as the amount of resources to increase the CSRA.
+>
+> iii) The applicant shall not be required to purchase the annuity in order to have the CSRA increased.
+>
+> e. The CSRA shall not be increased if the institutionalized spouse refuses to make the monthly income allowance (MIA) available to the community spouse.
+
+### S1222. Federal CSRA: the State plan may set the community spouse's standard up to the indexed maximum
+
+Document: D-47
+
+42 U.S.C. 1396r-5(f)(2)(A). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (2) Community spouse resource allowance defined In paragraph (1), the “ community spouse resource allowance” for a community spouse is an amount (if any) by which—
+>
+> (A) the greatest of—
+>
+> (i)
+>
+> $12,000 (subject to adjustment under subsection (g)), or, if greater (but not to exceed the amount specified in clause (ii)(II)) an amount specified under the State plan,
+>
+> (ii)
+>
+> the lesser of (I) the spousal share computed under subsection (c)(1), or (II) $60,000 (subject to adjustment under subsection (g)),
+
+### S1223. CHIP: a child in a family eligible for a State health benefits plan through a family member's public agency employment is not a targeted low-income child, with two exceptions
+
+Document: D-30
+
+42 U.S.C. 1397jj(b)(2)(B), (b)(6). https://www.law.cornell.edu/uscode/text/42/1397jj
+
+> (2) Children excluded Such term does not include—
+>
+> (A)
+>
+> except as provided in paragraph (7), a child who is an inmate of a public institution or a patient in an institution for mental diseases; or
+>
+> (B)
+>
+> except as provided in paragraph (6), a child who is a member of a family that is eligible for health benefits coverage under a State health benefits plan on the basis of a family member’s employment with a public agency in the State.
+>
+> (6) Exceptions to exclusion of children of employees of a public agency in the State
+>
+> (A) In general A child shall not be considered to be described in paragraph (2)(B) if—
+>
+> (i)
+>
+> the public agency that employs a member of the child ’s family to which such paragraph applies satisfies subparagraph (B); or
+>
+> (ii)
+>
+> subparagraph (C) applies to such child .
+>
+> (B) Maintenance of effort with respect to agency contribution for family coverage
+>
+> For purposes of subparagraph (A)(i), a public agency satisfies this subparagraph if the amount of annual agency expenditures made on behalf of employees enrolled in health coverage paid for by the agency that includes dependent coverage for the most recent State fiscal year is not less than the amount of such expenditures made by the agency for the 1997 State fiscal year, increased by the percentage increase in the medical care expenditure category of the Consumer Price Index for All-Urban Consumers (all items: U.S. City Average) for such preceding fiscal year.
+>
+> (C) Hardship exception
+>
+> For purposes of subparagraph (A)(ii), this subparagraph applies to a child if the State determines that the annual aggregate amount of premiums and cost-sharing imposed for coverage of the family of the child would exceed 5 percent of such family’s income for the year involved.
+
+### S1224. CHIP regulation: eligible for State health benefits coverage even if declined; the more than nominal contribution test
+
+Document: D-36
+
+42 CFR 457.310(c)(1). https://www.ecfr.gov/current/title-42/section-457.310
+
+> (c) *Exclusions.* Notwithstanding paragraph (a) of this section, the following groups are excluded from the definition of targeted low-income children:
+>
+> (1) *Children eligible for certain State health benefits coverage.* (i) A targeted low-income child may not be eligible for health benefits coverage under a State health benefits plan in the State on the basis of a family member's employment with a public agency, even if the family declines to accept the coverage.
+>
+> (ii) A child is considered eligible for health benefits coverage under a State health benefits plan if a more than nominal contribution to the cost of health benefits coverage under a State health benefits plan is available from the State or public agency with respect to the child or would have been available from those sources on November 8, 1999. A contribution is considered more than nominal if the State or public agency makes a contribution toward the cost of an employee's dependent(s) that is $10 per family, per month, more than the State or public agency's contribution toward the cost of covering the employee only.
+
+### S1225. CHIP: a targeted low-income pregnant woman satisfies 1397jj(b)(2) in the same manner as a child
+
+Document: D-30
+
+42 U.S.C. 1397ll(d)(2). https://www.law.cornell.edu/uscode/text/42/1397ll
+
+> (2) Targeted low-income pregnant woman The term “ targeted low-income pregnant woman ” means an individual—
+>
+> (A)
+>
+> during pregnancy and through the end of the month in which the 60-day period, or, in the case that subparagraph (A) of section 1396a(e)(16) of this title applies to the State child health plan (or waiver of such plan) , pursuant to section 1397gg(e)(1) of this title , the 12-month period, [1] (beginning on the last day of her pregnancy) ends;
+>
+> (B)
+>
+> whose family income exceeds 185 percent (or, if higher, the percent applied under subsection (b)(1)(A)) of the poverty line applicable to a family of the size involved, but does not exceed the income eligibility level established under the State child health plan under this subchapter for a targeted low-income child ; and
+>
+> (C)
+>
+> who satisfies the requirements of paragraphs (1)(A), (1)(C), (2), and (3) of section 1397jj(b) of this title in the same manner as a child applying for child health assistance would have to satisfy such requirements.
+
+### S1226. MAGI household: the claimed-dependent exceptions, including the custodial parent definition
+
+Document: D-34
+
+42 CFR 435.603(f)(2). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (2) *Basic rule for individuals claimed as a tax dependent.* In the case of an individual who expects to be claimed as a tax dependent by another taxpayer for the taxable year in which an initial determination or renewal of eligibility is being made, the household is the household of the taxpayer claiming such individual as a tax dependent, except that the household must be determined in accordance with paragraph (f)(3) of this section in the case of—
+>
+> (i) Individuals other than a spouse or child who expect to be claimed as a tax dependent by another taxpayer; and
+>
+> (ii) Individuals under the age specified by the State under paragraph (f)(3)(iv) of this section who expect to be claimed by one parent as a tax dependent and are living with both parents but whose parents do not expect to file a joint tax return; and
+>
+> (iii) Individuals under the age specified by the State under paragraph (f)(3)(iv) of this section who expect to be claimed as a tax dependent by a non-custodial parent. For purposes of this section—
+>
+> (A) A court order or binding separation, divorce, or custody agreement establishing physical custody controls; or
+>
+> (B) If there is no such order or agreement or in the event of a shared custody agreement, the custodial parent is the parent with whom the child spends most nights.
+
+### S1227. Colorado MAGI household: the claimed-dependent exceptions, non-filer rules, and a parent living outside the household on separation (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.E.1.c-d, E.5 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> c. The MAGI household of an applicant who expects to be claimed as a tax dependent is as outlined in 8.100.4.E.b above, except in the following circumstances:
+>
+> i) The applicant expects to be claimed as a tax dependent by someone other than a spouse, biological, adoptive or step parent.
+>
+> ii) The applicant is a child under 19 who is expected to be claimed by one parent as a tax dependent and is living with both parents, but the parents do not expect to file a joint tax return.
+>
+> iii) The applicant is a child under 19 and who expects to be claimed as a tax dependent by anon-custodial parent.
+>
+> d. If the applicant meets one of the exceptions in 8.100.4.E.c above or is a non-filer, household composition shall be determined using the following non-filer rules and the applicant’s household shall consist of the following:
+>
+> i) The applicant;
+>
+> ii) The applicant’s spouse who lives in the household;
+>
+> iii) The applicant’s natural, adopted, and step children under the age of 19, who live in the household; and
+>
+> iv) In the case of applicants under the age of 19, the applicant’s natural, adoptive, and step parents and natural, adoptive, and step siblings under age 19, who live in the household.
+>
+> 5. If a child is claimed as a tax dependent by both parents who are married and who will file taxes jointly but one parent lives outside of the household due to separation or pending divorce, the child’s household composition is determined by non-filer rules. The parent living outside of the household will not be counted as part of the household.

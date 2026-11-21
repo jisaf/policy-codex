@@ -1,0 +1,12 @@
+id: CO-1921
+name: Is a seasonal worker
+identifier: ma_is_seasonal_worker
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is a seasonal worker as described in 26 U.S.C. 45R(d)(5)(B), the description 42 CFR 435.552(a)(7) and (g) adopt for the six-month average income test.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1202, S1205]
+tags: [ma, magi]
+rationale: "OQ-65: no fact states seasonal worker status."

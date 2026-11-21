@@ -1,0 +1,13 @@
+id: CO-1925
+name: Lives with
+identifier: lives_with
+kind: supplied
+type: group of persons
+scope: person
+program: All
+meaning: The persons in the case who live in the same home as this person, this person included. Where it is not stated, a program that reads it says how it reads the absence.
+precision: A person who lives in two homes is listed in the home where they primarily reside.
+supplied_by: The application's household roster.
+sources: [S1207, S1208, S1227]
+tags: [ma, household]
+rationale: "OQ-42 and OQ-65: no fact states co-residence. The MAGI non-filer household counts only the parents and siblings who live in the household (8.100.4.E.1.d, E.5), and 42 CFR 435.554(c)(3)(i)(A) asks whether a family caregiver primarily resides with the person cared for."

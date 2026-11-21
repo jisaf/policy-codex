@@ -1,0 +1,18 @@
+id: CO-1973
+name: "Medicaid community engagement: months assessed"
+identifier: ma_community_engagement_review_months
+kind: derived
+type: list of months
+scope: person
+program: Medicaid
+meaning: "The months 42 CFR 435.556(a) assesses for this determination: at application, the ma_community_engagement_application_lookback_months consecutive months immediately preceding the month of application; at renewal or a change-in-circumstances redetermination, the months from the month containing the effective date of the most recent determination through the month before the determination month."
+precision: The renewal period is read from the month containing the effective date of the most recent determination through the month before the month of this determination, which stands for the date the renewal is due (435.556(a)(2)(i)) or the month the person becomes an applicable individual ((a)(2)(iii)). Not read when the review type is none. Colorado has not elected more frequent verification (435.557(d), OQ-410).
+derived: [case, [["=", ma_community_engagement_review_type, application], [months_ending, ma_community_engagement_application_lookback_months, [month_before, [month_of, ma_application_date]]]], [else, [months_from_to, [month_of, ma_most_recent_determination_effective_date], [month_before, [det_month]]]]]
+sources: [S1211, S1215]
+implemented: engine
+tags: [ma, magi]
+open: [OQ-410]
+rationale: "OQ-65: the look-back period differs at application and at renewal."
+tests:
+  - {id: CO-1973-T1, as_of: "2027-03-01", given: {ma_community_engagement_review_type: application, ma_application_date: "2027-03-01"}, title: "Application in March 2027 with a one-month look-back", expect: ["2027-02"]}
+  - {id: CO-1973-T2, as_of: "2027-09-15", given: {ma_community_engagement_review_type: renewal, ma_most_recent_determination_effective_date: "2027-06-01"}, title: "Renewal: from the last determination's month through August", expect: ["2027-06", "2027-07", "2027-08"]}

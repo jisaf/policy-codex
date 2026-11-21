@@ -1,0 +1,12 @@
+id: CO-1920
+name: Educational program attendance hours (no credit hours)
+identifier: ma_educational_program_attendance_hours
+kind: supplied
+type: hours
+scope: person-month
+program: Medicaid
+meaning: For a person enrolled less than half-time in an educational program that does not use credit hours, the hours in the month spent attending class and participating in educational activities (42 CFR 435.552(d)(2)). If not stated, Medicaid reads this as zero.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1204]
+tags: [ma, magi]
+rationale: "OQ-65: the less than half-time hours computation needs the attendance hours of a program without credit hours."
