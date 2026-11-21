@@ -526,3 +526,80 @@ Items reviewed: 780. Items named in at least one finding: about 210.
 8. **Split `in_medical_institution` (R-8) and make residency a shared base with per-program rules (R-9),** adding county residence for CCCAP.
 9. **Remove the duplicates that can disagree:** foster care history (D-4), `is_employed` (D-5), CHP+ lower bounds (D-3), receipt flags beside amounts (D-6); wire the unread duration parameters into the rules that hard-code them (U-7).
 10. **Adopt the naming convention in section 5 and extend `name.prefix` to supplied facts,** then rewrite the neutral meanings in C-1, the "countable" names in C-2, and document every unknown-reads-as default in C-4.
+
+---
+
+## Disposition (vocabulary fix round, 2026-11-21)
+
+Every finding was re-checked against the tree after the Medicaid, cash/SNAP and verification fix rounds before it was fixed. New items CO-1700–CO-1750, excerpts S1150–S1157, open questions OQ-390–OQ-396; retirements, moves and the identifier rename table are in docs/colorado-notes.md ("Vocabulary fix round"). No household case expectation changed (the cases state zero self-employment, cash assistance and other unearned income, and the new program facts were given the values the shared facts carried); the behavior changes are shown by new rule tests.
+
+### 1. True duplicates
+
+- **D-1 fixed.** CO-116/117 retired; CO-181/182 are `federal_poverty_guideline_annual_table` / `_each_additional`, program All. CCCAP's table kept (it is the state's monthly table effective each October 1, and deriving it needs earlier annual versions) and renamed `cccap_poverty_guideline_monthly_table` / `_each_additional` so the unit is in the name.
+- **D-2 fixed.** CO-105 and CO-115 retired.
+- **D-3 fixed.** CO-210/211 retired; CO-704 and CO-708 read CO-191/194. The related CO-1155 → CO-193 suggestion declined: § 8.100.4.G.8 (S613) states its own "greater than 133%" figure, not the adult limit by reference.
+- **D-4 fixed.** CO-054 retired; CO-552 reads `ma_is_former_foster_care_category`.
+- **D-5 fixed.** CO-805 retired; CO-618 reads `has_earned_income`.
+- **D-6 fixed in part.** CO-047 and CO-049 retired; the receipt flags and the amounts now say in their meanings which is the case status and which the month's payment (convention rule 11). Deriving `receives_ssi` and `receives_tanf_cash` from the amounts declined: SSI status includes 1619(b) with no payment and `receives_tanf_cash` is the unit's current case status, so they are different facts, not copies.
+- **D-7 fixed in part.** CO-541 (alias), CO-553 and CO-917 retired. `af_and_cs_grant_standard` against the SSI rate declined pending the cash programs owner (OQ-391).
+
+### 2. Inappropriate reuse
+
+- **R-1 fixed.** (a) Supplied income facts state gross amounts received, and the phase 2 post-exclusion note is withdrawn. (b) `earned_income` is `wages_gross`; self-employment is `self_employment_gross_receipts` netted by each program's own allowable-cost fact (SNAP CO-1702, Medicaid non-MAGI CO-1704, Colorado Works CO-1706 through `cw_gross_earned_income` CO-1716, Adult Financial CO-1708, CCCAP CO-1710, LEAP CO-1712), MAGI reading the tax figure (CO-024); CO-605, CO-618/619 (through CO-1715), CO-641, CO-657, CO-907, CO-909, CO-922 and CO-946 now count it. (c) `other_unearned_income` is split into taxable (CO-1714) and non-taxable (CO-030) and MAGI reads the taxable part only; `magi_other_taxable_income` (CO-079) no longer overlaps it. (d) Cash assistance is `tanf_cash_income` (CO-029) and `adult_financial_cash_income` (CO-1713): Colorado Works and Adult Financial no longer count their own grant, and SNAP counts SSI. Point 3 (explicit exclusion inputs per program) declined for this round: no case or test states excluded income; recorded as OQ-390.
+- **R-2 fixed.** CO-020 survives as SNAP's `snap_is_enrolled_half_time_in_school_or_training`; `is_full_time_secondary_student_finishing_before_nineteen` (CO-1720, Medicaid and Colorado Works), `is_attending_high_school` (CO-1721, CCCAP household) and `cccap_is_in_education_or_training_activity` (CO-1722) are new. OQ-124 resolved.
+- **R-3 fixed.** `snap_is_indian_or_urban_indian` (renamed); `cw_months_received_in_exempt_indian_country` (CO-1723) is subtracted in CO-915.
+- **R-4 fixed.** Shared `is_exempt_from_five_year_bar` (CO-1725, 8 U.S.C. 1613(b), S1150) over `federal_five_year_bar_exempt_category` (CO-1724) and `has_military_connection`; `us_entry_date` (CO-1726). Colorado Works and AND now read the same rule (C.R.S. 26-2-111.8(2), S1151), so CO-943 was merged into CO-905, now `meets_public_assistance_citizenship_requirement`. Medicaid's `ma_is_five_year_bar_exempt` (CO-1172) reads the shared item for the 1613(b) categories and keeps its own state categories (CO-1170 narrowed). CO-306 stays SNAP-only.
+- **R-5 fixed.** `meets_ssa_disability_criteria` (CO-011, neutral meaning), `af_has_total_disability_six_months` (CO-1728), `receives_ssdi` (CO-1727), `snap_receives_disability_or_blindness_payment` (CO-015) and `snap_receives_permanent_disability_retirement_benefit` (CO-1729, 271.2 prong 5); CO-302 no longer counts a bare SSA finding or blindness. OQ-113 resolved.
+- **R-6 fixed.** `snap_is_serving_ipv_disqualification`, `cw_is_serving_ipv_disqualification` (CO-1730), `snap_is_disqualified_drug_felony`, `snap_has_drug_felony_involving_snap_benefits` (CO-1731), `is_fleeing_felon` and `is_probation_or_parole_violator` (CO-1732). One difference from the proposal: Colorado Works reads `is_fleeing_felon` only, because the current 3.604.2.L.1 names "fugitives or fleeing felons" and no probation or parole violators. The fuller 3.604.2.M excerpt was already in place (S1004, phase 8).
+- **R-7 fixed.** `snap_is_head_of_household` (renamed) and `cw_is_head_of_assistance_unit` (CO-1733). Scope `case` for household facts: see C-6.
+- **R-8 fixed.** `snap_resides_in_institution_providing_meals` (CO-007, renamed); neutral `resides_in_medical_institution` (CO-1742) for the Medicaid items and the Home Care Allowance; `leap_living_arrangement` gains `institutional_group_care` and CO-1004 no longer reads the SNAP fact. A separate `institution_entry_date` for Medicaid was not needed (CO-008 already serves CO-661).
+- **R-9 fixed in part.** `ma_meets_residency` had no Medicaid-specific content, so it became the shared `is_colorado_resident` (CO-505); Colorado Works and Adult Financial read it inside their own items (U-4). Declined: separate Medicaid, LEAP and CCCAP residency items (each would be an alias of the shared item until a program-specific rule is modeled), county residence for CCCAP (no county fact exists) and a SNAP residency item, all recorded in OQ-393; moving the fleeing-felon and inmate bars out of `af_meets_residency` (3.520.61.B states them in the same requirement).
+- **R-10 fixed.** CO-998 reads `is_us_citizen_or_national` and `is_qualified_non_citizen` (plus other lawfully present non-citizens, OQ-394) and CO-980 has no silent default; the option is `other_lawfully_present_non_citizen`; CO-1005 is `leap_has_countable_household_member`; the withholding and Amerasian categories are in CO-1724. Parolee and battered non-citizen categories not added (no rule reads them yet).
+- **R-11 fixed.** `snap_household_liquid_resources` (CO-1740) in all three prongs of CO-348; `cccap_declared_assets` (CO-1741) for CO-996; the Adult Financial equivalence is an assumption on CO-947 (OQ-392). Not fixed before this round.
+- **R-12 fixed in part.** `cw_work_activity_hours` (CO-1745) for CO-920; `cccap_caretaker_is_incapacitated` (CO-1744) for CO-991. CCCAP's hourly-wage test stays unmodeled (OQ-162).
+- **R-13 fixed in part.** `ma_application_date` (renamed) and `snap_application_date` (CO-1746); `ma_reasonable_opportunity_notice_date` (CO-1747) for CO-1413. Per-program verification request dates declined: one request date per person stays the recorded design (OQ-300).
+- **R-14 fixed.** `chp_has_other_health_coverage` (CO-090; BCCP no longer read it); the IMD fact states the 42 CFR 435.1010 IMD and `ma_oap_is_patient_in_tb_or_mental_health_institution` (CO-1748) is the OAP Health Care exclusion; `is_inmate_of_public_institution` is plain incarceration and the CHP+ reentry carve-out is `chp_is_in_reentry_period` (CO-1749).
+- **R-15 declined.** Per-program relationship edges need relationship roles the engine cannot declare from a volume (OQ-132); recorded as OQ-396. `marital_status` gained `widowed` (C-1).
+- **R-16 fixed in part.** Neutral meanings for CO-843, CO-844, CO-841 (C-1); CO-092 program All; CO-820/821 read by Home Care Allowance acknowledged in `accepts_from`. The LEAP and Medicaid homelessness definitions were not re-checked (no new text fetched); `receives_tanf_cash`'s carrier is addressed by its meaning (case status of the person's unit).
+
+### 3. Should be reused
+
+- **U-1 fixed in part.** `ma_ssi_poverty_guideline_monthly` (CO-1750) for CO-613 to CO-616. The Buy-In rules read the size-1 guideline, and the other lookups occur once per program, so no further item.
+- **U-2 fixed.** `has_held_qualified_status_five_years` (CO-508) and `qualified_non_citizen_waiting_period_years` (CO-104), program All.
+- **U-3 fixed.** `is_us_citizen_or_national` (CO-1358) and `is_qualified_non_citizen` (CO-506) read by the SNAP, Medicaid, Colorado Works, Adult Financial and CCCAP status rules. LEAP's CO-1010 keeps its explicit list: reading the shared items makes it identical to OAP's CO-929 (dup.compact).
+- **U-4 fixed** (R-9).
+- **U-5 declined** (note): the ABAWD items' first-of-month age is deliberate and no outcome is wrong.
+- **U-6 declined** (note): `month_of` the application date is one operator; an item for it would be an alias.
+- **U-7 fixed.** CO-556, CO-557 and CO-560 read CO-196, CO-197 and CO-198 with P44.
+- **U-8 declined** (note): the unread parameters carry cited figures for rules not yet modeled, and each says why it is unread (the CSRA minimum, OQ-126).
+- **U-9 declined** (note): literal thresholds are left to their programs' owners (the premium bands are OQ-82).
+- **U-10 declined.** The verification items treat wages and self-employment differently (self-employment only when the attestation is questionable), so `has_earned_income` does not fit; they now read `self_employment_gross_receipts`.
+- **U-11 fixed.** `ma_wawd_countable_income` (CO-1715).
+- **U-12 already fixed** (phase 8 K-6; OQ-115 resolved).
+- **U-13 declined** (note).
+- **U-14 fixed** for CO-555 and CO-561; CO-559 keeps "under 19" (presumptive eligibility, 1396r-1a, has no end-of-month rule).
+- **U-15 declined** (note).
+- **U-16 fixed.** Convention rule 11 in docs/conventions.md.
+
+### 4. Clarity
+
+- **C-1 fixed.** Every row rewritten or split (CO-002, CO-006, CO-007, CO-011, CO-014 renamed, CO-005 renamed, CO-020, CO-034, CO-035, CO-042, CO-843, CO-844 with `widowed` and CO-1111 retired, CO-841, CO-088, CO-1105). CO-1313's state/county split waits for a county fact (OQ-393).
+- **C-2 fixed.** Resource facts carry `snap_`, `ssi_` or `ma_`; `magi_other_taxable_income`; the SNAP income items no longer say "countable".
+- **C-3 fixed.** The poverty tables (D-1), `estimated_home_heating_costs_for_season`, `snap_eligible_household_size`, "as of" for the point-in-time amounts, the period of `leap_household_income`, family size in `ma_magi_household_size`; monthly-unless-said and the rate spellings are convention rules 5 and 7 (no renames for style).
+- **C-4 fixed in part.** "If not stated, <program> reads this as <value>" added to each listed fact; CCCAP's citizenship default removed (R-10); the two remaining eligibility-granting CCCAP defaults raised with the child care owner (OQ-395); `lawful_presence_status` option `unknown` removed; `expected_number_of_children` says how an unstated value reads; `ssn_furnished_or_application_shown`, `identity_document_is_on_cash_program_list`, `disability_benefit_receipt_verified_by_electronic_data_source` and `leap_has_countable_household_member` renamed; the immigration-document and earned-income-match meanings say what they establish. `transfer_was_exempt` declined: redefining the lookback value needs the Medicaid owner's reading of 8.100.7.F.
+- **C-5 declined.** The six figures have no fetched source to become parameters (the LEAP and CCCAP figures are illustrative or county-published, OQ-122), and no supplied fact or case uses scope `case` yet.
+- **C-6 fixed in part.** `shelter_cost_monthly` says which person carries it; scope `case` for the other household facts declined for the reason in C-5.
+- **C-7 fixed in part.** The rule (program All means neutral) is convention rule 2, and the program field was corrected on every fact this round touched; no volume-wide sweep.
+
+### 5. Naming
+
+- **N-1 fixed.** Six Medicaid parameters prefixed; the four `name.prefix` warnings are gone.
+- **N-2 fixed.** Federal figures lose the Medicaid prefix (the poverty guideline, the six SSI figures, the waiting period); the qualified non-citizen, five-year and residency items are shared.
+- **N-3 fixed.** The legitimate cross-program reads are listed in each reader's `accepts_from`.
+- **N-4 fixed in part.** Program-defined facts that other programs read were renamed with their program's prefix (R-3, R-5, R-6, R-7, R-8, C-2). Removing the supplied-fact exemption from `name.prefix` declined: it would flag some ninety existing facts whose names are not misleading; `read.cross_program` catches the harmful case.
+- **N-5 to N-14 declined** as style-only renames (convention rules 4 to 10 govern new items); N-14's three misnamed facts are fixed under C-4.
+- **Proposed convention adopted** in docs/conventions.md ("Naming and vocabulary").
+
+### Governance
+
+`read.cross_program` (warn) is in src/engine/governance.ts with a unit test: a derived item reading a supplied fact or derived item owned by another program (not All) that its `accepts_from` does not list, or an `accepts_from` entry not in the ledger. Before the round the Colorado volume had 71 such reads; after it, 51, all listed in `accepts_from`, so the volume reports none. The mwr volume reports one (WR-208 reads SNAP's work requirement, which its rule names); it was left for that volume's owner.

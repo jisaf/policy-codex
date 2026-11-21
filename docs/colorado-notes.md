@@ -125,3 +125,78 @@ Fixed the findings of docs/reviews/cash-snap-other-phase-8.md (disposition at th
 - ID retired: CO-036. Phase 8 had reused the ID of the deleted supplied fact `utility_allowance_amount` for the derived `snap_utility_allowance_amount`; the derived rule is now CO-1500 (same identifier, now household-level so a household gets one SUA), and CO-036 is not used again.
 - Phase 8's change to the target household's SNAP allotment (125 to 336) was partly a fact change, not a rule effect: p2 now states heat plus three utilities where every person had stated `utility_allowance_amount: 0`. In this round the target household also became one LEAP household (the family buys heat in common), which changes its LEAP figures.
 - Supplied facts added for the cash chapter (first certification period, new source, the Adult Financial ISM, the facility stay for the personal needs allowance, a deceased Colorado Works client) are prefixed or program-scoped where their meaning is program-specific; the shared income and disqualification facts the vocabulary review will split are read as they are.
+
+## Vocabulary fix round (2026-11-21)
+
+Fixed the findings of docs/reviews/vocabulary-reuse.md (disposition at the end of that review). New items CO-1700–CO-1750, excerpts S1150–S1157 (quoted from the documents already in the volume: D-15, D-25, D-59, D-65, D-80, D-81, D-82, D-87; no new documents), open questions OQ-390–OQ-396. Governance gained `read.cross_program` (warn) and the `accepts_from` field; the volume now reports no unacknowledged cross-program read (71 cross-program reads of supplied or derived items before the round, counted on the base tree; 51 after, every one listed in its reader's `accepts_from`). The four `name.prefix` warnings are gone (N-1).
+
+- **Income (R-1).** Every supplied income fact now states the gross amount received; the phase 2 note above ("the supplied income facts are the countable, post-exclusion amounts") no longer holds. `earned_income` is `wages_gross`. Self-employment is `self_employment_gross_receipts` (shared) netted by each program's own allowable-cost fact into its own figure (SNAP, Medicaid non-MAGI, Colorado Works, Adult Financial, CCCAP, LEAP); MAGI reads the federal tax figure (`self_employment_net_earnings_for_tax`). Colorado Works, Adult Financial, the SSI-related groups, the Buy-In and the spousal family allowance now count self-employment. Other unearned income is split taxable/non-taxable and MAGI reads the taxable part only. Cash assistance is split into `tanf_cash_income` and `adult_financial_cash_income`, so neither program counts its own grant, and SNAP counts SSI. Program exclusion lists remain unmodeled (OQ-390).
+- **Program-specific facts (R-2 to R-7, R-8 to R-14).** School enrollment, the Indian-country months, the 8 U.S.C. 1613(b) exemption and the date of entry, the AND-SO state disability and SSDI, the program disqualifications, the Colorado Works head of the assistance unit, the medical institution, CCCAP's asset declaration and incapacity, Colorado Works work-activity hours, the SNAP application date, the Medicaid reasonable opportunity notice date, the OAP Health Care institution exclusion and the CHP+ reentry carve-out are each defined by the rule that reads them.
+- **Merged for being the same rule.** Once Colorado Works and Aid to the Needy Disabled read the same federal exemption, their citizenship rules were identical, as C.R.S. 26-2-111.8(2) makes them: CO-905 survives as `meets_public_assistance_citizenship_requirement` (program All) and CO-943 is retired. `ma_meets_residency` had no Medicaid-specific content and is the shared `is_colorado_resident` (OQ-393 records Medicaid's unmodeled special rules).
+- **IDs retired** (files deleted; the IDs are not used again): CO-047 (`is_in_snap_employment_and_training`, unread), CO-049 (`workfare_hours`, unread), CO-054 (`was_foster_youth_at_eighteen`, duplicate of `age_at_foster_care_exit`), CO-105 and CO-115 (unread SNAP percent-of-poverty limits restated by the dollar tables), CO-116 and CO-117 (the SNAP copy of the federal poverty guideline), CO-210 and CO-211 (CHP+ lower bounds restating the Medicaid limits), CO-541 (an alias of `ma_income_limit_parent_caretaker_pct`), CO-553 (`ma_magi_is_eligible`, unread), CO-805 (`is_employed`, duplicate of `has_earned_income`), CO-917 (`cw_time_limit_exempt`, unread), CO-943 (`af_meets_citizenship_requirement_and`, merged into CO-905), CO-1111 (`is_widow_or_widower`, now `marital_status` widowed).
+- **Moved to shared/** (program All, same ID): CO-505, CO-506, CO-508, CO-905.
+- **Expected values.** No household case expectation changed: the cases state zero self-employment, zero cash assistance and zero other unearned income, the one SSI recipient (CO-07 p3) is not in an evaluated SNAP household, and the new facts were added to the cases with the values the old shared facts carried (in CO-01 and CO-02 the Colorado Works head is p3, the mother, while p2 stays the SNAP head). New rule tests show each behavior change (for example CO-905-T5/T6, CO-907-T6, CO-908-T3, CO-946-T10, CO-331-T3, CO-502-T4, CO-302-T3, CO-928-T5, CO-942-T5, CO-337-T3, CO-544-T5, CO-984-T8).
+
+Identifier renames (the product owner accepted renames through change sets; each keeps its CO ID):
+
+| ID | Old identifier | New identifier | Why |
+|---|---|---|---|
+| CO-005 | is_veteran_or_active_duty | has_military_connection | C-1: the name hid the spouse, surviving spouse and dependent child |
+| CO-007 | in_medical_institution | snap_resides_in_institution_providing_meals | R-8: SNAP's majority-of-meals test; Medicaid and HCA read resides_in_medical_institution |
+| CO-011 | is_disabled_ssa | meets_ssa_disability_criteria | R-5: an SSA determination, not a benefit; AND-SO has its own fact |
+| CO-014 | receives_general_assistance | receives_disability_based_general_assistance | C-1: the meaning is the disability-based kind only |
+| CO-015 | receives_social_security_disability | snap_receives_disability_or_blindness_payment | R-5: SNAP's 271.2 list, read as SSDI elsewhere |
+| CO-020 | is_enrolled_in_school | snap_is_enrolled_half_time_in_school_or_training | R-2: one of four school definitions |
+| CO-023 | earned_income | wages_gross | R-1: wages only, read as all earned income |
+| CO-024 | self_employment_net_income | self_employment_net_earnings_for_tax | R-1: one "net" for programs with different cost rules |
+| CO-029 | cash_assistance_income | tanf_cash_income | R-1: programs counted their own grant |
+| CO-030 | other_unearned_income | other_unearned_income_nontaxable | R-1: MAGI counted gifts and contributions |
+| CO-031 | countable_liquid_resources | snap_countable_liquid_resources | C-2, R-11: countable under 7 CFR 273.8 |
+| CO-038 | is_fleeing_felon_or_probation_violator | is_fleeing_felon | R-6: two conditions; Adult Financial names one |
+| CO-039 | is_disqualified_for_intentional_program_violation | snap_is_serving_ipv_disqualification | R-6: a SNAP finding |
+| CO-041 | is_disqualified_drug_felony | snap_is_disqualified_drug_felony | R-6: SNAP's member disqualification |
+| CO-050 | is_indian_or_urban_indian | snap_is_indian_or_urban_indian | R-3: SNAP's ABAWD exemption, read for TANF Indian Country |
+| CO-067 | is_head_of_household | snap_is_head_of_household | R-7: the SNAP head, read as the TANF head |
+| CO-074 | countable_nonliquid_resources_snap | snap_countable_nonliquid_resources | C-2, N-4: prefix leads |
+| CO-079 | other_taxable_income | magi_other_taxable_income | C-2: MAGI's own figure |
+| CO-088 | application_date | ma_application_date | R-13: the Medical Assistance application date |
+| CO-090 | has_other_creditable_health_coverage | chp_has_other_health_coverage | R-14: CHP+'s definition |
+| CO-104 | snap_five_year_bar_years | qualified_non_citizen_waiting_period_years | U-2, N-2: one federal figure read by four programs |
+| CO-181 | ma_poverty_guideline_table | federal_poverty_guideline_annual_table | D-1, N-2: one federal table |
+| CO-182 | ma_poverty_guideline_each_additional | federal_poverty_guideline_annual_each_additional | D-1, N-2 |
+| CO-230 | ma_ssi_general_income_exclusion | ssi_general_income_exclusion | N-2: SSI figure read by Adult Financial |
+| CO-231 | ma_ssi_earned_income_exclusion | ssi_earned_income_exclusion | N-2 |
+| CO-232 | ma_ssi_earned_income_disregard_rate | ssi_earned_income_disregard_rate | N-2 |
+| CO-233 | ma_ssi_resource_limit_individual | ssi_resource_limit_individual | N-2 |
+| CO-234 | ma_ssi_resource_limit_couple | ssi_resource_limit_couple | N-2 |
+| CO-235 | ma_ssi_federal_benefit_rate_individual | ssi_federal_benefit_rate_individual | N-2 |
+| CO-279 | cw_non_citizen_entry_date_cutoff | qualified_non_citizen_entry_cutoff_date | R-4: the statutory date Colorado Works and AND share |
+| CO-313 | snap_household_size | snap_eligible_household_size | C-3: counts eligible members only |
+| CO-323 | cccap_poverty_guideline_table | cccap_poverty_guideline_monthly_table | D-1, C-3: monthly, beside an annual table of the same stem |
+| CO-324 | cccap_poverty_guideline_each_additional | cccap_poverty_guideline_monthly_each_additional | D-1, C-3 |
+| CO-505 | ma_meets_residency | is_colorado_resident | R-9, U-4: plain state residence, read by CCCAP and LEAP |
+| CO-506 | ma_is_qualified_non_citizen | is_qualified_non_citizen | U-3, N-2: 8 U.S.C. 1641, read by Adult Financial |
+| CO-508 | ma_meets_five_year_bar | has_held_qualified_status_five_years | U-2: read by four programs |
+| CO-800 | countable_resources_individual | ssi_countable_resources_individual | C-2: SSI-method figure |
+| CO-801 | countable_resources_couple | ssi_countable_resources_couple | C-2 |
+| CO-807 | msp_resource_limit_individual | ma_msp_resource_limit_individual | N-1: program All only to avoid the prefix warning |
+| CO-808 | msp_resource_limit_couple | ma_msp_resource_limit_couple | N-1 |
+| CO-827 | csra_minimum_standard | ma_csra_minimum | N-1 |
+| CO-828 | csra_maximum_standard | ma_csra_maximum | N-1 |
+| CO-830 | mmmna_cap | ma_mmmna_cap | N-1 |
+| CO-831 | home_equity_limit | ma_home_equity_limit | N-1 |
+| CO-888 | countable_resources_couple_at_snapshot | ma_spousal_resources_at_snapshot | C-2: Medicaid's spousal impoverishment figure |
+| CO-905 | cw_meets_citizenship_requirement | meets_public_assistance_citizenship_requirement | R-4: one rule for Colorado Works and AND (CO-943 retired) |
+| CO-1005 | leap_has_lawfully_present_member | leap_has_countable_household_member | C-4: the derivation tests a non-empty household |
+| CO-1271 | estimated_home_heating_costs | estimated_home_heating_costs_for_season | C-3: a season total, not monthly |
+| CO-1311 | ssn_verification_document_received | ssn_furnished_or_application_shown | C-4: true with no document |
+| CO-1332 | disability_verified_by_electronic_data_source | disability_benefit_receipt_verified_by_electronic_data_source | C-4: verifies benefit receipt |
+| CO-1358 | claims_citizenship | is_us_citizen_or_national | U-3: the shared citizen-or-national test |
+| CO-1367 | identity_document_is_lawful_presence_document | identity_document_is_on_cash_program_list | C-4: used for identity and lawful presence |
+
+Option renamed: `citizenship_status` (CO-002) `other_non_qualified_non_citizen` → `other_lawfully_present_non_citizen` (R-10: every reader used it for a lawfully present non-qualified status). Options narrowed: `ma_five_year_bar_exempt_category` (CO-1170) loses the two 1613(b) categories now in `federal_five_year_bar_exempt_category` (CO-1724). Options added: `marital_status` widowed; `leap_living_arrangement` institutional_group_care.
+
+Did not fit cleanly:
+- Governance treats a moved file (CO-505, CO-506, CO-508, CO-905 into shared/) as changed and prints a git "path exists on disk, but not in origin/main" line while ratcheting; the check still passes.
+- The alias rule decided two shapes: a program item that only restates a shared one cannot exist, so where a shared item was the whole rule (residency, the AND/Colorado Works citizenship test) the program items were merged into it rather than kept as wrappers; LEAP's citizenship list (CO-1010) keeps its explicit list because reading the shared items would make it identical to OAP's (CO-929).
+- The exclusion lists of each program's income rule (OQ-390), county residence for CCCAP and SNAP residency (OQ-393) and per-program relationship roles (R-15, OQ-396) remain open.

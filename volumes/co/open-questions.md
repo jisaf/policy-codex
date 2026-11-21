@@ -922,7 +922,15 @@ Body: af_countable_resources (CO-947) reads ssi_countable_resources_individual a
 
 Body: is_colorado_resident (CO-505) compares the stated state of residence with Colorado. Not modeled: Medicaid's 42 CFR 435.403(e)-(j) rules for institutionalized persons who cannot state intent, temporary absences and children placed out of state (when modeled they become ma_meets_residency over CO-505); CCCAP's county residence (cccap_requires_verification_of_residency, CO-1440, speaks of 'a verified resident of the county'; no county_of_residence fact exists); and a SNAP residency condition under 7 CFR 273.3, which no SNAP item states, so SNAP eligibility does not read residence at all. Items: CO-505, CO-1440, CO-987.
 
-
 ### OQ-394. CCCAP child citizenship: does "legal resident" include a lawfully present non-qualified non-citizen?
 
 Body: 8 CCR 1403-1 3.111.F.1 (S514) requires a child to verify that the child is "a citizen/legal resident". cccap_child_meets_citizenship_requirement (CO-998) reads that as a U.S. citizen or national, a qualified non-citizen, or another lawfully present non-citizen (citizenship_status other_lawfully_present_non_citizen, for example Temporary Protected Status), which keeps the reach the item had when it read Medicaid's lawful_presence_status. A narrower reading (lawful permanent residents and other qualified non-citizens only) would exclude a child with Temporary Protected Status. Items: CO-998.
+
+### OQ-395. CCCAP defaults that grant eligibility when a fact is not stated
+
+Body: cccap_is_adult_caretaker (CO-992) reads is_financially_contributing_to_child (CO-897) as true when it is not stated, and cccap_colorado_works_child_care_eligible (CO-988) reads is_referred_for_colorado_works_child_care (CO-896) as true when it is not stated. The vocabulary review (C-4) asks that defaults which grant eligibility be removed or raised with the child care owner. The volume keeps them and says so in each fact's precision; removing them would make every case that does not state the two facts unknown for CCCAP. The child care owner decides. (The citizenship default of cccap_is_eligible_child, CO-980, was removed in the same round.) Items: CO-992, CO-988, CO-896, CO-897.
+
+### OQ-396. One set of relationship edges and one marital status for every program
+
+Body: The case-level relationship edges are shared: one caretaker edge is read as SNAP parental control (CO-305), the Medicaid caretaker relative ("a relative ... who assumes primary responsibility", CO-547), the Colorado Works parent or non-parent caretaker (CO-900) and the CCCAP adult caretaker ("legal guardian, or person who is acting in loco parentis", CO-992). A non-relative guardian is a CCCAP caretaker and not a Medicaid caretaker relative. Marriage is stated by marital_status (CO-844) and by the spouse edge, and SNAP's spouse includes persons representing themselves as spouses. The engine cannot declare a new relationship role from a volume (OQ-132), so per-program edges, or the qualifying facts (degree of relationship, guardianship) the rules could test, are not modeled in the vocabulary fix round (review R-15). Items: CO-305, CO-547, CO-900, CO-992, CO-844.
+

@@ -124,6 +124,7 @@ block. The 15 governance rule ids:
 | `dup.similar` | Same type, scope, and program, overlapping sources, and overlapping name or meaning terms | warn | check the candidate named in the finding before adding a new item |
 | `rationale.required` | A new item has no `rationale`, or does not acknowledge (via `nearest`) an identical-derivation or same-shape candidate `governance()` found | error (new items only) | write the rationale; list the acknowledged candidates in `nearest` |
 | `supplied.single-consumer` | A supplied fact is read by exactly one derived item | warn | not a defect by itself — it flags a bespoke input so a steward notices it, in case it should be folded into the consumer or reconsidered |
+| `read.cross_program` | A derived item reads a supplied fact or derived item owned by another program (not `All`) that its `accepts_from` does not list, or `accepts_from` names an identifier not in the ledger | warn | list the identifier in `accepts_from` when the rule names that program's result; otherwise give the program its own fact or make the fact neutral |
 
 As-of this task, `name.digits` flags five legacy identifiers that predate the
 rule. They are not being renamed as part of this task; the ratchet keeps them

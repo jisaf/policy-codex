@@ -13,6 +13,6 @@ implemented: engine
 tags: [ma, immigration]
 rationale: "No existing item states 'lawfully present' as distinct from 'qualified non-citizen'. ma_meets_citizenship_requirement (CO-509) needs it for § 8.100.3.G.1.g.vii, which admits a lawfully residing pregnant woman or child under 19 without the five-year rule (phase 7 fix round, B-1; earlier this item served the Cover All Coloradans arm, which CO-509 no longer carries)."
 tests:
-  - {id: CO-507-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, lawful_presence_status: unknown}, expect: true}
+  - {id: CO-507-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
   - {id: CO-507-T2, as_of: "2026-10-01", given: {citizenship_status: other_lawfully_present_non_citizen, lawful_presence_status: lawfully_present}, expect: true}
   - {id: CO-507-T3, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}

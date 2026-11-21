@@ -7,7 +7,7 @@ The ledger grammar the app's engine implements. The app is the reference impleme
 ```
 ID            <volume>-<nnn>              stable, never reused
 Fact          <Name>                      the name approvers and engineers both use
-Identifier    <snake_case>                the machine name, derived once from the Fact name, never changed
+Identifier    <snake_case>                the machine name, derived from the Fact name; changed only through a change set that keeps the ID
 Kind          Supplied | Derived | Parameter
 Type          see Types
 Scope         see Scopes
@@ -25,6 +25,7 @@ Examples      rule-level tests; the given facts and the expected value
 Approval      roles that must sign, drawn from the volume's approval policy
 Status        Draft | Reviewed | Approved
 Open          numbered interpretation questions, cross-referenced to open-questions.md
+Accepts from  other programs' facts a derived item reads on purpose (YAML accepts_from)
 ```
 
 Fields that do not apply are omitted, not left blank.
@@ -58,6 +59,23 @@ Fields that do not apply are omitted, not left blank.
 ### Completeness
 
 Every fact is either **known** or **unknown**. A derivation whose inputs are unknown produces `unknown` unless a pattern supplies a default (see `otherwise`). An outcome that is `unknown` is reported as *cannot determine*, together with the list of unknown supplied facts that caused it. Engineers must implement this propagation; approvers must never see a silent default.
+
+## Naming and vocabulary
+
+Adopted from the Colorado vocabulary review (docs/reviews/vocabulary-reuse.md, section 5). It governs new items; an existing identifier is renamed only where its name misleads, through a change set that keeps the item's ID (the renames made so far are listed in docs/colorado-notes.md).
+
+1. **A prefix means "defined by this program's rule".** An item whose meaning cites one program's rule carries that program's prefix (`ma_`, `chp_`, `snap_`, `cw_`, `af_`, `cccap_`, `leap_`, `sebt_`), supplied facts included, and its program field is that program.
+2. **No prefix means neutral.** A shared item's meaning names no program and no program's exclusions and is true as written for every reader; its program is `All`. Method prefixes are allowed for items defined by a method several programs adopt by reference: `ssi_` (the SSI financial methodology), `magi_` (MAGI-based income); `federal_` marks a federal figure (`federal_poverty_guideline_annual_table`).
+3. **A program reads another program's prefixed item only when its rule names that program's result** (CHP+ applying the MAGI household and income rules, CCCAP's Colorado Works Child Care reading Colorado Works eligibility, SUN Bucks reading SNAP eligibility, Medicaid reading OAP receipt). The reading item lists each such identifier in `accepts_from`; governance warns on any other cross-program read (`read.cross_program`). A definitional borrow is fixed by giving the program its own fact, or by making the fact neutral.
+4. **Yes/no:** `<prefix>is_<state>`, `<prefix>has_<thing>`, `<prefix>receives_<payment>` (a payment actually made), `<prefix>meets_<named test>` (a comparison with a limit or requirement), `<prefix>requires_verification_of_<element>`. An eligibility result is `<prefix>is_eligible` or `<prefix><group>_is_eligible`. Never a bare noun or participle.
+5. **Money:** monthly unless the name says otherwise. The noun alone when it is the thing (`grant`, `allotment`, `deduction`, `premium`); no `_amount`. A period suffix only when not monthly: `_annual`, `_for_season`, `_at_<event>`. Plural `costs` and `expenses`.
+6. **Income vocabulary:** supplied income facts state the gross amount received, before any program's exclusions; `_gross` says so where the name could be read otherwise (`wages_gross`). A "countable" or "net" figure is always a program's or a method's own derived item and carries its prefix (`snap_self_employment_income`, `cw_self_employment_net_profit`); `_net` is never shared. A program does not count its own grant as income.
+7. **Rates:** `_pct_fpl` for an income-to-poverty ratio, `_pct` for a limit stated as a share, `_rate` for a multiplier applied to an amount. All are decimal fractions (1.33, not 133).
+8. **Ages:** `_min_age` and `_max_age` are inclusive; `_age_limit` is exclusive ("under").
+9. **Tables** end in `_table`; the step beyond the last row is `<table stem>_each_additional`; the unit goes in the stem when two tables differ by unit (`cccap_poverty_guideline_monthly_table`).
+10. **One-of:** `_status` for an outcome with reasons, `_category` for a group, `_type` for a supplied classification. Never `is_` or `meets_`.
+11. **Receipt of another program's benefit** is a supplied fact about the person's case (`receives_ssi`, `receives_tanf_cash`), never this volume's own determination of that program; the month's amount is a separate supplied money fact (`ssi_income`, `tanf_cash_income`), and each meaning says which of the two it is.
+12. **Unknown is never silent.** Where a rule reads an unstated supplied fact as a value (`otherwise`), the fact's meaning or precision says "If not stated, <program> reads this as <value>."
 
 ## Pattern catalog
 
