@@ -5,14 +5,16 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether the person must furnish a Social Security number (or proof of applying) for Medical Assistance: everyone requesting coverage except a person within an SSN exception, a person eligible only for emergency services, and an eligible newborn."
-derived: [all, [not, ssn_exception_applies], [not, ma_is_emergency_medicaid_only], [not, mother_was_enrolled_in_medicaid_at_birth]]
-sources: [S843, S860]
+meaning: "Whether the person must furnish a Social Security number (or proof of applying) for Medical Assistance: everyone for whom coverage is requested, except a person within an SSN exception, a person eligible only for emergency services, and an eligible newborn in the deemed-newborn year."
+derived: [all, is_requesting_health_coverage, [not, ssn_exception_applies], [not, ma_is_emergency_medicaid_only], [not, [all, mother_was_enrolled_in_medicaid_at_birth, ["<", age, ma_needy_newborn_age_limit_years]]]]
+sources: [S843, S860, S1051]
 implemented: engine
 tags: [verification, ma]
-open: [OQ-321]
 rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
 tests:
-  - {id: CO-1401-T1, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: false, ma_is_emergency_medicaid_only: false, mother_was_enrolled_in_medicaid_at_birth: false}, expect: true}
-  - {id: CO-1401-T2, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: false, ma_is_emergency_medicaid_only: true}, expect: false}
-  - {id: CO-1401-T3, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: true}, expect: false}
+  - {id: CO-1401-T1, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, ssn_exception_applies: false, ma_is_emergency_medicaid_only: false, mother_was_enrolled_in_medicaid_at_birth: false}, expect: true}
+  - {id: CO-1401-T2, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, ssn_exception_applies: false, ma_is_emergency_medicaid_only: true}, expect: false}
+  - {id: CO-1401-T3, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, ssn_exception_applies: true}, expect: false}
+  - {id: CO-1401-T4, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, ssn_exception_applies: false, ma_is_emergency_medicaid_only: false, mother_was_enrolled_in_medicaid_at_birth: true, date_of_birth: "2026-03-01"}, expect: false}
+  - {id: CO-1401-T5, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, ssn_exception_applies: false, ma_is_emergency_medicaid_only: false, mother_was_enrolled_in_medicaid_at_birth: true, date_of_birth: "2016-03-01"}, expect: true}
+  - {id: CO-1401-T6, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: false}, expect: false}

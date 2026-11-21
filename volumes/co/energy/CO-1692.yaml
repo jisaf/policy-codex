@@ -1,0 +1,19 @@
+id: CO-1692
+name: "LEAP: heating costs verification is pending"
+identifier: leap_heating_costs_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+role: outcome
+meaning: Whether the person is the member responsible for heating costs from a primary heating source and the household's estimated heating costs and vulnerability have not been verified.
+precision: "Heating costs are a household element: leap_pending_verification_count counts one pending heating verification however many members are responsible (review C-13)."
+derived: [all, leap_requires_verification_of_heating_costs, [not, heating_costs_verification_document_received]]
+sources: [S897]
+implemented: engine
+tags: [verification]
+open: [OQ-381]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1692-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_heating_costs: true, heating_costs_verification_document_received: false}, expect: true}
+  - {id: CO-1692-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_heating_costs: false}, expect: false}

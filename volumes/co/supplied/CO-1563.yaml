@@ -1,0 +1,13 @@
+id: CO-1563
+name: Self-employment income verified by electronic data source
+identifier: self_employment_income_verified_by_electronic_data_source
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether an SSA data exchange (BENDEX or SDX) reports the person's self-employment earnings, which Colorado Works and Adult Financial treat as verified when entered.
+precision: A wage match (IEVS, the Federal Data Services Hub, The Work Number) is earned_income_verified_by_electronic_data_source (CO-1315).
+supplied_by: CBMS interface results (BENDEX, SDX) as recorded in the case.
+sources: [S875, S880]
+tags: [verification, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (C-11: earned_income_verified_by_electronic_data_source (CO-1315) is a wage match the cash programs do not accept, so self-employment data needs its own fact) needs it as a supplied fact."

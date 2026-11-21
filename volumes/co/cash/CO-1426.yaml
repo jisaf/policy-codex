@@ -12,6 +12,6 @@ implemented: engine
 tags: [verification, cash, tanf]
 open: [OQ-316]
 rationale: No existing item states when requested Colorado Works verification is due.
-nearest: [CO-1392, CO-1414, CO-1437, CO-1450, CO-1461]
+nearest: [CO-1392, CO-1414, CO-1437, CO-1450, CO-1461, CO-1656]
 tests:
   - {id: CO-1426-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-12"}

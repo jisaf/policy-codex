@@ -5,6 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
+role: outcome
 meaning: Whether the person's identity must be verified for SNAP and has not been, by an electronic data source or any document that reasonably establishes it.
 derived: [all, snap_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, identity_verification_document_received]]]
 sources: [S806, S822, S814]

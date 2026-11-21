@@ -3,18 +3,21 @@ name: "Adult Financial: verification status"
 identifier: af_verification_status
 kind: derived
 type: one of
-options: [complete, pending, past_due]
+options: [not_applicable, complete, pending, past_due]
 scope: person-month
 program: AdultFinancial
 role: outcome
-meaning: "Where this client's Adult Financial verification stands: complete, pending before the due date, or past due, after which the county may deny for failure to return verifications."
-precision: Age, residency and identity are verified for every client, so there is no not-required state.
-derived: [case, [["=", af_pending_verification_count, 0], complete], [["<=", [det_date], af_verification_due_date], pending], [else, past_due]]
-sources: [S879]
+meaning: "Where this client's Adult Financial verification stands: not applicable (under the Old Age Pension age and without an SSI, blindness or disability basis for Aid to the Needy Disabled or Aid to the Blind); complete; pending before the eleven-day due date, or while only the AND-SO medical certification is outstanding within its thirty days; or past due, after which the county may deny for failure to return verifications."
+precision: The AND-SO certification's thirty days run "following the interview"; with no interview date in the volume they are counted from the verification request (OQ-375).
+derived: [case, [[not, [any, af_is_oap_age, [all, [">=", age, af_and_so_min_age], [any, receives_ssi, is_blind, af_and_so_disability_met, claims_disability]]]], not_applicable], [["=", af_pending_verification_count, 0], complete], [["<=", [det_date], af_verification_due_date], pending], [[all, ["=", ["-", af_pending_verification_count, [case, [af_and_so_disability_verification_is_pending, 1], [else, 0]]], 0], ["<=", [det_date], [days_after, af_disability_certification_days, verification_request_date]]], pending], [else, past_due]]
+sources: [S879, S1080]
 implemented: engine
 tags: [verification, cash, oap, and]
-rationale: No existing item reports Adult Financial verification standing.
+open: [OQ-375]
+rationale: "No existing item reported an Adult Financial client's verification standing. Fix round: not_applicable on categorical reach (review C-4) and the AND-SO certification period (K-6)."
 tests:
-  - {id: CO-1438-T1, month: "2026-10", as_of: "2026-10-01", given: {af_pending_verification_count: 0}, expect: complete}
-  - {id: CO-1438-T2, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-05", af_pending_verification_count: 2, af_verification_due_date: "2026-10-12"}, expect: pending}
-  - {id: CO-1438-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", af_pending_verification_count: 2, af_verification_due_date: "2026-10-12"}, expect: past_due}
+  - {id: CO-1438-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, is_blind: false, af_and_so_disability_met: false, claims_disability: false}, expect: not_applicable}
+  - {id: CO-1438-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1950-01-01", af_pending_verification_count: 0}, expect: complete}
+  - {id: CO-1438-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-05", date_of_birth: "1950-01-01", af_pending_verification_count: 2, af_verification_due_date: "2026-10-12"}, expect: pending}
+  - {id: CO-1438-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", date_of_birth: "1990-01-01", receives_ssi: false, is_blind: false, af_and_so_disability_met: false, claims_disability: true, af_pending_verification_count: 1, af_verification_due_date: "2026-10-12", af_and_so_disability_verification_is_pending: true, verification_request_date: "2026-10-01"}, expect: pending}
+  - {id: CO-1438-T5, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", date_of_birth: "1950-01-01", af_pending_verification_count: 1, af_verification_due_date: "2026-10-12", af_and_so_disability_verification_is_pending: false, verification_request_date: "2026-10-01"}, expect: past_due}

@@ -1,0 +1,12 @@
+id: CO-1587
+name: In Title IV foster care or receiving adoption assistance
+identifier: is_in_title_iv_foster_care_or_adoption_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is a child in foster care receiving child welfare services under Title IV-B, or receives Title IV-E foster care maintenance or adoption assistance payments.
+supplied_by: Child welfare (Trails) eligibility data as recorded in CBMS.
+sources: [S844, S854]
+tags: [verification, ma]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-324: receives_title_iv_foster_adoption_kinship_payment (CO-841) also covers kinship payments the citizenship exemption does not name) needs it as a supplied fact."

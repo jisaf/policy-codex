@@ -1,0 +1,17 @@
+id: CO-1623
+name: "Medical Assistance: ssn verification is pending"
+identifier: ma_ssn_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether Medical Assistance (and CHP+, which reads this item) requires verification of the person's Social Security number (or proof of applying) and it has not been provided.
+derived: [all, ma_requires_verification_of_ssn, [not, ssn_is_verified]]
+sources: [S843, S860]
+implemented: engine
+tags: [verification, ma]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1623-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_ssn: true, ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false}, expect: true}
+  - {id: CO-1623-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_ssn: false}, expect: false}

@@ -709,3 +709,94 @@ in conventions and the engine; the per-element yes/no needs neither. Pair it wit
 Counts: **4 blocking** (C-1, C-2, C-3, C-4); **20 should-fix** (C-5..C-17, K-1..K-6, U-1); **10 notes**
 (C-18..C-23, K-7..K-10). Of the 25 open questions, 10 (and half of OQ-302) are answered by fetched text,
 5 are fact gaps with the rule settled, 1 is confirmed, and 9 are genuinely open.
+
+---
+
+## Disposition (fix round, 2026-11-21)
+
+Fix round on branch `ccr-9d19bf4c-wmnwcl`'s worktree, two commits after `cbf1f56`. New items CO-1560..CO-1699
+(34 supplied facts, 6 parameters, 96 derived items; CO-1400 and CO-1434 retired), documents D-115..D-120,
+excerpts S1050..S1098, open questions OQ-370..OQ-382. Eligibility items (ma_/chp_ eligibility, CO-1000 and
+the other programs' eligibility chains) were read, not edited. `CHECK_BASE=origin/main npm run check`:
+co 1416/1416 rule tests, 2063/2063 case expectations; mwr unchanged; typecheck and `npm test` (586) pass.
+
+Documents fetched this round: D-115 42 CFR 435.916 (eCFR, as amended 91 FR 33480, June 3, 2026); D-116
+7 CFR 273.14 and 273.2(f)(8) (eCFR, current 2026-11-19); D-117 7 CFR 292.14 (eCFR); D-118 45 CFR 1626.6
+(eCFR); D-119 1 CCR 204-30 Rule 5 with Appendices A and B (SOS archived version effective 06/30/2026, Rule 5
+unchanged since 08/30/2016, so the Mar. 2, 2021 edition 3.604.3.I.1 incorporates); D-120 1 CCR 204-30
+current version effective 10/15/2026 (Rule 5 withdrawn and, per the editor's notes, repealed effective
+10/15/2026; Rule 6 § 2.3.1 excludes Road and Community Safety Act licenses; Rule 16 exceptions-processing
+documents). 435.956 was re-fetched and matches D-96, which S842 now quotes in full for (c)-(f). AND-SO's
+3.541 was already in D-80 (SOS, effective 03/02/2026) and is cited from there.
+
+### Blocking
+
+| Finding | Disposition |
+|---|---|
+| C-1 LEAP member exclusion | **Fixed.** SSN and SAVE arms left CO-1458/CO-1459/CO-1460 and the status; new outcome `leap_member_is_excluded_for_verification` (CO-1694, S893, S494). Income arms sum over `leap_household_members_for_income`; the citizenship arm reads Rule 5 Appendix A. Filtering CO-1000 itself is an eligibility-item change, handed to the LEAP eligibility round as OQ-370. CO-02 p3/p4/p5 now `complete`/0; CO-01 LEAP counts 1 and 2. OQ-318 resolved. |
+| C-2 SNAP non-citizen 30 days | **Fixed.** `snap_noncitizen_documentation_days` (CO-1594, 30) and `snap_noncitizen_documentation_due_date` (CO-1617: the later of application + 30 and request + 10, a `case` on `<=` since `max` is numeric only); CO-1394 has a pending row while only status documents are outstanding before that date. New excerpts S1057 (273.2(f)(1)(ii)(C)) and S1097 (4.505.6.E); case CO-92 is the day-15 household. |
+| C-3 Cover All Coloradans and immigration verification | **Fixed.** CO-1400 retired (it would have been an alias of `claims_lawful_immigration_status`); `ma_immigration_status_verification_is_pending` (CO-1622) and the required counts (CO-1412, CO-1416) read the declaration directly, cited to S852, S870 and 8.100.4.B.1.e (S1085). OQ-308 resolved; CO-92 has an LPR child in the reasonable opportunity period for Medicaid and CHP+. |
+| C-4 not_applicable | **Fixed.** Every status has a first `not_applicable` row: Medical Assistance on `is_requesting_health_coverage` (CO-1560, needed anyway for 8.100.3.I.1); CHP+ on that fact and categorical reach (under 19 or pregnant); SNAP on `snap_is_household_member`; Colorado Works on a dependent child or pregnant member in the unit; Adult Financial on OAP age or an AND/AB basis (SSI, blindness, SSA disability, or `claims_disability`, CO-1584, needed for K-6); CCCAP on an eligible child; LEAP on a non-empty `leap_household_members`; SUN Bucks on school age or NSLP enrollment. Only Medical Assistance/CHP+ and AND-SO needed a new fact (OQ-382). CO-01, CO-02, CO-91 updated as §4 lists. |
+
+### Should-fix
+
+| Finding | Disposition |
+|---|---|
+| C-5 SNAP expenses 30 days | **Fixed.** `snap_expense_verification_days` (CO-1595), `snap_expense_verification_due_date` (CO-1618); CO-1394 pending row before `expenses_disallowed`. CO-91 unchanged. |
+| C-6 reasonable compatibility standard; zero-attested earner | **Fixed.** `chp_income_is_reasonably_compatible` (CO-1641) on the CHP+ upper limit and `chp_requires_verification_of_earned_income` (CO-1642) for CHP+; `ma_abd_income_is_reasonably_compatible` (CO-1640) on the SSI rate (300% for long-term care) with the new data fact CO-1589; CO-1403 picks the standard by category and asks an adult attesting no earnings when the data figure is positive and not compatible. ABD half of OQ-302 resolved; the approximation is OQ-374. |
+| C-7 gross resources; AF cash | **Fixed.** `has_resources_other_than_cash` (CO-1562); CO-1405 keys on it or countable resources, CO-1433 on it alone (cash on the client's statement, 3.520.72.D.5). CO-91 AF count no longer counts the $20. |
+| C-8 CW lawful presence | **Fixed.** `cw_lawful_presence_verification_is_pending` (CO-1644) accepts a produced listed document, a Rule 5 Appendix A citizenship document, or a SAVE result, not an identity match; new document type `colorado_road_and_community_safety_act_license_or_id` (CO-1302, Rule 5 § 1.8, Rule 6 § 2.3.1) and CO-01/CO-02 p3 now carry it; CO-1420 has the I.4.b.6 exemption. CO-91 CW count 3. The DMV check of 3.604.3.H.4 is OQ-376. |
+| C-9 CW 30 days and individual exclusion | **Fixed.** `cw_status_verification_days` (CO-1598), `cw_status_verification_due_date` (CO-1656), `cw_person_pending_status_verification_count` (CO-1655); CO-1427 adds `members_excluded`. CO-02 p4/p5 now `members_excluded`. Excerpt S1064. |
+| C-10 AF OAP non-citizen SSN | **Fixed.** `has_been_issued_ssn` (CO-1564); CO-1430 as the review proposes. |
+| C-11 self-employment per program | **Fixed.** `self_employment_income_verified_by_electronic_data_source` (CO-1563); CO-1315's meaning narrowed to wage matches; CW (CO-1649) accepts SSA self-employment data; AF (CO-1665) requires self-employment documentation and does not accept it when questionable; LEAP (CO-1455) asks documents for wages only (S1084). CO-1434 retired as a restatement of `has_earned_income`. |
+| C-12 CCCAP child support | **Fixed.** `cccap_child_support_paid_verification_is_pending` (CO-1683) is counted in `cccap_pending_deduction_verification_count` (CO-1688), not the eligibility count; CO-1451 adds `deduction_disallowed`. CO-91 CCCAP count 1, still `past_due`. The self-employment expense half (3.111.G.2.a) is OQ-378. |
+| C-13 LEAP heating once | **Fixed** in the count (CO-1460 adds one if any member's heating is pending). **Deferred:** the CO-01/CO-02 `is_responsible_for_heating_costs` facts for the children are left as they are, because LEAP vulnerability, an eligibility item owned by another round, reads them (OQ-381). |
+| C-14 LEAP zero income | **Fixed.** `zero_income_verified` (CO-1565), `leap_zero_income_verification_is_pending` (CO-1693, S1083). CO-91 LEAP now `past_due`. |
+| C-15 special circumstances by fact | **Fixed.** `documentation_not_reasonably_available` (CO-1561) replaces `is_homeless` in CO-1407-CO-1409 and is read by CO-1403-CO-1406 and CO-1642. OQ-306 resolved. |
+| C-16 newborn SSN; non-requesters | **Fixed.** CO-1401 bounds the newborn exception by `ma_needy_newborn_age_limit_years` and requires `is_requesting_health_coverage`. |
+| C-17 S842 | **Fixed.** S842 quotes 435.956(c)(1)-(2), (d), (e), (f). |
+| K-1 renewal/recertification | **Fixed for Medical Assistance and SNAP.** `ma_determination_is_renewal` (CO-1566) keeps CO-1395 from re-verifying citizenship at renewal (435.956(a)(4)(ii), S1052; 8.100.3.H.4.h, S1053); 435.916's 30-day renewal form equals the existing 30-day due date (S1050). `snap_determination_is_recertification` (CO-1567) with last-verified amounts (CO-1568-CO-1572), the $50 and $25 thresholds (CO-1596, CO-1597) and `snap_income_changed_since_last_certification` (CO-1619) gate the identity, immigration, residency, income, expense and disability items (273.14(b)(4), 273.2(f)(8), 4.502.B; S1054-S1056). **Deferred** for Colorado Works, Adult Financial and CCCAP (OQ-373: their renewal rules are cited but not modeled); boundary and outdated-information gaps are OQ-371, OQ-372. |
+| K-2 sponsor verification | **Fixed.** `is_sponsored_non_citizen`, `sponsor_information_verified` (CO-1573, CO-1574); SNAP requirement and pending items (CO-1616, CO-1611, S1061), Colorado Works (CO-1654, S1062), Adult Financial (CO-1672, S1063, entry on or after 1996-08-22). Member-level ineligibility and deeming exemptions are OQ-380. |
+| K-3 long-term care documentation | **Fixed.** `ma_is_long_term_care_applicant` (CO-1631) gates the 30-day stay (CO-1632/CO-1636), the 60-month transfer look-back documentation (CO-1637), trust (CO-1634/CO-1638) and annuity (CO-1635/CO-1639) documents, with six supplied facts (CO-1575-CO-1580; S1086-S1088). CO-01 p1 now owes the transfer documentation (count 2); CO-02 has it. Joint ownership and sales-effort verification are OQ-379. |
+| K-4 CCCAP hours and other verifications | **Fixed** for hours worked (CO-1684/CO-1685, 3.111.G.1.b, G.2.d; S1081) and additional care needs (CO-1686/CO-1687, CO-1581; S1082); CO-92 has hours pending. **Deferred** the remaining 3.111.C.2 verifications (OQ-378: none decides eligibility on a fact the volume carries). |
+| K-5 SUN Bucks | **Fixed.** 7 CFR 292.14 fetched (D-117); `sebt_requires_verification_of_income` (CO-1699), `sebt_requires_verification_of_school_enrollment` (CO-1633), the two pending items (CO-1695, CO-1696), `sebt_pending_verification_count` (CO-1697) and `sebt_verification_status` (CO-1698), with four supplied facts (CO-1590-CO-1593). No past-due state, since 292.14 sets no fixed period (OQ-377). |
+| K-6 AND-SO disability; marital status | **Fixed.** `af_requires_verification_of_and_so_disability` (CO-1668) and its pending item (CO-1669) from 3.520.4.C.4.c.4 and 3.541/3.541.1 (D-80, S1079, S1080), with its 30-day period in CO-1438 (OQ-375); marital status (CO-1670/CO-1671, CO-1582/CO-1583, S1078). |
+| U-1 per-element outcomes | **Fixed.** 71 per-element pending items, each `role: outcome` and listed in volume.yaml: Medical Assistance 15 (CHP+ reads them, plus `chp_earned_income_verification_is_pending`), SNAP 17 (CO-1387 promoted), Colorado Works 10, Adult Financial 12, CCCAP 9, LEAP 4, SUN Bucks 2, and the shared `unearned_income_verification_is_pending` (CO-1650; Colorado Works, Adult Financial, CCCAP and LEAP carried an identical arm, which governance would reject as four duplicate derivations). Every count sums them; the per-person counts (SNAP eligibility and expense, Colorado Works, CCCAP, LEAP) and `cw_person_pending_status_verification_count` are outcomes. CO-01 and CO-02 expect every new outcome for every person. |
+
+### Notes
+
+| Finding | Disposition |
+|---|---|
+| C-18 CO-1374 meaning | **Fixed.** The "unless questionable" carve-out is gone from the meaning. |
+| C-19 CO-1309 | **Fixed.** Precision: true only once the agency has submitted the document to USCIS. |
+| C-20 CO-1318 | **Fixed.** Precision records SNAP's closed verified-upon-receipt list. |
+| C-21 CO-1316 | **Fixed.** Precision records that one fact cannot express each program's period. |
+| C-22 CO-1397/CO-1399 | **Fixed.** Precision records the affidavit, five-year-record and parent-affidavit conditions. |
+| C-23 checked and correct | No change. |
+| K-7 SNAP (f)(1) elements | **Partly addressed**: actual utilities (Colorado's mandatory SUA, S1059) and unoccupied homes (OQ-312). The separate-household, student unfitness, other-state time-limit months, 40 quarters and IPV database checks remain unmodeled notes. |
+| K-8 Express Lane; veteran status; ABD previous-month income | Not addressed (note). |
+| K-9 CW secondary verifications; LEAP gifts and prior-year vulnerability | Not addressed (note). |
+| K-10 acceptability lists | **Partly addressed**: Colorado Works and LEAP citizenship documents now follow Rule 5 Appendix A (CO-1657), Adult Financial citizenship 45 CFR 1626.6 (CO-1673) and identity Rule 16 (CO-1674); immigration documents remain verified through SAVE; AF age documents not listed. |
+
+### Open questions
+
+Resolved with citations in open-questions.md: OQ-301 (S841), OQ-304 (S848), OQ-305 (S845), OQ-306 (S839 and
+CO-1561), OQ-307 (S1089 and CO-1588), OQ-308 (S870, S1085), OQ-310 (S824 and CO-1586; the application-date
+half left to the vocabulary round), OQ-311 (S819), OQ-312 (S1059, S1060 and CO-1585), OQ-314 (S872, S1064),
+OQ-315 (D-118, D-119, D-120), OQ-317 (S880), OQ-318 (S893), OQ-319 (S1069), OQ-321, OQ-322 (S869), OQ-324
+(CO-1587); the ABD half of OQ-302 (S867). OQ-316 notes the modeled 3.604.3.K period. Still open: OQ-300, the
+first half of OQ-302, OQ-303, OQ-309, OQ-313, OQ-316, OQ-320 (confirmed, informational), OQ-323. Opened:
+OQ-370 (LEAP membership filter for the eligibility round), OQ-371 (SNAP recertification boundaries), OQ-372
+(Medical Assistance renewal), OQ-373 (Colorado Works, Adult Financial, CCCAP renewals), OQ-374 (ABD
+compatibility approximation), OQ-375 (AND-SO 30 days from the interview), OQ-376 (Rule 5 repealed; editions;
+DMV checks), OQ-377 (SUN Bucks periods and exceptions), OQ-378 (other CCCAP verifications), OQ-379 (long-term
+care documentation scope), OQ-380 (sponsor scope), OQ-381 (LEAP household elements), OQ-382 (one health
+coverage request fact).
+
+### Cases
+
+CO-01, CO-02 and CO-91 carry the expectation changes §4 lists, the ones the fixes add (SNAP `not_applicable`
+for CO-01/CO-02 p1, in an institution; Medical Assistance 2 for CO-01 p1 with the transfer documentation;
+Colorado Works counts with lawful presence; CO-02 `members_excluded`; CO-91 LEAP `past_due`), and every new
+outcome for every person in CO-01 and CO-02. New case CO-92 (LPR mother and child, day 15) exercises C-1, C-2,
+C-3, C-9 and K-4.

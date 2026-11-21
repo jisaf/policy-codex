@@ -5,13 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: "Whether the person's out-of-pocket medical expenses must be verified for SNAP: always before initial certification when an elderly or disabled member claims them for the medical deduction."
-derived: [all, snap_is_household_member, snap_is_elderly_or_disabled, [">", medical_expenses_out_of_pocket, 0]]
-sources: [S803, S818, S833]
+meaning: "Whether the person's out-of-pocket medical expenses must be verified for SNAP: before initial certification when an elderly or disabled member claims them for the medical deduction; at recertification only when the total has changed by more than $25 since last verified."
+derived: [all, snap_is_household_member, snap_is_elderly_or_disabled, [">", medical_expenses_out_of_pocket, 0], [any, [not, snap_determination_is_recertification], [">", ["-", medical_expenses_out_of_pocket, snap_medical_expenses_at_last_certification], snap_recertification_expense_change_threshold], [">", ["-", snap_medical_expenses_at_last_certification, medical_expenses_out_of_pocket], snap_recertification_expense_change_threshold]]]
+sources: [S803, S818, S833, S1055, S1056]
 implemented: engine
 tags: [verification, snap, income]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
 tests:
-  - {id: CO-1380-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 120}, expect: true}
-  - {id: CO-1380-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: false, medical_expenses_out_of_pocket: 120}, expect: false}
-  - {id: CO-1380-T3, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 0}, expect: false}
+  - {id: CO-1380-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 120, snap_determination_is_recertification: false}, expect: true}
+  - {id: CO-1380-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: false, medical_expenses_out_of_pocket: 120, snap_determination_is_recertification: false}, expect: false}
+  - {id: CO-1380-T3, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 0, snap_determination_is_recertification: false}, expect: false}
+  - {id: CO-1380-T4, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 120, snap_determination_is_recertification: true, snap_medical_expenses_at_last_certification: 110}, expect: false}
+  - {id: CO-1380-T5, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_is_elderly_or_disabled: true, medical_expenses_out_of_pocket: 120, snap_determination_is_recertification: true, snap_medical_expenses_at_last_certification: 60}, expect: true}

@@ -1,0 +1,12 @@
+id: CO-1571
+name: SNAP medical expenses at last certification
+identifier: snap_medical_expenses_at_last_certification
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: The person's total monthly out-of-pocket medical expenses as last verified for SNAP.
+supplied_by: Verified expense amounts in the CBMS SNAP case at the previous certification.
+sources: [S1055, S1056]
+tags: [verification, snap, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: total medical expenses are verified at recertification when they have changed by more than $25) needs it as a supplied fact."

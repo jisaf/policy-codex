@@ -1,0 +1,12 @@
+id: CO-1574
+name: Sponsor information verified
+identifier: sponsor_information_verified
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the information the programs need about the person's sponsor and the sponsor's spouse (identity and contact details, income and resources, and the other non-citizens and dependents the sponsor supports) has been provided and verified.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S1061, S1062, S1063]
+tags: [verification, immigration]
+rationale: No existing fact in the volume states this; the phase-9 verification review (K-2) needs it as a supplied fact.

@@ -10,5 +10,4 @@ precision: "True when the number is furnished even if SSA has not yet confirmed 
 supplied_by: SSN entered on the application, or SSA receipt of an SSN application recorded in the CBMS case file.
 sources: [S843, S860, S878, S884]
 tags: [verification]
-open: [OQ-321]
 rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

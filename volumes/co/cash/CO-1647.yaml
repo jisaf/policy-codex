@@ -1,0 +1,18 @@
+id: CO-1647
+name: "Colorado Works: ssn verification is pending"
+identifier: cw_ssn_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: Whether Colorado Works requires verification of the person's Social Security number (or proof of application) and it has not been provided.
+precision: Only the client without an SSN or proof of application is ineligible, not the unit (3.604.3.B.2.c, K).
+derived: [not, ssn_is_verified]
+sources: [S872, S878]
+implemented: engine
+tags: [verification, cash, tanf]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1647-T1, month: "2026-10", as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false}, expect: true}
+  - {id: CO-1647-T2, month: "2026-10", as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: true}, expect: false}

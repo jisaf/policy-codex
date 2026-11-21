@@ -5,13 +5,12 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether relationships and household membership must be verified for Medical Assistance: relationship may be declared unless questionable, and not from a homeless person for whom documentation is not reasonably available."
-derived: [all, household_composition_attestation_is_questionable, [not, is_homeless]]
+meaning: "Whether relationships and household membership must be verified for Medical Assistance: relationship may be declared unless questionable, and not where documentation is not reasonably available (the case-by-case special-circumstances exception)."
+derived: [all, household_composition_attestation_is_questionable, [not, documentation_not_reasonably_available]]
 sources: [S842, S863, S839]
 implemented: engine
 tags: [verification, ma, household]
-open: [OQ-306]
 rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
 tests:
-  - {id: CO-1409-T1, month: "2026-10", as_of: "2026-10-01", given: {household_composition_attestation_is_questionable: true, is_homeless: false}, expect: true}
+  - {id: CO-1409-T1, month: "2026-10", as_of: "2026-10-01", given: {household_composition_attestation_is_questionable: true, documentation_not_reasonably_available: false}, expect: true}
   - {id: CO-1409-T2, month: "2026-10", as_of: "2026-10-01", given: {household_composition_attestation_is_questionable: false}, expect: false}

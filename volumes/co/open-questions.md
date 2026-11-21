@@ -662,99 +662,135 @@ Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): (S-4) part (4) is f
 
 Body: Each program runs its period to provide verification from its own written request: SNAP from the request for the particular verification (7 CFR 273.2(h)(1)(i)(C), S813; 4.205.2.B, S834), Colorado Works and Adult Financial from the written request (3.604.3.A, S871; 3.520.4.D.1, S879), CCCAP from the noticing period (3.111.H.5.e, S891), LEAP from the postmarked notice (3.756.12.D, S899), and Medical Assistance from the notice that opens the reasonable opportunity period (435.956(b)(2), S841). A PEAK application usually produces one CBMS checklist, so the volume carries one supplied verification_request_date per person and every program's due date reads it. A case in which programs sent separate requests on different dates cannot state both; the supplier states the earliest outstanding one. If per-program request dates are needed, the fact should be split by program prefix (snap_verification_request_date and so on) and each due-date item repointed. Items: CO-1343, CO-1392, CO-1413, CO-1414, CO-1426, CO-1437, CO-1450, CO-1461.
 
-### OQ-301. When the Medical Assistance reasonable opportunity period begins
+### OQ-301. Resolved: When the Medical Assistance reasonable opportunity period begins
 
 Body: 42 CFR 435.956(b)(2)(i) (S841) begins the reasonable opportunity period on the date the notice is received, "considered to be 5 days after the date on the notice." 10 CCR 2505-10 8.100.3.G.3.a.i and H.9.a (S853, S859) say the period "shall begin on the date of the Notice of Action." Read literally, Colorado's period ends five days before the federal one. The volume follows the federal rule, which a state rule cannot shorten, by adding ma_notice_receipt_days (5) before the 90 days; verification_request_date is the notice date. A reviewer could instead read Colorado's "date of the Notice of Action" as the date the notice takes effect on receipt. Items: CO-1348, CO-1413.
+
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 42 CFR 435.956(b)(2)(i) (S841) is a federal floor: the period begins when the notice is received, "considered to be 5 days after the date on the notice", and 8.100.3.G.3.a.i and H.9.a (S853, S859) cannot shorten it. The volume's reading stands; ma_reasonable_opportunity_period_end_date (CO-1413) is unchanged and no longer carries this question.
 
 ### OQ-302. Reasonable compatibility: the 20% threshold, and its use for aged, blind and disabled applicants
 
 Body: 10 CCR 2505-10 8.100.4.C.2.a.ii (S864) treats income as reasonably compatible when the attested amount is below the standard, the data amount above it, "and the difference is within the reasonable compatibility threshold percentage of 20%." The text does not say 20% of what. ma_income_is_reasonably_compatible (CO-1402) reads it as the data figure being no more than 20% above the attested figure (data at most attested times 1.2), compared as percentages of the poverty guideline for the MAGI household; a reading as 20 percentage points of FPL, or 20% of the standard, would give different answers near the line. The case the text leaves out (attested above the standard, data below) is treated as not reasonably compatible. 8.100.5.B.1.c (S867) applies the same test to aged, blind and disabled applicants against "the applicable Medical Assistance program income standard"; the item compares against ma_magi_highest_income_standard_pct for everyone, which is the wrong standard for an SSI-related determination. Items: CO-1350, CO-1402, CO-1403.
 
+Phase-9 fix round: the second half is resolved. 8.100.5.B.1.c (S867) applies the test against "the applicable Medical Assistance program income standard", so ma_abd_income_is_reasonably_compatible (CO-1640) compares an aged, blind or disabled applicant's gross income with the SSI-related standard (OQ-374), and chp_income_is_reasonably_compatible (CO-1641) uses the CHP+ standard. ma_requires_verification_of_earned_income (CO-1403) chooses between them and now also asks an adult who attested no earnings when the data is not reasonably compatible. The first half (20% of what) remains open.
+
 ### OQ-303. The period for Medical Assistance documentation other than citizenship, identity and immigration status
 
 Body: The fetched Medical Assistance texts give a 90-day reasonable opportunity period for citizenship, identity and immigration status (S841, S853, S859) and a 30-day reasonable opportunity period for income that is not reasonably compatible (8.100.4.C.2, 8.100.5.B.1.c; S864, S867). For any other documentation (questionable residency, age, relationships or pregnancy, ABD unearned income and resources, a missing SSN) 42 CFR 435.952(c)(2)(iii) (S838) requires only "a reasonable period," and 8.100.3.D.2 allows extensions on request. The volume uses the 30-day income period for all of these (ma_verification_due_date, CO-1414). A reviewer may prefer the 45- or 90-day processing standard of 8.100.3.D.1 as the outer bound. Items: CO-1349, CO-1414, CO-1415.
 
-### OQ-304. Identity documents: two or three corroborating documents; children's records to 16 or 19
+### OQ-304. Resolved: Identity documents: two or three corroborating documents; children's records to 16 or 19
 
 Body: 42 CFR 435.407(c)(1)(x) (S848) accepts "two other documents containing consistent information," and (c)(1)(viii) accepts a clinic, doctor, hospital or school record "for children under age 19." 10 CCR 2505-10 8.100.3.H.3.h (S857) requires "three or more documents," and H.3.i (S858) limits children's records to "children under 16." The federal rule says the agency "must accept" these documents, so the narrower state text cannot be enforced against an applicant; ma_identity_document_is_acceptable (CO-1399) follows the federal rule (corroborating_documents without a count, children's records and a parent's affidavit under ma_magi_child_age_limit, 19). Items: CO-1302, CO-1399.
 
-### OQ-305. The Medical Assistance stand-alone tier: driver's licenses and vital-records matches
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 42 CFR 435.407(c)(1) (S848) says the agency "must accept" the listed identity documents, so the narrower state counts (three corroborating documents, children's records to 16) cannot be enforced against an applicant. ma_identity_document_is_acceptable (CO-1399) follows the federal list as drafted; its precision records the conditions left to the worker (review C-22).
+
+### OQ-305. Resolved: The Medical Assistance stand-alone tier: driver's licenses and vital-records matches
 
 Body: 42 CFR 435.407(a) (S845) makes stand-alone evidence of citizenship (and so of identity) a passport, certificates of naturalization and citizenship, a tribal document, a driver's license from a state that requires proof of citizenship or verifies an SSN, an SSA match, a state vital statistics record, and a SAVE match. 10 CCR 2505-10 8.100.3.H.2.a (S855) lists only the first four, and treats SSA as an interface (H.1.a.i). ma_citizenship_document_is_stand_alone (CO-1396) follows the federal list for documents (adding drivers_license_requiring_proof_of_citizenship and vital_statistics_record_match), since a state may not refuse what 435.407(a) says must be accepted; SSA and SAVE matches are carried by citizenship_verified_by_electronic_data_source. Colorado licenses non-citizens, so a Colorado license will not usually qualify. Items: CO-1306, CO-1396, CO-1397.
 
-### OQ-306. Medical Assistance special-circumstances exception applied only to residency, age and household composition
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 42 CFR 435.407(a) (S845) says stand-alone evidence "must be accepted", so ma_citizenship_document_is_stand_alone (CO-1396) keeps the federal list.
+
+### OQ-306. Resolved: Medical Assistance special-circumstances exception applied only to residency, age and household composition
 
 Body: 42 CFR 435.952(c)(3) (S839) requires an exception permitting self-attestation of "all eligibility criteria when documentation does not exist ... or is not reasonably available, such as in the case of individuals who are homeless or have experienced domestic violence or a natural disaster," except citizenship and immigration status. The exception is case-by-case; the volume has no fact for domestic violence or a natural disaster and no general "documentation not reasonably available" fact, so the Medical Assistance requirement items apply it, through is_homeless, only to the documentary elements a homeless applicant is least able to produce: residency, age and household composition (CO-1407, CO-1408, CO-1409). Income and pregnancy are untouched. A supplied documentation_not_reasonably_available fact would let every element apply it. Items: CO-1407, CO-1408, CO-1409.
 
-### OQ-307. Medicare Savings Program attestation rules not modeled
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 42 CFR 435.952(c)(3) (S839) makes the special-circumstances exception case-by-case and applies it to every criterion except citizenship and immigration status. The new supplied documentation_not_reasonably_available (CO-1561) replaces is_homeless in ma_requires_verification_of_residency, _age and _household_composition (CO-1407-CO-1409) and is now read by the earned income, unearned income, resources and pregnancy items too (CO-1403-CO-1406) and by chp_requires_verification_of_earned_income (CO-1642).
+
+### OQ-307. Resolved: Medicare Savings Program attestation rules not modeled
 
 Body: 42 CFR 435.952(e) (D-96) requires the agency to accept attestation of interest and dividend income, non-liquid resources, burial funds and life-insurance values for Medicare Savings Program applicants, verifying them (if at all) only after eligibility with at least 90 days to respond. ma_requires_verification_of_resources (CO-1405) requires resource verification of every aged, blind or disabled applicant with resources, including one applying only for an MSP. The volume has no fact distinguishing an MSP-only application; until it does, an MSP-only applicant's resource verification is overstated. Items: CO-1405.
 
-### OQ-308. Medical Assistance immigration verification for children and pregnant persons
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 435.952(e) (S1089) requires the attested interest and dividend income and non-liquid resources of a Medicare Savings Program applicant to be accepted. The new supplied ma_application_is_msp_only (CO-1588) is read by ma_requires_verification_of_resources (CO-1405): an MSP-only applicant verifies liquid resources only. The interest-income half is recorded in CO-1405's precision, since unearned income is not split by kind.
+
+### OQ-308. Resolved: Medical Assistance immigration verification for children and pregnant persons
 
 Body: 10 CCR 2505-3 110.1.C.3.a (S870) exempts CHP+ coverage under Cover All Coloradans from immigration-status verification, and ma_meets_citizenship_requirement (CO-509) already treats children and pregnant persons as meeting the citizenship requirement whatever their status. 10 CCR 2505-10 8.100.3.G.2 (S852) applies VLP verification to non-citizens in listed categories who declare a legal status, without an express Cover All Coloradans exemption in the fetched text. ma_requires_verification_of_immigration_status (CO-1400) exempts children and pregnant persons by analogy, because their eligibility does not turn on the result. If HCPF verifies a child's declared status anyway (for federal matching), the exemption should be removed. Items: CO-1400.
+
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved against the exemption. 10 CCR 2505-3 110.1.C (S870) requires CHP+ to verify every declared legal status and exempts only applicants covered by Cover All Coloradans (who declare none), and 8.100.4.B.1.e (S1085) verifies every declared status for Medical Assistance with no age or pregnancy exception. ma_requires_verification_of_immigration_status (CO-1400) was retired; the pending item ma_immigration_status_verification_is_pending (CO-1622) and the required counts (CO-1412, CO-1416) read claims_lawful_immigration_status. A child's or pregnant person's coverage when the period expires is ma_meets_citizenship_requirement's (CO-509) business, not a reason to skip the request. Case CO-92 exercises an LPR child.
 
 ### OQ-309. SNAP "past due" marks the end of the time allowed, not the denial date
 
 Body: SNAP must give at least 10 days to provide verification (S800, S813, S834) and may deny on the thirtieth day, or send a notice of pending status and hold the application up to 60 days (7 CFR 273.2(g)(3), (h)(2)). Those are application-processing choices outside the volume. snap_verification_status (CO-1394) reports past_due once the request date plus 10 days has passed with an eligibility factor still unverified: the delay is then the household's (273.2(h)(1)(i)(C)), not that the application has been denied. Items: CO-1394.
 
-### OQ-310. SNAP: application date and residency exceptions
+### OQ-310. Resolved: SNAP: application date and residency exceptions
 
 Body: snap_expedited_postponement_end_date (CO-1393) reads application_date (CO-088), whose meaning names the Medical Assistance application; a PEAK application is one filing for both, so the date is reused rather than duplicated, but a SNAP-only filing date that differs would need its own fact. snap_requires_verification_of_residency (CO-1375) exempts only homeless households; 273.2(f)(1)(vi) and 4.505.3.A (S805, S824) also exempt some migrant farmworker households and households newly arrived in the area where verification cannot reasonably be accomplished, which no supplied fact captures. Items: CO-1375, CO-1393, CO-088.
 
-### OQ-311. SNAP categorical eligibility relief from verification
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. The residency half is answered by 4.505.3.A (S824) and 273.2(f)(1)(vi) (S805): the new supplied residency_verification_cannot_reasonably_be_accomplished (CO-1586) is read by snap_requires_verification_of_residency (CO-1375). The application-date half is a vocabulary decision: one PEAK filing serves every program, and docs/reviews/vocabulary-reuse.md takes up splitting application_date per program; the new SNAP periods (CO-1617, CO-1618) read the same fact.
+
+### OQ-311. Resolved: SNAP categorical eligibility relief from verification
 
 Body: 10 CCR 2506-1 4.502.A.4 (S819) relieves "households eligible under basic or expanded categorical eligibility" of verifying resources, income, SSN information, sponsored non-citizen information and residency "beyond that gathered by the Public Assistance (PA) program that confers eligibility," unless not already collected and verified by that program, questionable, or unavailable. A basic categorically eligible household's conferring programs (TANF, SSI, OAP, AND, AB) verify these factors; an expanded categorically eligible household's conferring benefit is a TANF-funded informational service that verifies none of them. The requirement items therefore relieve only basic categorically eligible households (CO-1374, CO-1375, CO-1376, CO-1377) and treat both kinds of categorical eligibility as having no resource test (CO-1378). Items: CO-1374, CO-1375, CO-1376, CO-1377, CO-1378.
 
-### OQ-312. SNAP actual utility costs and unoccupied homes
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 4.502.A.4 (S819) relieves categorically eligible households of verifying what the conferring program has "already collected and verified", and 273.2(j)(2)(v) (D-95) does the same federally; a TANF-funded informational service verifies none of these factors, so the volume's reading (relief for basic categorical eligibility only, no resource test for either) stands. The new snap_requires_verification_of_sponsor (CO-1616) follows the same reading for sponsor information.
+
+### OQ-312. Resolved: SNAP actual utility costs and unoccupied homes
 
 Body: 7 CFR 273.2(f)(1)(iii) requires verification of actual utility expenses claimed above the standard utility allowance, and 4.507.B.2 (D-103) requires it for an unoccupied home. The volume models utilities only through utility_allowance_amount (CO-036) and has no fact for a claim of actual utility costs or an unoccupied home, so snap_requires_verification_of_shelter_costs (CO-1379) covers only shelter and utility costs found questionable (4.507.B.1, S832). Items: CO-1379.
+
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. Colorado's mandatory standard utility allowance (4.407.31, S1059) says households "cannot claim actual utility expenses", so 273.2(f)(1)(iii)'s verification of actual utilities above the standard (S1058) never arises. The unoccupied-home rule (4.507.B.2, S1060) is read through the new supplied claims_shelter_costs_for_unoccupied_home (CO-1585) by snap_requires_verification_of_shelter_costs (CO-1379).
 
 ### OQ-313. SNAP third-party citizenship statements
 
 Body: 4.505.5.B (S826) and 273.2(f)(2)(ii) (S811) accept a signed third-party statement of citizenship only "if the above forms of verification cannot be obtained and the household can provide a reasonable explanation." snap_citizenship_document_is_acceptable (CO-1372) accepts a third_party_citizenship_statement without testing those conditions, which are the worker's judgment and have no fact. 273.2(f)(2)(ii)'s acceptance of citizenship verified by another program is carried by citizenship_verified_by_electronic_data_source. Items: CO-1372.
 
-### OQ-314. Colorado Works citizenship verification: every client, or only when questionable
+### OQ-314. Resolved: Colorado Works citizenship verification: every client, or only when questionable
 
 Body: 9 CCR 2503-6 3.604.3.B.2.b (S872) lists "verification of citizenship or qualified non-citizenship status" among the primary verifications "all participating clients shall provide," while 3.604.3.I.2-3 (D-104) give guidelines for "questionable statement(s) of citizenship" and make a client whose citizenship is in question ineligible until proven. cw_person_pending_verification_count (CO-1424) follows B.2.b and counts citizenship as required for every client who declares it, reading I.2-3 as governing when documents already provided are themselves doubted. If Colorado Works accepts declarations unless questionable (as SNAP, Adult Financial and LEAP do), the citizenship arm should be conditioned on citizenship_attestation_is_questionable. Items: CO-1424.
 
-### OQ-315. Colorado Works and Adult Financial document lists incorporate rules not fetched
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 3.604.3.B.2.b (S872) says "all participating clients shall provide" verification of citizenship; I.2-3 (D-104) give guidelines for questionable statements, not a questionable-only rule; and 3.604.3.K (S1064) gives thirty days and excludes only the client who cannot provide it. cw_citizenship_verification_is_pending (CO-1645) keeps every client who declares citizenship, and cw_verification_status (CO-1427) now reports members_excluded after the thirty days (review C-9).
+
+### OQ-315. Resolved: Colorado Works and Adult Financial document lists incorporate rules not fetched
 
 Body: 3.604.3.I.1 and I.4.a.1.e (S876, S877) and 3.520.66.E (D-105) also accept "any other document authorized by rules adopted by the Department of Revenue" (1 CCR 204-30), and 3.520.67.C (S886) incorporates the documents in 45 CFR 1626.6. Neither incorporated text was fetched. identity_document_is_lawful_presence_document (CO-1367) and citizenship_document_is_primary_evidence (CO-1368) accept only the documents the fetched rules name; a document acceptable only under the incorporated rules reads as unacceptable until those texts are fetched and the lists extended. Items: CO-1302, CO-1306, CO-1367, CO-1368, CO-1420, CO-1424, CO-1431.
+
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved by fetching the incorporated texts. 1 CCR 204-30 Rule 5 and Appendices A and B (D-119, the 06/30/2026 version, unchanged since 08/30/2016 and so the Mar. 2, 2021 edition 3.604.3.I.1 incorporates) list the citizenship and lawful presence documents for Colorado Works and LEAP, and Rule 5 § 1.8 excludes a Road and Community Safety Act license (S1067); Rule 16 (D-120) lists the identity documents Adult Financial incorporates at 3.520.66.E (S1074, S1075); 45 CFR 1626.6 (D-118, S1077) lists the citizenship documents 3.520.67.C incorporates. New items citizenship_document_is_on_revenue_appendix_a (CO-1657), af_citizenship_document_is_acceptable (CO-1673) and af_identity_document_is_acceptable (CO-1674) read them; identity_verification_document_type (CO-1302) gains colorado_road_and_community_safety_act_license_or_id and the Rule 16 types. Rule 5 is repealed in the current 1 CCR 204-30 (effective 10/15/2026, S1072, S1098); see OQ-376.
 
 ### OQ-316. Extensions of the time to verify are not modeled
 
 Body: Each program allows more time in some circumstances: Colorado Works to the twentieth day on good cause (3.602.1, D-104) and beyond the 45-day standard at county discretion (3.604.3.B.4, S872); LEAP up to two more weeks on good cause (3.756.12.D, S899); Medical Assistance an extended reasonable opportunity period for a good-faith effort (435.956(b)(2)(ii)(B), S841; 8.100.3.H.10, D-101) and extensions on request (8.100.3.D.2). The due-date items use the base period only. A supplied extension date (or extension granted fact) per program would let each status item honor them. Items: CO-1351, CO-1355, CO-1415, CO-1426, CO-1427, CO-1461, CO-1462.
 
-### OQ-317. Adult Financial income verification is inferred, not stated
+Phase-9 fix round: 3.604.3.K's thirty days for status elements (S1064) is a period, not an extension, and is now modeled (cw_status_verification_due_date, CO-1656; members_excluded in CO-1427). CCCAP's 60-day new-application rule (3.111.H.5.e.1.b, S891) is likewise a period after closure, outside the initial verification status. The extensions themselves remain unmodeled.
+
+### OQ-317. Resolved: Adult Financial income verification is inferred, not stated
 
 Body: 9 CCR 2503-5 has no section that says income "shall be verified" the way 4.506 does for SNAP. 3.520.4.D (S879) directs the county to "verify statements made by the client on the application," and 3.520.5.A (S880) makes SSA and unemployment data verified upon receipt, denies verified status to Department of Labor wage data ("additional verification must be obtained"), and requires the county to "verify potential income" before approval. The volume reads these together as requiring verification of earned income (documents) and unearned income (data or documents) whenever received. Items: CO-1434, CO-1436.
 
-### OQ-318. LEAP: a member's missing SSN excludes the member rather than denying the household
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 3.520.5.A.2.a (S880) states that wage data needs "additional verification ... within eleven (11) days ... or the case will be discontinued or denied", and A.3 requires income to be verified for the client, spouse and sponsors. af_earned_income_verification_is_pending (CO-1665) and unearned_income_verification_is_pending (CO-1650) carry it; af_requires_verification_of_earned_income (CO-1434) was retired as a restatement of has_earned_income.
+
+### OQ-318. Resolved: LEAP: a member's missing SSN excludes the member rather than denying the household
 
 Body: 9 CCR 2503-7 3.751.1 (S893) makes a completed application one where "the applicant has provided all required verification," including an SSN or proof of application for each member, but continues "If no SSN is provided for a household member, that member will not be included in the household, but the member's income will be counted." The LEAP counts treat a member's missing SSN as a pending verification like any other (CO-1458, CO-1459), so a household with one member lacking an SSN reads as pending or past due rather than as eligible with that member excluded. Modeling the exclusion would mean filtering leap_household_members on ssn_is_verified, a change to CO-1000 outside this batch. Items: CO-1458, CO-1459, CO-1460, CO-1462.
 
-### OQ-319. LEAP citizenship documents incorporate 1 CCR 204-30, not fetched
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 3.751.1 Completed Application B (S893) states the consequence: the member without an SSN "will not be included in the household, but the member's income will be counted". The SSN and SAVE arms left the LEAP counts (CO-1458-CO-1460) and the household status (CO-1462); the new outcome leap_member_is_excluded_for_verification (CO-1694) names the member. Filtering leap_household_members (CO-1000) itself belongs to the LEAP eligibility items (OQ-370).
+
+### OQ-319. Resolved: LEAP citizenship documents incorporate 1 CCR 204-30, not fetched
 
 Body: 9 CCR 2503-7 3.753.11 (S895) says "Documents that are acceptable as verification of citizenship can be found at 1 CCR 204-30, Appendix A," which was not fetched. The LEAP pending count accepts any citizenship document received for a questionable claim (CO-1459) and has no acceptability item; once Appendix A is fetched, a leap_citizenship_document_is_acceptable item reading citizenship_verification_document_type should be added. Items: CO-1457, CO-1459.
+
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 1 CCR 204-30 Rule 5, Appendix A (D-119, S1069, S1070) is fetched; leap_citizenship_verification_is_pending (CO-1691) accepts a citizenship document only if citizenship_document_is_on_revenue_appendix_a (CO-1657).
 
 ### OQ-320. 9 CCR 2503-1 states no verification rule
 
 Body: The phase-9 brief named the general Income Maintenance application rules at 9 CCR 2503-1 as a possible source of verification rules. The current SOS text (D-108, effective 11/01/2018, S900) is "RESERVED FOR FUTURE USE"; its editor's notes record that the former 3.100-3.900 sections were recodified into 9 CCR 2503-2 through 2503-9. Each program's own verification rules were used instead; 9 CCR 2503-8 (administrative procedures) was not fetched. Items: none.
 
-### OQ-321. SSN verification never delays an otherwise eligible person
+### OQ-321. Resolved: SSN verification never delays an otherwise eligible person
 
 Body: Every program forbids delaying an otherwise eligible person while SSA verifies a furnished number (7 CFR 273.2(f)(1)(v), S804; 4.505.2.A, S823; 42 CFR 435.910(f), S843; 45 CFR 205.52(c), S878; 3.520.65.A.4, S884). The volume therefore treats the SSN element as satisfied when the person has furnished a number or proof of applying for one (ssn_verification_document_received) or SSA has confirmed it (ssn_is_verified, CO-1360). A person who furnished neither is pending, which matches each program's rule that a person who refuses or fails to furnish an SSN is ineligible. A later SSA mismatch (4.505.2.B, 3.520.65.B.2) is a change to be resolved, not a pre-certification verification, and is not modeled. Items: CO-1311, CO-1360, CO-1374, CO-1401.
 
-### OQ-322. CHP+ verification follows Medical Assistance through 130.1
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. The five texts cited (S804, S823, S843, S878, S884) each forbid delaying an otherwise eligible person while an SSN is verified; the volume's reading stands. LEAP alone excludes the member instead (OQ-318).
+
+### OQ-322. Resolved: CHP+ verification follows Medical Assistance through 130.1
 
 Body: 10 CCR 2505-3 130.1 (S869) requires CHP+ applicants to provide "minimal verification as required in 10 CCR 2505-10-8.100.4.B," and 110.1.C (S870) applies VLP verification and the 8.100.3.H.9 reasonable opportunity period. The CHP+ counts (CO-1416, CO-1417) and status (CO-1418) therefore read the Medical Assistance requirement items, acceptability items, due date and reasonable opportunity period, leaving out the ABD-only elements. 42 CFR 457.380(c)-(d) (S868) let a separate CHIP accept self-attestation of residency and income where Medicaid would not; the fetched Colorado text does not elect that, so the Medical Assistance rules are used unchanged. Items: CO-1416, CO-1417, CO-1418.
+
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 10 CCR 2505-3 130.1 (S869) requires CHP+ applicants to provide the minimal verification of 8.100.4.B. Two corrections follow from the review: CHP+ verifies every declared immigration status (OQ-308), and its earned-income compatibility test uses the CHP+ standard (chp_income_is_reasonably_compatible, CO-1641; chp_requires_verification_of_earned_income, CO-1642).
 
 ### OQ-323. SNAP postponed verification: thirty days from application, or the second or third month
 
 Body: 7 CFR 273.2(i)(4)(iii)(A)-(B) (D-95) postpone verification "until the second month of participation" (applying by the 15th) or "the third month of participation" (after the 15th). Colorado's 4.205.11.B.2.b (S835) terminates participation "when the postponed verification is not completed within thirty (30) calendar days from the date of application." snap_expedited_postponement_end_date (CO-1393) uses Colorado's thirty days for both cases; a household applying after the 15th whose federal postponement runs into the third month is treated as past the postponement after thirty days. Items: CO-1346, CO-1393.
 
-### OQ-324. Medical Assistance citizenship exemption for foster children read through the Title IV payment fact
+### OQ-324. Resolved: Medical Assistance citizenship exemption for foster children read through the Title IV payment fact
 
 Body: 42 CFR 435.406(a)(1)(iii)(D) (S844) and 8.100.3.H.1.b.iii-iv (S854) exempt children in Title IV-B foster care and Title IV-E foster care or adoption assistance recipients from documenting citizenship. ma_requires_verification_of_citizenship (CO-1395) reads receives_title_iv_foster_adoption_kinship_payment (CO-841), the Colorado Works fact, which also covers kinship payments and so may exempt a kinship-care child the federal list does not name. A dedicated foster-care fact would be exact. Items: CO-1395.
 
@@ -812,3 +848,56 @@ Body: 9 CCR 2503-5 3.520.61.F (S711) bars a client "currently receiving or eligi
 ### OQ-358. LEAP household of a spouse who has entered a nursing facility
 
 Body: 9 CCR 2503-7 3.751.2.D.1 (D-86, `documents/D-86.md:268`) makes "Husband and wife living together" one household that cannot be classified as separate households. leap_household_members (CO-1000) joins spouses unconditionally over the spouse relationship, and no fact states that a spouse no longer lives in the home, so in the target household for November (CO-02) the grandmother, now a nursing facility resident, stays in her husband's LEAP household and her income counts; she is excluded only from her own vulnerability to heating costs (CO-1004, 3.752.25.B). Whether a spouse in long-term institutional care is still "living together" is not stated in the fetched text; a co-residence fact (OQ-132's missing economic-unit role) would let a case remove her. Items: CO-1000, CO-1009.
+Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. The new supplied is_in_title_iv_foster_care_or_adoption_assistance (CO-1587) states the 435.406(a)(1)(iii)(D) and 8.100.3.H.1.b.iii-iv group exactly; ma_requires_verification_of_citizenship (CO-1395) reads it instead of the Colorado Works kinship-payment fact.
+
+### OQ-370. LEAP household membership does not yet drop a member without an SSN or a verified status
+
+Body: 3.751.1 B (S893) leaves a member with no SSN out of the household with income still counted, and 3.753.17 (S494) does the same for a member who does not meet the status requirement. The verification chapter now reports such a member through leap_member_is_excluded_for_verification (CO-1694) and no longer counts the missing SSN or SAVE response against the household (CO-1458-CO-1462). leap_household_members (CO-1000), which leap_household_size and the benefit read, still filters only on the declared status; adding the SSN and verified-status conditions there is a change to the LEAP eligibility items, left to the eligibility fix round. Until then a household with such a member is sized one person too large. Items: CO-1462, CO-1694, CO-1000.
+
+### OQ-371. SNAP recertification: the $50 boundary, changed expense sources and outdated information
+
+Body: 4.502.B.2 (S1056) says a change of "fifty ($50) or more" must be verified and, in the next sentence, that a change of "fifty dollars ($50) or less" need not be; 273.2(f)(8)(i)(A) (S1055) says "more than $50". snap_income_changed_since_last_certification (CO-1619) uses more than $50. A changed source of an expense (4.502.B.3) is not a fact, so the expense items test only the amount; and information that is "incomplete, inaccurate, inconsistent or outdated", or a changed or expired immigration status, is not separately stated, so at recertification immigration status, identity and disability are not asked again and the questionable facts carry the rest. Items: CO-1373, CO-1376, CO-1377, CO-1380, CO-1381, CO-1382, CO-1596, CO-1619.
+
+### OQ-372. Medical Assistance renewal: citizenship information and the five-year gap
+
+Body: 435.956(a)(4)(ii) (S1052) forbids re-verifying citizenship at renewal "unless the individual reports a change in citizenship or the agency has received information indicating a potential change"; ma_requires_verification_of_citizenship (CO-1395) reads citizenship_attestation_is_questionable for that information. 8.100.3.H.4.h (S1053) also asks again after a gap of more than five years when the site kept no documents; no fact states the gap or the retention. Renewal on available information and the renewal form's 30 days (435.916(a)(2)-(3), S1050) need no item: the requirement items apply as at application to what the form reports, and ma_verification_due_date already allows 30 days. Items: CO-1395, CO-1566.
+
+### OQ-373. Renewal verification for Colorado Works, Adult Financial and CCCAP not modeled
+
+Body: Only Medical Assistance (CO-1566) and SNAP (CO-1567) carry a renewal fact. Colorado Works requires an SSN applied for at application by the next recertification (3.604.3.B.2.c.1-2, D-104) and verification "at the time of application and redetermination" (3.604.3.K, S1064); Adult Financial accepts the client's statement of resources after application until each twenty-four-month redetermination (3.520.72.D.4, S888); CCCAP closes at redetermination after fifteen days (3.111.H.5.e.2) and verifies child support at each redetermination (3.111.K.2.c). These programs' items describe an initial application. Items: CO-1433, CO-1436, CO-1424, CO-1448.
+
+### OQ-374. Aged, blind and disabled reasonable compatibility compares gross income with the individual SSI rate
+
+Body: ma_abd_income_is_reasonably_compatible (CO-1640) compares the attested monthly gross income (wages, self-employment and unearned income) and the data figure (electronic_data_source_monthly_gross_income, CO-1589) with the SSI individual benefit rate, or 300% of it for a long-term care applicant. The SSI-related test itself counts income after exclusions and uses the couple rate for a couple (ma_meets_ssi_income_standard); the item does not, so results near the line may differ from a countable-income comparison. The 20% threshold carries OQ-302's first half. Items: CO-1589, CO-1640.
+
+### OQ-375. AND-SO medical certification: thirty days "following the interview"
+
+Body: 3.541.1.A.1.b (S1080) gives thirty calendar days following the interview to submit the medical examination; the volume has no interview date, so af_verification_status (CO-1438) counts them from verification_request_date, the date the county requested the verification (usually the interview date for Adult Financial). Items: CO-1438, CO-1599, CO-1669.
+
+### OQ-376. Department of Revenue Rule 5 repealed; editions incorporated; DMV lawful presence checks
+
+Body: The current 1 CCR 204-30 (effective 10/15/2026, D-120) shows Rule 5 withdrawn ("Withdrawal effective December 31, 2026", S1072) and its editor's notes "Rule 5 repealed eff. 10/15/2026" (S1098). 9 CCR 2503-6 3.604.3.I.1 incorporates Rule 5, Appendices A and B "(Mar. 2, 2021), no later editions", so Colorado Works still reads the incorporated edition (D-119); 9 CCR 2503-7 3.753.11 and 3.753.14 name Appendices A and B without an edition. The volume reads the incorporated edition for both until CDHS amends its rules. Appendix A.C.2 (the applicant's own declaration) and A.D-G are not document types. 3.604.3.H.4 (S1096) lets the county use the DMV to verify lawful presence and identity; cw_lawful_presence_verification_is_pending (CO-1644) accepts a produced document or a SAVE result and does not read an identity match (review C-8), so a DMV lawful-presence match is stated by recording the license as the document received. Items: CO-1644, CO-1657.
+
+### OQ-377. SUN Bucks verification: no fixed period, and exceptions without facts
+
+Body: 7 CFR 292.14 (D-117) sets no period for a household selected in the sample: it must respond "by the date determined by the Summer EBT agency" (f)(2)(i), after at least two follow-up attempts (f)(7); verification for cause is completed within 30 days of receipt of the application (a)(1)(ii). sebt_verification_status (CO-1698) therefore has no past-due state. The exception for foster, migrant and runaway children (f)(1) has no fact in the volume; only is_homeless is read. Colorado's Plan for Operations and Management, which would state its verification procedures and administrative data sources (292.14(e)(3)), was not fetched (OQ-255). Items: CO-1698, CO-1699.
+
+### OQ-378. CCCAP verifications not modeled
+
+Body: Beyond the hours worked and additional care needs now modeled (CO-1684-CO-1687), 8 CCR 1403-1 3.111.C.2 (D-106) also lists immunizations (C.2.c, F.2, 3.112.D), the activity schedule when non-traditional hours are requested (C.2.e, 3.112.F), incapacitation by a physician's statement (C.2.g, D.1.c.3), the custody arrangement or parenting schedule (C.2.h), an unrelated caretaker's verification (D.5), and the self-employment weekly schedule and expenses (G.2.a-b). None decides eligibility on facts the volume carries; they are left to the worker. Items: CO-1447, CO-1448, CO-1684.
+
+### OQ-379. Long-term care documentation: transfers, joint ownership and sales efforts
+
+Body: ma_asset_transfers_verification_is_pending (CO-1637) reads one supplied fact for the documentation of transfers in the 60-month look-back (8.100.7.A.2.h, F.2.a; S1087, S1088): the transfers made, or a declaration that none was made without fair consideration; the text names the look-back, not the form of the evidence. Verification of joint ownership and the quarterly verification of efforts to sell real property (D-41, 8.100.7) are not modeled. ma_is_long_term_care_applicant (CO-1631) treats every aged, blind or disabled person in a medical institution, an HCBS target group or PACE as a long-term care applicant. Items: CO-1631, CO-1632, CO-1637.
+
+### OQ-380. Sponsor verification: whose eligibility, which exemptions
+
+Body: SNAP makes only the sponsored member ineligible until the sponsor's information is provided (4.505.7.B-C, S1061), and the whole household when one sponsor covers it; snap_verification_status reports the household. The exemptions from deeming (indigence, forty qualifying quarters, battered non-citizens) are not modeled, so is_sponsored_non_citizen (CO-1573) is stated true only when deeming applies. Adult Financial's 3.520.69 applies to qualified non-citizens who entered on or after August 22, 1996; af_sponsor_verification_is_pending (CO-1672) reads qualified_status_date for the date of entry. Items: CO-1573, CO-1616, CO-1654, CO-1672.
+
+### OQ-381. LEAP heating costs and zero income as household elements
+
+Body: 3.755.11 (S897) verifies "estimated home heating costs, and vulnerability" for the household: leap_pending_verification_count (CO-1460) counts one pending heating verification however many members are responsible for heating costs (review C-13). The CO-01 and CO-02 cases still state is_responsible_for_heating_costs for the children, because LEAP vulnerability (an eligibility item) reads it; the count no longer depends on it. leap_zero_income_verification_is_pending (CO-1693) reads leap_household_income for "zero income" and asks every adult member (3.755.21.H, S1083). Items: CO-1460, CO-1692, CO-1693.
+
+### OQ-382. One request fact for Medical Assistance and CHP+
+
+Body: is_requesting_health_coverage (CO-1560) is one fact for both programs because a PEAK health-coverage application is screened for Medical Assistance and CHP+ together; 8.100.3.I.1 (S860) exempts a person "not requesting Medical Assistance yet appear[ing] on the application" from the SSN requirement, and the Medical Assistance and CHP+ statuses read it for not_applicable. A household that requests one program and declines the other would need two facts. The other programs' not_applicable rows read categorical reach (a dependent child or pregnant member for Colorado Works, an eligible child for CCCAP, the Old Age Pension age or a disability basis for Adult Financial, a citizen member for LEAP, SNAP household membership, school age for SUN Bucks) instead of a request fact. Items: CO-1415, CO-1418, CO-1560.

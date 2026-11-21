@@ -1,0 +1,17 @@
+id: CO-1621
+name: "Medical Assistance: identity verification is pending"
+identifier: ma_identity_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether Medical Assistance (and CHP+, which reads this item) requires verification of the person's identity, by a data match or an acceptable identity document and it has not been provided.
+derived: [all, ma_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, [all, identity_verification_document_received, ma_identity_document_is_acceptable]]]]
+sources: [S846, S848, S854]
+implemented: engine
+tags: [verification, ma]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1621-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: false}, expect: true}
+  - {id: CO-1621-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: true}, expect: false}

@@ -1,0 +1,12 @@
+id: CO-1582
+name: Marital status attestation is questionable
+identifier: marital_status_attestation_is_questionable
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the client's declared marital status is questionable to the county department.
+supplied_by: Eligibility worker's questionable-information finding recorded in CBMS case comments.
+sources: [S1078]
+tags: [verification, cash]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-6: 3.520.63.A verifies marital status if questionable) needs it as a supplied fact."

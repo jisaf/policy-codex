@@ -1,0 +1,17 @@
+id: CO-1627
+name: "Medical Assistance: pregnancy verification is pending"
+identifier: ma_pregnancy_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether Medical Assistance (and CHP+, which reads this item) requires verification of the person's questionable pregnancy and it has not been provided.
+derived: [all, ma_requires_verification_of_pregnancy, [not, pregnancy_verification_document_received]]
+sources: [S842, S868]
+implemented: engine
+tags: [verification, ma]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1627-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_pregnancy: true, pregnancy_verification_document_received: false}, expect: true}
+  - {id: CO-1627-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_pregnancy: false}, expect: false}

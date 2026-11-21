@@ -1,0 +1,12 @@
+id: CO-1562
+name: Has resources other than cash
+identifier: has_resources_other_than_cash
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person owns any resource other than cash on hand (a bank or credit union account, a vehicle, real property including the home, life insurance, retirement funds, stocks or bonds, a trust or an annuity), whether the program then counts or excludes it.
+supplied_by: Resources section of the application as recorded in CBMS.
+sources: [S866, S888]
+tags: [verification, resources]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (C-7: verification turns on the resources available, not on the countable figure the verification itself establishes, and Adult Financial accepts a client statement for cash) needs it as a supplied fact."

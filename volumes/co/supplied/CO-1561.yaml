@@ -1,0 +1,12 @@
+id: CO-1561
+name: Documentation not reasonably available
+identifier: documentation_not_reasonably_available
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the agency has found, case by case, that documentation of the person's eligibility criteria does not exist or is not reasonably available (as for a person who is homeless or has experienced domestic violence or a natural disaster), so the person's attestation is accepted for every criterion other than citizenship and immigration status.
+supplied_by: Eligibility worker's special-circumstances finding recorded in CBMS case comments.
+sources: [S839]
+tags: [verification, ma]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (C-15, OQ-306: 435.952(c)(3) makes the exception case-by-case, so is_homeless cannot stand in for it) needs it as a supplied fact."

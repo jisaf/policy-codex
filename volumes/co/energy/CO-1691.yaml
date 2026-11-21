@@ -1,0 +1,17 @@
+id: CO-1691
+name: "LEAP: citizenship verification is pending"
+identifier: leap_citizenship_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+role: outcome
+meaning: Whether LEAP requires verification of the person's questionable citizenship and no SSA match or Rule 5 Appendix A document has provided it.
+derived: [all, leap_requires_verification_of_citizenship, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a]]]]
+sources: [S895, S1069, S1070]
+implemented: engine
+tags: [verification, immigration]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item. OQ-319: the documents are those of 1 CCR 204-30 Rule 5, Appendix A (D-119)."
+tests:
+  - {id: CO-1691-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, citizenship_verification_document_type: citizenship_affidavit}, expect: true}
+  - {id: CO-1691-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, citizenship_verification_document_type: us_public_birth_certificate}, expect: false}

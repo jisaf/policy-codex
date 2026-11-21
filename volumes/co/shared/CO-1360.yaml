@@ -10,7 +10,6 @@ derived: [any, ssn_verified_by_electronic_data_source, ssn_verification_document
 sources: [S804, S843, S878, S884]
 implemented: engine
 tags: [verification]
-open: [OQ-321]
 rationale: Every program's SSN rule is satisfied the same way (S804, S843, S878, S884); no existing item combines the two facts.
 tests:
   - {id: CO-1360-T1, as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: true}, expect: true}

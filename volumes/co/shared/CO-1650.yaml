@@ -1,0 +1,18 @@
+id: CO-1650
+name: Unearned income verification is pending
+identifier: unearned_income_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: All
+role: outcome
+meaning: "Whether the person receives unearned income that no electronic data source treated as verified upon receipt and no document verifies: the unearned-income element Colorado Works, Adult Financial, CCCAP and LEAP each require whenever the income is received."
+derived: [all, has_unearned_income, [not, unearned_income_is_verified]]
+sources: [S872, S875, S880, S891, S898]
+implemented: engine
+tags: [verification, income]
+rationale: "Review U-1: Colorado Works, Adult Financial, CCCAP and LEAP each carried this test as an identical anonymous arm; one shared item states it and each count sums it (SNAP and Medical Assistance have their own requirement items)."
+tests:
+  - {id: CO-1650-T1, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: true, unearned_income_verified_by_electronic_data_source: false, unearned_income_verification_document_received: false}, expect: true}
+  - {id: CO-1650-T2, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: true, unearned_income_verified_by_electronic_data_source: true}, expect: false}
+  - {id: CO-1650-T3, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: false}, expect: false}

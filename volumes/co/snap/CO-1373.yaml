@@ -5,13 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: "Whether the person's declared immigration status must be verified for SNAP, through SAVE: every household member who declares a lawful status."
-precision: An undocumented member who does not claim an eligible status participates as an ineligible member and no documentation is pursued (4.505.6.J, S902).
-derived: [all, snap_is_household_member, claims_lawful_immigration_status]
-sources: [S802, S817, S828]
+meaning: "Whether the person's declared immigration status must be verified for SNAP, through SAVE: every household member who declares a lawful status, at application; a status verified at application is not verified again at recertification unless it has changed."
+precision: A changed or expired status reported at recertification is verified as at application (273.2(f)(8)(i)(D)); no fact states such a change, so the recertification arm reads only the case action (OQ-371).
+derived: [all, snap_is_household_member, claims_lawful_immigration_status, [not, snap_determination_is_recertification]]
+sources: [S802, S817, S828, S1055, S1056]
 implemented: engine
 tags: [verification, snap, immigration]
+open: [OQ-371]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
 tests:
-  - {id: CO-1373-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: lawful_permanent_resident}, expect: true}
-  - {id: CO-1373-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: undocumented}, expect: false}
+  - {id: CO-1373-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: lawful_permanent_resident, snap_determination_is_recertification: false}, expect: true}
+  - {id: CO-1373-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: undocumented, snap_determination_is_recertification: false}, expect: false}
+  - {id: CO-1373-T3, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, citizenship_status: lawful_permanent_resident, snap_determination_is_recertification: true}, expect: false}

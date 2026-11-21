@@ -1,0 +1,18 @@
+id: CO-1642
+name: "CHP+: requires verification of earned income"
+identifier: chp_requires_verification_of_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether the person must document earned income for CHP+: wages an electronic data source could not verify or that are questionable; earnings the data reports when the household's figures are not reasonably compatible against the CHP+ standard (for an adult, or a person attesting earnings); and self-employment income only when the ledger is questionable; unless documentation is not reasonably available."
+derived: [all, [not, documentation_not_reasonably_available], [any, [all, [">", earned_income, 0], [any, [not, earned_income_verified_by_electronic_data_source], earned_income_attestation_is_questionable]], [all, [">", electronic_data_source_household_income_pct_fpl, 0], [not, chp_income_is_reasonably_compatible], [any, [">", earned_income, 0], [">=", age, ma_magi_child_age_limit]]], [all, [">", self_employment_net_income, 0], earned_income_attestation_is_questionable]]]
+sources: [S869, S861, S864, S865, S839]
+implemented: engine
+tags: [verification, chp, income]
+rationale: "Review C-6: CHP+ read the Medicaid earned-income item, which tests compatibility against the Medicaid standard."
+nearest: [CO-1403]
+tests:
+  - {id: CO-1642-T1, month: "2026-10", as_of: "2026-10-01", given: {documentation_not_reasonably_available: false, earned_income: 1500, earned_income_verified_by_electronic_data_source: false, earned_income_attestation_is_questionable: false}, expect: true}
+  - {id: CO-1642-T2, month: "2026-10", as_of: "2026-10-01", given: {documentation_not_reasonably_available: false, earned_income: 1500, earned_income_verified_by_electronic_data_source: true, earned_income_attestation_is_questionable: false, electronic_data_source_household_income_pct_fpl: 1.8, chp_income_is_reasonably_compatible: true, self_employment_net_income: 0}, expect: false}
+  - {id: CO-1642-T3, month: "2026-10", as_of: "2026-10-01", given: {documentation_not_reasonably_available: true}, expect: false}

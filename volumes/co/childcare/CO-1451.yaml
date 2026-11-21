@@ -3,19 +3,21 @@ name: "CCCAP: verification status"
 identifier: cccap_verification_status
 kind: derived
 type: one of
-options: [not_required, complete, pending, past_due]
+options: [not_applicable, not_required, complete, pending, deduction_disallowed, past_due]
 scope: person-month
 program: CCCAP
 role: outcome
-meaning: "Where this person's CCCAP household stands on verification: none required, complete, pending within the noticing period, or past due (the application is denied)."
+meaning: "Where this person's CCCAP household stands on verification: not applicable (no eligible child in the household); none required; complete; pending within the noticing period; past it with only child support paid unverified (the deduction is not allowed); or past due with an eligibility element unverified (the application is denied)."
 precision: Assets are self-declared (3.111.H.5.c, S891) and need no verification.
-derived: [case, [["=", [sum, cccap_household_members, [of, [P], cccap_person_required_verification_count]], 0], not_required], [["=", cccap_pending_verification_count, 0], complete], [["<=", [det_date], cccap_verification_due_date], pending], [else, past_due]]
-sources: [S891]
+derived: [case, [[not, [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]], not_applicable], [["=", [sum, cccap_household_members, [of, [P], cccap_person_required_verification_count]], 0], not_required], [[all, ["=", cccap_pending_verification_count, 0], ["=", cccap_pending_deduction_verification_count, 0]], complete], [["<=", [det_date], cccap_verification_due_date], pending], [["=", cccap_pending_verification_count, 0], deduction_disallowed], [else, past_due]]
+sources: [S891, S892]
 implemented: engine
 tags: [verification]
-rationale: No existing item reports CCCAP verification standing.
+rationale: "No existing item reported a CCCAP household's verification standing. Fix round: not_applicable on categorical reach (review C-4) and the child support deduction apart from eligibility (C-12)."
 tests:
-  - {id: CO-1451-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1], cccap_person_required_verification_count: 0}, expect: not_required}
-  - {id: CO-1451-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1], cccap_person_required_verification_count: 2, cccap_pending_verification_count: 0}, expect: complete}
-  - {id: CO-1451-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-10", cccap_household_members: [p1], cccap_person_required_verification_count: 2, cccap_pending_verification_count: 1, cccap_verification_due_date: "2026-10-16"}, expect: pending}
-  - {id: CO-1451-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", cccap_household_members: [p1], cccap_person_required_verification_count: 2, cccap_pending_verification_count: 1, cccap_verification_due_date: "2026-10-16"}, expect: past_due}
+  - {id: CO-1451-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1], cccap_is_eligible_child: false}, expect: not_applicable}
+  - {id: CO-1451-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1], cccap_is_eligible_child: true, cccap_person_required_verification_count: 0}, expect: not_required}
+  - {id: CO-1451-T3, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1], cccap_is_eligible_child: true, cccap_person_required_verification_count: 2, cccap_pending_verification_count: 0, cccap_pending_deduction_verification_count: 0}, expect: complete}
+  - {id: CO-1451-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-10", cccap_household_members: [p1], cccap_is_eligible_child: true, cccap_person_required_verification_count: 2, cccap_pending_verification_count: 1, cccap_pending_deduction_verification_count: 0, cccap_verification_due_date: "2026-10-16"}, expect: pending}
+  - {id: CO-1451-T5, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", cccap_household_members: [p1], cccap_is_eligible_child: true, cccap_person_required_verification_count: 2, cccap_pending_verification_count: 0, cccap_pending_deduction_verification_count: 1, cccap_verification_due_date: "2026-10-16"}, expect: deduction_disallowed}
+  - {id: CO-1451-T6, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", cccap_household_members: [p1], cccap_is_eligible_child: true, cccap_person_required_verification_count: 2, cccap_pending_verification_count: 1, cccap_pending_deduction_verification_count: 1, cccap_verification_due_date: "2026-10-16"}, expect: past_due}

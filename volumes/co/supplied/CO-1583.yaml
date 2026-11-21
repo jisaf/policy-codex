@@ -1,0 +1,12 @@
+id: CO-1583
+name: Marital status verification document received
+identifier: marital_status_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: Whether the client has provided legal court documents, or alternate verification from a vital statistics source, substantiating a divorce, legal separation or a spouse's death.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S1078]
+tags: [verification, cash]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-6: 3.520.63.C) needs it as a supplied fact."

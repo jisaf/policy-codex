@@ -1,0 +1,12 @@
+id: CO-1572
+name: SNAP child support paid at last certification
+identifier: snap_child_support_paid_at_last_certification
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: The person's monthly legally obligated child support payments as last verified for SNAP.
+supplied_by: Verified expense amounts in the CBMS SNAP case at the previous certification.
+sources: [S1055, S1056]
+tags: [verification, snap, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: changed child support obligations and payments are verified at recertification) needs it as a supplied fact."

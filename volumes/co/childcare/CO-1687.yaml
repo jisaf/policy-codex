@@ -1,0 +1,17 @@
+id: CO-1687
+name: "CCCAP: additional care needs verification is pending"
+identifier: cccap_additional_care_needs_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+role: outcome
+meaning: Whether CCCAP requires verification of the person's additional care needs of a child thirteen or older and it has not been provided.
+derived: [all, cccap_requires_verification_of_additional_care_needs, [not, additional_care_needs_verification_document_received]]
+sources: [S1082]
+implemented: engine
+tags: [verification]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1687-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_additional_care_needs: true, additional_care_needs_verification_document_received: false}, expect: true}
+  - {id: CO-1687-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_additional_care_needs: true, additional_care_needs_verification_document_received: true}, expect: false}

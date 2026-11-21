@@ -1,0 +1,12 @@
+id: CO-1598
+name: Colorado Works status verification days
+identifier: cw_status_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The number of calendar days a Colorado Works client has to provide verification of citizenship, qualified non-citizen status, lawful presence, identity or SSN.
+value: 30
+sources: [S1064]
+tags: [verification, cash, tanf]
+rationale: "Review C-9: 3.604.3.K grants thirty calendar days; no item carried it."

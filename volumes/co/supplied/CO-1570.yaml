@@ -1,0 +1,12 @@
+id: CO-1570
+name: SNAP dependent care expense at last certification
+identifier: snap_dependent_care_expense_at_last_certification
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: The person's monthly dependent care expense as last verified for SNAP.
+supplied_by: Verified expense amounts in the CBMS SNAP case at the previous certification.
+sources: [S1056]
+tags: [verification, snap, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: 4.502.B.3 verifies dependent care at recertification when it has changed by more than $25) needs it as a supplied fact."

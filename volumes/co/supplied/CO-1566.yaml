@@ -1,0 +1,12 @@
+id: CO-1566
+name: Medical Assistance determination is a renewal
+identifier: ma_determination_is_renewal
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person's Medical Assistance or CHP+ determination is a renewal of eligibility (or a subsequent application after a break in coverage) rather than an initial application.
+supplied_by: CBMS case action type (renewal or redetermination) and the person's prior enrollment record.
+sources: [S1050, S1052, S1053]
+tags: [verification, ma]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: 435.956(a)(4)(ii) forbids re-verifying citizenship at renewal) needs it as a supplied fact."

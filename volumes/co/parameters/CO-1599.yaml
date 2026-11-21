@@ -1,0 +1,12 @@
+id: CO-1599
+name: Adult Financial disability certification days
+identifier: af_disability_certification_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The number of calendar days an AND-SO applicant has to submit the medical disability certification.
+value: 30
+sources: [S1080]
+tags: [verification, cash, and, disability]
+rationale: "Review K-6: 3.541.1.A.1.b gives thirty calendar days following the interview."

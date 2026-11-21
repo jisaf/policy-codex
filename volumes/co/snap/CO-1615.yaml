@@ -1,0 +1,17 @@
+id: CO-1615
+name: "SNAP: child support paid verification is pending"
+identifier: snap_child_support_paid_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+role: outcome
+meaning: Whether SNAP requires verification of the person's legally obligated child support paid and it has not been provided.
+derived: [all, snap_requires_verification_of_child_support_paid, [not, child_support_paid_is_verified]]
+sources: [S809, S833]
+implemented: engine
+tags: [verification, snap]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1615-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_child_support_paid: true, child_support_paid_verified_by_electronic_data_source: false, child_support_paid_verification_document_received: false}, expect: true}
+  - {id: CO-1615-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_child_support_paid: true, child_support_paid_verified_by_electronic_data_source: true}, expect: false}
