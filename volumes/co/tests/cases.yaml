@@ -2097,6 +2097,7 @@
   persons:
     p1:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: Adams    # phase-10 sweep (OQ-159)
         county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -2352,6 +2353,7 @@
         pension_income: 610
     p2:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: Adams    # phase-10 sweep (OQ-159)
         county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -2610,6 +2612,7 @@
         social_security_income: 1180
     p3:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: Adams    # phase-10 sweep (OQ-159)
         county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -2839,6 +2842,7 @@
         hours_worked: 138
     p4:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: Adams    # phase-10 sweep (OQ-159)
         county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -3070,6 +3074,7 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: Adams    # phase-10 sweep (OQ-159)
         county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -5744,6 +5749,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_application_county: Denver    # phase-10 sweep (OQ-159)
         county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
@@ -5792,6 +5798,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
         cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
@@ -5843,6 +5850,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         cccap_application_county: Denver    # phase-10 sweep (OQ-159)
@@ -5897,6 +5905,7 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
         is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
         cccap_application_county: Denver    # phase-10 sweep (OQ-159)
@@ -5947,6 +5956,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: Denver    # phase-10 sweep (OQ-159)
         county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies

@@ -545,11 +545,13 @@ Body: 8 CCR 1403-1 3.111.D.1.b (involuntary absence) and c.2 (voluntary absence,
 
 Resolution (Phase-10 open-question sweep): Resolved. 3.111.D.1 (S1409): only involuntary absence (b) reduces the household to one caretaker; a voluntarily absent caretaker stays a caretaker who must be in an activity (a, c.2). The fact is renamed cccap_caretaker_is_involuntarily_absent (CO-898, same ID) with that meaning, and cccap_household_caretakers_in_eligible_activity (CO-991) exempts only that caretaker. If not stated it reads false, which keeps the activity requirement (not an eligibility-granting default). New test CO-991-T8.
 
-### OQ-137. LEAP eligibility as a monthly re-evaluation, not a point-in-time program-year determination
+### OQ-137. Resolved: LEAP eligibility determined at the application date (point in time)
 
 Body: 3.751.1's "Point in Time" definition ("eligibility is determined by accounting for the circumstances of the household on the date of the application, regardless of any changes thereafter") means LEAP is decided once per program year from the application-date facts, not re-derived for every month of the eligibility period. `leap_is_eligible` (CO-1007) remains `scope: person-month` and is re-evaluated for each month, which this fix round's C-3 addition (`leap_month_in_eligibility_period`, CO-1008) only gates to the November-April window rather than restructuring; a household whose circumstances change between November and April would see `leap_is_eligible` change month to month under the current scope, contrary to the "regardless of any changes thereafter" text. The review (docs/reviews/cccap-leap-phase-6.md, C-3) recorded this as an item to raise rather than fix in this round; this open question carries that forward. Items: CO-1007.
 
 Phase 8: the current 9 CCR 2503-7 (D-86, S776) keeps the "Point in Time" definition ("eligibility is determined by accounting for the circumstances of the household on the date of the application, regardless of any changes thereafter"); the new benefit outcome leap_benefit_amount (CO-1281) is likewise a heating-season figure evaluated per month and inherits this question.
+
+Resolution (phase-10 open-question sweep): Resolved. The new supplied leap_application_date (CO-2122) carries the date "Point in Time" (3.751.1, S776) refers to. leap_is_eligible (CO-1007) evaluates the residency, countable-member, income, vulnerability and heating-source tests in the month of that date (the engine's `at`), and holds for a month that is in the eligibility period, in the same program year as the application and not before it; leap_benefit_amount (CO-1281) takes the household income contribution in the application month. CO-02 and CO-08 state the application date as their determination month, so no expectation changed.
 
 ### OQ-160. Resolved: CCCAP child citizenship requirement read without a default
 
@@ -699,6 +701,8 @@ Phase-10 open-question sweep. (1) Confirmed: there is no Colorado Summer EBT rul
 ### OQ-300. One verification request date serves every program
 
 Body: Each program runs its period to provide verification from its own written request: SNAP from the request for the particular verification (7 CFR 273.2(h)(1)(i)(C), S813; 4.205.2.B, S834), Colorado Works and Adult Financial from the written request (3.604.3.A, S871; 3.520.4.D.1, S879), CCCAP from the noticing period (3.111.H.5.e, S891), LEAP from the postmarked notice (3.756.12.D, S899), and Medical Assistance from the notice that opens the reasonable opportunity period (435.956(b)(2), S841). A PEAK application usually produces one CBMS checklist, so the volume carries one supplied verification_request_date per person and every program's due date reads it. A case in which programs sent separate requests on different dates cannot state both; the supplier states the earliest outstanding one. If per-program request dates are needed, the fact should be split by program prefix (snap_verification_request_date and so on) and each due-date item repointed. Items: CO-1343, CO-1392, CO-1413, CO-1414, CO-1426, CO-1437, CO-1450, CO-1461.
+
+Phase-10 open-question sweep: resolved for CCCAP and LEAP. cccap_verification_request_date (CO-2120) and leap_verification_request_date (CO-2121) state each program's own request date, and cccap_verification_due_date (CO-1450) and leap_verification_due_date (CO-1461) read it, falling back to the shared verification_request_date when it is not stated (documented on each fact). The SNAP, Medical Assistance, CHP+, Colorado Works and Adult Financial due dates belong to the other sweeps and still read the shared date.
 
 ### OQ-301. Resolved: When the Medical Assistance reasonable opportunity period begins
 
