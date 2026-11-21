@@ -1,0 +1,18 @@
+id: CO-1503
+name: Colorado Works earned income disregard rate, first certification period and new sources
+identifier: cw_new_earnings_disregard_rate
+kind: parameter
+type: rate
+scope: global
+program: ColoradoWorks
+meaning: The fraction of gross earned income disregarded to determine the Colorado Works payment amount during the unit's first certification period (3.606.2.A.1) and, for a unit currently receiving basic cash assistance, for a new source of earned income during the first certification period that the income impacts (3.606.2.A.2.a) - one hundred percent.
+precision: The rule history of 9 CCR 2503-6 (D-81, S1019) dates the amendment of 3.606.2.A to June 1, 2023; the fetched text is the version effective 2025-07-01, so the version is dated from the amendment.
+versions:
+  - from: "2023-06-01"
+    value: 1.0
+    source: S1000
+sources: [S1000, S1019]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "No existing parameter states the 100% disregard; cw_earned_income_disregard_rate (CO-350) is the 67% rate for a current source after the first certification period, a different figure for a different case. cw_payment_countable_earned_income (CO-922) reads both (phase-8 review B-1)."
+nearest: [CO-350]

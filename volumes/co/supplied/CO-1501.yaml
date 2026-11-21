@@ -1,0 +1,13 @@
+id: CO-1501
+name: Colorado Works first certification period
+identifier: cw_in_first_certification_period
+kind: supplied
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: Whether the month falls in the first Colorado Works certification period of this person's assistance unit - the period that begins when the unit is approved at application - during which a one hundred percent (100%) disregard is applied to earned income to determine the payment amount, per 9 CCR 2503-6 3.606.2.A.1.
+precision: A unit-level fact carried on each member of the assistance unit (the same value for every member); false for a person in no assistance unit. Read only for a unit currently receiving basic cash assistance (receives_tanf_cash) with earned income - an applicant's payment is computed with the first-period disregard without it - and then with no default.
+supplied_by: Statewide automated system (CBMS) Colorado Works certification period record.
+sources: [S1000]
+tags: [cash, tanf, income]
+rationale: "No existing fact states where a Colorado Works unit is in its certification history; months_of_assistance_received (CO-840) counts months toward the federal time limit (any state's TANF, head and spouse only), which does not identify the first Colorado certification period. cw_payment_countable_earned_income (CO-922) needs it for the current 3.606.2.A.1 (phase-8 review B-1)."

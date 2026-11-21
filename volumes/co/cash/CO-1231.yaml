@@ -10,6 +10,7 @@ meaning: Whether a burial benefit is available for the deceased person - the per
 precision: The 30-day request window and its good-cause extension to one year (3.570.43.C) are procedural and not modeled.
 derived: [all, died_while_receiving_af_or_medicaid, [<=, ["-", burial_services_total_cost, burial_plot_cost_excluded_from_limit], af_burial_cost_limit], [">", af_burial_unmet_cost, 0]]
 sources: [S719, S721, S723]
+open: [OQ-355]
 implemented: engine
 tags: [cash]
 rationale: No existing item determines burial assistance eligibility; it is new to the volume with the current 9 CCR 2503-5 (D-80) and declared as an outcome.

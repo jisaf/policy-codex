@@ -6,14 +6,15 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: Whether the person meets one of the three Home Care Allowance financial routes - approved for SSI, meets every AND-SO criterion, or has received both OAP and HCA continuously since December 31, 2013 - per 9 CCR 2503-5 3.570.13.B.
-precision: '"Approved for SSI" is read as receives_ssi.'
-derived: [any, receives_ssi, af_and_so_eligible, received_oap_and_hca_grandfathered]
-sources: [S714]
+precision: '"Approved for SSI" is read as receives_ssi. The grandfathered route (3.570.13.B.3, receiving both OAP and HCA as of December 31, 2013) also requires the person to have been of OAP age (60, af_oap_age) on that date, so a supplied grandfather flag cannot contradict the person''s date of birth (phase-8 fix round, C-1).'
+derived: [any, receives_ssi, af_and_so_eligible, [all, received_oap_and_hca_grandfathered, [">=", [years_between, date_of_birth, "2013-12-31"], af_oap_age]]]
+sources: [S700, S714]
 implemented: engine
 tags: [cash, and, income]
-rationale: No existing item states the HCA financial test; af_hca_eligibility_status (CO-1217) needs it.
+rationale: Phase-8 fix round (C-1) - the grandfathered route is guarded by age on 2013-12-31. No existing item states the HCA financial test; af_hca_eligibility_status (CO-1217) needs it.
 tests:
   - {id: CO-1215-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: true}, expect: true}
   - {id: CO-1215-T2, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, af_and_so_eligible: true}, expect: true}
-  - {id: CO-1215-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, af_and_so_eligible: false, received_oap_and_hca_grandfathered: true}, expect: true}
+  - {id: CO-1215-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, af_and_so_eligible: false, received_oap_and_hca_grandfathered: true, date_of_birth: "1950-03-02"}, expect: true}
   - {id: CO-1215-T4, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, af_and_so_eligible: false, received_oap_and_hca_grandfathered: false}, expect: false}
+  - {id: CO-1215-T5, title: "C-1 - grandfather flag stated for a person who was 53 on 2013-12-31, too young for OAP then", as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false, af_and_so_eligible: false, received_oap_and_hca_grandfathered: true, date_of_birth: "1960-03-02"}, expect: false}

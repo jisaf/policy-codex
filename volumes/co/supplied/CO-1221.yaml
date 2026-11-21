@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person
 program: AdultFinancial
-meaning: The combined charges of the provider(s) for all burial services for the decedent (transportation, storage, embalming, casket or urn, plot, marker, service, cremation, interment and incidentals), from the providers' written estimates, per 9 CCR 2503-5 3.570.42 and 3.570.43.E-F.
+meaning: The combined charges of the provider(s) for all burial services for the decedent (transportation, storage, embalming, casket or urn, plot, marker, service, cremation, interment and incidentals), from the providers' written estimates, per 9 CCR 2503-5 3.570.42 and 3.570.43.E-F; for a deceased Colorado Works client, the total combined charges for services, property and supplies of 9 CCR 2503-6 3.606.7.A.2, C and E, gravesite included.
 supplied_by: Providers' written estimates obtained by the family or county department.
-sources: [S719, S723]
+sources: [S719, S723, S1005, S1007]
 tags: [cash]
-rationale: No existing fact states burial costs; af_burial_eligible (CO-1231) and af_burial_unmet_cost (CO-1230) need it.
+rationale: No existing fact states burial costs; af_burial_eligible (CO-1231) and af_burial_unmet_cost (CO-1230) need it. Phase-8 fix round (K-1) - the Colorado Works death reimbursement (cw_death_reimbursement_amount, CO-1508) reads the same charges, which 3.606.7 defines the same way.

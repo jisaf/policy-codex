@@ -12,7 +12,7 @@ sources: [S136, S743]
 open: [OQ-251]
 implemented: engine
 tags: [income, snap]
-rationale: No existing item decides SUA entitlement (OQ-36); snap_utility_allowance_amount (CO-036) needs the HCUA test as its first tier.
+rationale: No existing item decides SUA entitlement (OQ-36); snap_utility_allowance_amount (CO-1500) needs the HCUA test as its first tier.
 tests:
   - {id: CO-1243-T1, as_of: "2026-10-01", given: {incurs_heating_cooling_cost: true, received_energy_assistance_within_twelve_months: false, snap_household_has_elderly_or_disabled_member: false}, expect: true}
   - {id: CO-1243-T2, title: "LEAP within 12 months, no elderly or disabled member - not entitled under sec. 10103", as_of: "2026-10-01", given: {incurs_heating_cooling_cost: false, received_energy_assistance_within_twelve_months: true, snap_household_has_elderly_or_disabled_member: false}, expect: false}

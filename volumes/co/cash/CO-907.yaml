@@ -5,15 +5,17 @@ kind: derived
 type: money
 scope: person-month
 program: ColoradoWorks
-meaning: This person's gross earned income for the month, minus the $90 at-application earned income disregard, floored at zero, per 9 CCR 2503-6 3.606.2.A.1.
-precision: "Models the $90 eligibility-test disregard 3.606.2.A.1's first sentence and 3.606.2.A.2's first sentence state; this is the figure cw_countable_income (CO-910) compares against the need standard (cw_meets_income_test, CO-913). The 67% disregard both paragraphs' second sentences apply to compute the payment amount is a separate figure, modeled by cw_payment_countable_earned_income (CO-922) and read by cw_grant_amount (CO-914) - the phase-5 review's C-1 finding that one figure had been doing both jobs; OQ-105 is rewritten accordingly."
+meaning: This person's countable earned income for the month for the Colorado Works income test against the need standard - at application, gross earned income minus the $90 earned income disregard, floored at zero (9 CCR 2503-6 3.606.2.A.1, first sentence); for a unit currently receiving basic cash assistance, gross earned income less the disregard 3.606.2 gives for the payment (cw_payment_countable_earned_income, CO-922), since 3.606.1.J applies "the appropriate earned income disregards ... as described in Section 3.606.2" when the unit reports earned income.
+precision: "Whether the unit is currently receiving is read from receives_tanf_cash (CO-013), with no default; a person with no earned income needs no statement, since nothing counts either way. This is the figure cw_countable_income (CO-910) compares against the need standard (cw_meets_income_test, CO-913); the payment is computed separately from cw_payment_countable_earned_income (CO-922) - the phase-5 review's C-1 finding that one figure had been doing both jobs."
 assumption: Applies the disregard to every person's own earned income rather than only to adult clients, since 3.606.1.E's general calculation ("countable earned income minus applicable earned income disregards, plus countable unearned income") is not stated as adult-only, and 3.605.2.D.4 counts a non-student dependent child's own earned income in full; a student dependent child's earned income is separately exempt under 3.605.4.B.24.b, not modeled here.
-derived: [max, 0, ["-", earned_income, cw_earned_income_disregard_dollar]]
-sources: [S416]
+derived: [case, [[<=, earned_income, 0], 0], [receives_tanf_cash, cw_payment_countable_earned_income], [else, [max, 0, ["-", earned_income, cw_earned_income_disregard_dollar]]]]
+sources: [S1000, S1001]
 implemented: engine
 tags: [cash, tanf, income]
-rationale: No existing item states the Colorado Works earned income disregard; cw_countable_income (CO-910) needs each unit member's disregarded earned income.
+rationale: "No existing item states the Colorado Works earned income disregard; cw_countable_income (CO-910) needs each unit member's disregarded earned income. Phase-8 fix round (B-1): the $90 disregard now applies only at application; a unit already receiving is tested with the 3.606.2 payment disregards (100% or 67%), per 3.606.1.J (S1001) and 3.606.2.A.2 (S1000), so an ongoing unit's eligibility no longer turns on the $90 figure."
 tests:
-  - {id: CO-907-T1, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 2380}, expect: 2290}
-  - {id: CO-907-T2, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 0}, expect: 0}
-  - {id: CO-907-T3, as_of: "2026-10-01", month: "2026-10", given: {earned_income: 50}, expect: 0}
+  - {id: CO-907-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, earned_income: 2380}, expect: 2290}
+  - {id: CO-907-T2, as_of: "2026-10-01", month: "2026-10", title: "No earnings - receipt not read", given: {earned_income: 0}, expect: 0}
+  - {id: CO-907-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, earned_income: 50}, expect: 0}
+  - {id: CO-907-T4, title: "Unit currently receiving, current source after the first certification period - tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b)", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: true, earned_income: 400, cw_in_first_certification_period: false, cw_is_new_earned_income_source: false}, expect: 132}
+  - {id: CO-907-T5, title: "Unit currently receiving, first certification period - all earnings disregarded", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: true, earned_income: 2380, cw_in_first_certification_period: true}, expect: 0}

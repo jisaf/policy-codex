@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person
 program: AdultFinancial
-meaning: Monies due from any insurance policy of the decedent to a legally responsible person or to a contributor named as beneficiary or joint beneficiary, which are applied first against the full burial costs, per 9 CCR 2503-5 3.570.43.D.1.
+meaning: Monies due from any insurance policy of the decedent to a legally responsible person or to a contributor named as beneficiary or joint beneficiary, which are applied first against the full burial costs, per 9 CCR 2503-5 3.570.43.D.1; for a deceased Colorado Works client the same proceeds reduce the maximum death reimbursement (9 CCR 2503-6 3.606.7.F.2.f).
 supplied_by: Insurance policy and beneficiary documentation.
-sources: [S721]
+sources: [S721, S1005, S1007]
 tags: [cash, resources]
 rationale: No existing fact states it; af_burial_unmet_cost (CO-1230) needs it.

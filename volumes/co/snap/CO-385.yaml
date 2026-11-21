@@ -29,9 +29,9 @@ tests:
     # Maximum allotment (size 3) = 785; benefit reduction = ceil(0.3 * 2199) = ceil(659.70) = 660.
     # Household size 3 is not <= the minimum-allotment limit of 2, so no minimum floor applies.
     # Allotment = max(0, 785 - 660) = 125.
-    title: "FY2026 figures (785 - 659.70 = 125.30, rounded down to 125)"
+    title: "FY2026 figures (785 - 659.70 = 125.30, rounded down to 125); a September 2026 allotment (phase-8 fix round N-6 - an October 2026 allotment uses the FY2027 maximum whatever the determination date)"
     as_of: "2026-09-30"
-    month: "2026-10"
+    month: "2026-09"
     given:
       snap_household_members: [p1, p2, p3, p4]
       snap_household_size: 3
