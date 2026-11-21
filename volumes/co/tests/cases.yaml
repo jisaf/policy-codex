@@ -29,6 +29,8 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -63,7 +65,6 @@
         retains_ssi_status_without_payment: false
         has_reproductive_capacity: false
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -71,7 +72,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -173,7 +173,6 @@
         meets_hcbs_waiver_target_group: none
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3): she asks for nursing facility care; the setting is the one requested, not PACE first
         medicare_part_a_entitled: true
-        ma_qualifies_for_veterans_personal_needs_allowance: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         expects_to_be_claimed_as_dependent: false
@@ -203,7 +202,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -228,7 +226,6 @@
         state_of_residence: CO
         receives_ssi: false
         meets_nursing_facility_level_of_care: true
-        spouse_or_dependent_child_resides_in_home: true
         snap_resides_in_institution_providing_meals: true
         resides_in_medical_institution: true
         leap_living_arrangement: institutional_group_care
@@ -242,13 +239,11 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 2030
-        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -287,6 +282,8 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -313,7 +310,6 @@
         retains_ssi_status_without_payment: false
         has_reproductive_capacity: false
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -322,7 +318,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -424,11 +419,9 @@
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
         medicare_part_a_entitled: true
-        ma_qualifies_for_veterans_personal_needs_allowance: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         ssi_countable_resources_individual: 44100
         expects_to_be_claimed_as_dependent: false
@@ -458,7 +451,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -494,13 +486,11 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 1180
-        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -539,6 +529,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -565,7 +556,6 @@
         retains_ssi_status_without_payment: false
         has_reproductive_capacity: true
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -575,7 +565,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -699,7 +688,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -728,7 +716,6 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -767,6 +754,8 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -781,7 +770,6 @@
         lost_ssi_due_to_social_security_benefits: false
         nighttime_residence_type: fixed_regular_adequate
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -799,7 +787,6 @@
         retains_ssi_status_without_payment: false
         has_reproductive_capacity: true
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -809,7 +796,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: true
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -932,7 +918,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -964,7 +949,6 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -1003,6 +987,8 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -1017,7 +1003,6 @@
         lost_ssi_due_to_social_security_benefits: false
         nighttime_residence_type: fixed_regular_adequate
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -1033,7 +1018,6 @@
         retains_ssi_status_without_payment: false
         has_reproductive_capacity: false
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -1043,7 +1027,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -1168,7 +1151,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -1196,7 +1178,6 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -2212,6 +2193,8 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -2248,7 +2231,6 @@
         has_reproductive_capacity: false
         sex: female
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -2256,7 +2238,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -2358,7 +2339,6 @@
         meets_hcbs_waiver_target_group: none
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3): she asks for nursing facility care; the setting is the one requested, not PACE first
         medicare_part_a_entitled: true
-        ma_qualifies_for_veterans_personal_needs_allowance: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
@@ -2395,7 +2375,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -2420,19 +2399,16 @@
         snap_resides_in_institution_providing_meals: true
         resides_in_medical_institution: true
         leap_living_arrangement: institutional_group_care
-        spouse_or_dependent_child_resides_in_home: true
         institution_entry_date: "2026-10-01"
         meets_nursing_facility_level_of_care: true
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 2030
-        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -2470,6 +2446,8 @@
         pension_income: 610
     p2:
       facts:
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -2498,7 +2476,6 @@
         has_reproductive_capacity: false
         sex: male
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -2507,7 +2484,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -2609,11 +2585,9 @@
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
         medicare_part_a_entitled: true
-        ma_qualifies_for_veterans_personal_needs_allowance: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         ssi_countable_resources_individual: 44100
         expects_to_be_claimed_as_dependent: false
@@ -2649,7 +2623,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -2678,13 +2651,11 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 1180
-        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -2722,6 +2693,7 @@
         social_security_income: 1180
     p3:
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -2750,7 +2722,6 @@
         has_reproductive_capacity: true
         sex: female
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -2760,7 +2731,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -2890,7 +2860,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -2912,7 +2881,6 @@
         citizenship_status: undocumented
         state_of_residence: CO
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -2950,6 +2918,8 @@
         hours_worked: 138
     p4:
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -2964,7 +2934,6 @@
         lost_ssi_due_to_social_security_benefits: false
         nighttime_residence_type: fixed_regular_adequate
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -2984,7 +2953,6 @@
         has_reproductive_capacity: true
         sex: female
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -2994,7 +2962,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: true
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -3121,7 +3088,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -3147,7 +3113,6 @@
         is_attending_high_school: true
         cccap_is_in_education_or_training_activity: true
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -3185,6 +3150,8 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -3199,7 +3166,6 @@
         lost_ssi_due_to_social_security_benefits: false
         nighttime_residence_type: fixed_regular_adequate
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -3217,7 +3183,6 @@
         has_reproductive_capacity: false
         sex: male
         # Phase 8 facts (illustrative where marked in the case comment).
-        died_while_receiving_af_or_medicaid: false
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
         receives_hcbs_services: false
@@ -3227,7 +3192,6 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
-        all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
@@ -3356,7 +3320,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -3378,7 +3341,6 @@
         citizenship_status: citizen
         state_of_residence: CO
         is_in_workforce_training_or_post_secondary_education: false
-        is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -4359,6 +4321,7 @@
     p1:
       # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
       facts:
+        has_qualifying_military_service: false
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -4387,7 +4350,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -4443,6 +4405,7 @@
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
+        has_qualifying_military_service: false
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -4470,7 +4433,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -4594,6 +4556,7 @@
       # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
+        has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_start_date: "2026-07-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
@@ -4613,7 +4576,6 @@
         files_jointly_with_spouse: true
         is_pregnant: true
         expected_number_of_children: 1
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4652,6 +4614,7 @@
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
       facts:
+        has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         lottery_gambling_winnings_amount: 0
@@ -4669,7 +4632,6 @@
         files_jointly_with_spouse: true
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4707,7 +4669,6 @@
       facts:
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         is_inmate_of_public_institution: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -4762,7 +4723,6 @@
       facts:
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         is_inmate_of_public_institution: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -4813,6 +4773,7 @@
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
       facts:
+        has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         lottery_gambling_winnings_amount: 0
@@ -4825,7 +4786,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -5004,6 +4964,7 @@
       # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
       # p3 as a tax dependent and is her caretaker relative.
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: true
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-11-08"
@@ -5016,7 +4977,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -5051,6 +5011,7 @@
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
       facts:
+        has_qualifying_military_service: false
         foster_care_exit_date: "2022-06-19"  # dual-entry 2.9: aged out at 20 (was ma_age_at_foster_care_exit: 20)
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -5064,7 +5025,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -5113,7 +5073,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_start_date: "2026-01-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         is_inmate_of_public_institution: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -5311,7 +5270,7 @@
   #     maximum is now the CMS 2026 figure (162660, CO-828, D-72) rather than the review's
   #     illustrative 157920, so ma_csra is 162660 and the attributed resources 17340 - still over
   #     the 2000 limit, so no other outcome changes.
-  #   - p1's home equity exception is read through spouse_or_dependent_child_resides_in_home
+  #   - p1's home equity exception is read through ma_spouse_or_qualifying_child_lives_in_home
   #     (C-20), supplied true because Linda (p2) lives in the home; this does not change the
   #     outcome here since home_equity (240000) is under ma_home_equity_limit (752000, the CMS 2026
   #     minimum home equity limit Colorado's indexed $500,000 rule uses - phase 7) either way.
@@ -5325,6 +5284,8 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
@@ -5335,7 +5296,6 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_pregnant: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -5355,13 +5315,11 @@
         ssi_countable_resources_couple: 180000
         ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
-        spouse_or_dependent_child_resides_in_home: true
         uncompensated_transfer_value_in_lookback: 54000
         transfer_was_exempt: false
         # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
         # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
         transfer_penalty_period_start_date: "2026-11-01"
-        ma_qualifies_for_veterans_personal_needs_allowance: false
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -5406,6 +5364,7 @@
       # into her rent or mortgage, tax and insurance (634) and the heating and cooling allowance her
       # home reaches (616, incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
       facts:
+        has_qualifying_military_service: false
         shelter_cost_monthly: 634
         incurs_heating_cooling_cost: true
         received_energy_assistance_within_twelve_months: false
@@ -5418,7 +5377,6 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_pregnant: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -5432,7 +5390,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         ssi_countable_resources_individual: 7500
-        ssi_countable_resources_couple: 180000
         ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
@@ -5476,6 +5433,7 @@
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-23"
@@ -5485,7 +5443,6 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_pregnant: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         is_blind: false
         meets_ssa_disability_criteria: true
@@ -5499,7 +5456,6 @@
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
         ssi_countable_resources_individual: 4200
-        ssi_countable_resources_couple: 4200
         home_equity: 0
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -5721,7 +5677,6 @@
         is_disqualified_for_work_requirement_noncompliance: true
         is_pregnant: false
         ssi_countable_resources_individual: 500
-        ssi_countable_resources_couple: 1400
         receives_tanf_cash: true
       month_defaults:
         receives_medicaid: true
@@ -5784,7 +5739,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
         ssi_countable_resources_individual: 1500
-        ssi_countable_resources_couple: 0
         receives_tanf_cash: false
       month_defaults:
         wages_gross: 0
@@ -5844,7 +5798,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
         ssi_countable_resources_individual: 0
-        ssi_countable_resources_couple: 0
         receives_tanf_cash: true
       month_defaults:
         wages_gross: 0
@@ -5905,7 +5858,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
         ssi_countable_resources_individual: 1200
-        ssi_countable_resources_couple: 0
         receives_tanf_cash: false
       month_defaults:
         wages_gross: 0
@@ -6176,6 +6128,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
@@ -6246,6 +6199,7 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
@@ -6462,6 +6416,7 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -6473,7 +6428,6 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         ssi_countable_resources_individual: 300
-        ssi_countable_resources_couple: 0
         date_of_birth: "1997-02-11"
         sex: female
         citizenship_status: undocumented
@@ -6485,7 +6439,6 @@
         files_jointly_with_spouse: false
         is_pregnant: true
         expected_number_of_children: 1
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6526,6 +6479,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -6537,7 +6491,6 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         ssi_countable_resources_individual: 300
-        ssi_countable_resources_couple: 0
         date_of_birth: "1968-05-20"
         sex: female
         citizenship_status: lawful_permanent_resident
@@ -6551,7 +6504,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6592,6 +6544,7 @@
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -6626,7 +6579,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         medicare_part_a_entitled: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6641,7 +6593,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
         ssi_countable_resources_individual: 500
-        ssi_countable_resources_couple: 0
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         expects_institutional_stay_of_thirty_days: false
@@ -6682,6 +6633,7 @@
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -6693,7 +6645,6 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         ssi_countable_resources_individual: 300
-        ssi_countable_resources_couple: 0
         date_of_birth: "2020-03-09"
         sex: male
         citizenship_status: citizen
@@ -6705,7 +6656,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6809,6 +6759,7 @@
     p1:
       relationships: []
       facts:
+        has_qualifying_military_service: false
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         medicare_part_b_enrolled: false
@@ -6828,7 +6779,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         medicare_part_a_entitled: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -6843,7 +6793,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
         ssi_countable_resources_individual: 1200
-        ssi_countable_resources_couple: 0
         snap_resides_in_institution_providing_meals: true
         resides_in_medical_institution: true
         leap_living_arrangement: institutional_group_care
@@ -6853,7 +6802,6 @@
         meets_hcbs_waiver_target_group: none
         is_enrolled_in_pace: false
         home_equity: 0
-        spouse_or_dependent_child_resides_in_home: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -6941,7 +6889,6 @@
         is_blind: false
         snap_receives_permanent_disability_retirement_benefit: false
         ssi_countable_resources_individual: 1000
-        ssi_countable_resources_couple: 0
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         receives_hcbs_services: false
@@ -6950,10 +6897,8 @@
         hca_functional_capacity_score: 24
         hca_need_for_paid_care_score: 30
         received_oap_and_hca_grandfathered: true
-        died_while_receiving_af_or_medicaid: false
         receives_tanf_cash: false
         has_applied_for_ssi: true
-        is_deceased_colorado_works_client: false
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -6975,15 +6920,16 @@
         af_resides_in_unlicensed_or_uncertified_facility: false
     p2:
       facts:
+        date_of_death: "2026-11-05"  # dual-entry 3.14: died this month while receiving OAP (was af_died_while_receiving_af_or_medicaid: true)
         date_of_birth: "1958-08-20"
-        died_while_receiving_af_or_medicaid: true
         burial_services_total_cost: 2800
         burial_plot_cost_excluded_from_limit: 600
         burial_insurance_proceeds: 300
         decedent_estate_value: 200
         burial_responsible_person_resources: 1000
         burial_responsible_persons_are_couple: false
-        is_deceased_colorado_works_client: false
+      months:
+        "2026-11": {receives_medicaid: true}
     p3:
       facts:
         child_welfare_payment_type: none
@@ -7111,6 +7057,9 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        is_tax_filer: false  # dual-entry 2.4: no income, so no return; the MAGI household is then known
+        expects_to_be_claimed_as_dependent: false
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -7146,7 +7095,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: false
@@ -7252,6 +7200,7 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
+        electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -7267,13 +7216,16 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         child_support_paid_legally_obligated: 150
-        electronic_data_source_household_income_pct_fpl: 0
         dependent_care_expense: 200
         medical_expenses_out_of_pocket: 0
         shelter_cost_monthly: 0
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        is_tax_filer: false  # dual-entry 2.4: no income, so no return; the MAGI household is then known
+        expects_to_be_claimed_as_dependent: false
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -7310,7 +7262,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -7413,6 +7364,7 @@
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
+        electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -7533,6 +7485,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -7584,7 +7537,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: false
@@ -7690,6 +7642,7 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
+        electronic_data_source_monthly_gross_income: 1800  # dual-entry 2.4: the data source reports the attested 1,800 (the household ratio was stated 1.0)
         wages_gross: 1800
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -7704,7 +7657,6 @@
         other_unearned_income_nontaxable: 0
         other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
-        electronic_data_source_household_income_pct_fpl: 1.0
         magi_other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -7715,6 +7667,8 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
@@ -7767,7 +7721,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -7868,6 +7821,7 @@
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
+        electronic_data_source_monthly_gross_income: 0
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -7889,7 +7843,6 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        electronic_data_source_household_income_pct_fpl: 1.0
   expect:
     # SNAP: only the two immigration statuses are outstanding. The ten days from the request ran out on
     # 2026-10-11, but a non-citizen has to the thirtieth day after application (4.505.6.E, 273.2(f)(1)(ii)(C)),
@@ -8136,6 +8089,7 @@
     p1:
       relationships: []
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         va_disability_rating_type: none
@@ -8151,7 +8105,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
@@ -8195,6 +8148,7 @@
     p2:
       relationships: []
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         va_disability_rating_type: none
@@ -8210,7 +8164,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
@@ -8253,6 +8206,7 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
         va_disability_rating_type: none
@@ -8268,7 +8222,6 @@
         files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
@@ -8312,7 +8265,6 @@
       facts:
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         is_inmate_of_public_institution: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8401,6 +8353,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -8429,7 +8382,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -8491,6 +8443,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -8519,7 +8472,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -8582,6 +8534,7 @@
     p3:
       # Daughter, 8.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -8610,7 +8563,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -8727,11 +8679,11 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -8782,17 +8734,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -8843,17 +8794,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -8905,17 +8855,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -8966,7 +8915,6 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -9018,11 +8966,11 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9073,17 +9021,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9134,17 +9081,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9196,17 +9142,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9257,7 +9202,6 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -9316,11 +9260,11 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9372,17 +9316,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9432,7 +9375,6 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -9440,11 +9382,11 @@
         "2026-10": {"wages_gross": 5700}
     p3:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9496,17 +9438,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9558,7 +9499,6 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -9598,11 +9538,11 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9654,11 +9594,9 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
-        ma_household_has_employed_parent_caretaker: true
       months:
         "2026-04": {"ma_prior_enrollment_category": parent_caretaker}
         "2026-05": {"ma_prior_enrollment_category": parent_caretaker}
@@ -9668,11 +9606,11 @@
         "2026-09": {"ma_prior_enrollment_category": parent_caretaker}
     p2:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9723,17 +9661,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9783,7 +9720,6 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -9822,11 +9758,11 @@
   persons:
     p1:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9879,17 +9815,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -9942,17 +9877,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: true
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -10005,17 +9939,16 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
         is_pregnant: false
         expected_number_of_children: 0
-        has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
@@ -10064,7 +9997,6 @@
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
-        is_deceased: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -10096,6 +10028,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -10124,7 +10057,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -10186,6 +10118,7 @@
     p2:
       # Her son, 5.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -10214,7 +10147,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -10277,6 +10209,7 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -10305,7 +10238,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -10369,6 +10301,7 @@
     p4:
       # Her daughter, 11.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -10397,7 +10330,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -10462,6 +10394,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -10490,7 +10423,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -10552,6 +10484,7 @@
     p6:
       # Her son, 7.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -10580,7 +10513,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11080,6 +11012,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11108,7 +11041,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11171,6 +11103,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11199,7 +11132,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11290,6 +11222,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11318,7 +11251,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11402,6 +11334,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11430,7 +11363,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11526,6 +11458,7 @@
     p1:
       # 35, refuses to give an SSN, earns $1,200.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11554,7 +11487,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11617,6 +11549,7 @@
     p2:
       # Her son, 10.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11645,7 +11578,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11707,6 +11639,7 @@
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11735,7 +11668,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11833,6 +11765,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11861,7 +11794,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -11923,6 +11855,7 @@
     p2:
       # Her daughter.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -11951,7 +11884,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -12034,6 +11966,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -12062,7 +11995,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
@@ -12152,6 +12084,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -12180,7 +12113,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         is_blind: false
-        has_military_connection: false
         federal_five_year_bar_exempt_category: none
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false

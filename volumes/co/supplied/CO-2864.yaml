@@ -1,0 +1,12 @@
+id: CO-2864
+name: "CCCAP: care authorized part-time for this child"
+identifier: cccap_care_is_part_time
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "Whether this child is authorized for part-time care: an average of fewer than thirteen full-time-equivalent units of care a month, including a child in grades one through twelve authorized for part-time care during the school year (8 CCR 1403-1 3.124.U-W). A county authorization record."
+supplied_by: The county's child care authorization.
+sources: [S787]
+tags: [household]
+rationale: "Dual-entry audit 2.13: cccap_all_children_in_part_time_care (CO-1288) quantified over children a household-level statement; the per-child authorization is the fact, and the quantifier is derived."

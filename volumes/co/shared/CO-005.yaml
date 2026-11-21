@@ -1,0 +1,18 @@
+id: CO-005
+name: "Has a military connection"
+identifier: has_military_connection
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: The person is on active duty (other than training) in the U.S. Armed Forces, or is an honorably discharged veteran, or is the spouse, surviving spouse, or unmarried dependent child of such a person, within the military-connection category.
+precision: "An unmarried dependent child is read as an unmarried child of the veteran (the dependency the statute names, a child the veteran supports, is not separately stated). The spouse is the legal spouse."
+derived: [any, has_qualifying_military_service, [otherwise, [exists_related, [spouse], [of, [P], has_qualifying_military_service]], false], [otherwise, is_surviving_spouse_of_veteran, false], [all, [not, is_married], [otherwise, [exists_related, [child], [of, [P], has_qualifying_military_service]], false]]]
+sources: [S16, S1150]
+implemented: engine
+tags: [immigration]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is exempt from the non-citizen waiting period. Vocabulary fix round (C-1): renamed from is_veteran_or_active_duty, whose name hid the spouse, surviving spouse and dependent child; read by SNAP (CO-306), Medicaid (CO-1172) and the shared 8 U.S.C. 1613(b) exemption (CO-1725). Dual-entry audit 1.11: derived from the person's own service (CO-2866), a spouse's or parent's service read across the edges, and surviving-spouse status (CO-2867)."
+tests:
+  - {id: CO-005-T1, title: "Veteran's wife", as_of: "2026-11-01", given: {has_qualifying_military_service: false}, others: {p2: {has_qualifying_military_service: true}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-005-T2, title: "Unmarried daughter of a veteran", as_of: "2026-11-01", given: {has_qualifying_military_service: false, is_married: false}, others: {p2: {has_qualifying_military_service: true}}, relationships: [[child, p2]], expect: true}
+  - {id: CO-005-T3, title: "No connection", as_of: "2026-11-01", given: {has_qualifying_military_service: false, is_married: false}, relationships: [], expect: false}

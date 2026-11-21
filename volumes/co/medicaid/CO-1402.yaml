@@ -6,15 +6,15 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the attested household income is reasonably compatible with the electronic data source's: both at or below the applicable income standard, both above it, or the attested figure at or below the standard and the data figure no more than 20% above the attested figure."
-derived: [any, [all, ["<=", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], ["<=", electronic_data_source_household_income_pct_fpl, ma_magi_highest_income_standard_pct]], [all, [">", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], [">", electronic_data_source_household_income_pct_fpl, ma_magi_highest_income_standard_pct]], [all, ["<=", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], ["<=", electronic_data_source_household_income_pct_fpl, ["*", ma_magi_household_income_pct_fpl, ["+", 1, ma_reasonable_compatibility_threshold_pct]]]]]
+derived: [any, [all, ["<=", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], ["<=", ma_electronic_data_source_household_income_pct_fpl, ma_magi_highest_income_standard_pct]], [all, [">", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], [">", ma_electronic_data_source_household_income_pct_fpl, ma_magi_highest_income_standard_pct]], [all, ["<=", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], ["<=", ma_electronic_data_source_household_income_pct_fpl, ["*", ma_magi_household_income_pct_fpl, ["+", 1, ma_reasonable_compatibility_threshold_pct]]]]]
 sources: [S838, S864, S867]
 implemented: engine
 tags: [verification, ma, income, magi]
 open: [OQ-302]
 rationale: No existing item compares attested and electronic income; 42 CFR 435.952(c)(1) (S838) and 8.100.4.C.2.a (S864) make the comparison the trigger for documentation.
 tests:
-  - {id: CO-1402-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1, electronic_data_source_household_income_pct_fpl: 1.1, ma_magi_highest_income_standard_pct: 1.38}, expect: true}
-  - {id: CO-1402-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.5, electronic_data_source_household_income_pct_fpl: 1.6, ma_magi_highest_income_standard_pct: 1.38}, expect: true}
-  - {id: CO-1402-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.3, electronic_data_source_household_income_pct_fpl: 1.5, ma_magi_highest_income_standard_pct: 1.38}, expect: true}
-  - {id: CO-1402-T4, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1, electronic_data_source_household_income_pct_fpl: 1.5, ma_magi_highest_income_standard_pct: 1.38}, expect: false}
-  - {id: CO-1402-T5, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.5, electronic_data_source_household_income_pct_fpl: 1.2, ma_magi_highest_income_standard_pct: 1.38}, expect: false}
+  - {id: CO-1402-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1, ma_electronic_data_source_household_income_pct_fpl: 1.1, ma_magi_highest_income_standard_pct: 1.38}, expect: true}
+  - {id: CO-1402-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.5, ma_electronic_data_source_household_income_pct_fpl: 1.6, ma_magi_highest_income_standard_pct: 1.38}, expect: true}
+  - {id: CO-1402-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.3, ma_electronic_data_source_household_income_pct_fpl: 1.5, ma_magi_highest_income_standard_pct: 1.38}, expect: true}
+  - {id: CO-1402-T4, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1, ma_electronic_data_source_household_income_pct_fpl: 1.5, ma_magi_highest_income_standard_pct: 1.38}, expect: false}
+  - {id: CO-1402-T5, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.5, ma_electronic_data_source_household_income_pct_fpl: 1.2, ma_magi_highest_income_standard_pct: 1.38}, expect: false}

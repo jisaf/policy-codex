@@ -1,0 +1,17 @@
+id: CO-1220
+name: Died while receiving Adult Financial or Medicaid assistance
+identifier: af_died_while_receiving_af_or_medicaid
+kind: derived
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: The person has died and, at the time of death, was receiving Old Age Pension, Aid to the Needy Disabled (AND-SO or AND-CS), Home Care Allowance, or Colorado Medicaid assistance, per 9 CCR 2503-5 3.570.43.A.1. False for a living person.
+precision: "Receipt at death is read from the month of death: a Medicaid enrollment (receives_medicaid) or an Adult Financial payment (adult_financial_cash_income, which includes the Home Care Allowance). A receipt not stated for that month is read as none."
+derived: [all, [not, [unknown, date_of_death]], [at, [any, [otherwise, receives_medicaid, false], [">", [otherwise, adult_financial_cash_income, 0], 0]], [month_of, date_of_death]]]
+sources: [S719]
+implemented: engine
+tags: [cash]
+rationale: "No existing fact records death or the programs a decedent was receiving; af_burial_eligible (CO-1231) needs it. Dual-entry audit 3.14: derived from the date of death and the Medicaid and Adult Financial receipt records of the month of death."
+tests:
+  - {id: CO-1220-T5, title: "On OAP in the month of death", as_of: "2026-12-01", given: {date_of_death: "2026-11-20", adult_financial_cash_income: 800, receives_medicaid: false}, expect: true}
+  - {id: CO-1220-T6, title: "Living", as_of: "2026-12-01", given: {}, expect: false}

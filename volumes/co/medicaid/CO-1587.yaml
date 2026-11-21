@@ -11,6 +11,7 @@ sources: [S844, S854]
 implemented: engine
 tags: [verification, ma]
 rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-324: cw_receives_title_iv_foster_adoption_kinship_payment (CO-841) also covers kinship payments the citizenship exemption does not name) needs it as a supplied fact. Same-word audit SW-8, dual-entry 3.21: derived from child_welfare_payment_type (CO-2847)."
+nearest: [CO-841, CO-2415]
 tests:
   - {id: CO-1587-T1, title: "IV-B services in foster care", as_of: "2026-11-01", given: {child_welfare_payment_type: title_iv_b_services_only}, expect: true}
   - {id: CO-1587-T2, title: "No child welfare involvement", as_of: "2026-11-01", given: {child_welfare_payment_type: none}, expect: false}

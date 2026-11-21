@@ -1,0 +1,17 @@
+id: CO-1288
+name: "CCCAP: all children in part-time care"
+identifier: cccap_all_children_in_part_time_care
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Every child in the CCCAP household is authorized for part-time care - an average of fewer than thirteen full-time-equivalent units of care a month, including a child in grades one through twelve authorized for part-time care during the school year - so the parent fee is 55% of the calculated fee, per 8 CCR 1403-1 3.124.U-W. Stated on the household's adult caretaker or teen parent.
+precision: "The children in care are the eligible children for whom care is requested (cccap_care_is_requested_for_child, read as requested when not stated, as the parent-fee formula reads it)."
+derived: [not, [exists, [filter, cccap_household_members, [all, [of, [P], cccap_is_eligible_child], [otherwise, [of, [P], cccap_care_is_requested_for_child], true]]], [not, [of, [P], cccap_care_is_part_time]]]]
+sources: [S787]
+implemented: engine
+tags: [income]
+rationale: "No existing fact states the authorized schedule; cccap_parent_fee (CO-1290) needs it. Dual-entry audit 2.13: derived over the children for whom care is requested (CO-2579) from each child's part-time authorization (CO-2864)."
+tests:
+  - {id: CO-1288-T1, title: "Both children part-time", as_of: "2026-11-01", given: {cccap_household_members: [p1, p2, p3], cccap_is_eligible_child: false}, others: {p2: {cccap_is_eligible_child: true, cccap_care_is_requested_for_child: true, cccap_care_is_part_time: true}, p3: {cccap_is_eligible_child: true, cccap_care_is_requested_for_child: true, cccap_care_is_part_time: true}}, expect: true}
+  - {id: CO-1288-T2, title: "One child full-time", as_of: "2026-11-01", given: {cccap_household_members: [p1, p2, p3], cccap_is_eligible_child: false}, others: {p2: {cccap_is_eligible_child: true, cccap_care_is_requested_for_child: true, cccap_care_is_part_time: true}, p3: {cccap_is_eligible_child: true, cccap_care_is_requested_for_child: true, cccap_care_is_part_time: false}}, expect: false}

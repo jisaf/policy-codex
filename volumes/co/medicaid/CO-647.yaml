@@ -5,12 +5,12 @@ kind: derived
 type: money
 scope: person
 program: Medicaid
-meaning: The countable resources attributed to the institutionalized spouse for their own eligibility - ssi_countable_resources_couple minus the CSRA, for a person with a community spouse, or their own ssi_countable_resources_individual otherwise - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1.
-derived: [case, [ma_ltc_couple, ["max", 0, ["-", ssi_countable_resources_couple, ma_csra]]], [else, ssi_countable_resources_individual]]
+meaning: The countable resources attributed to the institutionalized spouse for their own eligibility - ssi_countable_resources_of_couple minus the CSRA, for a person with a community spouse, or their own ssi_countable_resources_individual otherwise - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1.
+derived: [case, [ma_ltc_couple, ["max", 0, ["-", ssi_countable_resources_of_couple, ma_csra]]], [else, ssi_countable_resources_individual]]
 sources: [S357, S373]
 implemented: engine
 tags: [ma, ltc, resources]
-rationale: "No existing item combines the CSRA subtraction with the non-couple fallback to ssi_countable_resources_individual. ma_meets_ltc_resource_standard (CO-648) needs it. The target household's p1 (46000 - CSRA) is the worked example in the batch report."
+rationale: "No existing item combines the CSRA subtraction with the non-couple fallback to ssi_countable_resources_individual. ma_meets_ltc_resource_standard (CO-648) needs it. The target household's p1 (46000 - CSRA) is the worked example in the batch report. Dual-entry audit 2.6: reads the couple's resources through ssi_countable_resources_of_couple (CO-2861), so the figure is stated on one spouse."
 tests:
-  - {id: CO-647-T1, as_of: "2026-10-01", given: {ma_ltc_couple: true, ssi_countable_resources_couple: 46000, ma_csra: 30000, ssi_countable_resources_individual: 1900}, expect: 16000}
-  - {id: CO-647-T2, as_of: "2026-10-01", given: {ma_ltc_couple: false, ssi_countable_resources_couple: 0, ma_csra: 0, ssi_countable_resources_individual: 1900}, expect: 1900}
+  - {id: CO-647-T1, as_of: "2026-10-01", given: {ma_ltc_couple: true, ssi_countable_resources_of_couple: 46000, ma_csra: 30000, ssi_countable_resources_individual: 1900}, expect: 16000}
+  - {id: CO-647-T2, as_of: "2026-10-01", given: {ma_ltc_couple: false, ssi_countable_resources_of_couple: 0, ma_csra: 0, ssi_countable_resources_individual: 1900}, expect: 1900}

@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person
 program: All
-meaning: The combined countable resources of this person and a spouse living together as of the current month, after the 20 CFR 416.1210 and 8.100.5.M.2 exclusions - the figure 8.100.5.M.1's $3,000 couple resource limit, and § 8.100.7.O.1's ongoing CSRA-plus-$2,000 test, are compared against.
+meaning: The combined countable resources of this person and a spouse living together as of the current month, after the 20 CFR 416.1210 and 8.100.5.M.2 exclusions - the figure 8.100.5.M.1's $3,000 couple resource limit, and § 8.100.7.O.1's ongoing CSRA-plus-$2,000 test, are compared against. Stated once, on one spouse; readers take it through ssi_countable_resources_of_couple (CO-2861). Not stated for an unmarried person.
 supplied_by: County eligibility worker's resource determination (CBMS resource screen), from verified account statements and property records for both spouses, redetermined each review.
 sources: [S301]
 tags: [non_magi, resources]
