@@ -57,6 +57,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "years_between": return `the number of whole years between ${i(e[1])} and ${i(e[2])}`;
     case "first_day": return `the first day of ${i(e[1])}`;
     case "month_of": return `the month containing ${i(e[1])}`;
+    case "month_of_year": return `the calendar month number of ${i(e[1])}`;
     case "month_before": return `the month before ${i(e[1])}`;
     case "month_after": return `the month after ${i(e[1])}`;
     case "months_after": return `${i(e[1])} months after ${i(e[2])}`;

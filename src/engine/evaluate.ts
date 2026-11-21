@@ -646,6 +646,7 @@ export function evaluate(
       }
       case "first_day": { const mm = g(e[1]); return mm === null ? null : mm + "-01"; }
       case "month_of": { const d = g(e[1]); return d === null ? null : d.slice(0, 7); }
+      case "month_of_year": { const mm = g(e[1]); return mm === null ? null : Number(String(mm).slice(5, 7)); }
       case "month_before": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, -1); }
       case "month_after": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, 1); }
       case "months_after": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, n); }

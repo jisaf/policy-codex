@@ -181,6 +181,10 @@ Added for the HCPF stakeholder fix round (Buy-In premiums re-based each state fi
 
 - P48 `[table keyed by income band], for the band containing [number]` (`band`) the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number; unknown when either input is unknown or the number is above the last bound. A premium schedule stated by income band (10 CCR 2505-10 § 8.100.6.P.1.f.iii, Q.1.g.iv) is then a dated parameter rather than literals in a `case`
 
+Added for the engineering item follow-up pass (a calendar month without a fixed anchor)
+
+- P49 `the calendar month number of [month]` (`month_of_year`) the number of the month in its year, 1 (January) to 12 (December); unknown when the month is unknown. A rule anchored to a month of each year (the LEAP program year from November, 9 CCR 2503-7 3.751.1; the compulsory attendance age on August 1, C.R.S. 22-33-104(1)(a)) finds the most recent such month as this month less the months since that calendar month, instead of counting whole years from a fixed anchor month
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

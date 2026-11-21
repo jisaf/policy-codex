@@ -6,8 +6,8 @@ type: month
 scope: person-month
 program: LEAP
 meaning: The November that begins the LEAP "Program Year" containing this month, under 9 CCR 2503-7 3.751.1 - the most recent November 1st on or before this month.
-precision: "Computed from a fixed November anchor (2000-11) advanced by whole multiples of twelve months, since this volume's pattern catalog has no operator that reads a month-of-year number directly out of a \"YYYY-MM\" value; leap_eligibility_period_start_month (CO-1806) and leap_eligibility_period_end_month (CO-1807) state the November/April figures this computation implements, but the anchor month itself is a fixed constant rather than built from those parameters (see OQ-132's note on this batch's engine constraints). Modeled at scope person-month rather than the conventions.md-listed month scope, because src/engine/evaluate.ts's \"value\" function reads a month-scope identifier only from the case's stated monthFacts/monthFactsDefault (never evaluating a derived expression at that scope) - a codex-only fix round cannot change that. The value does not in fact depend on the person; every person in a case gets the same answer for the same month."
-derived: [months_after, ["*", [years_between, "2000-11-01", [first_day, [month]]], 12], "2000-11"]
+precision: "The most recent month, on or before this month, whose calendar month number (P49) is leap_eligibility_period_start_month (CO-1806, November): this month less the months since that calendar month (engineering follow-up 3; before it, the item counted whole years from a fixed 2000-11 anchor because no operator read a month's calendar number). Modeled at scope person-month rather than the conventions.md-listed month scope, because src/engine/evaluate.ts's \"value\" function reads a month-scope identifier only from the case's stated monthFacts/monthFactsDefault (never evaluating a derived expression at that scope). The value does not in fact depend on the person; every person in a case gets the same answer for the same month."
+derived: [months_before, [case, [[">=", [month_of_year, [month]], leap_eligibility_period_start_month], ["-", [month_of_year, [month]], leap_eligibility_period_start_month]], [else, ["+", ["-", [month_of_year, [month]], leap_eligibility_period_start_month], 12]]], [month]]
 sources: [S510]
 implemented: engine
 tags: [household]
@@ -17,3 +17,4 @@ tests:
   - {id: CO-1006-T2, as_of: "2026-11-01", month: "2026-11", given: {}, expect: "2026-11"}
   - {id: CO-1006-T3, as_of: "2026-12-01", month: "2026-12", given: {}, expect: "2026-11"}
   - {id: CO-1006-T4, as_of: "2027-04-01", month: "2027-04", given: {}, expect: "2026-11"}
+  - {id: CO-1006-T5, title: "January: the November of the year before", as_of: "2027-01-15", month: "2027-01", given: {}, expect: "2026-11"}

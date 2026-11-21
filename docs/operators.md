@@ -235,6 +235,7 @@ members' groups need not be equal.
 | `at` | expression, month | the expression evaluated with **the month** = the given month; this person, that person and the determination date are unchanged (parameter versions and effective ranges are still chosen by the determination date) | unknown if the month is unknown |
 | `first_day` | month | its first day | unknown in, unknown out |
 | `month_of` | date | the month containing it | unknown in, unknown out |
+| `month_of_year` | month | its calendar month number, 1 (January) to 12 (December) | unknown in, unknown out |
 | `month_before`, `month_after` | month | the month before or after | unknown in, unknown out |
 | `months_before`, `months_after` | n, month | the month n months before or after | unknown if either is |
 | `months_ending` | n, month | the n consecutive months ending with the month, ascending (`[]` for n ≤ 0) | unknown if either is |
