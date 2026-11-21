@@ -922,3 +922,7 @@ Body: af_countable_resources (CO-947) reads ssi_countable_resources_individual a
 
 Body: is_colorado_resident (CO-505) compares the stated state of residence with Colorado. Not modeled: Medicaid's 42 CFR 435.403(e)-(j) rules for institutionalized persons who cannot state intent, temporary absences and children placed out of state (when modeled they become ma_meets_residency over CO-505); CCCAP's county residence (cccap_requires_verification_of_residency, CO-1440, speaks of 'a verified resident of the county'; no county_of_residence fact exists); and a SNAP residency condition under 7 CFR 273.3, which no SNAP item states, so SNAP eligibility does not read residence at all. Items: CO-505, CO-1440, CO-987.
 
+
+### OQ-394. CCCAP child citizenship: does "legal resident" include a lawfully present non-qualified non-citizen?
+
+Body: 8 CCR 1403-1 3.111.F.1 (S514) requires a child to verify that the child is "a citizen/legal resident". cccap_child_meets_citizenship_requirement (CO-998) reads that as a U.S. citizen or national, a qualified non-citizen, or another lawfully present non-citizen (citizenship_status other_lawfully_present_non_citizen, for example Temporary Protected Status), which keeps the reach the item had when it read Medicaid's lawful_presence_status. A narrower reading (lawful permanent residents and other qualified non-citizens only) would exclude a child with Temporary Protected Status. Items: CO-998.

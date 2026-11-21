@@ -3,12 +3,12 @@ name: Citizenship status
 identifier: citizenship_status
 kind: supplied
 type: one of
-options: [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen, undocumented, other_non_qualified_non_citizen]
+options: [citizen, us_national, lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen, undocumented, other_lawfully_present_non_citizen]
 scope: person
 program: All
-meaning: The person's citizenship or immigration status category, as those categories are used to determine SNAP eligibility.
+meaning: "The person's citizenship or immigration category as verified or declared. It states the category only; each program decides which categories it accepts. other_lawfully_present_non_citizen is a non-citizen lawfully present in the United States who is not a qualified non-citizen (for example Temporary Protected Status); undocumented is a non-citizen with no lawful status."
 precision: Reflects the person's status as of the determination date; a status change is a new fact, not a correction of this one.
 supplied_by: SAVE (Systematic Alien Verification for Entitlements), immigration documents, or applicant statement.
 sources: []
 tags: [immigration]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an eligible non-citizen, SNAP: meets the citizenship requirement."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an eligible non-citizen, SNAP: meets the citizenship requirement. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1, R-10): the meaning no longer ties the categories to SNAP, and the option other_non_qualified_non_citizen is renamed other_lawfully_present_non_citizen, which is how every reader used it (claims_lawful_immigration_status, CO-1359, counts it as a lawful status). The withholding-of-deportation and Amerasian categories are federal_five_year_bar_exempt_category (CO-1724)."

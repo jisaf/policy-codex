@@ -198,6 +198,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -454,6 +455,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -692,6 +694,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -913,6 +916,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -1139,6 +1143,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -2230,6 +2235,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -2483,6 +2489,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -2720,6 +2727,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -2938,6 +2946,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -3162,6 +3171,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -4062,6 +4072,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -4141,6 +4152,7 @@
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
@@ -5296,6 +5308,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hours_worked: 60
+        cw_work_activity_hours: 60
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
@@ -5357,6 +5370,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hours_worked: 0
+        cw_work_activity_hours: 0
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
@@ -5417,6 +5431,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hours_worked: 0
+        cw_work_activity_hours: 0
         work_program_hours: 0
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
@@ -5475,6 +5490,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hours_worked: 0
+        cw_work_activity_hours: 0
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
@@ -5535,6 +5551,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hours_worked: 0
+        cw_work_activity_hours: 0
         work_program_hours: 0
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
@@ -6623,6 +6640,7 @@
         is_destitute_migrant_or_seasonal_farmworker: false
         is_in_job_search_activity: true
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_financially_contributing_to_child: true
         has_additional_care_needs: false
@@ -7041,6 +7059,7 @@
         is_destitute_migrant_or_seasonal_farmworker: false
         is_in_job_search_activity: false
         has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
         is_financially_contributing_to_child: true
         has_additional_care_needs: false
