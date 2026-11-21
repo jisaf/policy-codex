@@ -1,0 +1,12 @@
+id: CO-3154
+name: "Medicaid: declares being a parent or caretaker relative of a dependent child"
+identifier: ma_declares_parent_or_caretaker_of_dependent_child
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the applicant declares on the hospital presumptive eligibility application that they are a parent or caretaker relative, or a legally appointed guardian or conservator, of a dependent child (10 CCR 2505-10 § 8.100.3.R.1.c, R.2.e)."
+supplied_by: The hospital presumptive eligibility site's application.
+sources: [S1721, S1722]
+tags: [ma, household]
+rationale: "Heavier-definitions audit H-10 (audit fix round 4): the parent and caretaker group of ma_hospital_presumptive_eligibility_category (CO-2439) read ma_is_dependent_child over relationship edges, so the site had to enter each child with a date of birth and school facts; the group is defined by the applicant's declarations, as the employment and disability declarations beside it are (ma_declares_current_employment, CO-2433; claims_disability). The declaration also carries R.2.e's guardian and conservator, which no relationship role states."

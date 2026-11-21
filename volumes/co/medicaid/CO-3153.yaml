@@ -1,0 +1,17 @@
+id: CO-3153
+name: "Medicaid: declared own income as a percentage of the poverty guideline"
+identifier: ma_declared_own_income_pct_fpl
+kind: derived
+type: rate
+scope: person
+program: Medicaid
+meaning: "The applicant's declared own income (declared_own_income_monthly, CO-2434) as a decimal fraction of the monthly poverty guideline for the applicant alone, the figure the employed-disabled hospital presumptive eligibility group compares with ma_wawd_income_limit_pct (10 CCR 2505-10 § 8.100.3.R.2.f: \"Only the applicant's income will be considered\")."
+precision: "The guideline is for ma_wawd_household_size (CO-3030), the household of one the Working Adults with Disabilities Buy-In measures the applicant's income against for the same words in § 8.100.6.P.1.b; R.2.f is that program's presumptive group (the same 450% limit). Not rounded."
+derived: ["/", declared_own_income_monthly, ["/", [lookup_extended, federal_poverty_guideline_annual_table, ma_wawd_household_size, federal_poverty_guideline_annual_each_additional], 12]]
+sources: [S1722, S55]
+implemented: engine
+tags: [ma, income, disability]
+nearest: [CO-3152]
+rationale: "Heavier-definitions audit H-9 (audit fix round 4): the own-income ratio was a supplied rate (CO-2434) the site computed; it is derived from the declared amount."
+tests:
+  - {id: CO-3153-T1, as_of: "2026-11-01", title: "Declared own income $3,990: 3,990 / (15,960 / 12) = 3", given: {declared_own_income_monthly: 3990}, expect: 3}

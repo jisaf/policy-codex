@@ -1,13 +1,14 @@
 id: CO-092
-name: Attested household income as a percentage of the poverty guideline
-identifier: attested_household_income_pct_fpl
+name: Declared household income
+identifier: declared_household_income_monthly
 kind: supplied
-type: rate
+type: money
 scope: person
 program: All
-meaning: The household income the applicant declares or attests to, at a presumptive eligibility site, expressed as a decimal fraction of the federal poverty guideline for the household's size (1.00 = 100%), used only for the presumptive-eligibility determination of 10 CCR 2505-3-170.1.A-B.
-precision: A self-declared or attested figure taken at face value for the immediate, temporary presumptive-eligibility determination; it is not verified and is distinct from ma_magi_household_income_pct_fpl (CO-504), which the full eligibility determination computes from verified income facts.
-supplied_by: Applicant declaration or attestation at a certified presumptive eligibility site, per 10 CCR 2505-3-170.1.A-B.
-sources: [S246]
+meaning: "The household's monthly income as the applicant declares it on the application a declaration-based determination is made from: a presumptive eligibility site's or a qualified hospital presumptive eligibility site's application (10 CCR 2505-10 § 8.100.4.F.2, § 8.100.3.R.2; 10 CCR 2505-3 § 170.1.A-B, \"declared household income\"), or the Express Lane source program's application, the Free/Reduced Lunch, Food Assistance or Colorado Works application (§ 8.100.4.J.1.a.v, J.2.a.v, \"income declared on the ... application\"). It is the declaration itself, not this volume's MAGI household income (ma_magi_household_income), which the full determination computes from the income facts."
+precision: "A monthly amount as declared, taken at face value; the household is the household the applicant declares (declared_household_size, CO-3150). Its ratio to the poverty guideline is declared_household_income_pct_fpl (CO-3151)."
+supplied_by: The applicant's declaration on the presumptive eligibility application, or on the Express Lane source application as forwarded.
+sources: [S246, S1501, S1722, S1723, S1745]
 tags: [chp, magi, income]
-rationale: "No existing item carries a declared/attested income percentage. chp_presumptive_eligibility (CO-708) needs this fact rather than ma_magi_household_income_pct_fpl (CO-504) because 10 CCR 2505-3-170.1.A-B keys presumptive eligibility on the applicant's own declared or attested household income at the presumptive eligibility site, before the verified MAGI computation the full determination performs. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-16): program All, since two Medicaid presumptive eligibility rules read it besides CHP+."
+nearest: [CO-2434]
+rationale: "No existing item carries a declared/attested income. chp_presumptive_eligibility (CO-708) needs this fact rather than ma_magi_household_income_pct_fpl (CO-504) because 10 CCR 2505-3-170.1.A-B keys presumptive eligibility on the applicant's own declared household income at the presumptive eligibility site, before the verified MAGI computation the full determination performs. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-16): program All, since two Medicaid presumptive eligibility rules read it besides CHP+. Heavier-definitions audit H-7 and H-9 (audit fix round 4; OQ-54, the product owner's decision that presumptive eligibility reads an attested income separate from the computed MAGI income): renamed from attested_household_income_pct_fpl through a change set that keeps the ID and restated as the declared amount rather than a ratio the site had to compute for the household's size; the ratio is derived (CO-3151) and the limited family planning group's size of the applicant counted as two (CO-3152) is derived from the same declaration. Widened to the Express Lane source application, which § 8.100.4.J.1.a.v and J.2.a.v make the income basis."
