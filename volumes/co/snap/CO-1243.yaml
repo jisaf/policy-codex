@@ -1,0 +1,19 @@
+id: CO-1243
+name: "SNAP: entitled to the heating and cooling utility allowance"
+identifier: snap_entitled_to_heating_cooling_allowance
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: Whether the person's SNAP household is entitled to the Heating and Cooling Utility Allowance - it incurs or anticipates heating or cooling costs separate from rent or mortgage, or it received LEAP or E-EBT within the previous twelve months and contains an elderly or disabled member - per 10 CCR 2506-1 4.407.31.A.1 and Pub. L. 119-21 sec. 10103.
+precision: "10 CCR 2506-1 4.407.31.A.1.b as of 2026-10-01 (S743) still grants the HCUA on prior LEAP or E-EBT receipt alone; Pub. L. 119-21 sec. 10103 (S136) limits the energy-assistance route to households with an elderly or disabled member. This item follows the amended statute, as the volume does wherever the rule manual has not caught up (OQ-1, OQ-32); see OQ-251."
+derived: [any, incurs_heating_cooling_cost, [all, received_energy_assistance_within_twelve_months, snap_household_has_elderly_or_disabled_member]]
+sources: [S136, S743]
+open: [OQ-251]
+implemented: engine
+tags: [income, snap]
+rationale: No existing item decides SUA entitlement (OQ-36); utility_allowance_amount (CO-036) needs the HCUA test as its first tier.
+tests:
+  - {id: CO-1243-T1, as_of: "2026-10-01", given: {incurs_heating_cooling_cost: true, received_energy_assistance_within_twelve_months: false, snap_household_has_elderly_or_disabled_member: false}, expect: true}
+  - {id: CO-1243-T2, title: "LEAP within 12 months, no elderly or disabled member - not entitled under sec. 10103", as_of: "2026-10-01", given: {incurs_heating_cooling_cost: false, received_energy_assistance_within_twelve_months: true, snap_household_has_elderly_or_disabled_member: false}, expect: false}
+  - {id: CO-1243-T3, as_of: "2026-10-01", given: {incurs_heating_cooling_cost: false, received_energy_assistance_within_twelve_months: true, snap_household_has_elderly_or_disabled_member: true}, expect: true}

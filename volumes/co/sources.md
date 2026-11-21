@@ -3318,3 +3318,651 @@ Document: D-80
 
 > 1. If the combined charges from the provider(s) exceed two thousand five
 > hundred dollars ($2,500), no burial grant payment shall be paid.
+
+### S730. FY 2027 maximum monthly allotments (48 States and DC column)
+
+Document: D-83
+
+FNS, SNAP FY 2027 Maximum Allotments and Deductions, Table 1 (effective October 1, 2026 through September 30, 2027). https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27maximumAllotments-deductions.pdf
+
+> Year (FY) 2027 Maximum Allotments and Deductions
+> The following tables provide the monthly maximum allotment and allowable deductions
+> for FY 2027 (effective October 1, 2026, through September 30, 2027).
+>
+> Maximum Allotments
+>                              Table 1: Maximum Monthly Allotment
+>               48 States &
+>  Household                     Alaska       Alaska       Alaska                                  Virgin
+>                District of                                             Guam         Hawaii
+>    Size                       (Urban)      (Rural 1)    (Rural 2)                               Islands
+>                Columbia
+>      1           $306           $392         $499         $608          $452         $496        $394
+>      2           $562           $718         $916        $1,115         $829         $910        $723
+>      3           $808          $1,032       $1,316       $1,602        $1,191       $1,307       $1,039
+>      4          $1,023         $1,306       $1,666       $2,027        $1,507       $1,655       $1,315
+>      5          $1,217         $1,555       $1,982       $2,413        $1,794       $1,969       $1,565
+>      6          $1,463         $1,868       $2,382       $2,900        $2,156       $2,367       $1,880
+>      7          $1,616         $2,064       $2,632       $3,204        $2,382       $2,615       $2,078
+>      8          $1,841         $2,352       $2,999       $3,650        $2,714       $2,979       $2,367
+>                $225 per       $287 per $366 per $446 per $331 per $364 per $289 per
+>    9-17        additional     additional additional additional additional additional additional
+>                 person         person     person     person     person     person     person
+>     18+         $3,887         $4,965       $6,331       $7,705        $5,729       $6,289       $4,997
+
+### S731. FY 2027 standard deductions
+
+Document: D-83
+
+FNS, SNAP FY 2027 Maximum Allotments and Deductions, Table 2. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27maximumAllotments-deductions.pdf
+
+>                                      Table 2: Standard Deductions
+>                   48 States &
+>    Household                                                                                  Virgin
+>                    District of          Alaska           Guam              Hawaii
+>      Size                                                                                    Islands
+>                    Columbia
+>           1           $217              $371              $435              $306              $191
+>           2           $217              $371              $435              $306              $191
+>           3           $217              $371              $435              $306              $191
+>           4           $229              $371              $457              $306              $229
+>
+>                 Food and Nutrition Administration, 1400 Jefferson Dr, Washington, DC 20250
+>                        USDA is an equal opportunity provider, employer, and lender.
+>                                                                               Page 2 of 2
+>
+>                48 States &
+> Household                                                                     Virgin
+>                 District of       Alaska         Guam             Hawaii
+>   Size                                                                       Islands
+>                 Columbia
+>     5             $268             $371             $536          $309        $268
+>    6+             $308             $385             $614          $354        $308
+
+### S732. FY 2027 excess shelter deduction cap, homeless shelter deduction and asset limits
+
+Document: D-83
+
+FNS, SNAP FY 2027 Maximum Allotments and Deductions, Tables 3-4 and the asset-limit table. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27maximumAllotments-deductions.pdf
+
+>                   Table 3: Maximum Excess Shelter Deductions
+>    48 States &
+>                                                                             Virgin
+>     District of           Alaska            Guam            Hawaii
+>                                                                            Islands
+>     Columbia
+>         $769              $1,229             $903           $1,306          $606
+>
+>                       Table 4: Homeless Shelter Deduction
+>   48 States &
+>                                                                             Virgin
+>    District of           Alaska            Guam            Hawaii
+>                                                                            Islands
+>    Columbia
+>    $205.66             $205.66             $205.66         $205.66         $205.66
+>
+>                           Table 2: Maximum Asset Limits
+>                       Household with at
+>                                                       All other
+>                        least 1 member
+>                                                      households
+>                      age 60+ or disabled
+>                               $4,750                   $3,000
+
+### S733. FY 2027 minimum monthly allotment
+
+Document: D-83
+
+FNS, SNAP FY 2027 Minimum Allotments, Table 1. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27MinimumAllotments.pdf
+
+> Year (FY) 2027 Minimum Allotments
+> The following table provides the monthly minimum allotment for FY 2027 (effective
+> October 1, 2026, through September 30, 2027).
+>
+> Minimum Allotments
+>                          Table 1: Minimum Monthly Allotment
+>               48 States &
+>  Household                  Alaska  Alaska    Alaska                                          Virgin
+>                District of                                              Guam        Hawaii
+>    Size                    (Urban) (Rural 1) (Rural 2)                                       Islands
+>                Columbia
+>      1-2          $25            $31           $40           $49          $36         $40     $32
+
+### S734. FY 2027 net monthly income limits (100% of poverty)
+
+Document: D-84
+
+FNS, SNAP FY 2027 Income Eligibility Standards, Table 1. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27-incomeEligibilityStandards.pdf
+
+> Year (FY) 2027 Income Eligibility Standards
+> The following tables provide the monthly income eligibility standards for FY 2027
+> (effective October 1, 2026, through September 30, 2027).
+>
+>          Table 1: Net Monthly Income Limit (100% of Federal Poverty Level)
+>
+>                                           48 States,
+>          Household Size             District of Columbia,            Alaska                 Hawaii
+>                                     Guam, Virgin Islands
+>                 1                           $1,330                   $1,663                 $1,530
+>                 2                           $1,804                   $2,255                 $2,075
+>                 3                           $2,277                   $2,846                 $2,619
+>                 4                           $2,750                   $3,438                 $3,163
+>                 5                           $3,224                   $4,030                 $3,707
+>                 6                           $3,697                   $4,621                 $4,251
+>                 7                           $4,170                   $5,213                 $4,795
+>                 8                           $4,644                   $5,805                 $5,340
+>     Each Additional Member                   $474                     $592                  $545
+
+### S735. FY 2027 gross monthly income limits (130% of poverty)
+
+Document: D-84
+
+FNS, SNAP FY 2027 Income Eligibility Standards, Table 2. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27-incomeEligibilityStandards.pdf
+
+>         Table 2: Gross Monthly Income Limit (130% of Federal Poverty Level)
+>
+>                                            48 States,
+>          Household Size              District of Columbia,             Alaska               Hawaii
+>                                      Guam, Virgin Islands
+>                 1                             $1,729                   $2,162               $1,989
+>                 2                             $2,345                   $2,931               $2,697
+>                 3                             $2,960                   $3,700               $3,404
+>                 4                             $3,575                   $4,469               $4,112
+>                 5                             $4,191                   $5,238               $4,819
+>                 6                             $4,806                   $6,008               $5,527
+>                 7                             $5,421                   $6,777               $6,234
+>                 8                             $6,037                   $7,546               $6,941
+>      Each Additional Member                    $616                     $770                 $708
+
+### S736. FY 2027 gross income limits where elderly/disabled members are a separate household (165%)
+
+Document: D-84
+
+FNS, SNAP FY 2027 Income Eligibility Standards, Table 3. https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy27-incomeEligibilityStandards.pdf
+
+> Table 3: Gross Monthly Income Limit Where Elderly/Disabled Members Are a
+>             Separate Household (165% of Federal Poverty Level)
+>
+>                               48 States,
+>    Household Size       District of Columbia,   Alaska        Hawaii
+>                         Guam, Virgin Islands
+>           1                    $2,195           $2,744        $2,525
+>           2                    $2,976           $3,720        $3,423
+>           3                    $3,757           $4,696        $4,321
+>           4                    $4,538           $5,672        $5,219
+>           5                    $5,319           $6,649        $6,116
+>           6                    $6,100           $7,625        $7,014
+>           7                    $6,881           $8,601        $7,912
+>           8                    $7,662           $9,577        $8,810
+>    Each Additional
+>                                $781             $977           $898
+
+### S737. Colorado benefit allotment formula: 30% of net income, rounded down after subtraction; zero-benefit denial except BCE/ECE
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.A-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.207.3 Benefit Allotment
+>
+> A. After eligibility has been established, the monthly SNAP benefit allotment will be
+> determined. The state automated system will compute the household’s allotment.
+> The following formula shall be used to determine a household’s benefit allotment.
+>
+> 1. Multiply the net monthly income by thirty percent (30%)
+>
+> 2. Subtract the result from the maximum benefit allowed for the appropriate
+> household size, as shown in D below.
+>
+> 3. Round the result down to the nearest dollar.
+>
+> B. If the calculation of benefits for an initial month yields an allotment of less than
+> the federal minimum allotment referenced in 4.207.3(D), no benefits shall be
+> issued to the household for the initial month.
+>
+> For eligible households that are entitled to no benefits in their initial month of
+> application, but are entitled to benefits in subsequent months, the local office
+> shall certify the household for a certification period beginning with the month of
+> application.
+>
+> Except for households that are eligible under BCE or ECE, households with three
+> or more members who are entitled to zero benefits shall have their SNAP
+> application denied. This provision does not apply if zero benefits are due to the
+> pro-ration requirements or due to the initial month's allotment being less than the
+> federal minimum allotment referenced in 4.207.3(D).
+>
+> C. Except for an initial month, if the allotment for a one- or two-person household is
+> less than the federal minimum allotment referenced in 4.207.3 D, round the
+> allotment up to the minimum benefit allowed for a one- or two-person household.
+
+### S738. Colorado maximum and minimum allotment tables effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. The SNAP maximum and minimum monthly benefit allotment tables will be
+> adjusted as announced by the USDA, FNA.
+>
+> Household Maximum Monthly Allotment Effective October 1, 2026
+> Size
+>
+> 1 $306
+>
+> 2 $562
+>
+> 3 $808
+>
+> 4 $1,023
+>
+> 5 $1,217
+>
+> 6 $1,463
+>
+> 7 $1,616
+>
+> 8 $1,841
+>
+> 9-17 $225 per additional person
+>
+> 18+ $3,887
+>
+> Household Size Minimum Monthly Allotment Effective October 1, 2026
+>
+> 1-2 $25
+
+### S739. Colorado gross income limits (130%, 200%, 165%) effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.401.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.401.1 Gross Income Limits
+>
+> Effective October 1, 2026, the gross income levels for one hundred thirty percent
+> (130%), two hundred percent (200%), and one hundred sixty-five percent (165%) of the
+> federal poverty level for the corresponding household size are as follows:
+>
+> Household 130% Gross Income 200% Gross Income 165% Gross Income
+> Size Level Level Level
+>
+> 1 $1,729 $2,660 $2,195
+>
+> 2 $2,345 $3,608 $2,976
+>
+> 3 $2,960 $4,554 $3,757
+>
+> 4 $3,575 $5,500 $4,538
+>
+> 5 $4,191 $6,448 $5,319
+>
+> 6 $4,806 $7,394 $6,100
+>
+> 7 $5,421 $8,340 $6,881
+>
+> 8 $6,037 $9,288 $7,662
+>
+> Each additional +$616 +$948 +$781
+> person
+
+### S740. Colorado net income level (100%) effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.401.2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.401.2 Net Income Levels
+>
+> Effective October 1, 2026, the net income level of one hundred percent (100%) of the
+> federal poverty level for the corresponding household size is as follows:
+>
+> Household Size 100% Net Income Level
+>
+> 1 $1,330
+>
+> 2 $1,804
+>
+> 3 $2,277
+>
+> 4 $2,750
+>
+> 5 $3,224
+>
+> 6 $3,697
+>
+> 7 $4,170
+
+### S741. Colorado standard deduction effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.407.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A standard deduction of 8.31% of the federal poverty income guidelines for the
+> household size as described in Section 4.401.2 will be used to calculate the amount that
+> is allowed to all households. The established standard amount will be adjusted annually
+> as announced by FNA, USDA. The calculation of 8.31% of the federal poverty income
+> guidelines for eligible members will be used for all households up to the household size
+> of six (6). All households with six (6) or more eligible members will use the six (6)
+> person standard deduction.
+>
+> Standard Deduction Amount
+>
+> Household Size 1-3 4 5 6+
+>
+> Effective October 1, 2026 $217 $229 $268 $308
+
+### S742. Colorado shelter deduction cap and homeless shelter deduction effective October 1, 2026
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.B-C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. A shelter deduction cap, as specified below, applies to households that do not
+> contain a person who is aged sixty (60) and older or a person with a disability as
+> defined in Section 4.000.1. Those households containing a person who is aged
+> sixty (60) and older and/or a person with a disability shall receive an excess
+> shelter deduction for the monthly cost of shelter that exceeds fifty percent (50%)
+> of the household's monthly income after all other applicable deductions.
+>
+> Shelter Deduction Cap
+>
+> Effective October 1, 2026 $769
+>
+> C. Households in which all individuals are experiencing homelessness and are not
+> receiving free shelter throughout the calendar month shall be entitled to use a
+> standard estimate of shelter expenses.
+>
+> The FNA, USDA, provides an update of this estimated figure annually when the
+> shelter cap for other households is adjusted. The Homeless Shelter Deduction is
+> as follows:
+>
+> Homeless Shelter Deduction
+>
+> Effective October 1, 2026 $205.66
+>
+> All households experiencing homelessness that incur, or reasonably expect to
+> incur, shelter costs during a month shall be eligible for the estimate, unless
+> higher shelter costs are verified, at which point the household may use actual
+> shelter costs rather than the estimate.
+>
+> Households experiencing homelessness that incur no shelter costs during the
+> month shall not be eligible for the homeless shelter deduction.
+
+### S743. Four-tiered mandatory standard utility allowance; Heating and Cooling Utility Allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31 (introduction) and A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.407.31 Four-Tiered Mandatory Standard Utility Allowance
+>
+> Effective October 1, 2008, a four-tiered mandatory standard utility allowance deduction
+> was implemented in determining a household’s excess shelter deduction. Households
+> cannot claim actual utility expenses and are only entitled to one (1) of the four (4) utility
+> allowances. The four (4) utility allowances shall be reviewed annually and adjusted each
+> year, based on federal approval, to reflect Colorado's cost of utilities. No utility expenses
+>
+> can be allowed as an income exclusion for self-employed households when a
+> mandatory utility allowance is given to the household.
+>
+> When determining expedited eligibility, the appropriate utility allowance shall be applied
+> when establishing the household’s shelter costs.
+>
+> The four (4) allowances are as follows:
+>
+> A. Heating and Cooling Utility Allowance (HCUA)
+>
+> 1. “Cooling costs” are defined as utility costs relating to the operation of air
+> conditioning systems, room air conditioners, swamp coolers, or
+> evaporative coolers. Fans are not an allowable cooling cost. A heating and
+> cooling utility allowance (HCUA) is available only to households that:
+>
+> a. Incur or anticipate heating or cooling costs separate and apart from
+> their rent or mortgage;
+>
+> b. Received a Low-Income Energy Assistance Program (LEAP) or an
+> Energy Electronic Benefit Transfer (E-EBT) payment within the
+> previous twelve (12) month period, regardless of whether the
+> individual is still residing at the address for which they received
+> the LEAP or E-EBT payment;
+>
+> c. Live in private rental housing and are billed by their landlords on the
+> basis of individual usage or charged a flat rate separately from
+> their rent for heating and cooling;
+>
+> d. Share a residence and incur at least a portion of the heating or
+> cooling cost, in which case each household will be entitled to the
+> full HCUA; or,
+>
+> e. Live in public housing and are responsible for excess heating
+> and/or cooling costs.
+>
+> 2. A SNAP household, which incurs or anticipates heating or cooling costs
+> on an irregular basis, may continue to receive the HCUA between billing
+> periods.
+>
+> 3. The operation of a space heater, electric blanket, heat lamp, cooking
+> stove, and similar appliances, as a supplemental heating source, are
+> allowable costs when determining eligibility for the basic utility allowance
+> (BUA), but do not qualify a household for the HCUA.
+>
+> 4. The HCUA standard is as follows:
+>
+> HCUA Standard
+>
+> Effective October 1, 2026 $616
+
+### S744. Basic Utility Allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Basic Utility Allowance (BUA)
+>
+> 1. The Basic Utility Allowance (BUA) is mandated for any households that
+> are not entitled to the HCUA and that incur at least two (2) non-heating or
+> non-cooling utility costs, such as electricity, water, sewer, trash, cooking
+> fuel, or telephone.
+>
+> 2. If more than one SNAP household shares in paying non-heating or non-
+> cooling utility costs of the dwelling, the full BUA will be allowed for each
+> SNAP household sharing in the utility costs.
+>
+> 3. The BUA standard is as follows:
+>
+> BUA Standard
+>
+> Effective October 1, 2026 $390
+
+### S745. One Utility Allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31.C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. One Utility Allowance (OUA)
+>
+> 1. The OUA is mandated for any household that is not entitled to the HCUA
+> or BUA but is responsible for only one (1) non-heating or one (1) non-
+> cooling utility expense. The OUA is not allowed if the household’s only
+> utility expense is a telephone.
+>
+> 2. If more than one (1) SNAP household shares in paying one (1) non-
+> heating or one (1) non-cooling utility cost of the dwelling, the full OUA will
+> be allowed for each SNAP household sharing in the utility cost.
+>
+> 3. The OUA standard is as follows:
+>
+> OUA Standard
+>
+> Effective October 1, 2026 $73
+
+### S746. Telephone allowance conditions and amount
+
+Document: D-82
+
+10 CCR 2506-1 4.407.31.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Telephone allowance
+>
+> 1. The telephone allowance is available to households whose only utility cost is for
+> a telephone. If more than one SNAP household shares in paying the telephone
+> costs, and that is the only utility cost of the dwelling, the full phone standard will
+> be allowed for each SNAP household sharing in the telephone costs.
+>
+> 2. The telephone allowance is as follows:
+>
+> Telephone Standard
+>
+> Effective October 1, 2026 $100
+
+### S747. FNS FY 2026 standard utility allowances, Colorado row
+
+Document: D-85
+
+FNS, SNAP FY 2026 Standard Utility Allowances (SUA) by State (effective October 1, 2025 - September 30, 2026). https://www.fns.usda.gov/sites/default/files/resource-files/2026-05-21-SUA-Table-FY26.xlsx
+
+> FNS, Supplemental Nutrition Assistance Program (SNAP) FY 2026 Standard Utility Allowances (SUA) by State (spreadsheet linked from https://www.fns.usda.gov/snap/eligibility/deduction/standard-utility-allowances). https://www.fns.usda.gov/sites/default/files/resource-files/2026-05-21-SUA-Table-FY26.xlsx
+>
+> Retrieved 2026-11-21 from the source above. The single worksheet ('SUA FY26') is rendered one spreadsheet row per line, cells separated by ' | ', empty rows dropped; values as stored. Excerpts in sources.md quote this file.
+>
+> ```
+> Supplemental Nutrition Assistance Program (SNAP) FY 2026 Standard Utility Allowances (SUA) by State |  |  |  |  |  |  |  |  | 
+> Effective October 1, 2025 - September 30, 2026 |  |  |  |  |  |  |  |  | 
+> State (with Region and Household Size) | Heating and Cooling Utility Allowance  (HCSUA) | Basic/ Limited Utility Allowance (BUA/LUA) | Electricity | Gas and Fuel | Water | Sewage | Trash | Phone | SMD Offset
+> Alabama | 637 | 466 | 0 | 0 | 0 | 0 | 0 | 53 | 4
+> Alaska - Central | 625 | 0 | 134 | 310 | 59 | 61 | 37 | 26 | 0
+> Alaska - Northern | 825 | 0 | 170 | 492 | 44 | 45 | 38 | 35 | 0
+> Alaska - Northwest | 1107 | 0 | 158 | 761 | 63 | 48 | 40 | 37 | 0
+> Alaska - Southcentral | 591 | 0 | 109 | 308 | 42 | 65 | 40 | 27 | 0
+> Alaska - Southeast | 517 | 0 | 72 | 244 | 49 | 81 | 34 | 36 | 0
+> Alaska - Southwest | 1064 | 0 | 169 | 676 | 111 | 54 | 17 | 36 | 0
+> Arizona - 1 to 3 members | 323 | 149 | 0 | 0 | 0 | 0 | 0 | 44 | 6
+> Arizona - 4 or more members | 438 | 201 | 0 | 0 | 0 | 0 | 0 | 44 | 6
+> Arkansas | 342 | 274 | 0 | 0 | 0 | 0 | 0 | 51 | 4
+> California | 663 | 170 | 0 | 0 | 0 | 0 | 0 | 20 | 4
+> Colorado | 594 | 377 | 71 | 71 | 71 | 71 | 71 | 97 | 7
+
+### S748. Colorado SNAP resource limits still stated as effective October 1, 2024
+
+Document: D-82
+
+10 CCR 2506-1 4.408.E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. The resource limits are as follows:
+>
+> Effective October 1, 2024, the resource limit for households that include a
+> member who is aged sixty (60) and older and/or a person with a disability is four
+>
+> thousand and five hundred dollars ($4,500). The resource limit for households
+> that do not include a member who is aged sixty (60) and older and/or a person
+> with a disability is three thousand dollars ($3,000).
+
+### S749. Colorado ABAWD definition as of October 1, 2026: under 18 and 55 or older excluded, and residing with a minor
+
+Document: D-82
+
+10 CCR 2506-1 4.311.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.311 ABAWD WORK REQUIREMENTS
+> ABAWDs must fulfill an ABAWD work requirement in addition to the general work
+> requirements. For the remainder of this section, client statement is considered
+> acceptable verification unless questionable. If verification is requested from the client,
+> case documentation must thoroughly explain why the original client statement was
+> considered questionable.
+>
+> A. The following individuals are not considered ABAWDs and are therefore not
+> subject to the ABAWD work requirement:
+>
+> 1. Aged seventeen (17) or younger.
+>
+> 2. Aged fifty-five (55) or older.
+>
+> 3. Determined to be medically certified as physically or mentally unfit for
+> employment. An individual is medically certified as physically or mentally
+> unfit for employment if they:
+>
+> A. Are receiving temporary or permanent disability benefits issued by
+> governmental or private sources;
+>
+> B. Are obviously mentally or physically unfit for employment as
+> determined by the local office; or
+>
+> C. Provide a statement from a physician, physician’s assistant, nurse,
+> nurse practitioner, designated representative of the physician’s
+> office, a licensed or certified psychologist, a social worker, or any
+> other qualified health professional as defined in 12-200-101
+> through 12-315-126, C.R.S., that the client is physically or
+> mentally unfit for employment.
+>
+> 4. Residing in the same physical household with an individual who is under
+> the age of eighteen (18). The minor individual does not have to be
+> included in the same SNAP household for this exclusion to apply.
+
+### S750. Colorado ABAWD exemptions as of October 1, 2026, including homelessness, veterans and former foster youth
+
+Document: D-82
+
+10 CCR 2506-1 4.311.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.311.1 ABAWD Exemptions
+>
+> Any individual who meets the definition of an ABAWD can be exempt from the ABAWD
+> work requirement by meeting one of the follow exemptions:
+>
+> A. Exempt from the general work requirements;
+>
+> B. Pregnancy;
+>
+> C. A person experiencing homelessness, as defined in Section 4.000.1;
+>
+> D. Veterans;
+>
+> E. Aged twenty-four (24) years and younger and in Foster Care on their eighteenth
+> (18th) birthday;
+>
+> F. Exempt under a waiver approved by the USDA, FNS; or
+>
+> G. Exempt using Colorado defined state exemptions as identified in the current
+> SNAP Employment and Training State Plan.
+
+### S751. Colorado still lists Compact of Free Association citizens among non-citizens ineligible for SNAP
+
+Document: D-82
+
+10 CCR 2506-1 4.305.1.H. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> H. Citizens of nations under Compact of Free Association agreements (Palau,
+> Micronesia, and the Marshall Islands) who have been admitted under those
+> agreements are not qualified non-citizens. These individuals may otherwise
+> reside, work, and study in the U.S.; and,
+
+### S752. Rule history: the October 1, 2026 emergency amendments cover definitions, the COLA tables and the utility allowances only
+
+Document: D-82
+
+10 CCR 2506-1, Editor's Notes (history). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> Rules 4.207.3, 4.401.1-2, 4.407.1, 4.407.3, 4.407.31 emer. rules eff. 10/03/2025.
+>
+> Rules 4.207.3 D, 4.401.1, 4.401.2, 4.407.1, 4.407.3, 4.404.31 eff. 12/30/2025.
+>
+> Rules 4.000.1, 4.207.3 D, 4.401.1, 4.401.2, 4.407.1, 4.407.3 B, 4.407.3 C, 4.407.31 A.4,
+> 4.407.31 B.3, 4.407.31 C.3, 4.407.31 D.2 emer. rules eff. 10/01/2026.
+
+### S753. Telephone and VOIP costs deductible; internet connectivity fees not deductible
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.E.5. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 5. A telephone allowance for one telephone or the cost of telephone service
+> that is associated with a specific device, which includes land-line service
+> or cellular service, including disposable cell phones, and voice over
+> internet protocol (VOIP). Households are not allowed to deduct the cost of
+> pay phones and of phone cards that are not associated with a specific
+> device. One-time deposits shall not be included as shelter costs. With
+> regard to VOIP, only the cost of VOIP is deductible; other charges such as
+> Internet connectivity fees and monthly cable/internet fees are not
+> deductible.

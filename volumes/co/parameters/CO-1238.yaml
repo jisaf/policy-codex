@@ -1,0 +1,21 @@
+id: CO-1238
+name: SNAP telephone allowance
+identifier: snap_sua_telephone
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: Colorado's telephone allowance, for a household whose only utility cost is a telephone, per 10 CCR 2506-1 4.407.31.D.
+versions:
+  - from: "2025-10-01"
+    to: "2026-10-01"
+    value: 97
+    source: S747
+  - from: "2026-10-01"
+    value: 100
+    source: S746
+sources: [S746, S747]
+implemented: engine
+tags: [income, snap, state_election]
+rationale: No existing parameter states it (OQ-36); utility_allowance_amount (CO-036) needs it. Same table as CO-1235, a different tier.
+nearest: [CO-1235]

@@ -105,7 +105,6 @@
         # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
         countable_liquid_resources: 46000
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -237,7 +236,11 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
+        # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 3
+        incurs_telephone_cost: true
         persons_cared_for: []
         is_head_of_household: true
         is_enrolled_higher_education_full_time: false
@@ -341,7 +344,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -437,7 +439,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: [p5]
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -534,7 +535,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -584,6 +584,10 @@
   # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
   # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
   # net rounded up (660) = 125.
+  # Phase 8 (FY2027 and the derived SUA): standard deduction 217 (S731/S741), so adjusted income 2391;
+  # p2 states heat plus three other utilities, so the HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016;
+  # excess shelter 2016 - 1195.50 = 820.50; net 1570.50, rounded to 1571; maximum allotment 808 (S730) less
+  # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
   # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
   # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
   # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
@@ -691,8 +695,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2965}
-      snap_household_net_income: {"2026-10": 2199}
-      snap_allotment: {"2026-10": 125}
+      snap_household_net_income: {"2026-10": 1571}
+      snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
@@ -728,8 +732,8 @@
       snap_meets_citizenship_requirement: false
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2965}
-      snap_household_net_income: {"2026-10": 2199}
-      snap_allotment: {"2026-10": 125}
+      snap_household_net_income: {"2026-10": 1571}
+      snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
@@ -766,8 +770,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2965}
-      snap_household_net_income: {"2026-10": 2199}
-      snap_allotment: {"2026-10": 125}
+      snap_household_net_income: {"2026-10": 1571}
+      snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
@@ -796,8 +800,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2965}
-      snap_household_net_income: {"2026-10": 2199}
-      snap_allotment: {"2026-10": 125}
+      snap_household_net_income: {"2026-10": 1571}
+      snap_allotment: {"2026-10": 336}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
@@ -901,7 +905,6 @@
         # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
         countable_liquid_resources: 46000
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -1029,7 +1032,11 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
+        # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 3
+        incurs_telephone_cost: true
         persons_cared_for: []
         is_head_of_household: true
         is_enrolled_higher_education_full_time: false
@@ -1131,7 +1138,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -1223,7 +1229,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: [p5]
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -1317,7 +1322,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         is_enrolled_higher_education_full_time: false
@@ -1359,6 +1363,10 @@
   # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
   # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
   # net rounded up (660) = 125.
+  # Phase 8 (FY2027 and the derived SUA): standard deduction 217 (S731/S741), so adjusted income 2391;
+  # p2 states heat plus three other utilities, so the HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016;
+  # excess shelter 2016 - 1195.50 = 820.50; net 1570.50, rounded to 1571; maximum allotment 808 (S730) less
+  # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
   # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
   # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
   # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
@@ -1456,8 +1464,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-11": 2965}
-      snap_household_net_income: {"2026-11": 2199}
-      snap_allotment: {"2026-11": 125}
+      snap_household_net_income: {"2026-11": 1571}
+      snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
@@ -1490,8 +1498,8 @@
       snap_meets_citizenship_requirement: false
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-11": 2965}
-      snap_household_net_income: {"2026-11": 2199}
-      snap_allotment: {"2026-11": 125}
+      snap_household_net_income: {"2026-11": 1571}
+      snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
@@ -1528,8 +1536,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-11": 2965}
-      snap_household_net_income: {"2026-11": 2199}
-      snap_allotment: {"2026-11": 125}
+      snap_household_net_income: {"2026-11": 1571}
+      snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
@@ -1558,8 +1566,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-11": 2965}
-      snap_household_net_income: {"2026-11": 2199}
-      snap_allotment: {"2026-11": 125}
+      snap_household_net_income: {"2026-11": 1571}
+      snap_allotment: {"2026-11": 336}
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
@@ -1728,8 +1736,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2550}
-      snap_household_net_income: {"2026-10": 2194}
-      snap_allotment: {"2026-10": 24}
+      snap_household_net_income: {"2026-10": 2182}
+      snap_allotment: {"2026-10": 25}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
@@ -1741,8 +1749,8 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2550}
-      snap_household_net_income: {"2026-10": 2194}
-      snap_allotment: {"2026-10": 24}
+      snap_household_net_income: {"2026-10": 2182}
+      snap_allotment: {"2026-10": 25}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false

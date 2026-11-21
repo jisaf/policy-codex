@@ -1,0 +1,12 @@
+id: CO-1242
+name: Incurs a telephone cost
+identifier: incurs_telephone_cost
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: The person's household incurs the cost of one telephone or of telephone service associated with a specific device (land line, cellular including disposable phones, or VOIP; not pay phones, unassociated phone cards, or internet or cable fees), per 10 CCR 2506-1 4.407.3.E.5. Stated once per unit, carried on the head of household.
+supplied_by: Applicant statement.
+sources: [S746, S753]
+tags: [income, snap]
+rationale: No existing fact states it; utility_allowance_amount (CO-036) needs it to tell a telephone-only household (telephone allowance) from a one-other-utility household (OUA).
