@@ -7,10 +7,11 @@ scope: person-month
 program: SunBucks
 role: outcome
 meaning: The number of Summer EBT verification elements (income, school enrollment) pending for the child.
-derived: ["+", [case, [sebt_income_verification_is_pending, 1], [else, 0]], [case, [sebt_school_enrollment_verification_is_pending, 1], [else, 0]]]
+precision: Zero where SUN Bucks verification does not apply to the person (sebt_verification_is_applicable, CO-2587; case worker review B2).
+derived: [case, [sebt_verification_is_applicable, ["+", [case, [sebt_income_verification_is_pending, 1], [else, 0]], [case, [sebt_school_enrollment_verification_is_pending, 1], [else, 0]]]], [else, 0]]
 sources: [S1094, S1095]
 implemented: engine
 tags: [verification, sebt]
 rationale: "Review K-5: an outcome pair matching the other programs."
 tests:
-  - {id: CO-1697-T1, month: "2026-10", as_of: "2026-10-01", given: {sebt_income_verification_is_pending: true, sebt_school_enrollment_verification_is_pending: false}, expect: 1}
+  - {id: CO-1697-T1, month: "2026-10", as_of: "2026-10-01", given: {sebt_verification_is_applicable: true, sebt_income_verification_is_pending: true, sebt_school_enrollment_verification_is_pending: false}, expect: 1}

@@ -1,0 +1,19 @@
+id: CO-2590
+name: "CCCAP: unearned income verification is pending"
+identifier: cccap_unearned_income_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+role: outcome
+meaning: "Whether CCCAP still needs verification of this person's unearned income: the shared unearned_income_verification_is_pending (CO-1650), where CCCAP verification applies to the person."
+precision: "Due by: cccap_verification_due_date (CO-1450)."
+derived: [all, cccap_verification_is_applicable, unearned_income_verification_is_pending]
+sources: [S872, S875, S880, S891, S898]
+implemented: engine
+tags: [verification, income]
+rationale: "County case worker review B2: the shared unearned-income pending flag is one of CCCAP's outcomes but cannot read CCCAP's applicability; this item is the program's own flag, gated like its other elements."
+nearest: [CO-1650]
+tests:
+  - {id: CO-2590-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_verification_is_applicable: true, unearned_income_verification_is_pending: true}, expect: true}
+  - {id: CO-2590-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_verification_is_applicable: false, unearned_income_verification_is_pending: true}, expect: false}

@@ -7,11 +7,12 @@ scope: person-month
 program: CCCAP
 role: outcome
 meaning: Whether CCCAP requires verification of the person's inconsistent identity of a child in care and it has not been provided.
-derived: [all, cccap_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, identity_verification_document_received]]]
+precision: "False where CCCAP verification does not apply to the person (cccap_verification_is_applicable, CO-2585; case worker review B2). Due by: cccap_verification_due_date (CO-1450)."
+derived: [all, cccap_verification_is_applicable, [all, cccap_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, identity_verification_document_received]]]]
 sources: [S890]
 implemented: engine
 tags: [verification]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1680-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: false}, expect: true}
-  - {id: CO-1680-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: true}, expect: false}
+  - {id: CO-1680-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_verification_is_applicable: true, cccap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: false}, expect: true}
+  - {id: CO-1680-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_verification_is_applicable: true, cccap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: true}, expect: false}

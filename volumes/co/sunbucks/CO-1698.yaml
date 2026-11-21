@@ -9,7 +9,7 @@ program: SunBucks
 role: outcome
 meaning: "Where the child's Summer EBT verification stands: not applicable (not school-aged and not in an NSLP or SBP school); no verification required (streamlined certification, or an application not selected); complete; or pending, in which case benefits are not issued until it is complete."
 precision: "292.14 sets no fixed period: the household answers by the date the agency sets, after at least two follow-up attempts, and verification for cause is completed within 30 days of receipt; so there is no past-due state (OQ-377)."
-derived: [case, [[not, [any, is_school_aged, is_enrolled_in_nslp_school]], not_applicable], [[all, [not, sebt_requires_verification_of_income], [not, sebt_requires_verification_of_school_enrollment]], not_required], [["=", sebt_pending_verification_count, 0], complete], [else, pending]]
+derived: [case, [[not, sebt_verification_is_applicable], not_applicable], [[all, [not, sebt_requires_verification_of_income], [not, sebt_requires_verification_of_school_enrollment]], not_required], [["=", sebt_pending_verification_count, 0], complete], [else, pending]]
 sources: [S1090, S1094, S1095]
 implemented: engine
 tags: [verification, sebt]

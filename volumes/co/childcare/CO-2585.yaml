@@ -1,0 +1,18 @@
+id: CO-2585
+name: "CCCAP: verification applies to this person"
+identifier: cccap_verification_is_applicable
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "CCCAP verification applies to this person: the person's CCCAP household has an eligible child. For anyone else CCCAP's verification status is not_applicable and no CCCAP element is pending."
+precision: "The test that cccap_verification_status (CO-1451) used for its not_applicable branch, made its own item so that every CCCAP pending element and count reads it: an element is pending only where verification applies (county case worker review B2)."
+derived: [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]
+sources: [S891, S892, S1631]
+implemented: engine
+tags: [verification]
+rationale: "County case worker review B2: CCCAP pending flags and counts were non-zero for people whose CCCAP verification status is not_applicable, so a checklist built from the flags asked for documents a program cannot use."
+nearest: [CO-1451]
+tests:
+  - {id: CO-2585-T1, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_members: [p1], cccap_is_eligible_child: false}, expect: false}
+  - {id: CO-2585-T2, as_of: "2026-10-01", month: "2026-10", given: {cccap_household_members: [p1, p2], cccap_is_eligible_child: false}, others: {p2: {cccap_is_eligible_child: true}}, expect: true}

@@ -7,10 +7,11 @@ scope: person-month
 program: CCCAP
 role: outcome
 meaning: The number of members of this person's CCCAP household whose court-ordered child support payments, claimed for the deduction, are not yet verified.
-derived: [sum, cccap_household_members, [case, [[of, [P], cccap_child_support_paid_verification_is_pending], 1], [else, 0]]]
+precision: Zero where CCCAP verification does not apply to the person (cccap_verification_is_applicable, CO-2585; case worker review B2).
+derived: [case, [cccap_verification_is_applicable, [sum, cccap_household_members, [case, [[of, [P], cccap_child_support_paid_verification_is_pending], 1], [else, 0]]]], [else, 0]]
 sources: [S892]
 implemented: engine
 tags: [verification, income]
 rationale: "Review C-12: 3.111.K withholds the deduction for unverified child support but does not deny the application for it, so the status needs the deduction count apart from the eligibility count."
 tests:
-  - {id: CO-1688-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1, p2], cccap_child_support_paid_verification_is_pending: true}, others: {p2: {cccap_child_support_paid_verification_is_pending: false}}, expect: 1}
+  - {id: CO-1688-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_verification_is_applicable: true, cccap_household_members: [p1, p2], cccap_child_support_paid_verification_is_pending: true}, others: {p2: {cccap_verification_is_applicable: true, cccap_child_support_paid_verification_is_pending: false}}, expect: 1}

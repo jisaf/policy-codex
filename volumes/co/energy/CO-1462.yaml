@@ -8,7 +8,7 @@ scope: person-month
 program: LEAP
 role: outcome
 meaning: "Where this person's LEAP household stands on verification: not applicable (no one in the person's LEAP economic unit meets the citizenship requirement as declared, so LEAP cannot reach it); none required; complete; pending within the two weeks allowed; or past due (the application is denied for failure to provide required verification). A member without an SSN or a verified status is excluded (leap_member_is_excluded_for_verification) rather than making the household past due; a unit whose declared-citizen members are all excluded that way is still reported, not not_applicable."
-derived: [case, [[not, [exists, leap_household_members_for_income, [of, [P], leap_meets_citizenship_requirement]]], not_applicable], [["=", [sum, leap_household_members_for_income, [of, [P], leap_person_required_verification_count]], 0], not_required], [["=", leap_pending_verification_count, 0], complete], [["<=", [det_date], leap_verification_due_date], pending], [else, past_due]]
+derived: [case, [[not, leap_verification_is_applicable], not_applicable], [["=", [sum, leap_household_members_for_income, [of, [P], leap_person_required_verification_count]], 0], not_required], [["=", leap_pending_verification_count, 0], complete], [["<=", [det_date], leap_verification_due_date], pending], [else, past_due]]
 sources: [S893, S899, S494]
 implemented: engine
 tags: [verification]
