@@ -6,12 +6,12 @@ type: yes/no
 scope: person
 program: CHP+
 meaning: Whether the person is excluded from CHP+ as a member of a family eligible for a State health benefits plan through a family member's public agency employment (42 U.S.C. 1397jj(b)(2)(B); 42 CFR 457.310(c)(1)), applied to a pregnant woman in the same manner as to a child (1397ll(d)(2)(C)), unless the employing agency meets the maintenance of effort or the State finds the 5 percent hardship (1397jj(b)(6)).
-precision: 10 CCR 2505-3 states no such exclusion (the phase 7 sweep read all of D-66); it applies through the federal definitions of a targeted low-income child and pregnant woman, which CHP+ coverage is conditioned on. The two exceptions are stated in the statute as applying whenever their facts hold.
+precision: 10 CCR 2505-3 states no such exclusion; it applies through the federal definitions of a targeted low-income child and pregnant woman, which CHP+ coverage is conditioned on. The two exceptions are stated in the statute as applying whenever their facts hold.
 derived: [all, chp_is_eligible_for_public_agency_state_health_benefits_plan, [not, chp_public_agency_meets_dependent_coverage_maintenance_of_effort], [not, chp_public_agency_coverage_cost_exceeds_five_percent_of_income]]
 sources: [S1223, S1224, S1225]
 implemented: engine
 tags: [chp]
-rationale: "OQ-59: the exclusion and its two exceptions are one test read by both CHP+ eligibility items (CO-705, CO-706)."
+rationale: "OQ-59: the exclusion and its two exceptions are one test read by both CHP+ eligibility items (CO-705, CO-706). Precision history (moved from precision, engineering follow-up pass task 5): (the phase 7 sweep read all of D-66)."
 tests:
   - {id: CO-1978-T1, as_of: "2026-10-01", given: {chp_is_eligible_for_public_agency_state_health_benefits_plan: false}, expect: false}
   - {id: CO-1978-T2, as_of: "2026-10-01", given: {chp_is_eligible_for_public_agency_state_health_benefits_plan: true, chp_public_agency_meets_dependent_coverage_maintenance_of_effort: false, chp_public_agency_coverage_cost_exceeds_five_percent_of_income: false}, expect: true}
