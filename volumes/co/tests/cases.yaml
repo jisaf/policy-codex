@@ -12041,3 +12041,228 @@
       cw_grant_standard: unknown
       cw_eligibility_status: {"2028-08": unknown}
       cw_grant_amount: {"2028-08": unknown}
+
+- id: CO-93
+  title: "Engineering follow-up 8 (Corticon S-4): the ABAWD months counted are the whole 36-month fixed period, not the last 12"
+  # CO-87's household, determined on June 1, 2028 instead of October 1, 2026. p1 used his three countable months in July,
+  # August and September 2026, the first three months of the fixed period that began July 1, 2026 (4.311.3.C.2), and
+  # received no SNAP from October 2026 on. In June 2028 the period is still the one from July 2026 (the next starts July
+  # 2029): snap_abawd_countable_months_in_period counts July 2026 through May 2028 = 3, so his status is limit_reached.
+  # An engine that keeps only the last 12 months (June 2027 to May 2028) counts 0 and would report him within the limit.
+  # He is 60 on June 1, 2028, under the ABAWD maximum of 64 (Pub. L. 119-21 sec. 10102). Only the ABAWD items are expected:
+  # the allotment would need figures for federal fiscal year 2028, which are not yet loaded.
+  as_of: "2028-06-01"
+  relationships:
+    - [buys_prepares_with, p1, p2]
+  persons:
+    p1:
+      # 58, no work, three countable months used.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2028-06-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1968-03-03"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 600
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+      month_defaults:
+        received_full_snap_benefit_month: false
+        hours_worked: 0
+        work_program_hours: 0
+        participates_in_workfare: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+      months:
+        2026-07:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+        2026-08:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+        2026-09:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+    p2:
+      # 50, works 130 hours, pays the rent and heat.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2028-06-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1976-08-08"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 1500
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 130
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 900
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+  expect:
+    p1:
+      snap_abawd_countable_months_in_period: {"2028-06": 3}
+      snap_abawd_time_limit_status: {"2028-06": limit_reached}
