@@ -14,6 +14,6 @@ implemented: engine
 tags: [ma, ltc, legal]
 rationale: "No existing item states the transfer-penalty-months arithmetic. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it."
 tests:
-  - {id: CO-649-T1, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: false}, expect: 5}
-  - {id: CO-649-T2, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: true}, expect: 0}
-  - {id: CO-649-T3, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 56500, transfer_penalty_divisor: 9000, transfer_was_exempt: false}, expect: 6}
+  - {id: CO-649-T1, as_of: "2026-10-01", parameters: {transfer_penalty_divisor: 9000}, given: {uncompensated_transfer_value_in_lookback: 45000, transfer_was_exempt: false}, expect: 5}
+  - {id: CO-649-T2, as_of: "2026-10-01", parameters: {transfer_penalty_divisor: 9000}, given: {uncompensated_transfer_value_in_lookback: 45000, transfer_was_exempt: true}, expect: 0}
+  - {id: CO-649-T3, as_of: "2026-10-01", parameters: {transfer_penalty_divisor: 9000}, given: {uncompensated_transfer_value_in_lookback: 56500, transfer_was_exempt: false}, expect: 6}

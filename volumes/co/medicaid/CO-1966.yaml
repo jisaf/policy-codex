@@ -1,0 +1,17 @@
+id: CO-1966
+name: "Medicaid community engagement: less than half-time education hours"
+identifier: ma_community_engagement_education_hours
+kind: derived
+type: hours
+scope: person-month
+program: Medicaid
+meaning: "The education hours counted toward the 80-hour combination for a person enrolled in an educational program less than half-time (42 CFR 435.552(d), (e)(3)): credit hours times ma_community_engagement_hours_per_credit_hour (3) times ma_community_engagement_weeks_per_month (4.33), plus attendance hours for a program without credit hours; zero for any other enrollment status, since half-time or more demonstrates community engagement by itself and its hours are not combined (435.552(a)(5), (e)(1))."
+derived: [case, [["=", [otherwise, ma_educational_program_enrollment_type, not_enrolled], less_than_half_time], ["+", ["*", [otherwise, ma_educational_program_credit_hours, 0], ma_community_engagement_hours_per_credit_hour, ma_community_engagement_weeks_per_month], [otherwise, ma_educational_program_attendance_hours, 0]]], [else, 0]]
+sources: [S1202, S1204]
+implemented: engine
+tags: [ma, magi]
+rationale: "OQ-65: the rule states the credit-hour conversion for less than half-time enrollment only."
+tests:
+  - {id: CO-1966-T1, month: "2027-02", as_of: "2027-03-01", given: {ma_educational_program_enrollment_type: less_than_half_time, ma_educational_program_credit_hours: 6}, title: "Six credit hours: 6 x 3 x 4.33 = 77.94", expect: 77.94}
+  - {id: CO-1966-T2, month: "2027-02", as_of: "2027-03-01", given: {ma_educational_program_enrollment_type: half_time, ma_educational_program_credit_hours: 6}, title: "Half-time enrollment is not converted", expect: 0}
+  - {id: CO-1966-T3, month: "2027-02", as_of: "2027-03-01", given: {ma_educational_program_enrollment_type: less_than_half_time, ma_educational_program_attendance_hours: 30}, title: "A program without credit hours: attendance hours", expect: 30}

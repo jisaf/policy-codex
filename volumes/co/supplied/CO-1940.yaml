@@ -1,0 +1,12 @@
+id: CO-1940
+name: Resides in a county with a declared emergency or disaster
+identifier: ma_resides_in_county_with_declared_emergency_or_disaster
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether, for part or all of the month, the person resides in a county in which there exists an emergency or disaster declared by the President under the National Emergencies Act or the Stafford Act, within the duration 42 CFR 435.555(d)(2) gives the exception.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1210]
+tags: [ma, magi]
+rationale: "OQ-65: a short-term hardship event of the optional exception; no fact states it."

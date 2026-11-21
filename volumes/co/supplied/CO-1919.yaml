@@ -1,0 +1,12 @@
+id: CO-1919
+name: Educational program credit hours (less than half-time)
+identifier: ma_educational_program_credit_hours
+kind: supplied
+type: hours
+scope: person-month
+program: Medicaid
+meaning: For a person enrolled less than half-time in an educational program that uses credit hours, the number of credit hours of instruction the person is enrolled in (42 CFR 435.552(d)(1)). Zero for a program that does not use credit hours. If not stated, Medicaid reads this as zero.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1204]
+tags: [ma, magi]
+rationale: "OQ-65: the less than half-time hours computation needs the credit hours."

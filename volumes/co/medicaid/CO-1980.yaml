@@ -1,0 +1,20 @@
+id: CO-1980
+name: "Medicaid: long-term care private-pay region"
+identifier: ma_ltc_private_pay_region
+kind: derived
+type: one of
+options: [region_i, region_ii, region_iii, region_iv]
+scope: person
+program: Medicaid
+meaning: "The Bureau of Economic Analysis region, as 10 CCR 2505-10 § 8.100.7.G.6.a.i.a) lists its counties, in which the person resides and intends to remain: the region whose average private-pay rate is the income-trust gross income ceiling."
+precision: Region IV is the remaining case; every option of county_of_residence is in exactly one list.
+derived: [case, [[in, county_of_residence, [adams, arapahoe, boulder, broomfield, denver, jefferson]], region_i], [[in, county_of_residence, [cheyenne, clear_creek, douglas, elbert, gilpin, grand, jackson, kit_carson, larimer, logan, morgan, park, phillips, sedgwick, summit, washington, weld, yuma]], region_ii], [[in, county_of_residence, [alamosa, baca, bent, chaffee, conejos, costilla, crowley, custer, el_paso, fremont, huerfano, kiowa, lake, las_animas, lincoln, mineral, otero, prowers, pueblo, rio_grande, saguache, teller]], region_iii], [else, region_iv]]
+sources: [S1229]
+implemented: engine
+tags: [ma, ltc]
+rationale: "OQ-99: the rule maps counties to four regions; the income-trust ceiling (CO-1985) reads the region."
+tests:
+  - {id: CO-1980-T1, as_of: "2026-10-01", given: {county_of_residence: denver}, expect: region_i}
+  - {id: CO-1980-T2, as_of: "2026-10-01", given: {county_of_residence: weld}, expect: region_ii}
+  - {id: CO-1980-T3, as_of: "2026-10-01", given: {county_of_residence: el_paso}, expect: region_iii}
+  - {id: CO-1980-T4, as_of: "2026-10-01", given: {county_of_residence: mesa}, expect: region_iv}

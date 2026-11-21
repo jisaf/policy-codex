@@ -1,0 +1,12 @@
+id: CO-1952
+name: Public agency meets the dependent coverage maintenance of effort
+identifier: chp_public_agency_meets_dependent_coverage_maintenance_of_effort
+kind: supplied
+type: yes/no
+scope: person
+program: CHP+
+meaning: Whether the public agency employing the family member through whom the person's family is eligible for a State health benefits plan spent, in the most recent State fiscal year, at least its 1997 State fiscal year expenditures for employees enrolled in agency-paid coverage that includes dependent coverage, increased by the medical care CPI-U (42 U.S.C. 1397jj(b)(6)(B)).
+supplied_by: The State's determination for the employing public agency.
+sources: [S1223]
+tags: [chp]
+rationale: "OQ-59: the first statutory exception to the public agency employee exclusion."

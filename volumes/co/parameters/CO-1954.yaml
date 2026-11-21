@@ -1,0 +1,15 @@
+id: CO-1954
+name: MMMNA poverty guideline for a family of two, by July adjustment
+identifier: ma_mmmna_poverty_guideline_family_of_two_annual
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The annual HHS poverty guideline for a family of two (48 contiguous states and D.C.) on which the minimum monthly maintenance needs allowance is based, dated from the July 1 on which the MMMNA is adjusted (10 CCR 2505-10 § 8.100.7.Q.1.a; 42 U.S.C. 1396r-5(g)): the guideline published in January applies from the following July 1 through June 30."
+precision: The CMS chart for 2026 (D-72) confirms the July 1 timing and the $2,705.00 figure the 2026 guideline gives. federal_poverty_guideline_annual_table (CO-181) dates its versions from January, so the MMMNA reads this parameter instead.
+versions:
+  - {from: "2025-07-01", to: "2026-07-01", value: 21150, source: S1219}
+  - {from: "2026-07-01", value: 21640, source: S55}
+sources: [S1219, S55, S358, S644]
+tags: [ma, ltc, income]
+rationale: "OQ-145: the engine reads a parameter as of the determination date only, so the July-to-June MMMNA cycle needs a parameter dated from July; the 2025 guideline (D-124) gives the January-June 2026 figure."

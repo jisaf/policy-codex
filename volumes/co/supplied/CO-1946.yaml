@@ -1,0 +1,12 @@
+id: CO-1946
+name: Custodial parent
+identifier: ma_custodial_parent
+kind: supplied
+type: person
+scope: person
+program: Medicaid
+meaning: "For a child under 19, the parent who is the custodial parent for the MAGI household rule of 42 CFR 435.603(f)(2)(iii) and 10 CCR 2505-10 § 8.100.4.E.1.c.iii: the parent a court order or binding separation, divorce or custody agreement establishing physical custody names; or, with no such order or agreement or under shared custody, the parent with whom the child spends most nights. If not stated, Medicaid reads the parent who claims the child as the custodial parent."
+supplied_by: The application (custody order or agreement, or the parent with whom the child spends most nights).
+sources: [S1226, S1227]
+tags: [ma, magi, household]
+rationale: "OQ-42: the non-custodial-parent exception needs to know which parent is custodial; no fact states it."

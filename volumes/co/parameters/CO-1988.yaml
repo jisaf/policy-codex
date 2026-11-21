@@ -1,0 +1,13 @@
+id: CO-1988
+name: Lottery winnings spread, maximum months
+identifier: ma_lottery_winnings_spread_max_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The most months over which qualified lottery or gambling winnings or qualified lump-sum income are divided for MAGI income: 120 months, reached at $1,260,000 or more (42 U.S.C. 1396a(e)(14)(K)(i)(IV))."
+precision: 10 CCR 2505-10 § 8.100.4.C.1.b.xiv states no limit; the federal statute it implements does (OQ-216).
+value: 120
+sources: [S1234]
+tags: [ma, magi, income]
+rationale: "OQ-216: ma_lottery_winnings_spread_months (CO-1185) had no upper limit; the statute caps the period at 120 months."

@@ -1,0 +1,12 @@
+id: CO-1945
+name: Effective date of the most recent determination
+identifier: ma_most_recent_determination_effective_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: The effective date of the enrolled person's most recent determination or redetermination of Medical Assistance eligibility at renewal, from which 42 CFR 435.556(a)(2)(i) and (iii) count the months for which community engagement is assessed.
+supplied_by: The person's enrollment record (CBMS).
+sources: [S1211]
+tags: [ma, magi]
+rationale: "OQ-65: the renewal look-back starts at this date; no fact states it."

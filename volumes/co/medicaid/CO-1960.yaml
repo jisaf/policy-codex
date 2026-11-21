@@ -1,0 +1,17 @@
+id: CO-1960
+name: "Medicaid community engagement: is a dependent child"
+identifier: ma_community_engagement_is_dependent_child
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is a dependent child as 42 CFR 435.554(a) defines it for the community engagement exclusions: 13 years of age or under and relying on another individual for care."
+derived: [all, ["<=", age, ma_community_engagement_dependent_child_max_age], ma_relies_on_another_for_care]
+sources: [S1207]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "OQ-65: the 435.554 dependent child differs from the MAGI dependent child (ma_is_dependent_child, CO-544: under 18, or 18 in school)."
+tests:
+  - {id: CO-1960-T1, as_of: "2027-03-01", given: {date_of_birth: "2014-03-01", ma_relies_on_another_for_care: true}, expect: true}
+  - {id: CO-1960-T2, as_of: "2027-03-01", given: {date_of_birth: "2013-02-01", ma_relies_on_another_for_care: true}, title: "Fourteen is past the age", expect: false}
+  - {id: CO-1960-T3, as_of: "2027-03-01", given: {date_of_birth: "2020-03-01", ma_relies_on_another_for_care: false}, expect: false}

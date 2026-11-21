@@ -1,0 +1,19 @@
+id: CO-1971
+name: "Medicaid community engagement: deemed by a short-term hardship"
+identifier: ma_is_deemed_community_engaged_by_short_term_hardship
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person is deemed to have demonstrated community engagement for the month by a short-term hardship event under 42 CFR 435.555, which applies only where the State elects it: inpatient or similar acuity care, or travel outside the community for medical care, that the person requested the exception for; residence in a county with a declared emergency or disaster; or residence in a county with a CMS-approved unemployment hardship."
+derived: [all, ma_elects_short_term_hardship_exception, [any, [all, [any, ma_received_inpatient_or_similar_acuity_services, ma_traveled_outside_community_for_medical_care], ma_requested_short_term_hardship_exception], ma_resides_in_county_with_declared_emergency_or_disaster, ma_resides_in_county_with_approved_unemployment_hardship]]
+sources: [S1210]
+implemented: engine
+tags: [ma, magi]
+open: [OQ-411]
+rationale: "OQ-65: the optional exception of 435.555 is part of the requirement as the federal text states it, even though Colorado has not elected it."
+tests:
+  - {id: CO-1971-T1, month: "2027-02", as_of: "2027-03-01", given: {ma_received_inpatient_or_similar_acuity_services: true, ma_requested_short_term_hardship_exception: true}, title: "Not elected", expect: false}
+  - {id: CO-1971-T2, month: "2027-02", as_of: "2027-03-01", parameters: {ma_elects_short_term_hardship_exception: true}, given: {ma_received_inpatient_or_similar_acuity_services: true, ma_requested_short_term_hardship_exception: true}, title: "If elected: hospitalized and requested", expect: true}
+  - {id: CO-1971-T3, month: "2027-02", as_of: "2027-03-01", parameters: {ma_elects_short_term_hardship_exception: true}, given: {ma_received_inpatient_or_similar_acuity_services: true, ma_requested_short_term_hardship_exception: false, ma_resides_in_county_with_declared_emergency_or_disaster: false, ma_resides_in_county_with_approved_unemployment_hardship: false}, title: "If elected: hospitalized, no request", expect: false}
+  - {id: CO-1971-T4, month: "2027-02", as_of: "2027-03-01", parameters: {ma_elects_short_term_hardship_exception: true}, given: {ma_received_inpatient_or_similar_acuity_services: false, ma_traveled_outside_community_for_medical_care: false, ma_resides_in_county_with_declared_emergency_or_disaster: true}, title: "If elected: disaster county, no request needed", expect: true}

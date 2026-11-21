@@ -1,0 +1,13 @@
+id: CO-1979
+name: County of residence
+identifier: county_of_residence
+kind: supplied
+type: one of
+options: [adams, alamosa, arapahoe, archuleta, baca, bent, boulder, broomfield, chaffee, cheyenne, clear_creek, conejos, costilla, crowley, custer, delta, denver, dolores, douglas, eagle, el_paso, elbert, fremont, garfield, gilpin, grand, gunnison, hinsdale, huerfano, jackson, jefferson, kiowa, kit_carson, la_plata, lake, larimer, las_animas, lincoln, logan, mesa, mineral, moffat, montezuma, montrose, morgan, otero, ouray, park, phillips, pitkin, prowers, pueblo, rio_blanco, rio_grande, routt, saguache, san_juan, san_miguel, sedgwick, summit, teller, washington, weld, yuma]
+scope: person
+program: All
+meaning: The Colorado county in which the person resides (and, for a person in a Long-Term Care institution, intends to remain), one of Colorado's 64 counties written in lower case with underscores (el_paso, la_plata). Unknown for a person who does not reside in Colorado.
+supplied_by: The application's residence address.
+sources: [S1229]
+tags: [ma, ltc]
+rationale: "OQ-99: the income-trust ceiling of § 8.100.7.G.6.a.i.a) depends on the region of the county in which the person resides; no county fact exists. CCCAP's county residence (OQ-159, OQ-393) can read the same fact."

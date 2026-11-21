@@ -1,0 +1,12 @@
+id: CO-1947
+name: Lives outside the household due to separation or pending divorce
+identifier: ma_lives_apart_due_to_separation_or_pending_divorce
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person, a married parent, lives outside the household of the child because of separation or a pending divorce: the circumstance of 10 CCR 2505-10 § 8.100.4.E.5 in which a child claimed by married parents filing jointly has the non-filer household and the absent parent is not counted. If not stated, Medicaid reads this as false."
+supplied_by: The application's household roster and marital status.
+sources: [S1227]
+tags: [ma, magi, household]
+rationale: "OQ-42: § 8.100.4.E.5 routes such a child to the non-filer rules; no fact states the separation."

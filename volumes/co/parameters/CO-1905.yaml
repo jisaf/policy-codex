@@ -1,0 +1,12 @@
+id: CO-1905
+name: "Medicaid community engagement: seasonal worker averaging months"
+identifier: ma_community_engagement_seasonal_average_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of preceding months over which a seasonal worker's monthly income is averaged for the income test of 42 CFR 435.552(a)(7) and (g): 6 months."
+value: 6
+sources: [S1202, S1205]
+tags: [ma, magi, income]
+rationale: "OQ-65: ma_demonstrates_community_engagement (CO-1968) averages MAGI-based income over this many months for a seasonal worker."

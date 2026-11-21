@@ -1,0 +1,17 @@
+id: CO-1961
+name: "Medicaid community engagement: is a dependent child or disabled individual"
+identifier: ma_community_engagement_is_care_recipient
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is someone whose parent, guardian, caretaker relative or family caregiver is excluded from community engagement under 42 CFR 435.554(c)(3): a dependent child (ma_community_engagement_is_dependent_child, CO-1960) or a disabled individual (the ADA definition, has_disability_under_ada)."
+derived: [any, ma_community_engagement_is_dependent_child, has_disability_under_ada]
+sources: [S1207, S1208]
+implemented: engine
+tags: [ma, magi]
+rationale: "OQ-65: each caring exclusion of 435.554(c)(3) turns on the person cared for being one of the two."
+tests:
+  - {id: CO-1961-T1, as_of: "2027-03-01", given: {ma_community_engagement_is_dependent_child: false, has_disability_under_ada: true}, expect: true}
+  - {id: CO-1961-T2, as_of: "2027-03-01", given: {ma_community_engagement_is_dependent_child: true, has_disability_under_ada: false}, expect: true}
+  - {id: CO-1961-T3, as_of: "2027-03-01", given: {ma_community_engagement_is_dependent_child: false, has_disability_under_ada: false}, expect: false}

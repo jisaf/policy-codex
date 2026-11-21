@@ -1,0 +1,12 @@
+id: CO-1901
+name: "Medicaid community engagement: required hours per month"
+identifier: ma_community_engagement_required_hours
+kind: parameter
+type: hours
+scope: global
+program: Medicaid
+meaning: The hours of work, community service, work program participation, or a combination with less than half-time education, that demonstrate community engagement for a month (42 CFR 435.552(a)(1)-(3), (5)), and the hours the Federal minimum wage is multiplied by for the income test ((a)(6)-(7)).
+value: 80
+sources: [S1202, S1204, S1205]
+tags: [ma, magi]
+rationale: "OQ-65: the 80-hour figure is read by the hours test and the income tests of ma_demonstrates_community_engagement (CO-1968)."

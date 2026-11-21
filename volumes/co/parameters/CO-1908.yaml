@@ -1,0 +1,12 @@
+id: CO-1908
+name: "Medicaid community engagement: dependent child maximum age"
+identifier: ma_community_engagement_dependent_child_max_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The oldest age, inclusive, at which a child who relies on another individual for care is a dependent child for the parent, guardian, caretaker relative and family caregiver exclusions of 42 CFR 435.554 ("a child 13 years of age or under").
+value: 13
+sources: [S1207]
+tags: [ma, magi, age]
+rationale: "OQ-65: the 435.554(a) dependent child is narrower than the MAGI dependent child (ma_dependent_child_age_limit, CO-190) and needs its own age."

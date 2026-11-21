@@ -1,0 +1,12 @@
+id: CO-1917
+name: Work program hours
+identifier: ma_work_program_hours
+kind: supplied
+type: hours
+scope: person-month
+program: Medicaid
+meaning: The hours the person participated in the month in a work program as 42 CFR 435.552(b) defines it (a WIOA title I program, a Trade Act section 236 program, a State employment and training program meeting the Governor's standards other than supervised job search, a Department of Labor or Veterans Affairs program for veterans, or a SNAP workforce partnership). If not stated, Medicaid reads this as zero.
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1203]
+tags: [ma, magi]
+rationale: "OQ-65: work_program_hours (CO-048) is SNAP's employment and training hours; the Medicaid list of work programs differs."

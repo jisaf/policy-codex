@@ -1,0 +1,14 @@
+id: CO-1903
+name: "Medicaid community engagement: months required at renewal"
+identifier: ma_community_engagement_renewal_required_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of months, whether or not consecutive, between the effective date of an enrolled applicable individual's most recent determination and the renewal (or a change-in-circumstances redetermination), for which the individual must demonstrate, or be deemed to have demonstrated, community engagement: one or more, as specified in the State plan (42 CFR 435.556(a)(2); 42 U.S.C. 1396a(xx)(1)(B))."
+assumption: No published Colorado rule or State plan amendment states the number (OQ-410). The draft uses one month, the least the federal text allows.
+value: 1
+sources: [S1211, S1215]
+tags: [ma, magi, state_election]
+open: [OQ-410]
+rationale: "OQ-65: the renewal count is a State election; ma_community_engagement_status (CO-1974) compares the months met with it."

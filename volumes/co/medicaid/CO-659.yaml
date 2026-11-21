@@ -14,6 +14,6 @@ tags: [ma, ltc, legal]
 rationale: "No existing item states § 8.100.7.F.2.d's partial-month day arithmetic; ma_transfer_penalty_months (CO-649) reports only whole months as of the phase-4 review's C-6 fix. Not a bare alias of CO-649: it recomputes the raw uncompensated-value-over-divisor figure to recover the fractional remainder CO-649's floor discards, then applies § 8.100.7.F.2.d's 30-day multiplication and round-up."
 nearest: [CO-649]
 tests:
-  - {id: CO-659-T1, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 56500, transfer_penalty_divisor: 9000, transfer_was_exempt: false, ma_transfer_penalty_months: 6}, expect: 9}
-  - {id: CO-659-T2, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: false, ma_transfer_penalty_months: 5}, expect: 0}
-  - {id: CO-659-T3, as_of: "2026-10-01", given: {uncompensated_transfer_value_in_lookback: 45000, transfer_penalty_divisor: 9000, transfer_was_exempt: true, ma_transfer_penalty_months: 0}, expect: 0}
+  - {id: CO-659-T1, as_of: "2026-10-01", parameters: {transfer_penalty_divisor: 9000}, given: {uncompensated_transfer_value_in_lookback: 56500, transfer_was_exempt: false, ma_transfer_penalty_months: 6}, expect: 9}
+  - {id: CO-659-T2, as_of: "2026-10-01", parameters: {transfer_penalty_divisor: 9000}, given: {uncompensated_transfer_value_in_lookback: 45000, transfer_was_exempt: false, ma_transfer_penalty_months: 5}, expect: 0}
+  - {id: CO-659-T3, as_of: "2026-10-01", parameters: {transfer_penalty_divisor: 9000}, given: {uncompensated_transfer_value_in_lookback: 45000, transfer_was_exempt: true, ma_transfer_penalty_months: 0}, expect: 0}

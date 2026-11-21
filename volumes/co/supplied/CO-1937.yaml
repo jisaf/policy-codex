@@ -1,0 +1,12 @@
+id: CO-1937
+name: Is exempt from SNAP work requirements
+identifier: is_exempt_from_snap_work_requirements
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether, this month, the person is exempt from the work requirements of the Food and Nutrition Act (work registration under 7 U.S.C. 2015(d) and the time limit under 2015(o)), as the person's SNAP case records it. A fact about the SNAP case, not this volume's SNAP determination.
+supplied_by: The SNAP case record (CBMS).
+sources: [S1209]
+tags: [ma, snap]
+rationale: "OQ-65: 42 CFR 435.554(c)(7) excludes a SNAP household member who is not exempt from a work requirement; the SNAP case's own exemption finding is read as a fact."

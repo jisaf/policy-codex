@@ -1,0 +1,12 @@
+id: CO-1941
+name: Resides in a county with an approved unemployment hardship
+identifier: ma_resides_in_county_with_approved_unemployment_hardship
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether, for part or all of the month, the person resides in a county for which CMS has approved, on the State's request, an unemployment-based short-term hardship exception because the county's unemployment rate is at or above the lesser of 8 percent or 1.5 times the national rate (42 CFR 435.555(d)(3), 435.557(g)(2)(ii)).
+supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
+sources: [S1210]
+tags: [ma, magi]
+rationale: "OQ-65: a short-term hardship event of the optional exception; no fact states it."

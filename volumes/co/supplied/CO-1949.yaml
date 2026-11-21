@@ -1,0 +1,12 @@
+id: CO-1949
+name: Institutionalized spouse refuses the income allowance
+identifier: ma_institutionalized_spouse_refuses_income_allowance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the institutionalized spouse refuses to make the monthly income allowance available to the community spouse, which bars an increased CSRA (10 CCR 2505-10 § 8.100.7.S.1.e).
+supplied_by: The applicant's statement.
+sources: [S1221]
+tags: [ma, ltc, resources]
+rationale: "OQ-126: § 8.100.7.S.1.e conditions the increased CSRA on the income allowance being made available."
