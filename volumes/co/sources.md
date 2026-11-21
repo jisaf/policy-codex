@@ -9889,3 +9889,321 @@ Document: D-87
 > c. Such verification shall be made at the time of initial approval of
 > eligibility for services and at the time of each re-determination of
 > eligibility.
+
+### S1632. Adult Financial OAP deeming: a spouse's earned income less $65 halved; unearned income less the OAP grant standard, children's needs, medical payments and court-ordered support; exemption for a spouse on AF, SSI or Medicaid; sponsor deeming less SSI-standard deductions
+
+Document: D-80
+
+9 CCR 2503-5 3.534 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.534 DEEMING INCOME
+>
+> A. To determine the amount of income to deem to a client from a the client’s spouse
+> who does not meet the criteria described below in ‘C’, calculate the countable
+> earned income of the spouse as follows:
+>
+> 1. Deduct $65 from the client’s spouse's gross earned income; and,
+>
+> 2. Divide the remainder by two (2); and,
+>
+> 3. The result is the amount of earned income deemed to the client.
+>
+> 4. The deemed earned income shall be considered income to the client and
+> shall be deducted, together with any other income, from the grant of the
+> client.
+>
+> 5. Wages being garnished by the court are countable earned income.
+>
+> B. To determine the amount of unearned income to deem to a client from the client’s
+> spouse who does not meet the criteria as described below in ‘C’, calculate the
+> countable unearned income of the spouse as follows:
+>
+> 1. Calculate the total amount of unearned income of the spouse;
+>
+> 2. Deduct the OAP grant standard from the total unearned income of the
+> spouse;
+>
+> 3. Deduct an amount to meet the needs of each dependent child living in the
+> household of the spouse equal to half the maximum SSI grant benefit
+> standard, as defined in Section 3.510, less the dependent child's own
+> income;
+>
+> 4. Deduct any medical care payments by the spouse for his or her
+> dependents who are not covered by Medicare, Medicaid, or other health
+> programs;
+>
+> 5. Deduct any amount of obligation of the spouse due to orders of judgment
+> or for support by a court, unless there is a garnishment. Income garnished
+> by the court is countable as unearned income.
+>
+> 6. The remainder is the amount of unearned income deemed to the client.
+>
+> 7. The deemed unearned income shall be considered income to the client
+> and shall be deducted, together with any other income, from the grant of
+> the client.
+>
+> C. If a client’s spouse is receiving Adult Financial grant payments, SSI benefits, or
+> Medicaid assistance and has income no greater than the OAP limit, his or her
+> income shall not be considered as available to the client and shall not be
+> deemed. If a client’s spouse is institutionalized and the client has retained the
+> minimum monthly maintenance needs allowance (MMMNA), the MMMNA shall
+> be deducted from the institutionalized spouse’s total income.
+>
+> D. A sponsor's income can only be deemed to the non-citizen client he or she
+> sponsors. The amount of earned and unearned income to deem from a
+> sponsor(s) to a non-citizen client is calculated as follows:
+>
+> 1. The total gross earned and unearned income of the sponsor are added
+> together.
+>
+> 2. The following deductions are subtracted from the total gross income of the
+> sponsor:
+>
+> A. A deduction for the sponsor equal to the current SSI benefit
+> standard, as defined in Section 3.510, for an individual for the
+> month in which eligibility is being determined; plus,
+>
+> B. A deduction for the sponsor's spouse living in the same household
+> with the sponsor, equal to one-half the current SSI benefit standard.
+> As defined in Section 3.510, for an individual; or a deduction for the
+> sponsor's spouse, who is also a co-sponsor of the non-citizen,
+> equal to the current SSI benefit standard for an individual; plus,
+>
+> C. A deduction equal to one-half the SSI benefit standard, as defined
+> in Section 3.510, for an individual for each person who is a
+> dependent of the sponsor (other than the non-citizen client and the
+> non-citizen client's spouse), as defined in Section 3.520.68.B.2.b.1.
+>
+> 3. The difference between the total income and the total deductions is
+> deemed as unearned income to the non-citizen client. This deemed
+> income is added to the non-citizen client's own income to determine the
+> total countable income.
+>
+> 4. The non-citizen client's countable income is compared to the income
+> standard of the Adult Financial program for which the non-citizen client is
+> applying to determine eligibility and/or the grant payment amount.
+>
+> 5. If more than one non-citizen client has the same sponsor, all of the
+
+### S1633. Adult Financial AND-SO deeming: spouse's earned income less $65 halved; unearned less $20 unless the client has unearned income; exemption; sponsor deeming
+
+Document: D-80
+
+9 CCR 2503-5 3.544.D-G (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. A portion of the earned income of the AND-SO client's spouse shall be deemed
+> to the client, as follows:
+>
+> 1. Deduct sixty five dollars ($65) from the spouse's gross earned income;
+> and,
+>
+> 2. Divide the remainder by two (2); and,
+>
+> 3. The result is the amount of earned income deemed to the client.
+>
+> 4. The deemed earned income shall be considered income to the client and
+> shall be deducted, together with any other income, from the grant of the
+> client.
+>
+> 5. Wages being garnished by the court are countable earned income.
+>
+> E. A portion of the unearned income of the AND-SO client's spouse shall be
+> deemed to the client, as follows:
+>
+> 1. Determine the spouse's unearned monthly gross income.
+>
+> 2. Deduct $20.00 unless the client also has unearned income. The $20.00
+> disregard shall be split between the client and the client’s spouse so that
+> no more than a $20.00 disregard is applied.
+>
+> 3. The result is deemed to the client.
+>
+> F. If a client’s spouse is receiving Adult Financial grant payments, SSI benefits, or
+> Medicaid assistance and has income no greater than the SSI limit, their income
+> shall not be considered as available to the client and shall not be deemed. If a
+> client’s spouse is institutionalized and the client has retained the minimum
+> monthly maintenance needs allowance (MMMNA), the MMMNA shall be
+> deducted from the institutionalized spouse’s total income.
+>
+> G. A sponsor's income can only be deemed to the non-citizen client he or she
+> sponsors. The amount of earned and unearned income to deem from a
+> sponsor(s) to a non-citizen client is calculated as follows:
+>
+> 1. The total gross earned and unearned income of the sponsor are added
+> together.
+>
+> 2. The following deductions are subtracted from the total income of the
+> sponsor:
+>
+> a. A deduction for the sponsor equal to the current SSI benefit
+> standard for an individual, as defined in Section 3.510; plus
+> b. A deduction for the sponsor's spouse living in the same household
+> with the sponsor, equal to one-half the current SSI benefit standard
+> for an individual, as defined in Section 3.510; or a deduction for the
+> sponsor's spouse, who is also a co-sponsor of the non-citizen,
+> equal to the current SSI benefit standard for an individual; plus
+> c. A deduction equal to one-half the SSI benefit standard for an
+> individual, as defined in Section 3.510, for each person who is a
+> dependent of the sponsor (other than the non-citizen client and the
+> non-citizen client's spouse).
+>
+> 3. The difference between the total income and the total deductions is
+> deemed as unearned income to the non-citizen client. This deemed
+> income is added to the non-citizen client's own income to determine the
+> total countable income.
+>
+> 4. The non-citizen client's countable income is compared to the income
+> standard of the Adult Financial program for which the non-citizen client is
+> applying to determine eligibility and/or the grant payment amount.
+>
+> 5. If more than one non-citizen client has the same sponsor, all of the
+> sponsor's income is deemed to each non-citizen client. Do not divide the
+> sponsor's income among the non-citizen clients.
+
+### S1634. Adult Financial AND-CS deeming: spouse's (or an unemancipated child's parents') earned income less $65 halved; unearned less the client's unused $20; exemption; sponsor deeming
+
+Document: D-80
+
+9 CCR 2503-5 3.549.C-G (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. A portion of the earned income of an AND-CS client's spouse shall be deemed to
+> the client, as follows:
+>
+> 1. Determine the spouse's monthly gross income.
+>
+> 2. Deduct $65.00 from the monthly gross income; and,
+>
+> 3. Divide the remainder by two (2).
+>
+> 4. The result is the amount deemed to the client.
+>
+> D. A portion of the unearned income for the AND-CS client's spouse shall be
+> deemed to the client, as follows:
+>
+> 1. Determine the spouse's monthly gross unearned income.
+>
+> 2. Deduct any remaining unearned income disregard remaining from the
+> client or $20.00, whichever is less. A couple shall be allowed a combined
+> $20.00 disregard, which is split between the client and the spouse.
+>
+> 3. The result is countable unearned income and is deemed to the client.
+>
+> E. When the AND-CS client is an unemancipated child under eighteen (18) years of
+> age, the earned and unearned income of the child and the child's parents shall
+> be subject to disregards and deeming, as outlined above. The parents' income
+> shall be deemed using the same calculations as a spouse.
+>
+> F. If a spouse or parent is receiving Adult Financial grant payments, SSI benefits, or
+> Medicaid assistance and has income no greater than the SSI limit, their income
+> shall not be considered as available to the AND-CS client and shall not be
+> deemed. If a spouse is institutionalized and the client has retained the MMMNA,
+> the MMMNA shall be deducted from the institutionalized spouse’s total income.
+>
+> G. A sponsor's income can only be deemed towards the non-citizen client he or she
+> sponsors. The amount of earned and unearned income to deem from a
+> sponsor(s) to a client is calculated as follows:
+>
+> 1. The total gross earned and unearned income of the sponsor are added
+> together.
+>
+> 2. The following deductions are subtracted from the total income of the
+> sponsor:
+>
+> a. A deduction for the sponsor equal to the current SSI benefit
+> standard, as defined in Section 3.510, for an individual for the
+> month in which eligibility is being determined; plus
+> b. A deduction for the sponsor's spouse living in the same household
+> with the sponsor, equal to one-half the current SSI benefit standard,
+> as defined in Section 3.510, for an individual; or a deduction for the
+> sponsor's spouse, who is also a co-sponsor of the non-citizen
+> client, equal to the current SSI benefit standard for an individual;
+> plus
+> c. A deduction equal to one-half the SSI benefit standard, as defined
+> in Section 3.510, for an individual for each person who is a
+> dependent of the sponsor (other than the non-citizen client and the
+> non-citizen client's spouse).
+>
+> 3. The difference between the total income and the total deductions is
+> deemed as unearned income to the non-citizen client. This deemed
+> income is added to the non-citizen client's own income to determine the
+> total countable income.
+>
+> 4. Compare the non-citizen client's countable income to the income standard
+> of the Adult Financial program for which the non-citizen client is applying
+> to determine eligibility and/or the grant payment amount.
+>
+> 5. If more than one non-citizen client has the same sponsor, all of the
+> sponsor's income is deemed to each non-citizen client. Do not divide the
+> sponsor's income among the non-citizen clients.
+
+### S1635. Adult Financial first-month proration by days remaining and the OAP transition in the month of the sixtieth birthday
+
+Document: D-80
+
+9 CCR 2503-5 3.532.B.1-3, 3.543.B.1-2, 3.548.B.1-2 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 1. If determined eligible on the first of the month, the client shall receive his
+> or her authorized grant payment in the initial and subsequent months.
+>
+> 2. If determined eligible on any other day of the month, the client's first month
+> grant payment shall be prorated according to the number of days
+> remaining in the month; the client shall receive their authorized grant
+> payments in subsequent months.
+>
+> 3. If a client is receiving services in another Adult Financial (AF) program in
+> the month he or she turns sixty (60) years of age and is otherwise eligible
+> for OAP, the client shall transition from the other AF program to OAP
+> effective the first day of the client's birth month, and receive his or her
+> authorized grant payment for the birthday month and subsequent months.
+>
+> 1. If determined eligible on the first of the month, the client shall receive his
+> or her authorized grant payment in the initial and subsequent months.
+>
+> 2. If determined eligible on any other day of the month, the client's first month
+> grant payment shall be prorated according to the number of days
+> remaining in the month; the client shall receive their full authorized grant
+> payment in subsequent months.
+>
+> 1. If determined eligible on the first of the month, the client shall receive his
+> or her authorized grant payment in the initial and subsequent months.
+>
+> 2. If determined eligible on any other day of the month, the client's first month
+> grant payment shall be prorated according to the number of days
+> remaining in the month; the client shall receive their authorized grant
+> payment in subsequent months.
+
+### S1636. Adult Financial resources of the client, spouse and sponsors: $2,000 and $3,000 limits; a sponsor's countable resources over the sponsor's limit deemed to the non-citizen client
+
+Document: D-80
+
+9 CCR 2503-5 3.520.72.A, E (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.72 RESOURCES
+>
+> A. Unless otherwise specified, a resource is countable, and together with all other
+> countable resources of the client, spouse, and sponsor(s) shall be considered
+> against the resource limit. The resource limit is:
+>
+> 1. $2,000 for:
+>
+> a. An unmarried client;
+>
+> b. An unmarried sponsor; and,
+>
+> c. A married sponsor whose spouse is a co-sponsor. Each sponsor
+> shall receive the $2,000 resource limit for a combined resource limit
+> of $4,000.
+>
+> 2. $3,000 for:
+>
+> a. A married client; or,
+>
+> b. A married sponsor whose spouse is not a co-sponsor.
+>
+> E. A sponsor(s)'s resources are only counted toward the non-citizen client they
+> sponsor. Resources are attributed to the sponsor in the same manner as the
+> non-citizen client, as outlined in Section 3.520.7. All countable resources over the
+> sponsor(s) resource limit, as outlined in Section 3.520.72.A, are then deemed to
+> the non-citizen client. The deemed amount from the client’s sponsor(s) is then
+> added to the non-citizen client’s countable resources and compared to the non-
+> citizen client’s resource limit, as outlined in Section 3.520.72.A.

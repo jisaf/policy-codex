@@ -1,0 +1,13 @@
+id: CO-2388
+name: "Sponsor has a spouse in the household"
+identifier: sponsor_has_spouse_in_household
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The sponsor of this non-citizen has a spouse living in the same household as the sponsor (9 CCR 2503-5 3.534.D.2.B)."
+precision: "If not stated, a program reads this as false. A co-sponsor spouse is sponsor_spouse_is_cosponsor (CO-2362)."
+supplied_by: "Affidavit of support, sponsor's statement."
+sources: [S1632]
+tags: [immigration]
+rationale: "OQ-114: Adult Financial deducts half the SSI benefit standard for a sponsor's spouse in the household, or the full standard for a co-sponsor spouse (S1632); no fact stated the spouse."

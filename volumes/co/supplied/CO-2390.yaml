@@ -1,0 +1,13 @@
+id: CO-2390
+name: "Adult Financial: countable resources of the sponsor"
+identifier: af_sponsor_countable_resources
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The countable resources of this non-citizen client's sponsor (and a co-sponsor spouse), attributed to the sponsor in the same manner as to the client (9 CCR 2503-5 3.520.72.E)."
+precision: "Stated for a client sponsored on a binding affidavit of support (is_sponsored_non_citizen)."
+supplied_by: "Sponsor's resource verification."
+sources: [S1636]
+tags: [cash, resources, immigration]
+rationale: "OQ-392: 3.520.72.E (S1636) deems a sponsor's countable resources over the sponsor's limit to the non-citizen client; no fact stated them."

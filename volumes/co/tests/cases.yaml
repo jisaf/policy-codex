@@ -5367,6 +5367,9 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        # Phase-10 sweep (OQ-114): the parents are enrolled in Medicaid as Colorado Works parents, and each has income
+        # within the SSI standard ($400 and $0 against $994), so neither's income is deemed to Alma (3.549.E-F).
+        receives_medicaid: true
         date_of_birth: "1992-03-14"
         sex: female
         citizenship_status: citizen
@@ -5429,6 +5432,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        receives_medicaid: true  # phase-10 sweep (OQ-114), see p1
         date_of_birth: "1990-07-02"
         sex: male
         citizenship_status: citizen
@@ -6251,6 +6255,9 @@
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
+        # Phase-10 sweep (OQ-114): admitted on a basis that required no Form I-864 affidavit (illustrative), so no
+        # sponsor income is deemed to his OAP grant (3.534.D).
+        is_sponsored_non_citizen: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
