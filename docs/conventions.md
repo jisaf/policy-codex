@@ -190,6 +190,7 @@ Added for the hard-coded numbers fix round (docs/reviews/audit-hardcoded-numbers
 
 - P50 `the most recent month number [n] on or before [month or date]` (`latest_month_of_year`) the most recent month, on or before the month (or the month containing the date), whose calendar month number is n; the month itself when its number is n; unknown when either input is unknown. A program year, school year or guideline year that starts in a month of each year (the LEAP program year in November, the compulsory attendance date in August, the school meal guideline year in July) is found from a whole-number month parameter, with no anchor month and no arithmetic in the rule
 - P51 `[table keyed by a whole number], for [number], adding [amount] for each beyond its last row` and `[table], for [number], or its last row beyond it` (`lookup_extended`) a lookup that reads the table's last row itself: up to it, the row for the number; above it, the last row plus the amount for each number beyond it (the `_each_additional` step of the poverty guideline, the SNAP limits, the Colorado Works standards), or the last row itself ("6 or more"). A new table version with more or fewer rows needs no change to the rule
+- P52 `the calendar year of [month or date]` (`year_of`) the year as a whole number; unknown when the month is unknown. A figure keyed by year (the Summer EBT benefit level of a summer) is read for the year of a month found with P50, with no anchor date
 
 ## Tests
 

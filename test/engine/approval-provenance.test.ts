@@ -205,6 +205,7 @@ describe("the audit-fix operators and types read, render and type-check", () => 
     ["lookup_extended", "limit_table", "size", "limit_each_additional"],
     ["lookup_extended", "limit_table", "size"],
     ["latest_month_of_year", "start_month", ["det_month"]],
+    ["+", ["year_of", ["latest_month_of_year", "start_month", ["det_month"]]], 1],
     ["as_of", "limit_table", ["first_day", ["latest_month_of_year", "start_month", ["det_month"]]]],
     ["lookup_extended", ["as_of", "limit_table", "2026-07-01"], ["+", "size", 1], "limit_each_additional"],
   ];
@@ -226,7 +227,7 @@ describe("the audit-fix operators and types read, render and type-check", () => 
     expect(check(ix, ["as_of", "start_month", "2026-07-01"], "person").type).toBe("number");
     expect(check(ix, ["as_of", "size", "2026-07-01"], "person").errors.length).toBe(1);
     expect(check(ix, ["latest_month_of_year", "start_month", ["det_date"]], "person").type).toBe("month");
-    expect([...check(ix, trees[4], "person").refs].sort()).toEqual(["limit_table", "start_month"]);
+    expect([...check(ix, trees[5], "person").refs].sort()).toEqual(["limit_table", "start_month"]);
   });
 });
 

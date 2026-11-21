@@ -243,6 +243,7 @@ members' groups need not be equal.
 | `first_day` | month | its first day | unknown in, unknown out |
 | `month_of` | date | the month containing it | unknown in, unknown out |
 | `month_of_year` | month | its calendar month number, 1 (January) to 12 (December) | unknown in, unknown out |
+| `year_of` (P52) | month or date | its calendar year, as a whole number | unknown in, unknown out |
 | `latest_month_of_year` (P50) | n (1 to 12), month or date | the most recent month, on or before the month (or the month containing the date), whose calendar month number is n: the month itself when its number is n | unknown if either is |
 | `month_before`, `month_after` | month | the month before or after | unknown in, unknown out |
 | `months_before`, `months_after` | n, month | the month n months before or after | unknown if either is |

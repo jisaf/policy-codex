@@ -548,6 +548,9 @@ class Evaluator:
         if op == "month_of_year":
             m = ev(e[1])
             return None if m is None else int(m[5:7])
+        if op == "year_of":
+            m = ev(e[1])
+            return None if m is None else int(str(m)[:4])
         if op == "latest_month_of_year":
             n, m = ev(e[1]), ev(e[2])
             if n is None or m is None:
@@ -837,6 +840,8 @@ class Renderer:
             return f"the month containing {i(e[1])}"
         if op == "month_of_year":
             return f"the calendar month number of {i(e[1])}"
+        if op == "year_of":
+            return f"the calendar year of {i(e[1])}"
         if op == "latest_month_of_year":
             return f"the most recent month number {self.operand(e[1])} on or before {self.operand(e[2])}"
         if op == "as_of":

@@ -137,6 +137,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "first_day": need(e[1], ["month"], "first day of"); return "date";
       case "month_of": need(e[1], ["date"], "month containing"); return "month";
       case "month_of_year": need(e[1], ["month"], "calendar month number of"); return "number";
+      case "year_of": need(e[1], ["month", "date"], "calendar year of"); return "number";
       case "month_before": case "month_after": need(e[1], ["month"], op); return "month";
       case "months_ending":
         need(e[1], ["number"], "consecutive months"); need(e[2], ["month"], "ending with");

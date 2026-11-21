@@ -681,6 +681,7 @@ export function evaluate(
       case "first_day": { const mm = g(e[1]); return mm === null ? null : mm + "-01"; }
       case "month_of": { const d = g(e[1]); return d === null ? null : d.slice(0, 7); }
       case "month_of_year": { const mm = g(e[1]); return mm === null ? null : Number(String(mm).slice(5, 7)); }
+      case "year_of": { const x = g(e[1]); return x === null ? null : Number(String(x).slice(0, 4)); }
       case "latest_month_of_year": {
         // P50: the most recent month, on or before the given month (or the
         // month of the given date), whose calendar month number is n.

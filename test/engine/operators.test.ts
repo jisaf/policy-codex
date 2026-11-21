@@ -266,6 +266,11 @@ describe("dates", () => {
     expect(run(["latest_month_of_year", 1, "2026-12"], {})).toBe("2026-01");
     expect(run(["latest_month_of_year", 8, "d"], {})).toBe(U);
   });
+  it("year_of (P52) reads the calendar year of a month or a date", () => {
+    expect(run(["year_of", "2026-11"], {})).toBe(2026);
+    expect(run(["year_of", "2027-01-31"], {})).toBe(2027);
+    expect(run(["year_of", ["month_of", "d"]], {})).toBe(U);
+  });
   it("month_of_year reads the calendar month number, 1 to 12", () => {
     expect(run(["month_of_year", "2026-11"], {})).toBe(11);
     expect(run(["month_of_year", "2027-01"], {})).toBe(1);
