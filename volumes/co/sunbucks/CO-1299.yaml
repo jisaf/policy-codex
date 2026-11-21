@@ -1,0 +1,18 @@
+id: CO-1299
+name: "Summer EBT (SUN Bucks): summer benefit amount"
+identifier: sebt_benefit_amount
+kind: derived
+type: money
+scope: person-month
+program: SunBucks
+role: outcome
+meaning: The total Summer EBT benefit for an eligible child - the monthly benefit level for the calendar year times the three summer months - or zero for a child who is not eligible, per 7 CFR 292.15(d)-(e) and the 2026 benefit levels notice ($40 a month, $120 a summer in the 48 States and the District of Columbia).
+precision: The benefit is issued in full for the summer regardless of the date of application (292.15(f)(2)(iii)); the summer operational period is the agency's and is not modeled.
+derived: [case, [[in, sebt_eligibility_status, [eligible_categorical, eligible_income]], ["*", sebt_monthly_benefit, 3]], [else, 0]]
+sources: [S794, S795, S796, S797]
+implemented: engine
+tags: [sebt, income]
+rationale: No existing item computes the Summer EBT benefit; it is the program's benefit outcome.
+tests:
+  - {id: CO-1299-T1, as_of: "2026-10-01", month: "2026-10", given: {sebt_eligibility_status: eligible_income}, expect: 120}
+  - {id: CO-1299-T2, as_of: "2026-10-01", month: "2026-10", given: {sebt_eligibility_status: ineligible}, expect: 0}

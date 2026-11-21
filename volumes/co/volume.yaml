@@ -22,6 +22,7 @@ approval_policy:
     AdultFinancial: ["Cash programs policy owner"]
     CCCAP: ["Child care policy owner"]
     LEAP: ["Cash programs policy owner"]
+    SunBucks: ["SNAP policy owner"]
   by_kind:
     supplied: ["Data steward"]
   by_tag:
@@ -53,6 +54,9 @@ programs:
   - id: LEAP
     prefix: leap_
     outcomes: [leap_is_eligible, leap_benefit_amount]
+  - id: SunBucks
+    prefix: sebt_
+    outcomes: [sebt_eligibility_status, sebt_benefit_amount]
 
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
 tags:
@@ -69,6 +73,7 @@ tags:
   - { id: abawd, parent: snap, label: ABAWD time limit }
   - { id: work_registration, parent: snap, label: Work registration }
   - { id: student, parent: snap, label: Students }
+  - { id: sebt, label: Summer EBT (SUN Bucks) }
   - { id: cash, label: Cash assistance }
   - { id: tanf, parent: cash, label: Colorado Works }
   - { id: oap, parent: cash, label: Old Age Pension }

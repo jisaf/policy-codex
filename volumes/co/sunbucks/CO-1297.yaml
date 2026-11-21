@@ -1,0 +1,18 @@
+id: CO-1297
+name: "Summer EBT: monthly income eligibility limit"
+identifier: sebt_income_eligibility_limit
+kind: derived
+type: money
+scope: person
+program: SunBucks
+meaning: The monthly reduced-price school meal income guideline for the child's school meal household size - the annual HHS poverty guideline for that size times 1.85, rounded up to the next whole dollar, divided by twelve and rounded up again - per 7 CFR 292.5(a) and the Income Eligibility Guidelines notice for July 1, 2026 through June 30, 2027.
+precision: "Uses the HHS poverty guideline in force on the determination date (ma_poverty_guideline_table, CO-181); the school meal guidelines change on July 1 (292.5(b)), so a determination dated January through June uses the new calendar year's poverty figures six months before the school meal guidelines do (OQ-255)."
+derived: [ceil, ["/", [ceil, ["*", sebt_reduced_price_income_pct, [+, [lookup, ma_poverty_guideline_table, [min, school_meal_household_size, 8]], ["*", ma_poverty_guideline_each_additional, [max, 0, ["-", school_meal_household_size, 8]]]]]], 12]]
+sources: [S791, S798, S799]
+open: [OQ-255]
+implemented: engine
+tags: [sebt, income]
+rationale: "The guideline chart in the fetched notice is an image (D-90), so the monthly figure is derived by the method the notice's text states rather than transcribed. Reuses the HHS guideline table the Medicaid chapter carries."
+tests:
+  - {id: CO-1297-T1, title: "Household of 4 - 33,000 x 1.85 = 61,050; / 12 = 5,087.50, rounded up to 5,088", as_of: "2026-10-01", given: {school_meal_household_size: 4}, expect: 5088}
+  - {id: CO-1297-T2, title: "Household of 1 - 15,960 x 1.85 = 29,526; / 12 = 2,460.50, rounded up to 2,461", as_of: "2026-10-01", given: {school_meal_household_size: 1}, expect: 2461}

@@ -1,0 +1,22 @@
+id: CO-1298
+name: "Summer EBT (SUN Bucks): eligibility status"
+identifier: sebt_eligibility_status
+kind: derived
+type: one of
+options: [eligible_categorical, eligible_income, ineligible]
+scope: person-month
+program: SunBucks
+role: outcome
+meaning: Whether the child is eligible for Summer EBT (Colorado's SUN Bucks) and on which ground - categorically eligible (a member of a household receiving SNAP or TANF, or another categorical ground) and either school aged or enrolled in an NSLP/SBP school; or enrolled in an NSLP/SBP school with household income at or below the reduced-price meal guideline - per 7 CFR 292.2, 292.5 and 292.6.
+precision: "SNAP receipt is read as the child's own SNAP eligibility in the month (snap_is_eligible), TANF receipt as receives_tanf_cash. A child for whom any categorical prong is unknown and the income test is not met is unknown. The period of eligibility spans the preceding school year through the summer (292.7); this item tests the facts of the month evaluated. Colorado's choices among the optional streamlined-certification sources (Medicaid and other means-tested programs, 292.12(d)(2)) are not in any fetched Colorado text (OQ-255)."
+derived: [case, [[all, [any, is_school_aged, is_enrolled_in_nslp_school], [any, snap_is_eligible, receives_tanf_cash, sebt_other_categorical_basis]], eligible_categorical], [[all, is_enrolled_in_nslp_school, [<=, school_meal_household_income, sebt_income_eligibility_limit]], eligible_income], [else, ineligible]]
+sources: [S790, S791, S792, S793]
+open: [OQ-255]
+implemented: engine
+tags: [sebt, income]
+rationale: No existing item determines Summer EBT eligibility; SunBucks is a new program in the volume. Declared as an outcome.
+tests:
+  - {id: CO-1298-T1, title: "School-aged child in a SNAP household - categorical, no school enrollment needed", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: true, is_enrolled_in_nslp_school: false, snap_is_eligible: true}, expect: eligible_categorical}
+  - {id: CO-1298-T2, title: "Enrolled, no categorical ground, income under the limit", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: true, is_enrolled_in_nslp_school: true, snap_is_eligible: false, receives_tanf_cash: false, sebt_other_categorical_basis: false, school_meal_household_income: 4000, sebt_income_eligibility_limit: 5088}, expect: eligible_income}
+  - {id: CO-1298-T3, title: "Enrolled, income over the limit", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: true, is_enrolled_in_nslp_school: true, snap_is_eligible: false, receives_tanf_cash: false, sebt_other_categorical_basis: false, school_meal_household_income: 6000, sebt_income_eligibility_limit: 5088}, expect: ineligible}
+  - {id: CO-1298-T4, title: "Not school aged and not enrolled - ineligible even in a SNAP household", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: false, is_enrolled_in_nslp_school: false, snap_is_eligible: true}, expect: ineligible}

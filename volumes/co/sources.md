@@ -4508,3 +4508,156 @@ Document: D-87
 > assessed at fifty-five percent (55%) of the above-calculated fee. Part-time care is
 > defined as an average of less than thirteen (13) full-time equivalent units of care
 > per month.
+
+### S790. Summer EBT eligibility: school-aged categorical children and children enrolled in NSLP/SBP schools
+
+Document: D-88
+
+7 CFR 292.6 (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/part-292/section-292.6
+
+> § 292.6 Eligibility.
+>
+> Children eligible for Summer EBT include those who, at any time during the period of eligibility, are:
+>
+> (a) School-aged and categorically eligible.
+>
+> (b) Enrolled in an NSLP/SBP-participating school, except for special provision schools, and:
+>
+> (1) Categorically eligible;
+>
+> (2) Meet the requirements to receive free or reduced price meals at § 292.5(a), as determined through an NSLP/SBP application;
+>
+> (3) Otherwise are determined eligible to receive a free or reduced price meal; or
+>
+> (4) Determined eligible through a Summer EBT application, consistent with § 292.13.
+>
+> (c) Enrolled in a special provision school, and:
+>
+> (1) Categorically eligible;
+>
+> (2) Otherwise meet the requirements to receive free or reduced price meals at § 292.5(a), as determined through an NSLP/SBP application; or
+>
+> (3) Determined eligible through a Summer EBT application, consistent with § 292.13.
+
+### S791. Summer EBT eligibility follows the NSLP/SBP free and reduced-price standards
+
+Document: D-88
+
+7 CFR 292.5. https://www.ecfr.gov/current/title-7/part-292/section-292.5
+
+> § 292.5 General purpose and scope.
+>
+> (a) Summer EBT eligibility is based on the eligibility standards for the NSLP/SBP, which includes children who are income eligible for free or reduced-price school meals based on the Income Eligibility Guidelines published by the Department by notice in the Federal Register and in accordance with the household size and income standards for free and reduced price school meals, and children who are categorically eligible, as defined in § 292.2.
+>
+> (b) The Income Eligibility Guidelines are published annually and change on July 1. The guidelines in effect on the date of application must be used to determine eligibility.
+
+### S792. Categorically eligible (Summer EBT definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/part-292/section-292.2
+
+> Categorically eligible means considered income eligible for Summer EBT, as applicable, based on documentation that a child is a member of a household, as defined in this section, and one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR, or another means tested program, as approved by the Secretary. A foster child, homeless child, a migrant child, a Head Start child and a runaway child, as defined in § 245.2 of this chapter, are also categorically eligible. Categorical eligibility and automatic eligibility may be used synonymously.
+
+### S793. School aged (Summer EBT definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/part-292/section-292.2
+
+> School aged means the years in which a child is required to attend school, or an equivalent program as defined by State or Tribal law. Also known as the age requirement for compulsory education.
+
+### S794. Summer EBT benefit amount: $40 a month in 2024, adjusted annually by the Thrifty Food Plan
+
+Document: D-88
+
+7 CFR 292.15(e). https://www.ecfr.gov/current/title-7/part-292/section-292.15
+
+> (e) Benefit amount. (1) In 2024, the benefit will be $40 per month in the summer operational period for each eligible child, and will be adjusted in subsequent years to reflect changes in the cost of food as measured by the Thrifty Food Plan (TFP). Any year-to-year decrease of the TFP will not be implemented.
+>
+> (2) In Alaska, Hawaii, Guam, American Samoa, Puerto Rico, the Virgin Islands of the United States, and the Commonwealth of the Northern Mariana Islands, the Secretary may establish appropriate adjustments for each such State to the national average payment rates to reflect the differences between the costs of foods in those States and the costs of foods in all other States.
+>
+> (3) Benefit amounts will be issued in an amount equal to the unrounded benefit amount from the prior year, adjusted to the nearest lower dollar increment to reflect changes to the cost of the diet described in section 3(u) of the Food and Nutrition Act of 2008 (7 U.S.C. 2012(u)) for the 12-month period ending on November 30 of the preceding calendar year and rounded to the nearest lower dollar increment. Rates will be effective January 1 through December 31 of each year.
+
+### S795. Summer EBT: a full three months of benefits for the summer operational period
+
+Document: D-88
+
+7 CFR 292.15(d). https://www.ecfr.gov/current/title-7/part-292/section-292.15
+
+> (iii) The Summer EBT agency's issuance schedule does not need to align with the start of calendar months and may include staggered benefit issuance across multiple days. Regardless of the issuance schedule, Summer EBT agencies may only issue a full three months of benefits for the summer operational period.
+
+### S796. Summer EBT 2026 benefit levels: rounding, three months, and the contiguous States at $40 a month and $120 a summer
+
+Document: D-89
+
+91 Fed. Reg. 21397 (Apr. 22, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-22/pdf/2026-07843.pdf
+
+> This notice provides the 2026
+> Summer EBT monthly and total summer
+> benefit levels. The law requires the
+> adjusted level to be rounded down to
+> the nearest dollar amount. The total
+> summer benefit level is the rounded
+> down monthly level multiplied by
+> three.
+> Calculation of Benefit Levels
+> Contiguous States and Indian Tribal
+> Organizations: The adjustment is based
+> on the monthly TFP cost for a reference
+> family of four. The change for the 12month period ending on November 30th
+> of the preceding calendar year is used
+> to adjust the benefit level from the
+> previous year. The November 2024 to
+> November 2025 percent change is .49
+> percent, which results in no change in
+> monthly benefit levels for 2026. The
+> benefits for 2026 remain at $40
+> (rounded down from $40.82) monthly
+> and $120 total.
+
+### S797. Summer EBT 2026 benefit levels are in effect for calendar year 2026
+
+Document: D-89
+
+91 Fed. Reg. 21396-21397 (Apr. 22, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-22/pdf/2026-07843.pdf
+
+> DATES: These benefit levels are in effect
+> January 1, 2026, through December 31,
+> 2026.
+
+### S798. School meal income eligibility guidelines July 1, 2026 - June 30, 2027: 130% and 185% of the 2026 poverty guidelines
+
+Document: D-90
+
+91 Fed. Reg. 17933 (Apr. 9, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-09/pdf/2026-06842.pdf
+
+> The Income Eligibility Guidelines
+> The following are the Income
+> Eligibility Guidelines to be effective
+> from July 1, 2026 through June 30, 2027.
+> The Department’s guidelines for free
+> meals and milk, and reduced price
+> meals were obtained by multiplying the
+> year 2026 Federal income poverty
+> guidelines by 1.30 and 1.85,
+> respectively, and by rounding the result
+> upward to the next whole dollar.
+
+### S799. School meal income eligibility guidelines: monthly figure is annual divided by 12, rounded up
+
+Document: D-90
+
+91 Fed. Reg. 17933 (Apr. 9, 2026). https://www.govinfo.gov/content/pkg/FR-2026-04-09/pdf/2026-06842.pdf
+
+> Income calculations are made based
+> on the following formulas: monthly
+> income is calculated by dividing the
+> annual income by 12; twice monthly
+> income is computed by dividing annual
+> income by 24; income received every
+> two weeks is calculated by dividing
+> annual income by 26; and weekly
+> income is computed by dividing annual
+> income by 52. All numbers are rounded
+> upward to the next whole dollar. The

@@ -1,0 +1,13 @@
+id: CO-1296
+name: Other Summer EBT categorical basis
+identifier: sebt_other_categorical_basis
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: The child is categorically eligible for Summer EBT on a ground other than SNAP or TANF receipt - a foster, homeless, migrant, runaway or Head Start child as defined in 7 CFR 245.2, a member of a household receiving FDPIR, or a member of a household receiving another means-tested program the Secretary has approved for the Summer EBT agency - or was individually certified for free or reduced-price meals during the period of eligibility, per 7 CFR 292.2 ("Categorically eligible"), 292.6 and 292.12(d).
+supplied_by: Direct certification data matches (State FDPIR, foster care, homeless, migrant, Head Start records) and school meal certification records.
+sources: [S790, S792]
+open: [OQ-255]
+tags: [sebt]
+rationale: SNAP and TANF receipt are read from the volume's own facts; the remaining categorical grounds have no fact in the volume and enter as one supplied yes/no. sebt_eligibility_status (CO-1298) needs it.

@@ -1,0 +1,13 @@
+id: CO-1292
+name: Is school aged
+identifier: is_school_aged
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: The child is of the age for which Colorado law requires school attendance (compulsory education), during the Summer EBT period of eligibility, per 7 CFR 292.2 ("School aged") and 292.6(a).
+supplied_by: Date of birth against Colorado's compulsory attendance ages, as the Summer EBT agency applies them.
+sources: [S790, S793]
+open: [OQ-255]
+tags: [sebt, age]
+rationale: Colorado's compulsory attendance statute was not fetched (OQ-255), so the age test enters as a supplied yes/no rather than a rule over date_of_birth. sebt_eligibility_status (CO-1298) needs it.
