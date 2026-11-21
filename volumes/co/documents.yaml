@@ -925,3 +925,53 @@
   url: https://www.sos.state.co.us/CCR/Upload/AGORequest/AdoptedRules02026-00287.docx
   file: documents/D-173.md
   date: 2026-11-01
+# Audit fix round, track 2 (2026-11-21): same-word and dual-entry audits.
+- id: D-186
+  title: "7 CFR 271.2 — Definitions (current eCFR text)"
+  kind: regulation
+  citation: "7 CFR 271.2"
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-7.xml?part=271&section=271.2
+  file: documents/D-186.md
+  date: 2026-11-19
+- id: D-187
+  title: "7 CFR 245.2 — Definitions (free and reduced price meals)"
+  kind: regulation
+  citation: "7 CFR 245.2"
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-7.xml?part=245&section=245.2
+  file: documents/D-187.md
+  date: 2026-11-19
+- id: D-188
+  title: "42 U.S.C. 11434a — McKinney-Vento Homeless Assistance Act, education definitions"
+  kind: statute
+  citation: "42 U.S.C. 11434a"
+  url: https://www.law.cornell.edu/uscode/text/42/11434a
+  file: documents/D-188.md
+  date: 2026-11-21
+- id: D-189
+  title: "20 CFR 416.1806 — Whether you are married and who is your spouse (SSI)"
+  kind: regulation
+  citation: "20 CFR 416.1806"
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1806
+  file: documents/D-189.md
+  date: 2026-11-19
+- id: D-190
+  title: "42 CFR 435.1010 — Definitions relating to institutional status"
+  kind: regulation
+  citation: "42 CFR 435.1010"
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-42.xml?part=435&section=435.1010
+  file: documents/D-190.md
+  date: 2026-11-19
+- id: D-191
+  title: "7 CFR 273.8 — Resource eligibility standards"
+  kind: regulation
+  citation: "7 CFR 273.8"
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-7.xml?part=273&section=273.8
+  file: documents/D-191.md
+  date: 2026-11-19
+- id: D-192
+  title: "7 CFR 273.9 — Income and deductions"
+  kind: regulation
+  citation: "7 CFR 273.9"
+  url: https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-7.xml?part=273&section=273.9
+  file: documents/D-192.md
+  date: 2026-11-19
