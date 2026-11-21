@@ -9,7 +9,7 @@ meaning: The individuals living together as one economic unit for whom primary h
 precision: As with snap_household_members (CO-305), a stated spouse or parent/child relationship edge is read as living together for LEAP purposes, extended beyond 3.751.2.D's unconditional age-based joins by the supplied shares_heating_fuel_with (CO-895, see OQ-132, which also notes this cannot join two people with no relationship edge at all); this volume does not separately model 3.751.2.E's separate-household election for a parent living with an ex-spouse after divorce or legal separation, or 3.751.21's permanent-separation test.
 derived: [filter, [reachable, [spouse, parent, child], [any, [rel, [spouse], [P]], [all, [rel, [parent], [P]], [any, ["<", [of, [P], age], leap_household_child_age_limit], [otherwise, [of, [P], shares_heating_fuel_with], false]], [not, [otherwise, [of, [P], is_emancipated_minor], false]]], [all, [rel, [child], [P]], [any, ["<", age, leap_household_child_age_limit], [otherwise, shares_heating_fuel_with, false]], [not, [otherwise, is_emancipated_minor, false]]]]], [of, [P], leap_meets_citizenship_requirement]]
 sources: [S489, S490, S494]
-open: [OQ-132]
+open: [OQ-132, OQ-358]
 implemented: engine
 tags: [household]
 rationale: "No existing item in this volume built the LEAP household closure from 3.751.1's own household definition; the prior version was built from 3.751.2.D's floor on splitting instead (review docs/reviews/cccap-leap-phase-6.md, C-1, blocking) and counted a 3.753.17-excluded individual as a member (C-2, blocking). leap_household_size (CO-1001) and leap_household_income (CO-1002, via leap_household_members_for_income, CO-1009) both need this fixed closure."

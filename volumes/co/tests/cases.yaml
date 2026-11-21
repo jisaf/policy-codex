@@ -193,6 +193,9 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -393,6 +396,9 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -571,6 +577,9 @@
         is_disabled_ssa: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -745,6 +754,9 @@
         is_disabled_ssa: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -917,6 +929,9 @@
         is_disabled_ssa: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -961,8 +976,9 @@
   # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
   # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
   # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
-  # (OQ-253); in November the grandparents' LEAP household gets 900 x (1 - 0.2 - 0.3) = 450 and p3's household
-  # 900 x (1 - 0.2 - 0.2) = 540. CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
+  # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
+  # status, her income counted, 5,590 = 203% FPL for four), which in November gets 900 x (1 - 0.2 - 0.3) = 450.
+  # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
   # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
   # eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing assistance).
@@ -1043,8 +1059,8 @@
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-10": ineligible_child}
-      leap_household_members: [p1, p2]
-      leap_household_income: {"2026-10": 3210}
+      leap_household_members: [p1, p2, p4, p5]    # C-2 (phase-8 fix round): the family buys heat in common (shares_heating_fuel_with), so one LEAP household; p3 excluded for status (3.753.17), her income counted
+      leap_household_income: {"2026-10": 5590}    # 3,210 + 2,380
       leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-10": true}
@@ -1090,7 +1106,9 @@
       cccap_verification_status: {"2026-10": complete}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 2}
+      leap_pending_verification_count: {"2026-10": 7}    # counted over the one household, p3 included (CO-1460)
+      cw_death_reimbursement_eligible: false    # K-1: no member is a deceased Colorado Works client
+      cw_death_reimbursement_amount: 0
     p2:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -1113,7 +1131,7 @@
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-10": ineligible_child}
-      leap_household_members: [p1, p2]
+      leap_household_members: [p1, p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: false
       ma_ltc_couple: false
@@ -1156,7 +1174,10 @@
       cccap_verification_status: {"2026-10": complete}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 2}
+      leap_pending_verification_count: {"2026-10": 7}
+      leap_household_income: {"2026-10": 5590}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
     p3:
       ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1186,8 +1207,8 @@
       # leap_household_members is now filtered by 3.753.17's citizenship requirement (p3 is undocumented, review C-2);
       # leap_household_income still sums p3's income via leap_household_members_for_income (CO-1009). leap_is_eligible
       # is false: October is outside the November-April eligibility period (review C-3, 3.751.1/3.752.1).
-      leap_household_members: [p4, p5]
-      leap_household_income: {"2026-10": 2380}
+      leap_household_members: [p1, p2, p4, p5]
+      leap_household_income: {"2026-10": 5590}
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1221,7 +1242,9 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 5}
+      leap_pending_verification_count: {"2026-10": 7}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
     p4:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1253,7 +1276,7 @@
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: {"2026-10": true}
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p4, p5]
+      leap_household_members: [p1, p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1287,7 +1310,10 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 5}
+      leap_pending_verification_count: {"2026-10": 7}
+      leap_household_income: {"2026-10": 5590}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
     p5:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -1311,7 +1337,7 @@
       af_category: {"2026-10": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p4, p5]
+      leap_household_members: [p1, p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -1345,7 +1371,10 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 5}
+      leap_pending_verification_count: {"2026-10": 7}
+      leap_household_income: {"2026-10": 5590}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
 
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
@@ -1527,6 +1556,9 @@
         meets_nursing_facility_level_of_care: true
         countable_resources_couple: 46000
         countable_resources_couple_at_snapshot: 46000
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -1725,6 +1757,9 @@
         lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         in_medical_institution: false
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -1902,6 +1937,9 @@
         date_of_birth: "1985-01-22"
         citizenship_status: undocumented
         state_of_residence: CO
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -2074,6 +2112,9 @@
         citizenship_status: citizen
         state_of_residence: CO
         is_enrolled_in_school: true
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -2244,6 +2285,9 @@
         date_of_birth: "2026-02-03"
         citizenship_status: citizen
         state_of_residence: CO
+        is_in_workforce_training_or_post_secondary_education: false
+        is_deceased_colorado_works_client: false
+        shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -2286,8 +2330,9 @@
   # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
   # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
   # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
-  # (OQ-253); in November the grandparents' LEAP household gets 900 x (1 - 0.2 - 0.3) = 450 and p3's household
-  # 900 x (1 - 0.2 - 0.2) = 540. CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
+  # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
+  # status, her income counted, 5,590 = 203% FPL for four), which in November gets 900 x (1 - 0.2 - 0.3) = 450.
+  # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
   # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
   # eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing assistance).
@@ -2343,8 +2388,8 @@
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-11": ineligible_child}
-      leap_household_members: [p1, p2]
-      leap_household_income: {"2026-11": 3210}
+      leap_household_members: [p1, p2, p4, p5]    # C-2 (phase-8 fix round): the family buys heat in common (shares_heating_fuel_with), so one LEAP household; p3 excluded for status (3.753.17), her income counted
+      leap_household_income: {"2026-11": 5590}    # 3,210 + 2,380
       leap_is_eligible: {"2026-11": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-11": true}
@@ -2389,8 +2434,10 @@
       af_pending_verification_count: {"2026-11": 0}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_verification_status: {"2026-11": complete}
-      leap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": past_due}
+      leap_pending_verification_count: {"2026-11": 1}    # counted over the one household, p3 included (CO-1460)
+      cw_death_reimbursement_eligible: false    # K-1: no member is a deceased Colorado Works client
+      cw_death_reimbursement_amount: 0
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -2404,7 +2451,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 450}    # C-2: one household of four, 5,590 = 203% FPL, 30% contribution: 900 x (1 - 0.2 - 0.3); was 450 and 540 for two households each taking the full $900
       cccap_parent_fee: {"2026-11": 0}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -2413,11 +2460,11 @@
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-11": ineligible_child}
-      leap_household_members: [p1, p2]
-      # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14), and
-      # C-13's text-derived size-2 ceiling ($4,423.07) now clears the couple's $3,210 income, so p2 is LEAP-eligible
-      # although p1's own household-of-two application is not (her own vulnerability is what fails, not the income
-      # test or the eligibility period - both now pass under the fixed rules; see cccap-leap-phase-6.md C-13, C-14).
+      leap_household_members: [p1, p2, p4, p5]
+      # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14).
+      # C-2 (phase-8 fix round): the family is one LEAP household of four with $5,590, within the volume's size-4
+      # ceiling (leap_income_limit_monthly, OQ-122), so p2 is LEAP-eligible; p1, now in a nursing facility, stays
+      # in it through the spouse edge, since no fact states that she no longer lives with him (OQ-358).
       leap_is_eligible: {"2026-11": true}
       ma_is_institutionalized: false
       ma_ltc_couple: false
@@ -2459,8 +2506,11 @@
       af_pending_verification_count: {"2026-11": 0}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_verification_status: {"2026-11": complete}
-      leap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": past_due}
+      leap_pending_verification_count: {"2026-11": 1}
+      leap_household_income: {"2026-11": 5590}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
     p3:
       ma_emergency_medicaid_status: {"2026-11": eligible_no_current_emergency}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -2474,7 +2524,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}
+      leap_benefit_amount: {"2026-11": 450}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -2487,8 +2537,8 @@
       cccap_household_income: {"2026-11": 2380}
       cccap_is_teen_parent: {"2026-11": false}
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p4, p5]
-      leap_household_income: {"2026-11": 2380}
+      leap_household_members: [p1, p2, p4, p5]
+      leap_household_income: {"2026-11": 5590}
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -2523,6 +2573,8 @@
       cccap_pending_verification_count: {"2026-11": 0}
       leap_verification_status: {"2026-11": past_due}
       leap_pending_verification_count: {"2026-11": 1}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
     p4:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -2536,7 +2588,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}
+      leap_benefit_amount: {"2026-11": 450}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": eligible_categorical}
       sebt_benefit_amount: {"2026-11": 120}
@@ -2554,7 +2606,7 @@
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: {"2026-11": true}
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p4, p5]
+      leap_household_members: [p1, p2, p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -2589,6 +2641,9 @@
       cccap_pending_verification_count: {"2026-11": 0}
       leap_verification_status: {"2026-11": past_due}
       leap_pending_verification_count: {"2026-11": 1}
+      leap_household_income: {"2026-11": 5590}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
     p5:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -2602,7 +2657,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}
+      leap_benefit_amount: {"2026-11": 450}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -2612,7 +2667,7 @@
       af_category: {"2026-11": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p4, p5]
+      leap_household_members: [p1, p2, p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -2647,9 +2702,12 @@
       cccap_pending_verification_count: {"2026-11": 0}
       leap_verification_status: {"2026-11": past_due}
       leap_pending_verification_count: {"2026-11": 1}
+      leap_household_income: {"2026-11": 5590}
+      cw_death_reimbursement_eligible: false
+      cw_death_reimbursement_amount: 0
 
 - id: CO-03
-  title: Elderly couple, one with Medicare and out-of-pocket medical expenses; no SUA rule yet
+  title: Elderly couple, one with Medicare and out-of-pocket medical expenses, no utility costs of their own
   as_of: "2026-10-01"
   relationships:
     - [spouse, p1, p2]
@@ -2686,10 +2744,12 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 4200
         countable_nonliquid_resources_snap: 0
-        # No CDHS standard utility allowance rule exists yet in this volume (fix-round OQ-36); the
-        # household's stated shelter cost is rent only, so the utility allowance is stated as 0
-        # rather than estimated.
-        snap_utility_allowance_amount: 0
+        # Phase-8 fix round (C-5): the rent includes every utility. Stated through the utility facts, so
+        # snap_utility_allowance_amount (CO-1500) derives the zero allowance instead of the case stating it.
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
         persons_cared_for: []
         is_head_of_household: true
         date_of_birth: "1956-01-01"
@@ -2750,7 +2810,6 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        snap_utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         date_of_birth: "1958-01-01"
@@ -2803,6 +2862,9 @@
   # Eligible (categorically eligible, allotment > 0). Both are over snap_abawd_max_age (64), so
   # not_subject to the ABAWD time limit; both are over snap_work_registration_max_age (59), so not
   # work registrants.
+  # Phase-8 fix round: (K-5) p1's $180 of medical expenses is over $35, so Colorado's $165 Standard Medical
+  # Expense Deduction applies (4.407.61.A; 180 - 35 = 145 is under it, OQ-353), and with the FY2027 figures
+  # the net income is 2152 (was 2182); the minimum allotment ($25) is unchanged. (C-5) No SUA: no utility costs.
   expect:
     p1:
       snap_household_members: [p1, p2]
@@ -2812,7 +2874,7 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2550}
-      snap_household_net_income: {"2026-10": 2182}
+      snap_household_net_income: {"2026-10": 2152}
       snap_allotment: {"2026-10": 25}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
@@ -2825,7 +2887,7 @@
       snap_meets_citizenship_requirement: true
       snap_eligibility_category: expanded_categorical
       snap_household_gross_income: {"2026-10": 2550}
-      snap_household_net_income: {"2026-10": 2182}
+      snap_household_net_income: {"2026-10": 2152}
       snap_allotment: {"2026-10": 25}
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
@@ -3715,7 +3777,7 @@
       ma_patient_payment: {"2026-11": 0}
 
 - id: CO-07
-  title: Two-parent Colorado Works unit with a sanctioned parent, an SSI child, months straddling the sixty-month limit and a DV extension on one parent; a 62-year-old grandparent on OAP-B
+  title: Two-parent Colorado Works unit with a parent serving a second-level sanction, an SSI child on AND-CS, months straddling the sixty-month limit and a DV extension on one parent; a 62-year-old grandparent on OAP
   # Adapted from the phase-5 review's designed case in S3.2 (docs/reviews/cash-phase-5.md), renumbered
   # CO-06 -> CO-07 for this fix round. Facts are updated for the fix round's renamed/added identifiers:
   # has_domestic_violence_waiver -> has_domestic_violence_extension_approved (C-3(b)); is_indian_or_urban_indian,
@@ -3723,6 +3785,12 @@
   # added on every person (K-3/K-5 now read them); ssi_income added on p3 (K-6). Expectations below are what the
   # FIXED items at this commit produce (evaluated with scripts/eval-case.ts), not the review's hand derivation -
   # each place they differ is called out in a comment citing the governing text.
+  # Phase-8 fix round (C-3): the unit is an ongoing Colorado Works case past its first certification period,
+  # and Dana's $400 is a current source of earnings, so 3.606.2.A.2.b's 67% disregard applies to the payment
+  # (B-1) and, the unit being a current recipient, to the income test as well (3.606.1.J; cw_countable_earned_income,
+  # CO-907): 400 x 0.33 = 132. Marco serves a second-level Workforce Development sanction (3.608.4.C.1): the
+  # unit's 649 - 132 = 517 grant loses 25%, 517 x 0.75 = 387.75, cents dropped: 387. Alma's AND-CS grant counts
+  # her SSI (B-2, 3.549.A.2): 700 - 700 + 0 (no $20 disregard on SSI alone) + 700 = 700 countable; 994 - 700 = 294.
   as_of: "2026-10-01"
   relationships:
     - [spouse, p1, p2]
@@ -3764,6 +3832,7 @@
         is_pregnant: false
         countable_resources_individual: 900
         countable_resources_couple: 1400
+        receives_tanf_cash: true
       month_defaults:
         earned_income: 400
         social_security_income: 0
@@ -3774,9 +3843,13 @@
         other_unearned_income: 0
         hours_worked: 60
         work_program_hours: 0
+        cw_in_first_certification_period: false
+        cw_is_new_earned_income_source: false
+        is_inmate_of_public_institution: false
+        work_sanction_level_served: none
     p2:
-      # Marco, 36, citizen, under a Workforce Development sanction (no Colorado Works sanction item
-      # exists - K-2/OQ-141), 61 counted months, no extension of his own.
+      # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
+      # 61 counted months, no extension of his own.
       facts:
         date_of_birth: "1990-07-02"
         sex: male
@@ -3804,6 +3877,7 @@
         is_pregnant: false
         countable_resources_individual: 500
         countable_resources_couple: 1400
+        receives_tanf_cash: true
       month_defaults:
         earned_income: 0
         social_security_income: 0
@@ -3814,6 +3888,10 @@
         other_unearned_income: 0
         hours_worked: 0
         work_program_hours: 0
+        cw_in_first_certification_period: false
+        cw_is_new_earned_income_source: false
+        is_inmate_of_public_institution: false
+        work_sanction_level_served: second
     p3:
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
@@ -3844,6 +3922,7 @@
         is_pregnant: false
         countable_resources_individual: 1500
         countable_resources_couple: 0
+        receives_tanf_cash: false
       month_defaults:
         earned_income: 0
         social_security_income: 0
@@ -3854,6 +3933,9 @@
         other_unearned_income: 0
         hours_worked: 0
         work_program_hours: 0
+        is_inmate_of_public_institution: false
+        af_in_kind_support_and_maintenance: 0
+        resides_in_care_facility_thirty_consecutive_days: false
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
@@ -3882,6 +3964,7 @@
         is_pregnant: false
         countable_resources_individual: 0
         countable_resources_couple: 0
+        receives_tanf_cash: true
       month_defaults:
         earned_income: 0
         social_security_income: 0
@@ -3892,6 +3975,10 @@
         other_unearned_income: 0
         hours_worked: 0
         work_program_hours: 0
+        cw_in_first_certification_period: false
+        cw_is_new_earned_income_source: false
+        is_inmate_of_public_institution: false
+        work_sanction_level_served: none
     p5:
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
@@ -3921,6 +4008,7 @@
         is_pregnant: false
         countable_resources_individual: 1200
         countable_resources_couple: 0
+        receives_tanf_cash: false
       month_defaults:
         earned_income: 0
         social_security_income: 900
@@ -3931,14 +4019,18 @@
         other_unearned_income: 0
         hours_worked: 0
         work_program_hours: 0
+        is_inmate_of_public_institution: false
+        af_in_kind_support_and_maintenance: 0
+        resides_in_care_facility_thirty_consecutive_days: false
+        work_sanction_level_served: none
   expect:
     p1:
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
-      cw_countable_income: {"2026-10": 310}
+      cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
       cw_need_standard: 439          # C-5 fixed: Two Caretakers/1 child row (D-61.md:955); matches the review's own derivation
       cw_grant_standard: 649         # C-5 fixed: Two Caretakers/1 child row
-      cw_grant_amount: {"2026-10": 517}   # C-1 fixed: 649 - (400 x 0.33 = 132) = 517; matches the review's own derivation
+      cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       # C-2/C-3 fixed: cw_eligibility_status is "eligible", not "time_limit_reached" as the review derived.
       # Under the OLD rules the review reviewed, p2's own 61 months (read person-by-person) drove the unit
       # to time_limit_reached with no unit-wide effect from p1's extension. C-2/C-3 make both the sixty-month
@@ -3955,45 +4047,45 @@
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
       af_and_grant: {"2026-10": 0}
+      cw_grant_before_sanction: {"2026-10": 517}    # 649 - 132 (3.606.2.A.2.b current source)
+      cw_unit_sanction_level: {"2026-10": second}
     p2:
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
-      cw_countable_income: {"2026-10": 310}
-      cw_grant_amount: {"2026-10": 517}
+      cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
+      cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: the unit's extension (p1's) now covers p2 too - see p1's comment
       cw_time_limit_reached: false
       cw_is_work_eligible_individual: {"2026-10": true}
-      cw_meets_work_participation: {"2026-10": false}   # K-2: no Colorado Works sanction item exists, so his work-program noncompliance (is_disqualified_for_work_requirement_noncompliance, a SNAP-chapter fact) does not reduce cw_grant_amount - OQ-141
+      cw_meets_work_participation: {"2026-10": false}   # C-3: his sanction enters through work_sanction_level_served (second), which reduces the unit's grant (CO-1264, CO-1265)
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
       af_and_grant: {"2026-10": 0}
+      cw_grant_before_sanction: {"2026-10": 517}    # 649 - 132 (3.606.2.A.2.b current source)
+      cw_unit_sanction_level: {"2026-10": second}
     p3:
       cw_assistance_unit_members: []
       cw_unit_size: 0
       cw_countable_income: {"2026-10": 0}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_time_limit_reached: false
-      af_category: {"2026-10": and_cs}    # C-4/K-6 fixed: eligible - ssi_income $700 < the $994 federal benefit rate (ma_ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
+      af_category: {"2026-10": and_cs}    # C-4/K-6 fixed (and B-2: countable income 700 < 994): eligible - ssi_income $700 < the $994 federal benefit rate (ma_ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
       af_oap_grant: {"2026-10": 0}
-      # af_and_grant is still the full standard ($994 from 2026-01-01, CO-291, S706), not standard-minus-700 as a hand reading of 3.546 might
-      # suggest. af_countable_income (CO-946) does not read ssi_income at all (it sums social_security_income,
-      # pension_income, unemployment_income, cash_assistance_income, child_support_received, and
-      # other_unearned_income - none of which carries the SSI amount) and 3.549.A.2.b's subtract-SSI-then-add-
-      # back step is unmodeled (OQ-115, OQ before this fix round and still open after it). K-6 closes the
-      # AND-CS *eligibility* gate (3.546's "not receiving the full SSI benefit standard") but not the AND-CS
-      # *payment* computation, which OQ-115 already recorded as a gap this round does not close.
-      af_and_grant: {"2026-10": 994}
+      af_and_grant: {"2026-10": 294}    # B-2: 994 - 700 (3.548.B, 3.549.A.2); phase 8 had 994 with the SSI add-back unmodeled
+      af_countable_income: {"2026-10": 700}    # B-2: SSI 700 subtracted, no $20 disregard (SSI only), SSI added back (3.549.A.2.b-d)
     p4:
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
-      cw_countable_income: {"2026-10": 310}
-      cw_grant_amount: {"2026-10": 517}
+      cw_countable_income: {"2026-10": 132}    # B-1: a current recipient is tested with the 67% disregard (3.606.1.J, 3.606.2.A.2.b), not the $90 at-application figure (was 310)
+      cw_grant_amount: {"2026-10": 387}    # C-3: second-level sanction, 517 x 0.75 = 387.75, cents dropped (3.608.4.C.1, S760); was 517 with no sanction modeled
       cw_eligibility_status: {"2026-10": eligible}    # C-2/C-3 fixed: same unit-level extension as p1/p2
       cw_time_limit_reached: false
       cw_is_work_eligible_individual: {"2026-10": false}
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
       af_and_grant: {"2026-10": 0}
+      cw_grant_before_sanction: {"2026-10": 517}    # 649 - 132 (3.606.2.A.2.b current source)
+      cw_unit_sanction_level: {"2026-10": second}
     p5:
       cw_assistance_unit_members: [p5]
       cw_unit_size: 1
@@ -4313,6 +4405,9 @@
         receives_ssi: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         has_reproductive_capacity: true
+        receives_tanf_cash: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
         earned_income: 5200
@@ -4363,6 +4458,9 @@
         receives_ssi: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: true
         has_reproductive_capacity: false
+        receives_tanf_cash: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
         earned_income: 2600
@@ -4419,6 +4517,9 @@
         receives_oasdi_as_disabled_adult_child: false
         is_widow_or_widower: false
         lost_ssi_or_oap_due_to_social_security_benefits: false
+        receives_tanf_cash: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
       month_defaults:
         earned_income: 0
         social_security_income: 0
@@ -4434,6 +4535,9 @@
         cash_assistance_income: 0
         in_kind_support_and_maintenance: 0
         is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        af_in_kind_support_and_maintenance: 0
+        resides_in_care_facility_thirty_consecutive_days: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
     p4:
@@ -4466,6 +4570,9 @@
         is_blind: false
         is_disabled_ssa: false
         receives_ssi: false
+        receives_tanf_cash: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
         earned_income: 0
@@ -4531,10 +4638,17 @@
   title: "Phase 8: a widow on OAP with Home Care Allowance and her husband's burial; a sanctioned Colorado Works daughter whose school-age son gets SUN Bucks"
   # Designed for phase 8 (current 9 CCR 2503-5, 2503-6 and 7 CFR 292). Two households under one case,
   # with no relationship edge between them, so the Colorado Works unit is p3 and p4 only.
-  # p1 (Ruth, 66) is an OAP client: countable income 700 - 20 = 680 against the $1,032 standard (S700) gives a
+  # p1 (Ruth, 76) is an OAP client: countable income 700 - 20 = 680 against the $1,032 standard (S700) gives a
   # $352 grant, above the $189 floor. Her CMA scores her at capacity 24, need 30 (tier 2, S714); she is
   # financially eligible for HCA only through the grandfathered OAP-and-HCA route (3.570.13.B.3), and the
   # CMA authorizes $900, which the $977 HCA floor raises (S713).
+  # Phase-8 fix round (C-1): Ruth was born 1950-03-02, so she was 63 on 2013-12-31 and could have been on OAP and
+  # HCA then (3.570.13.B.3 now also checks the age, CO-1215); phase 8 had 1960-03-02, which made her 53 then.
+  # Every figure is unchanged. (C-4) At 76 with $700 of income and $1,000 of resources she must apply for SSI
+  # (3.520.71.B.4, D); her application is pending (has_applied_for_ssi), so no SSI is counted yet - an SSI award
+  # would make her OAP countable income 994 (B-2) and her HCA route B.1. Her p2 burial figures sit on the N-1
+  # boundary (OQ-355). She pays her own shelter (no ISM), lives at home, is not incarcerated and is not on
+  # Colorado Works; Walter was not a Colorado Works client, so no death reimbursement (3.606.7).
   # p2 (Walter) died this month while receiving OAP: providers' charges $2,800 including a $600 prepaid plot
   # that is excluded from the $2,500 limit (3.570.43.A.4.a), so $2,200 counts; insurance $300 and estate $200
   # are applied, and Ruth (the widow, individual $2,000 limit) has $1,000 in resources, so nothing more;
@@ -4549,7 +4663,7 @@
   persons:
     p1:
       facts:
-        date_of_birth: "1960-03-02"
+        date_of_birth: "1950-03-02"
         citizenship_status: citizen
         state_of_residence: CO
         is_fleeing_felon_or_probation_violator: false
@@ -4568,6 +4682,11 @@
         hca_need_for_paid_care_score: 30
         received_oap_and_hca_grandfathered: true
         died_while_receiving_af_or_medicaid: false
+        receives_tanf_cash: false
+        is_homeless: false
+        has_applied_for_ssi: true
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_deceased_colorado_works_client: false
       month_defaults:
         earned_income: 0
         social_security_income: 700
@@ -4577,6 +4696,9 @@
         child_support_received: 0
         other_unearned_income: 0
         hca_authorized_amount: 900
+        is_inmate_of_public_institution: false
+        af_in_kind_support_and_maintenance: 0
+        resides_in_care_facility_thirty_consecutive_days: false
     p2:
       facts:
         date_of_birth: "1958-08-20"
@@ -4587,6 +4709,7 @@
         decedent_estate_value: 200
         burial_responsible_person_resources: 1000
         burial_responsible_persons_are_couple: false
+        is_deceased_colorado_works_client: false
     p3:
       facts:
         date_of_birth: "1991-05-01"
@@ -4611,6 +4734,7 @@
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
+        receives_tanf_cash: true
       month_defaults:
         earned_income: 0
         social_security_income: 0
@@ -4663,6 +4787,8 @@
     p2:
       af_burial_eligible: true
       af_burial_benefit: 1500
+      cw_death_reimbursement_eligible: false    # K-1: Walter received OAP, not Colorado Works (3.606.7.B.1)
+      cw_death_reimbursement_amount: 0
     p3:
       cw_unit_sanction_level: {"2026-11": second}
       cw_grant_before_sanction: {"2026-11": 488}
@@ -4732,7 +4858,6 @@
         countable_liquid_resources: 20
         countable_nonliquid_resources_snap: 0
         countable_resources_individual: 20
-        utility_allowance_amount: 0
         application_date: "2026-11-02"
         # Verification facts.
         verification_request_date: "2026-11-02"
@@ -4834,7 +4959,6 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         countable_resources_individual: 0
-        utility_allowance_amount: 0
         application_date: "2026-11-02"
         verification_request_date: "2026-11-02"
         identity_attestation_is_questionable: false

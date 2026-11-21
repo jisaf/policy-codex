@@ -1,0 +1,17 @@
+id: CO-1514
+name: SNAP Standard Medical Expense Deduction
+identifier: snap_standard_medical_deduction
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: Colorado's Standard Medical Expense Deduction (SMED), allowed to a household with a member eligible for the medical expense deduction whose total verified medical expenses are more than $35 and no more than the SMED; the household may instead claim actual expenses when they exceed the SMED after the first $35, per 10 CCR 2506-1 4.407.61.A.
+versions:
+  - from: "2016-10-01"
+    value: 165
+    source: S1013
+sources: [S1013]
+implemented: engine
+tags: [income, snap, state_election]
+rationale: "No existing parameter states Colorado's SMED (phase-8 review K-5); snap_excess_medical_deduction (CO-376) deducted only actual expenses over $35. snap_medical_deduction_threshold (CO-137, $35) is the nearest figure but is the threshold, not the standard deduction."
+nearest: [CO-137]

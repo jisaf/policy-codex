@@ -7,10 +7,10 @@ scope: person-month
 program: SNAP
 meaning: For the month the person is outside the ABAWD age range, unfit for employment, responsible for a dependent child under 14, otherwise exempt from general work registration, pregnant, or an Indian or Urban Indian.
 precision: Does not model the pre-H.R.1 homeless, veteran, or former-foster-youth exemptions still stated in the CFR and Colorado's rule manual, because the amended statute struck them; see OQ-32. Does not separately model "California Indian" (7 U.S.C. 2015(o)(3)(G)), since this volume's supplied-fact interface has only is_indian_or_urban_indian.
-assumption: Reads 7 U.S.C. 2015(o)(3)(D)'s "otherwise exempt under subsection (d)(2)" as satisfied by snap_is_exempt_from_work_registration; see OQ-33.
+assumption: Reads 7 U.S.C. 2015(o)(3)(D)'s "otherwise exempt under subsection (d)(2)" as satisfied by snap_is_exempt_from_work_registration, which 10 CCR 2506-1 4.311.1.A (S750, "Exempt from the general work requirements") states directly (OQ-33 resolved).
 derived: [any, [not, snap_is_in_abawd_age_range], snap_is_unfit_for_employment, snap_has_responsibility_for_abawd_dependent_child, snap_is_exempt_from_work_registration, is_pregnant, is_indian_or_urban_indian]
-sources: [S127, S128, S132]
-open: [OQ-32, OQ-33]
+sources: [S127, S128, S132, S750]
+open: [OQ-32]
 implemented: engine
 tags: [abawd, legal]
 rationale: No existing item states the ABAWD exemption test itself; snap_abawd_countable_month and snap_abawd_time_limit_status both read this fact, following the disjunctive structure of 7 U.S.C. 2015(o)(3) (S127, S128) as amended, which the mwr volume's WR-310 models for the pre-amendment exceptions this item deliberately does not reuse.

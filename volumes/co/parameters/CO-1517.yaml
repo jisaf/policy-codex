@@ -1,0 +1,16 @@
+id: CO-1517
+name: CCCAP substance use disorder treatment activity start date
+identifier: cccap_sud_treatment_activity_start_date
+kind: parameter
+type: calendar date
+scope: global
+program: CCCAP
+meaning: The date from which an adult caretaker's enrollment in a licensed substance use disorder treatment program at an intensive outpatient level or higher is a CCCAP eligible activity - July 1, 2026 - per 8 CCR 1403-1 3.111.G.4.a.3 ("Effective July 1, 2026").
+versions:
+  - from: "2026-07-01"
+    value: "2026-07-01"
+    source: S1015
+sources: [S1015]
+implemented: engine
+tags: [household]
+rationale: "No existing parameter states the start of the substance use disorder treatment activity (phase-8 review K-7); cccap_caretaker_in_eligible_activity (CO-984) compares the month against it, so a month before July 2026 does not read the treatment fact."

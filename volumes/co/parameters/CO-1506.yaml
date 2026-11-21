@@ -1,0 +1,16 @@
+id: CO-1506
+name: Colorado Works death reimbursement total charge limit
+identifier: cw_death_reimbursement_cost_limit
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: The most the total combined reasonable charges for the disposition of a deceased Colorado Works client may be - including those paid by the estate, family, State funds or any other source - for State funds to be contributed, per 9 CCR 2503-6 3.606.7.A.2, B.4, E and F.1.
+versions:
+  - from: "2025-07-01"
+    value: 2500
+    source: S1005
+sources: [S1005, S1006]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing parameter states the Colorado Works death reimbursement charge limit (phase-8 review K-1); af_burial_cost_limit is the Adult Financial burial program's figure (3.570.43.A, F.1)."

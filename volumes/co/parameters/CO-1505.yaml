@@ -1,0 +1,17 @@
+id: CO-1505
+name: Colorado Works death reimbursement maximum
+identifier: cw_death_reimbursement_max
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: The most the county department may pay as a Colorado Works death reimbursement benefit for a deceased client, per 9 CCR 2503-6 3.606.7.A.2.
+precision: The State Department may set a lower maximum to stay within the appropriation (3.606.7.A.1, F.2.g); no lower figure is stated in the fetched text.
+versions:
+  - from: "2025-07-01"
+    value: 1500
+    source: S1005
+sources: [S1005, S1007]
+implemented: engine
+tags: [cash, tanf]
+rationale: "No existing parameter states the Colorado Works death reimbursement maximum (phase-8 review K-1). af_burial_benefit_max is the Adult Financial burial benefit's figure under 3.570.43.B, a different program's maximum that happens to share the amount; a Colorado Works-prefixed parameter keeps each program's figure under its own owner."

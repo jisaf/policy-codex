@@ -1,0 +1,14 @@
+id: CO-1502
+name: Colorado Works new source of earned income
+identifier: cw_is_new_earned_income_source
+kind: supplied
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: Whether this person's earned income for the month is from a new source - one that began while the assistance unit was receiving basic cash assistance - and the month falls in the first certification period that the income impacts under the change-reporting rules of 9 CCR 2503-6 3.606.3, so that it receives a one hundred percent (100%) disregard under 3.606.2.A.2.a. False for a current source (3.606.2.A.2.b) and for a person with no earned income.
+precision: One value for all of a person's earned income in the month; a person with both a new and a current source cannot be stated (OQ-350).
+supplied_by: Statewide automated system (CBMS) income record, from the change report and the certification period it falls in.
+sources: [S1000]
+open: [OQ-350]
+tags: [cash, tanf, income]
+rationale: "No existing fact distinguishes a new from a current source of earnings; cw_payment_countable_earned_income (CO-922) needs it for 3.606.2.A.2 (phase-8 review B-1)."

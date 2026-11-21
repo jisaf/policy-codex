@@ -1,0 +1,20 @@
+id: CO-1511
+name: "Adult Financial: barred by Colorado Works"
+identifier: af_barred_by_colorado_works
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: Whether the person is barred from Adult Financial programs for the month because of Colorado Works - currently receiving Colorado Works financial assistance, eligible for it, or in a Colorado Works case closed for a sanction - per 9 CCR 2503-5 3.520.61.F and 3.520.71.F.2.
+precision: "Receipt is read from receives_tanf_cash (CO-013); eligibility and the sanction closure from the person's own cw_eligibility_status (CO-921) - eligible, or sanction_closure (a fourth-level sanction, 3.608.4.C.2). A specified caretaker who is not a parent is not required to join the Colorado Works case (3.520.71.F.1.a); such a person is not in a Colorado Works assistance unit in this volume (CO-900 joins parents and caretakers to their own dependent children only), so cw_eligibility_status does not report them eligible. A closure for demonstrable evidence or a disqualification, and a withdrawal before benefits are exhausted (F.2.a-b), are not modeled (OQ-357)."
+derived: [any, receives_tanf_cash, [in, cw_eligibility_status, [eligible, sanction_closure]]]
+sources: [S711, S1011]
+open: [OQ-357]
+implemented: engine
+tags: [cash, oap, and, tanf]
+rationale: "No existing item applies the Adult Financial bar on Colorado Works recipients (phase-8 review K-3); af_category (CO-953) and af_and_so_eligible (CO-1203) need it. Reads the Colorado Works outcome cw_eligibility_status cross-program rather than restating the Colorado Works tests, since 3.520.61.F refers to Colorado Works eligibility as Colorado Works determines it. Answers OQ-117, whose Aid to the Blind carve-out the general bar of 3.520.61.F supersedes."
+tests:
+  - {id: CO-1511-T1, title: "Receiving Colorado Works", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: true}, expect: true}
+  - {id: CO-1511-T2, title: "Not receiving, but eligible for Colorado Works", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: eligible}, expect: true}
+  - {id: CO-1511-T3, title: "Colorado Works case closed for a fourth-level sanction (3.520.71.F.2.a)", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: sanction_closure}, expect: true}
+  - {id: CO-1511-T4, title: "No dependent child - not eligible for Colorado Works, not barred", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: ineligible_no_dependent_child}, expect: false}

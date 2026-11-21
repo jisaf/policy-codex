@@ -5,13 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: The person received SNAP benefits for the full month, was not exempt from the ABAWD time limit, was not living in an approved waiver area, did not meet the ABAWD work requirement, and was not given a discretionary exemption for the month.
-derived: [all, received_full_snap_benefit_month, [not, snap_is_exempt_from_abawd_time_limit], [not, abawd_waiver_area_month], [not, snap_meets_abawd_work_requirement], [not, abawd_discretionary_exemption_month]]
-sources: [S130, S132]
+meaning: The person received SNAP benefits for the full month, was not exempt from the ABAWD time limit, was not living in an approved waiver area, did not meet the ABAWD work requirement, and was not given a discretionary exemption for the month, and the month is not the month the person turned eighteen (10 CCR 2506-1 4.311.3.A.2).
+derived: [all, received_full_snap_benefit_month, [not, snap_is_exempt_from_abawd_time_limit], [not, abawd_waiver_area_month], [not, snap_meets_abawd_work_requirement], [not, abawd_discretionary_exemption_month], [not, [all, [=, [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], snap_abawd_min_age], ["<", [years_between, date_of_birth, [days_after, -1, [first_day, [month]]]], snap_abawd_min_age]]]]
+sources: [S130, S132, S1014]
 implemented: engine
 tags: [abawd, legal]
-rationale: 7 CFR 273.24(b)(1) and 10 CCR 2506-1 4.311.3.A (S130, S132) define "countable month" as this five-part conjunction; snap_abawd_countable_months_in_period reads this fact for each month in the 36-month window, matching the mwr volume's WR-313.
+rationale: Phase-8 fix round (K-6) - no countable month accrues in the month of the eighteenth birthday (4.311.3.A.2, S1014), tested as age 18 on the month's last day and under 18 on the previous month's last day. 7 CFR 273.24(b)(1) and 10 CCR 2506-1 4.311.3.A (S130, S132) define "countable month" as this five-part conjunction; snap_abawd_countable_months_in_period reads this fact for each month in the 36-month window, matching the mwr volume's WR-313.
 tests:
-  - {id: CO-416-T1, month: "2026-10", given: {received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: true}
+  - {id: CO-416-T1, month: "2026-10", given: {date_of_birth: "1990-01-01", received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: true}
   - {id: CO-416-T2, month: "2026-10", given: {received_full_snap_benefit_month: false, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: false}
   - {id: CO-416-T3, month: "2026-10", given: {received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: true, abawd_discretionary_exemption_month: false}, expect: false}
+  - {id: CO-416-T4, title: "K-6 - otherwise countable, but the person turned 18 on 2026-10-01 (4.311.3.A.2)", month: "2026-10", given: {date_of_birth: "2008-10-01", received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: false}
+  - {id: CO-416-T5, title: "K-6 - the month after the eighteenth birthday counts", month: "2026-11", given: {date_of_birth: "2008-10-01", received_full_snap_benefit_month: true, snap_is_exempt_from_abawd_time_limit: false, abawd_waiver_area_month: false, snap_meets_abawd_work_requirement: false, abawd_discretionary_exemption_month: false}, expect: true}

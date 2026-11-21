@@ -7,10 +7,8 @@ scope: person-month
 program: SNAP
 meaning: This person's SNAP household is entitled to expedited service for the month - its gross income is under $150 and its liquid resources are at or below $100, or it is a destitute migrant or seasonal farmworker household with liquid resources at or below $100, or its combined gross income and liquid resources are less than its shelter costs (rent or mortgage plus the utility allowance).
 precision: "Uses snap_shelter_costs (the household's summed rent or mortgage plus each member's derived standard utility allowance) for \"monthly rent or mortgage, and utilities (including entitlement to a SUA)\". Merge fix (phase 8/9): the rule first read the evaluated person's own shelter_cost_monthly and utility allowance, which is wrong for any member other than the one who states the costs; 273.2(i)(1)(iii) compares the household's income and resources with the household's shelter costs."
-assumption: shelter_cost_monthly plus snap_utility_allowance_amount stands in for 7 CFR 273.2(i)(1)(iii)'s "monthly rent or mortgage, and utilities (including entitlement to a SUA, as appropriate)."
 derived: [any, [all, [<, snap_household_gross_income, snap_expedited_income_ceiling], [<=, snap_household_countable_resources, snap_expedited_resource_ceiling]], [all, is_destitute_migrant_or_seasonal_farmworker, [<=, snap_household_countable_resources, snap_expedited_resource_ceiling]], [<, [+, snap_household_gross_income, snap_household_countable_resources], snap_shelter_costs]]
 sources: [S58]
-open: [OQ-14]
 implemented: engine
 tags: [income, resources]
 rationale: 7 CFR 273.2(i)(1) (S58) states the three independent grounds for expedited service as an eligibility rule (distinct from the processing-timeline provisions of 273.2(i)(2)-(4), which are out of this volume's scope); no existing item combines household gross income, household resources, and shelter costs into this single entitlement fact.

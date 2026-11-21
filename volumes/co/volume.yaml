@@ -44,7 +44,7 @@ programs:
     outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_verification_status, cw_pending_verification_count]
+    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_death_reimbursement_eligible, cw_death_reimbursement_amount, cw_verification_status, cw_pending_verification_count]
   - id: AdultFinancial
     prefix: af_
     outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit, af_verification_status, af_pending_verification_count]

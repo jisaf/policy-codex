@@ -1,0 +1,16 @@
+id: CO-1509
+name: Adult Financial personal needs allowance maximum
+identifier: af_personal_needs_allowance_maximum
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: The monthly Personal Needs Allowance (PNA) maximum for an OAP, AND-SO or AND-CS client who is a resident of a hospital, nursing home, assisted living residence, intermediate care facility, group home, host home, other long-term care facility or Adult Financial approved setting for every full calendar month of the stay, per 9 CCR 2503-5 3.532.F, 3.543.F and 3.548.F.
+versions:
+  - from: "2016-10-01"
+    value: 79
+    source: S1008
+sources: [S1008, S1009, S1010]
+implemented: engine
+tags: [cash, oap, and, income]
+rationale: "No existing parameter states the Adult Financial PNA (phase-8 review K-2); af_oap_grant (CO-951) and af_and_grant (CO-952) pay it in place of the grant to a facility resident. Not ma_personal_needs_allowance_institutional (CO-887), which is the Medicaid post-eligibility patient-payment allowance, a different program's figure."

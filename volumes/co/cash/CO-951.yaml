@@ -6,15 +6,17 @@ type: money
 scope: person-month
 program: AdultFinancial
 role: outcome
-meaning: The monthly Old Age Pension grant payment - the OAP grant standard minus the client's total countable income, raised to the OAP payment floor by a State Supplementary Payment when it falls below the floor, for a client in the oap category - per 9 CCR 2503-5 3.531.D.2, 3.532.B and 3.533.
-precision: "See OQ-120 - does not model 3.532.B.2's mid-month proration for a client determined eligible on a day other than the first of the month, or 3.532.B.3's same-month program-transition rule. M-7: Adult Financial grants carry cents (no AF provision states a 'drop the cents' rule, unlike Colorado Works' 3.606.1.K.2, which cw_grant_amount, CO-914, implements by flooring) - deliberate, not an oversight."
-derived: [case, [[=, af_category, "oap"], ["max", af_oap_payment_floor, ["-", af_grant_standard, af_countable_income]]], [else, 0]]
-sources: [S455, S456, S457, S700, S702, S703]
-open: [OQ-120]
+meaning: The monthly Old Age Pension grant payment - for a client resident in a facility listed in 3.532.D for the full calendar month after thirty consecutive days, only a personal needs allowance of at most $79 less countable income (3.532.D, F); otherwise the OAP grant standard minus the client's total countable income, raised to the OAP payment floor by a State Supplementary Payment when it falls below the floor, for a client in the oap category - per 9 CCR 2503-5 3.531.D.2, 3.532.B, D-F and 3.533.
+precision: "See OQ-120 - does not model 3.532.B.2's mid-month proration for a client determined eligible on a day other than the first of the month, or 3.532.B.3's same-month program-transition rule. K-2 (phase-8 fix round): the personal needs allowance is read as a grant standard of $79 from which countable income is deducted, with no payment floor (OQ-352); inmates are barred through af_meets_residency (CO-942). M-7: Adult Financial grants carry cents (no AF provision states a 'drop the cents' rule, unlike Colorado Works' 3.606.1.K.2, which cw_grant_amount, CO-914, implements by flooring) - deliberate, not an oversight."
+derived: [case, [[=, af_category, "oap"], [case, [resides_in_care_facility_thirty_consecutive_days, [max, 0, ["-", af_personal_needs_allowance_maximum, af_countable_income]]], [else, ["max", af_oap_payment_floor, ["-", af_grant_standard, af_countable_income]]]]], [else, 0]]
+sources: [S455, S456, S457, S700, S702, S703, S1008]
+open: [OQ-120, OQ-352]
 implemented: engine
 tags: [cash, oap, income]
 rationale: "No existing item computes the OAP grant amount. Named directly by the phase-5 brief's interface as an outcome. Fix round (M-3): reads af_grant_standard (CO-949) instead of af_oap_grant_standard (CO-289) directly, since CO-949 already selects the right standard for af_category and was otherwise read by nothing - the phase-5 review's M-3 finding. Phase 8: the oap_a/oap_b split is gone (OQ-111 resolved, S701) and the payment floor of the 2026-03-02 rule (af_oap_payment_floor, CO-1200) is applied."
 tests:
-  - {id: CO-951-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap, af_countable_income: 400, af_grant_standard: 1032}, expect: 632}
-  - {id: CO-951-T2, title: "Computed grant $132 is below the $189 payment floor (3.532.B, S703); replaces the pre-floor test whose income exceeded the standard, which af_category never reaches as oap", as_of: "2026-10-01", month: "2026-10", given: {af_category: oap, af_countable_income: 900, af_grant_standard: 1032}, expect: 189}
+  - {id: CO-951-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: oap, resides_in_care_facility_thirty_consecutive_days: false, af_countable_income: 400, af_grant_standard: 1032}, expect: 632}
+  - {id: CO-951-T2, title: "Computed grant $132 is below the $189 payment floor (3.532.B, S703); replaces the pre-floor test whose income exceeded the standard, which af_category never reaches as oap", as_of: "2026-10-01", month: "2026-10", given: {af_category: oap, resides_in_care_facility_thirty_consecutive_days: false, af_countable_income: 900, af_grant_standard: 1032}, expect: 189}
   - {id: CO-951-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: none, af_countable_income: 400, af_grant_standard: 0}, expect: 0}
+  - {id: CO-951-T4, title: "K-2 - nursing home resident for the full month - personal needs allowance only, $79 less $50 of countable income (3.532.D, F)", as_of: "2026-10-01", month: "2026-10", given: {af_category: oap, resides_in_care_facility_thirty_consecutive_days: true, af_countable_income: 50, af_grant_standard: 1032}, expect: 29}
+  - {id: CO-951-T5, title: "K-2 - facility resident whose income exceeds the PNA - nothing paid, no payment floor", as_of: "2026-10-01", month: "2026-10", given: {af_category: oap, resides_in_care_facility_thirty_consecutive_days: true, af_countable_income: 900, af_grant_standard: 1032}, expect: 0}

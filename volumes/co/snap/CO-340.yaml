@@ -10,7 +10,7 @@ precision: "Reads snap_household_gross_income (a per-person-month fact) for the 
 assumption: "Treats every applicant as having been offered the non-cash TANF/MOE service notice 10 CCR 2506-1 4.206,C,2,a,2) (S48) requires (see OQ-12), so this item tests only the income and disqualification prongs."
 derived: [all, [">=", [count, snap_household_members], 1], [<=, [at, snap_household_gross_income, [det_month]], snap_bbce_gross_income_limit], [not, snap_household_has_bce_ece_disqualifying_member]]
 sources: [S48]
-open: [OQ-12]
+open: [OQ-12, OQ-356]
 nearest: [CO-338]
 rationale: "10 CCR 2506-1 4.206,C,2 (S48) states ECE's income and disqualification prongs; combines snap_bbce_gross_income_limit and snap_household_has_bce_ece_disqualifying_member the way snap_meets_bce_eligibility (CO-338, same shape, different first condition) combines its own two prongs, needed separately because BCE and ECE are distinct categories with different first-prong tests. Fix-round (C-1): added the same count(snap_household_members) >= 1 guard as CO-338."
 implemented: engine

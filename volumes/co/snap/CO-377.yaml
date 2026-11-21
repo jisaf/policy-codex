@@ -6,9 +6,9 @@ type: money
 scope: person-month
 program: SNAP
 meaning: This person's SNAP household's total monthly shelter costs - rent or mortgage, taxes, and insurance, plus the standard utility allowance - used to compute the excess shelter deduction.
-precision: shelter_cost_monthly and snap_utility_allowance_amount are stated once per unit, on the household's head (see this volume's supplied-fact interface); since the P39 sum over a group is unknown if any member's value is unknown, this item sums each fact only over the members of snap_household_members whose value of it is actually known, so the head's stated figure is picked up without the unasked members' unknown values making the whole sum unknown (OQ-29).
-derived: [+, [sum, [filter, snap_household_members, [not, [unknown, [of, [P], shelter_cost_monthly]]]], [of, [P], shelter_cost_monthly]], [sum, [filter, snap_household_members, [not, [unknown, [of, [P], snap_utility_allowance_amount]]]], [of, [P], snap_utility_allowance_amount]]]
-sources: [S96]
+precision: "shelter_cost_monthly is stated once per unit, on the household's head (see this volume's supplied-fact interface); since the P39 sum over a group is unknown if any member's value is unknown, this item sums it only over the members of snap_household_members whose value is actually known, so the head's stated figure is picked up without the unasked members' unknown values making the whole sum unknown (OQ-29). The standard utility allowance is added once: snap_utility_allowance_amount (CO-1500) is a household-level figure, the same for every member, so it is read for the evaluated person rather than summed over members (phase-8 fix round, S-3; 4.407.31 allows a household one allowance)."
+derived: [+, [sum, [filter, snap_household_members, [not, [unknown, [of, [P], shelter_cost_monthly]]]], [of, [P], shelter_cost_monthly]], snap_utility_allowance_amount]
+sources: [S96, S743]
 open: [OQ-29]
 implemented: engine
 tags: [income]
@@ -16,3 +16,4 @@ rationale: 10 CCR 2506-1 4.407.3,A and E (S96) and 7 CFR 273.9(d)(6)(ii)-(iii) d
 tests:
   - {id: CO-377-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1, p2, p3], shelter_cost_monthly: 1400, snap_utility_allowance_amount: 0}, others: {p2: {}, p3: {}}, relationships: [], expect: 1400}
   - {id: CO-377-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1], shelter_cost_monthly: 0, snap_utility_allowance_amount: 0}, others: {}, relationships: [], expect: 0}
+  - {id: CO-377-T3, title: "S-3 - two members both state heating costs - rent plus one $616 allowance, not two", as_of: "2026-10-01", month: "2026-10", given: {snap_household_members: [p1, p2], shelter_cost_monthly: 1400, snap_entitled_to_heating_cooling_allowance: true, non_heating_utility_cost_count: 3, incurs_telephone_cost: true}, others: {p2: {snap_household_members: [p1, p2], snap_entitled_to_heating_cooling_allowance: true, non_heating_utility_cost_count: 3, incurs_telephone_cost: true}}, relationships: [], expect: 2016}

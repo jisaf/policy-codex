@@ -1,0 +1,19 @@
+id: CO-1520
+name: Poverty guideline for each additional household member, school meal guideline year
+identifier: sebt_poverty_guideline_each_additional
+kind: parameter
+type: money
+scope: global
+program: SunBucks
+meaning: The annual amount added to the 8-person HHS poverty guideline for each household member above 8, for the school meal guideline year (July 1 through June 30) the Income Eligibility Guidelines in effect on the date of application are computed from (7 CFR 292.5(b)).
+precision: Companion to sebt_poverty_guideline_table (CO-1519), dated the same way; the 2026 figure is ma_poverty_guideline_each_additional (CO-182, S55).
+versions:
+  - from: "2026-07-01"
+    to: "2027-07-01"
+    value: 5680
+    source: S798
+sources: [S55, S791, S798]
+implemented: engine
+tags: [sebt, income]
+rationale: "Phase-8 fix round (S-4): companion figure to sebt_poverty_guideline_table (CO-1519), for household sizes above 8, dated by the school meal guideline year rather than the HHS calendar year."
+nearest: [CO-182]

@@ -1,0 +1,15 @@
+id: CO-1510
+name: Resident of a care facility for thirty consecutive days
+identifier: resides_in_care_facility_thirty_consecutive_days
+kind: supplied
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: Whether, for the whole of the month, this person is and has been for at least thirty consecutive days a resident of a general medical and surgical hospital, a nursing home, assisted living residence, intermediate care facility, group home, host home, other long-term care facility, or an Adult Financial approved setting - the facilities 9 CCR 2503-5 3.532.D.1-2, 3.543.D and 3.548.D list for the personal needs allowance. False for a month the stay covers only in part.
+precision: OAP's list adds a psychiatric facility for a client 65 or older (3.532.D.3), which the AND-SO and AND-CS lists do not; a psychiatric stay is not stated here (OQ-352). A resident of an unlicensed private or uncertified public facility (3.532.E.2) is not stated here either (OQ-352).
+supplied_by: County eligibility worker, from the facility admission record and the client's living-arrangement statement.
+sources: [S1008, S1009, S1010]
+open: [OQ-352]
+tags: [cash, oap, and]
+rationale: "No existing fact states the Adult Financial facility test (phase-8 review K-2). in_medical_institution (CO-007) covers a medical institution that provides most of the person's meals - SNAP's test, which the vocabulary review proposes to split - and not an assisted living residence, group home or host home; with institution_entry_date (CO-008) it also cannot say whether the month is a full calendar month of residence (3.532.F)."
+nearest: [CO-007]
