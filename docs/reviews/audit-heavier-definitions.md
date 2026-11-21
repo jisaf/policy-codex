@@ -76,3 +76,12 @@ New supplied facts proposed: `adult_financial_program_received` (one-of; it repl
 4. **Express Lane (H-8, then H-7).** Fetch § 8.100.4.J and 1396a(e)(13) first, then rename CO-092 and repoint CO-2442 and the four PE readers in one change set.
 5. **Verification elements (H-14, L-5, L-6, H-13; L-4 after the Legal decision).** Each element has one owner (Eligibility operations, with Legal for L-4).
 6. **Fact shape and sourcing (H-12, H-15, H-16).** Data-steward approvals. H-12 restates 39 case entries, so batch it with any other CCCAP case edits.
+
+## Disposition
+
+Fix round, track 1 (receipt records and outcome reads), 2026-11-21. Other tracks append their own lines.
+
+- H-1: fixed (52d402a). sebt_eligibility_status (CO-1298), sebt_requires_verification_of_income (CO-1699) and sebt_requires_verification_of_school_enrollment (CO-1633) read sebt_household_child_receives_snap_or_tanf (CO-2708: receives_snap or receives_tanf_cash of the child or a sibling), not snap_is_eligible; accepts_from dropped; OQ-552 records the household reading. CO-01 p4 SUN Bucks changed to eligible_income (the household is applying for SNAP, not receiving it); CO-02 states receipt in November; CO-91 and CO-92 state receipt as their SNAP cases stand.
+- H-2: fixed (52d402a). cccap_colorado_works_child_care_eligible (CO-988) reads receives_tanf_cash, the new is_work_eligible_individual_in_tanf_case (CO-2709) and the referral (3.115.A "approved for Colorado Works and ... determined work eligible").
+- H-3: fixed (52d402a). New adult_financial_program_received (CO-2710); receives_state_cash_assistance (CO-073) and receives_oap_c (CO-2208) derived from it; CO-1150, CO-1156 and CO-1177 read it for OAP receipt (OQ-542 resolved).
+- H-4: fixed (52d402a). ma_is_receiving_medical_assistance (CO-2435) renamed is_enrolled_in_medical_assistance, program All; cw_requires_verification_of_lawful_presence (CO-1420) reads it ("continue to be eligible for medical assistance programs after their eighteenth birthday" names coverage that continues, the enrollment record); CO-2439 repointed.

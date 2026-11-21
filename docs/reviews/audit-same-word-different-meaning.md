@@ -190,3 +190,9 @@ Glossary: 49 concepts. 17 carry a (c) defect (parent, sibling, caretaker, guardi
 5. **Neutral facts for school (SW-12), setting (SW-20, SW-21), Indian status (SW-17), foster and adoption payments (part of SW-8), disability overlaps (SW-14) and emancipation (SW-16).** These are mechanical once the neutral one-of lists are agreed with the owners.
 6. **Money (SW-28 to SW-31, SW-33 to SW-35).** Move exclusions, business costs and resources to neutral facts with per-program derived items, starting where no case states the facts yet (SW-28), then resources (SW-31), shelter and utilities (SW-33), lump sums (SW-29), in-kind (SW-30), the income period (SW-35).
 7. **Duplicates of receipt and care (SW-24 to SW-26), the shared document lists (SW-36), naming (SW-37, SW-38)**, then adopt section 3 in docs/conventions.md and add the `read.shared_definition` and extended `name.prefix` governance checks, so new items cannot reintroduce the class.
+
+## Disposition
+
+Fix round, track 1 (immigration status), 2026-11-21. Other tracks append their own lines.
+
+- SW-18: fixed (297dd17, 47c9d40). One immigration_status (CO-002) with the full documented category set; CO-084, CO-1724 and CO-1170 retired into it and the history facts CO-2700 to CO-2703; shared derived items is_qualified_non_citizen, is_exempt_from_five_year_bar, is_us_citizen_or_national and claims_lawful_immigration_status read it; each program's list is its own item (CO-308, CO-507, CO-509, CO-1172, CO-2400, CO-2706, CO-2707, CO-905, CO-929, CO-998, CO-1010). Battery: is_victim_of_battery_or_extreme_cruelty (CO-2363) is the neutral finding with battery_substantial_connection_finding_date (CO-2717), lives_with_batterer (CO-2718) and court or immigration service recognition (CO-2719); snap_battered_non_citizen_sponsor_exemption_applies (CO-2335) is derived; Colorado Works' A.5.c.4 condition reads CO-2363 directly. The SAVE status list was refused (OQ-550).
