@@ -12255,3 +12255,159 @@
       snap_meets_citizenship_requirement: false
       cccap_child_meets_citizenship_requirement: false
       leap_meets_citizenship_requirement: false
+
+- id: CO-98
+  title: "Community engagement at a September 2027 renewal: one adult inside the 30-day showing period, one whose period has ended"
+  # Audit fix round 4 (OQ-413 part 4, 42 CFR 435.558; 42 U.S.C. 1396a(xx)(6)). Two unrelated enrolled
+  # adults, each a tax unit of one, both citizens and Colorado residents, both earning $300 a month for
+  # 30 hours of paid work, with no exception or exclusion. Each is renewed on 2027-09-15; the most
+  # recent determination took effect 2027-06-01, so June, July and August 2027 are assessed and at
+  # least 1 month must be met (ma_community_engagement_renewal_required_months).
+  # Each month: 30 hours < 80, $300 < $7.25 x 80 = $580, not enrolled in education, not seasonal, no
+  # mandatory exception (age, Medicare, no SSI, 1619(b), TANF, IV-E or Parents and Caretaker
+  # Relatives category, not excluded, no recent incarceration) -> no month met -> the facts do not
+  # show the requirement met.
+  # MAGI: household of one, $300 a month: 300 / (15,960 / 12 = 1,330) = 0.2256 <= 1.33; 19 to 64, not
+  # pregnant, no Medicare -> the Adults group, subject to the community engagement condition.
+  # p1 Dana (41): the notice of noncompliance is dated 2027-09-10, received 2027-09-15 (5 days,
+  #   435.558(c)(4)); the 30 days run through 2027-10-14 -> on 2027-09-15 the period is open:
+  #   status notice_period. An enrolled beneficiary keeps coverage during it (435.558(a)(3)) ->
+  #   the condition holds in September and November -> category adult, status eligible.
+  # p2 Eli (37): the notice is dated 2027-08-02, received 2027-08-07; the period ran through
+  #   2027-09-05 and has ended with no showing -> status not_met. Disenrollment is not later than the
+  #   end of the month after the month the period ended (435.558(d)(2)(ii)): through October 2027 the
+  #   condition holds -> September: category adult, eligible; November: the condition fails ->
+  #   category none, status ineligible_community_engagement.
+  as_of: "2027-09-15"
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: "1986-02-14"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-05-20"
+        ma_most_recent_determination_effective_date: "2027-06-01"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: renewal
+        ma_community_engagement_noncompliance_notice_date: "2027-09-10"
+        ma_is_indian: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 300
+        hours_worked: 30
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+    p2:
+      relationships: []
+      facts:
+        date_of_birth: "1990-07-30"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-05-20"
+        ma_most_recent_determination_effective_date: "2027-06-01"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: renewal
+        ma_community_engagement_noncompliance_notice_date: "2027-08-02"
+        ma_is_indian: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 300
+        hours_worked: 30
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+  expect:
+    p1:
+      ma_community_engagement_response_period_end_date: "2027-10-14"
+      ma_community_engagement_status: {"2027-09": notice_period, "2027-11": notice_period}
+      ma_meets_adult_group_community_engagement_condition: {"2027-09": true, "2027-11": true}
+      ma_magi_category: {"2027-09": adult, "2027-11": adult}
+      ma_magi_eligibility_status: {"2027-09": eligible, "2027-11": eligible}
+    p2:
+      ma_community_engagement_response_period_end_date: "2027-09-05"
+      ma_community_engagement_status: {"2027-09": not_met, "2027-11": not_met}
+      ma_meets_adult_group_community_engagement_condition: {"2027-09": true, "2027-11": false}
+      ma_magi_category: {"2027-09": adult, "2027-11": none}
+      ma_magi_eligibility_status: {"2027-09": eligible, "2027-11": ineligible_community_engagement}
