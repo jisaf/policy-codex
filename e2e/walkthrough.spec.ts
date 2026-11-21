@@ -29,10 +29,17 @@ test("walks a SNAP household from the case list to the deciding step", async ({ 
   await expect(page.locator("table.wk-budget tr.result")).toContainText("$");
 
   // Every step, then the fold again.
-  const folded = await page.locator("ol.stepper > li.step").count();
+  const folded = await page.locator("ol.stepper li.step").count();
   await page.locator("button.wk-showall").click();
   await expect(page).toHaveURL(/all=1/);
-  expect(await page.locator("ol.stepper > li.step").count()).toBeGreaterThan(folded);
+  // Steps that did not change the answer now show (there may be none when every
+  // step decided it); the steps behind a deep step open from their own control.
+  expect(await page.locator("ol.stepper li.step").count()).toBeGreaterThanOrEqual(folded);
+  const behind = page.locator("ol.stepper button.wk-folded").first();
+  if (await behind.count()) {
+    await behind.click();
+    expect(await page.locator("ol.stepper li.step").count()).toBeGreaterThan(folded);
+  }
 
   // A citation opens its excerpt.
   const cite = page.locator("ol.stepper a[data-cite]").first();
