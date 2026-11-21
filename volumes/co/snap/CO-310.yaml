@@ -12,5 +12,5 @@ implemented: engine
 tags: [immigration, legal]
 rationale: A plain negation of snap_meets_citizenship_requirement, kept as its own item because snap_is_ineligible_member reads "ineligible non-citizen" as one of several disjoined reasons a household member is ineligible, matching the structure of 7 CFR 273.11(c) and 273.1(b)(7)(i).
 tests:
-  - {id: CO-310-T1, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: true}
-  - {id: CO-310-T2, as_of: "2026-10-01", given: {state_of_residence: CO, citizenship_status: citizen}, expect: false}
+  - {id: CO-310-T1, as_of: "2026-10-01", given: {immigration_status: undocumented}, expect: true}
+  - {id: CO-310-T2, as_of: "2026-10-01", given: {state_of_residence: CO, immigration_status: us_citizen}, expect: false}

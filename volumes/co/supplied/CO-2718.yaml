@@ -1,0 +1,13 @@
+id: CO-2718
+name: Lives with the batterer
+identifier: lives_with_batterer
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person lives with the individual responsible for the battery or extreme cruelty the person (or the person's parent or child) suffered (10 CCR 2506-1 4.305.2.E.5: \"the battered individual does not live with the batterer\"; 8 U.S.C. 1641(c): not \"during any period in which the individual responsible ... resides in the same household\")."
+precision: "Stated only where is_victim_of_battery_or_extreme_cruelty (CO-2363) is true; the batterer need not be a person of the case."
+supplied_by: "Applicant statement."
+sources: [S1619, S1901]
+tags: [immigration]
+rationale: "SW-18: the living arrangement was inside the SNAP yes/no fact. Same-word audit SW-18 and dual-entry audit 3.1 (audit fix round): the battery finding is stated once, neutrally (is_victim_of_battery_or_extreme_cruelty, CO-2363, with the finding's date and the living arrangement), and SNAP's exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from it."

@@ -7,7 +7,7 @@
  *  `parseItemBlock`'s switch (src/engine/item-block.ts), the surface phrases
  *  are derived from the pattern table in ./patterns.ts, and types, scopes and
  *  tags come from the volume's own `meta`. */
-import { FIELD_W } from "../engine/item-block";
+import { declaredPrograms, FIELD_W, STATUSES } from "../engine/item-block";
 import { tagIds } from "../engine/tags";
 import { RELS } from "../engine/types";
 import type { Engine } from "../engine/engine";
@@ -56,7 +56,6 @@ export const KEYS: readonly string[] = [
 /** Fields whose value is drawn from a short closed list the parser enforces. */
 const VALID: Record<string, string[]> = {
   Kind: ["Derived", "Supplied", "Parameter"],
-  Program: ["All", "Medicaid", "SNAP"],
   Implemented: ["Fact assembly", "Determination engine"],
   Role: ["outcome"],
 };
@@ -318,6 +317,14 @@ function tokenizeFieldLine(
   }
   if (key === "Scope") {
     add(val, engine.meta.scopes.includes(val.trim() as Item["scope"]) ? "literal" : "error", valAt);
+    return out;
+  }
+  if (key === "Program") {
+    add(val, declaredPrograms(engine.meta).includes(val.trim()) ? "literal" : "error", valAt);
+    return out;
+  }
+  if (key === "Status") {
+    add(val, (STATUSES as readonly string[]).includes(val.trim()) ? "literal" : "error", valAt);
     return out;
   }
   if (VALID[key]) {
@@ -617,7 +624,9 @@ export function suggestions(
     }
     const values = ctx.field === "Type" ? engine.meta.types
       : ctx.field === "Scope" ? engine.meta.scopes as readonly string[]
-        : VALID[ctx.field];
+        : ctx.field === "Program" ? declaredPrograms(engine.meta)
+          : ctx.field === "Status" ? STATUSES
+            : VALID[ctx.field];
     return (values ?? [])
       .filter((v) => !q || v.toLowerCase().includes(q))
       .map((v) => ({ label: v, detail: ctx.field, cls: "literal" as TokenClass, insert: v }));
@@ -702,7 +711,8 @@ export const KEY_DOCS: Record<string, string> = {
   Kind: "Supplied (gathered, never computed), Derived (computed by a derivation; a rule is a derived fact), or Parameter (set by policy, versioned).",
   Type: "One of the volume's declared types; an enumeration adds \"one of: a, b\".",
   Scope: "person, person-month, case, month, or global.",
-  Program: "All, Medicaid, or SNAP: which program's meaning this item carries.",
+  Program: "One of the volume's declared programs (volume.yaml `programs`): which program's meaning this item carries.",
+
   Role: "outcome marks a derived fact that is a program result.",
   Meaning: "Plain sentences; the definition an approver signs.",
   Precision: "How edge cases are measured: day boundaries, rounding, which month.",

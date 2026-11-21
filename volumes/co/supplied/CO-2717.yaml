@@ -1,0 +1,13 @@
+id: CO-2717
+name: Battery substantial-connection finding date
+identifier: battery_substantial_connection_finding_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the county office determined that the battery or extreme cruelty this person (or this person's parent or child) suffered is substantially connected to the need for benefits (10 CCR 2506-1 4.305.2.E.5; 8 U.S.C. 1641(c))."
+precision: "Stated only where is_victim_of_battery_or_extreme_cruelty (CO-2363) is true."
+supplied_by: "County determination recorded in CBMS."
+sources: [S1619, S1901]
+tags: [immigration]
+rationale: "SW-18: SNAP's battered non-citizen exemption runs \"during a twelve (12) month period after the local office determines that the battering is substantially connected to the need for benefits\" (S1619); the date was inside the SNAP yes/no fact. Same-word audit SW-18 and dual-entry audit 3.1 (audit fix round): the battery finding is stated once, neutrally (is_victim_of_battery_or_extreme_cruelty, CO-2363, with the finding's date and the living arrangement), and SNAP's exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from it."

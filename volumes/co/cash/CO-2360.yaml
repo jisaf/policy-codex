@@ -1,0 +1,16 @@
+id: CO-2360
+name: "Colorado Works: sponsor deeming household size"
+identifier: cw_sponsor_deeming_household_size
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: "The number of persons in the households of both this sponsored non-citizen and the non-citizen's sponsor, the household size for which 9 CCR 2503-6 3.605.1.A.5.c.5 compares their combined income with 125% of the federal poverty guidelines: the persons in the non-citizen's Colorado Works budgetary unit (cw_budgetary_unit_members, CO-2352) plus the sponsor's household size stated on the sponsor (sponsor_household_size, CO-2715)."
+precision: "A sponsor who lives in the non-citizen's home is in the budgetary unit only if Colorado Works makes the sponsor a member; the sponsor's own household size then counts the same persons and the case states it without them."
+derived: ["+", [count, cw_budgetary_unit_members], [sum, sponsors, [otherwise, [of, [P], sponsor_household_size], 0]]]
+sources: [S1627]
+implemented: engine
+tags: [cash, tanf, immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts. Derived from the unit count and the sponsor's own household size (CO-2715)."
+tests:
+  - {id: CO-2360-T1, title: "A unit of two and a sponsor household of three", as_of: "2026-10-01", given: {cw_budgetary_unit_members: [p1, p3]}, others: {p2: {sponsor_household_size: 3}, p3: {}}, relationships: [[sponsored_by, p1, p2]], expect: 5}

@@ -1,0 +1,15 @@
+id: CO-2720
+name: "SNAP: battered non-citizen sponsor exemption period"
+identifier: snap_battered_non_citizen_exemption_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The number of months after the county's substantial-connection finding during which a battered non-citizen's sponsor income and resources are not counted without court or immigration service recognition: twelve (10 CCR 2506-1 4.305.2.E.5)."
+versions:
+  - from: "2026-10-01"
+    value: 12
+    source: S1619
+sources: [S1619]
+tags: [snap, immigration]
+rationale: "SW-18: the twelve-month period of 4.305.2.E.5, read by snap_battered_non_citizen_sponsor_exemption_applies (CO-2335). Same-word audit SW-18 and dual-entry audit 3.1 (audit fix round): the battery finding is stated once, neutrally (is_victim_of_battery_or_extreme_cruelty, CO-2363, with the finding's date and the living arrangement), and SNAP's exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from it."

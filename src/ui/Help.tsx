@@ -43,7 +43,8 @@ export function helpKeyFor(view: ViewName, editing: boolean): string | null {
     start: "start", program: "programs", cases: "cases", item: "item",
     table: "table", graph: "graph", source: "sources",
     documents: "documents", document: "documents", search: "search",
-    handoff: "handoff",
+    handoff: "handoff", inbox: "inbox", questions: "questions", walkthrough: "walkthrough",
+    roles: "roles", outcomes: "outcomes",
   };
   return known[view] ?? null;
 }

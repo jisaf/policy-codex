@@ -12,5 +12,5 @@ implemented: engine
 tags: [household]
 rationale: No existing item counts the LEAP household; leap_income_within_limit (CO-1003) uses it to select a supplied income limit by household size.
 tests:
-  - {id: CO-1001-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", leap_is_in_another_approved_household: false, citizenship_status: citizen, ssn_furnished_or_application_shown: true}, others: {p2: {date_of_birth: "1981-03-01", leap_is_in_another_approved_household: false, citizenship_status: citizen, ssn_furnished_or_application_shown: true}}, relationships: [[spouse, p1, p2]], expect: 2}
-  - {id: CO-1001-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", leap_is_in_another_approved_household: false, citizenship_status: citizen, ssn_furnished_or_application_shown: true}, relationships: [], expect: 1}
+  - {id: CO-1001-T1, as_of: "2026-10-01", given: {date_of_birth: "1985-01-22", leap_is_in_another_approved_household: false, immigration_status: us_citizen, ssn_furnished_or_application_shown: true}, others: {p2: {date_of_birth: "1981-03-01", leap_is_in_another_approved_household: false, immigration_status: us_citizen, ssn_furnished_or_application_shown: true}}, relationships: [[spouse, p1, p2]], expect: 2}
+  - {id: CO-1001-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", leap_is_in_another_approved_household: false, immigration_status: us_citizen, ssn_furnished_or_application_shown: true}, relationships: [], expect: 1}

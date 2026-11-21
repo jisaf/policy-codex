@@ -1,0 +1,13 @@
+id: CO-2701
+name: American Indian born in Canada or tribal member (non-citizen category)
+identifier: is_american_indian_born_in_canada_or_tribal_member
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The non-citizen was born in Canada and possesses at least 50 percent American Indian blood, or is a member of an Indian tribe as 25 U.S.C. 5304(e) defines it: the immigration category 10 CCR 2505-10 § 8.100.3.G.1.g.iv.4 and vii.22, 10 CCR 2505-3 § 110.1.B.4.g and 9 CCR 2503-7 3.753.16.L name."
+precision: "Stated for a non-citizen only; a citizen's tribal membership is stated by the Indian-status facts. If not stated, programs read this as false."
+supplied_by: "Immigration documents (Form I-551 class code for an American Indian born in Canada), tribal enrollment record."
+sources: [S656, S1904, S1907, S1909]
+tags: [immigration]
+rationale: "OQ-44 fix (docs/reviews/audit-dual-entry.md 3.1): the american_indian_born_in_canada option of ma_five_year_bar_exempt_category (CO-1170, retired) becomes a program-neutral yes/no, because Medicaid, CHP+ and LEAP each name the category in their own lists. Not ma_is_indian (CO-1938), which is Medicaid's 42 CFR 447.51 definition for cost sharing and community engagement, not an immigration category."

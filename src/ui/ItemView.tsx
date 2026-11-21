@@ -12,6 +12,12 @@ import {
   sourceTitles, trayOpenSig, viewEngine, volumeSig,
 } from "./state";
 import { itemValidation } from "./validation";
+import { approvalStatus } from "./approvals";
+import { FplFigures, noVersionReason, PlainRule, Value } from "./Present";
+import { formatDate, formatValue } from "./present";
+import { unverifiedIds, unverifiedUpstream } from "./provenance";
+import { todayIso } from "./views/context";
+import { paramInForce } from "../engine/versions";
 
 interface RenameNote { msg: string; blocking: boolean }
 
@@ -80,8 +86,8 @@ function VersionTable({ engine, item }: { engine: Engine; item: Item }) {
           <tr key={v.from}>
             <td>{v.from}</td>
             <td>{v.to ?? "present"}</td>
-            <td class="value">{engine.lit(v.value)}</td>
-            <td>{v.source ?? ""}</td>
+            <td class="value"><Value item={item} value={v.value} /></td>
+            <td>{v.source ? <Rich engine={engine} text={v.source} mode="inline" as="span" /> : ""}</td>
           </tr>
         ))}
       </tbody>
@@ -123,7 +129,62 @@ function workedExample(
     : { given, expected: engine.fmt(t.expect === "unknown" ? null : t.expect), expectedIsProse: false };
 }
 
+/** Where the item stands in approval: status, the roles that must sign
+ *  (the volume's approval policy, upstream_of_outcomes included), and who
+ *  has signed. */
+function StatusLine({ engine, item }: { engine: Engine; item: Item }) {
+  const a = approvalStatus(engine, item);
+  return (
+    <p class="status-line">
+      <span class={`tag status-${a.status.toLowerCase()}`}>{a.status}</span>{" "}
+      {a.required.length === 0
+        ? <span class="muted">No sign-off required by the approval policy.</span>
+        : (
+          <span>
+            Needs sign-off from {a.required.join(", ")}{" "}
+            <span class="muted">({a.required.length - a.missing.length} of {a.required.length} signed)</span>
+          </span>
+        )}
+      {a.signed.length > 0 && (
+        <span class="signed">
+          {" "}Signed: {a.signed.map((s) => `${s.role}${s.by ? ` (${s.by})` : ""}, ${s.date}`).join("; ")}
+        </span>
+      )}
+    </p>
+  );
+}
+
+/** A flag when this item, or anything it rests on, cites an excerpt that is
+ *  not a verified quotation. */
+function UnverifiedNote({ engine, item }: { engine: Engine; item: Item }) {
+  const vol = volumeSig.value;
+  const uses = vol ? unverifiedUpstream(engine, item.identifier, unverifiedIds(vol.sources)) : [];
+  if (!uses.length) return null;
+  const own = uses.find((u) => u.item.id === item.id);
+  const others = uses.filter((u) => u.item.id !== item.id);
+  return (
+    <p class="unverified-note">
+      <span class="flag unverified">Unverified source</span>{" "}
+      {own && <>This item cites {own.sources.join(", ")}, which is not a verified quotation. </>}
+      {others.length > 0 && (
+        <>
+          It rests on {others.length} item{others.length === 1 ? "" : "s"} that cite
+          {others.length === 1 ? "s" : ""} one:{" "}
+          {others.slice(0, 6).map((u, i) => (
+            <span key={u.item.id}>
+              {i > 0 && ", "}
+              <Ident id={u.item.identifier} label={u.item.name} engine={engine} /> ({u.sources.join(", ")})
+            </span>
+          ))}
+          {others.length > 6 && `, and ${others.length - 6} more`}.
+        </>
+      )}
+    </p>
+  );
+}
+
 export function ItemView() {
+
   const renameOpen = useSignal(false);
   const renameValue = useSignal("");
   const engine = viewEngine() ?? engineSig.value;
@@ -140,6 +201,7 @@ export function ItemView() {
   const nameOf = (identifier: string) => engine.item(identifier)?.name ?? identifier;
   const idOf = (identifier: string) => engine.item(identifier)?.id ?? identifier;
   const example = workedExample(engine, (item.tests ?? [])[0]);
+  const today = todayIso();
 
   return (
     <section class="view card">
@@ -226,16 +288,45 @@ export function ItemView() {
       })()}
 
       <div class="leading">
-        {item.kind === "derived" && <DerivedSentence engine={engine} item={item} />}
         {item.kind === "supplied" && (
           <p class="lead-sentence">A fact we are told: {item.meaning}</p>
         )}
-        {item.kind === "parameter" && (
-          <p class="lead-sentence">
-            A number set by policy: {engine.lit(engine.paramValue(item))}{" "}
-            ({sources.length ? sources.map((s) => s.id).join(", ") : "no source cited"})
+        {item.kind !== "supplied" && item.meaning && (
+          <p class="lead-meaning">{item.meaning}</p>
+        )}
+        <StatusLine engine={engine} item={item} />
+        {item.statute_override && (
+          <p class="override-note">
+            <span class="flag override">Statute over rule</span> {item.statute_override}
           </p>
         )}
+        <UnverifiedNote engine={engine} item={item} />
+        {item.kind === "derived" && (
+          <>
+            <PlainRule engine={engine} item={item} asOf={today} />
+            <p class="muted ledger-words">In the ledger's own words:</p>
+            <DerivedSentence engine={engine} item={item} />
+          </>
+        )}
+        {item.kind === "parameter" && (() => {
+          const value = item.versions?.length ? paramInForce(item, today) : engine.paramValue(item);
+          const reason = noVersionReason(item, today);
+          const isTable = value !== null && typeof value === "object";
+          return (
+            <div class="lead-sentence param-value">
+              <p>
+                A number set by policy{item.versions?.length ? `, in force on ${formatDate(today)}` : ""}:{" "}
+                {isTable ? null : <b>{formatValue(item, value)}</b>}{" "}
+                <span class="muted">
+                  ({sources.length ? sources.map((s) => s.id).join(", ") : "no source cited"})
+                </span>
+              </p>
+              {isTable && <Value item={item} value={value} />}
+              {reason && <p class="warn no-version">{reason}</p>}
+              <FplFigures engine={engine} item={item} value={value} asOf={today} />
+            </div>
+          );
+        })()}
         {example && (
           <p class="worked-example">
             <b>Example.</b> Given{" "}
@@ -249,9 +340,17 @@ export function ItemView() {
 
       <details class="section">
         <summary>Details</summary>
-        <p><b>Type.</b> {item.type}
-          {item.options && item.options.length ? `: ${item.options.join(", ")}` : ""}
-        </p>
+        <p><b>Type.</b> {item.type}</p>
+        {item.options && item.options.length > 0 && (
+          <div class="options">
+            <b>Possible results.</b>
+            <ul>
+              {item.options.map((o) => (
+                <li key={o}>{formatValue(item, o)} <code class="alias">{o}</code></li>
+              ))}
+            </ul>
+          </div>
+        )}
         <p><b>Scope.</b> <Term scope={item.scope} /></p>
         <p><b>Program.</b> <span class={`tag prog-${item.program.toLowerCase()}`}>{item.program}</span></p>
         {item.tags && item.tags.length > 0 && <p><b>Tags.</b> {item.tags.join(", ")}</p>}
@@ -309,7 +408,7 @@ export function ItemView() {
       </details>
 
       <details class="section">
-        <summary>Approach A projection</summary>
+        <summary>For implementers: Approach A projection</summary>
         <p class="muted">{engine.projectionA(item.identifier, sourceTitles()).ledger}</p>
         <pre class="projection">
           {engine.projectionA(item.identifier, sourceTitles()).text}

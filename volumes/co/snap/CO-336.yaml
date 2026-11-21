@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: Every member of this person's SNAP household receives, or is authorized to receive, SSI, TANF cash assistance (Colorado Works), or a Colorado Adult Financial cash payment (Old Age Pension, Aid to the Needy Disabled, or Aid to the Blind) - the Basic Categorical Eligibility test.
-precision: Tests every member of snap_household_members, including ineligible members, matching 4.206,C,1,a's "all members" wording rather than snap_eligible_household_members.
+precision: "Tests every member of snap_household_members, including ineligible members, matching 4.206,C,1,a's \"all members\" wording rather than snap_eligible_household_members. \"Receive, or are authorized to receive\" (S47) is read from the case records receives_ssi, receives_tanf_cash (CO-013) and receives_state_cash_assistance (CO-073), whose meanings include an approved grant not yet paid; this volume's own Colorado Works and Adult Financial determinations are not read (dual-entry audit 4.3)."
 derived: [not, [exists, snap_household_members, [not, [any, [of, [P], receives_ssi], [of, [P], receives_tanf_cash], [of, [P], receives_state_cash_assistance]]]]]
 sources: [S47]
 implemented: engine

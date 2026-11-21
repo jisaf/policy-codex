@@ -7,19 +7,20 @@ scope: person
 program: Medicaid
 meaning: "Whether the person is one of the individuals for whom 42 U.S.C. 1396b(v)(5)(B) (Pub. L. 119-21 sec. 71109(a)) allows federal payment for full Medical Assistance from October 1, 2026: a citizen or national of the United States (i), a lawful permanent resident (ii), a Cuban and Haitian entrant (iii), or a Compact of Free Association migrant (iv). Refugees, asylees, parolees, trafficking victims and the other qualified non-citizens who are not lawful permanent residents are not in it (CMS SHO #26-001)."
 precision: "The rule is in force from October 1, 2026 (its effective range); on an earlier determination date it states nothing, and ma_meets_citizenship_requirement (CO-509) does not read it. Residence in a State, 1396b(v)(5)(A), is tested separately by ma_meets_residency. The paragraph (2) emergency services and paragraph (4) lawfully residing children and pregnant women exceptions are not part of this test: CO-509 keeps its 8.100.3.G.1.g.vii arm for (4), and emergency Medicaid (CO-510, CO-1151) reads the failure of CO-509 for (2)."
-derived: [any, is_us_citizen_or_national, [in, citizenship_status, [lawful_permanent_resident, cuban_haitian_entrant, compact_of_free_association_migrant]]]
+derived: [any, is_us_citizen_or_national, [in, immigration_status, [lawful_permanent_resident, cuban_haitian_entrant, compact_of_free_association_migrant]]]
 sources: [S1700, S1702, S1703]
 effective: {from: "2026-10-01", to: present}
 implemented: engine
 tags: [ma, immigration, legal]
 open: [OQ-510, OQ-518]
-rationale: B-1 of the HCPF review. No existing item names the four 1396b(v)(5)(B) categories; is_qualified_non_citizen (CO-506) is the wider 8 U.S.C. 1641(b) list, and the SNAP list under the amended 7 U.S.C. 2015(f) (snap_is_eligible_non_citizen, CO-308) is another program's rule, so it is not reused (vocabulary review rule 3). A refugee or asylee who has adjusted to lawful permanent residence is recorded as lawful_permanent_resident in citizenship_status (CO-002) and is in the category.
+rationale: "B-1 of the HCPF review. No existing item names the four 1396b(v)(5)(B) categories; is_qualified_non_citizen (CO-506) is the wider 8 U.S.C. 1641(b) list, and the SNAP list under the amended 7 U.S.C. 2015(f) (snap_is_eligible_non_citizen, CO-308) is another program's rule, so it is not reused (vocabulary review rule 3). A refugee or asylee who has adjusted to lawful permanent residence is recorded as lawful_permanent_resident in citizenship_status (CO-002) and is in the category.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170)."
 tests:
-  - {id: CO-2400-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, title: Citizen, expect: true}
-  - {id: CO-2400-T2, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, title: "Lawful permanent resident", expect: true}
-  - {id: CO-2400-T3, as_of: "2026-10-01", given: {citizenship_status: refugee}, title: "Refugee not adjusted to LPR", expect: false}
-  - {id: CO-2400-T4, as_of: "2026-10-01", given: {citizenship_status: asylee}, title: Asylee, expect: false}
-  - {id: CO-2400-T5, as_of: "2026-10-01", given: {citizenship_status: other_qualified_non_citizen}, title: "Parolee (other qualified non-citizen)", expect: false}
-  - {id: CO-2400-T6, as_of: "2026-10-01", given: {citizenship_status: cuban_haitian_entrant}, title: "Cuban/Haitian entrant", expect: true}
-  - {id: CO-2400-T7, as_of: "2026-10-01", given: {citizenship_status: compact_of_free_association_migrant}, title: "COFA migrant", expect: true}
-  - {id: CO-2400-T8, as_of: "2026-09-30", given: {citizenship_status: citizen}, title: "Before the statute's date the rule is not in force: unknown", expect: unknown}
+  - {id: CO-2400-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen}, title: Citizen, expect: true}
+  - {id: CO-2400-T2, as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident}, title: "Lawful permanent resident", expect: true}
+  - {id: CO-2400-T3, as_of: "2026-10-01", given: {immigration_status: refugee}, title: "Refugee not adjusted to LPR", expect: false}
+  - {id: CO-2400-T4, as_of: "2026-10-01", given: {immigration_status: asylee}, title: Asylee, expect: false}
+  - {id: CO-2400-T5, as_of: "2026-10-01", given: {immigration_status: parolee_one_year_or_more}, title: "Parolee (other qualified non-citizen)", expect: false}
+  - {id: CO-2400-T6, as_of: "2026-10-01", given: {immigration_status: cuban_haitian_entrant}, title: "Cuban/Haitian entrant", expect: true}
+  - {id: CO-2400-T7, as_of: "2026-10-01", given: {immigration_status: compact_of_free_association_migrant}, title: "COFA migrant", expect: true}
+  - {id: CO-2400-T8, as_of: "2026-09-30", given: {immigration_status: us_citizen}, title: "Before the statute's date the rule is not in force: unknown", expect: unknown}
+  - {id: CO-2400-T9, as_of: "2026-10-01", given: {immigration_status: trafficking_victim}, title: "Trafficking victim: a qualified non-citizen outside 1396b(v)(5)(B)", expect: false}

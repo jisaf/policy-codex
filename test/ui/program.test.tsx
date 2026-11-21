@@ -7,6 +7,7 @@ import { createEngine } from "../../src/engine/engine";
 import { parseCases } from "../../src/engine/cases";
 import { engineSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
+import { todayIso } from "../../src/ui/views/context";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
 import type { Item, ProgramVocabulary, VolumeMeta } from "../../src/engine/types";
@@ -123,32 +124,42 @@ describe("ProgramView", () => {
   it("shows the parameters in force on the chosen date, respecting versions", async () => {
     const host = show("Medicaid");
     const dateInput = host.querySelector('input[type="date"]') as HTMLInputElement;
-    expect(dateInput.value).toBe("2027-03-15");
+    // The page opens on today (county supervisor U9), not a fixed date.
+    expect(dateInput.value).toBe(todayIso());
+    dateInput.value = "2027-03-15";
+    dateInput.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
 
     const hoursRow = [...host.querySelectorAll("table.parameters tbody tr")].find(
       (tr) => tr.textContent!.includes("medicaid_ce_required_hours"),
     )!;
-    expect(hoursRow.querySelector("td.value")!.textContent).toBe("80");
+    expect(hoursRow.querySelector("td.value")!.textContent).toBe("80 hours");
 
     // federal_minimum_wage (WR-101) is program "All" and applies to every
     // program's table; its only version starts 2009-07-24.
     const wageRow = () => [...host.querySelectorAll("table.parameters tbody tr")].find(
       (tr) => tr.textContent!.includes("federal_minimum_wage"),
     )!;
-    expect(wageRow().querySelector("td.value")!.textContent).toBe("7.25");
+    expect(wageRow().querySelector("td.value")!.textContent).toBe("$7.25");
 
     dateInput.value = "2000-01-01";
     dateInput.dispatchEvent(new Event("input", { bubbles: true }));
     await new Promise((r) => setTimeout(r));
-    expect(wageRow().querySelector("td.value")!.textContent).toBe("unknown");
+    // Unknown, and why: the codex states no figure before the first version.
+    expect(wageRow().querySelector("td.value")!.textContent)
+      .toBe("UnknownNo figure before July 24, 2009.");
   });
 
   it("lists the items whose effective range does not cover the chosen date", async () => {
     const host = show("Medicaid");
-    // WR-100 runs from 2027-01-01, and the page opens on 2027-03-15.
+    const dateInput = host.querySelector('input[type="date"]') as HTMLInputElement;
+    // WR-100 runs from 2027-01-01.
+    dateInput.value = "2027-03-15";
+    dateInput.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r));
     expect(host.querySelector("ul.notinforce")).toBeNull();
 
-    const dateInput = host.querySelector('input[type="date"]') as HTMLInputElement;
+
     dateInput.value = "2026-12-31";
     dateInput.dispatchEvent(new Event("input", { bubbles: true }));
     await new Promise((r) => setTimeout(r));

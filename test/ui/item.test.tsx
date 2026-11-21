@@ -143,7 +143,7 @@ describe("ItemView", () => {
     const docLink = [...record.querySelectorAll("a")].find(
       (a) => a.textContent === "State plans for medical assistance",
     ) as HTMLAnchorElement;
-    expect(docLink.getAttribute("href")).toBe("#/mwr/document/D-1");
+    expect(docLink.getAttribute("href")).toBe("#/mwr/document/D-1?excerpt=S1");
   });
 
   it("makes an excerpt id in the decision record a token", () => {
@@ -188,7 +188,7 @@ describe("ItemView", () => {
     const rows = [...details(show("WR-101")).querySelectorAll("table.versions tbody tr")];
     expect(rows).toHaveLength(1);
     expect([...rows[0].children].map((td) => td.textContent))
-      .toEqual(["2009-07-24", "present", "7.25", ""]);
+      .toEqual(["2009-07-24", "present", "$7.25", ""]);
 
     // WR-100 carries an effective range and no versions.
     const hundred = details(show("WR-100"));
@@ -216,8 +216,8 @@ describe("ItemView", () => {
     render(<ItemView />, host);
     const rows = [...host.querySelectorAll("table.versions tbody tr")];
     expect(rows.map((tr) => [...tr.children].map((td) => td.textContent))).toEqual([
-      ["2009-07-24", "2026-01-01", "7.25", "S18"],
-      ["2026-01-01", "present", "9.5", ""],
+      ["2009-07-24", "2026-01-01", "$7.25", "S18"],
+      ["2026-01-01", "present", "$9.50", ""],
     ]);
     engineSig.value = engine;
   });

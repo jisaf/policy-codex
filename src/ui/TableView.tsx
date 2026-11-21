@@ -4,6 +4,8 @@ import type { Item } from "../engine/types";
 import { Term } from "./labels";
 import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
+import { volumePrograms } from "./programs";
+import { plainQuestionTitle, questionStatus } from "./questions";
 import { engineSig, navigate, route, viewEngine, volumeSig } from "./state";
 import { validationMap } from "./validation";
 
@@ -65,6 +67,13 @@ export function filterItems(engine: Engine, f: TableFilters): Item[] {
   return rows.sort((a, b) => dir * cell(a, f.sort).localeCompare(cell(b, f.sort)));
 }
 
+/** An open-question option short enough that the select fits the page. */
+function shortQuestion(id: string, title: string): string {
+  const t = plainQuestionTitle(title);
+  const status = questionStatus({ title }) === "resolved" ? " (resolved)" : "";
+  return `${id} ${t.length > 60 ? t.slice(0, 59) + "…" : t}${status}`;
+}
+
 const COLUMNS = [
   { key: "name", label: "Fact" },
   { key: "kind", label: "Kind" },
@@ -113,11 +122,11 @@ export function TableView() {
     <section class="view">
       <div class="controls">
         {select("kind", "Kind", [["supplied", "supplied"], ["derived", "derived"], ["parameter", "parameter"]])}
-        {select("program", "Program", [["All", "All"], ["Medicaid", "Medicaid"], ["SNAP", "SNAP"]])}
+        {select("program", "Program", volumePrograms(engine).map((p) => [p, p] as [string, string]))}
         {select("scope", "Scope", vol.meta.scopes.map((s) => [s, s] as [string, string]))}
         {select("open", "Open question", [
           ["any", "any"],
-          ...vol.openQuestions.map((q) => [q.id, `${q.id} ${q.title}`] as [string, string]),
+          ...vol.openQuestions.map((q) => [q.id, shortQuestion(q.id, q.title)] as [string, string]),
         ])}
         {select("state", "Validation", [
           ["invalid", "errors"], ["warn", "warnings only"], ["clean", "clean"],

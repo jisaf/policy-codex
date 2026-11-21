@@ -12,6 +12,7 @@ sources: [S1207, S1208]
 implemented: engine
 tags: [ma, magi]
 rationale: "OQ-65: the family caregiver exclusion needs the persons cared for. Same-word audit SW-25 and dual-entry 3.2: derived from the regular-care role, so the group is not entered beside the care hours."
+nearest: [CO-2713]
 tests:
   - {id: CO-1926-T1, title: "Cares for her disabled brother", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[provides_regular_care_to, p1, p2]], expect: [p2]}
   - {id: CO-1926-T2, title: "No regular care", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[other_relative, p1, p2]], expect: []}

@@ -1,0 +1,17 @@
+id: CO-2336
+name: "Sponsor has died"
+identifier: sponsor_has_died
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Every individual who signed this non-citizen's affidavit of support has died: each of the non-citizen's sponsors (sponsors, CO-2713) is deceased (is_deceased, CO-2200)."
+precision: "False for a non-citizen with no sponsor in the case. SNAP reads it as false when it cannot be determined (snap_sponsor_deeming_applies, CO-2337). Death is read in the month of the determination date."
+derived: [all, [">", [count, sponsors], 0], [not, [exists, sponsors, [not, [at, [of, [P], is_deceased], [det_month]]]]]]
+sources: [S1619]
+implemented: engine
+tags: [immigration]
+rationale: "OQ-380: 4.305.2.E (S1619) lists the non-citizens to whom the sponsor's income and resources are not deemed; no fact stated this exemption, so snap_requires_verification_of_sponsor (CO-1616) asked every sponsored member for the sponsor's information.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts. The sponsor's death is read from the sponsor's own is_deceased (dual-entry 3.14)."
+tests:
+  - {id: CO-2336-T1, as_of: "2026-10-01", month: "2026-10", given: {}, others: {p2: {is_deceased: true}}, relationships: [[sponsored_by, p1, p2]], expect: true}
+  - {id: CO-2336-T2, as_of: "2026-10-01", month: "2026-10", given: {}, others: {p2: {is_deceased: false}}, relationships: [[sponsored_by, p1, p2]], expect: false}

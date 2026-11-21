@@ -1,0 +1,17 @@
+id: CO-2332
+name: "SNAP: lives in the sponsor's SNAP household"
+identifier: snap_lives_in_sponsor_household
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This sponsored non-citizen is a member of the sponsor's own SNAP household (10 CCR 2506-1 4.305.2.E.1): one of the non-citizen's sponsors (sponsors, CO-2713) is in the non-citizen's SNAP household (snap_household_members, CO-305), so the sponsor's income and resources count as household income and resources, not by deeming."
+precision: "If it cannot be determined, SNAP reads this as false (snap_sponsor_deeming_applies, CO-2337)."
+derived: [exists, sponsors, [in_group, [P], snap_household_members]]
+sources: [S1619]
+implemented: engine
+tags: [snap, immigration]
+rationale: "OQ-380: 4.305.2.E (S1619) lists the non-citizens to whom the sponsor's income and resources are not deemed; no fact stated this exemption, so snap_requires_verification_of_sponsor (CO-1616) asked every sponsored member for the sponsor's information.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts. It restated membership of the volume's own SNAP household."
+tests:
+  - {id: CO-2332-T1, as_of: "2026-10-01", given: {sponsors: [p2], snap_household_members: [p1, p2]}, others: {p2: {}}, expect: true}
+  - {id: CO-2332-T2, as_of: "2026-10-01", given: {sponsors: [p2], snap_household_members: [p1]}, others: {p2: {}}, expect: false}

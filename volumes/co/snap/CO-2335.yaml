@@ -1,0 +1,19 @@
+id: CO-2335
+name: "SNAP: battered non-citizen exemption from sponsor deeming applies"
+identifier: snap_battered_non_citizen_sponsor_exemption_applies
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This sponsored non-citizen is exempt from sponsor deeming under 10 CCR 2506-1 4.305.2.E.5: a child of a battered parent; or a battered non-citizen (spouse, parent of a battered child or child of a battered non-citizen, is_victim_of_battery_or_extreme_cruelty, CO-2363) who does not live with the batterer (lives_with_batterer, CO-2718), within snap_battered_non_citizen_exemption_months (CO-2720) of the county's finding that the battery is substantially connected to the need for benefits (battery_substantial_connection_finding_date, CO-2717), or later where a court or the immigration service has recognized it (CO-2719)."
+precision: "The twelve months are counted in calendar months from the month of the finding (snap_battered_non_citizen_exemption_months, CO-2720): the exemption runs through the eleventh month after it. A child of a battered parent is exempt whatever the twelve-month and living-arrangement conditions, as E.5's first sentence says. If the battery is not stated, SNAP reads it as false."
+derived: [any, [exists_related, [child], [otherwise, [of, [P], is_victim_of_battery_or_extreme_cruelty], false]], [all, [otherwise, is_victim_of_battery_or_extreme_cruelty, false], [not, lives_with_batterer], [any, ["<", [det_month], [months_after, snap_battered_non_citizen_exemption_months, [month_of, battery_substantial_connection_finding_date]]], [otherwise, battery_is_recognized_by_court_or_immigration_service, false]]]]
+sources: [S1619]
+implemented: engine
+tags: [snap, immigration]
+rationale: "OQ-380: 4.305.2.E (S1619) lists the non-citizens to whom the sponsor's income and resources are not deemed; no fact stated this exemption, so snap_requires_verification_of_sponsor (CO-1616) asked every sponsored member for the sponsor's information.  Same-word audit SW-18 and dual-entry audit 3.1 (audit fix round): the battery finding is stated once, neutrally (is_victim_of_battery_or_extreme_cruelty, CO-2363, with the finding's date and the living arrangement), and SNAP's exemption (snap_battered_non_citizen_sponsor_exemption_applies, CO-2335) is derived from it."
+tests:
+  - {id: CO-2335-T1, as_of: "2026-10-01", title: "Battered spouse, finding in June 2026, lives apart", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: false, battery_substantial_connection_finding_date: "2026-06-15"}, relationships: [], expect: true}
+  - {id: CO-2335-T2, as_of: "2026-10-01", title: "Finding in August 2025, no court or immigration service recognition: past twelve months", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: false, battery_substantial_connection_finding_date: "2025-08-15", battery_is_recognized_by_court_or_immigration_service: false}, relationships: [], expect: false}
+  - {id: CO-2335-T3, as_of: "2026-10-01", title: "Lives with the batterer", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: true}, relationships: [], expect: false}
+  - {id: CO-2335-T4, as_of: "2026-10-01", title: "Child of a battered parent", given: {}, others: {p2: {is_victim_of_battery_or_extreme_cruelty: true}}, relationships: [[child, p1, p2]], expect: true}

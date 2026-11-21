@@ -1,10 +1,12 @@
 import { useLayoutEffect } from "preact/hooks";
+import { PERSONAS, setPersona, type Persona } from "./personas";
 import { offerTourOnFirstVisit, startTour } from "./Tour";
 import { navigate, setDoor, setMode, type Door } from "./state";
 
 interface DoorInfo { id: Door; title: string; body: string }
 
-// Copy from docs/design-onboarding.md, "Doors".
+// Copy from docs/design-onboarding.md, "Doors". Kept under "Other ways in"
+// beside the role entry points (phase 13), so every earlier start still works.
 const DOORS: DoorInfo[] = [
   {
     id: "admin",
@@ -40,6 +42,15 @@ function choose(door: Door): void {
   }
 }
 
+/** A role entry point: remembers the persona (the workflow views filter to
+ *  it), sets the older door it implies, and opens the persona's home. */
+export function choosePersona(p: Persona): void {
+  setPersona(p.id);
+  setDoor(p.door);
+  setMode("read");
+  navigate({ view: p.home.view, arg: p.home.arg, params: p.home.params ?? {} });
+}
+
 export function StartView() {
   // The tour is "shown once": a brand-new visitor gets it here, unasked;
   // anyone who has already seen or skipped it just gets "Take the tour".
@@ -48,8 +59,18 @@ export function StartView() {
   return (
     <section class="view start">
       <h1>What brings you here today?</h1>
-      <p class="muted">Pick the one that fits; you can change this any time.</p>
-      <div class="doors">
+      <p class="muted">Pick where you work; you can change this any time.</p>
+      <div class="doors roles">
+        {PERSONAS.map((p) => (
+          <button key={p.id} class="door persona" data-persona={p.id} onClick={() => choosePersona(p)}>
+            <h3>{p.label}</h3>
+            <p class="agency">{p.agency}</p>
+            <p>{p.body}</p>
+          </button>
+        ))}
+      </div>
+      <h2 class="otherways">Other ways in</h2>
+      <div class="doors classic">
         {DOORS.map((d) => (
           <button key={d.id} class="door" data-door={d.id} onClick={() => choose(d.id)}>
             <h3>{d.title}</h3>

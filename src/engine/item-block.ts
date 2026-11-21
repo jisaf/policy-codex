@@ -2,11 +2,52 @@ import type { LedgerIndex } from "./ledger-index";
 import { block } from "./render";
 import { parseDerivation } from "./parse";
 import { lit, paramValue } from "./values";
-import type { Expr, Item, TestSpec, VolumeMeta } from "./types";
+import type { ApprovalRecord, Expr, Item, TestSpec, VolumeMeta } from "./types";
 
 export const FIELD_W = 14;
 
 export interface ItemBlockExtra { uses?: string[]; approval?: string[]; status?: string }
+
+export const STATUSES: ReadonlyArray<NonNullable<Item["status"]>> = ["Draft", "Reviewed", "Approved"];
+
+/** One signature as the block writes it: "Role: by, date, commit", with
+ *  `by` and `commit` optional ("Legal: 2026-11-21"). */
+export function formatApproval(a: ApprovalRecord): string {
+  return `${a.role}: ${[a.by, a.date, a.commit].filter(Boolean).join(", ")}`;
+}
+
+/** Reads `formatApproval` back. Signatures are separated by ";". */
+export function parseApprovals(val: string): ApprovalRecord[] {
+  const out: ApprovalRecord[] = [];
+  for (const part of val.split(";").map((x) => x.trim()).filter(Boolean)) {
+    const colon = part.lastIndexOf(":");
+    if (colon <= 0) throw new Error(`Approval must read "Role: name, YYYY-MM-DD": "${part}"`);
+    const role = part.slice(0, colon).trim();
+    const bits = part.slice(colon + 1).split(",").map((x) => x.trim()).filter(Boolean);
+    const di = bits.findIndex((b) => /^\d{4}-\d{2}-\d{2}$/.test(b));
+    if (di < 0) throw new Error(`Approval for "${role}" needs a date, YYYY-MM-DD`);
+    const rec: ApprovalRecord = { role, date: bits[di] };
+    const by = bits.slice(0, di).join(", ");
+    if (by) rec.by = by;
+    if (bits[di + 1]) rec.commit = bits[di + 1];
+    out.push(rec);
+  }
+  return out;
+}
+
+/** The programs a volume declares (volume.yaml `programs`), or the three the
+ *  first volume used before programs were declared. */
+export function declaredPrograms(meta: Pick<VolumeMeta, "programs"> | null): string[] {
+  const ids = meta?.programs?.map((p) => p.id) ?? [];
+  return ids.length ? ids : ["All", "Medicaid", "SNAP"];
+}
+
+/** A parameter's single value as the block's Value line: a table as JSON, so
+ *  it reads back as the same table rather than the word "table". */
+function valueText(v: unknown): string {
+  if (v !== null && typeof v === "object") return JSON.stringify(v);
+  return lit(v);
+}
 export interface BlockError { line: number; msg: string }
 export interface ParsedItemBlock { item: Item; errors: BlockError[] }
 
@@ -26,7 +67,7 @@ export function itemBlock(ix: LedgerIndex, it: Item, extra?: ItemBlockExtra): st
   if (it.assumption) f("Assumption", it.assumption);
   if (it.statute_override) f("Override", it.statute_override);
   if (it.kind === "supplied") f("Supplied by", it.supplied_by || "");
-  if (it.kind === "parameter") f("Value", lit(paramValue(it)));
+  if (it.kind === "parameter") f("Value", valueText(paramValue(it)));
   if (it.kind === "derived") {
     let lines: string[];
     try {
@@ -49,12 +90,32 @@ export function itemBlock(ix: LedgerIndex, it: Item, extra?: ItemBlockExtra): st
     for (const t of it.tests) L.push("  " + formatTest(t));
   }
   if (it.open && it.open.length) f("Open", it.open.join(", "));
-  if (extra) {
-    if (extra.uses) f("Uses", extra.uses.join(", "));
-    if (extra.approval) f("Approval", extra.approval.join(", "));
-    if (extra.status) f("Status", extra.status);
-  }
+  if (extra?.uses) f("Uses", extra.uses.join(", "));
+  // Status and the signatures are the item's own fields: written here and
+  // read back, so an approver's edit to either is kept (HCPF analyst F1).
+  // An item that never stated a status is Draft; the line appears once one
+  // is stated, and typing it in is how a status is set.
+  const status = extra?.status ?? it.status;
+  if (status) f("Status", status);
+  if (it.approval && it.approval.length) f("Approval", it.approval.map(formatApproval).join("; "));
   return L.join("\n");
+}
+
+/** The draft an edited block stands for: the draft's own fields (the block
+ *  does not carry them all: versions, rationale, nearest, ...) overlaid with
+ *  what the block parsed to. Three fields need care:
+ *  - a versioned parameter's Value line is the flat latest value, and read
+ *    back as `value` it would shadow `versions`, so it is ignored;
+ *  - Status "Draft" on an item that never stated a status is the default,
+ *    not an edit;
+ *  - an Approval line removed from the block removes the signatures. */
+export function mergeBlock(draft: Item, parsed: Item): Item {
+  const p: Partial<Item> = { ...parsed };
+  if (draft.versions?.length) delete p.value;
+  if (p.status === "Draft" && draft.status === undefined) delete p.status;
+  const out: Item = { ...draft, ...p };
+  if (parsed.approval === undefined) delete out.approval;
+  return out;
 }
 
 export function formatTest(t: TestSpec): string {
@@ -165,8 +226,14 @@ export function parseItemBlock(
           break;
         case "Program":
           it.program = val as Item["program"];
-          if (!["All", "Medicaid", "SNAP"].includes(val)) {
-            errors.push({ line: i + 1, msg: "Program must be All, Medicaid, or SNAP" });
+          {
+            const programs = declaredPrograms(meta);
+            if (!programs.includes(val)) {
+              errors.push({
+                line: i + 1,
+                msg: `Program must be one of the volume's programs: ${programs.join(", ")}`,
+              });
+            }
           }
           break;
         case "Role": it.role = val; break;
@@ -176,8 +243,16 @@ export function parseItemBlock(
         case "Override": it.statute_override = val; break;
         case "Supplied by": it.supplied_by = val; break;
         case "Value":
-          it.value = /^-?\d+(\.\d+)?$/.test(val) ? Number(val)
-            : val === "yes" ? true : val === "no" ? false : val;
+          if (/^[{[]/.test(val)) {
+            try {
+              it.value = JSON.parse(val);
+            } catch {
+              errors.push({ line: i + 1, msg: "Value: a table must be written as JSON, e.g. {\"1\": 100}" });
+            }
+          } else {
+            it.value = /^-?\d+(\.\d+)?$/.test(val) ? Number(val)
+              : val === "yes" ? true : val === "no" ? false : val;
+          }
           break;
         case "Derived as": {
           const dl = [val];
@@ -227,7 +302,16 @@ export function parseItemBlock(
           break;
         }
         case "Open": it.open = val.split(",").map((x) => x.trim()).filter(Boolean); break;
-        case "Uses": case "Approval": case "Status": break; // computed, ignored on read
+        case "Status":
+          if (!(STATUSES as readonly string[]).includes(val)) {
+            errors.push({ line: i + 1, msg: `Status must be ${STATUSES.join(", ")}` });
+          } else it.status = val as Item["status"];
+          break;
+        case "Approval":
+          it.approval = parseApprovals(val);
+          break;
+        case "Uses": break; // computed, ignored on read
+
         default:
           errors.push({ line: i + 1, msg: `unknown field "${key || raw.trim()}"` });
       }

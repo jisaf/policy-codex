@@ -1,0 +1,16 @@
+id: CO-2208
+name: Receives OAP-C
+identifier: receives_oap_c
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person receives Old Age Pension financial assistance under OAP-C, the program for a person sixty or older committed to the Colorado Mental Health Institute or to a Regional Center by order of the district or probate court (9 CCR 2503-5 3.530.1; 10 CCR 2505-10 § 8.941.2.F): adult_financial_program_received (CO-2710) is oap_c."
+derived: ["=", adult_financial_program_received, oap_c]
+sources: [S701, S1510]
+implemented: engine
+tags: [ma, oap]
+rationale: "OQ-206: § 8.941.3.B excludes OAP-C recipients from the Old Age Pension Health Care Program, and af_category (CO-953) has no OAP-C option, so receipt is a supplied fact, as receives_ssi is. Heavier-definitions audit H-3 (audit fix round): derived from the one Adult Financial case record, adult_financial_program_received (CO-2710)."
+tests:
+  - {id: CO-2208-T1, as_of: "2026-10-01", given: {adult_financial_program_received: oap_c}, expect: true}
+  - {id: CO-2208-T2, as_of: "2026-10-01", given: {adult_financial_program_received: oap}, expect: false}

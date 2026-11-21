@@ -5,14 +5,19 @@ kind: derived
 type: yes/no
 scope: person
 program: All
-meaning: "Whether the person's citizenship_status is one of the qualified non-citizen categories of 8 U.S.C. 1641(b) that this volume's option list carries (lawful permanent resident, refugee, asylee, Cuban or Haitian entrant, Compact of Free Association migrant, or another qualified non-citizen), as distinct from a citizen or national or a non-qualified non-citizen."
-precision: "Reads citizenship_status (CO-002). Vocabulary fix round (U-3): renamed from ma_is_qualified_non_citizen and made program All, since Medicaid, Colorado Works and Adult Financial all define 'qualified non-citizen' by reference to 8 U.S.C. 1641; each program's own status rule decides what else it requires."
-derived: [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen]]
-sources: [S173, S174]
+meaning: "Whether the person is a qualified alien as 8 U.S.C. 1641(b)-(c) defines it (PRWORA title IV), which Medicaid (42 CFR 435.4), Colorado Works, the Adult Financial programs (C.R.S. 26-2-111.8) and CCCAP (8 CCR 1403-1 3.103.Z) adopt by reference: a lawful permanent resident, asylee, refugee, person paroled for at least one year, person whose deportation is withheld, conditional entrant, Cuban or Haitian entrant or Compact of Free Association migrant (1641(b)(1)-(8)); a battered non-citizen or a non-citizen granted or applying with a prima facie case for T nonimmigrant status, the trafficking-victim status (1641(c))."
+precision: "Reads immigration_status (CO-002). An Afghan or Ukrainian humanitarian parolee is read as paroled for at least one year (1641(b)(4)), and a certified trafficking victim as a T nonimmigrant or applicant (1641(c)(4)) (OQ-550). Each program's own status rule decides what else it requires (the five-year bar, a narrower list). History (vocabulary fix round U-3): renamed from ma_is_qualified_non_citizen and made program All."
+derived: [in, immigration_status, [lawful_permanent_resident, refugee, asylee, parolee_one_year_or_more, deportation_withheld, conditional_entrant, cuban_haitian_entrant, compact_of_free_association_migrant, battered_non_citizen, trafficking_victim, afghan_humanitarian_parolee, ukrainian_humanitarian_parolee]]
+sources: [S1900, S1901, S173]
+open: [OQ-550]
 implemented: engine
 tags: [immigration]
-rationale: "No existing item in this volume states the qualified-non-citizen test for Medicaid; ma_meets_citizenship_requirement (CO-509) needs it as a precondition to the five-year bar and its exceptions. Not the same test as any SNAP citizenship item (SNAP is a separate federal statute, 7 U.S.C. 2015(f), with its own qualified-alien definitions), so this is a Medicaid-specific rule rather than a shared one, per 42 CFR 435.406(a)(2)(i)'s cross-reference to 42 CFR 435.4's definition."
+rationale: "No existing item in this volume states the qualified-non-citizen test for Medicaid; ma_meets_citizenship_requirement (CO-509) needs it as a precondition to the five-year bar and its exceptions. Not the same test as any SNAP citizenship item (SNAP is a separate federal statute, 7 U.S.C. 2015(f), with its own qualified-alien definitions), so this is a Medicaid-specific rule rather than a shared one, per 42 CFR 435.406(a)(2)(i)'s cross-reference to 42 CFR 435.4's definition.  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170). The 1641 list is now quoted (S1900, S1901): deportation withheld, parolees, conditional entrants, battered non-citizens and trafficking victims were the lumped other_qualified_non_citizen option or not representable."
 tests:
-  - {id: CO-506-T1, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: true}
-  - {id: CO-506-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
-  - {id: CO-506-T3, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: false}
+  - {id: CO-506-T1, as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident}, expect: true}
+  - {id: CO-506-T2, as_of: "2026-10-01", given: {immigration_status: undocumented}, expect: false}
+  - {id: CO-506-T3, as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: false}
+  - {id: CO-506-T4, as_of: "2026-10-01", title: "Parolee for at least one year (1641(b)(4))", given: {immigration_status: parolee_one_year_or_more}, expect: true}
+  - {id: CO-506-T5, as_of: "2026-10-01", title: "Battered non-citizen (1641(c))", given: {immigration_status: battered_non_citizen}, expect: true}
+  - {id: CO-506-T6, as_of: "2026-10-01", title: "Temporary Protected Status is lawfully present, not qualified", given: {immigration_status: temporary_protected_status}, expect: false}
+  - {id: CO-506-T7, as_of: "2026-10-01", title: "Status unknown", given: {}, expect: unknown}

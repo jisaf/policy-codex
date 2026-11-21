@@ -19,7 +19,7 @@
     "src", "test", "vite.config.ts", "scripts/handoff.ts", "scripts/governance-report.ts",
     "scripts/conformance.ts", "scripts/conform.ts", "scripts/adapters/codex-self.ts",
     "scripts/adapters/codex-self-lib.ts", "scripts/check.ts", "scripts/export.ts",
-    "scripts/git-sha.ts", "scripts/eval-case.ts",
+    "scripts/git-sha.ts", "scripts/eval-case.ts", "scripts/vite-local-ledger.ts",
     "worker", "e2e", "playwright.config.ts"
   ]
 }

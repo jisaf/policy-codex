@@ -17,6 +17,6 @@ rationale: "County case worker review B1: leap_is_eligible and leap_benefit_amou
 nearest: [CO-1000, CO-1009]
 tests:
   - {id: CO-2593-T1, month: "2026-11", as_of: "2026-11-01", given: {leap_living_arrangement: institutional_group_care}, expect: not_in_household}
-  - {id: CO-2593-T2, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, citizenship_status: undocumented}, title: "CO-02's p3, undocumented", expect: ineligible_member_status}
+  - {id: CO-2593-T2, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, immigration_status: undocumented}, title: "CO-02's p3, undocumented", expect: ineligible_member_status}
   - {id: CO-2593-T3, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, leap_meets_citizenship_requirement: true, leap_member_is_excluded_for_verification: true}, expect: ineligible_member_verification}
   - {id: CO-2593-T4, month: "2026-11", as_of: "2026-11-01", given: {leap_is_in_another_approved_household: false, leap_meets_citizenship_requirement: true, leap_member_is_excluded_for_verification: false}, expect: eligible_member}

@@ -277,3 +277,26 @@ Section 5's findings restate, in the case files, problems that sections 1-3 loca
 8. **Derivations (2.1-2.4, 2.6, 2.7, 2.9-2.11, 2.13, 5.6).**
 9. **Remaining merges (3.9-3.15, 3.18-3.22, 3.24-3.27, 4.4-4.6, 2.5, 2.8, 3.23).** Do 3.18 (education) and 3.20 (residence setting) as their own change sets with every owner. Do 3.24 and 3.25 with the income audit.
 10. **Case and governance clean-up (5.1, 5.2, 5.10, 5.14).** Make unknown identifiers in cases an error. Warn on derived values in household cases. Add case-consistency checks for the pairs that survive by design (a `tax_filer` edge against `is_tax_filer`; a spouse edge against `marital_status`; county against state).
+
+## Disposition
+
+Fix round, track 1 (immigration status, sponsors, receipt records and outcome reads), 2026-11-21. Other tracks append their own lines.
+
+- 3.1 (OQ-44): fixed (297dd17, 47c9d40). citizenship_status (CO-002) renamed immigration_status with 32 options (8 U.S.C. 1641, § 8.100.3.G.1.g.i-viii, 10 CCR 2505-3 § 110.1.B, 9 CCR 2503-7 3.753.16-17); CO-084, CO-1724 and CO-1170 retired; history in CO-2700 to CO-2703; each program's list in its own item (SNAP CO-308, Medicaid CO-507/CO-509/CO-1172/CO-2400, CHP+ new CO-2706/CO-2707, CW/AND/AB CO-905, OAP CO-929, CCCAP CO-998, LEAP CO-1010); the battery finding stated once (CO-2363 with CO-2717 to CO-2719) and SNAP's exemption derived (CO-2335). The USCIS SAVE status list could not be fetched (uscis.gov: Access Denied), recorded as OQ-550; SUN Bucks has no status test (OQ-551).
+- 5.13: fixed (297dd17). lawful_presence_status dropped from every case with the 3.1 migration.
+- 5.1: lpr_entry_date part fixed (297dd17, removed from CO-01, CO-02, CO-04); the other identifiers in 5.1 are outside this track.
+- 1.5: fixed (1790ca2). Roles sponsor / sponsored_by in volume.yaml; the sponsor and the sponsor's spouse are persons of the case; sponsors (CO-2713) and sponsor_spouses_not_cosigning (CO-2714); the twelve facts migrated: CO-2355 to CO-2358 retired (income read from the sponsor's own facts), CO-2362, CO-2388, CO-2390, CO-2336, CO-2332 and CO-2360 derived, CO-2359 renamed and CO-2387 stated on the sponsor, CO-2715 new on the sponsor. Case CO-94 (two siblings, one sponsor). Open: OQ-553 (sponsored siblings read as the sponsor's dependents for Adult Financial; 3.520.68.B.2.b.1 not read).
+- 3.14: sponsor's death part fixed (1790ca2, CO-2336 reads the sponsor's is_deceased); the rest of 3.14 is outside this track.
+- 3.7: fixed (d2da740). receives_tanf_cash stays the case record (convention rule 11; it also covers an authorized grant not yet paid) and tanf_cash_income the amount; the cases now state the grant across the members, and CO-029's precision says how the two agree.
+- 5.3: fixed (d2da740). CO-07, CO-13, CO-85 state 129, 183 and 244 per member; no expectation moved (derivations in the case comments).
+- 3.3: fixed (d2da740). expects_to_be_claimed_as_dependent (CO-076) derived from the tax_dependent edge plus is_claimed_by_filer_outside_case (CO-2716); joint filing is the symmetric role files_jointly_with, CO-077 derived; CO-500 reads a tax_filer edge as a filer.
+- 5.7: fixed (d2da740). The five contradicting statements are gone with the 51 statements of the now-derived fact.
+- 3.8: Adult Financial receipt part fixed (52d402a): one record adult_financial_program_received (CO-2710); CO-073 and CO-2208 derived from it. The CO-014 overlap (state disability-based assistance) is outside this track.
+- 3.16: fixed (52d402a). receives_medicaid (CO-2393) retired into is_enrolled_in_medical_assistance (CO-2435, renamed, program All).
+- 4.1: fixed (52d402a). ma_is_exempt_from_snap_work_requirements (CO-2711) reads the volume's SNAP exemptions (435.554(c)(7) "is not exempt from a work requirement under such Act", a status the volume determines), the SNAP case record only as fallback.
+- 4.2: fixed (52d402a). SUN Bucks reads SNAP and TANF receipt for the child or a sibling (CO-2708; 292.2 "are receiving"); OQ-552 records the household reading. CO-01 p4 and CO-92 p2 expectations changed (see the commit and case comments).
+- 4.3: fixed (52d402a). "Receive, or are authorized to receive" is read as the case record: receives_tanf_cash's meaning now includes an authorized grant, as receives_state_cash_assistance's did; BCE (CO-336) does not read this volume's Colorado Works or Adult Financial outcomes.
+- 4.4: fixed (52d402a). "People in the Medicaid Buy-In program" is enrollment, a record; CO-2210's meaning narrowed to enrollment.
+- 4.5: fixed (52d402a). "Shall have minimum essential coverage" is the child's coverage, a record; CO-085's precision says an enrollment approved in the same application counts.
+- 4.6: fixed (52d402a). ma_bccp_has_creditable_coverage (CO-1191) derived from Medicare, Medical Assistance enrollment and ma_bccp_has_other_creditable_coverage (CO-2712).
+- Section 4 table rows marked "Correct" or "stays supplied" (receives_snap, receives_ssi, receipt histories, case records, af_category for OAP Health Care "qualify for"): confirmed; CO-1156 now reads OAP receipt as H-3 directs.

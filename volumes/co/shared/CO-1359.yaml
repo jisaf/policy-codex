@@ -5,14 +5,16 @@ kind: derived
 type: yes/no
 scope: person
 program: All
-meaning: Whether the person is a non-citizen who has declared a lawful immigration status (any status other than undocumented), the declaration SAVE verification and the reasonable opportunity period attach to.
-derived: [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen, other_lawfully_present_non_citizen]]
+meaning: "Whether the person is a non-citizen who has declared an immigration status (any immigration_status other than us_citizen, us_national or undocumented), the declaration SAVE verification and the reasonable opportunity period attach to."
+derived: [not, [in, immigration_status, [us_citizen, us_national, undocumented]]]
 sources: [S802, S852, S873, S887, S896]
 implemented: engine
 tags: [verification, immigration]
-rationale: "Every program verifies a declared immigration status through SAVE (S802, S852, S873, S887, S896); no existing item states the declaration program-neutrally. leap_meets_citizenship_requirement (CO-1010) tests a narrower list (LEAP's qualified aliens, without other lawfully present non-citizens) for a different purpose (CDHS fix round: acknowledged after COFA left LEAP's list)."
+rationale: "Every program verifies a declared immigration status through SAVE (S802, S852, S873, S887, S896); no existing item states the declaration program-neutrally. leap_meets_citizenship_requirement (CO-1010) tests a narrower list (LEAP's qualified aliens, without other lawfully present non-citizens) for a different purpose (CDHS fix round: acknowledged after COFA left LEAP's list).  OQ-44 fix (product-owner decision of 2026-11-21; docs/reviews/audit-dual-entry.md 3.1; same-word audit SW-18): reads the one immigration_status fact (CO-002), which replaced citizenship_status, lawful_presence_status (CO-084), federal_five_year_bar_exempt_category (CO-1724) and ma_five_year_bar_exempt_category (CO-1170)."
 nearest: [CO-1010]
 tests:
-  - {id: CO-1359-T1, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: true}
-  - {id: CO-1359-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
-  - {id: CO-1359-T3, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: false}
+  - {id: CO-1359-T1, as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident}, expect: true}
+  - {id: CO-1359-T2, as_of: "2026-10-01", given: {immigration_status: undocumented}, expect: false}
+  - {id: CO-1359-T3, as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: false}
+  - {id: CO-1359-T4, as_of: "2026-10-01", title: "Temporary Protected Status is a declared status SAVE verifies", given: {immigration_status: temporary_protected_status}, expect: true}
+  - {id: CO-1359-T5, as_of: "2026-10-01", title: "A U.S. national declares no immigration status", given: {immigration_status: us_national}, expect: false}

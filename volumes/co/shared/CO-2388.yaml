@@ -1,0 +1,17 @@
+id: CO-2388
+name: "Sponsor has a spouse in the household"
+identifier: sponsor_has_spouse_in_household
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The sponsor of this non-citizen has a spouse, not a co-sponsor, living in the same household as the sponsor (9 CCR 2503-5 3.534.D.2.B): sponsor_spouses_not_cosigning (CO-2714) is not empty."
+precision: "A co-sponsor spouse is sponsor_spouse_is_cosponsor (CO-2362). A spouse of the sponsor declared in the case is read as living with the sponsor (CO-2714)."
+derived: [">", [count, sponsor_spouses_not_cosigning], 0]
+sources: [S1632]
+implemented: engine
+tags: [immigration]
+rationale: "OQ-114: Adult Financial deducts half the SSI benefit standard for a sponsor's spouse in the household, or the full standard for a co-sponsor spouse (S1632); no fact stated the spouse.  Dual-entry audit 1.5 (audit fix round): the sponsor is a person of the case, joined to the non-citizen by the sponsor / sponsored_by relationship (volume.yaml), and the sponsor's income and resources are read from the sponsor's own facts, so two non-citizens with one sponsor read one set of facts."
+tests:
+  - {id: CO-2388-T1, as_of: "2026-10-01", given: {sponsor_spouses_not_cosigning: [p3]}, others: {p3: {}}, expect: true}
+  - {id: CO-2388-T2, as_of: "2026-10-01", given: {sponsor_spouses_not_cosigning: []}, expect: false}

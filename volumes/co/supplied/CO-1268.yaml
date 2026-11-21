@@ -10,4 +10,4 @@ supplied_by: County Colorado Works policy applied by the eligibility worker.
 sources: [S762]
 open: [OQ-252]
 tags: [cash, tanf, income, state_election]
-rationale: "The county option has no state-stated figure (OQ-252), so its result enters as a supplied fact; cw_diversion_eligible (CO-1270) needs it. Same-word audit SW-37: renamed from meets_county_diversion_income_limit so the identifier carries the prefix of the program (or method) whose meaning it states."
+rationale: "The county option has no state-stated figure (OQ-252), so its result enters as a supplied fact; cw_diversion_eligible (CO-1270) needs it. Same-word audit SW-37: renamed from cw_meets_county_diversion_income_limit so the identifier carries the prefix of the program (or method) whose meaning it states."

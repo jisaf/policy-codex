@@ -1,0 +1,13 @@
+id: CO-2715
+name: "Sponsor's household size"
+identifier: sponsor_household_size
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "Stated on a sponsor: the number of persons in the sponsor's own household (the sponsor, the sponsor's spouse and the persons living with them), whether or not they are persons of the case, for 9 CCR 2503-6 3.605.1.A.5.c.5's \"household size of both the non-citizen and the sponsor\"."
+precision: "Where a sponsor and a co-sponsor spouse both signed, it is stated on one of them only. If not stated on a sponsor, Colorado Works reads it as 0 for that sponsor."
+supplied_by: "The sponsor's statement or Form I-864."
+sources: [S1627]
+tags: [immigration]
+rationale: "Dual-entry audit 1.5: cw_sponsor_deeming_household_size (CO-2360) was a combined count entered on the non-citizen; the non-citizen's part is now counted from the Colorado Works budgetary unit and only the sponsor's own household, which can include persons outside the case, is supplied, on the sponsor."
