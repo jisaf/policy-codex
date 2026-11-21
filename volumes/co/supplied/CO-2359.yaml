@@ -1,0 +1,13 @@
+id: CO-2359
+name: "Sponsor's support paid to dependents outside the home"
+identifier: sponsor_support_paid_to_dependents_outside_home
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The support the sponsor and the sponsor's spouse paid in the month to dependents not living in the sponsor's home."
+precision: "If not stated, a program reads this as 0."
+supplied_by: "Sponsor's income documents, as provided by the sponsored non-citizen."
+sources: [S1627]
+tags: [income, immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it."

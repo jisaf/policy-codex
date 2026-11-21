@@ -9678,3 +9678,167 @@ Document: D-86
 > To determine eligibility for financial assistance and the amount of the assistance payment, the following
 > shall be exempt from consideration as either resources or income. Verification is not required in the case
 > file but must be notated in the Report of Contact (ROC).
+
+### S1625. Colorado Works assistance unit: mandatory, optional (included when living in the home and requesting assistance) and excluded members
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.C (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Members of the Assistance Unit
+>
+> 1. The following individuals must be included in the assistance unit when living in the home:
+>
+> a. Dependent child(ren) who live in the home of a caretaker.
+>
+> b. Parents of dependent child(ren) who live in the home unless the child is a minor
+> parent who is requesting assistance for their own child or responsibility is
+> established with another caretaker through court order, child welfare, or adoption.
+>
+> c. Siblings of dependent child(ren) who live in the home and are legally in the care
+> of the requesting caretaker.
+>
+> d. Half siblings of the dependent child(ren) who live in the home that do not receive
+> child support payments.
+>
+> e. The spouse of a pregnant parent.
+>
+> 2. The following individuals are optional members of the assistance unit. These individuals
+> are included in the assistance unit when living in the home and requesting assistance:
+>
+> a. The spouse of a parent who is not themselves a parent of dependent child(ren)
+> who live in the home.
+>
+> b. A non-parent caretaker.
+>
+> c. The spouse of a non-parent caretaker.
+>
+> d. Half siblings of the dependent child(ren) who live in the home and are receiving
+> child support. The parent or non-parent caretaker of the half sibling receiving
+> child support shall decide whether to include such half sibling receiving child
+> support in the assistance unit.
+>
+> e. Siblings of the dependent child(ren) who live in the home but are not in the legal
+> custody of the requesting caretaker due to an established court order, child
+> welfare involvement or an adoption.
+>
+> f. A parent who lives in the home of another caretaker and no longer has legal
+> custody of the dependent child(ren) who live in the home.
+>
+> g. Parent(s) of a minor parent who is requesting assistance for their own child.
+>
+> 3. The following individuals are excluded from the assistance unit.
+>
+> a. Individuals receiving SSI payments.
+>
+> b. Individuals who receive other Title IV benefits such as foster care, adoption
+> subsidy or Title IV kinship payments.
+
+### S1626. Colorado Works budgetary unit: the assistance unit, the spouse of a requesting parent or caretaker, the unborn child, a minor parent's parents and a sponsor
+
+Document: D-81
+
+9 CCR 2503-6 3.601 ("Budgetary unit"), 3.604.2.D (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Budgetary unit” means those people whose income is considered in the determination of eligibility and
+> grant payment calculation because they are considered financially responsible for members of an
+> assistance unit. Members of the budgetary unit can be in the assistance unit or outside of the assistance
+> unit.
+>
+> D. Members of the Budgetary Unit
+>
+> 1. The following individuals must be included in the budgetary unit:
+>
+> a. Any individual who is part of the assistance unit (to include optional members of
+> the assistance unit who requested assistance) regardless of whether or not the
+> individual is eligible to receive assistance.
+>
+> b. The spouse of a parent or non-parent caretaker who requested assistance,
+> regardless of whether or not the spouse has requested assistance for
+> themselves.
+>
+> c. The unborn child of a pregnant parent.
+>
+> d. The non-recipient parent(s) of a minor parent.
+>
+> e. The sponsor of a non-citizen who is part of the assistance unit (whether or not
+> the non-citizen is themselves eligible to receive Colorado Works grant
+> payments).
+>
+> 2. The following individuals are excluded from the budgetary unit:
+>
+> a. An optional member of the assistance unit who chooses not to receive
+> assistance for himself or herself.
+>
+> b. Individuals who are excluded from the assistance unit as identified in Section
+> 3.604.2.C.3.
+
+### S1627. Colorado Works sponsored non-citizens: the sponsor's net income deemed; the exemptions
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.5.a-c (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 5. Sponsored non-citizens
+>
+> a. It shall be presumed that an affidavit of support demonstrates the sponsor's
+> ability to make income available to a non-citizen whom he or she sponsors at a
+> minimum of one hundred twenty-five percent (125%) of the Federal Poverty
+> Level. Therefore, the net income of a non-citizen’s sponsor and the sponsor's
+> spouse shall be deemed to the assistance unit.
+>
+> b. Sponsor net income equals gross earned income minus twenty percent (20%) or
+> $175, whichever is less, minus support paid to dependents not living in the
+> sponsor's home, plus any unearned income. The remaining income shall be
+> considered available as unearned income to the non-citizen for the purpose of
+> establishing eligibility and payment for Colorado Works.
+>
+> The client may rebut the county department's determination that the income of
+> the sponsor is available. If such a determination is made, the sponsor’s income
+> will not be deemed to the assistance unit.
+>
+> c. The income of the sponsor will not be deemed to the assistance unit if any of the
+> following are true:
+>
+> 1) The non-citizen is a qualified non-citizen who is not a legal permanent
+> resident (i.e. refugees, asylees, parolees and Cuban and Haitian
+> entrants).
+>
+> 2) The non-citizen adjusted their status to legal permanent resident from
+> refugee or asylee status.
+>
+> 3) The non-citizen’s sponsor signed the sponsorship agreement prior to
+> December 19, 1997.
+>
+> 4) The non-citizen is a victim of battery or extreme cruelty.
+>
+> 5) The total income of the non-citizen and non-citizen’s spouse, together
+> with the total income of the sponsor and the sponsor’s spouse (who is
+> also a sponsor) is less than one hundred twenty-five percent (125%) of
+> the Federal Poverty Guidelines for the household size of both the non-
+> citizen and the sponsor.
+>
+> 6) The non-citizen earned or can be credited with forty (40) qualifying
+> quarters of coverage as defined under Title II of the Social Security Act.
+>
+> 7) The non-citizen was sponsored on an affidavit of support other than the
+> I-864. Or the non-citizen entered in a nonfamily or employment
+> classification that did not require the sponsor to sign form I-864.
+
+### S1628. Colorado Works disqualified members: net income of required members disqualified for status or SSN deemed; disregards not for disqualified individuals
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.6, 3.606.2 (introduction) (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 6. Net income of persons who are required to be included in the assistance unit, but who
+> are disqualified due to failure to meet citizenship, non-citizen status, lawful presence or
+> Social Security Number requirements, or are ineligible as defined in section 3.604.2.C,
+> shall be deemed to the assistance unit. Net income equals gross earned income minus
+> employment disregards and employment incentives plus any unearned income.
+>
+> 3.606.2 Earned Income Disregards
+>
+> For all cases with eligible members that have earned income (not including disqualified individuals),
+> payment and eligibility will be determined using the income disregards as described below. All payments
+> shall be calculated by using applicable disregards.

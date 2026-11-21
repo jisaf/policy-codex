@@ -1,0 +1,13 @@
+id: CO-2362
+name: "Sponsor's spouse is a co-sponsor"
+identifier: sponsor_spouse_is_cosponsor
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The spouse of this non-citizen's sponsor also signed the affidavit of support as a sponsor."
+precision: "If not stated, a program reads this as false."
+supplied_by: "Affidavit of support."
+sources: [S1627]
+tags: [immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it."

@@ -1,0 +1,12 @@
+id: CO-2369
+name: "Colorado Works sponsor deeming exempt quarters"
+identifier: cw_sponsor_deeming_exempt_quarters
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: "A sponsored non-citizen who \"earned or can be credited with forty (40) qualifying quarters of coverage\" under Title II has no sponsor income deemed (9 CCR 2503-6 3.605.1.A.5.c.6)."
+value: 40
+sources: [S1627]
+tags: [cash, tanf, immigration]
+rationale: "OQ-103: cw_sponsor_deeming_applies (CO-2364) compares qualifying_quarters with it; snap_qualifying_quarters_threshold (CO-103) states the same number for SNAP's own rule."

@@ -1,0 +1,12 @@
+id: CO-2360
+name: "Colorado Works: sponsor deeming household size"
+identifier: cw_sponsor_deeming_household_size
+kind: supplied
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: "The number of persons in the households of both this sponsored non-citizen and the non-citizen's sponsor, the household size for which 9 CCR 2503-6 3.605.1.A.5.c.5 compares their combined income with 125% of the federal poverty guidelines."
+supplied_by: "Applicant and sponsor statements."
+sources: [S1627]
+tags: [cash, tanf, immigration]
+rationale: "OQ-103: 3.605.1.A.5 (S1627) deems the net income of a sponsor and the sponsor's spouse to a sponsored non-citizen in the assistance unit; no fact stated the sponsor's income. The fact is stated on the sponsored non-citizen, since the sponsor seldom lives in the home, and is neutral so that every program's sponsor rule can read it."

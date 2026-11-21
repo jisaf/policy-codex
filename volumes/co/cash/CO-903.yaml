@@ -6,11 +6,11 @@ type: whole number
 scope: person
 program: ColoradoWorks
 meaning: The number of persons in this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900), the key 3.606.1.F's need and grant standard chart is read by.
-derived: [count, cw_assistance_unit_members]
-sources: [S408, S414]
+derived: [count, cw_assistance_unit_members_for_size]
+sources: [S408, S414, S1004]
 implemented: engine
 tags: [cash, tanf, household]
-rationale: No existing item counts the Colorado Works assistance unit; cw_need_standard (CO-911) and cw_grant_standard (CO-912) both look up this size in the standards-of-assistance tables.
+rationale: Phase-10 sweep (OQ-143) - counts cw_assistance_unit_members_for_size (CO-2351), which leaves out a disqualified or ineligible member as 3.604.2.M requires (S1004). No existing item counts the Colorado Works assistance unit; cw_need_standard (CO-911) and cw_grant_standard (CO-912) both look up this size in the standards-of-assistance tables.
 tests:
-  - {id: CO-903-T1, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08", is_full_time_secondary_student_finishing_before_nineteen: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 2}
-  - {id: CO-903-T2, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 1}
+  - {id: CO-903-T1, as_of: "2026-10-01", given: {cw_is_disqualified_member: false, meets_public_assistance_citizenship_requirement: true, date_of_birth: "2009-04-08", is_full_time_secondary_student_finishing_before_nineteen: true, receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, others: {p2: {cw_is_disqualified_member: false, meets_public_assistance_citizenship_requirement: true, date_of_birth: "2026-02-03", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}}, relationships: [[parent, p1, p2]], expect: 2}
+  - {id: CO-903-T2, as_of: "2026-10-01", given: {cw_is_disqualified_member: false, meets_public_assistance_citizenship_requirement: true, date_of_birth: "1990-01-01", receives_ssi: false, receives_title_iv_foster_adoption_kinship_payment: false}, relationships: [], expect: 1}

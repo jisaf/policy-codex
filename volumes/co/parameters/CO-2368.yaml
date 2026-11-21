@@ -1,0 +1,12 @@
+id: CO-2368
+name: "Colorado Works sponsor earned income deduction cap"
+identifier: cw_sponsor_earned_income_deduction_cap
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: "The most deducted from a sponsor's (or sponsor's spouse's) gross earned income before deeming: \"$175\" when less than twenty percent (9 CCR 2503-6 3.605.1.A.5.b)."
+value: 175
+sources: [S1627]
+tags: [cash, tanf, income]
+rationale: "OQ-103: cw_sponsor_deemed_income (CO-2365) needs the cap."
