@@ -1,6 +1,6 @@
 id: CO-1367
-name: Identity document is a lawful presence document
-identifier: identity_document_is_lawful_presence_document
+name: "Identity document is on the cash programs' list"
+identifier: identity_document_is_on_cash_program_list
 kind: derived
 type: yes/no
 scope: person
@@ -11,7 +11,7 @@ derived: [in, identity_verification_document_type, [colorado_drivers_license_or_
 sources: [S877, S885, S1067]
 implemented: engine
 tags: [verification, immigration]
-rationale: 9 CCR 2503-6 3.604.3.I.4.a (S877) and 9 CCR 2503-5 3.520.66 (S885) list the same documents; one program-neutral item serves both rather than two identical program items.
+rationale: "9 CCR 2503-6 3.604.3.I.4.a (S877) and 9 CCR 2503-5 3.520.66 (S885) list the same documents; one program-neutral item serves both rather than two identical program items. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-4): renamed from identity_document_is_lawful_presence_document; the name said more than the fact establishes."
 tests:
   - {id: CO-1367-T1, as_of: "2026-10-01", given: {identity_verification_document_type: colorado_drivers_license_or_id}, expect: true}
   - {id: CO-1367-T2, as_of: "2026-10-01", given: {identity_verification_document_type: school_id_card}, expect: false}

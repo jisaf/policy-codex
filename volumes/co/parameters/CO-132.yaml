@@ -6,7 +6,7 @@ type: table keyed by household size
 scope: global
 program: SNAP
 meaning: The standard deduction subtracted from every SNAP household's income, by household size 1 through 6 (a household of 6 or more eligible members uses the key "6").
-precision: 7 CFR 273.9(d)(1)(i) (S89) and 10 CCR 2506-1 4.407.1 (S94) state the deduction is 8.31% of the net income eligibility standard for sizes 1 through 6, with sizes above 6 using the 6-person figure; this parameter states the already-computed FY2026 dollar table (D-20's Table 2, S81) rather than re-deriving the 8.31% calculation, so snap_standard_deduction looks the value up by `[min, snap_household_size, 6]`.
+precision: 7 CFR 273.9(d)(1)(i) (S89) and 10 CCR 2506-1 4.407.1 (S94) state the deduction is 8.31% of the net income eligibility standard for sizes 1 through 6, with sizes above 6 using the 6-person figure; this parameter states the already-computed FY2026 dollar table (D-20's Table 2, S81) rather than re-deriving the 8.31% calculation, so snap_standard_deduction looks the value up by `[min, snap_eligible_household_size, 6]`.
 versions:
   - from: "2025-10-01"
     to: "2026-10-01"

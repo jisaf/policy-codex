@@ -15,7 +15,7 @@ tags: [verification, household]
 open: [OQ-370]
 rationale: "Review C-1 and OQ-318: 3.751.1 B excludes a member with no SSN (and 3.753.17 a member who does not show the status requirement) rather than counting a missing document against the household; this outcome names the excluded member."
 tests:
-  - {id: CO-1694-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false}, expect: true}
+  - {id: CO-1694-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, ssn_verified_by_electronic_data_source: false, ssn_furnished_or_application_shown: false}, expect: true}
   - {id: CO-1694-T2, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, ssn_verified_by_electronic_data_source: true, immigration_status_verified_by_electronic_data_source: false}, expect: true}
   - {id: CO-1694-T3, as_of: "2026-10-01", given: {citizenship_status: citizen, ssn_verified_by_electronic_data_source: true}, expect: false}
   - {id: CO-1694-T4, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}

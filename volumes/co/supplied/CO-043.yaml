@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: A physician, physician's assistant, nurse practitioner, or other sufficiently qualified professional has certified that the person is mentally or physically unfit for employment.
+precision: "If not stated, SNAP reads this as false. CCCAP's incapacity is its own fact (cccap_caretaker_is_incapacitated, CO-1744)."
 supplied_by: Medical statement.
 sources: []
 tags: [work_registration]

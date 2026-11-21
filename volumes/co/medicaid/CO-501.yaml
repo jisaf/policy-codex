@@ -5,7 +5,7 @@ kind: derived
 type: whole number
 scope: person
 program: Medicaid
-meaning: This person's MAGI family size under 42 CFR 435.603(b) and 10 CCR 2505-10 8.100.4.E.2 - the count of this person's ma_magi_household_members, except that any pregnant member of the household counts as herself plus the number of children she is expected to deliver.
+meaning: "This person's MAGI family size under 42 CFR 435.603(b) and 10 CCR 2505-10 8.100.4.E.2 - the count of this person's ma_magi_household_members, except that any pregnant member of the household counts as herself plus the number of children she is expected to deliver. It is the MAGI family size: it counts an expected child of a pregnant member (vocabulary fix round C-3)."
 precision: Applies the pregnant-member addition to every pregnant member of the household, not only to the person the size is computed for, per 8.100.4.E.2 ("regardless of the Medical Assistance category" and without limiting it to the pregnant woman's own family size).
 derived: [sum, ma_magi_household_members, [case, [[of, [P], is_pregnant], [+, 1, [of, [P], expected_number_of_children]]], [else, 1]]]
 sources: [S161, S170]

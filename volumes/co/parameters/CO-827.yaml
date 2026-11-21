@@ -1,6 +1,6 @@
 id: CO-827
 name: CSRA minimum standard
-identifier: csra_minimum_standard
+identifier: ma_csra_minimum
 kind: parameter
 type: money
 scope: global
@@ -13,4 +13,4 @@ versions:
     source: S644
 sources: [S644, S371]
 tags: [ma, ltc, resources, legal]
-rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Community Spouse Resources minimum resource standard, $32,532.00, effective January 1, 2026."
+rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Community Spouse Resources minimum resource standard, $32,532.00, effective January 1, 2026. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from csra_minimum_standard; a Medicaid parameter without the program prefix."

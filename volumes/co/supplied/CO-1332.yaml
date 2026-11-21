@@ -1,6 +1,6 @@
 id: CO-1332
-name: Disability verified by electronic data source
-identifier: disability_verified_by_electronic_data_source
+name: "Disability benefit receipt verified by an electronic data source"
+identifier: disability_benefit_receipt_verified_by_electronic_data_source
 kind: supplied
 type: yes/no
 scope: person
@@ -9,4 +9,4 @@ meaning: "Whether an electronic data source has verified the person's receipt of
 supplied_by: CBMS interface results (IEVS, SSA/SOLQ/SVES, SAVE/VLP, DMV, FDSH, The Work Number, Asset Verification Program) as recorded in the case.
 sources: [S820, S807]
 tags: [verification, disability]
-rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.
+rationale: "No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-4): renamed from disability_verified_by_electronic_data_source; the name said more than the fact establishes."

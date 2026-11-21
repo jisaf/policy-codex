@@ -1,6 +1,6 @@
 id: CO-828
 name: CSRA maximum standard
-identifier: csra_maximum_standard
+identifier: ma_csra_maximum
 kind: parameter
 type: money
 scope: global
@@ -14,4 +14,4 @@ versions:
 sources: [S644, S652, S371]
 tags: [ma, ltc, resources, legal]
 nearest: [CO-827]
-rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the maximum resource standard, $162,660.00, effective January 1, 2026."
+rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the maximum resource standard, $162,660.00, effective January 1, 2026. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from csra_maximum_standard; a Medicaid parameter without the program prefix."
