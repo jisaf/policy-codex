@@ -3310,3 +3310,280 @@
       leap_household_members: []
       leap_household_income: {"2026-12": 1500}
       leap_is_eligible: {"2026-12": false}
+
+- id: CO-71
+  title: Undocumented pregnant mother on CHP+ prenatal with a CHP+ son; her LPR mother in breast cancer treatment; her LPR grandfather inside the five-year bar on OAP health care
+  # Phase 7 complex case (Medicaid and CHP+ completion). Three generations, one month (2026-10).
+  # p1 Lucia, 29, undocumented, pregnant with one, files taxes (ITIN) claiming her son p4, earns
+  # $5,200/month. Cover All Coloradans puts a pregnant person regardless of status inside the
+  # Medicaid/CHP+ status test (8.100.3.G.1.g.ix.1, 10 CCR 2505-3 110.1.B.5.o), so she is not
+  # emergency-only. MAGI household [p1, p4] plus her expected child: size 3, monthly FPL
+  # 27320/12 = 2276.67, ratio 5200/2276.67 = 2.284; less the 5% disregard 2.234, over the 195%
+  # pregnant standard -> Medicaid ineligible_income; CHP+ prenatal band (195%, 260%] -> eligible.
+  # p4 Mateo, 6, citizen, same household and ratio: over the 142% children's standard, inside
+  # CHP+'s (142%, 260%] band, uninsured -> CHP+ eligible_child.
+  # p2 Rosa, 58, Lucia's mother, LPR since 2010 (past the bar), non-filer, earns $2,600/month,
+  # uninsured, screened by a CWCCI Qualified Entity and found in need of breast cancer treatment.
+  # Own household [p2], ratio 2600/1330 = 1.955 (1.905 after the disregard) over the 133% adult
+  # standard -> no full-coverage category -> BCCP eligible. Her limited family planning household
+  # counts her as two (8.100.4.E.3): 2600/1803.33 = 1.442, inside (133%, 260%] -> limited family
+  # planning as well.
+  # p3 Tomas, 72, Rosa's father, LPR since 2023-03-01 (inside the five-year bar), no income, $500 in
+  # resources, no Medicare. OAP has no five-year bar (3.520.67.E), so he receives OAP-A; Medicaid's
+  # status test fails, so he is neither SSI-related nor SISC B -> state-only Old Age Pension Health
+  # Care Program (SISC C). He also meets the SSI-related standards apart from status (aged, $0 income,
+  # $500 resources), so he is emergency-Medicaid eligible, and he had an emergency in October.
+  as_of: "2026-10-01"
+  relationships:
+    - [parent, p2, p1]
+    - [parent, p3, p2]
+    - [parent, p1, p4]
+    - [grandparent, p2, p4]
+    - [tax_filer, p1, p4]
+  persons:
+    p1:
+      facts:
+        is_employed: true
+        is_disabled_for_buy_in: false
+        receives_social_security_disability: false
+        is_fleeing_felon_or_probation_violator: false
+        countable_resources_individual: 300
+        countable_resources_couple: 0
+        date_of_birth: "1997-02-11"
+        sex: female
+        citizenship_status: undocumented
+        lawful_presence_status: not_lawfully_present
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: true
+        expected_number_of_children: 1
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-05"
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_reproductive_capacity: true
+      month_defaults:
+        in_kind_support_and_maintenance: 0
+        earned_income: 5200
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        is_inmate_of_public_institution: false
+        is_patient_in_institution_for_mental_diseases: false
+        has_emergency_medical_condition: false
+    p2:
+      facts:
+        is_employed: true
+        is_disabled_for_buy_in: false
+        receives_social_security_disability: false
+        is_fleeing_felon_or_probation_violator: false
+        countable_resources_individual: 300
+        countable_resources_couple: 0
+        date_of_birth: "1968-05-20"
+        sex: female
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2010-04-01"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-05"
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: true
+        has_reproductive_capacity: false
+      month_defaults:
+        in_kind_support_and_maintenance: 0
+        earned_income: 2600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        has_emergency_medical_condition: false
+    p3:
+      facts:
+        date_of_birth: "1954-01-15"
+        sex: male
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2023-03-01"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_fleeing_felon_or_probation_violator: false
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-05"
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_social_security_disability: false
+        marital_status: other
+        countable_resources_individual: 500
+        countable_resources_couple: 0
+        in_medical_institution: false
+        expects_institutional_stay_of_thirty_days: false
+        meets_hcbs_waiver_target_group: none
+        is_enrolled_in_pace: false
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_reproductive_capacity: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+      months:
+        "2026-10": {has_emergency_medical_condition: true}
+    p4:
+      facts:
+        is_employed: false
+        is_disabled_for_buy_in: false
+        receives_social_security_disability: false
+        is_fleeing_felon_or_probation_violator: false
+        countable_resources_individual: 300
+        countable_resources_couple: 0
+        date_of_birth: "2020-03-09"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-05"
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+      month_defaults:
+        in_kind_support_and_maintenance: 0
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        is_inmate_of_public_institution: false
+        is_patient_in_institution_for_mental_diseases: false
+  expect:
+    # Hand arithmetic is in the case comment above. p1 and p4 also land in limited family planning:
+    # their household [p1, p4] plus the expected child, counted one larger (8.100.4.E.3), is size 4,
+    # 5200/2750 = 1.89 of FPL, inside 133%-260%; CHP+ is not a Medicaid full-coverage category and
+    # 8.100.4.G.8 has no age restriction. Tomas (p3) fails Medicaid status, so he is neither in a
+    # protected group nor fully eligible anywhere; he has no reproductive capacity, so no family
+    # planning route.
+    p1:
+      ma_magi_household_size: 3
+      ma_meets_citizenship_requirement: true
+      ma_magi_eligibility_status: {"2026-10": ineligible_income}
+      chp_eligibility_status: {"2026-10": eligible_prenatal}
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
+      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
+    p2:
+      ma_magi_household_size: 1
+      ma_meets_citizenship_requirement: true
+      ma_magi_eligibility_status: {"2026-10": ineligible_income}
+      chp_eligibility_status: {"2026-10": ineligible}
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-10": eligible}
+      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
+    p3:
+      ma_meets_citizenship_requirement: false
+      af_category: {"2026-10": oap_a}
+      ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
+      ma_is_emergency_medicaid_only: {"2026-10": true}
+      ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-10": ineligible}
+      ma_oap_health_care_status: {"2026-10": eligible_state_only}
+      ma_protected_group_category: {"2026-10": none}
+    p4:
+      ma_magi_household_size: 3
+      ma_magi_eligibility_status: {"2026-10": ineligible_income}
+      chp_eligibility_status: {"2026-10": eligible_child}
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
