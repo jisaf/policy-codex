@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: Whether the person meets the Pregnant Women MAGI Medical Assistance category under 10 CCR 2505-10 8.100.4.G.5 - currently pregnant, with household income at or below ma_magi_income_standard_pregnant, applying the 5% income disregard of 42 CFR 435.603(d)(4) and 8.100.4.D as the last step only if income above the plain standard would otherwise make the person ineligible.
 precision: "Reads is_pregnant directly; this item does not itself extend coverage through the postpartum period (see ma_postpartum_coverage_end_month, CO-560, and 8.100.4.G.5's coverage-period sentence). Per 42 CFR 435.603(d)(4), the disregard disjunct is gated on ma_magi_income_standard_pregnant being this person's highest standard (ma_magi_highest_income_standard_pct, CO-539, fix round) - the phase-3 review's C-2 finding; in practice this is always true for a pregnant person, since 185% exceeds every other group's standard, but the gate is stated so the rule does not silently rely on that being permanently true."
-derived: [all, is_pregnant, [any, ["<=", ma_magi_household_income_pct_fpl, ma_magi_income_standard_pregnant], [all, [=, ma_magi_income_standard_pregnant, ma_magi_highest_income_standard_pct], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_magi_income_standard_pregnant]]]]
+derived: [all, is_pregnant, [any, ["<=", ma_magi_household_income_pct_fpl, ma_magi_income_standard_pregnant], [all, ["=", ma_magi_income_standard_pregnant, ma_magi_highest_income_standard_pct], ["<=", ["-", ma_magi_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_magi_income_standard_pregnant]]]]
 sources: [S640, S165, S168]
 implemented: engine
 tags: [ma, magi, income]

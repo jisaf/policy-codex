@@ -7,7 +7,7 @@ scope: person
 program: All
 meaning: "Whether the person's state of residence is Colorado: the person lives in Colorado and intends to remain. It states residence in the state only; a program's own residency rule (institutionalized persons, absences, county of residence, receipt of assistance in another state, custody bars) is a separate item that reads it."
 precision: "Reads state_of_residence (CO-006) against colorado_state_code. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-9, U-4): renamed from ma_meets_residency and made program All, because the item had no Medicaid-specific content (the 42 CFR 435.403(e)-(j) rules for institutionalized persons, absences and children placed out of state are not modeled, OQ-393) and CCCAP and LEAP read it as plain state residence. Medicaid, CHP+, CCCAP and LEAP read it directly; Colorado Works (CO-904) and Adult Financial (CO-942) read it inside their own residency items, which add their programs' other conditions."
-derived: [=, state_of_residence, colorado_state_code]
+derived: ["=", state_of_residence, colorado_state_code]
 sources: [S171, S172, S495]
 open: [OQ-393]
 implemented: engine

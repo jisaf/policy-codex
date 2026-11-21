@@ -7,7 +7,7 @@ scope: person
 program: All
 meaning: "Whether the person is in one of the 8 U.S.C. 1613(b) categories to which the five-year limitation on federal means-tested benefits does not apply: a refugee, asylee, person whose deportation is withheld, Cuban and Haitian entrant or Amerasian immigrant (b)(1); a veteran or person on active duty, or the spouse or unmarried dependent child of one (b)(2); or a citizen of a freely associated state (b)(3)."
 precision: "Does not test that the person is a qualified non-citizen; each program's status rule reads it only for one. Programs that write their own exemption list (Medicaid's 10 CCR 2505-10 8.100.3.G.1.g.iv, ma_is_five_year_bar_exempt, CO-1172; SNAP's 7 U.S.C. 2015(f) exceptions, snap_is_exempt_from_immigrant_waiting_period, CO-306) keep their own items."
-derived: [any, [in, citizenship_status, [refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant]], [not, [=, federal_five_year_bar_exempt_category, "none"]], has_military_connection]
+derived: [any, [in, citizenship_status, [refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant]], [not, ["=", federal_five_year_bar_exempt_category, "none"]], has_military_connection]
 sources: [S1150, S1151, S402]
 implemented: engine
 tags: [immigration]

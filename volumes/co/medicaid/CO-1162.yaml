@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: Whether the person is eligible as a disabled widow(er) (10 CCR 2505-10 §§ 8.100.3.F.1.e, 8.100.6.I) - a disabled widow or widower aged 50 through 64 who received SSI in the past and no longer receives SSI payments because of Social Security benefits, has no Medicare hospital insurance, and meets the other Medical Assistance requirements; the group ends when the person becomes eligible for Medicare Part A.
 precision: "'Meet all other Medical Assistance requirements' (§ 8.100.6.I.1.f) is read as residency and status; § 8.100.6.I states no income or resource test of its own (OQ-209). 'Have received SSI in the past' and 'no longer receive SSI payments because of Social Security payments' (§ 8.100.6.I.1.b, d) read lost_ssi_due_to_social_security_benefits (CO-1180), not the SSI-or-OAP fact (phase 7 fix round, S-7). 'Not have hospital insurance under Medicare' reads receives_medicare_part_a (CO-803). The upper bound is ma_aged_age (CO-237), 65, which § 8.100.6.I.1.c states as 'not 65 years old'. Widowhood reads marital_status widowed; is_widow_or_widower (CO-1111) is retired."
-derived: [all, ma_meets_residency, ma_meets_citizenship_requirement, [=, marital_status, widowed], meets_ssa_disability_criteria, lost_ssi_due_to_social_security_benefits, [">=", age, ma_disabled_widow_min_age], [<, age, ma_aged_age], [not, receives_medicare_part_a]]
+derived: [all, ma_meets_residency, ma_meets_citizenship_requirement, ["=", marital_status, widowed], meets_ssa_disability_criteria, lost_ssi_due_to_social_security_benefits, [">=", age, ma_disabled_widow_min_age], [<, age, ma_aged_age], [not, receives_medicare_part_a]]
 sources: [S625]
 open: [OQ-209]
 implemented: engine
