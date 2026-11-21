@@ -1,0 +1,12 @@
+id: CO-2226
+name: CHP+ second copayment band, upper limit
+identifier: chp_copayment_band_b_max_pct
+kind: parameter
+type: rate
+scope: global
+program: CHP+
+meaning: "The upper limit, as a share of the federal poverty level, of the second CHP+ copayment band - 10 CCR 2505-3 § 320.1.B (\"between 101% and 150% of the Federal Poverty Level\")."
+value: 1.5
+sources: [S1504]
+tags: [chp, income]
+rationale: "OQ-60: chp_copayment_income_band (CO-2228) needs the band limits as parameters."

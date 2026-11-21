@@ -1,0 +1,16 @@
+id: CO-2235
+name: "Medicaid: share of the transfer penalty this person serves"
+identifier: ma_transfer_penalty_share_rate
+kind: derived
+type: rate
+scope: person
+program: Medicaid
+meaning: "The share of the period of ineligibility from a transfer of assets that this person serves: half when the period is apportioned equally with an institutionalized spouse who is otherwise eligible (10 CCR 2505-10 § 8.100.7.F.8.a), otherwise all of it."
+derived: [case, [ma_transfer_penalty_is_apportioned_with_spouse, ma_transfer_penalty_apportioned_share_rate], [else, 1]]
+sources: [S1507]
+implemented: engine
+tags: [ma, ltc, legal]
+rationale: "OQ-94: ma_transfer_penalty_months (CO-649) and ma_transfer_penalty_days (CO-659) both apply the share."
+tests:
+  - {id: CO-2235-T1, as_of: "2026-10-01", given: {ma_transfer_penalty_is_apportioned_with_spouse: true}, expect: 0.5}
+  - {id: CO-2235-T2, as_of: "2026-10-01", given: {ma_transfer_penalty_is_apportioned_with_spouse: false}, expect: 1}

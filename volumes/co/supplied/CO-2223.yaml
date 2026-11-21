@@ -1,0 +1,13 @@
+id: CO-2223
+name: CHP+ service type
+identifier: chp_service_type
+kind: supplied
+type: one of
+options: [office_visit, behavioral_health_visit, generic_prescription, brand_name_prescription, therapy_visit, vision_visit, emergency_care, emergency_care_with_admission, urgent_care, laboratory_or_imaging, covid_19_laboratory_testing, emergency_transport, inpatient_hospital, inpatient_physician, outpatient_hospital, preventive]
+scope: person
+program: CHP+
+meaning: "The kind of service a CHP+ enrollee receives, for which a copayment may be due at the time of service, in the terms of 10 CCR 2505-3 § 320.1: an office visit; an outpatient mental health or substance abuse visit (behavioral_health_visit); a generic or a brand name prescription; a physical, occupational or speech therapy visit; a vision visit; a use of emergency care, without or with admission to the hospital; a use of urgent or after-hours care; laboratory and radiology or imaging services on a date of service, or laboratory services for COVID-19 testing; a trip for emergency transport or ambulance services; an inpatient hospital visit; an inpatient hospital visit for physician services; an outpatient hospital or ambulatory surgery center visit; or a preventive service as § 330.3 defines it (healthy newborn and newborn inpatient visits with routine screening, routine examinations, immunizations and related office visits, routine preventive and diagnostic dental services)."
+supplied_by: The provider's claim for the service.
+sources: [S1504, S1505]
+tags: [chp]
+rationale: "OQ-60: the § 320.1 copayment depends on the service; no fact stated it. chp_copayment (CO-2231) reads it."

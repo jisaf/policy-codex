@@ -1,0 +1,17 @@
+id: CO-2229
+name: "CHP+: yearly cost sharing limit"
+identifier: chp_cost_sharing_annual_limit
+kind: derived
+type: money
+scope: person
+program: CHP+
+meaning: "The most cost sharing a CHP+ enrollee's family can be required to pay in a year: 5% (chp_cost_sharing_aggregate_cap_pct) of the family's yearly income (10 CCR 2505-3 § 330.2; 42 CFR 457.560(a))."
+precision: Yearly income is twelve times the MAGI household income (ma_magi_household_income) of the month of the determination.
+derived: ["*", chp_cost_sharing_aggregate_cap_pct, ["*", 12, [at, ma_magi_household_income, [det_month]]]]
+accepts_from: [ma_magi_household_income]
+sources: [S1505, S247, S250]
+implemented: engine
+tags: [chp, income]
+rationale: "OQ-60: chp_cost_sharing_aggregate_cap_pct (CO-213) was a figure with no rule; chp_copayment (CO-2231) applies the limit."
+tests:
+  - {id: CO-2229-T1, as_of: "2026-10-01", given: {ma_magi_household_income: 4000}, expect: 2400}

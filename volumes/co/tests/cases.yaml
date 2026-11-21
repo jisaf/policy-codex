@@ -32,6 +32,8 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
+        ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
@@ -2117,6 +2119,8 @@
   persons:
     p1:
       facts:
+        ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
+        ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -5120,6 +5124,8 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
+        ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1952-04-18"

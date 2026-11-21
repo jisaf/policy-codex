@@ -6,7 +6,7 @@ type: rate
 scope: global
 program: CHP+
 meaning: The maximum share of a family's income, per year, that CHP+ cost sharing (enrollment fee, copayments and similar charges) may require in the aggregate, under 10 CCR 2505-3-330.2, 42 CFR 457.560(a) and 42 U.S.C. 1397cc(e)(3)(B).
-precision: A percentage of the family's total income for the relevant period (10 CCR 2505-3-330.2 states "yearly"; the cap now covers copayments only, since the enrollment fee section, § 310, is repealed - S642, OQ-57; 42 CFR 457.560(a) states "for the length of a child's eligibility period"); this volume does not model the enforcement of the cap against a running cost-sharing total in this batch (see OQ-60), and carries this parameter only so the figure is available when that rule is built.
+precision: A percentage of the family's total income for the relevant period (10 CCR 2505-3-330.2 states "yearly"; the cap now covers copayments only, since the enrollment fee section, § 310, is repealed - S642, OQ-57; 42 CFR 457.560(a) states "for the length of a child's eligibility period"); chp_cost_sharing_annual_limit (CO-2229) applies it to twelve months of the family's income, and chp_copayment (CO-2231) to the cost sharing paid so far in the year (chp_family_cost_sharing_paid_for_year, CO-2224; OQ-60, resolved).
 value: 0.05
 sources: [S247, S250, S252, S642]
 tags: [chp, income, state_election]

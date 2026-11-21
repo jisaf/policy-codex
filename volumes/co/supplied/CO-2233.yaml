@@ -1,0 +1,12 @@
+id: CO-2233
+name: Transfer penalty months assigned from the spouse
+identifier: ma_transfer_penalty_months_assigned_from_spouse
+kind: supplied
+type: whole number
+scope: person
+program: Medicaid
+meaning: "The months remaining in the spouse's share of an apportioned period of ineligibility that are assigned to this person because the spouse died or is no longer institutionalized (10 CCR 2505-10 § 8.100.7.F.8.b), or 0."
+supplied_by: The Eligibility Site's transfer-of-assets penalty determination (CBMS).
+sources: [S1507]
+tags: [ma, ltc, legal]
+rationale: "OQ-94: § 8.100.7.F.8.b reassigns the remaining months to the spouse who stays institutionalized; no fact stated them."

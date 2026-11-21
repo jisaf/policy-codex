@@ -1,0 +1,12 @@
+id: CO-2237
+name: Income trust expense retention maximum
+identifier: ma_income_trust_expense_retention_max
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The most an income trust may retain each month for trust expenses - 10 CCR 2505-10 § 8.100.7 (income trusts, 6.a.i.b and f: \"An amount not to exceed $20.00 may be retained for trust expenses\")."
+value: 20
+sources: [S1508]
+tags: [ma, ltc, income]
+rationale: "OQ-96: ma_income_trust_distribution (CO-2238) needs the figure; ssi_general_income_exclusion has the same value but a different meaning."

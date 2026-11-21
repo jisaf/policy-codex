@@ -211,13 +211,15 @@ Phase 7 sweep: the complete current text of 10 CCR 2505-3 (D-66) was fetched and
 
 Open-question sweep (2026-11-21): the exclusion is part of the federal definition of a targeted low-income child (42 U.S.C. 1397jj(b)(2)(B), S1223; 42 CFR 457.310(c)(1), S1224) and applies to a targeted low-income pregnant woman in the same manner (1397ll(d)(2)(C), S1225), so it binds CHP+ whether or not 10 CCR 2505-3 restates it. The two statutory exceptions of 1397jj(b)(6) (the agency's maintenance of effort on dependent coverage, and the State's 5% hardship finding) are stated as applying whenever their facts hold, so they are modeled too. New facts CO-1951-CO-1953 and rule chp_is_excluded_as_public_agency_employee_family (CO-1978), read by chp_child_is_eligible (CO-705) and chp_prenatal_is_eligible (CO-706). The household cases now state chp_is_eligible_for_public_agency_state_health_benefits_plan: false wherever they state chp_has_other_health_coverage; no expectation changed.
 
-### OQ-60. The 320 copayment schedule and the 330.2 aggregate 5% cost-sharing cap are not modeled as enforcement rules in this batch
+### OQ-60. Resolved: The 320 copayment schedule and the 330.2 aggregate 5% cost-sharing cap are not modeled as enforcement rules in this batch
 
 Body: 10 CCR 2505-3-320 states a detailed table of per-service copayment dollar amounts by FPL band (four bands, over a dozen service types each), and 330.2/42 CFR 457.560(a)/42 U.S.C. 1397cc(e)(3)(B) cap the aggregate of enrollment fee, premiums and copayments at 5% of family income for the relevant period. The phase-3 brief's interface for batch 7 lists identifiers for chp_annual_enrollment_fee and chp_eligibility_status but no identifier for a per-visit copayment schedule or for an aggregate-cap enforcement rule, so this batch creates only the parameter chp_cost_sharing_aggregate_cap_pct (CO-213, the 5% figure itself, cited to S247/S250/S252) and does not build either as a rule. Enforcing the cap correctly needs a running total of cost sharing charged in the eligibility period, which no supplied fact in this volume currently tracks. A future batch should add the 320 copayment table as parameters keyed by FPL band and service type, and a rule comparing a supplied or derived running cost-sharing total against chp_cost_sharing_aggregate_cap_pct times chp_household_income. Items: CO-213.
 
 Phase 7 sweep: the current § 320 (D-66) still states the same copayment bands, all below the 142% CHP+ floor, and § 330.2 the 5% cap; building the schedule and a running cost-sharing total is a modeling gap no further text resolves.
 
 Open-question sweep (2026-11-21): the rule is clear (triage: NEEDS FACT) but this sweep did not model it; it needs a running total of the family's premiums and copayments for the period, and the § 320 schedule by service and FPL band; the exemptions of § 330.1 and § 330.4 are now modeled (OQ-64).
+
+Phase-10 needs-fact sweep (2026-11-21): resolved. The phase 7 note above is wrong about the bands: § 320.1 (S1504) runs them from under 101% to 260% of poverty, so CHP+ families pay copayments. New facts chp_service_type (CO-2223) and chp_family_cost_sharing_paid_for_year (CO-2224, the running total); band limits CO-2225 to CO-2227; rules chp_copayment_income_band (CO-2228, at the eligibility determination), chp_cost_sharing_annual_limit (CO-2229: 5% of twelve months' income, § 330.2, S1505), chp_scheduled_copayment (CO-2230: the § 320.1 amounts, nothing for preventive services, § 330.3, for COVID-19 laboratory testing, or for emergency care with admission) and chp_copayment (CO-2231: nothing for an exempt enrollee, otherwise the scheduled amount up to what remains of the yearly limit). The whole-percent band edges leave gaps, recorded as OQ-470. No eligibility outcome reads the copayment, so no case states the facts.
 
 ### OQ-61. CHP+ "not eligible for Medicaid" reads the Medicaid outcome (resolved)
 
@@ -369,13 +371,15 @@ Body: brief4.md's interface describes PACE eligibility as "55+, level of care, f
 
 Resolution (phase 7): 10 CCR 2505-10 § 8.497.1.B.1 (current text, D-76, S649) incorporates 42 CFR part 460 (2024) by reference, and 42 CFR 460.150(b)(1) (D-71, S650) states "Be 55 years of age or older." ma_pace_min_age (CO-1133) carries it and ma_pace_eligible (CO-654) tests it. Items: CO-654, CO-1133.
 
-### OQ-94. Transfer penalty months does not model the start-date/other-penalty-period timing of 8.100.7.F.2.c.b-c
+### OQ-94. Resolved: Transfer penalty months does not model the start-date/other-penalty-period timing of 8.100.7.F.2.c.b-c
 
 Body: 8.100.7.F.2.c's penalty period calculation (uncompensated value ÷ the average private-pay rate) is the arithmetic ma_transfer_penalty_months (CO-649) implements, but 8.100.7.F.2.c.b-c also fix the penalty period's start date (the date the individual would otherwise be eligible, not overlapping a prior penalty period) and 8.100.7.F.8's apportionment between spouses, which are not modeled: ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) treat any positive computed penalty as a current-month disqualification rather than tracking the penalty period's calendar span. Items: CO-649, CO-651, CO-652.
 
 Phase 7 sweep: the current § 8.100.7.F.2.c.ii (D-65) states the same start-date rule; tracking the penalty period's calendar span is a modeling gap.
 
 Open-question sweep (2026-11-21): the rule is clear (triage: NEEDS FACT) but this sweep did not model it; it needs the date the person would otherwise be eligible and any prior penalty period, and the spouses' apportionment (§ 8.100.7.F.2.c.b-c, F.8). The divisor itself is now a dated parameter (OQ-212).
+
+Phase-10 needs-fact sweep (2026-11-21): resolved. The start date was already supplied (transfer_penalty_period_start_date, CO-886, read by ma_transfer_penalty_applies, CO-660, since the phase-4 fix round), and § 8.100.7.F.2.c.ii's third prong (no overlap with another penalty period) is part of that date's meaning. The apportionment of § 8.100.7.F.8 (S1507) is now modeled: new facts ma_transfer_penalty_is_apportioned_with_spouse (CO-2232) and ma_transfer_penalty_months_assigned_from_spouse (CO-2233), parameter ma_transfer_penalty_apportioned_share_rate (CO-2234, one half) and rule ma_transfer_penalty_share_rate (CO-2235); ma_transfer_penalty_months (CO-649) and ma_transfer_penalty_days (CO-659) apply the share and add the reassigned months (new tests CO-649-T4, T5, CO-659-T4). CO-01, CO-02 and CO-06 p1 have a community spouse, so the facts are false and 0 and CO-06's four months are unchanged.
 
 ### OQ-95. Family allowance's dependent-family-member group is a new supplied fact rather than a derived relationship read
 
@@ -385,13 +389,15 @@ Phase 7 sweep: a modeling choice about relationship facts; no published rule set
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.7.T.1.c.ii (D-65), which defines the family member; the question is whether to derive the group from relationship edges; no published rule settles it.
 
-### OQ-96. Income trust mechanics (8.100.7.G) are read only as a special-income-group override, not modeled as their own item
+### OQ-96. Resolved: Income trust mechanics (8.100.7.G) are read only as a special-income-group override, not modeled as their own item
 
 Body: has_income_trust (CO-823) only feeds ma_meets_special_income_group (CO-642) as the 8.100.7.A.2.e alternative to the 300% test; the trust's own rules (the geographic private-pay-rate ceiling on trust use, the allowable deductions from trust distributions, the $20 trust-expense retention, the HCBS 300%-limited distribution) are quoted in D-41 (around 8.100.7.G) but not modeled as separate rule items in this batch, since brief4.md's interface does not name identifiers for them. Items: CO-642, CO-823.
 
 Phase 7 sweep: the current § 8.100.7.G (D-65) states the same trust rules; not modeled, and the private-pay ceiling has no published figure (OQ-212).
 
 Open-question sweep (2026-11-21): the rule is clear (triage: NEEDS FACT) but this sweep did not model it; it needs trust distribution facts (the monthly distribution, the $20 retention, HCBS distributions). The trust's gross income ceiling is now enforced (OQ-99).
+
+Phase-10 needs-fact sweep (2026-11-21): resolved. In the current text the income trust rules are § 8.100.7's trust paragraph 6.a.i (S1508), not 8.100.7.G. New fact ma_income_trust_amount_retained_for_expenses (CO-2236), parameter ma_income_trust_expense_retention_max (CO-2237, $20) and rule ma_income_trust_distribution (CO-2238): the income transferred in less at most $20 retained, limited to 300% of the SSI rate for an HCBS member. ma_patient_payment (CO-658) applies the distribution for a trust user (new test CO-658-T6). The trust's deduction list omits the family allowance that the general rule allows; the draft keeps it (OQ-471). The HCBS member payment (PETI) computed on 300% of the SSI limit has no item, as before. No case has an income trust.
 
 ### OQ-97. Community spouse income and shelter facts are supplied directly rather than read cross-person via the spouse relationship
 
@@ -1260,3 +1266,11 @@ Body: The federal text leaves these to the State, and Colorado has published non
 
 Body: (1) "Described in" a mandatory group of 1902(a)(10)(A)(i)(I)-(VII) (435.553(a)(3)) is read through SSI, TANF and title IV-E receipt and Colorado's MAGI Parents and Caretaker Relatives, Pregnant and Children categories (CO-1970); subclause (V) has no Colorado category. (2) The family caregiver's relatives (435.554(c)(3)(i)(B)) are read from the volume's relationship edges, which have no uncle, aunt, cousin, nephew or niece role (CO-1963; OQ-396). (3) The 1115 demonstration branch of the applicable individual (435.551(b)) is not modeled: Colorado has no expansion-like 1115 adult coverage in the fetched text. (4) The status is evaluated at the determination; the 30-day noncompliance notice period and continued coverage of 435.558 are outside this volume's scope. (5) Whether an undocumented adult who would be in the Adults group but does not meet community engagement is still emergency-only (CO-510 reads ma_magi_category, which is now none for that person) is not addressed by the text. Items: CO-1963, CO-1970, CO-1974, CO-551.
 Phase-10 open-question sweep: LEAP now has its own relationship role (shares_heat_with, OQ-132), so its economic unit no longer depends on the shared family edges alone. Checked 2026-11-21 for the rest: the CCCAP adult caretaker (8 CCR 1403-1 3.103.C, "In loco parentis" 3.103.MMM, D-87) and the Medicaid caretaker relative read the same caretaker edge; no published rule requires the edges to differ, and splitting them is a ledger-design choice.
+
+### OQ-470. CHP+ copayment bands: ratios between 150% and 151%, and between 200% and 201%
+
+Body: 10 CCR 2505-3 § 320.1 (S1504) states the copayment bands in whole percentages of the federal poverty level: less than 101% (A), "between 101% and 150%" (B), "between 151% and 200%" (C) and "between 201% and 260%" (D). A family whose income ratio is above 150% but below 151%, or above 200% but below 201%, falls in no band. chp_copayment_income_band (CO-2228) reads B as up to and including 150% and C as up to and including 200%, so those ratios fall into the next band up (C and D). The rule also leaves open whether "between 101% and 150%" includes exactly 150%; the draft includes it in B. Checked 2026-11-21: § 320.1 (D-66) and § 330 (D-66); no published rule settles the gaps. Items: CO-2228, CO-2225, CO-2226, CO-2227.
+
+### OQ-471. Income trust deductions omit the family allowance
+
+Body: The income trust rules of 10 CCR 2505-10 § 8.100.7 (trusts, 6.a.i.c, S1508) say "The only deductions from the monthly trust distribution to the Long Term Care institution are the allowable deductions which are permitted for Medical Assistance-eligible persons who do not have income trusts. Allowable deductions include only the following: i) Personal need allowance ii) Spousal income payments iii) Approved PETI payments". The first sentence allows every deduction a person without a trust receives, which § 8.100.7.T.1 and 42 U.S.C. 1396r-5(d)(1) make include the family allowance for dependent family members; the list that follows omits it. ma_patient_payment (CO-658) keeps the family allowance for a trust user, reading the first sentence and the federal requirement over the list. Checked 2026-11-21: § 8.100.7 (D-65) states both sentences; no published rule settles which governs. Items: CO-658, CO-2238.

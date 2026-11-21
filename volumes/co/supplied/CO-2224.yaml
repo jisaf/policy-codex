@@ -1,0 +1,12 @@
+id: CO-2224
+name: CHP+ cost sharing paid by the family this year
+identifier: chp_family_cost_sharing_paid_for_year
+kind: supplied
+type: money
+scope: person
+program: CHP+
+meaning: "The total CHP+ cost sharing (copayments) the enrollee's family has paid so far in the current year for all of its CHP+ enrollees, which 10 CCR 2505-3 § 330.2 limits to 5% of the family's income."
+supplied_by: The running cost-sharing total the CHP+ plan or the Department keeps for the family.
+sources: [S1505]
+tags: [chp, income]
+rationale: "OQ-60: the 5% yearly maximum needs a running total of the family's cost sharing; no fact stated it."
