@@ -3526,3 +3526,150 @@
       leap_household_members: []
       leap_household_income: {"2026-12": 1500}
       leap_is_eligible: {"2026-12": false}
+
+- id: CO-13
+  title: "Phase 8: a widow on OAP with Home Care Allowance and her husband's burial; a sanctioned Colorado Works daughter whose school-age son gets SUN Bucks"
+  # Designed for phase 8 (current 9 CCR 2503-5, 2503-6 and 7 CFR 292). Two households under one case,
+  # with no relationship edge between them, so the Colorado Works unit is p3 and p4 only.
+  # p1 (Ruth, 66) is an OAP client: countable income 700 - 20 = 680 against the $1,032 standard (S700) gives a
+  # $352 grant, above the $189 floor. Her CMA scores her at capacity 24, need 30 (tier 2, S714); she is
+  # financially eligible for HCA only through the grandfathered OAP-and-HCA route (3.570.13.B.3), and the
+  # CMA authorizes $900, which the $977 HCA floor raises (S713).
+  # p2 (Walter) died this month while receiving OAP: providers' charges $2,800 including a $600 prepaid plot
+  # that is excluded from the $2,500 limit (3.570.43.A.4.a), so $2,200 counts; insurance $300 and estate $200
+  # are applied, and Ruth (the widow, individual $2,000 limit) has $1,000 in resources, so nothing more;
+  # $2,300 remains and the benefit is the $1,500 maximum (S720, S721).
+  # p3 (Ana, 35) heads a Colorado Works unit with her son p4 (8): no income, one caretaker and one child, grant
+  # standard $488; she is serving a second-level sanction (3.608.4.C.1, S760), so 25% ($122) comes off: $366.
+  # p4 is school aged, enrolled in an NSLP school and in a TANF household: SUN Bucks categorical, $120 (S796).
+  as_of: "2026-11-01"
+  relationships:
+    - [parent, p3, p4]
+    - [buys_prepares_with, p1, p2]   # states p1's relationships (none is a spouse, so she is unmarried for af_is_married)
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1960-03-02"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_fleeing_felon_or_probation_violator: false
+        marital_status: widowed
+        receives_ssi: false
+        is_disabled_ssa: false
+        is_blind: false
+        receives_social_security_disability: false
+        countable_resources_individual: 1000
+        countable_resources_couple: 0
+        in_medical_institution: false
+        receives_hcbs_services: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        hca_functional_capacity_score: 24
+        hca_need_for_paid_care_score: 30
+        received_oap_and_hca_grandfathered: true
+        died_while_receiving_af_or_medicaid: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 700
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        hca_authorized_amount: 900
+    p2:
+      facts:
+        date_of_birth: "1958-08-20"
+        died_while_receiving_af_or_medicaid: true
+        burial_services_total_cost: 2800
+        burial_plot_cost_excluded_from_limit: 600
+        burial_insurance_proceeds: 300
+        decedent_estate_value: 200
+        burial_responsible_person_resources: 1000
+        burial_responsible_persons_are_couple: false
+    p3:
+      facts:
+        date_of_birth: "1991-05-01"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_head_of_household: true
+        is_pregnant: false
+        is_enrolled_in_school: false
+        is_emancipated_minor: false
+        marital_status: single
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 14
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        work_sanction_level_served: second
+    p4:
+      facts:
+        date_of_birth: "2018-02-11"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_enrolled_in_school: true
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        receives_tanf_cash: true
+        is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_drug_felony: false
+        is_fleeing_felon_or_probation_violator: false
+        is_school_aged: true
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        cash_assistance_income: 0
+        child_support_received: 0
+        other_unearned_income: 0
+        work_sanction_level_served: none
+  expect:
+    p1:
+      af_category: {"2026-11": oap}
+      af_oap_grant: {"2026-11": 352}
+      af_hca_tier: tier_2
+      af_hca_eligibility_status: {"2026-11": eligible}
+      af_hca_grant: {"2026-11": 977}
+      af_burial_eligible: false
+      af_burial_benefit: 0
+    p2:
+      af_burial_eligible: true
+      af_burial_benefit: 1500
+    p3:
+      cw_unit_sanction_level: {"2026-11": second}
+      cw_grant_before_sanction: {"2026-11": 488}
+      cw_grant_amount: {"2026-11": 366}
+      cw_eligibility_status: {"2026-11": eligible}
+      cw_diversion_eligible: {"2026-11": false}
+    p4:
+      cw_grant_amount: {"2026-11": 366}
+      sebt_eligibility_status: {"2026-11": eligible_categorical}
+      sebt_benefit_amount: {"2026-11": 120}
