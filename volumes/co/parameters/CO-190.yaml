@@ -6,7 +6,7 @@ type: whole number
 scope: global
 program: Medicaid
 meaning: The age, in whole years, under which a child is a "dependent child" for the Parents and Caretaker Relatives MAGI category under 42 CFR 435.4's definition, incorporated by 10 CCR 2505-10 8.100.4.G.3 - distinct from ma_magi_child_age_limit (CO-180), which governs household composition and the Children's MAGI category's own age cutoff.
-precision: 42 CFR 435.4 sets 18, or 18 plus a full-time-secondary-student extension through 19; this parameter carries the plain 18 and ma_is_dependent_child (CO-544) applies the student extension as its own condition rather than folding it into this parameter, so the parameter states only the base age.
+precision: "42 CFR 435.4 sets the age, with a full-time-secondary-student extension of one more year; this parameter carries the base age and ma_is_dependent_child (CO-544) applies the student extension as its own condition rather than folding it into this parameter."
 value: 18
 sources: [S206]
 tags: [ma, magi, household, age]

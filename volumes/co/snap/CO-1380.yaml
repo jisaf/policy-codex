@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: "Whether the person's out-of-pocket medical expenses must be verified for SNAP: before initial certification when an elderly or disabled member claims them for the medical deduction; at recertification only when the total has changed by more than $25 since last verified."
+meaning: "Whether the person's out-of-pocket medical expenses must be verified for SNAP: before initial certification when an elderly or disabled member claims them for the medical deduction; at recertification only when the total has changed by more than snap_recertification_expense_change_threshold since last verified."
 derived: [all, snap_is_household_member, snap_is_elderly_or_disabled, [">", medical_expenses_out_of_pocket, 0], [any, [not, snap_determination_is_recertification], snap_medical_expenses_source_changed_since_last_certification, [">", ["-", medical_expenses_out_of_pocket, snap_medical_expenses_at_last_certification], snap_recertification_expense_change_threshold], [">", ["-", snap_medical_expenses_at_last_certification, medical_expenses_out_of_pocket], snap_recertification_expense_change_threshold], [otherwise, snap_medical_expenses_information_is_outdated, false]]]
 sources: [S1618, S803, S818, S833, S1055, S1056]
 implemented: engine

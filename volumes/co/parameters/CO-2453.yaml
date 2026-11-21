@@ -5,7 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: Medicaid
-meaning: "The months between redeterminations for an expansion adult: once every 6 months for a redetermination scheduled on or after January 1, 2027 (42 U.S.C. 1396a(e)(14)(L)(i)), and before then the standard once every 12 months (42 CFR 435.916(a))."
+meaning: "The months between redeterminations for an expansion adult: the interval 42 U.S.C. 1396a(e)(14)(L)(i) sets for redeterminations scheduled on or after January 1, 2027, and before then the standard interval of 42 CFR 435.916(a) (ma_standard_renewal_interval_months, CO-2454). The figures are the versions."
 precision: "The statute dates the change by when the redetermination is scheduled; the determination date stands for it. The first version runs from the enactment of Pub. L. 119-21 (July 4, 2025) at the standard interval."
 versions:
   - {from: "2025-07-04", to: "2027-01-01", value: 12, source: S1707}

@@ -5,7 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: Medicaid
-meaning: "The number of preceding months over which a seasonal worker's monthly income is averaged for the income test of 42 CFR 435.552(a)(7) and (g): 6 months."
+meaning: "The number of preceding months over which a seasonal worker's monthly income is averaged for the income test of 42 CFR 435.552(a)(7) and (g), in months."
 value: 6
 sources: [S1202, S1205]
 tags: [ma, magi, income]

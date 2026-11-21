@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CHP+
-meaning: "Whether the attested household income is reasonably compatible with the electronic data source's for CHP+, judged against the CHP+ upper income limit: both at or below it, both above it, or the attested figure at or below it and the data no more than 20% above the attested figure."
+meaning: "Whether the attested household income is reasonably compatible with the electronic data source's for CHP+, judged against the CHP+ upper income limit: both at or below it, both above it, or the attested figure at or below it and the data no more than ma_reasonable_compatibility_threshold_pct above the attested figure."
 derived: [any, [all, ["<=", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", electronic_data_source_household_income_pct_fpl, chp_income_limit_pct_upper]], [all, [">", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper], [">", electronic_data_source_household_income_pct_fpl, chp_income_limit_pct_upper]], [all, ["<=", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", electronic_data_source_household_income_pct_fpl, ["*", ma_magi_household_income_pct_fpl, ["+", 1, ma_reasonable_compatibility_threshold_pct]]]]]
 sources: [S869, S864, S838]
 implemented: engine

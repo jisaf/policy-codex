@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: Whether, at a recertification, the person's income source has changed or the total monthly income has changed by more than $50 from the amount last verified.
+meaning: "Whether, at a recertification, the person's income source has changed or the total monthly income has changed by more than snap_recertification_income_change_threshold from the amount last verified."
 derived: [any, snap_income_source_changed_since_last_certification, [">", ["-", ["+", wages_gross, snap_self_employment_income, snap_person_unearned_income], snap_income_at_last_certification], snap_recertification_income_change_threshold], [">", ["-", snap_income_at_last_certification, ["+", wages_gross, snap_self_employment_income, snap_person_unearned_income]], snap_recertification_income_change_threshold]]
 sources: [S1055, S1056]
 implemented: engine

@@ -5,7 +5,7 @@ kind: parameter
 type: rate
 scope: global
 program: CHP+
-meaning: "The upper limit, as a share of the federal poverty level, of the third CHP+ copayment band - 10 CCR 2505-3 § 320.1.C (\"between 151% and 200% of Federal Poverty Level\"); § 320.1.D's fourth band runs from 201% to 260%."
+meaning: "The upper limit, as a share of the federal poverty level, of the third CHP+ copayment band - 10 CCR 2505-3 § 320.1.C (\"between 151% and 200% of Federal Poverty Level\"); § 320.1.D's fourth band runs to the CHP+ upper limit (chp_income_limit_pct_upper)."
 value: 2.0
 sources: [S1504]
 tags: [chp, income]

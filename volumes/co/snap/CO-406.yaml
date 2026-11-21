@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: "The person is subject to general SNAP work registration - age 16 through 59 and not exempt under snap_is_exempt_from_work_registration. Informational: no rule reads it and it is not a declared outcome; the work requirements read their own exemptions, and the figure is reported to the worker (household cases check it)."
+meaning: "The person is subject to general SNAP work registration - age snap_work_registration_min_age through snap_work_registration_max_age and not exempt under snap_is_exempt_from_work_registration. Informational: no rule reads it and it is not a declared outcome; the work requirements read their own exemptions, and the figure is reported to the worker (household cases check it)."
 derived: [all, [">=", age, snap_work_registration_min_age], ["<=", age, snap_work_registration_max_age], [not, snap_is_exempt_from_work_registration]]
 sources: [S122, S123, S126]
 implemented: engine

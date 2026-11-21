@@ -5,7 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: Medicaid
-meaning: "The minimum age 10 CCR 2505-10 § 8.7101 states for the adult HCBS waivers - Community Mental Health Supports (F.2.a.i), Elderly, Blind and Disabled (G.2.c: 18-64 physically disabled or blind, 18 or older with HIV/AIDS, 65 or older aged), Complementary and Integrative Health (H.2.a), Supported Living Services (I.2.b) and Developmental Disabilities (J.2.c)."
+meaning: "The minimum age 10 CCR 2505-10 § 8.7101 states for the adult HCBS waivers - Community Mental Health Supports (F.2.a.i), Elderly, Blind and Disabled (G.2.c: physically disabled or blind adults below ma_aged_age, adults with HIV/AIDS, and the aged), Complementary and Integrative Health (H.2.a), Supported Living Services (I.2.b) and Developmental Disabilities (J.2.c)."
 value: 18
 sources: [S633, S634, S635, S636, S637]
 tags: [ma, hcbs, age]

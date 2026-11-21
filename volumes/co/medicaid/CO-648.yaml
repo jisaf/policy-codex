@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: Whether this person's countable resources for Long-Term Care eligibility do not exceed the SSI-related individual resource limit - the institutionalized spouse is resource eligible when the couple's total resources are at or below the CSRA plus the $2,000 individual resource allowance - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1.
+meaning: "Whether this person's countable resources for Long-Term Care eligibility do not exceed the SSI-related individual resource limit - the institutionalized spouse is resource eligible when the couple's total resources are at or below the CSRA plus the ssi_resource_limit_individual individual resource allowance - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1."
 derived: ["<=", ma_institutionalized_spouse_countable_resources, ssi_resource_limit_individual]
 sources: [S1755]
 implemented: engine

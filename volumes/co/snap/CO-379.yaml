@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The deduction for this person's SNAP household's monthly shelter costs that exceed 50 percent of its income after all other deductions - uncapped for a household with an elderly or disabled member, otherwise capped at the excess shelter deduction cap.
+meaning: "The deduction for this person's SNAP household's monthly shelter costs that exceed snap_shelter_share_rate of its income after all other deductions - uncapped for a household with an elderly or disabled member, otherwise capped at the excess shelter deduction cap."
 derived: [case, [snap_household_has_elderly_or_disabled_member, [max, 0, ["-", snap_shelter_costs, ["*", snap_shelter_share_rate, snap_adjusted_income_before_shelter]]]], [else, [min, snap_excess_shelter_cap, [max, 0, ["-", snap_shelter_costs, ["*", snap_shelter_share_rate, snap_adjusted_income_before_shelter]]]]]]
 sources: [S88, S93, S96]
 implemented: engine

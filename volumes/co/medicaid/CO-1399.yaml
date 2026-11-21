@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether the identity document provided is acceptable for Medical Assistance: a state driver's license or government identification, school, military, dependent or merchant mariner card, tribal document, corroborating documents, a governmental finding of identity, a facility director's or third party's affidavit, or for a child under 19 a clinic, doctor, hospital or school record or a parent's affidavit."
+meaning: "Whether the identity document provided is acceptable for Medical Assistance: a state driver's license or government identification, school, military, dependent or merchant mariner card, tribal document, corroborating documents, a governmental finding of identity, a facility director's or third party's affidavit, or for a child under ma_magi_child_age_limit a clinic, doctor, hospital or school record or a parent's affidavit."
 precision: A parent's identity affidavit cannot be used if an affidavit for citizenship was provided (8.100.3.H.3), and the corroborating documents need consistent information; those conditions are the worker's check, not represented by the document type.
 derived: [any, [in, identity_verification_document_type, [colorado_drivers_license_or_id, other_state_drivers_license_or_id, school_id_card, us_military_card, draft_record, military_dependent_id_card, government_issued_id_card, merchant_mariner_card, tribal_document, corroborating_documents, facility_director_affidavit, agency_identity_finding, third_party_identity_affidavit]], [all, [in, identity_verification_document_type, [child_medical_or_school_record, parent_affidavit_for_child]], ["<", age, ma_magi_child_age_limit]]]
 sources: [S848, S857, S858]
