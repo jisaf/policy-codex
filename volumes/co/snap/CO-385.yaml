@@ -59,8 +59,9 @@ tests:
         citizenship_status: undocumented
         earned_income: 2380
         self_employment_net_income: 0
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
         dependent_care_expense: 0
         child_support_paid_legally_obligated: 0

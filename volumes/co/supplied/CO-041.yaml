@@ -1,6 +1,6 @@
 id: CO-041
-name: Is disqualified for a drug-related felony
-identifier: is_disqualified_drug_felony
+name: "SNAP: is disqualified for a drug-related felony"
+identifier: snap_is_disqualified_drug_felony
 kind: supplied
 type: yes/no
 scope: person
@@ -8,4 +8,4 @@ program: SNAP
 meaning: The person was convicted of a felony involving the possession, use, or distribution of a controlled substance, based on conduct after August 22, 1996, and is subject to the resulting disqualification.
 supplied_by: Court record, county worker determination.
 sources: []
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an ineligible member."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is an ineligible member. Vocabulary fix round (R-6): renamed from is_disqualified_drug_felony and read only by SNAP's member disqualification (CO-311); basic categorical eligibility's narrower bar is snap_has_drug_felony_involving_snap_benefits (CO-1731)."

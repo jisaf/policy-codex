@@ -1,12 +1,12 @@
 id: CO-323
 name: CCCAP monthly federal poverty guideline by household size
-identifier: cccap_poverty_guideline_table
+identifier: cccap_poverty_guideline_monthly_table
 kind: parameter
 type: table keyed by household size
 scope: global
 program: CCCAP
 meaning: The monthly 100% federal poverty guideline dollar amount by household size, the base the CCCAP county entry income limit percentage is applied to.
-precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_poverty_guideline_each_additional per additional member. The text states these as the 100% FPG figures effective October 1, 2024.
+precision: Monthly dollars, sizes 1-8; sizes above 8 add cccap_poverty_guideline_monthly_each_additional per additional member. The text states these as the 100% FPG figures effective October 1, 2024.
 versions:
   - from: "2024-10-01"
     to: "2025-10-01"

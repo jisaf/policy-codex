@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether the client must furnish a Social Security number (or proof of applying) for Adult Financial: every client who has a number or can obtain one; an Old Age Pension client who is not a citizen need not apply for a number but must provide one already issued."
-derived: [all, [not, ssn_exception_applies], [any, has_been_issued_ssn, [not, [all, af_is_oap_age, [not, claims_citizenship]]]]]
+derived: [all, [not, ssn_exception_applies], [any, has_been_issued_ssn, [not, [all, af_is_oap_age, [not, is_us_citizen_or_national]]]]]
 sources: [S884]
 implemented: engine
 tags: [verification, cash, oap, and]

@@ -6,15 +6,16 @@ type: yes/no
 scope: person
 program: AdultFinancial
 meaning: Whether the person has a total disability that has lasted or can be expected to last six months or more, or is determined disabled and eligible for Social Security Disability Insurance benefits, per C.R.S. 26-2-111(4)(a) and 9 CCR 2503-5 3.541.A.
-precision: See OQ-113 - reads is_disabled_ssa as standing in for 3.541.1's own state-prescribed medical certification process, and receives_social_security_disability for the SSDI-determined alternative 26-2-111(4)(a) states; the six-month duration requirement itself is not separately modeled (no supplied duration fact exists).
-derived: [any, is_disabled_ssa, receives_social_security_disability]
+precision: "Vocabulary fix round (R-5): reads af_has_total_disability_six_months (CO-1728), the county's finding on the state medical certification, which carries the six-month duration, and receives_ssdi (CO-1727) for 26-2-111(4)(a)'s SSDI-determined route. It had read the SSA disability fact (see OQ-113, now resolved) and SNAP's disability-payment fact."
+derived: [any, af_has_total_disability_six_months, receives_ssdi]
 sources: [S442, S445, S459]
-open: [OQ-113]
+open: []
 implemented: engine
 tags: [cash, and, disability]
 rationale: No existing item states the AND-SO total-disability test. af_category (CO-953) needs it.
 nearest: []
 tests:
-  - {id: CO-944-T1, as_of: "2026-10-01", given: {is_disabled_ssa: true, receives_social_security_disability: false}, expect: true}
-  - {id: CO-944-T2, as_of: "2026-10-01", given: {is_disabled_ssa: false, receives_social_security_disability: true}, expect: true}
-  - {id: CO-944-T3, as_of: "2026-10-01", given: {is_disabled_ssa: false, receives_social_security_disability: false}, expect: false}
+  - {id: CO-944-T1, as_of: "2026-10-01", given: {meets_ssa_disability_criteria: true, af_has_total_disability_six_months: true, receives_ssdi: false}, expect: true}
+  - {id: CO-944-T2, as_of: "2026-10-01", given: {meets_ssa_disability_criteria: false, af_has_total_disability_six_months: false, receives_ssdi: true}, expect: true}
+  - {id: CO-944-T3, as_of: "2026-10-01", given: {meets_ssa_disability_criteria: false, af_has_total_disability_six_months: false, receives_ssdi: false}, expect: false}
+  - {id: CO-944-T4, title: "Vocabulary fix round (R-5): state total disability without an SSA determination", as_of: "2026-10-01", given: {meets_ssa_disability_criteria: false, af_has_total_disability_six_months: true}, expect: true}

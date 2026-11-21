@@ -134,12 +134,16 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -176,18 +180,24 @@
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -202,7 +212,8 @@
         countable_liquid_resources: 46000
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
@@ -222,7 +233,8 @@
         transfers_within_lookback: []
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_in_workforce_training_or_post_secondary_education: false
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
@@ -370,12 +382,16 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_pace: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -416,18 +432,24 @@
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -444,10 +466,12 @@
         non_heating_utility_cost_count: 3
         incurs_telephone_cost: true
         persons_cared_for: []
-        is_head_of_household: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         qualified_status_date: "1998-05-14"
+        us_entry_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         sex: male
         citizenship_status: lawful_permanent_resident
@@ -459,7 +483,8 @@
         in_medical_institution: false
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_in_workforce_training_or_post_secondary_education: false
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
@@ -608,12 +633,16 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -637,18 +666,24 @@
         application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -660,7 +695,8 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: true
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         in_medical_institution: false
@@ -671,7 +707,8 @@
         is_tax_filer: true
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
         is_in_workforce_training_or_post_secondary_education: false
@@ -820,6 +857,7 @@
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -845,18 +883,24 @@
         attested_household_income_pct_fpl: 1.0454
         is_tax_filer: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -868,7 +912,8 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: [p5]
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         in_medical_institution: false
@@ -876,10 +921,14 @@
         sex: female
         citizenship_status: citizen
         state_of_residence: CO
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: true
+        is_attending_high_school: true
+        cccap_is_in_education_or_training_activity: true
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
         is_in_workforce_training_or_post_secondary_education: false
@@ -1021,12 +1070,16 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -1052,18 +1105,24 @@
         attested_household_income_pct_fpl: 0
         is_tax_filer: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -1075,7 +1134,8 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         in_medical_institution: false
@@ -1085,7 +1145,8 @@
         state_of_residence: CO
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
         is_in_workforce_training_or_post_secondary_education: false
@@ -2079,12 +2140,16 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -2123,22 +2188,29 @@
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         receives_ssi: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -2153,7 +2225,8 @@
         countable_liquid_resources: 46000
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
@@ -2313,12 +2386,16 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_pace: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -2360,22 +2437,29 @@
         is_tax_filer: true
         qualifying_quarters: 40
         receives_ssi: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -2392,10 +2476,12 @@
         non_heating_utility_cost_count: 3
         incurs_telephone_cost: true
         persons_cared_for: []
-        is_head_of_household: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         qualified_status_date: "1998-05-14"
+        us_entry_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         citizenship_status: lawful_permanent_resident
         lpr_entry_date: "1998-05-14"
@@ -2549,12 +2635,16 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -2580,22 +2670,29 @@
         application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -2607,7 +2704,8 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: true
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         in_medical_institution: false
@@ -2760,6 +2858,7 @@
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -2785,22 +2884,29 @@
         application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -2812,14 +2918,18 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: [p5]
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         in_medical_institution: false
         date_of_birth: "2009-04-08"
         citizenship_status: citizen
         state_of_residence: CO
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: true
+        is_attending_high_school: true
+        cccap_is_in_education_or_training_activity: true
         is_in_workforce_training_or_post_secondary_education: false
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
@@ -2959,12 +3069,16 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
         months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         has_domestic_violence_waiver: false
@@ -2990,22 +3104,29 @@
         attested_household_income_pct_fpl: 0
         is_tax_filer: false
         receives_ssi: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
         is_enrolled_higher_education_half_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -3017,7 +3138,8 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         in_medical_institution: false
@@ -3879,21 +4001,28 @@
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
         receives_ssi: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -3911,7 +4040,8 @@
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
         persons_cared_for: []
-        is_head_of_household: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
         date_of_birth: "1956-01-01"
         sex: female
         citizenship_status: citizen
@@ -3945,21 +4075,28 @@
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
         receives_ssi: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
         is_homeless: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         agency_finds_obviously_unfit: false
         is_complying_with_tanf_work_requirements: false
@@ -3971,7 +4108,8 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
         persons_cared_for: []
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         date_of_birth: "1958-01-01"
         sex: male
         citizenship_status: citizen
@@ -4082,6 +4220,7 @@
         sex: female
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
+        us_entry_date: "2023-06-15"
         lpr_entry_date: "2023-06-15"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
@@ -4094,8 +4233,8 @@
         is_pregnant: true
         expected_number_of_children: 1
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4103,7 +4242,8 @@
         application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 1600
@@ -4130,6 +4270,7 @@
         date_of_birth: "1992-08-03"
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
+        us_entry_date: "2023-06-15"
         lpr_entry_date: "2023-06-15"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
@@ -4142,8 +4283,8 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4151,7 +4292,8 @@
         application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 600
@@ -4178,11 +4320,13 @@
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: true
+        is_attending_high_school: true
+        cccap_is_in_education_or_training_activity: true
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        was_foster_youth_at_eighteen: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4191,7 +4335,8 @@
         application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 0
@@ -4221,7 +4366,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        was_foster_youth_at_eighteen: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4230,7 +4374,8 @@
         application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 0
@@ -4261,8 +4406,8 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4270,7 +4415,8 @@
         application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 5000
@@ -4448,8 +4594,8 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: true
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4457,7 +4603,8 @@
         application_date: "2026-04-10"
         attested_household_income_pct_fpl: 1.03
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         social_security_income: 1850
@@ -4488,16 +4635,17 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         age_at_foster_care_exit: 20
-        was_foster_youth_at_eighteen: true
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-04-10"
         attested_household_income_pct_fpl: 3.16
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 4200
@@ -4535,11 +4683,13 @@
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: true
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: true
+        is_attending_high_school: true
+        cccap_is_in_education_or_training_activity: true
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        was_foster_youth_at_eighteen: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
@@ -4548,7 +4698,8 @@
         application_date: "2026-04-10"
         attested_household_income_pct_fpl: 0.00
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
         earned_income: 0
@@ -4732,9 +4883,11 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_pregnant: false
-        is_veteran_or_active_duty: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: true
         receives_medicare_part_a: true
@@ -4804,9 +4957,11 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_pregnant: false
-        is_veteran_or_active_duty: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_medicare_entitled_or_enrolled: true
         receives_medicare_part_a: true
@@ -4868,9 +5023,11 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_pregnant: false
-        is_veteran_or_active_duty: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         is_blind: false
-        is_disabled_ssa: true
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: true
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
@@ -4968,8 +5125,8 @@
   title: Two-parent Colorado Works unit with a parent serving a second-level sanction, an SSI child on AND-CS, months straddling the sixty-month limit and a DV extension on one parent; a 62-year-old grandparent on OAP
   # Adapted from the phase-5 review's designed case in S3.2 (docs/reviews/cash-phase-5.md), renumbered
   # CO-06 -> CO-07 for this fix round. Facts are updated for the fix round's renamed/added identifiers:
-  # has_domestic_violence_waiver -> has_domestic_violence_extension_approved (C-3(b)); is_indian_or_urban_indian,
-  # is_disqualified_for_intentional_program_violation/is_disqualified_drug_felony/is_fleeing_felon_or_probation_violator
+  # has_domestic_violence_waiver -> has_domestic_violence_extension_approved (C-3(b)); snap_is_indian_or_urban_indian,
+  # snap_is_serving_ipv_disqualification/snap_is_disqualified_drug_felony/is_fleeing_felon
   # added on every person (K-3/K-5 now read them); ssi_income added on p3 (K-6). Expectations below are what the
   # FIXED items at this commit produce (evaluated with scripts/eval-case.ts), not the review's hand derivation -
   # each place they differ is called out in a comment citing the governing text.
@@ -4999,23 +5156,34 @@
         citizenship_status: citizen
         state_of_residence: CO
         marital_status: married
-        is_head_of_household: true
-        is_enrolled_in_school: false
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 58
-        is_indian_or_urban_indian: false
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: true
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disabled_ssa: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         is_disqualified_for_work_requirement_noncompliance: false
         is_pregnant: false
         countable_resources_individual: 900
@@ -5044,23 +5212,34 @@
         citizenship_status: citizen
         state_of_residence: CO
         marital_status: married
-        is_head_of_household: false
-        is_enrolled_in_school: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 61
-        is_indian_or_urban_indian: false
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disabled_ssa: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         is_disqualified_for_work_requirement_noncompliance: true
         is_pregnant: false
         countable_resources_individual: 500
@@ -5089,8 +5268,12 @@
         citizenship_status: citizen
         state_of_residence: CO
         marital_status: single
-        is_head_of_household: false
-        is_enrolled_in_school: true
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: true
@@ -5098,15 +5281,22 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
-        is_indian_or_urban_indian: false
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disabled_ssa: true
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: true
         is_blind: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
         countable_resources_individual: 1500
         countable_resources_couple: 0
@@ -5132,23 +5322,34 @@
         citizenship_status: citizen
         state_of_residence: CO
         marital_status: single
-        is_head_of_household: false
-        is_enrolled_in_school: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
-        is_indian_or_urban_indian: false
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disabled_ssa: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
         countable_resources_individual: 0
         countable_resources_couple: 0
@@ -5176,23 +5377,34 @@
         citizenship_status: citizen
         state_of_residence: CO
         marital_status: other
-        is_head_of_household: false
-        is_enrolled_in_school: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
-        is_indian_or_urban_indian: false
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disabled_ssa: true
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: true
         is_blind: false
-        receives_social_security_disability: true
+        snap_receives_disability_or_blindness_payment: true
+        receives_ssdi: true
+        snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
         countable_resources_individual: 1200
         countable_resources_couple: 0
@@ -5319,7 +5531,10 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_in_job_search_activity: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -5351,7 +5566,10 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_in_job_search_activity: true
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -5384,7 +5602,10 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: true
+        is_attending_high_school: true
+        cccap_is_in_education_or_training_activity: true
         is_in_job_search_activity: false
         has_additional_care_needs: true
         is_protective_services_child_care_case: false
@@ -5421,7 +5642,10 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: true
+        is_attending_high_school: true
+        cccap_is_in_education_or_training_activity: true
         is_in_job_search_activity: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -5454,7 +5678,10 @@
         citizenship_status: undocumented
         lawful_presence_status: not_lawfully_present
         state_of_residence: "CO"
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_in_job_search_activity: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -5576,8 +5803,11 @@
         lottery_gambling_winnings_amount: 0
         is_employed: true
         is_disabled_for_buy_in: false
-        receives_social_security_disability: false
-        is_fleeing_felon_or_probation_violator: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         countable_resources_individual: 300
         countable_resources_couple: 0
         date_of_birth: "1997-02-11"
@@ -5592,15 +5822,16 @@
         is_pregnant: true
         expected_number_of_children: 1
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-05"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         has_reproductive_capacity: true
@@ -5630,14 +5861,18 @@
         lottery_gambling_winnings_amount: 0
         is_employed: true
         is_disabled_for_buy_in: false
-        receives_social_security_disability: false
-        is_fleeing_felon_or_probation_violator: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         countable_resources_individual: 300
         countable_resources_couple: 0
         date_of_birth: "1968-05-20"
         sex: female
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2010-04-01"
+        us_entry_date: "2010-04-01"
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_tax_filer: false
@@ -5647,15 +5882,16 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-05"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: true
         has_reproductive_capacity: false
@@ -5687,11 +5923,13 @@
         sex: male
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-03-01"
+        us_entry_date: "2023-03-01"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 0
         lawful_presence_status: lawfully_present
         state_of_residence: CO
-        is_fleeing_felon_or_probation_violator: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: false
@@ -5700,17 +5938,20 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-05"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
         countable_resources_individual: 500
         countable_resources_couple: 0
@@ -5753,8 +5994,11 @@
         lottery_gambling_winnings_amount: 0
         is_employed: false
         is_disabled_for_buy_in: false
-        receives_social_security_disability: false
-        is_fleeing_felon_or_probation_violator: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         countable_resources_individual: 300
         countable_resources_couple: 0
         date_of_birth: "2020-03-09"
@@ -5769,15 +6013,16 @@
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-05"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         receives_tanf_cash: false
         receives_title_iv_foster_adoption_kinship_payment: false
@@ -5873,7 +6118,8 @@
         citizenship_status: undocumented
         lawful_presence_status: not_lawfully_present
         state_of_residence: CO
-        is_fleeing_felon_or_probation_violator: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: false
@@ -5882,17 +6128,20 @@
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
-        is_veteran_or_active_duty: false
-        was_foster_youth_at_eighteen: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
         application_date: "2026-10-05"
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
         countable_resources_individual: 1200
         countable_resources_couple: 0
@@ -5976,12 +6225,16 @@
         date_of_birth: "1950-03-02"
         citizenship_status: citizen
         state_of_residence: CO
-        is_fleeing_felon_or_probation_violator: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         marital_status: widowed
         receives_ssi: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         is_blind: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         countable_resources_individual: 1000
         countable_resources_couple: 0
         in_medical_institution: false
@@ -6025,9 +6278,13 @@
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
         state_of_residence: CO
-        is_head_of_household: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
         is_pregnant: false
-        is_enrolled_in_school: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         marital_status: single
         county_approved_living_arrangement: false
@@ -6035,12 +6292,16 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
-        is_indian_or_urban_indian: false
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
@@ -6060,16 +6321,22 @@
         citizenship_status: citizen
         state_of_residence: CO
         is_pregnant: false
-        is_enrolled_in_school: true
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         receives_title_iv_foster_adoption_kinship_payment: false
         receives_tanf_cash: true
-        is_indian_or_urban_indian: false
+        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
-        is_disqualified_for_intentional_program_violation: false
-        is_disqualified_drug_felony: false
-        is_fleeing_felon_or_probation_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
         is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
@@ -6130,29 +6397,40 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_homeless: true
-        is_head_of_household: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
         in_medical_institution: false
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         receives_title_iv_foster_adoption_kinship_payment: false
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
-        is_enrolled_in_school: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         is_destitute_migrant_or_seasonal_farmworker: false
         is_in_job_search_activity: true
         has_medical_statement_of_unfitness: false
@@ -6266,29 +6544,40 @@
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_homeless: true
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         in_medical_institution: false
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         receives_title_iv_foster_adoption_kinship_payment: false
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
-        is_enrolled_in_school: true
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         is_destitute_migrant_or_seasonal_farmworker: false
         is_in_job_search_activity: false
         has_additional_care_needs: false
@@ -6508,32 +6797,44 @@
         sex: female
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2015-03-01"
+        us_entry_date: "2015-03-01"
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_homeless: false
-        is_head_of_household: true
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
         in_medical_institution: false
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         receives_title_iv_foster_adoption_kinship_payment: false
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
-        is_enrolled_in_school: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         is_destitute_migrant_or_seasonal_farmworker: false
         is_in_job_search_activity: false
         has_medical_statement_of_unfitness: false
@@ -6662,32 +6963,44 @@
         sex: female
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2015-03-01"
+        us_entry_date: "2015-03-01"
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_homeless: false
-        is_head_of_household: false
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
         in_medical_institution: false
         is_pregnant: false
         is_blind: false
-        is_disabled_ssa: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
         receives_ssi: false
         receives_tanf_cash: false
         receives_general_assistance: false
         receives_state_cash_assistance: false
-        receives_social_security_disability: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
         receives_va_disability_benefits: false
         receives_title_iv_foster_adoption_kinship_payment: false
         is_medicare_entitled_or_enrolled: false
         mother_was_enrolled_in_medicaid_at_birth: false
-        is_veteran_or_active_duty: false
-        is_indian_or_urban_indian: false
-        is_enrolled_in_school: true
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
-        is_disqualified_drug_felony: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
         is_destitute_migrant_or_seasonal_farmworker: false
         is_in_job_search_activity: false
         has_additional_care_needs: false

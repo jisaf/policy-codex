@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether the client's declared citizenship must be verified for Adult Financial: for Aid to the Needy Disabled (under the Old Age Pension age), only when the claim is questionable."
-derived: [all, [not, af_is_oap_age], claims_citizenship, citizenship_attestation_is_questionable]
+derived: [all, [not, af_is_oap_age], is_us_citizen_or_national, citizenship_attestation_is_questionable]
 sources: [S886]
 implemented: engine
 tags: [verification, cash, and, immigration]

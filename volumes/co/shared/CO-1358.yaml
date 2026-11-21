@@ -1,16 +1,16 @@
 id: CO-1358
-name: Claims citizenship
-identifier: claims_citizenship
+name: "Is a U.S. citizen or national"
+identifier: is_us_citizen_or_national
 kind: derived
 type: yes/no
 scope: person
 program: All
-meaning: Whether the person has declared U.S. citizenship or nationality on the application, the declaration whose verification each program's citizenship rule governs.
+meaning: "Whether the person's citizenship_status is citizen or U.S. national, as declared on the application or verified: the declaration whose verification each program's citizenship rule governs, and the citizen-or-national arm of each program's status test."
 derived: [in, citizenship_status, [citizen, us_national]]
 sources: [S844, S854, S872]
 implemented: engine
 tags: [verification, immigration]
-rationale: 42 CFR 435.406(a)(1)(i) and 8.100.3.H.1 (S844, S854) attach verification to a declaration of citizenship, and Colorado Works verifies every client's citizenship (3.604.3.B.2.b, S872); the volume's citizenship items (ma_meets_citizenship_requirement, CO-509; snap_meets_citizenship_requirement, CO-309) test eligibility, not the declaration.
+rationale: "42 CFR 435.406(a)(1)(i) and 8.100.3.H.1 (S844, S854) attach verification to a declaration of citizenship, and Colorado Works verifies every client's citizenship (3.604.3.B.2.b, S872); the volume's citizenship items (ma_meets_citizenship_requirement, CO-509; snap_meets_citizenship_requirement, CO-309) test eligibility, not the declaration. Vocabulary fix round (U-3): renamed from claims_citizenship; the status rules of SNAP, Medicaid, Colorado Works, Adult Financial and CCCAP that restated the same test now read it."
 tests:
   - {id: CO-1358-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
   - {id: CO-1358-T2, as_of: "2026-10-01", given: {citizenship_status: us_national}, expect: true}

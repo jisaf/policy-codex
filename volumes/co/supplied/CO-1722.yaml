@@ -1,0 +1,14 @@
+id: CO-1722
+name: "CCCAP: is in a training or education eligible activity"
+identifier: cccap_is_in_education_or_training_activity
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "During the month the adult caretaker or teen parent is participating in training, basic education or post-secondary education that is a Low-Income Child Care eligible activity under 8 CCR 1403-1 3.103.OO, or, for a teen parent, attending school or teen parent education."
+precision: "College and university enrollment counts (post-secondary education). If not stated, cccap_caretaker_in_eligible_activity (CO-984) is unknown unless another activity is met."
+supplied_by: "Enrollment verification or training program schedule."
+sources: [S482]
+tags: [household]
+open: []
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-2): cccap_caretaker_in_eligible_activity (CO-984) read the shared secondary-school fact for 3.103.OO's 'training; basic education; or, post-secondary education', so a parent in college was not in an eligible activity (OQ-124)."

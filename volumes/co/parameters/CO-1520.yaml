@@ -6,7 +6,7 @@ type: money
 scope: global
 program: SunBucks
 meaning: The annual amount added to the 8-person HHS poverty guideline for each household member above 8, for the school meal guideline year (July 1 through June 30) the Income Eligibility Guidelines in effect on the date of application are computed from (7 CFR 292.5(b)).
-precision: Companion to sebt_poverty_guideline_table (CO-1519), dated the same way; the 2026 figure is ma_poverty_guideline_each_additional (CO-182, S55).
+precision: Companion to sebt_poverty_guideline_table (CO-1519), dated the same way; the 2026 figure is federal_poverty_guideline_annual_each_additional (CO-182, S55).
 versions:
   - from: "2026-07-01"
     to: "2027-07-01"

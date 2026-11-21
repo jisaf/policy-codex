@@ -7477,3 +7477,146 @@ Document: D-103
 10 CCR 2506-1, § 4.505.6.E. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
 
 > E. The local office shall provide an applicant non-citizen up to the thirtieth (30th) calendar day following the date of application to submit acceptable documentation of their non-citizen status or at least ten (10) calendar days from the date of the local office's request for an acceptable document.
+
+### S1150. Five-year bar exceptions: refugees, asylees, withholding, Cuban and Haitian entrants, Amerasians, veterans and active duty, freely associated states
+
+Document: D-25
+
+8 U.S.C. 1613(b). https://www.law.cornell.edu/uscode/text/8/1613
+
+> (b) Exceptions The limitation under subsection (a) shall not apply to the following aliens:
+> (1) Exception for refugees and asylees
+> (A) An alien who is admitted to the United States as a refugee under section 207 of the Immigration and Nationality Act [ 8 U.S.C. 1157 ].
+> (B) An alien who is granted asylum under section 208 of such Act [ 8 U.S.C. 1158 ].
+> (C) An alien whose deportation is being withheld under section 243(h) of such Act [ 8 U.S.C. 1253 ] (as in effect immediately before the effective date of section 307 of division C of Public Law 104–208 ) or section 241(b)(3) of such Act [ 8 U.S.C. 1231(b)(3) ] (as amended by section 305(a) of division C of Public Law 104–208 ).
+> (D) An alien who is a Cuban and Haitian entrant as defined in section 501(e) of the Refugee Education Assistance Act of 1980 .
+> (E) An alien admitted to the United States as an Amerasian immigrant as described in section 1612(a)(2)(A)(i)(V) [1] of this title.
+> (2) Veteran and active duty exception An alien who is lawfully residing in any State and is—
+> (A) a veteran (as defined in section 101, 1101, or 1301, or as described in section 107 of title 38 ) with a discharge characterized as an honorable discharge and not on account of alienage and who fulfills the minimum active-duty service requirements of section 5303A(d) of title 38 ,
+> (B) on active duty (other than active duty for training) in the Armed Forces of the United States, or
+> (C) the spouse or unmarried dependent child of an individual described in subparagraph (A) or (B) or the unremarried surviving spouse of an individual described in clause (i) or (ii) [2] who is deceased if the marriage fulfills the requirements of section 1304 of title 38 .
+> (3) Exception for citizens of freely associated states
+> An individual described in section 1612(b)(2)(G) of this title .
+
+### S1151. Colorado public assistance for qualified aliens: entry before August 22, 1996; the five-year bar and its federal exceptions
+
+Document: D-59
+
+C.R.S. 26-2-111.8(2)(a)-(b). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (2)  (a)    Entry  requirements.  A  qualified  alien  who  entered  the  United  States  before
+> August 22, 1996, and who meets the eligibility criteria specified for a particular public assistance
+> program shall be eligible to receive public assistance under the following programs as described
+> in this article:
+> (I)  The Colorado works program;
+> (II)  The old age pension;
+> (III)  Aid to the needy disabled; or
+> (IV)  Aid to the blind.
+> (b)    Five-year  bar  on  receipt  of  benefits.  A  qualified  alien  who  entered  the  United
+> States  on  or  after  August  22,  1996,  shall  be  barred  from  receiving  the  benefits  described  in
+> paragraph  (a)  of  this  subsection  (2)  for  a  period  of  five  years  after  the  date  of  entry  into  the
+> United  States,  unless  he  or  she  meets  the  exceptions  set  forth  in  the  federal  "Personal
+> Responsibility  and  Work  Opportunity  Reconciliation  Act  of  1996",  Public  Law  104-193,  as
+> amended.
+
+### S1152. Colorado SNAP self-employment: monthly income and allowable costs of doing business
+
+Document: D-82
+
+10 CCR 2506-1 4.403.11, 4.403.11.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> The amount of income considered from self-employment in the month of application
+> shall be the gross amount of anticipated income plus capital gains less anticipated costs
+> of doing business.
+>
+> A. To determine average income from self-employment, the worker first must
+> determine the gross amount of income, actual or anticipated, including capital
+> gains, for the period of time over which the self-employment income is being
+> considered. The allowable costs of producing the self-employment income are
+> excluded and the net income divided by the number of months over which the
+> income is intended to cover.
+
+### S1153. SNAP costs that are not allowable costs of producing self-employment income
+
+Document: D-15
+
+7 CFR 273.11(b)(2). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (2) In determining net self-employment income, the following items are not allowable costs of doing business:
+> (i) Net losses from previous periods;
+> (ii) Federal, State, and local income taxes, money set aside for retirement purposes, and other work-related personal expenses (such as transportation to and from work), as these expenses are accounted for by the 20 percent earned income deduction specified in § 273.9(d)(2);
+> (iii) Depreciation; and
+
+### S1154. Medical Assistance self-employment: net profit is gross income less the cost of doing business
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.K.9.a-b. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 9. An individual involved in a profit-making activity as a sole proprietor, partner in a partnership, independent contractor, or consultant shall be classified as self-employed.
+>
+> a. To determine the net profit of a self-employed applicant/client deduct the cost of doing business from the gross income. These business expenses include, but are not limited to:
+>
+> b. The following are not allowed as business expenses:
+>
+> i) Depreciation of equipment;
+>
+> 1) Exception: For the purpose of calculating MAGI-based income, depreciation of equipment is an allowable business expense if the equipment is not used for capital improvements.
+
+### S1155. Colorado Works self-employment: net profit and the cost of doing business
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.E.1.a, c (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> a. To determine the net profit of a self-employed client, deduct the cost of doing
+> business from the gross income.
+>
+> 1) These expenses include, but are not limited to, the rent of business
+> premises (if working out of the home, the cost of the room used when
+> doing business shall be used to determine the amount of the expense),
+> wholesale cost of merchandise, utilities, interest, taxes, labor, and
+> upkeep of necessary equipment.
+>
+> 2) Depreciation of equipment shall not be considered as a business
+> expense.
+>
+> c. The result net profit amount, secured after the appropriate deductions described
+> above, shall be treated as described in section 3.605.2.D, concerning earned
+> income.
+
+### S1156. Adult Financial self-employment: net profit and the cost of doing business
+
+Document: D-80
+
+9 CCR 2503-5 3.520.783.A-B (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. An individual involved in a profit making activity shall be classified as self-
+> employed.
+>
+> B. To determine the net profit of a self-employed client, client’s spouse, or
+> sponsor(s), deduct the cost of doing business from the gross income.
+>
+> 1. Cost of doing business expenses include, but are not limited to, the rent of
+> business premises, wholesale cost of merchandise, utilities, interest,
+> taxes, labor, and upkeep of necessary equipment.
+>
+> 2. Depreciation of equipment shall not be considered as a business expense.
+
+### S1157. CCCAP countable self-employment income: declared gross income minus verified business expenses
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.2 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2. Taxable gross income (declared gross income minus verified business
+> expenses from one’s own business, professional enterprise, or
+> partnership) from non-farm self-employment.
+>
+> a. These verified business expenses include, but are not limited to:
+>
+> b. The following are not allowed as business expenses from self-
+> employment:
+>
+> 1) Depreciation of equipment;
+
