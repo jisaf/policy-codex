@@ -6,8 +6,8 @@ type: month
 scope: person-month
 program: LEAP
 meaning: The November that begins the LEAP "Program Year" containing this month, under 9 CCR 2503-7 3.751.1 - the most recent November 1st on or before this month.
-precision: "The most recent month, on or before this month, whose calendar month number (P49) is leap_eligibility_period_start_month (CO-1806, November): this month less the months since that calendar month (engineering follow-up 3; before it, the item counted whole years from a fixed 2000-11 anchor because no operator read a month's calendar number). Modeled at scope person-month rather than the conventions.md-listed month scope, because src/engine/evaluate.ts's \"value\" function reads a month-scope identifier only from the case's stated monthFacts/monthFactsDefault (never evaluating a derived expression at that scope). The value does not in fact depend on the person; every person in a case gets the same answer for the same month."
-derived: [months_before, [case, [[">=", [month_of_year, [month]], leap_eligibility_period_start_month], ["-", [month_of_year, [month]], leap_eligibility_period_start_month]], [else, ["+", ["-", [month_of_year, [month]], leap_eligibility_period_start_month], 12]]], [month]]
+precision: "The most recent month, on or before this month, whose calendar month number is leap_eligibility_period_start_month (CO-1806, November), read with P50 (hard-coded numbers fix round; before it, the month less the months since that calendar month, and before engineering follow-up 3 a fixed 2000-11 anchor). Modeled at scope person-month rather than the conventions.md-listed month scope, because src/engine/evaluate.ts's \"value\" function reads a month-scope identifier only from the case's stated monthFacts/monthFactsDefault (never evaluating a derived expression at that scope). The value does not in fact depend on the person; every person in a case gets the same answer for the same month."
+derived: [latest_month_of_year, leap_eligibility_period_start_month, [month]]
 sources: [S510]
 implemented: engine
 tags: [household]

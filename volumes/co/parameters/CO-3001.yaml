@@ -1,0 +1,14 @@
+id: CO-3001
+name: LEAP heat portion of electric costs by dwelling type
+identifier: leap_electric_heat_portion_table
+kind: parameter
+type: table keyed by option
+scope: global
+program: LEAP
+meaning: "The share of an electric-heat household's total electric usage costs that 9 CCR 2503-7 3.758.47 Step C counts as heating, by the dwelling type of leap_electric_heat_dwelling_type (CO-1273): house (house or mobile home), attached (townhouse, duplex, triplex or fourplex), apartment (apartment, condominium, hotel, cabin or tiny home) and rv (RV, fifth wheel or camper)."
+precision: "A household that does not heat with electricity (not_electric) has no Step C adjustment and no row; leap_adjusted_heating_costs (CO-1280) applies its whole estimated costs. The rule section is marked \"[Rev. eff. 11/1/15]\" in the version effective November 1, 2025 (D-86)."
+versions:
+  - {from: "2015-11-01", value: {house: 0.62, attached: 0.48, apartment: 0.43, rv: 0.5}, source: S771}
+sources: [S771]
+tags: [household, income]
+rationale: "Hard-coded numbers audit H-3: leap_adjusted_heating_costs (CO-1280) wrote the four percentages into a case as literals; a table keyed by option holds them as one dated figure."
