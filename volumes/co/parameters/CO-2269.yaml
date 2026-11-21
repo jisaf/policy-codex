@@ -1,0 +1,12 @@
+id: CO-2269
+name: HCBS-BI injury age limit
+identifier: ma_hcbs_bi_injury_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which a brain injury must have occurred for the HCBS-BI target group - 10 CCR 2505-10 § 8.7101.E.2.a (\"a Brain Injury that occurred prior to the individual's 65th birthday\")."
+value: 65
+sources: [S1512]
+tags: [ma, hcbs, age]
+rationale: "OQ-210: ma_meets_hcbs_waiver_condition_criteria (CO-2270) needs the age as a parameter; ma_aged_age has the same value but means the age of being aged."

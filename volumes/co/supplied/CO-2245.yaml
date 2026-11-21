@@ -1,0 +1,12 @@
+id: CO-2245
+name: Joint ownership verification document received
+identifier: joint_ownership_verification_document_received
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether verification that the person owns real property jointly with another person has been received.
+supplied_by: Documents received and logged in the case file (deed, title record).
+sources: [S1515]
+tags: [verification, resources]
+rationale: "OQ-379: § 8.100.5.M.3.h.ii requires verification of joint ownership; no fact stated its receipt."

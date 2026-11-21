@@ -1,0 +1,12 @@
+id: CO-2256
+name: Medicaid residency parental-state age limit
+identifier: ma_residency_parental_state_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which an institutionalized person incapable of indicating intent takes the state of residence of the parents or guardian at the time of placement - 10 CCR 2505-10 § 8.100.3.B.2.a (\"under age 21 or who is age 21 or older and incapable of indicating intent before age 21\")."
+value: 21
+sources: [S1518]
+tags: [ma, age]
+rationale: "OQ-393: ma_institutionalized_state_of_residence (CO-2257) needs the age as a parameter; the other 21s in the volume have other meanings."

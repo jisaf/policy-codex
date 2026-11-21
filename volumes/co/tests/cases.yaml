@@ -32,6 +32,9 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
+        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
+        ma_claims_co_owner_hardship_for_real_property: false
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
@@ -293,6 +296,9 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
+        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
+        ma_claims_co_owner_hardship_for_real_property: false
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -1436,6 +1442,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": true}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": false}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}
@@ -1586,6 +1594,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": false}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": false}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}
@@ -1736,6 +1746,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": false}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": true}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}
@@ -1888,6 +1900,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": false}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": false}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}
@@ -2032,6 +2046,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": false}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": false}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}
@@ -2119,6 +2135,9 @@
   persons:
     p1:
       facts:
+        electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
+        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
+        ma_claims_co_owner_hardship_for_real_property: false
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
@@ -2379,6 +2398,9 @@
         pension_income: 610
     p2:
       facts:
+        electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
+        ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
+        ma_claims_co_owner_hardship_for_real_property: false
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
@@ -3491,6 +3513,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-11": false}
       ma_trust_verification_is_pending: {"2026-11": false}
       ma_annuity_verification_is_pending: {"2026-11": false}
+      ma_sale_efforts_verification_is_pending: {"2026-11": false}
+      ma_joint_ownership_verification_is_pending: {"2026-11": false}
       chp_earned_income_verification_is_pending: {"2026-11": false}
       snap_identity_verification_is_pending: {"2026-11": false}
       snap_citizenship_verification_is_pending: {"2026-11": false}
@@ -3645,6 +3669,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-11": false}
       ma_trust_verification_is_pending: {"2026-11": false}
       ma_annuity_verification_is_pending: {"2026-11": false}
+      ma_sale_efforts_verification_is_pending: {"2026-11": false}
+      ma_joint_ownership_verification_is_pending: {"2026-11": false}
       chp_earned_income_verification_is_pending: {"2026-11": false}
       snap_identity_verification_is_pending: {"2026-11": false}
       snap_citizenship_verification_is_pending: {"2026-11": false}
@@ -3792,6 +3818,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-11": false}
       ma_trust_verification_is_pending: {"2026-11": false}
       ma_annuity_verification_is_pending: {"2026-11": false}
+      ma_sale_efforts_verification_is_pending: {"2026-11": false}
+      ma_joint_ownership_verification_is_pending: {"2026-11": false}
       chp_earned_income_verification_is_pending: {"2026-11": false}
       snap_identity_verification_is_pending: {"2026-11": false}
       snap_citizenship_verification_is_pending: {"2026-11": false}
@@ -3944,6 +3972,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-11": false}
       ma_trust_verification_is_pending: {"2026-11": false}
       ma_annuity_verification_is_pending: {"2026-11": false}
+      ma_sale_efforts_verification_is_pending: {"2026-11": false}
+      ma_joint_ownership_verification_is_pending: {"2026-11": false}
       chp_earned_income_verification_is_pending: {"2026-11": false}
       snap_identity_verification_is_pending: {"2026-11": false}
       snap_citizenship_verification_is_pending: {"2026-11": false}
@@ -4088,6 +4118,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-11": false}
       ma_trust_verification_is_pending: {"2026-11": false}
       ma_annuity_verification_is_pending: {"2026-11": false}
+      ma_sale_efforts_verification_is_pending: {"2026-11": false}
+      ma_joint_ownership_verification_is_pending: {"2026-11": false}
       chp_earned_income_verification_is_pending: {"2026-11": false}
       snap_identity_verification_is_pending: {"2026-11": false}
       snap_citizenship_verification_is_pending: {"2026-11": false}
@@ -7638,6 +7670,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": false}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": false}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}
@@ -7739,6 +7773,8 @@
       ma_asset_transfers_verification_is_pending: {"2026-10": false}
       ma_trust_verification_is_pending: {"2026-10": false}
       ma_annuity_verification_is_pending: {"2026-10": false}
+      ma_sale_efforts_verification_is_pending: {"2026-10": false}
+      ma_joint_ownership_verification_is_pending: {"2026-10": false}
       chp_earned_income_verification_is_pending: {"2026-10": false}
       snap_identity_verification_is_pending: {"2026-10": false}
       snap_citizenship_verification_is_pending: {"2026-10": false}

@@ -7,7 +7,7 @@ options: [none, ebd, cmhs, sls, dd, ces, cwchn, bi, cih, chrp]
 scope: person
 program: Medicaid
 meaning: Which Home and Community-Based Services waiver's Target Group Criteria (10 CCR 2505-10 § 8.7101, current text D-75) the Case Management Agency's functional assessment finds this person meets - Elderly, Blind and Disabled (ebd, § 8.7101.G); Community Mental Health Supports (cmhs, F); Supported Living Services (sls, I); Developmental Disabilities (dd, J); Children's Extensive Support (ces, B); Children with Complex Health Needs (cwchn, D); Brain Injury (bi, E); Complementary and Integrative Health (cih, H); Children's Habilitation Residential Program (chrp, C) - or none. These nine are the waivers the current § 8.7101 states.
-precision: A person may meet more than one waiver's target group in fact, but 8.7100.C.1.o limits enrollment to one waiver at a time, so this fact carries the single waiver the case management agency has certified.
+precision: "A person may meet more than one waiver's target group in fact, but 8.7100.C.1.o limits enrollment to one waiver at a time, so this fact carries the single waiver the case management agency has certified. The waiver's age, diagnosis and setting criteria are tested by ma_hcbs_waiver_age_criteria_met (CO-1164) and ma_meets_hcbs_waiver_condition_criteria (CO-2270), and its level of care by CO-1178 (OQ-210)."
 supplied_by: Case Management Agency's functional assessment and Target Group Criteria certification (10 CCR 2505-10 § 8.7101).
 sources: [S375, S628, S629, S630, S631, S632, S633, S634, S635, S636, S637]
 tags: [ma, ltc, hcbs]

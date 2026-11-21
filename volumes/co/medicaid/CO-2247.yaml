@@ -1,0 +1,18 @@
+id: CO-2247
+name: "Medicaid: verification of efforts to sell real property is pending"
+identifier: ma_sale_efforts_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether the person must verify this quarter's efforts to sell real property for Medical Assistance and the verification has not been received.
+derived: [all, ma_requires_verification_of_sale_efforts, [not, sale_efforts_verification_document_received]]
+sources: [S1514]
+implemented: engine
+tags: [ma, resources, verification]
+rationale: "OQ-379: the pending count (CO-1411) needs one item per element."
+tests:
+  - {id: CO-2247-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_requires_verification_of_sale_efforts: true, sale_efforts_verification_document_received: false}, expect: true}
+  - {id: CO-2247-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_requires_verification_of_sale_efforts: true, sale_efforts_verification_document_received: true}, expect: false}
+  - {id: CO-2247-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_requires_verification_of_sale_efforts: false}, expect: false}

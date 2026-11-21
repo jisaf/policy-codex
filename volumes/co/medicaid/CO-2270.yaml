@@ -1,0 +1,26 @@
+id: CO-2270
+name: "Medicaid: meets the designated HCBS waiver's condition criteria"
+identifier: ma_meets_hcbs_waiver_condition_criteria
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person meets the target group criteria other than age and level of care of the HCBS waiver the Case Management Agency designated (meets_hcbs_waiver_target_group), per 10 CCR 2505-10 § 8.7101: CES - a developmental disability and the CES setting and member criteria; CHRP - a developmental disability or a serious emotional disturbance; CwCHN - none beyond the level of care; BI - a brain injury that occurred before the 65th birthday; CMHS - a severe and persistent mental health need; EBD - one of the EBD subgroups; CIH - a qualifying condition with inability to ambulate independently; SLS - an intellectual or developmental disability, no need for continuous 24-hour supervision, and an SLS setting; DD - an intellectual or developmental disability and a need for access to 24-hour services and supports. False when no waiver is designated."
+precision: "The age criteria are ma_hcbs_waiver_age_criteria_met (CO-1164) and the level of care ma_meets_designated_waiver_level_of_care (CO-1178); CwCHN's hospital level-of-care conditions are part of the level of care. BI's onset is compared as the whole years from birth to the injury date."
+derived: [case, [[=, meets_hcbs_waiver_target_group, ces], [all, ma_has_developmental_disability, ma_meets_ces_setting_and_member_criteria]], [[=, meets_hcbs_waiver_target_group, chrp], [any, ma_has_developmental_disability, ma_has_serious_emotional_disturbance]], [[=, meets_hcbs_waiver_target_group, cwchn], true], [[=, meets_hcbs_waiver_target_group, bi], [all, ma_has_brain_injury, [<, [years_between, date_of_birth, ma_brain_injury_date], ma_hcbs_bi_injury_age_limit]]], [[=, meets_hcbs_waiver_target_group, cmhs], ma_has_severe_and_persistent_mental_health_need], [[=, meets_hcbs_waiver_target_group, ebd], [not, [=, ma_hcbs_ebd_subgroup, none]]], [[=, meets_hcbs_waiver_target_group, cih], ma_has_cih_qualifying_condition_and_cannot_ambulate], [[=, meets_hcbs_waiver_target_group, sls], [all, ma_has_developmental_disability, [not, ma_requires_continuous_twenty_four_hour_supervision], ma_resides_in_sls_setting]], [[=, meets_hcbs_waiver_target_group, dd], [all, ma_has_developmental_disability, ma_requires_twenty_four_hour_services_and_supports]], [else, false]]
+sources: [S1511, S1512, S1513]
+implemented: engine
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the diagnoses, settings and the BI onset were folded into the Case Management Agency's designation; ma_hcbs_waiver_eligible (CO-653) now reads them."
+tests:
+  - {id: CO-2270-T1, as_of: "2026-10-01", title: "CES with DD and the member criteria", given: {meets_hcbs_waiver_target_group: ces, ma_has_developmental_disability: true, ma_meets_ces_setting_and_member_criteria: true}, expect: true}
+  - {id: CO-2270-T2, as_of: "2026-10-01", title: "CHRP through serious emotional disturbance", given: {meets_hcbs_waiver_target_group: chrp, ma_has_developmental_disability: false, ma_has_serious_emotional_disturbance: true}, expect: true}
+  - {id: CO-2270-T3, as_of: "2026-10-01", title: "BI from an injury at 40", given: {meets_hcbs_waiver_target_group: bi, ma_has_brain_injury: true, date_of_birth: "1970-05-01", ma_brain_injury_date: "2010-06-01"}, expect: true}
+  - {id: CO-2270-T4, as_of: "2026-10-01", title: "BI from an injury at 66", given: {meets_hcbs_waiver_target_group: bi, ma_has_brain_injury: true, date_of_birth: "1950-05-01", ma_brain_injury_date: "2016-06-01"}, expect: false}
+  - {id: CO-2270-T5, as_of: "2026-10-01", title: "SLS resident needing continuous supervision", given: {meets_hcbs_waiver_target_group: sls, ma_has_developmental_disability: true, ma_requires_continuous_twenty_four_hour_supervision: true, ma_resides_in_sls_setting: true}, expect: false}
+  - {id: CO-2270-T6, as_of: "2026-10-01", title: "DD with 24-hour supports", given: {meets_hcbs_waiver_target_group: dd, ma_has_developmental_disability: true, ma_requires_twenty_four_hour_services_and_supports: true}, expect: true}
+  - {id: CO-2270-T7, as_of: "2026-10-01", title: "EBD with no subgroup", given: {meets_hcbs_waiver_target_group: ebd, ma_hcbs_ebd_subgroup: none}, expect: false}
+  - {id: CO-2270-T8, as_of: "2026-10-01", title: "CwCHN", given: {meets_hcbs_waiver_target_group: cwchn}, expect: true}
+  - {id: CO-2270-T9, as_of: "2026-10-01", title: "CMHS", given: {meets_hcbs_waiver_target_group: cmhs, ma_has_severe_and_persistent_mental_health_need: true}, expect: true}
+  - {id: CO-2270-T10, as_of: "2026-10-01", title: "CIH", given: {meets_hcbs_waiver_target_group: cih, ma_has_cih_qualifying_condition_and_cannot_ambulate: false}, expect: false}
+  - {id: CO-2270-T11, as_of: "2026-10-01", given: {meets_hcbs_waiver_target_group: none}, expect: false}

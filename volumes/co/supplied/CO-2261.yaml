@@ -1,0 +1,12 @@
+id: CO-2261
+name: Has a brain injury
+identifier: ma_has_brain_injury
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person has been determined to have a Brain Injury: an injury to the brain of traumatic or acquired origin resulting in residual physical, cognitive, emotional or behavioral difficulties of a non-progressive nature, within the broad diagnoses of the current ICD (10 CCR 2505-10 § 8.7101.E.2.a.i)."
+supplied_by: The Professional Medical Information Page and the Case Management Agency's assessment.
+sources: [S1512]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the HCBS-BI target group's diagnosis had no fact."

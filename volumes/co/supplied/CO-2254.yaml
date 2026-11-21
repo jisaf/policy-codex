@@ -1,0 +1,12 @@
+id: CO-2254
+name: State where the institution is located
+identifier: ma_institution_state
+kind: supplied
+type: text
+scope: person
+program: Medicaid
+meaning: "The state, as a two-letter code, in which the institution where the person resides is located - where the person is physically present (10 CCR 2505-10 § 8.100.3.B.2; 42 CFR 435.403(h)(4), (m))."
+supplied_by: The facility address in the case record.
+sources: [S1518]
+tags: [ma]
+rationale: "OQ-393: no fact stated the institution's state, which is the default state of residence for an institutionalized person incapable of indicating intent."

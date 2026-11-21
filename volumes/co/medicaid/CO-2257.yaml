@@ -1,0 +1,20 @@
+id: CO-2257
+name: "Medicaid: state of residence of an institutionalized person incapable of indicating intent"
+identifier: ma_institutionalized_state_of_residence
+kind: derived
+type: text
+scope: person
+program: Medicaid
+meaning: "The state of residence, as a two-letter code, of a person in an institution who is incapable of indicating intent (10 CCR 2505-10 § 8.100.3.B.2; 42 CFR 435.403(e), (h)(3)-(4)): the state that arranged the placement, when a state placed the person in an institution in another state (B.2.c); otherwise, for a person under 21 or who became incapable before 21, the state of the parents or guardian at the time of placement (B.2.a); otherwise the state where the institution is located (B.2 and B.2.c, where the person is physically present)."
+precision: "For a person who became incapable at or after 21, § 8.100.3.B.2.b names 'the state in which the person was living when he or she became incapable of indicating intent', while B.2.c and 42 CFR 435.403(h)(4) name the state where the person is placed and physically present; the draft follows B.2.c and the federal rule (OQ-472)."
+derived: [case, [[not, [=, ma_institutional_placement_arranging_state, none]], ma_institutional_placement_arranging_state], [[any, [<, age, ma_residency_parental_state_age_limit], ma_became_incapable_of_indicating_intent_before_age_twenty_one], ma_parent_or_guardian_state_at_placement], [else, ma_institution_state]]
+sources: [S1518]
+implemented: engine
+tags: [ma]
+open: [OQ-472]
+rationale: "OQ-393: Medicaid's residency rules for institutionalized persons incapable of indicating intent were not modeled."
+tests:
+  - {id: CO-2257-T1, as_of: "2026-10-01", title: "Placed in Colorado by Kansas", given: {ma_institutional_placement_arranging_state: KS}, expect: KS}
+  - {id: CO-2257-T2, as_of: "2026-10-01", title: "A 16-year-old placed privately; parents lived in Utah at placement", given: {ma_institutional_placement_arranging_state: none, date_of_birth: "2010-01-01", ma_parent_or_guardian_state_at_placement: UT}, expect: UT}
+  - {id: CO-2257-T3, as_of: "2026-10-01", title: "A 40-year-old incapable since birth; parents lived in Colorado at placement", given: {ma_institutional_placement_arranging_state: none, date_of_birth: "1986-01-01", ma_became_incapable_of_indicating_intent_before_age_twenty_one: true, ma_parent_or_guardian_state_at_placement: CO}, expect: CO}
+  - {id: CO-2257-T4, as_of: "2026-10-01", title: "A 75-year-old incapable since a stroke, in a Colorado facility", given: {ma_institutional_placement_arranging_state: none, date_of_birth: "1951-01-01", ma_became_incapable_of_indicating_intent_before_age_twenty_one: false, ma_institution_state: CO}, expect: CO}

@@ -1,0 +1,12 @@
+id: CO-2253
+name: Parent's or guardian's state at placement
+identifier: ma_parent_or_guardian_state_at_placement
+kind: supplied
+type: text
+scope: person
+program: Medicaid
+meaning: "The state of residence, as a two-letter code, of the person's parents or legally appointed guardian when the person was placed in the institution (10 CCR 2505-10 § 8.100.3.B.2.a; 42 CFR 435.403(h)(3)(ii), (i)(3)(i))."
+supplied_by: The placement record and the parents' or guardian's address in the case file.
+sources: [S1518]
+tags: [ma]
+rationale: "OQ-393: no fact stated the parents' or guardian's state at placement."

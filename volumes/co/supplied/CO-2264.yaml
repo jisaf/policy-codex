@@ -1,0 +1,13 @@
+id: CO-2264
+name: HCBS-EBD subgroup
+identifier: ma_hcbs_ebd_subgroup
+kind: supplied
+type: one of
+options: [none, aged, physically_disabled_or_blind, hiv_aids]
+scope: person
+program: Medicaid
+meaning: "Which HCBS-EBD target group definition the Case Management Agency determines the person meets (10 CCR 2505-10 § 8.7101.G.2.a-c): functionally impaired elderly (aged), physically disabled or blind adult, a person with HIV/AIDS, or none."
+supplied_by: The Case Management Agency's assessment.
+sources: [S1512]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: EBD's subgroups, each with its own age range, were collapsed to an 18-or-older floor."

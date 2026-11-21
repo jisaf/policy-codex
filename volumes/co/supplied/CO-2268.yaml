@@ -1,0 +1,12 @@
+id: CO-2268
+name: Requires access to 24-hour services and supports
+identifier: ma_requires_twenty_four_hour_services_and_supports
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person requires access to 24-hour services and supports to meet daily living needs that allow the person to live safely and participate in the community (10 CCR 2505-10 § 8.7101.J.2.b)."
+supplied_by: The Case Management Agency's assessment.
+sources: [S1513]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the HCBS-DD support criterion had no fact."

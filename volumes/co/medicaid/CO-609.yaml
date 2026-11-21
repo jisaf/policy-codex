@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: Whether this person's ma_ssi_countable_income for the month does not exceed the SSI Federal Benefit Rate for their ma_ssi_household_size - the income test 10 CCR 2505-10 8.100.6.C.1.a-b and 8.100.6.K.3-4 apply for SSI/OAP eligibility.
-derived: [<=, ma_ssi_countable_income, [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]
+derived: [<=, ma_ssi_countable_income, ma_ssi_income_standard]
 sources: [S303, S319]
 implemented: engine
 tags: [ma, non_magi, income]

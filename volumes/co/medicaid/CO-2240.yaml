@@ -1,0 +1,16 @@
+id: CO-2240
+name: "Medicaid: SSI income standard for the person's household size"
+identifier: ma_ssi_income_standard
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The SSI Federal Benefit Rate that applies to the person's SSI-related income test: the couple rate for a person living with a spouse (ma_ssi_household_size of 2), otherwise the individual rate (10 CCR 2505-10 §§ 8.100.6.C.1.a-b, 8.100.6.K.3-4)."
+derived: [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]
+sources: [S308]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "OQ-374: ma_meets_ssi_income_standard (CO-609) and the aged, blind and disabled reasonable compatibility test (CO-1640) compare with the same standard; one item states it."
+tests:
+  - {id: CO-2240-T1, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_ssi_federal_benefit_rate_couple: 1491}, given: {ma_ssi_household_size: 2}, expect: 1491}
+  - {id: CO-2240-T2, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_ssi_federal_benefit_rate_couple: 1491}, given: {ma_ssi_household_size: 1}, expect: 994}

@@ -1,0 +1,17 @@
+id: CO-2248
+name: "Medicaid: requires verification of joint ownership"
+identifier: ma_requires_verification_of_joint_ownership
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether an aged, blind or disabled person must verify joint ownership of real property: the person alleges that selling it would cause undue hardship to the co-owner through loss of housing (10 CCR 2505-10 § 8.100.5.M.3.h.ii)."
+derived: [all, ma_is_aged_blind_or_disabled, ma_claims_co_owner_hardship_for_real_property]
+sources: [S1515]
+implemented: engine
+tags: [ma, resources, verification]
+rationale: "OQ-379: verification of joint ownership was not modeled."
+tests:
+  - {id: CO-2248-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_claims_co_owner_hardship_for_real_property: true}, expect: true}
+  - {id: CO-2248-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_claims_co_owner_hardship_for_real_property: false}, expect: false}
+  - {id: CO-2248-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: false}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-2246
+name: "Medicaid: requires verification of efforts to sell real property"
+identifier: ma_requires_verification_of_sale_efforts
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether an aged, blind or disabled person must verify continuing efforts to sell real property: the person's excess real property is left out of countable resources while reasonable efforts to sell it are unsuccessful, and the client must submit verification of these efforts each quarter (10 CCR 2505-10 § 8.100.5.M.2.b.v)."
+derived: [all, ma_is_aged_blind_or_disabled, ma_excess_real_property_is_for_sale]
+sources: [S1514]
+implemented: engine
+tags: [ma, resources, verification]
+rationale: "OQ-379: the quarterly verification of efforts to sell real property was not modeled."
+tests:
+  - {id: CO-2246-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_excess_real_property_is_for_sale: true}, expect: true}
+  - {id: CO-2246-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_excess_real_property_is_for_sale: false}, expect: false}
+  - {id: CO-2246-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: false}, expect: false}

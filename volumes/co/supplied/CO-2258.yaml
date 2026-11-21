@@ -1,0 +1,12 @@
+id: CO-2258
+name: Has an intellectual or developmental disability
+identifier: ma_has_developmental_disability
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person has been determined to have an intellectual or Developmental Disability (for a child under five, a Developmental Delay) pursuant to 10 CCR 2505-10 § 8.607, as the HCBS-CES, HCBS-CHRP, HCBS-SLS and HCBS-DD target groups require (§ 8.7101.B.2.b, C.2.b.i.1, I.2.a, J.2.a)."
+supplied_by: The Case Management Agency's developmental disability determination.
+sources: [S1511, S1513]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the waivers' diagnosis criteria were folded into the designation; no fact stated them."

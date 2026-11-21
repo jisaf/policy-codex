@@ -1,0 +1,12 @@
+id: CO-2263
+name: Has a severe and persistent mental health need
+identifier: ma_has_severe_and_persistent_mental_health_need
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is experiencing a severe and persistent mental health need that requires assistance with one or more activities of daily living (10 CCR 2505-10 § 8.7101.F.2.a): currently, or within the year before the assessment, a DSM-5 mental, behavioral or emotional disorder that is episodic, recurrent or persistent and has resulted in functional impairment substantially limiting one or more major life activities - not an intellectual or developmental disorder, and not a substance use disorder without a co-occurring severe and persistent mental health need."
+supplied_by: The Case Management Agency's assessment and the diagnosis on the Professional Medical Information Page.
+sources: [S1512]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the HCBS-CMHS target group's diagnosis had no fact."

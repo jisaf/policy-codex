@@ -1,0 +1,12 @@
+id: CO-2265
+name: Has an HCBS-CIH qualifying condition and cannot ambulate independently
+identifier: ma_has_cih_qualifying_condition_and_cannot_ambulate
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person has a qualifying condition of a spinal cord injury (traumatic or nontraumatic), multiple sclerosis, a Brain Injury, spina bifida, muscular dystrophy or cerebral palsy, and as a result cannot ambulate independently: does not walk and uses a wheelchair or scooter in all settings, or walks only with a walker or cane, or with touch or stand-by assistance, in all settings (10 CCR 2505-10 § 8.7101.H.2.b-c)."
+supplied_by: The Case Management Agency's Level of Care Screen.
+sources: [S1513]
+tags: [ma, hcbs, disability]
+rationale: "OQ-210: the HCBS-CIH target group's condition had no fact."

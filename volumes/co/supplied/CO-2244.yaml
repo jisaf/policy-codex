@@ -1,0 +1,12 @@
+id: CO-2244
+name: Claims undue hardship to a co-owner of real property
+identifier: ma_claims_co_owner_hardship_for_real_property
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person alleges that selling real property the person owns jointly would cause undue hardship to the co-owner through loss of housing (10 CCR 2505-10 § 8.100.5.M.3.h)."
+supplied_by: The applicant's signed statement in the case file.
+sources: [S1515]
+tags: [ma, resources, verification]
+rationale: "OQ-379: the allegation requires verification of joint ownership; no fact stated it."
