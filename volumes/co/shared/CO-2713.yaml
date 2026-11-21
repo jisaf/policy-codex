@@ -11,6 +11,7 @@ derived: [filter, [persons], [rel, [sponsored_by], [P]]]
 sources: [S1619, S1627, S1632, S1636]
 implemented: engine
 tags: [immigration]
+nearest: [CO-1926]
 rationale: "Dual-entry audit 1.5: twelve facts about the sponsor and the sponsor's spouse were entered on each sponsored non-citizen. No item stated who the sponsor is; every sponsor rule now reads the sponsors through this group."
 tests:
   - {id: CO-2713-T1, as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[sponsored_by, p1, p2], [parent, p3, p1]], expect: [p2]}
