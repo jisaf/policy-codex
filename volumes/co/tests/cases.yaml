@@ -7627,3 +7627,275 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+
+- id: CO-73
+  title: "Community engagement at a March 2027 application: an adult who meets it by combining work and community service, one who does not, and a parent of a young child who is excluded"
+  # Open-question sweep (OQ-65). Three unrelated adults in one rental (each their own tax unit)
+  # apply on 2027-03-02, after the community engagement requirement of 42 CFR 435.550-435.560
+  # attaches to the Adults group (2027-01-01). Colorado's look-back at application is taken as one
+  # month (OQ-410), so February 2027 is assessed. Every adult is a citizen and a Colorado resident.
+  # p1 (35) worked 60 paid hours in February for $450 and did 25 hours of community service:
+  #   85 combined hours >= 80 -> February met -> status met. MAGI income $450 in March, household of
+  #   one: 450 / (15,960 / 12 = 1,330) = 0.338 <= 1.33 -> Adults group, eligible.
+  # p2 (40) worked 30 paid hours in February for $300: 30 < 80, not enrolled, $300 < 7.25 x 80 =
+  #   $580, not a seasonal worker, no exception or exclusion -> February not met -> status not_met.
+  #   He meets every Adults criterion (0.226 of poverty) but the condition -> category none, status
+  #   ineligible_community_engagement.
+  # p3 (30) is the parent of p4 (5), who relies on her for care: a specified excluded individual
+  #   (435.554(c)(3)) in March -> status excluded. Her household (p3, p4) has $1,400 a month:
+  #   1,400 / (21,640 / 12 = 1,803.33) = 0.776, over the Parents and Caretaker Relatives 68% even
+  #   with the 5% disregard (the disregard applies only at her highest standard, 133%), so she is in
+  #   the Adults group (her child has Medicaid-type coverage, MEC) and eligible.
+  # p4 (5) is under 19: Children's category; the requirement does not apply to the Children's group.
+  as_of: "2027-03-15"
+  relationships:
+    - [parent, p3, p4]
+    - [tax_filer, p3, p4]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        lottery_gambling_winnings_amount: 0
+        date_of_birth: "1991-05-10"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2027-03-02"
+        attested_household_income_pct_fpl: 0.34
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: application
+        ma_is_indian: false
+        ma_is_guardian_of_dependent_child_or_disabled_individual: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        wages_gross: 450
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+      months:
+        "2027-02": {hours_worked: 60, ma_community_service_hours: 25}
+    p2:
+      relationships: []
+      facts:
+        lottery_gambling_winnings_amount: 0
+        date_of_birth: "1986-09-20"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2027-03-02"
+        attested_household_income_pct_fpl: 0.23
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: application
+        ma_is_indian: false
+        ma_is_guardian_of_dependent_child_or_disabled_individual: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        wages_gross: 300
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+      months:
+        "2027-02": {hours_worked: 30}
+    p3:
+      facts:
+        lottery_gambling_winnings_amount: 0
+        date_of_birth: "1996-11-02"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: true
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2027-03-02"
+        attested_household_income_pct_fpl: 0.78
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: application
+        ma_is_indian: false
+        ma_is_guardian_of_dependent_child_or_disabled_individual: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        wages_gross: 1400
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+        hours_worked: 160
+    p4:
+      facts:
+        lottery_gambling_winnings_amount: 0
+        date_of_birth: "2021-08-14"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        is_required_to_file_tax_return: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2027-03-02"
+        attested_household_income_pct_fpl: 0.78
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        ma_relies_on_another_for_care: true
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+  expect:
+    p1:
+      ma_community_engagement_activity_hours: {"2027-02": 85}
+      ma_community_engagement_status: {"2027-03": met}
+      ma_magi_category: {"2027-03": adult}
+      ma_magi_eligibility_status: {"2027-03": eligible}
+    p2:
+      ma_community_engagement_activity_hours: {"2027-02": 30}
+      ma_meets_community_engagement_for_month: {"2027-02": false}
+      ma_community_engagement_status: {"2027-03": not_met}
+      ma_is_adult_category: {"2027-03": true}
+      ma_magi_category: {"2027-03": none}
+      ma_magi_eligibility_status: {"2027-03": ineligible_community_engagement}
+    p3:
+      ma_is_specified_excluded_individual: {"2027-03": true}
+      ma_community_engagement_status: {"2027-03": excluded}
+      ma_magi_household_size: 2
+      ma_magi_category: {"2027-03": adult}
+      ma_magi_eligibility_status: {"2027-03": eligible}
+    p4:
+      ma_magi_category: {"2027-03": child}
+      ma_magi_eligibility_status: {"2027-03": eligible}
