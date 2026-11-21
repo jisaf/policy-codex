@@ -12,7 +12,8 @@ sources: [S711, S1011]
 open: [OQ-357]
 implemented: engine
 tags: [cash, oap, and, tanf]
-rationale: "No existing item applies the Adult Financial bar on Colorado Works recipients (phase-8 review K-3); af_category (CO-953) and af_and_so_eligible (CO-1203) need it. Reads the Colorado Works outcome cw_eligibility_status cross-program rather than restating the Colorado Works tests, since 3.520.61.F refers to Colorado Works eligibility as Colorado Works determines it. Answers OQ-117, whose Aid to the Blind carve-out the general bar of 3.520.61.F supersedes."
+accepts_from: [cw_eligibility_status]
+rationale: "No existing item applies the Adult Financial bar on Colorado Works recipients (phase-8 review K-3); af_category (CO-953) and af_and_so_eligible (CO-1203) need it. Reads the Colorado Works outcome cw_eligibility_status cross-program rather than restating the Colorado Works tests, since 3.520.61.F refers to Colorado Works eligibility as Colorado Works determines it. Answers OQ-117, whose Aid to the Blind carve-out the general bar of 3.520.61.F supersedes. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Adult Financial rule names the other program's result (the Colorado Works bar of 3.520.61.F; the HCBS target-group screen of 3.570, S712)."
 tests:
   - {id: CO-1511-T1, title: "Receiving Colorado Works", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: true}, expect: true}
   - {id: CO-1511-T2, title: "Not receiving, but eligible for Colorado Works", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: eligible}, expect: true}

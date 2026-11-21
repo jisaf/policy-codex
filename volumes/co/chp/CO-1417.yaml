@@ -11,7 +11,8 @@ derived: ["+", ma_pending_status_verification_count, [case, [ma_ssn_verification
 sources: [S869, S868]
 implemented: engine
 tags: [verification, chp]
-rationale: No existing item counts a person's outstanding CHP+ verifications.
+accepts_from: [ma_age_verification_is_pending, ma_household_composition_verification_is_pending, ma_pending_status_verification_count, ma_pregnancy_verification_is_pending, ma_residency_verification_is_pending, ma_ssn_verification_is_pending]
+rationale: "No existing item counts a person's outstanding CHP+ verifications. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid."
 tests:
   - {id: CO-1417-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: true, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 1}, expect: 2}
   - {id: CO-1417-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: false, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 0}, expect: 0}

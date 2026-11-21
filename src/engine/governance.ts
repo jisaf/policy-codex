@@ -1,5 +1,6 @@
 import type { LedgerIndex } from "./ledger-index";
 import { buildGraph } from "./graph";
+import { usesOf } from "./check";
 import { compact } from "./render";
 import { tagIds } from "./tags";
 import type { Expr, Item, VolumeMeta } from "./types";
@@ -318,6 +319,39 @@ export function governance(
         "versions.gap",
         `No version is in force between ${prev.to} and ${next.from}`,
       );
+    }
+  }
+
+  // 8a. A rule reads another program's facts only when it says so. A derived
+  //     item of one program that reads a supplied fact or derived item owned
+  //     by a different program (not a shared, program-All item) is a
+  //     cross-program read: legitimate when the rule names the other
+  //     program's result (CHP+ reading the MAGI household, CCCAP reading
+  //     Colorado Works eligibility), a definitional borrow otherwise. The item
+  //     acknowledges the legitimate ones by listing them in `accepts_from`.
+  //     A warning, not an error: the reader decides which kind it is.
+  if (it.kind === "derived" && it.derived !== undefined && it.derived !== null && meta.programs) {
+    const accepted = new Set(it.accepts_from ?? []);
+    let refs: string[] = [];
+    try { refs = usesOf(ix, it.derived); } catch { refs = []; }
+    for (const r of [...new Set(refs)].sort()) {
+      const dep = ix.byIdentifier.get(r);
+      if (!dep || dep.id === it.id) continue;
+      if (dep.kind !== "supplied" && dep.kind !== "derived") continue;
+      if (dep.program === "All" || dep.program === it.program) continue;
+      if (accepted.has(r)) continue;
+      warn(
+        "read.cross_program",
+        `${it.program} rule reads ${dep.program}'s ${r} (${dep.id}); ` +
+          "list it in accepts_from if the rule names that program's result, " +
+          "otherwise give this program its own fact",
+      );
+    }
+  }
+  for (const r of it.accepts_from ?? []) {
+    const dep = ix.byIdentifier.get(r);
+    if (!dep) {
+      warn("read.cross_program", `accepts_from names ${r}, which is not in the ledger`);
     }
   }
 

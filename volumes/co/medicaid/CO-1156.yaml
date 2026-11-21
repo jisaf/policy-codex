@@ -14,7 +14,8 @@ sources: [S617, S618, S619, S620, S621, S665, S667]
 open: [OQ-206]
 implemented: engine
 tags: [ma, oap, non_magi]
-rationale: "No existing item states the Old Age Pension Health Care Program; the Adult Financial chapter decides the pension (af_category) and the Medicaid chapter decides SSI-related Medicaid, but nothing reports the state-only medical program between them. Declared an outcome."
+accepts_from: [af_category]
+rationale: "No existing item states the Old Age Pension Health Care Program; the Adult Financial chapter decides the pension (af_category) and the Medicaid chapter decides SSI-related Medicaid, but nothing reports the state-only medical program between them. Declared an outcome. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Medicaid rule names the other program's result (OAP receipt, CHP+ eligibility)."
 tests:
   - {id: CO-1156-T1, as_of: "2026-10-01", month: "2026-10", title: "OAP-A, no SSI, over the SSI resource standard: state-only OAP health care", given: {af_category: oap, receives_ssi: false, ma_is_ssi_related_eligible: false, ma_magi_is_fully_eligible: false, ma_oap_sisc_b_eligible: false, ma_oap_is_patient_in_tb_or_mental_health_institution: false}, expect: eligible_state_only}
   - {id: CO-1156-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: "none"}, expect: not_oap_recipient}

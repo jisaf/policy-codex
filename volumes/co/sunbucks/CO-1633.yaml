@@ -10,7 +10,8 @@ derived: [all, is_enrolled_in_nslp_school, [not, [any, snap_is_eligible, receive
 sources: [S1095]
 implemented: engine
 tags: [verification, sebt]
-rationale: "Review K-5: 292.12(e)(2) requires the confirmation for application-based children and (d)(3) exempts streamlined certification."
+accepts_from: [snap_is_eligible]
+rationale: "Review K-5: 292.12(e)(2) requires the confirmation for application-based children and (d)(3) exempts streamlined certification. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. Summer EBT streamlined certification names SNAP receipt (7 CFR 292, S790)."
 tests:
   - {id: CO-1633-T1, month: "2026-10", as_of: "2026-10-01", given: {is_enrolled_in_nslp_school: true, snap_is_eligible: false, receives_tanf_cash: false, sebt_other_categorical_basis: false}, expect: true}
   - {id: CO-1633-T2, month: "2026-10", as_of: "2026-10-01", given: {is_enrolled_in_nslp_school: true, snap_is_eligible: true}, expect: false}

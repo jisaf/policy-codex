@@ -12,7 +12,8 @@ sources: [S621, S665, S660]
 open: [OQ-206]
 implemented: engine
 tags: [ma, oap, non_magi]
-rationale: "S-3 of the phase 7 review: OAP recipients who meet SSI criteria except income had no Medicaid route; ma_oap_health_care_status (CO-1156) reported them medicaid_eligible but ma_ssi_related_category (CO-612) tested the SSI income standard and reported none. No existing item states SISC B. Read by CO-612, CO-1150 (without status), CO-1156 and ma_has_full_coverage_category (CO-1176)."
+accepts_from: [af_category]
+rationale: "S-3 of the phase 7 review: OAP recipients who meet SSI criteria except income had no Medicaid route; ma_oap_health_care_status (CO-1156) reported them medicaid_eligible but ma_ssi_related_category (CO-612) tested the SSI income standard and reported none. No existing item states SISC B. Read by CO-612, CO-1150 (without status), CO-1156 and ma_has_full_coverage_category (CO-1176). Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Medicaid rule names the other program's result (OAP receipt, CHP+ eligibility)."
 tests:
   - {id: CO-1177-T1, as_of: "2026-10-01", month: "2026-10", title: "OAP recipient, citizen, aged, within the SSI resource standard", given: {af_category: oap, is_colorado_resident: true, ma_meets_citizenship_requirement: true, ma_is_aged_blind_or_disabled: true, ma_meets_ssi_resource_standard: true}, expect: true}
   - {id: CO-1177-T2, as_of: "2026-10-01", month: "2026-10", title: "OAP recipient inside the five-year rule", given: {af_category: oap, is_colorado_resident: true, ma_meets_citizenship_requirement: false}, expect: false}

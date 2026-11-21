@@ -14,7 +14,8 @@ sources: [S600, S601, S602, S603, S604, S605, S173, S607, S606]
 open: [OQ-200, OQ-214]
 implemented: engine
 tags: [ma, emergency, immigration]
-rationale: "Emergency Medicaid had no determination of its own: ma_is_emergency_medicaid_only (CO-510) is a yes/no read by the MAGI outcomes, and ma_magi_eligibility_status (CO-554) reports emergency_only only for a MAGI category. No existing item reads the emergency medical condition (CO-1100) or reports why a person is or is not emergency-eligible. Declared an outcome."
+accepts_from: [chp_eligibility_status]
+rationale: "Emergency Medicaid had no determination of its own: ma_is_emergency_medicaid_only (CO-510) is a yes/no read by the MAGI outcomes, and ma_magi_eligibility_status (CO-554) reports emergency_only only for a MAGI category. No existing item reads the emergency medical condition (CO-1100) or reports why a person is or is not emergency-eligible. Declared an outcome. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Medicaid rule names the other program's result (OAP receipt, CHP+ eligibility)."
 tests:
   - {id: CO-1151-T1, as_of: "2026-10-01", month: "2026-10", title: "Status fails, otherwise eligible, emergency this month", given: {is_colorado_resident: true, ma_meets_citizenship_requirement: false, ma_is_covered_under_cover_all_coloradans: false, ma_is_cover_all_coloradans_person: false, ma_is_emergency_medicaid_only: true, has_emergency_medical_condition: true}, expect: eligible_emergency_condition}
   - {id: CO-1151-T2, as_of: "2026-10-01", month: "2026-10", title: "Status fails, otherwise eligible, no emergency this month", given: {is_colorado_resident: true, ma_meets_citizenship_requirement: false, ma_is_covered_under_cover_all_coloradans: false, ma_is_cover_all_coloradans_person: false, ma_is_emergency_medicaid_only: true, has_emergency_medical_condition: false}, expect: eligible_no_current_emergency}

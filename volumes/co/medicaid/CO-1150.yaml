@@ -12,7 +12,8 @@ sources: [S600, S603, S604, S173, S659, S621, S660]
 open: [OQ-200]
 implemented: engine
 tags: [ma, emergency, immigration]
-rationale: "ma_is_emergency_medicaid_only (CO-510) tested only the MAGI category, so an undocumented aged or disabled resident who meets the SSI-related standards, or a nursing facility resident who meets the long-term care financial tests, was never emergency-eligible, although § 8.100.3.F.1.k gives emergency coverage to anyone who meets 'the criteria for one of the categorical Medical Assistance programs'. No existing item states that condition across chapters. CO-510 now reads it."
+accepts_from: [af_category]
+rationale: "ma_is_emergency_medicaid_only (CO-510) tested only the MAGI category, so an undocumented aged or disabled resident who meets the SSI-related standards, or a nursing facility resident who meets the long-term care financial tests, was never emergency-eligible, although § 8.100.3.F.1.k gives emergency coverage to anyone who meets 'the criteria for one of the categorical Medical Assistance programs'. No existing item states that condition across chapters. CO-510 now reads it. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Medicaid rule names the other program's result (OAP receipt, CHP+ eligibility)."
 tests:
   - {id: CO-1150-T1, as_of: "2026-10-01", month: "2026-10", title: "MAGI adult route", given: {is_colorado_resident: true, ma_meets_imd_requirement: true, ma_magi_category: adult}, expect: true}
   - {id: CO-1150-T2, as_of: "2026-10-01", month: "2026-10", title: "No MAGI category; aged person within the SSI income and resource standards", given: {is_colorado_resident: true, ma_meets_imd_requirement: true, ma_magi_category: "none", ma_is_aged_blind_or_disabled: true, ma_meets_ssi_income_standard: true, ma_meets_ssi_resource_standard: true}, expect: true}
