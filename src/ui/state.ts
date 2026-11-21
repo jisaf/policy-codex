@@ -8,7 +8,8 @@ import { idbCache } from "../ledger/cache";
 import { loadManifest, loadVolume, type LoadedVolume } from "../ledger/load";
 import type { Manifest } from "../ledger/manifest";
 import { sourceTitleMap } from "../ledger/markdown";
-import { pickSource, type LedgerSource } from "../ledger/source";
+import { defaultRef, preferredVolume, PREFERRED_VOLUME } from "../ledger/mode";
+import { pickSource, probeLocal, type LedgerSource, type LocalInfo } from "../ledger/source";
 import { applyChangeSet } from "../changes/apply";
 import {
   clearEntries, discardEntry, discardFileEntry, loadChangeSet, putEntry, putFileEntry,
@@ -67,6 +68,25 @@ export const workerBaseSig: Signal<string> = signal(
   })(),
 );
 
+/** What the dev or preview server says about the working tree it serves, or
+ *  null when the app is not served by one (src/ledger/source.ts). */
+export const localInfoSig: Signal<LocalInfo | null> = signal(null);
+/** The ref a route without `@ref` reads (src/ledger/mode.ts `defaultRef`):
+ *  `?ref=` in the query string, else the working tree when served, else main.
+ *  Set once by `startRouter`. */
+export const defaultRefSig: Signal<string> = signal(DEFAULT_BRANCH);
+
+export const VOLUME_KEY = "codex.volume";
+
+/** The volume this browser last opened, or null. */
+export function lastVolume(): string | null {
+  try { return localStorage.getItem(VOLUME_KEY); } catch { return null; }
+}
+
+function rememberVolume(id: string): void {
+  try { localStorage.setItem(VOLUME_KEY, id); } catch { /* blocked */ }
+}
+
 export const MODE_KEY = "codex.mode";
 export const DOOR_KEY = "codex.door";
 
@@ -115,7 +135,11 @@ export function setDoor(door: Door | null): void {
  *  the door picker until a door has been chosen, the Programs home once one
  *  has. `#/mwr/start` itself, and every other address, is unaffected. */
 export function resolveEmptyHash(): Route {
-  return { ...defaultRoute(), view: doorSig.value === null ? "start" : "program" };
+  return {
+    ...defaultRoute(),
+    volume: lastVolume() ?? PREFERRED_VOLUME,
+    view: doorSig.value === null ? "start" : "program",
+  };
 }
 
 export const credentials: Credentials = createCredentials();
@@ -135,13 +159,23 @@ export function ledgerSource(): LedgerSource {
 
 /** The git ref a route reads from, before a pull request is resolved. */
 export function baseRefOf(r: Route): string {
-  return r.ref ?? DEFAULT_BRANCH;
+  return r.ref ?? defaultRefSig.value;
+}
+
+/** Whether the tray's staged drafts are applied to what the views show.
+ *  Null follows the mode: shown while editing, hidden while reading, so a
+ *  reader sharing a browser never takes a draft for the rule in force (CDHS
+ *  cash lead, F3). The draft banner sets it either way. */
+export const draftsShownSig: Signal<boolean | null> = signal(null);
+
+export function draftsShown(): boolean {
+  return draftsShownSig.value ?? modeSig.value === "edit";
 }
 
 /** The engine every view renders: the base ledger with the tray applied.
  *  Memoised so a render pass reuses one Engine instance and the per-engine
  *  caches downstream (validation, constraints) actually hit. */
-const viewEngineSig = computed<Engine | null>(() => {
+const draftEngineSig = computed<Engine | null>(() => {
   const base = engineSig.value;
   if (!base) return null;
   const cs = changeSetSig.value;
@@ -149,8 +183,18 @@ const viewEngineSig = computed<Engine | null>(() => {
   return base.withItems(applyChangeSet(base.items(), cs));
 });
 
+const viewEngineSig = computed<Engine | null>(() =>
+  draftsShown() ? draftEngineSig.value : engineSig.value);
+
+/** What the pages show: the drafts applied only while `draftsShown()`. */
 export function viewEngine(): Engine | null {
   return viewEngineSig.value;
+}
+
+/** The ledger with the tray applied, whatever the pages show: the editor
+ *  always builds on the drafts it staged. */
+export function draftEngine(): Engine | null {
+  return draftEngineSig.value;
 }
 
 function recomputeReport(): void {
@@ -194,7 +238,7 @@ export function clearTray(): void {
 }
 
 export function openEditor(id: string | null): void {
-  const engine = viewEngine();
+  const engine = draftEngine();
   const vol = volumeSig.value;
   if (!engine || !vol) return;
   if (id) {
@@ -220,7 +264,7 @@ export function openEditor(id: string | null): void {
  *  for the Documents view's "Draft from this document" button: the analyst
  *  came here to draft from a specific text, not to search the ledger first. */
 export function openEditorForDocument(docId: string): void {
-  const engine = viewEngine();
+  const engine = draftEngine();
   const vol = volumeSig.value;
   if (!engine || !vol) return;
   editingSig.value = {
@@ -281,6 +325,15 @@ async function openRoute(r: Route): Promise<void> {
     // deletes an item rewrites codex.json, so a session-cached one goes stale.
     const manifest = await loadManifest(src);
     manifestSig.value = manifest;
+    // An address naming a volume this ledger does not have (or the bare app
+    // URL, before any volume was chosen) opens the preferred one instead.
+    if (!manifest.volumes.some((v) => v.id === r.volume)) {
+      const volume = preferredVolume(manifest, lastVolume());
+      if (volume !== r.volume) {
+        location.replace(buildHash({ ...r, volume }));
+        return;
+      }
+    }
     const vol = await loadVolume(src, manifest, r.volume, { cache: idbCache() });
     // Keep the route ref (which may be `pr/12`) as the volume's ref so the
     // change-set key and the header badge match the address bar.
@@ -290,6 +343,7 @@ async function openRoute(r: Route): Promise<void> {
       questionIds: withRouteRef.openQuestions.map((q) => q.id),
     });
     volumeSig.value = withRouteRef;
+    rememberVolume(r.volume);
     engineSig.value = engine;
     searchIndexSig.value = buildSearchIndex(withRouteRef, engine);
     statusSig.value = { kind: "idle", message: "" };
@@ -309,7 +363,17 @@ function currentRoute(): Route {
   return parseHash(location.hash);
 }
 
-export function startRouter(): void {
+/** Starts reading the address bar. First asks whether a dev or preview
+ *  server serves the working tree (so `npm run dev` and `vite preview` show
+ *  the local ledger without any network interception), and settles the
+ *  default ref from that and `?ref=`. */
+export async function startRouter(
+  probe: () => Promise<LocalInfo | null> = () => probeLocal(),
+): Promise<void> {
+  statusSig.value = { kind: "loading", message: "Looking for the ledger…" };
+  const local = await probe();
+  localInfoSig.value = local;
+  defaultRefSig.value = defaultRef({ search: location.search, local });
   const handle = () => { void openRoute(currentRoute()); };
   addEventListener("hashchange", handle);
   handle();

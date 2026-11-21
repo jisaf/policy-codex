@@ -22,7 +22,7 @@ describe("StartView", () => {
   it("renders the four doors", () => {
     const host = document.createElement("div");
     render(<StartView />, host);
-    const doors = [...host.querySelectorAll("button.door")].map((b) => b.getAttribute("data-door"));
+    const doors = [...host.querySelectorAll("button.door[data-door]")].map((b) => b.getAttribute("data-door"));
     expect(doors).toEqual(["admin", "reader", "sme", "engineer"]);
   });
 

@@ -6,10 +6,18 @@ where the reader currently is.
 
 ## start
 
-Pick the door that fits what brought you here today; you can change it any
-time from "change how you use this" in the header. The doors: check how a
-household is decided, read the rules for a program, change a rule or fact,
-or implement the rules.
+Pick where you work: HCPF policy, CDHS policy, CDEC, Legal, County worker, or
+Engineer. Each opens the page that starts from your questions: your agency's
+home with what needs your sign-off and what is still open, the step-through
+case walkthrough for a county worker, or the handoff for an engineer. The
+older doors are still under "Other ways in": check how a household is
+decided, read the rules for a program, change a rule or fact, or implement
+the rules. You can change your choice any time from "change how you use
+this" in the header.
+
+The menu beside "Browse" chooses which copy of the rules you read: the
+working tree on this computer (when the app runs from `npm run dev` or
+`vite preview`), main, or another branch.
 
 ## programs
 
@@ -76,3 +84,31 @@ may already be here under another name), then asks what kind it is — a fact
 we are told, a rule, or a number set by policy — before showing only that
 kind's fields. Saving to the tray never fails; Propose checks governance
 before it opens a pull request.
+
+## inbox
+
+Approvals: what is waiting on whom, grouped by change, with each change's
+effect in plain words and the sign-offs it still needs.
+
+## questions
+
+Open questions: each one with the text it turns on, the assumption the codex
+uses now, the programs and items it touches, and whether it is open, partly
+resolved or resolved. Open a question to see it on its own page.
+
+## walkthrough
+
+Case walkthrough: step through one household's result rule by rule, in plain
+words, with each value, the rule text it rests on, and where an unknown
+stopped it.
+
+## roles
+
+By role: what HCPF, CDHS, CDEC and Legal each own, need to approve, and have
+open.
+
+## outcomes
+
+By outcome: each result a household can end in for a program, the rules that
+lead to it, and the figures it depends on. Aid codes are placeholders until
+the CBMS list is supplied.

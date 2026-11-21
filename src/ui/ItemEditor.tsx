@@ -11,7 +11,7 @@ import { buildHash } from "./router";
 import { search } from "./search";
 import {
   closeEditor, editingSig, engineSig, navigate, putChangeEntry, route, searchIndexSig,
-  viewEngine, volumeSig, type EditingState,
+  draftEngine, volumeSig, type EditingState,
 } from "./state";
 
 export function draftEntry(state: EditingState, engine: Engine): ChangeEntry {
@@ -136,7 +136,7 @@ function KindStep({ state }: { state: EditingState }) {
 
 export function ItemEditor() {
   const state = editingSig.value;
-  const engine = viewEngine() ?? engineSig.value;
+  const engine = draftEngine() ?? engineSig.value;
   const vol = volumeSig.value;
   if (!state || !engine || !vol) return null;
 
