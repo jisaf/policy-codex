@@ -3,11 +3,12 @@ name: "Medicaid: category enrolled in for a past month"
 identifier: ma_prior_enrollment_category
 kind: supplied
 type: one of
-options: [parent_caretaker, other_medical_assistance, none]
+options: [parent_caretaker, pregnant, other_medical_assistance, none]
 scope: person-month
 program: Medicaid
-meaning: "For a month before the determination month, the Medical Assistance category the person was eligible for and enrolled in: the Parent/Caretaker Relative category (parent_caretaker), any other Medical Assistance (other_medical_assistance), or none. It is the eligibility history § 8.100.4.I.1.a and I.5 count (\"at least three of the six months preceding\")."
+meaning: "For a month before the determination month, the Medical Assistance category the person was eligible for and enrolled in: the Parent/Caretaker Relative category (parent_caretaker), the Pregnant Women category (pregnant), any other Medical Assistance (other_medical_assistance), or none. It is the eligibility history § 8.100.4.I.1.a and I.5 count (\"at least three of the six months preceding\") and the approval § 8.100.4.G.5's pregnancy lock-in turns on (\"Once eligibility has been approved\")."
+precision: "Heavier-definitions audit H-6: pregnant is read by ma_is_in_pregnancy_coverage_period (CO-566) as the recorded approval that opens the lock-in; a month recorded as pregnant counts as Medical Assistance for the four-month extension (CO-2431, any category other than none) and not as Parent/Caretaker Relative for Transitional Medical Assistance (CO-2430). A child's continuous eligibility period is recorded by its start month (continuous_eligibility_period_start_month, CO-094), so no child option is needed here."
 supplied_by: CBMS eligibility history.
-sources: [S1719, S1720]
+sources: [S1719, S1720, S640]
 tags: [ma, magi]
-rationale: "C-4 of the HCPF review: the three-of-six-months tests need the enrollment history, which the volume's other facts (stated for the current month) do not carry."
+rationale: "C-4 of the HCPF review: the three-of-six-months tests need the enrollment history, which the volume's other facts (stated for the current month) do not carry. Heavier-definitions audit H-6 (audit fix round 4): the pregnant option records the approval the pregnancy lock-in reads."

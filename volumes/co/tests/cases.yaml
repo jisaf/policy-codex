@@ -4593,6 +4593,10 @@
         is_required_to_file_tax_return: true
         is_pregnant: true
         expected_number_of_children: 1
+        # Audit fix round 4 (L-3): the pregnancy lock-in opens once the income verification
+        # requirements are met (8.100.4.G.5). Maria handed in her October pay stubs with the
+        # application, so no earned income verification is pending in October; she has no unearned income.
+        earned_income_verification_document_received: true
         is_medicare_entitled_or_enrolled: false
         has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
