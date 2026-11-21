@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: SNAP
+role: outcome
 meaning: "The last day a deductible expense can be verified before the household's eligibility and benefit are determined without the deduction: thirty days after the date of application."
 precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
 derived: [days_after, snap_expense_verification_days, snap_application_date]

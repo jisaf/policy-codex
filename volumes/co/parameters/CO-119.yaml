@@ -6,6 +6,7 @@ type: money
 scope: global
 program: SNAP
 meaning: The countable resource limit for a Standard Eligibility household that includes a member who is elderly or disabled.
+statute_override: "The federal figure overrides 10 CCR 2506-1 4.408.E, which still states $4,500 \"Effective October 1, 2024\": FNS's fiscal year 2027 resource limit for a household with an elderly or disabled member is $4,750 from October 1, 2026."
 versions:
   - from: "2025-10-01"
     to: "2026-10-01"
@@ -16,4 +17,4 @@ versions:
     source: S732
 rationale: "Companion figure to snap_resource_limit (CO-118); 10 CCR 2506-1 4.408,E (S57) states the higher limit for a household with an elderly or disabled member, and D-20's table 5 (S56) is the FY2026 dollar figure. Phase 8 adds the FY2027 federal figure (D-83, S732); 10 CCR 2506-1 4.408.E as of 2026-10-01 still states $4,500 effective October 1, 2024 (S748) - see OQ-251."
 sources: [S56, S57, S732, S748]
-tags: [resources, snap]
+tags: [resources, snap, legal]
