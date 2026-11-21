@@ -435,6 +435,8 @@ Resolution (phase-10 open-question sweep): Resolved. The Department's LEAP page 
 
 Body: The version of 9 CCR 2503-7 effective 2025-11-01 (D-86, S770-S772) states the Heating Fuel Assistance benefit method: estimated home heating costs for November-April (Step A), a statewide adjustment percentage set each program year (B), the electric-heat portion by dwelling type (C), a household income contribution of 0/10/20/30% by poverty band (D), division among households sharing the living arrangement (E), a $180 seasonal subsidized-housing allowance (F), and the Department's program-year minimum and maximum (G). leap_benefit_amount (CO-1281) computes it from leap_adjusted_heating_costs (CO-1280), leap_income_contribution_rate (CO-1279) and leap_household_income_pct_fpl (CO-1278), with the program-year figures the rule does not state (statewide adjustment, minimum, maximum) and the household's heating facts supplied (CO-1271-CO-1277) and the Step F allowance a parameter (CO-1282). The reading of how Steps B, D and F combine is OQ-253. Items: CO-1271, CO-1272, CO-1273, CO-1274, CO-1275, CO-1276, CO-1277, CO-1278, CO-1279, CO-1280, CO-1281, CO-1282.
 
+Phase-10 open-question sweep: the income contribution is now taken in the application month (OQ-137), and the LEAP income limit is the Department's season table (OQ-122).
+
 ### OQ-124. Resolved: CCCAP eligible activity: no separate flag for training/education/post-secondary enrollment
 
 Resolved (vocabulary fix round, R-2): cccap_caretaker_in_eligible_activity (CO-984) reads cccap_is_in_education_or_training_activity (CO-1722), stated for training, basic education and post-secondary education (8 CCR 1403-1 3.103.OO, S482) and a teen parent's school attendance; a caretaker in college is in an eligible activity. The minimum-wage-per-hour test remains unmodeled (OQ-162).
@@ -682,6 +684,8 @@ Body: 9 CCR 2503-7 3.758.47 Step G (S772) says the benefit is determined "by sub
 
 Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): (C-2) Step E divides the estimated home heating cost "by the number of separate households sharing the living arrangements" (3.758.47). The target household (CO-01/CO-02) stated one sharing household while the engine formed two LEAP households in the same home, each taking the full $900; the cases now state that the family buys heat in common (shares_heating_fuel_with), so it is one LEAP household and the count of one is consistent. A case that forms more than one LEAP household in one dwelling must state the count to match; no rule derives it from the households formed. Items: CO-1280.
 
+Phase-10 open-question sweep: checked 2026-11-21: 9 CCR 2503-7 3.758.47 Steps A-G and 3.758.48 (D-86, S770-S772) and the Department's LEAP page (D-144); no published rule settles how Steps B, D and F combine or names the poverty table for Step D, and the program-year adjustment, minimum and maximum are not published there.
+
 ### OQ-254. CCCAP parent fee: children in care, the post-July 2028 formula, and the waivers not modeled
 
 Body: 8 CCR 1403-1 3.124.P (D-87, S785), in force July 1, 2021 through July 31, 2028, assesses 1% of gross countable household income at or below 100% of the FPG, and above it 1% of income plus 14% of every dollar above the FPG plus $15 for each additional child "when households are requesting care for more than one (1) child". (1) No fact states for which children care is requested; cccap_parent_fee_formula_amount (CO-1289) counts the household's eligible children (cccap_is_eligible_child), which overstates the fee for a household with an eligible child not in care. (2) 3.124.Q (S786) replaces the formula from August 1, 2028 with marginal rates by FPG band (1% to 100%, 3% 101-130%, 5% 131-160%, 7% above 160%); CO-1289 carries an effective range ending 2028-08-01 and the Q formula is not modeled, so cccap_parent_fee is unknown for later dates. Q's table also leaves the band edges between 100% and 101% (and 130%/131%, 160%/161%) unstated. (3) cccap_parent_fee (CO-1290) models the no-income, protective-services, Colorado-Works-non-paid-activity exceptions and the 20% quality and 55% part-time reductions, but not the county-discretion waivers (Head Start dual enrollment, teen-parent hardship, declared disaster, the $5 hardship reduction), the homelessness stabilization period, or a protective services household whose child has countable income (3.124.G, I.1, I.5, I.6, I.8, S, X); it treats a Colorado Works household with no earned or self-employment income as one in a non-paid activity. Items: CO-1289, CO-1290.
@@ -794,6 +798,8 @@ Body: Each program allows more time in some circumstances: Colorado Works to the
 
 Phase-9 fix round: 3.604.3.K's thirty days for status elements (S1064) is a period, not an extension, and is now modeled (cw_status_verification_due_date, CO-1656; members_excluded in CO-1427). CCCAP's 60-day new-application rule (3.111.H.5.e.1.b, S891) is likewise a period after closure, outside the initial verification status. The extensions themselves remain unmodeled.
 
+Phase-10 open-question sweep: the LEAP part is resolved. leap_verification_extension_granted (CO-2123) and leap_verification_extension_days (CO-2124, fourteen) carry 3.756.12.D's good-cause extension (S899), and leap_verification_due_date (CO-1461) adds it; leap_verification_status (CO-1462) therefore honours it. The Colorado Works and Medical Assistance extensions belong to the other sweeps.
+
 ### OQ-317. Resolved: Adult Financial income verification is inferred, not stated
 
 Body: 9 CCR 2503-5 has no section that says income "shall be verified" the way 4.506 does for SNAP. 3.520.4.D (S879) directs the county to "verify statements made by the client on the application," and 3.520.5.A (S880) makes SSA and unemployment data verified upon receipt, denies verified status to Department of Labor wage data ("additional verification must be obtained"), and requires the county to "verify potential income" before approval. The volume reads these together as requiring verification of earned income (documents) and unearned income (data or documents) whenever received. Items: CO-1434, CO-1436.
@@ -812,9 +818,11 @@ Body: 9 CCR 2503-7 3.753.11 (S895) says "Documents that are acceptable as verifi
 
 Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 1 CCR 204-30 Rule 5, Appendix A (D-119, S1069, S1070) is fetched; leap_citizenship_verification_is_pending (CO-1691) accepts a citizenship document only if citizenship_document_is_on_revenue_appendix_a (CO-1657).
 
-### OQ-320. 9 CCR 2503-1 states no verification rule
+### OQ-320. Resolved: 9 CCR 2503-1 states no verification rule
 
 Body: The phase-9 brief named the general Income Maintenance application rules at 9 CCR 2503-1 as a possible source of verification rules. The current SOS text (D-108, effective 11/01/2018, S900) is "RESERVED FOR FUTURE USE"; its editor's notes record that the former 3.100-3.900 sections were recodified into 9 CCR 2503-2 through 2503-9. Each program's own verification rules were used instead; 9 CCR 2503-8 (administrative procedures) was not fetched. Items: none.
+
+Resolution (Phase-10 open-question sweep): Resolved, no ledger change. The Secretary of State's Income Maintenance list (D-143, retrieved 2026-11-21) shows 9 CCR 2503-1, 2503-2 and 2503-4 "(Reserved for Future Use)" and 9 CCR 2503-8 as "ADMINISTRATIVE PROCEDURES FOR THE COLORADO CHILD CARE ASSISTANCE PROGRAM", not a general verification rule; each program's own verification rules stand.
 
 ### OQ-321. Resolved: SSN verification never delays an otherwise eligible person
 
@@ -913,6 +921,8 @@ Body: 435.956(a)(4)(ii) (S1052) forbids re-verifying citizenship at renewal "unl
 
 Body: Only Medical Assistance (CO-1566) and SNAP (CO-1567) carry a renewal fact. Colorado Works requires an SSN applied for at application by the next recertification (3.604.3.B.2.c.1-2, D-104) and verification "at the time of application and redetermination" (3.604.3.K, S1064); Adult Financial accepts the client's statement of resources after application until each twenty-four-month redetermination (3.520.72.D.4, S888); CCCAP closes at redetermination after fifteen days (3.111.H.5.e.2) and verifies child support at each redetermination (3.111.K.2.c). These programs' items describe an initial application. Items: CO-1433, CO-1436, CO-1424, CO-1448.
 
+Phase-10 open-question sweep (CCCAP part): CCCAP's entry-or-exit income test now reads whether the household is already receiving assistance (cccap_is_receiving_assistance, OQ-133), which covers redetermination for income; the fifteen-day redetermination closure (3.111.H.5.e.2) and the child support re-verification (3.111.K.2.c) still have no redetermination-date fact and stay open with the Colorado Works and Adult Financial parts.
+
 ### OQ-374. Aged, blind and disabled reasonable compatibility compares gross income with the individual SSI rate
 
 Body: ma_abd_income_is_reasonably_compatible (CO-1640) compares the attested monthly gross income (wages, self-employment and unearned income) and the data figure (electronic_data_source_monthly_gross_income, CO-1589) with the SSI individual benefit rate, or 300% of it for a long-term care applicant. The SSI-related test itself counts income after exclusions and uses the couple rate for a couple (ma_meets_ssi_income_standard); the item does not, so results near the line may differ from a countable-income comparison. The 20% threshold carries OQ-302's first half. Items: CO-1589, CO-1640.
@@ -925,6 +935,8 @@ Body: 3.541.1.A.1.b (S1080) gives thirty calendar days following the interview t
 
 Body: The current 1 CCR 204-30 (effective 10/15/2026, D-120) shows Rule 5 withdrawn ("Withdrawal effective December 31, 2026", S1072) and its editor's notes "Rule 5 repealed eff. 10/15/2026" (S1098). 9 CCR 2503-6 3.604.3.I.1 incorporates Rule 5, Appendices A and B "(Mar. 2, 2021), no later editions", so Colorado Works still reads the incorporated edition (D-119); 9 CCR 2503-7 3.753.11 and 3.753.14 name Appendices A and B without an edition. The volume reads the incorporated edition for both until CDHS amends its rules. Appendix A.C.2 (the applicant's own declaration) and A.D-G are not document types. 3.604.3.H.4 (S1096) lets the county use the DMV to verify lawful presence and identity; cw_lawful_presence_verification_is_pending (CO-1644) accepts a produced document or a SAVE result and does not read an identity match (review C-8), so a DMV lawful-presence match is stated by recording the license as the document received. Items: CO-1644, CO-1657.
 
+Phase-10 open-question sweep (LEAP part): checked 2026-11-21: 9 CCR 2503-7 3.753.11 and 3.753.14 (D-86, D-107) still name 1 CCR 204-30 Appendices A and B without an edition, and the current 1 CCR 204-30 (D-120, S1072, S1098) has Rule 5 withdrawn; no published rule settles which edition LEAP reads, so the volume keeps the incorporated edition.
+
 ### OQ-377. SUN Bucks verification: no fixed period, and exceptions without facts
 
 Body: 7 CFR 292.14 (D-117) sets no period for a household selected in the sample: it must respond "by the date determined by the Summer EBT agency" (f)(2)(i), after at least two follow-up attempts (f)(7); verification for cause is completed within 30 days of receipt of the application (a)(1)(ii). sebt_verification_status (CO-1698) therefore has no past-due state. The exception for foster, migrant and runaway children (f)(1) has no fact in the volume; only is_homeless is read. Colorado's Plan for Operations and Management, which would state its verification procedures and administrative data sources (292.14(e)(3)), was not fetched (OQ-255). Items: CO-1698, CO-1699.
@@ -934,6 +946,8 @@ Phase-10 open-question sweep. The exceptions are carried after all: foster, migr
 ### OQ-378. CCCAP verifications not modeled
 
 Body: Beyond the hours worked and additional care needs now modeled (CO-1684-CO-1687), 8 CCR 1403-1 3.111.C.2 (D-106) also lists immunizations (C.2.c, F.2, 3.112.D), the activity schedule when non-traditional hours are requested (C.2.e, 3.112.F), incapacitation by a physician's statement (C.2.g, D.1.c.3), the custody arrangement or parenting schedule (C.2.h), an unrelated caretaker's verification (D.5), and the self-employment weekly schedule and expenses (G.2.a-b). None decides eligibility on facts the volume carries; they are left to the worker. Items: CO-1447, CO-1448, CO-1684.
+
+Phase-10 open-question sweep: left open. The listed verifications need facts no case states (immunization status and provider type for 3.111.F.2, non-traditional hours, custody schedule, an unrelated caretaker's verification); 3.111.D.1.c.3's physician statement is now part of cccap_caretaker_is_incapacitated (CO-1744) and the activity minimum-wage proof is modeled in cccap_caretaker_in_eligible_activity (OQ-162). Not modeled in this sweep.
 
 ### OQ-379. Long-term care documentation: transfers, joint ownership and sales efforts
 
@@ -946,6 +960,8 @@ Body: SNAP makes only the sponsored member ineligible until the sponsor's inform
 ### OQ-381. LEAP heating costs and zero income as household elements
 
 Body: 3.755.11 (S897) verifies "estimated home heating costs, and vulnerability" for the household: leap_pending_verification_count (CO-1460) counts one pending heating verification however many members are responsible for heating costs (review C-13). The CO-01 and CO-02 cases still state is_responsible_for_heating_costs for the children, because LEAP vulnerability (an eligibility item) reads it; the count no longer depends on it. leap_zero_income_verification_is_pending (CO-1693) reads leap_household_income for "zero income" and asks every adult member (3.755.21.H, S1083). Items: CO-1460, CO-1692, CO-1693.
+
+Phase-10 open-question sweep: left open. The volume has no household-level supplied fact (every fact is a person's or the case's month), so the heating-cost and zero-income elements stay read through the members as described; checked 2026-11-21 against 3.755.11 and 3.755.21.H (D-107, S897, S1083).
 
 ### OQ-382. One request fact for Medical Assistance and CHP+
 
@@ -984,3 +1000,5 @@ Resolution (Phase-10 open-question sweep): Resolved. Both defaults are gone (OQ-
 ### OQ-396. One set of relationship edges and one marital status for every program
 
 Body: The case-level relationship edges are shared: one caretaker edge is read as SNAP parental control (CO-305), the Medicaid caretaker relative ("a relative ... who assumes primary responsibility", CO-547), the Colorado Works parent or non-parent caretaker (CO-900) and the CCCAP adult caretaker ("legal guardian, or person who is acting in loco parentis", CO-992). A non-relative guardian is a CCCAP caretaker and not a Medicaid caretaker relative. Marriage is stated by marital_status (CO-844) and by the spouse edge, and SNAP's spouse includes persons representing themselves as spouses. The engine cannot declare a new relationship role from a volume (OQ-132), so per-program edges, or the qualifying facts (degree of relationship, guardianship) the rules could test, are not modeled in the vocabulary fix round (review R-15). Items: CO-305, CO-547, CO-900, CO-992, CO-844.
+
+Phase-10 open-question sweep: LEAP now has its own relationship role (shares_heat_with, OQ-132), so its economic unit no longer depends on the shared family edges alone. Checked 2026-11-21 for the rest: the CCCAP adult caretaker (8 CCR 1403-1 3.103.C, "In loco parentis" 3.103.MMM, D-87) and the Medicaid caretaker relative read the same caretaker edge; no published rule requires the edges to differ, and splitting them is a ledger-design choice.
