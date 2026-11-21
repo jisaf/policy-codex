@@ -1,0 +1,12 @@
+id: CO-2893
+name: "Urban Indian"
+identifier: is_urban_indian_under_ihcia
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is an urban Indian as the Indian Health Care Improvement Act defines one (25 U.S.C. 1603), which 42 CFR 447.51 adopts."
+supplied_by: Tribal enrollment card or certificate; the Indian Health Service or Bureau of Indian Affairs record.
+sources: [S1214]
+tags: [immigration]
+rationale: "Same-word audit SW-17 and dual-entry audit 3.19: tribal membership, Alaska Native status, descent and urban Indian status were stated by three program-defined facts that could disagree for one person; each program's definition is now derived from the neutral facts CO-2890 to CO-2894."

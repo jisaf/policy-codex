@@ -37,6 +37,10 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
@@ -202,7 +206,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -282,6 +285,10 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
@@ -443,7 +450,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -521,6 +527,10 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -675,7 +685,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -738,6 +747,10 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
         expected_program_completion_date: "2028-02-08"
@@ -899,7 +912,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -965,6 +977,10 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
@@ -1121,7 +1137,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -2166,6 +2181,10 @@
   persons:
     p1:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
@@ -2340,7 +2359,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -2411,6 +2429,10 @@
         pension_income: 610
     p2:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
@@ -2580,7 +2602,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -2650,6 +2671,10 @@
         social_security_income: 1180
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -2812,7 +2837,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -2867,6 +2891,10 @@
         hours_worked: 138
     p4:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
         expected_program_completion_date: "2028-02-08"
@@ -3034,7 +3062,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -3093,6 +3120,10 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
@@ -3255,7 +3286,6 @@
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -4251,6 +4281,10 @@
     p1:
       # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         title_ii_benefit_type: retirement_or_survivor
@@ -4280,7 +4314,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -4334,6 +4367,10 @@
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         title_ii_benefit_type: retirement_or_survivor
@@ -4362,7 +4399,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -5502,6 +5538,10 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -5521,7 +5561,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 58
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: true
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -5564,6 +5603,10 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -5581,7 +5624,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 61
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -5623,6 +5665,10 @@
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         child_welfare_payment_type: none
@@ -5641,7 +5687,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -5681,6 +5726,10 @@
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -5698,7 +5747,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -5738,6 +5786,10 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: own_disability
@@ -5755,7 +5807,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -6830,6 +6881,10 @@
         "2026-11": {receives_medicaid: true}
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
@@ -6845,7 +6900,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -6874,6 +6928,10 @@
         work_sanction_level_served: second
     p4:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         child_welfare_payment_type: none
@@ -6884,7 +6942,6 @@
         receives_ssi: false
         received_tanf_from_another_state_this_month: false   # CDHS review B-1: the grant now reads the unit's status on p4 too
         receives_tanf_cash: true
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -6950,6 +7007,10 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         is_tax_filer: false  # dual-entry 2.4: no income, so no return; the MAGI household is then known
         expects_to_be_claimed_as_dependent: false
@@ -6990,7 +7051,6 @@
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7110,6 +7170,10 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         is_tax_filer: false  # dual-entry 2.4: no income, so no return; the MAGI household is then known
@@ -7153,7 +7217,6 @@
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7369,6 +7432,10 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -7419,7 +7486,6 @@
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7546,6 +7612,10 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
@@ -7599,7 +7669,6 @@
         has_va_aid_attendance_housebound_or_survivor_finding: false
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7962,6 +8031,10 @@
     p1:
       relationships: []
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
@@ -7988,7 +8061,6 @@
         meets_ssa_disability_criteria: false
         receives_ssi: false
         receives_tanf_cash: false
-        ma_is_indian: false
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
         ma_is_seasonal_worker: false
@@ -8021,6 +8093,10 @@
     p2:
       relationships: []
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
@@ -8047,7 +8123,6 @@
         meets_ssa_disability_criteria: false
         receives_ssi: false
         receives_tanf_cash: false
-        ma_is_indian: false
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
         ma_is_seasonal_worker: false
@@ -8079,6 +8154,10 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
@@ -8105,7 +8184,6 @@
         meets_ssa_disability_criteria: false
         receives_ssi: false
         receives_tanf_cash: false
-        ma_is_indian: false
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
         ma_is_seasonal_worker: false
@@ -8226,6 +8304,10 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -8255,7 +8337,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -8315,6 +8396,10 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -8344,7 +8429,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -8405,6 +8489,10 @@
     p3:
       # Daughter, 8.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -8434,7 +8522,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: "none"
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -8548,6 +8635,10 @@
   persons:
     p1:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8567,7 +8658,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8608,6 +8698,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8627,7 +8721,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8668,6 +8761,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8687,7 +8784,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8729,6 +8825,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8748,7 +8848,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8835,6 +8934,10 @@
   persons:
     p1:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8854,7 +8957,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8895,6 +8997,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8914,7 +9020,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8955,6 +9060,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -8974,7 +9083,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9016,6 +9124,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9035,7 +9147,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9129,6 +9240,10 @@
   persons:
     p1:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9148,7 +9263,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9190,6 +9304,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9209,7 +9327,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9251,6 +9368,10 @@
         "2026-10": {"wages_gross": 5700}
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9270,7 +9391,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9312,6 +9432,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9331,7 +9455,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9407,6 +9530,10 @@
   persons:
     p1:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9426,7 +9553,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9475,6 +9601,10 @@
         "2026-09": {"ma_prior_enrollment_category": parent_caretaker}
     p2:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9494,7 +9624,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9535,6 +9664,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9554,7 +9687,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9627,6 +9759,10 @@
   persons:
     p1:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9646,7 +9782,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9689,6 +9824,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9708,7 +9847,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9751,6 +9889,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9770,7 +9912,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9813,6 +9954,10 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
@@ -9832,7 +9977,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        ma_is_indian: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9897,6 +10041,10 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -9926,7 +10074,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -9986,6 +10133,10 @@
     p2:
       # Her son, 5.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10015,7 +10166,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -10075,6 +10225,10 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10104,7 +10258,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -10166,6 +10319,10 @@
     p4:
       # Her daughter, 11.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10195,7 +10352,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -10257,6 +10413,10 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10286,7 +10446,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -10346,6 +10505,10 @@
     p6:
       # Her son, 7.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10375,7 +10538,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -10469,6 +10631,10 @@
     p1:
       # Applicant mother, no income.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
@@ -10484,7 +10650,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10514,6 +10679,10 @@
     p2:
       # Her son; $200 a month of current support.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         child_welfare_payment_type: none
@@ -10524,7 +10693,6 @@
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: false
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10554,6 +10722,10 @@
     p3:
       # Recipient mother at redetermination.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
@@ -10569,7 +10741,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10601,6 +10772,10 @@
     p4:
       # Support in 6 of 6 months, average $550.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         child_welfare_payment_type: none
@@ -10611,7 +10786,6 @@
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10642,6 +10816,10 @@
     p5:
       # Recipient mother at redetermination.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
@@ -10657,7 +10835,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10689,6 +10866,10 @@
     p6:
       # Support in 5 of 6 months, average $600.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         child_welfare_payment_type: none
@@ -10699,7 +10880,6 @@
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10734,6 +10914,10 @@
     p7:
       # Recipient mother at redetermination.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
@@ -10749,7 +10933,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10781,6 +10964,10 @@
     p8:
       # Support in 6 of 6 months, average $450.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
         education_enrollment_intensity: full_time
         child_welfare_payment_type: none
@@ -10791,7 +10978,6 @@
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
-        snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         snap_is_serving_ipv_disqualification: false
@@ -10852,6 +11038,10 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10881,7 +11071,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -10942,6 +11131,10 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -10971,7 +11164,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11060,6 +11252,10 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11089,7 +11285,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11170,6 +11365,10 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11199,7 +11398,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11292,6 +11490,10 @@
     p1:
       # 35, refuses to give an SSN, earns $1,200.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11321,7 +11523,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11381,6 +11582,10 @@
     p2:
       # Her son, 10.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11410,7 +11615,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11469,6 +11673,10 @@
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11498,7 +11706,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11593,6 +11800,10 @@
     p1:
       # Applicant mother, no income.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11622,7 +11833,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11682,6 +11892,10 @@
     p2:
       # Her daughter.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11711,7 +11925,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11791,6 +12004,10 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11820,7 +12037,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
@@ -11907,6 +12123,10 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
         education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -11936,7 +12156,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         federal_five_year_bar_exempt_category: none
-        snap_is_indian_or_urban_indian: false
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
