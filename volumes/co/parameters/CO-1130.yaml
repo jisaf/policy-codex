@@ -1,0 +1,13 @@
+id: CO-1130
+name: "BCCP age limit"
+identifier: ma_bccp_max_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which a woman must be to qualify for the Breast and Cervical Cancer Program - 10 CCR 2505-10 § 8.715.2.C.1 (\"a woman who has not yet attained the age of 65\") and 42 U.S.C. 1396a(aa)(2) (\"have not attained age 65\")."
+value: 65
+sources: [S608, S612]
+tags: [ma, age]
+nearest: [CO-237]
+rationale: "No existing parameter states the BCCP age limit. ma_aged_age (CO-237) is also 65 but is the SSI-related aged-category floor from a different text, and the two could diverge. ma_bccp_eligibility_status (CO-1152) needs it."

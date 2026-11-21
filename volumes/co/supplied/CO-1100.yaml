@@ -1,0 +1,13 @@
+id: CO-1100
+name: Has an emergency medical condition
+identifier: has_emergency_medical_condition
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether, in this month, the person has a medical condition (including labor and delivery) manifesting itself by acute symptoms of sufficient severity (including severe pain) such that the absence of immediate medical attention could reasonably be expected to result in placing the person's health in serious jeopardy, serious impairment of bodily function, or serious dysfunction of any bodily organ or part - the emergency medical condition of 10 CCR 2505-10 § 8.100.3.G.1.g.ix.2, 42 U.S.C. 1396b(v)(3) and 42 CFR 440.255(c)(1).
+precision: A month-level summary of a clinical determination. Colorado does not require a physician statement for the application to be complete (§ 8.100.3.G.1.g.ix.2); the treating physician certifies the emergency on the claim when services are provided, so this fact is true for a month in which a certified emergency service was furnished. Organ-transplant services are outside the federal emergency definition (1396b(v)(2)(C)) and are not represented by this fact.
+supplied_by: Treating physician's certification of an emergency medical condition on the claim form at the time services are provided (10 CCR 2505-10 § 8.100.3.G.1.g.ix.2).
+sources: [S601, S602, S603, S604]
+tags: [ma, emergency, medical]
+rationale: "No existing item carries the emergency medical condition itself; ma_is_emergency_medicaid_only (CO-510) states only whether a person is limited to emergency coverage. ma_emergency_medicaid_status (CO-1151) needs it to say whether that limited coverage pays for this month's care."

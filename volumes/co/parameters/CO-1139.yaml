@@ -1,0 +1,13 @@
+id: CO-1139
+name: "HCBS-CwCHN age limit"
+identifier: ma_hcbs_cwchn_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which a child must be to meet the Children with Complex Health Needs waiver target group - 10 CCR 2505-10 § 8.7101.D.2.a (\"Is under 19 years of age\")."
+value: 19
+sources: [S631]
+tags: [ma, hcbs, age]
+nearest: [CO-180]
+rationale: "No existing parameter states the CwCHN age limit; ma_magi_child_age_limit (CO-180) is also 19 but is the MAGI household child age. ma_hcbs_waiver_age_criteria_met (CO-1164) needs it."

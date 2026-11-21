@@ -1,0 +1,13 @@
+id: CO-1131
+name: "Limited Family Planning income floor, percent of FPL"
+identifier: ma_family_planning_income_lower_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The household income, as a fraction of the federal poverty level, that Limited Family Planning Medical Assistance income must exceed - 10 CCR 2505-10 § 8.100.4.G.8 (\"greater than 133%\")."
+value: 1.33
+sources: [S613]
+tags: [ma, magi, income, state_election]
+nearest: [CO-193, CO-195]
+rationale: "No existing parameter states the family planning floor. ma_income_limit_adult_pct (CO-193) is also 1.33 but is the Adults category ceiling; § 8.100.4.G.8 states its own floor, which could move separately. ma_family_planning_income_in_band (CO-1155) needs it."

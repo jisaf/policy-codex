@@ -3,12 +3,12 @@ name: Meets HCBS waiver target group
 identifier: meets_hcbs_waiver_target_group
 kind: supplied
 type: one of
-options: [none, ebd, cmhs, sls, dd, ces, clli, bi, sci, cih, chrp]
+options: [none, ebd, cmhs, sls, dd, ces, cwchn, bi, cih, chrp]
 scope: person
 program: Medicaid
-meaning: Which Home and Community-Based Services waiver's Target Group Criteria (10 CCR 2505-10 § 8.7101) the Case Management Agency's functional assessment finds this person meets - Elderly, Blind and Disabled; Community Mental Health Supports; Supported Living Services; Developmental Disabilities; Children's Extensive Support; Children with Life-Limiting Illness; Brain Injury; Spinal Cord Injury; Children's Habilitation Residential; Children's Home and Community Based Services Respite Care - or none.
+meaning: Which Home and Community-Based Services waiver's Target Group Criteria (10 CCR 2505-10 § 8.7101, current text D-75) the Case Management Agency's functional assessment finds this person meets - Elderly, Blind and Disabled (ebd, § 8.7101.G); Community Mental Health Supports (cmhs, F); Supported Living Services (sls, I); Developmental Disabilities (dd, J); Children's Extensive Support (ces, B); Children with Complex Health Needs (cwchn, D); Brain Injury (bi, E); Complementary and Integrative Health (cih, H); Children's Habilitation Residential Program (chrp, C) - or none. These nine are the waivers the current § 8.7101 states.
 precision: A person may meet more than one waiver's target group in fact, but 8.7100.C.1.o limits enrollment to one waiver at a time, so this fact carries the single waiver the case management agency has certified.
 supplied_by: Case Management Agency's functional assessment and Target Group Criteria certification (10 CCR 2505-10 § 8.7101).
-sources: [S375]
+sources: [S375, S628, S629, S630, S631, S632, S633, S634, S635, S636, S637]
 tags: [ma, ltc, hcbs]
-rationale: "The phase-4 brief's interface fixes this identifier and directs creating it in this batch as a supplied fact (level of care and target group are supplied, not derived, per the brief). ma_hcbs_waiver_eligible (CO-653) and ma_ltc_eligibility_status (CO-652) need it."
+rationale: "Phase 7: options brought to the current § 8.7101 list - Children with Complex Health Needs (cwchn) added, and the retired Children with Life-Limiting Illness (clli) and Spinal Cord Injury (sci) options removed (the current text has no CLLI waiver, and its Complementary and Integrative Health waiver, cih, covers spinal cord injury among its qualifying conditions); no case or test used either removed option. The phase-4 brief's interface fixes this identifier and directs creating it in this batch as a supplied fact (level of care and target group are supplied, not derived, per the brief). ma_hcbs_waiver_eligible (CO-653) and ma_ltc_eligibility_status (CO-652) need it."

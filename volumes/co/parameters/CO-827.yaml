@@ -1,0 +1,16 @@
+id: CO-827
+name: CSRA minimum standard
+identifier: csra_minimum_standard
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: The community spouse resource allowance minimum standard - the floor 42 U.S.C. 1396r-5(f)(2)(A)(i) sets at $12,000 "subject to adjustment under subsection (g)", CPI-indexed annually and published by CMS.
+precision: "Not currently read by any item: 10 CCR 2505-10 § 8.100.7.M.1.a (the current text, S652, unchanged from the Cornell copy) has no spousal-share/minimum-standard shape, so ma_csra (CO-646) applies no minimum standard (OQ-126). Kept, now as a parameter with CMS's published figure, for a future § 8.100.7.M.1.b/§ 8.100.7.S increased-CSRA item. Converted from a supplied fact in phase 7 (OQ-91)."
+versions:
+  - from: "2026-01-01"
+    value: 32532
+    source: S644
+sources: [S644, S371]
+tags: [ma, ltc, resources, legal]
+rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Community Spouse Resources minimum resource standard, $32,532.00, effective January 1, 2026."

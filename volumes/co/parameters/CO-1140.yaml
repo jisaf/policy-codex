@@ -1,0 +1,12 @@
+id: CO-1140
+name: "HCBS-BI minimum age"
+identifier: ma_hcbs_bi_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The minimum age to meet the Persons with Brain Injury waiver target group - 10 CCR 2505-10 § 8.7101.E.2.b (\"Is 16 years of age or older\")."
+value: 16
+sources: [S632]
+tags: [ma, hcbs, age]
+rationale: "No existing parameter states the BI age floor. ma_hcbs_waiver_age_criteria_met (CO-1164) needs it."

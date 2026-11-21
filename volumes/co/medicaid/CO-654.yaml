@@ -5,14 +5,14 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: Whether this person is eligible to enroll in the Program of All-Inclusive Care for the Elderly for the month - meets the nursing facility level of care and is financially eligible for Long-Term Care - per 10 CCR 2505-10 §§ 8.7100.B/8.7100.C.9 and 8.497.
-precision: Does not test a minimum age; no fetched document states PACE's participant age floor - see OQ-93.
-derived: [all, meets_nursing_facility_level_of_care, ma_ltc_financially_eligible]
-sources: [S351]
-open: [OQ-93]
+meaning: Whether this person is eligible to enroll in the Program of All-Inclusive Care for the Elderly for the month - 55 or older, meets the nursing facility level of care and is financially eligible for Long-Term Care - per 10 CCR 2505-10 §§ 8.7100.B/8.7100.C.9 and 8.497, and 42 CFR 460.150(b), which § 8.497.1.B.1 incorporates.
+precision: The age floor is 42 CFR 460.150(b)(1)'s, incorporated by § 8.497.1.B.1 (OQ-93, resolved in phase 7). Residence in a PACE organization's service area and the ability to live safely in the community (460.150(b)(3), (c)) are not tested.
+derived: [all, [">=", age, ma_pace_min_age], meets_nursing_facility_level_of_care, ma_ltc_financially_eligible]
+sources: [S351, S649, S650]
 implemented: engine
 tags: [ma, ltc]
 rationale: "No existing item states a PACE eligibility test. ma_ltc_eligibility_status (CO-652) needs it."
 tests:
-  - {id: CO-654-T1, as_of: "2026-10-01", month: "2026-10", given: {meets_nursing_facility_level_of_care: true, ma_ltc_financially_eligible: true}, expect: true}
-  - {id: CO-654-T2, as_of: "2026-10-01", month: "2026-10", given: {meets_nursing_facility_level_of_care: false, ma_ltc_financially_eligible: true}, expect: false}
+  - {id: CO-654-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1947-03-12", meets_nursing_facility_level_of_care: true, ma_ltc_financially_eligible: true}, expect: true}
+  - {id: CO-654-T2, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1947-03-12", meets_nursing_facility_level_of_care: false, ma_ltc_financially_eligible: true}, expect: false}
+  - {id: CO-654-T3, as_of: "2026-10-01", month: "2026-10", title: "Phase 7: age 50 - under the PACE minimum age", given: {date_of_birth: "1976-03-12", meets_nursing_facility_level_of_care: true, ma_ltc_financially_eligible: true}, expect: false}

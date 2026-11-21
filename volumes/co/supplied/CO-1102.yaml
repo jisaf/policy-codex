@@ -1,0 +1,14 @@
+id: CO-1102
+name: Is screened and in need of breast or cervical cancer treatment
+identifier: is_screened_in_need_of_breast_or_cervical_cancer_treatment
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person has been screened by a Qualified Entity of the Colorado Women's Cancer Control Initiative (the CDC National Breast and Cervical Cancer Early Detection Program provider in Colorado) and found to be In Need of Treatment for breast or cervical cancer, including precancerous conditions as determined through pathological tests (10 CCR 2505-10 § 8.715.2.C.4; 42 U.S.C. 1396a(aa)(3)). A person who only requires routine follow-up monitoring services is not In Need of Treatment (§ 8.715.2.E).
+precision: "As of the determination date. Includes the § 8.715.2.C.7 route (a member who previously qualified and enrolled in a NBCCEDP program in another state and transfers her enrollment to the Colorado program), read as an alternative way to meet the screening requirement (OQ-202). Excludes anyone screened or treated for breast or cervical cancer before July 1, 2002 (§ 8.715.2.D)."
+supplied_by: Qualified Entity's BCCP presumptive eligibility form, the CWCCI history and physical, and the diagnosis pathology report (10 CCR 2505-10 § 8.715.4.F).
+sources: [S608, S609, S612]
+open: [OQ-202]
+tags: [ma, emergency, medical]
+rationale: "No existing item states the BCCP screening and need-for-treatment finding, which is a clinical determination this volume takes as supplied. ma_bccp_eligibility_status (CO-1152) needs it."

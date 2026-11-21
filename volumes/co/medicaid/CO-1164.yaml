@@ -1,0 +1,24 @@
+id: CO-1164
+name: "Medicaid: meets the HCBS waiver's age criteria"
+identifier: ma_hcbs_waiver_age_criteria_met
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person's age (and, for CES, marital status) fits the target group of the HCBS waiver the Case Management Agency designated (meets_hcbs_waiver_target_group, CO-821), per 10 CCR 2505-10 § 8.7101: Children's Extensive Support - unmarried and under 18; Children's Habilitation Residential Program - under 21; Children with Complex Health Needs - under 19; Brain Injury - 16 or older; Community Mental Health Supports, Elderly, Blind and Disabled, Complementary and Integrative Health, Supported Living Services and Developmental Disabilities - 18 or older. False when no waiver is designated."
+precision: "EBD's subgroups (65 or older aged; 18-64 physically disabled or blind; 18 or older with HIV/AIDS) together set an 18-or-older floor; which subgroup applies, the diagnoses, the level of care and the settings each waiver requires stay in the Case Management Agency's designation (§ 8.7100.D.1.a). BI's injury-before-65 condition is not tested (OQ-210)."
+derived: [case, [[=, meets_hcbs_waiver_target_group, "ces"], [all, [<, age, ma_hcbs_ces_age_limit], [not, [=, marital_status, "married"]]]], [[=, meets_hcbs_waiver_target_group, "chrp"], [<, age, ma_hcbs_chrp_age_limit]], [[=, meets_hcbs_waiver_target_group, "cwchn"], [<, age, ma_hcbs_cwchn_age_limit]], [[=, meets_hcbs_waiver_target_group, "bi"], [">=", age, ma_hcbs_bi_min_age]], [[in, meets_hcbs_waiver_target_group, [cmhs, ebd, cih, sls, dd]], [">=", age, ma_hcbs_adult_min_age]], [else, false]]
+sources: [S628, S629, S630, S631, S632, S633, S634, S635, S636, S637]
+open: [OQ-210]
+implemented: engine
+tags: [ma, hcbs, age]
+rationale: "meets_hcbs_waiver_target_group (CO-821) carries the Case Management Agency's designation but nothing checked it against the age bounds § 8.7101 states for each waiver, so a 40-year-old designated for a children's waiver was HCBS-eligible. ma_hcbs_waiver_eligible (CO-653) now reads it."
+tests:
+  - {id: CO-1164-T1, as_of: "2026-10-01", title: "CES, age 11, single", given: {meets_hcbs_waiver_target_group: ces, date_of_birth: "2015-01-01", marital_status: single}, expect: true}
+  - {id: CO-1164-T2, as_of: "2026-10-01", title: "CES, age 18", given: {meets_hcbs_waiver_target_group: ces, date_of_birth: "2008-01-01", marital_status: single}, expect: false}
+  - {id: CO-1164-T3, as_of: "2026-10-01", title: "CHRP, age 20", given: {meets_hcbs_waiver_target_group: chrp, date_of_birth: "2006-01-01"}, expect: true}
+  - {id: CO-1164-T4, as_of: "2026-10-01", title: "CwCHN, age 19", given: {meets_hcbs_waiver_target_group: cwchn, date_of_birth: "2007-01-01"}, expect: false}
+  - {id: CO-1164-T5, as_of: "2026-10-01", title: "BI, age 16", given: {meets_hcbs_waiver_target_group: bi, date_of_birth: "2010-01-01"}, expect: true}
+  - {id: CO-1164-T6, as_of: "2026-10-01", title: "EBD, age 17", given: {meets_hcbs_waiver_target_group: ebd, date_of_birth: "2009-01-01"}, expect: false}
+  - {id: CO-1164-T7, as_of: "2026-10-01", given: {meets_hcbs_waiver_target_group: none, date_of_birth: "1970-01-01"}, expect: false}
+  - {id: CO-1164-T8, as_of: "2026-10-01", title: "DD, age 30", given: {meets_hcbs_waiver_target_group: dd, date_of_birth: "1996-01-01"}, expect: true}

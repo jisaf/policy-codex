@@ -1,0 +1,12 @@
+id: CO-1135
+name: "Disabled widow(er) minimum age"
+identifier: ma_disabled_widow_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The minimum age for the disabled widow(er) group - 10 CCR 2505-10 § 8.100.6.I.1.c (\"be at least 50 years old but not 65 years old\"); the upper bound is ma_aged_age (CO-237)."
+value: 50
+sources: [S625]
+tags: [ma, non_magi, age]
+rationale: "No existing parameter states the disabled widow(er) age floor. ma_disabled_widow_eligible (CO-1162) needs it."

@@ -6,9 +6,9 @@ type: rate
 scope: global
 program: Medicaid
 meaning: Colorado's income limit for the Children's MAGI Medical Assistance category, expressed as a decimal fraction of the federal poverty level (MAGI-equivalent), under 10 CCR 2505-10 8.100.4.G.2.
-precision: A percentage-of-FPL figure (1.33 = 133%), compared directly against ma_magi_household_income_pct_fpl (CO-504).
-value: 1.33
-sources: [S201]
-open: [OQ-63]
+precision: "A percentage-of-FPL figure (1.42 = 142%), compared directly against ma_magi_household_income_pct_fpl (CO-504). Phase 7 (OQ-63, resolved): the current Secretary of State text of 10 CCR 2505-10 § 8.100.4.G.2 (D-65, S638) states 142%, and CMS's eligibility levels table (D-73, S641) states 142% for Colorado's children ages 0-18; the 133% this item held came from the Cornell copy (D-40, S201), which is out of date. Not versioned because no fetched document dates the change (OQ-211)."
+value: 1.42
+sources: [S638, S641, S201]
+open: [OQ-211]
 tags: [ma, magi, income, state_election]
 rationale: "No existing item carries Colorado's Children's-category income percentage. ma_magi_income_standard_child (CO-540) needs it as a parameter rather than an inline digit (governance name.digits)."

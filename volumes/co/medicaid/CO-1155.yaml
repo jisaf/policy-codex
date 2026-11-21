@@ -1,0 +1,20 @@
+id: CO-1155
+name: "Medicaid: income is within the Limited Family Planning band"
+identifier: ma_family_planning_income_in_band
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person's Limited Family Planning household income is greater than 133% and does not exceed 260% of the federal poverty level (10 CCR 2505-10 § 8.100.4.G.8), with the 5% MAGI disregard applied at the 260% ceiling.
+precision: "Floor compared without the disregard (income must exceed 133%); ceiling compared after subtracting ma_magi_income_disregard_pct (CO-183), the 42 CFR 435.603(d)(4)/§ 8.100.4.D disregard applied at the highest standard the person is tested against (OQ-204)."
+derived: [all, [">", ma_family_planning_household_income_pct_fpl, ma_family_planning_income_lower_pct], ["<=", ["-", ma_family_planning_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_family_planning_income_upper_pct]]
+sources: [S613]
+open: [OQ-204]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "No existing item tests the family planning income band; chp_income_within_limit (CO-704) is the CHP+ band from a different rule and reads the unadjusted household. ma_family_planning_status (CO-1154) reads it twice (the limited category and the reproductive health-care program), so it is its own item."
+tests:
+  - {id: CO-1155-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_family_planning_household_income_pct_fpl: 2.0}, expect: true}
+  - {id: CO-1155-T2, as_of: "2026-10-01", month: "2026-10", title: "At 133%: not greater than the floor", given: {ma_family_planning_household_income_pct_fpl: 1.33}, expect: false}
+  - {id: CO-1155-T3, as_of: "2026-10-01", month: "2026-10", title: "264% less the 5% disregard is within 260%", given: {ma_family_planning_household_income_pct_fpl: 2.64}, expect: true}
+  - {id: CO-1155-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_family_planning_household_income_pct_fpl: 2.70}, expect: false}
