@@ -22,11 +22,12 @@ export function versionInForce(
 
 /** The value of a parameter in force on a date. A parameter that carries
  *  versions takes its value from them and from nowhere else, so a date no
- *  version covers has no value; a parameter without versions holds one value
+ *  version covers has no value (an empty list, a figure not yet published,
+ *  covers no date); a parameter without versions holds one value
  *  for all time. This is the rule `paramOf` applies inside a case (minus the
  *  per-case override, which has no meaning outside one). */
 export function paramInForce(it: Item, date: string): unknown {
-  if (it.versions && it.versions.length) {
+  if (Array.isArray(it.versions)) {
     const v = versionInForce(it, date);
     return v ? v.value : null;
   }

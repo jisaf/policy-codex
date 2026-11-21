@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: Whether this person's gross income meets the 300% Institutionalized Special Income standard - gross income at or below 300% of the individual SSI federal benefit rate, or, for a person in a Long-Term Care institution (excluding a hospital) whose income exceeds that level, has established a qualifying income trust - per 10 CCR 2505-10 §§ 8.100.6.K.5 and 8.100.7.A.2.e.
+meaning: "Whether this person's gross income meets the ma_special_income_group_pct Institutionalized Special Income standard - gross income at or below ma_special_income_group_pct of the individual SSI federal benefit rate, or, for a person in a Long-Term Care institution (excluding a hospital) whose income exceeds that level, has established a qualifying income trust - per 10 CCR 2505-10 §§ 8.100.6.K.5 and 8.100.7.A.2.e."
 precision: "OQ-99 resolved pending verification: with an income trust, gross income must also be below the average private-pay rate of the region in which the person resides and intends to remain (§ 8.100.7.G.6.a.i.a), ma_income_trust_gross_income_limit, CO-1985). The regional rates are unverified figures supplied by the product owner from HCPF OM 25-073 (S1230)."
 derived: [any, ["<=", ma_ltc_gross_income, ["*", ssi_federal_benefit_rate_individual, ma_special_income_group_pct]], [all, has_income_trust, ["<", ma_ltc_gross_income, ma_income_trust_gross_income_limit]]]
 sources: [S351, S352, S378, S1229, S1230]
@@ -14,7 +14,7 @@ tags: [ma, ltc, income]
 open: [OQ-99]
 rationale: "No existing item states the 300% special income group test. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it. The target household's p1 (2030 <= 994 x 3 = 2982) is the worked example in the batch report."
 tests:
-  - {id: CO-642-T1, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 2030, has_income_trust: false}, expect: true}
-  - {id: CO-642-T2, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 3200, has_income_trust: false}, expect: false}
-  - {id: CO-642-T3, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 3200, has_income_trust: true, county_of_residence: denver}, expect: true}
-  - {id: CO-642-T4, as_of: "2026-10-01", month: "2026-10", title: "OQ-99: income trust but gross income above the Region III rate of 9780.17", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 10000, has_income_trust: true, county_of_residence: pueblo}, expect: false}
+  - {id: CO-642-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 2030, has_income_trust: false}, expect: true}
+  - {id: CO-642-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 3200, has_income_trust: false}, expect: false}
+  - {id: CO-642-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 3200, has_income_trust: true, county_of_residence: denver}, expect: true}
+  - {id: CO-642-T4, as_of: "2026-10-01", month: "2026-10", title: "OQ-99: income trust but gross income above the Region III rate of 9780.17", given: {ma_ltc_gross_income: 10000, has_income_trust: true, county_of_residence: pueblo}, expect: false}

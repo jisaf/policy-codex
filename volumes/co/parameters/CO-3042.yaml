@@ -1,0 +1,12 @@
+id: CO-3042
+name: "SNAP Basic Utility Allowance: fewest non-heating utility costs"
+identifier: snap_bua_min_utility_cost_count
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The fewest non-heating, non-cooling utility costs a household not entitled to the Heating and Cooling Utility Allowance must incur for the Basic Utility Allowance: \"at least two (2) non-heating or non-cooling utility costs\" (10 CCR 2506-1 4.407.31.B.1); a household with fewer, but one, gets the One Utility Allowance or the telephone allowance (C.1)."
+value: 2
+sources: [S744, S745]
+tags: [income, snap]
+rationale: "Hard-coded numbers audit H-20: snap_utility_allowance_amount (CO-1500) compared the count with literals 2 and 1; the BUA threshold is a parameter, and the one-cost arms read \"fewer than it, and at least one\"."

@@ -1,0 +1,13 @@
+id: CO-3039
+name: "SNAP child support exclusion: months of payment history averaged"
+identifier: snap_child_support_averaging_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The months of child support payment history at or above which the payments are averaged for the SNAP child support exclusion, and the months averaged: \"Households with a history of three (3) or more months of paying child support shall have the support payments averaged\" (10 CCR 2506-1 4.407.5.D); with \"less than a three (3) month record\" the payment is estimated (E)."
+precision: "The rule names one figure for both: the history that triggers averaging and, read here, the months the average is taken over (the months before the budget month)."
+value: 3
+sources: [S1314]
+tags: [income, snap]
+rationale: "Hard-coded numbers audit H-9: snap_child_support_exclusion (CO-2003) wrote 3 twice, as the history length and as the months averaged."

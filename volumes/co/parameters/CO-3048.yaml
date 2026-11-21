@@ -1,0 +1,12 @@
+id: CO-3048
+name: "Adult Financial share of earned income counted after the disregard"
+identifier: af_earned_income_remainder_rate
+kind: parameter
+type: rate
+scope: global
+program: AdultFinancial
+meaning: "The share of gross earned income above af_earned_income_disregard that Adult Financial counts: \"Divide the remainder by two (2)\" (9 CCR 2503-5 3.533.A.1.b; 3.534.A)."
+value: 0.5
+sources: [S457, S1632]
+tags: [cash, income]
+rationale: "Hard-coded numbers audit D-4: Adult Financial items read the SSI-method parameter, so a change of the SSI figure would have changed Adult Financial without an amendment of 9 CCR 2503-5. The rule states its own figure, as OQ-391 found for the AND-CS grant standard, so the program reads its own parameter (option (a) of the audit)."

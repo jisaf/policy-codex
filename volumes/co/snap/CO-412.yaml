@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: The person's age at the first day of the month is at least 18 and at most snap_abawd_max_age (64), the range 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102, leaves subject to the ABAWD (able-bodied adult without dependents) time limit.
+meaning: "The person's age at the first day of the month is at least snap_abawd_min_age and at most snap_abawd_max_age (64), the range 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102, leaves subject to the ABAWD (able-bodied adult without dependents) time limit."
 precision: Age is computed for the first day of the month in context, not the determination date, so this fact can be evaluated for months other than the determination month (needed by snap_abawd_countable_months_in_period's 36-month window).
 assumption: "\"Over 65\" excepts a person aged 65, so the range is 18 through 64: FNS's proposed 7 CFR 273.24(c)(1) (91 FR 72439; S1301, S1302), which describes itself as codifying USDA's implementation of the 2025 Act (S1300). See CO-166 (OQ-31 resolved)."
 statute_override: "Federal law overrides the ABAWD definition of 10 CCR 2506-1 4.000, which still ends the age range at 54: Pub. L. 119-21 sec. 10102 (July 4, 2025) extends the time limit to people aged 55 through 64; no CDHS implementing communication was available to this volume (OQ-533)."

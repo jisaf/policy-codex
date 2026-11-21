@@ -90,10 +90,16 @@ export function constraints(
     const versions = it.versions ?? [];
     const hasVersions = versions.length > 0 &&
       versions.every((v) => v.value !== undefined && v.value !== null && v.value !== "");
+    // A figure the State sets but has not published where it can be fetched
+    // is an empty list of versions: the parameter exists, covers no date
+    // (unknown, reported as no-version), and names the open question that
+    // records where the figure is to come from.
+    const awaitsFigure = Array.isArray(it.versions) && versions.length === 0 &&
+      !hasValue && !!(it.open && it.open.length);
     // One message, so the pinned fixture reports of unversioned parameters
     // read exactly as before; a parameter stating both is reported as having
     // no value, since the two cannot both be its value.
-    add((hasValue || hasVersions) && !(hasValue && hasVersions), "Parameter has a value");
+    add(((hasValue || hasVersions) && !(hasValue && hasVersions)) || awaitsFigure, "Parameter has a value");
   }
   if (it.kind !== "supplied") {
     add(!!(it.sources && it.sources.length), "At least one source excerpt is cited");

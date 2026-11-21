@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: Whether the person is a "dependent child" for purposes of the Parents and Caretaker Relatives and Adults MAGI categories, under 42 CFR 435.4's definition - under ma_dependent_child_age_limit (18), or that age and a full-time secondary student.
+meaning: "Whether the person is a \"dependent child\" for purposes of the Parents and Caretaker Relatives and Adults MAGI categories, under 42 CFR 435.4's definition - under ma_dependent_child_age_limit, or that age and a full-time secondary student."
 precision: "This batch does not model 435.4's second dependent-child criterion (deprivation of parental support by reason of a parent's death, absence, incapacity, or unemployment): Colorado's MAGI conversion of the categorically needy groups (8.100.4.G.3) states the dependent-child test without a deprivation clause, consistent with MAGI's general elimination of AFDC-era deprivation and resource rules, so this item follows Colorado's simpler test - see OQ-50. The 18-year-old prong reads is_full_time_secondary_student_finishing_before_nineteen (CO-1720), which carries 435.4's full-time and expected-completion conditions; it had read half-time secondary enrollment."
 derived: [any, [<, age, ma_dependent_child_age_limit], [all, ["=", age, ma_dependent_child_age_limit], is_full_time_secondary_student_finishing_before_nineteen]]
 sources: [S206]

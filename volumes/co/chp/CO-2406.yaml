@@ -5,7 +5,7 @@ kind: derived
 type: month
 scope: person
 program: CHP+
-meaning: "The last month of a CHP+ prenatal enrollment span: the month 12 months after the month the pregnancy ended (10 CCR 2505-3 § 430.3)."
+meaning: "The last month of a CHP+ prenatal enrollment span: the month chp_postpartum_coverage_months months after the month the pregnancy ended (10 CCR 2505-3 § 430.3)."
 derived: [months_after, chp_postpartum_coverage_months, [month_of, pregnancy_end_date]]
 sources: [S1715]
 implemented: engine

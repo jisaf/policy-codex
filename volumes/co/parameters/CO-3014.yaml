@@ -1,0 +1,12 @@
+id: CO-3014
+name: Summer EBT instructional year, starting month
+identifier: sebt_instructional_year_start_month
+kind: parameter
+type: whole number
+scope: global
+program: SunBucks
+meaning: "The calendar month number (7, July) whose first day begins the instructional year: \"the period from July 1 of the prior year through one day prior to the summer operational period\" (7 CFR 292.2), so the period of eligibility of a summer runs from the July 1 of the year before it."
+value: 7
+sources: [S1820]
+tags: [sebt]
+rationale: "Hard-coded numbers audit H-16: sebt_summer_year (CO-2581) counted whole years from a fixed 2000-07-01 anchor and added 2001; with P50 and P52 it reads the most recent July of this parameter instead. No existing parameter states the month."

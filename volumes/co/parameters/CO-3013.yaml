@@ -1,0 +1,12 @@
+id: CO-3013
+name: Summer EBT months of benefits per summer
+identifier: sebt_summer_benefit_months
+kind: parameter
+type: whole number
+scope: global
+program: SunBucks
+meaning: "The number of months of Summer EBT benefits issued for a summer operational period: \"a full three months of benefits\" (7 CFR 292.15(d)(iii)); the total summer benefit level is the monthly level multiplied by it (the annual benefit levels notice)."
+value: 3
+sources: [S795, S796]
+tags: [sebt, income]
+rationale: "Hard-coded numbers audit H-6: sebt_benefit_amount (CO-1299) multiplied the monthly level by a literal 3; no existing parameter states the months."

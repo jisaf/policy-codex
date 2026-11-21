@@ -7,7 +7,7 @@ options: [tier_1, tier_2, tier_3, none]
 scope: person
 program: AdultFinancial
 role: outcome
-meaning: The Home Care Allowance tier the person's functional assessment places them in - a functional capacity score of 21 or higher with a need-for-paid-care score of 1-23 (tier 1), 24-37 (tier 2) or 38-51 (tier 3) - or none when the capacity score is under 21 or the need score is outside 1-51, per 9 CCR 2503-5 3.570.13.C.3 and 3.570.14.B.
+meaning: "The Home Care Allowance tier the person's functional assessment places them in - a functional capacity score of af_hca_min_capacity_score or higher with a need-for-paid-care score from 1 to below af_hca_tier_two_min_need_score (tier 1), from that score to below af_hca_tier_three_min_need_score (tier 2) or from that score to af_hca_max_need_score (tier 3) - or none when the capacity score is under af_hca_min_capacity_score or the need score is outside 1 to af_hca_max_need_score, per 9 CCR 2503-5 3.570.13.C.3 and 3.570.14.B."
 derived: [case, [[<, hca_functional_capacity_score, af_hca_min_capacity_score], none], [[<, hca_need_for_paid_care_score, af_hca_tier_one_min_need_score], none], [[">", hca_need_for_paid_care_score, af_hca_max_need_score], none], [[">=", hca_need_for_paid_care_score, af_hca_tier_three_min_need_score], tier_3], [[">=", hca_need_for_paid_care_score, af_hca_tier_two_min_need_score], tier_2], [else, tier_1]]
 sources: [S714, S715]
 implemented: engine

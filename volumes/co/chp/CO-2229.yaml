@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person
 program: CHP+
-meaning: "The most cost sharing a CHP+ enrollee's family can be required to pay in a year: 5% (chp_cost_sharing_aggregate_cap_pct) of the family's yearly income (10 CCR 2505-3 § 330.2; 42 CFR 457.560(a))."
+meaning: "The most cost sharing a CHP+ enrollee's family can be required to pay in a year: chp_cost_sharing_aggregate_cap_pct of the family's yearly income (10 CCR 2505-3 § 330.2; 42 CFR 457.560(a))."
 precision: Yearly income is twelve times the MAGI household income (ma_magi_household_income) of the month of the determination.
 derived: ["*", chp_cost_sharing_aggregate_cap_pct, ["*", 12, [at, ma_magi_household_income, [det_month]]]]
 accepts_from: [ma_magi_household_income]

@@ -1,0 +1,12 @@
+id: CO-3005
+name: CCCAP entry income limit floor, percent of FPL
+identifier: cccap_entry_income_limit_min_pct_fpl
+kind: parameter
+type: rate
+scope: global
+program: CCCAP
+meaning: "The lowest entry income eligibility limit the Department may set for a county, as a share of the federal poverty guideline: entry eligibility is \"not to be set below\" this level, per 8 CCR 1403-1 3.111.H.1.a."
+value: 1.85
+sources: [S780]
+tags: [income]
+rationale: "Hard-coded numbers audit H-18: the floor the rule states, so cccap_entry_income_limit_pct_fpl (CO-870) never reads a county figure below it. No existing parameter states it."

@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: Whether the person is eligible for the Medicaid Buy-In Program for Working Adults with Disabilities - at least 16, employed, disabled, and with countable income at or below 450% of the federal poverty level for a single individual - per 10 CCR 2505-10 8.100.6.P.1.
+meaning: Whether the person is eligible for the Medicaid Buy-In Program for Working Adults with Disabilities - at least ma_wawd_min_age, employed, disabled, and with countable income at or below ma_wawd_income_limit_pct (CO-242) of the federal poverty guideline for ma_wawd_household_size (CO-3030) - per 10 CCR 2505-10 8.100.6.P.1.
 precision: "'Only the applicant's income will be considered' (8.100.6.P.1.b), and 8.100.5.H.1's carve-out ('the applicant's spouse's income does not count toward the applicant') means this item computes the applicant's own earned/unearned income and disregards without combining a living-together spouse's income, unlike ma_ssi_countable_income (CO-607); it applies the same $65-plus-one-half and $20 disregard structure to the applicant's own income only. Resources are not counted (8.100.6.P.1.c), so no resource test is included. Status reads ma_meets_status_for_cover_all_coloradans_categories (CO-1174), since § 8.100.3.G.1.g.ix.1.b lists both Buy-In programs among the categories Cover All Coloradans reaches. The income is ma_wawd_countable_income (CO-1715), which now counts self-employment; employment reads has_earned_income (CO-1356, wages or self-employment receipts in the month) instead of the retired is_employed (CO-805), which a case could state true with no earnings."
-derived: [all, ma_meets_residency, ma_meets_status_for_cover_all_coloradans_categories, [">=", age, ma_wawd_min_age], has_earned_income, is_disabled_for_buy_in, [<=, ma_wawd_countable_income, ["*", [/, [lookup, federal_poverty_guideline_annual_table, 1], 12], ma_wawd_income_limit_pct]]]
+derived: [all, ma_meets_residency, ma_meets_status_for_cover_all_coloradans_categories, [">=", age, ma_wawd_min_age], has_earned_income, is_disabled_for_buy_in, [<=, ma_wawd_countable_income, ["*", [/, [lookup, federal_poverty_guideline_annual_table, ma_wawd_household_size], 12], ma_wawd_income_limit_pct]]]
 sources: [S607, S317]
 implemented: engine
 tags: [ma, non_magi, buy_in, income, disability]

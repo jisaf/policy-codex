@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether the person is of an age to be an unemancipated child under 10 CCR 2505-10 § 8.100.5.H.2.a: under 18, or under 21 and regularly attending a school, college or university or receiving technical training. Living in the same household with a parent is tested where the item is read, through the parent edge."
+meaning: "Whether the person is of an age to be an unemancipated child under 10 CCR 2505-10 § 8.100.5.H.2.a: under 18, or under ma_ssi_unemancipated_student_age_limit and regularly attending a school, college or university or receiving technical training. Living in the same household with a parent is tested where the item is read, through the parent edge."
 derived: [any, [<, age, ma_ssi_unemancipated_child_age_limit], [all, [<, age, ma_ssi_unemancipated_student_age_limit], ma_is_regularly_attending_school_or_training]]
 sources: [S1506]
 implemented: engine

@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: ColoradoWorks
 meaning: "The sponsor's net income deemed to this sponsored non-citizen as unearned income for the month (9 CCR 2503-6 3.605.1.A.5.b): the gross earned income of the sponsor and of the sponsor's spouse, each less twenty percent or $175, whichever is less, minus support paid to dependents not living in the sponsor's home, plus their unearned income, never below zero; zero when sponsor deeming does not apply."
-precision: "The twenty percent or $175 is taken from each earner's earnings, since A.5.a deems \"the net income of a non-citizen's sponsor and the sponsor's spouse\". Unlike SNAP (4.305.2.D.2.c), Colorado Works states no division among several sponsored non-citizens."
+precision: "The twenty percent or cw_sponsor_earned_income_deduction_cap is taken from each earner's earnings, since A.5.a deems \"the net income of a non-citizen's sponsor and the sponsor's spouse\". Unlike SNAP (4.305.2.D.2.c), Colorado Works states no division among several sponsored non-citizens."
 derived: [case, [cw_sponsor_deeming_applies, [max, 0, ["-", ["+", ["-", sponsor_gross_earned_income, [min, ["*", cw_sponsor_earned_income_deduction_rate, sponsor_gross_earned_income], cw_sponsor_earned_income_deduction_cap]], ["-", [otherwise, sponsor_spouse_gross_earned_income, 0], [min, ["*", cw_sponsor_earned_income_deduction_rate, [otherwise, sponsor_spouse_gross_earned_income, 0]], cw_sponsor_earned_income_deduction_cap]], sponsor_unearned_income, [otherwise, sponsor_spouse_unearned_income, 0]], [otherwise, sponsor_support_paid_to_dependents_outside_home, 0]]]], [else, 0]]
 sources: [S1627]
 implemented: engine

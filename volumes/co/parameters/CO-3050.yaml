@@ -1,0 +1,12 @@
+id: CO-3050
+name: "Adult Financial deeming: share of the SSI standard for a dependent child's needs"
+identifier: af_dependent_child_needs_rate
+kind: parameter
+type: rate
+scope: global
+program: AdultFinancial
+meaning: "The share of the maximum SSI grant benefit standard deducted from an OAP client's spouse's unearned income for the needs of each dependent child living in the household: \"equal to half the maximum SSI grant benefit standard\" (9 CCR 2503-5 3.534.B.3)."
+value: 0.5
+sources: [S1632]
+tags: [cash, income]
+rationale: "Hard-coded numbers audit H-17: af_spouse_dependent_children_needs (CO-2392) divided by a literal 2. Not ma_ssi_ineligible_child_allocation_rate, which states Medicaid's 8.100.5.H text."

@@ -1,0 +1,14 @@
+id: CO-3000
+name: LEAP household income contribution rate by poverty band
+identifier: leap_income_contribution_rate_table
+kind: parameter
+type: table keyed by income band
+scope: global
+program: LEAP
+meaning: "The share of the estimated home heating costs a LEAP household is expected to contribute from its income, by the household's income as a share of the federal poverty level, as 9 CCR 2503-7 3.758.47 Step D charts it: each key is a band's inclusive upper bound, and the row keyed above is the open top band the chart states as a percentage \"and above\"."
+precision: "The chart's bands run \"0 - 75%\", \"75.01 - 125%\", \"125.01- 175%\" and \"175.01+%\"; a ratio between two hundredths of a percent (75.005%) falls in the band above the lower bound, as the inclusive upper bounds read it. The rule section is marked \"[Rev. eff. 11/1/15]\" in the version effective November 1, 2025 (D-86), which is the date the version runs from."
+versions:
+  - {from: "2015-11-01", value: {"0.75": 0, "1.25": 0.1, "1.75": 0.2, above: 0.3}, source: S771}
+sources: [S770, S771]
+tags: [income]
+rationale: "Hard-coded numbers audit H-2: leap_income_contribution_rate (CO-1279) wrote the four bands and rates into a case as literals; the State re-bases LEAP figures by program year, so the chart is a dated parameter. The open top band is the table's above row (P48), not an invented upper bound."

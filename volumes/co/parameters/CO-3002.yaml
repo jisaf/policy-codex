@@ -1,0 +1,13 @@
+id: CO-3002
+name: CCCAP parent fee reduction for a top-three quality-rated provider
+identifier: cccap_quality_rating_fee_reduction_rate
+kind: parameter
+type: rate
+scope: global
+program: CCCAP
+meaning: "The share by which the regularly calculated parent fee of a Low-Income or Colorado Works Child Care household is reduced when the household uses a child care provider in the top three levels of the Department's quality rating system, per 8 CCR 1403-1 3.124.H."
+precision: "The rule states the reduction, so the fee is the calculated fee times one less this rate. The rule text states no effective date for the figure, so it has one value."
+value: 0.2
+sources: [S783]
+tags: [income]
+rationale: "Hard-coded numbers audit H-4: cccap_parent_fee (CO-1290) multiplied by a literal 0.8; no existing parameter states the reduction."

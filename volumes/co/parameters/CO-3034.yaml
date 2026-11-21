@@ -1,0 +1,16 @@
+id: CO-3034
+name: "Medicaid: the federal payment limit for non-citizens applies"
+identifier: ma_alien_payment_restriction_applies
+kind: parameter
+type: yes/no
+scope: global
+program: Medicaid
+meaning: "Whether 42 U.S.C. 1396b(v)(5), added by Pub. L. 119-21 sec. 71109(a), limits federal payment for full Medical Assistance to citizens and nationals, lawful permanent residents, Cuban and Haitian entrants and Compact of Free Association migrants on the determination date: false before October 1, 2026 and true from it (\"beginning on October 1, 2026\"). The same limit reaches CHIP through 42 U.S.C. 1397gg(e)(1)(R)."
+precision: "The first version runs from the Act's enactment (July 4, 2025), when the limit was law but not yet in force."
+versions:
+  - {from: "2025-07-04", to: "2026-10-01", value: false, source: S1700}
+  - {from: "2026-10-01", value: true, source: S1700}
+sources: [S1700, S1701, S1704]
+tags: [ma, immigration]
+open: [OQ-510]
+rationale: "Hard-coded numbers audit E-1: ma_meets_citizenship_requirement (CO-509) and ma_hospital_presumptive_eligibility_category (CO-2439) compared the determination date with a date parameter (ma_alien_payment_restriction_start_date, CO-2401, now retired) to switch the rule on; a rule that changes on a date is two versions (conventions, Effective dating)."

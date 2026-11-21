@@ -5,8 +5,8 @@ kind: derived
 type: money
 scope: person
 program: Medicaid
-meaning: "The personal needs allowance deducted first from a Long-Term Care institution resident's income: $90 (ma_veteran_personal_needs_allowance) for a VA non-service-connected pensioner without spouse or dependent child or a pensioner's surviving spouse without dependent child, otherwise the base allowance (ma_personal_needs_allowance_institutional) (10 CCR 2505-10 § 8.100.7.V.3.d; C.R.S. 25.5-6-206(2))."
-precision: The rule and statute state $90 for these residents even though the 2026 base allowance ($110.36) is higher.
+meaning: "The personal needs allowance deducted first from a Long-Term Care institution resident's income: ma_veteran_personal_needs_allowance for a VA non-service-connected pensioner without spouse or dependent child or a pensioner's surviving spouse without dependent child, otherwise the base allowance (ma_personal_needs_allowance_institutional) (10 CCR 2505-10 § 8.100.7.V.3.d; C.R.S. 25.5-6-206(2))."
+precision: "The rule and statute state ma_veteran_personal_needs_allowance for these residents even though the 2026 base allowance (ma_personal_needs_allowance_institutional) is higher."
 derived: [case, [ma_qualifies_for_veterans_personal_needs_allowance, ma_veteran_personal_needs_allowance], [else, ma_personal_needs_allowance_institutional]]
 sources: [S361, S1231, S1232, S1228]
 implemented: engine

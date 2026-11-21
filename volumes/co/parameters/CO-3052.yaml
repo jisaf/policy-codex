@@ -1,0 +1,12 @@
+id: CO-3052
+name: "Adult Financial OAP: youngest age for the psychiatric facility personal needs allowance"
+identifier: af_oap_psychiatric_facility_min_age
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "The youngest age (inclusive) at which an OAP client in a psychiatric facility for thirty consecutive days is eligible only for the personal needs allowance: \"In a psychiatric facility when sixty-five (65) years of age or older\" (9 CCR 2503-5 3.532.D.3)."
+value: 65
+sources: [S1008, S1318]
+tags: [cash, oap, age]
+rationale: "Hard-coded numbers audit H-14: af_oap_grant (CO-951) wrote [\">=\", age, 65] twice. Not ma_aged_age: a different rule."

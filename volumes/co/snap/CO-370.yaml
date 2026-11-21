@@ -6,8 +6,8 @@ type: money
 scope: person
 program: SNAP
 meaning: The flat monthly deduction every SNAP household receives before any other income-based deduction, looked up by household size (a household of 6 or more eligible members uses the 6-person figure).
-precision: Reads snap_eligible_household_size (eligible members only) and looks up snap_standard_deduction_table at `[min, snap_eligible_household_size, 6]`, matching 10 CCR 2506-1 4.407.1's "six (6) or more eligible members" language.
-derived: [lookup, snap_standard_deduction_table, [min, snap_eligible_household_size, 6]]
+precision: "Reads snap_eligible_household_size (eligible members only) and reads snap_standard_deduction_table for it, its last row for every larger household (P51), matching 10 CCR 2506-1 4.407.1's \"six (6) or more eligible members\" language (hard-coded numbers audit S-1: before, a literal 6)."
+derived: [lookup_extended, snap_standard_deduction_table, snap_eligible_household_size]
 sources: [S81, S89, S94]
 implemented: engine
 tags: [income]

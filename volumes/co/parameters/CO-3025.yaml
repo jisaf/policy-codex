@@ -1,0 +1,12 @@
+id: CO-3025
+name: "Medicaid former foster care: youngest age at exit from foster care"
+identifier: ma_former_foster_care_exit_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The youngest age (inclusive) at which a youth must have been in foster care under the responsibility of Colorado or a Tribe for the Former Foster Care Children category - \"on their 18th, 19th, 20th or up to their 21st birthday\" (10 CCR 2505-10 § 8.100.4.H.2.a) - and the age at which an out-of-state youth's birthday must fall on or after January 1, 2023 (H.2.a.iii, \"in foster care at the age 18\")."
+value: 18
+sources: [S1718]
+tags: [ma, magi, age]
+rationale: "Hard-coded numbers audit H-14: ma_is_former_foster_care_category (CO-549) wrote 18 twice beside ma_former_foster_care_exit_age_max (CO-225); convention 8, _min_age is inclusive."

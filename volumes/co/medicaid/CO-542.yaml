@@ -6,7 +6,7 @@ type: rate
 scope: global
 program: Medicaid
 meaning: The income standard, as a decimal fraction of the federal poverty level, that governs the Adults MAGI Medical Assistance category - the greater of the federal floor 42 CFR 435.119(b)(5) sets and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.4.
-precision: Both the federal floor and Colorado's percentage are 133% FPL.
+precision: "Colorado's percentage (ma_income_limit_adult_pct) equals the federal floor (ma_federal_magi_floor_pct); the max pattern states the comparison rather than assuming it."
 derived: [max, ma_federal_magi_floor_pct, ma_income_limit_adult_pct]
 sources: [S207, S208]
 implemented: engine
