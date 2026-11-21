@@ -8026,3 +8026,319 @@
     p4:
       ma_magi_category: {"2027-03": child}
       ma_magi_eligibility_status: {"2027-03": eligible}
+
+- id: CO-83
+  title: "Phase-10 facts round: a mother and her daughter apply on October 12 with the mother's husband, who pays the rent and does not ask for Colorado Works"
+  # Built for the phase-10 supplied-facts sweep. SNAP: an initial month prorated from the twelfth (4.207.2,
+  # OQ-38) and rent counted as billed to the member who pays it (4.407.3.A, OQ-28/29). Colorado Works: the
+  # stepfather is an optional member who does not request assistance (3.604.2.C.2.a, OQ-152), so the assistance
+  # unit is the mother and child, but he is in the budgetary unit (3.604.2.D.1.b, OQ-140) and his income is deemed
+  # under 3.605.1.A.4.a.
+  as_of: "2026-10-15"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [buys_prepares_with, p1, p2]
+    - [buys_prepares_with, p1, p3]
+  persons:
+    p1:
+      # Mother, 31, citizen, no income.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1995-04-02"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: married
+        is_requesting_assistance_for_own_child: false
+        meets_public_assistance_citizenship_requirement: true
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+    p2:
+      # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1990-07-19"
+        sex: male
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 1500
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 130
+        cw_requests_inclusion_in_assistance_unit: false
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 1200
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: married
+        is_requesting_assistance_for_own_child: false
+        meets_public_assistance_citizenship_requirement: true
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+    p3:
+      # Daughter, 8.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2018-05-09"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        meets_public_assistance_citizenship_requirement: true
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        is_full_time_secondary_student_finishing_before_nineteen: false
+  # SNAP, October (initial month, applied on the 12th): gross 1,500 (p2's wages); earned income deduction 300;
+  # standard deduction (size 3) 217; 1,500 - 300 - 217 = 983. Shelter: the $1,200 rent billed to p2, an eligible
+  # member, counts in full (CO-2300), plus the $616 heating and cooling allowance = 1,816; 1,816 - 491.50 = 1,324.50,
+  # capped at the $769 shelter cap (no elderly or disabled member); net 983 - 769 = 214; 808 - 64.20 = 743.80,
+  # rounded down to 743 for a full month. October is prorated: 743 x 20 / 31 = 479.35, rounded down to 479, over
+  # the $25 minimum (4.207.2.C, 4.207.3.B). November is a full month: 743.
+  # Colorado Works: the stepfather does not request assistance, so the unit is [p1, p3] and he is outside it
+  # (his own unit is empty); he is in the budgetary unit, and 3.605.1.A.4.a deems 1,500 - 90 - 253 (his own needs,
+  # One Caretaker, no children) = 1,157, which is over the 331 need standard for one caretaker and one child.
+  expect:
+    p1:
+      snap_household_members: [p1, p2, p3]
+      snap_is_initial_month: {"2026-10": true, "2026-11": false}
+      snap_shelter_costs: {"2026-10": 1816}
+      snap_full_month_allotment: {"2026-10": 743}
+      snap_allotment: {"2026-10": 479, "2026-11": 743}
+      snap_eligibility_status: {"2026-10": eligible}
+      cw_assistance_unit_members: [p1, p3]
+      cw_budgetary_unit_members: [p1, p2, p3]
+      cw_countable_income: {"2026-10": 1157}
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      cw_grant_amount: {"2026-10": 0}
+    p2:
+      snap_allotment: {"2026-10": 479}
+      cw_assistance_unit_members: []
+      cw_budgetary_member_deemed_income: {"2026-10": 1157}
+    p3:
+      cw_assistance_unit_members: [p1, p3]
+      cw_eligibility_status: {"2026-10": ineligible_income}
