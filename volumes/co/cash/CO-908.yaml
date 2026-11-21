@@ -9,6 +9,7 @@ meaning: "This person's countable unearned income for the month under 9 CCR 2503
 precision: "Does not model the 3.605.5.B-C treatment of child support once the unit is already found eligible (disregarded in the grant calculation and, at redetermination, only counted if consistently received and averaging over $500) - see OQ-105's sibling assumption; this item is scoped to the initial-application reading. Vocabulary fix round (R-1): Colorado Works' own grant (tanf_cash_income) is no longer counted against the unit; Adult Financial grants are, since 3.605.4 does not exempt them. SSI is not counted: 3.605.4.B.27 exempts an SSI recipient's income."
 derived: [+, social_security_income, pension_income, unemployment_income, adult_financial_cash_income, child_support_received, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest]
 sources: [S412]
+open: [OQ-390]
 implemented: engine
 tags: [cash, tanf, income]
 rationale: No existing item sums Colorado Works countable unearned income; cw_countable_income (CO-910) needs it.
