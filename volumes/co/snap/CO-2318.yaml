@@ -1,0 +1,22 @@
+id: CO-2318
+name: "SNAP: is disqualified for a voluntary quit"
+identifier: snap_is_disqualified_for_voluntary_quit
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person is serving a SNAP disqualification for a voluntary quit in the determination month: the quit without good cause (snap_voluntary_quit_date) occurred within sixty days before the date of application or any time after it (4.308.B), and the determination month falls in the disqualification period, which begins in snap_voluntary_quit_disqualification_start_month and lasts one month the first time, three the second and six the third or a later time (4.310.8.A-B). The person is then a disqualified member (4.310.8.A)."
+precision: "False when no voluntary quit is stated. The sixty days count back from snap_application_date (CO-1746). Read for the determination month, since the disqualified-member items it feeds (snap_is_ineligible_member, CO-311) are stated per person."
+derived: [case, [[unknown, snap_voluntary_quit_date], false], [else, [all, [">=", snap_voluntary_quit_date, [days_after, ["-", 0, snap_voluntary_quit_lookback_days], snap_application_date]], ["<=", snap_voluntary_quit_disqualification_start_month, [det_month]], ["<", [det_month], [months_after, [case, [["=", snap_work_requirement_violation_number, 1], snap_level_sanction_first_months], [["=", snap_work_requirement_violation_number, 2], snap_level_sanction_second_months], [else, snap_level_sanction_third_months]], snap_voluntary_quit_disqualification_start_month]]]]]
+sources: [S1611, S1612]
+implemented: engine
+tags: [snap, work_registration, legal]
+rationale: "OQ-38 (P-8): 4.308.A (S1611) makes a voluntary quit without good cause an independent ground of SNAP ineligibility, and 4.310.8 (S1612) sets its period; no item computed it. snap_is_ineligible_member (CO-311) and snap_is_disqualified_member_counted_in_full (CO-2302) read it."
+tests:
+  - {id: CO-2318-T1, title: "No voluntary quit stated", as_of: "2026-10-01", given: {}, expect: false}
+  - {id: CO-2318-T2, title: "First quit 30 days before applying; one month starting October", as_of: "2026-10-05", given: {snap_voluntary_quit_date: "2026-09-01", snap_application_date: "2026-10-01", snap_work_requirement_violation_number: 1, snap_voluntary_quit_disqualification_start_month: "2026-10"}, expect: true}
+  - {id: CO-2318-T3, title: "First quit - the one month has ended by November", as_of: "2026-11-05", given: {snap_voluntary_quit_date: "2026-09-01", snap_application_date: "2026-10-01", snap_work_requirement_violation_number: 1, snap_voluntary_quit_disqualification_start_month: "2026-10"}, expect: false}
+  - {id: CO-2318-T4, title: "Second violation - three months, so December is still in the period", as_of: "2026-12-05", given: {snap_voluntary_quit_date: "2026-09-01", snap_application_date: "2026-10-01", snap_work_requirement_violation_number: 2, snap_voluntary_quit_disqualification_start_month: "2026-10"}, expect: true}
+  - {id: CO-2318-T5, title: "Fourth violation reads as the third - six months, so March 2027 is still in the period", as_of: "2027-03-05", given: {snap_voluntary_quit_date: "2026-09-01", snap_application_date: "2026-10-01", snap_work_requirement_violation_number: 4, snap_voluntary_quit_disqualification_start_month: "2026-10"}, expect: true}
+  - {id: CO-2318-T6, title: "4.308.B - a quit 61 days before the application is not sanctioned", as_of: "2026-10-05", given: {snap_voluntary_quit_date: "2026-07-31", snap_application_date: "2026-09-30", snap_work_requirement_violation_number: 1, snap_voluntary_quit_disqualification_start_month: "2026-10"}, expect: false}
+  - {id: CO-2318-T7, title: "Before the period begins the person is not yet disqualified", as_of: "2026-10-05", given: {snap_voluntary_quit_date: "2026-09-20", snap_application_date: "2026-10-01", snap_work_requirement_violation_number: 1, snap_voluntary_quit_disqualification_start_month: "2026-11"}, expect: false}

@@ -1,0 +1,18 @@
+id: CO-2304
+name: "SNAP: is in an elderly and disabled separate household"
+identifier: snap_is_in_elderly_disabled_separate_household
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person is, or is the spouse of, a person granted separate household status under 7 CFR 273.1(b)(2) in the determination month (snap_meets_elderly_disabled_separate_household_election), so the person's household is the electing person and spouse, apart from the others with whom they purchase and prepare food."
+precision: "Read for the determination month, since snap_household_members (CO-305) is stated per person."
+derived: [any, [at, snap_meets_elderly_disabled_separate_household_election, [det_month]], [exists_related, [spouse], [at, [of, [P], snap_meets_elderly_disabled_separate_household_election], [det_month]]]]
+sources: [S1604, S1605]
+implemented: engine
+tags: [snap, household]
+rationale: "OQ-37: snap_household_members (CO-305) needs to know, for each end of a purchase-and-prepare edge, whether the person belongs to a separate elderly and disabled household; the election itself (CO-419) is computed from the physical residence group, which does not depend on composition, so the composition rule can read it without a cycle."
+tests:
+  - {id: CO-2304-T1, title: "The electing person", as_of: "2026-10-01", given: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": true}}, relationships: [], expect: true}
+  - {id: CO-2304-T2, title: "The electing person's spouse", as_of: "2026-10-01", given: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": false}}, others: {p2: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": true}}}, relationships: [[spouse, p1, p2]], expect: true}
+  - {id: CO-2304-T3, title: "Neither the person nor a spouse elects", as_of: "2026-10-01", given: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": false}}, others: {p2: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": false}}}, relationships: [[buys_prepares_with, p1, p2]], expect: false}

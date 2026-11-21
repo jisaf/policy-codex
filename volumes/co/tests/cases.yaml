@@ -4129,6 +4129,10 @@
     p1:
       # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
       facts:
+        # Phase-10 sweep (OQ-38, P-4): the couple recertifies before its certification period ends, so October is not an
+        # initial month and the minimum allotment applies (4.000.1 "Initial month of application"; 4.207.3.C).
+        snap_determination_is_recertification: true
+        snap_application_date: "2026-09-15"
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
@@ -4209,6 +4213,8 @@
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
+        snap_determination_is_recertification: true  # phase-10 sweep (OQ-38)
+        snap_application_date: "2026-09-15"
         is_enrolled_higher_education_half_time: false
         is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false

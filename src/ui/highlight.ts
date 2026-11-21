@@ -642,6 +642,7 @@ export const PATTERN_DOCS: Record<string, [string, string]> = {
   "is equal to": ["Comparison", "Left equals right."],
   "is one of:": ["Enumeration", "The enumeration fact takes one of the listed options. Options must belong to that fact."],
   "is one of": ["Enumeration", "The enumeration fact takes one of the listed options."],
+  "the number of days from": ["Dates", "Calendar days from the first date to the second (negative when the second is earlier)."],
   "the number of whole years between": ["Dates", "Whole years from the first date to the second, day-based; February 29 births turn on March 1 in a non-leap year."],
   "the month containing": ["Dates", "The calendar month (YYYY-MM) that contains a date."],
   "the month before": ["Dates", "The calendar month one before a month."],

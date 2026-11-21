@@ -1,0 +1,13 @@
+id: CO-2306
+name: "SNAP: migrant household in the job stream with a break of thirty days or less"
+identifier: snap_is_migrant_in_job_stream_with_short_break
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person's household is a migrant or seasonal farmworker household in the job stream whose break in SNAP participation does not exceed thirty days, so it is entitled to a full month allotment in the month it applies (10 CCR 2506-1 4.207.2.B)."
+precision: "If not stated, SNAP reads this as false, which leaves the household's month of application an initial month to be prorated."
+supplied_by: "Applicant statement and CBMS participation history."
+sources: [S1615]
+tags: [snap, income]
+rationale: "OQ-38 (P-4): 4.207.2.B (S1615) is the only exception to initial-month proration; no fact stated it (is_destitute_migrant_or_seasonal_farmworker, CO-055, is the expedited-service test, which says nothing of the job stream or the break)."

@@ -1,0 +1,19 @@
+id: CO-2305
+name: "SNAP: is the initial month"
+identifier: snap_is_initial_month
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "The month is the household's initial month of application: the month containing the date of application, when the determination is not a recertification applied for before the certification period expired (10 CCR 2506-1 4.000.1 \"Initial month of application\") and the household is not a migrant or seasonal farmworker household in the job stream with a break in participation of thirty days or less (4.207.2.B)."
+precision: "A recertification for the month after the certification period ends (snap_determination_is_recertification) has no initial month; an application filed after the period expired is an initial application (7 CFR 273.10(a)(2)), recorded as such. The release-date rule for residents of a public institution who apply jointly for SSI and SNAP (4.207.2.A) has no fact and is not modeled; such a household's month is read from its date of application."
+derived: [all, ["=", [month], [month_of, snap_application_date]], [not, snap_determination_is_recertification], [not, [otherwise, snap_is_migrant_in_job_stream_with_short_break, false]]]
+sources: [S1614, S1615]
+implemented: engine
+tags: [snap, income]
+rationale: "OQ-38 (P-4): no item distinguished the month of application from the household's later months, so the initial-month proration of 4.207.2 (S1615) and the initial-month exceptions of 4.207.3.B-C (S1616) could not be stated. snap_application_date (CO-1746) and snap_determination_is_recertification (CO-1567) already carry the two facts the definition (S1614) turns on."
+tests:
+  - {id: CO-2305-T1, title: "The month of a new application", as_of: "2026-10-15", month: "2026-10", given: {snap_application_date: "2026-10-12", snap_determination_is_recertification: false}, expect: true}
+  - {id: CO-2305-T2, title: "The month after is a full month", as_of: "2026-11-02", month: "2026-11", given: {snap_application_date: "2026-10-12", snap_determination_is_recertification: false}, expect: false}
+  - {id: CO-2305-T3, title: "A timely recertification has no initial month", as_of: "2026-10-15", month: "2026-10", given: {snap_application_date: "2026-10-12", snap_determination_is_recertification: true}, expect: false}
+  - {id: CO-2305-T4, title: "4.207.2.B - a migrant household in the job stream after a short break", as_of: "2026-10-15", month: "2026-10", given: {snap_application_date: "2026-10-12", snap_determination_is_recertification: false, snap_is_migrant_in_job_stream_with_short_break: true}, expect: false}

@@ -143,7 +143,7 @@ export const RELS: readonly string[] = [
 export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
-  "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "count_months", "avg",
+  "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "days_between", "count_months", "avg",
   "count", "sum",
 ]);
 

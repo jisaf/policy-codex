@@ -43,6 +43,14 @@ export function addDays(d: string, n: number): string {
   return new Date(t).toISOString().slice(0, 10);
 }
 
+/** The number of calendar days from the first date to the second (negative
+ *  when the second is earlier), computed in UTC like addDays. */
+export function daysBetween(d1: string, d2: string): number {
+  const t1 = Date.UTC(+d1.slice(0, 4), +d1.slice(5, 7) - 1, +d1.slice(8, 10));
+  const t2 = Date.UTC(+d2.slice(0, 4), +d2.slice(5, 7) - 1, +d2.slice(8, 10));
+  return Math.round((t2 - t1) / 86400000);
+}
+
 function leap(y: number): boolean {
   return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
 }
@@ -564,6 +572,7 @@ export function evaluate(
       case "months_after": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, n); }
       case "months_before": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, -n); }
       case "days_after": { const n = g(e[1]); const d = g(e[2]); return n === null || d === null ? null : addDays(d, n); }
+      case "days_between": { const a = g(e[1]); const b = g(e[2]); return a === null || b === null ? null : daysBetween(a, b); }
       case "months_ending": {
         const n = g(e[1]); const mm = g(e[2]);
         return n === null || mm === null ? null : monthsEnding(n, mm);

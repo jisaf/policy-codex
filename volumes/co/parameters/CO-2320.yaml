@@ -1,0 +1,12 @@
+id: CO-2320
+name: "SNAP voluntary quit look-back before application, days"
+identifier: snap_voluntary_quit_lookback_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "A voluntary quit is sanctioned if it \"occurred within sixty (60) calendar days prior to the date of application or anytime thereafter\" (10 CCR 2506-1 4.308.B)."
+value: 60
+sources: [S1611]
+tags: [snap, work_registration]
+rationale: "OQ-38 (P-8): snap_is_disqualified_for_voluntary_quit (CO-2318) tests the quit date against the application date less this period."

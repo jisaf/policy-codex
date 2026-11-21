@@ -160,6 +160,10 @@ Added for verification deadlines (phase 9)
 
 - P46 `[whole number] days after [date]` the calendar date that many days after a date (a negative number counts back), so a period a rule states in days (10 days to return verification, a 90-day reasonable opportunity period) is computed from the date it runs from; unknown when either input is unknown
 
+Added for SNAP initial-month proration (phase-10 open-question sweep)
+
+- P47 `the number of days from [date] to [date]` the count of calendar days from the first date to the second (negative when the second is earlier), so a rule that prorates by days (10 CCR 2506-1 4.207.2.C's days remaining in the application month over the days in the month) can count them; unknown when either input is unknown
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

@@ -1,0 +1,13 @@
+id: CO-2303
+name: "SNAP: requests separate household status as an elderly person with a disability"
+identifier: snap_requests_elderly_disabled_separate_household
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person, sixty or older and unable to purchase and prepare meals because of a permanent disability, asks to be a SNAP household separate from the others with whom the person lives, together with the person's spouse (7 CFR 273.1(b)(2); 10 CCR 2506-1 4.304.3.A: such a person \"can be in a separate household\")."
+precision: "If not stated, SNAP reads this as false: the person stays in the household of those with whom the person purchases and prepares food."
+supplied_by: "Applicant statement on the SNAP application or interview."
+sources: [S1604, S1605]
+tags: [snap, household, disability]
+rationale: "OQ-37: the separate household is an option (\"may be considered\", 273.1(b)(2), S1604; \"can be in a separate household\", 4.304.3.A, S1605); no fact stated that the person takes it, so the election could not be wired into snap_household_members (CO-305)."

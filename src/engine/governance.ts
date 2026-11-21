@@ -27,7 +27,7 @@ export const RESERVED: ReadonlySet<string> = new Set([
   "<", "<=", ">", ">=", "=", "in",
   "+", "-", "*", "/", "min",
   "years_between", "first_day", "month_of", "month_before", "month_after",
-  "months_ending", "months_from_to", "months_after", "months_before", "days_after",
+  "months_ending", "months_from_to", "months_after", "months_before", "days_after", "days_between",
   "at", "each", "some_month", "count_months", "avg",
   "exists", "exists_related", "rel", "in_group", "of", "lookup",
   "max", "ceil", "round", "persons", "count", "filter", "sum", "reachable", "shared_relative", "has_relative_in",

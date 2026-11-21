@@ -9265,3 +9265,277 @@ Document: D-87
 > home, boat, snowmobile, water skidoo, or airplane); and real property
 > (such as buildings, land, and vacation homes). Primary home and
 > automobile of the primary caretakers are excluded.
+
+### S1600. Colorado SNAP shelter costs: allowed as billed to a household member or a disqualified individual; fraud in full, ineligible non-citizen or no SSN prorated
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Households shall receive a deduction for the allowable monthly shelter costs that
+> are in excess of fifty percent (50%) of the household's income after all other
+> deductions. Shelter expenses are allowed as billed to a household member or as
+> paid or billed to a disqualified individual. Shelter costs that are paid by or billed to
+> a person disqualified for fraud shall be allowed as a deduction for eligible
+> members in their entirety. Shelter costs, paid or billed to a person disqualified for
+> being an ineligible non-citizen or for failure to provide a Social Security Number
+> shall be divided evenly among all household members and the disqualified
+> individual. All except the disqualified person's pro rata share is counted as a
+> shelter cost of the household.
+
+### S1601. Colorado SNAP dependent care: billed to a household member or a disqualified person; prorated for an ineligible non-citizen or no SSN, in full for IPV/fraud
+
+Document: D-82
+
+10 CCR 2506-1 4.407.4.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Dependent care expenses, as billed to a household member or as paid by or
+> billed to a person disqualified for being an ineligible non-citizen or failure to
+> provide or apply for a SSN, for the care of a child or dependent with disabilities
+> shall be considered when the dependent care expenses are necessary for a
+> household member to accept or continue employment, seek employment, or
+> attend training or pursue education which is preparatory to employment.
+> Dependent care expenses that are paid by or billed to the disqualified person
+> shall be divided equally among all household members and the disqualified
+> person. All except the disqualified member's pro rata share is considered for a
+> deduction.
+>
+> The dependent care deduction that is paid by or billed to individuals disqualified
+> for intentional Program violation/fraud will be allowed in its entirety.
+
+### S1602. Colorado SNAP disqualified members: IPV, work sanction or fleeing felon counted in full with deductions in their entirety; ineligible non-citizen, SSN or ABAWD-sanctioned expenses prorated
+
+Document: D-82
+
+10 CCR 2506-1 4.411.1.B.1.a, B.2.c (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 1. Households containing members disqualified for IPV or fraud, or a work
+> requirement sanction, or classified as a fleeing felon:
+>
+> a. Income, Resources, and Deductible Expenses
+>
+> The income and resources of the disqualified household member(s)
+> shall be counted in their entirety. Resources shall only be
+> considered if the household is required to meet the resource
+> standard. The allowable earned income, standard, medical,
+> dependent care, and shelter deductions shall be allowed in their
+> entirety.
+>
+> c. Deductible Expenses
+>
+> The earned income deduction shall apply to the prorated income
+> earned by the disqualified and/or sanctioned member that is
+> attributed to the household. That portion of the household's
+> allowable shelter and dependent care expenses which are either
+> paid by or billed to the disqualified member shall be divided evenly
+> among the household members, including the disqualified member.
+> Legally obligated child support payments are deducted before
+> prorating income. The shelter expense will be prorated except for
+> the standard utility allowance (SUA). The full SUA will be added to
+> the other prorated shelter components if the household qualifies for
+> the SUA. All but the disqualified member's share is counted as a
+> deductible expense for the remaining household members.
+
+### S1603. Colorado SNAP non-household members: only the amount the household pays of a shared expense is deducted; an ineligible student's income and deductions are not the household's
+
+Document: D-82
+
+10 CCR 2506-1 4.411.2.A, C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. For those non-household members that have not been disqualified, such as live-
+> in attendants and ineligible students, the income and resources of the non-
+> household member shall not be considered available to the household. Cash
+> payments from the non-household member to the household will be considered
+> as income to the household. Vendor payments, as defined in Sections 4.405, H
+> and 4.405, I, shall be excluded as income. Except for the mandatory telephone
+> allowance, if the household shares deductible expenses with the non-household
+> member, only the amount actually paid or contributed by the household shall be
+> deducted as a household expense.
+>
+> C. A person who is an ineligible student for SNAP purposes shall be treated as a
+> non-household member. The other members of a household containing the
+> ineligible student may be certified. The income and resources of the ineligible
+> student shall not be considered available to the other household members for
+> determining the household's income resources and deductions nor shall the
+> student be considered in determining the household's allotment.
+
+### S1604. SNAP elderly and disabled separate household: 60 or older, unable to purchase and prepare meals, may be a separate household with the spouse
+
+Document: D-7
+
+7 CFR 273.1(b)(2). https://www.ecfr.gov/current/title-7/section-273.1
+
+> (2) *Elderly and disabled persons.* Notwithstanding the provisions of paragraph (a) of this section, an otherwise eligible member of a household who is 60 years of age or older and is unable to purchase and prepare meals because he or she suffers from a disability considered permanent under the Social Security Act or a non disease-related, severe, permanent disability may be considered, together with his or her spouse (if living there), a separate household from the others with whom the individual lives. Separate household status under this provision must not be granted when the income of the others with whom the elderly disabled individual resides (excluding the income of the elderly and disabled individual and his or her spouse) exceeds 165 percent of the poverty line.
+
+### S1605. Colorado SNAP optional household members: a person sixty or older with a disability living with others at or below 165% FPL can be a separate household
+
+Document: D-82
+
+10 CCR 2506-1 4.304.3 (introduction), 4.304.3.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> The following individuals residing with a household shall not be considered household
+> members in determining the household's eligibility or allotment, unless otherwise stated:
+>
+> A. Persons aged sixty (60) and older experiencing a disability who live with others
+> whose income does not exceed 165% Federal Poverty Level (FPL).
+>
+> 1. Persons aged sixty (60) and older who are also persons with disabilities
+> who are unable to purchase and prepare their own meals and are residing
+> with other individuals whose income does not exceed 165% of the FPL
+> can be in a separate household.
+
+### S1611. Colorado SNAP voluntary quit: a quit or reduction below thirty hours without good cause within sixty days before application or after is sanctioned, in the same manner as a work requirement failure
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1 ("Voluntary quit"), 4.308.A, B, E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Voluntary quit” means when a SNAP client voluntarily quit a job of 30 or more hours a
+> week or reduced work effort to less than 30 hours a week without good cause.
+>
+> A. No individual who quit his or her most recent job without good cause or reduces
+> work effort and, after the reduction, is working less than thirty (30) hours each
+> week, without good cause, or earning less than the federal minimum wage
+> multiplied by thirty (30) hours, shall be eligible for participation in SNAP.
+>
+> B. When a household files an application, or when a participating household reports
+> the loss of a source of income or reduction in hours, the local office shall
+> determine whether any household member voluntarily quit or reduced his or her
+> hours or income. Benefits shall not be delayed pending the outcome of this
+> determination. A sanction shall be imposed if the quit or reduction in hours or
+> wages occurred within sixty (60) calendar days prior to the date of application or
+> anytime thereafter, and the quit or reduction was without good cause.
+>
+> E. Upon a determination that the individual voluntarily quit employment, reduced
+> work hours below thirty (30) hours, or reduced wages to the point at which the
+> person is earning less than the federal minimum wage multiplied by thirty (30)
+> hours, the local office shall determine if the voluntary quit was with good cause.
+>
+> If an individual voluntarily quits or reduces work hours/wages without good
+> cause, the individual will be disqualified in the same manner as individuals failing
+> to comply with work registration or EF requirements.
+
+### S1612. Colorado SNAP level sanction periods: one month the first time, three the second, six the third or later; the period begins the month after the notice of adverse action expires
+
+Document: D-82
+
+10 CCR 2506-1 4.310.8.A-B (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. If the local office determines that an individual has voluntarily quit or failed to
+> accept suitable employment without good cause, that individual shall be ineligible
+> to participate in SNAP and shall be treated as a disqualified member. If the
+> disqualified member joins another household, the disqualification period for that
+> individual shall continue until the disqualification period is completed.
+>
+> 1. The first (1st) time, the individual shall be disqualified for a period of one
+> (1) month after the date the individual became ineligible.
+>
+> 2. The second (2nd) time an individual fails without good cause to comply
+> with work requirements, the individual shall be disqualified for a period of
+> three (3) months after the date the individual became ineligible.
+>
+> 3. The third (3rd) or subsequent time an individual fails without good cause
+> to comply with work requirements, the individual shall be disqualified for a
+> period of six (6) months after the date the individual became ineligible.
+>
+> B. The disqualification period shall begin the month following the expiration of the
+> Notice of Adverse Action unless a fair hearing is requested.
+
+### S1613. Colorado SNAP ABAWD regaining eligibility and the single additional three months
+
+Document: D-82
+
+10 CCR 2506-1 4.311.3 (introduction), 4.311.3.D (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> ABAWDs are not eligible to participate in SNAP if they have received SNAP benefits for
+> more than three countable months during a thirty-six (36) month period.
+>
+> However, ABAWDs may be eligible for up to three additional consecutive months after
+> regaining eligibility in accordance with paragraph (C) of this section.
+>
+> D. Regaining Eligibility
+>
+> 1. An individual who is denied eligibility under this provision can regain
+> eligibility if in a thirty (30) calendar day period, the individual:
+>
+> a. Worked eighty (80) or more hours;
+>
+> b. Participates in and complies with the requirements of a work
+> program for eighty (80) or more hours;
+>
+> c. Participates and complies with the Workfare Program as described
+> in section 4.313; or
+>
+> d. Becomes exempt.
+>
+> 2. The individual will be reinstated if otherwise eligible and will continue to be
+> eligible if the individual continues to meet the work requirement or is
+> exempt.
+>
+> 3. If an individual regains eligibility but then fails to continue meeting these
+> requirements, the individual shall remain eligible for a consecutive three-
+> month period after the individual notifies the local office. The individual can
+> only have this provision applied for a single three-month period in the
+> thirty-six (36) calendar month period.
+
+### S1614. Colorado SNAP initial month of application: the first month certified after no prior benefits or a break; a timely recertification's first month is not one
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1 ("Initial month of application") (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Initial month of application” means the first month for which the household is certified
+> for participation in the program for those who have not received SNAP benefits in the
+> state previously or following any break after the end of the certification period where the
+> household was not certified for participation. If the household applies for recertification
+> prior to the expiration of its certification period and is found eligible for the first month
+> following the end of the certification period, that month shall not be an initial month.
+
+### S1615. Colorado SNAP initial month allotment prorated from the date of application; migrant job-stream exception; the exact-days formula
+
+Document: D-82
+
+10 CCR 2506-1 4.207.2.A-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. The household benefit level for the initial month of application shall be based on
+> the day of the month it applies for benefits. Benefits for the initial month shall be
+> prorated from the date of application to the end of the month.
+>
+> B. The only exception to the proration policy shall be migrant and seasonal farm
+> worker households who are in the job stream and the break in participation does
+> not exceed thirty (30) days. These households are entitled to a full month
+> allotment.
+>
+> C. The state automated system will utilize the exact number of days in the calendar
+> month to determine the proration of benefits. The following formula shall be used
+> to determine the amount of prorated benefits:
+>
+> 1. Number of days in month plus one;
+>
+> 2. Subtract the date of application;
+>
+> 3. Multiply by the full month's benefits the household is eligible to receive;
+>
+> 4. Divide by the number of days in the application month.
+
+### S1616. Colorado SNAP initial month below the minimum allotment: no benefits; the one- and two-person minimum applies except in an initial month
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.B-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. If the calculation of benefits for an initial month yields an allotment of less than
+> the federal minimum allotment referenced in 4.207.3(D), no benefits shall be
+> issued to the household for the initial month.
+>
+> C. Except for an initial month, if the allotment for a one- or two-person household is
+> less than the federal minimum allotment referenced in 4.207.3 D, round the
+> allotment up to the minimum benefit allowed for a one- or two-person household.
+
+### S1617. SNAP prorated initial-month allotment rounded down to the lower whole dollar
+
+Document: D-14
+
+7 CFR 273.10(a)(1)(iii)(C). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (C) If after using the appropriate formula the result ends in 1 through 99 cents, the State agency shall round the product down to the nearest lower whole dollar. If the computation results in an allotment of less than $10, then no issuance shall be made for the initial month.

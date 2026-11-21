@@ -1,0 +1,19 @@
+id: CO-2308
+name: "SNAP: prorated initial month allotment"
+identifier: snap_prorated_initial_month_allotment
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The household's benefit for its initial month before the minimum-allotment test: the full month's benefit computed without the one- and two-person minimum (which applies \"Except for an initial month\", 4.207.3.C), times the number of days from the date of application through the end of the month, divided by the number of days in the month, rounded down to the lower whole dollar; $0 when the household fails the gross income, net income or resource test."
+precision: "Days from the application date to the first day of the next month equal 4.207.2.C's \"Number of days in month plus one\" less \"the date of application\". 4.207.2.C does not state the rounding; 7 CFR 273.10(a)(1)(iii)(C) rounds the product down, and the floor is written as the negated ceiling of the negated value."
+derived: [case, [[not, [all, snap_meets_gross_income_test, snap_meets_net_income_test, snap_meets_resource_limit]], 0], [else, ["-", 0, [ceil, ["-", 0, ["/", ["*", [max, 0, ["-", 0, [ceil, ["-", snap_benefit_reduction, snap_maximum_allotment]]]], [days_between, snap_application_date, [first_day, [month_after, [month]]]]], [days_between, [first_day, [month]], [first_day, [month_after, [month]]]]]]]]]]
+sources: [S1615, S1616, S1617]
+implemented: engine
+tags: [snap, income]
+rationale: "OQ-38 (P-4): 4.207.2.A and C (S1615) prorate the initial month's benefit from the date of application with the exact days of the month; no item computed it."
+tests:
+  - {id: CO-2308-T1, title: "Applied October 12 for a $500 full month - 20 of 31 days, $322.58 rounded down", as_of: "2026-10-15", month: "2026-10", given: {snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 808, snap_benefit_reduction: 308, snap_application_date: "2026-10-12"}, expect: 322}
+  - {id: CO-2308-T2, title: "Applied on the first - the whole month", as_of: "2026-10-15", month: "2026-10", given: {snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 808, snap_benefit_reduction: 308, snap_application_date: "2026-10-01"}, expect: 500}
+  - {id: CO-2308-T3, title: "No minimum in the initial month - a one-person $15 benefit applied February 15 of a 28-day month gives $7", as_of: "2027-02-20", month: "2027-02", given: {snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 306, snap_benefit_reduction: 291, snap_application_date: "2027-02-15"}, expect: 7}
+  - {id: CO-2308-T4, title: "Over the resource limit - nothing", as_of: "2026-10-15", month: "2026-10", given: {snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: false, snap_application_date: "2026-10-12"}, expect: 0}
