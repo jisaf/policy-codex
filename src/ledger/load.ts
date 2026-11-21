@@ -5,6 +5,7 @@ import type { Item, VolumeMeta } from "../engine/types";
 import { parseManifest, type Manifest, type VolumeEntry } from "./manifest";
 import { parseOpenQuestions, parseSources, type OpenQuestion, type Source } from "./markdown";
 import { parseDocuments, type DocumentMeta } from "./documents";
+import { AID_CODES_FILE, parseAidCodes, type AidCodeMap } from "./aid-codes";
 import { cacheKey, type LedgerCache } from "./cache";
 import type { LedgerSource } from "./source";
 
@@ -31,6 +32,9 @@ export interface LoadedVolume {
   documents: DocumentMeta[];
   /** item id -> chapter directory, so a file path is reconstructible. */
   chapterOf: Record<string, string>;
+  /** The placeholder aid-code layer from `aid-codes.yaml` (phase 13); null
+   *  or absent when the volume has none. */
+  aidCodes?: AidCodeMap | null;
 }
 
 export async function loadManifest(src: LedgerSource): Promise<Manifest> {
@@ -75,12 +79,13 @@ export async function loadVolume(
     if (hit) return { ...hit, ref: src.ref };
   }
 
-  const [volumeText, sourcesText, questionsText, casesText, documentsText] = await Promise.all([
+  const [volumeText, sourcesText, questionsText, casesText, documentsText, aidCodesText] = await Promise.all([
     src.readText(`${entry.path}/volume.yaml`),
     src.readText(`${entry.path}/sources.md`),
     src.readText(`${entry.path}/open-questions.md`),
     src.readText(`${entry.path}/tests/cases.yaml`).catch(() => null),
     src.readText(`${entry.path}/documents.yaml`).catch(() => null),
+    src.readText(`${entry.path}/${AID_CODES_FILE}`).catch(() => null),
   ]);
 
   const targets = entry.chapters.flatMap((c) => c.files.map((f) => ({ dir: c.dir, file: f })));
@@ -111,6 +116,7 @@ export async function loadVolume(
     casesText,
     documents: documentsText == null ? [] : parseDocuments(documentsText),
     chapterOf,
+    aidCodes: aidCodesText == null ? null : parseAidCodes(aidCodesText),
   };
   if (sha && opts.cache) {
     const { ref: _ref, ...cacheable } = vol;

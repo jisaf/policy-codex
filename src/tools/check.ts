@@ -13,6 +13,7 @@ import { parseOpenQuestions, parseSources, unverifiedSourceIds } from "../ledger
 import { ratchetGovernance } from "../changes/validate";
 import { householdInputs, ruleTestInputs, type Audit } from "../export/conformance";
 import { versionInForce } from "../engine/versions";
+import { AID_CODES_FILE, aidCodeWarnings, parseAidCodes, type AidCodeMap } from "../ledger/aid-codes";
 import type { Engine } from "../engine/engine";
 import type { Item, TestSpec, VolumeMeta } from "../engine/types";
 
@@ -28,6 +29,8 @@ export interface LoadedLedger {
   questionIds: string[];
   /** excerpts marked `Verification: unverified`. */
   unverifiedSourceIds?: string[];
+  /** the placeholder aid-code layer, when the volume has `aid-codes.yaml`. */
+  aidCodes?: AidCodeMap | null;
 }
 
 /** Reads the manifest, every item file, `volume.yaml`, `sources.md`,
@@ -61,6 +64,8 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
   );
   const casesPath = path.join(root, entry.path, "tests/cases.yaml");
   const cases = fs.existsSync(casesPath) ? parseCases(fs.readFileSync(casesPath, "utf8")) : [];
+  const aidPath = path.join(root, entry.path, AID_CODES_FILE);
+  const aidCodes = fs.existsSync(aidPath) ? parseAidCodes(fs.readFileSync(aidPath, "utf8")) : null;
 
   return {
     items,
@@ -71,6 +76,7 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
     sourceIds: sources.map((s) => s.id),
     questionIds: openQuestions.map((q) => q.id),
     unverifiedSourceIds: unverifiedSourceIds(sources),
+    aidCodes,
   };
 }
 
@@ -497,6 +503,7 @@ export function buildCheckReport(
 
   const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);
   warnings.push(...inputWarnings(engine, ledger));
+  if (ledger.aidCodes) warnings.push(...aidCodeWarnings(engine, ledger.aidCodes));
 
   const ok = blockingItemErrors.length === 0
     && newRuleFailures.length === 0

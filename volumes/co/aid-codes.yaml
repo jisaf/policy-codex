@@ -1,0 +1,288 @@
+# ============================================================================
+#  PLACEHOLDER AID CODES. NOT CBMS CODES.
+# ============================================================================
+# Product-owner decision (2026-11-21, docs/plan-colorado.md, phase 13): the
+# "by aid code" view uses placeholder codes, clearly marked, until the CBMS
+# aid-code list is supplied. Every code below starts "PH-" and is to be
+# replaced with the CBMS code when the list arrives. Nothing here is a rule:
+# the outcomes and their options are defined by the items they name; this
+# file only gives each outcome option a code and a plain label.
+#
+# Layout
+#   status / notice   the banner every page that shows a code repeats.
+#   funding           the outcome that says who pays (Title XIX, XXI, state
+#                     only) and the programs it applies to.
+#   participation     for programs decided for a household or unit, the
+#                     per-person outcome that says whether this person is a
+#                     member; a person gets the program's code only when the
+#                     household's result has a code AND the person's
+#                     participation is one of `member`. This keeps a
+#                     household result from reading as the person's own.
+#   outcomes          one entry per outcome item:
+#     outcome         the item's identifier (a declared program outcome).
+#     requires        other outcomes that must hold for any code here to
+#                     apply (the MAGI covered group counts only when MAGI
+#                     eligibility is "eligible").
+#     codes           option -> {code, label, funding?}. `funding` is the
+#                     ma_funding_source option the code is normally paid
+#                     from; a person's own funding is read from their case.
+#     no_code         option -> why it carries no code (a denial, or another
+#                     outcome carries the code).
+#   Every option of every listed outcome must appear under `codes` or
+#   `no_code`; `npm run check` warns on any that does not, on an option the
+#   item no longer has, and on a declared program with no outcome here.
+status: placeholder
+notice: >-
+  Approved by the product owner for design and testing only. They are not CBMS aid codes and must be replaced with the CBMS list
+  when it is supplied.
+
+funding:
+  outcome: ma_funding_source
+  programs: [Medicaid, CHP+]
+
+participation:
+  SNAP: {outcome: snap_person_participation_status, member: [eligible_member]}
+  ColoradoWorks: {outcome: cw_person_participation_status, member: [eligible_member]}
+  CCCAP: {outcome: cccap_person_participation_status, member: [eligible_child]}
+  LEAP: {outcome: leap_person_participation_status, member: [eligible_member]}
+
+outcomes:
+  # ---------------------------------------------------------------- Medicaid
+  - outcome: ma_magi_category
+    requires:
+      ma_magi_eligibility_status: [eligible]
+    codes:
+      needy_newborn: {code: PH-MA-NEWBORN, label: "Medicaid: needy newborn", funding: title_xix}
+      child: {code: PH-MA-CHILD, label: "Medicaid: children", funding: title_xix}
+      pregnant: {code: PH-MA-PREG, label: "Medicaid: pregnant women", funding: title_xix}
+      parent_caretaker: {code: PH-MA-PARENT, label: "Medicaid: parents and caretaker relatives", funding: title_xix}
+      former_foster_care: {code: PH-MA-FFC, label: "Medicaid: former foster care youth", funding: title_xix}
+      adult: {code: PH-MA-ADULT, label: "Medicaid: adults (expansion group)", funding: title_xix}
+      transitional_medical_assistance: {code: PH-MA-TMA, label: "Medicaid: transitional medical assistance", funding: title_xix}
+      four_month_extended: {code: PH-MA-4MO, label: "Medicaid: four-month extended coverage", funding: title_xix}
+    no_code:
+      none: "No MAGI covered group applies."
+
+  - outcome: ma_magi_eligibility_status
+    codes:
+      incarceration_limited: {code: PH-MA-INMATE, label: "Medicaid: inpatient coverage while incarcerated", funding: title_xix}
+    no_code:
+      eligible: "The MAGI covered group carries the code."
+      emergency_only: "Emergency Medicaid carries the code."
+      ineligible_community_engagement: "Not eligible: community engagement not met."
+      ineligible_income: "Not eligible: income."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_no_category: "Not eligible: no covered group."
+
+  - outcome: ma_needy_young_person_category
+    codes:
+      psych_under_21: {code: PH-MA-PSY21, label: "Medicaid: needy person under 21 in a psychiatric facility", funding: title_xix}
+      alternatives_to_foster_care: {code: PH-MA-ATFC, label: "Medicaid: alternatives to foster care", funding: title_xix}
+      foster_care_or_adoption: {code: PH-MA-FOSTER, label: "Medicaid: foster care or subsidized adoption", funding: title_xix}
+    no_code:
+      none: "No needy-young-person group applies."
+
+  - outcome: ma_hospital_presumptive_eligibility_category
+    codes:
+      pregnant: {code: PH-MA-HPE-PREG, label: "Hospital presumptive eligibility: pregnant woman", funding: title_xix}
+      child: {code: PH-MA-HPE-CHILD, label: "Hospital presumptive eligibility: child", funding: title_xix}
+      parent_caretaker: {code: PH-MA-HPE-PARENT, label: "Hospital presumptive eligibility: parent or caretaker", funding: title_xix}
+      adult: {code: PH-MA-HPE-ADULT, label: "Hospital presumptive eligibility: adult", funding: title_xix}
+      employed_disabled: {code: PH-MA-HPE-EMPDIS, label: "Hospital presumptive eligibility: employed person with a disability", funding: title_xix}
+      limited_family_planning: {code: PH-MA-HPE-LFP, label: "Hospital presumptive eligibility: limited family planning", funding: title_xix}
+    no_code:
+      none: "No presumptive group applies."
+
+  - outcome: ma_express_lane_status
+    codes:
+      enrolled: {code: PH-MA-ELE, label: "Medicaid: Express Lane enrollment", funding: title_xix}
+      enrolled_pending_citizenship_verification: {code: PH-MA-ELE-PEND, label: "Medicaid: Express Lane enrollment, citizenship being verified", funding: title_xix}
+    no_code:
+      not_applicable: "No Express Lane referral, or the family did not opt in."
+      refer_to_single_streamlined_application: "Referred to the full application."
+
+  - outcome: ma_ssi_related_category
+    codes:
+      ssi_recipient: {code: PH-MA-SSI, label: "Medicaid: SSI recipient", funding: title_xix}
+      aged: {code: PH-MA-AGED, label: "Medicaid: aged", funding: title_xix}
+      blind: {code: PH-MA-BLIND, label: "Medicaid: blind", funding: title_xix}
+      disabled: {code: PH-MA-DISABLED, label: "Medicaid: disabled", funding: title_xix}
+      oap_sisc_b: {code: PH-MA-OAP-B, label: "Medicaid: Old Age Pension recipient (SISC B)", funding: title_xix}
+    no_code:
+      none: "No SSI-related category applies."
+
+  - outcome: ma_protected_group_category
+    codes:
+      continued_ssi_status: {code: PH-MA-PG-SSI, label: "Medicaid: continued SSI status (1619(b))", funding: title_xix}
+      disabled_adult_child: {code: PH-MA-PG-DAC, label: "Medicaid: disabled adult child", funding: title_xix}
+      disabled_widow: {code: PH-MA-PG-DW, label: "Medicaid: disabled widow or widower", funding: title_xix}
+      pickle: {code: PH-MA-PG-PICKLE, label: "Medicaid: Pickle amendment", funding: title_xix}
+    no_code:
+      none: "No protected group applies."
+
+  - outcome: ma_msp_category
+    codes:
+      qmb: {code: PH-MSP-QMB, label: "Medicare Savings Program: QMB", funding: title_xix}
+      slmb: {code: PH-MSP-SLMB, label: "Medicare Savings Program: SLMB", funding: title_xix}
+      qi: {code: PH-MSP-QI, label: "Medicare Savings Program: QI-1", funding: title_xix}
+      qdwi: {code: PH-MSP-QDWI, label: "Medicare Savings Program: QDWI", funding: title_xix}
+    no_code:
+      none: "No Medicare Savings Program applies."
+
+  - outcome: ma_buy_in_category
+    codes:
+      working_adults_with_disabilities: {code: PH-MA-BUYIN-WAD, label: "Buy-In: working adults with disabilities", funding: title_xix}
+      children_with_disabilities: {code: PH-MA-BUYIN-CWD, label: "Buy-In: children with disabilities", funding: title_xix}
+    no_code:
+      none: "No Buy-In program applies."
+
+  - outcome: ma_ltc_eligibility_status
+    codes:
+      eligible_institutional: {code: PH-MA-LTC-NF, label: "Long-term care: nursing facility or other institution", funding: title_xix}
+      eligible_hcbs: {code: PH-MA-LTC-HCBS, label: "Long-term care: home and community-based services", funding: title_xix}
+      eligible_pace: {code: PH-MA-LTC-PACE, label: "Long-term care: PACE", funding: title_xix}
+    no_code:
+      ineligible_residency: "Not eligible: residency."
+      not_aged_blind_or_disabled: "Not eligible: not aged, blind or disabled."
+      ineligible_status: "Not eligible: citizenship or immigration status."
+      ineligible_income: "Not eligible: income."
+      ineligible_resources: "Not eligible: resources."
+      ineligible_level_of_care: "Not eligible: level of care."
+      transfer_penalty: "Not eligible: transfer-of-assets penalty."
+      home_equity_exceeds_limit: "Not eligible: home equity over the limit."
+      not_eligible_for_requested_setting: "Not eligible for the setting requested."
+      not_institutionalized_or_waiver: "Not in an institution and not asking for a waiver."
+
+  - outcome: ma_emergency_medicaid_status
+    codes:
+      eligible_emergency_condition: {code: PH-MA-EMERG, label: "Emergency Medicaid: emergency condition", funding: title_xix_emergency}
+      eligible_no_current_emergency: {code: PH-MA-EMERG-NC, label: "Emergency Medicaid: eligible, no current emergency", funding: title_xix_emergency}
+    no_code:
+      not_applicable_status_met: "Meets citizenship or immigration status, so full Medicaid rules apply."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_other_requirements: "Not eligible: another requirement is not met."
+
+  - outcome: ma_bccp_eligibility_status
+    codes:
+      eligible: {code: PH-MA-BCCP, label: "Breast and Cervical Cancer Program", funding: title_xix}
+    no_code:
+      ineligible_sex_or_age: "Not eligible: sex or age."
+      ineligible_not_in_need_of_treatment: "Not eligible: not found in need of treatment."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_status: "Not eligible: citizenship or immigration status."
+      ineligible_creditable_coverage: "Not eligible: has creditable coverage."
+      ineligible_other_medicaid: "Not eligible: eligible for other Medicaid."
+
+  - outcome: ma_family_planning_status
+    codes:
+      limited_family_planning: {code: PH-MA-LFP, label: "Limited family planning", funding: title_xix}
+      reproductive_health_care_program: {code: PH-RHCP, label: "Reproductive Health Care Program (state only)", funding: state_only}
+    no_code:
+      full_coverage: "Family planning comes with a full-coverage category, which carries the code."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_income: "Not eligible: income."
+      ineligible: "Not eligible."
+
+  - outcome: ma_oap_health_care_status
+    codes:
+      eligible_state_only: {code: PH-OAP-HC, label: "Old Age Pension Health Care Program (state only)", funding: state_only}
+    no_code:
+      not_oap_recipient: "Not an Old Age Pension recipient."
+      medicaid_eligible: "Eligible for Medicaid, which carries the code."
+      ineligible_oap_c: "Not eligible: OAP-C."
+      ineligible_institution: "Not eligible: lives in an institution."
+
+  # ------------------------------------------------------------------- CHP+
+  - outcome: chp_eligibility_status
+    codes:
+      eligible_child: {code: PH-CHP-CHILD, label: "CHP+: child", funding: title_xxi}
+      eligible_prenatal: {code: PH-CHP-PRENATAL, label: "CHP+: prenatal", funding: title_xxi}
+      eligible_newborn: {code: PH-CHP-NEWBORN, label: "CHP+: newborn of a CHP+ mother", funding: title_xxi}
+      eligible_incarceration_limited: {code: PH-CHP-INMATE, label: "CHP+: limited benefit while incarcerated", funding: title_xxi}
+    no_code:
+      ineligible_medicaid_eligible: "Eligible for Medicaid, which carries the code."
+      ineligible_income: "Not eligible: income."
+      ineligible_coverage: "Not eligible: has other coverage."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_status: "Not eligible: citizenship or immigration status."
+      ineligible_institution: "Not eligible: lives in an institution."
+      ineligible: "Not eligible."
+
+  # ------------------------------------------------------------------- SNAP
+  - outcome: snap_eligibility_status
+    codes:
+      eligible: {code: PH-SNAP, label: "SNAP household member"}
+    no_code:
+      no_eligible_members: "Not eligible: no eligible household member."
+      over_gross_income_limit: "Not eligible: over the gross income limit."
+      over_net_income_limit: "Not eligible: over the net income limit."
+      over_resource_limit: "Not eligible: over the resource limit."
+      zero_allotment: "Not eligible: the allotment works out to $0."
+
+  # --------------------------------------------------------- Colorado Works
+  - outcome: cw_eligibility_status
+    codes:
+      eligible: {code: PH-CW-BCA, label: "Colorado Works: basic cash assistance unit member"}
+    no_code:
+      not_in_unit_did_not_request: "Not in the unit: did not ask to join."
+      ineligible_no_dependent_child: "Not eligible: no dependent child."
+      ineligible_income: "Not eligible: income."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_status: "Not eligible: citizenship or immigration status."
+      time_limit_reached: "Not eligible: 60-month time limit reached."
+      ineligible_resources: "Not eligible: resources."
+      ineligible_living_arrangement: "Not eligible: living arrangement."
+      sanction_closure: "Closed by sanction."
+
+  - outcome: cw_diversion_eligible
+    codes:
+      "yes": {code: PH-CW-DIV, label: "Colorado Works: diversion payment"}
+    no_code:
+      "no": "No diversion payment."
+
+  # -------------------------------------------------------- Adult Financial
+  - outcome: af_category
+    codes:
+      oap: {code: PH-AF-OAP, label: "Old Age Pension"}
+      and_so: {code: PH-AF-AND-SO, label: "Aid to the Needy Disabled: state only (AND-SO)"}
+      and_cs: {code: PH-AF-AND-CS, label: "Aid to the Needy Disabled: Colorado supplement (AND-CS)"}
+    no_code:
+      none: "No Adult Financial category applies."
+
+  - outcome: af_hca_eligibility_status
+    codes:
+      eligible: {code: PH-AF-HCA, label: "Home Care Allowance"}
+    no_code:
+      ineligible_age: "Not eligible: under age five."
+      ineligible_residency: "Not eligible: residency."
+      ineligible_setting: "Not eligible: lives in a facility."
+      ineligible_hcbs: "Not eligible: receives or qualifies for HCBS."
+      ineligible_functional: "Not eligible: functional need."
+      ineligible_financial: "Not eligible: financial."
+
+  # ------------------------------------------------------------------ CCCAP
+  - outcome: cccap_eligibility_status
+    codes:
+      eligible_low_income: {code: PH-CCCAP-LI, label: "Child care assistance: low income"}
+      eligible_colorado_works: {code: PH-CCCAP-CW, label: "Child care assistance: Colorado Works"}
+      eligible_protective_services: {code: PH-CCCAP-PS, label: "Child care assistance: protective services"}
+    no_code:
+      ineligible_income: "Not eligible: income."
+      ineligible_activity: "Not eligible: no eligible activity."
+      ineligible_child: "Not eligible: no eligible child."
+      ineligible: "Not eligible."
+
+  # ------------------------------------------------------------------- LEAP
+  - outcome: leap_is_eligible
+    codes:
+      "yes": {code: PH-LEAP, label: "LEAP heating assistance household member"}
+    no_code:
+      "no": "Not eligible this month (including months outside the heating season)."
+
+  # -------------------------------------------------------------- SUN Bucks
+  - outcome: sebt_eligibility_status
+    codes:
+      eligible_categorical: {code: PH-SEBT-CAT, label: "SUN Bucks: categorically eligible"}
+      eligible_income: {code: PH-SEBT-INC, label: "SUN Bucks: eligible on income"}
+    no_code:
+      ineligible: "Not eligible."
