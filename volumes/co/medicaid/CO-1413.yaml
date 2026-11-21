@@ -6,10 +6,11 @@ type: calendar date
 scope: person
 program: Medicaid
 meaning: "The last day of the person's reasonable opportunity period: 90 days after the notice is considered received, which is five days after the notice date."
-derived: [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, verification_request_date]]
+precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): the period runs from ma_reasonable_opportunity_notice_date (CO-1747), the notice that opens it, not the verification checklist date."
+derived: [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, ma_reasonable_opportunity_notice_date]]
 sources: [S841, S853, S859]
 implemented: engine
 tags: [verification, ma, immigration]
 rationale: No existing item computes the reasonable opportunity period.
 tests:
-  - {id: CO-1413-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2027-01-04"}
+  - {id: CO-1413-T1, as_of: "2026-10-01", given: {ma_reasonable_opportunity_notice_date: "2026-10-01"}, expect: "2027-01-04"}

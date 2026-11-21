@@ -72,6 +72,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -175,7 +176,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_enrolled_higher_education_half_time: false
@@ -324,6 +326,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -432,7 +435,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_enrolled_higher_education_half_time: false
@@ -579,6 +583,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: true
@@ -672,7 +677,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
@@ -804,6 +810,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -893,7 +900,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         is_tax_filer: false
         is_enrolled_higher_education_half_time: false
@@ -1027,6 +1035,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -1120,7 +1129,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
         is_tax_filer: false
         is_enrolled_higher_education_half_time: false
@@ -2102,6 +2112,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -2207,7 +2218,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         receives_ssi: false
@@ -2352,6 +2364,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -2460,7 +2473,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         qualifying_quarters: 40
@@ -2605,6 +2619,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: true
@@ -2700,7 +2715,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         meets_ssa_disability_criteria: false
@@ -2829,6 +2845,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -2919,7 +2936,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         meets_ssa_disability_criteria: false
@@ -3050,6 +3068,7 @@
         pregnancy_attestation_is_questionable: false
         age_attestation_is_questionable: false
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         is_destitute_migrant_or_seasonal_farmworker: false
         is_referred_for_colorado_works_child_care: false
         ssn_exception_applies: false
@@ -3143,7 +3162,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
         is_tax_filer: false
         receives_ssi: false
@@ -4299,7 +4319,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-09"
+        ma_application_date: "2026-10-09"
+        snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4353,7 +4374,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-09"
+        ma_application_date: "2026-10-09"
+        snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4400,7 +4422,8 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-09"
+        ma_application_date: "2026-10-09"
+        snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4443,7 +4466,8 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-09"
+        ma_application_date: "2026-10-09"
+        snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4488,7 +4512,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-09"
+        ma_application_date: "2026-10-09"
+        snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4641,7 +4666,7 @@
   title: Former foster care youth over every MAGI standard; 17-year-old sibling in a continuous eligibility period after an income change; grandmother caretaker on Social Security; retroactive coverage
   # Adapted from the phase-3 review's designed cases CO-07/CO-08 (docs/reviews/magi-chp-phase-3.md
   # S3.4), merged into one case with three stated months now that continuous_eligibility_period_start
-  # month (CO-094) anchors ma_child_continuous_eligibility_end_month on application_date rather than
+  # month (CO-094) anchors ma_child_continuous_eligibility_end_month on ma_application_date rather than
   # the determination month (C-4c) - the review's own reason the two cases could not previously be
   # merged. This harness pins the determination date (and so `age`) to the case's single as_of
   # (2026-04-10, the date of the application that opens Tasha's continuous eligibility period); it
@@ -4680,7 +4705,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-04-10"
+        ma_application_date: "2026-04-10"
+        snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 1.03
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4725,7 +4751,8 @@
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-04-10"
+        ma_application_date: "2026-04-10"
+        snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 3.16
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -4783,7 +4810,8 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         has_other_creditable_health_coverage: false
-        application_date: "2026-04-10"
+        ma_application_date: "2026-04-10"
+        snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 0.00
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -5016,7 +5044,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
-        application_date: "2026-11-02"
+        ma_application_date: "2026-11-02"
+        snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.71
       month_defaults:
         social_security_income: 1900
@@ -5087,7 +5116,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: true
-        application_date: "2026-11-02"
+        ma_application_date: "2026-11-02"
+        snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.71
       month_defaults:
         social_security_income: 1100
@@ -5156,7 +5186,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-11-02"
+        ma_application_date: "2026-11-02"
+        snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.80
       month_defaults:
         social_security_income: 0
@@ -5996,7 +6027,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-05"
+        ma_application_date: "2026-10-05"
+        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6059,7 +6091,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-05"
+        ma_application_date: "2026-10-05"
+        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6119,7 +6152,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-05"
+        ma_application_date: "2026-10-05"
+        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6198,7 +6232,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-05"
+        ma_application_date: "2026-10-05"
+        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6317,7 +6352,8 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         has_other_creditable_health_coverage: false
-        application_date: "2026-10-05"
+        ma_application_date: "2026-10-05"
+        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6654,9 +6690,11 @@
         cccap_declared_assets: 20
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 20
-        application_date: "2026-11-02"
+        ma_application_date: "2026-11-02"
+        snap_application_date: "2026-11-02"
         # Verification facts.
         verification_request_date: "2026-11-02"
+        ma_reasonable_opportunity_notice_date: "2026-11-02"
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
         residency_attestation_is_questionable: false
@@ -6805,8 +6843,10 @@
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
-        application_date: "2026-11-02"
+        ma_application_date: "2026-11-02"
+        snap_application_date: "2026-11-02"
         verification_request_date: "2026-11-02"
+        ma_reasonable_opportunity_notice_date: "2026-11-02"
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
         residency_attestation_is_questionable: false
@@ -7074,9 +7114,11 @@
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 300
         utility_allowance_amount: 0
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         # Verification facts.
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
         residency_attestation_is_questionable: false
@@ -7243,8 +7285,10 @@
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
         utility_allowance_amount: 0
-        application_date: "2026-10-01"
+        ma_application_date: "2026-10-01"
+        snap_application_date: "2026-10-01"
         verification_request_date: "2026-10-01"
+        ma_reasonable_opportunity_notice_date: "2026-10-01"
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
         residency_attestation_is_questionable: false

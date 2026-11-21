@@ -1,0 +1,13 @@
+id: CO-1747
+name: "Medicaid: reasonable opportunity notice date"
+identifier: ma_reasonable_opportunity_notice_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date the Medical Assistance reasonable opportunity notice was sent to a person whose citizenship or immigration status could not be verified (42 CFR 435.956(b), 10 CCR 2505-10 8.100.3.H), from which the 90-day reasonable opportunity period runs."
+precision: "Distinct from verification_request_date (CO-1343), the date the verification checklist was sent; when one notice does both, the two dates are the same."
+supplied_by: "CBMS notice record."
+sources: [S841, S853, S859]
+tags: [ma, verification]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): ma_reasonable_opportunity_period_end_date (CO-1413) and ma_verification_due_date (CO-1414) both ran from the one shared request date, although the checklist and the reasonable opportunity notice are different notices."
