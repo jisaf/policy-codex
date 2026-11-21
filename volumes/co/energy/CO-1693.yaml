@@ -7,12 +7,13 @@ scope: person-month
 program: LEAP
 role: outcome
 meaning: Whether the person is an adult member of a LEAP household reporting no countable income and the county has not verified the zero income (the DOLE check and an explanation, the final employment date, or CBMS).
-derived: [all, [">=", age, leap_household_child_age_limit], ["=", leap_household_income, 0], [not, zero_income_verified]]
+precision: "False where LEAP verification does not apply to the person (leap_verification_is_applicable, CO-2586; case worker review B2). Due by: leap_verification_due_date (CO-1461)."
+derived: [all, leap_verification_is_applicable, [all, [">=", age, leap_household_child_age_limit], ["=", leap_household_income, 0], [not, zero_income_verified]]]
 sources: [S1083]
 implemented: engine
 tags: [verification, income]
 rationale: "Review C-14: 3.755.21.H requires zero income to be verified for every adult member; no item asked for it."
 tests:
-  - {id: CO-1693-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", leap_household_income: 0, zero_income_verified: false}, expect: true}
-  - {id: CO-1693-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", leap_household_income: 800}, expect: false}
-  - {id: CO-1693-T3, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-01-01"}, expect: false}
+  - {id: CO-1693-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: true, date_of_birth: "1990-01-01", leap_household_income: 0, zero_income_verified: false}, expect: true}
+  - {id: CO-1693-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: true, date_of_birth: "1990-01-01", leap_household_income: 800}, expect: false}
+  - {id: CO-1693-T3, month: "2026-10", as_of: "2026-10-01", given: {leap_verification_is_applicable: true, date_of_birth: "2015-01-01"}, expect: false}

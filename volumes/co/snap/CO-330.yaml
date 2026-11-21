@@ -6,10 +6,10 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The person's earned income for the month for SNAP: gross wages plus net self-employment income (gross receipts less the allowable costs of producing it, snap_self_employment_income, CO-1702)."
-precision: "Vocabulary fix round (R-1): reads gross wages (wages_gross, CO-023) and SNAP's own self-employment net (CO-1702). The 7 CFR 273.9(c) exclusions of earned income (for example work-study and training allowances) are not modeled: a case that has such income leaves it out of wages_gross (OQ-390)."
+precision: "Vocabulary fix round (R-1): reads gross wages (wages_gross, CO-023) and SNAP's own self-employment net (CO-1702). CDHS review C-2: the earnings of a child student (snap_student_earnings_are_excluded, CO-2569; 7 CFR 273.9(c)(7)) are excluded in full. Other 7 CFR 273.9(c) exclusions of earned income (for example work-study and training allowances) are not derived: a case that has such income states it in snap_excluded_earned_income (OQ-390)."
 assumption: "No 273.9(c) earned income exclusion applies to the stated wages (OQ-390)."
-derived: [max, 0, ["-", ["+", wages_gross, snap_self_employment_income], [otherwise, snap_excluded_earned_income, 0]]]
-sources: [S1620, S41]
+derived: [case, [snap_student_earnings_are_excluded, 0], [else, [max, 0, ["-", ["+", wages_gross, snap_self_employment_income], [otherwise, snap_excluded_earned_income, 0]]]]]
+sources: [S1620, S41, S1817]
 implemented: engine
 tags: [income]
 rationale: 7 CFR 273.9(b)(1) (S41) defines earned income as wages/salaries plus self-employment net income; no existing item combines the two supplied income facts into the single countable earned-income figure snap_household_earned_income and snap_person_gross_income need.
@@ -18,3 +18,4 @@ tests:
   - {id: CO-330-T2, month: "2026-10", given: {wages_gross: 500, child_support_paid_legally_obligated: 0, self_employment_gross_receipts: 300, snap_self_employment_costs: 0}, expect: 800}
   # Phase-10 sweep (OQ-390): $380 of the wages is excluded under 4.405 (for example an elementary or secondary student's earnings).
   - {id: CO-330-T3, month: "2026-10", given: {wages_gross: 2380, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, snap_excluded_earned_income: 380}, expect: 2000}
+  - {id: CO-330-T4, title: "C-2: a 16-year-old student's $600 of wages are excluded", month: "2026-10", as_of: "2026-10-01", given: {snap_student_earnings_are_excluded: true, wages_gross: 600}, expect: 0}

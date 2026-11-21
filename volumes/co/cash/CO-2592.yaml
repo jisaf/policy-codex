@@ -1,0 +1,18 @@
+id: CO-2592
+name: "Adult Financial: AND-SO disability certification due date"
+identifier: af_and_so_disability_certification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: AdultFinancial
+role: outcome
+meaning: "The last day an AND-SO applicant has to submit the medical disability certification: thirty days following the interview (9 CCR 2503-5 3.541.1.A.1.b). The other Adult Financial elements are due by af_verification_due_date."
+precision: Counted from af_interview_date, read as the verification request date when the case does not state it (OQ-375 resolved), as af_verification_status (CO-1438) counts it.
+derived: [days_after, af_disability_certification_days, [otherwise, af_interview_date, [otherwise, af_verification_request_date, verification_request_date]]]
+sources: [S879, S1080]
+implemented: engine
+tags: [cash, verification]
+rationale: "County case worker review B2: the AND-SO certification's thirty days were computed only inside af_verification_status (CO-1438), so a checklist could not read the date that governs that element."
+nearest: [CO-1438]
+tests:
+  - {id: CO-2592-T1, as_of: "2026-10-15", given: {af_interview_date: "2026-10-05"}, expect: "2026-11-04"}

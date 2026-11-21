@@ -7,11 +7,12 @@ scope: person-month
 program: SNAP
 role: outcome
 meaning: The number of verification elements still pending across every member of this person's SNAP household, eligibility factors and deductible expenses together.
-derived: [sum, snap_household_members, ["+", [of, [P], snap_person_pending_verification_count], [of, [P], snap_person_pending_expense_verification_count]]]
+precision: Zero where SNAP verification does not apply to the person (snap_is_household_member, CO-304; case worker review B2).
+derived: [case, [snap_is_household_member, [sum, snap_household_members, ["+", [of, [P], snap_person_pending_verification_count], [of, [P], snap_person_pending_expense_verification_count]]]], [else, 0]]
 sources: [S800, S815]
 implemented: engine
 tags: [verification, snap]
 rationale: The household-level count a worker reads off the verification checklist; no existing item counts pending verifications.
 tests:
-  - {id: CO-1391-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_household_members: [p1, p2], snap_person_pending_verification_count: 1, snap_person_pending_expense_verification_count: 0}, others: {p2: {snap_person_pending_verification_count: 0, snap_person_pending_expense_verification_count: 2}}, expect: 3}
-  - {id: CO-1391-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_household_members: []}, expect: 0}
+  - {id: CO-1391-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_household_members: [p1, p2], snap_person_pending_verification_count: 1, snap_person_pending_expense_verification_count: 0}, others: {p2: {snap_is_household_member: true, snap_person_pending_verification_count: 0, snap_person_pending_expense_verification_count: 2}}, expect: 3}
+  - {id: CO-1391-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_household_members: []}, expect: 0}

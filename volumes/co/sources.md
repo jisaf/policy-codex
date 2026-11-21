@@ -11925,3 +11925,396 @@ Document: D-65
 > b. Beginning the first month following the month the couple ceases to live together, only the income of the individual spouse is counted in determining his or her eligibility.
 >
 > c. If one spouse is applying for Long-Term Care in a Long-Term Care institution or Home and Community Based Services (HCBS), refer to the rules on Treatment of Income and Resources for Institutionalized Spouses.
+### S1800. Colorado Works basic cash assistance: no cost-of-living adjustment for State fiscal years 2026-27 and 2027-28; the annual increase resumes July 1, 2028
+
+Document: D-171
+
+Session Laws of Colorado 2026, ch. 313 (SB 26-181), sec. 2, amending C.R.S. 26-2-709(1)(b)(I) and adding (1)(b)(I.5). https://leg.colorado.gov/laws/session-laws/SB26-181/313/download
+
+> SECTION 2. In Colorado Revised Statutes, 26-2-709, amend (1)(b)(I); repeal
+> (1)(b)(III)(B), (1)(b)(III)(C), and (1)(b)(IV); and add (1)(b)(I.5) as follows:
+> 26-2-709. Benefits - cash assistance - programs - rules - legislative intent -
+> repeal.
+>
+> (1) Standard of need - basic cash assistance grant.
+> (b) (I) In establishing the calculation for determining the amount of an eligible
+> applicant's or participant's basic cash assistance grant, the state department shall
+> ensure that the amount of the basic cash assistance grant that a participant or
+> applicant receives for the state fiscal year commencing July 1, 2022, is equal to or
+> exceeds one hundred percent of the amount of basic cash assistance in 2021, plus
+> ten percent. For the state fiscal year commencing July 1, 2024 JULY 1, 2028, and
+> each state fiscal year thereafter, the amount of basic cash assistance must be equal
+> to or exceed the amount of basic cash assistance for the previous state fiscal year
+> plus a two percent cost of living adjustment or a cost of living adjustment that is
+> equal to the average of the federal social security administration's cost of living
+> adjustment for that fiscal year plus the previous two fiscal years, whichever is
+> greater.
+> (I.5) (A) FOR THE STATE FISCAL YEARS COMMENCING JULY 1, 2026, AND JULY 1,
+> 2027, A COST OF LIVING ADJUSTMENT IS NOT APPLIED TO AN APPLICANT'S OR
+> PARTICIPANT'S BASIC CASH ASSISTANCE GRANT.
+>
+> (B) THIS SUBSECTION (1)(b)(I.5) IS REPEALED , EFFECTIVE JULY 31, 2028.
+
+### S1801. SB 26-181: safety clause and approval date (in effect June 2, 2026)
+
+Document: D-171
+
+Session Laws of Colorado 2026, ch. 313 (SB 26-181), sec. 5 and approval. https://leg.colorado.gov/laws/session-laws/SB26-181/313/download
+
+> SECTION 5. Safety clause. The general assembly finds, determines, and
+> declares that this act is necessary for the immediate preservation of the public peace,
+> health, or safety or for appropriations for the support and maintenance of the
+> departments of the state and state institutions.
+> Approved: June 2, 2026
+
+### S1802. Colorado Works grant calculation disregards current child support; counted for eligibility (statute)
+
+Document: D-59
+
+C.R.S. 26-2-709(1)(a)(IV) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (IV)    Establish  the  calculation  for  determining  the  amount  of  the  basic  cash  assistance
+> grant,  which  calculation  shall  disregard  current  child  support  payments  made  to  a  participant
+> pursuant to section 26-2-111 (3)(a.5). However, such payments, with applicable disregards, shall
+> be considered income for purposes of determining eligibility for the grant.
+
+### S1803. 9 CCR 2503-6: the current version is the one effective July 1, 2025 (no later version on November 21, 2026)
+
+Document: D-172
+
+Colorado Secretary of State, Code of Colorado Regulations, 9 CCR 2503-6 rule information, current version (retrieved 2026-11-21). https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145&deptID=9&agencyID=53
+
+> Current version
+> The PDF document constitutes the official version of
+> the rule and shall govern in all cases. The Word document
+> is provided as an accessible alternative.
+> Effective date
+> (PDF)
+> Filing Type
+> Adopted date
+> Colorado Register
+> publication date
+> Rulemaking details
+> (eDocket tracking #)
+> Download Word version
+> 07/01/2025 (PDF)
+> Permanent Rule
+> 05/09/2025
+> 06/10/2025
+> 2025-00081
+> 07/01/2025 (DOCX)
+
+### S1804. 9 CCR 2503-6 rulemaking 2026-00094 (SFY 2026-27 grant standard increase) terminated: SB 26-181 renders it moot
+
+Document: D-172
+
+Colorado Secretary of State, eDocket tracking number 2026-00094 (retrieved 2026-11-21). https://www.sos.state.co.us/CCR/eDocketDetails.do?trackingNum=2026-00094
+
+> Notice Filed with SOS
+> 02/27/2026
+> Description of Subjects/Issues
+> Colorado Revised Statute, C.R.S � 26-2-709, requires an increase to the Colorado Works monthly grant standard which "must be equal to or exceed the amount of basic cash assistance for the previous state fiscal year plus a two percent cost of living adjustment or a cost of living adjustment that is equal to the average of the federal social security administration�s cost of living adjustment for that fiscal year plus the previous two fiscal years, whichever is greater."
+> Termination information
+> Date
+> 06/09/2026
+> Reason
+> Passage of SB26-181 renders this rulemaking moot.
+
+### S1805. Colorado Works child support income: counted at application; excluded from the grant once eligible; at redetermination only consistent support averaging over $500; arrears exempt
+
+Document: D-81
+
+9 CCR 2503-6 3.605.5 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.605.5 Child Support Income
+>
+> A. At initial application, current child support payments received by the assistance unit shall be
+> considered income and counted against the need standard to determine eligibility.
+>
+> B. Once found eligible, child support income is excluded in the basic cash assistance grant
+> calculation.
+>
+> C. For purposes of redetermination (RRR):
+>
+> 1. Inconsistent child support payments are not countable. Child support payments are
+> considered consistent when received in all six (6) of the six (6) previous months.
+>
+> 2. Once consistency of payments has been established, current child support is averaged
+> over the previous six (6) months. If that averaged amount is $500 or less for the
+> household, the child support income is disregarded for both eligibility and grant
+> calculation. If that amount is over $500 for the household, it is counted, in combination
+> with other income, against the need standard to determine continued eligibility.
+>
+> 3. If found eligible, the child support income is disregarded for basic cash assistance grant
+> calculation.
+>
+> D. Child support arrears are exempt income and are not used for eligibility or grant calculation.
+
+### S1806. Colorado Works: a parent includes an expectant parent
+
+Document: D-81
+
+9 CCR 2503-6 3.601 (definition of parent) (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Parent” means an adoptive or natural/biological parent, including an expectant parent.
+
+### S1807. Colorado Works secondary verifications include pregnancy when no children are in the assistance unit
+
+Document: D-81
+
+9 CCR 2503-6 3.604.3.C (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Secondary Verifications
+>
+> When applicable, secondary verifications for eligibility and program participation, may include, but
+> are not limited to:
+>
+> ...
+>
+> 7. Verification of pregnancy, when no children are in the assistance unit.
+
+### S1808. Colorado Works non-participant stepparent and parent of a minor parent: the employment disregard of $90
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.4.a (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> a. A stepparent’s countable income is considered available to stepchildren included
+> in the assistance unit as dependent children. The countable income of a non-
+> participant parent(s) of an unmarried minor parent who is living in the same home
+> as the minor parent, shall also be deemed to the assistance unit.
+>
+> The countable income equals gross earned income minus the employment
+> disregard of $90, minus the maintenance or child support paid to others outside
+> the assistance unit, minus the amounts actually paid by the individual to other
+> individuals not living in the home and who could be claimed by the individual for
+> federal income tax purposes, plus any unearned income received by the
+
+### S1809. Colorado Works other assistance (county option): a dependent child or pregnancy, lawfully present, income under $75,000
+
+Document: D-81
+
+9 CCR 2503-6 3.606.8.D (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> D. Other assistance
+>
+> Counties may provide assistance to clients meeting the following broad based Colorado Works
+> eligibility criteria:
+>
+> 1. At least one dependent child or pregnancy in the home;
+>
+> 2. Lawfully present; and
+>
+> 3. Household income under $75,000 yearly.
+
+### S1810. Colorado SNAP disqualified individuals: IPV, SSN, ineligible non-citizen, work requirement, time-limited ABAWD, certain convicted felons
+
+Document: D-82
+
+10 CCR 2506-1 4.304.4.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Disqualified individuals shall not be allowed to participate in SNAP as separate
+> households. “Disqualified individuals” are individuals disqualified for:
+>
+> 1. IPV/fraud;
+>
+> 2. Failure to either provide or obtain an SSN;
+>
+> 3. Being an ineligible non-citizen;
+>
+> 4. Failure to comply with work requirements;
+>
+> 5. Being an ABAWD who has been disqualified after receiving three (3)
+> months of SNAP benefits within a period of thirty-six (36) months; or,
+>
+> 6. Being a person with a felony conviction who is not in compliance with the
+> terms of their sentence and was convicted as an adult for conduct that
+> occurred after February 7, 2014 for any of the following crimes:
+>
+> a. Aggravated sexual abuse under Section 2241 of Title 18, United
+> States Code;
+>
+> b. Murder under Section 1111 of Title 18, United States Code;
+>
+> c. An offense under Chapter 110 of Title 18, United States Code;
+>
+> d. A federal or state offense involving sexual assault, as defined in
+> Section 40002(a) of the Violence Against Women Act of 1994 (42
+> U.S.C. 13925(a)); or
+>
+> e. An offense under state law determined by the attorney general to
+> be substantially similar to an offense described in clause (a), (b),
+> or (c).
+
+### S1811. Colorado SNAP: a member who refuses or fails without good cause to provide or apply for an SSN is ineligible; the household is not
+
+Document: D-82
+
+10 CCR 2506-1 4.302.A.3 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 3. If the household member required to provide an SSN either refuses to
+> supply their SSN at the time of application or fails to provide the local
+> office with a form or letter as proof of application for a SSN without good
+> cause, they shall be ineligible to participate in SNAP. The disqualification
+> applies to the individual(s) who refused to cooperate with the application
+> process to obtain the SSN and not the entire household. The household
+> member(s) disqualified may become eligible by providing the local office
+> with an SSN, or by providing verification that an application for an SSN
+> has been submitted to the SSA.
+
+### S1812. Colorado SNAP members disqualified for non-citizen status, SSN, IPV, fleeing felon, work requirement or as a time-limited ABAWD
+
+Document: D-82
+
+10 CCR 2506-1 4.411.1.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Individual household members may be disqualified for being ineligible non-
+> citizens, for failure or refusal to obtain or provide a Social Security Number
+> (SSN), for Intentional Program Violation (IPV)/fraud, for being a fleeing felon, for
+> failing to comply with a work requirement, or for being a sanctioned ABAWD
+> (Able Bodied Adult Without Dependents) who has received three (3) months of
+> SNAP benefits within a thirty-six (36) month period.
+
+### S1813. Federal: income of members disqualified for IPV, a drug felony, fleeing felon, work requirements or as a convicted felon under 273.11(s) counts in full
+
+Document: D-15
+
+7 CFR 273.11(c)(1). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (1) *Intentional Program violation, felony drug conviction, or fleeing felon disqualifications, and workfare or work requirement sanctions.*
+> The eligibility and benefit level of any remaining household members of a household containing individuals determined ineligible because of a disqualification for an intentional Program violation, a felony drug conviction, their fleeing felon status, noncompliance with a work requirement of § 273.7, imposition of a sanction while they were participating in a household disqualified because of failure to comply with workfare requirements, or certain convicted felons as provided at § 273.11(s) shall be determined as follows:
+>
+> (i) *Income, resources, and deductible expenses.* The income and resources of the ineligible household member(s) shall continue to count in their entirety, and the entire household's allowable earned income, standard, medical, dependent care, child support, and excess shelter deductions shall continue to apply to the remaining household members.
+
+### S1814. Federal: income of members ineligible for an SSN refusal or the ABAWD time limit is prorated
+
+Document: D-15
+
+7 CFR 273.11(c)(2). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (2) *SSN disqualifications, comparable disqualifications, child support disqualifications, and ineligible ABAWDs.* The eligibility and benefit level of any remaining household members of a household containing individuals determined to be ineligible for refusal to obtain or provide an SSN, for meeting the time limit for able-bodied adults without dependents or for being disqualified under paragraphs (k), (o), (p), or (q) of this section shall be determined as follows:
+>
+> (i) *Resources.* The resources of such ineligible members shall continue to count in their entirety to the remaining household members.
+>
+> (ii) *Income.* A pro rata share of the income of such ineligible members shall be counted as income to the remaining members. This pro rata share is calculated by first subtracting the allowable exclusions from the ineligible member's income and dividing the income evenly among the household members, including the ineligible members. All but the ineligible members' share is counted as income for the remaining household members.
+
+### S1815. Federal: roomers and live-in attendants may be separate households; boarders are not members unless the household asks
+
+Document: D-7
+
+7 CFR 273.1(c)(3)(ii), (c)(5)-(6). https://www.ecfr.gov/current/title-7/section-273.1
+
+> (ii) All other individuals or groups of individuals paying a reasonable amount for meals or meals and lodging must be considered boarders and are not eligible to participate in the Program independently of the household providing the board. Such individuals or groups of individuals may participate, along with a spouse or children living with them, as members of the household providing the boarder services, only at the request of the household providing the boarder services. An individual paying less than a reasonable amount for board must not be considered a boarder but must be considered, along with a spouse or children living with him or her, as a member of the household providing the board.
+>
+> (5) *Roomers.* Individuals to whom a household furnishes lodging for compensation, but not meals, may participate as separate households. Persons described in paragraph (b)(1) of this section must not be considered roomers.
+>
+> (6) *Live-in attendants.* A live-in attendant may participate as a separate household. Persons described in paragraph (b)(1) of this section must not be considered live-in attendants.
+
+### S1816. Federal: households with a striking member
+
+Document: D-7
+
+7 CFR 273.1(e). https://www.ecfr.gov/current/title-7/section-273.1
+
+> (e) *Strikers.* Households with a striking member are not eligible to participate in the Program, unless the household was eligible for benefits the day before the strike and is otherwise eligible at the time of application. A striker must be anyone involved in a strike or concerted stoppage of work by employees (including a stoppage by reason of the expiration of a collective-bargaining agreement) and any concerted slowdown or other concerted interruption of operations by employees. Any employee affected by a lockout, however, must not be deemed to be a striker. Further, an individual who goes on strike but is exempt from work registration under § 273.7(b) the day before the strike, other than those exempt solely on the grounds that they are employed, must not be deemed to be a striker. Also, persons such as truck drivers who cannot do their jobs because the strike has left them with nothing to deliver, and employees who are not part of the bargaining unit and do not want to cross the picket line for fear of personal injury or death, must not be deemed to be strikers.
+>
+> (1) Pre-strike eligibility must be determined by considering the day prior to the strike as the day of application and assuming the strike did not occur.
+>
+> (2) Eligibility at the time of application must be determined by comparing the striking member's income before the strike to the striker's current income and adding the higher of the two to the current income of non-striking members during the month of application. If the household is eligible, the higher income figure must also be used in determining the household's benefits.
+
+### S1817. Federal SNAP income exclusion: earnings of an elementary or secondary student under 18 living with a parent or under parental control
+
+Document: D-13
+
+7 CFR 273.9(c)(7). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (7) The earned income (as defined in paragraph (b)(1) of this section) of any household member who is under age 18, who is an elementary or secondary school student, and who lives with a natural, adoptive, or stepparent or under the parental control of a household member other than a parent. For purposes of this provision, an elementary or secondary school student is someone who attends elementary or secondary school, or who attends classes to obtain a General Equivalency Diploma that are recognized, operated, or supervised by the student's state or local school district, or who attends elementary or secondary classes through a home-school program recognized or supervised by the student's state or local school district. The exclusion shall continue to apply during temporary interruptions in school attendance due to semester or vacation breaks, provided the child's enrollment will resume following the break. If the child's earnings or amount of work performed cannot be differentiated from that of other household members, the total earnings shall be prorated equally among the working members and the child's pro rata share excluded.
+
+### S1818. LEAP income standard from November 1, 2026: 60% of the HHS state median income for federal fiscal year 2026 (LIHEAP IM of April 24, 2026)
+
+Document: D-173
+
+9 CCR 2503-7 3.752.22.D (adopted rules, eDocket 2026-00287, effective 2026-11-01). https://www.sos.state.co.us/CCR/Upload/AGORequest/AdoptedRules02026-00287.docx
+
+> D. All applicant households whose countable income for the eligibility period is up to and including 60 percent (60%) of the state median income level released by the U.S. Department of Health and Human Services for federal fiscal year 2026 shall meet the income requirements for the heating fuel assistance program. The state department shall adjust the income limits annually based on funds available and the state median income guidelines.
+>
+> The state median income level means the income level for a household as set forth in 45 C.F.R. § 96.85 (2026), and the Low Income Home Energy Assistance Program Information Memorandum (April 24, 2026), which are hereby incorporated by reference, no later amendments or editions are incorporated. The regulation and memorandum are from the U.S. Department of Health and Human Services. The federal regulation is available for no cost atHTTPS://WWW.ECFR.GOV/. The memorandum is available for no cost at https://acf.gov/ocs/policy-guidance/liheap-im2026-01-federal-poverty-guidelines-fpg-and-state-median-income-smi. The federal regulation and memorandum are also available for public inspection and copying at the Colorado Department of Human Services, Food and Energy Assistance Division,1575 Sherman Street, Denver, Colorado, 80203, during regular business hours.
+
+### S1819. LEAP rules adopted September 4, 2026: effective November 1, 2026
+
+Document: D-173
+
+Colorado Secretary of State, eDocket tracking number 2026-00287, adoption record (retrieved 2026-11-21). https://www.sos.state.co.us/CCR/eDocketDetails.do?trackingNum=2026-00287
+
+> Adopted Date
+> 09/04/2026
+> AGO requested date
+> 09/08/2026
+> Attorney General Opinion
+> 09/21/2026
+> Colorado Register publication date
+> 10/10/2026
+> Effective Date
+> 11/01/2026
+
+### S1820. Summer EBT instructional year (definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/subtitle-B/chapter-II/subchapter-A/part-292
+
+> Instructional year means the period from July 1 of the prior year through one day prior to the summer operational period.
+
+### S1821. Summer EBT period of eligibility (definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/subtitle-B/chapter-II/subchapter-A/part-292
+
+> Period of eligibility means the period of time from the first day of instructional year, as defined in this section, immediately preceding the summer operational period, as defined in this section, through the last day of the summer operational period.
+
+### S1822. Summer operational period (definition)
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/subtitle-B/chapter-II/subchapter-A/part-292
+
+> Summer operational period means the benefit period that generally reflects the period between the end of classes during the current school year and the start of classes for the next school year, as determined by the Summer EBT agency.
+
+### S1823. CCCAP families experiencing homelessness: a stabilization period of at least sixty consecutive days
+
+Document: D-87
+
+8 CCR 1403-1 3.121.A-B (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.121 ELIGIBILITY FOR FAMILIES EXPERIENCING HOMELESSNESS
+> A. Households shall meet the definition of families experiencing homelessness in
+> rule section 3.103(YY), above.
+>
+> B. Households that meet the definition of “families experiencing homelessness”
+> must be provided a child care authorization during a stabilization period, which is
+> at least sixty (60) consecutive calendar days, within a twelve (12) month period,
+> to allow the household the opportunity to submit verification for ongoing child
+> care benefits. Counties may request approval from the Department by submitting
+> a county plan to offer more than sixty (60) consecutive calendar days of care
+> during a stabilization period, subject to the requirements and Department
+> approval as described in rule section 3.104.
+
+### S1824. Colorado SNAP expedited service: the thirty-day termination does not apply to a migrant household needing out-of-state verification
+
+Document: D-82
+
+10 CCR 2506-1 4.205.11.B.2.b-c (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> Except for migrant households needing out-of-state verification,
+> when the postponed verification is not completed within thirty (30)
+> calendar days from the date of application, the local office shall
+> terminate the household's participation on the thirtieth (30th)
+> calendar day without providing a notice of adverse action.
+>
+> c. Migrants shall be entitled to a postponement of out-of-state
+> verification only once each season. If a migrant household
+> requesting expedited service has already received this exception
+> during the current season, the local office shall grant a
+> postponement of out-of-state verification only for the initial month's
+> issuance and not for the second (2nd) month's issuance. Migrant

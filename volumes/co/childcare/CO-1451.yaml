@@ -9,7 +9,7 @@ program: CCCAP
 role: outcome
 meaning: "Where this person's CCCAP household stands on verification: not applicable (no eligible child in the household); none required; complete; pending within the noticing period; past it with only child support paid unverified (the deduction is not allowed); or past due with an eligibility element unverified: the application is denied, or at a redetermination the case is closed (3.111.H.5.e.2)."
 precision: Assets are self-declared (3.111.H.5.c, S891) and need no verification.
-derived: [case, [[not, [exists, cccap_household_members, [of, [P], cccap_is_eligible_child]]], not_applicable], [["=", [sum, cccap_household_members, [of, [P], cccap_person_required_verification_count]], 0], not_required], [[all, ["=", cccap_pending_verification_count, 0], ["=", cccap_pending_deduction_verification_count, 0]], complete], [["<=", [det_date], cccap_verification_due_date], pending], [["=", cccap_pending_verification_count, 0], deduction_disallowed], [[not, [unknown, cccap_redetermination_date]], case_closed], [else, past_due]]
+derived: [case, [[not, cccap_verification_is_applicable], not_applicable], [["=", [sum, cccap_household_members, [of, [P], cccap_person_required_verification_count]], 0], not_required], [[all, ["=", cccap_pending_verification_count, 0], ["=", cccap_pending_deduction_verification_count, 0]], complete], [["<=", [det_date], cccap_verification_due_date], pending], [["=", cccap_pending_verification_count, 0], deduction_disallowed], [[not, [unknown, cccap_redetermination_date]], case_closed], [else, past_due]]
 sources: [S891, S892, S1631]
 implemented: engine
 tags: [verification]

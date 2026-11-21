@@ -1,5 +1,5 @@
 id: CO-418
-name: "SNAP: ABAWD time limit status"
+name: "SNAP: ABAWD (able-bodied adult without dependents) time limit status"
 identifier: snap_abawd_time_limit_status
 kind: derived
 type: one of
@@ -7,7 +7,7 @@ options: [not_subject, within_limit, regained, additional_months, limit_reached]
 scope: person-month
 program: SNAP
 role: outcome
-meaning: Not subject when the person is outside the ABAWD age range or otherwise exempt from the time limit for the month; within limit when countable months in the current 36-month clock period are below the 3-month limit; regained when the person has reached the limit but regained eligibility (4.311.3.D.1) and meets the work requirement in the month (D.2); additional months when the person, having regained eligibility, is in the single three-month period after notifying the office of no longer meeting it (D.3); otherwise limit reached.
+meaning: Not subject when the person is outside the ABAWD (able-bodied adult without dependents) age range or otherwise exempt from the time limit for the month; within limit when countable months in the current 36-month clock period are below the 3-month limit; regained when the person has reached the limit but regained eligibility (4.311.3.D.1) and meets the work requirement in the month (D.2); additional months when the person, having regained eligibility, is in the single three-month period after notifying the office of no longer meeting it (D.3); otherwise limit reached.
 precision: "Regained eligibility and the additional months come from snap_abawd_eligibility_regained (CO-2309) and snap_abawd_is_in_additional_months (CO-2312), both read as false when not stated; a person who becomes exempt is not subject (D.1.d)."
 derived: [case, [[not, snap_is_in_abawd_age_range], "not_subject"], [snap_is_exempt_from_abawd_time_limit, "not_subject"], [["<", snap_abawd_countable_months_in_period, snap_abawd_countable_month_limit], "within_limit"], [[all, [otherwise, snap_abawd_eligibility_regained, false], snap_meets_abawd_work_requirement], "regained"], [snap_abawd_is_in_additional_months, "additional_months"], [else, "limit_reached"]]
 sources: [S127, S130, S132, S1613]

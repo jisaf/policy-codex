@@ -1,0 +1,14 @@
+id: CO-2551
+name: "Colorado Works: average monthly child support over the last six months"
+identifier: cw_child_support_six_month_average
+kind: supplied
+type: money
+scope: person
+program: ColoradoWorks
+meaning: "At a Colorado Works redetermination, the current child support the assistance unit received for this person in the six months before the redetermination, averaged over those six months (9 CCR 2503-6 3.605.5.C.2). Arrears are not included: 3.605.5.D makes them exempt."
+precision: Read only at a redetermination and only for a person whose support was received in all six months. If not stated, Colorado Works reads this as 0.
+supplied_by: CBMS and ACSES payment history for the six months before the redetermination.
+sources: [S1805]
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: 3.605.5.C.2 compares the household's six-month average with $500; no fact stated the average."
+nearest: [CO-2550]

@@ -7,10 +7,11 @@ scope: person-month
 program: ColoradoWorks
 role: outcome
 meaning: The number of the elements 3.604.3.K gives thirty days for (lawful presence, citizenship, qualified non-citizen status and SSN; identity is shown by the lawful presence document) that are pending for this person.
-derived: ["+", [case, [cw_lawful_presence_verification_is_pending, 1], [else, 0]], [case, [cw_citizenship_verification_is_pending, 1], [else, 0]], [case, [cw_immigration_status_verification_is_pending, 1], [else, 0]], [case, [cw_ssn_verification_is_pending, 1], [else, 0]]]
+precision: Zero where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2).
+derived: [case, [cw_verification_is_applicable, ["+", [case, [cw_lawful_presence_verification_is_pending, 1], [else, 0]], [case, [cw_citizenship_verification_is_pending, 1], [else, 0]], [case, [cw_immigration_status_verification_is_pending, 1], [else, 0]], [case, [cw_ssn_verification_is_pending, 1], [else, 0]]]], [else, 0]]
 sources: [S1064]
 implemented: engine
 tags: [verification, cash, tanf]
 rationale: "Review C-9: 3.604.3.K gives thirty days for these elements and excludes only the person who fails to provide them, so the status needs them counted apart from the other elements."
 tests:
-  - {id: CO-1655-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_lawful_presence_verification_is_pending: true, cw_citizenship_verification_is_pending: true, cw_immigration_status_verification_is_pending: false, cw_ssn_verification_is_pending: false}, expect: 2}
+  - {id: CO-1655-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_lawful_presence_verification_is_pending: true, cw_citizenship_verification_is_pending: true, cw_immigration_status_verification_is_pending: false, cw_ssn_verification_is_pending: false}, expect: 2}

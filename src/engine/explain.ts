@@ -23,6 +23,10 @@ export interface TraceNode {
    *  settled every operator it sits inside. Absent when it did not decide,
    *  and on nodes evaluated with no operator between them and their parent. */
   decisive?: boolean;
+  /** The item's statute_override: the one sentence a county reads when a
+   *  statute governs over the Colorado rule paragraph the item would
+   *  otherwise follow. Absent on items without one. */
+  override?: string;
 }
 
 /** One expectation of a household case with the trace behind its value. */
@@ -61,6 +65,7 @@ function nodeOf(ix: LedgerIndex, e: TraceEvent): TraceNode {
     key: e.key,
   };
   if (it) node.scope = it.scope;
+  if (it && it.statute_override) node.override = it.statute_override;
   if (e.error !== undefined) node.error = e.error;
   if (e.warnings && e.warnings.length) node.warnings = e.warnings.slice();
   if (e.decisive) node.decisive = true;
@@ -127,6 +132,7 @@ export function explain(
       key: identifier,
     };
     if (it) node.scope = it.scope;
+    if (it && it.statute_override) node.override = it.statute_override;
     if (thrown !== null) node.error = thrown;
     return node;
   }
@@ -192,15 +198,29 @@ export function missingFacts(node: TraceNode): TraceNode[] {
 /** How many lines the story may take before it stops and counts the rest. */
 export const STORY_LINES = 12;
 
+/** The statute overrides a story rests on: the explained value's own and
+ *  those of the facts its story tells, each once, in story order. */
+export function overrides(node: TraceNode): string[] {
+  const out: string[] = [];
+  const add = (n: TraceNode) => { if (n.override && !out.includes(n.override)) out.push(n.override); };
+  add(node);
+  for (const s of story(node)) add(s.node);
+  return out;
+}
+
 /** The story of one value in plain lines, "<name> is <value>", the second
  *  level indented under the child it explains. Long stories stop at
- *  STORY_LINES, the last line saying how many more there were. */
+ *  STORY_LINES, the last line saying how many more there were. A value
+ *  whose rule, or a fact in whose story, follows a statute over a Colorado
+ *  rule ends with one "Statute over rule:" line for each such note, so a
+ *  county reader sees why the result departs from the rule manual. */
 export function narrative(node: TraceNode, fmt: (v: unknown) => string): string[] {
   const lines = story(node).map(
     (s) => (s.depth ? "  " : "") + s.node.name + " is " + fmt(s.node.value),
   );
-  if (lines.length <= STORY_LINES) return lines;
+  const notes = overrides(node).map((o) => "Statute over rule: " + o);
+  if (lines.length <= STORY_LINES) return lines.concat(notes);
   const kept = lines.slice(0, STORY_LINES - 1);
   kept.push("… and " + (lines.length - kept.length) + " more");
-  return kept;
+  return kept.concat(notes);
 }

@@ -1,0 +1,19 @@
+id: CO-2589
+name: "Adult Financial: unearned income verification is pending"
+identifier: af_unearned_income_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: "Whether Adult Financial still needs verification of this person's unearned income: the shared unearned_income_verification_is_pending (CO-1650), where Adult Financial verification applies to the person."
+precision: "Due by: af_verification_due_date (CO-1437: eleven days)."
+derived: [all, af_verification_is_applicable, unearned_income_verification_is_pending]
+sources: [S872, S875, S880, S891, S898]
+implemented: engine
+tags: [verification, income]
+rationale: "County case worker review B2: the shared unearned-income pending flag is one of Adult Financial's outcomes but cannot read Adult Financial's applicability; this item is the program's own flag, gated like its other elements."
+nearest: [CO-1650]
+tests:
+  - {id: CO-2589-T1, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, unearned_income_verification_is_pending: true}, expect: true}
+  - {id: CO-2589-T2, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: false, unearned_income_verification_is_pending: true}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-2552
+name: "Colorado Works: unit's averaged consistent child support"
+identifier: cw_unit_consistent_child_support_average
+kind: derived
+type: money
+scope: person
+program: ColoradoWorks
+meaning: "At a redetermination, the household's averaged monthly child support that 9 CCR 2503-6 3.605.5.C.2 compares with $500: the six-month average of every member of this person's assistance unit whose support was received in all six of the six previous months."
+precision: Support received in fewer than six of the six months is inconsistent and left out (3.605.5.C.1). A member's months and average read as 0 when not stated (CO-2550, CO-2551).
+derived: [sum, [filter, cw_assistance_unit_members, [">=", [otherwise, [of, [P], cw_child_support_months_received_of_last_six], 0], cw_child_support_consistency_months]], [otherwise, [of, [P], cw_child_support_six_month_average], 0]]
+sources: [S1805]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: the $500 test is for the household, so the members' consistent averages are summed before the comparison; no existing item sums them."
+tests:
+  - {id: CO-2552-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2, p3]}, title: "Two children's consistent support, $300 and $250, sum to $550", others: {p2: {cw_child_support_months_received_of_last_six: 6, cw_child_support_six_month_average: 300}, p3: {cw_child_support_months_received_of_last_six: 6, cw_child_support_six_month_average: 250}}, expect: 550}
+  - {id: CO-2552-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2, p3]}, title: "Support received in five of six months is inconsistent and left out", others: {p2: {cw_child_support_months_received_of_last_six: 6, cw_child_support_six_month_average: 300}, p3: {cw_child_support_months_received_of_last_six: 5, cw_child_support_six_month_average: 250}}, expect: 300}

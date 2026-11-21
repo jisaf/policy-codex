@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: SNAP
+role: outcome
 meaning: "The last day an applicant non-citizen has to submit acceptable documentation of status: the thirtieth day after the date of application, or ten days from the request if that is later."
 precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
 derived: [case, [["<=", [days_after, snap_noncitizen_documentation_days, snap_application_date], snap_verification_due_date], snap_verification_due_date], [else, [days_after, snap_noncitizen_documentation_days, snap_application_date]]]

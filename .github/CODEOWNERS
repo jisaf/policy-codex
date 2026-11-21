@@ -44,20 +44,22 @@ codex.json                  @jisaf
 #   @org/hcpf-eligibility-ops   Eligibility operations owner
 #   @org/hcpf-state-plan        State plan coordinator
 #   @org/cdhs-snap              SNAP policy owner (and SUN Bucks)
-#   @org/cdhs-cash              Cash programs policy owner (Colorado Works, Adult Financial, LEAP)
+#   @org/cdhs-cash              Cash programs policy owner (Colorado Works, Adult Financial)
+#   @org/cdhs-energy-leap       Energy assistance (LEAP) policy owner
+#   @org/cde-school-meals       School meals (CDE) co-approver for SUN Bucks
 #   @org/cdec-child-care        Child care policy owner (CCCAP)
 #   @org/legal                  Legal
 #   @org/data-stewards          Data steward
 # Later lines win in CODEOWNERS, so the volume-wide line comes first.
 volumes/co/                    @org/codex-stewards
-volumes/co/volume.yaml         @org/codex-stewards @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash @org/cdec-child-care
+volumes/co/volume.yaml         @org/codex-stewards @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash @org/cdhs-energy-leap @org/cdec-child-care
 volumes/co/medicaid/           @org/hcpf-medicaid @org/hcpf-ltss @org/hcpf-finance @org/hcpf-eligibility-ops
 volumes/co/chp/                @org/hcpf-chp
 volumes/co/shared/             @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash
 volumes/co/snap/               @org/cdhs-snap
-volumes/co/sunbucks/           @org/cdhs-snap
+volumes/co/sunbucks/           @org/cdhs-snap @org/cde-school-meals
 volumes/co/cash/               @org/cdhs-cash
-volumes/co/energy/             @org/cdhs-cash
+volumes/co/energy/             @org/cdhs-energy-leap
 volumes/co/childcare/          @org/cdec-child-care
 volumes/co/supplied/           @org/data-stewards
 volumes/co/parameters/         @org/data-stewards @org/hcpf-medicaid @org/hcpf-chp @org/cdhs-snap @org/cdhs-cash

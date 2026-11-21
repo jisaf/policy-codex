@@ -1,0 +1,14 @@
+id: CO-2563
+name: "SNAP: is disqualified as a convicted felon (conduct after February 7, 2014)"
+identifier: snap_is_disqualified_convicted_felon
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: This person was convicted as an adult of aggravated sexual abuse, murder, an offense under chapter 110 of title 18 of the U.S. Code, a federal or state sexual-assault offense, or a substantially similar state offense, for conduct after February 7, 2014, and is not in compliance with the terms of the sentence (10 CCR 2506-1 4.304.4.A.6; 7 CFR 273.11(s)).
+precision: If not stated, SNAP reads this as false.
+supplied_by: Court record, county worker determination.
+sources: [S1810, S1813]
+tags: [snap, legal]
+rationale: "CDHS review B-4: the 4.304.4.A.6 disqualification was not modeled; no fact stated it (snap_is_disqualified_drug_felony, CO-041, is the drug-felony ground)."
+nearest: [CO-041]

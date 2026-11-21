@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: LEAP
+role: outcome
 meaning: "The date by which requested LEAP information or verification is due: two calendar weeks from the county's notice."
 derived: [days_after, [+, leap_verification_response_days, [case, [[otherwise, leap_verification_extension_granted, false], leap_verification_extension_days], [else, 0]]], [otherwise, leap_verification_request_date, verification_request_date]]
 sources: [S899]

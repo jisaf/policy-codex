@@ -7,12 +7,12 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: Whether Adult Financial requires verification of the client's sponsor information of a sponsored qualified non-citizen who entered on or after August 22, 1996 and it has not been provided.
-precision: qualified_status_date stands for the date of entry 3.520.69 names (OQ-380).
-derived: [all, is_sponsored_non_citizen, [">=", qualified_status_date, "1996-08-22"], [not, sponsor_information_verified]]
+precision: "qualified_status_date stands for the date of entry 3.520.69 names (OQ-380). False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
+derived: [all, af_verification_is_applicable, [all, is_sponsored_non_citizen, [">=", qualified_status_date, "1996-08-22"], [not, sponsor_information_verified]]]
 sources: [S1063]
 implemented: engine
 tags: [verification, cash]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1672-T1, month: "2026-10", as_of: "2026-10-01", given: {is_sponsored_non_citizen: true, qualified_status_date: "2015-06-01", us_entry_date: "2015-06-01", sponsor_information_verified: false}, expect: true}
-  - {id: CO-1672-T2, month: "2026-10", as_of: "2026-10-01", given: {is_sponsored_non_citizen: false}, expect: false}
+  - {id: CO-1672-T1, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, is_sponsored_non_citizen: true, qualified_status_date: "2015-06-01", us_entry_date: "2015-06-01", sponsor_information_verified: false}, expect: true}
+  - {id: CO-1672-T2, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, is_sponsored_non_citizen: false}, expect: false}

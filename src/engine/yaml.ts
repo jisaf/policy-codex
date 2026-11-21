@@ -3,7 +3,7 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
-  "meaning", "precision", "assumption", "supplied_by", "value", "versions", "review_by", "derived",
+  "meaning", "precision", "assumption", "statute_override", "supplied_by", "value", "versions", "review_by", "derived",
   "sources", "effective", "status", "approval", "implemented", "implemented_by", "tags", "open", "accepts_from",
   "rationale", "nearest", "tests",
 ];

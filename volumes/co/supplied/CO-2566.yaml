@@ -1,0 +1,13 @@
+id: CO-2566
+name: "SNAP: is a roomer or live-in attendant"
+identifier: snap_is_roomer_or_live_in_attendant
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: This person lives with the household as a roomer (lodging furnished for compensation, without meals) or as a live-in attendant, and is not the spouse of a household member, a person under 22 living with a parent, or a child under 18 under a household member's parental control (7 CFR 273.1(c)(5)-(6)). A roomer or live-in attendant may participate as a separate household.
+precision: If not stated, SNAP reads this as false. A purchase-and-prepare edge to or from such a person is not crossed, so the person, with a spouse or children of their own, forms a separate household.
+supplied_by: Applicant statement on the household's living arrangements.
+sources: [S1815]
+tags: [snap, household]
+rationale: "CDHS review C-2: roomers and live-in attendants were not modeled, so a stated buys_prepares_with edge always joined them to the household."

@@ -1,0 +1,19 @@
+id: CO-2564
+name: "SNAP: is ineligible under the ABAWD time limit"
+identifier: snap_is_ineligible_abawd
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person is an ABAWD (able-bodied adult without dependents) who has used the three countable months of the thirty-six-month period and has neither regained eligibility nor entered the additional three months, so is ineligible to participate in SNAP while the household stays eligible (10 CCR 2506-1 4.304.4.A.5, 4.411.1.A; 7 CFR 273.11(c)(2)): snap_abawd_time_limit_status (CO-418) is limit_reached in the month of the determination."
+precision: Household composition in this volume is stated once per determination, so the time-limit status is read for the month containing the determination date. A member outside the ABAWD age range or exempt is not_subject and so not ineligible; a status that is unknown leaves this unknown.
+derived: ["=", [at, snap_abawd_time_limit_status, [det_month]], limit_reached]
+sources: [S1810, S1812, S1814]
+implemented: engine
+tags: [snap, abawd]
+rationale: "CDHS review B-4: snap_abawd_time_limit_status (CO-418) was computed but nothing read it, so a time-limited member stayed in the eligible household and in the allotment. snap_is_ineligible_member (CO-311) is per person and needs a per-person reading of the monthly status."
+nearest: [CO-418]
+tests:
+  - {id: CO-2564-T1, month: "2026-10", as_of: "2026-10-01", title: "A 58-year-old who has used his three months", persons: {p1: {months: {"2026-10": {snap_abawd_time_limit_status: limit_reached}}}}, expect: true}
+  - {id: CO-2564-T2, month: "2026-10", as_of: "2026-10-01", title: "Within the limit", persons: {p1: {months: {"2026-10": {snap_abawd_time_limit_status: within_limit}}}}, expect: false}
+  - {id: CO-2564-T3, month: "2026-10", as_of: "2026-10-01", title: "Not subject (outside the age range or exempt)", persons: {p1: {months: {"2026-10": {snap_abawd_time_limit_status: not_subject}}}}, expect: false}

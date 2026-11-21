@@ -7,11 +7,12 @@ scope: person-month
 program: SNAP
 role: outcome
 meaning: Whether SNAP requires verification of the person's shelter and utility costs and it has not been provided.
-derived: [all, snap_requires_verification_of_shelter_costs, [not, shelter_costs_verification_document_received]]
+precision: "False where SNAP verification does not apply to the person (snap_is_household_member, CO-304; case worker review B2). Due by: snap_expense_verification_due_date (CO-1618: thirty days after application; the deduction is disallowed after it)."
+derived: [all, snap_is_household_member, [all, snap_requires_verification_of_shelter_costs, [not, shelter_costs_verification_document_received]]]
 sources: [S832, S1060]
 implemented: engine
 tags: [verification, snap]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1612-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_shelter_costs: true, shelter_costs_verification_document_received: false}, expect: true}
-  - {id: CO-1612-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_shelter_costs: false}, expect: false}
+  - {id: CO-1612-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_requires_verification_of_shelter_costs: true, shelter_costs_verification_document_received: false}, expect: true}
+  - {id: CO-1612-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_requires_verification_of_shelter_costs: false}, expect: false}

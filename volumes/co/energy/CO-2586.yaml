@@ -1,0 +1,18 @@
+id: CO-2586
+name: "LEAP: verification applies to this person"
+identifier: leap_verification_is_applicable
+kind: derived
+type: yes/no
+scope: person-month
+program: LEAP
+meaning: "LEAP verification applies to this person: the person's LEAP household has a member who meets the citizenship requirement. For anyone else LEAP's verification status is not_applicable and no LEAP element is pending."
+precision: "The test that leap_verification_status (CO-1462) used for its not_applicable branch, made its own item so that every LEAP pending element and count reads it: an element is pending only where verification applies (county case worker review B2)."
+derived: [exists, leap_household_members_for_income, [of, [P], leap_meets_citizenship_requirement]]
+sources: [S893, S899, S494]
+implemented: engine
+tags: [verification]
+rationale: "County case worker review B2: LEAP pending flags and counts were non-zero for people whose LEAP verification status is not_applicable, so a checklist built from the flags asked for documents a program cannot use."
+nearest: [CO-1462]
+tests:
+  - {id: CO-2586-T1, title: "A household whose only member is undocumented", as_of: "2026-10-01", month: "2026-10", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: false}, expect: false}
+  - {id: CO-2586-T2, as_of: "2026-10-01", month: "2026-10", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true}, expect: true}

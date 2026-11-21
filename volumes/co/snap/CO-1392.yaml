@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: SNAP
+role: outcome
 meaning: "The date by which the household must provide the verification requested: the agency's request date plus the ten days SNAP allows."
 derived: [days_after, snap_verification_response_days, [otherwise, snap_verification_request_date, verification_request_date]]
 sources: [S800, S813, S834]

@@ -61,6 +61,11 @@ export interface Item {
   meaning?: string;
   precision?: string;
   assumption?: string;
+  /** One county-facing sentence, on an item where a statute governs over a
+   *  Colorado rule the item would otherwise follow: the rule paragraph it
+   *  supersedes, the statute, and the date the statute took effect. The
+   *  plain-English trace repeats it (explain.ts `narrative`). */
+  statute_override?: string;
   supplied_by?: string;
   value?: unknown;
   versions?: ItemVersion[];
@@ -185,5 +190,6 @@ export const BASE: Record<string, BaseType> = {
   "relationships": "relationships", "table keyed by person": "table",
   "table keyed by household size": "table",
   "table keyed by income band": "table",
+  "table keyed by year": "table",
   "list of months": "months",
 };

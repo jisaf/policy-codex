@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: CCCAP
+role: outcome
 meaning: The end of the CCCAP fifteen-day noticing period from the county's request, after which an application with unreturned verification is denied.
 derived: [days_after, cccap_verification_response_days, [otherwise, cccap_verification_request_date, verification_request_date]]
 sources: [S891]

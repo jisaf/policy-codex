@@ -1,0 +1,13 @@
+id: CO-2572
+name: "Adult Financial: OAP qualified-alien hardship exception applies"
+identifier: af_oap_qualified_alien_hardship_exception
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: The county has determined that this qualified non-citizen, otherwise eligible for the Old Age Pension, has been abandoned by or is a victim of mistreatment by the sponsor or is an abused spouse and would incur a significant financial hardship; has no sponsor and would have insufficient income or otherwise incur a significant financial hardship; or has a sponsor who now has insufficient income and resources to meet the non-citizen's needs (C.R.S. 26-2-111(2)(c)(II)), so the entry-date or five-year-bar condition does not apply.
+precision: If not stated, Adult Financial reads this as false. 26-2-111(2)(c)(II) leaves the determination to rules of the state department, and 9 CCR 2503-5 states none for OAP (OQ-430).
+supplied_by: County determination recorded in CBMS.
+sources: [S1316]
+tags: [cash, oap, immigration, legal]
+rationale: "CDHS review S-4 (OQ-430 resolved): the statute's OAP bar has three hardship exceptions that no fact stated."

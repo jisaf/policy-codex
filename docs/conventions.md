@@ -15,6 +15,9 @@ Program       All | Medicaid | SNAP       which program's meaning this item carr
 Role          outcome                     only on derived facts that are a program result
 Meaning       plain sentences; the definition an approver signs
 Precision     how edge cases are measured (day boundaries, rounding, time zone)
+Override      one county-facing sentence where a statute governs over the Colorado rule paragraph the item would
+              otherwise follow: the paragraph superseded, the statute, the date (YAML statute_override); the
+              plain-English trace repeats it as a "Statute over rule:" line
 Supplied by   where the value comes from, in words (supplied facts only)
 Derived as    the derivation, written only in catalog patterns (derived facts only)
 Uses          every fact and parameter the derivation references
@@ -49,6 +52,7 @@ Fields that do not apply are omitted, not left blank.
 | relationships | A person's `[role, other]` pairs; the roles and their inverses are declared in `volume.yaml` (`relationship_roles`). Unstated is unknown; an empty list is none. |
 | table keyed by <key> | A parameter table (`table keyed by person`, `table keyed by household size`). Keys are strings; a whole-number key reads its decimal string. |
 | table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. |
+| table keyed by year | A parameter table keyed by calendar year, such as a benefit level per summer. |
 
 Numbers are IEEE 754 binary64, computed in the order written; see `docs/operators.md`, Numbers.
 

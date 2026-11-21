@@ -10,7 +10,8 @@ derived: [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, c
 sources: [S802, S852, S873, S887, S896]
 implemented: engine
 tags: [verification, immigration]
-rationale: Every program verifies a declared immigration status through SAVE (S802, S852, S873, S887, S896); no existing item states the declaration program-neutrally.
+rationale: "Every program verifies a declared immigration status through SAVE (S802, S852, S873, S887, S896); no existing item states the declaration program-neutrally. leap_meets_citizenship_requirement (CO-1010) tests a narrower list (LEAP's qualified aliens, without other lawfully present non-citizens) for a different purpose (CDHS fix round: acknowledged after COFA left LEAP's list)."
+nearest: [CO-1010]
 tests:
   - {id: CO-1359-T1, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: true}
   - {id: CO-1359-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}

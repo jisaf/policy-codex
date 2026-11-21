@@ -475,6 +475,26 @@ export function buildCheckReport(
     });
   }
 
+  // A test id names one test for good: the conformance suite keys cases by id,
+  // so a second test under the same id silently replaces the first there.
+  const testOwners = new Map<string, string>();
+  for (const it of ledger.items) {
+    for (const t of it.tests || []) {
+      const prior = testOwners.get(t.id);
+      if (prior !== undefined) {
+        blockingItemErrors.push({
+          id: it.id, identifier: it.identifier,
+          msg: `rule test id ${t.id} is used twice (also on ${prior})`,
+        });
+      } else testOwners.set(t.id, it.id);
+    }
+  }
+  for (const c of ledger.cases) {
+    if (testOwners.has(c.id)) {
+      blockingItemErrors.push({ id: c.id, identifier: c.id, msg: `case id ${c.id} is also a rule test id` });
+    }
+  }
+
   const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);
   warnings.push(...inputWarnings(engine, ledger));
 

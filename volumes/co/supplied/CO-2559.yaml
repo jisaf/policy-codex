@@ -1,0 +1,14 @@
+id: CO-2559
+name: "Colorado Works: county-approved diversion payment"
+identifier: cw_county_approved_diversion_amount
+kind: supplied
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The diversion payment the county department agreed with the client for the specific need in the month (9 CCR 2503-6 3.606.8.A.2-3: cash, vendor payment or in-kind services for a specific item or type of assistance, set out in the written or verbal agreement), stated on each member of the assistance unit."
+precision: The rule sets no dollar maximum for a diversion payment; the State plan's maximum criteria (3.606.8.A.6) concern the county's higher income limit, and the period of ineligibility is bounded by the maximum grant over the same period (A.4), not the payment (OQ-531).
+supplied_by: The county's diversion agreement recorded in CBMS (3.606.8.A.3).
+sources: [S762]
+tags: [cash, tanf]
+open: [OQ-531]
+rationale: "CDHS review C-3: cw_diversion_eligible (CO-1270) said whether a diversion could be paid but no item carried the amount; the amount is the county's decision under the agreement, so it enters as a supplied fact."

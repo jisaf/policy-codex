@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: SNAP
-meaning: "The month is one of the three consecutive months, beginning with snap_abawd_additional_months_start_month, for which an ABAWD who regained eligibility and then stopped meeting the work requirement remains eligible (10 CCR 2506-1 4.311.3.D.3)."
+meaning: The month is one of the three consecutive months, beginning with snap_abawd_additional_months_start_month, for which an ABAWD (able-bodied adult without dependents) who regained eligibility and then stopped meeting the work requirement remains eligible (10 CCR 2506-1 4.311.3.D.3).
 precision: "False when no start month is stated."
 derived: [case, [[unknown, snap_abawd_additional_months_start_month], false], [else, [all, ["<=", snap_abawd_additional_months_start_month, [month]], ["<", [month], [months_after, snap_abawd_additional_months, snap_abawd_additional_months_start_month]]]]]
 sources: [S1613]

@@ -7,10 +7,11 @@ scope: person-month
 program: ColoradoWorks
 role: outcome
 meaning: The number of verification elements still pending across every member of this person's Colorado Works assistance unit.
-derived: [sum, cw_assistance_unit_members, [of, [P], cw_person_pending_verification_count]]
+precision: Zero where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2).
+derived: [case, [cw_verification_is_applicable, [sum, cw_assistance_unit_members, [of, [P], cw_person_pending_verification_count]]], [else, 0]]
 sources: [S871, S872]
 implemented: engine
 tags: [verification, cash, tanf]
 rationale: The unit-level count the county's verification request lists; no existing item counts it.
 tests:
-  - {id: CO-1425-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_person_pending_verification_count: 1}, others: {p2: {cw_person_pending_verification_count: 1}}, expect: 2}
+  - {id: CO-1425-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, cw_assistance_unit_members: [p1, p2], cw_person_pending_verification_count: 1}, others: {p2: {cw_verification_is_applicable: true, cw_person_pending_verification_count: 1}}, expect: 2}

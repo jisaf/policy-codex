@@ -64,12 +64,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -326,12 +323,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -588,12 +582,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -826,12 +817,9 @@
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         school_meal_household_size: 4
         school_meal_household_income: 3560
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
@@ -1064,12 +1052,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -1266,28 +1251,34 @@
         shelter_cost_monthly: 0
   # Filled in per phase. Left empty in the skeleton so the case is a target,
   # not a claim; the review for each phase adds the outcomes it decides.
-  # SNAP (phase 2). The grandmother p1 is an institution resident and so not a
-  # household member; her own unit is empty. The unit is p2, p3, p4, p5 with p3
-  # an ineligible non-citizen whose income counts pro rata (2380 x 3/4 = 1785).
-  # Gross 1180 + 1785 = 2965 (expanded categorical eligibility: at or below 200%
-  # FPL for 3); earned income deduction 20% of 1785 = 357; standard deduction 209;
-  # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
-  # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
-  # net rounded up (660) = 125.
-  # Phase 8 (FY2027 and the derived SUA): standard deduction 217 (S731/S741), so adjusted income 2391;
-  # p2 states heat plus three other utilities, so the HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016;
-  # excess shelter 2016 - 1195.50 = 820.50; net 1570.50, rounded to 1571; maximum allotment 808 (S730) less
-  # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
-  # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
-  # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
-  # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
-  # status, her income counted). Phase-10 sweep (OQ-358, OQ-370): p1 lives in a nursing facility, not at the
-  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family household is
-  # p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three, which in November gets 900 x (1 - 0.2 - 0.2) = 540.
-  # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
-  # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
-  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
-  # eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing assistance).
+  # SNAP (FY2027 figures). The grandmother p1 is an institution resident and so not a household member
+  # (snap_person_participation_status not_in_household); her own unit is empty. The unit is p2, p3, p4, p5
+  # with p3 an ineligible non-citizen (ineligible_member_non_citizen) whose income counts pro rata
+  # (2380 x 3/4 = 1785), so three eligible members. Gross 1180 + 1785 = 2965 (expanded categorical
+  # eligibility: at or below 200% FPL for 3); earned income deduction 20% of 1785 = 357; standard
+  # deduction 217 (S731/S741); adjusted income 2391. p2 states heat plus three other utilities, so the
+  # HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016; excess shelter 2016 - 1195.50 = 820.50
+  # (uncapped, elderly member); net 1570.50, rounded to 1571; maximum allotment 808 (S730) less 30% of net
+  # (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336. (Case worker review N1: the
+  # phase-2 arithmetic on the FY2026 figures, which gave 125, is struck.) The 336 is the household's
+  # allotment, reported on every member; p3's own participation is ineligible_member_non_citizen.
+  # LEAP: the heating costs (900) are the household's estimate; the State's program-year statewide
+  # adjustment rate and minimum and maximum benefit are not published (OQ-532), so the case no longer states
+  # the illustrative 0.2, 100 and 1000 it used before the CDHS review (C-6). The family buys heat in common,
+  # so it is one LEAP household with p3 excluded for status and her income counted (p3's
+  # leap_person_participation_status ineligible_member_status). p1 lives in a nursing facility, not at the
+  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family
+  # household is p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three (20% contribution band).
+  # In November the benefit is unknown until the program-year figures are published; with the old
+  # illustrative figures it was 900 x (1 - 0.2 - 0.2) = 540.
+  # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child for whom care is requested,
+  # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30
+  # (household composition subject to OQ-163 K-9, which the CDEC must answer).
+  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible. A determination in
+  # October or November 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not
+  # published, so the amount is unknown (CDHS review C-10; at the 2026 level it would be 40 x 3 = 120).
+  # No one is eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing
+  # assistance), so no diversion payment.
   # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
   # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
   # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
@@ -1424,7 +1415,7 @@
       chp_verification_status: {"2026-10": not_applicable}
       chp_pending_verification_count: {"2026-10": 0}
       cw_verification_status: {"2026-10": not_applicable}
-      cw_pending_verification_count: {"2026-10": 2}
+      cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
       af_pending_verification_count: {"2026-10": 2}
       cccap_verification_status: {"2026-10": not_applicable}
@@ -1470,19 +1461,19 @@
       snap_child_support_paid_verification_is_pending: {"2026-10": false}
       snap_person_pending_verification_count: {"2026-10": 0}
       snap_person_pending_expense_verification_count: {"2026-10": 0}
-      cw_lawful_presence_verification_is_pending: {"2026-10": true}
+      cw_lawful_presence_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_citizenship_verification_is_pending: {"2026-10": false}
       cw_immigration_status_verification_is_pending: {"2026-10": false}
       cw_ssn_verification_is_pending: {"2026-10": false}
       cw_household_composition_verification_is_pending: {"2026-10": false}
       cw_earned_income_verification_is_pending: {"2026-10": false}
-      cw_residency_verification_is_pending: {"2026-10": true}
+      cw_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
       unearned_income_verification_is_pending: {"2026-10": false}
-      cw_person_pending_verification_count: {"2026-10": 2}
-      cw_person_pending_status_verification_count: {"2026-10": 1}
+      cw_person_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      cw_person_pending_status_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-10": false}
       af_residency_verification_is_pending: {"2026-10": true}
       af_identity_verification_is_pending: {"2026-10": false}
@@ -1516,6 +1507,24 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+      snap_person_participation_status: not_in_household
+      cw_person_participation_status: not_in_unit_no_dependent_child
+      leap_person_participation_status: not_in_household
+      cccap_person_participation_status: {"2026-10": other_household_member}
+      cw_diversion_payment: {"2026-10": 0}
+      cw_unearned_income_verification_is_pending: {"2026-10": false}
+      af_unearned_income_verification_is_pending: {"2026-10": false}
+      cccap_unearned_income_verification_is_pending: {"2026-10": false}
+      leap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p2:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -1575,7 +1584,7 @@
       chp_verification_status: {"2026-10": not_applicable}
       chp_pending_verification_count: {"2026-10": 0}
       cw_verification_status: {"2026-10": not_applicable}
-      cw_pending_verification_count: {"2026-10": 1}
+      cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
       af_pending_verification_count: {"2026-10": 2}
       cccap_verification_status: {"2026-10": not_applicable}
@@ -1628,12 +1637,12 @@
       cw_ssn_verification_is_pending: {"2026-10": false}
       cw_household_composition_verification_is_pending: {"2026-10": false}
       cw_earned_income_verification_is_pending: {"2026-10": false}
-      cw_residency_verification_is_pending: {"2026-10": true}
+      cw_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
       unearned_income_verification_is_pending: {"2026-10": false}
-      cw_person_pending_verification_count: {"2026-10": 1}
+      cw_person_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_person_pending_status_verification_count: {"2026-10": 0}
       af_age_verification_is_pending: {"2026-10": false}
       af_residency_verification_is_pending: {"2026-10": true}
@@ -1668,6 +1677,24 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+      snap_person_participation_status: eligible_member
+      cw_person_participation_status: not_in_unit_no_dependent_child
+      leap_person_participation_status: eligible_member
+      cccap_person_participation_status: {"2026-10": other_household_member}
+      cw_diversion_payment: {"2026-10": 0}
+      cw_unearned_income_verification_is_pending: {"2026-10": false}
+      af_unearned_income_verification_is_pending: {"2026-10": false}
+      cccap_unearned_income_verification_is_pending: {"2026-10": false}
+      leap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p3:
       ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1687,7 +1714,7 @@
       sebt_benefit_amount: {"2026-10": 0}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p3]
-      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      cw_eligibility_status: {"2026-10": not_in_unit_did_not_request}   # case worker review S5: she is the optional parent of a minor parent (3.604.2.C.2.g) who did not ask to join, not a person without a child
       af_category: {"2026-10": none}
       cccap_household_members: [p3, p4, p5]
       cccap_household_size: 3
@@ -1728,7 +1755,7 @@
       chp_verification_status: {"2026-10": not_applicable}
       chp_pending_verification_count: {"2026-10": 1}
       cw_verification_status: {"2026-10": not_applicable}
-      cw_pending_verification_count: {"2026-10": 4}
+      cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
@@ -1736,7 +1763,7 @@
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": not_applicable}
-      af_pending_verification_count: {"2026-10": 3}
+      af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2026-10": false}
       ma_identity_verification_is_pending: {"2026-10": false}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1774,27 +1801,27 @@
       snap_child_support_paid_verification_is_pending: {"2026-10": false}
       snap_person_pending_verification_count: {"2026-10": 1}
       snap_person_pending_expense_verification_count: {"2026-10": 0}
-      cw_lawful_presence_verification_is_pending: {"2026-10": true}
+      cw_lawful_presence_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_citizenship_verification_is_pending: {"2026-10": false}
       cw_immigration_status_verification_is_pending: {"2026-10": false}
-      cw_ssn_verification_is_pending: {"2026-10": true}
+      cw_ssn_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_household_composition_verification_is_pending: {"2026-10": false}
-      cw_earned_income_verification_is_pending: {"2026-10": true}
-      cw_residency_verification_is_pending: {"2026-10": true}
+      cw_earned_income_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      cw_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
       unearned_income_verification_is_pending: {"2026-10": false}
-      cw_person_pending_verification_count: {"2026-10": 4}
-      cw_person_pending_status_verification_count: {"2026-10": 2}
+      cw_person_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      cw_person_pending_status_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-10": false}
-      af_residency_verification_is_pending: {"2026-10": true}
-      af_identity_verification_is_pending: {"2026-10": true}
+      af_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_identity_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-10": false}
       af_citizenship_verification_is_pending: {"2026-10": false}
       af_immigration_status_verification_is_pending: {"2026-10": false}
       af_resources_verification_is_pending: {"2026-10": false}
-      af_earned_income_verification_is_pending: {"2026-10": true}
+      af_earned_income_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_disability_verification_is_pending: {"2026-10": false}
       af_and_so_disability_verification_is_pending: {"2026-10": false}
       af_marital_status_verification_is_pending: {"2026-10": false}
@@ -1820,6 +1847,24 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+      snap_person_participation_status: ineligible_member_non_citizen
+      cw_person_participation_status: not_in_unit_did_not_request
+      leap_person_participation_status: ineligible_member_status
+      cccap_person_participation_status: {"2026-10": other_household_member}
+      cw_diversion_payment: {"2026-10": 0}
+      cw_unearned_income_verification_is_pending: {"2026-10": false}
+      af_unearned_income_verification_is_pending: {"2026-10": false}
+      cccap_unearned_income_verification_is_pending: {"2026-10": false}
+      leap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p4:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1836,7 +1881,7 @@
       leap_benefit_amount: {"2026-10": 0}
       cccap_parent_fee: {"2026-10": 30}
       sebt_eligibility_status: {"2026-10": eligible_categorical}
-      sebt_benefit_amount: {"2026-10": 120}
+      sebt_benefit_amount: {"2026-10": unknown}   # CDHS review C-10: a determination from July 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not published, so the amount is unknown (it was 40 x 3 = 120 at the 2026 level)
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
@@ -1890,7 +1935,7 @@
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": not_applicable}
-      af_pending_verification_count: {"2026-10": 2}
+      af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2026-10": true}
       ma_identity_verification_is_pending: {"2026-10": true}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1942,8 +1987,8 @@
       cw_person_pending_verification_count: {"2026-10": 1}
       cw_person_pending_status_verification_count: {"2026-10": 1}
       af_age_verification_is_pending: {"2026-10": false}
-      af_residency_verification_is_pending: {"2026-10": true}
-      af_identity_verification_is_pending: {"2026-10": true}
+      af_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_identity_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-10": false}
       af_citizenship_verification_is_pending: {"2026-10": false}
       af_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1974,6 +2019,24 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+      snap_person_participation_status: eligible_member
+      cw_person_participation_status: eligible_member
+      leap_person_participation_status: eligible_member
+      cccap_person_participation_status: {"2026-10": caretaker}
+      cw_diversion_payment: {"2026-10": 0}
+      cw_unearned_income_verification_is_pending: {"2026-10": false}
+      af_unearned_income_verification_is_pending: {"2026-10": false}
+      cccap_unearned_income_verification_is_pending: {"2026-10": false}
+      leap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p5:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -2036,7 +2099,7 @@
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": not_applicable}
-      af_pending_verification_count: {"2026-10": 3}
+      af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2026-10": false}
       ma_identity_verification_is_pending: {"2026-10": false}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -2087,9 +2150,9 @@
       unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 1}
       cw_person_pending_status_verification_count: {"2026-10": 1}
-      af_age_verification_is_pending: {"2026-10": true}
-      af_residency_verification_is_pending: {"2026-10": true}
-      af_identity_verification_is_pending: {"2026-10": true}
+      af_age_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_identity_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-10": false}
       af_citizenship_verification_is_pending: {"2026-10": false}
       af_immigration_status_verification_is_pending: {"2026-10": false}
@@ -2120,6 +2183,24 @@
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+      snap_person_participation_status: eligible_member
+      cw_person_participation_status: eligible_member
+      leap_person_participation_status: eligible_member
+      cccap_person_participation_status: {"2026-10": eligible_child}
+      cw_diversion_payment: {"2026-10": 0}
+      cw_unearned_income_verification_is_pending: {"2026-10": false}
+      af_unearned_income_verification_is_pending: {"2026-10": false}
+      cccap_unearned_income_verification_is_pending: {"2026-10": false}
+      leap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
 
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
@@ -2175,12 +2256,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2436,12 +2514,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2697,12 +2772,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2935,12 +3007,9 @@
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         school_meal_household_size: 4
         school_meal_household_income: 3560
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
@@ -3172,12 +3241,9 @@
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
-        leap_statewide_adjustment_rate: 0.2
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
         lives_in_subsidized_housing: false
-        leap_benefit_minimum: 100
-        leap_benefit_maximum: 1000
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -3370,28 +3436,34 @@
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
         shelter_cost_monthly: 0
-  # SNAP (phase 2). The grandmother p1 is an institution resident and so not a
-  # household member; her own unit is empty. The unit is p2, p3, p4, p5 with p3
-  # an ineligible non-citizen whose income counts pro rata (2380 x 3/4 = 1785).
-  # Gross 1180 + 1785 = 2965 (expanded categorical eligibility: at or below 200%
-  # FPL for 3); earned income deduction 20% of 1785 = 357; standard deduction 209;
-  # adjusted income 2399; shelter 1400 less half of 2399 = 200.50 excess shelter
-  # (uncapped, elderly member); net 2198.50, rounded to 2199 per 7 CFR 273.10(e)(1)(ii)(A) (S102); maximum allotment 785 less 30% of
-  # net rounded up (660) = 125.
-  # Phase 8 (FY2027 and the derived SUA): standard deduction 217 (S731/S741), so adjusted income 2391;
-  # p2 states heat plus three other utilities, so the HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016;
-  # excess shelter 2016 - 1195.50 = 820.50; net 1570.50, rounded to 1571; maximum allotment 808 (S730) less
-  # 30% of net (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336.
-  # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
-  # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
-  # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
-  # status, her income counted). Phase-10 sweep (OQ-358, OQ-370): p1 lives in a nursing facility, not at the
-  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family household is
-  # p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three, which in November gets 900 x (1 - 0.2 - 0.2) = 540.
-  # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
-  # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
-  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
-  # eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing assistance).
+  # SNAP (FY2027 figures). The grandmother p1 is an institution resident and so not a household member
+  # (snap_person_participation_status not_in_household); her own unit is empty. The unit is p2, p3, p4, p5
+  # with p3 an ineligible non-citizen (ineligible_member_non_citizen) whose income counts pro rata
+  # (2380 x 3/4 = 1785), so three eligible members. Gross 1180 + 1785 = 2965 (expanded categorical
+  # eligibility: at or below 200% FPL for 3); earned income deduction 20% of 1785 = 357; standard
+  # deduction 217 (S731/S741); adjusted income 2391. p2 states heat plus three other utilities, so the
+  # HCUA of 616 applies (S743) and shelter is 1400 + 616 = 2016; excess shelter 2016 - 1195.50 = 820.50
+  # (uncapped, elderly member); net 1570.50, rounded to 1571; maximum allotment 808 (S730) less 30% of net
+  # (471.30, unrounded per 4.207.3.A, S737) = 336.70, rounded down to 336. (Case worker review N1: the
+  # phase-2 arithmetic on the FY2026 figures, which gave 125, is struck.) The 336 is the household's
+  # allotment, reported on every member; p3's own participation is ineligible_member_non_citizen.
+  # LEAP: the heating costs (900) are the household's estimate; the State's program-year statewide
+  # adjustment rate and minimum and maximum benefit are not published (OQ-532), so the case no longer states
+  # the illustrative 0.2, 100 and 1000 it used before the CDHS review (C-6). The family buys heat in common,
+  # so it is one LEAP household with p3 excluded for status and her income counted (p3's
+  # leap_person_participation_status ineligible_member_status). p1 lives in a nursing facility, not at the
+  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family
+  # household is p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three (20% contribution band).
+  # In November the benefit is unknown until the program-year figures are published; with the old
+  # illustrative figures it was 900 x (1 - 0.2 - 0.2) = 540.
+  # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child for whom care is requested,
+  # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30
+  # (household composition subject to OQ-163 K-9, which the CDEC must answer).
+  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible. A determination in
+  # October or November 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not
+  # published, so the amount is unknown (CDHS review C-10; at the 2026 level it would be 40 x 3 = 120).
+  # No one is eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing
+  # assistance), so no diversion payment.
   # MAGI Medicaid and CHP+ (phase 3). p1 and p2 file jointly: household of two,
   # income 3210 (178% FPL), no MAGI category (Medicare-entitled adults over 64).
   # p3 files with an ITIN claiming p4 and p5: household of three, income 2380
@@ -3501,7 +3573,7 @@
       chp_verification_status: {"2026-11": not_applicable}
       chp_pending_verification_count: {"2026-11": 0}
       cw_verification_status: {"2026-11": not_applicable}
-      cw_pending_verification_count: {"2026-11": 1}
+      cw_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-11": complete}
       af_pending_verification_count: {"2026-11": 0}
       cccap_verification_status: {"2026-11": not_applicable}
@@ -3547,7 +3619,7 @@
       snap_child_support_paid_verification_is_pending: {"2026-11": false}
       snap_person_pending_verification_count: {"2026-11": 0}
       snap_person_pending_expense_verification_count: {"2026-11": 0}
-      cw_lawful_presence_verification_is_pending: {"2026-11": true}
+      cw_lawful_presence_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_citizenship_verification_is_pending: {"2026-11": false}
       cw_immigration_status_verification_is_pending: {"2026-11": false}
       cw_ssn_verification_is_pending: {"2026-11": false}
@@ -3558,8 +3630,8 @@
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
       unearned_income_verification_is_pending: {"2026-11": false}
-      cw_person_pending_verification_count: {"2026-11": 1}
-      cw_person_pending_status_verification_count: {"2026-11": 1}
+      cw_person_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      cw_person_pending_status_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-11": false}
       af_residency_verification_is_pending: {"2026-11": false}
       af_identity_verification_is_pending: {"2026-11": false}
@@ -3593,6 +3665,24 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
+      snap_person_participation_status: not_in_household
+      cw_person_participation_status: not_in_unit_no_dependent_child
+      leap_person_participation_status: not_in_household
+      cccap_person_participation_status: {"2026-11": other_household_member}
+      cw_diversion_payment: {"2026-11": 0}
+      cw_unearned_income_verification_is_pending: {"2026-11": false}
+      af_unearned_income_verification_is_pending: {"2026-11": false}
+      cccap_unearned_income_verification_is_pending: {"2026-11": false}
+      leap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -3606,7 +3696,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}    # OQ-358: household of three, 3,560 x 12 = 42,720 = 156% of the 27,320 guideline for three, 20% contribution: 900 x (1 - 0.2 - 0.2); was 450 for four with p1's income
+      leap_benefit_amount: {"2026-11": unknown}    # OQ-358: household of three, 3,560 x 12 = 42,720 = 156% of the 27,320 guideline for three, 20% contribution: 900 x (1 - 0.2 - 0.2); was 450 for four with p1's income; CDHS review C-6: the program-year statewide adjustment, minimum and maximum are unpublished parameters (OQ-532), so the benefit cannot be determined; with the illustrative 0.2, 100 and 1000 it was 900 x (1 - 0.2 - 0.2) = 540
       cccap_parent_fee: {"2026-11": 0}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3749,6 +3839,24 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
+      snap_person_participation_status: eligible_member
+      cw_person_participation_status: not_in_unit_no_dependent_child
+      leap_person_participation_status: eligible_member
+      cccap_person_participation_status: {"2026-11": other_household_member}
+      cw_diversion_payment: {"2026-11": 0}
+      cw_unearned_income_verification_is_pending: {"2026-11": false}
+      af_unearned_income_verification_is_pending: {"2026-11": false}
+      cccap_unearned_income_verification_is_pending: {"2026-11": false}
+      leap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p3:
       ma_emergency_medicaid_status: {"2026-11": eligible_no_current_emergency}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -3762,13 +3870,13 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}
+      leap_benefit_amount: {"2026-11": unknown}   # CDHS review C-6: the program-year statewide adjustment, minimum and maximum are unpublished parameters (OQ-532), so the benefit cannot be determined; with the illustrative 0.2, 100 and 1000 it was 900 x (1 - 0.2 - 0.2) = 540
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p3]
-      cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
+      cw_eligibility_status: {"2026-11": not_in_unit_did_not_request}   # case worker review S5 (see CO-01)
       af_category: {"2026-11": none}
       cccap_household_members: [p3, p4, p5]
       cccap_household_size: 3
@@ -3806,7 +3914,7 @@
       chp_verification_status: {"2026-11": not_applicable}
       chp_pending_verification_count: {"2026-11": 0}
       cw_verification_status: {"2026-11": not_applicable}
-      cw_pending_verification_count: {"2026-11": 2}
+      cw_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
       cw_death_reimbursement_eligible: false
@@ -3814,7 +3922,7 @@
       leap_verification_status: {"2026-11": complete}
       leap_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": not_applicable}
-      af_pending_verification_count: {"2026-11": 1}
+      af_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2026-11": false}
       ma_identity_verification_is_pending: {"2026-11": false}
       ma_immigration_status_verification_is_pending: {"2026-11": false}
@@ -3852,10 +3960,10 @@
       snap_child_support_paid_verification_is_pending: {"2026-11": false}
       snap_person_pending_verification_count: {"2026-11": 0}
       snap_person_pending_expense_verification_count: {"2026-11": 0}
-      cw_lawful_presence_verification_is_pending: {"2026-11": true}
+      cw_lawful_presence_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_citizenship_verification_is_pending: {"2026-11": false}
       cw_immigration_status_verification_is_pending: {"2026-11": false}
-      cw_ssn_verification_is_pending: {"2026-11": true}
+      cw_ssn_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_household_composition_verification_is_pending: {"2026-11": false}
       cw_earned_income_verification_is_pending: {"2026-11": false}
       cw_residency_verification_is_pending: {"2026-11": false}
@@ -3863,11 +3971,11 @@
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
       unearned_income_verification_is_pending: {"2026-11": false}
-      cw_person_pending_verification_count: {"2026-11": 2}
-      cw_person_pending_status_verification_count: {"2026-11": 2}
+      cw_person_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      cw_person_pending_status_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-11": false}
       af_residency_verification_is_pending: {"2026-11": false}
-      af_identity_verification_is_pending: {"2026-11": true}
+      af_identity_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-11": false}
       af_citizenship_verification_is_pending: {"2026-11": false}
       af_immigration_status_verification_is_pending: {"2026-11": false}
@@ -3898,6 +4006,24 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
+      snap_person_participation_status: ineligible_member_non_citizen
+      cw_person_participation_status: not_in_unit_did_not_request
+      leap_person_participation_status: ineligible_member_status
+      cccap_person_participation_status: {"2026-11": other_household_member}
+      cw_diversion_payment: {"2026-11": 0}
+      cw_unearned_income_verification_is_pending: {"2026-11": false}
+      af_unearned_income_verification_is_pending: {"2026-11": false}
+      cccap_unearned_income_verification_is_pending: {"2026-11": false}
+      leap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p4:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -3911,10 +4037,10 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}
+      leap_benefit_amount: {"2026-11": unknown}   # CDHS review C-6: the program-year statewide adjustment, minimum and maximum are unpublished parameters (OQ-532), so the benefit cannot be determined; with the illustrative 0.2, 100 and 1000 it was 900 x (1 - 0.2 - 0.2) = 540
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": eligible_categorical}
-      sebt_benefit_amount: {"2026-11": 120}
+      sebt_benefit_amount: {"2026-11": unknown}   # CDHS review C-10: a determination from July 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not published, so the amount is unknown (it was 40 x 3 = 120 at the 2026 level)
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
@@ -3968,7 +4094,7 @@
       leap_verification_status: {"2026-11": complete}
       leap_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": not_applicable}
-      af_pending_verification_count: {"2026-11": 1}
+      af_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2026-11": true}
       ma_identity_verification_is_pending: {"2026-11": true}
       ma_immigration_status_verification_is_pending: {"2026-11": false}
@@ -4021,7 +4147,7 @@
       cw_person_pending_status_verification_count: {"2026-11": 1}
       af_age_verification_is_pending: {"2026-11": false}
       af_residency_verification_is_pending: {"2026-11": false}
-      af_identity_verification_is_pending: {"2026-11": true}
+      af_identity_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-11": false}
       af_citizenship_verification_is_pending: {"2026-11": false}
       af_immigration_status_verification_is_pending: {"2026-11": false}
@@ -4052,6 +4178,24 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
+      snap_person_participation_status: eligible_member
+      cw_person_participation_status: eligible_member
+      leap_person_participation_status: eligible_member
+      cccap_person_participation_status: {"2026-11": caretaker}
+      cw_diversion_payment: {"2026-11": 0}
+      cw_unearned_income_verification_is_pending: {"2026-11": false}
+      af_unearned_income_verification_is_pending: {"2026-11": false}
+      cccap_unearned_income_verification_is_pending: {"2026-11": false}
+      leap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
     p5:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -4065,7 +4209,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 540}
+      leap_benefit_amount: {"2026-11": unknown}   # CDHS review C-6: the program-year statewide adjustment, minimum and maximum are unpublished parameters (OQ-532), so the benefit cannot be determined; with the illustrative 0.2, 100 and 1000 it was 900 x (1 - 0.2 - 0.2) = 540
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -4114,7 +4258,7 @@
       leap_verification_status: {"2026-11": complete}
       leap_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": not_applicable}
-      af_pending_verification_count: {"2026-11": 3}
+      af_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2026-11": false}
       ma_identity_verification_is_pending: {"2026-11": false}
       ma_immigration_status_verification_is_pending: {"2026-11": false}
@@ -4165,9 +4309,9 @@
       unearned_income_verification_is_pending: {"2026-11": false}
       cw_person_pending_verification_count: {"2026-11": 1}
       cw_person_pending_status_verification_count: {"2026-11": 1}
-      af_age_verification_is_pending: {"2026-11": true}
-      af_residency_verification_is_pending: {"2026-11": true}
-      af_identity_verification_is_pending: {"2026-11": true}
+      af_age_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_residency_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_identity_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-11": false}
       af_citizenship_verification_is_pending: {"2026-11": false}
       af_immigration_status_verification_is_pending: {"2026-11": false}
@@ -4198,6 +4342,24 @@
       sebt_pending_verification_count: {"2026-11": 0}
       sebt_income_verification_is_pending: {"2026-11": false}
       sebt_school_enrollment_verification_is_pending: {"2026-11": false}
+      snap_person_participation_status: eligible_member
+      cw_person_participation_status: eligible_member
+      leap_person_participation_status: eligible_member
+      cccap_person_participation_status: {"2026-11": eligible_child}
+      cw_diversion_payment: {"2026-11": 0}
+      cw_unearned_income_verification_is_pending: {"2026-11": false}
+      af_unearned_income_verification_is_pending: {"2026-11": false}
+      cccap_unearned_income_verification_is_pending: {"2026-11": false}
+      leap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      snap_expense_verification_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      af_verification_due_date: "2026-10-12"
+      af_and_so_disability_certification_due_date: "2026-10-31"
+      cccap_verification_due_date: "2026-10-16"
+      leap_verification_due_date: "2026-10-15"
 
 - id: CO-03
   title: Elderly couple, one with Medicare and out-of-pocket medical expenses, no utility costs of their own
@@ -6219,7 +6381,8 @@
   # planning (for those not eligible for a full-coverage category, 8.100.4.G.8) does not apply:
   # full_coverage (phase 7 fix round, S-1).
   # p3 Tomas, 72, Rosa's father, LPR since 2023-03-01 (inside the five-year bar), no income, $500 in
-  # resources, no Medicare. OAP has no five-year bar (3.520.67.E), so he receives OAP-A; Medicaid's
+  # resources, no Medicare. The rule states OAP's five-year bar for AND only (3.520.68.A), but the statute bars OAP too
+  # (C.R.S. 26-2-111(2)(c), OQ-430 resolved): he receives OAP through its no-sponsor hardship exception; Medicaid's
   # status test fails, so he is neither SSI-related nor SISC B -> state-only Old Age Pension Health
   # Care Program (SISC C). He also meets the SSI-related standards apart from status (aged, $0 income,
   # $500 resources), so he is emergency-Medicaid eligible, and he had an emergency in October.
@@ -6376,6 +6539,10 @@
         # Phase-10 sweep (OQ-114): admitted on a basis that required no Form I-864 affidavit (illustrative), so no
         # sponsor income is deemed to his OAP grant (3.534.D).
         is_sponsored_non_citizen: false
+        # CDHS review S-4 (OQ-430 resolved): C.R.S. 26-2-111(2)(c) bars a qualified alien inside the five-year bar from OAP
+        # unless an exception applies. Tomas has no sponsor and no income, and the county finds he would otherwise have
+        # insufficient income to support himself (26-2-111(2)(c)(II)(B)), so he keeps OAP.
+        af_oap_qualified_alien_hardship_exception: true
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
@@ -6822,6 +6989,7 @@
         cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false   # CDHS review B-1: the grant now reads the unit's status on p4 too
         receives_tanf_cash: true
         snap_is_indian_or_urban_indian: false
         has_domestic_violence_extension_approved: false
@@ -6874,7 +7042,7 @@
     p4:
       cw_grant_amount: {"2026-11": 366}
       sebt_eligibility_status: {"2026-11": eligible_categorical}
-      sebt_benefit_amount: {"2026-11": 120}
+      sebt_benefit_amount: {"2026-11": unknown}   # CDHS review C-10: a determination from July 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not published, so the amount is unknown (it was 40 x 3 = 120 at the 2026 level)
 - id: CO-91
   title: Homeless father and daughter three months after applying; expedited SNAP with deductions disallowed; Medicaid reasonable opportunity expired; Colorado Works and CCCAP past due
   # Phase 9 (verification) complex case. p1 applied on 2026-11-02 while homeless and out of work, with
@@ -7244,7 +7412,7 @@
       leap_verification_status: {"2027-02": past_due}
       leap_pending_verification_count: {"2027-02": 1}
       af_verification_status: {"2027-02": not_applicable}
-      af_pending_verification_count: {"2027-02": 1}
+      af_pending_verification_count: {"2027-02": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2027-02": true}
       snap_dependent_care_verification_is_pending: {"2027-02": true}
       snap_child_support_paid_verification_is_pending: {"2027-02": true}
@@ -7252,7 +7420,7 @@
       cw_citizenship_verification_is_pending: {"2027-02": true}
       cw_residency_verification_is_pending: {"2027-02": true}
       cw_person_pending_verification_count: {"2027-02": 3}
-      af_residency_verification_is_pending: {"2027-02": true}
+      af_residency_verification_is_pending: {"2027-02": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_residency_verification_is_pending: {"2027-02": true}
       cccap_child_support_paid_verification_is_pending: {"2027-02": true}
       cccap_person_pending_verification_count: {"2027-02": 1}
@@ -7276,13 +7444,13 @@
       snap_pending_verification_count: {"2027-02": 2}
       chp_pending_verification_count: {"2027-02": 0}
       cw_pending_verification_count: {"2027-02": 3}
-      af_pending_verification_count: {"2027-02": 2}
+      af_pending_verification_count: {"2027-02": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_pending_verification_count: {"2027-02": 1}
       leap_pending_verification_count: {"2027-02": 1}
       snap_person_pending_verification_count: {"2027-02": 0}
       cw_person_pending_verification_count: {"2027-02": 0}
-      af_residency_verification_is_pending: {"2027-02": true}
-      af_identity_verification_is_pending: {"2027-02": true}
+      af_residency_verification_is_pending: {"2027-02": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_identity_verification_is_pending: {"2027-02": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_person_pending_verification_count: {"2027-02": 0}
       cccap_pending_deduction_verification_count: {"2027-02": 1}
       leap_person_pending_verification_count: {"2027-02": 0}
@@ -7688,7 +7856,7 @@
       ma_pending_verification_count: {"2026-10": 1}
       chp_pending_verification_count: {"2026-10": 1}
       cw_pending_verification_count: {"2026-10": 3}
-      af_pending_verification_count: {"2026-10": 2}
+      af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_pending_verification_count: {"2026-10": 1}
       leap_pending_verification_count: {"2026-10": 0}
       ma_citizenship_verification_is_pending: {"2026-10": false}
@@ -7746,8 +7914,8 @@
       af_identity_verification_is_pending: {"2026-10": false}
       af_ssn_verification_is_pending: {"2026-10": false}
       af_citizenship_verification_is_pending: {"2026-10": false}
-      af_immigration_status_verification_is_pending: {"2026-10": true}
-      af_resources_verification_is_pending: {"2026-10": true}
+      af_immigration_status_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_resources_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_earned_income_verification_is_pending: {"2026-10": false}
       af_disability_verification_is_pending: {"2026-10": false}
       af_and_so_disability_verification_is_pending: {"2026-10": false}
@@ -7791,7 +7959,7 @@
       ma_pending_verification_count: {"2026-10": 1}
       chp_pending_verification_count: {"2026-10": 1}
       cw_pending_verification_count: {"2026-10": 3}
-      af_pending_verification_count: {"2026-10": 3}
+      af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_pending_verification_count: {"2026-10": 1}
       leap_pending_verification_count: {"2026-10": 0}
       ma_citizenship_verification_is_pending: {"2026-10": false}
@@ -7845,11 +8013,11 @@
       cw_person_pending_verification_count: {"2026-10": 1}
       cw_person_pending_status_verification_count: {"2026-10": 1}
       af_age_verification_is_pending: {"2026-10": false}
-      af_residency_verification_is_pending: {"2026-10": true}
-      af_identity_verification_is_pending: {"2026-10": true}
+      af_residency_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_identity_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_ssn_verification_is_pending: {"2026-10": false}
       af_citizenship_verification_is_pending: {"2026-10": false}
-      af_immigration_status_verification_is_pending: {"2026-10": true}
+      af_immigration_status_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_resources_verification_is_pending: {"2026-10": false}
       af_earned_income_verification_is_pending: {"2026-10": false}
       af_disability_verification_is_pending: {"2026-10": false}
@@ -9868,3 +10036,1934 @@
       ma_hospital_presumptive_eligibility_category: pregnant
     p4:
       ma_hospital_presumptive_eligibility_category: "none"
+- id: CO-84
+  title: "CDHS review B-1: three Colorado Works units that fail a check are paid nothing - an applicant over the $90 test, a unit past the time limit, and a unit living in New Mexico"
+  # Built for the CDHS stakeholder review's B-1 (the grant was paid whatever the eligibility result). Three unrelated
+  # one-caretaker, one-child units under one case; no edge joins them. Need standard $331, grant standard $488 (one
+  # caretaker, one child; 3.606.1.F, the SFY 2026-27 chart of SB 26-181).
+  # p1/p2 apply on October 12. p1 earns $500: eligibility 500 - 90 = 410, not below 331 (3.606.1.H, J.4), so
+  # ineligible_income. The payment test would disregard 100% in the first certification period (3.606.2.A.1), giving
+  # cw_grant_before_sanction 488 - the $488 the review's probe paid - but cw_grant_amount is now 0.
+  # p3/p4: p3 has received 72 months of assistance and has no extension, so time_limit_reached; no income, grant before
+  # sanction 488, grant 0. p5/p6 live in New Mexico: ineligible_residency; grant before sanction 488, grant 0.
+  as_of: "2026-10-15"
+  relationships:
+    - [parent, p1, p2]
+    - [parent, p3, p4]
+    - [parent, p5, p6]
+  persons:
+    p1:
+      # Applicant mother, 30, earns $500.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1996-03-10"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 500
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 60
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+    p2:
+      # Her son, 5.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2021-06-01"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        is_full_time_secondary_student_finishing_before_nineteen: false
+    p3:
+      # Mother, 36, 72 months used, no extension.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1990-01-15"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 72
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+    p4:
+      # Her daughter, 11.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2015-09-09"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+    p5:
+      # Mother, 32, living in New Mexico.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1993-11-20"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: NM
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+    p6:
+      # Her son, 7.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2019-02-14"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: NM
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        is_full_time_secondary_student_finishing_before_nineteen: false
+  expect:
+    p1:
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      cw_grant_before_sanction: {"2026-10": 488}
+      cw_grant_amount: {"2026-10": 0}
+      cw_person_participation_status: eligible_member
+    p2:
+      cw_grant_amount: {"2026-10": 0}
+    p3:
+      cw_eligibility_status: {"2026-10": time_limit_reached}
+      cw_grant_before_sanction: {"2026-10": 488}
+      cw_grant_amount: {"2026-10": 0}
+    p5:
+      cw_eligibility_status: {"2026-10": ineligible_residency}
+      cw_grant_before_sanction: {"2026-10": 488}
+      cw_grant_amount: {"2026-10": 0}
+- id: CO-85
+  title: "CDHS review B-2: child support in Colorado Works - counted for eligibility at application, never in the grant; at redetermination only consistent support averaging over $500"
+  # Built for the CDHS stakeholder review's B-2. Four unrelated one-caretaker, one-child units, no income but child
+  # support received for the child. Need standard $331, grant standard $488.
+  # p1/p2 (application): $200 of current support counts against the need standard (3.605.5.A): 200 < 331, eligible.
+  # The grant excludes it (3.605.5.B; C.R.S. 26-2-709(1)(a)(IV)): 488 - 0 = 488 (the review's probe got 288).
+  # p3/p4 (redetermination): support received in all six previous months, averaging $550 > $500, is counted (C.2):
+  # 550 >= 331, ineligible_income, grant 0.
+  # p5/p6 (redetermination): received in five of the six months, so inconsistent and not countable (C.1): eligible, 488.
+  # p7/p8 (redetermination): consistent but averaging $450, at or below $500, disregarded (C.2): eligible, 488.
+  # The redetermination units receive Colorado Works and are past their first certification period.
+  as_of: "2026-11-01"
+  relationships:
+    - [parent, p1, p2]
+    - [parent, p3, p4]
+    - [parent, p5, p6]
+    - [parent, p7, p8]
+  persons:
+    p1:
+      # Applicant mother, no income.
+      facts:
+        date_of_birth: "1991-05-01"
+        citizenship_status: citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
+        is_emancipated_minor: false
+        marital_status: single
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 14
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        receives_tanf_cash: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+    p2:
+      # Her son; $200 a month of current support.
+      facts:
+        date_of_birth: "2018-02-11"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        receives_tanf_cash: false
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 200
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+    p3:
+      # Recipient mother at redetermination.
+      facts:
+        date_of_birth: "1991-05-01"
+        citizenship_status: citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
+        is_emancipated_minor: false
+        marital_status: single
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 14
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        receives_tanf_cash: true
+        cw_determination_is_redetermination: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+        cw_in_first_certification_period: false
+    p4:
+      # Support in 6 of 6 months, average $550.
+      facts:
+        date_of_birth: "2018-02-11"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        receives_tanf_cash: true
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        cw_determination_is_redetermination: true
+        cw_child_support_months_received_of_last_six: 6
+        cw_child_support_six_month_average: 550
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 550
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+    p5:
+      # Recipient mother at redetermination.
+      facts:
+        date_of_birth: "1991-05-01"
+        citizenship_status: citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
+        is_emancipated_minor: false
+        marital_status: single
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 14
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        receives_tanf_cash: true
+        cw_determination_is_redetermination: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+        cw_in_first_certification_period: false
+    p6:
+      # Support in 5 of 6 months, average $600.
+      facts:
+        date_of_birth: "2018-02-11"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        receives_tanf_cash: true
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        cw_determination_is_redetermination: true
+        cw_child_support_months_received_of_last_six: 5
+        cw_child_support_six_month_average: 600
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 700
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+    p7:
+      # Recipient mother at redetermination.
+      facts:
+        date_of_birth: "1991-05-01"
+        citizenship_status: citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: false
+        is_emancipated_minor: false
+        marital_status: single
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 14
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        receives_tanf_cash: true
+        cw_determination_is_redetermination: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+        cw_in_first_certification_period: false
+    p8:
+      # Support in 6 of 6 months, average $450.
+      facts:
+        date_of_birth: "2018-02-11"
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_pregnant: false
+        snap_is_enrolled_half_time_in_school_or_training: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        is_attending_high_school: false
+        cccap_is_in_education_or_training_activity: true
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        receives_tanf_cash: true
+        snap_is_indian_or_urban_indian: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_enrolled_in_nslp_school: true
+        sebt_other_categorical_basis: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        meets_county_diversion_income_limit: false
+        cw_determination_is_redetermination: true
+        cw_child_support_months_received_of_last_six: 6
+        cw_child_support_six_month_average: 450
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 450
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+  expect:
+    p1:
+      cw_countable_income: {"2026-11": 200}
+      cw_eligibility_status: {"2026-11": eligible}
+      cw_payment_countable_income: {"2026-11": 0}
+      cw_grant_amount: {"2026-11": 488}
+    p3:
+      cw_countable_income: {"2026-11": 550}
+      cw_eligibility_status: {"2026-11": ineligible_income}
+      cw_grant_amount: {"2026-11": 0}
+    p5:
+      cw_countable_income: {"2026-11": 0}
+      cw_eligibility_status: {"2026-11": eligible}
+      cw_grant_amount: {"2026-11": 488}
+    p7:
+      cw_countable_income: {"2026-11": 0}
+      cw_eligibility_status: {"2026-11": eligible}
+      cw_grant_amount: {"2026-11": 488}
+- id: CO-86
+  title: "CDHS review B-3: a pregnant woman with no other children qualifies for Colorado Works at the zero-child column"
+  # Built for the CDHS stakeholder review's B-3. p1, 24, is pregnant with her first child, has no income and applies
+  # on October 12. A parent includes an expectant parent (3.601), so her unit of one is priced at the One Caretaker,
+  # 0 children column of 3.606.1.F: need standard $253, grant standard $374. Income 0 < 253: eligible. Grant 374 plus
+  # the $10 pregnancy allowance (3.606.1.G) = 384 (the review's probe got ineligible_no_dependent_child with a grant of
+  # 384). p2, 40, is not pregnant and has no child: ineligible_no_dependent_child, grant 0, not in any unit Colorado
+  # Works can aid.
+  as_of: "2026-10-15"
+  relationships: []
+  persons:
+    p1:
+      # Pregnant, no other children, no income.
+      relationships: []
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "2002-02-02"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: true
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+    p2:
+      # Not pregnant, no child.
+      relationships: []
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-12"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1986-05-05"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2026-10-12"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+  expect:
+    p1:
+      cw_need_standard: 253
+      cw_grant_standard: 374
+      cw_eligibility_status: {"2026-10": eligible}
+      cw_grant_amount: {"2026-10": 384}
+      cw_person_participation_status: eligible_member
+    p2:
+      cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-10": 0}
+      cw_person_participation_status: not_in_unit_no_dependent_child
+- id: CO-87
+  title: "CDHS review B-4: a 58-year-old who has used his three ABAWD months stays in the SNAP household as an ineligible member, his income prorated"
+  # Built for the CDHS stakeholder review's B-4. Two brothers buy and prepare food together and apply on October 1, 2026.
+  # p1, 58, has no dependents, is not exempt and did not work in July, August or September 2026, the first three months
+  # of Colorado's fixed clock period that began July 1, 2026 (4.311.3.C.2), and received SNAP in each: three countable
+  # months, so in October his ABAWD (able-bodied adult without dependents) status is limit_reached (H.R.1 sec. 10102
+  # extends the time limit to age 64). He is an ineligible member (4.304.4.A.5): out of the household size, his $600
+  # pension prorated (4.411.1.B.2, 7 CFR 273.11(c)(2)): 600 x 1/2 = 300 counted. p2, 50, works 130 hours ($1,500), so
+  # he meets the work requirement and is within the limit.
+  # Eligible household size 1 (it was 2 before the review). Gross 1500 + 300 = 1800 (ECE: at or below 200% FPL
+  # for one, 2660); earned income deduction 20% x 1500 = 300; standard deduction 217; adjusted 1283. Shelter: rent
+  # 900 + HCUA 616 = 1516, less half of 1283 (641.50) = 874.50, capped at 769 (no elderly or disabled member);
+  # net 514. Maximum allotment for one 306 less 30% of 514 (154.20) = 151.80, rounded down to 151. Before the
+  # review p1 stayed eligible: size 2, gross 2100, adjusted 1583, excess shelter 724.50, net 859, 562 - 257.70 = 304.
+  as_of: "2026-10-01"
+  relationships:
+    - [buys_prepares_with, p1, p2]
+  persons:
+    p1:
+      # 58, no work, three countable months used.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1968-03-03"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 600
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+      months:
+        2026-07:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+        2026-08:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+        2026-09:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+    p2:
+      # 50, works 130 hours, pays the rent and heat.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1976-08-08"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 1500
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 130
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 900
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+  expect:
+    p1:
+      snap_abawd_time_limit_status: {"2026-10": limit_reached}
+      snap_is_ineligible_member: true
+      snap_person_participation_status: ineligible_member_abawd_time_limit
+      snap_counted_income_of_ineligible_member: {"2026-10": 300}
+    p2:
+      snap_abawd_time_limit_status: {"2026-10": not_subject}
+      snap_person_participation_status: eligible_member
+      snap_eligible_household_size: 1
+      snap_household_gross_income: {"2026-10": 1800}
+      snap_household_net_income: {"2026-10": 514}
+      snap_full_month_allotment: {"2026-10": 151}
+      snap_allotment: {"2026-10": 151}
+      snap_eligibility_status: {"2026-10": eligible}
+- id: CO-88
+  title: "CDHS review B-4: a mother who refuses to give an SSN (income prorated) and an uncle disqualified for a post-2014 violent felony (income in full) stay in the SNAP household as ineligible members"
+  # Built for the CDHS stakeholder review's B-4. p1, 35, refuses to provide or apply for an SSN (4.302.A.3): an
+  # ineligible member whose $1,200 of wages are prorated over the three members (4.411.1.B.2): 1200 x 2/3 = 800, of
+  # which the 20% earned income deduction reaches the prorated share (4.411.1.B.2.c). p3, 45, her brother, was
+  # convicted as an adult of a 4.304.4.A.6 offense for conduct after February 7, 2014 and is not in compliance with
+  # the sentence: an ineligible member whose $400 pension counts in full (7 CFR 273.11(c)(1), (s)). p2, 10, is the
+  # only eligible member. p1 is the parent of a child under 14, so not subject to the ABAWD time limit; p3 is new to
+  # SNAP, so he has no countable month. Eligible household size 1. Gross 800 + 400 = 1200; earned income deduction
+  # 20% x 800 = 160; standard deduction 217; adjusted 823. Shelter: the 1100 rent billed to p1 is prorated as her
+  # income is (4.407.3.A): 1100 x 2/3 = 733.33, plus HCUA 616 = 1349.33, less half of 823 (411.50) = 937.83,
+  # capped at 769; net 54. Maximum allotment for one 306 less 30% of 54 (16.20) = 289.80, rounded down to 289.
+  # Before the review all three were eligible: size 3, gross 1600, adjusted 1143, excess shelter capped at 769,
+  # net 374, 808 - 112.20 = 695.
+  as_of: "2026-10-01"
+  relationships:
+    - [parent, p1, p2]
+    - [buys_prepares_with, p1, p3]
+  persons:
+    p1:
+      # 35, refuses to give an SSN, earns $1,200.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1991-04-04"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 1200
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 100
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 1100
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+        snap_is_disqualified_for_ssn_refusal: true
+    p2:
+      # Her son, 10.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2016-01-20"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+    p3:
+      # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2026-10-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1981-07-07"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 400
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+        snap_is_disqualified_convicted_felon: true
+      months:
+        2026-07:
+          received_full_snap_benefit_month: false
+        2026-08:
+          received_full_snap_benefit_month: false
+        2026-09:
+          received_full_snap_benefit_month: false
+        2026-10:
+          received_full_snap_benefit_month: false
+  expect:
+    p1:
+      snap_person_participation_status: ineligible_member_ssn
+      snap_counted_income_of_ineligible_member: {"2026-10": 800}
+    p2:
+      snap_person_participation_status: eligible_member
+      snap_eligible_household_size: 1
+      snap_household_gross_income: {"2026-10": 1200}
+      snap_full_month_allotment: {"2026-10": 289}
+      snap_allotment: {"2026-10": 289}
+      snap_eligibility_status: {"2026-10": eligible}
+    p3:
+      snap_person_participation_status: ineligible_member_disqualified
+      snap_counted_income_of_ineligible_member: {"2026-10": 400}
+- id: CO-89
+  title: "CDHS review B-5: a Colorado Works unit determined in August 2028, after SB 26-181's two years without a cost-of-living adjustment, has no published grant standard"
+  # Built for the CDHS stakeholder review's B-5. SB 26-181 (S1800) applies no cost-of-living adjustment to basic cash
+  # assistance for State fiscal years 2026-27 and 2027-28, so the July 1, 2025 chart runs through June 30, 2028; from
+  # July 1, 2028 C.R.S. 26-2-709(1)(b)(I) requires at least the prior year's amount plus 2% or the SSA average, whichever
+  # is greater, and no SFY 2028-29 chart is published (OQ-530). This one-caretaker, one-child unit with no income
+  # applying in August 2028 therefore has no need or grant standard, and its status and grant cannot be determined -
+  # not the stale 2025 figure the review warned of.
+  as_of: "2028-08-15"
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # Applicant mother, no income.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2028-08-10"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        date_of_birth: "1994-12-12"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2028-08-10"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+    p2:
+      # Her daughter.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2028-08-10"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "2020-10-10"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        cw_application_date: "2028-08-10"
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        is_full_time_secondary_student_finishing_before_nineteen: false
+  expect:
+    p1:
+      cw_need_standard: unknown
+      cw_grant_standard: unknown
+      cw_eligibility_status: {"2028-08": unknown}
+      cw_grant_amount: {"2028-08": unknown}

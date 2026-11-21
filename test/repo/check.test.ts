@@ -214,3 +214,16 @@ describe("dependency cycles", () => {
     expect(dependencyCycles(engine)).toEqual([["x_a", "x_b", "x_a"]]);
   });
 });
+
+describe("test ids", () => {
+  it("blocks a rule test id used twice", () => {
+    const ledger = loadLedgerFromDisk(ROOT);
+    expect(buildCheckReport(ledger, [], []).blockingItemErrors.filter((e) => e.msg.includes("used twice"))).toEqual([]);
+    const it0 = ledger.items.find((it) => (it.tests || []).length > 0)!;
+    const dup = { ...it0, tests: [...(it0.tests || []), { ...(it0.tests![0]) }] };
+    const twice = { ...ledger, items: ledger.items.map((it) => (it === it0 ? dup : it)) };
+    const errs = buildCheckReport(twice, [], []).blockingItemErrors.filter((e) => e.msg.includes("used twice"));
+    expect(errs).toHaveLength(1);
+    expect(errs[0].msg).toContain(it0.tests![0].id);
+  });
+});
