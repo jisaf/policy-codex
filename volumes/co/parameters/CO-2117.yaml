@@ -1,0 +1,15 @@
+id: CO-2117
+name: "CCCAP parent fee marginal rate, top band (from August 2028)"
+identifier: cccap_parent_fee_top_band_rate
+kind: parameter
+type: rate
+scope: global
+program: CCCAP
+meaning: "The share of each dollar of monthly household income above 160% of the federal poverty guideline assessed as parent fee from August 1, 2028 (3.124.Q)."
+versions:
+  - from: "2028-08-01"
+    value: 0.07
+    source: S786
+sources: [S786]
+tags: [income]
+rationale: "OQ-254 part 2: 8 CCR 1403-1 3.124.Q (S786) replaces the parent fee formula from August 1, 2028 with marginal rates by poverty band; cccap_parent_fee_formula_amount (CO-1289) reads it."
