@@ -6,11 +6,12 @@ type: whole number
 scope: person-month
 program: LEAP
 role: outcome
-meaning: The number of verification elements still pending across every member of this person's LEAP economic unit, including members whose income counts though they are excluded for citizenship.
-derived: [sum, leap_household_members_for_income, [of, [P], leap_person_pending_verification_count]]
+meaning: The number of verification elements still pending across this person's LEAP economic unit, including members whose income counts though they are excluded, with the household's heating costs counted once.
+derived: ["+", [sum, leap_household_members_for_income, [of, [P], leap_person_pending_verification_count]], [case, [[exists, leap_household_members_for_income, [of, [P], leap_heating_costs_verification_is_pending]], 1], [else, 0]]]
 sources: [S893, S897]
 implemented: engine
 tags: [verification]
 rationale: No existing item counts a LEAP household's outstanding verifications.
 tests:
-  - {id: CO-1460-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1, p2], leap_person_pending_verification_count: 1}, others: {p2: {leap_person_pending_verification_count: 0}}, expect: 1}
+  - {id: CO-1460-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1, p2], leap_person_pending_verification_count: 1, leap_heating_costs_verification_is_pending: true}, others: {p2: {leap_person_pending_verification_count: 0, leap_heating_costs_verification_is_pending: true}}, expect: 2}
+  - {id: CO-1460-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_person_pending_verification_count: 0, leap_heating_costs_verification_is_pending: false}, expect: 0}

@@ -1,0 +1,16 @@
+id: CO-1634
+name: "Medical Assistance: requires verification of a trust"
+identifier: ma_requires_verification_of_trust
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether trust documents must be submitted: for a long-term care applicant who (or whose spouse) transferred assets into a trust, is a trust beneficiary, or has an income trust."
+derived: [all, ma_is_long_term_care_applicant, [any, has_trust_interest, has_income_trust]]
+sources: [S1087]
+implemented: engine
+tags: [verification, ma, ltc, resources]
+rationale: "Review K-3: 8.100.7.A.2.i requires the trust documents; no item asked for them."
+tests:
+  - {id: CO-1634-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_long_term_care_applicant: true, has_trust_interest: false, has_income_trust: true}, expect: true}
+  - {id: CO-1634-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_long_term_care_applicant: true, has_trust_interest: false, has_income_trust: false}, expect: false}

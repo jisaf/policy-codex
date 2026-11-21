@@ -5,12 +5,12 @@ kind: derived
 type: whole number
 scope: person-month
 program: Medicaid
-meaning: The number of status elements (citizenship, identity, immigration status) Medical Assistance requires for this person that are not yet verified, the elements a reasonable opportunity period covers.
-derived: ["+", [case, [[all, ma_requires_verification_of_citizenship, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, ma_citizenship_document_is_acceptable]]]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, [all, identity_verification_document_received, ma_identity_document_is_acceptable]]]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_immigration_status, [not, immigration_status_verified_by_electronic_data_source]], 1], [else, 0]]]
-sources: [S840, S853, S859]
+meaning: "The number of status elements (citizenship, identity, immigration status) Medical Assistance requires for this person that are not yet verified, the elements a reasonable opportunity period covers: the sum of the person's pending citizenship, identity and immigration status items."
+derived: ["+", [case, [ma_citizenship_verification_is_pending, 1], [else, 0]], [case, [ma_identity_verification_is_pending, 1], [else, 0]], [case, [ma_immigration_status_verification_is_pending, 1], [else, 0]]]
+sources: [S840, S853, S859, S1085]
 implemented: engine
 tags: [verification, ma, immigration]
 rationale: During a reasonable opportunity period the person receives benefits while these elements are pending (435.956(a)(5), S840), unlike any other missing verification; the status needs the count separately.
 tests:
-  - {id: CO-1410-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: false, ma_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: false, ma_requires_verification_of_immigration_status: false}, expect: 2}
-  - {id: CO-1410-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, ma_citizenship_document_is_acceptable: true, ma_requires_verification_of_identity: false, ma_requires_verification_of_immigration_status: true, immigration_status_verified_by_electronic_data_source: true}, expect: 0}
+  - {id: CO-1410-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_citizenship_verification_is_pending: true, ma_identity_verification_is_pending: true, ma_immigration_status_verification_is_pending: false}, expect: 2}
+  - {id: CO-1410-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_citizenship_verification_is_pending: false, ma_identity_verification_is_pending: false, ma_immigration_status_verification_is_pending: true}, expect: 1}

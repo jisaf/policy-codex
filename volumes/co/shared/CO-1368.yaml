@@ -10,7 +10,6 @@ derived: [in, citizenship_verification_document_type, [us_public_birth_certifica
 sources: [S876, S886]
 implemented: engine
 tags: [verification, immigration]
-open: [OQ-315]
 rationale: 9 CCR 2503-6 3.604.3.I.1 (S876) and 9 CCR 2503-5 3.520.67.C (S886) name the same six documents; one program-neutral item serves both.
 nearest: [CO-1396]
 tests:

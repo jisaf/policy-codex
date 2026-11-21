@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether an electronic data source has verified the person's unearned income for this application: an interface match the agency treats as verification (SSA benefit data through SDX or BENDEX, unemployment insurance data, public assistance or child support system records), so no document is needed for that element."
+precision: Colorado SNAP treats only SSA and SSI benefit, death and unemployment insurance data as verified upon receipt (4.504.6.D); public assistance and child support records verify unearned income for the other programs. A SNAP case states this fact true only for an SSA or UIB match.
 supplied_by: CBMS interface results (IEVS, SSA/SOLQ/SVES, SAVE/VLP, DMV, FDSH, The Work Number, Asset Verification Program) as recorded in the case.
 sources: [S820, S836, S875, S880]
 tags: [verification, income]

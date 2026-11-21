@@ -1,0 +1,17 @@
+id: CO-1610
+name: "SNAP: work hours verification is pending"
+identifier: snap_work_hours_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+role: outcome
+meaning: Whether SNAP requires verification of the person's work hours of an individual subject to the time limit and it has not been provided.
+derived: [all, snap_requires_verification_of_work_hours, [not, work_hours_verification_document_received]]
+sources: [S810]
+implemented: engine
+tags: [verification, snap]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1610-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_work_hours: true, work_hours_verification_document_received: false}, expect: true}
+  - {id: CO-1610-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_requires_verification_of_work_hours: true, work_hours_verification_document_received: true}, expect: false}

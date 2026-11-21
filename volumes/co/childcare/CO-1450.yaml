@@ -11,6 +11,6 @@ sources: [S891]
 implemented: engine
 tags: [verification]
 rationale: No existing item states when requested CCCAP verification is due.
-nearest: [CO-1392, CO-1414, CO-1426, CO-1437, CO-1461]
+nearest: [CO-1392, CO-1414, CO-1426, CO-1437, CO-1461, CO-1656]
 tests:
   - {id: CO-1450-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-16"}

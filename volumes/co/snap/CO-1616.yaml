@@ -1,0 +1,19 @@
+id: CO-1616
+name: "SNAP: requires verification of sponsor information"
+identifier: snap_requires_verification_of_sponsor
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether the income and resources of a sponsored non-citizen's sponsor (and the sponsor's spouse), the other non-citizens the sponsor supports, the sponsor's dependents and contact details must be verified for SNAP: for a sponsored household member, at application and recertification, except where a basic categorically eligible household's conferring program verified them."
+precision: Unverified sponsor information makes only the sponsored member ineligible (4.505.7.B-C); snap_verification_status reports the household (OQ-380).
+derived: [all, snap_is_household_member, is_sponsored_non_citizen, [not, ["=", snap_eligibility_category, basic_categorical]]]
+sources: [S1061, S819]
+implemented: engine
+tags: [verification, snap, immigration]
+open: [OQ-380]
+rationale: "Review K-2: no item required sponsor verification; 4.505.7.A makes it an eligibility factor and 4.505.7.B makes the sponsored non-citizen ineligible until it is provided."
+tests:
+  - {id: CO-1616-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, is_sponsored_non_citizen: true, snap_eligibility_category: standard}, expect: true}
+  - {id: CO-1616-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, is_sponsored_non_citizen: true, snap_eligibility_category: basic_categorical}, expect: false}
+  - {id: CO-1616-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, is_sponsored_non_citizen: false}, expect: false}

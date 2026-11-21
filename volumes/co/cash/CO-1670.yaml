@@ -1,0 +1,17 @@
+id: CO-1670
+name: "Adult Financial: requires verification of marital status"
+identifier: af_requires_verification_of_marital_status
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the client must verify a divorce, legal separation or widowhood: when that marital status is questionable."
+precision: marital_status (CO-844) carries divorced, legally separated and widowed as "other"; a questionable single or married status is resolved without the documents of 3.520.63.C.
+derived: [all, marital_status_attestation_is_questionable, ["=", marital_status, other]]
+sources: [S1078]
+implemented: engine
+tags: [verification, cash]
+rationale: "Review K-6: 3.520.63.A and C verify a questionable marital status; no item asked for it."
+tests:
+  - {id: CO-1670-T1, month: "2026-10", as_of: "2026-10-01", given: {marital_status_attestation_is_questionable: true, marital_status: other}, expect: true}
+  - {id: CO-1670-T2, month: "2026-10", as_of: "2026-10-01", given: {marital_status_attestation_is_questionable: false}, expect: false}

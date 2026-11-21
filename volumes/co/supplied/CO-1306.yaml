@@ -9,6 +9,6 @@ program: All
 meaning: The category of the document the person provided as evidence of U.S. citizenship or nationality, in the categories 42 CFR 435.407(a)-(b), 10 CCR 2505-10 8.100.3.H.2, 10 CCR 2506-1 4.505.5, 9 CCR 2503-6 3.604.3.I.1 and 9 CCR 2503-5 3.520.67.C name.
 precision: other_us_birth_record covers the five-years-old records of 8.100.3.H.2.b.xviii (tribal census records, notification of birth registration, a delayed birth record, a physician's or midwife's statement, the Roll of Alaska Natives); vital_statistics_record_match is a verification with a state vital statistics agency (435.407(a)(7)) or Colorado's COVIS (4.505.5.A.7); third_party_citizenship_statement is SNAP's signed third-party statement (4.505.5.B); citizenship_affidavit is Medicaid's affidavit (435.407(b)(16), 8.100.3.H.2.b.xxi).
 supplied_by: Document type recorded with the document receipt in the CBMS case file.
-sources: [S845, S846, S855, S826, S876, S886]
+sources: [S845, S846, S855, S826, S876, S886, S1069, S1077]
 tags: [verification, immigration]
 rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

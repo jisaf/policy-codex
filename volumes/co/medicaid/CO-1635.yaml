@@ -1,0 +1,16 @@
+id: CO-1635
+name: "Medical Assistance: requires verification of an annuity"
+identifier: ma_requires_verification_of_annuity
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether documents verifying that an annuity conforms to 8.100.7.I must be submitted: for a long-term care applicant who (or whose spouse) owns an annuity."
+derived: [all, ma_is_long_term_care_applicant, owns_annuity]
+sources: [S1087]
+implemented: engine
+tags: [verification, ma, ltc, resources]
+rationale: "Review K-3: 8.100.7.A.2.j requires the annuity documents; no item asked for them."
+tests:
+  - {id: CO-1635-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_long_term_care_applicant: true, owns_annuity: true}, expect: true}
+  - {id: CO-1635-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_long_term_care_applicant: true, owns_annuity: false}, expect: false}

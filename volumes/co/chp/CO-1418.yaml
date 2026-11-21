@@ -3,21 +3,21 @@ name: "CHP+: verification status"
 identifier: chp_verification_status
 kind: derived
 type: one of
-options: [not_required, complete, pending, past_due, pending_reasonable_opportunity, reasonable_opportunity_expired]
+options: [not_applicable, not_required, complete, pending, past_due, pending_reasonable_opportunity, reasonable_opportunity_expired]
 scope: person-month
 program: CHP+
 role: outcome
-meaning: "Where this person's CHP+ verification stands, in the same states as Medical Assistance: none required, complete, pending, past due, pending within a reasonable opportunity period for status, or reasonable opportunity expired."
-derived: [case, [["=", chp_required_verification_count, 0], not_required], [["=", chp_pending_verification_count, 0], complete], [[all, [">", ["-", chp_pending_verification_count, ma_pending_status_verification_count], 0], [">", [det_date], ma_verification_due_date]], past_due], [[all, [">", ma_pending_status_verification_count, 0], [">", [det_date], ma_reasonable_opportunity_period_end_date]], reasonable_opportunity_expired], [[">", ["-", chp_pending_verification_count, ma_pending_status_verification_count], 0], pending], [else, pending_reasonable_opportunity]]
-sources: [S868, S869, S870]
+meaning: "Where this person's CHP+ verification stands, in the same states as Medical Assistance: not applicable (coverage is not requested, or the person is neither a child under nineteen nor pregnant, the only people CHP+ covers); none required; complete; pending; past due; pending within a reasonable opportunity period for status; or reasonable opportunity expired."
+derived: [case, [[not, [all, is_requesting_health_coverage, [any, ma_is_under_child_age_or_turns_nineteen_this_month, is_pregnant]]], not_applicable], [["=", chp_required_verification_count, 0], not_required], [["=", chp_pending_verification_count, 0], complete], [[all, [">", ["-", chp_pending_verification_count, ma_pending_status_verification_count], 0], [">", [det_date], ma_verification_due_date]], past_due], [[all, [">", ma_pending_status_verification_count, 0], [">", [det_date], ma_reasonable_opportunity_period_end_date]], reasonable_opportunity_expired], [[">", ["-", chp_pending_verification_count, ma_pending_status_verification_count], 0], pending], [else, pending_reasonable_opportunity]]
+sources: [S868, S869, S870, S860]
 implemented: engine
 tags: [verification, chp]
-open: [OQ-322]
 rationale: No existing item reports CHP+ verification standing; 457.380(b)(1)(ii) (S868) and 110.1.C.2 (S870) give CHP+ the same reasonable opportunity period as Medical Assistance.
 tests:
-  - {id: CO-1418-T1, month: "2026-10", as_of: "2026-10-01", given: {chp_required_verification_count: 0}, expect: not_required}
-  - {id: CO-1418-T2, month: "2026-10", as_of: "2026-10-01", given: {chp_required_verification_count: 1, chp_pending_verification_count: 0}, expect: complete}
-  - {id: CO-1418-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-15", chp_required_verification_count: 2, chp_pending_verification_count: 1, ma_pending_status_verification_count: 0, ma_verification_due_date: "2026-10-31"}, expect: past_due}
-  - {id: CO-1418-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2027-01-10", chp_required_verification_count: 2, chp_pending_verification_count: 1, ma_pending_status_verification_count: 1, ma_verification_due_date: "2026-10-31", ma_reasonable_opportunity_period_end_date: "2027-01-04"}, expect: reasonable_opportunity_expired}
-  - {id: CO-1418-T5, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-10", chp_required_verification_count: 2, chp_pending_verification_count: 2, ma_pending_status_verification_count: 1, ma_verification_due_date: "2026-10-31", ma_reasonable_opportunity_period_end_date: "2027-01-04"}, expect: pending}
-  - {id: CO-1418-T6, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-10", chp_required_verification_count: 2, chp_pending_verification_count: 1, ma_pending_status_verification_count: 1, ma_verification_due_date: "2026-10-31", ma_reasonable_opportunity_period_end_date: "2027-01-04"}, expect: pending_reasonable_opportunity}
+  - {id: CO-1418-T1, month: "2026-10", as_of: "2026-10-01", given: {chp_required_verification_count: 0, is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true}, expect: not_required}
+  - {id: CO-1418-T2, month: "2026-10", as_of: "2026-10-01", given: {chp_required_verification_count: 1, chp_pending_verification_count: 0, is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true}, expect: complete}
+  - {id: CO-1418-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-15", chp_required_verification_count: 2, chp_pending_verification_count: 1, ma_pending_status_verification_count: 0, ma_verification_due_date: "2026-10-31", is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true}, expect: past_due}
+  - {id: CO-1418-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2027-01-10", chp_required_verification_count: 2, chp_pending_verification_count: 1, ma_pending_status_verification_count: 1, ma_verification_due_date: "2026-10-31", ma_reasonable_opportunity_period_end_date: "2027-01-04", is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true}, expect: reasonable_opportunity_expired}
+  - {id: CO-1418-T5, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-10", chp_required_verification_count: 2, chp_pending_verification_count: 2, ma_pending_status_verification_count: 1, ma_verification_due_date: "2026-10-31", ma_reasonable_opportunity_period_end_date: "2027-01-04", is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true}, expect: pending}
+  - {id: CO-1418-T6, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-10", chp_required_verification_count: 2, chp_pending_verification_count: 1, ma_pending_status_verification_count: 1, ma_verification_due_date: "2026-10-31", ma_reasonable_opportunity_period_end_date: "2027-01-04", is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: true}, expect: pending_reasonable_opportunity}
+  - {id: CO-1418-T9, month: "2026-10", as_of: "2026-10-01", given: {is_requesting_health_coverage: true, ma_is_under_child_age_or_turns_nineteen_this_month: false, is_pregnant: false}, expect: not_applicable}

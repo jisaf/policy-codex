@@ -104,6 +104,35 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: true
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: true
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -194,6 +223,8 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        electronic_data_source_monthly_gross_income: 2030
+        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
@@ -303,6 +334,36 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: true
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
+        is_enrolled_in_pace: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -394,6 +455,8 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        electronic_data_source_monthly_gross_income: 1180
+        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
@@ -504,7 +567,36 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
-        identity_verification_document_type: colorado_drivers_license_or_id
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: false
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
+        identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -678,6 +770,35 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: true
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -850,6 +971,35 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1009,6 +1159,15 @@
     # newborn, exempt from citizenship and SSN verification for Medicaid; Colorado Works still asks
     # for every client's citizenship (OQ-314). CCCAP (p4 the teen parent) awaits p4's residency and
     # school-enrollment activity documents and p3's pay stubs (3).
+    # Fix round (docs/reviews/verification-phase-9.md): each pending element is now an outcome
+    # (<prog>_<element>_verification_is_pending), so the checklist reads per person and per document.
+    # p1, entering a nursing facility, also owes the documentation of transfers in the 60-month
+    # look-back (8.100.7.A.2.h; her 30-day stay is documented), so Medical Assistance counts 2. p3's
+    # Colorado license is a Road and Community Safety Act card, which does not show lawful presence
+    # (1 CCR 204-30 Rule 5 1.8). CHP+, Colorado Works and CCCAP read not_applicable where they cannot
+    # reach the person (review C-4); SNAP is not_applicable for p1 (in an institution); Adult Financial
+    # for p3-p5. LEAP counts the household's heating once and no longer asks p3, outside the household,
+    # for an SSN: p1/p2 1, p3/p4/p5 2 (p3's pay stubs, heating).
     p1:
       # Phase 7 outcomes. Emergency: p3 (undocumented, MAGI adult) fails only status, so ma_is_emergency_medicaid_only
       # is true; she had an emergency medical condition in October (stated), so eligible_emergency_condition. Everyone else
@@ -1077,20 +1236,101 @@
       snap_eligibility_status: {"2026-10": no_eligible_members}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
-      snap_verification_status: {"2026-10": not_required}
+      snap_verification_status: {"2026-10": not_applicable}
       snap_pending_verification_count: {"2026-10": 0}
       ma_verification_status: {"2026-10": pending}
-      ma_pending_verification_count: {"2026-10": 1}
-      chp_verification_status: {"2026-10": complete}
+      ma_pending_verification_count: {"2026-10": 2}
+      chp_verification_status: {"2026-10": not_applicable}
       chp_pending_verification_count: {"2026-10": 0}
-      cw_verification_status: {"2026-10": pending}
-      cw_pending_verification_count: {"2026-10": 1}
+      cw_verification_status: {"2026-10": not_applicable}
+      cw_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": pending}
       af_pending_verification_count: {"2026-10": 2}
-      cccap_verification_status: {"2026-10": complete}
+      cccap_verification_status: {"2026-10": not_applicable}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 2}
+      leap_pending_verification_count: {"2026-10": 1}
+      ma_citizenship_verification_is_pending: {"2026-10": false}
+      ma_identity_verification_is_pending: {"2026-10": false}
+      ma_immigration_status_verification_is_pending: {"2026-10": false}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": false}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": true}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": true}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": false}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": false}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": false}
+      snap_earned_income_verification_is_pending: {"2026-10": false}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 0}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": true}
+      cw_citizenship_verification_is_pending: {"2026-10": false}
+      cw_immigration_status_verification_is_pending: {"2026-10": false}
+      cw_ssn_verification_is_pending: {"2026-10": false}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": false}
+      cw_residency_verification_is_pending: {"2026-10": true}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 2}
+      cw_person_pending_status_verification_count: {"2026-10": 1}
+      af_age_verification_is_pending: {"2026-10": false}
+      af_residency_verification_is_pending: {"2026-10": true}
+      af_identity_verification_is_pending: {"2026-10": false}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": false}
+      af_resources_verification_is_pending: {"2026-10": true}
+      af_earned_income_verification_is_pending: {"2026-10": false}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": false}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": false}
+      cccap_work_hours_verification_is_pending: {"2026-10": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 0}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": false}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": true}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-10": not_applicable}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}
     p2:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -1147,16 +1387,97 @@
       snap_pending_verification_count: {"2026-10": 2}
       ma_verification_status: {"2026-10": pending}
       ma_pending_verification_count: {"2026-10": 1}
-      chp_verification_status: {"2026-10": complete}
+      chp_verification_status: {"2026-10": not_applicable}
       chp_pending_verification_count: {"2026-10": 0}
-      cw_verification_status: {"2026-10": pending}
+      cw_verification_status: {"2026-10": not_applicable}
       cw_pending_verification_count: {"2026-10": 1}
       af_verification_status: {"2026-10": pending}
       af_pending_verification_count: {"2026-10": 2}
-      cccap_verification_status: {"2026-10": complete}
+      cccap_verification_status: {"2026-10": not_applicable}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 2}
+      leap_pending_verification_count: {"2026-10": 1}
+      ma_citizenship_verification_is_pending: {"2026-10": false}
+      ma_identity_verification_is_pending: {"2026-10": false}
+      ma_immigration_status_verification_is_pending: {"2026-10": false}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": false}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": true}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": false}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": false}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": false}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": true}
+      snap_earned_income_verification_is_pending: {"2026-10": false}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 1}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": false}
+      cw_citizenship_verification_is_pending: {"2026-10": false}
+      cw_immigration_status_verification_is_pending: {"2026-10": false}
+      cw_ssn_verification_is_pending: {"2026-10": false}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": false}
+      cw_residency_verification_is_pending: {"2026-10": true}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 1}
+      cw_person_pending_status_verification_count: {"2026-10": 0}
+      af_age_verification_is_pending: {"2026-10": false}
+      af_residency_verification_is_pending: {"2026-10": true}
+      af_identity_verification_is_pending: {"2026-10": false}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": false}
+      af_resources_verification_is_pending: {"2026-10": true}
+      af_earned_income_verification_is_pending: {"2026-10": false}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": false}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": false}
+      cccap_work_hours_verification_is_pending: {"2026-10": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 0}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": false}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": true}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-10": not_applicable}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}
     p3:
       ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1214,14 +1535,97 @@
       snap_pending_verification_count: {"2026-10": 2}
       ma_verification_status: {"2026-10": pending}
       ma_pending_verification_count: {"2026-10": 1}
-      chp_verification_status: {"2026-10": pending}
+      chp_verification_status: {"2026-10": not_applicable}
       chp_pending_verification_count: {"2026-10": 1}
-      cw_verification_status: {"2026-10": pending}
-      cw_pending_verification_count: {"2026-10": 3}
+      cw_verification_status: {"2026-10": not_applicable}
+      cw_pending_verification_count: {"2026-10": 4}
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 5}
+      leap_pending_verification_count: {"2026-10": 2}
+      af_verification_status: {"2026-10": not_applicable}
+      af_pending_verification_count: {"2026-10": 3}
+      ma_citizenship_verification_is_pending: {"2026-10": false}
+      ma_identity_verification_is_pending: {"2026-10": false}
+      ma_immigration_status_verification_is_pending: {"2026-10": false}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": true}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": false}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": false}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": true}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": false}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": false}
+      snap_earned_income_verification_is_pending: {"2026-10": true}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 1}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": true}
+      cw_citizenship_verification_is_pending: {"2026-10": false}
+      cw_immigration_status_verification_is_pending: {"2026-10": false}
+      cw_ssn_verification_is_pending: {"2026-10": true}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": true}
+      cw_residency_verification_is_pending: {"2026-10": true}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 4}
+      cw_person_pending_status_verification_count: {"2026-10": 2}
+      af_age_verification_is_pending: {"2026-10": false}
+      af_residency_verification_is_pending: {"2026-10": true}
+      af_identity_verification_is_pending: {"2026-10": true}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": false}
+      af_resources_verification_is_pending: {"2026-10": false}
+      af_earned_income_verification_is_pending: {"2026-10": true}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": false}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": true}
+      cccap_work_hours_verification_is_pending: {"2026-10": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 1}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": true}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": true}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 1}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-10": not_applicable}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}
     p4:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1287,7 +1691,90 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 5}
+      leap_pending_verification_count: {"2026-10": 2}
+      af_verification_status: {"2026-10": not_applicable}
+      af_pending_verification_count: {"2026-10": 2}
+      ma_citizenship_verification_is_pending: {"2026-10": true}
+      ma_identity_verification_is_pending: {"2026-10": true}
+      ma_immigration_status_verification_is_pending: {"2026-10": false}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": false}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": false}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": false}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": false}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": false}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": false}
+      snap_earned_income_verification_is_pending: {"2026-10": false}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 0}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": false}
+      cw_citizenship_verification_is_pending: {"2026-10": true}
+      cw_immigration_status_verification_is_pending: {"2026-10": false}
+      cw_ssn_verification_is_pending: {"2026-10": false}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": false}
+      cw_residency_verification_is_pending: {"2026-10": false}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 1}
+      cw_person_pending_status_verification_count: {"2026-10": 1}
+      af_age_verification_is_pending: {"2026-10": false}
+      af_residency_verification_is_pending: {"2026-10": true}
+      af_identity_verification_is_pending: {"2026-10": true}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": false}
+      af_resources_verification_is_pending: {"2026-10": false}
+      af_earned_income_verification_is_pending: {"2026-10": false}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": true}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": true}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": false}
+      cccap_work_hours_verification_is_pending: {"2026-10": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 2}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": false}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": true}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-10": not_required}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}
     p5:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -1345,7 +1832,90 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_pending_verification_count: {"2026-10": 5}
+      leap_pending_verification_count: {"2026-10": 2}
+      af_verification_status: {"2026-10": not_applicable}
+      af_pending_verification_count: {"2026-10": 3}
+      ma_citizenship_verification_is_pending: {"2026-10": false}
+      ma_identity_verification_is_pending: {"2026-10": false}
+      ma_immigration_status_verification_is_pending: {"2026-10": false}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": false}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": false}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": false}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": false}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": false}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": false}
+      snap_earned_income_verification_is_pending: {"2026-10": false}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 0}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": false}
+      cw_citizenship_verification_is_pending: {"2026-10": true}
+      cw_immigration_status_verification_is_pending: {"2026-10": false}
+      cw_ssn_verification_is_pending: {"2026-10": false}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": false}
+      cw_residency_verification_is_pending: {"2026-10": false}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 1}
+      cw_person_pending_status_verification_count: {"2026-10": 1}
+      af_age_verification_is_pending: {"2026-10": true}
+      af_residency_verification_is_pending: {"2026-10": true}
+      af_identity_verification_is_pending: {"2026-10": true}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": false}
+      af_resources_verification_is_pending: {"2026-10": false}
+      af_earned_income_verification_is_pending: {"2026-10": false}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": false}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": false}
+      cccap_work_hours_verification_is_pending: {"2026-10": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 0}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": false}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": true}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-10": not_applicable}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}
 
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
@@ -1440,6 +2010,35 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: true
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: true
+        asset_transfer_verification_document_received: true
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1528,6 +2127,8 @@
         countable_resources_couple: 46000
         countable_resources_couple_at_snapshot: 46000
       month_defaults:
+        electronic_data_source_monthly_gross_income: 2030
+        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
@@ -1637,6 +2238,36 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: true
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
+        is_enrolled_in_pace: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1726,6 +2357,8 @@
         state_of_residence: CO
         in_medical_institution: false
       month_defaults:
+        electronic_data_source_monthly_gross_income: 1180
+        electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
@@ -1836,7 +2469,36 @@
         eligible_activity_verification_document_received: true
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
-        identity_verification_document_type: colorado_drivers_license_or_id
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: false
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
+        identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -2009,6 +2671,35 @@
         eligible_activity_verification_document_received: true
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: true
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -2179,6 +2870,35 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -2315,6 +3035,15 @@
     # remain in the reasonable opportunity period, while Colorado Works (11 days) is past due for p4
     # and p5. p3, undocumented, has no SSN: Colorado Works and LEAP count it as missing (LEAP would
     # exclude her rather than deny, OQ-318), so those statuses read past_due.
+    # Fix round (docs/reviews/verification-phase-9.md): p1's asset-transfer documentation has come in, so
+    # her Medical Assistance verification is complete. Colorado Works gives p4's and p5's citizenship
+    # thirty days (3.604.3.K, to 2026-10-31), now past, and excludes those members rather than failing
+    # the unit: members_excluded. LEAP no longer counts p3's SSN (3.751.1 B excludes a member without one,
+    # and p3 is outside the household under 3.753.17 anyway), so p3/p4/p5 are complete with 0 pending.
+    # The CHP+, Colorado Works and CCCAP results for people those programs cannot reach (p1-p3 for CHP+,
+    # the single-person units of p1, p2 and p3, households without an eligible child) are not_applicable;
+    # SNAP is not_applicable for p1, who is in a medical institution; Adult Financial is not_applicable for
+    # p3-p5 (under the OAP age, no disability basis).
     p1:
       # Phase 7 outcomes: as CO-01, except that p3 has no emergency medical condition in November, so she stays
       # emergency-eligible with nothing to pay for (eligible_no_current_emergency; 8.100.3.G.1.g.ix.2 does not make her
@@ -2377,20 +3106,101 @@
       snap_eligibility_status: {"2026-11": no_eligible_members}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
-      snap_verification_status: {"2026-11": not_required}
+      snap_verification_status: {"2026-11": not_applicable}
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": complete}
       ma_pending_verification_count: {"2026-11": 0}
-      chp_verification_status: {"2026-11": complete}
+      chp_verification_status: {"2026-11": not_applicable}
       chp_pending_verification_count: {"2026-11": 0}
-      cw_verification_status: {"2026-11": complete}
-      cw_pending_verification_count: {"2026-11": 0}
+      cw_verification_status: {"2026-11": not_applicable}
+      cw_pending_verification_count: {"2026-11": 1}
       af_verification_status: {"2026-11": complete}
       af_pending_verification_count: {"2026-11": 0}
-      cccap_verification_status: {"2026-11": complete}
+      cccap_verification_status: {"2026-11": not_applicable}
       cccap_pending_verification_count: {"2026-11": 0}
       leap_verification_status: {"2026-11": complete}
       leap_pending_verification_count: {"2026-11": 0}
+      ma_citizenship_verification_is_pending: {"2026-11": false}
+      ma_identity_verification_is_pending: {"2026-11": false}
+      ma_immigration_status_verification_is_pending: {"2026-11": false}
+      ma_ssn_verification_is_pending: {"2026-11": false}
+      ma_earned_income_verification_is_pending: {"2026-11": false}
+      ma_unearned_income_verification_is_pending: {"2026-11": false}
+      ma_resources_verification_is_pending: {"2026-11": false}
+      ma_pregnancy_verification_is_pending: {"2026-11": false}
+      ma_residency_verification_is_pending: {"2026-11": false}
+      ma_age_verification_is_pending: {"2026-11": false}
+      ma_household_composition_verification_is_pending: {"2026-11": false}
+      ma_institutional_stay_verification_is_pending: {"2026-11": false}
+      ma_asset_transfers_verification_is_pending: {"2026-11": false}
+      ma_trust_verification_is_pending: {"2026-11": false}
+      ma_annuity_verification_is_pending: {"2026-11": false}
+      chp_earned_income_verification_is_pending: {"2026-11": false}
+      snap_identity_verification_is_pending: {"2026-11": false}
+      snap_citizenship_verification_is_pending: {"2026-11": false}
+      snap_immigration_status_verification_is_pending: {"2026-11": false}
+      snap_ssn_verification_is_pending: {"2026-11": false}
+      snap_residency_verification_is_pending: {"2026-11": false}
+      snap_earned_income_verification_is_pending: {"2026-11": false}
+      snap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_resources_verification_is_pending: {"2026-11": false}
+      snap_household_composition_verification_is_pending: {"2026-11": false}
+      snap_disability_verification_is_pending: {"2026-11": false}
+      snap_age_verification_is_pending: {"2026-11": false}
+      snap_work_hours_verification_is_pending: {"2026-11": false}
+      snap_sponsor_verification_is_pending: {"2026-11": false}
+      snap_shelter_costs_verification_is_pending: {"2026-11": false}
+      snap_medical_expenses_verification_is_pending: {"2026-11": false}
+      snap_dependent_care_verification_is_pending: {"2026-11": false}
+      snap_child_support_paid_verification_is_pending: {"2026-11": false}
+      snap_person_pending_verification_count: {"2026-11": 0}
+      snap_person_pending_expense_verification_count: {"2026-11": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-11": true}
+      cw_citizenship_verification_is_pending: {"2026-11": false}
+      cw_immigration_status_verification_is_pending: {"2026-11": false}
+      cw_ssn_verification_is_pending: {"2026-11": false}
+      cw_household_composition_verification_is_pending: {"2026-11": false}
+      cw_earned_income_verification_is_pending: {"2026-11": false}
+      cw_residency_verification_is_pending: {"2026-11": false}
+      cw_school_enrollment_verification_is_pending: {"2026-11": false}
+      cw_pregnancy_verification_is_pending: {"2026-11": false}
+      cw_sponsor_verification_is_pending: {"2026-11": false}
+      unearned_income_verification_is_pending: {"2026-11": false}
+      cw_person_pending_verification_count: {"2026-11": 1}
+      cw_person_pending_status_verification_count: {"2026-11": 1}
+      af_age_verification_is_pending: {"2026-11": false}
+      af_residency_verification_is_pending: {"2026-11": false}
+      af_identity_verification_is_pending: {"2026-11": false}
+      af_ssn_verification_is_pending: {"2026-11": false}
+      af_citizenship_verification_is_pending: {"2026-11": false}
+      af_immigration_status_verification_is_pending: {"2026-11": false}
+      af_resources_verification_is_pending: {"2026-11": false}
+      af_earned_income_verification_is_pending: {"2026-11": false}
+      af_disability_verification_is_pending: {"2026-11": false}
+      af_and_so_disability_verification_is_pending: {"2026-11": false}
+      af_marital_status_verification_is_pending: {"2026-11": false}
+      af_sponsor_verification_is_pending: {"2026-11": false}
+      cccap_residency_verification_is_pending: {"2026-11": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-11": false}
+      cccap_citizenship_verification_is_pending: {"2026-11": false}
+      cccap_age_verification_is_pending: {"2026-11": false}
+      cccap_identity_verification_is_pending: {"2026-11": false}
+      cccap_earned_income_verification_is_pending: {"2026-11": false}
+      cccap_work_hours_verification_is_pending: {"2026-11": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-11": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-11": false}
+      cccap_person_pending_verification_count: {"2026-11": 0}
+      cccap_pending_deduction_verification_count: {"2026-11": 0}
+      leap_earned_income_verification_is_pending: {"2026-11": false}
+      leap_citizenship_verification_is_pending: {"2026-11": false}
+      leap_heating_costs_verification_is_pending: {"2026-11": false}
+      leap_zero_income_verification_is_pending: {"2026-11": false}
+      leap_person_pending_verification_count: {"2026-11": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-11": not_applicable}
+      sebt_pending_verification_count: {"2026-11": 0}
+      sebt_income_verification_is_pending: {"2026-11": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-11": false}
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -2451,16 +3261,97 @@
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": complete}
       ma_pending_verification_count: {"2026-11": 0}
-      chp_verification_status: {"2026-11": complete}
+      chp_verification_status: {"2026-11": not_applicable}
       chp_pending_verification_count: {"2026-11": 0}
-      cw_verification_status: {"2026-11": complete}
+      cw_verification_status: {"2026-11": not_applicable}
       cw_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": complete}
       af_pending_verification_count: {"2026-11": 0}
-      cccap_verification_status: {"2026-11": complete}
+      cccap_verification_status: {"2026-11": not_applicable}
       cccap_pending_verification_count: {"2026-11": 0}
       leap_verification_status: {"2026-11": complete}
       leap_pending_verification_count: {"2026-11": 0}
+      ma_citizenship_verification_is_pending: {"2026-11": false}
+      ma_identity_verification_is_pending: {"2026-11": false}
+      ma_immigration_status_verification_is_pending: {"2026-11": false}
+      ma_ssn_verification_is_pending: {"2026-11": false}
+      ma_earned_income_verification_is_pending: {"2026-11": false}
+      ma_unearned_income_verification_is_pending: {"2026-11": false}
+      ma_resources_verification_is_pending: {"2026-11": false}
+      ma_pregnancy_verification_is_pending: {"2026-11": false}
+      ma_residency_verification_is_pending: {"2026-11": false}
+      ma_age_verification_is_pending: {"2026-11": false}
+      ma_household_composition_verification_is_pending: {"2026-11": false}
+      ma_institutional_stay_verification_is_pending: {"2026-11": false}
+      ma_asset_transfers_verification_is_pending: {"2026-11": false}
+      ma_trust_verification_is_pending: {"2026-11": false}
+      ma_annuity_verification_is_pending: {"2026-11": false}
+      chp_earned_income_verification_is_pending: {"2026-11": false}
+      snap_identity_verification_is_pending: {"2026-11": false}
+      snap_citizenship_verification_is_pending: {"2026-11": false}
+      snap_immigration_status_verification_is_pending: {"2026-11": false}
+      snap_ssn_verification_is_pending: {"2026-11": false}
+      snap_residency_verification_is_pending: {"2026-11": false}
+      snap_earned_income_verification_is_pending: {"2026-11": false}
+      snap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_resources_verification_is_pending: {"2026-11": false}
+      snap_household_composition_verification_is_pending: {"2026-11": false}
+      snap_disability_verification_is_pending: {"2026-11": false}
+      snap_age_verification_is_pending: {"2026-11": false}
+      snap_work_hours_verification_is_pending: {"2026-11": false}
+      snap_sponsor_verification_is_pending: {"2026-11": false}
+      snap_shelter_costs_verification_is_pending: {"2026-11": false}
+      snap_medical_expenses_verification_is_pending: {"2026-11": false}
+      snap_dependent_care_verification_is_pending: {"2026-11": false}
+      snap_child_support_paid_verification_is_pending: {"2026-11": false}
+      snap_person_pending_verification_count: {"2026-11": 0}
+      snap_person_pending_expense_verification_count: {"2026-11": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-11": false}
+      cw_citizenship_verification_is_pending: {"2026-11": false}
+      cw_immigration_status_verification_is_pending: {"2026-11": false}
+      cw_ssn_verification_is_pending: {"2026-11": false}
+      cw_household_composition_verification_is_pending: {"2026-11": false}
+      cw_earned_income_verification_is_pending: {"2026-11": false}
+      cw_residency_verification_is_pending: {"2026-11": false}
+      cw_school_enrollment_verification_is_pending: {"2026-11": false}
+      cw_pregnancy_verification_is_pending: {"2026-11": false}
+      cw_sponsor_verification_is_pending: {"2026-11": false}
+      unearned_income_verification_is_pending: {"2026-11": false}
+      cw_person_pending_verification_count: {"2026-11": 0}
+      cw_person_pending_status_verification_count: {"2026-11": 0}
+      af_age_verification_is_pending: {"2026-11": false}
+      af_residency_verification_is_pending: {"2026-11": false}
+      af_identity_verification_is_pending: {"2026-11": false}
+      af_ssn_verification_is_pending: {"2026-11": false}
+      af_citizenship_verification_is_pending: {"2026-11": false}
+      af_immigration_status_verification_is_pending: {"2026-11": false}
+      af_resources_verification_is_pending: {"2026-11": false}
+      af_earned_income_verification_is_pending: {"2026-11": false}
+      af_disability_verification_is_pending: {"2026-11": false}
+      af_and_so_disability_verification_is_pending: {"2026-11": false}
+      af_marital_status_verification_is_pending: {"2026-11": false}
+      af_sponsor_verification_is_pending: {"2026-11": false}
+      cccap_residency_verification_is_pending: {"2026-11": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-11": false}
+      cccap_citizenship_verification_is_pending: {"2026-11": false}
+      cccap_age_verification_is_pending: {"2026-11": false}
+      cccap_identity_verification_is_pending: {"2026-11": false}
+      cccap_earned_income_verification_is_pending: {"2026-11": false}
+      cccap_work_hours_verification_is_pending: {"2026-11": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-11": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-11": false}
+      cccap_person_pending_verification_count: {"2026-11": 0}
+      cccap_pending_deduction_verification_count: {"2026-11": 0}
+      leap_earned_income_verification_is_pending: {"2026-11": false}
+      leap_citizenship_verification_is_pending: {"2026-11": false}
+      leap_heating_costs_verification_is_pending: {"2026-11": false}
+      leap_zero_income_verification_is_pending: {"2026-11": false}
+      leap_person_pending_verification_count: {"2026-11": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-11": not_applicable}
+      sebt_pending_verification_count: {"2026-11": 0}
+      sebt_income_verification_is_pending: {"2026-11": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-11": false}
     p3:
       ma_emergency_medicaid_status: {"2026-11": eligible_no_current_emergency}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -2515,14 +3406,97 @@
       snap_pending_verification_count: {"2026-11": 0}
       ma_verification_status: {"2026-11": complete}
       ma_pending_verification_count: {"2026-11": 0}
-      chp_verification_status: {"2026-11": complete}
+      chp_verification_status: {"2026-11": not_applicable}
       chp_pending_verification_count: {"2026-11": 0}
-      cw_verification_status: {"2026-11": past_due}
-      cw_pending_verification_count: {"2026-11": 1}
+      cw_verification_status: {"2026-11": not_applicable}
+      cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_verification_status: {"2026-11": past_due}
-      leap_pending_verification_count: {"2026-11": 1}
+      leap_verification_status: {"2026-11": complete}
+      leap_pending_verification_count: {"2026-11": 0}
+      af_verification_status: {"2026-11": not_applicable}
+      af_pending_verification_count: {"2026-11": 1}
+      ma_citizenship_verification_is_pending: {"2026-11": false}
+      ma_identity_verification_is_pending: {"2026-11": false}
+      ma_immigration_status_verification_is_pending: {"2026-11": false}
+      ma_ssn_verification_is_pending: {"2026-11": false}
+      ma_earned_income_verification_is_pending: {"2026-11": false}
+      ma_unearned_income_verification_is_pending: {"2026-11": false}
+      ma_resources_verification_is_pending: {"2026-11": false}
+      ma_pregnancy_verification_is_pending: {"2026-11": false}
+      ma_residency_verification_is_pending: {"2026-11": false}
+      ma_age_verification_is_pending: {"2026-11": false}
+      ma_household_composition_verification_is_pending: {"2026-11": false}
+      ma_institutional_stay_verification_is_pending: {"2026-11": false}
+      ma_asset_transfers_verification_is_pending: {"2026-11": false}
+      ma_trust_verification_is_pending: {"2026-11": false}
+      ma_annuity_verification_is_pending: {"2026-11": false}
+      chp_earned_income_verification_is_pending: {"2026-11": false}
+      snap_identity_verification_is_pending: {"2026-11": false}
+      snap_citizenship_verification_is_pending: {"2026-11": false}
+      snap_immigration_status_verification_is_pending: {"2026-11": false}
+      snap_ssn_verification_is_pending: {"2026-11": false}
+      snap_residency_verification_is_pending: {"2026-11": false}
+      snap_earned_income_verification_is_pending: {"2026-11": false}
+      snap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_resources_verification_is_pending: {"2026-11": false}
+      snap_household_composition_verification_is_pending: {"2026-11": false}
+      snap_disability_verification_is_pending: {"2026-11": false}
+      snap_age_verification_is_pending: {"2026-11": false}
+      snap_work_hours_verification_is_pending: {"2026-11": false}
+      snap_sponsor_verification_is_pending: {"2026-11": false}
+      snap_shelter_costs_verification_is_pending: {"2026-11": false}
+      snap_medical_expenses_verification_is_pending: {"2026-11": false}
+      snap_dependent_care_verification_is_pending: {"2026-11": false}
+      snap_child_support_paid_verification_is_pending: {"2026-11": false}
+      snap_person_pending_verification_count: {"2026-11": 0}
+      snap_person_pending_expense_verification_count: {"2026-11": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-11": true}
+      cw_citizenship_verification_is_pending: {"2026-11": false}
+      cw_immigration_status_verification_is_pending: {"2026-11": false}
+      cw_ssn_verification_is_pending: {"2026-11": true}
+      cw_household_composition_verification_is_pending: {"2026-11": false}
+      cw_earned_income_verification_is_pending: {"2026-11": false}
+      cw_residency_verification_is_pending: {"2026-11": false}
+      cw_school_enrollment_verification_is_pending: {"2026-11": false}
+      cw_pregnancy_verification_is_pending: {"2026-11": false}
+      cw_sponsor_verification_is_pending: {"2026-11": false}
+      unearned_income_verification_is_pending: {"2026-11": false}
+      cw_person_pending_verification_count: {"2026-11": 2}
+      cw_person_pending_status_verification_count: {"2026-11": 2}
+      af_age_verification_is_pending: {"2026-11": false}
+      af_residency_verification_is_pending: {"2026-11": false}
+      af_identity_verification_is_pending: {"2026-11": true}
+      af_ssn_verification_is_pending: {"2026-11": false}
+      af_citizenship_verification_is_pending: {"2026-11": false}
+      af_immigration_status_verification_is_pending: {"2026-11": false}
+      af_resources_verification_is_pending: {"2026-11": false}
+      af_earned_income_verification_is_pending: {"2026-11": false}
+      af_disability_verification_is_pending: {"2026-11": false}
+      af_and_so_disability_verification_is_pending: {"2026-11": false}
+      af_marital_status_verification_is_pending: {"2026-11": false}
+      af_sponsor_verification_is_pending: {"2026-11": false}
+      cccap_residency_verification_is_pending: {"2026-11": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-11": false}
+      cccap_citizenship_verification_is_pending: {"2026-11": false}
+      cccap_age_verification_is_pending: {"2026-11": false}
+      cccap_identity_verification_is_pending: {"2026-11": false}
+      cccap_earned_income_verification_is_pending: {"2026-11": false}
+      cccap_work_hours_verification_is_pending: {"2026-11": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-11": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-11": false}
+      cccap_person_pending_verification_count: {"2026-11": 0}
+      cccap_pending_deduction_verification_count: {"2026-11": 0}
+      leap_earned_income_verification_is_pending: {"2026-11": false}
+      leap_citizenship_verification_is_pending: {"2026-11": false}
+      leap_heating_costs_verification_is_pending: {"2026-11": false}
+      leap_zero_income_verification_is_pending: {"2026-11": false}
+      leap_person_pending_verification_count: {"2026-11": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-11": not_applicable}
+      sebt_pending_verification_count: {"2026-11": 0}
+      sebt_income_verification_is_pending: {"2026-11": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-11": false}
     p4:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -2583,12 +3557,95 @@
       ma_pending_verification_count: {"2026-11": 2}
       chp_verification_status: {"2026-11": pending_reasonable_opportunity}
       chp_pending_verification_count: {"2026-11": 2}
-      cw_verification_status: {"2026-11": past_due}
+      cw_verification_status: {"2026-11": members_excluded}
       cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_verification_status: {"2026-11": past_due}
-      leap_pending_verification_count: {"2026-11": 1}
+      leap_verification_status: {"2026-11": complete}
+      leap_pending_verification_count: {"2026-11": 0}
+      af_verification_status: {"2026-11": not_applicable}
+      af_pending_verification_count: {"2026-11": 1}
+      ma_citizenship_verification_is_pending: {"2026-11": true}
+      ma_identity_verification_is_pending: {"2026-11": true}
+      ma_immigration_status_verification_is_pending: {"2026-11": false}
+      ma_ssn_verification_is_pending: {"2026-11": false}
+      ma_earned_income_verification_is_pending: {"2026-11": false}
+      ma_unearned_income_verification_is_pending: {"2026-11": false}
+      ma_resources_verification_is_pending: {"2026-11": false}
+      ma_pregnancy_verification_is_pending: {"2026-11": false}
+      ma_residency_verification_is_pending: {"2026-11": false}
+      ma_age_verification_is_pending: {"2026-11": false}
+      ma_household_composition_verification_is_pending: {"2026-11": false}
+      ma_institutional_stay_verification_is_pending: {"2026-11": false}
+      ma_asset_transfers_verification_is_pending: {"2026-11": false}
+      ma_trust_verification_is_pending: {"2026-11": false}
+      ma_annuity_verification_is_pending: {"2026-11": false}
+      chp_earned_income_verification_is_pending: {"2026-11": false}
+      snap_identity_verification_is_pending: {"2026-11": false}
+      snap_citizenship_verification_is_pending: {"2026-11": false}
+      snap_immigration_status_verification_is_pending: {"2026-11": false}
+      snap_ssn_verification_is_pending: {"2026-11": false}
+      snap_residency_verification_is_pending: {"2026-11": false}
+      snap_earned_income_verification_is_pending: {"2026-11": false}
+      snap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_resources_verification_is_pending: {"2026-11": false}
+      snap_household_composition_verification_is_pending: {"2026-11": false}
+      snap_disability_verification_is_pending: {"2026-11": false}
+      snap_age_verification_is_pending: {"2026-11": false}
+      snap_work_hours_verification_is_pending: {"2026-11": false}
+      snap_sponsor_verification_is_pending: {"2026-11": false}
+      snap_shelter_costs_verification_is_pending: {"2026-11": false}
+      snap_medical_expenses_verification_is_pending: {"2026-11": false}
+      snap_dependent_care_verification_is_pending: {"2026-11": false}
+      snap_child_support_paid_verification_is_pending: {"2026-11": false}
+      snap_person_pending_verification_count: {"2026-11": 0}
+      snap_person_pending_expense_verification_count: {"2026-11": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-11": false}
+      cw_citizenship_verification_is_pending: {"2026-11": true}
+      cw_immigration_status_verification_is_pending: {"2026-11": false}
+      cw_ssn_verification_is_pending: {"2026-11": false}
+      cw_household_composition_verification_is_pending: {"2026-11": false}
+      cw_earned_income_verification_is_pending: {"2026-11": false}
+      cw_residency_verification_is_pending: {"2026-11": false}
+      cw_school_enrollment_verification_is_pending: {"2026-11": false}
+      cw_pregnancy_verification_is_pending: {"2026-11": false}
+      cw_sponsor_verification_is_pending: {"2026-11": false}
+      unearned_income_verification_is_pending: {"2026-11": false}
+      cw_person_pending_verification_count: {"2026-11": 1}
+      cw_person_pending_status_verification_count: {"2026-11": 1}
+      af_age_verification_is_pending: {"2026-11": false}
+      af_residency_verification_is_pending: {"2026-11": false}
+      af_identity_verification_is_pending: {"2026-11": true}
+      af_ssn_verification_is_pending: {"2026-11": false}
+      af_citizenship_verification_is_pending: {"2026-11": false}
+      af_immigration_status_verification_is_pending: {"2026-11": false}
+      af_resources_verification_is_pending: {"2026-11": false}
+      af_earned_income_verification_is_pending: {"2026-11": false}
+      af_disability_verification_is_pending: {"2026-11": false}
+      af_and_so_disability_verification_is_pending: {"2026-11": false}
+      af_marital_status_verification_is_pending: {"2026-11": false}
+      af_sponsor_verification_is_pending: {"2026-11": false}
+      cccap_residency_verification_is_pending: {"2026-11": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-11": false}
+      cccap_citizenship_verification_is_pending: {"2026-11": false}
+      cccap_age_verification_is_pending: {"2026-11": false}
+      cccap_identity_verification_is_pending: {"2026-11": false}
+      cccap_earned_income_verification_is_pending: {"2026-11": false}
+      cccap_work_hours_verification_is_pending: {"2026-11": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-11": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-11": false}
+      cccap_person_pending_verification_count: {"2026-11": 0}
+      cccap_pending_deduction_verification_count: {"2026-11": 0}
+      leap_earned_income_verification_is_pending: {"2026-11": false}
+      leap_citizenship_verification_is_pending: {"2026-11": false}
+      leap_heating_costs_verification_is_pending: {"2026-11": false}
+      leap_zero_income_verification_is_pending: {"2026-11": false}
+      leap_person_pending_verification_count: {"2026-11": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-11": not_required}
+      sebt_pending_verification_count: {"2026-11": 0}
+      sebt_income_verification_is_pending: {"2026-11": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-11": false}
     p5:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -2641,12 +3698,95 @@
       ma_pending_verification_count: {"2026-11": 0}
       chp_verification_status: {"2026-11": not_required}
       chp_pending_verification_count: {"2026-11": 0}
-      cw_verification_status: {"2026-11": past_due}
+      cw_verification_status: {"2026-11": members_excluded}
       cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_verification_status: {"2026-11": past_due}
-      leap_pending_verification_count: {"2026-11": 1}
+      leap_verification_status: {"2026-11": complete}
+      leap_pending_verification_count: {"2026-11": 0}
+      af_verification_status: {"2026-11": not_applicable}
+      af_pending_verification_count: {"2026-11": 3}
+      ma_citizenship_verification_is_pending: {"2026-11": false}
+      ma_identity_verification_is_pending: {"2026-11": false}
+      ma_immigration_status_verification_is_pending: {"2026-11": false}
+      ma_ssn_verification_is_pending: {"2026-11": false}
+      ma_earned_income_verification_is_pending: {"2026-11": false}
+      ma_unearned_income_verification_is_pending: {"2026-11": false}
+      ma_resources_verification_is_pending: {"2026-11": false}
+      ma_pregnancy_verification_is_pending: {"2026-11": false}
+      ma_residency_verification_is_pending: {"2026-11": false}
+      ma_age_verification_is_pending: {"2026-11": false}
+      ma_household_composition_verification_is_pending: {"2026-11": false}
+      ma_institutional_stay_verification_is_pending: {"2026-11": false}
+      ma_asset_transfers_verification_is_pending: {"2026-11": false}
+      ma_trust_verification_is_pending: {"2026-11": false}
+      ma_annuity_verification_is_pending: {"2026-11": false}
+      chp_earned_income_verification_is_pending: {"2026-11": false}
+      snap_identity_verification_is_pending: {"2026-11": false}
+      snap_citizenship_verification_is_pending: {"2026-11": false}
+      snap_immigration_status_verification_is_pending: {"2026-11": false}
+      snap_ssn_verification_is_pending: {"2026-11": false}
+      snap_residency_verification_is_pending: {"2026-11": false}
+      snap_earned_income_verification_is_pending: {"2026-11": false}
+      snap_unearned_income_verification_is_pending: {"2026-11": false}
+      snap_resources_verification_is_pending: {"2026-11": false}
+      snap_household_composition_verification_is_pending: {"2026-11": false}
+      snap_disability_verification_is_pending: {"2026-11": false}
+      snap_age_verification_is_pending: {"2026-11": false}
+      snap_work_hours_verification_is_pending: {"2026-11": false}
+      snap_sponsor_verification_is_pending: {"2026-11": false}
+      snap_shelter_costs_verification_is_pending: {"2026-11": false}
+      snap_medical_expenses_verification_is_pending: {"2026-11": false}
+      snap_dependent_care_verification_is_pending: {"2026-11": false}
+      snap_child_support_paid_verification_is_pending: {"2026-11": false}
+      snap_person_pending_verification_count: {"2026-11": 0}
+      snap_person_pending_expense_verification_count: {"2026-11": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-11": false}
+      cw_citizenship_verification_is_pending: {"2026-11": true}
+      cw_immigration_status_verification_is_pending: {"2026-11": false}
+      cw_ssn_verification_is_pending: {"2026-11": false}
+      cw_household_composition_verification_is_pending: {"2026-11": false}
+      cw_earned_income_verification_is_pending: {"2026-11": false}
+      cw_residency_verification_is_pending: {"2026-11": false}
+      cw_school_enrollment_verification_is_pending: {"2026-11": false}
+      cw_pregnancy_verification_is_pending: {"2026-11": false}
+      cw_sponsor_verification_is_pending: {"2026-11": false}
+      unearned_income_verification_is_pending: {"2026-11": false}
+      cw_person_pending_verification_count: {"2026-11": 1}
+      cw_person_pending_status_verification_count: {"2026-11": 1}
+      af_age_verification_is_pending: {"2026-11": true}
+      af_residency_verification_is_pending: {"2026-11": true}
+      af_identity_verification_is_pending: {"2026-11": true}
+      af_ssn_verification_is_pending: {"2026-11": false}
+      af_citizenship_verification_is_pending: {"2026-11": false}
+      af_immigration_status_verification_is_pending: {"2026-11": false}
+      af_resources_verification_is_pending: {"2026-11": false}
+      af_earned_income_verification_is_pending: {"2026-11": false}
+      af_disability_verification_is_pending: {"2026-11": false}
+      af_and_so_disability_verification_is_pending: {"2026-11": false}
+      af_marital_status_verification_is_pending: {"2026-11": false}
+      af_sponsor_verification_is_pending: {"2026-11": false}
+      cccap_residency_verification_is_pending: {"2026-11": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-11": false}
+      cccap_citizenship_verification_is_pending: {"2026-11": false}
+      cccap_age_verification_is_pending: {"2026-11": false}
+      cccap_identity_verification_is_pending: {"2026-11": false}
+      cccap_earned_income_verification_is_pending: {"2026-11": false}
+      cccap_work_hours_verification_is_pending: {"2026-11": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-11": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-11": false}
+      cccap_person_pending_verification_count: {"2026-11": 0}
+      cccap_pending_deduction_verification_count: {"2026-11": 0}
+      leap_earned_income_verification_is_pending: {"2026-11": false}
+      leap_citizenship_verification_is_pending: {"2026-11": false}
+      leap_heating_costs_verification_is_pending: {"2026-11": false}
+      leap_zero_income_verification_is_pending: {"2026-11": false}
+      leap_person_pending_verification_count: {"2026-11": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2026-11": not_applicable}
+      sebt_pending_verification_count: {"2026-11": 0}
+      sebt_income_verification_is_pending: {"2026-11": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-11": false}
 
 - id: CO-03
   title: Elderly couple, one with Medicare and out-of-pocket medical expenses; no SUA rule yet
@@ -4776,6 +5916,37 @@
         eligible_activity_verification_document_received: true
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
       month_defaults:
         earned_income: 0
         self_employment_net_income: 0
@@ -4787,6 +5958,7 @@
         cash_assistance_income: 0
         other_unearned_income: 0
         child_support_paid_legally_obligated: 150
+        electronic_data_source_household_income_pct_fpl: 0
         dependent_care_expense: 200
         medical_expenses_out_of_pocket: 0
         shelter_cost_monthly: 0
@@ -4879,6 +6051,37 @@
         eligible_activity_verification_document_received: false
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: true
+        is_school_aged: true
+        is_enrolled_in_nslp_school: true
       month_defaults:
         earned_income: 0
         self_employment_net_income: 0
@@ -4905,33 +6108,604 @@
     # Colorado Works (unit p1, p2): p1's citizenship and residency (no homeless exception in 3.604.3.B.2.f)
     # are 2 outstanding, past the 11-day due date. CCCAP: p1's residency and child support paid (job
     # search activity verified), past the 15-day period. LEAP: only SSNs required (no heating costs), complete.
+    # Fix round (docs/reviews/verification-phase-9.md): CHP+ cannot reach p1 (34, not pregnant) and Adult
+    # Financial cannot either (under the OAP age, no disability basis): not_applicable for both. Colorado
+    # Works: p1's DMV identity match is not a produced lawful-presence document (3.604.3.I.4.a), so 3 are
+    # pending; residency (11 days) is past due. CCCAP: p1's child support affects only the deduction
+    # (3.111.K), so the eligibility count is 1 (residency) and the deduction count 1; still past_due. LEAP:
+    # a household reporting no income has its zero income verified (3.755.21.H), outstanding for p1, so
+    # past_due. SNAP is unchanged: 2026-12-02 (application + 30) has passed for the expenses too.
     p1:
       snap_expedited_postponement_end_date: 2026-12-02
       snap_verification_due_date: 2026-11-12
       snap_person_pending_expense_verification_count: {2027-02: 2}
-      snap_person_pending_verification_count: {2027-02: 0}
-      snap_verification_status: {2027-02: expenses_disallowed}
-      snap_pending_verification_count: {2027-02: 2}
+      snap_person_pending_verification_count: {"2027-02": 0}
+      snap_verification_status: {"2027-02": expenses_disallowed}
+      snap_pending_verification_count: {"2027-02": 2}
       ma_reasonable_opportunity_period_end_date: 2027-02-05
       ma_pending_status_verification_count: {2027-02: 1}
-      ma_verification_status: {2027-02: reasonable_opportunity_expired}
-      ma_pending_verification_count: {2027-02: 1}
-      chp_verification_status: {2027-02: reasonable_opportunity_expired}
-      chp_pending_verification_count: {2027-02: 1}
+      ma_verification_status: {"2027-02": reasonable_opportunity_expired}
+      ma_pending_verification_count: {"2027-02": 1}
+      chp_verification_status: {"2027-02": not_applicable}
+      chp_pending_verification_count: {"2027-02": 1}
       cw_verification_due_date: 2026-11-13
-      cw_verification_status: {2027-02: past_due}
-      cw_pending_verification_count: {2027-02: 2}
-      cccap_verification_status: {2027-02: past_due}
-      cccap_pending_verification_count: {2027-02: 2}
-      leap_verification_status: {2027-02: complete}
-      leap_pending_verification_count: {2027-02: 0}
+      cw_verification_status: {"2027-02": past_due}
+      cw_pending_verification_count: {"2027-02": 3}
+      cccap_verification_status: {"2027-02": past_due}
+      cccap_pending_verification_count: {"2027-02": 1}
+      leap_verification_status: {"2027-02": past_due}
+      leap_pending_verification_count: {"2027-02": 1}
+      af_verification_status: {"2027-02": not_applicable}
+      af_pending_verification_count: {"2027-02": 1}
+      ma_citizenship_verification_is_pending: {"2027-02": true}
+      snap_dependent_care_verification_is_pending: {"2027-02": true}
+      snap_child_support_paid_verification_is_pending: {"2027-02": true}
+      cw_lawful_presence_verification_is_pending: {"2027-02": true}
+      cw_citizenship_verification_is_pending: {"2027-02": true}
+      cw_residency_verification_is_pending: {"2027-02": true}
+      cw_person_pending_verification_count: {"2027-02": 3}
+      af_residency_verification_is_pending: {"2027-02": true}
+      cccap_residency_verification_is_pending: {"2027-02": true}
+      cccap_child_support_paid_verification_is_pending: {"2027-02": true}
+      cccap_person_pending_verification_count: {"2027-02": 1}
+      cccap_pending_deduction_verification_count: {"2027-02": 1}
+      leap_zero_income_verification_is_pending: {"2027-02": true}
+      leap_person_pending_verification_count: {"2027-02": 1}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2027-02": not_applicable}
+      sebt_pending_verification_count: {"2027-02": 0}
     p2:
-      snap_verification_status: {2027-02: expenses_disallowed}
+      snap_verification_status: {"2027-02": expenses_disallowed}
       ma_requires_verification_of_identity: {2027-02: true}
       ma_identity_document_is_acceptable: true
-      ma_verification_status: {2027-02: complete}
-      ma_pending_verification_count: {2027-02: 0}
-      chp_verification_status: {2027-02: complete}
-      cw_verification_status: {2027-02: past_due}
-      cccap_verification_status: {2027-02: past_due}
-      leap_verification_status: {2027-02: complete}
+      ma_verification_status: {"2027-02": complete}
+      ma_pending_verification_count: {"2027-02": 0}
+      chp_verification_status: {"2027-02": complete}
+      cw_verification_status: {"2027-02": past_due}
+      cccap_verification_status: {"2027-02": past_due}
+      leap_verification_status: {"2027-02": past_due}
+      af_verification_status: {"2027-02": not_applicable}
+      snap_pending_verification_count: {"2027-02": 2}
+      chp_pending_verification_count: {"2027-02": 0}
+      cw_pending_verification_count: {"2027-02": 3}
+      af_pending_verification_count: {"2027-02": 2}
+      cccap_pending_verification_count: {"2027-02": 1}
+      leap_pending_verification_count: {"2027-02": 1}
+      snap_person_pending_verification_count: {"2027-02": 0}
+      cw_person_pending_verification_count: {"2027-02": 0}
+      af_residency_verification_is_pending: {"2027-02": true}
+      af_identity_verification_is_pending: {"2027-02": true}
+      cccap_person_pending_verification_count: {"2027-02": 0}
+      cccap_pending_deduction_verification_count: {"2027-02": 1}
+      leap_person_pending_verification_count: {"2027-02": 0}
+      leap_member_is_excluded_for_verification: false
+      sebt_verification_status: {"2027-02": not_required}
+      sebt_pending_verification_count: {"2027-02": 0}
+
+- id: CO-92
+  title: Lawful permanent resident mother and child two weeks after applying; SNAP within the non-citizen's thirty days; Medicaid and CHP+ verify the child's status; Colorado Works within the status period; LEAP excludes members pending SAVE
+  # Phase 9 fix-round case (docs/reviews/verification-phase-9.md, C-2, C-3, C-9, C-1, K-4). p1 (32) and her
+  # daughter p2 (8) are lawful permanent residents since 2015. They applied on 2026-10-01 and the checklist
+  # went out that day; it is now 2026-10-15. SSA verified both SSNs and p1's identity, and p1's pay stubs,
+  # residency and job are documented, but SAVE has not answered and neither has submitted an immigration
+  # document. p1 works 140 hours a month for $1,800; her hours are not yet documented.
+  as_of: "2026-10-15"
+  relationships:
+    - [parent, p1, p2]
+    - [tax_filer, p1, p2]
+    - [buys_prepares_with, p1, p2]
+  persons:
+    p1:
+      # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
+      facts:
+        is_tax_filer: true
+        expects_to_be_claimed_as_dependent: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: true
+        qualifying_quarters: 30
+        has_other_creditable_health_coverage: false
+        is_inmate_of_public_institution: false
+        is_patient_in_institution_for_mental_diseases: false
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        date_of_birth: "1994-05-10"
+        sex: female
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2015-03-01"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_homeless: false
+        is_head_of_household: true
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_medicare_entitled_or_enrolled: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        is_enrolled_in_school: false
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_in_job_search_activity: false
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_financially_contributing_to_child: true
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_referred_for_colorado_works_child_care: false
+        is_responsible_for_heating_costs: false
+        has_primary_heating_source: false
+        is_emancipated_minor: false
+        marital_status: single
+        countable_liquid_resources: 300
+        countable_nonliquid_resources_snap: 0
+        countable_resources_individual: 300
+        utility_allowance_amount: 0
+        application_date: "2026-10-01"
+        # Verification facts.
+        verification_request_date: "2026-10-01"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        earned_income_verified_by_electronic_data_source: true
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: true
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: false
+        is_school_aged: false
+        is_enrolled_in_nslp_school: false
+      month_defaults:
+        earned_income: 1800
+        self_employment_net_income: 0
+        hours_worked: 140
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        electronic_data_source_household_income_pct_fpl: 1.0
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+    p2:
+      # Daughter, 8, lawful permanent resident, third grade.
+      facts:
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: true
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        qualifying_quarters: 0
+        has_other_creditable_health_coverage: false
+        is_inmate_of_public_institution: false
+        is_patient_in_institution_for_mental_diseases: false
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        date_of_birth: "2018-04-02"
+        sex: female
+        citizenship_status: lawful_permanent_resident
+        qualified_status_date: "2015-03-01"
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_homeless: false
+        is_head_of_household: false
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_medicare_entitled_or_enrolled: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        is_enrolled_in_school: true
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_in_job_search_activity: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_referred_for_colorado_works_child_care: false
+        is_responsible_for_heating_costs: false
+        has_primary_heating_source: false
+        is_emancipated_minor: false
+        marital_status: single
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        countable_resources_individual: 0
+        utility_allowance_amount: 0
+        application_date: "2026-10-01"
+        verification_request_date: "2026-10-01"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        identity_verification_document_type: child_medical_or_school_record
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: true
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        # Phase-9 fix round facts.
+        is_requesting_health_coverage: true
+        documentation_not_reasonably_available: false
+        has_resources_other_than_cash: false
+        self_employment_income_verified_by_electronic_data_source: false
+        has_been_issued_ssn: true
+        zero_income_verified: false
+        ma_determination_is_renewal: false
+        snap_determination_is_recertification: false
+        is_sponsored_non_citizen: false
+        sponsor_information_verified: false
+        claims_disability: false
+        claims_shelter_costs_for_unoccupied_home: false
+        residency_verification_cannot_reasonably_be_accomplished: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        ma_application_is_msp_only: false
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: false
+        additional_care_needs_verification_document_received: false
+        institutional_stay_verification_document_received: false
+        asset_transfer_verification_document_received: false
+        has_trust_interest: false
+        trust_documents_received: false
+        owns_annuity: false
+        annuity_verification_document_received: false
+        sebt_application_is_selected_for_verification: false
+        sebt_eligibility_directly_verified: false
+        school_meal_household_income_verification_received: false
+        nslp_school_enrollment_confirmed: true
+        is_school_aged: true
+        is_enrolled_in_nslp_school: true
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        hours_worked: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+        other_taxable_income: 0
+        pretax_deductions: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        electronic_data_source_household_income_pct_fpl: 1.0
+  expect:
+    # SNAP: only the two immigration statuses are outstanding. The ten days from the request ran out on
+    # 2026-10-11, but a non-citizen has to the thirtieth day after application (4.505.6.E, 273.2(f)(1)(ii)(C)),
+    # 2026-10-31, so the household is pending, not past due (review C-2). Medical Assistance and CHP+ verify
+    # the child's declared status too (110.1.C, 8.100.4.B.1.e; review C-3): both are in the reasonable
+    # opportunity period to 2027-01-04. CHP+ cannot reach p1 (an adult, not pregnant). Colorado Works: the
+    # outstanding elements are all status elements (p1's lawful presence and both statuses), which have
+    # thirty days (3.604.3.K), so the unit is pending although the eleven days have passed (review C-9).
+    # CCCAP: p1's hours worked are not yet documented (3.111.G.1.b; review K-4), within the fifteen days.
+    # LEAP: nothing is pending, but both members' statuses await SAVE, so each is excluded from the
+    # household with her income counted (3.751.1, 3.753.17; review C-1). SUN Bucks: p2 is certified through
+    # SNAP, so no verification is required. Adult Financial cannot reach either person.
+    p1:
+      snap_verification_status: {"2026-10": pending}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      ma_reasonable_opportunity_period_end_date: "2027-01-04"
+      ma_verification_status: {"2026-10": pending_reasonable_opportunity}
+      chp_verification_status: {"2026-10": not_applicable}
+      cw_verification_status: {"2026-10": pending}
+      af_verification_status: {"2026-10": not_applicable}
+      cccap_verification_status: {"2026-10": pending}
+      leap_verification_status: {"2026-10": complete}
+      snap_pending_verification_count: {"2026-10": 2}
+      ma_pending_verification_count: {"2026-10": 1}
+      chp_pending_verification_count: {"2026-10": 1}
+      cw_pending_verification_count: {"2026-10": 3}
+      af_pending_verification_count: {"2026-10": 2}
+      cccap_pending_verification_count: {"2026-10": 1}
+      leap_pending_verification_count: {"2026-10": 0}
+      ma_citizenship_verification_is_pending: {"2026-10": false}
+      ma_identity_verification_is_pending: {"2026-10": false}
+      ma_immigration_status_verification_is_pending: {"2026-10": true}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": false}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": false}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": false}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": false}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": true}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": false}
+      snap_earned_income_verification_is_pending: {"2026-10": false}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 1}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": true}
+      cw_citizenship_verification_is_pending: {"2026-10": false}
+      cw_immigration_status_verification_is_pending: {"2026-10": true}
+      cw_ssn_verification_is_pending: {"2026-10": false}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": false}
+      cw_residency_verification_is_pending: {"2026-10": false}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 2}
+      cw_person_pending_status_verification_count: {"2026-10": 2}
+      af_age_verification_is_pending: {"2026-10": false}
+      af_residency_verification_is_pending: {"2026-10": false}
+      af_identity_verification_is_pending: {"2026-10": false}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": true}
+      af_resources_verification_is_pending: {"2026-10": true}
+      af_earned_income_verification_is_pending: {"2026-10": false}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": false}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": false}
+      cccap_work_hours_verification_is_pending: {"2026-10": true}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 1}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": false}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": false}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 0}
+      leap_member_is_excluded_for_verification: true
+      sebt_verification_status: {"2026-10": not_applicable}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}
+    p2:
+      snap_verification_status: {"2026-10": pending}
+      snap_verification_due_date: "2026-10-11"
+      snap_noncitizen_documentation_due_date: "2026-10-31"
+      cw_verification_due_date: "2026-10-12"
+      cw_status_verification_due_date: "2026-10-31"
+      ma_reasonable_opportunity_period_end_date: "2027-01-04"
+      ma_verification_status: {"2026-10": pending_reasonable_opportunity}
+      chp_verification_status: {"2026-10": pending_reasonable_opportunity}
+      cw_verification_status: {"2026-10": pending}
+      af_verification_status: {"2026-10": not_applicable}
+      cccap_verification_status: {"2026-10": pending}
+      leap_verification_status: {"2026-10": complete}
+      snap_pending_verification_count: {"2026-10": 2}
+      ma_pending_verification_count: {"2026-10": 1}
+      chp_pending_verification_count: {"2026-10": 1}
+      cw_pending_verification_count: {"2026-10": 3}
+      af_pending_verification_count: {"2026-10": 3}
+      cccap_pending_verification_count: {"2026-10": 1}
+      leap_pending_verification_count: {"2026-10": 0}
+      ma_citizenship_verification_is_pending: {"2026-10": false}
+      ma_identity_verification_is_pending: {"2026-10": false}
+      ma_immigration_status_verification_is_pending: {"2026-10": true}
+      ma_ssn_verification_is_pending: {"2026-10": false}
+      ma_earned_income_verification_is_pending: {"2026-10": false}
+      ma_unearned_income_verification_is_pending: {"2026-10": false}
+      ma_resources_verification_is_pending: {"2026-10": false}
+      ma_pregnancy_verification_is_pending: {"2026-10": false}
+      ma_residency_verification_is_pending: {"2026-10": false}
+      ma_age_verification_is_pending: {"2026-10": false}
+      ma_household_composition_verification_is_pending: {"2026-10": false}
+      ma_institutional_stay_verification_is_pending: {"2026-10": false}
+      ma_asset_transfers_verification_is_pending: {"2026-10": false}
+      ma_trust_verification_is_pending: {"2026-10": false}
+      ma_annuity_verification_is_pending: {"2026-10": false}
+      chp_earned_income_verification_is_pending: {"2026-10": false}
+      snap_identity_verification_is_pending: {"2026-10": false}
+      snap_citizenship_verification_is_pending: {"2026-10": false}
+      snap_immigration_status_verification_is_pending: {"2026-10": true}
+      snap_ssn_verification_is_pending: {"2026-10": false}
+      snap_residency_verification_is_pending: {"2026-10": false}
+      snap_earned_income_verification_is_pending: {"2026-10": false}
+      snap_unearned_income_verification_is_pending: {"2026-10": false}
+      snap_resources_verification_is_pending: {"2026-10": false}
+      snap_household_composition_verification_is_pending: {"2026-10": false}
+      snap_disability_verification_is_pending: {"2026-10": false}
+      snap_age_verification_is_pending: {"2026-10": false}
+      snap_work_hours_verification_is_pending: {"2026-10": false}
+      snap_sponsor_verification_is_pending: {"2026-10": false}
+      snap_shelter_costs_verification_is_pending: {"2026-10": false}
+      snap_medical_expenses_verification_is_pending: {"2026-10": false}
+      snap_dependent_care_verification_is_pending: {"2026-10": false}
+      snap_child_support_paid_verification_is_pending: {"2026-10": false}
+      snap_person_pending_verification_count: {"2026-10": 1}
+      snap_person_pending_expense_verification_count: {"2026-10": 0}
+      cw_lawful_presence_verification_is_pending: {"2026-10": false}
+      cw_citizenship_verification_is_pending: {"2026-10": false}
+      cw_immigration_status_verification_is_pending: {"2026-10": true}
+      cw_ssn_verification_is_pending: {"2026-10": false}
+      cw_household_composition_verification_is_pending: {"2026-10": false}
+      cw_earned_income_verification_is_pending: {"2026-10": false}
+      cw_residency_verification_is_pending: {"2026-10": false}
+      cw_school_enrollment_verification_is_pending: {"2026-10": false}
+      cw_pregnancy_verification_is_pending: {"2026-10": false}
+      cw_sponsor_verification_is_pending: {"2026-10": false}
+      unearned_income_verification_is_pending: {"2026-10": false}
+      cw_person_pending_verification_count: {"2026-10": 1}
+      cw_person_pending_status_verification_count: {"2026-10": 1}
+      af_age_verification_is_pending: {"2026-10": false}
+      af_residency_verification_is_pending: {"2026-10": true}
+      af_identity_verification_is_pending: {"2026-10": true}
+      af_ssn_verification_is_pending: {"2026-10": false}
+      af_citizenship_verification_is_pending: {"2026-10": false}
+      af_immigration_status_verification_is_pending: {"2026-10": true}
+      af_resources_verification_is_pending: {"2026-10": false}
+      af_earned_income_verification_is_pending: {"2026-10": false}
+      af_disability_verification_is_pending: {"2026-10": false}
+      af_and_so_disability_verification_is_pending: {"2026-10": false}
+      af_marital_status_verification_is_pending: {"2026-10": false}
+      af_sponsor_verification_is_pending: {"2026-10": false}
+      cccap_residency_verification_is_pending: {"2026-10": false}
+      cccap_eligible_activity_verification_is_pending: {"2026-10": false}
+      cccap_citizenship_verification_is_pending: {"2026-10": false}
+      cccap_age_verification_is_pending: {"2026-10": false}
+      cccap_identity_verification_is_pending: {"2026-10": false}
+      cccap_earned_income_verification_is_pending: {"2026-10": false}
+      cccap_work_hours_verification_is_pending: {"2026-10": false}
+      cccap_additional_care_needs_verification_is_pending: {"2026-10": false}
+      cccap_child_support_paid_verification_is_pending: {"2026-10": false}
+      cccap_person_pending_verification_count: {"2026-10": 0}
+      cccap_pending_deduction_verification_count: {"2026-10": 0}
+      leap_earned_income_verification_is_pending: {"2026-10": false}
+      leap_citizenship_verification_is_pending: {"2026-10": false}
+      leap_heating_costs_verification_is_pending: {"2026-10": false}
+      leap_zero_income_verification_is_pending: {"2026-10": false}
+      leap_person_pending_verification_count: {"2026-10": 0}
+      leap_member_is_excluded_for_verification: true
+      sebt_verification_status: {"2026-10": not_required}
+      sebt_pending_verification_count: {"2026-10": 0}
+      sebt_income_verification_is_pending: {"2026-10": false}
+      sebt_school_enrollment_verification_is_pending: {"2026-10": false}

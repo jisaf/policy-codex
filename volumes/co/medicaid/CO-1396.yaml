@@ -10,7 +10,6 @@ derived: [in, citizenship_verification_document_type, [us_passport, certificate_
 sources: [S845, S855]
 implemented: engine
 tags: [verification, ma, immigration]
-open: [OQ-305]
 rationale: 42 CFR 435.407(a) (S845) and 8.100.3.H.2.a (S855) set the stand-alone tier; no existing item reads the document type.
 nearest: [CO-1368]
 tests:

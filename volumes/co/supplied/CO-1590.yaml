@@ -1,0 +1,12 @@
+id: CO-1590
+name: Summer EBT application selected for verification
+identifier: sebt_application_is_selected_for_verification
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: Whether the household's Summer EBT application covering the child was selected for verification, in the three-percent sample or for cause.
+supplied_by: Summer EBT verification selection recorded by the Summer EBT agency.
+sources: [S1090]
+tags: [verification, sebt]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-5: 7 CFR 292.14(a)) needs it as a supplied fact."

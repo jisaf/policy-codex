@@ -5,14 +5,16 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether the person's resources must be verified for Medical Assistance: for an aged, blind or disabled applicant with resources available in the month (MAGI categories have no resource test)."
-derived: [all, ma_is_aged_blind_or_disabled, [">", countable_resources_individual, 0]]
-sources: [S866]
+meaning: "Whether the person's resources must be verified for Medical Assistance: for an aged, blind or disabled applicant with any resources available in the month, counted or excluded (MAGI categories have no resource test); for an applicant for a Medicare Savings Program only, liquid resources alone, since the attested value of non-liquid resources is accepted; unless documentation is not reasonably available."
+precision: 435.952(e) also requires the attested interest and dividend income of an MSP-only applicant to be accepted; ma_requires_verification_of_unearned_income (CO-1404) does not separate that income from the rest.
+derived: [all, ma_is_aged_blind_or_disabled, [not, documentation_not_reasonably_available], [any, [all, [not, ma_application_is_msp_only], [any, has_resources_other_than_cash, [">", countable_resources_individual, 0]]], [all, ma_application_is_msp_only, [">", countable_liquid_resources, 0]]]]
+sources: [S866, S1089, S839]
 implemented: engine
 tags: [verification, ma, resources, non_magi]
-open: [OQ-307]
 rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
 tests:
-  - {id: CO-1405-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, countable_resources_individual: 1900}, expect: true}
+  - {id: CO-1405-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false, ma_application_is_msp_only: false, has_resources_other_than_cash: false, countable_resources_individual: 1900}, expect: true}
   - {id: CO-1405-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: false}, expect: false}
-  - {id: CO-1405-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, countable_resources_individual: 0}, expect: false}
+  - {id: CO-1405-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false, ma_application_is_msp_only: false, has_resources_other_than_cash: false, countable_resources_individual: 0}, expect: false}
+  - {id: CO-1405-T4, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false, ma_application_is_msp_only: false, has_resources_other_than_cash: true, countable_resources_individual: 0}, expect: true}
+  - {id: CO-1405-T5, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false, ma_application_is_msp_only: true, countable_liquid_resources: 0}, expect: false}

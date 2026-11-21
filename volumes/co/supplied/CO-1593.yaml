@@ -1,0 +1,12 @@
+id: CO-1593
+name: NSLP school enrollment confirmed
+identifier: nslp_school_enrollment_confirmed
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: Whether the child's enrollment in an NSLP or SBP school during the immediately preceding instructional year has been confirmed, by a match with the State NSLP/SBP enrollment database or otherwise.
+supplied_by: State NSLP/SBP enrollment database match recorded by the Summer EBT agency.
+sources: [S1095]
+tags: [verification, sebt]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-5: 7 CFR 292.12(e)(2)) needs it as a supplied fact."

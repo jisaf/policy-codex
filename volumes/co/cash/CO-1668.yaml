@@ -1,0 +1,17 @@
+id: CO-1668
+name: "Adult Financial: requires verification of AND-SO disability"
+identifier: af_requires_verification_of_and_so_disability
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the client must submit the State's medical disability certification for Aid to the Needy Disabled State Only: a client under the Old Age Pension age and at least the AND-SO minimum age who claims a disability that SSI, SSDI or an SSA determination has not already established."
+derived: [all, claims_disability, [not, af_is_oap_age], [">=", age, af_and_so_min_age], [not, receives_ssi], [not, af_and_so_disability_met]]
+sources: [S1079, S1080]
+implemented: engine
+tags: [verification, cash, and, disability]
+rationale: "Review K-6: af_requires_verification_of_disability (CO-1435) verifies disability only for SSI recipients, so an AND-SO applicant's certification was never pending."
+tests:
+  - {id: CO-1668-T1, month: "2026-10", as_of: "2026-10-01", given: {claims_disability: true, af_is_oap_age: false, date_of_birth: "1980-01-01", receives_ssi: false, af_and_so_disability_met: false}, expect: true}
+  - {id: CO-1668-T2, month: "2026-10", as_of: "2026-10-01", given: {claims_disability: true, af_is_oap_age: false, date_of_birth: "1980-01-01", receives_ssi: false, af_and_so_disability_met: true}, expect: false}
+  - {id: CO-1668-T3, month: "2026-10", as_of: "2026-10-01", given: {claims_disability: false}, expect: false}

@@ -6,7 +6,7 @@ type: whole number
 scope: person-month
 program: CCCAP
 role: outcome
-meaning: The number of verification elements still pending across every member of this person's CCCAP household.
+meaning: The number of eligibility verification elements still pending across every member of this person's CCCAP household (a child support deduction is counted in cccap_pending_deduction_verification_count).
 derived: [sum, cccap_household_members, [of, [P], cccap_person_pending_verification_count]]
 sources: [S891]
 implemented: engine

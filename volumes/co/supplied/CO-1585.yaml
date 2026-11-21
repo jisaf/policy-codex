@@ -1,0 +1,12 @@
+id: CO-1585
+name: Claims shelter costs for an unoccupied home
+identifier: claims_shelter_costs_for_unoccupied_home
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: Whether the household claims shelter costs for a home it is temporarily not occupying because of employment or training away from home, illness, or abandonment caused by a natural disaster or casualty loss.
+supplied_by: Shelter expense section of the application as recorded in CBMS.
+sources: [S1060, S1058]
+tags: [verification, snap, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-312: 4.507.B.2) needs it as a supplied fact."

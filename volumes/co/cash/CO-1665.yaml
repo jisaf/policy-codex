@@ -1,0 +1,19 @@
+id: CO-1665
+name: "Adult Financial: earned income verification is pending"
+identifier: af_earned_income_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: "Whether Adult Financial requires verification of the client's wages (documents: DOLE wage data is not verified upon receipt) and self-employment income (documentation the county accepts unless questionable, or SSA self-employment data) and it has not been provided."
+precision: Self-employment documentation is required, though no specific document is (3.520.783.E, review C-11); earned_income_attestation_is_questionable stands for documentation the county finds questionable.
+derived: [any, [all, [">", earned_income, 0], [not, earned_income_verification_document_received]], [all, [">", self_employment_net_income, 0], [not, [any, self_employment_income_verified_by_electronic_data_source, [all, earned_income_verification_document_received, [not, earned_income_attestation_is_questionable]]]]]]
+sources: [S880, S889]
+implemented: engine
+tags: [verification, cash]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1665-T1, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 900, earned_income_verification_document_received: false}, expect: true}
+  - {id: CO-1665-T2, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 400, self_employment_income_verified_by_electronic_data_source: false, earned_income_verification_document_received: true, earned_income_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1665-T3, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 400, self_employment_income_verified_by_electronic_data_source: false, earned_income_verification_document_received: true, earned_income_attestation_is_questionable: false}, expect: false}

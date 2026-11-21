@@ -1,0 +1,17 @@
+id: CO-1663
+name: "Adult Financial: immigration status verification is pending"
+identifier: af_immigration_status_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: Whether Adult Financial requires verification of the client's declared immigration status through SAVE (Aid to the Needy Disabled) and it has not been provided.
+derived: [all, af_requires_verification_of_immigration_status, [not, immigration_status_verified_by_electronic_data_source]]
+sources: [S881, S887]
+implemented: engine
+tags: [verification, cash]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1663-T1, month: "2026-10", as_of: "2026-10-01", given: {af_requires_verification_of_immigration_status: true, immigration_status_verified_by_electronic_data_source: false}, expect: true}
+  - {id: CO-1663-T2, month: "2026-10", as_of: "2026-10-01", given: {af_requires_verification_of_immigration_status: false}, expect: false}

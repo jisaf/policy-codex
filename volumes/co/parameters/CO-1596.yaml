@@ -1,0 +1,12 @@
+id: CO-1596
+name: SNAP recertification income change threshold
+identifier: snap_recertification_income_change_threshold
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: The change in monthly income, from the amount last verified, above which income is verified at recertification.
+value: 50
+sources: [S1055, S1056]
+tags: [verification, snap, income]
+rationale: "Review K-1: 273.2(f)(8)(i)(A) and 4.502.B.2 state $50 (OQ-371 on \"or more\" against \"more than\")."

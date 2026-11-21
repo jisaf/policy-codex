@@ -1,0 +1,12 @@
+id: CO-1578
+name: Trust documents received
+identifier: trust_documents_received
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the trust documents have been submitted to the Department for its determination of the trust's effect on eligibility.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S1087]
+tags: [verification, ltc, resources]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-3: 8.100.7.A.2.i) needs it as a supplied fact."

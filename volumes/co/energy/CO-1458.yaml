@@ -5,12 +5,12 @@ kind: derived
 type: whole number
 scope: person-month
 program: LEAP
-meaning: "The number of LEAP verification elements required for this person: an SSN (or proof of application) for every member, earned income of a non-child, unearned income, heating costs for the responsible member, questionable citizenship, and a declared immigration status."
-derived: ["+", 1, [case, [leap_requires_verification_of_earned_income, 1], [else, 0]], [case, [has_unearned_income, 1], [else, 0]], [case, [leap_requires_verification_of_heating_costs, 1], [else, 0]], [case, [leap_requires_verification_of_citizenship, 1], [else, 0]], [case, [claims_lawful_immigration_status, 1], [else, 0]]]
-sources: [S893, S896, S897]
+meaning: "The number of LEAP verification elements required for this person: wages of a non-child, unearned income, heating costs for the responsible member, questionable citizenship, and zero income for an adult of a household reporting none. An SSN and a declared immigration status decide whether the person is a household member (leap_member_is_excluded_for_verification), not whether the household's verification is complete."
+derived: ["+", [case, [leap_requires_verification_of_earned_income, 1], [else, 0]], [case, [has_unearned_income, 1], [else, 0]], [case, [leap_requires_verification_of_heating_costs, 1], [else, 0]], [case, [leap_requires_verification_of_citizenship, 1], [else, 0]], [case, [[all, [">=", age, leap_household_child_age_limit], ["=", leap_household_income, 0]], 1], [else, 0]]]
+sources: [S893, S896, S897, S1083]
 implemented: engine
 tags: [verification]
-open: [OQ-318]
 rationale: leap_verification_status needs to know whether the household has any verification requirement.
 tests:
-  - {id: CO-1458-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_earned_income: false, has_unearned_income: true, leap_requires_verification_of_heating_costs: true, leap_requires_verification_of_citizenship: false, citizenship_status: citizen}, expect: 3}
+  - {id: CO-1458-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_earned_income: false, has_unearned_income: true, leap_requires_verification_of_heating_costs: true, leap_requires_verification_of_citizenship: false, date_of_birth: "1980-01-01", leap_household_income: 900}, expect: 2}
+  - {id: CO-1458-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_requires_verification_of_earned_income: false, has_unearned_income: false, leap_requires_verification_of_heating_costs: false, leap_requires_verification_of_citizenship: false, date_of_birth: "1980-01-01", leap_household_income: 0}, expect: 1}

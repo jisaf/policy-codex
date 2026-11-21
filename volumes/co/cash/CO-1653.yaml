@@ -1,0 +1,17 @@
+id: CO-1653
+name: "Colorado Works: pregnancy verification is pending"
+identifier: cw_pregnancy_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: Whether Colorado Works requires verification of the person's pregnancy that is the basis of the unit and it has not been provided.
+derived: [all, cw_requires_verification_of_pregnancy, [not, pregnancy_verification_document_received]]
+sources: [S874]
+implemented: engine
+tags: [verification, cash, tanf]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1653-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_requires_verification_of_pregnancy: true, pregnancy_verification_document_received: false}, expect: true}
+  - {id: CO-1653-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_requires_verification_of_pregnancy: false}, expect: false}

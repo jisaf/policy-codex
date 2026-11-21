@@ -5,14 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: AdultFinancial
-meaning: "Whether the client's resources must be verified for Adult Financial: all resources and their values, except that an SSI recipient verified through SVES need not verify resources unless questionable."
-precision: Client statement is acceptable verification for cash (3.520.72.D.5); this item does not separate cash from other resources.
-derived: [all, [">", af_countable_resources, 0], [any, [not, receives_ssi], resources_attestation_is_questionable]]
+meaning: "Whether the client's resources must be verified for Adult Financial: all resources other than cash (for which the client's statement is acceptable) and their values, counted or excluded, except that an SSI recipient verified through SVES need not verify resources unless questionable."
+precision: After resources are verified at application, the client's statement is acceptable until each twenty-four-month redetermination (3.520.72.D.4); renewals are not modeled for Adult Financial (OQ-373).
+derived: [all, has_resources_other_than_cash, [any, [not, receives_ssi], resources_attestation_is_questionable]]
 sources: [S888]
 implemented: engine
 tags: [verification, cash, resources]
+open: [OQ-373]
 rationale: No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications.
 tests:
-  - {id: CO-1433-T1, month: "2026-10", as_of: "2026-10-01", given: {af_countable_resources: 1500, receives_ssi: false}, expect: true}
-  - {id: CO-1433-T2, month: "2026-10", as_of: "2026-10-01", given: {af_countable_resources: 1500, receives_ssi: true, resources_attestation_is_questionable: false}, expect: false}
-  - {id: CO-1433-T3, month: "2026-10", as_of: "2026-10-01", given: {af_countable_resources: 0}, expect: false}
+  - {id: CO-1433-T1, month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: false}, expect: true}
+  - {id: CO-1433-T2, month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: true, resources_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1433-T3, month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: false}, expect: false}

@@ -1,0 +1,13 @@
+id: CO-1577
+name: Has trust interest
+identifier: has_trust_interest
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person or the person's spouse has transferred assets into a trust or is a beneficiary of a trust.
+precision: An income (Miller) trust is has_income_trust (CO-823); either requires the trust documents.
+supplied_by: Resources section of the application as recorded in CBMS.
+sources: [S1087]
+tags: [verification, ltc, resources]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-3: 8.100.7.A.2.i) needs it as a supplied fact."

@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "Whether an electronic data source has verified the person's earned income for this application: an interface match the agency treats as verification (a wage match through IEVS, the Federal Data Services Hub or The Work Number), so no document is needed for that element."
-precision: SNAP, Colorado Works and Adult Financial do not treat Department of Labor wage data as verified upon receipt (4.504.61.B.3, 3.604.3.H.1.b, 3.520.5.A.2), so only Medical Assistance reads this fact.
+meaning: "Whether an electronic data source has verified the person's wages for this application: an interface match the agency treats as verification (a wage match through IEVS, the Federal Data Services Hub or The Work Number), so no document is needed for that element."
+precision: SNAP, Colorado Works and Adult Financial do not treat Department of Labor wage data as verified upon receipt (4.504.61.B.3, 3.604.3.H.1.b, 3.520.5.A.2), so only Medical Assistance reads this fact. SSA self-employment data, which the cash programs do accept, is self_employment_income_verified_by_electronic_data_source.
 supplied_by: CBMS interface results (IEVS, SSA/SOLQ/SVES, SAVE/VLP, DMV, FDSH, The Work Number, Asset Verification Program) as recorded in the case.
 sources: [S861, S867]
 tags: [verification, income]

@@ -1,0 +1,12 @@
+id: CO-1569
+name: SNAP income source changed since last certification
+identifier: snap_income_source_changed_since_last_certification
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: Whether a source of the person's income has started, stopped or changed since the income was last verified for SNAP.
+supplied_by: Income sources reported on the recertification form compared with the CBMS SNAP case.
+sources: [S1055, S1056]
+tags: [verification, snap, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: a changed source is verified at recertification whatever the amount) needs it as a supplied fact."

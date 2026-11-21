@@ -1,0 +1,12 @@
+id: CO-1568
+name: SNAP income at last certification
+identifier: snap_income_at_last_certification
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: The person's total monthly gross income (wages, net self-employment income and unearned income) as last verified for SNAP, at the previous certification or a later verified change.
+supplied_by: Verified income amounts in the CBMS SNAP case at the previous certification.
+sources: [S1055, S1056]
+tags: [verification, snap, income]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: income is verified at recertification only when its amount has changed by more than $50 or its source has changed) needs it as a supplied fact."

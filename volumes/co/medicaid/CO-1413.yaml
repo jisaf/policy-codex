@@ -10,7 +10,6 @@ derived: [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_not
 sources: [S841, S853, S859]
 implemented: engine
 tags: [verification, ma, immigration]
-open: [OQ-301]
 rationale: No existing item computes the reasonable opportunity period.
 tests:
   - {id: CO-1413-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2027-01-04"}

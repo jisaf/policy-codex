@@ -1,0 +1,17 @@
+id: CO-1628
+name: "Medical Assistance: residency verification is pending"
+identifier: ma_residency_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether Medical Assistance (and CHP+, which reads this item) requires verification of the person's questionable residency and it has not been provided.
+derived: [all, ma_requires_verification_of_residency, [not, residency_verification_document_received]]
+sources: [S842, S863]
+implemented: engine
+tags: [verification, ma]
+rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
+tests:
+  - {id: CO-1628-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_residency: true, residency_verification_document_received: false}, expect: true}
+  - {id: CO-1628-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_residency: false}, expect: false}

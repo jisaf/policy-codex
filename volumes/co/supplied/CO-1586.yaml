@@ -1,0 +1,12 @@
+id: CO-1586
+name: Residency verification cannot reasonably be accomplished
+identifier: residency_verification_cannot_reasonably_be_accomplished
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: Whether verification of the household's residency cannot reasonably be accomplished, as for some migrant farmworker households or households newly arrived in the area (a homeless household is read from is_homeless).
+supplied_by: Eligibility worker's finding recorded in CBMS case comments.
+sources: [S824, S805]
+tags: [verification, snap]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (OQ-310: 4.505.3.A) needs it as a supplied fact."

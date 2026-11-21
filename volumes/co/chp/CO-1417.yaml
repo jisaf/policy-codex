@@ -6,13 +6,12 @@ type: whole number
 scope: person-month
 program: CHP+
 role: outcome
-meaning: "The number of CHP+ verification elements for this person not yet verified: the pending status elements plus SSN, earned income, pregnancy, residency, age and household composition."
-derived: ["+", ma_pending_status_verification_count, [case, [[all, ma_requires_verification_of_ssn, [not, ssn_is_verified]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_earned_income, [not, earned_income_verification_document_received]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_pregnancy, [not, pregnancy_verification_document_received]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_residency, [not, residency_verification_document_received]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_age, [not, age_is_verified]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_household_composition, [not, household_composition_verification_document_received]], 1], [else, 0]]]
+meaning: "The number of CHP+ verification elements for this person not yet verified: the pending status elements plus SSN, earned income (against the CHP+ standard), pregnancy, residency, age and household composition."
+derived: ["+", ma_pending_status_verification_count, [case, [ma_ssn_verification_is_pending, 1], [else, 0]], [case, [chp_earned_income_verification_is_pending, 1], [else, 0]], [case, [ma_pregnancy_verification_is_pending, 1], [else, 0]], [case, [ma_residency_verification_is_pending, 1], [else, 0]], [case, [ma_age_verification_is_pending, 1], [else, 0]], [case, [ma_household_composition_verification_is_pending, 1], [else, 0]]]
 sources: [S869, S868]
 implemented: engine
 tags: [verification, chp]
-open: [OQ-322]
 rationale: No existing item counts a person's outstanding CHP+ verifications.
 tests:
-  - {id: CO-1417-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_pending_status_verification_count: 1, ma_requires_verification_of_ssn: true, ma_requires_verification_of_earned_income: false, ma_requires_verification_of_pregnancy: false, ma_requires_verification_of_residency: false, ma_requires_verification_of_age: false, ma_requires_verification_of_household_composition: false, ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false}, expect: 2}
-  - {id: CO-1417-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_pending_status_verification_count: 0, ma_requires_verification_of_ssn: false, ma_requires_verification_of_earned_income: false, ma_requires_verification_of_pregnancy: false, ma_requires_verification_of_residency: false, ma_requires_verification_of_age: false, ma_requires_verification_of_household_composition: false}, expect: 0}
+  - {id: CO-1417-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: true, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 1}, expect: 2}
+  - {id: CO-1417-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_ssn_verification_is_pending: false, chp_earned_income_verification_is_pending: false, ma_pregnancy_verification_is_pending: false, ma_residency_verification_is_pending: false, ma_age_verification_is_pending: false, ma_household_composition_verification_is_pending: false, ma_pending_status_verification_count: 0}, expect: 0}
