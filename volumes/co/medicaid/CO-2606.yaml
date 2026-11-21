@@ -12,7 +12,8 @@ sources: [S1500, S205, S169]
 implemented: engine
 tags: [ma, magi, household]
 open: [OQ-540]
-rationale: "Same-word audit SW-0/SW-3 and OQ-396: the shared caretaker edge carried five programs' tests; Medicaid's parent-or-caretaker-relative relation becomes its own derived item over neutral roles, read by CO-539, CO-547, CO-548, CO-552, CO-2430 and CO-2439. No existing item states it."
+rationale: "Same-word audit SW-0/SW-3 and OQ-396: the shared caretaker edge carried five programs' tests; Medicaid's parent-or-caretaker-relative relation becomes its own derived item over neutral roles, read by CO-539, CO-547, CO-548, CO-552, CO-2430 and CO-2439. No existing item states it. Close to cw_caretaker_of (CO-2608) and cccap_adult_caretaker_of (CO-2607), which differ by role: Medicaid counts a stepparent and not a guardian alone."
+nearest: [CO-2608, CO-2607]
 tests:
   - {id: CO-2606-T1, title: "Mother and stepfather of a child", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[parent, p1, p3], [spouse, p1, p2], [stepparent, p2, p3]], expect: [p3]}
   - {id: CO-2606-T2, title: "Aunt who has taken on the care of her nephew", as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[other_relative, p1, p2], [has_primary_responsibility_for, p1, p2]], expect: [p2]}
