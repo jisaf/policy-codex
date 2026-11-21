@@ -6,7 +6,7 @@ type: calendar date
 scope: person
 program: Medicaid
 meaning: "The date the Medical Assistance reasonable opportunity notice was sent to a person whose citizenship or immigration status could not be verified (42 CFR 435.956(b), 10 CCR 2505-10 8.100.3.H), from which the 90-day reasonable opportunity period runs."
-precision: "Distinct from verification_request_date (CO-1343), the date the verification checklist was sent; when one notice does both, the two dates are the same."
+precision: "Distinct from verification_request_date (CO-1343), the date the verification checklist was sent; when one notice does both, the two dates are the same. If not stated, the continuous eligibility exception for failing to provide documentation during a reasonable opportunity period (ma_continuous_eligibility_exception_applies, CO-2205) reads it as no notice sent, so no period ran."
 supplied_by: "CBMS notice record."
 sources: [S841, S853, S859]
 tags: [ma, verification]

@@ -1,0 +1,13 @@
+id: CO-2211
+name: End date of the previous period of Medical Assistance eligibility
+identifier: ma_previous_eligibility_end_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The ending date of the person's last period of Medical Assistance eligibility before this application (10 CCR 2505-10 § 8.100.3.H.4.h.ii)."
+precision: "If not stated, Medical Assistance reads the person as having no earlier period that ended (an initial application, or the renewal of a period that has not ended)."
+supplied_by: The person's eligibility history in CBMS.
+sources: [S1053]
+tags: [ma, verification]
+rationale: "OQ-372: citizenship and identity documentation is required again after a gap of more than five years when the site kept no documents; no fact stated the gap."

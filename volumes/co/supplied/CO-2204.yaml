@@ -1,0 +1,12 @@
+id: CO-2204
+name: Eligibility was erroneously granted
+identifier: ma_eligibility_was_erroneously_granted
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person's eligibility was erroneously granted at the most recent determination, redetermination or renewal because of agency error, or a finding of fraud or perjury attributed to the person or the person's responsible party (10 CCR 2505-10 § 8.100.3.Q.1.b.viii)."
+supplied_by: The eligibility site's error finding, or the fraud or perjury finding, in the case record.
+sources: [S1502]
+tags: [ma, magi]
+rationale: "OQ-53: an erroneous grant ends a child's continuous eligibility period; no fact stated it."

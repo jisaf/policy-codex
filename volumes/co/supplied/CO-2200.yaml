@@ -1,0 +1,12 @@
+id: CO-2200
+name: Is deceased
+identifier: is_deceased
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether the person has died on or before the last day of this month.
+supplied_by: The death report in the case record (SSA, vital statistics or a household report).
+sources: [S1502]
+tags: [ma]
+rationale: "OQ-53: a child's death ends the continuous eligibility period (10 CCR 2505-10 § 8.100.3.Q.1.b.i) and no fact stated it. The existing death facts are program-specific (is_deceased_colorado_works_client, died_while_receiving_af_or_medicaid), so a neutral fact is added."

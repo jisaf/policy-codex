@@ -9265,3 +9265,539 @@ Document: D-87
 > home, boat, snowmobile, water skidoo, or airplane); and real property
 > (such as buildings, land, and vacation homes). Primary home and
 > automobile of the primary caretakers are excluded.
+
+### S1500. Colorado Medical Assistance: caretaker relative is a relative or any adult with whom the dependent child lives who assumes responsibility for the child's care (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1 (definitions; rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Caretaker Relative is a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child’s care.
+
+### S1501. MAGI presumptive eligibility: declarations of income and status for a pregnant woman and a child, unless an exception of § 8.100.3.G.1.g applies (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.F.2.a-b (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. To be eligible for presumptive eligibility:
+>
+> a. a pregnant woman must have an attested pregnancy, declare that her household's income shall not exceed 195% of the federal poverty level and declare that she is a United States citizen or a lawfully residing immigrant. Unless they meet the exceptions outlined under 8.100.3.G.1.g.viii.
+>
+> b. a child or youth under the age of 19 shall have a declared household income that does not exceed 142% of federal poverty level and declare that the child is a United States citizen or a documented immigrant unless they meet the exceptions outlined under 8.100.3.G.1.g.viii.
+
+### S1502. Continuous eligibility: the exceptions that end a child's period effective the earliest possible month (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.Q.1.b (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b. Exception: A child’s continuous eligibility period will end effective the earliest possible month if any of the following occur:
+>
+> i) Child is deceased;
+>
+> ii) Becomes an inmate of a public institution;
+>
+> 1. Incarcerated children receiving a full medical assistance program will move to a limited Incarceration benefit. If the child is released within the initial 12 months of the CE period, full coverage will be reinstated for the remaining 12-month CE period, unless any of the other exceptions apply;
+>
+> iii) The child is no longer part of the Medical Assistance required household;
+>
+> iv) Is no longer a Colorado resident;
+>
+> v) Is unable to be located; based on evidence or reasonable assumption;
+>
+> vi) Requests to be withdrawn from continuous eligibility;
+>
+> vii) Fails to provide documentation during a reasonable opportunity period as specified in section 8.100.3.G.3 and 8.100.3.H.9; or
+>
+> viii) Eligibility was erroneously granted at the most recent determination, redetermination, or renewal of eligibility because of agency error, or a finding of fraud or perjury attributed to the child or the child's responsible party.
+
+### S1503. Retroactive coverage: the three months before the application or the date the person became eligible, whichever is later (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.E.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.3.E. Retroactive Medical Assistance Coverage
+>
+> 1. An applicant for Medical Assistance shall be provided such assistance any time during the three months preceding the date of application, or as of the date the person became eligible for Medical Assistance, whichever is later. That person shall have received medical services at any time during that period and met all applicable eligibility requirements.
+
+### S1504. CHP+ copayments by family income at the eligibility determination and by service (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 320.1 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 320 COPAYMENTS
+>
+> 320.1 The following copayments shall be due for enrollees at the time of service:
+>
+> A. For families with income, at the time of eligibility determination, less than 101% of the Federal Poverty Level (MAGI-equivalent), all copayments shall be waived, except for emergency and care, which shall be $3.00 per use and urgent/after hours care, which shall be $1.00 per use.
+>
+> B. For families with income, at the time of eligibility determination, between 101% and 150% of the Federal Poverty Level (MAGI-equivalent), the copayment shall be:
+>
+> 1. Effective July 1, 2012:
+>
+> a. $2.00 per office visit;
+>
+> b. $2.00 per outpatient mental health or substance abuse visit;
+>
+> c. $1.00 per generic or brand name prescription;
+>
+> d. $2.00 per physical therapy, occupational therapy or speech therapy visit;
+>
+> e. $2.00 per vision visit;
+>
+> f. $3.00 per use of emergency care (co-payment is waived if client is admitted to the hospital);
+>
+> g. $1.00 per use of urgent/after hours care;
+>
+> h. $2.00 per trip for emergency transport/ambulance services;
+>
+> i. $2.00 per inpatient hospital visit;
+>
+> j. $2.00 per inpatient hospital visit for physician services in the hospital;
+>
+> k. $2.00 per outpatient hospital or ambulatory surgery center visit.
+>
+> C. For families with income, at the time of eligibility determination, between 151% and 200% of Federal Poverty Level (MAGI-equivalent), the copayment shall be:
+>
+> 1. Effective July 1, 2012:
+>
+> a. $5.00 per office visit;
+>
+> b. $5.00 per outpatient mental health or substance abuse visit;
+>
+> c. $3.00 per generic prescription;
+>
+> d. $10.00 per brand name prescription;
+>
+> e. $5.00 per physical therapy, occupational therapy or speech therapy visit;
+>
+> f. $5.00 per vision visit;
+>
+> g. $30.00 per use of emergency care ((co-payment is waived if client is admitted to the hospital)
+>
+> h. $20.00 per use of urgent/after hours care;
+>
+> i. $5.00 per date of service for laboratory and radiology/imaging services
+>
+> j. $15.00 per trip for emergency transport/ambulance services;
+>
+> k. $20.00 per inpatient hospital visit;
+>
+> l. $5.00 per inpatient hospital visit for physician services;
+>
+> m. $5.00 per outpatient hospital or ambulatory surgery center visit.
+>
+> 3. Due to the Coronavirus COVID-19 Public Health Emergency, members who are eligible for Children’s Basic Health Plan will have waived laboratory copayments, specifically as it relates to laboratory copayments associated with COVID-19 testing. Copayments will continue to be waived after May 11,2023 the ending of Coronavirus COVID-19 Public Health Emergency.
+>
+> D. For families with income, at the time of eligibility determination, between 201% and 260% of Federal Poverty Level (MAGI-equivalent), the copayment shall be:
+>
+> 1. Effective July 1, 2012:
+>
+> a. $10.00 per office visit;
+>
+> b. $10.00 per outpatient mental health or substance abuse visit;
+>
+> c. $5.00 per generic prescription;
+>
+> d. $15.00 per brand name prescription;
+>
+> e. $10.00 per physical therapy, occupational therapy or speech therapy visit;
+>
+> f. $10.00 per vision visit;
+>
+> g. $50.00 per use of emergency care (co-payment is waived if client is admitted to the hospital);
+>
+> h. $30.00 per use of urgent/after hours care;
+>
+> i. $10.00 per date of service for laboratory and radiology/imaging services
+>
+> j. $25.00 per trip for emergency transport/ambulance services;
+>
+> k. $50.00 per inpatient hospital visit;
+>
+> l. $10.00 per inpatient hospital visit for physician services;
+>
+> m. $10.00 per outpatient hospital or ambulatory surgery center visit.
+>
+> 3. Due to the Coronavirus COVID-19 Public Health Emergency, members who are eligible for Children’s Basic Health Plan will have waived laboratory copayments, specifically as it relates to laboratory copayments associated with COVID-19 testing. Copayments will continue to be waived after May 11,2023 the ending of Coronavirus COVID-19 Public Health Emergency.
+
+### S1505. CHP+ cost sharing limitations: the 5% yearly maximum and no copayments for preventive services (current text)
+
+Document: D-66
+
+10 CCR 2505-3 §§ 330.2-330.3 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 330.2 The maximum yearly cost sharing requirements for families of enrollees shall be 5% of income.
+>
+> 330.3 No copayments shall apply to preventive services. For the purpose of this section, preventive services shall mean:
+>
+> A. All healthy newborn and newborn inpatient visits, including routine screening whether provided on an inpatient or outpatient basis;
+>
+> B. Routine examinations;
+>
+> C. Immunizations and related office visits; and
+>
+> D. Routine preventive and diagnostic dental services.
+
+### S1506. SSI-related income: allocations for ineligible children and parents, their definitions and their order (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.H.1-3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.5.H. Income Allocations and Disregards
+>
+> 1. The following income allocations and disregards are only applicable to SSI related, OAP, Medicare Savings Programs (MSP), the Medicaid Buy-In Program for Children with Disabilities and the Medicaid Buy-In Program for Working Adults with Disabilities.
+>
+> These allocations and disregards are not applicable to the HCBS waivers or the LTC programs.
+>
+> For the Medicaid Buy-In Program for Working Adults with Disabilities, the applicant’s spouse’s income does not count toward the applicant.
+>
+> a. Income of spouses living together is considered mutually available for SSI related, OAP, and Medicare Savings Programs (MSP).
+>
+> b. For a person living in the household of another and not paying shelter costs, one third of the Federal Benefit Rate (FBR) is counted as in-kind income and is added to the countable income. This does not apply to unemancipated children.
+>
+> 2. For the purposes of this rule, the following definitions apply:
+>
+> a. unemancipated child is:
+>
+> i) a child under age 18 who is living in the same household with a parent or spouse of a parent, or
+>
+> ii) a child under age 21 who is living in the same household with a parent or spouse of a parent, if the child is regularly attending a school, college, or university, or is receiving technical training designed to prepare the child for gainful employment.
+>
+> b. Ineligible child is a child who is not applying or eligible for SSI.
+>
+> c. Ineligible parent/spouse is a parent or spouse who is not applying or eligible for SSI.
+>
+> 3. Countable income is calculated by reducing the gross income by the following allocations and disregards.
+>
+> a. Income allocations are the part of the gross income that is allocated to individuals in the home who are not eligible for Supplemental Security Income or Old Age Pension. The allocation reduces the gross income that is deemed available to the applicant/client. The allocation is deducted from the gross income prior to applying the other disregards.
+>
+> The allocations are:
+>
+> i) An Ineligible Child Allocation is an amount equal to one half the current year’s SSI FBR that is disregarded from the ineligible parents’ gross income. This allocation is used to meet the needs of ineligible children in the household. This allocation is available for each ineligible child in the home. The amount of the allocation is reduced by any of the ineligible child’s own income.
+>
+> ii) An Ineligible Parent(s) Allocation is an amount equal to the current year’s SSI FBR for a single individual or a couple, as applicable. This amount is used to meet the needs of the ineligible parent(s) in the home with an applicant/client child.
+>
+> iii) No allocations are allowed for applicant/recipient spouses who do not have children in the home.
+>
+> b. Allocations are applied to the income in the following manner:
+>
+> i) Allocation disregards are deducted from unearned income before earned income.
+>
+> ii) Ineligible child allocation disregards are deducted from parents’ income before any standard disregards are applied.
+>
+> iii) Ineligible parent(s) allocation disregards are deducted after any ineligible child allocation disregards and after the standard income disregards.
+
+### S1507. Transfer penalty: apportionment between institutionalized spouses (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.F.8 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8. Apportionment of penalty period between spouses
+>
+> a. If a transfer results in a period of ineligibility for an individual, and the individual's spouse becomes institutionalized and is otherwise eligible for Medical Assistance, the period of ineligibility shall be apportioned equally between the spouses.
+>
+> b. If one spouse dies or is no longer institutionalized, any months remaining in the period of ineligibility shall be assigned to the spouse who remains institutionalized.
+>
+> 9. If the individual or the individual's spouse has transferred assets into a trust or is a beneficiary of a trust, the trust document shall be submitted to the Colorado Department of Health Care Policy and Financing to determine the effect of the trust on Medical Assistance eligibility.
+
+### S1508. Income trusts: monthly distribution, the $20 retention for trust expenses, the only deductions, and the HCBS 300% distribution limit (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7 (trusts established on or after July 1, 1994; income trusts, ¶ 6.a.i.b-f; rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b) For Long Term Care institution members, each month the trustee shall distribute the entire amount of income which is transferred into the trust. An amount not to exceed $20.00 may be retained for trust expenses such as bank charges if such charges are expected to be incurred by the trust.
+>
+> c) The only deductions from the monthly trust distribution to the Long Term Care institution are the allowable deductions which are permitted for Medical Assistance-eligible persons who do not have income trusts. Allowable deductions include only the following:
+>
+> i) Personal need allowance
+>
+> ii) Spousal income payments
+>
+> iii) Approved PETI payments
+>
+> d) Any funds remaining after the allowable deductions shall be paid solely to the cost of the Long Term Care institution care in an amount not to exceed the Medical Assistance reimbursement rate. Any excess income which is not distributed shall accumulate in the trust.
+>
+> e) No other deductions or expenses may be paid from the trust. Expenses which cannot be paid from the trust include, but are not limited to, trustee fees, attorney fees and costs (including attorney fees and costs incurred in establishing the trust), accountant fees, court fees and costs, fees for guardians ad litem, funeral expenses, past-due medical bills and other debts. Trustee fees which were ordered prior to April 1, 1996 may continue until the trust terminates.
+>
+> f) For HCBS members, the amount distributed each month shall be limited to the 300% of the SSI limit. Any monthly income above that amount shall remain in the trust. An amount not to exceed $20.00 may be retained for trust expenses such as bank charges if such charges are expected to be incurred by the trust. No other trust expenses or deductions may be paid from the trust. For the purpose of calculating Individual Cost Containment or member payment (PETI), the member's monthly income will be 300% of the SSI limit. Upon termination, the funds which have accumulated in the trust shall be paid to the Department up to the total amount of Medical Assistance paid on behalf of the individual.
+
+### S1509. HCBS financial eligibility: spousal impoverishment rules do not apply to people in the Medicaid Buy-In program (current text)
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7100.C.3 (rule version of § 8.7000 effective 08/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 3. Spousal impoverishment rules set forth at § 1924 of the Act are used to determine the eligibility of individuals with a community spouse for the special HCBS waiver group. In the case of a participant with a community spouse, the state shall use spousal post-eligibility rules as set forth at §1924 of the Act. Spousal impoverishment rules do not apply to people in the Medicaid Buy-In program.
+
+### S1510. Old Age Pension Health Care Program: OAP-C is for court-committed persons sixty or older (current text)
+
+Document: D-68
+
+10 CCR 2505-10 § 8.941.2.F (rule version of § 8.900 effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12738&fileName=10%20CCR%202505-10%208.900
+
+> F. Old Age Pension-C (OAP-C) – Program for individuals who are sixty (60) years of age or older who have been committed to the Colorado Mental Health Institute or to a Regional Center by order of the district or probate court.
+
+### S1511. HCBS-CES and HCBS-CHRP target group criteria (current text)
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.B.2 and C.2 (rule version of § 8.7000 effective 08/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 2. To be eligible for the HCBS-CES waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Is unmarried and under 18 years of age.
+>
+> b. Has a Developmental Disability (which includes a Developmental Delay if under five years of age) and requires long term services and supports to remain in the Family home.
+>
+> c. Meets Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care as determined by the Level of Care Screen.
+>
+> d. Resides in an eligible HCBS-CES waiver setting, defined as:
+>
+> i. Residing with biological or adoptive Parent(s), or Legal Guardian, or
+>
+> ii. Residing in an out-of-home placement and can return home with the provision of HCBS-CES Waiver Services with the following requirements:
+>
+> 1) The Case Manager shall work with the residential caregiver to develop a transition plan that includes timelines and identified services or supports requested during the time the Member is not residing in the Family home. The Case Manager shall submit the transition plan to the Department for approval prior to the start of services.
+>
+> iii. Meets the definition of disability set forth at 42 U.S.C. § 423(d).
+>
+> iv. Meets the HCBS-CES waiver Member eligibility criteria:
+>
+> 1) The individual demonstrates a behavior or has a medical condition that requires direct human intervention, more intense than a verbal reminder, redirection, or brief observation of status, at least once every two hours during the day and on a weekly average of once every three hours during the night. The behavior or medical condition must be considered beyond what is typically age appropriate and due to one or more of the following conditions:
+>
+> a) A significant pattern of self-endangering behavior or medical condition which, without intervention will result in a life-threatening condition or situation,
+>
+> b) A significant pattern of serious aggressive behavior toward self, others, or property, or
+>
+> c) Constant vocalizations such as screaming, crying, laughing, or verbal threats which cause emotional distress to caregivers. The term constant is defined as on the average of 15 minutes each waking hour.
+>
+> 2. To be eligible for the HCBS-CHRP waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Is under 21 years of age.
+>
+> b. Has Extraordinary Needs that put the individual at risk or in need of out-of-home placement as identified in one of the two following manners:
+>
+> i. Meets Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care as determined by the Level of Care Screen, and
+>
+> 1) has been determined to have a Developmental Disability as determined pursuant to Section 8.607or if under five years of age, a Developmental Delay, or
+>
+> ii. Has a Serious Emotional Disturbance (SED) as defined in Section 8.7100.A as documented in a format prescribed by the Department, and the individual under 21 years old either
+>
+> 1) meets Nursing Facility Level of Care as determined by the Level of Care Screen or,
+>
+> 2) as documented in a format prescribed by the Department, the individual experienced inpatient psychiatric care, was at risk of inpatient psychiatric care, or was determined to require inpatient psychiatric care.
+
+### S1512. HCBS-BI, HCBS-CMHS and HCBS-EBD target group criteria (current text)
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.E.2, F.2 and G.2 (rule version of § 8.7000 effective 08/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 2. To be eligible for the HCBS-BI waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Is determined to have a Brain Injury that occurred prior to the individual’s 65th birthday.
+>
+> i. Brain Injury is defined as an injury to the brain of traumatic or acquired origin which results in residual physical, cognitive, emotional, and/or behavioral difficulties of a non-progressive nature and is limited to the to the broad diagnoses found within the most current version of the ICD.
+>
+> b. Is 16 years of age or older.
+>
+> 2. To be eligible for the HCBS-CMHS waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Is experiencing a severe and persistent mental health need that requires assistance with one or more ADLs. For purposes of this subsection, a person experiencing a severe and persistent mental health need is defined as one who:
+>
+> i. Is 18 years of age or older with a severe and persistent mental health need,
+>
+> ii. Currently has or at any time during the one-year period prior to Assessment had a diagnosed mental, behavioral, or emotional disorder of sufficient duration to meet diagnostic criteria specified within the Diagnostic and Statistical Manual of Mental Disorders (DSM -5):
+>
+> 1) Has a disorder that is episodic, recurrent, or has persistent features, but may vary in terms of severity and disabling effects; and
+>
+> 2) Has resulted in functional impairment which substantially interferes with or limits one or more major life activities, and
+>
+> iii. A severe and persistent mental health need does not include:
+>
+> 1) Intellectual or developmental disorders; or
+>
+> 2) Substance use disorder without a co-occurring diagnosis of a severe and persistent mental health need.
+>
+> b. Meets Nursing Facility Level of Care.
+>
+> 2. To be eligible for the HCBS-EBD waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Is determined by the Case Management Agency to meet the target group definition for functionally impaired elderly, or the target group definition for physically disabled or blind adult.
+>
+> b. Meets the minimum and/or if applicable maximum age for individuals served in each subgroup
+>
+> c. Aged: Be 65 years of age or older
+>
+> i. Physically Disabled or Blind: Be 18-64 years of age (Those participants who are physically disabled who reach the age of 65 shall automatically get classified as Aged with no break in services), and/or
+>
+> ii. HIV/AIDS: Be 18 years of age or older.
+>
+> d. Meets Nursing Facility Level of Care.
+
+### S1513. HCBS-CIH, HCBS-SLS and HCBS-DD target group criteria (current text)
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.H.2, I.2 and J.2 (rule version of § 8.7000 effective 08/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 2. To be eligible for the HCBS-CIH waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Is 18 years of age or older.
+>
+> b. Has a qualifying condition of a spinal cord injury (traumatic or nontraumatic), multiple sclerosis, a Brain Injury, spina bifida, muscular dystrophy, or cerebral palsy with the Inability for Independent Ambulation directly resulting from one of these conditions as defined by broad diagnoses related to each condition within the most current version of the ICD at the time of Assessment.
+>
+> c. Be unable to ambulate independently as a result of the qualifying condition as identified by the Case Manager through the Level of Care Screen process. A person is considered unable to ambulate independently if:
+>
+> i. The individual does not walk, and requires use of a wheelchair or scooter in all settings, whether or not they can operate the wheelchair or scooter safely, on their own; or
+>
+> ii. The individual does walk, but requires the use of a walker or cane in all settings, whether they can use the walker or cane safely, on their own; or
+>
+> iii. The individual does walk but requires “touch” or “stand-by” assistance to ambulate safely in all settings.
+>
+> d. Meets Hospital Level of Care or Nursing Facility Level of Care.
+>
+> 2. To be eligible for the HCBS-SLS waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Has an intellectual or Developmental Disability
+>
+> b. Is 18 years of age or older.
+>
+> c. Meets the Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care.
+>
+> d. Does not require 24-hour supervision on a continuous basis which is reimbursed as an HCBS-SLS service.
+>
+> e. Resides in an eligible HCBS-SLS setting. An SLS setting is the individual's residence, which is defined as the following:
+>
+> i. A living arrangement, which the individual owns, rents, or leases in their own name,
+>
+> ii. The home where the individual lives with the Member’s Family or legal Guardian, or
+>
+> iii. A living arrangement of no more than three persons receiving HCBS Waiver Services residing in one household, unless they are all Members of the same family.
+>
+> 2. To be eligible for the HCBS-DD waiver, an individual shall meet the Target Group Criteria as follows:
+>
+> a. Has an intellectual or Developmental Disability.
+>
+> b. Requires access to 24-hour services and supports to meet daily living needs that allow them to live safely and participate in the community.
+>
+> c. Is 18 years of age or older.
+
+### S1514. Excess real property excluded while reasonable efforts to sell are unsuccessful, verified quarterly (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.b (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b. Excess property will not be included in countable resources as long as reasonable efforts to sell it have been unsuccessful. Reasonable efforts to sell means:
+>
+> i.) The property is listed with a professional such as a real estate agent, broker, dealer, auction house, etc., at current market value.
+>
+> ii) If owner listed, the property must be for sale at current market value, advertised and shown to the public.
+>
+> iii) Any reasonable offer must be accepted.
+>
+> iv) If an offer is received that is at least two-thirds of the current market value, that offer is presumed reasonable.
+>
+> v) The client must continue reasonable efforts to sell and must submit verification of these efforts to the Eligibility Site on a quarterly basis. Reasonable effort is at Eligibility Site discretion.
+>
+> vi) If the exemption is used to become eligible under the Spousal Protection rules, the property shall continue to be viewed according to 8.100.7.L while efforts to sell it are being made.
+>
+> vii) Eligibility under this exemption is conditional. Once the property sells, the client shall be ineligible until the resources are below the prescribed limit.
+
+### S1515. Real property and undue hardship to a co-owner: verification of joint ownership (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.3.h (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> h. When the applicant alleges that the sale of real property would cause undue hardship to the co-owner due to loss of housing, all of the following information must be obtained:
+>
+> i) The applicant or client's signed statement to that effect.
+>
+> ii) Verification of joint ownership.
+>
+> iii) A statement from the co-owner verifying the following:
+>
+> 1) The property is used as his principal place of residence.
+>
+> 2) The co-owner would have to move if the property were sold.
+>
+> 3) The co-owner would be unable to buy the applicant or client's interest in the property.
+>
+> 4) There is no other readily available residence because there is no other affordable housing available or no other housing with the necessary modifications for the co-owner if he is a person with disabilities.
+
+### S1516. Medical Assistance: an extension of time to submit requested verification on request (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.D.2 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. Upon request, applicants will be given an extension of time within the application processing timeframe to submit requested verification. Applicants may request an extension of time beyond the application processing timeframe to obtain necessary verification. The extension may be granted at the eligibility site's discretion. The amount of time given should be determined on a case-by-case basis and should be based on the amount of time the individual needs to obtain the required documentation.
+
+### S1517. Medical Assistance: the reasonable opportunity period extended for a good faith effort (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.H.10.a (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 10. Good Faith Effort
+>
+> a. In some cases, a Medical Assistance client or applicant may not be able to obtain the required documentation within the applicable reasonable opportunity period. If the client or applicant is making a good faith effort to obtain the required documentation, then the reasonable opportunity period should be extended. The amount of time given should be determined on a case-by-case basis and should be based on the amount of time the individual needs to obtain the required documentation.
+
+### S1518. Medical Assistance residency: living in Colorado and considering it the place of residence; institutionalized persons incapable of indicating intent; temporary absence (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.B.2-5 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. A resident of Colorado is defined as a person that is living within the state of Colorado and considers Colorado to be their place of residence at the time of application. For institutionalized individuals who are incapable of indicating intent as to their state of residence, the state of residence shall be where the institution is located unless that state determines that the individual is a resident of another state, by applying the following criteria:
+>
+> a. for any institutionalized individual who is under age 21 or who is age 21 or older and incapable of indicating intent before age 21, the state of residence is that of the individual's parent(s) or legally appointed guardian at the time of placement;
+>
+> b. for any institutionalized individual who became incapable of indicating intent at or after age 21, (1) the state of residence is the state in which the person was living when he or she became incapable of indicating intent, or (2) if this cannot be determined, the state of residence is the state in which the person was living when he or she was first determined to be incapable of indicating intent;
+>
+> c. upon placement in another state, the new state is the state of residence unless the current state of residence is involved in the placement. If a current state arranged for an individual to be placed in an institution located in another state, the current state shall be the individual's state of residence, irrespective of the individual's indicated intent or ability to indicate intent;
+>
+> d. in the case of conflicting opinions between states, the state of residence is the state where the individual is physically located.
+>
+> 3. For purposes of this section on establishing an individual's state of residence, an individual is considered incapable of indicating intent if:
+>
+> a. the person has an I.Q. of 49 or less or has a mental age of 7 or less, based on standardized tests as specified in the persons in medical facilities section of this volume;
+>
+> b. the person is judged legally incompetent; or
+>
+> c. medical documentation, or other documentation acceptable to the eligibility site, supports a finding that the person is incapable of indicating intent.
+>
+> 4. Residence shall be retained until abandoned. A person temporarily absent from the state, inside or outside the United States, retains Colorado residence. Temporarily absent means that at the time he/she leaves, the person intends to return.
+>
+> 5. A non-resident shall mean a person who considers his/her place of residence to be other than Colorado. Any person who enters the state to receive Medical Assistance or for any other reason is a non-resident, so long as they consider their permanent place of residence to be outside of the state of Colorado.
+
+### S1519. Lottery and gambling winnings: the hardship exemption on a written request within 30 days of a denial or termination (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.C.1.b.xiv.5 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5) An applicant/member may request a hardship exemption when an application is denied or enrollment is terminated due to Lottery/Gambling winnings.
+>
+> a. The applicant/member must demonstrate a severe medical or financial hardship.
+>
+> b. The applicant/member must provide a written request and documentation to their County Department of Human Services, within 30 calendar days from the date of their denial or termination notice.
+
+### S1520. Federal lottery hardship exemption: an individual over the threshold continues to be eligible where denial would cause undue hardship
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(14)(K)(iii). https://www.law.cornell.edu/uscode/text/42/1396a
+
+>   (iii) Hardship exemption.—
+>
+>   An individual whose income, by application of clause (i), exceeds the applicable eligibility threshold established by the State , shall continue to be eligible for medical assistance to the extent that the State determines, under procedures established by the State (in accordance with standards specified by the Secretary) , that the denial of eligibility of the individual would cause an undue medical or financial hardship as determined on the basis of criteria established by the Secretary.

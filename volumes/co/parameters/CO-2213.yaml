@@ -1,0 +1,12 @@
+id: CO-2213
+name: Medical Assistance citizenship documentation gap, years
+identifier: ma_citizenship_documentation_gap_years
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The gap, in years, between the end of a person's last period of Medical Assistance eligibility and a later application beyond which citizenship and identity documentation must be provided again when the site has not retained it - 10 CCR 2505-10 § 8.100.3.H.4.h.ii (\"a gap of more than five years\")."
+value: 5
+sources: [S1053]
+tags: [ma, verification]
+rationale: "OQ-372: ma_must_resubmit_citizenship_documentation (CO-2214) needs the figure. qualified_non_citizen_waiting_period_years has the same value but a different meaning."

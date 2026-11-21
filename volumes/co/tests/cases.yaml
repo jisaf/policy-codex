@@ -32,6 +32,8 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -289,6 +291,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -549,6 +552,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -780,6 +784,12 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -1014,6 +1024,12 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -2101,6 +2117,8 @@
   persons:
     p1:
       facts:
+        ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -2357,6 +2375,7 @@
         pension_income: 610
     p2:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -2616,6 +2635,7 @@
         social_security_income: 1180
     p3:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -2847,6 +2867,12 @@
         hours_worked: 138
     p4:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -3080,6 +3106,12 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -4357,6 +4389,7 @@
       # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
+        ma_eligibility_start_date: "2026-07-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1997-02-11"
         sex: female
@@ -4469,6 +4502,12 @@
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        is_inmate_of_public_institution: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2008-05-14"
         citizenship_status: citizen
@@ -4518,6 +4557,12 @@
       # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5; lives with his
       # mother p1 (custodial parent), stepfather p2 and half-sibling p3 (OQ-42).
       facts:
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        is_inmate_of_public_institution: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2016-01-22"
         citizenship_status: citizen
@@ -4862,6 +4907,13 @@
       # zeroed out of her own household total. Stating her as required to file sidesteps that defect
       # here (its top-level condition is "not required to file"); the case comment below documents it.
       facts:
+        ma_eligibility_start_date: "2026-01-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        is_inmate_of_public_institution: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2010-03-02"
         citizenship_status: citizen
@@ -5068,6 +5120,7 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1952-04-18"
         sex: male
@@ -6115,6 +6168,7 @@
   persons:
     p1:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
@@ -6179,6 +6233,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
@@ -6245,6 +6300,8 @@
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
+        receives_oap_c: false  # needs-fact round (OQ-206): OAP, not OAP-C
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
@@ -6327,6 +6384,7 @@
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
@@ -7949,6 +8007,12 @@
         hours_worked: 160
     p4:
       facts:
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        is_inmate_of_public_institution: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2021-08-14"
         citizenship_status: citizen

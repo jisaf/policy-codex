@@ -1,0 +1,12 @@
+id: CO-2202
+name: Is unable to be located
+identifier: ma_is_unable_to_be_located
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, by this month, the eligibility site has found the person unable to be located, based on evidence or reasonable assumption (10 CCR 2505-10 § 8.100.3.Q.1.b.v)."
+supplied_by: Returned mail or the eligibility site's case note in CBMS.
+sources: [S1502]
+tags: [ma, magi]
+rationale: "OQ-53: being unable to be located ends a child's continuous eligibility period; no fact stated it."
