@@ -561,3 +561,28 @@ acyclic, shallow enough (25) and has a modest median closure (43); parameters ca
 versions read from the ledger; `unknown` is specified precisely enough that an independent engine can
 match it; and the adapter contract (one JSON in, one JSON out, `unimplemented` is not `failed`, batch
 mode, sha pinning) let a working fact_graph adapter reach 27/27 passing in under a hundred lines.
+
+## Disposition
+
+Engineering fix round (engine, scripts, suite builder, adapters, tests and
+docs; no ledger item edited). "Follow-up" items are listed, file by file, in
+`docs/reviews/engineering-item-followups.md` (§ numbers below).
+
+| Finding | Disposition |
+|---|---|
+| B1 Tooling targets `mwr`; reference adapter cannot run co | **Fixed.** Every script runs every volume by default (`--volume`/`CODEX_VOLUME` to choose); the reference adapter takes the suite's `codex.volume` and reads stdin as a stream; `npm run check` runs it out of process on every volume and requires 0 failed and 0 unimplemented (mwr 197/197, co 4330/4330). README and docs/conformance.md updated. |
+| B2 The suite almost never tests unknown | **Fixed, in part as proposed.** (a) The three-valued tables are written down per operator in `docs/operators.md` and tested in `test/engine/operators.test.ts` (all, any, not, otherwise, unknown, case, comparisons, arithmetic, filter, sum, count, exists, reachable, at, each, some_month, count_months, avg, lookup miss, no version in force, item out of force via the trace). They are engine unit tests, not an exported volume-independent `semantics.json`; that fixture was not built. (b) Every program outcome has a cannot-determine case in its suite (133 co, 4 mwr): a household case (or the outcome's rule test) with one supplied fact removed, expecting `null`, with the missing facts listed. |
+| S1 No machine-readable IR; YAML 1.1 | **Fixed / follow-up.** `npm run export` writes `conformance/<volume>/ledger.json` next to the suite, pinned to the same sha: identifier, kind, type, options, scope, tree, versions, effective, uses, used_by, pattern English. Both `=` forms parse in the app; codex_tool.py accepts the bare form; quoting the files is follow-up §1. |
+| S2 Relationship roles not part of the codex | **Fixed.** `relationship_roles` in volume.yaml (`{id, inverse}`; a symmetric role names itself), read by the engine, carried in the suite and ledger.json, and checked (a warning) in derivations, tests and cases. |
+| S3 Assistance units have no identity | **Follow-up §9** (a modelling change to the item grammar for the policy owners). |
+| S4 Time dimension implicit | **Partly fixed (documented).** operators.md and conventions.md state that parameters follow the determination date for every month, that person-scope facts are computed once, and what `at` rebinds; each suite case carries `months_read`. Per-item `evaluated`/`reads_months` and per-parameter `version_by` were declined in this round: they are grammar changes to items the policy rounds own, and several windows depend on case data. |
+| S5 `to` means two things | **Fixed (documented)** in conventions.md (Effective dating) and operators.md. Renaming to `until`/`through` was declined: it would touch every versioned item for no change in meaning. |
+| S6 Rule tests are integration tests | **Partly fixed.** Each rule-test case carries `isolation: unit` or `integration` (821 of 2,032 co tests are unit). Writing the missing unit tests: follow-up §8. |
+| S7 Numeric semantics; table keys | **Fixed (documented):** operators.md "Numbers" and "Tables" (string keys; a number key reads its decimal string), P41. |
+| S8 Reference adapter stdin | **Fixed.** |
+| N1 No cycles; keep it so | **Fixed.** `npm run check` now finds dependency cycles statically and blocks on one (none in either volume). |
+| N2 MAGI depends on Colorado Works | **Follow-up §9** (policy question). |
+| N3 Items with no consumer | **Follow-up §7** (listed). |
+| N4 `case` and `month` scopes unused | **Noted.** Unchanged; operators.md states what each scope reads. |
+| N5 One-directional edges harmless | **No action.** The engine still records both directions of a triple; a person named only in a triple now gets no relationships, and check warns. |
+| N6 Mixed this/that bodies | **Fixed.** `ledger.json` lists, per item, the binders whose body reads both persons (`mixed_binding`). |

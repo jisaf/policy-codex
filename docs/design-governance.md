@@ -125,12 +125,12 @@ never fixed once they have consumers.
 
 ## Conformance (engine-agnostic)
 
-- `npm run conformance` writes `conformance/suite.json`: codex commit, every
+- `npm run conformance` writes `conformance/<volume>/suite.json` (every volume; see docs/conformance.md): codex commit, every
   rule test and household case as `{supplied, as_of, parameters} →
   {expected}` per identifier, plus each item's `implemented_by` locator.
 - `scripts/conform.ts --adapter <command>` feeds each case to an adapter
   (JSON on stdin, JSON values on stdout), diffs against the codex, and writes
-  `conformance/results.json`. Partial coverage is reported, not failed.
+  `conformance/<volume>/results.json`. Partial coverage is reported, not failed.
 - `scripts/adapters/codex-self.ts` is the reference adapter (the codex engine
   itself), which also proves the harness.
 - The engine under test must run on synthetic cases; where it cannot, the

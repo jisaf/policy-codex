@@ -32,6 +32,8 @@ On first visit, a five-step tour walks one real example (a program, a case, an o
 ```
 codex.json          manifest: the volumes and their chapters
 volumes/mwr/        Medicaid community engagement + SNAP ABAWD work requirements
+volumes/co/         Colorado eligibility rules (Medicaid, CHP+, SNAP, cash, child care, LEAP, SUN Bucks),
+                    laid out the same way
   volume.yaml       metadata, approval policy, types, scopes
   sources.md        statute and regulation excerpts, S1..S34
   open-questions.md interpretation gaps and the assumptions taken, OQ-1..
@@ -44,9 +46,10 @@ volumes/mwr/        Medicaid community engagement + SNAP ABAWD work requirements
 src/                the app (engine, ledger, github, changes, ai, credentials, ui)
 worker/             the Cloudflare Worker that adds CORS for AI providers
 scripts/            check runner, conformance harness, reference checker, adapters
-docs/               conventions, governance, conformance, the design
-conformance/        suite export and result logs (suite.json and results.json are
-                    gitignored, regenerate on demand; known-failures.json is tracked)
+docs/               conventions, operators, governance, conformance, the design
+handoff/            the engineer handoff, one file per volume (npm run handoff)
+conformance/        per-volume suite, results and JSON export in conformance/<volume>/
+                    (gitignored, regenerate on demand; known-failures.json is tracked)
 ```
 
 Every item is one file. Add an item by adding a file and listing it in `codex.json`; the app does the same when you propose from the browser.
@@ -58,13 +61,21 @@ npm install
 npm run dev        # http://localhost:5173, reads the ledger from GitHub main
 npm test           # engine fixtures + module tests
 npm run typecheck
-npm run check      # constraints, governance, rule tests, and household cases over the ledger on disk
+npm run check      # constraints, governance, rule tests, and household cases over the ledger on disk,
+                   # then the conformance self-check, for every volume
 npm run conformance
-    # exports conformance/suite.json: all rule tests and household cases, normalized
+    # exports conformance/<volume>/suite.json for every volume: rule tests, household
+    # cases and cannot-determine cases, normalized
 npm run conform:self
-    # runs the codex engine against the suite; must report 0 failed
+    # builds each volume's suite and runs the codex engine against it out of process;
+    # must report 0 failed and 0 unimplemented
+npm run handoff    # writes handoff/<volume>.md
+npm run export     # writes conformance/<volume>/ledger.json, the items as JSON
+npm run governance # governance findings, item by item
 npm run e2e        # one Playwright smoke test against a local build
 ```
+
+Every script that reads the ledger runs every volume in `codex.json` unless given `--volume <id>` (or `CODEX_VOLUME=<id>`), e.g. `npm run conformance -- --volume co`. `npm run check` is the gate: run it before every merge, as CI would. An engine team implementing a volume starts from `docs/conformance.md` and `docs/operators.md`.
 
 There is no `deploy` script; see Deploy below.
 

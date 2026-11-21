@@ -512,3 +512,34 @@ What works well:
 - An acyclic dependency graph.
 - A language-neutral batch protocol with partial coverage, which is exactly what a Corticon team
   wants to burn down against.
+
+## Disposition
+
+Engineering fix round (engine, scripts, suite builder, adapters, tests and
+docs; no ledger item edited). "Follow-up" items are listed, file by file, in
+`docs/reviews/engineering-item-followups.md` (§ numbers below).
+
+| Finding | Disposition |
+|---|---|
+| B-1 Every entry point gives the wrong volume | **Fixed.** conformance, conform, conform:self, handoff, governance and the new export run every volume in codex.json unless given `--volume`/`CODEX_VOLUME`; suites and results are per volume (`conformance/<volume>/`); the reference adapter takes the suite's `codex.volume`; `handoff/co.md` is committed beside `handoff/mwr.md`; README and docs/conformance.md say so. `npm run check` now runs the reference adapter out of process on every volume and requires 0 failed and 0 unimplemented (CI is unavailable, so the local check is the gate). |
+| B-2 16 unmeetable expectations | **Fixed.** `as_of` from `given.determination_date`; no person made from a triple. The co suite passes its reference engine out of process: 4330/4330. |
+| B-3 Derived values replace their rules, undocumented | **Fixed.** docs/conformance.md ("What a case means") and operators.md (Resolution, step 5) state it; each case lists its stated derived values under `overrides`. Keeping household cases free of them: follow-up §2 (CO-01, CO-02, CO-08, CO-83). |
+| S-1 Household person-month facts in `facts` | **Fixed.** Household cases are routed by scope like rule tests. |
+| S-2 Item rows lack type, scope, options | **Fixed.** `suite.items` carries type, scope, options, role, effective and uses; `npm run export` writes the full items as JSON. |
+| S-3 Reference adapter breaks on a CO batch | **Fixed.** stdin is read as a stream; a test pipes a multi-megabyte batch through it. |
+| S-4 No month horizon | **Partly fixed.** Each suite case carries `months_read`, the first and last month the reference engine read for it. A per-item `reads_months` was declined: several windows depend on supplied dates and parameters (CO-1973, CO-417), so a static window would be wrong or unbounded. A test that needs the full 36-month window: follow-up §8. |
+| S-5 Operator semantics in code | **Fixed.** `docs/operators.md` (one entry per operator: unknown rule, empty input, rounding, version ends, Feb 29, parameter dating), linked from conventions.md, which it overrides where they differ. |
+| S-6 Bare `=`; no machine-readable handoff | **Fixed / follow-up.** `npm run export` writes `conformance/<volume>/ledger.json` (trees, type, scope, options, uses, used_by, versions, effective, pattern English); the parser test pins both `=` forms. Quoting the files: follow-up §1. |
+| S-7 `reachable` order-dependent | **Fixed.** Your definition (unknown iff the true-only closure differs from the true-or-unknown one) is what the engine now computes; tests run every permutation. No expectation changed. |
+| S-8 Money is not dollars and cents | **Fixed (documented).** conventions.md's money type now says unrounded unless the rule rounds; operators.md "Numbers" states the binary64 model and the precision a decimal engine needs. Items that perhaps should round: follow-up §4. |
+| S-9 Time logic inside derivations | **Follow-up §3** (CO-1289, CO-1190, CO-1215, CO-306, CO-1672; CO-1006 and CO-1292 with a `month_of_year` operator, to be added with the items that use it). The follow-up notes that moving a `[month]` comparison into versions changes it from month-evaluated to determination-date. |
+| S-10 Parameters as person facts ignored | **Fixed (reported).** The suite drops them and lists them under `ignored`; `npm run check` warns on each (37 in co). Rejecting them as errors was declined for now, since it would block 37 tests the policy rounds own; fixing the tests is follow-up §2. CO-951-T8/T9 (stated 0, ledger 189) give the same expectation with 0 as a real override, since the floor is not reached. |
+| S-11 Nothing drives rule statements | **Partly fixed.** `ledger.json` carries each derivation's pattern English line by line (one `case` arm per line) and each item's S-ids. A structured per-arm export was not built. |
+| N-1 Groups compared in order | **Fixed (documented).** |
+| N-2 CO-305's closure is directional | **Fixed (documented)** in operators.md `reachable`. |
+| N-3 Types missing; role list not closed | **Fixed.** conventions.md's Types table adds rate, list of months, relationships and household-size tables; the roles are a closed list in volume.yaml (`relationship_roles`) that the engine reads and check enforces with a warning. |
+| N-4 No case-scope items | **Follow-up §9.** |
+| N-5 Identifiers no item defines | **Fixed (reported):** check warns, the suite lists them under `ignored`; renaming them is follow-up §2. |
+| N-6 CO-333 `open: [OQ-1]` | **Follow-up §7.** |
+| N-7 No item carries `status` | **Declined** in this round: approval workflow is out of scope, and the README's "draft throughout" still describes the volume. |
+| N-8 eval-case usage | **Fixed.** Identifiers may be separate arguments or comma-separated, a `YYYY-MM` argument is the month, and an unknown identifier or case is an error. |
