@@ -15,5 +15,5 @@ open: [OQ-302]
 rationale: "Review C-6: a child attesting 140% FPL with data at 180% is not reasonably compatible against the Medicaid standard, but both figures are within the CHP+ standard, so CHP+ accepts the attestation. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid."
 nearest: [CO-1402]
 tests:
-  - {id: CO-1641-T1, month: "2026-10", as_of: "2026-10-01", parameters: {chp_income_limit_pct_upper: 2.6}, given: {ma_magi_household_income_pct_fpl: 1.4, electronic_data_source_household_income_pct_fpl: 1.8}, expect: true}
-  - {id: CO-1641-T2, month: "2026-10", as_of: "2026-10-01", parameters: {chp_income_limit_pct_upper: 2.6}, given: {ma_magi_household_income_pct_fpl: 2.0, electronic_data_source_household_income_pct_fpl: 2.9}, expect: false}
+  - {id: CO-1641-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.4, electronic_data_source_household_income_pct_fpl: 1.8}, expect: true}
+  - {id: CO-1641-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 2.0, electronic_data_source_household_income_pct_fpl: 2.9}, expect: false}

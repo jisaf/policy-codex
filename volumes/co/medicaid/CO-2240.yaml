@@ -12,5 +12,5 @@ implemented: engine
 tags: [ma, non_magi, income]
 rationale: "OQ-374: ma_meets_ssi_income_standard (CO-609) and the aged, blind and disabled reasonable compatibility test (CO-1640) compare with the same standard; one item states it."
 tests:
-  - {id: CO-2240-T1, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_ssi_federal_benefit_rate_couple: 1491}, given: {ma_ssi_household_size: 2}, expect: 1491}
-  - {id: CO-2240-T2, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_ssi_federal_benefit_rate_couple: 1491}, given: {ma_ssi_household_size: 1}, expect: 994}
+  - {id: CO-2240-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_household_size: 2}, expect: 1491}
+  - {id: CO-2240-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_household_size: 1}, expect: 994}

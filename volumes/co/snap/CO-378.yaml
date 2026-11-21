@@ -14,5 +14,7 @@ implemented: engine
 tags: [income]
 rationale: 7 CFR 273.10(e)(1)(i)(A)-(F) (S101) computes net income by subtracting the earned income, standard, medical, dependent care, and child support deductions from gross income, in that order, before the shelter deduction is figured; no existing item states this intermediate figure, which snap_excess_shelter_deduction and snap_homeless_shelter_deduction both need for the 50%-of-income comparison.
 tests:
-  - {id: CO-378-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 2965, snap_earned_income_deduction: 357, snap_standard_deduction: 209, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 2399}
-  - {id: CO-378-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 100, snap_earned_income_deduction: 0, snap_standard_deduction: 209, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 0}
+  # Hard-coded numbers audit T-3: the FY2027 standard deduction for 1-3 members (217) replaces the FY2026 figure (209) on this October 2026
+  # test date: 2,965 - 357 - 217 = 2,391 (was 2,399 with 209).
+  - {id: CO-378-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 2965, snap_earned_income_deduction: 357, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 2391}
+  - {id: CO-378-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 100, snap_earned_income_deduction: 0, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 0}
