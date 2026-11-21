@@ -12,4 +12,4 @@ versions:
     source: S515
 sources: [S515]
 tags: [resources]
-rationale: "No existing item states 3.111.H.4.c's asset ceiling, a stated, unambiguous, dollar-valued eligibility condition (docs/reviews/cccap-leap-phase-6.md, K-3). cccap_meets_asset_limit (CO-996) reads it."
+rationale: "No existing item states 3.111.H.4.c's asset ceiling, a stated, unambiguous, dollar-valued eligibility condition (docs/reviews/cccap-leap-phase-6.md, K-3). The self-declaration cccap_declares_assets_within_limit (CO-1741) names it; no rule compares an amount with it, since the application collects the declaration, not a figure (heavier-definitions audit H-12)."

@@ -6,6 +6,6 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person is under 18 and legally emancipated under Colorado law. If not stated, LEAP reads this as false."
-supplied_by: Applicant statement; court order of emancipation, verified by the county worker.
+supplied_by: "The applicant's statement on the application, or the case record; where a program's verification rule requires it, the court order of emancipation (heavier-definitions audit H-15: the fact is the person's circumstance as stated; documents belong to the *_verification_document_received facts and the verification items, which ask for them only where a program's rule requires it)."
 sources: [S411]
 rationale: "No existing fact in this volume's interface carries emancipation status; cw_minor_parent_living_arrangement_met (CO-906) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1, C-4): the meaning states the fact, not the Colorado Works consequence, and says how an unstated value is read."
