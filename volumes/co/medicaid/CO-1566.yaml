@@ -1,0 +1,17 @@
+id: CO-1566
+name: Medical Assistance determination is a renewal
+identifier: ma_determination_is_renewal
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person's Medical Assistance or CHP+ determination is a renewal of eligibility (or a subsequent application after a break in coverage) rather than an initial application.
+derived: [not, [=, ma_determination_type, initial_application]]
+sources: [S1050, S1052, S1053]
+implemented: engine
+tags: [verification, ma]
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-1: 435.956(a)(4)(ii) forbids re-verifying citizenship at renewal) needs it as a supplied fact. Same-word audit SW-26 and dual-entry 3.22: derived from ma_determination_type (CO-2831)."
+tests:
+  - {id: CO-1566-T1, title: "Renewal", as_of: "2026-11-01", given: {ma_determination_type: renewal}, expect: true}
+  - {id: CO-1566-T2, title: "Reapplication after a break", as_of: "2026-11-01", given: {ma_determination_type: reapplication_after_break}, expect: true}
+  - {id: CO-1566-T3, title: "First application", as_of: "2026-11-01", given: {ma_determination_type: initial_application}, expect: false}

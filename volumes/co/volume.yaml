@@ -153,6 +153,8 @@ relationship_roles:
   - {id: foster_child, inverse: foster_parent, label: "placed in this person's home in foster care"}
   - {id: has_primary_responsibility_for, inverse: in_primary_care_of, label: "has assumed day-to-day responsibility for the child's care, in place of or beside a parent"}
   - {id: in_primary_care_of, inverse: has_primary_responsibility_for, label: "the child whose day-to-day care this person has assumed"}
+  - {id: provides_regular_care_to, inverse: receives_regular_care_from, label: "provides care within a broad range of assistance (personal care, supervision, help with daily activities) on a regular basis that is not solely incidental"}
+  - {id: receives_regular_care_from, inverse: provides_regular_care_to, label: "the person to whom this person provides that care"}
   - {id: tax_filer, inverse: tax_dependent}
   - {id: tax_dependent, inverse: tax_filer}
   - {id: buys_prepares_with, inverse: buys_prepares_with}

@@ -5,9 +5,9 @@ kind: supplied
 type: yes/no
 scope: person
 program: CHP+
-meaning: Whether CHP+ is requested for the person, as opposed to the person only appearing on the application.
+meaning: "Whether CHP+ is requested for the person, as opposed to the person only appearing on the application. One of two requests on the application that do not overlap: Medical Assistance (ma_is_requesting_coverage) and CHP+ (chp_is_requesting_coverage)."
 precision: "If not stated, CHP+ reads the shared is_requesting_health_coverage (CO-1560), the single request a PEAK health-coverage application makes for both programs; it is stated when a household requests one program and declines the other."
 supplied_by: The coverage-requested indicator for each person and program in CBMS.
 sources: [S860, S1051]
 tags: [verification, chp]
-rationale: "OQ-382: one request fact for Medical Assistance and CHP+ could not show a household that requests one program and declines the other."
+rationale: "OQ-382: one request fact for Medical Assistance and CHP+ could not show a household that requests one program and declines the other. Dual-entry audit 3.15: the one statement of this program's request; is_requesting_health_coverage (CO-1560, retired) stated both programs' requests at once."

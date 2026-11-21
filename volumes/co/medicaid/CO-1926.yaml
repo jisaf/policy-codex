@@ -1,0 +1,17 @@
+id: CO-1926
+name: Persons cared for
+identifier: ma_persons_cared_for
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "The persons in the case to whom this person, as an adult family member or other individual with a significant relationship to them, provides care within a broad range of assistance on a regular basis that is not solely incidental: the family caregiver relationships of 42 CFR 435.554(a) and (c)(3)(i)."
+precision: "Read from the provides_regular_care_to role (volume.yaml), whose meaning is the care of 42 CFR 435.554(a): within a broad range of assistance on a regular basis that is not solely incidental."
+derived: [filter, [persons], [rel, [provides_regular_care_to], [P]]]
+sources: [S1207, S1208]
+implemented: engine
+tags: [ma, magi]
+rationale: "OQ-65: the family caregiver exclusion needs the persons cared for. Same-word audit SW-25 and dual-entry 3.2: derived from the regular-care role, so the group is not entered beside the care hours."
+tests:
+  - {id: CO-1926-T1, title: "Cares for her disabled brother", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[provides_regular_care_to, p1, p2]], expect: [p2]}
+  - {id: CO-1926-T2, title: "No regular care", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[other_relative, p1, p2]], expect: []}

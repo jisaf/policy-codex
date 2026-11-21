@@ -32,6 +32,9 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -124,13 +127,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: true
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -214,9 +215,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         # Reconciled with ssi_countable_resources_couple (46000, Medicaid chapter) below (cases fix): p1 is
@@ -225,7 +224,6 @@
         snap_countable_liquid_resources: 46000
         cccap_declared_assets: 46000
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -253,6 +251,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 2030
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -293,6 +293,9 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -378,13 +381,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: true
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -472,9 +473,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
@@ -485,7 +484,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 3
         incurs_telephone_cost: true
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -508,6 +506,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 1180
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -548,6 +548,9 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -634,13 +637,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: false
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -716,15 +717,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
         is_enrolled_higher_education_full_time: false
@@ -745,6 +743,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -779,6 +779,9 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -873,13 +876,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -952,15 +953,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: [p5]
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -984,6 +982,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -1018,6 +1018,9 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -1108,13 +1111,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -1191,15 +1192,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -1219,6 +1217,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -2233,6 +2233,9 @@
   persons:
     p1:
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -2327,13 +2330,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: true
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -2424,9 +2425,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         # Reconciled with ssi_countable_resources_couple (46000, Medicaid chapter) below (cases fix): p1 is
@@ -2435,7 +2434,6 @@
         snap_countable_liquid_resources: 46000
         cccap_declared_assets: 46000
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -2455,6 +2453,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 2030
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -2494,6 +2494,9 @@
         pension_income: 610
     p2:
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -2581,13 +2584,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: true
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -2681,9 +2682,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
@@ -2694,7 +2693,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 3
         incurs_telephone_cost: true
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -2710,6 +2708,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 1180
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -2749,6 +2749,9 @@
         social_security_income: 1180
     p3:
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -2837,13 +2840,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: false
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -2925,15 +2926,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
         is_enrolled_higher_education_full_time: false
@@ -2947,6 +2945,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -2980,6 +2980,9 @@
         hours_worked: 138
     p4:
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -3076,13 +3079,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -3159,15 +3160,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: [p5]
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -3185,6 +3183,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -3218,6 +3218,9 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -3310,13 +3313,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: true
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -3397,15 +3398,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_enrolled_higher_education_full_time: false
@@ -3419,6 +3417,8 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -4429,9 +4429,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 4200
@@ -4443,7 +4441,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1956-01-01"
@@ -4476,6 +4473,9 @@
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
         shelter_cost_monthly: 1100
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
@@ -4512,15 +4512,12 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1958-01-01"
@@ -4553,6 +4550,9 @@
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
         shelter_cost_monthly: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   # SNAP (fix-round case, C-10/group 10). Both are U.S. citizens living together as spouses, so the
   # unit is [p1, p2] under 273.1(a)-(b)(1); both are 60+ (snap_elderly_age), so
   # snap_household_has_elderly_or_disabled_member is true for the unit and the gross income test
@@ -5672,7 +5672,6 @@
         receives_disability_based_state_supplement: false
         # Phase-10 sweep (OQ-114): the parents are enrolled in Medicaid as Colorado Works parents, and each has income
         # within the SSI standard ($400 and $0 against $994), so neither's income is deemed to Alma (3.549.E-F).
-        receives_medicaid: true
         date_of_birth: "1992-03-14"
         sex: female
         citizenship_status: citizen
@@ -5710,6 +5709,7 @@
         ssi_countable_resources_couple: 1400
         receives_tanf_cash: true
       month_defaults:
+        receives_medicaid: true
         wages_gross: 400
         self_employment_gross_receipts: 0
         social_security_income: 0
@@ -5735,7 +5735,6 @@
       facts:
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
-        receives_medicaid: true  # phase-10 sweep (OQ-114), see p1
         date_of_birth: "1990-07-02"
         sex: male
         citizenship_status: citizen
@@ -5773,6 +5772,7 @@
         ssi_countable_resources_couple: 1400
         receives_tanf_cash: true
       month_defaults:
+        receives_medicaid: true
         wages_gross: 0
         self_employment_gross_receipts: 0
         social_security_income: 0
@@ -7166,6 +7166,9 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -7277,13 +7280,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -7329,6 +7330,9 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -7438,13 +7442,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -7588,6 +7590,9 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -7715,13 +7720,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: true
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -7770,6 +7773,9 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        ma_determination_type: initial_application
+        ma_is_requesting_coverage: true
+        chp_is_requesting_coverage: true
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -7893,13 +7899,11 @@
         work_hours_verification_document_received: false
         heating_costs_verification_document_received: false
         # Phase-9 fix round facts.
-        is_requesting_health_coverage: true
         documentation_not_reasonably_available: false
         has_resources_other_than_cash: false
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        ma_determination_is_renewal: false
         snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
@@ -8191,6 +8195,7 @@
     p1:
       relationships: []
       facts:
+        ma_determination_type: initial_application
         va_disability_rating_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -8217,9 +8222,7 @@
         receives_ssi: false
         is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
-        ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_persons_cared_for: []
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
         ma_is_seasonal_worker: false
@@ -8252,6 +8255,7 @@
     p2:
       relationships: []
       facts:
+        ma_determination_type: initial_application
         va_disability_rating_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -8278,9 +8282,7 @@
         receives_ssi: false
         is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
-        ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_persons_cared_for: []
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
         ma_is_seasonal_worker: false
@@ -8312,6 +8314,7 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        ma_determination_type: initial_application
         va_disability_rating_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -8338,9 +8341,7 @@
         receives_ssi: false
         is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
-        ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_persons_cared_for: []
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
         ma_is_seasonal_worker: false
@@ -8496,9 +8497,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -8508,7 +8507,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1995-04-02"
@@ -8550,6 +8548,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
@@ -8586,9 +8587,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -8598,7 +8597,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1990-07-19"
@@ -8641,6 +8639,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p3:
       # Daughter, 8.
       facts:
@@ -8677,9 +8678,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -8689,7 +8688,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2018-05-09"
@@ -8732,6 +8730,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         is_full_time_secondary_student_finishing_before_nineteen: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   # SNAP, October (initial month, applied on the 12th): gross 1,500 (p2's wages); earned income deduction 300;
   # standard deduction (size 3) 217; 1,500 - 300 - 217 = 983. Shelter: the $1,200 rent billed to p2, an eligible
   # member, counts in full (CO-2300), plus the $616 heating and cooling allowance = 1,816; 1,816 - 491.50 = 1,324.50,
@@ -9928,7 +9929,6 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         ma_received_presumptive_eligibility_this_pregnancy: false
         attested_household_income_pct_fpl: 1.2
@@ -9936,6 +9936,7 @@
         claims_disability: false
         ma_attested_own_income_pct_fpl: 1.2
       month_defaults:
+        receives_medicaid: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9992,7 +9993,6 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         ma_received_presumptive_eligibility_this_pregnancy: false
         attested_household_income_pct_fpl: 3.0
@@ -10000,6 +10000,7 @@
         claims_disability: true
         ma_attested_own_income_pct_fpl: 3.0
       month_defaults:
+        receives_medicaid: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -10056,7 +10057,6 @@
         citizenship_status: citizen
         lawful_presence_status: lawfully_present
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         ma_received_presumptive_eligibility_this_pregnancy: false
         attested_household_income_pct_fpl: 1.9
@@ -10064,6 +10064,7 @@
         claims_disability: false
         ma_attested_own_income_pct_fpl: 1.9
       month_defaults:
+        receives_medicaid: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -10120,10 +10121,10 @@
         citizenship_status: undocumented
         lawful_presence_status: not_lawfully_present
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         attested_household_income_pct_fpl: 0.9
       month_defaults:
+        receives_medicaid: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -10210,9 +10211,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -10222,7 +10221,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1996-03-10"
@@ -10264,6 +10262,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # Her son, 5.
       facts:
@@ -10300,9 +10301,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -10312,7 +10311,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2021-06-01"
@@ -10355,6 +10353,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         is_full_time_secondary_student_finishing_before_nineteen: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
@@ -10391,9 +10392,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -10403,7 +10402,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1990-01-15"
@@ -10447,6 +10445,9 @@
         cw_months_received_in_exempt_indian_country: 0
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p4:
       # Her daughter, 11.
       facts:
@@ -10483,9 +10484,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -10495,7 +10494,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2015-09-09"
@@ -10540,6 +10538,9 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p5:
       # Mother, 32, living in New Mexico.
       facts:
@@ -10576,9 +10577,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -10588,7 +10587,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1993-11-20"
@@ -10630,6 +10628,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p6:
       # Her son, 7.
       facts:
@@ -10666,9 +10667,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -10678,7 +10677,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2019-02-14"
@@ -10721,6 +10719,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         is_full_time_secondary_student_finishing_before_nineteen: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   expect:
     p1:
       cw_eligibility_status: {"2026-10": ineligible_income}
@@ -11200,9 +11201,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11212,7 +11211,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "2002-02-02"
@@ -11254,6 +11252,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # Not pregnant, no child.
       relationships: []
@@ -11291,9 +11292,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11303,7 +11302,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1986-05-05"
@@ -11345,6 +11343,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   expect:
     p1:
       cw_need_standard: 253
@@ -11410,9 +11411,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11422,7 +11421,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
@@ -11486,6 +11484,9 @@
           participates_in_workfare: false
           abawd_waiver_area_month: false
           abawd_discretionary_exemption_month: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
@@ -11522,9 +11523,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11534,7 +11533,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
@@ -11576,6 +11574,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         snap_is_enrolled_half_time_in_school_or_training: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   expect:
     p1:
       snap_abawd_time_limit_status: {"2026-10": limit_reached}
@@ -11646,9 +11647,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11658,7 +11657,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1991-04-04"
@@ -11701,6 +11699,9 @@
         cw_months_received_in_exempt_indian_country: 0
         snap_is_enrolled_half_time_in_school_or_training: false
         snap_is_disqualified_for_ssn_refusal: true
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # Her son, 10.
       facts:
@@ -11737,9 +11738,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11749,7 +11748,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2016-01-20"
@@ -11791,6 +11789,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         snap_is_enrolled_half_time_in_school_or_training: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
@@ -11827,9 +11828,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11839,7 +11838,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1981-07-07"
@@ -11891,6 +11889,9 @@
           received_full_snap_benefit_month: false
         2026-10:
           received_full_snap_benefit_month: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   expect:
     p1:
       snap_person_participation_status: ineligible_member_ssn
@@ -11953,9 +11954,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -11965,7 +11964,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1994-12-12"
@@ -12007,6 +12005,9 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
     p2:
       # Her daughter.
       facts:
@@ -12043,9 +12044,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -12055,7 +12054,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2020-10-10"
@@ -12098,6 +12096,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         is_full_time_secondary_student_finishing_before_nineteen: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   expect:
     p1:
       cw_need_standard: unknown
@@ -12154,9 +12155,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -12166,7 +12165,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
@@ -12209,6 +12207,8 @@
         cw_months_received_in_exempt_indian_country: 0
         snap_is_enrolled_half_time_in_school_or_training: false
       month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
         received_full_snap_benefit_month: false
         hours_worked: 0
         work_program_hours: 0
@@ -12273,9 +12273,7 @@
         has_medical_statement_of_unfitness: false
         cccap_caretaker_is_incapacitated: false
         agency_finds_obviously_unfit: false
-        is_complying_with_tanf_work_requirements: false
         receives_unemployment_compensation_or_applied: false
-        has_responsibility_for_incapacitated_person: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
@@ -12285,7 +12283,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 0
         incurs_telephone_cost: false
-        persons_cared_for: []
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
@@ -12327,6 +12324,9 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
         snap_is_enrolled_half_time_in_school_or_training: false
+      month_defaults:
+        complies_with_tanf_work_requirements: false
+        complies_with_refugee_program_work_requirements: false
   expect:
     p1:
       snap_abawd_countable_months_in_period: {"2028-06": 3}
