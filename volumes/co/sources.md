@@ -6042,3 +6042,766 @@ Document: D-103
 10 CCR 2506-1, § 4.505.6.J. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
 
 > J. When any person in a household indicates inability or unwillingness to provide documentary evidence of non-citizen status, either for themselves or any other household member, the household has the option of withdrawing its application or participating with the member in question classified as an ineligible non- citizen. In such cases the local office shall not continue efforts to obtain that documentary evidence.
+
+### S1000. Colorado Works earned income disregards: $90 test at application, 100% for the first certification period and for a new source, 67% for a current source
+
+Document: D-81
+
+9 CCR 2503-6 3.606.2 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.606.2 Earned Income Disregards
+>
+> For all cases with eligible members that have earned income (not including disqualified individuals),
+> payment and eligibility will be determined using the income disregards as described below. All payments
+> shall be calculated by using applicable disregards.
+>
+> A. Earned Income Disregards Calculations
+>
+> The following earned income disregards shall be applied to gross wages for clients:
+>
+> 1. At application, the gross earned income minus the ninety dollar ($90.00) earned income
+> disregard, plus any countable unearned income received or expected to be received by
+> members of the assistance unit, shall not exceed the need standard for the household
+> size and shall be applied. If income does not exceed the need standard for the household
+> size, a one hundred percent (100%) disregard shall be applied to earned income for the
+> first certification period to determine the payment amount. after the first certification
+> period, a sixty seven percent (67%) disregard shall be applied to determine the payment
+> amount.
+>
+> 2. For an assistance unit currently receiving basic cash assistance:
+>
+> a. A new source of earned income shall receive a one hundred percent (100%)
+> earned income disregard for the first certification period that the income impacts
+> according to section 3.606.3.
+>
+> b. A current source of earned income shall receive the sixty seven (67%) disregard.
+
+### S1001. Colorado Works: an assistance unit reporting earned income is tested against the need standard with the 3.606.2 disregards
+
+Document: D-81
+
+9 CCR 2503-6 3.606.1.J (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> J. Reporting of Earned Income
+>
+> When the assistance unit reports earned income:
+>
+> 1. Apply the appropriate earned income disregards to the gross earned income of each
+> employed member of the budgetary unit as described in Section 3.606.2; and,
+>
+> 2. Add the unearned income received by each member of the budgetary unit; and,
+>
+> 3. Compare the total to the need standard for the household size.
+>
+> 4. If the net countable income equals or exceeds the need standard, the assistance unit is
+> not eligible for Colorado Works basic cash assistance.
+
+### S1002. OAP income disregards: subtract SSI, $20 from the remainder, add the SSI back; the unused $20 goes to earned income
+
+Document: D-80
+
+9 CCR 2503-5 3.533 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.533 INCOME DISREGARDS
+>
+> Disregards shall be applied before determining a client’s total countable income. If a
+> client's total countable income equals or exceeds the OAP grant standard after the
+> disregards are applied, he or she shall be denied or discontinued following the policies
+> outlined in Section 3.554.
+>
+> A. If the client has income, apply the following income disregards:
+>
+> 1. To determine countable earned income:
+>
+> a. Deduct $65 from the gross earned income; and,
+>
+> b. Divide the remainder by two (2).
+>
+> c. The result is the countable earned income.
+>
+> 2. To determine countable unearned income:
+>
+> a. Determine the client's gross unearned income from all sources.
+>
+> b. Subtract any amount received from SSI.
+>
+> c. Deduct $20.00 from the remainder.
+>
+> 1) If the client is married, the $20.00 disregard shall be split
+> equally between the client and the client’s spouse so that no
+> more than a $20.00 disregard is applied for the married
+> couple.
+>
+> 2) A client who receives SSI only, and does not receive any
+> other unearned income, does not receive an unearned
+> income disregard.
+>
+> d. Add the full SSI income back to the remainder.
+>
+> e. The remainder is countable unearned income.
+>
+> f. If the client's gross unearned income is less than $20.00, the
+> difference between the gross unearned income and the $20.00
+> deduction shall be applied to the earned income calculation, if
+> applicable.
+>
+> B. Subtract the countable earned and countable unearned income from the OAP
+> grant standard to determine the grant payment amount. If the grant payment
+> amount is less than the OAP payment floor standard as outlined in section 3.530,
+> a state supplementary payment will be issued to raise the grant payment to meet
+> the payment floor standard.
+
+### S1003. AND-CS income disregards: the same subtract-SSI, $20, add-back steps
+
+Document: D-80
+
+9 CCR 2503-5 3.549.A (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.549 AND-CS INCOME DISREGARDS AND DEEMED INCOME
+>
+> A. If the client has income, apply the following income disregards:
+>
+> 1. To determine countable earned income:
+>
+> a. Deduct $65 from the monthly gross income; and,
+>
+> b. Divide the remainder by two (2).
+>
+> c. The result is the countable earned income.
+>
+> 2. To determine countable unearned income:
+>
+> a. Determine the client's unearned income from all sources.
+>
+> b. Subtract any amount received from SSI.
+>
+> c. Deduct $20 from the remainder.
+>
+> 1) If the client is married, the $20 disregard shall be split
+> between the client and the spouse so that no more than a
+> $20.00 disregard is applied for the married couple.
+>
+> 2) A client who receives SSI only, and does not receive any
+> other unearned income, does not receive an unearned
+> income disregard.
+>
+> d. Add the full SSI income back to the remainder.
+>
+> e. The result is the countable unearned income.
+>
+> f. If the client's unearned income is less than $20.00, the difference
+> between the gross unearned income and the $20.00 deduction
+> shall be applied to the earned income calculation, if applicable.
+>
+> B. Subtract the countable earned and countable unearned income from the AND-CS
+> grant standard to determine the grant payment amount. If the grant payment is
+> less than the AND-CS payment floor standard as outlined in section 3.546, a
+> state supplementary payment will be issued to raise the grant payment to meet
+> the payment floor standard.
+
+### S1004. Colorado Works ineligible and disqualified persons (current text: no drug-felony category)
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.L-M (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> L. Individuals Ineligible for Colorado Works Program
+>
+> The following individuals shall not be eligible under Colorado Works:
+>
+> 1. Fugitives or fleeing felons;
+>
+> 2. Assistance units with an adult participating in a strike;
+>
+> 3. Qualified legal non-citizens or those who are not federally exempt, who entered the
+> United States on or after August 22, 1996, are ineligible for cash assistance for five (5)
+> years from the date of entry into the United States.
+>
+> M. Penalties for Disqualified or Ineligible Persons
+>
+> Persons who are required members of the assistance unit, but who are disqualified from receiving
+> or are ineligible to receive Colorado Works basic cash assistance or diversion due to program
+> prohibitions or violations, shall be removed from the assistance unit for the purposes of
+> determining the assistance unit size. Disqualified individuals income must be considered when
+> determining eligibility without applying income disregards.
+>
+> The following disqualified or ineligible individuals shall have such month counted as a month of
+> participation in the calculation of their overall sixty-month (60) lifetime maximum as referenced in
+> section 3.606.6 when a grant payment is received for others in the assistance unit.
+>
+> 1. Individuals convicted by a court or whose disqualification was obtained through an
+> intentional program violation (IPV) waiver for misrepresenting their residence in order to
+> obtain assistance in two states at the same time shall have their Colorado Works
+> assistance denied for ten (10) years.
+>
+> 2. Individuals who have committed fraud as determined by a court or determination of an
+> IPV by administrative hearing shall result in the disqualified caretaker being removed
+> from the grant for a twelve (12) month period for the first offense, twenty-four (24) months
+> for the second offense, and lifetime for the third offense. An IPV from another state shall
+> be used to determine eligibility for an individual. The level of the IPV established by the
+> Administrative Law Judge from the other state shall be used to determine the level of the
+> IPV for Colorado Works. The timeframes established herein shall be used; the timeframe
+> established from the other state shall no longer be valid.
+>
+> 3. Individuals who are fleeing felons for the time that that person meets the definition of
+> fleeing felon as described in 3.601.
+>
+> 4. Individuals who have failed to apply for a Social Security Number unless a federally
+> allowable reason, as listed in 20 CFR § 422.107 (2023), exists for not attempting to
+> obtain a social security number. No later editions or amendments are incorporated.
+> These regulations are available at no cost from the U.S. social security administration,
+> 1500 Champa Street, Suite 200, Denver, CO 80202, or at https://www.ecfr.gov/. These
+> regulations are also available for public inspection and copying at the Colorado
+> Department of Human Services, Office of Economic Security, 1575 Sherman Street,
+> Denver, CO 80203, during regular business hours. Once that person has taken action to
+> apply for a Social Security Number, they may become eligible.
+>
+> 6. Individuals who are non-citizens and do not meet the definition of a qualified non-citizen,
+> those who fail to prove citizenship or fail to provide proof that they are otherwise possess
+> a qualified non-citizen status and/or proof of lawful presence.
+
+### S1005. Colorado Works death reimbursement: $1,500 maximum, $2,500 combined charges, a client who received Colorado Works, estate insufficient
+
+Document: D-81
+
+9 CCR 2503-6 3.606.7.A-B (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.606.7 Funeral, Burial, and Cremation Expenses
+>
+> A. Death Reimbursement
+>
+> 1. A death reimbursement benefit shall in some circumstances be available to assist in
+> paying for the funeral, burial, and cremation expenses of a deceased client. Death
+> reimbursement benefits paid for the disposition of a deceased client under these rules
+> are not entitlements. Benefit levels for such dispositions shall be adjusted by the State
+> Department in order to contain expenditures within the available legislative appropriation.
+>
+> 2. The total amount of death reimbursement benefit paid by the county department pursuant
+> to this section shall not exceed one thousand five hundred dollars ($1,500). To be eligible
+> for a state contribution, the total combined reasonable charges (including those paid by
+> the deceased client’s estate, family, State Department funds, or any other source) for
+> services, property, and supplies shall not exceed two thousand five hundred dollars
+> ($2,500).
+>
+> 3. A birth certificate and death certificate shall not be required for a burial in the
+> circumstances of a stillborn child or a pregnancy ended by miscarriage. Documentation
+> from a medical provider and/or a collateral contact shall take the place of the birth and
+> death certificate.
+>
+> B. When State Funds may be Contributed
+>
+> A death reimbursement benefit covering reasonable funeral expenses or reasonable cremation or
+> burial expenses or any combination thereof shall be paid by the State Department for a deceased
+> client, subject to state appropriations, as follows:
+>
+> 1. The expenses are incurred for the disposition of a deceased client who received
+> Colorado Works while alive; and,
+>
+> 2. The deceased client’s estate is insufficient to pay all or part of such expenses (a
+> deceased client’s estate is defined as property of any kind that the deceased client
+> owned at the time of death); and,
+>
+> 3. The county department shall issue a written authorization and itemization of the services,
+> property, and supplies for which the State Department funds shall be contributed. The
+> total charge and amount of State Department funds authorized for each item shall be
+> included in this authorization; and,
+>
+> 4. The total combined reasonable charges (including those paid by the deceased client’s
+> estate, family, State Department funds, or any other source) for services, property, and
+> supplies which have been authorized by the county department shall not exceed two
+> thousand five hundred dollars ($2,500).
+
+### S1006. Colorado Works death reimbursement: no State funds when the combined charges exceed $2,500
+
+Document: D-81
+
+9 CCR 2503-6 3.606.7.E, F.1 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> E. Limitation of Total Charges for Disposition
+>
+> Regardless of the manner of disposition, State Department funds shall not be contributed if the
+> total charges (including those paid by the deceased client’s estate, family, state funds, or any
+> other source) for services, property, and supplies related to the disposition exceed two thousand
+> five hundred dollars ($2,500).
+>
+> ...
+>
+> If the combined charges from the providers exceed two thousand five hundred dollars
+> ($2,500), no death reimbursement shall be paid from State Department funds.
+>
+> Providers may seek contributions from non-responsible persons only to the extent that
+> monies are available from such parties.
+
+### S1007. Colorado Works death reimbursement: estate, responsible persons over the SSI limit, prepaid plot exempt, insurance reduces the maximum
+
+Document: D-81
+
+9 CCR 2503-6 3.606.7.F.2.b-g (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> b. After determining the method of disposition for the deceased client, the county
+> department shall next determine whether any funds for disposition are available
+> from the deceased client’s estate using the guidelines in section 26-2-129(6), or
+> from those individuals legally responsible, as defined in section 26-2-129(2)(E),
+> C.R.S., for the deceased client’s support. The county department shall also
+> inquire about the availability of such funds from persons who appear to be
+> interested in the manner of the deceased client’s disposition, even if such
+> persons are not legally responsible for the deceased client’s support.
+>
+> c. The county department shall require the legally responsible person to financially
+> participate towards the charges for funeral, burial, or cremation unless their
+> resources are less than the Supplemental Security Income (SSI) resource limit
+> which is $2,000 for an individual and $3,000 for a couple as described in C.R.S.
+> 26-2-129(5). The amount of resources over the SSI limit shall be used to reduce
+> the State Department funded Death Reimbursement payment. Money voluntarily
+> contributed by the responsible party towards the burial, funeral, or cremation
+> costs by the responsible party is also used to reduce the Death Reimbursement
+> Benefit.
+>
+> d. The value of a prepaid burial plot of two thousand dollars ($2,000) or less when
+> purchased is exempt and not counted toward the total funeral, cemetery, or burial
+> expenses. If the final resting place was purchased by someone other than the
+> decedent and donated to the deceased client, it shall not be counted as personal
+> resource of the deceased client or legally responsible person.
+>
+> e. Social Security lump sum death benefits payable to a legally responsible person
+> shall not be used in reducing the maximum Death Reimbursement Benefit.
+>
+> f. Funds disbursed from any insurance policy of the deceased client to a legally
+> responsible person or non-responsible person who is named as beneficiary or a
+> joint beneficiary of the deceased client’s policy, are counted as available and
+> shall be used to reduce the maximum Death Reimbursement. Providers may
+> seek contributions from non-responsible persons to the extent that monies are
+> available from such parties.
+>
+> g. Contributions made by non-responsible parties shall not reduce the Death
+> Reimbursement Benefit. These funds are used to offset the maximum combined
+> charges to the providers. The county department shall make every reasonable
+> effort to minimize the contribution of State Department funds for a deceased
+> client’s disposition. The State Department may limit the maximum State
+> Department contribution to a figure lower than one thousand five hundred dollars
+> ($1,500) in order to contain total State Department expenditures within the
+> available legislative appropriation. The State prescribed form shall be used to
+> inform the county department accounting office of itemized total charges and the
+> total State Department contribution.
+
+### S1008. OAP: a facility resident of thirty days is eligible only for a personal needs allowance of $79; inmates get neither
+
+Document: D-80
+
+9 CCR 2503-5 3.532.D-F (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The client shall be eligible only for a monthly PNA when program requirements
+> are met and the client is a resident for at least thirty (30) consecutive days, in one
+> of the following facilities:
+>
+> 1. In a general medical and surgical hospital;
+>
+> 2. In a nursing home, assisted living residence, or, intermediate care facility,
+> group home, host home, other long-term care facility, or Adult Financial
+> approved setting; or
+>
+> 3. In a psychiatric facility when sixty-five (65) years of age or older.
+>
+> E. The following persons are not eligible for a PNA or OAP grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+>
+> F. For every full calendar month that the client is a resident in a facility listed in
+> Section 3.532.D, the OAP PNA maximum shall be seventy-nine dollars ($79),
+> effective October 1, 2016.
+
+### S1009. AND-SO: the personal needs allowance and the inmate bar
+
+Document: D-80
+
+9 CCR 2503-5 3.543.D-F (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The client shall be eligible only for a monthly PNA when program requirements
+> are met and the client is a resident of a facility at least thirty (30) consecutive
+> days, as follows:
+>
+> 1. In a general medical and surgical hospital;
+>
+> 2. In a nursing home, assisted living residence, or, intermediate care facility,
+> group home, host home, other long-term care facility, or Adult Financial
+> approved setting.
+>
+> E. The following persons are not eligible for a PNA or AND-SO grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+>
+> F. For every full calendar month that the client is a resident in an approved facility,
+> the AND-SO Personal Needs Allowance maximum shall be seventy nine dollars
+> ($79) effective October 1, 2016.
+
+### S1010. AND-CS: the personal needs allowance and the inmate bar
+
+Document: D-80
+
+9 CCR 2503-5 3.548.D-F (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The client shall only be eligible for a monthly Personal Needs Allowance (PNA)
+> when program requirements are met and the client is a resident of a facility for at
+> least thirty (30) consecutive days, as follows:
+>
+> 1. In a general medical and surgical hospital;
+>
+> 2. In a nursing home, assisted living residence, or, intermediate care facility,
+> group home, host home, other long-term care facility, or Adult Financial
+> approved setting.
+>
+> E. The following persons are not eligible for a PNA or AND-CS grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+>
+> F. The AND-CS Personal Needs Allowance maximum shall be seventy-nine dollars
+> ($79) effective October 1, 2016. The AND-CS grant shall not be reduced until the
+> month following the first full calendar month that the client is a resident in an
+> approved facility.
+
+### S1011. Adult Financial client must apply for Colorado Works; ineligible after a Colorado Works sanction, demonstrable evidence or disqualification closure
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.F (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> F. The client shall apply for and accept TANF/Colorado Works when he or she
+> might be eligible, as follows:
+>
+> 1. An Adult Financial program client with a dependent child is required to
+> apply for and accept, if eligible, TANF/Colorado Works financial benefits.
+>
+> a. A grandparent or any other specified caretaker who is not a parent
+> is not required to be a member of the TANF/Colorado Works case
+> when they are not requesting assistance for himself or herself.
+>
+> b. A TANF/Colorado Works client is not required to apply for an
+> extension to be potentially eligible for Adult Financial program grant
+> payments.
+>
+> c. The TANF/Colorado Works funds received for the support of a child
+> are not used in determining the specified caretaker's eligibility for
+> Adult Financial program grant payments.
+>
+> 2. The client shall be ineligible for Adult Financial program grant payments if
+> his or her TANF/Colorado Works case was denied or discontinued:
+>
+> a. Due to a sanction, demonstrable evidence, or disqualification; or,
+>
+> b. Because the client withdrew from the program prior to exhausting
+> all benefits.
+>
+> c. After becoming ineligible due to the reasons outlined in Section
+> 3.520.71.f.2, above, the ineligibility period shall continue until the
+> sanction, demonstrable evidence, or disqualification is removed; or
+> until the client is found otherwise ineligible for TANF/Colorado
+> Works benefits.
+
+### S1012. In-kind support and maintenance for OAP and AND-CS: counted as unearned income; who is exempt; how the county values it
+
+Document: D-80
+
+9 CCR 2503-5 3.520.79.A-C, E (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.79 IN-KIND SUPPORT AND MAINTENANCE (ISM) FOR OAP AND AND-
+> CS ONLY
+>
+> A. For certain clients who are not paying their fair share of shelter costs, an ISM
+> amount shall be determined and counted as unearned income. Client statement
+> is acceptable as verification for reporting shelter costs.
+>
+> B. The ISM calculation does not apply to a client:
+>
+> 1. Who is residing in and owning his or her primary residence; or,
+>
+> 2. Who is receiving subsidized housing; or,
+>
+> 3. Who is homeless; or,
+>
+> 4. Who is paying his or her fair share of shelter costs when shelter costs are
+> market value or greater, even if the fair share is less than the current ISM
+> amount.
+>
+> a. Fair share is calculated by totaling shelter costs and dividing by the
+> number of people living in the household.
+>
+> b. Market value is the amount a landlord or property manager would
+> charge if the dwelling were rented on the open market. Rent may
+> include heating fuel, gas, electricity, water, sewage and garbage
+> collection; or,
+>
+> 5. Who is paying shelter costs in an amount equal to or greater than the
+> current maximum ISM amount, whether or not the costs are the client's fair
+> share or market value; unless,
+>
+> 6. A client is receiving SSI and being charged an ISM by the SSA. The client
+> shall be charged a matching ISM for Adult Financial programs, unless
+> good cause is provided due to SSA backlog.
+>
+> a. The client shall be instructed to work with the SSA to remove or
+> reduce the ISM once the client is paying his or her fair share of
+> shelter costs.
+>
+> b. Once the SSA removes or reduces the ISM, the client shall report
+> the change in order to have the Adult Financial ISM removed or
+> reduced.
+>
+> C. If the client's declared monthly shelter costs are less than the current maximum
+> ISM amount established for the shelter component and the client is not paying
+> his or her fair share, the county department shall determine the ISM amount to
+> be applied, as follows:
+>
+> 1. If the client's shelter costs are less than the current market value, then the
+> amount the client is actually paying is subtracted from the current
+> maximum ISM amount. The result is counted as in-kind unearned income
+> to the client.
+>
+> 2. If the shelter costs are market value but the client is paying less than his
+> or her fair share, then the amount the client is actually paying is subtracted
+> from the client's fair share amount or the current maximum ISM amount,
+> whichever is less. The result is counted as in-kind unearned income to the
+> client.
+>
+> 3. If the client is paying no shelter costs, and all shelter costs are supplied in
+> full, then the current maximum ISM amount is counted as in-kind
+> unearned income to the client.
+>
+> D. If the client has an established life estate and the client's shelter costs are being
+> provided in full, an ISM shall be calculated.
+>
+> E. The Adult Financial programs maximum ISM shall be determined as follows:
+>
+> 1. The ISM includes shelter costs.
+>
+> 2. The ISM is calculated by multiplying the current SSI benefit standard, as
+> defined in Section 3.510, by 33.33%, then adding a $20.00 disregard and
+> rounding to the nearest whole dollar.
+
+### S1013. SNAP Standard Medical Expense Deduction of $165
+
+Document: D-82
+
+10 CCR 2506-1 4.407.61.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.407.61 Determining Monthly Medical Expenses
+>
+> A. A household that contains a member who is eligible for a medical expense
+> deduction is eligible for a deduction using either the Standard Medical Expense
+> Deduction (SMED) or using actual medical expenses. Beginning October 1,
+> 2016, the SMED is one hundred sixty-five dollars ($165).
+>
+> The SMED is used if the total verified medical expenses are greater than thirty-
+> five dollars ($35) and less than or equal to the SMED. The household may claim
+> actual expenses if the total verified expenses, after deducting the first thirty-five
+> dollars ($35), exceed the SMED.
+
+### S1014. SNAP ABAWD countable months, the month of the eighteenth birthday, and the fixed 36-month clock from July 1, 2023
+
+Document: D-82
+
+10 CCR 2506-1 4.311.3.A, C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Countable months
+>
+> 1. Countable months are accrued when an ABAWD received SNAP benefits
+> for the full benefit month but did not:
+>
+> A. Meet an exemption; or
+>
+> B. Fulfill their work requirements.
+>
+> 2. When an individual turns eighteen years old (18) and enters ABAWD
+> status, they do not accrue a countable month in the month they turn
+> eighteen (18). If they do not meet an ABAWD exemption, they will begin to
+> accrue countable months in the month after the month in which they turn
+> eighteen (18).
+>
+> ...
+>
+> C. The ABAWD time limit clock:
+>
+> 1. Counts accrued countable months for all ABAWDs who are not in
+> compliance with work requirements and do not have an exemption; and
+>
+> 2. Resets accrued countable months and ABAWD disqualifications,
+> regardless of start date, for all ABAWDs every thirty-six (36) calendar
+> months starting July 1, 2023.
+
+### S1015. CCCAP: substance use disorder treatment at an intensive outpatient level or higher is an eligible activity from July 1, 2026
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.4.a.3 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3) Effective July 1, 2026, an adult caretaker enrolled in a
+> licensed, nationally recognized, evidence-based substance
+> use disorder treatment program that is at an intensive
+> outpatient service level of care or higher is eligible for
+> CCCAP for up to one (1) year per instance. The substance
+> use disorder treatment program must be licensed and
+> appropriately endorsed by the Behavioral Health
+> Administration (BHA).
+
+### S1016. CCCAP: teen parent (current definition) - financially contributing, custody, workforce training or post-secondary education makes the person an adult caretaker
+
+Document: D-87
+
+8 CCR 1403-1 3.103.EEEEE (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> EEEEE. “Teen parent” means a person under twenty-one (21) years of age who is
+> financially contributing to the welfare of the child and is the parent, adoptive
+> parent, stepparent, legal guardian, or person who is acting “in loco parentis,” has
+> custody of the child(ren) for the period that care is requested and is in an eligible
+> activity such as attending basic education, employment, self-employment, or job
+> search. If the person participates in workforce training or post-secondary
+> education, they are considered to be an adult caretaker as defined in rule section
+> 3.103(C).
+
+### S1017. Adult Financial programs: OAP, AND (AND-SO and AND-CS), HCA and Burial Assistance - no Aid to the Blind program
+
+Document: D-80
+
+9 CCR 2503-5 3.500 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.500 Adult Financial Programs- Adult Financial Programs consist of the Old Age
+> Pension (OAP) program, Aid to the Needy Disabled (AND) program
+> consisting of AND-State Only (AND-SO) and AND-Colorado Supplement
+> (AND-CS), Home Care Allowance (HCA), and Burial Assistance
+
+### S1018. SNAP: households destitute of income (migrant or seasonal farm workers)
+
+Document: D-82
+
+10 CCR 2506-1 4.406.A-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.406 HOUSEHOLDS DESTITUTE OF INCOME
+> Migrant or seasonal farm worker households may be considered destitute of income
+> upon initial certification or recertification, but only for the first month of each certification
+> period.
+>
+> A. Migrant or seasonal farm worker households may have little or no income at the
+> time of application even though they receive income at some time during the
+> month of application. Such households will be considered destitute and thereby
+> entitled to expedited application processing if their only income is from a
+> terminated and/or new source under the following circumstances:
+>
+> 1. The household's only income for the month of application was received
+> from a terminated source prior to the date of application.
+>
+> a. Income is considered to be from a terminated source if it is normally
+> received on a monthly or more frequent basis and is not expected
+> to be received again from the same source during either the
+> remainder of the month of application or the month following (i.e.,
+> migrant work ended with one grower).
+>
+> b. Income that is normally received less often than monthly is
+> considered to be from a terminated source if it is not anticipated to
+> be received during the month in which it would normally be
+> received (i.e., quarterly income not received in the normal third
+> month).
+>
+> 2. The household's only income for the month of application is more than
+> twenty-five dollars ($25) from a new source and it will not be received by
+> the tenth (10th) calendar day after the filing date of an application for initial
+> certification, or by the tenth calendar day after the household's normal
+> issuance cycle if the application is for recertification.
+>
+> a. Income is considered to be from a new source if the income of
+> more than twenty- five dollars ($25) is normally received on a
+> monthly or more frequent basis but has not been received from
+> that source within thirty (30) calendar days prior to the filing date
+> of application.
+>
+> b. Income is considered to be from a new source if the income of
+> more than twenty- five dollars ($25) is normally received less often
+> than monthly but was not received within the last normal interval
+> between payments.
+>
+> 3. The household's only income is a combination of that received from a
+> terminated source prior to date of application and income of more than
+> twenty-five dollars ($25) received in the month of application from a new
+>
+> source, which will not be received by the tenth (10th) calendar day after
+> the date of initial application, or by the tenth (10th) calendar day after the
+> household's normal issuance cycle if application is for recertification.
+>
+> B. A migrant farm worker's source of income shall be considered to be the particular
+> grower, and not the crew chief. A migrant who moves from one grower to another
+> shall be considered to have moved from a terminated source to a new source.
+>
+> C. There is no limit on the number of times a household can be considered destitute
+> of income provided that before each subsequent expedited certification, the
+> household either has completed the verification requirements that were
+> postponed at the last expedited certification or the household was certified under
+> normal processing standards since the last expedited certification.
+
+### S1019. 9 CCR 2503-6 rule history: 3.604.2 L, M.4 and 3.606.2 A amended effective June 1, 2023
+
+Document: D-81
+
+9 CCR 2503-6, Editor's Notes, History (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> Rules 3.600.2, 3.601, 3.602.1 A.5, 3.602.1 B, 3.602.1 I.3.C-D, 3.604.2 C.3.b, 3.604.2 K, 3.604.2 K.3,
+> 3.604.2 L, 3.604.2 M.4, 3.604.3 C.7, 3.604.3 G, 3.606.1 F-G, 3.606.2 A, 3.606.3 C.1.c.3), 3.606.3
+> C.2.b.2), 3.606.6 C, 3.606.6 D.4, 3.606.8 A, 3.607.1 B, 3.607.1 C, 3.607.5, 3.608.3 C, 3.608.4
+> C.1, 3.609.4 B.3.c, 3.609.6 B eff. 06/01/2023.
+
+### S1020. Old Age Pension: ISM maximum effective January 1, 2025 (prior version)
+
+Document: D-62
+
+9 CCR 2503-5-3.530.B (Cornell LII copy of the version in force in 2025). https://www.law.cornell.edu/regulations/colorado/9-CCR-2503-5-3.530
+
+> B. Effective January 1, 2025, the maximum monthly In-Kind Support and Maintenance (ISM) deduction amount for shelter costs is $342.00.
+
+### S1021. Colorado Works time limit extensions: good cause as defined in 3.601 and outlined in 3.608.3; hardship reasons
+
+Document: D-81
+
+9 CCR 2503-6 3.606.6.C, D (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Extensions
+>
+> An assistance unit containing an individual who has received Federal TANF assistance in
+> Colorado or another state as an adult for sixty (60) or more cumulative months shall not be
+> eligible for Colorado Works assistance in Colorado unless the household demonstrates good
+> cause as defined in section 3.601 and outlined in 3.608.3. The county department must reference
+> criteria in the state prescribed extension determination form to approve or deny an extension
+> request for a client who is requesting to receive TANF beyond sixty (60) months. Assistance units
+>
+> ...
+>
+> D. Hardship
+>
+> A household may be considered to be experiencing a hardship if one or more of the following
+> prevents the adult member(s) of the assistance unit from securing or maintaining employment:
+>
+> 1. Disability of the caretaker, his or her spouse, the dependent child(ren) or immediate
+> relative for whom the caretaker is the primary caregiver, pursuant to the definition of
+> “persons with disabilities” at Section 3.604.3; or,
+>
+> 2. Involvement in the judicial system because a member of the assistance unit has an
+> existing case; or,
+>
+> 3. Family instability which may include a caretaker with the proven inability to maintain
+> stable employment or inability of the caretaker to care for the children in his or her own
+> home or in the home of a relative; or,
+>
+> 4. Inadequate or unavailable:
+>
+> a. Child care,
+>
+> b. Housing,
+>
+> c. Transportation,
+>
+> d. Employment opportunities, or,
+>
+> e. Other hardship reasons listed on the state prescribed extension determination
+> form.
