@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: Medicaid
-meaning: Whether the person or the person's spouse owns, or is the annuitant of, an annuity.
+meaning: "Whether the person (not the spouse: a spouse who is a person of the case states their own) owns, or is the annuitant of, an annuity."
 supplied_by: Resources section of the application as recorded in CBMS.
 sources: [S1741]
 tags: [verification, ltc, resources]
-rationale: "No existing fact in the volume states this; the phase-9 verification review (K-3: 8.100.7.A.2.j) needs it as a supplied fact."
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-3: 8.100.7.A.2.j) needs it as a supplied fact. Dual-entry audit 1.6: the person's own interest; Medicaid reads a spouse's across the spouse edge, so the spouse's interest is not stated twice."

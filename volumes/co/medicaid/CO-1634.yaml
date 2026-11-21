@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether trust documents must be submitted: for a long-term care applicant who (or whose spouse) transferred assets into a trust, is a trust beneficiary, or has an income trust."
-derived: [all, ma_is_long_term_care_applicant, [any, has_trust_interest, has_income_trust]]
+derived: [all, ma_is_long_term_care_applicant, [any, has_trust_interest, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], has_trust_interest]], has_income_trust]]
 sources: [S1741]
 implemented: engine
 tags: [verification, ma, ltc, resources]

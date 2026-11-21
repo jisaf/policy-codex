@@ -6,13 +6,13 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the person's unearned income must be verified for Medical Assistance: for an aged, blind or disabled applicant whenever received; for others, who may self-attest it, only when questionable; unless documentation is not reasonably available."
-derived: [all, has_unearned_income, [not, documentation_not_reasonably_available], [any, ma_is_aged_blind_or_disabled, unearned_income_attestation_is_questionable]]
+derived: [all, ma_has_unearned_income_for_verification, [not, documentation_not_reasonably_available], [any, ma_is_aged_blind_or_disabled, unearned_income_attestation_is_questionable]]
 sources: [S862, S866, S863, S839]
 implemented: engine
 tags: [verification, ma, income]
 rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
 tests:
-  - {id: CO-1404-T1, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: true, ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false}, expect: true}
-  - {id: CO-1404-T2, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: true, ma_is_aged_blind_or_disabled: false, unearned_income_attestation_is_questionable: false, documentation_not_reasonably_available: false}, expect: false}
-  - {id: CO-1404-T3, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: false, documentation_not_reasonably_available: false}, expect: false}
-  - {id: CO-1404-T4, month: "2026-10", as_of: "2026-10-01", given: {has_unearned_income: true, documentation_not_reasonably_available: true}, expect: false}
+  - {id: CO-1404-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_has_unearned_income_for_verification: true, ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false}, expect: true}
+  - {id: CO-1404-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_has_unearned_income_for_verification: true, ma_is_aged_blind_or_disabled: false, unearned_income_attestation_is_questionable: false, documentation_not_reasonably_available: false}, expect: false}
+  - {id: CO-1404-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_has_unearned_income_for_verification: false, documentation_not_reasonably_available: false}, expect: false}
+  - {id: CO-1404-T4, month: "2026-10", as_of: "2026-10-01", given: {ma_has_unearned_income_for_verification: true, documentation_not_reasonably_available: true}, expect: false}

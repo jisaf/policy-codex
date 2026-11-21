@@ -1,17 +1,17 @@
 id: CO-1292
 name: Is school aged
-identifier: is_school_aged
+identifier: sebt_is_school_aged
 kind: derived
 type: yes/no
 scope: person
-program: All
+program: SunBucks
 meaning: "Whether the child is of Colorado's compulsory school attendance age for the school year that began on the most recent August 1: the child had attained the age of six on or before that August 1 and was under seventeen on it (C.R.S. 22-33-104(1)(a)). 7 CFR 292.2 makes these the \"school aged\" years for Summer EBT."
 precision: "The August 1 is the most recent one on or before the determination date, the first day of the most recent month, on or before the determination date's month, whose calendar month number is compulsory_school_attendance_age_date_month (CO-2605, August), read with P50 as leap_program_year_start_month (CO-1006) finds the November (hard-coded numbers fix round; engineering follow-up 3 computed it with P49, and before it a fixed 2000-08-01 anchor was advanced by whole years). A determination dated in June or July (inside the summer operational period) therefore reads the school year just ended, and one dated from August 1 reads the school year just begun. The exceptions of 22-33-104(2) excuse individual children from attendance (illness, private or home schooling, graduation) and do not change the ages; 292.6 reaches a child who is school aged \"at any time during the period of eligibility\", and the item tests the one August 1 named above."
 derived: [all, [">=", [years_between, date_of_birth, [first_day, [latest_month_of_year, compulsory_school_attendance_age_date_month, [det_month]]]], compulsory_school_attendance_min_age], ["<", [years_between, date_of_birth, [first_day, [latest_month_of_year, compulsory_school_attendance_age_date_month, [det_month]]]], compulsory_school_attendance_age_limit]]
 sources: [S1403, S793, S790]
 implemented: engine
 tags: [sebt, age]
-rationale: "Phase-10 open-question sweep (OQ-255, part 2): C.R.S. 22-33-104(1)(a) is now fetched (D-141), so the age test is derived from date_of_birth instead of supplied. Kept as its own item because sebt_eligibility_status (CO-1298) and sebt_verification_status (CO-1698) both read it. Neutral (program All): the compulsory attendance ages are Colorado school law, not a Summer EBT rule."
+rationale: "Phase-10 open-question sweep (OQ-255, part 2): C.R.S. 22-33-104(1)(a) is now fetched (D-141), so the age test is derived from date_of_birth instead of supplied. Kept as its own item because sebt_eligibility_status (CO-1298) and sebt_verification_status (CO-1698) both read it. Neutral (program All): the compulsory attendance ages are Colorado school law, not a Summer EBT rule. Same-word audit SW-13: SUN Bucks's own definition, so it carries SUN Bucks's prefix; CCCAP reads cccap_is_attending_school (CO-2884)."
 tests:
   # Turned six in May 2026, before the August 1, 2026 start of the school year: school aged in February 2027.
   - {id: CO-1292-T1, as_of: "2027-02-10", given: {date_of_birth: "2020-05-20"}, expect: true}

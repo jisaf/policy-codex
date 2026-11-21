@@ -1,0 +1,12 @@
+id: CO-2824
+name: "Adult Financial: AND-SO medical disability certification received"
+identifier: af_and_so_medical_certification_received
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "Whether the county has received the State's completed medical disability certification for Aid to the Needy Disabled - State Only, the verification 9 CCR 2503-5 requires of a client's total disability (S1079, S1080). An award letter for another program's disability benefit or a VA rating statement is not this certification. A county record of the State form, recorded as an event."
+supplied_by: The county's case record of the completed state medical certification form.
+sources: [S1079, S1080]
+tags: [cash, and, verification, disability]
+rationale: "Same-word audit SW-15: disability_benefit_or_statement_document_received (CO-1333) verified two different elements, SNAP's benefit receipt or statement and AND-SO's medical certification, so an SSI award letter cleared the AND-SO element. AND-SO reads its own record."

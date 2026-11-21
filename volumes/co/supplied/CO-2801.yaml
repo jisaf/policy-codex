@@ -1,0 +1,12 @@
+id: CO-2801
+name: Actual utility expenses
+identifier: utility_expenses_actual
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The person's actual monthly utility expenses for the dwelling (heating or cooling fuel, electricity, water, sewer, trash, cooking fuel and telephone) that this person pays separately from the rent or maintenance charge, as verified; zero when every utility is included in the rent or maintenance charge. If not stated, Medicaid reads this as 0, so the standard utility allowance is used."
+supplied_by: The application's utility expense section; utility bills.
+sources: [S1756]
+tags: [ma, ltc, income]
+rationale: "Dual-entry audit 1.2: § 8.100.7.Q.1.b.ii (S1756) takes the larger of the standard utility allowance and the community spouse's actual, verified utility expenses. No fact states actual utility expenses; SNAP's utility facts (CO-1239 to CO-1242) state which kinds of cost a household incurs, not the amount."

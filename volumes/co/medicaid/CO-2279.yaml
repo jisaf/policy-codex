@@ -6,12 +6,12 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The rest of the Ineligible Child Allocation, after the part taken from unearned income (ma_ssi_child_allocation_from_spouse_unearned), deducted from the earned income of the person's spouse living with the person who is not applying for or eligible for SSI, up to that spouse's earned income (10 CCR 2505-10 § 8.100.5.H.3.a.i, H.3.b.i-ii)."
-derived: [case, [["=", ma_ssi_ineligible_child_allocation, 0], 0], [else, [min, ["-", ma_ssi_ineligible_child_allocation, ma_ssi_child_allocation_from_spouse_unearned], [sum, [filter, [reachable, [spouse], [all, [not, resides_in_medical_institution], [not, [of, [P], resides_in_medical_institution]]]], [all, [rel, [spouse], [P]], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]]]], [+, [of, [P], wages_gross], [of, [P], ma_self_employment_net_earnings]]]]]]
-sources: [S1506]
+derived: [case, [["=", ma_ssi_ineligible_child_allocation, 0], 0], [else, [min, ["-", ma_ssi_ineligible_child_allocation, ma_ssi_child_allocation_from_spouse_unearned], [sum, [filter, [reachable, [spouse, holds_out_as_spouse_with], [all, [not, resides_in_medical_institution], [not, [of, [P], resides_in_medical_institution]]]], [all, [rel, [spouse, holds_out_as_spouse_with], [P]], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]]]], [+, [of, [P], wages_gross], [of, [P], ma_self_employment_net_earnings]]]]]]
+sources: [S1506, S1955]
 implemented: engine
 tags: [ma, non_magi, income]
 open: [OQ-473]
-rationale: "OQ-83: allocation disregards are deducted from unearned income before earned income (H.3.b.i)."
+rationale: "OQ-83: allocation disregards are deducted from unearned income before earned income (H.3.b.i). Same-word audit SW-6: the SSI method treats as spouses two unrelated persons living together who lead people to believe they are married (20 CFR 416.1806(a)(3), S1955), so the holds_out_as_spouse_with role is read beside the legal spouse."
 tests:
   - {id: CO-2279-T1, as_of: "2026-10-01", month: "2026-10", title: "$394 of the allocation left after the spouse's $500 pension; spouse earns $1,200", given: {ma_ssi_ineligible_child_allocation: 894, ma_ssi_child_allocation_from_spouse_unearned: 500, resides_in_medical_institution: false}, others: {p2: {resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: false, wages_gross: 1200, self_employment_net_earnings_for_tax: 0, self_employment_gross_receipts: 0}}, relationships: [[spouse, p2]], expect: 394}
   - {id: CO-2279-T2, as_of: "2026-10-01", month: "2026-10", title: "No allocation", given: {ma_ssi_ineligible_child_allocation: 0}, expect: 0}

@@ -89,7 +89,7 @@ function mask(ix: LedgerIndex, e: Expr): Expr {
   if (op === "rel" || op === "exists_related") {
     return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   }
-  if (op === "shared_relative") return [op, MASK];
+  if (op === "shared_relative") return e.length > 2 ? [op, MASK, e[2]] : [op, MASK];
   if (op === "has_relative_in") return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   if (op === "reachable") {
     const out: unknown[] = [op, (e[1] as unknown[] || []).map(() => MASK)];
@@ -256,6 +256,22 @@ export function governance(
     }
   }
 
+  // 2b. A supplied fact whose program is one program's states that program's
+  //     meaning, so it carries the program's prefix (docs/conventions.md
+  //     rule 13: a finding made outside this volume, recorded as an event,
+  //     keeps the finding program's prefix; anything else is made neutral).
+  //     A warning: the remedy is a rename or a neutral rewrite.
+  if (meta.programs && it.kind === "supplied") {
+    const own = meta.programs.find((p) => p.id === it.program);
+    if (own && own.prefix && !identifier.startsWith(own.prefix)) {
+      warn(
+        "name.prefix",
+        `${own.id} supplied facts carry "${own.prefix}" (a finding recorded as an event) ` +
+          `or are made program-neutral; "${identifier}" does neither`,
+      );
+    }
+  }
+
   // 3. Supplied facts declare where the value comes from.
   if (it.kind === "supplied" && !(it.supplied_by || "").trim()) {
     err("supplied.source", "Supplied facts name the system or form the value comes from");
@@ -364,6 +380,35 @@ export function governance(
     const dep = ix.byIdentifier.get(r);
     if (!dep) {
       warn("read.cross_program", `accepts_from names ${r}, which is not in the ledger`);
+    }
+  }
+
+  // 8b. An unprefixed derived item has one meaning (docs/conventions.md rule
+  //     15). One whose meaning names programs (a definition several programs
+  //     adopt) is read only by those programs; a reader of another program
+  //     reads its own prefixed item. A meaning that names no program is a
+  //     neutral combination of neutral facts and is not checked.
+  if (it.kind === "derived" && it.derived !== undefined && it.derived !== null && meta.programs &&
+      it.program !== "All") {
+    const namesOf = (p: { id: string; names?: string[] }) => [p.id, ...(p.names ?? [])];
+    const mentions = (text: string, p: { id: string; names?: string[] }) =>
+      namesOf(p).some((n) => new RegExp(`(^|[^A-Za-z])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`).test(text));
+    const reader = meta.programs.find((p) => p.id === it.program);
+    let refs: string[] = [];
+    try { refs = usesOf(ix, it.derived); } catch { refs = []; }
+    for (const r of [...new Set(refs)].sort()) {
+      const dep = ix.byIdentifier.get(r);
+      if (!dep || dep.kind !== "derived" || dep.program !== "All" || !reader) continue;
+      const text = dep.meaning || "";
+      const named = meta.programs.filter((p) => p.id !== "All" && mentions(text, p));
+      if (named.length && !mentions(text, reader)) {
+        warn(
+          "read.shared_definition",
+          `${it.program} rule reads ${r} (${dep.id}), a shared definition whose meaning names ` +
+            `${named.map((p) => p.id).join(", ")} but not ${it.program}; read ${it.program}'s own item, ` +
+            "or name the program in the shared meaning if its definition is the same",
+        );
+      }
     }
   }
 

@@ -146,6 +146,7 @@ export function stringifyVolume(meta: VolumeMeta): string {
       L.push(`  - id: ${yamlScalar(p.id)}`);
       L.push(`    prefix: ${yamlScalar(p.prefix)}`);
       if (p.outcomes) L.push(`    outcomes: ${flowValue(p.outcomes)}`);
+      if (p.names) L.push(`    names: ${flowValue(p.names)}`);
     }
   }
   if (meta.tags) {

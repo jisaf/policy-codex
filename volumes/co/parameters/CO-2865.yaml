@@ -1,0 +1,15 @@
+id: CO-2865
+name: "Medicaid home equity: age under which a child protects the home"
+identifier: ma_home_equity_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "A child of the individual under this age (or blind or disabled at any age) lawfully residing in the home exempts the home from the home equity limit (42 U.S.C. 1396p(f)(2)(B), S370): under 21."
+versions:
+  - from: "2006-01-01"
+    value: 21
+    source: S370
+sources: [S370]
+tags: [ma, ltc, resources]
+rationale: "Dual-entry audit 1.8: the derived spouse-or-child-in-home test reads the statute's age as a parameter."

@@ -13,6 +13,7 @@ implemented: engine
 tags: [household]
 open: [OQ-540]
 rationale: "Same-word audit SW-0/SW-3 and OQ-396: CCCAP's adult caretaker relation (guardian and in loco parentis, step-parent included) differs from Medicaid's caretaker relative; it becomes CCCAP's own derived item over neutral roles, read by cccap_is_adult_caretaker (CO-992) and cccap_is_teen_parent (CO-981). No existing item states it."
+nearest: [CO-042]
 tests:
   - {id: CO-2607-T1, title: "Step-parent (3.103.C)", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[spouse, p1, p2], [parent, p2, p3], [stepparent, p1, p3]], expect: [p3]}
   - {id: CO-2607-T2, title: "Court-appointed guardian who is not a relative", as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[legal_guardian, p1, p2]], expect: [p2]}

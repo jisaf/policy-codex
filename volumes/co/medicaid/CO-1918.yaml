@@ -1,0 +1,17 @@
+id: CO-1918
+name: Educational program enrollment status
+identifier: ma_educational_program_enrollment_type
+kind: derived
+type: one of
+options: [full_time, half_time, less_than_half_time, not_enrolled]
+scope: person-month
+program: Medicaid
+meaning: "The person's enrollment status in the month in an educational program as 42 CFR 435.552(b) defines it (an institution of higher education, career and technical education, a high school, or a State-approved high school equivalency program), as determined by the school (435.552(c)): full_time, half_time, less_than_half_time, or not_enrolled. Enrollment runs from the first day of the term through vacations and recesses and ends at the end of the month the student is expelled, withdraws, completes the term without registering for the next, or graduates. If not stated, Medicaid reads this as not_enrolled."
+derived: [case, [[in, education_program_type, [secondary, secondary_career_and_technical, high_school_equivalency, postsecondary_career_and_technical, higher_education]], education_enrollment_intensity], [else, not_enrolled]]
+sources: [S1203, S1204]
+implemented: engine
+tags: [ma, magi]
+rationale: "OQ-65: no fact states enrollment in the educational programs 435.552 lists. Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
+tests:
+  - {id: CO-1918-T1, title: "Half-time college student", month: "2026-11", as_of: "2026-11-01", given: {education_program_type: higher_education, education_enrollment_intensity: half_time}, expect: half_time}
+  - {id: CO-1918-T2, title: "Workforce training is not a 435.552(b) program", month: "2026-11", as_of: "2026-11-01", given: {education_program_type: workforce_training, education_enrollment_intensity: full_time}, expect: not_enrolled}

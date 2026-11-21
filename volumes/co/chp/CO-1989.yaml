@@ -1,0 +1,17 @@
+id: CO-1989
+name: Is an American Indian or Alaska Native (CHP+ § 330.1)
+identifier: chp_is_american_indian_or_alaska_native
+kind: derived
+type: yes/no
+scope: person
+program: CHP+
+meaning: "Whether the person is an American Indian or Alaska Native as 10 CCR 2505-3 § 330.1 defines American Indian for the CHP+ cost-sharing exemption: a member of a federally recognized Indian tribe, band, or group, or a descendant in the first or second degree of any such member."
+derived: [any, is_member_of_federally_recognized_tribe, [in, tribal_descendant_degree, [first, second]]]
+sources: [S1236]
+implemented: engine
+tags: [chp]
+rationale: "OQ-64: § 330.1's definition (tribal member or first or second degree descendant) is neither SNAP's (snap_is_indian_or_urban_indian, CO-050) nor 42 CFR 447.51's (ma_is_indian, CO-1938). Same-word audit SW-17 and dual-entry audit 3.19: tribal membership, Alaska Native status, descent and urban Indian status were stated by three program-defined facts that could disagree for one person; each program's definition is now derived from the neutral facts CO-2890 to CO-2894."
+nearest: [CO-050, CO-1938]
+tests:
+  - {id: CO-1989-T1, title: "Child of a member", as_of: "2026-11-01", given: {is_member_of_federally_recognized_tribe: false, tribal_descendant_degree: first}, expect: true}
+  - {id: CO-1989-T2, title: "Neither", as_of: "2026-11-01", given: {is_member_of_federally_recognized_tribe: false, tribal_descendant_degree: none}, expect: false}

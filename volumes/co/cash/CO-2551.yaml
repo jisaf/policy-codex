@@ -1,0 +1,17 @@
+id: CO-2551
+name: "Colorado Works: average monthly child support over the last six months"
+identifier: cw_child_support_six_month_average
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "At a Colorado Works redetermination, the current child support the assistance unit received for this person in the six months before the redetermination, averaged over those six months (9 CCR 2503-6 3.605.5.C.2). Arrears are not included: 3.605.5.D makes them exempt."
+precision: "The six months before the determination month (cw_child_support_history_months); arrears are not part of child_support_received's current support for this purpose (3.605.5.D)."
+derived: [avg, [at, child_support_received, [month]], [months_ending, cw_child_support_history_months, [month_before, [det_month]]]]
+sources: [S1805]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: 3.605.5.C.2 compares the household's six-month average with $500; no fact stated the average. Dual-entry audit 2.2: derived as the average of the months of child_support_received (CO-028) the case states."
+nearest: [CO-2550]
+tests:
+  - {id: CO-2551-T1, title: "Six months averaging 550", month: "2026-11", as_of: "2026-11-01", given: {}, persons: {p1: {months: {"2026-05": {child_support_received: 500}, "2026-06": {child_support_received: 600}, "2026-07": {child_support_received: 550}, "2026-08": {child_support_received: 550}, "2026-09": {child_support_received: 500}, "2026-10": {child_support_received: 600}}}}, expect: 550}

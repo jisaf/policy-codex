@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The monthly amount of legally obligated child support the person receives on behalf of a household member. Stated as the gross amount received for the month, before any deduction withheld and before any program's exclusions or disregards; each program's own rule decides what it counts."
+meaning: "The monthly amount of legally obligated child support received for this person (stated on the child for whom it is paid). Stated as the gross amount received for the month, before any deduction withheld and before any program's exclusions or disregards; each program's own rule decides what it counts."
 supplied_by: Child support enforcement record, applicant statement.
 sources: []
 tags: [income]
-rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier."
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Dual-entry audit 2.2: the meaning says the support is stated on the child it is paid for, as Colorado Works's six-month history and the cases read it."

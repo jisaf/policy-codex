@@ -1,0 +1,17 @@
+id: CO-1938
+name: Is an Indian (42 CFR 447.51)
+identifier: ma_is_indian
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person meets the definition of Indian at 42 CFR 447.51: a member of a federally recognized tribe; an urban Indian who meets one of the four criteria there (including a first or second degree descendant of a tribal member, and an Eskimo, Aleut or other Alaska Native); a person the Secretary of the Interior considers an Indian for any purpose; or a person the Secretary of HHS considers an Indian for Indian health care services."
+derived: [any, is_member_of_federally_recognized_tribe, is_alaska_native, is_urban_indian_under_ihcia, [in, tribal_descendant_degree, [first, second]], [otherwise, is_considered_indian_by_federal_agency, false]]
+sources: [S1208, S1214]
+implemented: engine
+tags: [ma, magi, legal]
+rationale: "OQ-65: snap_is_indian_or_urban_indian (CO-050) carries SNAP's definition; 42 CFR 435.554(c)(2) adopts 447.51. Same-word audit SW-17 and dual-entry audit 3.19: tribal membership, Alaska Native status, descent and urban Indian status were stated by three program-defined facts that could disagree for one person; each program's definition is now derived from the neutral facts CO-2890 to CO-2894."
+nearest: [CO-050, CO-1989]
+tests:
+  - {id: CO-1938-T1, title: "Grandchild of a member", as_of: "2026-11-01", given: {is_member_of_federally_recognized_tribe: false, is_alaska_native: false, is_urban_indian_under_ihcia: false, tribal_descendant_degree: second}, expect: true}
+  - {id: CO-1938-T2, title: "No Indian status", as_of: "2026-11-01", given: {is_member_of_federally_recognized_tribe: false, is_alaska_native: false, is_urban_indian_under_ihcia: false, tribal_descendant_degree: none}, expect: false}

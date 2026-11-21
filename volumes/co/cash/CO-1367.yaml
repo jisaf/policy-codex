@@ -1,0 +1,17 @@
+id: CO-1367
+name: "Colorado Works: identity document accepted as proof of lawful presence"
+identifier: cw_lawful_presence_identity_document_is_acceptable
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "Whether the identity document the person provided is one Colorado Works lists as proof of lawful presence (9 CCR 2503-6, S877; 1 CCR 204-30 Rule 5, S1067): a Colorado driver's license or identification card valid for public benefit purposes, a U.S. military or military dependent's card, a Coast Guard merchant mariner card, or a Native American tribal document."
+precision: A Colorado Road and Community Safety Act license or identification card is a separate document type and is not on the list (1 CCR 204-30 Rule 5 § 1.8). The documents the incorporated Department of Revenue rules add are read by citizenship_document_is_on_revenue_appendix_a (CO-1657) and af_identity_document_is_acceptable (CO-1674).
+derived: [in, identity_verification_document_type, [colorado_drivers_license_or_id, us_military_card, military_dependent_id_card, merchant_mariner_card, tribal_document]]
+sources: [S877, S1067]
+implemented: engine
+tags: [verification, immigration]
+rationale: "Same-word audit SW-36: Colorado Works's own list; Adult Financial's identity list, which matched it, is stated in af_identity_document_is_acceptable (CO-1674), so a change to either rule changes one program. 9 CCR 2503-6 3.604.3.I.4.a (S877) and 9 CCR 2503-5 3.520.66 (S885) list the same documents; one program-neutral item serves both rather than two identical program items. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-4): renamed from identity_document_is_lawful_presence_document; the name said more than the fact establishes."
+tests:
+  - {id: CO-1367-T1, as_of: "2026-10-01", given: {identity_verification_document_type: colorado_drivers_license_or_id}, expect: true}
+  - {id: CO-1367-T2, as_of: "2026-10-01", given: {identity_verification_document_type: school_id_card}, expect: false}

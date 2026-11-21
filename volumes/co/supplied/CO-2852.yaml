@@ -1,0 +1,12 @@
+id: CO-2852
+name: "SUN Bucks: other documented categorical basis"
+identifier: sebt_other_documented_categorical_basis
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: "The child is categorically eligible for Summer EBT on a documented ground other than SNAP, TANF, FDPIR, foster, homeless, migrant, runaway or Head Start status: a member of a household receiving another means-tested program the Secretary has approved for the Summer EBT agency, or individually certified for free or reduced price meals during the period of eligibility (7 CFR 292.2, 292.6, 292.12(d)). If not stated, SUN Bucks reads this as false."
+supplied_by: "The school food authority's or the Summer EBT agency's record."
+sources: [S790, S792, S1952]
+tags: [sebt]
+rationale: "Dual-entry audit 3.27: sebt_other_categorical_basis (CO-1296) bundled this ground with homelessness and foster care, which other facts state; it is now derived, and this is the one ground no other fact states."

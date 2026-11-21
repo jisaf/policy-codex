@@ -44,32 +44,42 @@ approval_policy:
     buy_in: ["Premium and finance owner"]
     verification: ["Eligibility operations owner"]
 
+# names: the words an item's meaning uses for the program; governance's read.shared_definition
+# reads them (same-word audit; docs/conventions.md rule 15).
 programs:
   - id: All
     prefix: null
   - id: Medicaid
     prefix: ma_
+    names: ["Medical Assistance", "Health First Colorado"]
     outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_needy_young_person_category, ma_hospital_presumptive_eligibility_category, ma_express_lane_status, ma_community_engagement_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_emergency_medicaid_status, ma_bccp_eligibility_status, ma_family_planning_status, ma_oap_health_care_status, ma_protected_group_category, ma_verification_status, ma_pending_verification_count, ma_citizenship_verification_is_pending, ma_identity_verification_is_pending, ma_immigration_status_verification_is_pending, ma_ssn_verification_is_pending, ma_earned_income_verification_is_pending, ma_unearned_income_verification_is_pending, ma_resources_verification_is_pending, ma_pregnancy_verification_is_pending, ma_residency_verification_is_pending, ma_age_verification_is_pending, ma_household_composition_verification_is_pending, ma_institutional_stay_verification_is_pending, ma_asset_transfers_verification_is_pending, ma_trust_verification_is_pending, ma_annuity_verification_is_pending, ma_sale_efforts_verification_is_pending, ma_joint_ownership_verification_is_pending]
   - id: CHP+
     prefix: chp_
+    names: ["Child Health Plan Plus"]
     outcomes: [chp_eligibility_status, chp_verification_status, chp_pending_verification_count, chp_earned_income_verification_is_pending]
   - id: SNAP
     prefix: snap_
+    names: ["food assistance"]
     outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count, snap_identity_verification_is_pending, snap_citizenship_verification_is_pending, snap_immigration_status_verification_is_pending, snap_ssn_verification_is_pending, snap_residency_verification_is_pending, snap_earned_income_verification_is_pending, snap_unearned_income_verification_is_pending, snap_resources_verification_is_pending, snap_household_composition_verification_is_pending, snap_disability_verification_is_pending, snap_age_verification_is_pending, snap_work_hours_verification_is_pending, snap_sponsor_verification_is_pending, snap_shelter_costs_verification_is_pending, snap_medical_expenses_verification_is_pending, snap_dependent_care_verification_is_pending, snap_child_support_paid_verification_is_pending, snap_person_pending_verification_count, snap_person_pending_expense_verification_count, snap_person_participation_status, snap_verification_due_date, snap_noncitizen_documentation_due_date, snap_expense_verification_due_date, snap_expedited_postponement_end_date]
   - id: ColoradoWorks
     prefix: cw_
+    names: ["Colorado Works", "TANF"]
     outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_death_reimbursement_eligible, cw_death_reimbursement_amount, cw_verification_status, cw_pending_verification_count, cw_lawful_presence_verification_is_pending, cw_citizenship_verification_is_pending, cw_immigration_status_verification_is_pending, cw_ssn_verification_is_pending, cw_household_composition_verification_is_pending, cw_earned_income_verification_is_pending, cw_residency_verification_is_pending, cw_school_enrollment_verification_is_pending, cw_pregnancy_verification_is_pending, cw_sponsor_verification_is_pending, cw_person_pending_verification_count, cw_person_pending_status_verification_count, cw_person_participation_status, cw_diversion_payment, cw_unearned_income_verification_is_pending, cw_verification_due_date, cw_status_verification_due_date]
   - id: AdultFinancial
     prefix: af_
+    names: ["Adult Financial", "Old Age Pension", "OAP", "Aid to the Needy Disabled", "AND-SO", "AND-CS", "Home Care Allowance"]
     outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit, af_verification_status, af_pending_verification_count, af_age_verification_is_pending, af_residency_verification_is_pending, af_identity_verification_is_pending, af_ssn_verification_is_pending, af_citizenship_verification_is_pending, af_immigration_status_verification_is_pending, af_resources_verification_is_pending, af_earned_income_verification_is_pending, af_disability_verification_is_pending, af_and_so_disability_verification_is_pending, af_marital_status_verification_is_pending, af_sponsor_verification_is_pending, af_unearned_income_verification_is_pending, af_verification_due_date, af_and_so_disability_certification_due_date]
   - id: CCCAP
     prefix: cccap_
+    names: ["Colorado Child Care Assistance Program"]
     outcomes: [cccap_eligibility_status, cccap_parent_fee, cccap_verification_status, cccap_pending_verification_count, cccap_residency_verification_is_pending, cccap_eligible_activity_verification_is_pending, cccap_citizenship_verification_is_pending, cccap_age_verification_is_pending, cccap_identity_verification_is_pending, cccap_earned_income_verification_is_pending, cccap_work_hours_verification_is_pending, cccap_additional_care_needs_verification_is_pending, cccap_child_support_paid_verification_is_pending, cccap_person_pending_verification_count, cccap_pending_deduction_verification_count, cccap_person_participation_status, cccap_unearned_income_verification_is_pending, cccap_verification_due_date]
   - id: LEAP
     prefix: leap_
+    names: ["Low-income Energy Assistance Program", "Low-Income Energy Assistance Program"]
     outcomes: [leap_is_eligible, leap_benefit_amount, leap_verification_status, leap_pending_verification_count, leap_earned_income_verification_is_pending, leap_citizenship_verification_is_pending, leap_heating_costs_verification_is_pending, leap_zero_income_verification_is_pending, leap_person_pending_verification_count, leap_member_is_excluded_for_verification, leap_person_participation_status, leap_unearned_income_verification_is_pending, leap_verification_due_date]
   - id: SunBucks
     prefix: sebt_
+    names: ["SUN Bucks", "Summer EBT"]
     outcomes: [sebt_eligibility_status, sebt_benefit_amount, sebt_verification_status, sebt_pending_verification_count, sebt_income_verification_is_pending, sebt_school_enrollment_verification_is_pending]
 
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
@@ -154,6 +164,8 @@ relationship_roles:
   - {id: foster_child, inverse: foster_parent, label: "placed in this person's home in foster care"}
   - {id: has_primary_responsibility_for, inverse: in_primary_care_of, label: "has assumed day-to-day responsibility for the child's care, in place of or beside a parent"}
   - {id: in_primary_care_of, inverse: has_primary_responsibility_for, label: "the child whose day-to-day care this person has assumed"}
+  - {id: provides_regular_care_to, inverse: receives_regular_care_from, label: "provides care within a broad range of assistance (personal care, supervision, help with daily activities) on a regular basis that is not solely incidental"}
+  - {id: receives_regular_care_from, inverse: provides_regular_care_to, label: "the person to whom this person provides that care"}
   - {id: tax_filer, inverse: tax_dependent}
   - {id: tax_dependent, inverse: tax_filer}
   - {id: buys_prepares_with, inverse: buys_prepares_with}

@@ -1,0 +1,18 @@
+id: CO-2845
+name: Relatives
+identifier: is_related_to
+kind: derived
+type: group of persons
+scope: person
+program: All
+meaning: "The persons in the case related to this person by blood, adoption or marriage: a parent, child, stepparent, stepchild, spouse, grandparent or grandchild (stated, or through a parent's parent or a child's child), a full, half or step sibling, or another relative (other_relative: aunt, uncle, cousin, niece, nephew, great-grandparent, in-law)."
+precision: "One factual meaning, read by Medicaid community engagement (42 CFR 435.554(c)(3)(i)(B), S1207: \"a relative ... by blood, adoption, or marriage\") and CCCAP's unrelated adult caretaker (3.111.D.5). A caretaker or primary-responsibility edge is not a relationship by blood, adoption or marriage. A grandparent is read through the parent chain where the middle parent is a person of the case, and from the grandparent role where not (dual-entry audit 2.12)."
+derived: [filter, [persons], [any, [rel, [parent, child, stepparent, stepchild, grandparent, grandchild, spouse, other_relative], [P]], [in_group, [P], siblings], [in_group, [P], step_siblings], [otherwise, [has_relative_in, [parent], [filter, [persons], [rel, [child], [P]]]], false], [otherwise, [has_relative_in, [child], [filter, [persons], [rel, [parent], [P]]]], false]]]
+sources: [S1207, S1500]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-5: community engagement's relative test listed its roles inline and could not see a grandparent through the parent chain, and CCCAP's \"unrelated\" was bundled into a yes/no fact. One neutral item states the factual relation."
+nearest: [CO-2609, CO-2610]
+tests:
+  - {id: CO-2845-T1, title: "A grandmother through the parent chain, an aunt, and a lodger", as_of: "2026-11-01", given: {}, others: {p2: {}, p3: {}, p4: {}, p5: {}}, relationships: [[parent, p2, p1], [parent, p3, p2], [other_relative, p4, p1]], expect: [p2, p3, p4]}
+  - {id: CO-2845-T2, title: "A caretaker who is not related", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p2, p1]], expect: []}

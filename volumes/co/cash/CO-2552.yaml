@@ -6,8 +6,8 @@ type: money
 scope: person
 program: ColoradoWorks
 meaning: "At a redetermination, the household's averaged monthly child support that 9 CCR 2503-6 3.605.5.C.2 compares with $500: the six-month average of every member of this person's assistance unit whose support was received in all six of the six previous months."
-precision: Support received in fewer than six of the six months is inconsistent and left out (3.605.5.C.1). A member's months and average read as 0 when not stated (CO-2550, CO-2551).
-derived: [sum, [filter, cw_assistance_unit_members, [">=", [otherwise, [of, [P], cw_child_support_months_received_of_last_six], 0], cw_child_support_consistency_months]], [otherwise, [of, [P], cw_child_support_six_month_average], 0]]
+precision: Support received in fewer than six of the six months is inconsistent and left out (3.605.5.C.1). A member's months and average are derived from the six months of child_support_received (CO-2550, CO-2551) and read as 0 when those months are not stated.
+derived: [sum, [filter, cw_assistance_unit_members, [">=", [otherwise, [at, [of, [P], cw_child_support_months_received_of_last_six], [det_month]], 0], cw_child_support_consistency_months]], [otherwise, [at, [of, [P], cw_child_support_six_month_average], [det_month]], 0]]
 sources: [S1805]
 implemented: engine
 tags: [cash, tanf, income]

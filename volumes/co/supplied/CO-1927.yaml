@@ -1,12 +1,12 @@
 id: CO-1927
 name: Care hours by person
-identifier: ma_care_hours_by_person
+identifier: care_hours_by_person
 kind: supplied
 type: table keyed by person
 scope: person-month
-program: Medicaid
-meaning: For each person this person cares for (ma_persons_cared_for, CO-1926), the hours of assistance that is not solely incidental this person provided to them in the month (42 CFR 435.554(c)(3)(i)(C)).
+program: All
+meaning: For each person this person cares for (the persons to whom this person provides_regular_care_to), the hours of assistance that is not solely incidental this person provided to them in the month (42 CFR 435.554(c)(3)(i)(C)).
 supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
 sources: [S1208]
 tags: [ma, magi]
-rationale: "OQ-65: criterion (C) of the family caregiver exclusion needs the monthly hours for a person cared for who neither lives with nor is related to the caregiver."
+rationale: "OQ-65: criterion (C) of the family caregiver exclusion needs the monthly hours for a person cared for who neither lives with nor is related to the caregiver. Same-word audit SW-25: a neutral fact (the hours of care given), so no program prefix; the identifier was care_hours_by_person."

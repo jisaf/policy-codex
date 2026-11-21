@@ -1,0 +1,17 @@
+id: CO-2272
+name: Is regularly attending school or training
+identifier: ma_is_regularly_attending_school_or_training
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person is regularly attending a school, college or university, or receiving technical training designed to prepare the person for gainful employment (10 CCR 2505-10 § 8.100.5.H.2.a.ii)."
+precision: "Read as enrolled in any school, college, university or training program; SSI's own count of hours for \"regularly attending\" is not modeled."
+derived: [not, [=, education_program_type, none]]
+sources: [S1506]
+implemented: engine
+tags: [ma, non_magi, age]
+rationale: "OQ-83: an unemancipated child includes a child under 21 who regularly attends school or training; no Medicaid fact stated it (the SNAP and Colorado Works enrollment facts carry those programs' own definitions). Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
+tests:
+  - {id: CO-2272-T1, title: "In college", as_of: "2026-11-01", given: {education_program_type: higher_education}, expect: true}
+  - {id: CO-2272-T2, title: "Not enrolled", as_of: "2026-11-01", given: {education_program_type: none}, expect: false}

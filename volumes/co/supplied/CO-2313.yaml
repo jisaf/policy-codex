@@ -10,4 +10,4 @@ precision: "The most recent such quit. If not stated, SNAP reads that the person
 supplied_by: "County determination of voluntary quit and good cause, made at application, recertification or a reported loss of income (4.308.B-D; 4.310.5.A)."
 sources: [S1611]
 tags: [snap, work_registration]
-rationale: "OQ-38 (P-8): voluntary quit is an independent ground of ineligibility (4.308.A, S1611) and no fact stated it; is_disqualified_for_work_requirement_noncompliance (CO-040) records a sanction already being served, not the quit that starts one."
+rationale: "OQ-38 (P-8): voluntary quit is an independent ground of ineligibility (4.308.A, S1611) and no fact stated it; snap_is_disqualified_for_work_requirement_noncompliance (CO-040) records a sanction already being served, not the quit that starts one."

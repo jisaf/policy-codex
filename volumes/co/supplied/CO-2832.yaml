@@ -1,0 +1,12 @@
+id: CO-2832
+name: Needs care because of incapacity
+identifier: needs_care_due_to_incapacity
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is physically or mentally incapacitated so as to need another person's care. If not stated, SNAP reads this as false."
+supplied_by: The application; a medical statement where questionable.
+sources: [S121, S126]
+tags: [snap, work_registration, disability]
+rationale: "Same-word audit SW-25: snap_has_responsibility_for_incapacitated_person (CO-065) stated on the caregiver both the care and the other person's incapacity. The care is the regular-care role; the incapacity is a fact about the person cared for."

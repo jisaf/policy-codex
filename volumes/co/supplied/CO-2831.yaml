@@ -1,0 +1,13 @@
+id: CO-2831
+name: "Medicaid: kind of determination"
+identifier: ma_determination_type
+kind: supplied
+type: one of
+scope: person
+program: Medicaid
+options: [initial_application, reapplication_after_break, renewal, change_in_circumstances, between_reviews]
+meaning: "Which determination this is for the person's Medical Assistance or CHP+: initial_application (a first application); reapplication_after_break (an application after a break in coverage); renewal (the regularly scheduled renewal of an enrolled beneficiary); change_in_circumstances (a redetermination of an enrolled beneficiary on a change in circumstances); between_reviews (an enrolled beneficiary's eligibility between those reviews). A fact about the case, not a finding."
+supplied_by: The case record (CBMS) of the determination being made.
+sources: [S1050, S1052, S1053, S1211, S1212]
+tags: [ma, verification]
+rationale: "Same-word audit SW-26 and dual-entry audit 3.22: whether a determination is a renewal was stated twice, in ma_determination_is_renewal (CO-1566) and in the renewal option of ma_community_engagement_review_type (CO-1944). Neither could be derived from the other: CO-1566 counts a reapplication after a break, which 42 CFR 435.556(a)(1) treats as an application. Both are now derived from this one statement of the determination."

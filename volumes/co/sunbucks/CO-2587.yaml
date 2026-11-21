@@ -7,12 +7,12 @@ scope: person-month
 program: SunBucks
 meaning: "Summer EBT (SUN Bucks) verification applies to this person: the child is school aged or enrolled in an NSLP or SBP school. For anyone else the Summer EBT verification status is not_applicable and no Summer EBT element is pending."
 precision: "The test that sebt_verification_status (CO-1698) used for its not_applicable branch, made its own item so that every SUN Bucks pending element and count reads it: an element is pending only where verification applies (county case worker review B2)."
-derived: [any, is_school_aged, is_enrolled_in_nslp_school]
+derived: [any, sebt_is_school_aged, is_enrolled_in_nslp_school]
 sources: [S1090, S1094, S1095]
 implemented: engine
 tags: [sebt, verification]
 rationale: "County case worker review B2: SUN Bucks pending flags and counts were non-zero for people whose SUN Bucks verification status is not_applicable, so a checklist built from the flags asked for documents a program cannot use."
 nearest: [CO-1698]
 tests:
-  - {id: CO-2587-T1, title: "A toddler not enrolled in school", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: false, is_enrolled_in_nslp_school: false}, expect: false}
-  - {id: CO-2587-T2, as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: true}, expect: true}
+  - {id: CO-2587-T1, title: "A toddler not enrolled in school", as_of: "2026-10-01", month: "2026-10", given: {sebt_is_school_aged: false, is_enrolled_in_nslp_school: false}, expect: false}
+  - {id: CO-2587-T2, as_of: "2026-10-01", month: "2026-10", given: {sebt_is_school_aged: true}, expect: true}

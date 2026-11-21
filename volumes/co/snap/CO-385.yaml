@@ -47,10 +47,11 @@ tests:
       snap_meets_resource_limit: true
       shelter_cost_monthly: 1400
       snap_utility_allowance_amount: 0
-      is_homeless: false
+      snap_is_homeless: false
       dependent_care_expense: 0
       child_support_paid_legally_obligated: 0
       medical_expenses_out_of_pocket: 0
+      health_insurance_premiums_paid: 0
     others:
       p2:
         shelter_cost_monthly: 0
@@ -65,7 +66,7 @@ tests:
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
-        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_for_work_requirement_noncompliance: false
         dependent_care_expense: 0
         child_support_paid_legally_obligated: 0
         medical_expenses_out_of_pocket: 0

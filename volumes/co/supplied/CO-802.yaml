@@ -1,6 +1,6 @@
 id: CO-802
 name: In-kind support and maintenance
-identifier: in_kind_support_and_maintenance
+identifier: ssi_in_kind_support_and_maintenance
 kind: supplied
 type: money
 scope: person-month
@@ -10,4 +10,4 @@ precision: "Zero for a person who pays their own shelter costs or lives alone; t
 supplied_by: County eligibility worker's living-arrangement and in-kind income determination (CBMS), from the applicant's declaration and the one-third-of-FBR presumed maximum value rule.
 sources: [S306, S307, S668]
 tags: [non_magi, income]
-rationale: "The phase-4 brief's interface fixes this identifier for this batch. ma_ssi_countable_unearned_income (CO-606) needs a person's in-kind support and maintenance amount to include it as unearned income before applying the general income exclusion, per 8.100.5.F.5.k and 416.1130-416.1140; no existing supplied fact in this volume carries in-kind income."
+rationale: "The phase-4 brief's interface fixes this identifier for this batch. ma_ssi_countable_unearned_income (CO-606) needs a person's in-kind support and maintenance amount to include it as unearned income before applying the general income exclusion, per 8.100.5.F.5.k and 416.1130-416.1140; no existing supplied fact in this volume carries in-kind income. Same-word audit SW-37: renamed from ssi_in_kind_support_and_maintenance so the identifier carries the prefix of the program (or method) whose meaning it states."

@@ -1,0 +1,13 @@
+id: CO-2821
+name: Social Security (title II) benefit type
+identifier: title_ii_benefit_type
+kind: supplied
+type: one of
+scope: person
+program: All
+options: [none, retirement_or_survivor, own_disability, disabled_adult_child, disabled_widow]
+meaning: "The kind of Social Security (title II, OASDI) benefit the person is entitled to and receives, as SSA's benefit record shows it: none; retirement_or_survivor (retirement, a survivor's or an auxiliary benefit not based on the person's own disability); own_disability (disability insurance benefits on the person's own record); disabled_adult_child (childhood disability benefits drawn on a parent's record, beneficiary identification code C); disabled_widow (disabled widow(er)'s benefits). The month's amount is social_security_income."
+supplied_by: "SSA benefit record (BENDEX/SVES): the beneficiary identification code."
+sources: [S442, S626, S849]
+tags: [disability]
+rationale: "Dual-entry audit 3.10: receives_ssdi (CO-1727), receives_oasdi_as_disabled_adult_child (CO-1110) and SNAP's disability payment fact (CO-015) stated overlapping parts of one SSA record. They are now derived from this one statement of it."

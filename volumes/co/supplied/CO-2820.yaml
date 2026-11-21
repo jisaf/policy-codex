@@ -1,0 +1,12 @@
+id: CO-2820
+name: "Medicaid Buy-In: limited disability found by the state contractor"
+identifier: ma_wawd_limited_disability_finding
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the state's disability contractor has determined that the person has a limited disability, the second route 10 CCR 2505-10 § 8.100.6.P.1.d (S317) gives the Buy-In Program for Working Adults with Disabilities beside a disability under the Social Security Administration's medical listing. A finding made outside this volume, recorded as an event. If not stated, Medicaid reads this as false."
+supplied_by: The state disability contractor's determination.
+sources: [S317]
+tags: [non_magi, buy_in, disability]
+rationale: "Same-word audit SW-14 and dual-entry audit 3.13: ma_wawd_is_disabled (CO-806) restated meets_ssa_disability_criteria (CO-011) in its first route. Only the contractor's finding is a fact of its own."

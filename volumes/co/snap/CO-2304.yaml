@@ -7,11 +7,11 @@ scope: person
 program: SNAP
 meaning: "This person is, or is the spouse of, a person granted separate household status under 7 CFR 273.1(b)(2) in the determination month (snap_meets_elderly_disabled_separate_household_election), so the person's household is the electing person and spouse, apart from the others with whom they purchase and prepare food."
 precision: "Read for the determination month, since snap_household_members (CO-305) is stated per person."
-derived: [any, [at, snap_meets_elderly_disabled_separate_household_election, [det_month]], [exists_related, [spouse], [at, [of, [P], snap_meets_elderly_disabled_separate_household_election], [det_month]]]]
+derived: [any, [at, snap_meets_elderly_disabled_separate_household_election, [det_month]], [exists_related, [spouse, holds_out_as_spouse_with], [at, [of, [P], snap_meets_elderly_disabled_separate_household_election], [det_month]]]]
 sources: [S1604, S1605]
 implemented: engine
 tags: [snap, household]
-rationale: "OQ-37: snap_household_members (CO-305) needs to know, for each end of a purchase-and-prepare edge, whether the person belongs to a separate elderly and disabled household; the election itself (CO-419) is computed from the physical residence group, which does not depend on composition, so the composition rule can read it without a cycle."
+rationale: "OQ-37: snap_household_members (CO-305) needs to know, for each end of a purchase-and-prepare edge, whether the person belongs to a separate elderly and disabled household; the election itself (CO-419) is computed from the physical residence group, which does not depend on composition, so the composition rule can read it without a cycle. Same-word audit SW-6: SNAP's spouses include persons living together who are free to marry and represent themselves as spouses (7 CFR 273.1(b)(1)(i), S4 B), so the holds_out_as_spouse_with role is read beside the legal spouse."
 tests:
   - {id: CO-2304-T1, title: "The electing person", as_of: "2026-10-01", given: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": true}}, relationships: [], expect: true}
   - {id: CO-2304-T2, title: "The electing person's spouse", as_of: "2026-10-01", given: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": false}}, others: {p2: {snap_meets_elderly_disabled_separate_household_election: {"2026-10": true}}}, relationships: [[spouse, p1, p2]], expect: true}

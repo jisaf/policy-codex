@@ -1,0 +1,12 @@
+id: CO-2822
+name: Receives a disability-based supplementary payment
+identifier: receives_disability_based_state_supplement
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person receives federally or State-administered supplementary benefits under section 1616(a) of the Social Security Act whose eligibility is based on the disability or blindness criteria of title XVI, or supplementary benefits under section 212(a) of Pub. L. 93-66 (7 CFR 271.2, \"Elderly or disabled member\" (3)-(4), S6, S1951). It is not SSI itself (receives_ssi) and not state general assistance (receives_disability_based_general_assistance)."
+supplied_by: SSA or state supplement payment record.
+sources: [S6, S1951]
+tags: [snap, disability]
+rationale: "Same-word audit SW-14: SNAP's snap_receives_disability_or_blindness_payment (CO-015) bundled SSDI, which receives_ssdi states, with the supplementary benefits; only the supplementary benefits are a fact of their own."

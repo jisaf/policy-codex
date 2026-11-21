@@ -6,13 +6,14 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether the person is of an age to be an unemancipated child under 10 CCR 2505-10 § 8.100.5.H.2.a: under 18, or under ma_ssi_unemancipated_student_age_limit and regularly attending a school, college or university or receiving technical training. Living in the same household with a parent is tested where the item is read, through the parent edge."
-derived: [any, [<, age, ma_ssi_unemancipated_child_age_limit], [all, [<, age, ma_ssi_unemancipated_student_age_limit], ma_is_regularly_attending_school_or_training]]
+derived: [all, [not, [otherwise, is_emancipated_minor, false]], [any, [<, age, ma_ssi_unemancipated_child_age_limit], [all, [<, age, ma_ssi_unemancipated_student_age_limit], ma_is_regularly_attending_school_or_training]]]
 sources: [S1506]
 implemented: engine
 tags: [ma, non_magi, age]
-rationale: "OQ-83: the ineligible child allocation and the one-third child support reduction apply to unemancipated children."
+rationale: "Same-word audit SW-16: an emancipated minor is not an unemancipated child, so the item reads is_emancipated_minor (CO-843). OQ-83: the ineligible child allocation and the one-third child support reduction apply to unemancipated children."
 tests:
   - {id: CO-2275-T1, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01"}, expect: true}
   - {id: CO-2275-T2, as_of: "2026-10-01", given: {date_of_birth: "2007-01-01", ma_is_regularly_attending_school_or_training: true}, expect: true}
   - {id: CO-2275-T3, as_of: "2026-10-01", given: {date_of_birth: "2007-01-01", ma_is_regularly_attending_school_or_training: false}, expect: false}
   - {id: CO-2275-T4, as_of: "2026-10-01", given: {date_of_birth: "1990-01-01"}, expect: false}
+  - {id: CO-2275-T9, title: "SW-16: an emancipated 17-year-old", as_of: "2026-11-01", given: {age: 17, is_emancipated_minor: true}, expect: false}
