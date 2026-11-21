@@ -142,7 +142,9 @@ export function parseInline(
     return ["shared_relative", m[1].trim()];
   }
   if ((m = s.match(/^the persons joined to this person by (.+)$/))) {
-    const q = splitTop(m[1], " such that ");
+    // ", crossing an edge only where" is the rendered form; " such that" is
+    // the form written before the engineering review and is still read.
+    const q = splitTop(m[1], ", crossing an edge only where ") ?? splitTop(m[1], " such that ");
     const roles = (q ? q[0] : m[1]).split(" or ").map((x) => x.trim());
     return q ? ["reachable", roles, p(q[1])] : ["reachable", roles];
   }
@@ -247,8 +249,8 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
       .split(",").map((x) => x.trim()).filter(Boolean);
     return ["exists_related", rels, parseBlockLines(ix, rest, options)];
   }
-  if ((m = txt.match(/^the persons joined to this person by (.+) such that$/))) {
-    if (!rest.length) throw new Error("such that: missing condition");
+  if ((m = txt.match(/^the persons joined to this person by (.+?)(?:, crossing an edge only where| such that)$/))) {
+    if (!rest.length) throw new Error("crossing an edge only where: missing condition");
     const roles = m[1].split(" or ").map((x) => x.trim());
     return ["reachable", roles, parseBlockLines(ix, rest, options)];
   }

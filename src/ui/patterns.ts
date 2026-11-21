@@ -43,7 +43,7 @@ export const LABEL: Record<string, string> = {
   round: "… rounded to the nearest whole dollar", count: "the number of persons in [group]",
   sum: "the sum of … for each person in [group]", persons: "every person in the case",
   filter: "all persons in [group] such that …",
-  reachable: "the persons joined to this person by [relationship] (such that …)",
+  reachable: "the persons joined to this person by [relationship] (, crossing an edge only where …)",
   shared_relative: "the persons who share a [relationship] with this person",
   has_relative_in: "that person is a [relationship] of a person in [group]",
 };

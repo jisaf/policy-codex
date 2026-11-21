@@ -89,15 +89,17 @@ describe("group patterns", () => {
     expect(evaluate(ix, c5, "mandatory_unit", "p2", null)).toEqual(["p1", "p2"]);
     expect(evaluate(ix, c5, "mandatory_unit", "p3", null)).toEqual(["p3", "p4"]);
     const text = [
-      "the persons joined to this person by buys_prepares_with or parent such that",
+      "the persons joined to this person by buys_prepares_with or parent, crossing an edge only where",
       "  any of the following is true:",
       "    - this person is a buys_prepares_with of that person",
       "    - that person's Age is less than 22",
     ].join("\n");
     const e = parseDerivation(ix, text);
     expect(block(ix, e).join("\n")).toBe(text);
-    expect(inline(ix, parseInline(ix, "the persons joined to this person by spouse such that that person's Age is at least 18")))
-      .toBe("the persons joined to this person by spouse such that that person's Age is at least 18");
+    expect(inline(ix, parseInline(ix, "the persons joined to this person by spouse, crossing an edge only where that person's Age is at least 18")))
+      .toBe("the persons joined to this person by spouse, crossing an edge only where that person's Age is at least 18");
+    // The wording written before the engineering review still parses.
+    expect(parseDerivation(ix, text.replace(", crossing an edge only where", " such that"))).toEqual(e);
   });
   it("finds the persons who share a parent", () => {
     const c6 = makeCase(ix, {

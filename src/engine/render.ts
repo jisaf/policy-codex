@@ -49,7 +49,10 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "shared_relative": return `the persons who share a ${e[1]} with this person`;
     case "reachable": {
       const head = "the persons joined to this person by " + (e[1] as string[]).join(" or ");
-      return e.length > 2 ? `${head} such that ${i(e[2])}` : head;
+      // Not "such that": the condition gates each edge of the walk (this
+      // person = the person reached, that person = the one across the
+      // edge); it is not a filter on the result (docs/operators.md).
+      return e.length > 2 ? `${head}, crossing an edge only where ${i(e[2])}` : head;
     }
     case "years_between": return `the number of whole years between ${i(e[1])} and ${i(e[2])}`;
     case "first_day": return `the first day of ${i(e[1])}`;
@@ -128,7 +131,7 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
   if (op === "reachable") {
     if (e.length < 3 || !(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
     return [
-      pad + `the persons joined to this person by ${(e[1] as string[]).join(" or ")} such that`,
+      pad + `the persons joined to this person by ${(e[1] as string[]).join(" or ")}, crossing an edge only where`,
       ...block(ix, e[2], indent + 1),
     ];
   }
