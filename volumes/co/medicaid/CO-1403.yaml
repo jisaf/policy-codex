@@ -1,0 +1,18 @@
+id: CO-1403
+name: "Medicaid: requires verification of earned income"
+identifier: ma_requires_verification_of_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person must document earned income for Medical Assistance: wages that an electronic data source could not verify, or that are not reasonably compatible with the data, or that are questionable; and self-employment income only when the ledger is questionable."
+derived: [any, [all, [">", earned_income, 0], [any, [not, earned_income_verified_by_electronic_data_source], [not, ma_income_is_reasonably_compatible], earned_income_attestation_is_questionable]], [all, [">", self_employment_net_income, 0], earned_income_attestation_is_questionable]]
+sources: [S861, S864, S865, S867, S838]
+implemented: engine
+tags: [verification, ma, income]
+rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
+tests:
+  - {id: CO-1403-T1, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 2380, earned_income_verified_by_electronic_data_source: false}, expect: true}
+  - {id: CO-1403-T2, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 2380, earned_income_verified_by_electronic_data_source: true, ma_income_is_reasonably_compatible: true, earned_income_attestation_is_questionable: false, self_employment_net_income: 0}, expect: false}
+  - {id: CO-1403-T3, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 2380, earned_income_verified_by_electronic_data_source: true, ma_income_is_reasonably_compatible: false}, expect: true}
+  - {id: CO-1403-T4, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 600, earned_income_attestation_is_questionable: false}, expect: false}

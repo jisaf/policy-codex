@@ -1,0 +1,18 @@
+id: CO-1401
+name: "Medicaid: requires verification of SSN"
+identifier: ma_requires_verification_of_ssn
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person must furnish a Social Security number (or proof of applying) for Medical Assistance: everyone requesting coverage except a person within an SSN exception, a person eligible only for emergency services, and an eligible newborn."
+derived: [all, [not, ssn_exception_applies], [not, ma_is_emergency_medicaid_only], [not, mother_was_enrolled_in_medicaid_at_birth]]
+sources: [S843, S860]
+implemented: engine
+tags: [verification, ma]
+open: [OQ-321]
+rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
+tests:
+  - {id: CO-1401-T1, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: false, ma_is_emergency_medicaid_only: false, mother_was_enrolled_in_medicaid_at_birth: false}, expect: true}
+  - {id: CO-1401-T2, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: false, ma_is_emergency_medicaid_only: true}, expect: false}
+  - {id: CO-1401-T3, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: true}, expect: false}

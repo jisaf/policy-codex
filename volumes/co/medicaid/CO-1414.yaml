@@ -1,0 +1,17 @@
+id: CO-1414
+name: "Medicaid: verification due date"
+identifier: ma_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date by which documentation other than citizenship, identity and immigration status is due: the request date plus the 30-day income reasonable opportunity period."
+derived: [days_after, ma_income_reasonable_opportunity_days, verification_request_date]
+sources: [S864, S867]
+implemented: engine
+tags: [verification, ma, income]
+open: [OQ-303]
+rationale: No existing item states when requested Medical Assistance documentation is due.
+nearest: [CO-1392, CO-1426, CO-1437, CO-1450, CO-1461]
+tests:
+  - {id: CO-1414-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-31"}

@@ -1,0 +1,18 @@
+id: CO-1396
+name: "Medicaid: citizenship document is stand-alone"
+identifier: ma_citizenship_document_is_stand_alone
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the citizenship document provided establishes both citizenship and identity on its own for Medical Assistance: a U.S. passport, certificate of naturalization or citizenship, tribal membership document, a driver's license from a state requiring proof of citizenship, or a state vital statistics match."
+derived: [in, citizenship_verification_document_type, [us_passport, certificate_of_naturalization, certificate_of_citizenship, tribal_membership_document, drivers_license_requiring_proof_of_citizenship, vital_statistics_record_match]]
+sources: [S845, S855]
+implemented: engine
+tags: [verification, ma, immigration]
+open: [OQ-305]
+rationale: 42 CFR 435.407(a) (S845) and 8.100.3.H.2.a (S855) set the stand-alone tier; no existing item reads the document type.
+nearest: [CO-1368]
+tests:
+  - {id: CO-1396-T1, as_of: "2026-10-01", given: {citizenship_verification_document_type: us_passport}, expect: true}
+  - {id: CO-1396-T2, as_of: "2026-10-01", given: {citizenship_verification_document_type: us_public_birth_certificate}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-1397
+name: "Medicaid: citizenship document is acceptable"
+identifier: ma_citizenship_document_is_acceptable
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the citizenship document provided is satisfactory documentary evidence for Medical Assistance: a stand-alone document, or one of the other evidence of citizenship listed in 42 CFR 435.407(b) and 8.100.3.H.2.b-c, including the affidavit of last resort."
+derived: [any, ma_citizenship_document_is_stand_alone, [in, citizenship_verification_document_type, [us_public_birth_certificate, certification_of_birth_abroad, consular_report_of_birth_abroad, us_citizen_id_card, northern_mariana_id_card, american_indian_card, adoption_decree_showing_us_birth, civil_service_employment_before_june_1976, military_record_showing_us_birth, child_citizenship_act_documentation, hospital_record_of_birth, insurance_record_showing_us_birth, religious_record_of_birth, early_school_record, census_record, other_us_birth_record, institutional_admission_papers, medical_record_showing_us_birth, citizenship_affidavit]]]
+sources: [S845, S846, S847, S855, S856]
+implemented: engine
+tags: [verification, ma, immigration]
+rationale: No existing item reads the citizenship document type against the Medical Assistance lists.
+tests:
+  - {id: CO-1397-T1, as_of: "2026-10-01", given: {citizenship_verification_document_type: us_passport}, expect: true}
+  - {id: CO-1397-T2, as_of: "2026-10-01", given: {citizenship_verification_document_type: hospital_record_of_birth}, expect: true}
+  - {id: CO-1397-T3, as_of: "2026-10-01", given: {citizenship_verification_document_type: third_party_citizenship_statement}, expect: false}
