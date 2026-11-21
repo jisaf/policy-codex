@@ -13,6 +13,10 @@ reports each as a warning until it is fixed at the source.
 Item ids are as of commit `d2ec54e`; re-run `npm run check` for the current
 list (its warnings name every test and case input below).
 
+**Status (item follow-up pass, 2026-11-21).** Every section below is marked
+**Done**, **Done in part** or **Not done** with what was changed. Branch
+`ccr-9d19bf4c-wmnwcl`; the commits are named "engineering follow-up N".
+
 ## 1. Quote the `=` operator (mechanical)
 
 YAML 1.1 parsers (PyYAML, SnakeYAML 1.x) read a bare `=` in a flow sequence
@@ -80,6 +84,9 @@ accepts the bare form too. For portability, replace every `[=, ` with
 A one-line pass: `sed -i 's/\[=, /["=", /g'` over these files, then `npm run
 check` (the parsed trees are identical, so nothing else changes).
 
+**Done.** The 78 bare `=` left after the earlier rounds (44 files) are
+`"="`; prose that quotes a derivation keeps its bare form.
+
 ## 2. Test inputs no engine reads
 
 Each is dropped from the suite and listed under the case's `ignored`; fix
@@ -106,6 +113,9 @@ delete). The value equals the ledger's in every test except two:
   (`cccap_sud_treatment_activity_start_date`). These pass today only because
   the stated value happens to equal the ledger's.
 
+**Done.** All 37 tests state these values under `parameters:` (CO-951-T8/T9
+keep the floor at 0: they test the proration, which stays above any floor).
+
 **Identifiers no item has** in `volumes/co/tests/cases.yaml` (stale names;
 rename to the current identifier or delete):
 
@@ -113,6 +123,11 @@ rename to the current identifier or delete):
 - `lpr_entry_date`: CO-01 p2, CO-02 p2, CO-04 p1, p2
 - `transfers_within_lookback`: CO-01 p1
 - `utility_allowance_amount`: CO-92 p1, p2
+
+**Done.** `has_domestic_violence_waiver` is renamed to
+`has_domestic_violence_extension_approved` (CO-846); `lpr_entry_date`,
+`transfers_within_lookback` and `utility_allowance_amount` are deleted (each
+restated a fact the case already states, or one an item derives).
 
 **Household cases that state derived values** (Corticon B-3). A stated
 value replaces the item's rule, so these cases do not test that rule; the
@@ -123,8 +138,15 @@ rule reads, or say in the case title why the value is stated:
 - CO-08: `cw_eligibility_status`, `cw_grant_amount` (p1-p4, p6)
 - CO-83: `meets_public_assistance_citizenship_requirement` (p1-p3)
 
+**Done.** CO-01/CO-02 no longer stated `ma_mmmna_standard` (HCPF round). CO-08
+states what Colorado Works reads and derives the same values (p6 now
+`ineligible_no_dependent_child`, which no expectation reads); CO-83's
+citizens derive `true`. `conformance/known-failures.json` is empty.
+
 **Wrong place:** CO-72 states `has_income_trust` (a person fact) under
 `months`; move it to the person's `facts`.
+
+**Done** (it was under `month_defaults`).
 
 **Persons named only in a relationship triple** (declare them, with the facts
 the test means them to have, or drop the triples):
@@ -137,6 +159,11 @@ the test means them to have, or drop the triples):
   nothing stated for p2, the result is unknown because p2's
   `snap_is_household_member` is).
 - CO-1002-T1, CO-1002-T4: p2 appears only in a triple.
+
+**Done.** CO-305-T1 declares the spouse p2 and drops `others.p1`; the
+expectation is now `[p1, p2, p3, p4, p5]` (the spouse edge always crosses,
+7 CFR 273.1(b)(1)(i)). CO-1002-T1/T4 name p1 as p4's parent; p4 and p5 have no
+income, so the expectations are unchanged.
 
 ## 3. Time logic inside derivations
 
@@ -167,6 +194,16 @@ the policy owner.
   operator (an engine change, not made in this round: it should land with
   the items that use it), then rewrite both items.
 
+**Done.** CO-1289: one marginal formula; the switch from 3.124.P to Q is in
+the versions of the band rates (15% from July 2021, then 3/5/7%) and the
+per-child amount ($15, then 0); CO-1285 removed (no reader); it now follows
+the determination date (new test CO-1289-T8). CO-1190 already read
+parameters (HCPF round) and compares them with the month of discharge, which
+is the event date the exclusion is about, so it stays per month. CO-1215,
+CO-306 and CO-1672 read date parameters (CO-2600, CO-2601, CO-279). New
+operator `month_of_year` (P49); CO-1006 and CO-1292 use it (CO-2605 for
+August).
+
 ## 4. Money and rounding
 
 Money is not rounded unless a rule rounds (docs/operators.md, Numbers;
@@ -181,6 +218,15 @@ or to whole dollars) and, if it does, add the rounding to the derivation:
 - CO-1750 `ma_ssi_poverty_guideline_monthly` (annual / 12, e.g. 1803.33...)
 - CO-402 `snap_weekly_hours_worked` (hours, e.g. 31.846153846153847)
 
+**Done.** CO-1289: no rounding in the formula; 3.124.A drops the cents in
+`cccap_parent_fee` (CO-1290), which already floors. CO-951/CO-952: 9 CCR
+2503-5 3.581.D-E (S1825) states a partial-month table and drops the cents
+from every payment except where SSI income reduces the grant; new CO-2602,
+CO-2603, CO-2604; CO-951-T8 changes from 604.6451612903226 to 616
+(852 x .72329 = 616.24308, cents dropped); OQ-491 resolved. CO-658, CO-1750
+and CO-402: no governing text rounds (§ 8.100.7.T, the HHS guidelines over
+twelve, 7 CFR 273.24's hours), so they stay unrounded.
+
 ## 5. Division by an empty household
 
 A division by zero is now unknown (and a warning) instead of NaN. These
@@ -192,6 +238,8 @@ CO-371 `snap_counted_earned_income_of_ineligible_member`, CO-2300
 `snap_counted_dependent_care_expense_of_member`. No current test or case
 reaches the zero.
 
+**Done.** Each gives 0 for a prorated member with no household, with a test.
+
 ## 6. Parameters with no version on the volume's default date
 
 `npm run check` warns: CO-875 `leap_income_limit_monthly` (first version
@@ -199,6 +247,11 @@ reaches the zero.
 version on `default_as_of` 2026-10-01. The CCCAP bands are read only from
 2028-08, so that is expected; for CO-875, either add the previous season's
 limit or confirm that LEAP is never determined before 2026-11-01.
+
+**Done in part.** The CCCAP bands have versions from July 2021 (section 3).
+CO-875 keeps its warning by design: LEAP is determined only within the
+season (leap_month_in_eligibility_period), and the 2025-2026 table is
+published only on cdhs.colorado.gov, which is refused (OQ-532).
 
 ## 7. Item metadata
 
@@ -224,6 +277,10 @@ limit or confirm that LEAP is never determined before 2026-11-01.
   (so household cases test it) or say in its meaning that it is
   informational.
 
+**Done.** `implemented: engine` removed from the 35 parameters (CO-1285
+deleted, CO-1286 in section 3). CO-333 no longer lists OQ-1. The 16 items say
+in their meaning that they are informational, and why.
+
 ## 8. Tests to write
 
 - **Unit-isolated rule tests** (Drools N-4, fact-graph S6): the suite now
@@ -241,6 +298,12 @@ limit or confirm that LEAP is never determined before 2026-11-01.
   per program, with the expected list of missing facts reviewed by the
   program owner, would pin the explanation as well as the value.
 
+**Done in part.** The month-window case is CO-93 (the ABAWD months of July to
+September 2026 counted in June 2028). Not done: unit-isolated rule tests for
+the derived items that have none (287 at the start of this pass), and the
+hand-written cannot-determine cases, whose missing-fact lists need the
+program owners' review.
+
 ## 9. Modelling questions for the policy owners
 
 - **Case-wide facts held per person** (Drools N-3, Corticon N-4, fact-graph
@@ -255,3 +318,5 @@ limit or confirm that LEAP is never determined before 2026-11-01.
 - **MAGI depends on Colorado Works** (fact-graph N2):
   `ma_magi_eligibility_status` reaches `cw_eligibility_status` through CO-510
   -> CO-1150 -> CO-953 -> CO-1511. Confirm that is intended.
+
+**Recorded** as OQ-541 and OQ-542 for the policy owners.
