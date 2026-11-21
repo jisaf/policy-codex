@@ -1,0 +1,17 @@
+id: CO-2872
+name: "af has countable unearned income"
+identifier: af_has_countable_unearned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the person has unearned income in the month that Adult Financial counts (af_countable_income, CO-946, reads these sources): every unearned source but the Adult Financial grant itself."
+derived: [">", [+, social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], 0]
+sources: [S875, S880]
+implemented: engine
+tags: [cash, income, verification]
+rationale: "Same-word audit SW-27: the shared has_unearned_income (CO-1357, retired) summed every unearned source, each program's own grant included, and five programs read it as the unearned income they count, so a CCCAP household whose only unearned income is its Colorado Works grant had an element to verify. Each program reads its own sources."
+nearest: [CO-2870, CO-2871, CO-2873, CO-2874]
+tests:
+  - {id: CO-2872-T1, title: "Only the Colorado Works grant", month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, tanf_cash_income: 488, ma_is_aged_blind_or_disabled: false}, expect: true}
+  - {id: CO-2872-T2, title: "Child support received", month: "2026-11", as_of: "2026-11-01", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 200, ma_is_aged_blind_or_disabled: false}, expect: true}

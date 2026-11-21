@@ -33,6 +33,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
@@ -153,10 +154,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -192,7 +189,6 @@
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -221,7 +217,6 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
         sex: female
@@ -241,7 +236,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -285,6 +279,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
@@ -399,10 +394,6 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_pace: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -440,7 +431,6 @@
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -471,7 +461,6 @@
         incurs_telephone_cost: true
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         qualified_status_date: "1998-05-14"
         us_entry_date: "1998-05-14"
@@ -487,7 +476,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -531,6 +519,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
@@ -645,10 +634,6 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -676,7 +661,6 @@
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -702,7 +686,6 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
@@ -716,7 +699,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -755,6 +737,9 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
+        education_enrollment_intensity: full_time
+        expected_program_completion_date: "2028-02-08"
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -905,7 +890,6 @@
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
         is_tax_filer: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -931,7 +915,6 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
@@ -939,16 +922,11 @@
         sex: female
         citizenship_status: citizen
         state_of_residence: CO
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: true
-        is_attending_high_school: true
-        cccap_is_in_education_or_training_activity: true
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -987,6 +965,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        education_program_type: none
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -1104,10 +1083,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -1137,7 +1112,6 @@
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
         is_tax_filer: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -1163,7 +1137,6 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
@@ -1176,7 +1149,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -1444,7 +1416,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_person_pending_status_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-10": false}
@@ -1614,7 +1585,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_person_pending_status_verification_count: {"2026-10": 0}
       af_age_verification_is_pending: {"2026-10": false}
@@ -1784,7 +1754,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_person_pending_status_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-10": false}
@@ -1956,7 +1925,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 1}
       cw_person_pending_status_verification_count: {"2026-10": 1}
       af_age_verification_is_pending: {"2026-10": false}
@@ -2120,7 +2088,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 1}
       cw_person_pending_status_verification_count: {"2026-10": 1}
       af_age_verification_is_pending: {"2026-10": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
@@ -2196,6 +2163,7 @@
   persons:
     p1:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
@@ -2318,10 +2286,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -2364,7 +2328,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -2393,7 +2356,6 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         date_of_birth: "1947-03-12"
         citizenship_status: citizen
@@ -2405,7 +2367,6 @@
         meets_nursing_facility_level_of_care: true
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -2448,6 +2409,7 @@
         pension_income: 610
     p2:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
         child_welfare_payment_type: none
@@ -2564,10 +2526,6 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_pace: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -2611,7 +2569,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -2642,7 +2599,6 @@
         incurs_telephone_cost: true
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         qualified_status_date: "1998-05-14"
         us_entry_date: "1998-05-14"
@@ -2651,7 +2607,6 @@
         state_of_residence: CO
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -2694,6 +2649,7 @@
         social_security_income: 1180
     p3:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
@@ -2810,10 +2766,6 @@
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -2847,7 +2799,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -2873,14 +2824,12 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         date_of_birth: "1985-01-22"
         citizenship_status: undocumented
         state_of_residence: CO
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -2918,6 +2867,9 @@
         hours_worked: 138
     p4:
       facts:
+        education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
+        education_enrollment_intensity: full_time
+        expected_program_completion_date: "2028-02-08"
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -3074,7 +3026,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -3100,18 +3051,12 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         date_of_birth: "2009-04-08"
         citizenship_status: citizen
         state_of_residence: CO
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: true
-        is_attending_high_school: true
-        cccap_is_in_education_or_training_activity: true
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -3149,6 +3094,7 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        education_program_type: none
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -3268,10 +3214,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -3305,7 +3247,6 @@
         af_has_total_disability_six_months: false
         is_blind: false
         is_pregnant: false
-        is_enrolled_higher_education_half_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -3331,14 +3272,12 @@
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         date_of_birth: "2026-02-03"
         citizenship_status: citizen
         state_of_residence: CO
-        is_in_workforce_training_or_post_secondary_education: false
         shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -3577,7 +3516,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-11": false}
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
-      unearned_income_verification_is_pending: {"2026-11": false}
       cw_person_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_person_pending_status_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-11": false}
@@ -3751,7 +3689,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-11": false}
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
-      unearned_income_verification_is_pending: {"2026-11": false}
       cw_person_pending_verification_count: {"2026-11": 0}
       cw_person_pending_status_verification_count: {"2026-11": 0}
       af_age_verification_is_pending: {"2026-11": false}
@@ -3918,7 +3855,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-11": false}
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
-      unearned_income_verification_is_pending: {"2026-11": false}
       cw_person_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cw_person_pending_status_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_age_verification_is_pending: {"2026-11": false}
@@ -4090,7 +4026,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-11": false}
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
-      unearned_income_verification_is_pending: {"2026-11": false}
       cw_person_pending_verification_count: {"2026-11": 1}
       cw_person_pending_status_verification_count: {"2026-11": 1}
       af_age_verification_is_pending: {"2026-11": false}
@@ -4254,7 +4189,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-11": false}
       cw_pregnancy_verification_is_pending: {"2026-11": false}
       cw_sponsor_verification_is_pending: {"2026-11": false}
-      unearned_income_verification_is_pending: {"2026-11": false}
       cw_person_pending_verification_count: {"2026-11": 1}
       cw_person_pending_status_verification_count: {"2026-11": 1}
       af_age_verification_is_pending: {"2026-11": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
@@ -4319,6 +4253,7 @@
     p1:
       # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
@@ -4329,8 +4264,6 @@
         # initial month and the minimum allotment applies (4.000.1 "Initial month of application"; 4.207.3.C).
         snap_determination_is_recertification: true
         snap_application_date: "2026-09-15"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -4403,6 +4336,7 @@
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
@@ -4412,8 +4346,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: true  # phase-10 sweep (OQ-38)
         snap_application_date: "2026-09-15"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -4665,6 +4597,9 @@
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
+        education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
+        education_enrollment_intensity: full_time
+        expected_program_completion_date: "2027-03-15"
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         is_inmate_of_public_institution: false
@@ -4679,10 +4614,6 @@
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: true
-        is_attending_high_school: true
-        cccap_is_in_education_or_training_activity: true
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -5068,6 +4999,9 @@
       # zeroed out of her own household total. Stating her as required to file sidesteps that defect
       # here (its top-level condition is "not required to file"); the case comment below documents it.
       facts:
+        education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
+        education_enrollment_intensity: full_time
+        expected_program_completion_date: "2029-01-01"
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_start_date: "2026-01-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
@@ -5083,10 +5017,6 @@
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: true
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: true
-        is_attending_high_school: true
-        cccap_is_in_education_or_training_activity: true
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -5574,6 +5504,7 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -5586,10 +5517,6 @@
         marital_status: married
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
@@ -5639,6 +5566,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -5649,10 +5577,6 @@
         marital_status: married
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
@@ -5701,6 +5625,8 @@
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -5711,10 +5637,6 @@
         marital_status: single
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: true
@@ -5761,6 +5683,7 @@
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -5771,10 +5694,6 @@
         marital_status: single
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
@@ -5821,6 +5740,7 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         title_ii_benefit_type: own_disability
         receives_disability_based_state_supplement: false
@@ -5831,10 +5751,6 @@
         marital_status: other
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
@@ -5994,6 +5910,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
@@ -6027,10 +5944,6 @@
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -6060,6 +5973,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
@@ -6094,10 +6008,6 @@
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_in_job_search_activity: true
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -6128,6 +6038,9 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
+        education_enrollment_intensity: full_time
+        expected_program_completion_date: "2031-03-21"
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
@@ -6148,7 +6061,6 @@
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
@@ -6160,10 +6072,6 @@
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: true
-        is_attending_high_school: true
-        cccap_is_in_education_or_training_activity: true
         is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: true
         is_protective_services_child_care_case: false
@@ -6198,6 +6106,9 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
+        education_enrollment_intensity: full_time
+        expected_program_completion_date: "2027-01-13"
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
@@ -6220,7 +6131,6 @@
         cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
-        is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -6231,10 +6141,6 @@
         ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: true
-        is_attending_high_school: true
-        cccap_is_in_education_or_training_activity: true
         is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -6265,6 +6171,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         received_tanf_from_another_state_this_month: false
@@ -6284,10 +6191,6 @@
         citizenship_status: undocumented
         lawful_presence_status: not_lawfully_present
         state_of_residence: "CO"
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -6929,6 +6832,7 @@
         "2026-11": {receives_medicaid: true}
     p3:
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
@@ -6936,10 +6840,6 @@
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         marital_status: single
         county_approved_living_arrangement: false
@@ -6976,15 +6876,13 @@
         work_sanction_level_served: second
     p4:
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         received_tanf_from_another_state_this_month: false   # CDHS review B-1: the grant now reads the unit's status on p4 too
         receives_tanf_cash: true
@@ -7054,6 +6952,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        education_program_type: none
         is_tax_filer: false  # dual-entry 2.4: no income, so no return; the MAGI household is then known
         expects_to_be_claimed_as_dependent: false
         has_qualifying_military_service: false
@@ -7094,12 +6993,6 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7219,6 +7112,8 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         is_tax_filer: false  # dual-entry 2.4: no income, so no return; the MAGI household is then known
         expects_to_be_claimed_as_dependent: false
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
@@ -7261,12 +7156,6 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7482,6 +7371,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         ma_determination_type: initial_application
@@ -7536,12 +7426,6 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7664,6 +7548,8 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         has_qualifying_military_service: false
         child_welfare_payment_type: none
@@ -7720,12 +7606,6 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         federal_five_year_bar_exempt_category: "none"
         snap_is_indian_or_urban_indian: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -7919,7 +7799,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 2}
       cw_person_pending_status_verification_count: {"2026-10": 2}
       af_age_verification_is_pending: {"2026-10": false}
@@ -8022,7 +7901,6 @@
       cw_school_enrollment_verification_is_pending: {"2026-10": false}
       cw_pregnancy_verification_is_pending: {"2026-10": false}
       cw_sponsor_verification_is_pending: {"2026-10": false}
-      unearned_income_verification_is_pending: {"2026-10": false}
       cw_person_pending_verification_count: {"2026-10": 1}
       cw_person_pending_status_verification_count: {"2026-10": 1}
       af_age_verification_is_pending: {"2026-10": false}
@@ -8260,6 +8138,7 @@
         hours_worked: 160
     p4:
       facts:
+        education_program_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         is_inmate_of_public_institution: false
@@ -8279,7 +8158,6 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
@@ -8350,6 +8228,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -8360,8 +8239,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -8440,6 +8317,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -8450,8 +8328,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -8531,6 +8407,7 @@
     p3:
       # Daughter, 8.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -8541,8 +8418,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -8615,7 +8490,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        is_full_time_secondary_student_finishing_before_nineteen: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -8676,6 +8550,7 @@
   persons:
     p1:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -8695,7 +8570,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8736,6 +8610,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -8755,7 +8630,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8796,6 +8670,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -8815,7 +8690,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8857,6 +8731,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -8876,7 +8751,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -8963,6 +8837,7 @@
   persons:
     p1:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -8982,7 +8857,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9023,6 +8897,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9042,7 +8917,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9083,6 +8957,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9102,7 +8977,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9144,6 +9018,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9163,7 +9038,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9257,6 +9131,7 @@
   persons:
     p1:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9276,7 +9151,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9318,6 +9192,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9337,7 +9212,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9379,6 +9253,7 @@
         "2026-10": {"wages_gross": 5700}
     p3:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9398,7 +9273,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9440,6 +9314,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9459,7 +9334,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9535,6 +9409,7 @@
   persons:
     p1:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9554,7 +9429,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9603,6 +9477,7 @@
         "2026-09": {"ma_prior_enrollment_category": parent_caretaker}
     p2:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9622,7 +9497,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9663,6 +9537,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9682,7 +9557,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9755,6 +9629,7 @@
   persons:
     p1:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9774,7 +9649,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9817,6 +9691,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9836,7 +9711,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9879,6 +9753,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9898,7 +9773,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -9941,6 +9815,7 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         state_of_residence: CO
@@ -9960,7 +9835,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
         ma_is_indian: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
         lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
@@ -10025,6 +9899,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -10035,8 +9910,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10115,6 +9988,7 @@
     p2:
       # Her son, 5.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -10125,8 +9999,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10199,13 +10071,13 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        is_full_time_secondary_student_finishing_before_nineteen: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -10216,8 +10088,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10298,6 +10168,7 @@
     p4:
       # Her daughter, 11.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -10308,8 +10179,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10382,7 +10251,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        is_full_time_secondary_student_finishing_before_nineteen: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
       month_defaults:
@@ -10391,6 +10259,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -10401,8 +10270,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10481,6 +10348,7 @@
     p6:
       # Her son, 7.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -10491,8 +10359,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10565,7 +10431,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        is_full_time_secondary_student_finishing_before_nineteen: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -10606,6 +10471,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
@@ -10613,10 +10479,6 @@
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         marital_status: single
         county_approved_living_arrangement: false
@@ -10654,15 +10516,13 @@
     p2:
       # Her son; $200 a month of current support.
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: false
@@ -10696,6 +10556,7 @@
     p3:
       # Recipient mother at redetermination.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
@@ -10703,10 +10564,6 @@
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         marital_status: single
         county_approved_living_arrangement: false
@@ -10746,15 +10603,13 @@
     p4:
       # Support in 6 of 6 months, average $550.
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
@@ -10789,6 +10644,7 @@
     p5:
       # Recipient mother at redetermination.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
@@ -10796,10 +10652,6 @@
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         marital_status: single
         county_approved_living_arrangement: false
@@ -10839,15 +10691,13 @@
     p6:
       # Support in 5 of 6 months, average $600.
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
@@ -10886,6 +10736,7 @@
     p7:
       # Recipient mother at redetermination.
       facts:
+        education_program_type: none
         child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
@@ -10893,10 +10744,6 @@
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: false
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: false
         is_emancipated_minor: false
         marital_status: single
         county_approved_living_arrangement: false
@@ -10936,15 +10783,13 @@
     p8:
       # Support in 6 of 6 months, average $450.
       facts:
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
         child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
         is_pregnant: false
-        snap_is_enrolled_half_time_in_school_or_training: true
-        is_full_time_secondary_student_finishing_before_nineteen: false
-        is_attending_high_school: false
-        cccap_is_in_education_or_training_activity: true
         receives_ssi: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
@@ -11009,6 +10854,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11019,8 +10865,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11100,6 +10944,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11110,8 +10955,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-12"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11219,6 +11062,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11229,8 +11073,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11302,7 +11144,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
       months:
         2026-07:
           received_full_snap_benefit_month: true
@@ -11331,6 +11172,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11341,8 +11183,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11414,7 +11254,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -11455,6 +11294,7 @@
     p1:
       # 35, refuses to give an SSN, earns $1,200.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11465,8 +11305,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11538,7 +11376,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
         snap_is_disqualified_for_ssn_refusal: true
       month_defaults:
         complies_with_tanf_work_requirements: false
@@ -11546,6 +11383,7 @@
     p2:
       # Her son, 10.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11556,8 +11394,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11629,13 +11465,13 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11646,8 +11482,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2026-10-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11719,7 +11553,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
         snap_is_disqualified_convicted_felon: true
       months:
         2026-07:
@@ -11762,6 +11595,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11772,8 +11606,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2028-08-10"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11852,6 +11684,7 @@
     p2:
       # Her daughter.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11862,8 +11695,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2028-08-10"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11936,7 +11767,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        is_full_time_secondary_student_finishing_before_nineteen: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -11963,6 +11793,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -11973,8 +11804,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2028-06-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -12046,7 +11875,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -12081,6 +11909,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        education_program_type: none
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -12091,8 +11920,6 @@
         nighttime_residence_type: fixed_regular_adequate
         snap_determination_is_recertification: false
         snap_application_date: "2028-06-01"
-        is_enrolled_higher_education_half_time: false
-        is_enrolled_higher_education_full_time: false
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -12164,7 +11991,6 @@
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
-        snap_is_enrolled_half_time_in_school_or_training: false
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false

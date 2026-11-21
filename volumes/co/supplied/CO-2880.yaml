@@ -1,0 +1,13 @@
+id: CO-2880
+name: Education program type
+identifier: education_program_type
+kind: supplied
+type: one of
+scope: person
+program: All
+options: [none, elementary, secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized, postsecondary_career_and_technical, higher_education, workforce_training, basic_education, teen_parent_education, other_training]
+meaning: "The kind of school or training program the person is enrolled in, as the school or program states it: none; elementary (kindergarten through grade 8); secondary (grades 9 through 12); secondary_career_and_technical (vocational or technical training at the secondary level); high_school_equivalency (classes toward a high school equivalency the State or school district recognizes); home_school_recognized (elementary or secondary classes in a home-school program the district recognizes or supervises); postsecondary_career_and_technical (vocational or technical training after high school); higher_education (a college or university); workforce_training (job skills training leading to a diploma, license or certificate); basic_education (adult basic education or English as a second language); teen_parent_education; other_training. A temporary interruption for a semester or vacation break when enrollment will resume is enrollment."
+supplied_by: The application; the school's or program's enrollment record.
+sources: [S125, S1817, S206, S406, S496, S482, S1016, S1203, S1204, S1506]
+tags: [student]
+rationale: "Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
