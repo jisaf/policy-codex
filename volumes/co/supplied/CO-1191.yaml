@@ -1,14 +1,19 @@
 id: CO-1191
 name: "Medicaid: has creditable coverage for the Breast and Cervical Cancer Program"
 identifier: ma_bccp_has_creditable_coverage
-kind: supplied
+kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether the person has creditable coverage as 10 CCR 2505-10 § 8.715.3 defines it for the Breast and Cervical Cancer Program: benefits or coverage under Medicare, the Colorado Medical Assistance Act, the children's basic health plan, an employee welfare benefit plan or group health plan, an individual health benefit plan, a state health benefits risk pool, TRICARE (chapter 55 of title 10 U.S.C.), a Federal Employees Health Benefits plan (chapter 89 of title 5 U.S.C.), a public health plan or a Peace Corps health benefit plan (C.R.S. 10-16-102(16), which § 8.715.3.A incorporates) - but not limited scope coverage such as dental-only, vision-only or long-term-care-only coverage, coverage only for a specific disease or illness that does not include breast or cervical cancer, or a medical care program run by the Indian Health Service or a tribal organization (§ 8.715.3.B). Coverage with yearly limited drug benefits, yearly limits on outpatient visits or high deductibles is creditable coverage (§ 8.715.3.D)."
-precision: "Coverage the person has today, as of the determination month. Distinct from chp_has_other_health_coverage (CO-090), the CHP+ coverage fact, whose meaning does not carry § 8.715.3.B's exclusions; C.R.S. 10-16-102(16)(e) itself lists Indian Health Service and tribal programs as creditable, which § 8.715.3.B.3 removes for BCCP. § 8.715.3.A incorporates the 2002 edition of 10-16-102; the 2024 text (D-79) is read as stating it (OQ-203). The § 8.715.3.C exceptions are ma_bccp_creditable_coverage_exception_applies (CO-1192)."
-supplied_by: Applicant statement and the Qualified Entity's screening record, with insurance information from the eligibility site's interfaces.
+meaning: "Whether the person has creditable coverage as 10 CCR 2505-10 § 8.715.3 defines it for the Breast and Cervical Cancer Program (C.R.S. 10-16-102(16), which § 8.715.3.A incorporates): Medicare (is_medicare_entitled_or_enrolled, CO-017), Medical Assistance under the Colorado Medical Assistance Act (is_enrolled_in_medical_assistance, CO-2435), or any other creditable coverage on the list (ma_bccp_has_other_creditable_coverage, CO-2712)."
+precision: "Coverage the person has today, as of the determination month. A woman renewing her BCCP coverage is not enrolled in Medical Assistance other than through BCCP, so her own BCCP enrollment is not creditable coverage (is_enrolled_in_medical_assistance's precision). The § 8.715.3.C exceptions are ma_bccp_creditable_coverage_exception_applies (CO-1192)."
+derived: [any, ma_bccp_has_other_creditable_coverage, is_medicare_entitled_or_enrolled, is_enrolled_in_medical_assistance]
 sources: [S610, S672, S674]
 open: [OQ-203]
+implemented: engine
 tags: [ma, medical]
-rationale: "S-11 of the phase 7 review: ma_bccp_eligibility_status (CO-1152) read the CHP+ coverage fact (CO-090), whose meaning does not carry § 8.715.3.B-D. No existing fact states BCCP's definition."
+rationale: "S-11 of the phase 7 review: ma_bccp_eligibility_status (CO-1152) read the CHP+ coverage fact (CO-090), whose meaning does not carry § 8.715.3.B-D. No existing fact states BCCP's definition. Dual-entry audit 4.6 (audit fix round): derived; Medicare and Medical Assistance coverage are read from their own facts, and the rest of the list is ma_bccp_has_other_creditable_coverage (CO-2712)."
+tests:
+  - {id: CO-1191-T1, as_of: "2026-10-01", title: "Enrolled in Medicare Part B", given: {ma_bccp_has_other_creditable_coverage: false, is_medicare_entitled_or_enrolled: true}, expect: true}
+  - {id: CO-1191-T2, as_of: "2026-10-01", title: "Uninsured", given: {ma_bccp_has_other_creditable_coverage: false, is_medicare_entitled_or_enrolled: false, is_enrolled_in_medical_assistance: false}, expect: false}
+  - {id: CO-1191-T3, as_of: "2026-10-01", title: "Group health plan", given: {ma_bccp_has_other_creditable_coverage: true}, expect: true}

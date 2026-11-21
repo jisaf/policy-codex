@@ -1,0 +1,13 @@
+id: CO-2710
+name: Adult Financial program received
+identifier: adult_financial_program_received
+kind: supplied
+type: one of
+options: [none, oap, oap_c, and_so, and_cs, ab]
+scope: person
+program: All
+meaning: "Which Colorado Adult Financial program the person receives, or is authorized to receive, cash assistance under, as the person's Adult Financial case records it: the Old Age Pension (oap; the OAP-A and OAP-B of 10 CCR 2505-10 § 8.100.6.K), OAP-C for a person sixty or older committed by court order to the Colorado Mental Health Institute or a Regional Center (oap_c, 9 CCR 2503-5 3.530.1), Aid to the Needy Disabled State Only (and_so) or Colorado Supplement (and_cs), Aid to the Blind (ab), or none. A fact about the person's Adult Financial case, not this volume's own Adult Financial determination (af_category, CO-953); the amount paid for the month is adult_financial_cash_income (CO-1713)."
+supplied_by: "CBMS Adult Financial case record."
+sources: [S47, S617, S621, S701, S1510]
+tags: [cash, oap]
+rationale: "Heavier-definitions audit H-3 and dual-entry audit 3.8: Medicaid's OAP Health Care and SISC B read \"persons receiving OAP\" (§ 8.100.6.K.2-4, S621; § 8.941.1, S617) from this volume's own Adult Financial determination (af_category), and OAP-C receipt from a separate yes/no (receives_oap_c, CO-2208), while BCE read a third fact (receives_state_cash_assistance, CO-073). One record of the program received now carries all three: CO-073 and CO-2208 are derived from it."

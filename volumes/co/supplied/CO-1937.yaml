@@ -6,6 +6,7 @@ type: yes/no
 scope: person-month
 program: All
 meaning: Whether, this month, the person is exempt from the work requirements of the Food and Nutrition Act (work registration under 7 U.S.C. 2015(d) and the time limit under 2015(o)), as the person's SNAP case records it. A fact about the SNAP case, not this volume's SNAP determination.
+precision: "Read only where this volume cannot determine the person's SNAP exemptions (ma_is_exempt_from_snap_work_requirements, CO-2711, reads it as a fallback)."
 supplied_by: The SNAP case record (CBMS).
 sources: [S1209]
 tags: [ma, snap]

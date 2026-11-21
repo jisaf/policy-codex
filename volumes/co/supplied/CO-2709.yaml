@@ -1,0 +1,12 @@
+id: CO-2709
+name: Work-eligible individual in a Colorado Works case
+identifier: is_work_eligible_individual_in_tanf_case
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether, this month, the county Colorado Works case record determines the person a work-eligible individual (45 CFR 261.2(n), as 9 CCR 2503-6 applies it): a fact about the person's Colorado Works case, not this volume's own Colorado Works determination (cw_is_work_eligible_individual, CO-919)."
+supplied_by: "CBMS Colorado Works case record (the individualized plan and work-eligible status)."
+sources: [S487, S511, S418]
+tags: [cash, household]
+rationale: "Heavier-definitions audit H-2: CCCAP's Colorado Works Child Care is for caretakers \"approved for Colorado Works and ... determined work eligible per Colorado Works rule\" (3.115.A, S487); CCCAP takes those decisions from the Colorado Works case, it does not make them. No fact stated the case's work-eligible determination; receipt is receives_tanf_cash (CO-013)."

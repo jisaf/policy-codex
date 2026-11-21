@@ -1,0 +1,19 @@
+id: CO-2708
+name: "SUN Bucks: a child in the household receives SNAP or TANF"
+identifier: sebt_household_child_receives_snap_or_tanf
+kind: derived
+type: yes/no
+scope: person-month
+program: SunBucks
+meaning: "Whether, this month, this child or another child of the child's household is receiving SNAP or Colorado Works (TANF) assistance: the receipt that makes a child categorically eligible for Summer EBT (7 CFR 292.2, \"one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR\") and that streamlined certification reads from SNAP and TANF records (292.12(d))."
+precision: "Receipt is the record, not this volume's own SNAP or Colorado Works determination: receives_snap (CO-1936, the person is a member of a SNAP household receiving benefits) and receives_tanf_cash (CO-013). The other children of the household are read as the child's siblings (siblings, CO-2609), since no fact states the school meal household's membership (OQ-552). FDPIR receipt is within sebt_other_categorical_basis (CO-1296)."
+derived: [any, receives_snap, receives_tanf_cash, [exists, siblings, [any, [of, [P], receives_snap], [of, [P], receives_tanf_cash]]]]
+sources: [S792, S790, S1095]
+open: [OQ-552]
+implemented: engine
+tags: [sebt]
+rationale: "Heavier-definitions audit H-1 and dual-entry audit 4.2: SUN Bucks read this volume's SNAP eligibility (snap_is_eligible, CO-386) for the child alone, which reaches some 88 SNAP facts, is unknown or false for a household that receives SNAP but has not applied in this case, and missed a sibling's receipt. 292.2 says \"are receiving\", a record. No existing item states receipt for the household's children."
+tests:
+  - {id: CO-2708-T1, as_of: "2026-10-01", month: "2026-10", title: "The child's household receives SNAP", given: {receives_snap: true}, expect: true}
+  - {id: CO-2708-T2, as_of: "2026-10-01", month: "2026-10", title: "The child receives TANF", given: {receives_snap: false, receives_tanf_cash: true}, expect: true}
+  - {id: CO-2708-T3, as_of: "2026-10-01", month: "2026-10", title: "Neither, and no sibling", given: {receives_snap: false, receives_tanf_cash: false, siblings: []}, expect: false}

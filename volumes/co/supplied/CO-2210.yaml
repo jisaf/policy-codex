@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether the person applies for or receives Medical Assistance through a Medicaid Buy-In program - the Buy-In Program for Working Adults with Disabilities (with or without Home and Community-Based Services) or the Buy-In Program for Children with Disabilities (10 CCR 2505-10 §§ 8.100.6.P, 8.100.6.Q, 8.7100.C.3)."
+meaning: "Whether the person is enrolled in Medical Assistance through a Medicaid Buy-In program - the Buy-In Program for Working Adults with Disabilities (with or without Home and Community-Based Services) or the Buy-In Program for Children with Disabilities (10 CCR 2505-10 §§ 8.100.6.P, 8.100.6.Q) - as the person's Medicaid case records it, for § 8.7100.C.3's \"people in the Medicaid Buy-In program\"."
 supplied_by: The Buy-In program the application requests and the eligibility site's category (CBMS).
 sources: [S1509, S376]
 tags: [ma, buy_in, hcbs]
-rationale: "OQ-127: § 8.7100.C.3 says spousal impoverishment rules do not apply to people in the Medicaid Buy-In program. Deriving the route from eligibility would make ma_ltc_couple (CO-643) depend on HCBS eligibility, which depends on the couple test, so the route the person is in is supplied."
+rationale: "OQ-127: § 8.7100.C.3 says spousal impoverishment rules do not apply to people in the Medicaid Buy-In program. Deriving the route from eligibility would make ma_ltc_couple (CO-643) depend on HCBS eligibility, which depends on the couple test, so the route the person is in is supplied. Dual-entry audit 4.4 (audit fix round): \"people in the Medicaid Buy-In program\" (S1509) names enrollment, a record, so the fact stays supplied and its meaning no longer includes a person who only applies; the volume's own Buy-In category (ma_buy_in_category, CO-622) is not read, which also keeps ma_ltc_couple (CO-643) free of the HCBS cycle OQ-127 records."

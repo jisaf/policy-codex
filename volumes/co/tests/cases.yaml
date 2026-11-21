@@ -32,6 +32,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         ma_claims_co_owner_hardship_for_real_property: false
@@ -196,7 +197,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -290,6 +291,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         ma_claims_co_owner_hardship_for_real_property: false
@@ -456,7 +458,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -547,6 +549,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
@@ -698,7 +701,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -774,6 +777,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
@@ -930,7 +934,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -1009,6 +1013,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
@@ -1165,7 +1170,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -1262,7 +1267,14 @@
   # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child for whom care is requested,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30
   # (household composition subject to OQ-163 K-9, which the CDEC must answer).
-  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible. A determination in
+  # SUN Bucks (audit fix round, H-1 and dual-entry 4.2): categorical eligibility reads SNAP and TANF
+  # receipt (7 CFR 292.2, "are receiving"), not this volume's SNAP determination. On 2026-10-01 the
+  # household is applying for SNAP and receives neither SNAP nor TANF, and p4 has no sibling, so p4 is not
+  # categorical. p4 is enrolled in an NSLP school and the household's declared income is 3,560 against the
+  # reduced-price limit of 5,088 for four, so p4 is eligible_income (292.6(b)); was eligible_categorical.
+  # An application-based child's school enrollment must be confirmed (292.12(e)(2)); it is confirmed
+  # (nslp_school_enrollment_confirmed), nothing is pending, so sebt_verification_status is complete (was
+  # not_required). A determination in
   # October or November 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not
   # published, so the amount is unknown (CDHS review C-10; at the 2026 level it would be 40 x 3 = 120).
   # No one is eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing
@@ -1868,7 +1880,7 @@
       cw_diversion_eligible: {"2026-10": false}
       leap_benefit_amount: {"2026-10": 0}
       cccap_parent_fee: {"2026-10": 30}
-      sebt_eligibility_status: {"2026-10": eligible_categorical}
+      sebt_eligibility_status: {"2026-10": eligible_income}  # audit fix round (H-1): was eligible_categorical; see the case comment
       sebt_benefit_amount: {"2026-10": unknown}   # CDHS review C-10: a determination from July 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not published, so the amount is unknown (it was 40 x 3 = 120 at the 2026 level)
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
@@ -2003,7 +2015,7 @@
       leap_zero_income_verification_is_pending: {"2026-10": false}
       leap_person_pending_verification_count: {"2026-10": 0}
       leap_member_is_excluded_for_verification: false
-      sebt_verification_status: {"2026-10": not_required}
+      sebt_verification_status: {"2026-10": complete}  # audit fix round (H-1): was not_required
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
@@ -2210,6 +2222,7 @@
   persons:
     p1:
       facts:
+        receives_snap: false  # audit fix round (H-1): in a nursing facility, outside the SNAP household
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         ma_claims_co_owner_hardship_for_real_property: false
@@ -2383,7 +2396,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -2468,6 +2481,7 @@
         pension_income: 610
     p2:
       facts:
+        receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         ma_claims_co_owner_hardship_for_real_property: false
@@ -2642,7 +2656,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -2724,6 +2738,7 @@
         social_security_income: 1180
     p3:
       facts:
+        receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
@@ -2884,7 +2899,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -2951,6 +2966,7 @@
         hours_worked: 138
     p4:
       facts:
+        receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
@@ -3114,7 +3130,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -3185,6 +3201,7 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
         ma_has_left_required_household: false
@@ -3348,7 +3365,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -3436,7 +3453,8 @@
   # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child for whom care is requested,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30
   # (household composition subject to OQ-163 K-9, which the CDEC must answer).
-  # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible. A determination in
+  # SUN Bucks: p4 (17, in an NSLP school) is categorically eligible: in November the household receives
+  # SNAP on the October application (receives_snap, audit fix round H-1; 7 CFR 292.2 reads receipt). A determination in
   # October or November 2026 is for summer 2027 (sebt_summer_year), whose benefit level FNS has not
   # published, so the amount is unknown (CDHS review C-10; at the 2026 level it would be 40 x 3 = 120).
   # No one is eligible for HCA (no functional scores), burial (no decedent) or diversion (needs ongoing
@@ -4364,7 +4382,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -4445,7 +4463,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -5603,7 +5621,7 @@
       facts:
         # Phase-10 sweep (OQ-114): the parents are enrolled in Medicaid as Colorado Works parents, and each has income
         # within the SSI standard ($400 and $0 against $994), so neither's income is deemed to Alma (3.549.E-F).
-        receives_medicaid: true
+        is_enrolled_in_medical_assistance: true
         date_of_birth: "1992-03-14"
         sex: female
         immigration_status: us_citizen
@@ -5666,7 +5684,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
-        receives_medicaid: true  # phase-10 sweep (OQ-114), see p1
+        is_enrolled_in_medical_assistance: true  # phase-10 sweep (OQ-114), see p1
         date_of_birth: "1990-07-02"
         sex: male
         immigration_status: us_citizen
@@ -6087,6 +6105,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        receives_tanf_cash: false  # audit fix round (H-2): no Colorado Works case; CCCAP reads the case record
         cw_determination_is_redetermination: false
         cw_excluded_earned_income: 0
         cw_excluded_unearned_income: 0
@@ -6155,6 +6174,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        receives_tanf_cash: false  # audit fix round (H-2): no Colorado Works case; CCCAP reads the case record
         cw_determination_is_redetermination: false
         cw_excluded_earned_income: 0
         cw_excluded_unearned_income: 0
@@ -6290,6 +6310,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        receives_tanf_cash: false  # audit fix round (H-2): no Colorado Works case; CCCAP reads the case record
         received_tanf_from_another_state_this_month: false
         is_pregnant: false
         # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
@@ -6439,6 +6460,7 @@
   persons:
     p1:
       facts:
+        adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
@@ -6502,6 +6524,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
@@ -6539,7 +6562,8 @@
         receives_ssi: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: true
         has_reproductive_capacity: false
-        ma_bccp_has_creditable_coverage: false
+        ma_bccp_has_other_creditable_coverage: false  # audit fix round (dual-entry 4.6): ma_bccp_has_creditable_coverage is derived; no group, individual or other plan
+        is_enrolled_in_medical_assistance: false  # not enrolled in Medical Assistance when screened for BCCP
         receives_tanf_cash: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
@@ -6567,7 +6591,7 @@
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
-        receives_oap_c: false  # needs-fact round (OQ-206): OAP, not OAP-C
+        adult_financial_program_received: oap  # audit fix round (H-3): the Adult Financial case record, OAP (not OAP-C); was receives_oap_c false (OQ-206)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false
         # Phase-10 sweep (OQ-114): admitted on a basis that required no Form I-864 affidavit (illustrative), so no
         # sponsor income is deemed to his OAP grant (3.534.D).
@@ -6655,6 +6679,7 @@
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
@@ -7084,6 +7109,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        receives_snap: true  # audit fix round (H-1): expedited SNAP was issued on the November application; the household receives SNAP
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -7104,7 +7130,7 @@
         receives_ssi: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -7242,6 +7268,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        receives_snap: true  # audit fix round (H-1): expedited SNAP was issued on the November application; the household receives SNAP
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
@@ -7263,7 +7290,7 @@
         receives_ssi: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -7496,6 +7523,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        receives_snap: false  # audit fix round (H-1): the SNAP application of 2026-10-01 is pending
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
@@ -7532,7 +7560,7 @@
         receives_ssi: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -7673,6 +7701,8 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        sebt_other_categorical_basis: false  # audit fix round (H-1): no foster, homeless, migrant, runaway, Head Start or FDPIR ground
+        receives_snap: false  # audit fix round (H-1): the SNAP application of 2026-10-01 is pending
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
@@ -7710,7 +7740,7 @@
         receives_ssi: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
         snap_receives_permanent_disability_retirement_benefit: false
@@ -7853,8 +7883,10 @@
     # thirty days (3.604.3.K), so the unit is pending although the eleven days have passed (review C-9).
     # CCCAP: p1's hours worked are not yet documented (3.111.G.1.b; review K-4), within the fifteen days.
     # LEAP: nothing is pending, but both members' statuses await SAVE, so each is excluded from the
-    # household with her income counted (3.751.1, 3.753.17; review C-1). SUN Bucks: p2 is certified through
-    # SNAP, so no verification is required. Adult Financial cannot reach either person.
+    # household with her income counted (3.751.1, 3.753.17; review C-1). SUN Bucks (audit fix round, H-1): the SNAP
+    # application is pending, so p2 does not receive SNAP and is not certified through it; as an
+    # application-based child in an NSLP school her enrollment must be confirmed (292.12(e)(2)), and it is
+    # confirmed, so sebt_verification_status is complete (was not_required). Adult Financial cannot reach either person.
     p1:
       snap_verification_status: {"2026-10": pending}
       snap_verification_due_date: "2026-10-11"
@@ -8057,7 +8089,7 @@
       leap_zero_income_verification_is_pending: {"2026-10": false}
       leap_person_pending_verification_count: {"2026-10": 0}
       leap_member_is_excluded_for_verification: true
-      sebt_verification_status: {"2026-10": not_required}
+      sebt_verification_status: {"2026-10": complete}  # audit fix round (H-1): was not_required
       sebt_pending_verification_count: {"2026-10": 0}
       sebt_income_verification_is_pending: {"2026-10": false}
       sebt_school_enrollment_verification_is_pending: {"2026-10": false}
@@ -8371,7 +8403,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -8459,7 +8491,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -8548,7 +8580,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -9768,7 +9800,7 @@
         sex: female
         immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
+        is_enrolled_in_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         ma_received_presumptive_eligibility_this_pregnancy: false
         attested_household_income_pct_fpl: 1.2
@@ -9829,7 +9861,7 @@
         sex: male
         immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
+        is_enrolled_in_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         ma_received_presumptive_eligibility_this_pregnancy: false
         attested_household_income_pct_fpl: 3.0
@@ -9890,7 +9922,7 @@
         sex: female
         immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
+        is_enrolled_in_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         ma_received_presumptive_eligibility_this_pregnancy: false
         attested_household_income_pct_fpl: 1.9
@@ -9951,7 +9983,7 @@
         sex: male
         immigration_status: undocumented
         ma_is_applying_at_hospital_pe_site: true
-        ma_is_receiving_medical_assistance: false
+        is_enrolled_in_medical_assistance: false
         ma_received_presumptive_eligibility_in_last_twelve_months: false
         attested_household_income_pct_fpl: 0.9
       month_defaults:
@@ -10022,7 +10054,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -10110,7 +10142,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -10199,7 +10231,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -10289,7 +10321,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -10380,7 +10412,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -10468,7 +10500,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11000,7 +11032,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11089,7 +11121,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11206,7 +11238,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11316,7 +11348,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11438,7 +11470,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11527,7 +11559,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11615,7 +11647,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11739,7 +11771,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11827,7 +11859,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -11936,7 +11968,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -12053,7 +12085,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         receives_tanf_cash: false
         receives_disability_based_general_assistance: false
-        receives_state_cash_assistance: false
+        adult_financial_program_received: none
         receives_ssi: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
