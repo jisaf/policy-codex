@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether the person is deemed to have demonstrated community engagement for the month under 42 CFR 435.553: for part or all of the month the person was under 19, entitled to or enrolled in Medicare, described in a mandatory group of 1902(a)(10)(A)(i)(I)-(VII), or a specified excluded individual; or at any point in the 3 months before the month the person was an inmate of a public institution."
-precision: "Under 19 for part of the month: the person is under 19 on the first day of the month. The inmate period is read as the three whole months before the month; an inmate in the month itself is a specified excluded individual (435.554(c)(9))."
-derived: [any, ["<", [years_between, date_of_birth, [first_day, [month]]], 19], is_medicare_entitled_or_enrolled, ma_is_described_in_mandatory_group_i_to_vii, ma_is_specified_excluded_individual, [some_month, [months_ending, ma_community_engagement_inmate_lookback_months, [month_before, [month]]], is_inmate_of_public_institution]]
+meaning: "Whether the person is deemed to have demonstrated community engagement for the month under 42 CFR 435.553: for part or all of the month the person was under ma_community_engagement_child_age_limit (CO-3027), entitled to or enrolled in Medicare, described in a mandatory group of 1902(a)(10)(A)(i)(I)-(VII), or a specified excluded individual; or at any point in the ma_community_engagement_inmate_lookback_months before the month the person was an inmate of a public institution."
+precision: "Under the age limit for part of the month: the person is under it on the first day of the month. The inmate period is read as the whole months before the month; an inmate in the month itself is a specified excluded individual (435.554(c)(9))."
+derived: [any, ["<", [years_between, date_of_birth, [first_day, [month]]], ma_community_engagement_child_age_limit], is_medicare_entitled_or_enrolled, ma_is_described_in_mandatory_group_i_to_vii, ma_is_specified_excluded_individual, [some_month, [months_ending, ma_community_engagement_inmate_lookback_months, [month_before, [month]]], is_inmate_of_public_institution]]
 sources: [S1206]
 implemented: engine
 tags: [ma, magi, age]

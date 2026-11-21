@@ -7,7 +7,7 @@ scope: person
 program: SNAP
 meaning: A lawful permanent resident clears the five-year bar of 8 U.S.C. 1613(a) by having resided in the U.S. in a qualified status for five years (8 U.S.C. 1612(a)(2)(L)), by having 40 qualifying quarters (1612(a)(2)(B)), or by one of the exceptions in snap_is_exempt_from_immigrant_waiting_period. Colorado states the same tests at 10 CCR 2506-1 4.305,B,3.
 assumption: "The amended 7 U.S.C. 2015(f) states no waiting period itself; the bar comes from 8 U.S.C. 1613(a), which Pub. L. 119-21 did not amend (S21). The 40-quarter exception's further condition (no Federal means-tested benefit during a post-1996 quarter) is treated as already reflected in the supplied count of qualifying quarters."
-derived: [any, snap_is_exempt_from_immigrant_waiting_period, [">=", qualifying_quarters, snap_qualifying_quarters_threshold], has_held_qualified_status_five_years]
+derived: [any, snap_is_exempt_from_immigrant_waiting_period, [">=", qualifying_quarters, federal_qualifying_quarters_threshold], has_held_qualified_status_five_years]
 sources: [S21, S22, S23, S11, S12, S13]
 implemented: engine
 tags: [immigration, legal]
