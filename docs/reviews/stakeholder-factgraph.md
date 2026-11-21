@@ -43,8 +43,7 @@ which is exactly where both engines' semantics differ from the codex (section 6,
 |---|---|---|---|
 | Supplied | 474 | `<Writable>` fact (`/persons/*/wagesGross`), with `<Limit>`s for range checks | `input` with a dry-schema predicate, `per_entity: true` for person facts |
 | Derived | 558 | `<Derived>` fact | `fact ... do dependency ...; proc ... end` |
-| Parameter (251; 83 carry dated `versions`, 36 more than one) | 251 | `<Derived>` constant; versions become a `<Switch>` on a writable `/asOf` (Direct File itself versions by `<TaxYear>` and a dictionary per year) | `constant`, or a fact reading `:as_of` and choosing the version; fact_graph's own idiom (one graph subclass per tax year, `Ty2024Graph < TaxYearGraph`) does not fit dates that change on Oct 1, Jan 1, Jul 1 and in between |
-| `implemented: engine` / assembly | 558 / 0 | | |
+| Parameter (83 with dated `versions`, 36 of them with more than one) | 251 | `<Derived>` constant; versions become a `<Switch>` on a writable `/asOf` (Direct File itself versions by `<TaxYear>` and a dictionary per year) | `constant`, or a fact reading `:as_of` and choosing the version; fact_graph's own idiom (one graph subclass per tax year, `Ty2024Graph < TaxYearGraph`) does not fit dates that change on Oct 1, Jan 1, Jul 1 and in between |
 
 A codex `Example` (rule test) frequently *gives a derived item's value* (1,102 of 2,047 suite cases set
 at least one derived fact, 3,053 settings in all). The codex's evaluator lets a case value win over the
@@ -318,9 +317,10 @@ What the translation needed:
 
 ### 3.3 What the prototype taught
 
-* Hand translation is not the way. 14 items took a day including the support layer, the rule-for-rule
-  check against `evaluate.ts`, and two mistakes the suite caught at once. The operator set is small and
-  regular enough that a compiler from the S-expression IR to facts is the right tool (section 5).
+* Hand translation is not the way. Each item had to be checked operator by operator against
+  `evaluate.ts` (unknown handling, the `1e-9` nudges in rounding, string table keys, the person order
+  of groups), and that checking is identical for every item. The operator set is small and regular
+  enough that a compiler from the S-expression IR to facts is the right tool (section 5).
 * Getting `unknown` right in fact_graph means not using its error mechanism for unknown at all.
 * The adapter is the easy part (71 lines); the case-shaping rules (derived overrides, month merging,
   entity order = suite key order, groups as id lists, numeric keys of tables as strings) are where a
@@ -506,8 +506,9 @@ tagged `unit` vs `integration`.
 
 **S7. Numeric semantics are unstated.** The reference engine computes in doubles, with `ceil(a − 1e-9)`
 and `floor(a + 0.5 + 1e-9)` (`evaluate.ts:482–483`); a decimal engine (Direct File's Dollar rounds
-HALF_EVEN to cents at every step) can differ by a cent on prorations, and the harness tolerance is
-1e-9. Table keys are strings (`"1"`..`"8"`) looked up with a JS number, so `8.0` must become `"8"` in
+HALF_EVEN to cents at every step) can land on the other side of a rounding boundary wherever an
+intermediate value has more than two decimals (rates, day prorations, averages), and the harness
+tolerance is 1e-9, so the suite will report it as a failure without saying which side is right. Table keys are strings (`"1"`..`"8"`) looked up with a JS number, so `8.0` must become `"8"` in
 Ruby or Python. Fix: a paragraph in `docs/conventions.md`: money arithmetic is exact (or double), rounding
 happens only where an item says, table keys are integers written as strings.
 
