@@ -1,0 +1,17 @@
+id: CO-1393
+name: "SNAP: expedited postponement end date"
+identifier: snap_expedited_postponement_end_date
+kind: derived
+type: calendar date
+scope: person
+program: SNAP
+meaning: "The last day of the period in which a household certified under expedited service may complete postponed verification: the application date plus thirty days."
+derived: [days_after, snap_expedited_postponed_verification_days, application_date]
+sources: [S835]
+implemented: engine
+tags: [verification, snap]
+open: [OQ-310, OQ-323]
+rationale: No existing item states how long expedited verification may be postponed.
+nearest: [CO-1392]
+tests:
+  - {id: CO-1393-T1, as_of: "2026-10-01", given: {application_date: "2026-10-01"}, expect: "2026-10-31"}

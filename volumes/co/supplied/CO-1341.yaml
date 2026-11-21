@@ -1,0 +1,12 @@
+id: CO-1341
+name: Work hours verification document received
+identifier: work_hours_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the agency has received documentary evidence (or an acceptable collateral contact) verifying the person's hours worked or hours in a work program for this application, such as time records, wage stubs showing hours, or a work-program provider's report.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S810]
+tags: [verification, abawd]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

@@ -1,0 +1,18 @@
+id: CO-1368
+name: Citizenship document is primary evidence
+identifier: citizenship_document_is_primary_evidence
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the citizenship document the person provided is one of the six documents Colorado Works and Adult Financial name: a U.S. birth certificate, a U.S. passport, a certificate of citizenship, a certificate of naturalization, a certification of birth abroad, or a U.S. citizen identification card."
+derived: [in, citizenship_verification_document_type, [us_public_birth_certificate, us_passport, certificate_of_citizenship, certificate_of_naturalization, certification_of_birth_abroad, us_citizen_id_card]]
+sources: [S876, S886]
+implemented: engine
+tags: [verification, immigration]
+open: [OQ-315]
+rationale: 9 CCR 2503-6 3.604.3.I.1 (S876) and 9 CCR 2503-5 3.520.67.C (S886) name the same six documents; one program-neutral item serves both.
+nearest: [CO-1396]
+tests:
+  - {id: CO-1368-T1, as_of: "2026-10-01", given: {citizenship_verification_document_type: us_public_birth_certificate}, expect: true}
+  - {id: CO-1368-T2, as_of: "2026-10-01", given: {citizenship_verification_document_type: hospital_record_of_birth}, expect: false}

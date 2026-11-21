@@ -1,0 +1,13 @@
+id: CO-1329
+name: Child support paid verification document received
+identifier: child_support_paid_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the agency has received documents verifying both the person's legal obligation to pay child support (a court or administrative order) and the payments actually made (cancelled checks, withholding statements, or a statement from the custodial parent).
+precision: "Both halves are required: a document accepted as proof of the obligation is not accepted as proof of payment (7 CFR 273.2(f)(1)(xii), 4.507.D.3)."
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S833, S892]
+tags: [verification, income]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

@@ -1,0 +1,16 @@
+id: CO-1392
+name: "SNAP: verification due date"
+identifier: snap_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: SNAP
+meaning: "The date by which the household must provide the verification requested: the agency's request date plus the ten days SNAP allows."
+derived: [days_after, snap_verification_response_days, verification_request_date]
+sources: [S800, S813, S834]
+implemented: engine
+tags: [verification, snap]
+rationale: No existing item states when requested SNAP verification is due.
+nearest: [CO-1414, CO-1426, CO-1437, CO-1450, CO-1461]
+tests:
+  - {id: CO-1392-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-11"}

@@ -1,0 +1,17 @@
+id: CO-1365
+name: Age is verified
+identifier: age_is_verified
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person's age or date of birth is verified, by SSA data or by a document.
+derived: [any, age_verified_by_electronic_data_source, age_verification_document_received]
+sources: [S882, S863]
+implemented: engine
+tags: [verification, age]
+rationale: 9 CCR 2503-5 3.520.62 (S882) accepts interface information or listed documents, and 8.100.4.B.5 (S863) official papers or records; no existing item combines them.
+tests:
+  - {id: CO-1365-T1, as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: true}, expect: true}
+  - {id: CO-1365-T2, as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: false, age_verification_document_received: true}, expect: true}
+  - {id: CO-1365-T3, as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: false, age_verification_document_received: false}, expect: false}

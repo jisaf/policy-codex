@@ -34,25 +34,25 @@ programs:
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment]
+    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_verification_status, ma_pending_verification_count]
   - id: CHP+
     prefix: chp_
-    outcomes: [chp_eligibility_status]
+    outcomes: [chp_eligibility_status, chp_verification_status, chp_pending_verification_count]
   - id: SNAP
     prefix: snap_
-    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
+    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: [cw_grant_amount, cw_eligibility_status]
+    outcomes: [cw_grant_amount, cw_eligibility_status, cw_verification_status, cw_pending_verification_count]
   - id: AdultFinancial
     prefix: af_
-    outcomes: [af_category, af_oap_grant, af_and_grant]
+    outcomes: [af_category, af_oap_grant, af_and_grant, af_verification_status, af_pending_verification_count]
   - id: CCCAP
     prefix: cccap_
-    outcomes: [cccap_eligibility_status]
+    outcomes: [cccap_eligibility_status, cccap_verification_status, cccap_pending_verification_count]
   - id: LEAP
     prefix: leap_
-    outcomes: [leap_is_eligible]
+    outcomes: [leap_is_eligible, leap_verification_status, leap_pending_verification_count]
 
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
 tags:
@@ -83,6 +83,7 @@ tags:
   - { id: legal, label: Legal review }
   - { id: medical, label: Medical determination }
   - { id: state_election, label: State election }
+  - { id: verification, label: Verification and documentation }
 
 types:
   - yes/no

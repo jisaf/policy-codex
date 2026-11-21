@@ -1,0 +1,14 @@
+id: CO-1302
+name: Identity verification document type
+identifier: identity_verification_document_type
+kind: supplied
+type: one of
+options: [colorado_drivers_license_or_id, other_state_drivers_license_or_id, school_id_card, us_military_card, draft_record, military_dependent_id_card, government_issued_id_card, merchant_mariner_card, tribal_document, corroborating_documents, child_medical_or_school_record, parent_affidavit_for_child, facility_director_affidavit, agency_identity_finding, third_party_identity_affidavit, other_document]
+scope: person
+program: All
+meaning: The category of the identity document the person provided, in the categories the Colorado and federal identity lists use (42 CFR 435.407(c), 10 CCR 2505-10 8.100.3.H.3, 9 CCR 2503-5 3.520.66, 9 CCR 2503-6 3.604.3.I.4.a, 7 CFR 273.2(f)(1)(vii)).
+precision: corroborating_documents means the set of corroborating documents 435.407(c)(1)(x) and 8.100.3.H.3.h describe (OQ-304 on two versus three); other_document is any document a program accepts without a list (SNAP accepts any document that reasonably establishes identity).
+supplied_by: Document type recorded with the document receipt in the CBMS case file.
+sources: [S848, S857, S885, S877]
+tags: [verification]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

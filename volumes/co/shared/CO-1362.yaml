@@ -1,0 +1,17 @@
+id: CO-1362
+name: Resources are verified
+identifier: resources_are_verified
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person's resources are verified, by an electronic data source (the Asset Verification Program, or an SSI determination through SVES) or by documents.
+derived: [any, resources_verified_by_electronic_data_source, resources_verification_document_received]
+sources: [S866, S888]
+implemented: engine
+tags: [verification, resources]
+rationale: 8.100.5.B.1.e (S866) accepts the Asset Verification Program and 3.520.72.D-F (S888) accepts documents or SVES; no existing item combines them.
+tests:
+  - {id: CO-1362-T1, as_of: "2026-10-01", given: {resources_verified_by_electronic_data_source: true}, expect: true}
+  - {id: CO-1362-T2, as_of: "2026-10-01", given: {resources_verified_by_electronic_data_source: false, resources_verification_document_received: true}, expect: true}
+  - {id: CO-1362-T3, as_of: "2026-10-01", given: {resources_verified_by_electronic_data_source: false, resources_verification_document_received: false}, expect: false}

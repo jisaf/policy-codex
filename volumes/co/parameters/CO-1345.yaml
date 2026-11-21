@@ -1,0 +1,12 @@
+id: CO-1345
+name: SNAP verification response days
+identifier: snap_verification_response_days
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: The number of calendar days a SNAP household has, from the agency's request, to provide missing verification.
+value: 10
+sources: [S800, S813, S834]
+tags: [verification, snap]
+rationale: 7 CFR 273.2(f) (S800) and 273.2(h)(1)(i)(C) (S813) give at least 10 days and 10 CCR 2506-1 4.205.2.B (S834) gives ten calendar days; no item carried the period.

@@ -2834,3 +2834,827 @@ Document: D-58
 91 Fed. Reg. (SSA 2026 COLA determination). https://www.ssa.gov/OACT/COLA/sga.html
 
 > (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,830 in 2026. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,690.
+
+### S800. SNAP verification defined; at least 10 days to provide required verification
+
+Document: D-95
+
+7 CFR 273.2(f) (introductory text). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (f) *Verification.* Verification is the use of documentation or a contact with a third party to confirm the accuracy of statements or information. The State agency must give households at least 10 days to provide required verification. Paragraph (i)(4) of this section contains verification procedures for expedited service cases.
+
+### S801. SNAP mandatory verification of gross nonexempt income
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(i). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (1) *Mandatory verification.* State agencies shall verify the following information prior to certification for households initially applying: (i) *Gross nonexempt income.* Gross nonexempt income shall be verified for all households prior to certification. However, where all attempts to verify the income have been unsuccessful because the person or organization providing the income has failed to cooperate with the household and the State agency, and all other sources of verification are unavailable, the eligibility worker shall determine an amount to be used for certification purposes based on the best available information.
+
+### S802. SNAP alien eligibility verified through SAVE; not delayed pending USCIS response to a submitted document
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(ii)(A)-(B)(1). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (ii) *Alien eligibility.* (A) The State agency shall verify the eligible status of all aliens applying for SNAP benefits by using an immigration status verification system established under section 1137 of the Social Security Act (42 U.S.C. 1320b-7). FNS may require State agencies to provide written confirmation from USCIS that the system used by the State is an immigration status verification system established under section 1137 of the Social Security Act. If an alien does not wish the State agency to contact USCIS to verify his or her immigration status, the State agency must give the household the option of withdrawing its application or participating without that member. The Department of Justice (DOJ) Interim Guidance On Verification of Citizenship, Qualified Alien Status and Eligibility Under Title IV of the Personal Responsibility and Work Opportunity Reconciliation Act of 1996 (Interim Guidance) (62 FR 61344, November 17, 1997) contains information on acceptable documents and USCIS codes. State agencies should use the Interim Guidance until DOJ publishes a final rule on this issue. Thereafter, State agencies should consult both the Interim Guidance and the DOJ final rule. Where the Interim Guidance and the DOJ final rule conflict, the latter should control the verification of alien eligibility. As provided in § 273.4, the following information may also be relevant to the eligibility of some aliens: date of admission or date status was granted; military connection; battered status; if the alien was lawfully residing in the United States on August 22, 1996; membership in certain Indian tribes; if the person was age 65 or older on August 22, 1996; if a lawful permanent resident can be credited with 40 qualifying quarters of covered work and if any Federal means-tested public benefits were received in any quarter after December 31, 1996; or if the alien was a member of certain Hmong or Highland Laotian tribes during a certain period of time or is the spouse or unmarried dependent of such a person. The State agency must also verify these factors, if applicable to the alien's eligibility. The SSA Quarters of Coverage History System (QCHS) is available for purposes of verifying whether a lawful permanent resident has earned or can receive credit for a total of 40 qualifying quarters. However, the QCHS may not show all qualifying quarters. For instance, SSA records do not show current year earnings and in some cases the last year's earnings, depending on the time of request. Also, in some cases, an applicant may have work from uncovered employment that is not documented by SSA, but is countable toward the 40 quarters test. In both these cases, the individual, rather than SSA, would need to provide the evidence needed to verify the quarters. (B) An alien is ineligible until acceptable documentation is provided unless: (*1*) The State agency has submitted a copy of a document provided by the household to USCIS for verification. Pending such verification, the State agency cannot delay, deny, reduce or terminate the individual's eligibility for benefits on the basis of the individual's immigration status; or
+
+### S803. SNAP medical expenses verified before initial certification
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(iv). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (iv) *Medical expenses.* The amount of any medical expenses (including the amount of reimbursements) deductible under § 273.9(d)(3) shall be verified prior to initial certification. Verification of other factors, such as the allowability of services provided or the eligibility of the person incurring the cost, shall be required if questionable.
+
+### S804. SNAP SSNs verified with SSA; certification not delayed solely to verify an SSN
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(v). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (v) *Social security numbers.* The State agency shall verify the social security number(s) (SSN) reported by the household by submitting them to the Social Security Administration (SSA) for verification according to procedures established by SSA. The State agency shall not delay the certification for or issuance of benefits to an otherwise eligible household solely to verify the SSN of a household member.
+
+### S805. SNAP residency verified except in unusual cases such as homeless households
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(vi). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (vi) *Residency.* The residency requirements of § 273.3 shall be verified except in unusual cases (such as homeless households, some migrant farmworker households, or households newly arrived in a project area) where verification of residency cannot reasonably be accomplished.
+
+### S806. SNAP identity of the person making application; any document reasonably establishing identity
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(vii). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (vii) *Identity.* The identity of the person making application shall be verified. Where an authorized representative applies on behalf of a household, the identity of both the authorized representative and the head of household shall be verified. Identity may be verified through readily available documentary evidence, or if this is unavailable, through a collateral contact. Examples of acceptable documentary evidence which the applicant may provide include, but are not limited to, a driver's license, a work or school ID, an ID for health benefits or for another assistance or social services program, a voter registration card, wage stubs, or a birth certificate. Any documents which reasonably establish the applicant's identity must be accepted, and no requirement for a specific type of document, such as a birth certificate, may be imposed.
+
+### S807. SNAP disability verified by proof of disability benefits
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(viii)(A)(1). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (viii) *Disability.* (A) The State agency shall verify disability as defined in § 271.2 as follows: (*1*) For individuals to be considered disabled under paragraphs (2), (3) and (4) of the definition, the household shall provide proof that the disabled individual is receiving benefits under titles I, II, X, XIV or XVI of the Social Security Act.
+
+### S808. SNAP household composition verified if questionable
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(x). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (x) *Household composition.* State agencies shall verify factors affecting the composition of a household, if questionable.
+
+### S809. SNAP legal obligation and actual child support payments verified; CSE data
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(xii). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (xii) *Legal obligation and actual child support payments.* The State agency shall obtain verification of the household's legal obligation to pay child support, the amount of the obligation, and the monthly amount of child support the household actually pays. Documents that are accepted as verification of the household's legal obligation to pay child support shall not be accepted as verification of the household's actual monthly child support payments. State agencies may and are strongly encouraged to obtain information regarding a household member's child support obligation and payments from Child Support Enforcement (CSE) automated data files.
+
+### S810. SNAP work hours verified for individuals subject to the time limit who satisfy it by working
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(xiv)(A). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (xiv) *Additional verification for able-bodied adults subject to the time limit*—(A) *Hours worked.* For individuals subject to the SNAP time limit of § 273.24 who are satisfying the work requirement by working, by combining work and participation in a work program, or by participating in a work or workfare program that is not operated or supervised by the State agency, the individuals' work hours shall be verified.
+
+### S811. SNAP questionable factors and questionable citizenship verified before certification
+
+Document: D-95
+
+7 CFR 273.2(f)(2)(i)-(ii). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (2) *Verification of questionable information.* (i) The State agency shall verify, prior to certification of the household, all other factors of eligibility which the State agency determines are questionable and affect the household's eligibility and benefit level. The State agency shall establish guidelines to be followed in determining what shall be considered questionable information. These guidelines shall not prescribe verification based on race, religion, ethnic background, or national origin. These guidelines shall not target groups such as migrant farmworkers or American Indians for more intensive verification under this provision. (ii) If a member's citizenship or status as a non-citizen national is questionable, the State agency must verify the member's citizenship or non-citizen national status in accordance with attachment 4 of the DOJ Interim Guidance. After DOJ issues final rules, State agencies should consult both the Interim Guidance and the final rule. Where the Interim Guidance and the DOJ final rule conflict, the latter should control the eligibility determination. The State agency must accept participation in another program as acceptable verification if verification of citizenship or non-citizen national status was obtained for that program. If the household cannot obtain the forms of verification suggested in attachment 4 of the DOJ Interim Guidance and the household can provide a reasonable explanation as to why verification is not available, the State agency must accept a signed statement, under penalty of perjury, from a third party indicating a reasonable basis for personal knowledge that the member in question is a U.S. citizen or non-citizen national. The signed statement must contain a warning of the penalties for helping someone commit fraud. Absent verification or third party attestation of U.S. citizenship or non-citizen national status, the member whose citizenship or non-citizen national status is in question is ineligible to participate until the issue is resolved.
+
+### S812. SNAP unverified deductible expenses: eligibility determined without the deduction
+
+Document: D-95
+
+7 CFR 273.2(f)(3)(ii). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (ii) If a State agency opts to verify a deductible expense and obtaining the verification may delay the household's certification, the State agency shall advise the household that its eligibility and benefit level may be determined without providing a deduction for the claimed but unverified expense. This provision also applies to the allowance of medical expenses as specified in paragraph (f)(1)(iv) of this section. Shelter costs would be computed without including the unverified components. The standard utility allowance shall be used if the household is entitled to claim it and has not verified higher actual costs. If the expense cannot be verified within 30 days of the date of application, the State agency shall determine the household's eligibility and benefit level without providing a deduction of the unverified expense.
+
+### S813. SNAP household fault for incomplete verification requires at least 10 days from the request
+
+Document: D-95
+
+7 CFR 273.2(h)(1)(i)(C). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (C) In cases where verification is incomplete, the State agency must have provided the household with a statement of required verification and offered to assist the household in obtaining required verification and allowed the household sufficient time to provide the missing verification. Sufficient time shall be at least 10 days from the date of the State agency's initial request for the particular verification that was missing.
+
+### S814. SNAP expedited service: identity verified in all cases; other verification postponed
+
+Document: D-95
+
+7 CFR 273.2(i)(4)(i)(A)-(B). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (A) In all cases, the applicant's identity (i.e., the identity of the person making the application) shall be verified through a collateral contact or readily available documentary evidence as specified in paragraph (f)(1) of this section. (B) All reasonable efforts shall be made to verify within the expedited processing standards, the household's residency in accordance with § 273.2(f)(1)(vi), income statement (including a statement that the household has no income), liquid resources and all other factors required by § 273.2(f), through collateral contacts or readily available documentary evidence. However, benefits shall not be delayed beyond the delivery standards prescribed in paragraph (i)(3) of this section, solely because these eligibility factors have not been verified.
+
+### S815. SNAP notice of required verification at application and recertification
+
+Document: D-95
+
+7 CFR 273.2(c)(5). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (5) *Notice of Required Verification.* The State agency shall provide each household at the time of application for certification and recertification with a notice that informs the household of the verification requirements the household must meet as part of the application process. The notice shall also inform the household of the State agency's responsibility to assist the household in obtaining required verification provided the household is cooperating with the State agency as specified in (d)(1) of this section. The notice shall be written in clear and simple language and shall meet the bilingual requirements designated in § 272.4(b) of this chapter. At a minimum, the notice shall contain examples of the types of documents the household should provide and explain the period of time the documents should cover.
+
+### S816. Colorado SNAP expedited service: only the head of household's identity verified
+
+Document: D-103
+
+10 CCR 2506-1, § 4.502.A.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 1. Expedited Service Requirements Only verification of the identity of the head of household is required. When an authorized representative applies on behalf of a household, the identity of both the authorized representative and the head of household shall be verified. No requirement for a specific document may be imposed. Client declaration of Social Security Number(s) (SSNS) and residency shall be accepted. Client declaration of other household circumstances shall be accepted when determining eligibility for expedited service, and verification of any client-declared information shall be postponed and verified prior to certification.
+
+### S817. Colorado SNAP information verified prior to certification
+
+Document: D-103
+
+10 CCR 2506-1, § 4.502.A.2. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 2. The following information shall be verified prior to certification: a. Identity of the head of household; b. Household's gross nonexempt income; c. Information available through IEVS, including SSNs for all household members; d. Non-citizen status of persons identified as non-citizens on the application; e. Residency, except for homeless households, or households newly arrived in the state or county for whom third-party verification cannot reasonably be obtained.
+
+### S818. Colorado SNAP deductible expenses verified to receive the deduction
+
+Document: D-103
+
+10 CCR 2506-1, § 4.502.A.3. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 3. The household shall be given a reasonable opportunity to submit verification of certain expenses to receive expense deductions and exclusions. If a deductible expense must be verified and obtaining verification may delay the household's certification, the local office shall advise the household that the household's eligibility and benefit level will be determined without providing a deduction or exclusion for the claimed but unverified expense. If the expense cannot be verified within thirty (30) calendar days of the date of application, the local office shall determine the household's eligibility and benefit level without providing a deduction or exclusion for the unverified expense. These expenses are: a. Allowable medical expenses less reimbursement; b. Legally obligated child support payments; c. Dependet care expenses; and, d. Shelter expenses, if questionable and verification has been requested.
+
+### S819. Colorado SNAP categorically eligible households: no verification beyond the conferring program's unless questionable
+
+Document: D-103
+
+10 CCR 2506-1, § 4.502.A.4-5. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4. For households eligible under basic or expanded categorical eligibility rules, verification of resources, gross and net income, SSN information, sponsored non-citizen information, and residency beyond that gathered by the Public Assistance (PA) program that confers eligibility shall not be required unless these eligibility factors are not already collected and verified by the other PA program, are considered questionable, or are unavailable to SNAP. The local office shall verify that each member receives benefits or services from the program that confers basic or expanded categorical eligibility. 5. For households subject to an asset test, the household's written declaration of resources that declares more than the resource limit is an acceptable form of verification.
+
+### S820. Colorado SNAP information verified upon receipt
+
+Document: D-103
+
+10 CCR 2506-1, § 4.504.6.D.1-3. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> D. The local office shall consider only the following information as VUR: 1. Social Security and SSI benefit amounts obtained from SSA. SSI and benefit amounts obtained from the SSA are considered reported and verified on the day the information is first known to the agency, either through the IEVS, SDX, BENDEX or another automated interface of information, whichever is sooner. 2. Death information received from the Burial Assistance program. Death information received from the Burial Assistance program is considered reported and verified on the day the information is first known to the agency. 3. Unemployment insurance benefits (UIB) that are reported through the IEVS and obtained through the Department of Labor and Employment (DOLE). The UIB information shall be considered reported and verified on the date of the IEVS notification. Advance notice of adverse action shall be given when acting on the change in information.
+
+### S821. Colorado SNAP wage data obtained through IEVS and DOLE is not verified upon receipt
+
+Document: D-103
+
+10 CCR 2506-1, § 4.504.61.B.1-3. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> B. The following sources of information shall not be considered as VUR: 1. Death information received from a source other than the Burial Assistance program. 2. Veterans Assistance (VA) benefit amounts obtained through the IEVS. 3. Wage data obtained through the IEVS and the DOLE.
+
+### S822. Colorado SNAP identity verification
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.1.A-B. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.505.1 Verification of Identity A. The identity of the person making an application shall be verified. When an authorized representative applies on behalf of a household, the identity of both the authorized representative and the head of household shall be verified. B. Identity may be verified through readily available documentary evidence, or if this is unavailable, through a collateral contact or through electronic information received from the Colorado Department of Revenue, Division of Motor Vehicles (DMV). Acceptable documentary evidence that the applicant may provide includes, but is not limited to, a driver's license, a work or school ID, an ID for health benefits or for another assistance or social services program, a voter registration card, wage stubs, or a birth certificate. No requirement for a specific type of document, such as a birth certificate or picture ID, may be imposed.
+
+### S823. Colorado SNAP SSN verification through SSA; not delayed
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.2.A. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.505.2 Verification of Social Security Numbers (SSN) A. All SSNs provided by the household, including multiple SSNs issued by the Social Security Administration (SSA), shall be verified through the SSA in accordance with the Income and Eligibility Verification System (IEVS) procedures established by the State Department. The State On-Line Query Internet (SOLQ-I) may also be utilized to verify an SSN. Certification of an otherwise eligible household member shall not be delayed verifying the SSN provided by the client. Household members who provide an SSN shall not be denied benefits for failure or inability to present a social security card or other official documentation. Eligibility determinations and benefits will not be delayed to otherwise eligible households while awaiting a response from the IEVS. For basic categorically eligible clients, the local office shall accept SSNs as verified by the categorically eligible programs.
+
+### S824. Colorado SNAP residency verification and its exceptions
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.3.A. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.505.3 Verification of Residency A. Except for basic categorically eligible households, residency shall be verified prior to certification, except in unusual cases when verification cannot reasonably be accomplished, such as for homeless households, some migrant farm worker households, or households newly arrived to an area. Verification of residency should be accomplished to the extent possible when verifying other information, such as identity or income. Any documents or collateral contacts which reasonably establish the applicant’s residency must be accepted and no requirement for a specific type of verification may be imposed.
+
+### S825. Colorado SNAP household composition accepted unless questionable
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.4.A. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.505.4 Verification of Household Composition A. Local offices shall accept the household’s statement, without requiring verification, regarding household composition unless the statement is questionable or there is unclear information, as defined in section 4.000.1.
+
+### S826. Colorado SNAP documents verifying questionable U.S. citizenship
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.5. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.505.5 Verification of U.S. Citizenship A. If questionable, U.S. citizenship may be verified by one of the following: 1. A U.S. birth certificate; 2. Possession of a U.S. passport; 3. A certificate of U.S. citizenship (INS form N-560 or N-561); 4. A certificate of naturalization (INS form N-550 or N-570); 5. A certificate of birth abroad of a citizen of the United States (Department of State forms FS-545 or DS-1350); 6. Identification Cards for U.S. citizens (INS-I-179 or INS-I-197); or, 7. Information obtained through the Colorado Vital Information System (COVIS). B. If the above forms of verification cannot be obtained and the household can provide a reasonable explanation as to why verification is not available, the local office shall accept a signed statement from a third party having personal knowledge of the person's status and who declares, under penalty of perjury, that the member in question is a U.S. citizen. The signed statement shall contain a warning of the penalties for helping someone commit fraud.
+
+### S827. Colorado SNAP guidelines for questionable citizenship
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.51.A. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.505.51 Verification of Questionable Citizenship A. The following guidelines shall be used in considering whether a client’s statement of citizenship is questionable: 1. The claim of citizenship is inconsistent with statements made by the client. 2. The claim of citizenship is inconsistent with information received from another source.
+
+### S828. Colorado SNAP non-citizen status verified through SAVE
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.6.B. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> B. The local office shall verify the eligibility status of non-citizens by submitting the noncitizen registration number through the USCIS Systematic Alien Verification for Entitlement (SAVE) system. The office shall use the information from USCIS SAVE to determine eligibility for benefits. The use of SAVE shall be documented in the case record. If a non-citizen does not wish the office to verify his or her immigration status, the local office shall give the household the option of withdrawing its application or participating without that member.
+
+### S829. Colorado SNAP non-citizen documentation period and certification pending a federal response
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.6.E-F.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> E. The local office shall provide an applicant non-citizen up to the thirtieth (30th) calendar day following the date of application to submit acceptable documentation of their non-citizen status or at least ten (10) calendar days from the date of the local office's request for an acceptable document. F. A non-citizen who has been given a reasonable opportunity to submit acceptable documentation and has not done so within the normal processing time shall not be certified for benefits until acceptable documentation is available, except as provided below. However, when the local office fails to provide a non-citizen applicant with a reasonable opportunity as of the thirtieth (30th) calendar day following the date of application, the local office must provide the household with benefits back to the date of application, provided the household is otherwise eligible. A non- citizen is ineligible to participate until acceptable documentation is provided, except as provided below: 1. The local office has submitted a copy of a document provided by the household to the USCIS or other federal agency for verification that bears on the individual’s eligible alien status. In such instances, the local office must certify the individual for up to six (6) months from the date of the original request for verification pending the results of the investigation. Pending such verification, the individual's benefits will not be delayed, denied, reduced or terminated based on the individual's immigration status while awaiting a response to the request for verification.
+
+### S830. Colorado SNAP income verification before initial certification
+
+Document: D-103
+
+10 CCR 2506-1, § 4.506 (introductory text). https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.506 VERIFICATION OF INCOME Monthly, gross nonexempt income shall be verified prior to initial certification, unless the household is entitled to expedited service and postponed verification for one month. Income is also verified at recertification when a household reports that the amount of income has changed more than fifty dollars ($50), or the source of income has changed.
+
+### S831. Colorado SNAP self-employment statement accepted unless questionable
+
+Document: D-103
+
+10 CCR 2506-1, § 4.506.C. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> C. Self-Employment A household’s statement of self-employment income shall be accepted unless questionable. Should verification be requested, no specific verification shall be required.
+
+### S832. Colorado SNAP verification of dependent care and of shelter and utility costs
+
+Document: D-103
+
+10 CCR 2506-1, § 4.507.A, B.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> 4.507 VERIFICATION OF EXPENSES A. Verification of Dependent Care Verification of dependent and child care expenses is required to grant a deduction. B. Verification of Shelter and Utility Costs 1. A household’s declaration of its responsibility to pay shelter and utility costs, as well as the amount the household is responsible to pay, shall be considered an acceptable source of verification, unless questionable, to grant the household a deduction for the amount the household declares it is responsible for paying.
+
+### S833. Colorado SNAP medical and child support expense verification
+
+Document: D-103
+
+10 CCR 2506-1, § 4.507.C.1, D.1-3. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> C. Verification of Medical Expenses 1. The amount of medical bills and the portion that is reimbursable shall be verified prior to initial certification. At recertification, total medical expenses shall be verified if the source has changed or the total amount has changed more than twenty-five dollars ($25) since the last time they were verified, or the information is incomplete, inaccurate, inconsistent, or outdated. 2. The household's monthly medical deduction for the certification period shall be based on the information reported and verified by the household, any anticipated changes in the household's medical expenses that can be reasonably expected to occur during the certification period based on available information about the recipient's medical condition public or private insurance coverage and current verified medical expenses. If the change cannot be reasonably anticipated, the household shall have the non-reimbursable portion of the medical expense considered at the time the amount of the expense or reimbursement is reported and verified. 3. If the household reports a change in its medical expenses, the local office shall verify the change and act on the change during the certification period if it will result in an increase to the household’s benefit allotment. The household shall not be contacted to verify a change discovered through another source. 4. Households certified for twenty-four (24) months that incurred a one-time medical expense during the first twelve (12) months shall have the option of deducting the expense for one month, averaging the expense over the remainder of the first twelve (12) months of the certification period, or averaging the expense over the remainder of the certification period. One- time expenses reported after the twelfth (12th) month of the certification period will be deducted as a one-time monthly expense or averaged over the remaining months in the certification period, at the household's option. D. Verification of Child Support Expenses 1. The local office shall accept any document that verifies the household's legal obligation to pay child support, such as a court or administrative order or legally enforceable separation agreement. 2. The local office shall accept documentation verifying a household's actual payment of child support including, but not limited to, cancelled checks, wage withholding statements, verification of withholding from unemployment compensation and statements from the custodial parent regarding direct payments or third party payments that the noncustodial parent pays or expects to pay on behalf of the custodial parent. 3. Documents that are accepted as verification of the household's legal obligation to pay child support shall not be accepted as verification of the household's actual monthly child support payments.
+
+### S834. Colorado SNAP ten calendar days to provide missing verification
+
+Document: D-103
+
+10 CCR 2506-1, § 4.205.2.B. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> B. In cases where verification is incomplete, the local office shall provide the household with a statement of required verification on the state-prescribed notice form and offer to assist the household in obtaining the required verification. The office shall allow the household ten (10) calendar days to provide the missing verifications unless the household missed the first appointment.
+
+### S835. Colorado SNAP expedited service: identity before certification, postponed verification, termination on the thirtieth day
+
+Document: D-103
+
+10 CCR 2506-1, § 4.205.11.B.1-2. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> B. The local office shall use the following procedures for expediting service: 1. Prior to certification, the identity of the applicant shall be verified. 2. Prior to certification of expedited benefits, all reasonable efforts shall be made to verify residency, income, or lack thereof, and other factors of eligibility. However, verification shall be postponed if it cannot be obtained in sufficient time to meet the expedited processing standards. If verification is postponed, the household shall be certified for expedited benefits, if determined eligible, for the month of application or, for those households applying after the fifteenth (15th) of the month, the month of application and the subsequent month. a. Except for migrant households applying after the fifteenth (15th) of a month, when a household is certified for expedited benefits for an initial month of application and the subsequent month and verification is postponed, a request for verification form shall be annotated to indicate what verification is required in order for further benefits to be issued. b. When households that apply for benefits on or before the fifteenth (15th) of the month provide the required postponed verification, the local office shall issue the second month's benefits within five working days from receipt of the verification or the first of the second month, whichever is later. Households that apply after the fifteenth (15th) of the month and provide the postponed verification shall be issued the third month's benefits within five working days from receipt of verification, or the first of the third month, whichever is later. Except for migrant households needing out-of-state verification, when the postponed verification is not completed within thirty (30) calendar days from the date of application, the local office shall terminate the household's participation on the thirtieth (30th) calendar day without providing a notice of adverse action.
+
+### S836. SNAP IEVS information verified upon receipt
+
+Document: D-95
+
+7 CFR 273.2(f)(9)(iii). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (iii) The State agency shall take action, including proper notices to households, to terminate, deny, or reduce benefits based on information obtain through the IEVS which is considered verified upon receipt. This information is social security and SSI benefit information obtained from SSA, and TANF benefit information and UIB information obtained from the agencies administering those programs.
+
+### S837. Medicaid may accept attestation except where the law requires other procedures
+
+Document: D-96
+
+42 CFR 435.945(a). https://www.ecfr.gov/current/title-42/section-435.945
+
+> (a) Except where the law requires other procedures (such as for citizenship and immigration status information), the agency may accept attestation of information needed to determine the eligibility of an individual for Medicaid (either self-attestation by the individual or attestation by an adult who is in the applicant's household, as defined in § 435.603(f) of this part, or family, as defined in section 36B(d)(1) of the Internal Revenue Code, an authorized representative, or, if the individual is a minor or incapacitated, someone acting responsibly for the individual) without requiring further information (including documentation) from the individual.
+
+### S838. Medicaid reasonable compatibility; documentation only when electronic data are unavailable or not reasonably compatible
+
+Document: D-96
+
+42 CFR 435.952(b)-(c)(2). https://www.ecfr.gov/current/title-42/section-435.952
+
+> (b) If information provided by or on behalf of an individual (on the application or renewal form or otherwise) is reasonably compatible with information obtained by the agency, including information obtained in accordance with § 435.948, § 435.949, § or 435.956, the agency must determine or renew eligibility based on such information. (c) An individual must not be required to provide additional information or documentation unless information needed by the agency in accordance with § 435.948, § 435.949, § or 435.956 cannot be obtained electronically or information obtained electronically is not reasonably compatible, as provided in the verification plan described in § 435.945(j) with information provided by or on behalf of the individual. (1) Income information obtained through an electronic data match shall be considered reasonably compatible with income information provided by or on behalf of an individual, and resource information obtained through an electronic data match shall be considered reasonably compatible with resource information provided by or on behalf of an individual, if both the information obtained electronically and the information provided by or on behalf of the individual are either above or at or below the applicable standard or other relevant threshold. (2) If information provided by or on behalf of an individual is not reasonably compatible with information obtained through an electronic data match, the agency must seek additional information from the individual, including— (i) A statement which reasonably explains the discrepancy; or (ii) Other information (which may include documentation), provided that documentation from the individual is permitted only to the extent electronic data are not available and establishing a data match would not be effective, considering such factors as the administrative costs associated with establishing and using the data match compared with the administrative costs associated with relying on paper documentation, and the impact on program integrity in terms of the potential for ineligible individuals to be approved as well as for eligible individuals to be denied coverage; (iii) The agency must provide the individual a reasonable period to furnish any additional information required under paragraph (c) of this section.
+
+### S839. Medicaid special-circumstances exception to documentation
+
+Document: D-96
+
+42 CFR 435.952(c)(3). https://www.ecfr.gov/current/title-42/section-435.952
+
+> (3) *Exception for special circumstances.* The agency must establish an exception to permit, on a case-by-case basis, self-attestation of individuals for all eligibility criteria when documentation does not exist at the time of application or renewal, or is not reasonably available, such as in the case of individuals who are homeless or have experienced domestic violence or a natural disaster. This exception does not apply if documentation is specifically required under title XI or XIX, such as requirements for verifying citizenship and immigration status, as implemented at § 435.956(a).
+
+### S840. Medicaid reasonable opportunity period: benefits not delayed for an otherwise eligible individual
+
+Document: D-96
+
+42 CFR 435.956(a)(5), (b)(1). https://www.ecfr.gov/current/title-42/section-435.956
+
+> (5) If the agency cannot promptly verify the citizenship or satisfactory immigration status of an individual in accordance with paragraph (a)(1) or (2) of this section, the agency— (i) Must provide a reasonable opportunity in accordance with paragraph (b) of this section; and (ii) May not delay, deny, reduce or terminate benefits for an individual whom the agency determines to be otherwise eligible for Medicaid during such reasonable opportunity period, in accordance with § 435.911(c). (iii) If a reasonable opportunity period is provided, the agency may begin to furnish benefits to otherwise eligible individuals, effective the date of application, or the first day of the month of application, consistent with the agency's election under § 435.915(b). (b) *Reasonable opportunity period.* (1) The agency must provide a reasonable opportunity period to individuals who have made a declaration of citizenship or satisfactory immigration status in accordance with § 435.406(a), and for whom the agency is unable to verify citizenship or satisfactory immigration status in accordance with paragraph (a) of this section.
+
+### S841. Medicaid reasonable opportunity period begins on receipt of the notice (five days) and ends after 90 days
+
+Document: D-96
+
+42 CFR 435.956(b)(2)-(3). https://www.ecfr.gov/current/title-42/section-435.956
+
+> (2) The reasonable opportunity period— (i) Begins on the date on which the notice described in paragraph (b)(1) of this section is received by the individual. The date on which the notice is received is considered to be 5 days after the date on the notice, unless the individual shows that he or she did not receive the notice within the 5-day period. (ii)(A) Ends on the earlier of the date the agency verifies the individual's citizenship or satisfactory immigration status or determines that the individual did not verify his or her citizenship or satisfactory immigration status in accordance with paragraph (a)(2) of this section, or 90 days after the date described in paragraph (b)(2)(i) of this section, except that, (B) The agency may extend the reasonable opportunity period beyond 90 days for individuals declaring to be in a satisfactory immigration status if the agency determines that the individual is making a good faith effort to obtain any necessary documentation or the agency needs more time to verify the individual's status through other available electronic data sources or to assist the individual in obtaining documents needed to verify his or her status. (3) If, by the end of the reasonable opportunity period, the individual's citizenship or satisfactory immigration status has not been verified in accordance with paragraph (a) of this section, the agency must take action within 30 days to terminate eligibility in accordance with part 431 subpart E (relating to notice and appeal rights) of this chapter, except that §§ 431.230 and 431.231 of this chapter (relating to maintaining and reinstating services) may be applied at State option.
+
+### S842. Medicaid residency, SSN, pregnancy, age and household verification
+
+Document: D-96
+
+42 CFR 435.956(c)-(f). https://www.ecfr.gov/current/title-42/section-435.956
+
+> (c) *State residency.* (1) The agency may verify State residency in accordance with § 435.945(a) of this subpart or through other reasonable verification procedures consistent with the requirements in § 435.952 of this subpart.
+
+### S843. Medicaid SSN a condition of eligibility; services not delayed pending SSN verification; exceptions
+
+Document: D-96
+
+42 CFR 435.910(a), (f), (h)(1). https://www.ecfr.gov/current/title-42/section-435.910
+
+> (a) Except as provided in paragraph (h) of this section, the agency must require, as a condition of eligibility, that each individual (including children) seeking Medicaid furnish each of his or her Social Security numbers (SSN). (b) The agency must advise the applicant of— (1) [Reserved] (2) The statute or other authority under which the agency is requesting the applicant's SSN; and (3) The uses the agency will make of each SSN, including its use for verifying income, eligibility, and amount of medical assistance payments under §§ 435.940 through 435.960. (c)-(d) [Reserved] (e) If an applicant cannot recall his SSN or SSNs or has not been issued a SSN the agency must— (1) Assist the applicant in completing an application for an SSN; (2) Obtain evidence required under SSA regulations to establish the age, the citizenship or alien status, and the true identity of the applicant; and (3) Either send the application to SSA or, if there is evidence that the applicant has previously been issued a SSN, request SSA to furnish the number. (f) The agency must not deny or delay services to an otherwise eligible individual pending issuance or verification of the individual's SSN by SSA or if the individual meets one of the exceptions in paragraph (h) of this section. (g) The agency must verify the SSN furnished by an applicant or beneficiary with SSA to ensure the SSN was issued to that individual, and to determine whether any other SSNs were issued to that individual. (h) *Exception.* (1) The requirement of paragraph (a) of this section does not apply and a State may give a Medicaid identification number to an individual who— (i) Is not eligible to receive an SSN; (ii) Does not have an SSN and may only be issued an SSN for a valid non-work reason in accordance with 20 CFR 422.104; or (iii) Refuses to obtain an SSN because of well-established religious objections.
+
+### S844. Medicaid groups exempt from documenting citizenship
+
+Document: D-97
+
+42 CFR 435.406(a)(1)(iii). https://www.ecfr.gov/current/title-42/section-435.406
+
+> (iii) The following groups of individuals are exempt from the requirement to provide documentation to verify citizenship in paragraph (c) of this section: (A) Individuals receiving SSI benefits under title XVI of the Act. (B) Individuals entitled to or enrolled in any part of Medicare. (C) Individuals receiving disability insurance benefits under section 223 of the Act or monthly benefits under section 202 of the Act, based on the individual's disability (as defined in section 223(d) of the Act). (D) Individuals who are in foster care and who are assisted under Title IV-B of the Act, and individuals who are beneficiaries of foster care maintenance or adoption assistance payments under Title IV-E of the Act. (E)(*1*) Individuals who are or were deemed eligible for Medicaid in the State under § 435.117 or § 457.360 of this chapter on or after July 1, 2006, based on being born to a pregnant woman eligible under the State's Medicaid or CHIP state plan or waiver of such plan; (*2*) At State option, individuals who were deemed eligible for coverage under § 435.117 or § 457.360 of this chapter in another State on or after July 1, 2006, provided that the agency verifies such deemed eligibility.
+
+### S845. Medicaid stand-alone evidence of citizenship
+
+Document: D-97
+
+42 CFR 435.407(a). https://www.ecfr.gov/current/title-42/section-435.407
+
+> (a) *Stand-alone evidence of citizenship.* The following must be accepted as sufficient documentary evidence of citizenship: (1) A U.S. passport, including a U.S. Passport Card issued by the Department of State, without regard to any expiration date as long as such passport or Card was issued without limitation. (2) A Certificate of Naturalization. (3) A Certificate of U.S. Citizenship. (4) A valid State-issued driver's license if the State issuing the license requires proof of U.S. citizenship, or obtains and verifies a SSN from the applicant who is a citizen before issuing such license. (5)(i) Documentary evidence issued by a Federally recognized Indian Tribe identified in the *Federal Register* by the Bureau of Indian Affairs within the U.S. Department of the Interior, and including Tribes located in a State that has an international border, which— (A) Identifies the Federally recognized Indian Tribe that issued the document; (B) Identifies the individual by name; and (C) Confirms the individual's membership, enrollment, or affiliation with the Tribe. (ii) Documents described in paragraph (a)(5)(i) of this section include, but are not limited to: (A) A Tribal enrollment card; (B) A Certificate of Degree of Indian Blood; (C) A Tribal census document; (D) Documents on Tribal letterhead, issued under the signature of the appropriate Tribal official, that meet the requirements of paragraph (a)(5)(i) of this section. (6) A data match with the Social Security Administration. (7) Verification with a State vital statistics agency documenting a record of birth. (8) A data match with the Department of Homeland Security (DHS) Systematic Alien Verification for Entitlements (SAVE) Program or any other process established by DHS to verify that an individual is a citizen.
+
+### S846. Medicaid evidence of citizenship accompanied by an identity document
+
+Document: D-97
+
+42 CFR 435.407(b) (introductory text). https://www.ecfr.gov/current/title-42/section-435.407
+
+> (b) *Evidence of citizenship.* If an applicant does not provide documentary evidence from the list in paragraph (a) of this section, the following must be accepted as satisfactory evidence to establish citizenship if also accompanied by an identity document listed in paragraph (c) of this section—
+
+### S847. Medicaid affidavit of citizenship as last resort
+
+Document: D-97
+
+42 CFR 435.407(b)(16). https://www.ecfr.gov/current/title-42/section-435.407
+
+> (16) If the applicant does not have one of the documents listed in paragraphs (a) or (b)(1) through (15) of this section, he or she may submit an affidavit signed by another individual under penalty of perjury who can reasonably attest to the applicant's citizenship, and that contains the applicant's name, date of birth, and place of U.S. birth. The affidavit does not have to be notarized.
+
+### S848. Medicaid evidence of identity
+
+Document: D-97
+
+42 CFR 435.407(c). https://www.ecfr.gov/current/title-42/section-435.407
+
+> (c) *Evidence of identity.* (1) The agency must accept the following as proof of identity, provided such document has a photograph or other identifying information sufficient to establish identity, including, but not limited to, name, age, sex, race, height, weight, eye color, or address: (i) Identity documents listed at 8 CFR 274a.2 (b)(1)(v)(B)(1), except a driver's license issued by a Canadian government authority. (ii) Driver's license issued by a State or Territory. (iii) School identification card. (iv) U.S. military card or draft record. (v) Identification card issued by the Federal, State, or local government. (vi) Military dependent's identification card. (vii) U.S. Coast Guard Merchant Mariner card. (viii) For children under age 19, a clinic, doctor, hospital, or school record, including preschool or day care records. (ix) A finding of identity from an Express Lane agency, as defined in section 1902(e)(13)(F) of the Act. (x) Two other documents containing consistent information that corroborates an applicant's identity. Such documents include, but are not limited to, employer identification cards; high school, high school equivalency and college diplomas; marriage certificates; divorce decrees; and property deeds or titles. (2) Finding of identity from a Federal or State governmental agency. The agency may accept as proof of identity a finding of identity from a Federal agency or another State agency (not described in paragraph (c)(1)(ix) of this section), including but not limited to a public assistance, law enforcement, internal revenue or tax bureau, or corrections agency, if the agency has verified and certified the identity of the individual. (3) If the applicant does not have any document specified in paragraph (c)(1) of this section and identity is not verified under paragraph (c)(2) of this section, the agency must accept an affidavit signed, under penalty of perjury, by a person other than the applicant who can reasonably attest to the applicant's identity. Such affidavit must contain the applicant's name and other identifying information establishing identity, as described in paragraph (c)(1) of this section. The affidavit does not have to be notarized.
+
+### S849. Satisfactory documentary evidence of citizenship defined
+
+Document: D-99
+
+42 U.S.C. 1396b(x)(3)(A). https://www.law.cornell.edu/uscode/text/42/1396b
+
+> (A) For purposes of this subsection, the term “satisfactory documentary evidence of citizenship or nationality” means— (i) any document described in subparagraph (B); or (ii) a document described in subparagraph (C) and a document described in subparagraph (D).
+
+### S850. State SSA-match alternative: 90 days to present evidence or resolve an inconsistency, with coverage continuing
+
+Document: D-100
+
+42 U.S.C. 1396a(ee)(1)(B)(ii). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (ii) in the case such inconsistency is not resolved under clause (i), the State— (I) notifies the individual of such fact; (II) provides the individual with a period of 90 days from the date on which the notice required under subclause (I) is received by the individual to either present satisfactory documentary evidence of citizenship or nationality (as defined in section 1396b(x)(3) of this title) or resolve the inconsistency with the Commissioner of Social Security (and continues to provide the individual with medical assistance during such 90-day period); and (III) disenrolls the individual from the State plan under this subchapter within 30 days after the end of such 90-day period if no such documentary evidence is presented or if such inconsistency is not resolved.
+
+### S851. Colorado Medical Assistance: minimal verification defined
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.1 (definition of Minimal Verification). https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> Minimal Verification is defined in this volume as the minimum amount of information needed to process an application for benefits. No other verification can be requested from clients unless the information provided is questionable or inconsistent.
+
+### S852. Colorado Medical Assistance: legal immigration status verified through VLP
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.G.2. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 2. For determinations of eligibility for Medical Assistance, legal immigration status must be verified. This requirement applies to a non-citizen individual who meets the criteria of any category defined at Section 8.100.3.G(1)(g)(ii), (iii), (iv), (vi), or (vii) and has declared that he or she has a legal immigration status. a. The Verify Lawful Presence (VLP) interface will be used to verify immigration status. The VLP interface connects to the Systematic Alien Verification for Entitlements (SAVE) Program to verify legal immigration status. i) If an automated response from VLP confirms that the information submitted is consistent with VLP data for immigration status verification requirements, no further action is required for the individual and no additional documentation of immigration status is required.
+
+### S853. Colorado Medical Assistance: immigration reasonable opportunity period of 90 days, benefits not delayed
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.G.3.a.i-iii. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 3. Reasonable Opportunity Period a. If verification of an applicant’s immigration status through the electronic interface is unsuccessful, then the following shall occur: i) The applicant shall receive a Notice of Action notifying the applicant of the unsuccessful attempt to verify immigration status and the need for the applicant to submit, within 90 days, additional documentation to the Department or applicable Eligibility Site indicating a legal immigration status as set forth in Section 8.100.3.G.1.g. This 90 day period is referred to as a Reasonable Opportunity Period and shall begin on the date of the Notice of Action. ii) The applicant must submit to the Department or applicable Eligibility Site the required documentation before the expiration of the Reasonable Opportunity Period. Failure to timely submit the required documentation shall result in the termination of the applicant’s application; and iii) The applicant’s benefits shall not be delayed, denied, reduced, or terminated if the applicant is otherwise eligible for Medicaid during the Reasonable Opportunity Period.
+
+### S854. Colorado Medical Assistance: citizenship and identity verified; electronic interfaces first; exempt groups
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.H.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 1. For determinations of initial eligibility and redeterminations of eligibility for Medical Assistance made on or after July 1, 2006, citizenship or nationality and identity status must be verified unless such satisfactory documentary evidence has already been provided, as described in 8.100.3.H.4.b. This requirement applies to an individual who declares or who has previously declared that he or she is a citizen or national of the United States. a. The following electronic interfaces shall be accepted as proof of citizenship and/or identity as listed and should be used prior to requesting documentary evidence from applicants/clients: i) SSA Interface is an acceptable interface to verify citizenship and identity. An automated response from SSA that confirms that the data submitted is consistent with SSA data, including citizenship or nationality, meets citizenship and identity verification requirements. No further action is required for the individual and no additional documentation of either citizenship or identity is required. ii) Department of Motor Vehicles (DMV) Interface is an acceptable interface to verify identity. An automated response from DMV confirms that the data submitted is consistent with DMV data for identity verification requirements. No further action is required for the individual and no additional documentation of identity is required. b. This requirement does not apply to the following groups: i) Individuals who are entitled to or who are enrolled in any part of Medicare. ii) Individuals who receive Supplemental Security Income (SSI). iii) Individuals who receive child welfare services under Title IV-B of the Social Security Act on the basis of being a child in foster care. iv) Individuals who receive adoption or foster care assistance under Title IV-E of the Social Security Act. v) Individuals who receive Social Security Disability Insurance (SSDI).
+
+### S855. Colorado Medical Assistance: stand-alone documents of citizenship and identity
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.H.2.a.i-iv. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 2. Satisfactory documentary evidence of citizenship or nationality includes the following: a. Stand-alone documents for evidence of citizenship and identity. The following evidence shall be accepted as satisfactory documentary evidence of both identity and citizenship: i) A U.S. passport issued by the U.S. Department of State that: 1) includes the applicant or recipient, and 2) was issued without limitation. A passport issued with a limitation may be used as proof of identity, as outlined in 8.100.3.H.3. ii) A Certificate of Naturalization (DHS Forms N-550 or N-570) issued by the Department of Homeland Security (DHS) for naturalized citizens. iii) A Certificate of U.S. Citizenship (DHS Forms N-560 or N-561) issued by the Department of Homeland Security for individuals who derive citizenship through a parent. iv) A document issued by a federally recognized Indian tribe, evidencing membership or enrollment in, or affiliation with, such tribe (such as a tribal enrollment card or certificate of degree of Indian blood).
+
+### S856. Colorado Medical Assistance: other evidence of citizenship requires a separate identity document
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.H.2.b (introductory text). https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> b. Evidence of citizenship. If evidence from the list in 8.100.3.H.2.a. is not provided, an applicant or recipient shall provide satisfactory documentary evidence of citizenship from the list specified in this section to establish citizenship AND satisfactory documentary evidence from the documents listed in section 8.100.3.H. 3. to establish identity. Evidence of citizenship includes:
+
+### S857. Colorado Medical Assistance: identity documents
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.H.3.a-h. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 3. The following documents shall be accepted as proof of identity and shall accompany a document establishing citizenship from the groups of documentary evidence outlined in 8.100.3.H.2.b. through d. a) A driver's license issued by a State or Territory either with a photograph of the individual or other identifying information such as name, age, sex, race, height, weight, or eye color; b) School identification card with a photograph of the individual; c) U.S. military card or draft record; d) Identification card issued by the Federal, State, or local government with the same information included on driver's licenses; e) Military dependent's identification card; f) U.S. Coast Guard Merchant Mariner card; g) Certificate of Degree of Indian Blood, or other U.S. American Indian/Alaska Native Tribal document with a photograph or other personal identifying information relating to the individual. The document is acceptable if it carries a photograph of the individual or has other personal identifying information relating to the individual such as age, weight, height, race, sex, and eye color; or h) Three or more documents that together reasonably corroborate the identity of an individual provided such documents have not been used to establish the individual's citizenship and the individual submitted evidence of citizenship listed under 8.100.3.H.2.b. or 8.100.3.H.2.c.
+
+### S858. Colorado Medical Assistance: special identity rules for children under 16
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.H.3.i. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> i) Special identity rules for children. For children under 16, the following records are acceptable: i) Clinic, doctor, or hospital records; or ii) School records.
+
+### S859. Colorado Medical Assistance: 90-day reasonable opportunity period for citizenship and identity
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.H.9.a-b. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 9. Reasonable Opportunity Period a. If a Medical Assistance applicant does not have the required documentation, he or she must be given a reasonable opportunity period to provide the required documentation. The reasonable opportunity period will begin as of the date of the Notice of Action. The required documentation must be received within the reasonable opportunity period. If the applicant does not provide the required documentation within the reasonable opportunity period, then the applicant's Medical Assistance benefits shall not be terminated during the federal Coronavirus COVID-19 Public Health Emergency. Required documentation will be requested during the federal Coronavirus COVID-19 Public Health Emergency. When the federal COVID-19 Public Health Emergency has ended, a reasonable opportunity period will be given to request proper documentation from the member. i) During the federal Coronavirus COVID-19 Public Health Emergency the Department will continue eligibility for all Medical Assistance categories, regardless of requested documentation and/or reported change for these individuals to ensure continuity of eligibility for Medical Assistance coverage. Effective May 11, 2023 the Public Health Emergency declaration has ended and continuous coverage for individuals who have not provided required documentation by their renewal date will be terminated. b. The reasonable opportunity period is 90 calendar days if unable to verify proof of citizenship/identity and applies to MAGI, Adult, and Buy-In Programs:
+
+### S860. Colorado Medical Assistance: SSN furnished or applied for; exceptions
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.I.1, 1.b. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 1. Each person for whom Medical Assistance is being requested shall furnish a Social Security Number (SSN); or, if one has not been issued or is unknown, shall apply for the number and submit verification of the application, unless an exception below applies. The application for an SSN shall be documented in the case record by the eligibility site. Upon receipt of the assigned SSN, the client shall provide the number to the eligibility site. This requirement does not apply to those individuals who are not requesting Medical Assistance yet appear on the application, nor does it apply to individuals applying for emergency medical services, limited reproductive health services, or eligible newborns born to a Medical Assistance eligible mother. a. An applicant's or client's refusal to furnish or apply for a Social Security Number affects the family's eligibility for assistance as follows: i) that person cannot be determined eligible for the Medical Assistance Program; and/or ii) if the person with no SSN or proof of application for SSN is the only dependent child on whose behalf assistance is requested or received, assistance shall be denied or terminated. b. Exception: An individual who qualifies for any of the following exceptions must not be required to provide an SSN: i.) The individual is not eligible to receive an SSN; or ii) The individual does not have an SSN and may only be issued an SSN for a valid non-work reason in accordance with 20 CFR 422.104; or iii) The individual refuses to obtain an SSN because of a well- established religious objection.
+
+### S861. Colorado MAGI verification: earned income self-attested and verified electronically; documentation when it cannot be
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.4.B.1.c. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> c. Earned Income: Income -may be self-attested by an applicant or member and verified through an electronic data source. Individuals who provide self-attestation of income - may provide a SSN for electronic wage verification purposes. If the self-attested earned income cannot be verified electronically, due to a missing SSN, the applicant must provide documentation of income. Earned income must be verified by wage stubs, tax documents, written documentation from the employer stating the employee’s gross income or a telephone call to an employer. Applicants may request that communication with their employers be made in writing.
+
+### S862. Colorado MAGI verification: unearned income self-attested
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.4.B.1.d. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> d. Unearned income: Unearned income can be self-attested by an applicant. Certain types of unearned income, such as unemployment and survivor benefits may be verified through electronic data sources.
+
+### S863. Colorado MAGI verification: no other verification unless questionable; age and relationship declared
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.4.B.2-5. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 2. Additional Verification: No other verification shall be required of the client unless information is found to be questionable on the basis of fact. 3. The determination that information is questionable shall be documented in the applicant's case file and CBMS case comments. 4. Information that exists in another case record or in CBMS shall be used by the eligibility site to verify those factors that are not subject to change, if the information is reasonably accessible. 5. The criteria of age and relationship may be declared by the client unless questionable. If questionable, these criteria may be established with information provided from: a. official papers such as: a birth certificate, order of adoption, marriage license, immigration or naturalization papers; or b. records or statements from sources such as: a court, school, government agency, hospital, or physician.
+
+### S864. Colorado MAGI income: reasonable compatibility and the 30-day reasonable opportunity period
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.4.C.2.a. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 2. Income verifications: When discrepancies arise between self-attested income and electronic data source results, the applicant shall receive a reasonable opportunity to establish his/her financial eligibility through the test for reasonable compatibility, by providing a reasonable explanation of the discrepancy, or by providing supporting documentation within the Reasonable Opportunity Period of 30 calendar days. a. Income information obtained through an electronic data source shall be considered reasonably compatible with income information provided by or on behalf of an applicant in the following circumstances: i) If the amount attested by the applicant and the amount reported by an electronic data source are both below the applicable MAGI Medical Assistance program income standard, that income shall be determined reasonably compatible and the applicant shall be determined eligible. ii) If the amount attested by the applicant is below the applicable MAGI Medical Assistance program income standard, but the amount reported by the electronic data source is above, and the difference is within the reasonable compatibility threshold percentage of 20%, the income shall be determined reasonably compatible and the applicant shall be determined eligible. iii) If both amounts are above the applicable MAGI Medical Assistance program income standard the income shall be determined reasonably compatible, and the applicant shall continue to be determined eligible during the federal Coronavirus COVID-19 Public Health Emergency. Effective May 11, 2023 the Coronavirus COVID-19 Public Health Emergency has been declared to end and the effective policy after May 11,2023 is if both amounts are above the applicable income standard for that program, the income shall be determined reasonably compatible, and the applicant shall be determined ineligible due to income.
+
+### S865. Colorado MAGI income: self-employment ledger sufficient unless questionable
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.4.C.3. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> 3. Self-Employment – If the applicant is self-employed the ledger included in the Single Streamlined Application shall be sufficient verification of earnings, unless questionable.
+
+### S866. Colorado ABD verification: unearned income and resources
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.5.B.1.d-e. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> d. Verification of all unearned income shall be provided if the unearned income was received in the month for which eligibility is being determined or during the previous month. If available, information that exists in another case record or verification system shall be used to verify unearned income. i) During the federal COVID-19 Public Health Emergency, all unearned income may be reported by self-attestation. The COVID -19 Public Health Emergency ended effective May 11, 2023. At the end of the federal COVID-19 Public Health Emergency, proof of any unverified income shall be provided. e. Verification of all resources shall be provided if the resources were available to the applicant in the month for which eligibility is being determined. Resource information that is verified through an electronic data source, such as the Asset Verification Program, shall be a valid verification. Supplemental physical verifications for the same resource is not required unless further information is needed for clarification.
+
+### S867. Colorado ABD verification: earned income and reasonable compatibility apply as for MAGI
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.5.B.1.c. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> c. Earned income may be self-attested by an applicant or member and verified through an electronic data source through the IEVS, FDSH, or the TWN. Individuals who provide self-attestation of earned income may also provide a SSN for wage verification purposes. If the self-attested earned income cannot be verified electronically due to a missing SSN, the applicant must provide documentation of income. Verification of earned income must be provided in accordance to the requirements outlined in 8.100.4.B.1.c When discrepancies arise between self-attested income and electronic data source results, the applicant shall receive a reasonable opportunity to establish his/her financial eligibility through the test for reasonable compatibility, by providing a reasonable explanation of the discrepancy, or by providing paper documentation within the Reasonable Opportunity Period (ROP) of 30 calendar days.
+
+### S868. CHIP verification: citizenship as for Medicaid except deemed newborns; reasonable opportunity; pregnancy self-attested
+
+Document: D-98
+
+42 CFR 457.380(b)(1), (e). https://www.ecfr.gov/current/title-42/section-457.380
+
+> (b) *Status as a citizen, national or a non-citizen.* (1) Except for newborns identified in § 435.406(a)(1)(iii)(E) of this chapter, who are exempt from any requirement to verify citizenship, the agency must— (i) Verify citizenship or immigration status in accordance with § 435.956(a) of this chapter, except that the reference to § 435.945(k) is read as a reference to paragraph (i) of this section; and (ii) Provide a reasonable opportunity period to verify such status in accordance with § 435.956(a)(5) and (b) of this chapter and provide benefits during such reasonable opportunity period to individuals determined to be otherwise eligible for CHIP. (2) [Reserved] (c) *State residents.* If the State does not accept self-attestation of residency, the State must verify residency in accordance with § 435.956(c) of this chapter. (d) *Income.* If the State does not accept self-attestation of income, the State must verify the income of an individual by using the data sources and following standards and procedures for verification of financial eligibility consistent with § 435.945(a), § 435.948 and § 435.952 of this chapter. (e) *Verification of other factors of eligibility.* For eligibility requirements not described in paragraphs (c) or (d) of this section, a State may adopt reasonable verification procedures, consistent with the requirements in § 435.952 of this chapter, except that the State must accept self-attestation of pregnancy unless the State has information that is not reasonably compatible with such attestation.
+
+### S869. CHP+ minimal verification as required in 8.100.4.B
+
+Document: D-102
+
+10 CCR 2505-3, § 130.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2816
+
+> 130.1 To be eligible for the Children’s Basic Health Plan, an applicant shall provide minimal verification as required in 10 CCR 2505-10-8.100.4.B.
+
+### S870. CHP+ immigration status verified through VLP with a reasonable opportunity period
+
+Document: D-102
+
+10 CCR 2505-3, § 110.1.C. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2816
+
+> C. For determinations of eligibility for the Children’s Basic Health Plan, legal immigration status must be verified. This requirement applies to a non- citizen individual who meets the criteria of any category defined at 110.1.B and has declared that he or she has a legal immigration status. 1. The Verify Lawful Presence (VLP) interface will be used to verify immigration status as required in Section 8.100.3.G.2 2. If the state cannot verify immigration status the individual will receive a Reasonable Opportunity Period as required in Section 8.100.3.H.9 3. This requirement does not apply to the following groups: a. Individuals applying for Child Healthcare Plan covered by Cover All Coloradans detailed in Sections 8.100.3.g.ix and 110.1.B.5.p
+
+### S871. Colorado Works: requested verifications due eleven calendar days from the written request
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.A. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> If the client is missing any verification, the county department shall request additional and/or required verifications from the client. the request shall include: 1. A specific list of verifications necessary to determine eligibility; 2. The due date for when the verifications must be returned, which shall be eleven (11) calendar days from the date the verification was requested in writing; and, 3. Notification that if the client fails to return the verifications by the due date, the county department shall process the application without those verifications, which may lead to a denial of grant payments.
+
+### S872. Colorado Works required primary verifications
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.B.1-2. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> B. Required Primary Verifications 1. All information received through the Income and Eligibility Verification (IEVS) System shall be reviewed and verified. Assistance shall not be denied, delayed, or discontinued pending receipt of information requested through IEVS, if other evidence establishes the client's eligibility for assistance. 2. All participating clients shall provide to the county the following information: a. Verification of lawful presence in the United States; section 3.604.3.I. b. Verification of citizenship or qualified non-citizenship status; section 3.604.I-J. c. A Social Security Number (SSN) for each client applying for benefits or proof that an application for a SSN has been made. Proof of application is only valid for up to eight (8) months without good cause. The agency shall explain to the client that refusal or failure without good cause to provide a SSN or a receipt of a SSN application will result in ineligibility for the client for whom an SSN or receipt is not obtained. Only the client for whom the SSN or receipt is not provided will be ineligible, and not the entire assistance unit. 1) For clients that made application for a SSN at initial eligibility determination, verification of the SSN must be received prior to the next recertification. 2) For clients added to the assistance unit within sixty (60) days of the certification period expiring, verification of the SSN must be received by the following recertification. 3) The county department shall verify the SSNs provided by the assistance unit with the Social Security Administration (SSA) in accordance with procedures established by the state department for the State On Line Query (SOLQ) system. 4) The county department shall accept as verified a Social Security Number that has been verified by any program agency participating in SOLQ system. d. Verification of a caretaker’s responsibility for the child(ren) must be provided, unless the caretaker is the child(ren)’s parent. Verification may include, but is not limited to, verbal or written confirmation from the child’s parent, a court order, school or medical records listing the individual as the child’s contact, or collateral contact with child welfare. The prudent person principle may be used to determine that a non-parent caretaker other than a guardian, legal custodian, or a relative exercises responsibility for a child. e. Verification of income of any member of the assistance unit or other household member whose income is used to determine eligibility and payment. f. Verification of Colorado residency.
+
+### S873. Colorado Works: immigrants verified through SAVE without delaying assistance
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.B.5. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> 5. All immigrants shall have non-citizen status verified through the Systematic Alien Verification for Entitlements (SAVE) system. Assistance shall not be delayed or discontinued pending this verification.
+
+### S874. Colorado Works secondary verifications
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.C. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> C. Secondary Verifications When applicable, secondary verifications for eligibility and program participation, may include, but are not limited to: 1. Verification of relationship of a dependent child to other household members; 2. Verification of good cause, to include good cause for a delay in providing verifications for assistance, good cause for not cooperating with child support services, and good cause for not participating in work activities; 3. Verification of child support, to include information of the noncustodial parent and/or child support income/expenses as specified in section 3.606; 4. Verification of school attendance for all school-aged children included in the assistance unit, including home school, GED, and online attendance; 5. Verification of work participation; 6. Verification establishing allowable absences of an adult or child in the assistance unit if leaving the state/home and requesting to continue benefits; and/or, 7. Verification of pregnancy, when no children are in the assistance unit.
+
+### S875. Colorado Works: IEVS data verified when entered; DOLE wage data not verified upon receipt
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.H.1.a-b. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> a. The following data shall be considered verified when entered into the statewide automated system: 1) SSA (Beneficiary and Earnings Data Exchange/Bendex, State Data Exchange/SDX) Social Security benefits, SSI, pensions, self- employment earnings, federal employee earnings; and, 2) Unemployment Insurance Benefits (UIB). b. DOLE wage data shall not be considered verified upon receipt. Additional verification must be obtained to verify wage information.
+
+### S876. Colorado Works: documents verifying citizenship
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.I.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> 1. Verification of citizenship in the United States Citizenship may be verified by a birth certificate, possession of a U.S. passport, a Certificate of U.S. Citizenship (USCIS form N-560 or NH-561), a Certificate of Naturalization (USCIS form N-550 or N-570), a Certificate of Birth Abroad of a Citizen of The United States (Department of State Forms FS-545 or DS-1350), or identification cards for U.S. citizens (USCIS-I-179 or USCIS-I-197).
+
+### S877. Colorado Works: lawful presence of persons eighteen or older; documents; pregnant women exempt
+
+Document: D-104
+
+9 CCR 2503-6, § 3.604.3.I.4.a, b.5. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3145
+
+> 4. All persons eighteen years of age or older must establish lawful presence in the United States prior to receiving Colorado Works with the exception of those exempt in the list provided in this section. The requirements of this section do not apply to clients under the age of eighteen (18). a. In order to verify his or her lawful presence in the United States, a client must: 1) Produce and provide to the county department: a) A valid Colorado driver’s license or a Colorado identification card issued pursuant to article 2 of title 42, C.R.S.; or, b) A United States military card or military dependent’s identification card; or, c) A United States coast guard merchant mariner card; or, d) A Native American tribal document; or, e) Any other document authorized by rules adopted by the Department of Revenue (1 CCR 2204-30, Rule 5, Appendix A, as incorporated by reference in section 3.604.3.I.1 of these rules). b. The requirements of this section do not apply to the following clients, programs and services: 1) For any purpose for which lawful presence in the United States is not required by law, ordinance, or rule; 2) For obtaining health care items and services that are necessary for the treatment of an emergency medical condition of the person involved and are not related to an organ transplant procedure; 3) For short-term, non-cash, in-kind emergency disaster relief; 4) For programs, services, or assistance such as soup kitchens, crisis counseling and intervention, and short-term shelter specified by federal law or regulation that: a) Deliver in-kind services at the community level, including services through public or private non-profit agencies; b) Do not condition the provision of assistance provided on the individual recipient’s income or resources; and, c) Are necessary for the protection of life or safety; 5) Pregnant women;
+
+### S878. TANF: SSN a condition of eligibility; assistance not delayed pending issuance or verification
+
+Document: D-109
+
+45 CFR 205.52(a), (c). https://www.ecfr.gov/current/title-45/section-205.52
+
+> (a) As a condition of eligibility, each applicant for or recipient of aid will be required: (1) To furnish to the State or local agency a social security account number, hereinafter referred to as the SSN (or numbers, if more than one has been issued); and (2) If he cannot furnish a SSN (either because such SSN has not been issued or is not known), to apply for such number through procedures adopted by the State or local agency with the Social Security Administration. If such procedures are not in effect, the applicant or recipient shall apply directly for such number, submit verification of such application, and provide the number upon its receipt. (b) The State or local agency will assist the applicant or recipient in making applications for SSNs and will comply with the procedures and requirements established by the Social Security Administration for application, issuance, and verification of social security account numbers. (c) The State or local agency will not deny, delay, or discontinue assistance pending the issuance or verfication of such numbers if the applicant or recipient has complied with the requirements of paragraph (a) of this section.
+
+### S879. Adult Financial: requested verifications due eleven calendar days from the written request
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.4.D.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> D. Verify statements made by the client on the application and during the interview using the statewide automated system interfaces described in Section 3.520.5, gathered from other collateral contacts or requested from the client. 1. If the client is missing any verification, the county department shall request additional and/or required verifications from the client. The request shall include: a. A specific list of verifications necessary to determine eligibility; b. The due date for when the verifications must be returned, which shall be eleven (11) calendar days from the date the verification was requested in writing unless otherwise specified in Section 3.540; and, c. Notification that if the client fails to return the verifications by the due date, the county department shall process the application without those verifications, which may lead to a denial of grant payments.
+
+### S880. Adult Financial: IEVS data verified upon receipt; DOLE wage data not
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.5.A.1-3. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> 1. The following data shall be considered verified upon receipt: a. SSA (Beneficiary and Earnings Data Exchange (BENDEX) and State Data Exchange (SDX)) Social Security benefits, SSI, pensions, self-employment income, federal employee earnings; and, b. Unemployment benefits (UIB). 2. DOLE wage data shall not be considered verified upon receipt. a. Additional verification must be obtained to verify wage information. The county department shall request this information be provided by the client and/or his or her employer in writing. This information must be provided within eleven (11) days following the date of the county’s request or the case will be discontinued or denied following the policies outlined in Section 3.554. b. The county department shall query DOLE at initial application and at redetermination. 3. Prior to approval of grant payments, the county department shall, at a minimum, verify potential income or unemployment benefits for the client, client's spouse, and sponsor(s).
+
+### S881. Adult Financial: SAVE for AND; DMV for identity
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.5.D-E. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> D. For AND only the county department shall query the Systematic Alien Verification for Entitlements (SAVE) at initial application and at redetermination. Information obtained through SAVE is considered verified upon receipt. The purpose of the save query is to: 1. Determine whether a qualified non-citizen has a sponsor(s); and, 2. Verify the non-citizen registration number provided by the client and, if the number and name submitted do not match, refer the client to resolve the discrepancy, and if unable to resolve, take prompt action to terminate assistance to the client following the policies outlined in Section 3.554; and, 3. Determine the non-citizen's immigration status. E. The Colorado Department of Revenue, Division of Motor Vehicles (DMV), may be used by the county department to verify identity.
+
+### S882. Adult Financial: age verified by interface or listed documents
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.62. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> 3.520.62 AGE REQUIREMENTS The county department shall verify the client's age by viewing the statewide automated system interface information or any of the following documents: A. Birth certificate; B. Valid Colorado State identification or driver's license; C. Valid out of state identification or driver's license; D. Naturalization, immigration, or passport papers; E. Legal documents from vital statistics; F. Social Security information (SOLQ, SVES, SDX, and BENDEX); G. School records; H. Baptismal certificates or other well documented church records; I. Genealogy records or other well documented family records of birth; J. Voting records; or, K. United States census records.
+
+### S883. Adult Financial: burden to prove residency on the client
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.64.G. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> G. The burden to prove residency shall be on the client. If a client refuses to provide requested or necessary documentation or information to verify residency, Adult Financial grant payments shall be denied following the policies outlined in Section 3.554.
+
+### S884. Adult Financial: SSN furnished or applied for; verified with SSA
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.65.A-B.1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> 3.520.65 SOCIAL SECURITY NUMBERS (SSN) A. Each Adult Financial program client who has a social security number (SSN) or is eligible to obtain a SSN shall provide his or her SSN to the county department. 1. If a client has multiple numbers, all numbers shall be required. 2. If a client is unable to provide their SSN, the client shall be required to apply for a SSN at the local Social Security office and provide the county department with verification of application for an SSN. This requirement does not apply to OAP clients who are non-citizens or qualified non- citizens. 3. When a client is eligible for a SSN, refusal or failure to apply for or provide their SSN shall result in denial for Adult Financial programs. 4. Upon proof of application for an SSN, the time required for issuance of the number or to secure verification of the number shall not be used as a basis for delaying action on the Adult Financial program application. B. The county department shall verify the client's SSN with the SSA in accordance with procedures established by the State Department for the SVES. 1. The county department shall accept as verified a SSN that has been confirmed by the SVES.
+
+### S885. Adult Financial: identity documents
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.66.A-D. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> 3.520.66 IDENTITY In order to verify clients identity, the client shall produce and provide to the county department: A. A valid Colorado driver's license or a Colorado identification card issued pursuant to Article 2 of Title 42, C.R.S.; or, B. A United States military card or military dependent's identification card; or, C. A United States Coast Guard Merchant Mariner Card; or, D. A Native American tribal document;
+
+### S886. Adult Financial: citizenship verified for AND when questionable; documents
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.67.B-C. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> B. The county department shall verify citizenship for AND when: 1. The claim of citizenship is inconsistent with statements made by the client or with other information on the current or previous applications; or, 2. The claim of citizenship is inconsistent with information received from another source. C. Citizenship may be verified by a birth certificate, possession of a U.S. passport, a certificate of U.S. citizenship (issued by USCIS), a certificate of naturalization (issued by USCIS), a certificate of birth abroad of a citizen of the United States (issued by the Department of State), or Identification Cards for U.S. citizens (issued by USCIS).
+
+### S887. Adult Financial: qualified non-citizens applying for AND present USCIS documentation verified through SAVE
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.67.E-F. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> E. Qualified non-citizens who are considered legal immigrants by USCIS are eligible to apply for Adult Financial programs and all non-citizens are eligible to apply for OAP. F. Qualified non-citizens applying for AND shall present documentation from USCIS showing the client's non-citizen status. All documents shall be verified through SAVE (Systematic Alien Verification for Entitlements) to determine the validity of the document.
+
+### S888. Adult Financial: verification of resources; SSI recipients verified through SVES
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.72.D-F. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> D. The county department shall obtain verification of all resources and associated values. 1. The county department shall include case notes describing verification documentation in the statewide automated system. 2. Original copies of verification documents shall be returned to the client. 3. The client's authorization on the application or redetermination form shall be obtained to contact a collateral contact for valuation information or verification. 4. After resources have been verified at application, client statement is acceptable until each twenty-four (24) redetermination. Resources must be reverified by traditional verification methods at every twenty-four (24) month redetermination. All new resources must be verified by traditional verification methods when reported. 5. Client statement is acceptable as verification for cash. E. A sponsor(s)'s resources are only counted toward the non-citizen client they sponsor. Resources are attributed to the sponsor in the same manner as the non-citizen client, as outlined in Section 3.520.7. All countable resources over the sponsor(s) resource limit, as outlined in Section 3.520.72.A, are then deemed to the non-citizen client. The deemed amount from the client’s sponsor(s) is then added to the non-citizen client’s countable resources and compared to the non- citizen client’s resource limit, as outlined in Section 3.520.72.A. F. If a client is approved for Supplemental Security Income (SSI) as verified through the SVES interface, there shall be no additional requirement to verify resources at application, unless the resources reported are questionable.
+
+### S889. Adult Financial: self-employment documentation accepted unless questionable
+
+Document: D-105
+
+9 CCR 2503-5, § 3.520.783.E. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3144
+
+> E. Self-employment verification may consist of tax documents, self-employment ledgers, receipts, or other documents used for verifying and documenting the self-employment income and expenses. If, at the time of the county department’s eligibility determination, a client is recently self-employed or does not have adequate documentation of the self-employment income and expenses, the county department shall use the best information available to determine the monthly income. The client shall be encouraged to keep records of income and expenses for subsequent certifications. No specific verification shall be required and the documentation provided by the client shall be accepted unless questionable.
+
+### S890. CCCAP: verified county residence; required verification of residence, the child's citizenship, age and identity, and the eligible activity
+
+Document: D-106
+
+8 CCR 1403-1, § 3.111.A, C.2.a-d. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3397
+
+> A. The adult caretaker(s) and teen parent(s) shall be verified residents of the county from which assistance is sought and received at the time of application and re- determination. Adult caretaker(s) or teen parent(s) shall remain eligible for the duration of the eligibility period if they report that they are no longer residents of the county in which they are actively receiving assistance per rule section 3.125(GG). B. The adult caretaker(s) or teen parent(s) shall: 1. Be actively participating in an eligible activity; 2. Meet the income eligibility guidelines set by the Department; and 3. Have custody of the child for the period they are requesting care. C. The applicant must complete the CCCAP application process and the primary adult caretaker or teen parent must sign the required application forms. This includes: 1. The State Low-Income Child Care Assistance Program application, which includes appeal rights, signed and completed by the applicant. a. Counties may accept applications from another public assistance program in lieu of the Low-Income Child Care application. b. Counties with Head Start programs may accept the Head Start application in lieu of the Low-Income Child Care application for those children enrolled in the head start program and counties are encouraged to work with local Head Start programs to coordinate this effort. c. Families enrolled in a Head Start or Early Head Start program at the time they apply for CCCAP shall have a re-determination date that aligns with the Head Start or Early Head Start program year. 2. The required verification supporting the information declared on the application form, including: a. Proof of current residence; b. Citizenship, age, and identity of the child(ren) for whom care is requested; 1) A child’s citizenship status, age, and identity are considered to be verified if the complete application includes the child’s age and citizenship status and is signed attesting to the child’s identity unless the county determines that the declaration of citizenship, age, and/or identity is inconsistent. 2) The county must request additional verification if the adult caretaker or teen parent’s declaration is determined to be inconsistent based on the following guidelines: a) If the claim of citizenship, age, and/or identity is inconsistent with statements made by the adult caretaker or teen parent, with other information on the application, or on previous applications; b) If the claim of citizenship, age, and/or identity is inconsistent with the documentation provided by the adult caretaker or teen parent; and/or c) If the claim of citizenship, age, and/or identity was previously received from another source such as another public assistance program including Colorado Works, the Supplemental Nutrition Assistance Program (SNAP), or Medicaid, and the claim is inconsistent with the information previously received from that source. c. Up-to-date immunizations, if applicable; d. Verification of low-income eligible activity;
+
+### S891. CCCAP income verification, asset self-declaration, and the fifteen-day noticing period
+
+Document: D-106
+
+8 CCR 1403-1, § 3.111.H.5. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3397
+
+> 5. Income Verification at Application and Re-determination a. Earned Income 1) For ongoing employment, income received during the prior thirty (30) day period shall be used in determining eligibility unless, on a case-by-case basis, the prior thirty (30) day period does not provide an accurate indication of anticipated income, in which case, a county can require verification of up to twelve (12) of the most recent months of income to determine a monthly average. The adult caretaker(s) or teen parent(s) may also provide verification of up to twelve (12) of the most recent months of income if they choose to do so if such verification more accurately reflects a household’s current income level. 2) For employment that has begun or changed within the last sixty (60) days, a new employment verification letter may be used. 3) For self-employment income the adult caretaker or teen parent shall submit documentation listing his/her income and work-related expenses for the prior thirty (30) day period. On a case-by-case basis, if the prior thirty (30) day period does not provide an accurate indication of anticipated income, a county can require verification of up to twelve (12) of the most recent months of income and expenses to determine a monthly average. The adult caretaker(s) or teen parent(s) may also provide verification of up to twelve (12) of the most recent months of income and expenses if they choose to do so if such verification more accurately reflects a household’s current income level. The county shall obtain verification of all expenses from the adult caretaker(s) or teen parent(s) or they will not be considered. The adult caretaker(s) or teen parent(s) shall submit documentation listing his/her income and work-related expenses to the county. b. Unearned Income Unearned income received during the prior thirty (30) day period shall be used in determining eligibility unless, on a case-by-case basis, the prior thirty (30) day period does not provide an accurate indication of anticipated income, in which case, a county can require verification of up to twelve (12) of the most recent months of income to determine a monthly average. The adult caretaker(s) or teen parent(s) may choose to also provide verification of up to twelve (12) of the most recent months of income if such verification more accurately reflects a household’s current income level. c. Adult caretakers or teen parents shall self-declare that their liquid and non-liquid assets do not exceed one million dollars. If assets exceed one million dollars the household is ineligible for CCCAP. d. If written documentation is not available at time of eligibility determination, verbal verification from the employer or other person issuing the payment may be obtained. Counties shall document the verbal verification in the case file to include the date that the information was received, who provided the information, and a contact phone number. e. If income is not verified 1) At application a) If verifications are not returned within the fifteen (15) day noticing period the application will be denied. b) If all verification has not been submitted within sixty (60) calendar-days of the application date then the county shall require a new application.
+
+### S892. CCCAP: court-ordered child support paid deducted only when verified
+
+Document: D-106
+
+8 CCR 1403-1, § 3.111.K.1-2. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3397
+
+> 1. Verified court-ordered child support payments for children not living in the household shall be deducted prior to applying the monthly gross income to the maximum gross monthly income guidelines and when calculating parent fees. To qualify for the adjustment, the child support shall be: a. Court ordered and paid; and b. For a current monthly support order (not including arrears). 2. In order to be considered verified: a. There shall be verification that payments are court ordered and actually paid; b. Court ordered payments deducted shall be for current child support payments; and c. Such verification shall be made at the time of initial approval of eligibility for services and at the time of each re-determination of eligibility.
+
+### S893. LEAP completed application: all required verification; SSN or proof of application for each member
+
+Document: D-107
+
+9 CCR 2503-7, § 3.751.1 (Completed Application). https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> “Completed Application”: A basic LEAP application shall be considered to be a completed application when: “Completed Application”: A basic LEAP application shall be considered to be a completed application when: A. The applicant has provided an adequate response to all application questions which are necessary to determine eligibility and payment level; B. The applicant has provided all required verification. A Social Security Number (SSN) for each household member or proof of application for a SSN must be provided. A SSN is required to determine eligibility. If no SSN is provided for a household member, that member will not be included in the household, but the member's income will be counted; C. The application is signed
+
+### S894. LEAP: questionable defined
+
+Document: D-107
+
+9 CCR 2503-7, § 3.751.1 (Questionable). https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> “Questionable”. Means inconsistent or contradictory information, statements, documents or case documentation that require verification from the household to determine eligibility.
+
+### S895. LEAP: citizenship verification documents and questionable citizenship
+
+Document: D-107
+
+9 CCR 2503-7, §§ 3.753.11-3.753.111. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> 3.753.11 Verification of Citizenship in the United States [Eff. 12/1/14] Documents that are acceptable as verification of citizenship can be found at 1 CCR 204-30, Appendix A. 3.753.111 Verification of Questionable Citizenship Information [Eff. 12/1/14] The following shall be used in considering questionable statement(s) of citizenship from applicant: A. The claim of citizenship is inconsistent with statements made by the applicant, or with other information on the application, or on previous applications. B. The claim of citizenship is inconsistent with information received from another reliable source.
+
+### S896. LEAP: legal immigrants' documentation verified through SAVE
+
+Document: D-107
+
+9 CCR 2503-7, § 3.753.15. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> Legal immigrants applying for public assistance must present documentation from CIS showing the applicant's status. All documents must be verified through SAVE (Systematic Alien Verification for Entitlements) to determine the validity of the document.
+
+### S897. LEAP: income, estimated home heating costs and vulnerability verified
+
+Document: D-107
+
+9 CCR 2503-7, § 3.755.11. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> Income, estimated home heating costs, and vulnerability shall be verified in determining initial eligibility and/or payment amount. If a household applied during the prior LEAP program year and there are no changes in the applicant, address and fuel provider, vulnerability may be copied from the prior year case file and provided in the current case file.
+
+### S898. LEAP: adequate verification of unearned and earned income
+
+Document: D-107
+
+9 CCR 2503-7, § 3.755.21.A-D. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> A. Unearned income, such as pensions or retirement income, veteran's benefits, worker's compensation, unemployment or supplemental security income shall be verified in writing, such as an award letter or cost of living adjustment (COLA) letter, issued after the last general increase for that type of assistance, which shows the gross amount before any deductions. Acceptable verification includes documentation from federal/state/system inquiries (i.e., a copy of applicable CBMS screens). Copies of bank deposits or checks shall not be adequate verification of gross income. B. Verification of child support income shall include at a minimum: 1. Verification through the Automated Child Support Enforcement System (ACSES); or, 2. Verification through the Family Support Registry (FSR); or, 3. Copies of checks, money orders or other document(s) including written statements or affidavits from the non-custodial parent that documents the income paid directly to the custodial parent. 4. An exception shall be made in cases of domestic violence as defined in Section 18-6- 800.3(1), C.R.S., when the applicant provides evidence from a court or participation in the state’s Address Confidentiality Program (ACP) pursuant to Section 24-30-2104, C.R.S. Client declaration shall be sufficient in such cases. C. Social Security income may be verified by an award letter, issued by the social security administration, after the last general increase. Acceptable verification includes documentation from federal/state/system inquiries (i.e., a copy of applicable CBMS screens). Gross Social Security income includes income before any deductions for Medicare or other medical insurance. Copies of bank deposit or checks shall not be adequate verification of gross Social Security income. D. Earned ongoing income shall be verified for at least four (4) weeks of the eight (8) weeks prior to the application date and shall consist of pay stubs or statements from employers which state the actual gross income earned.
+
+### S899. LEAP: two calendar weeks to provide requested verification
+
+Document: D-107
+
+9 CCR 2503-7, § 3.756.12.C-D. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=3146
+
+> C. The county department/Contractor shall be required to review for duplicate applications. The county department/Contractor shall determine if an application is complete as defined in the “Definitions” section of these rules. If an application is not complete, the county department/Contractor shall notify the applicant household, in writing through a LEAP system- generated letter, of information or verification necessary to determine eligibility and/or payment level. D. The applicant household shall be provided two (2) calendar weeks from the date the notice is postmarked to provide the requested information and/or verification. Clients who fail to submit the required verification shall have their application denied within processing timelines for emergency and regular applications. However, the county department may extend the period for submission by the applicant of the information requested by the county department/contractor to complete the application upon a showing of good cause for the applicant's failure to provide the necessary information or verification within the two (2) week period. The extended period shall not exceed two weeks.
+
+### S900. 9 CCR 2503-1 is reserved for future use
+
+Document: D-108
+
+9 CCR 2503-1. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2812
+
+> RESERVED FOR FUTURE USE 9 CCR 2503-1 [Editor’s Notes follow the text of the rules at the end of this CCR Document.] _________________________________________________________________________ 3.100 (RESERVED FOR FUTURE USE)
+
+### S901. Colorado Medical Assistance: benefits during the immigration reasonable opportunity period; termination if not documented
+
+Document: D-101
+
+10 CCR 2505-10, § 8.100.3.G.3.a.iv, b. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2918
+
+> iv) If a Reasonable Opportunity Period is provided, the Department or Eligibility site may begin to furnish benefits to otherwise eligible individuals, effective the date of application, or the first day of the month of application. b If the applicant does not provide the necessary documents within the reasonable opportunity period, then the applicant’s Medical Assistance application shall be terminated.
+
+### S902. Colorado SNAP non-citizen unable or unwilling to document status
+
+Document: D-103
+
+10 CCR 2506-1, § 4.505.6.J. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
+
+> J. When any person in a household indicates inability or unwillingness to provide documentary evidence of non-citizen status, either for themselves or any other household member, the household has the option of withdrawing its application or participating with the member in question classified as an ineligible non- citizen. In such cases the local office shall not continue efforts to obtain that documentary evidence.

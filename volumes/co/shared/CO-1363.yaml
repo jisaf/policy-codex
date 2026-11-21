@@ -1,0 +1,17 @@
+id: CO-1363
+name: Child support paid is verified
+identifier: child_support_paid_is_verified
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person's legal obligation to pay child support and the payments made are verified, through the child support system's data or by documents.
+derived: [any, child_support_paid_verified_by_electronic_data_source, child_support_paid_verification_document_received]
+sources: [S809, S833, S892]
+implemented: engine
+tags: [verification, income]
+rationale: 7 CFR 273.2(f)(1)(xii) (S809) allows child support enforcement data and documents; CCCAP 3.111.K (S892) requires verification of order and payment; no existing item combines the sources.
+tests:
+  - {id: CO-1363-T1, as_of: "2026-10-01", given: {child_support_paid_verified_by_electronic_data_source: true}, expect: true}
+  - {id: CO-1363-T2, as_of: "2026-10-01", given: {child_support_paid_verified_by_electronic_data_source: false, child_support_paid_verification_document_received: true}, expect: true}
+  - {id: CO-1363-T3, as_of: "2026-10-01", given: {child_support_paid_verified_by_electronic_data_source: false, child_support_paid_verification_document_received: false}, expect: false}
