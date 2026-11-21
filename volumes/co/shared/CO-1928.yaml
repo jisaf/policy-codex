@@ -1,0 +1,16 @@
+id: CO-1928
+name: Is a veteran rated totally disabled
+identifier: is_veteran_rated_totally_disabled
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person is a veteran with a temporary or permanent disability rated by the Department of Veterans Affairs as 100 percent (total) under 38 U.S.C. 1155.
+derived: [=, va_disability_rating_type, total]
+sources: [S1209]
+implemented: engine
+tags: [ma, disability]
+rationale: "OQ-65: has_va_aid_attendance_housebound_or_survivor_finding (CO-016) is broader (any VA disability compensation or pension, aid and attendance, housebound); 42 CFR 435.554(c)(4) excludes only the 100 percent rating. Dual-entry audit 3.13: derived from va_disability_rating_type (CO-2823)."
+tests:
+  - {id: CO-1928-T1, title: "Rated total", as_of: "2026-11-01", given: {va_disability_rating_type: total}, expect: true}
+  - {id: CO-1928-T2, title: "Paid as total but not rated total", as_of: "2026-11-01", given: {va_disability_rating_type: partial_paid_as_total}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-015
+name: "SNAP: receives disability or blindness payments under the Social Security Act"
+identifier: snap_receives_disability_or_blindness_payment
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person receives disability or blindness payments under title II of the Social Security Act (receives_ssdi), or federally or State-administered supplementary benefits based on the title XVI disability or blindness criteria (receives_disability_based_state_supplement), 7 CFR 271.2 \"Elderly or disabled member\" (2)-(4). SSI itself is read separately by snap_is_disabled_member. Titles I, X and XIV are the adult categories of the territories and have no Colorado recipients."
+derived: [any, receives_ssdi, receives_disability_based_state_supplement]
+sources: [S6, S1951]
+implemented: engine
+tags: [snap, disability]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is read by SNAP: is a disabled member. Vocabulary fix round (R-5): renamed from receives_social_security_disability and confined to SNAP, whose 7 CFR 271.2 prongs (2)-(3) it states. Adult Financial and Medicaid citizenship verification read it as 'receives SSDI', which under this meaning was also true for an SSI or state supplement recipient; they now read receives_ssdi (CO-1727). Same-word audit SW-14: derived, so receipt of SSDI is stated once (title_ii_benefit_type) and cannot disagree with this item."
+tests:
+  - {id: CO-015-T1, title: "SSDI", as_of: "2026-11-01", given: {receives_ssdi: true}, expect: true}
+  - {id: CO-015-T2, title: "State supplement based on blindness", as_of: "2026-11-01", given: {receives_ssdi: false, receives_disability_based_state_supplement: true}, expect: true}
+  - {id: CO-015-T3, title: "Neither", as_of: "2026-11-01", given: {receives_ssdi: false, receives_disability_based_state_supplement: false}, expect: false}

@@ -1,13 +1,17 @@
 id: CO-1110
 name: Receives OASDI as a Disabled Adult Child
 identifier: receives_oasdi_as_disabled_adult_child
-kind: supplied
+kind: derived
 type: yes/no
 scope: person
-program: Medicaid
+program: All
 meaning: Whether the person is currently receiving OASDI income as a Disabled Adult Child - childhood disability benefits drawn on a parent's Social Security number, for an individual determined disabled before age 22 - identified by the OASDI Beneficiary Identification Code "C" (10 CCR 2505-10 § 8.100.6.J.1.a-b, J.2).
 precision: The BIC "C" identification is read as also establishing § 8.100.6.J.1.a's disability determination before age 22, since that is the condition of entitlement to childhood disability benefits.
-supplied_by: SSA BENDEX/SVES beneficiary identification code.
-sources: [S626]
+derived: [=, title_ii_benefit_type, disabled_adult_child]
+sources: [S626, S849]
+implemented: engine
 tags: [ma, non_magi, disability]
-rationale: "No existing item carries the DAC beneficiary code. ma_dac_eligible (CO-1161) needs it."
+rationale: "No existing item carries the DAC beneficiary code. ma_dac_eligible (CO-1161) needs it. Dual-entry audit 3.10: derived from title_ii_benefit_type (CO-2821), so the DAC code is not stated beside receives_ssdi."
+tests:
+  - {id: CO-1110-T1, title: "BIC C", as_of: "2026-11-01", given: {title_ii_benefit_type: disabled_adult_child}, expect: true}
+  - {id: CO-1110-T2, title: "Own SSDI", as_of: "2026-11-01", given: {title_ii_benefit_type: own_disability}, expect: false}

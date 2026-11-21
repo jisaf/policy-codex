@@ -7,12 +7,12 @@ scope: person-month
 program: Medicaid
 meaning: Whether the person is eligible as a Qualified Medicare Beneficiary - entitled to Medicare Part A, countable income (self, plus spouse if living together) at or below 100% of the federal poverty level for their household size, and countable resources at or below the MSP resource limit - per 42 U.S.C. 1396d(p) and 10 CCR 2505-10 8.100.6.L.
 precision: "The income limit is expressed as monthly (annual federal_poverty_guideline_annual_table figure divided by 12) times ma_qmb_income_limit_pct, matching how ma_magi_household_income_pct_fpl (CO-504) treats the same table for the MAGI chapter. Couples compare against the couple's guideline (ma_ssi_household_size 2) per 8.100.6.L.3, whether one or both spouses apply. Reads ma_ssi_poverty_guideline_monthly (CO-1750) instead of restating the lookup."
-derived: [all, receives_medicare_part_a, [<=, ma_ssi_countable_income, ["*", ma_ssi_poverty_guideline_monthly, ma_qmb_income_limit_pct]], [<=, ma_ssi_countable_resources, [case, [["=", ma_ssi_household_size, 2], ma_msp_resource_limit_couple], [else, ma_msp_resource_limit_individual]]]]
+derived: [all, medicare_part_a_entitled, [<=, ma_ssi_countable_income, ["*", ma_ssi_poverty_guideline_monthly, ma_qmb_income_limit_pct]], [<=, ma_ssi_countable_resources, [case, [["=", ma_ssi_household_size, 2], ma_msp_resource_limit_couple], [else, ma_msp_resource_limit_individual]]]]
 sources: [S312, S316]
 implemented: engine
 tags: [ma, non_magi, msp, income, resources]
 rationale: "No existing item states the QMB eligibility test. ma_msp_category (CO-617) needs it. CO-01's p2 (income 1180, household size 1, 1180 <= 1330 = 100% of the size-1 monthly guideline) is the worked example in the batch report; resource eligibility depends on ma_msp_resource_limit_individual, which OQ-81 flags as not fetched for 2026. History moved from the precision note (HCPF review S-14): Vocabulary fix round (U-1): reads ma_ssi_poverty_guideline_monthly (CO-1750) instead of restating the lookup."
 tests:
-  - {id: CO-613-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_ssi_countable_income: 1180, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000}, expect: true}
-  - {id: CO-613-T2, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: true, ma_ssi_countable_income: 1400, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000}, expect: false}
-  - {id: CO-613-T3, as_of: "2026-10-01", month: "2026-10", given: {receives_medicare_part_a: false, ma_ssi_countable_income: 1000, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000}, expect: false}
+  - {id: CO-613-T1, as_of: "2026-10-01", month: "2026-10", given: {medicare_part_a_entitled: true, ma_ssi_countable_income: 1180, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000}, expect: true}
+  - {id: CO-613-T2, as_of: "2026-10-01", month: "2026-10", given: {medicare_part_a_entitled: true, ma_ssi_countable_income: 1400, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000}, expect: false}
+  - {id: CO-613-T3, as_of: "2026-10-01", month: "2026-10", given: {medicare_part_a_entitled: false, ma_ssi_countable_income: 1000, ma_ssi_household_size: 1, ma_ssi_countable_resources: 3000}, expect: false}

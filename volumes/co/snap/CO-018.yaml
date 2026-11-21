@@ -1,0 +1,18 @@
+id: CO-018
+name: "SNAP: under the parental control of a household member"
+identifier: snap_is_under_parental_control_of_household_member
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "For a child living with someone other than their own parent, whether the child is under the parental control of a household member (7 CFR 273.1(b)(1)(iii), 10 CCR 2506-1 4.304.1.A.2): a person in the case has assumed primary responsibility for the child's care or is the child's court-appointed guardian, and the child is not emancipated. Whether the child is under 18 and the adult a household member is tested by the reader."
+precision: "A foster placement is not parental control (273.1(b)(1)(iii): \"other than a foster child\"): the foster roles are not read. If no responsibility or guardianship edge is stated, the child is not under another member's parental control."
+derived: [all, [not, [otherwise, is_emancipated_minor, false]], [exists_related, [in_primary_care_of, ward], true]]
+sources: [S2, S4]
+implemented: engine
+tags: [household, age]
+rationale: "A fact the case must supply; no existing item in the Colorado volume carries it (the volume began empty in phase 1, and the mwr volume's facts are not shared across volumes). It is reserved for the SNAP income, deduction, work registration and ABAWD rules of later batches, which read it by this identifier. Same-word audit SW-16 and SW-3, dual-entry 3.2: derived from the primary-responsibility and guardianship edges the household item crosses and from is_emancipated_minor, so emancipation is one fact and the care relationship is stated once; the identifier was snap_is_under_parental_control_of_household_member."
+tests:
+  - {id: CO-018-T1, title: "A child in her aunt's care", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p2, p1]], expect: true}
+  - {id: CO-018-T2, title: "Emancipated minor", as_of: "2026-11-01", given: {is_emancipated_minor: true}, others: {p2: {}}, relationships: [[has_primary_responsibility_for, p2, p1]], expect: false}
+  - {id: CO-018-T3, title: "No one has taken on the child's care", as_of: "2026-11-01", given: {}, others: {p2: {}}, relationships: [[other_relative, p2, p1]], expect: false}
