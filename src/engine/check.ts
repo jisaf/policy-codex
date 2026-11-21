@@ -200,6 +200,9 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "lookup":
         need(e[1], ["table"], "table"); need(e[2], ["person", "number"], "for person or size");
         return "number";
+      case "band":
+        need(e[1], ["table"], "table"); need(e[2], ["number"], "for the band containing");
+        return "number";
       case "max":
         need(e[1], ["number"], "greater of"); need(e[2], ["number"], "greater of");
         return "number";

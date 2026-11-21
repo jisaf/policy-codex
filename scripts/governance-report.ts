@@ -6,6 +6,7 @@ import path from "node:path";
 import { createEngine } from "../src/engine/engine";
 import { parseItemFile, parseVolumeFile } from "../src/engine/yaml";
 import type { Item } from "../src/engine/types";
+import { parseSources, unverifiedSourceIds } from "../src/ledger/markdown";
 
 function volumeArg(): string | null {
   const i = process.argv.indexOf("--volume");
@@ -31,7 +32,12 @@ for (const ch of entry.chapters) {
 const meta = parseVolumeFile(
   fs.readFileSync(path.join(root, entry.path, "volume.yaml"), "utf8"),
 );
-const engine = createEngine(items, meta);
+const sourcesPath = path.join(root, entry.path, "sources.md");
+const sources = fs.existsSync(sourcesPath) ? parseSources(fs.readFileSync(sourcesPath, "utf8")) : [];
+const engine = createEngine(items, meta, {
+  sourceIds: sources.map((s) => s.id), questionIds: [],
+  unverifiedSourceIds: unverifiedSourceIds(sources),
+});
 
 let errors = 0;
 let warnings = 0;

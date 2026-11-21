@@ -45,6 +45,7 @@ Fields that do not apply are omitted, not left blank.
 | person | A reference to a person in the case. |
 | group of persons | A set of person references. |
 | table keyed by <key> | A parameter table. |
+| table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. |
 
 ### Scopes
 
@@ -164,6 +165,10 @@ Added for SNAP initial-month proration (phase-10 open-question sweep)
 
 - P47 `the number of days from [date] to [date]` the count of calendar days from the first date to the second (negative when the second is earlier), so a rule that prorates by days (10 CCR 2506-1 4.207.2.C's days remaining in the application month over the days in the month) can count them; unknown when either input is unknown
 
+Added for the HCPF stakeholder fix round (Buy-In premiums re-based each state fiscal year)
+
+- P48 `[table keyed by income band], for the band containing [number]` (`band`) the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number; unknown when either input is unknown or the number is above the last bound. A premium schedule stated by income band (10 CCR 2505-10 § 8.100.6.P.1.f.iii, Q.1.g.iv) is then a dated parameter rather than literals in a `case`
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.
@@ -204,6 +209,10 @@ An engine implementation passes when every rule-level test and every case-level 
 ## Approval
 
 Each volume declares an approval policy: which roles must sign an item, keyed by the item's `Program` and tags. Approval attaches to items, and a change set is the vehicle that advances many items at once. Required approvers for a change set are the union of what its items require. Approval is a policy, not a workflow designer.
+
+A policy may set `upstream_of_outcomes: true`: an item that any program's declared outcome reads, directly or through other items, then also requires that program's `by_program` roles, so a change to a shared or another program's item reaches every owner whose outcome it changes.
+
+In the item file, `status` is `Draft`, `Reviewed` or `Approved` (absent reads as Draft), and `approval` is the record of signatures, one row per role: `{role, by, date, commit}`. Governance rejects an unknown status, a role the policy does not declare, an `Approved` item missing a required role's signature, and a `Reviewed` or `Approved` item that rests (directly or through what it reads) on an excerpt marked `Verification: unverified`; it warns on every item citing such an excerpt. An indexed parameter may carry `review_by`, the date its next version is due; governance warns once that date has passed.
 
 ## Effective dating and change sets
 

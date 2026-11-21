@@ -7,9 +7,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { createEngine } from "../engine/engine";
-import { parseCases, type HouseholdCase } from "../engine/cases";
+import { derivedOverrides, parseCases, type HouseholdCase } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
-import { parseOpenQuestions, parseSources } from "../ledger/markdown";
+import { parseOpenQuestions, parseSources, unverifiedSourceIds } from "../ledger/markdown";
 import { ratchetGovernance } from "../changes/validate";
 import type { Item, VolumeMeta } from "../engine/types";
 
@@ -23,6 +23,8 @@ export interface LoadedLedger {
   cases: HouseholdCase[];
   sourceIds: string[];
   questionIds: string[];
+  /** excerpts marked `Verification: unverified`. */
+  unverifiedSourceIds?: string[];
 }
 
 /** Reads the manifest, every item file, `volume.yaml`, `sources.md`,
@@ -65,6 +67,7 @@ export function loadLedgerFromDisk(root: string, volumeId?: string): LoadedLedge
     cases,
     sourceIds: sources.map((s) => s.id),
     questionIds: openQuestions.map((q) => q.id),
+    unverifiedSourceIds: unverifiedSourceIds(sources),
   };
 }
 
@@ -199,6 +202,9 @@ export interface CheckReport {
   knownFailures: string[];
   /** failing rule-test or case keys not covered by `knownFailures`. */
   newFailures: string[];
+  /** `override:<case>:<person>:<identifier>` for every derived identifier a
+   *  household case supplies as a fact; one not in `knownFailures` blocks. */
+  caseOverrides: string[];
   /** error-level constraint or governance findings on a changed or added item. */
   blockingItemErrors: BlockingError[];
   /** duplicated question headings (errors, blocking) and `open:` references
@@ -253,6 +259,7 @@ export function buildCheckReport(
 ): CheckReport {
   const engine = createEngine(ledger.items, ledger.meta, {
     sourceIds: ledger.sourceIds, questionIds: ledger.questionIds,
+    unverifiedSourceIds: ledger.unverifiedSourceIds ?? [],
   });
 
   const idByPath = new Map<string, string>();
@@ -339,6 +346,11 @@ export function buildCheckReport(
   const known = new Set(knownFailures);
   const newRuleFailures = ruleFailures.filter((f) => !known.has(f.testId));
   const newCaseFailures = caseFailures.filter((f) => !known.has(f.key));
+  const caseOverrides: string[] = [];
+  for (const c of ledger.cases) {
+    for (const o of derivedOverrides(engine.index, c)) caseOverrides.push(`override:${c.id}:${o}`);
+  }
+  const newOverrides = caseOverrides.filter((k) => !known.has(k));
 
   const changedIdentifiers = [...changedItems]
     .map((id) => ledger.items.find((it) => it.id === id)?.identifier)
@@ -361,6 +373,7 @@ export function buildCheckReport(
   const ok = blockingItemErrors.length === 0
     && newRuleFailures.length === 0
     && newCaseFailures.length === 0
+    && newOverrides.length === 0
     && openQuestions.errors.length === 0;
 
   return {
@@ -386,7 +399,10 @@ export function buildCheckReport(
     impact,
     outcomesAffected,
     knownFailures: [...known],
-    newFailures: [...newRuleFailures.map((f) => f.testId), ...newCaseFailures.map((f) => f.key)],
+    newFailures: [
+      ...newRuleFailures.map((f) => f.testId), ...newCaseFailures.map((f) => f.key), ...newOverrides,
+    ],
+    caseOverrides,
     blockingItemErrors,
     openQuestions,
     ok,
@@ -438,6 +454,9 @@ export function formatSummary(r: CheckReport): string {
   if (r.ruleTests.failing) lines.push(`  failing: ${r.ruleTests.failingIds.join(", ")}`);
   lines.push(`household cases: ${r.cases.passing}/${r.cases.total} expectations passing`);
   if (r.cases.failing) lines.push(`  failing: ${r.cases.failingIds.join(", ")}`);
+  if (r.caseOverrides.length) {
+    lines.push(`case facts that override a derived rule: ${r.caseOverrides.length}`);
+  }
   lines.push(`impact: ${r.impact.length} identifier(s) downstream of the changed items`);
   if (r.outcomesAffected.length) {
     lines.push(`outcomes affected: ${r.outcomesAffected.join(", ")}`);

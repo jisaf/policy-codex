@@ -675,6 +675,21 @@ export function evaluate(
         if (tbl === null || k === null) return null;
         return k in tbl ? tbl[k] : null;
       }
+      case "band": {
+        // A table keyed by income band: each key is a band's inclusive upper
+        // bound; the value is the first band (in ascending bound order) whose
+        // bound is at least the number. Past the last bound there is no band.
+        const tbl = g(e[1]); const k = g(e[2]);
+        if (tbl === null || k === null) return null;
+        const bounds = Object.keys(tbl).map(Number).filter((x) => !Number.isNaN(x)).sort((a, b) => a - b);
+        for (const b of bounds) {
+          if (Number(k) <= b + 1e-9) {
+            const key = Object.keys(tbl).find((x) => Number(x) === b)!;
+            return tbl[key];
+          }
+        }
+        return null;
+      }
     }
     throw new Error("unknown operator " + op);
   }
