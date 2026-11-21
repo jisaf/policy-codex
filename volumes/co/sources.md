@@ -12364,3 +12364,11 @@ Document: D-80
 >
 > E. All payments, including partial payments, shall have any cents dropped to the
 > nearest dollar, except in cases where SSI income reduces the grant.
+
+### S2050. SNAP: weekly income converted to a monthly amount by multiplying by 4.3
+
+Document: D-14
+
+7 CFR 273.10(c)(2)(i). https://www.ecfr.gov/current/title-7/section-273.10 (re-retrieved 2026-11-21 through the eCFR versioner API, as of 2026-11-18; identical to the text of D-14)
+
+> (2) *Income only in month received.* (i) Income anticipated during the certification period shall be counted as income only in the month it is expected to be received, unless the income is averaged. Whenever a full month's income is anticipated but is received on a weekly or biweekly basis, the State agency shall convert the income to a monthly amount by multiplying weekly amounts by 4.3 and biweekly amounts by 2.15, use the State Agency's PA conversion standard, or use the exact monthly figure if it can be anticipated for each month of the certification period. Nonrecurring lump-sum payments shall be counted as a resource starting in the month received and shall not be counted as income.
