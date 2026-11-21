@@ -29,3 +29,17 @@ src/engine/                 @jisaf
 
 # The manifest: which item files are in the ledger at all.
 codex.json                  @jisaf
+
+# Colorado volume chapters, by the approver who signs them (volumes/co/volume.yaml
+# approval_policy). @jisaf stands in until each team is named; the intended owners
+# are written as placeholders in backticks so they notify no one.
+# SNAP: `cdhs-snap-policy`
+volumes/co/snap/            @jisaf
+# Colorado Works and Adult Financial: `cdhs-cash-programs-policy`
+volumes/co/cash/            @jisaf
+# LEAP: `cdhs-energy-assistance-leap`
+volumes/co/energy/          @jisaf
+# CCCAP, administered by the Department of Early Childhood: `cdec-child-care-policy`
+volumes/co/childcare/       @jisaf
+# SUN Bucks: `cdhs-snap-policy`, with `cde-school-meals` co-approving
+volumes/co/sunbucks/        @jisaf

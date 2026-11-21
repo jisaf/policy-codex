@@ -10,7 +10,9 @@ approval_policy:
     - CHP+ policy owner
     - SNAP policy owner
     - Cash programs policy owner
-    - Child care policy owner
+    - Energy assistance (LEAP) policy owner
+    - Child care policy owner (CDEC)
+    - School meals (CDE) co-approver
     - Legal
     - Data steward
   by_program:
@@ -20,9 +22,9 @@ approval_policy:
     SNAP: ["SNAP policy owner"]
     ColoradoWorks: ["Cash programs policy owner"]
     AdultFinancial: ["Cash programs policy owner"]
-    CCCAP: ["Child care policy owner"]
-    LEAP: ["Cash programs policy owner"]
-    SunBucks: ["SNAP policy owner"]
+    CCCAP: ["Child care policy owner (CDEC)"]
+    LEAP: ["Energy assistance (LEAP) policy owner"]
+    SunBucks: ["SNAP policy owner", "School meals (CDE) co-approver"]
   by_kind:
     supplied: ["Data steward"]
   by_tag:
@@ -41,19 +43,19 @@ programs:
     outcomes: [chp_eligibility_status, chp_verification_status, chp_pending_verification_count, chp_earned_income_verification_is_pending]
   - id: SNAP
     prefix: snap_
-    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count, snap_identity_verification_is_pending, snap_citizenship_verification_is_pending, snap_immigration_status_verification_is_pending, snap_ssn_verification_is_pending, snap_residency_verification_is_pending, snap_earned_income_verification_is_pending, snap_unearned_income_verification_is_pending, snap_resources_verification_is_pending, snap_household_composition_verification_is_pending, snap_disability_verification_is_pending, snap_age_verification_is_pending, snap_work_hours_verification_is_pending, snap_sponsor_verification_is_pending, snap_shelter_costs_verification_is_pending, snap_medical_expenses_verification_is_pending, snap_dependent_care_verification_is_pending, snap_child_support_paid_verification_is_pending, snap_person_pending_verification_count, snap_person_pending_expense_verification_count]
+    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count, snap_identity_verification_is_pending, snap_citizenship_verification_is_pending, snap_immigration_status_verification_is_pending, snap_ssn_verification_is_pending, snap_residency_verification_is_pending, snap_earned_income_verification_is_pending, snap_unearned_income_verification_is_pending, snap_resources_verification_is_pending, snap_household_composition_verification_is_pending, snap_disability_verification_is_pending, snap_age_verification_is_pending, snap_work_hours_verification_is_pending, snap_sponsor_verification_is_pending, snap_shelter_costs_verification_is_pending, snap_medical_expenses_verification_is_pending, snap_dependent_care_verification_is_pending, snap_child_support_paid_verification_is_pending, snap_person_pending_verification_count, snap_person_pending_expense_verification_count, snap_person_participation_status, snap_verification_due_date, snap_noncitizen_documentation_due_date, snap_expense_verification_due_date, snap_expedited_postponement_end_date]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_death_reimbursement_eligible, cw_death_reimbursement_amount, cw_verification_status, cw_pending_verification_count, cw_lawful_presence_verification_is_pending, cw_citizenship_verification_is_pending, cw_immigration_status_verification_is_pending, cw_ssn_verification_is_pending, cw_household_composition_verification_is_pending, cw_earned_income_verification_is_pending, cw_residency_verification_is_pending, cw_school_enrollment_verification_is_pending, cw_pregnancy_verification_is_pending, cw_sponsor_verification_is_pending, unearned_income_verification_is_pending, cw_person_pending_verification_count, cw_person_pending_status_verification_count]
+    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_death_reimbursement_eligible, cw_death_reimbursement_amount, cw_verification_status, cw_pending_verification_count, cw_lawful_presence_verification_is_pending, cw_citizenship_verification_is_pending, cw_immigration_status_verification_is_pending, cw_ssn_verification_is_pending, cw_household_composition_verification_is_pending, cw_earned_income_verification_is_pending, cw_residency_verification_is_pending, cw_school_enrollment_verification_is_pending, cw_pregnancy_verification_is_pending, cw_sponsor_verification_is_pending, cw_person_pending_verification_count, cw_person_pending_status_verification_count, cw_person_participation_status, cw_diversion_payment, cw_unearned_income_verification_is_pending, cw_verification_due_date, cw_status_verification_due_date]
   - id: AdultFinancial
     prefix: af_
-    outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit, af_verification_status, af_pending_verification_count, af_age_verification_is_pending, af_residency_verification_is_pending, af_identity_verification_is_pending, af_ssn_verification_is_pending, af_citizenship_verification_is_pending, af_immigration_status_verification_is_pending, af_resources_verification_is_pending, af_earned_income_verification_is_pending, af_disability_verification_is_pending, af_and_so_disability_verification_is_pending, af_marital_status_verification_is_pending, af_sponsor_verification_is_pending, unearned_income_verification_is_pending]
+    outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit, af_verification_status, af_pending_verification_count, af_age_verification_is_pending, af_residency_verification_is_pending, af_identity_verification_is_pending, af_ssn_verification_is_pending, af_citizenship_verification_is_pending, af_immigration_status_verification_is_pending, af_resources_verification_is_pending, af_earned_income_verification_is_pending, af_disability_verification_is_pending, af_and_so_disability_verification_is_pending, af_marital_status_verification_is_pending, af_sponsor_verification_is_pending, af_unearned_income_verification_is_pending, af_verification_due_date, af_and_so_disability_certification_due_date]
   - id: CCCAP
     prefix: cccap_
-    outcomes: [cccap_eligibility_status, cccap_parent_fee, cccap_verification_status, cccap_pending_verification_count, cccap_residency_verification_is_pending, cccap_eligible_activity_verification_is_pending, cccap_citizenship_verification_is_pending, cccap_age_verification_is_pending, cccap_identity_verification_is_pending, cccap_earned_income_verification_is_pending, cccap_work_hours_verification_is_pending, cccap_additional_care_needs_verification_is_pending, cccap_child_support_paid_verification_is_pending, unearned_income_verification_is_pending, cccap_person_pending_verification_count, cccap_pending_deduction_verification_count]
+    outcomes: [cccap_eligibility_status, cccap_parent_fee, cccap_verification_status, cccap_pending_verification_count, cccap_residency_verification_is_pending, cccap_eligible_activity_verification_is_pending, cccap_citizenship_verification_is_pending, cccap_age_verification_is_pending, cccap_identity_verification_is_pending, cccap_earned_income_verification_is_pending, cccap_work_hours_verification_is_pending, cccap_additional_care_needs_verification_is_pending, cccap_child_support_paid_verification_is_pending, cccap_person_pending_verification_count, cccap_pending_deduction_verification_count, cccap_person_participation_status, cccap_unearned_income_verification_is_pending, cccap_verification_due_date]
   - id: LEAP
     prefix: leap_
-    outcomes: [leap_is_eligible, leap_benefit_amount, leap_verification_status, leap_pending_verification_count, leap_earned_income_verification_is_pending, leap_citizenship_verification_is_pending, leap_heating_costs_verification_is_pending, leap_zero_income_verification_is_pending, unearned_income_verification_is_pending, leap_person_pending_verification_count, leap_member_is_excluded_for_verification]
+    outcomes: [leap_is_eligible, leap_benefit_amount, leap_verification_status, leap_pending_verification_count, leap_earned_income_verification_is_pending, leap_citizenship_verification_is_pending, leap_heating_costs_verification_is_pending, leap_zero_income_verification_is_pending, leap_person_pending_verification_count, leap_member_is_excluded_for_verification, leap_person_participation_status, leap_unearned_income_verification_is_pending, leap_verification_due_date]
   - id: SunBucks
     prefix: sebt_
     outcomes: [sebt_eligibility_status, sebt_benefit_amount, sebt_verification_status, sebt_pending_verification_count, sebt_income_verification_is_pending, sebt_school_enrollment_verification_is_pending]
@@ -105,6 +107,7 @@ types:
   - relationships
   - table keyed by person
   - table keyed by household size
+  - table keyed by year
   - list of months
 
 scopes: [person, person-month, case, month, global]
