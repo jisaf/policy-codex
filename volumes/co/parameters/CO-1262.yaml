@@ -1,0 +1,13 @@
+id: CO-1262
+name: Colorado Works first-level sanction reduction
+identifier: cw_sanction_first_level_reduction
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: The reduction of the assistance unit's grant payment for a first-level sanction - one dollar - per 9 CCR 2503-6 3.608.4.C.1.
+value: 1
+sources: [S760]
+implemented: engine
+tags: [cash, tanf]
+rationale: No existing parameter states it; cw_sanction_reduction (CO-1265) needs it.

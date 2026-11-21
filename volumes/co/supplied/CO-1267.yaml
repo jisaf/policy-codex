@@ -1,0 +1,12 @@
+id: CO-1267
+name: Has a specific crisis need
+identifier: has_specific_crisis_need
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: The Colorado Works client demonstrates a need for a specific item or type of assistance - including cash, housing or transportation - arising from a specific crisis situation or episode of need, and has entered the written or verbal diversion agreement with the county, per 9 CCR 2503-6 3.606.8.A.2-3.
+supplied_by: County Colorado Works assessment and the diversion agreement recorded in the statewide automated system.
+sources: [S762]
+tags: [cash, tanf]
+rationale: No existing fact states it; cw_diversion_eligible (CO-1270) needs it.

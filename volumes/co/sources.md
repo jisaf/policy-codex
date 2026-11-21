@@ -3966,3 +3966,153 @@ Document: D-82
 > regard to VOIP, only the cost of VOIP is deductible; other charges such as
 > Internet connectivity fees and monthly cable/internet fees are not
 > deductible.
+
+### S760. Colorado Works sanction: effect on the grant payment by level
+
+Document: D-81
+
+9 CCR 2503-6 3.608.4.C-F (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Effect of a sanction on the Colorado Works grant payment
+>
+> The Colorado Works grant payment for the entire household shall be reduced due to a sanction
+> imposed against a member of the assistance unit as follows:
+>
+> 1. First, Second, and Third level sanctions
+>
+> The reduction for the first level sanction shall be one dollar ($1.00), second and third
+> instance of sanction shall be twenty five percent (25%) of an assistance unit’s grant
+> payment.The sanction shall be in effect for one month for each level sanction. A first,
+> second, or third instance of sanction shall progress to the next level of sanction if the
+> client does not re-engage in the Workforce Development program as defined in
+> subsection G. Below by the end of the month that the sanction is being served.
+>
+> 2. Fourth level sanction
+>
+> The reduction for a fourth instance of sanction is 100% and shall result in case closure of
+> the Colorado Works grant payment. The closure shall be in effect for one month. A new
+> application for Colorado Works grant payments is required according to section 3.602.1.
+>
+> D. Serving a sanction
+>
+> All sanctions imposed by a county must be served by the client. If a client has had a break in
+> grant payment for one month or more, the sanction shall be considered served. If a client
+> reapplies for benefits anytime within the calendar month that they are serving a sanction, the
+> client must serve the sanction by having a reduction in benefits according to the first, second, or
+> third level sanctions, or by having a case closed for a fourth level sanction.
+>
+> E. Sanctioning a client that has been sanctioned previously
+>
+> Once a sanction is served, all subsequent occurrences shall be in accordance with the level
+> following the sanction previously served as outlined in 3.608.4.C. and D.
+>
+> F. Sanctioning more than one client in an assistance unit
+>
+> Each Colorado Works case can experience no more than one sanction level in a month. If
+> multiple clients in the same assistance unit have sanctions, the sanctions will be served
+> simultaneously and at the higher sanction level when multiple levels exist.
+
+### S761. Sanction (definition)
+
+Document: D-81
+
+9 CCR 2503-6 3.601. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Sanction” means a reduction in Colorado Works grant payments for an established period of time as a
+> result of not participating in the Workforce Development program.
+
+### S762. Colorado Works diversion payment: terms and conditions
+
+Document: D-81
+
+9 CCR 2503-6 3.606.8.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. A Colorado Works client may receive a diversion payment to address a specific crisis situation or
+> episode of need. Such payments are not designed to meet clients’ basic ongoing needs. A
+> diversion payment may address needs over a period of no more than four (4) months. In addition
+> to a diversion payment, a client who is eligible for diversion may receive supportive payments
+> based on a defined need.
+>
+> A Colorado Works client may receive a diversion payment (diversion grant) under the following
+> terms and conditions:
+>
+> 1. The client does not need long-term cash assistance or basic cash assistance as
+> determined by the assessment.
+>
+> 2. The client demonstrates a need for a specific item or type of assistance, including but not
+> limited to, cash, housing, or transportation. Such assistance may be provided in the form
+> of cash payment, vendor payments, or in-kind services.
+>
+> 3. The client enters into a written or verbal agreement with the county department. The
+> agreement shall be documented in the statewide automated system and shall:
+>
+> a. Document the reason why the client does not need basic cash assistance; and,
+>
+> b. Define the expectations and the terms of the diversion payment; and,
+>
+> c. Specify the need(s) for and the specific type(s) of non-recurring cash payment.
+>
+> 4. The client shall agree not to receive any further Colorado Works assistance in the county
+> where he or she received the diversion payment or any other county for a period of time
+> to be established by the county that issued the diversion payment. This Period of
+> Ineligibility (POI) shall start in the month that the payment is provided and shall not be
+> longer than the equivalent maximum grant payment for the household size over the same
+> period of time.
+>
+> 5. If the client is unable to sustain the agreement because of circumstances beyond his or
+> her control, he or she may apply for and the county may grant basic cash assistance or
+> another diversion payment prior to the end of the POI. The county department can end
+> the POI before it expires if good cause exists and is granted by the county department.
+>
+> 6. A diversion payment is a needs-based, cash or cash-equivalent payment made to a client
+> who is eligible for basic cash assistance, or, at county option, and based on the county’s
+> policy, a higher income limit not to exceed the maximum criteria established in the State
+> plan for non-recurrent short-term benefits. All diversion clients who receive a one-time
+> cash payment are not required to assign child support rights, and receipt of such
+> payment does not count toward their Federal TANF assistance time limit.
+>
+> 7. Two Payments of Assistance in the Same Month
+>
+> A client shall not receive a diversion grant for any month in which he/she receives basic
+
+### S763. Diversion (definition)
+
+Document: D-81
+
+9 CCR 2503-6 3.601. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> “Diversion” means a short-term cash payment (not to extend beyond four (4) months) intended to meet an
+> episode of need.
+
+### S764. Basic cash assistance grant: drop the cents
+
+Document: D-81
+
+9 CCR 2503-6 3.606.1.K. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> K. Calculation of an Eligible Assistance Unit
+>
+> To calculate the basic cash assistance grant amount for an eligible assistance unit:
+>
+> 1. Deduct the net countable income from the grant amount for the assistance unit; and,
+>
+> 2. Drop the cents, and the remainder is the authorized grant.
+
+### S765. Sanctions are served; a break in payment of a month or more serves it
+
+Document: D-81
+
+9 CCR 2503-6 3.608.4.D-E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> D. Serving a sanction
+>
+> All sanctions imposed by a county must be served by the client. If a client has had a break in
+> grant payment for one month or more, the sanction shall be considered served. If a client
+> reapplies for benefits anytime within the calendar month that they are serving a sanction, the
+> client must serve the sanction by having a reduction in benefits according to the first, second, or
+> third level sanctions, or by having a case closed for a fourth level sanction.
+>
+> E. Sanctioning a client that has been sanctioned previously
+>
+> Once a sanction is served, all subsequent occurrences shall be in accordance with the level
+> following the sanction previously served as outlined in 3.608.4.C. and D.
