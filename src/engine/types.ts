@@ -166,7 +166,7 @@ export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 export const MONTH_RE = /^\d{4}-\d{2}$/;
 export const BLOCK_OPS: ReadonlySet<string> = new Set([
   "all", "any", "case", "exists", "exists_related", "each", "some_month", "filter", "sum",
-  "reachable",
+  "sum_months", "reachable",
 ]);
 export const MONTH_BINDING: ReadonlySet<string> = new Set([
   "each", "some_month", "count_months", "avg",
@@ -180,7 +180,7 @@ export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
   "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "days_between", "count_months", "avg",
-  "count", "sum", "band", "lookup_extended", "latest_month_of_year", "as_of",
+  "count", "sum", "sum_months", "band", "lookup_extended", "latest_month_of_year", "as_of",
 ]);
 
 export const BASE: Record<string, BaseType> = {

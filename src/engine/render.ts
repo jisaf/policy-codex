@@ -23,6 +23,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "det_date": return "the Determination Date";
     case "det_month": return "the month containing the Determination Date";
     case "month": return "the month";
+    case "that_month": return "that month";
     case "not": return "it is not the case that " + i(e[1]);
     case "otherwise": return `${i(e[1])}, otherwise ${i(e[2])}`;
     case "unknown": return `${i(e[1])} is unknown`;
@@ -84,6 +85,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
   }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;
+  if (op === "sum_months") return `the sum of ${i(e[2])} for each month in ${i(e[1])}`;
   if (BLOCK_OPS.has(op)) return "(" + block(ix, e).join("; ") + ")";
   throw new Error("unknown operator " + op);
 }
@@ -156,6 +158,13 @@ export function block(ix: LedgerIndex, e: Expr, indent = 0): string[] {
     if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
     return [
       pad + `the sum for each person in ${inline(ix, e[1])} of`,
+      ...block(ix, e[2], indent + 1),
+    ];
+  }
+  if (op === "sum_months") {
+    if (!(Array.isArray(e[2]) && BLOCK_OPS.has(e[2][0]))) return [pad + inline(ix, e)];
+    return [
+      pad + `the sum for each month in ${inline(ix, e[1])} of`,
       ...block(ix, e[2], indent + 1),
     ];
   }

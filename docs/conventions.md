@@ -192,6 +192,10 @@ Added for the hard-coded numbers fix round (docs/reviews/audit-hardcoded-numbers
 - P51 `[table keyed by a whole number], for [number], adding [amount] for each beyond its last row` and `[table], for [number], or its last row beyond it` (`lookup_extended`) a lookup that reads the table's last row itself: up to it, the row for the number; above it, the last row plus the amount for each number beyond it (the `_each_additional` step of the poverty guideline, the SNAP limits, the Colorado Works standards), or the last row itself ("6 or more"). A new table version with more or fewer rows needs no change to the rule
 - P52 `the calendar year of [month or date]` (`year_of`) the year as a whole number; unknown when the month is unknown. A figure keyed by year (the Summer EBT benefit level of a summer) is read for the year of a month found with P50, with no anchor date
 
+Added for the heavier-definitions audit fix round 4 (several lottery receipts per person, OQ-216)
+
+- P53 `the sum of [number] for each month in [months]` (`sum_months`), with `that month` (`that_month`) naming each month in turn while `the month` stays the month being determined. A rule that adds amounts received in earlier months, each counted for a period that depends on its own amount (each month's lottery receipt divided over its own spread, the receipts of the 120 months before added where their spreads reach this month), reads each month's fact `for that month` and compares that month with the month. Unknown when the list or any month's value is unknown; no months is 0. A block form is `the sum for each month in [months] of` with the value indented
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

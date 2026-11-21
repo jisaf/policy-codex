@@ -325,6 +325,53 @@ describe("parameters and tables", () => {
   });
 });
 
+describe("sum over months (P53)", () => {
+  const months = ["2026-01", "2026-02", "2026-03"];
+  it("adds a number for each month, with that month bound and the month unchanged", () => {
+    const w = { w: { "2026-01": 1, "2026-02": 2, "2026-03": 4 } };
+    expect(run(["sum_months", ["months_ending", 3, ["month"]], ["at", "w", ["that_month"]]], w, { month: "2026-03" })).toBe(7);
+    // "the month" inside is still the month the item is evaluated for
+    expect(run(["sum_months", ["months_ending", 3, ["month"]],
+      ["case", [["=", ["that_month"], ["month"]], ["at", "w", ["that_month"]]], ["else", 0]]], w, { month: "2026-03" })).toBe(4);
+  });
+  it("is unknown when any month's value is unknown, and 0 over no months", () => {
+    expect(run(["sum_months", ["months_ending", 3, ["month"]], ["at", "w", ["that_month"]]],
+      { w: { "2026-01": 1, "2026-03": 4 } }, { month: "2026-03" })).toBe(U);
+    expect(run(["sum_months", ["months_from_to", "2026-03", "2026-02"], 1], {}, { month: "2026-03" })).toBe(0);
+    void months;
+  });
+  it("that month outside a sum over months is an error", () => {
+    expect(() => run(["at", "w", ["that_month"]], {}, { month: "2026-03" })).toThrow();
+  });
+});
+
+describe("a number that is not finite is unknown (never an answer)", () => {
+  for (const bad of [NaN, Infinity, -Infinity]) {
+    it(`a supplied ${bad}: comparisons and sums are unknown, not false or a number`, () => {
+      expect(run([">", "x", 100], { x: bad })).toBe(U);
+      expect(run(["<=", "x", 100], { x: bad })).toBe(U);
+      expect(run(["+", "x", 1], { x: bad })).toBe(U);
+      expect(run(["all", ["<=", "x", 100], "a"], { x: bad, a: true })).toBe(U);
+      // a decided "all" still short-circuits on a known false
+      expect(run(["all", "a", [">", "x", 100]], { x: bad, a: false })).toBe(F);
+    });
+  }
+  it("arithmetic that overflows to Infinity is unknown", () => {
+    expect(run(["*", "x", "y"], { x: 1e308, y: 10 })).toBe(U);
+    expect(run(["<", ["*", "x", "y"], 0], { x: -1e308, y: 10 })).toBe(U);
+  });
+  it("is reported as a non-finite warning", () => {
+    const it2: Item = {
+      id: "T-1", name: "t", identifier: "t", kind: "derived", type: "money", scope: "person",
+      program: "All", meaning: "m", derived: ["+", "x", 1],
+    };
+    const ix = buildIndex([...base, it2]);
+    const out: EvalWarning[] = [];
+    evaluate(ix, makeCase(ix, { id: "T", as_of: "2026-06-01", given: { x: NaN } }), "t", "p1", null, undefined, (w) => out.push(w));
+    expect(out.map((w) => [w.kind, w.identifier])).toEqual([["non-finite", "x"]]);
+  });
+});
+
 describe("silent unknowns are reported", () => {
   const items = (derived: Expr): Item[] => [...base, {
     id: "T-1", name: "t", identifier: "t", kind: "derived", type: "money", scope: "person",

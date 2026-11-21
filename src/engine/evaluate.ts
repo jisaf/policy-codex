@@ -23,11 +23,13 @@ export interface TestResult {
 
 /** An unknown the evaluator produced although no supplied fact was missing:
  *  a table lookup whose key has no row, a versioned parameter with no version
- *  in force on the determination date, or a division by zero. Each is
+ *  in force on the determination date, a division by zero, or a number that
+ *  is not finite (NaN or Infinity, stated in a case or produced by
+ *  arithmetic), which is never an answer. Each is
  *  reported (to the `warn` hook, and on the derived fact's trace event) so it
  *  is never a silent "cannot determine". */
 export interface EvalWarning {
-  kind: "lookup-miss" | "no-version" | "division-by-zero";
+  kind: "lookup-miss" | "no-version" | "division-by-zero" | "non-finite";
   /** The derived fact whose rule hit it, or the parameter with no version. */
   identifier: string;
   person: string | null;
@@ -252,6 +254,10 @@ export function evaluate(
 ): unknown {
   const memo: Record<string, unknown> = {};
   const stack: string[] = [];
+  /** P53: the month "that month" names while a "for each month in" sum
+   *  evaluates its value; null outside one. A derived fact's own rule never
+   *  sees it (value() clears it), so memoised values do not depend on it. */
+  let thatMonth: string | null = null;
   /** Warnings raised while each derived fact's rule ran, by memo key, so the
    *  fact's trace event can carry them. Only filled when a hook is present. */
   const warningsByKey = new Map<string, string[]>();
@@ -353,6 +359,16 @@ export function evaluate(
     const seen = (
       v: unknown, origin: TraceEvent["origin"], error?: string, warnings?: string[],
     ): unknown => {
+      // A number that is not finite (NaN, Infinity) is never a value: it is
+      // unknown, and reported, so no comparison or sum decides on it.
+      if (typeof v === "number" && !Number.isFinite(v)) {
+        raise("non-finite", `${id} is ${v}`, it.kind === "derived" ? undefined : {
+          identifier: id,
+          person: sc === "person" || sc === "person-month" ? p : null,
+          month: sc === "month" || sc === "person-month" ? m : null,
+        });
+        v = null;
+      }
       if (!trace) return v;
       const e: TraceEvent = {
         key: sc === "case" || sc === "month" ? id
@@ -424,13 +440,20 @@ export function evaluate(
     if (stack.includes(key)) throw new Error("cycle at " + id);
     stack.push(key);
     let v: unknown;
+    const outerThatMonth = thatMonth;
+    thatMonth = null;
     try {
       v = ev(it.derived ?? null, p, m, P);
+      if (typeof v === "number" && !Number.isFinite(v)) {
+        raise("non-finite", `the rule produced ${v}`);
+        v = null;
+      }
     } catch (ex) {
       seen(null, "evaluated", (ex as Error).message);
       throw ex;
     } finally {
       stack.pop();
+      thatMonth = outerThatMonth;
     }
     memo[key] = v;
     return seen(v, "evaluated", undefined, warningsByKey.get(key));
@@ -470,7 +493,19 @@ export function evaluate(
     return seen(it.value === undefined ? null : it.value, "parameter");
   }
 
+  /** Every operator's result passes here: a number that is not finite is
+   *  unknown from the operator that produced it on (never NaN or Infinity
+   *  compared, summed or rounded), and reported. */
   function ev(e: Expr, p: string | null, m: string | null, P: string | null): any {
+    const v = ev0(e, p, m, P);
+    if (typeof v === "number" && !Number.isFinite(v)) {
+      raise("non-finite", `${Array.isArray(e) ? e[0] : "a literal"} produced ${v}`);
+      return null;
+    }
+    return v;
+  }
+
+  function ev0(e: Expr, p: string | null, m: string | null, P: string | null): any {
     if (e === true || e === false || typeof e === "number") return e;
     if (e == null) return null;
     if (typeof e === "string") {
@@ -721,6 +756,28 @@ export function evaluate(
         }
         return vs.some((v: any) => v === null) ? null : vs.filter(Boolean).length;
       }
+      case "sum_months": {
+        // P53: the sum of a number for each month in a list, with "that
+        // month" naming each month in turn and "the month" unchanged.
+        const ms = g(e[1]);
+        if (ms === null) return null;
+        const outer = thatMonth;
+        let total = 0;
+        try {
+          for (const mm of ms as string[]) {
+            thatMonth = mm;
+            const v = ev(e[2], p, m, P);
+            if (v === null) return null;
+            total += v;
+          }
+        } finally {
+          thatMonth = outer;
+        }
+        return total;
+      }
+      case "that_month":
+        if (thatMonth === null) throw new Error('"that month" outside "for each month in"');
+        return thatMonth;
       case "avg": {
         const ms = g(e[2]);
         if (ms === null) return null;
