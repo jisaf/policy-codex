@@ -10,6 +10,7 @@ import { caseToSpec, parseCases } from "../../src/engine/cases";
 import { emptyChangeSet } from "../../src/changes/types";
 import { changeSetSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
+import { formatFor } from "../../src/ui/present";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
 import type { Item, ProgramVocabulary, VolumeMeta } from "../../src/engine/types";
@@ -112,15 +113,15 @@ describe("CasesView", () => {
     expect(host.textContent).toContain("as of 2027-03-15");
     const facts = host.querySelector("table.facts")!.textContent!;
     expect(facts).toContain("date_of_birth");
-    expect(facts).toContain("1996-08-02");
+    expect(facts).toContain("August 2, 1996");
     expect(facts).toContain("every month");
     const rows = host.querySelectorAll("tr.expectation");
     expect(rows).toHaveLength(4);
     const status = [...rows].find(
       (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
-    expect(status.textContent).toContain("met");
-    expect(status.querySelector("td.ok")!.textContent).toBe("yes");
+    expect(status.textContent).toContain("Met");
+    expect(status.querySelector("td.ok")!.textContent).toBe("matches");
     expect(host.querySelector(".trace")).toBeNull();
   });
 
@@ -147,7 +148,7 @@ describe("CasesView", () => {
     expect(trace).not.toBeNull();
     // The story names what decided the outcome, and the tree is still folded.
     expect(trace.querySelector("ul.story li")!.textContent)
-      .toContain("Medicaid: satisfies community engagement at application is yes");
+      .toContain("Medicaid: satisfies community engagement at application is Yes");
     expect(trace.querySelector(".tnode")).toBeNull();
     await showEverything(host);
     expect(trace.querySelector(".tnode")!.getAttribute("data-identifier"))
@@ -182,7 +183,7 @@ describe("CasesView", () => {
     await new Promise((r) => setTimeout(r));
     expect(host.querySelectorAll(".tnode").length).toBeGreaterThan(shown);
     // A fact already resolved above is one line, not a second subtree.
-    expect(host.textContent).toContain("see above");
+    expect(host.textContent).toContain("worked out above");
   });
 
   it("says when a case id is not in the volume", () => {
@@ -233,7 +234,7 @@ describe("CasesView", () => {
     const outcome = [...host.querySelectorAll(".outcome")].find(
       (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
-    expect(outcome.querySelector(".tval")!.textContent).toBe("met");
+    expect(outcome.querySelector(".tval")!.textContent).toBe("Met");
     expect(outcome.querySelector(".trace ul.story li")).not.toBeNull();
   });
 
@@ -336,7 +337,7 @@ describe("CasesView", () => {
     const outcome = [...host.querySelectorAll(".outcome")].find(
       (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
-    expect(outcome.querySelector(".tval")!.textContent).toBe("met");
+    expect(outcome.querySelector(".tval")!.textContent).toBe("Met");
   });
 
   it("offers only the households the one-person form can represent", () => {
@@ -383,7 +384,7 @@ describe("CasesView", () => {
         const month = el.querySelector(".tag")?.textContent ?? "";
         const key = `${identifier}|${month}`;
         if (!gotByKey.has(key)) continue; // not one of this case's expectations
-        expect(el.querySelector(".tval")!.textContent).toBe(engine.fmt(gotByKey.get(key)));
+        expect(el.querySelector(".tval")!.textContent).toBe(formatFor(engine, identifier, gotByKey.get(key)));
       }
     }
   });
@@ -399,7 +400,7 @@ describe("CasesView", () => {
     const outcome = [...host.querySelectorAll(".outcome")].find(
       (d) => d.textContent!.includes("medicaid_ce_status_at_application"),
     )!;
-    expect(outcome.querySelector(".tval")!.textContent).toBe("unknown");
+    expect(outcome.querySelector(".tval")!.textContent).toBe("Unknown");
     const hint = outcome.querySelector(".unknown-hint")!;
     expect(hint.textContent).toContain("Not answered:");
     const dobButton = [...hint.querySelectorAll("button")].find(

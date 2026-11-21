@@ -15,6 +15,8 @@ import {
   volumeSig,
 } from "./state";
 import { Trace } from "./Trace";
+import { formatDate, formatFor, personLabel } from "./present";
+
 
 export interface ProgramCount { program: string; passed: number; failed: number }
 
@@ -189,8 +191,8 @@ function FactRows(
         <tr key={`${row.identifier}|${row.month}|${i}`}>
           <td>{engine.item(row.identifier)?.name ?? row.identifier}</td>
           <td><code><Ident id={row.identifier} engine={engine} /></code></td>
-          <td>{row.month}</td>
-          <td>{engine.fmt(row.value)}</td>
+          <td>{row.month === "—" || row.month === "every month" ? row.month : formatDate(row.month)}</td>
+          <td>{formatFor(engine, row.identifier, row.value)}</td>
         </tr>
       ))}
     </>
@@ -226,17 +228,25 @@ function CasePage(
           <ul class="params">
             {parameters.map(([k, v]) => (
               <li key={k}>
-                <code><Ident id={k} engine={engine} /></code> {engine.fmt(v)}
+                <code><Ident id={k} engine={engine} /></code> {formatFor(engine, k, v)}
               </li>
             ))}
           </ul>
         </>
       )}
 
+      {(hc.relationships ?? []).length > 0 && (
+        <p class="family">
+          <b>Household:</b>{" "}
+          {(hc.relationships ?? []).map(([role, from, to]) =>
+            `${personLabel(from)} is the ${role.replace(/_/g, " ")} of ${personLabel(to)}`).join("; ")}
+        </p>
+      )}
+
       <h3>Supplied facts</h3>
       {Object.entries(hc.persons ?? {}).map(([pid, person]) => (
         <div key={pid} class="person">
-          <h4>{pid}</h4>
+          <h4>{personLabel(pid)} <small class="mono muted">{pid}</small></h4>
           <table class="facts grid">
             <thead>
               <tr><th>Fact</th><th>Identifier</th><th>Month</th><th>Value</th></tr>
@@ -245,9 +255,17 @@ function CasePage(
           </table>
           <p class="muted">
             Relationships:{" "}
-            {(person.relationships ?? []).length
-              ? (person.relationships ?? []).map((rel) => `${rel[0]} of ${rel[1]}`).join(", ")
-              : "none stated"}
+            {(() => {
+              // The person's own pairs plus the case-level edges that name
+              // them (caseworker S7: the case-level edges were not shown).
+              const own = (person.relationships ?? []).map((rel) => `${rel[0].replace(/_/g, " ")} of ${personLabel(rel[1])}`);
+              const edges = (hc.relationships ?? []).filter(([, from, to]) => from === pid || to === pid)
+                .map(([role, from, to]) => (from === pid
+                  ? `${role.replace(/_/g, " ")} of ${personLabel(to)}`
+                  : `${personLabel(from)} is their ${role.replace(/_/g, " ")}`));
+              const all = [...own, ...edges];
+              return all.length ? all.join(", ") : "none stated";
+            })()}
           </p>
         </div>
       ))}
@@ -261,9 +279,9 @@ function CasePage(
               {Object.entries(hc.month_facts ?? {}).flatMap(([m, mf]) =>
                 Object.entries(mf).map(([k, v]) => (
                   <tr key={`${m}|${k}`}>
-                    <td>{m}</td>
+                    <td>{formatDate(m)}</td>
                     <td><code><Ident id={k} engine={engine} /></code></td>
-                    <td>{engine.fmt(v)}</td>
+                    <td>{formatFor(engine, k, v)}</td>
                   </tr>
                 )))}
             </tbody>
@@ -277,7 +295,7 @@ function CasePage(
         <thead>
           <tr>
             <th>Person</th><th>Fact</th><th>Month</th>
-            <th>Expected</th><th>Got</th><th>OK</th>
+            <th>Expected</th><th>Got</th><th>Test</th>
           </tr>
         </thead>
         <tbody>
@@ -290,7 +308,7 @@ function CasePage(
                   key={key} class={`expectation${isOpen ? " on" : ""}`}
                   onClick={() => { open.value = isOpen ? null : key; }}
                 >
-                  <td>{res.person}</td>
+                  <td>{personLabel(res.person)}</td>
                   <td>
                     <b>{engine.item(res.identifier)?.name ?? res.identifier}</b>
                     <br />
@@ -299,10 +317,12 @@ function CasePage(
                       <Ident id={res.identifier} engine={engine} />
                     </small>
                   </td>
-                  <td>{res.month ?? "—"}</td>
-                  <td>{engine.fmt(res.expect)}</td>
-                  <td>{engine.fmt(res.got)}</td>
-                  <td class={res.ok ? "ok" : "bad"}>{res.ok ? "yes" : "no"}</td>
+                  <td>{res.month ? formatDate(res.month) : "—"}</td>
+                  <td>{res.expect === "unknown" ? "Unknown" : formatFor(engine, res.identifier, res.expect)}</td>
+                  <td>{formatFor(engine, res.identifier, res.got)}</td>
+                  <td class={res.ok ? "ok" : "bad"} title="whether the codex gives the value this test household expects">
+                    {res.ok ? "matches" : "differs"}
+                  </td>
                 </tr>
                 {isOpen && (
                   <tr key={`${key}|trace`} class="tracerow">
@@ -609,7 +629,7 @@ function NewHousehold(
                       {engine.item(o.identifier)?.name ?? o.identifier}{" "}
                       <code><Ident id={o.identifier} engine={engine} /></code>
                       {o.month && <span class="tag">{o.month}</span>}
-                      <span class="tval">{engine.fmt(o.root.value)}</span>
+                      <span class="tval">{formatFor(engine, o.identifier, o.root.value)}</span>
                     </h4>
                     {unanswered.length > 0 && (
                       <p class="unknown-hint muted">

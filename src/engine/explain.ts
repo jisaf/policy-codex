@@ -208,19 +208,60 @@ export function overrides(node: TraceNode): string[] {
   return out;
 }
 
+/** One line of a narrative: a story line about a node, the "… and N more"
+ *  line of a story cut short, or a "Statute over rule:" note. */
+export interface NarrativeLine {
+  kind: "story" | "more" | "override";
+  /** 0 for what decided the value, 1 for what decided that. */
+  depth: number;
+  /** The node a story line tells about. */
+  node?: TraceNode;
+  /** The line as text, exactly as `narrative` returns it. */
+  text: string;
+}
+
+export interface NarrativeOptions {
+  /** How a story line names the person it is about ("Person 2"). Omitted:
+   *  lines carry no person, as before. A line about the explained value's
+   *  own person is labelled too, so every line reads on its own. */
+  person?: (person: string) => string;
+}
+
+/** The narrative as structured lines (see `narrative`), so a view can render
+ *  each line's parts while saying exactly what the text says. Identical
+ *  story lines (the same fact, person, month and value told twice) are told
+ *  once. */
+export function narrativeLines(
+  node: TraceNode, fmt: (v: unknown, n: TraceNode) => string, opts: NarrativeOptions = {},
+): NarrativeLine[] {
+  const seen = new Set<string>();
+  const lines: NarrativeLine[] = [];
+  for (const s of story(node)) {
+    const who = opts.person && s.node.person ? opts.person(s.node.person) + ": " : "";
+    const text = (s.depth ? "  " : "") + who + s.node.name + " is " + fmt(s.node.value, s.node);
+    const key = `${text}|${s.node.month ?? ""}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    lines.push({ kind: "story", depth: s.depth, node: s.node, text });
+  }
+  const notes: NarrativeLine[] = overrides(node).map((o) => ({
+    kind: "override", depth: 0, text: "Statute over rule: " + o,
+  }));
+  if (lines.length <= STORY_LINES) return lines.concat(notes);
+  const kept = lines.slice(0, STORY_LINES - 1);
+  kept.push({ kind: "more", depth: 0, text: "… and " + (lines.length - kept.length) + " more" });
+  return kept.concat(notes);
+}
+
 /** The story of one value in plain lines, "<name> is <value>", the second
  *  level indented under the child it explains. Long stories stop at
  *  STORY_LINES, the last line saying how many more there were. A value
  *  whose rule, or a fact in whose story, follows a statute over a Colorado
  *  rule ends with one "Statute over rule:" line for each such note, so a
  *  county reader sees why the result departs from the rule manual. */
-export function narrative(node: TraceNode, fmt: (v: unknown) => string): string[] {
-  const lines = story(node).map(
-    (s) => (s.depth ? "  " : "") + s.node.name + " is " + fmt(s.node.value),
-  );
-  const notes = overrides(node).map((o) => "Statute over rule: " + o);
-  if (lines.length <= STORY_LINES) return lines.concat(notes);
-  const kept = lines.slice(0, STORY_LINES - 1);
-  kept.push("… and " + (lines.length - kept.length) + " more");
-  return kept.concat(notes);
+export function narrative(
+  node: TraceNode, fmt: (v: unknown, n: TraceNode) => string, opts: NarrativeOptions = {},
+): string[] {
+  return narrativeLines(node, fmt, opts).map((l) => l.text);
 }
+
