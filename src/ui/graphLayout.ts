@@ -20,12 +20,12 @@ export function defaultGraphOptions(): GraphOptions {
   };
 }
 
-export function readGraphOptions(r: Route): GraphOptions {
+export function readGraphOptions(r: Route, allPrograms: readonly string[] = ALL_PROGRAMS): GraphOptions {
   const p = r.params;
   return {
     includeSupplied: p.supplied === "1",
     includeParameters: p.params === "1",
-    programs: p.programs ? p.programs.split(",").filter(Boolean) : [...ALL_PROGRAMS],
+    programs: p.programs ? p.programs.split(",").filter(Boolean) : [...allPrograms],
     focus: p.focus ?? null,
     coneOnly: p.cone === "1",
   };

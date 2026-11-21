@@ -17,7 +17,7 @@ const meta = {
   scopes: ["person", "global"],
 } as unknown as VolumeMeta;
 
-const base = { scope: "person", program: "SNAP", meaning: "m", sources: [] } as const;
+const base = { scope: "person" as const, program: "SNAP", meaning: "m", sources: [] as string[] };
 const items: Item[] = [
   { ...base, id: "T-1", name: "SNAP: meets the gross income test", identifier: "gross_ok", kind: "supplied", type: "yes/no" },
   { ...base, id: "T-2", name: "SNAP: meets the net income test", identifier: "net_ok", kind: "supplied", type: "yes/no" },

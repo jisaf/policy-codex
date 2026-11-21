@@ -66,7 +66,7 @@ export const PERSONAS: Persona[] = [
   },
   {
     id: "county", label: "County worker", agency: "County human services",
-    body: "Step through a household's result in plain words, try a what-if, see the documents owed.",
+    body: "Step through how a test household's result is reached, rule by rule, in plain words, with the rule text behind each step.",
     programs: [],
     roles: [],
     home: { view: "walkthrough", arg: null }, door: "admin",

@@ -1,8 +1,9 @@
 import { useSignal } from "@preact/signals";
 import { buildHash } from "./router";
+import { volumePrograms } from "./programs";
 import { engineSig, navigate, route, viewEngine } from "./state";
 import {
-  ALL_PROGRAMS, layoutGraph, readGraphOptions, type GraphNode,
+  layoutGraph, readGraphOptions, type GraphNode,
 } from "./graphLayout";
 
 const FILL: Record<string, string> = {
@@ -22,7 +23,8 @@ export function GraphView() {
   const engine = viewEngine() ?? engineSig.value;
   const r = route.value;
   if (!engine) return <p class="status">No ledger loaded.</p>;
-  const opts = readGraphOptions(r);
+  const allPrograms = volumePrograms(engine);
+  const opts = readGraphOptions(r, allPrograms);
   const hasFocus = Boolean(opts.focus);
 
   if (!hasFocus && !whole.value) {
@@ -56,7 +58,7 @@ export function GraphView() {
     const next = opts.programs.includes(p)
       ? opts.programs.filter((x) => x !== p)
       : [...opts.programs, p];
-    setParam("programs", next.length === ALL_PROGRAMS.length ? null : next.join(","));
+    setParam("programs", next.length === allPrograms.length ? null : next.join(","));
   };
 
   return (
@@ -74,7 +76,7 @@ export function GraphView() {
             onChange={() => setParam("params", opts.includeParameters ? null : "1")}
           /> parameters
         </label>
-        {ALL_PROGRAMS.map((p) => (
+        {allPrograms.map((p) => (
           <label key={p}>
             <input
               type="checkbox" checked={opts.programs.includes(p)}

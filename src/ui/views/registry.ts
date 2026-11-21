@@ -29,7 +29,7 @@ export const WORKFLOW_VIEWS: WorkflowView[] = [
   },
   {
     view: "walkthrough", label: "Walkthrough", title: "Case walkthrough",
-    purpose: "Step through one household's result rule by rule in plain language, try a what-if, and see the documents still owed.",
+    purpose: "Step through a stored test household rule by rule: each step's plain meaning, the text it cites, and the value the codex recorded.",
     arg: "a household case id",
   },
   {

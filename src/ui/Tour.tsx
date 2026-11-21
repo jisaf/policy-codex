@@ -1,7 +1,7 @@
 import { signal, useSignal } from "@preact/signals";
 import { useLayoutEffect } from "preact/hooks";
 import type { Route } from "./router";
-import { closeEditor, editingSig, modeSig, navigate, openEditor } from "./state";
+import { closeEditor, editingSig, engineSig, modeSig, navigate, openEditor, volumeSig } from "./state";
 import { closePopover } from "./Rich";
 
 export const TOUR_KEY = "codex.tour";
@@ -42,15 +42,42 @@ interface TourStep {
   target: string;
   body: string;
   /** The route this step's target lives on; entered when the step becomes
-   *  current, never by simulating a click on the real nav. */
-  go: Partial<Route> | null;
+   *  current, never by simulating a click on the real nav. A function is
+   *  read when the step starts, so the tour follows the loaded volume. */
+  go: Partial<Route> | null | (() => Partial<Route>);
   /** A small demonstration performed after the page has rendered: opening
    *  the definition card on the first token, or the editor. The tour does
    *  this itself so the visitor sees the thing described, not a promise. */
   act?: "open-token" | "close-popover" | "open-editor";
 }
 
-// Programs -> open Medicaid -> Cases -> open C-01 -> click the outcome
+/** The program, case and rule the tour shows, chosen from the loaded volume
+ *  so it works on any of them (it was written against the work-requirements
+ *  volume's Medicaid, C-01 and WR-200, which it still prefers when present). */
+export function tourProgram(): string {
+  const declared = engineSig.value?.meta.programs?.filter((p) => (p.outcomes ?? []).length) ?? [];
+  if (!declared.length || declared.some((p) => p.id === "Medicaid")) return "Medicaid";
+  return declared[0].id;
+}
+
+export function tourCase(): string {
+  const cases = volumeSig.value?.cases ?? [];
+  if (!cases.length || cases.some((c) => c.id === "C-01")) return "C-01";
+  return cases[0].id;
+}
+
+export function tourItem(): string {
+  const engine = engineSig.value;
+  if (!engine || engine.itemById("WR-200")) return "WR-200";
+  const program = engine.meta.programs?.find((p) => p.id === tourProgram());
+  for (const id of program?.outcomes ?? []) {
+    const it = engine.item(id);
+    if (it && it.kind === "derived") return it.id;
+  }
+  return engine.items().find((it) => it.kind === "derived")?.id ?? "WR-200";
+}
+
+// Programs -> open a program -> Cases -> open a case -> click the outcome
 // (docs/design-onboarding.md, "Guided first run, hints, help").
 const STEPS: TourStep[] = [
   {
@@ -60,8 +87,8 @@ const STEPS: TourStep[] = [
   },
   {
     target: ".tabs a.on",
-    body: "Medicaid: its outcomes, the cases that test it, and the rules behind it.",
-    go: { view: "program", arg: "Medicaid", params: {} },
+    body: "A program: its outcomes, the cases that test it, and the rules behind it.",
+    go: () => ({ view: "program", arg: tourProgram(), params: {} }),
   },
   {
     target: 'nav.primary a[href*="/cases"]',
@@ -71,7 +98,7 @@ const STEPS: TourStep[] = [
   {
     target: "table.expectations",
     body: "This household's facts, and the expectations checked against it.",
-    go: { view: "cases", arg: "C-01", params: {} },
+    go: () => ({ view: "cases", arg: tourCase(), params: {} }),
   },
   {
     target: "tr.expectation",
@@ -81,7 +108,7 @@ const STEPS: TourStep[] = [
   {
     target: ".derivation button.tok[data-id]",
     body: "Every coloured word is a token: a fact, a rule, a number set by policy, or a pattern phrase. Click one, anywhere in the app, to see what it means.",
-    go: { view: "item", arg: "WR-200", params: {} },
+    go: () => ({ view: "item", arg: tourItem(), params: {} }),
   },
   {
     target: ".tokpop",
@@ -97,7 +124,7 @@ const STEPS: TourStep[] = [
   {
     target: "details.section[open] > summary",
     body: "The decision record is where that trace lands. Every rule has one.",
-    go: { view: "item", arg: "WR-200", params: { section: "record" } },
+    go: () => ({ view: "item", arg: tourItem(), params: { section: "record" } }),
     act: "close-popover",
   },
   {
@@ -139,7 +166,7 @@ function perform(act: TourStep["act"]): void {
       closePopover();
     } else if (act === "open-editor") {
       closePopover();
-      if (!editingSig.value) openEditor("WR-200");
+      if (!editingSig.value) openEditor(tourItem());
     }
   } catch { /* the page may not have the element; the step still reads */ }
 }
@@ -154,7 +181,12 @@ function highlight(selector: string): () => void {
   return () => { if (el) el.classList.remove("tour-target"); };
 }
 
+function goOf(s: TourStep): Partial<Route> {
+  return typeof s.go === "function" ? s.go() : s.go ?? {};
+}
+
 export function Tour() {
+
   const step = useSignal(0);
   // Whether this tour opened the editor (so finishing closes it again).
   const openedEditor = useSignal(false);
@@ -162,7 +194,7 @@ export function Tour() {
   useLayoutEffect(() => {
     if (!tourOpenSig.value) return;
     step.value = 0;
-    navigate(STEPS[0].go ?? {});
+    navigate(goOf(STEPS[0]));
   }, [tourOpenSig.value]);
 
   // The act runs after a tick so the page the step navigated to has rendered;
@@ -209,7 +241,7 @@ export function Tour() {
     const to = stepFor(step.value + 1);
     step.value += 1;
     if (to.act === "open-editor" && !editingSig.value && modeSig.value === "edit") openedEditor.value = true;
-    if (to.go) navigate(to.go);
+    if (to.go) navigate(goOf(to));
   };
 
   return (

@@ -6,7 +6,7 @@ import { WORKFLOW_VIEWS } from "./views/registry";
 import { programOutcomes } from "./CasesView";
 import { toggleHelp } from "./Help";
 import { buildHash, VIEWS, type ViewName } from "./router";
-import { groupHits, hitHash, search } from "./search";
+import { groupHits, HIT_KIND_LABEL, HIT_KINDS, hitHash, search } from "./search";
 import {
   baseRefOf, changeSetSig, defaultRefSig, doorSig, editingSig, engineSig, localInfoSig,
   manifestSig, modeSig, navigate, openEditor, route, searchIndexSig, setMode, settingsOpenSig,
@@ -41,7 +41,6 @@ const BROWSE: NavItem[] = [
   { view: "documents", label: "Documents" },
 ];
 
-const KIND_LABEL = { item: "Items", source: "Sources", question: "Open questions" } as const;
 
 /** Which ledger the app reads: the working tree a dev or preview server
  *  serves (when it does), main, the current branch, or any other branch
@@ -176,10 +175,10 @@ export function Header() {
           />
           {hits.length > 0 && (
             <div class="results">
-              {(["item", "source", "question"] as const).map((kind) =>
+              {HIT_KINDS.map((kind) =>
                 grouped[kind].length ? (
                   <div key={kind} class="group">
-                    <h4>{KIND_LABEL[kind]}</h4>
+                    <h4>{HIT_KIND_LABEL[kind]}</h4>
                     {grouped[kind].map((h) => (
                       <a key={h.id} href={hitHash(h, r)} onClick={() => { q.value = ""; }}>
                         <strong>{h.title}</strong>

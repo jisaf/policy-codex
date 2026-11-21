@@ -7,7 +7,7 @@ import { createGitHubClient, type GitHubClient, type PullRequest } from "../gith
 import { idbCache } from "../ledger/cache";
 import { loadManifest, loadVolume, type LoadedVolume } from "../ledger/load";
 import type { Manifest } from "../ledger/manifest";
-import { sourceTitleMap } from "../ledger/markdown";
+import { sourceTitleMap, unverifiedSourceIds } from "../ledger/markdown";
 import { defaultRef, preferredVolume, PREFERRED_VOLUME } from "../ledger/mode";
 import { pickSource, probeLocal, type LedgerSource, type LocalInfo } from "../ledger/source";
 import { applyChangeSet } from "../changes/apply";
@@ -314,6 +314,7 @@ async function openRoute(r: Route): Promise<void> {
       prBaseEngineSig.value = createEngine(baseVol.items, baseVol.meta, {
         sourceIds: baseVol.sources.map((s) => s.id),
         questionIds: baseVol.openQuestions.map((q) => q.id),
+        unverifiedSourceIds: unverifiedSourceIds(baseVol.sources),
       });
     } else {
       pullRequestSig.value = null;
@@ -341,6 +342,7 @@ async function openRoute(r: Route): Promise<void> {
     const engine = createEngine(withRouteRef.items, withRouteRef.meta, {
       sourceIds: withRouteRef.sources.map((s) => s.id),
       questionIds: withRouteRef.openQuestions.map((q) => q.id),
+      unverifiedSourceIds: unverifiedSourceIds(withRouteRef.sources),
     });
     volumeSig.value = withRouteRef;
     rememberVolume(r.volume);

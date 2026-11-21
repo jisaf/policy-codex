@@ -278,7 +278,7 @@ describe("SourcesView document links", () => {
     render(<SourcesView />, host);
     const links = host.querySelectorAll("article.source a.doclink");
     expect(links).toHaveLength(33);
-    expect(links[0].textContent).toBe("D-1");
-    expect(links[0].getAttribute("href")).toBe("#/mwr/document/D-1");
+    expect(links[0].textContent).toBe("D-1: where this sits in the document");
+    expect(links[0].getAttribute("href")).toBe("#/mwr/document/D-1?excerpt=S1");
   });
 });

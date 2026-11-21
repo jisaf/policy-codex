@@ -98,9 +98,9 @@ resolved or resolved. Open a question to see it on its own page.
 
 ## walkthrough
 
-Case walkthrough: step through one household's result rule by rule, in plain
-words, with each value, the rule text it rests on, and where an unknown
-stopped it.
+Case walkthrough: step through one of the stored test households rule by
+rule, in plain words, with the value the codex recorded at each step, the
+rule text it rests on, and where an unknown stopped it.
 
 ## roles
 
