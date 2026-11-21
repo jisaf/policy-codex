@@ -1,0 +1,14 @@
+id: CO-2100
+name: "LEAP: counted in another approved household"
+identifier: leap_is_in_another_approved_household
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: "Whether this person has already been counted as part of another LEAP household that was approved for the same eligibility period (9 CCR 2503-7 3.751.2.A: such a person \"cannot subsequently be considered as part of another household during the same eligibility period\")."
+precision: "Stated for every person in a LEAP case; LEAP reads no default. The household this person was approved with is not named; the fact only removes the person from any later household in the period."
+supplied_by: "CBMS search of LEAP households approved for the current eligibility period (November through April)."
+sources: [S1400]
+open: [OQ-163]
+tags: [household]
+rationale: "Review K-8 (docs/reviews/cccap-leap-phase-6.md) and OQ-163: no existing fact states 3.751.2.A's bar on counting a person in a second household during the same eligibility period. leap_household_members (CO-1000) and leap_household_members_for_income (CO-1009) read it."

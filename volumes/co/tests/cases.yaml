@@ -32,6 +32,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -285,6 +286,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -541,6 +543,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -766,6 +769,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -993,6 +997,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -1232,7 +1237,9 @@
   # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
   # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
   # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
-  # status, her income counted, 5,590 = 203% FPL for four), which in November gets 900 x (1 - 0.2 - 0.3) = 450.
+  # status, her income counted). Phase-10 sweep (OQ-358, OQ-370): p1 lives in a nursing facility, not at the
+  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family household is
+  # p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three, which in November gets 900 x (1 - 0.2 - 0.2) = 540.
   # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
   # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
@@ -1288,7 +1295,8 @@
     # (1 CCR 204-30 Rule 5 1.8). CHP+, Colorado Works and CCCAP read not_applicable where they cannot
     # reach the person (review C-4); SNAP is not_applicable for p1 (in an institution); Adult Financial
     # for p3-p5. LEAP counts the household's heating once and no longer asks p3, outside the household,
-    # for an SSN: p1/p2 1, p3/p4/p5 2 (p3's pay stubs, heating).
+    # for an SSN: p2-p5 2 (p3's pay stubs, heating). Phase-10 sweep (OQ-358): p1, in a nursing facility, is her
+    # own LEAP household, which counts only its heating: 1.
     p1:
       # Phase 7 outcomes. Emergency: p3 (undocumented, MAGI adult) fails only status, so ma_is_emergency_medicaid_only
       # is true; she had an emergency medical condition in October (stated), so eligible_emergency_condition. Everyone else
@@ -1323,8 +1331,8 @@
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-10": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]    # C-2 (phase-8 fix round): the family buys heat in common (shares_heating_fuel_with), so one LEAP household; p3 excluded for status (3.753.17), her income counted
-      leap_household_income: {"2026-10": 5590}    # 3,210 + 2,380
+      leap_household_members: [p1]    # OQ-358 (phase-10 sweep): p1 lives in a nursing facility (leap_living_arrangement institutional_group_care), not at the dwelling, so the spouse edge is not crossed (3.751.1 "Household", 3.751.2.D.1 "living together") and she is her own LEAP household
+      leap_household_income: {"2026-10": 2030}    # her own Social Security 1,420 and pension 610
       leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-10": true}
@@ -1372,7 +1380,7 @@
       leap_verification_status: {"2026-10": pending}
       cw_death_reimbursement_eligible: false    # K-1: no member is a deceased Colorado Works client
       cw_death_reimbursement_amount: 0
-      leap_pending_verification_count: {"2026-10": 2}
+      leap_pending_verification_count: {"2026-10": 1}    # OQ-358: her own household's heating costs only
       ma_citizenship_verification_is_pending: {"2026-10": false}
       ma_identity_verification_is_pending: {"2026-10": false}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1476,7 +1484,7 @@
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-10": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: false
       ma_ltc_couple: false
@@ -1519,7 +1527,7 @@
       cccap_verification_status: {"2026-10": not_applicable}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
-      leap_household_income: {"2026-10": 5590}
+      leap_household_income: {"2026-10": 3560}    # p2's 1,180 + p3's 2,380
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
@@ -1633,8 +1641,8 @@
       # leap_household_members is now filtered by 3.753.17's citizenship requirement (p3 is undocumented, review C-2);
       # leap_household_income still sums p3's income via leap_household_members_for_income (CO-1009). leap_is_eligible
       # is false: October is outside the November-April eligibility period (review C-3, 3.751.1/3.752.1).
-      leap_household_members: [p1, p2, p4, p5]
-      leap_household_income: {"2026-10": 5590}
+      leap_household_members: [p2, p4, p5]
+      leap_household_income: {"2026-10": 3560}
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1785,7 +1793,7 @@
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: {"2026-10": true}
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1819,7 +1827,7 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_household_income: {"2026-10": 5590}
+      leap_household_income: {"2026-10": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
@@ -1929,7 +1937,7 @@
       af_category: {"2026-10": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -1963,7 +1971,7 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_household_income: {"2026-10": 5590}
+      leap_household_income: {"2026-10": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
@@ -2071,6 +2079,7 @@
   persons:
     p1:
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2322,6 +2331,7 @@
         pension_income: 610
     p2:
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2576,6 +2586,7 @@
         social_security_income: 1180
     p3:
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2800,6 +2811,7 @@
         hours_worked: 138
     p4:
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -3025,6 +3037,7 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -3261,7 +3274,9 @@
   # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
   # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
   # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
-  # status, her income counted, 5,590 = 203% FPL for four), which in November gets 900 x (1 - 0.2 - 0.3) = 450.
+  # status, her income counted). Phase-10 sweep (OQ-358, OQ-370): p1 lives in a nursing facility, not at the
+  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family household is
+  # p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three, which in November gets 900 x (1 - 0.2 - 0.2) = 540.
   # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
   # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
@@ -3327,8 +3342,8 @@
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-11": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]    # C-2 (phase-8 fix round): the family buys heat in common (shares_heating_fuel_with), so one LEAP household; p3 excluded for status (3.753.17), her income counted
-      leap_household_income: {"2026-11": 5590}    # 3,210 + 2,380
+      leap_household_members: [p1]    # OQ-358 (phase-10 sweep): p1 lives in a nursing facility (leap_living_arrangement institutional_group_care), not at the dwelling, so the spouse edge is not crossed (3.751.1 "Household", 3.751.2.D.1 "living together") and she is her own LEAP household
+      leap_household_income: {"2026-11": 2030}    # her own Social Security 1,420 and pension 610
       leap_is_eligible: {"2026-11": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-11": true}
@@ -3471,7 +3486,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}    # C-2: one household of four, 5,590 = 203% FPL, 30% contribution: 900 x (1 - 0.2 - 0.3); was 450 and 540 for two households each taking the full $900
+      leap_benefit_amount: {"2026-11": 540}    # OQ-358: household of three, 3,560 x 12 = 42,720 = 156% of the 27,320 guideline for three, 20% contribution: 900 x (1 - 0.2 - 0.2); was 450 for four with p1's income
       cccap_parent_fee: {"2026-11": 0}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3480,11 +3495,11 @@
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-11": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14).
-      # C-2 (phase-8 fix round): the family is one LEAP household of four with $5,590, within the volume's size-4
-      # ceiling (leap_income_limit_monthly, OQ-122), so p2 is LEAP-eligible; p1, now in a nursing facility, stays
-      # in it through the spouse edge, since no fact states that she no longer lives with him (OQ-358).
+      # Phase-10 sweep (OQ-358): p1, now in a nursing facility, no longer lives with him, so the family is one LEAP
+      # household of three (p2, p4, p5) with $3,560 counting p3's income, within the volume's size-3 ceiling
+      # (leap_income_limit_monthly, OQ-122), so p2 is LEAP-eligible.
       leap_is_eligible: {"2026-11": true}
       ma_is_institutionalized: false
       ma_ltc_couple: false
@@ -3526,7 +3541,7 @@
       af_pending_verification_count: {"2026-11": 0}
       cccap_verification_status: {"2026-11": not_applicable}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_household_income: {"2026-11": 5590}
+      leap_household_income: {"2026-11": 3560}    # p2's 1,180 + p3's 2,380
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_verification_status: {"2026-11": complete}
@@ -3625,7 +3640,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 540}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3638,8 +3653,8 @@
       cccap_household_income: {"2026-11": 2380}
       cccap_is_teen_parent: {"2026-11": false}
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
-      leap_household_income: {"2026-11": 5590}
+      leap_household_members: [p2, p4, p5]
+      leap_household_income: {"2026-11": 3560}
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -3772,7 +3787,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 540}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": eligible_categorical}
       sebt_benefit_amount: {"2026-11": 120}
@@ -3790,7 +3805,7 @@
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: {"2026-11": true}
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -3823,7 +3838,7 @@
       cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_household_income: {"2026-11": 5590}
+      leap_household_income: {"2026-11": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_verification_status: {"2026-11": complete}
@@ -3924,7 +3939,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 540}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3934,7 +3949,7 @@
       af_category: {"2026-11": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -3967,7 +3982,7 @@
       cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_household_income: {"2026-11": 5590}
+      leap_household_income: {"2026-11": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_verification_status: {"2026-11": complete}
@@ -5693,9 +5708,11 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-06-11"
         sex: female
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
@@ -5735,9 +5752,11 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1990-02-27"
         sex: male
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
@@ -5778,9 +5797,11 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2012-05-20"
         sex: male
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -5825,9 +5846,11 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2008-03-14"
         sex: female
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -5868,6 +5891,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1981-09-05"
         sex: male
         citizenship_status: undocumented
@@ -6637,6 +6661,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-08-15"
         sex: male
         citizenship_status: citizen
@@ -6794,6 +6819,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2020-05-20"
         sex: female
         citizenship_status: citizen
@@ -7046,6 +7072,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: true
@@ -7222,6 +7249,7 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: false

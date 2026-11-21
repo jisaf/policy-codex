@@ -7620,3 +7620,59 @@ Document: D-87
 >
 > 1) Depreciation of equipment;
 
+### S1400. LEAP household: living together as one economic unit; each person living at a dwelling; no second household in an eligibility period
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1 ("Household") and 3.751.2.A-B, D.1 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Household”: The term “household” shall mean any individual or group of individuals who are living
+> together as one economic unit for whom primary heating fuel is customarily purchased in common or who
+> make undesignated payments for heat in the form of rent.
+>
+> 3.751.2 HOUSEHOLDS [Eff. 12/1/14]
+>
+> A. Any individual considered as part of an approved household cannot subsequently be considered
+> as part of another household during the same eligibility period.
+>
+> B. Each person living at a dwelling must be counted as either a member of the applicant's
+> household or a member of a separate household.
+>
+> D. The following cannot be classified as separate households:
+>
+> 1. Husband and wife living together;
+
+### S1401. LEAP: an alien with no status verification is not eligible; a member who does not meet the citizenship requirements is not a household member but the income counts
+
+Document: D-86
+
+9 CCR 2503-7 3.753.17.A and 3.753.18 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.753.17 Aliens and Temporary Residents Not Eligible for Assistance [Eff. 12/1/14]
+>
+> The following individuals are not eligible for public assistance or social services programs:
+>
+> A. An alien with no status verification from the U.S. Citizenship and Immigration Service;
+>
+> 3.753.18 Citizenship Requirements [Eff. 12/1/14]
+>
+> An applicant who does not meet lawful permanent residency or citizenship requirements shall not be
+> included as a household member; however, all countable income of this individual shall be counted as
+> part of the household's total income. The household's application shall not be denied due to lack of
+> documentation regarding citizenship requirements if there are other household members who meet the
+> citizenship requirements (i.e., minors born in the United States).
+
+### S1402. LEAP vulnerability in a residence shared by more than one household; shared primary fuel divides the estimated home heating cost
+
+Document: D-86
+
+9 CCR 2503-7 3.752.25.A.4, A.6 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 4. The applicant household in a residence where more than one household resides shall be
+> considered vulnerable if the applicant household contributes toward the total expenses of
+> the residence. These expenses include, but are not limited to, shelter and utilities.
+>
+> 6. Any applicant who shares a primary fuel, such as a shared natural gas meter, electric
+> meter or propane tank, will be considered a shared household and the Estimated Home
+> Heating Cost (EHHC) will be divided by the number of parties responsible for paying the
+> shared heat expense.
