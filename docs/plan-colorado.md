@@ -34,3 +34,24 @@ Chapters: eligibility, income limits, activity requirements (as rules).
 3. Write program cases (target household first) and fill CO-01/CO-02 expectations for the program.
 4. Policy review by a separate reviewer role against the sources: completeness (statute/rule sections not represented), correctness (each rule vs its excerpt), cases (expected outcomes recomputed by hand).
 5. Fix round; phase note.
+
+## Completion phases (7–11), started 2026-11-21
+
+Goal: every program a household can apply for through PEAK is in the volume, every element it reads is defined, document collection (verification) is modeled, and every open question that published Colorado or federal rule can answer is answered.
+
+Network as of this date: the Colorado SOS CCR site (sos.state.co.us, official current rule PDFs), eCFR, govinfo, federalregister.gov, medicaid.gov, cms.gov, fns.usda.gov (redirects but serves), Cornell LII and leg.colorado.gov answer; hcpf.colorado.gov, cdhs.colorado.gov, cdec.colorado.gov, colorado.gov and ssa.gov refuse (403). State-published figures are taken from the rule text at SOS, from CMS publications on medicaid.gov (SSI and spousal impoverishment standards, eligibility levels, approved state plan amendments), and from FNS memos.
+
+### Phase 7: Medicaid and CHP+ completion
+Emergency Medicaid as its own determination (emergency medical condition, every other requirement met, the CHP+ prenatal route for undocumented pregnant people), the Breast and Cervical Cancer Program, family planning and the state Reproductive Health Care Program, the Old Age Pension Health Care and Supplemental programs, QDWI, the full HCBS waiver list with target groups, Pickle/DAC/widow(er) protected groups and 1619(b), Cover All Coloradans, and the state figures still supplied (children's income standard from the Medicaid/CHIP eligibility levels, CHP+ enrollment fee, CSRA/MMMNA/home equity/transfer divisor, MSP resource limits). IDs CO-1100–1199, documents D-65–D-79, excerpts S600–S699, open questions OQ-200–OQ-249.
+
+### Phase 8: cash, food and the other PEAK programs
+Home Care Allowance, Colorado Works diversion and sanctions (3.608), OAP/AND/AB grant standards and burial assistance from the current 9 CCR 2503-5, the Summer EBT (SUN Bucks) program, LEAP's own income table and benefit formula, the CCCAP gaps (K-4..K-9), and the SNAP updates (FY2027 COLA, standard utility allowances, Colorado's H.R.1 implementing rules). IDs CO-1200–1299, D-80–D-94, S700–S799, OQ-250–OQ-299.
+
+### Phase 9: document collection (verification)
+For every program: which elements must be verified and when (mandatory, questionable, at application, at renewal), what documents or electronic data sources satisfy each, the time the applicant has to provide them (including the reasonable opportunity period for citizenship and immigration status), and a per-program verification outcome. IDs CO-1300–1499, D-95–D-114, S800–S999, OQ-300–OQ-349.
+
+### Phase 10: open-question sweep and reviews
+Each open question is answered from published rule where one exists (the item is fixed and the question marked Resolved with the citation) or left open with the reason no published rule settles it. A policy review per new chapter, fix rounds, and a complex case per phase.
+
+### Phase 11: wrap-up
+Notes, README/volume.yaml status, handoff regenerated.
