@@ -191,5 +191,6 @@ export const BASE: Record<string, BaseType> = {
   "table keyed by household size": "table",
   "table keyed by income band": "table",
   "table keyed by year": "table",
+  "table keyed by number of days": "table",
   "list of months": "months",
 };

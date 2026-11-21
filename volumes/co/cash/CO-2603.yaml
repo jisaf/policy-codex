@@ -1,0 +1,20 @@
+id: CO-2603
+name: "Adult Financial: partial month payment factor"
+identifier: af_partial_month_payment_factor
+kind: derived
+type: rate
+scope: person-month
+program: AdultFinancial
+meaning: "The figure this month's Adult Financial grant payment is multiplied by: in the month the client is determined eligible on a day other than the first, the decimal figure of 9 CCR 2503-5 3.581.D.4 for the number of days for which the client is eligible in the month (3.581.D.2-3; 3.532.B.2, 3.543.B.2, 3.548.B.2); otherwise 1, the full monthly payment (3.532.B.1, 3.543.B.1, 3.548.B.1)."
+precision: "The days of eligibility run from af_eligibility_date (CO-2391) through the last day of the month, the date itself included: a client eligible from October 10 is eligible for 22 days of October (OQ-491, resolved). A client with no eligibility date stated, or eligible from the first, receives the full payment."
+derived: [case, [[all, [not, [unknown, af_eligibility_date]], ["=", [month], [month_of, af_eligibility_date]], [not, ["=", af_eligibility_date, [first_day, [month]]]]], [lookup, af_partial_month_payment_factor_table, [days_between, af_eligibility_date, [first_day, [month_after, [month]]]]]], [else, 1]]
+sources: [S1635, S1825]
+implemented: engine
+tags: [cash, income]
+rationale: "Engineering follow-up 4: af_oap_grant (CO-951) and af_and_grant (CO-952) each computed a days-remaining ratio the rule does not state; 3.581.D (S1825) states the table both programs' partial months use. One item so the two grants read the same factor."
+tests:
+  - {id: CO-2603-T1, title: "Eligible from October 10: 22 days of eligibility, .72329", as_of: "2026-10-15", month: "2026-10", given: {af_eligibility_date: "2026-10-10"}, expect: 0.72329}
+  - {id: CO-2603-T2, title: "The next month is a full month", as_of: "2026-11-02", month: "2026-11", given: {af_eligibility_date: "2026-10-10"}, expect: 1}
+  - {id: CO-2603-T3, title: "Eligible from the first: the full payment, not the 30-day figure", as_of: "2026-11-02", month: "2026-11", given: {af_eligibility_date: "2026-11-01"}, expect: 1}
+  - {id: CO-2603-T4, title: "Eligible from September 2: 29 days, .95342", as_of: "2026-09-15", month: "2026-09", given: {af_eligibility_date: "2026-09-02"}, expect: 0.95342}
+  - {id: CO-2603-T5, title: "No eligibility date stated: the full payment", as_of: "2026-10-01", month: "2026-10", given: {}, expect: 1}

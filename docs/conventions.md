@@ -53,6 +53,7 @@ Fields that do not apply are omitted, not left blank.
 | table keyed by <key> | A parameter table (`table keyed by person`, `table keyed by household size`). Keys are strings; a whole-number key reads its decimal string. |
 | table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. |
 | table keyed by year | A parameter table keyed by calendar year, such as a benefit level per summer. |
+| table keyed by number of days | A parameter table keyed by a count of days (`"1"` to `"30"`), such as the Adult Financial partial month payment figures (9 CCR 2503-5 3.581.D.4); read with P24/P42 as a lookup by a whole number. |
 
 Numbers are IEEE 754 binary64, computed in the order written; see `docs/operators.md`, Numbers.
 

@@ -12318,3 +12318,49 @@ Document: D-82
 > during the current season, the local office shall grant a
 > postponement of out-of-state verification only for the initial month's
 > issuance and not for the second (2nd) month's issuance. Migrant
+
+### S1825. Adult Financial partial month payments: the days-of-eligibility table, and cents dropped from every payment
+
+Document: D-80
+
+9 CCR 2503-5 3.581.D-E (version effective 2026-03-02; re-fetched 2026-11-21 from the same address to confirm the text). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. To calculate partial month payments:
+>
+> 1. Determine the client’s monthly grant payment amount for the program
+> according to program rules at 3.520.78, 3.533, 3.544, and 3.549;
+>
+> 2. Determine the number of days for which the client is eligible for assistance
+> and, based on the table in subsection 4 below, find the decimal figure
+> corresponding to the number of days of eligibility;
+>
+> 3. Multiply the client’s monthly grant payment amount from subsection 1 by
+> the decimal figure in the table in subsection 4 to determine the grant
+> payment amount for the partial month;
+>
+> 4. To calculate the partial month payments, the following table shall be used:
+>
+> Days Standard Days Standard Days Standard
+>
+> 1 .03288 11 .36164 21 .69041
+>
+> 2 .06575 12 .39452 22 .72329
+>
+> 3 .09863 13 .42739 23 .75617
+>
+> 4 .13151 14 .46027 24 .78904
+>
+> 5 .16439 15 .49315 25 .82192
+>
+> 6 .19726 16 .52603 26 .85480
+>
+> 7 .23014 17 .55890 27 .88768
+>
+> 8 .26302 18 .59178 28 .92054
+>
+> 9 .29590 19 .62466 29 .95342
+>
+> 10 .32876 20 .65754 30 .98630
+>
+> E. All payments, including partial payments, shall have any cents dropped to the
+> nearest dollar, except in cases where SSI income reduces the grant.
