@@ -1,0 +1,12 @@
+id: CO-2004
+name: "Adult Financial: AND-SO client has met the SSI and SSDI application duty"
+identifier: af_has_met_and_so_benefit_application_duty
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "Whether an Aid to the Needy Disabled - State Only client has done what 9 CCR 2503-5 3.520.71.B requires: applied for Supplemental Security Income, also applied for Social Security Disability Insurance if the client has had work hours during their lifetime, and not failed to appeal a negative SSI decision within thirty calendar days (or the additional time the county allowed for good cause). False when the client has not applied, or let an appeal period lapse; failure \"shall result in denial or discontinuation of and grant payments\"."
+supplied_by: County department case record (SSI and SSDI application and appeal status).
+sources: [S710, S1315]
+tags: [cash, and]
+rationale: "No existing fact states the AND-SO duty: has_applied_for_ssi (CO-848) is the Aid to the Blind statutory prong with its own referral-compliance condition (C.R.S. 26-2-111(5)(a)(II)) and says nothing of SSDI or appeals. af_and_so_eligible (CO-1203) needs it (OQ-151)."

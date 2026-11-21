@@ -8,8 +8,7 @@ program: SNAP
 meaning: This person's SNAP household's earned income base for the 20% earned income deduction - snap_household_earned_income (the eligible members' own earned income) plus the counted, prorated-or-full earned share attributed from each ineligible household member.
 precision: Sums snap_counted_earned_income_of_ineligible_member over the ineligible members of snap_household_members (mirroring snap_household_gross_income's split between eligible and ineligible members) and adds it to snap_household_earned_income, so an eligible member's earned income is never counted twice.
 derived: [+, snap_household_earned_income, [sum, [filter, snap_household_members, [of, [P], snap_is_ineligible_member]], [of, [P], snap_counted_earned_income_of_ineligible_member]]]
-sources: [S46, S107]
-open: [OQ-27]
+sources: [S46, S107, S1312]
 nearest: [CO-334]
 rationale: 10 CCR 2506-1 4.411.1,B,2,c (S107) requires the earned income deduction's base to include the prorated earned share of a disqualified or ineligible member, which snap_household_earned_income (CO-335, batch 2, unavailable to edit) does not include by design; this item adds that share on top of CO-335's total using the same eligible/ineligible split snap_household_gross_income (CO-334) uses for the household's overall gross income, but applied to the earned-only components.
 implemented: engine

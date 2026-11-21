@@ -6,10 +6,9 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: Whether the person is barred from Adult Financial programs for the month because of Colorado Works - currently receiving Colorado Works financial assistance, eligible for it, or in a Colorado Works case closed for a sanction - per 9 CCR 2503-5 3.520.61.F and 3.520.71.F.2.
-precision: "Receipt is read from receives_tanf_cash (CO-013); eligibility and the sanction closure from the person's own cw_eligibility_status (CO-921) - eligible, or sanction_closure (a fourth-level sanction, 3.608.4.C.2). A specified caretaker who is not a parent is not required to join the Colorado Works case (3.520.71.F.1.a); such a person is not in a Colorado Works assistance unit in this volume (CO-900 joins parents and caretakers to their own dependent children only), so cw_eligibility_status does not report them eligible. A closure for demonstrable evidence or a disqualification, and a withdrawal before benefits are exhausted (F.2.a-b), are not modeled (OQ-357)."
-derived: [any, receives_tanf_cash, [in, cw_eligibility_status, [eligible, sanction_closure]]]
+precision: "Receipt is read from receives_tanf_cash (CO-013); eligibility and the sanction closure from the person's own cw_eligibility_status (CO-921) - eligible, or sanction_closure (a fourth-level sanction, 3.608.4.C.2). A specified caretaker who is not a parent is not required to join the Colorado Works case (3.520.71.F.1.a); such a person is not in a Colorado Works assistance unit in this volume (CO-900 joins parents and caretakers to their own dependent children only), so cw_eligibility_status does not report them eligible. A closure for demonstrable evidence or a disqualification, or a withdrawal before benefits are exhausted, that still stands (F.2.a-c) is the supplied af_has_open_colorado_works_closure_bar (CO-2008), read as false when a case does not state it. The duty of F.1 to apply for Colorado Works is not a separate test: the bar reads Colorado Works eligibility directly (OQ-357)."
+derived: [any, receives_tanf_cash, [in, cw_eligibility_status, [eligible, sanction_closure]], [otherwise, af_has_open_colorado_works_closure_bar, false]]
 sources: [S711, S1011]
-open: [OQ-357]
 implemented: engine
 tags: [cash, oap, and, tanf]
 accepts_from: [cw_eligibility_status]
@@ -19,3 +18,4 @@ tests:
   - {id: CO-1511-T2, title: "Not receiving, but eligible for Colorado Works", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: eligible}, expect: true}
   - {id: CO-1511-T3, title: "Colorado Works case closed for a fourth-level sanction (3.520.71.F.2.a)", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: sanction_closure}, expect: true}
   - {id: CO-1511-T4, title: "No dependent child - not eligible for Colorado Works, not barred", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: ineligible_no_dependent_child}, expect: false}
+  - {id: CO-1511-T5, title: "OQ-357: Colorado Works case closed when the client withdrew before exhausting benefits (3.520.71.F.2.b)", as_of: "2026-10-01", month: "2026-10", given: {receives_tanf_cash: false, cw_eligibility_status: ineligible_no_dependent_child, af_has_open_colorado_works_closure_bar: true}, expect: true}

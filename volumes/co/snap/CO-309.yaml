@@ -5,15 +5,15 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person is a U.S. citizen or non-citizen national, or is an eligible non-citizen, and so may participate in SNAP as far as citizenship and immigration status alone determine.
-precision: "Does not itself test U.S. residency (7 U.S.C. 2015(f)(1)); see OQ-3. Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
-derived: [any, is_us_citizen_or_national, snap_is_eligible_non_citizen]
-sources: [S8]
-open: [OQ-3]
+meaning: The person meets 7 U.S.C. 2015(f) - a resident of the United States who is a U.S. citizen or non-citizen national or an eligible non-citizen - and so may participate in SNAP as far as residence, citizenship and immigration status determine.
+precision: "The residency prong of 2015(f)(1) reads is_colorado_resident (CO-505): Colorado requires an applicant to live in the county where they apply (10 CCR 2506-1 4.303.A, S1311), so a person meeting Colorado's residency requirement is a resident of the United States, and no separate fact is needed (OQ-3 resolved). The county-of-application half of 4.303.A is not modeled; no county fact exists (OQ-393). Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
+derived: [all, is_colorado_resident, [any, is_us_citizen_or_national, snap_is_eligible_non_citizen]]
+sources: [S8, S1311]
 implemented: engine
 tags: [immigration, legal]
 rationale: Combines citizen/national status with snap_is_eligible_non_citizen into the single pass/fail citizenship test 7 U.S.C. 2015(f) states, which snap_is_ineligible_non_citizen and snap_is_ineligible_member read.
 tests:
-  - {id: CO-309-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
-  - {id: CO-309-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
-  - {id: CO-309-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1945-07-30", has_military_connection: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40}, expect: true}
+  - {id: CO-309-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, state_of_residence: CO}, expect: true}
+  - {id: CO-309-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented, state_of_residence: CO}, expect: false}
+  - {id: CO-309-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1945-07-30", has_military_connection: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40, state_of_residence: CO}, expect: true}
+  - {id: CO-309-T4, title: "OQ-3: a citizen who does not live in Colorado does not meet 2015(f) for Colorado SNAP", as_of: "2026-10-01", given: {citizenship_status: citizen, state_of_residence: WY}, expect: false}

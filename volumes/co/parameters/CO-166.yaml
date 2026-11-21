@@ -5,10 +5,13 @@ kind: parameter
 type: whole number
 scope: global
 program: SNAP
-meaning: The oldest age subject to the ABAWD time limit under 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102.
-assumption: The amended statute exempts an individual "over 65" years of age (S127, S128), which literally exempts only persons who have turned 66; the draft reads the age range subject to the time limit as 18 through 65 inclusive (max age parameter 65, exemption applies when age is more than 65). This differs from the pre-H.R.1 regulation and Colorado's rule manual (7 CFR 273.24(c)(1), 10 CCR 2506-1 4.311.A.2, S131, S132), which still state "55 years of age or older" and have not been updated to the amended statute; the statute controls. See OQ-31.
-value: 65
-sources: [S127, S128]
-open: [OQ-31]
+meaning: The oldest age subject to the SNAP time limit (the ABAWD time limit) under 7 U.S.C. 2015(o)(3)(A), as amended by Pub. L. 119-21 sec. 10102, which excepts a person "under 18, or over 65, years of age". A person aged 65 is excepted, so the oldest age subject to the time limit is 64.
+precision: Inclusive (docs/conventions.md, rule 8); snap_is_in_abawd_age_range (CO-412) tests age at most this figure.
+assumption: "The source for 64 is a proposed rule, not a final one. FNS's proposed 7 CFR 273.24(c)(1) (91 FR 72439, Nov. 10, 2026; S1300, S1302) excepts a person \"Under 18 or 65 years of age or older\" and states that the amendment \"increased the upper age limit for the time limit to include individuals through age 64\" (S1301). The proposal says it would \"codify USDA's regulatory implementation\" of the 2025 Act (S1300), so it describes how FNS already reads sec. 10102 rather than a future change; no federal or Colorado text reads \"over 65\" as reaching age 65 (Colorado's 10 CCR 2506-1 4.311 still states the pre-2025 age, S749). The version starts on the date of enactment, July 4, 2025; FNS's implementation memo, which would state its implementation date, is not reachable (www.usda.gov refused it). If the final rule differs, this parameter gains a version."
+versions:
+  - from: "2025-07-04"
+    value: 64
+    source: S1302
+sources: [S127, S128, S1300, S1301, S1302]
 tags: [abawd, age, legal]
-rationale: 7 U.S.C. 2015(o)(3)(A) as amended (S127, S128) is the current-law ceiling for the ABAWD age range; batch 1's snap_elderly_age (60) and this batch's snap_work_registration_max_age (59) are different thresholds for different rules and do not serve this one.
+rationale: 7 U.S.C. 2015(o)(3)(A) as amended (S127, S128) is the current-law ceiling for the ABAWD age range; batch 1's snap_elderly_age (60) and this batch's snap_work_registration_max_age (59) are different thresholds for different rules and do not serve this one. The open-question sweep (OQ-31) moved the value from 65 to 64 on FNS's reading in its proposed rule and dated it from enactment.

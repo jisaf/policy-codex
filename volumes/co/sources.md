@@ -7620,3 +7620,428 @@ Document: D-87
 >
 > 1) Depreciation of equipment;
 
+### S1300. Proposed 7 CFR 273.24 (2026): the rule would codify USDA's implementation of the 2025 Act; the age-based exception becomes 65 or older
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), Summary and sec. II "Age-Based Exceptions". https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> SUMMARY: The proposed rule would
+>
+> codify USDA’s regulatory
+> implementation of provisions of the One
+> Big Beautiful Bill Act of 2025 (OBBB)
+> changing the three-month time limit for
+> certain participants subject to work
+> requirements in the Supplemental
+> Nutrition Assistance Program (SNAP).
+> ...
+> Age-Based Exceptions
+> The OBBB increases the upper age
+> limit for time-limited participants at
+> Section 6(o)(3)(A) of the Act from over
+> 55 years of age to over 65 years of age.
+> This proposed rule would amend
+> paragraph 7 CFR 273.24(c)(1) to increase
+> the upper age limit to 65 years of age or
+> older.
+
+### S1301. Proposed 7 CFR 273.24 (2026): the time limit reaches age 64; persons aged 60 to 64 are not excepted by age alone
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), sec. II "Age-Based Exceptions". https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> Individuals aged 60 to 64 are not
+> subject to the general work
+> requirements, per section 6(d)(1)(A) of
+> the Act. Although the OBBB did not
+> change who is subject to the general
+> work requirements, it increased the
+> upper age limit for the time limit to
+> include individuals through age 64. In
+> other words, the OBBB created a new
+> group of individuals, aged 60 to 64, who
+> are not subject to the general work
+> requirements but are time-limited
+> participants.
+> Individuals aged 60 through 64 are
+> excepted from the time limit if they
+> meet one of the exemptions from the
+> general work requirements at Section
+> 6(d)(2), as would be individuals aged 18
+> through 59. For instance, a 63-year old
+> already working 30 hours a week or
+> complying with work requirements for
+> unemployment compensation is
+> excepted from the time limit. However,
+> since age is not a listed exemption from
+> the general work requirements at
+> Section 6(d)(2), individuals aged 60 to
+> 64 are not excepted from the time limit
+> based solely on age. When the
+> Department initially wrote the
+> regulations around general work
+> requirements, it included age as an
+> exemption for simplification purposes
+> in program rules at 7 CFR 273.7(b)(1)(i).
+> To help clarify that individuals aged 60
+> to 64 are not subject to the general work
+> ...
+> requirements but subject to the time
+> limit, this proposed rule would revise
+> the exception at 7 CFR 273.24(c)(5) to
+> reference 7 CFR 273.7(b)(1)(ii) through
+> (vii) instead of the entire paragraph 7
+> CFR 273.7(b).
+
+### S1302. Proposed 7 CFR 273.24(c)(1) (2026): "Under 18 or 65 years of age or older"
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), proposed regulatory text of 7 CFR 273.24(c)(1). https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> (c) Exceptions. The time limit does
+> not apply to an individual if he or she
+> is:
+> (1) Under 18 or 65 years of age or
+> older;
+
+### S1303. Proposed 7 CFR 273.24 (2026): the homeless, veteran and former-foster-youth exceptions ended with the 2025 Act
+
+Document: D-131
+
+91 FR 72439 (Nov. 10, 2026) (proposed rule), sec. II "End of Exceptions Implemented by the Fiscal Responsibility Act of 2023". https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22944.pdf
+
+> End of Exceptions Implemented by the
+> Fiscal Responsibility Act of 2023
+> The OBBB removes the temporary
+> exceptions at Section 6(o)(3) of the Act
+> for homeless individuals, veterans, and
+> individuals 24 years of age or younger
+> and in foster care on their 18th birthday
+> (or higher age if the State offers
+> extended foster care to a higher age).
+> This proposed rule would codify
+> USDA’s regulatory implementation of
+> these changes by replacing paragraphs 7
+> CFR 273.24(c)(7) through (8) with new
+> exceptions for ‘‘an Indian or Urban
+> Indian’’ or ‘‘a California Indian’’ as
+> described in the section below and
+> strike paragraph 7 CFR 273.24(c)(9).
+
+### S1304. Colorado SNAP gross income levels effective October 1, 2025 (130%, 200% and 165% of poverty)
+
+Document: D-133
+
+10 CCR 2506-1 4.401.1 (rule version 12299, effective 2025-12-30; the 10/03/2025 emergency version states the same table). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12299&fileName=10%20CCR%202506-1
+
+> 4.401.1 Gross Income Limits
+>
+> Effective October 1, 2025, the gross income levels for one hundred thirty percent (130%), two hundred
+> percent (200%), and one hundred sixty-five percent (165%) of the federal poverty level for the
+> corresponding household size are as follows:
+> ...
+> Household 130% Gross Income 200% Gross Income 165% Gross Income
+> Size Level Level Level
+> 1 $1,696 $2,610 $2,152
+> 2 $2,292 $3,526 $2,909
+> 3 $2,888 $4,442 $3,665
+> 4 $3,483 $5,360 $4,421
+> 5 $4,079 $6,276 $5,177
+> 6 $4,675 $7,192 $5,934
+> 7 $5,271 $8,110 $6,690
+> 8 $5,867 $9,026 $7,446
+> Each additional +$596 +$918 +$757
+> person
+
+### S1305. Colorado SNAP non-citizen additional condition: the blind or disabled exception (regardless of entry date) and the 1931 birth-date exception
+
+Document: D-82
+
+10 CCR 2506-1 4.305.B.3.d-e (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> d. Blind or Person with Disabilities
+>
+> A non-citizen who is blind or a person with a disability if the non-
+> citizen is receiving benefits or assistance for their condition
+> regardless of entry date.
+>
+> e. Born on or before August 22, 1931 who lawfully resided in the U.S.
+> on August 22, 1996.
+
+### S1306. 8 U.S.C. 1612(a)(2)(F)(ii): a non-citizen receiving benefits for blindness or disability is excepted for SNAP
+
+Document: D-24
+
+8 U.S.C. 1612(a)(2)(F). https://www.law.cornell.edu/uscode/text/8/1612
+
+> (F) Disabled aliens lawfully residing in the United States on August 22, 1996 With respect to eligibility for benefits for the specified Federal programs described in paragraph (3), paragraph (1) shall not apply to an alien who—
+> ...
+> (ii)
+>
+> in the case of the specified Federal program described in paragraph (3)(B), is receiving benefits or assistance for blindness or disability (within the meaning of section 3(j) of the Food Stamp Act of 1977 1 ( 7 U.S.C. 2012(r) )). [2]
+
+### S1307. Colorado Works minor-parent deeming: the needs of the parent and of the individuals in the home the parent is responsible for are deducted
+
+Document: D-81
+
+9 CCR 2503-6 3.605.1.A.4.a (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. Income of a non-participant stepparent and a non-participant parent of an unmarried
+> minor parent
+>
+> a. A stepparent’s countable income is considered available to stepchildren included
+> in the assistance unit as dependent children. The countable income of a non-
+> participant parent(s) of an unmarried minor parent who is living in the same home
+> as the minor parent, shall also be deemed to the assistance unit.
+>
+> The countable income equals gross earned income minus the employment
+> disregard of $90, minus the maintenance or child support paid to others outside
+> the assistance unit, minus the amounts actually paid by the individual to other
+> individuals not living in the home and who could be claimed by the individual for
+> federal income tax purposes, plus any unearned income received by the
+> stepparent or non-participant parent. The needs of the stepparent or parent of
+> the minor parent, and the needs of individuals living in the home for whom the
+> stepparent or parent are responsible shall be deducted from the result to
+> determine the amount attributed to the assistance unit.
+
+### S1308. Proposed 7 CFR 273.2(j) (2026): categorical eligibility limited to households receiving TANF assistance; non-cash TANF benefits would no longer confer it
+
+Document: D-132
+
+91 FR 72454 (Nov. 10, 2026) (proposed rule), Summary and sec. "Eliminating Categorical Eligibility From Non-Cash or In-Kind Benefits or Services"; comments close 2026-12-10. https://www.govinfo.gov/content/pkg/FR-2026-11-10/pdf/2026-22936.pdf
+
+> SUMMARY: Under section 5(a) of the Food
+>
+> and Nutrition Act of 2008, households
+> in which each member receives benefits
+> under a State program funded by
+> Temporary Assistance for Needy
+> Families (TANF) are categorically
+> eligible for the Supplemental Nutrition
+> Assistance Program (SNAP). Current
+> SNAP regulations consider TANF
+> benefits to include both cash assistance
+> and non-cash or in-kind benefits or
+> services from TANF-funded programs.
+> This proposal would limit categorical
+> eligibility to only households that
+> receive TANF assistance, as defined at
+> 45 CFR 260.31. These revisions would
+> ensure that SNAP benefits are targeted
+> to needy households that have qualified
+> for TANF assistance while still aligning
+> categorical eligibility’s statutory
+> purpose of simplifying program
+> administration.
+> ...
+> The proposed rule would remove 7
+> CFR 273.2(j)(2)(i)(B), (2)(i)(C), and
+> (2)(ii), meaning States would no longer
+> be permitted to confer categorical
+> eligibility for SNAP to households that
+> receive non-cash or in-kind TANF- or
+> State MOE-funded benefits or services,
+
+### S1309. Federal minimum wage: $7.25 an hour from July 24, 2009
+
+Document: D-134
+
+29 U.S.C. 206(a)(1). https://www.law.cornell.edu/uscode/text/29/206
+
+> (a) Employees engaged in commerce; home workers in Puerto Rico and Virgin Islands; employees in American Samoa; seamen on American vessels; agricultural employees Every employer shall pay to each of his employees who in any workweek is engaged in commerce or in the production of goods for commerce , or is employed in an enterprise engaged in commerce or in the production of goods for commerce , wages at the following rates:
+> (1) except as otherwise provided in this section, not less than—
+> (A)
+> $5.85 an hour, beginning on the 60th day after May 25, 2007 ;
+> (B)
+> $6.55 an hour, beginning 12 months after that 60th day; and
+> (C)
+> $7.25 an hour, beginning 24 months after that 60th day;
+
+### S1310. SNAP expedited service: verification may be postponed until the second or third month of participation
+
+Document: D-95
+
+7 CFR 273.2(i)(4)(iii)(A)-(B). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (A) For households applying on or before the 15th of the month, the State agency may assign a one-month certification period or assign a normal certification period. Satisfaction of the verification requirements may be postponed until the second month of participation. If a one-month certification period is assigned, the notice of eligibility may be combined with the notice of expiration or a separate notice may be sent. The notice of eligibility must explain that the household has to satisfy all verification requirements that were postponed. For subsequent months, the household must reapply and satisfy all verification requirements which were postponed or be certified under normal processing standards. If the household does not satisfy the postponed verification requirements and does not appear for the interview, the State agency does not need to contact the household again.
+> ...
+> (B) For households applying after the 15th of the month, the State agency may assign a 2-month certification period or a normal certification period of no more than 12 months. Verification may be postponed until the third month of participation, if necessary, to meet the expedited timeframe. If a two-month certification period is assigned, the notice of eligibility may be combined with the notice of expiration or a separate notice may be sent. The notice of eligibility must explain that the household is obligated to satisfy the verification requirements that were postponed. For subsequent months, the household must reapply and satisfy the verification requirements which were postponed or be certified under normal processing standards. If the household does not satisfy the postponed verification requirements and does not attend the interview, the State agency does not need to contact the household again. When a certification period of longer than 2 months is assigned and verification is postponed, households must be sent a notice of eligibility advising that no benefits for the third month will be issued until the postponed verification requirements are satisfied. The notice must also advise the household that if the verification process results in changes in the household's eligibility or level of benefits, the State agency will act on those changes without advance notice of adverse action.
+
+### S1311. Colorado SNAP residency: applicants live in the county or district where they apply
+
+Document: D-82
+
+10 CCR 2506-1 4.303.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.303 RESIDENCY REQUIREMENT
+> A. Applicants shall live in the county or district in which they make application for the
+> Program unless the local office has made arrangements to allow particular
+> households to file an application in a nearby specified county/district office.
+
+### S1312. Colorado SNAP earned income deduction also applies to a disqualified member's prorated earnings
+
+Document: D-82
+
+10 CCR 2506-1 4.407.2.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.407.2 Earned Income Deduction
+>
+> A. A household with earned income shall receive a deduction of twenty percent
+> (20%) of its gross nonexempt earned income. The twenty percent (20%)
+> deduction shall also apply to prorated income earned by the disqualified member
+> and attributed to the household.
+
+### S1313. Colorado Works twenty percent statewide allocation of extensions: the State monitors it; counties are unrestricted unless the limit is reached
+
+Document: D-81
+
+9 CCR 2503-6 3.606.6.G (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> G. Twenty Percent (20%) Allocation of Extensions
+>
+> Up to twenty percent (20%) of the Statewide caseload receiving Colorado Works may be granted
+> an extension beyond the sixty (60) month time limit due to hardship or domestic violence. At any
+> point that records indicate that the State will exceed the twenty percent (20%) maximum on the
+> number of Colorado Works extensions granted to assistance units, the State shall determine if
+> this is due to the provision of federally recognized good cause domestic violence waivers. If the
+> records support this determination, as allowed by federal law, the State shall provide information
+> to the federal government to demonstrate that the reason for exceeding the twenty percent (20%)
+> maximum was due to granting federally recognized good cause domestic violence waivers. The
+> State Department has the sole responsibility of monitoring this federal limit. County departments
+> are not restricted to a certain number of extensions unless the Statewide limit is reached.
+
+### S1314. Colorado SNAP child support exclusion: average three or more months of payments, or estimate
+
+Document: D-82
+
+10 CCR 2506-1 4.407.5.D-E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Households with a history of three (3) or more months of paying child support
+> shall have the support payments averaged taking into account any anticipated
+> changes in the legal obligation and shall use that average as the household's
+> support exclusion.
+>
+> E. For households with less than a three (3) month record, the local office shall
+> estimate the anticipated payments and use that estimate as the household's
+> support exclusion.
+
+### S1315. AND-SO duty to apply for SSI and SSDI and to appeal SSI denials; failure denies or discontinues the grant
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.B (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. The AND-SO client shall apply for Supplemental Security Income (SSI) benefits.
+> If the client has work hours during his or her lifetime, the client shall also apply for
+> Social Security Disability Insurance (SSDI). The client shall report any denial for
+> SSI benefits. The client shall appeal all negative decisions regarding their SSI
+> eligibility. Failure to appeal all negative decisions within thirty (30) calendar days
+> of such decision, unless additional time is given for good cause, shall result in
+> denial or discontinuation of and grant payments.
+
+### S1316. Old age pension: a qualified alien must meet the entry-date or five-year-bar test and sponsor deeming, with hardship and SSI exceptions
+
+Document: D-59
+
+C.R.S. 26-2-111(2)(c) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (c) (I)  Except as otherwise provided in subparagraphs (II) and (III) of this paragraph (c),
+> a qualified alien shall not be granted the old age pension under the provisions of this subsection
+> (2) unless it is shown that:
+>
+> (A)    (Deleted  by  amendment,  L.  2010,  (HB  10-1384),  ch.  218,  p.  954,  §  4,  effective
+>
+> January 1, 2014.)
+>
+> (B)    The  qualified  alien  meets  the  requirements  specified  in  section  26-2-111.8  (2)(a)
+> relating to entry into the United States prior to August 22, 1996, or the requirements specified in
+> section 26-2-111.8 (2)(b) regarding the five-year bar on receipt of benefits; and
+>
+> (C)    The  qualified  alien  meets  the  requirements  specified  in  section  26-2-111.8  (2)(c)
+>
+> regarding the deeming of sponsor income and resources.
+>
+> (II)    The  requirements  in  subparagraph  (I)  of  this  paragraph  (c)  do  not  apply  to  a
+> qualified alien who meets the eligibility criteria for the old age pension in paragraph (a) of this
+> subsection (2) if it is determined pursuant to rules of the state department that:
+>
+> (A)  The qualified alien has been abandoned by or is a victim of mistreatment by his or
+>
+> her sponsor or is an abused spouse and would incur a significant financial hardship; or
+>
+> (B)  The qualified alien who does not have a sponsor would have insufficient income to
+>
+> support himself or herself or would otherwise incur a significant financial hardship; or
+>
+> (C)  The person who sponsored the qualified alien's entry into the United States and who
+> satisfied  sponsorship  financial  requirements  at  the  time  of  initial  sponsorship  now  has
+> insufficient income and resources to meet the needs of the qualified alien.
+>
+> (III)    The  requirements  in  subparagraph  (I)  of  this  paragraph  (c)  do  not  apply  to  a
+> qualified alien who meets the eligibility criteria for the old age pension in paragraph (a) of this
+> subsection (2) and who is also eligible for federal financial benefits pursuant to Title XVI of the
+> federal "Social Security Act".
+
+### S1317. Adult Financial five-year bar stated for AND
+
+Document: D-80
+
+9 CCR 2503-5 3.520.68.A (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.68 FIVE YEAR BAR FROM ELIGIBILITY
+>
+> A. Qualified non-citizens arriving in the U.S. on or after August 22, 1996, are barred
+> from receiving AND for five years beginning on the qualified non-citizen's date of
+> admission into the United States for legal permanent residence, as verified
+> through SAVE.
+
+### S1318. Adult Financial personal needs allowance facilities (psychiatric facility at 65 or older for OAP) and the unlicensed or uncertified facility bar (OAP, AND-SO, AND-CS)
+
+Document: D-80
+
+9 CCR 2503-5 3.532.D-E, 3.543.E, 3.548.E (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The client shall be eligible only for a monthly PNA when program requirements
+> are met and the client is a resident for at least thirty (30) consecutive days, in one
+> of the following facilities:
+>
+> 1. In a general medical and surgical hospital;
+>
+> 2. In a nursing home, assisted living residence, or, intermediate care facility,
+> group home, host home, other long-term care facility, or Adult Financial
+> approved setting; or
+>
+> 3. In a psychiatric facility when sixty-five (65) years of age or older.
+>
+> E. The following persons are not eligible for a PNA or OAP grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+> ...
+> E. The following persons are not eligible for a PNA or AND-SO grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+> ...
+> E. The following persons are not eligible for a PNA or AND-CS grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+
+### S1319. CDHS: Home Care Allowance payment floor of $977 for all three tiers from January 1, 2026
+
+Document: D-135
+
+CDHS, Adult Financial Programs web page, Home Care Allowance (retrieved 2026-11-21). https://cdhs.nxt-dev.colorado.gov/adult-financial-programs
+
+> Program purpose The Home Care Allowance (HCA) program provides cash assistance to individuals five (5) years of age and older with a disability to pay a home care provider.
+> HCA is used to pay for services to help clients remain in their homes (such as bathing, dressing, meal preparation, and shopping).
+> Services are provided by a home care provider.
+> The HCA payment floor standard for all three tiers is $977, effective January 1, 2026.
+

@@ -10,7 +10,6 @@ precision: "Vocabulary fix round (R-4, U-2, U-3): the 8 U.S.C. 1613(b) exemption
 assumption: "Does not model the 40-qualifying-quarters exception 8 U.S.C. 1612(a)(2)(B) provides for SNAP: 3.604.1.B.3 and 26-2-111.8(2) state only the entry date, the five-year bar and the federal exceptions to it."
 derived: [any, is_us_citizen_or_national, [all, is_qualified_non_citizen, [any, ["<", us_entry_date, qualified_non_citizen_entry_cutoff_date], is_exempt_from_five_year_bar, has_held_qualified_status_five_years]]]
 sources: [S402, S407, S441, S449, S451, S452, S1150, S1151]
-open: [OQ-119]
 implemented: engine
 tags: [cash, tanf, and, immigration, legal]
 rationale: "Phase 5 authored this rule twice, as cw_meets_citizenship_requirement (CO-905) and af_meets_citizenship_requirement_and (CO-943). Vocabulary fix round (R-4): with the federal exemption list read the same way for both, the two derivations were identical (governance dup.compact), as C.R.S. 26-2-111.8(2), which governs all four state cash programs, says they should be. CO-905 survives under a program-neutral identifier; CO-943 is retired."

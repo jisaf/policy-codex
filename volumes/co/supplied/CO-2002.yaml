@@ -1,0 +1,12 @@
+id: CO-2002
+name: "SNAP: months of child support payment history"
+identifier: snap_child_support_payment_history_months
+kind: supplied
+type: whole number
+scope: person
+program: SNAP
+meaning: "The number of months of record the person has of paying legally obligated child support to or for a non-household member, counted back from the month before the budget month - the history 10 CCR 2506-1 4.407.5.D-E reads to decide whether the support exclusion is an average of past payments (three or more months) or an estimate (fewer). If not stated, SNAP reads this as 0, so the exclusion is the month's stated anticipated payment."
+supplied_by: Court order and payment record (payment history), as the household reports and verifies it (4.407.5.F).
+sources: [S1314]
+tags: [income, snap]
+rationale: "No existing fact states the length of a payment history; snap_child_support_exclusion (CO-2003) needs it to choose between 4.407.5.D's average and 4.407.5.E's estimate (OQ-22)."

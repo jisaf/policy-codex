@@ -5469,6 +5469,8 @@
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
         resides_in_care_facility_thirty_consecutive_days: false
+        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
+        af_resides_in_unlicensed_or_uncertified_facility: false
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
@@ -5589,6 +5591,8 @@
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
         resides_in_care_facility_thirty_consecutive_days: false
+        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
+        af_resides_in_unlicensed_or_uncertified_facility: false
         work_sanction_level_served: none
   expect:
     p1:
@@ -6205,6 +6209,8 @@
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
         resides_in_care_facility_thirty_consecutive_days: false
+        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
+        af_resides_in_unlicensed_or_uncertified_facility: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
     p4:
@@ -6498,6 +6504,8 @@
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
         resides_in_care_facility_thirty_consecutive_days: false
+        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
+        af_resides_in_unlicensed_or_uncertified_facility: false
     p2:
       facts:
         date_of_birth: "1958-08-20"

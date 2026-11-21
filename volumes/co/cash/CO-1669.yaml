@@ -12,7 +12,6 @@ derived: [all, af_requires_verification_of_and_so_disability, [not, disability_v
 sources: [S1079, S1080]
 implemented: engine
 tags: [verification, cash]
-open: [OQ-375]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
   - {id: CO-1669-T1, month: "2026-10", as_of: "2026-10-01", given: {af_requires_verification_of_and_so_disability: true, disability_verification_document_received: false}, expect: true}

@@ -6,9 +6,9 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person is a non-citizen who may participate in SNAP because they hold one of the categories 7 U.S.C. 2015(f), as amended by Pub. L. 119-21 sec. 10108, names as eligible (lawful permanent resident, Cuban/Haitian entrant, or Compact of Free Association migrant) and, for a lawful permanent resident, has cleared the five-year bar of 8 U.S.C. 1613 or one of its exceptions.
-assumption: The amended statute (S8, S9) controls over 10 CCR 2506-1 4.305 and 7 CFR 273.4, which still list refugees, asylees, and parolees; those categories are therefore not eligible under this draft (OQ-1). Cuban/Haitian entrants and Compact of Free Association migrants are modeled as eligible without a waiting period, because the amended 2015(f) lists them and the five-year bar of 8 U.S.C. 1613 applies to qualified aliens (Cuban/Haitian entrants are qualified aliens under 8 U.S.C. 1641(b)(7), which is not in this volume; OQ-1 records the point).
+assumption: "The amended statute (S8, S9) controls over 10 CCR 2506-1 4.305 and 7 CFR 273.4, which still list refugees, asylees, and parolees; those categories are therefore not eligible under this draft. Cuban/Haitian entrants and Compact of Free Association migrants are eligible without a waiting period: the five-year limitation of 8 U.S.C. 1613(a) does not apply to a Cuban and Haitian entrant (1613(b)(1)(D)) or to a citizen of a freely associated state (1613(b)(3)) (S1150). The category list applies from the determination date; the date from which FNS applies sec. 10108 to current participants is OQ-1."
 derived: [any, [in, citizenship_status, [cuban_haitian_entrant, compact_of_free_association_migrant]], [all, [=, citizenship_status, lawful_permanent_resident], snap_meets_immigrant_additional_condition]]
-sources: [S8, S9, S21, S22]
+sources: [S8, S9, S21, S22, S1150]
 open: [OQ-1]
 implemented: engine
 tags: [immigration, legal]

@@ -1,0 +1,13 @@
+id: CO-2001
+name: "SNAP: third-party citizenship statement may be accepted"
+identifier: snap_third_party_citizenship_statement_is_permitted
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "Whether the county found, for a household member whose U.S. citizenship is questionable, that none of the documents 10 CCR 2506-1 4.505.5.A lists can be obtained and that the household gave a reasonable explanation of why verification is not available - the two conditions on which 4.505.5.B (and 7 CFR 273.2(f)(2)(ii)) let the county accept a signed third-party statement."
+precision: Read only when the document received is a third-party statement; with any other document the fact is not asked.
+supplied_by: Eligibility worker's finding recorded in CBMS case comments.
+sources: [S826, S811]
+tags: [verification, snap, immigration]
+rationale: "No existing fact states the worker's finding; snap_citizenship_document_is_acceptable (CO-1372) accepted any third-party statement without the two conditions 4.505.5.B states (OQ-313)."
