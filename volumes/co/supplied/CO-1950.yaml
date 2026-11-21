@@ -1,0 +1,12 @@
+id: CO-1950
+name: Court-ordered transfer to the community spouse
+identifier: ma_court_ordered_transfer_to_community_spouse
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: "The amount a court has ordered the institutionalized spouse to transfer to the community spouse for the monthly support of the community spouse or a dependent family member: branch (c) of the CSRA in 10 CCR 2505-10 § 8.100.7.M.1. If not stated, Medicaid reads this as zero (no court order)."
+supplied_by: The court order.
+sources: [S1220]
+tags: [ma, ltc, resources, legal]
+rationale: "OQ-126: branch (c) of § 8.100.7.M.1 had no fact."

@@ -9,7 +9,6 @@ meaning: "Whether the person is eligible under the Pickle Amendment (10 CCR 2505
 precision: "'Less than the current SSI or OAP standard' (§ 8.100.6.E.2) is read as less than either: the SSI federal benefit rate for the SSI household size, or, for a person of Old Age Pension age (af_is_oap_age, CO-940: 60 or older), the OAP grant standard (af_oap_grant_standard, CO-289) where it is higher - the OAP standard can only be met by a person who could receive OAP, which § 8.100.6.D.2.c's 'would be eligible for OAP and/or SSI' requires (phase 7 fix round, S-6). Strictly less than. 'Meets all other eligibility criteria' is read as residency, status, aged/blind/disabled and the SSI resource standard. § 8.100.6.E.3's disregard of a parent's or spouse's OASDI cost of living increases is not applied (OQ-207)."
 derived: [all, is_colorado_resident, ma_meets_citizenship_requirement, ma_is_aged_blind_or_disabled, lost_ssi_or_oap_due_to_social_security_benefits, ma_meets_ssi_resource_standard, [<, ma_pickle_countable_income, [case, [af_is_oap_age, [max, [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]], af_oap_grant_standard]], [else, [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]]]]
 sources: [S623, S624, S666]
-open: [OQ-207]
 implemented: engine
 tags: [ma, non_magi, income]
 accepts_from: [af_is_oap_age]

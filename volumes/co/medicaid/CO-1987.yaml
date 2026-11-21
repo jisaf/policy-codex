@@ -1,0 +1,17 @@
+id: CO-1987
+name: "Medicaid: personal needs allowance"
+identifier: ma_personal_needs_allowance
+kind: derived
+type: money
+scope: person
+program: Medicaid
+meaning: "The personal needs allowance deducted first from a Long-Term Care institution resident's income: $90 (ma_veteran_personal_needs_allowance) for a VA non-service-connected pensioner without spouse or dependent child or a pensioner's surviving spouse without dependent child, otherwise the base allowance (ma_personal_needs_allowance_institutional) (10 CCR 2505-10 § 8.100.7.V.3.d; C.R.S. 25.5-6-206(2))."
+precision: The rule and statute state $90 for these residents even though the 2026 base allowance ($110.36) is higher.
+derived: [case, [ma_qualifies_for_veterans_personal_needs_allowance, ma_veteran_personal_needs_allowance], [else, ma_personal_needs_allowance_institutional]]
+sources: [S361, S1231, S1232, S1228]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "OQ-98: ma_patient_payment (CO-658) and ma_csra_increased (CO-1977) always used the base allowance."
+tests:
+  - {id: CO-1987-T1, as_of: "2026-10-01", given: {ma_qualifies_for_veterans_personal_needs_allowance: true}, expect: 90}
+  - {id: CO-1987-T2, as_of: "2026-10-01", given: {ma_qualifies_for_veterans_personal_needs_allowance: false}, expect: 110.36}

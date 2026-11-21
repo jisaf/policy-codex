@@ -1,0 +1,18 @@
+id: CO-1990
+name: "CHP+: exempt from cost sharing"
+identifier: chp_is_exempt_from_cost_sharing
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether a CHP+ enrollee is exempt from all CHP+ cost-sharing requirements under 10 CCR 2505-3 § 330: an American Indian or Alaska Native (§ 330.1) or a Prenatal Care Program client (§ 330.4)."
+precision: "§ 330.3's exemption of preventive services from copayments is a per-service rule, and the § 320 copayment schedule and the § 330.2 5% cap are not modeled (OQ-60); this item states only who pays no cost sharing at all."
+derived: [any, chp_is_american_indian_or_alaska_native, chp_prenatal_is_eligible]
+sources: [S1236]
+implemented: engine
+tags: [chp]
+rationale: "OQ-64: no item states the § 330.1 and § 330.4 exemptions."
+tests:
+  - {id: CO-1990-T1, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: true}, expect: true}
+  - {id: CO-1990-T2, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: false, chp_prenatal_is_eligible: true}, expect: true}
+  - {id: CO-1990-T3, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: false, chp_prenatal_is_eligible: false}, expect: false}

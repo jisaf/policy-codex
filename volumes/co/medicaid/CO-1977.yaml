@@ -1,0 +1,18 @@
+id: CO-1977
+name: "Medicaid: increased CSRA"
+identifier: ma_csra_increased
+kind: derived
+type: money
+scope: person
+program: Medicaid
+meaning: "The increased Community Spouse Resource Allowance of 10 CCR 2505-10 § 8.100.7.S: when the community spouse's own income plus the monthly income allowance available from the institutionalized spouse is below the community spouse's MMMNA, and the institutionalized spouse does not refuse to make the allowance available, the CSRA maximum increased by the lowest annuity estimate; otherwise zero (branch (b) of § 8.100.7.M.1 does not apply)."
+precision: Evaluated for the determination month, the intake at which § 8.100.7.M.1 establishes the CSRA. The allowance available is the community spouse income allowance (CO-656) up to the institutionalized spouse's gross income less the personal needs allowance, the order of deductions § 8.100.7.T gives; the rule does not cap the increased amount at the couple's resources, and ma_institutionalized_spouse_countable_resources (CO-647) floors the institutionalized spouse's share at zero.
+derived: [case, [[">=", ["+", [at, community_spouse_income, [det_month]], [min, [at, ma_community_spouse_income_allowance, [det_month]], [max, 0, ["-", [at, ma_ltc_gross_income, [det_month]], ma_personal_needs_allowance]]]], [at, ma_mmmna, [det_month]]], 0], [ma_institutionalized_spouse_refuses_income_allowance, 0], [else, ["+", ma_csra_maximum, ma_csra_annuity_lowest_estimate]]]
+sources: [S1220, S1221]
+implemented: engine
+tags: [ma, ltc, resources]
+rationale: "OQ-126: branch (b) of § 8.100.7.M.1 was not modeled; ma_csra (CO-646) now takes the largest of the three branches."
+tests:
+  - {id: CO-1977-T1, as_of: "2026-11-01", parameters: {ma_personal_needs_allowance_institutional: 100}, given: {ma_qualifies_for_veterans_personal_needs_allowance: false, community_spouse_income: 1200, ma_community_spouse_income_allowance: 1505, ma_ltc_gross_income: 2500, ma_mmmna: 2705}, title: "Community spouse income plus the allowance reaches the MMMNA - no increase", expect: 0}
+  - {id: CO-1977-T2, as_of: "2026-11-01", parameters: {ma_personal_needs_allowance_institutional: 100}, given: {ma_qualifies_for_veterans_personal_needs_allowance: false, community_spouse_income: 1200, ma_community_spouse_income_allowance: 1505, ma_ltc_gross_income: 900, ma_mmmna: 2705, ma_institutionalized_spouse_refuses_income_allowance: false, ma_csra_annuity_lowest_estimate: 120000}, title: "Institutionalized spouse's income too low to fund the allowance: shortfall, increased by the lowest estimate", expect: 282660}
+  - {id: CO-1977-T3, as_of: "2026-11-01", parameters: {ma_personal_needs_allowance_institutional: 100}, given: {ma_qualifies_for_veterans_personal_needs_allowance: false, community_spouse_income: 1200, ma_community_spouse_income_allowance: 1505, ma_ltc_gross_income: 900, ma_mmmna: 2705, ma_institutionalized_spouse_refuses_income_allowance: true}, title: "Shortfall but the allowance is refused", expect: 0}

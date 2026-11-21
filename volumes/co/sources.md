@@ -8300,3 +8300,145 @@ Document: D-65
 > iv) In the case of applicants under the age of 19, the applicant’s natural, adoptive, and step parents and natural, adoptive, and step siblings under age 19, who live in the household.
 >
 > 5. If a child is claimed as a tax dependent by both parents who are married and who will file taxes jointly but one parent lives outside of the household due to separation or pending divorce, the child’s household composition is determined by non-filer rules. The parent living outside of the household will not be counted as part of the household.
+
+### S1228. Transfer-penalty divisor and nursing facility personal needs allowance, 2025 and 2026 (unverified)
+
+Document: D-125
+
+HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (effective 2026-01-01). https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2025-073%202026%20Social%20Security%20Cost%20of%20Living%20Adjustments.pdf
+
+Verification: unverified. hcpf.colorado.gov refuses automated requests; the figures below were supplied by the product owner on 2026-11-21 from two independent summaries of the memo that agree. They are not a quotation of the memo's text.
+
+> Transfer-penalty divisor (statewide average private-pay rate for nursing facility care): $10,814.64 per month for 2026 ($10,475.11 for 2025).
+>
+> Nursing facility and ICF personal needs allowance: $110.36 per month for 2026 ($108.73 for 2025).
+
+### S1229. Income trusts: gross income above the 300% limit but below the regional average private-pay rate; the four regions by county (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.G.6.a.i.a) (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a) The individual's gross monthly income must be above the 300% SSI limit but below the average cost of private Long Term Care institution care in the geographic region in which the individual resides and intends to remain. The Colorado Department of Health Care Policy and Financing shall calculate the average rates for such regions on an annual, calendar-year basis. The geographic regions which are used for calculating the average private pay rate for Long Term Care institution care shall be based on the Bureau of Economic Analysis Regions and consist of the following counties:
+>
+> REGION I: (Adams, Arapahoe, Boulder, Broomfield, Denver, Jefferson)
+>
+> REGION II: (Cheyenne, Clear Creek, Douglas, Elbert, Gilpin, Grand, Jackson, Kit Carson, Larimer, Logan, Morgan, Park, Phillips, Sedgwick, Summit, Washington, Weld, Yuma)
+>
+> REGION III: (Alamosa, Baca, Bent, Chaffee, Conejos, Costilla, Crowley, Custer, El Paso, Fremont, Huerfano, Kiowa, Lake, Las Animas, Lincoln, Mineral, Otero, Prowers, Pueblo, Rio Grande, Saguache, Teller)
+>
+> REGION IV: (Archuleta, Delta, Dolores, Eagle, Garfield, Gunnison, Hinsdale, La Plata, Mesa, Moffat, Montezuma, Montrose, Ouray, Pitkin, Rio Blanco, Routt, San Juan, San Miguel)
+
+### S1230. Income-trust gross income limits (regional average private-pay rates), 2025 and 2026 (unverified)
+
+Document: D-125
+
+HCPF Operational Memo OM 25-073, "2026 Social Security Cost of Living Adjustments" (effective 2026-01-01). https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2025-073%202026%20Social%20Security%20Cost%20of%20Living%20Adjustments.pdf
+
+Verification: unverified. hcpf.colorado.gov refuses automated requests; the figures below were supplied by the product owner on 2026-11-21 from two independent summaries of the memo that agree. They are not a quotation of the memo's text. The county lists match § 8.100.7.G.6.a.i.a) (S1229).
+
+> Region I (Adams, Arapahoe, Boulder, Broomfield, Denver, Jefferson): $11,522.44 per month for 2026 ($11,556.20 for 2025).
+>
+> Region II (Cheyenne, Clear Creek, Douglas, Elbert, Gilpin, Grand, Jackson, Kit Carson, Larimer, Logan, Morgan, Park, Phillips, Sedgwick, Summit, Washington, Weld, Yuma): $10,633.36 for 2026 ($10,397.93 for 2025).
+>
+> Region III (Alamosa, Baca, Bent, Chaffee, Conejos, Costilla, Crowley, Custer, El Paso, Fremont, Huerfano, Kiowa, Lake, Las Animas, Lincoln, Mineral, Otero, Prowers, Pueblo, Rio Grande, Saguache, Teller): $9,780.17 for 2026 ($9,290.77 for 2025).
+>
+> Region IV (Archuleta, Delta, Dolores, Eagle, Garfield, Gunnison, Hinsdale, La Plata, Mesa, Moffat, Montezuma, Montrose, Ouray, Pitkin, Rio Blanco, Routt, San Juan, San Miguel): $11,322.60 for 2026 ($10,655.56 for 2025).
+
+### S1231. Veterans-related personal needs allowance: a veteran with a non-service-connected pension and no spouse or dependent child, and the widow(er) (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.3.d.ii (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> ii) Veterans-related personal needs allowance
+>
+> Effective 07/01/91, the personal needs allowance shall be $90 per month for a veteran in a Long-Term Care institution who has no spouse or dependent child and who receives a non-service connected disability pension from the U.S. Veterans Administration. The personal needs allowance shall also be $90 per month for the widow(er) of a veteran with no dependent children.
+
+### S1232. Statute: ninety dollars for personal needs for a VA non-service-connected pensioner without spouse or dependent child, and for a pensioner's surviving spouse
+
+Document: D-123
+
+C.R.S. 25.5-6-206(2)(b) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> (b) On and after October 1, 1992, the basic minimum amount payable pursuant to subsection (1) of this section for personal needs is ninety dollars for the following persons: (I) A medical assistance member who receives a non-service connected disability pension from the United States veterans administration, has no spouse or dependent child, and is admitted to or is residing in a nursing facility; and (II) A medical assistance member who is a surviving spouse of a person who received a non-service connected disability pension from the United States veterans administration, has no dependent child, and is admitted to or is residing in a nursing facility.
+
+### S1233. Pickle group: eligible for SSI if the OASDI cost-of-living increases were deducted from current OASDI benefits
+
+Document: D-31
+
+42 CFR 435.135(a)-(b). https://www.ecfr.gov/current/title-42/section-435.135
+
+> (a) If an agency provides Medicaid to aged, blind, or disabled individuals receiving SSI or State supplements, it must provide Medicaid to individuals who—
+>
+> (1) Are receiving OASDI;
+>
+> (2) Were eligible for and receiving SSI or State supplements but became ineligible for those payments after April 1977; and
+>
+> (3) Would still be eligible for SSI or State supplements if the amount of OASDI cost-of-living increases paid under section 215(i) of the Act, after the last month after April 1977 for which those individuals were both eligible for and received SSI or a State supplement and were entitled to OASDI, were deducted from current OASDI benefits.
+>
+> (b) Cost-of-living increases include the increases received by the individual or his or her financially responsible spouse or other family member (e.g., a parent).
+
+### S1234. Lottery winnings and lump sums: month received under $80,000, then 2 months, 3 months, plus a month per $10,000, at most 120 months, in equal installments
+
+Document: D-26
+
+42 U.S.C. 1396a(e)(14)(K)(i)-(ii). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (K) Treatment of certain lottery winnings and income received as a lump sum.—
+>
+> (i) In general.— In the case of an individual who is the recipient of qualified lottery winnings (pursuant to lotteries occurring on or after January 1, 2018 ) or qualified lump sum income (received on or after such date) and whose eligibility for medical assistance is determined based on the application of modified adjusted gross income under subparagraph (A), a State shall, in determining such eligibility, include such winnings or income (as applicable) as income received—
+>
+> (I)
+>
+> in the month in which such winnings or income (as applicable) is received if the amount of such winnings or income is less than $80,000;
+>
+> (II)
+>
+> over a period of 2 months if the amount of such winnings or income (as applicable) is greater than or equal to $80,000 but less than $90,000;
+>
+> (III)
+>
+> over a period of 3 months if the amount of such winnings or income (as applicable) is greater than or equal to $90,000 but less than $100,000; and
+>
+> (IV)
+>
+> over a period of 3 months plus 1 additional month for each increment of $10,000 of such winnings or income (as applicable) received, not to exceed a period of 120 months (for winnings or income of $1,260,000 or more), if the amount of such winnings or income is greater than or equal to $100,000.
+>
+> (ii) Counting in equal installments.—
+>
+> For purposes of subclauses (II), (III), and (IV) of clause (i), winnings or income to which such subclause applies shall be counted in equal monthly installments over the period of months specified under such subclause.
+
+### S1235. Parents and caretaker relatives: the 1988 AFDC floor is a minimum for the State plan's income standard
+
+Document: D-31
+
+42 CFR 435.110(b)-(c). https://www.ecfr.gov/current/title-42/section-435.110
+
+> (b) *Scope.* The agency must provide Medicaid to parents and other caretaker relatives, as defined in § 435.4, and, if living with such parent or other caretaker relative, his or her spouse, whose household income is at or below the income standard established by the agency in the State plan, in accordance with paragraph (c) of this section.
+>
+> (c) *Income standard.* The agency must establish in its State plan the income standard as follows:
+>
+> (1) The minimum income standard is a State's AFDC income standard in effect as of May 1, 1988 for the applicable family size converted to a MAGI-equivalent standard in accordance with guidance issued by the Secretary under section 1902(e)(14)(A) and (E) of the Act.
+
+### S1236. CHP+ cost sharing limitations: American Indians and Alaska Natives and prenatal clients exempt (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 330 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 330.1 American Indians and Alaskan Natives shall be exempt from cost sharing requirements. American Indian shall mean a member of a federally recognized Indian tribe, band, or group, or a descendant in the first or second degree of any such member. Alaskan Native shall mean an Eskimo or Aleut or other Alaska Native enrolled by the Secretary of the Interior.
+>
+> 330.2 The maximum yearly cost sharing requirements for families of enrollees shall be 5% of income.
+>
+> 330.3 No copayments shall apply to preventive services. For the purpose of this section, preventive services shall mean:
+>
+> A. All healthy newborn and newborn inpatient visits, including routine screening whether provided on an inpatient or outpatient basis;
+>
+> B. Routine examinations;
+>
+> C. Immunizations and related office visits; and
+>
+> D. Routine preventive and diagnostic dental services.
+>
+> 330.4 Prenatal Care Program clients shall be exempt from cost sharing requirements.

@@ -160,9 +160,8 @@
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
-        ma_personal_needs_allowance_institutional: 75
+        ma_qualifies_for_veterans_personal_needs_allowance: false
         ma_mmmna_standard: 2600
-        transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         expects_to_be_claimed_as_dependent: false
@@ -175,6 +174,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -415,9 +415,8 @@
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
-        ma_personal_needs_allowance_institutional: 75
+        ma_qualifies_for_veterans_personal_needs_allowance: false
         ma_mmmna_standard: 2600
-        transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
@@ -434,6 +433,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -676,6 +676,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -899,6 +900,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -1128,6 +1130,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
@@ -1265,7 +1268,8 @@
   # correct (OQ-100/C-18 is next round's problem). MMMNA = 2600 + (1100
   # shelter - 30% of 2600) = 2920, the spouse allowance 2920 - 1180 = 1740,
   # and (per C-3, gated on eligibility, which p1 now has) the patient payment
-  # 2030 - 75 - 1740 = 215. p2 (community spouse, income 1180, individual
+  # 2030 - 110.36 - 1740 = 179.64 (open-question sweep, OQ-212: the 2026 personal needs allowance
+  # 110.36 from HCPF OM 25-073, unverified, replaced the illustrative 75). p2 (community spouse, income 1180, individual
   # resources 44100 over the illustrative MSP limit 10000) is in no MSP,
   # SSI-related or Buy-In group, is not institutionalized, and (per C-3) has
   # no patient payment.
@@ -1336,7 +1340,7 @@
       ma_ltc_eligibility_status: {"2026-10": eligible_pace}
       ma_mmmna: {"2026-10": 2920}
       ma_community_spouse_income_allowance: {"2026-10": 1740}
-      ma_patient_payment: {"2026-10": 215}
+      ma_patient_payment: {"2026-10": 179.64}
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
@@ -2200,9 +2204,8 @@
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
-        ma_personal_needs_allowance_institutional: 75
+        ma_qualifies_for_veterans_personal_needs_allowance: false
         ma_mmmna_standard: 2600
-        transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
@@ -2217,6 +2220,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -2453,9 +2457,8 @@
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
-        ma_personal_needs_allowance_institutional: 75
+        ma_qualifies_for_veterans_personal_needs_allowance: false
         ma_mmmna_standard: 2600
-        transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
@@ -2472,6 +2475,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -2714,6 +2718,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -2935,6 +2940,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -3161,6 +3167,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
@@ -3282,7 +3289,7 @@
   # and CO-652's PACE-before-institutional case order (OQ-100) reports
   # eligible_pace rather than eligible_institutional. MMMNA and the spouse
   # allowance are unchanged (2920, 1740); the patient payment, now gated on
-  # eligibility per C-3, is 2030 - 75 - 1740 = 215. p2 (community spouse) has
+  # eligibility per C-3, is 2030 - 110.36 - 1740 = 179.64 (OQ-212: 2026 allowance, unverified). p2 (community spouse) has
   # no patient payment.
   expect:
     # Verification (phase 9). By November the residency, resource, pay-stub, activity and heating
@@ -3340,7 +3347,7 @@
       ma_ltc_eligibility_status: {"2026-11": eligible_pace}
       ma_mmmna: {"2026-11": 2920}
       ma_community_spouse_income_allowance: {"2026-11": 1740}
-      ma_patient_payment: {"2026-11": 215}
+      ma_patient_payment: {"2026-11": 179.64}
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
@@ -4274,12 +4281,11 @@
 - id: CO-04
   title: Pregnant LPR inside the five-year bar; stepparent filing jointly; a child claimed by a non-custodial parent; an 18-year-old in school
   # Adapted from the phase-3 review's designed case CO-06 (docs/reviews/magi-chp-phase-3.md S3.4).
-  # p4's claiming by his non-custodial father p5 is stated only through the tax_filer/parent edges
-  # this chapter models: 435.603(f)(2)(iii)'s non-custodial-parent exception is NOT implemented
-  # (no claimed_by_non_custodial_parent/lives_with_both_parents/lives_with identifiers exist in this
-  # chapter - OQ-42), so ma_magi_household_members routes p4 into p5's filer household exactly as
-  # 435.603(f)(1) would for an ordinary claimed dependent. This is the gap OQ-42 names, demonstrated
-  # on a real household rather than fixed here.
+  # p4 is claimed by his non-custodial father p5. Until the open-question sweep (2026-11-21) the
+  # 435.603(f)(2)(iii) exception was not implemented and p4 had p5's filer household. OQ-42 is now
+  # resolved: p4 states his custodial parent (p1) and his home (lives_with p1, p2, p3, p4), so
+  # ma_dependent_is_routed_to_non_filer_rules is true and p4 has the non-filer household of the home
+  # he lives in, without p5 (see the p4 notes below).
   as_of: "2026-10-01"
   relationships:
     - [spouse, p1, p2]
@@ -4287,7 +4293,7 @@
     - [parent, p1, p4]
     - [parent, p2, p3]        # step-parent; caretaker/parent relationship counts step-parents
     - [parent, p2, p4]        # step-parent
-    - [parent, p5, p4]        # non-custodial father; the chapter has no way to state he does not live with p4
+    - [parent, p5, p4]        # non-custodial father; p4's lives_with states that he does not live with p4
     - [tax_filer, p1, p3]
     - [tax_filer, p5, p4]
   persons:
@@ -4319,6 +4325,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
@@ -4375,6 +4382,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
@@ -4424,6 +4432,7 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
@@ -4450,8 +4459,8 @@
         adult_financial_cash_income: 0
         ssi_income: 0
     p4:
-      # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5 (the case cannot
-      # state that he lives with p1/p2 rather than p5 - see the case comment above and OQ-42).
+      # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5; lives with his
+      # mother p1 (custodial parent), stepfather p2 and half-sibling p3 (OQ-42).
       facts:
         lottery_gambling_winnings_amount: 0
         date_of_birth: "2016-01-22"
@@ -4459,6 +4468,8 @@
         state_of_residence: CO
         is_tax_filer: false
         expects_to_be_claimed_as_dependent: true
+        ma_custodial_parent: p1
+        lives_with: [p1, p2, p3, p4]
         is_required_to_file_tax_return: false
         is_pregnant: false
         expected_number_of_children: 0
@@ -4468,6 +4479,7 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
@@ -4514,6 +4526,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
@@ -4568,17 +4581,16 @@
   #   size 4, income 2,200, ratio 0.8000. Under 19, 0.80 <= 1.33 -> category child, status eligible.
   #   Continuous eligibility applies (under 19, child category, CO resident) -> end month = 11 months
   #   after the application month (2026-10) = 2027-09. CHP+ ineligible_medicaid_eligible.
-  # p4: claimed by his non-custodial father p5, who this chapter cannot mark as living apart (OQ-42,
-  #   see case comment) -> ma_magi_household_members treats this exactly like an ordinary claimed-
-  #   dependent case: household = p5's filer household = [p4,p5], size 2. Income: p5 counts ($5,000);
-  #   p4 is excluded (claimed dependent, not required to file, and his parent p5 IS a member of the
-  #   summing household) -> income 5,000. Ratio 5,000/1,803.33 = 2.7727, over every standard including
-  #   CHP+'s 260% ceiling. Category none, ma_meets_some_category_demographics true (under 19) ->
-  #   status ineligible_income. CHP+: income ratio 2.7727 exceeds the 260% upper bound even with the
-  #   5% disregard (2.7227) -> chp_income_within_limit false -> status ineligible_income (not
-  #   eligible_child - the review's prose for the unfixed-C-12 case says eligible_child here, but that
-  #   is inconsistent with its own 2.7727 ratio against CHP+'s 260% ceiling; the engine's arithmetic,
-  #   confirmed by hand, is the value recorded below).
+  # p4 (open-question sweep, OQ-42): claimed by p5, whose custodial parent is p1, so 435.603(f)(2)(iii)
+  #   and 8.100.4.E.1.c.iii give him the non-filer household: himself, the parents who live with him
+  #   (p1, stepfather p2; p5 is not in his lives_with) and his sibling under 19 (p3) = [p1,p2,p3,p4];
+  #   size 5 (p1 pregnant with one counts as 2). Income: p1 and p2 as for p3's household, 2,200 in
+  #   October (ratio 2,200 / (38,680/12 = 3,223.33) = 0.6825) and 5,600 in November (1.7373).
+  #   October: under 19, 0.68 <= 1.42 -> category child, status eligible, continuous eligibility opens
+  #   (end month 2027-09). November: 1.74 is over 1.42 even with the 5% disregard, but the continuous
+  #   eligibility period opened in October keeps category child and status eligible. CHP+
+  #   ineligible_medicaid_eligible both months. (Before the sweep: household [p4,p5], size 2, income
+  #   5,000, ratio 2.7727, category none, ineligible_income, CHP+ ineligible_income.)
   # p5: filer + tax dependent p4 = [p4,p5], size 2 (same group p4 computes, since neither has any
   #   other filer/spouse edge), income 5,000 (p4 excluded, his own parent p5 is in the household),
   #   ratio 2.7727. Parent/caretaker demographics: the stated parent edge to p4 is read as living
@@ -4605,9 +4617,8 @@
   #   under 19 and a CO resident, so 42 CFR 435.926(d)/8.100.3.Q.1.a's continuous-eligibility period
   #   (opened 2026-10, running through 2027-09, C-4) protects her "without regard to changes in
   #   income": category still child, status still eligible. CHP+ ineligible_medicaid_eligible.
-  # p4/p5: p5's own earnings are unchanged, so p4's household income is still $5,000/ratio 2.7727 in
-  #   November (p4 never had ma_is_child_category true in October, so no continuous eligibility period
-  #   ever opened for him) - both persons' values are unchanged from October.
+  # p4: see the October note (continuous eligibility from October). p5: his own earnings are
+  #   unchanged, so his values are unchanged from October.
   expect:
     p1:
       ma_magi_household_members: [p1, p2, p3]
@@ -4643,16 +4654,16 @@
       ma_child_continuous_eligibility_end_month: "2027-09"
       chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible, "2026-11": ineligible_medicaid_eligible}
     p4:
-      ma_magi_household_members: [p4, p5]
-      ma_magi_household_size: 2
-      ma_magi_household_income: {"2026-10": 5000, "2026-11": 5000}
+      ma_magi_household_members: [p1, p2, p3, p4]
+      ma_magi_household_size: 5
+      ma_magi_household_income: {"2026-10": 2200, "2026-11": 5600}
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-10": false, "2026-11": false}
-      ma_magi_category: {"2026-10": none, "2026-11": none}
-      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
-      ma_continuous_eligibility_applies: {"2026-10": false, "2026-11": false}
+      ma_magi_category: {"2026-10": child, "2026-11": child}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible}
+      ma_continuous_eligibility_applies: {"2026-10": true, "2026-11": false}
       ma_child_continuous_eligibility_end_month: "2027-09"
-      chp_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income}
+      chp_eligibility_status: {"2026-10": ineligible_medicaid_eligible, "2026-11": ineligible_medicaid_eligible}
     p5:
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -4707,6 +4718,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 1.03
@@ -4753,6 +4765,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 3.16
@@ -4812,6 +4825,7 @@
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 0.00
@@ -5034,8 +5048,7 @@
         # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
         transfer_penalty_period_start_date: "2026-11-01"
         # Illustrative transfer-penalty divisor, not from a published figure (OQ-91); the CSRA, MMMNA cap, home equity and MSP figures are parameters since phase 7.
-        transfer_penalty_divisor: 9000
-        ma_personal_needs_allowance_institutional: 75
+        ma_qualifies_for_veterans_personal_needs_allowance: false
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -5046,6 +5059,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.71
@@ -5107,7 +5121,6 @@
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
-        transfer_penalty_divisor: 9000
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -5118,6 +5131,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.71
@@ -5177,7 +5191,6 @@
         home_equity: 0
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
-        transfer_penalty_divisor: 9000
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -5188,6 +5201,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.80
@@ -5225,7 +5239,9 @@
       ma_institutionalized_spouse_countable_resources: 17340
       ma_meets_ltc_resource_standard: false
       ma_home_equity_disqualifies: false
-      ma_transfer_penalty_months: 6
+      # OQ-212 sweep: the 2026 divisor 10814.64 (HCPF OM 25-073, unverified) replaced the illustrative
+      # 9000: 54000 / 10814.64 = 4.993, so 4 whole months and ceil(30 x 0.993) = 30 days (was 6 months).
+      ma_transfer_penalty_months: 4
       ma_mmmna: {"2026-11": 3143.5}
       ma_community_spouse_income_allowance: {"2026-11": 2043.5}
       ma_family_allowance: {"2026-11": 0}
@@ -6029,6 +6045,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6094,6 +6111,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6156,6 +6174,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6236,6 +6255,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6357,6 +6377,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -7054,6 +7075,7 @@
         is_required_to_file_tax_return: true
         qualifying_quarters: 30
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
@@ -7230,6 +7252,7 @@
         is_required_to_file_tax_return: false
         qualifying_quarters: 0
         chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false

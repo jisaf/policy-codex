@@ -1,0 +1,12 @@
+id: CO-1953
+name: Family's premiums and cost sharing would exceed 5% of income
+identifier: chp_public_agency_coverage_cost_exceeds_five_percent_of_income
+kind: supplied
+type: yes/no
+scope: person
+program: CHP+
+meaning: "Whether the State determines that the annual aggregate premiums and cost sharing imposed for coverage of the person's family under the public agency's State health benefits plan would exceed 5 percent of the family's income for the year: the hardship exception of 42 U.S.C. 1397jj(b)(6)(C)."
+supplied_by: The State's hardship determination.
+sources: [S1223]
+tags: [chp]
+rationale: "OQ-59: the second statutory exception to the public agency employee exclusion."

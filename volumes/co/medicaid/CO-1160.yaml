@@ -6,14 +6,13 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: The person's SSI-related countable income with the current OASDI income disregarded, for the Disabled Adult Child test (10 CCR 2505-10 § 8.100.6.J.1.c.i, iii).
-precision: "The person's social_security_income is subtracted from ma_ssi_countable_income (CO-607), floored at 0 (OQ-208)."
-derived: [max, 0, ["-", ma_ssi_countable_income, social_security_income]]
-sources: [S626]
-open: [OQ-208]
+precision: "OQ-208 resolved: § 8.100.6.J.1.c disregards the current OASDI income and tests other countable income, so the OASDI comes off the household's unearned income first and the $20 general exclusion (with any unused part carried to earned income, as in CO-605) applies to the income that remains."
+derived: [+, [max, 0, ["-", [max, 0, ["-", ma_ssi_household_unearned_income_sum, social_security_income]], ssi_general_income_exclusion]], ["*", [max, 0, ["-", [sum, [reachable, [spouse], [all, [not, resides_in_medical_institution], [not, [of, [P], resides_in_medical_institution]]]], [+, [of, [P], wages_gross], [of, [P], ma_self_employment_net_earnings]]], ["+", ssi_earned_income_exclusion, [max, 0, ["-", ssi_general_income_exclusion, [max, 0, ["-", ma_ssi_household_unearned_income_sum, social_security_income]]]]]]], ssi_earned_income_disregard_rate]]
+sources: [S626, S626]
 implemented: engine
 tags: [ma, non_magi, income]
 nearest: [CO-1158]
 rationale: "ma_pickle_countable_income (CO-1158) disregards only the cost-of-living increases; § 8.100.6.J.1.c.i disregards the whole current OASDI income. ma_dac_eligible (CO-1161) needs it."
 tests:
-  - {id: CO-1160-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 1200, social_security_income: 1100}, expect: 100}
-  - {id: CO-1160-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 500, social_security_income: 1100}, expect: 0}
+  - {id: CO-1160-T1, as_of: "2026-10-01", month: "2026-10", title: "1100 OASDI and 100 other unearned: 100 - 20 = 80", given: {ma_ssi_household_unearned_income_sum: 1200, social_security_income: 1100, resides_in_medical_institution: false, wages_gross: 0, ma_self_employment_net_earnings: 0}, relationships: [], expect: 80}
+  - {id: CO-1160-T2, as_of: "2026-10-01", month: "2026-10", title: "OQ-208: OASDI only, earnings 300: the whole $20 goes to earnings, (300 - 85) / 2 = 107.5", given: {ma_ssi_household_unearned_income_sum: 1100, social_security_income: 1100, resides_in_medical_institution: false, wages_gross: 300, ma_self_employment_net_earnings: 0}, relationships: [], expect: 107.5}
