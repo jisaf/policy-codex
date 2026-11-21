@@ -7998,3 +7998,50 @@ Document: D-80
 > admission into the United States for legal permanent residence, as verified
 > through SAVE.
 
+### S1318. Adult Financial personal needs allowance facilities (psychiatric facility at 65 or older for OAP) and the unlicensed or uncertified facility bar (OAP, AND-SO, AND-CS)
+
+Document: D-80
+
+9 CCR 2503-5 3.532.D-E, 3.543.E, 3.548.E (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The client shall be eligible only for a monthly PNA when program requirements
+> are met and the client is a resident for at least thirty (30) consecutive days, in one
+> of the following facilities:
+>
+> 1. In a general medical and surgical hospital;
+>
+> 2. In a nursing home, assisted living residence, or, intermediate care facility,
+> group home, host home, other long-term care facility, or Adult Financial
+> approved setting; or
+>
+> 3. In a psychiatric facility when sixty-five (65) years of age or older.
+>
+> E. The following persons are not eligible for a PNA or OAP grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+> ...
+> E. The following persons are not eligible for a PNA or AND-SO grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+> ...
+> E. The following persons are not eligible for a PNA or AND-CS grant payments:
+>
+> 1. Inmates in a penal institution; or,
+>
+> 2. Residents in an unlicensed private or uncertified public facility.
+
+### S1319. CDHS: Home Care Allowance payment floor of $977 for all three tiers from January 1, 2026
+
+Document: D-135
+
+CDHS, Adult Financial Programs web page, Home Care Allowance (retrieved 2026-11-21). https://cdhs.nxt-dev.colorado.gov/adult-financial-programs
+
+> Program purpose The Home Care Allowance (HCA) program provides cash assistance to individuals five (5) years of age and older with a disability to pay a home care provider.
+> HCA is used to pay for services to help clients remain in their homes (such as bathing, dressing, meal preparation, and shopping).
+> Services are provided by a home care provider.
+> The HCA payment floor standard for all three tiers is $977, effective January 1, 2026.
+
