@@ -171,6 +171,7 @@ export function parseInline(
     }
     if (best) return flattenArith([best[2], p(best[0]), p(best[1])]);
   }
+  if ((m = s.match(/^the calendar month number of (.+)$/))) return ["month_of_year", p(m[1])];
   if ((m = s.match(/^the month containing (.+)$/))) return ["month_of", p(m[1])];
   if ((m = s.match(/^the month before (.+)$/))) return ["month_before", p(m[1])];
   if ((m = s.match(/^(.+?) months after (.+)$/))) return ["months_after", p(m[1]), p(m[2])];

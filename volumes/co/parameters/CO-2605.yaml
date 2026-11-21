@@ -1,0 +1,12 @@
+id: CO-2605
+name: Compulsory school attendance age date, calendar month
+identifier: compulsory_school_attendance_age_date_month
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The calendar month number (8, August) of the day, August 1 of each year, on or before which a child must have attained the compulsory attendance age to be required to attend school that school year (C.R.S. 22-33-104(1)(a)). The day is the first of that month."
+value: 8
+sources: [S1403]
+tags: [age]
+rationale: "Engineering follow-up 3: is_school_aged (CO-1292) found the most recent August 1 from a fixed anchor month (2000-08) because no operator read a month's calendar number; with month_of_year (P49) it reads this parameter instead. No existing item states the month."

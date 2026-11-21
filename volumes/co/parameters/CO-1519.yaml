@@ -13,7 +13,6 @@ versions:
     value: { "1": 15960, "2": 21640, "3": 27320, "4": 33000, "5": 38680, "6": 44360, "7": 50040, "8": 55720 }
     source: S798
 sources: [S55, S791, S798]
-implemented: engine
 tags: [sebt, income]
 rationale: "Phase-8 fix round (S-4): sebt_income_eligibility_limit (CO-1297) read federal_poverty_guideline_annual_table (CO-181), which changes on the HHS calendar (versioned from January), so every January-June determination would use the next year's guidelines once they are added. The school meal guideline year needs its own dating; the engine selects a parameter version by the determination date only, so the figures are restated with the guideline year's dates rather than read from CO-181 as of the previous July 1."
 nearest: [CO-181]

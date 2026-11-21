@@ -1,0 +1,18 @@
+id: CO-2604
+name: "Adult Financial: grant reduced by SSI income"
+identifier: af_grant_is_reduced_by_ssi_income
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether SSI income reduces this month's Adult Financial grant: the client receives SSI and has SSI income this month, which af_countable_income counts. 9 CCR 2503-5 3.581.E drops the cents from every Adult Financial payment except in that case."
+precision: "Read as receives_ssi (CO-012) and ssi_income (CO-849) above 0, the SSI amount af_countable_income (CO-946) counts for an SSI recipient; a client who does not receive SSI is false without ssi_income being read."
+derived: [all, receives_ssi, [">", ssi_income, 0]]
+sources: [S1825]
+implemented: engine
+tags: [cash, income]
+rationale: "Engineering follow-up 4: 3.581.E (S1825) drops the cents from Adult Financial payments except where SSI income reduces the grant; af_oap_grant (CO-951) and af_and_grant (CO-952) need the exception. No existing item states it."
+tests:
+  - {id: CO-2604-T1, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: true, ssi_income: 700}, expect: true}
+  - {id: CO-2604-T2, as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: false}, expect: false}
+  - {id: CO-2604-T3, title: "SSI recipient with no SSI paid this month", as_of: "2026-10-01", month: "2026-10", given: {receives_ssi: true, ssi_income: 0}, expect: false}

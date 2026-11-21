@@ -12,7 +12,6 @@ versions:
     value: 977
     source: S713
 sources: [S704, S713, S1319]
-implemented: engine
 tags: [cash, income]
 rationale: No existing item states the HCA payment floor; af_hca_grant (CO-1219) needs it. Same shape as af_oap_payment_floor (CO-1200), a third program's figure.
 nearest: [CO-1200]

@@ -12,6 +12,5 @@ versions:
     value: 189
     source: S700
 sources: [S700, S702, S703, S704]
-implemented: engine
 tags: [cash, oap, income]
 rationale: No existing item states the OAP payment floor, which the version of 9 CCR 2503-5 effective 2026-03-02 (D-80) adds; af_oap_grant (CO-951) needs it to raise a grant below the floor. Versioned because 3.530.C states an effective date and 3.510 says the floor is updated annually.

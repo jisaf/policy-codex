@@ -1,0 +1,13 @@
+id: CO-2601
+name: "SNAP: birth date cutoff for the elderly non-citizen exemption"
+identifier: snap_elderly_non_citizen_birth_date_cutoff
+kind: parameter
+type: calendar date
+scope: global
+program: SNAP
+meaning: "August 22, 1931: a qualified non-citizen born on or before this date who lawfully resided in the U.S. on August 22, 1996 is exempt from the immigrant waiting period, per 10 CCR 2506-1 4.305.B.3.e."
+precision: "A fixed date in the rule, not a figure that changes; it is a parameter so the derivation states no literal date (engineering follow-up 3, Corticon S-9). The residence date of the same paragraph is qualified_non_citizen_entry_cutoff_date (CO-279)."
+value: "1931-08-22"
+sources: [S15]
+tags: [immigration, legal]
+rationale: "Engineering follow-up 3: snap_is_exempt_from_immigrant_waiting_period (CO-306) compared date_of_birth with a literal 1931-08-22; no existing parameter states the date."

@@ -238,6 +238,11 @@ describe("dates", () => {
     expect(run(["days_between", "2026-02-25", "2026-03-07"], {})).toBe(10);
     expect(run(["days_between", "d", "2026-03-07"], {})).toBe(U);
   });
+  it("month_of_year reads the calendar month number, 1 to 12", () => {
+    expect(run(["month_of_year", "2026-11"], {})).toBe(11);
+    expect(run(["month_of_year", "2027-01"], {})).toBe(1);
+    expect(run(["month_of_year", ["month_of", "d"]], {})).toBe(U);
+  });
 });
 
 describe("parameters and tables", () => {

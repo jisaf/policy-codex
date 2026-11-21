@@ -8,6 +8,5 @@ program: SunBucks
 meaning: The reduced-price meal income eligibility guideline as a multiple of the annual HHS poverty guideline - 1.85, rounded up to the next whole dollar annually and again when divided by twelve for the monthly figure - which Summer EBT uses as its income standard, per 7 CFR 292.5(a) and the 2026-2027 Income Eligibility Guidelines notice.
 value: 1.85
 sources: [S791, S798, S799]
-implemented: engine
 tags: [sebt, income]
 rationale: No existing parameter states the school meal income standard; sebt_income_eligibility_limit (CO-1297) needs it. A free-meal (130%) child is within the reduced-price limit, so one figure decides Summer EBT income eligibility.

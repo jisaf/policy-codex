@@ -174,23 +174,43 @@ describe("npm run check", () => {
 });
 
 describe("check warnings about test inputs", () => {
-  const ledger = loadLedgerFromDisk(ROOT, "co");
+  const onDisk = loadLedgerFromDisk(ROOT, "co");
+  // The co tests and cases state every input an engine reads (engineering
+  // follow-up 2), so the warnings are checked on a copy with bad inputs added.
+  const ledger = {
+    ...onDisk,
+    items: onDisk.items.map((it) => it.id !== "CO-642" ? it : {
+      ...it,
+      tests: [...(it.tests ?? []),
+        { id: "CO-642-X1", as_of: "2026-10-01", month: "2026-10", given: { ma_ltc_gross_income: 2030, has_income_trust: false, ssi_federal_benefit_rate_individual: 994 }, expect: true },
+        { id: "CO-642-X2", as_of: "2026-10-01", month: "2026-10", given: { ma_ltc_gross_income: 2030, has_income_trust: false }, relationships: [["spouse", "p2", "p1"] as [string, string, string]], expect: true }],
+    }),
+    cases: onDisk.cases.map((c) => c.id !== "CO-01" ? c : {
+      ...c,
+      persons: { ...c.persons, p1: { ...c.persons.p1, facts: { ...(c.persons.p1.facts ?? {}), has_domestic_violence_waiver: false } } },
+    }),
+  };
   const engine = createEngine(ledger.items, ledger.meta);
   const warnings = inputWarnings(engine, ledger);
 
   it("reports a parameter stated as a person fact instead of ignoring it silently", () => {
     expect(warnings).toContain(
-      "CO-642-T1: p1.ssi_federal_benefit_rate_individual is a parameter, so a value stated " +
+      "CO-642-X1: p1.ssi_federal_benefit_rate_individual is a parameter, so a value stated " +
         "for a person is ignored (state an override under `parameters:`)",
     );
   });
 
   it("reports a person named only in a relationship triple, and an identifier no item has", () => {
     expect(warnings.some((w) =>
-      w.startsWith("CO-305-T1: p2.relationships is named in a relationship triple"))).toBe(true);
+      w.startsWith("CO-642-X2: p2.relationships is named in a relationship triple"))).toBe(true);
     expect(warnings).toContain(
       "CO-01: p1.has_domestic_violence_waiver no item has this identifier, so it is ignored",
     );
+  });
+
+  it("reports nothing of the kind for the tests and cases on disk", () => {
+    const own = inputWarnings(createEngine(onDisk.items, onDisk.meta), onDisk);
+    expect(own.filter((w) => / is a parameter, so | no item has this identifier| relationship triple | never reads from /.test(w))).toEqual([]);
   });
 
   it("reports a versioned parameter with no version on the volume's default date", () => {

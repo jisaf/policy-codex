@@ -5,7 +5,7 @@ kind: derived
 type: whole number
 scope: person
 program: ColoradoWorks
-meaning: The number of persons in this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900), the key 3.606.1.F's need and grant standard chart is read by.
+meaning: "The number of persons in this person's Colorado Works assistance unit (cw_assistance_unit_members, CO-900), the key 3.606.1.F's need and grant standard chart is read by. Informational: no rule reads it and it is not a declared outcome; the standards are read by household size through cw_need_standard and cw_grant_standard, and this reports the unit's size (household cases check it)."
 derived: [count, cw_assistance_unit_members_for_size]
 sources: [S408, S414, S1004]
 implemented: engine

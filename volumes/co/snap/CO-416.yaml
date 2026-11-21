@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: The person received SNAP benefits for the full month, was not exempt from the ABAWD (able-bodied adult without dependents) time limit, was not living in an approved waiver area, did not meet the ABAWD work requirement, and was not given a discretionary exemption for the month, and the month is not the month the person turned eighteen (10 CCR 2506-1 4.311.3.A.2).
-derived: [all, received_full_snap_benefit_month, [not, snap_is_exempt_from_abawd_time_limit], [not, abawd_waiver_area_month], [not, snap_meets_abawd_work_requirement], [not, abawd_discretionary_exemption_month], [not, [all, [=, [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], snap_abawd_min_age], ["<", [years_between, date_of_birth, [days_after, -1, [first_day, [month]]]], snap_abawd_min_age]]]]
+derived: [all, received_full_snap_benefit_month, [not, snap_is_exempt_from_abawd_time_limit], [not, abawd_waiver_area_month], [not, snap_meets_abawd_work_requirement], [not, abawd_discretionary_exemption_month], [not, [all, ["=", [years_between, date_of_birth, [days_after, -1, [first_day, [month_after, [month]]]]], snap_abawd_min_age], ["<", [years_between, date_of_birth, [days_after, -1, [first_day, [month]]]], snap_abawd_min_age]]]]
 sources: [S130, S132, S1014]
 implemented: engine
 tags: [abawd, legal]

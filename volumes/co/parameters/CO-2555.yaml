@@ -8,6 +8,5 @@ program: ColoradoWorks
 meaning: "The household's averaged monthly child support at or below which consistent child support is disregarded for both eligibility and the grant at a Colorado Works redetermination: $500 (9 CCR 2503-6 3.605.5.C.2). Support averaging more is counted against the need standard."
 value: 500
 sources: [S1805]
-implemented: engine
 tags: [cash, tanf, income]
 rationale: "CDHS review B-2: the $500 figure of 3.605.5.C.2 had no parameter."

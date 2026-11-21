@@ -4,7 +4,7 @@
 import { describe, it, expect } from "vitest";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { buildSuite, gradeCase, type SuiteCase } from "../../src/export/conformance";
+import { buildSuite, gradeCase, ruleTestInputs, type SuiteCase } from "../../src/export/conformance";
 import { buildLedgerJson } from "../../src/export/ledger-json";
 import { loadVolume, selectedVolumeIds, manifestVolumes } from "../../src/tools/volumes";
 import { evaluateCase, resolveVolume } from "../../scripts/adapters/codex-self-lib";
@@ -26,19 +26,31 @@ describe("the co suite", () => {
     expect(c.persons.p1.facts?.determination_date).toBeUndefined();
   });
 
-  it("does not make a person of someone named only in a relationship triple (CO-305-T1)", () => {
+  it("does not make a person of someone named only in a relationship triple", () => {
+    const inputs = ruleTestInputs(engine, {
+      id: "X-T1", as_of: "2026-10-01", given: { date_of_birth: "1945-07-30" },
+      relationships: [["spouse", "p2", "p1"] as [string, string, string]],
+    });
+    expect(Object.keys(inputs.persons)).toEqual(["p1"]);
+    expect(inputs.audit.ignored).toContainEqual({ person: "p2", identifier: "relationships", reason: "undeclared person" });
+    // CO-305-T1 declares the spouse (engineering follow-up 2), so the spouse edge is crossed.
     const c = byId("CO-305-T1");
-    expect(Object.keys(c.persons)).toEqual(["p1", "p3", "p4", "p5"]);
-    expect(c.ignored).toContainEqual({ person: "p2", identifier: "relationships", reason: "undeclared person" });
-    expect(c.expect[0].value).toEqual(["p1", "p3", "p4", "p5"]);
+    expect(Object.keys(c.persons)).toEqual(["p1", "p2", "p3", "p4", "p5"]);
+    expect(c.ignored).toBeUndefined();
+    expect(c.expect[0].value).toEqual(["p1", "p2", "p3", "p4", "p5"]);
   });
 
-  it("drops a parameter stated as a person fact, and says so (CO-642-T1)", () => {
-    const c = byId("CO-642-T1");
-    expect(c.persons.p1.facts?.ssi_federal_benefit_rate_individual).toBeUndefined();
-    expect(c.ignored).toContainEqual({
+  it("drops a parameter stated as a person fact, and says so", () => {
+    const inputs = ruleTestInputs(engine, {
+      id: "X-T2", as_of: "2026-10-01", given: { ssi_federal_benefit_rate_individual: 994 },
+    });
+    expect(inputs.persons.p1.facts?.ssi_federal_benefit_rate_individual).toBeUndefined();
+    expect(inputs.audit.ignored).toContainEqual({
       person: "p1", identifier: "ssi_federal_benefit_rate_individual", reason: "parameter",
     });
+    // CO-642-T1 states its parameters under parameters: (engineering follow-up 2).
+    expect(byId("CO-642-T1").parameters).toEqual({ ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0 });
+    expect(byId("CO-642-T1").ignored).toBeUndefined();
   });
 
   it("routes a household's single-valued person-month facts to month_defaults (CO-01)", () => {
@@ -52,8 +64,8 @@ describe("the co suite", () => {
   });
 
   it("lists the derived items a case states, whose values replace their rules", () => {
-    // CO-01 no longer overrides ma_mmmna_standard (HCPF fix round); CO-08 still states CO Works results (known-failures.json lists them for the CDHS round).
-    expect(byId("CO-08").overrides).toContainEqual({ person: "p1", identifier: "cw_eligibility_status" });
+    // No household case states a derived value any more (engineering follow-up pass, task 3: CO-08, CO-83).
+    expect(suite.cases.filter((c) => c.kind === "household" && c.overrides?.length)).toEqual([]);
     expect(byId("CO-387-T1").overrides?.map((o) => o.identifier)).toContain("snap_eligible_household_size");
   });
 

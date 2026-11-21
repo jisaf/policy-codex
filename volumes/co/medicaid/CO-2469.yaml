@@ -6,8 +6,8 @@ type: group of persons
 scope: person
 program: Medicaid
 meaning: "The family members for whom an institutionalized spouse's income provides a family allowance (10 CCR 2505-10 § 8.100.7.T.1.c.ii): persons who are a child or parent of either spouse, reside with the community spouse, and are claimed as a tax dependent by either spouse."
-precision: "A dependent sibling of either spouse, whom T.1.c.ii also names, is not reached: the ledger has no sibling edge to a spouse; such a person is not counted (OQ-95's remaining half). The spouses themselves are not children or parents of either spouse, so they are never in the group."
-derived: [filter, [persons], [all, [has_relative_in, [child, parent], [reachable, [spouse]]], [has_relative_in, [tax_dependent], [reachable, [spouse]]], [otherwise, [of, [P], ma_resides_with_community_spouse], false]]]
+precision: "A sibling of either spouse, whom T.1.c.ii also names, is a child of a parent of either spouse who is not a spouse: siblings are derived from shared parents (same-word audit SW-2), so the case states the spouse's parent and the sibling's parent edge, not a sibling edge (OQ-95 resolved). A half sibling (one shared parent) is a sibling; a step-sibling is not. The spouses themselves are not children or parents of either spouse, so they are never in the group."
+derived: [filter, [persons], [all, [any, [has_relative_in, [child, parent], [reachable, [spouse]]], [all, [has_relative_in, [child], [filter, [persons], [has_relative_in, [parent], [reachable, [spouse]]]]], [not, [in_group, [P], [reachable, [spouse]]]]]], [has_relative_in, [tax_dependent], [reachable, [spouse]]], [otherwise, [of, [P], ma_resides_with_community_spouse], false]]]
 sources: [S1736]
 implemented: engine
 tags: [ma, ltc, household]
@@ -15,3 +15,4 @@ rationale: "OQ-95 (resolved in the HCPF fix round): family_members_with_communit
 tests:
   - {id: CO-2469-T1, as_of: "2026-10-01", given: {}, title: "Minor child of the couple, claimed by the community spouse, at home", relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3], [tax_filer, p2, p3]], persons: {p2: {facts: {}}, p3: {facts: {ma_resides_with_community_spouse: true}}}, expect_length: 1, expect_first: p3, expect_last: p3}
   - {id: CO-2469-T2, as_of: "2026-10-01", given: {}, title: "Adult child who files her own return", relationships: [[spouse, p1, p2], [parent, p1, p3], [parent, p2, p3]], persons: {p2: {facts: {}}, p3: {facts: {ma_resides_with_community_spouse: true}}}, expect: []}
+  - {id: CO-2469-T5, as_of: "2026-10-01", given: {}, title: "OQ-95: the community spouse's dependent brother, claimed by her and living with her", relationships: [[spouse, p1, p2], [parent, p4, p2], [parent, p4, p3], [tax_filer, p2, p3]], persons: {p2: {facts: {}}, p3: {facts: {ma_resides_with_community_spouse: true}}, p4: {facts: {ma_resides_with_community_spouse: false}}}, expect: [p3]}

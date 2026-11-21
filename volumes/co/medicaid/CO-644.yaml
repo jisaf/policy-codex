@@ -7,7 +7,7 @@ scope: person
 program: Medicaid
 meaning: Whether this person is an "institutionalized spouse" for purposes of spousal protection - in a medical institution or nursing facility, receiving Home and Community Based Services, or enrolled in PACE, and expected to remain so for at least 30 consecutive days - per 10 CCR 2505-10 § 8.100.7.K.2.a-c.
 precision: "§ 8.100.7.K.2.d's further condition, that the person is married to a spouse who is not institutionalized, is tested separately by ma_ltc_couple (CO-643), which also requires this fact. Reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact."
-derived: [all, [any, resides_in_medical_institution, [not, [=, meets_hcbs_waiver_target_group, "none"]], is_enrolled_in_pace], expects_institutional_stay_of_thirty_days]
+derived: [all, [any, resides_in_medical_institution, [not, ["=", meets_hcbs_waiver_target_group, "none"]], is_enrolled_in_pace], expects_institutional_stay_of_thirty_days]
 sources: [S1754]
 implemented: engine
 tags: [ma, ltc, legal]

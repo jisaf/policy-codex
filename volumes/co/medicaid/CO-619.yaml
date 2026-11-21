@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person-month
 program: Medicaid
-meaning: The monthly premium a Working Adults with Disabilities Buy-In participant owes, on the sliding scale by income-as-a-percentage-of-FPL band 10 CCR 2505-10 8.100.6.P.1.f.iii states.
+meaning: "The monthly premium a Working Adults with Disabilities Buy-In participant owes, on the sliding scale by income-as-a-percentage-of-FPL band 10 CCR 2505-10 8.100.6.P.1.f.iii states. Informational: no rule reads it and it is not a declared outcome; it reports the premium beside ma_buy_in_category (household cases check it)."
 precision: "Expresses the member's countable income (ma_wawd_countable_income, CO-1715) as a fraction of the size-1 monthly poverty guideline and reads the band amount from ma_wawd_premium_table (CO-2457, P48), capped at 7.5% of that income (P.1.f.i). No premium is charged for the month of the determination or earlier (P.1.f.ii: \"charged beginning the month after determination of eligibility\"; ma_buy_in_determination_month, CO-2462), or for a member within the 12-month postpartum period (P.1.f.v; ma_postpartum_coverage_end_month, CO-560). The bands are a dated parameter re-based each State fiscal year (P.1.f.iv)."
 derived: [case, [["<=", [month], ma_buy_in_determination_month], 0], [[all, [not, [unknown, pregnancy_end_date]], ["<=", [month], ma_postpartum_coverage_end_month]], 0], [else, [min, [band, ma_wawd_premium_table, ["/", ma_wawd_countable_income, ["/", [lookup, federal_poverty_guideline_annual_table, 1], 12]]], ["*", ma_wawd_premium_cap_pct, ma_wawd_countable_income]]]]
 sources: [S1727, S1154]

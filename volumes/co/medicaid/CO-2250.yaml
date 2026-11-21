@@ -7,7 +7,7 @@ scope: person
 program: Medicaid
 meaning: "Whether the person is a resident of Colorado for Medical Assistance (10 CCR 2505-10 § 8.100.3.B.2-5; 42 CFR 435.403): a person living in Colorado who considers it the place of residence, including one temporarily absent who intends to return (is_colorado_resident); or, for a person in an institution who is incapable of indicating intent, Colorado is the state of residence the institutional rules give (ma_institutionalized_state_of_residence)."
 precision: "state_of_residence, which is_colorado_resident reads, is the state the person lives in and intends to remain in, so a person temporarily absent with intent to return (B.4) is stated with Colorado and a person who intends to return to a home outside Colorado (§ 8.100.5.M.2.a.iii) is not. Federal residency for a person receiving a State supplementary payment (the paying State, 435.403(f)) and for a title IV-E child (the State where the child lives, 435.403(g)) is not restated by Colorado and not modeled."
-derived: [case, [[all, [otherwise, ma_is_incapable_of_indicating_intent, false], resides_in_medical_institution], [=, ma_institutionalized_state_of_residence, colorado_state_code]], [else, is_colorado_resident]]
+derived: [case, [[all, [otherwise, ma_is_incapable_of_indicating_intent, false], resides_in_medical_institution], ["=", ma_institutionalized_state_of_residence, colorado_state_code]], [else, is_colorado_resident]]
 sources: [S1518]
 implemented: engine
 tags: [ma]

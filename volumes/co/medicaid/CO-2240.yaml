@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: "The SSI Federal Benefit Rate that applies to the person's SSI-related income test: the couple rate for a person living with a spouse (ma_ssi_household_size of 2), otherwise the individual rate (10 CCR 2505-10 §§ 8.100.6.C.1.a-b, 8.100.6.K.3-4)."
-derived: [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]
+derived: [case, [["=", ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]
 sources: [S1746]
 implemented: engine
 tags: [ma, non_magi, income]

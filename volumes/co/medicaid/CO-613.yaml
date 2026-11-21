@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: Whether the person is eligible as a Qualified Medicare Beneficiary - entitled to Medicare Part A, countable income (self, plus spouse if living together) at or below 100% of the federal poverty level for their household size, and countable resources at or below the MSP resource limit - per 42 U.S.C. 1396d(p) and 10 CCR 2505-10 8.100.6.L.
 precision: "The income limit is expressed as monthly (annual federal_poverty_guideline_annual_table figure divided by 12) times ma_qmb_income_limit_pct, matching how ma_magi_household_income_pct_fpl (CO-504) treats the same table for the MAGI chapter. Couples compare against the couple's guideline (ma_ssi_household_size 2) per 8.100.6.L.3, whether one or both spouses apply. Reads ma_ssi_poverty_guideline_monthly (CO-1750) instead of restating the lookup."
-derived: [all, receives_medicare_part_a, [<=, ma_ssi_countable_income, ["*", ma_ssi_poverty_guideline_monthly, ma_qmb_income_limit_pct]], [<=, ma_ssi_countable_resources, [case, [[=, ma_ssi_household_size, 2], ma_msp_resource_limit_couple], [else, ma_msp_resource_limit_individual]]]]
+derived: [all, receives_medicare_part_a, [<=, ma_ssi_countable_income, ["*", ma_ssi_poverty_guideline_monthly, ma_qmb_income_limit_pct]], [<=, ma_ssi_countable_resources, [case, [["=", ma_ssi_household_size, 2], ma_msp_resource_limit_couple], [else, ma_msp_resource_limit_individual]]]]
 sources: [S312, S316]
 implemented: engine
 tags: [ma, non_magi, msp, income, resources]

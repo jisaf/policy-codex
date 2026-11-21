@@ -154,7 +154,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -242,7 +242,6 @@
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         home_equity: 210000
-        transfers_within_lookback: []
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -414,7 +413,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -496,7 +495,6 @@
         date_of_birth: "1945-07-30"
         sex: male
         citizenship_status: lawful_permanent_resident
-        lpr_entry_date: "1998-05-14"
         qualifying_quarters: 40
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
@@ -673,7 +671,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -905,7 +903,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
@@ -1142,7 +1140,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
@@ -2346,7 +2344,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -2605,7 +2603,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -2692,7 +2690,6 @@
         us_entry_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         citizenship_status: lawful_permanent_resident
-        lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
@@ -2863,7 +2860,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -3095,7 +3092,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
@@ -3331,7 +3328,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -4595,8 +4592,8 @@
     - [spouse, p1, p2]
     - [parent, p1, p3]
     - [parent, p1, p4]
-    - [parent, p2, p3]        # step-parent; caretaker/parent relationship counts step-parents
-    - [parent, p2, p4]        # step-parent
+    - [stepparent, p2, p3]    # same-word audit SW-1: a step-parent is stated as stepparent, not parent
+    - [stepparent, p2, p4]
     - [parent, p5, p4]        # non-custodial father; p4's lives_with states that he does not live with p4
     - [tax_filer, p1, p3]
     - [tax_filer, p5, p4]
@@ -4612,7 +4609,6 @@
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         us_entry_date: "2023-06-15"
-        lpr_entry_date: "2023-06-15"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
         lawful_presence_status: lawfully_present
@@ -4669,7 +4665,6 @@
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         us_entry_date: "2023-06-15"
-        lpr_entry_date: "2023-06-15"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
         lawful_presence_status: lawfully_present
@@ -5010,7 +5005,7 @@
   relationships:
     - [grandparent, p1, p2]
     - [grandparent, p1, p3]
-    - [caretaker, p1, p3]
+    - [has_primary_responsibility_for, p1, p3]
     - [tax_filer, p1, p3]
   persons:
     p1:
@@ -6043,18 +6038,46 @@
   # So p6 is his own one-person LEAP/CCCAP household on this batch's facts, per OQ-132's own limitation, not
   # the single five/six-person household 3.751.1's "living together as one economic unit" text would produce
   # if the engine could register a symmetric relationship role for it.
+  # Engineering follow-up pass, task 3: the case no longer states cw_eligibility_status and cw_grant_amount
+  # (Corticon B-3); it states the facts Colorado Works reads (no SSI, Title IV, TANF elsewhere,
+  # disqualification, sanction or prior months; p1 head of the unit; all four request inclusion, p6 does
+  # not) and the rules derive them. Unit [p1, p2, p3, p4] (size 4); countable income (2,600 - 90) +
+  # (400 - 90) = 2,820 (3.606.2's $90 employment disregard each) against the 3.606.1.F need standard of
+  # 533 for four: ineligible_income, grant 0 for p1-p4, as the case stated before. p6 (no child of his own,
+  # not in the unit) was stated ineligible_income and now derives ineligible_no_dependent_child, grant 0;
+  # no expectation reads his Colorado Works status (his CCCAP status is ineligible_child either way).
   as_of: "2026-12-01"
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
     - [parent, p1, p4]
     - [parent, p2, p3]
-    - [parent, p2, p4]        # step-parent; adult caretaker under 3.103.C
+    - [stepparent, p2, p4]    # step-parent; adult caretaker under 3.103.C (same-word audit SW-1: stated as stepparent)
     - [buys_prepares_with, p1, p6]
   persons:
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        receives_tanf_cash: false
+        work_sanction_level_served: "none"
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        months_of_assistance_received: 0
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: true
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
@@ -6081,8 +6104,6 @@
         is_responsible_for_heating_costs: true      # heat included in rent, non-subsidized (3.752.25.A.2)
         has_primary_heating_source: true            # building furnace (3.751.1 "Primary Heating Source")
         cccap_entry_income_limit_pct_fpl: 1.85       # 3.111.H.1.a's stated floor (185% FPL)
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6104,6 +6125,25 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        work_sanction_level_served: "none"
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        months_of_assistance_received: 0
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
         cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
@@ -6132,8 +6172,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6156,6 +6194,23 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        work_sanction_level_served: "none"
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
@@ -6183,8 +6238,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6211,6 +6264,24 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        cw_determination_is_redetermination: false
+        cw_excluded_earned_income: 0
+        cw_excluded_unearned_income: 0
+        receives_tanf_cash: false
+        work_sanction_level_served: "none"
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_has_failed_to_apply_for_ssn: false
+        cw_is_head_of_assistance_unit: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        received_tanf_from_another_state_this_month: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
         is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
@@ -6239,8 +6310,6 @@
         has_primary_heating_source: true
         shares_heating_fuel_with: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6262,6 +6331,14 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        received_tanf_from_another_state_this_month: false
+        is_pregnant: false
+        # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
+        # cw_eligibility_status and cw_grant_amount.
+        receives_ssi: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        cw_is_optional_member_by_custody_or_support: false
+        cw_requests_inclusion_in_assistance_unit: false
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
@@ -6286,8 +6363,6 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         cccap_entry_income_limit_pct_fpl: 1.85
-        cw_eligibility_status: ineligible_income
-        cw_grant_amount: 0
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
@@ -6322,6 +6397,8 @@
       # $3,000 = p1 $2,600 + p4 $400 (18, so 3.752.23.Q's under-18 earnings zeroing does not reach her).
       leap_household_income: {"2026-12": 3000}
       leap_is_eligible: {"2026-12": true}
+      cw_eligibility_status: {"2026-12": ineligible_income}
+      cw_grant_amount: {"2026-12": 0}
     p2:
       cccap_household_members: [p1, p2, p3, p4]
       cccap_household_size: 4
@@ -6358,6 +6435,8 @@
       leap_household_members: []
       leap_household_income: {"2026-12": 1500}
       leap_is_eligible: {"2026-12": false}
+      cw_eligibility_status: {"2026-12": ineligible_no_dependent_child}
+      cw_grant_amount: {"2026-12": 0}
 
 - id: CO-71
   title: Undocumented pregnant mother on CHP+ prenatal with a CHP+ son; her LPR mother in breast cancer treatment; her LPR grandfather inside the five-year bar on OAP health care
@@ -6806,6 +6885,7 @@
         receives_oasdi_as_disabled_adult_child: false
         lost_ssi_or_oap_due_to_social_security_benefits: false
         lost_ssi_due_to_social_security_benefits: false
+        has_income_trust: false
       month_defaults:
         wages_gross: 0
         social_security_income: 0
@@ -6828,7 +6908,6 @@
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         receives_va_aid_and_attendance: false
-        has_income_trust: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
   expect:
@@ -7552,7 +7631,6 @@
         cccap_declared_assets: 300
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 300
-        utility_allowance_amount: 0
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         # Verification facts.
@@ -7729,7 +7807,6 @@
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
-        utility_allowance_amount: 0
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         verification_request_date: "2026-10-01"
@@ -8099,7 +8176,6 @@
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_is_guardian_of_dependent_child_or_disabled_individual: false
         ma_persons_cared_for: []
         is_veteran_rated_totally_disabled: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8160,7 +8236,6 @@
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_is_guardian_of_dependent_child_or_disabled_individual: false
         ma_persons_cared_for: []
         is_veteran_rated_totally_disabled: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8220,7 +8295,6 @@
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_is_guardian_of_dependent_child_or_disabled_individual: false
         ma_persons_cared_for: []
         is_veteran_rated_totally_disabled: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8331,10 +8405,13 @@
   # stepfather is an optional member who does not request assistance (3.604.2.C.2.a, OQ-152), so the assistance
   # unit is the mother and child, but he is in the budgetary unit (3.604.2.D.1.b, OQ-140) and his income is deemed
   # under 3.605.1.A.4.a.
+  # Engineering follow-up pass, task 3: meets_public_assistance_citizenship_requirement is no longer stated; all three
+  # are citizens (citizenship_status citizen), so CO-905 derives true for each, the value the case stated.
   as_of: "2026-10-15"
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
+    - [stepparent, p2, p3]    # same-word audit SW-1: the stepfather, stated as the other cases state one
     - [buys_prepares_with, p1, p2]
     - [buys_prepares_with, p1, p3]
   persons:
@@ -8422,7 +8499,6 @@
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
-        meets_public_assistance_citizenship_requirement: true
         is_sponsored_non_citizen: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
@@ -8513,7 +8589,6 @@
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
-        meets_public_assistance_citizenship_requirement: true
         is_sponsored_non_citizen: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
@@ -8603,7 +8678,6 @@
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
-        meets_public_assistance_citizenship_requirement: true
         is_sponsored_non_citizen: false
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
@@ -11967,3 +12041,228 @@
       cw_grant_standard: unknown
       cw_eligibility_status: {"2028-08": unknown}
       cw_grant_amount: {"2028-08": unknown}
+
+- id: CO-93
+  title: "Engineering follow-up 8 (Corticon S-4): the ABAWD months counted are the whole 36-month fixed period, not the last 12"
+  # CO-87's household, determined on June 1, 2028 instead of October 1, 2026. p1 used his three countable months in July,
+  # August and September 2026, the first three months of the fixed period that began July 1, 2026 (4.311.3.C.2), and
+  # received no SNAP from October 2026 on. In June 2028 the period is still the one from July 2026 (the next starts July
+  # 2029): snap_abawd_countable_months_in_period counts July 2026 through May 2028 = 3, so his status is limit_reached.
+  # An engine that keeps only the last 12 months (June 2027 to May 2028) counts 0 and would report him within the limit.
+  # He is 60 on June 1, 2028, under the ABAWD maximum of 64 (Pub. L. 119-21 sec. 10102). Only the ABAWD items are expected:
+  # the allotment would need figures for federal fiscal year 2028, which are not yet loaded.
+  as_of: "2028-06-01"
+  relationships:
+    - [buys_prepares_with, p1, p2]
+  persons:
+    p1:
+      # 58, no work, three countable months used.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2028-06-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: false
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1968-03-03"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 600
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 0
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 0
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+      month_defaults:
+        received_full_snap_benefit_month: false
+        hours_worked: 0
+        work_program_hours: 0
+        participates_in_workfare: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+      months:
+        2026-07:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+        2026-08:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+        2026-09:
+          received_full_snap_benefit_month: true
+          hours_worked: 0
+          work_program_hours: 0
+          participates_in_workfare: false
+          abawd_waiver_area_month: false
+          abawd_discretionary_exemption_month: false
+    p2:
+      # 50, works 130 hours, pays the rent and heat.
+      facts:
+        snap_determination_is_recertification: false
+        snap_application_date: "2028-06-01"
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_approved_for_work_study: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        receives_tanf_cash: false
+        receives_disability_based_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_ssi: false
+        snap_receives_disability_or_blindness_payment: false
+        receives_ssdi: false
+        snap_receives_permanent_disability_retirement_benefit: false
+        receives_va_disability_benefits: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        is_blind: false
+        is_homeless: false
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: none
+        snap_is_indian_or_urban_indian: false
+        has_medical_statement_of_unfitness: false
+        cccap_caretaker_is_incapacitated: false
+        agency_finds_obviously_unfit: false
+        is_complying_with_tanf_work_requirements: false
+        receives_unemployment_compensation_or_applied: false
+        has_responsibility_for_incapacitated_person: false
+        participates_in_drug_alcohol_treatment: false
+        is_under_parental_control_of_household_member: false
+        is_elderly_disabled_unable_to_prepare_meals: false
+        snap_countable_liquid_resources: 300
+        cccap_declared_assets: 300
+        snap_countable_nonliquid_resources: 0
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 0
+        incurs_telephone_cost: false
+        persons_cared_for: []
+        snap_is_head_of_household: false
+        cw_is_head_of_assistance_unit: false
+        date_of_birth: "1976-08-08"
+        sex: female
+        citizenship_status: citizen
+        state_of_residence: CO
+        is_medicare_entitled_or_enrolled: false
+        meets_nursing_facility_level_of_care: false
+        snap_resides_in_institution_providing_meals: false
+        resides_in_medical_institution: false
+        wages_gross: 1500
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        hours_worked: 130
+        work_program_hours: 0
+        received_full_snap_benefit_month: false
+        abawd_waiver_area_month: false
+        abawd_discretionary_exemption_month: false
+        participates_in_workfare: false
+        shelter_cost_monthly: 900
+        is_pregnant: false
+        marital_status: single
+        is_requesting_assistance_for_own_child: false
+        is_sponsored_non_citizen: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        snap_is_enrolled_half_time_in_school_or_training: false
+  expect:
+    p1:
+      snap_abawd_countable_months_in_period: {"2028-06": 3}
+      snap_abawd_time_limit_status: {"2028-06": limit_reached}

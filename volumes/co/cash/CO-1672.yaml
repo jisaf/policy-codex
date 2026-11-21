@@ -7,8 +7,8 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: Whether Adult Financial requires verification of the client's sponsor information of a sponsored qualified non-citizen who entered on or after August 22, 1996 and it has not been provided.
-precision: "qualified_status_date stands for the date of entry 3.520.69 names (OQ-380). False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
-derived: [all, af_verification_is_applicable, [all, is_sponsored_non_citizen, [">=", qualified_status_date, "1996-08-22"], [not, sponsor_information_verified]]]
+precision: "qualified_status_date stands for the date of entry 3.520.69 names (OQ-380); August 22, 1996 is qualified_non_citizen_entry_cutoff_date (CO-279). False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
+derived: [all, af_verification_is_applicable, [all, is_sponsored_non_citizen, [">=", qualified_status_date, qualified_non_citizen_entry_cutoff_date], [not, sponsor_information_verified]]]
 sources: [S1063]
 implemented: engine
 tags: [verification, cash]

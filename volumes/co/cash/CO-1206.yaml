@@ -7,7 +7,7 @@ scope: person
 program: AdultFinancial
 meaning: Whether the person is functionally eligible for Health First Colorado Home and Community Based Services - meets the nursing facility level of care and falls in an HCBS waiver target group - which bars Home Care Allowance under 9 CCR 2503-5 3.570.11.A.2.a-b.
 precision: Reads the Medicaid chapter's functional facts (meets_nursing_facility_level_of_care, meets_hcbs_waiver_target_group) rather than ma_hcbs_waiver_eligible (CO-653), because 3.570.11.A.2 bars HCA on functional eligibility for HCBS, not on financial eligibility for it. The three-month transition allowed at reassessment (3.570.11.A.2.b) is not modeled (OQ-250).
-derived: [all, meets_nursing_facility_level_of_care, [not, [=, meets_hcbs_waiver_target_group, none]]]
+derived: [all, meets_nursing_facility_level_of_care, [not, ["=", meets_hcbs_waiver_target_group, none]]]
 sources: [S712]
 open: [OQ-250]
 implemented: engine

@@ -1,0 +1,13 @@
+id: CO-2602
+name: "Adult Financial: partial month payment factors"
+identifier: af_partial_month_payment_factor_table
+kind: parameter
+type: table keyed by number of days
+scope: global
+program: AdultFinancial
+meaning: "The decimal figure the monthly Adult Financial grant payment is multiplied by for a partial month, by the number of days for which the client is eligible in the month (1 to 30), per 9 CCR 2503-5 3.581.D.2-4."
+precision: "The figures are the rule's table as printed; they are close to, but not exactly, the days times 12/365 (10 days is .32876, 28 days .92054). A client eligible from the first of the month receives the full monthly payment (3.532.B.1, 3.543.B.1, 3.548.B.1), so no row for 31 days is needed."
+value: {"1": 0.03288, "2": 0.06575, "3": 0.09863, "4": 0.13151, "5": 0.16439, "6": 0.19726, "7": 0.23014, "8": 0.26302, "9": 0.29590, "10": 0.32876, "11": 0.36164, "12": 0.39452, "13": 0.42739, "14": 0.46027, "15": 0.49315, "16": 0.52603, "17": 0.55890, "18": 0.59178, "19": 0.62466, "20": 0.65754, "21": 0.69041, "22": 0.72329, "23": 0.75617, "24": 0.78904, "25": 0.82192, "26": 0.85480, "27": 0.88768, "28": 0.92054, "29": 0.95342, "30": 0.98630}
+sources: [S1825]
+tags: [cash, income]
+rationale: "Engineering follow-up 4 (money and rounding): af_oap_grant (CO-951) and af_and_grant (CO-952) prorated a first-month grant by the days remaining over the days in the month, which 3.532.B.2 does not state; 3.581.D (S1825) states the method, a table of decimal figures by days of eligibility. No existing parameter states the table."

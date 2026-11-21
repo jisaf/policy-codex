@@ -545,6 +545,9 @@ class Evaluator:
         if op == "month_of":
             d = ev(e[1])
             return None if d is None else month_of(d)
+        if op == "month_of_year":
+            m = ev(e[1])
+            return None if m is None else int(m[5:7])
         if op == "month_before":
             m = ev(e[1])
             return None if m is None else add_months(m, -1)
@@ -800,6 +803,8 @@ class Renderer:
             return f"the first day of {i(e[1])}"
         if op == "month_of":
             return f"the month containing {i(e[1])}"
+        if op == "month_of_year":
+            return f"the calendar month number of {i(e[1])}"
         if op == "month_before":
             return f"the month before {i(e[1])}"
         if op == "month_after":

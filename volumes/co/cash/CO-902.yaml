@@ -6,7 +6,8 @@ type: yes/no
 scope: person
 program: ColoradoWorks
 meaning: The person is the parent or caretaker of at least one dependent child under 9 CCR 2503-6 3.601's "Caretaker" definition and 3.604.2.C.1.a-b - used to identify a minor parent (a dependent child who is herself a parent) for the assistance-unit composition and income-deeming rules.
-derived: [exists_related, [parent, caretaker], [of, [P], cw_is_dependent_child]]
+precision: "Same-word audit SW-3/SW-4 (OQ-396): the caretaker relation is cw_caretaker_of (CO-2608): a parent, or a non-parent caretaker who is the child's legal guardian or has primary responsibility for the child (3.601); the spouse of a parent who is not a parent stays the optional member of 3.604.2.C.2.a, read from the spouse and parent roles as the rule words it."
+derived: [exists, cw_caretaker_of, [of, [P], cw_is_dependent_child]]
 sources: [S406, S408]
 implemented: engine
 tags: [cash, tanf, household]

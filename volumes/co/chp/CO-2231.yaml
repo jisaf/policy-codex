@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person
 program: CHP+
-meaning: "The copayment due from a CHP+ enrollee at the time of service: nothing for an enrollee exempt from cost sharing (an American Indian or Alaska Native, or a Prenatal Care Program client, § 330.1 and § 330.4); otherwise the scheduled copayment (chp_scheduled_copayment), but no more than what remains of the family's yearly limit of 5% of income after the cost sharing already paid this year (§ 330.2)."
+meaning: "The copayment due from a CHP+ enrollee at the time of service: nothing for an enrollee exempt from cost sharing (an American Indian or Alaska Native, or a Prenatal Care Program client, § 330.1 and § 330.4); otherwise the scheduled copayment (chp_scheduled_copayment), but no more than what remains of the family's yearly limit of 5% of income after the cost sharing already paid this year (§ 330.2). Informational: no rule reads it and it is not a declared outcome; it reports the cost sharing beside chp_eligibility_status."
 precision: The exemption is read in the month of the determination.
 derived: [case, [[at, chp_is_exempt_from_cost_sharing, [det_month]], 0], [else, [min, chp_scheduled_copayment, [max, 0, ["-", chp_cost_sharing_annual_limit, chp_family_cost_sharing_paid_for_year]]]]]
 sources: [S1504, S1505, S1236, S247]

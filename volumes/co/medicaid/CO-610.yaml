@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether this person's ma_ssi_countable_resources do not exceed the SSI-related resource limit for their ma_ssi_household_size, per 42 U.S.C. 1382b, 20 CFR 416.1205 and 10 CCR 2505-10 8.100.5.M.1.
-derived: [<=, ma_ssi_countable_resources, [case, [[=, ma_ssi_household_size, 2], ssi_resource_limit_couple], [else, ssi_resource_limit_individual]]]
+derived: [<=, ma_ssi_countable_resources, [case, [["=", ma_ssi_household_size, 2], ssi_resource_limit_couple], [else, ssi_resource_limit_individual]]]
 sources: [S301, S302]
 implemented: engine
 tags: [ma, non_magi, resources]

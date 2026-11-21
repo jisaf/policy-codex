@@ -8,7 +8,6 @@ program: AdultFinancial
 meaning: The lowest need-for-paid-care score in HCA tier 2 ("24 to 37"), per 9 CCR 2503-5 3.570.13.C.3.
 value: 24
 sources: [S714]
-implemented: engine
 tags: [cash, disability]
 rationale: No existing parameter states this tier bound; af_hca_tier (CO-1216) needs it. Same table as af_hca_tier_one_min_need_score (CO-1211), a different row.
 nearest: [CO-1211]

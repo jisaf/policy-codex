@@ -11,7 +11,6 @@ versions:
     value: "2023-07"
     source: S1014
 sources: [S1014]
-implemented: engine
 tags: [abawd, state_election]
 rationale: "No existing parameter states the start of Colorado's fixed ABAWD clock (phase-8 review K-6); snap_abawd_countable_months_in_period (CO-417) counted a rolling 36 months. 7 CFR 273.24(b)(3) leaves the State to choose a fixed or rolling clock; 4.311.3.C.2 (S1014) chose the fixed clock. The 36-month length stays snap_abawd_period_months (CO-170)."
 nearest: [CO-170]

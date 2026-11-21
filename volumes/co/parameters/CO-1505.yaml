@@ -12,6 +12,5 @@ versions:
     value: 1500
     source: S1005
 sources: [S1005, S1007]
-implemented: engine
 tags: [cash, tanf]
 rationale: "No existing parameter states the Colorado Works death reimbursement maximum (phase-8 review K-1). af_burial_benefit_max is the Adult Financial burial benefit's figure under 3.570.43.B, a different program's maximum that happens to share the amount; a Colorado Works-prefixed parameter keeps each program's figure under its own owner."

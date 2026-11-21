@@ -13,6 +13,6 @@ implemented: engine
 tags: [ma, ltc, income, legal]
 rationale: "No existing item computes the MMMNA. ma_community_spouse_income_allowance (CO-656) needs it."
 tests:
-  - {id: CO-655-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_standard: 2100, shelter_costs_community_spouse: 800, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2270}
-  - {id: CO-655-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_standard: 2100, shelter_costs_community_spouse: 400, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 2100}
-  - {id: CO-655-T3, title: "Phase 7: capped at the 2026 CMS maximum MMMNA, 4066.50", as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_standard: 2100, shelter_costs_community_spouse: 5000, ma_mmmna_shelter_threshold_pct: 0.30}, expect: 4066.5}
+  - {id: CO-655-T1, as_of: "2026-10-01", month: "2026-10", parameters: {ma_mmmna_shelter_threshold_pct: 0.30}, given: {ma_mmmna_standard: 2100, shelter_costs_community_spouse: 800}, expect: 2270}
+  - {id: CO-655-T2, as_of: "2026-10-01", month: "2026-10", parameters: {ma_mmmna_shelter_threshold_pct: 0.30}, given: {ma_mmmna_standard: 2100, shelter_costs_community_spouse: 400}, expect: 2100}
+  - {id: CO-655-T3, title: "Phase 7: capped at the 2026 CMS maximum MMMNA, 4066.50", as_of: "2026-10-01", month: "2026-10", parameters: {ma_mmmna_shelter_threshold_pct: 0.30}, given: {ma_mmmna_standard: 2100, shelter_costs_community_spouse: 5000}, expect: 4066.5}

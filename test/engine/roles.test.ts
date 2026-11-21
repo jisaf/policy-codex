@@ -18,11 +18,16 @@ const volumeMeta = (id: string) =>
 
 describe("declared relationship roles", () => {
   it("both volumes declare their roles, with the inverses the engine always used", () => {
-    for (const id of ["co", "mwr"]) {
-      const roles = volumeMeta(id).relationship_roles!;
-      expect(roles.length).toBeGreaterThan(0);
-      expect(inverseRoleTable(roles)).toEqual(DEFAULT_INVERSE_ROLE);
-    }
+    const mwr = volumeMeta("mwr").relationship_roles!;
+    expect(inverseRoleTable(mwr)).toEqual(DEFAULT_INVERSE_ROLE);
+    // co declares its own neutral roles (same-word audit SW-0, OQ-396): every
+    // role has an inverse that points back, and the retired caretaker role is gone.
+    const co = inverseRoleTable(volumeMeta("co").relationship_roles!);
+    for (const [r, inv] of Object.entries(co)) expect(co[inv]).toBe(r);
+    expect(co.stepparent).toBe("stepchild");
+    expect(co.legal_guardian).toBe("ward");
+    expect(co.has_primary_responsibility_for).toBe("in_primary_care_of");
+    expect(co.caretaker).toBeUndefined();
     expect(volumeMeta("mwr").relationship_roles!.map((r) => r.id)).toContain("caretaker relative");
   });
 

@@ -9,6 +9,5 @@ meaning: "The Summer EBT monthly benefit per eligible child in the 48 contiguous
 precision: "Keyed by the summer's calendar year (sebt_summer_year, CO-2581), not by the determination date, since the benefit is one issuance for one summer (CDHS review C-10). 2024: $40 (292.15(e)(1), S794); 2025 and 2026: $40 (the 2026 notice's table, S796-S797). A summer whose notice is not yet published (2027 on November 21, 2026) has no row, so its benefit is unknown. Identifier renamed from sebt_monthly_benefit (a dated single value) in this round; the item ID is kept."
 value: { "2024": 40, "2025": 40, "2026": 40 }
 sources: [S794, S796, S797]
-implemented: engine
 tags: [sebt, income]
 rationale: "No existing parameter states the Summer EBT benefit; sebt_benefit_amount (CO-1299) needs it. CDHS review C-10: re-keyed by summer."

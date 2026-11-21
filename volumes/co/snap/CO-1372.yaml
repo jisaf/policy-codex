@@ -7,7 +7,7 @@ scope: person
 program: SNAP
 meaning: "Whether the document provided is one SNAP accepts to verify questionable citizenship: a U.S. birth certificate, passport, certificate of citizenship or naturalization, certification of birth abroad, U.S. citizen identification card, Colorado vital records information, or - when none of those can be obtained and the household gives a reasonable explanation - a signed third-party statement."
 precision: "The third-party statement is accepted only on the county's finding of the two conditions of 4.505.5.B (snap_third_party_citizenship_statement_is_permitted, CO-2001; OQ-313 resolved)."
-derived: [any, [in, citizenship_verification_document_type, [us_public_birth_certificate, us_passport, certificate_of_citizenship, certificate_of_naturalization, certification_of_birth_abroad, us_citizen_id_card, vital_statistics_record_match]], [all, [=, citizenship_verification_document_type, third_party_citizenship_statement], snap_third_party_citizenship_statement_is_permitted]]
+derived: [any, [in, citizenship_verification_document_type, [us_public_birth_certificate, us_passport, certificate_of_citizenship, certificate_of_naturalization, certification_of_birth_abroad, us_citizen_id_card, vital_statistics_record_match]], [all, ["=", citizenship_verification_document_type, third_party_citizenship_statement], snap_third_party_citizenship_statement_is_permitted]]
 sources: [S826, S811]
 implemented: engine
 tags: [verification, snap, immigration]

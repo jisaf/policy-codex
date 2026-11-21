@@ -53,6 +53,7 @@ Fields that do not apply are omitted, not left blank.
 | table keyed by <key> | A parameter table (`table keyed by person`, `table keyed by household size`). Keys are strings; a whole-number key reads its decimal string. |
 | table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. |
 | table keyed by year | A parameter table keyed by calendar year, such as a benefit level per summer. |
+| table keyed by number of days | A parameter table keyed by a count of days (`"1"` to `"30"`), such as the Adult Financial partial month payment figures (9 CCR 2503-5 3.581.D.4); read with P24/P42 as a lookup by a whole number. |
 
 Numbers are IEEE 754 binary64, computed in the order written; see `docs/operators.md`, Numbers.
 
@@ -179,6 +180,10 @@ Added for SNAP initial-month proration (phase-10 open-question sweep)
 Added for the HCPF stakeholder fix round (Buy-In premiums re-based each state fiscal year)
 
 - P48 `[table keyed by income band], for the band containing [number]` (`band`) the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number; unknown when either input is unknown or the number is above the last bound. A premium schedule stated by income band (10 CCR 2505-10 § 8.100.6.P.1.f.iii, Q.1.g.iv) is then a dated parameter rather than literals in a `case`
+
+Added for the engineering item follow-up pass (a calendar month without a fixed anchor)
+
+- P49 `the calendar month number of [month]` (`month_of_year`) the number of the month in its year, 1 (January) to 12 (December); unknown when the month is unknown. A rule anchored to a month of each year (the LEAP program year from November, 9 CCR 2503-7 3.751.1; the compulsory attendance age on August 1, C.R.S. 22-33-104(1)(a)) finds the most recent such month as this month less the months since that calendar month, instead of counting whole years from a fixed anchor month
 
 ## Tests
 
