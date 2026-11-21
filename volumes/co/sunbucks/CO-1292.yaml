@@ -1,0 +1,29 @@
+id: CO-1292
+name: Is school aged
+identifier: is_school_aged
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the child is of Colorado's compulsory school attendance age for the school year that began on the most recent August 1: the child had attained the age of six on or before that August 1 and was under seventeen on it (C.R.S. 22-33-104(1)(a)). 7 CFR 292.2 makes these the \"school aged\" years for Summer EBT."
+precision: "The August 1 is the most recent one on or before the determination date, computed from a fixed August anchor (2000-08-01) advanced by whole years, as leap_program_year_start_month (CO-1006) does for November; the pattern catalog reads no month-of-year number out of a date. A determination dated in June or July (inside the summer operational period) therefore reads the school year just ended, and one dated from August 1 reads the school year just begun. The exceptions of 22-33-104(2) excuse individual children from attendance (illness, private or home schooling, graduation) and do not change the ages; 292.6 reaches a child who is school aged \"at any time during the period of eligibility\", and the item tests the one August 1 named above."
+derived: [all, [">=", [years_between, date_of_birth, [first_day, [months_after, ["*", [years_between, "2000-08-01", [det_date]], 12], "2000-08"]]], compulsory_school_attendance_min_age], ["<", [years_between, date_of_birth, [first_day, [months_after, ["*", [years_between, "2000-08-01", [det_date]], 12], "2000-08"]]], compulsory_school_attendance_age_limit]]
+sources: [S1403, S793, S790]
+implemented: engine
+tags: [sebt, age]
+rationale: "Phase-10 open-question sweep (OQ-255, part 2): C.R.S. 22-33-104(1)(a) is now fetched (D-141), so the age test is derived from date_of_birth instead of supplied. Kept as its own item because sebt_eligibility_status (CO-1298) and sebt_verification_status (CO-1698) both read it. Neutral (program All): the compulsory attendance ages are Colorado school law, not a Summer EBT rule."
+tests:
+  # Turned six in May 2026, before the August 1, 2026 start of the school year: school aged in February 2027.
+  - {id: CO-1292-T1, as_of: "2027-02-10", given: {date_of_birth: "2020-05-20"}, expect: true}
+  # Turned six on August 2, 2026, one day after August 1: not of compulsory age until the next school year.
+  - {id: CO-1292-T2, as_of: "2027-02-10", given: {date_of_birth: "2020-08-02"}, expect: false}
+  # Turned six exactly on August 1, 2026: "on or before August 1".
+  - {id: CO-1292-T3, as_of: "2026-10-01", given: {date_of_birth: "2020-08-01"}, expect: true}
+  # Sixteen on August 1, 2026 (turns seventeen in September): under seventeen when the school year began.
+  - {id: CO-1292-T4, as_of: "2026-10-01", given: {date_of_birth: "2009-09-15"}, expect: true}
+  # Seventeen on August 1, 2026: past the compulsory age for the 2026-27 school year.
+  - {id: CO-1292-T5, as_of: "2026-10-01", given: {date_of_birth: "2009-04-08"}, expect: false}
+  # A June 2027 determination reads the August 1, 2026 school year: a child who turns six in March 2027 is not yet school aged.
+  - {id: CO-1292-T6, as_of: "2027-06-15", given: {date_of_birth: "2021-03-01"}, expect: false}
+  # The same child on a determination dated August 1, 2027 is school aged for the school year just begun.
+  - {id: CO-1292-T7, as_of: "2027-08-01", given: {date_of_birth: "2021-03-01"}, expect: true}

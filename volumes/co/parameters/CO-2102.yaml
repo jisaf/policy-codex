@@ -1,0 +1,12 @@
+id: CO-2102
+name: Compulsory school attendance age limit
+identifier: compulsory_school_attendance_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The age (exclusive) below which a child must attend school in Colorado: the compulsory attendance requirement reaches a child \"under the age of seventeen years\"."
+value: 17
+sources: [S1403]
+tags: [age]
+rationale: "C.R.S. 22-33-104(1)(a) (S1403) sets the upper bound of Colorado's compulsory attendance ages; is_school_aged (CO-1292) reads it (OQ-255)."

@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: SunBucks
 meaning: The child is categorically eligible for Summer EBT on a ground other than SNAP or TANF receipt - a foster, homeless, migrant, runaway or Head Start child as defined in 7 CFR 245.2, a member of a household receiving FDPIR, or a member of a household receiving another means-tested program the Secretary has approved for the Summer EBT agency - or was individually certified for free or reduced-price meals during the period of eligibility, per 7 CFR 292.2 ("Categorically eligible"), 292.6 and 292.12(d).
+precision: "For a child enrolled in a special provision school, an individual certification for free or reduced-price meals counts only when it was made through an NSLP/SBP application (7 CFR 292.6(c)(2)); the \"otherwise determined eligible\" route of 292.6(b)(3) is not open to that child, so the supplier states false for it (OQ-255 part 5). If not stated, a reader that needs it is unknown."
 supplied_by: Direct certification data matches (State FDPIR, foster care, homeless, migrant, Head Start records) and school meal certification records.
 sources: [S790, S792]
 open: [OQ-255]

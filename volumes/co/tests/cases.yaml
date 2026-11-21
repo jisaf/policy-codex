@@ -50,7 +50,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -305,7 +304,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -563,7 +561,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -789,7 +786,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -1017,7 +1013,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2098,7 +2093,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2351,7 +2345,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2607,7 +2600,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2832,7 +2824,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -3058,7 +3049,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -6602,7 +6592,6 @@
         snap_has_drug_felony_involving_snap_benefits: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
@@ -6794,7 +6783,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
       month_defaults:
         wages_gross: 0
@@ -6949,7 +6937,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
       month_defaults:
         wages_gross: 0
@@ -7221,7 +7208,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
       month_defaults:
         wages_gross: 1800
@@ -7393,7 +7379,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
       month_defaults:
         wages_gross: 0

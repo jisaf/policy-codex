@@ -7676,3 +7676,46 @@ Document: D-86
 > meter or propane tank, will be considered a shared household and the Estimated Home
 > Heating Cost (EHHC) will be divided by the number of parties responsible for paying the
 > shared heat expense.
+
+### S1403. Colorado compulsory school attendance: age six on or before August 1, under seventeen
+
+Document: D-141
+
+C.R.S. 22-33-104(1)(a) (Colorado Revised Statutes 2024). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-22.pdf
+
+> 22-33-104. Compulsory school attendance. (1) (a) Except as otherwise provided in
+> subsection (2) of this section, every child who has attained the age of six years on or before
+> August 1 of each year and is under the age of seventeen years, except as provided by this section,
+> shall attend public school for at least the following number of hours during each school year:
+
+### S1404. Colorado Summer EBT statute: the state department establishes eligibility criteria consistent with federal law and promulgates rules
+
+Document: D-142
+
+C.R.S. 26-2-309(3)(a), (4)(a)(I), (4)(a)(VI) (Colorado Revised Statutes 2024). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (3) (a) The summer electronic benefits transfer for children program is created in the
+> state department. The purpose of the program is to provide summer food benefits to eligible
+> students in low-income households during summer months when students are not in school
+> pursuant to federal law.
+>
+> (4) (a) To administer the program, the state department shall:
+> (I) Establish eligibility criteria and distribute benefits consistent with federal law;
+>
+> (VI) Promulgate rules to manage household and administrative errors and any other rules
+> necessary to comply with federal law.
+
+### S1405. Code of Colorado Regulations: the Department of Human Services' rule divisions, none for Summer EBT
+
+Document: D-143
+
+Colorado Secretary of State, Code of Colorado Regulations, Department of Human Services rule divisions (retrieved 2026-11-21). https://www.sos.state.co.us/CCR/NumericalAgencyList.do?deptID=9
+
+> 2503
+> Income Maintenance (Volume 3)
+> 2504
+> Child Support Services (Volume 6)
+> 2506
+> Supplemental Nutrition Assistance Program (SNAP)
+> 2508
+> County Finance and Accounting, Executive Director Rules (Volume 5)
