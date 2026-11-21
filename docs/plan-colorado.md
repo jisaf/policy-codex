@@ -69,3 +69,10 @@ After the codex is complete and the stakeholder reviews are fixed. The current a
    - Case walkthrough: step through a household's determination rule by rule, in plain language, with each value, the rule text it rests on, and where an unknown stopped it.
    - Approvals: what is waiting on whom, grouped by change, with the diff in plain language and its effect on outcomes.
 3. Usability test of the new views by the same personas; fix round.
+
+### Product-owner decisions (2026-11-21, on the design-limit questions)
+- Nothing is deferred "until a case needs it": everything needed for certification at launch is in scope.
+- Supplied facts are program-neutral statements of what is true of the person (one immigration status, one income receipt, one relationship). Each program's meaning of a shared word (income, household, caretaker, lawful presence, disability, student, ...) lives in that program's own derived items, never in a second supplied fact.
+- Hard-coded figures in derivations become parameters or tables (OQ-82). Facts that another record or edge can supply are read from it, not entered twice (OQ-97, OQ-95). Where a rule asks for a lighter determination (attested rather than computed income, OQ-54), the ledger uses the lighter fact.
+- OQ-44 is to be fixed: one immigration-status fact with the full documented category set; per-program derived eligibility. OQ-216, OQ-323, OQ-396 and OQ-413 are to be fixed in full.
+Audits (read-only, docs/reviews/audit-*.md): hard-coded numbers; dual entry and derivable facts; heavier-than-needed definitions; same word, different meaning. A fix round follows each.
