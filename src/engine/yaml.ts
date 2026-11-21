@@ -145,5 +145,10 @@ export function stringifyVolume(meta: VolumeMeta): string {
     L.push("");
     L.push(`tags: ${flowValue(meta.tags)}`);
   }
+  if (meta.relationship_roles) {
+    L.push("");
+    L.push("relationship_roles:");
+    for (const r of meta.relationship_roles) L.push(`  - ${flowValue(r)}`);
+  }
   return L.join("\n") + "\n";
 }

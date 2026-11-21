@@ -108,3 +108,21 @@ types:
   - list of months
 
 scopes: [person, person-month, case, month, global]
+
+# The closed list of relationship roles. A [role, other] pair on p reads "p
+# is the <role> of other"; `inverse` is the role other then holds toward p, and
+# a case-level [role, from, to] edge records both. A role with no inverse is
+# recorded on the person named first alone. The engine reads this list
+# (docs/operators.md, Relationships).
+relationship_roles:
+  - {id: parent, inverse: child}
+  - {id: child, inverse: parent}
+  - {id: spouse, inverse: spouse}
+  - {id: grandparent, inverse: grandchild}
+  - {id: grandchild, inverse: grandparent}
+  - {id: caretaker, inverse: dependent}
+  - {id: dependent, inverse: caretaker}
+  - {id: tax_filer, inverse: tax_dependent}
+  - {id: tax_dependent, inverse: tax_filer}
+  - {id: buys_prepares_with, inverse: buys_prepares_with}
+  - {id: shares_heat_with, inverse: shares_heat_with}

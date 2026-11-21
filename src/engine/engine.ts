@@ -73,7 +73,7 @@ export interface Engine {
 export function createEngine(
   items: Item[], meta: VolumeMeta, refs: EngineRefs | null = null,
 ): Engine {
-  const ix = buildIndex(items);
+  const ix = buildIndex(items, meta.relationship_roles ?? null);
   const graph = buildGraph(ix);
   const codes = aCodes(ix);
   return {

@@ -15,6 +15,17 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
   const warnings: string[] = [];
   const refs = new Set<string>();
   const monthScoped = itemScope === "person-month" || itemScope === "month";
+  /** A role the volume does not declare can never match an edge, so a
+   *  misspelling would silently read as "no such relationship". */
+  const declaredRoles = ix.roles ? new Set(ix.roles.map((r) => r.id)) : null;
+  const roles = (list: unknown): void => {
+    if (!declaredRoles) return;
+    for (const r of Array.isArray(list) ? list : [list]) {
+      if (typeof r === "string" && !declaredRoles.has(r)) {
+        warnings.push(`relationship role "${r}" is not declared in volume.yaml relationship_roles`);
+      }
+    }
+  };
 
   function t(e: Expr, mb: boolean): BaseType {
     if (e === true || e === false) return "yes/no";
@@ -174,10 +185,12 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         return "yes/no";
       case "exists_related":
         if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
+        roles(e[1]);
         need(e[2], ["yes/no"], "such that");
         refs.add("relationships");
         return "yes/no";
       case "rel":
+        roles(e[1]);
         need(e[2], ["person"], "of that person");
         refs.add("relationships");
         return "yes/no";
@@ -218,15 +231,18 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         return "number";
       case "has_relative_in":
         if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
+        roles(e[1]);
         need(e[2], ["group"], "of a person in");
         refs.add("relationships");
         return "yes/no";
       case "shared_relative":
         if (typeof e[1] !== "string" || !e[1]) errors.push("shared relative: relationship missing");
+        roles(e[1]);
         refs.add("relationships");
         return "group";
       case "reachable":
         if (!Array.isArray(e[1]) || !e[1].length) errors.push("relationships list is empty");
+        roles(e[1]);
         if (e.length > 2) need(e[2], ["yes/no"], "joined such that");
         refs.add("relationships");
         return "group";

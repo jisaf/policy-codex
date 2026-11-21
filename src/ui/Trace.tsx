@@ -13,6 +13,7 @@ const ORIGIN_TITLE: Record<string, string> = {
   memo: "already computed above in this trace",
   missing: "not supplied, so unknown",
   "not-in-force": "outside its effective range on this date, so unknown",
+  "no-version": "no version of this parameter is in force on this date, so unknown",
 };
 
 /** Depth at which children stop being expanded on first render. A SNAP
@@ -23,7 +24,7 @@ const OPEN_TO_DEPTH = 2;
 function hasBody(n: TraceNode): boolean {
   return n.origin !== "memo" && (
     n.children.length > 0 || (n.rule !== null && n.rule.length > 0) ||
-    n.sources.length > 0 || n.error !== undefined
+    n.sources.length > 0 || n.error !== undefined || (n.warnings?.length ?? 0) > 0
   );
 }
 
@@ -61,6 +62,7 @@ function TraceRow(
       {body && open.value && (
         <div class="tbody">
           {node.error !== undefined && <p class="bad">{node.error}</p>}
+          {node.warnings?.map((w) => <p class="warn">{w}</p>)}
           {node.rule && node.rule.length > 0 && (
             <Rich engine={engine} text={node.rule.join("\n")} mode="expr" class="derivation" />
           )}

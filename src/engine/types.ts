@@ -101,6 +101,12 @@ export interface ProgramVocabulary {
  *  top-level tag), and an optional display label (falls back to the id). */
 export interface TagDecl { id: string; parent?: string; label?: string }
 
+/** One relationship role a volume declares. A `[role, other]` pair on p
+ *  reads "p is the <role> of other". `inverse` is the role the other person
+ *  then holds toward p (a symmetric role names itself); a role with no
+ *  inverse is recorded on the person named first alone. */
+export interface RelationshipRoleDecl { id: string; inverse?: string; label?: string }
+
 export interface VolumeMeta {
   volume: string;
   title: string;
@@ -116,6 +122,10 @@ export interface VolumeMeta {
    *  Colorado build wrote it) or a hierarchy of {id, parent?, label?}.
    *  Absent on volumes written before phase 2. */
   tags?: Array<string | TagDecl>;
+  /** The closed list of relationship roles, with their inverses. Absent on
+   *  volumes written before the engineering review round; the engine then
+   *  falls back to the built-in table (DEFAULT_INVERSE_ROLE, ledger-index.ts). */
+  relationship_roles?: RelationshipRoleDecl[];
 }
 
 /** Ids the constraint checker validates citations against. When omitted the

@@ -1,6 +1,6 @@
-import { indexWith, type LedgerIndex } from "./ledger-index";
+import { DEFAULT_INVERSE_ROLE, indexWith, type LedgerIndex } from "./ledger-index";
 import { valuesEqual } from "./values";
-import { inForce, paramInForce } from "./versions";
+import { inForce, paramInForce, versionInForce } from "./versions";
 import { DATE_RE, MONTH_RE, type Expr, type Item, type TestSpec } from "./types";
 
 export interface CaseData {
@@ -14,7 +14,34 @@ export interface CaseData {
   params: Record<string, unknown>;
 }
 
-export interface TestResult { ok: boolean; got: unknown; err: string | null }
+export interface TestResult {
+  ok: boolean; got: unknown; err: string | null;
+  /** Unknowns the evaluation produced with no unstated supplied fact behind
+   *  them (see EvalWarning), one line each. Absent when there were none. */
+  warnings?: string[];
+}
+
+/** An unknown the evaluator produced although no supplied fact was missing:
+ *  a table lookup whose key has no row, a versioned parameter with no version
+ *  in force on the determination date, or a division by zero. Each is
+ *  reported (to the `warn` hook, and on the derived fact's trace event) so it
+ *  is never a silent "cannot determine". */
+export interface EvalWarning {
+  kind: "lookup-miss" | "no-version" | "division-by-zero";
+  /** The derived fact whose rule hit it, or the parameter with no version. */
+  identifier: string;
+  person: string | null;
+  month: string | null;
+  detail: string;
+}
+
+export type WarnHook = (w: EvalWarning) => void;
+
+/** One warning as a single line, for check output and test results. */
+export function formatWarning(w: EvalWarning): string {
+  const at = (w.person ? " " + w.person : "") + (w.month ? " @" + w.month : "");
+  return `${w.kind}: ${w.identifier}${at}: ${w.detail}`;
+}
 
 export function addMonths(m: string, n: number): string {
   const y = +m.slice(0, 4);
@@ -65,26 +92,11 @@ export function yearsBetween(d1: string, d2: string): number {
   return years;
 }
 
-/** The inverse of each relationship role the household model names. A
- *  case-level edge states one direction and both persons carry it, so
- *  `[parent, p2, p3]` records "p2 is the parent of p3" on p2 and "p3 is the
- *  child of p2" on p3. A role with no inverse here is recorded on the person
- *  named first alone. */
-export const INVERSE_ROLE: Readonly<Record<string, string>> = {
-  parent: "child",
-  child: "parent",
-  spouse: "spouse",
-  grandparent: "grandchild",
-  grandchild: "grandparent",
-  caretaker: "dependent",
-  dependent: "caretaker",
-  tax_filer: "tax_dependent",
-  tax_dependent: "tax_filer",
-  buys_prepares_with: "buys_prepares_with",
-  // LEAP's economic unit (9 CCR 2503-7 3.751.1): persons who customarily buy
-  // primary heating fuel in common or pay heat jointly in rent. Symmetric.
-  shares_heat_with: "shares_heat_with",
-};
+/** The default relationship-role inverses (see ledger-index.ts). A volume
+ *  that declares `relationship_roles` in volume.yaml uses its own table, which
+ *  the index carries as `ix.inverseRole`; this name is kept for callers that
+ *  have no index. */
+export const INVERSE_ROLE: Readonly<Record<string, string>> = DEFAULT_INVERSE_ROLE;
 
 /** One relationship as the person it is recorded on states it. */
 export interface RelationshipEdge { person: string; role: string; other: string }
@@ -101,13 +113,16 @@ export function statedRelationships(
 
 /** Every case-level `[role, from, to]` edge of a spec, each with its inverse,
  *  as the entries the two persons carry. */
-export function relationshipEdges(rels: TestSpec["relationships"]): RelationshipEdge[] {
+export function relationshipEdges(
+  rels: TestSpec["relationships"],
+  inverseRole: Readonly<Record<string, string>> = DEFAULT_INVERSE_ROLE,
+): RelationshipEdge[] {
   const out: RelationshipEdge[] = [];
   for (const r of rels ?? []) {
     if (r.length !== 3) continue;
     const [role, from, to] = r;
     out.push({ person: from, role, other: to });
-    const inverse = INVERSE_ROLE[role];
+    const inverse = inverseRole[role];
     if (inverse) out.push({ person: to, role: inverse, other: from });
   }
   return out;
@@ -168,8 +183,12 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
     c.monthFacts[m] = Object.assign({}, c.monthFacts[m] || {}, mf);
   }
   // The case-level graph is expanded last, so an edge reaches a person whose
-  // own pairs are already in place and adds only what they do not say.
-  for (const e of relationshipEdges(spec.relationships)) {
+  // own pairs are already in place and adds only what they do not say. An
+  // edge is recorded only on a person the case declares: a person named in
+  // a triple alone is not a person of the case and carries no relationships
+  // (the declared person's half of the edge still names them).
+  for (const e of relationshipEdges(spec.relationships, ix.inverseRole)) {
+    if (!(e.person in c.persons)) continue;
     const list = c.rels[e.person] ?? (c.rels[e.person] = []);
     if (!list.some(([r, other]) => r === e.role && other === e.other)) {
       list.push([e.role, e.other]);
@@ -188,14 +207,19 @@ export interface TraceEvent {
   value: unknown;              // the resolved value (null = unknown)
   origin:
     | "case" | "default" | "parameter" | "evaluated" | "memo" | "missing"
-    | "not-in-force" | "decision";
+    | "not-in-force" | "no-version" | "decision";
     // case: read from case data; default: month_defaults/monthFactsDefault; parameter: paramOf;
     // evaluated: derived computed now; memo: derived already computed (subtree not re-expanded);
     // missing: supplied fact absent (unknown); not-in-force: the item's effective range does not
     // cover the determination date (unknown, and its rule never runs);
+    // no-version: a versioned parameter with no version in force on the
+    // determination date (unknown, and reported as a warning);
     // decision: an operator's choice, not a fact
   parentKey: string | null;    // the derived fact whose evaluation asked for this one
   error?: string;              // when evaluation of this node threw
+  /** Unknowns this derived fact's own rule produced with no supplied fact
+   *  behind them (lookup miss, division by zero), one line each. */
+  warnings?: string[];
   /** The resolution settled the value of every operator it happened inside:
    *  it was the input each of them chose. Only set when a hook is present. */
   decisive?: boolean;
@@ -224,10 +248,35 @@ export type TraceHook = (e: TraceEvent) => void;
 
 export function evaluate(
   ix: LedgerIndex, c: CaseData, identifier: string,
-  person: string | null, month: string | null, trace?: TraceHook,
+  person: string | null, month: string | null, trace?: TraceHook, warn?: WarnHook,
 ): unknown {
   const memo: Record<string, unknown> = {};
   const stack: string[] = [];
+  /** Warnings raised while each derived fact's rule ran, by memo key, so the
+   *  fact's trace event can carry them. Only filled when a hook is present. */
+  const warningsByKey = new Map<string, string[]>();
+
+  /** Reports one silent unknown against the derived fact under evaluation
+   *  (`at`, when given, names the fact instead: a parameter). */
+  function raise(
+    kind: EvalWarning["kind"], detail: string,
+    at?: { identifier: string; person: string | null; month: string | null },
+  ): void {
+    if (!warn && !trace) return;
+    const key = stack.length ? stack[stack.length - 1] : null;
+    let w: EvalWarning;
+    if (at) w = { kind, detail, ...at };
+    else if (key) {
+      const [id, p, m] = key.split("|");
+      w = { kind, detail, identifier: id, person: p || null, month: m || null };
+    } else w = { kind, detail, identifier, person, month };
+    if (warn) warn(w);
+    if (trace && key && !at) {
+      const list = warningsByKey.get(key) ?? [];
+      list.push(`${kind}: ${detail}`);
+      warningsByKey.set(key, list);
+    }
+  }
 
   /** One event held until the operator that asked for it knows which of its
    *  inputs decided. `live` stays true while every operator the event
@@ -301,7 +350,9 @@ export function evaluate(
      *  Each resolution is reported in its own scope's context, so key, person
      *  and month agree: a person fact carries no month, a month fact no
      *  person, a parameter or case fact neither. */
-    const seen = (v: unknown, origin: TraceEvent["origin"], error?: string): unknown => {
+    const seen = (
+      v: unknown, origin: TraceEvent["origin"], error?: string, warnings?: string[],
+    ): unknown => {
       if (!trace) return v;
       const e: TraceEvent = {
         key: sc === "case" || sc === "month" ? id
@@ -318,13 +369,27 @@ export function evaluate(
         parentKey,
       };
       if (error !== undefined) e.error = error;
+      if (warnings && warnings.length) e.warnings = warnings;
       emit(e);
       return v;
     };
     // An item whose effective range does not cover the determination date
     // states nothing on that date, so it is unknown and its rule never runs.
     if (!inForce(it, c.det)) return seen(null, "not-in-force");
-    if (it.kind === "parameter") return seen(paramOf(it), "parameter");
+    if (it.kind === "parameter") {
+      // A versioned parameter with no version on the determination date has
+      // no value; that unknown is reported, never silent.
+      if (
+        !(it.identifier in c.params) && it.versions && it.versions.length &&
+        !versionInForce(it, c.det)
+      ) {
+        raise("no-version", `no version in force on ${c.det}`, {
+          identifier: id, person: null, month: null,
+        });
+        return seen(null, "no-version");
+      }
+      return seen(paramOf(it), "parameter");
+    }
     if (sc === "case") {
       return id === "determination_date" ? seen(c.det, "case") : seen(null, "missing");
     }
@@ -368,7 +433,7 @@ export function evaluate(
       stack.pop();
     }
     memo[key] = v;
-    return seen(v, "evaluated");
+    return seen(v, "evaluated", undefined, warningsByKey.get(key));
   }
 
   function ev(e: Expr, p: string | null, m: string | null, P: string | null): any {
@@ -470,7 +535,13 @@ export function evaluate(
         return vs.reduce((s: number, v: number) => (op === "+" ? s + v : s * v), op === "+" ? 0 : 1);
       }
       case "-": { const a = g(e[1]); const b = g(e[2]); return a === null || b === null ? null : a - b; }
-      case "/": { const a = g(e[1]); const b = g(e[2]); return a === null || b === null ? null : a / b; }
+      case "/": {
+        const a = g(e[1]); const b = g(e[2]);
+        if (a === null || b === null) return null;
+        // Division by zero has no value: unknown, and reported.
+        if (b === 0) { raise("division-by-zero", `${a} divided by 0`); return null; }
+        return a / b;
+      }
       case "min": {
         const a = g(e[1]); const b = g(e[2]);
         return a === null || b === null ? null : Math.min(a, b);
@@ -525,7 +596,7 @@ export function evaluate(
         // siblings. Unknown when this person's relationships are unstated.
         if (!p || c.rels[p] == null) return null;
         const role = e[1] as string;
-        const inverse = INVERSE_ROLE[role];
+        const inverse = ix.inverseRole[role];
         const out = new Set<string>();
         for (const [r, y] of c.rels[p] ?? []) {
           if (r !== inverse) continue;
@@ -536,30 +607,38 @@ export function evaluate(
       case "reachable": {
         // The persons joined to this person by a chain of the named
         // relationships, this person included. Unknown when this person's
-        // relationships are unstated.
+        // relationships are unstated; another person's unstated
+        // relationships are read as none.
         if (!p || c.rels[p] == null) return null;
-        // With a condition, an edge is crossed only when the condition holds
-        // with "this person" the person the chain has reached and "that
-        // person" the one at the other end; an unknown condition on any edge
-        // makes the group unknown.
+        // With a condition, an edge from `cur` to `other` is crossed only
+        // when the condition holds with "this person" = cur (the person the
+        // chain has reached) and "that person" = other. The result is a
+        // fixed point and does not depend on the order relationships are
+        // listed in: the group is every person reachable over edges whose
+        // condition is true; it is unknown when an edge whose condition is
+        // unknown leaves that group (some person's membership then turns on
+        // the unknown); an unknown edge between two members changes nothing.
+        // See docs/operators.md, `reachable`.
         const roles = e[1] as string[];
         const cond = e.length > 2 ? e[2] : undefined;
-        const seenSet = new Set<string>([p]);
+        const inGroup = new Set<string>([p]);
         const queue = [p];
+        const unknownEdges: string[] = [];
         while (queue.length) {
           const cur = queue.shift()!;
           for (const [r, other] of c.rels[cur] ?? []) {
-            if (!roles.includes(r) || seenSet.has(other)) continue;
+            if (!roles.includes(r) || inGroup.has(other)) continue;
             if (cond !== undefined) {
               const v = ev(cond, cur, m, other);
-              if (v === null) return null;
+              if (v === null) { unknownEdges.push(other); continue; }
               if (v !== true) continue;
             }
-            seenSet.add(other);
+            inGroup.add(other);
             queue.push(other);
           }
         }
-        return Object.keys(c.persons).filter((pid) => seenSet.has(pid));
+        if (unknownEdges.some((other) => !inGroup.has(other))) return null;
+        return Object.keys(c.persons).filter((pid) => inGroup.has(pid));
       }
       case "years_between": {
         const a = g(e[1]); const b = g(e[2]);
@@ -673,7 +752,11 @@ export function evaluate(
       case "lookup": {
         const tbl = g(e[1]); const k = g(e[2]);
         if (tbl === null || k === null) return null;
-        return k in tbl ? tbl[k] : null;
+        if (k in tbl) return tbl[k];
+        // A key with no row has no value: unknown, and reported.
+        raise("lookup-miss", `no row for key ${JSON.stringify(k)}` +
+          (typeof e[1] === "string" ? ` in ${e[1]}` : ""));
+        return null;
       }
     }
     throw new Error("unknown operator " + op);
@@ -694,8 +777,12 @@ export function runTest(
   let got: unknown = null;
   let ok = false;
   let err: string | null = null;
+  const warnings: string[] = [];
   try {
-    got = evaluate(evalIx, c, it.identifier, person, t.month == null ? null : t.month);
+    got = evaluate(
+      evalIx, c, it.identifier, person, t.month == null ? null : t.month, undefined,
+      (w) => warnings.push(formatWarning(w)),
+    );
     ok = valuesEqual(got, t.expect);
     if ("expect_length" in t) {
       ok =
@@ -708,5 +795,7 @@ export function runTest(
     err = (ex as Error).message;
     got = null;
   }
-  return { ok, got, err };
+  const out: TestResult = { ok, got, err };
+  if (warnings.length) out.warnings = [...new Set(warnings)];
+  return out;
 }

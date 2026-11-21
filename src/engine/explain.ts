@@ -12,6 +12,9 @@ export interface TraceNode {
   identifier: string; name: string; person: string | null; month: string | null;
   kind: Item["kind"] | "case" | "month"; scope?: Scope;
   value: unknown; origin: TraceEvent["origin"]; error?: string;
+  /** Unknowns this fact's rule produced with no supplied fact behind them
+   *  (a lookup with no row, a division by zero); see EvalWarning. */
+  warnings?: string[];
   rule: string[] | null;       // pattern-English lines of the derivation (engine block()), null for non-derived
   sources: string[];           // the item's cited S-ids
   children: TraceNode[];       // in evaluation order; a memo hit has children: [] and origin "memo"
@@ -59,6 +62,7 @@ function nodeOf(ix: LedgerIndex, e: TraceEvent): TraceNode {
   };
   if (it) node.scope = it.scope;
   if (e.error !== undefined) node.error = e.error;
+  if (e.warnings && e.warnings.length) node.warnings = e.warnings.slice();
   if (e.decisive) node.decisive = true;
   return node;
 }

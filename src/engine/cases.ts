@@ -1,6 +1,6 @@
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 import type { LedgerIndex } from "./ledger-index";
-import { evaluate, makeCase } from "./evaluate";
+import { evaluate, formatWarning, makeCase } from "./evaluate";
 import { valuesEqual } from "./values";
 import type { TestSpec } from "./types";
 
@@ -30,6 +30,8 @@ export interface CaseResult {
   got: unknown;
   ok: boolean;
   err: string | null;
+  /** Unknowns produced with no supplied fact behind them (EvalWarning). */
+  warnings?: string[];
 }
 
 export interface CaseReport {
@@ -80,15 +82,21 @@ export function runCase(ix: LedgerIndex, c: HouseholdCase): CaseReport {
         let got: unknown;
         let ok: boolean;
         let err: string | null = null;
+        const warnings: string[] = [];
         try {
-          got = evaluate(ix, caseData, identifier, pid, month);
+          got = evaluate(
+            ix, caseData, identifier, pid, month, undefined,
+            (w) => warnings.push(formatWarning(w)),
+          );
           ok = valuesEqual(got, e);
         } catch (ex) {
           err = (ex as Error).message;
           got = `error: ${err}`;
           ok = false;
         }
-        results.push({ person: pid, identifier, month, expect: e, got, ok, err });
+        const r: CaseResult = { person: pid, identifier, month, expect: e, got, ok, err };
+        if (warnings.length) r.warnings = [...new Set(warnings)];
+        results.push(r);
         if (ok) passed++; else failed++;
       }
     }
