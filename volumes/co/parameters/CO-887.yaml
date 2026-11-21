@@ -10,6 +10,7 @@ precision: The base resets every year and no fetched document states the current
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 108.73, source: S1228}
   - {from: "2026-01-01", value: 110.36, source: S1228}
+review_by: "2027-01-01"
 sources: [S361, S374, S1228]
 tags: [ma, ltc, income]
 open: [OQ-212]

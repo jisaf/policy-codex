@@ -176,6 +176,27 @@ setting. The repository owner should require, on `main`:
 before a pull request can merge. Without this, `check.yml` and `CODEOWNERS`
 are advisory only.
 
+## Item-level approval (the Colorado volume)
+
+A merge records that a change was reviewed; it does not say which items an
+agency has signed. Each item therefore carries its own `status` (Draft,
+Reviewed, Approved; absent reads as Draft) and an `approval` record, one row
+per signing role: `{role, by, date, commit}` (docs/conventions.md). An agency
+approves a chapter by a pull request that sets those fields on that chapter's
+items only, so the Medicaid and CHP+ chapter can be approved without SNAP or
+cash. Governance refuses an Approved item that lacks a signature from any
+role the approval policy requires of it, and refuses Reviewed or Approved on
+an item that rests, directly or through what it reads, on an excerpt marked
+`Verification: unverified`.
+
+For `volumes/co` the approval policy sets `upstream_of_outcomes: true`: an
+item read by a program's declared outcome needs that program's owner too, so
+the CHP+ policy owner signs the shared and Medicaid items CHP+ reads. The
+`volumes/co` lines of `.github/CODEOWNERS` route each chapter to placeholder
+teams (for example `@org/hcpf-medicaid`, `@org/hcpf-chp`); the agencies
+replace them with their reviewers' teams before branch protection is turned
+on.
+
 ## Known follow-ups
 
 Noted at the end of the phase-2 fix round, left as-is on purpose:

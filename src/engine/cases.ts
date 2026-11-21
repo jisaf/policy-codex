@@ -145,3 +145,25 @@ export function appendCase(casesText: string | null, c: HouseholdCase): string {
   if (casesText == null || casesText.trim() === "") return block;
   return casesText.replace(/\n*$/, "\n") + "\n" + block;
 }
+
+/** Every derived identifier a household case states as a fact (in a
+ *  person's facts, months or month_defaults, or the case's month facts),
+ *  as `person:identifier`. A case that supplies a derived fact overrides the
+ *  rule, so its expectations no longer test what the rule computes; the
+ *  check reports each one (docs/reviews/stakeholder-hcpf.md, S-3). */
+export function derivedOverrides(ix: LedgerIndex, c: HouseholdCase): string[] {
+  const out = new Set<string>();
+  const look = (who: string, rec: Record<string, unknown> | undefined) => {
+    for (const k of Object.keys(rec ?? {})) {
+      const it = ix.byIdentifier.get(k);
+      if (it && it.kind === "derived") out.add(`${who}:${k}`);
+    }
+  };
+  for (const [pid, p] of Object.entries(c.persons ?? {})) {
+    look(pid, p.facts);
+    look(pid, p.month_defaults);
+    for (const m of Object.values(p.months ?? {})) look(pid, m);
+  }
+  for (const m of Object.values(c.month_facts ?? {})) look("case", m);
+  return [...out].sort();
+}

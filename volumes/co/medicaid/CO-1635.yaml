@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: "Whether documents verifying that an annuity conforms to 8.100.7.I must be submitted: for a long-term care applicant who (or whose spouse) owns an annuity."
 derived: [all, ma_is_long_term_care_applicant, owns_annuity]
-sources: [S1087]
+sources: [S1741]
 implemented: engine
 tags: [verification, ma, ltc, resources]
 rationale: "Review K-3: 8.100.7.A.2.j requires the annuity documents; no item asked for them."

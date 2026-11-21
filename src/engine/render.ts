@@ -72,6 +72,7 @@ export function inline(ix: LedgerIndex, e: Expr): string {
     case "in_group": return `${i(e[1])} is in ${i(e[2])}`;
     case "of": return `${i(e[1])}'s ${i(e[2])}`;
     case "lookup": return `${i(e[1])}, for ${i(e[2])}`;
+    case "band": return `${i(e[1])}, for the band containing ${i(e[2])}`;
   }
   if (op === "filter") return `all persons in ${i(e[1])} such that ${i(e[2])}`;
   if (op === "sum") return `the sum of ${i(e[2])} for each person in ${i(e[1])}`;

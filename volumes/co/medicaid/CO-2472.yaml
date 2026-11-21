@@ -1,0 +1,18 @@
+id: CO-2472
+name: "Medicaid: retroactive coverage months for this application"
+identifier: ma_retroactive_coverage_months_for_application
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: "The number of months before the month of application for which Medical Assistance is available retroactively for this person's application: three for an application made before January 1, 2027 (10 CCR 2505-10 § 8.100.3.E.1, 42 CFR 435.915(a)); for an application on or after that date, one for a person in the Adults group (42 U.S.C. 1396a(a)(34)(A)) and two for anyone else (1396a(a)(34)(B)), as Pub. L. 119-21 sec. 71112 amended them."
+precision: The Adults group is read from ma_magi_category in the month of application. CHP+ provides no retroactive coverage (10 CCR 2505-3 § 430.1), so 71112(c)'s CHIP limit changes nothing for CHP+.
+derived: [case, [["<", ma_application_date, ma_retroactive_coverage_change_date], ma_retroactive_coverage_months], [["=", [at, ma_magi_category, [month_of, ma_application_date]], adult], ma_retroactive_coverage_months_expansion_adult], [else, ma_retroactive_coverage_months_other_after_change]]
+sources: [S1706, S217, S1714]
+implemented: engine
+tags: [ma, magi]
+rationale: "C-11 of the HCPF review: ma_retroactive_coverage_start_month (CO-557) applied three months to every application. The figure now depends on the application date and the group, so it is a rule rather than the parameter alone."
+tests:
+  - {id: CO-2472-T1, as_of: "2026-11-01", given: {ma_application_date: "2026-11-05"}, title: "Application in November 2026", expect: 3}
+  - {id: CO-2472-T2, as_of: "2027-02-01", given: {ma_application_date: "2027-02-03", ma_magi_category: {"2027-02": adult}}, title: "Expansion adult applying in February 2027", expect: 1}
+  - {id: CO-2472-T3, as_of: "2027-02-01", given: {ma_application_date: "2027-02-03", ma_magi_category: {"2027-02": parent_caretaker}}, title: "Parent applying in February 2027", expect: 2}

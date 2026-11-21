@@ -1,0 +1,12 @@
+id: CO-2418
+name: "Medicaid: age limit of Psych <21 for a person still inpatient at 21"
+identifier: ma_psych_inpatient_extended_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age under which a Psych <21 member still receiving active inpatient treatment at 21 stays eligible (10 CCR 2505-10 § 8.100.4.H.1.a: \"shall be eligible to age 22\")."
+value: 22
+sources: [S1717]
+tags: [ma, age]
+rationale: C-3 of the HCPF review.

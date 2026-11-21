@@ -7,10 +7,11 @@ scope: global
 program: Medicaid
 meaning: The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a statutorily blind person, per 42 U.S.C. 423(d)(4) as published annually.
 versions:
-  - from: "2026-01-01"
-    value: 2830
-    source: S499
-sources: [S499]
+  - {from: "2025-01-01", to: "2026-01-01", value: 2700, source: S1711}
+  - {from: "2026-01-01", to: "2027-01-01", value: 2830, source: S499}
+  - {from: "2027-01-01", value: 2950, source: S1712}
+review_by: "2027-11-01"
+sources: [S499, S1711, S1712]
 tags: [ma, non_magi, disability]
 rationale: "documents/D-58.md:71 states the 2026 SGA amounts for blind and non-blind workers separately; nearest: ma_sga_non_blind (CO-1802) - the phase-4 review's G-4 finding."
 nearest: [CO-332]

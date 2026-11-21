@@ -1,0 +1,12 @@
+id: CO-2463
+name: "Medicaid: first month of the 2021-2025 student loan discharge exclusion"
+identifier: ma_student_loan_general_exclusion_start_month
+kind: parameter
+type: month
+scope: global
+program: Medicaid
+meaning: "The first month in which any discharged student loan is excluded from gross income under 26 U.S.C. 108(f)(5) as amended by the American Rescue Plan Act (discharges \"after December 31, 2020, and before January 1, 2026\"): January 2021."
+value: "2021-01"
+sources: [S1709]
+tags: [ma, magi, income]
+rationale: "S-10 of the HCPF review: MAGI follows the Internal Revenue Code (42 CFR 435.603(e)), and the dates were literals in ma_countable_discharged_student_loan_income (CO-1190)."

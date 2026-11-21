@@ -1,0 +1,12 @@
+id: CO-2412
+name: "Medicaid: resides in a PACE organization's service area"
+identifier: ma_resides_in_pace_service_area
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person resides in the service area of a PACE organization (42 CFR 460.150(b)(3), incorporated by 10 CCR 2505-10 § 8.497.1.B.1).
+supplied_by: The PACE organization's service-area determination at intake (by the person's address).
+sources: [S1726, S649]
+tags: [ma, ltc]
+rationale: "B-3 of the HCPF review: ma_pace_eligible (CO-654) omitted the service-area condition; no fact states it."

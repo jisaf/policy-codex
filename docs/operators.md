@@ -151,6 +151,7 @@ they differ, binary64 in written order is the codex's answer.
 | Operator | Arguments | Result | Unknown |
 |---|---|---|---|
 | `lookup` | table, key | the row for the key | unknown if the table or the key is unknown. **A key with no row is unknown** and reported as a `lookup-miss` warning. |
+| `band` (P48) | table keyed by income band, number | the value of the first band, in ascending order of its upper bound, whose inclusive upper bound is at least the number (bounds compared with a 1e-9 tolerance) | unknown if the table or the number is unknown. **A number above the last bound is unknown** and reported as a `lookup-miss` warning. |
 
 Table keys are strings. A number key is looked up as its decimal string (a
 household size of 3 reads row `"3"`, and 3.0 is the same key); a person key
@@ -252,7 +253,7 @@ and no time zone (computed in UTC).
 ## Unknowns that no supplied fact explains
 
 Three unknowns have no unstated supplied fact behind them: a `lookup` key
-with no row, a versioned parameter with no version on the determination
+with no row (or a `band` number above the last bound), a versioned parameter with no version on the determination
 date, and a division by zero. The engine reports each one: as a warning in
 `npm run check` (with the rule test or case that hit it), on the trace (a
 parameter's origin is `no-version`; the derived fact whose rule hit a lookup

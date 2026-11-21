@@ -11,6 +11,8 @@ versions:
   - from: "2026-01-01"
     value: 752000
     source: S644
+review_by: "2027-01-01"
 sources: [S645, S644, S369]
 tags: [ma, ltc, resources]
+open: [OQ-516]
 rationale: "OQ-91 asked which base Colorado elected and the 2026 figure. The current § 8.100.5.M.2.a.ii (D-65) states the $500,000 base indexed by CPI, and CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the minimum home equity limit, $752,000.00, for 2026. ma_home_equity_disqualifies (CO-650) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from home_equity_limit; a Medicaid parameter without the program prefix."

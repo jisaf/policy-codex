@@ -1,0 +1,13 @@
+id: CO-2411
+name: "Medicaid: long-term care setting requested"
+identifier: ma_ltc_setting_requested
+kind: supplied
+type: one of
+options: [institutional, hcbs, pace, none]
+scope: person
+program: Medicaid
+meaning: "The long-term care setting the person (or their representative) asks for or is enrolled in: care in a nursing facility or other long-term care institution (institutional), a Home and Community-Based Services waiver (hcbs), the Program of All-Inclusive Care for the Elderly (pace), or none. Long-term care eligibility is reported for the requested setting (HCPF review B-3). Where a person neither is institutionalized nor is designated for a waiver, a missing value is read as none."
+supplied_by: Application and the long-term care referral (the setting named on the application or the Case Management Agency's referral; for PACE, the PACE organization's enrollment agreement).
+sources: [S351, S660, S1726]
+tags: [ma, ltc, hcbs]
+rationale: "B-3 of the HCPF review overruled OQ-100: PACE and HCBS are services a person chooses and enrolls in, so ma_ltc_eligibility_status (CO-652) must report the setting asked for, not the first one the person could qualify for. No existing fact states the request; meets_hcbs_waiver_target_group names a waiver designation, not a choice among settings."

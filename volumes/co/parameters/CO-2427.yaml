@@ -1,0 +1,12 @@
+id: CO-2427
+name: "Medicaid: four-month extension months"
+identifier: ma_four_month_extension_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The length of the extension for a family that loses Medical Assistance because of support income: four months beginning with the first month of ineligibility (10 CCR 2505-10 § 8.100.4.I.5)."
+value: 4
+sources: [S1720]
+tags: [ma, magi]
+rationale: C-4 of the HCPF review.

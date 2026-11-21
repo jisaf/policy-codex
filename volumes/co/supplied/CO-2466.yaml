@@ -1,0 +1,12 @@
+id: CO-2466
+name: "Medicaid: mandatory payroll taxes withheld"
+identifier: ma_payroll_taxes_withheld
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: The mandatory FICA and Medicare taxes withheld from the person's wages for the month, which 10 CCR 2505-10 § 8.100.7.R.2 deducts from the community spouse's gross income. If not stated, Medicaid reads it as 0.
+supplied_by: Pay stubs or the employer's wage report.
+sources: [S1756]
+tags: [ma, ltc, income]
+rationale: "OQ-97 resolution: the community spouse's income is now read from the spouse's own income facts across the spouse edge (ma_community_spouse_income, CO-2467); the withholding is the one deduction those facts do not carry."

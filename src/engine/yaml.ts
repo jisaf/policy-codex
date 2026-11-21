@@ -3,15 +3,15 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
-  "meaning", "precision", "assumption", "supplied_by", "value", "versions", "derived",
-  "sources", "effective", "implemented", "implemented_by", "tags", "open", "accepts_from",
+  "meaning", "precision", "assumption", "supplied_by", "value", "versions", "review_by", "derived",
+  "sources", "effective", "status", "approval", "implemented", "implemented_by", "tags", "open", "accepts_from",
   "rationale", "nearest", "tests",
 ];
 
 const FLOW_KEYS = new Set([
   "options", "derived", "sources", "effective", "tags", "open", "nearest", "accepts_from",
 ]);
-const SEQ_OF_FLOW_KEYS = new Set(["versions", "tests"]);
+const SEQ_OF_FLOW_KEYS = new Set(["versions", "approval", "tests"]);
 /** Key order of a test row as the ledger files write it; a parsed example
  *  line arrives in a different order and must serialise identically. */
 const TEST_KEY_ORDER = ["id", "month", "as_of", "parameters", "given"];
@@ -127,6 +127,7 @@ export function stringifyVolume(meta: VolumeMeta): string {
       L.push(`    ${flowScalar(k)}: ${flowValue(v)}`);
     }
   }
+  if (meta.approval_policy.upstream_of_outcomes) L.push("  upstream_of_outcomes: true");
   L.push("");
   L.push("types:");
   for (const t of meta.types) L.push(`  - ${yamlScalar(t)}`);

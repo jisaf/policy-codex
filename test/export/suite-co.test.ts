@@ -52,7 +52,8 @@ describe("the co suite", () => {
   });
 
   it("lists the derived items a case states, whose values replace their rules", () => {
-    expect(byId("CO-01").overrides).toContainEqual({ person: "p1", identifier: "ma_mmmna_standard" });
+    // CO-01 no longer overrides ma_mmmna_standard (HCPF fix round); CO-08 still states CO Works results (known-failures.json lists them for the CDHS round).
+    expect(byId("CO-08").overrides).toContainEqual({ person: "p1", identifier: "cw_eligibility_status" });
     expect(byId("CO-387-T1").overrides?.map((o) => o.identifier)).toContain("snap_eligible_household_size");
   });
 

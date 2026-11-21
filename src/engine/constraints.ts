@@ -1,5 +1,6 @@
 import type { LedgerIndex } from "./ledger-index";
 import { check } from "./check";
+import { buildGraph } from "./graph";
 import { runTest } from "./evaluate";
 import { baseType, fmt } from "./values";
 import { DATE_RE, type EngineRefs, type Item, type VolumeMeta } from "./types";
@@ -12,6 +13,45 @@ export function approvals(meta: VolumeMeta, it: Item): string[] {
   if (pol.by_program?.[it.program]) roles.push(...pol.by_program[it.program]);
   if (pol.by_kind?.[it.kind]) roles.push(...pol.by_kind[it.kind]);
   for (const t of it.tags || []) if (pol.by_tag?.[t]) roles.push(...pol.by_tag[t]);
+  return [...new Set(roles)];
+}
+
+const upstreamCache = new WeakMap<LedgerIndex, Map<string, Set<string>>>();
+
+/** For each program with declared outcomes, every identifier those outcomes
+ *  read, directly or through other items (the outcomes included). */
+function upstreamOfOutcomes(ix: LedgerIndex, meta: VolumeMeta): Map<string, Set<string>> {
+  const hit = upstreamCache.get(ix);
+  if (hit) return hit;
+  const uses = buildGraph(ix).uses;
+  const out = new Map<string, Set<string>>();
+  for (const p of meta.programs ?? []) {
+    const seen = new Set<string>();
+    const stack = [...(p.outcomes ?? [])];
+    while (stack.length) {
+      const id = stack.pop()!;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      for (const d of uses.get(id) ?? []) stack.push(d);
+    }
+    out.set(p.id, seen);
+  }
+  upstreamCache.set(ix, out);
+  return out;
+}
+
+/** The roles an item requires: `approvals()`, plus, when the policy sets
+ *  `upstream_of_outcomes`, the by_program roles of every program whose
+ *  declared outcomes read the item. */
+export function approvalsFor(ix: LedgerIndex, meta: VolumeMeta, it: Item): string[] {
+  const roles = approvals(meta, it);
+  const pol = meta.approval_policy;
+  if (!pol?.upstream_of_outcomes) return roles;
+  for (const [program, ids] of upstreamOfOutcomes(ix, meta)) {
+    if (program !== it.program && ids.has(it.identifier)) {
+      roles.push(...(pol.by_program?.[program] ?? []));
+    }
+  }
   return [...new Set(roles)];
 }
 

@@ -1,0 +1,18 @@
+id: CO-2410
+name: "CHP+: is a guaranteed newborn"
+identifier: chp_is_guaranteed_newborn
+kind: derived
+type: yes/no
+scope: person
+program: CHP+
+meaning: Whether the person is a child under one year old whose mother was enrolled in CHP+ at the time of the child's birth, and so is guaranteed CHP+ coverage for one year (10 CCR 2505-3 § 430.5).
+derived: [all, ["<", age, chp_newborn_coverage_age_limit_years], [otherwise, chp_mother_was_enrolled_at_birth, false]]
+sources: [S1716]
+implemented: engine
+tags: [chp, age]
+rationale: "B-2 of the HCPF review: no CHP+ newborn rule existed; it mirrors ma_is_needy_newborn (CO-550) for the CHP+ text."
+nearest: [CO-550]
+tests:
+  - {id: CO-2410-T1, as_of: "2026-11-01", given: {date_of_birth: "2026-06-02", chp_mother_was_enrolled_at_birth: true}, title: "Born 2026-06-02 to a CHP+ prenatal member", expect: true}
+  - {id: CO-2410-T2, as_of: "2027-07-01", given: {date_of_birth: "2026-06-02", chp_mother_was_enrolled_at_birth: true}, title: "Past the first birthday", expect: false}
+  - {id: CO-2410-T3, as_of: "2026-11-01", given: {date_of_birth: "2026-06-02"}, title: "Mother not enrolled in CHP+ (not stated)", expect: false}

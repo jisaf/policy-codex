@@ -10,6 +10,7 @@ precision: The figures come from HCPF Operational Memo OM 25-073, which could no
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 10397.93, source: S1230}
   - {from: "2026-01-01", value: 10633.36, source: S1230}
+review_by: "2027-01-01"
 sources: [S1229, S1230]
 tags: [ma, ltc, income]
 rationale: "OQ-99: the income-trust ceiling was not enforced because the regional rates were not published on an allowed host; the product owner supplied the 2025 and 2026 rates."

@@ -7,7 +7,7 @@ import path from "node:path";
 import { createEngine, type Engine } from "../engine/engine";
 import { parseCases } from "../engine/cases";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
-import { parseOpenQuestions, parseSources } from "../ledger/markdown";
+import { parseOpenQuestions, parseSources, unverifiedSourceIds } from "../ledger/markdown";
 import { parseDocuments } from "../ledger/documents";
 import type { LoadedVolume } from "../ledger/load";
 import type { Item } from "../engine/types";
@@ -87,6 +87,7 @@ export function loadVolume(root: string, volumeId: string): { vol: LoadedVolume;
   const engine = createEngine(items, meta, {
     sourceIds: sources.map((s) => s.id),
     questionIds: openQuestions.map((q) => q.id),
+    unverifiedSourceIds: unverifiedSourceIds(sources),
   });
   return { vol, engine };
 }

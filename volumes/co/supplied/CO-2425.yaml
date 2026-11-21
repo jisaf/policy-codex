@@ -1,0 +1,12 @@
+id: CO-2425
+name: "Medicaid: a parent or caretaker relative in the household is employed"
+identifier: ma_household_has_employed_parent_caretaker
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether at least one Parent/Caretaker Relative in the person's Medical Assistance household is employed this month, or left employment with good cause (10 CCR 2505-10 § 8.100.4.I.1.b.i; it need not be the same person every month).
+supplied_by: Income and employment information on the case (wage data and the household's report).
+sources: [S1719]
+tags: [ma, magi, income]
+rationale: C-4 of the HCPF review.

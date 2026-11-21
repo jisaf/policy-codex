@@ -194,6 +194,10 @@ export function parseInline(
     return ["of", ["P"], n];
   }
   if ((sp = splitTop(s, " is in "))) return ["in_group", p(sp[0]), p(sp[1])];
+  if ((sp = splitTop(s, ", for the band containing ", true))) {
+    const tbl = resolveName(ix, sp[0]);
+    if (tbl) return ["band", tbl, p(sp[1])];
+  }
   if ((sp = splitTop(s, ", for ", true))) {
     const at = parseAt(ix, sp[0], options);
     if (at) return ["lookup", at, p(sp[1])];

@@ -1,0 +1,12 @@
+id: CO-2435
+name: "Medicaid: is already receiving Medical Assistance"
+identifier: ma_is_receiving_medical_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is already in receipt of a Medical Assistance program, which bars presumptive eligibility (10 CCR 2505-10 § 8.100.3.R.8).
+supplied_by: CBMS / MMIS enrollment record.
+sources: [S1722]
+tags: [ma]
+rationale: C-5 of the HCPF review.

@@ -11,7 +11,7 @@ import {
   formatTest, itemBlock, parseItemBlock, parseTestLine,
   type ItemBlockExtra, type ParsedItemBlock,
 } from "./item-block";
-import { approvals, constraints, type Constraint } from "./constraints";
+import { approvalsFor, constraints, type Constraint } from "./constraints";
 import {
   governance, nearest, type Candidate, type Finding,
 } from "./governance";
@@ -59,7 +59,7 @@ export interface Engine {
   parseTestLine(line: string): TestSpec;
   approvals(it: Item): string[];
   constraints(it: Item): Constraint[];
-  governance(it: Item, opts?: { isNew?: boolean }): Finding[];
+  governance(it: Item, opts?: { isNew?: boolean; today?: string }): Finding[];
   nearest(it: Item): Candidate[];
   rename(from: string, to: string): RenameResult;
   readonly graph: DependencyGraph;
@@ -111,9 +111,9 @@ export function createEngine(
     parseItemBlock: (text) => parseItemBlock(ix, meta, text),
     formatTest,
     parseTestLine: (line) => parseTestLine(ix, line),
-    approvals: (it) => approvals(meta, it),
+    approvals: (it) => approvalsFor(ix, meta, it),
     constraints: (it) => constraints(ix, meta, refs, it),
-    governance: (it, opts) => governance(ix, meta, it, opts),
+    governance: (it, opts) => governance(ix, meta, it, { ...opts, refs }),
     nearest: (it) => nearest(ix, it, meta),
     rename: (from, to) => renameIdentifier(ix, from, to),
     graph,

@@ -19,6 +19,10 @@ export interface ItemVersion { from: string; to?: string; value: unknown; source
  *  the last, or `present` while it has no end. */
 export interface Effective { from: string; to: string }
 
+/** One signature on an item: the role from the volume's approval policy,
+ *  the person or team that signed, the date, and the commit signed. */
+export interface ApprovalRecord { role: string; by?: string; date: string; commit?: string }
+
 export interface TestSpec {
   id: string;
   as_of?: string;
@@ -64,6 +68,16 @@ export interface Item {
   derived_text?: string;
   sources?: string[];
   effective?: Effective;
+  /** Where the item stands in approval (docs/conventions.md "Status"):
+   *  Draft until the roles `approvals()` names have signed. Absent reads as
+   *  Draft. */
+  status?: "Draft" | "Reviewed" | "Approved";
+  /** The approval record (docs/conventions.md "Approval"): who signed, in
+   *  which role, on what date, at which commit. */
+  approval?: ApprovalRecord[];
+  /** Parameters indexed on a schedule: the date by which the next version is
+   *  due. Governance warns once it has passed. */
+  review_by?: string;
   implemented?: "assembly" | "engine" | null;
   /** Free-form locator into the implementing system, e.g.
    *  `rules/medicaid/ce.drl#status` or a function path. No governance rule
@@ -87,6 +101,10 @@ export interface ApprovalPolicy {
   by_program: Record<string, string[]>;
   by_kind: Record<string, string[]>;
   by_tag: Record<string, string[]>;
+  /** When true, an item that any program's declared outcome reads, directly
+   *  or through other items, also requires that program's by_program roles,
+   *  so a change upstream of an outcome reaches that outcome's owner. */
+  upstream_of_outcomes?: boolean;
 }
 
 export interface ProgramVocabulary {
@@ -134,6 +152,9 @@ export interface VolumeMeta {
 export interface EngineRefs {
   sourceIds: readonly string[];
   questionIds: readonly string[];
+  /** Excerpts marked `Verification: unverified` in sources.md. Governance
+   *  warns on every item citing one. */
+  unverifiedSourceIds?: readonly string[];
 }
 
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -154,7 +175,7 @@ export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);
 export const PAREN_OPS: ReadonlySet<string> = new Set([
   "+", "-", "*", "/", "otherwise", "min", "max", "ceil", "round", "years_between", "days_between", "count_months", "avg",
-  "count", "sum",
+  "count", "sum", "band",
 ]);
 
 export const BASE: Record<string, BaseType> = {
@@ -163,5 +184,6 @@ export const BASE: Record<string, BaseType> = {
   "one of": "enum", "person": "person", "group of persons": "group",
   "relationships": "relationships", "table keyed by person": "table",
   "table keyed by household size": "table",
+  "table keyed by income band": "table",
   "list of months": "months",
 };

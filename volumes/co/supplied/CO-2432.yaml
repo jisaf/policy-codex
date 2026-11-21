@@ -1,0 +1,12 @@
+id: CO-2432
+name: "Medicaid: is applying through a qualified hospital presumptive eligibility site"
+identifier: ma_is_applying_at_hospital_pe_site
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person is applying for presumptive eligibility through a qualified hospital presumptive eligibility site certified by the Department (10 CCR 2505-10 § 8.100.3.R.1, R.3).
+supplied_by: The hospital presumptive eligibility site's application.
+sources: [S1721]
+tags: [ma]
+rationale: "C-5 of the HCPF review: hospital presumptive eligibility had no item."

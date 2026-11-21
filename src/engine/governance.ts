@@ -3,7 +3,8 @@ import { buildGraph } from "./graph";
 import { usesOf } from "./check";
 import { compact } from "./render";
 import { tagIds } from "./tags";
-import type { Expr, Item, VolumeMeta } from "./types";
+import { approvalsFor } from "./constraints";
+import type { EngineRefs, Expr, Item, VolumeMeta } from "./types";
 
 /** A governance rule that did not hold. Only failures are returned, so `ok`
  *  is always false; the field exists so a finding reads like a constraint. */
@@ -29,7 +30,7 @@ export const RESERVED: ReadonlySet<string> = new Set([
   "years_between", "first_day", "month_of", "month_before", "month_after",
   "months_ending", "months_from_to", "months_after", "months_before", "days_after", "days_between",
   "at", "each", "some_month", "count_months", "avg",
-  "exists", "exists_related", "rel", "in_group", "of", "lookup",
+  "exists", "exists_related", "rel", "in_group", "of", "lookup", "band",
   "max", "ceil", "round", "persons", "count", "filter", "sum", "reachable", "shared_relative", "has_relative_in",
 ]);
 
@@ -178,7 +179,8 @@ export function nearest(ix: LedgerIndex, it: Item, _meta: VolumeMeta): Candidate
 /** The phase-2 governance rules. These run beside `constraints()` and never
  *  repeat what it already checks. */
 export function governance(
-  ix: LedgerIndex, meta: VolumeMeta, it: Item, opts: { isNew?: boolean } = {},
+  ix: LedgerIndex, meta: VolumeMeta, it: Item,
+  opts: { isNew?: boolean; refs?: EngineRefs | null; today?: string } = {},
 ): Finding[] {
   const F: Finding[] = [];
   const err = (rule: string, msg: string) => F.push({ ok: false, level: "error", rule, msg });
@@ -374,6 +376,78 @@ export function governance(
         `Only ${c ? c.name : consumers[0]} (${consumers[0]}) consumes this supplied fact`,
       );
     }
+  }
+
+  // 9. Provenance: an excerpt that could not be fetched is marked
+  //    `Verification: unverified` in sources.md (docs/design-colorado.md,
+  //    "Sources and provenance"). Every item citing one is warned on until
+  //    the excerpt is replaced by a quotation, and such an item cannot be
+  //    Reviewed or Approved.
+  const unverified = new Set(opts.refs?.unverifiedSourceIds ?? []);
+  const cited = [
+    ...(it.sources ?? []),
+    ...(it.versions ?? []).map((v) => v.source).filter((s): s is string => !!s),
+  ];
+  const unverifiedCited = [...new Set(cited.filter((s) => unverified.has(s)))].sort();
+  for (const s of unverifiedCited) {
+    warn(
+      "source.unverified",
+      `Cites ${s}, an excerpt marked "Verification: unverified"; replace it with a ` +
+        "quotation of the fetched text before this item moves past Draft",
+    );
+  }
+  if (it.status && it.status !== "Draft" && unverified.size) {
+    // The item and everything it reads, directly or through other items.
+    const uses = buildGraph(ix).uses;
+    const seen = new Set<string>();
+    const stack = [identifier];
+    const tainted = new Set<string>();
+    while (stack.length) {
+      const id = stack.pop()!;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const dep = ix.byIdentifier.get(id);
+      if (dep) {
+        const srcs = [...(dep.sources ?? []), ...(dep.versions ?? []).map((v) => v.source ?? "")];
+        for (const s of srcs) if (unverified.has(s)) tainted.add(s);
+      }
+      for (const d of uses.get(id) ?? []) stack.push(d);
+    }
+    if (tainted.size) {
+      err(
+        "status.unverified",
+        `Status is ${it.status}, but the item rests on unverified ${[...tainted].sort().join(", ")}`,
+      );
+    }
+  }
+
+  // 10. Status and the approval record (docs/conventions.md, "Status",
+  //     "Approval"): an Approved item carries a signature for every role the
+  //     approval policy requires of it.
+  if (it.status && !["Draft", "Reviewed", "Approved"].includes(it.status)) {
+    err("status.value", `Status "${it.status}" is not Draft, Reviewed or Approved`);
+  }
+  for (const a of it.approval ?? []) {
+    if (!meta.approval_policy?.roles?.includes(a.role)) {
+      err("approval.role", `Approval names role "${a.role}", which volume.yaml does not declare`);
+    }
+  }
+  if (it.status === "Approved") {
+    const signed = new Set((it.approval ?? []).map((a) => a.role));
+    const missing = approvalsFor(ix, meta, it).filter((r) => !signed.has(r));
+    if (missing.length) {
+      err("approval.missing", `Approved without a signature from ${missing.join(", ")}`);
+    }
+  }
+
+  // 11. An indexed parameter names the date its next version is due; once
+  //     that date has passed the figure may be stale.
+  const today = opts.today ?? new Date().toISOString().slice(0, 10);
+  if (it.review_by && it.review_by <= today) {
+    warn(
+      "versions.review_due",
+      `The next version was due by ${it.review_by}; load the published figure and move review_by`,
+    );
   }
 
   return F;

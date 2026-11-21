@@ -38,7 +38,7 @@ describe("npm run check", () => {
     const report = runCheck({ root: ROOT, base: "no-such-ref-at-all" });
     const parsed = JSON.parse(JSON.stringify(report));
     expect(Object.keys(parsed).sort()).toEqual([
-      "addedItems", "base", "blockingItemErrors", "cases", "changedFiles",
+      "addedItems", "base", "blockingItemErrors", "caseOverrides", "cases", "changedFiles",
       "changedItems", "impact", "items", "knownFailures", "newFailures",
       "ok", "openQuestions", "outcomesAffected", "ruleTests", "warnings",
     ]);
@@ -149,6 +149,27 @@ describe("npm run check", () => {
       `${item.id} ${item.identifier}: open names OQ-99999, which open-questions.md does not have`,
     ]);
     expect(warned.ok).toBe(true);
+  });
+
+  it("fails when a household case supplies a derived identifier, unless it is a known failure", () => {
+    const ledger = loadLedgerFromDisk(ROOT);
+    expect(buildCheckReport(ledger, null, []).caseOverrides).toEqual([]);
+    const derived = ledger.items.find((it) => it.kind === "derived" && it.scope === "person")!;
+    const c = ledger.cases[0];
+    const pid = Object.keys(c.persons)[0];
+    const withOverride = {
+      ...ledger,
+      cases: [{
+        ...c,
+        persons: { ...c.persons, [pid]: { ...c.persons[pid], facts: { ...(c.persons[pid].facts ?? {}), [derived.identifier]: true } } },
+      }, ...ledger.cases.slice(1)],
+    };
+    const key = `override:${c.id}:${pid}:${derived.identifier}`;
+    const report = buildCheckReport(withOverride, null, []);
+    expect(report.caseOverrides).toEqual([key]);
+    expect(report.newFailures).toContain(key);
+    expect(report.ok).toBe(false);
+    expect(buildCheckReport(withOverride, null, [key]).newFailures).not.toContain(key);
   });
 });
 

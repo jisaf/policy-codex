@@ -9,7 +9,7 @@ role: outcome
 meaning: Whether a long-term care applicant must document transfers of assets on or after the 60-month look-back date and has not.
 precision: The look-back is 60 months before the date of application (8.100.7.F.2.a, ma_transfer_lookback_months); the documentation is either the transfers made or a declaration that none was made without fair consideration (OQ-379).
 derived: [all, ma_is_long_term_care_applicant, [not, asset_transfer_verification_document_received]]
-sources: [S1087, S1088]
+sources: [S1741, S1742]
 implemented: engine
 tags: [verification, ma, ltc]
 rationale: "Review K-3: the long-term care documentation 8.100.7.A.2 requires had no item; the Medical Assistance count sums this one."
