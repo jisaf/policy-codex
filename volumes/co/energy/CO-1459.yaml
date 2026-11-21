@@ -1,0 +1,17 @@
+id: CO-1459
+name: "LEAP: person's pending verification count"
+identifier: leap_person_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: LEAP
+meaning: The number of LEAP verification elements required for this person and not yet verified.
+derived: ["+", [case, [[not, ssn_is_verified], 1], [else, 0]], [case, [[all, leap_requires_verification_of_earned_income, [not, earned_income_verification_document_received]], 1], [else, 0]], [case, [[all, has_unearned_income, [not, unearned_income_is_verified]], 1], [else, 0]], [case, [[all, leap_requires_verification_of_heating_costs, [not, heating_costs_verification_document_received]], 1], [else, 0]], [case, [[all, leap_requires_verification_of_citizenship, [not, [any, citizenship_verified_by_electronic_data_source, citizenship_verification_document_received]]], 1], [else, 0]], [case, [[all, claims_lawful_immigration_status, [not, immigration_status_verified_by_electronic_data_source]], 1], [else, 0]]]
+sources: [S893, S896, S897, S898]
+implemented: engine
+tags: [verification]
+open: [OQ-318]
+rationale: No existing item counts a LEAP household member's outstanding verifications; unearned income and a declared immigration status count on the shared facts because 3.755.11 and 3.753.15 (S897, S896) verify them whenever present.
+tests:
+  - {id: CO-1459-T1, month: "2026-10", as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false, leap_requires_verification_of_earned_income: true, earned_income_verification_document_received: false, has_unearned_income: false, leap_requires_verification_of_heating_costs: false, leap_requires_verification_of_citizenship: false, citizenship_status: citizen}, expect: 2}
+  - {id: CO-1459-T2, month: "2026-10", as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: true, leap_requires_verification_of_earned_income: false, has_unearned_income: false, leap_requires_verification_of_heating_costs: false, leap_requires_verification_of_citizenship: false, citizenship_status: lawful_permanent_resident, immigration_status_verified_by_electronic_data_source: false}, expect: 1}

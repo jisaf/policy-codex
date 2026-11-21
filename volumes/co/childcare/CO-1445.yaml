@@ -1,0 +1,16 @@
+id: CO-1445
+name: "CCCAP: requires verification of earned income"
+identifier: cccap_requires_verification_of_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether the person's earned income must be verified for CCCAP: an adult caretaker's or teen parent's wages or self-employment income (children's earnings do not count)."
+derived: [all, [any, cccap_is_adult_caretaker, cccap_is_teen_parent], has_earned_income]
+sources: [S891]
+implemented: engine
+tags: [verification, income]
+rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1445-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: true, has_earned_income: true}, expect: true}
+  - {id: CO-1445-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: false, cccap_is_teen_parent: false}, expect: false}
