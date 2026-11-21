@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: AdultFinancial
 meaning: Whether the person meets OAP's own citizenship/immigration test - a U.S. citizen or national, or a qualified non-citizen - per C.R.S. 26-2-111(1)(a) and 9 CCR 2503-5 3.520.67.E, with no five-year bar, since 3.520.68.A's bar and 3.520.61.C's citizenship prong are both stated "for AND only."
-precision: "C-10 fix round: OQ-119 records the statute/regulation tension for the AND programs (26-2-111(2)(a)(I) vs. 3.520.67.E); this item does not carry that tension, because 3.520.67.E's 'all non-citizens are eligible to apply for OAP' is read straightforwardly for OAP - no bar provision (3.520.68.A) applies to it - and 26-2-111(1)(a) itself defines a residency-qualified person to include 'the person is a legal immigrant who would be otherwise eligible in all respects except for citizenship,' consistent with a non-citizen being OAP-eligible."
-derived: [any, [in, citizenship_status, [citizen, us_national]], is_qualified_non_citizen]
+precision: "C-10 fix round: OQ-119 records the statute/regulation tension for the AND programs (26-2-111(2)(a)(I) vs. 3.520.67.E); this item does not carry that tension, because 3.520.67.E's 'all non-citizens are eligible to apply for OAP' is read straightforwardly for OAP - no bar provision (3.520.68.A) applies to it - and 26-2-111(1)(a) itself defines a residency-qualified person to include 'the person is a legal immigrant who would be otherwise eligible in all respects except for citizenship,' consistent with a non-citizen being OAP-eligible. Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
+derived: [any, is_us_citizen_or_national, is_qualified_non_citizen]
 sources: [S441, S451]
 implemented: engine
 tags: [cash, oap, immigration, legal]

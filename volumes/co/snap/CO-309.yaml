@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person is a U.S. citizen or non-citizen national, or is an eligible non-citizen, and so may participate in SNAP as far as citizenship and immigration status alone determine.
-precision: Does not itself test U.S. residency (7 U.S.C. 2015(f)(1)); see OQ-3.
-derived: [any, [in, citizenship_status, [citizen, us_national]], snap_is_eligible_non_citizen]
+precision: "Does not itself test U.S. residency (7 U.S.C. 2015(f)(1)); see OQ-3. Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
+derived: [any, is_us_citizen_or_national, snap_is_eligible_non_citizen]
 sources: [S8]
 open: [OQ-3]
 implemented: engine

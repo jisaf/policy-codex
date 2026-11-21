@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether the person is a citizen or national, a qualified non-citizen, or otherwise holds a lawfully present immigration status recognized by 10 CCR 2505-10 § 8.100.3.G.1.g.vii (iv and vi in the Cornell copy; a broader set of categories than "qualified non-citizen," for example a person with a pending asylum application and employment authorization, or Temporary Protected Status).
-precision: Reads lawful_presence_status (CO-084) for the categories § 8.100.3.G.1.g.vii lists that are not qualified-non-citizen statuses; those categories are not individually modeled as separate citizenship_status options in this volume (see CO-084's assumption).
-derived: [any, [in, citizenship_status, [citizen, us_national]], is_qualified_non_citizen, [=, lawful_presence_status, "lawfully_present"]]
+precision: "Reads lawful_presence_status (CO-084) for the categories § 8.100.3.G.1.g.vii lists that are not qualified-non-citizen statuses; those categories are not individually modeled as separate citizenship_status options in this volume (see CO-084's assumption). Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
+derived: [any, is_us_citizen_or_national, is_qualified_non_citizen, [=, lawful_presence_status, "lawfully_present"]]
 sources: [S174, S175, S658]
 implemented: engine
 tags: [ma, immigration]

@@ -6,8 +6,8 @@ type: month
 scope: person
 program: Medicaid
 meaning: The last month of a person's postpartum Medical Assistance coverage period under 42 U.S.C. 1396a(e)(16) - ma_postpartum_coverage_months (12) months after the month the person's pregnancy ended, for a person who was eligible for and received Medical Assistance while pregnant.
-precision: "Phase 7 (OQ-52, resolved): the current Secretary of State text of § 8.100.4.G.5 (D-65, S640) provides coverage 'through the last day of the 12th month following the date the pregnancy ends', so the 12-month reading below is the rule's own text; the 60-day sentence was the out-of-date Cornell copy. The same 12-month period appears in the version of § 8.100.4.G.5 effective 06/30/2022 (D-77, S675); the version effective 04/14/2022 (D-78, S676) still stated 60 days."
-derived: [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_after, [month_of, pregnancy_end_date]]]]]]]]]]]]]
+precision: "Phase 7 (OQ-52, resolved): the current Secretary of State text of § 8.100.4.G.5 (D-65, S640) provides coverage 'through the last day of the 12th month following the date the pregnancy ends', so the 12-month reading below is the rule's own text; the 60-day sentence was the out-of-date Cornell copy. The same 12-month period appears in the version of § 8.100.4.G.5 effective 06/30/2022 (D-77, S675); the version effective 04/14/2022 (D-78, S676) still stated 60 days. Vocabulary fix round (U-7): reads ma_postpartum_coverage_months (CO-198) with pattern P44 instead of a hard-coded count, so a change to the parameter changes the rule."
+derived: [months_after, ma_postpartum_coverage_months, [month_of, pregnancy_end_date]]
 sources: [S675, S676, S224, S175, S640]
 implemented: engine
 tags: [ma, magi]
