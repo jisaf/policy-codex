@@ -11,7 +11,6 @@ derived: [exists, ma_persons_cared_for, [all, [of, [P], ma_community_engagement_
 sources: [S1207, S1208]
 implemented: engine
 tags: [ma, magi]
-open: [OQ-413]
 rationale: "OQ-65: the family caregiver exclusion has three alternative criteria the relationship edges alone cannot state."
 tests:
   - {id: CO-1963-T1, month: "2027-02", as_of: "2027-03-01", given: {ma_persons_cared_for: [p2], lives_with: [p1, p2]}, title: "(A) lives with a disabled adult she cares for", others: {p2: {date_of_birth: "1960-01-01", has_disability_under_ada: true}}, relationships: [], expect: true}

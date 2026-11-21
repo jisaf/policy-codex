@@ -1,0 +1,12 @@
+id: CO-3161
+name: "Medicaid community engagement: date of the notice of noncompliance"
+identifier: ma_community_engagement_noncompliance_notice_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date on the notice of noncompliance the State sent the person because it could not verify that the person met the community engagement requirement at this application, renewal or change-in-circumstances review (42 CFR 435.558(a)(1), (c); 42 U.S.C. 1396a(xx)(6)(A)(i)). If not stated, Medicaid reads it as no notice sent yet."
+supplied_by: The notice of noncompliance in the CBMS case (its date).
+sources: [S2109, S2108]
+tags: [ma, magi]
+rationale: "OQ-413 part (4), audit fix round 4: the noncompliance procedure of 435.558 (a notice, a 30-day period to make a satisfactory showing, continued coverage for an enrolled beneficiary) was outside the volume, so a person whose information did not show the requirement met was reported not_met at once. The notice is a recorded act; no existing fact carries it."

@@ -8046,6 +8046,13 @@
   #   $580, not a seasonal worker, no exception or exclusion -> February not met -> status not_met.
   #   He meets every Adults criterion (0.226 of poverty) but the condition -> category none, status
   #   ineligible_community_engagement.
+  #   Audit fix round 4 (OQ-413 part 4): no SSI, no section 1619(b) status, no TANF or IV-E, not in the
+  #   Parents and Caretaker Relatives category -> no mandatory-group exception in February. The facts do
+  #   not show the requirement met, and the case records no notice of noncompliance, which 42 CFR
+  #   435.558(a)(1)-(2) requires before a denial (a notice and 30 days to make a satisfactory showing) ->
+  #   status notice_required (was not_met); the Adults condition fails for an applicant until the
+  #   showing period ends -> category none, eligibility status pending_community_engagement (was
+  #   ineligible_community_engagement).
   # p3 (30) is the parent of p4 (5), who relies on her for care: a specified excluded individual
   #   (435.554(c)(3)) in March -> status excluded. Her household (p3, p4) has $1,400 a month:
   #   1,400 / (21,640 / 12 = 1,803.33) = 0.776, over the Parents and Caretaker Relatives 68% even
@@ -8078,6 +8085,7 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
@@ -8135,6 +8143,7 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
@@ -8191,6 +8200,7 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
@@ -8253,6 +8263,7 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         ma_relies_on_another_for_care: true
       month_defaults:
         lottery_gambling_winnings_received: 0
@@ -8283,10 +8294,10 @@
     p2:
       ma_community_engagement_activity_hours: {"2027-02": 30}
       ma_meets_community_engagement_for_month: {"2027-02": false}
-      ma_community_engagement_status: {"2027-03": not_met}
+      ma_community_engagement_status: {"2027-03": notice_required}
       ma_is_adult_category: {"2027-03": true}
       ma_magi_category: {"2027-03": none}
-      ma_magi_eligibility_status: {"2027-03": ineligible_community_engagement}
+      ma_magi_eligibility_status: {"2027-03": pending_community_engagement}
     p3:
       ma_is_specified_excluded_individual: {"2027-03": true}
       ma_community_engagement_status: {"2027-03": excluded}
