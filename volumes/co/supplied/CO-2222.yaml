@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether a hardship exemption has been granted to the person after a denial or termination caused by the person's lottery or gambling winnings: the person showed a severe medical or financial hardship and made a written request with documentation to the County Department of Human Services within 30 calendar days of the denial or termination notice (10 CCR 2505-10 § 8.100.4.C.1.b.xiv.5), so the person continues to be eligible (42 U.S.C. 1396a(e)(14)(K)(iii))."
+meaning: "Whether a hardship exemption has been granted to the person after a denial or termination caused by lottery or gambling winnings, the person's own or another household member's counted in the month received (§ 8.100.4.C.1.b.xiv.4): the person showed a severe medical or financial hardship and made a written request with documentation to the County Department of Human Services within 30 calendar days of the denial or termination notice (10 CCR 2505-10 § 8.100.4.C.1.b.xiv.5, \"An applicant/member may request a hardship exemption\"), so the person continues to be eligible (42 U.S.C. 1396a(e)(14)(K)(iii)). If not stated, Medicaid reads it as not granted."
 supplied_by: The county's or the Department's hardship decision recorded in the case.
 sources: [S1519, S1520]
 tags: [ma, magi, income]
-rationale: "OQ-216: the hardship exemption had no fact; ma_lottery_winnings_countable_for_recipient (CO-1187) reads it."
+rationale: "OQ-216: the hardship exemption had no fact; ma_lottery_winnings_countable_for_recipient (CO-1187) reads it. OQ-216 (audit fix round 4): stated per member, so a household member other than the winner who is denied because of the winnings counted in the month received can be granted it; ma_magi_household_income (CO-503) then counts no member's winnings in that member's household."

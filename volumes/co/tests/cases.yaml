@@ -51,7 +51,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -251,6 +250,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         electronic_data_source_monthly_gross_income: 2030
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -303,7 +303,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -505,6 +504,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         electronic_data_source_monthly_gross_income: 1180
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -555,7 +555,6 @@
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -737,6 +736,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -785,7 +785,6 @@
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -969,6 +968,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -1015,7 +1015,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -1197,6 +1196,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -2227,7 +2227,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2427,6 +2426,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         electronic_data_source_monthly_gross_income: 2030
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -2479,7 +2479,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2680,6 +2679,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         electronic_data_source_monthly_gross_income: 1180
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
@@ -2730,7 +2730,6 @@
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2912,6 +2911,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -2960,7 +2960,6 @@
         is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -3143,6 +3142,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -3189,7 +3189,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -3370,6 +3369,7 @@
         is_deceased_colorado_works_client: false
         shares_heating_fuel_with: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
@@ -4571,7 +4571,6 @@
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
         ma_eligibility_start_date: "2026-07-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1997-02-11"
         sex: female
         immigration_status: lawful_permanent_resident
@@ -4601,6 +4600,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1600
         social_security_income: 0
         pension_income: 0
@@ -4626,7 +4626,6 @@
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-03"
         immigration_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
@@ -4651,6 +4650,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 600
         social_security_income: 0
         pension_income: 0
@@ -4679,7 +4679,6 @@
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2008-05-14"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4705,6 +4704,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -4732,7 +4732,6 @@
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2016-01-22"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4756,6 +4755,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -4777,7 +4777,6 @@
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1990-06-30"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4799,6 +4798,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 5000
         social_security_income: 0
         pension_income: 0
@@ -4964,7 +4964,6 @@
       # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
       # p3 as a tax dependent and is her caretaker relative.
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-11-08"
         sex: female
         immigration_status: us_citizen
@@ -4987,6 +4986,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 1850
         wages_gross: 0
         pension_income: 0
@@ -5008,7 +5008,6 @@
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2002-05-20"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -5030,6 +5029,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 4200
         social_security_income: 0
         pension_income: 0
@@ -5069,7 +5069,6 @@
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2010-03-02"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -5095,6 +5094,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -5279,7 +5279,6 @@
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1952-04-18"
         sex: male
         immigration_status: us_citizen
@@ -5326,6 +5325,7 @@
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 1900
         pension_income: 700
         wages_gross: 0
@@ -5354,7 +5354,6 @@
       # $7,500 in her own name (the rest of the couple's $180,000 is in Robert's name and the CSRA
       # has not yet been transferred under 8.100.7.M.3).
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-01-09"
         sex: female
         immigration_status: us_citizen
@@ -5393,6 +5392,7 @@
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 1100
         pension_income: 0
         wages_gross: 0
@@ -5420,7 +5420,6 @@
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-23"
         ma_buy_in_determination_month: "2026-11"  # HCPF fix round (S-8): applied 2026-11-02, determined in November
         sex: male
@@ -5459,6 +5458,7 @@
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 0
         pension_income: 0
         wages_gross: 2400
@@ -6412,7 +6412,6 @@
       facts:
         adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -6448,6 +6447,7 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         in_kind_support_and_maintenance: 0
         wages_gross: 5200
         social_security_income: 0
@@ -6474,7 +6474,6 @@
       facts:
         adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -6514,6 +6513,7 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         in_kind_support_and_maintenance: 0
         wages_gross: 2600
         social_security_income: 0
@@ -6546,7 +6546,6 @@
         # unless an exception applies. Tomas has no sponsor and no income, and the county finds he would otherwise have
         # insufficient income to support himself (26-2-111(2)(c)(II)(B)), so he keeps OAP.
         af_oap_qualified_alien_hardship_exception: true
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
         immigration_status: lawful_permanent_resident
@@ -6594,6 +6593,7 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -6625,7 +6625,6 @@
       facts:
         adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        lottery_gambling_winnings_amount: 0
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -6659,6 +6658,7 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         in_kind_support_and_maintenance: 0
         wages_gross: 0
         social_security_income: 0
@@ -6748,7 +6748,6 @@
     p1:
       relationships: []
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1956-04-01"
         sex: female
         immigration_status: undocumented
@@ -6799,6 +6798,7 @@
         lost_ssi_due_to_social_security_benefits: false
         has_income_trust: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 900
@@ -7471,7 +7471,6 @@
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: true
         is_required_to_file_tax_return: true
@@ -7617,6 +7616,7 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1800
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -7649,7 +7649,6 @@
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: false
         is_required_to_file_tax_return: false
@@ -7790,6 +7789,7 @@
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
         self_employment_gross_receipts: 0
@@ -8060,7 +8060,6 @@
     p1:
       relationships: []
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1991-05-10"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8091,6 +8090,7 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 450
         social_security_income: 0
         pension_income: 0
@@ -8117,7 +8117,6 @@
     p2:
       relationships: []
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1986-09-20"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8148,6 +8147,7 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 300
         social_security_income: 0
         pension_income: 0
@@ -8173,7 +8173,6 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1996-11-02"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8204,6 +8203,7 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1400
         social_security_income: 0
         pension_income: 0
@@ -8234,7 +8234,6 @@
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2021-08-14"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8256,6 +8255,7 @@
         receives_ssi: false
         ma_relies_on_another_for_care: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8656,7 +8656,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
@@ -8668,6 +8667,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1800
         social_security_income: 0
         pension_income: 0
@@ -8713,7 +8713,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
@@ -8725,6 +8724,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8770,7 +8770,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
@@ -8783,6 +8782,7 @@
         ma_application_date: "2026-09-02"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8828,7 +8828,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
@@ -8840,6 +8839,7 @@
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: "2026-09-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8932,7 +8932,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
@@ -8944,6 +8943,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1800
         social_security_income: 0
         pension_income: 0
@@ -8989,7 +8989,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
@@ -9001,6 +9000,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9046,7 +9046,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
@@ -9059,6 +9058,7 @@
         ma_application_date: "2026-11-02"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9104,7 +9104,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
@@ -9116,6 +9115,7 @@
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9215,7 +9215,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1996-08-14"
@@ -9228,6 +9227,7 @@
         chp_eligibility_period_start_month: "2026-10"
         pregnancy_end_date: "2026-12-03"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9273,7 +9273,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1994-03-02"
@@ -9284,6 +9283,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 7500
         social_security_income: 0
         pension_income: 0
@@ -9331,7 +9331,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2026-12-03"
@@ -9344,6 +9343,7 @@
         ma_custodial_parent: p1
         ma_application_date: "2026-12-10"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9389,7 +9389,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2016-05-20"
@@ -9402,6 +9401,7 @@
         chp_eligibility_period_start_month: "2026-10"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9481,7 +9481,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1991-01-11"
@@ -9494,6 +9493,7 @@
         ma_first_month_of_ineligibility: "2026-10"
         ma_ineligibility_reason: increased_earnings
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 2600
         social_security_income: 0
         pension_income: 0
@@ -9547,7 +9547,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2019-06-30"
@@ -9559,6 +9558,7 @@
         ma_application_date: "2026-04-03"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9604,7 +9604,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2011-03-09"
@@ -9615,6 +9614,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9698,7 +9698,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1981-04-04"
@@ -9715,6 +9714,7 @@
         claims_disability: false
         declared_own_income_monthly: 1596
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9760,7 +9760,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2001-02-14"
@@ -9777,6 +9776,7 @@
         claims_disability: true
         declared_own_income_monthly: 3990
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9822,7 +9822,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2004-09-09"
@@ -9839,6 +9838,7 @@
         claims_disability: false
         declared_own_income_monthly: 3426
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9884,7 +9884,6 @@
         resides_in_medical_institution: false
         ma_is_indian: false
         is_full_time_secondary_student_finishing_before_nineteen: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-12-01"
@@ -9896,6 +9895,7 @@
         declared_household_income_monthly: 1197
         declared_household_size: 1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
