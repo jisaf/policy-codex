@@ -267,6 +267,7 @@ export function inputWarnings(engine: Engine, ledger: LoadedLedger): string[] {
       }
     }
   }
+  out.push(...caseConsistencyWarnings(ledger));
   for (const c of ledger.cases) {
     out.push(...auditLines(c.id, householdInputs(engine, c).audit));
     out.push(...roleLines(c.id, declared, c.relationships));
@@ -283,6 +284,54 @@ export function inputWarnings(engine: Engine, ledger: LoadedLedger): string[] {
     }
   }
   return out;
+}
+
+/** `unknown:<case>:<person>:<identifier>` for every identifier a household
+ *  case states that no item has (dual-entry audit 5.1). */
+export function unknownCaseIdentifiers(engine: Engine, ledger: LoadedLedger): string[] {
+  const out: string[] = [];
+  for (const c of ledger.cases) {
+    for (const i of householdInputs(engine, c).audit.ignored) {
+      if (i.reason === "unknown identifier") out.push(`unknown:${c.id}:${i.person ?? "case"}:${i.identifier}`);
+    }
+  }
+  return [...new Set(out)].sort();
+}
+
+/** Case-consistency warnings for facts that survive beside an edge by design
+ *  (dual-entry audit 5.14 and section 10 of its order of work): a spouse edge
+ *  against a marital status of single or widowed; a Colorado county against a
+ *  state other than Colorado; a tax_filer edge from a person stated not to
+ *  file. */
+export function caseConsistencyWarnings(ledger: LoadedLedger): string[] {
+  const out: string[] = [];
+  for (const c of ledger.cases) {
+    const rels: Array<readonly string[]> = [...((c.relationships ?? []) as Array<readonly string[]>)];
+    for (const [pid, p] of Object.entries(c.persons || {})) {
+      for (const r of (p.relationships ?? []) as Array<readonly string[]>) rels.push([r[0], pid, r[1]]);
+    }
+    const facts = (pid: string): Record<string, unknown> => ((c.persons?.[pid]?.facts ?? {}) as Record<string, unknown>);
+    for (const [role, a, b] of rels) {
+      if (role === "spouse") {
+        for (const who of [a, b]) {
+          const ms = facts(who).marital_status;
+          if (ms === "single" || ms === "widowed") {
+            out.push(`${c.id}: ${who} has a spouse edge but marital_status ${ms}`);
+          }
+        }
+      }
+      if (role === "tax_filer" && facts(a).is_tax_filer === false) {
+        out.push(`${c.id}: ${a} claims ${b} as a tax dependent (tax_filer edge) but is_tax_filer is false`);
+      }
+    }
+    for (const [pid] of Object.entries(c.persons || {})) {
+      const f = facts(pid);
+      if (f.county_of_residence !== undefined && f.state_of_residence !== undefined && f.state_of_residence !== "CO") {
+        out.push(`${c.id}: ${pid} states a Colorado county (${String(f.county_of_residence)}) but state_of_residence ${String(f.state_of_residence)}`);
+      }
+    }
+  }
+  return [...new Set(out)];
 }
 
 /** Every dependency cycle among the volume's items, each as the identifiers
@@ -451,6 +500,10 @@ export function buildCheckReport(
     for (const o of derivedOverrides(engine.index, c)) caseOverrides.push(`override:${c.id}:${o}`);
   }
   const newOverrides = caseOverrides.filter((k) => !known.has(k));
+  // Dual-entry audit 5.1: an identifier no item has, stated in a household
+  // case, blocks (it reads as a fact the engine never sees). Keys are
+  // `unknown:<case>:<person>:<identifier>`; known-failures.json may list one.
+  const newUnknownCaseIdentifiers = unknownCaseIdentifiers(engine, ledger).filter((k) => !known.has(k));
 
   const changedIdentifiers = [...changedItems]
     .map((id) => ledger.items.find((it) => it.id === id)?.identifier)
@@ -502,6 +555,7 @@ export function buildCheckReport(
     && newRuleFailures.length === 0
     && newCaseFailures.length === 0
     && newOverrides.length === 0
+    && newUnknownCaseIdentifiers.length === 0
     && openQuestions.errors.length === 0;
 
   return {
@@ -529,6 +583,7 @@ export function buildCheckReport(
     knownFailures: [...known],
     newFailures: [
       ...newRuleFailures.map((f) => f.testId), ...newCaseFailures.map((f) => f.key), ...newOverrides,
+      ...newUnknownCaseIdentifiers,
     ],
     caseOverrides,
     blockingItemErrors,
@@ -585,6 +640,10 @@ export function formatSummary(r: CheckReport): string {
   if (r.cases.failing) lines.push(`  failing: ${r.cases.failingIds.join(", ")}`);
   if (r.caseOverrides.length) {
     lines.push(`case facts that override a derived rule: ${r.caseOverrides.length}`);
+  }
+  const unknownIds = r.newFailures.filter((k) => k.startsWith("unknown:"));
+  if (unknownIds.length) {
+    lines.push(`case identifiers no item has (blocking): ${unknownIds.join(", ")}`);
   }
   lines.push(`impact: ${r.impact.length} identifier(s) downstream of the changed items`);
   if (r.outcomesAffected.length) {

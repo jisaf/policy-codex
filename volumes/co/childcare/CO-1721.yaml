@@ -12,6 +12,7 @@ sources: [S496]
 implemented: engine
 tags: [household]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-2): cccap_is_household_child (CO-990) reads 3.103.GGG's 'still in high school' for an 18-year-old; the shared is_enrolled_in_school it had read meant half-time secondary enrollment, a different test. Same-word audit SW-12 and dual-entry audit 3.18: one real fact (where the person is enrolled and how much) was entered as up to nine program-defined facts that could disagree; each program's definition is now derived from education_program_type, education_enrollment_intensity and expected_program_completion_date (CO-2880 to CO-2882)."
+nearest: [CO-2884]
 tests:
   - {id: CO-1721-T1, title: "In grade 11", as_of: "2026-11-01", given: {education_program_type: secondary}, expect: true}
   - {id: CO-1721-T2, title: "Graduated, now in college", as_of: "2026-11-01", given: {education_program_type: higher_education}, expect: false}

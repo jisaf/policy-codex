@@ -13,6 +13,7 @@ implemented: engine
 open: [OQ-562]
 tags: [verification]
 rationale: "Same-word audit SW-13: CCCAP's immunization verification read sebt_is_school_aged, SUN Bucks's compulsory attendance age, so a five-year-old in kindergarten was asked for a record the rule does not require and a home-schooled eight-year-old was not asked for one it does."
+nearest: [CO-1721]
 tests:
   - {id: CO-2884-T1, title: "Kindergarten", as_of: "2026-11-01", given: {education_program_type: elementary}, expect: true}
   - {id: CO-2884-T2, title: "Not in school", as_of: "2026-11-01", given: {education_program_type: none}, expect: false}

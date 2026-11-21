@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { join } from "node:path";
 import { createEngine } from "../../src/engine/engine";
 import {
-  buildCheckReport, checkOpenQuestions, dependencyCycles, diffAgainstBase, inputWarnings,
+  buildCheckReport, caseConsistencyWarnings, checkOpenQuestions, dependencyCycles, diffAgainstBase, inputWarnings,
   loadLedgerFromDisk,
   runCheck,
 } from "../../src/tools/check";
@@ -170,6 +170,43 @@ describe("npm run check", () => {
     expect(report.newFailures).toContain(key);
     expect(report.ok).toBe(false);
     expect(buildCheckReport(withOverride, null, [key]).newFailures).not.toContain(key);
+  });
+
+  it("fails when a household case states an identifier no item has (dual-entry audit 5.1)", () => {
+    const ledger = loadLedgerFromDisk(ROOT);
+    const c = ledger.cases[0];
+    const pid = Object.keys(c.persons)[0];
+    const withUnknown = {
+      ...ledger,
+      cases: [{
+        ...c,
+        persons: { ...c.persons, [pid]: { ...c.persons[pid], facts: { ...(c.persons[pid].facts ?? {}), no_such_fact_anywhere: true } } },
+      }, ...ledger.cases.slice(1)],
+    };
+    const key = `unknown:${c.id}:${pid}:no_such_fact_anywhere`;
+    const report = buildCheckReport(withUnknown, null, []);
+    expect(report.newFailures).toContain(key);
+    expect(report.ok).toBe(false);
+    expect(buildCheckReport(withUnknown, null, [key]).ok).toBe(true);
+  });
+
+  it("warns on a spouse edge beside a single marital status, a tax_filer edge from a non-filer and a county outside Colorado", () => {
+    const ledger = loadLedgerFromDisk(ROOT);
+    const c = {
+      id: "X-1", title: "consistency", as_of: "2026-10-01",
+      relationships: [["spouse", "p1", "p2"], ["tax_filer", "p1", "p3"]],
+      persons: {
+        p1: { facts: { marital_status: "single", is_tax_filer: false } },
+        p2: { facts: { marital_status: "married", county_of_residence: "adams", state_of_residence: "NM" } },
+        p3: { facts: {} },
+      },
+    };
+    const w = caseConsistencyWarnings({ ...ledger, cases: [c as unknown as typeof ledger.cases[0]] });
+    expect(w).toEqual([
+      "X-1: p1 has a spouse edge but marital_status single",
+      "X-1: p1 claims p3 as a tax dependent (tax_filer edge) but is_tax_filer is false",
+      "X-1: p2 states a Colorado county (adams) but state_of_residence NM",
+    ]);
   });
 });
 
