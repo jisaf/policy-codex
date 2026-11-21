@@ -15,6 +15,9 @@ Program       All | Medicaid | SNAP       which program's meaning this item carr
 Role          outcome                     only on derived facts that are a program result
 Meaning       plain sentences; the definition an approver signs
 Precision     how edge cases are measured (day boundaries, rounding, time zone)
+Override      one county-facing sentence where a statute governs over the Colorado rule paragraph the item would
+              otherwise follow: the paragraph superseded, the statute, the date (YAML statute_override); the
+              plain-English trace repeats it as a "Statute over rule:" line
 Supplied by   where the value comes from, in words (supplied facts only)
 Derived as    the derivation, written only in catalog patterns (derived facts only)
 Uses          every fact and parameter the derivation references
@@ -45,6 +48,7 @@ Fields that do not apply are omitted, not left blank.
 | person | A reference to a person in the case. |
 | group of persons | A set of person references. |
 | table keyed by <key> | A parameter table. |
+| table keyed by year | A parameter table keyed by calendar year, such as a benefit level per summer. |
 
 ### Scopes
 

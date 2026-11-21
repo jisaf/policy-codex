@@ -24,6 +24,7 @@ export function itemBlock(ix: LedgerIndex, it: Item, extra?: ItemBlockExtra): st
   f("Meaning", it.meaning || "");
   if (it.precision) f("Precision", it.precision);
   if (it.assumption) f("Assumption", it.assumption);
+  if (it.statute_override) f("Override", it.statute_override);
   if (it.kind === "supplied") f("Supplied by", it.supplied_by || "");
   if (it.kind === "parameter") f("Value", lit(paramValue(it)));
   if (it.kind === "derived") {
@@ -172,6 +173,7 @@ export function parseItemBlock(
         case "Meaning": it.meaning = val; break;
         case "Precision": it.precision = val; break;
         case "Assumption": it.assumption = val; break;
+        case "Override": it.statute_override = val; break;
         case "Supplied by": it.supplied_by = val; break;
         case "Value":
           it.value = /^-?\d+(\.\d+)?$/.test(val) ? Number(val)

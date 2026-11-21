@@ -232,4 +232,21 @@ describe("narrative", () => {
     expect(lines).toHaveLength(12);
     expect(lines[11]).toBe("… and 9 more");
   });
+
+  it("ends with the statute override of the value and of the facts its story tells", () => {
+    const own = "Federal law overrides rule 1.2 from 2025-07-04.";
+    const child = "State statute overrides rule 3.4.";
+    const a: Item = { ...rule("a", ["all", "x"]), statute_override: child };
+    const r: Item = { ...rule("r", ["all", "a", "y"]), statute_override: own };
+    const tiny = buildIndex([supplied("x"), supplied("y"), a, r]);
+    const data = makeCase(tiny, { id: "T", as_of: "2027-03-15", given: { x: true, y: true } });
+    const node = explain(tiny, data, "r", "p1", null);
+    expect(node.override).toBe(own);
+    const lines = narrative(node, fmt);
+    expect(lines.slice(-2)).toEqual(["Statute over rule: " + own, "Statute over rule: " + child]);
+    // An item without one adds nothing.
+    const plain = explain(buildIndex([supplied("x"), rule("p", ["all", "x"])]),
+      makeCase(buildIndex([supplied("x"), rule("p", ["all", "x"])]), { id: "T", as_of: "2027-03-15", given: { x: true } }), "p", "p1", null);
+    expect(narrative(plain, fmt).some((l) => l.startsWith("Statute over rule"))).toBe(false);
+  });
 });
