@@ -9,7 +9,7 @@ meaning: Whether a pregnant person meets every Children's Basic Health Plan pren
 precision: "Parallel to chp_child_is_eligible (CO-705) with is_pregnant in place of ma_is_under_child_age_or_turns_nineteen_this_month and the pregnant-woman income band (chp_income_within_limit already selects the correct band for a pregnant person). Status reads ma_meets_status_for_cover_all_coloradans_categories (CO-1174), for the reason stated on CO-705. The 120.1.C exclusion of an inmate of a public institution or a patient in an institution for mental diseases is modeled (is_inmate_of_public_institution, CO-1105; is_patient_in_institution_for_mental_diseases, CO-1104), as on CO-705 (OQ-58, resolved in phase 7). Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-14): the inmate exclusion reads plain incarceration (CO-1105) and CHP+'s own reentry carve-out (chp_is_in_reentry_period, CO-1749)."
 derived: [all, is_pregnant, is_colorado_resident, ma_meets_status_for_cover_all_coloradans_categories, chp_income_within_limit, [not, ma_magi_is_fully_eligible], [not, chp_has_other_health_coverage], [not, [all, is_inmate_of_public_institution, [not, chp_is_in_reentry_period]]], [not, is_patient_in_institution_for_mental_diseases], [not, chp_is_excluded_as_public_agency_employee_family]]
 sources: [S242, S243, S244, S248, S606, S643, S653, S1223, S1224, S1225]
-open: [OQ-61]
+open: [OQ-62]
 implemented: engine
 tags: [chp, magi, income, immigration]
 accepts_from: [ma_magi_is_fully_eligible, ma_meets_status_for_cover_all_coloradans_categories]

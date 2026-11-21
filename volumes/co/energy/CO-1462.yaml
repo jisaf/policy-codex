@@ -12,7 +12,6 @@ derived: [case, [[not, [exists, leap_household_members_for_income, [of, [P], lea
 sources: [S893, S899, S494]
 implemented: engine
 tags: [verification]
-open: [OQ-316]
 rationale: No existing item reports LEAP verification standing.
 tests:
   - {id: CO-1462-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 0}, expect: not_required}

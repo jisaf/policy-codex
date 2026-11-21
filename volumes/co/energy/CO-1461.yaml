@@ -10,7 +10,6 @@ derived: [days_after, [+, leap_verification_response_days, [case, [[otherwise, l
 sources: [S899]
 implemented: engine
 tags: [verification]
-open: [OQ-316]
 rationale: No existing item states when requested LEAP verification is due.
 nearest: [CO-1392, CO-1414, CO-1426, CO-1437, CO-1450, CO-1656]
 tests:

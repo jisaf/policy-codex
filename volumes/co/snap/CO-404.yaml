@@ -10,7 +10,6 @@ derived: [any, [">=", snap_weekly_hours_worked, snap_work_registration_hours_per
 sources: [S121, S123, S126]
 implemented: engine
 tags: [work_registration]
-open: [OQ-35]
 rationale: 7 U.S.C. 2015(d)(1)(E), 7 CFR 273.7(b)(1)(vii), and 10 CCR 2506-1 4.310.3.E (S121, S123, S126) state this exemption as a single either/or test; combining the two arms here, reading snap_weekly_hours_worked and snap_weekly_earnings_worked, lets snap_is_exempt_from_work_registration read one fact instead of repeating both comparisons.
 tests:
   - {id: CO-404-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138, wages_gross: 0, self_employment_gross_receipts: 0, child_support_paid_legally_obligated: 0}, expect: true}

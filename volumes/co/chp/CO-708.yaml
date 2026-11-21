@@ -12,6 +12,7 @@ sources: [S241, S246]
 implemented: engine
 tags: [chp, magi, income, immigration]
 accepts_from: [ma_is_under_child_age_or_turns_nineteen_this_month, ma_meets_status_for_cover_all_coloradans_categories]
+open: [OQ-62]
 rationale: "No existing item states CHP+ presumptive eligibility. Distinct from chp_child_is_eligible/chp_prenatal_is_eligible (CO-705/CO-706) because 170.1 tests a declared/attested income figure at a presumptive eligibility site rather than the verified MAGI computation, and (per 170.1's own text) does not itself test 'not eligible for Medicaid' or 'no other creditable coverage' the way the full determination does. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid."
 tests:
   - {id: CO-708-T1, as_of: "2026-10-01", given: {date_of_birth: "2015-01-01", is_pregnant: false, citizenship_status: citizen, attested_household_income_pct_fpl: 2.00}, expect: true}

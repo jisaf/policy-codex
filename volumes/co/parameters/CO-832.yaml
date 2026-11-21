@@ -12,4 +12,5 @@ versions:
   - {from: "2026-01-01", value: 10814.64, source: S1228}
 sources: [S366, S648, S1228]
 tags: [ma, ltc, legal]
+open: [OQ-212]
 rationale: "No fetched document states the current average private-pay rate; ma_transfer_penalty_months (CO-649) and ma_transfer_penalty_days (CO-659) need it. OQ-212: the product owner supplied the 2025 and 2026 figures, so it is a dated parameter rather than a per-case supplied fact."

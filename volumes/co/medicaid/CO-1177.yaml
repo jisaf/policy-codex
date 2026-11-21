@@ -9,7 +9,6 @@ meaning: "Whether the person is an Old Age Pension recipient who receives Medica
 precision: "'Meets SSI eligibility criteria except for the level of their income' is read as residency, status (CO-509), aged, blind or disabled (CO-603) and the SSI resource standard (CO-610); the SSI income standard is not tested, so an OAP grant above the SSI federal benefit rate does not defeat it. § 8.100.3.M.2.b names only OAP \"A\" for code B while § 8.100.6.K.4 names OAP-A and OAP-B; af_category carries a single OAP category, so both are read (OQ-206). OAP recipients who lost OAP to a non-OASDI cost of living adjustment (§ 8.100.6.K.7) are SISC C, not SISC B, so this item reads current OAP receipt only; ma_oap_health_care_status (CO-1156) brings them in through ma_lost_oap_to_non_oasdi_cost_of_living_adjustment (OQ-206, resolved)."
 derived: [all, ["=", af_category, oap], ma_meets_residency, ma_meets_citizenship_requirement, ma_is_aged_blind_or_disabled, ma_meets_ssi_resource_standard]
 sources: [S621, S665, S660]
-open: [OQ-206]
 implemented: engine
 tags: [ma, oap, non_magi]
 accepts_from: [af_category]

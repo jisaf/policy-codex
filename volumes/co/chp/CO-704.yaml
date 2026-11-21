@@ -12,6 +12,7 @@ sources: [S243, S643, S246]
 implemented: engine
 tags: [chp, magi, income]
 accepts_from: [ma_is_under_child_age_or_turns_nineteen_this_month, ma_magi_household_income_pct_fpl]
+open: [OQ-62]
 rationale: "No existing item tests CHP+'s income band. chp_child_is_eligible (CO-705), chp_prenatal_is_eligible (CO-706) and chp_eligibility_status (CO-707) need this single yes/no rather than each re-deriving the child/pregnant band selection and the disregard's benefit-only application. Not the same test as any Medicaid income-standard rule (batch 6's ma_is_child_category and siblings), because CHP+'s band has both a floor and a ceiling (110.1.E-F), where Medicaid's MAGI standards are ceilings only. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. CHP+ applies the MAGI household, income and verification rules and Medicaid's status and age tests by reference (10 CCR 2505-3 110, 120, 42 CFR 457.380), and excludes a person eligible for Medicaid."
 tests:
   - {id: CO-704-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "2009-04-08", is_pregnant: false, ma_magi_household_income_pct_fpl: 2.00}, expect: true}

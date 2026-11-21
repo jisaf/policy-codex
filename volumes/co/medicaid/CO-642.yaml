@@ -11,6 +11,7 @@ derived: [any, ["<=", ma_ltc_gross_income, ["*", ssi_federal_benefit_rate_indivi
 sources: [S351, S352, S378, S1229, S1230]
 implemented: engine
 tags: [ma, ltc, income]
+open: [OQ-99]
 rationale: "No existing item states the 300% special income group test. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it. The target household's p1 (2030 <= 994 x 3 = 2982) is the worked example in the batch report."
 tests:
   - {id: CO-642-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 2030, has_income_trust: false, ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, expect: true}
