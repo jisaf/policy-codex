@@ -138,7 +138,7 @@ export const MONTH_BINDING: ReadonlySet<string> = new Set([
 export const RELS: readonly string[] = [
   "parent", "child", "guardian", "caretaker relative", "spouse", "relative",
   "grandparent", "grandchild", "caretaker", "dependent", "tax_filer", "tax_dependent",
-  "buys_prepares_with",
+  "buys_prepares_with", "shares_heat_with",
 ];
 export const ARITH: ReadonlySet<string> = new Set(["+", "-", "*", "/"]);
 export const CMP: ReadonlySet<string> = new Set(["<", "<=", ">", ">=", "="]);

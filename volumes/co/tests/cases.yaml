@@ -8,7 +8,7 @@
 # per-month facts are under months/<YYYY-MM> or month_defaults; anything not
 # stated is unknown. Case-level relationships are [role, from, to] and the
 # engine adds the inverse (parent/child, spouse/spouse, grandparent/grandchild,
-# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same).
+# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same, shares_heat_with/same).
 
 - id: CO-01
   title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
