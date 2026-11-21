@@ -1,0 +1,62 @@
+/* Phase 13 foundation: ref selector, workflow nav, role doors, draft banner,
+ * plain-language presentation, and the shared pieces the workflow views use. */
+.hdrfoot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.refselect select, .refselect input { font: inherit; font-size: 12px; padding: 2px 4px;
+  border: 1px solid var(--accent); border-radius: 10px; background: var(--med); max-width: 260px; }
+nav.workflows { gap: 4px; flex-wrap: wrap; }
+nav.workflows a { font-size: 13px; }
+.doors.roles .door { border-color: var(--accent); }
+.door .agency { font-size: 12px; margin-bottom: 4px; }
+h2.otherways { font-size: 15px; margin: 24px 0 0; color: var(--muted); }
+.doors.classic .door { padding: 10px 14px; }
+.viewhead h1 { margin-bottom: 4px; }
+.viewhead .purpose { margin-top: 0; font-size: 15px; max-width: 70ch; }
+
+.draftbanner { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 6px 16px;
+  background: #fff4d6; border-bottom: 1px solid #e3c470; font-size: 13px; }
+.draftbanner.shown { background: #ffe2b8; }
+.tag.draft { background: #ffe2b8; border-color: #e3a040; }
+
+.tag.qstatus-open { background: #fde6e6; border-color: #e0a0a0; }
+.tag.qstatus-partly { background: #fff4d6; border-color: #e3c470; }
+.tag.qstatus-resolved { background: #e3f1e7; border-color: #9cc9a8; }
+.qbody p { max-width: 80ch; }
+ul.qlist li, ul.qitems li { margin: 4px 0; }
+
+.lead-meaning { font-size: 15px; max-width: 80ch; }
+.plain-derivation { margin: 6px 0 10px; padding: 0; list-style: none; max-width: 90ch; }
+.plain-derivation li { margin: 2px 0; }
+.plain-derivation li.d1 { padding-left: 1.5em; }
+.plain-derivation li.d2 { padding-left: 3em; }
+.plain-derivation li.d3 { padding-left: 4.5em; }
+.plain-derivation li.d4 { padding-left: 6em; }
+.plain-derivation li.d5 { padding-left: 7.5em; }
+
+table.valuetable { border-collapse: collapse; margin: 4px 0; }
+table.valuetable th, table.valuetable td { border: 1px solid var(--line); padding: 2px 8px;
+  text-align: right; font-variant-numeric: tabular-nums; }
+table.valuetable th { background: var(--all); font-weight: 600; }
+table.valuetable caption { text-align: left; font-size: 12px; color: var(--muted); }
+
+.flag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 12px; }
+.flag.override { background: #fde6e6; border: 1px solid #e0a0a0; color: #7a1010; }
+.flag.unverified { background: #fff4d6; border: 1px solid #e3c470; color: #6b4a00; }
+.trace .notes { margin: 6px 0; padding-left: 0; list-style: none; }
+.trace .notes li { margin: 4px 0; }
+.story .who { color: var(--muted); font-size: 12px; margin-right: 4px; }
+.status-line { margin: 4px 0 8px; }
+
+article.source.on { background: var(--med); border-left: 3px solid var(--accent); padding-left: 8px; }
+.doctext pre.statute.on { background: #fff4b0; outline: 2px solid #e3c470; }
+
+.household-persons { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+.household-persons button.on { background: var(--med); border-color: var(--accent); }
+.household-rels { margin: 8px 0; }
+.household-rels select, .household-rels button { font: inherit; }
+.example-kept { font-size: 12px; }
+
+/* The token card is never taller than the window, and its actions stay in
+ * reach at the bottom however long the card's body is. */
+.tokpop { max-height: calc(100vh - 16px); display: flex; flex-direction: column; overflow: hidden; }
+.tokpop .tokcard { overflow-y: auto; min-height: 0; }
+.tokpop .tokpop-actions { flex: none; }

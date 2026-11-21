@@ -8,7 +8,9 @@ import {
 } from "../ledger/documents";
 import type { LoadedVolume } from "../ledger/load";
 import { fileEntries } from "../changes/types";
+import { EXCERPT_KIND_LABEL, excerptKind, isUnverified } from "./provenance";
 import { Ident } from "./Rich";
+
 import { buildHash, type Route } from "./router";
 import { citingItems } from "./SourcesView";
 import {
@@ -21,13 +23,51 @@ export function excerptsOf(sources: readonly Source[], docId: string): Source[] 
   return sources.filter((s) => s.document === docId);
 }
 
+/** The paragraphs of a document's text, as `Paragraphs` lays them out. */
+export function documentParagraphs(text: string): string[] {
+  return text.split(/\n{2,}/).map((p) => p.trimEnd()).filter((p) => p.trim() !== "");
+}
+
+function norm(s: string): string {
+  return s.toLowerCase().replace(/[*_`>#]/g, "").replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, "\"").replace(/\s+/g, " ").trim();
+}
+
+/** The paragraph an excerpt was quoted from: the first whose text contains
+ *  the excerpt's opening words (shortening the probe until one does), or -1
+ *  when none does (an unverified excerpt, or a document whose text differs). */
+export function findExcerptParagraph(paras: readonly string[], excerpt: string): number {
+  const target = norm(excerpt);
+  if (!target) return -1;
+  const flat = paras.map(norm);
+  for (const len of [160, 100, 60, 35]) {
+    const probe = target.slice(0, len);
+    if (probe.length < Math.min(len, target.length)) continue;
+    const at = flat.findIndex((p) => p.includes(probe));
+    if (at >= 0) return at;
+  }
+  // An excerpt that runs a heading into its first paragraph: try its own
+  // lines, longest first.
+  const lines = excerpt.split("\n").map(norm).filter((l) => l.length >= 30)
+    .sort((a, b) => b.length - a.length);
+  for (const l of lines) {
+    const probe = l.slice(0, 60);
+    const at = flat.findIndex((p) => p.includes(probe));
+    if (at >= 0) return at;
+  }
+  return -1;
+}
+
 /** How a reader sees a body of statute: the paragraphs of the file, kept
- *  verbatim, never reflowed or interpreted. */
-function Paragraphs({ text }: { text: string }) {
-  const paras = text.split(/\n{2,}/).map((p) => p.trimEnd()).filter((p) => p.trim() !== "");
+ *  verbatim, never reflowed or interpreted. The paragraph an excerpt was
+ *  taken from is marked and carries the id `para-<excerpt id>`. */
+function Paragraphs({ text, mark }: { text: string; mark: { index: number; id: string } | null }) {
+  const paras = documentParagraphs(text);
   return (
     <div class="doctext">
-      {paras.map((p, i) => <pre key={i} class="statute">{p}</pre>)}
+      {paras.map((p, i) => (mark && mark.index === i
+        ? <pre key={i} class="statute on" id={`para-${mark.id}`}>{p}</pre>
+        : <pre key={i} class="statute">{p}</pre>))}
     </div>
   );
 }
@@ -203,13 +243,19 @@ function DocumentPage(
   // taken from: the excerpt is marked, and brought into view once the page
   // has laid out.
   const marked = r.params.excerpt ?? null;
+  const markedSource = marked ? vol.sources.find((s) => s.id === marked) : undefined;
+  const paraIndex = text.value !== null && markedSource
+    ? findExcerptParagraph(documentParagraphs(text.value), markedSource.text)
+    : -1;
+  // The marked paragraph in the text when it can be found, else the
+  // excerpt's own card below the text.
   useLayoutEffect(() => {
     if (!marked) return;
-    const el = document.getElementById(marked);
+    const el = document.getElementById(`para-${marked}`) ?? document.getElementById(marked);
     if (el && typeof el.scrollIntoView === "function") {
       el.scrollIntoView({ block: "center" });
     }
-  }, [marked, doc.id]);
+  }, [marked, doc.id, text.value !== null, paraIndex]);
 
   return (
     <section class="view document">
@@ -239,7 +285,18 @@ function DocumentPage(
         ? <p class="status bad">{error.value}</p>
         : text.value === null
           ? <p class="status">Loading the text…</p>
-          : <Paragraphs text={text.value} />}
+          : (
+            <>
+              {marked && paraIndex < 0 && (
+                <p class="muted not-found">
+                  {marked}'s words could not be found in this text
+                  {markedSource && isUnverified(markedSource) ? " (it is not a quotation)" : ""};
+                  it is shown with the excerpts below.
+                </p>
+              )}
+              <Paragraphs text={text.value} mark={paraIndex >= 0 && marked ? { index: paraIndex, id: marked } : null} />
+            </>
+          )}
 
       <h3>Excerpts drawn from this document</h3>
       {excerpts.length === 0 && <p class="muted">No excerpt names this document.</p>}
@@ -252,7 +309,11 @@ function DocumentPage(
                 {s.id}. {s.title}
               </a>
             </h4>
-            <p class="citation">{s.citation}</p>
+            <p class="citation">
+              <span class="tag excerpt-kind">{EXCERPT_KIND_LABEL[excerptKind(s, vol.documents)]}</span>{" "}
+              {isUnverified(s) && <><span class="flag unverified">Unverified — not a quotation</span>{" "}</>}
+              {s.citation}
+            </p>
             <pre class="statute">{s.text}</pre>
             <p class="cited-by">
               <b>Cited by {citing.length} item{citing.length === 1 ? "" : "s"}:</b>{" "}

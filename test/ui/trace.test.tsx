@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { render } from "preact";
-import { Trace } from "../../src/ui/Trace";
+import { Trace, traceNarrative } from "../../src/ui/Trace";
+
 import { createEngine } from "../../src/engine/engine";
 import { buildIndex } from "../../src/engine/ledger-index";
 import { makeCase } from "../../src/engine/evaluate";
@@ -38,14 +39,20 @@ describe("Trace", () => {
   it("leads with the story and keeps the tree until it is asked for", async () => {
     const host = show("C-03", "snap_time_limit_status");
     expect(host.querySelector(".storyhead")!.textContent)
-      .toBe("SNAP: time limit status is not subject because:");
+      .toBe("Person 1: SNAP: time limit status is Not subject because:");
     const lines = [...host.querySelectorAll("ul.story li")];
     expect(lines.length).toBeGreaterThan(0);
     expect(lines.length).toBeLessThanOrEqual(12);
-    // The same story the engine tells, one line per node, in the same order.
-    const told = narrative(nodeOf("C-03", "snap_time_limit_status"), engine.fmt);
-    expect(lines.map((l) => l.textContent!.replace(/2\d{3}-\d\d$/, "").trim()))
+    // The same story the engine tells, one line per node, in the same order,
+    // each naming its person and reading its value in words.
+    const told = traceNarrative(engine, nodeOf("C-03", "snap_time_limit_status"))
+      .filter((l) => l.kind !== "override").map((l) => l.text);
+    expect(lines.map((l) => l.textContent!.replace(/[A-Z][a-z]+ 2\d{3}$/, "").trim()))
       .toEqual(told.map((l) => l.trim()));
+    expect(told.every((l) => /^\s*Person 1: /.test(l))).toBe(true);
+    // Without the person option the engine's narrative reads as before.
+    expect(narrative(nodeOf("C-03", "snap_time_limit_status"), engine.fmt)[0])
+      .not.toMatch(/^Person/);
     // Each line names the item behind it as a token, which carries the ledger
     // id the item page answers to (the identifier alone is not an address).
     const first = lines[0].querySelector("button.tok") as HTMLButtonElement;

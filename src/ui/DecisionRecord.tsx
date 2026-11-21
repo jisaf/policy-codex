@@ -1,6 +1,9 @@
 import { useSignal } from "@preact/signals";
 import { useLayoutEffect } from "preact/hooks";
-import { REPO } from "../config";
+import { DEFAULT_BRANCH, REPO } from "../config";
+import { gitRefOf } from "../ledger/source";
+import { EXCERPT_KIND_LABEL, excerptKind, isUnverified } from "./provenance";
+import { questionStatus, QUESTION_STATUS_LABEL } from "./questions";
 import { fileHistory, type HistoryEntry } from "../github/history";
 import { itemFilePath, type LoadedVolume } from "../ledger/load";
 import type { Item } from "../engine/types";
@@ -23,7 +26,8 @@ export function DecisionRecord(
   // The file's chapter is only known once the item has been filed into a
   // volume; a draft or fixture without one simply carries no history.
   const path = vol.chapterOf[item.id] ? itemFilePath(vol, item.id) : null;
-  const ref = vol.ref;
+  // The working tree's history is its branch's on GitHub; main stands in.
+  const ref = gitRefOf(vol.ref, DEFAULT_BRANCH);
   const load = fetchHistory ?? ((p, rf) => fileHistory(REPO, p, rf));
 
   // Laid out before paint, like a document's text: the request starts as
@@ -53,14 +57,16 @@ export function DecisionRecord(
             <p class="citation">
               <Tok text={s.id} cls="source" vol={vol} />
               {". "}
-              <a href={buildHash({ ...r, view: "source", arg: s.id, params: {} })}>
+              <a href={buildHash({ ...r, view: "source", arg: s.id, params: { excerpt: s.id } })}>
                 {s.title}
               </a>
+              {" "}<span class="tag excerpt-kind">{EXCERPT_KIND_LABEL[excerptKind(s, vol.documents)]}</span>
+              {isUnverified(s) && <>{" "}<span class="flag unverified">Unverified — not a quotation</span></>}
               {" — "}{s.citation}
               {doc && (
                 <>
                   {" "}
-                  <a href={buildHash({ ...r, view: "document", arg: doc.id, params: {} })}>
+                  <a href={buildHash({ ...r, view: "document", arg: doc.id, params: { excerpt: s.id } })}>
                     {doc.title}
                   </a>
                 </>
@@ -75,7 +81,13 @@ export function DecisionRecord(
       {questions.length === 0 && <p class="muted">None open.</p>}
       {questions.map((q) => (
         <details key={q.id}>
-          <summary>{q.id} {q.title}</summary>
+          <summary>
+            <a href={buildHash({ ...r, view: "questions", arg: q.id, params: {} })}>{q.id}</a>{" "}
+            {q.title}{" "}
+            <span class={`tag qstatus-${questionStatus(q)}`}>{QUESTION_STATUS_LABEL[questionStatus(q)]}</span>
+
+          </summary>
+
           <p>{q.body}</p>
           {q.items.length > 0 && (
             <p class="question-items">

@@ -1,8 +1,7 @@
 import { Ident } from "./Rich";
-import { groupHits, hitHash, search, type SearchHit } from "./search";
+import { groupHits, HIT_KIND_LABEL, HIT_KINDS, hitHash, search, type SearchHit } from "./search";
 import { route, searchIndexSig } from "./state";
 
-const KIND_LABEL = { item: "Items", source: "Sources", question: "Open questions" } as const;
 
 /** An item's subtitle reads "<id> · <identifier> · <kind> · …", so the
  *  identifier in it becomes a token while the rest stays the plain summary
@@ -32,10 +31,10 @@ export function SearchView() {
   return (
     <section class="view">
       <h1>{hits.length} result{hits.length === 1 ? "" : "s"} for "{q}"</h1>
-      {(["item", "source", "question"] as const).map((kind) =>
+      {HIT_KINDS.map((kind) =>
         grouped[kind].length ? (
           <div key={kind} class="group">
-            <h3>{KIND_LABEL[kind]} ({grouped[kind].length})</h3>
+            <h3>{HIT_KIND_LABEL[kind]} ({grouped[kind].length})</h3>
             <ul class="hits">
               {grouped[kind].map((h) => (
                 <li key={h.id}>

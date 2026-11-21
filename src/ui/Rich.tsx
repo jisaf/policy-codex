@@ -7,7 +7,8 @@
  *  plus the two actions a reader wants from it: open the definition, and walk
  *  back to whatever the definition rests on. */
 import { signal } from "@preact/signals";
-import { useLayoutEffect } from "preact/hooks";
+import { useLayoutEffect, useRef } from "preact/hooks";
+
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
 import {
@@ -131,7 +132,7 @@ export function popoverModel(
     if (oq) {
       return {
         card: { ...card, rows },
-        actions: [{ label: "Open definition", href: hash("table", null, { open: id }) }],
+        actions: [{ label: "Open the question", href: hash("questions", id) }],
       };
     }
   }
@@ -313,9 +314,38 @@ function place(rect: Rect): { left: number; top: number } {
   return { left, top };
 }
 
+/** Where a card of a measured height sits so all of it is on screen: below
+ *  its token when it fits, else above it, else pinned to the window's
+ *  bottom edge (the card scrolls inside, its actions always in view). */
+export function fitInViewport(
+  rect: Rect, height: number, width: number,
+  view: { w: number; h: number } = {
+    w: typeof innerWidth === "number" ? innerWidth : 1024,
+    h: typeof innerHeight === "number" ? innerHeight : 768,
+  },
+): { left: number; top: number } {
+  const left = Math.max(8, Math.min(rect.left, view.w - width - 8));
+  const below = rect.bottom + 6;
+  if (below + height <= view.h - 8) return { left, top: below };
+  const above = rect.top - 6 - height;
+  if (above >= 8) return { left, top: above };
+  return { left, top: Math.max(8, view.h - 8 - height) };
+}
+
 /** The one card, mounted once by App. */
 export function TokenPopover() {
   const st = popoverSig.value;
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  // Once the card has laid out, move it so every part of it is on screen:
+  // `place` guessed its height before it knew its content.
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!st || !el) return;
+    const at = fitInViewport(st.anchorRect, el.offsetHeight, el.offsetWidth || 360);
+    el.style.left = `${at.left}px`;
+    el.style.top = `${at.top}px`;
+  });
 
   useLayoutEffect(() => {
     if (!st) return;
@@ -342,6 +372,7 @@ export function TokenPopover() {
   const at = place(st.anchorRect);
   return (
     <div
+      ref={ref}
       class="tokpop" style={{ left: `${at.left}px`, top: `${at.top}px` }}
       role="dialog" aria-label={card.title}
     >

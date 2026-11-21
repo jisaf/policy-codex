@@ -2,6 +2,7 @@ import { useSignal } from "@preact/signals";
 import { useLayoutEffect, useRef } from "preact/hooks";
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
+import { mergeBlock, type BlockError } from "../engine/item-block";
 import {
   contextAt, details, suggestions, tokenAt, tokenize,
   type DetailsVolume, type EditorContext, type Suggestion, type TokenDetails,
@@ -16,6 +17,10 @@ interface Props {
   /** Whether the base ledger has no version of this item, so the checker
    *  reports the rules that only apply to a new item. */
   isNew?: boolean;
+  /** Called on every keystroke with the lines the ledger cannot read (empty
+   *  when the text parses), so Save can refuse rather than silently keep the
+   *  last version that parsed. */
+  onErrors?: (errors: BlockError[]) => void;
 }
 
 type Tab = "checker" | "preview" | "examples";
@@ -76,7 +81,7 @@ function Card({ card }: { card: TokenDetails }) {
   );
 }
 
-export function TextEditor({ engine, draft, onChange, vol = null, isNew }: Props) {
+export function TextEditor({ engine, draft, onChange, vol = null, isNew, onErrors }: Props) {
   const text = useSignal(engine.itemBlock(draft));
   const caret = useSignal(0);
   const tab = useSignal<Tab>("checker");
@@ -131,13 +136,9 @@ export function TextEditor({ engine, draft, onChange, vol = null, isNew }: Props
   const reparse = (next: string) => {
     text.value = next;
     const r = engine.parseItemBlock(next);
+    onErrors?.(r.errors);
     if (r.errors.length) return;
-    // The block renders a versioned parameter as one flat "Value" line. Reading
-    // that back as `value` would shadow `versions` (value outranks versions in
-    // paramValue), so a versioned draft keeps its history and ignores the line.
-    const parsed: Partial<Item> = { ...r.item };
-    if (draft.versions?.length) delete parsed.value;
-    onChange({ ...draft, ...parsed });
+    onChange(mergeBlock(draft, r.item));
   };
 
   const setText = (next: string, at: number) => {
@@ -208,7 +209,11 @@ export function TextEditor({ engine, draft, onChange, vol = null, isNew }: Props
   };
 
   const r = engine.parseItemBlock(text.value);
-  const parsed: Item = { ...draft, ...r.item };
+  // The same merge a clean parse commits, so the checker never reports a
+  // problem the saved item would not have (a versioned parameter's flat
+  // Value line read back as a second value: "Parameter has a value").
+  const parsed: Item = mergeBlock(draft, r.item);
+
   const lines = tokenize(engine, text.value, {
     errorLines: r.errors.map((e) => e.line),
     sourceIds: vol?.sources?.map((s) => s.id),

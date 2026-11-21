@@ -58,7 +58,7 @@ Every item is one file. Add an item by adding a file and listing it in `codex.js
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173, reads the ledger from GitHub main
+npm run dev        # http://localhost:5173, reads the working tree (see below)
 npm test           # engine fixtures + module tests
 npm run typecheck
 npm run check      # constraints, governance, rule tests, and household cases over the ledger on disk,
@@ -72,12 +72,22 @@ npm run conform:self
 npm run handoff    # writes handoff/<volume>.md
 npm run export     # writes conformance/<volume>/ledger.json, the items as JSON
 npm run governance # governance findings, item by item
-npm run e2e        # one Playwright smoke test against a local build
+npm run e2e        # Playwright tests against a local build (vite preview)
 ```
 
 Every script that reads the ledger runs every volume in `codex.json` unless given `--volume <id>` (or `CODEX_VOLUME=<id>`), e.g. `npm run conformance -- --volume co`. `npm run check` is the gate: run it before every merge, as CI would. An engine team implementing a volume starts from `docs/conformance.md` and `docs/operators.md`.
 
 There is no `deploy` script; see Deploy below.
+
+### Running against the local tree
+
+`npm run dev` and `npm run build && npx vite preview` serve this checkout's `codex.json`, `volumes/`, `docs/` and `conformance/` under `/__ledger/` (`scripts/vite-local-ledger.ts`), and the app reads them before anything on GitHub: a volume that is not on `main` yet, and uncommitted edits, show without intercepting `raw.githubusercontent.com`. The header's ref menu reads "working tree (<branch> @ <sha>)"; it also offers `main` and any other branch. Other ways to choose:
+
+- `?ref=<branch>` before the hash (`http://localhost:5173/?ref=main#/co/program`) makes that branch the default; `?ref=local` forces the working tree.
+- `#/<volume>/<view>@<branch>` reads one branch for that address only.
+- `CODEX_LOCAL_LEDGER=0 npm run dev` turns the endpoint off, so the app reads GitHub as a deployed build does.
+
+The bare app URL opens the volume used last in this browser, else `co`. A change set staged on the working tree proposes against `main`.
 
 If Playwright's bundled Chromium is unavailable, point `PLAYWRIGHT_CHROMIUM_PATH` at a Chrome binary.
 

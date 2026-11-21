@@ -12,7 +12,12 @@ import { programCounts, programOutcomes } from "./CasesView";
 import { Term } from "./labels";
 import { Ident } from "./Rich";
 import { buildHash, type Route } from "./router";
-import { engineSig, ledgerSource, navigate, route, viewEngine, volumeSig } from "./state";
+import {
+  changeSetSig, draftsShown, engineSig, ledgerSource, navigate, route, viewEngine, volumeSig,
+} from "./state";
+import { noVersionReason, Value } from "./Present";
+import { plainQuestionTitle, QUESTION_STATUS_LABEL, questionStatus } from "./questions";
+import { todayIso } from "./views/context";
 import { validationMap } from "./validation";
 
 interface Stat { passed: number; failed: number }
@@ -166,7 +171,9 @@ function ProgramCases(
 function ParametersInForce(
   { engine, programId }: { engine: Engine; programId: string },
 ) {
-  const asOf = useSignal(engine.meta.default_as_of);
+  const asOf = useSignal(todayIso());
+  const staged = new Set(changeSetSig.value.entries.map((e) => e.id));
+  const draftsVisible = draftsShown();
   const ofProgram = (it: Item) => it.program === programId || it.program === "All";
   const parameters = engine.items()
     .filter((it) => it.kind === "parameter" && ofProgram(it))
@@ -189,14 +196,26 @@ function ParametersInForce(
       <table class="parameters grid">
         <thead><tr><th>Parameter</th><th>Program</th><th>Value</th><th>Sources</th></tr></thead>
         <tbody>
-          {parameters.map((it) => (
-            <tr key={it.identifier}>
-              <td>{it.name} <code><Ident id={it.identifier} engine={engine} /></code></td>
-              <td>{it.program}</td>
-              <td class="value">{engine.fmt(paramInForce(it, asOf.value))}</td>
-              <td>{(it.sources ?? []).join(", ")}</td>
-            </tr>
-          ))}
+          {parameters.map((it) => {
+            const value = paramInForce(it, asOf.value);
+            const reason = value === null ? noVersionReason(it, asOf.value) : null;
+            return (
+              <tr key={it.identifier} class={draftsVisible && staged.has(it.id) ? "drafted" : undefined}>
+                <td>
+                  {it.name} <code><Ident id={it.identifier} engine={engine} /></code>
+                  {draftsVisible && staged.has(it.id) && (
+                    <> <span class="tag draft" title="A draft staged in this browser, not the figure in force">draft</span></>
+                  )}
+                </td>
+                <td>{it.program}</td>
+                <td class="value">
+                  <Value item={it} value={value} />
+                  {reason && <div class="warn no-version">{reason}</div>}
+                </td>
+                <td>{(it.sources ?? []).join(", ")}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       {dormant.length > 0 && (
@@ -226,7 +245,13 @@ function OpenQuestions(
       {questions.length === 0 && <p class="muted">No open questions.</p>}
       {questions.map((q) => (
         <details key={q.id}>
-          <summary>{q.id} {q.title}</summary>
+          <summary>
+            <a href={buildHash({ ...route.value, view: "questions", arg: q.id, params: {} })}>
+              {plainQuestionTitle(q.title)}
+            </a>{" "}
+            <small class="mono">{q.id}</small>{" "}
+            <span class={`tag qstatus-${questionStatus(q)}`}>{QUESTION_STATUS_LABEL[questionStatus(q)]}</span>
+          </summary>
           <p>{q.body}</p>
         </details>
       ))}
@@ -307,7 +332,6 @@ function ProgramPage(
         <span class="spacer" />
       </div>
       <ProgramSwitcher programs={programs} current={program.id} route={r} />
-      <ConformanceSummary source={source} volumeId={volumeSig.value?.volumeId} />
 
       <h3>Outcomes</h3>
       <GroupFilter engine={engine} route={r} />
@@ -322,8 +346,12 @@ function ProgramPage(
       <h3>Open questions</h3>
       <OpenQuestions engine={engine} programId={program.id} />
 
-      <h3>Health</h3>
-      <Health engine={engine} programId={program.id} />
+      <details class="section health-section">
+        <summary>For implementers: health and conformance</summary>
+        <ConformanceSummary source={source} volumeId={volumeSig.value?.volumeId} />
+        <Health engine={engine} programId={program.id} />
+      </details>
+
     </section>
   );
 }

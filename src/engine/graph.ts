@@ -1,7 +1,7 @@
 import type { LedgerIndex } from "./ledger-index";
 import { usesOf } from "./check";
 import { block } from "./render";
-import { approvals } from "./constraints";
+import { approvalsFor } from "./constraints";
 import { lit, paramValue } from "./values";
 import type { Expr, Item, VolumeMeta } from "./types";
 
@@ -134,8 +134,8 @@ export function projectionA(
     if (inputs.length) f("Inputs", inputs.join(", "));
     if (consumers.length) f("Consumed by", consumers.join(", "));
     if (sourceList) f("Source", sourceList);
-    f("Approval", approvals(meta, it).join(", "));
-    f("Status", "Draft");
+    f("Approval", approvalsFor(ix, meta, it).join(", "));
+    f("Status", it.status ?? "Draft");
     return { ledger: "Data dictionary (derived data element)", code, text: lines.join("\n") };
   }
 
@@ -154,7 +154,7 @@ export function projectionA(
   if (rl.length) f("Rules", rl.join(", "));
   if (consumers.length) f("Consumed by", consumers.join(", "));
   if (sourceList) f("Source", sourceList);
-  f("Approval", approvals(meta, it).join(", "));
-  f("Status", "Draft");
+  f("Approval", approvalsFor(ix, meta, it).join(", "));
+  f("Status", it.status ?? "Draft");
   return { ledger: "Rules codex (rule)", code, text: lines.join("\n") };
 }

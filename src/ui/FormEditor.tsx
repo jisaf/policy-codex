@@ -2,6 +2,7 @@ import { useMemo, useState } from "preact/hooks";
 import type { Engine } from "../engine/engine";
 import type { Expr, Item } from "../engine/types";
 import { RELS } from "../engine/types";
+import { declaredPrograms } from "../engine/item-block";
 import {
   LABEL, NARY, optionsFor, nodeAt, RESULT, setAt, SLOTNAME, SLOTS, spliceAt, template,
   type SlotCtx,
@@ -428,9 +429,8 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           name="program" value={draft.program}
           onChange={(e) => set({ program: (e.target as HTMLSelectElement).value as Item["program"] })}
         >
-          <option value="All">All</option>
-          <option value="Medicaid">Medicaid</option>
-          <option value="SNAP">SNAP</option>
+          {declaredPrograms(engine.meta).map((p) => <option key={p} value={p}>{p}</option>)}
+
         </select>
       </label>
       <label class="wide">Precision

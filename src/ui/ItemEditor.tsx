@@ -1,4 +1,5 @@
-import { useSignal } from "@preact/signals";
+import { signal, useSignal } from "@preact/signals";
+import type { BlockError } from "../engine/item-block";
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
 import type { ChangeEntry } from "../changes/types";
@@ -11,7 +12,7 @@ import { buildHash } from "./router";
 import { search } from "./search";
 import {
   closeEditor, editingSig, engineSig, navigate, putChangeEntry, route, searchIndexSig,
-  viewEngine, volumeSig, type EditingState,
+  draftEngine, volumeSig, type EditingState,
 } from "./state";
 
 export function draftEntry(state: EditingState, engine: Engine): ChangeEntry {
@@ -134,9 +135,15 @@ function KindStep({ state }: { state: EditingState }) {
   );
 }
 
+/** The text surface's unreadable lines for the draft being edited, so Save
+ *  refuses rather than keeping the last version that parsed (CDHS cash lead
+ *  F1: an edit dropped with "no change"). Keyed by draft id so a stale list
+ *  never blocks another item. */
+export const textErrorsSig = signal<{ id: string; errors: BlockError[] } | null>(null);
+
 export function ItemEditor() {
   const state = editingSig.value;
-  const engine = viewEngine() ?? engineSig.value;
+  const engine = draftEngine() ?? engineSig.value;
   const vol = volumeSig.value;
   if (!state || !engine || !vol) return null;
 
@@ -190,7 +197,10 @@ export function ItemEditor() {
   const findings = baseItem
     ? ratchetGovernance(rawFindings, baseEngine.governance(baseItem))
     : rawFindings;
+  const te = textErrorsSig.value;
+  const unreadable = state.surface === "text" && te && te.id === state.draft.id ? te.errors : [];
   const blocking = report.filter((c) => !c.ok && c.level === "error").length +
+
     findings.filter((f) => f.level === "error").length;
 
   return (
@@ -249,6 +259,7 @@ export function ItemEditor() {
           <TextEditor
             engine={engine} draft={state.draft} onChange={setDraft}
             vol={vol} isNew={isNew}
+            onErrors={(errors) => { textErrorsSig.value = { id: state.draft.id, errors }; }}
           />
         )}
         {state.surface === "ai" && (
@@ -272,8 +283,12 @@ export function ItemEditor() {
         <div class="actions">
           <button
             class="btn save"
+            disabled={unreadable.length > 0}
+            title={unreadable.length ? "Fix the lines marked below first; nothing has been saved." : undefined}
             onClick={() => {
+              if (unreadable.length) return;
               putChangeEntry(draftEntry(state, baseEngine));
+              textErrorsSig.value = null;
               closeEditor();
             }}
           >Save to tray</button>
@@ -296,6 +311,16 @@ export function ItemEditor() {
             </span>
           )}
         </div>
+        {unreadable.length > 0 && (
+          <div class="unsaved bad" role="alert">
+            <b>Not saved yet.</b> The text has {unreadable.length} line
+            {unreadable.length === 1 ? "" : "s"} the ledger cannot read, so Save is off until
+            {unreadable.length === 1 ? " it is" : " they are"} fixed:
+            <ul>
+              {unreadable.map((e) => <li key={`${e.line}:${e.msg}`}>Line {e.line}: {e.msg}</li>)}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

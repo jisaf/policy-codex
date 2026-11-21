@@ -1,12 +1,18 @@
 import { useSignal } from "@preact/signals";
+import { DEFAULT_BRANCH } from "../config";
+import { refLabel } from "../ledger/mode";
+import { LOCAL_REF } from "../ledger/source";
+import { WORKFLOW_VIEWS } from "./views/registry";
 import { programOutcomes } from "./CasesView";
 import { toggleHelp } from "./Help";
 import { buildHash, VIEWS, type ViewName } from "./router";
-import { groupHits, hitHash, search } from "./search";
+import { groupHits, HIT_KIND_LABEL, HIT_KINDS, hitHash, search } from "./search";
 import {
-  changeSetSig, doorSig, editingSig, engineSig, manifestSig, modeSig, navigate, openEditor,
-  route, searchIndexSig, setMode, settingsOpenSig, trayOpenSig, viewEngine, volumeSig,
+  baseRefOf, changeSetSig, defaultRefSig, doorSig, editingSig, engineSig, localInfoSig,
+  manifestSig, modeSig, navigate, openEditor, route, searchIndexSig, setMode, settingsOpenSig,
+  trayOpenSig, viewEngine, volumeSig,
 } from "./state";
+import { isPrRef } from "./router";
 
 interface NavItem {
   view: ViewName;
@@ -35,7 +41,53 @@ const BROWSE: NavItem[] = [
   { view: "documents", label: "Documents" },
 ];
 
-const KIND_LABEL = { item: "Items", source: "Sources", question: "Open questions" } as const;
+
+/** Which ledger the app reads: the working tree a dev or preview server
+ *  serves (when it does), main, the current branch, or any other branch
+ *  typed in. A choice equal to the default ref clears `@ref` from the
+ *  address, so links stay short. */
+export function RefSelect() {
+  const r = route.value;
+  const other = useSignal(false);
+  const local = localInfoSig.value;
+  const current = baseRefOf(r);
+  const choices: string[] = [];
+  if (local) choices.push(LOCAL_REF);
+  choices.push(DEFAULT_BRANCH);
+  if (!choices.includes(current) && !isPrRef(r.ref)) choices.push(current);
+  const go = (ref: string) => {
+    other.value = false;
+    const clean = ref.trim();
+    if (!clean) return;
+    navigate({ ref: clean === defaultRefSig.value ? null : clean });
+  };
+  if (isPrRef(r.ref)) return <span class="tag ref">{r.ref}</span>;
+  return (
+    <span class="refselect">
+      {other.value ? (
+        <input
+          class="ref-input" placeholder="branch name" autoFocus
+          onKeyDown={(e) => {
+            if (e.key === "Enter") go((e.target as HTMLInputElement).value);
+            if (e.key === "Escape") other.value = false;
+          }}
+        />
+      ) : (
+        <select
+          class="ref-select" title="Which copy of the ledger to read" value={current}
+          onChange={(e) => {
+            const v = (e.target as HTMLSelectElement).value;
+            if (v === "__other") other.value = true;
+            else go(v);
+          }}
+        >
+          {choices.map((c) => <option key={c} value={c}>{refLabel(c, local)}</option>)}
+          <option value="__other">Another branch…</option>
+        </select>
+      )}
+    </span>
+  );
+}
 
 export function Header() {
   const q = useSignal("");
@@ -82,7 +134,7 @@ export function Header() {
         ) : (
           <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
         )}
-        {r.ref && <span class="tag ref">{r.ref}</span>}
+        <RefSelect />
         {r.view !== "start" && (
           <nav class="primary">
             {primary.map((n) => (
@@ -123,10 +175,10 @@ export function Header() {
           />
           {hits.length > 0 && (
             <div class="results">
-              {(["item", "source", "question"] as const).map((kind) =>
+              {HIT_KINDS.map((kind) =>
                 grouped[kind].length ? (
                   <div key={kind} class="group">
-                    <h4>{KIND_LABEL[kind]}</h4>
+                    <h4>{HIT_KIND_LABEL[kind]}</h4>
                     {grouped[kind].map((h) => (
                       <a key={h.id} href={hitHash(h, r)} onClick={() => { q.value = ""; }}>
                         <strong>{h.title}</strong>
@@ -161,6 +213,17 @@ export function Header() {
         <button class="btn help-toggle" title="Help" onClick={toggleHelp}>?</button>
       </header>
       <div class="hdrfoot">
+        {r.view !== "start" && (
+          <nav class="workflows" aria-label="Workflows">
+            {WORKFLOW_VIEWS.map((w) => (
+              <a
+                key={w.view} data-view={w.view} class={r.view === w.view ? "on" : ""}
+                href={buildHash({ ...r, view: w.view, arg: null, params: {} })}
+              >{w.label}</a>
+            ))}
+          </nav>
+        )}
+        <span class="spacer" />
         <a class="linkish" href={startHref}>change how you use this</a>
       </div>
     </>
