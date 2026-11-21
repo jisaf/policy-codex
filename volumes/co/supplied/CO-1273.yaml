@@ -1,0 +1,13 @@
+id: CO-1273
+name: LEAP electric heat dwelling type
+identifier: leap_electric_heat_dwelling_type
+kind: supplied
+type: one of
+options: [not_electric, house, attached, apartment, rv]
+scope: person
+program: LEAP
+meaning: For a household that heats with electricity, its dwelling type for the electric heat portion of 9 CCR 2503-7 3.758.47 Step C - house or mobile home; townhouse, duplex, triplex or fourplex (attached); apartment, condominium, hotel, cabin or tiny home (apartment); RV, fifth wheel or camper (rv) - or not_electric when the primary heating fuel is not electricity. Stated on the household head.
+supplied_by: LEAP application (primary heating fuel and dwelling type).
+sources: [S771]
+tags: [household]
+rationale: No existing fact states the heating fuel or dwelling type; leap_adjusted_heating_costs (CO-1280) needs it.

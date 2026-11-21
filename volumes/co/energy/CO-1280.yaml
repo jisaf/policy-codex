@@ -1,0 +1,17 @@
+id: CO-1280
+name: "LEAP: estimated home heating costs after the electric and shared-living adjustments"
+identifier: leap_adjusted_heating_costs
+kind: derived
+type: money
+scope: person
+program: LEAP
+meaning: The household's estimated home heating costs with an electric-heat household's usage cost reduced to the heat portion for its dwelling type (62% house or mobile home, 48% townhouse to fourplex, 43% apartment, condominium, hotel, cabin or tiny home, 50% RV, fifth wheel or camper), divided by the number of separate households sharing the living arrangement, per 9 CCR 2503-7 3.758.47 Steps A, C and E.
+derived: ["/", ["*", estimated_home_heating_costs, [case, [[=, leap_electric_heat_dwelling_type, house], 0.62], [[=, leap_electric_heat_dwelling_type, attached], 0.48], [[=, leap_electric_heat_dwelling_type, apartment], 0.43], [[=, leap_electric_heat_dwelling_type, rv], 0.5], [else, 1]]], leap_households_sharing_living_arrangement]
+sources: [S770, S771, S772]
+implemented: engine
+tags: [household, income]
+rationale: No existing item computes the heating-cost base of the LEAP benefit (OQ-123); leap_benefit_amount (CO-1281) needs it. The Step C percentages are written into the case as the chart states them.
+tests:
+  - {id: CO-1280-T1, as_of: "2026-10-01", given: {estimated_home_heating_costs: 1000, leap_electric_heat_dwelling_type: not_electric, leap_households_sharing_living_arrangement: 1}, expect: 1000}
+  - {id: CO-1280-T2, as_of: "2026-10-01", given: {estimated_home_heating_costs: 1000, leap_electric_heat_dwelling_type: house, leap_households_sharing_living_arrangement: 1}, expect: 620}
+  - {id: CO-1280-T3, as_of: "2026-10-01", given: {estimated_home_heating_costs: 1000, leap_electric_heat_dwelling_type: apartment, leap_households_sharing_living_arrangement: 2}, expect: 215}

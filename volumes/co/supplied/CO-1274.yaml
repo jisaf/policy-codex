@@ -1,0 +1,12 @@
+id: CO-1274
+name: Households sharing the living arrangement
+identifier: leap_households_sharing_living_arrangement
+kind: supplied
+type: whole number
+scope: person
+program: LEAP
+meaning: The number of separate households, eligible or not, that share the living arrangement and its heating costs with this household (1 when it shares with none), per 9 CCR 2503-7 3.758.47 Step E. Stated on the household head.
+supplied_by: LEAP application and county determination of separate households.
+sources: [S772]
+tags: [household]
+rationale: No existing fact counts households sharing a dwelling (OQ-163's K-7); leap_adjusted_heating_costs (CO-1280) needs it.

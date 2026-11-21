@@ -1,0 +1,12 @@
+id: CO-1275
+name: Lives in subsidized housing
+identifier: lives_in_subsidized_housing
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: The household lives in housing where the tenant receives an ongoing governmental or other subsidy and the rent is based on the tenant's income, per 9 CCR 2503-7 3.751.1 ("Subsidized Housing"). Stated on the household head.
+supplied_by: Rent documentation (3.755.42).
+sources: [S772, S775]
+tags: [household]
+rationale: No existing fact states subsidized housing; leap_benefit_amount (CO-1281) needs it for the Step F allowance.

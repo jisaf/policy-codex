@@ -4116,3 +4116,186 @@ Document: D-81
 >
 > Once a sanction is served, all subsequent occurrences shall be in accordance with the level
 > following the sanction previously served as outlined in 3.608.4.C. and D.
+
+### S770. LEAP benefit methodology, Steps A-B: estimated home heating costs and the statewide adjustment
+
+Document: D-86
+
+9 CCR 2503-7 3.758.47 Steps A-B (version effective 2025-11-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.758.47 Methodology for Calculating Heating Fuel Assistance Program Benefits [Rev. eff.
+> 11/1/15]
+>
+> The payment amount for an eligible Heating Fuel Assistance Program household shall be determined in
+> accordance with the following method:
+>
+> Step A. Determine Estimated Home Heating Costs (EHHC)
+>
+> The county department/Contractor shall determine estimated home heating costs for November
+> 1st through April 30th for the household's current residence at the time of application. The
+> methodology for calculating estimated home heating costs is outlined below.
+>
+> The county department/Contractor shall determine the applicant household's estimated home
+> heating costs as follows:
+>
+> 1. An applicant household's estimated home heating cost shall consist of the total actual
+> home heating costs for the primary heating fuel for November 1st through April 30th, of
+> the prior year's heating season. Vendors serving applicant households shall be required
+> to supply actual home heating costs for November 1st through April 30th of the prior
+> year's heating season.
+>
+> 2. For any applicant whose home heating costs for the prior year's heating season are not
+> available or determined by the county department to be invalid, the county department
+> shall use the flat rate amount. The State Department shall adjust the flat rate amounts
+> annually, based on the average actual home heating costs found in the LEAP system by
+> dwelling type for the prior year's heating season contained in the annual LEAP training
+> manual.
+>
+> 3. The State Department shall adjust the standard rates for heating costs that are included
+> in rent annually, based on the flat rate amounts adjustment contained in the annual LEAP
+> training manual.
+>
+> Step B Initial Statewide Adjustment
+>
+> The State LEAP office will adjust benefit levels at the beginning of each LEAP program year based upon
+> the projected number of LEAP applications to be received and the estimated level of funding. Annually,
+> this calculation determines the percentage of the estimated home heating costs (EHHC) of the applicant
+> household to be adjusted.
+
+### S771. LEAP benefit methodology, Steps C-D: electric heat portion and household income contribution
+
+Document: D-86
+
+9 CCR 2503-7 3.758.47 Steps C-D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Step C. Adjustment for Electric Heat
+>
+> Households using electric heat will have their electric usage costs reduced to the percentage
+> amounts listed below.
+>
+> HEAT PORTION OF TOTAL ELECTRIC EHHC
+> House/mobile home 62% for heat
+> Townhouse / duplex / triplex / fourplex 48% for heat
+> Apartment, condominium, hotel, Cabin, Tiny Home 43% for heat
+> RV, 5th wheel, camper 50% for heat
+>
+> Step D. Adjustment Household Income Contribution
+>
+> The state department shall reduce the amount the of estimated home heating costs (EHHC) based on the
+> chart below to determine the household income contribution:
+>
+> LEVEL OF FEDERAL POVERTY LEVEL EHHC ADJUSTMENT
+> 0 – 75% FPL 0%
+> 75.01 – 125% FPL 10%
+> 125.01– 175% FPL 20%
+> 175.01+% + 30%
+
+### S772. LEAP benefit methodology, Steps E-G: shared living, subsidized housing allowance, minimum and maximum
+
+Document: D-86
+
+9 CCR 2503-7 3.758.47 Steps E-G. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Step E. Adjustment for Shared Living Arrangements
+>
+> The estimated home heating costs shall be adjusted if the household shares living arrangements
+> with other households but is determined to be a separate household as defined in the
+> “Definitions” section of these rules. If the household shares living arrangements with other
+> households, the estimated home heating cost shall be divided by the number of separate
+> households sharing the living arrangements, whether or not all households sharing the living
+> arrangements are eligible for the Heating Fuel Assistance Program.
+>
+> Step F. Adjustment for Subsidized Housing Home Heating Allowance
+>
+> The State Department shall adjust the amount of estimated home heating cost remaining after
+> Step B if the household resides in subsidized housing (as defined in the “Definitions” section of
+> these rules). A flat rate rental cost allowance for heating ($30 per month or $180 per heating
+> season) shall be deducted from the remaining amount of estimated home heating costs. If the
+> household does not live in subsidized housing, the amount remaining after Step B shall be the
+> estimated home heating cost.
+>
+> Step G. Determine Heating Fuel Assistance Program Amount
+>
+> The State Department shall determine a benefit amount for each eligible household by
+> subtracting the applicable adjustments listed above, in Steps B-F from the household’s estimated
+> home heating costs (EHHC) determined in Step A, 1-3. Any eligible household will receive at
+> least the minimum, up to and including, the maximum benefit amount established by the
+> Department for the LEAP program year.
+
+### S773. LEAP income limit: 60% of the FFY 2023 state median income, incorporating 45 CFR 96.85 (2025) and LIHEAP IM 2025-02
+
+Document: D-86
+
+9 CCR 2503-7 3.752.22.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> D. All applicant households whose countable income for the eligibility period is up to and including
+> 60 percent (60%) of the state median income level released by the U.S Department of Health and
+> Human Services for federal fiscal year 2023 shall meet the income requirements for the heating
+> fuel assistance program. The state department shall adjust the income limits annually based on
+> funds available and the state median income guidelines.
+>
+> The state median income level means the income level for a household as set forth in 45 C.F.R. §
+> 96.85 (2025), and the Low Income Home Energy Assistance Program Information Memorandum
+> 2025, which are hereby incorporated by reference, no later amendments or editions are
+> incorporated. The regulation and memorandum are from the U.S. Department of Health and
+> Human Services. The federal regulation is available for no cost at HTTPS://WWW.ECFR.GOV/.
+> The memorandum is available for no cost at HTTPS://ACF.GOV/OCS/POLICY-
+> GUIDANCE/LIHEAP-IM2025-02-FEDERAL-POVERTY-GUIDELINES-AND-STATE-MEDIAN-
+> INCOME-ESTIMATES. The federal regulation and memorandum are also available for public
+> inspection and copying at the Colorado Department of Human Services, Food and Energy
+> Assistance Division,1575 Sherman Street, Denver, Colorado, 80203, during regular business
+> hours.
+
+### S774. LEAP: living arrangements that are not vulnerable
+
+Document: D-86
+
+9 CCR 2503-7 3.752.25.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> B. Households in the following living arrangements shall not be considered to be vulnerable:
+>
+> 1. Institutional group care facilities, public or private, such as nursing homes, foster care
+> homes, group homes, substance abuse treatment centers , or other such living
+> arrangements where the provider is liable for the costs of shelter and home heating, in
+> part or in full, on behalf of such individuals;
+>
+> 2. Room and board, bed and breakfast;
+>
+> 3. Correctional facilities;
+>
+> 4. Dormitory, fraternity or sorority house;
+>
+> 5. Subsidized housing as defined in the “Definitions” section of these rules which does not
+> have an individual check meter for heat for each unit or which cannot provide other
+> evidence of responsibility for paying home heating surcharges;
+>
+> 6. Any applicant, or applicant household who is considered homeless or resides in non-
+> traditional dwellings;
+>
+> 7. Commercial accounts or commercial properties that also serve as the client’s dwelling;
+>
+> Income Maintenance
+>
+> 8. Hotels, unless proof that the household has lived or will live in the hotel continuously for
+> thirty (30) calendar days at the time of application and that heat is included in rent. Proof
+> may be shown by providing a monthly statement, billing statement or receipt indicating
+> the monthly arrangement.
+
+### S775. Subsidized Housing (LEAP definition)
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Subsidized Housing”: Subsidized housing means housing in which a tenant receives an ongoing
+> governmental or other subsidy (e.g., assistance provided by a church) and the amount of rent paid is
+> based on the amount of the tenant's income.
+
+### S776. LEAP: Point in Time (definition)
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Point in Time”: Point in time indicates that eligibility is determined by accounting for the circumstances of
+> the household on the date of the application, regardless of any changes thereafter.

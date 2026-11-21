@@ -1,0 +1,12 @@
+id: CO-1271
+name: Estimated home heating costs
+identifier: estimated_home_heating_costs
+kind: supplied
+type: money
+scope: person
+program: LEAP
+meaning: The household's estimated home heating costs (EHHC) for November 1 through April 30 at its current residence - the actual primary-fuel heating costs of the prior year's heating season reported by the vendor, or the State's flat-rate amount by dwelling type (or the standard rate for heat included in rent) where the prior year's costs are unavailable or invalid - per 9 CCR 2503-7 3.758.47 Step A. For electric heat this is the household's total electric usage cost; leap_adjusted_heating_costs (CO-1280) applies the heat portion. Stated once per household, carried on the head.
+supplied_by: Vendor-reported prior-season heating costs, or the flat-rate and in-rent standards in the annual LEAP training manual, applied by the county or contractor.
+sources: [S770]
+tags: [household, income]
+rationale: No existing fact states heating costs; OQ-123 named it as the first missing input of the benefit formula. leap_adjusted_heating_costs (CO-1280) needs it.

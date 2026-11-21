@@ -52,7 +52,7 @@ programs:
     outcomes: [cccap_eligibility_status]
   - id: LEAP
     prefix: leap_
-    outcomes: [leap_is_eligible]
+    outcomes: [leap_is_eligible, leap_benefit_amount]
 
 # Tags form a hierarchy: an item tagged `ltc` is also found under `ma`.
 tags:
