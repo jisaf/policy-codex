@@ -1,0 +1,18 @@
+id: CO-1708
+name: "Adult Financial: net profit from self-employment"
+identifier: af_self_employment_net_profit
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The person's net profit from self-employment for the month under 9 CCR 2503-5 3.520.783.B: gross receipts less the cost of doing business, not below zero."
+precision: "The type-specific methods of 3.520.783.C (farm, rental, day care) are not modeled; the three-month proration of 3.520.78 is stated in the supplied amounts. A person with no gross receipts has none, whatever the cost fact says."
+derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, af_self_employment_business_costs]]]]
+sources: [S1156]
+implemented: engine
+tags: [cash, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
+tests:
+  - {id: CO-1708-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, af_self_employment_business_costs: 400}, expect: 1100}
+  - {id: CO-1708-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
+  - {id: CO-1708-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, af_self_employment_business_costs: 450}, expect: 0}

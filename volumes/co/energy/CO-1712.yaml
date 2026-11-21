@@ -1,0 +1,18 @@
+id: CO-1712
+name: "LEAP: self-employment income"
+identifier: leap_self_employment_income
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: "The person's self-employment income for the month for LEAP: the declared monthly gross income less the receipted business expenses 9 CCR 2503-7 3.755.21.I allows, not below zero."
+precision: "Owners of an LLC or S corporation are employees for LEAP (3.755.21.J) and state wages instead. A person with no gross receipts has none, whatever the cost fact says."
+derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, leap_self_employment_allowable_costs]]]]
+sources: [S1084]
+implemented: engine
+tags: [income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
+tests:
+  - {id: CO-1712-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, leap_self_employment_allowable_costs: 400}, expect: 1100}
+  - {id: CO-1712-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
+  - {id: CO-1712-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, leap_self_employment_allowable_costs: 450}, expect: 0}

@@ -6,13 +6,13 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: Whether, at a recertification, the person's income source has changed or the total monthly income has changed by more than $50 from the amount last verified.
-derived: [any, snap_income_source_changed_since_last_certification, [">", ["-", ["+", earned_income, self_employment_net_income, snap_person_unearned_income], snap_income_at_last_certification], snap_recertification_income_change_threshold], [">", ["-", snap_income_at_last_certification, ["+", earned_income, self_employment_net_income, snap_person_unearned_income]], snap_recertification_income_change_threshold]]
+derived: [any, snap_income_source_changed_since_last_certification, [">", ["-", ["+", wages_gross, snap_self_employment_income, snap_person_unearned_income], snap_income_at_last_certification], snap_recertification_income_change_threshold], [">", ["-", snap_income_at_last_certification, ["+", wages_gross, snap_self_employment_income, snap_person_unearned_income]], snap_recertification_income_change_threshold]]
 sources: [S1055, S1056]
 implemented: engine
 tags: [verification, snap, income]
 open: [OQ-371]
 rationale: "Review K-1: the income requirement items need the recertification change test of 273.2(f)(8)(i)(A) and 4.502.B.2."
 tests:
-  - {id: CO-1619-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_income_source_changed_since_last_certification: false, earned_income: 1260, self_employment_net_income: 0, snap_person_unearned_income: 0, snap_income_at_last_certification: 1200}, expect: true}
-  - {id: CO-1619-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_income_source_changed_since_last_certification: false, earned_income: 1240, self_employment_net_income: 0, snap_person_unearned_income: 0, snap_income_at_last_certification: 1200}, expect: false}
+  - {id: CO-1619-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_income_source_changed_since_last_certification: false, wages_gross: 1260, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, snap_person_unearned_income: 0, snap_income_at_last_certification: 1200}, expect: true}
+  - {id: CO-1619-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_income_source_changed_since_last_certification: false, wages_gross: 1240, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0, snap_person_unearned_income: 0, snap_income_at_last_certification: 1200}, expect: false}
   - {id: CO-1619-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_income_source_changed_since_last_certification: true}, expect: true}

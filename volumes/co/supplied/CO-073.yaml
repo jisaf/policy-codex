@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: The person receives, or is authorized to receive, a Colorado Adult Financial cash payment - Old Age Pension (OAP-A/OAP-B), Aid to the Needy Disabled (AND-SO/AND-CS), or Aid to the Blind (AB). Distinct from Colorado Works (TANF) cash assistance, which receives_tanf_cash (CO-013) states.
+meaning: "The person receives, or is authorized to receive, a Colorado Adult Financial cash payment - Old Age Pension (OAP-A/OAP-B), Aid to the Needy Disabled (AND-SO/AND-CS), or Aid to the Blind (AB). Distinct from Colorado Works (TANF) cash assistance, which receives_tanf_cash (CO-013) states. A fact about the person's Adult Financial case, not this volume's own determination (af_category, CO-953); the amount paid for the month is adult_financial_cash_income (CO-1713)."
 supplied_by: CBMS Adult Financial or Colorado Works case record.
 sources: [S47]
 tags: [income, state_election]

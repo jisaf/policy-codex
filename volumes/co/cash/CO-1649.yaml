@@ -7,12 +7,12 @@ scope: person-month
 program: ColoradoWorks
 role: outcome
 meaning: "Whether Colorado Works requires verification of the person's wages (documents: DOLE wage data is not verified upon receipt) and self-employment income (documents, or SSA self-employment data, which is verified when entered) and it has not been provided."
-derived: [any, [all, [">", earned_income, 0], [not, earned_income_verification_document_received]], [all, [">", self_employment_net_income, 0], [not, [any, earned_income_verification_document_received, self_employment_income_verified_by_electronic_data_source]]]]
+derived: [any, [all, [">", wages_gross, 0], [not, earned_income_verification_document_received]], [all, [">", self_employment_gross_receipts, 0], [not, [any, earned_income_verification_document_received, self_employment_income_verified_by_electronic_data_source]]]]
 sources: [S872, S875]
 implemented: engine
 tags: [verification, cash, tanf]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1649-T1, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 1200, earned_income_verification_document_received: false}, expect: true}
-  - {id: CO-1649-T2, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 500, earned_income_verification_document_received: false, self_employment_income_verified_by_electronic_data_source: true}, expect: false}
-  - {id: CO-1649-T3, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 0}, expect: false}
+  - {id: CO-1649-T1, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 1200, self_employment_gross_receipts: 0, earned_income_verification_document_received: false}, expect: true}
+  - {id: CO-1649-T2, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 0, self_employment_gross_receipts: 500, self_employment_net_earnings_for_tax: 500, earned_income_verification_document_received: false, self_employment_income_verified_by_electronic_data_source: true}, expect: false}
+  - {id: CO-1649-T3, month: "2026-10", as_of: "2026-10-01", given: {wages_gross: 0, self_employment_gross_receipts: 0, self_employment_net_earnings_for_tax: 0}, expect: false}

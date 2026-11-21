@@ -159,7 +159,6 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        is_employed: false
         is_disabled_for_buy_in: false
         ma_personal_needs_allowance_institutional: 75
         ma_mmmna_standard: 2600
@@ -255,26 +254,28 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
         social_security_income: 1420
         pension_income: 610
-        earned_income: 0
+        wages_gross: 0
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
@@ -407,7 +408,6 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        is_employed: false
         is_disabled_for_buy_in: false
         ma_personal_needs_allowance_institutional: 75
         ma_mmmna_standard: 2600
@@ -505,26 +505,28 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 1400
         social_security_income: 1180
-        earned_income: 0
+        wages_gross: 0
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
@@ -723,25 +725,27 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
-        earned_income: 2380
+        wages_gross: 2380
         hours_worked: 138
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
@@ -943,26 +947,28 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
-        earned_income: 0
+        wages_gross: 0
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
@@ -1161,25 +1167,27 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
   # Filled in per phase. Left empty in the skeleton so the case is a target,
   # not a claim; the review for each phase adds the outcomes it decides.
@@ -2165,7 +2173,6 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        is_employed: false
         is_disabled_for_buy_in: false
         ma_personal_needs_allowance_institutional: 75
         ma_mmmna_standard: 2600
@@ -2259,23 +2266,25 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
         social_security_income: 1420
         pension_income: 610
@@ -2411,7 +2420,6 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        is_employed: false
         is_disabled_for_buy_in: false
         ma_personal_needs_allowance_institutional: 75
         ma_mmmna_standard: 2600
@@ -2507,24 +2515,26 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 1400
         social_security_income: 1180
     p3:
@@ -2724,25 +2734,27 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
-        earned_income: 2380
+        wages_gross: 2380
         hours_worked: 138
     p4:
       facts:
@@ -2942,25 +2954,27 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
     p5:
       facts:
@@ -3158,25 +3172,27 @@
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
   # SNAP (phase 2). The grandmother p1 is an institution resident and so not a
   # household member; her own unit is empty. The unit is p2, p3, p4, p5 with p3
@@ -4049,25 +4065,28 @@
         is_medicare_entitled_or_enrolled: true
         meets_nursing_facility_level_of_care: false
         in_medical_institution: false
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 1650
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 180
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 1100
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
@@ -4117,25 +4136,28 @@
         is_medicare_entitled_or_enrolled: false
         meets_nursing_facility_level_of_care: false
         in_medical_institution: false
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 900
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
         hours_worked: 0
         work_program_hours: 0
-        workfare_hours: 0
         received_full_snap_benefit_month: false
         abawd_waiver_area_month: false
         abawd_discretionary_exemption_month: false
         participates_in_workfare: false
-        is_in_snap_employment_and_training: false
         shelter_cost_monthly: 0
   # SNAP (fix-round case, C-10/group 10). Both are U.S. citizens living together as spouses, so the
   # unit is [p1, p2] under 273.1(a)-(b)(1); both are 60+ (snap_elderly_age), so
@@ -4246,22 +4268,26 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 1600
+        wages_gross: 1600
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         is_patient_in_institution_for_mental_diseases: false
       months:
-        "2026-11": {earned_income: 5000}
+        "2026-11": {wages_gross: 5000}
     p2:
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
@@ -4296,19 +4322,23 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 600
+        wages_gross: 600
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         is_patient_in_institution_for_mental_diseases: false
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
@@ -4339,19 +4369,23 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
     p4:
       # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5 (the case cannot
       # state that he lives with p1/p2 rather than p5 - see the case comment above and OQ-42).
@@ -4378,19 +4412,23 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
     p5:
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
@@ -4419,19 +4457,23 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 5000
+        wages_gross: 5000
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
   # Hand arithmetic, 2026 FPL monthly guidelines (annual/12): size2 1,803.33; size4 2,750.00.
   #
   # October 2026 (household income $2,200 = p1 $1,600 + p2 $600).
@@ -4608,18 +4650,22 @@
         receives_ssi: false
       month_defaults:
         social_security_income: 1850
-        earned_income: 0
+        wages_gross: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
     p2:
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
@@ -4648,19 +4694,23 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 4200
+        wages_gross: 4200
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
     p3:
       # Tasha, 16, citizen, in school, claimed by her grandmother p1 (not her parent, so the
       # 435.603(f)(2)(i) exception routes her to the non-filer household rules: herself alone, since
@@ -4702,22 +4752,26 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
       months:
-        "2027-01": {earned_income: 1850}
-        "2027-04": {earned_income: 1850}
+        "2027-01": {wages_gross: 1850}
+        "2027-04": {wages_gross: 1850}
   # Hand arithmetic, 2026 FPL monthly guidelines: size1 1,330.00; size2 1,803.33 (the only FPL version
   # CO-181 carries reaches 2027 too - see 3.3/3.4's C-5 note on the missing 2027 version).
   #
@@ -4891,7 +4945,6 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: true
         receives_medicare_part_a: true
-        is_employed: false
         is_disabled_for_buy_in: false
         in_medical_institution: true
         institution_entry_date: "2026-10-05"
@@ -4928,11 +4981,15 @@
       month_defaults:
         social_security_income: 1900
         pension_income: 700
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         unemployment_income: 0
-        other_unearned_income: 0
-        cash_assistance_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
         in_kind_support_and_maintenance: 0
         other_taxable_income: 0
@@ -4965,7 +5022,6 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: true
         receives_medicare_part_a: true
-        is_employed: false
         is_disabled_for_buy_in: false
         in_medical_institution: false
         expects_institutional_stay_of_thirty_days: false
@@ -4995,11 +5051,15 @@
       month_defaults:
         social_security_income: 1100
         pension_income: 0
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         unemployment_income: 0
-        other_unearned_income: 0
-        cash_assistance_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
         in_kind_support_and_maintenance: 0
         other_taxable_income: 0
@@ -5031,7 +5091,6 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
-        is_employed: true
         is_disabled_for_buy_in: true
         in_medical_institution: false
         expects_institutional_stay_of_thirty_days: false
@@ -5060,11 +5119,15 @@
       month_defaults:
         social_security_income: 0
         pension_income: 0
-        earned_income: 2400
-        self_employment_net_income: 0
+        wages_gross: 2400
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         unemployment_income: 0
-        other_unearned_income: 0
-        cash_assistance_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
         in_kind_support_and_maintenance: 0
         other_taxable_income: 0
@@ -5190,13 +5253,18 @@
         countable_resources_couple: 1400
         receives_tanf_cash: true
       month_defaults:
-        earned_income: 400
+        wages_gross: 400
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         hours_worked: 60
         work_program_hours: 0
         cw_in_first_certification_period: false
@@ -5246,13 +5314,18 @@
         countable_resources_couple: 1400
         receives_tanf_cash: true
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         hours_worked: 0
         work_program_hours: 0
         cw_in_first_certification_period: false
@@ -5302,13 +5375,17 @@
         countable_resources_couple: 0
         receives_tanf_cash: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         hours_worked: 0
         work_program_hours: 0
         is_inmate_of_public_institution: false
@@ -5355,13 +5432,18 @@
         countable_resources_couple: 0
         receives_tanf_cash: true
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         hours_worked: 0
         work_program_hours: 0
         cw_in_first_certification_period: false
@@ -5410,13 +5492,18 @@
         countable_resources_couple: 0
         receives_tanf_cash: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 900
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         hours_worked: 0
         work_program_hours: 0
         is_inmate_of_public_institution: false
@@ -5549,15 +5636,20 @@
         countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
         countable_nonliquid_resources_snap: 0
       month_defaults:
-        earned_income: 2600
+        wages_gross: 2600
         hours_worked: 150
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
@@ -5584,15 +5676,20 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         hours_worked: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
     p3:
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
@@ -5620,15 +5717,20 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         hours_worked: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
     p4:
       # Elena, 18, citizen, still in high school, works weekends for $400 a month. A "child in the
       # household" under 3.103.GGG (under 19 and in high school) but NOT an "eligible child" under
@@ -5661,15 +5763,20 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
       month_defaults:
-        earned_income: 400
+        wages_gross: 400
         hours_worked: 24
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
@@ -5696,15 +5803,20 @@
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
       month_defaults:
-        earned_income: 1500
+        wages_gross: 1500
         hours_worked: 160
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
   expect:
     p1:
       cccap_household_members: [p1, p2, p3, p4]
@@ -5784,7 +5896,7 @@
   # status test fails, so he is neither SSI-related nor SISC B -> state-only Old Age Pension Health
   # Care Program (SISC C). He also meets the SSI-related standards apart from status (aged, $0 income,
   # $500 resources), so he is emergency-Medicaid eligible, and he had an emergency in October.
-  # The case states cash_assistance_income 0: the state-only OAP grant is treated as excluded from
+  # The case states tanf_cash_income 0: the state-only OAP grant is treated as excluded from
   # SSI-related countable income (N-5 of the phase 7 review). The phase 7 fix round makes OAP SISC B
   # (an aged OAP recipient within the SSI resource standard, CO-1177) a route of its own in
   # ma_meets_requirements_other_than_status (CO-1150), so his emergency eligibility no longer rests
@@ -5801,7 +5913,6 @@
     p1:
       facts:
         lottery_gambling_winnings_amount: 0
-        is_employed: true
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -5840,26 +5951,29 @@
         received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
-        earned_income: 5200
+        wages_gross: 5200
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
         has_emergency_medical_condition: false
     p2:
       facts:
         lottery_gambling_winnings_amount: 0
-        is_employed: true
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -5901,19 +6015,23 @@
         received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
-        earned_income: 2600
+        wages_gross: 2600
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         has_emergency_medical_condition: false
         is_patient_in_institution_for_mental_diseases: false
     p3:
@@ -5969,19 +6087,23 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         in_kind_support_and_maintenance: 0
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -5992,7 +6114,6 @@
     p4:
       facts:
         lottery_gambling_winnings_amount: 0
-        is_employed: false
         is_disabled_for_buy_in: false
         snap_receives_disability_or_blindness_payment: false
         receives_ssdi: false
@@ -6029,19 +6150,23 @@
         received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
-        earned_income: 0
+        wages_gross: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
   expect:
@@ -6163,19 +6288,23 @@
         lost_ssi_or_oap_due_to_social_security_benefits: false
         lost_ssi_due_to_social_security_benefits: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
         social_security_income: 0
         pension_income: 900
         unemployment_income: 0
-        self_employment_net_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         other_taxable_income: 0
         discharged_student_loan_debt: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         in_kind_support_and_maintenance: 0
         is_patient_in_institution_for_mental_diseases: false
         receives_va_aid_and_attendance: false
@@ -6251,13 +6380,18 @@
         receives_title_iv_foster_adoption_kinship_payment: false
         is_deceased_colorado_works_client: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 700
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         hca_authorized_amount: 900
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
@@ -6307,13 +6441,18 @@
         meets_county_diversion_income_limit: false
         receives_tanf_cash: true
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         work_sanction_level_served: second
     p4:
       facts:
@@ -6344,13 +6483,18 @@
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
       month_defaults:
-        earned_income: 0
+        wages_gross: 0
+        self_employment_gross_receipts: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        cash_assistance_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
         child_support_received: 0
-        other_unearned_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         work_sanction_level_served: none
   expect:
     p1:
@@ -6521,15 +6665,20 @@
         is_school_aged: false
         is_enrolled_in_nslp_school: false
       month_defaults:
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         hours_worked: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         child_support_paid_legally_obligated: 150
         electronic_data_source_household_income_pct_fpl: 0
         dependent_care_expense: 200
@@ -6666,15 +6815,20 @@
         is_school_aged: true
         is_enrolled_in_nslp_school: true
       month_defaults:
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         hours_worked: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0
@@ -6926,15 +7080,19 @@
         is_school_aged: false
         is_enrolled_in_nslp_school: false
       month_defaults:
-        earned_income: 1800
-        self_employment_net_income: 0
+        wages_gross: 1800
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         hours_worked: 140
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         electronic_data_source_household_income_pct_fpl: 1.0
         other_taxable_income: 0
@@ -7088,15 +7246,19 @@
         is_school_aged: true
         is_enrolled_in_nslp_school: true
       month_defaults:
-        earned_income: 0
-        self_employment_net_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
         hours_worked: 0
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
         child_support_received: 0
-        cash_assistance_income: 0
-        other_unearned_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
         child_support_paid_legally_obligated: 0
         dependent_care_expense: 0
         medical_expenses_out_of_pocket: 0

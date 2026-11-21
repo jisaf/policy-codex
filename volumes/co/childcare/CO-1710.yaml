@@ -1,0 +1,18 @@
+id: CO-1710
+name: "CCCAP: countable self-employment income"
+identifier: cccap_self_employment_net_earnings
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's countable self-employment income for the month under 8 CCR 1403-1 3.111.I.2: 'declared gross income minus verified business expenses' from non-farm self-employment, not below zero."
+precision: "Farm self-employment (counted separately in 3.111.I) is not distinguished. A person with no gross receipts has none, whatever the cost fact says."
+derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, cccap_self_employment_business_expenses]]]]
+sources: [S1157]
+implemented: engine
+tags: [income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
+tests:
+  - {id: CO-1710-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, cccap_self_employment_business_expenses: 400}, expect: 1100}
+  - {id: CO-1710-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
+  - {id: CO-1710-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, cccap_self_employment_business_expenses: 450}, expect: 0}

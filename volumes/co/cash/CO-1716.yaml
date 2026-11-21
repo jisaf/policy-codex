@@ -1,0 +1,16 @@
+id: CO-1716
+name: "Colorado Works: gross earned income"
+identifier: cw_gross_earned_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "This person's gross earned income for the month for Colorado Works: gross wages plus the net profit from self-employment, which 9 CCR 2503-6 3.605.2.E.1.c treats as earned income (3.605.2.D)."
+derived: [+, wages_gross, cw_self_employment_net_profit]
+sources: [S412, S1155]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): the Colorado Works need test, payment and minor-parent deeming read wages only, so a self-employed applicant's earnings were left out; one item now states the earned income the three of them disregard from."
+tests:
+  - {id: CO-1716-T1, as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 800, self_employment_gross_receipts: 1500, cw_self_employment_business_costs: 400}, expect: 1900}
+  - {id: CO-1716-T2, as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 2380, self_employment_gross_receipts: 0}, expect: 2380}

@@ -1,0 +1,13 @@
+id: CO-1709
+name: "CCCAP: verified business expenses from self-employment"
+identifier: cccap_self_employment_business_expenses
+kind: supplied
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's verified business expenses for the month that 8 CCR 1403-1 3.111.I.2.a allows (rent of business premises, wholesale cost of merchandise, utilities, taxes, business mileage, labor, upkeep of necessary equipment), without depreciation of equipment, payments on the principal of loans for capital goods, or personal expenses (3.111.I.2.b)."
+precision: "Read only when self_employment_gross_receipts is more than zero."
+supplied_by: "Self-employment ledger, receipts, profit and loss statement."
+sources: [S1157]
+tags: [income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): each program's rule lists its own allowable costs of doing business, so the cost figure is the program's own fact; the gross receipts are shared (CO-1700)."
