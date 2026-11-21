@@ -149,7 +149,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -404,7 +404,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -661,7 +661,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -884,7 +884,7 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -1113,7 +1113,7 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2192,7 +2192,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2445,7 +2445,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2700,7 +2700,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2922,7 +2922,7 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -3148,7 +3148,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -3488,8 +3488,8 @@
       leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14).
       # Phase-10 sweep (OQ-358): p1, now in a nursing facility, no longer lives with him, so the family is one LEAP
-      # household of three (p2, p4, p5) with $3,560 counting p3's income, within the volume's size-3 ceiling
-      # (leap_income_limit_monthly, OQ-122), so p2 is LEAP-eligible.
+      # household of three (p2, p4, p5) with $3,560 counting p3's income, within the 2026-2027 season's
+      # $6,097 for three (leap_income_limit_monthly, S1406), so p2 is LEAP-eligible.
       leap_is_eligible: {"2026-11": true}
       ma_is_institutionalized: false
       ma_ltc_couple: false

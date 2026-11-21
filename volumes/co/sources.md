@@ -7719,3 +7719,70 @@ Colorado Secretary of State, Code of Colorado Regulations, Department of Human S
 > Supplemental Nutrition Assistance Program (SNAP)
 > 2508
 > County Finance and Accounting, Executive Director Rules (Volume 5)
+
+### S1406. LEAP income limits for the 2026-2027 season: maximum gross monthly income by household size, 60% of the SMI released April 2026
+
+Document: D-144
+
+Colorado Department of Human Services, LEAP page, "LEAP eligibility" (retrieved 2026-11-21). https://cdhs.nxt-dev.colorado.gov/leap
+
+> If your income is up to 60% of the state median income level, you may qualify for heating assistance through LEAP. The state median income level used for the 2026-27 LEAP season was released by the U.S. Department of Health and Human Services in April 2026. The amount of the energy assistance benefit varies depending on a variety of factors, including the primary heating fuel costs and income.
+>
+> Use the table below to determine your monthly gross income according to your household size. Household refers to all people living with you and for whom you are financially responsible. The table below displays updated income guidelines for the 2026-2027 season that begins November 1, 2026 and ends April 30, 2027.
+>
+> LEAP Income Limits for 2026-2027 Season
+>
+> Household Size
+>
+> Maximum Gross Monthly Income
+>
+> 1 $3,774
+>
+> 2 $4,936
+>
+> 3 $6,097
+>
+> 4 $7,258
+>
+> 5 $8,420
+>
+> 6 $9,581
+>
+> 7 $9,799
+>
+> 8 $10,017
+>
+> 9 $10,234
+>
+> 10
+>
+> $10,452
+>
+> 11
+>
+> $10,670
+>
+> 12
+>
+> $10,888
+>
+> 13
+>
+> $11,106
+>
+> 14
+>
+> $11,323
+>
+> 15
+>
+> $11,541
+
+### S1407. LEAP: at most fifteen household members and nine separate households
+
+Document: D-86
+
+9 CCR 2503-7 3.751.2.C (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> C. The maximum number of household members shall be fifteen (15). The maximum number of
+> separate households shall be nine (9).
