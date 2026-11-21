@@ -1,0 +1,24 @@
+id: CO-1163
+name: "Medicaid: protected SSI-related group"
+identifier: ma_protected_group_category
+kind: derived
+type: one of
+options: [none, continued_ssi_status, disabled_adult_child, disabled_widow, pickle]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: "Which protected group keeps an aged, blind or disabled person on Medical Assistance after SSI or OAP cash ends: SSI recipients who remain eligible as SSI recipients without a payment, including section 1619(b) (10 CCR 2505-10 §§ 8.100.1, 8.100.6.C.8) - continued_ssi_status; Disabled Adult Children (§ 8.100.6.J) - disabled_adult_child; disabled widow(er)s aged 50 through 64 (§ 8.100.6.I) - disabled_widow; the Pickle Amendment group (§ 8.100.6.D-E) - pickle; or none."
+precision: "A person who is not aged, blind or disabled (CO-603) is none without further facts. The groups are tested in the order listed and the first that applies is reported. Continued SSI status also requires residency and status, as the other groups do. The 1972-disregard, 1973 and 1983-actuarial-change groups (§§ 8.100.6.F-H) are closed historical cohorts and are not modeled (OQ-209)."
+derived: [case, [[not, ma_is_aged_blind_or_disabled], "none"], [[all, ma_meets_residency, ma_meets_citizenship_requirement, retains_ssi_status_without_payment], "continued_ssi_status"], [ma_dac_eligible, "disabled_adult_child"], [ma_disabled_widow_eligible, "disabled_widow"], [ma_pickle_eligible, "pickle"], [else, "none"]]
+sources: [S627, S626, S625, S623, S624]
+open: [OQ-209]
+implemented: engine
+tags: [ma, non_magi, disability]
+rationale: "ma_ssi_related_category (CO-612) reports SSI receipt and the SSI-related standards but none of the groups § 8.100.3.F.1.e and h and § 8.100.6.C-J protect after the cash payment ends. Declared an outcome."
+tests:
+  - {id: CO-1163-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: false}, expect: none}
+  - {id: CO-1163-T2, as_of: "2026-10-01", month: "2026-10", title: "Working SSI recipient in 1619(b) status", given: {ma_is_aged_blind_or_disabled: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, retains_ssi_status_without_payment: true}, expect: continued_ssi_status}
+  - {id: CO-1163-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, retains_ssi_status_without_payment: false, ma_dac_eligible: true}, expect: disabled_adult_child}
+  - {id: CO-1163-T4, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, retains_ssi_status_without_payment: false, ma_dac_eligible: false, ma_disabled_widow_eligible: true}, expect: disabled_widow}
+  - {id: CO-1163-T5, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, retains_ssi_status_without_payment: false, ma_dac_eligible: false, ma_disabled_widow_eligible: false, ma_pickle_eligible: true}, expect: pickle}
+  - {id: CO-1163-T6, as_of: "2026-10-01", month: "2026-10", given: {ma_is_aged_blind_or_disabled: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, retains_ssi_status_without_payment: false, ma_dac_eligible: false, ma_disabled_widow_eligible: false, ma_pickle_eligible: false}, expect: none}

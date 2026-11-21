@@ -2834,3 +2834,562 @@ Document: D-58
 91 Fed. Reg. (SSA 2026 COLA determination). https://www.ssa.gov/OACT/COLA/sga.html
 
 > (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,830 in 2026. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,690.
+
+### S600. Emergency-only Medical Assistance for persons who meet a category but not citizenship (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.F.1.k. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> k. Persons who apply for and meet the criteria for one of the categorical Medical Assistance programs, but do not meet the criteria of citizenship shall receive Medical Assistance benefits for emergencies only.
+
+### S601. Emergency and reproductive care regardless of immigration status; the emergency medical condition definition (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.ix.2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2) Persons requesting limited emergency medical care only and/or reproductive care shall not be excluded on the basis of immigration status.
+> For non-qualified non-citizens receiving Medical Assistance emergency only benefits, the following medical conditions will be covered:
+> An emergency medical condition (including labor and delivery) which manifests itself by acute symptoms of sufficient severity (including severe pain) such that the absence of immediate medical attention could reasonably be expected to result in:
+> a) placing the patient's health in serious jeopardy;
+> b) serious impairment of bodily function; or
+> c) serious dysfunction of any bodily organ or part.
+
+### S602. Emergency-only coverage: no advance physician statement, scope limited to the emergency, 12-month eligibility period (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.ix.2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> These persons need not select a primary care physician as they are eligible only for emergency medical services and/or reproductive health care services. Applicants are not required to obtain a written statement by their physician for their application to be complete and processed. For emergency care, a physician must certify and declare the presence of an emergency medical condition when services are provided and shall indicate that services were for a medical emergency on the claim form. This will suffice as the physician statement for an emergency medical condition when services were provided. Medical Assistance coverage for emergency medical care only is limited to care and services that are necessary to treat immediate emergency medical conditions. Coverage does not include prenatal care or follow-up care. Medical Assistance benefits for reproductive health care services are limited to care and services that provide reproductive health and/or family planning services only. Once a member has been determined eligible for either of these emergency and/or reproductive health services, the member will not be required to submit a new application before 12 months for any other emergency and/or reproductive health services. Members will have the option to advise the Department, at any time, that they no longer need the services. Members receiving emergency and/or limited reproductive health services will receive a renewal at 12 months to redetermine their eligibility.
+
+### S603. Federal payment for emergency services to non-qualified aliens: otherwise eligible, emergency medical condition
+
+Document: D-70
+
+42 U.S.C. 1396b(v)(1)-(3). https://www.law.cornell.edu/uscode/text/42/1396b
+
+> (v) Medical assistance to aliens not lawfully admitted for permanent residence
+> (1) Notwithstanding the preceding provisions of this section, except as provided in paragraphs (2), (4), and (5), no payment may be made to a State under this section for medical assistance furnished to an alien who is not lawfully admitted for permanent residence or otherwise permanently residing in the United States under color of law.
+> (2) Payment shall be made under this section for care and services that are furnished to an alien described in paragraph (1) only if—
+> (A) such care and services are necessary for the treatment of an emergency medical condition of the alien,
+> (B) such alien otherwise meets the eligibility requirements for medical assistance under the State plan approved under this subchapter (other than the requirement of the receipt of aid or assistance under subchapter IV, supplemental security income benefits under subchapter XVI, or a State supplementary payment), and
+> (C) such care and services are not related to an organ transplant procedure.
+> (3) For purposes of this subsection, the term “emergency medical condition” means a medical condition (including emergency labor and delivery) manifesting itself by acute symptoms of sufficient severity (including severe pain) such that the absence of immediate medical attention could reasonably be expected to result in—
+> (A) placing the patient’s health in serious jeopardy,
+> (B) serious impairment to bodily functions, or
+> (C) serious dysfunction of any bodily organ or part.
+
+### S604. Emergency services to aliens not lawfully admitted: the 440.255(c) conditions
+
+Document: D-71
+
+42 CFR 440.255(c). https://www.ecfr.gov/current/title-42/section-440.255
+
+> (c) Effective January 1, 1987, aliens who are not lawfully admitted for permanent residence in the United States or permanently residing in the United States under the color of law must receive the services necessary to treat the condition defined in paragraph (1) of this section if—
+> (1) The alien has, after sudden onset, a medical condition (including emergency labor and delivery) manifesting itself by acute symptoms of sufficient severity (including severe pain) such that the absence of immediate medical attention could reasonably be expected to result in:
+> (i) Placing the patient's health in serious jeopardy;
+> (ii) Serious impairment to bodily functions; or
+> (iii) Serious dysfunction of any bodily organ or part, and
+> (2) The alien otherwise meets the requirements in §§ 435.406(c) and 436.406(c) of this subpart.
+
+### S605. Emergency medical condition services to certain aliens in the medically needy program
+
+Document: D-48
+
+42 CFR 435.350. https://www.ecfr.gov/current/title-42/section-435.350
+
+> If an agency provides Medicaid to the medically needy, it must provide the services necessary for the treatment of an emergency medical condition, as defined in § 440.255(c) of this chapter, to those aliens described in § 435.406(c) of this subpart.
+
+### S606. CHP+ Cover All Coloradans exception: children, pregnant and postpartum persons regardless of status (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 110.1.B.5.o. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> o. Exception: Persons who are under the age of 19, whose 19th birthday occurred in the current month, who are pregnant, or who are within 12 months of the beginning of their postpartum period, and who meet the criteria for one of the specific Child Basic Health Plan Programs, but who are not citizens or qualified non-citizens according to the criteria set forth in 110.1.B, shall receive Medical Assistance benefits for programs included under the C.R.S. § 25.5-8-109.
+
+### S607. Cover All Coloradans exception for children, pregnant and postpartum persons (current numbering)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.ix.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> ix) Exception: Criteria set forth at Section 8.100.3.G.1.g does not apply to persons who apply for and meet the criteria for one of the specific Medical Assistance programs:
+> 1) Persons who are under the age of 19, whose 19th birthday occurred in the current month, who are pregnant, or who are within 12 months of the beginning of their postpartum period shall not be excluded from the following Medical Assistance Categories on the basis of immigration status:
+> a) MAGI Children, MAGI Pregnant, Psych <21, Transitional Medical Assistance, 4 Month Extended Medical Assistance, MAGI Prenatal Presumptive Eligibility, MAGI Child Presumptive Eligibility
+> b) Medical Buy-In Program for Working Adults with Disabilities (including with Home and Community Based Services), Medicaid Buy-In Program for Children with Disabilities, and Long-Term Care waivers except Program of All Inclusive Care for the Elderly (PACE)
+
+### S608. Breast and Cervical Cancer Program eligibility requirements
+
+Document: D-67
+
+10 CCR 2505-10 § 8.715.2.C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.715.2.C. Members shall:
+> 1. Be a woman who has not yet attained the age of 65.
+> 2. Be a resident of Colorado.
+> 3. With the exception of individuals who meet the criteria in Section 8.100.3(G)(1)(g)(viii), be a citizen of the United States or a qualified alien as described in 8.100.3(G)(1)(g)(ii)-(iv) and 8.100.3(G)(1)(g)(vi)-(vii).
+> 4. Have been screened by a Qualified Entity and found to be In Need of Treatment for breast or cervical cancer, including precancerous conditions as determined through pathological tests.
+> 5. Not have creditable coverage as described in 8.715.3.
+> 6. Not be eligible under another Medicaid program.
+> 7. Be a member who has previously qualified and enrolled in a NBCCED program in another state and chooses to transfer her enrollment to CWCCI.
+
+### S609. BCCP: routine follow-up monitoring is not In Need of Treatment
+
+Document: D-67
+
+10 CCR 2505-10 § 8.715.2.E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.715.2.E. Members shall not be considered to be In Need of Treatment if it is determined she only requires routine follow-up monitoring services.
+
+### S610. BCCP creditable coverage and its exceptions
+
+Document: D-67
+
+10 CCR 2505-10 § 8.715.3.A, C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.715.3.A. Creditable coverage shall include coverage of any individual as defined at 10-16-102, C.R.S. (2002).
+> 8.715.3.C. An individual who otherwise has creditable coverage may qualify for the program if:
+> 1. The individual is in a period of exclusion for treatment of breast or cervical cancer; or
+> 2. The individual has exhausted her lifetime limits on benefits under the plan for breast or cervical cancer.
+
+### S611. BCCP eligibility period
+
+Document: D-67
+
+10 CCR 2505-10 § 8.715.5.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.715.5.A. Eligibility shall begin on the date the client is determined to be presumptively eligible.
+> 8.715.5.B. The client shall be eligible to receive services for up to one year from the date of initial eligibility unless she is no longer In Need of Treatment or no longer meets program eligibility requirements.
+
+### S612. Federal optional group: certain breast or cervical cancer patients
+
+Document: D-26
+
+42 U.S.C. 1396a(aa). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (aa) Certain breast or cervical cancer patients Individuals described in this subsection are individuals who—
+> are not described in subsection (a)(10)(A)(i);
+> have not attained age 65;
+> have been screened for breast and cervical cancer under the Centers for Disease Control and Prevention breast and cervical cancer early detection program established under title XV of the Public Health Service Act ( 42 U.S.C. 300k et seq.) in accordance with the requirements of section 1504 of that Act ( 42 U.S.C. 300n ) and need treatment for breast or cervical cancer; and
+> are not otherwise covered under creditable coverage, as defined in section 2701(c) 1 of the Public Health Service Act ( 42 U.S.C. 300gg(c) ), but applied without regard to paragraph (1)(F) of such section.
+
+### S613. Limited Family Planning Medical Assistance: income band, status, not eligible for full coverage (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.G.8. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8. Applicants applying for Medical Assistance whose total household income is greater than 133% but does not exceed 260% of the federal poverty level shall be determined financially eligible for limited Family Planning Medical Assistance services. The applicant must satisfy residency and immigration or citizenship status to qualify for this limited benefit. The limited family planning services eligibility category has no age or gender restriction and is available for those not eligible for a Medicaid eligibility category that provides full coverage.
+
+### S614. Limited Family Planning applicant counted as a household of two (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.E.3. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. When a household includes an individual applying for the limited Family Planning Medical Assistance category, the individual is counted as a household of two in addition to any other household members.
+
+### S615. Reproductive health-care program: eligible individual, program, no cost sharing
+
+Document: D-69
+
+C.R.S. 25.5-2-103(1)(b), (2), (6). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> (b) "Eligible individual" means an individual with reproductive capacity, regardless of gender, who would be eligible to enroll in the medical assistance program, as described in section 25.5-4-103 (13), but is not eligible due solely to the individual's immigration status, and who is not eligible for, or declines to enroll in, state medical assistance, as described in section 25.5-2-104.
+> (2) On and after July 1, 2022, the state department shall administer a reproductive health-care program, referred to in this section as the "program", that provides reproductive health-care services to participants.
+> (6) The state department shall provide reproductive health-care services to participants without imposing any cost-sharing requirements.
+
+### S616. Family planning services: all Medicaid clients of childbearing age
+
+Document: D-67
+
+10 CCR 2505-10 § 8.730.2.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.730.2.A. All Medicaid clients of childbearing age are eligible for family planning services.
+
+### S617. Old Age Pension Health Care Program: general description and SISC C
+
+Document: D-68
+
+10 CCR 2505-10 § 8.941.1, 8.941.1.A, D, E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12738&fileName=10%20CCR%202505-10%208.900
+
+> In accordance with the Constitution of Colorado, Article XXIV, Section 7, and the Colorado Public Assistance Act, an Old Age Pension Health Care Program is established to provide necessary medical care for the Old Age Pension (OAP) recipients who do not qualify for Medicaid under Title XIX of the Social Security Act and Colorado statutes. The State Department is designated as the single State agency to administer the program.
+> A. The Old Age Pension Health Care Program provides optional benefits to clients who qualify for (State only) OAP pensions who do not qualify for Federal Financial Participation (FFP) in the Colorado Medicaid Program. These cases are coded with Supplemental Income Status Code (SISC) C.
+> D. All other medical benefits not listed in paragraph B are excluded under the Old Age Pension Health Care Program. Inpatient care in an institution for tuberculosis or mental diseases, skilled and intermediate nursing facility services, and home and community-based services are also excluded.
+> E. Eligibility shall not be retroactive and shall begin on the date of application or date eligibility is established, whichever is later.
+
+### S618. Old Age Pension Health Care Program: groups assisted
+
+Document: D-68
+
+10 CCR 2505-10 § 8.941.3. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12738&fileName=10%20CCR%202505-10%208.900
+
+> Old Age Pension Health Care Program benefits are provided to persons receiving OAP who do not meet SSI eligibility criteria but do meet the State eligibility criteria for the Old Age Pension Health Care Program. These persons qualify for a SISC C..
+> A. SISC C – this code is for persons eligible to receive financial assistance under OAP who do not receive an SSI payment, and do not otherwise qualify for the Colorado Medicaid Program. SISC C signifies that no FFP is available in medical assistance program expenditures.
+> B. Recipients of financial assistance under AND-CS, AND-SO, or OAP-C are not eligible for assistance under the Old Age Pension Health Care Program.
+
+### S619. Old age pension health and medical care fund; supplemental fund provision repealed
+
+Document: D-69
+
+C.R.S. 25.5-2-101(2), (3). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> 25.5-2-101. Old age pension health and medical care fund - supplemental old age pension health and medical care fund - cash system of accounting - legislative declaration rules.
+> (2) Any money remaining in the state old age pension fund after full payment of basic minimum awards to qualified old age pension members, and after establishment and maintenance of the old age pension stabilization fund in the amount of five million dollars, must be transferred to a fund to be known as the old age pension health and medical care fund, which is created. The state board shall establish and promulgate rules for administration of a program to provide health and medical care to persons who qualify to receive old age pensions and who are not patients in an institution for tuberculosis or behavioral or mental health disorders. The costs of such program, not to exceed ten million dollars in any fiscal year, are defrayed from the health and medical care fund, but all money available, accrued or accruing, received or receivable, in the health and medical care fund in excess of ten million dollars in any fiscal year is transferred to the general fund of the state to be used pursuant to law. Money in the old age pension health and medical care fund is subject to annual appropriation by the general assembly.
+> (3) Repealed.
+
+### S620. OAP State Only Medical Assistance group (SISC C) (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.F.1.j, 8.100.6.K.7. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> j. Persons receiving OAP-A, OAP-B, and OAP Refugees who do not meet SSI eligibility criteria but do meet the state eligibility criteria for the OAP State Only Medical Assistance Program. These persons qualify for a SISC Code C.
+> 7. The OAP State Only Medical Assistance Program provides Medical Assistance to OAP-A, OAP-B or OAP Refugees who lost their OAP financial assistance because of a cost of living adjustment other than OASDI. Examples of other sources of income are VA, RRB, PERA, etc. (SISC C).
+
+### S621. OAP recipients who meet SSI criteria receive Medicaid (SISC B) (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.K.1-4. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Individuals that are 65 and over are defined as the OAP-A category. Individuals who attain the age of 60 but not yet 65 are defined as the OAP-B category.
+> 2. Medical Assistance must be provided to persons receiving OAP-A or OAP-B and SSI (SISC B).
+> 3. Medical Assistance must be provided to all OAP-A and OAP-B persons who also meet SSI eligibility criteria but are not receiving a money payment (SISC-B).
+> 4. Medical Assistance must be provided to all OAP-A and OAP-B persons who also meet SSI eligibility criteria except for the level of their income (SISC-B).
+
+### S622. Qualified Disabled and Working Individuals: SSDI lost to SGA, Part A extension exhausted (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.O.2, O.4. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a. was a recipient of federal Social Security Disability Insurance (SSDI) benefits, who continues to be disabled but lost SSDI entitlement due to earned income in excess of the Social Security Administration's Substantial Gainful Activity (SGA) threshold, and;
+> b. has exhausted SSA's allowed extension of “premium free” Medicare Part A coverage under SSDI, and;
+> c. has resources at or below twice the SSI resource limit as described in section 8.100.5., and;
+> d. has income less than 200% of FPL.
+> 4. An individual may be eligible under this section only if he/she is not otherwise eligible under another Medical Assistance category of eligibility.
+
+### S623. Pickle Amendment: COLA disregard and who it applies to (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.D.1-2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Beginning July 1977, Medical Assistance must be provided to an individual if their countable income is below the current years SSI standard after a cost of living adjustment (COLA) disregard is applied to their OASDI (excluding Railroad Retirement Benefits) and they meet all other eligibility criteria. This is referred to as Pickle Disregard.
+> 2. The Pickle Disregard applies to an individual who:
+> a. lost SSI and/or OAP because of a cost of living adjustment to his/her own OASDI benefits.
+> b. lost SSI and/or OAP because a cost of living adjustment to OASDI income deemed from a parent or spouse.
+> c. lost OAP and/or SSI due to the receipt of, or increase to, OASDI, and would be eligible for OAP and/or SSI if all COLA’S on the amount that caused them to lose eligibility is disregarded from their current OASDI amount.
+
+### S624. Pickle determination: the disregard amount and the income comparison (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.E.1.d-e, E.2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> d. subtract the previous OASDI income from the current OASDI income to find the cumulative OASDI COLAs since SSI and/or OAP was lost. This is the Pickle Disregard amount;
+> e. subtract the Pickle Disregard amount from the current OASDI income to get the countable OASDI income.
+> 2. If the countable OASDI income and all other countable income is less than the current SSI or OAP standard, and the individual meets all other eligibility criteria then medical eligibility must continue or be reinstated.
+
+### S625. Disabled widow(er)s age 50 through 64 (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.I.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Effective January 1, 1991, Medical Assistance shall be provided to disabled widow(er)s age 50 through 64 who lost SSI and/or OAP due to the receipt of Social Security benefits as a disabled widow(er). The individual shall remain eligible for Medical Assistance until he/she becomes eligible for Part A of Medicare (hospital insurance).
+> To qualify these individuals must:
+> a. be a widow(er);
+> b. have received SSI in the past;
+> c. be at least 50 years old but not 65 years old;
+> d. no longer receive SSI payments because of Social Security payments;
+> e. not have hospital insurance under Medicare; and,
+> f. meet all other Medical Assistance requirements.
+
+### S626. Disabled Adult Children (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.J. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Medical Assistance shall be provided to an individual aged 18 or older who loses SSI due to the receipt of OASDI drawn from his/her parents' Social Security Number; and:
+> a. who was determined disabled prior to the age of 22; and
+> b. who is currently receiving OASDI income as a Disabled Adult Child; and
+> c. who would continue to be eligible for SSI if:
+> i) the current OASDI income of the applicant is disregarded; and
+> ii) the resources are below the applicable limit as listed at 8.100.5.M; and
+> iii) other countable income is below the current years SSI FBR.
+> 2. Disabled Adult Children are identified by the OASDI Beneficiary Identification Code (BIC) of “C”.
+
+### S627. SSI recipients not receiving payments, including those who lost SSI cash due to earned income; the 1619b definition (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1 (1619b), 8.100.6.C.8. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1619b is section 1619b of the Social Security Act which allows individuals who are eligible for Supplemental Security Income (SSI) to continue to be eligible for Medical Assistance coverage after they return to work.
+> 8. Individuals who remain eligible as SSI recipients but are not receiving SSI payments shall receive Medical Assistance benefits. This group includes persons whose SSI payments are being withheld as a means of recovering an overpayment, whose checks are undeliverable due to change of address or representative payee, and persons who lost SSI financial assistance due to earned income.
+
+### S628. HCBS level of care and target group designation by the Case Management Agency
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7100.D.1.a. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> a. Determined by the Case Management Agency to meet the target group designation for one or more waiver programs detailed in the Target Group Criteria section of each HCBS waiver program at Section 8.7101.
+
+### S629. HCBS-CES target group: unmarried and under 18
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.B.2.a. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.B Children's Extensive Support Waiver (HCBS-CES)
+> a. Is unmarried and under 18 years of age.
+
+### S630. HCBS-CHRP target group: under 21
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.C.2.a. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.C Children’s Habilitation Residential Program Waiver (HCBS-CHRP)
+> a. Is under 21 years of age.
+
+### S631. HCBS-CwCHN target group: under 19
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.D.2.a. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.D Children with Complex Health Needs Waiver (HCBS-CwCHN)
+> a. Is under 19 years of age,
+
+### S632. HCBS-BI target group: brain injury before 65, age 16 or older
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.E.2.a-b. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.E Persons with Brain Injury Waiver (HCBS-BI)
+> a. Is determined to have a Brain Injury that occurred prior to the individual’s 65th birthday.
+> b. Is 16 years of age or older.
+
+### S633. HCBS-CMHS target group: 18 or older
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.F.2.a.i. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.F Community Mental Health Supports Waiver (HCBS-CMHS)
+> i. Is 18 years of age or older with a severe and persistent mental health need,
+
+### S634. HCBS-EBD target group ages
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.G.2.c. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.G Elderly, Blind, And Disabled Waiver (HCBS-EBD)
+> c. Aged: Be 65 years of age or older
+> i. Physically Disabled or Blind: Be 18-64 years of age (Those participants who are physically disabled who reach the age of 65 shall automatically get classified as Aged with no break in services), and/or
+> ii. HIV/AIDS: Be 18 years of age or older.
+
+### S635. HCBS-CIH target group: 18 or older
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.H.2.a. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.H Complementary and Integrative Health Waiver (HCBS-CIH)
+> a. Is 18 years of age or older.
+
+### S636. HCBS-SLS target group: 18 or older
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.I.2.b. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.I Supported Living Services Waiver (HCBS-SLS)
+> b. Is 18 years of age or older.
+
+### S637. HCBS-DD target group: 18 or older
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7101.J.2.c. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 8.7101.J Developmental Disabilities Waiver (HCBS-DD)
+> c. Is 18 years of age or older.
+
+### S638. Children's MAGI income standard: 142% (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.G.2. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. Children applying for Medical Assistance whose total household income does not exceed 142% of the federal poverty level shall be determined financially eligible for Medical Assistance. Refer to the MAGI-Medicaid income guidelines chart available on the Department’s website.
+
+### S639. Parents and Caretaker Relatives MAGI income standard: 68% (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.G.3. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. Parents and Caretaker Relatives applying for Medical Assistance whose total household income does not exceed 68% of the federal poverty level (MAGI-equivalent) shall be determined financially eligible for Medical Assistance. Parents or Caretaker Relatives eligible for this category shall have a dependent child in the household.
+
+### S640. Pregnant Women MAGI income standard: 195%, coverage through the 12th month after pregnancy ends (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.G.5. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5. Pregnant Women whose household income does not exceed 195% of the federal poverty level (MAGI-equivalent) are eligible for the Pregnant Women MAGI Medical Assistance program. Medical Assistance shall be provided to a pregnant woman for a period beginning with the date of application for Medical Assistance through the last day of the 12th month following the date the pregnancy ends. Once eligibility has been approved, Medical Assistance coverage will be provided regardless of changes in the woman's financial circumstances once the income verification requirements are met.
+
+### S641. Colorado's MAGI income standards in the CMS eligibility levels table
+
+Document: D-73
+
+CMS, Medicaid, CHIP and BHP eligibility levels (as of December 1, 2023), Colorado row. https://www.medicaid.gov/medicaid/national-medicaid-chip-program-information/medicaid-childrens-health-insurance-program-basic-health-program-eligibility-levels
+
+> The following table provides eligibility levels in each state for key coverage groups that use Modified Adjusted Gross Income (MAGI), as of December 1, 2023. The data represent the principal, but not all, MAGI coverage groups in Medicaid, the Children’s Health Insurance Program (CHIP), and the Basic Health Program (BHP). All income standards are expressed as a percentage of the federal poverty level (FPL). The MAGI-based rules generally include adjusting an individual’s income by an amount equivalent to a 5% FPL disregard. Other eligibility criteria also apply, such as citizenship, immigration status, and state residency.
+> (For selected MAGI Groups, based on state decisions as of December 1, 2023)
+> State Children Medicaid Ages 0-1 Children Medicaid Ages 1-5 Children Medicaid Ages 6-18 Children Separate CHIP Pregnant Women Medicaid Pregnant Women CHIP Adults (Medicaid) Parent/ Caretaker Adults (Medicaid) Expansion to Adults
+> Colorado 142% 142% 142% 260% 195% 260% 68% 133%
+
+### S642. CHP+ enrollment fee section repealed (current text)
+
+Document: D-66
+
+10 CCR 2505-3 §§ 300, 310. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 300 ENROLLMENT FEES AND COPAYMENTS
+> 310 [Repealed eff. 10/30/2022]
+
+### S643. CHP+ income bands for children and pregnant women (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 110.1.E-F. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> E. Have a household income greater than 142% but not exceeding 260% of the Federal Poverty Level, adjusted for household size for children under the age of 19; or
+> F. Have a household income greater than 195% but not exceeding 260% of the Federal Poverty Level, adjusted for household size for pregnant women.
+
+### S644. 2026 spousal impoverishment standards: MMMNA, maximum MMMNA, community spouse resource standards, home equity limits
+
+Document: D-72
+
+CMS, CMCS Informational Bulletin, Updated 2026 SSI and Spousal Impoverishment Standards (April 27, 2026), chart. https://www.medicaid.gov/federal-policy-guidance/downloads/cib04272026.pdf
+
+> Spousal Impoverishment Effective 1-1-26 Unless Otherwise Noted
+> Minimum Monthly Maintenance Needs Allowance 2,705.00 All States (Except Alaska and Hawaii)
+> (Effective 7-1-26) 3,381.25 Alaska
+> Maximum Monthly Maintenance Needs Allowance: 4,066.50
+> Community Spouse Resources:
+> Minimum Resource Standard: 32,532.00
+> Maximum Resource Standard 162,660.00
+> Home Equity Limits:
+> Minimum: 752,000.00
+> Maximum: 1,130,000.00
+
+### S645. Colorado's home equity value limit: the $500,000 figure indexed by CPI (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.a.ii. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> ii) The individual’s ownership interest in the home must have an equity value that:
+> 1) From January 1, 2006 thru December 31, 2010 is $500,000 or less, or;
+> 2) Is less than the amount that results from the year to year percentage increase to the $500,000 limit. The increase is based upon the consumer price index for all urban consumers (all items; United States city average), rounded to the nearest $1,000.
+
+### S646. MSP resource limits: 2011 base and annual CMS adjustment (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Consideration of resources: Resources are defined as cash or other assets or any real or personal property that an individual or spouse owns. The resource limit for an individual is $2,000. For a married couple, the resource limit is $3,000. If one spouse is institutionalized, refer to Spousal Protection-Treatment of Income and Resources for Institutionalized Spouses. Effective January 1, 2011, the resource limits for the Qualified Medicare Beneficiaries (QMB), Specified Low Income Medicare Beneficiaries (SLMB), and Qualified Individuals 1 (QI-1) programs are $8,180 for a single individual and $13,020 for a married individual living with a spouse and no other dependents. The resource limits for the QMB, SLMB, and QI programs shall be adjusted annually by the Centers for Medicare and Medicaid Services on January 1 of each year. These resource limits are based upon the change in the annual consumer price index (CPI) as of September of the previous year. Resources are not counted for the Medicaid Buy-In Program for Working Adults with Disabilities or the Medicaid Buy-In Program for Children with Disabilities.
+
+### S647. 2026 Medicare Savings Program resource limits (QMB, SLMB, QI)
+
+Document: D-74
+
+CMS, Medicare.gov, Medicare Savings Programs. https://www.medicare.gov/basics/costs/help/medicare-savings-programs
+
+> Qualified Medicare Beneficiary (QMB) Program
+> Monthly income and resource limits for 2026:
+> Your situation:
+> Monthly income limit:*
+> Resource limit:
+> Individual
+> $1,350
+> $9,950
+> Married couple
+> $1,824
+> $14,910
+
+### S648. Transfer penalty divisor: average regional private-pay nursing facility cost at application (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.F.2.c.i. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> i) The fair market value of the transferred asset, less the actual amount received, if any, shall be divided by the average of the regions, defined at 8.100.7.E, monthly private pay cost for Long-Term Care institution care in the state of Colorado at the time of application.
+
+### S649. Colorado's PACE rule incorporates 42 CFR part 460
+
+Document: D-76
+
+10 CCR 2505-10 § 8.497.1.B.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12655&fileName=10%20CCR%202505-10%208.400
+
+> 1. Code of Federal Regulations (CFR), Title 42 – Public Health, Chapter IV – Centers for Medicare & Medicaid Services, Department of Health and Human Services, Subchapter E Programs of All-Inclusive Care for the Elderly (PACE), Part 460 – Programs of All-Inclusive Care for the Elderly (PACE). This will be referred to in this regulation as 42 CFR 460. 42 CFR Part 460 (2024) is hereby incorporated by reference. The incorporation of 42 CFR Part 460 (2024) excludes later amendments to, or editions of the referenced material. Pursuant to § 24-4-103(12.5), C.R.S., the Department maintains copies of this incorporated text in its entirety, available for public inspection during regular business hours at 303 E. 17th Ave., Denver, CO, 80203. Certified copies of incorporated materials are provided at cost upon request.
+
+### S650. PACE eligibility: 55 years of age or older
+
+Document: D-71
+
+42 CFR 460.150(b)(1). https://www.ecfr.gov/current/title-42/section-460.150
+
+> (b) Basic eligibility requirements. To be eligible to enroll in PACE, an individual must meet the following requirements:
+> (1) Be 55 years of age or older.
+
+### S651. MMMNA adjusted in July; maximum MMMNA adjusted each January (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.Q.1.a, Q.4. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a. The current minimum monthly maintenance needs allowance (MMMNA), which is equal to 150% of the federal poverty level for a family of two and is adjusted in July of each year;
+> 4. The total that results from adding the current MMMNA and the excess shelter allowance shall not exceed the current maximum MMMNA which is $2,175.00 for the year 2001 and is adjusted by the Health Care Financing Administration in January of each year.
+
+### S652. CSRA: total resources of the couple up to the current maximum allowance (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.M.1.a. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> For persons whose Medical Assistance application is for an individual who meets the definition of an institutionalized spouse, the CSRA is the largest of the following amounts:
+> a. The total resources of the couple but no more than the current maximum allowance which, changes each year beginning January 1st.; or
+
+### S653. CHP+ exclusions: Title XIX eligibility, inmates of public institutions, IMD patients (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 120.1.B-C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 120.1 To be eligible for the Children’s Basic Health Plan, an eligible person shall not:
+> B. Be eligible to receive assistance under Title XIX of the Social Security Act; or
+> C. Be an inmate of a public institution or a patient in an institution for mental diseases, except that Reentry Demonstration Initiative Services authorized by the 1115 Demonstration Waiver titled Colorado Expanding the Substance Use Disorder (SUD) Continuum of Care and described in Attachment G to the Center for Medicare & Medicaid Services’ (“CMS”) Demonstration Approval dated October 14, 2025 are available to inmates of public institutions 90 days prior to their release. Reentry Demonstration Initiative Services are only available while approved by CMS. CMS’s Demonstration Approval dated October 14, 2025 is hereby incorporated by reference. This incorporation excludes later amendments to, or editions of the referenced material. Pursuant to § 24-4-103(12.5), C.R.S., the Department maintains copies of this incorporated text in its entirety, available for public inspection during regular business hours at 303 E. 17 Ave., Denver, CO, 80203. Certified copies of incorporated materials are provided at cost upon request. Incorporated materials may also be obtained from the original issuer at www.medicaid.gov.
+
+### S654. State medical assistance for children who are ineligible solely because of immigration status
+
+Document: D-69
+
+C.R.S. 25.5-2-104(1)-(2). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> 25.5-2-104. State-funded health and medical care. (1) Beginning no later than January 1, 2025, there is created the state medical assistance program, referred to in this section as "state medical assistance". State medical assistance includes all benefits and services at the same cost to the beneficiary as are offered pursuant to the medical assistance program defined in section 25.5-4-103 (13), such that, to the maximum extent possible, eligible individuals must not be able to tell that the person is enrolled in a different program from medical assistance pursuant to section 25.5-4-103 (13).
+> (2) A child who is less than nineteen years of age is eligible to receive state medical assistance if the child would be eligible for medical assistance as defined in section 25.5-4-103 (13) but is not eligible due solely to the child's immigration status.

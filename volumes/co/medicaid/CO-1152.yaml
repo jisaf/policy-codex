@@ -1,0 +1,26 @@
+id: CO-1152
+name: "Medicaid: Breast and Cervical Cancer Program eligibility status"
+identifier: ma_bccp_eligibility_status
+kind: derived
+type: one of
+options: [eligible, ineligible_sex_or_age, ineligible_not_in_need_of_treatment, ineligible_residency, ineligible_status, ineligible_creditable_coverage, ineligible_other_medicaid]
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: Whether the person is eligible for the Breast and Cervical Cancer Program (10 CCR 2505-10 § 8.715.2; 42 U.S.C. 1396a(a)(10)(A)(ii)(XVIII) and (aa)) - a woman under 65, screened by a Colorado Women's Cancer Control Initiative Qualified Entity and found In Need of Treatment, a Colorado resident, a citizen or qualifying non-citizen (or a person within the Cover All Coloradans exception), without creditable coverage, and not eligible under another Medicaid program - and, if not, the first failing condition.
+precision: "Status reads ma_meets_citizenship_requirement (CO-509), whose categories and Cover All Coloradans exception are the ones § 8.715.2.C.3 names (its cross-reference to 8.100.3(G)(1)(g)(viii) is read as the current ix; OQ-202). Creditable coverage reads has_other_creditable_health_coverage (CO-090) (OQ-203). 'Not eligible under another Medicaid program' (§ 8.715.2.C.6; 1396a(aa)(1)) is read as not fully MAGI-eligible (CO-562) and not SSI-related eligible (CO-611). The one-year eligibility period and treatment-start timing of §§ 8.715.2.F and 8.715.5 are not modeled; the status is evaluated for the month."
+derived: [case, [[not, [all, [=, sex, "female"], [<, age, ma_bccp_max_age]]], "ineligible_sex_or_age"], [[not, is_screened_in_need_of_breast_or_cervical_cancer_treatment], "ineligible_not_in_need_of_treatment"], [[not, ma_meets_residency], "ineligible_residency"], [[not, ma_meets_citizenship_requirement], "ineligible_status"], [has_other_creditable_health_coverage, "ineligible_creditable_coverage"], [[any, ma_magi_is_fully_eligible, ma_is_ssi_related_eligible], "ineligible_other_medicaid"], [else, "eligible"]]
+sources: [S608, S609, S610, S611, S612]
+open: [OQ-201, OQ-202, OQ-203]
+implemented: engine
+tags: [ma, emergency, medical]
+rationale: "No existing item states BCCP eligibility, a full-benefit Medicaid group (§ 8.715.7.A) with its own screening, age and coverage tests. Declared an outcome."
+tests:
+  - {id: CO-1152-T1, as_of: "2026-10-01", month: "2026-10", title: "Woman of 51 found in need of treatment, uninsured, over the MAGI adult standard", given: {sex: female, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, has_other_creditable_health_coverage: false, ma_magi_is_fully_eligible: false, ma_is_ssi_related_eligible: false}, expect: eligible}
+  - {id: CO-1152-T2, as_of: "2026-10-01", month: "2026-10", title: "Age 66", given: {sex: female, date_of_birth: "1960-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true}, expect: ineligible_sex_or_age}
+  - {id: CO-1152-T3, as_of: "2026-10-01", month: "2026-10", given: {sex: male, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true}, expect: ineligible_sex_or_age}
+  - {id: CO-1152-T4, as_of: "2026-10-01", month: "2026-10", title: "Routine follow-up only", given: {sex: female, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: false}, expect: ineligible_not_in_need_of_treatment}
+  - {id: CO-1152-T5, as_of: "2026-10-01", month: "2026-10", given: {sex: female, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true, ma_meets_residency: false}, expect: ineligible_residency}
+  - {id: CO-1152-T6, as_of: "2026-10-01", month: "2026-10", given: {sex: female, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true, ma_meets_residency: true, ma_meets_citizenship_requirement: false}, expect: ineligible_status}
+  - {id: CO-1152-T7, as_of: "2026-10-01", month: "2026-10", given: {sex: female, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, has_other_creditable_health_coverage: true}, expect: ineligible_creditable_coverage}
+  - {id: CO-1152-T8, as_of: "2026-10-01", month: "2026-10", title: "Within the MAGI adult standard: covered there instead", given: {sex: female, date_of_birth: "1975-02-01", is_screened_in_need_of_breast_or_cervical_cancer_treatment: true, ma_meets_residency: true, ma_meets_citizenship_requirement: true, has_other_creditable_health_coverage: false, ma_magi_is_fully_eligible: true}, expect: ineligible_other_medicaid}

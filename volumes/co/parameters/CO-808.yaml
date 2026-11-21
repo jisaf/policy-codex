@@ -1,0 +1,17 @@
+id: CO-808
+name: Medicare Savings Program resource limit (couple)
+identifier: msp_resource_limit_couple
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: The QMB/SLMB/QI resource limit for a married individual living with a spouse and no other dependents - $13,020 effective January 1, 2011 under 10 CCR 2505-10 § 8.100.5.M.1, adjusted by CMS each January 1 by the change in the consumer price index as of the previous September.
+precision: Versioned by calendar year from CMS's published figure. Converted from a supplied fact in phase 7 (OQ-81, resolved), identifier and id unchanged.
+versions:
+  - from: "2026-01-01"
+    value: 14910
+    source: S647
+sources: [S646, S647, S301]
+tags: [non_magi, msp, resources]
+nearest: [CO-807]
+rationale: "Companion figure to msp_resource_limit_individual (CO-807): CMS's Medicare.gov publication of the 2026 limits (D-74) states $14,910 for a married couple."

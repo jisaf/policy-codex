@@ -1,0 +1,13 @@
+id: CO-1136
+name: "HCBS adult waiver minimum age"
+identifier: ma_hcbs_adult_min_age
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The minimum age 10 CCR 2505-10 § 8.7101 states for the adult HCBS waivers - Community Mental Health Supports (F.2.a.i), Elderly, Blind and Disabled (G.2.c: 18-64 physically disabled or blind, 18 or older with HIV/AIDS, 65 or older aged), Complementary and Integrative Health (H.2.a), Supported Living Services (I.2.b) and Developmental Disabilities (J.2.c)."
+value: 18
+sources: [S633, S634, S635, S636, S637]
+tags: [ma, hcbs, age]
+nearest: [CO-1134, CO-1137]
+rationale: "No existing parameter states the waiver age floors. One parameter for the five waivers whose text states the same 18-or-older floor. ma_hcbs_waiver_age_criteria_met (CO-1164) needs it."

@@ -1,0 +1,13 @@
+id: CO-1108
+name: Lost SSI or OAP because of Social Security benefits
+identifier: lost_ssi_or_oap_due_to_social_security_benefits
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person was eligible for and lost SSI and/or Old Age Pension financial assistance because of the receipt of, or an increase (including a cost-of-living adjustment) to, Social Security (OASDI) benefits - their own, or deemed from a parent or spouse - the loss event 10 CCR 2505-10 §§ 8.100.6.D.2 (Pickle), 8.100.6.I.1.d (disabled widow(er)s) and 8.100.6.J.1 (Disabled Adult Children) each start from.
+precision: One fact for the three groups; which benefit caused the loss is distinguished by receives_oasdi_as_disabled_adult_child (CO-1110) and is_widow_or_widower (CO-1111), and for Pickle by the COLA arithmetic of ma_pickle_countable_income (CO-1158). Section 8.100.6.D.1 excludes Railroad Retirement Benefits from the Pickle disregard; a loss caused only by RRB is not this fact.
+supplied_by: SSA SDX/SVES history of SSI termination reason, or the county's OAP case history, as read by the eligibility site (8.100.6.E.1.a-b).
+sources: [S623, S625, S626]
+tags: [ma, non_magi, income]
+rationale: "No existing item records why a person lost SSI or OAP. ma_pickle_eligible (CO-1159), ma_dac_eligible (CO-1161) and ma_disabled_widow_eligible (CO-1162) need it."

@@ -53,16 +53,10 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
-        csra_minimum_standard: 30000
         ma_personal_needs_allowance_institutional: 75
-        csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
-        mmmna_cap: 4000
-        home_equity_limit: 700000
         transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -128,7 +122,6 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -184,16 +177,10 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
-        csra_minimum_standard: 30000
         ma_personal_needs_allowance_institutional: 75
-        csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
-        mmmna_cap: 4000
-        home_equity_limit: 700000
         transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -255,7 +242,6 @@
         is_pregnant: false
         is_blind: false
         is_disabled_ssa: false
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -595,11 +581,11 @@
   # children are Medicaid-eligible and so not CHP+ eligible.
   # Non-MAGI Medicaid (phase 4). p1 is institutionalized from 2026-10-01 with
   # gross income 2030, within the special income group (3 x 994 = 2982). The
-  # couple's resources are 46000; with the ILLUSTRATIVE spousal standards
-  # stated above (CSRA maximum 150000: the CMS 2026 figures are not in this
-  # volume, OQ-91), the fix-round C-1 fix (10 CCR 2505-10 8.100.7.M.1.a: CSRA
+  # couple's resources are 46000; with the CMS 2026 spousal standards (CSRA
+  # maximum 162660, CO-828, a parameter since phase 7; the case once stated an
+  # illustrative 150000), the fix-round C-1 fix (10 CCR 2505-10 8.100.7.M.1.a: CSRA
   # = total resources capped at the maximum standard, no spousal-share or
-  # minimum-standard term - see OQ-126) gives ma_csra = min(150000, 46000) =
+  # minimum-standard term - see OQ-126) gives ma_csra = min(162660, 46000) =
   # 46000, so all of the couple's resources are attributed to the community
   # spouse and p1's own countable resources are 0, at or below the 2000
   # limit: resource eligible. p1 also meets the nursing facility level of
@@ -845,16 +831,10 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
-        csra_minimum_standard: 30000
         ma_personal_needs_allowance_institutional: 75
-        csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
-        mmmna_cap: 4000
-        home_equity_limit: 700000
         transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -918,7 +898,6 @@
         meets_nursing_facility_level_of_care: true
         countable_resources_couple: 46000
         countable_resources_couple_at_snapshot: 46000
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -973,16 +952,10 @@
         meets_hcbs_waiver_target_group: none
         family_members_with_community_spouse: []
         receives_medicare_part_a: true
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_employed: false
         is_disabled_for_buy_in: false
-        csra_minimum_standard: 30000
         ma_personal_needs_allowance_institutional: 75
-        csra_maximum_standard: 150000
         ma_mmmna_standard: 2600
-        mmmna_cap: 4000
-        home_equity_limit: 700000
         transfer_penalty_divisor: 9000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -1042,7 +1015,6 @@
         lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         in_medical_institution: false
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
       month_defaults:
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -1371,7 +1343,7 @@
   # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
   # children are Medicaid-eligible and so not CHP+ eligible.
   # Non-MAGI Medicaid (phase 4). Same fixed-rule result as CO-01 (see its
-  # comment above): the C-1 fix gives ma_csra = min(150000, 46000) = 46000,
+  # comment above): the C-1 fix gives ma_csra = min(162660, 46000) = 46000,
   # p1's own countable resources are 0, and she is resource eligible.
   # ma_pace_eligible is also true (level of care met, financially eligible),
   # and CO-652's PACE-before-institutional case order (OQ-100) reports
@@ -2328,6 +2300,14 @@
   #   incorporates by reference (or a blocking OQ) still stands. The values below are the engine's
   #   actual output under the currently-implemented 133% (CCR text, CO-540/CO-191) reading, recorded
   #   as-is per the review's own C-5 finding rather than corrected here.
+  #
+  # Phase 7 (OQ-63 resolved): the current Secretary of State text of 8.100.4.G.2 (D-65) and CMS's
+  # eligibility levels table (D-73) both state Colorado's Children's standard as 142%, so CO-191 is
+  # now 1.42 and the gap above is closed. Tasha's 1.3910 is within 142% in January and April 2027:
+  # category child and status eligible in both months on the plain test, and continuous eligibility
+  # applies in both (under 19, child category, resident) - in April 2027 it opens a new period.
+  # CHP+ is ineligible_medicaid_eligible in every month. The arithmetic above is kept as the record
+  # of what the 133% reading produced.
   expect:
     p1:
       ma_magi_household_members: [p1, p3]
@@ -2355,12 +2335,12 @@
       ma_magi_household_income: {"2026-04": 0, "2027-01": 1850, "2027-04": 1850}
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-04": false, "2027-01": false, "2027-04": false}
-      ma_magi_category: {"2026-04": child, "2027-01": child, "2027-04": none}
-      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": ineligible_income}
-      ma_continuous_eligibility_applies: {"2026-04": true, "2027-01": false, "2027-04": false}
+      ma_magi_category: {"2026-04": child, "2027-01": child, "2027-04": child}
+      ma_magi_eligibility_status: {"2026-04": eligible, "2027-01": eligible, "2027-04": eligible}
+      ma_continuous_eligibility_applies: {"2026-04": true, "2027-01": true, "2027-04": true}
       ma_child_continuous_eligibility_end_month: "2027-03"
       ma_retroactive_coverage_start_month: "2026-01"
-      chp_eligibility_status: {"2026-04": ineligible_medicaid_eligible, "2027-01": ineligible_medicaid_eligible, "2027-04": ineligible_income}
+      chp_eligibility_status: {"2026-04": ineligible_medicaid_eligible, "2027-01": ineligible_medicaid_eligible, "2027-04": ineligible_medicaid_eligible}
 - id: CO-06
   title: Nursing facility admission with a transfer penalty; community spouse on QMB below the MMMNA; working disabled adult son on the Buy-In
   # Designed by the phase-4 non-MAGI/LTC review (docs/reviews/non-magi-ltc-phase-4.md S3),
@@ -2375,11 +2355,14 @@
   #     own applicant-only income computation (8.100.6.P.1.b), not ma_ssi_countable_income.
   #   - p1's CSRA and attributed resources use the C-13 fix's snapshot fact
   #     (countable_resources_couple_at_snapshot), not the current-month countable_resources_couple;
-  #     both are supplied as 180000 here (no spend-down since the snapshot), so the figures the
-  #     review derived (ma_csra 157920, attributed resources 22080) are unchanged.
+  #     both are supplied as 180000 here (no spend-down since the snapshot). Phase 7: the CSRA
+  #     maximum is now the CMS 2026 figure (162660, CO-828, D-72) rather than the review's
+  #     illustrative 157920, so ma_csra is 162660 and the attributed resources 17340 - still over
+  #     the 2000 limit, so no other outcome changes.
   #   - p1's home equity exception is read through spouse_or_dependent_child_resides_in_home
   #     (C-20), supplied true because Linda (p2) lives in the home; this does not change the
-  #     outcome here since home_equity (240000) is under home_equity_limit (730000) either way.
+  #     outcome here since home_equity (240000) is under home_equity_limit (752000, the CMS 2026
+  #     minimum home equity limit Colorado's indexed $500,000 rule uses - phase 7) either way.
   as_of: "2026-11-01"
   relationships:
     - [spouse, p1, p2]
@@ -2402,7 +2385,6 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: true
         receives_medicare_part_a: true
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
         is_employed: false
         is_disabled_for_buy_in: false
         in_medical_institution: true
@@ -2422,14 +2404,8 @@
         # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
         # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
         transfer_penalty_period_start_date: "2026-11-01"
-        # Illustrative 2026 standards, not from the fetched text (OQ-91, OQ-81).
-        csra_minimum_standard: 31584
-        csra_maximum_standard: 157920
-        mmmna_cap: 3948
-        home_equity_limit: 730000
+        # Illustrative transfer-penalty divisor, not from a published figure (OQ-91); the CSRA, MMMNA cap, home equity and MSP figures are parameters since phase 7.
         transfer_penalty_divisor: 9000
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         ma_personal_needs_allowance_institutional: 75
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
@@ -2479,7 +2455,6 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: true
         receives_medicare_part_a: true
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
         is_employed: false
         is_disabled_for_buy_in: false
         in_medical_institution: false
@@ -2494,13 +2469,7 @@
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
-        csra_minimum_standard: 31584
-        csra_maximum_standard: 157920
-        mmmna_cap: 3948
-        home_equity_limit: 730000
         transfer_penalty_divisor: 9000
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -2548,7 +2517,6 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
-        is_entitled_to_medicare_part_a_on_basis_of_disability: false
         is_employed: true
         is_disabled_for_buy_in: true
         in_medical_institution: false
@@ -2562,13 +2530,7 @@
         home_equity: 0
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
-        csra_minimum_standard: 31584
-        csra_maximum_standard: 157920
-        mmmna_cap: 3948
-        home_equity_limit: 730000
         transfer_penalty_divisor: 9000
-        msp_resource_limit_individual: 10000
-        msp_resource_limit_couple: 15000
         is_tax_filer: true
         expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
@@ -2606,8 +2568,8 @@
       ma_ltc_couple: true
       ma_ltc_gross_income: {"2026-11": 2600}
       ma_meets_special_income_group: {"2026-11": true}
-      ma_csra: 157920
-      ma_institutionalized_spouse_countable_resources: 22080
+      ma_csra: 162660
+      ma_institutionalized_spouse_countable_resources: 17340
       ma_meets_ltc_resource_standard: false
       ma_home_equity_disqualifies: false
       ma_transfer_penalty_months: 6

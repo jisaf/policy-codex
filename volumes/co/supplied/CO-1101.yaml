@@ -1,0 +1,15 @@
+id: CO-1101
+name: Sex
+identifier: sex
+kind: supplied
+type: one of
+options: [female, male, other]
+scope: person
+program: All
+meaning: The person's sex as recorded on the application, read where a rule is limited to women - 10 CCR 2505-10 § 8.715.2.C.1 limits the Breast and Cervical Cancer Program to "a woman who has not yet attained the age of 65."
+precision: "\"other\" covers any recorded value other than female or male; § 8.715.2.C.1 is read as requiring \"female\" (see OQ-201)."
+supplied_by: Applicant statement on the Single Streamlined Application (PEAK/CBMS).
+sources: [S608]
+open: [OQ-201]
+tags: [ma]
+rationale: "The household cases already state sex for every person but no item defined it. ma_bccp_eligibility_status (CO-1152) needs it for § 8.715.2.C.1's woman requirement."

@@ -1,0 +1,16 @@
+id: CO-807
+name: Medicare Savings Program resource limit (individual)
+identifier: msp_resource_limit_individual
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: The QMB/SLMB/QI resource limit for a single individual - $8,180 effective January 1, 2011 under 10 CCR 2505-10 § 8.100.5.M.1, adjusted by CMS each January 1 by the change in the consumer price index as of the previous September.
+precision: Versioned by calendar year from CMS's published figure. Phase 7 converted this item from a supplied fact to a parameter (OQ-81, resolved); the identifier and id are unchanged so ma_qmb_eligible, ma_slmb_eligible and ma_qi_eligible (CO-613-CO-615) read it as before.
+versions:
+  - from: "2026-01-01"
+    value: 9950
+    source: S647
+sources: [S646, S647, S301]
+tags: [non_magi, msp, resources]
+rationale: "OQ-81: no fetched document stated the 2026 figure, so this was a supplied fact. CMS's Medicare.gov publication of the 2026 Medicare Savings Program limits (D-74) states $9,950 for an individual for QMB, SLMB and QI, the figure § 8.100.5.M.1 directs CMS to set."

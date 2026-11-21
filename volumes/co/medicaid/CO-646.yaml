@@ -14,6 +14,6 @@ implemented: engine
 tags: [ma, ltc, resources, legal]
 rationale: "No existing item states the CSRA formula. ma_institutionalized_spouse_countable_resources (CO-647) needs it. The target household's p1/p2 (total resources 46000, capped at the case's supplied maximum standard) is the worked example in the batch report."
 tests:
-  - {id: CO-646-T1, as_of: "2026-10-01", given: {countable_resources_couple_at_snapshot: 46000, csra_maximum_standard: 155000}, expect: 46000}
-  - {id: CO-646-T2, as_of: "2026-10-01", given: {countable_resources_couple_at_snapshot: 400000, csra_maximum_standard: 155000}, expect: 155000}
-  - {id: CO-646-T3, as_of: "2026-10-01", given: {countable_resources_couple_at_snapshot: 100000, csra_maximum_standard: 155000}, expect: 100000}
+  - {id: CO-646-T1, as_of: "2026-10-01", given: {countable_resources_couple_at_snapshot: 46000}, expect: 46000}
+  - {id: CO-646-T2, as_of: "2026-10-01", title: "Phase 7: capped at the 2026 CMS maximum resource standard, 162660", given: {countable_resources_couple_at_snapshot: 400000}, expect: 162660}
+  - {id: CO-646-T3, as_of: "2026-10-01", given: {countable_resources_couple_at_snapshot: 100000}, expect: 100000}

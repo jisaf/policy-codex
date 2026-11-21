@@ -1,0 +1,13 @@
+id: CO-1104
+name: Is a patient in an institution for mental diseases
+identifier: is_patient_in_institution_for_mental_diseases
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: Whether, this month, the person is a patient in an institution for mental diseases (or, for the Old Age Pension Health Care Program, an institution for tuberculosis or behavioral or mental health disorders) - the exclusion 10 CCR 2505-3 § 120.1.C states for CHP+ and C.R.S. 25.5-2-101(2) states for the old age pension health and medical care program.
+precision: Distinct from in_medical_institution (CO-007), which marks entry into a nursing facility or similar long-term care setting; a nursing facility resident is not an IMD patient for this fact.
+supplied_by: Eligibility site's record of the person's living arrangement and facility type (CBMS).
+sources: [S619, S653]
+tags: [chp, ma, disability]
+rationale: "OQ-58 recorded that in_medical_institution means a long-term care admission, not an IMD stay, so neither CHP+ nor the OAP health care program could test this exclusion. chp_child_is_eligible (CO-705), chp_prenatal_is_eligible (CO-706) and ma_oap_health_care_status (CO-1156) need it."

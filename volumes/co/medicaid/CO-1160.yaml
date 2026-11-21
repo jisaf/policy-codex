@@ -1,0 +1,19 @@
+id: CO-1160
+name: "Medicaid: Disabled Adult Child countable income"
+identifier: ma_dac_countable_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The person's SSI-related countable income with the current OASDI income disregarded, for the Disabled Adult Child test (10 CCR 2505-10 § 8.100.6.J.1.c.i, iii).
+precision: "The person's social_security_income is subtracted from ma_ssi_countable_income (CO-607), floored at 0 (OQ-208)."
+derived: [max, 0, ["-", ma_ssi_countable_income, social_security_income]]
+sources: [S626]
+open: [OQ-208]
+implemented: engine
+tags: [ma, non_magi, income]
+nearest: [CO-1158]
+rationale: "ma_pickle_countable_income (CO-1158) disregards only the cost-of-living increases; § 8.100.6.J.1.c.i disregards the whole current OASDI income. ma_dac_eligible (CO-1161) needs it."
+tests:
+  - {id: CO-1160-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 1200, social_security_income: 1100}, expect: 100}
+  - {id: CO-1160-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 500, social_security_income: 1100}, expect: 0}

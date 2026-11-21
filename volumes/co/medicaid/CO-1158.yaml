@@ -1,0 +1,19 @@
+id: CO-1158
+name: "Medicaid: Pickle countable income"
+identifier: ma_pickle_countable_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: The person's SSI-related countable income after the Pickle disregard - the cumulative OASDI increases since SSI or OAP was lost (current OASDI less the OASDI that caused the loss) are subtracted (10 CCR 2505-10 §§ 8.100.6.D.1, 8.100.6.E.1.d-e).
+precision: "The disregard (never negative) is subtracted from ma_ssi_countable_income (CO-607), which already applies the $20 general and earned income exclusions, floored at 0 (OQ-207). Read as monthly dollars."
+derived: [max, 0, ["-", ma_ssi_countable_income, [max, 0, ["-", social_security_income, social_security_income_when_ssi_or_oap_lost]]]]
+sources: [S623, S624]
+open: [OQ-207]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item applies the Pickle disregard. ma_pickle_eligible (CO-1159) needs the resulting countable income."
+tests:
+  - {id: CO-1158-T1, as_of: "2026-10-01", month: "2026-10", title: "1100 OASDI now, 950 when SSI was lost: disregard 150", given: {ma_ssi_countable_income: 1000, social_security_income: 1100, social_security_income_when_ssi_or_oap_lost: 950}, expect: 850}
+  - {id: CO-1158-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ssi_countable_income: 100, social_security_income: 1100, social_security_income_when_ssi_or_oap_lost: 900}, expect: 0}
+  - {id: CO-1158-T3, as_of: "2026-10-01", month: "2026-10", title: "OASDI lower now than at the loss: no disregard", given: {ma_ssi_countable_income: 1000, social_security_income: 900, social_security_income_when_ssi_or_oap_lost: 950}, expect: 1000}

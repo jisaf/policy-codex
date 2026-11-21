@@ -1,0 +1,13 @@
+id: CO-1132
+name: "Limited Family Planning income ceiling, percent of FPL"
+identifier: ma_family_planning_income_upper_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The household income, as a fraction of the federal poverty level, that Limited Family Planning Medical Assistance income may not exceed - 10 CCR 2505-10 § 8.100.4.G.8 (\"does not exceed 260%\")."
+value: 2.6
+sources: [S613]
+tags: [ma, magi, income, state_election]
+nearest: [CO-212]
+rationale: "No existing Medicaid parameter states the family planning ceiling. chp_income_limit_pct_upper (CO-212) is also 2.60 but is the CHP+ ceiling from 10 CCR 2505-3. ma_family_planning_income_in_band (CO-1155) needs it."

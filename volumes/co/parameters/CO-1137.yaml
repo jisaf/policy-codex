@@ -1,0 +1,13 @@
+id: CO-1137
+name: "HCBS-CES age limit"
+identifier: ma_hcbs_ces_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which a child must be to meet the Children's Extensive Support waiver target group - 10 CCR 2505-10 § 8.7101.B.2.a (\"Is unmarried and under 18 years of age\")."
+value: 18
+sources: [S629]
+tags: [ma, hcbs, age]
+nearest: [CO-1134, CO-1136]
+rationale: "No existing parameter states the CES age limit; it is an upper bound (under 18), not the adult waivers' floor (18 or older) ma_hcbs_adult_min_age (CO-1136) carries. ma_hcbs_waiver_age_criteria_met (CO-1164) needs it."

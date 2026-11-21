@@ -1,0 +1,18 @@
+id: CO-1159
+name: "Medicaid: is Pickle eligible"
+identifier: ma_pickle_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person is eligible under the Pickle Amendment (10 CCR 2505-10 §§ 8.100.3.F.1.e, 8.100.6.D-E) - an aged, blind or disabled Colorado resident meeting status who lost SSI or OAP because of OASDI benefits, whose countable income after the Pickle disregard is less than the current SSI standard and who meets the SSI resource standard.
+precision: "Compared against the SSI federal benefit rate for the SSI household size, strictly less than (§ 8.100.6.E.2 'less than the current SSI or OAP standard'); the OAP standard alternative is not tested separately. 'Meets all other eligibility criteria' is read as residency, status, aged/blind/disabled and the SSI resource standard."
+derived: [all, ma_meets_residency, ma_meets_citizenship_requirement, ma_is_aged_blind_or_disabled, lost_ssi_or_oap_due_to_social_security_benefits, ma_meets_ssi_resource_standard, [<, ma_pickle_countable_income, [case, [[=, ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ma_ssi_federal_benefit_rate_individual]]]]
+sources: [S623, S624]
+implemented: engine
+tags: [ma, non_magi, income]
+rationale: "No existing item states the Pickle group. ma_protected_group_category (CO-1163) needs it."
+tests:
+  - {id: CO-1159-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_is_aged_blind_or_disabled: true, lost_ssi_or_oap_due_to_social_security_benefits: true, ma_meets_ssi_resource_standard: true, ma_pickle_countable_income: 850, ma_ssi_household_size: 1}, expect: true}
+  - {id: CO-1159-T2, as_of: "2026-10-01", month: "2026-10", title: "At or above the 994 federal benefit rate", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_is_aged_blind_or_disabled: true, lost_ssi_or_oap_due_to_social_security_benefits: true, ma_meets_ssi_resource_standard: true, ma_pickle_countable_income: 994, ma_ssi_household_size: 1}, expect: false}
+  - {id: CO-1159-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_meets_residency: true, ma_meets_citizenship_requirement: true, ma_is_aged_blind_or_disabled: true, lost_ssi_or_oap_due_to_social_security_benefits: false}, expect: false}

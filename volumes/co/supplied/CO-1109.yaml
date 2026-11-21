@@ -1,0 +1,12 @@
+id: CO-1109
+name: Social Security income when SSI or OAP was lost
+identifier: social_security_income_when_ssi_or_oap_lost
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: The monthly OASDI amount that caused the person to lose SSI and/or OAP - "the previous amount of the OASDI that caused them to lose SSI and/or OAP" of 10 CCR 2505-10 § 8.100.6.E.1.b - the base the Pickle disregard measures the cumulative cost-of-living adjustments from.
+supplied_by: SSA benefit history (SVES/BENDEX) for the month SSI or OAP ended, as read by the eligibility site.
+sources: [S624]
+tags: [ma, non_magi, income]
+rationale: "No existing item carries the historical OASDI amount. ma_pickle_countable_income (CO-1158) needs it to compute § 8.100.6.E.1.d's Pickle disregard."

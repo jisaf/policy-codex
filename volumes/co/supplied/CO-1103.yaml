@@ -1,0 +1,12 @@
+id: CO-1103
+name: Has reproductive capacity
+identifier: has_reproductive_capacity
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person is an individual with reproductive capacity, regardless of gender, within the meaning of C.R.S. 25.5-2-103(1)(b)'s definition of an eligible individual for the reproductive health-care program.
+supplied_by: Applicant statement on the application for the reproductive health-care program (PEAK/CBMS).
+sources: [S615]
+tags: [ma, medical]
+rationale: "No existing item carries this condition. ma_family_planning_status (CO-1154) needs it for the reproductive health-care program branch."

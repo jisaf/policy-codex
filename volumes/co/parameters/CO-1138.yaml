@@ -1,0 +1,12 @@
+id: CO-1138
+name: "HCBS-CHRP age limit"
+identifier: ma_hcbs_chrp_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which a child must be to meet the Children's Habilitation Residential Program waiver target group - 10 CCR 2505-10 § 8.7101.C.2.a (\"Is under 21 years of age\")."
+value: 21
+sources: [S630]
+tags: [ma, hcbs, age]
+rationale: "No existing parameter states the CHRP age limit. ma_hcbs_waiver_age_criteria_met (CO-1164) needs it."
