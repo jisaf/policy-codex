@@ -1,0 +1,15 @@
+id: CO-2885
+name: "Colorado Works: countable work activity hours"
+identifier: cw_countable_work_activity_hours
+kind: derived
+type: hours
+scope: person-month
+program: ColoradoWorks
+meaning: "The hours in the month this person spent in countable work activities under 45 CFR 261.30-261.31: hours of unsubsidized employment (hours_worked) and hours in every other countable activity (cw_work_activity_hours)."
+derived: [+, cw_work_activity_hours, hours_worked]
+sources: [S419, S420]
+implemented: engine
+tags: [cash, tanf]
+rationale: "Dual-entry audit 3.26: employment hours were stated in hours_worked and again inside cw_work_activity_hours. The work participation test reads this sum, so each hour is stated once."
+tests:
+  - {id: CO-2885-T1, title: "60 hours of work and 20 of job search", month: "2026-10", as_of: "2026-10-01", given: {cw_work_activity_hours: 20, hours_worked: 60}, expect: 80}

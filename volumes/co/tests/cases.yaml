@@ -29,6 +29,10 @@
     - [buys_prepares_with, p2, p3]
     - [buys_prepares_with, p3, p4]
     - [buys_prepares_with, p4, p5]
+    - [shares_heat_with, p1, p2]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
+    - [shares_heat_with, p2, p3]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
+    - [shares_heat_with, p3, p4]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
+    - [shares_heat_with, p4, p5]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
   persons:
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
@@ -236,7 +240,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -476,7 +479,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -699,7 +701,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -927,7 +928,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -1149,7 +1149,6 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -2160,6 +2159,10 @@
     - [buys_prepares_with, p2, p3]
     - [buys_prepares_with, p3, p4]
     - [buys_prepares_with, p4, p5]
+    - [shares_heat_with, p1, p2]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
+    - [shares_heat_with, p2, p3]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
+    - [shares_heat_with, p3, p4]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
+    - [shares_heat_with, p4, p5]  # dual-entry 3.5: buys heat in common (was shares_heating_fuel_with on each)
   persons:
     p1:
       facts:
@@ -2367,7 +2370,6 @@
         meets_nursing_facility_level_of_care: true
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -2607,7 +2609,6 @@
         state_of_residence: CO
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -2830,7 +2831,6 @@
         date_of_birth: "1985-01-22"
         citizenship_status: undocumented
         state_of_residence: CO
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -3057,7 +3057,6 @@
         date_of_birth: "2009-04-08"
         citizenship_status: citizen
         state_of_residence: CO
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -3278,7 +3277,6 @@
         date_of_birth: "2026-02-03"
         citizenship_status: citizen
         state_of_residence: CO
-        shares_heating_fuel_with: true
       month_defaults:
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -5556,7 +5554,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hours_worked: 60
-        cw_work_activity_hours: 60
+        cw_work_activity_hours: 0  # dual-entry 3.26: her 60 hours are employment (hours_worked); no other countable activity
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
@@ -5906,6 +5904,7 @@
     - [parent, p2, p3]
     - [stepparent, p2, p4]    # step-parent; adult caretaker under 3.103.C (same-word audit SW-1: stated as stepparent)
     - [buys_prepares_with, p1, p6]
+    - [shares_heat_with, p1, p4]  # dual-entry 3.5: the adult son buys heat with his parent
   persons:
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
@@ -6149,7 +6148,6 @@
         resides_in_medical_institution: false
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
-        shares_heating_fuel_with: true
         snap_countable_liquid_resources: 0
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
