@@ -1,0 +1,13 @@
+id: CO-2376
+name: "Adult Financial: determination is a redetermination"
+identifier: af_determination_is_redetermination
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The Adult Financial determination for this client is a redetermination rather than an application (9 CCR 2503-5 3.520.72.D.4)."
+precision: "If not stated, Adult Financial reads the determination as an application."
+supplied_by: "CBMS case action type (redetermination)."
+sources: [S888]
+tags: [cash, verification]
+rationale: "OQ-373: 3.520.72.D.4 (S888) accepts the client's statement of resources after application until each twenty-four-month redetermination; no Adult Financial renewal fact existed."

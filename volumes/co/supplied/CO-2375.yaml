@@ -1,0 +1,13 @@
+id: CO-2375
+name: "Colorado Works: determination is a redetermination"
+identifier: cw_determination_is_redetermination
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "The Colorado Works determination for this person's assistance unit is a redetermination (recertification) for a new certification period rather than an application (9 CCR 2503-6 3.604.3.K, 3.604.3.B.2.c)."
+precision: "If not stated, Colorado Works reads the determination as an application."
+supplied_by: "CBMS case action type (redetermination)."
+sources: [S1630, S1064]
+tags: [cash, tanf, verification]
+rationale: "OQ-373: only Medical Assistance (CO-1566) and SNAP (CO-1567) had a renewal fact; Colorado Works requires an SSN for which only an application was shown at the initial determination to be verified by the next recertification (3.604.3.B.2.c.1, S1630)."

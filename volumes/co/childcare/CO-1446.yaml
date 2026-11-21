@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CCCAP
-meaning: "Whether a caretaker's court-ordered child support payments must be verified for CCCAP: the payments are deducted only when verified as ordered and paid."
+meaning: "Whether a caretaker's court-ordered child support payments must be verified for CCCAP: the payments are deducted only when verified as ordered and paid, at initial approval and again at each redetermination (3.111.K.2.c)."
 derived: [all, [any, cccap_is_adult_caretaker, cccap_is_teen_parent], [">", child_support_paid_legally_obligated, 0]]
-sources: [S892]
+sources: [S892, S1631]
 implemented: engine
 tags: [verification, income]
 rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.

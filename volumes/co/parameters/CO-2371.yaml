@@ -1,0 +1,12 @@
+id: CO-2371
+name: "Colorado Works good-cause verification period, days after application"
+identifier: cw_verification_good_cause_days
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: "With good cause the client has \"until the twentieth (20th) calendar day following the date of application\" to provide verification (9 CCR 2503-6 3.602.1.I.2)."
+value: 20
+sources: [S1629]
+tags: [cash, tanf, verification]
+rationale: "OQ-316: cw_verification_due_date (CO-1426) counts it from cw_application_date."

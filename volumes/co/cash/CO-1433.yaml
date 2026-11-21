@@ -6,14 +6,17 @@ type: yes/no
 scope: person-month
 program: AdultFinancial
 meaning: "Whether the client's resources must be verified for Adult Financial: all resources other than cash (for which the client's statement is acceptable) and their values, counted or excluded, except that an SSI recipient verified through SVES need not verify resources unless questionable."
-precision: After resources are verified at application, the client's statement is acceptable until each twenty-four-month redetermination (3.520.72.D.4); renewals are not modeled for Adult Financial (OQ-373).
-derived: [all, has_resources_other_than_cash, [any, [not, receives_ssi], resources_attestation_is_questionable]]
+precision: "After resources are verified at application, the client's statement is acceptable until each twenty-four-month redetermination (3.520.72.D.4): at another redetermination resources are verified only when newly reported or questionable (af_determination_is_redetermination, af_redetermination_is_twenty_four_month, af_has_newly_reported_resources, CO-2376 to CO-2378; phase-10 sweep, OQ-373)."
+derived: [all, has_resources_other_than_cash, [any, [not, receives_ssi], resources_attestation_is_questionable], [any, [not, [otherwise, af_determination_is_redetermination, false]], [otherwise, af_redetermination_is_twenty_four_month, false], [otherwise, af_has_newly_reported_resources, false], resources_attestation_is_questionable]]
 sources: [S888]
 implemented: engine
 tags: [verification, cash, resources]
-open: [OQ-373]
 rationale: No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications.
 tests:
   - {id: CO-1433-T1, month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: false}, expect: true}
   - {id: CO-1433-T2, month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: true, resources_attestation_is_questionable: false}, expect: false}
   - {id: CO-1433-T3, month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: false}, expect: false}
+  # Phase-10 sweep (OQ-373): 3.520.72.D.4.
+  - {id: CO-1433-T4, title: "A twelve-month redetermination with nothing new - the client's statement stands", month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: false, resources_attestation_is_questionable: false, af_determination_is_redetermination: true}, expect: false}
+  - {id: CO-1433-T5, title: "The twenty-four-month redetermination - reverified", month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: false, resources_attestation_is_questionable: false, af_determination_is_redetermination: true, af_redetermination_is_twenty_four_month: true}, expect: true}
+  - {id: CO-1433-T6, title: "A newly reported resource - verified when reported", month: "2026-10", as_of: "2026-10-01", given: {has_resources_other_than_cash: true, receives_ssi: false, resources_attestation_is_questionable: false, af_determination_is_redetermination: true, af_has_newly_reported_resources: true}, expect: true}

@@ -1,0 +1,13 @@
+id: CO-2373
+name: "Colorado Works: extended verification date"
+identifier: cw_verification_extended_due_date
+kind: supplied
+type: calendar date
+scope: person
+program: ColoradoWorks
+meaning: "The date until which the county, at the applicant's request, extended the time to obtain necessary verification beyond the forty-five-day processing maximum (9 CCR 2503-6 3.604.3.B.4), as documented in the statewide automated system."
+precision: "Not stated when no extension was granted; Colorado Works then reads the ordinary due date."
+supplied_by: "County worker's extension recorded in CBMS."
+sources: [S1629]
+tags: [cash, tanf, verification]
+rationale: "OQ-316: 3.604.3.B.4 (S1629) lets the county extend the time to obtain verification at its discretion; no fact stated the extension."

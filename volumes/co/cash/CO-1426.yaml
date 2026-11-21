@@ -5,13 +5,17 @@ kind: derived
 type: calendar date
 scope: person
 program: ColoradoWorks
-meaning: "The date by which requested Colorado Works verifications must be returned: eleven calendar days from the written request."
-derived: [days_after, cw_verification_response_days, verification_request_date]
-sources: [S871]
+meaning: "The date by which requested Colorado Works verifications must be returned: eleven calendar days from the written request (3.604.3.A); with good cause, the twentieth calendar day after the date of application when that is later (3.602.1.I.2); or the date to which the county extended the time beyond the forty-five-day processing maximum (3.604.3.B.4)."
+derived: [case, [[not, [unknown, cw_verification_extended_due_date]], cw_verification_extended_due_date], [[all, [otherwise, cw_verification_good_cause_shown, false], [">", [days_after, cw_verification_good_cause_days, cw_application_date], [days_after, cw_verification_response_days, [otherwise, cw_verification_request_date, verification_request_date]]]], [days_after, cw_verification_good_cause_days, cw_application_date]], [else, [days_after, cw_verification_response_days, [otherwise, cw_verification_request_date, verification_request_date]]]]
+sources: [S871, S1629]
 implemented: engine
 tags: [verification, cash, tanf]
-open: [OQ-316]
 rationale: No existing item states when requested Colorado Works verification is due.
 nearest: [CO-1392, CO-1414, CO-1437, CO-1450, CO-1461, CO-1656]
 tests:
   - {id: CO-1426-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-12"}
+  # Phase-10 sweep (OQ-316, OQ-300): good cause, the county's extension and the program's own request date.
+  - {id: CO-1426-T2, title: "Good cause - until the twentieth day after the October 1 application", as_of: "2026-10-01", given: {verification_request_date: "2026-10-02", cw_application_date: "2026-10-01", cw_verification_good_cause_shown: true}, expect: "2026-10-21"}
+  - {id: CO-1426-T3, title: "Good cause never shortens the eleven days", as_of: "2026-10-01", given: {verification_request_date: "2026-10-15", cw_application_date: "2026-10-01", cw_verification_good_cause_shown: true}, expect: "2026-10-26"}
+  - {id: CO-1426-T4, title: "A county extension beyond the forty-five days (3.604.3.B.4)", as_of: "2026-10-01", given: {verification_request_date: "2026-10-02", cw_verification_extended_due_date: "2026-12-01"}, expect: "2026-12-01"}
+  - {id: CO-1426-T5, title: "Colorado Works' own request date replaces the shared checklist date", as_of: "2026-10-01", given: {verification_request_date: "2026-10-02", cw_verification_request_date: "2026-10-09"}, expect: "2026-10-20"}

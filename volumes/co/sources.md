@@ -9842,3 +9842,50 @@ Document: D-81
 > For all cases with eligible members that have earned income (not including disqualified individuals),
 > payment and eligibility will be determined using the income disregards as described below. All payments
 > shall be calculated by using applicable disregards.
+
+### S1629. Colorado Works verification time: eleven days, to the twentieth day after application on good cause; a county may extend processing beyond forty-five days to obtain verification
+
+Document: D-104
+
+9 CCR 2503-6 3.602.1.I.2, 3.604.3.B.4 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> The county department shall allow the client eleven
+> (11) calendar days to provide the missing verifications, unless the client can provide good
+> cause or the verification falls under the programs verification at an individual level
+> described in Section 3.604.3 . If good cause is provided, the client shall have until the
+> twentieth (20th) calendar day following the date of application to provide the necessary
+> verification.
+>
+> 4. An applicant may request an extension of time beyond the forty-five (45) day maximum to
+> process an application for Colorado Works benefits in order to obtain necessary
+> verification. The extension may be provided at county discretion. The worker must
+> document the reason for the extension in the statewide automated system and/or case
+> file.
+
+### S1630. Colorado Works SSN: a client who applied for an SSN at initial determination must have it verified before the next recertification
+
+Document: D-104
+
+9 CCR 2503-6 3.604.3.B.2.c.1-2 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 1) For clients that made application for a SSN at initial eligibility
+> determination, verification of the SSN must be received prior to the next
+> recertification.
+>
+> 2) For clients added to the assistance unit within sixty (60) days of the
+> certification period expiring, verification of the SSN must be received by
+> the following recertification.
+
+### S1631. CCCAP verification at redetermination: the case closes after the fifteen-day noticing period; child support re-verified at each redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.5.e.2, 3.111.K.2.c (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2) At re-determination, if all verifications are not received within
+> the fifteen (15) day noticing period, the CCCAP case will be
+> closed.
+>
+> c. Such verification shall be made at the time of initial approval of
+> eligibility for services and at the time of each re-determination of
+> eligibility.

@@ -1,0 +1,13 @@
+id: CO-2370
+name: "Colorado Works: good cause for late verification"
+identifier: cw_verification_good_cause_shown
+kind: supplied
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "The client has shown good cause for not providing the requested Colorado Works verifications within eleven days, so the client has until the twentieth calendar day after the date of application (9 CCR 2503-6 3.602.1.I.2)."
+precision: "If not stated, Colorado Works reads this as false."
+supplied_by: "County worker's good-cause finding recorded in the case."
+sources: [S1629]
+tags: [cash, tanf, verification]
+rationale: "OQ-316: 3.602.1.I.2 (S1629) allows more time on good cause; no fact stated it, so cw_verification_due_date (CO-1426) used the base eleven days only."

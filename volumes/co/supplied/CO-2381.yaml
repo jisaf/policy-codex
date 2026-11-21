@@ -1,0 +1,13 @@
+id: CO-2381
+name: "Colorado Works: verification request date"
+identifier: cw_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: ColoradoWorks
+meaning: "The date the county department requested the missing Colorado Works verifications in writing (9 CCR 2503-6 3.604.3.A), from which the eleven days and the thirty days for status verification run."
+precision: "If not stated, Colorado Works reads the shared verification_request_date (CO-1343), the single CBMS checklist date."
+supplied_by: "Colorado Works verification request notice."
+sources: [S871, S1064]
+tags: [cash, tanf, verification]
+rationale: "OQ-300: Colorado Works runs its periods from its own written request; one shared verification_request_date (CO-1343) could not state a request on a different date from the other programs'."

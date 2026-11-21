@@ -6,11 +6,10 @@ type: calendar date
 scope: person
 program: ColoradoWorks
 meaning: The last day of the thirty calendar days a Colorado Works client has to provide verification of citizenship, qualified non-citizen status, lawful presence, identity or SSN, from the written request.
-derived: [days_after, cw_status_verification_days, verification_request_date]
+derived: [days_after, cw_status_verification_days, [otherwise, cw_verification_request_date, verification_request_date]]
 sources: [S1064]
 implemented: engine
 tags: [verification, cash, tanf]
-open: [OQ-300]
 rationale: "Review C-9: the eleven-day due date (CO-1426) applied to every element; 3.604.3.K gives these elements thirty days."
 nearest: [CO-1426, CO-1437, CO-1450, CO-1461, CO-1392, CO-1414]
 tests:
