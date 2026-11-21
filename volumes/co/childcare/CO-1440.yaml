@@ -1,0 +1,17 @@
+id: CO-1440
+name: "CCCAP: requires verification of residency"
+identifier: cccap_requires_verification_of_residency
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether the person's residence must be verified for CCCAP: every adult caretaker and teen parent must be a verified resident of the county."
+derived: [any, cccap_is_adult_caretaker, cccap_is_teen_parent]
+sources: [S890]
+implemented: engine
+tags: [verification, household]
+rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1440-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: true}, expect: true}
+  - {id: CO-1440-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: false, cccap_is_teen_parent: true}, expect: true}
+  - {id: CO-1440-T3, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: false, cccap_is_teen_parent: false}, expect: false}

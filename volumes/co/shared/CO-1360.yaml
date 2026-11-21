@@ -1,0 +1,18 @@
+id: CO-1360
+name: SSN is verified
+identifier: ssn_is_verified
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person's Social Security number requirement is satisfied: SSA has verified the number, or the person has furnished the number or proof of an application for one."
+derived: [any, ssn_verified_by_electronic_data_source, ssn_verification_document_received]
+sources: [S804, S843, S878, S884]
+implemented: engine
+tags: [verification]
+open: [OQ-321]
+rationale: Every program's SSN rule is satisfied the same way (S804, S843, S878, S884); no existing item combines the two facts.
+tests:
+  - {id: CO-1360-T1, as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: true}, expect: true}
+  - {id: CO-1360-T2, as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: true}, expect: true}
+  - {id: CO-1360-T3, as_of: "2026-10-01", given: {ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false}, expect: false}

@@ -1,0 +1,18 @@
+id: CO-1434
+name: "Adult Financial: requires verification of earned income"
+identifier: af_requires_verification_of_earned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the client's earned income must be verified for Adult Financial: wages (wage data from the Department of Labor is not verified upon receipt), and self-employment income only when its documentation is questionable."
+derived: [any, [">", earned_income, 0], [all, [">", self_employment_net_income, 0], earned_income_attestation_is_questionable]]
+sources: [S879, S880, S889]
+implemented: engine
+tags: [verification, cash, income]
+open: [OQ-317]
+rationale: No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications.
+tests:
+  - {id: CO-1434-T1, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 300}, expect: true}
+  - {id: CO-1434-T2, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 200, earned_income_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1434-T3, month: "2026-10", as_of: "2026-10-01", given: {earned_income: 0, self_employment_net_income: 200, earned_income_attestation_is_questionable: true}, expect: true}

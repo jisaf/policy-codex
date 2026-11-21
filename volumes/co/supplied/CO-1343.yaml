@@ -1,0 +1,14 @@
+id: CO-1343
+name: Verification request date
+identifier: verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: The date of the agency's written request to the person for the verification still missing (the verification checklist, or for Medical Assistance citizenship or immigration status the notice that opens the reasonable opportunity period), from which each program's period to provide it runs.
+precision: One date for the person across programs; a case in which programs send separate requests on different dates states the earliest outstanding request (OQ-300).
+supplied_by: Date of the CBMS verification checklist or Notice of Action sent to the applicant.
+sources: [S813, S871, S841]
+tags: [verification]
+open: [OQ-300]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

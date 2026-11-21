@@ -1,0 +1,20 @@
+id: CO-1438
+name: "Adult Financial: verification status"
+identifier: af_verification_status
+kind: derived
+type: one of
+options: [complete, pending, past_due]
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: "Where this client's Adult Financial verification stands: complete, pending before the due date, or past due, after which the county may deny for failure to return verifications."
+precision: Age, residency and identity are verified for every client, so there is no not-required state.
+derived: [case, [["=", af_pending_verification_count, 0], complete], [["<=", [det_date], af_verification_due_date], pending], [else, past_due]]
+sources: [S879]
+implemented: engine
+tags: [verification, cash, oap, and]
+rationale: No existing item reports Adult Financial verification standing.
+tests:
+  - {id: CO-1438-T1, month: "2026-10", as_of: "2026-10-01", given: {af_pending_verification_count: 0}, expect: complete}
+  - {id: CO-1438-T2, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-05", af_pending_verification_count: 2, af_verification_due_date: "2026-10-12"}, expect: pending}
+  - {id: CO-1438-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", af_pending_verification_count: 2, af_verification_due_date: "2026-10-12"}, expect: past_due}

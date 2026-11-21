@@ -1,0 +1,12 @@
+id: CO-1309
+name: Immigration status verification document received
+identifier: immigration_status_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person has submitted documentation of the declared immigration status (an I-94, I-551, employment authorization document, USCIS or HHS letter, or similar) that the agency can submit to USCIS for verification.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S802, S873]
+tags: [verification, immigration]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

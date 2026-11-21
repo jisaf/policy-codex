@@ -1,0 +1,12 @@
+id: CO-1352
+name: Colorado Works lawful presence minimum age
+identifier: cw_lawful_presence_min_age
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: The age from which a Colorado Works client must establish lawful presence in the United States by producing a listed document.
+value: 18
+sources: [S877]
+tags: [verification, cash, tanf, age]
+rationale: 9 CCR 2503-6 3.604.3.I.4 (S877) applies the lawful-presence requirement to persons eighteen or older; cw_dependent_child_age_limit (CO-270) is also 18 but means the dependent-child age limit, a different rule that could change independently.

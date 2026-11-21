@@ -59,6 +59,51 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: true
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: true
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -213,6 +258,51 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: true
+        immigration_status_verification_document_received: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: true
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -369,6 +459,52 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: true
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: false
+        ssn_verification_document_received: false
+        residency_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+        identity_verification_document_type: colorado_drivers_license_or_id
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -497,6 +633,51 @@
         leap_benefit_maximum: 1000
         school_meal_household_size: 4
         school_meal_household_income: 3560
+        # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -624,6 +805,51 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: false
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -773,6 +999,16 @@
   # SSI-related or Buy-In group, is not institutionalized, and (per C-3) has
   # no patient payment.
   expect:
+    # Verification (phase 9). Checklist sent 2026-10-01; electronic matches verify the grandparents'
+    # identity, SSNs, Social Security income and age, p1's citizenship (SSA) and p2's status (SAVE).
+    # Outstanding: p2's residency (SNAP head of household) and p3's pay stubs (wages: DOLE data is not
+    # verified upon receipt), so the SNAP household is pending (2) within the 10 days; the
+    # grandparents' resources for the ABD Medicaid and Adult Financial determinations; p4's
+    # citizenship and identity, which no SSA match confirmed, so p4 is covered during the 90-day
+    # reasonable opportunity period from receipt of the notice (to 2027-01-04). p5 is a deemed
+    # newborn, exempt from citizenship and SSN verification for Medicaid; Colorado Works still asks
+    # for every client's citizenship (OQ-314). CCCAP (p4 the teen parent) awaits p4's residency and
+    # school-enrollment activity documents and p3's pay stubs (3).
     p1:
       # Phase 7 outcomes. Emergency: p3 (undocumented, MAGI adult) fails only status, so ma_is_emergency_medicaid_only
       # is true; she had an emergency medical condition in October (stated), so eligible_emergency_condition. Everyone else
@@ -841,6 +1077,20 @@
       snap_eligibility_status: {"2026-10": no_eligible_members}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-10": not_required}
+      snap_pending_verification_count: {"2026-10": 0}
+      ma_verification_status: {"2026-10": pending}
+      ma_pending_verification_count: {"2026-10": 1}
+      chp_verification_status: {"2026-10": complete}
+      chp_pending_verification_count: {"2026-10": 0}
+      cw_verification_status: {"2026-10": pending}
+      cw_pending_verification_count: {"2026-10": 1}
+      af_verification_status: {"2026-10": pending}
+      af_pending_verification_count: {"2026-10": 2}
+      cccap_verification_status: {"2026-10": complete}
+      cccap_pending_verification_count: {"2026-10": 0}
+      leap_verification_status: {"2026-10": pending}
+      leap_pending_verification_count: {"2026-10": 2}
     p2:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -893,6 +1143,20 @@
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-10": pending}
+      snap_pending_verification_count: {"2026-10": 2}
+      ma_verification_status: {"2026-10": pending}
+      ma_pending_verification_count: {"2026-10": 1}
+      chp_verification_status: {"2026-10": complete}
+      chp_pending_verification_count: {"2026-10": 0}
+      cw_verification_status: {"2026-10": pending}
+      cw_pending_verification_count: {"2026-10": 1}
+      af_verification_status: {"2026-10": pending}
+      af_pending_verification_count: {"2026-10": 2}
+      cccap_verification_status: {"2026-10": complete}
+      cccap_pending_verification_count: {"2026-10": 0}
+      leap_verification_status: {"2026-10": pending}
+      leap_pending_verification_count: {"2026-10": 2}
     p3:
       ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -946,6 +1210,18 @@
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-10": pending}
+      snap_pending_verification_count: {"2026-10": 2}
+      ma_verification_status: {"2026-10": pending}
+      ma_pending_verification_count: {"2026-10": 1}
+      chp_verification_status: {"2026-10": pending}
+      chp_pending_verification_count: {"2026-10": 1}
+      cw_verification_status: {"2026-10": pending}
+      cw_pending_verification_count: {"2026-10": 3}
+      cccap_verification_status: {"2026-10": pending}
+      cccap_pending_verification_count: {"2026-10": 3}
+      leap_verification_status: {"2026-10": pending}
+      leap_pending_verification_count: {"2026-10": 5}
     p4:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
@@ -1000,6 +1276,18 @@
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-10": pending}
+      snap_pending_verification_count: {"2026-10": 2}
+      ma_verification_status: {"2026-10": pending_reasonable_opportunity}
+      ma_pending_verification_count: {"2026-10": 2}
+      chp_verification_status: {"2026-10": pending_reasonable_opportunity}
+      chp_pending_verification_count: {"2026-10": 2}
+      cw_verification_status: {"2026-10": pending}
+      cw_pending_verification_count: {"2026-10": 2}
+      cccap_verification_status: {"2026-10": pending}
+      cccap_pending_verification_count: {"2026-10": 3}
+      leap_verification_status: {"2026-10": pending}
+      leap_pending_verification_count: {"2026-10": 5}
     p5:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
@@ -1046,6 +1334,18 @@
       snap_eligibility_status: {"2026-10": eligible}
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-10": pending}
+      snap_pending_verification_count: {"2026-10": 2}
+      ma_verification_status: {"2026-10": not_required}
+      ma_pending_verification_count: {"2026-10": 0}
+      chp_verification_status: {"2026-10": not_required}
+      chp_pending_verification_count: {"2026-10": 0}
+      cw_verification_status: {"2026-10": pending}
+      cw_pending_verification_count: {"2026-10": 2}
+      cccap_verification_status: {"2026-10": pending}
+      cccap_pending_verification_count: {"2026-10": 3}
+      leap_verification_status: {"2026-10": pending}
+      leap_pending_verification_count: {"2026-10": 5}
 
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
@@ -1095,6 +1395,51 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: true
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: true
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: true
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: true
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1247,6 +1592,51 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: true
+        immigration_status_verification_document_received: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: true
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: true
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: true
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1401,6 +1791,52 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: true
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: false
+        ssn_verification_document_received: false
+        residency_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: true
+        identity_verification_document_type: colorado_drivers_license_or_id
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1528,6 +1964,51 @@
         leap_benefit_maximum: 1000
         school_meal_household_size: 4
         school_meal_household_income: 3560
+        # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: true
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -1653,6 +2134,51 @@
         lives_in_subsidized_housing: false
         leap_benefit_minimum: 100
         leap_benefit_maximum: 1000
+        # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        verification_request_date: "2026-10-01"
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_referred_for_colorado_works_child_care: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: false
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: true
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1784,6 +2310,11 @@
   # eligibility per C-3, is 2030 - 75 - 1740 = 215. p2 (community spouse) has
   # no patient payment.
   expect:
+    # Verification (phase 9). By November the residency, resource, pay-stub, activity and heating
+    # documents have come in. p4's citizenship and identity are still outstanding: Medicaid and CHP+
+    # remain in the reasonable opportunity period, while Colorado Works (11 days) is past due for p4
+    # and p5. p3, undocumented, has no SSN: Colorado Works and LEAP count it as missing (LEAP would
+    # exclude her rather than deny, OQ-318), so those statuses read past_due.
     p1:
       # Phase 7 outcomes: as CO-01, except that p3 has no emergency medical condition in November, so she stays
       # emergency-eligible with nothing to pay for (eligible_no_current_emergency; 8.100.3.G.1.g.ix.2 does not make her
@@ -1846,6 +2377,20 @@
       snap_eligibility_status: {"2026-11": no_eligible_members}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-11": not_required}
+      snap_pending_verification_count: {"2026-11": 0}
+      ma_verification_status: {"2026-11": complete}
+      ma_pending_verification_count: {"2026-11": 0}
+      chp_verification_status: {"2026-11": complete}
+      chp_pending_verification_count: {"2026-11": 0}
+      cw_verification_status: {"2026-11": complete}
+      cw_pending_verification_count: {"2026-11": 0}
+      af_verification_status: {"2026-11": complete}
+      af_pending_verification_count: {"2026-11": 0}
+      cccap_verification_status: {"2026-11": complete}
+      cccap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": complete}
+      leap_pending_verification_count: {"2026-11": 0}
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -1902,6 +2447,20 @@
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-11": complete}
+      snap_pending_verification_count: {"2026-11": 0}
+      ma_verification_status: {"2026-11": complete}
+      ma_pending_verification_count: {"2026-11": 0}
+      chp_verification_status: {"2026-11": complete}
+      chp_pending_verification_count: {"2026-11": 0}
+      cw_verification_status: {"2026-11": complete}
+      cw_pending_verification_count: {"2026-11": 0}
+      af_verification_status: {"2026-11": complete}
+      af_pending_verification_count: {"2026-11": 0}
+      cccap_verification_status: {"2026-11": complete}
+      cccap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": complete}
+      leap_pending_verification_count: {"2026-11": 0}
     p3:
       ma_emergency_medicaid_status: {"2026-11": eligible_no_current_emergency}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -1952,6 +2511,18 @@
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-11": complete}
+      snap_pending_verification_count: {"2026-11": 0}
+      ma_verification_status: {"2026-11": complete}
+      ma_pending_verification_count: {"2026-11": 0}
+      chp_verification_status: {"2026-11": complete}
+      chp_pending_verification_count: {"2026-11": 0}
+      cw_verification_status: {"2026-11": past_due}
+      cw_pending_verification_count: {"2026-11": 1}
+      cccap_verification_status: {"2026-11": complete}
+      cccap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": past_due}
+      leap_pending_verification_count: {"2026-11": 1}
     p4:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
@@ -2006,6 +2577,18 @@
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-11": complete}
+      snap_pending_verification_count: {"2026-11": 0}
+      ma_verification_status: {"2026-11": pending_reasonable_opportunity}
+      ma_pending_verification_count: {"2026-11": 2}
+      chp_verification_status: {"2026-11": pending_reasonable_opportunity}
+      chp_pending_verification_count: {"2026-11": 2}
+      cw_verification_status: {"2026-11": past_due}
+      cw_pending_verification_count: {"2026-11": 2}
+      cccap_verification_status: {"2026-11": complete}
+      cccap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": past_due}
+      leap_pending_verification_count: {"2026-11": 1}
     p5:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
@@ -2052,6 +2635,18 @@
       snap_eligibility_status: {"2026-11": eligible}
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
+      snap_verification_status: {"2026-11": complete}
+      snap_pending_verification_count: {"2026-11": 0}
+      ma_verification_status: {"2026-11": not_required}
+      ma_pending_verification_count: {"2026-11": 0}
+      chp_verification_status: {"2026-11": not_required}
+      chp_pending_verification_count: {"2026-11": 0}
+      cw_verification_status: {"2026-11": past_due}
+      cw_pending_verification_count: {"2026-11": 2}
+      cccap_verification_status: {"2026-11": complete}
+      cccap_pending_verification_count: {"2026-11": 0}
+      leap_verification_status: {"2026-11": past_due}
+      leap_pending_verification_count: {"2026-11": 1}
 
 - id: CO-03
   title: Elderly couple, one with Medicare and out-of-pocket medical expenses; no SUA rule yet
@@ -4078,3 +4673,265 @@
       cw_grant_amount: {"2026-11": 366}
       sebt_eligibility_status: {"2026-11": eligible_categorical}
       sebt_benefit_amount: {"2026-11": 120}
+- id: CO-91
+  title: Homeless father and daughter three months after applying; expedited SNAP with deductions disallowed; Medicaid reasonable opportunity expired; Colorado Works and CCCAP past due
+  # Phase 9 (verification) complex case. p1 applied on 2026-11-02 while homeless and out of work, with
+  # $20 in cash; the checklist went out the same day. DMV and SSA matches verified his identity and both
+  # SSNs, but no SSA match confirmed his citizenship and he has supplied no citizenship document. He
+  # pays $150 a month of court-ordered child support for an older child and $200 a month for after-school
+  # care while he looks for work (CCCAP job search). His daughter's birth certificate and a school record
+  # are in. The case is evaluated on 2027-02-10, after every program's period has run.
+  as_of: "2027-02-10"
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # Father, 34, U.S. citizen, homeless, no income, in job search.
+      facts:
+        date_of_birth: "1992-08-15"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_homeless: true
+        is_head_of_household: true
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_medicare_entitled_or_enrolled: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        is_enrolled_in_school: false
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_in_job_search_activity: true
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_financially_contributing_to_child: true
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_referred_for_colorado_works_child_care: false
+        is_responsible_for_heating_costs: false
+        has_primary_heating_source: false
+        is_emancipated_minor: false
+        marital_status: single
+        countable_liquid_resources: 20
+        countable_nonliquid_resources_snap: 0
+        countable_resources_individual: 20
+        utility_allowance_amount: 0
+        application_date: "2026-11-02"
+        # Verification facts.
+        verification_request_date: "2026-11-02"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        hours_worked: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 150
+        dependent_care_expense: 200
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+    p2:
+      # Daughter, 6, U.S. citizen, first grade.
+      facts:
+        date_of_birth: "2020-05-20"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_homeless: true
+        is_head_of_household: false
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_medicare_entitled_or_enrolled: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        is_enrolled_in_school: true
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_in_job_search_activity: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_referred_for_colorado_works_child_care: false
+        is_responsible_for_heating_costs: false
+        has_primary_heating_source: false
+        is_emancipated_minor: false
+        marital_status: single
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        countable_resources_individual: 0
+        utility_allowance_amount: 0
+        application_date: "2026-11-02"
+        verification_request_date: "2026-11-02"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        identity_verification_document_type: child_medical_or_school_record
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: true
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        hours_worked: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+  expect:
+    # SNAP: expedited ($0 income, $20 cash); identity was verified, so verification could be postponed to
+    # 2026-12-02, but that has passed, as has the 10-day due date (2026-11-12). Only the child support and
+    # dependent care expenses are unverified (2), so the household is certified without those deductions
+    # (273.2(f)(3)(ii), 4.502.A.3). Residency is not required of a homeless household.
+    # Medicaid: p1's citizenship (no SSA match, no document) is the only pending element; the DMV match
+    # verified his identity. The reasonable opportunity period ran from receipt of the notice
+    # (2026-11-07) for 90 days to 2027-02-05, so it has expired. p2's birth certificate plus a school
+    # record (acceptable identity for a child under 19) complete hers. CHP+ reads the same elements.
+    # Colorado Works (unit p1, p2): p1's citizenship and residency (no homeless exception in 3.604.3.B.2.f)
+    # are 2 outstanding, past the 11-day due date. CCCAP: p1's residency and child support paid (job
+    # search activity verified), past the 15-day period. LEAP: only SSNs required (no heating costs), complete.
+    p1:
+      snap_expedited_postponement_end_date: 2026-12-02
+      snap_verification_due_date: 2026-11-12
+      snap_person_pending_expense_verification_count: {2027-02: 2}
+      snap_person_pending_verification_count: {2027-02: 0}
+      snap_verification_status: {2027-02: expenses_disallowed}
+      snap_pending_verification_count: {2027-02: 2}
+      ma_reasonable_opportunity_period_end_date: 2027-02-05
+      ma_pending_status_verification_count: {2027-02: 1}
+      ma_verification_status: {2027-02: reasonable_opportunity_expired}
+      ma_pending_verification_count: {2027-02: 1}
+      chp_verification_status: {2027-02: reasonable_opportunity_expired}
+      chp_pending_verification_count: {2027-02: 1}
+      cw_verification_due_date: 2026-11-13
+      cw_verification_status: {2027-02: past_due}
+      cw_pending_verification_count: {2027-02: 2}
+      cccap_verification_status: {2027-02: past_due}
+      cccap_pending_verification_count: {2027-02: 2}
+      leap_verification_status: {2027-02: complete}
+      leap_pending_verification_count: {2027-02: 0}
+    p2:
+      snap_verification_status: {2027-02: expenses_disallowed}
+      ma_requires_verification_of_identity: {2027-02: true}
+      ma_identity_document_is_acceptable: true
+      ma_verification_status: {2027-02: complete}
+      ma_pending_verification_count: {2027-02: 0}
+      chp_verification_status: {2027-02: complete}
+      cw_verification_status: {2027-02: past_due}
+      cccap_verification_status: {2027-02: past_due}
+      leap_verification_status: {2027-02: complete}

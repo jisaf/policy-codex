@@ -1,0 +1,12 @@
+id: CO-1347
+name: Medicaid reasonable opportunity period days
+identifier: ma_reasonable_opportunity_period_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The length in days of the reasonable opportunity period in which a person who declared citizenship or a satisfactory immigration status that could not be verified electronically may provide documentation while receiving benefits.
+value: 90
+sources: [S841, S853, S859, S850]
+tags: [verification, ma, immigration]
+rationale: 42 CFR 435.956(b)(2)(ii)(A) (S841), 42 U.S.C. 1396a(ee)(1)(B)(ii)(II) (S850) and 10 CCR 2505-10 8.100.3.G.3 and H.9.b (S853, S859) all state 90 days; no item carried the period.

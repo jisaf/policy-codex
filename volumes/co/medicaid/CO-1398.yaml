@@ -1,0 +1,18 @@
+id: CO-1398
+name: "Medicaid: requires verification of identity"
+identifier: ma_requires_verification_of_identity
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person's identity must be verified separately for Medical Assistance: when citizenship must be verified and it has not been established by an SSA match or by a stand-alone document, which establish identity too."
+derived: [all, ma_requires_verification_of_citizenship, [not, citizenship_verified_by_electronic_data_source], [not, [all, citizenship_verification_document_received, ma_citizenship_document_is_stand_alone]]]
+sources: [S846, S854, S856, S849]
+implemented: engine
+tags: [verification, ma]
+rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
+tests:
+  - {id: CO-1398-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, ma_citizenship_document_is_stand_alone: false}, expect: true}
+  - {id: CO-1398-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: true}, expect: false}
+  - {id: CO-1398-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_citizenship: true, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, ma_citizenship_document_is_stand_alone: true}, expect: false}
+  - {id: CO-1398-T4, month: "2026-10", as_of: "2026-10-01", given: {ma_requires_verification_of_citizenship: false}, expect: false}

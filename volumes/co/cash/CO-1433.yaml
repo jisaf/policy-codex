@@ -1,0 +1,18 @@
+id: CO-1433
+name: "Adult Financial: requires verification of resources"
+identifier: af_requires_verification_of_resources
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the client's resources must be verified for Adult Financial: all resources and their values, except that an SSI recipient verified through SVES need not verify resources unless questionable."
+precision: Client statement is acceptable verification for cash (3.520.72.D.5); this item does not separate cash from other resources.
+derived: [all, [">", af_countable_resources, 0], [any, [not, receives_ssi], resources_attestation_is_questionable]]
+sources: [S888]
+implemented: engine
+tags: [verification, cash, resources]
+rationale: No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications.
+tests:
+  - {id: CO-1433-T1, month: "2026-10", as_of: "2026-10-01", given: {af_countable_resources: 1500, receives_ssi: false}, expect: true}
+  - {id: CO-1433-T2, month: "2026-10", as_of: "2026-10-01", given: {af_countable_resources: 1500, receives_ssi: true, resources_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1433-T3, month: "2026-10", as_of: "2026-10-01", given: {af_countable_resources: 0}, expect: false}

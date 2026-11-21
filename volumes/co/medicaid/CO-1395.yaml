@@ -1,0 +1,19 @@
+id: CO-1395
+name: "Medicaid: requires verification of citizenship"
+identifier: ma_requires_verification_of_citizenship
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person's declared citizenship must be verified for Medical Assistance: always for a person declaring citizenship, except SSI recipients, persons entitled to or enrolled in Medicare, Social Security disability recipients, children in Title IV-B foster care or receiving Title IV-E payments, and newborns deemed eligible through their mother's coverage."
+derived: [all, claims_citizenship, [not, [any, receives_ssi, is_medicare_entitled_or_enrolled, receives_social_security_disability, receives_title_iv_foster_adoption_kinship_payment, mother_was_enrolled_in_medicaid_at_birth]]]
+sources: [S844, S854, S849]
+implemented: engine
+tags: [verification, ma, immigration]
+open: [OQ-324]
+rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
+tests:
+  - {id: CO-1395-T1, month: "2026-10", as_of: "2026-10-01", given: {citizenship_status: citizen, receives_ssi: false, is_medicare_entitled_or_enrolled: false, receives_social_security_disability: false, receives_title_iv_foster_adoption_kinship_payment: false, mother_was_enrolled_in_medicaid_at_birth: false}, expect: true}
+  - {id: CO-1395-T2, month: "2026-10", as_of: "2026-10-01", given: {citizenship_status: citizen, receives_ssi: false, is_medicare_entitled_or_enrolled: true}, expect: false}
+  - {id: CO-1395-T3, month: "2026-10", as_of: "2026-10-01", given: {citizenship_status: citizen, receives_ssi: false, is_medicare_entitled_or_enrolled: false, receives_social_security_disability: false, receives_title_iv_foster_adoption_kinship_payment: false, mother_was_enrolled_in_medicaid_at_birth: true}, expect: false}
+  - {id: CO-1395-T4, month: "2026-10", as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: false}

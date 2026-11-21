@@ -1,0 +1,12 @@
+id: CO-1344
+name: Electronic data source household income as percent of FPL
+identifier: electronic_data_source_household_income_pct_fpl
+kind: supplied
+type: rate
+scope: person-month
+program: All
+meaning: The monthly household income an electronic data source match (IEVS, the Federal Data Services Hub, The Work Number) reports for the person's Medical Assistance household, as a fraction of the federal poverty guideline for that household's size, for comparison with the attested figure.
+supplied_by: CBMS electronic income match for the MAGI household.
+sources: [S864]
+tags: [verification, income, ma]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

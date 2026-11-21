@@ -1,0 +1,13 @@
+id: CO-1349
+name: Medicaid income reasonable opportunity days
+identifier: ma_income_reasonable_opportunity_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: The number of calendar days a Medical Assistance applicant has to give a reasonable explanation or documentation when attested income is not reasonably compatible with electronic data, used in this volume as the period for any documentation other than citizenship, identity and immigration status.
+value: 30
+sources: [S864, S867]
+tags: [verification, ma, income]
+open: [OQ-303]
+rationale: 10 CCR 2505-10 8.100.4.C.2 and 8.100.5.B.1.c (S864, S867) state a 30-calendar-day reasonable opportunity period for income discrepancies; no item carried it.

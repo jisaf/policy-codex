@@ -35,25 +35,25 @@ programs:
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_emergency_medicaid_status, ma_bccp_eligibility_status, ma_family_planning_status, ma_oap_health_care_status, ma_protected_group_category]
+    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_emergency_medicaid_status, ma_bccp_eligibility_status, ma_family_planning_status, ma_oap_health_care_status, ma_protected_group_category, ma_verification_status, ma_pending_verification_count]
   - id: CHP+
     prefix: chp_
-    outcomes: [chp_eligibility_status]
+    outcomes: [chp_eligibility_status, chp_verification_status, chp_pending_verification_count]
   - id: SNAP
     prefix: snap_
-    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status]
+    outcomes: [snap_eligibility_status, snap_allotment, snap_abawd_time_limit_status, snap_verification_status, snap_pending_verification_count]
   - id: ColoradoWorks
     prefix: cw_
-    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible]
+    outcomes: [cw_grant_amount, cw_eligibility_status, cw_diversion_eligible, cw_verification_status, cw_pending_verification_count]
   - id: AdultFinancial
     prefix: af_
-    outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit]
+    outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit, af_verification_status, af_pending_verification_count]
   - id: CCCAP
     prefix: cccap_
-    outcomes: [cccap_eligibility_status, cccap_parent_fee]
+    outcomes: [cccap_eligibility_status, cccap_parent_fee, cccap_verification_status, cccap_pending_verification_count]
   - id: LEAP
     prefix: leap_
-    outcomes: [leap_is_eligible, leap_benefit_amount]
+    outcomes: [leap_is_eligible, leap_benefit_amount, leap_verification_status, leap_pending_verification_count]
   - id: SunBucks
     prefix: sebt_
     outcomes: [sebt_eligibility_status, sebt_benefit_amount]
@@ -88,6 +88,7 @@ tags:
   - { id: legal, label: Legal review }
   - { id: medical, label: Medical determination }
   - { id: state_election, label: State election }
+  - { id: verification, label: Verification and documentation }
 
 types:
   - yes/no

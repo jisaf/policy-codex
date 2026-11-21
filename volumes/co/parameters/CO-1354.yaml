@@ -1,0 +1,12 @@
+id: CO-1354
+name: CCCAP verification response days
+identifier: cccap_verification_response_days
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: The number of days in the CCCAP noticing period within which requested income and other verification must be returned before the application is denied.
+value: 15
+sources: [S891]
+tags: [verification]
+rationale: 8 CCR 1403-1 3.111.H.5.e (S891) denies an application when verifications are not returned within the fifteen-day noticing period; no item carried it.

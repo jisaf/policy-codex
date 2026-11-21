@@ -1,0 +1,17 @@
+id: CO-1411
+name: "Medicaid: pending verification count"
+identifier: ma_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: Medicaid
+role: outcome
+meaning: "The number of verification elements Medical Assistance requires for this person that are not yet verified: the pending status elements plus SSN, earned and unearned income, resources, pregnancy, residency, age and household composition."
+derived: ["+", ma_pending_status_verification_count, [case, [[all, ma_requires_verification_of_ssn, [not, ssn_is_verified]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_earned_income, [not, earned_income_verification_document_received]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_unearned_income, [not, unearned_income_is_verified]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_resources, [not, resources_are_verified]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_pregnancy, [not, pregnancy_verification_document_received]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_residency, [not, residency_verification_document_received]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_age, [not, age_is_verified]], 1], [else, 0]], [case, [[all, ma_requires_verification_of_household_composition, [not, household_composition_verification_document_received]], 1], [else, 0]]]
+sources: [S851, S863, S866]
+implemented: engine
+tags: [verification, ma]
+rationale: No existing item counts a person's outstanding Medical Assistance verifications.
+tests:
+  - {id: CO-1411-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_pending_status_verification_count: 1, ma_requires_verification_of_ssn: false, ma_requires_verification_of_earned_income: true, ma_requires_verification_of_unearned_income: false, ma_requires_verification_of_resources: false, ma_requires_verification_of_pregnancy: false, ma_requires_verification_of_residency: false, ma_requires_verification_of_age: false, ma_requires_verification_of_household_composition: false, earned_income_verification_document_received: false}, expect: 2}
+  - {id: CO-1411-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_pending_status_verification_count: 0, ma_requires_verification_of_ssn: false, ma_requires_verification_of_earned_income: false, ma_requires_verification_of_unearned_income: false, ma_requires_verification_of_resources: false, ma_requires_verification_of_pregnancy: false, ma_requires_verification_of_residency: false, ma_requires_verification_of_age: false, ma_requires_verification_of_household_composition: false}, expect: 0}

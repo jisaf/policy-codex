@@ -1,0 +1,17 @@
+id: CO-1442
+name: "CCCAP: requires verification of citizenship"
+identifier: cccap_requires_verification_of_citizenship
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether the citizenship of a child for whom care is requested must be verified for CCCAP: the signed application's attestation suffices unless the county finds it inconsistent."
+derived: [all, cccap_is_eligible_child, citizenship_attestation_is_questionable]
+sources: [S890]
+implemented: engine
+tags: [verification, immigration, age]
+rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1442-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, citizenship_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1442-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, citizenship_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1442-T3, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: false}, expect: false}

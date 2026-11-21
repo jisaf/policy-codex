@@ -1,0 +1,17 @@
+id: CO-1430
+name: "Adult Financial: requires verification of SSN"
+identifier: af_requires_verification_of_ssn
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether the client must furnish a Social Security number (or proof of applying) for Adult Financial: every client who has or can obtain one, except an Old Age Pension client who is not a citizen."
+derived: [all, [not, ssn_exception_applies], [not, [all, af_is_oap_age, [not, claims_citizenship]]]]
+sources: [S884]
+implemented: engine
+tags: [verification, cash, oap, and]
+rationale: No existing item states this Adult Financial verification requirement; the phase-9 chapter needs it to count the client's pending verifications.
+tests:
+  - {id: CO-1430-T1, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: false, date_of_birth: "1980-01-01", citizenship_status: citizen}, expect: true}
+  - {id: CO-1430-T2, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: false, date_of_birth: "1950-01-01", citizenship_status: lawful_permanent_resident}, expect: false}
+  - {id: CO-1430-T3, month: "2026-10", as_of: "2026-10-01", given: {ssn_exception_applies: true}, expect: false}

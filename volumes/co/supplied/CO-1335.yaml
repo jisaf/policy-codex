@@ -1,0 +1,12 @@
+id: CO-1335
+name: Pregnancy attestation is questionable
+identifier: pregnancy_attestation_is_questionable
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the agency has information that is not reasonably compatible with the person's attestation of pregnancy (42 CFR 435.956(e), 457.380(e)).
+supplied_by: Eligibility worker's documented determination in CBMS case comments.
+sources: [S842, S868]
+tags: [verification]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

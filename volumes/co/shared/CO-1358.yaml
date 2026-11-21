@@ -1,0 +1,17 @@
+id: CO-1358
+name: Claims citizenship
+identifier: claims_citizenship
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person has declared U.S. citizenship or nationality on the application, the declaration whose verification each program's citizenship rule governs.
+derived: [in, citizenship_status, [citizen, us_national]]
+sources: [S844, S854, S872]
+implemented: engine
+tags: [verification, immigration]
+rationale: 42 CFR 435.406(a)(1)(i) and 8.100.3.H.1 (S844, S854) attach verification to a declaration of citizenship, and Colorado Works verifies every client's citizenship (3.604.3.B.2.b, S872); the volume's citizenship items (ma_meets_citizenship_requirement, CO-509; snap_meets_citizenship_requirement, CO-309) test eligibility, not the declaration.
+tests:
+  - {id: CO-1358-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-1358-T2, as_of: "2026-10-01", given: {citizenship_status: us_national}, expect: true}
+  - {id: CO-1358-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident}, expect: false}

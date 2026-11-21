@@ -1,0 +1,17 @@
+id: CO-1441
+name: "CCCAP: requires verification of eligible activity"
+identifier: cccap_requires_verification_of_eligible_activity
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether the person's low-income eligible activity must be verified for CCCAP: every adult caretaker and teen parent, except in a protective services case or a Colorado Works child care referral, where the activity requirement comes from that program."
+derived: [all, [any, cccap_is_adult_caretaker, cccap_is_teen_parent], [not, is_protective_services_child_care_case], [not, is_referred_for_colorado_works_child_care]]
+sources: [S890]
+implemented: engine
+tags: [verification, household]
+rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1441-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: true, is_protective_services_child_care_case: false, is_referred_for_colorado_works_child_care: false}, expect: true}
+  - {id: CO-1441-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: true, is_protective_services_child_care_case: true}, expect: false}
+  - {id: CO-1441-T3, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_adult_caretaker: false, cccap_is_teen_parent: false}, expect: false}

@@ -1,0 +1,18 @@
+id: CO-1377
+name: "SNAP: requires verification of unearned income"
+identifier: snap_requires_verification_of_unearned_income
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether the person's unearned income must be verified for SNAP: always when received, as gross nonexempt income, except that a basic categorically eligible household is not asked again unless questionable."
+derived: [all, snap_is_household_member, [">", snap_person_unearned_income, 0], [any, [not, ["=", snap_eligibility_category, basic_categorical]], unearned_income_attestation_is_questionable]]
+sources: [S801, S817, S819, S820]
+implemented: engine
+tags: [verification, snap, income]
+open: [OQ-311]
+rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
+tests:
+  - {id: CO-1377-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_person_unearned_income: 1180, snap_eligibility_category: expanded_categorical}, expect: true}
+  - {id: CO-1377-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_person_unearned_income: 0}, expect: false}
+  - {id: CO-1377-T3, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, snap_person_unearned_income: 900, snap_eligibility_category: basic_categorical, unearned_income_attestation_is_questionable: false}, expect: false}

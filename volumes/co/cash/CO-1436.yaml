@@ -1,0 +1,17 @@
+id: CO-1436
+name: "Adult Financial: pending verification count"
+identifier: af_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: AdultFinancial
+role: outcome
+meaning: "The number of Adult Financial verification elements for this client not yet verified: age, residency and identity (always required), SSN, citizenship and immigration status (Aid to the Needy Disabled), resources, earned and unearned income, and SSI disability."
+derived: ["+", [case, [[not, age_is_verified], 1], [else, 0]], [case, [[not, residency_verification_document_received], 1], [else, 0]], [case, [[not, [any, identity_verified_by_electronic_data_source, [all, identity_verification_document_received, identity_document_is_lawful_presence_document]]], 1], [else, 0]], [case, [[all, af_requires_verification_of_ssn, [not, ssn_is_verified]], 1], [else, 0]], [case, [[all, af_requires_verification_of_citizenship, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, citizenship_document_is_primary_evidence]]]], 1], [else, 0]], [case, [[all, af_requires_verification_of_immigration_status, [not, immigration_status_verified_by_electronic_data_source]], 1], [else, 0]], [case, [[all, af_requires_verification_of_resources, [not, resources_are_verified]], 1], [else, 0]], [case, [[all, af_requires_verification_of_earned_income, [not, earned_income_verification_document_received]], 1], [else, 0]], [case, [[all, has_unearned_income, [not, unearned_income_is_verified]], 1], [else, 0]], [case, [[all, af_requires_verification_of_disability, [not, disability_verified_by_electronic_data_source]], 1], [else, 0]]]
+sources: [S879, S882, S883, S885, S880]
+implemented: engine
+tags: [verification, cash, oap, and]
+rationale: No existing item counts an Adult Financial client's outstanding verifications. Age (3.520.62), residency (3.520.64.G) and identity (3.520.66) are verified for every client (S882, S883, S885), so they count without a requirement item.
+tests:
+  - {id: CO-1436-T1, month: "2026-10", as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: true, residency_verification_document_received: false, identity_verified_by_electronic_data_source: true, af_requires_verification_of_ssn: false, af_requires_verification_of_citizenship: false, af_requires_verification_of_immigration_status: false, af_requires_verification_of_resources: true, resources_verified_by_electronic_data_source: false, resources_verification_document_received: false, af_requires_verification_of_earned_income: false, has_unearned_income: false, af_requires_verification_of_disability: false}, expect: 2}
+  - {id: CO-1436-T2, month: "2026-10", as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: false, age_verification_document_received: true, residency_verification_document_received: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: true, identity_verification_document_type: colorado_drivers_license_or_id, af_requires_verification_of_ssn: false, af_requires_verification_of_citizenship: false, af_requires_verification_of_immigration_status: false, af_requires_verification_of_resources: false, af_requires_verification_of_earned_income: false, has_unearned_income: true, unearned_income_verified_by_electronic_data_source: true, af_requires_verification_of_disability: false}, expect: 0}

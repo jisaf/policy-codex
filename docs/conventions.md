@@ -138,6 +138,10 @@ Added for the MAGI household (phase 3)
 - P45 `that person is a [relationship or relationship] of a person in [group]` inside a filter, sum or exists: the bound person stands in one of the roles to some member of the group (a join between the bound person and the group without rebinding either); unknown when that person's relationships are unstated
 - P44 `[whole number] months after [month]`, `[whole number] months before [month]` (P11 as stated in the catalog, now implemented; the single-step forms of P32 remain)
 
+Added for verification deadlines (phase 9)
+
+- P46 `[whole number] days after [date]` the calendar date that many days after a date (a negative number counts back), so a period a rule states in days (10 days to return verification, a 90-day reasonable opportunity period) is computed from the date it runs from; unknown when either input is unknown
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

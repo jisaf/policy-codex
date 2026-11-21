@@ -1,0 +1,16 @@
+id: CO-1383
+name: "SNAP: requires verification of household composition"
+identifier: snap_requires_verification_of_household_composition
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether factors affecting the person's membership in the SNAP household must be verified: only when the household's statement is questionable."
+derived: [all, snap_is_household_member, household_composition_attestation_is_questionable]
+sources: [S808, S825]
+implemented: engine
+tags: [verification, snap, household]
+rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
+tests:
+  - {id: CO-1383-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, household_composition_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1383-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, household_composition_attestation_is_questionable: false}, expect: false}

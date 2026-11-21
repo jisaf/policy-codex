@@ -1,0 +1,21 @@
+id: CO-1427
+name: "Colorado Works: verification status"
+identifier: cw_verification_status
+kind: derived
+type: one of
+options: [not_required, complete, pending, past_due]
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: "Where this person's Colorado Works unit stands on verification: no unit to verify; complete; pending before the due date; or past due, after which the county processes the application without the missing verifications."
+derived: [case, [["=", [count, cw_assistance_unit_members], 0], not_required], [["=", cw_pending_verification_count, 0], complete], [["<=", [det_date], cw_verification_due_date], pending], [else, past_due]]
+sources: [S871, S872]
+implemented: engine
+tags: [verification, cash, tanf]
+open: [OQ-316]
+rationale: No existing item reports Colorado Works verification standing; 3.604.3.A (S871) makes verification an eligibility requirement whose absence may deny.
+tests:
+  - {id: CO-1427-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_assistance_unit_members: []}, expect: not_required}
+  - {id: CO-1427-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1], cw_pending_verification_count: 0}, expect: complete}
+  - {id: CO-1427-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-05", cw_assistance_unit_members: [p1], cw_pending_verification_count: 1, cw_verification_due_date: "2026-10-12"}, expect: pending}
+  - {id: CO-1427-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-10-20", cw_assistance_unit_members: [p1], cw_pending_verification_count: 1, cw_verification_due_date: "2026-10-12"}, expect: past_due}

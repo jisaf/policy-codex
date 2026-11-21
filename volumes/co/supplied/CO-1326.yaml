@@ -1,0 +1,12 @@
+id: CO-1326
+name: Medical expenses verification document received
+identifier: medical_expenses_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: Whether the agency has received documentary evidence (or an acceptable collateral contact) verifying the person's out-of-pocket medical expenses and any reimbursement for this application, such as bills, receipts, or an insurer's statement.
+supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
+sources: [S803, S833]
+tags: [verification, income]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

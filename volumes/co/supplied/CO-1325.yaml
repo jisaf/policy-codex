@@ -1,0 +1,12 @@
+id: CO-1325
+name: Shelter costs attestation is questionable
+identifier: shelter_costs_attestation_is_questionable
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the agency has found the person's statement about shelter and utility costs questionable: inconsistent with the person's other statements, the application, earlier applications, documents provided, or information from another source, as the agency documents in the case record."
+supplied_by: Eligibility worker's documented determination in CBMS case comments.
+sources: [S832, S818]
+tags: [verification, income]
+rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.

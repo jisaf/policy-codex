@@ -1,0 +1,16 @@
+id: CO-1444
+name: "CCCAP: requires verification of identity"
+identifier: cccap_requires_verification_of_identity
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether the identity of a child for whom care is requested must be verified for CCCAP: only when the attested identity is inconsistent."
+derived: [all, cccap_is_eligible_child, identity_attestation_is_questionable]
+sources: [S890]
+implemented: engine
+tags: [verification, age]
+rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
+tests:
+  - {id: CO-1444-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, identity_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1444-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, identity_attestation_is_questionable: false}, expect: false}

@@ -1,0 +1,17 @@
+id: CO-1361
+name: Unearned income is verified
+identifier: unearned_income_is_verified
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: Whether the person's unearned income is verified, either by an electronic data source the programs treat as verified upon receipt (SSA benefit data, unemployment insurance, public assistance or child support records) or by documents.
+derived: [any, unearned_income_verified_by_electronic_data_source, unearned_income_verification_document_received]
+sources: [S820, S836, S875, S880, S898]
+implemented: engine
+tags: [verification, income]
+rationale: Each program accepts SSA, UIB and public-assistance data as verified upon receipt (S820, S836, S875, S880) or documents (S898); no existing item combines them.
+tests:
+  - {id: CO-1361-T1, as_of: "2026-10-01", given: {unearned_income_verified_by_electronic_data_source: true}, expect: true}
+  - {id: CO-1361-T2, as_of: "2026-10-01", given: {unearned_income_verified_by_electronic_data_source: false, unearned_income_verification_document_received: true}, expect: true}
+  - {id: CO-1361-T3, as_of: "2026-10-01", given: {unearned_income_verified_by_electronic_data_source: false, unearned_income_verification_document_received: false}, expect: false}

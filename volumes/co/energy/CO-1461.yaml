@@ -1,0 +1,17 @@
+id: CO-1461
+name: "LEAP: verification due date"
+identifier: leap_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: LEAP
+meaning: "The date by which requested LEAP information or verification is due: two calendar weeks from the county's notice."
+derived: [days_after, leap_verification_response_days, verification_request_date]
+sources: [S899]
+implemented: engine
+tags: [verification]
+open: [OQ-316]
+rationale: No existing item states when requested LEAP verification is due.
+nearest: [CO-1392, CO-1414, CO-1426, CO-1437, CO-1450]
+tests:
+  - {id: CO-1461-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-11-02"}, expect: "2026-11-16"}
