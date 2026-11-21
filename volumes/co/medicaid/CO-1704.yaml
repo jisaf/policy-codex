@@ -1,0 +1,18 @@
+id: CO-1704
+name: "Medicaid: net earnings from self-employment (non-MAGI)"
+identifier: ma_self_employment_net_earnings
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The person's net profit from self-employment for the month for the non-MAGI Medical Assistance groups (SSI-related, Buy-In, long-term care, spousal allowances): gross receipts less the cost of doing business 10 CCR 2505-10 8.100.3.K.9 allows, not below zero."
+precision: "MAGI-based income reads the federal tax figure (self_employment_net_earnings_for_tax, CO-024) instead, because 8.100.3.K.9.b.i.1 allows depreciation for MAGI only. The SSI method's offset of a self-employment loss against wages (20 CFR 416.1111(b)) is not modeled; the net is floored at zero. A person with no gross receipts has none, whatever the cost fact says."
+derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, ma_self_employment_business_costs]]]]
+sources: [S1154]
+implemented: engine
+tags: [ma, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
+tests:
+  - {id: CO-1704-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, ma_self_employment_business_costs: 400}, expect: 1100}
+  - {id: CO-1704-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
+  - {id: CO-1704-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, ma_self_employment_business_costs: 450}, expect: 0}

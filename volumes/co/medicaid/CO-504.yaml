@@ -6,8 +6,8 @@ type: rate
 scope: person-month
 program: Medicaid
 meaning: This person's ma_magi_household_income for the month, expressed as a decimal fraction of the monthly federal poverty guideline for ma_magi_household_size (1.00 = 100% of the guideline) - the figure 10 CCR 2505-10 8.100.4.G's covered-group income limits (batch 6) and the 8.100.4.D 5% disregard are stated against.
-precision: Monthly poverty guideline is the annual ma_poverty_guideline_table figure (plus ma_poverty_guideline_each_additional for a household size above 8) divided by 12; no rounding is applied to the ratio itself.
-derived: ["/", ma_magi_household_income, ["/", [+, [lookup, ma_poverty_guideline_table, [min, ma_magi_household_size, 8]], ["*", ma_poverty_guideline_each_additional, [max, 0, ["-", ma_magi_household_size, 8]]]], 12]]
+precision: Monthly poverty guideline is the annual federal_poverty_guideline_annual_table figure (plus federal_poverty_guideline_annual_each_additional for a household size above 8) divided by 12; no rounding is applied to the ratio itself.
+derived: ["/", ma_magi_household_income, ["/", [+, [lookup, federal_poverty_guideline_annual_table, [min, ma_magi_household_size, 8]], ["*", federal_poverty_guideline_annual_each_additional, [max, 0, ["-", ma_magi_household_size, 8]]]], 12]]
 sources: [S55, S161]
 implemented: engine
 tags: [ma, magi, income]

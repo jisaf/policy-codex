@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: Whether the person has submitted documentation of the declared immigration status (an I-94, I-551, employment authorization document, USCIS or HHS letter, or similar) that the agency can submit to USCIS for verification.
+meaning: "Whether the person has submitted documentation of the declared immigration status (an I-94, I-551, employment authorization document, USCIS or HHS letter, or similar) that the agency can submit to USCIS for verification. Received means submitted, not verified; immigration_status_is_verified_or_submitted (CO-1366) is the derived reading."
 precision: True only once the agency has submitted a copy of the document the household provided to USCIS for verification (273.2(f)(1)(ii)(B)(1)); receipt alone does not protect a SNAP applicant from delay.
 supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
 sources: [S802, S873]

@@ -3,7 +3,7 @@ name: Lawful presence status
 identifier: lawful_presence_status
 kind: supplied
 type: one of
-options: [lawfully_present, not_lawfully_present, unknown]
+options: [lawfully_present, not_lawfully_present]
 scope: person
 program: All
 meaning: "Whether the person holds a lawfully residing immigration status recognized by 10 CCR 2505-10 § 8.100.3.G.1.g.vii (in the Cornell copy, iv and vi) - a category broader than the qualified non-citizen statuses citizenship_status enumerates, for example Temporary Protected Status, a pending asylum application with employment authorization, a valid nonimmigrant status, or parole (vii.1-28). The status admits a person to Medical Assistance only if the person is a pregnant woman or a child under 19 (vii); that limit is applied in ma_meets_citizenship_requirement (CO-509), not here."
@@ -12,4 +12,4 @@ assumption: Modeled as a fact separate from citizenship_status (CO-002, batch 1'
 supplied_by: Verify Lawful Presence (VLP) interface / SAVE, or applicant self-declaration per 10 CCR 2505-10 8.100.3.G.1-2.
 sources: [S174, S175, S658]
 tags: [ma, magi, immigration]
-rationale: "No existing item in this volume states lawful presence as distinct from the narrower qualified-non-citizen categories citizenship_status carries. ma_is_lawfully_present (CO-507) and ma_meets_citizenship_requirement (CO-509) need it because 8.100.3.G.1.g.vii (iv and vi in the Cornell copy) lists many lawfully-present categories (parolee, TPS, asylum applicant with work authorization, COFA migrant, and others) that are not 'qualified non-citizen' statuses at all and so are not expressible from citizenship_status alone."
+rationale: "No existing item in this volume states lawful presence as distinct from the narrower qualified-non-citizen categories citizenship_status carries. ma_is_lawfully_present (CO-507) and ma_meets_citizenship_requirement (CO-509) need it because 8.100.3.G.1.g.vii (iv and vi in the Cornell copy) lists many lawfully-present categories (parolee, TPS, asylum applicant with work authorization, COFA migrant, and others) that are not 'qualified non-citizen' statuses at all and so are not expressible from citizenship_status alone. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-4): the option unknown is removed; an unknown status is the engine's unknown (the fact not stated), not a value."

@@ -1,0 +1,29 @@
+id: CO-905
+name: "Meets the public assistance citizenship and qualified non-citizen requirement"
+identifier: meets_public_assistance_citizenship_requirement
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The person is a U.S. citizen or national, or a qualified non-citizen who entered the United States before August 22, 1996, who is in a federal exempt category under 8 U.S.C. 1613(b), or who has held qualified status for five years: the requirement C.R.S. 26-2-111.8(2) sets for Colorado Works, the Old Age Pension, Aid to the Needy Disabled and Aid to the Blind, and that 26-2-706(1.5)(b) and 9 CCR 2503-6 3.604.1.B restate for Colorado Works and 9 CCR 2503-5 3.520.61.C and 3.520.68.A for Aid to the Needy Disabled."
+precision: "Vocabulary fix round (R-4, U-2, U-3): the 8 U.S.C. 1613(b) exemption is is_exempt_from_five_year_bar (CO-1725); Colorado Works had read SNAP's own waiting-period exemption, whose under-18 and pre-1931 prongs are not 1613(b) categories (so a lawful permanent resident child inside five years was found eligible and a refugee inside five years was not), and Aid to the Needy Disabled read no exemption at all (so a refugee inside five years failed). The pre-1996 entry test reads us_entry_date (CO-1726), not the date the qualified status was obtained. Once both programs read the same federal exemption, the Colorado Works item and meets_public_assistance_citizenship_requirement (CO-905) were the same rule, as 26-2-111.8(2) makes them; CO-943 is retired into this item, renamed from cw_meets_citizenship_requirement. Adult Financial reads it only for AND and AB (af_category, CO-953): 3.520.61.C and 3.520.68.A state the test 'for AND only', and OAP keeps its own test (af_meets_citizenship_requirement_oap, CO-929). Does not model 26-2-111(2)(c)(II)-(III)'s hardship and SSI-eligibility exceptions (OQ-119)."
+assumption: "Does not model the 40-qualifying-quarters exception 8 U.S.C. 1612(a)(2)(B) provides for SNAP: 3.604.1.B.3 and 26-2-111.8(2) state only the entry date, the five-year bar and the federal exceptions to it."
+derived: [any, is_us_citizen_or_national, [all, is_qualified_non_citizen, [any, ["<", us_entry_date, qualified_non_citizen_entry_cutoff_date], is_exempt_from_five_year_bar, has_held_qualified_status_five_years]]]
+sources: [S402, S407, S441, S449, S451, S452, S1150, S1151]
+open: [OQ-119]
+implemented: engine
+tags: [cash, tanf, and, immigration, legal]
+rationale: "Phase 5 authored this rule twice, as cw_meets_citizenship_requirement (CO-905) and af_meets_citizenship_requirement_and (CO-943). Vocabulary fix round (R-4): with the federal exemption list read the same way for both, the two derivations were identical (governance dup.compact), as C.R.S. 26-2-111.8(2), which governs all four state cash programs, says they should be. CO-905 survives under a program-neutral identifier; CO-943 is retired."
+tests:
+  - {id: CO-905-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-905-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
+  - {id: CO-905-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1970-01-01", qualified_status_date: "1990-01-01", us_entry_date: "1990-01-01", qualifying_quarters: 0, has_military_connection: false, federal_five_year_bar_exempt_category: "none"}, expect: true}
+  - {id: CO-905-T4, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1970-01-01", qualified_status_date: "2025-06-01", us_entry_date: "2025-06-01", qualifying_quarters: 0, has_military_connection: false, federal_five_year_bar_exempt_category: "none"}, expect: false}
+  - {id: CO-905-T5, title: "Vocabulary fix round (R-4): LPR child inside five years - under 18 is not a 1613(b) category", as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "2015-01-01", qualified_status_date: "2024-06-01", us_entry_date: "2024-06-01", has_military_connection: false, federal_five_year_bar_exempt_category: "none"}, expect: false}
+  - {id: CO-905-T6, title: "Vocabulary fix round (R-4): refugee inside five years is in a 1613(b) exempt category", as_of: "2026-10-01", given: {citizenship_status: refugee, date_of_birth: "1990-01-01", qualified_status_date: "2024-06-01", us_entry_date: "2024-06-01"}, expect: true}
+  - {id: CO-905-T7, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
+  - {id: CO-905-T8, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, qualified_status_date: "1998-01-01", us_entry_date: "1998-01-01"}, expect: true}
+  - {id: CO-905-T9, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, qualified_status_date: "2024-01-01", us_entry_date: "2024-01-01", has_military_connection: false, federal_five_year_bar_exempt_category: "none"}, expect: false}
+  - {id: CO-905-T10, title: "Carried from the retired CO-943: Vocabulary fix round (R-4): refugee inside the first five years meets the requirement through 8 U.S.C. 1613(b)", as_of: "2026-10-01", given: {citizenship_status: refugee, qualified_status_date: "2024-01-01", us_entry_date: "2024-01-01"}, expect: true}
+  - {id: CO-905-T11, title: "Carried from the retired CO-943: Vocabulary fix round (R-4): entered in 1994, LPR status obtained in 2023 - entry before August 22, 1996 (26-2-111.8(2)(a))", as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, qualified_status_date: "2023-01-01", us_entry_date: "1994-05-01"}, expect: true}
+  - {id: CO-905-T12, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}

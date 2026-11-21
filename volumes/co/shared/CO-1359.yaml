@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: Whether the person is a non-citizen who has declared a lawful immigration status (any status other than undocumented), the declaration SAVE verification and the reasonable opportunity period attach to.
-derived: [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen, other_non_qualified_non_citizen]]
+derived: [in, citizenship_status, [lawful_permanent_resident, refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant, other_qualified_non_citizen, other_lawfully_present_non_citizen]]
 sources: [S802, S852, S873, S887, S896]
 implemented: engine
 tags: [verification, immigration]

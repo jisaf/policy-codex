@@ -1,0 +1,13 @@
+id: CO-1746
+name: "SNAP: application date"
+identifier: snap_application_date
+kind: supplied
+type: calendar date
+scope: person
+program: SNAP
+meaning: "The date the household's SNAP application was filed with the State agency (7 CFR 273.2(c)), from which the expedited service, postponed verification and documentation periods run."
+precision: "On a combined PEAK application for SNAP and Medical Assistance it is the same date as ma_application_date (CO-088); the two differ when the household applies for the programs on different days. Stated on each household member."
+supplied_by: "CBMS application record (date of filing)."
+sources: [S835, S1097]
+tags: [snap, verification]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): snap_expedited_postponement_end_date (CO-1393) and the SNAP documentation due dates (CO-1617, CO-1618) read the Medical Assistance application date."

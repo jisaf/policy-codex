@@ -1,0 +1,12 @@
+id: CO-1732
+name: "Is violating a condition of probation or parole"
+identifier: is_probation_or_parole_violator
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is violating a condition of probation or parole imposed under federal or state law."
+supplied_by: "Law enforcement or court data match; applicant statement."
+sources: [S19]
+tags: [legal]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-6): split from is_fleeing_felon_or_probation_violator (CO-038), which joined two conditions because SNAP's 7 CFR 273.11(n) joins them; Adult Financial names fleeing felons only, so a probation violator was denied OAP or AND."

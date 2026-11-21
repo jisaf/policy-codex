@@ -14,7 +14,8 @@ sources: [S790, S791, S792, S793]
 open: [OQ-255]
 implemented: engine
 tags: [sebt, income]
-rationale: No existing item determines Summer EBT eligibility; SunBucks is a new program in the volume. Declared as an outcome.
+accepts_from: [snap_is_eligible]
+rationale: "No existing item determines Summer EBT eligibility; SunBucks is a new program in the volume. Declared as an outcome. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. Summer EBT streamlined certification names SNAP receipt (7 CFR 292, S790)."
 tests:
   - {id: CO-1298-T1, title: "School-aged child in a SNAP household - categorical, no school enrollment needed", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: true, is_enrolled_in_nslp_school: false, snap_is_eligible: true}, expect: eligible_categorical}
   - {id: CO-1298-T2, title: "Enrolled, no categorical ground, income under the limit", as_of: "2026-10-01", month: "2026-10", given: {is_school_aged: true, is_enrolled_in_nslp_school: true, snap_is_eligible: false, receives_tanf_cash: false, sebt_other_categorical_basis: false, school_meal_household_income: 4000, sebt_income_eligibility_limit: 5088}, expect: eligible_income}

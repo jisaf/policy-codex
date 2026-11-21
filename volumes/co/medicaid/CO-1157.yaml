@@ -6,13 +6,13 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether the person meets 10 CCR 2505-10 § 8.100.6.O.2.a-b's history for a Qualified Disabled and Working Individual - continues to be disabled, lost SSDI entitlement because of earnings above the Substantial Gainful Activity threshold, and has exhausted the premium-free Medicare Part A extension.
-precision: Continued disability reads is_disabled_ssa (CO-011).
-derived: [all, is_disabled_ssa, lost_ssdi_due_to_substantial_gainful_activity, has_exhausted_premium_free_part_a_extension]
+precision: Continued disability reads meets_ssa_disability_criteria (CO-011).
+derived: [all, meets_ssa_disability_criteria, lost_ssdi_due_to_substantial_gainful_activity, has_exhausted_premium_free_part_a_extension]
 sources: [S622]
 implemented: engine
 tags: [ma, msp, disability]
 rationale: "OQ-84: ma_qdwi_eligible (CO-616) carried this history through one supplied fact (is_entitled_to_medicare_part_a_on_basis_of_disability, CO-804) standing for both § 8.100.6.O.2.a and .b; the two conditions are now separate supplied facts and this rule joins them with continued disability. CO-616 reads it in place of CO-804."
 tests:
-  - {id: CO-1157-T1, as_of: "2026-10-01", given: {is_disabled_ssa: true, lost_ssdi_due_to_substantial_gainful_activity: true, has_exhausted_premium_free_part_a_extension: true}, expect: true}
-  - {id: CO-1157-T2, as_of: "2026-10-01", title: "Still within the premium-free Part A extension", given: {is_disabled_ssa: true, lost_ssdi_due_to_substantial_gainful_activity: true, has_exhausted_premium_free_part_a_extension: false}, expect: false}
-  - {id: CO-1157-T3, as_of: "2026-10-01", given: {is_disabled_ssa: true, lost_ssdi_due_to_substantial_gainful_activity: false, has_exhausted_premium_free_part_a_extension: true}, expect: false}
+  - {id: CO-1157-T1, as_of: "2026-10-01", given: {meets_ssa_disability_criteria: true, lost_ssdi_due_to_substantial_gainful_activity: true, has_exhausted_premium_free_part_a_extension: true}, expect: true}
+  - {id: CO-1157-T2, as_of: "2026-10-01", title: "Still within the premium-free Part A extension", given: {meets_ssa_disability_criteria: true, lost_ssdi_due_to_substantial_gainful_activity: true, has_exhausted_premium_free_part_a_extension: false}, expect: false}
+  - {id: CO-1157-T3, as_of: "2026-10-01", given: {meets_ssa_disability_criteria: true, lost_ssdi_due_to_substantial_gainful_activity: false, has_exhausted_premium_free_part_a_extension: true}, expect: false}

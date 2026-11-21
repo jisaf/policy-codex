@@ -1,6 +1,6 @@
 id: CO-831
 name: Home equity limit
-identifier: home_equity_limit
+identifier: ma_home_equity_limit
 kind: parameter
 type: money
 scope: global
@@ -13,4 +13,4 @@ versions:
     source: S644
 sources: [S645, S644, S369]
 tags: [ma, ltc, resources]
-rationale: "OQ-91 asked which base Colorado elected and the 2026 figure. The current § 8.100.5.M.2.a.ii (D-65) states the $500,000 base indexed by CPI, and CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the minimum home equity limit, $752,000.00, for 2026. ma_home_equity_disqualifies (CO-650) needs it."
+rationale: "OQ-91 asked which base Colorado elected and the 2026 figure. The current § 8.100.5.M.2.a.ii (D-65) states the $500,000 base indexed by CPI, and CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the minimum home equity limit, $752,000.00, for 2026. ma_home_equity_disqualifies (CO-650) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from home_equity_limit; a Medicaid parameter without the program prefix."

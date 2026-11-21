@@ -9,5 +9,5 @@ meaning: The child was enrolled, at some time during the period of eligibility (
 supplied_by: State NSLP/SBP enrollment database (7 CFR 292.12(c)) or school records.
 sources: [S790]
 tags: [sebt]
-rationale: No existing fact states school-meal-program enrollment (is_enrolled_in_school says only that a person attends school); sebt_eligibility_status (CO-1298) needs it.
+rationale: No existing fact states school-meal-program enrollment (snap_is_enrolled_half_time_in_school_or_training says only that a person attends school); sebt_eligibility_status (CO-1298) needs it.
 nearest: [CO-020]

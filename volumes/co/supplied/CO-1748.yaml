@@ -1,0 +1,13 @@
+id: CO-1748
+name: "OAP Health Care: patient in an institution for tuberculosis or mental health disorders"
+identifier: ma_oap_is_patient_in_tb_or_mental_health_institution
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, this month, the person is a patient in an institution for tuberculosis or for behavioral or mental health disorders, the exclusion from the Old Age Pension Health Care Program (C.R.S. 25.5-2-101, 10 CCR 2505-10 8.941)."
+precision: "Broader than an institution for mental diseases (is_patient_in_institution_for_mental_diseases, CO-1104): a tuberculosis institution counts, and there is no bed-count test."
+supplied_by: "Facility admission record."
+sources: [S619, S665]
+tags: [ma]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-14): ma_oap_health_care_status (CO-1156) read the CHP+ IMD fact, whose meaning had folded in the OAP Health Care Program's different exclusion."

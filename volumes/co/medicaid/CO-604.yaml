@@ -16,5 +16,5 @@ tests:
   - {id: CO-604-T1, as_of: "2026-10-01", given: {ma_excluded_from_ssi_household: false}, others: {}, relationships: [], expect: 1}
   - {id: CO-604-T2, as_of: "2026-10-01", given: {ma_excluded_from_ssi_household: false}, others: {p2: {ma_excluded_from_ssi_household: false}}, relationships: [[spouse, p2]], expect: 2}
   - {id: CO-604-T3, as_of: "2026-10-01", given: {ma_excluded_from_ssi_household: false}, others: {p2: {ma_excluded_from_ssi_household: true}}, relationships: [[spouse, p2]], expect: 1}
-  - {id: CO-604-T4, as_of: "2026-10-15", given: {in_medical_institution: true, institution_entry_date: "2026-10-05"}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 2}
-  - {id: CO-604-T5, as_of: "2026-11-01", given: {in_medical_institution: true, institution_entry_date: "2026-10-05"}, others: {p2: {in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 1}
+  - {id: CO-604-T4, as_of: "2026-10-15", given: {resides_in_medical_institution: true, institution_entry_date: "2026-10-05"}, others: {p2: {resides_in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 2}
+  - {id: CO-604-T5, as_of: "2026-11-01", given: {resides_in_medical_institution: true, institution_entry_date: "2026-10-05"}, others: {p2: {resides_in_medical_institution: false}}, relationships: [[spouse, p2]], expect: 1}

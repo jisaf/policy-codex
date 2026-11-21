@@ -6,12 +6,13 @@ type: calendar date
 scope: person
 program: SNAP
 meaning: "The last day an applicant non-citizen has to submit acceptable documentation of status: the thirtieth day after the date of application, or ten days from the request if that is later."
-derived: [case, [["<=", [days_after, snap_noncitizen_documentation_days, application_date], snap_verification_due_date], snap_verification_due_date], [else, [days_after, snap_noncitizen_documentation_days, application_date]]]
+precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
+derived: [case, [["<=", [days_after, snap_noncitizen_documentation_days, snap_application_date], snap_verification_due_date], snap_verification_due_date], [else, [days_after, snap_noncitizen_documentation_days, snap_application_date]]]
 sources: [S1097, S1057, S829]
 implemented: engine
 tags: [verification, snap, immigration]
 rationale: "Review C-2: snap_verification_status ran the non-citizen's period from the request (ten days); 4.505.6.E and 273.2(f)(1)(ii)(C) run it to the thirtieth day after application."
 nearest: [CO-1393]
 tests:
-  - {id: CO-1617-T1, as_of: "2026-10-01", given: {application_date: "2026-10-01", snap_verification_due_date: "2026-10-11"}, expect: "2026-10-31"}
-  - {id: CO-1617-T2, as_of: "2026-10-01", given: {application_date: "2026-10-01", snap_verification_due_date: "2026-11-05"}, expect: "2026-11-05"}
+  - {id: CO-1617-T1, as_of: "2026-10-01", given: {snap_application_date: "2026-10-01", snap_verification_due_date: "2026-10-11"}, expect: "2026-10-31"}
+  - {id: CO-1617-T2, as_of: "2026-10-01", given: {snap_application_date: "2026-10-01", snap_verification_due_date: "2026-11-05"}, expect: "2026-11-05"}

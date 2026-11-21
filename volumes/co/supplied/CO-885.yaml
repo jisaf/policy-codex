@@ -10,4 +10,4 @@ precision: Distinct from meets_hcbs_waiver_target_group (CO-821), which states w
 supplied_by: Case Management Agency's PACE enrollment record.
 sources: [S354]
 tags: [ma, ltc]
-rationale: "No existing item states whether a person is actually enrolled in PACE (meets_hcbs_waiver_target_group, CO-821, covers HCBS waivers only and has no PACE option; ma_pace_eligible, CO-654, tests eligibility, not enrollment). ma_is_institutionalized_spouse (CO-644) needs it to reach § 8.100.7.K.2.b's PACE-enrollment route into spousal protection, alongside the medical-institution route (in_medical_institution) and the HCBS route (meets_hcbs_waiver_target_group not none)."
+rationale: "No existing item states whether a person is actually enrolled in PACE (meets_hcbs_waiver_target_group, CO-821, covers HCBS waivers only and has no PACE option; ma_pace_eligible, CO-654, tests eligibility, not enrollment). ma_is_institutionalized_spouse (CO-644) needs it to reach § 8.100.7.K.2.b's PACE-enrollment route into spousal protection, alongside the medical-institution route (snap_resides_in_institution_providing_meals) and the HCBS route (meets_hcbs_waiver_target_group not none)."

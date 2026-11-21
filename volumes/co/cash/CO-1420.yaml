@@ -11,7 +11,8 @@ derived: [all, [">=", age, cw_lawful_presence_min_age], [not, is_pregnant], [not
 sources: [S872, S877, S1065]
 implemented: engine
 tags: [verification, cash, tanf, immigration]
-rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.
+accepts_from: [ma_is_ssi_related_eligible, ma_magi_is_fully_eligible]
+rationale: "No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Colorado Works rule names the other program's result (Medicaid receipt for the lawful-presence verification exemption; the Adult Financial burial computation for the death reimbursement)."
 tests:
   - {id: CO-1420-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_pregnant: false}, expect: true}
   - {id: CO-1420-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_pregnant: true}, expect: false}

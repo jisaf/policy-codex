@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person receives unemployment compensation, or has registered for work as part of applying for or receiving unemployment compensation.
+meaning: "The person receives unemployment compensation, or has registered for work as part of applying for or receiving unemployment compensation. The first half (receiving) is a fact about the person's unemployment insurance claim; the amount paid for the month is unemployment_income (CO-027)."
 supplied_by: State unemployment insurance record.
 sources: []
 tags: [work_registration]

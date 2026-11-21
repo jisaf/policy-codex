@@ -8,7 +8,7 @@ program: ColoradoWorks
 role: outcome
 meaning: Whether Colorado Works requires verification of the person's declared citizenship, by an SSA match or a Rule 5 Appendix A document and it has not been provided.
 precision: Every participating client who declares citizenship provides verification (3.604.3.B.2.b, OQ-314).
-derived: [all, claims_citizenship, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a]]]]
+derived: [all, is_us_citizen_or_national, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a]]]]
 sources: [S872, S876, S1066, S1069]
 implemented: engine
 tags: [verification, cash, tanf]

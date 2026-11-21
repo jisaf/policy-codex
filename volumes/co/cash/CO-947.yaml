@@ -5,14 +5,16 @@ kind: derived
 type: money
 scope: person
 program: AdultFinancial
-meaning: The person's countable resources for Adult Financial purposes - countable_resources_couple if married, otherwise countable_resources_individual - per 9 CCR 2503-5 3.520.72.A's married/unmarried resource-limit split.
+meaning: The person's countable resources for Adult Financial purposes - ssi_countable_resources_couple if married, otherwise ssi_countable_resources_individual - per 9 CCR 2503-5 3.520.72.A's married/unmarried resource-limit split.
+open: [OQ-392]
+assumption: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-11): Adult Financial's countable resources (3.520.72, counting the client, spouse and sponsors) are taken to equal the SSI-method figures ssi_countable_resources_individual and _couple (CO-800, CO-801, 20 CFR 416.1210), split on plain marriage; a sponsor's resources and any difference between the two exclusion lists are not modeled (OQ-392)."
 precision: Reads marital status by the existence of a spouse relationship, regardless of whether the spouse is institutionalized, unlike ma_ssi_countable_resources (CO-608), because 3.520.72.A's own text splits on "married"/"unmarried" alone, with no living-together carve-out stated.
-derived: [case, [af_is_married, countable_resources_couple], [else, countable_resources_individual]]
+derived: [case, [af_is_married, ssi_countable_resources_couple], [else, ssi_countable_resources_individual]]
 sources: [S454]
 implemented: engine
 tags: [cash, oap, and, ab, resources]
 rationale: "No existing item selects between the individual and couple countable-resources figures for Adult Financial. af_meets_resource_limit (CO-948) needs it. Not identical to ma_ssi_countable_resources (CO-608), which selects the couple figure only when the spouse is also not institutionalized (per SSI's 'mutually available' living-together rule); acknowledged as the same shape (a case on marital status choosing between the same two supplied facts) but with a materially different condition (plain marriage vs. living-together marriage), since 3.520.72.A states no living-together carve-out. Fix round (M-6): reads af_is_married (CO-930) instead of re-deriving [exists_related, [spouse], true] a second time, per the phase-5 review's finding that this item and af_meets_resource_limit (CO-948) had each recomputed the identical married test."
 nearest: [CO-608]
 tests:
-  - {id: CO-947-T1, as_of: "2026-10-01", given: {countable_resources_individual: 1900, countable_resources_couple: 46000}, others: {}, relationships: [], expect: 1900}
-  - {id: CO-947-T2, as_of: "2026-10-01", given: {countable_resources_individual: 1900, countable_resources_couple: 46000}, others: {p2: {}}, relationships: [[spouse, p2]], expect: 46000}
+  - {id: CO-947-T1, as_of: "2026-10-01", given: {ssi_countable_resources_individual: 1900, ssi_countable_resources_couple: 46000}, others: {}, relationships: [], expect: 1900}
+  - {id: CO-947-T2, as_of: "2026-10-01", given: {ssi_countable_resources_individual: 1900, ssi_countable_resources_couple: 46000}, others: {p2: {}}, relationships: [[spouse, p2]], expect: 46000}

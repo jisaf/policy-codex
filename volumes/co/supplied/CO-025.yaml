@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: The person's monthly Social Security benefit (retirement, survivors, or disability) under Title II of the Social Security Act.
+meaning: "The person's monthly Social Security benefit (retirement, survivors, or disability) under Title II of the Social Security Act. Stated as the gross amount received for the month, before any deduction withheld and before any program's exclusions or disregards; each program's own rule decides what it counts. The benefit is the amount before any Medicare premium is deducted."
 supplied_by: SSA benefit record.
 sources: []
 tags: [income]

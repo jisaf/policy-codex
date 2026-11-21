@@ -6,7 +6,7 @@ type: whole number
 scope: person
 program: All
 meaning: For a pregnant person, the number of children the person is expected to deliver, used to count the pregnant person's family size as herself plus that number.
-precision: As declared at application or renewal; zero for a person who is not pregnant.
+precision: "As declared at application or renewal; zero for a person who is not pregnant. Vocabulary fix round (C-4): a pregnant person with this fact unstated is unknown, not one expected child; state it for every pregnant person."
 supplied_by: Applicant statement (CBMS/PEAK), consistent with the person's is_pregnant status.
 sources: []
 tags: [ma, magi, household]

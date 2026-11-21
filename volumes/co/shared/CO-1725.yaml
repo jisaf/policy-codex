@@ -1,0 +1,20 @@
+id: CO-1725
+name: "Is exempt from the five-year bar (8 U.S.C. 1613(b))"
+identifier: is_exempt_from_five_year_bar
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person is in one of the 8 U.S.C. 1613(b) categories to which the five-year limitation on federal means-tested benefits does not apply: a refugee, asylee, person whose deportation is withheld, Cuban and Haitian entrant or Amerasian immigrant (b)(1); a veteran or person on active duty, or the spouse or unmarried dependent child of one (b)(2); or a citizen of a freely associated state (b)(3)."
+precision: "Does not test that the person is a qualified non-citizen; each program's status rule reads it only for one. Programs that write their own exemption list (Medicaid's 10 CCR 2505-10 8.100.3.G.1.g.iv, ma_is_five_year_bar_exempt, CO-1172; SNAP's 7 U.S.C. 2015(f) exceptions, snap_is_exempt_from_immigrant_waiting_period, CO-306) keep their own items."
+derived: [any, [in, citizenship_status, [refugee, asylee, cuban_haitian_entrant, compact_of_free_association_migrant]], [not, [=, federal_five_year_bar_exempt_category, "none"]], has_military_connection]
+sources: [S1150, S1151, S402]
+implemented: engine
+tags: [immigration]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-4): the federal exemption list Colorado Works (C.R.S. 26-2-706(1.5)(b)) and Aid to the Needy Disabled (C.R.S. 26-2-111.8(2)(b)) both adopt by reference. It replaces Colorado Works' read of SNAP's own exemption (snap_is_exempt_from_immigrant_waiting_period, CO-306), whose under-18 and pre-1931 prongs are not 1613(b) categories."
+tests:
+  - {id: CO-1725-T1, as_of: "2026-10-01", title: "Refugee", given: {citizenship_status: refugee}, expect: true}
+  - {id: CO-1725-T2, as_of: "2026-10-01", title: "LPR child inside five years: under 18 is not a 1613(b) category", given: {citizenship_status: lawful_permanent_resident, federal_five_year_bar_exempt_category: "none", has_military_connection: false}, expect: false}
+  - {id: CO-1725-T3, as_of: "2026-10-01", title: "LPR admitted as a refugee", given: {citizenship_status: lawful_permanent_resident, federal_five_year_bar_exempt_category: refugee_or_asylee_adjusted_to_lpr}, expect: true}
+  - {id: CO-1725-T4, as_of: "2026-10-01", title: "LPR spouse of an active-duty member", given: {citizenship_status: lawful_permanent_resident, federal_five_year_bar_exempt_category: "none", has_military_connection: true}, expect: true}
+  - {id: CO-1725-T5, as_of: "2026-10-01", title: "Deportation withheld", given: {citizenship_status: other_qualified_non_citizen, federal_five_year_bar_exempt_category: deportation_withheld}, expect: true}

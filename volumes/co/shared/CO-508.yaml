@@ -1,0 +1,18 @@
+id: CO-508
+name: "Has held qualified status for the five-year waiting period"
+identifier: has_held_qualified_status_five_years
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person has held qualified non-citizen status for at least the waiting period of 8 U.S.C. 1613(a) (qualified_non_citizen_waiting_period_years, five), counted from qualified_status_date to the determination date."
+precision: "Vocabulary fix round (U-2): renamed from ma_meets_five_year_bar and made program All; snap_meets_immigrant_additional_condition (CO-307), ma_meets_citizenship_requirement (CO-509), meets_public_assistance_citizenship_requirement (CO-905) and meets_public_assistance_citizenship_requirement (CO-905) read it instead of restating the comparison. Medicaid counts the five years from the date of entry (8.100.3.G.1.g.iii; see CO-509's precision)."
+derived: ["<=", qualified_non_citizen_waiting_period_years, [years_between, qualified_status_date, [det_date]]]
+sources: [S173, S176]
+implemented: engine
+tags: [immigration]
+rationale: "No existing Medicaid item states the five-year bar test; ma_meets_citizenship_requirement (CO-509) needs it for a qualified non-citizen who is not otherwise exempted. nearest: [CO-104] acknowledges the cross-program parameter reuse the phase-3 brief directs (create a Medicaid parameter only if the value or citation differs; 8 U.S.C. 1613's five years does not differ from SNAP's read of the same statute)."
+nearest: [CO-104]
+tests:
+  - {id: CO-508-T1, as_of: "2026-10-01", given: {qualified_status_date: "2015-01-01"}, expect: true}
+  - {id: CO-508-T2, as_of: "2026-10-01", given: {qualified_status_date: "2024-01-01"}, expect: false}

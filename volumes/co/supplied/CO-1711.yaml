@@ -1,0 +1,13 @@
+id: CO-1711
+name: "LEAP: allowable business expenses from self-employment"
+identifier: leap_self_employment_allowable_costs
+kind: supplied
+type: money
+scope: person-month
+program: LEAP
+meaning: "The person's business-related expenses for the month supported by receipts that 9 CCR 2503-7 3.755.21.I allows as deductions from declared gross self-employment income (not rent, mortgage or personal utilities when the business is run from the residence; business mileage at the county rate; for rental property only the cost of maintenance)."
+precision: "Read only when self_employment_gross_receipts is more than zero."
+supplied_by: "Self-employment ledger, receipts, profit and loss statement."
+sources: [S1084]
+tags: [income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): each program's rule lists its own allowable costs of doing business, so the cost figure is the program's own fact; the gross receipts are shared (CO-1700)."

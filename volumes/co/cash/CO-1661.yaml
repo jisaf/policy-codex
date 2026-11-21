@@ -13,5 +13,5 @@ implemented: engine
 tags: [verification, cash]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1661-T1, month: "2026-10", as_of: "2026-10-01", given: {af_requires_verification_of_ssn: true, ssn_verified_by_electronic_data_source: false, ssn_verification_document_received: false}, expect: true}
+  - {id: CO-1661-T1, month: "2026-10", as_of: "2026-10-01", given: {af_requires_verification_of_ssn: true, ssn_verified_by_electronic_data_source: false, ssn_furnished_or_application_shown: false}, expect: true}
   - {id: CO-1661-T2, month: "2026-10", as_of: "2026-10-01", given: {af_requires_verification_of_ssn: false}, expect: false}

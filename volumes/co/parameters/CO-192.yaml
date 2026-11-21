@@ -17,4 +17,4 @@ versions:
     source: S675
 sources: [S675, S676, S639, S641, S203]
 tags: [ma, magi, income, state_election]
-rationale: "No existing item carries Colorado's Parents/Caretaker-category income percentage. ma_magi_income_standard_parent_caretaker (CO-541) needs it as a parameter rather than an inline digit (governance name.digits)."
+rationale: "No existing item carries Colorado's Parents/Caretaker-category income percentage. ma_income_limit_parent_caretaker_pct (CO-541) needs it as a parameter rather than an inline digit (governance name.digits)."

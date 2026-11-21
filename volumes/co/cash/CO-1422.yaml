@@ -13,5 +13,5 @@ implemented: engine
 tags: [verification, cash, tanf, age]
 rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.
 tests:
-  - {id: CO-1422-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2008-03-01", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-1422-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2008-03-01", is_full_time_secondary_student_finishing_before_nineteen: true}, expect: true}
   - {id: CO-1422-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-03-01"}, expect: false}

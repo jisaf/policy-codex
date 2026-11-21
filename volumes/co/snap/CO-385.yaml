@@ -7,7 +7,7 @@ scope: person-month
 program: SNAP
 meaning: This person's SNAP household's monthly allotment - the maximum allotment less the benefit reduction, rounded down to the nearest dollar (10 CCR 2506-1 4.207.3.A.3) and floored at $0, with a one- or two-person household that meets the net income test receiving at least the minimum allotment.
 precision: "The minimum allotment floor applies only to a household of snap_minimum_allotment_household_size_limit (2) or fewer eligible members that passes every applicable eligibility test - the gross income test, the net income test, and the resource test - not the net income test alone; a household that fails any of those tests is not \"eligible\" within the meaning of S104's \"all eligible one-person and two-person households\" and gets $0, not the floor. A three-or-more-member household whose maximum-allotment-less-reduction is $0 (or negative, already floored at $0) simply receives $0; whether that household is denied depends on categorical eligibility (snap_eligibility_status, CO-387; OQ-26 resolved). Rounding down is written as the negated ceiling of the negated difference, the shape the volume uses for a floor."
-derived: [case, [[not, [all, snap_meets_gross_income_test, snap_meets_net_income_test, snap_meets_resource_limit]], 0], [[all, [<=, snap_household_size, snap_minimum_allotment_household_size_limit], snap_meets_net_income_test], [max, [max, 0, ["-", 0, [ceil, ["-", snap_benefit_reduction, snap_maximum_allotment]]]], snap_minimum_allotment]], [else, [max, 0, ["-", 0, [ceil, ["-", snap_benefit_reduction, snap_maximum_allotment]]]]]]
+derived: [case, [[not, [all, snap_meets_gross_income_test, snap_meets_net_income_test, snap_meets_resource_limit]], 0], [[all, [<=, snap_eligible_household_size, snap_minimum_allotment_household_size_limit], snap_meets_net_income_test], [max, [max, 0, ["-", 0, [ceil, ["-", snap_benefit_reduction, snap_maximum_allotment]]]], snap_minimum_allotment]], [else, [max, 0, ["-", 0, [ceil, ["-", snap_benefit_reduction, snap_maximum_allotment]]]]]]
 sources: [S85, S104, S105, S737]
 implemented: engine
 tags: [income]
@@ -34,7 +34,7 @@ tests:
     month: "2026-09"
     given:
       snap_household_members: [p1, p2, p3, p4]
-      snap_household_size: 3
+      snap_eligible_household_size: 3
       snap_is_ineligible_member: false
       snap_is_elderly_or_disabled: true
       snap_household_has_elderly_or_disabled_member: true
@@ -57,10 +57,12 @@ tests:
         snap_is_ineligible_non_citizen: true
         snap_is_elderly_or_disabled: false
         citizenship_status: undocumented
-        earned_income: 2380
-        self_employment_net_income: 0
-        is_fleeing_felon_or_probation_violator: false
-        is_disqualified_for_intentional_program_violation: false
+        wages_gross: 2380
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        snap_is_serving_ipv_disqualification: false
         is_disqualified_for_work_requirement_noncompliance: false
         dependent_care_expense: 0
         child_support_paid_legally_obligated: 0
@@ -79,6 +81,6 @@ tests:
         medical_expenses_out_of_pocket: 0
     relationships: []
     expect: 125
-  - {id: CO-385-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 1, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 306, snap_benefit_reduction: 306}, expect: 25}
-  - {id: CO-385-T4, title: "Rounded down after subtraction (4.207.3.A.3)", as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 808, snap_benefit_reduction: 659.7}, expect: 148}
-  - {id: CO-385-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_household_size: 2, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: false, snap_maximum_allotment: 546, snap_benefit_reduction: 546}, expect: 0}
+  - {id: CO-385-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_eligible_household_size: 1, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 306, snap_benefit_reduction: 306}, expect: 25}
+  - {id: CO-385-T4, title: "Rounded down after subtraction (4.207.3.A.3)", as_of: "2026-10-01", month: "2026-10", given: {snap_eligible_household_size: 3, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: true, snap_maximum_allotment: 808, snap_benefit_reduction: 659.7}, expect: 148}
+  - {id: CO-385-T3, as_of: "2026-10-01", month: "2026-10", given: {snap_eligible_household_size: 2, snap_meets_gross_income_test: true, snap_meets_net_income_test: true, snap_meets_resource_limit: false, snap_maximum_allotment: 546, snap_benefit_reduction: 546}, expect: 0}

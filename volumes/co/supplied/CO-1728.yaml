@@ -1,0 +1,13 @@
+id: CO-1728
+name: "Adult Financial: has a total disability lasting six months or more"
+identifier: af_has_total_disability_six_months
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The county department has found, on the state-prescribed medical certification, that the person has a total disability as C.R.S. 26-2-103(14)(a) defines it (an impairment that, with age, training, experience and social setting, substantially precludes a useful occupation as a homemaker or wage earner) that has lasted or can be expected to last six months or more (26-2-111(4)(a), 9 CCR 2503-5 3.541.A)."
+precision: "A state standard for persons not receiving title XVI benefits; it does not require an SSA disability determination, and a partial or short-term disability does not meet it (3.540)."
+supplied_by: "State-prescribed medical certification form, reviewed by the county department (9 CCR 2503-5 3.541.1)."
+sources: [S442, S445, S459, S705]
+tags: [cash, and, disability]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-5): af_and_so_disability_met (CO-944) read the SSA disability fact for AND-SO's state standard, which exists for people who do not meet SSA's, so it denied most of the people the program serves (OQ-113)."

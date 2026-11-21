@@ -4,12 +4,12 @@ import { DATE_RE, MONTH_RE, type Item, type VolumeMeta } from "./types";
 export const ITEM_KEY_ORDER: readonly string[] = [
   "id", "name", "identifier", "kind", "type", "options", "scope", "program", "role",
   "meaning", "precision", "assumption", "supplied_by", "value", "versions", "derived",
-  "sources", "effective", "implemented", "implemented_by", "tags", "open", "rationale",
-  "nearest", "tests",
+  "sources", "effective", "implemented", "implemented_by", "tags", "open", "accepts_from",
+  "rationale", "nearest", "tests",
 ];
 
 const FLOW_KEYS = new Set([
-  "options", "derived", "sources", "effective", "tags", "open", "nearest",
+  "options", "derived", "sources", "effective", "tags", "open", "nearest", "accepts_from",
 ]);
 const SEQ_OF_FLOW_KEYS = new Set(["versions", "tests"]);
 /** Key order of a test row as the ledger files write it; a parsed example

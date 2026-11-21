@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: LEAP
 meaning: Whether this person customarily purchases primary heating fuel in common with, or makes an undesignated payment for heat as part of rent jointly with, the household they are joined to by a stated spouse, parent, or child relationship - the general "living together as one economic unit" test of 9 CCR 2503-7 3.751.1's "Household" definition, read alongside 3.751.2.D's unconditional age-based joins.
-precision: Read as an additional join condition on an existing spouse/parent/child relationship edge, not as a freestanding co-residence edge of its own; it lets a household affirmatively state that a member 3.751.2.D's unconditional rules would not otherwise join (an adult child, a parent not otherwise captured) in fact shares heat in common with the rest. It cannot join two people with no stated relationship edge between them at all (see OQ-132).
+precision: "Read as an additional join condition on an existing spouse/parent/child relationship edge, not as a freestanding co-residence edge of its own; it lets a household affirmatively state that a member 3.751.2.D's unconditional rules would not otherwise join (an adult child, a parent not otherwise captured) in fact shares heat in common with the rest. It cannot join two people with no stated relationship edge between them at all (see OQ-132). If not stated, LEAP reads this as false (the members do not share heating fuel)."
 supplied_by: Applicant statement of who purchases primary heating fuel in common or pays undesignated rent-included heat jointly.
 sources: [S489]
 open: [OQ-132]

@@ -1,0 +1,17 @@
+id: CO-1715
+name: "Medicaid: Working Adults with Disabilities countable income"
+identifier: ma_wawd_countable_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The applicant's own countable income for the month for the Buy-In Program for Working Adults with Disabilities (10 CCR 2505-10 8.100.6.P.1.b, 'only the applicant's income will be considered'): earned income (gross wages and net earnings from self-employment) less the $65 earned income exclusion and then one half, plus unearned income (Social Security, pension, unemployment, other unearned income and in-kind support and maintenance) less the $20 general income exclusion."
+precision: "The SSI-method disregards of 8.100.5.H.4 applied to the applicant alone, without a living-together spouse's income. The unused part of the $20 exclusion is not carried to earned income here (the inline computation this item replaces did not carry it either)."
+derived: [+, ["*", [max, 0, ["-", [+, wages_gross, ma_self_employment_net_earnings], ssi_earned_income_exclusion]], ssi_earned_income_disregard_rate], [max, 0, ["-", [+, social_security_income, pension_income, unemployment_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest, in_kind_support_and_maintenance], ssi_general_income_exclusion]]]
+sources: [S317, S607, S1154]
+implemented: engine
+tags: [ma, non_magi, buy_in, income]
+rationale: "Vocabulary fix round (U-11, R-1): ma_wawd_eligible (CO-618) and ma_wawd_premium (CO-619) computed the same income inline six times, and from wages only; one item now states it, with self-employment."
+tests:
+  - {id: CO-1715-T1, as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 2000, self_employment_gross_receipts: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, in_kind_support_and_maintenance: 0}, expect: 967.5}
+  - {id: CO-1715-T2, as_of: "2026-10-01", month: "2026-10", title: "Self-employed applicant", given: {wages_gross: 0, self_employment_gross_receipts: 1565, ma_self_employment_business_costs: 500, social_security_income: 600, pension_income: 0, unemployment_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, in_kind_support_and_maintenance: 0}, expect: 1080}

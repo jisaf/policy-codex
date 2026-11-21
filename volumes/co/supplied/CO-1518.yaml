@@ -9,5 +9,5 @@ meaning: Whether, for the period care is requested, this person participates in 
 supplied_by: Applicant statement with the school's or training program's enrollment verification.
 sources: [S1016]
 tags: [household, age]
-rationale: "No existing fact separates workforce training and post-secondary education from secondary school (phase-8 review K-7, OQ-124). is_enrolled_in_school (CO-020) is the shared secondary-school fact the vocabulary review proposes to split; is_enrolled_higher_education_half_time (CO-021) is SNAP's student test, which does not include vocational or job skills training. cccap_is_teen_parent (CO-981) and cccap_is_adult_caretaker (CO-992) need it for the current teen-parent definition."
+rationale: "No existing fact separates workforce training and post-secondary education from secondary school (phase-8 review K-7, OQ-124). snap_is_enrolled_half_time_in_school_or_training (CO-020) is the shared secondary-school fact the vocabulary review proposes to split; is_enrolled_higher_education_half_time (CO-021) is SNAP's student test, which does not include vocational or job skills training. cccap_is_teen_parent (CO-981) and cccap_is_adult_caretaker (CO-992) need it for the current teen-parent definition."
 nearest: [CO-020, CO-021]

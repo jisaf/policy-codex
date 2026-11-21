@@ -1,0 +1,13 @@
+id: CO-1713
+name: "Adult Financial cash assistance received"
+identifier: adult_financial_cash_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The Old Age Pension, Aid to the Needy Disabled or Aid to the Blind grant the person received for the month. Stated as the gross amount received for the month, before any deduction withheld and before any program's exclusions or disregards; each program's own rule decides what it counts."
+precision: "Not SSI (ssi_income, CO-849) and not Colorado Works (tanf_cash_income, CO-029). Adult Financial does not read it: a program does not count its own grant as income against itself."
+supplied_by: "CBMS Adult Financial case record."
+sources: [S42]
+tags: [income, cash]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): split from cash_assistance_income, which meant any cash assistance, so Adult Financial counted its own grant; SNAP, Colorado Works, LEAP and long-term care count it as unearned income."

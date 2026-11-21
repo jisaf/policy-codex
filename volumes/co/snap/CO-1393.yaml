@@ -6,7 +6,8 @@ type: calendar date
 scope: person
 program: SNAP
 meaning: "The last day of the period in which a household certified under expedited service may complete postponed verification: the application date plus thirty days."
-derived: [days_after, snap_expedited_postponed_verification_days, application_date]
+precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
+derived: [days_after, snap_expedited_postponed_verification_days, snap_application_date]
 sources: [S835]
 implemented: engine
 tags: [verification, snap]
@@ -14,4 +15,4 @@ open: [OQ-323]
 rationale: No existing item states how long expedited verification may be postponed.
 nearest: [CO-1392, CO-1618]
 tests:
-  - {id: CO-1393-T1, as_of: "2026-10-01", given: {application_date: "2026-10-01"}, expect: "2026-10-31"}
+  - {id: CO-1393-T1, as_of: "2026-10-01", given: {snap_application_date: "2026-10-01"}, expect: "2026-10-31"}

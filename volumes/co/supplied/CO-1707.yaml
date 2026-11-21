@@ -1,0 +1,13 @@
+id: CO-1707
+name: "Adult Financial: cost of doing business for self-employment"
+identifier: af_self_employment_business_costs
+kind: supplied
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The person's cost of doing business for the month that 9 CCR 2503-5 3.520.783.B allows (rent of business premises, wholesale cost of merchandise, utilities, interest, taxes, labor, upkeep of necessary equipment), without depreciation of equipment, payments on the principal of loans for capital assets, or personal expenses."
+precision: "Read only when self_employment_gross_receipts is more than zero."
+supplied_by: "Self-employment ledger, receipts, profit and loss statement."
+sources: [S1156]
+tags: [cash, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): each program's rule lists its own allowable costs of doing business, so the cost figure is the program's own fact; the gross receipts are shared (CO-1700)."

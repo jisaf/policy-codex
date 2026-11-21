@@ -103,6 +103,30 @@ describe("governance", () => {
     expect(f[0].level).toBe("warn");
   });
 
+  it("warns when a rule reads another program's fact it does not accept", () => {
+    const reader = (over: Partial<Item> = {}) => draft({
+      program: "SNAP", identifier: "snap_draft_rule", kind: "derived", type: "yes/no",
+      derived: ["all", "is_disabled_individual_ada"], tests: [], ...over,
+    });
+    const f = rule(engine.governance(reader()), "read.cross_program");
+    expect(f).toHaveLength(1);
+    expect(f[0].level).toBe("warn");
+    expect(f[0].msg).toContain("is_disabled_individual_ada");
+    expect(f[0].msg).toContain("Medicaid");
+    // Listing the read in accepts_from acknowledges it.
+    expect(rule(engine.governance(reader({ accepts_from: ["is_disabled_individual_ada"] })), "read.cross_program"))
+      .toEqual([]);
+    // The program's own facts and shared (program All) facts are not cross-program reads.
+    expect(rule(engine.governance(reader({ program: "Medicaid", identifier: "medicaid_draft_rule" })), "read.cross_program"))
+      .toEqual([]);
+    const shared = (ledger.items as unknown as Item[]).find((x) => x.program === "All" && x.kind === "supplied")!;
+    expect(rule(engine.governance(reader({ derived: ["all", shared.identifier] })), "read.cross_program"))
+      .toEqual([]);
+    // A name in accepts_from that is not in the ledger is reported too.
+    expect(rule(engine.governance(reader({ derived: ["all", shared.identifier], accepts_from: ["no_such_fact"] })), "read.cross_program")[0].msg)
+      .toContain("no_such_fact");
+  });
+
   it("forbids a program prefix on a shared item", () => {
     const f = engine.governance(draft({ program: "All", identifier: "medicaid_draft_fact" }));
     expect(rule(f, "name.prefix")[0].msg).toContain("carry no program prefix");

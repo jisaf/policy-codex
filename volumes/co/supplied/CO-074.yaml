@@ -1,6 +1,6 @@
 id: CO-074
-name: Countable non-liquid resources
-identifier: countable_nonliquid_resources_snap
+name: "SNAP: countable non-liquid resources"
+identifier: snap_countable_nonliquid_resources
 kind: supplied
 type: money
 scope: person
@@ -9,4 +9,4 @@ meaning: The person's own countable non-liquid resources under 7 CFR 273.8 - non
 supplied_by: Applicant statement, county worker determination (vehicle and property valuation).
 sources: [S56, S57]
 tags: [resources]
-rationale: "C-7: countable_liquid_resources (CO-031) is, by its own stated meaning, limited to 'cash, bank accounts, and similar' liquid resources, but snap_household_countable_resources (CO-343) summed only that fact and compared it to the 273.8/4.408,E resource limits, which are limits on all countable resources under 273.8, not only liquid ones. This under-counted resources for every Standard Eligibility household. Rather than re-mean countable_liquid_resources (which snap_is_entitled_to_expedited_service, CO-348, correctly uses for the liquid-resources expedited-service test), this adds a second fact for the non-liquid countable component, and CO-343 now sums both."
+rationale: "C-7: snap_countable_liquid_resources (CO-031) is, by its own stated meaning, limited to 'cash, bank accounts, and similar' liquid resources, but snap_household_countable_resources (CO-343) summed only that fact and compared it to the 273.8/4.408,E resource limits, which are limits on all countable resources under 273.8, not only liquid ones. This under-counted resources for every Standard Eligibility household. Rather than re-mean snap_countable_liquid_resources (which snap_is_entitled_to_expedited_service, CO-348, correctly uses for the liquid-resources expedited-service test), this adds a second fact for the non-liquid countable component, and CO-343 now sums both. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-2, N-4): renamed from countable_nonliquid_resources_snap; the program prefix leads."

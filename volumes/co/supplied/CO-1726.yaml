@@ -1,0 +1,13 @@
+id: CO-1726
+name: "Date of entry into the United States"
+identifier: us_entry_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person entered the United States (for a person who entered more than once, the entry the immigration record treats as the qualifying entry)."
+precision: "Distinct from qualified_status_date (CO-003), the date the person obtained the current qualified status: a person who entered before August 22, 1996 and adjusted status later has an entry date before the cutoff and a status date after it."
+supplied_by: "SAVE response, I-94 arrival record, or other immigration documents."
+sources: [S402, S1151]
+tags: [immigration]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-4): meets_public_assistance_citizenship_requirement (CO-905, which absorbed the Aid to the Needy Disabled copy, CO-943) test whether a qualified non-citizen 'entered the United States prior to August 22, 1996' (C.R.S. 26-2-706(1.5)(b), 26-2-111.8(2)(a)); CO-905 had read qualified_status_date, which differs for anyone who adjusted status."

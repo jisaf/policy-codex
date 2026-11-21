@@ -1,0 +1,13 @@
+id: CO-1701
+name: "SNAP: allowable costs of producing self-employment income"
+identifier: snap_self_employment_costs
+kind: supplied
+type: money
+scope: person-month
+program: SNAP
+meaning: "The person's costs of producing self-employment income for the month that 7 CFR 273.11(b) and 10 CCR 2506-1 4.403.11 allow: labor, stock, raw material, seed and fertilizer, payments on the principal of income-producing real estate and capital assets, interest paid to purchase income-producing property, insurance premiums and taxes on income-producing property. Not depreciation, net losses from previous periods, income taxes, retirement savings or personal work expenses (273.11(b)(2))."
+precision: "Read only when self_employment_gross_receipts is more than zero."
+supplied_by: "Self-employment ledger, receipts, profit and loss statement."
+sources: [S1152, S1153]
+tags: [snap, income]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): each program's rule lists its own allowable costs of doing business, so the cost figure is the program's own fact; the gross receipts are shared (CO-1700)."

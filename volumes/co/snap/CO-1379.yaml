@@ -13,7 +13,7 @@ implemented: engine
 tags: [verification, snap, income]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
 tests:
-  - {id: CO-1379-T1, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, shelter_cost_monthly: 1400, shelter_costs_attestation_is_questionable: true, claims_shelter_costs_for_unoccupied_home: false}, expect: true}
-  - {id: CO-1379-T2, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, shelter_cost_monthly: 1400, shelter_costs_attestation_is_questionable: false, claims_shelter_costs_for_unoccupied_home: false}, expect: false}
-  - {id: CO-1379-T3, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, shelter_cost_monthly: 0, claims_shelter_costs_for_unoccupied_home: false}, expect: false}
-  - {id: CO-1379-T4, month: "2026-10", as_of: "2026-10-01", given: {in_medical_institution: false, shelter_cost_monthly: 900, shelter_costs_attestation_is_questionable: false, claims_shelter_costs_for_unoccupied_home: true}, expect: true}
+  - {id: CO-1379-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 1400, shelter_costs_attestation_is_questionable: true, claims_shelter_costs_for_unoccupied_home: false}, expect: true}
+  - {id: CO-1379-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 1400, shelter_costs_attestation_is_questionable: false, claims_shelter_costs_for_unoccupied_home: false}, expect: false}
+  - {id: CO-1379-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 0, claims_shelter_costs_for_unoccupied_home: false}, expect: false}
+  - {id: CO-1379-T4, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 900, shelter_costs_attestation_is_questionable: false, claims_shelter_costs_for_unoccupied_home: true}, expect: true}

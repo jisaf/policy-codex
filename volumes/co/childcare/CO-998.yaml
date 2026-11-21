@@ -6,13 +6,14 @@ type: yes/no
 scope: person
 program: CCCAP
 meaning: Whether this child has verified citizen/legal-resident status, under 8 CCR 1403-1 3.111.F.1 - required of "all children who have had an application made on their behalf or are receiving child care assistance."
-precision: Reads citizenship_status and lawful_presence_status the way this volume's other citizenship tests do (for example leap_meets_citizenship_requirement, CO-1010); 3.111.F.1 imposes no citizenship test on the adult caretaker, only the child (see the review's note in docs/reviews/cccap-leap-phase-6.md 1.3, "CCCAP has no citizenship test for the caretaker, and that is correct").
-derived: [any, ["=", citizenship_status, citizen], ["=", lawful_presence_status, lawfully_present]]
+precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-10, U-3): 3.111.F.1's 'citizen/legal resident' is read from citizenship_status alone: a citizen or national (is_us_citizen_or_national, CO-1358), a qualified non-citizen (is_qualified_non_citizen, CO-506) or another lawfully present non-citizen. It had tested citizen only (dropping U.S. nationals) or Medicaid's lawful_presence_status, a fact a case states only for Medicaid. Whether 'legal resident' also takes in a lawfully present non-qualified non-citizen is OQ-394. 3.111.F.1 imposes no citizenship test on the adult caretaker, only the child."
+derived: [any, is_us_citizen_or_national, is_qualified_non_citizen, ["=", citizenship_status, other_lawfully_present_non_citizen]]
 sources: [S514]
+open: [OQ-394]
 implemented: engine
 tags: [immigration, legal]
 rationale: "No existing item states 3.111.F.1's child citizenship/legal-residency verification; the review (docs/reviews/cccap-leap-phase-6.md, K-1) called this 'the single largest gap in the CCCAP chapter' - the chapter has no CCCAP citizenship item of any kind, though LEAP's parallel leap_meets_citizenship_requirement (CO-1010, the nearest same-shape item) exists. cccap_is_eligible_child (CO-980) reads it as a conjunct, so a child without verified status is not an eligible child."
 tests:
   - {id: CO-998-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, lawful_presence_status: lawfully_present}, expect: true}
   - {id: CO-998-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented, lawful_presence_status: not_lawfully_present}, expect: false}
-  - {id: CO-998-T3, as_of: "2026-10-01", given: {citizenship_status: other_non_qualified_non_citizen, lawful_presence_status: lawfully_present}, expect: true}
+  - {id: CO-998-T3, as_of: "2026-10-01", given: {citizenship_status: other_lawfully_present_non_citizen, lawful_presence_status: lawfully_present}, expect: true}

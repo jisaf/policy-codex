@@ -7,12 +7,12 @@ scope: person-month
 program: SNAP
 meaning: "Whether the person's identity must be verified for SNAP: the identity of the head of a SNAP household, the person making application, is always verified at application, including under expedited service; unchanged identity is not verified again at recertification."
 precision: An authorized representative's identity (also verified under 273.2(f)(1)(vii)) is not modeled; the volume has no authorized-representative fact.
-derived: [all, is_head_of_household, snap_is_household_member, [not, snap_determination_is_recertification]]
+derived: [all, snap_is_head_of_household, snap_is_household_member, [not, snap_determination_is_recertification]]
 sources: [S806, S814, S816, S822, S1055, S1056]
 implemented: engine
 tags: [verification, snap, household]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
 tests:
-  - {id: CO-1370-T1, month: "2026-10", as_of: "2026-10-01", given: {is_head_of_household: true, in_medical_institution: false, snap_determination_is_recertification: false}, expect: true}
-  - {id: CO-1370-T2, month: "2026-10", as_of: "2026-10-01", given: {is_head_of_household: false, in_medical_institution: false, snap_determination_is_recertification: false}, expect: false}
-  - {id: CO-1370-T3, month: "2026-10", as_of: "2026-10-01", given: {is_head_of_household: true, in_medical_institution: false, snap_determination_is_recertification: true}, expect: false}
+  - {id: CO-1370-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_head_of_household: true, snap_resides_in_institution_providing_meals: false, snap_determination_is_recertification: false}, expect: true}
+  - {id: CO-1370-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_head_of_household: false, snap_resides_in_institution_providing_meals: false, snap_determination_is_recertification: false}, expect: false}
+  - {id: CO-1370-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_is_head_of_household: true, snap_resides_in_institution_providing_meals: false, snap_determination_is_recertification: true}, expect: false}

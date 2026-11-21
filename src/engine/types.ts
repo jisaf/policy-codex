@@ -75,6 +75,10 @@ export interface Item {
   rationale?: string;
   /** Ids of the nearest existing items, acknowledged when the item was added. */
   nearest?: string[];
+  /** Identifiers of other programs' facts this derived item reads on purpose,
+   *  because its rule names that program's result (governance warns on any
+   *  other cross-program read). */
+  accepts_from?: string[];
   tests?: TestSpec[];
 }
 

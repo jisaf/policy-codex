@@ -5,14 +5,16 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: The person's countable unearned income for the month, the sum of Social Security, pension, unemployment, child support received, cash assistance, and other unearned income.
-precision: Reads the supplied unearned-income facts, which this volume's interface already states as countable amounts; income exclusions this volume cannot model from the supplied facts go unmodeled here, per assumption.
-assumption: The six supplied unearned-income facts are already the countable amounts 7 CFR 273.9(b)(2) (S42) describes (assistance payments, annuities/pensions/disability/retirement/Social Security benefits, support/alimony payments, and other direct money payments); exclusions this volume's interface does not expose as separate facts (for example infrequent/irregular income under $30 a quarter) are not separately subtracted.
-derived: ["+", social_security_income, pension_income, unemployment_income, child_support_received, cash_assistance_income, other_unearned_income]
+meaning: "The person's unearned income for the month for SNAP: Social Security, pension, unemployment, child support received, public assistance (Colorado Works, Adult Financial and SSI), and other unearned income, taxable or not, under 7 CFR 273.9(b)(2)."
+precision: "Vocabulary fix round (R-1): SSI is counted (ssi_income, CO-849), as 273.9(b)(2)(i) lists it; it had no term. The supplied amounts are gross; the 273.9(c) exclusions are not modeled (OQ-390)."
+assumption: "No 273.9(c) exclusion (for example infrequent or irregular income under $30 a quarter) applies to the stated amounts (OQ-390)."
+derived: ["+", social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, ssi_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest]
 sources: [S42]
+open: [OQ-390]
 implemented: engine
 tags: [income]
 rationale: 7 CFR 273.9(b)(2) (S42) defines unearned income to include assistance payments, benefits, and support payments; no existing item sums this volume's six unearned-income supplied facts into the single figure snap_person_gross_income needs.
 tests:
-  - {id: CO-331-T1, month: "2026-10", given: {social_security_income: 1180, pension_income: 0, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 1180}
-  - {id: CO-331-T2, month: "2026-10", given: {social_security_income: 1420, pension_income: 610, unemployment_income: 0, child_support_received: 0, cash_assistance_income: 0, other_unearned_income: 0}, expect: 2030}
+  - {id: CO-331-T1, month: "2026-10", given: {social_security_income: 1180, pension_income: 0, unemployment_income: 0, child_support_received: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, ssi_income: 0, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, expect: 1180}
+  - {id: CO-331-T2, month: "2026-10", given: {social_security_income: 1420, pension_income: 610, unemployment_income: 0, child_support_received: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, ssi_income: 0, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, expect: 2030}
+  - {id: CO-331-T3, title: "Vocabulary fix round (R-1): SSI is unearned income (273.9(b)(2)(i))", month: "2026-10", given: {social_security_income: 0, pension_income: 0, unemployment_income: 0, child_support_received: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, ssi_income: 700, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, expect: 700}

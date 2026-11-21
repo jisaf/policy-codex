@@ -1,0 +1,15 @@
+id: CO-1740
+name: "SNAP: household liquid resources"
+identifier: snap_household_liquid_resources
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The total of the countable liquid resources (cash on hand, checking or savings accounts, savings certificates and lump sum payments) of every member of this person's SNAP household, the figure 7 CFR 273.2(i)(1) compares with the expedited service ceiling."
+derived: [sum, snap_household_members, [of, [P], snap_countable_liquid_resources]]
+sources: [S58]
+implemented: engine
+tags: [snap, resources]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-11): snap_is_entitled_to_expedited_service (CO-348) compared the household's liquid and non-liquid countable resources with the $100 ceiling, but 273.2(i)(1) counts 'liquid resources' only, so a household with no cash and a countable vehicle was refused expedited service."
+tests:
+  - {id: CO-1740-T1, as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, snap_countable_liquid_resources: 40, snap_countable_nonliquid_resources: 6000}, others: {p2: {snap_resides_in_institution_providing_meals: false, snap_countable_liquid_resources: 30, snap_countable_nonliquid_resources: 0}}, relationships: [[spouse, p1, p2]], expect: 70}

@@ -1,11 +1,11 @@
 id: CO-104
-name: SNAP non-citizen five-year waiting period
-identifier: snap_five_year_bar_years
+name: "Qualified non-citizen waiting period, years"
+identifier: qualified_non_citizen_waiting_period_years
 kind: parameter
 type: whole number
 scope: global
-program: SNAP
-meaning: The number of years a qualified non-citizen subject to the additional condition must have held qualified non-citizen status (or resided in the U.S. in a qualifying status) before satisfying the five-year-residence additional condition.
+program: All
+meaning: "The number of years a qualified non-citizen must have held qualified status before the five-year limitation of 8 U.S.C. 1613(a) stops applying (five years)."
 value: 5
-sources: [S12]
-rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). It is read by SNAP: meets the non-citizen additional condition."
+sources: [S12, S176]
+rationale: "A policy number the cited text states; kept as a parameter so the rule that reads it carries no digit in its identifier (governance name.digits). Vocabulary fix round (U-2): renamed from snap_five_year_bar_years and made program All; SNAP, Medicaid, Colorado Works and Adult Financial all read it through has_held_qualified_status_five_years (CO-508)."

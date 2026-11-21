@@ -12,5 +12,5 @@ implemented: engine
 tags: [student, age]
 rationale: 7 U.S.C. 2015(e)(5) and 10 CCR 2506-1 4.306.1.D-E (S133, S135) state two dependent-care student exemptions with different age bands and different conditions (the older band requires unavailable child care); this item combines both into the single fact snap_is_student_exempt reads.
 tests:
-  - {id: CO-408-T1, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", in_medical_institution: false, adequate_child_care_available: false}, others: {p2: {date_of_birth: "2024-01-01", in_medical_institution: false}}, relationships: [[parent, p1, p2]], expect: true}
-  - {id: CO-408-T2, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", in_medical_institution: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2017-01-01", in_medical_institution: false}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-408-T1, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: false}, others: {p2: {date_of_birth: "2024-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: true}
+  - {id: CO-408-T2, as_of: "2026-10-01", given: {date_of_birth: "2000-01-01", snap_resides_in_institution_providing_meals: false, adequate_child_care_available: true}, others: {p2: {date_of_birth: "2017-01-01", snap_resides_in_institution_providing_meals: false}}, relationships: [[parent, p1, p2]], expect: false}

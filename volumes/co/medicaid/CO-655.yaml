@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: The community spouse's minimum monthly income needs - the MMMNA standard plus an excess shelter allowance for shelter costs above 30% of the standard, capped at the current MMMNA maximum - per 42 U.S.C. 1396r-5(d)(3)-(4) and 10 CCR 2505-10 § 8.100.7.Q.
 precision: Does not model 8.100.7.Q.2's additional approved amounts for the community spouse's medical expenses or insurance premiums (those instead deduct from health_insurance_premiums_paid, per CO-835's rationale, or are out of scope) or 8.100.7.Q.3's exceptional-circumstances fair-hearing increase.
-derived: ["min", mmmna_cap, ["+", ma_mmmna_standard, ["max", 0, ["-", shelter_costs_community_spouse, ["*", ma_mmmna_shelter_threshold_pct, ma_mmmna_standard]]]]]
+derived: ["min", ma_mmmna_cap, ["+", ma_mmmna_standard, ["max", 0, ["-", shelter_costs_community_spouse, ["*", ma_mmmna_shelter_threshold_pct, ma_mmmna_standard]]]]]
 sources: [S358, S372]
 open: [OQ-97]
 implemented: engine

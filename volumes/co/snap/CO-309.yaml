@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person is a U.S. citizen or non-citizen national, or is an eligible non-citizen, and so may participate in SNAP as far as citizenship and immigration status alone determine.
-precision: Does not itself test U.S. residency (7 U.S.C. 2015(f)(1)); see OQ-3.
-derived: [any, [in, citizenship_status, [citizen, us_national]], snap_is_eligible_non_citizen]
+precision: "Does not itself test U.S. residency (7 U.S.C. 2015(f)(1)); see OQ-3. Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
+derived: [any, is_us_citizen_or_national, snap_is_eligible_non_citizen]
 sources: [S8]
 open: [OQ-3]
 implemented: engine
@@ -16,4 +16,4 @@ rationale: Combines citizen/national status with snap_is_eligible_non_citizen in
 tests:
   - {id: CO-309-T1, as_of: "2026-10-01", given: {citizenship_status: citizen}, expect: true}
   - {id: CO-309-T2, as_of: "2026-10-01", given: {citizenship_status: undocumented}, expect: false}
-  - {id: CO-309-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1945-07-30", is_veteran_or_active_duty: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40}, expect: true}
+  - {id: CO-309-T3, as_of: "2026-10-01", given: {citizenship_status: lawful_permanent_resident, date_of_birth: "1945-07-30", has_military_connection: false, qualified_status_date: "1998-05-14", qualifying_quarters: 40}, expect: true}

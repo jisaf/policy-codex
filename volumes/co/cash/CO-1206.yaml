@@ -12,7 +12,8 @@ sources: [S712]
 open: [OQ-250]
 implemented: engine
 tags: [cash, hcbs, disability]
-rationale: No existing item states functional (as opposed to financial) HCBS eligibility; ma_hcbs_waiver_eligible (CO-653) folds in the financial tests. af_hca_eligibility_status (CO-1217) needs the functional test alone.
+accepts_from: [meets_hcbs_waiver_target_group]
+rationale: "No existing item states functional (as opposed to financial) HCBS eligibility; ma_hcbs_waiver_eligible (CO-653) folds in the financial tests. af_hca_eligibility_status (CO-1217) needs the functional test alone. Vocabulary fix round (governance read.cross_program): accepts_from lists the other programs' items this rule reads on purpose. The Adult Financial rule names the other program's result (the Colorado Works bar of 3.520.61.F; the HCBS target-group screen of 3.570, S712)."
 nearest: [CO-653]
 tests:
   - {id: CO-1206-T1, as_of: "2026-10-01", given: {meets_nursing_facility_level_of_care: true, meets_hcbs_waiver_target_group: ebd}, expect: true}

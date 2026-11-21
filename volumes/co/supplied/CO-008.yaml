@@ -5,7 +5,7 @@ kind: supplied
 type: calendar date
 scope: person
 program: All
-meaning: The date the person entered the medical institution named by in_medical_institution.
+meaning: The date the person entered the medical institution named by snap_resides_in_institution_providing_meals.
 supplied_by: Institution admission record.
 sources: []
 tags: [household]
