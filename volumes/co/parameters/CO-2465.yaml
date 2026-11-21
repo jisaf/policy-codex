@@ -1,0 +1,12 @@
+id: CO-2465
+name: "Medicaid: first month a death or disability student loan discharge is excluded"
+identifier: ma_student_loan_death_disability_exclusion_start_month
+kind: parameter
+type: month
+scope: global
+program: Medicaid
+meaning: "The first month from which a student loan discharged on account of the death or total and permanent disability of the student is excluded from MAGI income: January 2018, the start of 10 CCR 2505-10 § 8.100.4.C.1.b.xv.1's \"tax years 2018 through 2025\"; the exclusion has no end, since 26 U.S.C. 108(f)(5) as amended by Pub. L. 119-21 sec. 70119 excludes such discharges after December 31, 2025, and the American Rescue Plan exclusion covered 2021 through 2025."
+value: "2018-01"
+sources: [S670, S1708, S1709]
+tags: [ma, magi, income]
+rationale: S-10 of the HCPF review.

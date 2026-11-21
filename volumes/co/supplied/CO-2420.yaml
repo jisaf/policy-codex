@@ -1,0 +1,12 @@
+id: CO-2420
+name: "Medicaid: was in another state's foster care at 18 and enrolled in that state's Medicaid"
+identifier: ma_foster_care_was_in_another_state
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person was in foster care under another state's responsibility at age 18 and enrolled in that state's Medicaid, rather than in Colorado's or a Tribe's foster care (10 CCR 2505-10 § 8.100.4.H.2.a.iii). If not stated, Medicaid reads it as false (Colorado or Tribal foster care).
+supplied_by: The youth's statement and the other state's Medicaid and foster care records.
+sources: [S1718]
+tags: [ma, age]
+rationale: "C-9 of the HCPF review: the out-of-state former foster care youth from 2023 (H.2.a.iii) had no fact."

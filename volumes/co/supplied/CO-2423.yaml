@@ -1,0 +1,13 @@
+id: CO-2423
+name: "Medicaid: reason for the loss of eligibility"
+identifier: ma_ineligibility_reason
+kind: supplied
+type: one of
+options: [increased_earnings, support_income, other]
+scope: person
+program: Medicaid
+meaning: "Why the person stopped being eligible in ma_first_month_of_ineligibility: new or increased income from employment or hours of employment (increased_earnings, § 8.100.4.I.1.b), receipt of support income such as countable alimony (support_income, I.5), or another reason (other)."
+supplied_by: CBMS eligibility history (the change that produced the ineligibility).
+sources: [S1719, S1720]
+tags: [ma, magi, income]
+rationale: C-4 of the HCPF review.

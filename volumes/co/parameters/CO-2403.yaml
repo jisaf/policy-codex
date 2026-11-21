@@ -1,0 +1,12 @@
+id: CO-2403
+name: "CHP+: continuous eligibility period, months"
+identifier: chp_continuous_eligibility_months
+kind: parameter
+type: whole number
+scope: global
+program: CHP+
+meaning: "The length of a CHP+ child's continuous eligibility period: \"may last for up to 12 months\" (10 CCR 2505-3 § 430.2)."
+value: 12
+sources: [S1714]
+tags: [chp]
+rationale: "B-2 of the HCPF review: chp_child_is_in_continuous_eligibility_period (CO-2404) needs the period length as a parameter; ma_continuous_eligibility_months is Medicaid's figure under § 8.100.3.Q."

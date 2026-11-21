@@ -1,0 +1,12 @@
+id: CO-2453
+name: "Medicaid: renewal interval for expansion adults from 2027"
+identifier: ma_expansion_adult_renewal_interval_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The months between redeterminations for an expansion adult from January 1, 2027: \"once every 6 months\" (42 U.S.C. 1396a(e)(14)(L)(i))."
+value: 6
+sources: [S1707]
+tags: [ma, magi]
+rationale: C-11 of the HCPF review.

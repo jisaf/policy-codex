@@ -1,0 +1,13 @@
+id: CO-2424
+name: "Medicaid: category enrolled in for a past month"
+identifier: ma_prior_enrollment_category
+kind: supplied
+type: one of
+options: [parent_caretaker, other_medical_assistance, none]
+scope: person-month
+program: Medicaid
+meaning: "For a month before the determination month, the Medical Assistance category the person was eligible for and enrolled in: the Parent/Caretaker Relative category (parent_caretaker), any other Medical Assistance (other_medical_assistance), or none. It is the eligibility history § 8.100.4.I.1.a and I.5 count (\"at least three of the six months preceding\")."
+supplied_by: CBMS eligibility history.
+sources: [S1719, S1720]
+tags: [ma, magi]
+rationale: "C-4 of the HCPF review: the three-of-six-months tests need the enrollment history, which the volume's other facts (stated for the current month) do not carry."

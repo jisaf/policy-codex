@@ -1,0 +1,12 @@
+id: CO-2462
+name: "Medicaid: month Buy-In eligibility was determined"
+identifier: ma_buy_in_determination_month
+kind: supplied
+type: month
+scope: person
+program: Medicaid
+meaning: The month in which the person's current Buy-In eligibility was determined. Premiums are charged beginning the month after it, and premiums for earlier months are waived (10 CCR 2505-10 § 8.100.6.P.1.f.ii, Q.1.g.ii).
+supplied_by: "CBMS: the date of the eligibility determination that opened the Buy-In enrollment."
+sources: [S1727, S1728]
+tags: [ma, buy_in]
+rationale: "S-8 of the HCPF review: no fact stated when the determination was made, so the first-month waiver could not be applied."

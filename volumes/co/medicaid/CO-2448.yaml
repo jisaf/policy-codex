@@ -1,0 +1,18 @@
+id: CO-2448
+name: "Medicaid: child is in a non-MAGI continuous eligibility period"
+identifier: ma_child_is_in_non_magi_continuous_eligibility_period
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether this month falls inside a child's 12-month continuous eligibility period that began in the Children with Disabilities Buy-In, Pickle, Disabled Adult Child or Limited Family Planning program (10 CCR 2505-10 § 8.100.3.Q.2.d-g): the child is under 19 (or turns 19 this month), a Colorado resident, the month is within 11 months after the period's first month, no exception of § 8.100.3.Q.1.b ends it, and, for the Buy-In, enrollment was not discontinued for unpaid premiums (Q.2.d.i). A period that began in SSI Mandatory or long-term care continues in the MAGI Children's category (Q.2.b.i, c.i) through ma_child_is_in_continuous_eligibility_period (CO-561)."
+derived: [all, [in, [otherwise, ma_continuous_eligibility_program, magi], [cbwd_buy_in, pickle, dac, limited_family_planning]], ma_is_under_child_age_or_turns_nineteen_this_month, ma_meets_residency, [">=", [month], [otherwise, continuous_eligibility_period_start_month, [month_of, ma_application_date]]], ["<=", [month], ma_child_continuous_eligibility_end_month], [not, ma_continuous_eligibility_exception_applies], [not, [all, ["=", ma_continuous_eligibility_program, cbwd_buy_in], [otherwise, ma_buy_in_enrollment_discontinued_for_premiums, false]]]]
+sources: [S1724, S216, S1502]
+implemented: engine
+tags: [ma, non_magi, age]
+rationale: "C-7 of the HCPF review: continuous eligibility for the non-MAGI child programs had no item. Each of those programs' eligibility items reads this one, so a child stays in the program the period began in."
+tests:
+  - {id: CO-2448-T1, month: "2027-02", as_of: "2027-02-01", given: {ma_continuous_eligibility_program: cbwd_buy_in, date_of_birth: "2016-04-01", is_colorado_resident: true, continuous_eligibility_period_start_month: "2026-10", ma_application_date: "2026-10-03", ma_continuous_eligibility_exception_applies: false, ma_buy_in_enrollment_discontinued_for_premiums: false}, title: "Child of 10 entered the Children with Disabilities Buy-In in October; household income rose in February", expect: true}
+  - {id: CO-2448-T2, month: "2027-02", as_of: "2027-02-01", given: {ma_continuous_eligibility_program: cbwd_buy_in, date_of_birth: "2016-04-01", is_colorado_resident: true, continuous_eligibility_period_start_month: "2026-10", ma_application_date: "2026-10-03", ma_continuous_eligibility_exception_applies: false, ma_buy_in_enrollment_discontinued_for_premiums: true}, title: "The same child, Buy-In discontinued for unpaid premiums", expect: false}
+  - {id: CO-2448-T3, month: "2027-02", as_of: "2027-02-01", given: {ma_continuous_eligibility_program: magi}, title: "A MAGI period is not a non-MAGI period", expect: false}
+  - {id: CO-2448-T4, month: "2027-11", as_of: "2027-11-01", given: {ma_continuous_eligibility_program: pickle, date_of_birth: "2012-04-01", is_colorado_resident: true, continuous_eligibility_period_start_month: "2026-10", ma_application_date: "2026-10-03", ma_continuous_eligibility_exception_applies: false}, title: "Pickle period past its twelfth month", expect: false}

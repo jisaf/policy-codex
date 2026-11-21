@@ -11,6 +11,8 @@ versions:
   - from: "2026-01-01"
     value: 9950
     source: S647
+review_by: "2027-01-01"
 sources: [S646, S647, S301]
 tags: [non_magi, msp, resources]
+open: [OQ-516]
 rationale: "OQ-81: no fetched document stated the 2026 figure, so this was a supplied fact. CMS's Medicare.gov publication of the 2026 Medicare Savings Program limits (D-74) states $9,950 for an individual for QMB, SLMB and QI, the figure § 8.100.5.M.1 directs CMS to set. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from msp_resource_limit_individual; a Medicaid parameter without the program prefix."

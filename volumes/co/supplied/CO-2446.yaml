@@ -1,0 +1,13 @@
+id: CO-2446
+name: "Medicaid: program a child's continuous eligibility period began in"
+identifier: ma_continuous_eligibility_program
+kind: supplied
+type: one of
+options: [magi, ssi_mandatory, long_term_care, cbwd_buy_in, pickle, dac, limited_family_planning, foster_care_exit]
+scope: person
+program: Medicaid
+meaning: "The Medical Assistance program the child was enrolled in when the current continuous eligibility period began (10 CCR 2505-10 § 8.100.3.Q.2): MAGI Medical Assistance (magi), SSI Mandatory, long-term care services, the Children with Disabilities Buy-In, Pickle, Disabled Adult Child, Limited Family Planning, or the MAGI period that begins when a child leaves Foster Care Medicaid to live with relatives, reunite with parents or under guardianship (foster_care_exit, Q.3). If not stated, Medicaid reads it as magi."
+supplied_by: CBMS eligibility history (the program on the determination that opened the period).
+sources: [S1724]
+tags: [ma, age]
+rationale: "C-7 of the HCPF review: ma_continuous_eligibility_applies (CO-555) opened a period only from the MAGI Children's category; the program a period began in is history the current month's facts do not carry, and reading the non-MAGI determinations at the start month would make them read themselves (CO-1154 reads ma_magi_category)."

@@ -11,7 +11,9 @@ versions:
   - from: "2026-01-01"
     value: 14910
     source: S647
+review_by: "2027-01-01"
 sources: [S646, S647, S301]
 tags: [non_magi, msp, resources]
+open: [OQ-516]
 nearest: [CO-807]
 rationale: "Companion figure to ma_msp_resource_limit_individual (CO-807): CMS's Medicare.gov publication of the 2026 limits (D-74) states $14,910 for a married couple. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from msp_resource_limit_couple; a Medicaid parameter without the program prefix."

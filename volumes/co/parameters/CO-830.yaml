@@ -11,6 +11,8 @@ versions:
   - from: "2026-01-01"
     value: 4066.50
     source: S644
+review_by: "2027-01-01"
 sources: [S644, S651, S359, S372]
 tags: [ma, ltc, income]
+open: [OQ-516]
 rationale: "OQ-91: no fetched document stated the 2026 figure, and § 8.100.7.Q.4 restates a stale 2001 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Maximum Monthly Maintenance Needs Allowance, $4,066.50, effective January 1, 2026. ma_mmmna (CO-655) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from mmmna_cap; a Medicaid parameter without the program prefix."

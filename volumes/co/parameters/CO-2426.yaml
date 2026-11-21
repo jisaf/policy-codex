@@ -1,0 +1,12 @@
+id: CO-2426
+name: "Medicaid: Transitional Medical Assistance months"
+identifier: ma_transitional_medical_assistance_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The length of Transitional Medical Assistance: twelve months beginning with the first month of ineligibility (10 CCR 2505-10 § 8.100.4.I.1)."
+value: 12
+sources: [S1719]
+tags: [ma, magi]
+rationale: C-4 of the HCPF review.

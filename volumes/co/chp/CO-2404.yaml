@@ -1,0 +1,21 @@
+id: CO-2404
+name: "CHP+: child is in a continuous eligibility period"
+identifier: chp_child_is_in_continuous_eligibility_period
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether this month falls inside a CHP+ child's 12-month continuous eligibility period under 10 CCR 2505-3 § 430.2: the child was found eligible for CHP+ in the period's first month, is still under 19, is still a Colorado resident (B.iv), the month is no more than 11 months after the first month, and no other exception of § 430.2.B ends the period - deceased, moved out of the household permanently, cannot be located, asked to be withdrawn, failed to provide documentation in a reasonable opportunity period, or eligibility erroneously granted (ma_continuous_eligibility_exception_applies, CO-2205, the same list § 8.100.3.Q.1.b states, whose reasonable opportunity exception § 430.2.B.vii cites). Income changes do not end it (§ 430.2.A)."
+precision: The first month is chp_eligibility_period_start_month, or the month of ma_application_date when that is not stated. A child who becomes an inmate of a public institution stays in the period on a limited incarceration benefit (§ 430.2.B.ii), which chp_eligibility_status (CO-707) reports; the period continues on release. With neither the start month nor the application date stated, no period is recorded and the child is not in one.
+derived: [all, [not, [unknown, [otherwise, chp_eligibility_period_start_month, [month_of, ma_application_date]]]], [at, chp_child_is_eligible, [otherwise, chp_eligibility_period_start_month, [month_of, ma_application_date]]], ma_is_under_child_age_or_turns_nineteen_this_month, is_colorado_resident, [">=", [month], [otherwise, chp_eligibility_period_start_month, [month_of, ma_application_date]]], ["<=", [month], [months_after, ["-", chp_continuous_eligibility_months, 1], [otherwise, chp_eligibility_period_start_month, [month_of, ma_application_date]]]], [not, ma_continuous_eligibility_exception_applies]]
+sources: [S1714, S1724]
+implemented: engine
+tags: [chp, age]
+accepts_from: [ma_is_under_child_age_or_turns_nineteen_this_month, ma_continuous_eligibility_exception_applies, ma_application_date]
+rationale: "B-2 of the HCPF review: a CHP+ child whose income rose in month 3 was reported ineligible_income although § 430.2.A keeps the child enrolled. No CHP+ item tested continuity; ma_child_is_in_continuous_eligibility_period (CO-561) is the Medicaid period and opens only from the Medicaid Children's category."
+tests:
+  - {id: CO-2404-T1, month: "2027-01", as_of: "2027-01-15", given: {date_of_birth: "2015-06-01", chp_eligibility_period_start_month: "2026-10", is_colorado_resident: true, chp_child_is_eligible: {"2026-10": true, "2027-01": false}, ma_continuous_eligibility_exception_applies: false}, title: "Found CHP+ eligible in October; income rose in January", expect: true}
+  - {id: CO-2404-T2, month: "2027-10", as_of: "2027-10-15", given: {date_of_birth: "2015-06-01", chp_eligibility_period_start_month: "2026-10", is_colorado_resident: true, chp_child_is_eligible: {"2026-10": true, "2027-10": false}, ma_continuous_eligibility_exception_applies: false}, title: "Thirteenth month: the period has ended", expect: false}
+  - {id: CO-2404-T3, month: "2027-01", as_of: "2027-01-15", given: {date_of_birth: "2015-06-01", chp_eligibility_period_start_month: "2026-10", is_colorado_resident: false, chp_child_is_eligible: {"2026-10": true}, ma_continuous_eligibility_exception_applies: false}, title: "Moved out of Colorado", expect: false}
+  - {id: CO-2404-T4, month: "2027-01", as_of: "2027-01-15", given: {date_of_birth: "2015-06-01", chp_eligibility_period_start_month: "2026-10", is_colorado_resident: true, chp_child_is_eligible: {"2026-10": true}, ma_continuous_eligibility_exception_applies: true}, title: "Asked to be withdrawn", expect: false}
+  - {id: CO-2404-T5, month: "2027-01", as_of: "2027-01-15", given: {date_of_birth: "2015-06-01", chp_eligibility_period_start_month: "2026-10", is_colorado_resident: true, chp_child_is_eligible: {"2026-10": false}, ma_continuous_eligibility_exception_applies: false}, title: "Not CHP+ eligible in the first month: no period", expect: false}

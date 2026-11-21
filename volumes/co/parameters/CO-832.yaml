@@ -10,6 +10,7 @@ precision: § 8.100.7.F.2.c.i (D-65, S648) states only how the divisor is define
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 10475.11, source: S1228}
   - {from: "2026-01-01", value: 10814.64, source: S1228}
+review_by: "2027-01-01"
 sources: [S366, S648, S1228]
 tags: [ma, ltc, legal]
 open: [OQ-212]

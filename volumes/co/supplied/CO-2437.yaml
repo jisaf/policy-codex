@@ -1,0 +1,12 @@
+id: CO-2437
+name: "Medicaid: received presumptive eligibility during this pregnancy"
+identifier: ma_received_presumptive_eligibility_this_pregnancy
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether a pregnant applicant has already received presumptive eligibility during the current pregnancy (10 CCR 2505-10 § 8.100.3.R.9: pregnant women \"may receive presumptive eligibility once every pregnancy\")."
+supplied_by: CBMS presumptive eligibility history.
+sources: [S1722]
+tags: [ma]
+rationale: C-5 of the HCPF review.

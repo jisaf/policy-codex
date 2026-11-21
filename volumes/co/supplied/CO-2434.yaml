@@ -1,0 +1,12 @@
+id: CO-2434
+name: "Medicaid: declared own income as a share of the poverty guideline"
+identifier: ma_attested_own_income_pct_fpl
+kind: supplied
+type: rate
+scope: person
+program: Medicaid
+meaning: "The applicant's own declared income, without other household members' income, as a decimal fraction of the poverty guideline for one person, as declared at a presumptive eligibility site (10 CCR 2505-10 § 8.100.3.R.2.f: \"Only the applicant's income will be considered\")."
+supplied_by: The hospital presumptive eligibility site's application.
+sources: [S1722]
+tags: [ma, income]
+rationale: "C-5 of the HCPF review: attested_household_income_pct_fpl is the household's declared income; the employed-disabled group counts the applicant's alone."

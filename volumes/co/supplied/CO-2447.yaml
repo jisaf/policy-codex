@@ -1,0 +1,12 @@
+id: CO-2447
+name: "Medicaid: Buy-In enrollment discontinued for unpaid premiums"
+identifier: ma_buy_in_enrollment_discontinued_for_premiums
+kind: supplied
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: Whether the person's Buy-In enrollment has been discontinued for failure to pay premiums in full within 60 days of the due date (10 CCR 2505-10 § 8.100.6.P.1.f.v, Q.1.g.vi; for a child in continuous eligibility, § 8.100.3.Q.2.d.i). If not stated, Medicaid reads it as false.
+supplied_by: Premium billing record (MMIS).
+sources: [S1724, S1728]
+tags: [ma, buy_in]
+rationale: "C-7 of the HCPF review: the Buy-In continuous eligibility exception."

@@ -13,8 +13,16 @@ approval_policy:
     - Child care policy owner
     - Legal
     - Data steward
+    - LTSS policy owner
+    - Premium and finance owner
+    - Eligibility operations owner
+    - State plan coordinator
+  # HCPF review S-13: an item any program's declared outcome reads, directly or
+  # through other items, also requires that program's by_program roles (so the
+  # CHP+ owner signs the shared and Medicaid items CHP+ reads).
+  upstream_of_outcomes: true
   by_program:
-    All: ["Medicaid policy owner", "SNAP policy owner", "Cash programs policy owner"]
+    All: ["Medicaid policy owner", "CHP+ policy owner", "SNAP policy owner", "Cash programs policy owner"]
     Medicaid: ["Medicaid policy owner"]
     CHP+: ["CHP+ policy owner"]
     SNAP: ["SNAP policy owner"]
@@ -27,15 +35,19 @@ approval_policy:
     supplied: ["Data steward"]
   by_tag:
     legal: [Legal]
-    state_election: [Legal]
+    state_election: [Legal, "State plan coordinator"]
     immigration: [Legal]
+    ltc: ["LTSS policy owner"]
+    hcbs: ["LTSS policy owner"]
+    buy_in: ["Premium and finance owner"]
+    verification: ["Eligibility operations owner"]
 
 programs:
   - id: All
     prefix: null
   - id: Medicaid
     prefix: ma_
-    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_community_engagement_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_emergency_medicaid_status, ma_bccp_eligibility_status, ma_family_planning_status, ma_oap_health_care_status, ma_protected_group_category, ma_verification_status, ma_pending_verification_count, ma_citizenship_verification_is_pending, ma_identity_verification_is_pending, ma_immigration_status_verification_is_pending, ma_ssn_verification_is_pending, ma_earned_income_verification_is_pending, ma_unearned_income_verification_is_pending, ma_resources_verification_is_pending, ma_pregnancy_verification_is_pending, ma_residency_verification_is_pending, ma_age_verification_is_pending, ma_household_composition_verification_is_pending, ma_institutional_stay_verification_is_pending, ma_asset_transfers_verification_is_pending, ma_trust_verification_is_pending, ma_annuity_verification_is_pending, ma_sale_efforts_verification_is_pending, ma_joint_ownership_verification_is_pending]
+    outcomes: [ma_magi_category, ma_magi_eligibility_status, ma_needy_young_person_category, ma_hospital_presumptive_eligibility_category, ma_express_lane_status, ma_community_engagement_status, ma_ssi_related_category, ma_msp_category, ma_buy_in_category, ma_ltc_eligibility_status, ma_patient_payment, ma_emergency_medicaid_status, ma_bccp_eligibility_status, ma_family_planning_status, ma_oap_health_care_status, ma_protected_group_category, ma_verification_status, ma_pending_verification_count, ma_citizenship_verification_is_pending, ma_identity_verification_is_pending, ma_immigration_status_verification_is_pending, ma_ssn_verification_is_pending, ma_earned_income_verification_is_pending, ma_unearned_income_verification_is_pending, ma_resources_verification_is_pending, ma_pregnancy_verification_is_pending, ma_residency_verification_is_pending, ma_age_verification_is_pending, ma_household_composition_verification_is_pending, ma_institutional_stay_verification_is_pending, ma_asset_transfers_verification_is_pending, ma_trust_verification_is_pending, ma_annuity_verification_is_pending, ma_sale_efforts_verification_is_pending, ma_joint_ownership_verification_is_pending]
   - id: CHP+
     prefix: chp_
     outcomes: [chp_eligibility_status, chp_verification_status, chp_pending_verification_count, chp_earned_income_verification_is_pending]
@@ -105,6 +117,7 @@ types:
   - relationships
   - table keyed by person
   - table keyed by household size
+  - table keyed by income band
   - list of months
 
 scopes: [person, person-month, case, month, global]

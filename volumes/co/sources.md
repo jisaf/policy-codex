@@ -10781,3 +10781,513 @@ Document: D-87
 > weekly employment schedule that includes approximate
 > employment hours. This is required upon beginning self-
 > employment, at application, and at redetermination.
+
+### S1700. Medicaid payment limited from October 1, 2026 to citizens and nationals, lawful permanent residents, Cuban and Haitian entrants and COFA migrants, except emergency services and the lawfully residing children and pregnant women option
+
+Document: D-161
+
+Pub. L. 119-21, sec. 71109(a), adding 42 U.S.C. 1396b(v)(5) (July 4, 2025). https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm
+
+> ``(5) <<NOTE: Effective date.>> Notwithstanding the preceding paragraphs of this subsection, beginning on October 1, 2026, except as provided in paragraphs (2) and (4), in no event shall payment be made to a State under this section for medical assistance furnished to an individual unless such individual is--
+>
+> ``(A) a resident of 1 of the 50 States, the District of Columbia, or a territory of the United States; and
+>
+> ``(B) either--
+>
+> ``(i) a citizen or national of the United States;
+>
+> ``(ii) an alien lawfully admitted for permanent residence as an immigrant as defined by sections 101(a)(15) and 101(a)(20) of the Immigration and Nationality Act, excluding, among others, alien visitors, tourists, diplomats, and students who enter the United States temporarily with no intention of abandoning their residence in a foreign country;
+>
+> ``(iii) an alien who has been granted the status of Cuban and Haitian entrant, as defined in section 501(e) of the Refugee Education Assistance Act of 1980 (Public Law 96-422); or
+>
+> ``(iv) an individual who lawfully resides in the United States in accordance with a Compact of Free Association referred to in section 402(b)(2)(G) of the Personal Responsibility and Work Opportunity Reconciliation Act of 1996.''.
+
+### S1701. CHIP: the lawfully residing children and pregnant women option applies only if elected under Medicaid; the October 2026 alien payment limit applies to CHIP
+
+Document: D-162
+
+42 U.S.C. 1397gg(e)(1)(Q)-(R). https://www.law.cornell.edu/uscode/text/42/1397gg
+
+> (e) Application of certain general provisions The following sections of this chapter shall apply to States under this subchapter in the same manner as they apply to a State under subchapter XIX:
+>
+> (4) of section 1396b(v) of this title (relating to optional coverage of categories of lawfully residing immigrant children or pregnant women), but only if the State has elected to apply such paragraph with respect to such category of children or pregnant women under subchapter XIX.
+>
+> (R) Section 1396b(v)(5) of this title (relating to payments for medical assistance furnished to aliens), except in relation to payments for services provided under section 1397ee(a)(1)(D)(ii) of this title .
+
+### S1702. CMS: from October 1, 2026, FFP for full Medicaid and CHIP benefits only for citizens, nationals, LPRs, Cuban/Haitian entrants and COFA migrants; refugees, asylees, parolees and trafficking victims lose it
+
+Document: D-163
+
+CMS, SHO #26-001, "Implementation of Section 71109 of the Working Families Tax Cut Legislation" (April 8, 2026), pp. 1, 4. https://www.medicaid.gov/federal-policy-guidance/downloads/sho26001.pdf
+
+> Beginning October 1, 2026, sections 1903(v)(5) and 2107(e)(1)(R) of the Social Security Act (the Act), as added and amended, respectively, by section 71109 of the WFTC legislation, generally limit federal financial participation (FFP) for medical assistance (Medicaid) and child or pregnancy-related health assistance (CHIP), with limited exceptions, to U.S. citizens and U.S. nationals, lawful permanent residents (LPRs), Cuban/Haitian entrants, and Compact of Free Association (COFA) migrants.
+>
+> Given these changes, beginning October 1, 2026, with limited exceptions, FFP will no longer be available for full Medicaid or CHIP benefits furnished to qualified noncitizens who are not also FFP- eligible noncitizens (e.g., asylees, refugees, parolees, or victims of trafficking) unless they have another immigration status or category 15 that meets the definition of an FFP-eligible noncitizen.
+
+### S1703. CMS: "full Medicaid and CHIP benefits" includes limited benefits such as family planning and the Medicare Savings Programs; emergency Medicaid does not apply to separate CHIPs
+
+Document: D-163
+
+CMS, SHO #26-001, "Implementation of Section 71109 of the Working Families Tax Cut Legislation" (April 8, 2026), p. 4, note 14. https://www.medicaid.gov/federal-policy-guidance/downloads/sho26001.pdf
+
+> The term “full Medicaid and CHIP benefits” refers to full Medicaid benefits, partial or limited Medicaid benefits (e.g., only family planning services, Medicare Savings Programs (MSPs)), and CHIP coverage; it excludes Medicaid payment for the limited coverage of an emergency medical condition (“emergency Medicaid”) authorized under section 1903(v)(2) of the Act. Emergency Medicaid coverage does not apply to separate CHIPs.
+
+### S1704. CMS: the limit applies to applicants determined eligible and to enrollees on and after October 1, 2026; states redetermine current beneficiaries as a change in circumstances
+
+Document: D-163
+
+CMS, SHO #26-001, "Implementation of Section 71109 of the Working Families Tax Cut Legislation" (April 8, 2026), pp. 5, 8-9. https://www.medicaid.gov/federal-policy-guidance/downloads/sho26001.pdf
+
+> For applicants determined eligible for Medicaid or CHIP on and after October 1, 2026, and for beneficiaries enrolled in Medicaid or CHIP on and after October 1, 2026, states must ensure they appropriately claim FFP in accordance with sections 1903(v)(5) and 2107(e)(1)(R) of the Act, including under an exception specified at sections 1903(v)(2), 1903(v)(4), or 2105(a)(1)(D)(ii) of the Act.
+>
+> Thus, in accordance with 42 C.F.R. §§ 435.916(d) (2023) and 457.343, 37 states must promptly act on this statutory change and assess whether certain beneficiaries continue to be in a satisfactory
+
+### S1705. CMS: a lawfully residing child or pregnant woman (for example a refugee) stays eligible under the CHIPRA 214 option; qualified noncitizens are lawfully residing; others keep emergency Medicaid, including during continuous eligibility
+
+Document: D-163
+
+CMS, SHO #26-001, "Implementation of Section 71109 of the Working Families Tax Cut Legislation" (April 8, 2026), pp. 10-11, note 44. https://www.medicaid.gov/federal-policy-guidance/downloads/sho26001.pdf
+
+> If an applicant, who is not an FFP-eligible noncitizen, is a lawfully residing child or pregnant woman (e.g., a refugee) and meets all other eligibility requirements in the state, the applicant can be determined eligible for full Medicaid or CHIP benefits under the state’s CHIPRA 214 option.
+>
+> Qualified noncitizens are considered “lawfully residing” for purposes of the CHIPRA 214 option.
+>
+> For Medicaid applicants and current Medicaid beneficiaries who are not FFP-eligible noncitizens and are not eligible under a state’s election of the CHIPRA 214 option, FFP remains available for emergency Medicaid coverage for such individuals in accordance with section 1903(v)(5) of the Act on and after October 1, 2026.
+>
+> We remind states that availability of FFP is limited to payment for emergency Medicaid coverage during the remainder of the continuous eligibility period under sections 1902(e)(12) or 1902(e)(16) of the Act for such Medicaid beneficiaries who are not FFP-eligible noncitizens or eligible under a state’s election of the CHIPRA 214 option.
+
+### S1706. Retroactive coverage from applications on or after January 1, 2027: one month before the application month for expansion adults, two months for others; CHIP no earlier than the second month before
+
+Document: D-161
+
+Pub. L. 119-21, sec. 71112(a), (c), (d), amending 42 U.S.C. 1396a(a)(34) and 1397bb(b)(1)(B) (July 4, 2025). https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm
+
+> (A) is enrolled under paragraph (10)(A)(i)(VIII), such assistance will be made available to the individual for care and services included under the plan and furnished in or after the month before the month in which the individual made application (or application was made on the individual's behalf in the case of a deceased individual) for such assistance if such individual was (or upon application would have been) eligible for such assistance at the time such care and services were furnished; or
+>
+> (B) is not described in subparagraph (A), such assistance will be made available to the individual for care and services included under the plan and furnished in or after the second month before the month in which the individual made application (or application was made on the individual's behalf in the case of a deceased individual) for such assistance if such individual was (or upon application would have been) eligible for such assistance at the time such care and services were furnished;''.
+>
+> (d) <<NOTE: Applicability. 42 USC 1396a note.>> Effective Date.-- The amendments made by this section shall apply to medical assistance, child health assistance, and pregnancy-related assistance with respect to individuals whose eligibility for such medical assistance, child health assistance, or pregnancy-related assistance is based on an application made on or after the first day of the first quarter that begins after December 31, 2026.
+
+### S1707. Six-month redeterminations for expansion adults from redeterminations scheduled on or after January 1, 2027; Indians exempt
+
+Document: D-161
+
+Pub. L. 119-21, sec. 71107(a), adding 42 U.S.C. 1396a(e)(14)(L) (July 4, 2025). https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm
+
+> In general.--Subject to clause (ii), with respect to redeterminations of eligibility for medical assistance under a State plan (or waiver of such plan) scheduled on or after the first day of the first quarter that begins after December 31, 2026, a State shall make such a redetermination once every 6 months for the following individuals:
+>
+> ``(I) Individuals enrolled under subsection (a)(10)(A)(i)(VIII).
+>
+> ``(ii) Exemption.--The requirements described in clause (i) shall not apply to any individual described in subsection (xx)(9)(A)(ii)(II).
+
+### S1708. IRC 108(f)(5) from 2026: student loan discharges on account of death or total and permanent disability excluded from gross income
+
+Document: D-161
+
+Pub. L. 119-21, sec. 70119(a), (c), amending 26 U.S.C. 108(f)(5) (July 4, 2025). https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm
+
+> ``(A) In general.--In the case of an individual, gross income does not include any amount which (but for this subsection) would be includible in gross income for such taxable year by reason of the discharge (in whole or in part) of any loan described in subparagraph (B), if such discharge was--
+>
+> ``(iii) otherwise discharged on account of death or total and permanent disability of the student.
+>
+> (c) <<NOTE: 26 USC 108 note.>> Effective Date.--The amendments made by this section shall apply to discharges after December 31, 2025.
+
+### S1709. IRC 108(f)(5) for discharges in 2021 through 2025: student loan discharges excluded from gross income
+
+Document: D-167
+
+Pub. L. 117-2, sec. 9675(a), (b) (Mar. 11, 2021). https://www.govinfo.gov/content/pkg/PLAW-117publ2/html/PLAW-117publ2.htm
+
+> ``(5) Special rule for discharges in 2021 through 2025.-- Gross income does not include any amount which (but for this subsection) would be includible in gross income by reason of the discharge (in whole or in part) after December 31, 2020, and before January 1, 2026, of--
+>
+> The preceding sentence shall not apply to the discharge of a loan made by an organization described in subparagraph (C) or made by a private education lender (as defined in section 140(a)(7) of the Truth in Lending Act) if the discharge is on account of services performed for either such organization or for such private education lender.''.
+
+### S1710. HHS poverty guidelines for 2025, 48 contiguous states and the District of Columbia
+
+Document: D-165
+
+HHS, "Annual Update of the HHS Poverty Guidelines," 90 FR 5917 (Jan. 17, 2025). https://www.govinfo.gov/content/pkg/FR-2025-01-17/html/2025-01377.htm
+
+> 1....................................................... $15,650
+>
+> 2....................................................... 21,150
+>
+> 3....................................................... 26,650
+>
+> 4....................................................... 32,150
+>
+> 5....................................................... 37,650
+>
+> 6....................................................... 43,150
+>
+> 7....................................................... 48,650
+>
+> 8....................................................... 54,150
+>
+> For families/households with more than 8 persons, add $5,500 for each additional person.
+
+### S1711. SSI federal benefit rates and substantial gainful activity amounts for 2025
+
+Document: D-164
+
+SSA, "Cost-of-Living Increase and Other Determinations for 2025," 89 FR 85276 (Oct. 25, 2024). https://www.govinfo.gov/content/pkg/FR-2024-10-25/html/2024-24871.htm
+
+> (1) The maximum Federal Supplemental Security Income (SSI) monthly payment amounts for 2025 under title XVI of the Act will be $967 for an eligible individual; $1,450 for an eligible individual with an eligible spouse; and $484 for an essential person.
+>
+> (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people in 2025 will be $2,700. The corresponding amount of earnings for non-blind people with a determined disability will be $1,620.
+
+### S1712. SSI federal benefit rates and substantial gainful activity amounts for 2027
+
+Document: D-166
+
+SSA, "Cost-of-Living Increase and Other Determinations for 2027," 91 FR 67380 (Oct. 26, 2026). https://www.govinfo.gov/content/pkg/FR-2026-10-26/html/2026-21796.htm
+
+> (1) The maximum Federal Supplemental Security Income (SSI) monthly payment amounts for 2027 under title XVI of the Act will be $1,029 for an eligible individual; $1,544 for an eligible individual with an eligible spouse; and $516 for an essential person.
+>
+> (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,950 in 2027. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,770.
+
+### S1713. CMS: Colorado's section 1115 authority for expanded continuous eligibility (children to age three, people leaving incarceration) expired June 30, 2026, never implemented
+
+Document: D-168
+
+CMS, State Demonstrations Group, letter to the Colorado State Medicaid Director (June 30, 2026), p. 1. https://www.medicaid.gov/medicaid/section-1115-demonstrations/downloads/CO-SUD-temp-ext-Approved-ltr-sa-06302026.pdf
+
+> terms and conditions (STC) 4.2 - 4.9, will expire effective June 30, 2026. To date Colorado has not implemented the expenditure authority for the expanded continuous eligibility for children (including CHIP) up to age three and the expenditure authority for the expanded continuous eligibility for beneficiaries leaving incarceration.
+
+### S1714. CHP+ effective date and 12-month continuous eligibility for children, with its exceptions and the limited incarceration benefit (current text)
+
+Document: D-66
+
+10 CCR 2505-3 §§ 430.1-430.2 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 430.1 Eligibility for the Children’s Basic Health Plan shall be effective on the latter of:
+>
+> A. The first day of the month of application for Medical Assistance; or
+>
+> B. The first day of the month the person becomes eligible for the Children’s Basic Health Plan program.
+>
+> 430.2 Upon being enrolled in the Children’s Basic Health Plan, continuous eligibility applies to children under the age of 19, who through an eligibility determination, reassessment or redetermination are found eligible for the Children’s Basic Health Plan program. The continuous eligibility period may last for up to 12 months and will begin on the month of application or from the authorization date.
+>
+> A. The continuous eligibility period applies without regard to changes in income or other factors that would otherwise cause the child to be ineligible.
+>
+> i) If the reported income decreases, a member may transition to the MAGI Medical Assistance program specified in section 10 CCR 2505-10-8.100.4.G.2, and a new 12-month continuous eligibility period will begin on the first day of the month of the transition.
+>
+> B. A child’s continuous eligibility period will end effective the earliest possible month, if any of the following occur:
+>
+> i) Child is deceased;
+>
+> 1. ii) Becomes an inmate of a public institution;Incarcerated children receiving CHP+ benefits will move to a limited Incarceration benefit. If the child is released within the initial 12 months of the CE period, coverage will be reinstated for the remaining 12-month CE period, unless any of the other exceptions apply;
+>
+> iii) The child states that she/he has moved out of the household permanently;
+>
+> iv) Is no longer a Colorado resident;
+>
+> v) Is unable to be located based on evidence or reasonable assumption;
+>
+> vi) Requests to be withdrawn from continuous eligibility;
+>
+> vii) Fails to provide documentation during a reasonable opportunity period as specified in section 10 CCR 2505-10-8.100.3.H.9; or
+>
+> viii) Eligibility was erroneously granted at the most recent determination, redetermination, or renewal of eligibility because of agency error, or a finding of fraud or perjury attributed to the child or the child's responsible party.
+
+### S1715. CHP+ prenatal coverage through the last day of the month 12 months after the birth, regardless of changes in financial circumstances (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 430.3 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 430.3. If determined eligible, the enrollment date of a pregnant woman shall be effective as of the first of the month of the date of application or the first day of the month the pregnant woman becomes eligible. The enrollment span shall end on the last day of the month 12 months after the birth of the child or termination of the pregnancy. Once eligibility has been approved, coverage must be provided regardless of changes in the woman's financial circumstances, once the income verification requirements are met.
+>
+> A. A pregnant women’s eligibility period will end effective the earliest possible month, if any of the following occur:
+>
+> i) Fails to provide a reasonable explanation or paper documentation when self-attested income is not reasonably compatible with income information from an electronic data source, by the end of the 90-day reasonable opportunity period. This exception only applies the first-time income is verified following an initial eligibility determination or an annual redetermination.
+
+### S1716. CHP+ newborn: a child born to a mother enrolled in CHP+ is guaranteed coverage for one year (current text)
+
+Document: D-66
+
+10 CCR 2505-3 § 430.5 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> 430.5 A child born to a mother who is enrolled in the Children’s Basic Health Plan at the time of the child’s birth is guaranteed coverage for one year.
+
+### S1717. Needy persons under 21: Psych <21, foster care, independent living, Alternatives to Foster Care, county custody, subsidized adoption, State responsibility at 18 (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.H.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Medical Assistance shall be provided to certain needy persons under 21 years of age, including the following:
+>
+> a. Those receiving care in a Long Term Care Institution eligible for Medical Assistance reimbursement or receiving active treatment as inpatients in a psychiatric facility eligible for Medical Assistance reimbursement and whose household income is less than the MAGI needs standard for his/her family size when the client applies for assistance. Clients that are receiving benefits under this category and are still receiving active inpatient treatment in the facility at age 21 shall be eligible to age 22. This population is referenced as Psych <21.
+>
+> b. Those for whom the Department of Human Services is assuming full or partial financial responsibility and who are in foster care, in homes or private institutions or in subsidized adoptive homes. A child shall be the responsibility of the county, even if the child may be in a medical institution at that time.
+>
+> c. Those for whom the Department of Human Services is assuming full or partial financial responsibility and who are in independent living situations subsequent to being in foster care.
+>
+> d. Those for whom the Department of Human Services is assuming full or partial responsibility and who are receiving services under the state’s Alternatives to Foster Care Program and would be in foster care except for this program and whose household income is less than the MAGI needs standard for his/her family size.
+>
+> e. Those for whom the Department of Human Services is assuming full or partial responsibility and who are removed from their home either with or without (court ordered) parental consent, placed in the custody of the county and residing in a county approved foster home.
+>
+> f. Those for whom the Department of Human Services is assuming full or partial responsibility and who are receiving services under the state’s subsidized adoption program, including a clause in the subsidized adoption agreement to provide Medical Assistance for the child.
+>
+> g. Those for whom the Department of Human Services is assuming full or partial financial responsibility on their 18th birthday or at the time of emancipation. These individuals also must have received foster care maintenance payments or subsidized adoption payments from the State of Colorado pursuant to article 7 of title 26, C.R.S. immediately prior to the date the individual attained 18 years of age or was emancipated. Eligibility shall be extended until the individual’s 21st birthday for these individuals with the exception of those receiving subsidized adoption payments.
+
+### S1718. Former foster care to age 26: subsidized adoption and mandatory-group exclusions, out-of-state youth from 2023, no income or resource test, the youth's newborn a needy newborn (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.H.2 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. Medical Assistance shall be extended to certain needy persons until the end of the month of the individual’s 26th birthday, including the following:
+>
+> a. Those individuals that were formerly in foster care under the responsibility of Colorado or Tribe on their 18th, 19th, 20th or up to their 21st birthday and were receiving Medical Assistance.
+>
+> i) This extension does not apply to youth that are receiving subsidized adoption payments or
+>
+> ii) To youth that are enrolled in mandatory Medical Assistance.
+>
+> iii) This extension applies to Individuals who were in foster care at the age 18 on or after January 1, 2023, and were enrolled in Medicaid in another state, and who have become a resident of Colorado.
+>
+> b) Former Foster Care youth are not subject to either an income or resource test.
+>
+> c) Former Foster Care youth’s newborn shall be considered a needy newborn.
+
+### S1719. Transitional Medical Assistance: 12 months from the first month of ineligibility for parents and caretaker relatives who lose the category because of earnings (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.I.1-4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Eligibility for Transitional Medical Assistance shall be granted for twelve months (beginning with the first month of ineligibility) to individuals who are no longer eligible for the Parent/Caretaker Relative category due to a change in income.
+>
+> The extension shall be applied to individuals who:
+>
+> a. Were eligible for the Parent/Caretaker Relative category in at least three of the six months preceding the month in which the individual would have become ineligible, and
+>
+> b. Are no longer eligible for coverage under the Parent/Caretaker Relative category because of new or increased income from employment or hours of employment
+>
+> i) At least one Parent/Caretaker Relative must continue to be employed and cannot terminate employment without good cause. This does not need to be the same person for the whole period the family is receiving Transitional Medical Assistance.
+>
+> 2. Any dependent child or Parent/Caretaker Relative who was or becomes part of the Medical Assistance household after the individual has begun receiving Transitional Medical Assistance is eligible for the remaining months of Transitional Medical Assistance.
+>
+> 3. To become or remain eligible for Transitional Medical Assistance the household must include a dependent child. If it is determined that the household no longer has a child living in the home, Transitional Medicaid Assistance shall discontinue at the end of the month in which the household does not include a dependent child.
+>
+> 4. When Transitional Medical Assistance ends the case will be reassessed for all other categories of Medical Assistance for which the family members may be eligible. A new application shall not be required for this process.
+
+### S1720. Four-month extended Medical Assistance for families that lose eligibility because of support income such as alimony (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.I.5 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5. Eligibility for Medical Assistance shall be extended for four months (beginning with the first month of ineligibility) for certain families who become ineligible for Medical Assistance due solely or partially to the receipt of support income, such as alimony. The extension shall be applied for a family which receives assistance under Medical Assistance in at least three of the six months immediately preceding the month in which the family becomes ineligible for assistance. To be eligible for the four month Medical Assistance extension, the family shall meet all other eligibility criteria for Medical Assistance before the alimony income is applied.
+>
+> a. Alimony received will be countable income only if the divorce or legal separation is executed on or before December 31, 2018. Alimony will not be countable income if the divorce or legal separation is modified or executed on or after January 1, 2019.
+
+### S1721. Hospital presumptive eligibility: who may apply at a qualified hospital site (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.R.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Hospital Presumptive Eligibility is for inpatient and/or outpatient services through a qualified hospital presumptive eligibility site that assists individuals in completing a medical assistance application. These presumptive eligibility services are for ambulatory services, state plan approved medical services, or limited family planning.
+>
+> a. A pregnant woman may apply for presumptive eligibility for ambulatory services through a qualified hospital presumptive eligibility site.
+>
+> b. A child or youth under the age of 19 may apply for themself or have an adult apply on their behalf for presumptive eligibility for state plan approved medical services through a qualified hospital presumptive eligibility site.
+>
+> c. An applicant aged 19-65, an applicant who is a parent or caretaker relative of dependent children, or an applicant age 16 or older who is currently employed and meet the Social Security Administration’s definition of disability or have a limited disability as determined by a state contractor may apply for presumptive eligibility for state plan approved medical services through a qualified hospital presumptive eligibility site.
+>
+> d. Presumptive eligibility is also available to applicants for limited family planning who are not pregnant. There are no age or gender restrictions under the limited family planning presumptive eligibility category.
+
+### S1722. Hospital presumptive eligibility: declared income and status tests by group; not while receiving other Medical Assistance; once every 12 months or once per pregnancy (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.R.2, R.8-9 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a. A pregnant woman must have an attested pregnancy, declare that her household's income shall not exceed 195% of the federal poverty level and declare that she is a United States citizen or a lawfully residing immigrant unless they meet the exceptions outlined under 8.100.3.G. 1.g. viii.
+>
+> b. A child or youth under the age of 19 must have a declared household income that does not exceed 142% of federal poverty level and declare that the child or youth is a United States citizen or a documented immigrant unless they meet the exceptions outlined under 8.100.3.G. 1.g.viii.
+>
+> c. To qualify for limited family planning presumptive eligibility, an applicant must have declared household income greater than 133% but not exceeding 260% of the federal poverty level. The applicant cannot be eligible for a Medicaid eligibility category that provides full coverage. The applicant must declare they are a United States citizen or a lawfully residing immigrant. An applicant applying for limited family planning presumptive eligibility will be counted individually as a household member of two.
+>
+> d. An applicant age 19 to 65, must have a declared household income that does not exceed 133% of the federal poverty level and declare themself as a United States citizen or a documented immigrant. This category includes adults who are parents or caretaker relatives of dependent children whose income exceeds the income threshold to qualify for the Parents and Caretaker Relatives MAGI category and who meet all other eligibility criteria.
+>
+> e. An applicant who is a parent or caretaker relative or legally appointed guardian or conservator of dependent children, must have a declared household income that does not exceed 68% of the federal poverty level and declare themself as a United States citizen or a documented immigrant.
+>
+> f. An applicant age 16 or older who has declared they are currently employed with income less than or equal to 450% of FPL and declare they are a United States citizen or a documented immigrant unless they meet the exceptions outlined under 8.100.3.G. 1.g. viii. Only the applicant’s income will be considered. Resources are not counted in determining eligibility. Applicants must also declare they have a disability as defined as Social Security Administration medical listing or a limited disability as determined by a state contractor.
+>
+> 8. Applicants cannot receive presumptive eligibility if they already are in receipt of another medical assistance program.
+>
+> 9. An applicant may only receive presumptive eligibility once every 12 months with the exception of pregnant women who may receive presumptive eligibility once every pregnancy.
+
+### S1723. Express Lane Eligibility from Free/Reduced Lunch, Food Assistance and Colorado Works applications; 90 days of eligibility pending citizenship and identity verification (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.J (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Express Lane Eligibility shall allow for automatic initiation of Medical Assistance enrollment by using available data and findings from other programs as listed below.
+>
+> a. Recipients of the Free/Reduced Lunch Program who have submitted a Free/Reduced Lunch application at a participating school district-
+>
+> i) Families shall be given the option to opt into Medical Assistance coverage for their potentially eligible child.
+>
+> ii) Children who meet all necessary eligibility requirements as outlined in this volume shall be automatically enrolled.
+>
+> iii) Children who meet all necessary eligibility requirements except verification of U.S. citizenship and identity shall receive 90days of eligibility while awaiting this verification.
+>
+> vi) If it would be found that a child does not satisfy an eligibility requirement for Medical Assistance, the child’s eligibility will be evaluated using the Single Streamlined Application for Medical Assistance.
+>
+> i) Families who are automatically enrolled Free/Reduced Lunch recipient children shall not be forwarded to the Department for Express Lane Eligibility in compliance USDA confidentiality guidelines.
+>
+> a. Individuals who have submitted a Food Assistance or Colorado Works application
+>
+> iii) Children who meet all necessary eligibility requirements except verification of U.S. citizenship and identity will receive 90 days of eligibility while awaiting this verification.
+
+### S1724. Continuous eligibility: the period starts with the application month; the non-MAGI programs it covers; children leaving Foster Care Medicaid (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.Q.2-3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. The continuous eligibility period will begin on the first day of the month the application is received, or from the date all criteria are met. For a child transitioning from CHP+ to the MAGI Medical Assistance program specified in section 8.100.4.G.2, a new 12-month continuous eligibility period will begin on the first day of the month of the transition. Continuous eligibility applies to children enrolled in the following Medical Assistance programs:
+>
+> a. MAGI-Medical Assistance, program as specified in section 8.100.4.G.2;
+>
+> b. SSI Mandatory, as specified in section 8.100.6.C
+>
+> i.) When a child is no longer eligible for SSI Mandatory they will be categorized as eligible within the MAGI-Child category for the remainder of the eligibility period;
+>
+> c. Long- Term Care services
+>
+> i.) When a child is no longer eligible for Long-Term Care services they will be categorized as eligible within the MAGI- Child category for the remainder of the eligibility period;
+>
+> d. Medicaid Buy-In program specified in section 8.100.6.Q
+>
+> i) Exception: Enrollment will be discontinued if there is a failure to pay premiums;
+>
+> e. Pickle (Title II COLA/Pickle Amendment of 1977);
+>
+> f. Disabled Adult Child (DAC); and
+>
+> g. Limited Family Planning Medical Assistance.
+>
+> 3. Children, under the age of 19, no longer enrolled in Foster Care Medicaid will be eligible for the MAGI-Medical Assistance program. The continuous eligibility period will begin the month the child is no longer enrolled in Foster Care Medicaid as long as they meet one of the following conditions:
+>
+> a. Begin living with other Relatives;
+>
+> b. Are reunited with Parents; or
+>
+> c. Have received guardianship.
+
+### S1725. Continuous eligibility: an incarcerated child moves to a limited Incarceration benefit and full coverage is reinstated on release within the period (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.Q.1.b.ii (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> ii) Becomes an inmate of a public institution;
+>
+> 1. Incarcerated children receiving a full medical assistance program will move to a limited Incarceration benefit. If the child is released within the initial 12 months of the CE period, full coverage will be reinstated for the remaining 12-month CE period, unless any of the other exceptions apply;
+
+### S1726. PACE eligibility: residence in the PACE organization's service area; able to live in a community setting without jeopardizing health or safety
+
+Document: D-71
+
+42 CFR 460.150(b)(3), (c) (eCFR, as of 2026-11-01), incorporated by 10 CCR 2505-10 § 8.497.1.B.1. https://www.ecfr.gov/api/versioner/v1/full/2026-11-01/title-42.xml?part=460&section=460.150
+
+> (3) Reside in the service area of the PACE organization.
+>
+> (c) Other eligibility requirements. (1) At the time of enrollment, an individual must be able to live in a community setting without jeopardizing his or her health or safety.
+>
+> (2) The State administering agency criteria used to determine if an individual's health or safety would be jeopardized by living in a community setting must be specified in the program agreement.
+
+### S1727. Working Adults with Disabilities Buy-In premiums: 7.5% cap; charged from the month after the determination; band amounts; re-based each State fiscal year; postpartum waiver (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.P.1.f (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> f. Individuals will be required to pay monthly premiums on a sliding scale based on income.
+>
+> i) The amount of premiums cannot exceed 7.5% of the individual’s income.
+>
+> ii) Premiums are charged beginning the month after determination of eligibility. Any premiums for the months prior to the determination of eligibility will be waived.
+>
+> iii) Premium amounts are as follows:
+>
+> 1) There is no monthly premium for individuals with income at or below 40% FPL.
+>
+> 2) A monthly premium of $25 is applied to individuals with income above 40% of FPL but at or below 133% of FPL.
+>
+> 3) A monthly premium of $90 is applied to individuals with income above 133% of FPL but at or below 200% of FPL.
+>
+> 4) A monthly premium of $130 is applied to individuals with income above 200% of FPL but at or below 300% of FPL.
+>
+> 5) A monthly premium of $200 is applied to individuals with income above 300% of FPL but at or below 450% of FPL.
+>
+> iv) The premium amounts will be updated at the beginning of each State fiscal year based on the annually revised FPL if the revised FPL would cause the premium amount (based on percentage of income) to increase by $10 or more.
+>
+> v) A change in a member’s net income may impact the monthly premium amount due. Failure to pay premium payments in full within 60 days from the premium due date will result in the member’s assistance being terminated prospectively. The effective date of the termination will be the last day of the month following the 60 days from the date on which the premium became past due. The Department will waive premiums for the Medicaid Buy-In for Working Adults with Disability Program for member’s who are within their 12 months postpartum period.
+
+### S1728. Children with Disabilities Buy-In premiums: 5% and 7.5% caps; charged from the month after the determination; one premium per household; band amounts; postpartum and public health emergency waivers (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.Q.1.g (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> g. Families will be required to pay monthly premiums on a sliding scale based on household size and income.
+>
+> i) For families whose income does not exceed 200% of FPL, the amount of premiums and cost-sharing charges cannot exceed 5% of the family’s adjusted gross income. For families whose income exceeds 200% of FPL but does not exceed 300% of FPL, the amount of premiums and cost-sharing charges cannot exceed 7.5% of the family’s adjusted gross income.
+>
+> ii) Premiums are charged beginning the month after determination of eligibility. Any premiums for the months prior to the determination of eligibility will be waived.
+>
+> iii) For households with two or more children eligible for the Medicaid Buy-In Program for Children with Disabilities, the total premium shall be the amount due for one eligible child.
+>
+> iv) Premium amounts are as follows:
+>
+> 1) There is no monthly premium for households with income at or below 133% of FPL.
+>
+> 2) A monthly premium of $70 is applied to households with income above 133% of FPL but at or below 185% of FPL.
+>
+> 3) A monthly premium of $90 is applied to individuals with income above 185% of FPL but at or below 250% of FPL.
+>
+> 4) A monthly premium of $120 is applied to individuals with income above 250% of FPL but at or below 300% of FPL.
+>
+> v) The premium amounts will be updated at the beginning of each State fiscal year based on the annually revised FPL if the revised FPL would cause the premium amount (based on percentage of income) to increase by $10 or more.
+>
+> vi) A change in household net income may impact the monthly premium amount due. Failure to pay premium payments in full within 60 days from the premium due date will result in a member’s assistance being terminated prospectively. The effective date of the termination will be the last day of the month following the 60 days from the date on which the premium became past due. The Department will waive premiums for the Children with Disabilities Program members who are within their 12 months postpartum period.
+>
+> vii) Due to the federal COVID-19 Public Health Emergency, the Department will waive premiums for the Department’s Children with Disabilities Program during the federal emergency declaration. Effective May 11, 2023 the COVID -19 Public Health Emergency has ended. The Department will continue to waive premiums until the last day of the twelfth month following the end of the COVID - 19 Public Health Emergency. The Department will notify all members as to when required premiums will resume.
+
+### S1729. State medical assistance: a child under 19 who would be eligible for medical assistance but for immigration status; state funds only unless federal funds are authorized
+
+Document: D-69
+
+C.R.S. 25.5-2-104(1), (2), (4) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> (2) A child who is less than nineteen years of age is eligible to receive state medical assistance if the child would be eligible for medical assistance as defined in section 25.5-4-103 (13) but is not eligible due solely to the child's immigration status.
+>
+> (4) State medical assistance must be funded by state funds only, except to the extent federal funds are made available through express written authorization through a federal waiver, state plan amendment, or otherwise, by the federal centers for medicare and medicaid services.
+
+### S1730. Medical assistance for a pregnant non-citizen not otherwise eligible, through the 12-month postpartum period, with state funds where federal funds are unavailable
+
+Document: D-123
+
+C.R.S. 25.5-5-201(6)(a)-(c) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-25.5.pdf
+
+> (6) (a) Beginning no later than January 1, 2025, a pregnant person who is not a citizen and who is not eligible for medical assistance pursuant to subsection (4) of this section is eligible to receive medical assistance pursuant to this subsection (6)(a) if the individual meets the eligibility requirements other than those related to citizenship and immigration status.
+>
+> (b) A pregnant person who is eligible for medical assistance pursuant to this subsection (6) remains continuously eligible for all medical services pursuant to the medical assistance program for the twelve-month postpartum period, so long as eligibility remains in effect pursuant to subsection (4.5)(a) of this section.
+>
+> (c) The state department shall seek any necessary federal approvals to maximize any available federal financial participation in implementing this subsection (6). Benefits for services obtained pursuant to this subsection (6) must be provided with only state funds if federal financial participation is unavailable for such services.
+
+### S1731. CMS: coverage a state continues with state-only funds is not CHIP
+
+Document: D-163
+
+CMS, SHO #26-001, "Implementation of Section 71109 of the Working Families Tax Cut Legislation" (April 8, 2026), p. 7. https://www.medicaid.gov/federal-policy-guidance/downloads/sho26001.pdf
+
+> While PRWORA does not describe any populations who must be eligible for CHIP, the same reasoning identified above for Medicaid applies to CHIP. Specifically, neither the text of section 71109 of the WFTC legislation nor its legislative history demonstrates a clear Congressional intent to require that states provide CHIP benefits to qualified noncitizens without receiving federal matching funds for that coverage, and we do not consider coverage that a state might opt to continue providing with 100 percent state-only funds to be “CHIP.”

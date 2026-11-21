@@ -9,7 +9,6 @@ meaning: Whether this institutionalized person has a community spouse - a spouse
 precision: "Does not create a separate ma_community_spouse item naming the spouse as a value (see OQ-97); downstream items read the community spouse's income and shelter facts as supplied facts stated for the institutionalized spouse instead. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-8): reads resides_in_medical_institution (CO-1742), not SNAP's majority-of-meals institution fact."
 derived: [all, ma_is_institutionalized_spouse, [exists_related, [spouse], [not, [of, [P], resides_in_medical_institution]]], [not, ma_is_in_buy_in_program]]
 sources: [S354, S1509]
-open: [OQ-97]
 implemented: engine
 tags: [ma, ltc, legal]
 rationale: "No existing item states the spousal-impoverishment gate. ma_csra (CO-646), ma_institutionalized_spouse_countable_resources (CO-647), ma_home_equity_disqualifies (CO-650) and ma_patient_payment (CO-658) need it. The target household's p1/p2 (p1 institutionalized, p2 a community spouse) is the worked example in the batch report. Reads ma_is_institutionalized_spouse (CO-644), not ma_is_institutionalized (CO-640), per the phase-4 review's C-2 finding: § 8.100.7.K.2.b-c reach an HCBS or PACE participant, which CO-640's medical-institution-only test does not."

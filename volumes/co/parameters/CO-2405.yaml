@@ -1,0 +1,12 @@
+id: CO-2405
+name: "CHP+: postpartum months of prenatal coverage"
+identifier: chp_postpartum_coverage_months
+kind: parameter
+type: whole number
+scope: global
+program: CHP+
+meaning: "The number of months after the month of the birth or end of pregnancy through which a CHP+ prenatal enrollment span runs: it \"shall end on the last day of the month 12 months after the birth of the child or termination of the pregnancy\" (10 CCR 2505-3 § 430.3)."
+value: 12
+sources: [S1715]
+tags: [chp]
+rationale: "B-2 of the HCPF review: no CHP+ item continued prenatal coverage after the birth."

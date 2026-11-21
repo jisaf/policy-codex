@@ -1,0 +1,12 @@
+id: CO-2428
+name: "Medicaid: months looked back for the TMA and four-month extension tests"
+identifier: ma_extension_lookback_months
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of months preceding the month of ineligibility over which prior enrollment is counted for Transitional Medical Assistance and the four-month extension (10 CCR 2505-10 § 8.100.4.I.1.a, I.5: \"the six months preceding\")."
+value: 6
+sources: [S1719, S1720]
+tags: [ma, magi]
+rationale: C-4 of the HCPF review.

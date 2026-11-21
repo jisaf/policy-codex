@@ -1,0 +1,12 @@
+id: CO-2436
+name: "Medicaid: received presumptive eligibility in the last 12 months"
+identifier: ma_received_presumptive_eligibility_in_last_twelve_months
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person has received presumptive eligibility in the 12 months before this application (10 CCR 2505-10 § 8.100.3.R.9: \"only once every 12 months\")."
+supplied_by: CBMS presumptive eligibility history.
+sources: [S1722]
+tags: [ma]
+rationale: C-5 of the HCPF review.

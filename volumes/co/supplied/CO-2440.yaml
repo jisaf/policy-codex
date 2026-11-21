@@ -1,0 +1,13 @@
+id: CO-2440
+name: "Medicaid: Express Lane source program"
+identifier: ma_express_lane_source
+kind: supplied
+type: one of
+options: [none, free_reduced_lunch_application, free_reduced_lunch_automatic, snap_or_colorado_works_application]
+scope: person
+program: Medicaid
+meaning: "Which program's application supplies an Express Lane referral for the child (10 CCR 2505-10 § 8.100.4.J): a Free/Reduced Lunch application submitted at a participating school district (free_reduced_lunch_application), automatic Free/Reduced Lunch enrollment without an application (free_reduced_lunch_automatic, not forwarded under J.1.b), a Food Assistance or Colorado Works application (snap_or_colorado_works_application), or none. If not stated, Medicaid reads it as none."
+supplied_by: The Express Lane data exchange from the school district or CBMS.
+sources: [S1723]
+tags: [ma, magi]
+rationale: "C-6 of the HCPF review: Express Lane had no item."

@@ -8,9 +8,10 @@ program: All
 meaning: The annual amount added to the 8-person HHS poverty guideline for each household member above 8, for the 48 contiguous states and the District of Columbia.
 precision: Annual dollars.
 versions:
-  - from: "2026-01-01"
-    value: 5680
-    source: S55
+  - {from: "2025-01-01", to: "2026-01-01", value: 5500, source: S1710}
+  - {from: "2026-01-01", value: 5680, source: S55}
+review_by: "2027-01-31"
+open: [OQ-515]
 rationale: "Companion figure to federal_poverty_guideline_annual_table (CO-181), from the same HHS notice (S55), for household sizes above 8. Program All since the vocabulary fix round (D-1); the identical SNAP copy (CO-117) was retired."
-sources: [S55]
+sources: [S55, S1710]
 tags: [income]

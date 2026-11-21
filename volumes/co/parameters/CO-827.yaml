@@ -11,6 +11,8 @@ versions:
   - from: "2026-01-01"
     value: 32532
     source: S644
+review_by: "2027-01-01"
 sources: [S644, S371]
 tags: [ma, ltc, resources, legal]
+open: [OQ-516]
 rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Community Spouse Resources minimum resource standard, $32,532.00, effective January 1, 2026. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from csra_minimum_standard; a Medicaid parameter without the program prefix."

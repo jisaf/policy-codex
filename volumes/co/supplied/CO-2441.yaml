@@ -1,0 +1,12 @@
+id: CO-2441
+name: "Medicaid: family opted into Express Lane coverage"
+identifier: ma_express_lane_family_opted_in
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the child's family chose to opt into Medical Assistance coverage through Express Lane (10 CCR 2505-10 § 8.100.4.J.1.a.i, J.2.a.i).
+supplied_by: The opt-in on the source program's application.
+sources: [S1723]
+tags: [ma]
+rationale: C-6 of the HCPF review.

@@ -1,0 +1,12 @@
+id: CO-2417
+name: "Medicaid: age limit of the needy persons under 21 groups"
+identifier: ma_needy_person_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age under which a person can be covered as a needy person under 10 CCR 2505-10 § 8.100.4.H.1 (\"under 21 years of age\"; g: \"until the individual's 21st birthday\")."
+value: 21
+sources: [S1717]
+tags: [ma, age]
+rationale: "C-3 of the HCPF review: a parameter rather than an inline age."
