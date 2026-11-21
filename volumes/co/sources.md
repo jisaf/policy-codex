@@ -4299,3 +4299,212 @@ Document: D-86
 
 > “Point in Time”: Point in time indicates that eligibility is determined by accounting for the circumstances of
 > the household on the date of the application, regardless of any changes thereafter.
+
+### S780. CCCAP entry and exit income eligibility; FPG and 85% SMI table through September 30, 2026
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.1-2 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> H. Low-Income Eligibility Guidelines
+>
+> 1. Adult caretaker(s) or teen parent(s) gross income must not exceed eighty-
+> five percent (85%) of the state median income.
+>
+> a. Entry eligibility shall be set by the Department at a level based on
+> the self-sufficiency standard, not to be set below one hundred
+> eighty-five percent (185%) of the federal poverty level.
+>
+> b. Exit income eligibility must be eighty-five percent (85%) of the state
+> median income.
+>
+> 2. Through September 30, 2026, monthly gross income levels, for one-
+> hundred percent (100%) of the Federal Poverty Guideline (FPG), as well
+> as eighty-five percent (85%) of State Median Income (SMI), the state and
+> federal maximum income limits, for the corresponding household size are
+> as follows:
+>
+> Family 100% Federal 85% State Median Income (SMI) (State
+> Size Poverty Guideline and Federal Maximum Income Limit)
+> (FPG)
+>
+> 1 $1,304.17 $5,100.99
+>
+> 2 $1,762.50 $6,683.61
+>
+> 3 $2,220.83 $8,256.22
+>
+> 4 $2,679.17 $9,828.83
+>
+> 5 $3,137.50 $11,401.45
+>
+> 6 $3,595.83 $12,974.06
+>
+> Family 100% Federal 85% State Median Income (SMI) (State
+> Size Poverty Guideline and Federal Maximum Income Limit)
+> (FPG)
+>
+> 7 $4,054.17 $13,268.93
+>
+> 8 $4,512.50 $13,563.79
+>
+> Each
+> Additional $458.33 $294.87
+
+### S781. CCCAP FPG and 85% SMI table effective October 1, 2026
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.3. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3. Effective October 1, 2026, monthly gross income levels, for one-hundred
+> percent (100%) of the Federal Poverty Guideline (FPG), as well as eighty-
+> five percent (85%) of State Median Income (SMI), the state and federal
+> maximum income limits, for the corresponding household size are as
+> follows:
+>
+> Family 100% Federal 85% State Median Income (SMI) (State
+> Size Poverty Guideline and Federal Maximum Income Limit)
+> (FPG)
+>
+> 1 $1,330.00 $5,347.35
+>
+> 2 $1,803.33 $6,992.69
+>
+> 3 $2,276.67 $8,638.03
+>
+> 4 $2,750.00 $10,283.37
+>
+> 5 $3,223.33 $11,928.71
+>
+> 6 $3,696.67 $13,574.05
+>
+> 7 $4,170.00 $13,882.55
+>
+> 8 $4,643.33 $14,191.05
+>
+> Each
+> Additional $473.33 $308.50
+
+### S782. CCCAP parent fees: basis and dropping the cents
+
+Document: D-87
+
+8 CCR 1403-1 3.124.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.124 PARENT FEES
+> A. Parent fees are based on gross countable income for the child care household
+> compared to the household size, taking the number of children in care into
+> account. Parent fees must be calculated in whole dollars by dropping the cents.
+
+### S783. CCCAP parent fee: 20% reduction for a top-three quality-rated provider
+
+Document: D-87
+
+8 CCR 1403-1 3.124.H. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> H. For a Low-Income or Colorado Works Child Care household utilizing a child care
+> provider in the top three levels of the Department’s quality rating system, the
+> parent fee shall be reduced by twenty percent (20%) of the regularly calculated
+> parent fee. For households utilizing multiple child care providers, only one child
+> care provider is required to be in the top three quality levels for the reduced
+
+### S784. CCCAP parent fee exceptions
+
+Document: D-87
+
+8 CCR 1403-1 3.124.I. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> I. All adult caretakers and teen parents are required to pay the parent fee as
+> determined by the formula listed in rule section 3.124(P), except in the following
+> cases:
+>
+> 1. When one (1) or two (2) teen parent households who are in middle/junior
+> high, high school, GED, or vocational/technical training activity and
+> payment of a fee produces a hardship, the parent fee may be waived
+> entirely and documented in the case file. The parent fee waiver shall be
+> reviewed during each re-determination.
+>
+> 2. The Low-Income or Colorado Works Child Care household is eligible for a
+> reduced parent fee based on the quality level of the child care provider.
+>
+> 3. Colorado Works households where the adult caretaker or teen parent has
+> entered into a current individualized plan and is participating in an
+> allowable work activity as defined in Colorado Works rule (9 CCR 2503-6),
+> incorporated by reference in rule section 3.103(CC), above, other than
+> paid employment, shall not have a parent fee.
+>
+> 4. Child Welfare Child Care households as defined in the Social Services
+> rule manual, rule section 7.302 (12 CCR 2509-4), incorporated by
+> reference in rule section 3.103 (Y), above, shall not have a parent fee.
+>
+> 5. Families Experiencing Homelessness as defined in rule section 3.121
+> shall not have a parent fee during the stabilization period.
+>
+> 6. Protective service households as defined in rule section 3.118 shall not
+> have a parent fee unless the child(ren) has countable income.
+>
+> 7. Families that have no income shall have no parent fee.
+
+### S785. CCCAP parent fee formula through July 31, 2028
+
+Document: D-87
+
+8 CCR 1403-1 3.124.P. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> P. Beginning July 1, 2021, through July 31, 2028, the county must assess parent
+> fees based upon a marginal rate increase of fourteen percent (14%) for every
+> dollar of gross countable household income above one hundred percent (100%)
+>
+> of the federal poverty guidelines (FPG) outlined in rule sections 3.111(H)(2) and
+> (3).
+>
+> 1. The county must assess a parent fee of one percent (1%) of gross income
+> to eligible households with gross income that is at or below one hundred
+> percent (100%) of the FPG.
+>
+> 2. For eligible households with gross income that is above one hundred
+> percent (100%) of the FPG, the county must assess a parent fee at one
+> percent (1%) of their income plus a marginal rate increase of fourteen
+> percent (14%) for every dollar of gross countable household income
+> above one hundred percent (100%) of the FPG.
+>
+> 3. An additional fifteen-dollar ($15) fee shall be added to the parent fee for
+> each additional child when households are requesting care for more than
+> one (1) child and have income above one hundred percent (100%) of the
+> FPG. If care is only requested for one (1) child, the additional fifteen-dollar
+> ($15) fee does not apply.
+
+### S786. CCCAP parent fee formula beginning August 1, 2028
+
+Document: D-87
+
+8 CCR 1403-1 3.124.Q. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> Q. Beginning August 1, 2028, parent fees shall be assessed based on the following
+> formula:
+>
+> Income Level Marginal Rate
+>
+> (% of Federal Poverty (Assessed % for Each
+> Level) Additional Dollar)
+>
+> Less than or equal to 1%
+> 100% FPL
+>
+> 101%-130 FPL 3%
+>
+> 131%-160% FPL 5%
+>
+> 161% and above 7%
+
+### S787. CCCAP parent fee: part-time care at 55%
+
+Document: D-87
+
+8 CCR 1403-1 3.124.U. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> U. When all children in a household are in part-time care, the parent fee shall be
+> assessed at fifty-five percent (55%) of the above-calculated fee. Part-time care is
+> defined as an average of less than thirteen (13) full-time equivalent units of care
+> per month.

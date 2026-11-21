@@ -1,0 +1,12 @@
+id: CO-1288
+name: All children in part-time care
+identifier: all_children_in_part_time_care
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: Every child in the CCCAP household is authorized for part-time care - an average of fewer than thirteen full-time-equivalent units of care a month, including a child in grades one through twelve authorized for part-time care during the school year - so the parent fee is 55% of the calculated fee, per 8 CCR 1403-1 3.124.U-W. Stated on the household's adult caretaker or teen parent.
+supplied_by: Child care authorization (authorized care schedule).
+sources: [S787]
+tags: [income]
+rationale: No existing fact states the authorized schedule; cccap_parent_fee (CO-1290) needs it.

@@ -49,7 +49,7 @@ programs:
     outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit]
   - id: CCCAP
     prefix: cccap_
-    outcomes: [cccap_eligibility_status]
+    outcomes: [cccap_eligibility_status, cccap_parent_fee]
   - id: LEAP
     prefix: leap_
     outcomes: [leap_is_eligible, leap_benefit_amount]

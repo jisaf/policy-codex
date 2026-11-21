@@ -1,0 +1,14 @@
+id: CO-1285
+name: CCCAP parent fee marginal rate above the poverty guideline
+identifier: cccap_parent_fee_marginal_rate
+kind: parameter
+type: rate
+scope: global
+program: CCCAP
+meaning: The marginal rate assessed on every dollar of gross countable household income above 100% of the federal poverty guideline - fourteen percent - per 8 CCR 1403-1 3.124.P.2 (formula in force July 1, 2021 through July 31, 2028).
+value: 0.14
+sources: [S785]
+implemented: engine
+tags: [income]
+rationale: No existing parameter states it; cccap_parent_fee_formula_amount (CO-1289) needs it.
+nearest: [CO-1284]
