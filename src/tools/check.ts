@@ -150,6 +150,37 @@ export interface CaseSummary {
 
 export interface BlockingError { id: string; identifier: string; msg: string }
 
+export interface OpenQuestionFindings {
+  /** volume-level errors: a "### OQ-n." heading that appears more than once
+   *  in open-questions.md (the mark of a bad union merge). Block the check. */
+  errors: string[];
+  /** an item's `open:` naming a question open-questions.md does not have. */
+  warnings: string[];
+}
+
+/** Validates open-questions.md against itself and the items that cite it.
+ *  `questionIds` is every heading's id in file order, duplicates kept (as
+ *  `parseOpenQuestions` returns them). */
+export function checkOpenQuestions(
+  questionIds: readonly string[], items: readonly Item[],
+): OpenQuestionFindings {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  const count = new Map<string, number>();
+  for (const q of questionIds) count.set(q, (count.get(q) ?? 0) + 1);
+  for (const [q, n] of count) {
+    if (n > 1) {
+      errors.push(`open-questions.md has ${n} "### ${q}." headings; each question must appear once`);
+    }
+  }
+  for (const it of items) {
+    for (const q of it.open || []) {
+      if (!count.has(q)) warnings.push(`${it.id} ${it.identifier}: open names ${q}, which open-questions.md does not have`);
+    }
+  }
+  return { errors, warnings };
+}
+
 export interface CheckReport {
   /** the base ref the diff was computed against, or `null` when it could
    *  not be resolved (every file was then treated as unchanged). */
@@ -170,6 +201,9 @@ export interface CheckReport {
   newFailures: string[];
   /** error-level constraint or governance findings on a changed or added item. */
   blockingItemErrors: BlockingError[];
+  /** duplicated question headings (errors, blocking) and `open:` references
+   *  to questions that do not exist (warnings). */
+  openQuestions: OpenQuestionFindings;
   /** true when there is nothing to block a merge. */
   ok: boolean;
 }
@@ -322,9 +356,12 @@ export function buildCheckReport(
     }
   }
 
+  const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);
+
   const ok = blockingItemErrors.length === 0
     && newRuleFailures.length === 0
-    && newCaseFailures.length === 0;
+    && newCaseFailures.length === 0
+    && openQuestions.errors.length === 0;
 
   return {
     base: null, // the caller (runCheck) fills this in with the ref it resolved
@@ -351,6 +388,7 @@ export function buildCheckReport(
     knownFailures: [...known],
     newFailures: [...newRuleFailures.map((f) => f.testId), ...newCaseFailures.map((f) => f.key)],
     blockingItemErrors,
+    openQuestions,
     ok,
   };
 }
@@ -407,6 +445,14 @@ export function formatSummary(r: CheckReport): string {
   if (r.blockingItemErrors.length) {
     lines.push(`blocking errors on changed/added items:`);
     for (const e of r.blockingItemErrors) lines.push(`  ${e.id} ${e.identifier}: ${e.msg}`);
+  }
+  if (r.openQuestions.errors.length) {
+    lines.push(`open-questions.md errors:`);
+    for (const e of r.openQuestions.errors) lines.push(`  ${e}`);
+  }
+  if (r.openQuestions.warnings.length) {
+    lines.push(`open-question warnings:`);
+    for (const w of r.openQuestions.warnings) lines.push(`  ${w}`);
   }
   if (r.newFailures.length) {
     lines.push(

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { join } from "node:path";
 import {
-  buildCheckReport, diffAgainstBase, loadLedgerFromDisk, runCheck,
+  buildCheckReport, checkOpenQuestions, diffAgainstBase, loadLedgerFromDisk, runCheck,
 } from "../../src/tools/check";
 
 const ROOT = join(import.meta.dirname, "..", "..");
@@ -37,7 +37,7 @@ describe("npm run check", () => {
     expect(Object.keys(parsed).sort()).toEqual([
       "addedItems", "base", "blockingItemErrors", "cases", "changedFiles",
       "changedItems", "impact", "items", "knownFailures", "newFailures",
-      "ok", "outcomesAffected", "ruleTests",
+      "ok", "openQuestions", "outcomesAffected", "ruleTests",
     ]);
     expect(Object.keys(parsed.ruleTests).sort()).toEqual([
       "failing", "failingIds", "failures", "passing", "total",
@@ -121,5 +121,30 @@ describe("npm run check", () => {
     expect(check.governanceErrors.some((m) => m.startsWith("vocab.tag"))).toBe(true);
     expect(report.blockingItemErrors.some((e) => e.id === "WR-302")).toBe(true);
     expect(report.ok).toBe(false);
+  });
+
+  it("fails on a duplicated open-question heading and warns on an unknown open reference", () => {
+    const ledger = loadLedgerFromDisk(ROOT);
+    expect(checkOpenQuestions(ledger.questionIds, ledger.items)).toEqual({ errors: [], warnings: [] });
+
+    const first = ledger.questionIds[0];
+    const withDup = { ...ledger, questionIds: [...ledger.questionIds, first] };
+    const report = buildCheckReport(withDup, null, []);
+    expect(report.openQuestions.errors).toEqual([
+      `open-questions.md has 2 "### ${first}." headings; each question must appear once`,
+    ]);
+    expect(report.ok).toBe(false);
+
+    const item = ledger.items[0];
+    const withBadRef = {
+      ...ledger,
+      items: ledger.items.map((it) => (it.id === item.id ? { ...it, open: ["OQ-99999"] } : it)),
+    };
+    const warned = buildCheckReport(withBadRef, null, []);
+    expect(warned.openQuestions.errors).toEqual([]);
+    expect(warned.openQuestions.warnings).toEqual([
+      `${item.id} ${item.identifier}: open names OQ-99999, which open-questions.md does not have`,
+    ]);
+    expect(warned.ok).toBe(true);
   });
 });
