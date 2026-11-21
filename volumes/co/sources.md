@@ -6042,3 +6042,285 @@ Document: D-103
 10 CCR 2506-1, § 4.505.6.J. https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2818
 
 > J. When any person in a household indicates inability or unwillingness to provide documentary evidence of non-citizen status, either for themselves or any other household member, the household has the option of withdrawing its application or participating with the member in question classified as an ineligible non- citizen. In such cases the local office shall not continue efforts to obtain that documentary evidence.
+
+### S655. Lawful Permanent Residents entering on or after August 22, 1996: the five-year rule (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.iii. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> iii) Be a non-citizen lawfully admitted for permanent residence (hereafter referred to as a “Lawful Permanent Resident”) under the immigration and Nationality Act( hereafter referred to as the “INA”) Section 101(a)(15) and 101(a)(20) of INA (8 U.S.C 1641(b)(1)) who entered the United States on or after August 22, 1996 and is applying for Medical Assistance benefits to begin no earlier than five years after the individual’s date of entry into the United States.
+
+### S656. Lawful Permanent Residents exempt from the five-year rule, including the 40-work-quarters exemption (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.iv. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> iv) Be a Legal Permanent Resident(LPR) applying for Medical Assistance, who arrived in the United States on any date is exempt from the five-year rule as set forth in 8 U.S.C.A 1613, and falls into one of the following categories:
+> 1) Has worked 40 work quarters (8 U.S.C. § 1612(b)(2)(B)).
+> 2) lawfully residing in Colorado and is an honorably discharged military veteran (also includes spouse, unremarried surviving spouse, and unmarried, dependent children); or
+> 3) lawfully residing in Colorado and is on active duty (excluding training) in the U.S. Armed Forces (also includes spouse, unremarried surviving spouse and unmarried, dependent children); or
+> 4) an individual who (1) was born in Canada and possesses at least 50 percent American Indian blood, or is a member of an Indian tribe as defined in 25 U.S.C. § 5304(e) (2016); or
+> 5) admitted to the United States as an Amerasian immigrant pursuant to section 584 of the Foreign Operations, Export Financing, and Related Programs Appropriations Act of 1988 (as amended by P.L. 100-461); or
+> 6) lawfully admitted permanent resident who is a Hmong or Highland Lao veteran of the Vietnam conflict; or
+> 7) an non-citizen who arrived in the United States on or after December 26, 2007, who is an Iraqi special immigrant under section 101(a)(27) of the INA who has adjusted to LPR; or
+> 8) an non-citizen who arrived in the United States on or after December 26, 2007, who is an Afghan special immigrant under section 101(a)(27) of the INA who has adjusted to LPR;
+> 9) granted asylum under section 208 of the INA; or
+> 10) refugee under section 207 of the INA; or
+> 11) a victim of a severe form of trafficking in persons, as defined in section 103 of the Victims of Trafficking and Violence Protection Act of 2000, Pub. L.106-386 (as amended by 22 U.S.C. §7105(b) (2016)).
+
+### S657. Cuban/Haitian entrants and COFA migrants who arrived on any date (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.v. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> v) Be a non-citizen who arrived in the United States on any date, andfalls into one of the following categories:
+> 1) Cuban or Haitian entrant, as defined in section 501(e) of the Refugee Education Assistance Act of 1980(8 U.S.C. § 1641(b)(7)); or
+> 2) Compact of Free Association (COFA) migrant, including citizen of Micronesia, the Marshall Islands, and Palau, pursuant to section 208 of the Consolidated Appropriations Act of 2021 (in effect December 27, 2020)(8 U.S.C. §§ 1613(b)(3) and 1641(b)(8))
+
+### S658. Lawfully residing non-citizens who are pregnant women or children under 19: the CHIPRA 214 option (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.g.vii (introduction, 2, 13). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> vii) Be a lawfully residing non-citizen who is a pregnant woman or a child under the age of 19 years in the United States who falls into one of the categories listed in Section 8.100.3.G.1.g.iii or into one of the following categories listed below. These individuals may qualify for Medical Assistance under the Children’s Health Insurance Program Reauthorization Act of 2009 (CHIPRA) Section 214 option and are not subject to the five-year rule, if otherwise eligible:
+> 2) granted Temporary Protected Status (TPS) in accordance with 8 U.S.C § 1254a and pending applicants for TPS granted employment authorization; or
+> 13) a non-citizen in a valid nonimmigrant status, as defined in 8 U.S.C. § 1101(a)(15) or under 8 U.S.C. 1101(a)(17); or
+
+### S659. General requirement: not a patient in an institution for tuberculosis or mental disease (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.c. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> c. Not be a patient in an institution for tuberculosis or mental disease, unless the person is under 21 years of age or has attained 65 years of age and is eligible for the Medical Assistance Program and is receiving active treatment as an inpatient in a psychiatric facility eligible for Medical Assistance reimbursement. See Section 8.100.4.H for special provisions extending Medical Assistance coverage for certain patients who attain age 21 while receiving such inpatient psychiatric services;
+
+### S660. Institutional and HCBS groups: persons who are blind, disabled or aged (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.F.1.f-g. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> f. Persons who are blind, disabled, or aged individuals residing in the medical institution or Long Term Care Institution whose income does not exceed 300% of SSI.
+> g. Persons who are blind, disabled or aged receiving HCBS whose income does not exceed 300% of the SSI benefit level and who, except for the level of their income, would be eligible for an SSI payment.
+
+### S661. General requirement: resident of Colorado and a status category (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.a, g. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. To be eligible to receive Medical Assistance, an eligible person shall:
+> a. Be a resident of Colorado;
+> g. Fall into one of the following categories:
+> i) Be a citizen or national of the United States, the District of Columbia, Puerto Rico, Guam, the Virgin Islands, the Northern Mariana Islands, American Samoa or Swain’s Island; or
+
+### S662. HCBS waiver eligibility: Level of Care Assessment requiring the level of care available in an Institution
+
+Document: D-75
+
+10 CCR 2505-10 § 8.7100.D.9.a-b. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> 9. The Case Management Agency shall certify HCBS waiver eligibility only for those individuals:
+> a. Determined by the Case Management Agency to meet the target group designation for one or more waiver programs detailed in the Target Group Criteria section of each HCBS waiver program at Section 8.7101.
+> b. Determined by a Level of Care Assessment to require the Level of Care available in an Institution according to Section 8.401; or
+
+### S663. HCBS-CES, CHRP, SLS and DD: Intermediate Care Facilities for Individuals with Intellectual Disabilities level of care
+
+Document: D-75
+
+10 CCR 2505-10 §§ 8.7101.B.2.c, 8.7101.C.2.b, 8.7101.I.2.c, 8.7101.J.2.d. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> c. Meets Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care as determined by the Level of Care Screen.
+> b. Has Extraordinary Needs that put the individual at risk or in need of out-of-home placement as identified in one of the two following manners:
+> i. Meets Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care as determined by the Level of Care Screen, and
+> 1) has been determined to have a Developmental Disability as determined pursuant to Section 8.607or if under five years of age, a Developmental Delay, or
+> ii. Has a Serious Emotional Disturbance (SED) as defined in Section 8.7100.A as documented in a format prescribed by the Department, and the individual under 21 years old either
+> 1) meets Nursing Facility Level of Care as determined by the Level of Care Screen or,
+> c. Meets the Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care.
+> d. Meets Intermediate Care Facilities for Individuals with Intellectual Disabilities Level of Care.
+
+### S664. HCBS-CwCHN: nursing facility or hospital level of care; HCBS-CIH: hospital or nursing facility level of care
+
+Document: D-75
+
+10 CCR 2505-10 §§ 8.7101.D.2.b, 8.7101.H.2.d. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12654&fileName=10%20CCR%202505-10%208.7000
+
+> b. Meets a Level of Care, as determined by the state prescribed Level of Care Assessment instrument defined in 8.401.16, furnished in one of the following:
+> i. Nursing Facility
+> Ii. Hospital
+> d. Meets Hospital Level of Care or Nursing Facility Level of Care.
+
+### S665. SISC code B: OAP "A" recipients who but for income would be eligible for SSI (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.M.2.b. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b. Code B - for persons eligible to receive financial assistance under SSI; persons eligible to receive financial assistance under OAP “A” who, except for the level of their income, would be eligible for an SSI payment; persons who are receiving mandatory State supplementary payments; and persons who continue to be eligible for Medical Assistance after disregarding certain Social Security increases; code B signifies that FFP is available in expenditures for medical care and services which are benefits of the Medical Assistance program and also for SMIB premium payments;
+
+### S666. Pickle disregard applied to a parent's or spouse's OASDI cost of living increases (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.E.3. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. This disregard must also be applied to any OASDI cost of living increases paid to any financially responsible individual such as a parent or spouse whose income is considered in determining the person's continued eligibility for Medical Assistance.
+
+### S667. OAP State Only Medical Assistance: OAP lost to a cost of living adjustment other than OASDI (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.K.7. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 7. The OAP State Only Medical Assistance Program provides Medical Assistance to OAP-A, OAP-B or OAP Refugees who lost their OAP financial assistance because of a cost of living adjustment other than OASDI. Examples of other sources of income are VA, RRB, PERA, etc. (SISC C).
+
+### S668. In-kind support and maintenance is shelter only; food is not included (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.5.k.i. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> k. In kind support and maintenance. –
+> i) Any shelter given to an applicant/member or received by an applicant/member outside of a business arrangement requiring the payment of monthly rent equal to or exceeding the presumed maximum value. Shelter includes room, rent, mortgage payments, real property taxes, heating fuel, gas, electricity, water, sewage, and garbage collection services. Food is not included in the calculation of in-kind support and maintenance.
+
+### S669. MAGI unearned income: capital gains, and lottery/gambling winnings spread over months, household members, hardship exemption (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.C.1.b.xiii-xiv. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> xiii) Capital gains;
+> xiv) Lottery/Gambling Winnings;
+> 1) If less than $79,999 winnings are counted as income in the month received.
+> 2) If over $79,999 but less than $89,999 it is counted as income and it is divided equally between two months.
+> 3) For every additional $10,000 over $89,999, one month is added, and divided equally and counted as income for each month.
+> 4) Lottery/gambling winnings of an individual will continue to count only in the month received in determining the eligibility for the members of their household.
+> 5) An applicant/member may request a hardship exemption when an application is denied or enrollment is terminated due to Lottery/Gambling winnings.
+> a. The applicant/member must demonstrate a severe medical or financial hardship.
+> b. The applicant/member must provide a written request and documentation to their County Department of Human Services, within 30 calendar days from the date of their denial or termination notice.
+
+### S670. MAGI unearned income: discharged, forgiven or cancelled student loan debt and its exceptions (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.C.1.b.xv. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> xv) Student loan debt that is discharged, forgiven, or cancelled is treated as taxable income to the borrower, with certain exceptions.
+> 1) This debt will not be considered income for the borrower in the event of death or permanent and total disability of the student (the borrower and the student may or may not be the same person) if discharged during tax years 2018 through 2025.
+> 2) At the Departments discretion, this debt will not be considered countable income for the borrower if discharged, forgiven, or cancelled under programs which include, but not limited to:
+> a) Public Service loan forgiveness;
+> b) Teacher loan forgiveness;
+> c) Healthcare loan forgiveness; and
+> d) Closed School discharge.
+
+### S671. MAGI allowable deductions: 401(k)/403(b) pre-tax contributions, pre-tax contributions, net operating losses, capital losses (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.C.1.e.viii, xiii-xv. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> viii) IRA deduction: Regular Individual Retirement Account (IRA) contributions claimed on a federal income tax return and which does not exceed the IRA contributions limits; (Pre-tax contributions to a 401(k) or 403(b) retirement plan are excluded from earned income);
+> xiii) Certain pre-tax contributions;
+> xiv) Net operating losses; and
+> xv) Capital losses.
+
+### S672. BCCP: what is not creditable coverage, and limited benefits that still are (current text)
+
+Document: D-67
+
+10 CCR 2505-10 § 8.715.3.B, D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.715.3.B. The following are not considered creditable coverage:
+> 1. Limited scope coverage such as that which covers only dental, vision or long term care;
+> 2. Coverage only for a specific disease or illness (unless the specific disease or illness includes breast or cervical cancer); or
+> 3. A medical care program run by the Indian Health Services or a tribal organization.
+> 8.715.3.D. Individuals who have coverage that contains yearly limited drug benefits, yearly limits on outpatient visits or high deductibles shall be considered to have creditable coverage.
+
+### S673. BCCP clients receive all State Plan Medicaid benefits (current text)
+
+Document: D-67
+
+10 CCR 2505-10 § 8.715.7.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> 8.715.7.A. Eligible clients shall receive all Medicaid benefits included in the State Plan.
+
+### S674. Creditable coverage under the Colorado Health Care Coverage Act
+
+Document: D-79
+
+C.R.S. 10-16-102(16). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-10.pdf
+
+> (16) "Creditable coverage" means benefits or coverage provided under:
+> (a) Medicare, the "Colorado Medical Assistance Act", articles 4 to 6 of title 25.5, C.R.S.,
+> or the children's basic health plan established pursuant to article 8 of title 25.5, C.R.S.;
+> (b) An employee welfare benefit plan or group health insurance or health benefit plan;
+> (c) An individual health benefit plan;
+> (d) A state health benefits risk pool; or
+> (e) Chapter 55 of title 10 of the United States Code, a medical care program of the
+> federal Indian health service or of a tribal organization, a health plan offered under chapter 89 of
+> title 5, United States Code, a public health plan, or a health benefit plan under section 5 (e) of the
+> federal "Peace Corps Act", 22 U.S.C. sec. 2504 (e).
+
+### S675. MAGI covered groups at 142% (children), 68% (parents and caretaker relatives) and 195% (pregnant women), version effective 06/30/2022
+
+Document: D-77
+
+10 CCR 2505-10 § 8.100.4.G.2, G.3, G.5 (archived version effective 06/30/2022). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=10202&fileName=10%20CCR%202505-10%208.100
+
+> 2. Children applying for Medical Assistance whose total household income does not exceed 142%
+> of the federal poverty level shall be determined financially eligible for Medical Assistance. Refer to
+> the MAGI-Medicaid income guidelines chart available on the Department’s website.
+> 3. Parents and Caretaker Relatives applying for Medical Assistance whose total household income
+> does not exceed 68% of the federal poverty level (MAGI-equivalent) shall be determined
+> financially eligible for Medical Assistance. Parents or Caretaker Relatives eligible for this category
+> shall have a dependent child in the household.
+> 5. Pregnant Women whose household income does not exceed 195% of the federal poverty level
+> (MAGI-equivalent) are eligible for the Pregnant Women MAGI Medical Assistance program.
+> Medical Assistance shall be provided to a pregnant woman for a period beginning with the date of
+> application for Medical Assistance through the last day of the 12th month following the date the
+> pregnancy ends. Once eligibility has been approved, Medical Assistance coverage will be
+> provided regardless of changes in the woman's financial circumstances once the income
+> verification requirements are met.
+
+### S676. MAGI covered groups at 133% (children), 60% (parents and caretaker relatives) and 185% (pregnant women), version effective 04/14/2022
+
+Document: D-78
+
+10 CCR 2505-10 § 8.100.4.G.2, G.3, G.5 (archived version effective 04/14/2022). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=10127&fileName=10%20CCR%202505-10%208.100
+
+> 2. Children applying for Medical Assistance whose total household income does not exceed 133%
+> of the federal poverty level (MAGI-equivalent) shall be determined financially eligible for Medical
+> Assistance. Refer to the MAGI-Medicaid income guidelines chart available on the Department’s
+> website.
+> 3. Parents and Caretaker Relatives applying for Medical Assistance whose total household income
+> does not exceed 60% of the federal poverty level (MAGI-equivalent) shall be determined
+> financially eligible for Medical Assistance. Parents or Caretaker Relatives eligible for this category
+> shall have a dependent child in the household.
+> 5. Pregnant Women whose household income does not exceed 185% of the federal poverty level
+> (MAGI-equivalent) are eligible for the Pregnant Women MAGI Medical Assistance program.
+> Medical Assistance shall be provided to a pregnant woman for a period beginning with the date of
+> application for Medical Assistance through the last day of the month following 60 days from the
+> date the pregnancy ends. Once eligibility has been approved, Medical Assistance coverage will
+> be provided regardless of changes in the woman's financial circumstances once the income
+> verification requirements are met.
+
+### S677. Family planning services are services to individuals of child-bearing age (current text)
+
+Document: D-67
+
+10 CCR 2505-10 § 8.730.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12737&fileName=10%20CCR%202505-10%208.700
+
+> Family Planning Services mean those services provided to individuals of child-bearing age, including sexually active minors, where the intent of that service is to delay, prevent, or plan for a pregnancy. Family Planning Services may include physical examinations, evaluation, treatments, counseling, supplies , prescriptions, and follow-up services.
+
+### S678. The 5% disregard is applied for each qualifying MAGI program as the last step; limited family planning presumptive eligibility counts the applicant as a household of two (current text)
+
+Document: D-65
+
+10 CCR 2505-10 §§ 8.100.4.D.1.a, 8.100.4.F.2.c. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a. If an individual’s MAGI-based countable income is above the income threshold for the applicable MAGI program under title XIX (Medicaid) or title XXI (CHP+) of the Social Security Act, the five percent (5%) disregard will be applied for each qualifying MAGI program as the last step to determine eligibility.
+> c. To qualify for limited family planning presumptive eligibility, an applicant must have declared household income greater than 133% but not exceeding 260% of the federal poverty level. The applicant cannot be eligible for a Medicaid eligibility category that provides full coverage. The applicant must declare they are a United States citizen or a lawfully residing immigrant. An applicant applying for limited family planning presumptive eligibility will be counted individually as a household member of two.

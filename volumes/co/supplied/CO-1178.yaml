@@ -1,0 +1,13 @@
+id: CO-1178
+name: "Medicaid: meets the designated waiver's level of care"
+identifier: ma_meets_designated_waiver_level_of_care
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the Case Management Agency's Level of Care Assessment finds that the person requires the level of care the HCBS waiver the person is designated for requires (10 CCR 2505-10 § 8.7100.D.9.b): Intermediate Care Facilities for Individuals with Intellectual Disabilities level of care for HCBS-CES, HCBS-SLS and HCBS-DD and CHRP's developmental disability route; nursing facility level of care (or, for CHRP's serious emotional disturbance route, the inpatient psychiatric care findings § 8.7101.C.2.b.ii states) for CHRP; nursing facility or hospital level of care for HCBS-CwCHN and HCBS-CIH; nursing facility level of care for the other waivers (§ 8.7101)."
+precision: "Read with meets_hcbs_waiver_target_group (CO-821), the waiver the person is designated for; unknown or not meaningful when no waiver is designated. meets_nursing_facility_level_of_care (CO-820) remains the level of care for institutional care, PACE and the emergency-only institutional route."
+supplied_by: Case Management Agency's Long-Term Services and Supports Level of Care Eligibility Determination Screen (and the Professional Medical Information Page) for the designated waiver.
+sources: [S662, S663, S664, S375]
+tags: [ma, ltc, hcbs]
+rationale: "S-4 of the phase 7 review: ma_hcbs_waiver_eligible (CO-653) gated every waiver on nursing facility level of care, although § 8.7101 requires ICF/IID level of care for CES, SLS, DD and CHRP's developmental disability route and allows hospital level of care for CwCHN and CIH, so an adult with a developmental disability at ICF/IID level of care but not nursing facility level of care was denied SLS or DD. No existing fact carries the waiver-specific finding."

@@ -11,7 +11,7 @@ derived: ["/", ma_magi_household_income, ["/", [+, [lookup, ma_poverty_guideline
 sources: [S55, S161]
 implemented: engine
 tags: [ma, magi, income]
-rationale: "No existing item expresses MAGI household income as a percentage of the poverty guideline; every batch-6 covered-group income test (child 133%, parent/caretaker 60%, adult 133%, pregnant 185%) needs this single ratio rather than re-deriving the monthly guideline lookup in each rule. Parallel in shape to how snap_bbce_gross_income_limit (CO-339) looks up snap_poverty_guideline_table, but expresses a ratio rather than a dollar limit because Colorado's MAGI limits (8.100.4.G) are stated as percentages, not dollar tables."
+rationale: "No existing item expresses MAGI household income as a percentage of the poverty guideline; every batch-6 covered-group income test (child 142%, parent/caretaker 68%, adult 133%, pregnant 195%, the current § 8.100.4.G figures) needs this single ratio rather than re-deriving the monthly guideline lookup in each rule. Parallel in shape to how snap_bbce_gross_income_limit (CO-339) looks up snap_poverty_guideline_table, but expresses a ratio rather than a dollar limit because Colorado's MAGI limits (8.100.4.G) are stated as percentages, not dollar tables."
 tests:
   - {id: CO-504-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income: 2750, ma_magi_household_size: 4}, expect: 1.0}
   - {id: CO-504-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_magi_household_income: 1375, ma_magi_household_size: 4}, expect: 0.5}

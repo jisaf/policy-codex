@@ -652,3 +652,50 @@ Fix list:
 15. **S-12** — fetch the 10 CCR 2505-10 history; version CO-191/192/194; resolve or update OQ-211.
 16. **N-1..N-5** — OQ-215 on reproductive capacity; CO-650's `>=` at 752000; CO-1156 and K.7 into
     OQ-206; CHRP's served groups; CO-71's OAP-grant reading.
+
+---
+
+## Disposition (fix round, 2026-11-21)
+
+Commits on the fix-round branch: `695a8f0` (documents D-77..D-79 and excerpts S655..S678) and
+`7fc2254` (items, open questions and cases). New items CO-1170..CO-1193; open questions OQ-213..OQ-217.
+`CHECK_BASE=origin/main npm run check` passes (co: 1264/1264 rule tests, 1013/1013 case expectations;
+mwr unchanged), as do `npm run governance -- --volume co` (0 errors), `npm run typecheck` and `npm test`.
+
+| Finding | Disposition | Where |
+|---|---|---|
+| B-1 | Fixed (`7fc2254`). CO-509's lawfully present arm is `[all, ma_is_lawfully_present, [any, is_pregnant, [<, age, 19]]]` (vii); a qualified LPR inside the bar who is pregnant or a child meets status through vii, as vii's "falls into ... iii" states. CO-084 and CO-507 restated (vii, the age and pregnancy limit lives in CO-509). Tests CO-509-T10..T12 (TPS adult false, pregnant and child true), CO-1151-T7 (TPS adult → `eligible_no_current_emergency`). | CO-509, CO-084, CO-507, CO-1151 |
+| B-2 | Fixed (`7fc2254`). New `ma_is_five_year_bar_exempt` (CO-1172): refugee, asylee, Cuban/Haitian entrant, COFA migrant (iv.9-10, v); veteran/active duty; an LPR with `qualifying_quarters` (CO-004, reused: its meaning is the 8 U.S.C. 1612(b)(2)(B) count iv.1 cites) at least the new parameter CO-1171 (40); or a new Medicaid supplied fact `ma_five_year_bar_exempt_category` (CO-1170) for iv.4-8, 11 and refugees/asylees who adjusted to LPR. `citizenship_status` options are unchanged, so SNAP, Colorado Works, Adult Financial, CCCAP and LEAP readers are unaffected; CO-306 and the Colorado Works readers were not touched (vocabulary review R-4). OQ-213 opened. Tests CO-1172-T1..T6, CO-509-T13..T16. | CO-1170, CO-1171, CO-1172, CO-509 |
+| B-3 | Fixed (`7fc2254`). CO-652 gains `ineligible_residency`, `not_aged_blind_or_disabled` and `ineligible_status` (Cover All Coloradans only for a waiver designee; institutional care and PACE need CO-509) ahead of the financial branches; CO-653 tests residency, aged/blind/disabled and status (CO-1174); CO-654 tests residency, CO-509 and aged/blind/disabled. CO-651 stays financial only, because CO-1150's emergency route reads it and must not test status. CO-1150's precision corrected. Tests CO-652-T7..T11, CO-653-T8..T9, CO-654-T4, CO-1151-T8; new case CO-72 (the undocumented nursing facility resident: `ineligible_status` and `eligible_emergency_condition`, not both eligible). | CO-652, CO-653, CO-654, CO-1150, CO-1151, CO-72 |
+| S-1 | Fixed (`7fc2254`). New `ma_has_full_coverage_category` (CO-1176): full MAGI, SSI-related, OAP SISC B, a protected group, a Buy-In program, long-term care (aged/blind/disabled gate kept). CO-1154 reads it plus BCCP `eligible`; CO-616 and CO-1152 read it without BCCP. CO-71 p2 re-expected `full_coverage`. | CO-1176, CO-1154, CO-616, CO-1152 |
+| S-2 | Fixed (`7fc2254`), reading ix.1.a-b as exhaustive (OQ-214). `ma_is_cover_all_coloradans_person` (CO-1173) holds the moved disjuncts; `ma_meets_status_for_cover_all_coloradans_categories` (CO-1174) is read by CO-618, CO-620, CO-653, CO-705..CO-708 and CO-1152 (whose § 8.715.2.C.3 cross-references the exception); CO-562 applies Cover All Coloradans to the Children's and Pregnant categories only; `ma_is_covered_under_cover_all_coloradans` (CO-1175) keeps a covered child out of emergency-only (CO-510) and CO-1151 treats CHP+ eligibility as status met. CO-553 restated over CO-562. CO-1154 sends an undocumented child who would be eligible but for status to `full_coverage` (state medical assistance, C.R.S. 25.5-2-104(2)), since 25.5-2-103 closes the reproductive health-care program to them. CO-71 p1 re-expected `ma_meets_citizenship_requirement: false`, `ma_family_planning_status: reproductive_health_care_program`; her emergency status stays `not_applicable_status_met` (CHP+ prenatal). | CO-1173..1175, CO-509, CO-510, CO-553, CO-562, CO-618, CO-620, CO-705..708, CO-1151, CO-1152, CO-1154 |
+| S-3 | Fixed (`7fc2254`). New `ma_oap_sisc_b_eligible` (CO-1177); CO-612 gains option `oap_sisc_b`; CO-1150 has an OAP route without status; CO-1156 and CO-1176 read it. OQ-206 extended (M.2.b names OAP "A" only, K.4 both). | CO-1177, CO-612, CO-1150, CO-1156 |
+| S-4 | Fixed (`7fc2254`). New supplied `ma_meets_designated_waiver_level_of_care` (CO-1178, `ma_` per the vocabulary note) read by CO-653 in place of CO-820 and by CO-652's level-of-care branch for a waiver designee; CO-820 kept for institutional care, PACE and CO-1150. Tests CO-653-T7 and CO-652-T10 (SLS at ICF/IID level of care without NF level of care). OQ-210 updated. | CO-1178, CO-653, CO-652 |
+| S-5 | Fixed (`7fc2254`). New `ma_meets_imd_requirement` (CO-1179, ages first so children and 65+ need no institution fact; age parameter CO-1193 = 21) read by CO-562, CO-611 and CO-1150. The active-treatment condition of the exception is carried in the precision. | CO-1179, CO-1193, CO-562, CO-611, CO-1150 |
+| S-6 | Fixed (`7fc2254`). CO-1159 compares with the greater of the FBR and `af_oap_grant_standard` for a person of OAP age (`af_is_oap_age`, CO-940), the reading of E.2's "SSI or OAP standard" that D.2.c's "would be eligible for OAP" supports, without a new fact; E.3 (a parent's or spouse's COLAs) recorded in OQ-207, not modeled (no fact states those COLAs). Test CO-1159-T4. | CO-1159, OQ-207 |
+| S-7 | Fixed (`7fc2254`). New supplied `lost_ssi_due_to_social_security_benefits` (CO-1180) read by CO-1161 and CO-1162; CO-1108 kept for Pickle. OQ-209 extended. Tests CO-1161-T5, CO-1162-T5. | CO-1180, CO-1161, CO-1162 |
+| S-8 | Fixed (`7fc2254`). CO-802 restated as shelter only, with § 8.100.5.F.5.k.i's shelter items and the food exclusion (S668). | CO-802 |
+| S-9 | Fixed (`7fc2254`). Winnings: supplied amount and month (CO-1181, CO-1182), parameters $79,999 and $10,000 (CO-1183, CO-1184), months (CO-1185), the month-received amount every household member sees (CO-1186, xiv.4, added to CO-502) and the winner's spread amount (CO-1187), swapped in by CO-503 for the winner's own household. Student loans: supplied amount and reason (CO-1188, CO-1189) and `ma_countable_discharged_student_loan_income` (CO-1190, added to CO-502). Meanings of CO-079 (capital gains in, winnings and student loans out), CO-080 (401(k)/403(b), other pre-tax contributions, NOL, capital losses) and a precision on CO-030; CO-502's lump-sum sentence corrected. Hardship exemption and boundaries: OQ-216; discretionary exclusions: OQ-217. Every case person with MAGI income now states the two new zero facts. | CO-1181..1190, CO-502, CO-503, CO-079, CO-080, CO-030 |
+| S-10 | Fixed (`7fc2254`): CO-560 and CO-198 (old 60-day sentence removed; the 06/30/2022 date noted), CO-566 (assumption, rationale, T1 title), CO-543 (precision, rationale), CO-504 (rationale), CO-546-T1..T4 (1.95), CO-548-T6 (68%/73%, input 0.70), CO-558 (assumption), CO-706 (precision), CO-510 (precision), CO-707 (six reasons; its status branch now reads CO-1174, S-2). CO-540: its precision already states 142% and its rationale carries no figure, so no change. | as listed |
+| S-11 | Fixed (`7fc2254`). Fetched C.R.S. 10-16-102(16) (D-79, S674). New supplied `ma_bccp_has_creditable_coverage` (CO-1191, § 8.715.3.A, B, D) and `ma_bccp_creditable_coverage_exception_applies` (CO-1192, § 8.715.3.C) replace CO-090 in CO-1152. OQ-203 narrowed to the unfetched 2002 edition. Test CO-1152-T9. | CO-1191, CO-1192, CO-1152, OQ-203 |
+| S-12 | Fixed (`7fc2254`). Fetched the archived § 8.100 versions effective 04/14/2022 (D-78: 133/60/185, 60 days postpartum) and 06/30/2022 (D-77: 142/68/195, 12 months). CO-191/192/194 carry versions (earlier figure 2022-04-14 to 2022-06-30, current from 2022-06-30). OQ-211 resolved. CO-198 is not versioned (the earlier period was stated in days); its precision gives the date. | CO-191, CO-192, CO-194, CO-198, OQ-211 |
+| N-1 | Answered: OQ-215 opened; CO-1154 keeps G.8's letter (no age or gender restriction) and does not read `has_reproductive_capacity` for the limited category, since G.8 is explicit and § 8.730.1 is a services definition. | OQ-215 |
+| N-2 | Fixed (`7fc2254`): CO-650 uses `>=` (the state's "Is less than"), test CO-650-T4 at 752,000. | CO-650 |
+| N-3 | Answered: K.7 (OAP lost to a non-OASDI COLA, SISC C) and OAP Refugees recorded in OQ-206 and CO-1156's precision; not modeled (no fact states a past OAP loss). | OQ-206, CO-1156 |
+| N-4 | Answered in CO-653's precision: CHRP's population is children, for whom the special income group route gives the same result; the SSI-related route is left open. | CO-653 |
+| N-5 | Fixed (`7fc2254`): CO-71's comment states the OAP grant is treated as excluded, and S-3's SISC B route removes the dependency. | CO-71 |
+
+Section 3 items: OQ-200, 202, 204, 205, 206, 207, 209, 210 extended as the review asked (OQ-204 cites
+§ 8.100.4.F.2.c and D.1.a but stays open, because neither sentence is the G.8 determination);
+OQ-203 narrowed; OQ-211 resolved; OQ-213, 214, 215 opened as proposed, plus OQ-216 (winnings) and
+OQ-217 (student loans). OQ-93: CO-1133's rationale now states the 460.150(b)(1) reading.
+
+Section 2.1 rows not taken up here, for later phases as the table says: § 8.100.6.L.9 (QMB residency
+and status), § 8.100.4.G.5.a.i and G.6.a, § 8.100.4.F.2.c/F.8/F.9 and § 8.100.3.R (presumptive
+eligibility), § 8.715.2.D/F, and CO-821's citation of § 8.7100.E.3/H.1.c.
+
+Case changes: CO-71 p1 `ma_meets_citizenship_requirement` true → false and `ma_family_planning_status`
+`limited_family_planning` → `reproductive_health_care_program` (S-2); p2 `ma_family_planning_status`
+→ `full_coverage` (S-1); new facts for p2 (BCCP coverage, IMD) and p3 (five-year-rule exemption
+facts). CO-04 p1/p2 state the exemption facts (12 work quarters) and the IMD fact; their expectations
+are unchanged. New case CO-72 (B-3).
