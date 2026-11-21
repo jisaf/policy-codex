@@ -250,3 +250,10 @@ Reviews: docs/reviews/stakeholder-cdhs.md (5 blocking, 18 should-fix) and docs/r
 - Engine: an item may carry `statute_override`, one county-facing sentence where a statute governs over a Colorado rule; `explain.ts` puts it on the trace node and `narrative` ends the story with a "Statute over rule:" line for the value and each fact its story tells.
 - Approval: roles "Energy assistance (LEAP) policy owner", "Child care policy owner (CDEC)" and "School meals (CDE) co-approver"; CODEOWNERS entries for the co chapters with placeholder teams. Not done: routing shared (`All`) items to the LEAP and CCCAP owners when those programs read them (S-8's last point) needs a by-reader approval rule the engine does not have.
 - Household cases: CO-84 (B-1), CO-85 (B-2), CO-86 (B-3), CO-87 and CO-88 (B-4), CO-89 (B-5). Changed expectations: CO-01/CO-02 p3 Colorado Works status; CO-02 LEAP benefit (unknown); CO-01, CO-02, CO-13 SUN Bucks benefit (unknown); 55 pending flags and counts where the program does not apply (CO-01, CO-02, CO-91, CO-92).
+
+## Audit fix round, track 2: same word, dual entry (2026-11-21)
+
+Fixes for docs/reviews/audit-same-word-different-meaning.md and docs/reviews/audit-dual-entry.md (immigration status, sponsors and receipt records are another track's). Each finding's disposition is at the end of its audit file.
+
+- OQ-97 finished (dual-entry 1.1-1.4, 5.4, 5.5; same-word SW-32): the increased CSRA reads the derived community spouse income, and the MMMNA reads the community spouse's own shelter costs (`ma_community_spouse_shelter_costs`, CO-2802) with the SNAP utility allowance her home reaches (OQ-560). CO-01 and CO-02 move (MMMNA 2,993.50 to 3,909.50; patient payment 106.14 to 0; CSRA 46,000 to 259,660), recomputed by hand in the case comments.
+- IDs retired (files deleted; not used again): CO-833 (`community_spouse_income`), CO-834 (`shelter_costs_community_spouse`), CO-838 (`family_members_with_community_spouse`), CO-2468 (`ma_resides_with_community_spouse`).

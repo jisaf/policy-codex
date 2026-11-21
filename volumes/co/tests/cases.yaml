@@ -37,6 +37,11 @@
         ma_claims_co_owner_hardship_for_real_property: false
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
+        # Dual-entry audit 1.2: the corrected MMMNA leaves the community spouse short (see the expectations),
+        # so the increased CSRA of 8.100.7.S applies: the allowance is not refused, and the lowest of the three
+        # annuity estimates for the 809.86 monthly shortfall is illustrative.
+        ma_institutionalized_spouse_refuses_income_allowance: false
+        ma_csra_annuity_lowest_estimate: 97000
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         cccap_application_county: adams  # phase-10 sweep (OQ-159)
@@ -165,7 +170,6 @@
         expects_institutional_stay_of_thirty_days: true
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
-        family_members_with_community_spouse: []
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3): she asks for nursing facility care; the setting is the one requested, not PACE first
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
@@ -260,8 +264,6 @@
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
         in_kind_support_and_maintenance: 0
-        community_spouse_income: 1180
-        shelter_costs_community_spouse: 1100
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -424,7 +426,6 @@
         expects_institutional_stay_of_thirty_days: false
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
-        family_members_with_community_spouse: []
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
         ma_qualifies_for_veterans_personal_needs_allowance: false
@@ -519,8 +520,6 @@
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
         in_kind_support_and_maintenance: 0
-        community_spouse_income: 1180
-        shelter_costs_community_spouse: 1100
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -1292,9 +1291,10 @@
   # maximum 162660, CO-828, a parameter since phase 7; the case once stated an
   # illustrative 150000), the fix-round C-1 fix (10 CCR 2505-10 8.100.7.M.1.a: CSRA
   # = total resources capped at the maximum standard, no spousal-share or
-  # minimum-standard term - see OQ-126) gives ma_csra = min(162660, 46000) =
-  # 46000, so all of the couple's resources are attributed to the community
-  # spouse and p1's own countable resources are 0, at or below the 2000
+  # minimum-standard term - see OQ-126) gives min(162660, 46000) = 46000 under
+  # branch (a); the increased CSRA of branch (b) is larger since dual-entry 1.2
+  # (259660, see the expectation), so all of the couple's resources are attributed
+  # to the community spouse and p1's own countable resources are 0, at or below the 2000
   # limit: resource eligible. p1 also meets the nursing facility level of
   # care and is otherwise financially eligible, so ma_pace_eligible (CO-654)
   # is true; CO-652's case order tests PACE before institutional (an
@@ -1371,21 +1371,30 @@
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-10": true}
       ma_ltc_couple: true
-      ma_csra: 46000
+      ma_csra: 259660
       ma_institutionalized_spouse_countable_resources: 0
       ma_meets_ltc_resource_standard: true
       ma_home_equity_disqualifies: false
       # HCPF fix round (B-3, S-3), recomputed by hand. Setting: she is in a nursing facility and asks for
-      # nursing facility care, so the outcome is the institutional setting, not PACE. MMMNA: the case no longer
-      # supplies ma_mmmna_standard 2600; CO-662 gives 2705.00 from 2026-07-01 (S1219, S644). Shelter allowance
-      # = max(0, 1100 - 0.30 x 2705.00 = 811.50) = 288.50, so MMMNA = min(4066.50, 2705.00 + 288.50) = 2993.50.
-      # CSIA = 2993.50 - 1180 (p2's Social Security, read across the spouse edge) = 1813.50.
-      # Patient payment = 2030 (1420 + 610) - 110.36 personal needs - 1813.50 CSIA - 0 family allowance
-      # - 0 health insurance premiums = 106.14.
+      # nursing facility care, so the outcome is the institutional setting, not PACE. MMMNA standard: CO-662
+      # gives 2705.00 from 2026-07-01 (S1219, S644).
+      # Dual-entry audit 1.1, 1.2 and 5.4 (OQ-97 finished), recomputed by hand. The community spouse's shelter
+      # costs are p2's own (ma_community_spouse_shelter_costs, CO-2802), no longer the 1,100 stated on both
+      # spouses: 1400 (p2's shelter_cost_monthly) + 0 maintenance fee + max(616 heating and cooling SUA her
+      # home reaches, 0 actual) = 2016. Shelter allowance = max(0, 2016 - 0.30 x 2705.00 = 811.50) = 1204.50,
+      # so MMMNA = min(4066.50, 2705.00 + 1204.50) = 3909.50 (was 2993.50).
+      # CSIA = 3909.50 - 1180 (p2's Social Security, read across the spouse edge) = 2729.50 (was 1813.50).
+      # Patient payment = max(0, 2030 (1420 + 610) - 110.36 personal needs - 2729.50 CSIA - 0 family allowance
+      # - 0 health insurance premiums = -809.86) = 0 (was 106.14).
+      # Increased CSRA (8.100.7.S): p2's income 1180 + the allowance available from p1, min(2729.50,
+      # 2030 - 110.36 = 1919.64) = 1919.64, is 3099.64 < 3909.50, a shortfall of 809.86 a month; the allowance
+      # is not refused, so ma_csra_increased = 162660 + 97000 (lowest annuity estimate) = 259660 and
+      # ma_csra = max(min(162660, 46000), 259660, 0) = 259660 (was 46000). p1's countable resources stay
+      # max(0, 46000 - 259660) = 0, so resource eligibility does not change.
       ma_ltc_eligibility_status: {"2026-10": eligible_institutional}
-      ma_mmmna: {"2026-10": 2993.5}
-      ma_community_spouse_income_allowance: {"2026-10": 1813.5}
-      ma_patient_payment: {"2026-10": 106.14}
+      ma_mmmna: {"2026-10": 3909.5}
+      ma_community_spouse_income_allowance: {"2026-10": 2729.5}
+      ma_patient_payment: {"2026-10": 0}
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
@@ -2225,6 +2234,11 @@
         ma_claims_co_owner_hardship_for_real_property: false
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
+        # Dual-entry audit 1.2: the corrected MMMNA leaves the community spouse short (see the expectations),
+        # so the increased CSRA of 8.100.7.S applies: the allowance is not refused, and the lowest of the three
+        # annuity estimates for the 809.86 monthly shortfall is illustrative.
+        ma_institutionalized_spouse_refuses_income_allowance: false
+        ma_csra_annuity_lowest_estimate: 97000
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -2355,7 +2369,6 @@
         expects_institutional_stay_of_thirty_days: true
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
-        family_members_with_community_spouse: []
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3): she asks for nursing facility care; the setting is the one requested, not PACE first
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
@@ -2449,8 +2462,6 @@
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
         in_kind_support_and_maintenance: 0
-        community_spouse_income: 1180
-        shelter_costs_community_spouse: 1100
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -2614,7 +2625,6 @@
         expects_institutional_stay_of_thirty_days: false
         has_income_trust: false
         meets_hcbs_waiver_target_group: none
-        family_members_with_community_spouse: []
         receives_medicare_part_a: true
         is_disabled_for_buy_in: false
         ma_qualifies_for_veterans_personal_needs_allowance: false
@@ -2707,8 +2717,6 @@
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
         in_kind_support_and_maintenance: 0
-        community_spouse_income: 1180
-        shelter_costs_community_spouse: 1100
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
         pretax_deductions: 0
@@ -3471,7 +3479,8 @@
   # non-filer rules apply: household p4 and p5, income 0, child, eligible. Both
   # children are Medicaid-eligible and so not CHP+ eligible.
   # Non-MAGI Medicaid (phase 4). Same fixed-rule result as CO-01 (see its
-  # comment above): the C-1 fix gives ma_csra = min(162660, 46000) = 46000,
+  # comment above): branch (a) gives min(162660, 46000) = 46000 and the increased
+  # CSRA of branch (b) gives 259660 since dual-entry 1.2, so ma_csra = 259660,
   # p1's own countable resources are 0, and she is resource eligible.
   # ma_pace_eligible is also true (level of care met, financially eligible),
   # and CO-652's PACE-before-institutional case order (OQ-100) reports
@@ -3528,21 +3537,30 @@
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-11": true}
       ma_ltc_couple: true
-      ma_csra: 46000
+      ma_csra: 259660
       ma_institutionalized_spouse_countable_resources: 0
       ma_meets_ltc_resource_standard: true
       ma_home_equity_disqualifies: false
       # HCPF fix round (B-3, S-3), recomputed by hand. Setting: she is in a nursing facility and asks for
-      # nursing facility care, so the outcome is the institutional setting, not PACE. MMMNA: the case no longer
-      # supplies ma_mmmna_standard 2600; CO-662 gives 2705.00 from 2026-07-01 (S1219, S644). Shelter allowance
-      # = max(0, 1100 - 0.30 x 2705.00 = 811.50) = 288.50, so MMMNA = min(4066.50, 2705.00 + 288.50) = 2993.50.
-      # CSIA = 2993.50 - 1180 (p2's Social Security, read across the spouse edge) = 1813.50.
-      # Patient payment = 2030 (1420 + 610) - 110.36 personal needs - 1813.50 CSIA - 0 family allowance
-      # - 0 health insurance premiums = 106.14.
+      # nursing facility care, so the outcome is the institutional setting, not PACE. MMMNA standard: CO-662
+      # gives 2705.00 from 2026-07-01 (S1219, S644).
+      # Dual-entry audit 1.1, 1.2 and 5.4 (OQ-97 finished), recomputed by hand. The community spouse's shelter
+      # costs are p2's own (ma_community_spouse_shelter_costs, CO-2802), no longer the 1,100 stated on both
+      # spouses: 1400 (p2's shelter_cost_monthly) + 0 maintenance fee + max(616 heating and cooling SUA her
+      # home reaches, 0 actual) = 2016. Shelter allowance = max(0, 2016 - 0.30 x 2705.00 = 811.50) = 1204.50,
+      # so MMMNA = min(4066.50, 2705.00 + 1204.50) = 3909.50 (was 2993.50).
+      # CSIA = 3909.50 - 1180 (p2's Social Security, read across the spouse edge) = 2729.50 (was 1813.50).
+      # Patient payment = max(0, 2030 (1420 + 610) - 110.36 personal needs - 2729.50 CSIA - 0 family allowance
+      # - 0 health insurance premiums = -809.86) = 0 (was 106.14).
+      # Increased CSRA (8.100.7.S): p2's income 1180 + the allowance available from p1, min(2729.50,
+      # 2030 - 110.36 = 1919.64) = 1919.64, is 3099.64 < 3909.50, a shortfall of 809.86 a month; the allowance
+      # is not refused, so ma_csra_increased = 162660 + 97000 (lowest annuity estimate) = 259660 and
+      # ma_csra = max(min(162660, 46000), 259660, 0) = 259660 (was 46000). p1's countable resources stay
+      # max(0, 46000 - 259660) = 0, so resource eligibility does not change.
       ma_ltc_eligibility_status: {"2026-11": eligible_institutional}
-      ma_mmmna: {"2026-11": 2993.5}
-      ma_community_spouse_income_allowance: {"2026-11": 1813.5}
-      ma_patient_payment: {"2026-11": 106.14}
+      ma_mmmna: {"2026-11": 3909.5}
+      ma_community_spouse_income_allowance: {"2026-11": 2729.5}
+      ma_patient_payment: {"2026-11": 0}
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
@@ -5361,7 +5379,6 @@
         meets_hcbs_waiver_target_group: none
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3)
         has_income_trust: false
-        family_members_with_community_spouse: []
         ssi_countable_resources_individual: 172500
         ssi_countable_resources_couple: 180000
         ma_spousal_resources_at_snapshot: 180000
@@ -5409,13 +5426,20 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        community_spouse_income: 1100
-        shelter_costs_community_spouse: 1250
     p2:
       # Linda, 69, citizen, community spouse at home; $1,100 Social Security, Medicare Part A,
       # $7,500 in her own name (the rest of the couple's $180,000 is in Robert's name and the CSRA
       # has not yet been transferred under 8.100.7.M.3).
+      # Dual-entry audit 1.2: her shelter costs are her own facts. The case once stated
+      # shelter_costs_community_spouse 1,250 (utility allowance included) on both spouses; it is split
+      # into her rent or mortgage, tax and insurance (634) and the heating and cooling allowance her
+      # home reaches (616, incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
       facts:
+        shelter_cost_monthly: 634
+        incurs_heating_cooling_cost: true
+        received_energy_assistance_within_twelve_months: false
+        non_heating_utility_cost_count: 2
+        incurs_telephone_cost: true
         lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-01-09"
         sex: female
@@ -5438,7 +5462,6 @@
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
-        family_members_with_community_spouse: []
         ssi_countable_resources_individual: 7500
         ssi_countable_resources_couple: 180000
         ma_spousal_resources_at_snapshot: 180000
@@ -5481,8 +5504,6 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        community_spouse_income: 1100
-        shelter_costs_community_spouse: 1250
     p3:
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
@@ -5510,7 +5531,6 @@
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
-        family_members_with_community_spouse: []
         ssi_countable_resources_individual: 4200
         ssi_countable_resources_couple: 4200
         home_equity: 0
@@ -5552,8 +5572,6 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
-        community_spouse_income: 0
-        shelter_costs_community_spouse: 0
   expect:
     p1:
       ma_is_institutionalized: true
