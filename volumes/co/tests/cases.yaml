@@ -710,6 +710,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -936,6 +937,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -1161,6 +1163,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
@@ -2855,6 +2858,7 @@
         citizenship_status: undocumented
         state_of_residence: CO
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
@@ -3080,6 +3084,7 @@
         citizenship_status: citizen
         state_of_residence: CO
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -3304,6 +3309,7 @@
         citizenship_status: citizen
         state_of_residence: CO
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
@@ -4339,6 +4345,7 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1100
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -4418,6 +4425,7 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -7147,6 +7155,7 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
         wages_gross: 0
@@ -7310,6 +7319,7 @@
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
         wages_gross: 0
@@ -7582,6 +7592,7 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_patient_in_institution_for_mental_diseases: false
@@ -7760,6 +7771,7 @@
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
+        health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_patient_in_institution_for_mental_diseases: false
@@ -8368,6 +8380,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -8461,6 +8474,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1200
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -8553,6 +8567,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -10105,6 +10120,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -10197,6 +10213,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -10291,6 +10308,7 @@
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -10385,6 +10403,7 @@
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -10477,6 +10496,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -10569,6 +10589,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11102,6 +11123,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11195,6 +11217,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11337,6 +11360,7 @@
           abawd_waiver_area_month: false
           abawd_discretionary_exemption_month: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11428,6 +11452,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11554,6 +11579,7 @@
         cw_months_received_in_exempt_indian_country: 0
         snap_is_disqualified_for_ssn_refusal: true
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1100
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11645,6 +11671,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11746,6 +11773,7 @@
         2026-10:
           received_full_snap_benefit_month: false
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11864,6 +11892,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -11956,6 +11985,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
@@ -12073,6 +12103,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
         medical_expenses_out_of_pocket: 0
         dependent_care_expense: 0
@@ -12186,6 +12217,7 @@
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
       month_defaults:
+        health_insurance_premiums_paid: 0
         shelter_cost_monthly: 900
         participates_in_workfare: false
         abawd_discretionary_exemption_month: false
