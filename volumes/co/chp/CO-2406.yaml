@@ -11,5 +11,6 @@ sources: [S1715]
 implemented: engine
 tags: [chp]
 rationale: B-2 of the HCPF review. ma_postpartum_coverage_end_month (CO-560) is the Medicaid figure under § 8.100.4.G.5; CHP+ states its own span in § 430.3.
+nearest: [CO-560]
 tests:
   - {id: CO-2406-T1, as_of: "2026-10-01", given: {pregnancy_end_date: "2026-08-14"}, title: "Birth on 2026-08-14: coverage through August 2027", expect: "2027-08"}

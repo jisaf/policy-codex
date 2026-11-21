@@ -8471,3 +8471,1400 @@
     p3:
       cw_assistance_unit_members: [p1, p3]
       cw_eligibility_status: {"2026-10": ineligible_income}
+
+- id: CO-74
+  title: Refugee and asylee family, and an adult parolee, before the federal payment limit (September 2026)
+  # HCPF fix round (B-1, S-16). Expectations derived by hand from the rule text before running the codex.
+  # p1 Amina, 34, refugee admitted 2024-03-01, not adjusted to LPR; works for $1,800 a month; files jointly
+  # with p2 and claims p3. p2 Yusuf, 36, asylee since 2025-06-01, no income. p3 Leila, 9, asylee with her
+  # father. p4 Omar, 40, p1's brother, paroled for more than a year on 2019-01-15 (a qualified non-citizen,
+  # recorded as other_qualified_non_citizen), no income, files his own return, lives with them.
+  # MAGI household of p1, p2 and p3: 3 persons, income 1,800 / (27,320 / 12 = 2,276.67) = 79.1% FPL.
+  # - p1, p2: over the parent/caretaker standard (68%, and 73% with the 5% disregard), within the adult
+  #   standard (133%): the Adults group. Status on 2026-09-15: refugee and asylee are qualified and exempt
+  #   from the five-year rule (8.100.3.G.1.g.iv-v); 42 U.S.C. 1396b(v)(5) is not yet in force. Eligible, Title XIX.
+  # - p3: 79.1% <= 142%, the Children's group; an asylee child, qualified and exempt. Eligible, Title XIX;
+  #   CHP+ reports her Medicaid-eligible.
+  # - p4: household of one, income 0: the Adults group; a parolee holding the status since 2019, more than
+  #   five years (iii as the codex reads it, OQ-213). Eligible, Title XIX.
+  as_of: "2026-09-15"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p2, p3]
+    - [tax_filer, p1, p3]
+    - [buys_prepares_with, p1, p2]
+    - [buys_prepares_with, p1, p3]
+    - [buys_prepares_with, p1, p4]
+  persons:
+    p1:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1992-02-10"
+        sex: female
+        citizenship_status: refugee
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2024-03-01"
+        is_tax_filer: true
+        files_jointly_with_spouse: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-09-02"
+      month_defaults:
+        wages_gross: 1800
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p2:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1990-07-22"
+        sex: male
+        citizenship_status: asylee
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2025-06-01"
+        is_tax_filer: true
+        files_jointly_with_spouse: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-09-02"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p3:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2017-05-03"
+        sex: female
+        citizenship_status: asylee
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2025-06-01"
+        is_tax_filer: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-09-02"
+        ma_custodial_parent: p1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p4:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1986-01-20"
+        sex: male
+        citizenship_status: other_qualified_non_citizen
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2019-01-15"
+        is_tax_filer: true
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: false
+        ma_application_date: "2026-09-02"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      ma_meets_citizenship_requirement: true
+      ma_magi_category: {"2026-09": adult}
+      ma_magi_eligibility_status: {"2026-09": eligible}
+      ma_funding_source: {"2026-09": title_xix}
+    p2:
+      ma_meets_citizenship_requirement: true
+      ma_magi_category: {"2026-09": adult}
+      ma_magi_eligibility_status: {"2026-09": eligible}
+      ma_funding_source: {"2026-09": title_xix}
+    p3:
+      ma_meets_citizenship_requirement: true
+      ma_magi_category: {"2026-09": child}
+      ma_magi_eligibility_status: {"2026-09": eligible}
+      chp_eligibility_status: {"2026-09": ineligible_medicaid_eligible}
+      ma_funding_source: {"2026-09": title_xix}
+    p4:
+      ma_meets_citizenship_requirement: true
+      ma_magi_category: {"2026-09": adult}
+      ma_magi_eligibility_status: {"2026-09": eligible}
+      ma_funding_source: {"2026-09": title_xix}
+
+- id: CO-75
+  title: The same refugee and asylee family and parolee after the federal payment limit (November 2026)
+  # HCPF fix round (B-1, S-16). The CO-74 household, applying on 2026-11-02. Derived by hand:
+  # From 2026-10-01 42 U.S.C. 1396b(v)(5) (S1700) pays for full coverage only for citizens and nationals, LPRs,
+  # Cuban and Haitian entrants and COFA migrants, keeping emergency services ((v)(2)) and the lawfully
+  # residing children and pregnant women option ((v)(4); Colorado's 8.100.3.G.1.g.vii).
+  # - p1 (refugee) and p2 (asylee): adults, not pregnant, not in a (v)(5)(B) status: status fails. Every other
+  #   requirement of the Adults group is met (79.1% FPL), so emergency-only (8.100.3.G.1.g.ix.2): MAGI status
+  #   emergency_only, funding title_xix_emergency. No Colorado statute funds them with state money (OQ-518).
+  # - p3 (asylee child, 9): lawfully residing child under 19, so vii admits her (qualified non-citizens are
+  #   lawfully residing for the 214 option, S1705). Eligible, Title XIX; unchanged from September.
+  # - p4 (adult parolee): not in a (v)(5)(B) status: emergency_only, title_xix_emergency.
+  # Hospital presumptive eligibility for p1 at 79.1% FPL would also end: CO-2439 reports none after October.
+  as_of: "2026-11-02"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p2, p3]
+    - [tax_filer, p1, p3]
+    - [buys_prepares_with, p1, p2]
+    - [buys_prepares_with, p1, p3]
+    - [buys_prepares_with, p1, p4]
+  persons:
+    p1:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1992-02-10"
+        sex: female
+        citizenship_status: refugee
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2024-03-01"
+        is_tax_filer: true
+        files_jointly_with_spouse: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        wages_gross: 1800
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p2:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1990-07-22"
+        sex: male
+        citizenship_status: asylee
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2025-06-01"
+        is_tax_filer: true
+        files_jointly_with_spouse: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p3:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2017-05-03"
+        sex: female
+        citizenship_status: asylee
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2025-06-01"
+        is_tax_filer: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+        ma_custodial_parent: p1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p4:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1986-01-20"
+        sex: male
+        citizenship_status: other_qualified_non_citizen
+        lawful_presence_status: lawfully_present
+        qualified_status_date: "2019-01-15"
+        is_tax_filer: true
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: false
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      ma_meets_citizenship_requirement: false
+      ma_magi_category: {"2026-11": adult}
+      ma_magi_eligibility_status: {"2026-11": emergency_only}
+      ma_is_emergency_medicaid_only: {"2026-11": true}
+      ma_funding_source: {"2026-11": title_xix_emergency}
+    p2:
+      ma_meets_citizenship_requirement: false
+      ma_magi_category: {"2026-11": adult}
+      ma_magi_eligibility_status: {"2026-11": emergency_only}
+      ma_funding_source: {"2026-11": title_xix_emergency}
+    p3:
+      ma_meets_citizenship_requirement: true
+      ma_magi_category: {"2026-11": child}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}
+      ma_funding_source: {"2026-11": title_xix}
+    p4:
+      ma_meets_citizenship_requirement: false
+      ma_magi_category: {"2026-11": adult}
+      ma_magi_eligibility_status: {"2026-11": emergency_only}
+      ma_funding_source: {"2026-11": title_xix_emergency}
+
+- id: CO-76
+  title: CHP+ family - a child kept in continuous eligibility after a raise, a prenatal member after the birth, and her CHP+ newborn
+  # HCPF fix round (B-2, S-16). Derived by hand from 10 CCR 2505-3 §§ 430.2, 430.3 and 430.5 (S1714-S1716).
+  # p1 Maria, 30, and p2 Tom, 32, citizens, file jointly and claim p3 and p4. Tom earned $5,700 in October 2026
+  # and $7,500 a month from January 2027. Maria applied 2026-10-05 while pregnant and was enrolled in CHP+
+  # prenatal from October; she gave birth to p3 on 2026-12-03. p4 Sam, 10, was enrolled in CHP+ from October.
+  # October 2026: Sam's household (p1, p2, p4; Maria's unborn child counts only in her own household) is 3:
+  # 5,700 / (27,320 / 12 = 2,276.67) = 250.4% FPL - above the 142% Medicaid children's standard and within the
+  # CHP+ 260% ceiling: eligible_child, opening a 12-month period through September 2027 (§ 430.2).
+  # February 2027: the household is 4 (p3 born): 7,500 / (33,000 / 12 = 2,750) = 272.7% FPL, over 260% even with
+  # the 5% disregard. Without continuity Sam would be ineligible_income; § 430.2.A keeps him eligible_child.
+  # Maria: not pregnant now; her CHP+ span began in October, before the birth, and runs to the last day of the
+  # month 12 months after it, December 2027 (§ 430.3): eligible_prenatal "regardless of changes in the woman's
+  # financial circumstances".
+  # p3: born to a mother enrolled in CHP+ (§ 430.5), under one; not a Medicaid needy newborn (his mother was not
+  # on Medicaid) and 272.7% is over the children's standard: eligible_newborn. All three are Title XXI.
+  as_of: "2027-02-01"
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [parent, p2, p3]
+    - [parent, p1, p4]
+    - [parent, p2, p4]
+    - [tax_filer, p1, p3]
+    - [tax_filer, p1, p4]
+    - [buys_prepares_with, p1, p2]
+    - [buys_prepares_with, p1, p3]
+    - [buys_prepares_with, p1, p4]
+  persons:
+    p1:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1996-08-14"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: true
+        files_jointly_with_spouse: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-10-05"
+        chp_eligibility_period_start_month: "2026-10"
+        pregnancy_end_date: "2026-12-03"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p2:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1994-03-02"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: true
+        files_jointly_with_spouse: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-10-05"
+      month_defaults:
+        wages_gross: 7500
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+      months:
+        "2026-10": {"wages_gross": 5700}
+    p3:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2026-12-03"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        chp_mother_was_enrolled_at_birth: true
+        ma_custodial_parent: p1
+        ma_application_date: "2026-12-10"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p4:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2016-05-20"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-10-05"
+        chp_eligibility_period_start_month: "2026-10"
+        ma_custodial_parent: p1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      chp_eligibility_status: {"2027-02": eligible_prenatal}
+      chp_is_in_prenatal_coverage_period: {"2027-02": true}
+      ma_funding_source: {"2027-02": title_xxi}
+    p3:
+      chp_is_guaranteed_newborn: true
+      chp_eligibility_status: {"2027-02": eligible_newborn}
+      ma_funding_source: {"2027-02": title_xxi}
+    p4:
+      chp_child_is_eligible: {"2026-10": true, "2027-02": false}
+      chp_eligibility_status: {"2026-10": eligible_child, "2027-02": eligible_child}
+      ma_funding_source: {"2027-02": title_xxi}
+
+- id: CO-77
+  title: Parent in Transitional Medical Assistance after a raise; her child; a foster child placed by the county
+  # HCPF fix round (C-3, C-4, S-16). Derived by hand from 10 CCR 2505-10 § 8.100.4.H.1 and I (S1717, S1719).
+  # p1 Dana, 35, citizen, single parent of p2, enrolled in the Parent/Caretaker Relative category April-September 2026.
+  # A raise to $2,600 a month ended that category from October 2026 (first month of ineligibility 2026-10); she is
+  # still employed. Household p1, p2: 2,600 / (21,640 / 12 = 1,803.33) = 144.2% FPL - over 68% (parents) and over
+  # 133% (adults, and 138% with the disregard), so no MAGI group of her own. Six of the six months before October
+  # in the Parent/Caretaker Relative category (at least three needed), lost on earnings, a dependent child at home,
+  # employed, November within the twelve months from October: Transitional Medical Assistance (I.1-3), Title XIX.
+  # p2 Jamie, 7: 144.2% is over 142% but within it after the 5% disregard (139.2%): the Children's group.
+  # p3 Jordan, 15, citizen, removed from home into county custody and placed in p1's county approved foster home
+  # (H.1.e): needy person under 21 with no income test - foster_care_or_adoption; Title XIX. He files no return and
+  # no one claims him; under the non-filer rules his household is himself, income 0, so the Children's group too.
+  as_of: "2026-11-02"
+  relationships:
+    - [parent, p1, p2]
+    - [tax_filer, p1, p2]
+    - [buys_prepares_with, p1, p2]
+    - [buys_prepares_with, p1, p3]
+  persons:
+    p1:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1991-01-11"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: true
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-04-03"
+        ma_first_month_of_ineligibility: "2026-10"
+        ma_ineligibility_reason: increased_earnings
+      month_defaults:
+        wages_gross: 2600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_household_has_employed_parent_caretaker: true
+      months:
+        "2026-04": {"ma_prior_enrollment_category": parent_caretaker}
+        "2026-05": {"ma_prior_enrollment_category": parent_caretaker}
+        "2026-06": {"ma_prior_enrollment_category": parent_caretaker}
+        "2026-07": {"ma_prior_enrollment_category": parent_caretaker}
+        "2026-08": {"ma_prior_enrollment_category": parent_caretaker}
+        "2026-09": {"ma_prior_enrollment_category": parent_caretaker}
+    p2:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2019-06-30"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-04-03"
+        ma_custodial_parent: p1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p3:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2011-03-09"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        is_tax_filer: false
+        files_jointly_with_spouse: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: county_custody_foster_home
+  expect:
+    p1:
+      ma_is_eligible_for_transitional_medical_assistance: {"2026-11": true}
+      ma_magi_category: {"2026-11": transitional_medical_assistance}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      ma_funding_source: {"2026-11": title_xix}
+    p2:
+      ma_magi_category: {"2026-11": child}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+    p3:
+      ma_needy_young_person_category: {"2026-11": foster_care_or_adoption}
+      ma_magi_category: {"2026-11": child}
+      ma_funding_source: {"2026-11": title_xix}
+
+- id: CO-78
+  title: Hospital presumptive eligibility for an adult, an employed adult with a disability, a pregnant woman, and an undocumented adult
+  # HCPF fix round (C-5, S-16). Derived by hand from 10 CCR 2505-10 § 8.100.3.R (S1721, S1722). All four apply
+  # through a certified hospital site, none already receives Medical Assistance or had presumptive eligibility in
+  # the last 12 months (R.8, R.9). Income is what each declares.
+  # p1 Rosa, 45, citizen, declares household income 120% FPL: not pregnant, not under 19; parent of adults only
+  # (no dependent child), so not the 68% group; 19-64 and 120% <= 133%: adult.
+  # p2 Mateo, 25, citizen, her son, files his own return; declares household income 300% FPL, employment, and a
+  # disability; his own income is 300% FPL: over 133%, so not adult; 16 or older, employed, disabled, 300% <= 450%:
+  # employed_disabled.
+  # p3 Lucia, 22, citizen, her daughter, pregnant, declares 190% FPL: <= 195%, first presumptive period this
+  # pregnancy: pregnant.
+  # p4 Ernesto, 40, undocumented, declares 90% FPL: he cannot declare citizenship or a lawful status (R.2.d): none.
+  as_of: "2026-11-10"
+  relationships:
+    - [parent, p1, p2]
+    - [parent, p1, p3]
+  persons:
+    p1:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1981-04-04"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        ma_is_applying_at_hospital_pe_site: true
+        ma_is_receiving_medical_assistance: false
+        ma_received_presumptive_eligibility_in_last_twelve_months: false
+        ma_received_presumptive_eligibility_this_pregnancy: false
+        attested_household_income_pct_fpl: 1.2
+        ma_declares_current_employment: true
+        claims_disability: false
+        ma_attested_own_income_pct_fpl: 1.2
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p2:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2001-02-14"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        ma_is_applying_at_hospital_pe_site: true
+        ma_is_receiving_medical_assistance: false
+        ma_received_presumptive_eligibility_in_last_twelve_months: false
+        ma_received_presumptive_eligibility_this_pregnancy: false
+        attested_household_income_pct_fpl: 3.0
+        ma_declares_current_employment: true
+        claims_disability: true
+        ma_attested_own_income_pct_fpl: 3.0
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p3:
+      facts:
+        state_of_residence: CO
+        is_pregnant: true
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2004-09-09"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        ma_is_applying_at_hospital_pe_site: true
+        ma_is_receiving_medical_assistance: false
+        ma_received_presumptive_eligibility_in_last_twelve_months: false
+        ma_received_presumptive_eligibility_this_pregnancy: false
+        attested_household_income_pct_fpl: 1.9
+        ma_declares_current_employment: false
+        claims_disability: false
+        ma_attested_own_income_pct_fpl: 1.9
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p4:
+      facts:
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        has_military_connection: false
+        federal_five_year_bar_exempt_category: "none"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
+        expects_to_be_claimed_as_dependent: false
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        resides_in_medical_institution: false
+        ma_is_indian: false
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        lottery_gambling_winnings_amount: 0
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "1986-12-01"
+        sex: male
+        citizenship_status: undocumented
+        lawful_presence_status: not_lawfully_present
+        ma_is_applying_at_hospital_pe_site: true
+        ma_is_receiving_medical_assistance: false
+        ma_received_presumptive_eligibility_in_last_twelve_months: false
+        attested_household_income_pct_fpl: 0.9
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
+        is_deceased: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      ma_hospital_presumptive_eligibility_category: adult
+    p2:
+      ma_hospital_presumptive_eligibility_category: employed_disabled
+    p3:
+      ma_hospital_presumptive_eligibility_category: pregnant
+    p4:
+      ma_hospital_presumptive_eligibility_category: "none"
