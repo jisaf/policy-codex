@@ -1,0 +1,13 @@
+id: CO-2600
+name: "Home Care Allowance: grandfathering date"
+identifier: af_hca_grandfathering_date
+kind: parameter
+type: calendar date
+scope: global
+program: AdultFinancial
+meaning: "December 31, 2013: a client who had been receiving both Old Age Pension grant payments and the Home Care Allowance as of this date and remains continuously eligible for both is financially eligible for HCA, per 9 CCR 2503-5 3.570.13.B.3."
+precision: "A fixed date in the rule, not a figure that changes; it is a parameter so the derivation states no literal date (engineering follow-up 3, Corticon S-9)."
+value: "2013-12-31"
+sources: [S714]
+tags: [cash, and]
+rationale: "Engineering follow-up 3: af_hca_financially_eligible (CO-1215) compared the person's age with a literal 2013-12-31; no existing parameter states the date."
