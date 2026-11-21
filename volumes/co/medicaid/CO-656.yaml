@@ -6,12 +6,12 @@ type: money
 scope: person-month
 program: Medicaid
 meaning: The amount of the institutionalized spouse's income allocated to the community spouse - the amount, if any, by which the MMMNA exceeds the community spouse's own income - per 42 U.S.C. 1396r-5(d)(1)(B)-(2) and 10 CCR 2505-10 § 8.100.7.R.
-precision: "HCPF fix round (OQ-97 resolved): the community spouse's income is read from the spouse's own income facts across the spouse edge (ma_community_spouse_income, CO-2467) rather than supplied for the institutionalized spouse's month."
+precision: "The community spouse's income is read from the spouse's own income facts across the spouse edge (ma_community_spouse_income, CO-2467) rather than supplied for the institutionalized spouse's month."
 derived: [max, 0, ["-", ma_mmmna, ma_community_spouse_income]]
-sources: [S358]
+sources: [S1756]
 implemented: engine
 tags: [ma, ltc, income, legal]
-rationale: "No existing item computes the Monthly Income Allowance. ma_patient_payment (CO-658) needs it. The target household's p1/p2 (MMMNA minus 1180, if positive) is the worked example in the batch report."
+rationale: "No existing item computes the Monthly Income Allowance. ma_patient_payment (CO-658) needs it. The target household's p1/p2 (MMMNA minus 1180, if positive) is the worked example in the batch report. History moved from the precision note (HCPF review S-14): HCPF fix round (OQ-97 resolved): the community spouse's income is read from the spouse's own income facts across the spouse edge (ma_community_spouse_income, CO-2467) rather than supplied for the institutionalized spouse's month."
 tests:
   - {id: CO-656-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_mmmna: 2270, ma_community_spouse_income: 1180}, expect: 1090}
   - {id: CO-656-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_mmmna: 2270, ma_community_spouse_income: 2500}, expect: 0}

@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: "Whether supporting documentation of 30 consecutive full days of institutional, HCBS or PACE care must be provided: for a long-term care applicant whose eligibility rests on the expected stay."
 derived: [all, ma_is_long_term_care_applicant, expects_institutional_stay_of_thirty_days]
-sources: [S1086]
+sources: [S1740]
 implemented: engine
 tags: [verification, ma, ltc]
 rationale: "Review K-3: 8.100.7.A.2.c requires supporting documentation of the 30-day stay; no item asked for it."

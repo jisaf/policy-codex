@@ -8,7 +8,7 @@ program: Medicaid
 role: outcome
 meaning: Whether a long-term care applicant must document the 30-day institutional stay and has not.
 derived: [all, ma_requires_verification_of_institutional_stay, [not, institutional_stay_verification_document_received]]
-sources: [S1086]
+sources: [S1740]
 implemented: engine
 tags: [verification, ma, ltc]
 rationale: "Review K-3: the long-term care documentation 8.100.7.A.2 requires had no item; the Medical Assistance count sums this one."

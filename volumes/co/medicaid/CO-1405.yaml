@@ -6,12 +6,12 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether the person's resources must be verified for Medical Assistance: for an aged, blind or disabled applicant with any resources available in the month, counted or excluded (MAGI categories have no resource test); for an applicant for a Medicare Savings Program only, liquid resources alone, since the attested value of non-liquid resources is accepted; unless documentation is not reasonably available."
-precision: "435.952(e) also requires the attested interest and dividend income of an MSP-only applicant to be accepted; ma_requires_verification_of_unearned_income (CO-1404) does not separate that income from the rest. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-11): the MSP-only branch reads the SSI-method countable resources the MSP resource test uses (ma_ssi_countable_resources, CO-608, through ssi_countable_resources_individual), not SNAP's liquid resources."
+precision: "435.952(e) also requires the attested interest and dividend income of an MSP-only applicant to be accepted; ma_requires_verification_of_unearned_income (CO-1404) does not separate that income from the rest. The MSP-only branch reads the SSI-method countable resources the MSP resource test uses (ma_ssi_countable_resources, CO-608, through ssi_countable_resources_individual), not SNAP's liquid resources."
 derived: [all, ma_is_aged_blind_or_disabled, [not, documentation_not_reasonably_available], [any, [all, [not, ma_application_is_msp_only], [any, has_resources_other_than_cash, [">", ssi_countable_resources_individual, 0]]], [all, ma_application_is_msp_only, [">", ssi_countable_resources_individual, 0]]]]
 sources: [S866, S1089, S839]
 implemented: engine
 tags: [verification, ma, resources, non_magi]
-rationale: No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived.
+rationale: "No existing item states this Medical Assistance verification requirement; the phase-9 chapter needs one item per element so the person's pending counts and status can be derived. History moved from the precision note (HCPF review S-14): Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-11): the MSP-only branch reads the SSI-method countable resources the MSP resource test uses (ma_ssi_countable_resources, CO-608, through ssi_countable_resources_individual), not SNAP's liquid resources."
 tests:
   - {id: CO-1405-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: true, documentation_not_reasonably_available: false, ma_application_is_msp_only: false, has_resources_other_than_cash: false, ssi_countable_resources_individual: 1900}, expect: true}
   - {id: CO-1405-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_aged_blind_or_disabled: false}, expect: false}

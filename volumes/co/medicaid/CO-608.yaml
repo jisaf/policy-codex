@@ -7,7 +7,7 @@ scope: person
 program: Medicaid
 meaning: This person's countable resources for SSI-related, OAP and Medicare Savings Program purposes - ssi_countable_resources_couple if the person has ma_ssi_household_size 2 (married and living together, not institutionalized), otherwise ssi_countable_resources_individual - compared against the resource standards of 10 CCR 2505-10 8.100.5.M.1.
 derived: [case, [[=, ma_ssi_household_size, 2], ssi_countable_resources_couple], [else, ssi_countable_resources_individual]]
-sources: [S301]
+sources: [S1735]
 implemented: engine
 tags: [ma, non_magi, resources]
 rationale: "No existing item selects between the individual and couple resource figures based on household size. ma_meets_ssi_resource_standard (CO-610) needs it."

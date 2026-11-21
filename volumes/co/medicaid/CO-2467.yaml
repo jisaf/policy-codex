@@ -8,7 +8,7 @@ program: Medicaid
 meaning: "The community spouse's own gross monthly income from sources other than the institutionalized spouse, less mandatory FICA and Medicare taxes (10 CCR 2505-10 § 8.100.7.R.2), read from the income facts of the person's spouse who does not reside in a medical institution: Social Security, pension, wages, net self-employment earnings, unemployment, other taxable and non-taxable unearned income and tax-exempt interest."
 precision: The institutionalized spouse's own income is left out because the group keeps only spouses not residing in a medical institution; the person evaluated is the institutionalized spouse. Income from the institutionalized spouse (the community spouse income allowance) is not among the facts summed.
 derived: [sum, [filter, [reachable, [spouse]], [not, [of, [P], resides_in_medical_institution]]], [max, 0, ["-", ["+", [of, [P], social_security_income], [of, [P], pension_income], [of, [P], wages_gross], [of, [P], ma_self_employment_net_earnings], [of, [P], unemployment_income], [of, [P], other_unearned_income_taxable], [of, [P], other_unearned_income_nontaxable], [of, [P], tax_exempt_interest]], [otherwise, [of, [P], ma_payroll_taxes_withheld], 0]]]]
-sources: [S358, S354]
+sources: [S1756, S1754]
 implemented: engine
 tags: [ma, ltc, income]
 rationale: "OQ-97 (resolved in the HCPF fix round): community_spouse_income (CO-833) was supplied directly for the institutionalized spouse's month. Reading the spouse's own facts across the spouse edge keeps one statement of each person's income, as the SSI-related group sum (ma_ssi_household_unearned_income_sum, CO-663) already does."

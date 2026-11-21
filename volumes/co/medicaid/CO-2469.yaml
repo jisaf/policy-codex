@@ -8,7 +8,7 @@ program: Medicaid
 meaning: "The family members for whom an institutionalized spouse's income provides a family allowance (10 CCR 2505-10 § 8.100.7.T.1.c.ii): persons who are a child or parent of either spouse, reside with the community spouse, and are claimed as a tax dependent by either spouse."
 precision: "A dependent sibling of either spouse, whom T.1.c.ii also names, is not reached: the ledger has no sibling edge to a spouse; such a person is not counted (OQ-95's remaining half). The spouses themselves are not children or parents of either spouse, so they are never in the group."
 derived: [filter, [persons], [all, [has_relative_in, [child, parent], [reachable, [spouse]]], [has_relative_in, [tax_dependent], [reachable, [spouse]]], [otherwise, [of, [P], ma_resides_with_community_spouse], false]]]
-sources: [S360]
+sources: [S1736]
 implemented: engine
 tags: [ma, ltc, household]
 rationale: "OQ-95 (resolved in the HCPF fix round): family_members_with_community_spouse (CO-838) was the worker's own list. The child, parent and tax-dependent edges of the MAGI chapter state most of the definition."

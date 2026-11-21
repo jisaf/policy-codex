@@ -7,7 +7,7 @@ scope: person-month
 program: Medicaid
 meaning: This person's total countable income for SSI-related, OAP and Medicare Savings Program purposes for the month - the sum of ma_ssi_countable_earned_income and ma_ssi_countable_unearned_income - compared against the income standards of 10 CCR 2505-10 8.100.5.H and 8.100.6.
 derived: [+, ma_ssi_countable_earned_income, ma_ssi_countable_unearned_income]
-sources: [S308]
+sources: [S1746]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "No existing item combines the earned and unearned countable income totals. ma_meets_ssi_income_standard (CO-609) and the MSP/Buy-In income tests all need this single figure. CO-01's p1 (gross unearned income 1420+610=2030, countable income 2010 after the $20 general exclusion) is the worked example in the batch report; either figure exceeds the $994 FBR, so ma_meets_ssi_income_standard's result is the same."

@@ -6,13 +6,13 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: Whether the person is eligible as a Disabled Adult Child (10 CCR 2505-10 §§ 8.100.3.F.1.h, 8.100.6.J) - a Colorado resident meeting status, aged 18 or older, who lost SSI because of OASDI drawn on a parent's Social Security number, currently receives OASDI as a Disabled Adult Child, and would continue to be eligible for SSI with that OASDI disregarded (resources within the SSI limit and other countable income below the current SSI federal benefit rate).
-precision: "The federal benefit rate is the individual or couple rate by SSI household size; \"below\" is strictly less than. The loss is a loss of SSI (lost_ssi_due_to_social_security_benefits, CO-1180), as § 8.100.6.J.1 ('loses SSI due to the receipt of OASDI') and § 8.100.3.F.1.h state; a loss of OAP alone does not qualify (phase 7 fix round, S-7). HCPF fix round (C-7): a child in a continuous eligibility period that began in Disabled Adult Child (§ 8.100.3.Q.2.f) stays eligible for the period."
+precision: "The federal benefit rate is the individual or couple rate by SSI household size; \"below\" is strictly less than. The loss is a loss of SSI (lost_ssi_due_to_social_security_benefits, CO-1180), as § 8.100.6.J.1 ('loses SSI due to the receipt of OASDI') and § 8.100.3.F.1.h state; a loss of OAP alone does not qualify (phase 7 fix round, S-7). A child in a continuous eligibility period that began in Disabled Adult Child (§ 8.100.3.Q.2.f) stays eligible for the period."
 derived: [any, [all, ma_meets_residency, ma_meets_citizenship_requirement, [">=", age, ma_dac_min_age], receives_oasdi_as_disabled_adult_child, lost_ssi_due_to_social_security_benefits, ma_meets_ssi_resource_standard, ["<", ma_dac_countable_income, [case, [["=", ma_ssi_household_size, 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]], [all, ma_child_is_in_non_magi_continuous_eligibility_period, ["=", ma_continuous_eligibility_program, dac]]]
 sources: [S626, S660, S1724]
 implemented: engine
 tags: [ma, non_magi, disability]
 nearest: [CO-1159]
-rationale: "No existing item states the DAC group. ma_protected_group_category (CO-1163) needs it."
+rationale: "No existing item states the DAC group. ma_protected_group_category (CO-1163) needs it. History moved from the precision note (HCPF review S-14): HCPF fix round (C-7): a child in a continuous eligibility period that began in Disabled Adult Child (§ 8.100.3.Q.2.f) stays eligible for the period."
 tests:
   - {id: CO-1161-T1, as_of: "2026-10-01", month: "2026-10", given: {is_colorado_resident: true, ma_meets_citizenship_requirement: true, date_of_birth: "1990-03-01", receives_oasdi_as_disabled_adult_child: true, lost_ssi_due_to_social_security_benefits: true, ma_meets_ssi_resource_standard: true, ma_dac_countable_income: 100, ma_ssi_household_size: 1}, expect: true}
   - {id: CO-1161-T2, as_of: "2026-10-01", month: "2026-10", title: "Age 16", given: {is_colorado_resident: true, ma_meets_citizenship_requirement: true, date_of_birth: "2010-03-01"}, expect: false}

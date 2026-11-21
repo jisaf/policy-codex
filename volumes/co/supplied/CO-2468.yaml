@@ -7,6 +7,6 @@ scope: person
 program: Medicaid
 meaning: Whether the person resides with the community spouse of a long-term care couple (10 CCR 2505-10 § 8.100.7.T.1.c.ii). If not stated, Medicaid reads it as false.
 supplied_by: The application's household members and addresses.
-sources: [S360]
+sources: [S1736]
 tags: [ma, ltc, household]
 rationale: "OQ-95 (resolved in the HCPF fix round): the family allowance group is now derived (ma_family_allowance_members, CO-2469); residence with the community spouse is the one condition the relationship edges do not state."
