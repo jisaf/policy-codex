@@ -7,7 +7,7 @@ scope: person-month
 program: LEAP
 meaning: The LEAP household's monthly countable income times twelve, divided by the HHS poverty guideline for the household's size, for the income-contribution bands of 9 CCR 2503-7 3.758.47 Step D.
 precision: Uses the HHS poverty guideline in force on the determination date (federal_poverty_guideline_annual_table, CO-181, and its each-additional figure), which the rule's "Federal Poverty Level" bands do not further specify (OQ-253).
-derived: ["/", ["*", leap_household_income, 12], [+, [lookup, federal_poverty_guideline_annual_table, [min, leap_household_size, 8]], ["*", federal_poverty_guideline_annual_each_additional, [max, 0, ["-", leap_household_size, 8]]]]]
+derived: ["/", ["*", leap_household_income, 12], [lookup_extended, federal_poverty_guideline_annual_table, leap_household_size, federal_poverty_guideline_annual_each_additional]]
 sources: [S771]
 open: [OQ-253]
 implemented: engine
