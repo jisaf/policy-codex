@@ -1,0 +1,13 @@
+id: CO-1742
+name: "Resides in a medical institution"
+identifier: resides_in_medical_institution
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is an inpatient or resident of a hospital, nursing facility, intermediate care facility or similar medical institution (42 CFR 435.1010: an establishment that furnishes food, shelter and some treatment or services beyond room and board, and is organized to provide medical care). It does not depend on who provides the person's meals."
+precision: "The Medicaid 30-consecutive-day condition is a separate fact (expects_institutional_stay_of_thirty_days). Group homes and treatment centres that are not medical institutions are not included. If not stated, a reader that needs it is unknown."
+supplied_by: "Facility admission record; applicant statement."
+sources: [S351, S354, S712]
+tags: [household, ma]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-8): Medicaid's long-term care and SSI-household items and the Home Care Allowance read in_medical_institution, SNAP's majority-of-meals test, for 'a Long-Term Care institution' and for living in a facility rather than a home. A group home that provides meals is a SNAP institution but not a medical one; a hospital stay is the reverse."

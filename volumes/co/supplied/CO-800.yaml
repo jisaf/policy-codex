@@ -1,6 +1,6 @@
 id: CO-800
-name: Countable resources (individual)
-identifier: countable_resources_individual
+name: "SSI-method countable resources, individual"
+identifier: ssi_countable_resources_individual
 kind: supplied
 type: money
 scope: person
@@ -9,4 +9,4 @@ meaning: This person's own countable resources after the exclusions 20 CFR 416.1
 supplied_by: County eligibility worker's resource determination (CBMS resource screen), from verified account statements and property records.
 sources: [S301]
 tags: [non_magi, resources]
-rationale: "The case already states this fact for CO-01's p1 (1900), but no item in this volume carries it yet; the phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_ssi_countable_resources (CO-608) and ma_meets_ssi_resource_standard (CO-610) need it for a person not treated as part of a couple for SSI-related resource purposes."
+rationale: "The case already states this fact for CO-01's p1 (1900), but no item in this volume carries it yet; the phase-4 brief's interface fixes this identifier and directs creating it in this batch. ma_ssi_countable_resources (CO-608) and ma_meets_ssi_resource_standard (CO-610) need it for a person not treated as part of a couple for SSI-related resource purposes. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-2): renamed so the name says the figure is countable under the SSI method (20 CFR 416.1210), not under every program's rule. Adult Financial reads it on the stated assumption that 3.520.72's resources are the same figure (af_countable_resources, CO-947)."
