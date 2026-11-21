@@ -7845,3 +7845,52 @@ Document: D-132
 > receive non-cash or in-kind TANF- or
 > State MOE-funded benefits or services,
 
+### S1309. Federal minimum wage: $7.25 an hour from July 24, 2009
+
+Document: D-134
+
+29 U.S.C. 206(a)(1). https://www.law.cornell.edu/uscode/text/29/206
+
+> (a) Employees engaged in commerce; home workers in Puerto Rico and Virgin Islands; employees in American Samoa; seamen on American vessels; agricultural employees Every employer shall pay to each of his employees who in any workweek is engaged in commerce or in the production of goods for commerce , or is employed in an enterprise engaged in commerce or in the production of goods for commerce , wages at the following rates:
+> (1) except as otherwise provided in this section, not less than—
+> (A)
+> $5.85 an hour, beginning on the 60th day after May 25, 2007 ;
+> (B)
+> $6.55 an hour, beginning 12 months after that 60th day; and
+> (C)
+> $7.25 an hour, beginning 24 months after that 60th day;
+
+### S1310. SNAP expedited service: verification may be postponed until the second or third month of participation
+
+Document: D-95
+
+7 CFR 273.2(i)(4)(iii)(A)-(B). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (A) For households applying on or before the 15th of the month, the State agency may assign a one-month certification period or assign a normal certification period. Satisfaction of the verification requirements may be postponed until the second month of participation. If a one-month certification period is assigned, the notice of eligibility may be combined with the notice of expiration or a separate notice may be sent. The notice of eligibility must explain that the household has to satisfy all verification requirements that were postponed. For subsequent months, the household must reapply and satisfy all verification requirements which were postponed or be certified under normal processing standards. If the household does not satisfy the postponed verification requirements and does not appear for the interview, the State agency does not need to contact the household again.
+> ...
+> (B) For households applying after the 15th of the month, the State agency may assign a 2-month certification period or a normal certification period of no more than 12 months. Verification may be postponed until the third month of participation, if necessary, to meet the expedited timeframe. If a two-month certification period is assigned, the notice of eligibility may be combined with the notice of expiration or a separate notice may be sent. The notice of eligibility must explain that the household is obligated to satisfy the verification requirements that were postponed. For subsequent months, the household must reapply and satisfy the verification requirements which were postponed or be certified under normal processing standards. If the household does not satisfy the postponed verification requirements and does not attend the interview, the State agency does not need to contact the household again. When a certification period of longer than 2 months is assigned and verification is postponed, households must be sent a notice of eligibility advising that no benefits for the third month will be issued until the postponed verification requirements are satisfied. The notice must also advise the household that if the verification process results in changes in the household's eligibility or level of benefits, the State agency will act on those changes without advance notice of adverse action.
+
+### S1311. Colorado SNAP residency: applicants live in the county or district where they apply
+
+Document: D-82
+
+10 CCR 2506-1 4.303.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.303 RESIDENCY REQUIREMENT
+> A. Applicants shall live in the county or district in which they make application for the
+> Program unless the local office has made arrangements to allow particular
+> households to file an application in a nearby specified county/district office.
+
+### S1312. Colorado SNAP earned income deduction also applies to a disqualified member's prorated earnings
+
+Document: D-82
+
+10 CCR 2506-1 4.407.2.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.407.2 Earned Income Deduction
+>
+> A. A household with earned income shall receive a deduction of twenty percent
+> (20%) of its gross nonexempt earned income. The twenty percent (20%)
+> deduction shall also apply to prorated income earned by the disqualified member
+> and attributed to the household.
+

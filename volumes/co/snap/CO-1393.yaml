@@ -6,9 +6,9 @@ type: calendar date
 scope: person
 program: SNAP
 meaning: "The last day of the period in which a household certified under expedited service may complete postponed verification: the application date plus thirty days."
-precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
+precision: "Colorado elects thirty days for households applying before and after the fifteenth alike (4.205.11.B.2.b, S835); the federal second and third months of 7 CFR 273.2(i)(4)(iii)(A)-(B) (S1310) are permissive outer limits (\"may be postponed\"), so the thirty days stand (OQ-323). The exception for a migrant household needing out-of-state verification, which the thirtieth-day termination does not reach, is not modeled. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): reads snap_application_date (CO-1746), not the Medical Assistance application date."
 derived: [days_after, snap_expedited_postponed_verification_days, snap_application_date]
-sources: [S835]
+sources: [S835, S1310]
 implemented: engine
 tags: [verification, snap]
 open: [OQ-323]

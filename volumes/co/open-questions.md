@@ -16,9 +16,11 @@ Body: The brief describes an additional-condition exemption for "elderly/disable
 
 Resolution (open-question sweep, 2026-11-21): the brief merged two exceptions. 10 CCR 2506-1 4.305.B.3.d (D-82, S1305) exempts "A non-citizen who is blind or a person with a disability if the non-citizen is receiving benefits or assistance for their condition regardless of entry date", following 8 U.S.C. 1612(a)(2)(F)(ii) (D-24, S1306: "is receiving benefits or assistance for blindness or disability (within the meaning of section 3(j) of the Food Stamp Act of 1977"), which has no August 22, 1996 condition; 4.305.B.3.e is the separate date-of-birth test CO-306 already modeled. snap_is_exempt_from_immigrant_waiting_period (CO-306) gains the disjunct snap_is_disabled_member (CO-302, the 7 CFR 271.2 benefit-receipt list that 7 U.S.C. 2012 defines) and new tests CO-306-T3 (an LPR receiving SSI two years after obtaining status is exempt) and CO-306-T4 (an SSA disability finding without a benefit is not). No household expectation changed. Items: CO-306.
 
-### OQ-3. No supplied fact establishes United States residency in itself; snap_meets_citizenship_requirement omits 7 U.S.C. 2015(f)(1)'s residency prong
+### OQ-3. Resolved: snap_meets_citizenship_requirement reads Colorado residency for 7 U.S.C. 2015(f)(1)'s residency prong
 
 Body: The amended 7 U.S.C. 2015(f)(1) (S8) requires "a resident of the United States" in addition to the status prong. No supplied fact in this volume's interface captures residency as distinct from `state_of_residence` (a text field naming the state). The draft treats a known `state_of_residence` as sufficient evidence of U.S. residency and does not add a further supplied fact; residency verification itself is out of this volume's scope per docs/design-colorado.md. Items: CO-307.
+
+Resolution (open-question sweep, 2026-11-21): 10 CCR 2506-1 4.303.A (D-82, S1311): "Applicants shall live in the county or district in which they make application for the Program". A person who meets Colorado's residency requirement lives in a Colorado county and so is "a resident of the United States" (7 U.S.C. 2015(f)(1)); no separate fact is needed. snap_meets_citizenship_requirement (CO-309) now requires is_colorado_resident (CO-505, the shared state-residence test CCCAP and LEAP also read) beside the status prong, with a new test CO-309-T4 (a citizen living in Wyoming does not meet it). Twenty-seven SNAP rule tests whose givens stated citizenship without a state of residence now state state_of_residence CO (CO-310-T2 through CO-371-T2); their expected values are unchanged. Every household case already states state_of_residence for its SNAP members; no case expectation changed. The county-of-application half of 4.303.A has no county fact (OQ-393). Items: CO-309.
 
 ### OQ-11. Resolved (fix-round C-6): BCE's OAP/AND/AB prong now has its own supplied fact
 
@@ -70,13 +72,17 @@ Body: 7 U.S.C. 2015(o)(3)(D) (S127, S128) exempts an ABAWD who is "otherwise exe
 
 Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): answered by the current Colorado text. 10 CCR 2506-1 4.311.1.A (S750, D-82) makes the first ABAWD exemption a person "Exempt from the general work requirements" - the 4.310.3 exemptions snap_is_exempt_from_work_registration (CO-405) carries - so the Colorado rule itself states the coextension this question assumed for 7 U.S.C. 2015(o)(3)(D). Items: CO-414.
 
-### OQ-34. "Single parent" for the full-time-student exemption is modeled as the absence of a spouse relationship, not a count of parents in the household
+### OQ-34. Resolved: "single parent" for the full-time-student exemption counts the child's parents in the household
 
 Body: 7 U.S.C. 2015(e)(8) (S133) and 10 CCR 2506-1 4.306.1.D (S135) state the single-parent full-time-student exemption applies "in those situations where only one natural, adoptive, or stepparent ... is in the same SNAP household as the child." This volume's relationship facts do not let a rule count how many parents of a given child are in the household directly; the draft (`snap_is_single_parent_full_time_student_exemption`, CO-409) instead tests that the person is a parent of a child under the relevant age and has no spouse relationship recorded, which is an approximation (a household could, in principle, include a second parent who is not the person's spouse). Items: CO-409.
 
-### OQ-35. The Federal minimum wage dollar figure is not stated in any fetched document
+Resolution (open-question sweep, 2026-11-21): 7 U.S.C. 2015(e)(8) and 4.306.1.D (S133, S135) are unambiguous: "only one natural, adoptive, or stepparent ... is in the same SNAP household as the child". snap_is_single_parent_full_time_student_exemption (CO-409) now counts parents: no other parent of this person's children may be in the household (P43, the persons who share a child with this person), and no spouse, since a spouse who is not the child's parent is a stepparent. New test CO-409-T4: the child's other parent in the household, not married to the student, defeats the exemption (the old derivation granted it). The count is per person rather than per child (CO-409's precision). No household case has a full-time student parent; no case expectation changed. Items: CO-409.
+
+### OQ-35. Resolved: the Federal minimum wage is $7.25 from July 24, 2009 (29 U.S.C. 206(a)(1)(C))
 
 Body: The work-registration employment exemption (7 U.S.C. 2015(d)(1)(E), S121; 7 CFR 273.7(b)(1)(vii), S123) and the student employment exemption (7 U.S.C. 2015(e)(4), S133; 7 CFR 273.5(b)(5), S134) both reference "the minimum hourly rate under the Fair Labor Standards Act of 1938 [29 U.S.C. 206(a)(1)]" without stating the dollar amount, and no other document in this volume's set (D-1 through D-25) quotes it either. The draft's `federal_minimum_wage` parameter (CO-160) uses $7.25, the rate in effect since 2009-07-24 under 29 U.S.C. 206(a)(1), without a document citation for the number itself, consistent with the mwr volume's WR-101 parameter of the same name. A future revision should replace this with a fetched excerpt of 29 U.S.C. 206(a)(1) if the number needs a primary citation. Items: CO-160.
+
+Resolution (open-question sweep, 2026-11-21): 29 U.S.C. 206(a)(1) is fetched (D-134, S1309): "(C) $7.25 an hour, beginning 24 months after that 60th day", the 60th day after May 25, 2007, so from July 24, 2009. federal_minimum_wage (CO-160) cites it; the value is unchanged. Items: CO-160.
 
 ### OQ-21. Resolved: FY2027 maximum allotments fetched
 
@@ -102,9 +108,11 @@ Body: 10 CCR 2506-1 4.407.1 effective 2026-10-01 (D-82, S741) states $217 (1-3),
 
 Body: 10 CCR 2506-1 4.207.3.B (D-82, S737): "Except for households that are eligible under BCE or ECE, households with three or more members who are entitled to zero benefits shall have their SNAP application denied." Colorado takes the denial option for a Standard Eligibility household and certifies a BCE or ECE household with zero benefits. snap_is_eligible (CO-386) now accepts a categorically eligible household with a $0 allotment, and snap_eligibility_status (CO-387) reports zero_allotment only for a household that is not categorically eligible. The initial-month and proration exceptions in the same paragraph are not modeled (OQ-38). Items: CO-385, CO-386, CO-387.
 
-### OQ-27. The earned income deduction's base for a prorated ineligible non-citizen member's earned share is built as a new item rather than reading snap_household_earned_income directly
+### OQ-27. Resolved: the earned income deduction applies to a disqualified member's prorated earnings, as CO-371/CO-372 build it
 
 Body: 10 CCR 2506-1 4.411.1,B,2,c (S107) applies the earned income deduction to "the prorated income earned by the disqualified and/or sanctioned member that is attributed to the household," in addition to the household's own eligible members' earned income. Batch 2's snap_household_earned_income (CO-335) sums only snap_eligible_household_members' own earned income and does not include any share of an ineligible member's earned income (by design, per CO-335's own rationale). This batch cannot edit CO-335, so snap_counted_earned_income_of_ineligible_member (CO-371) and snap_household_earned_income_for_deduction (CO-372) build the earned-income-deduction base as snap_household_earned_income plus the same pro rata (or full, for a fraud/work-sanction/fleeing-felon disqualification) share of each ineligible member's own earned income that snap_counted_income_of_ineligible_member (CO-333) already computes for gross income, mirrored onto the earned-income component alone. Items: CO-371, CO-372.
+
+Resolution (open-question sweep, 2026-11-21): 10 CCR 2506-1 4.407.2.A (D-82, S1312): "The twenty percent (20%) deduction shall also apply to prorated income earned by the disqualified member and attributed to the household." snap_counted_earned_income_of_ineligible_member (CO-371) and snap_household_earned_income_for_deduction (CO-372) implement exactly this and now cite S1312; the open point was only why the base is a new item, which the rationale of each states. No change. Items: CO-371, CO-372.
 
 ### OQ-28. Proration of a disqualified member's billed shelter and dependent care expenses (4.411.1,B,2,c) is not modeled
 
@@ -726,9 +734,11 @@ Body: 10 CCR 2505-3 110.1.C.3.a (S870) exempts CHP+ coverage under Cover All Col
 
 Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved against the exemption. 10 CCR 2505-3 110.1.C (S870) requires CHP+ to verify every declared legal status and exempts only applicants covered by Cover All Coloradans (who declare none), and 8.100.4.B.1.e (S1085) verifies every declared status for Medical Assistance with no age or pregnancy exception. ma_requires_verification_of_immigration_status (CO-1400) was retired; the pending item ma_immigration_status_verification_is_pending (CO-1622) and the required counts (CO-1412, CO-1416) read claims_lawful_immigration_status. A child's or pregnant person's coverage when the period expires is ma_meets_citizenship_requirement's (CO-509) business, not a reason to skip the request. Case CO-92 exercises an LPR child.
 
-### OQ-309. SNAP "past due" marks the end of the time allowed, not the denial date
+### OQ-309. Resolved: SNAP "past due" marks the end of the time allowed, not the denial date
 
 Body: SNAP must give at least 10 days to provide verification (S800, S813, S834) and may deny on the thirtieth day, or send a notice of pending status and hold the application up to 60 days (7 CFR 273.2(g)(3), (h)(2)). Those are application-processing choices outside the volume. snap_verification_status (CO-1394) reports past_due once the request date plus 10 days has passed with an eligibility factor still unverified: the delay is then the household's (273.2(h)(1)(i)(C)), not that the application has been denied. Items: CO-1394.
+
+Resolution (open-question sweep, 2026-11-21): 7 CFR 273.2(h)(1)(i)(C) (D-95, S813): "Sufficient time shall be at least 10 days from the date of the State agency's initial request for the particular verification that was missing." Once that time has run with a factor unverified the delay is the household's, which is what past_due states; when the agency then denies is application processing. snap_verification_status (CO-1394) cites it; no change. Items: CO-1394.
 
 ### OQ-310. Resolved: SNAP: application date and residency exceptions
 
@@ -804,9 +814,11 @@ Body: 10 CCR 2505-3 130.1 (S869) requires CHP+ applicants to provide "minimal ve
 
 Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 10 CCR 2505-3 130.1 (S869) requires CHP+ applicants to provide the minimal verification of 8.100.4.B. Two corrections follow from the review: CHP+ verifies every declared immigration status (OQ-308), and its earned-income compatibility test uses the CHP+ standard (chp_income_is_reasonably_compatible, CO-1641; chp_requires_verification_of_earned_income, CO-1642).
 
-### OQ-323. SNAP postponed verification: thirty days from application, or the second or third month
+### OQ-323. SNAP postponed verification: Colorado's thirty days stand (resolved); the migrant out-of-state exception is not modeled
 
 Body: 7 CFR 273.2(i)(4)(iii)(A)-(B) (D-95) postpone verification "until the second month of participation" (applying by the 15th) or "the third month of participation" (after the 15th). Colorado's 4.205.11.B.2.b (S835) terminates participation "when the postponed verification is not completed within thirty (30) calendar days from the date of application." snap_expedited_postponement_end_date (CO-1393) uses Colorado's thirty days for both cases; a household applying after the 15th whose federal postponement runs into the third month is treated as past the postponement after thirty days. Items: CO-1346, CO-1393.
+
+Open-question sweep (2026-11-21): the period is answered. 7 CFR 273.2(i)(4)(iii)(A)-(B) (D-95, S1310) say verification "may be postponed until the second month of participation" and "may be postponed until the third month of participation, if necessary": permissive outer limits, within which Colorado elected thirty calendar days from the date of application for both groups (4.205.11.B.2.b, S835). snap_expedited_postponement_end_date (CO-1393) is right and now cites S1310. Still open: 4.205.11.B.2.b's exception, "Except for migrant households needing out-of-state verification", has no fact and no stated end date of its own; no household case is a migrant household. Items: CO-1393.
 
 ### OQ-324. Resolved: Medical Assistance citizenship exemption for foster children read through the Title IV payment fact
 
