@@ -32,6 +32,13 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -123,6 +130,9 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -156,6 +166,13 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -243,6 +260,9 @@
         is_blind: false
         is_disabled_ssa: false
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -276,6 +296,13 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: true
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -344,6 +371,9 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: true
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -371,6 +401,13 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: true
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -440,6 +477,9 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -467,6 +507,13 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: false
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -536,6 +583,9 @@
         receives_ssi: false
         is_medicare_entitled_or_enrolled: false
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -604,6 +654,20 @@
   # no patient payment.
   expect:
     p1:
+      # Phase 7 outcomes. Emergency: p3 (undocumented, MAGI adult) fails only status, so ma_is_emergency_medicaid_only
+      # is true; she had an emergency medical condition in October (stated), so eligible_emergency_condition. Everyone else
+      # meets status. BCCP: p1 (79) and the two males fail sex/age; p3 and p4 were not found in need of treatment.
+      # Family planning: p1 has full coverage through long-term care (eligible_pace), p4 and p5 through MAGI; p2 (81, LPR
+      # since 1998) has no full-coverage category and his MAGI household [p1, p2] counted as three (8.100.4.E.3) is
+      # 3210 / (27320/12) = 1.41 of FPL, inside 133%-260% - limited_family_planning (8.100.4.G.8 has no age or gender
+      # restriction); p3 fails only status and has reproductive capacity - the state reproductive health-care program
+      # (C.R.S. 25.5-2-103). OAP health care: no one receives OAP (af_category none). Protected groups: p1 and p2 are aged
+      # but none lost SSI or OAP, so none; the others are not aged, blind or disabled.
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-10": full_coverage}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-10": 0}
@@ -648,6 +712,11 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p2:
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       af_oap_group: oap_a
       af_category: {"2026-10": none}
@@ -685,6 +754,11 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
+      ma_family_planning_status: {"2026-10": reproductive_health_care_program}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p3]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
@@ -722,6 +796,11 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
+      ma_family_planning_status: {"2026-10": full_coverage}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
@@ -760,6 +839,11 @@
       snap_abawd_time_limit_status: {"2026-10": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-10": full_coverage}
+      ma_oap_health_care_status: {"2026-10": not_oap_recipient}
+      ma_protected_group_category: {"2026-10": none}
       ma_patient_payment: {"2026-10": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_eligibility_status: {"2026-10": ineligible_income}
@@ -810,6 +894,14 @@
   persons:
     p1:
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: false
+        sex: female
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -899,6 +991,9 @@
         countable_resources_couple: 46000
         countable_resources_couple_at_snapshot: 46000
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -931,6 +1026,14 @@
         pension_income: 610
     p2:
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: false
+        sex: male
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1016,6 +1119,9 @@
         state_of_residence: CO
         in_medical_institution: false
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
@@ -1048,6 +1154,14 @@
         social_security_income: 1180
     p3:
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: true
+        sex: female
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1115,6 +1229,9 @@
         citizenship_status: undocumented
         state_of_residence: CO
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -1141,6 +1258,14 @@
         hours_worked: 138
     p4:
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: true
+        sex: female
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
         is_protective_services_child_care_case: false
@@ -1208,6 +1333,9 @@
         state_of_residence: CO
         is_enrolled_in_school: true
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -1234,6 +1362,14 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        # Phase 7 (Medicaid/CHP+ completion) facts.
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        has_reproductive_capacity: false
+        sex: male
         is_enrolled_in_school: false
         receives_title_iv_foster_adoption_kinship_payment: false
         has_additional_care_needs: false
@@ -1301,6 +1437,9 @@
         citizenship_status: citizen
         state_of_residence: CO
       month_defaults:
+        is_patient_in_institution_for_mental_diseases: false
+        is_inmate_of_public_institution: false
+        has_emergency_medical_condition: false
         other_taxable_income: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
@@ -1353,6 +1492,14 @@
   # no patient payment.
   expect:
     p1:
+      # Phase 7 outcomes: as CO-01, except that p3 has no emergency medical condition in November, so she stays
+      # emergency-eligible with nothing to pay for (eligible_no_current_emergency; 8.100.3.G.1.g.ix.2 does not make her
+      # reapply for 12 months).
+      ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-11": full_coverage}
+      ma_oap_health_care_status: {"2026-11": not_oap_recipient}
+      ma_protected_group_category: {"2026-11": none}
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-11": 0}
@@ -1397,6 +1544,11 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p2:
+      ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-11": limited_family_planning}
+      ma_oap_health_care_status: {"2026-11": not_oap_recipient}
+      ma_protected_group_category: {"2026-11": none}
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       af_oap_group: oap_a
       af_category: {"2026-11": none}
@@ -1438,6 +1590,11 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p3:
+      ma_emergency_medicaid_status: {"2026-11": eligible_no_current_emergency}
+      ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
+      ma_family_planning_status: {"2026-11": reproductive_health_care_program}
+      ma_oap_health_care_status: {"2026-11": not_oap_recipient}
+      ma_protected_group_category: {"2026-11": none}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p3]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
@@ -1472,6 +1629,11 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p4:
+      ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-11": ineligible_not_in_need_of_treatment}
+      ma_family_planning_status: {"2026-11": full_coverage}
+      ma_oap_health_care_status: {"2026-11": not_oap_recipient}
+      ma_protected_group_category: {"2026-11": none}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_unit_size: 2
@@ -1510,6 +1672,11 @@
       snap_abawd_time_limit_status: {"2026-11": not_subject}
       snap_is_work_registrant: false
     p5:
+      ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
+      ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
+      ma_family_planning_status: {"2026-11": full_coverage}
+      ma_oap_health_care_status: {"2026-11": not_oap_recipient}
+      ma_protected_group_category: {"2026-11": none}
       ma_patient_payment: {"2026-11": 0}
       cw_assistance_unit_members: [p4, p5]
       cw_eligibility_status: {"2026-11": ineligible_income}
