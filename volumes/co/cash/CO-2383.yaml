@@ -13,4 +13,4 @@ tags: [cash, tanf, household]
 rationale: "OQ-140: cw_budgetary_member_deemed_income (CO-2353) treats the spouse of a parent (a stepparent, 3.605.1.A.4.a) differently from the spouse of a non-parent caretaker; cw_has_dependent_child (CO-902) joins the two roles."
 tests:
   - {id: CO-2383-T1, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[parent, p1, p2]], expect: true}
-  - {id: CO-2383-T2, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[caretaker, p1, p2]], expect: false}
+  - {id: CO-2383-T2, as_of: "2026-10-01", given: {}, others: {p2: {date_of_birth: "2018-01-01", is_full_time_secondary_student_finishing_before_nineteen: false}}, relationships: [[has_primary_responsibility_for, p1, p2]], expect: false}

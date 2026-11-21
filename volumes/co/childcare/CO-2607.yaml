@@ -1,0 +1,19 @@
+id: CO-2607
+name: "CCCAP: persons of whom this person is an adult caretaker"
+identifier: cccap_adult_caretaker_of
+kind: derived
+type: group of persons
+scope: person
+program: CCCAP
+meaning: "The persons of whom this person is the \"parent, adoptive parent, step-parent, legal guardian, or person who is acting in 'loco parentis'\" of 8 CCR 1403-1 3.103.C (S481): read from the neutral roles parent (natural or adoptive), stepparent, legal_guardian and has_primary_responsibility_for."
+precision: "Same-word audit SW-1/SW-3/SW-4 (OQ-396 resolved): a person acting in loco parentis is read as one with primary responsibility for the child (has_primary_responsibility_for), the role a case states for a non-parent who has taken on the child's care; 3.103.C's presence in the home and financial contribution are tested by cccap_is_adult_caretaker (CO-992). A relative who shares the care while the parent is in the home and has not taken it on is not stated with that role and is not an adult caretaker (OQ-540)."
+derived: [filter, [persons], [rel, [parent, stepparent, legal_guardian, has_primary_responsibility_for], [P]]]
+sources: [S481, S1016]
+implemented: engine
+tags: [household]
+open: [OQ-540]
+rationale: "Same-word audit SW-0/SW-3 and OQ-396: CCCAP's adult caretaker relation (guardian and in loco parentis, step-parent included) differs from Medicaid's caretaker relative; it becomes CCCAP's own derived item over neutral roles, read by cccap_is_adult_caretaker (CO-992) and cccap_is_teen_parent (CO-981). No existing item states it."
+tests:
+  - {id: CO-2607-T1, title: "Step-parent (3.103.C)", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[spouse, p1, p2], [parent, p2, p3], [stepparent, p1, p3]], expect: [p3]}
+  - {id: CO-2607-T2, title: "Court-appointed guardian who is not a relative", as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[legal_guardian, p1, p2]], expect: [p2]}
+  - {id: CO-2607-T3, title: "A grandmother who has not taken on the child's care", as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[grandparent, p1, p2]], expect: []}

@@ -131,14 +131,28 @@ scopes: [person, person-month, case, month, global]
 # a case-level [role, from, to] edge records both. A role with no inverse is
 # recorded on the person named first alone. The engine reads this list
 # (docs/operators.md, Relationships).
+#
+# The roles state what is true of the persons, not any program's word for it
+# (docs/plan-colorado.md, product-owner decisions; same-word audit SW-0): each
+# program's "caretaker", "parent" or "sibling" is that program's own derived
+# item over these roles. Siblings are derived from shared parents (`siblings`,
+# `step_siblings`), not stated.
 relationship_roles:
-  - {id: parent, inverse: child}
-  - {id: child, inverse: parent}
-  - {id: spouse, inverse: spouse}
+  - {id: parent, inverse: child, label: "legal parent: natural or adoptive (not a stepparent)"}
+  - {id: child, inverse: parent, label: "legal child: natural or adopted"}
+  - {id: stepparent, inverse: stepchild, label: "the spouse of the child's parent who is not the child's legal parent"}
+  - {id: stepchild, inverse: stepparent, label: "the child of one's spouse who is not one's own legal child"}
+  - {id: spouse, inverse: spouse, label: "legally married to"}
+  - {id: holds_out_as_spouse_with, inverse: holds_out_as_spouse_with, label: "living together, free to marry, and representing themselves to others as spouses, but not legally married"}
   - {id: grandparent, inverse: grandchild}
   - {id: grandchild, inverse: grandparent}
-  - {id: caretaker, inverse: dependent}
-  - {id: dependent, inverse: caretaker}
+  - {id: other_relative, inverse: other_relative, label: "related by blood, adoption or marriage other than as parent, stepparent, grandparent, sibling or spouse (aunt, uncle, cousin, niece, nephew, great-grandparent, in-law)"}
+  - {id: legal_guardian, inverse: ward, label: "appointed by a court as the person's guardian"}
+  - {id: ward, inverse: legal_guardian, label: "the person for whom a court appointed this guardian"}
+  - {id: foster_parent, inverse: foster_child, label: "the child is placed in this person's home in foster care"}
+  - {id: foster_child, inverse: foster_parent, label: "placed in this person's home in foster care"}
+  - {id: has_primary_responsibility_for, inverse: in_primary_care_of, label: "has assumed day-to-day responsibility for the child's care, in place of or beside a parent"}
+  - {id: in_primary_care_of, inverse: has_primary_responsibility_for, label: "the child whose day-to-day care this person has assumed"}
   - {id: tax_filer, inverse: tax_dependent}
   - {id: tax_dependent, inverse: tax_filer}
   - {id: buys_prepares_with, inverse: buys_prepares_with}

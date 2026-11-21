@@ -1,0 +1,17 @@
+id: CO-2608
+name: "Colorado Works: persons of whom this person is the caretaker"
+identifier: cw_caretaker_of
+kind: derived
+type: group of persons
+scope: person
+program: ColoradoWorks
+meaning: "The persons of whom this person is the parent or non-parent caretaker of 9 CCR 2503-6 3.601 (a dependent child \"resides with a parent or non-parent caretaker\", S406) and 3.604.2.C (S408): read from the neutral roles parent (natural or adoptive), legal_guardian and has_primary_responsibility_for."
+precision: "Same-word audit SW-1/SW-3 (OQ-396 resolved): the spouse of a parent who is not a parent is not a caretaker here; 3.604.2.C.2.a makes that person an optional member (cw_is_optional_assistance_unit_member, CO-2349, reads the spouse and parent roles as the rule words it), so a stepparent is not read from the stepparent role. Whether the person is a dependent child is tested by the reader."
+derived: [filter, [persons], [rel, [parent, legal_guardian, has_primary_responsibility_for], [P]]]
+sources: [S406, S408]
+implemented: engine
+tags: [cash, tanf, household]
+rationale: "Same-word audit SW-0/SW-3 and OQ-396: Colorado Works's caretaker relation becomes its own derived item over neutral roles, read by cw_has_dependent_child (CO-902), cw_is_work_eligible_individual (CO-919) and cw_meets_work_participation (CO-920). No existing item states it."
+tests:
+  - {id: CO-2608-T1, title: "A grandmother caring for her grandchild", as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[grandparent, p1, p2], [has_primary_responsibility_for, p1, p2]], expect: [p2]}
+  - {id: CO-2608-T2, title: "A stepfather is not a caretaker under 3.601; he is the optional spouse of a parent", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}}, relationships: [[spouse, p1, p2], [parent, p2, p3], [stepparent, p1, p3]], expect: []}

@@ -1,0 +1,17 @@
+id: CO-2609
+name: Siblings
+identifier: siblings
+kind: derived
+type: group of persons
+scope: person
+program: All
+meaning: "The persons, other than this person, who share a legal parent (natural or adoptive) with this person: full and half siblings."
+precision: "Read from the parent role. A sibling is never stated as a relationship; each program picks the siblings it means: MAGI and community engagement add step_siblings (CO-2610), Colorado Works reads these. Full and half siblings are not told apart here (same-word audit SW-2); Colorado Works's half-sibling arm stays in cw_is_optional_member_by_custody_or_support (CO-2347)."
+derived: [shared_relative, parent]
+sources: [S169, S408, S1207]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-2: siblings were read as [shared_relative, parent] inline in three programs' items; one neutral item states the factual meaning and each program chooses whether step-siblings join it. No existing item states it."
+tests:
+  - {id: CO-2609-T1, title: "Half siblings through their mother", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[parent, p3, p1], [parent, p3, p2], [parent, p4, p2]], expect: [p2]}
+  - {id: CO-2609-T2, title: "A step-sibling is not a sibling", as_of: "2026-10-01", given: {}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[parent, p3, p1], [spouse, p3, p4], [parent, p4, p2], [stepparent, p3, p2], [stepparent, p4, p1]], expect: []}

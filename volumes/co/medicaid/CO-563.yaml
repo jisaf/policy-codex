@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: Whether this person is claimed as a tax dependent by someone who is not their spouse or parent, per the 42 CFR 435.603(f)(2)(i)/10 CCR 2505-10 8.100.4.E.1.c.i exception that routes such a dependent to the non-filer household rules instead of the claiming filer's household.
-precision: "Extracted from ma_magi_household_members' (CO-500) own inline branch test, which already distinguishes 'claimed by a spouse or child (i.e. by their own parent)' from the else case, so this item restates that same test as its own reusable yes/no rather than a second, independent derivation - true when this person is claimed by a filer and that filer is not this person's spouse or parent."
-derived: [all, [any, expects_to_be_claimed_as_dependent, [exists_related, [tax_dependent], true]], [not, [exists_related, [tax_dependent], [rel, [spouse, child], [P]]]]]
+precision: "Extracted from ma_magi_household_members' (CO-500) own inline branch test, which already distinguishes 'claimed by a spouse or child (i.e. by their own parent)' from the else case, so this item restates that same test as its own reusable yes/no rather than a second, independent derivation - true when this person is claimed by a filer and that filer is not this person's spouse or parent. Same-word audit SW-1: a stepparent claiming the person is a parent (S169)."
+derived: [all, [any, expects_to_be_claimed_as_dependent, [exists_related, [tax_dependent], true]], [not, [exists_related, [tax_dependent], [rel, [spouse, child, stepchild], [P]]]]]
 sources: [S161, S169]
 implemented: engine
 tags: [ma, magi, household]

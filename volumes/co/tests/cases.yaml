@@ -4592,8 +4592,8 @@
     - [spouse, p1, p2]
     - [parent, p1, p3]
     - [parent, p1, p4]
-    - [parent, p2, p3]        # step-parent; caretaker/parent relationship counts step-parents
-    - [parent, p2, p4]        # step-parent
+    - [stepparent, p2, p3]    # same-word audit SW-1: a step-parent is stated as stepparent, not parent
+    - [stepparent, p2, p4]
     - [parent, p5, p4]        # non-custodial father; p4's lives_with states that he does not live with p4
     - [tax_filer, p1, p3]
     - [tax_filer, p5, p4]
@@ -5005,7 +5005,7 @@
   relationships:
     - [grandparent, p1, p2]
     - [grandparent, p1, p3]
-    - [caretaker, p1, p3]
+    - [has_primary_responsibility_for, p1, p3]
     - [tax_filer, p1, p3]
   persons:
     p1:
@@ -6052,7 +6052,7 @@
     - [parent, p1, p3]
     - [parent, p1, p4]
     - [parent, p2, p3]
-    - [parent, p2, p4]        # step-parent; adult caretaker under 3.103.C
+    - [stepparent, p2, p4]    # step-parent; adult caretaker under 3.103.C (same-word audit SW-1: stated as stepparent)
     - [buys_prepares_with, p1, p6]
   persons:
     p1:
@@ -8176,7 +8176,6 @@
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_is_guardian_of_dependent_child_or_disabled_individual: false
         ma_persons_cared_for: []
         is_veteran_rated_totally_disabled: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8237,7 +8236,6 @@
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_is_guardian_of_dependent_child_or_disabled_individual: false
         ma_persons_cared_for: []
         is_veteran_rated_totally_disabled: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8297,7 +8295,6 @@
         receives_tanf_cash: false
         ma_community_engagement_review_type: application
         ma_is_indian: false
-        ma_is_guardian_of_dependent_child_or_disabled_individual: false
         ma_persons_cared_for: []
         is_veteran_rated_totally_disabled: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8414,6 +8411,7 @@
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
+    - [stepparent, p2, p3]    # same-word audit SW-1: the stepfather, stated as the other cases state one
     - [buys_prepares_with, p1, p2]
     - [buys_prepares_with, p1, p3]
   persons:
