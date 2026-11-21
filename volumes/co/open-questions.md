@@ -88,9 +88,11 @@ Resolution (open-question sweep, 2026-11-21): 29 U.S.C. 206(a)(1) is fetched (D-
 
 Body: FNS's FY2027 Maximum Allotments and Deductions table (D-83, S730), effective October 1, 2026 through September 30, 2027, states the 48-States-and-DC maximum allotments ($306 for one person through $1,841 for eight, $225 per additional person); 10 CCR 2506-1 4.207.3.D effective 2026-10-01 (D-82, S738) states the same figures. snap_maximum_allotment_table (CO-130) and snap_maximum_allotment_each_additional (CO-131) carry them as versions from 2026-10-01, and the FY2026 versions now end there. The same documents supply the FY2027 standard deduction, shelter cap, homeless shelter deduction, minimum allotment, income limits and the elderly/disabled asset limit (CO-110-CO-114, CO-119, CO-132-CO-135). Items: CO-130, CO-131.
 
-### OQ-22. Child support paid is an exclusion from gross income in Colorado, applied per person before proration
+### OQ-22. Resolved: SNAP's child support exclusion averages three or more months of payments (4.407.5.D) or uses the estimate (4.407.5.E)
 
 Body: 10 CCR 2506-1 4.407.5,A (S99) excludes legally binding child support paid to or for a non-household member from the household's total countable gross income before any gross income test, Colorado's election under 7 U.S.C. 2014(e)(4); 4.411.1,B,2,c says the payments are deducted before an ineligible member's income is prorated. Resolved in the fix round: snap_person_gross_income subtracts child_support_paid_legally_obligated (floored at zero per person), so the exclusion reaches the gross income test and the prorated share alike, and the separate child support deduction item was removed. What remains open is 4.407.5,D's three-month averaging of the payments, which the supplied monthly amount is assumed to already reflect. Items: CO-332.
+
+Resolution (open-question sweep, 2026-11-21): 10 CCR 2506-1 4.407.5.D-E (D-82, S1314): households "with a history of three (3) or more months of paying child support shall have the support payments averaged ... and shall use that average as the household's support exclusion"; with "less than a three (3) month record, the local office shall estimate the anticipated payments". The new supplied snap_child_support_payment_history_months (CO-2002) states the length of the record, and the new snap_child_support_exclusion (CO-2003) averages child_support_paid_legally_obligated over the three months before the budget month when the record is three months or longer, and otherwise takes the month's anticipated payment; snap_person_gross_income (CO-332) subtracts it instead of the month's raw payment, so the shared fact (which CCCAP also reads) keeps its plain monthly meaning. An unstated history is read as none (rule 12 of docs/conventions.md), which is the old behavior, so no household expectation changed. 4.407.5.D's adjustment for an anticipated change in the obligation is stated through the monthly figures (CO-2003's precision). Items: CO-332, CO-2002, CO-2003.
 
 ### OQ-23. Resolved: Colorado uses option (2): round the allotment down after subtracting the unrounded 30% of net income
 
@@ -499,9 +501,11 @@ Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): current citation. 9
 
 Body: 9 CCR 2503-6 3.608.4.C in the version effective 2025-07-01 (D-81, S760): "The reduction for the first level sanction shall be one dollar ($1.00), second and third instance of sanction shall be twenty five percent (25%) of an assistance unit's grant payment. The sanction shall be in effect for one month for each level sanction ... The reduction for a fourth instance of sanction is 100% and shall result in case closure"; 3.608.4.F has a case serve one level a month, the higher where several members are sanctioned. Modeled: work_sanction_level_served (CO-1261, supplied, the level the county imposed), cw_unit_sanction_level (CO-1264, the highest level among unit members), cw_sanction_reduction (CO-1265, with CO-1262 and CO-1263), cw_grant_before_sanction (CO-1260, the former CO-914 computation), cw_grant_amount (CO-914, now less the reduction with the cents dropped), and a sanction_closure status in cw_eligibility_status (CO-921) for a fourth-level sanction. Whether a sanction is imposed (non-participation without good cause, the re-engagement process, progression to the next level) is county process and enters through the supplied level. Items: CO-914, CO-921, CO-1260, CO-1261, CO-1262, CO-1263, CO-1264, CO-1265.
 
-### OQ-142. The 20% statewide cap on time-limit extensions is a caseload-level constraint this ledger cannot express per person
+### OQ-142. Resolved: the 20% statewide cap on time-limit extensions is a condition on the county's grant, which the extension facts record
 
 Body: 9 CCR 2503-6 3.606.6.G (S526): "Up to twenty percent (20%) of the Statewide caseload receiving Colorado Works may be granted an extension beyond the sixty (60) month time limit due to hardship or domestic violence." cw_unit_time_limit_extended (CO-925) and cw_time_limit_reached (CO-918) read a per-person/per-unit extension fact (has_domestic_violence_extension_approved, has_hardship_extension_approved) as county-granted, which already presupposes the county's own accounting for the statewide 20% ceiling; this volume has no statewide-caseload aggregate to test against and no per-person rule could express one. An approver reading cw_unit_time_limit_extended as "this unit's extension" should not read it as "an extension is unconditionally available" - the statewide cap is a real constraint on whether the county grants one in the first place, upstream of this item. Items: CO-925.
+
+Resolution (open-question sweep, 2026-11-21): the current 3.606.6.G (D-81, S1313) settles where the cap operates: "The State Department has the sole responsibility of monitoring this federal limit. County departments are not restricted to a certain number of extensions unless the Statewide limit is reached." The cap is a State-level limit on whether counties may grant extensions, not an individual eligibility test; the existing supplied facts has_domestic_violence_extension_approved (CO-846) and has_hardship_extension_approved (CO-847) record the county's grant, and their precision now says a recorded grant is one made within the statewide limit. No new fact; no expectation changed. Items: CO-846, CO-847, CO-925.
 
 ### OQ-143. The disqualified-member penalties beyond the extension bar are not modeled
 
@@ -511,11 +515,13 @@ Phase 8: the current 9 CCR 2503-6 (D-81, effective 2025-07-01) does not change 3
 
 Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): the current 3.604.2.L-M (S1004, D-81; amended effective 2023-06-01, S1019) no longer lists a drug-related felony conviction at L or M - its categories are the two-state IPV, IPV/fraud, fleeing felons, failure to apply for an SSN unless a federally allowable reason under 20 CFR 422.107 exists (M.4), and non-qualified non-citizens - so cw_is_disqualified_member (CO-928) no longer reads snap_is_disqualified_drug_felony (S-2). M.4 has no supplied fact; the three penalties above remain unmodeled. Items: CO-928.
 
-### OQ-151. AND-SO's own SSI/SSDI application duty is not modeled
+### OQ-151. Resolved: AND-SO's SSI/SSDI application and appeal duty is a condition of af_and_so_eligible
 
 Body: 9 CCR 2503-5 3.520.75.B (S529): "The AND-SO client shall apply for Supplemental Security Income (SSI) benefits. If the client has work hours during his or her lifetime, the client shall also apply for Social Security Disability Insurance (SSDI)... The client shall appeal all negative decisions regarding their SSI eligibility." Neither af_and_so_disability_met (CO-944) nor af_category (CO-953)'s and_so branch reads an application-duty fact; only Aid to the Blind's parallel statutory prong (26-2-111(5)(a)(II), has_applied_for_ssi, CO-848) is modeled, for AB, not AND-SO. Items: CO-944, CO-953.
 
 Phase-8 fix round (docs/reviews/cash-snap-other-phase-8.md): current citation. 9 CCR 2503-5 3.520.71.B (S710, D-80) restates the AND-SO SSI and SSDI application duty; open only because unmodeled.
+
+Resolution (open-question sweep, 2026-11-21): 9 CCR 2503-5 3.520.71.B (D-80, S1315) requires the AND-SO client to apply for SSI, to apply for SSDI with a lifetime work history, and to appeal negative SSI decisions within thirty days, and says failure "shall result in denial or discontinuation of and grant payments". The new supplied af_has_met_and_so_benefit_application_duty (CO-2004) states the county's record of that duty, and af_and_so_eligible (CO-1203) requires it (new test CO-1203-T4; CO-1203-T1 to T3 and CO-953-T4 now state it true). The Aid to the Blind fact has_applied_for_ssi (CO-848) is not reused: it carries the statute's referral-compliance condition and nothing of SSDI or appeals. No household case has an AND-SO client; no case expectation changed. Items: CO-1203, CO-2004.
 
 ### OQ-152. Optional assistance-unit members (3.604.2.C.2) are not modeled
 
@@ -758,9 +764,11 @@ Body: 7 CFR 273.2(f)(1)(iii) requires verification of actual utility expenses cl
 
 Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. Colorado's mandatory standard utility allowance (4.407.31, S1059) says households "cannot claim actual utility expenses", so 273.2(f)(1)(iii)'s verification of actual utilities above the standard (S1058) never arises. The unoccupied-home rule (4.507.B.2, S1060) is read through the new supplied claims_shelter_costs_for_unoccupied_home (CO-1585) by snap_requires_verification_of_shelter_costs (CO-1379).
 
-### OQ-313. SNAP third-party citizenship statements
+### OQ-313. Resolved: SNAP accepts a third-party citizenship statement only on the county's finding of 4.505.5.B's two conditions
 
 Body: 4.505.5.B (S826) and 273.2(f)(2)(ii) (S811) accept a signed third-party statement of citizenship only "if the above forms of verification cannot be obtained and the household can provide a reasonable explanation." snap_citizenship_document_is_acceptable (CO-1372) accepts a third_party_citizenship_statement without testing those conditions, which are the worker's judgment and have no fact. 273.2(f)(2)(ii)'s acceptance of citizenship verified by another program is carried by citizenship_verified_by_electronic_data_source. Items: CO-1372.
+
+Resolution (open-question sweep, 2026-11-21): 4.505.5.B (S826) and 7 CFR 273.2(f)(2)(ii) (S811) are clear: a signed third-party statement is accepted "If the above forms of verification cannot be obtained and the household can provide a reasonable explanation". The new supplied snap_third_party_citizenship_statement_is_permitted (CO-2001) records the worker's finding, and snap_citizenship_document_is_acceptable (CO-1372) accepts the statement only when it is true (CO-1372-T2 now states it; new test CO-1372-T4). No household case uses a third-party statement; no case expectation changed. Items: CO-1372, CO-2001.
 
 ### OQ-314. Resolved: Colorado Works citizenship verification: every client, or only when questionable
 
@@ -900,9 +908,11 @@ Body: Only Medical Assistance (CO-1566) and SNAP (CO-1567) carry a renewal fact.
 
 Body: ma_abd_income_is_reasonably_compatible (CO-1640) compares the attested monthly gross income (wages, self-employment and unearned income) and the data figure (electronic_data_source_monthly_gross_income, CO-1589) with the SSI individual benefit rate, or 300% of it for a long-term care applicant. The SSI-related test itself counts income after exclusions and uses the couple rate for a couple (ma_meets_ssi_income_standard); the item does not, so results near the line may differ from a countable-income comparison. The 20% threshold carries OQ-302's first half. Items: CO-1589, CO-1640.
 
-### OQ-375. AND-SO medical certification: thirty days "following the interview"
+### OQ-375. Resolved: the AND-SO medical examination's thirty days run from the interview date
 
 Body: 3.541.1.A.1.b (S1080) gives thirty calendar days following the interview to submit the medical examination; the volume has no interview date, so af_verification_status (CO-1438) counts them from verification_request_date, the date the county requested the verification (usually the interview date for Adult Financial). Items: CO-1438, CO-1599, CO-1669.
+
+Resolution (open-question sweep, 2026-11-21): 3.541.1.A.1.b (S1080) counts the thirty calendar days "following the interview". The new supplied af_interview_date (CO-2005) states the date, and af_verification_status (CO-1438) counts the period from it, reading the verification request date when a case does not state the interview (the meaning says so; that is the old behavior, so no expectation changed). New test CO-1438-T6: an interview on September 1 makes the examination past due on October 20 although the request was dated October 1. Items: CO-1438, CO-1599, CO-1669, CO-2005.
 
 ### OQ-376. Department of Revenue Rule 5 repealed; editions incorporated; DMV lawful presence checks
 

@@ -7894,3 +7894,51 @@ Document: D-82
 > deduction shall also apply to prorated income earned by the disqualified member
 > and attributed to the household.
 
+### S1313. Colorado Works twenty percent statewide allocation of extensions: the State monitors it; counties are unrestricted unless the limit is reached
+
+Document: D-81
+
+9 CCR 2503-6 3.606.6.G (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> G. Twenty Percent (20%) Allocation of Extensions
+>
+> Up to twenty percent (20%) of the Statewide caseload receiving Colorado Works may be granted
+> an extension beyond the sixty (60) month time limit due to hardship or domestic violence. At any
+> point that records indicate that the State will exceed the twenty percent (20%) maximum on the
+> number of Colorado Works extensions granted to assistance units, the State shall determine if
+> this is due to the provision of federally recognized good cause domestic violence waivers. If the
+> records support this determination, as allowed by federal law, the State shall provide information
+> to the federal government to demonstrate that the reason for exceeding the twenty percent (20%)
+> maximum was due to granting federally recognized good cause domestic violence waivers. The
+> State Department has the sole responsibility of monitoring this federal limit. County departments
+> are not restricted to a certain number of extensions unless the Statewide limit is reached.
+
+### S1314. Colorado SNAP child support exclusion: average three or more months of payments, or estimate
+
+Document: D-82
+
+10 CCR 2506-1 4.407.5.D-E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Households with a history of three (3) or more months of paying child support
+> shall have the support payments averaged taking into account any anticipated
+> changes in the legal obligation and shall use that average as the household's
+> support exclusion.
+>
+> E. For households with less than a three (3) month record, the local office shall
+> estimate the anticipated payments and use that estimate as the household's
+> support exclusion.
+
+### S1315. AND-SO duty to apply for SSI and SSDI and to appeal SSI denials; failure denies or discontinues the grant
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.B (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. The AND-SO client shall apply for Supplemental Security Income (SSI) benefits.
+> If the client has work hours during his or her lifetime, the client shall also apply for
+> Social Security Disability Insurance (SSDI). The client shall report any denial for
+> SSI benefits. The client shall appeal all negative decisions regarding their SSI
+> eligibility. Failure to appeal all negative decisions within thirty (30) calendar days
+> of such decision, unless additional time is given for good cause, shall result in
+> denial or discontinuation of and grant payments.
+

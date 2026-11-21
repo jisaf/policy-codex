@@ -1,0 +1,12 @@
+id: CO-2005
+name: "Adult Financial: interview date"
+identifier: af_interview_date
+kind: supplied
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The date of the client's Adult Financial application interview (or the redetermination), from which 9 CCR 2503-5 3.541.1.A.1.b counts the thirty calendar days to submit the AND-SO medical examination. If not stated, Adult Financial reads it as verification_request_date, the date the county requested the verification, which is usually the interview date."
+supplied_by: County department case record (interview date).
+sources: [S1080]
+tags: [verification, cash, and]
+rationale: "No existing fact states an interview date; af_verification_status (CO-1438) counted the medical-examination period from the verification request because none existed (OQ-375)."
