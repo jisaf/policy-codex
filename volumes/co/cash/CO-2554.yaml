@@ -1,0 +1,18 @@
+id: CO-2554
+name: "Colorado Works: countable unearned income for the grant"
+identifier: cw_payment_countable_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "This person's countable unearned income for the Colorado Works grant calculation: the unearned income cw_countable_unearned_income (CO-908) counts, without any child support, which 9 CCR 2503-6 3.605.5.B and C.3 and C.R.S. 26-2-709(1)(a)(IV) exclude from the basic cash assistance grant calculation once the unit is found eligible."
+precision: The same sources and exclusion as CO-908 (Social Security, pension, unemployment, Adult Financial grants, other unearned income taxable or not and tax-exempt interest, less cw_excluded_unearned_income), floored at zero. Colorado Works' own grant is not income to the unit.
+derived: [max, 0, ["-", ["+", social_security_income, pension_income, unemployment_income, adult_financial_cash_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], [otherwise, cw_excluded_unearned_income, 0]]]
+sources: [S1805, S1802, S1621, S412]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: cw_payment_countable_income (CO-923) summed CO-908, which includes child support, so every grant with child support was underpaid by the support. CO-908 keeps the eligibility figure; this item is the grant figure."
+nearest: [CO-908]
+tests:
+  - {id: CO-2554-T1, month: "2026-10", as_of: "2026-10-01", given: {social_security_income: 100, pension_income: 0, unemployment_income: 0, adult_financial_cash_income: 0, child_support_received: 200, other_unearned_income_nontaxable: 0, other_unearned_income_taxable: 0, tax_exempt_interest: 0}, title: "$200 of child support and $100 of Social Security: only the $100 counts in the grant", expect: 100}
+  - {id: CO-2554-T2, month: "2026-10", as_of: "2026-10-01", given: {social_security_income: 400, pension_income: 0, unemployment_income: 0, adult_financial_cash_income: 0, child_support_received: 0, other_unearned_income_nontaxable: 250, other_unearned_income_taxable: 0, tax_exempt_interest: 0, cw_excluded_unearned_income: 250}, title: "Excluded income comes off", expect: 400}

@@ -1,0 +1,19 @@
+id: CO-2560
+name: "Colorado Works: diversion payment"
+identifier: cw_diversion_payment
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: "The Colorado Works diversion payment for the month: the county-approved amount when the client is eligible for diversion (cw_diversion_eligible, CO-1270), and nothing otherwise (9 CCR 2503-6 3.606.8.A). A client does not receive a diversion grant in a month in which they receive basic cash assistance (A.7)."
+precision: "Not added to cw_grant_amount: a diversion is a non-recurrent payment (3.601 \"Diversion\", S763), not basic cash assistance. No dollar cap is applied, since the rule states none (OQ-531)."
+derived: [case, [cw_diversion_eligible, cw_county_approved_diversion_amount], [else, 0]]
+sources: [S762, S763]
+implemented: engine
+tags: [cash, tanf]
+open: [OQ-531]
+rationale: "CDHS review C-3 (OQ-252(3)): the diversion amount was not modeled, so the outcome had no dollar figure."
+tests:
+  - {id: CO-2560-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_diversion_eligible: true, cw_county_approved_diversion_amount: 1200}, expect: 1200}
+  - {id: CO-2560-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_diversion_eligible: false, cw_county_approved_diversion_amount: 1200}, expect: 0}

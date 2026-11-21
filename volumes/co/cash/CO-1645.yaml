@@ -7,12 +7,12 @@ scope: person-month
 program: ColoradoWorks
 role: outcome
 meaning: Whether Colorado Works requires verification of the person's declared citizenship, by an SSA match or a Rule 5 Appendix A document and it has not been provided.
-precision: Every participating client who declares citizenship provides verification (3.604.3.B.2.b, OQ-314).
-derived: [all, is_us_citizen_or_national, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a]]]]
+precision: "Every participating client who declares citizenship provides verification (3.604.3.B.2.b, OQ-314). False where Colorado Works verification does not apply to the person (cw_verification_is_applicable, CO-2583; case worker review B2). Due by: cw_status_verification_due_date (CO-1656: thirty days; the member, not the unit, is excluded after it)."
+derived: [all, cw_verification_is_applicable, [all, is_us_citizen_or_national, [not, [any, citizenship_verified_by_electronic_data_source, [all, citizenship_verification_document_received, citizenship_document_is_on_revenue_appendix_a]]]]]
 sources: [S872, S876, S1066, S1069]
 implemented: engine
 tags: [verification, cash, tanf]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1645-T1, month: "2026-10", as_of: "2026-10-01", given: {citizenship_status: citizen, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: false}, expect: true}
-  - {id: CO-1645-T2, month: "2026-10", as_of: "2026-10-01", given: {citizenship_status: citizen, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, citizenship_verification_document_type: early_school_record}, expect: false}
+  - {id: CO-1645-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, citizenship_status: citizen, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: false}, expect: true}
+  - {id: CO-1645-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, citizenship_status: citizen, citizenship_verified_by_electronic_data_source: false, citizenship_verification_document_received: true, citizenship_verification_document_type: early_school_record}, expect: false}

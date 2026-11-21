@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: ColoradoWorks
+role: outcome
 meaning: The last day of the thirty calendar days a Colorado Works client has to provide verification of citizenship, qualified non-citizen status, lawful presence, identity or SSN, from the written request.
 derived: [days_after, cw_status_verification_days, [otherwise, cw_verification_request_date, verification_request_date]]
 sources: [S1064]

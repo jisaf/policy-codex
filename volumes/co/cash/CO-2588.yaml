@@ -1,0 +1,19 @@
+id: CO-2588
+name: "Colorado Works: unearned income verification is pending"
+identifier: cw_unearned_income_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+role: outcome
+meaning: "Whether Colorado Works still needs verification of this person's unearned income: the shared unearned_income_verification_is_pending (CO-1650), where Colorado Works verification applies to the person."
+precision: "Due by: cw_verification_due_date (CO-1426: eleven days), or cw_verification_extended_due_date when the county extended it."
+derived: [all, cw_verification_is_applicable, unearned_income_verification_is_pending]
+sources: [S872, S875, S880, S891, S898]
+implemented: engine
+tags: [verification, income]
+rationale: "County case worker review B2: the shared unearned-income pending flag is one of Colorado Works's outcomes but cannot read Colorado Works's applicability; this item is the program's own flag, gated like its other elements."
+nearest: [CO-1650]
+tests:
+  - {id: CO-2588-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: true, unearned_income_verification_is_pending: true}, expect: true}
+  - {id: CO-2588-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_verification_is_applicable: false, unearned_income_verification_is_pending: true}, expect: false}

@@ -1,0 +1,19 @@
+id: CO-2557
+name: "Colorado Works: is disqualified for citizenship, status, lawful presence or SSN"
+identifier: cw_is_disqualified_for_status_or_ssn
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "This person is a required assistance-unit member disqualified because they do not meet the citizenship, non-citizen status or lawful presence requirement or have failed to apply for a Social Security Number: the members whose net income 9 CCR 2503-6 3.605.1.A.6 deems to the unit (gross earned income minus employment disregards, plus unearned income)."
+precision: The failure to apply for an SSN is read as false when not stated (cw_has_failed_to_apply_for_ssn, CO-2348). Members disqualified for an intentional program violation or as fleeing felons (3.604.2.M.1-3) are not in this group; their income counts without disregards (3.604.2.M).
+derived: [any, [not, meets_public_assistance_citizenship_requirement], [otherwise, cw_has_failed_to_apply_for_ssn, false]]
+sources: [S1628, S1004]
+implemented: engine
+tags: [cash, tanf, household, immigration]
+rationale: "CDHS review S-5 (OQ-490 resolved): 3.605.1.A.6 is the specific rule for members disqualified for citizenship, status, lawful presence or SSN reasons and deems their net income; 3.604.2.M's 'without applying income disregards' then governs the other disqualifications. cw_is_disqualified_member (CO-928) joins both groups, so the income items test this narrower group inside it."
+nearest: [CO-928]
+tests:
+  - {id: CO-2557-T1, month: "2026-10", as_of: "2026-10-01", given: {meets_public_assistance_citizenship_requirement: false}, expect: true}
+  - {id: CO-2557-T2, month: "2026-10", as_of: "2026-10-01", given: {meets_public_assistance_citizenship_requirement: true, cw_has_failed_to_apply_for_ssn: true}, expect: true}
+  - {id: CO-2557-T3, month: "2026-10", as_of: "2026-10-01", given: {meets_public_assistance_citizenship_requirement: true}, expect: false}

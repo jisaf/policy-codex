@@ -7,11 +7,13 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: Whether Adult Financial requires verification of the client's age (by interface or document) and it has not been provided.
-derived: [not, age_is_verified]
+precision: "False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
+derived: [all, af_verification_is_applicable, [not, age_is_verified]]
 sources: [S882]
 implemented: engine
 tags: [verification, cash]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1658-T1, month: "2026-10", as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: false, age_verification_document_received: false}, expect: true}
-  - {id: CO-1658-T2, month: "2026-10", as_of: "2026-10-01", given: {age_verified_by_electronic_data_source: true}, expect: false}
+  - {id: CO-1658-T1, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, age_verified_by_electronic_data_source: false, age_verification_document_received: false}, expect: true}
+  - {id: CO-1658-T2, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, age_verified_by_electronic_data_source: true}, expect: false}
+  - {id: CO-1658-TNA, title: "B2: not pending where Adult Financial verification does not apply", as_of: "2026-10-01", month: "2026-10", given: {af_verification_is_applicable: false}, expect: false}

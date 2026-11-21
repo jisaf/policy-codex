@@ -7,11 +7,12 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: Whether Adult Financial requires verification of the client's identity (a DMV match or an acceptable identity document) and it has not been provided.
-derived: [not, [any, identity_verified_by_electronic_data_source, [all, identity_verification_document_received, af_identity_document_is_acceptable]]]
+precision: "False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
+derived: [all, af_verification_is_applicable, [not, [any, identity_verified_by_electronic_data_source, [all, identity_verification_document_received, af_identity_document_is_acceptable]]]]
 sources: [S881, S885, S1075]
 implemented: engine
 tags: [verification, cash]
 rationale: "Review U-1: the count items held this test as an anonymous arm, so no outcome told a worker which document was outstanding and for whom; the count now sums this item."
 tests:
-  - {id: CO-1660-T1, month: "2026-10", as_of: "2026-10-01", given: {identity_verified_by_electronic_data_source: false, identity_verification_document_received: false}, expect: true}
-  - {id: CO-1660-T2, month: "2026-10", as_of: "2026-10-01", given: {identity_verified_by_electronic_data_source: true}, expect: false}
+  - {id: CO-1660-T1, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, identity_verified_by_electronic_data_source: false, identity_verification_document_received: false}, expect: true}
+  - {id: CO-1660-T2, month: "2026-10", as_of: "2026-10-01", given: {af_verification_is_applicable: true, identity_verified_by_electronic_data_source: true}, expect: false}

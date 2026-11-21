@@ -1,0 +1,13 @@
+id: CO-2550
+name: "Colorado Works: months of the last six in which child support was received"
+identifier: cw_child_support_months_received_of_last_six
+kind: supplied
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: At a Colorado Works redetermination, the number of the six months before the redetermination (0 to 6) in which the assistance unit received current child support for this person. 9 CCR 2503-6 3.605.5.C.1 treats child support as consistent only when it was received in all six of the six previous months; inconsistent support is not countable.
+precision: "Read only at a redetermination (cw_determination_is_redetermination). If not stated, Colorado Works reads this as 0: support not shown to have been received in all six months is inconsistent and not countable (3.605.5.C.1)."
+supplied_by: CBMS and the Automated Child Support Enforcement System (ACSES) payment history for the six months before the redetermination.
+sources: [S1805]
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: no fact stated the child support history 3.605.5.C reads at redetermination; cw_counted_child_support (CO-2553) needs it. child_support_received (CO-847) states one month's amount only."

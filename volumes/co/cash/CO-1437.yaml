@@ -5,6 +5,7 @@ kind: derived
 type: calendar date
 scope: person
 program: AdultFinancial
+role: outcome
 meaning: "The date by which requested Adult Financial verifications must be returned: eleven calendar days from the written request."
 derived: [days_after, af_verification_response_days, [otherwise, af_verification_request_date, verification_request_date]]
 sources: [S879]

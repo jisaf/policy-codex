@@ -6,10 +6,17 @@ type: money
 scope: global
 program: ColoradoWorks
 meaning: The amount added to the One Caretaker grant standard for each unit member beyond the eleventh, per 9 CCR 2503-6 3.606.1.F's chart.
+precision: "CDHS review B-5: SB 26-181 (D-171, S1800, approved and in effect June 2, 2026, S1801) amended C.R.S. 26-2-709(1)(b) so that no cost-of-living adjustment is applied to basic cash assistance for the State fiscal years beginning July 1, 2026 and July 1, 2027, and the annual increase of at least 2% resumes July 1, 2028; CDHS's proposed SFY 2026-27 increase (eDocket 2026-00094) was terminated as moot (S1804) and the Secretary of State's current version of 9 CCR 2503-6 is still the one effective July 1, 2025 (S1803). The chart therefore carries a version for SFY 2026-27 and 2027-28 with the same figures, ending June 30, 2028; a determination from July 1, 2028 has no figure until the State publishes the SFY 2028-29 chart (OQ-530)."
 versions:
   - from: "2025-07-01"
+    to: "2026-07-01"
     value: 90
     source: S414
+  - from: "2026-07-01"
+    to: "2028-07-01"
+    value: 90
+    source: S1800
+open: [OQ-530]
 rationale: The chart's "Each Additional Child" column for the One Caretaker Grant Standard row; companion to cw_need_standard_each_additional (CO-275).
-sources: [S414]
+sources: [S414, S1800, S1801, S1803, S1804]
 tags: [cash, tanf, household]

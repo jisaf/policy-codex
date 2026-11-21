@@ -1,0 +1,14 @@
+id: CO-2556
+name: Colorado Works child support consistency months
+identifier: cw_child_support_consistency_months
+kind: parameter
+type: whole number
+scope: global
+program: ColoradoWorks
+meaning: "The number of the previous months in which child support must have been received for it to be consistent at a Colorado Works redetermination: all six of the six previous months (9 CCR 2503-6 3.605.5.C.1)."
+value: 6
+sources: [S1805]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: the six-of-six test of 3.605.5.C.1 had no parameter."
+nearest: [CO-2555]

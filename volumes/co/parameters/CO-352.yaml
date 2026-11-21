@@ -6,12 +6,18 @@ type: table keyed by household size
 scope: global
 program: ColoradoWorks
 meaning: The maximum basic cash assistance grant for a zero-income, child-only assistance unit with no caretaker member, under 9 CCR 2503-6 3.606.1.F's Colorado Works Standards of Assistance Chart's "No Caretaker" row, keyed by the number of dependent children (0-10).
+precision: "CDHS review B-5: SB 26-181 (D-171, S1800, approved and in effect June 2, 2026, S1801) amended C.R.S. 26-2-709(1)(b) so that no cost-of-living adjustment is applied to basic cash assistance for the State fiscal years beginning July 1, 2026 and July 1, 2027, and the annual increase of at least 2% resumes July 1, 2028; CDHS's proposed SFY 2026-27 increase (eDocket 2026-00094) was terminated as moot (S1804) and the Secretary of State's current version of 9 CCR 2503-6 is still the one effective July 1, 2025 (S1803). The chart therefore carries a version for SFY 2026-27 and 2027-28 with the same figures, ending June 30, 2028; a determination from July 1, 2028 has no figure until the State publishes the SFY 2028-29 chart (OQ-530)."
 versions:
   - from: "2025-07-01"
+    to: "2026-07-01"
     value: { "0": 0, "1": 173, "2": 362, "3": 543, "4": 724, "5": 869, "6": 1003, "7": 1117, "8": 1226, "9": 1337, "10": 1460 }
     source: S414
-open: [OQ-101]
+  - from: "2026-07-01"
+    to: "2028-07-01"
+    value: { "0": 0, "1": 173, "2": 362, "3": 543, "4": 724, "5": 869, "6": 1003, "7": 1117, "8": 1226, "9": 1337, "10": 1460 }
+    source: S1800
+open: [OQ-101, OQ-530]
 rationale: "No existing parameter states the 'No Caretaker' grant-standard row; cw_grant_standard_table (CO-276, the acknowledged nearest same-shape parameter) carries only the 'One Caretaker' row of the same 3.606.1.F chart. Added under the fix-round C-5 finding, the grant-standard companion to cw_need_standard_table_no_caretaker (CO-351). cw_grant_standard (CO-912) needs it."
 nearest: [CO-276]
-sources: [S414]
+sources: [S414, S1800, S1801, S1803, S1804]
 tags: [cash, tanf, household]
