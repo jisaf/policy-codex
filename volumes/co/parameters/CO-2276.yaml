@@ -1,0 +1,12 @@
+id: CO-2276
+name: Ineligible child allocation rate
+identifier: ma_ssi_ineligible_child_allocation_rate
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The share of the current year's SSI Federal Benefit Rate allocated for each ineligible child in the home - 10 CCR 2505-10 § 8.100.5.H.3.a.i (\"an amount equal to one half the current year's SSI FBR\")."
+value: 0.5
+sources: [S1506]
+tags: [ma, non_magi, income]
+rationale: "OQ-83: ma_ssi_ineligible_child_allocation (CO-2277) needs the share as a parameter."

@@ -1,0 +1,18 @@
+id: CO-2278
+name: "Medicaid: ineligible child allocation taken from an ineligible spouse's unearned income"
+identifier: ma_ssi_child_allocation_from_spouse_unearned
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of the Ineligible Child Allocation (ma_ssi_ineligible_child_allocation) deducted from the unearned income of the person's spouse living with the person who is not applying for or eligible for SSI - the ineligible parent whose gross income the allocation reduces (10 CCR 2505-10 § 8.100.5.H.3.a.i) - unearned income first (H.3.b.i), up to that spouse's unearned income."
+derived: [case, [["=", ma_ssi_ineligible_child_allocation, 0], 0], [else, [min, ma_ssi_ineligible_child_allocation, [sum, [filter, [reachable, [spouse], [all, [not, resides_in_medical_institution], [not, [of, [P], resides_in_medical_institution]]]], [all, [rel, [spouse], [P]], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]]]], [+, [of, [P], social_security_income], [of, [P], pension_income], [of, [P], unemployment_income], [of, [P], other_unearned_income_taxable], [of, [P], other_unearned_income_nontaxable], [of, [P], tax_exempt_interest], [of, [P], in_kind_support_and_maintenance]]]]]]
+sources: [S1506]
+implemented: engine
+tags: [ma, non_magi, income]
+open: [OQ-473]
+rationale: "OQ-83: the allocation reduces the ineligible parent's income before the standard disregards (H.3.b.ii), unearned income first."
+tests:
+  - {id: CO-2278-T1, as_of: "2026-10-01", month: "2026-10", title: "Spouse not applying for SSI with $500 of pension; $894 allocation", given: {ma_ssi_ineligible_child_allocation: 894, resides_in_medical_institution: false}, others: {p2: {resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: false, social_security_income: 0, pension_income: 500, unemployment_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, in_kind_support_and_maintenance: 0}}, relationships: [[spouse, p2]], expect: 500}
+  - {id: CO-2278-T2, as_of: "2026-10-01", month: "2026-10", title: "Spouse receiving SSI: no ineligible spouse", given: {ma_ssi_ineligible_child_allocation: 894, resides_in_medical_institution: false}, others: {p2: {resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: true}}, relationships: [[spouse, p2]], expect: 0}
+  - {id: CO-2278-T3, as_of: "2026-10-01", month: "2026-10", title: "No allocation", given: {ma_ssi_ineligible_child_allocation: 0}, expect: 0}

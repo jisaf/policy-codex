@@ -1,0 +1,12 @@
+id: CO-2273
+name: SSI-related unemancipated child age limit
+identifier: ma_ssi_unemancipated_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age before which a child living with a parent is an unemancipated child for the SSI-related income allocations - 10 CCR 2505-10 § 8.100.5.H.2.a.i (\"a child under age 18\")."
+value: 18
+sources: [S1506]
+tags: [ma, non_magi, age]
+rationale: "OQ-83: ma_is_ssi_unemancipated_child (CO-2275) needs the age as a parameter."
