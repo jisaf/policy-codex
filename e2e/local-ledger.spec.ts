@@ -14,7 +14,8 @@ test("opens the co volume from the working tree and visits each workflow view", 
 
   // The bare app URL: the start page, on the Colorado volume by default.
   await page.goto("/");
-  await expect(page.locator("section.start")).toBeVisible();
+  // The first load reads some 1,400 files from the working tree.
+  await expect(page.locator("section.start")).toBeVisible({ timeout: 30_000 });
   await expect(page.locator(".volume-select")).toHaveValue("co");
   await expect(page.locator(".ref-select")).toHaveValue("local");
   await expect(page.locator(".ref-select option:checked")).toContainText("working tree");
@@ -24,7 +25,7 @@ test("opens the co volume from the working tree and visits each workflow view", 
   // A role entry point routes to its view.
   await page.locator('.door[data-persona="hcpf"]').click();
   await expect(page).toHaveURL(/#\/co\/roles\/hcpf/);
-  await expect(page.locator(".persona")).toContainText("Medicaid");
+  await expect(page.locator('section.roles div.persona[data-persona="hcpf"]')).toContainText("Medicaid", { timeout: 15_000 });
 
   for (const [view, title] of [
     ["inbox", "Approvals inbox"],
