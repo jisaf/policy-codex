@@ -1,0 +1,17 @@
+id: CO-1421
+name: "Colorado Works: requires verification of household composition"
+identifier: cw_requires_verification_of_household_composition
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether the person's relationship to the unit's children must be verified for Colorado Works: a caretaker of a dependent child who is not the child's parent must verify the caretaker responsibility, and any relationship is verified when questionable."
+derived: [any, [all, [exists_related, [caretaker], [of, [P], cw_is_dependent_child]], [not, [exists_related, [parent], [of, [P], cw_is_dependent_child]]]], household_composition_attestation_is_questionable]
+sources: [S872, S874]
+implemented: engine
+tags: [verification, cash, tanf, household]
+rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.
+tests:
+  - {id: CO-1421-T1, month: "2026-10", as_of: "2026-10-01", given: {household_composition_attestation_is_questionable: false}, others: {p2: {date_of_birth: "2015-01-01"}}, relationships: [[caretaker, p1, p2]], expect: true}
+  - {id: CO-1421-T2, month: "2026-10", as_of: "2026-10-01", given: {household_composition_attestation_is_questionable: false}, others: {p2: {date_of_birth: "2015-01-01"}}, relationships: [[parent, p1, p2]], expect: false}
+  - {id: CO-1421-T3, month: "2026-10", as_of: "2026-10-01", given: {household_composition_attestation_is_questionable: true}, relationships: [], expect: true}

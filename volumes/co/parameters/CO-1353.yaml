@@ -1,0 +1,12 @@
+id: CO-1353
+name: Adult Financial verification response days
+identifier: af_verification_response_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: The number of calendar days from the county's written request within which an Adult Financial applicant must return requested verifications.
+value: 11
+sources: [S879]
+tags: [verification, cash, oap, and]
+rationale: 9 CCR 2503-5 3.520.4.D.1.b (S879) sets eleven calendar days; no item carried it.

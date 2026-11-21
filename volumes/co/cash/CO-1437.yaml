@@ -1,0 +1,16 @@
+id: CO-1437
+name: "Adult Financial: verification due date"
+identifier: af_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The date by which requested Adult Financial verifications must be returned: eleven calendar days from the written request."
+derived: [days_after, af_verification_response_days, verification_request_date]
+sources: [S879]
+implemented: engine
+tags: [verification, cash, oap, and]
+rationale: No existing item states when requested Adult Financial verification is due.
+nearest: [CO-1392, CO-1414, CO-1426, CO-1450, CO-1461]
+tests:
+  - {id: CO-1437-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-12"}

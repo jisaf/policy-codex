@@ -1,0 +1,18 @@
+id: CO-1420
+name: "Colorado Works: requires verification of lawful presence"
+identifier: cw_requires_verification_of_lawful_presence
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether the person must establish lawful presence by producing a listed document for Colorado Works: every client eighteen or older, except a pregnant woman."
+derived: [all, [">=", age, cw_lawful_presence_min_age], [not, is_pregnant]]
+sources: [S872, S877]
+implemented: engine
+tags: [verification, cash, tanf, immigration]
+open: [OQ-315]
+rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.
+tests:
+  - {id: CO-1420-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_pregnant: false}, expect: true}
+  - {id: CO-1420-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", is_pregnant: true}, expect: false}
+  - {id: CO-1420-T3, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-01-01"}, expect: false}

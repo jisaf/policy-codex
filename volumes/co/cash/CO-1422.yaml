@@ -1,0 +1,17 @@
+id: CO-1422
+name: "Colorado Works: requires verification of school enrollment"
+identifier: cw_requires_verification_of_school_enrollment
+kind: derived
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "Whether the person's school attendance must be verified for Colorado Works: a dependent child at or over the dependent-child age limit, whose status as a dependent child rests on school enrollment."
+precision: 3.604.3.C.4 lists school attendance of all school-aged children as a secondary verification 'when applicable'; this item applies it where attendance decides eligibility.
+derived: [all, cw_is_dependent_child, [">=", age, cw_dependent_child_age_limit]]
+sources: [S874]
+implemented: engine
+tags: [verification, cash, tanf, age]
+rationale: No existing item states this Colorado Works verification requirement; the phase-9 chapter needs it to count the unit's pending verifications.
+tests:
+  - {id: CO-1422-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2008-03-01", is_enrolled_in_school: true}, expect: true}
+  - {id: CO-1422-T2, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2015-03-01"}, expect: false}
