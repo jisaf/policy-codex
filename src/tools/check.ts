@@ -279,6 +279,29 @@ export function inputWarnings(engine: Engine, ledger: LoadedLedger): string[] {
   return out;
 }
 
+/** Every dependency cycle among the volume's items, each as the identifiers
+ *  on it with the first repeated at the end. The evaluator also stops at a
+ *  cycle, but only when a test reaches it; this finds one statically. */
+export function dependencyCycles(engine: Engine): string[][] {
+  const out: string[][] = [];
+  const state = new Map<string, 1 | 2>(); // 1: on the current path, 2: done
+  const path: string[] = [];
+  const visit = (id: string): void => {
+    state.set(id, 1);
+    path.push(id);
+    for (const dep of engine.usesOfItem(id)) {
+      if (!engine.item(dep)) continue;
+      const st = state.get(dep);
+      if (st === 1) out.push([...path.slice(path.indexOf(dep)), dep]);
+      else if (st === undefined) visit(dep);
+    }
+    path.pop();
+    state.set(id, 2);
+  };
+  for (const it of engine.items()) if (!state.has(it.identifier)) visit(it.identifier);
+  return out;
+}
+
 export function caseResultKey(
   caseId: string, person: string, identifier: string, month: string | null,
 ): string {
@@ -431,6 +454,13 @@ export function buildCheckReport(
     for (const msg of [...it.errors, ...it.governanceErrors]) {
       blockingItemErrors.push({ id: it.id, identifier: it.identifier, msg });
     }
+  }
+  // A dependency cycle blocks wherever it is: no engine can evaluate it.
+  for (const cycle of dependencyCycles(engine)) {
+    const it = engine.item(cycle[0])!;
+    blockingItemErrors.push({
+      id: it.id, identifier: it.identifier, msg: `dependency cycle: ${cycle.join(" -> ")}`,
+    });
   }
 
   const openQuestions = checkOpenQuestions(ledger.questionIds, ledger.items);

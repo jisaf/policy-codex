@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { join } from "node:path";
 import { createEngine } from "../../src/engine/engine";
 import {
-  buildCheckReport, checkOpenQuestions, diffAgainstBase, inputWarnings, loadLedgerFromDisk,
+  buildCheckReport, checkOpenQuestions, dependencyCycles, diffAgainstBase, inputWarnings,
+  loadLedgerFromDisk,
   runCheck,
 } from "../../src/tools/check";
 
@@ -174,5 +175,21 @@ describe("check warnings about test inputs", () => {
   it("reports a versioned parameter with no version on the volume's default date", () => {
     expect(warnings.some((w) =>
       w.includes("leap_income_limit_monthly: no version in force on default_as_of"))).toBe(true);
+  });
+});
+
+describe("dependency cycles", () => {
+  it("finds none in either volume, and finds one when it is there", () => {
+    for (const volume of ["mwr", "co"]) {
+      const l = loadLedgerFromDisk(ROOT, volume);
+      expect(dependencyCycles(createEngine(l.items, l.meta))).toEqual([]);
+    }
+    const l = loadLedgerFromDisk(ROOT, "mwr");
+    const mk = (identifier: string, derived: unknown) => ({
+      id: "X-" + identifier, name: identifier, identifier, kind: "derived" as const,
+      type: "yes/no", scope: "person" as const, program: "All", derived: derived as never,
+    });
+    const engine = createEngine([...l.items, mk("x_a", ["not", "x_b"]), mk("x_b", ["not", "x_a"])], l.meta);
+    expect(dependencyCycles(engine)).toEqual([["x_a", "x_b", "x_a"]]);
   });
 });
