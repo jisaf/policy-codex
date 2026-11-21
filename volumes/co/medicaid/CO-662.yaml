@@ -13,5 +13,5 @@ implemented: engine
 tags: [ma, ltc, income, legal]
 rationale: "The former item (CO-829, withdrawn) modeled this figure as a supplied fact because 8.100.7.Q.1.a's dollar figure is not itself in any fetched document, but the formula and its input (federal_poverty_guideline_annual_table, CO-181) both are - the same 'text states the formula, volume already has the input' shape G-1 identifies. ma_mmmna (CO-655) and ma_family_allowance (CO-657) need the current standard."
 tests:
-  - {id: CO-662-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_mmmna_applicable_pct: 1.5}, expect: 2705.0}
-  - {id: CO-662-T2, as_of: "2026-03-01", month: "2026-03", title: "OQ-145: January-June 2026 uses the 2025 guideline set in July 2025: 1.5 x 21150 / 12", given: {ma_mmmna_applicable_pct: 1.5}, expect: 2643.75}
+  - {id: CO-662-T1, as_of: "2026-10-01", month: "2026-10", parameters: {ma_mmmna_applicable_pct: 1.5}, given: {}, expect: 2705.0}
+  - {id: CO-662-T2, as_of: "2026-03-01", month: "2026-03", title: "OQ-145: January-June 2026 uses the 2025 guideline set in July 2025: 1.5 x 21150 / 12", parameters: {ma_mmmna_applicable_pct: 1.5}, given: {}, expect: 2643.75}

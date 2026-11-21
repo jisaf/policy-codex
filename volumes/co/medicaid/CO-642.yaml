@@ -14,7 +14,7 @@ tags: [ma, ltc, income]
 open: [OQ-99]
 rationale: "No existing item states the 300% special income group test. ma_ltc_financially_eligible (CO-651) and ma_ltc_eligibility_status (CO-652) need it. The target household's p1 (2030 <= 994 x 3 = 2982) is the worked example in the batch report."
 tests:
-  - {id: CO-642-T1, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 2030, has_income_trust: false, ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, expect: true}
-  - {id: CO-642-T2, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 3200, has_income_trust: false, ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, expect: false}
-  - {id: CO-642-T3, as_of: "2026-10-01", month: "2026-10", given: {ma_ltc_gross_income: 3200, has_income_trust: true, ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0, county_of_residence: denver}, expect: true}
-  - {id: CO-642-T4, as_of: "2026-10-01", month: "2026-10", title: "OQ-99: income trust but gross income above the Region III rate of 9780.17", given: {ma_ltc_gross_income: 10000, has_income_trust: true, ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0, county_of_residence: pueblo}, expect: false}
+  - {id: CO-642-T1, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 2030, has_income_trust: false}, expect: true}
+  - {id: CO-642-T2, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 3200, has_income_trust: false}, expect: false}
+  - {id: CO-642-T3, as_of: "2026-10-01", month: "2026-10", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 3200, has_income_trust: true, county_of_residence: denver}, expect: true}
+  - {id: CO-642-T4, as_of: "2026-10-01", month: "2026-10", title: "OQ-99: income trust but gross income above the Region III rate of 9780.17", parameters: {ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0}, given: {ma_ltc_gross_income: 10000, has_income_trust: true, county_of_residence: pueblo}, expect: false}

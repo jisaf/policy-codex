@@ -13,5 +13,5 @@ tags: [ma, ltc, resources]
 rationale: "No existing item compares ma_institutionalized_spouse_countable_resources to the individual resource limit. ma_ltc_financially_eligible (CO-651) needs it. Reuses ssi_resource_limit_individual (CO-233, batch 8) rather than a new parameter, since 8.100.7.O.1's '$2,000' is the same SSI-related individual limit 8.100.5.M.1 states."
 nearest: [CO-610]
 tests:
-  - {id: CO-648-T1, as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 1600, ssi_resource_limit_individual: 2000}, expect: true}
-  - {id: CO-648-T2, as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 16000, ssi_resource_limit_individual: 2000}, expect: false}
+  - {id: CO-648-T1, as_of: "2026-10-01", parameters: {ssi_resource_limit_individual: 2000}, given: {ma_institutionalized_spouse_countable_resources: 1600}, expect: true}
+  - {id: CO-648-T2, as_of: "2026-10-01", parameters: {ssi_resource_limit_individual: 2000}, given: {ma_institutionalized_spouse_countable_resources: 16000}, expect: false}

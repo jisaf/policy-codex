@@ -154,7 +154,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -242,7 +242,6 @@
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         home_equity: 210000
-        transfers_within_lookback: []
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -414,7 +413,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -496,7 +495,6 @@
         date_of_birth: "1945-07-30"
         sex: male
         citizenship_status: lawful_permanent_resident
-        lpr_entry_date: "1998-05-14"
         qualifying_quarters: 40
         state_of_residence: CO
         is_medicare_entitled_or_enrolled: true
@@ -673,7 +671,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -905,7 +903,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
@@ -1142,7 +1140,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
@@ -2346,7 +2344,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -2605,7 +2603,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -2692,7 +2690,6 @@
         us_entry_date: "1998-05-14"
         date_of_birth: "1945-07-30"
         citizenship_status: lawful_permanent_resident
-        lpr_entry_date: "1998-05-14"
         state_of_residence: CO
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
@@ -2863,7 +2860,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -3095,7 +3092,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
@@ -3331,7 +3328,7 @@
         cw_months_received_in_exempt_indian_country: 0
         is_emancipated_minor: false
         county_approved_living_arrangement: false
-        has_domestic_violence_waiver: false
+        has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
@@ -4612,7 +4609,6 @@
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         us_entry_date: "2023-06-15"
-        lpr_entry_date: "2023-06-15"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
         lawful_presence_status: lawfully_present
@@ -4669,7 +4665,6 @@
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         us_entry_date: "2023-06-15"
-        lpr_entry_date: "2023-06-15"
         ma_five_year_bar_exempt_category: "none"
         qualifying_quarters: 12
         lawful_presence_status: lawfully_present
@@ -6806,6 +6801,7 @@
         receives_oasdi_as_disabled_adult_child: false
         lost_ssi_or_oap_due_to_social_security_benefits: false
         lost_ssi_due_to_social_security_benefits: false
+        has_income_trust: false
       month_defaults:
         wages_gross: 0
         social_security_income: 0
@@ -6828,7 +6824,6 @@
         is_patient_in_institution_for_mental_diseases: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         receives_va_aid_and_attendance: false
-        has_income_trust: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
   expect:
@@ -7552,7 +7547,6 @@
         cccap_declared_assets: 300
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 300
-        utility_allowance_amount: 0
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         # Verification facts.
@@ -7729,7 +7723,6 @@
         cccap_declared_assets: 0
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
-        utility_allowance_amount: 0
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         verification_request_date: "2026-10-01"
