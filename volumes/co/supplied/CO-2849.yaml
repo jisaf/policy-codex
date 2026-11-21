@@ -1,0 +1,12 @@
+id: CO-2849
+name: "Runaway child"
+identifier: is_runaway_child
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The child has been identified as a runaway receiving assistance under a program under the Runaway and Homeless Youth Act by the local educational liaison or another individual FNS names (7 CFR 245.2, S1952). If not stated, SUN Bucks reads this as false."
+supplied_by: "The local educational liaison's identification."
+sources: [S790, S792, S1952]
+tags: [sebt]
+rationale: "Dual-entry audit 3.27: sebt_other_categorical_basis (CO-1296) bundled this ground with homelessness and foster care, which other facts state; it is now derived, and this is the one ground no other fact states."

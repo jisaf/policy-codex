@@ -1,0 +1,16 @@
+id: CO-2415
+name: "Medicaid: receives subsidized adoption payments"
+identifier: ma_receives_subsidized_adoption_payments
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: Whether the person receives subsidized adoption payments (10 CCR 2505-10 § 8.100.4.H.1.g, H.2.a.i). If child_welfare_payment_type is not stated, Medicaid reads this as false.
+derived: [in, child_welfare_payment_type, [title_iv_e_adoption_assistance, state_subsidized_adoption]]
+sources: [S1717, S1718]
+implemented: engine
+tags: [ma, age]
+rationale: "C-3 and C-9 of the HCPF review: H.1.g ends the extension to 21 and H.2.a.i excludes former foster care youth for a person receiving subsidized adoption payments; no fact stated it. Same-word audit SW-8, dual-entry 3.21: derived from child_welfare_payment_type (CO-2847)."
+tests:
+  - {id: CO-2415-T1, title: "State subsidized adoption", as_of: "2026-11-01", given: {child_welfare_payment_type: state_subsidized_adoption}, expect: true}
+  - {id: CO-2415-T2, title: "Foster care", as_of: "2026-11-01", given: {child_welfare_payment_type: title_iv_e_foster_care}, expect: false}

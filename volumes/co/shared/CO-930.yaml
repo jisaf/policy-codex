@@ -1,0 +1,18 @@
+id: CO-930
+name: Is married
+identifier: is_married
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person is legally married: a spouse edge to a person of the case, or marital_status married for a spouse who is not a person of the case. A couple living together who are not married (holds_out_as_spouse_with) is not married. If neither is stated, the person is read as not married."
+precision: "Reads marital status by the existence of a spouse relationship, regardless of whether the spouse is institutionalized, unlike ma_ssi_household_size's living-together test, because 3.520.72.A's own text splits on 'married'/'unmarried' alone, with no living-together carve-out stated."
+derived: [any, [otherwise, [exists_related, [spouse], true], false], [=, [otherwise, marital_status, single], married]]
+sources: [S454]
+implemented: engine
+tags: [cash, oap, and, ab, resources]
+rationale: "No existing item states Adult Financial's own plain-marriage test as a standalone fact; af_countable_resources (CO-947) and af_meets_resource_limit (CO-948) both recomputed the identical [exists_related, [spouse], true] test independently (the phase-5 review's M-6 finding), so a future change to the married test (e.g. resolving CO-947's own precision note on the divergence from CO-608's living-together rule) would have to be made in two places. Factored out here and read by both. Dual-entry audit 3.4 and same-word audit SW-6: renamed from af_is_married and made the one shared reading of marriage, so the edge and marital_status are read together and every reader of 'married' reads this."
+nearest: [CO-947]
+tests:
+  - {id: CO-930-T1, as_of: "2026-10-01", given: {}, others: {}, relationships: [], expect: false}
+  - {id: CO-930-T2, as_of: "2026-10-01", given: {}, others: {p2: {}}, relationships: [[spouse, p2]], expect: true}

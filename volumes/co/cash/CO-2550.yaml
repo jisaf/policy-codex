@@ -1,0 +1,16 @@
+id: CO-2550
+name: "Colorado Works: months of the last six in which child support was received"
+identifier: cw_child_support_months_received_of_last_six
+kind: derived
+type: whole number
+scope: person
+program: ColoradoWorks
+meaning: At a Colorado Works redetermination, the number of the six months before the redetermination (0 to 6) in which the assistance unit received current child support for this person. 9 CCR 2503-6 3.605.5.C.1 treats child support as consistent only when it was received in all six of the six previous months; inconsistent support is not countable.
+precision: "The six months before the determination month (cw_child_support_history_months). A month whose support is not stated is unknown, so the count is unknown until every month is stated."
+derived: [count_months, [months_ending, cw_child_support_history_months, [month_before, [det_month]]], [">", [at, child_support_received, [month]], 0]]
+sources: [S1805]
+implemented: engine
+tags: [cash, tanf, income]
+rationale: "CDHS review B-2: no fact stated the child support history 3.605.5.C reads at redetermination; cw_counted_child_support (CO-2553) needs it. child_support_received (CO-847) states one month's amount only. Dual-entry audit 2.2: derived from the months of child_support_received (CO-028) the case states, so the history is not entered beside the months."
+tests:
+  - {id: CO-2550-T1, title: "Received in five of the six months", as_of: "2026-11-01", given: {}, persons: {p1: {months: {"2026-05": {child_support_received: 500}, "2026-06": {child_support_received: 500}, "2026-07": {child_support_received: 0}, "2026-08": {child_support_received: 500}, "2026-09": {child_support_received: 500}, "2026-10": {child_support_received: 500}}}}, expect: 5}

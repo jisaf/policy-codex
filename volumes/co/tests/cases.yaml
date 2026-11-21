@@ -19,9 +19,6 @@
     - [parent, p2, p3]
     - [parent, p3, p4]
     - [parent, p4, p5]
-    - [grandparent, p1, p4]
-    - [grandparent, p2, p4]
-    - [grandparent, p3, p5]
     - [tax_filer, p3, p4]
     - [tax_filer, p3, p5]
     - [buys_prepares_with, p1, p2]
@@ -32,6 +29,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -75,7 +73,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -138,7 +135,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -157,7 +153,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -188,7 +183,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -293,6 +287,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -329,7 +324,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -392,7 +386,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -412,7 +405,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -446,7 +438,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -548,6 +539,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -585,7 +577,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -648,7 +639,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -668,7 +658,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -691,7 +680,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -779,6 +767,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -822,7 +811,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -887,7 +875,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -902,7 +889,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -926,7 +912,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -1018,6 +1003,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -1059,7 +1045,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -1122,7 +1107,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -1141,7 +1125,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -1165,7 +1148,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -2222,9 +2204,6 @@
     - [parent, p2, p3]
     - [parent, p3, p4]
     - [parent, p4, p5]
-    - [grandparent, p1, p4]
-    - [grandparent, p2, p4]
-    - [grandparent, p3, p5]
     - [tax_filer, p3, p4]
     - [tax_filer, p3, p5]
     - [buys_prepares_with, p2, p3]
@@ -2233,6 +2212,7 @@
   persons:
     p1:
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -2278,7 +2258,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -2341,7 +2320,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2360,7 +2338,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -2393,7 +2370,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -2494,6 +2470,7 @@
         pension_income: 610
     p2:
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -2532,7 +2509,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -2595,7 +2571,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2615,7 +2590,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -2649,7 +2623,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -2749,6 +2722,7 @@
         social_security_income: 1180
     p3:
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -2788,7 +2762,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -2851,7 +2824,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2871,7 +2843,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -2895,7 +2866,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -2980,6 +2950,7 @@
         hours_worked: 138
     p4:
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -3025,7 +2996,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -3090,7 +3060,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -3105,7 +3074,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -3129,7 +3097,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -3218,6 +3185,7 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -3261,7 +3229,6 @@
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
         is_enrolled_in_nslp_school: false
-        sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
         leap_electric_heat_dwelling_type: not_electric
         leap_households_sharing_living_arrangement: 1
@@ -3324,7 +3291,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -3343,7 +3309,6 @@
         is_full_time_secondary_student_finishing_before_nineteen: false
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cccap_child_has_additional_care_needs: false
         is_protective_services_child_care_case: false
         is_in_job_search_activity: false
@@ -3366,7 +3331,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -4652,7 +4616,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -4709,7 +4672,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -4765,7 +4727,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
@@ -4819,7 +4780,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
@@ -4868,7 +4828,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -5060,7 +5019,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -5093,6 +5051,7 @@
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
       facts:
+        foster_care_exit_date: "2022-06-19"  # dual-entry 2.9: aged out at 20 (was ma_age_at_foster_care_exit: 20)
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         lottery_gambling_winnings_amount: 0
@@ -5107,7 +5066,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
-        age_at_foster_care_exit: 20
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
@@ -5175,7 +5133,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         chp_has_other_health_coverage: false
@@ -5412,7 +5369,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -5488,7 +5444,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -5555,7 +5510,6 @@
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -5661,13 +5615,12 @@
     - [parent, p2, p3]
     - [parent, p2, p4]
     - [parent, p5, p1]        # Rosa is Dana's mother, same home; not a CW unit member
-    - [grandparent, p5, p3]
-    - [grandparent, p5, p4]
   persons:
     p1:
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         # Phase-10 sweep (OQ-114): the parents are enrolled in Medicaid as Colorado Works parents, and each has income
@@ -5686,7 +5639,6 @@
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 58
         cw_months_received_in_exempt_indian_country: 0
@@ -5733,6 +5685,7 @@
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         date_of_birth: "1990-07-02"
@@ -5749,7 +5702,6 @@
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 61
         cw_months_received_in_exempt_indian_country: 0
@@ -5796,6 +5748,7 @@
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         date_of_birth: "2017-05-09"
@@ -5813,7 +5766,6 @@
         county_approved_living_arrangement: false
         receives_ssi: true
         ssi_income: 700
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -5857,6 +5809,7 @@
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         date_of_birth: "2022-01-18"
@@ -5873,7 +5826,6 @@
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -5918,6 +5870,7 @@
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: own_disability
         receives_disability_based_state_supplement: false
         date_of_birth: "1964-05-20"
@@ -5934,7 +5887,6 @@
         is_emancipated_minor: false
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -6088,6 +6040,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
         cw_excluded_earned_income: 0
@@ -6106,7 +6059,6 @@
         # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
         # cw_eligibility_status and cw_grant_amount.
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -6155,6 +6107,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
         cw_excluded_earned_income: 0
@@ -6172,7 +6125,6 @@
         # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
         # cw_eligibility_status and cw_grant_amount.
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -6224,6 +6176,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
         cw_excluded_earned_income: 0
@@ -6239,7 +6192,6 @@
         # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
         # cw_eligibility_status and cw_grant_amount.
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -6294,6 +6246,7 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         cw_determination_is_redetermination: false
         cw_excluded_earned_income: 0
@@ -6310,7 +6263,6 @@
         # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
         # cw_eligibility_status and cw_grant_amount.
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -6361,13 +6313,13 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         received_tanf_from_another_state_this_month: false
         is_pregnant: false
         # Task 3 of the engineering follow-up pass: the facts Colorado Works reads, in place of the stated
         # cw_eligibility_status and cw_grant_amount.
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: false
         leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
@@ -6506,11 +6458,11 @@
     - [parent, p2, p1]
     - [parent, p3, p2]
     - [parent, p1, p4]
-    - [grandparent, p2, p4]
     - [tax_filer, p1, p4]
   persons:
     p1:
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         medicare_part_a_entitled: false
@@ -6536,7 +6488,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -6549,7 +6500,6 @@
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         has_reproductive_capacity: true
         receives_tanf_cash: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
@@ -6576,6 +6526,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         medicare_part_a_entitled: false
@@ -6603,7 +6554,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -6617,7 +6567,6 @@
         has_reproductive_capacity: false
         ma_bccp_has_creditable_coverage: false
         receives_tanf_cash: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
@@ -6643,6 +6592,7 @@
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         medicare_part_b_enrolled: false
@@ -6679,7 +6629,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -6702,7 +6651,6 @@
         has_reproductive_capacity: false
         retains_ssi_status_without_payment: false
         receives_tanf_cash: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
         wages_gross: 0
@@ -6734,6 +6682,7 @@
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         medicare_part_a_entitled: false
@@ -6759,7 +6708,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -6770,7 +6718,6 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         receives_tanf_cash: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
         in_kind_support_and_maintenance: 0
@@ -6884,7 +6831,6 @@
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -6975,10 +6921,11 @@
   as_of: "2026-11-01"
   relationships:
     - [parent, p3, p4]
-    - [buys_prepares_with, p1, p2]   # states p1's relationships (none is a spouse, so she is unmarried for af_is_married)
+    - [buys_prepares_with, p1, p2]   # states p1's relationships (none is a spouse, so she is unmarried for is_married)
   persons:
     p1:
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
         nighttime_residence_type: fixed_regular_adequate
@@ -7006,7 +6953,6 @@
         died_while_receiving_af_or_medicaid: false
         receives_tanf_cash: false
         has_applied_for_ssi: true
-        receives_title_iv_foster_adoption_kinship_payment: false
         is_deceased_colorado_works_client: false
       month_defaults:
         wages_gross: 0
@@ -7040,6 +6986,7 @@
         is_deceased_colorado_works_client: false
     p3:
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
         state_of_residence: CO
@@ -7054,7 +7001,6 @@
         marital_status: single
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
@@ -7087,6 +7033,7 @@
         work_sanction_level_served: second
     p4:
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
@@ -7096,7 +7043,6 @@
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: true
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false   # CDHS review B-1: the grant now reads the unit's status on p4 too
         receives_tanf_cash: true
         snap_is_indian_or_urban_indian: false
@@ -7109,7 +7055,6 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
@@ -7166,6 +7111,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -7199,7 +7145,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
@@ -7291,7 +7236,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7330,6 +7274,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -7364,7 +7309,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
@@ -7453,7 +7397,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7590,6 +7533,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -7639,7 +7583,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
@@ -7731,7 +7674,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7773,6 +7715,7 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         ma_is_requesting_coverage: true
         chp_is_requesting_coverage: true
@@ -7823,7 +7766,6 @@
         receives_state_cash_assistance: false
         snap_receives_permanent_disability_retirement_benefit: false
         has_va_aid_attendance_housebound_or_survivor_finding: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         mother_was_enrolled_in_medicaid_at_birth: false
         has_military_connection: false
         federal_five_year_bar_exempt_category: "none"
@@ -7910,7 +7852,6 @@
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
         residency_verification_cannot_reasonably_be_accomplished: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -8195,6 +8136,7 @@
     p1:
       relationships: []
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         va_disability_rating_type: none
         medicare_part_a_entitled: false
@@ -8211,7 +8153,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -8220,7 +8161,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
         ma_is_indian: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8255,6 +8195,7 @@
     p2:
       relationships: []
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         va_disability_rating_type: none
         medicare_part_a_entitled: false
@@ -8271,7 +8212,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -8280,7 +8220,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
         ma_is_indian: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8314,6 +8253,7 @@
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        child_welfare_payment_type: none
         ma_determination_type: initial_application
         va_disability_rating_type: none
         medicare_part_a_entitled: false
@@ -8330,7 +8270,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
@@ -8339,7 +8278,6 @@
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
-        is_in_title_iv_foster_care_or_adoption_assistance: false
         receives_tanf_cash: false
         ma_is_indian: false
         ma_condition_significantly_impairs_community_engagement: false
@@ -8390,7 +8328,6 @@
         is_pregnant: false
         expected_number_of_children: 0
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
         is_full_time_secondary_student_finishing_before_nineteen: false
@@ -8464,6 +8401,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -8544,7 +8482,6 @@
         marital_status: married
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -8554,6 +8491,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -8635,7 +8573,6 @@
         marital_status: married
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -8645,6 +8582,7 @@
     p3:
       # Daughter, 8.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -8725,7 +8663,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -8801,7 +8738,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -8863,7 +8799,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -8925,7 +8860,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -8988,7 +8922,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9096,7 +9029,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9158,7 +9090,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9220,7 +9151,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9283,7 +9213,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9398,7 +9327,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9461,7 +9389,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9524,7 +9451,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9587,7 +9513,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9684,7 +9609,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9755,7 +9679,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9817,7 +9740,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9911,7 +9833,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -9975,7 +9896,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -10039,7 +9959,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -10103,7 +10022,6 @@
         expects_to_be_claimed_as_dependent: false
         medicare_part_a_entitled: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
-        age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -10178,6 +10096,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -10258,7 +10177,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -10268,6 +10186,7 @@
     p2:
       # Her son, 5.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -10348,7 +10267,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -10359,6 +10277,7 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -10439,7 +10358,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 72
         cw_months_received_in_exempt_indian_country: 0
@@ -10451,6 +10369,7 @@
     p4:
       # Her daughter, 11.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -10531,7 +10450,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -10544,6 +10462,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -10624,7 +10543,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -10634,6 +10552,7 @@
     p6:
       # Her son, 7.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -10714,7 +10633,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -10759,6 +10677,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
         state_of_residence: CO
@@ -10773,7 +10692,6 @@
         marital_status: single
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
@@ -10807,6 +10725,7 @@
     p2:
       # Her son; $200 a month of current support.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
@@ -10816,7 +10735,6 @@
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: true
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: false
         snap_is_indian_or_urban_indian: false
@@ -10829,7 +10747,6 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
@@ -10850,6 +10767,7 @@
     p3:
       # Recipient mother at redetermination.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
         state_of_residence: CO
@@ -10864,7 +10782,6 @@
         marital_status: single
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
@@ -10900,6 +10817,7 @@
     p4:
       # Support in 6 of 6 months, average $550.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
@@ -10909,7 +10827,6 @@
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: true
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
         snap_is_indian_or_urban_indian: false
@@ -10922,13 +10839,10 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         cw_determination_is_redetermination: true
-        cw_child_support_months_received_of_last_six: 6
-        cw_child_support_six_month_average: 550
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10946,6 +10860,7 @@
     p5:
       # Recipient mother at redetermination.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
         state_of_residence: CO
@@ -10960,7 +10875,6 @@
         marital_status: single
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
@@ -10996,6 +10910,7 @@
     p6:
       # Support in 5 of 6 months, average $600.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
@@ -11005,7 +10920,6 @@
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: true
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
         snap_is_indian_or_urban_indian: false
@@ -11018,13 +10932,10 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         cw_determination_is_redetermination: true
-        cw_child_support_months_received_of_last_six: 5
-        cw_child_support_six_month_average: 600
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -11039,9 +10950,14 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         work_sanction_level_served: none
+      # Dual-entry audit 2.2: support was received in five of the six months before the redetermination
+      # (none in July), so cw_child_support_months_received_of_last_six derives 5 (was stated 5).
+      months:
+        "2026-07": {child_support_received: 0}
     p7:
       # Recipient mother at redetermination.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "1991-05-01"
         citizenship_status: citizen
         state_of_residence: CO
@@ -11056,7 +10972,6 @@
         marital_status: single
         county_approved_living_arrangement: false
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 14
         cw_months_received_in_exempt_indian_country: 0
@@ -11092,6 +11007,7 @@
     p8:
       # Support in 6 of 6 months, average $450.
       facts:
+        child_welfare_payment_type: none
         date_of_birth: "2018-02-11"
         citizenship_status: citizen
         state_of_residence: CO
@@ -11101,7 +11017,6 @@
         is_attending_high_school: false
         cccap_is_in_education_or_training_activity: true
         receives_ssi: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         receives_tanf_cash: true
         snap_is_indian_or_urban_indian: false
@@ -11114,13 +11029,10 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_enrolled_in_nslp_school: true
-        sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         meets_county_diversion_income_limit: false
         cw_determination_is_redetermination: true
-        cw_child_support_months_received_of_last_six: 6
-        cw_child_support_six_month_average: 450
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -11168,6 +11080,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11248,7 +11161,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11259,6 +11171,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11339,7 +11252,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11378,6 +11290,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11457,7 +11370,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11490,6 +11402,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11569,7 +11482,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11614,6 +11526,7 @@
     p1:
       # 35, refuses to give an SSN, earns $1,200.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11693,7 +11606,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11705,6 +11617,7 @@
     p2:
       # Her son, 10.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11784,7 +11697,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11795,6 +11707,7 @@
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -11874,7 +11787,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -11921,6 +11833,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -12001,7 +11914,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -12011,6 +11923,7 @@
     p2:
       # Her daughter.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -12091,7 +12004,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -12122,6 +12034,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -12201,7 +12114,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -12240,6 +12152,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        child_welfare_payment_type: none
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
         va_disability_rating_type: none
@@ -12319,7 +12232,6 @@
         marital_status: single
         is_requesting_assistance_for_own_child: false
         is_sponsored_non_citizen: false
-        receives_title_iv_foster_adoption_kinship_payment: false
         received_tanf_from_another_state_this_month: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0

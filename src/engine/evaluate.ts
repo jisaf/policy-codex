@@ -602,7 +602,17 @@ export function evaluate(
           if (r !== inverse) continue;
           for (const [r2, x] of c.rels[y] ?? []) if (r2 === role && x !== p) out.add(x);
         }
-        return Object.keys(c.persons).filter((pid) => out.has(pid));
+        const shared = Object.keys(c.persons).filter((pid) => out.has(pid));
+        if (e[2] !== "every") return shared;
+        // P50, "every": only the persons whose holders of the role are exactly
+        // this person's (with "parent": full siblings, who share both legal
+        // parents). Another person's unstated relationships are read as none.
+        const holders = (q: string) => new Set((c.rels[q] ?? []).filter(([r]) => r === inverse).map(([, y]) => y));
+        const mine = holders(p);
+        return shared.filter((x) => {
+          const h = holders(x);
+          return h.size === mine.size && [...mine].every((y) => h.has(y));
+        });
       }
       case "reachable": {
         // The persons joined to this person by a chain of the named

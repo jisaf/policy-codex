@@ -6,7 +6,7 @@ type: group of persons
 scope: person
 program: All
 meaning: "The persons, other than this person, who share a legal parent (natural or adoptive) with this person: full and half siblings."
-precision: "Read from the parent role. A sibling is never stated as a relationship; each program picks the siblings it means: MAGI and community engagement add step_siblings (CO-2610), Colorado Works reads these. Full and half siblings are not told apart here (same-word audit SW-2); Colorado Works's half-sibling arm stays in cw_is_optional_member_by_custody_or_support (CO-2347)."
+precision: "Read from the parent role. A sibling is never stated as a relationship; each program picks the siblings it means: MAGI and community engagement add step_siblings (CO-2610), Colorado Works reads these. Full and half siblings are told apart by full_siblings (CO-2840) and half_siblings (CO-2841); Colorado Works's optional half sibling who receives child support reads half_siblings (CO-2842)."
 derived: [shared_relative, parent]
 sources: [S169, S408, S1207]
 implemented: engine

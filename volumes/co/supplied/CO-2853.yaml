@@ -1,0 +1,12 @@
+id: CO-2853
+name: Foster care exit date
+identifier: foster_care_exit_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person's foster care placement under the responsibility of Colorado or a Tribe ended. Not stated for a person who was never in foster care."
+supplied_by: The child welfare (Trails) case record.
+sources: [S1718]
+tags: [ma, magi]
+rationale: "Dual-entry audit 2.9: ma_age_at_foster_care_exit (CO-095) is an age at a date, computable from date_of_birth and the exit date."

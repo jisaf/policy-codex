@@ -1,0 +1,15 @@
+id: CO-2844
+name: "SNAP: months of child support payment history averaged"
+identifier: snap_child_support_history_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The number of months of past legally obligated child support payments 10 CCR 2506-1 4.407.5.D averages (S1314, S99)."
+versions:
+  - from: "2000-01-01"
+    value: 3
+    source: S1314
+sources: [S1314, S99]
+tags: [snap, income]
+rationale: "Dual-entry audit 2.3: the derived payment history (CO-2002) counts these months; the figure is set by rule."

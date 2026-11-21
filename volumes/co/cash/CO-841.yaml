@@ -1,0 +1,15 @@
+id: CO-841
+name: "Colorado Works: receives a Title IV foster care, adoption or kinship payment"
+identifier: cw_receives_title_iv_foster_adoption_kinship_payment
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "The person receives a foster care, adoption assistance or kinship care payment under title IV of the Social Security Act for the month."
+derived: [in, child_welfare_payment_type, [title_iv_e_foster_care, title_iv_e_adoption_assistance, title_iv_e_kinship_guardianship]]
+sources: [S409]
+implemented: engine
+rationale: "No existing fact in this volume's interface captures this exclusion; cw_assistance_unit_members (CO-900) needs it to correctly exclude a foster or kinship child from the assistance unit. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1): the meaning states the payment only; Colorado Works exempts it and Medicaid reads it for the citizenship-verification exemption. Same-word audit SW-8, dual-entry 3.21: derived from child_welfare_payment_type (CO-2847). Title IV payments are the IV-E foster care, adoption assistance and kinship guardianship payments."
+tests:
+  - {id: CO-841-T1, title: "IV-E foster care", as_of: "2026-11-01", given: {child_welfare_payment_type: title_iv_e_foster_care}, expect: true}
+  - {id: CO-841-T2, title: "State-funded subsidized adoption", as_of: "2026-11-01", given: {child_welfare_payment_type: state_subsidized_adoption}, expect: false}

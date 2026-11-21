@@ -185,6 +185,10 @@ Added for the engineering item follow-up pass (a calendar month without a fixed 
 
 - P49 `the calendar month number of [month]` (`month_of_year`) the number of the month in its year, 1 (January) to 12 (December); unknown when the month is unknown. A rule anchored to a month of each year (the LEAP program year from November, 9 CCR 2503-7 3.751.1; the compulsory attendance age on August 1, C.R.S. 22-33-104(1)(a)) finds the most recent such month as this month less the months since that calendar month, instead of counting whole years from a fixed anchor month
 
+Added for the same-word audit fix round (full and half siblings)
+
+- P50 `the persons who share every [relationship] with this person` (`shared_relative` with `"every"`) the persons, other than this person, whose persons in the role are exactly this person's: with `parent`, the full siblings, who share both legal parents; P43 without `every` gives full and half siblings. Unknown when this person's relationships are unstated
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

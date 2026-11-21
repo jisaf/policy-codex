@@ -241,6 +241,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         return "yes/no";
       case "shared_relative":
         if (typeof e[1] !== "string" || !e[1]) errors.push("shared relative: relationship missing");
+        if (e.length > 2 && e[2] !== "every") errors.push('shared relative: the only option is "every"');
         roles(e[1]);
         refs.add("relationships");
         return "group";

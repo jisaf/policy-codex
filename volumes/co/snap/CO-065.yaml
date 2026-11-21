@@ -7,7 +7,7 @@ scope: person
 program: SNAP
 meaning: The person is responsible for the care of an incapacitated household member (not a dependent child), the second prong of the 7 U.S.C. 2015(d)(2)(B) / 7 CFR 273.7(b)(1)(iv) work-registration exemption.
 derived: [exists, snap_household_members, [all, [in_group, [P], snap_persons_cared_for], [otherwise, [of, [P], needs_care_due_to_incapacity], false]]]
-sources: []
+sources: [S121, S126]
 implemented: engine
 tags: [work_registration]
 rationale: "The work-registration exemption for caring for a dependent child under 6 reads \"or an incapacitated person\" (S121, S124); no existing fact in this volume's interface captures the incapacitated-person branch, and unlike the child-under-6 branch it cannot be derived from age alone. Same-word audit SW-25: derived from the care roles (snap_persons_cared_for, CO-042) and the cared-for member's incapacity (CO-2832)."

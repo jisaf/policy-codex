@@ -1,0 +1,17 @@
+id: CO-095
+name: Age at foster care exit
+identifier: ma_age_at_foster_care_exit
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: The person's age, in whole years, on the date their foster care placement (under the responsibility of Colorado or a Tribe) ended, for the Former Foster Care Children Medical Assistance category - 42 CFR 435.150(b)(3) and 10 CCR 2505-10 8.100.4.H.2.a, which extends the category to youth who aged out at 18, 19, 20, or up to 21, not only at 18.
+precision: "Whole years between date_of_birth and foster_care_exit_date (P9); unknown for a person with no exit date, who was never in foster care."
+derived: [years_between, date_of_birth, foster_care_exit_date]
+sources: [S1718]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "No existing item carries a foster-care exit age. was_foster_youth_at_eighteen (batch 1 interface) carries only a single yes/no about age 18, which the phase-3 review's C-9 finding found makes ma_is_former_foster_care_category (CO-549) miss the Colorado youth who aged out of foster care at 19, 20, or up to 21 - a real population 8.100.4.H.2.a expressly covers ('on their 18th, 19th, 20th or up to their 21st birthday'). nearest: [was_foster_youth_at_eighteen] (the fact this item replaces for CO-549's purposes; was_foster_youth_at_eighteen is left in the shared interface as-is since other consumers may still read the narrower fact, per the phase-3 review's C-9/S-7 findings, which fault the identifier's name rather than call for its removal). Dual-entry audit 2.9: derived from date_of_birth and foster_care_exit_date (CO-2853)."
+nearest: [was_foster_youth_at_eighteen]
+tests:
+  - {id: CO-095-T1, title: "Left foster care at 20", as_of: "2026-11-01", given: {date_of_birth: "2005-03-01", foster_care_exit_date: "2025-06-30"}, expect: 20}

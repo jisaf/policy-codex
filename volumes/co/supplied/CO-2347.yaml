@@ -5,9 +5,9 @@ kind: supplied
 type: yes/no
 scope: person
 program: ColoradoWorks
-meaning: "This person is an optional assistance-unit member for a reason the relationships do not show: a half sibling of the dependent children who receives child support (3.604.2.C.2.d), a sibling not in the legal custody of the requesting caretaker by court order, child welfare involvement or adoption (C.2.e), or a parent who lives in the home of another caretaker and no longer has legal custody of the dependent children (C.2.f)."
+meaning: "This person is an optional assistance-unit member for a reason the relationships do not show: a sibling not in the legal custody of the requesting caretaker by court order, child welfare involvement or adoption (3.604.2.C.2.e), or a parent who lives in the home of another caretaker and no longer has legal custody of the dependent children (C.2.f). A half sibling who receives child support (C.2.d) is derived (cw_is_half_sibling_receiving_child_support, CO-2842)."
 precision: "If not stated, Colorado Works reads this as false: a sibling, half sibling or parent in the home is a mandatory member (C.1.b-d)."
 supplied_by: "Custody documents, child support records, applicant statement."
 sources: [S1625]
 tags: [cash, tanf, household]
-rationale: "OQ-152: C.2.d-f turn on child support, legal custody and court orders, which the relationship roles do not carry; this fact states the classification so the request (cw_requests_inclusion_in_assistance_unit, CO-2346) decides membership."
+rationale: "OQ-152: C.2.d-f turn on child support, legal custody and court orders, which the relationship roles do not carry; this fact states the classification so the request (cw_requests_inclusion_in_assistance_unit, CO-2346) decides membership. Same-word audit SW-2: the half-sibling arm moved to the derived CO-2842."

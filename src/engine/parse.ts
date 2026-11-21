@@ -138,6 +138,9 @@ export function parseInline(
   if ((m = s.match(/^that person is a (.+?) of a person in (.+)$/))) {
     return ["has_relative_in", m[1].split(" or ").map((x) => x.trim()), p(m[2])];
   }
+  if ((m = s.match(/^the persons who share every (.+) with this person$/))) {
+    return ["shared_relative", m[1].trim(), "every"];
+  }
   if ((m = s.match(/^the persons who share a (.+) with this person$/))) {
     return ["shared_relative", m[1].trim()];
   }

@@ -80,7 +80,9 @@ describe("the co suite", () => {
   });
 
   it("records each case's month window and each rule test's isolation", () => {
-    expect(byId("CO-01").months_read).toEqual({ from: "2026-10", to: "2026-10" });
+    // SNAP's child support payment history (CO-2002) is the number of the three months before the
+    // budget month whose payment is stated, so CO-01 reads back to July (dual-entry audit 2.3).
+    expect(byId("CO-01").months_read).toEqual({ from: "2026-07", to: "2026-10" });
     const iso = suite.cases.filter((c) => c.kind === "rule-test").map((c) => c.isolation);
     expect(iso.every((x) => x === "unit" || x === "integration")).toBe(true);
     expect(iso.filter((x) => x === "unit").length).toBeGreaterThan(500);

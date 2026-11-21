@@ -1,0 +1,16 @@
+id: CO-2841
+name: Half siblings
+identifier: half_siblings
+kind: derived
+type: group of persons
+scope: person
+program: All
+meaning: "The persons, other than this person, who share exactly one legal parent (natural or adoptive) with this person: siblings who are not full siblings."
+derived: [filter, siblings, [not, [in_group, [P], full_siblings]]]
+sources: [S1625, S1207]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-2: Colorado Works makes a half sibling who receives child support an optional member (3.604.2.C.2.d, S1625), and community engagement counts half-blood relatives only at the State's option (S1207). No existing item states half siblings."
+nearest: [CO-2609, CO-2610, CO-2840]
+tests:
+  - {id: CO-2841-T1, title: "A half brother through the mother", as_of: "2026-11-01", given: {}, others: {p2: {}, p3: {}, p4: {}, p5: {}}, relationships: [[parent, p2, p1], [parent, p3, p1], [parent, p2, p4], [parent, p3, p4], [parent, p2, p5]], expect: [p5]}

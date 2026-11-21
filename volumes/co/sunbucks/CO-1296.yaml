@@ -1,0 +1,19 @@
+id: CO-1296
+name: Other Summer EBT categorical basis
+identifier: sebt_other_categorical_basis
+kind: derived
+type: yes/no
+scope: person
+program: SunBucks
+meaning: The child is categorically eligible for Summer EBT on a ground other than SNAP or TANF receipt - a foster, homeless, migrant, runaway or Head Start child as defined in 7 CFR 245.2, a member of a household receiving FDPIR, or a member of a household receiving another means-tested program the Secretary has approved for the Summer EBT agency - or was individually certified for free or reduced-price meals during the period of eligibility, per 7 CFR 292.2 ("Categorically eligible"), 292.6 and 292.12(d).
+precision: "A foster child is formally placed by a court or a Title IV-B or IV-E agency (7 CFR 245.2, S1952): the foster_child role, or a foster care payment or IV-B service in the child welfare record. FDPIR, migrant, runaway, Head Start and other grounds are positive identifications by an official; their absence is read as no such ground."
+derived: [any, sebt_is_homeless_child, [otherwise, [exists_related, [foster_child], true], false], [in, child_welfare_payment_type, [title_iv_e_foster_care, state_funded_foster_care, title_iv_b_services_only]], [otherwise, is_migrant_child, false], [otherwise, is_runaway_child, false], [otherwise, is_head_start_child, false], [otherwise, receives_fdpir, false], [otherwise, sebt_other_documented_categorical_basis, false]]
+sources: [S790, S792, S1952]
+implemented: engine
+open: [OQ-255]
+tags: [sebt]
+rationale: "SNAP and TANF receipt are read from the volume's own facts; the remaining categorical grounds have no fact in the volume and enter as one supplied yes/no. sebt_eligibility_status (CO-1298) needs it. Dual-entry audit 3.27 and same-word audit SW-8: derived, so homelessness (sebt_is_homeless_child, CO-2813) and foster care (the foster_child role or child_welfare_payment_type, CO-2847) are not stated a second time; the remaining grounds are their own facts (CO-2848 to CO-2852)."
+tests:
+  - {id: CO-1296-T1, title: "A child placed in foster care", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: title_iv_e_foster_care}, others: {p2: {}}, relationships: [[foster_child, p1, p2]], expect: true}
+  - {id: CO-1296-T2, title: "Head Start", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: none, is_head_start_child: true}, relationships: [], expect: true}
+  - {id: CO-1296-T3, title: "No ground", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: none}, relationships: [], expect: false}

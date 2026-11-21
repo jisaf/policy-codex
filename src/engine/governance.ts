@@ -88,7 +88,7 @@ function mask(ix: LedgerIndex, e: Expr): Expr {
   if (op === "rel" || op === "exists_related") {
     return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   }
-  if (op === "shared_relative") return [op, MASK];
+  if (op === "shared_relative") return e.length > 2 ? [op, MASK, e[2]] : [op, MASK];
   if (op === "has_relative_in") return [op, (e[1] as unknown[] || []).map(() => MASK), m(e[2])];
   if (op === "reachable") {
     const out: unknown[] = [op, (e[1] as unknown[] || []).map(() => MASK)];
