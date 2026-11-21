@@ -76,3 +76,13 @@ After the codex is complete and the stakeholder reviews are fixed. The current a
 - Hard-coded figures in derivations become parameters or tables (OQ-82). Facts that another record or edge can supply are read from it, not entered twice (OQ-97, OQ-95). Where a rule asks for a lighter determination (attested rather than computed income, OQ-54), the ledger uses the lighter fact.
 - OQ-44 is to be fixed: one immigration-status fact with the full documented category set; per-program derived eligibility. OQ-216, OQ-323, OQ-396 and OQ-413 are to be fixed in full.
 Audits (read-only, docs/reviews/audit-*.md): hard-coded numbers; dual entry and derivable facts; heavier-than-needed definitions; same word, different meaning. A fix round follows each.
+
+### Stopping rule (product owner, 2026-11-21)
+The Colorado volume is complete when a fresh verification pass (one reviewer per program family, reading the current rule text) finds:
+1. no P1: no wrong eligibility or benefit answer, no missing pathway or program, no element a rule reads that is undefined;
+2. every remaining open question classed either as a genuine state policy choice (with the text checked recorded) or as blocked on a named document no allowed host serves;
+3. if usage allows before the next usage reset, no P2 either (maintainability and approval-risk findings); otherwise every P2 is listed with its disposition.
+`npm run check` (with the conformance self-check on every volume), typecheck and the unit tests pass at the commit the pass reviews.
+
+### Phase 13 started early (2026-11-21)
+The product owner asked for the UI work to run in parallel with the audit fix tracks. Discovery walkthroughs run now; the aid-code layer waits until the outcome names settle after fix track 1.
