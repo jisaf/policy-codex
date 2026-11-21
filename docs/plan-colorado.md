@@ -55,3 +55,6 @@ Each open question is answered from published rule where one exists (the item is
 
 ### Phase 11: wrap-up
 Notes, README/volume.yaml status, handoff regenerated.
+
+### Phase 12: stakeholder reviews (requested 2026-11-21)
+After phases 7–11, six high-effort reviewers, each writing to docs/reviews/: an HCPF program manager (Medicaid, CHP+), a CDHS program representative (SNAP, Colorado Works, Adult Financial, LEAP, SUN Bucks, CCCAP), a county case worker tracing why a case passed or failed, a Drools developer, a Corticon developer, and a developer building a new rules-as-code engine that executes the codex files directly as a directed acyclic graph. Findings are fixed or answered before the volume is called complete.
