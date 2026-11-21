@@ -5,8 +5,8 @@ kind: parameter
 type: money
 scope: global
 program: All
-meaning: The first $20 of a person's (or couple's) unearned income in a month, disregarded before comparing countable income to the SSI-related income standard, per 20 CFR 416.1124(c)(12) and 10 CCR 2505-10 8.100.5.H.4.a.
-precision: One $20 disregard per couple, not per person (8.100.5.H.4.a.iii); applied to unearned income first, with any unused portion applied to earned income.
+meaning: The amount of a person's (or couple's) unearned income in a month disregarded first, before comparing countable income to the SSI-related income standard, per 20 CFR 416.1124(c)(12) and 10 CCR 2505-10 8.100.5.H.4.a.
+precision: One disregard per couple, not per person (8.100.5.H.4.a.iii); applied to unearned income first, with any unused portion applied to earned income.
 value: 20
 sources: [S308, S310]
 tags: [income]

@@ -1,0 +1,12 @@
+id: CO-3024
+name: "Medicaid QDWI: resource limit as a multiple of the SSI limit"
+identifier: ma_qdwi_resource_limit_rate
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The multiple of the SSI resource limit (individual or couple) at or below which a Qualified Disabled and Working Individual's resources must be: \"twice the SSI resource limit as described in section 8.100.5\" (10 CCR 2505-10 § 8.100.6.O.2.c)."
+value: 2
+sources: [S622]
+tags: [ma, non_magi, msp, resources]
+rationale: "Hard-coded numbers audit H-13: ma_qdwi_eligible (CO-616) multiplied the SSI limit by a literal 2; no existing parameter states the multiple (convention 7: _rate for a multiplier)."

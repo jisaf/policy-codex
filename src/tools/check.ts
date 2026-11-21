@@ -277,7 +277,7 @@ export function inputWarnings(engine: Engine, ledger: LoadedLedger): string[] {
   // A versioned parameter with no version on the volume's default date is
   // unknown in every test that does not set its own date.
   for (const it of ledger.items) {
-    if (it.kind === "parameter" && it.versions && it.versions.length &&
+    if (it.kind === "parameter" && Array.isArray(it.versions) &&
       !versionInForce(it, ledger.meta.default_as_of)) {
       out.push(`${it.id} ${it.identifier}: no version in force on default_as_of ${ledger.meta.default_as_of}`);
     }

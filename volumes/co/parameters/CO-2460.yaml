@@ -5,7 +5,7 @@ kind: parameter
 type: rate
 scope: global
 program: Medicaid
-meaning: "The share of the family's adjusted gross income premiums and cost sharing may not exceed for a family whose income exceeds 200% but not 300% of the poverty level: 7.5% (10 CCR 2505-10 § 8.100.6.Q.1.g.i)."
+meaning: "The share of the family's adjusted gross income premiums and cost sharing may not exceed for a family whose income exceeds ma_cbwd_premium_cap_threshold_pct but not ma_cbwd_income_limit_pct of the poverty level (10 CCR 2505-10 § 8.100.6.Q.1.g.i)."
 value: 0.075
 sources: [S1728]
 tags: [ma, buy_in]

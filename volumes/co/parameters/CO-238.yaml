@@ -5,7 +5,7 @@ kind: parameter
 type: rate
 scope: global
 program: Medicaid
-meaning: The income limit for Qualified Medicare Beneficiary eligibility, as a decimal fraction of the federal poverty level, per 42 U.S.C. 1396d(p)(2)(B)(iii) (100% for medical assistance on or after January 1, 1991) and 10 CCR 2505-10 8.100.6.L.2.c.
+meaning: The income limit for Qualified Medicare Beneficiary eligibility, as a decimal fraction of the federal poverty level, per 42 U.S.C. 1396d(p)(2)(B)(iii) (for medical assistance on or after January 1, 1991) and 10 CCR 2505-10 8.100.6.L.2.c.
 value: 1.0
 sources: [S312, S316]
 tags: [ma, non_magi, msp, income]

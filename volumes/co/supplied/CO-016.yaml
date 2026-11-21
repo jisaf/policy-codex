@@ -9,4 +9,4 @@ meaning: "The VA has found that the person is a veteran in need of regular aid a
 supplied_by: VA award letter.
 sources: [S6, S1951]
 tags: [disability]
-rationale: "A fact the case must supply; it is read by SNAP: is a disabled member. Same-word audit SW-14 and dual-entry 3.13: the VA rating prong moved to va_disability_rating_type (CO-2823), so this fact states only the VA findings 271.2 (7)-(9) name; the identifier was receives_va_disability_benefits."
+rationale: "A fact the case must supply; it is read by SNAP: is a disabled member. Same-word audit SW-14 and dual-entry 3.13: the VA rating prong moved to va_disability_rating_type (CO-2823), so this fact states only the VA findings 271.2 (7)-(9) name; the identifier was has_va_aid_attendance_housebound_or_survivor_finding."

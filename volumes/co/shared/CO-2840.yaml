@@ -6,7 +6,7 @@ type: group of persons
 scope: person
 program: All
 meaning: "The persons, other than this person, whose legal parents (natural or adoptive) are exactly this person's: brothers and sisters who share both parents."
-precision: "Read from the parent role (P50). A person with one stated parent has as full siblings the others whose only stated parent is the same; a parent who is not a person of the case is not stated, so a case states both parents where it matters."
+precision: "Read from the parent role (P53). A person with one stated parent has as full siblings the others whose only stated parent is the same; a parent who is not a person of the case is not stated, so a case states both parents where it matters."
 derived: [shared_relative, parent, every]
 sources: [S169, S1625]
 implemented: engine

@@ -122,6 +122,7 @@ types:
   - table keyed by income band
   - table keyed by year
   - table keyed by number of days
+  - table keyed by option
   - list of months
 
 scopes: [person, person-month, case, month, global]

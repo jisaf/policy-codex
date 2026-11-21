@@ -1,0 +1,14 @@
+id: CO-1272
+name: LEAP statewide adjustment rate
+identifier: leap_statewide_adjustment_rate
+kind: parameter
+type: rate
+scope: global
+program: LEAP
+meaning: "The percentage of a household's estimated home heating costs the State LEAP office sets at the start of each program year, from the projected number of applications and the estimated funding, to adjust benefit levels (9 CCR 2503-7 3.758.47 Step B), as a fraction. Not appealable (3.758.48)."
+precision: "A program-year figure, the same for every household, that the State sets in its annual notification to county departments and the LEAP training manual (3.758.48). Neither the rule effective November 1, 2025 (D-86) nor the amendments effective November 1, 2026 (D-173) states it, and cdhs.colorado.gov refuses automated requests, so no version is loaded (OQ-532): it is unknown on every date, with a no-version warning, and an eligible household's benefit is unknown until the 2026-2027 figure is loaded as a version from November 1, 2026 to May 1, 2027. A rule test that needs a value states it under parameters:."
+versions: []
+sources: [S770]
+tags: [income]
+open: [OQ-253, OQ-532]
+rationale: "The rule does not state the annual figure (OQ-123); leap_benefit_amount (CO-1281) needs it. Hard-coded numbers audit H-18 (vocabulary review C-5, CDHS review C-6): a figure for everyone, which as a supplied fact was entered on each household head; it is a global parameter awaiting the program-year figure (versions: []), keeping its identifier and ID."

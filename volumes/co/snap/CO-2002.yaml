@@ -7,7 +7,7 @@ scope: person-month
 program: SNAP
 meaning: "The number of the three months before the budget month for which the case states the person's legally obligated child support payment (child_support_paid_legally_obligated) - the history 10 CCR 2506-1 4.407.5.D-E reads to decide whether the support exclusion is an average of past payments (three months) or an estimate (fewer)."
 precision: "A month whose payment is not stated is not a month of record."
-derived: [count_months, [months_ending, snap_child_support_history_months, [month_before, [month]]], [not, [unknown, [at, child_support_paid_legally_obligated, [month]]]]]
+derived: [count_months, [months_ending, snap_child_support_averaging_months, [month_before, [month]]], [not, [unknown, [at, child_support_paid_legally_obligated, [month]]]]]
 sources: [S1314]
 implemented: engine
 tags: [income, snap]

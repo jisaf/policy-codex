@@ -6,7 +6,7 @@ type: rate
 scope: global
 program: Medicaid
 meaning: The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Children's MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.118(c)(1)(i) sets and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.2.
-precision: Colorado's percentage (142%, current § 8.100.4.G.2) is above the federal 133% floor, so the floor does not bind; it is modeled as a comparison (not a restatement) so a future federal floor increase above Colorado's own percentage would be caught.
+precision: "Colorado's percentage (ma_income_limit_child_pct, current § 8.100.4.G.2) is above the federal ma_federal_magi_floor_pct floor, so the floor does not bind; it is modeled as a comparison (not a restatement) so a future federal floor increase above Colorado's own percentage would be caught."
 derived: [max, ma_federal_magi_floor_pct, ma_income_limit_child_pct]
 sources: [S638, S202]
 implemented: engine

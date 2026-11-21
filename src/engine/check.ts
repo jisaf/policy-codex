@@ -1,6 +1,6 @@
 import type { LedgerIndex } from "./ledger-index";
 import { inline } from "./render";
-import { baseType } from "./values";
+import { baseType, paramValue } from "./values";
 import { DATE_RE, MONTH_RE, type BaseType, type Expr, type Scope } from "./types";
 
 export interface CheckResult {
@@ -26,6 +26,18 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       }
     }
   };
+
+  /** A table's rows are amounts, except a table keyed by option whose rows
+   *  are options (a county's region): its lookup then yields an option. */
+  function rowType(tbl: Expr): BaseType {
+    const it = typeof tbl === "string" ? ix.byIdentifier.get(tbl) : undefined;
+    const v = it ? paramValue(it) : null;
+    if (v && typeof v === "object") {
+      const rows = Object.values(v as Record<string, unknown>);
+      if (rows.length && rows.every((r) => typeof r === "string")) return "enum";
+    }
+    return "number";
+  }
 
   function t(e: Expr, mb: boolean): BaseType {
     if (e === true || e === false) return "yes/no";
@@ -125,6 +137,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "first_day": need(e[1], ["month"], "first day of"); return "date";
       case "month_of": need(e[1], ["date"], "month containing"); return "month";
       case "month_of_year": need(e[1], ["month"], "calendar month number of"); return "number";
+      case "year_of": need(e[1], ["month", "date"], "calendar year of"); return "number";
       case "month_before": case "month_after": need(e[1], ["month"], op); return "month";
       case "months_ending":
         need(e[1], ["number"], "consecutive months"); need(e[2], ["month"], "ending with");
@@ -212,11 +225,29 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
         return "unknown";
       }
       case "lookup":
-        need(e[1], ["table"], "table"); need(e[2], ["person", "number"], "for person or size");
-        return "number";
+        need(e[1], ["table"], "table"); need(e[2], ["person", "number", "enum"], "for person, size or option");
+        return rowType(e[1]);
       case "band":
         need(e[1], ["table"], "table"); need(e[2], ["number"], "for the band containing");
+        return rowType(e[1]);
+      case "lookup_extended":
+        need(e[1], ["table"], "table"); need(e[2], ["number"], "for");
+        if (e.length > 3) need(e[3], ["number"], "plus for each beyond the last row");
+        if (e.length < 3 || e.length > 4) errors.push("lookup beyond the last row: needs a table, a number and at most one amount");
         return "number";
+      case "latest_month_of_year":
+        need(e[1], ["number"], "the most recent month number"); need(e[2], ["month", "date"], "on or before");
+        return "month";
+      case "as_of": {
+        need(e[2], ["date"], "as of");
+        const target = typeof e[1] === "string" ? ix.byIdentifier.get(e[1]) : undefined;
+        if (!target || target.kind !== "parameter") {
+          errors.push(`"as of" reads a parameter: ${JSON.stringify(e[1])} is not one`);
+          return "unknown";
+        }
+        refs.add(e[1] as string);
+        return baseType(target);
+      }
       case "max":
         need(e[1], ["number"], "greater of"); need(e[2], ["number"], "greater of");
         return "number";

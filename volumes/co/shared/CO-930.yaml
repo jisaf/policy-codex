@@ -11,7 +11,7 @@ derived: [any, [otherwise, [exists_related, [spouse], true], false], [=, [otherw
 sources: [S454]
 implemented: engine
 tags: [cash, oap, and, ab, resources]
-rationale: "No existing item states Adult Financial's own plain-marriage test as a standalone fact; af_countable_resources (CO-947) and af_meets_resource_limit (CO-948) both recomputed the identical [exists_related, [spouse], true] test independently (the phase-5 review's M-6 finding), so a future change to the married test (e.g. resolving CO-947's own precision note on the divergence from CO-608's living-together rule) would have to be made in two places. Factored out here and read by both. Dual-entry audit 3.4 and same-word audit SW-6: renamed from af_is_married and made the one shared reading of marriage, so the edge and marital_status are read together and every reader of 'married' reads this."
+rationale: "No existing item states Adult Financial's own plain-marriage test as a standalone fact; af_countable_resources (CO-947) and af_meets_resource_limit (CO-948) both recomputed the identical [exists_related, [spouse], true] test independently (the phase-5 review's M-6 finding), so a future change to the married test (e.g. resolving CO-947's own precision note on the divergence from CO-608's living-together rule) would have to be made in two places. Factored out here and read by both. Dual-entry audit 3.4 and same-word audit SW-6: renamed from is_married and made the one shared reading of marriage, so the edge and marital_status are read together and every reader of 'married' reads this."
 nearest: [CO-947]
 tests:
   - {id: CO-930-T1, as_of: "2026-10-01", given: {}, others: {}, relationships: [], expect: false}

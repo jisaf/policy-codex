@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether the attested household income is reasonably compatible with the electronic data source's: both at or below the applicable income standard, both above it, or the attested figure at or below the standard and the data figure no more than 20% above the attested figure."
+meaning: "Whether the attested household income is reasonably compatible with the electronic data source's: both at or below the applicable income standard, both above it, or the attested figure at or below the standard and the data figure no more than ma_reasonable_compatibility_threshold_pct above the attested figure."
 derived: [any, [all, ["<=", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], ["<=", ma_electronic_data_source_household_income_pct_fpl, ma_magi_highest_income_standard_pct]], [all, [">", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], [">", ma_electronic_data_source_household_income_pct_fpl, ma_magi_highest_income_standard_pct]], [all, ["<=", ma_magi_household_income_pct_fpl, ma_magi_highest_income_standard_pct], ["<=", ma_electronic_data_source_household_income_pct_fpl, ["*", ma_magi_household_income_pct_fpl, ["+", 1, ma_reasonable_compatibility_threshold_pct]]]]]
 sources: [S838, S864, S867]
 implemented: engine

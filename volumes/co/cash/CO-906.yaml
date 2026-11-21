@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: ColoradoWorks
-meaning: Whether a minor parent's living arrangement satisfies 9 CCR 2503-6 3.604.2.N - not applicable (vacuously satisfied) unless the person is both under 18 and has a dependent child; if so, satisfied when the minor is emancipated, has a marital status other than single, lives with her own parent, or is in a county-approved setting.
+meaning: "Whether a minor parent's living arrangement satisfies 9 CCR 2503-6 3.604.2.N - not applicable (vacuously satisfied) unless the person is both under cw_minor_parent_age_limit and has a dependent child; if so, satisfied when the minor is emancipated, has a marital status other than single, lives with her own parent, or is in a county-approved setting."
 precision: "'Lives with her own parent' is read from a stated parent relationship edge to this person, matching this volume's convention (snap_household_members, ma_magi_household_members) that a stated relationship edge means living together; 3.604.2.N.3.c does not require county approval in that case regardless of whether the parent joins the assistance unit."
 derived: [any, [">=", age, cw_minor_parent_age_limit], [not, cw_has_dependent_child], is_emancipated_minor, [not, ["=", marital_status, single]], [exists_related, [child], true], county_approved_living_arrangement]
 sources: [S406, S411]

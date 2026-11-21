@@ -1,0 +1,14 @@
+id: CO-3029
+name: "Medicaid limited Family Planning: persons an applicant counts as"
+identifier: ma_family_planning_applicant_household_count
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of persons an individual applying for the limited Family Planning category counts as in the household size for the income test: \"counted as a household of two in addition to any other household members\" (10 CCR 2505-10 § 8.100.4.E.3)."
+precision: "Read as the applicant counting as two persons, so the household size is ma_magi_household_size (which counts the applicant once) plus this count less one (OQ-204)."
+value: 2
+sources: [S614]
+tags: [ma, magi, household]
+open: [OQ-204]
+rationale: "Hard-coded numbers audit H-21: ma_family_planning_household_income_pct_fpl (CO-1153) added a literal 1 to the household size; no existing parameter states the count."

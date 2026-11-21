@@ -5,9 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: "Whether the community engagement condition 42 CFR 435.119(d) attaches to the Adults group is satisfied for the month: the month is before ma_community_engagement_start_date (January 1, 2027), the determination is made before it, or the person's community engagement status (CO-1974) is not not_met."
-precision: Medical assistance furnished before January 1, 2027 is not conditioned (435.559(a)), so a retroactive month before then passes even at a later determination; a determination made before the start date does not assess the requirement at all.
-derived: [any, ["<", [first_day, [month]], ma_community_engagement_start_date], ["<", [det_date], ma_community_engagement_start_date], [not, ["=", ma_community_engagement_status, not_met]]]
+meaning: "Whether the community engagement condition 42 CFR 435.119(d) attaches to the Adults group is satisfied for the month: the month is before ma_community_engagement_start_date, the requirement is not yet in force on the determination date (ma_community_engagement_requirement_in_force, CO-3035), or the person's community engagement status (CO-1974) is not not_met."
+precision: "Medical assistance furnished before the start date is not conditioned (435.559(a)), so a retroactive month before it passes even at a later determination; a determination made before the start date does not assess the requirement at all. Hard-coded numbers audit E-1: the second arm compared the determination date with the start date; it reads the versions of CO-3035 instead."
+derived: [any, ["<", [first_day, [month]], ma_community_engagement_start_date], [not, ma_community_engagement_requirement_in_force], [not, ["=", ma_community_engagement_status, not_met]]]
 sources: [S1200, S1212]
 implemented: engine
 tags: [ma, magi]
@@ -16,4 +16,5 @@ tests:
   - {id: CO-1975-T1, month: "2026-10", as_of: "2026-10-01", given: {}, title: "Before the start date the condition does not apply", expect: true}
   - {id: CO-1975-T2, month: "2027-03", as_of: "2027-03-01", given: {ma_community_engagement_status: not_met}, expect: false}
   - {id: CO-1975-T3, month: "2027-03", as_of: "2027-03-01", given: {ma_community_engagement_status: excluded}, expect: true}
+  - {id: CO-1975-T5, month: "2027-01", as_of: "2026-12-15", given: {}, title: "A December 2026 determination does not assess the requirement for January 2027", expect: true}
   - {id: CO-1975-T4, month: "2026-12", as_of: "2027-03-01", given: {ma_community_engagement_status: not_met}, title: "A retroactive month before the start date", expect: true}

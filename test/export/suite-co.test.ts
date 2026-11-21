@@ -48,8 +48,11 @@ describe("the co suite", () => {
     expect(inputs.audit.ignored).toContainEqual({
       person: "p1", identifier: "ssi_federal_benefit_rate_individual", reason: "parameter",
     });
-    // CO-642-T1 states its parameters under parameters: (engineering follow-up 2).
-    expect(byId("CO-642-T1").parameters).toEqual({ ssi_federal_benefit_rate_individual: 994, ma_special_income_group_pct: 3.0 });
+    // CO-649-T1 states its hypothetical divisor under parameters:; CO-642-T1 states none, because
+    // the values it pinned were the ones in force (hard-coded numbers audit T-2).
+    expect(byId("CO-649-T1").parameters).toEqual({ transfer_penalty_divisor: 9000 });
+    expect(byId("CO-649-T1").ignored).toBeUndefined();
+    expect(byId("CO-642-T1").parameters).toBeUndefined();
     expect(byId("CO-642-T1").ignored).toBeUndefined();
   });
 

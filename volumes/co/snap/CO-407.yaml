@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: The student works at least 20 hours a week on average and is paid for that employment, or is approved for a State or federally financed work-study program.
+meaning: "The student works at least snap_student_employment_hours_per_week hours a week on average and is paid for that employment, or is approved for a State or federally financed work-study program."
 derived: [any, [">=", snap_weekly_hours_worked, snap_student_employment_hours_per_week], is_approved_for_work_study]
 sources: [S133, S134, S135]
 implemented: engine

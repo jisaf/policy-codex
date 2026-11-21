@@ -1,0 +1,12 @@
+id: CO-3036
+name: "SNAP expedited service: day of the month after which an application is late in the month"
+identifier: snap_expedited_late_application_day
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The day of the month after which an expedited household is treated as \"applying after the fifteenth (15th) of the month\" (10 CCR 2506-1 4.205.11.B.2, S835; 7 CFR 273.2(i)(4)(iii)(B), S1310): the fifteenth."
+value: 15
+sources: [S835, S1310]
+tags: [verification, snap]
+rationale: "Hard-coded numbers audit H-8: snap_expedited_postponement_end_date (CO-1393) found the fifteenth as a literal 14 days after the first of the month."

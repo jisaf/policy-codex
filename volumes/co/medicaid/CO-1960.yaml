@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: "Whether the person is a dependent child as 42 CFR 435.554(a) defines it for the community engagement exclusions: 13 years of age or under and relying on another individual for care."
+meaning: "Whether the person is a dependent child as 42 CFR 435.554(a) defines it for the community engagement exclusions: ma_community_engagement_dependent_child_max_age years of age or under and relying on another individual for care."
 derived: [all, ["<=", age, ma_community_engagement_dependent_child_max_age], ma_relies_on_another_for_care]
 sources: [S1207]
 implemented: engine

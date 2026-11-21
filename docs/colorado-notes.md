@@ -251,6 +251,13 @@ Reviews: docs/reviews/stakeholder-cdhs.md (5 blocking, 18 should-fix) and docs/r
 - Approval: roles "Energy assistance (LEAP) policy owner", "Child care policy owner (CDEC)" and "School meals (CDE) co-approver"; CODEOWNERS entries for the co chapters with placeholder teams. Not done: routing shared (`All`) items to the LEAP and CCCAP owners when those programs read them (S-8's last point) needs a by-reader approval rule the engine does not have.
 - Household cases: CO-84 (B-1), CO-85 (B-2), CO-86 (B-3), CO-87 and CO-88 (B-4), CO-89 (B-5). Changed expectations: CO-01/CO-02 p3 Colorado Works status; CO-02 LEAP benefit (unknown); CO-01, CO-02, CO-13 SUN Bucks benefit (unknown); 55 pending flags and counts where the program does not apply (CO-01, CO-02, CO-91, CO-92).
 
+## Hard-coded numbers fix round (2026-11-21)
+
+Every finding of docs/reviews/audit-hardcoded-numbers.md is disposed of in its "Disposition" section. Engine: the type `table keyed by option`, an open top band for P48, P50 `latest_month_of_year`, P51 `lookup_extended`, P52 `year_of`, P25 `as_of` implemented, and parameters awaiting a figure (`versions: []` with an open question). New items CO-3000 to CO-3054.
+
+- **Kind changed, ID and identifier kept:** `leap_statewide_adjustment_rate` (CO-1272), `leap_benefit_minimum` (CO-1276) and `leap_benefit_maximum` (CO-1277) are parameters awaiting the program-year figure (they were supplied facts on the household head); `cccap_entry_income_limit_pct_fpl` (CO-870) is derived from the county table CO-3004 (it was a supplied fact).
+- **IDs retired** (files deleted; the IDs are not used again): CO-103, CO-1171, CO-2369 (the 40 quarters, now `federal_qualifying_quarters_threshold`, CO-3033); CO-323, CO-324, CO-1519, CO-1520, CO-1954 (copies of the HHS guideline, now read with `as_of`); CO-1981 to CO-1984 (the regional income-trust limits, now `ma_income_trust_limit_table`, CO-3022); CO-2401 and CO-2452 (date switches, now versions of CO-3034 and CO-2453); CO-176 (`snap_abawd_hr1_effective_date`, unread).
+
 ## Audit fix round, track 2: same word, dual entry (2026-11-21)
 
 Fixes for docs/reviews/audit-same-word-different-meaning.md and docs/reviews/audit-dual-entry.md (immigration status, sponsors and receipt records are another track's). Each finding's disposition is at the end of its audit file.

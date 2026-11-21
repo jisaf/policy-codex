@@ -35,6 +35,26 @@ const base: Item[] = [
     scope: "global", program: "All", meaning: "m",
     versions: [{ from: "2026-01-01", to: "2027-01-01", value: 10 }, { from: "2027-01-01", value: 11 }],
   },
+  {
+    id: "S-opt", name: "opt", identifier: "opt", kind: "parameter",
+    type: "table keyed by option", scope: "global", program: "All", meaning: "m",
+    value: { house: 0.62, apartment: 0.43 },
+  },
+  supplied("dwelling", "one of"),
+  {
+    id: "S-bands", name: "bands", identifier: "bands", kind: "parameter",
+    type: "table keyed by income band", scope: "global", program: "All", meaning: "m",
+    value: { "0.75": 0, "1.25": 0.1, above: 0.3 },
+  },
+  {
+    id: "S-closed", name: "closed", identifier: "closed", kind: "parameter",
+    type: "table keyed by income band", scope: "global", program: "All", meaning: "m",
+    value: { "1": 5, "2": 7 },
+  },
+  {
+    id: "S-awaits", name: "awaits", identifier: "awaits", kind: "parameter", type: "money",
+    scope: "global", program: "All", meaning: "m", versions: [], open: ["OQ-1"],
+  },
 ];
 
 /** Evaluates `derived` as a person (or person-month, with a month) item for
@@ -238,6 +258,19 @@ describe("dates", () => {
     expect(run(["days_between", "2026-02-25", "2026-03-07"], {})).toBe(10);
     expect(run(["days_between", "d", "2026-03-07"], {})).toBe(U);
   });
+  it("latest_month_of_year (P50): the most recent month with that number, on or before", () => {
+    expect(run(["latest_month_of_year", 11, "2026-11"], {})).toBe("2026-11");
+    expect(run(["latest_month_of_year", 11, "2026-10"], {})).toBe("2025-11");
+    expect(run(["latest_month_of_year", 11, "2027-01"], {})).toBe("2026-11");
+    expect(run(["latest_month_of_year", 7, "2026-07-31"], {})).toBe("2026-07");
+    expect(run(["latest_month_of_year", 1, "2026-12"], {})).toBe("2026-01");
+    expect(run(["latest_month_of_year", 8, "d"], {})).toBe(U);
+  });
+  it("year_of (P52) reads the calendar year of a month or a date", () => {
+    expect(run(["year_of", "2026-11"], {})).toBe(2026);
+    expect(run(["year_of", "2027-01-31"], {})).toBe(2027);
+    expect(run(["year_of", ["month_of", "d"]], {})).toBe(U);
+  });
   it("month_of_year reads the calendar month number, 1 to 12", () => {
     expect(run(["month_of_year", "2026-11"], {})).toBe(11);
     expect(run(["month_of_year", "2027-01"], {})).toBe(1);
@@ -254,6 +287,41 @@ describe("parameters and tables", () => {
     expect(run(["lookup", "tbl", 2], {})).toBe(200);
     expect(run(["lookup", "tbl", 3], {})).toBe(U);
     expect(run(["lookup", "tbl", "x"], {})).toBe(U);
+  });
+  it("a table keyed by option is read by the option's string", () => {
+    expect(run(["lookup", "opt", "dwelling"], { dwelling: "house" })).toBe(0.62);
+    expect(run(["lookup", "opt", "dwelling"], { dwelling: "rv" })).toBe(U);
+    expect(run(["lookup", "opt", "dwelling"], {})).toBe(U);
+  });
+  it("band (P48): an \"above\" row is the open top band; without one, past the last bound is unknown", () => {
+    expect(run(["band", "bands", "x"], { x: 0.75 })).toBe(0);
+    expect(run(["band", "bands", "x"], { x: 0.7501 })).toBe(0.1);
+    expect(run(["band", "bands", "x"], { x: 1.25 })).toBe(0.1);
+    expect(run(["band", "bands", "x"], { x: 9 })).toBe(0.3);
+    expect(run(["band", "closed", "x"], { x: 2 })).toBe(7);
+    expect(run(["band", "closed", "x"], { x: 2.5 })).toBe(U);
+    expect(run(["band", "bands", "x"], {})).toBe(U);
+  });
+  it("lookup_extended (P51) reads the last row itself and adds the step beyond it", () => {
+    expect(run(["lookup_extended", "tbl", "x", "y"], { x: 2, y: 30 })).toBe(200);
+    expect(run(["lookup_extended", "tbl", "x", "y"], { x: 5, y: 30 })).toBe(290);
+    expect(run(["lookup_extended", "tbl", "x"], { x: 5 })).toBe(200);
+    expect(run(["lookup_extended", "tbl", "x"], { x: 1 })).toBe(100);
+    expect(run(["lookup_extended", "tbl", "x", "y"], { x: 5 })).toBe(U);
+    expect(run(["lookup_extended", "tbl", "x", "y"], { x: 2 })).toBe(200);
+    expect(run(["lookup_extended", "tbl", "x", "y"], { y: 30 })).toBe(U);
+    expect(run(["lookup_extended", "tbl", "x"], { x: 0 })).toBe(U);
+  });
+  it("as_of (P25) reads a parameter's version in force on another date", () => {
+    expect(run(["as_of", "ver", "d"], { d: "2026-07-01" }, { asOf: "2027-03-01" })).toBe(10);
+    expect(run(["as_of", "ver", "d"], { d: "2027-07-01" }, { asOf: "2026-03-01" })).toBe(11);
+    expect(run(["as_of", "ver", "d"], { d: "2025-07-01" })).toBe(U);
+    expect(run(["as_of", "ver", "d"], {})).toBe(U);
+    expect(run(["as_of", "tbl", "d"], { d: "1999-01-01" })).toEqual({ "1": 100, "2": 200 });
+  });
+  it("a parameter awaiting its figure (empty versions) is unknown on every date", () => {
+    expect(run("awaits", {})).toBe(U);
+    expect(run(["as_of", "awaits", "d"], { d: "2026-07-01" })).toBe(U);
   });
 });
 
@@ -278,6 +346,14 @@ describe("silent unknowns are reported", () => {
   it("a versioned parameter with no version in force", () => {
     const ws = warningsOf(["+", "ver", 1], {}, "2025-06-01");
     expect(ws.map((w) => [w.kind, w.identifier])).toEqual([["no-version", "ver"]]);
+  });
+  it("a parameter awaiting its figure, and as_of on a date no version covers", () => {
+    expect(warningsOf(["+", "awaits", 1], {}).map((w) => [w.kind, w.identifier])).toEqual([["no-version", "awaits"]]);
+    expect(warningsOf(["as_of", "ver", "d"], { d: "2025-07-01" }).map((w) => [w.kind, w.identifier, w.detail]))
+      .toEqual([["no-version", "ver", "no version in force on 2025-07-01"]]);
+  });
+  it("lookup_extended below the last row with no row for the number", () => {
+    expect(warningsOf(["lookup_extended", "tbl", 0], {}).map((w) => w.kind)).toEqual(["lookup-miss"]);
   });
   it("a division by zero", () => {
     expect(warningsOf(["/", "x", 0], { x: 1 }).map((w) => w.kind)).toEqual(["division-by-zero"]);

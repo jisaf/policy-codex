@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: Medicaid
-meaning: Whether the person meets the SSI-related "aged" category's age requirement - 65 years or older, per 42 U.S.C. 1382c(a)(1)(A) and the federal ceiling of 42 CFR 435.520.
+meaning: "Whether the person meets the SSI-related \"aged\" category's age requirement - ma_aged_age years or older, per 42 U.S.C. 1382c(a)(1)(A) and the federal ceiling of 42 CFR 435.520."
 precision: Uses the shared age (CO-300) fact, evaluated as of the determination date.
 derived: [">=", age, ma_aged_age]
 sources: [S304, S305]

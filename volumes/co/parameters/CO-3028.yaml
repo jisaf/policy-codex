@@ -1,0 +1,12 @@
+id: CO-3028
+name: "Medicaid needy persons under 21: age at the State's assumption of responsibility"
+identifier: ma_foster_care_age_at_responsibility
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age, under 10 CCR 2505-10 § 8.100.4.H.1.g, on whose birthday the Department of Human Services was responsible for the youth (foster care maintenance or subsidized adoption payments \"immediately prior to the date the individual attained 18 years of age\"), from which a youth receiving subsidized adoption payments is excluded from the group."
+value: 18
+sources: [S1717]
+tags: [ma, age]
+rationale: "Hard-coded numbers audit H-14: ma_needy_young_person_category (CO-2419) wrote [\">=\", age, 18] in arm g. Not ma_dependent_child_age_limit: a different rule."

@@ -1,0 +1,13 @@
+id: CO-3021
+name: Long-term care private-pay region by county
+identifier: ma_ltc_private_pay_region_by_county_table
+kind: parameter
+type: table keyed by option
+scope: global
+program: Medicaid
+meaning: "The Bureau of Economic Analysis region, of the four 10 CCR 2505-10 § 8.100.7.G.6.a.i.a) lists, to which each Colorado county belongs (keyed by the options of county_of_residence, CO-1979; each row an option of ma_ltc_private_pay_region, CO-1980): the region whose average private-pay rate for long-term care institution care is the income-trust gross income ceiling."
+precision: "Every county has a row. The rule lists the counties by name; the table restates that list, so a change of the regions is a change of this one item."
+value: {adams: region_i, alamosa: region_iii, arapahoe: region_i, archuleta: region_iv, baca: region_iii, bent: region_iii, boulder: region_i, broomfield: region_i, chaffee: region_iii, cheyenne: region_ii, clear_creek: region_ii, conejos: region_iii, costilla: region_iii, crowley: region_iii, custer: region_iii, delta: region_iv, denver: region_i, dolores: region_iv, douglas: region_ii, eagle: region_iv, el_paso: region_iii, elbert: region_ii, fremont: region_iii, garfield: region_iv, gilpin: region_ii, grand: region_ii, gunnison: region_iv, hinsdale: region_iv, huerfano: region_iii, jackson: region_ii, jefferson: region_i, kiowa: region_iii, kit_carson: region_ii, la_plata: region_iv, lake: region_iii, larimer: region_ii, las_animas: region_iii, lincoln: region_iii, logan: region_ii, mesa: region_iv, mineral: region_iii, moffat: region_iv, montezuma: region_iv, montrose: region_iv, morgan: region_ii, otero: region_iii, ouray: region_iv, park: region_ii, phillips: region_ii, pitkin: region_iv, prowers: region_iii, pueblo: region_iii, rio_blanco: region_iv, rio_grande: region_iii, routt: region_iv, saguache: region_iii, san_juan: region_iv, san_miguel: region_iv, sedgwick: region_ii, summit: region_ii, teller: region_iii, washington: region_ii, weld: region_ii, yuma: region_ii}
+sources: [S1229]
+tags: [ma, ltc]
+rationale: "Hard-coded numbers audit H-7(a): ma_ltc_private_pay_region (CO-1980) held the county assignment as three literal county lists in a case, with region IV as the remainder; a table keyed by option holds it, every county stated."

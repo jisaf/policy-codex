@@ -5,7 +5,7 @@ kind: parameter
 type: table keyed by income band
 scope: global
 program: Medicaid
-meaning: "The monthly premium for the Working Adults with Disabilities Buy-In by the band of the member's countable income as a share of the poverty guideline, each key the band's inclusive upper bound (10 CCR 2505-10 § 8.100.6.P.1.f.iii): $0 at or below 40%, $25 above 40% through 133%, $90 above 133% through 200%, $130 above 200% through 300%, $200 above 300% through 450%. The amounts are re-based at the start of each State fiscal year (P.1.f.iv)."
+meaning: "The monthly premium for the Working Adults with Disabilities Buy-In by the band of the member's countable income as a share of the poverty guideline, each key the band's inclusive upper bound (10 CCR 2505-10 § 8.100.6.P.1.f.iii); the bands and amounts are the rows of each version, and are re-based at the start of each State fiscal year (P.1.f.iv)."
 precision: The version is dated from the start of State fiscal year 2026-27, July 1, 2026, the year of the rule text fetched (version effective 11/14/2026); earlier fiscal years' amounts were not fetched, so a month before July 2026 has no premium figure.
 versions:
   - {from: "2026-07-01", value: {"0.40": 0, "1.33": 25, "2.00": 90, "3.00": 130, "4.50": 200}, source: S1727}

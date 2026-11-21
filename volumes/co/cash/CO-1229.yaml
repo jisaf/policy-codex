@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person
 program: AdultFinancial
-meaning: The amount by which the legally responsible person(s)' resources exceed the SSI resource limit ($2,000 individual, $3,000 couple; the individual limit for a widow or widower), which is applied third against the full burial costs; zero at or below the limit, per 9 CCR 2503-5 3.570.43.D.3.b-c.
+meaning: "The amount by which the legally responsible person(s)' resources exceed the SSI resource limit (ssi_resource_limit_couple for a couple, ssi_resource_limit_individual otherwise, a widow or widower included), which is applied third against the full burial costs; zero at or below the limit, per 9 CCR 2503-5 3.570.43.D.3.b-c, which names the SSI limit."
 derived: [max, 0, ["-", burial_responsible_person_resources, [case, [burial_responsible_persons_are_couple, ssi_resource_limit_couple], [else, ssi_resource_limit_individual]]]]
 sources: [S721]
 implemented: engine

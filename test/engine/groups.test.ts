@@ -113,7 +113,7 @@ describe("group patterns", () => {
     expect(evaluate(sib, c6, "siblings", "p1", null)).toEqual([]);
     expect(inline(sib, parseInline(sib, "the persons who share a parent with this person"))).toBe("the persons who share a parent with this person");
   });
-  it("finds the persons who share every parent (P50: full siblings)", () => {
+  it("finds the persons who share every parent (P53: full siblings)", () => {
     const c7 = makeCase(ix, {
       id: "F", as_of: "2026-10-01",
       relationships: [

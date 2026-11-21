@@ -5,7 +5,7 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: The student is enrolled full time in an institution of higher education and is a single parent responsible for the care of a dependent child under snap_student_older_child_age (12).
+meaning: "The student is enrolled full time in an institution of higher education and is a single parent responsible for the care of a dependent child under snap_student_older_child_age."
 precision: "Single parent is read as the text states it, by counting parents: no other parent of this person's children is in the SNAP household (P43 with child: the persons who share a child with this person), and this person has no spouse in the household (a spouse who is not the child's parent is a stepparent, whom 4.306.1.D counts). OQ-34 resolved. The count is per person rather than per child: a student with two children under 12, one of whose other parent is in the household, is not treated as a single parent of the other."
 derived: [all, is_enrolled_higher_education_full_time, [exists, snap_household_members, [all, [rel, [parent], [P]], ["<", [of, [P], age], snap_student_older_child_age]]], [not, [exists, snap_household_members, [in_group, [P], [shared_relative, child]]]], [not, [exists, snap_household_members, [rel, [spouse, holds_out_as_spouse_with], [P]]]]]
 sources: [S133, S135]

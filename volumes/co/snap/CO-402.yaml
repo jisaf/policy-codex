@@ -5,13 +5,15 @@ kind: derived
 type: hours
 scope: person
 program: SNAP
-meaning: Hours worked in the month containing the determination date, converted to a weekly average using 12 months per 52 weeks. No reported hours counts as 0.
+meaning: "Hours worked in the month containing the determination date, converted to a weekly average by dividing by snap_weeks_per_month (CO-3041, the 7 CFR 273.10(c)(2) conversion). No reported hours counts as 0."
 precision: Reads hours_worked (a person-month fact) for the determination date's month via the "at" pattern, since this item's own scope is person.
-derived: ["/", ["*", [otherwise, [at, hours_worked, [det_month]], 0], 12], 52]
-sources: [S121, S123, S126, S133, S135]
+derived: ["/", [otherwise, [at, hours_worked, [det_month]], 0], snap_weeks_per_month]
+sources: [S121, S123, S126, S133, S135, S2050]
 implemented: engine
 tags: [work_registration, student]
-rationale: Both the work-registration employment exemption (30 hours/week, S121/S123/S126) and the student employment exemption (20 hours/week, S133/S135) test a weekly-average-hours figure computed the same way; this item is the shared conversion both snap_meets_work_registration_employment_exemption and snap_meets_student_employment_exemption read, following the same 12/52 conversion as the mwr volume's WR-304.
+rationale: "Both the work-registration employment exemption (30 hours/week, S121/S123/S126) and the student employment exemption (20 hours/week, S133/S135) test a weekly-average-hours figure computed the same way; this item is the shared conversion both snap_meets_work_registration_employment_exemption and snap_meets_student_employment_exemption read. Hard-coded numbers audit H-11: the conversion was 12/52, following the mwr volume's WR-304; SNAP's own rule converts by 4.3 (S2050)."
 tests:
-  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 130}, expect: 30}
-  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138}, expect: 31.846153846153847}
+  # Hard-coded numbers audit H-11: 4.3 weeks a month (7 CFR 273.10(c)(2), S2050) replaces 52/12. T1: 130 / 4.3 = 30.2325581395 (was 130 x 12 / 52 = 30);
+  # T2: 138 / 4.3 = 32.0930232558 (was 31.846153846153847).
+  - {id: CO-402-T1, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 130}, expect: 30.232558139534884}
+  - {id: CO-402-T2, as_of: "2026-10-01", month: "2026-10", given: {hours_worked: 138}, expect: 32.09302325581396}

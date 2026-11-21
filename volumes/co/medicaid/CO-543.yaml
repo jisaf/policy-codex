@@ -5,8 +5,8 @@ kind: derived
 type: rate
 scope: global
 program: Medicaid
-meaning: The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Pregnant Women MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.116(c)(1)(i) sets (133% FPL) and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.5 (185% FPL, which 435.116(c)(1)(ii) permits up to).
-precision: "Colorado's 195% (current § 8.100.4.G.5) exceeds the 133% federal floor, so this rule resolves to Colorado's own percentage; the max pattern states that comparison explicitly rather than assuming it."
+meaning: "The income standard, as a decimal fraction of the federal poverty level (MAGI-equivalent), that governs the Pregnant Women MAGI Medical Assistance category - the greater of the federal minimum floor 42 CFR 435.116(c)(1)(i) sets (ma_federal_magi_floor_pct) and Colorado's own percentage stated at 10 CCR 2505-10 8.100.4.G.5 (ma_income_limit_pregnant_pct, which 435.116(c)(1)(ii) permits up to)."
+precision: "Colorado's own percentage (ma_income_limit_pregnant_pct, CO-194) exceeds the federal floor, so this rule resolves to it; the max pattern states that comparison explicitly rather than assuming it. Hard-coded numbers audit R-1: the meaning stated 185%, which was wrong (the current § 8.100.4.G.5 figure is 195%); it now names the parameter."
 derived: [max, ma_federal_magi_floor_pct, ma_income_limit_pregnant_pct]
 sources: [S640, S210]
 implemented: engine

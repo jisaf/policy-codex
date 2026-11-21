@@ -1,0 +1,12 @@
+id: CO-3027
+name: "Medicaid community engagement: age under which a person is deemed to engage"
+identifier: ma_community_engagement_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The age under which a person, for part or all of a month, is deemed to have demonstrated community engagement for the month: \"Under the age of 19 years\" (42 CFR 435.553(a)(1))."
+value: 19
+sources: [S1206]
+tags: [ma, magi, age]
+rationale: "Hard-coded numbers audit H-14: ma_meets_community_engagement_mandatory_exception (CO-1969) wrote 19; convention 8, _age_limit is exclusive. Not ma_magi_child_age_limit: a different rule."

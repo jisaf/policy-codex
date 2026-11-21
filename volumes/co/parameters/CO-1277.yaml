@@ -1,0 +1,15 @@
+id: CO-1277
+name: LEAP maximum benefit for the program year
+identifier: leap_benefit_maximum
+kind: parameter
+type: money
+scope: global
+program: LEAP
+meaning: "The maximum Heating Fuel Assistance benefit the Department establishes for the LEAP program year, per 9 CCR 2503-7 3.758.47 Step G."
+precision: "A program-year figure, the same for every household, that the State sets in its annual notification to county departments and the LEAP training manual (3.758.48). Neither the rule effective November 1, 2025 (D-86) nor the amendments effective November 1, 2026 (D-173) states it, and cdhs.colorado.gov refuses automated requests, so no version is loaded (OQ-532): it is unknown on every date, with a no-version warning, and an eligible household's benefit is unknown until the 2026-2027 figure is loaded as a version from November 1, 2026 to May 1, 2027. A rule test that needs a value states it under parameters:."
+versions: []
+sources: [S772]
+tags: [income]
+open: [OQ-253, OQ-532]
+rationale: "The rule does not state the figure (OQ-253); leap_benefit_amount (CO-1281) needs it. Hard-coded numbers audit H-18: a figure for everyone, which as a supplied fact was entered on each household head; it is a global parameter awaiting the program-year figure (versions: []), keeping its identifier and ID. Same source as leap_benefit_minimum (CO-1276), the other bound."
+nearest: [CO-1276]

@@ -51,9 +51,10 @@ Fields that do not apply are omitted, not left blank.
 | list of months | Months in ascending order. |
 | relationships | A person's `[role, other]` pairs; the roles and their inverses are declared in `volume.yaml` (`relationship_roles`). Unstated is unknown; an empty list is none. |
 | table keyed by <key> | A parameter table (`table keyed by person`, `table keyed by household size`). Keys are strings; a whole-number key reads its decimal string. |
-| table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. |
+| table keyed by income band | A parameter table whose keys are the inclusive upper bounds of income bands (as decimal fractions of the poverty guideline, `"1.33"`) and whose values are the amounts for each band; read with P48. A band the rule leaves open at the top ("175.01% and above") is the row keyed `"above"`, never an invented bound. |
 | table keyed by year | A parameter table keyed by calendar year, such as a benefit level per summer. |
 | table keyed by number of days | A parameter table keyed by a count of days (`"1"` to `"30"`), such as the Adult Financial partial month payment figures (9 CCR 2503-5 3.581.D.4); read with P24/P42 as a lookup by a whole number. |
+| table keyed by option | A parameter table keyed by the options of a `one of` fact (a county, a region, a dwelling type, a service type), read with P24. A row is an amount, or an option of another `one of` item (a county's region), and the lookup then yields that option. Every option the rule reaches has a row (a 0 where the rule states no amount), so no lookup misses. |
 
 Numbers are IEEE 754 binary64, computed in the order written; see `docs/operators.md`, Numbers.
 
@@ -138,7 +139,7 @@ Persons and relationships
 Parameters
 
 - P24 `[parameter table] for [key]`
-- P25 `[parameter] as of [date]` selects the version in effect on that date. Not implemented: no operator exists, and every parameter is read as of the determination date (see Scopes)
+- P25 `[parameter] as of [date]` (`as_of`) selects the version in effect on that date, for a rule that applies a figure from a date other than the determination date (the poverty guideline a program adopts each July 1 or October 1, read from the one federal table). Every other read of a parameter is as of the determination date (see Scopes). Implemented in the hard-coded numbers fix round
 
 Added during the work-requirements spike, because the policy needed them
 
@@ -185,9 +186,15 @@ Added for the engineering item follow-up pass (a calendar month without a fixed 
 
 - P49 `the calendar month number of [month]` (`month_of_year`) the number of the month in its year, 1 (January) to 12 (December); unknown when the month is unknown. A rule anchored to a month of each year (the LEAP program year from November, 9 CCR 2503-7 3.751.1; the compulsory attendance age on August 1, C.R.S. 22-33-104(1)(a)) finds the most recent such month as this month less the months since that calendar month, instead of counting whole years from a fixed anchor month
 
+Added for the hard-coded numbers fix round (docs/reviews/audit-hardcoded-numbers.md)
+
+- P50 `the most recent month number [n] on or before [month or date]` (`latest_month_of_year`) the most recent month, on or before the month (or the month containing the date), whose calendar month number is n; the month itself when its number is n; unknown when either input is unknown. A program year, school year or guideline year that starts in a month of each year (the LEAP program year in November, the compulsory attendance date in August, the school meal guideline year in July) is found from a whole-number month parameter, with no anchor month and no arithmetic in the rule
+- P51 `[table keyed by a whole number], for [number], adding [amount] for each beyond its last row` and `[table], for [number], or its last row beyond it` (`lookup_extended`) a lookup that reads the table's last row itself: up to it, the row for the number; above it, the last row plus the amount for each number beyond it (the `_each_additional` step of the poverty guideline, the SNAP limits, the Colorado Works standards), or the last row itself ("6 or more"). A new table version with more or fewer rows needs no change to the rule
+- P52 `the calendar year of [month or date]` (`year_of`) the year as a whole number; unknown when the month is unknown. A figure keyed by year (the Summer EBT benefit level of a summer) is read for the year of a month found with P50, with no anchor date
+
 Added for the same-word audit fix round (full and half siblings)
 
-- P50 `the persons who share every [relationship] with this person` (`shared_relative` with `"every"`) the persons, other than this person, whose persons in the role are exactly this person's: with `parent`, the full siblings, who share both legal parents; P43 without `every` gives full and half siblings. Unknown when this person's relationships are unstated
+- P53 `the persons who share every [relationship] with this person` (`shared_relative` with `"every"`) the persons, other than this person, whose persons in the role are exactly this person's: with `parent`, the full siblings, who share both legal parents; P43 without `every` gives full and half siblings. Unknown when this person's relationships are unstated
 
 ## Tests
 
@@ -245,7 +252,9 @@ Two kinds of date range are in the ledger, with different ends:
 - An item's own `effective` range: `from` is the first day in force and `to` the **last** day in force (inclusive; `to: present` never ends). On a determination date outside it the item is unknown, its rule does not run, and a value stated for it is ignored.
 - A parameter's `versions`: each `from` is the first day the value is in force and `to` the first day it is **not** (exclusive), so consecutive versions share a date. A determination date no version covers gives unknown (reported as a warning).
 
-Date logic belongs in these ranges, not inside a derivation: a rule that changes on a date is two versions, not a comparison with a literal date. A change set names the items changed, the reason, the source of the change, and the approvals collected. The diff between versions is the diff of the item text; the engineer's work is the diff of the generated engineer view.
+Date logic belongs in these ranges, not inside a derivation: a rule that changes on a date is two versions, not a comparison with a literal date.
+
+A figure the State sets but has not published where it can be fetched (the LEAP program-year benefit levels, the CCCAP county entry limits) is still a parameter, never a supplied fact entered on each person: it carries an empty list of versions (`versions: []`) and names, in `open`, the question that records where the figure will come from. It is unknown on every date, with a `no-version` warning, until a dated version is loaded; a rule test or household case that needs a value states one under `parameters:`. A change set names the items changed, the reason, the source of the change, and the approvals collected. The diff between versions is the diff of the item text; the engineer's work is the diff of the generated engineer view.
 
 ## Engineer handoff
 

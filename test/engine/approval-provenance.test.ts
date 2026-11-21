@@ -11,7 +11,7 @@ import { parseVolumeFile, parseItemFile, stringifyItem } from "../../src/engine/
 import { parseSources, unverifiedSourceIds } from "../../src/ledger/markdown";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
-import type { Item, VolumeMeta } from "../../src/engine/types";
+import type { Expr, Item, VolumeMeta } from "../../src/engine/types";
 
 // The HCPF stakeholder review (docs/reviews/stakeholder-hcpf.md, B-4, S-8,
 // S-13, F-3) asked for: a governance warning on every item citing an excerpt
@@ -185,11 +185,69 @@ describe("table keyed by income band", () => {
   });
 });
 
+describe("the audit-fix operators and types read, render and type-check", () => {
+  const its: Item[] = [
+    { id: "O-1", name: "Heat share", identifier: "heat_share", kind: "parameter", type: "table keyed by option", scope: "global", program: "All",
+      value: { house: 0.62, apartment: 0.43 } },
+    { id: "O-2", name: "Region map", identifier: "region_map", kind: "parameter", type: "table keyed by option", scope: "global", program: "All",
+      value: { denver: "region_i", mesa: "region_iv" } },
+    { id: "O-3", name: "Dwelling", identifier: "dwelling", kind: "supplied", type: "one of", options: ["house", "apartment"], scope: "person", program: "All", supplied_by: "x" },
+    { id: "O-4", name: "Limit table", identifier: "limit_table", kind: "parameter", type: "table keyed by household size", scope: "global", program: "All",
+      versions: [{ from: "2026-01-01", value: { "1": 10, "2": 20 } }] },
+    { id: "O-5", name: "Limit step", identifier: "limit_each_additional", kind: "parameter", type: "money", scope: "global", program: "All", value: 5 },
+    { id: "O-6", name: "Size", identifier: "size", kind: "supplied", type: "whole number", scope: "person", program: "All", supplied_by: "x" },
+    { id: "O-7", name: "Start month", identifier: "start_month", kind: "parameter", type: "whole number", scope: "global", program: "All", value: 7 },
+    { id: "O-8", name: "County", identifier: "county", kind: "supplied", type: "one of", options: ["denver", "mesa"], scope: "person", program: "All", supplied_by: "x" },
+  ];
+  const ix = buildIndex(its);
+  const trees: Expr[] = [
+    ["lookup", "heat_share", "dwelling"],
+    ["lookup_extended", "limit_table", "size", "limit_each_additional"],
+    ["lookup_extended", "limit_table", "size"],
+    ["latest_month_of_year", "start_month", ["det_month"]],
+    ["+", ["year_of", ["latest_month_of_year", "start_month", ["det_month"]]], 1],
+    ["as_of", "limit_table", ["first_day", ["latest_month_of_year", "start_month", ["det_month"]]]],
+    ["lookup_extended", ["as_of", "limit_table", "2026-07-01"], ["+", "size", 1], "limit_each_additional"],
+  ];
+  it("each tree survives inline, parse and check", () => {
+    for (const e of trees) {
+      const text = inline(ix, e);
+      expect(parseInline(ix, text), text).toEqual(e);
+      expect(check(ix, e, "person").errors, text).toEqual([]);
+    }
+  });
+  it("reads as the catalog words", () => {
+    expect(inline(ix, trees[1])).toBe("Limit table (table), for Size, adding Limit step (5) for each beyond its last row");
+    expect(inline(ix, trees[2])).toBe("Limit table (table), for Size, or its last row beyond it");
+    expect(inline(ix, trees[3])).toBe("the most recent month number Start month (7) on or before the month containing the Determination Date");
+  });
+  it("types: an option table of amounts is a number, of options an option; as_of takes the parameter's type", () => {
+    expect(check(ix, ["lookup", "heat_share", "dwelling"], "person").type).toBe("number");
+    expect(check(ix, ["lookup", "region_map", "county"], "person").type).toBe("enum");
+    expect(check(ix, ["as_of", "start_month", "2026-07-01"], "person").type).toBe("number");
+    expect(check(ix, ["as_of", "size", "2026-07-01"], "person").errors.length).toBe(1);
+    expect(check(ix, ["latest_month_of_year", "start_month", ["det_date"]], "person").type).toBe("month");
+    expect([...check(ix, trees[5], "person").refs].sort()).toEqual(["limit_table", "start_month"]);
+  });
+});
+
 describe("review_by on an indexed parameter", () => {
   const engine = createEngine(items, meta, refs);
   it("warns once the date has passed, not before", () => {
     const due = draft({ review_by: "2026-11-01" });
     expect(engine.governance(due, { today: "2026-11-21" }).some((f) => f.rule === "versions.review_due")).toBe(true);
     expect(engine.governance(due, { today: "2026-10-15" }).some((f) => f.rule === "versions.review_due")).toBe(false);
+  });
+});
+
+describe("a parameter awaiting its figure", () => {
+  const engine = createEngine(items, meta, null);
+  const hasValue = (it: Item) =>
+    engine.constraints(it).find((r) => r.msg === "Parameter has a value")?.ok;
+  it("is a parameter with an empty list of versions and an open question", () => {
+    expect(hasValue(draft({ value: undefined, versions: [], open: ["OQ-1"] }))).toBe(true);
+  });
+  it("is not one without the open question", () => {
+    expect(hasValue(draft({ value: undefined, versions: [] }))).toBe(false);
   });
 });

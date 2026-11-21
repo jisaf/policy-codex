@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: Whether at least one Parent/Caretaker Relative in the person's Medical Assistance household is employed this month, or left employment with good cause (10 CCR 2505-10 § 8.100.4.I.1.b.i; it need not be the same person every month).
-derived: [exists, ma_magi_household_members, [all, [of, [P], [exists, ma_caretaker_relative_of, [of, [P], ma_is_dependent_child]]], [any, [of, [P], has_earned_income], [otherwise, [of, [P], left_employment_with_good_cause], false]]]]
+derived: [exists, ma_magi_household_members, [all, [of, [P], ma_is_parent_or_caretaker_relative_of_dependent_child], [any, [of, [P], has_earned_income], [otherwise, [of, [P], left_employment_with_good_cause], false]]]]
 sources: [S1719]
 implemented: engine
 tags: [ma, magi, income]

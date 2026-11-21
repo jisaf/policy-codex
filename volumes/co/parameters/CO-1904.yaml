@@ -5,7 +5,7 @@ kind: parameter
 type: whole number
 scope: global
 program: Medicaid
-meaning: "The length of the period ending on the first day of a month during which having been an inmate of a public institution at any point deems an applicable individual to have demonstrated community engagement for that month (42 CFR 435.553(b)): 3 months."
+meaning: "The length of the period ending on the first day of a month during which having been an inmate of a public institution at any point deems an applicable individual to have demonstrated community engagement for that month (42 CFR 435.553(b)), in months."
 value: 3
 sources: [S1206]
 tags: [ma, magi]
