@@ -60,3 +60,6 @@ article.source.on { background: var(--med); border-left: 3px solid var(--accent)
 .tokpop { max-height: calc(100vh - 16px); display: flex; flex-direction: column; overflow: hidden; }
 .tokpop .tokcard { overflow-y: auto; min-height: 0; }
 .tokpop .tokpop-actions { flex: none; }
+
+/* The volume picker never widens the page past a phone screen. */
+.volume-select { max-width: 100%; min-width: 0; }
