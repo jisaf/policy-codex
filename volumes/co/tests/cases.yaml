@@ -3776,3 +3776,266 @@
       leap_household_members: []
       leap_household_income: {"2026-12": 1500}
       leap_is_eligible: {"2026-12": false}
+
+- id: CO-13
+  title: Homeless father and daughter three months after applying; expedited SNAP with deductions disallowed; Medicaid reasonable opportunity expired; Colorado Works and CCCAP past due
+  # Phase 9 (verification) complex case. p1 applied on 2026-11-02 while homeless and out of work, with
+  # $20 in cash; the checklist went out the same day. DMV and SSA matches verified his identity and both
+  # SSNs, but no SSA match confirmed his citizenship and he has supplied no citizenship document. He
+  # pays $150 a month of court-ordered child support for an older child and $200 a month for after-school
+  # care while he looks for work (CCCAP job search). His daughter's birth certificate and a school record
+  # are in. The case is evaluated on 2027-02-10, after every program's period has run.
+  as_of: "2027-02-10"
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # Father, 34, U.S. citizen, homeless, no income, in job search.
+      facts:
+        date_of_birth: "1992-08-15"
+        sex: male
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_homeless: true
+        is_head_of_household: true
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_medicare_entitled_or_enrolled: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        is_enrolled_in_school: false
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_in_job_search_activity: true
+        has_medical_statement_of_unfitness: false
+        agency_finds_obviously_unfit: false
+        is_financially_contributing_to_child: true
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_referred_for_colorado_works_child_care: false
+        is_responsible_for_heating_costs: false
+        has_primary_heating_source: false
+        is_emancipated_minor: false
+        marital_status: single
+        countable_liquid_resources: 20
+        countable_nonliquid_resources_snap: 0
+        countable_resources_individual: 20
+        utility_allowance_amount: 0
+        application_date: "2026-11-02"
+        # Verification facts.
+        verification_request_date: "2026-11-02"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: false
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: false
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: true
+        age_verification_document_received: false
+        school_enrollment_verification_document_received: false
+        eligible_activity_verification_document_received: true
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        hours_worked: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 150
+        dependent_care_expense: 200
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+    p2:
+      # Daughter, 6, U.S. citizen, first grade.
+      facts:
+        date_of_birth: "2020-05-20"
+        sex: female
+        citizenship_status: citizen
+        lawful_presence_status: lawfully_present
+        state_of_residence: CO
+        is_homeless: true
+        is_head_of_household: false
+        in_medical_institution: false
+        is_pregnant: false
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_tanf_cash: false
+        receives_general_assistance: false
+        receives_state_cash_assistance: false
+        receives_social_security_disability: false
+        receives_va_disability_benefits: false
+        receives_title_iv_foster_adoption_kinship_payment: false
+        is_medicare_entitled_or_enrolled: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        is_veteran_or_active_duty: false
+        is_indian_or_urban_indian: false
+        is_enrolled_in_school: true
+        is_enrolled_higher_education_half_time: false
+        is_enrolled_higher_education_full_time: false
+        is_fleeing_felon_or_probation_violator: false
+        is_disqualified_for_intentional_program_violation: false
+        is_disqualified_for_work_requirement_noncompliance: false
+        is_disqualified_drug_felony: false
+        is_destitute_migrant_or_seasonal_farmworker: false
+        is_in_job_search_activity: false
+        has_additional_care_needs: false
+        is_protective_services_child_care_case: false
+        is_referred_for_colorado_works_child_care: false
+        is_responsible_for_heating_costs: false
+        has_primary_heating_source: false
+        is_emancipated_minor: false
+        marital_status: single
+        countable_liquid_resources: 0
+        countable_nonliquid_resources_snap: 0
+        countable_resources_individual: 0
+        utility_allowance_amount: 0
+        application_date: "2026-11-02"
+        verification_request_date: "2026-11-02"
+        identity_attestation_is_questionable: false
+        citizenship_attestation_is_questionable: false
+        residency_attestation_is_questionable: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        resources_attestation_is_questionable: false
+        shelter_costs_attestation_is_questionable: false
+        household_composition_attestation_is_questionable: false
+        pregnancy_attestation_is_questionable: false
+        age_attestation_is_questionable: false
+        ssn_exception_applies: false
+        identity_verified_by_electronic_data_source: false
+        identity_verification_document_received: true
+        identity_verification_document_type: child_medical_or_school_record
+        citizenship_verified_by_electronic_data_source: false
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        immigration_status_verified_by_electronic_data_source: false
+        immigration_status_verification_document_received: false
+        ssn_verified_by_electronic_data_source: true
+        ssn_verification_document_received: true
+        residency_verification_document_received: false
+        earned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        unearned_income_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: false
+        shelter_costs_verification_document_received: false
+        medical_expenses_verification_document_received: false
+        dependent_care_verification_document_received: false
+        child_support_paid_verified_by_electronic_data_source: false
+        child_support_paid_verification_document_received: false
+        household_composition_verification_document_received: false
+        disability_verified_by_electronic_data_source: false
+        disability_verification_document_received: false
+        pregnancy_verification_document_received: false
+        age_verified_by_electronic_data_source: false
+        age_verification_document_received: true
+        school_enrollment_verification_document_received: true
+        eligible_activity_verification_document_received: false
+        work_hours_verification_document_received: false
+        heating_costs_verification_document_received: false
+      month_defaults:
+        earned_income: 0
+        self_employment_net_income: 0
+        hours_worked: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        other_unearned_income: 0
+        child_support_paid_legally_obligated: 0
+        dependent_care_expense: 0
+        medical_expenses_out_of_pocket: 0
+        shelter_cost_monthly: 0
+  expect:
+    # SNAP: expedited ($0 income, $20 cash); identity was verified, so verification could be postponed to
+    # 2026-12-02, but that has passed, as has the 10-day due date (2026-11-12). Only the child support and
+    # dependent care expenses are unverified (2), so the household is certified without those deductions
+    # (273.2(f)(3)(ii), 4.502.A.3). Residency is not required of a homeless household.
+    # Medicaid: p1's citizenship (no SSA match, no document) is the only pending element; the DMV match
+    # verified his identity. The reasonable opportunity period ran from receipt of the notice
+    # (2026-11-07) for 90 days to 2027-02-05, so it has expired. p2's birth certificate plus a school
+    # record (acceptable identity for a child under 19) complete hers. CHP+ reads the same elements.
+    # Colorado Works (unit p1, p2): p1's citizenship and residency (no homeless exception in 3.604.3.B.2.f)
+    # are 2 outstanding, past the 11-day due date. CCCAP: p1's residency and child support paid (job
+    # search activity verified), past the 15-day period. LEAP: only SSNs required (no heating costs), complete.
+    p1:
+      snap_expedited_postponement_end_date: 2026-12-02
+      snap_verification_due_date: 2026-11-12
+      snap_person_pending_expense_verification_count: {2027-02: 2}
+      snap_person_pending_verification_count: {2027-02: 0}
+      snap_verification_status: {2027-02: expenses_disallowed}
+      snap_pending_verification_count: {2027-02: 2}
+      ma_reasonable_opportunity_period_end_date: 2027-02-05
+      ma_pending_status_verification_count: {2027-02: 1}
+      ma_verification_status: {2027-02: reasonable_opportunity_expired}
+      ma_pending_verification_count: {2027-02: 1}
+      chp_verification_status: {2027-02: reasonable_opportunity_expired}
+      chp_pending_verification_count: {2027-02: 1}
+      cw_verification_due_date: 2026-11-13
+      cw_verification_status: {2027-02: past_due}
+      cw_pending_verification_count: {2027-02: 2}
+      cccap_verification_status: {2027-02: past_due}
+      cccap_pending_verification_count: {2027-02: 2}
+      leap_verification_status: {2027-02: complete}
+      leap_pending_verification_count: {2027-02: 0}
+    p2:
+      snap_verification_status: {2027-02: expenses_disallowed}
+      ma_requires_verification_of_identity: {2027-02: true}
+      ma_identity_document_is_acceptable: true
+      ma_verification_status: {2027-02: complete}
+      ma_pending_verification_count: {2027-02: 0}
+      chp_verification_status: {2027-02: complete}
+      cw_verification_status: {2027-02: past_due}
+      cccap_verification_status: {2027-02: past_due}
+      leap_verification_status: {2027-02: complete}

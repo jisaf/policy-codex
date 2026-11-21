@@ -39,6 +39,18 @@ Out: application processing, verification, notices, renewals, appeals,
 sanctions and overpayments, and clinical level-of-care assessments; those
 enter as supplied facts (for example `meets_nursing_facility_level_of_care`).
 
+Amended 2026-11-21: the product owner has put verification in scope. For
+every program the volume states, per element (identity, citizenship,
+immigration status, SSN, residency, income, resources, expenses, household
+composition, disability, pregnancy, age, school enrollment, activity, work
+hours, heating costs), when the rules make verification mandatory, which
+documents they accept where they list them, the period the applicant has
+to provide it, and a per-program verification status and pending count.
+Whether an electronic data source verified an element, whether a document
+was received and of what type, and whether an attestation is questionable
+are supplied facts shared across programs. Application processing,
+notices and the timing of denials remain out of scope.
+
 ## Sources and provenance
 
 Every rule cites an excerpt; every excerpt names its document; every document
