@@ -16,12 +16,14 @@
   citation: "7 U.S.C. 2015"
   url: https://www.law.cornell.edu/uscode/text/7/2015
   file: documents/D-3.md
+  date: 2026-11-21
 - id: D-4
   title: "7 U.S.C. 2017 — Value of allotment"
   kind: statute
   citation: "7 U.S.C. 2017"
   url: https://www.law.cornell.edu/uscode/text/7/2017
   file: documents/D-4.md
+  date: 2026-11-21
 - id: D-5
   title: "Pub. L. 119-21, Title I, Subtitle A — Nutrition (secs. 10101–10108)"
   kind: statute
@@ -813,3 +815,32 @@
   url: https://hcpf.colorado.gov/sites/hcpf/files/HCPF%20OM%2025-073%202026%20Social%20Security%20Cost%20of%20Living%20Adjustments.pdf
   file: documents/D-125.md
   date: 2026-01-01
+- id: D-141
+  title: "C.R.S. 22-33-104 — Compulsory school attendance (Colorado Revised Statutes 2024)"
+  kind: statute
+  citation: "C.R.S. 22-33-104"
+  url: https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-22.pdf
+  file: documents/D-141.md
+  date: 2026-11-21
+- id: D-142
+  title: "C.R.S. 26-2-309 — Summer electronic benefits transfer for children program (Colorado Revised Statutes 2024)"
+  kind: statute
+  citation: "C.R.S. 26-2-309"
+  url: https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+  file: documents/D-142.md
+  date: 2026-11-21
+- id: D-143
+  title: "Code of Colorado Regulations — rule lists of the Department of Human Services and the State Board of Education (no Summer EBT rule)"
+  kind: regulation
+  citation: "Colorado Secretary of State, Code of Colorado Regulations, department and agency rule lists"
+  url: https://www.sos.state.co.us/CCR/NumericalDeptList.do
+  file: documents/D-143.md
+  date: 2026-11-21
+# D-144: the host cdhs.nxt-dev.colorado.gov appears to be CDHS's next-generation site (cdhs.colorado.gov refuses this session).
+- id: D-144
+  title: "CDHS — Colorado Low-income Energy Assistance Program (LEAP) web page: income limits for the 2026-2027 season"
+  kind: guidance
+  citation: "Colorado Department of Human Services, LEAP page (cdhs.nxt-dev.colorado.gov, CDHS's next-generation site)"
+  url: https://cdhs.nxt-dev.colorado.gov/leap
+  file: documents/D-144.md
+  date: 2026-11-21

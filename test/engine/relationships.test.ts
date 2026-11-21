@@ -71,6 +71,7 @@ describe("case-level relationships", () => {
     expect(INVERSE_ROLE.tax_filer).toBe("tax_dependent");
     expect(INVERSE_ROLE.tax_dependent).toBe("tax_filer");
     expect(INVERSE_ROLE.buys_prepares_with).toBe("buys_prepares_with");
+    expect(INVERSE_ROLE.shares_heat_with).toBe("shares_heat_with");
   });
 
   it("evaluates a rule that looks through an expanded relationship", () => {

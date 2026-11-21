@@ -1,0 +1,13 @@
+id: CO-2108
+name: "CCCAP: child needs care for part of the day"
+identifier: cccap_child_needs_care_for_part_of_day
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "Whether care is requested for this child because the child needs child care services during a portion of the day, but less than twenty-four hours (8 CCR 1403-1 3.111.F; 3.110's \"need child care assistance\")."
+precision: "Stated for every child in a CCCAP case; CCCAP reads no default. False for a child for whom no care is requested or who would need round-the-clock care."
+supplied_by: "The care requested on the CCCAP application and the caretaker's activity schedule."
+sources: [S1408]
+tags: [household]
+rationale: "Review K-4 and OQ-162: 3.110 and 3.111.F make need for part-day care an element of an eligible child; no existing fact states it. cccap_is_eligible_child (CO-980) reads it."

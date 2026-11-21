@@ -6,10 +6,9 @@ type: yes/no
 scope: person-month
 program: CCCAP
 meaning: This adult caretaker or teen parent is eligible for Colorado Works Child Care under 8 CCR 1403-1 3.115.A, 3.116.A - determined work eligible per Colorado Works, receiving Colorado Works basic cash assistance, and referred for child care by the county Colorado Works worker.
-precision: Reads Colorado Works' own eligibility outcome, grant amount, and work-eligibility determination for this same person (cross-program), rather than re-deriving Colorado Works work-eligibility here. Per 3.111.D.6, a caretaker or teen parent caring for a child receiving Colorado Works cash assistance who is not determined work eligible falls through to the Low-Income Child Care determination instead of this branch, rather than being denied outright.
-derived: [all, [any, ["=", cw_eligibility_status, eligible], [">", cw_grant_amount, 0]], cw_is_work_eligible_individual, [otherwise, is_referred_for_colorado_works_child_care, true]]
+precision: "Reads Colorado Works' own eligibility outcome, grant amount, and work-eligibility determination for this same person (cross-program), rather than re-deriving Colorado Works work-eligibility here. Per 3.111.D.6, a caretaker or teen parent caring for a child receiving Colorado Works cash assistance who is not determined work eligible falls through to the Low-Income Child Care determination instead of this branch, rather than being denied outright. Phase-10 sweep: the referral, financially-contributing and activity facts are read without a default; a case states them (OQ-134, OQ-135, OQ-157, OQ-395)."
+derived: [all, [any, ["=", cw_eligibility_status, eligible], [">", cw_grant_amount, 0]], cw_is_work_eligible_individual, is_referred_for_colorado_works_child_care]
 sources: [S487, S511]
-open: [OQ-134]
 implemented: engine
 tags: [household]
 accepts_from: [cw_eligibility_status, cw_grant_amount, cw_is_work_eligible_individual]

@@ -5,9 +5,9 @@ kind: supplied
 type: money
 scope: person
 program: CCCAP
-meaning: "The value of the liquid and non-liquid assets the adult caretaker or teen parent self-declares under 8 CCR 1403-1 3.111.H.4.c, with no program's exclusions applied."
+meaning: "The value of the assets the adult caretaker or teen parent self-declares under 8 CCR 1403-1 3.111.H.4.c, as 3.103.K defines assets: liquid resources (cash, checking and savings, certificates, stocks, bonds, lump sums) and non-liquid resources (any tangible property, every vehicle including motorcycles, trailers and recreational vehicles, and real property), excluding only the primary home and the automobile of the primary caretakers. No other program's exclusions apply (no retirement-account or 7 CFR 273.8(e) exclusion)."
 precision: "A per-caretaker declaration, as 3.111.H.4.c states it ('self-declare that their liquid and non-liquid assets do not exceed one million dollars'); it is not net of SNAP's resource exclusions."
 supplied_by: "Adult caretaker or teen parent self-declaration on the application."
-sources: [S515]
+sources: [S515, S1414]
 tags: [resources]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-11): cccap_meets_asset_limit (CO-996) read the SNAP countable liquid and non-liquid resource facts, which are net of SNAP's exclusions (home, most vehicles, retirement accounts)."

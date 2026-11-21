@@ -8,6 +8,6 @@ scope: person
 program: All
 meaning: The Colorado county in which the person resides (and, for a person in a Long-Term Care institution, intends to remain), one of Colorado's 64 counties written in lower case with underscores (el_paso, la_plata). Unknown for a person who does not reside in Colorado.
 supplied_by: The application's residence address.
-sources: [S1229]
-tags: [ma, ltc]
-rationale: "OQ-99: the income-trust ceiling of § 8.100.7.G.6.a.i.a) depends on the region of the county in which the person resides; no county fact exists. CCCAP's county residence (OQ-159, OQ-393) can read the same fact."
+sources: [S1229, S1408]
+tags: [ma, ltc, household]
+rationale: "OQ-99: the income-trust ceiling of § 8.100.7.G.6.a.i.a) depends on the region of the county in which the person resides; no county fact exists. CCCAP's county residence (OQ-159, OQ-393, 8 CCR 1403-1 3.111.A) reads the same fact; the CCCAP sweep's text-valued duplicate CO-2105 was retired in its favour at merge."

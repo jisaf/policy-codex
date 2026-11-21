@@ -1,0 +1,12 @@
+id: CO-2110
+name: CCCAP job search weeks per instance
+identifier: cccap_job_search_weeks
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The weeks of job search child care available for each instance of non-temporary cessation of activity: thirteen, the floor 3.111.G.3.a states (\"no fewer than thirteen (13) weeks\"); a county plan the Department approves may offer more."
+value: 13
+sources: [S1411]
+tags: [household]
+rationale: "Review K-5: 3.111.G.3.a and g (S1411) bound job search child care; cccap_caretaker_in_eligible_activity (CO-984) reads it. A county's longer approved period is not modeled (OQ-162)."

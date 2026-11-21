@@ -7,16 +7,18 @@ options: [not_applicable, not_required, complete, pending, past_due]
 scope: person-month
 program: LEAP
 role: outcome
-meaning: "Where this person's LEAP household stands on verification: not applicable (no one in the person's LEAP household meets the citizenship requirement, so LEAP cannot reach it); none required; complete; pending within the two weeks allowed; or past due (the application is denied for failure to provide required verification). A member without an SSN or a verified status is excluded (leap_member_is_excluded_for_verification) rather than making the household past due."
-derived: [case, [["=", [count, leap_household_members], 0], not_applicable], [["=", [sum, leap_household_members_for_income, [of, [P], leap_person_required_verification_count]], 0], not_required], [["=", leap_pending_verification_count, 0], complete], [["<=", [det_date], leap_verification_due_date], pending], [else, past_due]]
+meaning: "Where this person's LEAP household stands on verification: not applicable (no one in the person's LEAP economic unit meets the citizenship requirement as declared, so LEAP cannot reach it); none required; complete; pending within the two weeks allowed; or past due (the application is denied for failure to provide required verification). A member without an SSN or a verified status is excluded (leap_member_is_excluded_for_verification) rather than making the household past due; a unit whose declared-citizen members are all excluded that way is still reported, not not_applicable."
+derived: [case, [[not, [exists, leap_household_members_for_income, [of, [P], leap_meets_citizenship_requirement]]], not_applicable], [["=", [sum, leap_household_members_for_income, [of, [P], leap_person_required_verification_count]], 0], not_required], [["=", leap_pending_verification_count, 0], complete], [["<=", [det_date], leap_verification_due_date], pending], [else, past_due]]
 sources: [S893, S899, S494]
 implemented: engine
 tags: [verification]
-open: [OQ-316, OQ-370]
+open: [OQ-316]
 rationale: No existing item reports LEAP verification standing.
 tests:
-  - {id: CO-1462-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [], leap_household_members: [p1]}, expect: not_required}
-  - {id: CO-1462-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_person_required_verification_count: 2, leap_pending_verification_count: 0, leap_household_members: [p1]}, expect: complete}
-  - {id: CO-1462-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-10", leap_household_members_for_income: [p1], leap_person_required_verification_count: 2, leap_pending_verification_count: 1, leap_verification_due_date: "2026-11-16", leap_household_members: [p1]}, expect: pending}
-  - {id: CO-1462-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-20", leap_household_members_for_income: [p1], leap_person_required_verification_count: 2, leap_pending_verification_count: 1, leap_verification_due_date: "2026-11-16", leap_household_members: [p1]}, expect: past_due}
-  - {id: CO-1462-T9, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members: []}, expect: not_applicable}
+  - {id: CO-1462-T1, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 0}, expect: not_required}
+  - {id: CO-1462-T2, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 2, leap_pending_verification_count: 0}, expect: complete}
+  - {id: CO-1462-T3, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-10", leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 2, leap_pending_verification_count: 1, leap_verification_due_date: "2026-11-16"}, expect: pending}
+  - {id: CO-1462-T4, month: "2026-10", as_of: "2026-10-01", given: {determination_date: "2026-11-20", leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 2, leap_pending_verification_count: 1, leap_verification_due_date: "2026-11-16"}, expect: past_due}
+  - {id: CO-1462-T9, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: false}, expect: not_applicable}
+  # OQ-370: a household whose only member is excluded pending SAVE (3.751.1 B, 3.753.15) has no LEAP members, but its verification standing is still reported.
+  - {id: CO-1462-T10, month: "2026-10", as_of: "2026-10-01", given: {leap_household_members_for_income: [p1], leap_meets_citizenship_requirement: true, leap_person_required_verification_count: 1, leap_pending_verification_count: 0}, expect: complete}

@@ -1,0 +1,13 @@
+id: CO-2123
+name: LEAP verification period extended for good cause
+identifier: leap_verification_extension_granted
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: "Whether the county extended the period to submit the requested LEAP information or verification on a showing of good cause (9 CCR 2503-7 3.756.12.D); the extension cannot exceed two weeks."
+precision: "If not stated, LEAP reads this as false (no extension), which leaves the base two weeks."
+supplied_by: "County LEAP worker's extension decision recorded in the case."
+sources: [S899]
+tags: [verification]
+rationale: "OQ-316: no fact stated the good-cause extension 3.756.12.D allows; leap_verification_due_date (CO-1461) reads it."

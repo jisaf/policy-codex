@@ -1,0 +1,19 @@
+id: CO-2107
+name: "CCCAP: resident of the county applied to"
+identifier: cccap_meets_county_residency
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "Whether this adult caretaker or teen parent is a resident of the county from which Low-Income Child Care assistance is sought or received, under 8 CCR 1403-1 3.111.A: a Colorado resident whose county of residence is the county applied to."
+precision: "3.111.A's second sentence lets a household that reports moving out of the county during the eligibility period stay eligible for the rest of the period; cccap_is_receiving_assistance does not separate a mid-period change from a redetermination, so that carve-out is not modeled and a stated move fails the test."
+derived: [all, is_colorado_resident, ["=", county_of_residence, cccap_application_county]]
+sources: [S1408, S484]
+implemented: engine
+tags: [household]
+rationale: "OQ-159: cccap_low_income_child_care_eligible (CO-987) read only state residency (is_colorado_resident, CO-505). The county test differs from Medicaid's state test, so it is its own item; CO-987 reads it."
+tests:
+  - {id: CO-2107-T1, as_of: "2026-10-01", given: {is_colorado_resident: true, county_of_residence: denver, cccap_application_county: denver}, expect: true}
+  # 3.111.A: assistance is sought from a county the caretaker does not live in.
+  - {id: CO-2107-T2, as_of: "2026-10-01", given: {is_colorado_resident: true, county_of_residence: adams, cccap_application_county: denver}, expect: false}
+  - {id: CO-2107-T3, as_of: "2026-10-01", given: {is_colorado_resident: false, cccap_application_county: denver}, expect: false}

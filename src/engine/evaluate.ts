@@ -73,6 +73,9 @@ export const INVERSE_ROLE: Readonly<Record<string, string>> = {
   tax_filer: "tax_dependent",
   tax_dependent: "tax_filer",
   buys_prepares_with: "buys_prepares_with",
+  // LEAP's economic unit (9 CCR 2503-7 3.751.1): persons who customarily buy
+  // primary heating fuel in common or pay heat jointly in rent. Symmetric.
+  shares_heat_with: "shares_heat_with",
 };
 
 /** One relationship as the person it is recorded on states it. */

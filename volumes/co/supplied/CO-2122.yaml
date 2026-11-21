@@ -1,0 +1,13 @@
+id: CO-2122
+name: LEAP application date
+identifier: leap_application_date
+kind: supplied
+type: calendar date
+scope: person
+program: LEAP
+meaning: "The date the household's LEAP application was made for the program year (9 CCR 2503-7 3.751.1 \"Point in Time\": eligibility is determined from the household's circumstances on this date)."
+precision: "Stated for every person in a case that determines LEAP eligibility; LEAP reads no default."
+supplied_by: "Date the county received the LEAP application (PEAK, mail or in person)."
+sources: [S776]
+tags: [household]
+rationale: "OQ-137: LEAP is decided once per program year from the application-date circumstances; no fact named that date. leap_is_eligible (CO-1007) and leap_benefit_amount (CO-1281) read it."

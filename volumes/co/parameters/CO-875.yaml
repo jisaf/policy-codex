@@ -1,17 +1,17 @@
 id: CO-875
-name: LEAP income limit, 60 percent state median income, by household size (illustrative)
+name: "LEAP income limit, 60 percent state median income, by household size"
 identifier: leap_income_limit_monthly
 kind: parameter
 type: table keyed by household size
 scope: global
 program: LEAP
-meaning: The monthly income ceiling for a LEAP household of a given size - sixty percent (60%) of the state median income level, per 9 CCR 2503-7 3.752.22.D.
-precision: "3.752.22.D states the 60% figure as a percentage of a federal fiscal year 2023 HHS state median income table (45 C.F.R. 96.85 and a LIHEAP Information Memorandum) that is not in this volume's document library (see OQ-122). The values below back the 60% figure out of the one state median income figure this library does have text for - CCCAP's 85% SMI column, 8 CCR 1403-1 3.111.H.2 (S485): value = 85%-SMI-figure / 0.85 x 0.60. These are Colorado's own SMI figures for a different program (CCCAP, not LEAP's federal FY2023 table), computed per docs/reviews/cccap-leap-phase-6.md C-13, so they remain an illustrative stand-in pending OQ-122's fetch, not a number from LEAP's own fetched text - closer to the true figure than an arbitrary constant, but still not it. Sizes 1-8; sizes above 8 add leap_income_limit_monthly_each_additional (CO-1808) per additional member, keyed the same way cccap_poverty_guideline_monthly_table (CO-323) is."
+meaning: "The maximum gross monthly income for a LEAP household of a given size, 1 through 15 - sixty percent (60%) of the state median income level, per 9 CCR 2503-7 3.752.22.D - as the Department publishes it for each heating season."
+precision: "The 2026-2027 season (November 1, 2026 through April 30, 2027) uses the Department's published table (D-144, S1406), computed from the state median income HHS released in April 2026. 3.752.22.D (S773) still names the federal fiscal year 2023 table and LIHEAP IM 2025-02; the published season table is used because the rule leaves the figures to HHS's release and the Department states which release it applied (OQ-122, resolved). Keyed 1 through 15: 3.751.2.C (S1407) allows at most fifteen household members, so no figure beyond fifteen is needed. No version covers a date outside the season; a LEAP determination is made only within it (leap_month_in_eligibility_period)."
 versions:
-  - from: "2024-10-01"
-    value: { "1": 3382.70, "2": 4423.07, "3": 5464.37, "4": 6505.20, "5": 7546.04, "6": 8586.84, "7": 8782.02, "8": 8977.65 }
-    source: S485
-sources: [S485, S491]
-open: [OQ-122]
+  - from: "2026-11-01"
+    to: "2027-05-01"
+    value: { "1": 3774, "2": 4936, "3": 6097, "4": 7258, "5": 8420, "6": 9581, "7": 9799, "8": 10017, "9": 10234, "10": 10452, "11": 10670, "12": 10888, "13": 11106, "14": 11323, "15": 11541 }
+    source: S1406
+sources: [S1406, S1407, S773, S491]
 tags: [income, household]
-rationale: "Previously a per-person supplied fact (kind: supplied) with a single illustrative $3,000-3,200 figure not keyed to leap_household_size (CO-1001) at all; the review (docs/reviews/cccap-leap-phase-6.md, C-13, should-fix) found a household's ceiling could silently mismatch its own derived size, and that a text-derived figure (backed out of CCCAP's own 85% SMI table, S485, the only state median income figure this library's fetched text states) is available and an order of magnitude closer to the true LIHEAP figure than the prior $3,000 constant. Modeled as a parameter table keyed by household size, the same shape as cccap_poverty_guideline_monthly_table (CO-323, the nearest same-shape item), rather than kept as a per-person supplied fact, so leap_income_within_limit (CO-1003) cannot key two members of the same household to different ceilings. leap_income_within_limit (CO-1003) reads it via lookup on leap_household_size (CO-1001)."
+rationale: "Previously a per-person supplied fact, then (review docs/reviews/cccap-leap-phase-6.md, C-13) an illustrative table backed out of CCCAP's 85% SMI column (S485) because LEAP's own figures were not fetched. Phase-10 open-question sweep: the Department's 2026-2027 season table (D-144, S1406) replaces the illustrative figures; it is keyed by household size so leap_income_within_limit (CO-1003) reads one ceiling for the whole household through leap_household_size (CO-1001)."

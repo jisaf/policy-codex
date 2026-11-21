@@ -204,3 +204,17 @@ Did not fit cleanly:
 ### Duplicate ids renumbered (2026-11-21)
 
 Ten parameters added in phases 4–6 reused ids that SNAP items already held (CO-330–333, CO-340–345). The parameters moved to CO-1800–CO-1809 with their identifiers unchanged: ma_wawd_premium_cap_pct CO-330 → CO-1800, ma_mmmna_applicable_pct CO-331 → CO-1801, ma_sga_non_blind CO-332 → CO-1802, ma_sga_blind CO-333 → CO-1803, cccap_smi_income_limit_table CO-340 → CO-1804, cccap_smi_income_limit_each_additional CO-341 → CO-1805, leap_eligibility_period_start_month CO-342 → CO-1806, leap_eligibility_period_end_month CO-343 → CO-1807, leap_income_limit_monthly_each_additional CO-344 → CO-1808, cccap_asset_limit CO-345 → CO-1809. The SNAP items keep CO-330–345. Governance now reports a reused id as an error (`id.duplicate`).
+
+## Phase 10: open-question sweep for CCCAP, LEAP and SUN Bucks (2026-11-21)
+
+Items CO-2100–CO-2124, documents D-141–D-144 (and D-3, D-4, D-5 re-fetched: their files were missing), excerpts S1400–S1414.
+
+- LEAP household (CO-1000, CO-1009): leaves out a member excluded for a missing SSN or an unverified status (OQ-370), does not cross to a person in institutional group care (OQ-358), drops a member of another approved household (3.751.2.A, CO-2100), and joins unrelated persons through the new symmetric relationship role `shares_heat_with` (engine: INVERSE_ROLE and RELS; OQ-132). LEAP is decided at `leap_application_date` (CO-2122, OQ-137). The income limit is CDHS's 2026-2027 season table (D-144, from cdhs.nxt-dev.colorado.gov, OQ-122).
+- Target household: the grandmother is her own LEAP household; the family household is p2, p4, p5 with $3,560 counted, and the November benefit is $540 (was $450).
+- SUN Bucks: `is_school_aged` (CO-1292) is derived from C.R.S. 22-33-104(1)(a) and moved to the sunbucks chapter; no Colorado Summer EBT rule exists (D-143).
+- CCCAP: need for part-day care, activity time limits, the minimum-wage test, county residency and the entry/exit limits are modeled; the eligibility-granting defaults are gone.
+- Renamed (same ID): CO-898 `is_absent_from_home` → `cccap_caretaker_is_involuntarily_absent` (3.111.D.1.b only; a voluntary absence exempts no one, OQ-136).
+- ID retired: CO-1808 (`leap_income_limit_monthly_each_additional`): the season table runs to fifteen, the most 3.751.2.C allows.
+
+
+CO-2105 (`county_of_residence`, text) retired at the phase-10 merge: the Medicaid sweep added the same fact as CO-1979 with the 64 counties as options; CO-1979 survives, `cccap_application_county` (CO-2106) takes the same options.

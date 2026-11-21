@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: SunBucks
 meaning: "Whether the child's household must verify income for Summer EBT: an application selected for verification (sample or for cause), unless the child is categorically eligible through SNAP, TANF or another approved program, or is homeless."
-precision: Foster, migrant and runaway children, also excepted by 292.14(f)(1), have no fact in the volume; only homelessness is read (OQ-377).
+precision: "292.14(f)(1) excepts a household whose children are all determined eligible from SNAP, FDPIR, TANF or another approved means-tested program's documentation, or are all foster, homeless, migrant or runaway children. SNAP and TANF are read from snap_is_eligible and receives_tanf_cash; FDPIR, another approved program and the foster, migrant and runaway grounds are within sebt_other_categorical_basis (CO-1296), and homelessness is is_homeless. sebt_other_categorical_basis also carries Head Start and individual free or reduced-price certification, which (f)(1) does not list, so such a child is excepted here too; and the item tests the child, not every child in the household (OQ-377)."
 derived: [all, sebt_application_is_selected_for_verification, [not, [any, [any, snap_is_eligible, receives_tanf_cash, sebt_other_categorical_basis], is_homeless]]]
 sources: [S1090, S1092, S1094]
 implemented: engine

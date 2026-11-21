@@ -8,7 +8,7 @@
 # per-month facts are under months/<YYYY-MM> or month_defaults; anything not
 # stated is unknown. Case-level relationships are [role, from, to] and the
 # engine adds the inverse (parent/child, spouse/spouse, grandparent/grandchild,
-# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same).
+# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same, shares_heat_with/same).
 
 - id: CO-01
   title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
@@ -32,6 +32,11 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -49,7 +54,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -149,7 +153,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -285,6 +289,11 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -303,7 +312,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -404,7 +412,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -541,6 +549,12 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -560,7 +574,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -661,7 +674,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -767,6 +780,13 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -786,7 +806,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -885,7 +904,7 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -995,6 +1014,11 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -1014,7 +1038,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -1115,7 +1138,7 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -1235,7 +1258,9 @@
   # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
   # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
   # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
-  # status, her income counted, 5,590 = 203% FPL for four), which in November gets 900 x (1 - 0.2 - 0.3) = 450.
+  # status, her income counted). Phase-10 sweep (OQ-358, OQ-370): p1 lives in a nursing facility, not at the
+  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family household is
+  # p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three, which in November gets 900 x (1 - 0.2 - 0.2) = 540.
   # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
   # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
@@ -1292,7 +1317,8 @@
     # (1 CCR 204-30 Rule 5 1.8). CHP+, Colorado Works and CCCAP read not_applicable where they cannot
     # reach the person (review C-4); SNAP is not_applicable for p1 (in an institution); Adult Financial
     # for p3-p5. LEAP counts the household's heating once and no longer asks p3, outside the household,
-    # for an SSN: p1/p2 1, p3/p4/p5 2 (p3's pay stubs, heating).
+    # for an SSN: p2-p5 2 (p3's pay stubs, heating). Phase-10 sweep (OQ-358): p1, in a nursing facility, is her
+    # own LEAP household, which counts only its heating: 1.
     p1:
       # Phase 7 outcomes. Emergency: p3 (undocumented, MAGI adult) fails only status, so ma_is_emergency_medicaid_only
       # is true; she had an emergency medical condition in October (stated), so eligible_emergency_condition. Everyone else
@@ -1327,8 +1353,8 @@
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-10": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]    # C-2 (phase-8 fix round): the family buys heat in common (shares_heating_fuel_with), so one LEAP household; p3 excluded for status (3.753.17), her income counted
-      leap_household_income: {"2026-10": 5590}    # 3,210 + 2,380
+      leap_household_members: [p1]    # OQ-358 (phase-10 sweep): p1 lives in a nursing facility (leap_living_arrangement institutional_group_care), not at the dwelling, so the spouse edge is not crossed (3.751.1 "Household", 3.751.2.D.1 "living together") and she is her own LEAP household
+      leap_household_income: {"2026-10": 2030}    # her own Social Security 1,420 and pension 610
       leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-10": true}
@@ -1376,7 +1402,7 @@
       leap_verification_status: {"2026-10": pending}
       cw_death_reimbursement_eligible: false    # K-1: no member is a deceased Colorado Works client
       cw_death_reimbursement_amount: 0
-      leap_pending_verification_count: {"2026-10": 2}
+      leap_pending_verification_count: {"2026-10": 1}    # OQ-358: her own household's heating costs only
       ma_citizenship_verification_is_pending: {"2026-10": false}
       ma_identity_verification_is_pending: {"2026-10": false}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1480,7 +1506,7 @@
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-10": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       leap_is_eligible: {"2026-10": false}
       ma_is_institutionalized: false
       ma_ltc_couple: false
@@ -1523,7 +1549,7 @@
       cccap_verification_status: {"2026-10": not_applicable}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
-      leap_household_income: {"2026-10": 5590}
+      leap_household_income: {"2026-10": 3560}    # p2's 1,180 + p3's 2,380
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
@@ -1637,8 +1663,8 @@
       # leap_household_members is now filtered by 3.753.17's citizenship requirement (p3 is undocumented, review C-2);
       # leap_household_income still sums p3's income via leap_household_members_for_income (CO-1009). leap_is_eligible
       # is false: October is outside the November-April eligibility period (review C-3, 3.751.1/3.752.1).
-      leap_household_members: [p1, p2, p4, p5]
-      leap_household_income: {"2026-10": 5590}
+      leap_household_members: [p2, p4, p5]
+      leap_household_income: {"2026-10": 3560}
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1789,7 +1815,7 @@
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: {"2026-10": true}
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -1823,7 +1849,7 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_household_income: {"2026-10": 5590}
+      leap_household_income: {"2026-10": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
@@ -1933,7 +1959,7 @@
       af_category: {"2026-10": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-10": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-10": false}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -1967,7 +1993,7 @@
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
-      leap_household_income: {"2026-10": 5590}
+      leap_household_income: {"2026-10": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_pending_verification_count: {"2026-10": 2}
@@ -2075,6 +2101,12 @@
   persons:
     p1:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2093,7 +2125,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2193,7 +2224,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2326,6 +2357,12 @@
         pension_income: 610
     p2:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2345,7 +2382,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2446,7 +2482,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2580,6 +2616,13 @@
         social_security_income: 1180
     p3:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2600,7 +2643,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2701,7 +2743,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -2805,6 +2847,14 @@
         hours_worked: 138
     p4:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -2825,7 +2875,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -2924,7 +2973,7 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -3031,6 +3080,12 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_application_county: adams  # phase-10 sweep (OQ-159)
+        county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -3051,7 +3106,6 @@
         meets_county_diversion_income_limit: false
         uses_top_quality_rated_provider: true
         all_children_in_part_time_care: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
         sebt_other_categorical_basis: false
         estimated_home_heating_costs_for_season: 900
@@ -3151,7 +3205,7 @@
         has_domestic_violence_waiver: false
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
-        # Illustrative figures, not from the fetched text: the county CCCAP entry limit (185% FPL) and the LEAP income ceiling.
+        # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
         cccap_entry_income_limit_pct_fpl: 1.85
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
@@ -3268,7 +3322,9 @@
   # Phase 8, other programs: the LEAP heating costs (900), statewide adjustment rate (0.2) and program-year
   # minimum and maximum benefit (100, 1000) are illustrative - the rule leaves them to annual State figures
   # (OQ-253); the family buys heat in common, so it is one LEAP household (phase-8 fix round, C-2: p3 excluded for
-  # status, her income counted, 5,590 = 203% FPL for four), which in November gets 900 x (1 - 0.2 - 0.3) = 450.
+  # status, her income counted). Phase-10 sweep (OQ-358, OQ-370): p1 lives in a nursing facility, not at the
+  # dwelling, so she is her own LEAP household (2,030, not vulnerable under 3.752.25.B.1); the family household is
+  # p2, p4, p5 with p3's income counted, 3,560 = 156% FPL for three, which in November gets 900 x (1 - 0.2 - 0.2) = 540.
   # CCCAP parent fee for p3's household (size 3, income 2380, one eligible child,
   # quality-rated provider, illustrative): 1% x 2380 + 14% x (2380 - 2276.67) = 38.27, x 0.8 = 30.61, 30.
   # SUN Bucks: p4 (17, in an NSLP school, SNAP household) is categorically eligible for 120. No one is
@@ -3334,8 +3390,8 @@
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-11": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]    # C-2 (phase-8 fix round): the family buys heat in common (shares_heating_fuel_with), so one LEAP household; p3 excluded for status (3.753.17), her income counted
-      leap_household_income: {"2026-11": 5590}    # 3,210 + 2,380
+      leap_household_members: [p1]    # OQ-358 (phase-10 sweep): p1 lives in a nursing facility (leap_living_arrangement institutional_group_care), not at the dwelling, so the spouse edge is not crossed (3.751.1 "Household", 3.751.2.D.1 "living together") and she is her own LEAP household
+      leap_household_income: {"2026-11": 2030}    # her own Social Security 1,420 and pension 610
       leap_is_eligible: {"2026-11": false}
       ma_is_institutionalized: true
       ma_meets_special_income_group: {"2026-11": true}
@@ -3478,7 +3534,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}    # C-2: one household of four, 5,590 = 203% FPL, 30% contribution: 900 x (1 - 0.2 - 0.3); was 450 and 540 for two households each taking the full $900
+      leap_benefit_amount: {"2026-11": 540}    # OQ-358: household of three, 3,560 x 12 = 42,720 = 156% of the 27,320 guideline for three, 20% contribution: 900 x (1 - 0.2 - 0.2); was 450 for four with p1's income
       cccap_parent_fee: {"2026-11": 0}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3487,11 +3543,11 @@
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
       cccap_eligibility_status: {"2026-11": ineligible_child}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14).
-      # C-2 (phase-8 fix round): the family is one LEAP household of four with $5,590, within the volume's size-4
-      # ceiling (leap_income_limit_monthly, OQ-122), so p2 is LEAP-eligible; p1, now in a nursing facility, stays
-      # in it through the spouse edge, since no fact states that she no longer lives with him (OQ-358).
+      # Phase-10 sweep (OQ-358): p1, now in a nursing facility, no longer lives with him, so the family is one LEAP
+      # household of three (p2, p4, p5) with $3,560 counting p3's income, within the 2026-2027 season's
+      # $6,097 for three (leap_income_limit_monthly, S1406), so p2 is LEAP-eligible.
       leap_is_eligible: {"2026-11": true}
       ma_is_institutionalized: false
       ma_ltc_couple: false
@@ -3533,7 +3589,7 @@
       af_pending_verification_count: {"2026-11": 0}
       cccap_verification_status: {"2026-11": not_applicable}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_household_income: {"2026-11": 5590}
+      leap_household_income: {"2026-11": 3560}    # p2's 1,180 + p3's 2,380
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_verification_status: {"2026-11": complete}
@@ -3632,7 +3688,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 540}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3645,8 +3701,8 @@
       cccap_household_income: {"2026-11": 2380}
       cccap_is_teen_parent: {"2026-11": false}
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
-      leap_household_income: {"2026-11": 5590}
+      leap_household_members: [p2, p4, p5]
+      leap_household_income: {"2026-11": 3560}
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -3779,7 +3835,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 540}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": eligible_categorical}
       sebt_benefit_amount: {"2026-11": 120}
@@ -3797,7 +3853,7 @@
       cccap_household_members: [p3, p4, p5]
       cccap_is_teen_parent: {"2026-11": true}
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p3, p4, p5]
       ma_magi_household_size: 3
@@ -3830,7 +3886,7 @@
       cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_household_income: {"2026-11": 5590}
+      leap_household_income: {"2026-11": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_verification_status: {"2026-11": complete}
@@ -3931,7 +3987,7 @@
       af_burial_eligible: false
       af_burial_benefit: 0
       cw_diversion_eligible: {"2026-11": false}
-      leap_benefit_amount: {"2026-11": 450}
+      leap_benefit_amount: {"2026-11": 540}
       cccap_parent_fee: {"2026-11": 30}
       sebt_eligibility_status: {"2026-11": ineligible}
       sebt_benefit_amount: {"2026-11": 0}
@@ -3941,7 +3997,7 @@
       af_category: {"2026-11": none}
       cccap_household_members: [p3, p4, p5]
       cccap_eligibility_status: {"2026-11": eligible_low_income}
-      leap_household_members: [p1, p2, p4, p5]
+      leap_household_members: [p2, p4, p5]
       leap_is_eligible: {"2026-11": true}
       ma_magi_household_members: [p4, p5]
       ma_magi_household_size: 2
@@ -3974,7 +4030,7 @@
       cw_pending_verification_count: {"2026-11": 2}
       cccap_verification_status: {"2026-11": complete}
       cccap_pending_verification_count: {"2026-11": 0}
-      leap_household_income: {"2026-11": 5590}
+      leap_household_income: {"2026-11": 3560}
       cw_death_reimbursement_eligible: false
       cw_death_reimbursement_amount: 0
       leap_verification_status: {"2026-11": complete}
@@ -5713,9 +5769,16 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-06-11"
         sex: female
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
@@ -5755,9 +5818,18 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
+        cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1990-02-27"
         sex: male
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: false
@@ -5798,9 +5870,17 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2012-05-20"
         sex: male
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -5845,9 +5925,17 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
+        is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2008-03-14"
         sex: female
         citizenship_status: citizen
+        ssn_furnished_or_application_shown: true    # phase-10 sweep (OQ-370): LEAP leaves out a member with no SSN (3.751.1 B)
         lawful_presence_status: lawfully_present
         state_of_residence: "CO"
         snap_is_enrolled_half_time_in_school_or_training: true
@@ -5888,6 +5976,11 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1981-09-05"
         sex: male
         citizenship_status: undocumented
@@ -6607,7 +6700,6 @@
         snap_has_drug_felony_involving_snap_benefits: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
         sebt_other_categorical_basis: false
         needs_long_term_cash_assistance: true
@@ -6666,6 +6758,10 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-08-15"
         sex: male
         citizenship_status: citizen
@@ -6798,7 +6894,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
       month_defaults:
         wages_gross: 0
@@ -6823,6 +6918,11 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2020-05-20"
         sex: female
         citizenship_status: citizen
@@ -6952,7 +7052,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
       month_defaults:
         wages_gross: 0
@@ -7075,6 +7174,10 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: true
@@ -7224,7 +7327,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
-        is_school_aged: false
         is_enrolled_in_nslp_school: false
       month_defaults:
         wages_gross: 1800
@@ -7252,6 +7354,11 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        cccap_application_county: denver  # phase-10 sweep (OQ-159)
+        county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: false
@@ -7396,7 +7503,6 @@
         sebt_eligibility_directly_verified: false
         school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
-        is_school_aged: true
         is_enrolled_in_nslp_school: true
       month_defaults:
         wages_gross: 0

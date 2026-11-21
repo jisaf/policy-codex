@@ -1,0 +1,12 @@
+id: CO-2124
+name: "LEAP verification extension, days"
+identifier: leap_verification_extension_days
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: "The longest good-cause extension of the LEAP verification period, in calendar days: \"The extended period shall not exceed two weeks\" (3.756.12.D)."
+value: 14
+sources: [S899]
+tags: [verification]
+rationale: "OQ-316: leap_verification_due_date (CO-1461) adds it when the county grants the extension; the rule caps it at two weeks and the volume takes the cap."

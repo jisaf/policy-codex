@@ -7,12 +7,11 @@ scope: person
 program: LEAP
 role: outcome
 meaning: Whether a person who meets LEAP's citizenship requirement as declared is nevertheless left out of the household (with the person's income still counted) because no SSN or proof of application has been provided, or the declared immigration status has not been verified through SAVE.
-precision: leap_household_members (CO-1000), which leap_household_size and the benefit read, still filters only on the declared status; the membership change is for the LEAP eligibility items (OQ-370).
+precision: "leap_household_members (CO-1000) leaves such a member out, so leap_household_size and the benefit count the household without the member while leap_household_income (CO-1002) still counts the member's income (OQ-370, resolved). 3.753.17.A (S1401) lists \"An alien with no status verification\" among those not eligible, which is the status arm."
 derived: [all, leap_meets_citizenship_requirement, [any, [not, ssn_is_verified], [all, claims_lawful_immigration_status, [not, immigration_status_verified_by_electronic_data_source]]]]
-sources: [S893, S494, S896]
+sources: [S893, S494, S896, S1401]
 implemented: engine
 tags: [verification, household]
-open: [OQ-370]
 rationale: "Review C-1 and OQ-318: 3.751.1 B excludes a member with no SSN (and 3.753.17 a member who does not show the status requirement) rather than counting a missing document against the household; this outcome names the excluded member."
 tests:
   - {id: CO-1694-T1, as_of: "2026-10-01", given: {citizenship_status: citizen, ssn_verified_by_electronic_data_source: false, ssn_furnished_or_application_shown: false}, expect: true}
