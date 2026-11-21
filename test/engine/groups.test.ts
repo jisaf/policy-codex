@@ -129,6 +129,13 @@ describe("group patterns", () => {
     expect(evaluate(mx, c7, "earlier", "p1", null)).toBe("2026-07");
     expect(inline(mx, parseInline(mx, "3 months before the month containing the Determination Date"))).toBe("3 months before the month containing the Determination Date");
   });
+  it("adds days to a date", () => {
+    const c8 = makeCase(ix, { id: "D", as_of: "2026-12-25", persons: { p1: { facts: {} } } });
+    const dx = buildIndex([...items, { id: "G-15", name: "Due", identifier: "due", kind: "derived", type: "calendar date", scope: "person", program: "All", derived: ["days_after", 10, ["det_date"]], implemented: "engine" }, { id: "G-16", name: "Before", identifier: "before", kind: "derived", type: "calendar date", scope: "person", program: "All", derived: ["days_after", -60, "2028-03-01"], implemented: "engine" }]);
+    expect(evaluate(dx, c8, "due", "p1", null)).toBe("2027-01-04");
+    expect(evaluate(dx, c8, "before", "p1", null)).toBe("2028-01-01");
+    expect(inline(dx, parseInline(dx, "10 days after the Determination Date"))).toBe("10 days after the Determination Date");
+  });
   it("rounds half up and up", () => {
     const c4 = makeCase(ix, spec);
     expect(evaluate(ix, c4, "allotment", "p4", "2026-10")).toBe(0);

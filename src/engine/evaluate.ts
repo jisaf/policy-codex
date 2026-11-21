@@ -36,6 +36,13 @@ export function monthsFromTo(a: string, b: string): string[] {
   return out;
 }
 
+/** The calendar date N days after a date (N may be negative), in the
+ *  proleptic Gregorian calendar, computed in UTC so no time zone shifts it. */
+export function addDays(d: string, n: number): string {
+  const t = Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)) + n * 86400000;
+  return new Date(t).toISOString().slice(0, 10);
+}
+
 function leap(y: number): boolean {
   return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
 }
@@ -553,6 +560,7 @@ export function evaluate(
       case "month_after": { const mm = g(e[1]); return mm === null ? null : addMonths(mm, 1); }
       case "months_after": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, n); }
       case "months_before": { const n = g(e[1]); const mm = g(e[2]); return n === null || mm === null ? null : addMonths(mm, -n); }
+      case "days_after": { const n = g(e[1]); const d = g(e[2]); return n === null || d === null ? null : addDays(d, n); }
       case "months_ending": {
         const n = g(e[1]); const mm = g(e[2]);
         return n === null || mm === null ? null : monthsEnding(n, mm);
