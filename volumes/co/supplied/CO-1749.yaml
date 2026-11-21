@@ -1,0 +1,13 @@
+id: CO-1749
+name: "CHP+: in the reentry period before release"
+identifier: chp_is_in_reentry_period
+kind: supplied
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether, this month, an incarcerated person is within the 90 days before release and receiving Reentry Demonstration Initiative Services, which 10 CCR 2505-3 § 120.1.C carves out of CHP+'s inmate exclusion."
+precision: "Read only for a person who is an inmate of a public institution (CO-1105). If not stated for an inmate, the CHP+ rules are unknown."
+supplied_by: "Correctional facility reentry record."
+sources: [S653]
+tags: [chp]
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-14): the carve-out was built into the shared inmate fact; it is CHP+'s own rule."

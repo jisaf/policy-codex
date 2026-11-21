@@ -175,7 +175,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: true
+        chp_has_other_health_coverage: true
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -247,6 +247,7 @@
         electronic_data_source_monthly_gross_income: 2030
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
@@ -434,7 +435,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: true
+        chp_has_other_health_coverage: true
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -503,6 +504,7 @@
         electronic_data_source_monthly_gross_income: 1180
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
@@ -676,7 +678,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -734,6 +736,7 @@
         shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: true
         other_taxable_income: 0
@@ -899,7 +902,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -961,6 +964,7 @@
         shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
@@ -1128,7 +1132,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
@@ -1186,6 +1190,7 @@
         shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
@@ -2217,7 +2222,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: true
+        chp_has_other_health_coverage: true
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -2285,6 +2290,7 @@
         electronic_data_source_monthly_gross_income: 2030
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
@@ -2472,7 +2478,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: true
+        chp_has_other_health_coverage: true
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.78
@@ -2539,6 +2545,7 @@
         electronic_data_source_monthly_gross_income: 1180
         electronic_data_source_household_income_pct_fpl: 1.78
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
@@ -2714,7 +2721,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -2769,6 +2776,7 @@
         shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
@@ -2935,7 +2943,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 1.0454
@@ -2994,6 +3002,7 @@
         shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
@@ -3161,7 +3170,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: true
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
         attested_household_income_pct_fpl: 0
@@ -3217,6 +3226,7 @@
         shares_heating_fuel_with: true
       month_defaults:
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
@@ -4318,7 +4328,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
@@ -4345,6 +4355,7 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
       months:
         "2026-11": {wages_gross: 5000}
     p2:
@@ -4373,7 +4384,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
@@ -4400,6 +4411,7 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
@@ -4421,7 +4433,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 0.80
@@ -4465,7 +4477,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
@@ -4511,7 +4523,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
         attested_household_income_pct_fpl: 2.77
@@ -4704,7 +4716,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 1.03
@@ -4750,7 +4762,7 @@
         age_at_foster_care_exit: 20
         was_enrolled_in_medicaid_at_foster_care_exit: true
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 3.16
@@ -4809,7 +4821,7 @@
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
         dependent_child_has_minimum_essential_coverage: true
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
         attested_household_income_pct_fpl: 0.00
@@ -5043,7 +5055,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: true
+        chp_has_other_health_coverage: true
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.71
@@ -5115,7 +5127,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: true
+        chp_has_other_health_coverage: true
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.71
@@ -5185,7 +5197,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
         attested_household_income_pct_fpl: 1.80
@@ -6026,7 +6038,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6059,6 +6071,7 @@
         ssi_income: 0
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         has_emergency_medical_condition: false
     p2:
       facts:
@@ -6090,7 +6103,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6124,6 +6137,7 @@
         ssi_income: 0
         has_emergency_medical_condition: false
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
         lottery_gambling_winnings_amount: 0
@@ -6151,7 +6165,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6198,6 +6212,7 @@
         ssi_income: 0
         in_kind_support_and_maintenance: 0
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
         resides_in_care_facility_thirty_consecutive_days: false
@@ -6231,7 +6246,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6262,6 +6277,7 @@
         ssi_income: 0
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
   expect:
     # Hand arithmetic is in the case comment above. p1 and p4 are in the limited family planning income band:
     # their household [p1, p4] plus the expected child, counted one larger (8.100.4.E.3), is size 4,
@@ -6351,7 +6367,7 @@
         was_enrolled_in_medicaid_at_foster_care_exit: false
         age_at_foster_care_exit: 0
         mother_was_enrolled_in_medicaid_at_birth: false
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         ma_application_date: "2026-10-05"
         snap_application_date: "2026-10-05"
         is_blind: false
@@ -6403,6 +6419,7 @@
         ssi_income: 0
         in_kind_support_and_maintenance: 0
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         receives_va_aid_and_attendance: false
         has_income_trust: false
       months:
@@ -7048,9 +7065,10 @@
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: true
         qualifying_quarters: 30
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
         date_of_birth: "1994-05-10"
@@ -7223,9 +7241,10 @@
         files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         qualifying_quarters: 0
-        has_other_creditable_health_coverage: false
+        chp_has_other_health_coverage: false
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
+        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
         date_of_birth: "2018-04-02"
