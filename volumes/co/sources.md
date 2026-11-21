@@ -7786,3 +7786,235 @@ Document: D-86
 
 > C. The maximum number of household members shall be fifteen (15). The maximum number of
 > separate households shall be nine (9).
+
+### S1408. CCCAP: need for child care; county residency; eligible child needing care for part of the day, less than twenty-four hours
+
+Document: D-87
+
+8 CCR 1403-1 3.110, 3.111.A-B, 3.111.F (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.110 LOW-INCOME CHILD CARE
+> Eligible CCCAP participants must: be an adult caretaker(s) or teen parent(s) of a child;
+> meet program guidelines; be a low-income adult caretaker(s) or teen parent(s)
+> participating in a low-income eligible activity; and need child care assistance.
+>
+> 3.111 LOW-INCOME CHILD CARE ELIGIBILITY
+> To be eligible for Low-Income Child Care assistance the following criteria shall be met:
+>
+> A. The adult caretaker(s) and teen parent(s) shall be verified residents of the county
+> from which assistance is sought and received at the time of application and re-
+> determination. Adult caretaker(s) or teen parent(s) shall remain eligible for the
+> duration of the eligibility period if they report that they are no longer residents of
+> the county in which they are actively receiving assistance per rule section
+> 3.125(GG).
+>
+> B. The adult caretaker(s) or teen parent(s) shall:
+>
+> 1. Be actively participating in an eligible activity;
+>
+> 2. Meet the income eligibility guidelines set by the Department; and
+>
+> 3. Have custody of the child for the period they are requesting care.
+>
+> F. Eligible Child
+>
+> An “eligible child” is a child from birth to the age thirteen (13) years who needs child
+> care services during a portion of the day, but less than twenty four (24) hours, and the
+> eligible adult caretaker(s) or teen parent(s) has custody of the child; or a child with
+> verified additional care needs under the age of nineteen (19) who is physically or
+> mentally incapable of caring for themselves or is under court supervision and with the
+> eligible adult caretaker(s) or teen parent(s) has custody of the child.
+
+### S1409. CCCAP eligible households: a caretaker voluntarily out of the home stays a caretaker; an involuntarily absent caretaker leaves a one-caretaker household
+
+Document: D-87
+
+8 CCR 1403-1 3.111.D.1 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> D. Eligible Households
+>
+> 1. The following household compositions qualify as eligible households:
+>
+> a. Households with one (1) adult caretaker or teen parent, where the
+> adult caretaker or teen parent is engaged in a low-income eligible
+> activity, meets low-income eligibility guidelines, has custody of the
+> child, and needs child care assistance. If the adult caretaker or
+> teen parent is voluntarily out of the home temporarily to participate
+> in an eligible low-income activity, serve in the uniformed services
+> of the United States, or receive medical treatment, and has an
+> established intent to return, they are considered to be part of the
+> household and are considered an adult caretaker or teen parent
+> while they are voluntarily out of the home. Any individual
+> temporarily caring for the children shall not be considered a
+> household member.
+>
+> b. Households with two adult caretakers or teen parents, when one
+> adult caretaker or teen parent is involuntarily out of the home.
+> Such a household shall be considered a household with one adult
+> caretaker or teen parent.
+>
+> c. Households with two (2) adult caretakers or teen parents that need
+> child care, where:
+>
+> 1) Both adult caretakers or teen parents are engaged in a low-
+> income eligible activity;
+>
+> 2) One adult caretaker or teen parent is voluntarily absent from
+> the home, but both adult caretakers or teen parents are in a
+> low-income eligible activity; or
+>
+> 3) One adult caretaker or teen parent is engaged in a low-
+> income eligible activity and the other adult caretaker or teen
+> parent is incapacitated such that, according to a physician’s
+> statement or other medical verification, they are unable to
+> care for the child(ren).
+
+### S1410. CCCAP employment and self-employment: gross income divided by hours worked at least the federal minimum wage; the self-employment launch period
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.1.b, G.2.d-e (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 1. Employment Criteria
+>
+> a. Adult caretakers or teen parents may be employed full or part time.
+>
+> b. Adult caretaker(s) or teen parent(s) must verify that his/her gross
+> income divided by the number of hours worked equals at least the
+> current federal minimum wage.
+>
+> d. The adult caretaker(s) or teen parent(s) shall show that their
+> taxable gross income divided by the number of hours worked
+> equals at least the current federal minimum wage.
+>
+> e. Adult caretakers or teen parent(s) whose self-employment
+> endeavor is less than twelve (12) months old, may be granted
+> child care for six (6) months or until their next re-determination,
+> whichever is longer, to establish their business. At the end of the
+> launch period, adult caretakers shall provide documentation of
+> income, verification of expenses, and proof that they are making
+> at least federal minimum wage for the number of hours worked.
+> Projected income for the launch period shall be determined based
+> upon the federal minimum wage times the number of declared
+> hours worked.
+
+### S1411. CCCAP job search: no fewer than thirteen weeks for each instance; ineligible once the allotted time is used
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.3.a, g (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3. Job Search Criteria
+>
+> a. Job search child care is available to eligible adult caretakers or teen
+> parents that met the eligibility criteria on the most recent eligibility
+> determination for no fewer than thirteen (13) weeks of child care
+> for each instance of non-temporary cessation of activity (per rule
+> section 3.112(C)). Counties may request approval from the
+> Department by submitting a county plan to offer more than
+> thirteen (13) weeks of job search child care, subject to the
+> requirements and Department approval as described in rule
+> section 3.104.
+>
+> g. An adult caretaker or teen parent shall be determined ineligible
+> once they have utilized their allotted job search time and have not
+> reentered into a low-income eligible activity.
+
+### S1412. CCCAP education and training time limits: 104 weeks per lifetime (208 by county plan), 52 weeks of basic education, one year per instance of SUD treatment
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.4.a-c (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 4. Education and Training Activities
+>
+> a. Training Criteria and Post-Secondary Education
+>
+> 1) Provided all other eligibility requirements are met during the
+> adult caretaker’s enrollment, an adult caretaker who is
+> enrolled in a training or post-secondary education program
+> for a first bachelor’s degree or less, is eligible for CCCAP for
+> at least one hundred and four (104) weeks per lifetime.
+> Counties may request approval from the Department by
+> submitting a county plan to offer up to two hundred and eight
+> (208) weeks of care for training and post-secondary
+> education, subject to the requirements and Department
+> approval as described in rule section 3.104. These weeks do
+> not have to be used consecutively. This is limited to
+> coursework for the training or post-secondary education
+> program.
+>
+> 2) Provided all other eligibility requirements are met during the
+> adult caretaker’s enrollment, an adult caretaker enrolled in a
+> workforce training activities such as vocational, technical or
+> job skills training that will result in a diploma, license, or
+> certificate, is eligible for at least one hundred and four (104)
+> weeks per lifetime. Counties may request approval from the
+> Department by submitting a county plan to offer up to two
+> hundred and eight (208) weeks of care for workforce
+> training, subject to the requirements and Department
+> approval as described in rule section 3.104. These weeks do
+> not have to be used consecutively. This is limited to
+> coursework for the workforce training program.
+>
+> 3) Effective July 1, 2026, an adult caretaker enrolled in a
+> licensed, nationally recognized, evidence-based substance
+> use disorder treatment program that is at an intensive
+> outpatient service level of care or higher is eligible for
+> CCCAP for up to one (1) year per instance. The substance
+> use disorder treatment program must be licensed and
+> appropriately endorsed by the Behavioral Health
+> Administration (BHA).
+>
+> b. Basic Education
+>
+> 1) An adult caretaker who is enrolled in a basic education
+> program is eligible for CCCAP for up to fifty-two (52) weeks.
+> Counties may request approval from the Department by
+> submitting a county plan to offer less than fifty-two (52)
+> weeks of care for basic education, subject to the
+> requirements and Department approval as described in rule
+> section 3.104.
+>
+> 2) Teen parents participating in basic education are not subject
+> to time limits for this activity.
+>
+> c. Any week in which at least one (1) day is utilized for child care is
+> considered one (1) week used toward the time limit.
+
+### S1413. CCCAP income guidelines: 85% SMI; entry eligibility set by the Department; exit eligibility at 85% SMI
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.1 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> H. Low-Income Eligibility Guidelines
+>
+> 1. Adult caretaker(s) or teen parent(s) gross income must not exceed eighty-
+> five percent (85%) of the state median income.
+>
+> a. Entry eligibility shall be set by the Department at a level based on
+> the self-sufficiency standard, not to be set below one hundred
+> eighty-five percent (185%) of the federal poverty level.
+>
+> b. Exit income eligibility must be eighty-five percent (85%) of the state
+> median income.
+
+### S1414. CCCAP assets: liquid and non-liquid resources; the primary home and the primary caretakers' automobile excluded
+
+Document: D-87
+
+8 CCR 1403-1 3.103.K (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> K. “Assets” include but are not limited to the following:
+>
+> 1. Liquid resources such as cash on hand, money in checking or savings
+> accounts, saving certificates, stocks or bonds, lump sum payments as
+> specified in rule section 3.111(H)(4).
+>
+> 2. Non-liquid resources such as any tangible property including, but not
+> limited to, licensed and unlicensed automobiles and motorcycles; utility
+> trailer; seasonal or recreational vehicles (such as any camper, motor
+> home, boat, snowmobile, water skidoo, or airplane); and real property
+> (such as buildings, land, and vacation homes). Primary home and
+> automobile of the primary caretakers are excluded.

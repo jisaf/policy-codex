@@ -1,0 +1,13 @@
+id: CO-2111
+name: "CCCAP: education or training time limit reached"
+identifier: cccap_education_activity_time_limit_reached
+kind: supplied
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether this caretaker has used, before the month, all the weeks of child care 8 CCR 1403-1 3.111.G.4 allows for the caretaker's education or training activity: 104 weeks per lifetime for training or post-secondary education and 104 for workforce training (up to 208 under an approved county plan), and 52 weeks for basic education (fewer under an approved county plan; no limit for a teen parent in basic education); any week with one day of care counts as a week."
+precision: "Stated for a caretaker in an education or training activity; not needed otherwise. A yes/no rather than a count because the activity fact (cccap_is_in_education_or_training_activity) does not separate post-secondary, workforce training and basic education, whose limits differ."
+supplied_by: "CCCAP case record of weeks of care used for each education or training activity, against the county's approved limits."
+sources: [S1412]
+tags: [household]
+rationale: "Review K-5 and OQ-162: no fact states whether an education or training time limit is exhausted. cccap_caretaker_in_eligible_activity (CO-984) reads it."

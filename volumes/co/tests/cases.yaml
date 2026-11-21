@@ -32,6 +32,10 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -285,6 +289,10 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -541,6 +549,11 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -766,6 +779,12 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -993,6 +1012,10 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -2074,6 +2097,10 @@
   persons:
     p1:
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -2325,6 +2352,10 @@
         pension_income: 610
     p2:
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -2579,6 +2610,11 @@
         social_security_income: 1180
     p3:
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -2803,6 +2839,12 @@
         hours_worked: 138
     p4:
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -3028,6 +3070,10 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        cccap_application_county: Adams    # phase-10 sweep (OQ-159)
+        county_of_residence: Adams    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -5698,6 +5744,10 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-06-11"
         sex: female
@@ -5742,6 +5792,12 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
+        cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
+        is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1990-02-27"
         sex: male
@@ -5787,6 +5843,11 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2012-05-20"
         sex: male
@@ -5836,6 +5897,11 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
+        is_in_workforce_training_or_post_secondary_education: false    # phase-10 sweep
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2008-03-14"
         sex: female
@@ -5881,6 +5947,9 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1981-09-05"
         sex: male
@@ -6650,6 +6719,9 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-08-15"
         sex: male
@@ -6807,6 +6879,10 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2020-05-20"
         sex: female
@@ -7059,6 +7135,9 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
@@ -7235,6 +7314,10 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
+        cccap_application_county: Denver    # phase-10 sweep (OQ-159)
+        county_of_residence: Denver    # phase-10 sweep (OQ-159, illustrative county)
+        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
