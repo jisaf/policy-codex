@@ -13016,3 +13016,52 @@ Document: D-201
 > Assistance for Needy Families (TANF), community engagement or work
 > requirements have not historically been a condition of eligibility in
 > the Medicaid program under title XIX of the Act. However, some States
+
+### S2112. 7 CFR 273.24(c)(1), (c)(10): the regulation reads the statute's "over 55 years of age" as "55 years of age or older" and its former "over 50" as "50 years of age or older"
+
+Document: D-202
+
+7 CFR 273.24(c)(1), (c)(10) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-273.24
+
+> (c) Exceptions. The time limit does not apply to an individual if he or she is:
+>
+> (1) Under 18 or 55 years of age or older;
+>
+> ...
+>
+> (10) Unless otherwise changed by law, the exceptions provided at paragraphs (c)(7) through (9) of this section cease to have effect on October 1, 2030, and the age limit provided in paragraph (c)(1) of this section reverts from “55 years of age or older” to “50 years of age or older” on October 1, 2030.
+
+### S2113. Fiscal Responsibility Act of 2023: the ABAWD age exception "over 55 years of age" from fiscal year 2025
+
+Document: D-203
+
+Pub. L. 118-5, div. C, sec. 311(a)(1), 137 Stat. 36. https://www.govinfo.gov/content/pkg/PLAW-118publ5/html/PLAW-118publ5.htm
+
+> SEC. 311. MODIFICATION OF WORK REQUIREMENT EXEMPTIONS.
+> (a) In General.--Section 6(o)(3) of the Food and Nutrition Act of
+> 2008 (7 U.S.C. 2015(6)(o)(3)) is amended to read as follows:
+> (1) by striking subparagraph (A) and inserting the
+> following:
+> ``(A)(i) under 18 years of age; or
+> ``(ii) in--
+> ``(I) fiscal year 2023 over 51 years of age;
+> ``(II) fiscal year 2024 over 53 years of age;
+> ``(III) fiscal year 2025 and each fiscal year
+> thereafter over 55 years of age;'';
+
+### S2114. Federal limited family planning group: income and not pregnant, no age or sex condition; family planning services are those furnished to individuals of child-bearing age
+
+Document: D-204
+
+42 U.S.C. 1396a(ii)(1); 42 U.S.C. 1396d(a)(4)(C). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (ii) State eligibility option for family planning services
+> (1) Individuals described in this subsection are individuals—
+> (A)
+> whose income does not exceed an income eligibility level established by the State that does not exceed the highest income eligibility level established under the State plan under this subchapter (or under its State child health plan under subchapter XXI) for pregnant women; and
+> (B)
+> who are not pregnant.
+>
+> ...
+>
+> (C) family planning services and supplies furnished (directly or under arrangements with others) to individuals of child-bearing age (including minors who can be considered to be sexually active)
