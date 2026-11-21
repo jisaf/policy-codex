@@ -1,0 +1,13 @@
+id: CO-2218
+name: CHP+ verification request date
+identifier: chp_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: CHP+
+meaning: "The date of CHP+'s own written request for verification (10 CCR 2505-3 § 130.1, which applies the Medical Assistance verification of 10 CCR 2505-10 § 8.100.4.B), when it differs from the date of the shared checklist (verification_request_date)."
+precision: "If not stated, CHP+ reads the shared verification_request_date (CO-1343), the single CBMS checklist serving every program (OQ-300)."
+supplied_by: The CHP+ request for information in the case file (CBMS).
+sources: [S868, S864]
+tags: [verification, chp]
+rationale: "OQ-300: CHP+ read the Medical Assistance due date, which ran from the shared request date; a CHP+ request sent on another day could not be stated."

@@ -1,0 +1,19 @@
+id: CO-2219
+name: "CHP+: verification due date"
+identifier: chp_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: CHP+
+meaning: "The date by which CHP+ documentation other than citizenship, identity and immigration status is due: CHP+'s request date plus the 30 days Medical Assistance allows for income documentation, which 10 CCR 2505-3 § 130.1 applies to CHP+ through 10 CCR 2505-10 § 8.100.4.B."
+precision: "Reads chp_verification_request_date (CO-2218), or the shared verification_request_date when it is not stated. The Medical Assistance extension of time on request (§ 8.100.3.D.2, ma_verification_extended_due_date) is not applied: § 130.1 adopts the verification of § 8.100.4.B, not § 8.100.3.D."
+derived: [days_after, ma_income_reasonable_opportunity_days, [otherwise, chp_verification_request_date, verification_request_date]]
+accepts_from: [ma_income_reasonable_opportunity_days]
+sources: [S868, S864, S867]
+implemented: engine
+tags: [verification, chp]
+rationale: "OQ-300: chp_verification_status (CO-1418) read ma_verification_due_date, which now runs from Medical Assistance's own request date and honours Medical Assistance's extension."
+nearest: [CO-1414]
+tests:
+  - {id: CO-2219-T1, as_of: "2026-10-01", title: "Shared checklist on October 1", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-31"}
+  - {id: CO-2219-T2, as_of: "2026-10-01", title: "CHP+ request sent separately on October 10", given: {verification_request_date: "2026-10-01", chp_verification_request_date: "2026-10-10"}, expect: "2026-11-09"}

@@ -5,9 +5,10 @@ kind: derived
 type: calendar date
 scope: person
 program: Medicaid
-meaning: "The date by which documentation other than citizenship, identity and immigration status is due: the request date plus the 30-day income reasonable opportunity period."
-derived: [days_after, ma_income_reasonable_opportunity_days, verification_request_date]
-sources: [S864, S867]
+meaning: "The date by which documentation other than citizenship, identity and immigration status is due: Medical Assistance's request date plus the 30-day income reasonable opportunity period, or a later date to which the eligibility site extended the time on the applicant's request (10 CCR 2505-10 § 8.100.3.D.2)."
+precision: "The request date is ma_verification_request_date (CO-2217), or the shared verification_request_date when it is not stated (OQ-300); an extension (ma_verification_extended_due_date, CO-2220) replaces the date only when it is later (OQ-316)."
+derived: [case, [[otherwise, [">", ma_verification_extended_due_date, [days_after, ma_income_reasonable_opportunity_days, [otherwise, ma_verification_request_date, verification_request_date]]], false], ma_verification_extended_due_date], [else, [days_after, ma_income_reasonable_opportunity_days, [otherwise, ma_verification_request_date, verification_request_date]]]]
+sources: [S864, S867, S1516]
 implemented: engine
 tags: [verification, ma, income]
 open: [OQ-303]
@@ -15,3 +16,5 @@ rationale: No existing item states when requested Medical Assistance documentati
 nearest: [CO-1392, CO-1426, CO-1437, CO-1450, CO-1461, CO-1656]
 tests:
   - {id: CO-1414-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-31"}
+  - {id: CO-1414-T2, as_of: "2026-10-01", title: "OQ-300: Medical Assistance's own request sent on October 6", given: {verification_request_date: "2026-10-01", ma_verification_request_date: "2026-10-06"}, expect: "2026-11-05"}
+  - {id: CO-1414-T3, as_of: "2026-10-01", title: "OQ-316: time extended to November 20 on the applicant's request", given: {verification_request_date: "2026-10-01", ma_verification_extended_due_date: "2026-11-20"}, expect: "2026-11-20"}

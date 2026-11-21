@@ -5,12 +5,13 @@ kind: derived
 type: calendar date
 scope: person
 program: Medicaid
-meaning: "The last day of the person's reasonable opportunity period: 90 days after the notice is considered received, which is five days after the notice date."
-precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): the period runs from ma_reasonable_opportunity_notice_date (CO-1747), the notice that opens it, not the verification checklist date."
-derived: [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, ma_reasonable_opportunity_notice_date]]
-sources: [S841, S853, S859]
+meaning: "The last day of the person's reasonable opportunity period: 90 days after the notice is considered received, which is five days after the notice date, or a later date to which the eligibility site extended the period for a good faith effort (10 CCR 2505-10 § 8.100.3.H.10.a; 42 CFR 435.956(b)(2)(ii)(B))."
+precision: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): the period runs from ma_reasonable_opportunity_notice_date (CO-1747), the notice that opens it, not the verification checklist date. An extension (ma_reasonable_opportunity_extended_end_date, CO-2221) replaces the end only when it is later (OQ-316)."
+derived: [case, [[otherwise, [">", ma_reasonable_opportunity_extended_end_date, [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, ma_reasonable_opportunity_notice_date]]], false], ma_reasonable_opportunity_extended_end_date], [else, [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, ma_reasonable_opportunity_notice_date]]]]
+sources: [S841, S853, S859, S1517]
 implemented: engine
 tags: [verification, ma, immigration]
 rationale: No existing item computes the reasonable opportunity period.
 tests:
   - {id: CO-1413-T1, as_of: "2026-10-01", given: {ma_reasonable_opportunity_notice_date: "2026-10-01"}, expect: "2027-01-04"}
+  - {id: CO-1413-T2, as_of: "2026-10-01", title: "OQ-316: extended to March 1 for a good faith effort", given: {ma_reasonable_opportunity_notice_date: "2026-10-01", ma_reasonable_opportunity_extended_end_date: "2027-03-01"}, expect: "2027-03-01"}

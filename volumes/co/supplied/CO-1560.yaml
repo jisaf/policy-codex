@@ -6,9 +6,8 @@ type: yes/no
 scope: person
 program: All
 meaning: Whether Medical Assistance (or CHP+, which the same application requests) is requested for the person, as opposed to the person only appearing on the application as a household member.
-precision: One fact for Medical Assistance and CHP+, because a PEAK health-coverage application is a single request screened for both (OQ-382).
+precision: "One fact for Medical Assistance and CHP+, because a PEAK health-coverage application is a single request screened for both. A request for one program and not the other is stated by ma_is_requesting_coverage (CO-2215) or chp_is_requesting_coverage (CO-2216), which each program reads first (OQ-382, resolved)."
 supplied_by: Coverage-requested indicator recorded for each person on the PEAK or paper application in CBMS.
 sources: [S860, S1051]
 tags: [verification, ma, chp]
-open: [OQ-382]
 rationale: "No existing fact in the volume states this; the phase-9 verification review (C-4, C-16: 8.100.3.I.1 exempts persons not requesting Medical Assistance, and a status for a person who is not applying is not that program's status) needs it as a supplied fact."

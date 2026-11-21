@@ -1,0 +1,13 @@
+id: CO-2215
+name: Medical Assistance is requested for the person
+identifier: ma_is_requesting_coverage
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether Medical Assistance is requested for the person, as opposed to the person only appearing on the application (10 CCR 2505-10 § 8.100.3.I.1: a person 'not requesting Medical Assistance yet appear[ing] on the application')."
+precision: "If not stated, Medical Assistance reads the shared is_requesting_health_coverage (CO-1560), the single request a PEAK health-coverage application makes for both programs; it is stated when a household requests Medical Assistance and declines CHP+, or the reverse."
+supplied_by: The coverage-requested indicator for each person and program in CBMS.
+sources: [S860, S1051]
+tags: [verification, ma]
+rationale: "OQ-382: one request fact for Medical Assistance and CHP+ could not show a household that requests one program and declines the other."

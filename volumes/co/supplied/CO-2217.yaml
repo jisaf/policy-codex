@@ -1,0 +1,13 @@
+id: CO-2217
+name: Medical Assistance verification request date
+identifier: ma_verification_request_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date of Medical Assistance's own written request for documentation other than citizenship, identity and immigration status, from which the 30-day reasonable opportunity period for income runs (10 CCR 2505-10 § 8.100.4.C.2), when it differs from the date of the shared checklist (verification_request_date)."
+precision: "If not stated, Medical Assistance reads the shared verification_request_date (CO-1343), the single CBMS checklist serving every program (OQ-300)."
+supplied_by: The Medical Assistance request for information in the case file (CBMS).
+sources: [S864, S867]
+tags: [verification, ma]
+rationale: "OQ-300: each program runs its period from its own request; the shared date could not show a Medical Assistance request sent on another day. ma_verification_due_date (CO-1414) reads it."
