@@ -1,0 +1,21 @@
+id: CO-1190
+name: "Medicaid: countable discharged student loan income"
+identifier: ma_countable_discharged_student_loan_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The discharged, forgiven or cancelled student loan debt counted as the borrower's MAGI income this month - 10 CCR 2505-10 § 8.100.4.C.1.b.xv: the amount discharged, except none when it was discharged because of the death or permanent and total disability of the student during tax years 2018 through 2025 (xv.1), or under Public Service Loan Forgiveness, Teacher Loan Forgiveness, a healthcare loan forgiveness program or a Closed School discharge (xv.2)."
+precision: "xv.2's exclusions are 'At the Department's discretion' and 'include, but not limited to' the four named programs; they are read as always applied to the named programs and to no other (OQ-217). 'Tax years 2018 through 2025' is read by the month of discharge, January 2018 through December 2025. A month with no discharge (amount 0) has 0 without the reason being read."
+derived: [case, [[=, discharged_student_loan_debt, 0], 0], [[in, student_loan_discharge_reason, [public_service_loan_forgiveness, teacher_loan_forgiveness, healthcare_loan_forgiveness, closed_school_discharge]], 0], [[all, [=, student_loan_discharge_reason, death_or_disability], [">=", [month], "2018-01"], ["<=", [month], "2025-12"]], 0], [else, discharged_student_loan_debt]]
+sources: [S670]
+open: [OQ-217]
+implemented: engine
+tags: [ma, magi, income]
+rationale: "S-9 of the phase 7 review: discharged student loan debt is new MAGI income in the current § 8.100.4.C.1.b.xv, with exceptions; ma_person_magi_income (CO-502) had no term for it. No existing item states it."
+tests:
+  - {id: CO-1190-T1, as_of: "2026-10-01", month: "2026-10", title: "Private loan cancelled for another reason", given: {discharged_student_loan_debt: 12000, student_loan_discharge_reason: other}, expect: 12000}
+  - {id: CO-1190-T2, as_of: "2026-10-01", month: "2026-10", title: "Public Service Loan Forgiveness", given: {discharged_student_loan_debt: 40000, student_loan_discharge_reason: public_service_loan_forgiveness}, expect: 0}
+  - {id: CO-1190-T3, as_of: "2025-06-01", month: "2025-06", title: "Disability discharge in 2025", given: {discharged_student_loan_debt: 30000, student_loan_discharge_reason: death_or_disability}, expect: 0}
+  - {id: CO-1190-T4, as_of: "2026-10-01", month: "2026-10", title: "Disability discharge in 2026, after the 2018-2025 window", given: {discharged_student_loan_debt: 30000, student_loan_discharge_reason: death_or_disability}, expect: 30000}
+  - {id: CO-1190-T5, as_of: "2026-10-01", month: "2026-10", given: {discharged_student_loan_debt: 0}, expect: 0}

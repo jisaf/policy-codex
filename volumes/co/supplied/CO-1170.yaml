@@ -1,0 +1,15 @@
+id: CO-1170
+name: "Medicaid: five-year-rule exempt immigrant category"
+identifier: ma_five_year_bar_exempt_category
+kind: supplied
+type: one of
+options: [none, refugee_or_asylee_adjusted_to_lpr, american_indian_born_in_canada, amerasian_immigrant, hmong_or_highland_lao_veteran, iraqi_or_afghan_special_immigrant_adjusted_to_lpr, trafficking_victim]
+scope: person
+program: Medicaid
+meaning: "Which of the five-year-rule exemptions of 10 CCR 2505-10 § 8.100.3.G.1.g.iv that citizenship_status (CO-002) does not already carry applies to this non-citizen, or none. refugee_or_asylee_adjusted_to_lpr: a lawful permanent resident who was granted asylum under INA 208 or admitted as a refugee under INA 207 (iv.9-10; a person who still holds refugee or asylee status is recorded in citizenship_status instead); american_indian_born_in_canada: born in Canada with at least 50 percent American Indian blood, or a member of an Indian tribe as defined in 25 U.S.C. 5304(e) (iv.4); amerasian_immigrant: admitted as an Amerasian immigrant under section 584 of the Foreign Operations, Export Financing, and Related Programs Appropriations Act of 1988 (iv.5); hmong_or_highland_lao_veteran: a Hmong or Highland Lao veteran of the Vietnam conflict (iv.6); iraqi_or_afghan_special_immigrant_adjusted_to_lpr: an Iraqi or Afghan special immigrant under INA 101(a)(27) who arrived on or after December 26, 2007 and has adjusted to LPR (iv.7-8); trafficking_victim: a victim of a severe form of trafficking in persons as defined in section 103 of the Victims of Trafficking and Violence Protection Act of 2000 (iv.11). The veteran and active-duty exemptions (iv.2-3) are is_veteran_or_active_duty (CO-005) and the 40-quarters exemption (iv.1) is qualifying_quarters (CO-004)."
+precision: "One value per person; a person who fits two categories is recorded under either, since each has the same effect (no five-year rule). Medicaid-specific because the list is § 8.100.3.G.1.g.iv's, not the 8 U.S.C. 1613(b) list other programs read."
+supplied_by: SAVE (Verify Lawful Presence) response, immigration documents (Form I-551 class of admission, I-94, certification letter from the Office of Refugee Resettlement for a trafficking victim), or tribal membership documents, as read by the eligibility site.
+sources: [S656]
+open: [OQ-213]
+tags: [ma, immigration]
+rationale: "B-2 of the phase 7 review: ma_meets_citizenship_requirement (CO-509) modeled only the veteran exemption from the five-year rule. citizenship_status (CO-002) is shared by SNAP, Colorado Works, Adult Financial, CCCAP and LEAP and has no options for the iv.4-11 categories, and widening its closed option list would change what every program's rules must handle; this Medicaid fact carries them instead, read by ma_is_five_year_bar_exempt (CO-1172)."

@@ -1,0 +1,14 @@
+id: CO-1183
+name: "Medicaid: lottery and gambling winnings counted only in the month received, upper amount"
+identifier: ma_lottery_winnings_spread_floor
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The amount of lottery or gambling winnings at or below which the winnings are counted as MAGI income in the month received only; winnings over it are divided equally over two or more months - 10 CCR 2505-10 § 8.100.4.C.1.b.xiv.1-2 (\"If less than $79,999 winnings are counted as income in the month received\", \"If over $79,999 ... divided equally between two months\")."
+precision: "Winnings of exactly $79,999, which the text places in neither paragraph, are read as counted in the month received (not 'over $79,999'). OQ-216."
+value: 79999
+sources: [S669]
+open: [OQ-216]
+tags: [ma, magi, income]
+rationale: "S-9 of the phase 7 review: ma_lottery_winnings_spread_months (CO-1185) needs the figure. A policy number the text states."

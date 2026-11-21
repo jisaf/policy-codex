@@ -1,0 +1,21 @@
+id: CO-1175
+name: "Medicaid: is covered under Cover All Coloradans"
+identifier: ma_is_covered_under_cover_all_coloradans
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether a person who does not meet the citizenship and immigration status requirement (ma_meets_citizenship_requirement, CO-509) is nevertheless fully covered this month through Cover All Coloradans (10 CCR 2505-10 § 8.100.3.G.1.g.ix.1): a child, pregnant or postpartum person (ma_is_cover_all_coloradans_person, CO-1173) who qualifies for a Medical Assistance category ix.1.a-b lists - the MAGI Children or Pregnant category (including a needy newborn), a Buy-In program, or an HCBS waiver."
+precision: "The MAGI categories are read from ma_magi_category (CO-551), which does not read status; needy_newborn is counted with child, since a needy newborn is a child under 19 in the Children's group. Transitional Medical Assistance, the 4 Month Extended Medical Assistance and Psych <21 are not modeled in this volume. CHP+ is not a Medical Assistance category; ma_emergency_medicaid_status (CO-1151) reads CHP+ eligibility separately. A person covered here is not limited to emergency coverage (ma_is_emergency_medicaid_only, CO-510)."
+derived: [all, [not, ma_meets_citizenship_requirement], ma_is_cover_all_coloradans_person, [any, [in, ma_magi_category, [needy_newborn, child, pregnant]], [not, [=, ma_buy_in_category, "none"]], ma_hcbs_waiver_eligible]]
+sources: [S607]
+open: [OQ-214]
+implemented: engine
+tags: [ma, immigration, emergency]
+rationale: "S-2 of the phase 7 review: once the Cover All Coloradans population no longer satisfies ma_meets_citizenship_requirement (CO-509) for every category, the emergency-only test (CO-510) needs to know whether a child, pregnant or postpartum person who fails status is fully covered in a listed category (an undocumented child in the Children's category) or only otherwise eligible elsewhere (an undocumented postpartum adult in the Adult category, who is emergency-only). No existing item states it."
+tests:
+  - {id: CO-1175-T1, as_of: "2026-10-01", month: "2026-10", title: "Undocumented child in the Children's category", given: {ma_meets_citizenship_requirement: false, ma_is_cover_all_coloradans_person: true, ma_magi_category: child}, expect: true}
+  - {id: CO-1175-T2, as_of: "2026-10-01", month: "2026-10", title: "Undocumented postpartum adult in the Adult category, no Buy-In or waiver", given: {ma_meets_citizenship_requirement: false, ma_is_cover_all_coloradans_person: true, ma_magi_category: adult, ma_buy_in_category: "none", ma_hcbs_waiver_eligible: false}, expect: false}
+  - {id: CO-1175-T3, as_of: "2026-10-01", month: "2026-10", title: "Undocumented adult, not a Cover All Coloradans person", given: {ma_meets_citizenship_requirement: false, ma_is_cover_all_coloradans_person: false}, expect: false}
+  - {id: CO-1175-T4, as_of: "2026-10-01", month: "2026-10", title: "Meets status: not a Cover All Coloradans case", given: {ma_meets_citizenship_requirement: true}, expect: false}
+  - {id: CO-1175-T5, as_of: "2026-10-01", month: "2026-10", title: "Undocumented disabled child in an HCBS waiver", given: {ma_meets_citizenship_requirement: false, ma_is_cover_all_coloradans_person: true, ma_magi_category: "none", ma_buy_in_category: "none", ma_hcbs_waiver_eligible: true}, expect: true}

@@ -1,0 +1,13 @@
+id: CO-1192
+name: "Medicaid: a BCCP creditable coverage exception applies"
+identifier: ma_bccp_creditable_coverage_exception_applies
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether a person who has creditable coverage (ma_bccp_has_creditable_coverage, CO-1191) may nevertheless qualify for the Breast and Cervical Cancer Program because she is in a period of exclusion for treatment of breast or cervical cancer, or has exhausted her lifetime limits on benefits under the plan for breast or cervical cancer (10 CCR 2505-10 § 8.715.3.C)."
+precision: Read only for a person with creditable coverage; not meaningful otherwise.
+supplied_by: Applicant statement and the plan's coverage documents (exclusion period or lifetime-limit notice).
+sources: [S610]
+tags: [ma, medical]
+rationale: "OQ-203 and S-11 of the phase 7 review: § 8.715.3.C's two exceptions were not modeled. No existing fact carries them."

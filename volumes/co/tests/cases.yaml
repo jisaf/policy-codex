@@ -32,6 +32,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -204,6 +205,7 @@
         community_spouse_income: 1180
         shelter_costs_community_spouse: 1100
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -230,6 +232,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -404,6 +407,7 @@
         community_spouse_income: 1180
         shelter_costs_community_spouse: 1100
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -430,6 +434,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -576,6 +581,7 @@
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: true
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -602,6 +608,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -750,6 +757,7 @@
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -776,6 +784,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -922,6 +931,7 @@
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -1367,6 +1377,7 @@
   persons:
     p1:
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -1538,6 +1549,7 @@
         community_spouse_income: 1180
         shelter_costs_community_spouse: 1100
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -1563,6 +1575,7 @@
         pension_income: 610
     p2:
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -1736,6 +1749,7 @@
         community_spouse_income: 1180
         shelter_costs_community_spouse: 1100
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -1761,6 +1775,7 @@
         social_security_income: 1180
     p3:
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -1907,6 +1922,7 @@
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -1932,6 +1948,7 @@
         hours_worked: 138
     p4:
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2079,6 +2096,7 @@
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -2104,6 +2122,7 @@
         shelter_cost_monthly: 0
     p5:
       facts:
+        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2249,6 +2268,7 @@
         is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         pretax_deductions: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -2855,11 +2875,14 @@
       # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1997-02-11"
         sex: female
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         lpr_entry_date: "2023-06-15"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 12
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_tax_filer: true
@@ -2887,22 +2910,27 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
         cash_assistance_income: 0
+        is_patient_in_institution_for_mental_diseases: false
       months:
         "2026-11": {earned_income: 5000}
     p2:
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-03"
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
         lpr_entry_date: "2023-06-15"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 12
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_tax_filer: true
@@ -2930,15 +2958,18 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
         child_support_received: 0
         cash_assistance_income: 0
+        is_patient_in_institution_for_mental_diseases: false
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "2008-05-14"
         citizenship_status: citizen
         state_of_residence: CO
@@ -2967,6 +2998,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -2977,6 +3009,7 @@
       # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5 (the case cannot
       # state that he lives with p1/p2 rather than p5 - see the case comment above and OQ-42).
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "2016-01-22"
         citizenship_status: citizen
         state_of_residence: CO
@@ -3004,6 +3037,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -3014,6 +3048,7 @@
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1990-06-30"
         citizenship_status: citizen
         state_of_residence: CO
@@ -3042,6 +3077,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -3198,6 +3234,7 @@
       # Rose, 68, citizen, Medicare-entitled, Social Security $1,850/month, claims her granddaughter
       # p3 as a tax dependent and is her caretaker relative.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-11-08"
         sex: female
         citizenship_status: citizen
@@ -3227,6 +3264,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -3237,6 +3275,7 @@
       # Marcus, 23 (was in Colorado's extended foster care through age 20; enrolled in Medicaid at
       # exit), citizen, earns $4,200/month throughout.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "2002-05-20"
         citizenship_status: citizen
         state_of_residence: CO
@@ -3265,6 +3304,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -3286,6 +3326,7 @@
       # zeroed out of her own household total. Stating her as required to file sidesteps that defect
       # here (its top-level condition is "not required to file"); the case comment below documents it.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "2010-03-02"
         citizenship_status: citizen
         state_of_residence: CO
@@ -3314,6 +3355,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -3481,6 +3523,7 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1952-04-18"
         sex: male
         citizenship_status: citizen
@@ -3538,6 +3581,7 @@
         child_support_received: 0
         in_kind_support_and_maintenance: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
@@ -3551,6 +3595,7 @@
       # $7,500 in her own name (the rest of the couple's $180,000 is in Robert's name and the CSRA
       # has not yet been transferred under 8.100.7.M.3).
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-01-09"
         sex: female
         citizenship_status: citizen
@@ -3601,6 +3646,7 @@
         child_support_received: 0
         in_kind_support_and_maintenance: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
@@ -3613,6 +3659,7 @@
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-23"
         sex: male
         citizenship_status: citizen
@@ -3662,6 +3709,7 @@
         child_support_received: 0
         in_kind_support_and_maintenance: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
         pretax_deductions: 0
@@ -4255,9 +4303,11 @@
   title: Undocumented pregnant mother on CHP+ prenatal with a CHP+ son; her LPR mother in breast cancer treatment; her LPR grandfather inside the five-year bar on OAP health care
   # Phase 7 complex case (Medicaid and CHP+ completion). Three generations, one month (2026-10).
   # p1 Lucia, 29, undocumented, pregnant with one, files taxes (ITIN) claiming her son p4, earns
-  # $5,200/month. Cover All Coloradans puts a pregnant person regardless of status inside the
-  # Medicaid/CHP+ status test (8.100.3.G.1.g.ix.1, 10 CCR 2505-3 110.1.B.5.o), so she is not
-  # emergency-only. MAGI household [p1, p4] plus her expected child: size 3, monthly FPL
+  # $5,200/month. Cover All Coloradans covers a pregnant person regardless of status in MAGI
+  # Pregnant and CHP+ (8.100.3.G.1.g.ix.1.a, 10 CCR 2505-3 110.1.B.5.o), so with CHP+ prenatal she
+  # is not emergency-only; but it does not reach limited family planning (phase 7 fix round, S-2,
+  # OQ-214), whose status test (8.100.4.G.8) she fails, so her family planning route is the state
+  # reproductive health-care program. MAGI household [p1, p4] plus her expected child: size 3, monthly FPL
   # 27320/12 = 2276.67, ratio 5200/2276.67 = 2.284; less the 5% disregard 2.234, over the 195%
   # pregnant standard -> Medicaid ineligible_income; CHP+ prenatal band (195%, 260%] -> eligible.
   # p4 Mateo, 6, citizen, same household and ratio: over the 142% children's standard, inside
@@ -4267,12 +4317,20 @@
   # Own household [p2], ratio 2600/1330 = 1.955 (1.905 after the disregard) over the 133% adult
   # standard -> no full-coverage category -> BCCP eligible. Her limited family planning household
   # counts her as two (8.100.4.E.3): 2600/1803.33 = 1.442, inside (133%, 260%] -> limited family
-  # planning as well.
+  # planning by income, but BCCP is itself full State Plan coverage (8.715.7.A), so limited family
+  # planning (for those not eligible for a full-coverage category, 8.100.4.G.8) does not apply:
+  # full_coverage (phase 7 fix round, S-1).
   # p3 Tomas, 72, Rosa's father, LPR since 2023-03-01 (inside the five-year bar), no income, $500 in
   # resources, no Medicare. OAP has no five-year bar (3.520.67.E), so he receives OAP-A; Medicaid's
   # status test fails, so he is neither SSI-related nor SISC B -> state-only Old Age Pension Health
   # Care Program (SISC C). He also meets the SSI-related standards apart from status (aged, $0 income,
   # $500 resources), so he is emergency-Medicaid eligible, and he had an emergency in October.
+  # The case states cash_assistance_income 0: the state-only OAP grant is treated as excluded from
+  # SSI-related countable income (N-5 of the phase 7 review). The phase 7 fix round makes OAP SISC B
+  # (an aged OAP recipient within the SSI resource standard, CO-1177) a route of its own in
+  # ma_meets_requirements_other_than_status (CO-1150), so his emergency eligibility no longer rests
+  # on that reading. His Medicaid status is tested against the five-year rule's exemptions (CO-1172):
+  # no refugee or other exempt category, no military connection, no work quarters.
   as_of: "2026-10-01"
   relationships:
     - [parent, p2, p1]
@@ -4283,6 +4341,7 @@
   persons:
     p1:
       facts:
+        lottery_gambling_winnings_amount: 0
         is_employed: true
         is_disabled_for_buy_in: false
         receives_social_security_disability: false
@@ -4321,6 +4380,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -4332,6 +4392,7 @@
         has_emergency_medical_condition: false
     p2:
       facts:
+        lottery_gambling_winnings_amount: 0
         is_employed: true
         is_disabled_for_buy_in: false
         receives_social_security_disability: false
@@ -4363,6 +4424,7 @@
         receives_ssi: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: true
         has_reproductive_capacity: false
+        ma_bccp_has_creditable_coverage: false
       month_defaults:
         in_kind_support_and_maintenance: 0
         earned_income: 2600
@@ -4371,6 +4433,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -4378,12 +4441,16 @@
         child_support_received: 0
         cash_assistance_income: 0
         has_emergency_medical_condition: false
+        is_patient_in_institution_for_mental_diseases: false
     p3:
       facts:
+        lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
         citizenship_status: lawful_permanent_resident
         qualified_status_date: "2023-03-01"
+        ma_five_year_bar_exempt_category: "none"
+        qualifying_quarters: 0
         lawful_presence_status: lawfully_present
         state_of_residence: CO
         is_fleeing_felon_or_probation_violator: false
@@ -4426,6 +4493,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -4438,6 +4506,7 @@
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        lottery_gambling_winnings_amount: 0
         is_employed: false
         is_disabled_for_buy_in: false
         receives_social_security_disability: false
@@ -4474,6 +4543,7 @@
         unemployment_income: 0
         self_employment_net_income: 0
         other_taxable_income: 0
+        discharged_student_loan_debt: 0
         other_unearned_income: 0
         tax_exempt_interest: 0
         foreign_earned_income_excluded: 0
@@ -4483,20 +4553,23 @@
         is_inmate_of_public_institution: false
         is_patient_in_institution_for_mental_diseases: false
   expect:
-    # Hand arithmetic is in the case comment above. p1 and p4 also land in limited family planning:
+    # Hand arithmetic is in the case comment above. p1 and p4 are in the limited family planning income band:
     # their household [p1, p4] plus the expected child, counted one larger (8.100.4.E.3), is size 4,
     # 5200/2750 = 1.89 of FPL, inside 133%-260%; CHP+ is not a Medicaid full-coverage category and
-    # 8.100.4.G.8 has no age restriction. Tomas (p3) fails Medicaid status, so he is neither in a
+    # 8.100.4.G.8 has no age restriction (OQ-215). p4 meets status and lands in limited family
+    # planning; p1 fails status (Cover All Coloradans does not reach the category, OQ-214) and lands
+    # in the reproductive health-care program instead (phase 7 fix round, S-2). p2's BCCP is full
+    # coverage (S-1). Tomas (p3) fails Medicaid status, so he is neither in a
     # protected group nor fully eligible anywhere; he has no reproductive capacity, so no family
     # planning route.
     p1:
       ma_magi_household_size: 3
-      ma_meets_citizenship_requirement: true
+      ma_meets_citizenship_requirement: false
       ma_magi_eligibility_status: {"2026-10": ineligible_income}
       chp_eligibility_status: {"2026-10": eligible_prenatal}
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_not_in_need_of_treatment}
-      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_family_planning_status: {"2026-10": reproductive_health_care_program}
       ma_oap_health_care_status: {"2026-10": not_oap_recipient}
       ma_protected_group_category: {"2026-10": none}
     p2:
@@ -4506,7 +4579,7 @@
       chp_eligibility_status: {"2026-10": ineligible}
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": eligible}
-      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_family_planning_status: {"2026-10": full_coverage}
       ma_oap_health_care_status: {"2026-10": not_oap_recipient}
       ma_protected_group_category: {"2026-10": none}
     p3:
@@ -4527,6 +4600,103 @@
       ma_family_planning_status: {"2026-10": limited_family_planning}
       ma_oap_health_care_status: {"2026-10": not_oap_recipient}
       ma_protected_group_category: {"2026-10": none}
+- id: CO-72
+  title: Undocumented 70-year-old nursing facility resident who meets every long-term care financial test - emergency-only, not institutional Medicaid
+  # Phase 7 fix round (B-3), the variant the phase 7 review proposed for CO-71's p3. Elena, 70,
+  # undocumented, a Colorado resident in a nursing facility since September 2026, expects to stay
+  # more than 30 days, meets nursing facility level of care, has a $900/month pension from a former
+  # employer abroad, $1,200 in resources, no home and no transfers. Income 900 is under 300% of the SSI benefit rate
+  # (2,982) and resources are under 2,000, so every long-term care financial test is met. Before the
+  # fix, ma_ltc_eligibility_status reported eligible_institutional (full Medicaid) while
+  # ma_emergency_medicaid_status reported her emergency-eligible in the same month. § 8.100.3.G.1.g
+  # applies to every category and § 8.100.3.G.1.g.ix.1.b extends Cover All Coloradans only to the
+  # Long-Term Care waivers (and she is not a child, pregnant or postpartum in any case), so
+  # long-term care now reports ineligible_status. She is aged, and her SSI-related countable income
+  # (900 - 20 = 880) is under the 994 federal benefit rate with resources under 2,000, so she meets
+  # the SSI-related standards apart from status: emergency-only, with an emergency in October.
+  # OAP: undocumented, so no Old Age Pension (af_category none) and no OAP health care.
+  as_of: "2026-10-01"
+  persons:
+    p1:
+      relationships: []
+      facts:
+        lottery_gambling_winnings_amount: 0
+        date_of_birth: "1956-04-01"
+        sex: female
+        citizenship_status: undocumented
+        lawful_presence_status: not_lawfully_present
+        state_of_residence: CO
+        is_fleeing_felon_or_probation_violator: false
+        is_tax_filer: false
+        expects_to_be_claimed_as_dependent: false
+        is_required_to_file_tax_return: false
+        files_jointly_with_spouse: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        receives_medicare_part_a: false
+        is_veteran_or_active_duty: false
+        was_foster_youth_at_eighteen: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        has_other_creditable_health_coverage: false
+        application_date: "2026-10-05"
+        is_blind: false
+        is_disabled_ssa: false
+        receives_ssi: false
+        receives_social_security_disability: false
+        marital_status: other
+        countable_resources_individual: 1200
+        countable_resources_couple: 0
+        in_medical_institution: true
+        institution_entry_date: "2026-09-15"
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        is_enrolled_in_pace: false
+        home_equity: 0
+        spouse_or_dependent_child_resides_in_home: false
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_reproductive_capacity: false
+        retains_ssi_status_without_payment: false
+        receives_oasdi_as_disabled_adult_child: false
+        is_widow_or_widower: false
+        lost_ssi_or_oap_due_to_social_security_benefits: false
+        lost_ssi_due_to_social_security_benefits: false
+      month_defaults:
+        earned_income: 0
+        social_security_income: 0
+        pension_income: 900
+        unemployment_income: 0
+        self_employment_net_income: 0
+        other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        cash_assistance_income: 0
+        in_kind_support_and_maintenance: 0
+        is_patient_in_institution_for_mental_diseases: false
+        receives_va_aid_and_attendance: false
+        has_income_trust: false
+      months:
+        "2026-10": {has_emergency_medical_condition: true}
+  expect:
+    p1:
+      ma_meets_citizenship_requirement: false
+      ma_is_institutionalized: true
+      ma_ltc_eligibility_status: {"2026-10": ineligible_status}
+      ma_magi_eligibility_status: {"2026-10": ineligible_no_category}
+      ma_is_emergency_medicaid_only: {"2026-10": true}
+      ma_emergency_medicaid_status: {"2026-10": eligible_emergency_condition}
+      ma_family_planning_status: {"2026-10": ineligible}
+      ma_protected_group_category: {"2026-10": none}
+
 - id: CO-13
   title: "Phase 8: a widow on OAP with Home Care Allowance and her husband's burial; a sanctioned Colorado Works daughter whose school-age son gets SUN Bucks"
   # Designed for phase 8 (current 9 CCR 2503-5, 2503-6 and 7 CFR 292). Two households under one case,

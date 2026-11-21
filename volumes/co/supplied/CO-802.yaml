@@ -5,9 +5,9 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: The value of food or shelter this person receives from someone else without paying its full value, valued for a month as unearned income under 20 CFR 416.1130-416.1140 and 10 CCR 2505-10 8.100.5.F.5.k - ordinarily the presumed maximum value of one-third of the Federal Benefit Rate, unless the person declares and verifies a different amount.
-precision: Zero for a person who pays their own shelter costs or lives alone; the worker states the amount actually used in the determination (the PMV or a declared lower amount), not a formula this fact re-derives.
+meaning: "The value of shelter this person receives from someone else, outside of a business arrangement requiring monthly rent at or above the presumed maximum value, valued for a month as unearned income under 10 CCR 2505-10 § 8.100.5.F.5.k and 20 CFR 416.1130-416.1140 - ordinarily the presumed maximum value of one-third of the Federal Benefit Rate (the recipient's portion of the rent, or one-third of the FBR if no amount is declared), unless the person declares and verifies a different amount. Shelter includes room, rent, mortgage payments, real property taxes, heating fuel, gas, electricity, water, sewage and garbage collection services. Food is not included (§ 8.100.5.F.5.k.i)."
+precision: "Zero for a person who pays their own shelter costs or lives alone; the worker states the amount actually used in the determination (the PMV or a declared lower amount, not more than one-third of the FBR, § 8.100.5.F.5.k.ii), not a formula this fact re-derives. Phase 7 fix round (S-8): the current § 8.100.5.F.5.k (D-65) excludes food, which the Cornell copy and 20 CFR 416.1130 did not; the meaning follows the current state text."
 supplied_by: County eligibility worker's living-arrangement and in-kind income determination (CBMS), from the applicant's declaration and the one-third-of-FBR presumed maximum value rule.
-sources: [S306, S307]
+sources: [S306, S307, S668]
 tags: [non_magi, income]
 rationale: "The phase-4 brief's interface fixes this identifier for this batch. ma_ssi_countable_unearned_income (CO-606) needs a person's in-kind support and maintenance amount to include it as unearned income before applying the general income exclusion, per 8.100.5.F.5.k and 416.1130-416.1140; no existing supplied fact in this volume carries in-kind income."
