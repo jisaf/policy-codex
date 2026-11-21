@@ -11,6 +11,5 @@ versions:
     value: 2500
     source: S1005
 sources: [S1005, S1006]
-implemented: engine
 tags: [cash, tanf]
 rationale: "No existing parameter states the Colorado Works death reimbursement charge limit (phase-8 review K-1); af_burial_cost_limit is the Adult Financial burial program's figure (3.570.43.A, F.1)."

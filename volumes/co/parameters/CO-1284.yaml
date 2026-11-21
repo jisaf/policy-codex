@@ -8,6 +8,5 @@ program: CCCAP
 meaning: The share of gross countable household income assessed as the parent fee for every eligible household - one percent - per 8 CCR 1403-1 3.124.P.1-2 (formula in force July 1, 2021 through July 31, 2028).
 value: 0.01
 sources: [S785]
-implemented: engine
 tags: [income]
 rationale: No existing parameter states it; cccap_parent_fee_formula_amount (CO-1289) needs it.

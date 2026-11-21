@@ -5,7 +5,7 @@ kind: parameter
 type: money
 scope: global
 program: Medicaid
-meaning: The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a statutorily blind person, per 42 U.S.C. 423(d)(4) as published annually.
+meaning: "The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a statutorily blind person, per 42 U.S.C. 423(d)(4) as published annually. Informational: no rule reads it; the figure is kept for the worker beside ma_sga_non_blind (CO-1802)."
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 2700, source: S1711}
   - {from: "2026-01-01", to: "2027-01-01", value: 2830, source: S499}

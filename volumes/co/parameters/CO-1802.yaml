@@ -5,7 +5,7 @@ kind: parameter
 type: money
 scope: global
 program: Medicaid
-meaning: The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a non-blind disabled person, the threshold QDWI's history (8.100.6.O.2.a) and the Working Adults with Disabilities Buy-In both turn on.
+meaning: "The monthly amount of earnings SSA deems to constitute Substantial Gainful Activity for a non-blind disabled person, the threshold QDWI's history (8.100.6.O.2.a) and the Working Adults with Disabilities Buy-In both turn on. Informational: no rule reads it; the Buy-In and QDWI items test the person's own SGA findings, and the figure is kept for the worker."
 versions:
   - {from: "2025-01-01", to: "2026-01-01", value: 1620, source: S1711}
   - {from: "2026-01-01", to: "2027-01-01", value: 1690, source: S499}

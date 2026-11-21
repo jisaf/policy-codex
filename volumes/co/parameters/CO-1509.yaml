@@ -11,6 +11,5 @@ versions:
     value: 79
     source: S1008
 sources: [S1008, S1009, S1010]
-implemented: engine
 tags: [cash, oap, and, income]
 rationale: "No existing parameter states the Adult Financial PNA (phase-8 review K-2); af_oap_grant (CO-951) and af_and_grant (CO-952) pay it in place of the grant to a facility resident. Not ma_personal_needs_allowance_institutional (CO-887), which is the Medicaid post-eligibility patient-payment allowance, a different program's figure."

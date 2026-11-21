@@ -11,6 +11,5 @@ versions:
     value: 1500
     source: S720
 sources: [S720]
-implemented: engine
 tags: [cash]
 rationale: No existing parameter states it; af_burial_benefit (CO-1232) needs it. Versioned because 3.570.43.B.1 states an effective date.

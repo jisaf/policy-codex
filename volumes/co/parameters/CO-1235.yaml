@@ -15,6 +15,5 @@ versions:
     value: 616
     source: S743
 sources: [S743, S747]
-implemented: engine
 tags: [income, snap, state_election]
 rationale: No existing parameter states Colorado's SUA amounts (OQ-36); snap_utility_allowance_amount (CO-1500) needs them. The FY2026 figure is the Colorado row of FNS's FY2026 SUA table (D-85); the FY2027 figure is stated in 10 CCR 2506-1 effective 2026-10-01 (D-82).

@@ -11,6 +11,5 @@ versions:
     value: "2026-07-01"
     source: S1015
 sources: [S1015]
-implemented: engine
 tags: [household]
 rationale: "No existing parameter states the start of the substance use disorder treatment activity (phase-8 review K-7); cccap_caretaker_in_eligible_activity (CO-984) compares the month against it, so a month before July 2026 does not read the treatment fact."

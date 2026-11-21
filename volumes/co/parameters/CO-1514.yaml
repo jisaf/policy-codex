@@ -11,7 +11,6 @@ versions:
     value: 165
     source: S1013
 sources: [S1013]
-implemented: engine
 tags: [income, snap, state_election]
 rationale: "No existing parameter states Colorado's SMED (phase-8 review K-5); snap_excess_medical_deduction (CO-376) deducted only actual expenses over $35. snap_medical_deduction_threshold (CO-137, $35) is the nearest figure but is the threshold, not the standard deduction."
 nearest: [CO-137]
