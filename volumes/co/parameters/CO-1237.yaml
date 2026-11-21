@@ -18,5 +18,5 @@ versions:
 sources: [S745, S747]
 implemented: engine
 tags: [income, snap, state_election]
-rationale: No existing parameter states it (OQ-36); utility_allowance_amount (CO-036) needs it. Same table as CO-1235, a different tier.
+rationale: No existing parameter states it (OQ-36); snap_utility_allowance_amount (CO-036) needs it. Same table as CO-1235, a different tier.
 nearest: [CO-1235]

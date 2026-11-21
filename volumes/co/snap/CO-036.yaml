@@ -1,6 +1,6 @@
 id: CO-036
 name: Utility allowance amount
-identifier: utility_allowance_amount
+identifier: snap_utility_allowance_amount
 kind: derived
 type: money
 scope: person
@@ -11,7 +11,7 @@ derived: [case, [snap_entitled_to_heating_cooling_allowance, snap_sua_heating_co
 sources: [S136, S137, S743, S744, S745, S746, S747, S753]
 implemented: engine
 tags: [income, snap, state_election]
-rationale: "Phase 2 kept this a supplied fact because no fetched document stated Colorado's SUA amounts (OQ-36). 10 CCR 2506-1 effective 2026-10-01 (D-82) states the four tiers, their conditions and FY2027 amounts, and FNS's FY2026 table (D-85) the prior year's, so the identifier is now derived over parameters CO-1235-CO-1238 and the household's utility facts (CO-1239-CO-1242), keeping its identifier so snap_shelter_costs (CO-377) and expedited service (CO-348) read it unchanged. OQ-36 resolved."
+rationale: "Phase 2 kept this a supplied fact because no fetched document stated Colorado's SUA amounts (OQ-36). 10 CCR 2506-1 effective 2026-10-01 (D-82) states the four tiers, their conditions and FY2027 amounts, and FNS's FY2026 table (D-85) the prior year's, so the identifier is now derived over parameters CO-1235-CO-1238 and the household's utility facts (CO-1239-CO-1242), renamed from utility_allowance_amount to snap_utility_allowance_amount because a derived SNAP rule carries the program prefix (governance name.prefix); snap_shelter_costs (CO-377), expedited service (CO-348) and the cases that stated the old supplied fact read the new name. OQ-36 resolved."
 tests:
   - {id: CO-036-T1, as_of: "2026-10-01", given: {snap_entitled_to_heating_cooling_allowance: true, non_heating_utility_cost_count: 3, incurs_telephone_cost: true}, expect: 616}
   - {id: CO-036-T2, title: "FY2026 heating and cooling allowance (FNS table)", as_of: "2026-09-01", given: {snap_entitled_to_heating_cooling_allowance: true, non_heating_utility_cost_count: 3, incurs_telephone_cost: true}, expect: 594}

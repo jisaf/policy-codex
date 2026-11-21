@@ -1613,7 +1613,7 @@
         # No CDHS standard utility allowance rule exists yet in this volume (fix-round OQ-36); the
         # household's stated shelter cost is rent only, so the utility allowance is stated as 0
         # rather than estimated.
-        utility_allowance_amount: 0
+        snap_utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: true
         date_of_birth: "1956-01-01"
@@ -1674,7 +1674,7 @@
         is_elderly_disabled_unable_to_prepare_meals: false
         countable_liquid_resources: 0
         countable_nonliquid_resources_snap: 0
-        utility_allowance_amount: 0
+        snap_utility_allowance_amount: 0
         persons_cared_for: []
         is_head_of_household: false
         date_of_birth: "1958-01-01"
