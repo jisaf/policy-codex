@@ -7942,3 +7942,59 @@ Document: D-80
 > of such decision, unless additional time is given for good cause, shall result in
 > denial or discontinuation of and grant payments.
 
+### S1316. Old age pension: a qualified alien must meet the entry-date or five-year-bar test and sponsor deeming, with hardship and SSI exceptions
+
+Document: D-59
+
+C.R.S. 26-2-111(2)(c) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (c) (I)  Except as otherwise provided in subparagraphs (II) and (III) of this paragraph (c),
+> a qualified alien shall not be granted the old age pension under the provisions of this subsection
+> (2) unless it is shown that:
+>
+> (A)    (Deleted  by  amendment,  L.  2010,  (HB  10-1384),  ch.  218,  p.  954,  §  4,  effective
+>
+> January 1, 2014.)
+>
+> (B)    The  qualified  alien  meets  the  requirements  specified  in  section  26-2-111.8  (2)(a)
+> relating to entry into the United States prior to August 22, 1996, or the requirements specified in
+> section 26-2-111.8 (2)(b) regarding the five-year bar on receipt of benefits; and
+>
+> (C)    The  qualified  alien  meets  the  requirements  specified  in  section  26-2-111.8  (2)(c)
+>
+> regarding the deeming of sponsor income and resources.
+>
+> (II)    The  requirements  in  subparagraph  (I)  of  this  paragraph  (c)  do  not  apply  to  a
+> qualified alien who meets the eligibility criteria for the old age pension in paragraph (a) of this
+> subsection (2) if it is determined pursuant to rules of the state department that:
+>
+> (A)  The qualified alien has been abandoned by or is a victim of mistreatment by his or
+>
+> her sponsor or is an abused spouse and would incur a significant financial hardship; or
+>
+> (B)  The qualified alien who does not have a sponsor would have insufficient income to
+>
+> support himself or herself or would otherwise incur a significant financial hardship; or
+>
+> (C)  The person who sponsored the qualified alien's entry into the United States and who
+> satisfied  sponsorship  financial  requirements  at  the  time  of  initial  sponsorship  now  has
+> insufficient income and resources to meet the needs of the qualified alien.
+>
+> (III)    The  requirements  in  subparagraph  (I)  of  this  paragraph  (c)  do  not  apply  to  a
+> qualified alien who meets the eligibility criteria for the old age pension in paragraph (a) of this
+> subsection (2) and who is also eligible for federal financial benefits pursuant to Title XVI of the
+> federal "Social Security Act".
+
+### S1317. Adult Financial five-year bar stated for AND
+
+Document: D-80
+
+9 CCR 2503-5 3.520.68.A (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.68 FIVE YEAR BAR FROM ELIGIBILITY
+>
+> A. Qualified non-citizens arriving in the U.S. on or after August 22, 1996, are barred
+> from receiving AND for five years beginning on the qualified non-citizen's date of
+> admission into the United States for legal permanent residence, as verified
+> through SAVE.
+
