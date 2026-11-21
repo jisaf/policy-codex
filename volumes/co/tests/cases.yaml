@@ -8,13 +8,15 @@
 # per-month facts are under months/<YYYY-MM> or month_defaults; anything not
 # stated is unknown. Case-level relationships are [role, from, to] and the
 # engine adds the inverse (parent/child, spouse/spouse, grandparent/grandchild,
-# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same, shares_heat_with/same).
+# caretaker/dependent, tax_filer/tax_dependent, buys_prepares_with/same, shares_heat_with/same,
+# files_jointly_with/same, sponsor/sponsored_by).
 
 - id: CO-01
   title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
   as_of: "2026-10-01"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p2, p3]
     - [parent, p3, p4]
@@ -173,9 +175,7 @@
         ma_qualifies_for_veterans_personal_needs_allowance: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -434,9 +434,7 @@
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         ssi_countable_resources_individual: 44100
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -678,9 +676,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -910,9 +906,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -1146,9 +1140,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         marital_status: single
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -2207,6 +2199,7 @@
   as_of: "2026-11-01"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p2, p3]
     - [parent, p3, p4]
@@ -2367,9 +2360,7 @@
         transfer_was_exempt: false
         home_equity: 210000
         ssi_countable_resources_individual: 1900
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -2626,9 +2617,7 @@
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         ssi_countable_resources_individual: 44100
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -2871,9 +2860,7 @@
         marital_status: single
         is_medicare_entitled_or_enrolled: false
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -3102,9 +3089,7 @@
         has_primary_heating_source: true
         marital_status: single
         is_medicare_entitled_or_enrolled: false
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -3336,9 +3321,7 @@
         has_primary_heating_source: true
         marital_status: single
         is_medicare_entitled_or_enrolled: false
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -4586,6 +4569,7 @@
   as_of: "2026-10-01"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p1, p4]
     - [stepparent, p2, p3]    # same-word audit SW-1: a step-parent is stated as stepparent, not parent
@@ -4608,9 +4592,7 @@
         qualifying_quarters: 12
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         is_pregnant: true
         expected_number_of_children: 1
         is_medicare_entitled_or_enrolled: false
@@ -4661,9 +4643,7 @@
         qualifying_quarters: 12
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -4714,7 +4694,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: true
@@ -4769,7 +4748,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: true
         ma_custodial_parent: p1
         lives_with: [p1, p2, p3, p4]
         is_required_to_file_tax_return: false
@@ -4816,9 +4794,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -5007,9 +4983,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: true
@@ -5053,9 +5027,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -5117,7 +5089,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: true
         snap_is_enrolled_half_time_in_school_or_training: true
         is_full_time_secondary_student_finishing_before_nineteen: true
@@ -5313,6 +5284,7 @@
   as_of: "2026-11-01"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p2, p3]
   persons:
@@ -5359,9 +5331,7 @@
         transfer_penalty_period_start_date: "2026-11-01"
         ma_qualifies_for_veterans_personal_needs_allowance: false
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -5429,9 +5399,7 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -5498,9 +5466,7 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -5666,7 +5632,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 129  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (387 / 3)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -5729,7 +5695,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 129  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (387 / 3)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -5851,7 +5817,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 129  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (387 / 3)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -5928,6 +5894,10 @@
         af_resides_in_psychiatric_facility_thirty_consecutive_days: false
         af_resides_in_unlicensed_or_uncertified_facility: false
         work_sanction_level_served: none
+  # Audit fix round (dual-entry 3.7, 5.3): the unit receives its October grant of 387 (receives_tanf_cash, the case
+  # record); tanf_cash_income states it across the three members it supports, 129 each, where it was 0. No expectation
+  # moves: Colorado Works does not count its own grant; p3's AND-CS deeming stays 0, because each parent receives
+  # Medicaid with income within the SSI benefit standard (p1 400 + 129 = 529, p2 129, both at most 994; 3.549.F).
   expect:
     p1:
       cw_assistance_unit_members: [p1, p2, p4]
@@ -6476,9 +6446,7 @@
         immigration_status: undocumented
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: true
         expected_number_of_children: 1
         is_medicare_entitled_or_enrolled: false
@@ -6542,9 +6510,7 @@
         us_entry_date: "2010-04-01"
         state_of_residence: CO
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -6611,9 +6577,7 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -6695,9 +6659,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -6814,9 +6776,7 @@
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: false
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -7020,7 +6980,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 183  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (366 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -7062,7 +7022,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 183  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (366 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -7070,6 +7030,9 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         work_sanction_level_served: none
+  # Audit fix round (dual-entry 3.7, 5.3): the sanctioned unit receives its November grant of 366; tanf_cash_income
+  # states it across p3 and p4, 183 each, where it was 0. No expectation moves: Colorado Works does not count its own
+  # grant, and p4's SUN Bucks eligibility reads TANF receipt (receives_tanf_cash).
   expect:
     p1:
       af_category: {"2026-11": oap}
@@ -7531,8 +7494,6 @@
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: true
         qualifying_quarters: 30
         chp_has_other_health_coverage: false
@@ -7711,8 +7672,6 @@
         lottery_gambling_winnings_amount: 0
         discharged_student_loan_debt: 0
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: true
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         qualifying_quarters: 0
         chp_has_other_health_coverage: false
@@ -8126,9 +8085,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -8186,9 +8143,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -8245,9 +8200,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: true
-        expects_to_be_claimed_as_dependent: false
         is_required_to_file_tax_return: true
-        files_jointly_with_spouse: false
         is_pregnant: false
         expected_number_of_children: 0
         is_medicare_entitled_or_enrolled: false
@@ -8309,7 +8262,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         is_tax_filer: false
-        expects_to_be_claimed_as_dependent: true
         is_required_to_file_tax_return: false
         is_pregnant: false
         expected_number_of_children: 0
@@ -8700,6 +8652,7 @@
   as_of: "2026-09-15"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p2, p3]
     - [tax_filer, p1, p3]
@@ -8714,7 +8667,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -8736,7 +8688,6 @@
         immigration_status: refugee
         qualified_status_date: "2024-03-01"
         is_tax_filer: true
-        files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
@@ -8773,7 +8724,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -8795,7 +8745,6 @@
         immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: true
-        files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
@@ -8832,7 +8781,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -8854,7 +8802,6 @@
         immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
@@ -8892,7 +8839,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -8914,7 +8860,6 @@
         immigration_status: parolee_one_year_or_more
         qualified_status_date: "2019-01-15"
         is_tax_filer: true
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: "2026-09-02"
@@ -8983,6 +8928,7 @@
   as_of: "2026-11-02"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p2, p3]
     - [tax_filer, p1, p3]
@@ -8997,7 +8943,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9019,7 +8964,6 @@
         immigration_status: refugee
         qualified_status_date: "2024-03-01"
         is_tax_filer: true
-        files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
@@ -9056,7 +9000,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9078,7 +9021,6 @@
         immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: true
-        files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
@@ -9115,7 +9057,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9137,7 +9078,6 @@
         immigration_status: asylee
         qualified_status_date: "2025-06-01"
         is_tax_filer: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
@@ -9175,7 +9115,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9197,7 +9136,6 @@
         immigration_status: parolee_one_year_or_more
         qualified_status_date: "2019-01-15"
         is_tax_filer: true
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: "2026-11-02"
@@ -9270,6 +9208,7 @@
   as_of: "2027-02-01"
   relationships:
     - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
     - [parent, p1, p3]
     - [parent, p2, p3]
     - [parent, p1, p4]
@@ -9287,7 +9226,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9308,7 +9246,6 @@
         sex: female
         immigration_status: us_citizen
         is_tax_filer: true
-        files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
@@ -9347,7 +9284,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9368,7 +9304,6 @@
         sex: male
         immigration_status: us_citizen
         is_tax_filer: true
-        files_jointly_with_spouse: true
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
@@ -9407,7 +9342,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9428,7 +9362,6 @@
         sex: male
         immigration_status: us_citizen
         is_tax_filer: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         chp_mother_was_enrolled_at_birth: true
@@ -9467,7 +9400,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9488,7 +9420,6 @@
         sex: male
         immigration_status: us_citizen
         is_tax_filer: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
@@ -9561,7 +9492,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9582,7 +9512,6 @@
         sex: female
         immigration_status: us_citizen
         is_tax_filer: true
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: true
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-04-03"
@@ -9629,7 +9558,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9650,7 +9578,6 @@
         sex: male
         immigration_status: us_citizen
         is_tax_filer: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-04-03"
@@ -9688,7 +9615,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9709,7 +9635,6 @@
         sex: male
         immigration_status: us_citizen
         is_tax_filer: false
-        files_jointly_with_spouse: false
         is_required_to_file_tax_return: false
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
@@ -9779,7 +9704,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9840,7 +9764,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9901,7 +9824,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -9962,7 +9884,6 @@
         expected_number_of_children: 0
         has_military_connection: false
         qualifying_quarters: 0
-        expects_to_be_claimed_as_dependent: false
         is_medicare_entitled_or_enrolled: false
         receives_medicare_part_a: false
         was_enrolled_in_medicaid_at_foster_care_exit: false
@@ -10738,7 +10659,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -10785,7 +10706,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 550
@@ -10834,7 +10755,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -10881,7 +10802,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 700
@@ -10930,7 +10851,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 0
@@ -10977,7 +10898,7 @@
         social_security_income: 0
         pension_income: 0
         unemployment_income: 0
-        tanf_cash_income: 0
+        tanf_cash_income: 244  # audit fix round (dual-entry 3.7, 5.3): the share of the unit's grant paid for this person's needs; was 0 beside receives_tanf_cash true (488 / 2)
         adult_financial_cash_income: 0
         ssi_income: 0
         child_support_received: 450
@@ -10985,6 +10906,9 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         work_sanction_level_served: none
+  # Audit fix round (dual-entry 3.7, 5.3): each redetermined unit (p3-p4, p5-p6, p7-p8) receives its current grant of
+  # 488 in November (the size-two grant, child support never counted in the grant, 3.605.5.B); tanf_cash_income states it
+  # across parent and child, 244 each, where it was 0. No expectation moves: Colorado Works does not count its own grant.
   expect:
     p1:
       cw_countable_income: {"2026-11": 200}

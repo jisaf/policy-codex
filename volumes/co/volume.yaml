@@ -157,5 +157,6 @@ relationship_roles:
   - {id: tax_dependent, inverse: tax_filer}
   - {id: buys_prepares_with, inverse: buys_prepares_with}
   - {id: shares_heat_with, inverse: shares_heat_with}
+  - {id: files_jointly_with, inverse: files_jointly_with, label: "expects to file a joint federal tax return with this spouse for the taxable year of the determination"}
   - {id: sponsor, inverse: sponsored_by, label: "signed the other person's affidavit of support (Form I-864) as sponsor or joint sponsor; the sponsor is declared as a person of the case whether or not the sponsor lives in the home"}
   - {id: sponsored_by, inverse: sponsor, label: "a non-citizen whose affidavit of support the other person signed as sponsor or joint sponsor"}

@@ -1,0 +1,13 @@
+id: CO-2716
+name: Is claimed by a tax filer outside the case
+identifier: is_claimed_by_filer_outside_case
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person expects to be claimed as a tax dependent, for the taxable year of the determination, by a taxpayer who is not a person of the case (a parent or relative living elsewhere). A claim by a person of the case is the tax_filer / tax_dependent relationship instead."
+precision: "If not stated, programs read this as false: a claimer outside the case is stated when there is one."
+supplied_by: "Applicant statement on the application (tax filing questions)."
+sources: [S161, S162, S163]
+tags: [ma, magi, household]
+rationale: "Dual-entry audit 3.3 and 5.7 (audit fix round): expects_to_be_claimed_as_dependent (CO-076) restated the tax_dependent edge, and five persons in CO-74 to CO-77 stated it false while holding the edge. It is now derived from the edge; this fact carries only the claim the edge cannot state, a claimer who is not a person of the case."
