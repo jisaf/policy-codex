@@ -6,10 +6,10 @@ type: money
 scope: person-month
 program: AdultFinancial
 role: outcome
-meaning: The monthly Aid to the Needy Disabled (or Aid to the Blind) grant payment - the applicable AND-SO, AND-CS, or AND-SO-standard (for "ab", per OQ-112) grant standard minus the client's total countable income, floored at zero - per 9 CCR 2503-5 3.543.B, 3.544, 3.548.B, and 3.549.
+meaning: The monthly Aid to the Needy Disabled (or Aid to the Blind) grant payment - the applicable AND-SO, AND-CS, or AND-SO-standard (for "ab", per OQ-112) grant standard minus the client's total countable income, floored at zero for AND-SO and AB and raised to the AND-CS payment floor for AND-CS (3.546.C.2, E) - per 9 CCR 2503-5 3.543.B, 3.544, 3.546, 3.548.B, and 3.549.
 precision: "See OQ-120 - does not model the equivalent mid-month proration rules 3.543.D.2 and 3.548.B.2 state. M-7: Adult Financial grants carry cents (no AF provision states a 'drop the cents' rule, unlike Colorado Works' 3.606.1.K.2, which cw_grant_amount, CO-914, implements by flooring) - deliberate, not an oversight."
-derived: [case, [[in, af_category, [and_so, and_cs, ab]], ["max", 0, ["-", af_grant_standard, af_countable_income]]], [else, 0]]
-sources: [S458, S460, S461, S462, S464, S465]
+derived: [case, [[=, af_category, "and_cs"], ["max", af_and_cs_payment_floor, ["-", af_grant_standard, af_countable_income]]], [[in, af_category, [and_so, ab]], ["max", 0, ["-", af_grant_standard, af_countable_income]]], [else, 0]]
+sources: [S458, S460, S461, S462, S464, S465, S706, S707, S708, S709]
 open: [OQ-112, OQ-120]
 implemented: engine
 tags: [cash, and, ab, income]
@@ -19,4 +19,5 @@ tests:
   - {id: CO-952-T1, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_so, af_countable_income: 100, af_grant_standard: 248}, expect: 148}
   - {id: CO-952-T2, as_of: "2026-10-01", month: "2026-10", given: {af_category: and_cs, af_countable_income: 500, af_grant_standard: 967}, expect: 467}
   - {id: CO-952-T3, as_of: "2026-10-01", month: "2026-10", given: {af_category: none, af_countable_income: 100, af_grant_standard: 0}, expect: 0}
+  - {id: CO-952-T5, title: "AND-CS computed grant $4 is raised to the $13 payment floor", as_of: "2026-10-01", month: "2026-10", given: {af_category: and_cs, af_countable_income: 990, af_grant_standard: 994}, expect: 13}
   - {id: CO-952-T4, as_of: "2026-10-01", month: "2026-10", given: {af_category: ab, af_countable_income: 50, af_grant_standard: 248}, expect: 198}

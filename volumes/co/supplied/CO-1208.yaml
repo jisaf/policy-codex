@@ -1,0 +1,12 @@
+id: CO-1208
+name: Continuously receiving OAP and HCA since December 31, 2013
+identifier: received_oap_and_hca_grandfathered
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: The person was receiving both Old Age Pension grant payments and Home Care Allowance as of December 31, 2013 and has remained continuously eligible for both since, which is the third route to HCA financial eligibility under 9 CCR 2503-5 3.570.13.B.3.
+supplied_by: Statewide automated system (CBMS) benefit history.
+sources: [S714]
+tags: [cash, oap]
+rationale: No existing fact records this grandfathered status; af_hca_financially_eligible (CO-1215) needs it.

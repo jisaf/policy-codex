@@ -46,7 +46,7 @@ programs:
     outcomes: [cw_grant_amount, cw_eligibility_status]
   - id: AdultFinancial
     prefix: af_
-    outcomes: [af_category, af_oap_grant, af_and_grant]
+    outcomes: [af_category, af_oap_grant, af_and_grant, af_hca_tier, af_hca_eligibility_status, af_hca_grant, af_burial_eligible, af_burial_benefit]
   - id: CCCAP
     prefix: cccap_
     outcomes: [cccap_eligibility_status]

@@ -1,0 +1,12 @@
+id: CO-1221
+name: Total cost of burial services
+identifier: burial_services_total_cost
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: The combined charges of the provider(s) for all burial services for the decedent (transportation, storage, embalming, casket or urn, plot, marker, service, cremation, interment and incidentals), from the providers' written estimates, per 9 CCR 2503-5 3.570.42 and 3.570.43.E-F.
+supplied_by: Providers' written estimates obtained by the family or county department.
+sources: [S719, S723]
+tags: [cash]
+rationale: No existing fact states burial costs; af_burial_eligible (CO-1231) and af_burial_unmet_cost (CO-1230) need it.

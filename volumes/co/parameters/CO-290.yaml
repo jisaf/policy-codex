@@ -6,11 +6,10 @@ type: money
 scope: global
 program: AdultFinancial
 meaning: The total AND-SO grant standard, per 9 CCR 2503-5 3.540.A, before deducting a client's countable income.
-precision: See OQ-118 - adjustable within available appropriations per 3.540's general adjustment language; this parameter carries only the stated dollar figure as of its effective date.
+precision: Adjustable within available appropriations with no appeal right (3.540.B); each adjustment the rule states is a new dated version (OQ-118, resolved). The version of 9 CCR 2503-5 effective 2026-03-02 (D-80, S705) still states $248.00 effective April 1, 2022.
 versions:
   - from: "2022-04-01"
     value: 248
     source: S458
-open: [OQ-118]
-sources: [S458]
+sources: [S458, S705]
 rationale: No existing item states the AND-SO grant standard. af_grant_standard (CO-949), af_and_grant (CO-952), and af_category's income test (CO-953) need it.

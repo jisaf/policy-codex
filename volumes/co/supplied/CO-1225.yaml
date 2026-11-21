@@ -1,0 +1,12 @@
+id: CO-1225
+name: Legally responsible person's resources
+identifier: burial_responsible_person_resources
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: The countable resources of the decedent's legally responsible person(s) - the spouse, or the parent of an unemancipated minor under 18 - excluding any Social Security lump-sum death benefit, per 9 CCR 2503-5 3.570.42 and 3.570.43.D.3.a. Zero when there is no legally responsible person.
+supplied_by: Legally responsible person's statement and verification.
+sources: [S721, S722]
+tags: [cash, resources]
+rationale: No existing fact states a third party's resources for this purpose; af_burial_responsible_person_excess_resources (CO-1229) needs it.

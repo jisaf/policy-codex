@@ -1,0 +1,12 @@
+id: CO-1223
+name: Burial insurance proceeds
+identifier: burial_insurance_proceeds
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: Monies due from any insurance policy of the decedent to a legally responsible person or to a contributor named as beneficiary or joint beneficiary, which are applied first against the full burial costs, per 9 CCR 2503-5 3.570.43.D.1.
+supplied_by: Insurance policy and beneficiary documentation.
+sources: [S721]
+tags: [cash, resources]
+rationale: No existing fact states it; af_burial_unmet_cost (CO-1230) needs it.

@@ -1,0 +1,20 @@
+id: CO-1203
+name: "Adult Financial: meets AND-SO eligibility"
+identifier: af_and_so_eligible
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: Whether the person meets every eligibility criterion of Aid to the Needy Disabled - State Only for the month - age 18 through 59 (0 through 59 if blind), total disability, not approved for SSI or SSDI, citizenship or qualified non-citizen status with the five-year bar, Colorado residency, the resource limit, and countable income below the AND-SO grant standard - per 9 CCR 2503-5 3.520.61, 3.520.71.A, 3.540 and 3.544.
+precision: "The conjuncts are exactly af_category's former and_so branch (CO-953), lifted into an item so the Home Care Allowance's financial test (3.570.13.B.2, 'Meet all eligibility criteria required for Aid to the Needy Disabled - State Only (AND-SO) program') reads the same test af_category does. See OQ-138 (SSDI recipients excluded) and OQ-151 (the SSI application duty of 3.520.71.B is not a conjunct)."
+derived: [all, [<=, age, af_and_max_age], [any, [">=", age, af_and_so_min_age], is_blind], af_and_so_disability_met, [not, receives_social_security_disability], [not, receives_ssi], af_meets_citizenship_requirement_and, af_meets_residency, af_meets_resource_limit, [<, af_countable_income, af_and_so_grant_standard]]
+sources: [S705, S709, S711, S714]
+open: [OQ-138, OQ-151]
+implemented: engine
+tags: [cash, and, disability]
+rationale: "No existing item states AND-SO eligibility on its own; af_category (CO-953) tested it inline. The Home Care Allowance's financial test (af_hca_financially_eligible, CO-1215) needs the same test, so it is lifted here and af_category now reads it, rather than restating the conjuncts twice."
+nearest: [CO-953]
+tests:
+  - {id: CO-1203-T1, as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1986-05-01", state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, citizenship_status: citizen, receives_ssi: false, is_disabled_ssa: true, is_blind: false, receives_social_security_disability: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0, countable_resources_individual: 500, countable_resources_couple: 0}, others: {}, relationships: [], expect: true}
+  - {id: CO-1203-T2, title: "Receiving SSDI - not AND-SO", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1986-05-01", state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, citizenship_status: citizen, receives_ssi: false, is_disabled_ssa: true, is_blind: false, receives_social_security_disability: true, earned_income: 0, social_security_income: 900, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 0, other_unearned_income: 0, countable_resources_individual: 500, countable_resources_couple: 0}, others: {}, relationships: [], expect: false}
+  - {id: CO-1203-T3, title: "Income over the $248 AND-SO standard", as_of: "2026-10-01", month: "2026-10", given: {date_of_birth: "1986-05-01", state_of_residence: "CO", is_fleeing_felon_or_probation_violator: false, citizenship_status: citizen, receives_ssi: false, is_disabled_ssa: true, is_blind: false, receives_social_security_disability: false, earned_income: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, cash_assistance_income: 0, child_support_received: 400, other_unearned_income: 0, countable_resources_individual: 500, countable_resources_couple: 0}, others: {}, relationships: [], expect: false}

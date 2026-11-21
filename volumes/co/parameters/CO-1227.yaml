@@ -1,0 +1,13 @@
+id: CO-1227
+name: Burial services maximum cost limit
+identifier: af_burial_cost_limit
+kind: parameter
+type: money
+scope: global
+program: AdultFinancial
+meaning: The maximum total cost of all burial services for which a burial benefit may be paid - $2,500, excluding an exempt burial plot - per 9 CCR 2503-5 3.570.43.A.4 and F.1.
+value: 2500
+sources: [S719, S723]
+implemented: engine
+tags: [cash]
+rationale: No existing parameter states it; af_burial_eligible (CO-1231) needs it.

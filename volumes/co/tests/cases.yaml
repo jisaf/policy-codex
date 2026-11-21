@@ -621,7 +621,6 @@
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-10": 0}
-      af_oap_group: oap_a
       af_meets_resource_limit: false
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
@@ -663,7 +662,6 @@
       snap_is_work_registrant: false
     p2:
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
-      af_oap_group: oap_a
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
       cccap_household_members: [p1, p2]
@@ -1384,7 +1382,6 @@
       cw_assistance_unit_members: [p1]
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       cw_grant_amount: {"2026-11": 0}
-      af_oap_group: oap_a
       af_meets_resource_limit: false
       af_category: {"2026-11": none}
       af_oap_grant: {"2026-11": 0}
@@ -1426,7 +1423,6 @@
       snap_is_work_registrant: false
     p2:
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
-      af_oap_group: oap_a
       af_category: {"2026-11": none}
       af_oap_grant: {"2026-11": 0}
       cccap_household_members: [p1, p2]
@@ -2905,14 +2901,14 @@
       cw_time_limit_reached: false
       af_category: {"2026-10": and_cs}    # C-4/K-6 fixed: eligible - ssi_income $700 < the $994 federal benefit rate (ma_ssi_federal_benefit_rate_individual, CO-235), so she is "not receiving the full SSI benefit standard" (3.546)
       af_oap_grant: {"2026-10": 0}
-      # af_and_grant is still the full $967 standard, not standard-minus-700 as a hand reading of 3.546 might
+      # af_and_grant is still the full standard ($994 from 2026-01-01, CO-291, S706), not standard-minus-700 as a hand reading of 3.546 might
       # suggest. af_countable_income (CO-946) does not read ssi_income at all (it sums social_security_income,
       # pension_income, unemployment_income, cash_assistance_income, child_support_received, and
       # other_unearned_income - none of which carries the SSI amount) and 3.549.A.2.b's subtract-SSI-then-add-
       # back step is unmodeled (OQ-115, OQ before this fix round and still open after it). K-6 closes the
       # AND-CS *eligibility* gate (3.546's "not receiving the full SSI benefit standard") but not the AND-CS
       # *payment* computation, which OQ-115 already recorded as a gap this round does not close.
-      af_and_grant: {"2026-10": 967}
+      af_and_grant: {"2026-10": 994}
     p4:
       cw_assistance_unit_members: [p1, p2, p4]
       cw_unit_size: 3
@@ -2932,11 +2928,10 @@
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       cw_time_limit_reached: false
       cw_is_work_eligible_individual: {"2026-10": true}   # C-6: she receives no TANF and lives with no TANF child of her own
-      af_oap_group: oap_b
       af_countable_income: {"2026-10": 880}
       af_meets_resource_limit: true
-      af_category: {"2026-10": oap_b}
-      af_oap_grant: {"2026-10": 125}
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 189}    # phase 8: 1032 - 880 = 152 is below the $189 OAP payment floor (3.532.B, S703), so a State Supplementary Payment raises it to 189
       af_and_grant: {"2026-10": 0}
 - id: CO-08
   title: Two caretakers (one employed, one in job search); a 14-year-old with additional care needs; an 18-year-old in high school with earnings; an undocumented adult relative in the home; heat included in rent

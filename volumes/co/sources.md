@@ -2834,3 +2834,487 @@ Document: D-58
 91 Fed. Reg. (SSA 2026 COLA determination). https://www.ssa.gov/OACT/COLA/sga.html
 
 > (7) The monthly amount of earnings deemed to constitute substantial gainful activity (SGA) for statutorily blind people under title II of the Act will be $2,830 in 2026. The corresponding amount of earnings for non-blind people with a determined disability under titles II and XVI of the Act will be $1,690.
+
+### S700. Old Age Pension: grant standard, ISM maximum and payment floor effective January 1, 2026
+
+Document: D-80
+
+9 CCR 2503-5 3.530 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.530 OLD AGE PENSION (OAP) PROGRAM
+>
+> The Old Age Pension (OAP) program provides financial assistance and may provide
+> health care benefits for low-income Colorado residents who are sixty (60) years of age
+> or older who meet all financial and non-financial eligibility requirements.
+>
+> A. The total monthly OAP grant standard, as set by the State Board of Human
+> Services, is $1,032 effective January 1, 2026.
+>
+> B. Effective January 1, 2026, the maximum monthly In-Kind Support and
+> Maintenance (ISM) deduction amount for shelter costs is $351.
+>
+> C. Effective January 1, 2026, the payment floor standard for OAP is $189.
+
+### S701. Old Age Pension: the program's only categories are OAP and OAP-C
+
+Document: D-80
+
+9 CCR 2503-5 3.530.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.530.1 DEFINITIONS
+>
+> “OAP” is a program for a client sixty (60) years of age or older.
+>
+> “OAP-C” is a program for a client age sixty (60) or older who has been committed to the
+> Colorado Mental Health Institute or to a Regional Center by order of the district or
+> probate court.
+
+### S702. OAP grant standard adjusted to appropriations; State Supplementary Payment raises a grant to the payment floor
+
+Document: D-80
+
+9 CCR 2503-5 3.531.C-D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. The grant standard for OAP, as listed in Section 3.530.A, shall be adjusted to
+> remain within available appropriations. Appeals shall not be allowed for grant
+> standard adjustments necessary to stay within available appropriations.
+>
+> D. In addition to the regular monthly OAP grant payments, supplemental payments
+> necessary to comply with the Federal pass-along requirements may be provided.
+> These payments are supplements to regular grant payments and may be
+> provided to eligible Adult Financial recipients in two (2) forms:
+>
+> 1. Maintenance Of Effort (MOE) Lump Sum Payments – these irregular lump
+> sum payments cannot be anticipated, are not an entitlement, and do not
+> affect grant standards. Appeals shall not be allowed for MOE payment
+> adjustments. The Federal pass-along requirements are located in the
+> Federal Regulations found at 20 C.F.R. § 416.2095-2099 (October 2025),
+> which are hereby incorporated by reference. No later amendments or
+> editions are incorporated. These regulations are available at no cost at
+> https://www.ecfr.gov. These regulations are also available for public
+> inspection and copying at the Colorado Department of Human Services,
+> Division of Economic and Workforce Support, 1575 Sherman Street,
+> Denver, Colorado 80203, during regular business hours.
+>
+> 2. State Supplementary Payment – These monthly payments are included as
+> supplements to regular grant payments when an OAP, AND-CS, or HCA
+> client’s Adult Financial grant is less than the payment floor standard. The
+> supplemental payment is in addition to the grant payment and brings the
+> client’s monthly benefit amount equal to the payment floor standard
+> defined for the program(s) in which the client is enrolled.
+
+### S703. OAP grant payment: grant standard less countable income, raised to the payment floor
+
+Document: D-80
+
+9 CCR 2503-5 3.532.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.532 GRANT PAYMENT DETERMINATION
+>
+> A. OAP grant payments shall be calculated on an individual basis, with just one
+> client per case.
+>
+> B. When a client has been found eligible based upon eligibility rules as outlined in
+> Sections 3.520.6 and 3.520.7, the amount of the client's authorized OAP grant
+> payment shall be determined by deducting the client's total countable income
+> from the OAP grant standard listed in Section 3.530.A. If the grant payment is
+> less than the OAP payment floor standard outlined in section 3.530, a state
+> supplementary payment will be issued to raise the grant payment to meet the
+> payment floor standard.
+
+### S704. Payment Floor Standard (definition)
+
+Document: D-80
+
+9 CCR 2503-5 3.510. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Payment Floor Standard” means the minimum Adult Financial grant payment that an
+> eligible Old Age Pension (OAP), Aid to the Needy Disabled-Colorado Supplement
+> (AND-CS), or Home Care Allowance (HCA) client may receive. The payment floor
+> standard is updated annually for each program based on the cost-of-living adjustment.
+
+### S705. AND-SO program: age, grant standard effective April 1, 2022, appropriations adjustment
+
+Document: D-80
+
+9 CCR 2503-5 3.540.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.540 AID TO THE NEEDY DISABLED STATE ONLY (AND-SO) PROGRAM
+>
+> The Aid to the Needy Disabled State Only (AND-SO) program provides interim
+> assistance to clients age eighteen (18) through fifty-nine (59) years of age (unless
+> diagnosed with blindness, then age zero (0) through 59 years of age); who are disabled
+> or blind but have not been approved for Supplemental Security Income (SSI) or Social
+> Security Disability Insurance (SSDI). Individuals are required to meet the total disability
+> requirements identified in this section, in addition to the non-financial and financial
+> eligibility requirements in this section and sections 3.520.71 and 3.520.72. Individuals
+> who are partially disabled or have a short-term disability are not eligible.
+>
+> A. The total AND-SO grant standard is $248.00, effective April 1, 2022.
+>
+> B. The grant standard for AND-SO shall be adjusted as needed to remain within
+> available appropriations. Appeals shall not be allowed for grant standard
+> adjustments necessary to stay within available appropriations.
+
+### S706. AND-CS program: grant standard effective January 1, 2026, appropriations adjustment
+
+Document: D-80
+
+9 CCR 2503-5 3.546.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.546 AID TO THE NEEDY DISABLED-COLORADO SUPPLEMENT (AND-CS)
+> PROGRAM
+>
+> The Aid to the Needy Disabled-Colorado Supplement (AND-CS) program provides a
+> supplemental payment for clients age zero (0) to fifty-nine (59) who are receiving SSI
+> due to a disability or blindness, but are not receiving the full SSI benefit standard, as
+> defined in Section 3.510.
+>
+> A. The total AND-CS grant standard is $994, effective January 1, 2026.
+>
+> B. The grant standard for AND-CS shall be adjusted as needed to remain within
+> available appropriations. Appeals shall not be allowed for grant standard
+> adjustments necessary to stay within available appropriations.
+
+### S707. AND-CS: ISM maximum and payment floor effective January 1, 2026
+
+Document: D-80
+
+9 CCR 2503-5 3.546.D-E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. Effective January 1, 2026, the maximum ISM amount for shelter costs is $351.
+>
+> E. Effective January 1, 2026, the payment floor standard for AND-CS is $13.
+
+### S708. AND-CS grant: grant standard less countable income, raised to the payment floor
+
+Document: D-80
+
+9 CCR 2503-5 3.548.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. When a client has been found eligible the amount of the client's authorized AND-
+> CS grant payment shall be determined by deducting the client's total countable
+> income from the AND-CS grant standard.
+
+### S709. AND-SO grant: grant standard less countable income (no payment floor)
+
+Document: D-80
+
+9 CCR 2503-5 3.543.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.543 GRANT PAYMENT DETERMINATION
+>
+> A. AND-SO grant payments shall be calculated on an individual basis with just one
+> client per case.
+>
+> B. When a client has been found eligible, the amount of the client's authorized AND-
+> SO grant payment shall be determined by deducting the client's total countable
+> income from the AND-SO grant standard.
+
+### S710. AND-SO client's duty to apply for SSI (and SSDI) and appeal denials
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. The AND-SO client shall apply for Supplemental Security Income (SSI) benefits.
+> If the client has work hours during his or her lifetime, the client shall also apply for
+> Social Security Disability Insurance (SSDI). The client shall report any denial for
+> SSI benefits. The client shall appeal all negative decisions regarding their SSI
+> eligibility. Failure to appeal all negative decisions within thirty (30) calendar days
+> of such decision, unless additional time is given for good cause, shall result in
+
+### S711. Non-financial eligibility: age bands, residency, citizenship and SSN for AND only, not eligible for Colorado Works
+
+Document: D-80
+
+9 CCR 2503-5 3.520.61.A-F. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.61 NON-FINANCIAL ELIGIBILITY REQUIREMENTS
+>
+> To be eligible for Adult Financial programs, a client shall:
+>
+> A. Be eighteen (18) through fifty-nine (59) years of age for AND-SO (unless
+> diagnosed with blindness, then age zero (0) through 59 years of age); age 0
+> through 59 years of age for AND-CS; and age sixty (60) years of age or older for
+> OAP; and,
+>
+> B. Be a resident of Colorado, except that inmates of a city, municipal, county, State,
+> or Federal correctional institution, and fleeing felons, shall not be eligible for Adult
+> Financial programs; and,
+>
+> C. For AND only, be a citizen of the United States or be a qualified non-citizen or
+> legal immigrant as outlined in Sections 3.520.67; and,
+>
+> D. For AND only, have a valid SSN, as outlined in Section 3.520.65; and,
+>
+> E. For AND only, have a disability, as outlined in Section 3.541; and,
+>
+> F. Not be currently receiving or eligible for financial assistance from Colorado
+> Works, as outlined in Section 3.520.71.F; and,
+
+### S712. Home Care Allowance: purpose, minimum age five, HCBS screen first
+
+Document: D-80
+
+9 CCR 2503-5 3.570.11.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. Home Care Allowance (HCA) is a special cash payment made to a client, five (5)
+> years of age or older for the purpose of securing in-home, personal care
+> services.
+>
+> 1. HCA is a non-entitlement program;
+>
+> 2. Clients must be evaluated for Home and Community Based Services
+> through Health First Colorado (Medicaid) before the HCA program can be
+> considered.
+>
+> a. At application, if the client is functionally eligible for Home and
+> Community Based Services (HCBS) through Health First Colorado
+> (Medicaid), the client is not eligible for HCA.
+>
+> b. At reassessment on or after 05/01/2022, clients must be evaluated
+> for Home and Community Based Services through Health First
+> Colorado (Medicaid) and if functionally eligible, the clients are no
+> longer eligible for the HCA program. Clients who are determined
+> eligible for HCBS through Health First Colorado at reassessment
+> may remain on HCA for up to three (3) months while they transition
+> to HCBS if the delay in transition is not within the client’s control.
+>
+> c. HCA cannot be received while receiving Home and Community
+> Based Services; and,
+
+### S713. Home Care Allowance: payment floor standard and appropriations adjustment
+
+Document: D-80
+
+9 CCR 2503-5 3.570.11.B, D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Effective January 1, 2026, all tiers of HCA are eligible for the payment floor
+> standard. The payment floor standard for HCA is $977.
+>
+> C. The HCA grant is not taxable income to the client. The payment made to the care
+> provider using the HCA grant received by the client is income to the care provider
+> and subject to taxation under State and Federal laws.
+>
+> D. The HCA grant standards shall be adjusted to stay within available
+> appropriations. Appeals shall not be granted for these adjustments.
+
+### S714. Home Care Allowance: financial and functional eligibility; tier table
+
+Document: D-80
+
+9 CCR 2503-5 3.570.13.A-C. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. Eligibility for HCA shall be based on both financial need and the client's functional
+> needs. The client shall meet eligibility for both financial and functional
+> requirements to be approved for an HCA payment.
+>
+> B. To be financially eligible, the client shall:
+>
+> 1. Be approved for Supplemental Security Income (SSI) benefits; or,
+>
+> 2. Meet all eligibility criteria required for Aid to the Needy Disabled – State
+> Only (AND-SO) program; or,
+>
+> 3. Have been receiving both Old Age Pension (OAP) grant payments and
+> HCA as of December 31, 2013 and remain continuously eligible for both
+> benefits.
+>
+> C. To be functionally eligible, the client shall have an HCA eligible functional
+> assessment score. The functional assessment score is calculated by determining
+> the client's functional capacity score and need for paid care score, as follows:
+>
+> 1. Functional Capacity: determined by assessing the client's ability to
+> complete all activities of daily living (ADLs) and applying a score to his or
+>
+> her ability to complete the ADLs using the functional impairment scale;
+> and,
+>
+> 2. Need for Paid Care: determined by identifying the unmet need for paid
+> care and applying a score to the unmet need using the need for paid care
+> scale, as outlined in Section 3.570.14; and,
+>
+> 3. Combining the functional capacity score and the need for paid care score
+> to determine whether the client meets the minimum scores for eligibility
+> and, if eligible, the tier of grant payments to be approved, as follows:
+>
+> Tier Capacity Score Need for Paid Care
+> Score
+>
+> 1 21 or Higher 1 to 23
+>
+> 2 21 or Higher 24 to 37
+>
+> 3 21 or Higher 38 to 51
+
+### S715. Home Care Allowance: minimum functional capacity score of 21 and the functional impairment scale
+
+Document: D-80
+
+9 CCR 2503-5 3.570.14.A-B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.570.14 FUNCTIONAL ASSESSMENT SCORING
+>
+> A. The need for skilled personal care shall not be included in the scoring of the need
+> for paid care.
+>
+> B. In order to be eligible for the Home Care Allowance program, each client shall
+> score a minimum of twenty one (21) points when assessed for the ability to
+> complete the ADL using the following functional impairment scale:
+
+### S716. Home Care Allowance: children under five are not scored and not eligible
+
+Document: D-80
+
+9 CCR 2503-5 3.570.14.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. For children age five (5) through eighteen (18) years, functional capacity and
+> need for paid care shall be scored according to age appropriate criteria. Children
+> under the age of 5 shall not be scored and are not eligible to receive Home Care
+> Allowance.
+
+### S717. Home Care Allowance: both financial and functional eligibility required
+
+Document: D-80
+
+9 CCR 2503-5 3.570.13.E. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> E. Each client who meets the minimum functional assessment scoring requirements
+> for the HCA program shall be functionally eligible for an HCA grant.
+>
+> 1. The authorization by the CMA shall be forwarded to the county department
+> to determine financial eligibility.
+>
+> 2. Clients shall not be approved for HCA if financially ineligible, even if the
+> client is functionally eligible.
+>
+> 3. Clients shall not be approved for HCA if functionally ineligible, even if the
+> client is financially eligible.
+
+### S718. Home (definition for Home Care Allowance)
+
+Document: D-80
+
+9 CCR 2503-5 3.570.12. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Home” means a non-facility residence. A home cannot include a homeless shelter or
+> other temporary setting.
+
+### S719. Burial assistance: eligibility conditions and the $2,500 total cost limit
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.A. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. A burial benefit shall be available to cover all or part of reasonable and necessary
+> costs for burial services when:
+>
+> 1. A deceased client was receiving Old Age Pension (OAP), Aid to the Needy
+> Disabled (AND-SO OR AND-CS), Home Care Allowance, and/or Colorado
+> Medicaid assistance at the time of death; and,
+>
+> 2. The deceased client's estate is insufficient to pay all or part of the burial
+> services; and,
+>
+> 3. The resources of the legally responsible person(s) for the support of the
+> deceased client are insufficient, even with contributions from the client's
+> estate, to enable the legally responsible person(s) to pay all or part of
+> such expenses; and,
+>
+> 4. The total cost for all burial services does not total more than two thousand
+> five hundred dollars ($2,500), except that the cost of a burial plot shall not
+> be included in the $2,500 maximum cost limit when:
+>
+> a. The client has a prepaid burial plot valued at two thousand dollars
+> ($2,000) or less at the time of purchase; or,
+>
+> b. A burial plot was purchased by someone other than the deceased
+
+### S720. Burial assistance: benefit maximum $1,500 effective March 1, 2020
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.B. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. The total burial benefit shall not exceed the current burial benefit rate.
+>
+> 1. Effective March 1, 2020, the burial benefit shall not exceed one thousand
+> five hundred dollars ($1,500).
+>
+> 2. The reimbursement rate shall be adjusted by the State Department as
+> needed to stay within the available appropriations. There shall be no
+> appeal granted for this adjustment.
+
+### S721. Burial assistance: monies applied against the full burial costs, in order
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.D. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. The county department shall reduce the burial grant payment by applying the
+> following monies toward the full burial costs in the order listed:
+>
+> 1. First, subtract monies due from any insurance policy of the deceased
+> client to a legally responsible person or any other person who makes a
+> contribution to burial services and is named as beneficiary or a joint
+> beneficiary; then if costs remain,
+>
+> 2. Subtract the value of the deceased client's estate as of the date of death
+> that are available, including any cash or property of any kind which the
+> deceased client owned or proportionate share of resources held in joint
+> ownership at the time of death; then if costs remain,
+>
+> 3. Subtract monies from the legally responsible person(s) for the client, as
+> follows:
+>
+> a. Social Security lump sum death benefits payable to a legally
+> responsible person shall be exempt.
+>
+> b. If the legally responsible person(s) has resources below the SSI
+> resource limit of $2,000 for an individual or $3,000 for a couple any
+> resources would not be used to reduce the burial grant payment.
+> These limits are consistent with the provisions of Federal
+> Regulations found at 20 CFR 416.1205 (2019), which are herein
+> incorporated by reference. This rule does not contain any later
+> amendments or editions. These regulations are available for no
+> cost at https://www.ecfr.gov/. These regulations are also available
+> for public inspection and copying at the Colorado Department of
+>
+> Human Services, Director of the Employment and Benefits Division,
+> 1575 Sherman Street, Denver, Colorado, 80203, or at any State
+> publications library during regular business hours.
+>
+> 1) If the legally responsible person is the widow(er), the
+> individual resource limit shall apply.
+>
+> 2) The legally responsible person(s) may voluntarily contribute
+> monies toward the cost of the burial services.
+>
+> c. If the legally responsible person(s) has resources over the SSI limit,
+> the amount of resources over the limit shall be used to reduce the
+> burial grant payment; then if costs remain,
+>
+> 4. The county department shall issue a written authorization for the amount
+> of the burial grant payment, up to the burial grant payment limit, as set
+> forth in Section 3.570.43.B.1.
+
+### S722. Burial assistance: legally responsible person (definition)
+
+Document: D-80
+
+9 CCR 2503-5 3.570.42. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Legally responsible person(s)” means a person who is the decedent’s spouse or the
+> decedent’s parent if the decedent is an unemancipated minor who is under the age of
+> eighteen; and bears legal responsibility for the charges associated with the decedent’s
+> funeral, cremation, or burial expenses.
+
+### S723. Burial assistance: charges over $2,500 bar any payment
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.F.1. https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 1. If the combined charges from the provider(s) exceed two thousand five
+> hundred dollars ($2,500), no burial grant payment shall be paid.
