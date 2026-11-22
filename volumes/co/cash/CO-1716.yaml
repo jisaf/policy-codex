@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person-month
 program: ColoradoWorks
-meaning: "This person's gross earned income for the month for Colorado Works: gross wages plus the net profit from self-employment, which 9 CCR 2503-6 3.605.2.E.1.c treats as earned income (3.605.2.D), plus earned in-kind income (the value of shelter or other items received in lieu of wages, donated in-kind services, in-kind income for employment, 3.605.2.A, F, G; in_kind_earned_compensation_value, CO-4360, read as 0 when not stated) and room and board payments beyond the one-person Food Assistance allotment per boarder and the documented costs (3.605.2.E.4.e; cw_boarder_income, CO-4361). Coverage review CW-9(c), CW-10 (S3159)."
+meaning: "This person's gross earned income for the month for Colorado Works: gross wages plus the net profit from self-employment, which 9 CCR 2503-6 3.605.2.E.1.c treats as earned income (3.605.2.D), plus earned in-kind income (the value of shelter or other items received in lieu of wages, donated in-kind services, in-kind income for employment, 3.605.2.A, F, G; in_kind_earned_compensation_value, CO-4360, read as 0 when not stated) and room and board, board-only and room-only payments beyond the one-person Food Assistance allotment per boarder (none for a room only) and the documented costs (3.605.2.E.4.c-e; cw_boarder_income, CO-4361). Coverage review CW-9(c), CW-10, coverage pass 3 CW3-1 (S3159)."
 derived: [max, 0, ["-", [+, wages_gross, cw_self_employment_net_profit, [otherwise, in_kind_earned_compensation_value, 0], cw_boarder_income], [otherwise, cw_excluded_earned_income, 0]]]
 sources: [S1621, S412, S1155, S3159]
 implemented: engine

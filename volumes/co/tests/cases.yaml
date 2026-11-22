@@ -28856,6 +28856,7 @@
         2026-11: 0
       cccap_parent_fee:
         2026-11: 0
+
 - id: CO-202
   title: Non-filer parent whose child has no minimum essential coverage, at 70% FPL (coverage review 2, N-01)
   # Coverage review 2 (2026-11-22), promoted from the reviewer's probe RV2-MEC. Determination 2026-11-10; application 2026-11-02.
@@ -29762,3 +29763,362 @@
       sebt_household_child_receives_snap_or_tanf: {"2027-03": false}
       sebt_other_categorical_basis: true
       sebt_eligibility_status: {"2027-03": eligible_categorical}
+- id: CO-206
+  title: "Colorado Works coverage pass 3 CW3-1: a lodger's $400 room-only payment is earned income"
+  # Probe ZT-1 of docs/reviews/coverage3-colorado-works.md, built on CO-160: p1, 16, emancipated, lives alone with her
+  # baby p2 and lets a room to a lodger for $400 a month, lodging only, with no documented costs of the room. The payment
+  # is rent in other_unearned_income_taxable, and room_only_payments_received states it as part of that fact.
+  # 9 CCR 2503-6 3.605.2.E.4.d (S3159): a room-only payment is earned income to the extent it exceeds the documented
+  # costs of the room, here 0, so earned income is 400 and unearned income 400 - 400 = 0 (CO-4369 takes it out).
+  # Eligibility: 400 - 90 (3.606.2.A.1) = 310 < 331, the One Caretaker need standard with one child: eligible.
+  # Payment: 100% of earned income is disregarded in the first certification period, so the payment counts 0 and the
+  # grant is 488; October 12 application, 20 days, .65754 x 488 = 320.88, cents dropped = 320.
+  # Before the fix the payment could only be stated as rent: unearned 400 >= 331, ineligible_income, 0.
+  as_of: "2026-10-15"
+  case_facts:
+    cw_application_date: "2026-10-12"
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # 16, emancipated, alone with her baby, no income.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: true
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "2010-03-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 400
+        room_only_payments_received: 400
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      # Her baby.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "2026-06-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+  expect:
+    p1:
+      cw_gross_earned_income: {2026-10: 400}
+      cw_countable_unearned_income: {2026-10: 0}
+      cw_countable_income: {2026-10: 310}
+      cw_payment_countable_income: {2026-10: 0}
+      cw_eligibility_status: {2026-10: eligible}
+      cw_grant_amount: {2026-10: 320}
+    p2:
+      cw_eligibility_status: {2026-10: eligible}
+      cw_grant_amount: {2026-10: 320}
+
+- id: CO-207
+  title: "Colorado Works coverage pass 3 CW3-2: a disqualified mother whose unit is over income anyway is not barred from Adult Financial"
+  # Probe ZT-4 of docs/reviews/coverage3-colorado-works.md, built on CO-160: p1, 36, is serving a Colorado Works
+  # intentional program violation disqualification (3.604.2.M.2) and earns $1,500 a month; her baby p2 is the rest of
+  # the unit. p1 is ineligible_disqualified, removed from the unit's size, and her income is counted without disregards
+  # (3.604.2.M): 1,500 >= 117, the No Caretaker need standard for one child (3.606.1.F), so p2 is ineligible_income.
+  # 9 CCR 2503-5 3.520.71.F.2.c (S1011) ends the Adult Financial bar once the client "is found otherwise ineligible for
+  # TANF/Colorado Works benefits": the unit fails the income test, so cw_unit_otherwise_eligible is false and
+  # af_barred_by_colorado_works is false. Before the fix it was true (the status alone barred her).
+  as_of: "2026-10-15"
+  case_facts:
+    cw_application_date: "2026-10-12"
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # 16, emancipated, alone with her baby, no income.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: true
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "1990-03-01"
+      month_defaults:
+        wages_gross: 1500
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      # Her baby.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "2026-06-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+  expect:
+    p1:
+      cw_eligibility_status: {2026-10: ineligible_disqualified}
+      cw_countable_income: {2026-10: 1500}
+      cw_unit_otherwise_eligible: {2026-10: false}
+      af_barred_by_colorado_works: {2026-10: false}
+    p2:
+      cw_eligibility_status: {2026-10: ineligible_income}
+      cw_grant_amount: {2026-10: 0}
+
+- id: CO-208
+  title: "Colorado Works coverage pass 3 CW3-3: a unit that became eligible in the month after it applied is paid nothing for the application month"
+  # Probe ZT-7 of docs/reviews/coverage3-colorado-works.md, built on CO-160 (One Caretaker, one child, no income, grant
+  # standard 488): the application is dated September 25, and the county found the unit ineligible on that date but
+  # eligible from October 3, before the determination. 9 CCR 2503-6 3.609.2.A.1 (S3156): "the initial payment shall
+  # include assistance beginning with the date on which the assistance unit became eligible". September: nothing
+  # (factor 0, grant 0; before the fix the factor was 1 and September paid 488). October: October 3 to 31 is 29 days,
+  # .95342 x 488 = 465.27, cents dropped = 465 (unchanged).
+  as_of: "2026-10-15"
+  case_facts:
+    cw_application_date: "2026-09-25"
+    cw_unit_eligible_from_date: "2026-10-03"
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # 16, emancipated, alone with her baby, no income.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: true
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "2010-03-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p2:
+      # Her baby.
+      facts:
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        marital_status: single
+        is_pregnant: false
+        receives_ssi: false
+        child_welfare_payment_type: none
+        cw_is_head_of_assistance_unit: false
+        is_requesting_assistance_for_own_child: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        residence_setting_type: private_dwelling
+        dwelling_id: h1
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        is_sponsored_non_citizen: false
+        is_emancipated_minor: false
+        cw_has_failed_to_apply_for_ssn: false
+        is_participating_in_strike: false
+        cw_has_refused_child_support_assignment: false
+        cw_has_failed_child_support_cooperation: false
+        cw_requests_inclusion_in_assistance_unit: false
+        cw_is_optional_member_by_custody_or_support: false
+        education_program_type: none
+        county_approved_living_arrangement: false
+        date_of_birth: "2026-06-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        adult_financial_cash_income: 0
+        tanf_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+  expect:
+    p1:
+      cw_partial_month_payment_factor: {2026-09: 0, 2026-10: 0.95342}
+      cw_eligibility_status: {2026-09: eligible, 2026-10: eligible}
+      cw_grant_amount: {2026-09: 0, 2026-10: 465}
+    p2:
+      cw_grant_amount: {2026-09: 0, 2026-10: 465}

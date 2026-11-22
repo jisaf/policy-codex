@@ -37,9 +37,9 @@ describe("owns: the question's Owner line names the role", () => {
     expect(ownedPhrase(med)).toBe("39 open questions you own, and 3 partly settled");
   });
 
-  it("counts the Cash programs policy owner's: 24 open and 4 partly settled", () => {
+  it("counts the Cash programs policy owner's: 25 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([24, 4]); // + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2)
+    expect([cash.open.length, cash.partly.length]).toEqual([25, 4]); // + OQ-780 to OQ-783, - OQ-553 (Adult Financial coverage round); + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-860 (pass 3)
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {
@@ -71,12 +71,12 @@ describe("owns: the question's Owner line names the role", () => {
 describe("households that read an item, and households it reaches", () => {
   const id = (n: string) => engine.itemById(n)!.identifier;
 
-  it("the Colorado Works grant standard (CO-276) is read by 8 stored households and reaches 18", () => {
+  it("the Colorado Works grant standard (CO-276) is read by 10 stored households and reaches 21", () => {
     const read = householdsThatRead(engine, vol.cases, id("CO-276"));
     const reach = householdsReached(engine, vol.cases, id("CO-276"));
-    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163"]);
-    expect(reach).toHaveLength(18); // + CO-190, CO-191 (Colorado Works coverage pass 2)
-    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 8 of ${vol.cases.length} stored households; it reaches 18`);
+    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163", "CO-206", "CO-208"]); // + CO-206, CO-208 (Colorado Works coverage pass 3; CO-207 is ineligible)
+    expect(reach).toHaveLength(21); // + CO-190, CO-191 (Colorado Works coverage pass 2); + CO-206 to CO-208 (pass 3)
+    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 10 of ${vol.cases.length} stored households; it reaches 21`);
   });
 
   it("the children's Medicaid income limit (CO-191) is read by 24 and reaches 38", () => {

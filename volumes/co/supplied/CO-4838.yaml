@@ -1,0 +1,14 @@
+id: CO-4838
+name: "Date of the person's pending application for a Social Security number"
+identifier: ssn_application_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person applied to the Social Security Administration for a Social Security number, where the person has shown proof of that application and has not yet furnished a number. Not stated when the person has furnished a number or has not applied."
+precision: "Stated with ssn_furnished_or_application_shown (CO-1311) true on the proof of application. If not stated, Colorado Works does not age the proof."
+supplied_by: "The receipt or other proof of the SSN application (SSA Form SS-5 receipt), as the county establishes it."
+sources: [S872]
+tags: [verification]
+nearest: [CO-1647]
+rationale: "Coverage review CW-25 (P2, deferred in the first two passes; docs/reviews/coverage3-colorado-works.md): 9 CCR 2503-6 3.604.3.B.2.c (S872) says \"Proof of application is only valid for up to eight (8) months without good cause\"; no fact dated the application, so a proof of application satisfied the requirement indefinitely until the next recertification."

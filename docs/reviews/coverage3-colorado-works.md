@@ -110,7 +110,7 @@ Legend: **C** = carried by (derivation read against the text); **N/A** = not app
 | I.1-3 caretaker temporarily away (uniformed service, medical treatment, under 45 days with intent to return) | C: CO-3354 |
 | J tribal members not eligible under a tribal plan | OQ-772 |
 | K refugees exempt from the five-year bar; CRSP referral | C: CO-4005 (status); referral N/A |
-| L.1 fugitives and fleeing felons | C: CO-928 in CO-921 (ineligible_disqualified), CO-2351, CO-2561. **CW3-2** on the Adult Financial reader |
+| L.1 fugitives and fleeing felons | C: CO-928 in CO-921 (ineligible_disqualified), CO-2351, CO-2561; the Adult Financial reader CO-1511 bars only while cw_unit_otherwise_eligible (CO-4835) holds; CO-207 (CW3-2 fixed, daf2ea3) |
 | L.2 adult in a strike | C: CO-3808 |
 | L.3 five-year bar | C: CO-4005 |
 | M removal from size; income counted without disregards; month counts toward 60 | C: CO-2351, CO-910/CO-923 (IPV and felon: gross; status and SSN: less $90 per 3.605.1.A.6), CO-915 |
@@ -137,7 +137,7 @@ Legend: **C** = carried by (derivation read against the text); **N/A** = not app
 | A collateral contact substitution; verification continues for the life of the case | N/A: procedure (a verification received is stated) |
 | B.1 IEVS: no delay if other evidence establishes eligibility | N/A: procedure |
 | B.2.a-b lawful presence, citizenship or status | C: CO-1420, CO-1644 to CO-1646, CO-1655, CO-1656, CO-4372 |
-| B.2.c SSN or proof of application; only that client is ineligible | C: CO-1647, CO-2348; the eight-month validity is P2 deferred (CW-25, Notes) |
+| B.2.c SSN or proof of application; only that client is ineligible | C: CO-1647, CO-2348; the eight-month validity CO-1647 with CO-4838 to CO-4840 (CW-25 fixed, 4b03b46) |
 | B.2.c.1-4 SSN verification at recertification, SOLQ | C: CO-1647; SOLQ N/A |
 | B.2.d caretaker's responsibility unless a parent | C: CO-1421, CO-1648 |
 | B.2.e income of members whose income is used | C: CO-1649, CO-2588, CO-3879 to CO-3881 |
@@ -199,8 +199,8 @@ Legend: **C** = carried by (derivation read against the text); **N/A** = not app
 | E.2-3 regular income in the month; irregular averaged over 12 months | C: fact convention (CO-1706 precision) |
 | E.4.a farm income | C: self-employment facts |
 | E.4.b rental income as self-employment at 20 hours a week | C: fact convention (other_unearned_income_taxable is passive rent) |
-| E.4.c board-only above the allotment per boarder and costs | **CW3-1** (no fact; CO-4161 is room and meals) |
-| E.4.d room-only above documented costs, earned | **GAP, CW3-1 (P1)** |
+| E.4.c board-only above the allotment per boarder and costs | C: CO-4361 (board_only_payments_received CO-4832, CO-4833, CO-4834), out of unearned via CO-4369 (CW3-1 fixed, daf2ea3) |
+| E.4.d room-only above documented costs, earned | C: CO-4361 (room_only_payments_received CO-4830, CO-4831; no allotment), out of unearned via CO-4369; CO-206 (CW3-1 fixed, daf2ea3) |
 | E.4.e room and board above the allotment per boarder and costs | C: CO-4361 in CO-1716 |
 | F.1-3 donated in-kind services (regular, necessary, would be hired); going rate | C: CO-4360 (meaning states the going rate) |
 | G in-kind income for employment at value or market value | C: CO-4360 |
@@ -219,7 +219,7 @@ Legend: **C** = carried by (derivation read against the text); **N/A** = not app
 | B.4 workers' compensation less medical, legal and related expenses | C: CO-4366 in CO-4369 |
 | B.5 VA pension portion for a dependent counted to the dependent | C: fact convention (stated on the dependent) |
 | B.9 SMIB: award counted gross; lump-sum refund exempt | C: CO-4370 in CO-4369 |
-| B.10 military allotment; non-recipient's allotment for persons outside the unit above their need | C as unearned; the excess-over-need computation is **CW3-4 (P2)** |
+| B.10 military allotment; non-recipient's allotment for persons outside the unit above their need | C: CO-4369 (CO-4836, CO-4837; No Caretaker row, OQ-860) (CW3-4 fixed, 4b03b46) |
 
 ### 3.605.4 Exempt income
 | ¶ | disposition |
@@ -337,7 +337,7 @@ Legend: **C** = carried by (derivation read against the text); **N/A** = not app
 |---|---|
 | 3.609.1 notice | N/A |
 | 3.609.2.A issuance schedule | N/A |
-| A.1 initial payment from the date of application, or the later eligibility date | C: CO-4358, CO-4359; **CW3-3 (P1)** for months before the eligibility month |
+| A.1 initial payment from the date of application, or the later eligibility date | C: CO-4358 (0 before the month assistance begins), CO-4359; CO-208 (CW3-3 fixed, daf2ea3) |
 | A.1.a-d partial month table | C: CO-4355, CO-4358, CO-914 |
 | A.1.e deductions; under $10 not paid; under $1 not paid | C: CO-914, CO-4356, CO-4357, CO-1265 |
 | A.2 prospective determination | C: month evaluation |
@@ -415,3 +415,21 @@ Built in a scratch copy of HEAD 1743a1d from CO-160: p1 is the mother and p2 her
 | ZT-4 | CW3-2 | adult mother (born 1990) with a Colorado Works IPV disqualification, $1,500 wages | p1 ineligible_disqualified, p2 ineligible_income; af_barred_by_colorado_works p1 **true** | unit otherwise ineligible (F.2.c): no bar |
 | ZT-5 | control | ZT-4 without the IPV | ineligible_income; af_barred false | same |
 | ZT-7 | CW3-3 | application 2026-09-25; cw_unit_eligible_from_date 2026-10-03 | Sep: factor 1, $488; Oct: .95342, $465 | Sep: $0; Oct: $465 |
+
+## Disposition (coverage pass 3)
+
+Fix round on HEAD a795744 (branch ccr-9d19bf4c-wmnwcl), commits daf2ea3 (P1) and 4b03b46 (P2, P3). Before each change I re-read the governing text in the stored documents: 9 CCR 2503-6 3.605.2.E.4.c-e (S3159), 3.605.3.B.10, 3.604.3.B.2.c (S872), 3.605.1.A.4.a and 3.609.2.A.1 (S3156) in D-81, and 9 CCR 2503-5 3.520.71.F.2 (S1011) in D-80. Each reviewer finding reads as the reviewer quotes it.
+
+| finding | disposition |
+|---|---|
+| CW3-1 (P1) | **Fixed** (daf2ea3). New neutral part-of facts room_only_payments_received (CO-4830) with room_only_provision_costs (CO-4831), and board_only_payments_received (CO-4832) with board_only_payers_count (CO-4833) and board_only_provision_costs (CO-4834). Both payments are part of other_unearned_income_taxable, so SNAP, CCCAP and the other programs keep their answers. cw_boarder_income (CO-4361) adds E.4.d (the room payment less the room's documented costs, with no allotment) and E.4.c (the board payment less the allotment for each payer and the costs). cw_unearned_income_deductions (CO-4369) takes both payments out of unearned income, and rental expenses are capped at the rent left after them. CO-4361's precision no longer sends a lodger's payment to the rent facts. CO-4161's precision names the two new facts (a clarification; its meaning is unchanged). Stored case CO-206 (ZT-1): earned 400, countable 310, eligible, $320. The new-fact form of ZT-2 gives $510 and ineligible_income, as the rule does. |
+| CW3-2 (P1) | **Fixed** (daf2ea3). New cw_unit_otherwise_eligible (CO-4835) states CO-921's checks after the disqualification, other than the demonstrable evidence closure and the fourth-level sanction. af_barred_by_colorado_works (CO-1511) now bars on ineligible_disqualified, closed_demonstrable_evidence or sanction_closure only while that item is true (F.2.c "until the client is found otherwise ineligible"). Tests CO-1511-T7, T8 and CO-4835-T1 to T5. Stored case CO-207 (ZT-4): af_barred is false (was true). Probe ZT-8 (the same mother with no income; her child is eligible, $113) keeps the bar. |
+| CW3-3 (P1) | **Fixed** (daf2ea3). CO-4358 returns 0 for a month before the month containing the date assistance begins (the stated cw_unit_eligible_from_date, or else the application date), except at a redetermination. Stored case CO-208 (ZT-7): September $0 (was $488); October 29 days × .95342 × 488 = 465.27, so $465 (unchanged). |
+| CW3-4 (P2) | **Fixed with an open question** (4b03b46). New neutral facts military_allotment_received_for_persons_outside_home (CO-4836, part of other_unearned_income_nontaxable) and military_allotment_persons_outside_home_count (CO-4837). For a non-recipient (outside every unit, or a disqualified member), CO-4369 takes off up to the No Caretaker need standard for that many persons. OQ-860 records the row, and why B.10 is applied only to persons living outside the home: A.4.a already deducts the needs of persons in the home. Excerpt S3580. |
+| CW-25 (P2, deferred twice) | **Fixed** (4b03b46). New neutral fact ssn_application_date (CO-4838), the county's good cause finding cw_has_good_cause_for_pending_ssn_application (CO-4839) and the parameter cw_ssn_application_proof_validity_months (CO-4840, 8). In CO-1647, a dated proof of application with no SSA-verified number is pending from the month after the eighth month from the month of the application, unless good cause is found. Tests CO-1647-T5 to T7. |
+| CW-18 (P2, deferred) | **Deferred**, reason unchanged in docs/colorado-notes.md. Ranking caretakers (3.604.2.H) needs CO-900's edge rule and CO-2608 restructured. A non-parent caretaker joins only on request (C.2.b), so the hierarchy changes an answer only where such a caretaker asks to join beside a parent or a nearer relative. That restructuring does not fit this round's usage. |
+| P3-1 | **Reading recorded** (4b03b46) in CO-4660's precision. "Non-participant" means not in the minor parent's own unit. Excluding a parent aided in a separate unit would make CO-4660 read that unit's eligibility, which reads CO-4660 back through the minor parent's income (a cycle). The deemed amount is $0 in nearly every case, as the review notes. |
+| P3-2 | **Fixed** (4b03b46). CO-909 floors each parent's income less the support that parent pays at zero before summing. Test CO-909-T11: 1,890 (was 1,390). |
+| P3-3 | **Fixed** (4b03b46). OQ-101's stale parenthetical is marked as superseded by the phase-10 note. |
+
+Stored expectations: only the three new cases, CO-206 (ZT-1), CO-207 (ZT-4) and CO-208 (ZT-7). No existing household changed. Regression runs: after the CW3-1 fix, and again after the CW3-2 and CW3-3 fixes and after the P2/P3 fixes, I re-ran every stored Colorado Works case (the 35 cases with a cw_ or af_ expectation) and the probe households of all three passes (cwfix CWZ-*, ZZ-*; cw2tools ZQ-1 to ZQ-3; cw3tools ZT-1 to ZT-7, plus ZT-1b, ZT-2b and ZT-8 for the new facts) on nine Colorado Works and Adult Financial items. The only values that moved were the intended ones: ZT-4 p1 af_barred true → false, and ZT-7 September factor 1 → 0 and grant 488 → 0. UI test pins moved only by what the new cases and items explain: CO-273 is read by 9 households and reaches 35, with 12 steps; CO-276 is read by 10 and reaches 21; there are 440 figures; the Colorado Works desk counts are 105 rules, 48 figures, 35 facts and 19 questions; and OQ-860 adds one open question for the Cash programs policy owner.

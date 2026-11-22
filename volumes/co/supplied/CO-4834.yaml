@@ -1,0 +1,14 @@
+id: CO-4834
+name: "Costs of providing meals to persons paying for meals only"
+identifier: board_only_provision_costs
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The documented expenses, for the month, directly related to providing meals to the persons whose payments board_only_payments_received (CO-4832) states (their food, for example). 0 if none are documented."
+precision: "Stated with board_only_payments_received. If not stated, Colorado Works reads it as 0."
+supplied_by: "Receipts and records of the costs, as the county establishes them."
+sources: [S3159]
+tags: [income]
+nearest: [CO-4163]
+rationale: "Coverage pass 3 CW3-1: E.4.c (S3159) also deducts \"other documented expenses directly related to the provision of board\"; room_and_board_provision_costs (CO-4163) states the costs for boarders who pay for room and meals."

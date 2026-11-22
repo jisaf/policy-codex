@@ -1,0 +1,14 @@
+id: CO-4831
+name: "Costs of providing a room to lodgers"
+identifier: room_only_provision_costs
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The documented expenses, for the month, directly related to providing the room to the lodgers whose payments room_only_payments_received (CO-4830) states (the lodger's share of utilities the person pays, linens and furnishings for the room, for example). Not costs also stated in rental_property_expenses_paid (CO-4458). 0 if none are documented."
+precision: "Stated with room_only_payments_received. If not stated, Colorado Works reads it as 0."
+supplied_by: "Receipts and records of the costs, as the county establishes them."
+sources: [S3159]
+tags: [income]
+nearest: [CO-4163, CO-4458]
+rationale: "Coverage pass 3 CW3-1: E.4.d (S3159) counts the room payment \"to the extent that the room payment exceeds other documented expenses directly related to the provision of room\". room_and_board_provision_costs (CO-4163) states the costs of room and meals for boarders, and rental_property_expenses_paid (CO-4458) the owner's costs of rental property the person does not live in; neither states the costs of a room let in the person's own home."

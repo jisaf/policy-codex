@@ -1,0 +1,14 @@
+id: CO-4836
+name: "Military allotment received for persons living elsewhere"
+identifier: military_allotment_received_for_persons_outside_home
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The military allotment (a part of a uniformed service member's pay allotted to dependents) the person received in the month on behalf of persons who do not live in the person's home. 0 if none."
+precision: "Part of other_unearned_income_nontaxable (CO-030), not added to it; an allotment received for persons in the home is stated in that fact only. Stated with military_allotment_persons_outside_home_count (CO-4837). If not stated, every program reads it as 0."
+supplied_by: "Applicant statement, the allotment statement (leave and earnings statement or allotment notice)."
+sources: [S3580]
+tags: [income]
+nearest: [CO-030]
+rationale: "Coverage pass 3 CW3-4 (P2, docs/reviews/coverage3-colorado-works.md): 9 CCR 2503-6 3.605.3.B.10 (S3580) counts a military allotment received by a non-recipient spouse, parent or stepparent on behalf of persons not in the assistance unit only above the need standard for those persons. The unearned income facts state the allotment with other income and no fact said whom it is paid for, so it was counted in full."

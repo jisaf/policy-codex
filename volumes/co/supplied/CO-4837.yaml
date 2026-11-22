@@ -1,0 +1,14 @@
+id: CO-4837
+name: "Number of persons living elsewhere a military allotment is received for"
+identifier: military_allotment_persons_outside_home_count
+kind: supplied
+type: whole number
+scope: person-month
+program: All
+meaning: "The number of persons, not living in the person's home, on whose behalf the allotment that military_allotment_received_for_persons_outside_home (CO-4836) states is received."
+precision: "Stated with military_allotment_received_for_persons_outside_home; read only where that allotment is more than 0."
+supplied_by: "Applicant statement, the allotment statement."
+sources: [S3580]
+tags: [income]
+nearest: [CO-4836]
+rationale: "Coverage pass 3 CW3-4: 3.605.3.B.10 (S3580) deducts \"the need standard concerning those persons not in the budget unit\"; the persons live elsewhere and need not be persons of the case, so their number is stated with the allotment."
