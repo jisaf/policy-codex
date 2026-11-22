@@ -146,3 +146,12 @@ The probes cited in V-2, V-3 and V-9 were run on in-memory copies of CO-92 and C
 Resolved questions I re-read against the text and found consistent with the items: OQ-300 (request dates per program), OQ-301, OQ-308 (every declared status verified for children and pregnant persons, CO-1622), OQ-309, OQ-316 (extensions), OQ-318 and OQ-370 (the LEAP member excluded, 3.751.1 B), OQ-321 (SSN never delays), OQ-322 (but see V-8), OQ-323 (thirty days; migrant exception), OQ-373 (but see V-12, which concerns its CCCAP text), OQ-378 and OQ-380.
 
 New questions these findings may need: none for V-1 to V-7, whose texts answer them. V-13 needs one only if the SNAP household reviewer does not model the duplicate-child rule.
+
+
+## Disposition (final-pass P1 fix round, cash track: Colorado Works and Adult Financial findings, 2026-11-22)
+
+| Finding | Disposition |
+|---|---|
+| V-2 (P1) | fixed (c5b4590): cw_income_verification_members (CO-3881) and the ungated income conditions (CO-3879, CO-3880); cw_pending_verification_count (CO-1425) adds the unverified income of members whose income is used. CO-01 p4/p5 count 2 → 3 (p3's undocumented wages); new case CO-122 (a stepfather), rule test CO-1425-T3. |
+| V-9 (P2) | income fixed (c5b4590): af_spouse_income_pending_verification_count (CO-3884) in CO-1436. The spouse's resources: deferred P2 - 3.520.72.D requires all resources verified, but the resource element (CO-1433) carries the SSI and 24-month rules and needs the same split; next round. |
+| V-18 (P3, CW part) | left as documented limits, as the reviewer proposes. |

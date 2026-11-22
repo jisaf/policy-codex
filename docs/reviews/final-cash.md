@@ -328,3 +328,37 @@ Each open or partly resolved question in scope was read against the current text
 | FC-20 | Out of scope (non-entitlement, county-assessed): record it in the chapter notes. |
 | FC-21 | Add an earlier parameter version. |
 | FC-22, FC-23 | Governance hygiene, closed by the P1 fixes. |
+
+
+## Disposition (final-pass P1 fix round, cash track, 2026-11-22)
+
+Governing text re-read: 9 CCR 2503-6 (rule version 12030) and 9 CCR 2503-5 (rule version 12428), re-fetched from the Secretary of State on 2026-11-22, unchanged. Every P1 was confirmed against the text; none was found not to be P1. Excerpts S2600-S2631; documents D-240 to D-243 (commit 65a3eda).
+
+| Finding | Disposition |
+|---|---|
+| FC-1 (P1) | fixed (c5b4590): institution patient/inmate bar CO-3802 (ineligible_institution, out of the unit's size); strike CO-3800, CO-3808 (ineligible_strike); child support assignment and cooperation CO-3809-CO-3811 (ineligible_child_support); institution resident's thirty days CO-3803-CO-3805 in CO-3354; ninety days out of State CO-3806, CO-3807 in CO-904. Open question OQ-660 (the thirty days, O.2's last words, a barred member still in the home). |
+| FC-2 (P1) | fixed (c5b4590): neutral receipt facts CO-3812-CO-3825 read by CO-2340, CO-2341; arrears (CO-3814) left out of CO-2553 and CO-2551. |
+| FC-3 (P1) | fixed (c5b4590): CO-2343 adds 3.520.786.D-F, I, J, L, M, O (CO-3826, CO-3827), P and K's 416.1124(c)(2), (22). |
+| FC-4 (P1) | fixed (c5b4590): CO-3828, CO-3829; CO-946 and CO-2384 read the share applied and rolled (CO-3830-CO-3833); case CO-120 (490 and $542 each). Open question OQ-661 (reading of "split"). |
+| FC-5 (P1) | fixed (c5b4590): rollover for OAP and AND-CS only (CO-3833); CO-946-T2 190 → 200; case CO-121 (200, $48). |
+| FC-6 (P1) | fixed (c5b4590): CO-3834-CO-3841, read in every branch of CO-953 and CO-1203. |
+| FC-7 (P1) | fixed (c5b4590): CO-3842-CO-3849, read in CO-1203. |
+| FC-8 (P1) | fixed (c5b4590): OAP life insurance CO-3850-CO-3854; revocable burial trusts and contracts and excess burial spaces CO-3855-CO-3858; CO-3400. |
+| FC-9 (P1) | fixed (c5b4590): other-State assistance CO-3859 in CO-942; failure to apply CO-3860 in CO-953/CO-1203; refused income CO-3861 counted (CO-3831); proof of application CO-3862-CO-3870 in CO-1436 and CO-1438 (new outcomes). |
+| FC-10 (P1) | fixed (c5b4590): CO-3871-CO-3878; outcomes af_disaster_assistance_eligible, af_disaster_assistance_payment. |
+| FC-11 (P1) | fixed (c5b4590): CO-1670 owes the element whenever the status is questionable. |
+| FC-12 (P1) | fixed (c5b4590): CW CO-3879-CO-3881 in CO-1425 (CO-01 p4/p5 count 2 → 3; case CO-122); AF CO-3882-CO-3884 in CO-1436. |
+| FC-13 (P2) | fixed (c5b4590): CO-905 treats Iraqi and Afghan special immigrants as refugees (Pub. L. 111-118 sec. 8120); OQ-550 narrowed to the SAVE list. |
+| FC-14 (P2) | open question OQ-662 (state policy choice), on CO-948. |
+| FC-15 (P2) | fixed (c5b4590): CO-2353 cites OQ-102. |
+| FC-16 (P2) | fixed (c5b4590): CO-942 precision names CO-3343. |
+| FC-17 (P2) | fixed (c5b4590): CO-1713 names OAP, AND-SO, AND-CS and HCA, not Aid to the Blind. |
+| FC-18 (P2) | fixed (c5b4590): CO-1270 conjunct, no diversion in a month with a basic cash payment. |
+| FC-19 (P2) | fixed (c5b4590): CO-1504 also reads an active case at death (receives_tanf_cash). |
+| FC-20 (P2) | deferred P2, out of scope: county-assessed, non-entitlement supportive payments with no State eligibility outcome; recorded in docs/colorado-notes.md. |
+| FC-21 (P2) | fixed (c5b4590): CO-1227 dated from 2020-03-01 (entire rule effective, S2631). |
+| FC-22 (P2) | fixed (c5b4590): OQ-114 and OQ-390 remainders modeled (FC-2 to FC-4), paragraphs added. |
+| FC-23 (P2) | fixed by FC-1, FC-9, FC-10 (c5b4590); the phase-8 review is left as written. |
+| FC-24 (P2) | fixed (c5b4590): CO-1208's meaning states it is true only while both stay eligible. |
+| P3 (OQ-138 body) | deferred: a historical paragraph, no reader acts on it. |
+| P3 (CO-946 rationale) | fixed (c5b4590): the rationale names CO-2384. |
