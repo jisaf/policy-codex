@@ -225,14 +225,15 @@ describe("My proposal", () => {
 
     // A correction to the same figure changes nothing.
     (ed.querySelector('input[name="mode"][value="correct"]') as HTMLInputElement).click();
-    await tick();
+    await until(() => Boolean(ed.querySelector(".refuse")));
     expect(ed.querySelector(".refuse")!.textContent).toMatch(/changes nothing/);
     expect((ed.querySelector("button.addto") as HTMLButtonElement).disabled).toBe(true);
 
     type(ed.querySelector('input[name="value"]')!, "100");
-    await tick();
-    expect(ed.querySelector(".refuse")).toBeNull();
+    await until(() => !ed.querySelector(".refuse"));
     const effect = host.querySelector("section.effect")!;
+    // The draft reaches the effect panel after the editor's effect runs.
+    await until(() => Boolean(effect.querySelector(".reach")));
     expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 6 of ${vol.cases.length} stored households; it reaches 17.`);
     await until(() => effect.getAttribute("aria-busy") === "false");
     expect(effect.textContent).toMatch(/8 stored results in 4 households would change/);
