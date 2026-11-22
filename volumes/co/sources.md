@@ -13285,3 +13285,38 @@ Document: D-190
 > (3) Correctional or holding facilities for individuals who are prisoners, have been arrested or detained pending disposition of charges, or are held under court order as material witnesses or juveniles.
 >
 > Child-care institution means a nonprofit private child-care institution, or a public child-care institution that accommodates no more than twenty-five children, which is licensed by the State in which it is situated, or has been approved by the agency of the State responsible for licensing or approval of institutions of this type, as meeting the standards established for licensing. The term does not include detention facilities, forestry camps, training schools or any other facility operated primarily for the detention of children who are determined to be delinquent.
+
+
+
+### S2203. Colorado Works: a dependent child and a caretaker living in the home during a temporary absence
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.E, G and I (rule version effective 07/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> E. A dependent child is considered to be living in the home of a caretaker as long as the caretaker
+> exercises the responsibility for the care of the child even if the following occurs:
+> 1. The child or the caretaker is temporarily absent from the home to receive medical
+> treatment;
+> 2. The child is under the jurisdiction of the court;
+> 3. Legal custody is held by an agency that does not have physical custody of the child;
+> 4. The child is in regular attendance at a school away from home.
+> G. Assistance units may remain eligible and payment for the child shall continue for Colorado Works
+> when children are absent from the home for a period greater than forty-five (45) consecutive
+> calendar days for the following reasons:
+> 1. Child(ren) receiving medical care or education that requires him or her to live away from
+> the home; or,
+> 2. Child(ren) visiting a noncustodial parent, as specified in a parenting plan entered by the
+> court or a parenting plan signed by both parties, the visit not exceeding six (6) months
+> unless otherwise specified; or,
+> 3. Child(ren) residing in voluntary foster care placement for a period not expected to exceed
+> three (3) months. Should the foster care plan change within three months and the
+> placement become court-ordered, the child is not longer considered to be living in the
+> home as of the time the foster care plan is changed.
+> I. A parent or non-parent caretaker is considered to be living in the home and may continue as a
+> member of the assistance unit/ family needs unit if the individual is temporarily away from home if
+> one of the following occurs:
+> 1. Is on active duty in the uniformed service of the United States.
+> 2. Is temporarily absent from the home to receive medical treatment.
+> 3. Is temporarily absent from the home for less than forty-five (45) calendar days and has
+> established an intent to return.

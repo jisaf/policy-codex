@@ -64,6 +64,7 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         residence_setting_provides_majority_of_meals: true
         residence_setting_is_primarily_for_mental_diseases: false
@@ -287,6 +288,7 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
         is_member_of_federally_recognized_tribe: false
@@ -499,6 +501,7 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
@@ -695,6 +698,7 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
@@ -901,6 +905,7 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
@@ -1221,7 +1226,7 @@
       af_meets_resource_limit: false
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
-      cccap_household_members: [p1, p2]
+      cccap_household_members: [p1]  # SW-7 (was [p1, p2]): CCCAP's household is the persons in the home (8 CCR 1403-1 3.103, S481); p1 has lived in the nursing facility since 2026-10-01 (dwelling_id), so the spouse edge to p2 at home is not crossed, and she is her own household
       cccap_eligibility_status: {"2026-10": ineligible_child}
       leap_household_members: [p1]    # OQ-358 (phase-10 sweep): p1 lives in a nursing facility (leap_living_arrangement institutional_group_care), not at the dwelling, so the spouse edge is not crossed (3.751.1 "Household", 3.751.2.D.1 "living together") and she is her own LEAP household
       leap_household_income: {"2026-10": 2030}    # her own Social Security 1,420 and pension 610
@@ -1409,7 +1414,7 @@
       cw_eligibility_status: {"2026-10": ineligible_no_dependent_child}
       af_category: {"2026-10": none}
       af_oap_grant: {"2026-10": 0}
-      cccap_household_members: [p1, p2]
+      cccap_household_members: [p2]  # SW-7 (was [p1, p2]): his wife p1 lives in the nursing facility, not in the home (3.103, S481), and p3 is an adult, not a household child, so p2 is his own household; eligibility unchanged (no eligible child)
       cccap_eligibility_status: {"2026-10": ineligible_child}
       leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       leap_is_eligible: {"2026-10": false}
@@ -2114,6 +2119,7 @@
   persons:
     p1:
       facts:
+        dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         residence_setting_provides_majority_of_meals: true
         residence_setting_is_primarily_for_mental_diseases: false
@@ -2336,6 +2342,7 @@
         pension_income: 610
     p2:
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
         is_member_of_federally_recognized_tribe: false
@@ -2547,6 +2554,7 @@
         social_security_income: 1180
     p3:
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
@@ -2742,6 +2750,7 @@
         hours_worked: 138
     p4:
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
@@ -2946,6 +2955,7 @@
         "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility since 2026-10-01
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
         ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
@@ -3230,7 +3240,7 @@
       af_meets_resource_limit: false
       af_category: {"2026-11": none}
       af_oap_grant: {"2026-11": 0}
-      cccap_household_members: [p1, p2]
+      cccap_household_members: [p1]  # SW-7 (was [p1, p2]): CCCAP's household is the persons in the home (8 CCR 1403-1 3.103, S481); p1 has lived in the nursing facility since 2026-10-01 (dwelling_id), so the spouse edge to p2 at home is not crossed, and she is her own household
       cccap_eligibility_status: {"2026-11": ineligible_child}
       leap_household_members: [p1]    # OQ-358 (phase-10 sweep): p1 lives in a nursing facility (leap_living_arrangement institutional_group_care), not at the dwelling, so the spouse edge is not crossed (3.751.1 "Household", 3.751.2.D.1 "living together") and she is her own LEAP household
       leap_household_income: {"2026-11": 2030}    # her own Social Security 1,420 and pension 610
@@ -3418,7 +3428,7 @@
       cw_eligibility_status: {"2026-11": ineligible_no_dependent_child}
       af_category: {"2026-11": none}
       af_oap_grant: {"2026-11": 0}
-      cccap_household_members: [p1, p2]
+      cccap_household_members: [p2]  # SW-7 (was [p1, p2]): his wife p1 lives in the nursing facility, not in the home (3.103, S481), and p3 is an adult, not a household child, so p2 is his own household; eligibility unchanged (no eligible child)
       cccap_eligibility_status: {"2026-11": ineligible_child}
       leap_household_members: [p2, p4, p5]    # OQ-358: p1 is outside (nursing facility); p3 is excluded for status (3.753.17), her income counted
       # p2 is not himself institutionalized (unlike p1, excluded from vulnerability under 3.752.25.B.1, C-14).
@@ -4299,7 +4309,7 @@
   # Adapted from the phase-3 review's designed case CO-06 (docs/reviews/magi-chp-phase-3.md S3.4).
   # p4 is claimed by his non-custodial father p5. Until the open-question sweep (2026-11-21) the
   # 435.603(f)(2)(iii) exception was not implemented and p4 had p5's filer household. OQ-42 is now
-  # resolved: p4 states his custodial parent (p1) and his home (lives_with p1, p2, p3, p4), so
+  # resolved: p4 states his custodial parent (p1) and his home (same-word SW-7: dwelling_id h1 for p1 to p4, h2 for p5), so
   # ma_dependent_is_routed_to_non_filer_rules is true and p4 has the non-filer household of the home
   # he lives in, without p5 (see the p4 notes below).
   as_of: "2026-10-01"
@@ -4312,7 +4322,7 @@
     - [parent, p1, p4]
     - [stepparent, p2, p3]    # same-word audit SW-1: a step-parent is stated as stepparent, not parent
     - [stepparent, p2, p4]
-    - [parent, p5, p4]        # non-custodial father; p4's lives_with states that he does not live with p4
+    - [parent, p5, p4]        # non-custodial father; he lives elsewhere (dwelling_id h2), so the edge is not living together
     - [tax_filer, p1, p3]
     - [tax_filer, p5, p4]
   persons:
@@ -4320,6 +4330,7 @@
       # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
+        dwelling_id: h1  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
@@ -4374,6 +4385,7 @@
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
       facts:
+        dwelling_id: h1  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
@@ -4419,6 +4431,7 @@
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
+        dwelling_id: h1  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
@@ -4469,6 +4482,7 @@
       # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5; lives with his
       # mother p1 (custodial parent), stepfather p2 and half-sibling p3 (OQ-42).
       facts:
+        dwelling_id: h1  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -4478,7 +4492,6 @@
         state_of_residence: CO
         is_tax_filer: false
         ma_custodial_parent: p1
-        lives_with: [p1, p2, p3, p4]
         is_required_to_file_tax_return: false
         is_pregnant: false
         expected_number_of_children: 0
@@ -4518,6 +4531,7 @@
       # Ramon, 36, citizen, non-custodial father of p4, lives elsewhere, earns $5,000/month; files
       # taxes claiming p4. Not otherwise related to p1/p2/p3.
       facts:
+        dwelling_id: h2  # SW-7: the home; p5, the non-custodial father, lives elsewhere (h2)
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -4597,12 +4611,12 @@
   #   5,000, ratio 2.7727, category none, ineligible_income, CHP+ ineligible_income.)
   # p5: filer + tax dependent p4 = [p4,p5], size 2 (same group p4 computes, since neither has any
   #   other filer/spouse edge), income 5,000 (p4 excluded, his own parent p5 is in the household),
-  #   ratio 2.7727. Parent/caretaker demographics: the stated parent edge to p4 is read as living
-  #   together (this volume's convention, no lives_with fact exists - see CO-547's own note that this
-  #   route is not one the statute licenses for a non-custodial parent), but 2.7727 > 0.60 and the
-  #   disregard is not available (his highest standard is the Adults' 1.33) -> parent_caretaker false.
+  #   ratio 2.7727. Parent/caretaker demographics (same-word SW-7): p5 does not live with p4 (dwelling_id
+  #   h2), so he is not p4's parent or caretaker relative "with whom the dependent child is living"
+  #   (ma_caretaker_relative_of is []) -> parent_caretaker false, as before (it was false on income:
+  #   2.7727 > 0.60, no disregard). No expectation moves.
   #   Adult: demographics met (MEC on p4 stated true) but 2.7727 - 0.05 = 2.7227 > 1.33 -> false.
-  #   Category none, demographics true (parent/caretaker) -> status ineligible_income. CHP+: not a
+  #   Category none, demographics true (the Adults group's) -> status ineligible_income. CHP+: not a
   #   child, not pregnant -> ineligible.
   #
   # November 2026 (p1's earnings rise to $5,000; household income $5,600).
@@ -5019,6 +5033,7 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        dwelling_id: nursing_facility  # SW-7: the home; p1 lives in the nursing facility
         residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care)
         residence_setting_provides_majority_of_meals: true
         has_qualifying_military_service: false
@@ -5091,6 +5106,7 @@
       # into her rent or mortgage, tax and insurance (634) and the heating and cooling allowance her
       # home reaches (616, snap_incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         has_qualifying_military_service: false
         date_of_birth: "1957-01-09"
@@ -5149,6 +5165,7 @@
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
       facts:
+        dwelling_id: h1  # SW-7: the home; p1 lives in the nursing facility
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false

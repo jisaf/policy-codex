@@ -1,0 +1,15 @@
+id: CO-3351
+name: Temporary absence reason
+identifier: temporary_absence_reason
+kind: supplied
+type: one of
+options: [none, medical_treatment, school_away_from_home, court_jurisdiction_or_agency_custody, visiting_noncustodial_parent_under_parenting_plan, voluntary_foster_care, active_military_duty, other_with_intent_to_return, other]
+scope: person
+program: All
+meaning: "Why the person is away from the home they usually live in (dwelling_id) on the determination date, or none when the person is there: medical_treatment; school_away_from_home (regular attendance at a school, or medical care or education, that requires living away); court_jurisdiction_or_agency_custody (the child is under a court's jurisdiction, or legal custody is held by an agency that does not have physical custody); visiting_noncustodial_parent_under_parenting_plan (a visit under a parenting plan entered by a court or signed by both parties); voluntary_foster_care (a voluntary foster care placement); active_military_duty (active duty in the uniformed services of the United States); other_with_intent_to_return (any other reason, with an established intent to return); other."
+precision: "If not stated, Colorado Works reads this as none (the person is in the home). temporary_absence_start_date (CO-3352) states when the absence began."
+supplied_by: "Application (household members temporarily away)."
+sources: [S2203]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-7 and dual-entry audit 3.6: living together was read from relationship edges by every household, caretaker and custody item, while Medicaid read a separate lives_with list stated on one person; the two disagreed in CO-04, and lives_with could be stated on p1 and not on p2. Each person states the home they live in once; lives_with is derived, symmetric, and every item that asks whether persons live together reads it (convention rule 17). Same-word SW-7: temporary absence was modeled only for CCCAP; the neutral reason lets each program apply its own absence rule."

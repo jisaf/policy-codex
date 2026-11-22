@@ -10,6 +10,7 @@ derived: ["=", ltc_services_received, hcbs_waiver]
 sources: [S712]
 implemented: engine
 tags: [cash, hcbs]
+nearest: [CO-885]
 rationale: "Dual-entry audit 3.20 and SW-24: derived from the one enrollment record, ltc_services_received (CO-3339)."
 tests:
   - {id: CO-1207-T1, as_of: "2026-10-01", given: {ltc_services_received: hcbs_waiver}, expect: true}
