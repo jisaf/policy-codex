@@ -19,7 +19,7 @@ Owner: SNAP policy owner
 Assumption: The narrower list of non-citizens who may receive SNAP applies from the day the 2025 Act was enacted, to every determination made after that day, for new and ongoing households alike.
 Blocked on: FNS memorandum "SNAP Implementation of the One Big Beautiful Bill Act of 2025 - Alien SNAP Eligibility - Revised" and its Question and Answer #1 (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it)
 
-Checked 2026-11-22: Pub. L. 119-21 sec. 10108 (D-5) has no effective-date or transition clause; 10 CCR 2506-1 4.305 (D-82, effective 2026-10-01) still lists the pre-Act categories, so it has not adopted the change; FNS's implementation page on fns.usda.gov links to the memorandum on www.usda.gov, which refused it again. Only that memorandum states the date FNS applies the change to current participants. Also checked 2026-11-22: 8 U.S.C. 1611(a) (S1911) and 1641(b)(8) with its 2024 amendment (D-285, law.cornell.edu, S3074): a Compact of Free Association resident is a qualified alien for every Federal public benefit, so 1611(a) does not conflict with the amended 2015(f)(2)(D).
+Checked 2026-11-22: Pub. L. 119-21 sec. 10108 (D-5) has no effective-date or transition clause; 10 CCR 2506-1 4.305 (D-82, effective 2026-10-01) still lists the pre-Act categories, so it has not adopted the change; FNS's implementation page on fns.usda.gov links to the memorandum on www.usda.gov, which refused it again. Only that memorandum states the date FNS applies the change to current participants. Also checked 2026-11-22: 8 U.S.C. 1611(a) (S1911) and 1641(b)(8) with its 2024 amendment (D-285, law.cornell.edu, S3074): a Compact of Free Association resident is a qualified alien for every Federal public benefit, so 1611(a) does not conflict with the amended 2015(f)(2)(D). Re-checked 2026-11-22 (coverage pass 3 N3-P3-1): www.fns.usda.gov/snap/obbb-alien-eligibility now answers 301 and redirects to www.fna.usda.gov/working-families-tax-cuts/snap/alien-eligibility, which is not an allowed host and, per the reviewer, carries only the memorandum's title and a link to www.usda.gov; the classification stands.
 
 ### OQ-2. Resolved: the elderly and the blind-or-disabled waiting-period exceptions are separate; CO-306 now carries the blind-or-disabled one
 
@@ -1916,7 +1916,7 @@ Owner: SNAP policy owner
 Assumption: The 2025 Act's SNAP changes apply from the day of enactment to every determination made after it, new and ongoing households alike.
 Blocked on: FNS's implementation memoranda for Pub. L. 119-21 secs. 10102, 10103 and 10108 (www.usda.gov refused, HTTP 403 on 2026-11-22; fns.usda.gov links to it) and CDHS's Food and Energy Assistance agency letter setting Colorado's implementation dates (cdhs.colorado.gov refused)
 
-Checked 2026-11-22: Pub. L. 119-21 (D-5) has no effective-date or transition clause, 7 CFR 272.1(g) leaves the schedule to the amendment, and 10 CCR 2506-1 (D-82, effective 2026-10-01) has not adopted the changes.
+Checked 2026-11-22: Pub. L. 119-21 (D-5) has no effective-date or transition clause, 7 CFR 272.1(g) leaves the schedule to the amendment, and 10 CCR 2506-1 (D-82, effective 2026-10-01) has not adopted the changes. Re-checked 2026-11-22 (coverage pass 3 N3-P3-1): www.fns.usda.gov/snap/obbb-alien-eligibility now answers 301 and redirects to www.fna.usda.gov/working-families-tax-cuts/snap/alien-eligibility, which is not an allowed host and, per the reviewer, carries only the memorandum's title and a link to www.usda.gov; the classification stands.
 
 ### OQ-534. Resolved: SNAP strikers are modeled (7 CFR 273.1(e))
 
@@ -2663,3 +2663,13 @@ Owner: Medicaid policy owner
 Assumption: Rents count net of 416.1121(d)'s ordinary and necessary expenses in the SSI method, an exempt home included (J.1's three deductions are among them, and 42 CFR 435.601(b) does not let the state use a stricter methodology than SSI's); the 300% test counts gross rents.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.J.1 and § 8.100.7.A.1 (D-65, version effective 11/14/2026); 20 CFR 416.1121(d) (D-53). J.1 speaks only of an exempt home and does not say whether its list is exclusive; no Colorado text says how other rents are counted.
+
+### OQ-875. SNAP: a foster child 18 or older who applies apart from the foster household - Colorado's exception or the federal bar
+
+Body: 10 CCR 2506-1 4.304.3.B.3 (S3475) says the foster child "may not apply for benefits separately from the foster family unless they are over eighteen (18) and no longer under the parental control of the foster parents". 7 CFR 273.1(c)(4) (S3651) says foster care individuals "cannot participate in the Program independently of the household providing the foster care services", with no age exception. snap_foster_child_applies_separately (CO-4689) reads Colorado's exception and takes 18 or older as standing for "over eighteen and no longer under the parental control of the foster parents" (the age at which parental control ends for SNAP, snap_parental_control_age). A foster youth of 18 to 20 still placed in a foster home by a governmental program who applies separately is eligible on Colorado's text and barred on the federal one.
+
+Class: needs Legal
+Owner: Legal, SNAP policy owner
+Assumption: Colorado's exception, with age 18 or older standing for "over eighteen and no longer under parental control" (CO-4689).
+
+Checked 2026-11-22: 10 CCR 2506-1 4.304.3.B.3 (D-82, version effective 2026-10-01, re-downloaded 2026-11-22); 7 CFR 273.1(c)(4) (D-7, eCFR as of 2026-11-18). Neither text reconciles the two; no FNS waiver or Colorado state plan provision for 273.1(c)(4) is on an allowed host.

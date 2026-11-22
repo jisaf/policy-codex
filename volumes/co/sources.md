@@ -22109,3 +22109,45 @@ Document: D-65
 > ii) Having a disability onset date determined on or prior to the date of a medical service; and
 >
 > c. Meet the financial requirements as described at 8.100.5.E.
+
+### S3650. Colorado SNAP: government payments received for a specific purpose are excluded as a resource
+
+Document: D-82
+
+10 CCR 2506-1 4.410.J (intro), J.2-4, J.6-7, J.9, J.11, J.13-16 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> J. Government Payments
+>
+> The following government payments are received for a specific purpose or services and shall be excluded as a resource for SNAP eligibility.
+>
+> 2. Payments received from the youth incentive entitlement pilot projects, the youth community conservation and improvement projects, and the youth employment and training programs under Youth Employment and Demonstration Act of 1977 (P.L. No. 95- 93) and extended under Title IV of the Comprehensive Employment and Training Amendments of 1978 (P.L. No. 95-524). (Note: Does not include other payments under the Comprehensive Employment and Training Act (CETA) or payments under the Youth Adults Conservation Corps.)
+>
+> 3. Any governmental payments which are designated for the restoration of a home damaged in a disaster, if the household is subject to a legal sanction if the funds are not used as intended: for example, payments made by the Department of Housing and Urban Development through the individual and family grant program or disaster loans or grants made by the Small Business Administration, Section 312(d) of Disaster Relief Act of 1974.
+>
+> The Disaster Relief Act of 1974. P.L. No 93-288 as amended by P.L. No. 100-707, Section 105(i). the Disaster Relief and Emergency Assistance Amendments of 1988. Payments precipitated by an emergency or major disaster as defined in this Act, as amended, are not counted as income or resources for SNAP purposes. This exclusion applies to Federal assistance provided to persons directly affected and to comparable disaster assistance provided by states, local governments, and disaster assistance organizations.
+>
+> 4. Reimbursements from the Uniform Relocation Assistance and Real Property Acquisition Policy Act of 1970 (P.L. No. 91-646. section 216).
+>
+> 6. Payments or allowances made under any federal laws for the purpose of energy assistance, other than Part A of Title IV of the Social Security Act (42 U.S.C. 601 through 42 U.S.C. 619), or a one-time payment or allowance made under federal or state law for the cost of weatherization or emergency repair or replacement of an unsafe or inoperative furnace or other heating or cooling device is exempt as a resource.
+>
+> 7. HUD rental refund payments made pursuant to settlement of a series of class action lawsuits such as Underwood v. Harris, originally brought in the District of Columbia Federal District Court, are excluded in the month received and the following month.
+>
+> 9. Payments to U.S. citizens of Japanese ancestry and resident Japanese non-citizens for up to twenty thousand dollars ($20,000) each and payments to certain eligible Aleuts of up to twelve thousand dollars ($12,000) each. P.L. No. 100-383. Section 105(f)(2) Civil Liberties Act of 1988.
+>
+> 11. Payments made from the Agent Orange Settlement Fund (P.L. No. 101- 201). All payments from the Agent Orange Settlement fund or any other fund established pursuant to the settlement in the Agent Orange product liability litigation are excluded from income retroactive to January 1, 1989.
+>
+> 13. Any money received from the Radiation Exposure Compensation Trust Fund, pursuant to P.L. No. 101-426 as amended by P.L. No. 101-510.
+>
+> 14. P.L. No. 103-286, Section 1(a) provides, in part, that payments made to individuals because of their status as victims of Nazi persecution shall be disregarded in determining eligibility for, and the amount of, benefits or services to be provided under any federal or federally assisted program which provides benefits or services based, in whole or in part, on need.
+>
+> 15. ... Based on this language, payments received under this program must be excluded from income for SNAP purposes.
+>
+> 16. P.L. No. 104-204 requires that allowances paid under this law to children of Vietnam veterans who were born with spina bifida be excluded from resources.
+
+### S3651. Federal: foster care individuals cannot participate independently of the household providing foster care
+
+Document: D-7
+
+7 CFR 273.1(c)(4) (eCFR as of 2026-11-18, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.1
+
+> (4) *Foster care individuals.* Individuals placed in the home of relatives or other individuals or families by a Federal, State, or local governmental foster care program must be considered to be boarders. They cannot participate in the Program independently of the household providing the foster care services. Such foster care individuals may participate, along with a spouse or children living with them, as members of the household providing the foster care services, only at the request of the household providing the foster care.
