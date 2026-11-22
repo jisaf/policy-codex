@@ -207,6 +207,7 @@ outcomes:
       ineligible_medicaid_eligible: "Eligible for Medicaid, which carries the code."
       ineligible_income: "Not eligible: income."
       ineligible_coverage: "Not eligible: has other coverage."
+      ineligible_before_coverage_period: "Not eligible: a month before the person's birth, or before the month of application (CHP+ is not retroactive)."
       ineligible_residency: "Not eligible: residency."
       ineligible_status: "Not eligible: citizenship or immigration status."
       ineligible_institution: "Not eligible: lives in an institution."

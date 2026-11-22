@@ -1,0 +1,15 @@
+id: CO-4553
+name: Federal sponsor deeming exception period
+identifier: federal_sponsor_deeming_exception_months
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The number of months for which 8 U.S.C. 1631 relaxes the attribution of a sponsor's income after an agency's indigence determination (1631(e)(1): \"ending 12 months after such date\") or for a battered spouse or child (1631(f)(1)(A): \"during a 12 month period\"): twelve."
+versions:
+  - from: "1997-12-19"
+    value: 12
+    source: S3354
+sources: [S3354, S3355]
+tags: [immigration]
+rationale: "Coverage review F-03 (2026-11-22): Medicaid's sponsor deeming (CO-4551, CO-4552) applies the federal periods directly, since 10 CCR 2505-10 § 8.100.3.K.1 does not restate them; SNAP's snap_battered_non_citizen_exemption_months (CO-2720) is SNAP's own restatement in 10 CCR 2506-1, so a federal parameter serves the program that reads the statute itself (convention 2: federal_ marks a federal figure)."

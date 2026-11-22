@@ -1253,9 +1253,9 @@
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
-      ma_magi_household_members: [p1, p2]
-      ma_magi_household_size: 2
-      ma_magi_household_income: {"2026-10": 3210}
+      ma_magi_household_members: [p1]  # coverage round F-02: p2 lives in h1, not with p1 (nursing facility); E.1.a.ii takes the spouse 'if living in the home' (was [p1, p2])
+      ma_magi_household_size: 1  # coverage round F-02 (was 2)
+      ma_magi_household_income: {"2026-10": 2030}  # coverage round F-02: p1's own 2,030 (was 3,210 with p2's 1,180)
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-10": false}
       ma_magi_category: {"2026-10": none}
@@ -1392,7 +1392,7 @@
     p2:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
-      ma_family_planning_status: {"2026-10": limited_family_planning}
+      ma_family_planning_status: {"2026-10": ineligible_income}  # coverage round F-02: family planning household 1 + 2 - 1 = 2; 1,180 / (21,640 / 12 = 1,803.33) = 65.4%, not over 133% (was limited_family_planning at 3,210 / 2,276.67 = 141.0%)
       ma_oap_health_care_status: {"2026-10": not_oap_recipient}
       ma_protected_group_category: {"2026-10": none}
       # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
@@ -1420,9 +1420,9 @@
       ma_ssi_related_category: {"2026-10": none}
       ma_msp_category: {"2026-10": none}
       ma_buy_in_category: {"2026-10": none}
-      ma_magi_household_members: [p1, p2]
-      ma_magi_household_size: 2
-      ma_magi_household_income: {"2026-10": 3210}
+      ma_magi_household_members: [p2]  # coverage round F-02: p1 does not live in p2's home (was [p1, p2])
+      ma_magi_household_size: 1  # coverage round F-02 (was 2)
+      ma_magi_household_income: {"2026-10": 1180}  # coverage round F-02: p2's own 1,180 (was 3,210)
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-10": false}
       ma_magi_category: {"2026-10": none}
@@ -3284,9 +3284,9 @@
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
-      ma_magi_household_members: [p1, p2]
-      ma_magi_household_size: 2
-      ma_magi_household_income: {"2026-11": 3210}
+      ma_magi_household_members: [p1]  # coverage round F-02: p2 lives in h1, not with p1 (nursing facility); E.1.a.ii takes the spouse 'if living in the home' (was [p1, p2])
+      ma_magi_household_size: 1  # coverage round F-02 (was 2)
+      ma_magi_household_income: {"2026-11": 2030}  # coverage round F-02: p1's own 2,030 (was 3,210 with p2's 1,180)
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-11": false}
       ma_magi_category: {"2026-11": none}
@@ -3424,7 +3424,7 @@
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
-      ma_family_planning_status: {"2026-11": limited_family_planning}
+      ma_family_planning_status: {"2026-11": ineligible_income}  # coverage round F-02: family planning household 1 + 2 - 1 = 2; 1,180 / (21,640 / 12 = 1,803.33) = 65.4%, not over 133% (was limited_family_planning at 3,210 / 2,276.67 = 141.0%)
       ma_oap_health_care_status: {"2026-11": not_oap_recipient}
       ma_protected_group_category: {"2026-11": none}
       # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
@@ -3456,9 +3456,9 @@
       ma_ssi_related_category: {"2026-11": none}
       ma_msp_category: {"2026-11": none}
       ma_buy_in_category: {"2026-11": none}
-      ma_magi_household_members: [p1, p2]
-      ma_magi_household_size: 2
-      ma_magi_household_income: {"2026-11": 3210}
+      ma_magi_household_members: [p2]  # coverage round F-02: p1 does not live in p2's home (was [p1, p2])
+      ma_magi_household_size: 1  # coverage round F-02 (was 2)
+      ma_magi_household_income: {"2026-11": 1180}  # coverage round F-02: p2's own 1,180 (was 3,210)
       ma_meets_citizenship_requirement: true
       ma_is_emergency_medicaid_only: {"2026-11": false}
       ma_magi_category: {"2026-11": none}

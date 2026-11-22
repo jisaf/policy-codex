@@ -1,0 +1,21 @@
+id: CO-4565
+name: "CHP+: month is before the coverage period"
+identifier: chp_month_is_before_coverage_period
+kind: derived
+type: yes/no
+scope: person-month
+program: CHP+
+meaning: "Whether the month is one CHP+ cannot cover: a month before the month of the person's birth, or a month before the month of application (ma_application_date) - CHP+ eligibility is effective on the later of the first day of the month of application and the first day of the month the person becomes eligible (10 CCR 2505-3 § 430.1), and the program has no retroactive coverage - unless the person is a newborn of a CHP+ mother, whose guaranteed year runs from birth without an application (§ 430.5)."
+precision: "Where CBMS records a CHP+ eligibility period (chp_eligibility_period_start_month, CO-2402) that began before the month of the application being determined (a renewal or a later application), the period's first month is the earliest month covered, so a recorded continuous eligibility or prenatal span is not cut back. False, not unknown, where the dates it needs are not stated, as ma_month_is_before_coverage_period (CO-4101) reads them: with no application date the outcome answers whether the person meets the criteria in the month, as a screening does. Unlike Medicaid (§ 8.100.3.E), a request for retroactive coverage does not open earlier months."
+derived: [any, [otherwise, ["<", [month], [month_of, date_of_birth]], false], [otherwise, [all, ["<", [month], [case, [[otherwise, ["<", chp_eligibility_period_start_month, [month_of, ma_application_date]], false], chp_eligibility_period_start_month], [else, [month_of, ma_application_date]]]], [not, [otherwise, chp_is_guaranteed_newborn, false]]], false]]
+sources: [S1714, S1716]
+implemented: engine
+tags: [chp]
+rationale: "Coverage review F-09 (2026-11-22): no CHP+ item gated the months before the month of application, so chp_eligibility_status (CO-707) reported a child eligible for months before the application, which § 430.1 does not cover; Medicaid's gate (CO-4101) reads Medicaid's retroactive request, which CHP+ does not have. No existing item states the CHP+ effective date."
+tests:
+  - {id: CO-4565-T1, month: "2026-08", as_of: "2026-11-10", title: "Coverage review F-09 (RV-CHPB): August, application November 2", given: {date_of_birth: "2018-02-01", ma_application_date: "2026-11-02"}, expect: true}
+  - {id: CO-4565-T2, month: "2026-11", as_of: "2026-11-10", title: "The month of application", given: {date_of_birth: "2018-02-01", ma_application_date: "2026-11-02"}, expect: false}
+  - {id: CO-4565-T3, month: "2026-09", as_of: "2026-11-10", title: "A recorded CHP+ period from March: September is covered though the application being determined is November's", given: {date_of_birth: "2018-02-01", ma_application_date: "2026-11-02", chp_eligibility_period_start_month: "2026-03"}, expect: false}
+  - {id: CO-4565-T4, month: "2026-08", as_of: "2026-11-10", title: "A newborn of a CHP+ mother, born in August, application in November: guaranteed from birth", given: {date_of_birth: "2026-08-10", ma_application_date: "2026-11-02", chp_mother_was_enrolled_at_birth: true}, expect: false}
+  - {id: CO-4565-T5, month: "2026-07", as_of: "2026-11-10", title: "The month before birth", given: {date_of_birth: "2026-08-10", chp_mother_was_enrolled_at_birth: true}, expect: true}
+  - {id: CO-4565-T6, month: "2026-08", as_of: "2026-11-10", title: "No application date: screening, not before the period", given: {date_of_birth: "2018-02-01"}, expect: false}

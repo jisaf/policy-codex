@@ -1,0 +1,13 @@
+id: CO-4557
+name: Has self-employment, seasonal or commission earnings
+identifier: has_self_employment_seasonal_or_commission_earnings
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether some of the person's earned income is from self-employment, from seasonal employment, or from commission-based employment, so that the monthly amount varies over the year."
+precision: "A statement of the kind of work, not of any program's treatment of it. Medical Assistance annualizes such a person's income when the household is ineligible on monthly income (ma_annualized_household_income, CO-4559, § 8.100.4.C.4.a). Read as false where not stated."
+supplied_by: The application's employment and self-employment questions.
+sources: [S3356]
+tags: [income]
+rationale: "Coverage review F-04 (2026-11-22): § 8.100.4.C.4.a turns on whether the household has earned income from self-employment, seasonal employment or commission-based employment; self-employment is visible in the monthly facts, but seasonal and commission wages are within wages_gross (CO-023), so no fact said which earners the rule reaches."

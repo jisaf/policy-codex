@@ -1,0 +1,16 @@
+id: CO-4562
+name: Exchange annual open enrollment start month
+identifier: federal_exchange_open_enrollment_start_month
+kind: parameter
+type: whole number
+scope: global
+program: All
+meaning: "The calendar month number (1 to 12) in which the Exchange's annual open enrollment period for a benefit year begins, in the calendar year before the benefit year: November (11). The Federal poverty line for the premium tax credit of a year is the guideline in effect on the first day of that period (26 CFR 1.36B-1(h))."
+precision: "45 CFR 155.410(e)(4)(i) starts open enrollment on November 1 for benefit years through 2026, and (e)(5)(i) requires it to begin no later than November 1 from 2027. HHS publishes each year's guidelines in January, so the guideline in force on November 1 is the one in force on any later day of that year."
+versions:
+  - from: "2014-01-01"
+    value: 11
+    source: S3360
+sources: [S3360, S3359]
+tags: [income]
+rationale: "Coverage review F-05 (2026-11-22): the premium tax credit income ratio (CO-4561) reads the poverty guideline of the preceding open enrollment period, found with P50 from this month number rather than an anchor date in the rule."

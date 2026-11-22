@@ -1,0 +1,20 @@
+id: CO-4550
+name: "Medicaid: under the Adults group's upper age, through the month of that birthday"
+identifier: ma_is_under_adult_upper_age_through_birthday_month
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person's 65th birthday (ma_adult_upper_age_limit) falls in the determination month or later - the person was under ma_adult_upper_age_limit on the last day of the month before the determination month - the upper age of the Adult MAGI Medical Assistance Group, which 10 CCR 2505-10 § 8.100.1 states as \"from the age of 19 through the end of the month that the individual turns 65\" (with § 8.100.4.G.1's whole-month rule)."
+precision: "Age is taken on the day before the first day of the determination month, the idiom of ma_is_under_child_age_or_turns_nineteen_this_month (CO-564) for the 19th birthday. A person under 65 on that day is either still under 65 on the determination date or turned 65 during the determination month; both are inside \"the month that the individual turns 65\". 42 CFR 435.119(b)(1) says \"under age 65\"; Colorado's definition and G.1 keep the person for the rest of the birthday month, and only a person who is not entitled to or enrolled in Medicare that month is affected (the Adults group excludes Medicare in both texts)."
+derived: ["<", [years_between, date_of_birth, [days_after, -1, [first_day, [det_month]]]], ma_adult_upper_age_limit]
+sources: [S3350, S3351, S208]
+implemented: engine
+tags: [ma, magi, age]
+rationale: "Coverage review F-06 (2026-11-22): the Adults category (CO-548), the highest-standard test (CO-539), the demographic test (CO-552) and hospital presumptive eligibility (CO-2439) each tested age under 65 on the determination date, so a person whose 65th birthday fell earlier in the determination month was outside the group, the defect final verification pass 3 (F3-3) fixed at the 19th and 26th birthdays. No existing item states the Adults group's upper age through the birthday month; CO-564 is the 19th-birthday item."
+tests:
+  - {id: CO-4550-T1, as_of: "2026-11-10", title: "Coverage review F-06 (RV-65): the 65th birthday on November 5, determination November 10 - through the end of November", given: {date_of_birth: "1961-11-05"}, expect: true}
+  - {id: CO-4550-T2, as_of: "2026-12-01", title: "The month after the 65th birthday month", given: {date_of_birth: "1961-11-05"}, expect: false}
+  - {id: CO-4550-T3, as_of: "2026-11-10", title: "64 years old", given: {date_of_birth: "1962-03-01"}, expect: true}
+  - {id: CO-4550-T4, as_of: "2026-11-01", title: "The 65th birthday on the first of the determination month", given: {date_of_birth: "1961-11-01"}, expect: true}
+  - {id: CO-4550-T5, as_of: "2026-11-10", title: "65 since October", given: {date_of_birth: "1961-10-20"}, expect: false}

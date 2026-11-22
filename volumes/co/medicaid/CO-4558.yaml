@@ -1,0 +1,18 @@
+id: CO-4558
+name: "Medicaid: MAGI household members whose income counts"
+identifier: ma_magi_household_income_members
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "The members of this person's MAGI household whose income counts toward the household's income under 42 CFR 435.603(d)(2) and 10 CCR 2505-10 § 8.100.4.C.1.f: every member except one who is not required to file a tax return and either has a parent in this household or is claimed as a tax dependent, by someone other than a spouse or parent, who is in this household."
+precision: "The test ma_magi_household_income (CO-503) applied inline, factored out without change so the annualized household income (ma_annualized_household_income, CO-4559) counts the same members; CO-503's precision states the reading (the summing household, not the member's own; § 8.100.4.C.1.f.iii)."
+derived: [filter, ma_magi_household_members, [not, [all, [not, [of, [P], is_required_to_file_tax_return]], [any, [has_relative_in, [child], ma_magi_household_members], [all, [has_relative_in, [tax_dependent], ma_magi_household_members], [of, [P], ma_is_dependent_claimed_by_non_parent]]]]]]
+sources: [S164, S167]
+implemented: engine
+tags: [ma, magi, income, household]
+rationale: "Coverage review F-04 (2026-11-22): the annualized household income of § 8.100.4.C.4.a must count the same members as the monthly figure; CO-503 held the member test twice inline, and a third copy would let the three drift."
+tests:
+  - {id: CO-4558-T1, as_of: "2026-10-01", title: "A child not required to file, with her parent in the household, is left out", given: {ma_magi_household_members: [p1, p2], is_required_to_file_tax_return: true}, others: {p2: {is_required_to_file_tax_return: false, ma_is_dependent_claimed_by_non_parent: false}}, relationships: [[parent, p1, p2]], expect: [p1]}
+  - {id: CO-4558-T2, as_of: "2026-10-01", title: "A child required to file counts", given: {ma_magi_household_members: [p1, p2], is_required_to_file_tax_return: true}, others: {p2: {is_required_to_file_tax_return: true}}, relationships: [[parent, p1, p2]], expect: [p1, p2]}
+  - {id: CO-4558-T3, as_of: "2026-10-01", title: "C.1.f.iii: a dependent with no parent in this household counts", given: {ma_magi_household_members: [p1], is_required_to_file_tax_return: false, ma_is_dependent_claimed_by_non_parent: false}, others: {p2: {date_of_birth: "1958-01-01"}}, relationships: [[tax_filer, p2, p1]], expect: [p1]}

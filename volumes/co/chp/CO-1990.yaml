@@ -5,14 +5,15 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CHP+
-meaning: "Whether a CHP+ enrollee is exempt from all CHP+ cost-sharing requirements under 10 CCR 2505-3 § 330: an American Indian or Alaska Native (§ 330.1) or a Prenatal Care Program client (§ 330.4)."
-precision: "This item states only who pays no cost sharing at all. § 330.3's exemption of preventive services is per service, in chp_scheduled_copayment (CO-2230), and the § 330.2 5% yearly limit is applied by chp_copayment (CO-2231), which reads this item (OQ-60, resolved)."
-derived: [any, chp_is_american_indian_or_alaska_native, chp_prenatal_is_eligible]
-sources: [S1236]
+meaning: "Whether a CHP+ enrollee is exempt from all CHP+ cost-sharing requirements under 10 CCR 2505-3 § 330: an American Indian or Alaska Native (§ 330.1) or a Prenatal Care Program client (§ 330.4), including a woman in the postpartum months of her prenatal enrollment span (§ 430.3)."
+precision: "This item states only who pays no cost sharing at all. § 330.3's exemption of preventive services is per service, in chp_scheduled_copayment (CO-2230), and the § 330.2 5% yearly limit is applied by chp_copayment (CO-2231), which reads this item (OQ-60, resolved). Coverage review F-08: a Prenatal Care Program client is a woman in her CHP+ prenatal enrollment span (chp_is_in_prenatal_coverage_period, CO-2407), which § 430.3 continues through the twelfth month after the birth, as well as a woman found prenatal-eligible this month; after the birth she is no longer pregnant, so chp_prenatal_is_eligible alone charged her copayments in the postpartum months of the span."
+derived: [any, chp_is_american_indian_or_alaska_native, chp_prenatal_is_eligible, chp_is_in_prenatal_coverage_period]
+sources: [S1236, S1715]
 implemented: engine
 tags: [chp]
 rationale: "OQ-64: no item states the § 330.1 and § 330.4 exemptions."
 tests:
   - {id: CO-1990-T1, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: true}, expect: true}
   - {id: CO-1990-T2, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: false, chp_prenatal_is_eligible: true}, expect: true}
-  - {id: CO-1990-T3, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: false, chp_prenatal_is_eligible: false}, expect: false}
+  - {id: CO-1990-T3, month: "2026-10", as_of: "2026-10-01", given: {chp_is_american_indian_or_alaska_native: false, chp_prenatal_is_eligible: false, chp_is_in_prenatal_coverage_period: false}, expect: false}
+  - {id: CO-1990-T4, month: "2026-11", as_of: "2026-11-10", title: "Coverage review F-08 (RV-PP): delivered in August, still in the prenatal span in November - exempt", given: {chp_is_american_indian_or_alaska_native: false, chp_prenatal_is_eligible: false, chp_is_in_prenatal_coverage_period: true}, expect: true}
