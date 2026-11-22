@@ -14214,3 +14214,684 @@
     p4:
       cccap_household_members: [p4]
       leap_household_income: {"2026-11": 5167}
+- id: CO-133
+  title: 'Second pass (CCCAP): a mother transitioning off Colorado Works with child support received; the fee stays at the referral fee'
+  # Second-pass review N-1 (probe RV-S6). 8 CCR 1403-1 3.117.F, 3.124.B-C. p1 (Dana, 38) leaves Colorado Works on November 1, 2026
+  # while employed and transitions to Low-Income Child Care without an application (3.117). Her Colorado Works Child Care referral
+  # counted only her verified earnings, $2,000 (3.116.C), and set her fee at $47. She also receives $600 of child support a month,
+  # which Low-Income Child Care counts. p3 (Kai, 6) is the child. No B.1, B.3 or B.4 circumstance is recorded.
+  as_of: '2026-11-01'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-01'
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: transition_from_colorado_works
+    has_primary_heating_source: true
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+    cccap_parent_fee_at_last_determination: 47
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+  - - parent
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        wages_gross_received_prior_thirty_days: 2000
+        wages_pay_frequency: weekly
+        wages_gross_per_pay_period: 500
+        child_support_paid_order_type: court_order
+        child_support_paid_verified_by_electronic_data_source: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 2000
+        hours_worked: 160
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 600
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      # Household p1, p3 (size 2). Income (3.111.H.5, I): wages in the thirty days $2,000 + child support $600 = $2,600; no K deduction.
+      cccap_household_income: {"2026-11": 2600}
+      # Transition: the exit limit (3.117.A.2), 85% SMI for 2, far above $2,600; she is employed ($2,000 / 160 h = $12.50 >= $7.25).
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      # Fee by the formula (3.124.P), 100% FPG for 2 from 2026-10-01 = $1,803.33:
+      #   1% x $1,803.33 + 15% x ($2,600 - $1,803.33) = $18.0333 + $119.5005 = $137.5338 -> $137 (cccap_parent_fee_assessed).
+      # The referral fee on $2,000: $18.0333 + 15% x $196.67 = $47.5338 -> $47. 3.117.F: not assessed higher than the referral's,
+      # and no B.1, B.3 or B.4 circumstance (CO-4051 none): min($137, $47) = $47 (cccap_parent_fee_within_period_cap, CO-4052).
+      # Before the fix: $137.
+      cccap_parent_fee_assessed: {"2026-11": 137}
+      cccap_parent_fee: {"2026-11": 47}
+      # 3.117.B: no additional verification until the twelve-month redetermination.
+      cccap_verification_status: {"2026-11": not_required}
+    p3:
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      cccap_parent_fee: {"2026-11": 47}
+
+- id: CO-134
+  title: 'Second pass (CCCAP): an aunt caring for her nephew placed in non-certified kinship care; his survivor benefit unverified on day 31'
+  # Second-pass review N-2 and N-6 (probe RV-S1). 8 CCR 1403-1 3.118-3.119. The county placed p3 (Kai, 6) with his aunt p1 (Dana, 38)
+  # in non-certified kinship care and referred the household for Protective Services Child Care. Dana earns $2,500 in the thirty days
+  # before the November 1 application; Kai receives $300 a month of Social Security survivor benefits. The county asked for
+  # verification on October 1; everything has come in except proof of Kai's benefit. Today is November 1, day 31.
+  as_of: '2026-11-01'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-01'
+    is_protective_services_child_care_case: true
+    cccap_application_county: denver
+    cccap_determination_type: application
+    has_primary_heating_source: true
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+  - - other_relative
+    - p1
+    - p3
+  - - has_primary_responsibility_for
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        wages_gross_received_prior_thirty_days: 2500
+        wages_pay_frequency: weekly
+        wages_gross_per_pay_period: 500
+        child_support_paid_order_type: court_order
+        child_support_paid_verified_by_electronic_data_source: true
+        verification_request_date: '2026-10-01'
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        unearned_income_verification_document_received: true
+        citizenship_attestation_is_questionable: false
+        child_support_paid_verification_document_received: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 2000
+        hours_worked: 160
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+    p3:
+      facts:
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        verification_request_date: '2026-10-01'
+        residency_verification_document_received: true
+        cccap_eligible_activity_verification_document_received: true
+        earned_income_verification_document_received: true
+        unearned_income_verification_document_received: false
+        unearned_income_verified_by_electronic_data_source: false
+        citizenship_attestation_is_questionable: false
+        child_support_paid_verification_document_received: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 300
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      # 3.119.A: a household of one whose only income is the placed child's: Kai's $300 (his earnings would be excluded, J.1;
+      # he has none; no child support). Dana's $2,500 is not counted. Before the fix the item read each person's own income,
+      # so Dana read $2,500 and eligible_low_income (fee $167) while Kai read eligible_protective_services (fee $3).
+      cccap_protective_services_income: {"2026-11": 300}
+      # Size-1 entry limit: 185% x $1,330.00 (100% FPG for 1 from 2026-10-01, $15,960 / 12) = $2,460.50; $300 is within it.
+      cccap_eligibility_status: {"2026-11": eligible_protective_services}
+      # 3.124.I.6: a protective services household pays a fee when the child has countable income: 1% x $300 = $3.
+      cccap_parent_fee: {"2026-11": 3}
+      # 3.119.B: sixty days for the child's income, from the October 1 request: due November 30, so pending on day 31
+      # (CO-4061). Before the fix: past_due (fifteen days, October 16).
+      cccap_protective_services_verification_due_date: {"2026-11": "2026-11-30"}
+      cccap_verification_status: {"2026-11": pending}
+    p3:
+      cccap_protective_services_income: {"2026-11": 300}
+      cccap_eligibility_status: {"2026-11": eligible_protective_services}
+      cccap_parent_fee: {"2026-11": 3}
+      cccap_unearned_income_verification_is_pending: {"2026-11": true}
+
+- id: CO-135
+  title: 'Second pass (LEAP): a grandmother''s $5,000 lottery prize on October 20, inside the income verification period of a November 5 application'
+  # Second-pass review N-8 (probe RV-S4). 9 CCR 2503-7 3.751.1, 3.752.21.A, 3.752.22.A. CO-125's household applies for LEAP on
+  # November 5, 2026. p4 (Lou, 70) won $5,000 in the lottery on October 20: in the income verification period (the thirty days
+  # before the application, October 6 to November 4, OQ-681), though not in the calendar month of the application.
+  as_of: '2026-11-05'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-05'
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: redetermination
+    has_primary_heating_source: true
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  - - parent
+    - p1
+    - p3
+  - - stepparent
+    - p2
+    - p3
+  - - parent
+    - p4
+    - p1
+  - - shares_heat_with
+    - p1
+    - p4
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        wages_gross_received_prior_thirty_days: 2500
+        wages_pay_frequency: weekly
+        wages_gross_per_pay_period: 500
+        child_support_paid_order_type: court_order
+        child_support_paid_verified_by_electronic_data_source: true
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 2000
+        hours_worked: 160
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 350
+        child_support_paid_toward_arrears: 50
+        is_in_sud_treatment_iop_or_higher: false
+    p2:
+      facts:
+        date_of_birth: '1986-01-15'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: true
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        unearned_income_received_prior_thirty_days: 600
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        cccap_job_search_weeks_used: 6
+        is_in_sud_treatment_iop_or_higher: false
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 600
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      facts:
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p4:
+      facts:
+        date_of_birth: '1956-07-20'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+        lottery_gambling_winnings_received_prior_thirty_days: 5000
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 400.7
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 967.5
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+      months:
+        2026-10:
+          lottery_gambling_winnings_received: 5000
+        2026-11:
+          lottery_gambling_winnings_received: 0
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      # LEAP household p1, p2, p3, p4: p1 wages weekly $500 x 4 = $2,000 (3.752.22.C.1.a); p2 unemployment received in the period $600;
+      # p4 SSI $967.50 -> $967 and Social Security $400.70 -> $400 (cents dropped); p4's prize received in the period, $5,000
+      # (leap_person_one_time_income, CO-4069). Total $2,000 + $600 + $967 + $400 + $5,000 = $8,967, over $7,258 for four (CO-875).
+      # Before the fix the prize was read for November ($0): $3,967, eligible.
+      leap_household_income: {"2026-11": 8967}
+      leap_is_eligible: {"2026-11": false}
+    p4:
+      leap_person_one_time_income: {"2026-11": 5000}
+
+- id: CO-136
+  title: 'Second pass (CCCAP): a self-employed mother claims $3,000 of business costs with nothing to verify them'
+  # Second-pass review N-5 (probe RV-S2). 8 CCR 1403-1 3.111.G.2.a, I.2. p1 (Dana, 38) applies for CCCAP on November 1, 2026 for
+  # p3 (Kai, 6). She runs a cleaning business: $5,000 of receipts in the month, 100 hours of work, and $3,000 of operating costs
+  # she lists but has no receipts or other documents for.
+  as_of: '2026-11-01'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-01'
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: application
+    has_primary_heating_source: true
+    uses_top_quality_rated_provider: false
+    cccap_is_child_welfare_child_care_household: false
+  parameters:
+    cccap_entry_income_limit_pct_fpl_table:
+      denver: 1.85
+  relationships:
+  - - parent
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-04-02'
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        wages_pay_frequency: weekly
+        wages_gross_per_pay_period: 500
+        child_support_paid_order_type: court_order
+        child_support_paid_verified_by_electronic_data_source: true
+        self_employment_cost_receipts_received: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 100
+        self_employment_gross_receipts: 5000
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+        child_support_paid_toward_arrears: 0
+        is_in_sud_treatment_iop_or_higher: false
+        self_employment_operating_costs: 3000
+    p3:
+      facts:
+        date_of_birth: '2020-03-10'
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        cccap_non_traditional_hours_are_requested: false
+        cccap_custody_schedule_is_outstanding: false
+        age_attestation_is_questionable: false
+        identity_attestation_is_questionable: false
+        cccap_care_is_from_unrelated_exempt_provider_outside_home: false
+        cccap_is_serving_ipv_disqualification: false
+        cccap_activity_schedule_received: true
+        cccap_immunization_record_received: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+  month_facts:
+    2026-11:
+      cccap_is_in_homelessness_stabilization_period: false
+    2026-10:
+      cccap_is_in_homelessness_stabilization_period: false
+  expect:
+    p1:
+      # 3.111.G.2.a: "The county shall obtain verification of all expenses ... or they will not be considered"; I.2 counts
+      # declared gross income minus verified business expenses. No verification: no costs (CO-1709). Countable self-employment
+      # $5,000; household income $5,000 (before the fix: $5,000 - $3,000 = $2,000).
+      cccap_self_employment_business_expenses: {"2026-11": 0}
+      cccap_household_income: {"2026-11": 5000}
+      # Entry limit for 2 (an application, 3.111.H.1.a): 185% x $1,803.33 = $3,336.16; $5,000 is over it (before: eligible, fee $47).
+      # Activity: $5,000 / 100 h = $50 an hour, at least $7.25 (G.2.d).
+      cccap_eligibility_status: {"2026-11": ineligible_income}
+      cccap_parent_fee: {"2026-11": 0}
+    p3:
+      cccap_eligibility_status: {"2026-11": ineligible_income}
