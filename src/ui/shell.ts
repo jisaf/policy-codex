@@ -167,6 +167,7 @@ export function crumbsFor(c: Route, data: CrumbData = {}): Crumb[] {
       const it = data.engine?.itemById(c.arg ?? "");
       if (it && place === "programs" && it.program !== "All") push(programLabel(it.program), { view: "programs", arg: it.program });
       push(it?.name ?? c.arg ?? "", { view: "item", arg: c.arg });
+      if (c.params.tab === "map") push("Map", null);
       break;
     }
     case "map": {

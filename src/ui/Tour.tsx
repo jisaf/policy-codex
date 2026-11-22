@@ -122,8 +122,8 @@ const STEPS: TourStep[] = [
     go: null,
   },
   {
-    target: "details.section[open] > summary",
-    body: "The decision record is where that trace lands. Every rule has one.",
+    target: "#law",
+    body: "That trace lands on the law, word for word: every excerpt the item rests on, each with a link into its full document.",
     go: () => ({ view: "item", arg: tourItem(), params: { section: "record" } }),
     act: "close-popover",
   },

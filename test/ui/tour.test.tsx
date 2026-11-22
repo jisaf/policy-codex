@@ -170,7 +170,7 @@ describe("Tour on a mounted item page", () => {
     expect(host.querySelector(".tokpop")).not.toBeNull();
     await next();                                          // -> step 9, record page, card closed
     expect(host.querySelector(".tokpop")).toBeNull();
-    expect(host.querySelector("details.section[open] > summary")?.textContent).toContain("Decision record");
+    expect(host.querySelector("section#law h2")?.textContent).toBe("The law, word for word");
     await next();                                          // -> step 10
     (host.querySelector("button.tour-next") as HTMLButtonElement).click();
     await tick();
