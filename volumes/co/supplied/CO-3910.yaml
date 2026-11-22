@@ -1,0 +1,14 @@
+id: CO-3910
+name: Gross wages received in the thirty days before the application
+identifier: wages_gross_received_prior_thirty_days
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The gross wages, salaries, tips, commissions and bonuses the person received as an employee, before anything withheld, on pay dates in the thirty days before the application date (the date the application, or the redetermination, the case decides was made), other than college work-study earnings. The same receipts wages_gross (CO-023) states for a calendar month, counted by pay date over these thirty days instead."
+precision: "The thirty days end the day before the application date. A receipt is counted on the day it is paid, so a weekly earner has four or five pay dates in the thirty days, whatever the calendar months. Work-study earnings are left out: they have their own monthly fact (work_study_earnings, CO-3361) and every program that reads this fact excludes them. If not stated, the programs that read it take the month's wages_gross less work_study_earnings as the thirty days' wages (wages_gross_prior_thirty_days, CO-3912), which is right when the person is paid the same in every month; a case where the thirty days differ from the month (pay dates that straddle a month boundary, a job that began or ended) states this fact. Read by CCCAP (8 CCR 1403-1 3.111.H.4-5, the prior thirty days) and LEAP (9 CCR 2503-7 3.751.1 and 3.752.22.C.3, the income verification period, OQ-681)."
+supplied_by: "Pay stubs, an employer statement or electronic wage data for the thirty days before the application."
+sources: [S891, S2704, S2712, S2713]
+tags: [income]
+rationale: "Final pass F-09 (same-word audit SW-35): CCCAP uses the income \"received during the prior thirty (30) day period\" (3.111.H.5.a.1, S891) and LEAP the income received in the income verification period (3.751.1, 3.752.22, S2712, S2713), but the volume's income facts are calendar-month receipts, so a case could not state both SNAP's month and these programs' thirty days when pay dates straddle a month. The receipt is neutral; each program's own items read it."
+nearest: [CO-023]

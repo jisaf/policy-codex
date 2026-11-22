@@ -1,0 +1,14 @@
+id: CO-3919
+name: Retroactive Social Security lump sum received
+identifier: retroactive_social_security_lump_sum_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Of the nonrecurring lump sum the person received in the month (lump_sum_received, CO-3367), the part that is a retroactive lump-sum payment of Social Security (Title II) benefits for months before the month received."
+precision: "Part of lump_sum_received, not added to it. If not stated, every program reads it as 0."
+supplied_by: "The Social Security Administration's award or payment notice."
+sources: [S2208]
+tags: [income]
+rationale: "Final pass F-11: LEAP excludes \"retroactive lump-sum social security, SSI, and public assistance payments\" (9 CCR 2503-7 3.752.23.EE, S2208), while CCCAP counts Social Security (8 CCR 1403-1 3.111.I.25) and excludes SSI and public cash assistance (J.2, J.26). lump_sum_received names every kind of lump sum together, so neither program could tell a retroactive benefit payment from an inheritance or a settlement."
+nearest: [CO-3367, CO-3920]

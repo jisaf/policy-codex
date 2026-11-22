@@ -5,12 +5,13 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CCCAP
-meaning: "Whether the identity of a child for whom care is requested must be verified for CCCAP: only when the attested identity is inconsistent."
-derived: [all, cccap_is_eligible_child, identity_attestation_is_questionable]
-sources: [S890]
+meaning: "Whether the identity of a child for whom care is requested must be verified for CCCAP: only when the attested identity is inconsistent - not during a homeless family's stabilization period, when it is self-declared (3.121.B.5, final pass F-02)."
+derived: [all, cccap_is_eligible_child, identity_attestation_is_questionable, [not, cccap_is_in_homelessness_stabilization]]
+sources: [S890, S2710]
 implemented: engine
 tags: [verification, age]
 rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
 tests:
   - {id: CO-1444-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, identity_attestation_is_questionable: true}, expect: true}
   - {id: CO-1444-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, identity_attestation_is_questionable: false}, expect: false}
+  - {id: CO-1444-T4, title: "F-02: questionable, but the family is in its homelessness stabilization period (3.121.B.5)", month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, identity_attestation_is_questionable: true, nighttime_residence_type: motel_or_hotel_for_lack_of_alternative, cccap_is_in_homelessness_stabilization_period: true}, expect: false}

@@ -308,3 +308,12 @@ Fixes for docs/reviews/final-cash.md (FC-1 to FC-24) and the Colorado Works and 
 - Special immigrants (FC-13): Pub. L. 111-8 sec. 602, Pub. L. 110-181 sec. 1244 and Pub. L. 111-118 sec. 8120 fetched from govinfo (D-240 to D-243); `meets_public_assistance_citizenship_requirement` (CO-905) treats an Iraqi or Afghan special immigrant as a refugee; OQ-550 narrowed to the SAVE list.
 - Out of scope, recorded (FC-20): Colorado Works supportive payments (9 CCR 2503-6 3.606.8.B) are county-assessed, need-based and non-entitlement, with no State eligibility outcome, as 3.606.8.D's other assistance is.
 - Shared facts touched: `adult_financial_cash_income` (CO-1713, meaning: names the Home Care Allowance, not Aid to the Blind), `taxable_interest_and_dividend_income` (CO-3158, precision), `meets_public_assistance_citizenship_requirement` (CO-905, read by Colorado Works and Adult Financial only), `received_oap_and_hca_grandfathered` (CO-1208, meaning). `is_participating_in_strike` (CO-3800) states what SNAP's `snap_is_striker` (CO-3500) classifies; the SNAP owner may derive CO-3500 from it.
+
+
+## Final-pass P1 fix track: CCCAP, LEAP, SUN Bucks (2026-11-22)
+
+Fixes for docs/reviews/final-cccap-leap-sebt.md (F-01 to F-25) and the CCCAP/LEAP findings of docs/reviews/final-verification.md (V-1, V-7, V-11, V-12, V-15 to V-17); each finding's disposition is at the end of the review file.
+
+- Income period (SW-35, F-09): CCCAP and LEAP read neutral receipts for the thirty days before the application (`wages_gross_received_prior_thirty_days`, `unearned_income_received_prior_thirty_days`, CO-3910, CO-3911; read through CO-3912 and CO-3913, which take the month's receipts when a case states only those), and LEAP converts ongoing pay by the pay schedule (`wages_pay_frequency`, `wages_gross_per_pay_period`, CO-3921, CO-3922; `leap_pay_periods_per_month`, CO-3924). OQ-680, OQ-681.
+- IDs retired (files deleted; not used again): CO-2344 (`cccap_excluded_income`) and CO-2345 (`leap_excluded_income`), whose receipts the thirty-day figure now leaves out; CO-2379 (`cccap_redetermination_date`, read by nothing, V-12).
+- Shared supplied facts changed: `lump_sum_received` (CO-3367) no longer lists tax refunds or lottery winnings, which have their own facts (a refund stated in both was subtracted twice by SNAP's exclusion); `lottery_gambling_winnings_received` (CO-1181) and `child_support_paid_legally_obligated` (CO-033) state the CCCAP/LEAP default when not stated.

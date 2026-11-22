@@ -1,0 +1,18 @@
+id: CO-3907
+name: "CCCAP: family experiencing homelessness in its stabilization period"
+identifier: cccap_is_in_homelessness_stabilization
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether this person's family is a family experiencing homelessness (8 CCR 1403-1 3.103.CCC, cccap_is_family_experiencing_homelessness, CO-2814) and the month is within its stabilization period, the at least sixty consecutive days within twelve months during which 3.121.B requires a child care authorization, the caretakers need not be in an eligible activity (B.3.a), residency and the children's citizenship, age and identity are self-declared (B.4-5), no immunization record is required (B.6), and there is no parent fee (3.124.I.5)."
+precision: "The stabilization period is the county's authorization, cccap_is_in_homelessness_stabilization_period (CO-2577), read as false when not stated."
+derived: [all, [otherwise, cccap_is_in_homelessness_stabilization_period, false], cccap_is_family_experiencing_homelessness]
+sources: [S1823, S2710]
+implemented: engine
+tags: [household]
+rationale: "Final pass F-02: the stabilization period changes eligibility (an authorization without an eligible activity, cccap_eligibility_status, CO-989), verification (CO-1440, CO-1442 to CO-1444, the immunization element of CO-1447 and CO-1448, and the due date read by CO-1451) and the fee (CO-1290). The fee wrote the test inline; one item now states it for every reader."
+tests:
+  - {id: CO-3907-T1, title: "A family living in a shelter, in its stabilization period", as_of: "2026-10-01", month: "2026-10", given: {nighttime_residence_type: emergency_or_transitional_shelter, cccap_is_in_homelessness_stabilization_period: true}, expect: true}
+  - {id: CO-3907-T2, title: "The period has not been authorized (not stated)", as_of: "2026-10-01", month: "2026-10", given: {nighttime_residence_type: emergency_or_transitional_shelter}, expect: false}
+  - {id: CO-3907-T3, title: "A family with a fixed, regular and adequate residence", as_of: "2026-10-01", month: "2026-10", given: {nighttime_residence_type: fixed_regular_adequate, cccap_is_in_homelessness_stabilization_period: true}, expect: false}

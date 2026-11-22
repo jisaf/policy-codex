@@ -1,0 +1,18 @@
+id: CO-3912
+name: Gross wages in the thirty days before the application
+identifier: wages_gross_prior_thirty_days
+kind: derived
+type: money
+scope: person-month
+program: All
+meaning: "The gross wages, other than college work-study earnings, the person received in the thirty days before the application date: wages_gross_received_prior_thirty_days (CO-3910) when the case states it; when the case states only calendar-month receipts, the month's wages_gross (CO-023) less work_study_earnings (CO-3361), the person's pay being taken to be the same in every month."
+precision: "The month read when the thirty-day figure is not stated is the month being determined. work_study_earnings is part of wages_gross and read as 0 when not stated. Read by CCCAP (cccap_person_earned_income, CO-3915) and LEAP (leap_person_wages, CO-3925)."
+derived: [otherwise, wages_gross_received_prior_thirty_days, ["-", wages_gross, [otherwise, work_study_earnings, 0]]]
+sources: [S891, S2712]
+implemented: engine
+tags: [income]
+rationale: "Final pass F-09 (SW-35): CCCAP and LEAP read the wages of the thirty days before the application, not the calendar month. One item states how the thirty-day receipt is read, so the two programs read it the same way and a case that states only monthly receipts keeps its figures."
+tests:
+  - {id: CO-3912-T1, title: "Five weekly pay dates of $500 in the thirty days", as_of: "2026-12-01", month: "2026-12", given: {wages_gross_received_prior_thirty_days: 2500, wages_gross: 2000}, expect: 2500}
+  - {id: CO-3912-T2, title: "Only the month is stated: the month's wages less work-study", as_of: "2026-12-01", month: "2026-12", given: {wages_gross: 1200, work_study_earnings: 200}, expect: 1000}
+  - {id: CO-3912-T3, title: "Only the month is stated, no work-study", as_of: "2026-12-01", month: "2026-12", given: {wages_gross: 2600}, expect: 2600}

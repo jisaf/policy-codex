@@ -1,0 +1,14 @@
+id: CO-3911
+name: Unearned income received in the thirty days before the application
+identifier: unearned_income_received_prior_thirty_days
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The gross unearned income the person received in the thirty days before the application date (the date the application, or the redetermination, the case decides was made) from pensions and retirement, unemployment compensation, child support, interest and dividends, and the other unearned income other_unearned_income_taxable (CO-1714), other_unearned_income_nontaxable (CO-030) and tax_exempt_interest (CO-081) name: the receipts pension_income, unemployment_income, child_support_received and those facts state for a calendar month, counted by the day received over these thirty days instead."
+precision: "The thirty days end the day before the application date. Left out, because each has its own fact stated by the month it is received: Social Security (social_security_income), SSI (ssi_income), Colorado Works and Adult Financial cash assistance, lottery and gambling winnings (lottery_gambling_winnings_received), nonrecurring lump sums (lump_sum_received), educational assistance, loan proceeds, expense reimbursements, home energy assistance, tax refunds and credits, and federally excluded payments (educational_assistance_received, loan_proceeds_received, expense_reimbursements_received, energy_assistance_received, tax_refunds_and_credits_received, federally_excluded_payments_received). If not stated, the programs that read it take the month's receipts from those sources as the thirty days' (unearned_income_prior_thirty_days, CO-3913), which is right when the income is the same each month; a case where they differ (unemployment paid every two weeks, a payment that started or stopped) states this fact. Read by CCCAP (8 CCR 1403-1 3.111.H.5.b) and LEAP (9 CCR 2503-7 3.752.22.A, OQ-681)."
+supplied_by: "Award letters, payment records or the payer's statement for the thirty days before the application."
+sources: [S891, S2712, S2713]
+tags: [income]
+rationale: "Final pass F-09 (same-word audit SW-35): CCCAP counts \"Unearned income received during the prior thirty (30) day period\" (3.111.H.5.b, S891) and LEAP \"the countable gross unearned income received in the income verification period\" (3.752.22.A, S2713); the calendar-month facts cannot carry both a month and these thirty days. The sources stated by the month received are the ones both programs' rules place in the month received (SSI, 3.752.21.I; lump sums, 3.111.H.4.i) or exclude outright, so the thirty-day figure carries only the recurring receipts the window changes."
+nearest: [CO-1714, CO-030]

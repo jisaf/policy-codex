@@ -1,0 +1,13 @@
+id: CO-3929
+name: "LEAP: the applicant is serving a fraud penalty"
+identifier: leap_applicant_is_serving_fraud_penalty
+kind: supplied
+type: yes/no
+scope: case
+program: LEAP
+meaning: "The household's LEAP applicant was found guilty of fraud under section 26-1-127, C.R.S., in a prior program year, and the program year applied for falls within the penalty 9 CCR 2503-7 3.751.563 sets: the next program year for a first violation, two program years for a second, and permanently for a third."
+precision: "A finding of a court, recorded by the county (convention rule 13(i)); 3.754.1.U makes the applicant's fraud conviction a factor for denial of the household. A household member other than the applicant who is serving the penalty is not modeled: 3.751.563 makes that individual ineligible to participate, which this fact does not carry. One value for the case. If not stated, LEAP reads this as false."
+supplied_by: The court's judgment, recorded in the county's LEAP case.
+sources: [S2715, S2717]
+tags: [household]
+rationale: "Final pass F-12: 3.754.1.U (S2715) denies an applicant household when \"The applicant has been convicted of fraud\", and 3.751.563 (S2717) sets the program years of ineligibility. leap_is_eligible (CO-1007) did not read it."

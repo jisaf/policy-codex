@@ -15906,3 +15906,508 @@ Document: D-80
 > ...
 > Rules 3.510, 3.530, 3.531 D, 3.532 A-B, 3.533 B, 3.546 A, 3.546 C, 3.546 D-E, 3.549 B,
 > 3.549 H, 3.553 E, 3.570.11, 3.585 B.2.d eff. 03/02/2026.
+### S2700. CCCAP eligible households: caretakers on temporary verified maternity/paternity leave, or (with an open case) on verified medical leave
+
+Document: D-87
+
+8 CCR 1403-1 3.111.D.8-9 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 8. Adult caretaker(s) or teen parent(s) who are participating in a low-income
+> eligible activity and go on temporary verified maternity/paternity leave.
+>
+> 9. Adult caretaker(s) or teen parent(s) with an open and active Low-Income
+> Child Care case who are participating in a low-income eligible activity and
+> go on temporary verified medical leave and are unable to care for their
+> children.
+
+### S2701. CCCAP: a temporary break in an eligible activity (seasonal interruption, verified medical or maternity/paternity leave, scheduled education breaks)
+
+Document: D-87
+
+8 CCR 1403-1 3.112.C (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> C. Adult caretaker(s) or teen parent(s) must report and verify changes to income in
+> writing within ten (10) calendar days of the change, only if the household's
+> income exceeds eighty-five percent (85%) of the State median income. Also, if
+> the adult caretaker(s) or teen parent(s) are no longer in their qualifying low-
+> income eligible activity, this is considered to be a temporary cessation of activity
+> and must be reported in writing within four (4) calendar weeks. This does not
+> include a temporary break in low-income eligible activity such as a temporary job
+> loss from the qualifying eligible activity or temporary change in participation in a
+> training or education activity where the individual remains employed, self-
+> employed, or enrolled in training or education. A temporary break includes but is
+> not limited to:
+>
+> 1. Any interruption in work for a seasonal worker who is not working between
+> regular industry work seasons;
+>
+> 2. Any temporary absence from low-income eligible activities including
+> employment, self-employment, education, and/or training activity due to
+> extended verified medical leave;
+>
+> 3. Any temporary absence from low-income eligible activities including
+> employment, self-employment, education, and/or training activity due to
+> verified maternity/paternity leave; or
+>
+> 4. Any temporary absence from an education or training activity due to
+> holidays or scheduled breaks.
+
+### S2702. CCCAP job search is approved when an activity ends while the caretaker is enrolled
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.3.f (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> f. Job search child care shall be approved in each instance of non-
+> temporary job loss or when adult caretakers or teen parents end
+> their low-income eligible activity while enrolled in the Low-Income
+> program.
+
+### S2703. CCCAP: households leaving Colorado Works transition to Low-Income Child Care without an application, job search included
+
+Document: D-87
+
+8 CCR 1403-1 3.117 (introduction), D (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.117 TRANSITION OFF COLORADO WORKS CHILD CARE
+> Counties shall transition households that are no longer eligible for the Colorado Works
+> Program and are participating in a low-income eligible activity as defined in rule section
+> 3.103(PP) to Low-Income Child Care without requiring the household to complete the
+> Low-Income Child Care application, regardless of whether the county has been
+> approved by the Department to have a wait list or freeze in place. The household’s
+> ...
+>
+> D. If a household becomes ineligible for Colorado Works while participating in a job
+> search activity or is not in a low-income eligible activity as defined in rule section
+> 3.103(PP), the adult caretaker or teen parent shall be transitioned to Low-Income
+> Child Care and entered into the Low-Income Job Search activity for a minimum
+> of thirteen (13) weeks.
+
+### S2704. CCCAP: the expected monthly income is based on the income received in the prior thirty days; other periods; lump sums
+
+Document: D-87
+
+8 CCR 1403-1 3.111.H.4 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 4. Generally, the expected monthly income amount is based on the income
+> received in the prior thirty (30) day period; except that, when the prior
+> thirty (30) day period does not provide an accurate indication of
+> anticipated income as referenced in the definition of “Income Eligibility” in
+> rule section 3.103(KKK) or under circumstances as specified below, a
+> different period of time may be applicable:
+>
+> a. For new or changed income, a period shorter than a month may be
+> used to arrive at a projected monthly amount.
+>
+> b. For contract employment in cases, such as in some school
+> systems, where the employees derive their annual income in a
+> period shorter than a year, the income shall be prorated over the
+> term of the contract, provided that the income from the contract is
+> not earned on an hourly or piecework basis.
+>
+> c. For regularly received self-employment income, net earnings will
+> usually be prorated and counted as received in a prior thirty (30)
+> day period, except for farm income. For further information, see
+> rule section 3.111(I)(3) on self-employment under countable
+> earned income.
+>
+> d. For all other cases where receipt of income is reasonably certain,
+> but the monthly amount is expected to fluctuate, a period of up to
+> twelve (12) months may be used to arrive at an average monthly
+> amount.
+>
+> e. For income from rental property to be considered as self-
+> employment income, the adult caretaker(s) or teen parent(s) shall
+>
+> actively manage the property at least an average of twenty (20)
+> hours per week. Income from rental property will be considered as
+> unearned income if the adult caretaker(s) or teen parent(s) are not
+> actively managing the property an average of at least twenty (20)
+> hours per week. Rental income, as self-employment or as
+> unearned income, may be averaged over a twelve (12) month
+> period to determine monthly income. Income from jointly owned
+> property shall be considered as a percentage at least equal to the
+> percentage of ownership or, if receiving more than percentage of
+> ownership, the actual amount received.
+>
+> f. For cases where a change in the monthly income amount can be
+> anticipated with reasonable certainty, such as with Social Security
+> cost-of-living increases or other similar benefit increases, the
+> expected amount shall be considered in arriving at countable
+> monthly income for the month received.
+>
+> g. Income inclusions and exclusions (rule sections 3.111(I) and (J))
+> shall be used in income calculations.
+>
+> h. Irregular child support income, not including lump sum payments,
+> may be averaged over a period of time up to twelve (12) months
+> in order to calculate household income.
+>
+> i. Non-recurring lump sum payments, including lump sum child
+> support payments, may be included as income in the month
+> received or averaged over a twelve (12) month period, whichever
+> is most beneficial for the recipient.
+
+### S2705. CCCAP countable income: inheritance, gifts and prizes
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.20 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 20. Inheritance, gifts, and prizes
+
+### S2706. CCCAP income exclusions: SSI, loans, public cash assistance, settlement reimbursements
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.2, J.25-27 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2. Supplemental Security Income (SSI) under Title XVI
+> ...
+>
+> 25. Loans from private individuals as well as commercial institutions
+>
+> 26. Public cash assistance grants including Old Age Pension (OAP), Aid to
+> the Needy Disabled (AND), and Temporary Assistance to Needy Families
+> (TANF)/Colorado Works
+>
+> 27. Reimbursements for expenses paid related to a settlement or lawsuit
+
+### S2707. CCCAP: Colorado Works Child Care counts only the earned income the Colorado Works worker verifies, for eligibility and the fee
+
+Document: D-87
+
+8 CCR 1403-1 3.116.C; 3.124.E (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> C. Upon receipt of a referral at the following times, only earned income that is
+> reported and verified by the county Colorado Works worker will be considered
+> countable income for Colorado Works Child Care cases:
+>
+> 1. When a household is initially determined eligible for Colorado Works Child
+> Care; and/or
+>
+> 2. When care is continued beyond the end of each twelve (12) month period.
+> ...
+>
+> E. Colorado Works households in a paid employment activity shall pay parent fees
+> based on gross countable income as verified and shared by the local Colorado
+> Works program.
+
+### S2708. CCCAP: counties that provide Colorado Works Child Care for state diversion households apply the same eligibility
+
+Document: D-87
+
+8 CCR 1403-1 3.116.H (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> H. Counties that provide Colorado Works Child Care for households approved for
+> Colorado Works state diversions require the same eligibility as outlined in this
+> rule section.
+
+### S2709. CCCAP Child Welfare Child Care: a category whose eligibility the Child Welfare division determines
+
+Document: D-87
+
+8 CCR 1403-1 3.120.A, D-E (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.120 CHILD WELFARE CHILD CARE
+> A. Child Welfare Child Care is used as a temporary service to maintain children in
+> their own homes or in the least restrictive out-of-home care setting when there
+> are no other child care options available. This may include parents, non-certified
+> kinship care, kinship foster care homes, and foster care homes.
+> ...
+>
+> D. Eligibility for Child Welfare Child Care is determined on a case-by-case basis by
+> the Child Welfare division using the criteria outlined in Colorado Department of
+>
+> Human Services rules at 12 CCR 2509-4, rule section 7.302 (July 31, 2023),
+> herein incorporated by reference. No later editions or amendments are
+> incorporated. These regulations are available at no cost from the Colorado
+> Department of Human Services, 1575 Sherman St., Denver, Colorado 80203, or
+> at https://www.sos.state.co.us/ccr. These regulations are also available for
+> inspection and copying at the Colorado Department of Early Childhood, 710 S.
+> Ash Street, Bldg. C, Denver, Colorado 80246, during regular business hours.
+>
+> E. Child Welfare Child Care households are not subject to residency verification
+> requirements. The county with the open child welfare case shall be considered
+> the county of residency.
+
+### S2710. CCCAP families experiencing homelessness: no activity requirement, self-declared residency and child facts, no immunization record during the stabilization period
+
+Document: D-87
+
+8 CCR 1403-1 3.121.B.1, B.3-6 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 1. If verifications necessary to determine ongoing eligibility are received by
+> the county within the stabilization period, the household will continue to
+> receive subsidized child care. If verifications necessary to determine
+> ongoing eligibility are not received by the county within the stabilization
+> period, the household will be determined ineligible and given timely written
+> notice of adverse action.
+> ...
+>
+> 3. Eligible activity
+>
+> a. The adult caretaker(s) or teen parent(s) is not required to
+> participate in a low-income eligible activity during the stabilization
+> period.
+>
+> b. If the adult caretaker(s) or teen parent(s) is participating in a low-
+> income eligible activity, they will have at least sixty (60) days to
+> provide necessary verification.
+>
+> 4. Residency
+>
+> a. The adult caretaker(s) or teen parent(s) shall self-declare residency
+> during the stabilization period by providing the location they are
+> temporarily residing. Counties shall identify the zip code of this
+> location in CHATS.
+>
+> b. The adult caretaker(s) or teen parent(s) may provide a mailing
+> address or the county shall use general delivery or the county
+> office address for client correspondence.
+>
+> 5. The adult caretaker(s) or teen parent(s) may self-declare citizenship, age,
+> and identity of the child(ren) during the stabilization period.
+>
+> a. A child’s citizenship status, age, and identity are considered verified
+> at the end of the stabilization period if the complete application
+> includes the child’s age and citizenship status and is signed
+> attesting to the child’s identity unless the county determines that
+> the declaration of citizenship, age, and/or identity is inconsistent.
+>
+> b. The county must request additional verification at the end of the
+> stabilization period if the adult caretaker or teen parent’s
+> declaration is determined to be inconsistent based on the
+> following guidelines:
+>
+> 1) If the claim of citizenship, age, and/or identity is inconsistent
+> with statements made by the adult caretaker or teen parent,
+> or with other information on the application, or on previous
+> applications;
+>
+> 2) If the claim of citizenship, age, and/or identity is inconsistent
+> with the documentation provided by the adult caretaker or
+> teen parent; and/or,
+>
+> 3) If the claim of citizenship, age, and/or identity was previously
+> received from another source such as another public
+> assistance program including Colorado Works, the
+> Supplemental Nutrition Assistance Program (SNAP), or
+> Medicaid, and the claim is inconsistent with the information
+> previously received from that source.
+>
+> 6. If child care is provided by a qualified exempt child care provider not
+> related to the child where care is provided outside of the home, the
+> requirement to provide the county with verification of immunization status
+> shall not be required during the stabilization period.
+
+### S2711. CCCAP: termination for a founded Intentional Program Violation; disqualification periods; every household of the disqualified caretaker
+
+Document: D-87
+
+8 CCR 1403-1 3.114.A.6; 3.139.C-D (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.114 TERMINATION OF LOW-INCOME CHILD CARE SERVICES
+> A. County departments must terminate child care authorizations and cases during
+> the eligibility period for any of the following eligibility-related reasons:
+> ...
+>
+> 6. The adult caretaker(s) or teen parent(s) has been disqualified due to a
+> founded Intentional Program Violation.
+> ...
+>
+> C. The penalty shall be in effect for:
+>
+> 1. Twelve (12) months upon the first occasion of any such offense;
+>
+> 2. Twenty-four (24) months upon the second occasion of any such offense;
+> and
+>
+> 3. Permanently upon the third such offense.
+>
+> D. The disqualification penalties affect any household to which the adult
+> caretaker(s) or teen parent(s) is a member.
+
+### S2712. LEAP: the income verification period
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1, "Income Verification Period" (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Income Verification Period”: The income verification period is from the date of application to the same
+> date of the prior month (approximately thirty (30) calendar days from the date of application) when used
+> to verify income except for self-employment income and earned ongoing income, in accordance with
+> Section 3.752.22, B.
+
+### S2713. LEAP: unearned income in the income verification period; earned ongoing income in four of the eight weeks; converting weekly, bi-weekly and semi-monthly pay
+
+Document: D-86
+
+9 CCR 2503-7 3.752.22.A-C (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> A. All countable unearned income shall be the countable gross unearned income received in the
+> income verification period, not to exceed one month’s income.
+>
+> B. For purposes of determining a household's eligibility, earned ongoing income shall be the
+> countable gross income in any four (4) weeks of the eight (8) weeks prior to the application date.
+>
+> C. Determining Monthly Income
+>
+> If a household member is paid less than monthly, the county department shall determine gross monthly
+> income by:
+>
+> 1. Weekly/Bi-Weekly Income
+>
+> a. Weekly Income
+>
+> Adding four gross weekly income amounts to obtain total monthly income.
+>
+> b. Bi-Weekly Income
+>
+> Adding two gross bi-weekly income amounts to obtain total monthly income.
+>
+> 2. Semi-Monthly Income
+>
+> Adding two gross semi-monthly income amounts to obtain total monthly income.
+>
+> 3. Partial Month Income
+>
+> a. Terminated Income
+>
+> If a household member's income is terminated as of the application date, use
+> actual income received in the income verification period.
+>
+> b. Earned New Income
+>
+> If a household member has a new source of earned income as of the application
+> date, use income received in the income verification period.
+>
+> c. Unemployment/Other Unearned Income
+>
+> If a household member has not received his/her first check from this source of
+> income as of the income verification period, do not count any income from this
+> source. If the household member has received the income as of the income
+> verification period, use actual income for the income verification period.
+>
+> 4. In-kind income is income received in exchange for employment and shall be considered
+> as earned income whose value is based on the services rendered. The amount
+> considered as earned income when a recipient is paid in lieu of cash is the declared
+> value of the item or service provided.
+
+### S2714. LEAP countable unearned income: prizes; SSI in the month received, cents dropped; Social Security cents dropped
+
+Document: D-86
+
+9 CCR 2503-7 3.752.21 (introduction), A, I; 3.752.211.H (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.21 Countable Unearned Income [Rev. eff. 12/1/14]
+>
+> Countable unearned income includes but is not limited to the following, as well as payments from any
+> other source, which is considered to be a gain or benefit to the applicant or recipient:
+>
+> A. Inheritance, gifts, and prizes;
+> ...
+>
+> I Supplemental Security Income (SSI) benefits received by an applicant or recipient shall be
+> considered income in the month received. When determining income, do not consider cents in the
+> gross benefit amount.
+> ...
+>
+> H. Social Security Benefits - Old Age (or Retirement), Survivors and Disability Insurance payments
+> (OASDI or RSDI) made by the Social Security Administration; also included are special payments
+> at age seventy-two (72) (Prouty benefits) and black lung benefits. When determining income, do
+> not consider cents in the gross income amount.
+
+### S2715. LEAP factors for denial: benefits from another county, refused weatherization, refused CIP inspection, fraud
+
+Document: D-86
+
+9 CCR 2503-7 3.754.1 (introduction), F, L, T, U (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Any of the following factors shall be the basis for the denial of an applicant household:*
+> ...
+>
+> F. The household has received Heating Fuel Assistance Program benefits from another county;
+> 3.756.17 (10).
+> ...
+>
+> L. Refused weatherization services from a state weatherization agency; 3.752.26 (26).
+> ...
+>
+> T. The household refused inspection of the Crisis Intervention Program work; 3.752.27 (27).
+>
+> U. The applicant has been convicted of fraud; 3.751.56 (29).
+
+### S2716. LEAP: a denial hold for a household that refused weatherization or a CIP inspection
+
+Document: D-86
+
+9 CCR 2503-7 3.752.26.B.1; 3.752.27.B.1 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> B. Households Who Refuse Weatherization
+>
+> 1. Households who refuse or terminate weatherization before completion shall not be
+> approved for LEAP benefits for the following year and a LEAP denial hold shall be placed
+> on the household at that address by the State LEAP office. The hold can only be
+> removed by the State LEAP office.
+> ...
+>
+> B. Households Who Refuse CIP Inspection
+>
+> 1. Households who refuse to allow the inspection shall not be approved for LEAP benefits
+> for the following year and a LEAP denial hold shall be placed on the household at that
+> address by the state LEAP office. The hold can only be removed by the state LEAP
+> office.
+
+### S2717. LEAP: program years of ineligibility for an individual found guilty of fraud
+
+Document: D-86
+
+9 CCR 2503-7 3.751.563 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.751.563 Penalties for Individuals Who Are Found Guilty of Committing Fraud
+>
+> Individuals who are found guilty of committing fraud, pursuant to section 26-1-127, C.R.S., in a prior
+> program year shall be ineligible to participate in LEAP in the subsequent program year for the first
+> violation, two program years for the second violation, and permanently for the third violation.
+
+### S2718. LEAP: a household that relocates is paid by the original county; an application in the new county is denied
+
+Document: D-86
+
+9 CCR 2503-7 3.756.17 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.756.17 Relocation [Rev. eff. 11/1/94]
+>
+> If an approved household moves from one county to another within Colorado, the original county of
+> residence in which eligibility was determined, shall remain responsible for processing that case
+> throughout the program year. The new county of residence shall provide assistance to the case
+> processing county as requested. If an applicant then applies in the new county of residence, the
+> application shall be denied, and the applicant notified that benefits will be paid by the original county.
+
+### S2719. LEAP self-employment: a declaration of the gross income received in the full month prior to the application date (as amended 11/01/2026)
+
+Document: D-173
+
+9 CCR 2503-7 3.755.21.I.1 (rules adopted 09/04/2026, effective 11/01/2026, eDocket 2026-00287). https://www.sos.state.co.us/CCR/Upload/AGORequest/AdoptedRules02026-00287.docx
+
+> 3.755.21 Adequate Verification of Income [Rev. eff.11/01/2026]
+> I. Verification of self-employment income shall include, at a minimum:
+> 1. Written or verbal declaration of total gross income received in the full month prior to the application date, which may include profit and loss statements, i.e., self-employment ledger; and,
+
+### S2720. Free and reduced price meals: every child in the family is categorically eligible when a child is a member of a household receiving SNAP, FDPIR or TANF
+
+Document: D-250
+
+7 CFR 245.6(b)(7) (eCFR, up to date as of 2026-11-19). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-7.xml?part=245&section=245.6
+
+> (7) Extension of eligibility to all children in a family. If any child is identified as a member of a household receiving assistance under SNAP, FDPIR, or TANF, all children in the Family, as defined in § 245.2, shall be categorically eligible for free meals or free milk. This applies to children identified through direct certification or through a free and reduced price application.
+
+### S2721. Summer EBT: "adult" defined (18 or older)
+
+Document: D-88
+
+7 CFR 292.2, "Adult" (eCFR, up to date as of 2026-11-19). https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-7.xml?part=292
+
+> Adult means, for the purposes of completing an application for eligibility for Program benefits, any individual 18 years of age or older.
+

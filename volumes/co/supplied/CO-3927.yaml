@@ -1,0 +1,14 @@
+id: CO-3927
+name: Receipts received for the self-employment costs
+identifier: self_employment_cost_receipts_received
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether the agency has received receipts for the business costs of the person's self-employment stated for the month (the operating, interest and business vehicle costs, CO-3370 to CO-3375): a receipt, invoice or vendor statement for each cost, or for vehicle costs gas receipts or a mileage log. A credit card statement or a bank statement is not a receipt."
+precision: "If not stated, LEAP reads it as false: no receipts, so no costs are deducted."
+supplied_by: The receipts the applicant provides.
+sources: [S1084]
+tags: [income, verification]
+rationale: "Verification pass V-1: 9 CCR 2503-7 3.755.21.I.2-3 (S1084) says \"Receipts for business-related expenses are required in order to be considered as deductions\" and \"Credit card and bank statements are not allowable receipts\". leap_self_employment_allowable_costs (CO-1711) added the neutral cost facts with no receipt condition, so costs claimed without receipts were deducted."
+nearest: [CO-3370]

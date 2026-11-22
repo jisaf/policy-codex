@@ -11,8 +11,8 @@ derived: [days_after, cccap_verification_response_days, [otherwise, cccap_verifi
 sources: [S891]
 implemented: engine
 tags: [verification]
-rationale: No existing item states when requested CCCAP verification is due.
-nearest: [CO-1392, CO-1414, CO-1426, CO-1437, CO-1461, CO-1656]
+rationale: "No existing item states when requested CCCAP verification is due. Final pass F-02: cccap_homelessness_verification_due_date (CO-3909) is the same date counted over the sixty days a family experiencing homelessness has during its stabilization period (3.121.B.3.b); cccap_verification_status (CO-1451) reads it in place of this one during that period."
+nearest: [CO-3909, CO-1392, CO-1414, CO-1426, CO-1437, CO-1461, CO-1656]
 tests:
   - {id: CO-1450-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-10-16"}
   # OQ-300: the program's own request date, when stated, replaces the shared checklist date.

@@ -1,0 +1,13 @@
+id: CO-3924
+name: LEAP pay periods added to make a month, by pay schedule
+identifier: leap_pay_periods_per_month
+kind: parameter
+type: table keyed by option
+scope: global
+program: LEAP
+meaning: "The number of gross pay amounts 9 CCR 2503-7 3.752.22.C adds to obtain a month's income, by the pay schedule of wages_pay_frequency (CO-3921): four weekly amounts (C.1.a), two bi-weekly amounts (C.1.b), two semi-monthly amounts (C.2), and one monthly amount (a person paid monthly is not \"paid less than monthly\", so the month's pay is the month's income)."
+versions:
+  - {from: "2015-11-01", value: {weekly: 4, biweekly: 2, semimonthly: 2, monthly: 1}, source: S2713}
+sources: [S2713]
+tags: [income]
+rationale: "Final pass F-09 (SW-35): the weekly x 4, bi-weekly x 2 and semi-monthly x 2 conversions are figures of the rule, read by leap_person_wages (CO-3925); a table keyed by option holds them as one dated figure. 3.752.22 is marked \"[Rev. eff. 11/1/15]\" in the version effective November 1, 2025 (D-86), and D-173 does not amend A-C."
