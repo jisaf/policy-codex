@@ -6,18 +6,46 @@ where the reader currently is.
 
 ## start
 
-Pick where you work: HCPF policy, CDHS policy, CDEC, Legal, County worker, or
-Engineer. Each opens the page that starts from your questions: your agency's
-home with what needs your sign-off and what is still open, the step-through
-case walkthrough for a county worker, or the handoff for an engineer. The
-older doors are still under "Other ways in": check how a household is
-decided, read the rules for a program, change a rule or fact, or implement
-the rules. You can change your choice any time from "change how you use
-this" in the header.
+The app has seven places in the sidebar: Desk, Programs, Figures,
+Households, Questions, Law and Changes. Choose your role once under "Working
+as" at the foot of the sidebar; the Desk then shows your role's work. The
+volume and the copy of the rules you read (the working tree on this
+computer, main, or another branch) are chosen there too. The tools an
+implementer needs are under "For implementers".
 
-The menu beside "Browse" chooses which copy of the rules you read: the
-working tree on this computer (when the app runs from `npm run dev` or
-`vite preview`), main, or another branch.
+## desk
+
+Your role's work: how many items wait for your signature (each counted once,
+however many of your roles must sign it), the open questions you own (a role
+owns a question when its Owner line names the role; partly settled ones are
+counted apart), the statute-over-rule departures in your programs, and what
+takes effect soon. Each number links to its list.
+
+## figures
+
+Every dated figure, as it stands on the date you choose. The filter matches
+every word you type, in any order. The flags narrow the list to figures with
+a new version in the next 90 days, figures whose source is not verified, and
+figures with no value on the date.
+
+## households
+
+The stored test households. Each has one page with tabs: each person's aid
+codes and results, the documents still needed (with each program's due date,
+flagged when it is past), what if, and what the case states. Open a result to
+read how it was reached, step by step.
+
+## law
+
+Where an item follows a statute over the Colorado rule text, the items that
+cite an unverified source and what reads them, the figures with no value
+today, and the sources and documents themselves.
+
+## changes
+
+What takes effect in a month: new figure versions, rules that start or end,
+and rule documents whose text takes effect. My proposal is everything you
+staged in this browser, ready to propose or to download and send.
 
 ## programs
 
