@@ -1,0 +1,13 @@
+id: CO-3376
+name: "Colorado Works: licensed child care provider cost, first child"
+identifier: cw_child_care_provider_cost_first_child
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: "The cost of doing business allowed a licensed, certified or approved day care provider for the first child in care (9 CCR 2503-6 3.605.2.E.1.b.1), unless documented costs are greater."
+value: 55
+sources: [S1155]
+implemented: engine
+tags: [cash, income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). A figure the rule states is a parameter, not a literal (OQ-82)."

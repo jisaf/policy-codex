@@ -13320,3 +13320,369 @@ Document: D-81
 > 2. Is temporarily absent from the home to receive medical treatment.
 > 3. Is temporarily absent from the home for less than forty-five (45) calendar days and has
 > established an intent to return.
+
+
+### S2204. SNAP exempt income: loans, reimbursements, education assistance, energy assistance, the earned income tax credit
+
+Document: D-82
+
+10 CCR 2506-1 4.405.F.1, I.1, 4.405.1 and the federal-law list items 7 and 20 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> F. Loans
+> 1. All loans from private individuals as well as commercial institutions shall
+> not be considered as income, including educational loans.
+>
+> ...
+>
+> I. Reimbursements
+> 1. Reimbursement for past or future expenses, to the extent they do not
+> exceed actual expenses, and do not represent a gain or benefit to the
+> household shall not be considered income.
+>
+> ...
+>
+> 4.405.1 Loans and Reimbursements to Students
+> All education assistance including grants, scholarships, fellowships, work-study,
+> veteran's educational benefits, and any other money received specifically for
+> educational expenses are exempt from consideration as income.
+>
+> ...
+>
+> 7. P.L. No. 99-425, Section(e), the Low-Income Home Energy Assistance
+> Act, 1986. Payments or allowances made under any federal laws for the
+> purpose of energy assistance. P.L. No. 104-193 states that any payment
+> or allowances made for the purpose of providing energy assistance under
+>
+> ...
+>
+> 20. P.L. No. 101-508, the Omnibus Budget Reconciliation Act of 1990, Title XI
+> Revenue Provisions, Section 11111, Modifications of Earned Income Tax
+> Credit, subsection (b) provides that any earned income tax credit shall not
+> be treated as income. This provision is effective with taxable years
+> beginning after December 31, 1990.
+
+
+### S2205. Colorado Works exempt income: tax refunds and the EITC, energy assistance, loans, reimbursements, educational aid and work-study, LEAP
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.A.4, A.18, A.24.a, A.26, A.31, B.1 and the bona fide loan of the list that follows B (version effective 07/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. Energy Assistance- Home energy assistance granted to a client by a private non-profit
+> organization or home energy supplier, whether in kind, by voucher, or vendor payment.
+>
+> ...
+>
+> 18. Reimbursement of out-of-pocket expenses.
+>
+> ...
+>
+> a. Income received from a college work-study program grant shall be exempt.
+>
+> ...
+>
+> 26. Educational grants, loans, stipends, and/or scholarships.
+>
+> ...
+>
+> 31. The benefits provided from the Low-Income Energy Assistance Program (LEAP).
+>
+> ...
+>
+> B. General Income Exemptions – Exemptions from Consideration as Income
+> For the purpose of determining eligibility for Colorado Works, the following shall be exempt from
+>
+> ...
+>
+> 1. Income Tax refunds.
+> a. The Earned Income Tax Credit (EITC) shall also be exempt for the month in
+> which the EITC payment is received and for the following month.
+>
+> ...
+>
+> 1. A bona fide loan. Bona fide loans are loans, either private or commercial, which have a
+> repayment agreement.
+
+
+### S2206. Adult Financial exempt income: tax refunds, home energy assistance, educational loans and grants, work-study, the SSI unearned income exclusions
+
+Document: D-80
+
+9 CCR 2503-5 3.520.786.A, C, G, H, K (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. Income tax refunds, including the Property Tax/Rent/Heat Credit (PTC) rebate, in
+> the month received. Any remaining funds shall be a countable resource after
+> twelve (12) months.
+>
+> ...
+>
+> C. Home energy assistance granted to the client by a private non-profit organization
+> or home energy supplier, whether in-kind or by voucher or vendor payment.
+>
+> ...
+>
+> G. Educational loans and grants.
+> H. Work study income.
+>
+> ...
+>
+> K. Unearned income as defined in the Social Security Program Operations Manual
+> System (POMS), Section SI 00830.099 Guide to Unearned Income Exclusions
+> (effective January 20, 2011) and consistent with the provisions of Federal
+> Regulations found at 20 CFR 416.1124 (September 2025), which are hereby
+> incorporated by reference. This rule does not contain any later amendments or
+
+
+### S2207. CCCAP income exclusions: federal-law payments, LEAP, the EIC, educational grants, loans and work-study
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.3, J.5, J.7-9, J.11-12, J.14-16, J.19 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Income Exclusions
+> Each of the following are not considered countable income and are not taken into
+>
+> ...
+>
+> 3. Any payment made from the Agent Orange Settlement Fund, pursuant to
+> P.L. No. 101201
+>
+> ...
+>
+> 5. Payments received under Title Il of the Uniform Relocation Assistance and
+> Real Property Acquisition Policies Act
+> 6. Experimental Housing Allowance Program (EHAP) payments made by
+> HUD under Section 23 of the U.S. Housing Act
+> 7. Payments made from Indian judgment funds and tribal funds held in trust
+> by the Secretary of the Interior and/or distributed per capita
+> 8. Distributions from a native corporation formed pursuant to the Alaska
+> Native Claims Settlement Act (ANCSA)
+> 9. Major disaster and emergency assistance provided to individuals and
+> families, and comparable disaster assistance provided by states, local
+> governments, and disaster assistance organizations
+>
+> ...
+>
+> 11. Payments to volunteers serving as foster grandparents, senior health
+> aides, or senior companions, and to persons serving in the Service Corps
+> of Retired Executives (SCORE) and Active Corps of Executives (ACE)
+> and any other program under Title I (VISTA) when the value of all such
+> payments adjusted to reflect the number of hours such volunteers are
+> serving is not equivalent to or greater than the minimum wage, and Title II
+> and III of the Domestic Volunteer Services Act
+>
+> ...
+>
+> 12. Low-Income Energy Assistance Program (LEAP) benefits
+> 13. Social security benefit payments and the accrued amount thereof to a
+> recipient when an individual plan for self-care and/or self-support has
+> been developed
+> 14. Earned Income Tax Credit (EIC) payments
+> 15. Monies received pursuant to the “Civil Liberties Act of 1988,” P.L. No. 100-
+> 383 (by eligible persons of Japanese ancestry or certain specified
+> survivors, and certain eligible Aleuts)
+> 16. Any grant or loan to any undergraduate student for educational purposes
+> made or insured under any programs administered by the Commissioner
+> of Education (Basic Educational Opportunity Grants, Supplementary
+> Educational Opportunity Grants, National Direct Student Loans, and
+> Guaranteed Student Loans); Pell Grant Program, the PLUS Program, the
+> Byrd Honor Scholarship programs, and the College Work Study Program
+>
+> ...
+>
+> 19. Any portion of educational loans, scholarships, and grants obtained and
+> used under conditions that preclude their use for current living costs and
+> that are earmarked for education
+
+
+### S2208. LEAP income exclusions: federal-law payments, financial aid and work-study, reimbursements, loans, lump-sum refunds
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.F, H, I, K-N, P, R, S, BB, EE (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> F. Payments to volunteers serving as foster grandparents, senior health aides, or senior
+> companions, and to persons serving in the Service Corps of Retired Executives (score) and
+> Active Corps of Executives (ace), AmeriCorps and any other program under Title I (Vista) when
+> the value of all such payments adjusted to reflect the number of hours such volunteers are
+> serving is not equivalent to or greater than the minimum wage, and Title II and III of the Domestic
+>
+> ...
+>
+> H. Monies received pursuant to the Civil Liberties Act of 1988;
+> I. Any payment made from the Agent Orange Settlement Fund;
+>
+> ...
+>
+> K. Reparation payments made under Germany's law for compensation of national socialist
+> persecution (German Restitution Act);
+> L. Any money received from the Radiation Exposure Compensation Trust Fund;
+> M. Reparation payments made under Sections 500 through 506 of the Austrian General Social
+> Insurance Act;
+> N. Payments to applicants or recipients because of their status as victims of Nazi persecution;
+>
+> ...
+>
+> P. All financial aid monies, including educational loans, scholarships, and grants, including work
+> study;
+>
+> ...
+>
+> R. Reimbursement received for expenses incurred in connection with employment from an
+> employer;
+> S. Reimbursement for past or future expenses, to the extent they do not exceed actual expenses,
+> and do not represent gain or benefit to the household;
+>
+> ...
+>
+> BB. A bona fide loan is a debt that the borrower has an obligation to repay and expresses his or her
+> intention to repay, as documented in a written agreement or by collateral contact from the lender;
+>
+> ...
+>
+> EE. Money received in the form of non-recurring lump sum payments for income tax refunds, rebates,
+> or credits; retroactive lump-sum social security, SSI, and public assistance payments.
+
+
+### S2209. SSI: income tax refunds and loans are not income; unearned income excluded by other Federal laws, educational grants, disaster assistance
+
+Document: D-207
+
+20 CFR 416.1103(d), (f); 416.1124(b), (c)(3), (c)(5) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> (d) Income tax refunds. Any amount refunded on income taxes you have already paid is not income.
+>
+> ...
+>
+> (f) Proceeds of a loan. Money you borrow or money you receive as repayment of a loan is not income. However, interest you receive on money you have lent is income. Buying on credit is treated as though you were borrowing money and what you purchase this way is not income.
+>
+> ...
+>
+> (b) Other Federal laws. Some Federal laws other than the Social Security Act provide that we cannot count some of your unearned income for SSI purposes. We list the laws and the exclusions in the appendix to this subpart which we update periodically.
+> (c) Other unearned income we do not count. We do not count as unearned income—
+>
+> ...
+>
+> (3) Any portion of a grant, scholarship, fellowship, or gift used or set aside for paying tuition, fees, or other necessary educational expenses. However, we do count any portion set aside or actually used for food or shelter;
+>
+> ...
+>
+> (5) Assistance received under the Disaster Relief and Emergency Assistance Act and assistance provided under any Federal statute because of a catastrophe which the President of the United States declares to be a major disaster. See § 416.1150 for a more detailed discussion of this assistance, particularly the treatment of in-kind support and maintenance received as the result of a major disaster;
+
+
+### S2210. SSI: the student earned income exclusion
+
+Document: D-207
+
+20 CFR 416.1112(c)(3) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/section-416.1112
+
+> (c) Other earned income we do not count. We do not count as earned income—
+>
+> ...
+>
+> (3) If you are under age 22 and a student who is regularly attending school as described in § 416.1861:
+> (i) For earned income beginning January 1, 2002, monthly and yearly maximum amounts that are the larger of:
+> (A) The monthly and yearly amounts for the previous year, or
+> (B) Monthly and yearly maximum amounts increased for changes in the cost-of-living, calculated in the same manner as the Federal benefit rates described in § 416.405, except that we will use the calendar year 2001 amounts as the base amounts and will round the resulting amount to the next higher multiple of $10 where such amount is a multiple of $5 but not of $10 and to the nearest multiple of $10 in any other case.
+
+
+### S2211. SSA: the 2026 student earned income exclusion, $2,410 a month and $9,730 a year
+
+Document: D-206
+
+90 FR 49047, 49050 (November 3, 2025), "Student Earned Income Exclusion". https://www.govinfo.gov/content/pkg/FR-2025-11-03/html/2025-19763.htm
+
+> Children who are blind or have a determined disability can have
+> limited earnings that do not count against their SSI payments if they
+> are students regularly attending school, college, university, or a
+> course of vocational or technical training. The maximum amount of such
+> income that we may exclude in 2025 is $2,350 per month, but not more
+> than $9,460 in all of 2025. These amounts increase based on a formula
+> set forth in regulation 20 CFR 416.1112.
+> To compute each of the monthly and yearly maximum amounts for 2026,
+> we increase the unrounded amount for 2025 by the latest cost-of-living
+> increase. If the calculated amount is not a multiple of $10, we round
+> it to the nearest multiple of $10. The unrounded monthly amount for
+> 2025 is $2,347.90. We increase this amount by 2.8 percent to $2,413.64,
+> which we then round to $2,410. Similarly, we increase the unrounded
+> yearly amount for 2025, $9,464.33, by 2.8 percent to $9,729.33 and
+> round this to $9,730. Therefore, the maximum amount of the income
+> exclusion applicable to a student in 2026 is $2,410 per month, but not
+> more than $9,730 in all of 2026.
+
+
+### S2212. SSI: a student regularly attending school
+
+Document: D-209
+
+20 CFR 416.1861(a)-(b) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/section-416.1861
+
+> (a) Are you a student? You are a student regularly attending school or college or training that is designed to prepare you for a paying job if you are enrolled for one or more courses of study and you attend class—
+> (1) In a college or university for at least 8 hours a week under a semester or quarter system;
+> (2) In grades 7-12 for at least 12 hours a week;
+> (3) In a course of training to prepare you for a paying job, and you are attending that training for at least 15 hours a week if the training involves shop practice or 12 hours a week if it does not involve shop practice (this kind of training includes anti-poverty programs, such as the Job Corps, and government-supported courses in self-improvement); or
+> (4) Less than the amount of time given in paragraph (a) (1), (2), or (3) of this section for reasons you cannot control, such as illness, if the circumstances justify your reduced credit load or attendance.
+> (b) If you are instructed at home. You may be a student regularly attending school if you are instructed at home in grades 7-12 in accordance with a home school law of the State or other jurisdiction in which you reside and for at least 12 hours a week.
+
+
+### S2213. Adult Financial countable resources: real and personal property, cash and convertible assets, retirement accounts, life insurance cash value
+
+Document: D-80
+
+9 CCR 2503-5 3.520.72.B.1, B.3-5, B.7 (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Countable resources include, but are not limited to:
+> 1. Equity value of real property that is not used as the primary home or not
+> exempt as income-producing.
+> 2. Proceeds from the sale of the primary home that are in excess of the cost
+> of expenses incurred to purchase or build a replacement home.
+> 3. Personal property or the proceeds from the sale of personal property, such
+> as mobile homes or recreational vehicles not used as the primary home
+> and not exempt as income producing.
+> 4. Personal property or the proceeds from the sale of personal property, such
+> as motor vehicles, recreational off road vehicles, boats, trailers, or similar
+> that are not exempt per Section 3.520.77 or exempt as income producing.
+> 5. Cash and convertible assets including but not limited to: cash on hand, a
+> savings or checking account, other accessible electronic currency and/or
+> cryptocurrency, stocks, bonds, mutual fund shares, 401Ks, 457Ks, IRAs,
+> Certificates of Deposit (CDs), PERA accounts, gold/silver, pensions, and
+> other retirement or investment accounts and investment vehicles.
+> 6. Mortgages, promissory notes, and similar properties that can be converted
+> to cash.
+> 7. Cash surrender value of all life insurance policies as outlined in Section
+
+### S2214. Adult Financial exempt resources: the highest-valued vehicle used for transportation; life insurance of $1,500 face value or less
+
+Document: D-80
+
+9 CCR 2503-5 3.520.77.A, 3.520.75.D (version effective 2026-03-02). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> A. The vehicle with the highest value is exempt if it is used for the transportation of
+> the client or a member of the household.
+> D. If the total face value of all life insurance policies owned by a client and his or her
+> spouse is equal to $1,500 or less, the full CSV of all policies is exempt.
+
+### S2215. SSI: one automobile excluded; life insurance excluded when its face value is $1,500 or less
+
+Document: D-210
+
+20 CFR 416.1218(b)(1), 416.1230(a) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-20/part-416/subpart-L
+
+> (1) Total exclusion. One automobile is totally excluded regardless of value if it is used for transportation for the individual or a member of the individual's household.
+> (a) General. In determining the resources of an individual (and spouse, if any), life insurance owned by the individual (and spouse, if any) will be considered to the extent of its cash surrender value. If, however, the total face value of all life insurance policies on any person does not exceed $1,500, no part of the cash surrender value of such life insurance will be taken into account in determining the resources of the individual (and spouse, if any). In determining the face value of life insurance on the individual (and spouse, if any), term insurance and burial insurance will not be taken into account.
+
+### S2216. SNAP: excluded resources: household goods and the cash value of life insurance; retirement accounts; Colorado excludes every vehicle
+
+Document: D-191
+
+7 CFR 273.8(e)(2), (e)(2)(i) (eCFR as of 2026-11-19); 10 CCR 2506-1 4.410.A (D-82). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (2) Household goods, personal effects, the cash value of life insurance policies, one burial plot per household member, and the value of one funeral agreement per household member. The cash value of pension plans or funds shall be excluded. The following retirement accounts shall be excluded:
+> (i) Funds in a plan, contract, or account that meets the requirements that is described in one of the following sections of the Internal Revenue Code of 1986:
+> 4.410 EXEMPT RESOURCES
+> In determining the resources for a household, the following shall be excluded from
+> consideration.
+> A. Vehicles
+> All of a household's licensed and unlicensed automobiles, motorcycles and
+> vehicles, including recreational vehicles and seasonal vehicles, shall be totally
+> exempt as a resource.

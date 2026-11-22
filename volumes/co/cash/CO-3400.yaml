@@ -1,0 +1,17 @@
+id: CO-3400
+name: "Adult Financial: countable resources of the person"
+identifier: af_person_countable_resources
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "This person's own countable resources by Adult Financial's own rules (9 CCR 2503-5 3.520.72-3.520.77): cash and convertible assets, retirement and pension accounts (3.520.72.B.5), real and personal property other than the home (B.1, B.3-4), vehicles other than the highest-valued one used for transportation (3.520.77.A), and the cash surrender value of life insurance unless the total face value of the client's and spouse's policies is $1,500 or less (3.520.75.D)."
+precision: "3.520.75.E's OAP rule for policies above $1,500 is not modeled; the cash value is counted. Burial funds and the other 3.520.77 exemptions not stated by the holdings facts are not counted."
+derived: [+, [+, [+, liquid_resources_value, [otherwise, retirement_accounts_value, 0]], [+, [otherwise, real_property_other_than_home_equity, 0], [max, 0, ["-", [otherwise, vehicles_equity_value, 0], [otherwise, transportation_vehicle_equity_value, 0]]]]], [case, [[">", [+, [otherwise, life_insurance_face_value, 0], [sum, [filter, [persons], [all, [otherwise, [rel, [spouse], [P]], false], [otherwise, [in_group, [P], lives_with], true]]], [of, [P], [otherwise, life_insurance_face_value, 0]]]], af_life_insurance_face_value_exemption_limit], [otherwise, life_insurance_cash_surrender_value, 0]], [else, 0]]]
+sources: [S1636, S2213, S2214]
+implemented: engine
+tags: [cash, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions."
+tests:
+  - {id: CO-3400-T1, as_of: "2026-10-01", given: {liquid_resources_value: 700, retirement_accounts_value: 1000, vehicles_equity_value: 4000, transportation_vehicle_equity_value: 4000}, relationships: [], expect: 1700}
+  - {id: CO-3400-T2, title: "Face value over 1,500: cash value counted", as_of: "2026-10-01", given: {liquid_resources_value: 100, life_insurance_face_value: 2000, life_insurance_cash_surrender_value: 600}, relationships: [], expect: 700}

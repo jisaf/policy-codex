@@ -224,9 +224,8 @@
         # Reconciled with ssi_countable_resources_couple (46000, Medicaid chapter) below (cases fix): p1 is
         # outside every SNAP unit (institutionalized, CO-304), so this does not change any SNAP
         # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
-        snap_countable_liquid_resources: 46000
+        liquid_resources_value: 1900  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 46000, snap_countable_nonliquid_resources 0, ssi_countable_resources_individual 1900, ssi_countable_resources_couple 46000)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -237,8 +236,6 @@
         receives_ssi: false
         meets_nursing_facility_level_of_care: true
         institution_entry_date: "2026-10-01"
-        ssi_countable_resources_individual: 1900
-        ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
         home_equity: 210000
         is_pregnant: false
@@ -411,7 +408,7 @@
         transfer_was_exempt: false
         home_equity: 210000
         ma_spousal_resources_at_snapshot: 46000
-        ssi_countable_resources_individual: 44100
+        liquid_resources_value: 44100  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 44100, snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
@@ -439,9 +436,7 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
@@ -646,9 +641,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
         is_approved_for_work_study: false
@@ -848,9 +842,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -1051,9 +1044,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -2251,7 +2243,7 @@
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         home_equity: 210000
-        ssi_countable_resources_individual: 1900
+        liquid_resources_value: 1900  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 1900, snap_countable_liquid_resources 46000, snap_countable_nonliquid_resources 0, ssi_countable_resources_couple 46000)
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
@@ -2287,9 +2279,7 @@
         # Reconciled with ssi_countable_resources_couple (46000, Medicaid chapter) below (cases fix): p1 is
         # outside every SNAP unit (institutionalized, CO-304), so this does not change any SNAP
         # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
-        snap_countable_liquid_resources: 46000
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -2298,7 +2288,6 @@
         state_of_residence: CO
         institution_entry_date: "2026-10-01"
         meets_nursing_facility_level_of_care: true
-        ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
       month_defaults:
         lottery_gambling_winnings_received: 0
@@ -2466,7 +2455,7 @@
         transfer_was_exempt: false
         home_equity: 210000
         ma_spousal_resources_at_snapshot: 46000
-        ssi_countable_resources_individual: 44100
+        liquid_resources_value: 44100  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 44100, snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
         dependent_child_has_minimum_essential_coverage: false
@@ -2500,9 +2489,7 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
@@ -2706,9 +2693,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
         is_approved_for_work_study: false
@@ -2905,9 +2891,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -3106,9 +3091,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -4135,9 +4119,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 4200
+        liquid_resources_value: 4200  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 4200, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         # Phase-8 fix round (C-5): the rent includes every utility. Stated through the utility facts, so
         # snap_utility_allowance_amount (CO-1500) derives the zero allowance instead of the case stating it.
         snap_is_head_of_household: true
@@ -4213,9 +4196,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1958-01-01"
@@ -5056,8 +5038,7 @@
         meets_hcbs_waiver_target_group: none
         ma_ltc_setting_requested: institutional  # HCPF fix round (B-3)
         has_income_trust: false
-        ssi_countable_resources_individual: 172500
-        ssi_countable_resources_couple: 180000
+        liquid_resources_value: 172500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 172500, ssi_countable_resources_couple 180000)
         ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 54000
@@ -5123,7 +5104,7 @@
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
-        ssi_countable_resources_individual: 7500
+        liquid_resources_value: 7500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 7500)
         ma_spousal_resources_at_snapshot: 180000
         home_equity: 240000
         uncompensated_transfer_value_in_lookback: 0
@@ -5184,7 +5165,7 @@
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         has_income_trust: false
-        ssi_countable_resources_individual: 4200
+        liquid_resources_value: 4200  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 4200)
         home_equity: 0
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -5341,8 +5322,7 @@
         snap_receives_permanent_disability_retirement_benefit: false
         snap_is_disqualified_for_work_requirement_noncompliance: false
         is_pregnant: false
-        ssi_countable_resources_individual: 900
-        ssi_countable_resources_couple: 1400
+        liquid_resources_value: 900  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 900, ssi_countable_resources_couple 1400)
         receives_tanf_cash: true
       month_defaults:
         wages_gross: 400
@@ -5404,7 +5384,7 @@
         snap_receives_permanent_disability_retirement_benefit: false
         snap_is_disqualified_for_work_requirement_noncompliance: true
         is_pregnant: false
-        ssi_countable_resources_individual: 500
+        liquid_resources_value: 500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 500)
         receives_tanf_cash: true
       month_defaults:
         wages_gross: 0
@@ -5465,7 +5445,7 @@
         is_blind: false
         snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
-        ssi_countable_resources_individual: 1500
+        liquid_resources_value: 1500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 1500)
         receives_tanf_cash: false
       month_defaults:
         ssi_income: 700
@@ -5522,7 +5502,7 @@
         is_blind: false
         snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
-        ssi_countable_resources_individual: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 0)
         receives_tanf_cash: true
       month_defaults:
         wages_gross: 0
@@ -5582,7 +5562,7 @@
         is_blind: false
         snap_receives_permanent_disability_retirement_benefit: false
         is_pregnant: false
-        ssi_countable_resources_individual: 1200
+        liquid_resources_value: 1200  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 1200)
         receives_tanf_cash: false
       month_defaults:
         wages_gross: 0
@@ -5760,13 +5740,10 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
       month_defaults:
         work_sanction_level_served: "none"
-        cw_excluded_unearned_income: 0
-        cw_excluded_earned_income: 0
         wages_gross: 2600
         hours_worked: 150
         self_employment_net_earnings_for_tax: 0
@@ -5814,15 +5791,12 @@
         cccap_is_in_job_search_activity: true
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
       month_defaults:
         cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
         is_in_sud_treatment_iop_or_higher: false    # phase-10 sweep
         work_sanction_level_served: "none"
-        cw_excluded_unearned_income: 0
-        cw_excluded_earned_income: 0
         wages_gross: 0
         hours_worked: 0
         self_employment_net_earnings_for_tax: 0
@@ -5872,13 +5846,10 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: true
         is_emancipated_minor: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
       month_defaults:
         work_sanction_level_served: "none"
-        cw_excluded_unearned_income: 0
-        cw_excluded_earned_income: 0
         wages_gross: 0
         hours_worked: 0
         self_employment_net_earnings_for_tax: 0
@@ -5931,14 +5902,11 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
       month_defaults:
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
         work_sanction_level_served: "none"
-        cw_excluded_unearned_income: 0
-        cw_excluded_earned_income: 0
         wages_gross: 400
         hours_worked: 24
         self_employment_net_earnings_for_tax: 0
@@ -5977,9 +5945,8 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
       month_defaults:
         wages_gross: 1500
         hours_worked: 160
@@ -6108,7 +6075,7 @@
         snap_receives_permanent_disability_retirement_benefit: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
-        ssi_countable_resources_individual: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 300)
         date_of_birth: "1997-02-11"
         sex: female
         immigration_status: undocumented
@@ -6165,7 +6132,7 @@
         snap_receives_permanent_disability_retirement_benefit: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
-        ssi_countable_resources_individual: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 300)
         date_of_birth: "1968-05-20"
         sex: female
         immigration_status: lawful_permanent_resident
@@ -6257,7 +6224,7 @@
         receives_ssi: false
         snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
-        ssi_countable_resources_individual: 500
+        liquid_resources_value: 500  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 500)
         expects_institutional_stay_of_thirty_days: false
         meets_hcbs_waiver_target_group: none
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
@@ -6302,7 +6269,7 @@
         snap_receives_permanent_disability_retirement_benefit: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
-        ssi_countable_resources_individual: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 300)
         date_of_birth: "2020-03-09"
         sex: male
         immigration_status: us_citizen
@@ -6443,7 +6410,7 @@
         receives_ssi: false
         snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
-        ssi_countable_resources_individual: 1200
+        liquid_resources_value: 1200  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 1200)
         institution_entry_date: "2026-09-15"
         expects_institutional_stay_of_thirty_days: true
         meets_nursing_facility_level_of_care: true
@@ -6539,7 +6506,7 @@
         af_has_total_disability_six_months: false
         is_blind: false
         snap_receives_permanent_disability_retirement_benefit: false
-        ssi_countable_resources_individual: 1000
+        liquid_resources_value: 1000  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 1000)
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         hca_functional_capacity_score: 24
@@ -6770,10 +6737,8 @@
         is_referred_for_colorado_works_child_care: false
         is_emancipated_minor: false
         marital_status: single
-        snap_countable_liquid_resources: 20
+        liquid_resources_value: 20  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 20, snap_countable_nonliquid_resources 0, ssi_countable_resources_individual 20)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
-        ssi_countable_resources_individual: 20
         ma_application_date: "2026-11-02"
         # Verification facts.
         verification_request_date: "2026-11-02"
@@ -6919,10 +6884,8 @@
         is_referred_for_colorado_works_child_care: false
         is_emancipated_minor: false
         marital_status: single
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0, ssi_countable_resources_individual 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
-        ssi_countable_resources_individual: 0
         ma_application_date: "2026-11-02"
         verification_request_date: "2026-11-02"
         ma_reasonable_opportunity_notice_date: "2026-11-02"
@@ -7188,10 +7151,8 @@
         is_referred_for_colorado_works_child_care: false
         is_emancipated_minor: false
         marital_status: single
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0, ssi_countable_resources_individual 300)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
-        ssi_countable_resources_individual: 300
         ma_application_date: "2026-10-01"
         # Verification facts.
         verification_request_date: "2026-10-01"
@@ -7348,10 +7309,8 @@
         is_referred_for_colorado_works_child_care: false
         is_emancipated_minor: false
         marital_status: single
-        snap_countable_liquid_resources: 0
+        liquid_resources_value: 0  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 0, snap_countable_nonliquid_resources 0, ssi_countable_resources_individual 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
-        ssi_countable_resources_individual: 0
         ma_application_date: "2026-10-01"
         verification_request_date: "2026-10-01"
         ma_reasonable_opportunity_notice_date: "2026-10-01"
@@ -8003,9 +7962,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1995-04-02"
@@ -8087,9 +8045,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1990-07-19"
@@ -8172,9 +8129,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2018-05-09"
@@ -9610,9 +9566,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1996-03-10"
@@ -9694,9 +9649,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2021-06-01"
@@ -9778,9 +9732,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1990-01-15"
@@ -9864,9 +9817,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2015-09-09"
@@ -9950,9 +9902,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1993-11-20"
@@ -10034,9 +9985,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2019-02-14"
@@ -10571,9 +10521,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "2002-02-02"
@@ -10656,9 +10605,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1986-05-05"
@@ -10775,9 +10723,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
@@ -10881,9 +10828,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
@@ -11005,9 +10951,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1991-04-04"
@@ -11090,9 +11035,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2016-01-20"
@@ -11174,9 +11118,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1981-07-07"
@@ -11301,9 +11244,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1994-12-12"
@@ -11385,9 +11327,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2020-10-10"
@@ -11495,9 +11436,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
@@ -11607,9 +11547,8 @@
         receives_unemployment_compensation_or_applied: false
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
-        snap_countable_liquid_resources: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was snap_countable_liquid_resources 300, snap_countable_nonliquid_resources 0)
         cccap_declares_assets_within_limit: true
-        snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
@@ -11702,7 +11641,7 @@
         state_of_residence: CO
         sponsor_household_size: 3
         sponsor_dependent_count: 1
-        ssi_countable_resources_individual: 2600
+        liquid_resources_value: 2600  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 2600)
       month_defaults:
         wages_gross: 3200
         self_employment_gross_receipts: 0
@@ -11722,7 +11661,7 @@
         date_of_birth: "1978-09-30"
         immigration_status: us_citizen
         state_of_residence: CO
-        ssi_countable_resources_individual: 300
+        liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 300)
     p3:
       # Niece, 15, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:

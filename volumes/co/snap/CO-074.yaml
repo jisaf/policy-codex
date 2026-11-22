@@ -1,0 +1,16 @@
+id: CO-074
+name: "SNAP: countable non-liquid resources"
+identifier: snap_countable_nonliquid_resources
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The person's own countable non-liquid resources under 7 CFR 273.8 and 10 CCR 2506-1 4.410, before combining with other household members' resources: real property other than the home. Colorado excludes every vehicle (4.410.A); the cash value of life insurance and household goods (273.8(e)(2)) and retirement accounts (273.8(e)(2)(i)) are excluded."
+derived: [otherwise, real_property_other_than_home_equity, 0]
+sources: [S2216]
+implemented: engine
+tags: [snap, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-074-T1, as_of: "2026-10-01", given: {real_property_other_than_home_equity: 12000, vehicles_equity_value: 8000, life_insurance_cash_surrender_value: 3000}, expect: 12000}
+  - {id: CO-074-T2, as_of: "2026-10-01", given: {}, expect: 0}

@@ -1,0 +1,17 @@
+id: CO-1705
+name: "Colorado Works: self-employment business costs"
+identifier: cw_self_employment_business_costs
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The person's cost of doing business for the month that 9 CCR 2503-6 3.605.2.E.1 allows (rent of business premises or the room used at home, wholesale cost of merchandise, utilities, interest, taxes, labor, upkeep of necessary equipment): the operating costs, interest and the home business space; for a licensed, certified or approved day care provider, $55 for the first child and $22 for each additional child unless documented costs are higher (E.1.b); not depreciation, payments on the principal of loans for capital assets, or personal expenses."
+precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0."
+derived: [case, [[">", [otherwise, licensed_child_care_children_in_care_count, 0], 0], [max, [+, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]], [otherwise, self_employment_home_business_space_costs, 0]], [+, cw_child_care_provider_cost_first_child, ["*", cw_child_care_provider_cost_each_additional_child, ["-", licensed_child_care_children_in_care_count, 1]]]]], [else, [+, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]], [otherwise, self_employment_home_business_space_costs, 0]]]]
+sources: [S1155]
+implemented: engine
+tags: [cash, income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-1705-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30}, expect: 470}
+  - {id: CO-1705-T2, title: "Day care provider with three children: 55 + 2 x 22 = 99 over 60 documented", month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 60, licensed_child_care_children_in_care_count: 3}, expect: 99}

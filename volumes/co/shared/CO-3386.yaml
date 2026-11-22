@@ -1,0 +1,18 @@
+id: CO-3386
+name: "SSI method: student regularly attending school"
+identifier: ssi_is_student_regularly_attending_school
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person is a student regularly attending school, college or job training under 20 CFR 416.1861(a)-(b), the SSI method the SSI-related Medical Assistance groups apply: enrolled and attending class at least 8 hours a week in college or university, 12 hours a week in grades 7-12 or home school, 12 hours a week in job training without shop practice, or 15 with it."
+precision: "Read from education_program_type and class_attendance_hours_per_week (CO-3368): higher education is college; secondary programs, a recognized home school and high school equivalency are grades 7-12; postsecondary career and technical and workforce training are training with shop practice; other training is training without it. 416.1861(a)(4)'s reduced attendance for reasons the student cannot control and (c)-(d) (study at home, school breaks) are not modeled."
+derived: [case, [["=", education_program_type, higher_education], [">=", class_attendance_hours_per_week, ssi_student_college_min_hours_per_week]], [[in, education_program_type, [secondary, secondary_career_and_technical, home_school_recognized, high_school_equivalency, other_training, basic_education]], [">=", class_attendance_hours_per_week, ssi_student_school_min_hours_per_week]], [[in, education_program_type, [postsecondary_career_and_technical, workforce_training]], [">=", class_attendance_hours_per_week, ssi_student_shop_training_min_hours_per_week]], [else, false]]
+sources: [S2212]
+implemented: engine
+tags: [non_magi, student]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The SSI student earned income exclusion (CO-2471) needs the SSI method's own definition of a student."
+tests:
+  - {id: CO-3386-T1, as_of: "2026-10-01", given: {education_program_type: higher_education, class_attendance_hours_per_week: 9}, expect: true}
+  - {id: CO-3386-T2, as_of: "2026-10-01", given: {education_program_type: secondary, class_attendance_hours_per_week: 10}, expect: false}
+  - {id: CO-3386-T3, as_of: "2026-10-01", given: {education_program_type: none}, expect: false}

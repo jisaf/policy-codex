@@ -1,0 +1,16 @@
+id: CO-801
+name: "SSI method: countable resources of the couple"
+identifier: ssi_countable_resources_couple
+kind: derived
+type: money
+scope: person
+program: All
+meaning: "The combined countable resources by the SSI method of this person and a spouse living together: each one's ssi_countable_resources_individual (20 CFR 416.1202(a), 10 CCR 2505-10 8.100.5.M.1's couple limit and § 8.100.7.O.1's ongoing test)."
+precision: "Read for the spouse of the case wherever each lives: the readers that compare it with a limit (§ 8.100.5.M.1 for a couple, § 8.100.7.O.1 and the spousal impoverishment items for an institutionalized spouse) count both spouses' resources, as the couple figure the case stated did. For an unmarried person it is the person's own figure."
+derived: [+, ssi_countable_resources_individual, [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], ssi_countable_resources_individual]]]
+sources: [S2215]
+implemented: engine
+tags: [non_magi, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. Dual-entry 2.6 stated the couple's figure once on one spouse; it is now the sum of the spouses' own countable resources."
+tests:
+  - {id: CO-801-T1, as_of: "2026-10-01", given: {ssi_countable_resources_individual: 900}, others: {p2: {ssi_countable_resources_individual: 500}}, relationships: [[spouse, p2]], expect: 1400}

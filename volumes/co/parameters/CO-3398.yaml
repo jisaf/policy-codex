@@ -1,0 +1,13 @@
+id: CO-3398
+name: "SSI: life insurance face value excluded"
+identifier: ssi_life_insurance_face_value_exclusion_limit
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: "Life insurance is excluded when the total face value of the policies on a person is no more than this (20 CFR 416.1230(a))."
+value: 1500
+sources: [S2215]
+implemented: engine
+tags: [resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. A figure the rule states is a parameter (OQ-82)."

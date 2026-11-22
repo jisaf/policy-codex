@@ -1,0 +1,14 @@
+id: CO-3367
+name: "Nonrecurring lump sum received"
+identifier: lump_sum_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "A nonrecurring lump-sum payment the person received in the month: an income tax refund, rebate or credit; a retroactive lump-sum Social Security, SSI, public assistance or railroad retirement payment; a lump-sum insurance settlement; an inheritance; a lottery or gambling win paid at once; or a similar one-time payment."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or _nontaxable), not added to it; what is still held on the determination date is also part of liquid_resources_value. If not stated, every program reads it as 0."
+supplied_by: "Application (resources), verified by statements as each program requires."
+sources: [S1957, S1958]
+implemented: engine
+tags: [income, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions."

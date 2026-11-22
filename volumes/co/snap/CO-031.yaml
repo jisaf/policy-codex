@@ -1,0 +1,15 @@
+id: CO-031
+name: "SNAP: countable liquid resources"
+identifier: snap_countable_liquid_resources
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The person's own countable liquid resources under 7 CFR 273.8(c)(1), before combining with other household members' resources: cash on hand, accounts, certificates, stocks and bonds, and lump sums still held (liquid_resources_value). Retirement accounts are excluded (273.8(e)(2)(i))."
+derived: liquid_resources_value
+sources: [S1958, S2216]
+implemented: engine
+tags: [snap, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-031-T1, as_of: "2026-10-01", given: {liquid_resources_value: 300, retirement_accounts_value: 9000}, expect: 300}

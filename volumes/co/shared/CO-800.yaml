@@ -1,0 +1,17 @@
+id: CO-800
+name: "SSI method: countable resources of the individual"
+identifier: ssi_countable_resources_individual
+kind: derived
+type: money
+scope: person
+program: All
+meaning: "This person's own countable resources by the SSI method (20 CFR 416.1201, 416.1210; 10 CCR 2505-10 8.100.5.M.2), as an individual, not combined with a spouse's: liquid resources, retirement accounts, real property other than the home, vehicles other than the one used for transportation (416.1218(b)(1)), and the cash surrender value of life insurance unless the face value is $1,500 or less (416.1230(a))."
+precision: "The home (416.1212) is not counted here; the Medicaid home equity limit reads home_equity (CO-826). Burial funds and the other 416.1210 exclusions not stated by the holdings facts are not counted."
+derived: [+, [+, [+, liquid_resources_value, [otherwise, retirement_accounts_value, 0]], [+, [otherwise, real_property_other_than_home_equity, 0], [max, 0, ["-", [otherwise, vehicles_equity_value, 0], [otherwise, transportation_vehicle_equity_value, 0]]]]], [case, [[">", [otherwise, life_insurance_face_value, 0], ssi_life_insurance_face_value_exclusion_limit], [otherwise, life_insurance_cash_surrender_value, 0]], [else, 0]]]
+sources: [S2215, S2213]
+implemented: engine
+tags: [non_magi, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-800-T1, as_of: "2026-10-01", given: {liquid_resources_value: 1200, vehicles_equity_value: 9000, transportation_vehicle_equity_value: 6000, life_insurance_face_value: 1000, life_insurance_cash_surrender_value: 400}, expect: 4200}
+  - {id: CO-800-T2, as_of: "2026-10-01", given: {liquid_resources_value: 500, life_insurance_face_value: 5000, life_insurance_cash_surrender_value: 900}, expect: 1400}

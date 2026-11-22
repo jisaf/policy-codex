@@ -1,0 +1,17 @@
+id: CO-2343
+name: "Adult Financial: excluded unearned income"
+identifier: af_excluded_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The part of this person's gross unearned income for the month, other than SSI, that 9 CCR 2503-5 3.520.786 exempts: income tax refunds and the PTC rebate in the month received (A), home energy assistance (C), educational loans and grants (G), and the SSI unearned income exclusions K incorporates, among them payments other federal laws exclude (20 CFR 416.1124(b))."
+precision: "The sum of the neutral receipt facts the program's list names (each part of the gross income facts, so the program's countable income subtracts it); an unstated receipt is 0."
+derived: [+, [+, [+, [otherwise, educational_assistance_received, 0], [otherwise, energy_assistance_received, 0]], [otherwise, tax_refunds_and_credits_received, 0]], [otherwise, federally_excluded_payments_received, 0]]
+sources: [S1622, S2206, S2209]
+implemented: engine
+tags: [cash, income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-2343-T1, month: "2026-10", as_of: "2026-10-01", given: {}, expect: 0}
+  - {id: CO-2343-T2, month: "2026-10", as_of: "2026-10-01", given: {educational_assistance_received: 300, federally_excluded_payments_received: 50}, expect: 350}

@@ -1,0 +1,19 @@
+id: CO-2471
+name: "SSI method: excluded earned income"
+identifier: ma_ssi_excluded_earned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of the person's gross earned income for the month that the SSI method does not count for the SSI-related Medical Assistance groups: the student earned income exclusion of 20 CFR 416.1112(c)(3) - for a student under 22 regularly attending school, the earned income of the month up to the monthly maximum, and no more than what remains of the yearly maximum after the months of the calendar year before."
+precision: "The month's exclusion is the yearly running total of each month's basis (ssi_student_earned_income_exclusion_basis, CO-3387: the month's earned income, wages_gross and ma_self_employment_net_earnings, up to the monthly maximum, for a student under 22) capped at the yearly maximum, less the same total through the month before (P54), so no item reads itself. The maxima are the SSA's figures for the year (CO-3379, CO-3380, D-206)."
+derived: ["-", [min, ssi_student_earned_income_exclusion_annual, [sum_months, [months_from_to, [latest_month_of_year, 1, [month]], [month]], [at, ssi_student_earned_income_exclusion_basis, [that_month]]]], [min, ssi_student_earned_income_exclusion_annual, [sum_months, [months_from_to, [latest_month_of_year, 1, [month]], [month_before, [month]]], [at, ssi_student_earned_income_exclusion_basis, [that_month]]]]]
+sources: [S308, S309, S2210, S2211]
+implemented: engine
+tags: [non_magi, income, student]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The SSI student earned income exclusion was an example of what a case had to enter itself; its 2026 figures were fetched from the SSA's Federal Register notice (D-206), ssa.gov being refused."
+tests:
+  - {id: CO-2471-T1, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true}, month_defaults: {wages_gross: 900, ma_self_employment_net_earnings: 0}, expect: 900}
+  - {id: CO-2471-T2, title: "Above the monthly maximum", month: "2026-01", as_of: "2026-01-15", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true, wages_gross: 3000, ma_self_employment_net_earnings: 0}, expect: 2410}
+  - {id: CO-2471-T3, title: "The yearly maximum: 2,410 a month for four months leaves 90 in May", month: "2026-05", as_of: "2026-05-15", given: {date_of_birth: "2008-01-01", ssi_is_student_regularly_attending_school: true}, month_defaults: {wages_gross: 3000, ma_self_employment_net_earnings: 0}, expect: 90}
+  - {id: CO-2471-T4, month: "2026-10", as_of: "2026-10-01", given: {date_of_birth: "1990-01-01", ssi_is_student_regularly_attending_school: true, wages_gross: 900}, expect: 0}

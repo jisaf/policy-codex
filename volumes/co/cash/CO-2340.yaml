@@ -1,0 +1,16 @@
+id: CO-2340
+name: "Colorado Works: excluded earned income"
+identifier: cw_excluded_earned_income
+kind: derived
+type: money
+scope: person-month
+program: ColoradoWorks
+meaning: "The part of this person's gross earned income for the month that 9 CCR 2503-6 3.605.4.A.24 exempts: all of a dependent child student's earned income (A.24.b, cw_student_earnings_are_disregarded), otherwise college work-study income (A.24.a)."
+derived: [case, [cw_student_earnings_are_disregarded, [+, wages_gross, cw_self_employment_net_profit]], [else, [otherwise, work_study_earnings, 0]]]
+sources: [S1621, S2205]
+implemented: engine
+tags: [cash, income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-2340-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_student_earnings_are_disregarded: true, wages_gross: 400, cw_self_employment_net_profit: 0}, expect: 400}
+  - {id: CO-2340-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_student_earnings_are_disregarded: false, work_study_earnings: 250}, expect: 250}

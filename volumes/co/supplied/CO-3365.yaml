@@ -1,0 +1,14 @@
+id: CO-3365
+name: "Tax refunds and credits received"
+identifier: tax_refunds_and_credits_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Income tax refunds, rebates and credits the person received in the month, the earned income tax credit and Colorado's Property Tax/Rent/Heat credit included."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or other_unearned_income_nontaxable), not added to it. If not stated, every program reads it as 0."
+supplied_by: "Application (income and expenses), verified as each program requires."
+sources: [S2204, S2205, S2206, S2207, S2208, S2209]
+implemented: engine
+tags: [income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13)."

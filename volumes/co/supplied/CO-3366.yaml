@@ -1,0 +1,14 @@
+id: CO-3366
+name: "Payments a federal statute excludes from income"
+identifier: federally_excluded_payments_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Payments the person received in the month that a federal statute excludes from income for federally funded means-tested programs: the Agent Orange Settlement Fund, the Civil Liberties Act of 1988, Indian judgment and trust fund payments, Alaska Native Claims Settlement Act distributions, Uniform Relocation Act payments, major disaster and emergency assistance, volunteer payments under Titles I to III of the Domestic Volunteer Service Act below the minimum wage, German and Austrian reparations and payments to victims of Nazi persecution, Radiation Exposure Compensation Trust Fund payments, and the like."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or other_unearned_income_nontaxable), not added to it. If not stated, every program reads it as 0."
+supplied_by: "Application (income and expenses), verified as each program requires."
+sources: [S2207, S2208, S2209]
+implemented: engine
+tags: [income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13)."

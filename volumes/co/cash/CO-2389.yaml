@@ -1,0 +1,16 @@
+id: CO-2389
+name: "Adult Financial: countable resources of the client and spouse"
+identifier: af_client_and_spouse_countable_resources
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The countable resources of this Adult Financial client and the client's spouse, counted and exempted under 9 CCR 2503-5 3.520.72 to 3.520.77 (Adult Financial's own list and exemptions): each one's af_person_countable_resources."
+precision: "The spouse of the case wherever the spouse lives: 3.520.72.A counts the countable resources of 'the client, spouse, and sponsor(s)' and sets the married client's limit, with no living-together condition."
+derived: [+, af_person_countable_resources, [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], af_person_countable_resources]]]
+sources: [S1636, S2213, S2214]
+implemented: engine
+tags: [cash, resources]
+rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. The ID and identifier are kept; the amount is now derived from Adult Financial's own count of each spouse's holdings."
+tests:
+  - {id: CO-2389-T1, as_of: "2026-10-01", given: {af_person_countable_resources: 900}, others: {p2: {af_person_countable_resources: 500}}, relationships: [[spouse, p2]], expect: 1400}

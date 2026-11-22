@@ -14,5 +14,5 @@ tags: [cash, oap, and, ab, resources]
 rationale: "No existing item compares Adult Financial countable resources to the $2,000/$3,000 limit. af_category (CO-953) needs it. Not identical to ma_meets_ssi_resource_standard (CO-610), which compares against ma_ssi_household_size's living-together test rather than af_countable_resources's plain-marriage test; acknowledged as reusing CO-610's two resource-limit parameters directly (CO-233/CO-234), per the phase-5 brief's cross-program reuse instruction, rather than restating $2,000/$3,000 a second time. Fix round (M-6): reads is_married (CO-930) instead of re-deriving [exists_related, [spouse], true] a second time, matching af_countable_resources (CO-947)."
 nearest: [CO-610]
 tests:
-  - {id: CO-948-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, ssi_countable_resources_individual: 1900, ssi_countable_resources_couple: 46000}, others: {}, relationships: [], expect: true}
-  - {id: CO-948-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, ssi_countable_resources_individual: 1900, ssi_countable_resources_couple: 46000}, others: {p2: {}}, relationships: [[spouse, p2]], expect: false}
+  - {id: CO-948-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {}, relationships: [], expect: true}
+  - {id: CO-948-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {p2: {af_person_countable_resources: 44100}}, relationships: [[spouse, p2]], expect: false}

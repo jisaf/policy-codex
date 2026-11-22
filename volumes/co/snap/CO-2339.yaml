@@ -1,0 +1,17 @@
+id: CO-2339
+name: "SNAP: excluded unearned income"
+identifier: snap_excluded_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The part of this person's gross unearned income for the month that 10 CCR 2506-1 4.405 (and 7 CFR 273.9(c)) excludes from SNAP income: loans (F), reimbursements (I), education assistance (4.405.1), energy assistance under federal law, the earned income tax credit and tax refunds, payments federal law excludes, and a nonrecurring lump sum (4.405.E; 7 CFR 273.9(c)(8)), which SNAP counts as a resource instead (CO-3391)."
+precision: "The sum of the neutral receipt facts the program's list names (each part of the gross income facts, so the program's countable income subtracts it); an unstated receipt is 0."
+derived: [+, [+, [+, [+, [+, [+, [otherwise, educational_assistance_received, 0], [otherwise, loan_proceeds_received, 0]], [otherwise, expense_reimbursements_received, 0]], [otherwise, energy_assistance_received, 0]], [otherwise, tax_refunds_and_credits_received, 0]], [otherwise, federally_excluded_payments_received, 0]], [otherwise, lump_sum_received, 0]]
+sources: [S1620, S2204, S1958]
+implemented: engine
+tags: [snap, income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-2339-T1, month: "2026-10", as_of: "2026-10-01", given: {}, expect: 0}
+  - {id: CO-2339-T2, month: "2026-10", as_of: "2026-10-01", given: {educational_assistance_received: 300, lump_sum_received: 50}, expect: 350}

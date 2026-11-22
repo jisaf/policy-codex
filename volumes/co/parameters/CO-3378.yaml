@@ -1,0 +1,14 @@
+id: CO-3378
+name: "Colorado Works: hours a month of a full-time employee"
+identifier: cw_full_time_employee_hours_per_month
+kind: parameter
+type: hours
+scope: global
+program: ColoradoWorks
+meaning: "The hours worked in a month at or above which a part-time student is a full-time employee, whose earnings 9 CCR 2503-6 3.605.4.A.24.b does not disregard: thirty hours a week (130 a month). The rule does not define a full-time employee (OQ-613)."
+value: 130
+sources: [S1621]
+implemented: engine
+open: [OQ-613]
+tags: [cash, income, student]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). A figure the rule states is a parameter, not a literal (OQ-82)."

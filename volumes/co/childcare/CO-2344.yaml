@@ -1,0 +1,17 @@
+id: CO-2344
+name: "CCCAP: excluded income"
+identifier: cccap_excluded_income
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The part of this person's gross earned and unearned income for the month that 8 CCR 1403-1 3.111.J excludes, other than the earnings of a household child who is not a teen parent, which cccap_household_income already leaves out (J.1): payments federal law excludes (J.3, J.5-9, J.11, J.15), LEAP benefits (J.12), the EIC (J.14), educational grants and loans and college work-study (J.16, J.19)."
+precision: "The sum of the neutral receipt facts the program's list names (each part of the gross income facts, so the program's countable income subtracts it); an unstated receipt is 0."
+derived: [+, [+, [+, [+, [otherwise, educational_assistance_received, 0], [otherwise, work_study_earnings, 0]], [otherwise, energy_assistance_received, 0]], [otherwise, tax_refunds_and_credits_received, 0]], [otherwise, federally_excluded_payments_received, 0]]
+sources: [S1623, S2207]
+implemented: engine
+tags: [income]
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+tests:
+  - {id: CO-2344-T1, month: "2026-10", as_of: "2026-10-01", given: {}, expect: 0}
+  - {id: CO-2344-T2, month: "2026-10", as_of: "2026-10-01", given: {educational_assistance_received: 300, federally_excluded_payments_received: 50}, expect: 350}
