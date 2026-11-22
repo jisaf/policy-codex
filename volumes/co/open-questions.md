@@ -552,7 +552,7 @@ Hard-coded numbers fix round (audit D-3): the forty quarters are federal_qualify
 
 ### OQ-104. Work participation monthly-hour equivalent is an assumption
 
-Body: 45 CFR 261.31 and 261.35 (S419, S420) state weekly hour minimums (30, or 20 for a single parent with a child under six); no fetched document states a monthly equivalent, and 26-2-706(2)(c) (S403) only requires an income conversion ratio, not an hours conversion ratio. cw_meets_work_participation (CO-919) assumes a monthly equivalent of the weekly figure times four, which is not stated in any fetched document. Items: CO-919.
+Body: 45 CFR 261.31 and 261.35 (S419, S420) state weekly hour minimums (30, or 20 for a single parent with a child under six); no fetched document states a monthly equivalent, and 26-2-706(2)(c) (S403) only requires an income conversion ratio, not an hours conversion ratio. cw_meets_work_participation (CO-920; coverage review P3-5, first written CO-919) assumes a monthly equivalent of the weekly figure times four, which is not stated in any fetched document. Items: CO-920.
 
 Checked 2026-11-21: 45 CFR 261.31(a)(1) and 261.35 (S419, S420) state a weekly average over the month ("a minimum average of 30 hours per week") with no weeks-per-month factor, and they measure the State's participation rate; the current 9 CCR 2503-6 (D-81) states no individual monthly-hour equivalent. No published rule settles it.
 
@@ -1136,7 +1136,9 @@ CDHS stakeholder review fix round (2026-11-21) (C-3): part (3) is now modeled as
 
 Class: state policy choice
 Owner: Cash programs policy owner
-Assumption: A case that states no sanction has none, and a county's higher diversion income limit is entered as a yes or no for the case.
+Coverage review CW-27 (2026-11-22): 3.606.8.A.4 (S3152) says the diversion period of ineligibility "shall not be longer than the equivalent maximum grant payment for the household size over the same period of time". The POI is the issuing county's (in_diversion_period_of_ineligibility, CO-1269, a supplied fact) and the volume does not check that bound; since coverage review CW-1 the POI bars basic cash assistance for the unit (cw_eligibility_status, CO-921).
+
+Assumption: A case that states no sanction has none, and a county's higher diversion income limit is entered as a yes or no for the case. The county's POI is taken as stated, without checking the A.4 bound.
 
 Checked 2026-11-22: 9 CCR 2503-6 3.606.8.A.6 (D-81, S762) leaves the higher income limit to "the county's policy" up to "the maximum criteria established in the State plan for non-recurrent short-term benefits"; neither the county policies nor the State plan figure is in the rule. No published rule settles it.
 
@@ -2101,13 +2103,13 @@ Checked 2026-11-22: 7 CFR 273.1 (D-7, text re-checked against the eCFR of 2026-1
 
 ### OQ-613. Colorado Works: what "a part-time student who is not a full-time employee" means
 
-Body: 9 CCR 2503-6 3.605.4.A.24.b (S1621) disregards "All earned income ... that is received by a dependent child who is a full-time student or a part-time student who is not a fulltime employee". The rule does not say how many hours make a full-time employee. cw_student_earnings_are_disregarded (CO-3385) reads a part-time student working cw_full_time_employee_hours_per_month (CO-3378: 130 hours, thirty hours a week) or more as a full-time employee, the threshold federal law uses for full-time employment elsewhere; the other common reading is forty hours a week. Items: CO-3385, CO-3378.
+Body: 9 CCR 2503-6 3.605.4.B.24.b (S1621) disregards "All earned income ... that is received by a dependent child who is a full-time student or a part-time student who is not a fulltime employee". The rule does not say how many hours make a full-time employee. cw_student_earnings_are_disregarded (CO-3385) reads a part-time student working cw_full_time_employee_hours_per_month (CO-3378: 130 hours, thirty hours a week) or more as a full-time employee, the threshold federal law uses for full-time employment elsewhere; the other common reading is forty hours a week. Items: CO-3385, CO-3378.
 
 Class: state policy choice
 Owner: Cash programs policy owner
 Assumption: A part-time student working 130 hours or more in the month is a full-time employee; below that, the earnings are disregarded.
 
-Checked 2026-11-22: 9 CCR 2503-6 3.605.4.A.24 and 3.601 (D-81, version effective 07/01/2025); no definition of a full-time employee. No published rule settles it.
+Checked 2026-11-22: 9 CCR 2503-6 3.605.4.B.24 and 3.601 (D-81, version effective 07/01/2025); no definition of a full-time employee. (Coverage review P3-7: the paragraph is B.24, not A.24 as first cited.) No published rule settles it.
 
 ### OQ-614. LEAP self-employment: business mileage "at the county rate"
 
@@ -2349,7 +2351,7 @@ Class: state policy choice
 Owner: Cash programs policy owner
 Assumption: A personal care or home care allowance paid to any member, recipient or not, is exempt; the attendant's pay is employment income.
 
-Checked 2026-11-22: 9 CCR 2503-6 3.605.4.A.5 and 3.605.6 (D-81, rule version 12030, effective 07/01/2025, the Secretary of State's current version). No other paragraph of 3.605 treats an allowance paid to a recipient; the Adult Financial counterpart, 9 CCR 2503-5 3.520.786.E (S2608), exempts the allowance "paid to the client" outright.
+Checked 2026-11-22: 9 CCR 2503-6 3.605.4.A.5 and 3.605.2.D.3 (D-81; coverage review P3-2: first cited as 3.605.6, which D-81 does not have, 3.605 ending at 3.605.5; rule version 12030, effective 07/01/2025, the Secretary of State's current version). No other paragraph of 3.605 treats an allowance paid to a recipient; the Adult Financial counterpart, 9 CCR 2503-5 3.520.786.E (S2608), exempts the allowance "paid to the client" outright.
 
 ### OQ-740. Children with Disabilities Buy-In: how the § 8.100.5.H disregards and allocations apply to a family household
 
@@ -2360,3 +2362,33 @@ Owner: Medicaid policy owner, Premium and finance owner
 Assumption: The household's pooled § 8.100.5.F income takes one $20 general and one $65-plus-one-half earned income disregard, with no ineligible child or parent allocation, and is compared with the poverty level for the MAGI household's size.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.Q.1.b, § 8.100.5.F and § 8.100.5.H.1-4 (D-65, version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). No published rule says how the per-person and per-couple disregards and the allocations apply to a family household; HCPF's Buy-In guidance is on hcpf.colorado.gov, which is refused.
+
+### OQ-770. Colorado Works: ten or eleven days to supply requested information
+
+Body: 9 CCR 2503-6 3.602.1.K.1.c (S3169) lists as a basis for denial that "The client does not supply information or otherwise fails to cooperate with the county department within ten (10) calendar days of the request for information unless good cause is granted". 3.602.1.I.2 (S1629) allows "eleven (11) calendar days to provide the missing verifications", to the twentieth day after application on good cause, and 3.604.3.A.2 (S871) makes the due date on the written request "eleven (11) calendar days from the date the verification was requested in writing". The rule does not say whether K.1.c's ten days are a separate, shorter period for information other than verification or a leftover of an earlier version. The volume reads eleven days for every requested verification (cw_verification_response_days, CO-1351; cw_verification_due_date, CO-1426), since I.2 and A.2 state the period the county must put on the request, and K.1.c lists bases for a denial "such as, but not limited to". Items: CO-1351, CO-1426. Coverage review CW-15.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The client has eleven calendar days from the written request (to the twentieth day after application with good cause); K.1.c's ten days are not applied separately.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.602.1.I.2, 3.602.1.K.1.c and 3.604.3.A.2 (D-104 and D-81, rule version 12030, effective 07/01/2025, the Secretary of State's current version on 2026-11-22). No other paragraph sets a period for information that is not a verification.
+
+### OQ-771. Colorado Works: the month before the month of application
+
+Body: 9 CCR 2503-6 3.605.1.A.1 (S412) says that "for purpose of determining need, all countable gross income received in the month prior to, if available, and in the month of application shall be used to determine eligibility of members of the assistance unit". 3.606.1.E and H then compare "the countable gross earned and unearned income" with the need standard, and 3.606.1.J.4 says "If the budgetary unit's income equals or exceeds the need standard, the assistance unit is not eligible", without saying how two months are combined: whether each month is tested, the two are averaged, or the prior month only informs the estimate of the application month's income ("if available"). The volume tests the income of the month being determined (cw_countable_income, CO-910, and its parts read the month's facts), which at application is the application month; the prior month is not read. Items: CO-907, CO-908, CO-910, CO-913, CO-1716. Coverage review CW-16.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Eligibility at application rests on the countable income of the application month; the prior month's income is evidence for that estimate, not a second test.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.605.1.A.1-2, 3.605.1.B, 3.606.1.E, H and J (D-81, rule version 12030, effective 07/01/2025, still current on 2026-11-22). No paragraph states how the two months are combined.
+
+### OQ-772. Colorado Works: a tribal member who is eligible under a Tribal Family Assistance Plan
+
+Body: 9 CCR 2503-6 3.604.2.J (S3170) says "Members of an Indian Tribe not eligible for assistance under a Tribal Family Assistance Plan are eligible for Colorado Works." It states who is eligible, not that a tribal member who is eligible under a tribal TANF plan is barred, and no other paragraph states that bar; 3.604.1.A.3 bars a client who received TANF from another State in the same month (received_tanf_from_another_state_this_month, CO-842), and a tribal plan is not a State. The volume applies no bar for eligibility under a tribal plan, and states no fact for it. Items: CO-921. Coverage review CW-21.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A tribal member is not barred from Colorado Works because the member is eligible under a Tribal Family Assistance Plan; duplicate receipt is left to the county's coordination with the tribe.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.604.1.A and 3.604.2.J (D-81, rule version 12030, effective 07/01/2025, still current on 2026-11-22). No paragraph of 9 CCR 2503-6 states the negative.

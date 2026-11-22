@@ -348,7 +348,7 @@ describe("the view", () => {
     route.value = { ...route.value, params: { mine: "1", owner: "Cash programs policy owner", sort: "newest" } };
     render(<QuestionsView />, host);
     const cash = [...host.querySelectorAll("li.qcard")];
-    expect(cash.length).toBe(20);
+    expect(cash.length).toBe(23);
     for (const c of cash) {
       expect(c.getAttribute("data-owner")).toBe("Cash programs policy owner");
       expect(c.querySelector(".qowner b")!.textContent).toBe("Cash programs policy owner");

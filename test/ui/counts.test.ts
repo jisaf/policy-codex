@@ -37,9 +37,9 @@ describe("owns: the question's Owner line names the role", () => {
     expect(ownedPhrase(med)).toBe("36 open questions you own, and 4 partly settled");
   });
 
-  it("counts the Cash programs policy owner's: 16 open and 4 partly settled", () => {
+  it("counts the Cash programs policy owner's: 19 open and 4 partly settled", () => {
     const cash = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Cash programs policy owner"] });
-    expect([cash.open.length, cash.partly.length]).toEqual([16, 4]);
+    expect([cash.open.length, cash.partly.length]).toEqual([19, 4]);
   });
 
   it("a persona owns what any of its roles owns, each question once", () => {
@@ -71,12 +71,12 @@ describe("owns: the question's Owner line names the role", () => {
 describe("households that read an item, and households it reaches", () => {
   const id = (n: string) => engine.itemById(n)!.identifier;
 
-  it("the Colorado Works grant standard (CO-276) is read by 6 stored households and reaches 11", () => {
+  it("the Colorado Works grant standard (CO-276) is read by 8 stored households and reaches 16", () => {
     const read = householdsThatRead(engine, vol.cases, id("CO-276"));
     const reach = householdsReached(engine, vol.cases, id("CO-276"));
-    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89"]);
-    expect(reach).toHaveLength(11);
-    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 6 of ${vol.cases.length} stored households; it reaches 11`);
+    expect(read).toEqual(["CO-13", "CO-84", "CO-85", "CO-100", "CO-86", "CO-89", "CO-160", "CO-163"]);
+    expect(reach).toHaveLength(16);
+    expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 8 of ${vol.cases.length} stored households; it reaches 16`);
   });
 
   it("the children's Medicaid income limit (CO-191) is read by 20 and reaches 28", () => {

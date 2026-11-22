@@ -18,9 +18,9 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 102, 20 of them partly settled", () => {
-    expect(all.total).toBe(102);
-    expect(all.rows).toHaveLength(102);
+  it("holds every question still to answer: 105, 20 of them partly settled", () => {
+    expect(all.total).toBe(105);
+    expect(all.rows).toHaveLength(105);
     expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(20);
   });
 
@@ -41,7 +41,7 @@ describe("the question queue", () => {
       expect(r.others).not.toContain(r.owner);
     }
     const cash = questionQueue(engine, vol.sources, vol.openQuestions, cdhs, { mine: true, owner: "Cash programs policy owner" });
-    expect(cash.rows).toHaveLength(20);
+    expect(cash.rows).toHaveLength(23);
     expect(cash.rows.every((r) => r.owner === "Cash programs policy owner")).toBe(true);
     expect(cash.groups.map((g) => g.owner)).toEqual(["Cash programs policy owner"]);
     // Without a filter the first owner is named, and the groups add up.
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(101);
+    expect(q.total).toBe(104);
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });
