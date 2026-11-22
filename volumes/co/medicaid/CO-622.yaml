@@ -8,7 +8,7 @@ scope: person-month
 program: Medicaid
 role: outcome
 meaning: The single Medicaid Buy-In Program this person qualifies under for the month - Working Adults with Disabilities, Children with Disabilities, or none - per 10 CCR 2505-10 8.100.6.P and 8.100.6.Q.
-precision: The two programs' age ranges (16+ for WAwD, 18 or younger for CBwD) overlap at 16-18, where 8.100.6.Q.1.e routes an employed 16-18-year-old to WAwD instead; this item tests WAwD first, which reaches the same result for an employed applicant in the overlap (ma_wawd_eligible requires is_employed, which CBwD does not test), but does not independently enforce 8.100.6.Q.1.e's exclusion for an unemployed 16-18-year-old who happens to also satisfy both tests.
+precision: "The two programs' age ranges (16+ for WAwD, 18 or younger for CBwD) overlap at 16-18, where 8.100.6.Q.1.e routes an employed 16-18-year-old to WAwD instead. ma_cbwd_eligible (CO-620) enforces Q.1.e itself: a child of 16 to 18 with earned income in the month is not CBwD-eligible. This item also tests WAwD first (ma_wawd_eligible requires is_employed), so a person who meets both tests is reported in WAwD, as Q.1.e directs for an employed child. Final verification pass 2, P3-1: the precision said Q.1.e was not enforced, which F-7 had changed."
 derived: [case, [ma_wawd_eligible, "working_adults_with_disabilities"], [ma_cbwd_eligible, "children_with_disabilities"], [else, "none"]]
 sources: [S1751, S1727, S1752, S1728]
 implemented: engine
