@@ -109,13 +109,11 @@ describe("router", () => {
   it("serves each canonical page from the view that holds its content", () => {
     const view = (h: string) => internalRoute(parseHash(h));
     expect(view("#/co/desk/sign/CO-191?role=Legal")).toMatchObject({ view: "desk", arg: "sign/CO-191", params: { role: "Legal" } });
-    expect(view("#/co/households")).toMatchObject({ view: "walkthrough", arg: null });
-    expect(view("#/co/households/CO-01")).toMatchObject({ view: "outcomes", params: { tab: "household", case: "CO-01" } });
-    expect(view("#/co/households/CO-01?tab=states")).toMatchObject({ view: "cases", arg: "CO-01", params: {} });
-    expect(view("#/co/households/CO-01?tab=documents")).toMatchObject({ view: "households", arg: "CO-01" });
-    expect(view("#/co/households/CO-01/p2/snap_allotment")).toMatchObject({
-      view: "walkthrough", arg: "CO-01", params: { person: "p2", outcome: "snap_allotment" },
-    });
+    // Households, a household's tabs and a determination are the place's own pages.
+    expect(view("#/co/households")).toMatchObject({ view: "households", arg: null });
+    expect(view("#/co/households/CO-01?tab=states")).toMatchObject({ view: "households", arg: "CO-01", params: { tab: "states" } });
+    expect(view("#/co/households/CO-01/p2/snap_allotment")).toMatchObject({ view: "households", arg: "CO-01/p2/snap_allotment" });
+    expect(view("#/co/households/new")).toMatchObject({ view: "cases", arg: "new" });
     expect(view("#/co/programs/SNAP")).toMatchObject({ view: "programs", arg: "SNAP" });
     expect(view("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2")).toMatchObject({ view: "programs", arg: "ColoradoWorks/cw_grant_amount", params: { depth: "2" } });
     expect(view("#/co/programs/SNAP?tab=aid-codes")).toMatchObject({ view: "outcomes", arg: "SNAP", params: {} });
@@ -123,8 +121,8 @@ describe("router", () => {
     expect(view("#/co/law/sources/S8")).toMatchObject({ view: "source", arg: "S8" });
     expect(view("#/co/law")).toMatchObject({ view: "law", arg: null });
     // A link an older view builds from its own route comes back canonical.
-    const walk = view("#/co/households/CO-01/p2/snap_allotment");
-    expect(buildHash({ ...walk, params: { ...walk.params, person: "p3", outcome: "snap_eligibility_status" } }))
+    const law = view("#/co/law");
+    expect(buildHash({ ...law, view: "walkthrough", arg: "CO-01", params: { person: "p3", outcome: "snap_eligibility_status" } }))
       .toBe("#/co/households/CO-01/p3/snap_eligibility_status");
   });
 });

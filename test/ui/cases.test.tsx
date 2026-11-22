@@ -6,7 +6,7 @@ import {
   CasesView, buildSpec, isRepresentableCase, programOutcomes, upstreamCone,
 } from "../../src/ui/CasesView";
 import { createEngine } from "../../src/engine/engine";
-import { caseToSpec, parseCases } from "../../src/engine/cases";
+import { parseCases } from "../../src/engine/cases";
 import { emptyChangeSet } from "../../src/changes/types";
 import { changeSetSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
@@ -14,7 +14,6 @@ import { formatFor } from "../../src/ui/present";
 import ledger from "../fixtures/ledger.json";
 import refs from "../fixtures/refs.json";
 import type { Item, ProgramVocabulary, VolumeMeta } from "../../src/engine/types";
-import type { TraceNode } from "../../src/engine/explain";
 import type { LoadedVolume } from "../../src/ledger/load";
 
 const root = path.resolve(__dirname, "../..");
@@ -59,18 +58,6 @@ function raw(v: unknown): string {
   return String(v);
 }
 
-/** The trace leads with the story and keeps the tree behind a toggle; these
- *  cases are about the tree, so they open it first. */
-async function showEverything(host: HTMLElement): Promise<void> {
-  const button = host.querySelector("button.showall") as HTMLButtonElement;
-  button.click();
-  await new Promise((r) => setTimeout(r));
-}
-
-function countNodes(n: TraceNode): number {
-  return 1 + n.children.reduce((s, k) => s + countNodes(k), 0);
-}
-
 function fill(host: HTMLElement, identifier: string, value: unknown): boolean {
   const el = host.querySelector(`[data-fact="${identifier}"]`) as
     HTMLInputElement | HTMLSelectElement | null;
@@ -91,103 +78,6 @@ describe("CasesView", () => {
     // existing test here exercises that staging flow, so edit mode is on
     // throughout and the reader-mode gate gets its own test below.
     modeSig.value = "edit";
-  });
-
-  it("lists every household case with its per-program counts", () => {
-    const host = show(null);
-    const rows = host.querySelectorAll("table.cases tbody tr");
-    expect(rows).toHaveLength(13);
-    expect(rows[0].textContent).toContain("C-01");
-    expect(rows[0].textContent).toContain("Medicaid");
-    expect(rows[0].querySelector(".counts b")!.textContent).toBe("4/4");
-    expect(host.querySelector("a.btn")!.textContent).toContain("New household");
-    const snap = [...rows].find((tr) => tr.textContent!.startsWith("C-05"))!;
-    expect(snap.textContent).toContain("SNAP");
-  });
-
-  it("shows a case's supplied facts and expectations with their ok marks", () => {
-    const host = show("C-01");
-    expect(host.textContent).toContain(
-      "Single adult, 30, not on SNAP, works 90 hours a month, applies for Medicaid",
-    );
-    expect(host.textContent).toContain("as of 2027-03-15");
-    const facts = host.querySelector("table.facts")!.textContent!;
-    expect(facts).toContain("date_of_birth");
-    expect(facts).toContain("August 2, 1996");
-    expect(facts).toContain("every month");
-    const rows = host.querySelectorAll("tr.expectation");
-    expect(rows).toHaveLength(4);
-    const status = [...rows].find(
-      (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
-    )!;
-    expect(status.textContent).toContain("Met");
-    expect(status.querySelector("td.ok")!.textContent).toBe("matches");
-    expect(host.querySelector(".trace")).toBeNull();
-  });
-
-  it("makes the identifiers in the facts and expectation tables tokens", () => {
-    const host = show("C-01");
-    const fact = host.querySelector("table.facts tbody code button.tok") as HTMLButtonElement;
-    expect(fact.textContent).toBe("date_of_birth");
-    expect(fact.getAttribute("data-id")).toBe("WR-001");
-    const row = [...host.querySelectorAll("tr.expectation")].find(
-      (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
-    )!;
-    expect(row.querySelector("small button.tok")!.textContent)
-      .toBe("medicaid_ce_status_at_application");
-  });
-
-  it("opens the trace of an expectation when its row is clicked", async () => {
-    const host = show("C-01");
-    const row = [...host.querySelectorAll("tr.expectation")].find(
-      (tr) => tr.textContent!.includes("medicaid_ce_status_at_application"),
-    )! as HTMLTableRowElement;
-    row.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    await new Promise((r) => setTimeout(r));
-    const trace = host.querySelector(".trace")!;
-    expect(trace).not.toBeNull();
-    // The story names what decided the outcome, and the tree is still folded.
-    expect(trace.querySelector("ul.story li")!.textContent)
-      .toContain("Medicaid: satisfies community engagement at application is Yes");
-    expect(trace.querySelector(".tnode")).toBeNull();
-    await showEverything(host);
-    expect(trace.querySelector(".tnode")!.getAttribute("data-identifier"))
-      .toBe("medicaid_ce_status_at_application");
-    expect(trace.querySelectorAll(".origin").length).toBeGreaterThan(0);
-    expect(trace.querySelector("pre.derivation")!.textContent).toContain("case");
-  });
-
-  it("folds a long trace and expands a node when it is clicked", async () => {
-    const host = show("C-05");
-    const row = [...host.querySelectorAll("tr.expectation")].find(
-      (tr) => tr.textContent!.includes("snap_time_limit_status"),
-    )! as HTMLTableRowElement;
-    row.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    await new Promise((r) => setTimeout(r));
-    await showEverything(host);
-
-    // The 36-month SNAP window is more than a thousand resolutions; the tree
-    // shows the first two levels and renders a subtree only when asked.
-    const whole = engine.explain(
-      caseToSpec(cases.find((c) => c.id === "C-05")!), "snap_time_limit_status", "p1", null,
-    );
-    expect(countNodes(whole)).toBeGreaterThan(1000);
-    const shown = host.querySelectorAll(".tnode").length;
-    expect(shown).toBeLessThan(40);
-
-    const folded = [...host.querySelectorAll(".thead.openable")].filter(
-      (h) => h.querySelector(".twist")!.textContent === "\u25b8",
-    );
-    expect(folded.length).toBeGreaterThan(0);
-    (folded[0] as HTMLElement).dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    await new Promise((r) => setTimeout(r));
-    expect(host.querySelectorAll(".tnode").length).toBeGreaterThan(shown);
-    // A fact already resolved above is one line, not a second subtree.
-    expect(host.textContent).toContain("worked out above");
-  });
-
-  it("says when a case id is not in the volume", () => {
-    expect(show("C-99").textContent).toContain("No case C-99 in this volume.");
   });
 
   it("derives the upstream cone of the programs' outcomes", () => {

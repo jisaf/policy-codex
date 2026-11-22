@@ -1,16 +1,12 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import type { Engine } from "../../engine/engine";
-import type { HouseholdCase } from "../../engine/cases";
 import type { Expr, Item } from "../../engine/types";
 import { paramInForce } from "../../engine/versions";
 import { aidCodeWarnings, type AidCodeMap } from "../../ledger/aid-codes";
 import {
-  branchesTo, branchFigures, caseMonth, caseMonths, cellOutcome, codeEntries, codePrograms, householdCodes,
-  landings, programOfArg, questionsBehind, upstreamFigures, type CodeEntry, type Landing, type PersonProgram,
+  branchesTo, branchFigures, codeEntries, codePrograms,
+  landings, programOfArg, upstreamFigures, type CodeEntry, type Landing,
 } from "../aidcodes";
-import { caseEdges, relationshipSentence } from "../people";
-import { plainQuestionTitle } from "../questions";
-import { personTitle, plainCaseTitle } from "../walkthrough";
 import { plainDerivation, type PlainLine } from "../plain";
 import { noVersionReason, PlainLines, PlainRule } from "../Present";
 import { formatDate, formatValue, optionLabel, personLabel } from "../present";
@@ -26,15 +22,14 @@ import "./workflow-views.css";
 
 /** By aid code / outcome. Route: `#/<volume>/outcomes` (every program),
  *  `#/<volume>/outcomes/<program or outcome>`, `?code=<code>` to open one
- *  code, `?asof=` for the figures' date; `?tab=household&case=<id>&month=`
- *  for one stored household's persons across every program. Aid codes are
- *  placeholders until the CBMS list is supplied (`aid-codes.yaml`). */
+ *  code, `?asof=` for the figures' date. One stored household's persons
+ *  across every program is the household's own page (places/HouseholdPage).
+ *  Aid codes are placeholders until the CBMS list is supplied
+ *  (`aid-codes.yaml`). */
 export function OutcomesView() {
   const ctx = viewContext();
   if (!ctx) return <NoLedger />;
   const map = ctx.vol.aidCodes ?? null;
-  const r = ctx.route;
-  const tab = r.params.tab === "household" ? "household" : "codes";
   return (
     <section class="view workflow outcomes">
       <ViewHeader view="outcomes" />
@@ -43,27 +38,11 @@ export function OutcomesView() {
         : (
           <>
             <PlaceholderBanner map={map} />
-            <nav class="tabs" aria-label="Outcome views">
-              <a
-                class={tab === "codes" ? "on" : ""} aria-current={tab === "codes" ? "page" : undefined}
-                href={buildHash({ ...r, params: withoutKeys(r.params, ["tab", "case", "month"]) })}
-              >Aid codes</a>
-              <a
-                class={tab === "household" ? "on" : ""} aria-current={tab === "household" ? "page" : undefined}
-                href={buildHash({ ...r, params: { ...withoutKeys(r.params, ["code"]), tab: "household" } })}
-              >Household view</a>
-            </nav>
-            {tab === "codes" ? <CodesTab ctx={ctx} map={map} /> : <HouseholdTab ctx={ctx} map={map} />}
+            <CodesTab ctx={ctx} map={map} />
           </>
         )}
     </section>
   );
-}
-
-function withoutKeys(params: Record<string, string>, keys: string[]): Record<string, string> {
-  const out = { ...params };
-  for (const k of keys) delete out[k];
-  return out;
 }
 
 function setParam(r: Route, key: string, value: string | null): void {
@@ -341,198 +320,3 @@ function Landings({ route: r, landed, program }: { route: Route; landed: Landing
     </ul>
   );
 }
-
-// -------------------------------------------------------------- household
-
-export function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
-  const { engine, vol, route: r } = ctx;
-  const cases = vol.cases;
-  if (!cases.length) return <p class="status">This volume has no stored test households.</p>;
-  const hc: HouseholdCase = cases.find((c) => c.id === r.params.case) ?? cases[0];
-  const months = caseMonths(hc);
-  const month = r.params.month && months.includes(r.params.month) ? r.params.month : caseMonth(hc);
-  const rows = householdCodes(engine, map, hc, month);
-  const programs = codePrograms(engine, map);
-  const rels = caseEdges(hc).filter((e) => !["tax_dependent", "in_primary_care_of", "child", "grandchild", "stepchild", "sponsored_by"].includes(e.role));
-  // The open questions behind each cell's result, worked out after the grid
-  // paints (one trace per cell).
-  const [questions, setQuestions] = useState<Map<string, string[]> | null>(null);
-  useEffect(() => {
-    setQuestions(null);
-    const t = setTimeout(() => {
-      const out = new Map<string, string[]>();
-      for (const row of rows) {
-        for (const pp of row.programs) {
-          const o = pp.tested ? cellOutcome(pp) : null;
-          if (o) out.set(`${row.person}|${pp.program}`, questionsBehind(engine, hc, o, row.person, month));
-        }
-      }
-      setQuestions(out);
-    }, 40);
-    return () => clearTimeout(t);
-  }, [engine, hc.id, month]);
-  return (
-    <>
-      <div class="controls">
-        <label>
-          Household{" "}
-          <select
-            value={hc.id}
-            onChange={(e) => {
-              const params: Record<string, string> = { ...r.params, tab: "household", case: (e.target as HTMLSelectElement).value };
-              delete params.month;
-              navigate({ params });
-            }}
-          >
-            {cases.map((c) => <option key={c.id} value={c.id}>{c.id}: {shorten(plainCaseTitle(c.title).title, 70)}</option>)}
-          </select>
-        </label>
-        <label>
-          Month{" "}
-          <select value={month} onChange={(e) => setParam(r, "month", (e.target as HTMLSelectElement).value)}>
-            {months.map((m) => <option key={m} value={m}>{formatDate(m)}</option>)}
-          </select>
-        </label>
-        <a class="btn" href={walkthroughHref(r, hc.id)}>Walk through this household</a>
-      </div>
-      <p class="hhtitle"><b>{hc.id}</b> {plainCaseTitle(hc.title).title} <span class="muted">· as of {formatDate(hc.as_of)}</span></p>
-      {rels.length > 0 && (
-        <p class="muted family">
-          {rels.slice(0, 8).map(relationshipSentence).join("; ")}
-          {rels.length > 8 ? `; and ${rels.length - 8} more` : ""}.
-        </p>
-      )}
-      <div class="hhwrap">
-        <table class="grid household" data-case={hc.id}>
-          <caption class="muted">
-            Each person's aid codes in {formatDate(month)}, as the codex evaluates this stored household.
-            For a household program, a person holds the code only as a member.
-          </caption>
-          <thead>
-            <tr><th scope="col">Person</th>{programs.map((p) => <th key={p} scope="col">{programLabel(p)}</th>)}</tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.person} data-person={row.person}>
-                <th scope="row">{personTitle(hc, row.person)} <small class="mono muted">{row.person}</small></th>
-                {row.programs.map((pp) => (
-                  <td key={pp.program} data-program={programLabel(pp.program)} data-prog={pp.program} data-tested={pp.tested ? undefined : "no"}>
-                    <Cell ctx={ctx} map={map} hc={hc} person={row.person} pp={pp} month={month} questions={questions?.get(`${row.person}|${pp.program}`)} />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p class="muted legend">
-        <b>PH-…</b> placeholder codes, to be replaced with CBMS codes. A cell without a code says why; "not tested
-        in this case" means the stored household was never set up for that program, so the grid claims nothing.
-        Open a cell to see its result, rule by rule, in the walkthrough.
-      </p>
-    </>
-  );
-}
-
-function shorten(s: string, n: number): string {
-  return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s;
-}
-
-function Amounts({ ctx, pp }: { ctx: ViewContext; pp: PersonProgram }) {
-  if (!pp.amounts.length) return null;
-  const { engine } = ctx;
-  return (
-    <div class="amounts">
-      {pp.amounts.slice(0, 2).map((a) => {
-        const it = engine.item(a.outcome);
-        return (
-          <div key={a.outcome} class="amount">
-            <span class="muted">{(it?.name ?? a.outcome).replace(/^[^:]+:\s*/, "")}:</span> <b>{formatValue(it ?? null, a.value)}</b>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function CellQuestions({ ctx, ids }: { ctx: ViewContext; ids: string[] | undefined }) {
-  if (!ids?.length) return null;
-  const { vol, route: r } = ctx;
-  return (
-    <div class="cellq small">
-      {ids.length === 1 ? "Open question" : "Open questions"} behind it:{" "}
-      {ids.slice(0, 3).map((q, i) => {
-        const oq = vol.openQuestions.find((x) => x.id === q);
-        return (
-          <span key={q}>{i > 0 && "; "}<a href={buildHash({ ...r, view: "questions", arg: q, params: {} })} title={oq ? plainQuestionTitle(oq.title) : q}>{q}</a></span>
-        );
-      })}
-      {ids.length > 3 && <span> and {ids.length - 3} more</span>}
-    </div>
-  );
-}
-
-function Cell(
-  { ctx, map, hc, person, pp, month, questions }:
-  { ctx: ViewContext; map: AidCodeMap; hc: HouseholdCase; person: string; pp: PersonProgram; month: string; questions?: string[] },
-) {
-  const { engine, route: r } = ctx;
-  const outcome = cellOutcome(pp);
-  const oit = outcome ? engine.item(outcome) : undefined;
-  const atMonth = oit && (oit.scope === "person-month" || oit.scope === "month") ? month : null;
-  const walkTo = (o: string | null) => walkthroughHref(r, hc.id, person, pp.program, { outcome: o ?? undefined, month: o ? atMonth : null });
-  if (!pp.tested) {
-    return (
-      <div class="cell none untested">
-        <span class="muted">Not tested in this case</span>
-      </div>
-    );
-  }
-  if (pp.codes.length) {
-    return (
-      <div class="cell has">
-        {pp.codes.map((c) => {
-          // Each code's own funding where it differs from the person's (a
-          // state-only program beside Emergency Medicaid).
-          const own = c.funding && pp.funding?.key && c.funding !== pp.funding.key ? c.funding : null;
-          return (
-            <div key={c.code} class="held">
-              <a href={walkTo(c.outcome)}>{c.label}</a>{" "}
-              <a href={buildHash({ ...r, arg: c.program, params: { code: c.code } })} class="codelink">
-                <CodeChip code={c.code} placeholder={map.status === "placeholder"} />
-              </a>
-              {own && pp.funding && <div class="funding muted">Paid from: {optionLabel(engine.item(pp.funding.outcome), own)}</div>}
-            </div>
-          );
-        })}
-        {pp.funding && pp.funding.key && pp.funding.key !== "none" && pp.codes.some((c) => !c.funding || c.funding === pp.funding!.key) && (
-          <div class="funding muted">Paid from: {optionLabel(engine.item(pp.funding.outcome), pp.funding.key)}{pp.codes.length > 1 ? ` (${pp.codes.filter((c) => !c.funding || c.funding === pp.funding!.key).map((c) => c.code).join(", ")})` : ""}</div>
-        )}
-        <Amounts ctx={ctx} pp={pp} />
-        <CellQuestions ctx={ctx} ids={questions} />
-      </div>
-    );
-  }
-  let text: string;
-  if (pp.householdOnly && pp.participation) {
-    const it = engine.item(pp.participation.outcome);
-    const who = pp.participation.key ? optionLabel(it, pp.participation.key) : "not known";
-    text = `The household has ${pp.household.map((c) => c.code).join(", ")}; this person does not (${who}).`;
-  } else if (pp.participation && !pp.participation.member && pp.participation.key) {
-    text = optionLabel(engine.item(pp.participation.outcome), pp.participation.key) + ".";
-  } else if (pp.reason) {
-    text = pp.reason.text;
-  } else if (pp.values.every((v) => v.key === null)) {
-    text = "Not known: a fact this needs is not stated";
-  } else {
-    text = "No code";
-  }
-  return (
-    <div class="cell none">
-      <a href={walkTo(outcome)} class="muted">{text}</a>
-      <Amounts ctx={ctx} pp={pp} />
-      <CellQuestions ctx={ctx} ids={questions} />
-    </div>
-  );
-}
-

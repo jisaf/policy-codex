@@ -1,8 +1,7 @@
-import { relationshipPhrase, relationshipSentence } from "./people";
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import {
-  appendCase, caseToSpec, nextCaseId, parseCases, programsOfCase, type HouseholdCase,
+  appendCase, nextCaseId, parseCases, programsOfCase, type HouseholdCase,
   type PersonSpec,
 } from "../engine/cases";
 import { missingFacts, type TraceNode } from "../engine/explain";
@@ -16,7 +15,7 @@ import {
   volumeSig,
 } from "./state";
 import { Trace } from "./Trace";
-import { formatDate, formatFor, personLabel } from "./present";
+import { formatFor } from "./present";
 
 
 export interface ProgramCount { program: string; passed: number; failed: number }
@@ -125,242 +124,6 @@ export function isRepresentableCase(c: HouseholdCase): boolean {
   const personIds = Object.keys(c.persons ?? {});
   return personIds.length === 1 && personIds[0] === "p1"
     && !c.persons.p1.months && !c.month_facts && !c.case_facts;
-}
-
-function CaseList(
-  { engine, cases, route: r }:
-  { engine: Engine; cases: HouseholdCase[]; route: Route },
-) {
-  return (
-    <section class="view">
-      <div class="cardhead">
-        <h1>Household cases</h1>
-        <span class="tag">{cases.length} cases</span>
-        <span class="spacer" />
-        <a class="btn" href={buildHash({ ...r, view: "cases", arg: "new", params: {} })}>
-          New household
-        </a>
-      </div>
-      <p class="muted">
-        Whole households, evaluated end to end. Every expectation opens its trace.
-      </p>
-      <table class="cases grid">
-        <thead>
-          <tr><th>ID</th><th>Household</th><th>Results by program</th></tr>
-        </thead>
-        <tbody>
-          {cases.map((c) => (
-            <tr key={c.id}>
-              <td>
-                <a href={buildHash({ ...r, view: "cases", arg: c.id, params: {} })}>{c.id}</a>
-              </td>
-              <td>{c.title}</td>
-              <td class="counts">
-                {programCounts(engine, c).map((pc) => (
-                  <span key={pc.program} class={`tag prog-${pc.program.toLowerCase()}`}>
-                    {pc.program}{" "}
-                    <b class={pc.failed ? "bad" : "ok"}>
-                      {pc.passed}/{pc.passed + pc.failed}
-                    </b>
-                  </span>
-                ))}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </section>
-  );
-}
-
-function FactRows(
-  { engine, person }: { engine: Engine; person: PersonSpec },
-) {
-  const rows: Array<{ identifier: string; month: string; value: unknown }> = [];
-  for (const [k, v] of Object.entries(person.facts ?? {})) {
-    rows.push({ identifier: k, month: "—", value: v });
-  }
-  for (const [k, v] of Object.entries(person.month_defaults ?? {})) {
-    rows.push({ identifier: k, month: "every month", value: v });
-  }
-  for (const [m, mf] of Object.entries(person.months ?? {})) {
-    for (const [k, v] of Object.entries(mf)) rows.push({ identifier: k, month: m, value: v });
-  }
-  return (
-    <>
-      {rows.map((row, i) => (
-        <tr key={`${row.identifier}|${row.month}|${i}`}>
-          <td>{engine.item(row.identifier)?.name ?? row.identifier}</td>
-          <td><code><Ident id={row.identifier} engine={engine} /></code></td>
-          <td>{row.month === "—" || row.month === "every month" ? row.month : formatDate(row.month)}</td>
-          <td>{formatFor(engine, row.identifier, row.value)}</td>
-        </tr>
-      ))}
-    </>
-  );
-}
-
-function CasePage(
-  { engine, hc, route: r, embedded = false }: { engine: Engine; hc: HouseholdCase; route: Route; embedded?: boolean },
-) {
-  const open = useSignal<string | null>(null);
-  const report = engine.runCase(hc);
-  const spec = caseToSpec(hc);
-  const parameters = Object.entries(hc.parameters ?? {});
-
-  return (
-    <section class="view case">
-      <div class="cardhead">
-        {/* Inside the household's page the page heading names it already. */}
-        {!embedded && <h1>{hc.title}</h1>}
-        <span class="tag">{hc.id}</span>
-        <span class="tag">as of {hc.as_of}</span>
-        <span class={report.failed ? "tag bad" : "tag ok"}>
-          {report.passed}/{report.passed + report.failed} expectations met
-        </span>
-        <span class="spacer" />
-        {!embedded && (
-          <a class="btn" href={buildHash({ ...r, view: "cases", arg: null, params: {} })}>
-            All cases
-          </a>
-        )}
-      </div>
-
-      {parameters.length > 0 && (
-        <>
-          <h3>Parameters for this case</h3>
-          <ul class="params">
-            {parameters.map(([k, v]) => (
-              <li key={k}>
-                <code><Ident id={k} engine={engine} /></code> {formatFor(engine, k, v)}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      {(hc.relationships ?? []).length > 0 && (
-        <p class="family">
-          <b>Household:</b>{" "}
-          {(hc.relationships ?? []).map(([role, from, to]) => relationshipSentence({ role, from, to })).join("; ")}
-        </p>
-      )}
-
-      <h3>Supplied facts</h3>
-      {Object.entries(hc.persons ?? {}).map(([pid, person]) => (
-        <div key={pid} class="person">
-          <h4>{personLabel(pid)} <small class="mono muted">{pid}</small></h4>
-          <table class="facts grid">
-            <thead>
-              <tr><th>Fact</th><th>Identifier</th><th>Month</th><th>Value</th></tr>
-            </thead>
-            <tbody><FactRows engine={engine} person={person} /></tbody>
-          </table>
-          <p class="muted">
-            Relationships:{" "}
-            {(() => {
-              // The person's own pairs plus the case-level edges that name
-              // them (caseworker S7: the case-level edges were not shown).
-              const own = (person.relationships ?? []).map((rel) => relationshipPhrase(rel[0], rel[1]));
-              const edges = (hc.relationships ?? []).filter(([, from, to]) => from === pid || to === pid)
-                .map(([role, from, to]) => (from === pid
-                  ? relationshipPhrase(role, to)
-                  : relationshipSentence({ role, from, to })));
-              const all = [...own, ...edges];
-              return all.length ? all.join(", ") : "none stated";
-            })()}
-          </p>
-        </div>
-      ))}
-
-      {Object.keys(hc.case_facts ?? {}).length > 0 && (
-        <>
-          <h4>Facts of the case</h4>
-          <table class="facts grid">
-            <thead><tr><th>Identifier</th><th>Value</th></tr></thead>
-            <tbody>
-              {Object.entries(hc.case_facts ?? {}).map(([k, v]) => (
-                <tr key={k}>
-                  <td><code><Ident id={k} engine={engine} /></code></td>
-                  <td>{formatFor(engine, k, v)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
-
-      {Object.keys(hc.month_facts ?? {}).length > 0 && (
-        <>
-          <h4>Facts of the month</h4>
-          <table class="facts grid">
-            <thead><tr><th>Month</th><th>Identifier</th><th>Value</th></tr></thead>
-            <tbody>
-              {Object.entries(hc.month_facts ?? {}).flatMap(([m, mf]) =>
-                Object.entries(mf).map(([k, v]) => (
-                  <tr key={`${m}|${k}`}>
-                    <td>{formatDate(m)}</td>
-                    <td><code><Ident id={k} engine={engine} /></code></td>
-                    <td>{formatFor(engine, k, v)}</td>
-                  </tr>
-                )))}
-            </tbody>
-          </table>
-        </>
-      )}
-
-      <h3>Expectations</h3>
-      <p class="muted">Any row opens the trace behind its value.</p>
-      <table class="expectations grid">
-        <thead>
-          <tr>
-            <th>Person</th><th>Fact</th><th>Month</th>
-            <th>Expected</th><th>Got</th><th>Test</th>
-          </tr>
-        </thead>
-        <tbody>
-          {report.results.map((res) => {
-            const key = `${res.person}|${res.identifier}|${res.month ?? ""}`;
-            const isOpen = open.value === key;
-            return (
-              <>
-                <tr
-                  key={key} class={`expectation${isOpen ? " on" : ""}`}
-                  onClick={() => { open.value = isOpen ? null : key; }}
-                >
-                  <td>{personLabel(res.person)}</td>
-                  <td>
-                    <b>{engine.item(res.identifier)?.name ?? res.identifier}</b>
-                    <br />
-                    <small>
-                      {engine.item(res.identifier)?.id ?? ""}{" · "}
-                      <Ident id={res.identifier} engine={engine} />
-                    </small>
-                  </td>
-                  <td>{res.month ? formatDate(res.month) : "—"}</td>
-                  <td>{res.expect === "unknown" ? "Unknown" : formatFor(engine, res.identifier, res.expect)}</td>
-                  <td>{formatFor(engine, res.identifier, res.got)}</td>
-                  <td class={res.ok ? "ok" : "bad"} title="whether the codex gives the value this test household expects">
-                    {res.ok ? "matches" : "differs"}
-                  </td>
-                </tr>
-                {isOpen && (
-                  <tr key={`${key}|trace`} class="tracerow">
-                    <td colSpan={6}>
-                      <Trace
-                        engine={engine} route={r}
-                        node={engine.explain(spec, res.identifier, res.person, res.month)}
-                      />
-                    </td>
-                  </tr>
-                )}
-              </>
-            );
-          })}
-        </tbody>
-      </table>
-    </section>
-  );
 }
 
 function fieldInput(
@@ -680,19 +443,13 @@ function NewHousehold(
   );
 }
 
-/** `embedded`: shown as a tab of the household's page (What the case
- *  states), which carries the household's title itself. */
-export function CasesView({ embedded = false }: { embedded?: boolean } = {}) {
+/** Adding a stored household (`households/new`, edit mode). A stored
+ *  household's own page, the list and each determination are
+ *  places/HouseholdPage.tsx and places/Determination.tsx. */
+export function CasesView() {
   const engine = viewEngine() ?? engineSig.value;
   const vol = volumeSig.value;
   const r = route.value;
   if (!engine || !vol) return <p class="status">No ledger loaded.</p>;
-  if (r.arg === "new") return <NewHousehold engine={engine} vol={vol} route={r} />;
-  const cases = vol.cases ?? [];
-  if (r.arg) {
-    const hc = cases.find((c) => c.id === r.arg);
-    if (!hc) return <p class="status bad">No case {r.arg} in this volume.</p>;
-    return <CasePage engine={engine} hc={hc} route={r} embedded={embedded} />;
-  }
-  return <CaseList engine={engine} cases={cases} route={r} />;
+  return <NewHousehold engine={engine} vol={vol} route={r} />;
 }

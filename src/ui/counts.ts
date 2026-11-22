@@ -77,6 +77,7 @@ export const COUNT_DEFINITIONS = {
   changed: "Worked out by running the stored households again with the change and comparing every result.",
   owns: "A role owns a question when the question's Owner line names it. Partly settled questions are counted apart.",
   pastDue: "A due date is past due when it falls before the date shown.",
+  whatIf: "Worked out by reading this stored household again with one stated amount moved and comparing each program result that reads it, for every person.",
   affects: "An item affects what reads it, directly or through other rules, and the program outcomes those reach; a path that runs only through document-verification flags is left out of the outcomes.",
   takesEffect: "A change takes effect in a month when a figure's new version starts or its last version ends, a rule's effective dates start or end, or a rule document's stated effective date falls in that month.",
   outcome: "An outcome is a result a program declares (eligibility, a category, an amount); every other stored result is a step on the way, such as countable income.",
@@ -96,6 +97,12 @@ export function restingPhrase(results: number, households: number): string {
 export function changedPhrase(results: number, households: number): string {
   if (!results) return "No stored household result would change";
   return `${n(results, "stored result")} in ${n(households, "household")} ${COUNT_WORDS.changed}`;
+}
+
+/** "2 results change, for 1 person": a what-if on one stored household. */
+export function whatIfPhrase(rs: ReadonlyArray<{ person: string }>): string {
+  if (!rs.length) return "No program result changes";
+  return `${n(rs.length, "result")} ${rs.length === 1 ? "changes" : "change"}, for ${n(new Set(rs.map((r) => r.person)).size, "person", "people")}`;
 }
 
 /** "Read by 6 of 43 stored households; it reaches 11". */
@@ -640,6 +647,11 @@ export interface DocumentsNeeded {
 export function documentsStillNeeded(engine: Engine, hc: HouseholdCase): DocumentsNeeded {
   const owed = documentsOwed(engine, hc);
   return { rows: documentRows(owed.filter((d) => d.applies)), notOwed: owed.filter((d) => !d.applies) };
+}
+
+/** How many documents one person of the household still owes. */
+export function documentsNeededBy(rows: readonly DocumentRow[], person: string): number {
+  return rows.filter((r) => r.person === person).length;
 }
 
 /** How many (document, program) due dates are past due on `date`. */

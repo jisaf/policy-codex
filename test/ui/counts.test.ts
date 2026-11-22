@@ -10,7 +10,7 @@ import {
   affectsPhrase, awaitingByRole, awaitingSignOff, changesInMonth, itemAffects, citedUnverified, COUNT_DEFINITIONS, documentsStillNeeded,
   figuresWithoutValue, householdsReached, householdsThatRead, isPastDue, itemsCitingUnverified, monthRange,
   newVersionSoon, ownedPhrase, ownedQuestions, ownerGroups, pastDueCount, personaQuestions, readReachPhrase,
-  restingOnUnverified, unverifiedUpstream,
+  restingOnUnverified, unverifiedUpstream, documentsNeededBy, whatIfPhrase,
 } from "../../src/ui/counts";
 import { personaById, personaRoles } from "../../src/ui/personas";
 import { unverifiedIds } from "../../src/ui/provenance";
@@ -136,6 +136,21 @@ describe("documents still needed and their due dates (CO-92)", () => {
     // Every date but the two Medicaid ones is past on 2026-11-22.
     const all = rows.reduce((n, r) => n + r.programs.length, 0);
     expect(pastDueCount(rows, "2026-11-22")).toBe(all - 2);
+  });
+
+  it("counts the documents each person owes, one per document", () => {
+    expect(documentsNeededBy(rows, "p1") + documentsNeededBy(rows, "p2")).toBe(rows.length);
+    expect(documentsNeededBy(rows, "p2")).toBe(rows.filter((r) => r.person === "p2").length);
+    expect(documentsNeededBy(rows, "p9")).toBe(0);
+  });
+});
+
+describe("what if: results that change when one stated amount moves", () => {
+  it("counts results and the people they belong to", () => {
+    expect(whatIfPhrase([])).toBe("No program result changes");
+    expect(whatIfPhrase([{ person: "p1" }])).toBe("1 result changes, for 1 person");
+    expect(whatIfPhrase([{ person: "p1" }, { person: "p1" }, { person: "p2" }])).toBe("3 results change, for 2 people");
+    expect(COUNT_DEFINITIONS.whatIf).toMatch(/one stated amount moved/);
   });
 });
 

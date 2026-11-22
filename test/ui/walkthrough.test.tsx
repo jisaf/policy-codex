@@ -22,7 +22,8 @@ import {
   unverifiedNotes, visibleSteps, budgetEffect, budgetMoney, caseFocus, determinationDate, documentRows,
   lineSources, personTitle, takenLabel, versionUsed,
 } from "../../src/ui/walkthrough";
-import { WalkthroughView } from "../../src/ui/views/WalkthroughView";
+import { DeterminationPage } from "../../src/ui/places/Determination";
+import { HouseholdPage, HouseholdsList } from "../../src/ui/places/HouseholdPage";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
@@ -30,8 +31,12 @@ const kase = (id: string): HouseholdCase => vol.cases.find((c) => c.id === id)!;
 const walkOf = (id: string, identifier: string, person: string, month: string | null = null) =>
   buildWalk(engine.explain(caseToSpec(kase(id)), identifier, person, month));
 
+/** An old walkthrough address (`arg` the case, `?person=&outcome=`) as the
+ *  household's canonical route: the list, the household, or a determination. */
 function setUp(r: Partial<Route> = {}) {
-  route.value = { ...defaultRoute(), volume: "co", view: "walkthrough", ...r };
+  const { person, outcome, ...rest } = r.params ?? {};
+  const arg = r.arg ? [r.arg, person, outcome].filter(Boolean).join("/") : null;
+  route.value = { ...defaultRoute(), volume: "co", view: "households", ...r, arg, params: rest };
   volumeSig.value = vol;
   engineSig.value = engine;
   changeSetSig.value = emptyChangeSet("co", "local");
@@ -42,7 +47,8 @@ function setUp(r: Partial<Route> = {}) {
 function show(r: Partial<Route>): HTMLElement {
   setUp(r);
   const host = document.createElement("div");
-  render(<WalkthroughView />, host);
+  const parts = (route.value.arg ?? "").split("/").filter(Boolean);
+  render(!parts.length ? <HouseholdsList /> : parts[1] ? <DeterminationPage /> : <HouseholdPage />, host);
   return host;
 }
 
@@ -73,10 +79,10 @@ describe("choosing a case", () => {
 
   it("filters the list by program", () => {
     const host = show({ params: { program: "SNAP" } });
-    const ids = [...host.querySelectorAll("ul.wk-cases li")].map((li) => li.getAttribute("data-case"));
+    const ids = [...host.querySelectorAll("ul.hhlist li")].map((li) => li.getAttribute("data-case"));
     expect(ids).toContain("CO-87");
     expect(ids).not.toContain("CO-07");
-    const all = show({}).querySelectorAll("ul.wk-cases li").length;
+    const all = show({}).querySelectorAll("ul.hhlist li").length;
     expect(ids.length).toBeLessThan(all);
     expect(all).toBe(vol.cases.length);
   });
@@ -100,7 +106,7 @@ describe("outcomes and per-person participation", () => {
     const own = host.querySelector(".wk-person")!;
     expect(own.getAttribute("data-participation")).toMatch(/^ineligible_member/);
     expect(own.textContent).toContain("Person 3's own place in SNAP");
-    expect(own.querySelector(".wk-household")!.textContent).toMatch(/household's result/);
+    expect(own.querySelector(".wk-household")!.textContent).toMatch(/household's/);
   });
 });
 
@@ -217,13 +223,6 @@ describe("documents still needed (county supervisor, task 4)", () => {
       }
     }
   });
-
-  it("renders the checklist with a tick box per document", () => {
-    const host = show({ arg: "CO-92", params: { person: "p1", program: "SNAP" } });
-    const rows = host.querySelectorAll("table.wk-docs tbody tr");
-    expect(rows.length).toBe(documentRows(documentsOwed(engine, kase("CO-92")).filter((d) => d.applies)).length);
-    expect(rows[0].querySelector("input[type=checkbox]")).not.toBeNull();
-  });
 });
 
 describe("what changes with staged drafts", () => {
@@ -247,15 +246,15 @@ describe("what changes with staged drafts", () => {
       entries: [{ id: before.id, chapter: vol.chapterOf[before.id], before, after }],
     };
     const host = document.createElement("div");
-    render(<WalkthroughView />, host);
+    render(<DeterminationPage />, host);
     const panel = host.querySelector(".wk-changes-panel")!;
     expect(panel).not.toBeNull();
     expect(Number(panel.getAttribute("data-changes"))).toBeGreaterThan(0);
-    expect(panel.textContent).toContain("Nothing is recalculated from new facts");
+    expect(panel.textContent).toContain("under the rules in force and under your");
   });
 });
 
-describe("the walkthrough page", () => {
+describe("the determination page", () => {
   beforeEach(() => setUp());
 
   it("highlights the deciding step, links each citation to its excerpt, and prints with the ledger commit", () => {
@@ -263,8 +262,8 @@ describe("the walkthrough page", () => {
     const why = host.querySelector("ol.stepper li.step.why")!;
     expect(why.textContent).toContain("This is why");
     const cite = host.querySelector("ol.stepper a[data-cite]")!;
-    expect(cite.getAttribute("href")).toMatch(/#\/co\/law\/sources\/S\d+.*excerpt=S\d+/);
-    expect(host.querySelector(".wk-answer")!.textContent).toContain("Statute over rule");
+    expect(cite.getAttribute("href")).toMatch(/#\/co\/law\/sources\/S\d+/);
+    expect(host.querySelector(".fedbanner")!.textContent).toContain("statute governs over the Colorado rule");
     const print = host.querySelector(".wk-printhead")!;
     expect(print.textContent).toContain("Determination date (as of)");
     expect(print.textContent).toMatch(/commit/);
@@ -296,9 +295,9 @@ describe("phase 13 retest fixes", () => {
   it("opens on the person and program the case is about (CO-05: the 16-year-old, Medicaid)", () => {
     expect(caseFocus(engine, kase("CO-05"))).toEqual({ person: "p3", program: "Medicaid" });
     expect(caseFocus(engine, kase("CO-87"))).toMatchObject({ person: "p1", program: "SNAP" });
-    const host = show({ arg: "CO-05", params: {} });
-    expect(host.querySelector(".wk-pick a.chip.on[data-person]")!.getAttribute("data-person")).toBe("p3");
-    expect(host.querySelector(".wk-pick a.chip.on[data-program]")!.getAttribute("data-program")).toBe("Medicaid");
+    // A person's determination with no result named opens in the program the case is about.
+    const host = show({ arg: "CO-05", params: { person: "p3" } });
+    expect((host.querySelector("select.det-program") as HTMLSelectElement).value).toBe("Medicaid");
   });
 
   it("names a person with their stated relationship", () => {

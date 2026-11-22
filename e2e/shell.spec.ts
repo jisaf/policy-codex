@@ -51,7 +51,7 @@ test("the aid-code grid fits a 1280px screen", async ({ page }) => {
   expect(box.x + box.width).toBeLessThanOrEqual(1280);
   const wrap = await page.locator(".hhwrap").evaluate((el) => el.scrollWidth - el.clientWidth);
   expect(wrap).toBeLessThanOrEqual(1);
-  // Every program's column is on screen, child care included.
+  // Every person's column is on screen, the last included.
   const last = (await table.locator("thead th").last().boundingBox())!;
   expect(last.x + last.width).toBeLessThanOrEqual(1280);
 });

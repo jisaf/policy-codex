@@ -34,7 +34,7 @@ export const PLACES: readonly PlaceInfo[] = [
   { id: "desk", label: "Desk", purpose: "Your role's work: what waits for your signature, the questions you own, your proposal, and what takes effect soon." },
   { id: "programs", label: "Programs", purpose: "What each program decides, and the rules behind each outcome." },
   { id: "figures", label: "Figures", purpose: "Every dated figure, as it stands on a date you choose." },
-  { id: "households", label: "Households", purpose: "The stored test households, one page each: results and aid codes, documents still needed, what the case states." },
+  { id: "households", label: "Households", purpose: "The stored test households, one page each: results and aid codes, documents still needed, what if, what the case states." },
   { id: "questions", label: "Questions", purpose: "The decision queue: every open question, who owns it, and what it holds up." },
   { id: "law", label: "Law", purpose: "Where a statute governs over a Colorado rule, figures whose source is unverified or missing, and the sources and documents themselves." },
   { id: "changes", label: "Changes", purpose: "What takes effect, month by month, and your proposal." },
