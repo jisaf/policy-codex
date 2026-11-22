@@ -6,9 +6,9 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: The person meets 7 U.S.C. 2015(f) - a resident of the United States who is a U.S. citizen or non-citizen national or an eligible non-citizen - and so may participate in SNAP as far as residence, citizenship and immigration status determine.
-precision: "The residency prong of 2015(f)(1) reads is_colorado_resident (CO-505): Colorado requires an applicant to live in the county where they apply (10 CCR 2506-1 4.303.A, S1311), so a person meeting Colorado's residency requirement is a resident of the United States, and no separate fact is needed (OQ-3 resolved). The county-of-application half of 4.303.A is not modeled; no county fact exists (OQ-393). Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
+precision: "The residency prong of 2015(f)(1) reads is_colorado_resident (CO-505): Colorado requires an applicant to live in the county where they apply (10 CCR 2506-1 4.303.A, S1311), so a person meeting Colorado's residency requirement is a resident of the United States, and no separate fact is needed (OQ-3 resolved). The county a household applies in is where its case is administered, not a condition of eligibility: an office that receives another county's application may process it to completion and transfer the case (4.902.1), and 4.303.C makes a county resident eligible provided the other requirements are met (S2300; OQ-393, resolved), so no county fact is read. Vocabulary fix round (U-3): the citizen-or-national arm reads is_us_citizen_or_national (CO-1358)."
 derived: [all, is_colorado_resident, [any, is_us_citizen_or_national, snap_is_eligible_non_citizen]]
-sources: [S8, S1311]
+sources: [S8, S1311, S2300]
 implemented: engine
 tags: [immigration, legal]
 rationale: Combines citizen/national status with snap_is_eligible_non_citizen into the single pass/fail citizenship test 7 U.S.C. 2015(f) states, which snap_is_ineligible_non_citizen and snap_is_ineligible_member read.

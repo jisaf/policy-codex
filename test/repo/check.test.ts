@@ -208,6 +208,24 @@ describe("npm run check", () => {
       "X-1: p2 states a Colorado county (adams) but state_of_residence NM",
     ]);
   });
+
+  it("warns when the persons of a case state different values of a fact that is one value for the application (OQ-541)", () => {
+    const ledger = loadLedgerFromDisk(ROOT, "co");
+    const c = {
+      id: "X-2", title: "application date", as_of: "2026-10-01",
+      persons: {
+        p1: { facts: { snap_application_date: "2026-10-01", cccap_application_county: "denver" } },
+        p2: { facts: { snap_application_date: "2026-10-03", cccap_application_county: "denver" } },
+        p3: { facts: {} },
+      },
+    };
+    const w = caseConsistencyWarnings({ ...ledger, cases: [c as unknown as typeof ledger.cases[0]] });
+    expect(w).toEqual([
+      'X-2: snap_application_date is one value for the application, but the persons state different values (p1 "2026-10-01", p2 "2026-10-03")',
+    ]);
+    // The stored households agree.
+    expect(caseConsistencyWarnings(ledger).filter((x) => x.includes("one value for the application"))).toEqual([]);
+  });
 });
 
 describe("check warnings about test inputs", () => {

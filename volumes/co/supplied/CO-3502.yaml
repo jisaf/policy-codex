@@ -1,0 +1,13 @@
+id: CO-3502
+name: "SNAP: the striker's monthly income before the strike"
+identifier: snap_striker_pre_strike_income
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: "Stated on a striking member (snap_is_striker, CO-3500): the member's monthly income before the strike, the figure 7 CFR 273.1(e)(2) compares with the striker's current income."
+precision: "Read only for a striking member. The amount above the striker's current income is counted as earned income (snap_striker_income_above_current, CO-3503), since it stands for the wages the strike stopped."
+supplied_by: Applicant statement of pre-strike pay, as the county verifies it.
+sources: [S1816]
+tags: [snap, income]
+rationale: "OQ-534: 7 CFR 273.1(e)(2) (S1816) counts the higher of the striker's pre-strike and current income; no existing fact states the pre-strike income."

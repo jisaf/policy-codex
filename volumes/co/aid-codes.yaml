@@ -215,6 +215,7 @@ outcomes:
       eligible: {code: PH-SNAP, label: "SNAP household member"}
     no_code:
       no_eligible_members: "Not eligible: no eligible household member."
+      striking_member: "Not eligible: a striking member, and the household was not eligible the day before the strike."
       over_gross_income_limit: "Not eligible: over the gross income limit."
       over_net_income_limit: "Not eligible: over the net income limit."
       over_resource_limit: "Not eligible: over the resource limit."

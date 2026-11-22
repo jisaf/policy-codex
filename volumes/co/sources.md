@@ -13204,3 +13204,86 @@ Document: D-204
 > ...
 >
 > (C) family planning services and supplies furnished (directly or under arrangements with others) to individuals of child-bearing age (including minors who can be considered to be sexually active)
+
+### S2300. SNAP: a household applies in its county of residence; another county's office may process the application to completion and transfer the case
+
+Document: D-82
+
+10 CCR 2506-1 4.303.A-C and 4.902.1 (rule version effective 10/01/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Applicants shall live in the county or district in which they make application for the
+> Program unless the local office has made arrangements to allow particular
+> households to file an application in a nearby specified county/district office.
+>
+> ...
+>
+> C. Applicants who maintain a residence in the county or district for any purpose
+> other than a vacation, regardless of the length of time they have resided in the
+> county or district, shall be considered eligible for the Program, provided other
+> eligibility requirements are met.
+>
+> ...
+>
+> A household must apply for SNAP in its county of residence. A local office that receives
+> an application that belongs to another county may secure the application date, process
+> the application to completion, issue the household an EBT card, and then transfer the
+> case to the correct county once the final eligibility decision is made. If a household is
+> determined eligible for participation, it may request and be designated to receive SNAP
+> from a local office that is more accessible.
+
+### S2301. Summer EBT: household means persons living as one economic unit
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/part-292/section-292.2
+
+> Household means a group of related or nonrelated individuals, who are not residents of an institution or boarding house, but who are living as one economic unit.
+
+### S2302. CCCAP parent fee: county waivers for dual Head Start enrollment, a declared disaster and teen-parent hardship; the $5 hardship reduction
+
+Document: D-87
+
+8 CCR 1403-1 3.124.G, I.8, S and X (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> G. Subject to the requirements and approval described in rule section 3.104, a
+> county may waive the parent fee for a Low-Income or Colorado Works Child
+> Care household that has a child who is dually enrolled in a Head Start or Early
+> Head Start Program.
+>
+> ...
+>
+> 8. Effective April 1, 2020, parent fees, as assessed by the parent fee
+> formula, may be waived in the event of a declared state or local disaster or
+> emergency for up to twelve (12) months for households impacted by such
+> disaster or emergency. The county shall document the decision to waive
+> the parent fee and the amount of time the parent fee will be waived in the
+> case record in the Child Care Automated Tracking System (CHATS).
+>
+> ...
+>
+> S. A county may request approval from the Department to reduce parent fees, as
+> assessed by the parent fee formula, to five dollars ($5) for hardship reasons for
+> up to six (6) months per hardship award by submitting a county plan, subject to
+> the requirements and approval as described in rule section 3.104. If approved by
+> the Department, the county director or his/her designee shall approve fee
+> reductions and a written justification placed in the case file and noted in the case
+> record in the Child Care Automated Tracking System (CHATS). Any hardship
+> award may be extended so long as justification for extending the hardship award
+> exists.
+>
+> ...
+>
+> X. One (1) or two (2) teen parent households for whom payment of a parent fee
+> produces a hardship may have their fee waived entirely. The parent fee waiver
+> shall be documented in the case file and reviewed during each subsequent re-
+> determination.
+
+### S2303. LEAP: non-traditional dwelling defined
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1, "Non-Traditional Dwelling" (rule version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Non-Traditional Dwelling”: A non-traditional dwelling means a structure that provides housing that is not
+> affixed to a permanent physical address or is enumerated as such in this rule (see Section 3.752.25),
+> including, but not limited to, cars, vans, buses, tents and lean-tos.

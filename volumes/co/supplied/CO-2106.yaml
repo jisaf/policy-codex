@@ -9,5 +9,5 @@ program: CCCAP
 meaning: "The county from which this household seeks or receives Low-Income Child Care assistance (8 CCR 1403-1 3.111.A), written as one of the county_of_residence options (lower case, underscores)."
 supplied_by: The county department that received the CCCAP application or holds the case.
 sources: [S1408]
-tags: [household]
+tags: [household, application_wide]
 rationale: "OQ-159: 3.111.A compares the caretaker's county of residence with the county from which assistance is sought; no existing fact names that county. cccap_meets_county_residency (CO-2107) reads it."
