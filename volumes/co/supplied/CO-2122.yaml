@@ -9,5 +9,5 @@ meaning: "The date the household's LEAP application was made for the program yea
 precision: "Stated for every person in a case that determines LEAP eligibility; LEAP reads no default."
 supplied_by: "Date the county received the LEAP application (PEAK, mail or in person)."
 sources: [S776]
-tags: [household]
+tags: [household, application_wide]
 rationale: "OQ-137: LEAP is decided once per program year from the application-date circumstances; no fact named that date. leap_is_eligible (CO-1007) and leap_benefit_amount (CO-1281) read it."

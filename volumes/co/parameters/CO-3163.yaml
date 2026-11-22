@@ -1,0 +1,13 @@
+id: CO-3163
+name: "Medicaid community engagement: days after its date a notice of noncompliance is considered received"
+identifier: ma_community_engagement_notice_receipt_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of days after the date on a notice of noncompliance on which it is considered received, unless the person shows otherwise (42 CFR 435.558(c)(4): \"5 days after the date on the notice\")."
+versions:
+  - {from: "2026-06-03", value: 5, source: S2109}
+sources: [S2109]
+tags: [ma, magi]
+rationale: "OQ-413 part (4), audit fix round 4: a figure of the noncompliance procedure, stated once."

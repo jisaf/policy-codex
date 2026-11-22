@@ -72,7 +72,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -191,7 +190,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -215,7 +213,7 @@
         # outside every SNAP unit (institutionalized, CO-304), so this does not change any SNAP
         # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
         snap_countable_liquid_resources: 46000
-        cccap_declared_assets: 46000
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -239,6 +237,7 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -309,7 +308,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -432,7 +430,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -453,7 +450,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
         incurs_heating_cooling_cost: true
@@ -478,6 +475,7 @@
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -550,7 +548,6 @@
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -665,7 +662,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.0454
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -685,7 +681,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
@@ -703,6 +699,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         complies_with_tanf_work_requirements: false
@@ -772,7 +769,6 @@
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -889,7 +885,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.0454
         is_tax_filer: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -910,7 +905,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -927,6 +922,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
@@ -997,7 +993,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -1112,7 +1107,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
         is_tax_filer: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -1133,7 +1127,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -1150,6 +1144,7 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -2213,7 +2208,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2335,7 +2329,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         receives_ssi: false
         meets_ssa_disability_criteria: false
@@ -2364,7 +2357,7 @@
         # outside every SNAP unit (institutionalized, CO-304), so this does not change any SNAP
         # expectation, but must not silently read 0 while the couple holds $46,000 for Medicaid.
         snap_countable_liquid_resources: 46000
-        cccap_declared_assets: 46000
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -2380,6 +2373,7 @@
         ssi_countable_resources_couple: 46000
         ma_spousal_resources_at_snapshot: 46000
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2450,7 +2444,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2574,7 +2567,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.78
         is_tax_filer: true
         qualifying_quarters: 40
         receives_ssi: false
@@ -2601,7 +2593,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
         incurs_heating_cooling_cost: true
@@ -2619,6 +2611,7 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
@@ -2691,7 +2684,6 @@
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -2808,7 +2800,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -2833,7 +2824,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
@@ -2844,6 +2835,7 @@
         immigration_status: undocumented
         state_of_residence: CO
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         complies_with_tanf_work_requirements: false
@@ -2913,7 +2905,6 @@
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -3031,7 +3022,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 1.0454
         receives_ssi: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -3056,7 +3046,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -3067,6 +3057,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
@@ -3137,7 +3128,6 @@
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         # Phase 7 (Medicaid/CHP+ completion) facts.
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         retains_ssi_status_without_payment: false
@@ -3252,7 +3242,6 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
         snap_application_date: "2026-10-01"
-        attested_household_income_pct_fpl: 0
         is_tax_filer: false
         receives_ssi: false
         meets_ssa_disability_criteria: false
@@ -3278,7 +3267,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -3289,6 +3278,7 @@
         immigration_status: us_citizen
         state_of_residence: CO
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
@@ -4307,7 +4297,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 4200
-        cccap_declared_assets: 4200
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         # Phase-8 fix round (C-5): the rent includes every utility. Stated through the utility facts, so
         # snap_utility_allowance_amount (CO-1500) derives the zero allowance instead of the case stating it.
@@ -4392,7 +4382,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
@@ -4512,7 +4502,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_start_date: "2026-07-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1997-02-11"
         sex: female
         immigration_status: lawful_permanent_resident
@@ -4524,18 +4513,22 @@
         is_required_to_file_tax_return: true
         is_pregnant: true
         expected_number_of_children: 1
+        # Audit fix round 4 (L-3): the pregnancy lock-in opens once the income verification
+        # requirements are met (8.100.4.G.5). Maria handed in her October pay stubs with the
+        # application, so no earned income verification is pending in October; she has no unearned income.
+        earned_income_verification_document_received: true
         was_enrolled_in_medicaid_at_foster_care_exit: false
         mother_was_enrolled_in_medicaid_at_birth: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
-        attested_household_income_pct_fpl: 0.80
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1600
         social_security_income: 0
         pension_income: 0
@@ -4564,7 +4557,6 @@
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-03"
         immigration_status: lawful_permanent_resident
         qualified_status_date: "2023-06-15"
@@ -4581,12 +4573,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
-        attested_household_income_pct_fpl: 0.80
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 600
         social_security_income: 0
         pension_income: 0
@@ -4615,7 +4607,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2008-05-14"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4630,12 +4621,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
-        attested_household_income_pct_fpl: 0.80
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
@@ -4664,7 +4655,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2016-01-22"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4681,12 +4671,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
-        attested_household_income_pct_fpl: 2.77
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
@@ -4715,7 +4705,6 @@
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1990-06-30"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4729,12 +4718,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
         snap_application_date: "2026-10-09"
-        attested_household_income_pct_fpl: 2.77
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 5000
         social_security_income: 0
         pension_income: 0
@@ -4902,7 +4891,6 @@
       facts:
         has_qualifying_military_service: false
         medicare_part_b_enrolled: true
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-11-08"
         sex: female
         immigration_status: us_citizen
@@ -4917,12 +4905,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
-        attested_household_income_pct_fpl: 1.03
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 1850
         wages_gross: 0
         pension_income: 0
@@ -4948,7 +4936,6 @@
         foster_care_exit_date: "2022-06-19"  # dual-entry 2.9: aged out at 20 (was ma_age_at_foster_care_exit: 20)
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2002-05-20"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -4962,12 +4949,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
-        attested_household_income_pct_fpl: 3.16
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 4200
         social_security_income: 0
         pension_income: 0
@@ -5007,7 +4994,6 @@
         medicare_part_b_enrolled: false
         ma_eligibility_start_date: "2026-01-01"  # needs-fact round (OQ-55): eligible throughout the three retroactive months
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2010-03-02"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -5022,12 +5008,12 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
         snap_application_date: "2026-04-10"
-        attested_household_income_pct_fpl: 0.00
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
         receives_ssi: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
@@ -5218,7 +5204,6 @@
         ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1952-04-18"
         sex: male
         immigration_status: us_citizen
@@ -5257,8 +5242,8 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
-        attested_household_income_pct_fpl: 1.71
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 1900
         pension_income: 700
         wages_gross: 0
@@ -5294,7 +5279,6 @@
         received_energy_assistance_within_twelve_months: false
         non_heating_utility_cost_count: 2
         incurs_telephone_cost: true
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1957-01-09"
         sex: female
         immigration_status: us_citizen
@@ -5326,8 +5310,8 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
-        attested_household_income_pct_fpl: 1.71
       month_defaults:
+        lottery_gambling_winnings_received: 0
         shelter_cost_monthly: 634
         social_security_income: 1100
         pension_income: 0
@@ -5356,7 +5340,6 @@
       facts:
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1992-08-23"
         ma_buy_in_determination_month: "2026-11"  # HCPF fix round (S-8): applied 2026-11-02, determined in November
         sex: male
@@ -5388,8 +5371,8 @@
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
         snap_application_date: "2026-11-02"
-        attested_household_income_pct_fpl: 1.80
       month_defaults:
+        lottery_gambling_winnings_received: 0
         social_security_income: 0
         pension_income: 0
         wages_gross: 2400
@@ -5958,7 +5941,7 @@
         is_responsible_for_heating_costs: true      # heat included in rent, non-subsidized (3.752.25.A.2)
         has_primary_heating_source: true            # building furnace (3.751.1 "Primary Heating Source")
         snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
       month_defaults:
         work_sanction_level_served: "none"
@@ -6020,7 +6003,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
       month_defaults:
         cccap_job_search_weeks_used: 4    # phase-10 sweep (K-5, illustrative): four of the thirteen weeks of job search used
@@ -6086,7 +6069,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
       month_defaults:
         work_sanction_level_served: "none"
@@ -6153,7 +6136,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
       month_defaults:
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): high school is not a time-limited CCCAP activity for her
@@ -6206,7 +6189,7 @@
         is_responsible_for_heating_costs: true
         has_primary_heating_source: true
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
       month_defaults:
         wages_gross: 1500
@@ -6330,7 +6313,6 @@
         medicare_part_b_enrolled: false
         adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        lottery_gambling_winnings_amount: 0
         snap_receives_permanent_disability_retirement_benefit: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -6358,6 +6340,7 @@
         receives_tanf_cash: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ssi_in_kind_support_and_maintenance: 0
         wages_gross: 5200
         social_security_income: 0
@@ -6390,7 +6373,6 @@
         medicare_part_b_enrolled: false
         adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        lottery_gambling_winnings_amount: 0
         snap_receives_permanent_disability_retirement_benefit: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -6422,6 +6404,7 @@
         receives_tanf_cash: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ssi_in_kind_support_and_maintenance: 0
         wages_gross: 2600
         social_security_income: 0
@@ -6461,7 +6444,6 @@
         # unless an exception applies. Tomas has no sponsor and no income, and the county finds he would otherwise have
         # insufficient income to support himself (26-2-111(2)(c)(II)(B)), so he keeps OAP.
         af_oap_qualified_alien_hardship_exception: true
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1954-01-15"
         sex: male
         immigration_status: lawful_permanent_resident
@@ -6500,6 +6482,7 @@
         receives_tanf_cash: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -6537,7 +6520,6 @@
         medicare_part_b_enrolled: false
         adult_financial_program_received: none  # audit fix round (H-3): no Adult Financial case
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        lottery_gambling_winnings_amount: 0
         snap_receives_permanent_disability_retirement_benefit: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -6563,6 +6545,7 @@
         receives_tanf_cash: false
         received_tanf_from_another_state_this_month: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ssi_in_kind_support_and_maintenance: 0
         wages_gross: 0
         social_security_income: 0
@@ -6657,7 +6640,6 @@
         receives_disability_based_state_supplement: false
         medicare_part_b_enrolled: false
         lost_oap_due_to_social_security_benefits: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1956-04-01"
         sex: female
         immigration_status: undocumented
@@ -6699,6 +6681,7 @@
         lost_ssi_due_to_social_security_benefits: false
         has_income_trust: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 900
@@ -7011,7 +6994,7 @@
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 20
-        cccap_declared_assets: 20
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 20
         ma_application_date: "2026-11-02"
@@ -7172,7 +7155,7 @@
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
         ma_application_date: "2026-11-02"
@@ -7394,7 +7377,6 @@
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         is_tax_filer: true
         is_required_to_file_tax_return: true
         qualifying_quarters: 30
@@ -7443,7 +7425,7 @@
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 300
         ma_application_date: "2026-10-01"
@@ -7519,6 +7501,7 @@
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
@@ -7575,7 +7558,6 @@
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
         cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
-        lottery_gambling_winnings_amount: 0
         is_tax_filer: false
         is_required_to_file_tax_return: false
         qualifying_quarters: 0
@@ -7620,7 +7602,7 @@
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 0
-        cccap_declared_assets: 0
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
         ma_application_date: "2026-10-01"
@@ -7695,6 +7677,7 @@
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
         is_destitute_migrant_or_seasonal_farmworker: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
@@ -7955,6 +7938,13 @@
   #   $580, not a seasonal worker, no exception or exclusion -> February not met -> status not_met.
   #   He meets every Adults criterion (0.226 of poverty) but the condition -> category none, status
   #   ineligible_community_engagement.
+  #   Audit fix round 4 (OQ-413 part 4): no SSI, no section 1619(b) status, no TANF or IV-E, not in the
+  #   Parents and Caretaker Relatives category -> no mandatory-group exception in February. The facts do
+  #   not show the requirement met, and the case records no notice of noncompliance, which 42 CFR
+  #   435.558(a)(1)-(2) requires before a denial (a notice and 30 days to make a satisfactory showing) ->
+  #   status notice_required (was not_met); the Adults condition fails for an applicant until the
+  #   showing period ends -> category none, eligibility status pending_community_engagement (was
+  #   ineligible_community_engagement).
   # p3 (30) is the parent of p4 (5), who relies on her for care: a specified excluded individual
   #   (435.554(c)(3)) in March -> status excluded. Her household (p3, p4) has $1,400 a month:
   #   1,400 / (21,640 / 12 = 1,803.33) = 0.776, over the Parents and Caretaker Relatives 68% even
@@ -7979,7 +7969,6 @@
         va_disability_rating_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1991-05-10"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -7992,10 +7981,10 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
-        attested_household_income_pct_fpl: 0.34
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         receives_tanf_cash: false
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
@@ -8003,6 +7992,7 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 450
         social_security_income: 0
         pension_income: 0
@@ -8039,7 +8029,6 @@
         va_disability_rating_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1986-09-20"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8052,10 +8041,10 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
-        attested_household_income_pct_fpl: 0.23
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         receives_tanf_cash: false
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
@@ -8063,6 +8052,7 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 300
         social_security_income: 0
         pension_income: 0
@@ -8098,7 +8088,6 @@
         va_disability_rating_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "1996-11-02"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8111,10 +8100,10 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
-        attested_household_income_pct_fpl: 0.78
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         receives_tanf_cash: false
         ma_condition_significantly_impairs_community_engagement: false
         participates_in_drug_alcohol_treatment: false
@@ -8122,6 +8111,7 @@
         has_disability_under_ada: false
         ma_relies_on_another_for_care: false
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1400
         social_security_income: 0
         pension_income: 0
@@ -8150,7 +8140,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_was_erroneously_granted: false
-        lottery_gambling_winnings_amount: 0
         date_of_birth: "2021-08-14"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -8164,12 +8153,13 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2027-03-02"
-        attested_household_income_pct_fpl: 0.78
         is_blind: false
         meets_ssa_disability_criteria: false
         receives_ssi: false
+        retains_ssi_status_without_payment: false
         ma_relies_on_another_for_care: true
       month_defaults:
+        lottery_gambling_winnings_received: 0
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
@@ -8201,10 +8191,10 @@
     p2:
       ma_community_engagement_activity_hours: {"2027-02": 30}
       ma_meets_community_engagement_for_month: {"2027-02": false}
-      ma_community_engagement_status: {"2027-03": not_met}
+      ma_community_engagement_status: {"2027-03": notice_required}
       ma_is_adult_category: {"2027-03": true}
       ma_magi_category: {"2027-03": none}
-      ma_magi_eligibility_status: {"2027-03": ineligible_community_engagement}
+      ma_magi_eligibility_status: {"2027-03": pending_community_engagement}
     p3:
       ma_is_specified_excluded_individual: {"2027-03": true}
       ma_community_engagement_status: {"2027-03": excluded}
@@ -8274,7 +8264,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -8366,7 +8356,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: true
         received_energy_assistance_within_twelve_months: false
@@ -8459,7 +8449,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -8587,7 +8577,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
@@ -8599,6 +8588,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1800
         social_security_income: 0
         pension_income: 0
@@ -8645,7 +8635,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
@@ -8657,6 +8646,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-09-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8703,7 +8693,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
@@ -8716,6 +8705,7 @@
         ma_application_date: "2026-09-02"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8762,7 +8752,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
@@ -8774,6 +8763,7 @@
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: "2026-09-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8867,7 +8857,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
@@ -8879,6 +8868,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 1800
         social_security_income: 0
         pension_income: 0
@@ -8925,7 +8915,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
@@ -8937,6 +8926,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -8983,7 +8973,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
@@ -8996,6 +8985,7 @@
         ma_application_date: "2026-11-02"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9042,7 +9032,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
@@ -9054,6 +9043,7 @@
         dependent_child_has_minimum_essential_coverage: false
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9154,7 +9144,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1996-08-14"
@@ -9167,6 +9156,7 @@
         chp_eligibility_period_start_month: "2026-10"
         pregnancy_end_date: "2026-12-03"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9213,7 +9203,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1994-03-02"
@@ -9224,6 +9213,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-10-05"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 7500
         social_security_income: 0
         pension_income: 0
@@ -9272,7 +9262,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2026-12-03"
@@ -9285,6 +9274,7 @@
         ma_custodial_parent: p1
         ma_application_date: "2026-12-10"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9331,7 +9321,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2016-05-20"
@@ -9344,6 +9333,7 @@
         chp_eligibility_period_start_month: "2026-10"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9424,7 +9414,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1991-01-11"
@@ -9437,6 +9426,7 @@
         ma_first_month_of_ineligibility: "2026-10"
         ma_ineligibility_reason: increased_earnings
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 2600
         social_security_income: 0
         pension_income: 0
@@ -9490,7 +9480,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2019-06-30"
@@ -9502,6 +9491,7 @@
         ma_application_date: "2026-04-03"
         ma_custodial_parent: p1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9548,7 +9538,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2011-03-09"
@@ -9559,6 +9548,7 @@
         dependent_child_has_minimum_essential_coverage: true
         ma_application_date: "2026-11-02"
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9603,6 +9593,11 @@
   # HCPF fix round (C-5, S-16). Derived by hand from 10 CCR 2505-10 § 8.100.3.R (S1721, S1722). All four apply
   # through a certified hospital site, none already receives Medical Assistance or had presumptive eligibility in
   # the last 12 months (R.8, R.9). Income is what each declares.
+  # Audit fix round 4 (H-9, H-10): each now declares a monthly amount and a household size, and the volume
+  # derives the ratio (2026 guideline, annual / 12: one 1,330.00, two 1,803.33): p1 1,596 / 1,330 = 1.20;
+  # p2 3,990 / 1,330 = 3.00, own income the same 3.00; p3 3,426 / 1,803.33 = 1.8998 (household of two, counting
+  # the child she expects); p4 1,197 / 1,330 = 0.90. No one declares being a parent or caretaker of a dependent
+  # child (p1's children are adults). The ratios are those the case stated before, so no expectation changes.
   # p1 Rosa, 45, citizen, declares household income 120% FPL: not pregnant, not under 19; parent of adults only
   # (no dependent child), so not the 68% group; 19-64 and 120% <= 133%: adult.
   # p2 Mateo, 25, citizen, her son, files his own return; declares household income 300% FPL, employment, and a
@@ -9638,7 +9633,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1981-04-04"
@@ -9646,13 +9640,16 @@
         immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
         is_enrolled_in_medical_assistance: false
-        ma_received_presumptive_eligibility_in_last_twelve_months: false
-        ma_received_presumptive_eligibility_this_pregnancy: false
-        attested_household_income_pct_fpl: 1.2
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 1596
+        declared_household_size: 1
+        ma_declares_parent_or_caretaker_of_dependent_child: false
         ma_declares_current_employment: true
         claims_disability: false
-        ma_attested_own_income_pct_fpl: 1.2
+        declared_own_income_monthly: 1596
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9699,7 +9696,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2001-02-14"
@@ -9707,13 +9703,16 @@
         immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
         is_enrolled_in_medical_assistance: false
-        ma_received_presumptive_eligibility_in_last_twelve_months: false
-        ma_received_presumptive_eligibility_this_pregnancy: false
-        attested_household_income_pct_fpl: 3.0
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 3990
+        declared_household_size: 1
+        ma_declares_parent_or_caretaker_of_dependent_child: false
         ma_declares_current_employment: true
         claims_disability: true
-        ma_attested_own_income_pct_fpl: 3.0
+        declared_own_income_monthly: 3990
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9760,7 +9759,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2004-09-09"
@@ -9768,13 +9766,16 @@
         immigration_status: us_citizen
         ma_is_applying_at_hospital_pe_site: true
         is_enrolled_in_medical_assistance: false
-        ma_received_presumptive_eligibility_in_last_twelve_months: false
-        ma_received_presumptive_eligibility_this_pregnancy: false
-        attested_household_income_pct_fpl: 1.9
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 3426
+        declared_household_size: 2
+        ma_declares_parent_or_caretaker_of_dependent_child: false
         ma_declares_current_employment: false
         claims_disability: false
-        ma_attested_own_income_pct_fpl: 1.9
+        declared_own_income_monthly: 3426
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9821,7 +9822,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         resides_in_medical_institution: false
-        lottery_gambling_winnings_amount: 0
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-12-01"
@@ -9829,9 +9829,11 @@
         immigration_status: undocumented
         ma_is_applying_at_hospital_pe_site: true
         is_enrolled_in_medical_assistance: false
-        ma_received_presumptive_eligibility_in_last_twelve_months: false
-        attested_household_income_pct_fpl: 0.9
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 1197
+        declared_household_size: 1
       month_defaults:
+        lottery_gambling_winnings_received: 0
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -9923,7 +9925,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -10015,7 +10017,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -10107,7 +10109,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -10201,7 +10203,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -10295,7 +10297,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -10387,7 +10389,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -10923,7 +10925,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11016,7 +11018,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11137,7 +11139,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11250,7 +11252,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: true
         received_energy_assistance_within_twelve_months: false
@@ -11375,7 +11377,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: true
         received_energy_assistance_within_twelve_months: false
@@ -11467,7 +11469,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11558,7 +11560,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11685,7 +11687,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11777,7 +11779,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -11889,7 +11891,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: false
         received_energy_assistance_within_twelve_months: false
@@ -12008,7 +12010,7 @@
         participates_in_drug_alcohol_treatment: false
         is_elderly_disabled_unable_to_prepare_meals: false
         snap_countable_liquid_resources: 300
-        cccap_declared_assets: 300
+        cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         incurs_heating_cooling_cost: true
         received_energy_assistance_within_twelve_months: false
@@ -12231,3 +12233,385 @@
       snap_meets_citizenship_requirement: false
       cccap_child_meets_citizenship_requirement: false
       leap_meets_citizenship_requirement: false
+
+- id: CO-98
+  title: "Community engagement at a September 2027 renewal: one adult inside the 30-day showing period, one whose period has ended"
+  # Audit fix round 4 (OQ-413 part 4, 42 CFR 435.558; 42 U.S.C. 1396a(xx)(6)). Two unrelated enrolled
+  # adults, each a tax unit of one, both citizens and Colorado residents, both earning $300 a month for
+  # 30 hours of paid work, with no exception or exclusion. Each is renewed on 2027-09-15; the most
+  # recent determination took effect 2027-06-01, so June, July and August 2027 are assessed and at
+  # least 1 month must be met (ma_community_engagement_renewal_required_months).
+  # Each month: 30 hours < 80, $300 < $7.25 x 80 = $580, not enrolled in education, not seasonal, no
+  # mandatory exception (age, Medicare, no SSI, 1619(b), TANF, IV-E or Parents and Caretaker
+  # Relatives category, not excluded, no recent incarceration) -> no month met -> the facts do not
+  # show the requirement met.
+  # MAGI: household of one, $300 a month: 300 / (15,960 / 12 = 1,330) = 0.2256 <= 1.33; 19 to 64, not
+  # pregnant, no Medicare -> the Adults group, subject to the community engagement condition.
+  # p1 Dana (41): the notice of noncompliance is dated 2027-09-10, received 2027-09-15 (5 days,
+  #   435.558(c)(4)); the 30 days run through 2027-10-14 -> on 2027-09-15 the period is open:
+  #   status notice_period. An enrolled beneficiary keeps coverage during it (435.558(a)(3)) ->
+  #   the condition holds in September and November -> category adult, status eligible.
+  # p2 Eli (37): the notice is dated 2027-08-02, received 2027-08-07; the period ran through
+  #   2027-09-05 and has ended with no showing -> status not_met. Disenrollment is not later than the
+  #   end of the month after the month the period ended (435.558(d)(2)(ii)): through October 2027 the
+  #   condition holds -> September: category adult, eligible; November: the condition fails ->
+  #   category none, status ineligible_community_engagement.
+  as_of: "2027-09-15"
+  persons:
+    p1:
+      relationships: []
+      facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: renewal
+        ma_community_engagement_noncompliance_notice_date: "2027-09-10"
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "1986-02-14"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-05-20"
+        ma_most_recent_determination_effective_date: "2027-06-01"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        receives_tanf_cash: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 300
+        hours_worked: 30
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+    p2:
+      relationships: []
+      facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: renewal
+        ma_community_engagement_noncompliance_notice_date: "2027-08-02"
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "1990-07-30"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-05-20"
+        ma_most_recent_determination_effective_date: "2027-06-01"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        receives_tanf_cash: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 300
+        hours_worked: 30
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+  expect:
+    p1:
+      ma_community_engagement_response_period_end_date: "2027-10-14"
+      ma_community_engagement_status: {"2027-09": notice_period, "2027-11": notice_period}
+      ma_meets_adult_group_community_engagement_condition: {"2027-09": true, "2027-11": true}
+      ma_magi_category: {"2027-09": adult, "2027-11": adult}
+      ma_magi_eligibility_status: {"2027-09": eligible, "2027-11": eligible}
+    p2:
+      ma_community_engagement_response_period_end_date: "2027-09-05"
+      ma_community_engagement_status: {"2027-09": not_met, "2027-11": not_met}
+      ma_meets_adult_group_community_engagement_condition: {"2027-09": true, "2027-11": false}
+      ma_magi_category: {"2027-09": adult, "2027-11": none}
+      ma_magi_eligibility_status: {"2027-09": eligible, "2027-11": ineligible_community_engagement}
+
+- id: CO-99
+  title: "Lottery winnings received in two months, a spouse granted the hardship exemption, and a child in a recorded continuous eligibility period"
+  # Audit fix round 4 (OQ-216; heavier-definitions audit H-5). Married citizens p1 and p3 file jointly
+  # and claim their son p2 (11); they apply for Medical Assistance on 2026-10-05. p1 earns $1,000 a
+  # month and p3 $1,500. p1 wins $100,000 in October 2026 and $90,000 in December 2026. CBMS records
+  # p2's continuous eligibility period from April 2026. p3 was denied in October because of p1's
+  # winnings and the county granted p3 the hardship exemption (8.100.4.C.1.b.xiv.5). Community
+  # engagement does not apply before January 2027. Every MAGI household is [p1, p2, p3], size 3:
+  # guideline 27,320 / 12 = 2,276.67 a month.
+  # Spreads: $100,000 -> 1 + ceil((100,000 - 79,999) / 10,000) = 1 + 3 = 4 months, $25,000 a month
+  # October through January; $90,000 -> 1 + ceil(10,001 / 10,000) = 3 months, $30,000 a month
+  # December through February.
+  # p1 (the winner): own installments October 25,000, November 25,000, December 25,000 + 30,000 =
+  #   55,000. Household income = the members' MAGI income (p1's wages plus the month's receipt,
+  #   p3's wages) with p1's receipt replaced by p1's installments:
+  #   October 1,000 + 100,000 + 1,500 - 100,000 + 25,000 = 27,500; November 1,000 + 1,500 + 25,000 =
+  #   27,500; December 1,000 + 90,000 + 1,500 - 90,000 + 55,000 = 57,500. 27,500 / 2,276.67 = 12.08 and
+  #   57,500 / 2,276.67 = 25.26: over every standard -> category none, status ineligible_income.
+  # p3 (not the winner, exemption granted): no member's winnings count in p3's household (xiv.4-5,
+  #   1396a(e)(14)(K)(iii)): 1,000 + 1,500 = 2,500 every month, 2,500 / 2,276.67 = 1.098. A parent of a
+  #   dependent child, but over 68% (the 5% disregard applies only at p3's highest standard, 133%); the
+  #   Adults group (19 to 64, not pregnant, no Medicare, child has coverage): 1.098 <= 1.33 -> adult,
+  #   eligible. Without the exemption p3's household would count p1's receipt in its month (October
+  #   102,500, December 92,500) and only the receipt months would fail.
+  # p2 (11): his household counts p1's receipts in the months received (October 102,500, December
+  #   92,500; November 2,500 -> 1.098 <= 1.42, the Children category on its own). CBMS records his
+  #   period from April 2026 (continuous_eligibility_period_start_month), which stands as recorded
+  #   (H-5): within April 2026 to March 2027, still under 19 and resident -> in the period every month
+  #   -> category child, eligible, whatever the receipts.
+  as_of: "2026-12-15"
+  relationships:
+    - [spouse, p1, p3]
+    - [files_jointly_with, p1, p3]
+    - [parent, p1, p2]
+    - [parent, p3, p2]
+    - [tax_filer, p1, p2]
+  persons:
+    p1:
+      facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_lottery_winnings_hardship_exemption_granted: false
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "1984-03-03"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-10-05"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        receives_tanf_cash: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1000
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+      months:
+        "2026-10": {lottery_gambling_winnings_received: 100000}
+        "2026-12": {lottery_gambling_winnings_received: 90000}
+    p2:
+      facts:
+        education_program_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2015-05-09"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-04-08"
+        continuous_eligibility_period_start_month: "2026-04"
+        ma_lottery_winnings_hardship_exemption_granted: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        ma_relies_on_another_for_care: true
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_is_unable_to_be_located: false
+        ma_has_left_required_household: false
+        is_inmate_of_public_institution: false
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+    p3:
+      facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        has_qualifying_military_service: false
+        child_welfare_payment_type: none
+        ma_determination_type: initial_application
+        ma_lottery_winnings_hardship_exemption_granted: true
+        va_disability_rating_type: none
+        medicare_part_a_entitled: false
+        medicare_part_b_enrolled: false
+        date_of_birth: "1982-11-21"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-10-05"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        receives_tanf_cash: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1500
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+  expect:
+    p1:
+      ma_lottery_winnings_countable_for_recipient: {"2026-10": 25000, "2026-11": 25000, "2026-12": 55000}
+      ma_magi_household_income: {"2026-10": 27500, "2026-11": 27500, "2026-12": 57500}
+      ma_magi_category: {"2026-10": none, "2026-11": none, "2026-12": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income, "2026-12": ineligible_income}
+    p2:
+      ma_magi_household_income: {"2026-10": 102500, "2026-11": 2500, "2026-12": 92500}
+      ma_child_is_in_continuous_eligibility_period: {"2026-10": true, "2026-11": true, "2026-12": true}
+      ma_magi_category: {"2026-10": child, "2026-11": child, "2026-12": child}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible, "2026-12": eligible}
+    p3:
+      ma_magi_household_income: {"2026-10": 2500, "2026-11": 2500, "2026-12": 2500}
+      ma_magi_category: {"2026-10": adult, "2026-11": adult, "2026-12": adult}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible, "2026-12": eligible}

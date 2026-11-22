@@ -12,9 +12,9 @@ import { emptyChangeSet, fileEntries } from "../../src/changes/types";
 import { excerptKind } from "../../src/ui/provenance";
 import {
   assumptionInForce, blocksCertification, citedExcerpts, departures, groupByOwner, isOpen,
-  matchesFilter, questionClass, questionInfo, questionInfos, questionNotes, questionStatus,
+  explicitField, matchesFilter, questionClass, questionInfo, questionInfos, questionNotes, questionOwners, questionStatus,
   queueEntry, ruleText, sentences, waitingOn, QUESTION_CLASSES, type QueueEntry,
-  explicitField, plainReading, questionOwners, queueTextMatches,
+  plainReading, queueTextMatches,
 } from "../../src/ui/questions";
 import { agencyNotified, stagedAnswers } from "../../src/ui/questionAnswer";
 import { changedBy, departureItems, departureSince, ownerGroups, personaQuestions, unknownReason } from "../../src/ui/counts";
@@ -103,17 +103,33 @@ describe("reading a question", () => {
 });
 
 describe("class, owner and certification", () => {
-  it("classes every open question, and uses each class", () => {
+  it("classes every open question, and uses each class the stopping rule accepts", () => {
     for (const e of open) expect(QUESTION_CLASSES).toContain(e.cls);
-    for (const c of QUESTION_CLASSES) expect(open.some((e) => e.cls === c), c).toBe(true);
+    for (const c of QUESTION_CLASSES.filter((x) => x !== "ledger")) expect(open.some((e) => e.cls === c), c).toBe(true);
   });
 
-  it("puts a question whose item follows a statute over a rule before Legal", () => {
+  it("states every open question's class, owner and reading, and none blocks certification (stopping rule)", () => {
+    const roles = new Set<string>(engine.meta.approval_policy.roles);
+    for (const e of open) {
+      expect(explicitField(e.body, "Class"), e.id).toBeTruthy();
+      expect(explicitField(e.body, "Assumption"), e.id).toBeTruthy();
+      // The reading in force is plain language: no identifier, no item or excerpt number.
+      expect(explicitField(e.body, "Assumption"), e.id).not.toMatch(/\b[a-z][a-z0-9]*_[a-z0-9_]+\b|\b(?:CO|OQ|D)-\d+|\bS\d{2,}\b|\[K\]/);
+      const owners = explicitField(e.body, "Owner")!.split(",").map((r) => r.trim());
+      for (const r of owners) expect(roles.has(r), `${e.id}: ${r}`).toBe(true);
+      expect(e.cls, e.id).not.toBe("ledger");
+      if (e.cls === "blocked") expect(explicitField(e.body, "Blocked on"), e.id).toBeTruthy();
+      expect(e.blocksCertification, e.id).toBe(false);
+    }
+  });
+
+  it("puts a question whose item follows a statute over a rule before Legal, unless it states its class", () => {
     const carried = open.filter((e) => e.items.some((it) => it.statute_override));
     expect(carried.length).toBeGreaterThan(0);
     for (const e of carried) {
-      expect(e.cls).toBe("legal");
-      expect(e.owners[0]).toBe("Legal");
+      const q = { ...e, body: e.body.replace(/^(?:Class|Owner):.*$/gm, "") };
+      expect(questionClass(q)).toBe("legal");
+      expect(questionOwners(engine, q, "legal")[0]).toBe("Legal");
     }
   });
 
@@ -126,12 +142,15 @@ describe("class, owner and certification", () => {
     }
   });
 
-  it("owns a policy question by its program owner and its items' tags", () => {
+  it("owns a policy question by its program owner and its items' tags, after any owner it names", () => {
     const policy = engine.meta.approval_policy;
     for (const e of open.filter((x) => x.cls !== "legal")) {
+      const named = explicitField(e.body, "Owner");
       const own = e.programs.filter((p) => p !== "All");
       const first = (own.length ? own : e.programs)[0];
-      if (first) expect(e.owner, e.id).toBe(policy.by_program[first][0]);
+      if (named) expect(e.owner, e.id).toBe(named.split(",")[0].trim());
+      else if (first) expect(e.owner, e.id).toBe(policy.by_program[first][0]);
+      if (first) expect(e.owners, e.id).toContain(policy.by_program[first][0]);
     }
     const ltc = open.find((e) => e.items.some((it) => it.tags?.includes("ltc")));
     expect(ltc?.owners).toContain("LTSS policy owner");
@@ -139,7 +158,15 @@ describe("class, owner and certification", () => {
 
   it("an explicit Class line wins over the reading", () => {
     const base = open.find((e) => e.cls === "policy")!;
-    expect(questionClass({ ...base, body: `${base.body}\n\nClass: ledger design` })).toBe("ledger");
+    const body = base.body.replace(/^Class:.*$/m, "");
+    expect(questionClass({ ...base, body: `${body}\n\nClass: ledger design` })).toBe("ledger");
+  });
+
+  it("reads an explicit Blocked on line, and does not show the field lines as a note", () => {
+    const body = "Body: The figure is in a memo.\n\nClass: blocked on a named document\nOwner: Legal\nAssumption: The codex keeps the old figure.\nBlocked on: The annual memo (example.org refused)\n\nChecked 2026-11-22: the rule names no figure.";
+    expect(waitingOn({ body })).toBe("The annual memo (example.org refused)");
+    expect(questionNotes(body).map((n) => n.label)).toEqual([null, "Checked 2026-11-22"]);
+    expect(assumptionInForce({ id: "OQ-9", items: [], body })).toBe("The codex keeps the old figure.");
   });
 
   it("blocks certification as the stopping rule says", () => {
@@ -321,7 +348,7 @@ describe("the view", () => {
     expect(page.getAttribute("data-question")).toBe(id);
     expect(page.querySelector(".assumption")!.textContent!.length).toBeGreaterThan(20);
     expect(page.querySelectorAll("ul.qitems li").length).toBeGreaterThan(0);
-    expect(page.querySelector(".qclass")!.textContent).toBe("Needs Legal");
+    expect(page.querySelector(".qclass")!.textContent).toBe("Blocked on a named document");
     await until(() => Boolean(page.querySelector(".alternative .effect-count")));
     expect(page.querySelector(".alternative table.qresults td.changed")).toBeTruthy();
 
@@ -342,7 +369,7 @@ describe("the view", () => {
     expect(entry.path).toBe(`${vol.path}/open-questions.md`);
     expect(entry.before).toBe(md);
     expect(entry.after).toMatch(new RegExp(`^### ${id}\\. Resolved: `, "m"));
-    expect(entry.after).toContain("Priya Shah, Legal");
+    expect(entry.after).toContain("Priya Shah, SNAP policy owner");
     expect(entry.label).toBe(`Answer to ${id}`);
 
     // Follow-up edits go through the tray too.
@@ -383,7 +410,7 @@ describe("phase 13 retest fixes", () => {
     expect(explicitField(body, "Class")).toBe("Blocked on a named document");
     const q = { rawTitle: "X", body, status: "open" as const, items: open[0].items, programs: ["Medicaid"] };
     expect(questionClass(q)).toBe("blocked");
-    expect(questionOwners(engine, q, "blocked")).toEqual(["Cash programs policy owner", "Legal"]);
+    expect(questionOwners(engine, q, "blocked").slice(0, 2)).toEqual(["Cash programs policy owner", "Legal"]);
     expect(assumptionInForce({ body, id: "OQ-0", items: [] })).toBe("No figure from July 1, 2028, so the grant is unknown.");
     // The field lines are fields, not notes.
     expect(questionNotes(body).map((n) => n.text).join(" ")).not.toMatch(/Owner:/);

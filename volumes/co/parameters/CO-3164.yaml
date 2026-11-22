@@ -1,0 +1,13 @@
+id: CO-3164
+name: "Medicaid community engagement: days to make a satisfactory showing after a notice of noncompliance"
+identifier: ma_community_engagement_response_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of calendar days, beginning on the day the notice of noncompliance is received, the person has to show that the community engagement requirement was met or does not apply (42 U.S.C. 1396a(xx)(6)(A)(ii)(I); 42 CFR 435.558(a)(2): \"a period of 30 calendar days beginning on the date on which such notice of noncompliance is received\")."
+versions:
+  - {from: "2025-07-04", value: 30, source: S2108}
+sources: [S2108, S2109]
+tags: [ma, magi]
+rationale: "OQ-413 part (4), audit fix round 4: a figure of the noncompliance procedure, stated once."

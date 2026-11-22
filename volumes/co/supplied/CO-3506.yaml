@@ -1,0 +1,13 @@
+id: CO-3506
+name: "CCCAP: the county reduced the parent fee to $5 for hardship"
+identifier: cccap_parent_fee_hardship_reduction_approved
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "Under a county plan the Department approved under 8 CCR 1403-1 3.104, the county director or designee has reduced this household's parent fee to the hardship amount (cccap_parent_fee_hardship_reduced_amount, CO-3507) for the months of a hardship award (up to six months per award, extendable while the justification exists), 3.124.S. Stated on each member of the household."
+precision: "If not stated, CCCAP reads this as false: the reduction is a county decision documented in the case file."
+supplied_by: County decision recorded in CHATS.
+sources: [S2302]
+tags: [household]
+rationale: "OQ-254: the $5 hardship reduction of 3.124.S (S2302) was not modeled; no existing fact states the county's award."

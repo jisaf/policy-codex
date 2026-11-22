@@ -9,5 +9,5 @@ meaning: "The date the client's Colorado Works application was received by the c
 precision: "On a combined PEAK application it is usually the same date as the other programs' application dates. Stated on each member of the assistance unit."
 supplied_by: "CBMS application record."
 sources: [S1629]
-tags: [cash, tanf, verification]
+tags: [cash, tanf, verification, application_wide]
 rationale: "OQ-316: the good-cause period of 3.602.1.I.2 (S1629) runs from the date of application; no Colorado Works application date was stated (snap_application_date, ma_application_date and leap_application_date are the other programs')."

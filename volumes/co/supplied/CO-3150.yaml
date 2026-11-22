@@ -1,0 +1,12 @@
+id: CO-3150
+name: Declared household size
+identifier: declared_household_size
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The number of people in the household as the applicant declares it on the application a declaration-based determination is made from (a presumptive eligibility or hospital presumptive eligibility site's application, or the Express Lane source application), counting a pregnant woman as herself plus the children she expects, as the application asks. The size whose poverty guideline the declared household income (declared_household_income_monthly, CO-092) is measured against."
+supplied_by: The applicant's declaration on the presumptive eligibility application, or on the Express Lane source application as forwarded.
+sources: [S1501, S1722, S1723, S1745]
+tags: [household, income]
+rationale: "Heavier-definitions audit H-9 (audit fix round 4): the declared income was a ratio to the poverty guideline the site computed for the household's size; the size is now declared beside the amount, so the volume derives the ratio and the limited family planning group can count the applicant as two (§ 8.100.3.R.2.c). No existing item carries a declared size: ma_magi_household_size is the MAGI household the full determination builds."

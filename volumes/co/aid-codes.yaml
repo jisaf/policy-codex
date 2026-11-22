@@ -69,6 +69,7 @@ outcomes:
     no_code:
       eligible: "The MAGI covered group carries the code."
       emergency_only: "Emergency Medicaid carries the code."
+      pending_community_engagement: "Pending: the community engagement notice of noncompliance is due or its 30-day showing period is running (42 CFR 435.558); no coverage is approved yet."
       ineligible_community_engagement: "Not eligible: community engagement not met."
       ineligible_income: "Not eligible: income."
       ineligible_residency: "Not eligible: residency."
@@ -214,6 +215,7 @@ outcomes:
       eligible: {code: PH-SNAP, label: "SNAP household member"}
     no_code:
       no_eligible_members: "Not eligible: no eligible household member."
+      striking_member: "Not eligible: a striking member, and the household was not eligible the day before the strike."
       over_gross_income_limit: "Not eligible: over the gross income limit."
       over_net_income_limit: "Not eligible: over the net income limit."
       over_resource_limit: "Not eligible: over the resource limit."

@@ -1,0 +1,13 @@
+id: CO-3500
+name: "SNAP: is a striker"
+identifier: snap_is_striker
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "This person is a striker under 7 CFR 273.1(e): involved in a strike or concerted stoppage of work by employees (including one on the expiration of a collective-bargaining agreement) or a concerted slowdown or other concerted interruption of operations by employees. A person affected by a lockout is not a striker; nor is a person who went on strike but was exempt from work registration under 7 CFR 273.7(b) the day before the strike for a reason other than being employed; nor a person, such as a truck driver, who cannot work because the strike left nothing to deliver, or an employee outside the bargaining unit who does not cross the picket line for fear of injury or death."
+precision: If not stated, SNAP reads this as false.
+supplied_by: Applicant statement on the household's employment, as the county establishes it.
+sources: [S1816]
+tags: [snap, household]
+rationale: "OQ-534 (CDHS review C-2): households with a striking member were not modeled; 7 CFR 273.1(e) (S1816) makes such a household ineligible unless it was eligible the day before the strike and counts the higher of the striker's pre-strike and current income, and no existing fact says who is on strike."

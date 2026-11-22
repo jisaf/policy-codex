@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: Whether the agency has received documentary evidence (or an acceptable collateral contact) verifying the person's estimated home heating costs and vulnerability to them for this application, such as a fuel vendor's billing history or a rental agreement showing heat costs.
+meaning: "Whether the agency has received documentary evidence (or an acceptable collateral contact) verifying the person's estimated home heating costs and vulnerability to them for this application, such as a fuel vendor's billing history or a rental agreement showing heat costs. Vulnerability may be satisfied from the prior year's case file: where the household applied in the prior LEAP program year and there are no changes in the applicant, address and fuel provider, vulnerability copied from that file counts as received (9 CCR 2503-7 3.755.11); the estimated heating costs are still verified."
 supplied_by: Date-stamped document receipt and collateral-contact entries in the CBMS case file.
 sources: [S897]
 tags: [verification]
-rationale: No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value.
+rationale: "No existing item in the volume carries this fact; the phase-9 verification chapter (design amended 2026-11-21) needs it, and it is program-neutral so every program's verification rules read the same value. Heavier-definitions audit H-16 (audit fix round 4): the prior year's file may serve for vulnerability when nothing changed (3.755.11, S897). The pending flag does not change, since the element bundles the heating costs, which are verified each year; only the document asked for is lighter."

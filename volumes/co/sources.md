@@ -11122,13 +11122,15 @@ Document: D-65
 >
 > 9. An applicant may only receive presumptive eligibility once every 12 months with the exception of pregnant women who may receive presumptive eligibility once every pregnancy.
 
-### S1723. Express Lane Eligibility from Free/Reduced Lunch, Food Assistance and Colorado Works applications; 90 days of eligibility pending citizenship and identity verification (current text)
+### S1723. Express Lane Eligibility from Free/Reduced Lunch, Food Assistance and Colorado Works applications: eligibility based on the income declared on the source application; 90 days of eligibility pending citizenship and identity verification (current text, complete)
 
 Document: D-65
 
-10 CCR 2505-10 § 8.100.4.J (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+10 CCR 2505-10 § 8.100.4.J (rule version effective 11/14/2026; the same version re-retrieved 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
 
 > Express Lane Eligibility shall allow for automatic initiation of Medical Assistance enrollment by using available data and findings from other programs as listed below.
+>
+> 1. Free/Reduced Lunch Program
 >
 > a. Recipients of the Free/Reduced Lunch Program who have submitted a Free/Reduced Lunch application at a participating school district-
 >
@@ -11138,13 +11140,35 @@ Document: D-65
 >
 > iii) Children who meet all necessary eligibility requirements except verification of U.S. citizenship and identity shall receive 90days of eligibility while awaiting this verification.
 >
+> iv) Any additionally required verification shall be requested from the client through CBMS prior to being automatically enrolled.
+>
+> v) Eligibility is based on income declared on the Free/Reduced Lunch application as well as eligibility requirements outlined in this volume.
+>
 > vi) If it would be found that a child does not satisfy an eligibility requirement for Medical Assistance, the child’s eligibility will be evaluated using the Single Streamlined Application for Medical Assistance.
+>
+> b. Recipients of the Free/Reduced Lunch Program who were not required to submit a Free/Reduced Lunch application at a participating school district-
 >
 > i) Families who are automatically enrolled Free/Reduced Lunch recipient children shall not be forwarded to the Department for Express Lane Eligibility in compliance USDA confidentiality guidelines.
 >
+> ii) These families must apply for Medical Assistance in order to give consent for request of benefits.
+>
+> 2. Direct Certification
+>
 > a. Individuals who have submitted a Food Assistance or Colorado Works application
 >
+> i) Families shall be given the option to opt into Medical Assistance coverage for their potentially eligible child.
+>
+> ii) Children who meet all necessary eligibility requirements as outlined throughout 8.100.4 shall be automatically enrolled
+>
 > iii) Children who meet all necessary eligibility requirements except verification of U.S. citizenship and identity will receive 90 days of eligibility while awaiting this verification.
+>
+> iv) Any additionally required verification shall be requested from the client through CBMS prior to being automatically enrolled.
+>
+> v) Eligibility is based on income declared on the Food Assistance or Colorado Works application as well as eligibility requirements outlined throughout this volume.
+>
+> vi) If it would be found that a child does not satisfy an eligibility requirement for Medical Assistance, the child’s eligibility shall be evaluated using the Single Streamlined Application for Medical Assistance.
+>
+> vii) Individuals whose eligibility is not determined through Express Lane Eligibility can also submit a separate Single Streamlined Application for Medical Assistance to determine eligibility.
 
 ### S1724. Continuous eligibility: the period starts with the application month; the non-MAGI programs it covers; children leaving Foster Care Medicaid (current text)
 
@@ -12923,3 +12947,343 @@ Document: D-14
 7 CFR 273.10(c)(2)(i). https://www.ecfr.gov/current/title-7/section-273.10 (re-retrieved 2026-11-21 through the eCFR versioner API, as of 2026-11-18; identical to the text of D-14)
 
 > (2) *Income only in month received.* (i) Income anticipated during the certification period shall be counted as income only in the month it is expected to be received, unless the income is averaged. Whenever a full month's income is anticipated but is received on a weekly or biweekly basis, the State agency shall convert the income to a monthly amount by multiplying weekly amounts by 4.3 and biweekly amounts by 2.15, use the State Agency's PA conversion standard, or use the exact monthly figure if it can be anticipated for each month of the certification period. Nonrecurring lump-sum payments shall be counted as a resource starting in the month received and shall not be counted as income.
+
+### S2100. MAGI presumptive eligibility: not while receiving another Medical Assistance program; once every 12 months, or once every pregnancy (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.F.8-9 (rule version effective 11/14/2026; the same version re-retrieved 2026-11-21). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8. Applicants cannot receive presumptive eligibility if they are already in receipt of another medical assistance program.
+>
+> 9. An applicant may only receive presumptive eligibility once every 12 months with the exception of pregnant women who may receive presumptive eligibility once every pregnancy.
+
+### S2101. Federal presumptive eligibility for pregnant women: one period per pregnancy (current text)
+
+Document: D-197
+
+42 CFR 435.1103(a) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.1103
+
+> (a) The terms of §§ 435.1101 and 435.1102 apply to pregnant women such that the agency may provide Medicaid to pregnant women during a presumptive eligibility period following a determination by a qualified entity that the pregnant woman has income at or below the income standard established by the State under § 435.116(c), except that coverage of services provided to such women is limited to ambulatory prenatal care and the number of presumptive eligibility periods that may be authorized for pregnant women is one per pregnancy.
+
+### S2102. Express Lane option: the State may rely on an Express Lane agency's finding for one or more components of a child's eligibility; regular procedures where the finding would make the child ineligible
+
+Document: D-198
+
+42 U.S.C. 1396a(e)(13)(A)(i). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (i) Option to use a finding from an express lane agency.—At the option of the State, the State plan may provide that in determining eligibility under this subchapter for a child (as defined in subparagraph (G)), the State may rely on a finding made within a reasonable period (as determined by the State) from an Express Lane agency (as defined in subparagraph (F)) when it determines whether a child satisfies one or more components of eligibility for medical assistance under this subchapter. The State may rely on a finding from an Express Lane agency notwithstanding sections 1396a(a)(46)(B) and 1320b–7(d) of this title or any differences in budget unit, disregard, deeming or other methodology, if the following requirements are met:
+> (I) Prohibition on determining children ineligible for coverage.—
+> If a finding from an Express Lane agency would result in a determination that a child does not satisfy an eligibility requirement for medical assistance under this subchapter and for child health assistance under subchapter XXI, the State shall determine eligibility for assistance using its regular procedures.
+
+### S2103. Limits on information: the agency may require from an applicant only the information necessary to determine eligibility
+
+Document: D-196
+
+42 CFR 435.907(e)(1) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.907
+
+> (e) Limits on information. (1) The agency may only require an applicant to provide the information necessary to make an eligibility determination or for a purpose directly connected to the administration of the State plan.
+
+### S2104. Mandatory coverage groups (I) to (VIII) of section 1902(a)(10)(A)(i); the Adults group is subject to subsection (xx)
+
+Document: D-198
+
+42 U.S.C. 1396a(a)(10)(A)(i)(I)-(VIII). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (A) for making medical assistance available, including at least the care and services listed in paragraphs (1) through (5), (13)(B), (17), (21), (28), (29), and (30) of section 1396d(a) of this title, to—
+> (i) all individuals—
+> (I)
+> who are receiving aid or assistance under any plan of the State approved under subchapter I, X, XIV, or XVI, or part A or part E of subchapter IV (including individuals eligible under this subchapter by reason of section 602(a)(37),[1] 606(h),[1] or 673(b) of this title, or considered by the State to be receiving such aid as authorized under section 682(e)(6)[1] of this title),
+> (II)
+> (aa)
+> with respect to whom supplemental security income benefits are being paid under subchapter XVI (or were being paid as of the date of the enactment of section 211(a) of the Personal Responsibility and Work Opportunity Reconciliation Act of 1996 (P.L. 104–193) and would continue to be paid but for the enactment of that section), (bb) who are qualified severely impaired individuals (as defined in section 1396d(q) of this title), or (cc) who are under 21 years of age and with respect to whom supplemental security income benefits would be paid under subchapter XVI if subparagraphs (A) and (B) of section 1382(c)(7) of this title were applied without regard to the phrase “the first day of the month following”,
+> (III)
+> who are qualified pregnant women or children as defined in section 1396d(n) of this title,
+> (IV)
+> who are described in subparagraph (A) or (B) of subsection (l)(1) and whose family income does not exceed the minimum income level the State is required to establish under subsection (l)(2)(A) for such a family; [2]
+> (V)
+> who are qualified family members as defined in section 1396d(m)(1) of this title,
+> (VI)
+> who are described in subparagraph (C) of subsection (l)(1) and whose family income does not exceed the income level the State is required to establish under subsection (l)(2)(B) for such a family,
+> (VII)
+> who are described in subparagraph (D) of subsection (l)(1) and whose family income does not exceed the income level the State is required to establish under subsection (l)(2)(C) for such a family; 2
+> (VIII)
+> beginning January 1, 2014, who are under 65 years of age, not pregnant, not entitled to, or enrolled for, benefits under part A of subchapter XVIII, or enrolled for benefits under part B of subchapter XVIII, and are not described in a previous subclause of this clause, and whose income (as determined under subsection (e)(14)) does not exceed 133 percent of the poverty line (as defined in section 1397jj(c)(5) of this title) applicable to a family of the size involved, subject to subsections (k) and (xx); 2 or
+
+### S2105. Qualified family member: none for any period after September 30, 1998
+
+Document: D-199
+
+42 U.S.C. 1396d(m). https://www.law.cornell.edu/uscode/text/42/1396d
+
+> (m) Qualified family member
+> (1)
+> Subject to paragraph (2), the term “qualified family member” means an individual (other than a qualified pregnant woman or child, as defined in subsection (n)) who is a member of a family that would be receiving aid under the State plan under part A of subchapter IV pursuant to section 607 1 of this title if the State had not exercised the option under section 607(b)(2)(B)(i) 1 of this title.
+> (2)
+> No individual shall be a qualified family member for any period after September 30, 1998.
+
+### S2106. Titles I, X and XIV repealed for the States from January 1, 1974 (Pub. L. 92-603 sec. 303), except Puerto Rico, Guam and the Virgin Islands
+
+Document: D-200
+
+42 U.S.C. 301 note (Pub. L. 92-603, title III, sec. 303(a), (b)). https://www.law.cornell.edu/uscode/text/42/301
+
+> Repeal of Section
+> Pub. L. 92–603, title III, § 303(a), (b), Oct. 30, 1972, 86 Stat. 1484, provided that this section is repealed effective Jan. 1, 1974, except with respect to Puerto Rico, Guam, and the Virgin Islands.
+>
+> Pub. L. 92–603, title III, § 303(b), Oct. 30, 1972, 86 Stat. 1484, provided that:
+> “The amendments made by sections 301 [enacting sections 1381 to 1383c of this title] and 302 [enacting sections 801 to 805 of this title] and the repeals made by subsection (a) [repealing this section and sections 302 to 306, 1201 to 1206, and 1351 to 1355 of this title] shall not be applicable in the case of Puerto Rico, Guam, and the Virgin Islands.”
+
+### S2107. CMS: a section 1115 demonstration that gives expenditure authority only for specific services for groups covered under the State plan is not the demonstration branch of 'applicable individual'
+
+Document: D-201
+
+91 FR 33348, 33353-33354 (June 3, 2026), preamble sec. II. https://www.govinfo.gov/content/pkg/FR-2026-06-03/html/2026-11094.htm
+
+> Similarly, we do not interpret section 1902(xx)(9)(A)(i)(II) of the
+> Act to describe section 1115 demonstrations that provide only section
+> 1115(a)(1) waiver authority or that include section 1115(a)(2)
+> expenditure authority only for specific services (versus eligibility)
+> for groups covered under the State plan. Individuals whose coverage is
+> affected by these kinds of section 1115 demonstrations are eligible to
+> enroll (or are enrolled) in Medicaid through the State plan, not
+> through demonstration expenditure authority. Individuals who are
+> eligible to enroll (or are enrolled) in Medicaid under the State plan
+> would be applicable individuals only if they are eligible for or
+> enrolled in the State plan under section 1902(a)(10)(A)(i)(VIII) of the
+> Act (the adult group).
+
+### S2108. Statute: community engagement is a condition of eligibility for an applicable individual; the noncompliance procedure (notice, 30 days, continued coverage, denial or disenrollment by the end of the following month); the applicable individual
+
+Document: D-198
+
+42 U.S.C. 1396a(xx)(1), (6)(A), (9)(A)(i). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (1) In generalExcept as provided in paragraph (11), beginning not later than the first day of the first quarter that begins after December 31, 2026, or, at the option of the State under a waiver or demonstration project under section 1315 of this title or the State plan, such earlier date as the State may specify, subject to the succeeding provisions of this subsection, a State shall provide, as a condition of eligibility for medical assistance for an applicable individual, that such individual is required to demonstrate community engagement under paragraph (2)—
+> ...
+> (6) Procedure in the case of noncompliance
+> (A) In generalIf a State is unable to verify that an applicable individual has met the requirement to demonstrate community engagement under paragraph (1) (including, if applicable, by verifying that such individual was deemed to have demonstrated community engagement under paragraph (3)) the State shall (in accordance with standards specified by the Secretary)—
+> (i)
+> provide such individual with the notice of noncompliance described in subparagraph (B);
+> (ii)
+> (I) provide such individual with a period of 30 calendar days, beginning on the date on which such notice of noncompliance is received by the individual, to—
+> (aa)
+> make a satisfactory showing to the State of compliance with such requirement (including, if applicable, by showing that such individual was or should be deemed to have demonstrated community engagement under paragraph (3)); or
+> (bb)
+> make a satisfactory showing to the State that such requirement does not apply to such individual on the basis that such individual does not meet the definition of applicable individual under paragraph (9)(A); and
+> (II)
+> if such individual is enrolled under the State plan (or a waiver of such plan) under this subchapter, continue to provide such individual with medical assistance during such 30-calendar-day period; and
+> (iii) if no such satisfactory showing is made and the individual is not a specified excluded individual described in paragraph (9)(A)(ii), deny such individual’s application for medical assistance under the State plan (or waiver of such plan) or, as applicable, disenroll such individual from the plan (or waiver of such plan) not later than the end of the month following the month in which such 30-calendar-day period ends, provided that—
+> (I)
+> the State first determines whether, with respect to the individual, there is any other basis for eligibility for medical assistance under the State plan (or waiver of such plan) or for another insurance affordability program; and
+> (II)
+> the individual is provided written notice and granted an opportunity for a fair hearing in accordance with subsection (a)(3).
+> ...
+> (A) Applicable individual
+> (i) In generalThe term “applicable individual” means an individual (other than a specified excluded individual (as defined in clause (ii)))—
+> (I)
+> who is eligible to enroll (or is enrolled) under the State plan under subsection (a)(10)(A)(i)(VIII); or
+> (II) who—
+> (aa)
+> is otherwise eligible to enroll (or is enrolled) under a waiver of such plan that provides coverage that is equivalent to minimum essential coverage (as described in section 5000A(f)(1)(A) of the Internal Revenue Code of 1986 and as determined in accordance with standards prescribed by the Secretary in regulations); and
+> (bb)
+> has attained the age of 19 and is under 65 years of age, is not pregnant, is not entitled to, or enrolled for, benefits under part A of subchapter XVIII, or enrolled for benefits under part B of subchapter XVIII, and is not otherwise eligible to enroll under such plan.
+
+### S2109. Community engagement noncompliance: notice, a 30-day period from receipt, continued coverage for an enrolled beneficiary; notice received 5 days after its date; disenrollment not later than the end of the month after the period ends
+
+Document: D-121
+
+42 CFR 435.558(a), (c)(4), (d)(2)(i)-(ii) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.558
+
+> (a) Provision of notice of noncompliance. If a State is unable to verify that an applicable individual has met the requirement to demonstrate community engagement under §§ 435.552 and 435.556, or is deemed compliant under § 435.553 or, if applicable, § 435.555, as specified in paragraph (b) of this section, the State must:
+>
+> (1) Provide such individual with the notice of noncompliance described in paragraph (c) of this section;
+>
+> (2) Provide such individual with a period of 30 calendar days beginning on the date on which such notice of noncompliance is received by the individual consistent with paragraph (c)(4) of this section, to make a satisfactory showing to the agency—
+>
+> (i) Of compliance with such requirement (including, as applicable, by showing that such individual demonstrated or should be deemed to have demonstrated community engagement under § 435.553 or, if applicable, § 435.555, for each month required under the State plan); or
+>
+> (ii) That such requirement does not apply to such individual on the basis that such individual does not meet the definition of applicable individual under § 435.551, including by meeting the criteria for one or more of the categories of a specified excluded individual as defined at § 435.554.
+>
+> (3) Continue to furnish Medicaid for an enrolled beneficiary until the individual is determined ineligible consistent with § 435.930(b).
+> ...
+> (4) Is considered to be received 5 days after the date on the notice, unless the applicant or beneficiary shows that he or she did not receive the notice within the 5-day period.
+> ...
+> (d) State responsibilities in the event of no satisfactory showing. If no satisfactory showing is made after the 30-calendar day period consistent with paragraph (a)(2) of this section, the State must—
+>
+> (1) Consider all other bases of eligibility for medical assistance under the State plan (or waiver of such plan) in accordance with §§ 435.911 and 435.916(f) prior to denying coverage at application or determining that an individual is ineligible;
+>
+> (2) For individuals determined ineligible under the State plan (or waiver of such plan) after considering all bases of eligibility, as applicable:
+>
+> (i) Deny such individual's application and provide written notice and fair hearing rights consistent with §§ 435.917 and 435.918 and part 431, subpart E of this subchapter;
+>
+> (ii) Disenroll such beneficiary not later than the end of the month following the month in which the 30-calendar day period under paragraph (a)(2) of this section ends and after the provision of advance written notice and fair hearing rights consistent with §§ 435.917 through 435.918 and part 431, subpart E of this subchapter prior to the disenrollment;
+
+### S2110. Federal payment for emergency services to a non-citizen not lawfully admitted: the person must otherwise meet the State plan's eligibility requirements
+
+Document: D-70
+
+42 U.S.C. 1396b(v)(1)-(2) (re-retrieved 2026-11-21 from the same URL; identical to D-70). https://www.law.cornell.edu/uscode/text/42/1396b
+
+>  Notwithstanding the preceding provisions of this section, except as provided in paragraphs (2), (4), and (5), no payment may be made to a State under this section for medical assistance furnished to an alien who is not lawfully admitted for permanent residence or otherwise permanently residing in the United States under color of law.
+>
+> (2) Payment shall be made under this section for care and services that are furnished to an alien described in paragraph (1) only if—
+> (A)
+>  such care and services are necessary for the treatment of an emergency medical condition of the alien,
+>
+> (B)
+>  such alien otherwise meets the eligibility requirements for medical assistance under the State plan approved under this subchapter (other than the requirement of the receipt of aid or assistance under subchapter IV, supplemental security income benefits under subchapter XVI, or a State supplementary payment), and
+>
+> (C)
+>  such care and services are not related to an organ transplant procedure.
+
+### S2111. Adults group: eligibility is determined on income and household size, residency, and citizenship and immigration status; community engagement is a new condition of eligibility
+
+Document: D-201
+
+91 FR 33348, 33349 (June 3, 2026), preamble sec. I. https://www.govinfo.gov/content/pkg/FR-2026-06-03/html/2026-11094.htm
+
+> group consists of low-income individuals (up to 133 percent of the
+> Federal poverty level) who are age 19 to 64, not pregnant, not entitled
+> to or enrolled in Medicare Part A or B, or described in any other
+> mandatory eligibility groups (for example, parent and caretaker
+> relatives, children, or individuals eligible based on their receipt of
+> SSI). Individuals are determined eligible based on income and household
+> size, State residency, and citizenship and immigration status. Unlike
+> other Federal means-tested public assistance programs such as
+> Supplemental Nutrition Assistance Program (SNAP) and Temporary
+> Assistance for Needy Families (TANF), community engagement or work
+> requirements have not historically been a condition of eligibility in
+> the Medicaid program under title XIX of the Act. However, some States
+
+### S2112. 7 CFR 273.24(c)(1), (c)(10): the regulation reads the statute's "over 55 years of age" as "55 years of age or older" and its former "over 50" as "50 years of age or older"
+
+Document: D-202
+
+7 CFR 273.24(c)(1), (c)(10) (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-7/section-273.24
+
+> (c) Exceptions. The time limit does not apply to an individual if he or she is:
+>
+> (1) Under 18 or 55 years of age or older;
+>
+> ...
+>
+> (10) Unless otherwise changed by law, the exceptions provided at paragraphs (c)(7) through (9) of this section cease to have effect on October 1, 2030, and the age limit provided in paragraph (c)(1) of this section reverts from “55 years of age or older” to “50 years of age or older” on October 1, 2030.
+
+### S2113. Fiscal Responsibility Act of 2023: the ABAWD age exception "over 55 years of age" from fiscal year 2025
+
+Document: D-203
+
+Pub. L. 118-5, div. C, sec. 311(a)(1), 137 Stat. 36. https://www.govinfo.gov/content/pkg/PLAW-118publ5/html/PLAW-118publ5.htm
+
+> SEC. 311. MODIFICATION OF WORK REQUIREMENT EXEMPTIONS.
+> (a) In General.--Section 6(o)(3) of the Food and Nutrition Act of
+> 2008 (7 U.S.C. 2015(6)(o)(3)) is amended to read as follows:
+> (1) by striking subparagraph (A) and inserting the
+> following:
+> ``(A)(i) under 18 years of age; or
+> ``(ii) in--
+> ``(I) fiscal year 2023 over 51 years of age;
+> ``(II) fiscal year 2024 over 53 years of age;
+> ``(III) fiscal year 2025 and each fiscal year
+> thereafter over 55 years of age;'';
+
+### S2114. Federal limited family planning group: income and not pregnant, no age or sex condition; family planning services are those furnished to individuals of child-bearing age
+
+Document: D-204
+
+42 U.S.C. 1396a(ii)(1); 42 U.S.C. 1396d(a)(4)(C). https://www.law.cornell.edu/uscode/text/42/1396a
+
+> (ii) State eligibility option for family planning services
+> (1) Individuals described in this subsection are individuals—
+> (A)
+> whose income does not exceed an income eligibility level established by the State that does not exceed the highest income eligibility level established under the State plan under this subchapter (or under its State child health plan under subchapter XXI) for pregnant women; and
+> (B)
+> who are not pregnant.
+>
+> ...
+>
+> (C) family planning services and supplies furnished (directly or under arrangements with others) to individuals of child-bearing age (including minors who can be considered to be sexually active)
+
+### S2300. SNAP: a household applies in its county of residence; another county's office may process the application to completion and transfer the case
+
+Document: D-82
+
+10 CCR 2506-1 4.303.A-C and 4.902.1 (rule version effective 10/01/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. Applicants shall live in the county or district in which they make application for the
+> Program unless the local office has made arrangements to allow particular
+> households to file an application in a nearby specified county/district office.
+>
+> ...
+>
+> C. Applicants who maintain a residence in the county or district for any purpose
+> other than a vacation, regardless of the length of time they have resided in the
+> county or district, shall be considered eligible for the Program, provided other
+> eligibility requirements are met.
+>
+> ...
+>
+> A household must apply for SNAP in its county of residence. A local office that receives
+> an application that belongs to another county may secure the application date, process
+> the application to completion, issue the household an EBT card, and then transfer the
+> case to the correct county once the final eligibility decision is made. If a household is
+> determined eligible for participation, it may request and be designated to receive SNAP
+> from a local office that is more accessible.
+
+### S2301. Summer EBT: household means persons living as one economic unit
+
+Document: D-88
+
+7 CFR 292.2. https://www.ecfr.gov/current/title-7/part-292/section-292.2
+
+> Household means a group of related or nonrelated individuals, who are not residents of an institution or boarding house, but who are living as one economic unit.
+
+### S2302. CCCAP parent fee: county waivers for dual Head Start enrollment, a declared disaster and teen-parent hardship; the $5 hardship reduction
+
+Document: D-87
+
+8 CCR 1403-1 3.124.G, I.8, S and X (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> G. Subject to the requirements and approval described in rule section 3.104, a
+> county may waive the parent fee for a Low-Income or Colorado Works Child
+> Care household that has a child who is dually enrolled in a Head Start or Early
+> Head Start Program.
+>
+> ...
+>
+> 8. Effective April 1, 2020, parent fees, as assessed by the parent fee
+> formula, may be waived in the event of a declared state or local disaster or
+> emergency for up to twelve (12) months for households impacted by such
+> disaster or emergency. The county shall document the decision to waive
+> the parent fee and the amount of time the parent fee will be waived in the
+> case record in the Child Care Automated Tracking System (CHATS).
+>
+> ...
+>
+> S. A county may request approval from the Department to reduce parent fees, as
+> assessed by the parent fee formula, to five dollars ($5) for hardship reasons for
+> up to six (6) months per hardship award by submitting a county plan, subject to
+> the requirements and approval as described in rule section 3.104. If approved by
+> the Department, the county director or his/her designee shall approve fee
+> reductions and a written justification placed in the case file and noted in the case
+> record in the Child Care Automated Tracking System (CHATS). Any hardship
+> award may be extended so long as justification for extending the hardship award
+> exists.
+>
+> ...
+>
+> X. One (1) or two (2) teen parent households for whom payment of a parent fee
+> produces a hardship may have their fee waived entirely. The parent fee waiver
+> shall be documented in the case file and reviewed during each subsequent re-
+> determination.
+
+### S2303. LEAP: non-traditional dwelling defined
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1, "Non-Traditional Dwelling" (rule version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Non-Traditional Dwelling”: A non-traditional dwelling means a structure that provides housing that is not
+> affixed to a permanent physical address or is enumerated as such in this rule (see Section 3.752.25),
+> including, but not limited to, cars, vans, buses, tents and lean-tos.

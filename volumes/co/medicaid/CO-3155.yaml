@@ -1,0 +1,19 @@
+id: CO-3155
+name: "Medicaid: is presumptively eligible, limited family planning"
+identifier: ma_is_presumptively_eligible_limited_family_planning
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether an applicant who is not pregnant is presumptively eligible for limited family planning at a Medical Assistance presumptive eligibility site under 10 CCR 2505-10 § 8.100.4.F.1 and F.2.c: declared household income, the applicant counted as two, above ma_family_planning_income_lower_pct and at or below ma_family_planning_income_upper_pct of the poverty guideline; a declaration of citizenship or lawful immigration status; not already receiving another Medical Assistance program (F.8); and no presumptive eligibility in the last 12 months (F.9). From October 1, 2026 a non-citizen outside the federal payment categories of 42 U.S.C. 1396b(v)(5) does not qualify. No age or gender restriction (F.1). Informational: no rule reads it and it is not a declared outcome."
+precision: "Read as the limited family planning arm of ma_hospital_presumptive_eligibility_category (CO-2439) reads § 8.100.3.R.2.c, which states F.2.c's test in the same words: \"cannot be eligible for a Medicaid eligibility category that provides full coverage\" through F.8, since a presumptive determination is made from declarations before any full determination; the applicant counted as two through ma_declared_household_income_pct_fpl_limited_family_planning (CO-3152, OQ-590)."
+derived: [all, [not, is_pregnant], [any, is_us_citizen_or_national, claims_lawful_immigration_status], [not, is_enrolled_in_medical_assistance], [not, received_presumptive_eligibility_in_last_twelve_months], [not, [all, ma_alien_payment_restriction_applies, [not, ma_is_in_federal_payment_status_category]]], [">", ma_declared_household_income_pct_fpl_limited_family_planning, ma_family_planning_income_lower_pct], ["<=", ma_declared_household_income_pct_fpl_limited_family_planning, ma_family_planning_income_upper_pct]]
+sources: [S1501, S2100, S1700]
+implemented: engine
+tags: [ma, magi, income, immigration]
+open: [OQ-590]
+rationale: "Heavier-definitions audit L-2 (audit fix round 4), which asked for § 8.100.4.F's own text: F.1 and F.2.c open limited family planning presumptive eligibility at presumptive eligibility sites, beside the pregnant and child routes (CO-558, CO-559); only the hospital route (CO-2439) stated it."
+tests:
+  - {id: CO-3155-T1, as_of: "2026-11-01", title: "A citizen of 40 alone declaring $2,500: counted as two, 1.386 is in the band", given: {is_pregnant: false, immigration_status: us_citizen, is_enrolled_in_medical_assistance: false, received_presumptive_eligibility_in_last_twelve_months: false, declared_household_income_monthly: 2500, declared_household_size: 1}, expect: true}
+  - {id: CO-3155-T2, as_of: "2026-11-01", title: "The same applicant had presumptive eligibility in the last 12 months", given: {is_pregnant: false, immigration_status: us_citizen, is_enrolled_in_medical_assistance: false, received_presumptive_eligibility_in_last_twelve_months: true, declared_household_income_monthly: 2500, declared_household_size: 1}, expect: false}
+  - {id: CO-3155-T3, as_of: "2026-11-01", title: "Declaring $1,200 alone: counted as two, 0.665 is under the band (full coverage groups apply)", given: {is_pregnant: false, immigration_status: us_citizen, is_enrolled_in_medical_assistance: false, received_presumptive_eligibility_in_last_twelve_months: false, declared_household_income_monthly: 1200, declared_household_size: 1}, expect: false}

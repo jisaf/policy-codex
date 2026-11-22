@@ -15,6 +15,8 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
   const warnings: string[] = [];
   const refs = new Set<string>();
   const monthScoped = itemScope === "person-month" || itemScope === "month";
+  /** Depth of "for each month in" sums around the expression being typed. */
+  let monthSums = 0;
   /** A role the volume does not declare can never match an edge, so a
    *  misspelling would silently read as "no such relationship". */
   const declaredRoles = ix.roles ? new Set(ix.roles.map((r) => r.id)) : null;
@@ -175,6 +177,15 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "avg":
         need(e[2], ["months"], "averaged over");
         return need(e[1], ["number"], "averaged");
+      case "sum_months": {
+        need(e[1], ["months"], "for each month in");
+        monthSums++;
+        try { need(e[2], ["number"], "the sum of"); } finally { monthSums--; }
+        return "number";
+      }
+      case "that_month":
+        if (!monthSums) errors.push('"that month" used outside "the sum of ... for each month in"');
+        return "month";
       case "case": {
         let vt: BaseType | null = null;
         e.slice(1).forEach((arm: any, k: number) => {

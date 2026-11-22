@@ -7,6 +7,6 @@ options: [single, married, widowed, other]
 scope: person
 program: All
 meaning: "The person's legal marital status: single (never married, or divorced), married, widowed, or other (for example legally separated). Where the spouse is a person of the case the marriage is the spouse edge; married here states a spouse who is not a person of the case, and is_married (CO-930) reads both. npm run check warns when a person with a spouse edge is stated single or widowed."
-supplied_by: Applicant statement, verified by the county worker.
+supplied_by: "The applicant's statement on the application, or the case record; where a program's verification rule requires it (Adult Financial: verified when questionable), the county worker's verification (heavier-definitions audit H-15: the fact is the person's circumstance as stated; documents belong to the *_verification_document_received facts and the verification items, which ask for them only where a program's rule requires it)."
 sources: [S411]
 rationale: "No existing fact in this volume's interface carries marital status; cw_minor_parent_living_arrangement_met (CO-906) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, C-1): the meaning states the status only (it had described the Colorado Works minor-parent rule), and widowed is an option, replacing is_widow_or_widower (CO-1111, retired)."

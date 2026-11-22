@@ -113,6 +113,7 @@ tags:
   - { id: medical, label: Medical determination }
   - { id: state_election, label: State election }
   - { id: verification, label: Verification and documentation }
+  - { id: application_wide, label: "One value for the whole application, stated on each person (the case check warns when persons differ)" }
 
 types:
   - yes/no
@@ -170,6 +171,7 @@ relationship_roles:
   - {id: tax_dependent, inverse: tax_filer}
   - {id: buys_prepares_with, inverse: buys_prepares_with}
   - {id: shares_heat_with, inverse: shares_heat_with}
+  - {id: lives_as_one_economic_unit_with, inverse: lives_as_one_economic_unit_with, label: "lives with this person as one economic unit (the school meal and Summer EBT household of 7 CFR 292.2: related or unrelated persons, not residents of an institution or boarding house, living as one economic unit)"}
   - {id: files_jointly_with, inverse: files_jointly_with, label: "expects to file a joint federal tax return with this spouse for the taxable year of the determination"}
   - {id: sponsor, inverse: sponsored_by, label: "signed the other person's affidavit of support (Form I-864) as sponsor or joint sponsor; the sponsor is declared as a person of the case whether or not the sponsor lives in the home"}
   - {id: sponsored_by, inverse: sponsor, label: "a non-citizen whose affidavit of support the other person signed as sponsor or joint sponsor"}

@@ -1,0 +1,12 @@
+id: CO-3162
+name: "Medicaid community engagement: date the notice of noncompliance was shown to be received"
+identifier: ma_community_engagement_notice_received_date
+kind: supplied
+type: calendar date
+scope: person
+program: Medicaid
+meaning: "The date the person received the notice of noncompliance, stated only where the person shows it was not received within ma_community_engagement_notice_receipt_days days after the date on the notice (42 CFR 435.558(c)(4): \"considered to be received 5 days after the date on the notice, unless the applicant or beneficiary shows that he or she did not receive the notice within the 5-day period\"). If not stated, Medicaid reads the notice as received that many days after its date."
+supplied_by: The person's showing, as the county records it in the case.
+sources: [S2109]
+tags: [ma, magi]
+rationale: "OQ-413 part (4), audit fix round 4: the 30-day period runs from receipt, which 435.558(c)(4) presumes but lets the person rebut."

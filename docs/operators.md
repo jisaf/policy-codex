@@ -42,7 +42,7 @@ the YAML.
 |---|---|
 | unknown | `null`. Every operator below says how it treats it. |
 | yes/no | `true` / `false` |
-| number (money, hours, rate, whole number) | IEEE 754 binary64 (a JavaScript number). See Numbers. |
+| number (money, hours, rate, whole number) | IEEE 754 binary64 (a JavaScript number), always finite. See Numbers. |
 | calendar date | `"YYYY-MM-DD"` string |
 | month | `"YYYY-MM"` string |
 | one of | the option string |
@@ -132,10 +132,23 @@ Arithmetic is IEEE 754 binary64, evaluated in the written order:
 |---|---|---|---|
 | `+`, `*` | two or more numbers | folded left to right from 0 (`+`) or 1 (`*`) | unknown if any operand is unknown |
 | `-` | two numbers | a − b | unknown if either is |
-| `/` | two numbers | a / b | unknown if either is. **Division by zero is unknown** and reported as a `division-by-zero` warning; the engine never produces NaN or Infinity. |
+| `/` | two numbers | a / b | unknown if either is. **Division by zero is unknown** and reported as a `division-by-zero` warning. |
 | `min`, `max` | two numbers | the lesser, the greater | unknown if either is |
 | `ceil` | number | `Math.ceil(x − 1e-9)`: the next whole number up, except that a value within 1e-9 above a whole number is that number (so binary noise such as 2.0000000001 does not round up to 3) | unknown in, unknown out |
 | `round` | number | `Math.floor(x + 0.5 + 1e-9)`: the nearest whole number; a half rounds **up, toward +infinity** (2.5 → 3, −2.5 → −2), as does a value within 1e-9 below a half | unknown in, unknown out |
+
+**A number that is not finite is unknown.** NaN, Infinity and -Infinity are
+never values. A supplied fact or a parameter stated as one (a case or an
+adapter that passes `NaN`), and any operator result that is one (arithmetic
+that overflows, `1e308 * 10`), is read as unknown from that point on and
+reported as a `non-finite` warning: so a comparison against it is unknown,
+not false, and a sum or rule that reads it is unknown, not a number. Before
+this guard, a comparison against NaN decided "no" (every comparison with NaN
+is false in IEEE 754), so a case with a NaN income reported "over the income
+limit" rather than "cannot determine" (county supervisor walkthrough,
+docs/reviews/ux-county-supervisor.md, engineering aside). An implementation
+in another language applies the same rule: its NaN or infinity, whatever its
+form, is unknown.
 
 There is no floor operator. A rule that rounds down writes `−ceil(−x)`,
 which is `floor(x + 1e-9)`.
@@ -253,6 +266,8 @@ members' groups need not be equal.
 | `some_month` | months, condition | true when the condition is true in some month | true if any month is true; otherwise unknown if any is unknown. **No months: false** |
 | `count_months` | months, condition | the number of months in which the condition is true | unknown if the list or any month's condition is unknown. **No months: 0** |
 | `avg` | **value, months** (value first) | the mean of the value over the months | unknown if the list is unknown, **empty**, or any month's value is unknown |
+| `sum_months` (P54) | months, value | the sum of the value for each month in the list, evaluated with **that month** = each month in turn and **the month unchanged** (unlike `each` and `avg`, which move the month): the value reads a month's fact with `at` and `that_month`, and can compare that month with the month in context | unknown if the list is unknown or any month's value is unknown. **No months: 0** |
+| `that_month` | none | the month the innermost `sum_months` has bound | an error (not unknown) outside `sum_months`. A derived fact's own rule never sees it: each fact is computed in its own context, so a memoised value never depends on it |
 | `years_between` | date a, date b | whole years from a to b | unknown if either is. A 29 February birthday is reached on 1 March in a common year (born 2008-02-29: 18 on 2027-02-28, 19 on 2027-03-01). |
 | `days_after` | n, date | the calendar date n days after (n may be negative) | unknown if either is |
 | `days_between` | date a, date b | calendar days from a to b, negative when b is earlier | unknown if either is |
@@ -262,12 +277,14 @@ and no time zone (computed in UTC).
 
 ## Unknowns that no supplied fact explains
 
-Three unknowns have no unstated supplied fact behind them: a `lookup` key
+Four unknowns have no unstated supplied fact behind them: a number that is
+not finite (see Numbers), a `lookup` key
 with no row (or a `band` number above the last bound of a table with no open
 top band, or a `lookup_extended` number below the last row with no row), a
 versioned parameter with no version on the determination date (or on the date
 `as_of` names; a parameter awaiting its figure has none on any date), and a
-division by zero. The engine reports each one: as a warning in
+division by zero. The engine reports each one (the non-finite one as a
+`non-finite` warning, against the fact stated as one or the rule that produced it): as a warning in
 `npm run check` (with the rule test or case that hit it), on the trace (a
 parameter's origin is `no-version`; the derived fact whose rule hit a lookup
 miss or a division by zero carries the warning), and through the

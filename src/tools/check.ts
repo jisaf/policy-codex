@@ -308,9 +308,12 @@ export function unknownCaseIdentifiers(engine: Engine, ledger: LoadedLedger): st
  *  (dual-entry audit 5.14 and section 10 of its order of work): a spouse edge
  *  against a marital status of single or widowed; a Colorado county against a
  *  state other than Colorado; a tax_filer edge from a person stated not to
- *  file. */
+ *  file; persons who state different values of a fact tagged
+ *  `application_wide` (OQ-541). */
 export function caseConsistencyWarnings(ledger: LoadedLedger): string[] {
   const out: string[] = [];
+  const applicationWide = ledger.items.filter((it) =>
+    it.kind === "supplied" && (it.tags ?? []).includes(APPLICATION_WIDE_TAG));
   for (const c of ledger.cases) {
     const rels: Array<readonly string[]> = [...((c.relationships ?? []) as Array<readonly string[]>)];
     for (const [pid, p] of Object.entries(c.persons || {})) {
@@ -336,9 +339,25 @@ export function caseConsistencyWarnings(ledger: LoadedLedger): string[] {
         out.push(`${c.id}: ${pid} states a Colorado county (${String(f.county_of_residence)}) but state_of_residence ${String(f.state_of_residence)}`);
       }
     }
+    // A fact that is one value for the application (an application date, a
+    // request date, the county applied in) is stated on each person, since
+    // the engine reads person facts; the persons who state it must agree
+    // (OQ-541).
+    for (const it of applicationWide) {
+      const stated = Object.keys(c.persons || {})
+        .filter((pid) => it.identifier in facts(pid))
+        .map((pid) => [pid, JSON.stringify(facts(pid)[it.identifier])] as const);
+      if (new Set(stated.map(([, v]) => v)).size > 1) {
+        out.push(`${c.id}: ${it.identifier} is one value for the application, but the persons state different values (${stated.map(([p, v]) => `${p} ${v}`).join(", ")})`);
+      }
+    }
   }
   return [...new Set(out)];
 }
+
+/** The tag volume.yaml gives a person fact that is one value for the whole
+ *  application (OQ-541). */
+export const APPLICATION_WIDE_TAG = "application_wide";
 
 /** Every dependency cycle among the volume's items, each as the identifiers
  *  on it with the first repeated at the end. The evaluator also stops at a

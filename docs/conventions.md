@@ -213,6 +213,10 @@ Added for the same-word audit fix round (full and half siblings)
 
 - P53 `the persons who share every [relationship] with this person` (`shared_relative` with `"every"`) the persons, other than this person, whose persons in the role are exactly this person's: with `parent`, the full siblings, who share both legal parents; P43 without `every` gives full and half siblings. Unknown when this person's relationships are unstated
 
+Added for the heavier-definitions audit fix round 4 (several lottery receipts per person, OQ-216)
+
+- P54 `the sum of [number] for each month in [months]` (`sum_months`), with `that month` (`that_month`) naming each month in turn while `the month` stays the month being determined. A rule that adds amounts received in earlier months, each counted for a period that depends on its own amount (each month's lottery receipt divided over its own spread, the receipts of the 120 months before added where their spreads reach this month), reads each month's fact `for that month` and compares that month with the month. Unknown when the list or any month's value is unknown; no months is 0. A block form is `the sum for each month in [months] of` with the value indented
+
 ## Tests
 
 Two levels live in the codex. Code-level tests are the engineer's and are out of scope.

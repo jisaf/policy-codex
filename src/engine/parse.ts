@@ -93,6 +93,7 @@ export function parseInline(
   if (s === "the Determination Date") return ["det_date"];
   if (s === "the month containing the Determination Date") return ["det_month"];
   if (s === "the month") return ["month"];
+  if (s === "that month") return ["that_month"];
   if (s === "every person in the case") return ["persons"];
   if (s === "yes") return true;
   if (s === "no") return false;
@@ -182,6 +183,8 @@ export function parseInline(
   if ((m = s.match(/^the sum of (.+)$/))) {
     const q = splitTop(m[1], " for each person in ", true);
     if (q) return ["sum", p(q[1]), p(q[0])];
+    const qm = splitTop(m[1], " for each month in ", true);
+    if (qm) return ["sum_months", p(qm[1]), p(qm[0])];
   }
   if ((m = s.match(/^the number of months in (.+) for which (.+)$/))) {
     return ["count_months", p(m[1]), p(m[2])];
@@ -295,6 +298,10 @@ function parseBlockLines(ix: LedgerIndex, lines: Line[], options: readonly strin
   if ((m = txt.match(/^the sum for each person in (.+) of$/))) {
     if (!rest.length) throw new Error("the sum: missing value");
     return ["sum", p(m[1]), parseBlockLines(ix, rest, options)];
+  }
+  if ((m = txt.match(/^the sum for each month in (.+) of$/))) {
+    if (!rest.length) throw new Error("the sum: missing value");
+    return ["sum_months", p(m[1]), parseBlockLines(ix, rest, options)];
   }
   if ((m = txt.match(/^in each of (.+):$/))) {
     return ["each", p(m[1]), parseBlockLines(ix, rest, options)];

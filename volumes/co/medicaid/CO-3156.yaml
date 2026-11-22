@@ -1,0 +1,19 @@
+id: CO-3156
+name: "Medicaid: Express Lane child meets the eligibility requirements"
+identifier: ma_express_lane_child_meets_requirements
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether a child referred through Express Lane meets the eligibility requirements of 10 CCR 2505-10 § 8.100.4.J, judged on the income declared on the source application (J.1.a.v, J.2.a.v: \"Eligibility is based on income declared on the [Free/Reduced Lunch, or Food Assistance or Colorado Works] application as well as eligibility requirements outlined in this volume\"): under ma_magi_child_age_limit or turning 19 this month, a Colorado resident, and declared household income within the children's standard, with the 5% disregard where the children's standard is the child's highest (§ 8.100.4.D.1.a, as the Children category applies it)."
+precision: "The income is the source application's declared household income and size (declared_household_income_pct_fpl, CO-3151), not the MAGI household and income the full determination builds: the source application collects no tax-filing or dependency facts, and J.1.a.v and J.2.a.v make the declared income the basis. Citizenship and immigration status are not a condition here: every child under 19 is in the Cover All Coloradans population (§ 8.100.3.G.1.g.ix.1, S607; ma_magi_is_fully_eligible, CO-562, reads the same), and J.1.a.iii and J.2.a.iii's citizenship and identity verification is reported by ma_express_lane_status (CO-2442). The institution for mental diseases exclusion (§ 8.100.3.G.1.c) reaches no one under its minimum age (ma_imd_exclusion_min_age, 21)."
+derived: [all, ma_is_under_child_age_or_turns_nineteen_this_month, ma_meets_residency, [any, ["<=", declared_household_income_pct_fpl, ma_magi_income_standard_child], [all, ["=", ma_magi_income_standard_child, ma_magi_highest_income_standard_pct], ["<=", ["-", declared_household_income_pct_fpl, ma_magi_income_disregard_pct], ma_magi_income_standard_child]]]]
+sources: [S1723, S2102, S607]
+implemented: engine
+tags: [ma, magi, income, age]
+rationale: "Heavier-definitions audit H-7 (audit fix round 4): ma_express_lane_status (CO-2442) read the full MAGI determination (ma_magi_category, ma_magi_is_fully_eligible), so a worker had to rebuild a MAGI tax household and per-person incomes from a lunch, SNAP or Colorado Works application that collects none of the tax facts. § 8.100.4.J bases eligibility on the income declared on that application (now quoted in full, S1723, H-8); 42 U.S.C. 1396a(e)(13) lets the State rely on the other program's finding for a component of eligibility (S2102). No existing item states the Express Lane test."
+tests:
+  - {id: CO-3156-T1, month: "2026-10", as_of: "2026-10-01", title: "A child of 8 in Colorado whose lunch application declares $3,000 for a family of four (1.09 of poverty)", given: {date_of_birth: "2018-03-01", is_colorado_resident: true, declared_household_income_monthly: 3000, declared_household_size: 4}, expect: true}
+  - {id: CO-3156-T2, month: "2026-10", as_of: "2026-10-01", title: "Declared $4,500 for four (1.64 of poverty), over the standard even with the disregard", given: {date_of_birth: "2018-03-01", is_colorado_resident: true, declared_household_income_monthly: 4500, declared_household_size: 4, ma_magi_highest_income_standard_pct: 1.42}, expect: false}
+  - {id: CO-3156-T3, month: "2026-10", as_of: "2026-10-01", title: "Declared $4,000 for four (1.4545): over 1.42, within it after the 5% disregard", given: {date_of_birth: "2018-03-01", is_colorado_resident: true, declared_household_income_monthly: 4000, declared_household_size: 4, ma_magi_highest_income_standard_pct: 1.42}, expect: true}
+  - {id: CO-3156-T4, month: "2026-10", as_of: "2026-10-01", title: "Not a Colorado resident", given: {date_of_birth: "2018-03-01", is_colorado_resident: false, declared_household_income_monthly: 3000, declared_household_size: 4}, expect: false}

@@ -1,14 +1,14 @@
 id: CO-1181
-name: Lottery or gambling winnings amount
-identifier: lottery_gambling_winnings_amount
+name: Lottery and gambling winnings received
+identifier: lottery_gambling_winnings_received
 kind: supplied
 type: money
-scope: person
+scope: person-month
 program: All
-meaning: "The amount of the person's most recent lottery or gambling winnings received in a single month, or 0 if the person has received none that still count (for Medical Assistance, none within the months over which 10 CCR 2505-10 § 8.100.4.C.1.b.xiv spreads them). The month received is lottery_gambling_winnings_month (CO-1182)."
-precision: "One receipt per person: a person with overlapping winnings from two different months is stated as the most recent receipt only (OQ-216). Gross winnings as reported for federal income tax, before any spreading."
+meaning: "The lottery or gambling winnings the person received in the month, every receipt of the month added together, or 0 if none. Gross winnings as reported for federal income tax, before any spreading: each program's own rule decides in which months it counts them (for Medical Assistance, 10 CCR 2505-10 § 8.100.4.C.1.b.xiv spreads each month's receipt over the months its amount calls for, ma_lottery_winnings_countable_for_recipient, CO-1187)."
+precision: "Stated per month, so a person with winnings in several months states each month's receipt, and a receipt's spread can overlap a later one's (OQ-216, resolved). Receipts in the same month are stated together and spread as one amount (OQ-592). Medical Assistance looks back ma_lottery_winnings_spread_max_months months, the longest spread, so the months back to then are read; a case states 0 for them, usually as a month default."
 supplied_by: Applicant statement, IRS Form W-2G, or the Colorado Lottery or gaming establishment's payout record.
-sources: [S669]
-open: [OQ-216]
+sources: [S669, S1234]
 tags: [income]
-rationale: "S-9 of the phase 7 review: § 8.100.4.C.1.b.xiv counts lottery and gambling winnings as MAGI income and spreads winnings over $79,999 across months; no existing income fact carries the amount and the month received, which the spreading needs. Program-neutral because the amount is a plain fact about the person; the spreading is Medicaid's (CO-1185 to CO-1187)."
+open: [OQ-592]
+rationale: "Phase 7: no existing item carried lottery or gambling winnings. OQ-216 (audit fix round 4, fixed in full at the product owner's direction): renamed from lottery_gambling_winnings_amount through a change set that keeps the ID and made a per-month fact; lottery_gambling_winnings_month (CO-1182), which dated the single receipt, is retired, since the month a receipt was received is the month it is stated for."

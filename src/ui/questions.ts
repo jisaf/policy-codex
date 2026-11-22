@@ -85,8 +85,13 @@ export interface QuestionNote {
 
 const NOTE_LABEL_WORDS = /\b(round|sweep|review|pass|phase|checked|resolution|audit|answer|opinion)\b/i;
 
+/** The explicit lines a question may state (`Class:`, `Owner:`,
+ *  `Assumption:`, `Blocked on:`); the queue shows each in its own place. */
+export const EXPLICIT_FIELDS = ["Class", "Owner", "Assumption", "Blocked on"] as const;
+
 /** The body as notes: the question as first written, then each later note
- *  with its label split off, in the order the ledger keeps them. */
+ *  with its label split off, in the order the ledger keeps them. A paragraph
+ *  made only of explicit field lines is not a note. */
 export function questionNotes(body: string): QuestionNote[] {
   const out: QuestionNote[] = [];
   for (const raw of withoutFieldLines(body).split(/\n{2,}/)) {
@@ -141,8 +146,9 @@ export function explicitField(body: string, key: string): string | null {
   return last;
 }
 
-/** The explicit field lines, which the page shows as fields, not as notes. */
-const FIELD_LINE = /^\s*(?:[-*]\s+)?(?:\*\*)?(?:Class|Owner|Assumption):(?:\*\*)?\s*.+$/gim;
+/** The explicit field lines, which the page shows as fields, not as notes:
+ *  a paragraph made only of them is not a note. */
+const FIELD_LINE = new RegExp(`^\\s*(?:[-*]\\s+)?(?:\\*\\*)?(?:${EXPLICIT_FIELDS.join("|")}):(?:\\*\\*)?\\s*.+$`, "gim");
 
 export function withoutFieldLines(body: string): string {
   return body.replace(FIELD_LINE, "").replace(/\n{3,}/g, "\n\n");
@@ -224,9 +230,12 @@ export function questionClass(q: Pick<QuestionInfo, "rawTitle" | "body" | "statu
   return "policy";
 }
 
-/** The sentence naming the document or site the question waits on, from the
- *  latest note that names one; null when none does. */
+/** The document the question waits on: an explicit `Blocked on:` line, else
+ *  the sentence naming the document or site, from the latest note that names
+ *  one; null when none does. */
 export function waitingOn(q: Pick<QuestionInfo, "body">): string | null {
+  const explicit = explicitField(q.body, "Blocked on");
+  if (explicit) return explicit;
   const notes = questionNotes(q.body);
   for (let i = notes.length - 1; i >= 0; i--) {
     const hit = sentences(notes[i].text).find((s) => BLOCKED_TEXT.test(s));
@@ -268,17 +277,21 @@ export function questionOwners(
   const policy = engine.meta.approval_policy;
   const out: string[] = [];
   const add = (r: string) => { if (!out.includes(r)) out.push(r); };
-  // An explicit Owner line is the answer: who answers is then not read from
-  // the items (OQ-515's SNAP and Cash owners came from its shared items).
+  // An explicit Owner line names who answers first (in the policy's own
+  // spelling of each role); the program and tag owners follow.
   const explicit = explicitField(q.body, "Owner");
   if (explicit) {
     const roles = policy?.roles ?? [];
-    for (const r of explicit.split(/[,;]|\band\b/)) {
+    const role = (t: string) => roles.find((x) => x.toLowerCase() === t.toLowerCase());
+    for (const r of explicit.split(/[,;]/)) {
       const t = r.trim().replace(/\.$/, "");
       if (!t) continue;
-      add(roles.find((x) => x.toLowerCase() === t.toLowerCase()) ?? t);
+      // "Medicaid policy owner and Legal" names two roles; "Premium and
+      // finance owner" is one.
+      const halves = t.split(/\s+and\s+/);
+      if (!role(t) && halves.length > 1 && halves.every((h) => role(h.trim()))) for (const h of halves) add(role(h.trim())!);
+      else add(role(t) ?? t);
     }
-    return out;
   }
   if (cls === "legal") add("Legal");
   const own = q.programs.filter((p) => p !== "All");
