@@ -12037,7 +12037,7 @@ Colorado Secretary of State, eDocket tracking number 2026-00094 (retrieved 2026-
 > Notice Filed with SOS
 > 02/27/2026
 > Description of Subjects/Issues
-> Colorado Revised Statute, C.R.S � 26-2-709, requires an increase to the Colorado Works monthly grant standard which "must be equal to or exceed the amount of basic cash assistance for the previous state fiscal year plus a two percent cost of living adjustment or a cost of living adjustment that is equal to the average of the federal social security administration�s cost of living adjustment for that fiscal year plus the previous two fiscal years, whichever is greater."
+> Colorado Revised Statute, C.R.S § 26-2-709, requires an increase to the Colorado Works monthly grant standard which "must be equal to or exceed the amount of basic cash assistance for the previous state fiscal year plus a two percent cost of living adjustment or a cost of living adjustment that is equal to the average of the federal social security administration§s cost of living adjustment for that fiscal year plus the previous two fiscal years, whichever is greater."
 > Termination information
 > Date
 > 06/09/2026
