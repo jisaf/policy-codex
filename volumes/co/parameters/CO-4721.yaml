@@ -1,0 +1,14 @@
+id: CO-4721
+name: "Adult Financial: estimated cash surrender value of life insurance, as a share of face value, by years in effect"
+identifier: af_life_insurance_estimated_csv_rate_table
+kind: parameter
+type: table keyed by income band
+scope: global
+program: AdultFinancial
+meaning: "The chart of 9 CCR 2503-5 3.520.75.H for estimating a life insurance policy's cash surrender value when it is not available from the client, the client's spouse or the sponsor(s): the estimated value as a share of the face value, by the years the policy has been in effect. Each key is a band's inclusive upper bound in whole years; the row keyed above is the chart's open top band (\"20 OR MORE\")."
+precision: "The chart's rows are 1 (0%), 2 (5%), 3 (10%), 4-5 (20%), 6-10 (30%), 11-14 (45%), 15-19 (50%) and 20 or more (60%). A policy in effect less than one full year is read with the 1-year row (0%), the chart's lowest."
+versions:
+  - {from: "2000-01-01", value: {"1": 0, "2": 0.05, "3": 0.10, "5": 0.20, "10": 0.30, "14": 0.45, "19": 0.50, above: 0.60}, source: S3504}
+sources: [S3504]
+tags: [cash, resources]
+rationale: "Coverage review 2, G-7: an unstated cash surrender value was read as 0, and the 3.520.75.H chart (S3504) was not carried. A band table (P48), as for the SNAP transfer chart (CO-4157). The chart is undated in the rule; one version covers every date the volume determines."

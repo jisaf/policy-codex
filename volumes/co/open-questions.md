@@ -1112,6 +1112,8 @@ Open-question sweep (2026-11-21): the tier dollar amounts remain unconfirmed. 9 
 
 CDHS stakeholder review fix round (2026-11-21) (C-5): the CDHS reviewer confirms that the tier maximums are set administratively within appropriations (3.570.11.D) and published to the CMAs, not in rule; the schedule is with CDHS's Adult Financial program office, and cdhs.colorado.gov refused this session. Still open: blocked on a refused host.
 
+Coverage review 2 of Adult Financial (G-3, 2026-11-22): the statement above that the "home" test is modeled had stopped being true after the vocabulary round (R-8), which made the facility test resides_in_medical_institution (CO-1742), a medical institution only; an assisted living residence, group or host home or other long-term care facility passed as a home. af_hca_eligibility_status (CO-1217) now treats every residence_setting_type other than a private dwelling, room and board or commercial property as not a home (3.570.12 "Home"; 3.510 "Facility", S3501; 3.570.17.C.4.a and C.7), keeping C.4.b's thirty days only for a medical stay away from a home the client keeps. The "home" test is modeled again; only the tier amounts stay open.
+
 Class: blocked on a named document
 Owner: Cash programs policy owner
 Assumption: The Home Care Allowance pays the amount the case management agency authorizes, raised to the $977 floor.
@@ -2414,15 +2416,17 @@ Assumption: A client out of the State to care for an immediate family member inj
 
 Checked 2026-11-22: 9 CCR 2503-5 3.520.64.E.1-4 (D-80, rule version 12428, effective 03/02/2026, the Secretary of State's current version, re-fetched 2026-11-22) and 3.520.64.F-G. No paragraph says how E.2 and E.4 relate.
 
-### OQ-781. Adult Financial donated work hours: which "current minimum wage standard"
+### OQ-781. Resolved: Adult Financial donated work hours: which "current minimum wage standard"
 
 Body: 9 CCR 2503-5 3.520.784.B (S3211) values countable donated work hours at "The going rate in the community for similar work; or, 2. The current minimum wage standard, whichever is greater." The rule does not say whether the standard is the federal minimum wage (29 U.S.C. 206(a)(1), $7.25 an hour), Colorado's (Colo. Const. art. XVIII, sec. 15 and C.R.S. 8-6-109, adjusted each year by the Colorado Department of Labor and Employment) or a local one (Denver's). af_donated_work_income (CO-4443) reads the federal minimum wage (federal_minimum_wage, CO-160), the only minimum wage this volume carries; the Colorado figure for 2026 is published by the Department of Labor and Employment (cdle.colorado.gov), which is not an allowed host. Where the going rate is stated and is above the minimum wage, as it usually is, the choice does not matter. Items: CO-4443, CO-160.
 
 Class: state policy choice
 Owner: Cash programs policy owner
-Assumption: The federal minimum wage is the floor.
+Assumption: The statewide Colorado minimum wage (colorado_minimum_wage, CO-4730) is the floor.
 
 Checked 2026-11-22: 9 CCR 2503-5 3.510 and 3.520.784 (D-80, rule version 12428, effective 03/02/2026). Neither defines the minimum wage standard. If the state reads Colorado's, the figure must come from the Department of Labor and Employment's annual minimum wage order, which no allowed host serves.
+
+Resolution (coverage review 2 of Adult Financial, G-8 (3), 2026-11-22): the Department's orders are filed with the Secretary of State, so the side claim above was wrong. The COMPS Order, 7 CCR 1103-1 Rule 3.1 (D-332, S3508, effective 02/01/2026), requires that "all employees ... shall be paid not less than the Colorado minimum wage, as specified for the applicable year in the PAY CALC Order", and the 2026 PAY CALC Order, 7 CCR 1103-14 Rule 1.2.1(A) (D-330, S3506, effective 01/01/2026; D-331, S3507, effective 02/01/2026), states the full Colorado minimum wage as "$15.16 per hour". For work done in Colorado the federal $7.25 is not a wage any covered employer may pay, so the "current minimum wage standard" of 3.520.784.B.2 is read as the statewide Colorado minimum wage, the new dated parameter colorado_minimum_wage (CO-4730); a local minimum wage (COMPS Rule 3.2) is not a statewide standard and is not used. af_donated_work_income (CO-4443) reads it; its tests CO-4443-T1 and T2 are re-pinned (T2: 40 hours at a $14 going rate, 40 x 15.16 = 606.40). No household case states donated work, so no case expectation changes.
 
 ### OQ-782. Adult Financial: interest and dividends - countable under 3.520.785.B.10, or excluded under the SSI exclusions 3.520.786.K incorporates
 
@@ -2594,3 +2598,13 @@ Owner: Cash programs policy owner
 Assumption: In the month of the initial payment the twenty five percent is taken of the partial month payment (the grant times the 3.609.2.A.1 partial month figure), since C.1 measures it against the unit's "grant payment".
 
 Checked 2026-11-22: 9 CCR 2503-6 3.608.4.C.1, D and 3.609.2.A.1.e (D-81, version effective 2025-07-01, S760, S3156). Neither paragraph names the base of a percentage deduction in a partial month.
+
+### OQ-845. Old Age Pension: "a member of a household that is receiving" Colorado Works - the household or the assistance unit
+
+Body: C.R.S. 26-2-111(2)(d)(I) (D-59) says "A person who is a member of a household that is receiving public assistance under the Colorado works program ... shall not be eligible to receive public assistance pursuant to this subsection (2)" (the Old Age Pension). 9 CCR 2503-5 3.520.71.F.1 (D-80) lets a grandparent or other specified caretaker who is not a parent stay out of the Colorado Works case ("is not required to be a member of the TANF/Colorado Works case") and says the Colorado Works funds received for a child "are not used in determining the specified caretaker's eligibility". af_barred_by_colorado_works (CO-1511) bars only a person who receives Colorado Works cash (receives_tanf_cash) or is closed out of it by a sanction, so an OAP grandparent living with a grandchild on Colorado Works keeps OAP. That reads "household" as the Colorado Works assistance unit, as (4)(c)(I) defines it for AND; (2)(d) has no such definition, and read literally as everyone in the home it would bar the grandparent. Coverage review 2 of Adult Financial, G-6. Items: CO-1511, CO-953.
+
+Class: needs Legal
+Owner: Cash programs policy owner
+Assumption: "Household" in 26-2-111(2)(d)(I) is the Colorado Works assistance unit: the bar reaches a person who is a member of the Colorado Works case, not a relative in the same home whom 3.520.71.F.1 leaves out of it.
+
+Checked 2026-11-22: C.R.S. 26-2-111(2)(d)(I) and (4)(c)(I) (D-59); 9 CCR 2503-5 3.520.61.F and 3.520.71.F.1.a-c (D-80, rule version 12428, effective 03/02/2026). Neither text defines "household" for (2)(d).

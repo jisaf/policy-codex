@@ -81,7 +81,7 @@ Contiguous subparagraphs that share one status are on one row.
 | "Certification period", "Redetermination", "Twenty-four month redetermination", "Traditional verification" | C: CO-2376, CO-2377 in CO-1433 |
 | "Clear and convincing", "Preponderance", "Prudent Person", "Material fact", "Questionable" | NA: evidence standards for county findings, which are supplied |
 | "Convertible asset" | C: liquid_resources_value, retirement_accounts_value in CO-4000 |
-| "Countable income", "Countable resource" | C: CO-946, CO-947; G-1 (the spouse's and sponsor's exemptions) |
+| "Countable income", "Countable resource" | C: CO-946, CO-947; the spouse's and sponsor's exemptions carried by CO-4720 (G-1 fixed) |
 | "Date of entry" | C: CO-905 (qualified status date) |
 | "Demonstrable evidence" | C: CO-2008 in CO-1511 |
 | "Disabling condition", "Medical provider" | C: CO-1728, CO-2824 (county finding) |
@@ -89,7 +89,7 @@ Contiguous subparagraphs that share one status are on one row.
 | "Earned Income", "In-kind", "Income", "Unearned income" | C: CO-3830, CO-3831 (F-10 fixed) |
 | "Eligible client" (income below the grant standard, resources below the limit) | C: CO-953 (less than); resources OQ-662 |
 | "Estate" | C: client's own holding (CO-4000's precision) |
-| "Facility" (includes group and host homes) | C for the PNA (CO-1510); **G-3** for HCA |
+| "Facility" (includes group and host homes) | C for the PNA (CO-1510); for HCA carried by CO-1217 (G-3 fixed) |
 | "Fair Market Value" | NA: valuation for the supplied value |
 | "Federal Poverty Guidelines" (90 FR 5917) | NA: 3.520.69.B's 125% presumption describes the affidavit; deeming uses the SSI standard (3.534.D) |
 | "Fleeing felon" | C: is_fleeing_felon CO-038 in CO-942 |
@@ -167,14 +167,14 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.61.C (AND citizenship or qualified status) | C: CO-905 in CO-953 (AND-CS) and CO-1203 |
 | 3.520.61.D (AND SSN) | C: CO-1430, CO-1661 |
 | 3.520.61.E (AND disability) | C: CO-944, CO-950 |
-| 3.520.61.F (Colorado Works) | C: CO-1511, CO-2008; statute G-6 |
+| 3.520.61.F (Colorado Works) | C: CO-1511, CO-2008; statute OQ-845 (G-6) |
 | 3.520.61.G (apply for and accept benefits) | C: CO-3860 |
 | 3.520.61.H (pursue income and resources) | C: CO-3861, CO-4433, CO-4434 |
 | 3.520.61.I (all other requirements) | C: CO-953 |
 | 3.520.62.A-K (age documents) | C: CO-1658 |
 | 3.520.63.A.1-4, C.1-2 (marital status verified if questionable) | C: CO-1670, CO-1671 (CO-1582, CO-1583) |
 | 3.520.63.B (separate case for each spouse) | C: person-scoped items |
-| 3.520.63.D (not legally separated or divorced = married) | C: CO-930; CO-2384 and CO-2389 wherever the spouse lives; **G-2** for life insurance |
+| 3.520.63.D (not legally separated or divorced = married) | C: CO-930; CO-2384, CO-2389 and the life insurance items CO-4001, CO-4002, CO-3854 wherever the spouse lives (G-2 fixed) |
 | 3.520.64.A, B (resident from declaration) | C: CO-505 in CO-942 |
 | 3.520.64.B.1 (no residence while it is established elsewhere) | C: state_of_residence |
 | 3.520.64.B.2 (another State's payment) | C: CO-3859 in CO-942 |
@@ -204,7 +204,7 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.69.B.2 (40 quarters) | C: CO-4400 (qualifying_quarters CO-004, below 40) |
 | 3.520.69.B.3-4 (leaves the U.S. and gives up status; dies) | NA: no longer a resident or a client |
 | 3.520.69.B.5 (sponsor dies; joint sponsor continues) | C: CO-4400 (every sponsor dead, CO-2336) |
-| 3.520.69.B.6 (removal; new admission) | P3 (G-8 (2)) |
+| 3.520.69.B.6 (removal; new admission) | C: CO-4400's precision (G-8 (2) fixed) |
 | 3.520.69.C.1 (refugees and asylees; pending not exempt) | C: CO-4400 (status_before_lpr_adjustment CO-2700) |
 | 3.520.69.C.2-4 (agreements before 12/19/1997; 1997-2013 relatives; all sponsors from 2014) | C: "Sponsor" means an I-864/I-864A signer (CO-1573), which began 12/19/1997; C.3 is superseded for determinations after 2013 by C.4 |
 | 3.520.69.C.5, D (repayment; failure to provide information) | C: D via CO-1672; C.5 NA (recovery) |
@@ -223,7 +223,7 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.71.C (11 days; AND-SO 60 days from the interview; subsequent 30 days and no approval before proof) | C: CO-3866 to CO-3870, CO-3865, CO-3869 |
 | 3.520.71.D.1-5 (OAP SSI appeal duty and its excuses) | C: CO-3860 (failure without excuse is the supplied finding) |
 | 3.520.71.E (match SSA's ISM until removed) | C: CO-1512 (CO-3405) |
-| 3.520.71.F.1, F.1.a-c (Colorado Works; caretaker not required; child's grant not counted) | C: CO-1511; tanf_cash_income is stated on the child (CO-029); G-6 |
+| 3.520.71.F.1, F.1.a-c (Colorado Works; caretaker not required; child's grant not counted) | C: CO-1511; tanf_cash_income is stated on the child (CO-029); OQ-845 (G-6) |
 | 3.520.71.F.2.a-c (sanction, demonstrable evidence, disqualification, withdrawal) | C: CO-1511, CO-2008 (OQ-357 resolved) |
 | 3.520.71.G, G.1-2 (other income; refused income counted) | C: CO-3861 in CO-3831; CO-3862, CO-3869 |
 | 3.520.71.H, H.1-2 (other resources; refused counted; proof of pursuit) | C: CO-4433 in CO-4000; CO-4434 in CO-1436 |
@@ -234,7 +234,7 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.72.B.3-4 (mobile homes, RVs, vehicles, boats not exempt) | C: vehicles_equity_value, real or personal property facts in CO-4000 |
 | 3.520.72.B.5 (cash and convertible assets) | C: CO-4000 |
 | 3.520.72.B.6 (mortgages, notes) | C: liquid_resources_value |
-| 3.520.72.B.7 (CSV of life insurance) | C: CO-4001, CO-4002; **G-2** |
+| 3.520.72.B.7 (CSV of life insurance) | C: CO-4001, CO-4002 (G-2 fixed) |
 | 3.520.72.B.8 (revocable burial funds) | C: CO-3855, CO-3856, CO-3858 |
 | 3.520.72.B.9 (burial space beyond needs) | C: CO-3857 |
 | 3.520.72.B.10 (casualty proceeds over repair) | C: CO-4412 (E) |
@@ -257,11 +257,11 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.742.A-B (personal property values; $400 vehicle presumption) | NA: valuation of the supplied value |
 | 3.520.742.C.1-3, D (unsaleable personal property; lesser value) | C: CO-4431 |
 | 3.520.75.A-C (evaluate CSV and original face value) | C: CO-3396, life_insurance_face_value; original face CO-4001's precision |
-| 3.520.75.D ($1,500 face total of client and spouse; sponsors too) | C: CO-4001, CO-4002, CO-2390; **G-2** (spouse living apart) |
-| 3.520.75.E.1-4 (OAP, CSV $250,000 or less, 48 months) | C: CO-3854 (CO-3852, CO-3853); **G-2** |
-| 3.520.75.F.1-4 (OAP, over $250,000) | C: CO-3854; **G-2** |
+| 3.520.75.D ($1,500 face total of client and spouse; sponsors too) | C: CO-4001, CO-4002, CO-2390 (G-2 fixed: the spouse wherever the spouse lives) |
+| 3.520.75.E.1-4 (OAP, CSV $250,000 or less, 48 months) | C: CO-3854 (CO-3852, CO-3853) (G-2 fixed) |
+| 3.520.75.F.1-4 (OAP, over $250,000) | C: CO-3854 (G-2 fixed) |
 | 3.520.75.G (original face value) | C: CO-4001's precision |
-| 3.520.75.H (CSV estimate chart) | **G-7** (P2) |
+| 3.520.75.H (CSV estimate chart) | C: CO-4721, CO-4722 (G-7 fixed) |
 | 3.520.76.A.1-4, a-b (TWFC; 36 months; rebuttable presumption) | C: CO-4008 (CO-3838, CO-3837), CO-3836 |
 | 3.520.76.B.1-3, C.1-3 (hardship, involuntary transfer) | C: CO-3836 (county finding) |
 | 3.520.76.D.1-4 (uncompensated value / current grant standard, rounded down) | C: CO-3840 (floor), CO-4007 |
@@ -272,7 +272,7 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.77.B (household goods) | NA: not a holdings fact |
 | 3.520.77.C, C.1 (home; income property on the home lot) | C: CO-4000, CO-4422 |
 | 3.520.77.C.2-3, a-b, C.5 (care outside the county or in a facility, with intent to return) | C: CO-4000 (CO-4435) |
-| 3.520.77.C.4 (OAP-C home) | **G-8 (1)** (P3) |
+| 3.520.77.C.4 (OAP-C home) | C: CO-4000 reads receives_oap_c (G-8 (1) fixed) |
 | 3.520.77.D.1.a-c (self-employment property; cash for the business; 12 or 24 months) | C: CO-4416 (b); a and c are the county's statement of property in use (CO-4422's precision) |
 | 3.520.77.D.2 (tools for a job) | NA: not a holdings fact |
 | 3.520.77.D.3.a-c (home-use production property, $6,000) | C: CO-4422 (CO-4425, CO-4426) |
@@ -299,20 +299,20 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.520.782.A (earned income gross wages) | C: wages_gross in CO-3830 |
 | 3.520.782.B, B.1-2 (in-kind earned income) | C: CO-4437 (F-10 fixed) |
 | 3.520.783.A-B.1-4, D (net profit; costs allowed and not) | C: CO-1707, CO-1708 |
-| 3.520.783.C.1 (farm yearly) | P2: deferred (first-pass P2-2, still in colorado-notes) |
+| 3.520.783.C.1 (farm yearly) | C: CO-1708, CO-4723 (first-pass P2-2 fixed) |
 | 3.520.783.C.2.a-d (rental, board, room) | C: CO-1708 (receipts less documentable costs) |
-| 3.520.783.C.3.a-d (day care $55/$22) | P2: deferred (first-pass P2-2) |
+| 3.520.783.C.3.a-d (day care $55/$22) | C: CO-1707, CO-4724, CO-4725 (first-pass P2-2 fixed) |
 | 3.520.783.E-F (verification; irregular averaged) | C: CO-1665; averaging is in the supplied amount |
 | 3.520.784.A.1-4, B.1-2 (donated work over 5 hours; greater of going rate or minimum wage) | C: CO-4443 (CO-4442); OQ-781 |
 | 3.520.784.C (volunteering under 30 hours not income) | C: CO-4443 counts only the A tests |
-| 3.520.785.A, B (unearned income of client, spouse, sponsor) | C: CO-3831; spouse and sponsor CO-2384, CO-2386 (see G-1) |
+| 3.520.785.A, B (unearned income of client, spouse, sponsor) | C: CO-3831; spouse and sponsor CO-2384, CO-2386 through CO-4720 and CO-3830 (G-1 fixed) |
 | 3.520.785.B.1, a-b (SSA benefits; lump sums; gross before recovery) | C: social_security_income (gross); lump_sum_received is part of the unearned facts (CO-3367) |
 | 3.520.785.B.2-7 (pensions, disability, VA, RRB, UI, strike) | C: pension_income, unemployment_income, other unearned income |
 | 3.520.785.B.8 (garnished amounts) | C: gross amounts |
 | 3.520.785.B.9, 14-16, 20 (expenses offset) | C: CO-4444 in CO-3831 (F-11 fixed) |
 | 3.520.785.B.10 (dividends and interest) | OQ-782 |
 | 3.520.785.B.11-13, 17-19, 21-25 (annuities, inheritance, gifts and prizes, joint property, lease bonuses, royalties, Civil Liberties Act income, trust payments, alimony, MMMNA, current child support) | C: other unearned income, CO-1181, child_support_received; MMMNA in other_unearned_income_nontaxable (first-pass P2-6) |
-| 3.520.786 intro (exempt for client, spouse or sponsor) | C for the client (CO-2343, CO-2342); **G-1** for the spouse and sponsor |
+| 3.520.786 intro (exempt for client, spouse or sponsor) | C for the client (CO-2343, CO-2342); for the spouse and sponsor CO-4720 and CO-3830 (G-1 fixed) |
 | 3.520.786.A-J, L-M, O-P | C: CO-2343 (named receipt facts); H CO-2342; O CO-3827, CO-4012 (less than $60, CO-3826) |
 | 3.520.786.K (POMS SI 00830.099; 416.1124) | C: CO-2343 (see the federal table) |
 | 3.520.786.N (child support for another person) | C: child_support_received is stated on the child (CO-028) |
@@ -345,15 +345,15 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.533.A.2.a-e, c.1-2 (SSI out; $20 split; SSI only gets none; SSI back) | C: CO-3829, CO-3832 (CO-3828; OQ-661) |
 | 3.533.A.2.f (unused $20 to earned) | C: CO-3833 (OQ-351 resolved) |
 | 3.533.B (grant; floor) | C: CO-951 |
-| 3.534.A.1-5 (spouse's earned income) | C: CO-2384 (wherever the spouse lives); **G-1** (exempt earned income, such as work study) |
-| 3.534.B.1-2, 6-7 (spouse's unearned income less the OAP standard) | C: CO-2384; **G-1** |
+| 3.534.A.1-5 (spouse's earned income) | C: CO-2384 (wherever the spouse lives), earned income through CO-3830 (G-1 fixed) |
+| 3.534.B.1-2, 6-7 (spouse's unearned income less the OAP standard) | C: CO-2384 through CO-4720 and CO-3830 (G-1 fixed) |
 | 3.534.B.3 (children: half the SSI standard less own income) | C: CO-2392 (CO-3050, CO-3054) |
 | 3.534.B.4 (medical payments) | C: CO-2385 |
 | 3.534.B.5 (court-ordered support unless garnished) | C: child_support_paid_legally_obligated |
 | 3.534.C (spouse on AF, SSI or Medicaid with income at or below the OAP limit; MMMNA) | C: CO-2384 (at most CO-289); MMMNA in the client's income |
-| 3.534.D.1 (sponsor's total gross income) | C: CO-2386; **G-1** (exemptions) |
+| 3.534.D.1 (sponsor's total gross income) | C: CO-2386 through CO-4720 and CO-3830 (G-1 fixed) |
 | 3.534.D.2.A (SSI standard for the sponsor) | C: CO-2386 (CO-235) |
-| 3.534.D.2.B (spouse in the same household: half; co-sponsor: full) | C for the co-sponsor; **G-5** for the same-household condition |
+| 3.534.D.2.B (spouse in the same household: half; co-sponsor: full) | C: CO-2386; the same-household condition CO-2388, CO-4731 (G-5 fixed) |
 | 3.534.D.2.C (dependents per archived 3.520.68.B.2.b.1) | C: CO-2386 (CO-2387; D-300; OQ-553 resolved) |
 | 3.534.D.3-5 (deemed as unearned; compared; not divided) | C: CO-2386, CO-946 |
 
@@ -383,10 +383,10 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.543.E.1-2 (inmates; unlicensed facility) | C: CO-942, CO-2007 |
 | 3.543.F ($79 every full month) | C: CO-952 |
 | 3.544 intro, A.1-3, B.1-3, C (disregards; $20 split; grant; no floor) | C: CO-946, CO-3829, CO-952 (no AND-SO floor) |
-| 3.544.D.1-5 (spouse's earned income) | C: CO-2384; **G-1** |
-| 3.544.E.1-3 (spouse's unearned income less the unused $20) | C: CO-2384; **G-1** |
+| 3.544.D.1-5 (spouse's earned income) | C: CO-2384 through CO-4720 and CO-3830 (G-1 fixed) |
+| 3.544.E.1-3 (spouse's unearned income less the unused $20) | C: CO-2384 through CO-4720 and CO-3830 (G-1 fixed) |
 | 3.544.F (no deeming at or below the SSI limit; MMMNA) | C: CO-2384 (CO-235) |
-| 3.544.G.1-5 (sponsor deeming) | C: CO-2386; **G-1**, **G-5** |
+| 3.544.G.1-5 (sponsor deeming) | C: CO-2386 (G-1 and G-5 fixed) |
 | 3.544.H (total) | C: CO-946 |
 | 3.545.A, A.1 (interim assistance recoverable) | NA: recovery |
 | 3.545.A.2 (IM-14 a condition of AND-SO) | C: CO-4449 in CO-1203 |
@@ -412,11 +412,11 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.548.F ($79; not reduced until the month after the first full month) | C: CO-952 (entry on or before the first of the previous month; F-4 fixed, CO-168) |
 | 3.548.G (gross SSI when SSA recovers) | C: ssi_income is gross |
 | 3.549.A.1-2, a-f, B (disregards; floor) | C: CO-946, CO-3829, CO-3832, CO-3833, CO-952 |
-| 3.549.C.1-4 (spouse's earned income) | C: CO-2384; **G-1** |
-| 3.549.D.1-3 (spouse's unearned income less the remaining disregard) | C: CO-2384; **G-1** |
+| 3.549.C.1-4 (spouse's earned income) | C: CO-2384 through CO-4720 and CO-3830 (G-1 fixed) |
+| 3.549.D.1-3 (spouse's unearned income less the remaining disregard) | C: CO-2384 through CO-4720 and CO-3830 (G-1 fixed) |
 | 3.549.E (unemancipated child under 18: parents deemed as a spouse) | C: CO-2384 (CO-3053, is_emancipated_minor) |
 | 3.549.F (no deeming at or below the SSI limit; MMMNA) | C: CO-2384 |
-| 3.549.G.1-5 (sponsor deeming) | C: CO-2386; **G-1**, **G-5** |
+| 3.549.G.1-5 (sponsor deeming) | C: CO-2386 (G-1 and G-5 fixed) |
 | 3.549.H (total; floor) | C: CO-946, CO-952 |
 
 ### 3.550-3.560 (redetermination, changes, notice, transfers)
@@ -445,14 +445,14 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.570.11.B ($977 floor all tiers) | C: CO-1202 in CO-1219 |
 | 3.570.11.C-D (not taxable; appropriations) | NA |
 | 3.570.11.E.1-2 (MOE; SSP) | NA; C (floor) |
-| 3.570.12 "Home" (non-facility; no shelter or temporary setting) | C for shelters and temporary settings (CO-2010); **G-3** for facilities |
-| 3.570.12 "Medical leave", "Non-medical leave" | P2: 42 days deferred (first-pass P2-4) |
+| 3.570.12 "Home" (non-facility; no shelter or temporary setting) | C: CO-2010 for shelters and temporary settings; CO-1217 for facilities (G-3 fixed) |
+| 3.570.12 "Medical leave", "Non-medical leave" | C: CO-4728, CO-4729 in CO-1217 (first-pass P2-4 fixed) |
 | 3.570.12 other definitions | NA |
 | 3.570.13.A, E.1-3 (both financial and functional) | C: CO-1217 |
 | 3.570.13.B.1-3 (SSI; AND-SO criteria; OAP and HCA since 12/31/2013) | C: CO-1215 (CO-1208, CO-2600) |
 | 3.570.13.C.1-3 (capacity 21 or higher; need 1-23, 24-37, 38-51) | C: CO-1216 (CO-1210 to CO-1214) |
 | 3.570.13.D.1-3 (less than the maximum authorized) | C: hca_authorized_amount CO-1218; tier amounts OQ-250 |
-| 3.570.13.F (payment from the month after approval; no retroactive payment) | P2: deferred (first-pass P2-4) |
+| 3.570.13.F (payment from the month after approval; no retroactive payment) | C: CO-1219 with CO-4726, CO-4727 (first-pass P2-4 fixed) |
 | 3.570.13.G (referrals) | NA |
 | 3.570.14.A-F (scoring scales; children 5-18; under 5 not scored) | C: CO-1204, CO-1205 (CMA scores), CO-1217 age |
 | 3.570.15 (ADL definitions) | NA: CMA scoring |
@@ -460,14 +460,14 @@ Contiguous subparagraphs that share one status are on one row.
 | 3.570.17.A-B (CMA and county roles; notices) | NA |
 | 3.570.17.C.1-2 (financial, functional; level of care) | C: CO-1217 |
 | 3.570.17.C.3.a-f (services not received; refused appointments or forms) | NA: CMA case actions with no fact; the client's receipt of services is not stated |
-| 3.570.17.C.4.a (resident of a nursing facility, hospital or other LTC facility) | **G-3** (C for medical institutions through CO-1742) |
+| 3.570.17.C.4.a (resident of a nursing facility, hospital or other LTC facility) | C: CO-1217 (G-3 fixed) |
 | 3.570.17.C.4.b (a stay of 30 days or more) | C: CO-1217 (CO-4409) |
 | 3.570.17.C.5-6 (safety; cost effectiveness) | NA: CMA judgment, no fact |
-| 3.570.17.C.7 (residing anywhere other than home) | **G-3** |
-| 3.570.17.C.7.a-b (leave; 42 days) | P2: deferred (first-pass P2-4) |
+| 3.570.17.C.7 (residing anywhere other than home) | C: CO-1217 (G-3 fixed) |
+| 3.570.17.C.7.a-b (leave; 42 days) | C: CO-4726, CO-4728, CO-4729 in CO-1217 (first-pass P2-4 fixed) |
 | 3.570.17.C.8.a-b (move; temporary absence to day 31) | C: CO-1217 (CO-942, CO-3806, CO-4409) |
 | 3.570.17.C.9 (withdrawal) | NA |
-| 3.570.17.C.10 (death) | **G-4** |
+| 3.570.17.C.10 (death) | C: CO-1217 ineligible_deceased (G-4 fixed) |
 | 3.570.17.D-E, 3.570.18 (transfers; CMA and county duties) | NA |
 | 3.570.41-42 (purpose; definitions; legally responsible persons) | C: CO-3312 (spouse; parent of an unemancipated minor under 18, CO-3313) |
 | 3.570.43.A.1 (receiving OAP, AND, HCA or Medicaid at death) | C: CO-1220 |
@@ -492,7 +492,7 @@ Contiguous subparagraphs that share one status are on one row.
 | paragraph | status |
 |---|---|
 | 3.581.A-B | NA |
-| 3.581.C.1-2 (eligibility ends at death; none for the next month) | **G-4** |
+| 3.581.C.1-2 (eligibility ends at death; none for the next month) | C: CO-953, CO-1203, CO-1217 (G-4 fixed) |
 | 3.581.C.3, a-b (payment to the personal representative) | NA |
 | 3.581.D.1-4 (partial-month table) | C: CO-2602, CO-2603 |
 | 3.581.E (cents dropped except when SSI reduces the grant) | C: CO-951, CO-952 (CO-2604) |
@@ -519,7 +519,7 @@ Contiguous subparagraphs that share one status are on one row.
 | (2)(a)(III) (OAP inmate of a non-penal institution) | C: only correctional institutions bar (CO-3343); OAP-C (OQ-111) |
 | (2)(b) (spouse and sponsor considered) | C: CO-2384, CO-2386, CO-2389, CO-2390 |
 | (2)(c)(I)-(III) | C: CO-929 (OQ-430 resolved; OQ-591) |
-| (2)(d)(I) (member of a household receiving Colorado Works) | C: CO-1511; **G-6** (P2) |
+| (2)(d)(I) (member of a household receiving Colorado Works) | C: CO-1511; OQ-845 (G-6) |
 | (3) | NA: Colorado Works |
 | (4)(a) (total disability, six months, or SSDI) | C: CO-944; OQ-138 |
 | (4)(b) (18 or older) | OQ-783 |
@@ -597,3 +597,27 @@ Resolved questions this pass relied on, which were re-read against the text: OQ-
 | F-15 (sponsor resources counted the client's way) | stays fixed | CO-2390 reads CO-4000 and the client-program life insurance items. **G-2 applies to it too.** |
 | F-16 (sponsor's dependents) | stays fixed | CO-94: 1,212 deemed to each sponsored child. |
 | FC-4 and FC-5 (earlier cash review) | stays fixed | CO-120: $542 each. |
+
+## Disposition (coverage pass 2)
+
+Fix commit `b92d4fc`. Every probe was re-run with the engine on 2026-10-01 and now gives the text's answer: PZ-1 0 deemed, oap $442; PZ-2 3,200, none (PZ-2B unchanged); PZ-3 ineligible_setting, $0 (PZ-3H eligible, $977); PZ-4 none, $0; PZ-5 3,006 deemed (PZ-5C unchanged). PZ-1, PZ-2 and PZ-3 are stored as household cases CO-196, CO-197 and CO-198 with hand derivations. No existing household expectation changed. The matrix rows above that named a finding now name what carries them.
+
+| finding | disposition |
+|---|---|
+| G-1 (P1) | Fixed (`b92d4fc`). New af_relative_deemable_unearned_income (CO-4720): the relative's or sponsor's unearned income less af_excluded_unearned_income evaluated on that person; earned income is af_gross_earned_income (CO-3830), which already subtracts the exempt earned income. CO-2384 and CO-2386 read both, for the 3.534.C exemption test too. The sponsor's "total gross" income is read after the exemptions (3.520.786 names sponsors; 3.510 "Countable income", S3500), so no open question was needed. |
+| G-2 (P1) | Fixed (`b92d4fc`). CO-4001, CO-4002 and CO-3854 read the spouse edge with no lives_with condition, as CO-2389 does. New tests CO-4001-T4 and CO-4002-T4; case CO-197. |
+| G-3 (P1) | Fixed (`b92d4fc`). CO-1217 gives ineligible_setting for every residence_setting_type other than private_dwelling, room_and_board and commercial_property (3.570.12 "Home"; 3.510 "Facility" and 3.570.17.C.7, S3501). The thirty days of C.4.b are kept only for a medical-institution stay or a stay for medical treatment away from a home the client keeps. OQ-250's statement is corrected. Case CO-198. |
+| G-4 (P1) | Fixed (`b92d4fc`). CO-953 (first arm: none), CO-1203 (conjunct) and CO-1217 (new option ineligible_deceased, in aid-codes.yaml) are ineligible for a month that begins after date_of_death (3.581.C.1-2, S3502; 3.570.17.C.10, S3503). The month of death keeps its payment (C.3). |
+| G-5 (P1) | Fixed (`b92d4fc`). sponsor_has_spouse_in_household (CO-2388) now tests the same household, as its meaning already said: a non-signing spouse who lives with their spouse (new lives_with_spouse, CO-4731). CO-947's resource limit reads the married test (sponsor_spouses_not_cosigning) directly (3.520.72.A.2.b). |
+| G-6 (P2) | Open question OQ-845 (needs Legal), cited from CO-1511 and CO-953. The modeled reading is the assistance unit. |
+| G-7 (P2) | Fixed (`b92d4fc`). The chart is a band table (af_life_insurance_estimated_csv_rate_table, CO-4721). af_life_insurance_cash_value (CO-4722) uses it when the cash value is unstated and the face value and purchase date are stated; CO-4002 and CO-3854 read it. The years in effect come from the newest policy's purchase date, the only date the facts carry (stated in CO-4722's precision). |
+| G-8 (1) (P3) | Fixed (`b92d4fc`). CO-4000 does not count an OAP-C client's home (receives_oap_c; 3.520.77.C.4). Test CO-4000-T20. |
+| G-8 (2) (P3) | Fixed (`b92d4fc`): B.6 is named in CO-4400's precision. The answer does not change. |
+| G-8 (3) (P3) | Fixed (`b92d4fc`). 7 CCR 1103-1 is on sos.state.co.us. It sends the figure to the PAY CALC Order, 7 CCR 1103-14, which is also there: $15.16 for 2026 (D-330 temporary, effective 01/01/2026; D-331, effective 02/01/2026; D-332 COMPS Rule 3.1). OQ-781 is resolved: the statewide Colorado minimum wage is the new parameter colorado_minimum_wage (CO-4730), and af_donated_work_income (CO-4443) reads it. CO-4443-T1 and T2 were re-pinned (T2: 40 x 15.16 = 606.40). No household case states donated work. |
+| First-pass P2-2 (farm averaging, day-care allowance) | Fixed (`b92d4fc`). Farm: CO-1708 averages the prior calendar year's net farm income (January to December, via latest_month_of_year) over af_farm_income_averaging_months (CO-4723), and counts nothing after farming_self_employment_end_date. Day care: CO-1707 allows $55 and $22 (CO-4724, CO-4725), or the documented costs when they are greater. |
+| First-pass P2-4 (42 days of leave) | Fixed (`b92d4fc`). af_hca_combined_leave_days_in_approval_year (CO-4728) is compared with af_hca_combined_leave_max_days (CO-4729) in CO-1217. |
+| First-pass P2-4 (payment from the month after approval) | Fixed (`b92d4fc`). af_hca_grant (CO-1219) pays nothing through the approval month (af_hca_approval_date, CO-4726) or before the month of the CMA's payment effective date (af_hca_payment_effective_date, CO-4727). Each date is read as setting no later start when not stated. |
+
+UI test pins moved, each explained by this change: the figures count went from 432 to 438 (six new parameters). CO-273's reach went from 27 to 30 (households CO-196 to CO-198 are reached through af_barred_by_colorado_works). plain-long's long-sum example is now CO-2392, because CO-2384's sums moved into CO-3830 and CO-4720.
+
+Remaining open questions in this family: OQ-138, OQ-250 (tier amounts), OQ-352, OQ-355, OQ-550, OQ-591, OQ-661, OQ-662, OQ-780, OQ-782, OQ-783, and the new OQ-845. Each is a recorded state policy choice, a Legal question, or blocked on a named document. No P1, P2 or P3 is left without a fix or an open question.

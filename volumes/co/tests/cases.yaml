@@ -26562,6 +26562,7 @@
         2026-10: aged
       ma_qmb_eligible:
         2026-10: true
+
 - id: CO-190
   title: 'Colorado Works coverage pass 2 CW2-1: an unmarried 16-year-old mother living with an unrelated caretaker who does not join needs a county approved setting'
   # Probe ZQ-1 (docs/reviews/coverage2-colorado-works.md). CO-164 without the grandparent edge: p1, 16, unmarried and not
@@ -26968,3 +26969,254 @@
     p4:
       cw_eligibility_status:
         2026-10: not_in_unit_did_not_request
+- id: CO-196
+  title: "Coverage pass 2 (Adult Financial G-1): an OAP client whose husband's income tax refund is exempt, not deemed"
+  # p1, 70, has $600 of Social Security and $500 in the bank and is on Medicaid. Her husband p2, 68, lives with her (d1)
+  # and has $1,000 of Social Security, a $500 income tax refund in October (stated in his other nontaxable unearned
+  # income and as tax_refunds_and_credits_received) and $500 in the bank; he receives no Adult Financial or SSI and is not
+  # on Medicaid. Determination on October 1, 2026.
+  # Spouse deeming (3.534.B, S1632; 3.520.786 and 3.510 "Countable income", S3500, S2608; af_relative_deemable_unearned_income,
+  # CO-4720): his unearned income 1,000 + 500 = 1,500 less the refund 3.520.786.A exempts in the month received, 500, is
+  # 1,000; less the OAP grant standard 1,032: nothing is deemed. Countable income: 600 - 10 (her half of the couple's $20,
+  # 3.533.A.2.c.1) = 590 < 1,032: oap. Resources 500 + 500 = 1,000. Grant: 1,032 - 590 = 442.
+  # Before coverage pass 2 the refund was deemed: 1,500 - 1,032 = 468, countable 1,058, none, $0. Probe PZ-1.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 1000
+        tax_refunds_and_credits_received: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 500
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_deemed_relative_income: {"2026-10": 0}
+      af_countable_income: {"2026-10": 590}
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 442}
+
+- id: CO-197
+  title: "Coverage pass 2 (Adult Financial G-2): an OAP couple living apart, each with a small new life insurance policy"
+  # p1, 70, has $600 of Social Security, $700 in the bank and a policy bought on March 1, 2024 with a face value of
+  # $1,000 and a cash surrender value of $900. Her husband p2, 68, lives in another home (d2) with $1,000 of Social
+  # Security, $700 in the bank and the same kind of policy. They are not legally separated or divorced. October 1, 2026.
+  # Life insurance (3.520.75.D-E, S2618; 3.520.63.D, S3204; CO-4001, CO-3854): the face value of all the couple's policies is
+  # 1,000 + 1,000 = 2,000, over $1,500, wherever the spouse lives; both were bought within 48 months (E.3), so each $900
+  # counts. Countable resources: 700 + 900 + 700 + 900 = 3,200, over the $3,000 limit: none, $0. (Deeming: his 1,000 is
+  # below the 1,032 standard, nothing deemed.) Before coverage pass 2 each spouse's policy was tested alone against $1,500
+  # because he lives apart: 1,400, oap, $442. Probe PZ-2; the same couple in one home (PZ-2B) gave 3,200 already.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: 
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 700
+        life_insurance_face_value: 1000
+        life_insurance_cash_surrender_value: 900
+        life_insurance_newest_policy_purchase_date: "2024-03-01"
+        life_insurance_payments_in_lookback: 900
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 600
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      relationships: []
+      facts:
+        child_support_paid_legally_obligated: 0
+        af_medical_payments_for_dependents: 0
+        residence_setting_type: private_dwelling
+        date_of_birth: "1958-01-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: false
+        liquid_resources_value: 700
+        life_insurance_face_value: 1000
+        life_insurance_cash_surrender_value: 900
+        life_insurance_newest_policy_purchase_date: "2024-03-01"
+        life_insurance_payments_in_lookback: 900
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        dwelling_id: d2
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 1000
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_countable_resources: 3200
+      af_category: {"2026-10": none}
+      af_oap_grant: {"2026-10": 0}
+
+- id: CO-198
+  title: "Coverage pass 2 (Adult Financial G-3): an SSI recipient living in an assisted living residence is not in a home for HCA"
+  # p1, 46, receives $500 of SSI and Medicaid and has lived in an assisted living residence since January 5, 2026. The
+  # CMA scores her functional capacity 25 and need for paid care 30 and authorizes $500. October 1, 2026.
+  # Home Care Allowance (3.570.12 "Home": "a non-facility residence"; 3.510 "Facility", S3501; 3.570.17.C.4.a and C.7,
+  # S3202, S3501; af_hca_eligibility_status, CO-1217): an assisted living residence is a facility, not her home:
+  # ineligible_setting, and the grant is $0. Before coverage pass 2 only a medical institution was a facility: eligible,
+  # $500 raised to the $977 floor. Probe PZ-3; the same client in a private dwelling (PZ-3H) is eligible, $977.
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: assisted_living_residence
+        institution_entry_date: "2026-01-05"
+        expects_institutional_stay_of_thirty_days: true
+        nighttime_residence_type: fixed_regular_adequate
+        date_of_birth: "1980-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: never_married
+        receives_ssi: true
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        claims_disability: true
+        is_enrolled_in_medical_assistance: true
+        ltc_services_received: none
+        days_out_of_state_in_calendar_year: 0
+        received_financial_assistance_from_another_state_this_month: false
+        meets_nursing_facility_level_of_care: false
+        hca_functional_capacity_score: 25
+        hca_need_for_paid_care_score: 30
+        hca_authorized_amount: 500
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 0
+        social_security_income: 0
+        ssi_income: 500
+  expect:
+    p1:
+      af_hca_eligibility_status: {"2026-10": ineligible_setting}
+      af_hca_grant: {"2026-10": 0}
