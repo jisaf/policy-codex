@@ -12,6 +12,46 @@ import {
   volumeSig,
 } from "./state";
 
+/** Whether Propose is blocked, and why (null when it is not): no token, a
+ *  preview build, nothing staged, a validation error, a pull-request head.
+ *  The tray and Changes › My proposal both read this. */
+export function proposeBlocked(): string | null {
+  const cs = changeSetSig.value;
+  const report = reportSig.value;
+  return proposeBlockedReason({
+    hasToken: Boolean(credentials.get("github")),
+    entryCount: cs.entries.filter((e) => !isUnchanged(e)).length
+      + fileEntries(cs).filter((f) => !isFileUnchanged(f)).length,
+    valid: report ? report.valid : true,
+    isPrRef: isPrRef(route.value.ref),
+    preview: BUNDLED,
+  });
+}
+
+/** Proposes the staged change set as one pull request, then empties the
+ *  tray and opens the pull request. Throws with the reason on failure. */
+export async function proposeStaged(): Promise<void> {
+  const cs = changeSetSig.value;
+  const report = reportSig.value;
+  const engine = engineSig.value;
+  const vol = volumeSig.value;
+  const manifest = manifestSig.value;
+  if (!engine || !vol || !manifest || !report) return;
+  const result = await proposeChangeSet({
+    client: githubClient(), volume: vol, manifest,
+    changeSet: cs, report, engine,
+    onBranch: (branch) => {
+      const next = { ...cs, branch };
+      changeSetSig.value = next;
+      saveChangeSet(next);
+    },
+  });
+  manifestSig.value = result.manifest;
+  clearTray();
+  statusSig.value = { kind: "idle", message: "" };
+  navigate({ ref: `pr/${result.pr.number}`, view: "table", arg: null, params: {} });
+}
+
 /** The change tray as an overlay sheet, opened from the editor and the
  *  proposal page. */
 export function Tray() {
@@ -24,17 +64,14 @@ export function Tray() {
 }
 
 /** The tray's content: the staged entries, their effect, sending and
- *  proposing. `inline` renders it as a page section (Changes > My proposal)
- *  instead of the overlay's sheet. */
-export function TrayPanel({ inline = false }: { inline?: boolean }) {
+ *  proposing. Changes › My proposal is the page for the same change set,
+ *  with its effect on the stored households and who must approve it. */
+export function TrayPanel() {
   const busy = useSignal(false);
   const error = useSignal("");
 
   const cs = changeSetSig.value;
   const report = reportSig.value;
-  const engine = engineSig.value;
-  const vol = volumeSig.value;
-  const manifest = manifestSig.value;
   const r = route.value;
   const errorsById = new Map((report?.items ?? []).map((i) => [i.id, i.errors]));
   // Governance warnings are what an edit inherits or a duplicate earns: they do
@@ -46,34 +83,14 @@ export function TrayPanel({ inline = false }: { inline?: boolean }) {
   // A file entry is a change to propose like any other, so it counts towards
   // an empty tray even though it carries no impact of its own.
   const files = fileEntries(cs);
-  const reason = proposeBlockedReason({
-    hasToken: Boolean(credentials.get("github")),
-    entryCount: cs.entries.filter((e) => !isUnchanged(e)).length
-      + files.filter((f) => !isFileUnchanged(f)).length,
-    valid: report ? report.valid : true,
-    isPrRef: isPrRef(r.ref),
-    preview: BUNDLED,
-  });
+  const reason = proposeBlocked();
 
   const propose = async () => {
-    if (!engine || !vol || !manifest || !report) return;
     busy.value = true;
     error.value = "";
     try {
-      const result = await proposeChangeSet({
-        client: githubClient(), volume: vol, manifest,
-        changeSet: cs, report, engine,
-        onBranch: (branch) => {
-          const next = { ...cs, branch };
-          changeSetSig.value = next;
-          saveChangeSet(next);
-        },
-      });
-      manifestSig.value = result.manifest;
-      clearTray();
+      await proposeStaged();
       trayOpenSig.value = false;
-      statusSig.value = { kind: "idle", message: "" };
-      navigate({ ref: `pr/${result.pr.number}`, view: "table", arg: null, params: {} });
     } catch (e) {
       error.value = (e as Error).message;
     } finally {
@@ -82,15 +99,19 @@ export function TrayPanel({ inline = false }: { inline?: boolean }) {
   };
 
   return (
-      <div class={inline ? "tray inline" : "sheet tray"}>
+      <div class="sheet tray">
         <div class="cardhead">
-          <h2>{inline ? "What your proposal holds" : "Change tray"}</h2>
+          <h2>Change tray</h2>
           <span class="tag">{cs.volume} @ {cs.baseRef}</span>
           <span class="spacer" />
           <button class="btn" onClick={() => { trayOpenSig.value = false; openEditor(null); }}>
             New item
           </button>
-          {!inline && <button class="btn" onClick={() => { trayOpenSig.value = false; }}>Close</button>}
+          <a
+            class="btn" href={buildHash({ ...r, view: "changes", arg: "proposal", params: {} })}
+            onClick={() => { trayOpenSig.value = false; }}
+          >My proposal: effect and approvers</a>
+          <button class="btn" onClick={() => { trayOpenSig.value = false; }}>Close</button>
         </div>
 
         {cs.entries.length === 0 && files.length === 0 && (
