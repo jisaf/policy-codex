@@ -1,6 +1,6 @@
 # Unified UI spec (proposal, awaiting product-owner approval)
 
-Status: draft for approval. Sources: docs/reviews/compare-eval-1.md (Dana, Priya) and compare-eval-2.md (Marcus, Rosa), the phase 13 retests, and the two blind prototypes (prototypes/blind-a, prototypes/blind-b).
+Status: approved by the product owner on 2026-11-22 (all four decisions, with one change: the graph stays for policy staff, rebuilt as the Map; see below). Sources: docs/reviews/compare-eval-1.md (Dana, Priya) and compare-eval-2.md (Marcus, Rosa), the phase 13 retests, and the two blind prototypes (prototypes/blind-a, prototypes/blind-b).
 
 ## Why
 Two independent evaluators, four personas, twenty tasks. Both ranked the information architecture Blind B > Blind A > App, and usability B or A ahead of the App. The App won only on completeness. Its problems are structural, not cosmetic:
@@ -16,7 +16,7 @@ The fix is a single information architecture with one canonical page per object,
 3. **One definition per number.** Every count shown anywhere ("owns", "reaches", "households that read", "unverified upstream", due dates) comes from one module (`src/ui/counts.ts`, extended), with a unit test pinning its definition against the co volume.
 4. **Plain words first.** Identifiers are small and secondary. Rule text is visible on the page, never under a "Decision record" or "Precision" fold.
 5. **Policy definition only.** No intake and no live calculation for arbitrary households. Stored households, what-if on a stored household, and before/after on a proposed change stay in scope.
-6. **Implementer tools stay out of the way.** Graph, table, projection, conformance and handoff move to a secondary "For implementers" menu.
+6. **Implementer tools stay out of the way.** Table, projection, conformance, handoff and the whole-ledger graph move to a secondary "For implementers" menu. The focused Map (below) stays in the policy staff's view.
 
 ## Top-level places
 
@@ -61,6 +61,18 @@ Top to bottom:
 ### Question: `/questions/OQ-n`
 The App's card: reading in force meanwhile, rule text it turns on, items carrying it, households that change if answered the other way. Two actions: "Answer it" (App's decision types plus citation) and "Record a legal opinion" (B: conclusion, authority, effect), both with "agency notified". The owner shown always agrees with the active filter.
 
+### Map (what stems from what)
+The product owner wants the graph kept as a quick way to grasp complexity and follow what stems from what; the current view is not helpful (evaluators: 54 boxes too small to read, program filter hard-coded to the old volume, a focus that showed the wrong program). The Map replaces it for policy staff:
+- **Centered on one thing:** an item, an outcome or a program. A "Map" tab on the item page and the program page; "Open in the Map" from a household determination.
+- **Reads left to right:** facts and figures on the left, rules in the middle, outcomes on the right. The centre item is large; upstream ("what it reads") to its left, downstream ("what reads it") to its right.
+- **Readable at any size:** depth 1 by default, with a depth control (1–3) and click-to-expand on any node. Collapsed groups show a count ("+14 more facts", "+6 more rules"), never dozens of tiny boxes. Plain labels; identifiers small.
+- **Path finder:** "How does this fact reach [outcome]?" highlights the chain and lists it as numbered steps beside the map.
+- **Complexity at a glance:** on a program, each outcome shows how many facts, figures and rules feed it, and the map can switch to "biggest first".
+- **Overlays (toggles):** open questions, unverified source, awaiting approval, statute over rule, changed by my proposal. Same badges as everywhere else.
+- **Program filter from the volume,** never hard-coded.
+- **Keyboard and phone:** at 390px the Map becomes the same structure as indented lists (reads / read by), with the same expand controls.
+- The whole-ledger graph stays under "For implementers".
+
 ### Departure (statute over rule)
 A row in Law (follows, departs from, reasoning, questions, agency notified) that links to its item. Not a page of its own.
 
@@ -83,12 +95,12 @@ Opens scrolled to the passage, with the whole passage highlighted (B).
 ## Build plan
 1. **Shell and routes:** sidebar, seven places, search results page, redirects from old routes so links keep working. Old views are removed once their content has a canonical home.
 2. **Counts module:** one definition per number, with tests; every view reads it.
-3. **Canonical pages,** in parallel by object: Item, Household and Determination, Question and Law, Changes and the proposal editor, Desk.
+3. **Canonical pages,** in parallel by object: Item, Household and Determination, Question and Law, Changes and the proposal editor, Desk, Programs and Figures, the Map.
 4. **One design owner** reviews every page against this spec for consistency (same object shown the same way everywhere).
 5. **Gate:** rerun the same twenty persona tasks (both evaluators' method, screenshots, scores) on the unified app. Pass if it ranks at or above Blind B on IA and at or above Blind A on usability for every persona, with no count disagreement. Plus npm test, typecheck, e2e and check.
 
-## Decisions for the product owner
+## Decisions (approved 2026-11-22)
 1. Adopt the seven-place sidebar IA above (both evaluators converged on it independently).
 2. Build it inside the existing app, not in a prototype codebase (keeps the engine integration, tests, tray, ledger sources and completeness).
-3. Move graph, table, projection, conformance and handoff to a secondary "For implementers" menu.
+3. Move table, projection, conformance, handoff and the whole-ledger graph to a secondary "For implementers" menu; keep a rebuilt, focused Map for policy staff.
 4. Retire the role page, start doors, and the Cases/Walkthrough split once their content has its canonical home.
