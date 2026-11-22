@@ -1,0 +1,18 @@
+id: CO-3619
+name: "Medicaid: community spouse's approved medical expenses and premiums"
+identifier: ma_community_spouse_medical_needs
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The additional amount 10 CCR 2505-10 § 8.100.7.Q.2 adds to the community spouse's minimum monthly needs: the documented medical and remedial care expenses not paid by a third party (medical_expenses_out_of_pocket) and the Medicare, Long-Term Care insurance and health insurance premiums (health_insurance_premiums_paid) of the community spouse and of each dependent family member living with the community spouse (ma_family_allowance_members, CO-2469), read from those persons' facts."
+assumption: "Q.2 says an additional amount 'may be approved'; the volume reads it as approved whenever the expenses are documented as Q.2.a requires and paid as Q.2.b describes (OQ-620). Q.2.b's premiums are read for the same persons as Q.2.a's expenses."
+precision: "The person evaluated is the institutionalized spouse; the community spouse is the spouse who does not reside in a medical institution, as in ma_community_spouse_income (CO-2467). medical_expenses_out_of_pocket already excludes expenses reimbursed by insurance or another third party (Q.2.a.ii); Q.2.a.i's licensed practitioner and the documentation are the eligibility site's check of the stated amount. Q.4's cap applies to the MMMNA and the excess shelter allowance only, so this amount is added after the cap (ma_mmmna, CO-655)."
+derived: [sum, [filter, [persons], [any, [in_group, [P], [filter, [reachable, [spouse]], [not, [of, [P], resides_in_medical_institution]]]], [in_group, [P], ma_family_allowance_members]]], [+, [of, [P], medical_expenses_out_of_pocket], [of, [P], health_insurance_premiums_paid]]]
+sources: [S1756]
+implemented: engine
+tags: [ma, ltc, income]
+open: [OQ-620]
+rationale: "Final verification F-4 (docs/reviews/final-medicaid-chp.md): the community spouse's needs were only the MMMNA and the excess shelter allowance; § 8.100.7.Q.2 (S1756) adds the community spouse's and dependents' medical expenses and premiums above the Q.4 cap, and CO-655 and CO-835 noted them as not modeled with no open question."
+tests:
+  - {id: CO-3619-T1, as_of: "2026-11-01", month: "2026-11", title: "Community spouse p2 pays a 202.90 Part B premium and 60 of prescriptions; no dependents", given: {resides_in_medical_institution: true, ma_family_allowance_members: []}, others: {p2: {resides_in_medical_institution: false, medical_expenses_out_of_pocket: 60, health_insurance_premiums_paid: 202.9}}, relationships: [[spouse, p1, p2]], expect: 262.9}

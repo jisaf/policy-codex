@@ -1,0 +1,12 @@
+id: CO-3603
+name: "Medicare Part D premium paid"
+identifier: medicare_part_d_premium_paid
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The Medicare Part D (prescription drug plan) premium the person pays for the month; 0 when the person pays none (a full Low-Income Subsidy, or another payer). It is part of health_insurance_premiums_paid (CO-835), stated apart because some rules deduct it on its own. If not stated, Medicaid reads it as 0."
+supplied_by: "Part D plan premium notice or SSA benefit statement."
+sources: [S2400, S2401]
+tags: [ma, ltc, income]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. No fact stated the Part D premium apart from the other premiums."

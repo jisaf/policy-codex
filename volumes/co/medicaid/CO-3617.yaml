@@ -1,0 +1,16 @@
+id: CO-3617
+name: "Medicaid: Home Maintenance Allowance maximum"
+identifier: ma_home_maintenance_allowance_max
+kind: derived
+type: money
+scope: global
+program: Medicaid
+meaning: "The most a Home Maintenance Allowance may be (10 CCR 2505-10 § 8.100.7.V.3.g.ii.2.b): the Individual Needs Standard - the MMMNA maximum (ma_mmmna_cap) divided by the MMMNA, both as in place on January 1 of the year, times ma_home_maintenance_fpl_pct of the monthly poverty guideline for ma_home_maintenance_household_size - less that ma_home_maintenance_fpl_pct of the guideline, plus ma_home_maintenance_shelter_pct of it, rounded to the nearest whole dollar."
+precision: "'In place on January 1st of each calendar year' is read for every figure of the computation: the MMMNA maximum's version on January 1 of the determination year; the MMMNA in place on that date, which is ma_mmmna_applicable_pct of the guideline for ma_mmmna_family_size adjusted the July before (the guideline version in force on that July 1, as ma_mmmna_standard, CO-662, reads it); and the one-person guideline in force on January 1 (OQ-515: guidelines are used from January 1). § 8.100.7.V.3.g.ii.2.b states the result as the Individual Needs Standard 'minus 105% Federal Poverty Limit', which is the same figure: 150% less 30% of 150% is 105%. For 2026: 4,066.50 / (1.5 x 21,150 / 12 = 2,643.75) x (1.5 x 15,960 / 12 = 1,995) = 3,068.62; less 1,995, plus 598.50: 1,672.12, rounded 1,672."
+derived: [round, [+, ["-", ["*", [/, [as_of, ma_mmmna_cap, [first_day, [latest_month_of_year, 1, [det_month]]]], ["*", ma_mmmna_applicable_pct, [/, [lookup, [as_of, federal_poverty_guideline_annual_table, [first_day, [latest_month_of_year, ma_mmmna_adjustment_month, [month_before, [latest_month_of_year, 1, [det_month]]]]]], ma_mmmna_family_size], 12]]], ["*", ma_home_maintenance_fpl_pct, [/, [lookup, [as_of, federal_poverty_guideline_annual_table, [first_day, [latest_month_of_year, 1, [det_month]]]], ma_home_maintenance_household_size], 12]]], ["*", ma_home_maintenance_fpl_pct, [/, [lookup, [as_of, federal_poverty_guideline_annual_table, [first_day, [latest_month_of_year, 1, [det_month]]]], ma_home_maintenance_household_size], 12]]], ["*", ma_home_maintenance_shelter_pct, ["*", ma_home_maintenance_fpl_pct, [/, [lookup, [as_of, federal_poverty_guideline_annual_table, [first_day, [latest_month_of_year, 1, [det_month]]]], ma_home_maintenance_household_size], 12]]]]]
+sources: [S2404, S358, S644, S55, S1710]
+implemented: engine
+tags: [ma, ltc, income]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. The Home Maintenance Allowance maximum is computed from published figures, so it is a rule, not a supplied amount."
+tests:
+  - {id: CO-3617-T1, as_of: "2026-11-01", title: "2026: 1,672", expect: 1672}
