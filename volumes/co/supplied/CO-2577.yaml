@@ -5,10 +5,10 @@ kind: supplied
 type: yes/no
 scope: month
 program: CCCAP
-meaning: "This household meets the definition of families experiencing homelessness (8 CCR 1403-1 3.103(YY)) and the month falls within its stabilization period - at least sixty consecutive days within a twelve-month period, longer under an approved county plan (3.121.B) - during which it has no parent fee (3.124.I.5)."
-precision: If not stated, CCCAP reads this as false.
+meaning: "This household meets the definition of families experiencing homelessness (8 CCR 1403-1 3.103.CCC) and the month falls within its stabilization period - at least sixty consecutive days within a twelve-month period, longer under an approved county plan (3.121.B) - during which it has no parent fee (3.124.I.5)."
+precision: "If not stated, CCCAP reads this as false. Coverage pass 3 C3-10: 3.121.A points to \"3.103(YY)\", which in the version effective 2026-08-14 (D-87) is the entry income level; the definition of families experiencing homelessness is 3.103.CCC (S1954)."
 supplied_by: County determination recorded in CHATS.
-sources: [S784, S1823]
+sources: [S784, S1823, S1954]
 tags: [household]
 rationale: "CDHS review C-7: the homelessness stabilization exception (3.124.I.5) was not modeled. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case and month (convention rule 18), stated once in the case's month_facts instead of on each member."
 nearest: [CO-2575]

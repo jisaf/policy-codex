@@ -6,12 +6,13 @@ type: yes/no
 scope: person-month
 program: CCCAP
 meaning: "Whether the age of a child for whom care is requested must be verified for CCCAP: only when the attested age is inconsistent - not during a homeless family's stabilization period, when it is self-declared (3.121.B.5, final pass F-02)."
-derived: [all, cccap_is_eligible_child, age_attestation_is_questionable, [not, cccap_is_in_homelessness_stabilization]]
-sources: [S890, S2710]
+precision: "Coverage pass 3 C3-8: not for a household referred for Colorado Works Child Care (is_referred_for_colorado_works_child_care, CO-896, read over the household and as false when not stated), whose referral \"serves as verification of citizenship, age, and identity\" (3.116.F, S3637). A protective services household is still asked when the Child Welfare worker could not attest, with the six months of 3.119.F (cccap_protective_services_verification_due_date, CO-4061)."
+derived: [all, cccap_is_eligible_child, age_attestation_is_questionable, [not, cccap_is_in_homelessness_stabilization], [not, [exists, cccap_household_members, [otherwise, [of, [P], is_referred_for_colorado_works_child_care], false]]]]
+sources: [S890, S2710, S3637]
 implemented: engine
 tags: [verification, age]
 rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
 tests:
-  - {id: CO-1443-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: true}, expect: true}
+  - {id: CO-1443-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_household_members: [p1], cccap_is_eligible_child: true, age_attestation_is_questionable: true}, expect: true}
   - {id: CO-1443-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: false}, expect: false}
   - {id: CO-1443-T4, title: "F-02: questionable, but the family is in its homelessness stabilization period (3.121.B.5)", month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: true, cccap_is_in_homelessness_stabilization: true}, expect: false}

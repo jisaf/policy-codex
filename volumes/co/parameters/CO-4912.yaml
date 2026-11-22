@@ -1,0 +1,15 @@
+id: CO-4912
+name: "CCCAP: months from which a state diversion is cash assistance"
+identifier: cccap_state_diversion_cash_assistance_months
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "A state Colorado Works diversion paid over at least this many consecutive months is cash assistance for CCCAP (8 CCR 1403-1 3.103.S: \"All state diversion payments of less than four (4) consecutive months are not cash assistance\")."
+versions:
+  - from: "2026-08-14"
+    value: 4
+    source: S3638
+sources: [S3638]
+tags: [income]
+rationale: "Coverage pass 3 C3-6: cccap_excluded_unearned_receipts (CO-4463) excludes a state diversion that is cash assistance under 3.111.J.26; the figure is the rule's own."
