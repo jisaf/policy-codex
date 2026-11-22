@@ -548,11 +548,13 @@ Contiguous subparagraphs that share one status are on one row.
 | 26 U.S.C. 529A (ABLE) | C: CO-4415 |
 | Pub. L. 100-383 (Civil Liberties Act) | C: the payments are federally excluded (CO-3366); income from them is other unearned income |
 
-**Matrix size:** 352 rows over 9 CCR 2503-5 3.500-3.587, C.R.S. 26-2-111 and the incorporated texts. Each row maps one paragraph or a run of subparagraphs that share one status. Counted by primary status:
-- C: 237 rows. 15 of them also carry a finding part (G-1, G-2, G-3, G-5 or G-6).
-- NA: 92 rows.
-- OQ: 4 rows (OQ-782, OQ-783, and OQ-781 and OQ-355 as a row's governing note).
-- Finding rows: 19. These are the rows whose primary status is a finding: G-1 to G-5 (P1), G-6 and G-7 (P2), the first pass's deferred P2s (3.520.783.C.1, C.3; 3.570.12 leave; 3.570.13.F; 3.570.17.C.7.a-b), and P3 rows.
+**Matrix size:** 414 rows over 9 CCR 2503-5 3.500-3.587, C.R.S. 26-2-111 and the incorporated texts. Each row maps one paragraph or a run of subparagraphs that share one status. Counted by primary status:
+- C: 313 rows. 23 of them also carry a finding part (G-1, G-2, G-3, G-5 or G-6).
+- NA: 87 rows.
+- OQ: 2 rows (3.520.785.B.10, OQ-782; 26-2-111(4)(b), OQ-783). Another 12 C rows cite an open question for one part.
+- Finding as the primary status: 6 rows (G-3 twice, G-4 twice, G-7, G-8 (1)).
+- First-pass P2s still deferred: 5 rows (3.520.783.C.1 and C.3; the leave definitions in 3.570.12; 3.570.13.F; 3.570.17.C.7.a-b).
+- P3: 1 row (3.520.69.B.6).
 
 P2 count: 2 new (G-6, G-7), plus 3 first-pass P2s still deferred and recorded (P2-2's farm averaging and day-care allowance, and P2-4's 42-day leave and month-after-approval start). P3: 1 (G-8, three parts).
 
