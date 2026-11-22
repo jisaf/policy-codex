@@ -362,3 +362,67 @@ export function documentEffective(d: Pick<DocumentMeta, "title" | "citation">): 
   }
   return null;
 }
+
+// ---- what an item reads and what reads it (the Map)
+
+export interface MapCounts {
+  /** Every item it reads, directly or through other rules, by kind: supplied
+   *  facts, figures (parameters), rules (derived items that are not a
+   *  declared outcome) and declared outcomes. */
+  reads: { facts: number; figures: number; rules: number; outcomes: number; total: number };
+  /** Every item that reads it, directly or through other rules. */
+  readBy: { rules: number; outcomes: number; total: number };
+}
+
+const mapCountMemo = new WeakMap<Engine, Map<string, MapCounts>>();
+const outcomeMemo = new WeakMap<Engine, Set<string>>();
+
+/** Every outcome: an item a program declares among its outcomes, or one
+ *  whose role says it is one. */
+export function outcomeIdentifiers(engine: Engine): Set<string> {
+  const hit = outcomeMemo.get(engine);
+  if (hit) return hit;
+  const out = new Set<string>();
+  for (const p of engine.meta.programs ?? []) for (const o of p.outcomes ?? []) out.add(o);
+  for (const it of engine.items()) if (it.role === "outcome") out.add(it.identifier);
+  outcomeMemo.set(engine, out);
+  return out;
+}
+
+/** How much stands behind and ahead of an item, as the Map shows it at full
+ *  depth: every dependency is followed (verification flags included, unlike
+ *  `outcomesAffected`), so the counts match what the Map can expand to. A
+ *  program's outcome reads "fed by N facts, M figures, R rules". */
+export function mapCounts(engine: Engine, identifier: string): MapCounts {
+  let per = mapCountMemo.get(engine);
+  if (!per) { per = new Map(); mapCountMemo.set(engine, per); }
+  const hit = per.get(identifier);
+  if (hit) return hit;
+  const outcomes = outcomeIdentifiers(engine);
+  const walk = (next: (id: string) => string[]) => {
+    const seen = new Set<string>([identifier]);
+    const stack = [identifier];
+    while (stack.length) for (const d of next(stack.pop()!)) if (!seen.has(d)) { seen.add(d); stack.push(d); }
+    seen.delete(identifier);
+    return seen;
+  };
+  const reads = { facts: 0, figures: 0, rules: 0, outcomes: 0, total: 0 };
+  for (const id of walk((x) => engine.usesOfItem(x))) {
+    const it = engine.item(id);
+    if (!it) continue;
+    reads.total++;
+    if (it.kind === "supplied") reads.facts++;
+    else if (it.kind === "parameter") reads.figures++;
+    else if (outcomes.has(id)) reads.outcomes++;
+    else reads.rules++;
+  }
+  const readBy = { rules: 0, outcomes: 0, total: 0 };
+  for (const id of walk((x) => engine.usedBy(x))) {
+    if (!engine.item(id)) continue;
+    readBy.total++;
+    if (outcomes.has(id)) readBy.outcomes++; else readBy.rules++;
+  }
+  const out = { reads, readBy };
+  per.set(identifier, out);
+  return out;
+}
