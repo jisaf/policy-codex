@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 10 of ${vol.cases.length} stored households; it reaches 21`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 24 and reaches 39", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(24);
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(39);
+  it("the children's Medicaid income limit (CO-191) is read by 25 and reaches 42", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(25); // + CO-228 (MAGI coverage pass 3: a stepchild of 16)
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(42); // + CO-226 to CO-228 (MAGI coverage pass 3)
   });
 
   it("every household that reads an item is one it reaches", () => {

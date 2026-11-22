@@ -1,0 +1,19 @@
+id: CO-4978
+name: "Medicaid: age on the first day of the determination month"
+identifier: ma_age_on_first_day_of_determination_month
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: "The person's whole number of completed years of age on the first day of the determination month: the age an \"under N\" limit reads where the rule grants the whole month (10 CCR 2505-10 § 8.100.4.G.1), so that a person who is under the limit on any day of the month is within it for the whole month, and a person who reaches the limit on the first day is not."
+precision: "A person under N on the first day of the month is under N on at least that day; a person who is N or older on the first day is N or older on every day of the month. So the test is exact for an \"under N\" limit: the Eligible Needy Newborn's one year (§ 8.100.4.G.7, ma_is_needy_newborn, CO-550) and the dependent child's \"under the age of 18\" (§ 8.100.1, ma_is_dependent_child_in_month, CO-4791). Limits worded \"through the end of the month\" of a birthday (the Children's 19 and the Adults' 65, § 8.100.1) read ma_age_before_determination_month (CO-4790), the age on the last day of the month before, which is exact for them. A birthday is reached at the start of the day (years_between)."
+derived: [years_between, date_of_birth, [first_day, [det_month]]]
+sources: [S3351, S211, S206]
+implemented: engine
+tags: [ma, magi, age]
+nearest: [CO-4790]
+rationale: "Coverage review 3, C3-07 (2026-11-22): the needy newborn and dependent child tests read CO-4790, whose age on the last day of the month before counts a first or 18th birthday on the first of the month as not yet reached for that month, although the child is past the limit on every day of it (RV3-NB1: born 2025-11-01, still a needy newborn in November 2026 after the year ended on 2026-10-31). CO-4790 is right for the limits that run through the birthday month and is kept for them."
+tests:
+  - {id: CO-4978-T1, as_of: "2026-11-10", title: "Coverage review 3, RV3-NB1: born 2025-11-01, one on November 1, 2026", given: {date_of_birth: "2025-11-01"}, expect: 1}
+  - {id: CO-4978-T2, as_of: "2026-11-10", title: "Coverage review 2, RV2-NB: born 2025-11-05, still 0 on November 1", given: {date_of_birth: "2025-11-05"}, expect: 0}
+  - {id: CO-4978-T3, as_of: "2026-11-01", title: "18th birthday on November 1", given: {date_of_birth: "2008-11-01"}, expect: 18}
