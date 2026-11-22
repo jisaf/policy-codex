@@ -1,0 +1,13 @@
+id: CO-4462
+name: "CCCAP: child authorized at the last determination"
+identifier: cccap_child_was_authorized_at_last_determination
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "This child was authorized for CCCAP care at the household's most recent eligibility determination (its application, redetermination or transition), and the authorization runs in the current twelve-month eligibility period: a child already in care, not one added to the household during the period."
+precision: "A fact of the CCCAP case record (CHATS). Read at a change reported during the eligibility period (cccap_determination_type, CO-3307). If not stated, CCCAP reads it as false, which applies the age limit and asks for the immunization record as for a new child."
+supplied_by: "The county's CCCAP case record (CHATS) of the child's authorization."
+sources: [S3251, S3252]
+tags: [age, verification]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-06): 8 CCR 1403-1 3.114.B (S3251) ends a case for an eligible child exceeding the age limits and for missing immunization records \"at re-determination only\", and 3.125.Q (S3252) lets a county discontinue care before the redetermination only for a closed list of reasons that names neither. A child added to the household during the period (3.125.FF) must meet the eligible-child test when added. The case record says which children were authorized; no fact stated it."

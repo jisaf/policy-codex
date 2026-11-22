@@ -50,6 +50,8 @@ export const RELATIONSHIP_VERB: Record<string, string> = {
   lives_as_one_economic_unit_with: "lives as one economic unit with",
   files_jointly_with: "files taxes jointly with", sponsor: "is the sponsor (affidavit of support) of",
   sponsored_by: "is sponsored (affidavit of support) by",
+  contributes_financially_to: "contributes financially to the welfare of",
+  receives_financial_contribution_from: "receives financial support from",
 };
 
 /** A role this map does not know still reads as a sentence: "is related

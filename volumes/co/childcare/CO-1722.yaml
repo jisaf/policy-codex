@@ -6,9 +6,9 @@ type: yes/no
 scope: person
 program: CCCAP
 meaning: "During the month the adult caretaker or teen parent is participating in training, basic education or post-secondary education that is a Low-Income Child Care eligible activity under 8 CCR 1403-1 3.103.OO, or, for a teen parent, attending school or teen parent education."
-precision: "An elementary pupil is not a caretaker in an education activity; a teen parent attending high school or teen parent education is."
-derived: [in, education_program_type, [secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized, postsecondary_career_and_technical, higher_education, workforce_training, basic_education, teen_parent_education, other_training]]
-sources: [S482]
+precision: "An elementary pupil is not a caretaker in an education activity; a teen parent attending high school or teen parent education is. Coverage round F-04: a college, university or post-secondary career and technical program counts only \"for a first bachelor's degree or less\" (3.111.G.4.a.1, S1412; 3.103.IIIII, S3258: \"for a Bachelor's degree or less\"): not when it leads to a graduate or professional degree or a second bachelor's degree (post_secondary_program_beyond_first_bachelors_degree, CO-4450, read as false when not stated). Before the fix a master's student was in an eligible activity (probe RV-B)."
+derived: [all, [in, education_program_type, [secondary, secondary_career_and_technical, high_school_equivalency, home_school_recognized, postsecondary_career_and_technical, higher_education, workforce_training, basic_education, teen_parent_education, other_training]], [not, [all, [in, education_program_type, [postsecondary_career_and_technical, higher_education]], [otherwise, post_secondary_program_beyond_first_bachelors_degree, false]]]]
+sources: [S482, S1412, S3258]
 implemented: engine
 tags: [household]
 open: []
@@ -16,3 +16,7 @@ rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-2): cccap_
 tests:
   - {id: CO-1722-T1, title: "Adult basic education", as_of: "2026-11-01", given: {education_program_type: basic_education}, expect: true}
   - {id: CO-1722-T2, title: "Not enrolled", as_of: "2026-11-01", given: {education_program_type: none}, expect: false}
+  # Coverage round F-04 (probe RV-B): a master's program is not training or post-secondary education "for a first bachelor's degree or less".
+  - {id: CO-1722-T3, title: "F-04: a graduate program is not an eligible activity", as_of: "2026-11-01", given: {education_program_type: higher_education, post_secondary_program_beyond_first_bachelors_degree: true}, expect: false}
+  - {id: CO-1722-T4, title: "F-04: a first bachelor's degree program is", as_of: "2026-11-01", given: {education_program_type: higher_education, post_secondary_program_beyond_first_bachelors_degree: false}, expect: true}
+  - {id: CO-1722-T5, title: "F-04: workforce training is not limited by degree", as_of: "2026-11-01", given: {education_program_type: workforce_training, post_secondary_program_beyond_first_bachelors_degree: true}, expect: true}
