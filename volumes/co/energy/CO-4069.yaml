@@ -1,0 +1,20 @@
+id: CO-4069
+name: "LEAP: a person's prizes and lump sums in the income verification period"
+identifier: leap_person_one_time_income
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: "The prizes and nonrecurring lump sums the person received in the income verification period that LEAP counts (9 CCR 2503-7 3.752.21.A, C, D; 3.752.22.A): the lottery and gambling winnings (lottery_gambling_winnings_received_prior_thirty_days, CO-4065) and the lump sums (lump_sum_received_prior_thirty_days, CO-4066) received in the thirty days before the application date, less the retroactive Social Security, SSI and public assistance lump sums among them (CO-4067, CO-4068), which 3.752.23.EE excludes."
+precision: "Read for the month of the application (leap_household_income, CO-1002). A thirty-day fact not stated is taken as 0 when the calendar-month facts for the month of the application and the month before both state no receipt (lottery_gambling_winnings_received, CO-1181; lump_sum_received, CO-3367; each read as 0 when not stated), and is otherwise unknown: a receipt stated only by its month cannot be placed inside or outside the thirty days. The retroactive parts are read as 0 when the lump-sum thirty-day fact is stated and they are not."
+derived: [+, [otherwise, lottery_gambling_winnings_received_prior_thirty_days, [case, [[all, ["=", [otherwise, lottery_gambling_winnings_received, 0], 0], ["=", [at, [otherwise, lottery_gambling_winnings_received, 0], [month_before, [month]]], 0]], 0]]], [otherwise, [max, 0, ["-", lump_sum_received_prior_thirty_days, [+, [otherwise, retroactive_social_security_lump_sum_received_prior_thirty_days, 0], [otherwise, retroactive_ssi_or_public_assistance_lump_sum_received_prior_thirty_days, 0]]]], [case, [[all, ["=", [otherwise, lump_sum_received, 0], 0], ["=", [at, [otherwise, lump_sum_received, 0], [month_before, [month]]], 0]], 0]]]]
+sources: [S2712, S2713, S2714, S2208]
+open: [OQ-681]
+nearest: [CO-3926]
+implemented: engine
+tags: [income]
+rationale: "Second-pass review N-8 (F-11 residual): leap_person_unearned_income (CO-3926) read prizes and lump sums for the calendar month of the application, though 3.752.22.A counts unearned income \"received in the income verification period\"; RV-S4 (an application of November 5, a $5,000 prize received on October 20) came out $3,967 and eligible where the rule gives $8,967, over the $7,258 limit."
+tests:
+  - {id: CO-4069-T1, title: "A $5,000 prize received on October 20, inside the thirty days before a November 5 application", as_of: "2026-11-05", month: "2026-11", given: {lottery_gambling_winnings_received_prior_thirty_days: 5000, lump_sum_received_prior_thirty_days: 0}, expect: 5000}
+  - {id: CO-4069-T2, title: "A $3,500 lump sum in the thirty days, $3,000 of it retroactive Social Security (3.752.23.EE)", as_of: "2026-11-05", month: "2026-11", given: {lottery_gambling_winnings_received_prior_thirty_days: 0, lump_sum_received_prior_thirty_days: 3500, retroactive_social_security_lump_sum_received_prior_thirty_days: 3000}, expect: 500}
+  - {id: CO-4069-T3, title: "No thirty-day facts, and no receipt stated in October or November", as_of: "2026-11-05", month: "2026-11", given: {lottery_gambling_winnings_received: {"2026-10": 0, "2026-11": 0}, lump_sum_received: {"2026-10": 0, "2026-11": 0}}, expect: 0}

@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The paid-up amount (not the face value) of the revocable prepaid funeral or burial contracts the person holds, with interest."
-precision: "If not stated, Adult Financial reads it as 0."
+precision: "If not stated, Adult Financial reads it as 0, and so does SNAP, which counts the paid-up amount above $1,500 (snap_countable_nonliquid_resources, CO-074; final verification pass 2 N-8)."
 supplied_by: "The contracts."
 sources: [S2619]
 tags: [cash, resources]

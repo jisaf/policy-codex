@@ -16,7 +16,7 @@ rationale: "No existing item selects between the individual and couple countable
 nearest: [CO-608]
 tests:
   - {id: CO-947-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {}, relationships: [], expect: 1900}
-  - {id: CO-947-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {p2: {af_person_countable_resources: 44100}}, relationships: [[spouse, p2]], expect: 46000}
+  - {id: CO-947-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900, af_is_oap_age: true}, others: {p2: {af_person_countable_resources_other_than_life_insurance: 44100, af_life_insurance_countable_value_for_oap: 0}}, relationships: [[spouse, p2]], expect: 46000}
   # Phase-10 sweep (OQ-392): Adult Financial's own count, and a sponsor's resources over the sponsor's limit.
   - {id: CO-947-T3, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_client_and_spouse_countable_resources: 1500}, expect: 1500}
   - {id: CO-947-T4, title: "Sponsored LPR with $500 of her own; her married sponsor has $4,200 - $1,200 over his $3,000 limit is deemed", as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident, is_sponsored_non_citizen: true, af_client_and_spouse_countable_resources: 500, af_sponsor_countable_resources: 4200, sponsor_has_spouse_in_household: true}, expect: 1700}

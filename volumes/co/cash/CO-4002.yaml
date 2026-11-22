@@ -1,0 +1,17 @@
+id: CO-4002
+name: "Adult Financial: countable life insurance outside the OAP rule"
+identifier: af_life_insurance_countable_value_other_than_oap
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The part of this person's life insurance cash surrender value that counts toward the resources of an Adult Financial client who is not an Old Age Pension client (Aid to the Needy Disabled), whether the person is the client or the client's spouse: nothing when the total face value of the person's and the spouse's policies is af_life_insurance_face_value_exemption_limit or less (9 CCR 2503-5 3.520.75.D); otherwise the whole cash surrender value, since 3.520.75.E-F apply to OAP only."
+precision: "The total face value adds the spouse in the home, as 3.520.75.D reads the client's and spouse's policies. A face value or cash value not stated is read as 0."
+derived: [case, [[">", [+, [otherwise, life_insurance_face_value, 0], [sum, [filter, [persons], [all, [otherwise, [rel, [spouse], [P]], false], [otherwise, [in_group, [P], lives_with], true]]], [otherwise, [of, [P], life_insurance_face_value], 0]]], af_life_insurance_face_value_exemption_limit], [otherwise, life_insurance_cash_surrender_value, 0]], [else, 0]]
+sources: [S2213, S2618]
+implemented: engine
+tags: [cash, and, resources]
+rationale: "Final cash review 2, N-1: an AND client whose spouse is sixty or older had the spouse's old policy exempted, because the OAP test read the spouse's age. 3.520.75.E-F are \"For OAP only\"; the client's program governs the spouse's policy too."
+tests:
+  - {id: CO-4002-T1, title: "Face value over $1,500: the whole cash value counts", as_of: "2026-10-01", given: {life_insurance_face_value: 10000, life_insurance_cash_surrender_value: 5000}, relationships: [], expect: 5000}
+  - {id: CO-4002-T2, title: "Face value $1,500 or less: nothing counts (D)", as_of: "2026-10-01", given: {life_insurance_face_value: 1200, life_insurance_cash_surrender_value: 900}, relationships: [], expect: 0}

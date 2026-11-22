@@ -3,10 +3,10 @@ name: "Adult Financial: the transfer is found not to be a transfer without fair 
 identifier: af_transfer_found_not_twfc
 kind: supplied
 type: yes/no
-scope: person
+scope: person-month
 program: AdultFinancial
-meaning: "The county department has found that the person's transfer (resource_transfer_date) is not a transfer without fair consideration under 9 CCR 2503-5 3.520.76: the client disproved the presumption that it was made to qualify for assistance (A.4.b), accepted less than fair value because of a hardship just before the transaction (B), or the transfer was involuntary - a loss through fraud with every reasonable effort to recover it, a judgment, foreclosure or tax sale, or another involuntary transfer the county finds reasonable (C)."
-precision: "If not stated, Adult Financial reads this as false: a transfer within the period is presumed made to qualify (A.4.a)."
+meaning: "The county department has found that the transfer the person made in the month (resource_transfer_date, resource_transfer_uncompensated_value) is not a transfer without fair consideration under 9 CCR 2503-5 3.520.76: the client disproved the presumption that it was made to qualify for assistance (A.4.b), accepted less than fair value because of a hardship just before the transaction (B), or the transfer was involuntary - a loss through fraud with every reasonable effort to recover it, a judgment, foreclosure or tax sale, or another involuntary transfer the county finds reasonable (C)."
+precision: "If not stated, Adult Financial reads this as false: a transfer within the period is presumed made to qualify (A.4.a). Final cash review 2, N-5: stated for the month of the transfer it is about, as the transfer facts now are."
 supplied_by: "County department finding on the evidence the client provides."
 sources: [S2614, S2615]
 tags: [cash, resources]

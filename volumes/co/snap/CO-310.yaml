@@ -5,12 +5,15 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person does not meet the citizenship requirement of 7 U.S.C. 2015(f), so their own income and resources are counted toward the household under 7 CFR 273.11(c) but they are not counted as an eligible household member.
-derived: [not, snap_meets_citizenship_requirement]
-sources: [S8, S19]
+meaning: "The person does not meet the citizenship requirement of 7 U.S.C. 2015(f), or is a non-citizen who meets it but is ineligible until the sponsor's information or the verification of eligible alien status is provided (snap_is_ineligible_pending_non_citizen_verification, CO-4154; 10 CCR 2506-1 4.505.7.B-C, 4.505.6.F, I; 7 CFR 273.4(c)(5)), so their own income and resources are counted toward the household under 7 CFR 273.11(c) but they are not counted as an eligible household member."
+precision: "Final verification pass 2 N-2: the second arm. The sponsor's deemed income and resources are not attributed to a member ineligible for the second reason (4.505.7.C; snap_sponsor_deemed_income, CO-3701, and snap_sponsor_deemed_resources, CO-3702)."
+derived: [any, [not, snap_meets_citizenship_requirement], snap_is_ineligible_pending_non_citizen_verification]
+sources: [S8, S19, S2954, S2956, S2957]
 implemented: engine
 tags: [immigration, legal]
-rationale: A plain negation of snap_meets_citizenship_requirement, kept as its own item because snap_is_ineligible_member reads "ineligible non-citizen" as one of several disjoined reasons a household member is ineligible, matching the structure of 7 CFR 273.11(c) and 273.1(b)(7)(i).
+rationale: A plain negation of snap_meets_citizenship_requirement, kept as its own item because snap_is_ineligible_member reads "ineligible non-citizen" as one of several disjoined reasons a household member is ineligible, matching the structure of 7 CFR 273.11(c) and 273.1(b)(7)(i). Final verification pass 2 N-2 adds the member awaiting non-citizen verification, whom 273.4(c)(5) treats as an ineligible alien under 273.11(c).
 tests:
   - {id: CO-310-T1, as_of: "2026-10-01", given: {immigration_status: undocumented}, expect: true}
   - {id: CO-310-T2, as_of: "2026-10-01", given: {state_of_residence: CO, immigration_status: us_citizen}, expect: false}
+  - {id: CO-310-T3, title: "N-2: an eligible LPR whose sponsor's information is outstanding", as_of: "2026-10-01", given: {snap_meets_citizenship_requirement: true, snap_is_ineligible_pending_non_citizen_verification: true}, expect: true}
+  - {id: CO-310-T4, title: "An eligible LPR, everything verified", as_of: "2026-10-01", given: {snap_meets_citizenship_requirement: true, snap_is_ineligible_pending_non_citizen_verification: false}, expect: false}

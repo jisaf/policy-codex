@@ -1,0 +1,20 @@
+id: CO-4056
+name: "CCCAP: a child of eligible age who needs care for part of the day"
+identifier: cccap_is_child_of_eligible_age_needing_care
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "The person is a child from birth to age thirteen, or a child with verified additional care needs under age nineteen who is physically or mentally incapable of self-care or under court supervision, who needs child care during a portion of the day but less than twenty-four hours: the age and need parts of the \"eligible child\" definition (8 CCR 1403-1 3.103.UU, 3.111.F), without its citizenship part, which 3.103.UU applies to \"Any child served through the Colorado Works program or the Low-Income Child Care program\"."
+precision: "cccap_is_eligible_child (CO-980) adds the citizenship part. Read by itself for Child Welfare Child Care (cccap_eligibility_status, CO-989), which is not funded through the Child Care Development Fund (3.120.F) and which 3.103.UU's citizenship sentence does not name (OQ-710). Residing with the caretaker is read from the household (cccap_household_members, CO-982), as for CO-980."
+derived: [all, [any, ["<", age, cccap_eligible_child_age_limit], [all, ["<", age, cccap_disabled_child_age_limit], cccap_child_has_additional_care_needs]], cccap_child_needs_care_for_part_of_day]
+sources: [S2853, S482, S1082, S1408]
+open: [OQ-710]
+nearest: [CO-980]
+implemented: engine
+tags: [age, disability]
+rationale: "Second-pass review N-3: the Child Welfare Child Care row of cccap_eligibility_status (CO-989) preceded the eligible-child test, so a household with no child of eligible age was eligible. Child Welfare Child Care needs the age and need parts of the definition but, outside the Child Care Development Fund, not its citizenship part; the two parts are split so CO-989 can read this one alone."
+tests:
+  - {id: CO-4056-T1, title: "A five-year-old needing part-day care", as_of: "2026-10-01", given: {date_of_birth: "2021-05-01", cccap_child_has_additional_care_needs: false, cccap_child_needs_care_for_part_of_day: true}, expect: true}
+  - {id: CO-4056-T2, title: "A fifteen-year-old without additional care needs", as_of: "2026-10-01", given: {date_of_birth: "2011-05-01", cccap_child_has_additional_care_needs: false, cccap_child_needs_care_for_part_of_day: true}, expect: false}
+  - {id: CO-4056-T3, title: "A fifteen-year-old with verified additional care needs", as_of: "2026-10-01", given: {date_of_birth: "2011-05-01", cccap_child_has_additional_care_needs: true, cccap_child_needs_care_for_part_of_day: true}, expect: true}

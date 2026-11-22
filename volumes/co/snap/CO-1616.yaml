@@ -6,13 +6,14 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: "Whether the income and resources of a sponsored non-citizen's sponsor (and the sponsor's spouse), the other non-citizens the sponsor supports, the sponsor's dependents and contact details must be verified for SNAP: for a sponsored household member, at application and recertification, except where a basic categorically eligible household's conferring program verified them."
-precision: "Asked only where sponsor deeming applies (snap_sponsor_deeming_applies, CO-2337: none of the exemptions of 4.305.2.E). Unverified sponsor information makes only the sponsored member ineligible (4.505.7.B); snap_verification_status (CO-1394) reports members_excluded when nothing else is pending (phase-10 sweep, OQ-380)."
-derived: [all, snap_is_household_member, snap_sponsor_deeming_applies, [not, ["=", snap_eligibility_category, basic_categorical]]]
-sources: [S1061, S819, S1619]
+precision: "Asked only where sponsor deeming applies (snap_sponsor_deeming_applies, CO-2337: none of the exemptions of 4.305.2.E, and not a child under 18). Unverified sponsor information makes only the sponsored member ineligible (4.505.7.B), which snap_is_ineligible_pending_non_citizen_verification (CO-4154) applies to eligibility (final verification pass 2 N-2); snap_verification_status (CO-1394) reports members_excluded when nothing else is pending (phase-10 sweep, OQ-380). The basic categorical exception reads snap_meets_bce_eligibility (CO-338), the category snap_eligibility_category (CO-341) tries first, except for a household returning after a substantial winnings disqualification, which is Standard Eligibility (CO-4153); reading the category itself would make this item, and CO-4154, depend on the household's income test, which counts the member as eligible or not."
+derived: [all, snap_is_household_member, snap_sponsor_deeming_applies, [not, [all, snap_meets_bce_eligibility, [not, [otherwise, snap_is_first_certification_after_lottery_disqualification, false]]]]]
+sources: [S1061, S819, S1619, S2954]
 implemented: engine
 tags: [verification, snap, immigration]
 rationale: "Review K-2: no item required sponsor verification; 4.505.7.A makes it an eligibility factor and 4.505.7.B makes the sponsored non-citizen ineligible until it is provided."
 tests:
-  - {id: CO-1616-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_sponsor_deeming_applies: true, snap_eligibility_category: standard}, expect: true}
-  - {id: CO-1616-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_sponsor_deeming_applies: true, snap_eligibility_category: basic_categorical}, expect: false}
+  - {id: CO-1616-T1, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_sponsor_deeming_applies: true, snap_meets_bce_eligibility: false}, expect: true}
+  - {id: CO-1616-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_sponsor_deeming_applies: true, snap_meets_bce_eligibility: true}, expect: false}
   - {id: CO-1616-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_sponsor_deeming_applies: false}, expect: false}
+  - {id: CO-1616-T4, title: "N-1: a basic categorical household returning after a winnings disqualification is Standard Eligibility - verified", month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_sponsor_deeming_applies: true, snap_meets_bce_eligibility: true, snap_is_first_certification_after_lottery_disqualification: true}, expect: true}

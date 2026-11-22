@@ -1,0 +1,14 @@
+id: CO-4073
+name: "SUN Bucks: application selected for verification for cause"
+identifier: sebt_selected_for_verification_for_cause
+kind: supplied
+type: yes/no
+scope: case
+program: SunBucks
+meaning: "Whether the household's Summer EBT application was selected for verification for cause (7 CFR 292.14(a)(1): the agency is aware of conflicting or inconsistent information), rather than in the sample; only meaningful when the application was selected (sebt_application_is_selected_for_verification, CO-1590)."
+precision: "One value for the case. If not stated, SUN Bucks reads this as false: a selected application is taken to be in the sample."
+supplied_by: "The Summer EBT agency's verification record."
+sources: [S1090, S1094]
+tags: [sebt, verification]
+rationale: "Final pass F-21 (second-pass round): 292.14(f)(9) withholds benefits from an application selected for verification until verification is complete, \"with the exception of verification for cause\"; the one selection fact (CO-1590) does not say which kind of selection it was, so the withholding could not be modeled."
+nearest: [CO-1590]

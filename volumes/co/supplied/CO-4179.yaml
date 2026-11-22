@@ -1,0 +1,14 @@
+id: CO-4179
+name: "Majority of the child's meals verified"
+identifier: child_majority_of_meals_verified
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the household this case determines has provided verification that it provides the person (a child) with the majority of the child's meals, over a period long enough to show the custody arrangement."
+precision: "Read only for a person who receives SNAP in another household (receives_snap_in_another_household, CO-4178). If not stated, SNAP household membership (snap_is_household_member, CO-304) reads it as false, the verification not provided, so the child stays in the other household; the pending outcome (CO-4181) asks for it."
+supplied_by: "Date-stamped document receipt in the CBMS case file (custody order, school or child care records, statements of the parents)."
+sources: [S2969]
+tags: [snap, household, verification]
+rationale: "Final verification pass 2 V-13: 4.505.4.C and 4.304.2 (S2969) require the verification and keep the child in the first household until it is provided (4.304.2.B.4); household_composition_verification_document_received (CO-1330) is any document of composition or relationship, which does not show who provides the meals."
+nearest: [CO-1330]
