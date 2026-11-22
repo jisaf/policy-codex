@@ -1,0 +1,19 @@
+id: CO-2267
+name: Resides in an HCBS-SLS setting
+identifier: ma_resides_in_sls_setting
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person resides in an eligible HCBS-SLS setting: a living arrangement the person owns, rents or leases in the person's own name, or the home of the person's family or legal guardian (a private dwelling), or a living arrangement of no more than three persons receiving HCBS waiver services unless all are members of the same family (10 CCR 2505-10 § 8.7101.I.2.e)."
+precision: "Read from residence_setting_type (CO-3330): a private dwelling - the person's own, or a family's or guardian's home, however many family members receive waiver services there - or a group home, host home or other residential setting whose residents number at most ma_sls_setting_max_hcbs_residents (residence_setting_bed_count, CO-3332)."
+derived: [any, ["=", residence_setting_type, private_dwelling], [all, [in, residence_setting_type, [group_home, host_home, assisted_living_residence, other_long_term_care_facility]], ["<=", residence_setting_bed_count, ma_sls_setting_max_hcbs_residents]]]
+sources: [S1513]
+implemented: engine
+tags: [ma, hcbs]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."
+tests:
+  - {id: CO-2267-T1, as_of: "2026-10-01", given: {residence_setting_type: private_dwelling}, expect: true}
+  - {id: CO-2267-T2, as_of: "2026-10-01", given: {residence_setting_type: host_home, residence_setting_bed_count: 2}, expect: true}
+  - {id: CO-2267-T3, as_of: "2026-10-01", given: {residence_setting_type: group_home, residence_setting_bed_count: 6}, expect: false}
+  - {id: CO-2267-T4, as_of: "2026-10-01", given: {residence_setting_type: nursing_facility}, expect: false}

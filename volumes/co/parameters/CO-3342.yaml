@@ -1,0 +1,13 @@
+id: CO-3342
+name: "LEAP: days of continuous hotel residence"
+identifier: leap_hotel_min_continuous_residence_days
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: "A household living in a hotel is vulnerable only with proof that it has lived or will live there continuously for this many calendar days at the time of application, with heat included in rent (9 CCR 2503-7 3.752.25.B.8)."
+value: 30
+sources: [S774]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. A figure the rule states is a parameter, not a literal (OQ-82)."

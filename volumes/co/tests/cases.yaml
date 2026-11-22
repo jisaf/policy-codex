@@ -64,6 +64,10 @@
     p1:
       # Grandmother, 79, U.S. citizen, Medicare, applying for nursing facility care this month.
       facts:
+        residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        residence_setting_provides_majority_of_meals: true
+        residence_setting_is_primarily_for_mental_diseases: false
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -101,7 +105,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         is_enrolled_in_nslp_school: false
@@ -232,9 +235,6 @@
         state_of_residence: CO
         receives_ssi: false
         meets_nursing_facility_level_of_care: true
-        snap_resides_in_institution_providing_meals: true
-        resides_in_medical_institution: true
-        leap_living_arrangement: institutional_group_care
         institution_entry_date: "2026-10-01"
         ssi_countable_resources_individual: 1900
         ssi_countable_resources_couple: 46000
@@ -252,9 +252,6 @@
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 2030
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -290,6 +287,8 @@
     p2:
       # Grandfather, 81, lawful permanent resident since 1998, Medicare, community spouse.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -320,7 +319,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
@@ -392,7 +390,6 @@
         annuity_verification_document_received: false
         sebt_eligibility_directly_verified: false
         nslp_school_enrollment_confirmed: false
-        is_enrolled_in_pace: false
         cccap_child_has_additional_care_needs: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
@@ -455,8 +452,6 @@
         qualifying_quarters: 40
         state_of_residence: CO
         receives_ssi: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -469,9 +464,6 @@
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 1180
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -507,6 +499,8 @@
     p3:
       # Daughter, 41, undocumented, works 32 hours a week; files taxes with an ITIN claiming p4 and p5.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -539,7 +533,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
@@ -656,8 +649,6 @@
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
         is_approved_for_work_study: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         date_of_birth: "1985-01-22"
         sex: female
         immigration_status: undocumented
@@ -673,9 +664,6 @@
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: true
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
@@ -707,6 +695,8 @@
     p4:
       # Granddaughter, 17, U.S. citizen, in high school, mother of p5.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -743,7 +733,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
@@ -861,8 +850,6 @@
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         date_of_birth: "2009-04-08"
         sex: female
         immigration_status: us_citizen
@@ -881,9 +868,6 @@
         ma_has_left_required_household: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
@@ -917,6 +901,8 @@
     p5:
       # Great-grandson, 8 months, U.S. citizen.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -950,7 +936,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
@@ -1067,8 +1052,6 @@
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         date_of_birth: "2026-02-03"
         sex: male
         immigration_status: us_citizen
@@ -1086,9 +1069,6 @@
         ma_has_left_required_household: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
@@ -2134,6 +2114,10 @@
   persons:
     p1:
       facts:
+        residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        residence_setting_provides_majority_of_meals: true
+        residence_setting_is_primarily_for_mental_diseases: false
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -2172,7 +2156,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
         is_enrolled_in_nslp_school: false
@@ -2307,9 +2290,6 @@
         date_of_birth: "1947-03-12"
         immigration_status: us_citizen
         state_of_residence: CO
-        snap_resides_in_institution_providing_meals: true
-        resides_in_medical_institution: true
-        leap_living_arrangement: institutional_group_care
         institution_entry_date: "2026-10-01"
         meets_nursing_facility_level_of_care: true
         ssi_countable_resources_couple: 46000
@@ -2322,9 +2302,6 @@
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 2030
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -2359,6 +2336,8 @@
         pension_income: 610
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false, is_enrolled_in_pace false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -2390,7 +2369,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
@@ -2462,7 +2440,6 @@
         annuity_verification_document_received: false
         sebt_eligibility_directly_verified: false
         nslp_school_enrollment_confirmed: false
-        is_enrolled_in_pace: false
         cccap_child_has_additional_care_needs: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
@@ -2528,8 +2505,6 @@
         date_of_birth: "1945-07-30"
         immigration_status: lawful_permanent_resident
         state_of_residence: CO
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
       month_defaults:
         lottery_gambling_winnings_received: 0
         ma_claims_co_owner_hardship_for_real_property: false
@@ -2538,9 +2513,6 @@
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         electronic_data_source_monthly_gross_income: 1180
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
@@ -2575,6 +2547,8 @@
         social_security_income: 1180
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -2608,7 +2582,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
@@ -2731,8 +2704,6 @@
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: true
         is_approved_for_work_study: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         date_of_birth: "1985-01-22"
         immigration_status: undocumented
         state_of_residence: CO
@@ -2741,9 +2712,6 @@
         health_insurance_premiums_paid: 0
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
@@ -2774,6 +2742,8 @@
         hours_worked: 138
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -2811,7 +2781,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
@@ -2933,8 +2902,6 @@
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         date_of_birth: "2009-04-08"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -2947,9 +2914,6 @@
         ma_has_left_required_household: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
@@ -2982,6 +2946,8 @@
         "2026-02": {public_health_coverage_enrolled: medical_assistance}  # dual-entry 1.10: enrollment in the birth month
     p5:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -3016,7 +2982,6 @@
         # Phase 8 facts (illustrative where marked in the case comment).
         hca_functional_capacity_score: 0
         hca_need_for_paid_care_score: 0
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
@@ -3137,8 +3102,6 @@
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         date_of_birth: "2026-02-03"
         immigration_status: us_citizen
         state_of_residence: CO
@@ -3150,9 +3113,6 @@
         ma_has_left_required_household: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         magi_other_taxable_income: 0
         discharged_student_loan_debt: 0
@@ -4128,6 +4088,7 @@
     p1:
       # p1: 70, U.S. citizen, Medicare, $180/month out-of-pocket medical expenses, no work.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -4176,8 +4137,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 1100
@@ -4208,6 +4167,7 @@
     p2:
       # p2: 68, U.S. citizen, no Medicare stated, no medical expenses, no work.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -4253,8 +4213,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
       month_defaults:
         health_insurance_premiums_paid: 0
         shelter_cost_monthly: 0
@@ -4362,6 +4320,7 @@
       # Maria, 29, LPR since 2023-06-15 (3 years into the five-year bar), pregnant with one, files
       # jointly with Daniel, earns $1,600/month in October and $5,000/month in November.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -4409,14 +4368,13 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
       months:
         "2026-11": {wages_gross: 5000}
     p2:
       # Daniel, 34, LPR since 2023-06-15 (same three-year bar), stepfather of p3 and p4, files
       # jointly with Maria, earns $600/month throughout.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -4458,11 +4416,10 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       # Ana, 18, citizen, full-time high school student, claimed as a tax dependent by her mother p1.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
         expected_program_completion_date: "2027-03-15"
@@ -4491,7 +4448,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
-        is_inmate_of_public_institution: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -4513,6 +4469,7 @@
       # Luis, 10, citizen, claimed as a tax dependent by his non-custodial father p5; lives with his
       # mother p1 (custodial parent), stepfather p2 and half-sibling p3 (OQ-42).
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         ma_eligibility_was_erroneously_granted: false
@@ -4540,7 +4497,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
-        is_inmate_of_public_institution: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -4846,6 +4802,7 @@
       # zeroed out of her own household total. Stating her as required to file sidesteps that defect
       # here (its top-level condition is "not required to file"); the case comment below documents it.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
         expected_program_completion_date: "2029-01-01"
@@ -4875,7 +4832,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
-        is_inmate_of_public_institution: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -5063,6 +5019,8 @@
       # Robert, 74, citizen, entered a nursing facility 2026-10-05, expects to remain; gave a nephew
       # $54,000 in 2025-06, inside the 60-month look-back (CO-252), no exception applies.
       facts:
+        residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care)
+        residence_setting_provides_majority_of_meals: true
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
         ma_transfer_penalty_months_assigned_from_spouse: 0
@@ -5077,9 +5035,6 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         medicare_part_a_entitled: true
-        snap_resides_in_institution_providing_meals: true
-        resides_in_medical_institution: true
-        leap_living_arrangement: institutional_group_care
         institution_entry_date: "2026-10-05"
         expects_institutional_stay_of_thirty_days: true
         meets_nursing_facility_level_of_care: true
@@ -5136,6 +5091,7 @@
       # into her rent or mortgage, tax and insurance (634) and the heating and cooling allowance her
       # home reaches (616, snap_incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         has_qualifying_military_service: false
         date_of_birth: "1957-01-09"
         sex: female
@@ -5147,8 +5103,6 @@
         af_has_total_disability_six_months: false
         receives_ssi: false
         medicare_part_a_entitled: true
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         expects_institutional_stay_of_thirty_days: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
@@ -5195,6 +5149,7 @@
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         has_qualifying_military_service: false
         medicare_part_b_enrolled: false
         date_of_birth: "1992-08-23"
@@ -5208,8 +5163,6 @@
         af_has_total_disability_six_months: true
         receives_ssi: false
         medicare_part_a_entitled: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         expects_institutional_stay_of_thirty_days: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
@@ -5332,6 +5285,7 @@
       # Dana, 34, citizen, head of household, earns $400/month, 58 counted months,
       # granted a domestic violence extension of the time limit.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -5391,12 +5345,12 @@
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
-        is_inmate_of_public_institution: false
         work_sanction_level_served: none
     p2:
       # Marco, 36, citizen, serving a second-level Colorado Works Workforce Development sanction (3.608.4.C.1),
       # 61 counted months, no extension of his own.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -5453,12 +5407,12 @@
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
-        is_inmate_of_public_institution: false
         work_sanction_level_served: second
     p3:
       # Alma, 9, citizen, receives SSI on her own disability: excluded from the
       # assistance unit by 3.604.2.C.3.a. Partial-rate SSI recipient (ssi_income, CO-849, K-6).
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -5512,14 +5466,11 @@
         hours_worked: 0
         cw_work_activity_hours: 0
         work_program_hours: 0
-        is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
-        af_resides_in_care_facility_thirty_consecutive_days: false
-        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
-        af_resides_in_unlicensed_or_uncertified_facility: false
     p4:
       # Theo, 4, citizen, the unit's only countable dependent child.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -5574,12 +5525,12 @@
         work_program_hours: 0
         cw_in_first_certification_period: false
         cw_is_new_earned_income_source: false
-        is_inmate_of_public_institution: false
         work_sanction_level_served: none
     p5:
       # Rosa, 62, citizen, widowed, Dana's mother in the same home; SSA disability
       # determination and $900/month SSDI; $1,200 countable resources.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -5632,11 +5583,7 @@
         hours_worked: 0
         cw_work_activity_hours: 0
         work_program_hours: 0
-        is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
-        af_resides_in_care_facility_thirty_consecutive_days: false
-        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
-        af_resides_in_unlicensed_or_uncertified_facility: false
         work_sanction_level_served: none
   # Audit fix round (dual-entry 3.7, 5.3): the unit receives its October grant of 387 (receives_tanf_cash, the case
   # record); tanf_cash_income states it across the three members it supports, 129 each, where it was 0. No expectation
@@ -5766,6 +5713,7 @@
     p1:
       # Rosa, 34, citizen, works 150 hours a month for $2,600; mother of p3 and p4.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
@@ -5795,8 +5743,6 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -5821,6 +5767,7 @@
     p2:
       # Andre, 36, citizen, laid off in November and in the job search activity (3.111.G.3); no earnings.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
@@ -5850,8 +5797,6 @@
         cccap_is_in_job_search_activity: true
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -5879,6 +5824,7 @@
       # Mateo, 14, citizen, verified additional care needs (IEP): an eligible child only through the
       # second arm of 3.111.F (under 19 with additional care needs). No income.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
         expected_program_completion_date: "2031-03-21"
@@ -5909,8 +5855,6 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: true
         is_emancipated_minor: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -5940,6 +5884,7 @@
       # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
       # test), per CO-1000/CO-895 (review C-1).
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
         education_enrollment_intensity: full_time
         expected_program_completion_date: "2027-01-13"
@@ -5969,8 +5914,6 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -5996,6 +5939,7 @@
     p6:
       # Hector, 45, Rosa's brother, undocumented, lives in the dwelling and earns $1,500 a month.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
@@ -6016,8 +5960,6 @@
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
         is_emancipated_minor: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -6137,6 +6079,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -6190,12 +6133,10 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_inmate_of_public_institution: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         has_emergency_medical_condition: false
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -6254,10 +6195,10 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         has_emergency_medical_condition: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was is_enrolled_in_pace false)
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -6300,11 +6241,8 @@
         snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
         ssi_countable_resources_individual: 500
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         expects_institutional_stay_of_thirty_days: false
         meets_hcbs_waiver_target_group: none
-        is_enrolled_in_pace: false
         is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
         has_reproductive_capacity: false
         retains_ssi_status_without_payment: false
@@ -6330,17 +6268,12 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
-        af_resides_in_care_facility_thirty_consecutive_days: false
-        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
-        af_resides_in_unlicensed_or_uncertified_facility: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
         has_qualifying_military_service: false
         child_welfare_payment_type: none
         title_ii_benefit_type: none
@@ -6392,9 +6325,6 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_inmate_of_public_institution: false
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
   expect:
     # Hand arithmetic is in the case comment above. p1 and p4 are in the limited family planning income band:
     # their household [p1, p4] plus the expected child, counted one larger (8.100.4.E.3), is size 4,
@@ -6465,6 +6395,10 @@
     p1:
       relationships: []
       facts:
+        residence_setting_type: nursing_facility  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals true, resides_in_medical_institution true, leap_living_arrangement institutional_group_care, is_patient_in_institution_for_mental_diseases false, ma_oap_is_patient_in_tb_or_mental_health_institution false)
+        residence_setting_provides_majority_of_meals: true
+        residence_setting_is_primarily_for_mental_diseases: false
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was is_enrolled_in_pace false)
         has_qualifying_military_service: false
         title_ii_benefit_type: none
         receives_disability_based_state_supplement: false
@@ -6493,14 +6427,10 @@
         snap_receives_permanent_disability_retirement_benefit: false
         marital_status: other
         ssi_countable_resources_individual: 1200
-        snap_resides_in_institution_providing_meals: true
-        resides_in_medical_institution: true
-        leap_living_arrangement: institutional_group_care
         institution_entry_date: "2026-09-15"
         expects_institutional_stay_of_thirty_days: true
         meets_nursing_facility_level_of_care: true
         meets_hcbs_waiver_target_group: none
-        is_enrolled_in_pace: false
         home_equity: 0
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
@@ -6529,8 +6459,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
         receives_va_aid_and_attendance: false
       months:
         "2026-10": {has_emergency_medical_condition: true}
@@ -6577,6 +6505,8 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, is_inmate_of_public_institution false, af_resides_in_care_facility_thirty_consecutive_days false, af_resides_in_psychiatric_facility_thirty_consecutive_days false, af_resides_in_unlicensed_or_uncertified_facility false)
+        ltc_services_received: none  # dual-entry 3.20: one enrollment record (was receives_hcbs_services false)
         child_welfare_payment_type: none
         title_ii_benefit_type: retirement_or_survivor
         receives_disability_based_state_supplement: false
@@ -6593,9 +6523,6 @@
         is_blind: false
         snap_receives_permanent_disability_retirement_benefit: false
         ssi_countable_resources_individual: 1000
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
-        receives_hcbs_services: false
         meets_nursing_facility_level_of_care: false
         meets_hcbs_waiver_target_group: none
         hca_functional_capacity_score: 24
@@ -6617,11 +6544,7 @@
         other_unearned_income_taxable: 0
         tax_exempt_interest: 0
         hca_authorized_amount: 900
-        is_inmate_of_public_institution: false
         af_in_kind_support_and_maintenance: 0
-        af_resides_in_care_facility_thirty_consecutive_days: false
-        af_resides_in_psychiatric_facility_thirty_consecutive_days: false
-        af_resides_in_unlicensed_or_uncertified_facility: false
     p2:
       facts:
         is_enrolled_in_medical_assistance: true  # dual-entry 3.14: Walter was enrolled in Medicaid (OAP health care) when he died
@@ -6775,6 +6698,7 @@
     p1:
       # Father, 34, U.S. citizen, homeless, no income, in job search.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -6802,8 +6726,6 @@
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -6926,6 +6848,7 @@
     p2:
       # Daughter, 6, U.S. citizen, first grade.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -6956,8 +6879,6 @@
         state_of_residence: CO
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -7189,6 +7110,7 @@
     p1:
       # Mother, 32, lawful permanent resident since 2015, working 140 hours a month for $1,800.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -7222,8 +7144,6 @@
         state_of_residence: CO
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -7325,9 +7245,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         discharged_student_loan_debt: 0
         electronic_data_source_monthly_gross_income: 1800  # dual-entry 2.4: the data source reports the attested 1,800 (the household ratio was stated 1.0)
         wages_gross: 1800
@@ -7354,6 +7271,7 @@
     p2:
       # Daughter, 8, lawful permanent resident, third grade.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false, ma_oap_is_patient_in_tb_or_mental_health_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -7390,8 +7308,6 @@
         state_of_residence: CO
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         is_blind: false
         meets_ssa_disability_criteria: false
@@ -7488,9 +7404,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        ma_oap_is_patient_in_tb_or_mental_health_institution: false
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         discharged_student_loan_debt: 0
         electronic_data_source_monthly_gross_income: 0
         wages_gross: 0
@@ -7767,6 +7680,7 @@
     p1:
       relationships: []
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -7818,15 +7732,14 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
       months:
         "2027-02": {hours_worked: 60, ma_community_service_hours: 25}
     p2:
       relationships: []
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -7878,14 +7791,13 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
       months:
         "2027-02": {hours_worked: 30}
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -7937,13 +7849,12 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
         hours_worked: 160
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, is_patient_in_institution_for_mental_diseases false)
         education_program_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -7971,7 +7882,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
-        is_inmate_of_public_institution: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -7989,7 +7899,6 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
   expect:
     p1:
       ma_community_engagement_activity_hours: {"2027-02": 85}
@@ -8040,6 +7949,7 @@
     p1:
       # Mother, 31, citizen, no income.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8086,8 +7996,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
@@ -8125,6 +8033,7 @@
     p2:
       # Stepfather, 36, citizen, earns $1,500 a month (130 hours), pays the $1,200 rent and the heating bill.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8171,8 +8080,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         cw_requests_inclusion_in_assistance_unit: false
         is_pregnant: false
         marital_status: married
@@ -8211,6 +8118,7 @@
     p3:
       # Daughter, 8.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8257,8 +8165,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -8351,6 +8257,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8370,7 +8277,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
@@ -8401,14 +8307,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8428,7 +8333,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
@@ -8459,14 +8363,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8486,7 +8389,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
@@ -8518,14 +8420,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8545,7 +8446,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
@@ -8576,8 +8476,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8631,6 +8529,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8650,7 +8549,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1992-02-10"
@@ -8681,14 +8579,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8708,7 +8605,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1990-07-22"
@@ -8739,14 +8635,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8766,7 +8661,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2017-05-03"
@@ -8798,14 +8692,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8825,7 +8718,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-01-20"
@@ -8856,8 +8748,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8919,6 +8809,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8938,7 +8829,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1996-08-14"
@@ -8970,8 +8860,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -8980,6 +8868,7 @@
         "2026-12": {public_health_coverage_enrolled: chp}  # dual-entry 1.10: enrollment in the birth month
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -8999,7 +8888,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1994-03-02"
@@ -9029,8 +8917,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9039,6 +8925,7 @@
         "2026-10": {"wages_gross": 5700}
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9057,7 +8944,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2026-12-03"
@@ -9088,14 +8974,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9115,7 +9000,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2016-05-20"
@@ -9147,8 +9031,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9189,6 +9071,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9208,7 +9091,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1991-01-11"
@@ -9240,8 +9122,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9255,6 +9135,7 @@
         "2026-09": {"ma_prior_enrollment_category": parent_caretaker}
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9274,7 +9155,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2019-06-30"
@@ -9305,14 +9185,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9332,7 +9211,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2011-03-09"
@@ -9362,8 +9240,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9408,6 +9284,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9427,7 +9304,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1981-04-04"
@@ -9463,14 +9339,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9490,7 +9365,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2001-02-14"
@@ -9526,14 +9400,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9553,7 +9426,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "2004-09-09"
@@ -9589,14 +9461,13 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
     p4:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was resides_in_medical_institution false, is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9616,7 +9487,6 @@
         receives_ssi: false
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        resides_in_medical_institution: false
         ma_lives_apart_due_to_separation_or_pending_divorce: false
         ma_eligibility_was_erroneously_granted: false
         date_of_birth: "1986-12-01"
@@ -9647,8 +9517,6 @@
         adult_financial_cash_income: 0
         ssi_income: 0
         ssi_in_kind_support_and_maintenance: 0
-        is_patient_in_institution_for_mental_diseases: false
-        is_inmate_of_public_institution: false
         has_emergency_medical_condition: false
         ma_has_left_required_household: false
         ma_is_unable_to_be_located: false
@@ -9688,6 +9556,7 @@
     p1:
       # Applicant mother, 30, earns $500.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9734,8 +9603,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -9773,6 +9640,7 @@
     p2:
       # Her son, 5.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9819,8 +9687,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -9858,6 +9724,7 @@
     p3:
       # Mother, 36, 72 months used, no extension.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9904,8 +9771,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -9945,6 +9810,7 @@
     p4:
       # Her daughter, 11.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -9991,8 +9857,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10032,6 +9896,7 @@
     p5:
       # Mother, 32, living in New Mexico.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -10078,8 +9943,6 @@
         immigration_status: us_citizen
         state_of_residence: NM
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10117,6 +9980,7 @@
     p6:
       # Her son, 7.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -10163,8 +10027,6 @@
         immigration_status: us_citizen
         state_of_residence: NM
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10655,6 +10517,7 @@
       # Pregnant, no other children, no income.
       relationships: []
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -10701,8 +10564,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: true
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10741,6 +10602,7 @@
       # Not pregnant, no child.
       relationships: []
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -10787,8 +10649,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10861,6 +10721,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -10907,8 +10768,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10968,6 +10827,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11014,8 +10874,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11093,6 +10951,7 @@
     p1:
       # 35, refuses to give an SSN, earns $1,200.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11139,8 +10998,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11179,6 +11036,7 @@
     p2:
       # Her son, 10.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11225,8 +11083,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11264,6 +11120,7 @@
     p3:
       # Her brother, 45, disqualified felon, $400 pension; new to SNAP, so no countable ABAWD months.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11310,8 +11167,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11392,6 +11247,7 @@
     p1:
       # Applicant mother, no income.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11438,8 +11294,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11477,6 +11331,7 @@
     p2:
       # Her daughter.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11523,8 +11378,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11588,6 +11441,7 @@
     p1:
       # 58, no work, three countable months used.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11634,8 +11488,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         hours_worked: 0
         work_program_hours: 0
         received_full_snap_benefit_month: false
@@ -11701,6 +11553,7 @@
     p2:
       # 50, works 130 hours, pays the rent and heat.
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -11747,8 +11600,6 @@
         immigration_status: us_citizen
         state_of_residence: CO
         meets_nursing_facility_level_of_care: false
-        snap_resides_in_institution_providing_meals: false
-        resides_in_medical_institution: false
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11985,6 +11836,7 @@
     p1:
       relationships: []
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -12039,13 +11891,12 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
     p2:
       relationships: []
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -12100,10 +11951,8 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
   expect:
     p1:
       ma_community_engagement_response_period_end_date: "2027-10-14"
@@ -12157,6 +12006,7 @@
   persons:
     p1:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -12209,15 +12059,14 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
       months:
         "2026-10": {lottery_gambling_winnings_received: 100000}
         "2026-12": {lottery_gambling_winnings_received: 90000}
     p2:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_inmate_of_public_institution false, is_patient_in_institution_for_mental_diseases false)
         education_program_type: none
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
@@ -12247,7 +12096,6 @@
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
-        is_inmate_of_public_institution: false
         wages_gross: 0
         social_security_income: 0
         pension_income: 0
@@ -12265,9 +12113,9 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
     p3:
       facts:
+        residence_setting_type: private_dwelling  # SW-20: one neutral setting (was is_patient_in_institution_for_mental_diseases false, is_inmate_of_public_institution false)
         is_member_of_federally_recognized_tribe: false
         is_alaska_native: false
         is_urban_indian_under_ihcia: false
@@ -12320,10 +12168,8 @@
         tanf_cash_income: 0
         adult_financial_cash_income: 0
         ssi_income: 0
-        is_patient_in_institution_for_mental_diseases: false
         complies_with_tanf_work_requirements: false
         receives_snap: false
-        is_inmate_of_public_institution: false
   expect:
     p1:
       ma_lottery_winnings_countable_for_recipient: {"2026-10": 25000, "2026-11": 25000, "2026-12": 55000}

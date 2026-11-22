@@ -1,0 +1,18 @@
+id: CO-1748
+name: "OAP Health Care: patient in an institution for tuberculosis or mental health disorders"
+identifier: ma_oap_is_patient_in_tb_or_mental_health_institution
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether, this month, the person is a patient in an institution for tuberculosis or for behavioral or mental health disorders, the exclusion from the Old Age Pension Health Care Program (C.R.S. 25.5-2-101, 10 CCR 2505-10 8.941): a tuberculosis or psychiatric hospital, or any other institution whose overall character is the care of persons with mental diseases, with no bed-count test."
+precision: "Read from the neutral setting facts (CO-3330, CO-3333). Broader than an institution for mental diseases (is_patient_in_institution_for_mental_diseases, CO-1104)."
+derived: [any, [in, residence_setting_type, [psychiatric_hospital, tuberculosis_hospital]], [all, [in, residence_setting_type, [hospital, nursing_facility, psychiatric_hospital, tuberculosis_hospital, assisted_living_residence, group_home, other_long_term_care_facility, substance_use_treatment_facility, child_care_institution, other_institution]], residence_setting_is_primarily_for_mental_diseases]]
+sources: [S619, S665]
+implemented: engine
+tags: [ma]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."
+tests:
+  - {id: CO-1748-T1, month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: tuberculosis_hospital}, expect: true}
+  - {id: CO-1748-T2, title: "A small mental health facility: no bed test", month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: group_home, residence_setting_is_primarily_for_mental_diseases: true}, expect: true}
+  - {id: CO-1748-T3, month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: private_dwelling}, expect: false}

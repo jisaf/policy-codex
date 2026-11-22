@@ -1,0 +1,13 @@
+id: CO-3341
+name: "HCBS-SLS: maximum persons receiving waiver services in a living arrangement"
+identifier: ma_sls_setting_max_hcbs_residents
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "An eligible HCBS-SLS setting may be a living arrangement of no more than this number of persons receiving HCBS waiver services, unless all are members of the same family (10 CCR 2505-10 § 8.7101.I.2.e)."
+value: 3
+sources: [S1513]
+implemented: engine
+tags: [ma, hcbs]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. A figure the rule states is a parameter, not a literal (OQ-82)."

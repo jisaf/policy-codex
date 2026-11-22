@@ -1,0 +1,20 @@
+id: CO-007
+name: "SNAP: resides in an institution that provides the majority of meals"
+identifier: snap_resides_in_institution_providing_meals
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person is a resident of an institution under 7 CFR 273.1(b)(7)(vi): the institution provides the person with the majority of meals (over 50 percent of three meals daily) as part of its normal services, and the person is not among the exceptions (A)-(E) - a resident of a drug or alcohol treatment and rehabilitation facility (B), a disabled or blind resident of a group living arrangement (C); residents of federally subsidized housing for the elderly (A) and of battered women's or homeless shelters (D, E) live in a private dwelling or shelter, not an institution, for residence_setting_type."
+precision: "Read from residence_setting_type (CO-3330) and residence_setting_provides_majority_of_meals (CO-3334). The (B) exception's children of a treatment resident live in the same setting and are not residents of an institution either."
+derived: [all, [not, [in, residence_setting_type, [private_dwelling, room_and_board, hotel, commercial_property]]], [not, ["=", residence_setting_type, substance_use_treatment_facility]], [not, [all, [in, residence_setting_type, [group_home, host_home, assisted_living_residence]], snap_is_disabled_member]], residence_setting_provides_majority_of_meals]
+sources: [S3, S2200]
+implemented: engine
+tags: [snap, household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. SNAP's test is its own derived item over the neutral facts."
+tests:
+  - {id: CO-007-T1, as_of: "2026-10-01", given: {residence_setting_type: nursing_facility, residence_setting_provides_majority_of_meals: true}, expect: true}
+  - {id: CO-007-T2, title: "Exception (B): a residential drug or alcohol treatment facility", as_of: "2026-10-01", given: {residence_setting_type: substance_use_treatment_facility, residence_setting_provides_majority_of_meals: true}, expect: false}
+  - {id: CO-007-T3, title: "Exception (C): a disabled resident of a group home", as_of: "2026-10-01", given: {residence_setting_type: group_home, residence_setting_provides_majority_of_meals: true, snap_is_disabled_member: true}, expect: false}
+  - {id: CO-007-T4, title: "A jail that provides the meals", as_of: "2026-10-01", given: {residence_setting_type: correctional_facility, residence_setting_provides_majority_of_meals: true}, expect: true}
+  - {id: CO-007-T5, as_of: "2026-10-01", given: {residence_setting_type: private_dwelling}, expect: false}

@@ -1,0 +1,14 @@
+id: CO-3336
+name: Stay in the setting is temporary pending other arrangements
+identifier: residence_setting_stay_is_temporary_pending_other_arrangements
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is in the setting for a temporary period pending other arrangements appropriate to the person's needs (42 CFR 435.1010, 'Inmate of a public institution', (b))."
+precision: "If not stated, Medicaid and CHP+ read this as false."
+supplied_by: "Application (living arrangement), the facility's admission record."
+sources: [S1956]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."

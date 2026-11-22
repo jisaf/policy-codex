@@ -1,0 +1,17 @@
+id: CO-885
+name: Is enrolled in PACE
+identifier: is_enrolled_in_pace
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "Whether this person is currently enrolled as a Medical Assistance client in the Program of All-Inclusive Care for the Elderly, per 10 CCR 2505-10 § 8.100.7.K.2.b, as the enrollment record shows."
+precision: "Distinct from meets_hcbs_waiver_target_group (CO-821), which states which HCBS waiver's target group a person meets, and from ma_pace_eligible (CO-654), the derived eligibility test."
+derived: ["=", ltc_services_received, pace]
+sources: [S354]
+implemented: engine
+tags: [ma, ltc]
+rationale: "Dual-entry audit 3.20 and SW-24: derived from the one enrollment record, ltc_services_received (CO-3339)."
+tests:
+  - {id: CO-885-T1, as_of: "2026-10-01", given: {ltc_services_received: pace}, expect: true}
+  - {id: CO-885-T2, as_of: "2026-10-01", given: {ltc_services_received: none}, expect: false}

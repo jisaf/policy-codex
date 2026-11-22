@@ -1,0 +1,18 @@
+id: CO-2007
+name: "Adult Financial: resides in an unlicensed or uncertified facility"
+identifier: af_resides_in_unlicensed_or_uncertified_facility
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether, in the month, this person is a resident of an unlicensed private facility or an uncertified public facility - a person 9 CCR 2503-5 3.532.E.2, 3.543.E.2 and 3.548.E.2 make ineligible for both a personal needs allowance and a grant payment under OAP, AND-SO and AND-CS."
+precision: "Read from residence_setting_type (a care facility of CO-1510's list or a psychiatric facility) and residence_setting_is_licensed_or_certified (CO-3335)."
+derived: [all, [in, residence_setting_type, [hospital, nursing_facility, assisted_living_residence, icf_iid, group_home, host_home, other_long_term_care_facility, psychiatric_hospital]], [not, residence_setting_is_licensed_or_certified]]
+sources: [S1318]
+implemented: engine
+tags: [cash, oap, and]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."
+tests:
+  - {id: CO-2007-T1, month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: assisted_living_residence, residence_setting_is_licensed_or_certified: false}, expect: true}
+  - {id: CO-2007-T2, month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: assisted_living_residence, residence_setting_is_licensed_or_certified: true}, expect: false}
+  - {id: CO-2007-T3, month: "2026-10", as_of: "2026-10-15", given: {residence_setting_type: private_dwelling}, expect: false}

@@ -1,0 +1,18 @@
+id: CO-1742
+name: "Resides in a medical institution"
+identifier: resides_in_medical_institution
+kind: derived
+type: yes/no
+scope: person
+program: All
+meaning: "The person lives in a medical institution as 42 CFR 435.1010 defines it - an institution organized to provide medical care, including nursing and convalescent care, staffed and authorized to do so: a hospital, a nursing facility, an intermediate care facility for individuals with intellectual disabilities, a psychiatric hospital or a tuberculosis hospital. It does not depend on who provides the person's meals."
+precision: "Read from residence_setting_type (CO-3330). The Medicaid 30-consecutive-day condition is a separate fact (expects_institutional_stay_of_thirty_days). Group homes, assisted living residences and treatment centres that are not medical institutions are not included."
+derived: [in, residence_setting_type, [hospital, nursing_facility, icf_iid, psychiatric_hospital, tuberculosis_hospital]]
+sources: [S2201, S351, S354, S712]
+implemented: engine
+tags: [household, ma]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. The ID and identifier are kept: the definition is 435.1010's, which Medicaid and Adult Financial both read."
+tests:
+  - {id: CO-1742-T1, as_of: "2026-10-01", given: {residence_setting_type: nursing_facility}, expect: true}
+  - {id: CO-1742-T2, as_of: "2026-10-01", given: {residence_setting_type: assisted_living_residence}, expect: false}
+  - {id: CO-1742-T3, as_of: "2026-10-01", given: {residence_setting_type: private_dwelling}, expect: false}

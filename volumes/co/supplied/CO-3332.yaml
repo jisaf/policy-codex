@@ -1,0 +1,14 @@
+id: CO-3332
+name: Residence setting bed count
+identifier: residence_setting_bed_count
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The number of beds of the institution the person lives in, or, for a community residence, the number of residents it is designed and serving for (42 CFR 435.1010: an institution for mental diseases has more than 16 beds; a publicly operated community residence serves no more than 16)."
+precision: "Stated for a setting other than a private dwelling where a reader asks."
+supplied_by: "Application (living arrangement), the facility's admission record."
+sources: [S2201, S2202]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."

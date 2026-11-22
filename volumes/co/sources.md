@@ -13204,3 +13204,84 @@ Document: D-204
 > ...
 >
 > (C) family planning services and supplies furnished (directly or under arrangements with others) to individuals of child-bearing age (including minors who can be considered to be sexually active)
+
+
+### S2200. SNAP: residents of an institution and the exceptions
+
+Document: D-7
+
+7 CFR 273.1(b)(7)(vi)(A)-(E) (D-7, text re-checked against the eCFR versioner as of 2026-11-19 on 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.1
+
+> (vi) Residents of an institution, with some exceptions. Individuals must be considered residents of an institution when the institution provides them with the majority of their meals (over 50 percent of three meals daily) as part of the institution's normal services. Exceptions to this requirement include only the individuals listed in paragraphs (b)(7)(vii)(A) through (b)(7)(vii)(E) of this section. The individuals listed in paragraphs (b)(7)(vii)(A) through (b)(7)(vii)(E) can participate in the Program and must be treated as separate households from the others with whom they reside, subject to the mandatory household combination requirements of paragraph (b)(1) of this section, unless otherwise stated:
+>
+> (A) Individuals who are residents of federally subsidized housing for the elderly;
+>
+> (B) Individuals who are narcotic addicts or alcoholics and reside at a facility or treatment center for the purpose of regular participation in a drug or alcohol treatment and rehabilitation program. This includes the children but not the spouses of such persons who live with them at the treatment center or facility;
+>
+> (C) Individuals who are disabled or blind and are residents of group living arrangements;
+>
+> (D) Individual women or women with their children who are temporarily residing in a shelter for battered women and children; and
+>
+> (E) Individuals who are residents of public or private nonprofit shelters for homeless persons.
+
+### S2201. Medicaid: institution, institution for mental diseases, medical institution
+
+Document: D-190
+
+42 CFR 435.1010, "In an institution", "Institution", "Institution for mental diseases", "Medical institution" (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.1010
+
+> In an institution refers to an individual who is admitted to live there and receive treatment or services provided there that are appropriate to his requirements.
+>
+> Institution means an establishment that furnishes (in single or multiple facilities) food, shelter, and some treatment or services to four or more persons unrelated to the proprietor.
+>
+> Institution for mental diseases means a hospital, nursing facility, or other institution of more than 16 beds that is primarily engaged in providing diagnosis, treatment or care of persons with mental diseases, including medical attention, nursing care and related services. Whether an institution is an institution for mental diseases is determined by its overall character as that of a facility established and maintained primarily for the care and treatment of individuals with mental diseases, whether or not it is licensed as such. An institution for Individuals with Intellectual Disabilities is not an institution for mental diseases.
+>
+> Medical institution means an institution that—
+>
+> (a) Is organized to provide medical care, including nursing and convalescent care;
+>
+> (b) Has the necessary professional personnel, equipment, and facilities to manage the medical, nursing, and other health needs of patients on a continuing basis in accordance with accepted standards;
+>
+> (c) Is authorized under State law to provide medical care; and
+>
+> (d) Is staffed by professional personnel who are responsible to the institution for professional medical and nursing services. The services must include adequate and continual medical care and supervision by a physician; registered nurse or licensed practical nurse supervision and services and nurses' aid services, sufficient to meet nursing care needs; and a physician's guidance on the professional aspects of operating the institution.
+
+### S2202. Medicaid: public institution, its exclusions, and the publicly operated community residence
+
+Document: D-190
+
+42 CFR 435.1010, "Public institution", "Publicly operated community residence that serves no more than 16 residents", "Child-care institution" (eCFR as of 2026-11-19). https://www.ecfr.gov/current/title-42/section-435.1010
+
+> Public institution means an institution that is the responsibility of a governmental unit or over which a governmental unit exercises administrative control. The term “public institution” does not include—
+>
+> (a) A medical institution as defined in this section;
+>
+> (b) An intermediate care facility as defined in §§ 440.140 and 440.150 of this chapter;
+>
+> (c) A publicly operated community residence that serves no more than 16 residents, as defined in this section; or
+>
+> (d) A child-care institution as defined in this section with respect to—
+>
+> (1) Children for whom foster care maintenance payments are made under title IV-E of the Act; and
+>
+> (2) Children receiving AFDC—foster care under title IV-A of the Act.
+>
+> Publicly operated community residence that serves no more than 16 residents is defined in 20 CFR 416.231(b)(6)(i). A summary of that definition is repeated here for the information of readers.
+>
+> (a) In general, a publicly operated community residence means—
+>
+> (1) It is publicly operated as defined in 20 CFR 416.231(b)(2).
+>
+> (2) It is designed or has been changed to serve no more than 16 residents and it is serving no more than 16; and
+>
+> (3) It provides some services beyond food and shelter such as social services, help with personal living activities, or training in socialization and life skills. Occasional medical or remedial care may also be provided as defined in 45 CFR 228.1; and
+>
+> (b) A publicly operated community residence does not include the following facilities, even though they accommodate 16 or fewer residents:
+>
+> (1) Residential facilities located on the grounds of, or immediately adjacent to, any large institution or multiple purpose complex.
+>
+> (2) Educational or vocational training institutions that primarily provide an approved, accredited, or recognized program to individuals residing there.
+>
+> (3) Correctional or holding facilities for individuals who are prisoners, have been arrested or detained pending disposition of charges, or are held under court order as material witnesses or juveniles.
+>
+> Child-care institution means a nonprofit private child-care institution, or a public child-care institution that accommodates no more than twenty-five children, which is licensed by the State in which it is situated, or has been approved by the agency of the State responsible for licensing or approval of institutions of this type, as meeting the standards established for licensing. The term does not include detention facilities, forestry camps, training schools or any other facility operated primarily for the detention of children who are determined to be delinquent.

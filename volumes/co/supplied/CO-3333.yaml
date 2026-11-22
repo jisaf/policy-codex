@@ -1,0 +1,14 @@
+id: CO-3333
+name: Residence setting is primarily for mental diseases
+identifier: residence_setting_is_primarily_for_mental_diseases
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The institution the person lives in is, by its overall character, established and maintained primarily for the diagnosis, treatment or care of persons with mental diseases or behavioral health disorders, whether or not it is licensed as such (42 CFR 435.1010)."
+precision: "Stated for a setting other than a private dwelling where a reader asks. A facility for individuals with intellectual disabilities is not one (icf_iid)."
+supplied_by: "Application (living arrangement), the facility's admission record."
+sources: [S2201]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."

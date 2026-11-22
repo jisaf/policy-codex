@@ -1,0 +1,14 @@
+id: CO-3335
+name: Residence setting is licensed or certified
+identifier: residence_setting_is_licensed_or_certified
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The facility the person lives in holds the State license (a private facility) or certification (a public facility) its kind of care requires."
+precision: "Stated for a facility where a reader asks."
+supplied_by: "Application (living arrangement), the facility's admission record."
+sources: [S1318]
+implemented: engine
+tags: [household]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item."

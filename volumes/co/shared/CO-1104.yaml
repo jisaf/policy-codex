@@ -1,0 +1,19 @@
+id: CO-1104
+name: Is a patient in an institution for mental diseases
+identifier: is_patient_in_institution_for_mental_diseases
+kind: derived
+type: yes/no
+scope: person-month
+program: All
+meaning: "Whether, this month, the person is a patient in an institution for mental diseases: a hospital, nursing facility or other institution of more than 16 beds primarily engaged in providing diagnosis, treatment or care of persons with mental diseases (42 CFR 435.1010), the exclusion 10 CCR 2505-3 § 120.1.C states for CHP+ and the Medicaid IMD exclusion reads. An intermediate care facility for individuals with intellectual disabilities is not one."
+precision: "Read from the neutral setting facts (CO-3330, CO-3332, CO-3333) as of the determination date. The Old Age Pension Health Care Program's broader exclusion is ma_oap_is_patient_in_tb_or_mental_health_institution (CO-1748)."
+derived: [all, [in, residence_setting_type, [hospital, nursing_facility, psychiatric_hospital, tuberculosis_hospital, assisted_living_residence, group_home, other_long_term_care_facility, substance_use_treatment_facility, child_care_institution, other_institution]], residence_setting_is_primarily_for_mental_diseases, [">", residence_setting_bed_count, institution_for_mental_diseases_bed_count_limit]]
+sources: [S2201, S653, S659]
+implemented: engine
+tags: [chp, ma, disability]
+rationale: "Same-word audit SW-20 and SW-21, dual-entry audit 2.10 and 3.20: where a person lives was stated by thirteen facts, each one program's classification (SNAP's meals institution, Medicaid's medical institution and IMD, the OAP Health Care exclusion, Adult Financial's three facility lists, LEAP's living arrangements, the inmate fact), which could contradict one another. One neutral description of the setting, in the terms of 42 CFR 435.1010 (S2201, S2202), is stated once; each program's test is a derived item. Read by Medicaid and CHP+, which both apply 435.1010's definition."
+tests:
+  - {id: CO-1104-T1, month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: psychiatric_hospital, residence_setting_is_primarily_for_mental_diseases: true, residence_setting_bed_count: 40}, expect: true}
+  - {id: CO-1104-T2, title: "Sixteen beds is not more than 16", month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: psychiatric_hospital, residence_setting_is_primarily_for_mental_diseases: true, residence_setting_bed_count: 16}, expect: false}
+  - {id: CO-1104-T3, title: "An ICF/IID is not an IMD", month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: icf_iid}, expect: false}
+  - {id: CO-1104-T4, month: "2026-10", as_of: "2026-10-01", given: {residence_setting_type: nursing_facility, residence_setting_is_primarily_for_mental_diseases: false}, expect: false}
