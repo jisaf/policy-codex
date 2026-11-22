@@ -1,0 +1,13 @@
+id: CO-4686
+name: "Has a higher education meal plan providing most meals"
+identifier: has_higher_education_meal_plan_providing_majority_of_meals
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "On the determination date the person has bought a meal plan through an institution of higher education that provides the person more than half of the person's meals, whether the person lives on campus, off campus or at home."
+precision: "Stated whatever the residence setting, and whether or not the setting's own meals (residence_setting_provides_majority_of_meals, CO-3334) are also stated. If not stated, SNAP reads it as false."
+supplied_by: "Application; the institution's meal plan record."
+sources: [S3472]
+tags: [student]
+rationale: "Coverage pass 2 N2-4: 4.304.4.D.3 (S3472) makes a student whose meal plan provides more than half of the student's meals a resident of an institution; no fact stated a meal plan, and CO-007 ruled out every private dwelling before it read meals."

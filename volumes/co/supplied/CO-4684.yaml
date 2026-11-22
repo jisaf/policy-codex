@@ -1,0 +1,13 @@
+id: CO-4684
+name: "Has an outstanding felony warrant"
+identifier: has_outstanding_felony_warrant
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "A federal, state or local law enforcement agency has an outstanding warrant for the person whose underlying cause is committing, or attempting to commit, a crime that is a felony under the law of the place from which the person is fleeing (or a high misdemeanor under the law of New Jersey), as law enforcement reports it (10 CCR 2506-1 4.304.4.B.1)."
+precision: "A statement of law enforcement's record, not of the person's own account: a person's admission alone does not make it true (4.304.4.B: \"the fleeing status must be verified\"). If not stated, SNAP reads it as false."
+supplied_by: "Law enforcement's report or the warrant presented to the local office."
+sources: [S3066]
+tags: [snap]
+rationale: "Coverage pass 2 N2-P2-2 (first-pass P2-3): Colorado's four-part fleeing felon test (4.304.4.B.1-4, S3066) needs an outstanding felony warrant, which is_fleeing_felon (CO-038, the federal 2015(k) definition, shared with Colorado Works and Adult Financial) does not state. No existing fact states a warrant."

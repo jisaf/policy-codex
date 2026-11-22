@@ -1,0 +1,19 @@
+id: CO-4683
+name: "SNAP: fleeing felon under the four-part test"
+identifier: snap_is_fleeing_felon
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person is a fleeing felon for SNAP under Colorado's four-part test (10 CCR 2506-1 4.304.4.B.1-4): there is an outstanding felony warrant for the person (has_outstanding_felony_warrant, CO-4684), the person, aware of the warrant or reasonably expecting it, has acted to avoid arrest or jail, which is what fleeing to avoid prosecution or custody means (is_fleeing_felon, CO-038), and law enforcement is actively seeking the person as 4.304.4.C.1 defines it (law_enforcement_is_actively_seeking_person, CO-4685)."
+precision: "is_fleeing_felon (CO-038) states parts 2 and 3 (awareness and an action to avoid arrest are what fleeing is); the warrant and the active search are law enforcement's statements, so a person's own admission is not enough, as 4.304.4.B requires the status to be verified. Each of the two read as false when not stated; is_fleeing_felon unstated with either of them false is false here. Colorado Works and Adult Financial keep reading is_fleeing_felon by its own meaning."
+derived: [all, [otherwise, has_outstanding_felony_warrant, false], [otherwise, law_enforcement_is_actively_seeking_person, false], is_fleeing_felon]
+sources: [S19, S3066]
+implemented: engine
+tags: [snap]
+rationale: "Coverage pass 2 N2-P2-2 (first-pass P2-3, deferred then): snap_is_ineligible_member (CO-311) and snap_is_disqualified_member_counted_in_full (CO-2302) read is_fleeing_felon, the federal definition, so a worker stating the fact by its meaning disqualified people Colorado's four-part test does not. No SNAP item applied the test; this item does, and both read it in place of CO-038."
+tests:
+  - {id: CO-4683-T1, title: "All four parts: warrant, fleeing, actively sought", as_of: "2026-10-01", given: {has_outstanding_felony_warrant: true, law_enforcement_is_actively_seeking_person: true, is_fleeing_felon: true}, expect: true}
+  - {id: CO-4683-T2, title: "Fleeing by the person's own account, no warrant reported: not a fleeing felon for SNAP", as_of: "2026-10-01", given: {is_fleeing_felon: true}, expect: false}
+  - {id: CO-4683-T3, title: "A warrant, but law enforcement is not actively seeking the person", as_of: "2026-10-01", given: {has_outstanding_felony_warrant: true, law_enforcement_is_actively_seeking_person: false, is_fleeing_felon: true}, expect: false}
+  - {id: CO-4683-T4, title: "A warrant and an active search, but the person has not fled", as_of: "2026-10-01", given: {has_outstanding_felony_warrant: true, law_enforcement_is_actively_seeking_person: true, is_fleeing_felon: false}, expect: false}
