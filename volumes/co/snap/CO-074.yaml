@@ -5,12 +5,16 @@ kind: derived
 type: money
 scope: person
 program: SNAP
-meaning: "The person's own countable non-liquid resources under 7 CFR 273.8 and 10 CCR 2506-1 4.410, before combining with other household members' resources: real property other than the home. Colorado excludes every vehicle (4.410.A); the cash value of life insurance and household goods (273.8(e)(2)) and retirement accounts (273.8(e)(2)(i)) are excluded."
-derived: [otherwise, real_property_other_than_home_equity, 0]
-sources: [S2216]
+meaning: "The person's own countable non-liquid resources under 7 CFR 273.8 and 10 CCR 2506-1 4.410, before combining with other household members' resources: real property other than the home, and the equity of a pre-purchased funeral agreement above snap_funeral_agreement_exclusion (4.410.D.4). Colorado excludes every vehicle (4.410.A); the cash value of life insurance and household goods (273.8(e)(2)) and retirement accounts (273.8(e)(2)(i)) are excluded."
+precision: "Final verification pass 2 N-8: the funeral agreement is revocable_prepaid_burial_contract_value (CO-3856, the paid-up amount, read as 0 when not stated); an irrevocable agreement is inaccessible (4.410.F) and not counted."
+assumption: "A person states one pre-purchased funeral agreement: where a person holds several, the paid-up amounts are stated together and the exclusion is applied once to their total, which counts less than one exclusion per agreement would only when the person holds more than one agreement (4.410.D.4 excludes \"one ... per household member\")."
+derived: ["+", [otherwise, real_property_other_than_home_equity, 0], [max, 0, ["-", [otherwise, revocable_prepaid_burial_contract_value, 0], snap_funeral_agreement_exclusion]]]
+sources: [S2216, S2967]
 implemented: engine
 tags: [snap, resources]
 rationale: "Same-word audit SW-31: every program's countable resources were a supplied, already-counted figure, so each program's resource rules lived outside the ledger, and Adult Financial fell back silently to the SSI figure when its own was unstated (OQ-392). The person's holdings are stated once by asset type; each program derives its countable resources by its own exclusions. The ID and identifier are kept; the amount is now derived."
 tests:
   - {id: CO-074-T1, as_of: "2026-10-01", given: {real_property_other_than_home_equity: 12000, vehicles_equity_value: 8000, life_insurance_cash_surrender_value: 3000}, expect: 12000}
   - {id: CO-074-T2, as_of: "2026-10-01", given: {}, expect: 0}
+  - {id: CO-074-T3, title: "N-8: a $2,300 revocable prepaid funeral agreement - $800 above the $1,500 exclusion counts", as_of: "2026-10-01", given: {revocable_prepaid_burial_contract_value: 2300}, expect: 800}
+  - {id: CO-074-T4, title: "A $1,200 agreement is excluded in full", as_of: "2026-10-01", given: {revocable_prepaid_burial_contract_value: 1200}, expect: 0}

@@ -1,0 +1,15 @@
+id: CO-4006
+name: "Afghan humanitarian parolee: date through which refugee benefits run whatever the parole term"
+identifier: afghan_humanitarian_parolee_refugee_benefits_end_date
+kind: parameter
+type: calendar date
+scope: global
+program: All
+meaning: "An Afghan humanitarian parolee is eligible for the entitlement programs and other benefits available to refugees through this date, or through the term of parole if later (Pub. L. 117-43 div. C sec. 2502(b)(1): \"until March 31, 2023, or the term of parole granted under subsection (a), whichever is later\")."
+versions:
+  - from: "2021-09-30"
+    value: "2023-03-31"
+    source: S2801
+sources: [S2801]
+tags: [immigration]
+rationale: "Final cash review 2, N-3: meets_public_assistance_citizenship_requirement (CO-905) treats an Afghan humanitarian parolee as a refugee for the term sec. 2502(b)(1) states; the date is a parameter. Medicaid's own date (ma_afghan_humanitarian_parolee_exemption_end_date, CO-2705) cites 10 CCR 2505-10 § 8.100.3.G.1.g.viii and stays Medicaid's."

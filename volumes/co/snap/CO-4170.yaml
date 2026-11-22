@@ -1,0 +1,17 @@
+id: CO-4170
+name: "SNAP: adjusted income with disqualified members counted in the size"
+identifier: snap_adjusted_income_with_disqualified_members
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "This person's SNAP household's adjusted income before the shelter deduction, as it would be with the members disqualified under 7 CFR 273.11(c)(1) counted in the size: snap_adjusted_income_before_shelter less the increase in the standard deduction from snap_eligible_household_size to snap_household_size_with_disqualified_members, never below zero."
+precision: "Only the standard deduction depends on the size among the deductions taken before the shelter deduction (273.11(c)(1)(ii)(B)); the disqualified member's income and deductible expenses already count in full (273.11(c)(1)(i)). When the adjusted income is 0 it stays 0, since the larger deduction only lowers it further. The standard deduction for a size is read from snap_standard_deduction_table as snap_standard_deduction (CO-370) reads it."
+derived: [max, 0, ["-", snap_adjusted_income_before_shelter, ["-", [lookup_extended, snap_standard_deduction_table, snap_household_size_with_disqualified_members], snap_standard_deduction]]]
+sources: [S2965]
+implemented: engine
+tags: [snap, income]
+rationale: "Final verification pass 2 N-7: the allotment cap of 273.11(c)(1)(ii) (S2965) compares the allotment with the one the household would receive with the excluded member counted, which takes the standard deduction for the larger size; no item computed it."
+tests:
+  - {id: CO-4170-T1, title: "Size 2 (standard deduction $217) against size 3 ($217): no change", as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_before_shelter: 2663, snap_standard_deduction: 217, snap_household_size_with_disqualified_members: 3}, expect: 2663}
+  - {id: CO-4170-T2, title: "Size 3 against size 4 ($217 to $229): $12 lower", as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_before_shelter: 1000, snap_standard_deduction: 217, snap_household_size_with_disqualified_members: 4}, expect: 988}

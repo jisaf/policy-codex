@@ -1,0 +1,17 @@
+id: CO-4011
+name: "Adult Financial: infrequent or irregular income in the calendar quarter"
+identifier: af_infrequent_income_quarter_total
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The infrequent or irregular income, earned and unearned together, the person received in the calendar quarter containing the month (infrequent_or_irregular_income_received, infrequent_or_irregular_earned_income_received), which 9 CCR 2503-5 3.520.786.O compares with af_infrequent_income_quarterly_limit."
+precision: "The quarter is the calendar quarter (January-March, April-June, July-September, October-December) containing the month, found from the month's calendar number (its place in the quarter is that number less one, less three times the whole quarters before it); its total adds the facts for each of its three months, a month not stated being 0. O says \"Infrequent or irregular income of less than $60 in a calendar quarter\" with no split by kind, so earned and unearned infrequent income share the one limit (where 20 CFR 416.1112(c)(1) and 416.1124(c)(6) give SSI separate limits)."
+derived: [sum_months, [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [months_after, ["-", 2, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]]], [month]]], [at, [+, [otherwise, infrequent_or_irregular_income_received, 0], [otherwise, infrequent_or_irregular_earned_income_received, 0]], [that_month]]]
+sources: [S2608]
+implemented: engine
+tags: [cash, income]
+rationale: "Final cash review 2, P2-3: af_excluded_infrequent_income (CO-3827) summed only unearned infrequent income, so infrequent earnings were never exempt though O is not limited to unearned income. The quarter total is stated once and read by the unearned (CO-3827) and earned (CO-4012) exclusions."
+tests:
+  - {id: CO-4011-T1, title: "$40 of unearned income in May and $30 of odd-job pay in June: $70 in the quarter", as_of: "2026-05-15", month: "2026-05", given: {infrequent_or_irregular_income_received: {"2026-05": 40}, infrequent_or_irregular_earned_income_received: {"2026-06": 30}}, expect: 70}
+  - {id: CO-4011-T2, title: "$40 in May and $30 in July (the next quarter): $40", as_of: "2026-05-15", month: "2026-05", given: {infrequent_or_irregular_income_received: {"2026-05": 40}, infrequent_or_irregular_earned_income_received: {"2026-07": 30}}, expect: 40}

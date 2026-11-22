@@ -16,4 +16,4 @@ rationale: "No existing item compares Adult Financial countable resources to the
 nearest: [CO-610]
 tests:
   - {id: CO-948-T1, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {}, relationships: [], expect: true}
-  - {id: CO-948-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900}, others: {p2: {af_person_countable_resources: 44100}}, relationships: [[spouse, p2]], expect: false}
+  - {id: CO-948-T2, as_of: "2026-10-01", given: {immigration_status: us_citizen, af_person_countable_resources: 1900, af_is_oap_age: true}, others: {p2: {af_person_countable_resources_other_than_life_insurance: 44100, af_life_insurance_countable_value_for_oap: 0}}, relationships: [[spouse, p2]], expect: false}

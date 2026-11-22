@@ -1,0 +1,13 @@
+id: CO-4063
+name: Separated, with a temporary order for parental responsibilities or custody
+identifier: has_temporary_order_for_parental_responsibilities
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is separated from their spouse, or from the other parent of their child, and holds a validly issued temporary order for parental responsibilities or child custody."
+precision: "A court order in force on the determination date. CCCAP reads it for 8 CCR 1403-1 3.111.D.10: such a caretaker \"shall not be determined ineligible based on the other spouse's or parent's financial resources\" (cccap_household_income_members, CO-4064). If not stated, CCCAP reads it as false."
+supplied_by: "The order, or the court's record of it."
+sources: [S2856]
+tags: [household]
+rationale: "Second-pass review N-7 (was F-14): 3.111.D.10 had no item, so the income of a separated spouse or other parent counted against a caretaker holding a temporary order whenever the case recorded them in one home. No existing fact states the order; the separation and the order are what is true of the person, and each program decides what follows."

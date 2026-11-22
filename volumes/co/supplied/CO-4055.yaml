@@ -1,0 +1,13 @@
+id: CO-4055
+name: "CCCAP: child's unexplained absences with two failed contacts"
+identifier: cccap_child_has_unexplained_absences_finding
+kind: supplied
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "The child has had twenty-two or more unexplained absences from authorized care within a thirty-day period, accounting for temporary or reported breaks in care, and two documented attempts to contact the adult caretaker or teen parent have failed (8 CCR 1403-1 3.114.A.5); the period is any thirty days of the eligibility period for a change during it, the thirty days of the redetermination date at a redetermination (3.114.B.11), and the thirty days before the household was found ineligible for Colorado Works at a transition (3.117.A.3)."
+precision: "Stated for the child: a county finding from the provider's attendance records and the county's contact log. If not stated, CCCAP reads this as false."
+supplied_by: "The CCCAP case record (CHATS): attendance and the documented contact attempts."
+sources: [S2854, S2851]
+tags: [household]
+rationale: "Second-pass review N-4: 3.114.A.5, B.11 and 3.117.A.3 make a child's twenty-two unexplained absences with two failed contacts an eligibility reason; no item read them, so such a household was found eligible."

@@ -5,8 +5,9 @@ kind: derived
 type: yes/no
 scope: person-month
 program: LEAP
-meaning: "Whether the person has unearned income in the month that LEAP counts (leap_household_income, CO-1002, reads these sources, Colorado Works and Adult Financial cash assistance included, and SSI, which 3.752.21.I counts and 3.755.21.A verifies: final pass F-10)."
-derived: [">", [+, social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest, ssi_income], 0]
+meaning: "Whether the person has unearned income that LEAP counts and so must verify: the person's countable unearned income (leap_person_unearned_income, CO-3926: the recurring unearned income of the income verification period, Social Security and SSI without cents, Colorado Works and Adult Financial cash assistance, and the prizes and lump sums of the period, less what 9 CCR 2503-7 3.752.23 excludes) is more than zero."
+precision: "Second-pass review P2 (verification triggers): the item summed the calendar month's unearned income facts, so it asked for income LEAP does not count (what 3.752.23 excludes) and missed what it does (prizes, lump sums, a receipt stated only for the thirty days). It now reads the countable figure."
+derived: [">", leap_person_unearned_income, 0]
 sources: [S776, S897]
 implemented: engine
 tags: [income, verification]
