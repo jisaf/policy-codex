@@ -21903,3 +21903,27 @@ Document: D-87
 > parents must self-declare that their liquid and non-liquid assets do
 > not exceed one million dollars. If assets exceed one million dollars
 > the household is ineligible for CCCAP.
+
+### S3615. Federal family allowance: at least one third of the amount by which the MMMNA standard exceeds the member's income; the section supersedes inconsistent provisions
+
+Document: D-47
+
+42 U.S.C. 1396r-5(a)(1), (d)(1)(C) (Cornell LII text re-fetched 2026-11-22, reads the same as D-47). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1) Supersedes other provisions
+>
+> In determining the eligibility for medical assistance of an institutionalized spouse (as defined in subsection (h)(1)), the provisions of this section supersede any other provision of this subchapter (including sections 1396a(a)(17) and 1396a(f) of this title) which is inconsistent with them.
+>
+> ...
+>
+> (C)
+>
+> A family allowance, for each family member , equal to at least ⅓ of the amount by which the amount described in paragraph (3)(A)(i) exceeds the amount of the monthly income of that family member .
+
+### S3616. Dependent Relative: one claimed as a dependent by an applicant for federal income tax purposes (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1, Definitions (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Dependent Relative for purposes of this rule is defined as one who is claimed as a dependent by an applicant for federal income tax purposes.
