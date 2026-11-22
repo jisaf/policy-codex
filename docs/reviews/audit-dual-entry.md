@@ -351,3 +351,20 @@ Fix round, track 2 (the dual-entry findings outside immigration status, sponsors
 - 5.2: already fixed before this round (a02f5cf removed the pins; npm run check blocks a derived value stated in a household case). No pin remains after the merges.
 - 5.5: fixed (42e828d; CO-838 removed). `has_applied_for_ssi` now has a reader (CO-2271, be905fc).
 - 5.10: fixed (47de2af). 581 per-month facts moved from facts to month_defaults; CO-87's month-by-month entries stay as the case's stated history.
+
+Fix round 5 (the findings track 2 left unfixed), 2026-11-22.
+
+- 1.7: fixed (709f497). ma_transfer_penalty_is_apportioned_with_spouse (CO-2232) is derived from the spouse's institutionalization and Long-Term Care requirements apart from the penalty (ma_ltc_unmet_requirement, CO-3310: the first eight arms of CO-652, unchanged): § 8.100.7.F determines the penalty after the other requirements, so "otherwise eligible" reads the spouse's status without the spouse's penalty and no cycle remains. A spouse outside the case is CO-3311. CO-2233 stays supplied: the months the spouse already served are history.
+- 1.9: fixed (709f497). The decedent's legally responsible persons (CO-3312, 3.570.42, S722) are read from the spouse edge, a new surviving_spouse_of role or a minor's parents; their resources (CO-1225) and couple status (CO-1226) are derived; persons outside the case are CO-3314 and CO-3315. CO-13 states Ruth's widow edge.
+- 1.10: fixed (575a28b). The mother's coverage at the birth is read from the birth mother (a new gave_birth_to role) and her enrollment in the birth month (public_health_coverage_enrolled, CO-3320); CO-087 and CO-2408 are derived (CO-3322); mother_coverage_at_birth (CO-3321) is stated only where no birth mother is linked.
+- 5.12: re-checked (575a28b). The statement is meaningful at any age: the citizenship documentation exemption (CO-1395) reads it for a person deemed eligible as a newborn. The 55 statements on older persons are now the outside-case fallback (mother_coverage_at_birth none); the three newborns read their mothers.
+- 1.13, 1.14, 1.15, 1.16, 1.17, 5.9 (OQ-541): fixed (fd6cf3c, ab2673a). Case-scope supplied facts in the engine (case_facts); 26 application and household facts are case scope (two CCCAP and Colorado Works month facts are month scope); the cases state them once. CO-85, which held an application unit and three redetermination units, was split (CO-100). verification_request_date and ma_application_date stay per person, as the classification pass's OQ-541 resolution also says.
+- 2.5: fixed earlier (89723e1, heavier-definitions H-7 and H-9): the declared amounts are supplied and the ratios derived.
+- 2.7: fixed (41cd3f8; same-word SW-30).
+- 2.8: fixed (ab2673a). One neutral fact per utility (CO-3302 to CO-3306, CO-1242); the count (CO-1241) and the telephone-only test (CO-1500) are derived.
+- 2.10: fixed (0286bcf). CO-1510 and CO-2006 are computed from the setting type and the entry date (af_personal_needs_allowance_min_stay_days, CO-3338).
+- 3.6: fixed (52e5442; same-word SW-7).
+- 3.8 (the CO-014 overlap): fixed (e3499e8). CO-014 covers only state disability-based assistance other than the Adult Financial programs; SNAP's disabled member (CO-302) reads AND-SO, AND-CS and AB from adult_financial_program_received.
+- 3.20: fixed (0286bcf; same-word SW-20).
+- 3.22 (CCCAP half): fixed (ab2673a). cccap_determination_type (CO-3307) is the one case record; cccap_is_receiving_assistance (CO-2103) is derived and cccap_verification_status (CO-1451) reads a redetermination from it, not from a date being stated.
+- 3.24, 3.25: fixed (f428c19; same-word SW-28).

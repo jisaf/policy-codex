@@ -2091,5 +2091,6 @@ Body: 9 CCR 2503-7 3.755.21.I (S1084) deducts business mileage from declared gro
 Class: blocked on a named document
 Owner: Energy assistance (LEAP) policy owner
 Assumption: The case states the business mileage cost already figured at the county's rate.
+Blocked on: the counties' LEAP mileage rates for business mileage under 9 CCR 2503-7 3.755.21.I (county policy; cdhs.colorado.gov refused)
 
 Checked 2026-11-22: 9 CCR 2503-7 3.755.21.I (D-86, version effective 11/01/2025) names "the county rate"; the county mileage rates are county policy, not published on any host this volume can reach (cdhs.colorado.gov refuses).
