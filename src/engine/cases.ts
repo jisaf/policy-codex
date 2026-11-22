@@ -14,6 +14,9 @@ export interface HouseholdCase {
   as_of: string;
   parameters?: Record<string, unknown>;
   month_facts?: Record<string, Record<string, unknown>>;
+  /** Case-scope supplied facts: one value for the application as a whole
+   *  (an application date, the home's utility costs), stated once. */
+  case_facts?: Record<string, unknown>;
   persons: Record<string, PersonSpec>;
   /** The household graph, one `[role, from, to]` edge per line: "from is the
    *  role of to". Each edge reaches both persons, with the inverse role on
@@ -55,6 +58,7 @@ export function caseToSpec(c: HouseholdCase): TestSpec & { as_of: string } {
     as_of: c.as_of,
     parameters: c.parameters,
     month_facts: c.month_facts,
+    case_facts: c.case_facts,
     persons: c.persons,
     relationships: c.relationships,
   };
@@ -165,5 +169,6 @@ export function derivedOverrides(ix: LedgerIndex, c: HouseholdCase): string[] {
     for (const m of Object.values(p.months ?? {})) look(pid, m);
   }
   for (const m of Object.values(c.month_facts ?? {})) look("case", m);
+  look("case", c.case_facts);
   return [...out].sort();
 }

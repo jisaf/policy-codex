@@ -88,8 +88,13 @@ An expression is evaluated for:
    retroactive month, a future month of a case); a rule that applies a figure
    from another date says so with `as_of` (P25, Tables), which picks the
    version in force on the date it names.
-3. **Case scope.** `determination_date` is the determination date; any other
-   `case`-scope item is unknown (a stated value is not read).
+3. **Case scope.** `determination_date` is the determination date. Any other
+   `case`-scope supplied item is the value stated in the case's
+   `case_facts` (a rule test may give it among its facts; it is the case's,
+   whichever person it is given on), else unknown. A `case`-scope derived
+   item is evaluated once per case, with no person and no month in context.
+   A case-scope fact states one value for the application as a whole: the
+   application's date, the home's utility costs (convention rule 18).
 4. **Month scope.** `month_facts[the month][id]`, else the case-wide
    default, else unknown.
 5. **Stated values.** For a `person` item, the value stated for this person;

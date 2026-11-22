@@ -71,6 +71,7 @@ interface SuiteCase {
   as_of: string;                                 // the determination date
   parameters?: Record<string, unknown>;          // parameter overrides, if any
   month_facts?: Record<string, Record<string, unknown>>; // case-wide, month-scope facts
+  case_facts?: Record<string, unknown>;          // case-scope facts, one value for the case
   persons: Record<string, {
     facts?: Record<string, unknown>;             // person-scope values
     months?: Record<string, Record<string, unknown>>;  // person-month values, by month
@@ -107,7 +108,8 @@ here to read a case the way the codex does:
 - **Facts are routed by scope.** `facts` holds only `person`-scope values;
   `months` and `month_defaults` hold only `person-month` values (a value
   under `month_defaults` applies to every month not listed under `months`);
-  `month_facts` holds `month`-scope values. `suite.items[].scope` says which
+  `month_facts` holds `month`-scope values; `case_facts` holds `case`-scope
+  values (one per case, read by no person). `suite.items[].scope` says which
   is which.
 - **`as_of` is the determination date** of the case. A rule test that states
   `determination_date` has it here, not among the facts.

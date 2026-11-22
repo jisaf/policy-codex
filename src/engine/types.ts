@@ -42,6 +42,8 @@ export interface TestSpec {
   parameters?: Record<string, unknown>;
   month_defaults?: Record<string, unknown>;
   month_facts?: Record<string, Record<string, unknown>>;
+  /** Case-scope supplied facts, one value for the case as a whole. */
+  case_facts?: Record<string, unknown>;
   expect?: unknown;
   expect_length?: number;
   expect_first?: string;

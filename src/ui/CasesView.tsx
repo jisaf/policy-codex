@@ -117,13 +117,13 @@ export function buildSpec(
 
 /** Whether "Try an example" can fill the one-person form from this case: a
  *  single person `p1`, with no month-scoped facts the form has no field
- *  for (`persons.p1.months` or `month_facts`). A household with a second
+ *  for (`persons.p1.months`, `month_facts` or `case_facts`). A household with a second
  *  person, or facts that vary by month, would silently drop data the form
  *  cannot represent. */
 export function isRepresentableCase(c: HouseholdCase): boolean {
   const personIds = Object.keys(c.persons ?? {});
   return personIds.length === 1 && personIds[0] === "p1"
-    && !c.persons.p1.months && !c.month_facts;
+    && !c.persons.p1.months && !c.month_facts && !c.case_facts;
 }
 
 function CaseList(
@@ -269,6 +269,23 @@ function CasePage(
           </p>
         </div>
       ))}
+
+      {Object.keys(hc.case_facts ?? {}).length > 0 && (
+        <>
+          <h4>Facts of the case</h4>
+          <table class="facts grid">
+            <thead><tr><th>Identifier</th><th>Value</th></tr></thead>
+            <tbody>
+              {Object.entries(hc.case_facts ?? {}).map(([k, v]) => (
+                <tr key={k}>
+                  <td><code><Ident id={k} engine={engine} /></code></td>
+                  <td>{formatFor(engine, k, v)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
 
       {Object.keys(hc.month_facts ?? {}).length > 0 && (
         <>

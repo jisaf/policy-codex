@@ -50,6 +50,9 @@ export interface SuiteCase {
    *  `month`-scope fact is never read per-person (see `evaluate.ts`'s
    *  `value()`), so it cannot live inside any person's `facts`/`months`. */
   month_facts?: Record<string, Record<string, unknown>>;
+  /** Case-scope supplied facts, one value for the case as a whole, read by
+   *  no person (see `evaluate.ts`'s `value()`). */
+  case_facts?: Record<string, unknown>;
   persons: Record<string, PersonSpec>;
   expect: SuiteExpectation[];
   /** Derived identifiers the case states as inputs. A stated value for a
@@ -249,7 +252,7 @@ function unreadReason(
   if (!it) return "unknown identifier";
   if (it.kind === "parameter") return "parameter";
   if (!inForce(it, asOf)) return "not in force";
-  if (it.scope === "case" || it.scope === "global") return "scope";
+  if (it.scope === "global") return "scope";
   if (where === "months" && it.scope !== "person-month") return "scope";
   return null;
 }
@@ -264,8 +267,17 @@ function classifyFact(
   engine: Engine, audit: Audit, pid: string, person: PersonSpec,
   monthFacts: Record<string, Record<string, unknown>>,
   identifier: string, value: unknown, evalMonth: string | null, asOf: string,
+  caseFacts: Record<string, unknown> = {},
 ): void {
   const it = engine.item(identifier);
+  // A case-scope fact given on a rule test's person is the case's, as
+  // makeCase routes it (determination_date is the case's as_of).
+  if (it && it.scope === "case" && it.kind !== "parameter" && inForce(it, asOf)
+    && identifier !== "determination_date") {
+    caseFacts[identifier] = value;
+    if (it.kind === "derived") noteOverride(audit, null, identifier);
+    return;
+  }
   if (it && it.scope === "month" && it.kind !== "parameter" && inForce(it, asOf)) {
     if (isMonthKeyedObject(value)) {
       for (const [m, mv] of Object.entries(value)) (monthFacts[m] ??= {})[identifier] = mv;
@@ -322,6 +334,23 @@ function mergeMonthValues(
   }
 }
 
+/** One value stated in a case's `case_facts`: kept when the item is a
+ *  case-scope fact the engine reads, else dropped and recorded. */
+function classifyCaseFact(
+  engine: Engine, audit: Audit, caseFacts: Record<string, unknown>,
+  identifier: string, value: unknown, asOf: string,
+): void {
+  const it = engine.item(identifier);
+  let reason: SuiteIgnored["reason"] | null = null;
+  if (!it) reason = "unknown identifier";
+  else if (it.kind === "parameter") reason = "parameter";
+  else if (!inForce(it, asOf)) reason = "not in force";
+  else if (it.scope !== "case" || identifier === "determination_date") reason = "scope";
+  if (reason) { noteIgnored(audit, { person: null, identifier, reason }); return; }
+  if (it!.kind === "derived") noteOverride(audit, null, identifier);
+  caseFacts[identifier] = value;
+}
+
 function personFrom(
   engine: Engine, audit: Audit, pid: string,
   facts: Record<string, unknown> | undefined,
@@ -329,12 +358,13 @@ function personFrom(
   monthDefaults: Record<string, unknown> | undefined,
   months: Record<string, Record<string, unknown>> | undefined,
   evalMonth: string | null, monthFacts: Record<string, Record<string, unknown>>, asOf: string,
+  caseFacts: Record<string, unknown> = {},
 ): PersonSpec {
   const person: PersonSpec = {};
   if (relationships) person.relationships = relationships;
   mergeMonthValues(engine, audit, pid, person, undefined, monthDefaults, asOf);
   for (const [k, v] of Object.entries(facts || {})) {
-    classifyFact(engine, audit, pid, person, monthFacts, k, v, evalMonth, asOf);
+    classifyFact(engine, audit, pid, person, monthFacts, k, v, evalMonth, asOf, caseFacts);
   }
   mergeMonthValues(engine, audit, pid, person, months, undefined, asOf);
   return person;
@@ -395,7 +425,8 @@ function ruleTestAsOf(engine: Engine, t: TestSpec): string {
  *  check`, which reports the audit's ignored inputs as warnings. */
 export function ruleTestInputs(engine: Engine, t: TestSpec): {
   as_of: string; persons: Record<string, PersonSpec>;
-  month_facts: Record<string, Record<string, unknown>>; audit: Audit;
+  month_facts: Record<string, Record<string, unknown>>;
+  case_facts: Record<string, unknown>; audit: Audit;
 } {
   const audit = newAudit();
   const asOf = ruleTestAsOf(engine, t);
@@ -404,17 +435,18 @@ export function ruleTestInputs(engine: Engine, t: TestSpec): {
     monthFacts[m] = { ...(monthFacts[m] || {}), ...mf };
   }
   const evalMonth = t.month ?? null;
+  const caseFacts: Record<string, unknown> = {};
   const given = { ...(t.given || {}) };
   delete given.determination_date;
   const persons: Record<string, PersonSpec> = {
     p1: personFrom(
       engine, audit, "p1", given, statedRelationships(t.relationships), t.month_defaults,
-      undefined, evalMonth, monthFacts, asOf,
+      undefined, evalMonth, monthFacts, asOf, caseFacts,
     ),
   };
   for (const [pid, facts] of Object.entries(t.others || {})) {
     persons[pid] = personFrom(
-      engine, audit, pid, facts, undefined, undefined, undefined, evalMonth, monthFacts, asOf,
+      engine, audit, pid, facts, undefined, undefined, undefined, evalMonth, monthFacts, asOf, caseFacts,
     );
   }
   // `t.persons` is merged in after `others`, mirroring `makeCase`'s own
@@ -423,13 +455,17 @@ export function ruleTestInputs(engine: Engine, t: TestSpec): {
   for (const [pid, p] of Object.entries(t.persons || {})) {
     persons[pid] = personFrom(
       engine, audit, pid, p.facts, p.relationships, p.month_defaults, p.months,
-      evalMonth, monthFacts, asOf,
+      evalMonth, monthFacts, asOf, caseFacts,
     );
+  }
+  for (const [k, v] of Object.entries(t.case_facts || {})) {
+    classifyCaseFact(engine, audit, caseFacts, k, v, asOf);
   }
   return {
     as_of: asOf,
     persons: withRelationshipEdges(persons, t.relationships, engine.index.inverseRole, audit),
     month_facts: monthFacts,
+    case_facts: caseFacts,
     audit,
   };
 }
@@ -440,21 +476,27 @@ export function ruleTestInputs(engine: Engine, t: TestSpec): {
  *  keyed by month. */
 export function householdInputs(engine: Engine, c: HouseholdCase): {
   persons: Record<string, PersonSpec>;
-  month_facts: Record<string, Record<string, unknown>>; audit: Audit;
+  month_facts: Record<string, Record<string, unknown>>;
+  case_facts: Record<string, unknown>; audit: Audit;
 } {
   const audit = newAudit();
   const monthFacts: Record<string, Record<string, unknown>> = {};
   for (const [m, mf] of Object.entries(c.month_facts || {})) monthFacts[m] = { ...mf };
+  const caseFacts: Record<string, unknown> = {};
   const persons: Record<string, PersonSpec> = {};
   for (const [pid, p] of Object.entries(c.persons || {})) {
     persons[pid] = personFrom(
       engine, audit, pid, p.facts, p.relationships, p.month_defaults, p.months,
-      null, monthFacts, c.as_of,
+      null, monthFacts, c.as_of, caseFacts,
     );
+  }
+  for (const [k, v] of Object.entries(c.case_facts || {})) {
+    classifyCaseFact(engine, audit, caseFacts, k, v, c.as_of);
   }
   return {
     persons: withRelationshipEdges(persons, c.relationships, engine.index.inverseRole, audit),
     month_facts: monthFacts,
+    case_facts: caseFacts,
     audit,
   };
 }
@@ -473,7 +515,7 @@ function isolationOf(engine: Engine, it: Item, overrides: Map<string, SuiteInput
 function caseData(engine: Engine, sc: SuiteCase) {
   return makeCase(engine.index, {
     id: sc.id, as_of: sc.as_of, parameters: sc.parameters, month_facts: sc.month_facts,
-    persons: sc.persons,
+    case_facts: sc.case_facts, persons: sc.persons,
   });
 }
 
@@ -527,6 +569,7 @@ function ruleTestCase(engine: Engine, it: Item, t: TestSpec): { suiteCase: Suite
   };
   if (t.parameters) suiteCase.parameters = t.parameters;
   if (Object.keys(inputs.month_facts).length) suiteCase.month_facts = inputs.month_facts;
+  if (Object.keys(inputs.case_facts).length) suiteCase.case_facts = inputs.case_facts;
   finishAudit(suiteCase, inputs.audit);
   suiteCase.isolation = isolationOf(engine, it, inputs.audit.overrides);
   return { suiteCase, notes };
@@ -549,6 +592,7 @@ function householdSuiteCase(engine: Engine, c: HouseholdCase): { suiteCase: Suit
   };
   if (c.parameters) suiteCase.parameters = c.parameters;
   if (Object.keys(inputs.month_facts).length) suiteCase.month_facts = inputs.month_facts;
+  if (Object.keys(inputs.case_facts).length) suiteCase.case_facts = inputs.case_facts;
   finishAudit(suiteCase, inputs.audit);
   return { suiteCase, notes };
 }
@@ -595,12 +639,19 @@ function cannotDetermineCases(engine: Engine, base: SuiteCase[]): {
     let made: SuiteCase | null = null;
     for (const { sc, e } of sources) {
       const data = caseData(engine, sc);
-      const read: Array<{ person: string; identifier: string; decisive: boolean }> = [];
+      // person null: a case- or month-scope fact, removed from case_facts
+      // or from every month of month_facts.
+      const read: Array<{ person: string | null; identifier: string; decisive: boolean }> = [];
       try {
         evaluate(engine.index, data, outcome, e.person, e.month, (ev) => {
-          if (ev.kind === "supplied" && ev.person && (ev.origin === "case" || ev.origin === "default")) {
-            if (!read.some((r) => r.person === ev.person && r.identifier === ev.identifier)) {
-              read.push({ person: ev.person, identifier: ev.identifier, decisive: !!ev.decisive });
+          const personFact = ev.kind === "supplied" && ev.person &&
+            (ev.origin === "case" || ev.origin === "default");
+          const caseFact = (ev.kind === "case" || ev.kind === "month") && ev.origin === "case" &&
+            ev.identifier !== "determination_date" && engine.item(ev.identifier)?.kind === "supplied";
+          if (personFact || caseFact) {
+            const person = personFact ? ev.person : null;
+            if (!read.some((r) => r.person === person && r.identifier === ev.identifier)) {
+              read.push({ person, identifier: ev.identifier, decisive: !!ev.decisive });
             }
           }
         });
@@ -611,7 +662,7 @@ function cannotDetermineCases(engine: Engine, base: SuiteCase[]): {
         .slice(0, MAX_REMOVALS);
       for (const r of ordered) {
         const persons = clonePersons(sc.persons);
-        removeFact(persons[r.person], r.identifier);
+        if (r.person !== null) removeFact(persons[r.person], r.identifier);
         const candidate: SuiteCase = {
           id: `${sc.id}-U-${outcome}`,
           kind: "cannot-determine",
@@ -621,13 +672,24 @@ function cannotDetermineCases(engine: Engine, base: SuiteCase[]): {
           derived_from: { case: sc.id, removed: { person: r.person, identifier: r.identifier } },
         };
         if (sc.parameters) candidate.parameters = sc.parameters;
-        if (sc.month_facts) candidate.month_facts = sc.month_facts;
+        if (sc.month_facts) {
+          candidate.month_facts = {};
+          for (const [m, mf] of Object.entries(sc.month_facts)) {
+            const copy = { ...mf };
+            if (r.person === null) delete copy[r.identifier];
+            candidate.month_facts[m] = copy;
+          }
+        }
+        if (sc.case_facts) {
+          candidate.case_facts = { ...sc.case_facts };
+          if (r.person === null) delete candidate.case_facts[r.identifier];
+        }
         if (sc.overrides) candidate.overrides = sc.overrides;
         const missing: SuiteMissing[] = [];
         let got: unknown;
         try {
           got = evaluate(engine.index, caseData(engine, candidate), outcome, e.person, e.month, (ev) => {
-            if (ev.kind === "supplied" && ev.origin === "missing" &&
+            if ((ev.kind === "supplied" || ev.kind === "case" || ev.kind === "month") && ev.origin === "missing" &&
               !missing.some((x) => x.person === ev.person && x.identifier === ev.identifier)) {
               missing.push({ person: ev.person, identifier: ev.identifier, month: ev.month });
             }

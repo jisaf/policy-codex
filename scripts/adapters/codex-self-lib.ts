@@ -51,7 +51,8 @@ export function resolveVolume(
 export function evaluateCase(c: SuiteCase, volume: string): AdapterValue[] {
   const ix = indexOf(volume);
   const data = makeCase(ix, {
-    id: c.id, as_of: c.as_of, parameters: c.parameters, month_facts: c.month_facts, persons: c.persons,
+    id: c.id, as_of: c.as_of, parameters: c.parameters, month_facts: c.month_facts,
+    case_facts: c.case_facts, persons: c.persons,
   });
   const values: AdapterValue[] = [];
   for (const e of c.expect) {

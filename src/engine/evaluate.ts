@@ -11,6 +11,9 @@ export interface CaseData {
   rels: Record<string, Array<[string, string]> | null>;
   monthFacts: Record<string, Record<string, unknown>>;
   monthFactsDefault: Record<string, unknown>;
+  /** Case-scope supplied facts: one value for the application as a whole
+   *  (an application date, the home's utility costs), stated once. */
+  caseFacts: Record<string, unknown>;
   params: Record<string, unknown>;
 }
 
@@ -135,7 +138,7 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   const c: CaseData = {
     det: (given.determination_date as string) || spec.as_of || "2027-03-15",
     persons: {}, months: {}, monthDefaults: {}, rels: {},
-    monthFacts: {}, monthFactsDefault: {}, params: spec.parameters || {},
+    monthFacts: {}, monthFactsDefault: {}, caseFacts: {}, params: spec.parameters || {},
   };
   function setFact(pid: string, k: string, v: unknown, testMonth: string | null) {
     const it = ix.byIdentifier.get(k);
@@ -157,6 +160,10 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
         }
       } else if (testMonth == null) c.monthFactsDefault[k] = v;
       else (c.monthFacts[testMonth] = c.monthFacts[testMonth] || {})[k] = v;
+    } else if (it.scope === "case") {
+      // A case-scope fact is the case's, whichever person a rule test
+      // gives it on: one value for the application as a whole.
+      if (k !== "determination_date") c.caseFacts[k] = v;
     } else c.persons[pid][k] = v;
   }
   function addPerson(
@@ -169,7 +176,14 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
     c.rels[pid] = rels === undefined ? null : rels;
     for (const [k, v] of Object.entries(facts || {})) setFact(pid, k, v, spec.month ?? null);
   }
-  addPerson("p1", spec.given, statedRelationships(spec.relationships), spec.month_defaults);
+  // A rule test's own person is p1. A household case that names its persons
+  // and gives no p1 has no p1: an empty phantom person would join every
+  // `persons` group with unknown facts.
+  const phantomOnly = spec.persons !== undefined && !("p1" in spec.persons) &&
+    spec.given === undefined && spec.others === undefined && spec.month_defaults === undefined;
+  if (!phantomOnly) {
+    addPerson("p1", spec.given, statedRelationships(spec.relationships), spec.month_defaults);
+  }
   for (const [pid, facts] of Object.entries(spec.others || {})) {
     addPerson(pid, facts, undefined, {});
   }
@@ -183,6 +197,10 @@ export function makeCase(ix: LedgerIndex, spec: TestSpec & { as_of?: string }): 
   }
   for (const [m, mf] of Object.entries(spec.month_facts || {})) {
     c.monthFacts[m] = Object.assign({}, c.monthFacts[m] || {}, mf);
+  }
+  for (const [k, v] of Object.entries(spec.case_facts || {})) {
+    const it = ix.byIdentifier.get(k);
+    if (it && it.scope === "case" && k !== "determination_date") c.caseFacts[k] = v;
   }
   // The case-level graph is expanded last, so an edge reaches a person whose
   // own pairs are already in place and adds only what they do not say. An
@@ -407,7 +425,26 @@ export function evaluate(
       return seen(paramOf(it), "parameter");
     }
     if (sc === "case") {
-      return id === "determination_date" ? seen(c.det, "case") : seen(null, "missing");
+      if (id === "determination_date") return seen(c.det, "case");
+      if (id in c.caseFacts) return seen(c.caseFacts[id], "case");
+      if (it.kind === "supplied") return seen(null, "missing");
+      // A case-scope derived item is computed once per case, with no person
+      // and no month in context.
+      const ckey = id + "||case";
+      if (ckey in memo) return seen(memo[ckey], "memo");
+      if (stack.includes(ckey)) throw new Error("cycle at " + id);
+      stack.push(ckey);
+      let cv: unknown;
+      const outer = thatMonth;
+      thatMonth = null;
+      try {
+        cv = ev(it.derived ?? null, null, null, null);
+      } finally {
+        stack.pop();
+        thatMonth = outer;
+      }
+      memo[ckey] = cv;
+      return seen(cv, "evaluated");
     }
     if (sc === "month") {
       if (m == null) throw new Error(id + " needs a month");
