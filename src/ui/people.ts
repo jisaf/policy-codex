@@ -36,7 +36,7 @@ export function caseEdges(hc: HouseholdCase): Edge[] {
 export const RELATIONSHIP_VERB: Record<string, string> = {
   parent: "is a parent of", child: "is a child of", stepparent: "is a stepparent of", stepchild: "is a stepchild of",
   spouse: "is married to", surviving_spouse_of: "is the surviving spouse of", deceased_spouse_of: "was the spouse, now deceased, of",
-  holds_out_as_spouse_with: "lives with, as a spouse,",
+  holds_out_as_spouse_with: "lives with, as a spouse,", civil_union_partner: "is in a civil union with",
   grandparent: "is a grandparent of", grandchild: "is a grandchild of", sibling: "is a sibling of",
   other_relative: "is a relative of", relative: "is a relative of",
   gave_birth_to: "gave birth to", born_to: "was born to",
@@ -72,14 +72,14 @@ export function relationshipPhrase(role: string, other: string): string {
 /** A family role from the person's side, and its inverse. */
 const NOUN: Record<string, string> = {
   parent: "parent", child: "child", stepparent: "stepparent", stepchild: "stepchild", spouse: "spouse",
-  holds_out_as_spouse_with: "partner", grandparent: "grandparent", grandchild: "grandchild", sibling: "sibling",
+  holds_out_as_spouse_with: "partner", civil_union_partner: "civil union partner", grandparent: "grandparent", grandchild: "grandchild", sibling: "sibling",
   other_relative: "relative", legal_guardian: "legal guardian", ward: "ward", foster_parent: "foster parent",
   foster_child: "foster child", has_primary_responsibility_for: "caretaker", in_primary_care_of: "in the care",
   sponsor: "sponsor", sponsored_by: "sponsored",
 };
 const INVERSE: Record<string, string> = {
   parent: "child", child: "parent", stepparent: "stepchild", stepchild: "stepparent", spouse: "spouse",
-  holds_out_as_spouse_with: "holds_out_as_spouse_with", grandparent: "grandchild", grandchild: "grandparent",
+  holds_out_as_spouse_with: "holds_out_as_spouse_with", civil_union_partner: "civil_union_partner", grandparent: "grandchild", grandchild: "grandparent",
   sibling: "sibling", other_relative: "other_relative", legal_guardian: "ward", ward: "legal_guardian",
   foster_parent: "foster_child", foster_child: "foster_parent",
   has_primary_responsibility_for: "in_primary_care_of", in_primary_care_of: "has_primary_responsibility_for",
@@ -87,7 +87,7 @@ const INVERSE: Record<string, string> = {
 };
 /** The order a description prefers: family first, then care, then sponsorship. */
 const PREFER = [
-  "spouse", "holds_out_as_spouse_with", "parent", "child", "stepparent", "stepchild", "grandparent", "grandchild",
+  "spouse", "civil_union_partner", "holds_out_as_spouse_with", "parent", "child", "stepparent", "stepchild", "grandparent", "grandchild",
   "sibling", "foster_parent", "foster_child", "legal_guardian", "ward", "other_relative",
   "has_primary_responsibility_for", "in_primary_care_of", "sponsor", "sponsored_by",
 ];

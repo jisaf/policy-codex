@@ -1,0 +1,14 @@
+id: CO-4504
+name: "Senior Community Service Employment Program wages"
+identifier: scsep_wages
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's wages for the month paid for community service employment under the Senior Community Service Employment Program (Title V of the Older Americans Act)."
+precision: "Part of the person's gross earned income for the month as wages_gross (CO-023) states it, and of wages_gross_per_pay_period (CO-3922) when the person's pay is SCSEP pay, not added to them. If not stated, every program reads it as 0."
+supplied_by: "The SCSEP grantee's or host agency's pay record."
+sources: [S3301]
+tags: [income]
+rationale: "Coverage review C-23: 9 CCR 2503-7 3.752.23.CC (S3301) excludes \"Funds received by persons fifty five (55) years of age and older under the Senior Community Service Employment Program\". SCSEP pay is wages, and no fact separated it, so LEAP counted it. The fact states the receipt, program-neutrally (convention rule 13); subsidized_employment_wages (CO-3817) names other programs' subsidized jobs and is not read for this."
+nearest: [CO-3817]

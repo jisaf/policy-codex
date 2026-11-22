@@ -18,9 +18,9 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 102, 20 of them partly settled", () => {
-    expect(all.total).toBe(102);
-    expect(all.rows).toHaveLength(102);
+  it("holds every question still to answer: 104, 20 of them partly settled", () => {
+    expect(all.total).toBe(104);
+    expect(all.rows).toHaveLength(104);
     expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(20);
   });
 
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(101);
+    expect(q.total).toBe(103);
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });

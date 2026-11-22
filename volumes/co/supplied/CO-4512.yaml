@@ -1,0 +1,14 @@
+id: CO-4512
+name: LEAP application postmark date
+identifier: leap_application_postmark_date
+kind: supplied
+type: calendar date
+scope: case
+program: LEAP
+meaning: "The postmark date on the envelope of a LEAP application form the household mailed to the county department (9 CCR 2503-7 3.752.1: forms \"received or postmarked during the application period\" are accepted)."
+precision: "One value for the case. Stated only for a mailed form; if not stated, LEAP reads the date the application was received (leap_application_date, CO-2122) as the date it was filed (leap_application_filing_date, CO-4514). A postmark is never later than the date received."
+supplied_by: "The county's date stamp record of the envelope's postmark."
+sources: [S3308]
+tags: [household, application_wide]
+rationale: "Coverage review C-4 (P1): 3.752.1 (S3308) accepts application forms \"received or postmarked during the application period\" and denies those \"received or postmarked after the closing date\". leap_application_date (CO-2122) is the date received, so a form postmarked April 29 and received May 3 was denied. The postmark is a fact of the LEAP application, so it carries LEAP's prefix as the application date does."
+nearest: [CO-2122]

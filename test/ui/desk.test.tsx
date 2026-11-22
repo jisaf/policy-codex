@@ -105,8 +105,8 @@ describe("a program's counts and its steps (counts.ts)", () => {
     }
   });
 
-  it("figures: 400 in all; words in any order; the three flags", () => {
-    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(400);
+  it("figures: 402 in all; words in any order; the three flags", () => {
+    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(402);
     const cw = figuresOnDate(engine, unverified, { asOf: DAY, q: "standard grant", program: "ColoradoWorks" }, wordsMatch);
     expect(cw.map((x) => x.item.id)).toContain("CO-276");
     expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(6);
@@ -238,11 +238,11 @@ describe("the Figures page", () => {
   it("lists every figure on a date, with a word filter and three flags", () => {
     const host = show("#/co/figures");
     expect(host.querySelectorAll("tr.figure").length).toBeGreaterThan(40);
-    expect(host.querySelector(".figcount")!.textContent).toContain("400 figures");
+    expect(host.querySelector(".figcount")!.textContent).toContain("402 figures");
     const cw = show("#/co/figures?q=grant+standard&program=ColoradoWorks");
     const row = cw.querySelector('tr.figure[data-figure="cw_grant_standard_table"]')!;
     expect(row.querySelector("a.figname")!.getAttribute("href")).toBe("#/co/item/CO-276");
-    expect(cw.querySelector(".figcount")!.textContent).toContain("of 400 figures");
+    expect(cw.querySelector(".figcount")!.textContent).toContain("of 402 figures");
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);

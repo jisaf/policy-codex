@@ -1,0 +1,19 @@
+id: CO-4517
+name: "LEAP: the program year the application is for"
+identifier: leap_application_program_year_start_month
+kind: derived
+type: month
+scope: case
+program: LEAP
+meaning: "The November that begins the LEAP program year the application is for (9 CCR 2503-7 3.751.1 \"Program Year\", 3.752.1): the program year in whose application period it was received or postmarked; for an application filed after that period closed and before November 1, the program year that begins the next November 1, the only one for which 3.752.1 lets it take effect (\"Such applications received prior to November 1st shall be accepted ... however, eligibility shall not be effective until November 1st\")."
+precision: "The most recent November (leap_eligibility_period_start_month, CO-1806) on or before leap_application_filing_date (CO-4514) when the application is within that program year's application period (leap_application_is_within_application_period, CO-4516); otherwise the November twelve months after it. Whether an application filed before November 1 is accepted at all is leap_is_eligible's test (CO-1007): only a public assistance household's is."
+derived: [case, [leap_application_is_within_application_period, [latest_month_of_year, leap_eligibility_period_start_month, leap_application_filing_date]], [else, [months_after, 12, [latest_month_of_year, leap_eligibility_period_start_month, leap_application_filing_date]]]]
+sources: [S3308, S510]
+implemented: engine
+tags: [household]
+rationale: "Coverage review C-3 (P1): leap_is_eligible (CO-1007) required the month's program year to equal the program year of the month the application was received, which for an October application is the previous November; a public assistance household that applied in October was never eligible in the season 3.752.1 makes it effective for (probe RV-L3)."
+tests:
+  - {id: CO-4517-T1, title: "Filed December 1, 2026: the 2026-27 program year", as_of: "2026-12-01", given: {leap_application_filing_date: "2026-12-01", leap_application_is_within_application_period: true}, expect: "2026-11"}
+  - {id: CO-4517-T2, title: "Filed October 20, 2026, before the period opens: the program year beginning November 2026", as_of: "2026-10-20", given: {leap_application_filing_date: "2026-10-20", leap_application_is_within_application_period: false}, expect: "2026-11"}
+  - {id: CO-4517-T3, title: "Postmarked April 29, 2027: the 2026-27 program year", as_of: "2027-05-03", given: {leap_application_filing_date: "2027-04-29", leap_application_is_within_application_period: true}, expect: "2026-11"}
+  - {id: CO-4517-T4, title: "Filed June 10, 2027: the program year beginning November 2027", as_of: "2027-06-10", given: {leap_application_filing_date: "2027-06-10", leap_application_is_within_application_period: false}, expect: "2027-11"}

@@ -16998,3 +16998,332 @@
         2026-11: former_foster_care
       ma_magi_eligibility_status:
         2026-11: eligible
+- id: CO-175
+  title: 'Coverage round (LEAP): $1,000 of wages and $3,000 of Colorado crime victim compensation; the compensation is not income'
+  # Coverage review C-1 (probe RV-L1). 9 CCR 2503-7 3.752.23.G (S3300). One adult applies for LEAP on November 10, 2026,
+  # paying a vendor for the primary heating source. Wages $1,000 a month (no pay schedule stated, so the month's wages are the
+  # thirty days', CO-3925, CO-3912). Other unearned income of $3,000 is all crime victim compensation.
+  # Hand derivation (November 2026):
+  #   unearned_income_prior_thirty_days (CO-3913, monthly fallback) = 3,000 (no part has its own fact in CO-3913's list)
+  #   leap_excluded_unearned_income (CO-4511) = 3,000 (crime_victim_compensation_received)
+  #   leap_person_unearned_income (CO-3926) = max(0, 3,000 - 3,000) + 0 = 0
+  #   leap_person_wages (CO-3925) = 1,000; leap_household_income (CO-1002) = 1,000
+  #   leap_income_limit_monthly for 1 (CO-875) = 3,774, so leap_income_within_limit is true and leap_is_eligible is true.
+  # Before the fix: leap_household_income 4,000 > 3,774, leap_is_eligible false.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 3000
+        crime_victim_compensation_received: 3000
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_excluded_unearned_income: {"2026-11": 3000}
+      leap_household_income: {"2026-11": 1000}
+      leap_is_eligible: {"2026-11": true}
+- id: CO-176
+  title: 'Coverage round (LEAP): a Colorado Works recipient applies on October 20; eligible from November 1'
+  # Coverage review C-3 (probe RV-L3). 9 CCR 2503-7 3.752.1 (S3308): "Preference shall be given to application forms received
+  # from public assistance households ... Such applications received prior to November 1st shall be accepted ... however,
+  # eligibility shall not be effective until November 1st." The adult receives Colorado Works basic cash ($500) and earns
+  # $1,000 a month; the application is received October 20, 2026 and determined November 2.
+  # Hand derivation:
+  #   leap_application_filing_date (CO-4514) = 2026-10-20 (no postmark)
+  #   leap_application_period_closing_date (CO-4515): the program year from 2025-11, closing 2026-04-30 (extension 0)
+  #   leap_application_is_within_application_period (CO-4516) = false (2026-10-20 > 2026-04-30)
+  #   leap_application_program_year_start_month (CO-4517) = 2025-11 + 12 months = 2026-11
+  #   leap_is_public_assistance_household (CO-4518) at 2026-10 = true (receives_tanf_cash)
+  #   income at 2026-10: wages 1,000 + Colorado Works 500 = 1,500 <= 3,774 (household of 1)
+  #   leap_is_eligible: 2026-10 false (not in the eligibility period); 2026-11 and 2026-12 true (program year 2026-11 =
+  #   the application's, month >= 2026-10).
+  # Before the fix: the program year of October 2026 was 2025-11, so 2026-11 and 2026-12 were false.
+  as_of: '2026-11-02'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-10-20'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1990-06-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        receives_tanf_cash: true
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 500
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      facts:
+        date_of_birth: '1960-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_application_program_year_start_month: '2026-11'
+      leap_household_income: {"2026-10": 1500}
+      leap_is_eligible: {"2026-10": false, "2026-11": true, "2026-12": true}
+- id: CO-177
+  title: 'Coverage round (LEAP): an application postmarked April 29, 2027 and received May 3 is timely'
+  # Coverage review C-4 (probe RV-L4). 9 CCR 2503-7 3.752.1 (S3308): "The county department shall accept all application forms
+  # that are received or postmarked during the application period." One adult, wages $1,000, mails the application on
+  # April 29, 2027; the county receives it May 3 and determines it the same day.
+  # Hand derivation:
+  #   leap_application_filing_date (CO-4514) = 2027-04-29 (the postmark)
+  #   leap_application_period_closing_date (CO-4515) = 2027-04-30 (a Friday, extension 0)
+  #   leap_application_is_within_application_period (CO-4516) = true; program year (CO-4517) = 2026-11
+  #   income at 2027-05 (the month received, 3.752.1 "circumstances on the date the application is received") = 1,000
+  #   <= 3,774 (CO-875, the 2026-27 table, in force until 2027-11-01)
+  #   leap_is_eligible: 2027-04 true (in the period, program year 2026-11, month >= 2027-04); 2027-05 false (not in the
+  #   eligibility period).
+  # Before the fix: the month received (May) was outside the period, so 2027-04 was false.
+  as_of: '2027-05-03'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2027-05-03'
+    leap_application_postmark_date: '2027-04-29'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1975-03-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_application_filing_date: '2027-04-29'
+      leap_application_is_within_application_period: true
+      leap_is_eligible: {"2027-04": true, "2027-05": false}
+- id: CO-178
+  title: 'Coverage round (SUN Bucks): SNAP ended in December; the child stays categorically eligible for summer 2027'
+  # Coverage review C-6 (probe RV-S1) and C-11. 7 CFR 292.6 (S790): children eligible for Summer EBT include those who
+  # "at any time during the period of eligibility" are categorically eligible. A mother and her 10-year-old (born
+  # 2016-05-01) live as one economic unit; the child attends an NSLP school. The household received SNAP from July
+  # through December 2026 and not from January 2027; its school meal income is $6,000 a month. Determined March 1, 2027.
+  # Hand derivation (March 2027):
+  #   sebt_summer_year (CO-2581) = 2027; the period of eligibility began July 2026 (sebt_instructional_year_start_month)
+  #   sebt_household_child_receives_snap_or_tanf (CO-2708): receives_snap true in 2026-07..2026-12, so true
+  #   sebt_is_school_aged: 10 on August 1, 2026, true
+  #   sebt_household_size (CO-4523) = 2, the economic unit (no school_meal_household_size stated)
+  #   sebt_income_eligibility_limit (CO-1297) for 2 = 3,337; 6,000 > 3,337, so the income prong fails
+  #   sebt_eligibility_status = eligible_categorical. The summer 2027 benefit level is not published (CO-1244), so the
+  #   amount is not asserted.
+  # Before the fix: March 2027 read SNAP receipt for March only, so the child was ineligible with a benefit of 0.
+  as_of: '2027-03-01'
+  case_facts: {}
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - lives_as_one_economic_unit_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-02-01'
+        dwelling_id: d1
+      month_defaults:
+        receives_snap: false
+      months:
+        2026-07: {receives_snap: true}
+        2026-08: {receives_snap: true}
+        2026-09: {receives_snap: true}
+        2026-10: {receives_snap: true}
+        2026-11: {receives_snap: true}
+        2026-12: {receives_snap: true}
+    p2:
+      facts:
+        date_of_birth: '2016-05-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+      month_defaults:
+        receives_snap: false
+      months:
+        2026-07: {receives_snap: true}
+        2026-08: {receives_snap: true}
+        2026-09: {receives_snap: true}
+        2026-10: {receives_snap: true}
+        2026-11: {receives_snap: true}
+        2026-12: {receives_snap: true}
+  expect:
+    p2:
+      sebt_household_child_receives_snap_or_tanf: {"2027-03": true}
+      sebt_household_size: 2
+      sebt_income_eligibility_limit: 3337
+      sebt_eligibility_status: {"2027-03": eligible_categorical}
+- id: CO-179
+  title: 'Coverage round (LEAP): civil union partners, heat in the rent, facing eviction; one household, not excluded as homeless'
+  # Coverage review C-2 and C-8 (final pass F-18). 9 CCR 2503-7 3.751.2.D.3 (S3312): "Individuals that enter into civil
+  # unions" cannot be separate households; 3.751.1 "Emergency Applicant" (S3311) serves a client responsible for heating
+  # costs included in rent who has an eviction notice. Two partners in a civil union rent a non-subsidized apartment with
+  # heat in the rent and have received an eviction notice (nighttime_residence_type imminently_losing_residence). Each
+  # earns $1,500 a month. Application December 1, 2026. No shares_heat_with edge is stated.
+  # Hand derivation (December 2026):
+  #   leap_household_members (CO-1000) = [p1, p2] (the civil_union_partner edge, D.3); leap_household_size = 2
+  #   leap_household_income = 1,500 + 1,500 = 3,000 <= 4,936 (CO-875, size 2)
+  #   leap_is_homeless_or_in_non_traditional_dwelling (CO-2815) = false (an eviction notice is not homelessness)
+  #   leap_is_responsible_for_heating_costs (CO-876) = true (heat in the rent, not subsidized)
+  #   leap_is_vulnerable_to_heating_cost (CO-1004) = true; leap_is_eligible = true
+  # Before the fix: there was no civil union role (the partners were joined only by a stated shares_heat_with edge), and
+  # the eviction notice made CO-2815 true, so the household was not vulnerable and leap_is_eligible was false.
+  as_of: '2026-12-01'
+  case_facts:
+    home_heating_cost_arrangement: included_in_rent
+    leap_application_date: '2026-12-01'
+    has_primary_heating_source: true
+    lives_in_subsidized_housing: false
+  relationships:
+  - - civil_union_partner
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1984-09-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: imminently_losing_residence
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      facts:
+        date_of_birth: '1986-02-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: imminently_losing_residence
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 1500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+  expect:
+    p1:
+      leap_household_members: [p1, p2]
+      leap_household_income: {"2026-12": 3000}
+      leap_is_homeless_or_in_non_traditional_dwelling: false
+      leap_is_eligible: {"2026-12": true}

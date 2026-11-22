@@ -1,0 +1,13 @@
+id: CO-4519
+name: "LEAP: parent listed as a separate household from an ex-spouse"
+identifier: leap_is_listed_separately_from_ex_spouse
+kind: supplied
+type: yes/no
+scope: person
+program: LEAP
+meaning: "This parent lives in the same dwelling as his or her ex-spouse after a divorce or a legal separation and has asked to be listed, with his or her children, as a LEAP household separate from the ex-spouse's (9 CCR 2503-7 3.751.2.E)."
+precision: "An election the household makes on the LEAP application, so it carries LEAP's prefix (convention rule 13 (i)). The ex-spouse is the other parent of the children, or the legally separated spouse (spouse edge). If not stated, LEAP reads it as false: the household is not split. leap_household_members (CO-1000) and leap_household_members_for_income (CO-1009) read it."
+supplied_by: "The LEAP application; a divorce decree or legal separation order verifies the separation (3.751.22)."
+sources: [S3312]
+tags: [household]
+rationale: "Coverage review C-8 (final pass F-18): 3.751.2.E lets a parent living with an ex-spouse after legal separation or divorce be listed with his or her children as a separate household. Without it, the children's parent edges, or a legally separated couple's spouse edge, always joined the two into one household, and CO-1000's precision said E was not modeled."

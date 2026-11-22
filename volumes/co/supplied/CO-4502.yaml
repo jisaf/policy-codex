@@ -1,0 +1,14 @@
+id: CO-4502
+name: "Workers' compensation award amounts for claim expenses"
+identifier: workers_compensation_claim_expense_amounts_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Of the workers' compensation payments the person received in the month, the amounts the award includes for medical, legal or related expenses the person incurred in connection with the claim."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (workers' compensation is part of other_unearned_income_nontaxable, CO-030), not added to it. If not stated, every program reads it as 0."
+supplied_by: "The workers' compensation award or settlement and the insurer's payment record."
+sources: [S3304]
+tags: [income]
+rationale: "Coverage review C-1: 9 CCR 2503-7 3.752.211.D (S3304) counts workers' compensation but deducts the \"amounts included in such awards for medical, legal, or related expenses\". No fact separated those amounts from the payment, so LEAP counted the whole payment. The fact states what the award contains, program-neutrally (convention rule 13)."
+nearest: [CO-030]

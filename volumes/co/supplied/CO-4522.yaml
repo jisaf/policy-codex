@@ -1,0 +1,13 @@
+id: CO-4522
+name: "Summer EBT: the household declined benefits"
+identifier: sebt_household_declined_benefits
+kind: supplied
+type: yes/no
+scope: case
+program: SunBucks
+meaning: "The child's household has notified the Summer EBT agency (Colorado's SUN Bucks) that it does not want Summer EBT benefits for the summer the determination is for, through the opt-out process (7 CFR 292.12(f)(3); C.R.S. 26-2-309(4)(c)(III))."
+precision: "One value for the case: the household's notice. If not stated, SUN Bucks reads it as false."
+supplied_by: "The SUN Bucks opt-out record."
+sources: [S3315]
+tags: [sebt, application_wide]
+rationale: "Coverage review C-20: 292.12(f)(3) (S3315): children from households that decline \"must not be issued benefits\". No fact stated the opt-out, so sebt_benefit_amount (CO-1299) issued the benefit."

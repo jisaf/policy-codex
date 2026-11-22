@@ -1,0 +1,17 @@
+id: CO-4514
+name: "LEAP: the date the application was filed"
+identifier: leap_application_filing_date
+kind: derived
+type: calendar date
+scope: case
+program: LEAP
+meaning: "The date that decides whether a LEAP application was made within the application period (9 CCR 2503-7 3.752.1: forms \"received or postmarked during the application period\" are accepted): the postmark date of a mailed form, otherwise the date the county department received the application."
+precision: "leap_application_postmark_date (CO-4512) when the case states it, otherwise leap_application_date (CO-2122). Only the timing of the application reads this date; the household's circumstances are those \"on the date the application is received\" (3.752.1), so every eligibility factor is still read in the month of leap_application_date (leap_is_eligible, CO-1007)."
+derived: [otherwise, leap_application_postmark_date, leap_application_date]
+sources: [S3308, S776]
+implemented: engine
+tags: [household]
+rationale: "Coverage review C-4 (P1): the application period is met by a form received or postmarked in it (S3308), and the volume read only the date received."
+tests:
+  - {id: CO-4514-T1, title: "Delivered in person: the date received", as_of: "2026-12-01", given: {leap_application_date: "2026-12-01"}, expect: "2026-12-01"}
+  - {id: CO-4514-T2, title: "Mailed on April 29, received May 3: the postmark", as_of: "2027-05-03", given: {leap_application_date: "2027-05-03", leap_application_postmark_date: "2027-04-29"}, expect: "2027-04-29"}
