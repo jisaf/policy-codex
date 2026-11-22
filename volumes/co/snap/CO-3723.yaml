@@ -1,0 +1,16 @@
+id: CO-3723
+name: "SNAP: household farm loss"
+identifier: snap_household_farm_loss
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The total monthly farm self-employment loss (snap_farm_self_employment_loss) of the members of this person's SNAP household whose income counts in full - the eligible members and a member disqualified and counted in full - to be offset against the household's other income (10 CCR 2506-1 4.403.12.E; 7 CFR 273.11(a)(2)(ii))."
+precision: "A prorated ineligible member's farm loss is not offset: the rule offsets a loss against income \"received by the household\", and only a share of that member's income is the household's. An ineligible student is not a household member (CO-3714)."
+derived: [sum, [filter, snap_household_members_other_than_ineligible_students, [any, [not, [of, [P], snap_is_ineligible_member]], [of, [P], snap_is_disqualified_member_counted_in_full]]], [of, [P], snap_farm_self_employment_loss]]
+sources: [S2510, S2511, S1602]
+implemented: engine
+tags: [income, snap]
+rationale: "Final verification F-8: the household total the offset of 273.11(a)(2)(ii)(A)-(B) works on."
+tests:
+  - {id: CO-3723-T1, title: "One farmer with an $800 loss in a household of two", as_of: "2026-10-01", month: "2026-10", given: {snap_household_members_other_than_ineligible_students: [p1, p2], snap_is_ineligible_member: false, snap_farm_self_employment_loss: 800}, others: {p2: {snap_is_ineligible_member: false, snap_farm_self_employment_loss: 0}}, expect: 800}

@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The person's monthly net self-employment income for SNAP under 7 CFR 273.9(b)(1)(ii), 273.11(a)(2) and 10 CCR 2506-1 4.403.11: gross receipts less the allowable costs of producing it, not below zero."
-precision: "Capital gains from the sale of business equipment are counted in full under 273.11(a)(3); state them in the gross receipts. A farm loss offset against other income (273.11(a)(2)(ii)) is not modeled. A person with no gross receipts has none, whatever the cost fact says."
+precision: "Capital gains from the sale of business equipment are counted in full under 273.11(a)(3); state them in the gross receipts. A farm loss is offset against the household's other income by snap_farm_self_employment_loss (CO-3722), snap_farm_loss_offset_against_self_employment (CO-3724) and snap_farm_loss_remaining (CO-3725) (final verification F-8; 273.11(a)(2)(ii)). A person with no gross receipts has none, whatever the cost fact says."
 derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, snap_self_employment_costs]]]]
 sources: [S1152, S1153]
 implemented: engine

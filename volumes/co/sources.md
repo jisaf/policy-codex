@@ -306,30 +306,86 @@ Document: D-19
 
 ### S47. Colorado Basic Categorical Eligibility (BCE)
 
-Document: D-17
+Document: D-82
 
-10 CCR 2506-1-4.206,C,1,a-c. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.206
+10 CCR 2506-1 4.206.C.1.a, c-d (version effective 2026-10-01; final verification F-17: re-pointed from the Cornell copy D-17 to the current SOS rule). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
 
 > 1. Basic Categorical Eligibility (BCE)
+>
 > a. BCE households are:
-> 1) Households in which all members receive, or are authorized to receive, SSI, Colorado Works (CW), Old Age Pension (OAP), Aid to the Needy Disabled (AND), Aid to the Blind (AB) or a combination of these benefits.
-> c. A household cannot be considered under BCE rules if, at the time of application:
+>
+> 1) Households in which all members receive, or are authorized
+> to receive, SSI, Colorado Works (CW), Old Age Pension
+> (OAP), Aid to the Needy Disabled (AND), Aid to the Blind
+> (AB) or a combination of these benefits. The CW, SSI, OAP,
+> and/or AB program(s) need only to authorize benefits for the
+> household to be considered for BCE. Clients who are
+> authorized to receive a benefit from one or more of these
+> programs, but who are not paid such benefits because the
+> grant is less than a minimum benefit or the benefits are
+> suspended or are being recouped, are still considered
+> eligible under BCE rules.
+>
+> Households not receiving, or authorized to receive, TANF,
+> Title IV-A or SSI benefits, who are entitled to Medicaid only,
+> shall not be considered SSI or Title IV-A participants.
+>
+> 2) A household in which at least one (1) member receives
+> services from the Family Preservation Program. This
+> determination must be documented in the case record.
+>
+> ...
+>
+> c. A household cannot be considered under BCE rules if, at the time
+> of application:
+>
 > 1) Any member is disqualified for a SNAP IPV.
-> 2) Any member has been convicted of a drug-related felony where SNAP benefits were used to purchase drugs. Drug-related felony means the same as in 7 C.F.R. 273.11(m), which is incorporated by reference in section 4.100, above.
+>
+> 2) Any member has been convicted of a drug-related felony
+> where SNAP benefits were used to purchase drugs. Drug-
+> related felony means the same as in 7 C.F.R. 273.11(m),
+> which is incorporated by reference in section 4.100, above.
+>
+> d. Households that are ineligible for SNAP benefits under BCE rules
+> shall have their eligibility determined under ECE or SE rules.
 
 ### S48. Colorado Expanded Categorical Eligibility (ECE)
 
-Document: D-17
+Document: D-82
 
-10 CCR 2506-1-4.206,C,2,a,c. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.206
+10 CCR 2506-1 4.206.C.2.a, c-d (version effective 2026-10-01; final verification F-17: re-pointed from the Cornell copy D-17 to the current SOS rule). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
 
 > 2. Expanded Categorical Eligibility (ECE)
+>
 > a. ECE households are:
-> 1) Households with a combined gross income at or below two hundred (200%) of the federal poverty level as defined in section 4.401.1; and
-> 2) Households who have been authorized to receive non-cash Temporary Assistance to Needy Families/Maintenance of Effort (TANF/MOE) funded service designed to further TANF Purpose Four (4) by "encouraging the formation and maintenance of two-parent families." Language regarding the non-cash TANF/MOE funded program shall be provided on the application, application for recertification, periodic report form, and/or the statement of facts.
-> c. A household's eligibility cannot be determined using ECE rules if, at the time of application:
+>
+> 1) Households with a combined gross income at or below two
+> hundred (200%) of the federal poverty level as defined in
+> section 4.401.1; and
+>
+> 2) Households who have been authorized to receive non-cash
+> Temporary Assistance to Needy Families/Maintenance of
+> Effort (TANF/MOE) funded service designed to further TANF
+> Purpose Four (4) by “encouraging the formation and
+> maintenance of two-parent families.” Language regarding
+> the non-cash TANF/MOE funded program shall be provided
+> on the application, application for recertification, periodic
+> report form, and/or the statement of facts.
+>
+> ...
+>
+> c. A household’s eligibility cannot be determined using ECE rules if, at
+> the time of application:
+>
 > 1) Any member is disqualified for a SNAP IPV.
-> 2) Any member has been convicted of a drug-related felony where SNAP benefits were used to purchase drugs. Drug-related felony means the same as in 7 C.F.R. 273.11(m), which is incorporated by reference in section 4.100, above.
+>
+> 2) Any member has been convicted of a drug-related felony
+> where SNAP benefits were used to purchase drugs. Drug-
+> related felony means the same as in 7 C.F.R. 273.11(m),
+> which is incorporated by reference in section 4.100, above.
+>
+> d. Households that are ineligible for SNAP benefits under ECE rules
+> shall have their eligibility determined under SE rules.
 
 ### S49. Colorado Standard Eligibility (SE) income and resource criteria
 
@@ -448,15 +504,32 @@ FNS, SNAP FY 2026 Maximum Allotments and Deductions, Table 5. https://www.fna.us
 
 ### S57. Colorado resource eligibility standards: categorical exemption and the two resource limits
 
-Document: D-19
+Document: D-82
 
-10 CCR 2506-1-4.408,A,D-E. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.408
+10 CCR 2506-1 4.408.A, D-E (version effective 2026-10-01; final verification F-17: re-pointed from the Cornell copy D-19 to the current SOS rule). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
 
-> A. The local office shall consider households eligible under either expanded or basic categorical eligibility exempt from the resource eligibility criteria of this section.
-> D. As a result of the Food, Conservation and Energy Act of 2008, adjustments to the SNAP resource limit will be subject to change annually according to the Consumer Price Index. There are currently two (2) resource limits:
-> 1. One established for households that do contain a member who is aged sixty (60) and older and/or a person with a disability; and,
-> 2. Another established for households that do not contain a member who is aged sixty (60) and older and/or a person with a disability.
-> E. The resource limits are as follows: Effective October 1, 2024, the resource limit for households that include a member who is aged sixty (60) and older and/or a person with a disability is four thousand and five hundred dollars ($4,500). The resource limit for households that do not include a member who is aged sixty (60) and older and/or a person with a disability is three thousand dollars ($3,000).
+> A. The local office shall consider households eligible under either expanded or basic
+> categorical eligibility exempt from the resource eligibility criteria of this section.
+>
+> ...
+>
+> D. As a result of the Food, Conservation and Energy Act of 2008, adjustments to the
+> SNAP resource limit will be subject to change annually according to the
+> Consumer Price Index. There are currently two (2) resource limits:
+>
+> 1. One established for households that do contain a member who is aged
+> sixty (60) and older and/or a person with a disability; and,
+>
+> 2. Another established for households that do not contain a member who is
+> aged sixty (60) and older and/or a person with a disability.
+>
+> E. The resource limits are as follows:
+>
+> Effective October 1, 2024, the resource limit for households that include a
+> member who is aged sixty (60) and older and/or a person with a disability is four
+> thousand and five hundred dollars ($4,500). The resource limit for households
+> that do not include a member who is aged sixty (60) and older and/or a person
+> with a disability is three thousand dollars ($3,000).
 
 ### S58. Federal entitlement to expedited service
 
@@ -619,28 +692,96 @@ Document: D-16
 
 ### S132. Colorado ABAWD work requirements and exemptions
 
-Document: D-18
+Document: D-82
 
-10 CCR 2506-1-4.311, 4.311.1, 4.311.3. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.311
+10 CCR 2506-1 4.311.A.1-2, B, 4.311.1, 4.311.3 intro and A.1 (version effective 2026-10-01; final verification F-17: re-pointed from the Cornell copy D-18 to the current SOS rule). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
 
-> A. The following individuals are not considered ABAWDs and are therefore not subject to the ABAWD work requirement:
+> A. The following individuals are not considered ABAWDs and are therefore not
+> subject to the ABAWD work requirement:
+>
 > 1. Aged seventeen (17) or younger.
+>
 > 2. Aged fifty-five (55) or older.
+>
+> ...
+>
 > B. To fulfill the ABAWD work requirement, the ABAWD must be:
-> 1. Working 20 hours per week or averaged monthly for a total of 80 hours a month; or
-> 2. Participating in and complying with the requirements of a work program 20 hours per week or averaged monthly for a total of 80 hours a month; or
-> 3. In any combination of working and participating in a work program for a total of 20 hours per week or averaged monthly for a total of 80 hours a month; or
-> 4. Participating in and complying with the Colorado Workfare program. Failure to meet the ABAWD work requirement will result in the ABAWD losing eligibility if they accrue three countable months within a thirty-six (36) calendar month period.
-> 4.311.1 ABAWD Exemptions Any individual who meets the definition of an ABAWD can be exempt from the ABAWD work requirement by meeting one of the follow exemptions:
+>
+> 1. Working 20 hours per week or averaged monthly for a total of 80 hours a
+> month; or
+>
+> a. Working includes:
+>
+> i. Work completed in exchange for money (compensated
+> work); or
+> ii. Work completed in exchange for goods or services (in-kind
+> work); or
+> iii. Unpaid work verified by the provider of the unpaid work; or
+> iv. Any combination of compensated work, unpaid work, or in-
+> kind work.
+>
+> 2. Participating in and complying with the requirements of a work program 20
+> hours per week or averaged monthly for a total of 80 hours a month; or
+>
+> a. A work program includes:
+>
+> i. A program of employment and training operated or
+> supervised by the CDHS program other than a job search
+> program or a job search training program;
+>
+> ii. A program under the Workforce Innovation and Opportunity
+> Act (WIOA);
+>
+> iii. A program under Section 236 of the Trade Act of 1974 (19
+> USC 2296, “Trade Adjustment Assistance”).
+>
+> 3. In any combination of working and participating in a work program for a
+> total of 20 hours per week or averaged monthly for a total of 80 hours a
+> month; or
+>
+> 4. Participating in and complying with the Colorado Workfare program.
+>
+> Failure to meet the ABAWD work requirement will result in the ABAWD losing eligibility
+> if they accrue three countable months within a thirty-six (36) calendar month period.
+>
+> ...
+>
+> 4.311.1 ABAWD Exemptions
+> Any individual who meets the definition of an ABAWD can be exempt from the ABAWD
+> work requirement by meeting one of the follow exemptions:
+>
 > A. Exempt from the general work requirements;
+>
 > B. Pregnancy;
+>
 > C. A person experiencing homelessness, as defined in Section 4.000.1;
+>
 > D. Veterans;
-> E. Aged twenty-four (24) years and younger and in Foster Care on their eighteenth (18th) birthday;
-> 4.311.3 ABAWD Time Limits ABAWDs are not eligible to participate in SNAP if they have received SNAP benefits for more than three countable months during a thirty-six (36) month period.
+>
+> E. Aged twenty-four (24) years and younger and in Foster Care on their eighteenth
+> (18th) birthday;
+>
+> F. Exempt under a waiver approved by the USDA, FNS; or
+>
+> G. Exempt using Colorado defined state exemptions as identified in the current
+> SNAP Employment and Training State Plan.
+>
+> ...
+>
+> 4.311.3 ABAWD Time Limits
+> ABAWDs are not eligible to participate in SNAP if they have received SNAP benefits for
+> more than three countable months during a thirty-six (36) month period.
+>
+> However, ABAWDs may be eligible for up to three additional consecutive months after
+> regaining eligibility in accordance with paragraph (C) of this section.
+>
 > A. Countable months
-> 1. Countable months are accrued when an ABAWD received SNAP benefits for the full benefit month but did not:
+>
+> 1. Countable months are accrued when an ABAWD received SNAP benefits
+> for the full benefit month but did not:
+>
 > A. Meet an exemption; or
+>
 > B. Fulfill their work requirements.
 
 ### S133. Students, statutory rule and exemptions
@@ -675,23 +816,98 @@ Document: D-10
 
 ### S135. Colorado student eligibility and exemption criteria
 
-Document: D-18
+Document: D-82
 
-10 CCR 2506-1-4.306, 4.306.1. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.306
+10 CCR 2506-1 4.306.A-B, 4.306.1 (version effective 2026-10-01; final verification F-17: re-pointed from the Cornell copy D-18 to the current SOS rule). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
 
-> A. Any person who is age eighteen (18) through forty-nine (49) and enrolled at least half time in an institution of higher education shall not be eligible to participate in the SNAP unless the person meets one of the exemption criteria outlined at 4.306.1.
+> 4.306 STUDENT ELIGIBILITY
+> A. Any person who is age eighteen (18) through forty-nine (49) and enrolled at least
+> half time in an institution of higher education shall not be eligible to participate in
+> the SNAP unless the person meets one of the exemption criteria outlined at
+> 4.306.1.
+>
 > B. The following individuals are not considered under student eligibility criteria:
+>
 > 1. Persons aged seventeen (17) or under;
+>
 > 2. Persons aged fifty (50) or over;
+>
+> 3. Persons enrolled less than half time;
+>
+> 4. Persons enrolled full time in schools and training programs that are not
+> institutions of higher education;
+>
 > 5. Persons attending high school;
-> 4.306.1 Student Exemption Criteria To be eligible to participate in SNAP, a student must meet at least one (1) of the following exemptions:
-> A. Be physically or mentally unfit for employment (including students participating through or in a vocational rehabilitation program).
-> B. The student is employed for an average of twenty (20) hours per week and is paid for such employment. The student shall be employed an average of twenty (20) hours each week, regardless of wages received. If the student is self-employed, the student shall work an average of twenty (20) hours a week and have earnings after allowable business expenses are deducted equal to at least the federal minimum wage multiplied by twenty (20) hours.
+>
+> 6. Persons participating in an on-the-job training program. On-the-job training
+> is defined as training in an employment environment and does not include
+> an internship, field work, or practical experience associated with a course
+> of higher education.
+>
+> ...
+>
+> 4.306.1 Student Exemption Criteria
+> To be eligible to participate in SNAP, a student must meet at least one (1) of the
+> following exemptions:
+>
+> A. Be physically or mentally unfit for employment (including students participating
+> through or in a vocational rehabilitation program).
+>
+> If mental or physical unfitness for employment is claimed and the unfitness is not
+> evident to the local office, verification may be required. Appropriate verification
+> may consist of receipt of temporary or permanent disability benefits or a
+> statement from a physician or licensed psychologist.
+>
+> B. The student is employed for an average of twenty (20) hours per week and is
+> paid for such employment. The student shall be employed an average of twenty
+> (20) hours each week, regardless of wages received.
+>
+> If the student is self-employed, the student shall work an average of twenty (20)
+> hours a week and have earnings after allowable business expenses are
+> deducted equal to at least the federal minimum wage multiplied by twenty (20)
+> hours.
+>
+> The weekly employment of twenty (20) hours may be based on an average
+> number of hours worked per month, so long as the student is employed for eighty
+> (80) hours per month.
+>
 > C. The student is participating in a state or federally financed work-study program.
-> D. The student is responsible for more than half of the physical care of a dependent household member under the age of six (6), or a full-time student who is a single parent with responsibility for the care of a dependent child under age twelve (12). The single parent provision applies in those situations where only one natural, adoptive, or stepparent regardless of marital status is in the same SNAP household as the child. A full-time student in the same SNAP household with a child who is under their parental control may qualify if they do not reside with their spouse.
-> E. The student is responsible for more than half of the physical care of a dependent household member who has reached the age of six (6) but is under the age of twelve (12) where the local office has determined that adequate childcare is not available to enable the individual to attend class and satisfy the requirement of item B or item C, above.
-> F. The student is receiving a Title IV-A TANF cash grant.
-> G. The student is assigned to or placed in an institution of higher education through a program under the Workforce Innovation and Opportunity Act (WIOA), Employment First (EF), a program under Section 236 of the Trade Act of 1974 (19 U.S.C. 2296), another program for the purpose of employment and training operated by the state or local government.
+> The student shall be approved for a work-study program at the time of application
+> for SNAP. The work-study shall be approved for the school term and the student
+> shall anticipate working during that time. The student qualifies for this exemption
+> the month the school term in which the work-study will occur begins or the month
+> work-study is approved, whichever is later. The exemption will continue until the
+> end of the school term or until it becomes known that the student has refused an
+> assignment. The exemption shall not continue between terms when there is a
+> break of one (1) full month or longer unless the student is participating in work-
+> study during the break.
+>
+> D. The student is responsible for more than half of the physical care of a dependent
+> household member under the age of six (6), or a full-time student who is a single
+> parent with responsibility for the care of a dependent child under age twelve (12).
+> The single parent provision applies in those situations where only one natural,
+> adoptive, or stepparent regardless of marital status is in the same SNAP
+> household as the child. A full-time student in the same SNAP household with a
+> child who is under their parental control may qualify if they do not reside with
+> their spouse.
+>
+> E. The student is responsible for more than half of the physical care of a dependent
+> household member who has reached the age of six (6) but is under the age of
+> twelve (12) where the local office has determined that adequate childcare is not
+> available to enable the individual to attend class and satisfy the requirement of
+> item B or item C, above.
+>
+> F. The student is receiving a Title IV-A TANF cash grant. The student’s needs shall
+> be included in the grant to be eligible under this provision. Family Preservation is
+> not considered a TANF cash grant.
+>
+> G. The student is assigned to or placed in an institution of higher education through
+> a program under the Workforce Innovation and Opportunity Act (WIOA),
+> Employment First (EF), a program under Section 236 of the Trade Act of 1974
+> (19 U.S.C. 2296), another program for the purpose of employment and training
+> operated by the state or local government (program shall have at least one (1)
+> component equivalent to the SNAP EF Program), or as a result of participating in
+> the JOBS program under Title IV of the Social Security Act.
 
 ### S81. FY2026 standard deduction table
 
@@ -857,12 +1073,20 @@ Document: D-19
 
 ### S99. Colorado child support expense exclusion
 
-Document: D-19
+Document: D-82
 
-10 CCR 2506-1-4.407.5,A. https://www.law.cornell.edu/regulations/colorado/10-CCR-2506-1-4.407
+10 CCR 2506-1 4.407.5.A (version effective 2026-10-01; final verification F-17: re-pointed from the Cornell copy D-19 to the current SOS rule). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
 
 > 4.407.5 Child Support Expense Exclusion
-> A. A household shall receive an exclusion from income for legally binding child support payments made to or for non-household members. The child support exclusion will be made from the household's total countable gross income and prior to any gross income test to determine eligibility. The court-ordered amount and the most recent amounts that have been paid must be verified by the household.
+>
+> A. A household shall receive an exclusion from income for legally binding child
+> support payments made to or for non-household members. The child support
+> exclusion will be made from the household's total countable gross income and
+> prior to any gross income test to determine eligibility. The court-ordered amount
+> and the most recent amounts that have been paid must be verified by the
+> household. Legally obligated child support paid by a household member under
+> the age of eighteen (18) shall be an allowable exclusion, even if the income of
+> the child is considered exempt under Section 4.405, C.
 
 ### S100. Colorado excess medical deduction
 
@@ -13768,3 +13992,550 @@ Document: D-86
 > “Non-Traditional Dwelling”: A non-traditional dwelling means a structure that provides housing that is not
 > affixed to a permanent physical address or is enumerated as such in this rule (see Section 3.752.25),
 > including, but not limited to, cars, vans, buses, tents and lean-tos.
+
+### S2500. SNAP initial month: prorated by days from application; no allotment issued below $10
+
+Document: D-4
+
+7 U.S.C. 2017(c)(1). https://www.law.cornell.edu/uscode/text/7/2017
+
+> (c) First month benefits prorated
+>
+> (1)
+> The value of the allotment issued to any eligible household for the initial month or other initial period for which an allotment is issued shall have a value which bears the same ratio to the value of the allotment for a full month or other initial period for which the allotment is issued as the number of days (from the date of application) remaining in the month or other initial period for which the allotment is issued bears to the total number of days in the month or other initial period for which the allotment is issued, except that no allotment may be issued to a household for the initial month or period if the value of the allotment which such household would otherwise be eligible to receive under this subsection is less than $10. Households shall receive full months’ allotments for all months within a certification period, except as provided in the first sentence of this paragraph with respect to an initial month .
+
+### S2501. SNAP initial month: no benefits when the initial-month calculation is under $10
+
+Document: D-14
+
+7 CFR 273.10(e)(2)(ii)(B). https://www.ecfr.gov/current/title-7/section-273.10
+
+> (B) If the calculation of benefits in accordance with paragraph (e)(2)(ii)(A) of this section for an initial month would yield an allotment of less than $10 for the household, no benefits shall be issued to the household for the initial month.
+
+### S2502. Colorado SNAP sponsored non-citizen: the sponsor's and spouse's income and resources deemed, less 20% of earnings and the gross income limit, divided among the sponsor's non-citizens; resources less $1,500
+
+Document: D-82
+
+10 CCR 2506-1 4.305.2.C-D (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. Only when a sponsored non-citizen is an eligible non-citizen will the local office
+> consider the income and resources of the sponsor and sponsor's spouse
+> available to the household. For purposes of determining eligibility and benefit
+> level of a household of which an eligible sponsored non-citizen is a member, the
+> local office shall deem the income and resources of the sponsor and the
+> sponsor's spouse, if they have executed USCIS Form I-864 or I-864A, as the
+> unearned income and resources of the sponsored non-citizen.
+>
+> D. Calculating Sponsor Income
+>
+> 1. The total gross income and resources of a sponsor and sponsor's spouse
+> shall be considered as unearned income and resources of a sponsored
+> non-citizen for a period until the person’s citizenship is obtained; or until
+> the non-citizen has worked or can receive credit for forty (40) work
+> quarters under Title II of the Social Security Act; or the sponsor dies.
+>
+> The spouse's income and resources shall be counted even if the sponsor
+> and spouse were married after the signing of the agreement.
+>
+> 2. The monthly income of the sponsor and the sponsor's spouse to be
+> considered toward the non-citizen shall be the total monthly earned and
+> unearned income of the sponsor and spouse at the time the household
+> containing the sponsored non-citizen member applies for or is recertified
+> for Program participation and shall be calculated as follows:
+>
+> a. Reduced by an amount equal to twenty percent (20%) of the
+> earned income of the sponsor and the sponsor's spouse; and,
+>
+> b. An amount equal to the SNAP monthly gross income eligibility limit
+> for a household equal in size to the sponsor, the sponsor's
+> spouse, and any other person who is claimed or could be claimed
+> by the sponsor or the sponsor's spouse as a dependent for federal
+> income tax purposes; and,
+>
+> c. If a sponsored non-citizen can demonstrate to the local office's
+> satisfaction that his or her sponsor is the sponsor of other non-
+> citizens, the local office shall divide the deemed income and
+> resources of the sponsor and the sponsor's spouse by the number
+> of such sponsored non-citizens.
+>
+> 3. If the sponsored non-citizen has already reported gross income
+> information on his/her sponsor in compliance with the sponsored non-
+> citizen rules of another state assistance program, and the local office is
+> aware of the amounts that income amount shall be used for SNAP
+> deeming purposes. However, the local office shall limit allowable
+> reductions to the total gross income of the sponsor and the sponsor's
+> spouse prior to attributing an income amount to the non-citizen. The only
+> reduction will be twenty percent (20%) earned income amount for that
+> portion of the income determined as earned income of the sponsor and
+> the sponsor's spouse and an amount equal to the SNAP monthly gross
+> income eligibility limit for a household equal in size to the sponsor, the
+> sponsor's spouse, and any other person who is claimed or could be
+> claimed by the sponsor or the sponsor's spouse as a dependent for
+> federal income tax purposes.
+>
+> 4. Actual money paid to the non-citizen by the sponsor or the sponsor's
+> spouse shall not be considered as income to the non-citizen unless the
+> amount paid exceeds the amount already considered as income as above.
+> Only the portion that exceeds the income already considered shall be
+> added to that income.
+>
+> 5. If the non-citizen changes sponsors during the certification period, a
+> change shall be processed to consider the new sponsor's income and
+> resources toward the non-citizen as soon as possible after the information
+> is verified. The previous sponsor's income and resources shall be used
+> until such determination; however, should any present sponsor become
+> deceased, that sponsor's income and resources shall not be attributed to
+> the non-citizen.
+>
+> 6. Total resources of the sponsor and the sponsor's spouse shall be
+> considered as resources to the non-citizen reduced by one thousand five
+> hundred dollars ($1,500).
+
+### S2503. SNAP sponsor deeming: income with the 273.9(c) exclusions, the 20% and gross-limit reductions, payments above the deemed amount, resources less $1,500, division among sponsored aliens; sponsored and citizen children of a sponsored alien exempt
+
+Document: D-9
+
+7 CFR 273.4(c)(2)(i)-(v), (c)(3)(vi)-(vii). https://www.ecfr.gov/current/title-7/section-273.4
+
+> (2) *Deeming of sponsor's income and resources.* For purposes of this paragraph (c)(2), only in the event a sponsored alien is an eligible alien in accordance with paragraph (a) of this section will the State agency consider available to the household the income and resources of the sponsor and spouse. For purposes of determining the eligibility and benefit level of a household of which an eligible sponsored alien is a member, the State agency must deem the income and resources of sponsor and the sponsor's spouse, if he or she has executed USCIS Form I-864 or I-864A, as the unearned income and resources of the sponsored alien. The State agency must deem the sponsor's income and resources until the alien gains U. S. citizenship, has worked or can receive credit for 40 qualifying quarters of work as described in paragraph (a)(6)(ii)(A) of this section, or the sponsor dies.
+>
+> (i) The monthly income of the sponsor and sponsor's spouse (if he or she has executed USCIS Form I-864 or I-864A) deemed as that of the eligible sponsored alien must be the total monthly earned and unearned income, as defined in § 273.9(b) with the exclusions provided in § 273.9(c) of the sponsor and sponsor's spouse at the time the household containing the sponsored alien member applies or is recertified for participation, reduced by:
+>
+> (A) A 20 percent earned income amount for that portion of the income determined as earned income of the sponsor and the sponsor's spouse; and
+>
+> (B) An amount equal to the Program's monthly gross income eligibility limit for a household equal in size to the sponsor, the sponsor's spouse, and any other person who is claimed or could be claimed by the sponsor or the sponsor's spouse as a dependent for Federal income tax purposes.
+>
+> (ii) If the alien has already reported gross income information on his or her sponsor in compliance with the sponsored alien rules of another State agency administered assistance program, the State agency may use that income amount for SNAP deeming purposes. However, the State agency must limit allowable reductions to the total gross income of the sponsor and the sponsor's spouse prior to attributing an income amount to the alien to amounts specified in paragraphs (c)(2)(i)(A) and (c)(2)(i)(B) of this section.
+>
+> (iii) The State agency must consider as income to the alien any money the sponsor or the sponsor's spouse pays to the eligible sponsored alien, but only to the extent that the money exceeds the amount deemed to the eligible sponsored alien in accordance with paragraph (c)(2)(i) of this section.
+>
+> (iv) The State agency must deem as available to the eligible sponsored alien the total amount of the resources of the sponsor and sponsor's spouse as determined in accordance with § 273.8, reduced by $1,500.
+>
+> (v) If a sponsored alien can demonstrate to the State agency's satisfaction that his or her sponsor is the sponsor of other aliens, the State agency must divide the income and resources deemed under the provisions of paragraphs (c)(2)(i) and (c)(2)(iii) of this section by the number of such sponsored aliens. The State agency must use the same procedure to determine the amount of deemed income and resources to exclude in the case of a sponsored alien or a citizen child of a sponsored alien who is exempt from deeming in accordance with paragraphs (c)(3)(vi) or (c)(3)(vii) of this section.
+>
+> ...
+>
+> (3) *Exempt aliens.* The provisions of paragraph (c)(2) of this section do not apply to:
+>
+> ...
+>
+> (vi) A sponsored alien child under 18 years of age of a sponsored alien.
+>
+> (vii) A citizen child under age 18 of a sponsored alien.
+
+### S2504. Colorado SNAP resource standards: a sponsor's resources less two thousand dollars
+
+Document: D-82
+
+10 CCR 2506-1 4.408.B (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Households that do not meet expanded or basic categorical eligibility criteria
+> shall have their nonexempt resources, as anticipated to be available in the
+> issuance month, used to determine household eligibility.
+>
+> The resources of a sponsor and spouse considered toward a non-citizen
+> household shall be the sponsor's total resources less two thousand dollars
+> ($2,000).
+
+### S2505. 8 U.S.C. 1612(a)(2)(A), (G), (K), (L): refugee, Indian, Hmong and five-year exceptions to the specified-program bar
+
+Document: D-24
+
+8 U.S.C. 1612(a)(2)(A), (G), (K), (L). https://www.law.cornell.edu/uscode/text/8/1612
+
+> (A) Time-limited exception for refugees and asylees With respect to the specified Federal programs described in paragraph (3), paragraph (1) shall not apply to an alien until 7 years after the date—
+>
+> (i)
+> an alien is admitted to the United States as a refugee under section 207 of the Immigration and Nationality Act [ 8 U.S.C. 1157 ];
+>
+> (ii)
+> an alien is granted asylum under section 208 of such Act [ 8 U.S.C. 1158 ];
+>
+> (iii)
+> an alien’s deportation is withheld under section 243(h) of such Act [ 8 U.S.C. 1253 ] (as in effect immediately before the effective date of section 307 of division C of Public Law 104–208 ) or section 241(b)(3) of such Act [ 8 U.S.C. 1231(b)(3) ] (as amended by section 305(a) of division C of Public Law 104–208 );
+>
+> (iv)
+> an alien is granted status as a Cuban and Haitian entrant (as defined in section 501(e) of the Refugee Education Assistance Act of 1980 ); or
+>
+> (v)
+> an alien is admitted to the United States as an Amerasian immigrant pursuant to section 584 of the Foreign Operations, Export Financing, and Related Programs Appropriations Act, 1988 (as contained in section 101(e) of Public Law 100–202 and amended by the 9th proviso under migration and refugee assistance in title II of the Foreign Operations, Export Financing, and Related Programs Appropriations Act, 1989, Public Law 100–461 , as amended).
+>
+> ...
+>
+> (G) Exception for certain Indians With respect to eligibility for benefits for the specified Federal programs described in paragraph (3), section 1611(a) of this title and paragraph (1) shall not apply to any individual—
+>
+> (i)
+> who is an American Indian born in Canada to whom the provisions of section 289 of the Immigration and Nationality Act ( 8 U.S.C. 1359 ) apply; or
+>
+> (ii)
+> who is a member of an Indian tribe (as defined in section 5304(e) of title 25 ).
+>
+> ...
+>
+> (K) Food stamp exception for certain Hmong and Highland Laotians With respect to eligibility for benefits for the specified Federal program described in paragraph (3)(B), paragraph (1) shall not apply to—
+>
+> (i) any individual who—
+>
+> (I)
+> is lawfully residing in the United States; and
+>
+> (II)
+> was a member of a Hmong or Highland Laotian tribe at the time that the tribe rendered assistance to United States personnel by taking part in a military or rescue operation during the Vietnam era (as defined in section 101 of title 38 );
+>
+> (ii)
+> the spouse, or an unmarried dependent child, of such an individual; or
+>
+> (iii)
+> the unremarried surviving spouse of such an individual who is deceased.
+>
+> (L) Food stamp exception for certain qualified aliens
+> With respect to eligibility for benefits for the specified Federal program described in paragraph (3)(B), paragraph (1) shall not apply to any qualified alien who has resided in the United States with a status within the meaning of the term “qualified alien” for a period of 5 years or more beginning on the date of the alien’s entry into the United States.
+
+### S2506. SNAP eligible aliens: Indians born in Canada and tribal members; Hmong and Highland Laotians and their families; refugees, asylees and others not subject to five years; an earlier status stands alone
+
+Document: D-9
+
+7 CFR 273.4(a)(3)-(4), (a)(6)(ii)(B)-(F), (a)(6)(iv). https://www.ecfr.gov/current/title-7/section-273.4
+
+> (3) An individual who is:
+>
+> (i) An American Indian born in Canada who possesses at least 50 per centum of blood of the American Indian race to whom the provisions of section 289 of the Immigration and Nationality Act (INA) (8 U.S.C. 1359) apply; or
+>
+> (ii) A member of an Indian tribe as defined in section 4(e) of the Indian Self-Determination and Education Assistance Act (25 U.S.C. 450b(e)) which is recognized as eligible for the special programs and services provided by the U.S. to Indians because of their status as Indians;
+>
+> (4) An individual who is:
+>
+> (i) Lawfully residing in the U.S. and was a member of a Hmong or Highland Laotian tribe at the time that the tribe rendered assistance to U.S. personnel by taking part in a military or rescue operation during the Vietnam era beginning August 5, 1964, and ending May 7, 1975;
+>
+> (ii) The spouse, or surviving spouse of such Hmong or Highland Laotian who is deceased, or
+>
+> (iii) An unmarried dependent child of such Hmong or Highland Laotian who is under the age of 18 or if a full-time student under the age of 22; an unmarried child under the age of 18 or if a full time student under the age of 22 of such a deceased Hmong or Highland Laotian provided the child was dependent upon him or her at the time of his or her death; or an unmarried disabled child age 18 or older if the child was disabled and dependent on the person prior to the child's 18th birthday. For purposes of this paragraph (a)(4)(iii), child means the legally adopted or biological child of the person described in paragraph (a)(4)(i) of this section, or
+>
+> ...
+>
+> (ii) A qualified alien, as defined in paragraph (a)(6)(i) of this section, is eligible to receive SNAP benefits and is not subject to the requirement to be in qualified status for 5 years as set forth in paragraph (a)(6)(iii) of this section, if such individual meets at least one of the criteria of this paragraph (a)(6)(ii):
+>
+> ...
+>
+> (B) An alien admitted as a refugee under section 207 of the INA;
+>
+> (C) An alien granted asylum under section 208 of the INA;
+>
+> (D) An alien whose deportation is withheld under section 243(h) of the INA as in effect prior to April 1, 1997, or whose removal is withheld under section 241(b)(3) or the INA;
+>
+> (E) An alien granted status as a Cuban or Haitian entrant (as defined in section 501(e) of the Refugee Education Assistance Act of 1980);
+>
+> (F) An Amerasian admitted pursuant to section 584 of Public Law 100-202, as amended by Public Law 100-461;
+>
+> ...
+>
+> (iv) Each category of eligible alien status stands alone for purposes of determining eligibility. Subsequent adjustment to a more limited status does not override eligibility based on an earlier less rigorous status. Likewise, if eligibility expires under one eligible status, the State agency must determine if eligibility exists under another status.
+
+### S2507. SNAP student exemptions: a self-employed student earns at least the federal minimum wage times 20 hours; a full-time student with parental control of a child where no parent is in the household
+
+Document: D-10
+
+7 CFR 273.5(b)(5), (b)(10). https://www.ecfr.gov/current/title-7/section-273.5
+
+> (5) Be employed for a minimum of 20 hours per week and be paid for such employment or, if self-employed, be employed for a minimum of 20 hours per week and receiving weekly earnings at least equal to the Federal minimum wage multiplied by 20 hours. The State agency may choose to determine compliance with this requirement by calculating whether the student worked an average of 20 hours per week over the period of a month, quarter, trimester or semester. State agencies may choose to exclude hours accrued during academic breaks that do not exceed one month. A State agency that chooses to average student work hours must specify this choice and specify the time period over which the work hours will be averaged in its State plan of operation;
+>
+> ...
+>
+> (10) Be a single parent enrolled in an institution of higher education on a full-time basis (as determined by the institution) and be responsible for the care of a dependent child under age 12.
+>
+> (i) This provision applies in those situations where only one natural, adoptive or stepparent (regardless of marital status) is in the same SNAP household as the child.
+>
+> (ii) If no natural, adoptive or stepparent is in the same SNAP household as the child, another full-time student in the same SNAP household as the child may qualify for eligible student status under this provision if he or she has parental control over the child and is not living with his or her spouse.
+
+### S2508. Colorado SNAP: ineligible students and other non-household members; their income and resources not available, the student not considered in the allotment
+
+Document: D-82
+
+10 CCR 2506-1 4.411.2.A, C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.411.2 Treatment of Income and Resources of Other Non-Household
+> Members
+>
+> A. For those non-household members that have not been disqualified, such as live-
+> in attendants and ineligible students, the income and resources of the non-
+> household member shall not be considered available to the household. Cash
+> payments from the non-household member to the household will be considered
+> as income to the household. Vendor payments, as defined in Sections 4.405, H
+> and 4.405, I, shall be excluded as income. Except for the mandatory telephone
+> allowance, if the household shares deductible expenses with the non-household
+> member, only the amount actually paid or contributed by the household shall be
+> deducted as a household expense. If the payments or contributions cannot be
+> differentiated, the expenses shall be prorated evenly among persons actually
+> paying or contributing to the expenses and only the household's pro rata share
+> deducted.
+>
+> ...
+>
+> C. A person who is an ineligible student for SNAP purposes shall be treated as a
+> non-household member. The other members of a household containing the
+> ineligible student may be certified. The income and resources of the ineligible
+> student shall not be considered available to the other household members for
+> determining the household's income resources and deductions nor shall the
+> student be considered in determining the household's allotment.
+
+### S2509. Colorado SNAP: person with disabilities
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1, "Person with disabilities" (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Person with disabilities” means a person who:
+>
+> 1. Receives Supplemental Security Income (SSI) benefits under Title XVI of
+> the Social Security Act, or the Colorado Supplement, or Aid to the Needy
+> and Disabled- Supplemental Security Income- Colorado Supplement
+> (AND-SSI-CS), or Aid to the Blind-Supplemental Security Income-
+> Colorado Supplement (AB-SSI-CS); or Disability or Blindness Payments
+> under Title I, II, X, or IXV of the Social Security Act;
+>
+> 2. Is a veteran with a service-connected disability rated or paid as a total
+> disability under Title 38 of the United States Code or is a veteran receiving
+> a pension for a non-service connected disability;
+>
+> 3. Is a veteran considered by the Veterans Affairs (VA) to be in need of
+> regular aid and attendance or permanently housebound under Title 38 of
+> the United States Code;
+>
+> 4. Is a surviving spouse of a veteran and considered in need of aid and
+> attendance or permanently housebound or a surviving child of a veteran
+> and considered by the VA to be permanently incapable of self-support
+> under Title 38 of the United States Code;
+>
+> 5. Is a surviving spouse or child of a veteran and considered by the VA to be
+> entitled to compensation for a service-connected death or pension
+> benefits for a non-service-connected death under Title 38 of the United
+> States Code and has a disability considered permanent under Section
+> 221(i) of the Social Security Act. “Entitled”, as used in this definition, refers
+> to those veterans’ surviving spouses and children who are receiving the
+> compensation or benefits or have been approved for such benefits but are
+> not yet receiving them;
+>
+> 6. Has a disability considered permanent under Section 221(i) of the Social
+> Security Act and receives a federal, state, or local public disability
+> retirement pension;
+>
+> 7. Receives an annuity for disability from the railroad retirement board who is
+> considered as a disabled person with disabilities by the SSA or who
+> qualifies for Medicare as determined by the railroad retirement board; or
+>
+> 8. Is a recipient of interim assistance benefits pending the receipt of the
+> Supplemental Security Income (SSI), disability-related medical assistance
+> under Title XIX of the Social Security Act, or disability-based state
+> assistance benefits provided that the eligibility to receive these benefits is
+> based on disability or blindness criteria which are at least as stringent as
+> those used under Title XVI of the Social Security Act.
+
+### S2510. Colorado SNAP: self-employment income of a farmer; a loss offset against other income
+
+Document: D-82
+
+10 CCR 2506-1 4.403.12.E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. Self-Employment Income of a Farmer
+>
+> 1. If after deducting all allowable business expenses from gross income
+> received from self-employment as a farmer, the costs of producing the
+> income exceed the income derived, such losses shall be offset against
+> other income received by the household. Steps to take in offsetting the
+> loss shall be as noted below. The net losses shall be prorated over the
+> period intended and the monthly prorated amount deducted from other
+> monthly income.
+>
+> 2. For purposes of applying this rule, an individual shall be considered a self-
+> employed farmer if they receive or expect to receive gross annual income
+> of one thousand dollars ($1,000) or more from the farm enterprise. In
+> addition, the following steps shall be taken when determining eligibility and
+> benefits levels of the self-employed farmer.
+>
+> a. The monthly prorated loss shall be deducted first from any other
+> “self-employment” income.
+>
+> b. Any remaining loss will then be deducted from other earned income
+> into the household. This total shall be the figure from which the
+> earned income deduction shall be calculated.
+>
+> c. Finally, any other income shall be added, and this total shall be the
+> amount used to compare the household's gross income to income
+> eligibility standards for the appropriate-sized household.
+
+### S2511. SNAP farm self-employment loss: offset first against other self-employment income, then against earned and unearned income after the earned income deduction
+
+Document: D-15
+
+7 CFR 273.11(a)(2)(ii). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (ii) If the cost of producing self-employment income exceeds the income derived from self-employment as a farmer (defined for the purposes of this paragraph (a)(2)(ii) as a self-employed farmer who receives or anticipates receiving annual gross proceeds of $1,000 or more from the farming enterprise), such losses must be prorated in accordance with paragraph (a)(1) of this section, and then offset against countable income to the household as follows:
+>
+> (A) Offset farm self-employment losses first against other self-employment income.
+>
+> (B) Offset any remaining farm self-employment losses against the total amount of earned and unearned income *after* the earned income deduction has been applied.
+
+### S2512. Colorado SNAP: an authorized representative's identity verified with the head of household's, at application and under expedited service
+
+Document: D-82
+
+10 CCR 2506-1 4.301, 4.502.A.1, 4.505.1.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.301 IDENTITY OF APPLICANT
+> The identity of the person submitting an application shall be verified either through
+> interfaces, collateral contact, or client provided verification. When an authorized
+> representative applies on behalf of a household, the identity of both the authorized
+> representative and the head of household shall be verified.
+>
+> ...
+>
+> 4.502 VERIFICATION REQUIREMENTS AT APPLICATION, RECERTIFICATION,
+> AND PERIODIC REPORT
+> A. Verification Requirements at Application
+>
+> 1. Expedited Service Requirements
+> Only verification of the identity of the head of household is required. When
+> an authorized representative applies on behalf of a household, the identity
+> of both the authorized representative and the head of household shall be
+> verified. No requirement for a specific document may be imposed. Client
+>
+> ...
+>
+> 4.505.1 Verification of Identity
+>
+> A. The identity of the person making an application shall be verified. When an
+> authorized representative applies on behalf of a household, the identity of both
+> the authorized representative and the head of household shall be verified.
+
+### S2513. SNAP identity: an authorized representative's identity verified as well as the head of household's
+
+Document: D-95
+
+7 CFR 273.2(f)(1)(vii). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (vii) *Identity.* The identity of the person making application shall be verified. Where an authorized representative applies on behalf of a household, the identity of both the authorized representative and the head of household shall be verified. Identity may be verified through readily available documentary evidence, or if this is unavailable, through a collateral contact. Examples of acceptable documentary evidence which the applicant may provide include, but are not limited to, a driver's license, a work or school ID, an ID for health benefits or for another assistance or social services program, a voter registration card, wage stubs, or a birth certificate. Any documents which reasonably establish the applicant's identity must be accepted, and no requirement for a specific type of document, such as a birth certificate, may be imposed.
+
+### S2514. Colorado maximum allotment: households of eighteen or more
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.D (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 8 $1,841
+> 9-17 $225 per additional person
+> 18+ $3,887
+
+### S2515. Eligibility of California Indians for Indian Health Service health services
+
+Document: D-230
+
+25 U.S.C. 1679(a) (Indian Health Care Improvement Act sec. 809). https://www.law.cornell.edu/uscode/text/25/1679
+
+> (a) In general
+> The following California Indians shall be eligible for health services provided by the Service:
+>
+> (1) Any member of a federally recognized Indian tribe.
+>
+> (2) Any descendant of an Indian who was residing in California on June 1, 1852, if such descendant—
+>
+> (A) is a member of the Indian community served by a local program of the Service; and
+>
+> (B) is regarded as an Indian by the community in which such descendant lives.
+>
+> (3) Any Indian who holds trust interests in public domain, national forest, or reservation allotments in California.
+>
+> (4) Any Indian of California who is listed on the plans for distribution of the assets of rancherias and reservations located within the State of California under the Act of August 18, 1958 (72 Stat. 619), and any descendant of such an Indian.
+
+### S2516. Colorado SNAP: a non-citizen's documentation within thirty days; certified while SSA investigates the quarters; the forty quarters verified through QCHS or the individual before participation
+
+Document: D-82
+
+10 CCR 2506-1 4.505.6.E-F, 4.505.61 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. The local office shall provide an applicant non-citizen up to the thirtieth (30th)
+> calendar day following the date of application to submit acceptable
+> documentation of their non-citizen status or at least ten (10) calendar days from
+> the date of the local office's request for an acceptable document.
+>
+> F. A non-citizen who has been given a reasonable opportunity to submit acceptable
+> documentation and has not done so within the normal processing time shall not
+> be certified for benefits until acceptable documentation is available, except as
+> provided below. However, when the local office fails to provide a non-citizen
+> applicant with a reasonable opportunity as of the thirtieth (30th) calendar day
+> following the date of application, the local office must provide the household with
+> benefits back to the date of application, provided the household is otherwise
+> eligible. A non- citizen is ineligible to participate until acceptable documentation is
+> provided, except as provided below:
+>
+> 1. The local office has submitted a copy of a document provided by the
+> household to the USCIS or other federal agency for verification that bears
+> on the individual’s eligible alien status. In such instances, the local office
+> must certify the individual for up to six (6) months from the date of the
+> original request for verification pending the results of the investigation.
+> Pending such verification, the individual's benefits will not be delayed,
+> denied, reduced or terminated based on the individual's immigration status
+> while awaiting a response to the request for verification.
+>
+> 2. The local office has submitted a request to the SSA for information
+> regarding the number of quarters of work that can be credited to the
+> individual; or SSA has responded that the individual has fewer than forty
+> (40) quarters, and the individual provides documentation from the SSA
+> that the SSA is conducting an investigation to determine if more quarters
+> can be credited. If the SSA indicated that the number of qualifying
+> quarters that can be credited is under investigation, the local office shall
+> certify the individual, pending the results of the investigation, for up to six
+> (6) months from the date of the original determination of insufficient
+> quarters.
+>
+> ...
+>
+> 4.505.61 Verification of SSA Forty (40) Work Quarters
+> The SSA Quarters of Coverage History System (QCHS) is available for purposes of
+> verifying whether a lawful permanent resident has earned or can receive credit for forty
+> (40) qualifying quarters. If the individual does not have documentation, they cannot
+> participate until verification of forty (40) quarters of work is received from either the SSA
+> or the individual.
+>
+> If the SSA determines that its existing records do not verify that an individual claiming
+> forty (40) credits or quarters has the forty (40) credits or quarters and the individual
+> believes the SSA records are not correct, the SSA will work with the individual to
+> determine whether the additional credits or quarters can be established. The individual
+> should be advised that they have the option of working with the SSA and that if they
+> exercise this option and obtain a statement from the SSA indicating that the number of
+> credits or quarters is under review, they can continue to receive SNAP benefits for up to
+> six (6) additional months from the date of the original determination of insufficient
+> quarters.
+
+### S2517. Colorado SNAP drug convictions: ineligible only where SNAP misuse is part of the court findings
+
+Document: D-82
+
+10 CCR 2506-1 4.803.3.D (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Drug Convictions
+> An individual shall not be ineligible due to a drug conviction unless misuse of
+> SNAP benefits is part of the court findings. An individual found guilty of
+> purchasing controlled substances, as defined in Section 18-18-102 (5), C.R.S.,
+> with SNAP benefits will be disqualified for twenty-four (24) months on the first
+> (1st) conviction by a court of law and permanently disqualified on a second (2nd)
+> conviction by a court of law. The disqualification periods shall also apply to
+> individuals with a felony conviction entered on or after July 1, 1997, for
+> possession, use, or distribution of controlled substances only if the conviction is
+> directly related to the misuse of SNAP benefits.
+
+### S2518. Colorado SNAP definitions: Basic Categorical Eligibility is for a household not eligible for Expanded Categorical Eligibility; ECE
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1, "Basic Categorical Eligibility (BCE)", "Expanded Categorical Eligibility (ECE)" (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Basic Categorical Eligibility (BCE)” means the status granted to any household that is
+> not eligible for Expanded Categorical Eligibility and contains only members who receive,
+> or are eligible to receive, benefits from Colorado Works, Supplemental Security Income
+> (SSI), Old Age Pension, Aid to the Needy and Disabled, Aid to the Blind, or a
+> combination of these programs.
+>
+> ...
+>
+> “Expanded Categorical Eligibility (ECE)” means households that are exempt from
+> having resources considered when determining eligibility for SNAP.

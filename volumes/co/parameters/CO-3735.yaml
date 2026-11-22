@@ -1,0 +1,15 @@
+id: CO-3735
+name: SNAP certification while SSA reviews quarters, months
+identifier: snap_quarters_review_certification_months
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The number of months from SSA's original determination of insufficient quarters during which a non-citizen is certified while SSA investigates whether more quarters can be credited: six (10 CCR 2506-1 4.505.6.F.2, 4.505.61)."
+versions:
+  - from: "2000-01-01"
+    value: 6
+    source: S2516
+sources: [S2516]
+tags: [snap, immigration, verification]
+rationale: "Final verification V-4: the period 4.505.6.F.2 states, read by snap_immigration_status_verification_is_pending (CO-1601)."

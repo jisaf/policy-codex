@@ -1,0 +1,13 @@
+id: CO-3705
+name: Tax dependents claimed or claimable
+identifier: tax_dependents_claimed_or_claimable_count
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "The number of persons, other than the person's spouse, whom the person or the person's spouse claims, or could claim, as dependents for federal income tax purposes, whether or not they are persons of the case."
+precision: "Stated on a sponsor. Where a sponsor and a co-sponsor spouse both signed, it is stated on one of them only, since they claim the same dependents. If not stated, SNAP reads this as 0."
+supplied_by: "The sponsor's statement, federal income tax return or Form I-864."
+sources: [S2502, S2503]
+tags: [immigration, income]
+rationale: "Final verification F-2: SNAP reduces the sponsor's income by the gross income limit for a household \"equal in size to the sponsor, the sponsor's spouse, and any other person who is claimed or could be claimed by the sponsor or the sponsor's spouse as a dependent for federal income tax purposes\" (4.305.2.D.2.b, S2502). The tax_dependent relationship states this only for persons of the case, and a sponsor's dependents seldom are. sponsor_household_size (CO-2715) counts the persons living with the sponsor and sponsor_dependent_count (CO-2387) Adult Financial's dependents other than sponsored non-citizens; neither is the tax-dependent count."

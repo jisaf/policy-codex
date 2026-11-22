@@ -1,12 +1,12 @@
 id: CO-1916
 name: Community service hours
-identifier: ma_community_service_hours
+identifier: community_service_hours
 kind: supplied
 type: hours
 scope: person-month
-program: Medicaid
-meaning: "The hours of community service the person completed in the month as 42 CFR 435.552(b) defines it: unpaid work, voluntary or court-ordered, with a structured program for the direct benefit of the community under the auspices of a public or nonprofit organization that oversees and tracks it. If not stated, Medicaid reads this as zero."
+program: All
+meaning: "The hours of community service the person completed in the month: unpaid work, voluntary or court-ordered, with a structured program for the direct benefit of the community under the auspices of a public or nonprofit organization that oversees and tracks it (the description of 42 CFR 435.552(b)). If not stated, Medicaid and SNAP read this as zero."
 supplied_by: The applicant's or beneficiary's statement, verified as 42 CFR 435.557 requires (reliable information available to the State first).
-sources: [S1203]
-tags: [ma, magi]
-rationale: "OQ-65: no fact states community service hours."
+sources: [S1203, S132]
+tags: [ma, magi, snap]
+rationale: "OQ-65: no fact states community service hours. SNAP final verification F-12: community service is unpaid work that 10 CCR 2506-1 4.311.B.1.a (S132) counts toward the ABAWD work requirement, so the fact is made neutral (renamed from ma_community_service_hours through a change set that keeps the ID; program All)."

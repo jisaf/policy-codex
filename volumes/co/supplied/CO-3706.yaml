@@ -1,0 +1,13 @@
+id: CO-3706
+name: Non-citizens sponsored
+identifier: non_citizens_sponsored_count
+kind: supplied
+type: whole number
+scope: person
+program: All
+meaning: "Stated on a sponsor: the number of non-citizens for whom the person has signed an affidavit of support (Form I-864 or I-864A) that is still in force, whether or not they are persons of the case."
+precision: "Where a sponsor and a co-sponsor spouse both signed, it is stated on one of them only. If not stated, SNAP counts the persons of the case who share the sponsor (snap_sponsor_deeming_divisor, CO-3708)."
+supplied_by: "The sponsored non-citizen's statement and documents showing the sponsor's other affidavits (7 CFR 273.4(c)(4))."
+sources: [S2502, S2503]
+tags: [immigration]
+rationale: "Final verification F-2: SNAP divides the sponsor's deemed income and resources \"by the number of such sponsored non-citizens\" when the sponsor sponsors others (4.305.2.D.2.c, S2502; 7 CFR 273.4(c)(2)(v), S2503). The sponsor / sponsored_by relationship states only the sponsored persons of the case."

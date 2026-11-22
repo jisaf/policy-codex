@@ -8,7 +8,9 @@ scope: person
 program: SNAP
 meaning: Which of Colorado's three categories of eligibility (10 CCR 2506-1 4.206,A) this person's SNAP household is determined under - Basic Categorical Eligibility, Expanded Categorical Eligibility, or Standard Eligibility - tested in that order, matching 4.206,C,1,d and C,2,d's "ineligible under BCE/ECE, then determined under the next category" structure.
 derived: [case, [snap_meets_bce_eligibility, "basic_categorical"], [snap_meets_ece_eligibility, "expanded_categorical"], [else, "standard"]]
-sources: [S47, S48]
+precision: "Final verification F-14 (OQ-640): the tests run BCE first, the order 4.206.C.1.d and C.2.d state; the 4.000.1 definition of BCE (S2518) would put ECE first for a household that meets both, which changes only which verification relief applies."
+sources: [S47, S48, S2518]
+open: [OQ-640]
 implemented: engine
 tags: [income, state_election]
 rationale: 10 CCR 2506-1 4.206,A and C,1,d/C,2,d (S47, S48) require every household to be assigned exactly one of BCE, ECE, or SE, tested in that order; no existing item states the single enumerated outcome snap_is_categorically_eligible and later batches' income/resource/deduction rules need to branch on.

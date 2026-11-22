@@ -193,6 +193,8 @@ Identifier renames (the product owner accepted renames through change sets; each
 | CO-1332 | disability_verified_by_electronic_data_source | disability_benefit_receipt_verified_by_electronic_data_source | C-4: verifies benefit receipt |
 | CO-1358 | claims_citizenship | is_us_citizen_or_national | U-3: the shared citizen-or-national test |
 | CO-1367 | identity_document_is_lawful_presence_document | identity_document_is_on_cash_program_list | C-4: used for identity and lawful presence |
+| CO-1915 | ma_unpaid_or_in_kind_work_hours | unpaid_or_in_kind_work_hours | SNAP final verification F-12: SNAP's ABAWD work requirement also counts in-kind and unpaid work (10 CCR 2506-1 4.311.B.1.a); the fact is neutral |
+| CO-1916 | ma_community_service_hours | community_service_hours | SNAP final verification F-12: community service is unpaid work for the SNAP ABAWD work requirement; the fact is neutral |
 
 Option renamed: `citizenship_status` (CO-002) `other_non_qualified_non_citizen` → `other_lawfully_present_non_citizen` (R-10: every reader used it for a lawfully present non-qualified status). Options narrowed: `ma_five_year_bar_exempt_category` (CO-1170) loses the two 1613(b) categories now in `federal_five_year_bar_exempt_category` (CO-1724). Options added: `marital_status` widowed; `leap_living_arrangement` institutional_group_care.
 

@@ -1,0 +1,19 @@
+id: CO-3701
+name: "SNAP: sponsor income deemed"
+identifier: snap_sponsor_deemed_income
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The unearned income SNAP counts to this person for the month from the person's sponsor (10 CCR 2506-1 4.305.2.C-D; 7 CFR 273.4(c)(2)): for an eligible non-citizen whose sponsor's income is deemed, this person's share of the sponsor's income after the deeming reductions (snap_sponsor_income_after_reductions divided by snap_sponsor_deeming_divisor), or the money the sponsor paid the person in the month if that is more (4.305.2.D.4); for anyone else, the money a sponsor paid the person, which is ordinary unearned income."
+precision: "Deeming applies only to an eligible non-citizen (4.305.2.C, snap_is_eligible_non_citizen, CO-308) to whom no exemption applies (snap_sponsor_deeming_applies, CO-2337); an ineligible non-citizen's counted income excludes it (273.4(c)(5)). Money paid in excess of the deemed share is added, so the person's income from the sponsor is the greater of the two. The money is this person's own receipt and is not divided. A citizen is out at the first test, so nothing about a sponsor is read."
+derived: [case, [[all, snap_is_eligible_non_citizen, snap_sponsor_deeming_applies], [max, [otherwise, money_received_from_sponsor, 0], ["/", snap_sponsor_income_after_reductions, snap_sponsor_deeming_divisor]]], [else, [otherwise, money_received_from_sponsor, 0]]]
+sources: [S2502, S2503, S1619]
+implemented: engine
+tags: [snap, immigration, income]
+rationale: "Final verification F-2 (docs/reviews/final-snap.md): no item deemed a sponsor's income, so an eligible sponsored lawful permanent resident's household was budgeted without it. snap_person_gross_income (CO-332) adds this amount as unearned income."
+tests:
+  - {id: CO-3701-T1, title: "Deeming applies: $2,955 shared by 2 = $1,477.50", as_of: "2026-10-01", month: "2026-10", given: {snap_is_eligible_non_citizen: true, snap_sponsor_deeming_applies: true, snap_sponsor_income_after_reductions: 2955, snap_sponsor_deeming_divisor: 2}, expect: 1477.5}
+  - {id: CO-3701-T2, title: "The sponsor pays $1,600, more than the $1,477.50 share: $1,600", as_of: "2026-10-01", month: "2026-10", given: {snap_is_eligible_non_citizen: true, snap_sponsor_deeming_applies: true, snap_sponsor_income_after_reductions: 2955, snap_sponsor_deeming_divisor: 2, money_received_from_sponsor: 1600}, expect: 1600}
+  - {id: CO-3701-T3, title: "Indigent non-citizen (no deeming): only the $200 the sponsor actually pays", as_of: "2026-10-01", month: "2026-10", given: {snap_is_eligible_non_citizen: true, snap_sponsor_deeming_applies: false, money_received_from_sponsor: 200}, expect: 200}
+  - {id: CO-3701-T4, title: "A citizen: nothing", as_of: "2026-10-01", month: "2026-10", given: {snap_is_eligible_non_citizen: false}, expect: 0}

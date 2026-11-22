@@ -1,0 +1,16 @@
+id: CO-3739
+name: "SNAP: expense verification period has ended"
+identifier: snap_expense_verification_period_has_ended
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The determination date is after snap_expense_verification_due_date, the thirtieth day after the date of application, so a deductible expense that must be verified and still is not is determined without its deduction (10 CCR 2506-1 4.502.A.3; 7 CFR 273.2(f)(3)(ii))."
+derived: [">", [det_date], snap_expense_verification_due_date]
+sources: [S818, S812]
+implemented: engine
+tags: [verification, snap]
+rationale: "Final verification F-10 and V-5: snap_verification_status (CO-1394) reported expenses_disallowed while the deduction items still deducted the unverified expense; each counted expense now reads this item with its own pending verification."
+tests:
+  - {id: CO-3739-T1, title: "Applied October 1; determined November 5", as_of: "2026-11-05", given: {snap_expense_verification_due_date: "2026-10-31"}, expect: true}
+  - {id: CO-3739-T2, title: "Applied October 1; determined October 20", as_of: "2026-10-20", given: {snap_expense_verification_due_date: "2026-10-31"}, expect: false}

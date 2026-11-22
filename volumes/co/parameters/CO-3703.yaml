@@ -1,0 +1,15 @@
+id: CO-3703
+name: SNAP sponsor deeming, earned income reduction rate
+identifier: snap_sponsor_earned_income_reduction_rate
+kind: parameter
+type: rate
+scope: global
+program: SNAP
+meaning: "The share of the sponsor's and the sponsor's spouse's earned income by which their income is reduced before it is deemed to a sponsored non-citizen: twenty percent (10 CCR 2506-1 4.305.2.D.2.a; 7 CFR 273.4(c)(2)(i)(A))."
+versions:
+  - from: "2000-01-01"
+    value: 0.2
+    source: S2502
+sources: [S2502, S2503]
+tags: [snap, immigration, income]
+rationale: "Final verification F-2: the sponsor deeming computation (snap_sponsor_income_after_reductions, CO-3711) needs the figure 4.305.2.D.2.a states. It is the sponsor rule's own reduction, not the household's earned income deduction (snap_earned_income_deduction_rate, CO-136), although both are twenty percent today."

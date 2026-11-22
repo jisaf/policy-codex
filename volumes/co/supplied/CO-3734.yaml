@@ -1,0 +1,13 @@
+id: CO-3734
+name: SSA quarters review start date
+identifier: ssa_quarters_review_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "Where the SSA has found that its records show fewer than forty qualifying quarters for the person and the person has SSA's statement that the number that can be credited is under review or investigation, the date of SSA's original determination of insufficient quarters."
+precision: "Stated only while such a review is open. If not stated, SNAP reads it as no review."
+supplied_by: "The SSA statement the individual provides; the QCHS response."
+sources: [S2516]
+tags: [immigration, verification]
+rationale: "Final verification V-4: 10 CCR 2506-1 4.505.6.F.2 and 4.505.61 (S2516) certify the individual for up to six months from the date of SSA's original determination while SSA investigates whether more quarters can be credited."

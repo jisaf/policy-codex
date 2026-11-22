@@ -1,0 +1,19 @@
+id: CO-3708
+name: "SNAP: sponsor deeming divisor"
+identifier: snap_sponsor_deeming_divisor
+kind: derived
+type: whole number
+scope: person
+program: SNAP
+meaning: "The number among whom the income and resources of this non-citizen's sponsors are divided before they are deemed (10 CCR 2506-1 4.305.2.D.2.c; 7 CFR 273.4(c)(2)(v)): the non-citizens the sponsors have sponsored - the number stated on the sponsors (non_citizens_sponsored_count), or, when that is not stated or smaller, this non-citizen and the persons of the case who share a sponsor with this non-citizen - plus each citizen child under snap_sponsor_deeming_child_age_limit of this non-citizen in this non-citizen's SNAP household, whose share is excluded as (c)(2)(v) directs for a child exempt under (c)(3)(vii)."
+precision: "A sponsored child of a sponsored non-citizen, exempt under (c)(3)(vi), is a sponsored non-citizen and so already counted; its share is never deemed because deeming does not apply to it (CO-2337). Where a sponsor and a co-sponsor spouse both signed, the count is stated on one of them only, so the stated counts are added across the sponsors. Unknown when this person's relationships are unstated."
+derived: ["+", [max, ["+", 1, [count, [shared_relative, sponsor]]], [sum, sponsors, [otherwise, [of, [P], non_citizens_sponsored_count], 0]]], [count, [filter, snap_household_members, [all, [rel, [parent], [P]], ["<", [of, [P], age], snap_sponsor_deeming_child_age_limit], [in, [of, [P], immigration_status], [us_citizen, us_national]]]]]]
+sources: [S2502, S2503]
+implemented: engine
+tags: [snap, immigration]
+rationale: "Final verification F-2: no item divided the sponsor's deemed income and resources among the sponsor's non-citizens. The sponsored persons of the case are read from the sponsor edges (the shared sponsor); the stated count adds those outside the case (CO-3706)."
+tests:
+  - {id: CO-3708-T1, title: "One sponsored child alone, nothing stated on the sponsor: 1", as_of: "2026-10-01", given: {sponsors: [p2], snap_household_members: [p1]}, others: {p2: {}}, relationships: [[sponsor, p2, p1]], expect: 1}
+  - {id: CO-3708-T2, title: "Two siblings in the case with one sponsor: 2", as_of: "2026-10-01", given: {sponsors: [p2], snap_household_members: [p1]}, others: {p2: {}, p3: {}}, relationships: [[sponsor, p2, p1], [sponsor, p2, p3]], expect: 2}
+  - {id: CO-3708-T3, title: "The sponsor states four sponsored non-citizens, one in the case: 4", as_of: "2026-10-01", given: {sponsors: [p2], snap_household_members: [p1]}, others: {p2: {non_citizens_sponsored_count: 4}}, relationships: [[sponsor, p2, p1]], expect: 4}
+  - {id: CO-3708-T4, title: "A sponsored mother with a citizen son of 6 in her household: 1 + 1 = 2", as_of: "2026-10-01", given: {sponsors: [p2], snap_household_members: [p1, p3]}, others: {p2: {}, p3: {date_of_birth: "2020-03-01", immigration_status: us_citizen}}, relationships: [[sponsor, p2, p1], [parent, p1, p3]], expect: 2}

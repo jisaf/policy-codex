@@ -6,9 +6,9 @@ type: money
 scope: person-month
 program: SNAP
 meaning: This person's SNAP household's monthly income after the standard, earned income, dependent care, child support, and excess medical deductions have all been subtracted, but before any shelter deduction - the figure 50 percent of which sets the excess shelter deduction's threshold.
-precision: Floored at $0; the fetched text does not address a negative intermediate figure, and the draft reads "income after deductions" as never negative for this purpose (OQ-30).
-derived: [max, 0, ["-", ["-", ["-", ["-", snap_household_gross_income, snap_earned_income_deduction], snap_standard_deduction], snap_dependent_care_deduction], snap_excess_medical_deduction]]
-sources: [S101]
+precision: "Floored at $0; the fetched text does not address a negative intermediate figure, and the draft reads \"income after deductions\" as never negative for this purpose (OQ-30). Final verification F-8: a farm loss left after the offset against other self-employment income (snap_farm_loss_remaining, CO-3725) is subtracted right after the earned income deduction, as 7 CFR 273.11(a)(2)(ii)(B) directs."
+derived: [max, 0, ["-", ["-", ["-", ["-", ["-", snap_household_gross_income, snap_earned_income_deduction], snap_farm_loss_remaining], snap_standard_deduction], snap_dependent_care_deduction], snap_excess_medical_deduction]]
+sources: [S101, S2511]
 open: [OQ-30]
 implemented: engine
 tags: [income]
@@ -16,5 +16,6 @@ rationale: 7 CFR 273.10(e)(1)(i)(A)-(F) (S101) computes net income by subtractin
 tests:
   # Hard-coded numbers audit T-3: the FY2027 standard deduction for 1-3 members (217) replaces the FY2026 figure (209) on this October 2026
   # test date: 2,965 - 357 - 217 = 2,391 (was 2,399 with 209).
-  - {id: CO-378-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 2965, snap_earned_income_deduction: 357, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 2391}
-  - {id: CO-378-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 100, snap_earned_income_deduction: 0, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 0}
+  - {id: CO-378-T1, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 2965, snap_earned_income_deduction: 357, snap_farm_loss_remaining: 0, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 2391}
+  - {id: CO-378-T2, as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 100, snap_earned_income_deduction: 0, snap_farm_loss_remaining: 0, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 0}
+  - {id: CO-378-T3, title: "Final verification F-8: a $300 farm loss left after the self-employment offset: 2,965 - 357 - 300 - 217 = 2,091", as_of: "2026-10-01", month: "2026-10", given: {snap_household_gross_income: 2965, snap_earned_income_deduction: 357, snap_farm_loss_remaining: 300, snap_standard_deduction: 217, snap_dependent_care_deduction: 0, snap_excess_medical_deduction: 0}, expect: 2091}

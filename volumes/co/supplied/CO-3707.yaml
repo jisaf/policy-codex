@@ -1,0 +1,13 @@
+id: CO-3707
+name: Money received from a sponsor
+identifier: money_received_from_sponsor
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The money this non-citizen received in the month from a sponsor or a sponsor's spouse who does not live with the non-citizen. It is not also stated in the person's other unearned income facts."
+precision: "If not stated, SNAP reads this as 0."
+supplied_by: "The non-citizen's statement; the sponsor's statement."
+sources: [S2502, S2503]
+tags: [immigration, income]
+rationale: "Final verification F-2: money the sponsor pays a sponsored non-citizen whose sponsor's income is deemed counts only to the extent it exceeds the deemed amount (4.305.2.D.4, S2502; 7 CFR 273.4(c)(2)(iii), S2503), so it has to be a receipt of its own rather than a part of other_unearned_income_nontaxable."

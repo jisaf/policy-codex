@@ -5,7 +5,7 @@ kind: supplied
 type: hours
 scope: person-month
 program: All
-meaning: The number of hours the person worked for pay in the month, including hours of self-employment. Does not include hours of participation in a SNAP Employment and Training work program, workfare, or similar unpaid work activity; those are counted separately under work_program_hours (CO-048) and workfare_hours (CO-049).
+meaning: The number of hours the person worked for pay in the month, including hours of self-employment. Does not include hours of participation in a SNAP Employment and Training work program, workfare, or similar unpaid work activity; those are counted separately under work_program_hours (CO-048), unpaid_or_in_kind_work_hours (CO-1915) and community_service_hours (CO-1916); workfare participation is participates_in_workfare.
 precision: "If not stated, snap_weekly_hours_worked (CO-402) reads it as zero."
 supplied_by: "The applicant's statement on the application, or the case record; where a program's verification rule requires it (SNAP work hours, CCCAP activity hours), employer verification or pay stubs (heavier-definitions audit H-15: the fact is the person's circumstance as stated; documents belong to the *_verification_document_received facts and the verification items, which ask for them only where a program's rule requires it)."
 sources: []

@@ -1,0 +1,13 @@
+id: CO-3717
+name: Receives a Railroad Retirement disability annuity
+identifier: receives_railroad_retirement_disability_annuity
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person receives a disability annuity from the Railroad Retirement Board under section 2(a)(1)(iv) or 2(a)(1)(v) of the Railroad Retirement Act of 1974."
+precision: "If not stated, SNAP reads this as false. Whether the Board found the person eligible for Medicare is is_medicare_entitled_or_enrolled (CO-017); whether the person is disabled under the Social Security Act criteria is meets_ssa_disability_criteria (CO-011)."
+supplied_by: "Railroad Retirement Board award letter."
+sources: [S2509, S1951]
+tags: [disability]
+rationale: "Final verification F-7 (docs/reviews/final-snap.md): 10 CCR 2506-1 4.000.1 \"Person with disabilities\" 7 (S2509) and 7 CFR 271.2 \"Elderly or disabled member\" (10) (S1951) make a Railroad Retirement disability annuitant who qualifies for Medicare or is disabled under the title XVI criteria a person with disabilities; no fact stated the annuity."

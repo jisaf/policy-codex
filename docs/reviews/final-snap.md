@@ -426,3 +426,33 @@ Questions that should exist and do not:
 | F-18 | Record an open question, or fold into F-10's gate (exclude the member after `snap_noncitizen_documentation_due_date`). |
 | F-19 | Record a state-choice open question. |
 | F-20 | Fix now (version start date). |
+
+## Disposition
+
+SNAP fix track, 2026-11-22, on branch `worktree-agent-af77fe1cae3a74d85` from `6a15209`. Every governing text was re-read; 10 CCR 2506-1 was re-fetched from the SOS (rule version 12718, effective 2026-10-01; same text as D-82), and 7 U.S.C. 2017, 8 U.S.C. 1612, 7 CFR 273.2, 273.4, 273.5, 273.10, 273.11 and 25 U.S.C. 1679 (new D-230) from eCFR and Cornell. Commits: `20f0a29` (P1 fixes), `23719b0` (household cases), `968f6af` (open questions, P2).
+
+| id | sev | disposition |
+|---|---|---|
+| F-1 | P1 | Fixed `20f0a29`: snap_initial_month_minimum_issuance (CO-3700, $10, S2500, S2501); snap_allotment (CO-385) reads it with a `statute_override` naming 4.207.3.B. CO-385-T6 0 → 18. OQ-38 records it (`968f6af`). |
+| F-2 | P1 | Fixed `20f0a29`: CO-3701 (deemed income, added in CO-332), CO-3702 (deemed resources, added in CO-343), CO-3703/3704 (20%, $1,500; 4.408.B's $2,000 not followed), CO-3705/3706/3707 (tax dependents, non-citizens sponsored, money paid), CO-3708 (divisor), CO-3709, CO-3710 (sponsor household size), CO-3711 (income after reductions), CO-3712 (own income for the 165% test, avoiding a cycle); CO-2337 gains the 273.4(c)(3)(vi) child arm. Cases CO-116, CO-94 (`23719b0`). OQ-380 stays resolved with the computation recorded (`968f6af`). |
+| F-3 | P1 | Fixed `20f0a29`: snap_is_exempt_from_waiting_period_other_than_military (CO-3713) adds the 1612(a)(2)(A) former-refugee/asylee/withholding/Cuban-Haitian/Amerasian, (G) and (K) arms, reusing CO-2700, CO-2701, CO-2702; new CO-3715 for a Hmong veteran's family outside the case. CO-306 reads it; CO-308-T6/T7. |
+| F-4 | P1 | Fixed `20f0a29`: receives_family_preservation_services (CO-3716); CO-338 accepts it (4.206.C.1.a.2, S47 re-pointed). |
+| F-5 | P1 | Fixed `20f0a29`: CO-407 adds the self-employed student's earnings test; CO-409 adds the non-parent full-time student with parental control where no parent of the child is in the household (273.5(b)(10)(ii), S2507; 4.306.1.D's last sentence omits the no-parent condition, the federal one is applied), with snap_has_parent_in_household (CO-3719). |
+| F-6 | P1 | Fixed `20f0a29`: snap_household_members_other_than_ineligible_students (CO-3714) in CO-343, CO-1740, the divisors of CO-333, CO-371, CO-2300, CO-2301, CO-336 and CO-376 (4.411.2.C, S2508). |
+| F-7 | P1 | Fixed `20f0a29`: CO-302 adds the VA non-service-connected pension (reuses CO-2862), the Railroad Retirement disability annuity with Medicare or an SSA disability finding (new CO-3717) and disability-based Medical Assistance (new CO-3718); interim assistance pending SSI is AND-SO, already read (S2509). |
+| F-8 | P1 | Fixed `20f0a29`: CO-3720 to CO-3725 (farmer fact, $1,000 threshold, loss, household loss, offset against other self-employment in CO-334 and CO-372, remainder after the earned income deduction in CO-378); `statute_override`: 7 CFR 273.11(a)(2)(ii)(B) over 4.403.12.E.2.b-c. |
+| F-9 | P1 | Fixed `20f0a29`: snap_application_filed_by_authorized_representative (CO-3729), snap_authorized_representative_identity_verified (CO-3730), snap_requires_verification_of_authorized_representative_identity (CO-3731); snap_identity_verification_is_pending (CO-1387) includes it, so the count and expedited postponement read it. |
+| F-10 | P1 | Fixed `20f0a29`: snap_expense_verification_period_has_ended (CO-3739); CO-2300, CO-2301, CO-2003 and snap_allowed_medical_expenses (CO-3740, read by CO-376) count nothing once the period has ended with the expense unverified. Case CO-115 (allotment 387; 483 with the deductions) and CO-91's two deductions (0) in `23719b0`. |
+| F-11 | P1 | Fixed `20f0a29`: snap_maximum_allotment_large_household (CO-3726, $3,887 from 2026-10-01) and its size (CO-3727, 18); CO-383-T5 to T7. |
+| F-12 | P1 | Fixed `20f0a29`: CO-415 counts unpaid_or_in_kind_work_hours and community_service_hours, renamed (IDs kept) from Medicaid's CO-1915 and CO-1916 and made neutral (CO-1967 and case CO-73 updated; docs/colorado-notes.md); CO-2309's meaning names in-kind and unpaid work. |
+| F-13 | P1 | Fixed `20f0a29`: is_california_indian_under_ihcia (CO-3728, 25 U.S.C. 1679(a), D-230/S2515) in CO-050; CO-414's precision corrected. |
+| F-14 | P2 | Open question OQ-640 (state policy choice, SNAP owner); CO-341 states the order (`968f6af`). |
+| F-15 | P2 | Fixed `968f6af`: CO-041 re-meant per 4.803.3.D, cites S2517. |
+| F-16 | P2 | Fixed: CO-022 (`20f0a29`), CO-2337's CO-3033 (`20f0a29`), CO-331's precision and assumption (`968f6af`). |
+| F-17 | P2 | Fixed `20f0a29`: S47, S48, S57, S99, S132, S135 re-pointed to D-82 with the current text (S132 now quotes 4.311.B.1.a, S47 4.206.C.1.a.2); D-82's header records the re-fetch. |
+| F-18 | P2 | Deferred P2: excluding the member once the non-citizen documentation period has run is application processing; snap_verification_status reports past_due, as it does for every other overdue factor (OQ-309's reading). Not an eligibility-rule gap. |
+| F-19 | P2 | Open question OQ-641 (state policy choice, SNAP owner); CO-376 lists it (`968f6af`). |
+| F-20 | P2 | Fixed `968f6af`: CO-2720 dated from 2000-01-01. |
+| F-21 | P3 | Accepted; OQ-30 records that the choice changes no outcome (`968f6af`). |
+| F-22 | P3 | Not an issue: CO-306's precision already says "qualified_status_date stands in for lawful residence on that date, a fact this volume does not separately collect". |
+| F-23 | P3 | Fixed `968f6af`: note on CO-348. |
