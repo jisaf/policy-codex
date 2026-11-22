@@ -11722,12 +11722,27 @@
         tax_exempt_interest: 0
         ssi_income: 0
     p2:
-      # The sponsor's husband, 48, U.S. citizen, did not sign; countable resources $300.
+      # The sponsor's husband, 48, U.S. citizen, did not sign; countable resources $300. No income (stated in the
+      # coverage round, C-14: since OQ-730 was resolved on 8 U.S.C. 1631(a)(2), SNAP reads his income with p1's; the
+      # children are under 18, so nothing is deemed to them either way and no expectation changes).
       facts:
         date_of_birth: "1978-09-30"
         immigration_status: us_citizen
         state_of_residence: CO
         liquid_resources_value: 300  # SW-31: holdings by type, each program counts its own (was ssi_countable_resources_individual 300)
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        ssi_income: 0
     p3:
       # Niece, 15, lawful permanent resident since March 1, 2024, sponsored by p1.
       facts:
@@ -12707,7 +12722,25 @@
         immigration_status: us_citizen
         state_of_residence: CO
         dwelling_id: d1
+        liquid_resources_value: 0
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        child_support_received: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        ssi_income: 0
+        child_support_paid_legally_obligated: 0
   expect:
+    # Coverage round C-14 (OQ-730 resolved on 8 U.S.C. 1631(a)(2)): the income and resources of p3, the sponsor's
+    # wife who did not sign, are deemed as well. She has no income and no savings (now stated), so every figure
+    # below is unchanged.
     # Sponsor deeming (10 CCR 2506-1 4.305.2.C-D, S2502; 7 CFR 273.4(c)(2), S2503), October 2026, FY2027 figures:
     #   p2 is an eligible non-citizen (LPR, more than five years in qualified status) and no exemption of 4.305.2.E
     #   applies (20 quarters, not indigent or battered, the sponsor alive and an individual): deeming applies.

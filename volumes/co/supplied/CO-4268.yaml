@@ -1,0 +1,13 @@
+id: CO-4268
+name: "SNAP: benefits begin later because of the household's delay"
+identifier: snap_household_delay_benefits_begin_date
+kind: supplied
+type: calendar date
+scope: case
+program: SNAP
+meaning: "The date from which the household's benefits begin when a delay the household caused moves it after the date of application: the date the household provided the requested verification, where it did so after the thirtieth and on or before the sixtieth day after the date of application (10 CCR 2506-1 4.205.31); the first day of the month after the month of application, where the household caused the delay in the first thirty days and the local office the delay after them (4.205.4.A; 7 CFR 273.2(h)(2)(ii)); or the date the household took the required action, where a recertification denied for its failure to act is reopened because it acted within thirty days after the certification period ended (4.209.1.D). Not stated when benefits run from the date of application, as they do when the local office caused the delay."
+precision: "One value for the case. If not stated, SNAP reads the date of application (snap_benefits_begin_date, CO-4269). Whether a delay is the household's or the local office's is the county's finding under 4.205.3."
+supplied_by: "The county's record of the delay finding and of the date the verification was provided or the action taken."
+sources: [S3063]
+tags: [snap, application_wide]
+rationale: "Coverage review C-13 (docs/reviews/coverage-snap-nonfinancial.md): the first month's benefit always ran from snap_application_date, so a household that provided verification on the fiftieth day by its own fault was paid from the application date, where the rule (S3063) pays from the date it provided the verification, or from the month after the month of application. No existing fact states the later date."

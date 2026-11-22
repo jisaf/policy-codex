@@ -6,8 +6,8 @@ type: yes/no
 scope: person
 program: All
 meaning: "The person (a child, in a shared custody arrangement or after a move) is already receiving SNAP as a member of another household, not the household this case determines, when this household requests benefits for the person."
-precision: "A case fact about the person's SNAP receipt, as receives_ssi is for SSI (convention rule 11). If not stated, SNAP reads it as false. Once the person is removed from the other household's case it is false."
+precision: "A case fact about the person's SNAP receipt, as receives_ssi is for SSI (convention rule 11). If not stated, SNAP reads it as false. Once the person is removed from the other household's case it is false. Not stated true for a woman or child living in a shelter for battered women and children whose other SNAP household contains the person who abused them: 4.309.21.B (S3068) lets them \"participate in one (1) additional project area and/or household\" and receive an additional allotment once in a month (coverage review P2-5)."
 supplied_by: "CBMS duplicate-participation check, or the other household's case record."
-sources: [S2969]
+sources: [S2969, S3068]
 tags: [snap, household, verification]
 rationale: "Final verification pass 2 V-13 (docs/reviews/final2-snap.md): 10 CCR 2506-1 4.505.4.C (S2969) makes \"a household that requests benefits for a child that is already receiving benefits in another household\" verify that it provides the majority of the child's meals before receiving benefits for that child; no fact stated that the child already receives SNAP elsewhere."

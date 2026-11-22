@@ -1,0 +1,19 @@
+id: CO-4270
+name: "SNAP: the month is before benefits begin"
+identifier: snap_is_before_benefits_begin
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "The month is before the month in which this person's SNAP household's benefits begin (snap_benefits_begin_date, CO-4269), for an application that is not a recertification: no benefits are issued for it (10 CCR 2506-1 4.205.31, 4.205.4.A: \"benefits shall only be provided back to the month following the month of application\")."
+precision: "A recertification (snap_determination_is_recertification, CO-1567) continues an existing certification and is never before its benefits begin here; a late recertification after the period expired is recorded as an initial application (CO-2305)."
+derived: [all, [not, snap_determination_is_recertification], ["<", [month], [month_of, snap_benefits_begin_date]]]
+sources: [S3063]
+implemented: engine
+tags: [snap, income]
+nearest: [CO-2305]
+rationale: "Coverage review C-13: a household whose benefits begin after the month of application because of its own delay receives nothing for the month of application; snap_allotment (CO-385) had no arm for a month before the benefits begin."
+tests:
+  - {id: CO-4270-T1, title: "C-13: October, when benefits begin November 20", as_of: "2026-11-20", month: "2026-10", given: {snap_determination_is_recertification: false, snap_benefits_begin_date: "2026-11-20"}, expect: true}
+  - {id: CO-4270-T2, title: "November, the month benefits begin", as_of: "2026-11-20", month: "2026-11", given: {snap_determination_is_recertification: false, snap_benefits_begin_date: "2026-11-20"}, expect: false}
+  - {id: CO-4270-T3, title: "A recertification", as_of: "2026-10-15", month: "2026-10", given: {snap_determination_is_recertification: true}, expect: false}

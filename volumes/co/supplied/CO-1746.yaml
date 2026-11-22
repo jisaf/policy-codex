@@ -5,9 +5,9 @@ kind: supplied
 type: calendar date
 scope: case
 program: SNAP
-meaning: "The date the household's SNAP application was filed with the State agency (7 CFR 273.2(c)), from which the expedited service, postponed verification and documentation periods run."
+meaning: "The date the household's SNAP application was filed with the State agency (7 CFR 273.2(c)), from which the expedited service, postponed verification and documentation periods run. For a resident of an institution who applies jointly for SSI and SNAP before release, the filing date recorded is the date of release from the institution (7 CFR 273.2(c)(1)(vi)(A); 10 CCR 2506-1 4.207.2.A)."
 precision: "On a combined PEAK application for SNAP and Medical Assistance it is the same date as ma_application_date (CO-088); the two differ when the household applies for the programs on different days. One value for the case (the household's one application); not stated on each member."
 supplied_by: "CBMS application record (date of filing)."
-sources: [S835, S1097]
+sources: [S835, S1097, S3073, S1615]
 tags: [snap, verification, application_wide]
-rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): snap_expedited_postponement_end_date (CO-1393) and the SNAP documentation due dates (CO-1617, CO-1618) read the Medical Assistance application date. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."
+rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-13): snap_expedited_postponement_end_date (CO-1393) and the SNAP documentation due dates (CO-1617, CO-1618) read the Medical Assistance application date. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member. Coverage review P2-1: the release-date filing date for a joint SSI and SNAP application from an institution is stated here, as 273.2(c)(1)(vi)(A) (S3073) records it, rather than as a separate fact."

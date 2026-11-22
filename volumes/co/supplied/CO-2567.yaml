@@ -6,9 +6,9 @@ type: yes/no
 scope: person
 program: SNAP
 meaning: This person pays the household a reasonable amount for meals, or meals and lodging, and so is a boarder who cannot participate in SNAP independently of the household providing the board (7 CFR 273.1(c)(3)(ii)); or lives in a commercial boarding house (c)(3)(i). A boarder participates only as a member of the providing household at that household's request, which a case states by not stating this fact.
-precision: If not stated, SNAP reads this as false. A person paying less than a reasonable amount is not a boarder (273.1(c)(3)(ii)). A boarder is in no SNAP household (snap_is_household_member, CO-304).
+precision: "If not stated, SNAP reads this as false. A person paying less than a reasonable amount is not a boarder (273.1(c)(3)(ii)) but a member of the household that provides the meals and lodging (4.304.3.C.5, S3069). A reasonable monthly payment for meals equals or exceeds the maximum SNAP allotment for the number of persons in the boarder's household where the board is more than two meals a day, or two-thirds of it for two meals or fewer; where the payment for the room can be told apart, only the payment for meals is compared (4.304.3.C.5.A-B; coverage review P2-6). A person who only works for the meals, or pays a third party on the household's behalf, is not a boarder (4.304.3.C.4). A boarder is in no SNAP household (snap_is_household_member, CO-304)."
 supplied_by: Applicant statement on the household's living arrangements.
-sources: [S1815]
+sources: [S1815, S3069]
 tags: [snap, household]
 rationale: "CDHS review C-2: boarders were not modeled."
 nearest: [CO-2566]

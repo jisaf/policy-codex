@@ -9,7 +9,6 @@ meaning: "The household size whose SNAP gross income limit is subtracted from th
 precision: "Counts this non-citizen's sponsors (sponsors, CO-2713: the sponsor and a co-sponsor spouse), a spouse of a sponsor who did not sign (sponsor_spouses_not_cosigning, CO-2714), and the tax dependents stated on the sponsors (tax_dependents_claimed_or_claimable_count, CO-3705, read as 0 when not stated). Two joint sponsors who are not married to each other are read as one sponsor household; the text states the size of one sponsor's household."
 derived: ["+", [count, sponsors], [count, sponsor_spouses_not_cosigning], [sum, sponsors, [otherwise, [of, [P], tax_dependents_claimed_or_claimable_count], 0]]]
 sources: [S2502, S2503]
-open: [OQ-730]
 implemented: engine
 tags: [snap, immigration]
 rationale: "Final verification F-2: the 4.305.2.D.2.b reduction is the gross income limit for the sponsor's own tax household; no item counted it. cw_sponsor_deeming_household_size (CO-2360) is Colorado Works' different combined size of the non-citizen's and the sponsor's households."
