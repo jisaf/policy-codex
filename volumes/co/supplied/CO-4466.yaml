@@ -1,0 +1,13 @@
+id: CO-4466
+name: "Incapacity verification document received"
+identifier: incapacity_verification_document_received
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the agency has received a physician's statement or other medical verification that the person is incapacitated, unable to care for the person's children, for this application or redetermination."
+precision: "If not stated, every program reads it as false (not received)."
+supplied_by: "Date-stamped document receipt in the case file."
+sources: [S3265, S1409]
+tags: [verification]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-21): 8 CCR 1403-1 3.111.C.2.g (S3265) lists \"Incapacitation, if applicable\" among the verifications an application requires, and D.1.c.3 (S1409) asks for \"a physician's statement or other medical verification\". The verification was folded into cccap_caretaker_is_incapacitated (CO-1744), so an incapacity reported but not yet documented read as no incapacity (ineligible_activity) rather than as a pending verification. The receipt is a neutral document fact, like the other *_verification_document_received facts."

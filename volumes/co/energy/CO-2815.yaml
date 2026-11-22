@@ -7,7 +7,7 @@ scope: person
 program: LEAP
 meaning: "Whether the person is considered homeless or resides in a non-traditional dwelling, a living arrangement 9 CCR 2503-7 3.752.25.B.6 (S774) excludes from vulnerability to rising heating costs: read as having no fixed and regular nighttime residence of the household's own, or living in a shelter, a halfway house, a motel, hotel, trailer park or campground for lack of an alternative, a hospital the person was abandoned in, or a place not designed for sleeping."
 precision: "LEAP's rule defines a non-traditional dwelling (3.751.1, S2303) as a structure providing housing that is not affixed to a permanent physical address, including cars, vans, buses, tents and lean-tos, which the place-not-designed-for-sleeping arrangement carries; it does not define \"considered homeless\" (OQ-561). This reading keeps the meaning the shared is_homeless had for LEAP: a fixed home that is substandard, and a stay in another household's home, are not counted, since the person then lives in a traditional dwelling."
-derived: [in, nighttime_residence_type, [imminently_losing_residence, motel_or_hotel_for_lack_of_alternative, trailer_park_or_campground_for_lack_of_alternative, emergency_or_transitional_shelter, halfway_house, abandoned_in_hospital, place_not_designed_for_sleeping]]
+derived: [in, nighttime_residence_type, [imminently_losing_residence, motel_or_hotel_for_lack_of_alternative, trailer_park_for_lack_of_alternative, campground_for_lack_of_alternative, emergency_or_transitional_shelter, halfway_house, abandoned_in_hospital, place_not_designed_for_sleeping]]
 sources: [S774, S2303]
 implemented: engine
 open: [OQ-561]

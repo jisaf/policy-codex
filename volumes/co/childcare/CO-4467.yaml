@@ -1,0 +1,19 @@
+id: CO-4467
+name: "CCCAP: incapacity verification is pending"
+identifier: cccap_incapacity_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether CCCAP still needs the physician's statement or other medical verification of this adult caretaker's or teen parent's incapacity (8 CCR 1403-1 3.111.C.2.g, D.1.c.3, D.9): the caretaker is stated to be incapacitated, CCCAP verification applies to the person, and the verification has not been received."
+precision: "Incapacity is cccap_caretaker_is_incapacitated (CO-1744) and the document incapacity_verification_document_received (CO-4466), each read as false when not stated. Counted as an eligibility element by cccap_person_pending_verification_count (CO-1448), due by cccap_verification_due_date (CO-1450); while it is pending the household's status reads the stated incapacity and cccap_verification_status (CO-1451) reports pending, then past_due or case_closed."
+derived: [all, cccap_verification_is_applicable, [any, cccap_is_adult_caretaker, cccap_is_teen_parent], [otherwise, cccap_caretaker_is_incapacitated, false], [not, [otherwise, incapacity_verification_document_received, false]]]
+sources: [S3265, S1409, S2700]
+nearest: [CO-4060, CO-1448]
+implemented: engine
+tags: [verification]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-21): incapacitation is a verification the application requires (3.111.C.2.g, S3265), and it had no element of its own; the second-pass review made the immunization element its own item (CO-4060) for the same reason."
+tests:
+  - {id: CO-4467-T1, title: "F-21: an incapacitated caretaker with no physician's statement yet", as_of: "2026-11-01", month: "2026-11", given: {cccap_verification_is_applicable: true, cccap_is_adult_caretaker: true, cccap_caretaker_is_incapacitated: true}, expect: true}
+  - {id: CO-4467-T2, title: "F-21: the statement received", as_of: "2026-11-01", month: "2026-11", given: {cccap_verification_is_applicable: true, cccap_is_adult_caretaker: true, cccap_caretaker_is_incapacitated: true, incapacity_verification_document_received: true}, expect: false}
+  - {id: CO-4467-T3, title: "No incapacity stated", as_of: "2026-11-01", month: "2026-11", given: {cccap_verification_is_applicable: true, cccap_is_adult_caretaker: true}, expect: false}
