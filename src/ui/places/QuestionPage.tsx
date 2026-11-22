@@ -21,7 +21,7 @@ import { personaRoles } from "../personas";
 import { formatValue, personLabel } from "../present";
 import { EXCERPT_KIND_LABEL, excerptKind, isUnverified } from "../provenance";
 import {
-  citedDocuments, isOpen, questionInfo, questionNotes, queueEntry, QUESTION_CLASS_BLURB, type QueueEntry,
+  citedDocuments, isOpen, questionInfo, questionNotes, queueEntry, type QueueEntry,
 } from "../questions";
 import { alternativeEntry, alternativeFor, byCase, type ChangedResult, type StoredResult } from "../questionEffects";
 import { answeredIds, applyAnswer, OPINION_EFFECTS, type QuestionAnswer } from "../questionAnswer";
@@ -33,7 +33,7 @@ import {
 import type { ViewContext } from "../views/context";
 import {
   agencyOf, ClassBadge, docHref, excerptHref, householdHref, itemHref, ItemLinks, ProgramTags, Prose,
-  questionEffect, questionsInView, stagedQuestionState, StatusTag, type QuestionEffect,
+  questionEffect, questionsInView, stagedQuestionState, StatusTag, useRestingReady, type QuestionEffect,
 } from "./questionParts";
 import "./questions-law.css";
 
@@ -117,11 +117,13 @@ function HouseholdResults(
 function Effects({ q, ctx }: { q: QueueEntry; ctx: ViewContext }) {
   const { engine, vol, route: r } = ctx;
   const effect = useSignal<QuestionEffect | null>(null);
+  const ready = useRestingReady(engine, vol);
   useEffect(() => {
     effect.value = null;
+    if (!ready) return;
     const t = setTimeout(() => { effect.value = questionEffect(engine, vol, q); }, 30);
     return () => clearTimeout(t);
-  }, [engine, vol, q.id]);
+  }, [engine, vol, q.id, ready]);
   const e = effect.value;
   if (!e) return <p class="muted">Working out the stored households…</p>;
   const altItem = e.alternative ? engine.item(e.alternative.identifier) : undefined;
@@ -515,7 +517,6 @@ export function QuestionPage({ ctx, id, readText }: { ctx: ViewContext; id: stri
             ? <>Owner: <b>{owner}</b>{mine.includes(owner) && <span class="you"> (you)</span>}{agencyOf(owner) && <span class="muted">, {agencyOf(owner)}</span>}</>
             : "No owner named."}
           {others.length > 0 && <span class="muted"> · also {others.join(", ")}</span>}
-          {open && <span class="muted"> · {QUESTION_CLASS_BLURB[q.cls]}</span>}
         </p>
       </header>
       <div class="qgrid">

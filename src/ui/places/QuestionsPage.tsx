@@ -7,7 +7,7 @@
  * `#/<vol>/questions/OQ-n` one question (QuestionPage.tsx). */
 import { useSignal } from "@preact/signals";
 import {
-  QUESTION_LAW_DEFINITIONS, QUESTION_SORTS, questionQueue, resolvedQuestions, restingIndex, restingReady,
+  QUESTION_LAW_DEFINITIONS, QUESTION_SORTS, questionQueue, resolvedQuestions,
   type QueueQuery, type QueueRow, type QuestionSort,
 } from "../counts";
 import { volumePrograms } from "../programs";
@@ -24,7 +24,7 @@ import { PlaceHeader } from "./PlaceHeader";
 import { QuestionPage } from "./QuestionPage";
 import {
   agencyOf, ClassBadge, clip, EffectSummary, ExcerptLinks, HowCounted, ItemLinks, ProgramTags, programName, Prose,
-  qHref, questionsInView, stagedQuestionState, StatusTag, useAfterPaint, useEffects, type QuestionEffect,
+  qHref, questionsInView, stagedQuestionState, StatusTag, useEffects, useRestingReady, type QuestionEffect,
 } from "./questionParts";
 import "./questions-law.css";
 
@@ -179,9 +179,7 @@ function Queue({ ctx }: { ctx: ViewContext }) {
   const query = { ...readQuery(r.params), exclude: new Set(answered) };
   // The households each question is read by need the resting index (about a
   // second): built after the first paint.
-  const counted = useAfterPaint(
-    () => restingReady(engine, vol.cases), () => restingIndex(engine, vol.cases), [engine, vol],
-  );
+  const counted = useRestingReady(engine, vol);
   const queue = questionQueue(engine, vol.sources, questions, persona, query, counted ? vol.cases : null);
   const everyone = questionQueue(engine, vol.sources, questions, null, {});
   const owners = [...new Set(everyone.rows.flatMap((x) => x.entry.owners))]
@@ -190,7 +188,7 @@ function Queue({ ctx }: { ctx: ViewContext }) {
       return (roles.indexOf(a) + 1 || 99) - (roles.indexOf(b) + 1 || 99);
     });
   const programs = volumePrograms(engine).filter((p) => everyone.rows.some((x) => x.entry.programs.includes(p)));
-  const effects = useEffects(engine, vol, queue.rows.map((x) => x.entry));
+  const effects = useEffects(engine, vol, queue.rows.map((x) => x.entry), counted);
   const mine = queue.mineRoles;
   const whose = query.owner
     ? <>, owned by <b>{query.owner}</b>{mine.includes(query.owner) && " (you)"}</>

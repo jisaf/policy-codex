@@ -12,7 +12,9 @@ import type { Item } from "../../engine/types";
 import type { LoadedVolume } from "../../ledger/load";
 import { parseOpenQuestions, type OpenQuestion, type Source } from "../../ledger/markdown";
 import { fileEntries } from "../../changes/types";
-import { changedBy, changedPhrase, householdCount, restingOn, restingPhrase } from "../counts";
+import {
+  changedBy, changedPhrase, householdCount, restingIndexInSteps, restingOn, restingPhrase, restingReady,
+} from "../counts";
 import { PERSONAS } from "../personas";
 import { isUnverified } from "../provenance";
 import {
@@ -238,36 +240,45 @@ export function EffectSummary({ effect }: { effect: QuestionEffect | undefined }
 
 /** Works the effects out after the page has painted, one question at a time,
  *  so a long queue never holds the first paint. */
-export function useEffects(engine: Engine, vol: LoadedVolume, entries: ReadonlyArray<{ id: string; items: readonly Item[] }>) {
+export function useEffects(
+  engine: Engine, vol: LoadedVolume, entries: ReadonlyArray<{ id: string; items: readonly Item[] }>, ready = true,
+) {
   const done = useSignal<Map<string, QuestionEffect>>(new Map());
   const key = entries.map((e) => e.id).join(",");
   useEffect(() => {
+    if (!ready) return;
     let live = true;
     const map = new Map<string, QuestionEffect>();
     done.value = map;
     const queue = [...entries];
+    // A few questions per step, the page re-rendered once per step, so a
+    // long queue never holds the page (a click waits on the main thread).
     const step = () => {
       if (!live || !queue.length) return;
-      const e = queue.shift()!;
-      map.set(e.id, questionEffect(engine, vol, e));
+      const until = Date.now() + 40;
+      while (queue.length && Date.now() < until) {
+        const e = queue.shift()!;
+        map.set(e.id, questionEffect(engine, vol, e));
+      }
       done.value = new Map(map);
-      setTimeout(step, 0);
+      setTimeout(step, 16);
     };
     const t = setTimeout(step, 30);
     return () => { live = false; clearTimeout(t); };
-  }, [engine, vol, key]);
+  }, [engine, vol, key, ready]);
   return done.value;
 }
 
-/** Builds a slow index after the first paint; true once it is ready. */
-export function useAfterPaint(ready: () => boolean, build: () => void, deps: unknown[]): boolean {
-  const done = useSignal(ready());
+/** Whether the resting index (counts.ts) is built; it is built after the
+ *  first paint, a household at a time, so the page stays responsive. */
+export function useRestingReady(engine: Engine, vol: LoadedVolume): boolean {
+  const done = useSignal(restingReady(engine, vol.cases));
   useEffect(() => {
-    if (ready()) { done.value = true; return; }
+    if (restingReady(engine, vol.cases)) { done.value = true; return; }
     done.value = false;
     let live = true;
-    const t = setTimeout(() => { build(); if (live) done.value = true; }, 40);
-    return () => { live = false; clearTimeout(t); };
-  }, deps);
-  return done.value || ready();
+    restingIndexInSteps(engine, vol.cases).then(() => { if (live) done.value = true; });
+    return () => { live = false; };
+  }, [engine, vol]);
+  return done.value || restingReady(engine, vol.cases);
 }

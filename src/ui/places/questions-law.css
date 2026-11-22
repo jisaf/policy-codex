@@ -112,6 +112,8 @@ a.chip.on { background: var(--med); border-color: var(--accent); font-weight: 60
 ul.departures { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 12px; }
 li.departure { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; min-width: 0; }
 li.departure h2 { font-size: 16px; margin: 0 0 2px; }
+ul.departures li.departure ul li { border: 0; padding: 0; }
+.view.place.law, .view.place.question { overflow-wrap: break-word; }
 dl.depfields { margin: 6px 0 0; display: grid; grid-template-columns: 10em minmax(0, 1fr); gap: 6px 12px; }
 dl.depfields dt { color: var(--muted); font-size: 13px; }
 dl.depfields dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
@@ -131,7 +133,8 @@ ul.excerptlist > li, ul.doclist > li { padding: 5px 0; border-bottom: 1px solid 
 .docexcerpts { margin: 8px 0; }
 .docexcerpts summary { cursor: pointer; }
 .docexcerpts li.on { font-weight: 600; }
-.law-document .doctext pre.statute { white-space: pre-wrap; overflow-wrap: anywhere; margin: 4px 0; max-width: 100%; }
+.law-document .doctext pre.statute { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; max-width: 100%;
+  font: 14px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; background: none; border: 0; padding: 3px 10px; }
 .law-document .doctext pre.statute.hit { background: #fff4b0; outline: none; border-left: 4px solid #c9a227;
   border-radius: 0; padding-left: 8px; margin: 0; }
 .law-document .doctext pre.statute.hit + pre.statute.hit { padding-top: 6px; }

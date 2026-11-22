@@ -129,6 +129,39 @@ export function restingIndex(engine: Engine, cases: readonly HouseholdCase[]): M
   return out;
 }
 
+/** Builds `restingIndex` a household at a time, yielding between them, so a
+ *  page stays responsive while it is built (several seconds for Colorado on
+ *  a slow machine). Resolves with the same index `restingIndex` returns. */
+export function restingIndexInSteps(
+  engine: Engine, cases: readonly HouseholdCase[], budgetMs = 30,
+): Promise<Map<string, StoredResult[]>> {
+  if (restingReady(engine, cases)) return Promise.resolve(restingIndex(engine, cases));
+  return new Promise((resolve) => {
+    const out = new Map<string, StoredResult[]>();
+    let i = 0;
+    const run = () => {
+      if (restingReady(engine, cases)) { resolve(restingIndex(engine, cases)); return; }
+      const until = Date.now() + budgetMs;
+      while (i < cases.length && Date.now() < until) {
+        for (const e of expectationReads(engine, [cases[i]])) {
+          const { reads, ...r } = e;
+          for (const id of reads) {
+            const list = out.get(id);
+            if (list) list.push(r); else out.set(id, [r]);
+          }
+        }
+        i++;
+      }
+      if (i < cases.length) { setTimeout(run, 0); return; }
+      let per = restMemo.get(engine);
+      if (!per) { per = new WeakMap(); restMemo.set(engine, per); }
+      per.set(cases, out);
+      resolve(out);
+    };
+    setTimeout(run, 0);
+  });
+}
+
 /** Whether `restingIndex` is already built (a view can then use it at once). */
 export function restingReady(engine: Engine, cases: readonly HouseholdCase[]): boolean {
   return Boolean(restMemo.get(engine)?.get(cases));
@@ -521,8 +554,8 @@ export interface QueueRow {
   owner: string;
   /** Its other owners, after `owner`. */
   others: string[];
-  /** Households that read it (`questionHouseholds`); null until the resting
-   *  index is built. */
+  /** Households that read it (`questionHouseholds`): worked out for the
+   *  households sort once the resting index is built, else null. */
   households: number | null;
 }
 
@@ -558,7 +591,10 @@ export function questionQueue(
 ): QuestionQueue {
   const all = unsettledEntries(engine, sources, questions).filter((e) => !query.exclude?.has(e.id));
   const mineRoles = persona ? personaRoles(persona, engine.meta) : [];
-  const counted = Boolean(cases && restingReady(engine, cases));
+  const by = query.sort ?? "owner";
+  // Household counts only for the households sort: each is a walk of the
+  // resting index.
+  const counted = by === "households" && Boolean(cases && restingReady(engine, cases));
   const rows: QueueRow[] = all
     .filter((e) => matchesFilter(e, query))
     .filter((e) => !query.state || e.status === query.state)
@@ -572,8 +608,7 @@ export function questionQueue(
         households: counted ? questionHouseholds(engine, cases!, e).length : null,
       };
     });
-  const by = query.sort ?? "owner";
-  if (by === "households" && counted) {
+  if (counted) {
     rows.sort((a, b) => b.households! - a.households! || b.entry.items.length - a.entry.items.length || qNumber(a.entry.id) - qNumber(b.entry.id));
   } else if (by === "items") {
     rows.sort((a, b) => b.entry.items.length - a.entry.items.length || qNumber(a.entry.id) - qNumber(b.entry.id));

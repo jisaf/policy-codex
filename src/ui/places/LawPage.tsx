@@ -9,8 +9,8 @@ import type { Item } from "../../engine/types";
 import type { Source } from "../../ledger/markdown";
 import {
   dependentsOf, departureItems, departureSince, departuresByProgram, figuresWithoutValue, householdCount,
-  householdsThatRead, itemsCitingExcerpt, lawCounts, QUESTION_LAW_DEFINITIONS, restingIndex,
-  restingOn, restingPhrase, restingReady, unverifiedReach, type LawCounts,
+  householdsThatRead, itemsCitingExcerpt, lawCounts, QUESTION_LAW_DEFINITIONS,
+  restingOn, restingPhrase, unverifiedReach, type LawCounts,
 } from "../counts";
 import { formatDate, formatValue } from "../present";
 import { excerptKind, unverifiedIds } from "../provenance";
@@ -24,7 +24,7 @@ import { PlaceHeader } from "./PlaceHeader";
 import { LawDocumentPage, LawDocuments, LawExcerptPage, LawSources, type FetchText } from "./LawSources";
 import {
   docHref, excerptHref, householdHref, HowCounted, itemHref, ProgramTags, programName, Prose, qHref,
-  questionsWithStaged, StatusTag, useAfterPaint,
+  questionsWithStaged, StatusTag, useRestingReady,
 } from "./questionParts";
 import "./questions-law.css";
 import "../views/workflow-views.css";
@@ -152,7 +152,7 @@ function Departures({ ctx }: { ctx: ViewContext }) {
   const ids = new Set(inForce.map((it) => it.id));
   const rows = departures(engine, vol.sources, (s) => excerptKind(s, vol.documents)).filter((d) => ids.has(d.item.id))
     .sort((a, b) => inForce.indexOf(a.item) - inForce.indexOf(b.item));
-  const ready = useAfterPaint(() => restingReady(engine, vol.cases), () => restingIndex(engine, vol.cases), [engine, vol]);
+  const ready = useRestingReady(engine, vol);
   const chip = (p: string | null, label: string, count: number) => (
     <a
       class={`chip${program === p ? " on" : ""}`} aria-current={program === p ? "true" : undefined}
@@ -206,7 +206,7 @@ function readersPhrase(n: number): string {
 
 function Unverified({ ctx }: { ctx: ViewContext }) {
   const { engine, vol, route: r, today } = ctx;
-  const ready = useAfterPaint(() => restingReady(engine, vol.cases), () => restingIndex(engine, vol.cases), [engine, vol]);
+  const ready = useRestingReady(engine, vol);
   const reach = unverifiedReach(engine, vol.sources, unverifiedIds(vol.sources), ready ? vol.cases : null);
   const missing = figuresWithoutValue(engine, today);
   const outcomes = reach.outcomes.map((o) => engine.item(o)).filter((it): it is Item => Boolean(it));
