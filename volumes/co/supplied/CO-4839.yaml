@@ -1,0 +1,14 @@
+id: CO-4839
+name: "Colorado Works: good cause for an SSN application pending more than eight months"
+identifier: cw_has_good_cause_for_pending_ssn_application
+kind: supplied
+type: yes/no
+scope: person-month
+program: ColoradoWorks
+meaning: "The county has found good cause for the person's proof of an application for a Social Security number to remain valid for the month although more than eight months have passed since the application (9 CCR 2503-6 3.604.3.B.2.c)."
+precision: "If not stated, Colorado Works reads this as false."
+supplied_by: "County eligibility worker's finding."
+sources: [S872]
+tags: [cash, tanf, verification]
+nearest: [CO-1647]
+rationale: "Coverage review CW-25: 3.604.3.B.2.c (S872) limits a proof of application to eight months \"without good cause\"; the good cause is the county's finding, and no existing fact states it."

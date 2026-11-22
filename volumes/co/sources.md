@@ -21903,3 +21903,16 @@ Document: D-87
 > parents must self-declare that their liquid and non-liquid assets do
 > not exceed one million dollars. If assets exceed one million dollars
 > the household is ineligible for CCCAP.
+
+### S3580. Colorado Works: a military allotment received by a non-recipient for persons not in the assistance unit
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3.B.10 (rule version 12030, effective 07/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 10. Military Allotment- A military allotment received on behalf of a client for those individuals
+> included in the budget unit shall be considered as income in the month received. The
+> military allotment received by the non-recipient spouse, parent, or stepparent on behalf of
+> individuals not in the assistance unit shall be considered as income in the month received
+> to the extent that such income exceeds the need standard concerning those persons not
+> in the budget unit.

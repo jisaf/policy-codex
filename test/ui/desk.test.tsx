@@ -89,7 +89,7 @@ describe("the Desk's counts (counts.ts)", () => {
 describe("a program's counts and its steps (counts.ts)", () => {
   it("Colorado Works decides 7 outcomes, with 17 more about documents", () => {
     const s = programSummary(engine, "ColoradoWorks", vol.openQuestions);
-    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 104, 47, 34, 18]); // coverage pass 2: + CO-4660, + OQ-830, OQ-831
+    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 105, 48, 35, 19]); // coverage pass 2: + CO-4660, + OQ-830, OQ-831; pass 3: + CO-4835, CO-4840, CO-4839, OQ-860
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
@@ -105,8 +105,8 @@ describe("a program's counts and its steps (counts.ts)", () => {
     }
   });
 
-  it("figures: 439 in all; words in any order; the three flags", () => {
-    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(439);
+  it("figures: 440 in all; words in any order; the three flags", () => {
+    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(440); // + CO-4840 (Colorado Works coverage pass 3)
     const cw = figuresOnDate(engine, unverified, { asOf: DAY, q: "standard grant", program: "ColoradoWorks" }, wordsMatch);
     expect(cw.map((x) => x.item.id)).toContain("CO-276");
     expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(6);
@@ -238,11 +238,11 @@ describe("the Figures page", () => {
   it("lists every figure on a date, with a word filter and three flags", () => {
     const host = show("#/co/figures");
     expect(host.querySelectorAll("tr.figure").length).toBeGreaterThan(40);
-    expect(host.querySelector(".figcount")!.textContent).toContain("439 figures");
+    expect(host.querySelector(".figcount")!.textContent).toContain("440 figures");
     const cw = show("#/co/figures?q=grant+standard&program=ColoradoWorks");
     const row = cw.querySelector('tr.figure[data-figure="cw_grant_standard_table"]')!;
     expect(row.querySelector("a.figname")!.getAttribute("href")).toBe("#/co/item/CO-276");
-    expect(cw.querySelector(".figcount")!.textContent).toContain("of 439 figures");
+    expect(cw.querySelector(".figcount")!.textContent).toContain("of 440 figures");
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);
