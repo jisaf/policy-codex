@@ -218,6 +218,8 @@ outcomes:
       eligible: {code: PH-SNAP, label: "SNAP household member"}
     no_code:
       no_eligible_members: "Not eligible: no eligible household member."
+      substantial_lottery_winnings: "Not eligible this month: a member received substantial lottery or gambling winnings."
+      resource_transfer_disqualification: "Not eligible: disqualified for transferring resources to qualify."
       striking_member: "Not eligible: a striking member, and the household was not eligible the day before the strike."
       over_gross_income_limit: "Not eligible: over the gross income limit."
       over_net_income_limit: "Not eligible: over the net income limit."

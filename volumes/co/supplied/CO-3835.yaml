@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The uncompensated value of the transfer resource_transfer_date states: the actual value of the resource less encumbrances, less what the person received for it, and less any part of the resource since returned to the person."
-precision: "Stated with resource_transfer_date. A transfer whose whole resource has been returned is not stated."
+precision: "Stated with resource_transfer_date. A transfer whose whole resource has been returned is not stated. SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
 supplied_by: "Applicant statement, appraisals and sale records, as the county establishes them."
 sources: [S2614]
 tags: [cash, resources]

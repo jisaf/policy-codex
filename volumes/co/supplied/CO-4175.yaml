@@ -1,0 +1,14 @@
+id: CO-4175
+name: "Liquid resources the person cannot reach"
+identifier: liquid_resources_inaccessible_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of the person's liquid resources (liquid_resources_value) the person cannot get at: a jointly owned account or holding that cannot practically be divided and whose use needs the agreement of a joint owner who refuses, or of a person still living in the home the person left because of abuse; funds held in probate or that a creditor's lien or a court order prevents the person from using; and funds in a trust that no member of the person's household can revoke or redirect, or that a court, institution or organization not under a household member's direction administers."
+precision: "Part of liquid_resources_value, not added to it; where only part of a holding can be reached, the rest. As of the determination date. If not stated, SNAP reads it as 0."
+supplied_by: "Account, trust and court documents, as the county establishes them."
+sources: [S2968]
+tags: [resources]
+rationale: "Final verification pass 2 N-8: 10 CCR 2506-1 4.409.C, 4.410.F and H (S2968) leave out resources the household cannot reach, but SNAP counted liquid_resources_value (CO-3390), the person's own holding or share of a joint one, in full."
+nearest: [CO-3390]
