@@ -38,10 +38,10 @@
 
 /* ---- ids and item references: plain name first, the id small and last */
 small.idsmall, .idsmall {
-  font: 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); white-space: nowrap;
+  font: 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); white-space: nowrap;
 }
 a.itemref, a.hhref { overflow-wrap: anywhere; }
-.prose a.refid { font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.prose a.refid { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
 .hhrefs { overflow-wrap: anywhere; }
 .hhrefs details.more { display: inline; }
 .hhrefs details.more > summary { display: inline; cursor: pointer; color: var(--accent); margin-left: 4px; }
