@@ -155,6 +155,7 @@ outcomes:
       home_equity_exceeds_limit: "Not eligible: home equity over the limit."
       not_eligible_for_requested_setting: "Not eligible for the setting requested."
       not_institutionalized_or_waiver: "Not in an institution and not asking for a waiver."
+      failed_to_cooperate: "Not eligible: failed to pursue potential resources or income, or refuses to release the patient payment."
 
   - outcome: ma_emergency_medicaid_status
     codes:

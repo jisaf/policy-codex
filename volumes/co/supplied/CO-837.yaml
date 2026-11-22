@@ -10,4 +10,4 @@ precision: Zero for a person who does not receive an A&A/UME VA pension portion 
 supplied_by: VA pension award letter, verified by the Eligibility Site.
 sources: [S2900, S1738]
 tags: [ma, ltc, income]
-rationale: "Companion figure to receives_va_aid_and_attendance (CO-836), needed as the dollar amount ma_ltc_gross_income (CO-641) excludes. Final verification pass 2, F2-2: cited as § 8.100.6.C.1; the rule is § 8.100.5.K (S2900). ma_patient_payment (CO-658) adds it under K.2."
+rationale: "Companion figure to receives_va_aid_and_attendance (CO-836), needed as the dollar amount ma_ltc_gross_income (CO-641) excludes. Final verification pass 2, F2-2: cited as § 8.100.6.C.1; the rule is § 8.100.5.K (S2900). ma_patient_payment (CO-658) adds it under K.2. Coverage pass 2, N2-1: ma_ssi_excluded_unearned_income (CO-2470) reads it too, so the SSI-method, Buy-In and deeming income sums exclude the portion as well."

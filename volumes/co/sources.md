@@ -21990,3 +21990,122 @@ Document: D-81
 > individuals not in the assistance unit shall be considered as income in the month received
 > to the extent that such income exceeds the need standard concerning those persons not
 > in the budget unit.
+### S3615. Federal family allowance: at least one third of the amount by which the MMMNA standard exceeds the member's income; the section supersedes inconsistent provisions
+
+Document: D-47
+
+42 U.S.C. 1396r-5(a)(1), (d)(1)(C) (Cornell LII text re-fetched 2026-11-22, reads the same as D-47). https://www.law.cornell.edu/uscode/text/42/1396r-5
+
+> (1) Supersedes other provisions
+>
+> In determining the eligibility for medical assistance of an institutionalized spouse (as defined in subsection (h)(1)), the provisions of this section supersede any other provision of this subchapter (including sections 1396a(a)(17) and 1396a(f) of this title) which is inconsistent with them.
+>
+> ...
+>
+> (C)
+>
+> A family allowance, for each family member , equal to at least ⅓ of the amount by which the amount described in paragraph (3)(A)(i) exceeds the amount of the monthly income of that family member .
+
+### S3616. Dependent Relative: one claimed as a dependent by an applicant for federal income tax purposes (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1, Definitions (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Dependent Relative for purposes of this rule is defined as one who is claimed as a dependent by an applicant for federal income tax purposes.
+
+### S3617. Exempt income for the aged, blind and disabled categories: assistance from other agencies and organizations, WIA training allowances, youth employment project payments, decennial Census wages (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6.j, o, p, z (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> j. Assistance from other agencies and organizations.
+>
+> ...
+>
+> o. Training allowances granted by the Workforce Investment Act (WIA) to enable any individual whether dependent child or caretaker relative, to participate in a training program
+>
+> p. Payments received from the youth incentive entitlement pilot projects, the youth community conservation and improvement projects, and the youth employment and training programs under the Youth Employment and Demonstration Project Act.
+>
+> ...
+>
+> z. All wages paid by the United States Census Bureau for temporary employment related to the decennial Census.
+
+### S3618. SSI: the first $30 of infrequent or irregular earned income in a calendar quarter; AmeriCorps payments
+
+Document: D-53
+
+20 CFR 416.1112(c)(2), (c)(10); 416.1124(c)(23). https://www.ecfr.gov/current/title-20/part-416
+
+> (2) The first $30 of earned income received in a calendar quarter if you receive it infrequently or irregularly. We consider income to be received infrequently if you receive it only once during a calendar quarter from a single source and you did not receive it in the month immediately preceding that month or in the month immediately subsequent to that month. We consider income to be received irregularly if you cannot reasonably expect to receive it.
+>
+> ...
+>
+> (10) Payments made to participants in AmeriCorps State and National and AmeriCorps National Civilian Community Corps (NCCC). Payments to participants in AmeriCorps State and National and AmeriCorps NCCC may be made in cash or in-kind and may be made directly to the AmeriCorps participant or on the AmeriCorps participant's behalf. These payments include, but are not limited to: Living allowance payments, stipends, educational awards, and payments in lieu of educational awards.
+>
+> ...
+>
+> (23) AmeriCorps State and National and AmeriCorps National Civilian Community Corps cash or in-kind payments to AmeriCorps participants or on AmeriCorps participants' behalf. These include, but are not limited to: Food and shelter, and clothing allowances;
+
+### S3619. Net rental income from an exempt home (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.J.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Net rental income from an exempt home or a life estate interest in an exempt home is countable after the following allowable deductions:
+>
+> a. Property taxes and insurance
+>
+> b. Necessary reasonable routine maintenance expenses
+>
+> c. Reasonable management fee for a professional property manager.
+
+### S3620. SSI: rents net of ordinary and necessary expenses
+
+Document: D-53
+
+20 CFR 416.1121(d). https://www.ecfr.gov/current/title-20/part-416
+
+> (d) *Rents.* Rents are payments you receive for the use of real or personal property such as land, housing, or machinery. We deduct from rental payments your ordinary and necessary expenses in the same taxable year. These include only those expenses necessary for the production or collection of the rental income and they must be deducted when paid, not when they are incurred. Some examples of deductible expenses are interest on debts, State and local taxes on real and personal property and on motor fuels, general sales taxes, and expenses of managing or maintaining the property. (Sections 163, 164, and 212 of the Internal Revenue Code of 1954 and related regulations explain this in more detail.) We do not consider depreciation or depletion of property a deductible expense. (See § 416.1110(b) for rules on rental income that is earned from self-employment. For example, you may be in the business of renting properties.)
+
+### S3621. Failure to make a reasonable effort to secure potential resources or income: denial or termination (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.E.5-7 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5. If the applicant or client demonstrates with clear and convincing evidence that appropriate steps are being taken to secure the resources, Medical Assistance shall not be delayed or terminated. Verification of efforts to secure the resources must be provided at regular intervals as requested by the Eligibility Site.
+>
+> 6. Resources will be considered available and Medical Assistance shall be denied or terminated if the applicant or client refuses or fails to make a reasonable effort to secure potential resources or income.
+>
+> 7. Timely and adequate notice must be given regarding a proposed action to deny, reduce, or terminate assistance due to failure to make reasonable efforts to secure resources or income. If upon receipt of the prior notice, the individual acts to secure the potential resource, the proposed action to deny, reduce, or terminate assistance must be withdrawn, and assistance must be approved or continued until the resource or income is, in fact, available.
+
+### S3622. Refusal to release the patient payment: a failure to cooperate; Medicaid discontinued (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.2.b-c (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b. If, however, the Long-Term Care institution is unable to collect such funds, through refusal of the resident or the resident's family, conservator, administrator or responsible party to release such income, the Long-Term Care institution shall immediately notify the Eligibility Site.
+>
+> c. When notified by the Long-Term Care institution of the refusal of the client or the client's family, conservator administrator or responsible party to pay the patient payment due, the Eligibility Site shall immediately contact the refusing party. If, after such contact, the party still refuses to release such income, the action shall be deemed a failure to cooperate, and the Eligibility Site shall proceed to discontinue Medicaid benefits for the resident.
+
+### S3623. Retroactive months for the aged, blind and disabled category: disability approved or onset on or before the date of the medical service (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.C.4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. Clients applying for Medical Assistance under the Aged, Blind and Disabled category shall be reviewed for retroactive eligibility as described at 8.100.3.E. When reviewing for retroactive eligibility for an individual who is SSI eligible or applied and became SSI eligible in each of the retroactive months, the applicant must:
+>
+> a. Be aged at least 65 years; or
+>
+> b. Meet the Social Security Administration definition of disability by:
+>
+> i) Being approved as eligible to receive either SSI or SSDI, on or prior to the date of a medical service; or
+>
+> ii) Having a disability onset date determined on or prior to the date of a medical service; and
+>
+> c. Meet the financial requirements as described at 8.100.5.E.

@@ -1,0 +1,20 @@
+id: CO-4883
+name: "SSI method: excluded infrequent or irregular earned income"
+identifier: ma_ssi_excluded_infrequent_earned_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of the person's infrequent or irregular earned income for the month that the SSI method does not count: what remains, after the earlier months of the calendar quarter, of the first ssi_infrequent_earned_income_quarterly_exclusion of such income received in the quarter (20 CFR 416.1112(c)(2), incorporated by 10 CCR 2505-10 § 8.100.5.H.4.e)."
+precision: "The quarter's running total of infrequent_or_irregular_earned_income_received (CO-4010), capped at the exclusion, less the same total through the month before (the student exclusion's pattern, CO-2471), so the quarter's first $30 is excluded in the months it is received and no more. The quarter is the calendar quarter containing the month (January, April, July or October to the month). \"The first $30\" is read as the exclusion of up to $30 of such income in the quarter, as the regulation words it; SSA's operating instructions are not on an allowed host. An unstated receipt is 0."
+derived: ["-", [min, ssi_infrequent_earned_income_quarterly_exclusion, [sum_months, [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [month]], [at, [otherwise, infrequent_or_irregular_earned_income_received, 0], [that_month]]]], [min, ssi_infrequent_earned_income_quarterly_exclusion, [sum_months, [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [month_before, [month]]], [at, [otherwise, infrequent_or_irregular_earned_income_received, 0], [that_month]]]]]
+sources: [S3618]
+implemented: engine
+tags: [non_magi, income]
+rationale: "Coverage pass 2 (first pass NM-26, deferred): 416.1112(c)(2) had no item. infrequent_or_irregular_earned_income_received (CO-4010), the neutral fact Adult Financial reads, now states the receipt, so the exclusion can be derived; ma_ssi_excluded_earned_income (CO-2471) adds it."
+tests:
+  - {id: CO-4883-T1, as_of: "2026-11-01", month: "2026-11", title: "25 for one odd job in November, nothing earlier in the quarter: all 25 excluded", given: {infrequent_or_irregular_earned_income_received: 25}, expect: 25}
+  - {id: CO-4883-T2, as_of: "2026-11-01", month: "2026-11", title: "50 in November: the first 30 excluded", given: {infrequent_or_irregular_earned_income_received: 50}, expect: 30}
+  - {id: CO-4883-T3, as_of: "2026-11-01", month: "2026-11", title: "20 in October and 20 in November (same quarter): 10 left for November", given: {infrequent_or_irregular_earned_income_received: {"2026-10": 20, "2026-11": 20}}, expect: 10}
+  - {id: CO-4883-T4, as_of: "2026-10-01", month: "2026-10", title: "September's 30 is in the previous quarter: October's 20 is excluded", given: {infrequent_or_irregular_earned_income_received: {"2026-09": 30, "2026-10": 20}}, expect: 20}
+  - {id: CO-4883-T5, as_of: "2026-11-01", month: "2026-11", title: "none", given: {}, expect: 0}

@@ -9,4 +9,4 @@ meaning: Whether this person receives a VA pension with an Aid and Attendance (A
 supplied_by: VA pension award letter, verified by the Eligibility Site.
 sources: [S2900, S1738]
 tags: [ma, ltc, income]
-rationale: "The phase-4 brief's interface directs creating a VA Aid and Attendance fact 'as the text requires.' ma_ltc_gross_income (CO-641) needs it to gate the va_aid_and_attendance_amount (CO-837) exclusion. Final verification pass 2, F2-2: cited as § 8.100.6.C; the rule is § 8.100.5.K (S2900). ma_va_aid_and_attendance_is_patient_payment (CO-4103) also reads it."
+rationale: "The phase-4 brief's interface directs creating a VA Aid and Attendance fact 'as the text requires.' ma_ltc_gross_income (CO-641) needs it to gate the va_aid_and_attendance_amount (CO-837) exclusion. Final verification pass 2, F2-2: cited as § 8.100.6.C; the rule is § 8.100.5.K (S2900). ma_va_aid_and_attendance_is_patient_payment (CO-4103) also reads it. Coverage pass 2, N2-1: ma_ssi_excluded_unearned_income (CO-2470) reads it too, so the SSI-method, Buy-In and deeming income sums exclude the portion as well."
