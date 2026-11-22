@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 6 of ${vol.cases.length} stored households; it reaches 11`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 16 and reaches 23", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(16);
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(23);
+  it("the children's Medicaid income limit (CO-191) is read by 20 and reaches 28", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(20);
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(28);
   });
 
   it("every household that reads an item is one it reaches", () => {
@@ -100,7 +100,7 @@ describe("unverified upstream", () => {
     expect(citing.length).toBe(6);
     for (const it of citing) expect(citedUnverified(it, unverified).length).toBeGreaterThan(0);
     const tainted = restingOnUnverified(engine, unverified);
-    expect(tainted.size).toBe(42);
+    expect(tainted.size).toBe(50);
     for (const it of citing) {
       expect(tainted.has(it.identifier)).toBe(true);
       for (const r of engine.impact([it.identifier])) expect(tainted.has(r)).toBe(true);
