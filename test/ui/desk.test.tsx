@@ -89,12 +89,12 @@ describe("the Desk's counts (counts.ts)", () => {
 describe("a program's counts and its steps (counts.ts)", () => {
   it("Colorado Works decides 7 outcomes, with 17 more about documents", () => {
     const s = programSummary(engine, "ColoradoWorks", vol.openQuestions);
-    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 103, 47, 34, 16]);
+    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 104, 47, 34, 18]); // coverage pass 2: + CO-4660, + OQ-830, OQ-831
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
-  it("explains the grant amount in 5 main steps, 19 at two levels, 46 at three, 97 in all; the result last", () => {
-    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([5, 19, 46, 97]);
+  it("explains the grant amount in 5 main steps, 20 at two levels, 45 at three, 98 in all; the result last", () => {
+    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([5, 20, 45, 98]); // coverage pass 2: CO-1265 reads the partial-month factor; + CO-4660
     const steps = explainSteps(engine, "cw_grant_amount", 1);
     expect(steps[steps.length - 1]).toMatchObject({ level: 0, item: { identifier: "cw_grant_amount" } });
     // Each rule comes after the rules it reads.
@@ -218,11 +218,11 @@ describe("the Programs pages", () => {
     expect(host.querySelector("ol.steplist > li.step:last-child .step-n")!.textContent).toBe("Result");
     expect(host.querySelector("button.print")!.textContent).toBe("Print for a training");
     const chips = [...host.querySelectorAll("nav.depthchips a")].map((a) => a.textContent);
-    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (97)"]);
+    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (98)"]);
     // The rule reads in plain words, never "-1 times".
     expect(host.querySelector("li.step.result")!.textContent).not.toMatch(/-1 times/);
-    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2").querySelectorAll("li.step")).toHaveLength(19);
-    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(97);
+    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2").querySelectorAll("li.step")).toHaveLength(20);
+    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(98);
   });
 
   it("shows a stored household's values beside each step", () => {

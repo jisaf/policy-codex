@@ -86,20 +86,20 @@ describe("counts for the Changes place", () => {
     expect(householdsReadingAny(engine, vol.cases, [a, b]).sort()).toEqual([...union].sort());
   });
 
-  it("a proposal of one item has that item's read and reach: CO-273 is read by 7 and reaches 27", () => {
+  it("a proposal of one item has that item's read and reach: CO-273 is read by 8 and reaches 29", () => {
     const id = item(DISREGARD).identifier;
     const r = proposalReach(engine, vol.cases, [id]);
     expect(r.read).toEqual(householdsThatRead(engine, vol.cases, id));
     expect(r.reach).toEqual(householdsReached(engine, vol.cases, id));
     // The five Adult Financial coverage-round households (CO-165 to CO-169) are reached through af_barred_by_colorado_works.
-    expect([r.read.length, r.reach.length]).toEqual([7, 27]);
+    expect([r.read.length, r.reach.length]).toEqual([8, 29]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90
   });
 
-  it("$100 for the $90 disregard moves 8 steps on the way (countable income) and no outcome", () => {
+  it("$100 for the $90 disregard moves 10 steps on the way (countable income) and no outcome", () => {
     const it0 = item(DISREGARD);
     const rows = changedBy(engine, vol.cases, [{ id: it0.id, chapter: "parameters", before: it0, after: { ...it0, value: 100 } }]);
     const { outcomes, steps } = changedSplit(engine, rows);
-    expect([outcomes.length, steps.length]).toEqual([0, 9]);
+    expect([outcomes.length, steps.length]).toEqual([0, 11]); // Colorado Works coverage pass 2: CO-191 deems a parent's wages less the $90 (257 to 247, still not below 245)
     expect(steps.map((s) => s.caseId)).toContain("CO-83");
   });
 
@@ -235,11 +235,11 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     // The draft reaches the effect panel after the editor's effect runs.
     await until(() => Boolean(effect.querySelector(".reach")));
-    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 7 of ${vol.cases.length} stored households; it reaches 27.`);
+    expect(effect.querySelector(".reach")!.textContent).toBe(`Read by 8 of ${vol.cases.length} stored households; it reaches 29.`);
     await until(() => effect.getAttribute("aria-busy") === "false");
-    expect(effect.textContent).toMatch(/9 stored results in \d+ households would change/);
+    expect(effect.textContent).toMatch(/11 stored results in \d+ households would change/);
     expect(effect.textContent).toMatch(/Outcomes that change \(0\)/);
-    expect(effect.textContent).toMatch(/Steps on the way that change \(9\)/);
+    expect(effect.textContent).toMatch(/Steps on the way that change \(11\)/);
 
     const approvers = host.querySelector("section.approvers")!;
     const roles = [...approvers.querySelectorAll("li[data-role]")].map((li) => li.getAttribute("data-role"));
@@ -262,7 +262,7 @@ describe("My proposal", () => {
     const effect = host.querySelector("section.effect")!;
     await until(() => /Applied on the households' own dates/.test(effect.textContent ?? ""));
     expect(effect.querySelector(".nochange")!.textContent).toMatch(/No stored household result would change\. Their results are for dates before July 1, 2027/);
-    expect(effect.textContent).toMatch(/9 stored results in \d+ households would change/);
+    expect(effect.textContent).toMatch(/11 stored results in \d+ households would change/);
   });
 
   it("lists what the proposal holds by name, with the no-GitHub download path", () => {
