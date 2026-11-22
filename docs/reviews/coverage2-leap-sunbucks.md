@@ -135,7 +135,7 @@ Legend: **C** carried by (item, read against the text: conditions, boundaries, p
 | 95 | 3.752.23.B Title III nutrition; C school meals and WIC | N/A | In-kind; no income fact. |
 | 96 | 3.752.23.D home produce | N/A | In-kind. |
 | 97 | 3.752.23.E housing assistance paid on a dwelling unit | N/A | Paid to the landlord; not a member's receipt (T). |
-| 98 | 3.752.23.F DVSA, SCORE, ACE, AmeriCorps volunteer payments below minimum wage | C / **GAP** | CO-3366 in CO-3913 for DVSA; **N-5** (AmeriCorps, P2). |
+| 98 | 3.752.23.F DVSA, SCORE, ACE, AmeriCorps volunteer payments below minimum wage | C (was C / **GAP**) | CO-3366 in CO-3913 for DVSA; AmeriCorps carried by CO-4016 with CO-4853 `americorps_service_hours` against CO-4730 in CO-4511 (N-5 fixed). |
 | 99 | 3.752.23.G Colorado Crime Victims Compensation | C | CO-3813 in CO-4511 (case CO-175 re-run: 1,000). |
 | 100 | 3.752.23.H-I, K-O Civil Liberties Act, Agent Orange, German and Austrian reparations, Nazi persecution, RECA, spina bifida | C | CO-3366 in CO-3913. |
 | 101 | 3.752.23.J gift transportation ticket not converted to cash | N/A | In-kind. |
@@ -145,16 +145,16 @@ Legend: **C** carried by (item, read against the text: conditions, boundaries, p
 | 105 | 3.752.23.T payments made directly to others | C | Not a member's receipt; energy vendor payments CO-3364. |
 | 106 | 3.752.23.U foster care and kinship payments; those individuals not members | C / OQ | CO-3821, CO-4503 in CO-4511; membership CO-1000, CO-1009 (OQ-801); **N-6** (CO-4451 dual entry). |
 | 107 | 3.752.23.V home care allowance paid to a non-member | N/A | A non-member's receipt is not in any member's income (CO-4511 precision). |
-| 108 | 3.752.23.W state and county diversion payments | **GAP** | **N-1** (P1): no money fact; would sit in CO-030 and be counted. |
+| 108 | 3.752.23.W state and county diversion payments | C (was **GAP**) | Carried by CO-4850 `tanf_diversion_payment_received` in CO-4511 (N-1 fixed). |
 | 109 | 3.752.23.X reverse mortgages | C | CO-3820 in CO-4511. |
 | 110 | 3.752.23.Y subsidized housing utility allowances | C | CO-4500 in CO-4511. |
 | 111 | 3.752.23.Z G.I. Bill educational, housing and food allowances | C | CO-3360 (CO-3913), CO-4501 (CO-4511). |
 | 112 | 3.752.23.AA one-time refugee resettlement grant | C | CO-4508 in CO-4069; **N-6** (CO-4367 dual entry). |
 | 113 | 3.752.23.BB bona fide loans | C | CO-3362 in CO-3913. |
 | 114 | 3.752.23.CC SCSEP funds at 55 or older | C | CO-4504, CO-4510 (`>=` 55) in CO-3925. |
-| 115 | 3.752.23.DD PASS income | C / **GAP** | Unearned CO-3825 in CO-4511; earned part **N-2** (P1). |
+| 115 | 3.752.23.DD PASS income | C (was C / **GAP**) | Unearned CO-3825 in CO-4511; earned CO-4618 in CO-1002 (N-2 fixed; case CO-210). |
 | 116 | 3.752.23.EE lump-sum tax refunds and credits; retroactive SS, SSI and PA lump sums | C | CO-3365 (CO-3913); CO-4067, CO-4068 in CO-4069. |
-| 117 | 3.752.23.FF Colorado Works supportive services | **GAP** | **N-1** (P1): CO-4452 exists, not read. |
+| 117 | 3.752.23.FF Colorado Works supportive services | C (was **GAP**) | Carried by CO-4452 in CO-4511 (N-1 fixed; case CO-209). |
 | 118 | 3.752.23.GG liquidation of personal resources | C | CO-4507 in CO-4069. |
 | 119 | 3.752.23.HH employer health insurance subsidies to the employee | C | CO-4505 in CO-3925. |
 | 120 | 3.752.24 no resource test | C | No LEAP item reads a resource value (checked by `uses`; the only resource-named read is CO-4507, the GG exclusion of liquidation proceeds). |
@@ -329,7 +329,7 @@ LEAP rows: **225**.
 | 282 | 292.14(e)(1)-(3) direct verification first; any point in the period | C | CO-1591; CO-2708 (any month, for SNAP); **N-3**. |
 | 283 | 292.14(f)(1) exceptions: all children SNAP/FDPIR/TANF/approved, or all foster/homeless/migrant/runaway | C | CO-1699 with CO-2708, CO-4528, CO-4527 (C-21 fixed: separate "all" clauses). |
 | 284 | 292.14(f)(2)(i)-(iii) notice; respond by the agency's date; alternative proofs | C / OQ | CO-1592 accepts SNAP/FDPIR/TANF proof; no deadline (OQ-377). |
-| 285 | 292.14(f)(2)(iv), (f)(5) failure to cooperate terminates | **GAP** | **N-7** (P2). |
+| 285 | 292.14(f)(2)(iv), (f)(5) failure to cooperate terminates | C (was **GAP**) | Carried by CO-4854 `sebt_household_refused_verification` in CO-1298 and CO-1299 (N-7 fixed). |
 | 286 | 292.14(f)(3) sources of information | N/A | Evidence procedure (CO-1592, CO-1591 are "verified", however obtained). |
 | 287 | 292.14(f)(4) documentation may show eligibility at any point in the period | C | CO-1592. |
 | 288 | 292.14(f)(6)-(7) telephone; two follow-up attempts | N/A | Procedure (OQ-377 on the deadline). |
@@ -410,3 +410,22 @@ No open question in the family is misclassified.
 - RV2-L3: CO-175 with $4,000 wages, $500 of them a PASS set-aside (CO-4618): `leap_person_wages` 4,000, ineligible.
 - RV2-S0 / RV2-S1: guardian and 10-year-old in an NSLP school, school-meal income $6,000, determined 2027-03-01; S0 `child_welfare_payment_type` `title_iv_e_foster_care` (`eligible_categorical`), S1 `none` after care ended in December (`ineligible`, benefit 0).
 - RV2-S2: as S1 with `tanf_cash_income` $300 in 2026-09 to 2026-12 and `receives_tanf_cash` false: `sebt_household_child_receives_snap_or_tanf` false in 2026-10 and 2027-03, `ineligible`.
+
+## Disposition (coverage pass 2)
+
+Fix round 2026-11-22, commits 9ef7c0d and f78b1fd (and the commit that adds this section). Every stored LEAP and SUN Bucks case (22) and the seven probes above were re-run after the fixes: no stored case's LEAP or SUN Bucks value moved; only the probes moved, as below. New items CO-4850 to CO-4855, excerpts S3595 and S3596, OQ-863, cases CO-209 to CO-211.
+
+| id | sev | disposition |
+|---|---|---|
+| N-1 | P1 | Fixed (9ef7c0d). CO-4511 subtracts `tanf_supportive_service_payments_received` (CO-4452, FF) and the new neutral `tanf_diversion_payment_received` (CO-4850, W, part of the unearned income facts, read as 0; Colorado Works' diversion items CO-2559, CO-2560 and CO-3931 are its agreement amount, its own payment figure and a yes/no record, none a receipt); the precision's "not part of tanf_cash_income" sentence is corrected. Tests CO-4511-T5. RV2-L2 is now `leap_excluded_unearned_income` 400, `leap_household_income` 3,500, eligible (case CO-209). |
+| N-2 | P1 | Fixed (9ef7c0d). `pass_set_aside_earned_income` (CO-4618) is subtracted once from the member's wages and self-employment together in CO-1002, not below zero, so wages and self-employment do not each take it (DD cited). Test CO-1002-T7. RV2-L3: `leap_person_wages` stays 4,000 (the wage figure), `leap_household_income` 3,500, eligible (case CO-210). |
+| N-3 | P1 | Fixed (9ef7c0d). CO-2708 reads Colorado Works receipt per month from `tanf_cash_income` as well as the record (test CO-2708-T10, probe RV2-S2 now `eligible_categorical`). CO-4527 reads foster care that ended in the period (`foster_care_exit_date`, CO-2853, existing) and homelessness that ended in it (new `homelessness_ended_date`, CO-4851); CO-4528 reads FDPIR that ended in it (new `fdpir_participation_ended_date`, CO-4852); `is_migrant_child`, `is_runaway_child`, `is_head_start_child` and `sebt_other_documented_categorical_basis` (CO-2848 to CO-2850, CO-2852, read only by SUN Bucks) are restated as identifications at any time in the period. CO-1298's precision corrected. RV2-S1 stated with the exit date (2026-12-15) is `eligible_categorical` (case CO-211); as the probe stands, with no exit date, it stays ineligible, which is the case stating no past ground. |
+| N-4 | P2 | Fixed (9ef7c0d). OQ-561 now weighs B.8 and its Assumption adds that a hotel household meeting B.8 is not homeless; CO-2815 follows (tests T5, T6). RV2-L1 is now not homeless and eligible, as RV2-L0. |
+| N-5 | P2 | Fixed (9ef7c0d). CO-4511 subtracts `americorps_payments_received` (CO-4016) when the new `americorps_service_hours` (CO-4853) is stated and the hourly value is below `colorado_minimum_wage` (CO-4730, the reading OQ-781 resolved for Adult Financial); with hours unstated the payments count. Tests CO-4511-T6 to T8. |
+| N-6 | P2 | Fixed (9ef7c0d). Kinship: CO-4451 is narrowed to adoption assistance and renamed `adoption_subsidy_received`, so a kinship payment has one fact (CO-4503), which LEAP already subtracts and CCCAP (CO-4463, test T8) now reads; adoption assistance stays countable for LEAP (3.752.21.M). Resettlement: CO-4511 subtracts `refugee_resettlement_payments_received` (CO-4367) less the part also stated as the thirty days' grant (CO-4508, which CO-4069 subtracts from the lump sum), so a grant stated in either fact is excluded and one stated in both is excluded once (tests CO-4511-T9, T10). Whether AA covers the Interim Cash Payment is OQ-863 (state policy choice). Shared-fact meaning change: CO-4451. |
+| N-7 | P2 | Fixed (9ef7c0d). New `sebt_household_refused_verification` (CO-4854, read as false): CO-1298 gives `ineligible` and CO-1299 gives 0, a for-cause selection included (tests CO-1298-T6, CO-1299-T7); noted in OQ-377. |
+| N-8 | P3 | Fixed by precision (9ef7c0d): CO-1274 cites 3.751.2.C (S1407); a case states 1 to 9. No cap is computed: more than nine households sharing is outside the rule, not a figure to substitute. |
+| N-9 | P3 | Fixed by precision (9ef7c0d): CO-1711 cites 3.755.21.I.2.D (S3596); rental-property self-employment states only maintenance costs. A rental flag on the cost facts was not added: the cost facts are stated per person and the rule's limit is met by what the case states. |
+| N-10 | P3 | Fixed (9ef7c0d, f78b1fd). New `sebt_application_date` (CO-4855); CO-1297 reads the guideline year of the application date when stated, of the determination date otherwise (test CO-1297-T6). |
+
+Probe results after the fixes: RV2-L0 eligible (unchanged); RV2-L1 eligible (was ineligible); RV2-L2 3,500, eligible (was 3,900, ineligible); RV2-L3 3,500, eligible (was 4,000, ineligible); RV2-S0 `eligible_categorical` (unchanged); RV2-S1 as stored in CO-211 `eligible_categorical` (was `ineligible`); RV2-S2 `eligible_categorical` (was `ineligible`). UI pin: test/ui/questions-law-counts.test.ts question count 119 → 120 (OQ-863).
