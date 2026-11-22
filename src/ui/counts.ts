@@ -31,6 +31,9 @@ import {
   groupByOwner, isOpen, queueEntry, questionInfos, type QueueEntry,
 } from "./questions";
 import { expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
+import { caseToSpec } from "../engine/cases";
+import { buildWalk } from "./walkthrough";
+import { formatDate, personLabel } from "./present";
 
 // ---- the words
 
@@ -152,13 +155,45 @@ export function changedBy(
       const a = alt?.results[j];
       if (!a || a.identifier !== r.identifier || a.person !== r.person || a.month !== r.month) return;
       if (sameValue(r.got, a.got)) return;
-      out.push({
+      const row: ChangedResult = {
         caseId: rep.id, caseTitle: rep.title, person: r.person, identifier: r.identifier,
         month: r.month, value: r.got, after: a.got,
-      });
+      };
+      // A result that becomes unknown: say which facts the stored household
+      // does not give, so "Unknown" is not read as "fails" (HCPF analyst,
+      // OQ-410).
+      if ((a.got === null || a.got === undefined) && i < cases.length) {
+        try {
+          const walk = buildWalk(applied.explain(caseToSpec(cases[i]), r.identifier, r.person, r.month));
+          const label = (m: { name: string; person: string | null; month: string | null }) =>
+            `${m.person && m.person !== r.person ? `${personLabel(m.person)}'s ` : ""}${m.name}${m.month ? ` for ${formatDate(m.month)}` : ""}`;
+          // The facts under the unknown steps; every step's when the result's
+          // own unknown is read through a rule that has a value elsewhere.
+          const pick = walk.missing.length ? walk.missing : walk.steps.filter((x) => x.node.value === null).flatMap((x) => x.missing);
+          const nf = walk.noFigure.length ? walk.noFigure : walk.steps.filter((x) => x.node.value === null).flatMap((x) => x.noFigure);
+          row.missing = [...new Set(pick.map(label))];
+          row.noFigure = [...new Set(nf.map((m) => m.name))];
+        } catch { /* leave unexplained */ }
+      }
+      out.push(row);
     });
   });
   return out;
+}
+
+/** Why a result is unknown under a change, in words: "the test household
+ *  does not state X or Y". */
+export function unknownReason(r: Pick<ChangedResult, "missing" | "noFigure">): string {
+  const parts: string[] = [];
+  if (r.missing?.length) parts.push(`the test household does not state ${joinOr(r.missing)}`);
+  if (r.noFigure?.length) parts.push(`no figure is in force for ${joinOr(r.noFigure)}`);
+  return parts.length ? parts.join("; ") : "a fact it needs is not stated";
+}
+
+function joinOr(xs: readonly string[]): string {
+  const u = [...new Set(xs)];
+  if (u.length <= 1) return u.join("");
+  return `${u.slice(0, -1).join(", ")} or ${u[u.length - 1]}`;
 }
 
 // ---- outcomes an item affects
