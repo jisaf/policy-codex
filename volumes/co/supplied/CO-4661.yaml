@@ -1,0 +1,14 @@
+id: CO-4661
+name: "School-attendance-conditional benefits received"
+identifier: school_attendance_conditional_benefits_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the educational assistance the person received in the month (educational_assistance_received, CO-3360) that is paid on condition of the person's school attendance rather than as a grant, scholarship, stipend or loan: U.S. Department of Veterans Affairs educational assistance (G.I. Bill) payments and other military, veterans' or similar benefits paid only while the person attends school."
+precision: "Part of educational_assistance_received, not added to it, and stated only up to it. If not stated, every program reads it as 0."
+supplied_by: "Applicant statement with the VA award letter or the paying agency's statement, verified as each program requires."
+sources: [S3451]
+implemented: engine
+tags: [income]
+rationale: "Coverage pass 2 (CW2-4): 9 CCR 2503-6 3.605.3.A.4 (S3451) counts \"VA educational assistance (G.I. Bill) payments or any other benefits which are conditional upon school attendance\" above the expenses necessary for school attendance, while 3.605.4.B.26 exempts educational grants, loans, stipends and scholarships. educational_assistance_received (CO-3360) states both kinds as one amount, so no fact separated the part A.4 counts. gi_bill_subsistence_allowance_received (CO-4456) and gi_bill_housing_and_food_allowances_received (CO-4501) state only the G.I. Bill's living allowances, not the whole benefit or other attendance-conditional benefits."

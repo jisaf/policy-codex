@@ -534,6 +534,8 @@ Assumption: The needs deducted when a minor parent's own parent's income is deem
 
 Checked 2026-11-22: 9 CCR 2503-6 3.605.1.A.4.a (D-81, S1307) deducts "the needs of" the parent and those the parent is responsible for without naming a figure, and the need standard chart of 3.606.1.F (D-81) does not say it serves deeming. No published rule settles it.
 
+Coverage pass 2 (CW2-2): the persons whose needs are deducted are now the parents whose income is deemed, cw_minor_parent_deemed_parents (CO-4660: not in her unit and living in the same home), and the minor parent's siblings in that home who are their children and not in her unit (CO-2000). A parent living elsewhere, or one in her unit, no longer selects the Two Caretakers row. The dollar measure is unchanged.
+
 ### OQ-103. Resolved: Colorado Works sponsor deeming and disqualified-member income are modeled
 
 Body: 9 CCR 2503-6 3.605.1.A.5 (sponsor deeming to a sponsored non-citizen) and 3.605.1.A.6 (deeming the net income of a required assistance-unit member who is disqualified for citizenship, non-citizen status, lawful presence, or SSN reasons) are separate income-attribution rules this batch's fixed interface (cw_countable_income) does not name a dedicated item for. Only the 3.605.1.A.4 non-participant-parent-of-a-minor-parent deeming (cw_deemed_parent_income_of_minor_parent, CO-909) is modeled. Items: CO-910.
@@ -1427,7 +1429,7 @@ Checked 2026-11-22: 10 CCR 2506-1 4.407.61.A (D-82, S1013; unchanged in D-133) g
 
 ### OQ-354. Colorado Works death reimbursement: how insurance, the estate and responsible persons' resources reduce the benefit
 
-Body: 9 CCR 2503-6 3.606.7 (S1005-S1007) says insurance proceeds "shall be used to reduce the maximum Death Reimbursement" (F.2.f) and the responsible persons' resources over the SSI limit "shall be used to reduce the State Department funded Death Reimbursement payment" (F.2.c), and requires the estate to be "insufficient to pay all or part" of the expenses (B.2, F.2.b), without an order of application. cw_death_reimbursement_amount (CO-1508) takes the lesser of the $1,500 maximum and the charges the estate leaves unpaid, then subtracts insurance and the excess resources. The Adult Financial burial benefit (3.570.43.D, CO-1230/CO-1232) instead applies insurance, estate and excess resources against the full costs and caps what remains at $1,500; the two readings differ when the charges are well under $1,500 or the offsets are large. Voluntary contributions by the responsible party (F.2.c) also reduce the benefit and are not modeled. Items: CO-1508.
+Body: 9 CCR 2503-6 3.606.7 (S1005-S1007) says insurance proceeds "shall be used to reduce the maximum Death Reimbursement" (F.2.f) and the responsible persons' resources over the SSI limit "shall be used to reduce the State Department funded Death Reimbursement payment" (F.2.c), and requires the estate to be "insufficient to pay all or part" of the expenses (B.2, F.2.b), without an order of application. cw_death_reimbursement_amount (CO-1508) takes the lesser of the $1,500 maximum and the charges the estate leaves unpaid, then subtracts insurance and the excess resources. The Adult Financial burial benefit (3.570.43.D, CO-1230/CO-1232) instead applies insurance, estate and excess resources against the full costs and caps what remains at $1,500; the two readings differ when the charges are well under $1,500 or the offsets are large. Voluntary contributions by the responsible party (F.2.c) also reduce the benefit; coverage review CW-19 models them (burial_contributions_from_responsible_persons, CO-4373, in CO-1508; corrected in coverage pass 2, P3-1). Items: CO-1508.
 
 Checked 2026-11-21: 9 CCR 2503-6 3.606.7.B.2, F.2.b, F.2.c and F.2.f (S1005-S1007) each say what reduces the Death Reimbursement but not in what order against the $1,500 maximum and the charges. No published rule settles it.
 
@@ -2572,3 +2574,23 @@ Owner: Medicaid policy owner
 Assumption: In-kind support and maintenance is the shelter others provide, up to one third of the FBR, and one third of the FBR when the amount is not declared (F.5.k.ii).
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.F.5.k and H.1.b (D-65, version effective 11/14/2026). The two paragraphs state different measures for the same person and neither refers to the other.
+
+### OQ-830. Colorado Works minor parent living with an unrelated caretaker who joins the unit: does the county require approval of the setting
+
+Body: 9 CCR 2503-6 3.604.2.N.3.a (S3450) requires a county approved setting when an unmarried, non-emancipated minor parent "lives with an unrelated non-parent caretaker who chooses not to be a member of the assistance unit"; N.3.b says that when the unrelated caretaker "chooses to be a member of the assistance unit, the county department may choose if it is necessary to approve the setting before grant payments are provided per county policy." cw_minor_parent_living_arrangement_met (CO-906) accepts a relative or a parent without approval (N.2.a, N.3.c), and an unrelated caretaker only when the caretaker is a member of her unit; otherwise it reads county_approved_living_arrangement (CO-845). Coverage pass 2 CW2-1. Items: CO-906.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: An unrelated caretaker who has joined the minor parent's unit meets the living arrangement without a separate county approval; the county's approval is read only when an unrelated caretaker has not joined.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.604.2.N.1, N.2.a and N.3.a-c (D-81, version effective 2025-07-01, S3153, S3450). N.3.b leaves the approval to "county policy"; no state rule sets a default.
+
+### OQ-831. Colorado Works second- and third-level sanction in a partial initial month: 25% of the full-month grant or of the partial payment
+
+Body: 9 CCR 2503-6 3.608.4.C.1 (S760) makes the second and third sanctions "twenty five percent (25%) of an assistance unit's grant payment", and D requires a client who "reapplies for benefits anytime within the calendar month that they are serving a sanction" to serve it "by having a reduction in benefits". 3.609.2.A.1.e (S3156) says "Subtract from authorized grant amount for the partial month any appropriate deductions", without saying how a percentage deduction is measured. For a $488 grant and an 11-day initial month (.36164), 25% of the full-month grant leaves $54 and 25% of the partial payment leaves $132. cw_sanction_reduction (CO-1265), read by cw_grant_amount (CO-914). Coverage pass 2 CW2-3.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: In the month of the initial payment the twenty five percent is taken of the partial month payment (the grant times the 3.609.2.A.1 partial month figure), since C.1 measures it against the unit's "grant payment".
+
+Checked 2026-11-22: 9 CCR 2503-6 3.608.4.C.1, D and 3.609.2.A.1.e (D-81, version effective 2025-07-01, S760, S3156). Neither paragraph names the base of a percentage deduction in a partial month.

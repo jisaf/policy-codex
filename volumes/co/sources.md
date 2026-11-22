@@ -21522,3 +21522,32 @@ Document: D-65
 > i) A revocable annuity is a countable resource. The value of the annuity is the total value of the annuity principal plus any accumulated interest.
 >
 > i) An irrevocable assignable annuity is a countable resource. The value of the annuity is presumed to be the total value of the annuity principal plus any accumulated interest.
+
+### S3450. Colorado Works minor parents and caretakers: an unrelated non-parent caretaker who does not join requires a county approved setting; one who joins is a county option (current text)
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.N.3.a-c (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> a. If the minor parent lives with an unrelated non-parent caretaker who chooses not
+> to be a member of the assistance unit, the minor must be in a county approved
+> setting.
+>
+> b. If the minor parent lives with an unrelated non-parent caretaker who chooses to
+> be a member of the assistance unit, the county department may choose if it is
+> necessary to approve the setting before grant payments are provided per county
+> policy.
+>
+> c. If the minor parent lives with his or her parent, the county department does not
+> need to approve a setting even if the minor’s parent chooses not to be a member
+> of the assistance unit.
+
+### S3451. Colorado Works countable unearned income: VA educational assistance and other benefits conditional on school attendance above school expenses (current text)
+
+Document: D-81
+
+9 CCR 2503-6 3.605.3.A.4 (version effective 2025-07-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 4. U.S. Department of Veterans Affairs (VA) educational assistance (G.I. Bill) payments or
+> any other benefits which are conditional upon school attendance are income to the extent
+> that they exceed expenses necessary for school attendance.

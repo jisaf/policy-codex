@@ -6,8 +6,10 @@ type: money
 scope: person-month
 program: ColoradoWorks
 meaning: "The amount by which a sanction reduces the assistance unit's grant payment in the month - cw_sanction_first_level_reduction for a first-level sanction, cw_sanction_reduction_rate of the grant for a second or third, the whole grant for a fourth (case closure), nothing otherwise - per 9 CCR 2503-6 3.608.4.C."
-derived: [case, [["=", cw_unit_sanction_level, first], cw_sanction_first_level_reduction], [[in, cw_unit_sanction_level, [second, third]], ["*", cw_sanction_reduction_rate, cw_grant_before_sanction]], [["=", cw_unit_sanction_level, fourth], cw_grant_before_sanction], [else, 0]]
-sources: [S760]
+precision: "Coverage pass 2 (CW2-3): C.1 takes twenty five percent \"of an assistance unit's grant payment\" and 3.609.2.A.1.e subtracts \"from authorized grant amount for the partial month any appropriate deductions\" (S3156). In the month of the initial payment (a reapplication while a sanction is being served, 3.608.4.D), the twenty five percent is taken of the partial month payment, the grant times cw_partial_month_payment_factor (CO-4358; 1 in any other month), not of the full-month grant (OQ-831)."
+open: [OQ-831]
+derived: [case, [["=", cw_unit_sanction_level, first], cw_sanction_first_level_reduction], [[in, cw_unit_sanction_level, [second, third]], ["*", ["*", cw_sanction_reduction_rate, cw_grant_before_sanction], cw_partial_month_payment_factor]], [["=", cw_unit_sanction_level, fourth], cw_grant_before_sanction], [else, 0]]
+sources: [S760, S3156]
 implemented: engine
 tags: [cash, tanf, income]
 rationale: No existing item applies a Colorado Works sanction; OQ-141 recorded that the fetched text had no sanction schedule, which the current rule (D-81, 3.608.4) states. cw_grant_amount (CO-914) needs it.
@@ -16,3 +18,4 @@ tests:
   - {id: CO-1265-T2, as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: third, cw_grant_before_sanction: 488}, expect: 122}
   - {id: CO-1265-T3, as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: fourth, cw_grant_before_sanction: 488}, expect: 488}
   - {id: CO-1265-T4, as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: none, cw_grant_before_sanction: 488}, expect: 0}
+  - {id: CO-1265-T5, title: "Coverage pass 2 CW2-3: a second-level sanction in an initial month of 11 days (.36164) - 25% of the partial payment, 488 x .36164 x .25 = 44.12008", as_of: "2026-10-01", month: "2026-10", given: {cw_unit_sanction_level: second, cw_grant_before_sanction: 488, cw_partial_month_payment_factor: 0.36164}, expect: 44.12008}
