@@ -8,37 +8,50 @@
  * `#/<volume>/inbox?role=<approval role>` plus the filter parameters
  * (src/ui/inbox.ts `filterToParams`). */
 import { useSignal } from "@preact/signals";
-import { useMemo } from "preact/hooks";
+import { useEffect, useMemo } from "preact/hooks";
 import "./inbox.css";
 import type { Engine } from "../../engine/engine";
 import type { LoadedVolume } from "../../ledger/load";
-import { entryFiles, proposalBody } from "../../changes/serialize";
-import { fileEntries } from "../../changes/types";
-import { validateChangeSet } from "../../changes/validate";
+import { fileEntries, type ChangeEntry } from "../../changes/types";
+import type { HouseholdCase } from "../../engine/cases";
 import {
   roleCounts, roleRule, type SignAction,
 } from "../approvals";
 import {
   citeLabel, countBy, figureOn, filterFromParams, filterToParams, FILTER_TAGS, groupRows, inboxRows,
-  KIND_GROUP_LABEL, KIND_ONE, matches, programOrderFor, proposeHint, restingOnUnverified, reviewNoteEntry,
-  signatureEntries, withoutReviewNote, withoutSignature, type InboxFilter, type InboxGroup,
+  isStagedRow, KIND_GROUP_LABEL, KIND_ONE, matches, programOrderFor, restingOnUnverified, reviewNoteEntry,
+  signatureEntries, signatureNotice, withoutReviewNote, withoutSignature, type InboxFilter, type InboxGroup,
   type InboxRow,
 } from "../inbox";
+import {
+  changedBy, changedPhrase, householdCount, pathToOutcome, restingIndex, restingPhrase, restingReady,
+} from "../counts";
+import { SendChange } from "../sendChange";
+import type { StoredResult } from "../questionEffects";
 import { personaRoles } from "../personas";
 import { noVersionReason, Value } from "../Present";
 import { volumePrograms } from "../programs";
 import { plainQuestionTitle } from "../questions";
 import { unverifiedIds } from "../provenance";
 import { buildHash, isPrRef, type Route } from "../router";
-import { downloadText } from "../Settings";
 import {
   changeSetSig, credentials, discardFileChange, engineSig, manifestSig, prBaseVolumeSig,
-  putChangeEntries, putFileChange, reportSig, settingsOpenSig, trayOpenSig,
+  putChangeEntries, putFileChange,
 } from "../state";
 import { viewContext, type ViewContext } from "./context";
 import { NoLedger, ViewHeader } from "./ViewStub";
 
 export const SIGNER_KEY = "codex.signer";
+/** The role the inbox was last read as, so it reopens there. */
+export const INBOX_ROLE_KEY = "codex.inbox.role";
+
+function readRole(): string | null {
+  try { return localStorage.getItem(INBOX_ROLE_KEY); } catch { return null; }
+}
+
+function saveRole(role: string): void {
+  try { localStorage.setItem(INBOX_ROLE_KEY, role); } catch { /* blocked */ }
+}
 
 function readSigner(): string {
   try { return localStorage.getItem(SIGNER_KEY) ?? ""; } catch { return ""; }
@@ -58,6 +71,10 @@ export function programName(id: string): string {
 }
 
 const ROWS_PER_PAGE = 25;
+
+const KIND_WORD: Record<InboxRow["kind"], [string, string]> = {
+  figure: ["figure", "figures"], rule: ["rule", "rules"], input: ["input", "inputs"],
+};
 /** A bulk action larger than this stages after the page says it is working. */
 const BULK_DEFER = 20;
 
@@ -65,14 +82,31 @@ function plural(n: number, one: string, many = `${one}s`): string {
   return `${n.toLocaleString("en-US")} ${n === 1 ? one : many}`;
 }
 
-/** The role this inbox lists: `?role=`, else the visitor's persona's first
- *  role, else none (the page then asks). */
-export function inboxRole(ctx: ViewContext): string | null {
+/** The role this inbox lists, the persona's own first (CDHS cash lead: the
+ *  CDHS door opened on the SNAP owner): `?role=`; else, for a linked item
+ *  (`inbox/<id>`), the persona's role that signs it, or the first that does;
+ *  else the role the inbox was last read as, if it is the persona's; else the
+ *  persona's role that must sign something staged in the tray; else the
+ *  persona's first role; else none (the page then asks). */
+export function inboxRole(ctx: ViewContext, staged: readonly ChangeEntry[] = []): string | null {
   const declared = ctx.engine.meta.approval_policy?.roles ?? [];
   const asked = ctx.route.params.role;
   if (asked && declared.includes(asked)) return asked;
-  if (ctx.persona) return personaRoles(ctx.persona, ctx.engine.meta)[0] ?? null;
-  return null;
+  const mine = ctx.persona ? personaRoles(ctx.persona, ctx.engine.meta) : [];
+  const linked = ctx.route.arg ? ctx.engine.itemById(ctx.route.arg) : undefined;
+  if (linked) {
+    const req = ctx.engine.approvals(linked);
+    return req.find((x) => mine.includes(x)) ?? req[0] ?? mine[0] ?? null;
+  }
+  const last = readRole();
+  if (last && declared.includes(last) && (mine.length === 0 ? false : mine.includes(last))) return last;
+  for (const e of staged) {
+    const it = e.after ?? e.before;
+    if (!it) continue;
+    const hit = ctx.engine.approvals(it).find((x) => mine.includes(x));
+    if (hit) return hit;
+  }
+  return mine[0] ?? null;
 }
 
 function chapterTitles(vol: LoadedVolume): Map<string, string> {
@@ -146,7 +180,7 @@ function Definition({ engine, role, rows }: { engine: Engine; role: string; rows
   return (
     <div class="inbox-definition" data-role={role}>
       <p>
-        <b>Needs the {role}:</b> {roleRule(engine.meta, role).replace(`${role} signs `, "")}{" "}
+        <b>What the {role} signs:</b> {roleRule(engine.meta, role).replace(`${role} signs `, "")}{" "}
         That is {plural(rows.length, "item")} in all.
       </p>
       {reasons.length > 1 && (
@@ -175,6 +209,7 @@ function Filters(
     setFilter: (f: InboxFilter) => void; shownCount: number; tagLabel: (t: string) => string;
   },
 ) {
+  const stagedCount = rows.filter(isStagedRow).length;
   const byShow = { awaiting: rows.filter((r) => !r.signed).length, signed: rows.filter((r) => r.signed).length };
   const byStatus = countBy(rows, (r) => r.status);
   const byProgram = countBy(rows, (r) => r.program);
@@ -184,6 +219,16 @@ function Filters(
   const set = (patch: Partial<InboxFilter>) => setFilter({ ...filter, ...patch });
   return (
     <div class="controls inbox-filters" role="group" aria-label="Filters">
+      <label class="search">Find
+        <input
+          type="search" value={filter.text} placeholder="a name, words of the meaning, CO-n"
+          onInput={(e) => set({ text: (e.target as HTMLInputElement).value })}
+        />
+      </label>
+      <label class="check" title="The items this browser has staged an edit, a signature or a request on">
+        <input type="checkbox" checked={filter.staged} onChange={(e) => set({ staged: (e.target as HTMLInputElement).checked })} />
+        My staged changes ({stagedCount})
+      </label>
       <label>Show
         <select value={filter.show} onChange={(e) => set({ show: (e.target as HTMLSelectElement).value as InboxFilter["show"] })}>
           <option value="awaiting">Waiting on this role ({byShow.awaiting})</option>
@@ -292,6 +337,32 @@ function Meaning({ text }: { text: string }) {
   );
 }
 
+/** What a staged edit does to the stored households, worked out after the
+ *  page paints: the same comparison the role page and the question pages
+ *  make (counts.ts `changedBy`). */
+function StagedEffect({ engine, cases, entry }: { engine: Engine; cases: readonly HouseholdCase[]; entry: ChangeEntry }) {
+  const out = useSignal<ReturnType<typeof changedBy> | null>(null);
+  useEffect(() => {
+    out.value = null;
+    const t = setTimeout(() => { out.value = changedBy(engine, cases, [entry]); }, 40);
+    return () => clearTimeout(t);
+  }, [engine, cases, entry]);
+  if (!out.value) return <span class="muted">Working out what your change does to the stored households…</span>;
+  const ch = out.value;
+  return (
+    <span class="changed-count">
+      With your staged change: <b>{changedPhrase(ch.length, householdCount(ch))}</b>
+      {ch.length > 0 && <>: {[...new Set(ch.map((c) => c.caseId))].slice(0, 6).join(", ")}</>}.
+    </span>
+  );
+}
+
+/** How an item reaches one outcome, as the chain of rule names. */
+function reachText(engine: Engine, outcome: string, identifier: string): string {
+  const path = pathToOutcome(engine, outcome, identifier);
+  return path.length > 1 ? path.slice(1, -1).reverse().map((id) => engine.item(id)?.name ?? id).join(" → ") : "";
+}
+
 function Row({ row, ctx, role, selected, onSelect, onSign, onUndo, onNote, onDropNote }: RowProps) {
   const { engine, vol, route: r, today } = ctx;
   const noting = useSignal(false);
@@ -305,6 +376,7 @@ function Row({ row, ctx, role, selected, onSelect, onSign, onUndo, onNote, onDro
   const outcomeNames = row.outcomes.map((o) => ({ o, item: engine.item(o) }));
   const cases = row.households.map((id) => vol.cases.find((c) => c.id === id)).filter(Boolean);
   const labelId = `inbox-${it.id}`;
+  const showWhy = useSignal(false);
   return (
     <article class={`inbox-row${row.staged.signed ? " staged" : ""}`} data-item={it.id} aria-labelledby={labelId}>
       <div class="rowhead">
@@ -364,28 +436,44 @@ function Row({ row, ctx, role, selected, onSelect, onSign, onUndo, onNote, onDro
           <dt>Affects</dt>
           <dd class="affects">
             {outcomeNames.length === 0
-              ? <span class="muted">No program outcome reads it.</span>
+              ? <span class="muted">No program outcome reads it, except through document-verification flags.</span>
               : (
                 <span>
-                  {plural(outcomeNames.length, "outcome")}:{" "}
+                  {plural(outcomeNames.length, "program outcome")} read it through the rules:{" "}
                   {outcomeNames.slice(0, 4).map(({ o, item }, i) => (
-                    <span key={o}>{i > 0 && ", "}<a href={buildHash({ ...r, view: "item", arg: item?.id ?? o, params: {} })}>{item?.name ?? o}</a></span>
+                    <span key={o}>{i > 0 && ", "}<a title={reachText(engine, o, it.identifier) ? `Through: ${reachText(engine, o, it.identifier)}` : undefined} href={buildHash({ ...r, view: "item", arg: item?.id ?? o, params: {} })}>{item?.name ?? o}</a></span>
                   ))}
-                  {outcomeNames.length > 4 && <span class="muted"> and {outcomeNames.length - 4} more</span>}
+                  {outcomeNames.length > 4 && <span class="muted"> and {outcomeNames.length - 4} more</span>}{" "}
+                  <button type="button" class="linkish whyreach" aria-expanded={showWhy.value} onClick={() => { showWhy.value = !showWhy.value; }}>
+                    {showWhy.value ? "Hide how" : "How?"}
+                  </button>
+                  {showWhy.value && (
+                    <ul class="reach">
+                      {outcomeNames.slice(0, 8).map(({ o, item }) => {
+                        const via = reachText(engine, o, it.identifier);
+                        return <li key={o}><b>{item?.name ?? o}</b>{via ? <> reads it through: {via}</> : <> reads it directly</>}.</li>;
+                      })}
+                    </ul>
+                  )}
                 </span>
               )}
             <br />
-            {cases.length === 0
-              ? <span class="muted">No stored test household checks a result that reads it.</span>
-              : (
-                <span>
-                  {plural(cases.length, "test household")}:{" "}
-                  {cases.slice(0, 6).map((c, i) => (
-                    <span key={c!.id}>{i > 0 && ", "}<a title={c!.title} href={buildHash({ ...r, view: "walkthrough", arg: c!.id, params: {} })}>{c!.id}</a></span>
-                  ))}
-                  {cases.length > 6 && <span class="muted"> and {cases.length - 6} more</span>}
-                </span>
-              )}
+            {!row.restingKnown
+              ? <span class="muted">Working out which stored households rest on it…</span>
+              : cases.length === 0
+                ? <span class="muted">No stored household result rests on it.</span>
+                : (
+                  <span>
+                    {restingPhrase(row.resting.length, cases.length)}:{" "}
+                    {cases.slice(0, 6).map((c, i) => (
+                      <span key={c!.id}>{i > 0 && ", "}<a title={c!.title} href={buildHash({ ...r, view: "walkthrough", arg: c!.id, params: {} })}>{c!.id}</a></span>
+                    ))}
+                    {cases.length > 6 && <span class="muted"> and {cases.length - 6} more</span>}
+                  </span>
+                )}
+            {row.change.kind === "staged" && row.staged.entry && (
+              <><br /><StagedEffect engine={engineSig.value ?? engine} cases={vol.cases} entry={row.staged.entry} /></>
+            )}
           </dd>
           <dt>Sources</dt>
           <dd class="sources">{sources.length ? <SourceLinks ctx={ctx} ids={sources} /> : <span class="muted">No source cited.</span>}</dd>
@@ -413,7 +501,12 @@ function Row({ row, ctx, role, selected, onSelect, onSign, onUndo, onNote, onDro
         </dl>
         {row.staged.signed && (
           <p class="staged-note" role="status">
-            Your signature is staged in this browser (status would be {row.staged.status}).{" "}
+            Your signature is staged in this browser.{" "}
+            {row.staged.status === "Approved" ? "Once merged the item is Approved: every role has signed."
+              : row.staged.status === "Draft" ? "The item stays Draft: it rests on unverified text."
+                : row.missing.filter((x) => x !== role).length
+                  ? `Once merged it is Reviewed until ${row.missing.filter((x) => x !== role).join(", ")} also approve.`
+                  : "Once merged it is Reviewed."}{" "}
             <button class="linkish" onClick={() => onUndo(row)}>Undo</button>
           </p>
         )}
@@ -476,7 +569,7 @@ function Group(
       <summary>
         <span class="gtitle">{title}</span>{" "}
         <span class="muted gcount">
-          {plural(group.rows.length, "item")}: {group.kinds.map((k) => `${k.rows.length} ${KIND_GROUP_LABEL[k.kind].toLowerCase().split(" ")[0]}`).join(", ")}
+          {plural(group.rows.length, "item")}: {group.kinds.map((k) => plural(k.rows.length, KIND_WORD[k.kind][0], KIND_WORD[k.kind][1])).join(", ")}
         </span>
       </summary>
       {open && (
@@ -506,7 +599,9 @@ function Group(
           })}
           {group.rows.length > limit && (
             <button class="btn more" onClick={onMore}>
-              Show {Math.min(ROWS_PER_PAGE, group.rows.length - limit)} more of {group.rows.length - limit} left
+              {group.rows.length - limit <= ROWS_PER_PAGE
+                ? `Show the last ${group.rows.length - limit}`
+                : `Show ${ROWS_PER_PAGE} more (${group.rows.length - limit} left)`}
             </button>
           )}
         </>
@@ -546,35 +641,60 @@ export function InboxView() {
   const limits = useSignal<ReadonlyMap<string, number>>(new Map());
   const notice = useSignal<Notice | null>(null);
   const needName = useSignal(false);
+  const resting = useSignal<Map<string, StoredResult[]> | null>(null);
 
   // The ledger as loaded (not the tray's drafts): the queue is what is in
   // force, and what this browser has staged is shown on each row.
   const base = engineSig.value ?? ctx?.engine ?? null;
   const vol = ctx?.vol ?? null;
-  const role = ctx ? inboxRole(ctx) : null;
   const cs = changeSetSig.value;
+  const role = ctx ? inboxRole(ctx, cs.entries) : null;
   const proposedBase = ctx && isPrRef(ctx.route.ref) ? prBaseVolumeSig.value?.items ?? null : null;
+
+  // Which stored households rest on each item is read from the engine's
+  // traces of every stored case (about a second): worked out after the page
+  // paints, unless another page already did.
+  const ready = base && vol ? restingReady(base, vol.cases) : false;
+  useEffect(() => {
+    if (!base || !vol) return;
+    if (ready) { resting.value = restingIndex(base, vol.cases); return; }
+    resting.value = null;
+    const t = setTimeout(() => { resting.value = restingIndex(base, vol.cases); }, 30);
+    return () => clearTimeout(t);
+  }, [base, vol, ready]);
+  const restIx = resting.value ?? (ready && base && vol ? restingIndex(base, vol.cases) : null);
 
   const rows = useMemo(
     () => (base && vol && role
       ? inboxRows({
         engine: base, role, sources: vol.sources, cases: vol.cases, chapterOf: vol.chapterOf,
-        changeSet: cs, proposedBase,
+        changeSet: cs, proposedBase, resting: restIx,
       })
       : []),
-    [base, vol, role, cs, proposedBase],
+    [base, vol, role, cs, proposedBase, restIx],
   );
   const tainted = useMemo(
     () => (base && vol ? restingOnUnverified(base, unverifiedIds(vol.sources)) : new Set<string>()),
     [base, vol],
   );
+  const linkedId = ctx?.route.arg ?? null;
+  useEffect(() => {
+    if (ctx?.route.params.role && role) saveRole(role);
+  }, [role, ctx?.route.params.role]);
+  useEffect(() => {
+    if (!linkedId) return;
+    const t = setTimeout(() => {
+      document.querySelector(`.inbox-linked article[data-item="${linkedId}"]`)?.scrollIntoView?.({ block: "start" });
+    }, 30);
+    return () => clearTimeout(t);
+  }, [linkedId, role]);
 
   if (!ctx || !base || !vol) return <NoLedger />;
   const { route: r, engine } = ctx;
   const mine = ctx.persona ? personaRoles(ctx.persona, engine.meta) : [];
   const filter = filterFromParams(r.params);
   const setFilter = (f: InboxFilter) => {
-    location.hash = buildHash({ ...r, params: { ...(role ? { role } : {}), ...filterToParams(f) } });
+    location.hash = buildHash({ ...r, arg: null, params: { ...(role ? { role } : {}), ...filterToParams(f) } });
   };
   const tagLabel = (t: string) => {
     for (const d of engine.meta.tags ?? []) if (typeof d !== "string" && d.id === t) return d.label ?? t;
@@ -590,7 +710,12 @@ export function InboxView() {
     );
   }
 
-  const shown = rows.filter((row) => matches(row, filter));
+  const linkedItem = linkedId ? base.itemById(linkedId) : undefined;
+  const linkedRow = linkedItem ? rows.find((row) => row.item.id === linkedItem.id) ?? null : null;
+  // What this browser staged comes first, apart from the chapters (CDHS
+  // cash lead: "my change was not on the first screen").
+  const stagedRows = filter.staged ? [] : rows.filter((row) => isStagedRow(row) && matches(row, { ...filter, show: "all" }) && row !== linkedRow);
+  const shown = rows.filter((row) => matches(row, filter) && row !== linkedRow && !stagedRows.includes(row));
   const titles = chapterTitles(vol);
   const chapterOrder = [...titles.keys()];
   const groups = groupRows(shown, programOrderFor(engine.meta, role, volumePrograms(base)), chapterOrder);
@@ -603,23 +728,12 @@ export function InboxView() {
   const sign = (ids: string[], action: SignAction) => {
     const by = signer.value.trim();
     if (!by) { needName.value = true; document.querySelector<HTMLInputElement>(".signer input")?.focus(); return; }
-    const entries = signatureEntries(base, changeSetSig.value, vol.chapterOf, ids,
-      { role, by, date: ctx.today }, action, tainted);
+    const sig = { role, by, date: ctx.today };
+    const entries = signatureEntries(base, changeSetSig.value, vol.chapterOf, ids, sig, action, tainted);
     if (!entries.length) return;
-    const statuses = new Map<string, number>();
-    for (const e of entries) {
-      const s = e.after?.status ?? "Draft";
-      statuses.set(s, (statuses.get(s) ?? 0) + 1);
-    }
-    const sum = statuses.size === 1
-      ? [...statuses.keys()][0]
-      : [...statuses].map(([s, n]) => `${s} on ${n}`).join(", ");
     const done = () => {
       putChangeEntries(entries);
-      notice.value = {
-        count: entries.length,
-        text: `${action === "approve" ? "Approval" : "Review"} by the ${role} (${by}, ${ctx.today}) staged on ${plural(entries.length, "item")}; status would be ${sum}.`,
-      };
+      notice.value = { count: entries.length, text: signatureNotice(base, entries, sig, action) };
       selected.value = new Set([...selected.value].filter((id) => !ids.includes(id)));
     };
     if (entries.length <= BULK_DEFER) { done(); return; }
@@ -647,17 +761,6 @@ export function InboxView() {
     if (!file) return;
     const next = withoutReviewNote(file, row.item.id, names);
     if (next) putFileChange(next); else discardFileChange(file.path);
-  };
-  const download = () => {
-    const current = changeSetSig.value;
-    const report = reportSig.value ?? validateChangeSet(base, current);
-    const files = entryFiles(current, vol.path);
-    const text = [
-      proposalBody(base, current, report),
-      "## Files to write",
-      ...files.map((f) => `\n### ${f.path}\n\n\`\`\`\n${f.content ?? "(delete this file)"}\n\`\`\``),
-    ].join("\n");
-    downloadText(`codex-${vol.volumeId}-signatures-${ctx.today}.md`, text);
   };
 
   const selIds = [...selected.value];
@@ -693,7 +796,11 @@ export function InboxView() {
         <label>Role
           <select
             value={role}
-            onChange={(e) => { location.hash = buildHash({ ...r, params: { role: (e.target as HTMLSelectElement).value } }); }}
+            onChange={(e) => {
+              const next = (e.target as HTMLSelectElement).value;
+              saveRole(next);
+              location.hash = buildHash({ ...r, arg: null, params: { role: next } });
+            }}
           >
             {(engine.meta.approval_policy?.roles ?? []).map((x) => <option key={x} value={x}>{x}</option>)}
           </select>
@@ -709,25 +816,46 @@ export function InboxView() {
             <p>
               In the tray for the {role}: {plural(stagedSigs, "signature")}
               {stagedNotes > 0 && <>, {plural(stagedNotes, "request")} for changes</>}.
+              {" "}The counts above change once the pull request is merged.
             </p>
           )}
-          <p class="howpr">{proposeHint(hasToken)}</p>
-          <p class="noticeactions">
-            <button class="btn" onClick={() => { trayOpenSig.value = true; }}>Open the change tray</button>
-            {!hasToken && <button class="btn" onClick={download}>Download the staged change</button>}
-            {!hasToken && <button class="btn" onClick={() => { settingsOpenSig.value = true; }}>Add a GitHub token</button>}
-          </p>
+          <SendChange kind="signature" compact />
         </div>
+      )}
+
+      {linkedId && (
+        <section class="inbox-linked" aria-label="The item you followed a link to">
+          <h3>The item you followed a link to</h3>
+          {!linkedItem && <p class="bad">No item {linkedId} in this volume.</p>}
+          {linkedItem && !linkedRow && (
+            <p class="muted">
+              The {role} does not sign "{linkedItem.name}". It needs: {engine.approvals(linkedItem).join(", ") || "no role"}.{" "}
+              {engine.approvals(linkedItem).slice(0, 4).map((x, i) => (
+                <span key={x}>{i > 0 && " · "}<a href={buildHash({ ...r, arg: linkedItem.id, params: { role: x } })}>Open as the {x}</a></span>
+              ))}
+            </p>
+          )}
+          {linkedRow && renderRow(linkedRow)}
+        </section>
       )}
 
       <Filters
         rows={rows} filter={filter} programs={volumePrograms(base)} setFilter={setFilter}
-        shownCount={shown.length} tagLabel={tagLabel}
+        shownCount={shown.length + stagedRows.length + (linkedRow ? 1 : 0)} tagLabel={tagLabel}
       />
 
-      {groups.length === 0 && (
+      {stagedRows.length > 0 && (
+        <section class="inbox-staged" aria-label="Your staged changes">
+          <h3>Your staged changes ({stagedRows.length})</h3>
+          <p class="muted small">Items you have staged an edit, a signature or a request on, in this browser. They are listed here, not in their chapters below.</p>
+          {stagedRows.map(renderRow)}
+        </section>
+      )}
+
+      {groups.length === 0 && stagedRows.length === 0 && (
         <p class="muted empty">
-          {rows.length === 0 ? `The approval policy asks the ${role} to sign nothing in this volume.` : "Nothing matches these filters."}
+          {rows.length === 0 ? `The approval policy asks the ${role} to sign nothing in this volume.`
+            : filter.staged ? "You have staged nothing on this role's items." : "Nothing matches these filters."}
         </p>
       )}
 
@@ -736,7 +864,7 @@ export function InboxView() {
           <Group
             key={g.key} group={g}
             title={`${programName(g.program)} · ${titles.get(g.chapter) ?? g.chapter}`}
-            open={open.has(g.key)}
+            open={open.has(g.key) || Boolean(filter.text.trim())}
             onToggle={(on) => {
               const s = new Set(open);
               if (on) s.add(g.key); else s.delete(g.key);

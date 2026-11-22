@@ -2,7 +2,7 @@ import type { LedgerIndex } from "./ledger-index";
 import { block } from "./render";
 import { parseDerivation } from "./parse";
 import { lit, paramValue } from "./values";
-import type { ApprovalRecord, Expr, Item, TestSpec, VolumeMeta } from "./types";
+import type { ApprovalRecord, Expr, Item, ItemVersion, TestSpec, VolumeMeta } from "./types";
 
 export const FIELD_W = 14;
 
@@ -104,18 +104,96 @@ export function itemBlock(ix: LedgerIndex, it: Item, extra?: ItemBlockExtra): st
 /** The draft an edited block stands for: the draft's own fields (the block
  *  does not carry them all: versions, rationale, nearest, ...) overlaid with
  *  what the block parsed to. Three fields need care:
- *  - a versioned parameter's Value line is the flat latest value, and read
- *    back as `value` it would shadow `versions`, so it is ignored;
+ *  - a parameter set by dated periods (`versions`) shows its latest period's
+ *    value on the Value line. An edit there changes that period's value (an
+ *    edited version), never a flat `value` that the dated periods would
+ *    shadow: the CDHS cash lead's +2% chart was dropped as "no change"
+ *    (retest section 2). A new period is added with `addVersion` (the form's
+ *    "Add a new dated period");
  *  - Status "Draft" on an item that never stated a status is the default,
  *    not an edit;
  *  - an Approval line removed from the block removes the signatures. */
 export function mergeBlock(draft: Item, parsed: Item): Item {
   const p: Partial<Item> = { ...parsed };
-  if (draft.versions?.length) delete p.value;
+  if (Array.isArray(draft.versions) && draft.kind === "parameter") {
+    const vs = draft.versions;
+    if (p.value !== undefined && vs.length && !sameValue(p.value, vs[vs.length - 1].value)) {
+      p.versions = vs.map((v, i) => (i === vs.length - 1 ? { ...v, value: p.value } : v));
+    }
+    delete p.value;
+  }
   if (p.status === "Draft" && draft.status === undefined) delete p.status;
   const out: Item = { ...draft, ...p };
   if (parsed.approval === undefined) delete out.approval;
   return out;
+}
+
+function sameValue(a: unknown, b: unknown): boolean {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
+/** Why a block's Value line cannot be kept, or null: a parameter set by
+ *  dated periods that has none yet has no date for a value to start from, so
+ *  the editor refuses the line rather than dropping it. */
+export function valueEditIssue(draft: Item, parsed: Item): string | null {
+  if (draft.kind !== "parameter" || !Array.isArray(draft.versions) || draft.versions.length) return null;
+  if (parsed.value === undefined || parsed.value === null || parsed.value === "null" || parsed.value === "") return null;
+  return "Value: this figure is set by dated periods and has none yet, so a value needs a start date. Use \"Add a new dated period\" (Advanced, Form).";
+}
+
+/** A value as typed in a field: a number, yes/no, a table or list as JSON, or
+ *  text. */
+export function parseValueText(raw: string): { value: unknown } | { error: string } {
+  const val = raw.trim();
+  if (/^[{[]/.test(val)) {
+    try { return { value: JSON.parse(val) }; } catch {
+      return { error: "a table must be written as JSON, e.g. {\"1\": 100}" };
+    }
+  }
+  if (/^-?\d+(\.\d+)?$/.test(val)) return { value: Number(val) };
+  if (val === "yes") return { value: true };
+  if (val === "no") return { value: false };
+  return { value: val };
+}
+
+/** A new dated period for a parameter: in force from `from` (YYYY-MM-DD)
+ *  with `value`, citing `source` when given. The period that was running on
+ *  that date ends the day before (its `to` becomes `from`, the first day it is
+ *  not in force); a later period, if any, ends the new one. Returns the edited
+ *  item, or a reason it cannot be added. */
+export function addVersion(
+  it: Item, v: { from: string; value: unknown; source?: string },
+): Item | string {
+  if (it.kind !== "parameter") return "Only a figure set by policy has dated periods.";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(v.from)) return "The period needs a start date, YYYY-MM-DD.";
+  if (v.value === undefined || v.value === null || v.value === "") return "The period needs a value.";
+  const vs = [...(it.versions ?? [])].sort((a, b) => a.from.localeCompare(b.from));
+  if (vs.some((x) => x.from === v.from)) return `A period from ${v.from} already exists; change its value instead.`;
+  const next = vs.find((x) => x.from > v.from);
+  const added: ItemVersion = { from: v.from, value: v.value };
+  if (next) added.to = next.from;
+  if (v.source && v.source.trim()) added.source = v.source.trim();
+  const out = vs.map((x) => {
+    if (x.from < v.from && (x.to === undefined || x.to > v.from)) return { ...x, to: v.from };
+    return x;
+  });
+  out.push(added);
+  out.sort((a, b) => a.from.localeCompare(b.from));
+  const copy: Item = { ...it, versions: out };
+  // A flat value would be shadowed by the periods: a figure moving to dated
+  // periods keeps its old value as the period before, when it had one.
+  if (copy.value !== undefined && copy.value !== null && !(it.versions ?? []).length) {
+    const start = it.effective?.from && it.effective.from < v.from ? it.effective.from : "1900-01-01";
+    out.unshift({ from: start, to: v.from, value: copy.value });
+    delete copy.value;
+  }
+  return copy;
+}
+
+/** The parameter with one period's value replaced. */
+export function setVersionValue(it: Item, index: number, value: unknown): Item {
+  const vs = (it.versions ?? []).map((v, i) => (i === index ? { ...v, value } : v));
+  return { ...it, versions: vs };
 }
 
 export function formatTest(t: TestSpec): string {

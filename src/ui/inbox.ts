@@ -17,6 +17,8 @@ import {
 import { plainRule, plainText } from "./plain";
 import { formatDate, formatValue } from "./present";
 import { unverifiedIds } from "./provenance";
+import { outcomesAffected, restingIndex } from "./counts";
+import type { StoredResult } from "./questionEffects";
 
 /* ------------------------------------------------------------------ kinds */
 
@@ -185,10 +187,17 @@ export interface InboxRow {
   required: string[];
   missing: string[];
   why: string[];
-  /** Declared outcomes that read the item, directly or through other rules. */
+  /** Declared outcomes the item affects through the rules (counts.ts
+   *  `outcomesAffected`: a path only through verification flags left out). */
   outcomes: string[];
-  /** Stored household cases whose checked results read the item. */
+  /** Stored households with a result that rests on the item (its trace
+   *  passes through it): counts.ts, the same count the role page and the
+   *  question pages give. Empty until the traces are worked out. */
   households: string[];
+  /** The stored results behind `households`. */
+  resting: StoredResult[];
+  /** Whether `resting` was worked out (false while a page fills it in). */
+  restingKnown: boolean;
   /** Unverified excerpts the item itself cites. */
   unverifiedCited: string[];
   /** The item rests on an unverified excerpt (its own, or upstream). */
@@ -207,6 +216,10 @@ export interface InboxInputs {
   changeSet: ChangeSet | null;
   /** The pull request's base items, when the page shows a pull request. */
   proposedBase?: readonly Item[] | null;
+  /** counts.ts `restingIndex` for the engine and cases; worked out here when
+   *  absent, left out (households empty) when null, so a page can paint
+   *  first and fill the households in after. */
+  resting?: Map<string, StoredResult[]> | null;
 }
 
 /** Identifier -> the stored cases whose checked results read it. */
@@ -262,8 +275,7 @@ export function inboxRows(inp: InboxInputs): InboxRow[] {
   const { engine, role } = inp;
   const unverified = unverifiedIds([...inp.sources]);
   const tainted = restingOnUnverified(engine, unverified);
-  const cones = outcomeCones(engine);
-  const houses = householdsReading(engine, inp.cases);
+  const resting = inp.resting === undefined ? restingIndex(engine, inp.cases) : inp.resting;
   const entries = new Map((inp.changeSet?.entries ?? []).map((e) => [e.id, e]));
   const notes = new Map(stagedNotes(inp.changeSet).filter((n) => n.role === role).map((n) => [n.id, n]));
   const proposed = inp.proposedBase ? new Map(inp.proposedBase.map((i) => [i.id, i])) : null;
@@ -271,8 +283,9 @@ export function inboxRows(inp: InboxInputs): InboxRow[] {
   for (const it of engine.items()) {
     const a = approvalStatus(engine, it);
     if (!a.required.includes(role)) continue;
-    const outcomes: string[] = [];
-    for (const [o, cone] of cones) if (cone.has(it.identifier)) outcomes.push(o);
+    const outcomes = outcomesAffected(engine, it.identifier);
+    const rest = resting?.get(it.identifier) ?? [];
+    const houseIds = new Set(rest.map((x) => x.caseId));
     const entry = entries.get(it.id) ?? null;
     const stagedAfter = entry?.after ?? null;
     const stagedSig = stagedAfter && !hasSigned(it, role) && hasSigned(stagedAfter, role);
@@ -301,7 +314,9 @@ export function inboxRows(inp: InboxInputs): InboxRow[] {
       missing: a.missing,
       why: whyRequired(engine, it, role),
       outcomes,
-      households: houses.get(it.identifier) ?? [],
+      households: inp.cases.filter((c) => houseIds.has(c.id)).map((c) => c.id),
+      resting: rest,
+      restingKnown: resting !== null,
       unverifiedCited: citedUnverified(it, unverified),
       restsOnUnverified: tainted.has(it.identifier),
       override: it.statute_override ?? null,
@@ -329,10 +344,15 @@ export interface InboxFilter {
   tag: string;
   blocksOutcome: boolean;
   unverified: boolean;
+  /** Words matched against the item's name, meaning, id and identifier. */
+  text: string;
+  /** Only the items this browser has staged something on. */
+  staged: boolean;
 }
 
 export const NO_FILTER: InboxFilter = {
   show: "awaiting", status: "", program: "", tag: "", blocksOutcome: false, unverified: false,
+  text: "", staged: false,
 };
 
 /** The tags the inbox filters by: the ones that bring in Legal. */
@@ -344,6 +364,7 @@ export function filterFromParams(p: Readonly<Record<string, string>>): InboxFilt
   return {
     show, status, program: p.program ?? "", tag: p.tag ?? "",
     blocksOutcome: p.blocks === "1", unverified: p.unverified === "1",
+    text: p.q ?? "", staged: p.staged === "1",
   };
 }
 
@@ -355,10 +376,28 @@ export function filterToParams(f: InboxFilter): Record<string, string> {
   if (f.tag) out.tag = f.tag;
   if (f.blocksOutcome) out.blocks = "1";
   if (f.unverified) out.unverified = "1";
+  if (f.text.trim()) out.q = f.text;
+  if (f.staged) out.staged = "1";
   return out;
 }
 
+/** Whether this browser has staged anything on the row: an edit, a
+ *  signature or a request for changes. */
+export function isStagedRow(row: InboxRow): boolean {
+  return Boolean(row.staged.entry || row.staged.note);
+}
+
+/** Every word of the search is in the item's name, meaning, id or
+ *  identifier (any order, any case). */
+export function textMatches(it: Item, text: string): boolean {
+  const words = text.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!words.length) return true;
+  const hay = `${it.name} ${it.meaning ?? ""} ${it.id} ${it.identifier} ${(it.tags ?? []).join(" ")}`.toLowerCase();
+  return words.every((w) => hay.includes(w));
+}
+
 export function matches(row: InboxRow, f: InboxFilter): boolean {
+  if (f.staged) return isStagedRow(row) && textMatches(row.item, f.text);
   if (f.show === "awaiting" && row.signed) return false;
   if (f.show === "signed" && !row.signed) return false;
   if (f.status && row.status !== f.status) return false;
@@ -366,6 +405,7 @@ export function matches(row: InboxRow, f: InboxFilter): boolean {
   if (f.tag && !(row.item.tags ?? []).includes(f.tag)) return false;
   if (f.blocksOutcome && !row.outcomes.length) return false;
   if (f.unverified && !row.unverifiedCited.length) return false;
+  if (f.text && !textMatches(row.item, f.text)) return false;
   return true;
 }
 
@@ -487,6 +527,50 @@ export function withoutSignature(entry: ChangeEntry, role: string): ChangeEntry 
   const next = { ...entry, after };
   void role;
   return isUnchanged(next) ? null : next;
+}
+
+/* ----------------------------------------------- what a signature does */
+
+function joinWords(xs: readonly string[]): string {
+  if (xs.length <= 1) return xs.join("");
+  return `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`;
+}
+
+/** What staging `entries` (each the item with the new signature) does, in a
+ *  sentence or two: the status each item takes and why, naming who else must
+ *  still sign. "Status would be Reviewed" after Approve read as a downgrade
+ *  (HCPF analyst task 3); this says the approval is recorded and the item
+ *  stays Reviewed until the other roles approve. */
+export function signatureNotice(
+  engine: Engine, entries: readonly ChangeEntry[], sig: Signature, action: SignAction,
+): string {
+  const who = `${sig.role} (${sig.by}, ${sig.date})`;
+  const what = action === "approve" ? "approval" : "review";
+  const items = entries.map((e) => e.after).filter((x): x is Item => Boolean(x));
+  const head = `Your ${what} as the ${who} is staged on ${items.length === 1 ? `"${items[0].name}"` : `${items.length.toLocaleString("en-US")} items`}.`;
+  const reason = (it: Item): string => {
+    const required = engine.approvals(it);
+    const signed = new Set((it.approval ?? []).map((a) => a.role));
+    const missing = required.filter((r) => !signed.has(r));
+    const st = it.status ?? "Draft";
+    if (st === "Approved") return "It becomes Approved: every role that must sign has signed.";
+    if (st === "Draft") return "It stays Draft whoever signs, because it rests on text that is not a verified quotation.";
+    if (action === "review") return `It becomes Reviewed: a review records your check but is not an approval.${missing.length ? ` Approval still needs ${joinWords(missing)}.` : ""}`;
+    return missing.length
+      ? `It becomes Reviewed, not yet Approved: ${joinWords(missing)} must also approve it.`
+      : "It becomes Reviewed.";
+  };
+  if (items.length === 1) return `${head} ${reason(items[0])}`;
+  const by = new Map<string, number>();
+  for (const it of items) by.set(it.status ?? "Draft", (by.get(it.status ?? "Draft") ?? 0) + 1);
+  const parts: string[] = [];
+  const approved = by.get("Approved") ?? 0;
+  const reviewed = by.get("Reviewed") ?? 0;
+  const draft = by.get("Draft") ?? 0;
+  if (approved) parts.push(`${approved.toLocaleString("en-US")} become Approved (every role has now signed)`);
+  if (reviewed) parts.push(`${reviewed.toLocaleString("en-US")} become Reviewed, ${action === "approve" ? "waiting on other roles' approval" : "a review is not an approval"}`);
+  if (draft) parts.push(`${draft.toLocaleString("en-US")} stay Draft (they rest on unverified text)`);
+  return `${head} ${parts.join("; ")}. Each row says who else must sign.`;
 }
 
 /* ------------------------------------------------------- review notes */

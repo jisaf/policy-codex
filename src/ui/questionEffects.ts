@@ -114,7 +114,7 @@ export interface ChangedResult extends StoredResult {
   after: unknown;
 }
 
-interface ExpectationReads extends StoredResult {
+export interface ExpectationReads extends StoredResult {
   reads: Set<string>;
 }
 
@@ -139,7 +139,7 @@ function readsOf(root: TraceNode, full: Map<string, TraceNode>): Set<string> {
   return ids;
 }
 
-function expectationReads(engine: Engine, cases: readonly HouseholdCase[]): ExpectationReads[] {
+export function expectationReads(engine: Engine, cases: readonly HouseholdCase[]): ExpectationReads[] {
   let perEngine = readsMemo.get(engine);
   if (!perEngine) { perEngine = new WeakMap(); readsMemo.set(engine, perEngine); }
   const hit = perEngine.get(cases);

@@ -2,7 +2,7 @@ import { MANIFEST_PATH } from "../config";
 import { parseItemFile, parseVolumeFile } from "../engine/yaml";
 import { parseCases, type HouseholdCase } from "../engine/cases";
 import type { Item, VolumeMeta } from "../engine/types";
-import { parseManifest, type Manifest, type VolumeEntry } from "./manifest";
+import { parseManifest, type Manifest, type Steward, type VolumeEntry } from "./manifest";
 import { parseOpenQuestions, parseSources, type OpenQuestion, type Source } from "./markdown";
 import { parseDocuments, type DocumentMeta } from "./documents";
 import { AID_CODES_FILE, parseAidCodes, type AidCodeMap } from "./aid-codes";
@@ -35,6 +35,9 @@ export interface LoadedVolume {
   /** The placeholder aid-code layer from `aid-codes.yaml` (phase 13); null
    *  or absent when the volume has none. */
   aidCodes?: AidCodeMap | null;
+  /** Who proposes a change for a reader without a GitHub token: codex.json's
+   *  volume entry `steward`, else volume.yaml's; null when neither names one. */
+  steward?: Steward | null;
 }
 
 export async function loadManifest(src: LedgerSource): Promise<Manifest> {
@@ -76,7 +79,7 @@ export async function loadVolume(
   const sha = await src.head();
   if (sha && opts.cache) {
     const hit = await opts.cache.get(cacheKey(volumeId, sha));
-    if (hit) return { ...hit, ref: src.ref };
+    if (hit) return { ...hit, ref: src.ref, steward: entry.steward ?? hit.meta.steward ?? null };
   }
 
   const [volumeText, sourcesText, questionsText, casesText, documentsText, aidCodesText] = await Promise.all([
@@ -117,7 +120,9 @@ export async function loadVolume(
     documents: documentsText == null ? [] : parseDocuments(documentsText),
     chapterOf,
     aidCodes: aidCodesText == null ? null : parseAidCodes(aidCodesText),
+    steward: null,
   };
+  vol.steward = entry.steward ?? vol.meta.steward ?? null;
   if (sha && opts.cache) {
     const { ref: _ref, ...cacheable } = vol;
     await opts.cache.put(cacheKey(volumeId, sha), cacheable);

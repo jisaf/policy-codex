@@ -2,7 +2,8 @@ import { useSignal } from "@preact/signals";
 import { useLayoutEffect, useRef } from "preact/hooks";
 import type { Engine } from "../engine/engine";
 import type { Item } from "../engine/types";
-import { mergeBlock, type BlockError } from "../engine/item-block";
+import { mergeBlock, valueEditIssue, type BlockError } from "../engine/item-block";
+import { formatDate } from "./present";
 import {
   contextAt, details, suggestions, tokenAt, tokenize,
   type DetailsVolume, type EditorContext, type Suggestion, type TokenDetails,
@@ -83,6 +84,15 @@ function Card({ card }: { card: TokenDetails }) {
 
 export function TextEditor({ engine, draft, onChange, vol = null, isNew, onErrors }: Props) {
   const text = useSignal(engine.itemBlock(draft));
+  /** The lines the ledger cannot read, and a Value line it cannot keep (a
+   *  dated figure with no period yet): never dropped without a word. */
+  const blockErrors = (t: string): BlockError[] => {
+    const res = engine.parseItemBlock(t);
+    const issue = valueEditIssue(draft, res.item);
+    if (!issue) return res.errors;
+    const line = t.split("\n").findIndex((l) => l.startsWith("Value")) + 1;
+    return [...res.errors, { line: line || 1, msg: issue }];
+  };
   const caret = useSignal(0);
   const tab = useSignal<Tab>("checker");
   const acItems = useSignal<Suggestion[]>([]);
@@ -135,10 +145,10 @@ export function TextEditor({ engine, draft, onChange, vol = null, isNew, onError
   /** The one place a change reaches the draft: only a clean parse commits. */
   const reparse = (next: string) => {
     text.value = next;
-    const r = engine.parseItemBlock(next);
-    onErrors?.(r.errors);
-    if (r.errors.length) return;
-    onChange(mergeBlock(draft, r.item));
+    const errors = blockErrors(next);
+    onErrors?.(errors);
+    if (errors.length) return;
+    onChange(mergeBlock(draft, engine.parseItemBlock(next).item));
   };
 
   const setText = (next: string, at: number) => {
@@ -208,7 +218,8 @@ export function TextEditor({ engine, draft, onChange, vol = null, isNew, onError
     };
   };
 
-  const r = engine.parseItemBlock(text.value);
+  const parsedBlock = engine.parseItemBlock(text.value);
+  const r = { ...parsedBlock, errors: blockErrors(text.value) };
   // The same merge a clean parse commits, so the checker never reports a
   // problem the saved item would not have (a versioned parameter's flat
   // Value line read back as a second value: "Parameter has a value").
@@ -238,9 +249,22 @@ export function TextEditor({ engine, draft, onChange, vol = null, isNew, onError
   const tests = parsed.tests ?? [];
   const inspected = details(engine, vol, tokenAt(engine, text.value, caret.value));
 
+  const periods = draft.kind === "parameter" && Array.isArray(draft.versions) ? draft.versions : null;
+  const latest = periods?.length ? periods[periods.length - 1] : null;
   return (
     <div class="textsurface">
       <div class="editorcol">
+        {periods && (
+          <p class="periodsnote" role="note">
+            {latest
+              ? <>This figure is set by {periods.length} dated period{periods.length === 1 ? "" : "s"}. The Value line is the
+                latest, in force from {formatDate(latest.from)}{latest.to ? ` until ${formatDate(latest.to)}` : ""}: changing it
+                changes that period. To add a period from a new date (a new year's chart, a cost-of-living change), use
+                Advanced, Form, "Add a new dated period".</>
+              : <>This figure is set by dated periods and has none yet. Add one with Advanced, Form, "Add a new dated
+                period": a value needs the date it starts.</>}
+          </p>
+        )}
         <div class="statusline">
           <span class={`pill ${problems ? "bad" : "ok"}`}>
             {problems ? `${problems} problem(s)` : "parses, all constraints satisfied"}

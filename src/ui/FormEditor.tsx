@@ -2,7 +2,7 @@ import { useMemo, useState } from "preact/hooks";
 import type { Engine } from "../engine/engine";
 import type { Expr, Item } from "../engine/types";
 import { RELS } from "../engine/types";
-import { declaredPrograms } from "../engine/item-block";
+import { addVersion, declaredPrograms, parseValueText, setVersionValue } from "../engine/item-block";
 import {
   LABEL, NARY, optionsFor, nodeAt, RESULT, setAt, SLOTNAME, SLOTS, spliceAt, template,
   type SlotCtx,
@@ -327,6 +327,90 @@ function Slot({
   );
 }
 
+/** A value as a field shows it: a table or list as JSON, else its words. */
+function valueField(v: unknown): string {
+  if (v !== null && typeof v === "object") return JSON.stringify(v);
+  return v === undefined || v === null ? "" : v === true ? "yes" : v === false ? "no" : String(v);
+}
+
+/** A dated figure's periods: each one's value can be changed in place, and a
+ *  new period added from a date (CDHS cash lead, retest section 2: the July
+ *  2028 chart). Nothing typed is dropped: a value that does not read says
+ *  why, and the period is not added until it does. */
+function Periods({ draft, onChange }: Props) {
+  const vs = draft.versions ?? [];
+  const [from, setFrom] = useState("");
+  const [value, setValue] = useState(() => valueField(vs.length ? vs[vs.length - 1].value : ""));
+  const [source, setSource] = useState("");
+  const [error, setError] = useState("");
+  const [edits, setEdits] = useState<Record<number, string>>({});
+  const [added, setAdded] = useState("");
+  const add = () => {
+    const v = parseValueText(value);
+    if ("error" in v) { setError(`Value: ${v.error}`); return; }
+    const next = addVersion(draft, { from, value: v.value, source });
+    if (typeof next === "string") { setError(next); return; }
+    setError("");
+    setAdded(`Added a period from ${from}. Save to tray to stage it.`);
+    onChange(next);
+  };
+  return (
+    <div class="wide periods">
+      <h4>Dated periods</h4>
+      {vs.length === 0
+        ? <p class="muted">No period yet: this figure has no value on any date until one is added.</p>
+        : (
+          <table class="grid periodtable">
+            <thead><tr><th>From</th><th>Until</th><th>Value</th><th>Source</th></tr></thead>
+            <tbody>
+              {vs.map((v, i) => {
+                const text = edits[i] ?? valueField(v.value);
+                const parsed = parseValueText(text);
+                return (
+                  <tr key={`${v.from}-${i}`} data-from={v.from}>
+                    <td>{v.from}</td>
+                    <td>{v.to ?? "no end"}</td>
+                    <td>
+                      <input
+                        name={`period-${i}`} aria-label={`Value from ${v.from}`} value={text}
+                        onInput={(e) => {
+                          const raw = (e.target as HTMLInputElement).value;
+                          setEdits({ ...edits, [i]: raw });
+                          const p = parseValueText(raw);
+                          if (!("error" in p) && raw.trim() !== "") onChange(setVersionValue(draft, i, p.value));
+                        }}
+                      />
+                      {"error" in parsed && <span class="bad"> {parsed.error}; not changed yet.</span>}
+                    </td>
+                    <td>{v.source ?? ""}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+      <fieldset class="addperiod">
+        <legend>Add a new dated period</legend>
+        <label>From date
+          <input type="date" name="period-from" value={from} onInput={(e) => setFrom((e.target as HTMLInputElement).value)} />
+        </label>
+        <label>Value
+          <input name="period-value" value={value} onInput={(e) => setValue((e.target as HTMLInputElement).value)} />
+        </label>
+        <label>Source (excerpt id)
+          <input name="period-source" value={source} placeholder="e.g. S1800" onInput={(e) => setSource((e.target as HTMLInputElement).value)} />
+        </label>
+        <button type="button" class="btn small addperiodbtn" onClick={add}>Add the period</button>
+        {error && <p class="bad" role="alert">{error}</p>}
+        {added && !error && <p class="ok" role="status">{added}</p>}
+        <p class="muted small">
+          The period running on that date ends the day before; the new one runs until the next period, if any.
+        </p>
+      </fieldset>
+    </div>
+  );
+}
+
 function RESULTOF(op: string): string {
   return RESULT[op] ?? "*";
 }
@@ -483,7 +567,10 @@ export function FormEditor({ engine, draft, onChange, isNew, onOpenInstead }: Fo
           />
         </label>
       )}
-      {showValue && (
+      {showValue && draft.kind === "parameter" && Array.isArray(draft.versions) && (
+        <Periods engine={engine} draft={draft} onChange={onChange} />
+      )}
+      {showValue && !(draft.kind === "parameter" && Array.isArray(draft.versions)) && (
         <label>Value
           <input
             name="value" value={draft.value == null ? "" : engine.lit(draft.value)}

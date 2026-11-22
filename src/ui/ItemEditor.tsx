@@ -10,9 +10,10 @@ import { kindBlurb, kindLabel } from "./labels";
 import { TextEditor } from "./TextEditor";
 import { buildHash } from "./router";
 import { search } from "./search";
+import { downloadStagedChange, nextSteps, stewardOf } from "./sendChange";
 import {
-  closeEditor, editingSig, engineSig, navigate, putChangeEntry, route, searchIndexSig,
-  draftEngine, volumeSig, type EditingState,
+  changeSetSig, closeEditor, credentials, editingSig, engineSig, navigate, putChangeEntry, route,
+  searchIndexSig, draftEngine, volumeSig, type EditingState,
 } from "./state";
 
 export function draftEntry(state: EditingState, engine: Engine): ChangeEntry {
@@ -304,6 +305,19 @@ export function ItemEditor() {
               }}
             >Delete item</button>
           )}
+          <button
+            class="btn download"
+            disabled={unreadable.length > 0}
+            title="Saves this edit, with anything else in your tray, as one file to send to the codex steward"
+            onClick={() => {
+              if (unreadable.length) return;
+              const entry = draftEntry(state, baseEngine);
+              const cs = changeSetSig.value;
+              downloadStagedChange("change", {
+                ...cs, entries: [...cs.entries.filter((e) => e.id !== entry.id), entry],
+              });
+            }}
+          >Download this change</button>
           <button class="btn" onClick={closeEditor}>Cancel</button>
           {blocking > 0 && (
             <span class="bad">
@@ -311,6 +325,9 @@ export function ItemEditor() {
             </span>
           )}
         </div>
+        <p class="muted small editor-next">
+          {nextSteps({ hasToken: Boolean(credentials.get("github")), steward: stewardOf(vol), kind: "change" }).slice(1).join(" ")}
+        </p>
         {unreadable.length > 0 && (
           <div class="unsaved bad" role="alert">
             <b>Not saved yet.</b> The text has {unreadable.length} line
