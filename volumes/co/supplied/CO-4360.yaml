@@ -1,0 +1,13 @@
+id: CO-4360
+name: In-kind earned compensation value
+identifier: in_kind_earned_compensation_value
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The value of shelter, goods or other items (not money) the person received in the month as compensation for services the person performed, in place of wages: the value of the item as the payer supplies it, or its current market value where none is supplied; for regular, necessary services the person performs in exchange (services someone would otherwise have to be hired to perform), the going rate in the community for those services. 0 if none."
+precision: "Not part of wages_gross (cash pay) or the self-employment facts, and not added to them. If not stated, Colorado Works reads it as 0. Each program's rule decides whether in-kind earnings count (SNAP excludes in-kind benefits)."
+supplied_by: Applicant statement, with the employer's statement of the value or the community going rate.
+sources: [S3159]
+tags: [income]
+rationale: "Coverage review CW-9(c) (P1): 9 CCR 2503-6 3.605.2.A, F and G (S3159) count earned in-kind income (shelter or other items in lieu of wages, donated in-kind services, in-kind income for employment) as earned income, but no fact carried it: wages_gross is cash pay only. Program-neutral: it states what the person received; cw_gross_earned_income (CO-1716) counts it."
