@@ -17446,3 +17446,193 @@ Document: D-80
 > uncompensated value of the transfer. Months in the period of ineligibility can
 > coincide with months of ineligibility for other reasons.
 
+
+### S3000. Children with Disabilities Buy-In: household income after disregards under the MAGI household, § 8.100.5.F and § 8.100.5.H; resources not counted; premium cap on adjusted gross income; MAGI verification (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.Q.1.b-c, Q.1.g.i, Q.3 (rule version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> a. Applicants must be age 18 or younger.
+>
+> b. Household income will be considered and must be less than or equal to 300% of FPL after income disregards. The following rules apply:
+>
+> i) 8.100.4.E - MAGI Household Requirements
+>
+> ii) 8.100.5.F - Income Requirements
+>
+> iii) 8.100.5.F.6 - Income Exemptions
+>
+> iv) 8.100.5.H. Income Allocations and Disregards
+>
+> c. Resources are not counted in determining eligibility.
+>
+> i) For families whose income does not exceed 200% of FPL, the amount of premiums and cost-sharing charges cannot exceed 5% of the family’s adjusted gross income. For families whose income exceeds 200% of FPL but does not exceed 300% of FPL, the amount of premiums and cost-sharing charges cannot exceed 7.5% of the family’s adjusted gross income.
+>
+> 3. Verification requirements will follow the MAGI Category Verification Requirements found at 8.100.4.B.
+
+### S3001. ABD income requirements: earned and unearned income counted in the month received, lottery and gambling winnings, support payments (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.1-2, F.4, F.5.a-k (F.5.i.1.a-b and the text of F.5.k left out) (rule version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. This section reviews how income is looked at for the ABD and Long Term Care Medical Programs and determining premiums for the Medicaid Buy-In Program for Working Adults with Disabilities. For more general income information and income types refer to the Medical Assistance General Eligibility Requirements Section 8.100.3.
+>
+> 2. Income for the ABD Medical Programs eligibility is income which is received by an individual or family in the month in which they are applying for or receiving Medical Assistance, or the previous month if income for the current month is not yet available to determine eligibility.
+>
+> 4. Earned income is countable as income in the month received and a countable resource the following month. Earned Income includes the following:
+>
+> a. Wages, which include salaries, commissions, bonuses, severance pay, and any other special payments received because of employment.
+>
+> b. Net earnings from self-employment.
+>
+> c. Payments for services performed in a sheltered workshop or work activities center.
+>
+> d. Certain Royalties and honoraria.
+>
+> 5. Unearned income is the gross amount received in cash or in kind that is not earned from employment or self-employment.
+>
+> Unearned income is countable as income in the month received and any unspent amount is a countable resource the following month. Unearned income includes, but is not limited to, the following:
+>
+> a. Death benefits, reduced by the cost of last illness and burial.
+>
+> b. Prizes and awards.
+>
+> c. Gifts and inheritances.
+>
+> d. Interest payments on promissory notes established on or after March 1, 2007.
+>
+> e. Interest or dividend payments received from any resources.
+>
+> f. Lump sum payments from workers’ compensation, insurance settlements, etc.
+>
+> g. Dividends, royalties or other payments from mineral rights or other resources listed for sale within the resource limits.
+>
+> h. Income from annuities that meet requirements for exclusion as a resource.
+>
+> i Lottery or gambling winnings.
+>
+> 1) An applicant/member may request a hardship exemption when denied/or terminated due to lottery or gambling winnings.
+>
+> j. Pensions and other period payments, such as:
+>
+> i) Private pensions or disability benefits;
+>
+> ii) Social Security benefits (Retirement, survivors, and disability);
+>
+> iii) Workers' Compensation payments;
+>
+> iv) Railroad retirement annuities;
+>
+> v) Unemployment insurance payments;
+>
+> vi) Veterans benefits other than Aid and Attendance (A&A) and Unusual Medical Expenses (UME); and
+>
+> vii) Alimony and support payments.
+>
+> k. In kind support and maintenance. –
+
+### S3002. SSI-related income disregards: $20 general, $65 plus one half, child support reduced by one third, student earned income exemption (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.H.4.a-d (rule version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. Income disregards
+>
+> a. $20 General Income Disregard
+>
+> If there is unearned income left after the Ineligible Child and Parent(s) Allocation Disregards are applied, a General Income Disregard of $20 shall be applied as follows:
+>
+> i) The first $20 of total available unearned income (except for SSI income) must be disregarded. The remaining amount of unearned income is countable.
+>
+> ii) If the client has less than $20 of unearned income, the difference between the gross unearned income and the $20 deduction shall be applied as an earned income disregard, if applicable.
+>
+> iii) Only one $20 general income disregard is allowed per couple and is divided between the two spouses. If one of the spouses has no income the other spouse shall get the full $20 disregard.
+>
+> b. $65 Plus One Half Remainder Earned Income Disregard
+>
+> i) If there is earned income left after the Ineligible Child and Parent(s) Allocation Disregards are applied:
+>
+> 1) Deduct the first $65 of all earned income.
+>
+> 2) Divide the remaining income in half.
+>
+> 3) The result is the amount of earned income used for determining eligibility.
+>
+> c. Child support received by an applicant/recipient child is reduced by one third of the total child support payment. This reduction does not apply to ineligible children when calculating the ineligible child allocation disregard.
+>
+> d. The first $400 of the gross monthly earned income is exempt for a blind or disabled child who is a student that is regularly attending school. The exemption cannot exceed $1,620 in a calendar year.
+
+### S3003. ABD income exemptions: General Assistance, SSI, OAP-A and TANF (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6, F.6.y (rule version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 6. For the purpose of determining eligibility for the Long Term Care and Aged, Blind, and Disabled Medical Assistance categories the following shall be exempt from consideration as either income or resources:
+>
+> y. General Assistance, SSI, OAP-A and cash assistance under the Temporary Assistance to Needy Families (TANF) funds.
+
+### S3004. Transitional Medical Assistance: a dependent child or other member who loses eligibility at a redetermination takes the family's remaining months (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.I.2-3 (rule version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. Any dependent child or Parent/Caretaker Relative who was or becomes part of the Medical Assistance household after the individual has begun receiving Transitional Medical Assistance is eligible for the remaining months of Transitional Medical Assistance.
+>
+> a. A dependent child in the household who received Medical Assistance through continuous eligibility, but is no longer eligible for Medical Assistance based on a redetermination, is eligible for the family’s remaining months of Transitional Medical Assistance.
+>
+> b. An individual in the household who received Medical Assistance, but is no longer eligible for Medical Assistance based on a redetermination, is eligible for the family’s remaining months of Transitional Medical Assistance
+>
+> 3. To become or remain eligible for Transitional Medical Assistance the household must include a dependent child. If it is determined that the household no longer has a child living in the home, Transitional Medicaid Assistance shall discontinue at the end of the month in which the household does not include a dependent child.
+
+### S3005. Medical Assistance groups: children who would otherwise require institutionalization, 1902(e)(3) (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.F.1.i (rule version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> i. Children age 18 and under who would otherwise require institutionalization in an Long Term Care Institution, Nursing Facility (NF), or a hospital but for which it is appropriate to provide care outside of an institution as described in 1902(e)(3) of the Act Public Law No. 97-248 (Section 134).
+
+### S3006. 2025 Medicare Savings Program resource standards for QMB, SLMB and QI
+
+Document: D-280
+
+CMS, CMCS Informational Bulletin, 2025 SSI, Spousal Impoverishment, and Medicare Savings Program Resource Standards (November 15, 2024), p. 2 (footnote marker 4 after the figures left out). https://www.medicaid.gov/federal-policy-guidance/downloads/cib11152024.pdf
+
+> Effective January 1, 2025, the resource standards for single and married QMBs, SLMBs, and QIs
+> will be, respectively, $9,660 and $14,470.
+
+### S3007. 2025 spousal impoverishment standards: maximum MMMNA, community spouse resource standards, home equity limits
+
+Document: D-280
+
+CMS, CMCS Informational Bulletin, 2025 SSI, Spousal Impoverishment, and Medicare Savings Program Resource Standards (November 15, 2024), chart. https://www.medicaid.gov/federal-policy-guidance/downloads/cib11152024.pdf
+
+> Spousal Impoverishment Effective 1-1-25 Unless Otherwise Noted
+> Maximum Monthly Maintenance Needs Allowance: 3,948.00
+> Community Spouse Resources:
+> Minimum Resource Standard: 31,584.00
+> Maximum Resource Standard 157,920.00
+> Home Equity Limits:
+> Minimum: 730,000.00
+> Maximum: 1,097,000.00
+
+### S3008. Nursing Facility PETI-IME: private health insurance premiums of the resident, prior authorized (Cornell text, re-fetched 2026-11-22)
+
+Document: D-55
+
+10 CCR 2505-10 § 8.482.33, 8.482.33.A, 8.482.33.C.1-2 (the Cornell text, re-fetched 2026-11-22, reads the same). https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.482
+
+> 8.482.33 Nursing Facility Post Eligibility Treatment of Income - Incurred Medical Expenses (PETI-IME) Effective April 8, 1988, with respect to the post-eligibility treatment of income of individuals who are institutionalized there shall be taken into account amounts for incurred expenses for medical or remedial care that are not subject to payment by Colorado Medicaid or third party insurance, including health insurance premiums, deductibles or co-insurance; hearing aids, supplies, and care; corrective lenses, eye care, and supplies; and other incurred expenses for medical or remedial care that are not subject to payment by a third party.
+>
+> A. All PETI-IME expenses shall be prior authorized by the Department or its designee. The purpose of the prior authorization process is to verify the medical necessity of the services or supplies, to validate that the requested expense is not a benefit of the Medicaid program, and to determine if the expenses requested are a duplication of expenses previously prior authorized.
+>
+> C. Private health insurance premiums, deductibles, or co-insurance as defined by state law.
+>
+> 1. Monthly premium payment paid by the resident for private health insurance.
+>
+> 2. Medical health insurance premiums will be allowed for the resident only. This does not include prescription drug, vision, dental or life insurance.
