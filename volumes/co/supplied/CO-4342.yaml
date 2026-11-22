@@ -1,0 +1,13 @@
+id: CO-4342
+name: "Self-employment has changed substantially"
+identifier: self_employment_has_changed_substantially
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person's self-employment enterprise has had a substantial increase or decrease in business, so that its receipts over the past year do not reflect what it now earns."
+precision: "If not stated, SNAP reads it as false."
+supplied_by: "Applicant statement; business records."
+sources: [S3114]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-3: an enterprise whose business has changed substantially is counted on anticipated earnings, not averaged prior income (4.403.12.A, C, S3114)."

@@ -1,0 +1,13 @@
+id: CO-4315
+name: "Emergency assistance to a migrant farmworker received"
+identifier: migrant_farmworker_emergency_assistance_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Emergency assistance the person received in the month from a State or local agency as a migrant or seasonal farmworker in the job stream."
+precision: "Part of general_or_emergency_assistance_received (CO-3812), not added to it. If not stated, SNAP reads it as 0."
+supplied_by: "Applicant statement; the agency's payment record."
+sources: [S3110]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: 4.405.2.A.15 (S3110) excludes these payments, while general assistance and other one-time emergency assistance are counted (4.404.A); general_or_emergency_assistance_received states them together."

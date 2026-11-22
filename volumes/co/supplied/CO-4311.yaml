@@ -1,0 +1,13 @@
+id: CO-4311
+name: "Senior Community Service Employment Program payments received"
+identifier: scsep_payments_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Money the person, aged 55 or older, received in the month under the Senior Community Service Employment Program of Title V of the Older Americans Act."
+precision: "Part of wages_gross for the month (a participant is paid wages for the community service assignment), not added to it. If not stated, SNAP reads it as 0."
+supplied_by: "Pay stubs; the program's enrollment record."
+sources: [S3109]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: 4.405.2.A.9 (S3109) excludes SCSEP funds; no fact stated them."

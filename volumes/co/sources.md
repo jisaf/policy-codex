@@ -17636,3 +17636,783 @@ Document: D-55
 > 1. Monthly premium payment paid by the resident for private health insurance.
 >
 > 2. Medical health insurance premiums will be allowed for the resident only. This does not include prescription drug, vision, dental or life insurance.
+
+### S3100. Colorado SNAP exempt income: only the listed sources; irregular income of $30 or less in three months; money for a non-household beneficiary
+
+Document: D-82
+
+10 CCR 2506-1 4.405 (introduction), A, B (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.405 Exempt Income
+> Income from certain sources will be excluded for SNAP eligibility purposes under
+> mandate of law. Only the following will not be considered as income:
+>
+> A. Irregular Income
+>
+> Any income in the certification period that is received too infrequently or
+> irregularly to be reasonably anticipated, but not in excess of thirty dollars ($30) in
+> three (3) months.
+>
+> B. Monies Intended for Non-Household Members
+>
+> Monies received and used for the care and maintenance of a third-party
+> beneficiary who is not a household member. If the intended beneficiaries of a
+> single payment are both household and non-household members, any
+> identifiable portion of the payment intended and used for the care and
+> maintenance of the non-household member shall be excluded. If the non-
+> household member's portion cannot be readily identified, the payment shall be
+> evenly prorated among the intended beneficiaries and the exclusion applied to
+> the non-household member's pro rata share or the amount actually used for the
+> non-household member's care and maintenance, whichever is less.
+
+### S3101. Colorado SNAP: a child student's earnings excluded through the month the student turns eighteen
+
+Document: D-82
+
+10 CCR 2506-1 4.405.C (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. Earnings of Children
+>
+> The earned income of children who are under eighteen (18) years of age, who
+> live with their natural parent, adoptive parent, stepparent, or are under the
+> parental control of another household member other than a parent and are
+> students at least half-time in elementary school, high school, or classes to obtain
+> a General Equivalency Diploma (GED), will be considered exempt income.
+>
+> If the student becomes eighteen (18) years of age in the month of application, the
+> income shall be excluded for the month of application and counted the following
+> month. If the student turns eighteen (18) during the certification period, their
+> income shall be excluded until the month following the month in which the
+> student turns eighteen (18).
+
+### S3102. Colorado SNAP: recoupments of an overpayment excluded, except recoupments for an intentional failure to comply; child support passed to the IV-D agency
+
+Document: D-82
+
+10 CCR 2506-1 4.405.D (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Recoupments
+>
+> The following recoupments or repayments from any nonexempt income source
+> shall be exempt as income as follows:
+>
+> 1. Monies withheld from an assistance payment, earned income, or monies
+> received from any nonexempt income source that is voluntarily or
+> involuntarily returned to repay a prior overpayment received from that
+> income source. Only the net income received from these sources shall be
+> considered countable income. However, monies withheld from a federal,
+> state, or local means-tested program (such as Title IV-A, State Old Age
+> Pension), for purposes of recouping an overpayment which resulted from
+> the household's intentional failure to comply with that program's
+> requirements, shall not be exempted as income, and the gross income
+> received from these sources shall be considered countable income. See
+> Section 4.705 for specific instructions.
+>
+> 2. Child support payments received by Title IV-A participants that the
+> household must transfer to the agency administering Title IV-D of the
+> Social Security Act, in order to maintain their Title IV-A eligibility.
+
+### S3103. Colorado SNAP: reverse annuity mortgage payments are a loan and excluded
+
+Document: D-82
+
+10 CCR 2506-1 4.405.F (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> F. Loans
+>
+> 1. All loans from private individuals as well as commercial institutions shall
+> not be considered as income, including educational loans.
+>
+> 2. Monies received from a Reverse Annuity Mortgage (RAM) loan program
+> should be treated as a loan and excluded from income. These loans meet
+> the accepted definition of a loan since there is a verifiable agreement to
+> repay with interest.
+
+### S3104. Colorado SNAP: state or local energy assistance counted as income, other than LEAP and one-time weatherization or furnace payments
+
+Document: D-82
+
+10 CCR 2506-1 4.405.H.7 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 7. Energy assistance payments, other than for the Low-Income Energy
+> Assistance Program (LEAP) or a one-time payment under federal or state
+> law for weatherization or to repair/replace an inoperative furnace or other
+> heating or cooling device, that are made under a state or local program
+> shall be counted as income. The exclusion will still apply if a down
+> payment is made and is followed by a final payment upon completion of
+> work. If a state law prohibits the household from receiving a cash payment
+> under state or local general assistance (or comparable program), the
+> assistance would be excluded. This applies to either an energy assistance
+> payment or other type of payment.
+>
+> Energy assistance payments for an expense paid on behalf of the
+> household under a state law shall be considered an out-of-pocket expense
+> incurred and paid by the household. Energy assistance payments made
+> under Part A of Title IV of the Social Security Act (42 U.S.C. 601 through
+> 42 U.S.C. 619) are included as income.
+
+### S3105. Colorado SNAP: Domestic Volunteer Service Act payments - Title II excluded; Title I (VISTA) excluded only for those receiving SNAP or PA when they joined
+
+Document: D-82
+
+10 CCR 2506-1 4.405.2 (introduction), A.3 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.405.2 Income Excluded by Other Federal Statutes
+>
+> The following government payments are received for a specific purpose and are
+> excluded as income.
+>
+> ...
+>
+> 3. Any payment to volunteers under Title II (RSVP, Foster Grandparents and
+> others) of the Domestic Volunteer Services Act of 1972, as amended,
+> (P.L. No. 93-113).
+>
+> Payments under Title I (AmeriCorps Volunteers in the Service of
+> America/VISTA - including University Year for Action and Urban Crime
+> Prevention Program) to volunteers shall be excluded for those individuals
+> receiving SNAP or PA at the time they joined the Title I Program, except
+> that households which are receiving an income exclusion for a VISTA or
+> other Title I Subsistence Allowance at the time of conversion to the Food
+> Assistance Act of 1977 shall continue to receive an income exclusion for
+> VISTA for the length of their volunteer contract in effect at the time of
+> conversion. Temporary interruptions in SNAP participation shall not alter
+> the exclusion once an initial determination has been made. New
+> applicants who are not receiving PA or SNAP at the time they joined
+> VISTA shall have these volunteer payments included as earned income.
+
+### S3106. Colorado SNAP: VISTA and Title I payments are earned income unless excluded
+
+Document: D-82
+
+10 CCR 2506-1 4.403.A.2, C (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 2. Earned income includes government payments from Agricultural
+> Stabilization and Conservation Service and wages of AmeriCorps
+> Volunteers in Service to America (VISTA) workers. VISTA payments are
+> excluded if the client was receiving SNAP benefits when they joined
+> VISTA. If the client was not receiving SNAP benefits when they joined
+> VISTA, the VISTA payments shall count as earned income. Temporary
+> interruptions in SNAP participation shall not alter the exclusion once an
+> initial determination has been made (see Section 4.405.2, A, 3).
+> Temporary interruptions shall be defined as a period where a household
+> or individual missed a full month of benefits, excluding instances where
+> the lapse in benefits is due to the local office not taking timely action in
+> accordance with the processing standards outlined in Sections 4.604,
+> 4.205, or 4.209.1.
+>
+> 3. Wages held at the request of the employee shall be considered income to
+>
+> ...
+>
+> C. Title I Monies
+>
+> Payments received under Title I (VISTA-University Year of Action) of the
+> Domestic Volunteer Service Act of 1973 shall be considered earned income and
+> subject to the earned income deduction, excluding payments made to those
+> households specified in Section 4.405.2.
+
+### S3107. Colorado SNAP: National and Community Service Act (AmeriCorps) payments excluded
+
+Document: D-82
+
+10 CCR 2506-1 4.405.2.A.4 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4. P.L. No. 101-610, Section 17(d), 11/16/90, National and Community
+> Service Act (NCSA) of 1990, as amended, provides that Section 142(b) of
+> the Job Training Partnership Act (JTPA) applies to projects conducted
+> under Title I of the NCSA as if such projects were conducted under the
+> JTPA. Title I includes three Acts:
+> a. Serve-America: the Community Service, Schools and Service-
+> Learning Act of 1990, as amended.
+> b. American Conservation and Youth Service Corps Act of 1990, as
+> amended.
+> c. NCSA, as amended.
+>
+> There are approximately forty-seven (47) different NCSA programs and
+> they vary by state. Most of the payments are made as a weekly stipend or
+> for educational assistance. The Higher Education Service-Learning
+> program and the AmeriCorps umbrella program come under this title. The
+> National Civilian Community Corps (NCCC) is a federally managed
+> AmeriCorps program. The Summer for Safety program is an AmeriCorps
+> program under which participants earn a stipend and a one thousand
+> dollar ($1,000) post-service educational award. The National and
+> Community Service Trust Act of 1993 (P.L. No. 103-82) amended the
+> NCSA but did not change the exclusion.
+
+### S3108. Colorado SNAP: WIOA payments excluded, WIOA on-the-job training earnings counted except for a member under nineteen under parental control; other training allowances are earned income
+
+Document: D-82
+
+10 CCR 2506-1 4.405.2.A.6 and 4.403.B (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 6. Payments, allowances and earnings under the Workforce Innovation and
+> Opportunity Act (WIOA) are excluded as income. Earnings paid for on-the-
+> job training are still counted for SNAP. On-the-job training payments for
+> members under nineteen (19) years of age who are participating in WIOA
+> Programs and are under the parental control of an adult member of the
+> household shall be excluded as income. The exclusion shall apply
+> regardless of school attendance and/or enrollment as outlined in Section
+> 4.405, C. On-the-job training payments under the Summer Youth
+> Employment and Training Program are excluded from income.
+>
+> ...
+>
+> B. Training Allowances
+>
+> 1. Payments from vocational and rehabilitation programs recognized by
+> federal, state, or local governments, such as the Job Opportunities and
+> Basic Skills (JOBS) Program, to the extent they are not a reimbursement,
+> except for allowances paid under the Workforce Innovation and
+> Opportunity Act (WIOA).
+>
+> 2. Earned income will include earnings to individuals who are participating in
+> the on-the-job training under Section 204(5), Title II, of the Workforce
+> Innovation and Opportunity Act (WIOA). This provision does not apply to
+> household members under nineteen (19) years of age who are under the
+> parental control of another adult member. Earnings include monies paid
+> by the Workforce Innovation and Opportunity Act (WIOA) and monies paid
+> by an employer.
+
+### S3109. Colorado SNAP: youth projects, SCSEP, charitable cash up to $300 a quarter, a former spouse's share of military retirement, combat pay and military education deductions excluded
+
+Document: D-82
+
+10 CCR 2506-1 4.405.2.A.8-13 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 8. Payments received from the Youth Incentive Entitlement Pilot Projects, the
+> Youth Community Conservation and Improvement Projects, and under the
+> Title IV of the Comprehensive Employment and Training Act Amendments
+> of 1978 (P.L. No. 95-524).
+>
+> 9. P.L. No. 100-175, Section 166, Older Americans Act. Funds received by
+> persons fifty- five (55) years of age and older under the Senior Community
+> Service Employment Program under Title V of the Older Americans Act
+> are excluded from income. State agencies and eight organizations receive
+> funding under Title V. The eight organizations are: Green Thumb, National
+> Council on Aging, National Council of Senior Citizens, American
+> Association of Retired Persons, U.S. Forest Service, National Association
+> for Spanish Speaking Elderly, National Urban League, National Council on
+> Black Aging.
+>
+> 10. Payments in cash donations, based upon need, from one or more private,
+> nonprofit charitable organizations, but not exceeding three hundred dollars
+> ($300) in the aggregate, per fiscal quarter (P.L. No. 100-232).
+>
+> 11. The portion of a military retirement payment, which goes to an ex-spouse
+> under a divorce decree property settlement, is not counted as income to
+> the retiree. (P.L. No. 97-252, Uniform Service Former Spouse Protection
+> Act.) These payments are excluded as vendor payments.
+>
+> 12. Military combat payments received by a member of the United States
+> Armed Forces deployed to a designated combat zone shall be excluded
+> from the household income for the duration of the member’s deployment
+> as long as the additional payment was not received immediately prior to
+> serving in a combat zone.
+>
+> 13. Mandatory deductions from military pay for education purposes while the
+> individual is enlisted. (P.L. No. 99-576, Veterans' Benefits Improvement
+> and Health-Care Authorization Act of 1986, Section 303(a) (1)). Section
+> 216 of P.L. No. 99-576 authorizes stipends for participation in study of
+> Vietnam-Era veterans' psychological problems which are not excluded
+> from income.
+
+### S3110. Colorado SNAP: emergency assistance to migrants in the job stream, PASS amounts and crime victim compensation excluded
+
+Document: D-82
+
+10 CCR 2506-1 4.405.2.A.15, A.22, A.27 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 15. Emergency assistance payments made by a state or local agency for
+> migrants or seasonal farm-workers in the job stream (P.L. No. 100-387).
+>
+> ...
+>
+> 22. Amounts necessary for the fulfillment of a Plan for Achieving Self-Support
+> (PASS) under Title XVI of the Social Security Act (P.L. No. 102-237). This
+> money may be spent in accordance with an approved PASS or deposited
+> into a PASS savings account for future use.
+>
+> ...
+>
+> 27. Amendments to Section 1403 of the Crime Act of 1984 (42 U.S.C. 10602)
+> provides in part that, notwithstanding any other law, if the compensation
+> paid by an eligible crime victim compensation program would cover costs
+> that a federal program or a federally financed state or local program would
+> otherwise pay:
+> a. Such crime victim compensation program shall not pay that
+> compensation.
+> b. The other program shall make its payments without regard to the
+> existence of the crime victim compensation program.
+>
+> Based on this language, payments received under this Program
+> must be excluded from income for SNAP purposes.
+
+### S3111. Colorado SNAP: rental income is unearned income net of the cost of doing business unless the property is managed twenty hours a week
+
+Document: D-82
+
+10 CCR 2506-1 4.404.D and 4.403.E.1 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. Rental Income
+>
+> Rental income is total income, less the cost of doing business, from rental
+> property in which a household member (or disqualified individual) is not actively
+> managing the property an average of at least twenty (20) hours a week.
+>
+> ...
+>
+> 1. Monies received from rental or lease of self-employment property. Rental
+> property shall be considered a self-employment enterprise. However, the
+> income will be considered as earned income only if the household
+> member (or disqualified person) actively manages the property at least an
+> average of twenty (20) hours per week.
+
+### S3112. Colorado SNAP: income converted to a monthly amount by pay frequency (4.3, 2.15, 2, 0.5, 0.333333, 0.166666, .083)
+
+Document: D-82
+
+10 CCR 2506-1 4.402.A.2 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 2. When determining if a household is eligible under gross and/or net income
+> limits, households shall have income converted to a monthly amount by
+> using a conversion as specified below. When a full month's income is
+> anticipated any cents in the gross weekly or biweekly earnings shall be
+> used in converting income to a monthly amount.
+>
+> Pay Frequency Conversion
+>
+> Weekly Multiply Weekly Average by 4.3.
+>
+> Bi-Weekly (Every Two Weeks) Multiply Bi-Weekly Average by
+> 2.15.
+>
+> Semi-Monthly (Twice a Month) Multiply Semi-Monthly Average by
+> 2.
+>
+> Every Other Month Multiply Average by 0.5.
+>
+> Quarterly Multiply Average by 0.333333.
+>
+> Twice a Year Multiply Average by 0.166666.
+>
+> Annual Multiply Average by .083.
+
+### S3113. Colorado SNAP: self-employment and contract income averaged over twelve months; educational income prorated; elective averaging
+
+Document: D-82
+
+10 CCR 2506-1 4.402.2 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.402.2 Averaging Income
+>
+> To obtain a household's average monthly income, income intended to cover a specific
+> period of time is divided by the number of months the income is intended to cover.
+>
+> A. Income shall be averaged for:
+>
+> 1. Households who derive their annual income from self-employment. These
+> households shall have their income annualized over a twelve (12) month
+> period even if the income is received within a shorter period of time.
+>
+> 2. Households who derive their annual income from contract income shall
+> have that income averaged over a twelve (12) month period. (This
+> requirement is not applied to income from a contract received on an hourly
+> or piecework basis.)
+>
+> 3. Households receiving educational income as defined in Section 4.404, D.
+> The income is prorated over the period of time it was intended to cover.
+>
+> 4. Other households not previously mentioned, such as migrant or seasonal
+> workers, may elect to have their fluctuating income averaged over the
+> period of time the income is intended to cover.
+>
+> Self-employment income, contract income, and fluctuating income
+> intended to cover a specific period of time shall not be averaged or
+> annualized for migrant households that are destitute of income as defined
+> in Section 4.406.
+>
+> B. The types of households listed above shall have their self-employment income,
+> contract income, or educational monies annualized or prorated, and added to
+> other household income to determine monthly income for SNAP.
+>
+> C. To average income prospectively, the eligibility technician shall use the
+> household's anticipation of income, considering fluctuations, to obtain a monthly
+> average amount for the period of certification. The number of months used to
+> arrive at the average income need not be the same as the number of months in
+> the certification period, such as the known income from two (2) previous months
+> may be averaged and projected for each month of a certification period that is
+> longer than two (2) months. Refer to Section 4.403.11 for more information on
+> computing self-employment income.
+>
+> Fluctuating income that has been averaged may be adjusted if verification of a
+> change in circumstances is received.
+
+### S3114. Colorado SNAP: self-employment that is the household's annual support averaged over twelve months; partial support; a new enterprise
+
+Document: D-82
+
+10 CCR 2506-1 4.403.12.A-D (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.403.12 Averaging Self-Employment Income
+>
+> Self-employment income must be averaged over the period for which the income is
+> intended to cover, as outlined below:
+>
+> A. Self-Employment as Primary Annual Support
+>
+> When a household receives its annual support from self-employment income,
+> such income is to be averaged over twelve (12) months to determine the
+> household's average monthly income from this source. This policy applies even if
+> the income is received in only a short period of time or the household receives
+> income from other sources in addition to the self-employment income.
+>
+> However, if the averaged, annualized amount does not accurately reflect the
+> household's actual circumstances because the household has experienced a
+> substantial increase or decrease in business, the worker must calculate the self-
+> employment income on anticipated earnings and not on the basis of prior
+> income.
+>
+> B. Self-Employment as Partial Support
+>
+> Households may receive income from self-employment that represents only a
+> part of their annual income. Such self-employment income must be averaged
+> over the self-employment months rather than over a twelve (12) month period.
+>
+> C. Self-Employment Income Received Monthly
+>
+> Self-employment income received on a monthly basis and representing a
+> household's annual support normally will be averaged over twelve (12) months. If
+> the monthly average does not accurately reflect the household's actual financial
+> situation because of a substantial increase or decrease in business, the worker
+> must calculate self-employment income based on the household's anticipated
+> earnings.
+>
+> D. Self-Employment Income from a New Source
+>
+> Income from a self-employment enterprise that has been in business less than a
+> year is to be averaged over the period of time the business has been in operation
+> and the monthly amount projected for the coming year.
+
+### S3115. Colorado SNAP: annual contract income of school employees averaged over twelve months
+
+Document: D-82
+
+10 CCR 2506-1 4.403.3 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.403.3 School Employee Income
+>
+> The provisions of this section are intended to apply primarily to teachers and other
+> school employees.
+>
+> A. Households with members who receive income other than that which is paid on
+> an hourly piece-work basis from employment under a contract which is
+> renewable on an annual basis will have such income averaged over a twelve (12)
+> month period to determine household eligibility.
+>
+> B. Such members will be considered to be receiving compensation for an entire
+> year, even though predetermined non-work periods are involved or actual
+> compensation is scheduled for payment during work periods only. The renewal
+> process may involve a signing of a new contract each year, be automatically
+> renewable, or, as in cases of school tenure, rehire rights may be implied and thus
+> preclude the use of a written contract altogether. The fact that such a contract is
+> in effect for an entire year does not necessarily mean that the contract will
+> stipulate work every month of the year. Rather, there may be certain predictable
+> non-work periods or vacations, such as the summer break between school years.
+>
+> C. Income from such a contract will be considered as compensation for a full year,
+> regardless of the frequency of compensation as stipulated in the terms of the
+> contract, as determined at the convenience of the employer, or as determined at
+> the wish of the employee.
+>
+> D. The annual income household members receive from contractual employment
+> described above shall be averaged over a twelve (12) month period to determine
+> the member's average monthly income. To determine household eligibility all
+> other monthly income from other household members will be added to this
+> average monthly income.
+
+### S3116. Colorado SNAP: an attendant's wages and, if the household furnishes most of the attendant's meals, the one-person maximum allotment are medical expenses
+
+Document: D-82
+
+10 CCR 2506-1 4.407.6.A.8 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 8. Wages to an attendant, homemaker, home health aide, child-care
+> services, or a housekeeper necessary due to age, infirmity, or illness. In
+> addition, an amount equal to the maximum allotment for one (1) person is
+> allowed if the household furnishes the majority of the attendant's meals.
+> The allotment shall be the one in effect at the time of certification with an
+> appropriate adjustment at the next certification.
+>
+> If attendant care costs qualify under both medical and dependent care
+> deduction, the costs shall be allowed as a medical expense.
+
+### S3117. Federal: the one-person allotment deducted when the household furnishes most of an attendant's meals, at the allotment in effect at initial certification
+
+Document: D-13
+
+7 CFR 273.9(d)(3)(x) (re-retrieved 2026-11-22 through the eCFR versioner API, as of 2026-11-18; identical to the text of D-13). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (x) Maintaining an attendant, homemaker, home health aide, or child care services, housekeeper, necessary due to age, infirmity, or illness. In addition, an amount equal to the one person benefit allotment shall be deducted if the household furnishes the majority of the attendant's meals. The allotment for this meal related deduction shall be that in effect at the time of initial certification. The State agency is only required to update the allotment amount at the next scheduled recertification; however, at their option, the State agency may do so earlier.
+
+### S3118. Colorado SNAP: the lot on which a household without a home intends to build exempt; installment contracts producing a fair return exempt; farm property exempt for a year after farming ends
+
+Document: D-82
+
+10 CCR 2506-1 4.410.B, E.2, E.4 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Home and Property
+>
+> The home and surrounding property, which is not separate from the home by
+> intervening property owned by others, will be an exempt resource. Public rights
+> of way, such as roads that run through the surrounding property and separate it
+> from the home, will not affect the exemption of the property. The home and
+> surrounding property shall remain exempt when temporarily unoccupied for
+> reasons of employment, training for future employment, illness, or not habitable
+> as a result of casualty or natural disaster, if the household intends to return. The
+> property owned or being purchased by households that currently do not own a
+> home and on which the household intends to build or is building a permanent
+> home shall be exempt.
+>
+> ...
+>
+> 2. Installment contracts for the sale of land or buildings if the contract or
+> agreement is producing income consistent with its fair market value shall
+> be an exempt resource. The exclusion shall also apply to the value of the
+> property sold under the installment contract or held as security in
+> exchange for a purchase price consistent with the fair market value of that
+> property retained by the seller.
+>
+> ...
+>
+> 4. Property essential to the self-employment of a household member
+> engaged in farming (including land, machinery, equipment, and supplies)
+> shall be excluded for one (1) year from the date the household member
+> terminates his or her self-employment from farming.
+
+### S3119. Colorado SNAP: a non-liquid resource with a net return of $1,500 or less, or no significant return after the costs of sale, is inaccessible
+
+Document: D-82
+
+10 CCR 2506-1 4.410.F.2, G (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 2. Non-exempt, non-liquid resource, as defined in Section 4.408.1, B, that
+> would have a net return of one thousand five hundred dollars ($1,500) or
+> less if sold, shall be considered an inaccessible resource. The equity
+> value shall be used to determine this amount. The equity value is fair
+> market value less verified encumbrances (amount owed).
+>
+> ...
+>
+> G. Resources with No Significant Return
+>
+> Resources that, as a practical matter, the household is unlikely to be able to sell
+> for any significant return because the household's interest is relatively slight or
+> because the cost of selling the household's interest would be relatively great and
+> shall be considered inaccessible. A resource shall be so identified if its sale or
+> other disposition is unlikely to produce any significant amount of funds for the
+> support of the household. Verification of the value of a resource to be excluded
+> shall not be required unless the eligibility worker determines that the information
+> provided by the household is insufficient to permit a determination of the
+> resource value or the technician believes that the information is questionable.
+>
+> This provision regarding no significant return does not apply to negotiable
+> financial instruments (as defined in C.R.S section 4-3-104). A significant return or
+> a significant amount of funds shall be any return/funds after estimated costs of
+> sale or disposition and considering the ownership interest of the household. A
+> significant return or a significant amount of funds is an amount that is estimated
+> to be more than one thousand five hundred dollars ($1,500).
+
+### S3120. Federal: a household's resources shall not exceed the limit
+
+Document: D-12
+
+7 CFR 273.8(b) (re-retrieved 2026-11-22 through the eCFR versioner API, as of 2026-11-18; identical to the text of D-12). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (b) Maximum allowable financial resources. The maximum allowable liquid and non-liquid financial resources of all members of a household without members who are elderly or have a disability shall not exceed $2,000, as adjusted for inflation in accordance with paragraph (b)(1) and (b)(2) of this section. For households including one or more member who is elderly or has a disability, such financial resources shall not exceed $3,000, as adjusted for inflation in accordance with paragraph (b)(1) and (b)(2) of this section.
+
+### S3121. Colorado SNAP: owners of an LLC or S corporation are employees; their statement of the income is accepted unless questionable
+
+Document: D-82
+
+10 CCR 2506-1 4.403.F (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> F. Owners of Limited Liability Corporations (LLC) and S-Corporations
+>
+> For SNAP purposes, owners of LLCs or S-Corporations are considered
+> employees of the corporation and, therefore, cannot be considered self-
+> employed. The income from these types of corporations should be treated as
+> regular earned income, not self-employment income.
+>
+> If the owner of the LLC or S-Corporation takes a draw, the total business income
+> minus all expenses will count as earned income for the client. If the owner
+> receives a salary, we count all payments for services as an employee as regular
+> earned income. There are situations where the owner of an LLC or S-Corporation
+> may receive a salary and a draw, so both sources of income must be counted.
+>
+> Client statement of LLC and S-Corporation income is acceptable, unless
+> questionable. If the income meets the SNAP definition of questionable,
+> verification can be provided in the form of pay stubs, bank records, the LLC or S-
+> Corporation owner’s individual form 1040, or any other document that sufficiently
+> establishes countable earned income for the owner.
+
+### S3122. Colorado SNAP: the allotment is determined after eligibility has been established
+
+Document: D-82
+
+10 CCR 2506-1 4.207.3.A (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.207.3 Benefit Allotment
+>
+> A. After eligibility has been established, the monthly SNAP benefit allotment will be
+> determined. The state automated system will compute the household’s allotment.
+> The following formula shall be used to determine a household’s benefit allotment.
+>
+> 1. Multiply the net monthly income by thirty percent (30%)
+>
+> 2. Subtract the result from the maximum benefit allowed for the appropriate
+> household size, as shown in D below.
+
+### S3123. Colorado SNAP: child support re-verified at recertification or periodic report
+
+Document: D-82
+
+10 CCR 2506-1 4.507.D.5 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 5. At recertification or periodic report, the local office shall require the
+> household to re-verify the amount of legally obligated child support that a
+> household member pays to a non-household member and the actual
+> monthly child support payments made.
+
+### S3124. Colorado SNAP: verification at periodic report
+
+Document: D-82
+
+10 CCR 2506-1 4.502.C (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. Verification Requirements at Periodic Report
+>
+> 1. The household shall verify the following changes in circumstances at the
+> time of periodic report:
+> a. A change of more than $100 in the amount of unearned income.
+> b. A change in the source of income, including starting a job.
+> c. Acquisition of a licensed vehicle that is not fully excludable, if
+> resource limits apply.
+> d. A change in liquid resources, unless excluded, if resource limits
+> apply.
+> e. Changes in the legal obligation to pay child support.
+> f. If a member of the household won substantial lottery or gambling
+> winnings.
+> g. Allowable medical expenses to receive an increase in the allowed
+> expense or add a medical expense.
+>
+> 2. Previously reported medical and shelter expenses used to establish the
+> twenty-four (24) month certification should continue through the end of
+> twenty-four (24) month certification period unless:
+> a. An increase in medical expenses is verified, or
+> b. An increase in shelter expenses is reported.
+
+### S3125. Colorado SNAP: public assistance amounts and ACSES child support amounts verified upon receipt
+
+Document: D-82
+
+10 CCR 2506-1 4.504.6.D.4-6 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> D. The local office shall consider only the following information as VUR:
+>
+> ...
+>
+> 4. PA benefit amounts (Colorado Works, Aid to the Needy Disabled (AND)
+> program consisting of AND-State Only (AND-SO) and AND-Colorado
+> Supplement (AND-CS), Home Care Allowance (HCA), and Old Age
+> Pension (OAP), obtained from the State Department.
+>
+> 5. Information that is reported and verified to a PA program which results in a
+> change to the PA benefit amount and that meets SNAP verification
+> requirements.
+>
+> Such information shall be considered reported and verified on the day the
+> PA program processes the change and authorizes the new PA benefit
+> amount.
+>
+> 6. Child support income and expense amounts obtained through the ACSES.
+>
+> Such information is considered reported and verified on the day the
+> information is reported through an automated interface with ACSES.
+
+### S3126. Colorado SNAP: allowable shelter costs - continuing charges leading to ownership, second mortgages and home equity loans, property taxes and insurance, disaster repair
+
+Document: D-82
+
+10 CCR 2506-1 4.407.3.E.1-3 (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. Allowable shelter costs shall include only the following:
+>
+> 1. Continuing charges for the shelter, including rent, mortgages, condo, and
+> association fees or other continuing charges leading to the ownership of
+> the shelter such as loan repayments for the purchase of a mobile home,
+> including interest on such payments.
+> a. If a homeowner has drawn money down in a reverse mortgage and
+> now wants to make monthly payments to repay some of the
+> amount drawn, the repayment shall be considered a charge
+> leading to the ownership of a home, such as a loan repayment. To
+> be deductible, the charge must be continuing. If the household
+> expects to make monthly payments, the client’s charges are
+> considered to be continuing, and the repayments shall be allowed
+> as a shelter cost. If the repayment is not continuing, it does not
+> meet the requirement and the payments shall not be allowed as a
+> shelter deduction.
+> b. Payments on loans secured by a lien placed on the property by the
+> lending institution, such as a second mortgage or home equity
+> loan, shall be considered a continuing charge for shelter.
+> Payments on unsecured loans or personal loans are not
+> considered shelter costs.
+> c. Expenses incurred to keep a pet that are billed separately from the
+> household’s rent are not allowable as shelter deductions.
+>
+> 2. Property taxes, state and local assessments, and insurance on the
+> structure itself, but not separate costs for insuring furniture or personal
+> belongings.
+>
+> 3. Charges to repair or rebuild a home substantially damaged or destroyed
+> due to a natural disaster such as a fire or flood. Allowable expenses are
+> those that have not been, and will not be, reimbursed by private or public
+> relief agencies, insurance companies, or any other source.
+
+### S3127. Colorado SNAP: no earned income deduction for work supplementation income attributable to public assistance
+
+Document: D-82
+
+10 CCR 2506-1 4.407.2.B (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. The earned income deduction will not be applied to any portion of income earned
+> under a work supplementation or work support program that is attributable to a
+> federal, state, or local public assistance program.
+
+### S3128. Federal: income received too infrequently or irregularly to be anticipated, up to $30 in a quarter, excluded
+
+Document: D-13
+
+7 CFR 273.9(c)(2) (re-retrieved 2026-11-22 through the eCFR versioner API, as of 2026-11-18; identical to the text of D-13). https://www.ecfr.gov/current/title-7/section-273.9
+
+> (2) Any income in the certification period which is received too infrequently or irregularly to be reasonably anticipated, but not in excess of $30 in a quarter.
+
+### S3129. Federal: resources owned jointly by separate households available in their entirety unless shown inaccessible
+
+Document: D-12
+
+7 CFR 273.8(d) (re-retrieved 2026-11-22 through the eCFR versioner API, as of 2026-11-18; identical to the text of D-12). https://www.ecfr.gov/current/title-7/section-273.8
+
+> (d) Jointly owned resources. Resources owned jointly by separate households shall be considered available in their entirety to each household, unless it can be demonstrated by the applicant household that such resources are inaccessible to that household. If the household can demonstrate that it has access to only a portion of the resource, the value of that portion of the resource shall be counted toward the household's resource level. The resource shall be considered totally inaccessible to the household if the resource cannot practically be subdivided and the household's access to the value of the resource is dependent on the agreement of a joint owner who refuses to comply. For the purpose of this provision, ineligible aliens or disqualified individuals residing with the household shall be considered household members.
+
+### S3130. Colorado SNAP: prorated income exempt as a resource while a portion is still counted as income
+
+Document: D-82
+
+10 CCR 2506-1 4.410.C (version effective 2026-10-01; re-downloaded 2026-11-22, same rule version 12718). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. Prorated Income
+>
+> Monies that have been prorated and considered as income for eligibility purposes
+> will be an exempt resource. Prorated student and self-employment income is
+> exempt as a resource as long as a portion is still being counted as income.
