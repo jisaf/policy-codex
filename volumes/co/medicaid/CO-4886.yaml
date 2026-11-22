@@ -1,0 +1,18 @@
+id: CO-4886
+name: "Medicaid: aged, blind and disabled groups denied for non-cooperation"
+identifier: ma_abd_denied_for_noncooperation
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether Medical Assistance under the aged, blind and disabled, long-term care, Medicare Savings Program and Buy-In groups is denied or terminated because the person refuses or fails to make a reasonable effort to secure potential resources or income (10 CCR 2505-10 § 8.100.5.E.6) or, as a resident of a Long-Term Care institution, still refuses to release the patient payment after the Eligibility Site's contact (§ 8.100.7.V.2.c)."
+precision: "Read by ma_ssi_related_category (CO-612, except for an SSI recipient, whose Medicaid follows the SSA's SSI determination), ma_msp_category (CO-617), ma_buy_in_category (CO-622), ma_protected_group_category (CO-1163) and ma_ltc_unmet_requirement (CO-3310, failed_to_cooperate). The MAGI groups (§ 8.100.4) and the Old Age Pension Health Care Program are not read: § 8.100.5 states the aged, blind, disabled, long-term care and Medicare Savings Program rules. Unstated findings are false."
+derived: [any, [otherwise, ma_failed_to_pursue_potential_resources_or_income, false], [otherwise, ma_refuses_to_release_patient_payment, false]]
+sources: [S3621, S3622]
+implemented: engine
+tags: [ma, non_magi, ltc]
+rationale: "Coverage pass 2 (first pass NM-28, deferred as a cross-outcome gate): § 8.100.5.E.6 and § 8.100.7.V.2.c deny or discontinue Medical Assistance for non-cooperation, and no outcome read either. One item carries both so each outcome reads one condition."
+tests:
+  - {id: CO-4886-T1, as_of: "2026-11-01", title: "No finding", given: {}, expect: false}
+  - {id: CO-4886-T2, as_of: "2026-11-01", title: "E.6: failed to pursue potential income after notice", given: {ma_failed_to_pursue_potential_resources_or_income: true}, expect: true}
+  - {id: CO-4886-T3, as_of: "2026-11-01", title: "V.2.c: still refuses to release the patient payment", given: {ma_refuses_to_release_patient_payment: true}, expect: true}

@@ -18,9 +18,9 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 119, 19 of them partly settled", () => {
-    expect(all.total).toBe(119); // + OQ-830, OQ-831 (Colorado Works coverage pass 2)
-    expect(all.rows).toHaveLength(119);
+  it("holds every question still to answer: 120, 19 of them partly settled", () => {
+    expect(all.total).toBe(120); // + OQ-830, OQ-831 (Colorado Works coverage pass 2); + OQ-867 (non-MAGI coverage pass 2)
+    expect(all.rows).toHaveLength(120);
     expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(19);
   });
 
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(118);
+    expect(q.total).toBe(119);
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });
@@ -75,7 +75,7 @@ describe("the question queue", () => {
 describe("Law", () => {
   const unverified = unverifiedIds(vol.sources);
 
-  it("counts 30 departures in force, 2 unverified sources, 6 items citing them, 44 more resting on them (50 in all), 5 figures with no value", () => {
+  it("counts 31 departures in force, 2 unverified sources, 6 items citing them, 44 more resting on them (50 in all), 5 figures with no value", () => {
     const c = lawCounts(engine, vol, unverified, DATE);
     expect(c).toEqual({
       departures: departureItems(engine, { asOf: DATE }).length,
@@ -86,14 +86,14 @@ describe("Law", () => {
       excerpts: vol.sources.length,
       documents: vol.documents.length,
     });
-    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([30, 6, 44, 5]);
+    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([31, 6, 44, 5]); // + CO-657's statute_override (non-MAGI coverage pass 2, N2-2)
   });
 
   it("the departures by program add up to the whole", () => {
-    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(30);
+    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(31);
   });
 
-  it("what rests on the unverified sources: 14 outcomes, and 8 stored households read them (Blind A said 3, Blind B 11)", () => {
+  it("what rests on the unverified sources: 14 outcomes, and 10 stored households read them (Blind A said 3, Blind B 11)", () => {
     const early = unverifiedReach(engine, vol.sources, unverified, null);
     expect(early.households).toBeNull();
     restingIndex(engine, vol.cases);
@@ -102,7 +102,7 @@ describe("Law", () => {
     expect(r.citing).toHaveLength(6);
     expect(r.resting).toHaveLength(44);
     expect(r.outcomes).toHaveLength(14);
-    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188"]);
+    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188", "CO-213", "CO-214"]); // + the long-term care households of non-MAGI coverage pass 2
   }, 60_000);
 
   it("an excerpt is cited by an item through its sources or a dated version", () => {

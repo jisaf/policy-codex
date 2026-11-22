@@ -3,7 +3,7 @@ name: "Medicaid: LTC eligibility status"
 identifier: ma_ltc_eligibility_status
 kind: derived
 type: one of
-options: [eligible_institutional, eligible_hcbs, eligible_pace, ineligible_residency, not_aged_blind_or_disabled, ineligible_status, ineligible_income, ineligible_resources, ineligible_level_of_care, transfer_penalty, home_equity_exceeds_limit, not_eligible_for_requested_setting, not_institutionalized_or_waiver]
+options: [eligible_institutional, eligible_hcbs, eligible_pace, ineligible_residency, not_aged_blind_or_disabled, ineligible_status, ineligible_income, ineligible_resources, ineligible_level_of_care, transfer_penalty, home_equity_exceeds_limit, not_eligible_for_requested_setting, not_institutionalized_or_waiver, failed_to_cooperate]
 scope: person-month
 program: Medicaid
 role: outcome

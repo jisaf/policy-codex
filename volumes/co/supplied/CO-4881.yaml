@@ -1,0 +1,13 @@
+id: CO-4881
+name: "Decennial Census wages"
+identifier: decennial_census_wages_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's wages for the month (wages_gross) paid by the United States Census Bureau for temporary employment related to the decennial Census."
+precision: "Part of wages_gross, not added to it. If not stated, every program reads it as 0."
+supplied_by: "Pay stubs or a statement from the Census Bureau."
+sources: [S3617]
+tags: [non_magi, income]
+rationale: "Coverage pass 2 (first pass NM-23 z, deferred): 10 CCR 2505-10 § 8.100.5.F.6.z (S3617) exempts all wages the Census Bureau pays for temporary decennial Census work for the aged, blind and disabled categories; no fact stated them, so they were counted as wages. Read by ma_ssi_excluded_earned_income (CO-2471)."

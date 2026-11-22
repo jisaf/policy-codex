@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The part of workforce_program_payments_received (CO-3815) for the month that is a training allowance from a vocational or rehabilitation program other than the Workforce Innovation and Opportunity Act (WIOA) and the youth employment and training projects: an allowance from a Job Opportunities and Basic Skills program or a vocational rehabilitation program, for example, to the extent it is not a reimbursement."
-precision: "Part of workforce_program_payments_received, not added to it. If not stated, SNAP reads it as 0."
+precision: "Part of workforce_program_payments_received, not added to it. If not stated, SNAP and Medicaid read it as 0."
 supplied_by: "Applicant statement; the training program's award letter."
 sources: [S3108]
 tags: [snap, income]

@@ -475,7 +475,7 @@ HCPF fix round (2026-11-21, docs/reviews/stakeholder-hcpf.md): ma_community_spou
 
 Dual-entry audit fix round (2026-11-21, docs/reviews/audit-dual-entry.md 1.1-1.4, 5.4): the remaining readers now read the community spouse's own facts. ma_csra_increased (CO-1977) reads ma_community_spouse_income (CO-2467), and community_spouse_income (CO-833) is retired. ma_mmmna (CO-655) reads ma_community_spouse_shelter_costs (CO-2802): the community spouse's own shelter_cost_monthly, a condominium or cooperative fee (housing_maintenance_fee, CO-2800) and the larger of the SNAP standard utility allowance her household reaches and her actual utility expenses (utility_expenses_actual, CO-2801), as § 8.100.7.Q.1.b (S1756) defines them; shelter_costs_community_spouse (CO-834) is retired. family_members_with_community_spouse (CO-838) and ma_resides_with_community_spouse (CO-2468) are retired; ma_family_allowance_members (CO-2469) reads the family member's lives_with. CO-01 and CO-02 were recomputed by hand (MMMNA 3,909.50, income allowance 2,729.50, patient payment 0, CSRA 259,660). Items: CO-655, CO-1977, CO-2469, CO-2800, CO-2801, CO-2802.
 
-### OQ-98. Resolved: Veterans-related personal needs allowance ($90) is cited but not wired into ma_patient_payment's PNA deduction
+### OQ-98. Resolved: Veterans-related personal needs allowance ($90) wired into ma_patient_payment's PNA deduction (CO-1986, CO-255)
 
 Body: 8.100.7.V.3.d.ii states a $90 veterans-related PNA for a veteran or widow(er) with no spouse or dependent child receiving a non-service-connected VA pension (parameter ma_veteran_personal_needs_allowance, CO-255), distinct from the base PNA (ma_personal_needs_allowance_institutional, CO-887 - a supplied fact, not a parameter, as of the phase-4 fix round's C-11) ma_patient_payment (CO-658) actually subtracts. Selecting between them needs a supplied fact for VA non-service-connected pension receipt this batch does not add (has_military_connection exists but does not distinguish pension type); ma_patient_payment always uses the non-veteran base PNA. Items: CO-887, CO-255, CO-658.
 
@@ -2562,11 +2562,11 @@ Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.F.2.c-e (D-65, version effective 1
 
 ### OQ-822. Adult Financial grants other than OAP-A in the aged, blind and disabled income
 
-Body: 10 CCR 2505-10 § 8.100.5.F.6.y (S3003) exempts "General Assistance, SSI, OAP-A and cash assistance under the Temporary Assistance to Needy Families (TANF) funds". The current Adult Financial grants are OAP (A and B, one category in this volume, OQ-111), Aid to the Needy Disabled (AND-SO and AND-CS) and Aid to the Blind. The SSI-related income (ma_ssi_household_unearned_income_sum, CO-663) reads no Adult Financial grant, so OAP-B, AND and AB grants are not counted; the long-term care gross income (ma_ltc_gross_income, CO-641) counts them, as income before any exemption (§ 8.100.7.A.1). The rule's program names predate the current ones. Coverage review NM-24. Items: CO-663, CO-641.
+Body: 10 CCR 2505-10 § 8.100.5.F.6.y (S3003) exempts "General Assistance, SSI, OAP-A and cash assistance under the Temporary Assistance to Needy Families (TANF) funds". The current Adult Financial grants are OAP (A and B, one category in this volume, OQ-111), Aid to the Needy Disabled (AND-SO and AND-CS) and Aid to the Blind. The SSI-related income (ma_ssi_household_unearned_income_sum, CO-663) reads no Adult Financial grant, so OAP-B, AND and AB grants are not counted; the long-term care gross income (ma_ltc_gross_income, CO-641) counts them, as income before any exemption (§ 8.100.7.A.1). The rule's program names predate the current ones. F.6.y names the "Long Term Care" categories as well, while § 8.100.7.A.1 (S351) defines the long-term care gross income as income "before application of deductions, exemptions or disregards appropriate to the SSI program"; the two texts give different answers for a Colorado Works or Adult Financial grant in the 300% test, which matters only when the grant brings other income near three times the FBR. Coverage review NM-24; coverage pass 2 N2-5. Items: CO-663, CO-641.
 
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: Every Adult Financial grant is exempt for the aged, blind and disabled income tests: OAP-B with OAP-A as one OAP program, and AND and AB as the "General Assistance" F.6.y names.
+Assumption: Every Adult Financial grant is exempt for the aged, blind and disabled income tests of the SSI method: OAP-B with OAP-A as one OAP program, and AND and AB as the "General Assistance" F.6.y names. The long-term care 300% test counts every cash grant, Colorado Works and Adult Financial alike, reading § 8.100.7.A.1's "income before application of deductions, exemptions or disregards" over F.6.y's "Long Term Care".
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.F.6.y (D-65, version effective 11/14/2026) and § 8.100.6.K (OAP-A and OAP-B both named). No published rule maps the current Adult Financial programs onto F.6.y's names.
 
@@ -2629,3 +2629,13 @@ Owner: Child care policy owner (CDEC)
 Assumption: At a redetermination medical leave is an eligible activity only when the caretaker is unable to care for the children (D.9, the paragraph that states the eligible household); at a change during the period any verified medical leave counts (3.112.C.2, 3.125.Q.2).
 
 Checked 2026-11-22: 8 CCR 1403-1 3.103.WWW, 3.111.D.9, 3.112.C.2, 3.114.B.5 and 3.125.Q.2 (D-87, version effective 2026-08-14). Neither D.9 nor 3.112.C refers to the other.
+
+### OQ-867. Rent from an exempt home in the SSI method: J.1's three deductions or the SSI method's ordinary and necessary expenses; gross or net rent in the 300% test
+
+Body: 10 CCR 2505-10 § 8.100.5.J.1 (S3619) counts "Net rental income from an exempt home or a life estate interest in an exempt home ... after the following allowable deductions": property taxes and insurance, routine maintenance, and a professional manager's fee. 20 CFR 416.1121(d) (S3620), the SSI method the aged, blind and disabled groups follow, deducts from all rents "ordinary and necessary expenses", interest on debts and other taxes among them. The volume subtracts rental_property_expenses_paid (CO-4458, 416.1121(d)'s list: taxes, insurance, mortgage interest, repairs and maintenance, owner-paid utilities, management fees) from rents stated as rental_income_received, in ma_ssi_excluded_unearned_income (CO-2470), for every rental property. For an exempt home that allows mortgage interest and utilities, which J.1 does not name. The long-term care gross income (CO-641) counts rents before expenses, reading § 8.100.7.A.1's "income before application of deductions". First-pass coverage review NM-27 (J.1). Items: CO-2470, CO-641.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Rents count net of 416.1121(d)'s ordinary and necessary expenses in the SSI method, an exempt home included (J.1's three deductions are among them, and 42 CFR 435.601(b) does not let the state use a stricter methodology than SSI's); the 300% test counts gross rents.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.J.1 and § 8.100.7.A.1 (D-65, version effective 11/14/2026); 20 CFR 416.1121(d) (D-53). J.1 speaks only of an exempt home and does not say whether its list is exclusive; no Colorado text says how other rents are counted.

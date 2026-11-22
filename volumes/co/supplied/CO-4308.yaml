@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "Cash the person received in the month as a donation, based on need, from one or more private, nonprofit charitable organizations."
-precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_nontaxable, or energy_assistance_received where the donation is home energy assistance from a nonprofit), not added to it. If not stated, SNAP reads it as 0."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_nontaxable, or energy_assistance_received where the donation is home energy assistance from a nonprofit), not added to it. If not stated, SNAP and Medicaid read it as 0."
 supplied_by: "Applicant statement; a letter from the organization."
 sources: [S3109]
 tags: [snap, income]
