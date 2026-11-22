@@ -1,0 +1,22 @@
+id: CO-3629
+name: "Medicaid: Medicare Savings Program COLA disregard"
+identifier: ma_msp_cola_disregard
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The income a Medicare Savings Program member keeps disregarded after the annual Social Security cost-of-living adjustment (ma_title_ii_cola_increase): for a QMB or QI-1 member, from January until the year's federal poverty guidelines are published (10 CCR 2505-10 § 8.100.6.L.12, N.6), and for an SLMB member through the month following the month in which they are published (M.7); otherwise 0. The member is the person enrolled in the program in the December before the month (ma_msp_december_category)."
+assumption: "'Until the next year's federal poverty guidelines are published' (L.12, N.6) is read as through the month of publication, eligibility being determined by whole months; M.7's 'through the month following the month in which the ... update is published' gives SLMB one month more (OQ-622). Publication is the Federal Register date (federal_poverty_guideline_publication_date); while a year's date is not yet loaded the disregard continues."
+precision: "The disregard is subtracted from countable income only in the test of the program the person was a member of (CO-613, CO-614, CO-615), so it keeps the member in that program and moves no one into another. The months run from January of the month's year: the publication date read is the version in force on January 1 of that year. OQ-515 dates the guidelines themselves from January 1, so in the volume the new limits apply from January; the disregard then matters only where the adjustment still raises income over the new limit."
+derived: [case, [[not, [in, ma_msp_december_category, [qmb, slmb, qi]]], 0], [[any, [<, [year_of, [as_of, federal_poverty_guideline_publication_date, [first_day, [latest_month_of_year, 1, [month]]]]], [year_of, [month]]], ["<=", [month], [case, [["=", ma_msp_december_category, slmb], [month_after, [month_of, [as_of, federal_poverty_guideline_publication_date, [first_day, [latest_month_of_year, 1, [month]]]]]]], [else, [month_of, [as_of, federal_poverty_guideline_publication_date, [first_day, [latest_month_of_year, 1, [month]]]]]]]]], ma_title_ii_cola_increase], [else, 0]]
+sources: [S2406, S2407, S2409, S2412, S2413]
+implemented: engine
+tags: [ma, msp, income]
+open: [OQ-622, OQ-515]
+rationale: "Final verification F-6 (docs/reviews/final-medicaid-chp.md): no item carried the annual COLA disregard of 10 CCR 2505-10 § 8.100.6.L.12, M.7 and N.6 (S2406, S2407, S2409), so a QMB, SLMB or QI-1 member whose January Social Security cost-of-living increase pushed countable income over the limit was reported ineligible while the rule keeps the member eligible."
+tests:
+  - {id: CO-3629-T1, as_of: "2026-01-20", month: "2026-01", title: "QMB member in December 2025; January 2026, guidelines published 2026-01-15: disregarded", given: {ma_msp_december_category: qmb, ma_title_ii_cola_increase: 42}, expect: 42}
+  - {id: CO-3629-T2, as_of: "2026-02-20", month: "2026-02", title: "QMB member; February 2026, after the publication month: no disregard", given: {ma_msp_december_category: qmb, ma_title_ii_cola_increase: 42}, expect: 0}
+  - {id: CO-3629-T3, as_of: "2026-02-20", month: "2026-02", title: "SLMB member; February 2026, the month following publication: disregarded", given: {ma_msp_december_category: slmb, ma_title_ii_cola_increase: 42}, expect: 42}
+  - {id: CO-3629-T4, as_of: "2027-02-20", month: "2027-02", title: "QI-1 member; February 2027, the 2027 guidelines not yet loaded: disregarded", given: {ma_msp_december_category: qi, ma_title_ii_cola_increase: 42}, expect: 42}
+  - {id: CO-3629-T5, as_of: "2026-01-20", month: "2026-01", title: "Not a member in December", given: {ma_msp_december_category: none}, expect: 0}

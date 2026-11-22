@@ -1,0 +1,24 @@
+id: CO-3601
+name: "Medicaid: is pregnant in the month"
+identifier: ma_is_pregnant_in_month
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person was pregnant at some time in the month, the condition of the Pregnant Women MAGI category (10 CCR 2505-10 § 8.100.4.G.5) for that month: for the determination month and later months, and the months from the application month on, the person's current pregnancy (is_pregnant); for an earlier month, a retroactive month under § 8.100.3.E, a month from the month the pregnancy began (pregnancy_start_date) through the month it ended (pregnancy_end_date), or, for a pregnancy that has not ended, from the month it began."
+precision: "A month counts if the person was pregnant on any day of it, so the month of a birth is a pregnant month, as coverage under § 8.100.4.G.1 is for whole months. A current pregnancy is not dated for the determination month and later months, nor for the months from the application month on: is_pregnant answers for them, as before this item. For a retroactive month the dates decide; the start date is read only when the month is not settled otherwise, and an unstated start date leaves such a month unknown, not silently pregnant or not. § 8.100.3.E.2 (S2411): 'An applicant does not have to be eligible in the month of application to be eligible for retroactive Medical Assistance'."
+derived: [any, [all, is_pregnant, [any, [">=", [month], [det_month]], [">=", [month], [month_of, ma_application_date]], ["<=", [month_of, pregnancy_start_date], [month]]]], [all, [not, [unknown, pregnancy_end_date]], ["<=", [month], [month_of, pregnancy_end_date]], ["<=", [month_of, pregnancy_start_date], [month]]]]
+sources: [S640, S1503, S2411, S224]
+implemented: engine
+tags: [ma, magi]
+rationale: "Final verification F-1 (docs/reviews/final-medicaid-chp.md): ma_is_pregnant_category (CO-546) read the person-scoped is_pregnant, \"currently pregnant\" on the determination date, in every month, so a retroactive month before a birth was never a pregnant month. 10 CCR 2505-10 § 8.100.3.E.1-2 (S1503, S2411) provides coverage in each of the months before the application in which the person met the requirements, and 42 U.S.C. 1396a(e)(16)(A) (S224) continues postpartum coverage for a woman who received Medical Assistance while pregnant \"including during a period of retroactive eligibility\". No existing item states pregnancy month by month."
+tests:
+  - {id: CO-3601-T1, as_of: "2026-09-15", month: "2026-07", title: "Delivered 2026-08-10, applied 2026-09-15, pregnancy began 2025-11-05: July is a pregnant month", given: {is_pregnant: false, pregnancy_end_date: "2026-08-10", pregnancy_start_date: "2025-11-05", ma_application_date: "2026-09-15"}, expect: true}
+  - {id: CO-3601-T2, as_of: "2026-09-15", month: "2026-08", title: "The month of the birth is a pregnant month", given: {is_pregnant: false, pregnancy_end_date: "2026-08-10", pregnancy_start_date: "2025-11-05", ma_application_date: "2026-09-15"}, expect: true}
+  - {id: CO-3601-T3, as_of: "2026-09-15", month: "2026-09", title: "The application month, after the birth: not pregnant", given: {is_pregnant: false, pregnancy_end_date: "2026-08-10", pregnancy_start_date: "2025-11-05", ma_application_date: "2026-09-15"}, expect: false}
+  - {id: CO-3601-T4, as_of: "2026-09-15", month: "2026-06", title: "A miscarriage on 2026-08-10 of a pregnancy that began 2026-07-01: June is not a pregnant month", given: {is_pregnant: false, pregnancy_end_date: "2026-08-10", pregnancy_start_date: "2026-07-01", ma_application_date: "2026-09-15"}, expect: false}
+  - {id: CO-3601-T5, as_of: "2026-10-15", month: "2026-10", title: "Currently pregnant in the determination month: is_pregnant answers, no dates needed", given: {is_pregnant: true}, expect: true}
+  - {id: CO-3601-T6, as_of: "2026-10-15", month: "2026-07", title: "Currently pregnant, pregnancy began 2026-05-20: July, a retroactive month, is a pregnant month", given: {is_pregnant: true, ma_application_date: "2026-10-05", pregnancy_start_date: "2026-05-20"}, expect: true}
+  - {id: CO-3601-T7, as_of: "2026-10-15", month: "2026-07", title: "Currently pregnant, pregnancy began 2026-08-12: July is not a pregnant month", given: {is_pregnant: true, ma_application_date: "2026-10-05", pregnancy_start_date: "2026-08-12"}, expect: false}
+  - {id: CO-3601-T8, as_of: "2026-10-15", month: "2026-07", title: "Currently pregnant, start date not stated: a retroactive month is unknown", given: {is_pregnant: true, ma_application_date: "2026-10-05"}, expect: unknown}
+  - {id: CO-3601-T9, as_of: "2026-10-15", month: "2026-10", title: "Never pregnant", given: {is_pregnant: false}, expect: false}

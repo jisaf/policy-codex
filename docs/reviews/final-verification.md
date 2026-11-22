@@ -157,3 +157,15 @@ SNAP fix track, 2026-11-22 (see docs/reviews/final-snap.md, Disposition, for the
 | V-5 | P1 | Fixed `20f0a29` (the same as final-snap F-10): the unverified expense is not deducted after day 30; cases CO-115 and CO-91 (`23719b0`). |
 | V-13 | P2 | Deferred P2: the duplicate-child verification of 4.505.4.C needs a fact that the child already receives SNAP in another household and the household-composition rule it serves; neither is in scope of this P1 round. |
 | V-18 | P3 | The authorized representative's identity is now modeled (F-9); the SSN 8-month limit and periodic-report verifications stay documented limits. |
+
+## Disposition (Medicaid and CHP+ fix track)
+
+Fix track for Medicaid and CHP+, 2026-11-22; the other tracks add their own lines for the other findings. Commits: ba897ac (items), 09e6740 (changed expectations).
+
+| id | disposition |
+|---|---|
+| V-3 | Fixed (ba897ac, 09e6740). ma_income_verification_members (CO-3633: the MAGI household, or the SSI-method couple, CO-3626, for an aged, blind or disabled person); CO-1411 and CO-1412 sum the earned and unearned income elements over it, CO-1416 and CO-1417 over the MAGI household; the resource element (CO-1405) reads the couple. CO-01 p4: Medicaid and CHP+ status pending_reasonable_opportunity -> pending, counts 2 -> 3 (p3's pay stubs; derivation in the case). |
+| V-6 | Fixed (ba897ac). CO-1405's MSP-only arm reads liquid resources (liquid_resources_value, retirement accounts; 416.1201(b), S2420) or a questionable attestation (435.952(e)(2)(ii), S2418); life insurance and burial funds on attestation ((e)(3)-(4), S2419). |
+| V-8 | Fixed (ba897ac). chp_requires_verification_of_unearned_income and its pending item (CO-3634, CO-3635), counted in CO-1416 and CO-1417. |
+| V-10 | Fixed (ba897ac). CO-2442 reports verification_period_expired after CO-2445 with citizenship or identity still pending; aid-codes label added. |
+| V-14 | Fixed (ba897ac, 09e6740). CO-1417 is 0 when CHP+ verification is not applicable. CO-01 p3, CO-91 p1 and CO-92 p1: chp_pending_verification_count 1 -> 0. |

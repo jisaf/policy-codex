@@ -1,0 +1,17 @@
+id: CO-3633
+name: "Medicaid: persons whose income the determination verifies"
+identifier: ma_income_verification_members
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "The persons whose earned and unearned income enters this person's Medical Assistance determination, so that its verification is owed for this person: for an aged, blind or disabled person, the SSI-method couple (ma_ssi_couple_members, CO-3626: the person and a spouse living with the person); for anyone else, the person's MAGI household (ma_magi_household_members). The person is always one of them."
+precision: "An aged, blind or disabled person under 65 may also be tested under a MAGI group whose household holds members other than a spouse; their income enters only that test and is verified for them as members of their own households. Whether each member's income needs documents is that member's own element (ma_requires_verification_of_earned_income, ma_requires_verification_of_unearned_income), which is not gated on the member's request (ma_verification_is_applicable, CO-3157)."
+derived: [case, [ma_is_aged_blind_or_disabled, ma_ssi_couple_members], [else, ma_magi_household_members]]
+sources: [S861, S838, S1747]
+implemented: engine
+tags: [ma, verification, household]
+rationale: "Final verification V-3 (docs/reviews/final-verification.md): the income elements of a household member who does not request coverage were computed but reached no status, since the applicant's counts summed only the applicant's own elements; 10 CCR 2505-10 § 8.100.4.B.1.c (\"the applicant must provide documentation of income\") and 42 CFR 435.952(c) (S838) require the income the determination counts to be verified, whoever receives it. No item named the persons whose income the determination verifies."
+tests:
+  - {id: CO-3633-T1, as_of: "2026-11-01", title: "A MAGI applicant: the MAGI household", given: {ma_is_aged_blind_or_disabled: false, ma_magi_household_members: [p1, p2]}, others: {p2: {}}, expect: [p1, p2]}
+  - {id: CO-3633-T2, as_of: "2026-11-01", title: "An aged applicant: the SSI couple", given: {ma_is_aged_blind_or_disabled: true, ma_ssi_couple_members: [p1, p2]}, others: {p2: {}}, expect: [p1, p2]}

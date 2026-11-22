@@ -1,0 +1,12 @@
+id: CO-3631
+name: "Is enrolled in employer family coverage"
+identifier: is_enrolled_in_employer_family_coverage
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person is enrolled in medical family coverage through an employer-based group health plan of a member of the person's family."
+supplied_by: "The plan's enrollment card or the employer's statement."
+sources: [S1752]
+tags: [ma, buy_in]
+rationale: "Final verification F-7 (docs/reviews/final-medicaid-chp.md): 10 CCR 2505-10 § 8.100.6.Q.1.f (S1752) requires families to enroll in employer-based family coverage when they are eligible for it and the employer contributes at least 50% of the premium; ma_cbwd_eligible (CO-620) did not test it and no open question recorded it. No fact stated enrollment in employer family coverage."

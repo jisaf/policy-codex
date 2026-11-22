@@ -1151,17 +1151,17 @@
   # (259660, see the expectation), so all of the couple's resources are attributed
   # to the community spouse and p1's own countable resources are 0, at or below the 2000
   # limit: resource eligible. p1 also meets the nursing facility level of
-  # care and is otherwise financially eligible, so ma_pace_eligible (CO-654)
-  # is true; CO-652's case order tests PACE before institutional (an
-  # authoring choice per OQ-100, not itself a fix-round item), so the status
-  # is eligible_pace rather than eligible_institutional even though p1's
-  # actual application is for nursing facility care - a consequence of C-1
-  # making her resource-eligible that this fix round surfaces but does not
-  # correct (OQ-100/C-18 is next round's problem). MMMNA = 2600 + (1100
-  # shelter - 30% of 2600) = 2920, the spouse allowance 2920 - 1180 = 1740,
-  # and (per C-3, gated on eligibility, which p1 now has) the patient payment
-  # 2030 - 110.36 - 1740 = 179.64 (open-question sweep, OQ-212: the 2026 personal needs allowance
-  # 110.36 from HCPF OM 25-073, unverified, replaced the illustrative 75). p2 (community spouse, income 1180, individual
+  # care and is otherwise financially eligible. She requested nursing facility care
+  # (ma_ltc_setting_requested institutional, HCPF fix round B-3), so the status is
+  # eligible_institutional. Final verification P3-1 (2026-11-22), the current derivation:
+  # MMMNA standard 150% x 21,640 / 12 = 2,705; p2's shelter 2,016 less 30% x 2,705 = 811.50
+  # gives an excess shelter allowance of 1,204.50; 2,705 + 1,204.50 = 3,909.50, under the
+  # 4,066.50 maximum; p2 states no medical expenses or premiums of her own (8.100.7.Q.2, F-4: 0),
+  # so ma_mmmna = 3,909.50 and the spouse allowance 3,909.50 - 1,180 = 2,729.50. The patient
+  # payment (gated on eligibility per C-3) starts from 2,030 - 110.36 (OQ-212: the 2026 personal
+  # needs allowance from HCPF OM 25-073, unverified) = 1,919.64, no earnings; the spouse allowance
+  # 2,729.50 is larger, so the payment is 0 (she states no Part B or Part D premium of her own,
+  # OQ-520, and no long-term care insurance). p2 (community spouse, income 1180, individual
   # resources 44100 over the illustrative MSP limit 10000) is in no MSP,
   # SSI-related or Buy-In group, is not institutionalized, and (per C-3) has
   # no patient payment.
@@ -1190,7 +1190,7 @@
       # Phase 7 outcomes. Emergency: p3 (undocumented, MAGI adult) fails only status, so ma_is_emergency_medicaid_only
       # is true; she had an emergency medical condition in October (stated), so eligible_emergency_condition. Everyone else
       # meets status. BCCP: p1 (79) and the two males fail sex/age; p3 and p4 were not found in need of treatment.
-      # Family planning: p1 has full coverage through long-term care (eligible_pace), p4 and p5 through MAGI; p2 (81, LPR
+      # Family planning: p1 has full coverage through long-term care (eligible_institutional), p4 and p5 through MAGI; p2 (81, LPR
       # since 1998) has no full-coverage category and his MAGI household [p1, p2] counted as three (8.100.4.E.3) is
       # 3210 / (27320/12) = 1.41 of FPL, inside 133%-260% - limited_family_planning (8.100.4.G.8 has no age or gender
       # restriction); p3 fails only status and has reproductive capacity - the state reproductive health-care program
@@ -1613,7 +1613,7 @@
       ma_verification_status: {"2026-10": pending}
       ma_pending_verification_count: {"2026-10": 1}
       chp_verification_status: {"2026-10": not_applicable}
-      chp_pending_verification_count: {"2026-10": 1}
+      chp_pending_verification_count: {"2026-10": 0}  # final verification V-14: CHP+ verification is not_applicable for p3 (an adult, not pregnant), so nothing is pending (was 1)
       cw_verification_status: {"2026-10": not_applicable}
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_verification_status: {"2026-10": pending}
@@ -1780,10 +1780,16 @@
       snap_is_work_registrant: false
       snap_verification_status: {"2026-10": pending}
       snap_pending_verification_count: {"2026-10": 2}
-      ma_verification_status: {"2026-10": pending_reasonable_opportunity}
-      ma_pending_verification_count: {"2026-10": 2}
-      chp_verification_status: {"2026-10": pending_reasonable_opportunity}
-      chp_pending_verification_count: {"2026-10": 2}
+      # Final verification V-3: p4's MAGI household is p3, p4 and p5 (p3 claims her); p3's pay stubs are
+      # outstanding (DOLE wage data is not verified on receipt), and p3's wages count in p4's household
+      # income, so they are owed for p4's determination too: p4's own citizenship and identity (2) plus
+      # p3's earned income (1) = 3 (was 2). A non-status element is outstanding within the time allowed
+      # (due 2026-10-31), so the status is pending (was pending_reasonable_opportunity), for Medicaid and
+      # for CHP+ alike.
+      ma_verification_status: {"2026-10": pending}
+      ma_pending_verification_count: {"2026-10": 3}
+      chp_verification_status: {"2026-10": pending}
+      chp_pending_verification_count: {"2026-10": 3}
       cw_verification_status: {"2026-10": pending}
       cw_pending_verification_count: {"2026-10": 2}
       cccap_verification_status: {"2026-10": pending}
@@ -3177,12 +3183,11 @@
   # comment above): branch (a) gives min(162660, 46000) = 46000 and the increased
   # CSRA of branch (b) gives 259660 since dual-entry 1.2, so ma_csra = 259660,
   # p1's own countable resources are 0, and she is resource eligible.
-  # ma_pace_eligible is also true (level of care met, financially eligible),
-  # and CO-652's PACE-before-institutional case order (OQ-100) reports
-  # eligible_pace rather than eligible_institutional. MMMNA and the spouse
-  # allowance are unchanged (2920, 1740); the patient payment, now gated on
-  # eligibility per C-3, is 2030 - 110.36 - 1740 = 179.64 (OQ-212: 2026 allowance, unverified). p2 (community spouse) has
-  # no patient payment.
+  # She requested nursing facility care, so the status is eligible_institutional.
+  # Final verification P3-1 (2026-11-22), the current derivation, as in CO-01: ma_mmmna =
+  # 2,705 + (2,016 - 811.50) = 3,909.50 (no Q.2 amount), the spouse allowance 3,909.50 - 1,180
+  # = 2,729.50, larger than 2,030 - 110.36 = 1,919.64, so the patient payment is 0. p2
+  # (community spouse) has no patient payment.
   expect:
     # Verification (phase 9). By November the residency, resource, pay-stub, activity and heating
     # documents have come in. p4's citizenship and identity are still outstanding: Medicaid and CHP+
@@ -4328,6 +4333,7 @@
         is_tax_filer: true
         is_required_to_file_tax_return: true
         is_pregnant: true
+        pregnancy_start_date: "2026-05-04"  # final verification F-1: the pregnancy dates the retroactive months (July to September are pregnant months)
         expected_number_of_children: 1
         # Audit fix round 4 (L-3): the pregnancy lock-in opens once the income verification
         # requirements are met (8.100.4.G.5). Maria handed in her October pay stubs with the
@@ -5142,6 +5148,7 @@
         receives_va_aid_and_attendance: false
         va_aid_and_attendance_amount: 0
         health_insurance_premiums_paid: 0
+        medical_expenses_out_of_pocket: 0  # final verification F-4: no medical expenses of her own to add to her needs (8.100.7.Q.2)
     p3:
       # Daniel, 34, citizen, SSA-disabled, lives with his mother, works for $2,400 a month, enrolled
       # in the Buy-In for Working Adults with Disabilities. No Medicare.
@@ -5236,7 +5243,13 @@
       ma_ssi_countable_resources: 7500
       ma_qmb_eligible: {"2026-11": true}
       ma_ssi_related_category: {"2026-11": none}
-      ma_msp_category: {"2026-11": qmb}
+      # Final verification F-5: QMB is effective the month after the month of determination and is not
+      # retroactive (8.100.6.L.10-11, S2406). Determined 2026-11-01 (as_of), applied 2026-11-02: the 45th
+      # day is 2026-12-17, later than the determination month, so the effective month is December 2026
+      # (ma_qmb_effective_month). She meets the QMB test in November (1,100 - 20 = 1,080 <= 1,330; resources
+      # 7,500 <= 9,950) but QMB is not yet in effect, and SLMB and QI-1 cover only income above the QMB
+      # limit, so November is none (was qmb); December is qmb.
+      ma_msp_category: {"2026-11": none, "2026-12": qmb}
       ma_buy_in_category: {"2026-11": none}
       ma_ltc_eligibility_status: {"2026-11": not_institutionalized_or_waiver}
       ma_patient_payment: {"2026-11": 0}
@@ -7005,7 +7018,7 @@
       ma_verification_status: {"2027-02": reasonable_opportunity_expired}
       ma_pending_verification_count: {"2027-02": 1}
       chp_verification_status: {"2027-02": not_applicable}
-      chp_pending_verification_count: {"2027-02": 1}
+      chp_pending_verification_count: {"2027-02": 0}  # final verification V-14: CHP+ verification is not_applicable for this adult man, so nothing is pending (was 1)
       cw_verification_due_date: 2026-11-13
       cw_verification_status: {"2027-02": past_due}
       cw_pending_verification_count: {"2027-02": 3}
@@ -7435,7 +7448,7 @@
       leap_verification_status: {"2026-10": complete}
       snap_pending_verification_count: {"2026-10": 2}
       ma_pending_verification_count: {"2026-10": 1}
-      chp_pending_verification_count: {"2026-10": 1}
+      chp_pending_verification_count: {"2026-10": 0}  # final verification V-14: CHP+ verification is not_applicable for this adult, not pregnant, so nothing is pending (was 1)
       cw_pending_verification_count: {"2026-10": 3}
       af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_pending_verification_count: {"2026-10": 1}
@@ -12669,3 +12682,953 @@
       snap_household_net_income: {2026-10: 276}
       snap_allotment: {2026-10: 223}
       snap_eligibility_status: {2026-10: eligible}
+- id: CO-110
+  title: A mother who applies five weeks after the birth, for herself and the newborn
+  # Final verification F-1 (docs/reviews/final-medicaid-chp.md; the reviewer's scratch household X-PP).
+  # p1, 30, citizen, delivered p3 on 2026-08-10 (pregnancy dated from 2025-11-05) and applied on
+  # 2026-09-15 for herself and the newborn, asking for retroactive coverage of the birth. She earns
+  # $2,700 a month; her MAGI household is p1 and p3, size 2 (21,640 / 12 = 1,803.33): 2,700 / 1,803.33
+  # = 149.7% of the poverty level in every month, within the Pregnant Women standard (195%) and over
+  # the Adults standard (133%). The enrollment record does not yet show the retroactive coverage
+  # (public_health_coverage_enrolled none in August).
+  # Hand derivation: the retroactive window of a 2026 application is the three months before
+  # September: June, July and August (CO-557, CO-2472). She was pregnant in each (pregnancy from
+  # 2025-11, ended 2026-08-10; the month of the birth counts, CO-3601), so she meets the Pregnant
+  # Women category in June (8.100.4.G.5; 8.100.3.E.2: she need not be eligible in the application
+  # month). Her pay stubs are in, so no income verification is pending in June. The coverage period
+  # opens in June (CO-565) and runs through the 12th month after the month the pregnancy ended:
+  # August 2027 (CO-560; 42 U.S.C. 1396a(e)(16)(A), "including during a period of retroactive
+  # eligibility"). So p1 is pregnant / eligible from June 2026 through August 2027, and in September
+  # 2027, at 149.7% and no longer pregnant or postpartum, none / ineligible_income. Before the fix
+  # she was none / ineligible_income in every month.
+  # p3: his mother received Medical Assistance covering his birth through her retroactive coverage
+  # (8.100.4.G.7, "This coverage also applies in instances where the mother received Medical
+  # Assistance to cover the child's birth through retroactive Medical Assistance"), so he is an
+  # eligible needy newborn from August 2026 (CO-087 reads her coverage period in the birth month).
+  # Before the fix he was none (child category 142%, and 149.7% is over it with the 5% disregard).
+  as_of: '2026-09-15'
+  relationships:
+  - - gave_birth_to
+    - p1
+    - p3
+  - - parent
+    - p1
+    - p3
+  - - tax_filer
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1996-08-14'
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: '2026-09-15'
+        pregnancy_end_date: '2026-08-10'
+        pregnancy_start_date: '2025-11-05'
+        ma_eligibility_start_date: '2026-01-01'
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 2700
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+      months:
+        2026-08:
+          public_health_coverage_enrolled: none
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2026-08-10'
+        sex: male
+        immigration_status: us_citizen
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_custodial_parent: p1
+        ma_application_date: '2026-09-15'
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      ma_is_pregnant_in_month: {"2026-06": true, "2026-08": true, "2026-09": false}
+      ma_magi_household_size: 2
+      ma_pregnancy_coverage_period_start_month: {"2026-09": "2026-06"}
+      ma_postpartum_coverage_end_month: "2027-08"
+      ma_retroactive_coverage_start_month: "2026-06"
+      ma_magi_category: {"2026-06": pregnant, "2026-07": pregnant, "2026-08": pregnant, "2026-09": pregnant, "2026-12": pregnant, "2027-08": pregnant, "2027-09": none}
+      ma_magi_eligibility_status: {"2026-06": eligible, "2026-08": eligible, "2026-09": eligible, "2027-08": eligible, "2027-09": ineligible_income}
+    p3:
+      mother_was_enrolled_in_medicaid_at_birth: true
+      ma_magi_category: {"2026-08": needy_newborn, "2026-09": needy_newborn, "2026-12": needy_newborn}
+      ma_magi_eligibility_status: {"2026-08": eligible, "2026-09": eligible}
+- id: CO-111
+  title: Hospital presumptive eligibility, with and without the status declaration
+  # Final verification F-2 (docs/reviews/final-medicaid-chp.md; the reviewer's scratch household X-HPE,
+  # built from CO-78). Six applicants at a qualified hospital site (10 CCR 2505-10 § 8.100.3.R), November
+  # 2026, none enrolled in Medical Assistance and none with presumptive eligibility in the last year.
+  # Hand derivation (2026 guideline: 1 person 15,960 / 12 = 1,330; 2 persons 21,640 / 12 = 1,803.33):
+  # p1, 45, citizen, alone, declares 1,596 = 120%: adult (R.2.d, at or under 133%).
+  # p2, 25, citizen, employed, declares a disability, own income 3,990 = 300%: over 133% for adults,
+  #   so employed_disabled (R.2.f, at or under 450%).
+  # p3, 22, citizen, pregnant, household of two declaring 3,426 = 190%: pregnant (R.2.a, 195%).
+  # p4, 39, undocumented, pregnant, alone, declares 1,197 = 90%: pregnant. R.2.a asks the declaration
+  #   of status "unless they meet the exceptions outlined under 8.100.3.G.1.g.viii", read as ix.1
+  #   (OQ-56), which every pregnant woman meets. Was none before the fix.
+  # p5, 36, undocumented, not pregnant, alone, declares 1,197 = 90%: none; R.2.d has no exception.
+  # p6, 8, undocumented, household of two declaring 2,732 = 151.5%: over the 142% child standard, so
+  #   not child; no other group reaches a child, so none. (At or under 142% he would be child
+  #   without a declaration, CO-2439-T12.)
+  as_of: '2026-11-10'
+  relationships:
+  - - parent
+    - p1
+    - p2
+  - - parent
+    - p1
+    - p3
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1981-04-04'
+        sex: female
+        immigration_status: us_citizen
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 1596
+        declared_household_size: 1
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: true
+        claims_disability: false
+        declared_own_income_monthly: 1596
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2001-02-14'
+        sex: male
+        immigration_status: us_citizen
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 3990
+        declared_household_size: 1
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: true
+        claims_disability: true
+        declared_own_income_monthly: 3990
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: true
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2004-09-09'
+        sex: female
+        immigration_status: us_citizen
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_income_monthly: 3426
+        declared_household_size: 2
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: false
+        claims_disability: false
+        declared_own_income_monthly: 3426
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p4:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: true
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1986-12-01'
+        sex: female
+        immigration_status: undocumented
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 1197
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_size: 1
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p5:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '1990-06-15'
+        sex: female
+        immigration_status: undocumented
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 1197
+        ma_declares_parent_or_caretaker_of_dependent_child: false
+        ma_declares_current_employment: false
+        received_presumptive_eligibility_this_pregnancy: false
+        declared_household_size: 1
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+    p6:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: '2018-03-01'
+        sex: male
+        immigration_status: undocumented
+        ma_is_applying_at_hospital_pe_site: true
+        is_enrolled_in_medical_assistance: false
+        received_presumptive_eligibility_in_last_twelve_months: false
+        declared_household_income_monthly: 2732
+        declared_household_size: 2
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+  expect:
+    p1:
+      ma_hospital_presumptive_eligibility_category: adult
+    p2:
+      ma_hospital_presumptive_eligibility_category: employed_disabled
+    p3:
+      ma_hospital_presumptive_eligibility_category: pregnant
+    p4:
+      ma_hospital_presumptive_eligibility_category: pregnant
+    p5:
+      ma_hospital_presumptive_eligibility_category: none
+    p6:
+      ma_hospital_presumptive_eligibility_category: none
+- id: CO-112
+  title: Nursing facility resident with a community spouse who pays Medicare premiums; the patient payment's full deductions
+  # Final verification F-3 and F-4 (docs/reviews/final-medicaid-chp.md). Built from CO-06's couple without the
+  # transfer: Robert (p1, 74) entered a nursing facility on 2026-10-05; Linda (p2, 69) stays at home. Couple's
+  # resources at the snapshot 60,000 (52,500 his, 7,500 hers). Determined 2026-11-01.
+  # Hand derivation, November 2026:
+  # - p1 gross income 1,900 + 700 = 2,600 (at or under 300% x 994 = 2,982: special income group).
+  # - Community spouse's needs (8.100.7.Q): MMMNA standard 150% x 21,640 / 12 = 2,705; shelter 634 + 616
+  #   (the heating and cooling allowance) = 1,250, less 30% x 2,705 = 811.50: excess 438.50; 2,705 + 438.50 =
+  #   3,143.50, under the 4,066.50 maximum (Q.4). Q.2 adds her documented medical expenses (75) and premiums
+  #   (Part B 202.90 and a supplement 150: 352.90) above the cap: 3,143.50 + 427.90 = 3,571.40 (F-4; was 3,143.50).
+  # - Monthly income allowance (R.2): 3,571.40 - her income 1,900 = 1,671.40 (was 1,243.50).
+  # - Patient payment (8.100.7.V.3.b-c, F-3): 2,600 - 110.36 (personal needs allowance; no earnings, so no
+  #   earned income reserve) = 2,489.64; less the allowance 1,671.40, the mandatory tax withheld from his
+  #   pension 60, his Part B premium 202.90 (November is his second month in the facility, V.3.b.ii.8.a; the
+  #   State does not yet pay it) and his Part D premium 40: 2,489.64 - 1,974.30 = 515.34; plus his long-term
+  #   care insurance benefit 300 (V.3.c): 815.34. His own resources: the CSRA (CO-646) covers the couple's 60,000,
+  #   so none are attributed to him and he meets the 2,000 standard; eligible_institutional. In December (third month) the Part B premium is no longer
+  #   deducted: 2,489.64 - 1,771.40 = 718.24, plus 300 = 1,018.24. His other premiums are not deducted (NF PETI).
+  #   Before the fix the payment was 2,600 - (110.36 + 1,243.50 + 242.90, every premium in every month) =
+  #   1,003.24 in both months.
+  as_of: "2026-11-01"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"
+  relationships:
+    - [spouse, p1, p2]
+    - [files_jointly_with, p1, p2]
+  persons:
+    p1:
+      facts:
+        dwelling_id: nursing_facility
+        residence_setting_type: nursing_facility
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        date_of_birth: "1952-04-18"
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        institution_entry_date: "2026-10-05"
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: institutional
+        has_income_trust: false
+        liquid_resources_value: 52500
+        ma_spousal_resources_at_snapshot: 60000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
+        # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        social_security_income: 1900
+        pension_income: 700
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 242.9
+        medicare_part_b_premium_paid: 202.9
+        medicare_part_d_premium_paid: 40
+        mandatory_income_tax_withheld: 60
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 300
+        medical_expenses_out_of_pocket: 0
+    p2:
+      facts:
+        dwelling_id: h1
+        residence_setting_type: private_dwelling
+        has_qualifying_military_service: false
+        date_of_birth: "1957-01-09"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        liquid_resources_value: 7500
+        ma_spousal_resources_at_snapshot: 180000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        shelter_cost_monthly: 634
+        social_security_income: 1900
+        pension_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 352.9
+        medicare_part_b_premium_paid: 202.9
+        medical_expenses_out_of_pocket: 75
+  expect:
+    p1:
+      ma_meets_ltc_resource_standard: true
+      ma_ltc_eligibility_status: {"2026-11": eligible_institutional}
+      ma_community_spouse_medical_needs: {"2026-11": 427.9}
+      ma_mmmna: {"2026-11": 3571.4}
+      ma_community_spouse_income_allowance: {"2026-11": 1671.4}
+      ma_patient_payment_available_income: {"2026-11": 2489.64}
+      ma_patient_payment: {"2026-11": 815.34, "2026-12": 1018.24}
+    p2:
+      ma_patient_payment: {"2026-11": 0}
+- id: CO-113
+  title: Single nursing facility resident who works in the facility and keeps her home for a planned return
+  # Final verification F-3 (docs/reviews/final-medicaid-chp.md). Ruth (p1, 68), unmarried, no one else at
+  # home, entered a nursing facility on 2026-10-05 after a stroke; her physician certifies she is likely to
+  # return home within six months. Social Security 1,400; 200 a month from crafts work in the facility
+  # (an income-producing activity, V.3.e.v); Part B premium 202.90 still withheld (no Medicare Buy-In yet);
+  # her home costs a mortgage, tax and insurance of 800 and 90 of utilities to keep it from freezing.
+  # Resources 1,500. Determined 2026-11-01.
+  # Hand derivation:
+  # - Gross income 1,400 + 200 = 1,600, at or under 2,982: special income group; resources 1,500 at or under
+  #   2,000: eligible_institutional.
+  # - Income for the patient payment (V.3.d.iii, V.3.f): unearned 1,400 meets the personal needs allowance
+  #   (110.36), leaving 1,289.64; the earned income reserve keeps 65 and half of the rest of the 200:
+  #   (200 - 65) x 0.5 = 67.50 counts. 1,289.64 + 67.50 = 1,357.14.
+  # - Home Maintenance Allowance (V.3.g.ii): no family at home, a physician's certification, and November is
+  #   within six months of the October entry: 800 + the lesser of 90 and the standard utility allowance (616)
+  #   = 890, under the 2026 maximum 1,672 (4,066.50 / 2,643.75 x 1,995 = 3,068.62, less 1,995, plus 598.50 =
+  #   1,672.12, rounded).
+  # - November (her second month in the facility): 1,357.14 - 890 - 202.90 (Part B, V.3.b.ii.8.a) = 264.24.
+  #   December: the Part B premium is no longer deducted: 1,357.14 - 890 = 467.14. April 2027 (the seventh
+  #   month) would end the allowance.
+  #   Before the fix the payment was 1,600 - 110.36 - 202.90 = 1,286.74 in every month.
+  as_of: "2026-11-01"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        residence_setting_type: nursing_facility
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        date_of_birth: "1958-09-02"
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        institution_entry_date: "2026-10-05"
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: institutional
+        has_income_trust: false
+        liquid_resources_value: 1500
+        ma_physician_certified_return_home: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
+        # p1 would otherwise become eligible (2026-11-01, this determination) - see S3.2.
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-11-02"
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        social_security_income: 1400
+        pension_income: 0
+        wages_gross: 200
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 202.9
+        medicare_part_b_premium_paid: 202.9
+        medicare_part_d_premium_paid: 0
+        mandatory_income_tax_withheld: 0
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 0
+        shelter_cost_monthly: 800
+        housing_maintenance_fee: 0
+        utility_expenses_actual: 90
+        medical_expenses_out_of_pocket: 0
+  expect:
+    p1:
+      ma_ltc_eligibility_status: {"2026-11": eligible_institutional}
+      ma_ltc_earned_income: {"2026-11": 200}
+      ma_patient_payment_available_income: {"2026-11": 1357.14}
+      ma_home_maintenance_allowance_max: 1672
+      ma_home_maintenance_allowance: {"2026-11": 890, "2027-04": 0}
+      ma_patient_payment: {"2026-11": 264.24, "2026-12": 467.14}
+- id: CO-114
+  title: QMB member whose January cost-of-living increase would take her over the limit
+  # Final verification F-5 and F-6 (docs/reviews/final-medicaid-chp.md). Linda (p1, 70), single, Medicare
+  # Part A, enrolled as a Qualified Medicare Beneficiary through December 2026. Her Social Security rises from
+  # 1,320 (paid in December 2026) to 1,358 (paid in January 2027) with the annual cost-of-living adjustment.
+  # Resources 3,000. Her renewal is determined 2027-01-20. The volume has no 2027 poverty guidelines yet, so
+  # 2027 months read the 2026 table (OQ-515): QMB limit 100% x 15,960 / 12 = 1,330.
+  # Hand derivation, January 2027:
+  # - Countable income 1,358 - 20 (general exclusion) = 1,338, over 1,330: without the disregard she would
+  #   lose QMB (and, at or under 120% = 1,596, be reported SLMB, which is what the volume gave before the fix).
+  # - She was a QMB member in December 2026 (ma_prior_msp_category), so 8.100.6.L.12 keeps the COLA
+  #   disregarded "until the next year's federal poverty guidelines are published": the publication date in
+  #   force on 2027-01-01 is still 2026-01-15 (no 2027 version loaded), earlier than 2027, so January is inside
+  #   the disregard (OQ-622). COLA increase 1,358 - 1,320 = 38; 1,338 - 38 = 1,300, at or under 1,330: QMB.
+  # - QMB effective date (F-5): she is a continuing member (QMB in the month before the determination month),
+  #   so her coverage continues in January without the month-after-determination rule of L.10.
+  #   ma_msp_category January 2027: qmb. (A new applicant determined in January would start in February.)
+  # - Her resources 3,000 are liquid (an MSP-only renewal), at or under 9,950.
+  as_of: "2027-01-20"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        residence_setting_type: private_dwelling
+        has_qualifying_military_service: false
+        date_of_birth: "1957-01-09"
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        liquid_resources_value: 3000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2027-01-05"
+        ma_application_is_msp_only: true
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        shelter_cost_monthly: 634
+        social_security_income: 1358
+        pension_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 0
+        medicare_part_b_premium_paid: 0
+        medical_expenses_out_of_pocket: 0
+      months:
+        2026-12:
+          social_security_income: 1320
+          ma_prior_msp_category: qmb
+  expect:
+    p1:
+      ma_title_ii_cola_increase: {"2027-01": 38}
+      ma_msp_december_category: {"2027-01": qmb}
+      ma_msp_cola_disregard: {"2027-01": 38}
+      ma_qmb_is_in_effect: {"2027-01": true}
+      ma_qmb_eligible: {"2027-01": true}
+      ma_msp_category: {"2027-01": qmb}

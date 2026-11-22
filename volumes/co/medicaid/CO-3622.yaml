@@ -1,0 +1,17 @@
+id: CO-3622
+name: "Medicaid: QMB effective month"
+identifier: ma_qmb_effective_month
+kind: derived
+type: month
+scope: person
+program: Medicaid
+meaning: "The first month of Qualified Medicare Beneficiary coverage on this determination (10 CCR 2505-10 § 8.100.6.L.10): the month following the month of determination, or, if earlier, the month following the month that contains the day ma_qmb_application_processing_days after the application date (ma_application_date), since administrative delays do not postpone it."
+precision: "The month of determination is the case's determination month ([det_month]). L.10's 'who submit and complete an application within the 45-day standard' is read as every applicant whose determination is made, the case recording a complete application; a determination delayed past the 45th day takes the earlier month."
+derived: [case, [[">=", [month_of, [days_after, ma_qmb_application_processing_days, ma_application_date]], [det_month]], [month_after, [det_month]]], [else, [month_after, [month_of, [days_after, ma_qmb_application_processing_days, ma_application_date]]]]]
+sources: [S2406]
+implemented: engine
+tags: [ma, msp]
+rationale: "Final verification F-5 (docs/reviews/final-medicaid-chp.md): no item gated QMB on the month of determination, so ma_msp_category (CO-617) reported qmb in the determination month and in every retroactive month, while 10 CCR 2505-10 § 8.100.6.L.10-11 (S2406) makes QMB effective the month after the month of determination and not retroactive, and § 8.100.6.O.5 (S2410) makes QDWI effective the month of determination."
+tests:
+  - {id: CO-3622-T1, as_of: "2026-11-20", title: "Applied 2026-11-02, determined 2026-11-20: December", given: {ma_application_date: "2026-11-02"}, expect: "2026-12"}
+  - {id: CO-3622-T2, as_of: "2027-01-10", title: "Applied 2026-11-02, the 45th day 2026-12-17; determined late in January 2027: January, the month after the 45th day", given: {ma_application_date: "2026-11-02"}, expect: "2027-01"}

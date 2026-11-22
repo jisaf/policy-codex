@@ -1,0 +1,12 @@
+id: CO-3621
+name: "QMB: application processing standard in days"
+identifier: ma_qmb_application_processing_days
+kind: parameter
+type: whole number
+scope: global
+program: Medicaid
+meaning: "The number of days after the application by which a QMB determination is due: a beneficiary who completes an application within it is eligible no later than the first of the month following the day this many days after the application, whatever the date of determination (10 CCR 2505-10 § 8.100.6.L.10, \"within the 45-day standard ... no later than the first of the month following the 45th day of application\")."
+value: 45
+sources: [S2406]
+tags: [ma, msp]
+rationale: "Final verification F-5 (docs/reviews/final-medicaid-chp.md): no item gated QMB on the month of determination, so ma_msp_category (CO-617) reported qmb in the determination month and in every retroactive month, while 10 CCR 2505-10 § 8.100.6.L.10-11 (S2406) makes QMB effective the month after the month of determination and not retroactive, and § 8.100.6.O.5 (S2410) makes QDWI effective the month of determination. The 45-day standard as a parameter."

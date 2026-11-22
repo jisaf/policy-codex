@@ -260,3 +260,26 @@ All 40 not-fully-resolved questions whose owners include the Medicaid, CHP+, LTS
 | 612 | state policy choice | Confirmed for Medicaid: G.3.a lists absences without a time limit. |
 
 New open questions the findings call for, if HCPF prefers to record them rather than model: F-4 (whether Q.2's "may be approved" is discretionary), F-7 (Q.1.f as a condition of eligibility or a post-enrollment requirement), and P2-4 (L.2.d).
+
+## Disposition
+
+Fix track for Medicaid and CHP+, 2026-11-22. Commits on the track's branch: e49f553 (documents D-220 to D-224, excerpts S2400 to S2420), 608c7d6 (F-1, F-2), e074b14 (F-3, F-4, P2-1), a262bf8 (F-5, F-6, F-7, P2-5), ba897ac (verification and status items), 09e6740 (open questions, households CO-110 to CO-114, changed expectations). Each finding's governing text was re-read in D-65 (version effective 11/14/2026) before the change.
+
+| id | disposition |
+|---|---|
+| F-1 | Fixed (608c7d6, 09e6740). pregnancy_start_date (CO-3600) and ma_is_pregnant_in_month (CO-3601) make pregnancy month-level for retroactive months; CO-546, CO-539, CO-548 and CO-552 read it; the coverage period (CO-565) opens in the earliest month of the retroactive window in which the Pregnant Women category was met (§ 8.100.3.E.2, S2411; 1396a(e)(16)(A), S224); the newborn of a mother whose retroactive coverage pays for the birth is a needy newborn (CO-087, § 8.100.4.G.7). Household CO-110 (the reviewer's X-PP): pregnant June 2026 to August 2027; newborn needy_newborn. |
+| F-2 | Fixed (608c7d6, 09e6740). CO-2439 applies the status declaration and the October 2026 payment limit only to the parent, adult and limited family planning groups, and to the employed-disabled group outside ix.1. Household CO-111 (X-HPE plus an undocumented adult and child). |
+| F-3 | Fixed (e074b14, 09e6740). CO-658 now follows § 8.100.7.V.3.b-i (S2400-S2405): earned income reserve (CO-3615, CO-3616), Home Maintenance Allowance and its maximum (CO-3617, CO-3618), mandatory income tax (CO-3604), garnishments (CO-3605), Part B only in the first two months and not under the Buy-In (CO-3602, CO-3612), Part D (CO-3603), Long-Term Care insurance added (CO-3606). SSI was already outside ma_ltc_gross_income (V.3.i.ii); trustee fees are the income trust's $20 (CO-2238). Households CO-112 and CO-113. |
+| F-4 | Fixed (e074b14). ma_community_spouse_medical_needs (CO-3619) adds Q.2's expenses and premiums above the Q.4 cap in ma_mmmna (CO-655), read by CO-656 and CO-1977. "May be approved" recorded as OQ-620 (state policy choice). Household CO-112. |
+| F-5 | Fixed (a262bf8, 09e6740). ma_qmb_effective_month (CO-3622), ma_qmb_is_in_effect (CO-3623), ma_qdwi_is_in_effect (CO-3624), ma_prior_msp_category (CO-3620); CO-617 reports qmb and qdwi only in effect. O.5 against O.6 recorded as OQ-621. CO-06 p2: 2026-11 qmb -> none, 2026-12 qmb (derivation in the case). |
+| F-6 | Fixed (a262bf8, 09e6740). federal_poverty_guideline_publication_date (CO-3625, 91 FR 1797 and 90 FR 5917 from govinfo.gov), ma_title_ii_cola_increase (CO-3627), ma_msp_cola_disregard (CO-3629), read by CO-613 to CO-615 for the member's own program. The boundary month is OQ-622; linked to OQ-515. Household CO-114. |
+| F-7 | Fixed (a262bf8). CO-620 excludes a child of 16 to 18 with earnings (Q.1.e) and requires enrollment in employer family coverage with at least a 50% employer share (Q.1.f; CO-3630 to CO-3632). Condition-of-eligibility reading recorded as OQ-623. |
+| P2-1 | Fixed (e074b14, 09e6740): OQ-520 resolved from § 8.100.7.V.1.e.ii and V.3.b.ii.8 with F-3. |
+| P2-2 | Fixed (e49f553, ba897ac, 09e6740): 22 U.S.C. 7105 and the two special immigrant statutes fetched (D-222 to D-224). CHP+ accepts a trafficking victim as a refugee (CO-2706, statute_override); Medicaid admits a special immigrant who has not adjusted as a refugee (CO-509, statute_override). OQ-550 keeps only the SAVE response-code mapping blocked for Medicaid and CHP+; the cash part is the cash track's. |
+| P2-3 | Deferred P2: the trust, transfer, life estate and annuity tests stay caseworker findings (CO-824, CO-825, CO-1577, CO-1579). Outcomes are right when the facts are; modeling § 8.100.7.E-I as rules is an approval-risk improvement for a later round. |
+| P2-4 | Open question OQ-624 (state policy choice; L.2.d against L.7 and 1396d(p)). |
+| P2-5 | Fixed (a262bf8): CO-1156 reports ineligible_before_application for a month before the application (§ 8.941.1.E); aid-codes label added. |
+| P3-1 | Fixed (09e6740): CO-01 and CO-02 comments now carry the MMMNA 3,909.50, allowance 2,729.50 and payment 0 derivation and eligible_institutional. |
+| P3-2 | Fixed (09e6740): OQ-412's clause on 435.558 struck. |
+| P3-3 | Accepted, no change: note at the SFY 2027-28 review (review_by 2027-07-01 is set on the premium tables). |
+| OQ-520, OQ-550 | As P2-1 and P2-2. |

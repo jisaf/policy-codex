@@ -1,0 +1,21 @@
+id: CO-3625
+name: "Federal poverty guidelines: publication date"
+identifier: federal_poverty_guideline_publication_date
+kind: parameter
+type: calendar date
+scope: global
+program: All
+meaning: "The date the year's HHS poverty guidelines were published in the Federal Register, versioned by calendar year: the date the Medicare Savings Programs' annual COLA disregard runs to (10 CCR 2505-10 § 8.100.6.L.12, M.7, N.6, \"until the next year's federal poverty guidelines are published\")."
+precision: "Each version is in force from January 1 of its year. A year with no version yet (the guidelines not yet published, or not yet loaded) is read through the latest version, whose year is then earlier than the month's year, which the disregard reads as not yet published."
+versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: "2025-01-17"
+    source: S2413
+  - from: "2026-01-01"
+    value: "2026-01-15"
+    source: S2412
+review_by: "2027-01-31"
+sources: [S2412, S2413]
+tags: [ma, msp]
+rationale: "Final verification F-6 (docs/reviews/final-medicaid-chp.md): no item carried the annual COLA disregard of 10 CCR 2505-10 § 8.100.6.L.12, M.7 and N.6 (S2406, S2407, S2409), so a QMB, SLMB or QI-1 member whose January Social Security cost-of-living increase pushed countable income over the limit was reported ineligible while the rule keeps the member eligible. The publication date is a federal figure that changes each year (91 FR 1797, January 15, 2026; 90 FR 5917, January 17, 2025, on govinfo.gov). OQ-515 keeps the guidelines themselves dated from January 1."

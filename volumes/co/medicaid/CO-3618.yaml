@@ -1,0 +1,21 @@
+id: CO-3618
+name: "Medicaid: Home Maintenance Allowance"
+identifier: ma_home_maintenance_allowance
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The amount reserved from a Long-Term Care institution resident's income for the upkeep of the resident's home (10 CCR 2505-10 § 8.100.7.V.3.g.ii): for a resident with no family at home whom a physician has certified as likely to return home (ma_physician_certified_return_home), in the month of entry (institution_entry_date) and the following months up to ma_home_maintenance_allowance_max_months in all, the home's actual verified shelter expenses - the rent or mortgage, taxes and insurance the resident pays (shelter_cost_monthly), a condominium or cooperative fee (housing_maintenance_fee), and utilities at the lesser of the standard utility allowance and the actual verified utility expenses - up to ma_home_maintenance_allowance_max; otherwise 0."
+precision: "'No family at home' is read as no spouse in the community (ma_ltc_couple false; a community spouse is provided for by the spousal rules of V.3.g.i) and no relative of the resident living in the home the resident usually lives in (lives_with, is_related_to). The six months are counted from the month the resident entered the institution. The standard utility allowance is the SNAP allowance the resident's home reaches (snap_utility_allowance_amount, CO-1500), as the community spouse's excess shelter allowance reads it (CO-2802); it is read only when the resident has actual utility expenses, since the lesser of the two is then never more than those expenses."
+derived: [case, [[all, ma_is_institutionalized, [not, ma_ltc_couple], [otherwise, ma_physician_certified_return_home, false], ["<=", [month], [months_after, ["-", ma_home_maintenance_allowance_max_months, 1], [month_of, institution_entry_date]]], [not, [exists, lives_with, [in_group, [P], is_related_to]]]], [min, ma_home_maintenance_allowance_max, [+, shelter_cost_monthly, [otherwise, housing_maintenance_fee, 0], [case, [["<=", [otherwise, utility_expenses_actual, 0], 0], 0], [else, [min, snap_utility_allowance_amount, utility_expenses_actual]]]]]], [else, 0]]
+sources: [S2404, S2401]
+implemented: engine
+tags: [ma, ltc, income]
+accepts_from: [snap_utility_allowance_amount]
+rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. The Home Maintenance Allowance (V.3.b.ii.4, V.3.g.ii) had no item."
+tests:
+  - {id: CO-3618-T1, as_of: "2026-11-01", month: "2026-11", title: "Certified return, entered 2026-10-03, mortgage 900, utilities 120 (under the allowance)", given: {ma_is_institutionalized: true, ma_ltc_couple: false, ma_physician_certified_return_home: true, institution_entry_date: "2026-10-03", lives_with: [], shelter_cost_monthly: 900, housing_maintenance_fee: 0, utility_expenses_actual: 120, snap_utility_allowance_amount: 400}, expect: 1020}
+  - {id: CO-3618-T2, as_of: "2027-04-01", month: "2027-04", title: "The seventh month after entry: none", given: {ma_is_institutionalized: true, ma_ltc_couple: false, ma_physician_certified_return_home: true, institution_entry_date: "2026-10-03", lives_with: [], shelter_cost_monthly: 900, utility_expenses_actual: 120}, expect: 0}
+  - {id: CO-3618-T3, as_of: "2026-11-01", month: "2026-11", title: "No certification: none", given: {ma_is_institutionalized: true, ma_ltc_couple: false, ma_physician_certified_return_home: false}, expect: 0}
+  - {id: CO-3618-T4, as_of: "2026-11-01", month: "2026-11", title: "Capped at the maximum", given: {ma_is_institutionalized: true, ma_ltc_couple: false, ma_physician_certified_return_home: true, institution_entry_date: "2026-10-03", lives_with: [], shelter_cost_monthly: 2100, housing_maintenance_fee: 0, utility_expenses_actual: 0}, expect: 1672}
+  - {id: CO-3618-T5, as_of: "2026-11-01", month: "2026-11", title: "A community spouse: the spousal rules apply instead", given: {ma_is_institutionalized: true, ma_ltc_couple: true}, expect: 0}

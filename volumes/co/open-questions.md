@@ -1669,7 +1669,7 @@ Checked 2026-11-22: 42 CFR 435.555, 435.559(b) and 435.560 (S1210, S1213) make e
 
 ### OQ-412. Community engagement: other State choices inside the exclusions and the hours
 
-Body: The federal text leaves these to the State, and Colorado has published none: the optional relatives of the caretaker relative definition, which follow the State's 42 CFR 435.110 elections (435.554(a)(iv), S1207); the list of conditions that identify the medically frail (435.554(c)(5)(ii), S1209), so the five conditions are supplied facts; a minimum time commitment for a drug or alcohol treatment program (435.554(c)(8)); computing work hours from income divided by the minimum wage when hours are not documented (435.552(e)(2)(i)-(ii), S1204); and not seeking further information to verify a mandatory exception (435.557(g)(1), S1216). (Phase-10 needs-fact sweep, 2026-11-21: the first of these is published after all. Colorado's 435.110 election is its definition of caretaker relative, "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care" (§ 8.100.1, S1500), which takes 435.4's option (3); 435.554(a)(iv) applies the same election, and CO-1962 cites it. See OQ-51.) The draft reads the caretaker edge as the 435.4 relatives, supplies the medically frail conditions, applies no minimum time, counts documented hours only, and does not model verification of the requirement (435.557) or the noncompliance procedures (435.558). Items: CO-1962, CO-1964, CO-1965, CO-1967.
+Body: The federal text leaves these to the State, and Colorado has published none: the optional relatives of the caretaker relative definition, which follow the State's 42 CFR 435.110 elections (435.554(a)(iv), S1207); the list of conditions that identify the medically frail (435.554(c)(5)(ii), S1209), so the five conditions are supplied facts; a minimum time commitment for a drug or alcohol treatment program (435.554(c)(8)); computing work hours from income divided by the minimum wage when hours are not documented (435.552(e)(2)(i)-(ii), S1204); and not seeking further information to verify a mandatory exception (435.557(g)(1), S1216). (Phase-10 needs-fact sweep, 2026-11-21: the first of these is published after all. Colorado's 435.110 election is its definition of caretaker relative, "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care" (§ 8.100.1, S1500), which takes 435.4's option (3); 435.554(a)(iv) applies the same election, and CO-1962 cites it. See OQ-51.) The draft reads the caretaker edge as the 435.4 relatives, supplies the medically frail conditions, applies no minimum time, counts documented hours only, and does not model verification of the requirement (435.557). (Final verification P3-2, 2026-11-22: the noncompliance procedures of 435.558 were modeled in audit fix round 4, CO-3161 to CO-3165, recorded in OQ-65; the earlier clause saying they were not is struck.) Items: CO-1962, CO-1964, CO-1965, CO-1967.
 
 Class: state policy choice
 Owner: Medicaid policy owner, State plan coordinator
@@ -1839,7 +1839,7 @@ Owner: LTSS policy owner
 Assumption: No post-eligibility amount is computed for a resident of an Alternative Care Facility; the nursing facility computation is the only one.
 Blocked on: HCPF Informational Memo IM 25-030, which updates the Alternative Care Facility personal needs allowance and room and board of 10 CCR 2505-10 § 8.100.7.B.3 (hcpf.colorado.gov refused)
 
-### OQ-520. Whether a full-benefit dual's Medicare Part B premium is deducted in the patient payment
+### OQ-520. Resolved: Whether a full-benefit dual's Medicare Part B premium is deducted in the patient payment
 
 Body: The HCPF review's note N-5: CO-01 p1 is a Medicare beneficiary not on a Medicare Savings Program, and the case states health_insurance_premiums_paid 0. The patient payment deducts premiums the person pays (§ 8.100.7.T.1.d, CO-658). Whether HCPF's Part B buy-in pays a long-term care member's Part B premium from the month of eligibility, so that she pays none, is an HCPF operational fact not in a fetched source; the case keeps 0, which matches that reading. Items: CO-658.
 
@@ -1848,6 +1848,8 @@ Owner: LTSS policy owner, Medicaid policy owner
 Assumption: A long-term care member who has Medicare pays no Part B premium of her own, so none is deducted in her patient payment.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.T.1.d (D-65) deducts health insurance premiums the person pays, and § 8.100.3.M.2.a (D-65) says no federal match is claimed for Medicare Part B premium payments for the 300 percent group, without saying whether the State pays them. No published rule settles it.
+
+Resolved (final verification P2-1 and F-3, 2026-11-22): published rule text settles it. § 8.100.7.V.1.e.ii (S2400): "If client is already on the Medicare Buy-In program for Medicare part B, do not adjust patient payment on AP-5615 form for the Medicare premium deduction. If client is not on the Buy-In program, adjust AP-5615 form for the Medicare premium deduction for the first two months of Long-Term Care institution eligibility"; § 8.100.7.V.3.b.ii.8.a-b (S2401): "Medicare Part B Premium expenses, if applicable, are deductible only for the first and second month in the Nursing Facility. ... Medicare Part D Premium expenses, if applicable, are ongoing deductions." ma_patient_payment (CO-658) now deducts the Part B premium the person pays (medicare_part_b_premium_paid, CO-3602, which is 0 for a month in which the State pays it through the Buy-In) only in the first ma_nf_part_b_premium_deduction_months (CO-3612) months from the month of entry, and the Part D premium (CO-3603) in every month; other premiums go through NF PETI (V.3.b.ii.8.c) and are not deducted. CO-01 p1 states no Part B premium of her own, so her patient payment does not change.
 
 ### OQ-530. Colorado Works standards from July 1, 2028
 
@@ -1941,6 +1943,8 @@ Resolution (audit fix round, 2026-11-21; heavier-definitions audit H-3): ma_meet
 ### OQ-550. Immigration status options not checked against the SAVE status list; humanitarian parolees and certified trafficking victims read as qualified aliens
 
 Body: immigration_status (CO-002) carries the union of the categories the volume's governing texts name (8 U.S.C. 1641, S1900, S1901; § 8.100.3.G.1.g, S1902-S1905; 10 CCR 2505-3 § 110.1.B, S1906-S1908; 9 CCR 2503-7 3.753.16-17, S1909). The audit asked for the option set to be checked against the USCIS SAVE status list; uscis.gov refused the fetch on 2026-11-21 (Access Denied on www.uscis.gov/save and its status-code pages), so the option names are not reconciled with SAVE's response codes, and fact assembly maps SAVE responses to them. Two readings follow from the options: (1) an Afghan humanitarian parolee (EGFDEA sec. 2502) or Ukrainian humanitarian parolee (AUSAA sec. 401) is read as paroled for at least one year, so a qualified alien under 1641(b)(4) (is_qualified_non_citizen, CO-506), and under LEAP's 3.753.16.B and CHP+'s 110.1.B.3.b; both programs paroled for terms over one year, but neither statute nor a parole document was fetched, and an individual paroled for less than a year would be stated as parolee_less_than_one_year, losing the special category; (2) a trafficking victim certified by HHS is read as a qualified alien through 1641(c)(4) (T nonimmigrant status or a prima facie application); a victim with continued presence only is eligible "to the same extent as" a refugee under 22 U.S.C. 7105(b)(1)(A), which the volume did not save, so the reading may be broader or narrower than that statute in a given program. The statutes that treat Iraqi and Afghan special immigrants who have not adjusted as refugees for federal benefits (Pub. L. 110-181 sec. 1244, Pub. L. 111-8 sec. 602) were not fetched either; is_qualified_non_citizen leaves them out, so Colorado Works and Adult Financial do not accept them, while Medicaid, CHP+ and LEAP accept them by their own lists. Items: CO-002, CO-506, CO-1010, CO-2706.
+
+Medicaid and CHP+ part settled (final verification P2-2, 2026-11-22): the three statutes are now fetched. 22 U.S.C. 7105(b)(1)(A) (D-222, S2414) makes "an alien who is a victim of a severe form of trafficking in persons, or an alien classified as a nonimmigrant under section 1101(a)(15)(T)(ii)" eligible for benefits under any program funded or administered by HHS "to the same extent as an alien who is admitted to the United States as a refugee", and (b)(1)(C) and (E) (S2415) define the victim as a person under 18 or one certified by HHS (a bona fide T visa application, or continued presence). Medicaid already exempts a trafficking victim from the five-year bar as a refugee (CO-1172); CHP+ now accepts one as a refugee (CHP+ status, CO-2706, statute_override), which changes no CHP+ outcome because the Cover All Coloradans exception reaches every CHP+ child and pregnant person (CO-2707). The trafficking_victim option of CO-002 is read to include a victim under 18, whom HHS finds eligible without a certification, and the T-2 to T-5 family members (7105(b)(1)(A), (C)(ii)(I)). Pub. L. 110-181 sec. 1244(g) (D-223, S2416) and Pub. L. 111-8 sec. 602(b)(8) (D-224, S2417) make an Iraqi or Afghan special immigrant eligible for "entitlement programs, and other benefits available to refugees ... to the same extent, and for the same periods of time, as such refugees"; Medicaid's status test (CO-509) now admits an adult special immigrant who has not adjusted as it admits a refugee (statute over § 8.100.3.G.1.g.vii.26-27, which lists such a person as lawfully residing only), subject like a refugee to the October 2026 federal payment limit (OQ-518). CHP+ already accepts special immigrants (B.4.k). What remains blocked for Medicaid and CHP+ is only the SAVE response-code mapping.
 
 Class: blocked on a named document
 Owner: Medicaid policy owner, Legal
@@ -2120,3 +2124,53 @@ Owner: SNAP policy owner
 Assumption: An elderly or disabled ineligible member's medical expenses count in full toward the household's medical deduction.
 
 Checked 2026-11-22: 10 CCR 2506-1 4.411.1.B (D-82, version effective 2026-10-01) and 7 CFR 273.11(c)(2)(iii) (D-15) name shelter, dependent care and (federally) child support for proration and are silent on medical expenses. No published rule settles it.
+
+### OQ-620. Whether the community spouse's medical expenses and premiums "may be approved" at the eligibility site's discretion
+
+Body: 10 CCR 2505-10 § 8.100.7.Q.2 (S1756) says "An additional amount may be approved" for the medical and remedial care expenses of the community spouse or a dependent family member (Q.2.a, documented, from a licensed practitioner, not paid by a third party) and for "the cost of Medicare, Long Term Care insurance, and health insurance premiums" (Q.2.b). It does not say who approves the amount or on what ground it may be refused, nor whose premiums Q.2.b means. Q.4's cap names only "the current MMMNA and the excess shelter allowance", so the amount is above the cap. The volume reads "may be approved" as approved whenever the expenses are documented and paid as Q.2 describes, and Q.2.b as the premiums of the same persons as Q.2.a, and adds the amount to the community spouse's minimum monthly needs (ma_community_spouse_medical_needs, CO-3619; ma_mmmna, CO-655), which the monthly income allowance (CO-656) and the increased resource allowance (CO-1977) read. Final verification F-4. Items: CO-3619, CO-655.
+
+Class: state policy choice
+Owner: LTSS policy owner, Medicaid policy owner
+Assumption: Documented medical expenses and premiums of the community spouse and dependent family members are approved and added to the community spouse's needs above the MMMNA cap.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.Q.1-4, R.2 and S.1 (D-65, version effective 11/14/2026); 42 U.S.C. 1396r-5(d)(3)-(4) has no such amount. No published rule says when Q.2's amount may be refused.
+
+### OQ-621. QDWI: effective the month of determination (O.5) or retroactive to SSA's approval (O.6)
+
+Body: 10 CCR 2505-10 § 8.100.6.O.5 (S2410) says "Eligibility for QDWI benefits shall be effective the month of determination of entitlement", and O.6 says "Eligibility may be retroactive only to the date as of which SSA approves an individual's application for coverage as a 'Qualified Disabled and Working Individual'". The rule does not say whether "determination of entitlement" in O.5 is the State's determination or SSA's approval in O.6, nor what fact would date the SSA approval. The volume reads O.5 as the State's determination month and treats no earlier month as a QDWI month unless the history records one (ma_qdwi_is_in_effect, CO-3624). Final verification F-5. Items: CO-3624, CO-617.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: QDWI coverage starts in the State's determination month, with no retroactive months.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.O (D-65, version effective 11/14/2026); 42 U.S.C. 1396d(s) states no effective date. No published rule settles it.
+
+### OQ-622. Medicare Savings Program COLA disregard: whether "until the guidelines are published" includes the month of publication
+
+Body: 10 CCR 2505-10 § 8.100.6.L.12 and N.6 (S2406, S2409) keep a QMB or QI-1 member who would lose entitlement to the annual Social Security COLA eligible "until the next year's federal poverty guidelines are published"; M.7 (S2407) keeps an SLMB member "through the month following the month in which the annual federal poverty levels (FPL) update is published". The rule does not say whether the QMB and QI-1 period includes the month of publication, nor which date is "published" (HHS's Federal Register notice: January 15, 2026, 91 FR 1797, S2412; January 17, 2025, 90 FR 5917, S2413; or HCPF's adoption, which OQ-515 records as unfetchable). The volume reads the period as running through the month of the Federal Register publication for QMB and QI-1 and through the following month for SLMB (ma_msp_cola_disregard, CO-3629; federal_poverty_guideline_publication_date, CO-3625), for a person enrolled in the program in the December before the month (ma_prior_msp_category, CO-3620). Because the volume dates the guidelines themselves from January 1 (OQ-515), the disregard matters only where the adjustment still raises income over the new limit. Final verification F-6. Items: CO-3629, CO-3625, CO-613, CO-614, CO-615.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The QMB and QI-1 disregard runs through the month of the Federal Register publication and the SLMB disregard through the month after it.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.L.12, M.7 and N.6 (D-65, version effective 11/14/2026); 91 FR 1797 and 90 FR 5917 (D-220, D-221) give the publication dates. No published rule settles the boundary month.
+
+### OQ-623. CBwD: employer family coverage as a condition of eligibility or a requirement after enrollment
+
+Body: 10 CCR 2505-10 § 8.100.6.Q.1.f (S1752), among the conditions "To be eligible for the Medicaid Buy-In Program for Children with Disabilities", says "Families are required to enroll in medical family coverage offered through an employer-based group health plan if they are eligible and if the employer contributes at least 50% towards the plan premiums." It does not say whether a family not yet enrolled is ineligible until it enrolls, or is enrolled in the Buy-In and then required to take up the coverage at the plan's next enrollment period. The volume reads Q.1.f as a condition of eligibility (ma_cbwd_eligible, CO-620): where the coverage is available with at least the minimum employer share (employer_family_coverage_employer_premium_share, CO-3630), the child must be enrolled in it (is_enrolled_in_employer_family_coverage, CO-3631). Final verification F-7. Items: CO-620.
+
+Class: state policy choice
+Owner: Medicaid policy owner, Premium and finance owner
+Assumption: A child whose family can enroll in employer family coverage with at least a 50% employer contribution is eligible only once enrolled in it.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.Q.1-2 (D-65, version effective 11/14/2026). No published rule says when the enrollment must occur.
+
+### OQ-624. QMB: "is enrolled in the mandatory SSI program with premium-free Medicare Part A" (L.2.d)
+
+Body: 10 CCR 2505-10 § 8.100.6.L.2 (S1747) lists, among the QMB conditions, "d. is enrolled in the mandatory SSI program with premium-free Medicare Part A." Read literally it limits QMB to SSI recipients, which contradicts L.7 ("A QMB-only recipient is an individual who is not eligible for other categorical assistance program due to their income and/or resources") and 42 U.S.C. 1396d(p)(1), which defines a qualified Medicare beneficiary by Part A entitlement, income and resources only. The volume does not read L.2.d as a condition: ma_qmb_eligible (CO-613) tests Part A entitlement, income and resources. Final verification P2-4. Items: CO-613.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: L.2.d does not restrict QMB to SSI recipients; QMB requires Medicare Part A entitlement, income at or below the QMB limit and resources within the MSP limit.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.L.2 and L.7 (D-65, version effective 11/14/2026) against 42 U.S.C. 1396d(p)(1). No published rule explains L.2.d.
