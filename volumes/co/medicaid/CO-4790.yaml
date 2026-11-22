@@ -1,0 +1,19 @@
+id: CO-4790
+name: "Medicaid: age on the last day of the month before the determination month"
+identifier: ma_age_before_determination_month
+kind: derived
+type: whole number
+scope: person
+program: Medicaid
+meaning: "The person's whole number of completed years of age on the last day of the month before the determination month: the age a test with an upper age limit reads where the rule grants the whole month (the MAGI groups, 10 CCR 2505-10 § 8.100.4.G.1; the Children with Disabilities Buy-In, § 8.100.6.Q.1.a and § 8.100.5.C.3), so that a person who was under the limit at any time in the determination month stays within it for the whole month (10 CCR 2505-10 § 8.100.4.G.1)."
+precision: "The day-before idiom of ma_is_under_child_age_or_turns_nineteen_this_month (CO-564) and ma_is_under_adult_upper_age_through_birthday_month (CO-4550): a person whose birthday falls in the determination month, on or before the determination date, has the age before that birthday. Only upper limits read it. A lower limit (for example 19 for the Adults group) reads age (CO-300) on the determination date: under G.1 any day of eligibility in the month counts, and a person who reaches a lower limit during the month is within it on the determination date."
+derived: [years_between, date_of_birth, [days_after, -1, [first_day, [det_month]]]]
+sources: [S3351, S211]
+implemented: engine
+tags: [ma, magi, age]
+nearest: [CO-564, CO-4550]
+rationale: "Coverage review 2, N-02 (2026-11-22): the Eligible Needy Newborn (CO-550) tested age on the determination date, so a baby whose first birthday fell earlier in the determination month lost the whole month G.1 grants, the defect F3-3 fixed at 19 and F-06 at 65. The sweep the fix brief asked for found the same pattern at the dependent child's 18th birthday (CO-4791) and at the 21st and 22nd birthdays of the needy persons under 21 groups (CO-2419); the non-MAGI coverage review 2 (N2-3) found it at the Children with Disabilities Buy-In's 19th birthday (CO-620). CO-564 and CO-4550 inline the expression against one limit each; no existing item states the age itself for the other limits."
+tests:
+  - {id: CO-4790-T1, as_of: "2026-11-10", title: "First birthday on November 5, determined November 10: still 0 for November", given: {date_of_birth: "2025-11-05"}, expect: 0}
+  - {id: CO-4790-T2, as_of: "2026-12-01", title: "The month after the first birthday", given: {date_of_birth: "2025-11-05"}, expect: 1}
+  - {id: CO-4790-T3, as_of: "2026-11-01", title: "Birthday on the first of the month", given: {date_of_birth: "2008-11-01"}, expect: 17}

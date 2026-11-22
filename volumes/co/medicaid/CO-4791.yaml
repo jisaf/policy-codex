@@ -1,0 +1,20 @@
+id: CO-4791
+name: "Medicaid: is a dependent child at some time in the determination month"
+identifier: ma_is_dependent_child_in_month
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the person was a dependent child (42 CFR 435.4; ma_is_dependent_child, CO-544) at some time during the determination month: under ma_dependent_child_age_limit, or that age and a full-time secondary student expected to finish before 19, on the last day of the month before (ma_age_before_determination_month, CO-4790). The MAGI Parent and Caretaker Relative group, the Adults group's highest-standard test and Transitional Medical Assistance read the dependent child through it, so a parent whose child turns 18 (or 19, as a student) during the month keeps the whole month (§ 8.100.4.G.1), and Transitional Medical Assistance ends at the end of the month in which the household no longer has a dependent child (§ 8.100.4.I.3)."
+precision: "CO-544 itself keeps the age on the determination date because non-MAGI items (the veterans personal needs allowance, CO-1986, and the VA Aid and Attendance patient payment, CO-4103) read it, and § 8.100.4.G.1 is a MAGI rule. A child who moves out of the home during the month is read from the stated household, which is not dated within the month (see CO-4205's precision)."
+derived: [any, [<, ma_age_before_determination_month, ma_dependent_child_age_limit], [all, ["=", ma_age_before_determination_month, ma_dependent_child_age_limit], is_full_time_secondary_student_finishing_before_nineteen]]
+sources: [S206, S3362, S3351, S1719]
+implemented: engine
+tags: [ma, magi, age]
+nearest: [CO-544]
+rationale: "Coverage review 2, N-02 sweep (2026-11-22): every upper age test in the MAGI family was checked for the birthday-month pattern. The dependent child's 18th birthday is one: ma_is_dependent_child (CO-544) takes age on the determination date, so a parent whose only child turned 18 on the 5th was outside the Parent and Caretaker Relative group for the whole month though eligible on its first days, and Transitional Medical Assistance stopped in that month rather than at its end (coverage review 2, N-07). CO-544 cannot change for its non-MAGI readers, so this item carries the MAGI reading."
+tests:
+  - {id: CO-4791-T1, as_of: "2026-11-10", title: "18th birthday on November 5, not a student: a dependent child for November", given: {date_of_birth: "2008-11-05", is_full_time_secondary_student_finishing_before_nineteen: false}, expect: true}
+  - {id: CO-4791-T2, as_of: "2026-12-01", title: "The month after the 18th birthday month", given: {date_of_birth: "2008-11-05", is_full_time_secondary_student_finishing_before_nineteen: false}, expect: false}
+  - {id: CO-4791-T3, as_of: "2026-11-10", title: "19th birthday on November 5, a full-time secondary student: still a dependent child for November", given: {date_of_birth: "2007-11-05", is_full_time_secondary_student_finishing_before_nineteen: true}, expect: true}
+  - {id: CO-4791-T4, as_of: "2026-11-10", title: "Aged 12", given: {date_of_birth: "2014-03-01", is_full_time_secondary_student_finishing_before_nineteen: false}, expect: true}

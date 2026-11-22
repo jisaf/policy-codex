@@ -75,7 +75,7 @@ describe("the question queue", () => {
 describe("Law", () => {
   const unverified = unverifiedIds(vol.sources);
 
-  it("counts 30 departures in force, 2 unverified sources, 6 items citing them, 44 more resting on them (50 in all), 5 figures with no value", () => {
+  it("counts 34 departures in force, 2 unverified sources, 6 items citing them, 44 more resting on them (50 in all), 5 figures with no value", () => {
     const c = lawCounts(engine, vol, unverified, DATE);
     expect(c).toEqual({
       departures: departureItems(engine, { asOf: DATE }).length,
@@ -86,11 +86,11 @@ describe("Law", () => {
       excerpts: vol.sources.length,
       documents: vol.documents.length,
     });
-    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([30, 6, 44, 5]);
+    expect([c.departures, c.citingUnverified, c.restingOnUnverified, c.noValue]).toEqual([34, 6, 44, 5]);
   });
 
   it("the departures by program add up to the whole", () => {
-    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(30);
+    expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(34);
   });
 
   it("what rests on the unverified sources: 14 outcomes, and 8 stored households read them (Blind A said 3, Blind B 11)", () => {

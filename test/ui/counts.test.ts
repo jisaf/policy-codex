@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 8 of ${vol.cases.length} stored households; it reaches 18`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 21 and reaches 34", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(21);
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(34);
+  it("the children's Medicaid income limit (CO-191) is read by 24 and reaches 38", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(24);
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(38);
   });
 
   it("every household that reads an item is one it reaches", () => {
@@ -196,18 +196,18 @@ describe("affects: what reads an item and the outcomes it reaches (the item page
     expect(itemAffects(engine, ident("CO-276"))).toEqual({ direct: 1, dependents: 4, outcomes: 1 });
   });
 
-  it("the children's income limit (CO-191): 3 rules directly, 20 outcomes", () => {
+  it("the children's income limit (CO-191): 4 rules directly, 21 outcomes", () => {
     const a = itemAffects(engine, ident("CO-191"));
-    expect([a.direct, a.outcomes]).toEqual([3, 20]);
-    expect(affectsPhrase(a)).toMatch(/^Read by 3 rules directly and \d+ in all, reaching 20 program outcomes$/);
+    expect([a.direct, a.outcomes]).toEqual([4, 21]);
+    expect(affectsPhrase(a)).toMatch(/^Read by 4 rules directly and \d+ in all, reaching 21 program outcomes$/);
     expect(COUNT_DEFINITIONS.affects).toMatch(/verification/);
   });
 
-  it("the Map and the item page say the same: CO-191 reaches 20 program outcomes, read by 76 items (the Map said 22)", () => {
+  it("the Map and the item page say the same: CO-191 reaches 21 program outcomes, read by 76 items (the Map said 22)", () => {
     const a = itemAffects(engine, ident("CO-191"));
     const m = mapCounts(engine, ident("CO-191"));
     expect(m.readBy.outcomes).toBe(a.outcomes);
-    expect(m.readBy.outcomes).toBe(20);
+    expect(m.readBy.outcomes).toBe(21);
     expect(m.readBy.total).toBe(a.dependents);
     // Every item the page's centre box can name, for every program outcome.
     for (const id of ["CO-276", "CO-914"]) {

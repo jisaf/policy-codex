@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: CHP+
 meaning: Whether the person is a child under one year old whose mother was enrolled in CHP+ at the time of the child's birth, and so is guaranteed CHP+ coverage for one year (10 CCR 2505-3 § 430.5).
+precision: "Coverage review 2, N-11: 'guaranteed coverage for one year' (§ 430.5) is read as through the day before the first birthday, with age on the determination date: CHP+ has no whole-month rule like Medicaid's § 8.100.4.G.1, so the guarantee ends on the first birthday and the child is then tested as any CHP+ child (chp_child_is_eligible, CO-705), whose 12-month continuous eligibility (§ 430.2) runs from its own start."
 derived: [all, ["<", age, chp_newborn_coverage_age_limit_years], [otherwise, chp_mother_was_enrolled_at_birth, false]]
 sources: [S1716]
 implemented: engine

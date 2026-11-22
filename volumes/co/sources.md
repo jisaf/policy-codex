@@ -21903,3 +21903,49 @@ Document: D-87
 > parents must self-declare that their liquid and non-liquid assets do
 > not exceed one million dollars. If assets exceed one million dollars
 > the household is ineligible for CCCAP.
+
+### S3550. CHP+ Express Lane Eligibility: a child referred from a Free/Reduced Lunch, SNAP or Colorado Works application who meets the requirements of sections 100 through 180 on the declared income is automatically enrolled; 90 days pending citizenship and identity verification (current text, complete)
+
+Document: D-66
+
+10 CCR 2505-3 § 180 (rule version effective 08/30/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12687&fileName=10%20CCR%202505-3
+
+> Express Lane Eligibility shall allow for automatic initiation of Medical Assistance enrollment by using available data and findings from other programs as listed below.
+>
+> 180.1 Free/Reduced Lunch Program
+>
+> A. Recipients of the Free/Reduced Lunch Program who have submitted a Free/Reduced Lunch application at a participating school district
+>
+> 1. Families will be given the option to opt into Medical Assistance coverage for their potentially eligible child.
+>
+> 2. Children who meet all necessary eligibility requirements as outlined in this volume will be automatically enrolled.
+>
+> 3. Children who meet all necessary eligibility requirements except verification of U.S. citizenship and identity will receive 90 days of eligibility while awaiting this verification.
+>
+> 4. Any additionally required verification will be requested from the client through CBMS prior to being automatically enrolled.
+>
+> 5. Eligibility is based on income declared on the Free/Reduced Lunch application as well as eligibility requirements outlined in section 150.
+>
+> 6. If it would be found that a child does not satisfy an eligibility requirement for Medical Assistance, the child’s eligibility will be evaluated using the application for Medical Assistance.
+>
+> B. Recipients of the Free/Reduced Lunch Program who were not required to submit a Free/Reduced Lunch application at a participating school district
+>
+> 1. Families who are automatically enrolled Free/Reduced Lunch recipient children will not be forwarded to the Department for Express Lane Eligibility in compliance USDA confidentiality guidelines.
+>
+> 2. These families must apply for Medical Assistance in order to give consent for request of benefits.
+>
+> 180.2 Direct Certification
+>
+> A. When an application for Supplemental Nutrition Assistance Program (SNAP) or Colorado Works (Temporary Assistance for Needy Families Program (TANF)) has been submitted, families will be given the option to opt into Medical Assistance coverage for their potentially eligible children.
+>
+> 1. Children who meet all necessary eligibility requirements as outlined throughout sections 100 through 180 will be automatically enrolled,
+>
+> 2. Children who are only missing verification of U.S. citizenship and identity will receive 90 days of coverage while waiting for this verification.
+>
+> 3. Any additionally required verification will be requested from the client through CBMS prior to being automatically enrolled.
+>
+> 4. Eligibility is determined based on income declared on the Food Stamp or Colorado Works application as well as eligibility requirements outlined throughout this volume.
+>
+> 5. If it would be found that a child does not satisfy an eligibility requirement for Medical Assistance, the child’s eligibility will be evaluated using the Single Streamlined application for Medical Assistance.
+>
+> 6. Individuals whose eligibility is not determined through Express Lane Eligibility may also submit a separate Single Streamlined Application for Medical Assistance to determine eligibility.
