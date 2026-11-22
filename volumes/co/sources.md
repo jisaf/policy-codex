@@ -16429,3 +16429,1020 @@ Document: D-65
 > b. for a veteran or surviving spouse of a veteran in a State Veterans Home with dependents.
 >
 > 2. For a veteran or surviving spouse of a veteran in a State Veterans Home with no dependents the portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall be used as patient payment to the medical facility.
+### S2950. Colorado SNAP: substantial lottery or gambling winnings defined, and the household disqualified in the month received, then considered under Standard Eligibility
+
+Document: D-82
+
+10 CCR 2506-1 4.000.1 ("Substantial lottery or gambling winnings"), 4.206.E (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> “Substantial lottery or gambling winnings” is a cash prize won in a single game, before
+> taxes or other amounts are withheld, that is equal to or greater than the resource limit
+> for persons aged sixty (60) and older and persons with disabilities.
+>
+> ...
+>
+> E. Substantial lottery or gambling winnings from an individual will disqualify the
+> entire SNAP household from eligibility in the month the winnings are received.
+> The next time such a household reapplies and is certified for SNAP after losing
+> eligibility, the household must be considered under Standard Eligibility (SE)
+> guidelines. After receiving SNAP as a SE household, the SNAP household will
+> be re-evaluated for categorical eligibility at the next eligible certification period.
+
+### S2951. Colorado SNAP: substantial winnings counted as unearned income in the month received; only the member's share of a shared ticket
+
+Document: D-82
+
+10 CCR 2506-1 4.403.I (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> I. Substantial Lottery or Gambling Winnings
+>
+> Substantial lottery or gambling winnings as defined in section 4.000.1 will be
+> counted as unearned income in the month received. If multiple individuals shared
+> in the purchase of a ticket, hand, or similar bet, then only the portion of the
+> winnings allocated to the member of the SNAP household would be counted in
+> the eligibility determination.
+
+### S2952. Federal: a household loses eligibility on a member's receipt of substantial lottery or gambling winnings until it meets the resource and income requirements
+
+Document: D-3
+
+7 U.S.C. 2015(s). https://www.law.cornell.edu/uscode/text/7/2015
+
+> (s) Ineligibility for benefits due to receipt of substantial lottery or gambling winnings
+>
+> (1) In general
+>
+> Any household in which a member receives substantial lottery or gambling winnings, as determined by the Secretary, shall lose eligibility for benefits immediately upon receipt of the winnings.
+>
+> (2) Duration of ineligibility
+>
+> A household described in paragraph (1) shall remain ineligible for participation until the household meets the allowable financial resources and income eligibility requirements under subsections (c), (d), (e), (f), (g), (i), (k), (l), (m), and (n) of section 2014 of this title .
+
+### S2953. Federal: substantial winnings disqualification, regaining eligibility, and the single-game prize at or above the elderly or disabled resource limit
+
+Document: D-15
+
+7 CFR 273.11(r). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (r) *Disqualification for Substantial Lottery or Gambling Winnings.* Any household certified to receive benefits shall lose eligibility for benefits immediately upon receipt by any individual in the household of substantial lottery or gambling winnings, as defined in paragraph (r)(2) of this section. The household shall report the receipt of substantial winnings to the State agency in accordance with the reporting requirements contained in § 273.12(a)(5)(iii)(G)(3) and within the time-frames described in § 273.12(a)(2). The State agency shall also take action to disqualify any household identified as including a member with substantial winnings in accordance with § 272.17.
+>
+> (1) *Regaining Eligibility.* Such households shall remain ineligible until they meet the allowable resources and income eligibility requirements described in §§ 273.8 and 273.9, respectively.
+>
+> (2) *Substantial Winnings*—(i) *In General.* Substantial lottery or gambling winnings are defined as a cash prize equal to or greater than the maximum allowable financial resource limit for elderly or disabled households as defined in § 273.8(b) won in a single game before taxes or other withholdings. For the purposes of this provision, the resource limit defined in § 273.8(b) applies to all households, including non-elderly/disabled households, with substantial lottery and gambling winnings. If multiple individuals shared in the purchase of a ticket, hand, or similar bet, then only the portion of the winnings allocated to the member of the SNAP household would be counted in the eligibility determination.
+
+### S2954. Colorado SNAP: the sponsored non-citizen ineligible until the sponsor information is provided; the remaining members determined with the non-citizen's own income and resources, without the sponsor's
+
+Document: D-82
+
+10 CCR 2506-1 4.505.7.B-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Until the non-citizen provides information or verification necessary to determine
+> eligibility, the sponsored non-citizen shall be ineligible. When such verification is
+> provided, the local office shall act on the information as a reported change in
+> household circumstances.
+>
+> C. The eligibility of any remaining household members shall be determined. The
+> income and resources of the ineligible non-citizen, excluding the attributed
+> income and resources of the non- citizen’s sponsor and sponsor's spouse, shall
+> be considered available in determining the eligibility and benefit level of the
+> remaining household members.
+>
+> If the sponsored non-citizen refuses to cooperate in providing and/or verifying
+> needed information, other adult members of the non-citizen’s household shall be
+> responsible for providing and/or verifying the information. If the information or
+> verification is subsequently received, the local office shall act on the information
+> as a reported change. If the same sponsor is responsible for the entire
+> household, the entire household is ineligible until such time as the needed
+> information is verified. The local office must assist the non-citizen in obtaining
+> verification provided the household is cooperating with the local office.
+
+### S2955. Colorado SNAP: unverified non-citizen status - the remaining members determined with the non-citizen's income and resources available
+
+Document: D-82
+
+10 CCR 2506-1 4.505.6.I (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> I. If verification of eligible non-citizen status is not provided on a timely basis, the
+> household has the option of withdrawing its application or requesting that the
+> eligibility of the remaining household members be determined. The income and
+> resources of the individual whose non-citizen status is unverified shall be
+> considered available in determining the eligibility of the remaining household
+> members. If verification of eligible non-citizen status is subsequently received the
+> local office shall act on the information as a reported change in household
+> membership in accordance with timeliness standards. The non-citizen shall not
+> be entitled to retroactive benefits.
+
+### S2956. Federal: a sponsored alien awaiting sponsor verification is ineligible; the remaining members determined under 273.11(c) without the deemed amounts
+
+Document: D-9
+
+7 CFR 273.4(c)(5). https://www.ecfr.gov/current/title-7/section-273.4
+
+> (5) *Awaiting verification.* Until the alien provides information or verification necessary to carry out the provisions of paragraph (c)(2) of this section, the sponsored alien is ineligible. The State agency must determine the eligibility of any remaining household members. The State agency must consider available to the remaining household members the income and resources of the ineligible alien (excluding the deemed income and resources of the alien's sponsor and sponsor's spouse) in determining the eligibility and benefit level of the remaining household members in accordance with § 273.11(c). If the sponsored alien refuses to cooperate in providing information or verification, other adult members of the alien's household are responsible for providing the information or verification required in accordance with the provisions of § 273.2(d). If the State agency subsequently receives information or verification, it must act on the information as a reported change in household membership in accordance with the timeliness standards in § 273.12 or § 273.21, as appropriate. If the same sponsor is responsible for the entire household, the entire household is ineligible until such time as the household provides the needed sponsor information or verification. The State agency must assist aliens in obtaining verification in accordance with the provisions of § 273.2(f)(5).
+
+### S2957. Federal: an alien is ineligible until acceptable documentation is provided, after a reasonable opportunity to the thirtieth day
+
+Document: D-8
+
+7 CFR 273.2(f)(1)(ii)(B), (f)(10)(i). https://www.ecfr.gov/current/title-7/section-273.2
+
+> (B) An alien is ineligible until acceptable documentation is provided unless:
+>
+> (*1*) The State agency has submitted a copy of a document provided by the household to USCIS for verification. Pending such verification, the State agency cannot delay, deny, reduce or terminate the individual's eligibility for benefits on the basis of the individual's immigration status; or
+>
+> (*2*) The applicant or the State agency has submitted a request to SSA for information regarding the number of quarters of work that can be credited to the individual, SSA has responded that the individual has fewer than 40 quarters, and the individual provides documentation from SSA that SSA is conducting an investigation to determine if more quarters can be credited. If SSA indicates that the number of qualifying quarters that can be credited is under investigation, the State agency must certify the individual pending the results of the investigation for up to 6 months from the date of the original determination of insufficient quarters; or
+>
+> ...
+>
+> (i) The State agency shall provide an applicant alien with a reasonable opportunity to submit acceptable documentation of their eligible alien status prior to the 30th day following the date of application. A reasonable opportunity shall be at least 10 days from the date of the State agency's request for an acceptable document. An alien who has been given a reasonable opportunity to submit acceptable documentation and has not done so as of the 30th day following the date of application shall not be certified for benefits until acceptable documentation has been submitted. However, if the 10-day reasonable opportunity period provided by the State agency does not lapse before the 30th day following the date of application, the State agency shall provide the household with benefits no later than 30 days following the date of application *Provided* the household is otherwise eligible.
+
+### S2958. Federal: sponsor attribution under 8 U.S.C. 1631 does not apply to SNAP for a qualified alien eligible as a child under 18
+
+Document: D-275
+
+8 U.S.C. 1631(d)(3). https://www.law.cornell.edu/uscode/text/8/1631
+
+> (d) Application
+> (1)
+> If on August 22, 1996, a Federal means-tested public benefits program attributes a sponsor’s income and resources to an alien in determining the alien’s eligibility and the amount of benefits for an alien, this section shall apply to any such determination beginning on the day after August 22, 1996.
+>
+> (2)
+> If on August 22, 1996, a Federal means-tested public benefits program does not attribute a sponsor’s income and resources to an alien in determining the alien’s eligibility and the amount of benefits for an alien, this section shall apply to any such determination beginning 180 days after August 22, 1996.
+>
+> (3)
+> This section shall not apply to assistance or benefits under the Food Stamp Act of 1977 [1] (7 U.S.C. 2011 et seq.) to the extent that a qualified alien is eligible under section 1612(a)(2)(J) of this title.
+
+### S2959. Federal: the SNAP sponsor deeming provisions do not apply to an alien in the sponsor's household or under 18
+
+Document: D-2
+
+7 U.S.C. 2014(i)(2)(E). https://www.law.cornell.edu/uscode/text/7/2014
+
+> (E)
+>
+> The provisions of this subsection shall not apply with respect to any alien who is a member of the sponsor’s household or to any alien who is under 18 years of age.
+
+### S2960. Federal: the 2002 Farm Bill exempts every alien child under 18 from SNAP sponsor deeming, effective October 1, 2003
+
+Document: D-276
+
+Pub. L. 107-171, sec. 4401(b), 116 Stat. 333. https://www.govinfo.gov/content/pkg/PLAW-107publ171/html/PLAW-107publ171.htm
+
+> (b) Restoration of Benefits to All Qualified Alien Children.--
+> (1) In general.--Section 402(a)(2)(J) of the Personal
+> Responsibility and Work Opportunity Reconciliation Act of 1996
+> (8 U.S.C. 1612(a)(2)(J)) is amended by striking ``who'' and all
+> that follows through ``is under'' and inserting ``who is
+> under''.
+> (2) Conforming amendments.--
+> (A) Section 403(c)(2) of the Personal Responsibility
+> and Work Opportunity Reconciliation Act of 1996 (8
+> U.S.C. 1613(c)(2)) is amended by adding at the end the
+> following:
+> ``(L) Assistance or benefits provided to individuals
+> under the age of 18 under the Food Stamp Act of 1977 (7
+> U.S.C. 2011 et seq.).''.
+> (B) Section 421(d) of the Personal Responsibility
+> and Work Opportunity Reconciliation Act of 1996 (8
+> U.S.C. 1631(d)) is amended by adding at the end the
+> following:
+> ``(3) This <<NOTE: Applicability.>> section shall not apply
+> to assistance or benefits under the Food Stamp Act of 1977 (7
+> U.S.C. 2011 et seq.) to the extent that a qualified alien is
+> eligible under section 402(a)(2)(J).''.
+> (C) Section 5(i)(2)(E) of the Food Stamp Act of 1977
+> (7 U.S.C. 2014(i)(2)(E)) is amended by inserting before
+> the period at the end the following: ``, or to any alien
+> who is under 18 years of age''.
+> (3) Effective <<NOTE: 7 USC 2014 note.>> date.--The
+> amendments made by this subsection take effect on October 1,
+> 2003.
+
+### S2961. Colorado SNAP: a household not BCE or ECE that knowingly transferred resources to qualify is disqualified for up to a year; the exempt transfers
+
+Document: D-82
+
+10 CCR 2506-1 4.408.2 (opening), 4.408.2.A (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.408.2 Transfer of Resources
+>
+> At the time of application, households not eligible under expanded or basic categorical
+> eligibility rules shall be asked to provide information regarding any resources which any
+> household member, ineligible non-citizen, or disqualified person whose resources are
+> being considered available to the household has transferred within the three (3) month
+> period immediately preceding the date of application. Households that have transferred
+> resources knowingly for the purpose of qualifying or attempting to qualify for SNAP
+> benefits shall be disqualified from participation in the program for up to one (1) year
+> from the date of discovery of the transfer. This disqualification period shall be applied if
+> the resources are transferred knowingly in the three (3) month period prior to
+> application, or if they are transferred knowingly after the household is determined
+> eligible for benefits.
+>
+> A. Eligibility for the program shall not be affected by the following transfers:
+>
+> 1. Resources that would not otherwise affect eligibility, such as resources
+> consisting of excluded person property such as furniture, or of money that
+> when added to other household resources, totaled less at the time of the
+> transfer than the allowable resource limits.
+>
+> 2. Resources that are sold or traded at, or near, fair market value.
+>
+> 3. Resources that are transferred between members of the same household
+> including ineligible non-citizens or disqualified individuals whose resources
+> are being considered available to the household.
+>
+> 4. Resources that are transferred for reasons other than qualifying or
+> attempting to qualify for SNAP benefits, for example a parent placing
+> funds into an educational trust fund.
+
+### S2962. Colorado SNAP: the transfer disqualification begins in the month of application, or with the first allotment after the adverse action notice; its length from the chart
+
+Document: D-82
+
+10 CCR 2506-1 4.408.2.B-C (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. In the event the local office establishes that an applicant household knowingly
+> transferred resources for the purpose of qualifying or attempting to qualify for
+> SNAP, the household shall be sent a notice of denial explaining the reason for
+> and length of disqualification. The period of disqualification shall begin in the
+> month of application. If the household is participating at the time of the discovery
+> of the transfer, a notice of adverse action explaining the reason for and the length
+> of disqualification shall be sent. The period of disqualification shall be made
+> effective with the first allotment to be issued after the notice of adverse action
+> has expired unless the household has requested a fair hearing and continued
+> benefits.
+> The length of the disqualification period shall be based on the amount by which
+> nonexempt transferred resources, when added to other countable resources,
+> exceed the allowable resource limits.
+>
+> C. The following chart shall be used to determine the period of disqualification for
+> transfer of resources.
+>
+> Amount in Excess of the Resource Period of Disqualification
+> Limit
+>
+> $1 to $249 1 month
+>
+> $250 to $999 3 months
+>
+> $1,000 to $2,999 6 months
+>
+> $3,000 to $4,999 9 months
+>
+> $5,000 12 months
+
+### S2963. Colorado SNAP: boarder payments are self-employment income less the cost of doing business, then added to earned income
+
+Document: D-82
+
+10 CCR 2506-1 4.403.2 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.403.2 Boarder Income
+>
+> Persons paying a reasonable amount for room and board shall be excluded from the
+> household when determining the household's eligibility and benefit level. The income of
+> households owning and operating a commercial boarding house shall be handled as
+> described in Section 4.403.11. For all other households, payments from the boarder
+> shall be treated as self-employment income and the household's eligibility determined
+> as follows:
+>
+> A. The income from boarders shall include all direct payments to the household for
+> room and meals, including contributions to the household for shelter expenses.
+> Shelter expenses paid directly by boarders to someone outside of the household
+> shall not be counted as income to the household.
+>
+> B. After determining the income received from the boarders, the local office shall
+> exclude that portion of the boarder payment which is the cost of doing business.
+> The cost of doing business shall be equal to either of the following costs,
+> provided that the amount allowed as a cost of doing business shall not exceed
+> the payment the household received from the boarder for lodging and meals.
+>
+> 1. The value of the maximum allotment for the household size that is equal to
+> the number of boarders;
+>
+> 2. The actual documented cost of providing room and meals if the actual cost
+> exceeds the appropriate maximum allotment. If actual costs are used, only
+> separate and identifiable costs of providing room and meals to boarders
+> shall be allowed as a cost of doing business; or,
+>
+> 3. If the boarder income received is from foster care payments, the entire
+> amount of the payment will be disregarded as a cost of doing business.
+>
+> C. The monthly net income (after subtracting costs of doing business) from self-
+> employment shall be added to other monthly earned income and the twenty
+> percent (20%) earned income deduction shall be applied to the total dollar
+> amount.
+>
+> D. Shelter costs the household actually incurs, even if the boarder contributes to the
+> household for part of the household's shelter expenses, shall be computed to
+> determine if the household will receive a shelter deduction. However, the shelter
+> costs shall not include any shelter expenses paid directly by the boarder to a
+> third party, such as to the landlord or the utility company.
+
+### S2964. Colorado SNAP: a destitute household's income for the month of application is only the income received from the first of the month to the date of application
+
+Document: D-82
+
+10 CCR 2506-1 4.406.1.A-B (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.406.1 Income Calculation When Destitute of Income
+>
+> A. Destitute households shall have their eligibility and level of benefits calculated for
+> the month of application by considering only that income received between the
+> first of the month and the date of application. It if is an initial month application,
+> the first application or an application received after the household's last
+> certification period expired, the allotment for the initial month shall be prorated to
+> cover days from date of application to the end of the month.
+>
+> B. If income of more than twenty-five dollars ($25) from a new source has not been
+> received or is not anticipated within ten (10) calendar days from the date of initial
+> application or within ten (10) calendar days after the household's normal
+> issuance cycle if applying for recertification, it shall be disregarded.
+
+### S2965. Federal: a member disqualified for an IPV, a felony, or a work sanction is left out of the size, and no household's allotment is increased by the exclusion
+
+Document: D-15
+
+7 CFR 273.11(c)(1)(ii). https://www.ecfr.gov/current/title-7/section-273.11
+
+> (ii) *Eligibility and benefit level.* The ineligible member shall not be included when determining the household's size for the purposes of:
+>
+> (A) Assigning a benefit level to the household;
+>
+> (B) Assigning a standard deduction to the household;
+>
+> (C) Comparing the household's monthly income with the income eligibility standards; or
+>
+> (D) Comparing the household's resources with the resource eligibility limits. The State agency shall ensure that no household's coupon allotment is increased as a result of the exclusion of one or more household members.
+
+### S2966. Colorado SNAP: earned income tax credits and federal income tax refunds excluded as resources
+
+Document: D-82
+
+10 CCR 2506-1 4.410.J.12, J.17 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 12. A federal earned income tax credit received either as a lump sum or as
+> payments under Section 3507 of the Internal Revenue code for the month
+> of receipt and the following month for the individual and that individual's
+> spouse (P.L. No. 101-508).
+>
+> A federal, state, or local Earned Income Tax Credit (EITC) would be
+> exempted for twelve (12) months from receipt for any household member
+> if the individual receiving the EITC was participating in SNAP when the
+> EITC was received and participation continues for twelve (12) months.
+> Temporary non-participation due to administrative reasons, such as a
+> delayed recertification, shall not affect the twelfth (12th) month
+> participation requirement (P.L. No. 103-66, Mickey Leland Childhood
+> Hunger Relief Act of 1993).
+>
+> ...
+>
+> 17. P.L. No. 111-312 and The American Taxpayer Relief Act of 2012 requires
+> that Federal income tax refunds received beginning January 1, 2010 must
+> be disregarded as a resource for twelve (12) months from the date of
+> receipt by the client.
+
+### S2967. Colorado SNAP: tax deferred education accounts exempt; one pre-purchased funeral agreement per member exempt up to $1,500 in equity
+
+Document: D-82
+
+10 CCR 2506-1 4.410.D.3-4 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 3. All tax deferred education accounts are exempt resources. The two types
+> of tax deferred education savings accounts are:
+>
+> a. Section 529 qualified tuition programs, which allow owners to
+> prepay a student’s education expenses or to contribute to an
+> account to pay those expenses.
+>
+> b. Coverdell education savings accounts and IRA type of account
+> designed to pay a student’s education expense.
+>
+> 4. One bona fide pre-purchased funeral agreement per household member,
+> which may include one burial plot per household member, shall be
+> excluded provided that the agreement does not exceed one thousand five
+> hundred dollars ($1,500) in equity value; the equity value over one
+> thousand five hundred dollars ($1,500) is counted as a resource. If a burial
+> plot is included in the agreement, the burial plot portion will be exempted
+> prior to determining the equity value of the funeral agreement.
+
+### S2968. Colorado SNAP: inaccessible resources - jointly owned resources the household cannot reach, irrevocable trusts, property in probate or under lien, and resources of battered women in shelters
+
+Document: D-82
+
+10 CCR 2506-1 4.409.C, 4.410.F.1, F.3, H (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. Jointly Owned Resources
+>
+> Nonexempt liquid and non-liquid resources owned jointly by separate households
+> shall be considered available in their entirety to each household, unless it can be
+> demonstrated by the applicant household that it does not have access to such
+> resources. If only a portion of the resource is accessible, that portion which is
+> available to the household is considered as a resource. The resource shall be
+> considered totally inaccessible to the household if the resource cannot practically
+> be subdivided and the household's access to the value of the resource is
+> dependent on the agreement of a joint owner who refuses to comply. For the
+> purpose of this provision, ineligible non-citizens or disqualified individuals
+> residing with the household shall be considered household members.
+>
+> ...
+>
+> F. Inaccessible Resources
+>
+> 1. Resources having a cash value which is not accessible to the household
+> include, but are not limited to, irrevocable trust funds, property in probate,
+> or property prohibited from sale by a creditor holding a lien, and real
+> property which the household is making a good faith effort to sell at a
+> reasonable price, and which has not been sold. In such cases, the local
+> office shall establish that the property is for sale and that the household
+> will accept a reasonable offer.
+>
+> ...
+>
+> 3. Any funds in a trust or transferred to a trust, and the income produced by
+> that trust shall be considered inaccessible to the household if:
+> a. The trust arrangement will not likely cease during the certification
+> period, and no household member has the power to revoke the
+> trust arrangement or change the name of the beneficiary during
+> the certification period; or
+>
+> b. The trustee administering the funds is either a court, an institution,
+> corporation, or organization which is not under the direction or
+> leadership of any household member; or an individual appointed
+> by the court who has court-imposed limitation placed on his/her
+> use of funds which meet requirements of this section; or
+>
+> c. The trust investments made on behalf of the trust do not directly
+> involve or assist any business or corporation under the control,
+> direction, or influence of a household member; or
+>
+> d. The funds held in irrevocable trust are either established from
+> household's own funds and are used solely to make investments
+> on behalf of the trust or to pay educational or medical expenses of
+> persons named by the household creating the trust; or established
+> from non-household funds by a non-household member; or
+>
+> e. Monies which are withdrawn from trust and dividends that are or
+> could be received by the household shall be considered as
+> income.
+>
+> ...
+>
+> H. Resources of Battered Women in Shelters
+>
+> Residents of shelters for battered women and children may not have been able
+> to retain access to all the resources of their former household. Therefore, in
+> cases where access to a resource, such as jointly held bank accounts requiring
+> both signatures, vehicles, and property, is dependent upon the agreement of a
+> person who still resides in the household where the woman was abused, the
+> resource shall be considered inaccessible to the applicant.
+
+### S2969. Colorado SNAP: a household requesting benefits for a child already receiving them in another household verifies that it provides the majority of meals first; otherwise the child stays in the first household
+
+Document: D-82
+
+10 CCR 2506-1 4.505.4.C, 4.304.2.A-B (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. A household that requests benefits for a child that is already receiving benefits in
+> another household is responsible for verifying that they provide the child with the
+> majority of his or her meals prior to receiving benefits for that child as described
+> in Section 4.304.1.B.
+>
+> ...
+>
+> 4.304.2 Children in Shared Custody Arrangements
+>
+> A. In instances when different households apply for the same child, the household
+> that applies for benefits for the child second must establish that it has majority
+> custody and/or provide a majority of the child’s meals.
+> B. If the second requesting household provides verification that indicates that
+> household possesses majority custody and provides the majority of meals, this
+> constitutes unclear information as to the first household under which the child is
+> currently receiving benefits.
+>
+> 1. A request for contact (RFC) must be initiated on the first case if verification
+> was not previously provided to establish majority custody and/or that the
+> majority of meals are being provided. The confidentiality rules described in
+> Section 4.140 must be followed when making this request.
+>
+> A. If the two different households applying for the same child cannot agree in which
+> household the child shall receive benefits the household that provides the
+> majority of meals to the child(ren) in question shall include the child(ren) in their
+> household. Depending on the document being used to establish majority custody
+> and majority of meals, the eligibility technician must ensure that they are
+> considering a period of time of sufficient length to accurately capture the custody
+> arrangement, taking into account disruptions to established arrangements such
+> as holidays and school breaks. Eligibility technicians may have to look at a longer
+> period of time than just the last calendar month.
+>
+> 2. If the second requesting household provides verification that conclusively
+> proves it has majority custody of the child and provides majority of meals
+> as of the request to include the child(ren) in its household, the child(ren)
+> should be removed from the first case and added to the second case as
+> detailed in Section 4.604.G to avoid dual participation.
+>
+> 3. If the two households provide an equal number of meals to the child(ren),
+> then the SNAP household currently receiving benefits or who applied first
+> shall receive benefits for the child(ren).
+>
+> 4. If one household fails to provide verification of the percentage of meals
+> they provide to the child(ren), the child(ren) shall remain in the household
+> in which they first began receiving SNAP benefits.
+
+### S2970. Federal: the income and resources of the sponsor and of the sponsor's spouse are deemed to the alien
+
+Document: D-275
+
+8 U.S.C. 1631(a). https://www.law.cornell.edu/uscode/text/8/1631
+
+> (a) In generalNotwithstanding any other provision of law, in determining the eligibility and the amount of benefits of an alien for any Federal means-tested public benefits program (as provided under section 1613 of this title), the income and resources of the alien shall be deemed to include the following:
+> (1)
+> The income and resources of any person who executed an affidavit of support pursuant to section 213A of the Immigration and Nationality Act [8 U.S.C. 1183a] (as added by section 423 and as amended by section 551(a) of the Illegal Immigration Reform and Immigrant Responsibility Act of 1996) on behalf of such alien.
+>
+> (2)
+> The income and resources of the spouse (if any) of the person.
+
+### S2971. Colorado SNAP: the sponsor's spouse's income deemed if the spouse executed Form I-864 or I-864A; counted even if married after the agreement was signed
+
+Document: D-82
+
+10 CCR 2506-1 4.305.2.C, D.1 (version effective 2026-10-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. Only when a sponsored non-citizen is an eligible non-citizen will the local office
+> consider the income and resources of the sponsor and sponsor's spouse
+> available to the household. For purposes of determining eligibility and benefit
+> level of a household of which an eligible sponsored non-citizen is a member, the
+> local office shall deem the income and resources of the sponsor and the
+> sponsor's spouse, if they have executed USCIS Form I-864 or I-864A, as the
+> unearned income and resources of the sponsored non-citizen.
+>
+> D. Calculating Sponsor Income
+>
+> 1. The total gross income and resources of a sponsor and sponsor's spouse
+> shall be considered as unearned income and resources of a sponsored
+> non-citizen for a period until the person’s citizenship is obtained; or until
+> the non-citizen has worked or can receive credit for forty (40) work
+> quarters under Title II of the Social Security Act; or the sponsor dies.
+>
+> The spouse's income and resources shall be counted even if the sponsor
+> and spouse were married after the signing of the agreement.
+
+### S2850. CCCAP parent fee: revisions during the twelve-month eligibility period, and no fee higher than the one determined at the most recent referral, application or redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.124.B-C (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> B. Parent fee revisions for Low-Income and Colorado Works Child Care during the
+> twelve (12) month eligibility period may occur under the below circumstances.
+> Increases in parent fees beyond what is outlined in rule subsections (1)-(4) below
+> shall only go into effect at Low-Income Child Care re-determination or at the end
+> of the twelve (12) month Colorado Works Child Care period.
+>
+> 1. The adult caretaker or teen parent, who was initially determined eligible
+> with countable income, regains income after a temporary loss of income;
+>
+> 2. A change has been reported that results in a decrease in the parent fee
+> for the household;
+>
+> 3. There is an increase or decrease in the amount of care that is authorized
+> and the increase in authorization is not due to the addition of a household
+> member; or
+>
+> 4. The household begins or ceases utilization of care at a high-quality child
+> care provider.
+>
+> C. During the twelve (12) month eligibility period the household parent fee cannot be
+> assessed higher than the parent fee determined at the most recent Colorado
+> Works Child Care referral or low-income application or re-determination.
+
+### S2851. CCCAP transition off Colorado Works: no automatic transition after an IPV, over 85% SMI, or after twenty-two unexplained absences; the fee no higher than at the most recent Colorado Works Child Care referral
+
+Document: D-87
+
+8 CCR 1403-1 3.117.A, F (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. A household that is no longer eligible for the Colorado Works Program shall not
+> be automatically transitioned to Low-Income Child Care if any of the following
+> conditions apply. If a household is not transitioned to Low-Income Child Care for
+> any of the conditions below, the county shall provide timely written notice to the
+> primary adult caretaker or teen parent.
+>
+> 1. The household is ineligible for the Colorado Works Program due to an
+> Intentional Program Violation (IPV) as determined in Colorado Works rule
+> (9 CCR 2503-6), incorporated by reference in rule section 3.103(CC);
+>
+> 2. The household is ineligible for the Colorado Works Program and will be at
+> an income level that exceeds eighty-five percent (85%) of the State
+> Median Income (SMI) as outlined in rule section 3.111(H)(1); or
+>
+> 3. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within the last thirty (30) days prior to the household being
+> determined ineligible for Colorado Works and two (2) failed documented
+> attempts to contact the adult caretaker or teen parent have been made
+> within the thirty (30) day period.
+>
+> ...
+>
+> F. Parent fees for households that transition from Colorado Works to Low-Income
+> Child Care must not be assessed higher than what was determined at the most
+> recent Colorado Works Child Care referral. Parent fee revisions for child care
+> during the twelve (12) month period may occur as outlined in rule section
+> 3.124(B).
+
+### S2852. CCCAP protective services households: sixty days to verify the children's income; a county plan may let the Child Welfare worker waive the income requirement; six months for citizenship, age and identity; sixty days for immunization
+
+Document: D-87
+
+8 CCR 1403-1 3.119.A-C, F-G (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. Protective services households are considered a household of one for purposes
+> of determining income eligibility. The only countable income for a protective
+> services household is the income that is received by the child(ren) that have
+> been placed in kinship or foster care. Child support income shall not be included
+> as income. Child support income is intercepted by the county child welfare
+> department.
+>
+> B. Protective services households shall be allowed up to sixty (60) days to provide
+> verification of the child(ren)’s income.
+>
+> C. Counties may request approval from the Department by submitting a county plan
+> to allow the Child Welfare worker to waive the income requirement for protective
+> services households on a case-by-case basis, subject to the requirements and
+> Department approval as described in rule section 3.104. If the income
+> requirement is waived, it must be documented in the CCCAP case file.
+>
+> ...
+>
+> F. Citizenship, age, and identity shall be verified by the Child Welfare worker. The
+> signed Protective Services Child Care Referral serves as verification of
+> citizenship, age, and identity and must be maintained in the child care case file. If
+> the Child Welfare worker is unable to attest to having verified the child’s
+> citizenship status, age, and/or identity at the time of referral:
+>
+> 1. Protective services households must be allowed up to six (6) months to
+> provide verification of the child(ren)’s U.S. citizenship status and age;
+>
+> 2. Protective services households must be allowed up to six (6) months to
+> provide verification of the child(ren)’s identity; and,
+>
+> 3. If the Child Welfare worker cannot verify and attest to the child’s
+> citizenship status, age, or identity within six (6) months of the referral, the
+> county must not provide child care services for the child(ren) through the
+> use of Protective Services Child Care.
+>
+> G. Protective services households must be allowed up to sixty (60) days to provide
+> verification of immunization or religious or medical exemption (see sections 25-4-
+> 902 and 25-4-908, C.R.S., for exemption requirements) if child care is provided
+> by a qualified exempt child care provider not related to the child where care is
+> provided outside of the home.
+
+### S2853. CCCAP: "Eligible child" (current definition); Child Welfare Child Care is not funded through the Child Care Development Fund
+
+Document: D-87
+
+8 CCR 1403-1 3.103.UU; 3.120.A, D, F (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> UU. “Eligible child” means a child, from birth to the age of thirteen (13) years who
+> needs child care services during a portion of the day, but less than twenty-four
+> (24) hours, and is residing with the eligible adult caretaker(s) or teen parent(s); or
+> a child with additional care needs under the age of nineteen (19) who is
+> physically or mentally incapable of caring for themselves or is under court
+> supervision and is residing with or in the legal custody of the eligible adult
+> caretaker(s) or teen parent(s). Any child served through the Colorado Works
+> program or the Low-Income Child Care program must be a citizen/legal resident.
+>
+> ...
+>
+> A. Child Welfare Child Care is used as a temporary service to maintain children in
+> their own homes or in the least restrictive out-of-home care setting when there
+> are no other child care options available. This may include parents, non-certified
+> kinship care, kinship foster care homes, and foster care homes.
+>
+> ...
+>
+> D. Eligibility for Child Welfare Child Care is determined on a case-by-case basis by
+> the Child Welfare division using the criteria outlined in Colorado Department of
+> Human Services rules at 12 CCR 2509-4, rule section 7.302 (July 31, 2023),
+>
+> ...
+>
+> F. The county shall not provide Child Welfare Child Care utilizing the Child Care
+> Development Fund.
+
+### S2854. CCCAP termination: twenty-two unexplained absences with two failed contacts during the eligibility period; unpaid parent fees and absences at redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.114.A.5, B.2, B.11 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. County departments must terminate child care authorizations and cases during
+> the eligibility period for any of the following eligibility-related reasons:
+>
+> ...
+>
+> 5. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within a thirty (30) day period and two (2) failed
+> documented attempts to contact the adult caretaker or teen parent have
+> been made. The thirty (30) day period must account for temporary breaks
+> or reported breaks in care; or
+>
+> ...
+>
+> B. Child care authorizations and/or cases must be terminated for the following
+> eligibility-related reasons at re-determination only:
+>
+> 1. Eligible child exceeds age limits;
+>
+> 2. Adult caretaker(s) or teen parent(s) did not pay parent fees, an acceptable
+> payment schedule has not been worked out between the child care
+> provider(s) and adult caretaker(s) or teen parent(s), or the adult
+> caretaker(s) or teen parent(s) has/have not followed through with the
+> payment schedule;
+>
+> ...
+>
+> 11. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within thirty (30) days of the re-determination date and two
+> (2) failed documented attempts to contact the adult caretaker or teen
+> parent have been made. The thirty (30) day period must account for
+> temporary breaks or reported breaks in care.
+
+### S2855. CCCAP parent fees: loss of eligibility for unpaid fees at redetermination or the end of the Colorado Works Child Care period; ineligible until the fees are paid, arranged, or good faith is found
+
+Document: D-87
+
+8 CCR 1403-1 3.124.N (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> N. Loss of eligibility for child care benefits may occur at re-determination or at the
+> end of the twelve (12) month Colorado Works Child Care Period if the adult
+> caretaker(s) or teen parent(s) do not pay their parent fees; do not make
+> acceptable payment arrangements with the child care providers; or do not follow
+> through with the arrangements during the twelve (12) month eligibility period.
+> Notice of termination for such loss of eligibility shall be given in accordance with
+> rule section 3.114. Child care providers shall report nonpayment of parent fees
+> no later than sixty (60) calendar-days after the end of the month following the
+> month the parent fees are due unless the Department-approved county policy
+> requires it earlier. If a household's benefits are terminated at re-determination for
+> non-payment of parent fees, that household will remain ineligible until:
+>
+> 1. Delinquent parent fees are paid in full;
+>
+> 2. Adequate payment arrangements are made with the child care provider to
+> whom the fees are owed and an agreement is signed by both parties; or
+>
+> 3. County determination of verified good faith efforts to make payment to the
+> child care provider(s), when the client was unable to locate the child care
+> provider(s).
+
+### S2856. CCCAP eligible households: a separated caretaker with a temporary order is not found ineligible on the other spouse's or parent's resources
+
+Document: D-87
+
+8 CCR 1403-1 3.111.D.10 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 10. A separated primary adult caretaker or teen parent with a validly issued
+> temporary order for parental responsibilities or child custody shall not be
+> determined ineligible based on the other spouse’s or parent’s financial
+> resources.
+
+### S2857. CCCAP: enrollment in substance use disorder treatment is verified through self-attestation
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.4.d; 3.125.CC (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> d. The adult caretaker(s) or teen parent(s) shall submit verification of
+> active enrollment in their education or training activity at the time
+> of application; or, when beginning an education or training during
+> the eligibility period or at redetermination according to Department
+> policy. Adult Caretakers shall verify enrollment in a substance use
+> disorder workforce training activity through self-attestation
+> according to Department policy which can be found on the
+> Colorado Department of Early Childhood website at
+> https://cdec.colorado.gov/resources/cdec-memo-series.
+>
+> ...
+>
+> CC. According to Department policy, which can be found on the website at
+> https://cdec.colorado.gov/resources/cdec-memo-series, counties must verify an
+> adult caretaker or teen parent’s enrollment in a substance use disorder workforce
+> training activity through self-attestation and must determine if the substance use
+> disorder program meets the definition outlined in rule section 3.103(EEEEE)
+> based on the adult caretaker or teen parent’s self-attestation.
+
+### S2858. CCCAP income exclusion: irregular income under ninety dollars in a calendar quarter
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.28 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 28. Irregular income in the certification period that totals less than ninety
+> dollars ($90) in any calendar quarter, such as slight fluctuations in regular
+> monthly income and/or that which is received too infrequently or irregularly
+> to be reasonably anticipated
+
+### S2859. LEAP: fraud penalties for individuals
+
+Document: D-86
+
+9 CCR 2503-7 3.751.563 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.751.563 Penalties for Individuals Who Are Found Guilty of Committing Fraud
+>
+> Individuals who are found guilty of committing fraud, pursuant to section 26-1-127, C.R.S., in a prior
+> program year shall be ineligible to participate in LEAP in the subsequent program year for the first
+> violation, two program years for the second violation, and permanently for the third violation.
+
+### S2860. LEAP income exclusion: earned income of children under eighteen residing with a parent or guardian
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.Q (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Q. Earned income of children under the age of eighteen (18) who are residing with a parent or
+> guardian;
+### S2800. Ukrainian humanitarian parolees: eligible for entitlement programs and other benefits available to refugees, to the same extent as refugees, while the parole is not terminated
+
+Document: D-260
+
+Pub. L. 117-128, title IV, sec. 401(a)-(b)(1) (8 U.S.C. 1101 note), as enacted May 21, 2022. https://www.govinfo.gov/content/pkg/PLAW-117publ128/html/PLAW-117publ128.htm
+
+>     Sec. 401. (a) <<NOTE: 8 USC 1101 note.>>  In General.--
+> Notwithstanding any other provision of law, a citizen or national of
+> Ukraine (or a person who last habitually resided in Ukraine) shall be
+> eligible for the benefits described in subsection (b) if--
+>             (1) such individual completed security and law enforcement
+>         background checks to the satisfaction of the Secretary of
+>         Homeland Security and was subsequently--
+>                     (A) <<NOTE: Time period.>>  paroled into the United
+>                 States between February 24, 2022 and September 30, 2023;
+>                 or
+>                     (B) <<NOTE: Effective date.>>  paroled into the
+>                 United States after September 30, 2023 and--
+>                           (i) is the spouse or child of an individual
+>                       described in subparagraph (A); or
+>                           (ii) <<NOTE: Determination.>>  is the parent,
+>                       legal guardian, or primary caregiver of an
+>                       individual described in subparagraph (A) who is
+>                       determined to be an unaccompanied child under
+>                       section 462(g)(2) of the Homeland Security Act of
+>                       2002 (6 U.S.C. 279(g)(2)) or section 412(d)(2)(B)
+>                       of the Immigration and Nationality Act (8 U.S.C.
+>                       1522(d)(2)(B)); and
+>             (2) such individual's parole has not been terminated by the
+>         Secretary of Homeland Security.
+>
+>     (b) Benefits.--An individual described in subsection (a) shall be
+> eligible for--
+>             (1) resettlement assistance, entitlement programs, and other
+>         benefits available to refugees admitted under section 207 of the
+>         Immigration and Nationality Act (8 U.S.C. 1157) to the same
+>         extent as such refugees, but shall not be eligible for the
+>         program of initial resettlement authorized by section 412(b)(1)
+>         of the Immigration and Nationality Act (8 U.S.C. 1522(b)(1));
+
+### S2801. Afghan humanitarian parolees: eligible for entitlement programs and other benefits available to refugees until March 31, 2023, or the term of parole, whichever is later
+
+Document: D-261
+
+Pub. L. 117-43, div. C, sec. 2502(a)-(b)(1) (8 U.S.C. 1101 note), as enacted September 30, 2021. https://www.govinfo.gov/content/pkg/PLAW-117publ43/html/PLAW-117publ43.htm
+
+>     Sec. 2502. <<NOTE: Eligibility. 8 USC 1101 note.>> (a) In General.--
+> Notwithstanding any other provision of law, a citizen or national of
+> Afghanistan (or a person with no nationality who last habitually resided
+> in Afghanistan) shall be eligible for the benefits described in
+> subsections (b) and (c) if--
+>             (1) such individual completed security and law enforcement
+>         background checks to the satisfaction of the Secretary of
+>         Homeland Security and was subsequently--
+>                     (A) <<NOTE: Time period.>>  paroled into the United
+>                 States between July 31, 2021, and September 30, 2022; or
+>                     (B) <<NOTE: Effective date.>>  paroled into the
+>                 United States after September 30, 2022, and--
+>                           (i) is the spouse or child (as such term is
+>                       defined under section 101(b) of the Immigration
+>                       and Nationality Act (8 U.S.C. 1101(b)) of an
+>                       individual described in subparagraph (A); or
+>                           (ii) is the parent or legal guardian of an
+>                       individual described in subparagraph (A) who is
+>                       determined to be an unaccompanied child under 6
+>                       U.S.C. 279(g)(2); and
+>             (2) such individual's parole has not been terminated by the
+>         Secretary of Homeland Security.
+>
+>     (b) Benefits.--An individual described in subsection (a) shall be
+> eligible for--
+>             (1) <<NOTE: Expiration date.>> resettlement assistance,
+>         entitlement programs, and other benefits available to refugees
+>         admitted under section 207 of the Immigration and Nationality
+>         Act (8 U.S.C. 1157) until March 31, 2023, or the term of parole
+
+### S2802. Colorado Works: refugees are qualified non-citizens exempt from the five-year bar
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.K (rule version 12030, effective 07/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> K. Assistance for Eligible Refugees
+>
+> Refugees are qualified non-citizens exempt from the five-year bar.
+
+### S2803. SSI: unearned income not counted - real property and food tax refunds, one-third of a child's support, uniformed services special pay, gifts to a child with a life-threatening condition, AmeriCorps payments, State veterans' annuities
+
+Document: D-207
+
+20 CFR 416.1124(c)(1), (11), (19), (21), (23), (24) (eCFR as of 2026-11-19), incorporated by 9 CCR 2503-5 3.520.786.K. https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> (c) Other unearned income we do not count. We do not count as unearned income—
+> (1) Any public agency's refund of taxes on real property or food;
+> ...
+> (11) One-third of support payments made to or for you by an absent parent if you are a child;
+> ...
+> (19) Special pay received from one of the uniformed services pursuant to 37 U.S.C. 310;
+> ...
+> (21) Gifts from an organization as described in section 501(c)(3) of the Internal Revenue Code of 1986 which is exempt from taxation under section 501(a) of such Code, to, or for the benefit of, an individual who has not attained 18 years of age and who has a life-threatening condition. We will exclude any in-kind gift that is not converted to cash and cash gifts to the extent that the total gifts excluded pursuant to this paragraph do not exceed $2000 in any calendar year. In-kind gifts converted to cash are considered under income counting rules in the month of conversion;
+> ...
+> (23) AmeriCorps State and National and AmeriCorps National Civilian Community Corps cash or in-kind payments to AmeriCorps participants or on AmeriCorps participants' behalf. These include, but are not limited to: Food and shelter, and clothing allowances;
+> (24) Any annuity paid by a State to a person (or his or her spouse) based on the State's determination that the person is:
+> (i) A veteran (as defined in 38 U.S.C. 101); and
+> (ii) Blind, disabled, or aged.
+
+### S2804. SSI: unearned income not counted - educational grants, home-grown food, disaster assistance, Alaska Longevity Bonus, interest on burial funds and dedicated accounts, support and maintenance assistance, housing assistance, travel tickets, relocation assistance
+
+Document: D-207
+
+20 CFR 416.1124(c)(3)-(5), (7), (9), (10), (14)-(16), (18), (20) (eCFR as of 2026-11-19), incorporated by 9 CCR 2503-5 3.520.786.K. https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> (c) Other unearned income we do not count. We do not count as unearned income—
+> ...
+> (3) Any portion of a grant, scholarship, fellowship, or gift used or set aside for paying tuition, fees, or other necessary educational expenses. However, we do count any portion set aside or actually used for food or shelter;
+> (4) Food which you or your spouse raise if it is consumed by you or your household;
+> (5) Assistance received under the Disaster Relief and Emergency Assistance Act and assistance provided under any Federal statute because of a catastrophe which the President of the United States declares to be a major disaster. See § 416.1150 for a more detailed discussion of this assistance, particularly the treatment of in-kind support and maintenance received as the result of a major disaster;
+> ...
+> (7) Alaska Longevity Bonus payments made to an individual who is a resident of Alaska and who, prior to October 1, 1985: met the 25-year residency requirement for receipt of such payments in effect prior to January 1, 1983; and was eligible for SSI;
+> ...
+> (9) Any interest earned on excluded burial funds and any appreciation in the value of an excluded burial arrangement which are left to accumulate and become a part of the separate burial fund. (See § 416.1231 for an explanation of the exclusion of burial assets.) This exclusion from income applies to interest earned on burial funds or appreciation in the value of excluded burial arrangements which occur beginning November 1, 1982, or the date you first become eligible for SSI benefits, if later;
+> (10) Certain support and maintenance assistance as described in § 416.1157;
+> ...
+> (14) The value of any assistance paid with respect to a dwelling unit under—
+> (i) The United States Housing Act of 1937;
+> (ii) The National Housing Act;
+> (iii) Section 101 of the Housing and Urban Development Act of 1965;
+> (iv) Title V of the Housing Act of 1949; or
+> (v) Section 202(h) of the Housing Act of 1959;
+> (15) Any interest accrued on and left to accumulate as part of the value of an excluded burial space purchase agreement. This exclusion from income applies to interest accrued on or after April 1, 1990;
+> (16) The value of any commercial transportation ticket, for travel by you or your spouse among the 50 States, the District of Columbia, the Commonwealth of Puerto Rico, the Virgin Islands, Guam, American Samoa, and the Northern Mariana Islands, which is received as a gift by you or your spouse and is not converted to cash. If such a ticket is converted to cash, the cash you receive is income in the month you receive the cash;
+> ...
+> (18) Relocation assistance provided you by a State or local government that is comparable to assistance provided under title II of the Uniform Relocation Assistance and Real Property Acquisition Policies Act of 1970 that is subject to the treatment required by section 216 of that Act;
+> ...
+> (20) Interest or other earnings on a dedicated account which is excluded from resources. (See § 416.1247);
+
+### S2805. SSI: who is considered a child (under 18, or under 22 and a student; not married; not the head of a household)
+
+Document: D-262
+
+20 CFR 416.1856 (eCFR as of 2026-11-19), the definition of a child for 20 CFR 416.1124(c)(11), which 9 CCR 2503-5 3.520.786.K incorporates. https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1856
+
+> § 416.1856 Who is considered a child.
+> We consider you to be a child if—
+> (a)(1) You are under 18 years old; or
+> (2) You are under 22 years old and you are a student regularly attending school or college or training that is designed to prepare you for a paying job;
+> (b) You are not married; and
+> (c) You are not the head of a household.
+
+### S2806. Adult Financial: transfers without fair consideration - several transfers, a returned resource, and the period for each resource transferred
+
+Document: D-80
+
+9 CCR 2503-5 3.520.76.D.5-6, E (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 5. The penalty period begins the month following the date of transfer. If there
+> are multiple transfers, the period of ineligibility would begin the month
+> following the end date of the first transfer’s period of ineligibility.
+>
+> 6. If the client transfers a resource and the entire resource is returned in the
+> same month, the period of ineligibility does not apply.
+>
+> a. If the client transfers a resource and the entire resource is returned
+> in a subsequent month, the period of ineligibility continues through
+> the month the resource is returned (even if the resource is returned
+> on the first day of the month). The period of ineligibility due to the
+> transfer ends as of the month following the month the resource is
+> returned. In that month, the returned resource is counted towards
+> the client's resource limit.
+>
+> b. If the entire resource is not returned, the period of ineligibility does
+> not end. Instead, recompute the uncompensated value based on
+> how much of the resource was not returned. Then, recompute the
+> period of ineligibility based on the adjusted uncompensated value.
+> If additional funds are subsequently returned, it will be necessary to
+> recompute the uncompensated value again.
+>
+> E. A period of ineligibility can be from 1 month up to a maximum of 36 months
+> depending on the amount of the uncompensated value for each resource
+> transferred. A period of ineligibility cannot exceed 36 months regardless of the
+> ...
+> uncompensated value of the transfer. Months in the period of ineligibility can
+> coincide with months of ineligibility for other reasons.
+

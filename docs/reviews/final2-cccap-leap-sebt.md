@@ -67,3 +67,50 @@ CCCAP: CO-984, 985, 986, 987, 988, 989, 991, 993, 994, 995, 1289, 1290, 1440, 14
 
 ## Open questions
 Class lines confirmed against D-87, D-86, D-173, D-88, D-117: OQ-121, 162, 163, 253, 254, 255, 377, 532, 535, 536, 540, 550, 551, 561, 562, 610, 612, 614, 680, 682. Exceptions: OQ-681 point (4) misclassified (3.752.22.A answers it, N-8); OQ-377's body accepts the Head Start over-exception (N-9); OQ-162 carries J.28, which is not a county-plan question.
+
+## Disposition (round 2)
+
+Fix track on `e1e75a4` (commits `3447921`, `d6f47d2`, `a344959`, `cf99432`, `7ad4ab1`, `1463512`). Governing texts re-read: 8 CCR 1403-1 (D-87, version 12658, re-fetched from the Secretary of State on 2026-11-22, the quoted passages unchanged), 9 CCR 2503-7 (D-86, D-173), 7 CFR 292.14 (D-117). New excerpts S2850-S2860. Every probe household was re-run against the fixed volume; the four most useful are now cases CO-133 to CO-136, with hand derivations.
+
+### P1
+
+| ID | Disposition |
+|---|---|
+| N-1 | Fixed `3447921`: `cccap_parent_fee_within_period_cap` (CO-4052) caps the assessed fee at a change or a transition at `cccap_parent_fee_at_last_determination` (CO-4050) unless a B.1, B.3 or B.4 circumstance is recorded (`cccap_parent_fee_increase_basis`, CO-4051); CO-1290 reads it. Whether a permitted increase reassesses the whole fee: OQ-712. RV-S6 → CO-133: fee 137 → 47. |
+| N-2 | Fixed `3447921`: `cccap_protective_services_income` (CO-994) is the sum over the household's eligible children, one figure for every member; CO-2578 reads it directly; CO-989-T3b retitled. RV-S1 → CO-134: aunt and child both `eligible_protective_services`, fee 3. |
+| N-3 | Fixed `3447921`: the eligible-child row precedes the protective services and Colorado Works rows; Child Welfare Child Care needs a child of eligible age needing part-day care (`cccap_is_child_of_eligible_age_needing_care`, CO-4056, split from CO-980) but not citizenship. Owner choice recorded: OQ-710. RV-S8: `eligible_colorado_works` → `ineligible_child` (rule test CO-989-T15). |
+| N-4 | Fixed `3447921`: `cccap_parent_fee_nonpayment_unresolved` (CO-4054; 3.114.B.2, 3.124.N; at a redetermination or a new application) and `cccap_child_has_unexplained_absences_finding` (CO-4055; 3.114.A.5, B.11, 3.117.A.3; not at an application) give `ineligible`; at a transition a caretaker's `cw_is_serving_ipv_disqualification` (CO-1730) gives `ineligible_disqualified` (3.117.A.1). Per-child vs whole-case reading of the absences: OQ-711. Tests CO-989-T11 to T14. |
+| N-5 | Fixed `3447921`: CO-1709 deducts costs only when verified, by receipts (CO-3927) or other documents (`self_employment_costs_verified_by_other_documents`, CO-4062, new neutral fact; LEAP keeps its receipts-only rule). RV-S2 → CO-136: income 2,000 → 5,000, `eligible_low_income` → `ineligible_income`. |
+| N-6 | Fixed `3447921`: `cccap_protective_services_verification_due_date` (CO-4061) gives sixty days for the children's income and immunization (CO-4057, CO-4058) and six months for citizenship, age and identity (CO-4059), fifteen for anything else; CO-1451 reads it; the immunization element is its own item (CO-4060). CO-2873 asks no unearned income of a Colorado Works referral household (3.116.C) or of a protective services caretaker, and CO-1445 no earned income in a protective services case (3.119.A). Starting day: OQ-716. RV-S1 → CO-134: `past_due` → `pending`, due 2026-11-30. |
+| N-7 | Fixed `3447921`, `d6f47d2`: CO-982 joins a spouse only when both are adult caretakers, and a stepparent only as an adult caretaker; 3.111.D.10 is `has_temporary_order_for_parental_responsibilities` (CO-4063, neutral) read by `cccap_household_income_members` (CO-4064, with CO-4070), which CO-985 and CO-2578 sum over. CO-982-T4: a childless couple is no longer joined ([p1, p2] → [p1]); new CO-982-T5. |
+| N-8 | Fixed `d6f47d2`: one-time receipts in the thirty days before the application (CO-4065 to CO-4068, neutral) read by `leap_person_one_time_income` (CO-4069); a month-only receipt near the application is unknown rather than misplaced. OQ-681 point (4) and its Assumption corrected. RV-S4 → CO-135: 3,967 eligible → 8,967 ineligible. CO-125's prize is dated October 20 and stated for the thirty days; its LEAP total is unchanged (5,167). |
+| N-9 | Fixed `a344959`: `sebt_child_verification_exception_ground` (CO-4072) carries only the 292.14(f)(1) grounds; individual certification split from CO-2852 into `is_individually_certified_for_free_or_reduced_price_meals` (CO-4071); CO-1296 adds Head Start and individual certification for categorical eligibility; OQ-377 body updated. |
+| N-10 | Fixed `3447921`: `cccap_protective_services_income_requirement_waived` (CO-4053) satisfies CO-995 (3.119.C). |
+
+### P2 and P3
+
+| Finding | Disposition |
+|---|---|
+| SUD self-attestation (G.4.d, 3.125.CC) | Fixed `7ad4ab1`: `cccap_is_in_sud_treatment_activity` (CO-4074, split from CO-984); CO-1441 asks no activity document of a caretaker in that activity. |
+| LEAP fraud penalty, non-applicant member (3.751.563) | Open question OQ-714 (state policy choice; texts checked); CO-3929 names it. |
+| LEAP 3.752.23.Q | Fixed `d6f47d2`: a child's earned income, self-employment included, is excluded only when residing with a parent or guardian (CO-1002-T6). |
+| Verification triggers CO-2873, CO-2874 | Fixed `3447921`, `d6f47d2`: both read the program's countable unearned income (CO-3916, CO-3926), so prizes, lump sums and thirty-day facts count and excluded income does not. |
+| J.28 under OQ-162 | Fixed `7ad4ab1`: modeled (CO-4075 to CO-4077) and read by CO-3916; its month-versus-thirty-days reading is OQ-713; OQ-162 keeps only the county-plan periods. |
+| CO-984 minimum wage on calendar-month wages | Accepted, not changed: 3.111.G.1.b divides "gross income ... by the number of hours worked" and names no period; the hours fact is stated by the calendar month, so the month's wages over the month's hours is the consistent ratio, where the thirty-day wages over the month's hours would mix periods. |
+| F-18 (civil unions, legally separated; 3.751.2.D.3, E) | Deferred P2: needs a relationship role, and the role list in volume.yaml is shared by every program (fix with the household track). |
+| F-20 (school-meal household stated twice) | Deferred P2: deriving the size and income from the economic-unit role changes SUN Bucks' application figures for every case; fix with a size check in a later round. |
+| F-21, "all children" half | Fixed `a344959`: CO-1699 tests every child of the economic unit. F-21's (f)(9) half also fixed `cf99432`: CO-1299 issues nothing while a sample-selected application is pending; for-cause selection is CO-4073. |
+| V-16 (P3: gift income on declaration, document-type limits) | Deferred P3: a worker check on the document received; no item change. |
+| V-17 (P3: LEAP verification applicability) | Fixed `cf99432`: CO-2586 also requires a primary heating source and no homelessness. CO-91: LEAP verification `past_due` → `not_applicable`, counts 1 → 0; CO-92: `complete` → `not_applicable` (no primary heating source, so LEAP denies whatever is documented). |
+| Stale text (CO-991, CO-3916, CO-875) | Fixed `7ad4ab1`. |
+| Open-question exceptions (OQ-681 point (4), OQ-377 body, OQ-162 carrying J.28) | Fixed: OQ-681 `d6f47d2`, OQ-377 `a344959`, OQ-162 `7ad4ab1`. |
+
+### Changed expectations
+- CO-91 (p1, p2): `leap_verification_status` past_due → not_applicable; p1 `leap_pending_verification_count` 1 → 0, `leap_zero_income_verification_is_pending` true → false, `leap_person_pending_verification_count` 1 → 0; p2 `leap_pending_verification_count` 1 → 0 (V-17; derivation in the case).
+- CO-92 (p1, p2): `leap_verification_status` complete → not_applicable (V-17).
+- CO-125: inputs only (the prize dated October 20, stated for the thirty days); every expectation unchanged.
+- Rule test CO-982-T4: [p1, p2] → [p1] (N-7).
+- New cases CO-133 to CO-136 (hand derivations in each).
+
+### New open questions
+OQ-710 (Child Welfare Child Care and the eligible child), OQ-711 (absences: child or case), OQ-712 (fee cap and permitted increases), OQ-713 (J.28 by month or thirty days), OQ-714 (LEAP fraud penalty of a non-applicant), OQ-716 (start of the protective services periods). All state policy choices with the texts checked.

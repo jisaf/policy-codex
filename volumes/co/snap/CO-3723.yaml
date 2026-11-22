@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The total monthly farm self-employment loss (snap_farm_self_employment_loss) of the members of this person's SNAP household whose income counts in full - the eligible members and a member disqualified and counted in full - to be offset against the household's other income (10 CCR 2506-1 4.403.12.E; 7 CFR 273.11(a)(2)(ii))."
-precision: "A prorated ineligible member's farm loss is not offset: the rule offsets a loss against income \"received by the household\", and only a share of that member's income is the household's. An ineligible student is not a household member (CO-3714)."
+precision: "A prorated ineligible member's farm loss is not offset: the rule offsets a loss against income \"received by the household\", and only a share of that member's income is the household's. Final verification pass 2 P2-4: the other reading, offsetting the household's pro rata share of that member's loss, is not taken; neither 4.403.12.E nor 7 CFR 273.11(a)(2)(ii) speaks of a share of a loss, and 4.411.1.B.2 and 273.11(c)(2)(ii) prorate the member's income, which a loss is not. An ineligible student is not a household member (CO-3714)."
 derived: [sum, [filter, snap_household_members_other_than_ineligible_students, [any, [not, [of, [P], snap_is_ineligible_member]], [of, [P], snap_is_disqualified_member_counted_in_full]]], [of, [P], snap_farm_self_employment_loss]]
 sources: [S2510, S2511, S1602]
 implemented: engine

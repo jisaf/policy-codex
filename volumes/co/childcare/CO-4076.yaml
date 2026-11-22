@@ -1,0 +1,19 @@
+id: CO-4076
+name: "CCCAP: excluded irregular income"
+identifier: cccap_excluded_irregular_income
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The person's infrequent or irregular income for the month (infrequent_or_irregular_income_received, CO-3822) when the infrequent or irregular income of the calendar quarter containing the month totals less than cccap_irregular_income_quarterly_limit (CO-4075), which 8 CCR 1403-1 3.111.J.28 excludes; otherwise 0."
+precision: "The quarter's total is infrequent_or_irregular_income_in_quarter (CO-4077). The fact is the month's receipt; where the case states the prior thirty days' unearned income (unearned_income_received_prior_thirty_days, CO-3911), the month read is the month determined, so a receipt in the thirty days but in the month before is not taken out (OQ-713). J.28's \"slight fluctuations in regular monthly income\" are left to the stated amounts: a figure that already averages the fluctuation (CO-3914) carries none."
+derived: [case, [["<", infrequent_or_irregular_income_in_quarter, cccap_irregular_income_quarterly_limit], [otherwise, infrequent_or_irregular_income_received, 0]], [else, 0]]
+sources: [S2858]
+open: [OQ-713]
+nearest: [CO-3827, CO-4077]
+implemented: engine
+tags: [income]
+rationale: "Second-pass review P2 (J.28): the irregular-income exclusion was not modeled (cccap_household_income's precision sent it to OQ-162, a county-plan question, though J.28 is the state rule's). The neutral fact Adult Financial reads for its own exclusion (CO-3822) states the receipt; this is CCCAP's exclusion, with CCCAP's $90."
+tests:
+  - {id: CO-4076-T1, title: "A $40 gift in November, nothing else in the quarter: excluded", as_of: "2026-11-01", month: "2026-11", given: {}, persons: {p1: {months: {"2026-11": {infrequent_or_irregular_income_received: 40}}}}, expect: 40}
+  - {id: CO-4076-T2, title: "$60 in October and $40 in November: $100 in the quarter, counted", as_of: "2026-11-01", month: "2026-11", given: {}, persons: {p1: {months: {"2026-10": {infrequent_or_irregular_income_received: 60}, "2026-11": {infrequent_or_irregular_income_received: 40}}}}, expect: 0}

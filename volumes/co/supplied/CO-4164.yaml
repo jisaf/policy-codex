@@ -1,0 +1,14 @@
+id: CO-4164
+name: "Room and board payments are foster care payments"
+identifier: room_and_board_payments_are_foster_care
+kind: supplied
+type: yes/no
+scope: person-month
+program: All
+meaning: "The payments room_and_board_payments_received states for the month are foster care payments for a foster child or adult placed in the person's home."
+precision: "If not stated, SNAP reads it as false."
+supplied_by: "The child welfare or adult foster care placement record."
+sources: [S2963]
+tags: [income, snap]
+rationale: "Final verification pass 2 N-5: 4.403.2.B.3 (S2963) disregards the entire payment \"if the boarder income received is from foster care payments\". child_welfare_payment_type (CO-2847) is stated on the foster child, who need not be a person of the case, so the payments say whether they are foster care."
+nearest: [CO-4161, CO-2847]

@@ -1,0 +1,12 @@
+id: CO-4019
+name: "Adult Financial: age under which a person is a child under the SSI rules"
+identifier: af_ssi_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "A person under this age is a child for the SSI unearned income exclusions 9 CCR 2503-5 3.520.786.K incorporates (20 CFR 416.1856(a)(1): \"You are under 18 years old\"; 416.1124(c)(21): \"an individual who has not attained 18 years of age\")."
+value: 18
+sources: [S2803, S2805]
+tags: [cash, income]
+rationale: "Final cash review 2, N-4: 416.1124(c)(11) excludes one-third of child support \"if you are a child\", and 416.1856 defines a child; the age is a parameter."

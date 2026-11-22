@@ -1,0 +1,14 @@
+id: CO-4155
+name: "SNAP: resource transfer made knowingly to qualify"
+identifier: snap_resource_transfer_was_to_qualify
+kind: supplied
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The county has established that the transfer resource_transfer_date states was made knowingly for the purpose of qualifying, or attempting to qualify, for SNAP, and that it is not a transfer 10 CCR 2506-1 4.408.2.A exempts: a resource sold or traded at or near fair market value, a transfer between members of the same SNAP household (an ineligible non-citizen or disqualified member whose resources count included), or a transfer for another reason."
+precision: "If not stated, SNAP reads this as false. A transfer of resources that would not otherwise affect eligibility (4.408.2.A.1) is not excepted here: it leaves no amount over the limit (snap_resource_transfer_disqualification_months, CO-4158). The value transferred is resource_transfer_uncompensated_value (CO-3835), which already leaves out what the person received for it."
+supplied_by: "The county's finding on the application's transfer-of-resources questions (4.408.2) and its notice of denial or adverse action."
+sources: [S2961, S2962]
+tags: [snap, resources]
+rationale: "Final verification pass 2 N-4 (docs/reviews/final2-snap.md): 4.408.2 (S2961, S2962) disqualifies a household that knowingly transferred resources to qualify, and the volume had no item, no fact and no open question for it, so such a household was found eligible. The transfer itself is the neutral resource_transfer_date (CO-3834) and resource_transfer_uncompensated_value (CO-3835); the purpose is the county's finding."
+nearest: [CO-3834, CO-3835]
