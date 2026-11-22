@@ -146,8 +146,8 @@ Legend: **C** = carried by (items checked against the text; "ok" means the deriv
 |---|---|
 | G.1.a (resident) | C: CO-2250 (read by CO-554, CO-562 and the other outcomes) |
 | G.1.b.i.1-4 (patients in public medical institutions, LTC residents, parolees, small public residences may enroll) | C: CO-1105 excludes medical institutions, ICFs, community residences of 16 or fewer, and non-correctional settings |
-| G.1.b.i.5.a-d (community corrections with freedom of movement) | **F-15** (P2) |
-| G.1.b.ii (inmates: benefits limited to inpatient stays and reentry services) | **F-07** (P1): carried only for continuous eligibility children (CO-554 `incarceration_limited`, CO-2205) |
+| G.1.b.i.5.a-d (community corrections with freedom of movement) | C: CO-4566, CO-1105 (coverage round; was F-15) |
+| G.1.b.ii (inmates: benefits limited to inpatient stays and reentry services) | C: CO-554 `incarceration_limited` for every inmate who meets a category (coverage round; was F-07) |
 | G.1.c (IMD or TB institution, ages 21-64) | C: CO-1179, CO-1104, read by CO-562, CO-1150, ok |
 | G.1.d-f (financial and other requirements; disability definition) | C: by each category item |
 | G.1.g.i (citizen or national) | C: CO-1358, CO-509 |
@@ -210,7 +210,7 @@ Legend: **C** = carried by (items checked against the text; "ok" means the deriv
 | J.1.a-d (choice between MAGI and SSI) | NA: the volume evaluates both |
 | J.2, J.2.a (SSI and OAP-A recipients not in the required household; MAGI exception) | C: CO-500 includes SSI recipients by tax rules; CO-502 excludes `ssi_income`, ok |
 | J.3 (AND payment not counted for MAGI) | C: CO-502 excludes `adult_financial_cash_income`, ok |
-| K.1, K.1.a (sponsor deeming; pregnant and child exception) | **F-03 GAP (P1)** |
+| K.1, K.1.a (sponsor deeming; pregnant and child exception) | C: CO-4551 (with 8 U.S.C. 1631(e)-(f): CO-4552 to CO-4555), CO-503. OQ-812 (coverage round; was F-03 GAP) |
 | K.2-K.6, K.8-K.11 (income definitions, self-employment, room and board, unearned income) | C for MAGI only where 8.100.4.C does not govern: CO-024 (K.9.b.i.1 depreciation for MAGI), CO-1703/1704 (non-MAGI pass). K.11.a.i.1 routes MAGI to 8.100.4 |
 | K.7, K.7.a-c (Difficulty of Care, MAGI) | **F-18** (P2) |
 | K.12-K.14 (stimulus, FPUC, tax refunds, EITC and CTC exempt) | NA: none is MAGI income or a modeled fact (expired or excluded by the tax code) |
@@ -222,9 +222,9 @@ Legend: **C** = carried by (items checked against the text; "ok" means the deriv
 | P.1 (redetermine at least every 12 months; review all bases) | C: CO-2455 (12, or 6 for expansion adults from 2027 under Pub. L. 119-21), CO-1566 |
 | P.2.a-b (ex parte review) | NA: renewal procedure |
 | P.3.a-e, h (forms, annuity disclosure, signature) | NA: procedure (annuity disclosure is in the non-MAGI pass) |
-| P.3.f-g (coverage kept if returned before the period ends; lost after) | **F-14** (P2) |
+| P.3.f-g (coverage kept if returned before the period ends; lost after) | NA: renewal procedure, recorded in docs/colorado-notes.md (coverage round; F-14) |
 | P.4.a-e (county processing times) | NA |
-| P.5, P.5.a-b (90-day reconsideration; effective date; three months retroactive) | **F-14** (P2) |
+| P.5, P.5.a-b (90-day reconsideration; effective date; three months retroactive) | C: the return date stated as ma_application_date (CO-088 precision), CO-4101, CO-4100 (coverage round; F-14) |
 | Q.1 (12-month continuous eligibility for children under 19) | C: CO-555, CO-556, CO-561, ok |
 | Q.1.a (without regard to changes) | C: CO-551, CO-554 order, ok |
 | Q.1.b.i-viii (exceptions; ii.1 limited incarceration benefit and reinstatement) | C: CO-2205, CO-561 (iv), CO-554 `incarceration_limited`, ok |
@@ -278,8 +278,8 @@ Legend: **C** = carried by (items checked against the text; "ok" means the deriv
 | C.2.b, b.i (explanation, then documentation; PHE text) | C: CO-1403 (`reasonable_explanation` facts CO-2239/2241); PHE text expired |
 | C.3 (self-employment ledger sufficient unless questionable) | C: CO-1403 (self-employment arm only when questionable), ok |
 | C.4 (current or previous monthly income) | C: CO-502-504 (the month) |
-| C.4.a (annualize self-employment, seasonal and commission income when ineligible monthly) | **F-04 GAP (P1)** |
-| C.5 (eligible if below 100% FPL by the APTC method) | **F-05 GAP (P1)** |
+| C.4.a (annualize self-employment, seasonal and commission income when ineligible monthly) | C: CO-4556, CO-4557, CO-4558, CO-4559, CO-4567, CO-504. OQ-810 (coverage round; was F-04 GAP) |
+| C.5 (eligible if below 100% FPL by the APTC method) | C: CO-4560 to CO-4564, CO-504. OQ-811 (coverage round; was F-05 GAP) |
 | D.1, D.1.a-b (5-point disregard as the last step, only above the threshold, per program, for titles XIX and XXI) | C: CO-183, CO-539, CO-545-548, CO-704 (CHP+), CO-1155, ok |
 | E.1 (household by relationship to the filer) | C: CO-500 |
 | E.1.a.i-iii (filer household) | C: CO-500 arm 1. **F-02** (spouse not living in the home) |
@@ -336,7 +336,7 @@ Legend: **C** = carried by (items checked against the text; "ok" means the deriv
 | 50.1-50.2, 50.4-50.5, 50.8-50.12, 50.15, 50.17 | NA: names, entities, procedure |
 | 50.3 (child under 19) | C: CO-705 via CO-564. F-26 (P3) |
 | 50.6 (dependent child) | C: CO-544 (shared definition) |
-| 50.7 (effective date = application date) | **F-09** (with 430.1) |
+| 50.7 (effective date = application date) | C: CO-4565, CO-707 (coverage round; was F-09) |
 | 50.13 (household per 8.100.4.E) | C: CO-500, CO-704 (OQ-62 resolved). F-01 and F-02 carry over |
 | 50.14, 50.18 (income per 8.100.4.C) | C: CO-503, CO-504 |
 | 50.16 (presumptive eligibility) | C: CO-708 |
@@ -374,10 +374,10 @@ Legend: **C** = carried by (items checked against the text; "ok" means the deriv
 | 330.1 (AI/AN exempt) | C: CO-1989, CO-1990, ok |
 | 330.2 (5% of income yearly cap) | C: CO-2229, CO-2231, ok |
 | 330.3.A-D (no copayments for preventive services) | C: CO-2230, ok |
-| 330.4 (Prenatal Care Program clients exempt) | **F-08** (P1) |
+| 330.4 (Prenatal Care Program clients exempt) | C: CO-1990 via CO-2407 (coverage round; was F-08) |
 | 400.1, 410.1-410.5 (election; MCO selection) | NA: plan enrollment administration |
 | 420.1-420.2 (all eligible children enrolled in the same MCO) | NA: enrollment administration |
-| 430.1.A-B (effective on the later of the application month or the month eligible) | **F-09** (P1) |
+| 430.1.A-B (effective on the later of the application month or the month eligible) | C: CO-4565, CO-707 (coverage round; was F-09) |
 | 430.2, 430.2.A, A.i (12-month continuous eligibility; transition to Medicaid) | C: CO-2404, CO-2403, CO-2402, CO-707, ok |
 | 430.2.B.i-viii (exceptions; limited incarceration benefit) | C: CO-2404 via CO-2205, CO-707 `eligible_incarceration_limited`, ok |
 | 430.3 (pregnant span: application month through 12 months after the birth) | C: CO-2406, CO-2407, ok |
@@ -450,3 +450,38 @@ Each family question was checked for its class and for whether the "Checked" tex
 | RV-INM | adult in a government-run jail, no income | `adult` `eligible` | eligible with benefits limited (G.1.b.ii) |
 | RV-PP | CHP+ prenatal span from 2026-03, birth 2026-08-10, 221.8% | November office visit copayment $10 | $0 (330.4) |
 | RV-CHPB | child, application 2026-11-02, 205.2% | CHP+ `eligible_child` in 2026-08 | not eligible before November (430.1) |
+
+## Disposition (coverage round)
+
+Fix agent, 2026-11-22. Commits on the worktree branch: 2299782 (documents, OQ-50/302/513/540), 08f72e8 (P1 fixes), and the final coverage-round commit (P2/P3, cases, notes, this section). The three medicaid.gov documents were fetched as D-315 (SPA CO-13-0045-MM1), D-316 (SPA CO-13-051-MM) and D-317 (verification plan); D-318 (26 CFR 1.36B-1) and D-319 (45 CFR 155.410) from eCFR; excerpts S3350-S3364. Every probe household of section 6 was re-run on the fixed ledger with the result the reviewer's "Rule" column gives (RV-SE once its annual facts are stated: CO-182).
+
+| ID | Disposition |
+|---|---|
+| F-01 | Fixed (08f72e8): CO-500's non-filer arm takes single steps (spouse; own child or stepchild under 19, including the spouse's child; parents and siblings for a person under 19). Tests CO-500-T9, T11; case CO-180 (RV-GM). |
+| F-02 | Fixed (08f72e8): CO-500 crosses a spouse edge in the filer and dependent arms only where the spouse is in lives_with (unstated: living together). CO-500-T10, T12; case CO-181 (RV-SPA). CO-01 and CO-02 p1/p2 changed: households [p1] and [p2] (were [p1, p2]), sizes 1, incomes 2,030 and 1,180 (were 3,210), p2 ma_family_planning_status ineligible_income (was limited_family_planning; 1,180 / 1,803.33 = 65.4%, not over 133%). |
+| F-03 | Fixed (08f72e8): ma_sponsor_deemed_income (CO-4551) added to the sponsored person's own household income (CO-503), with 1631(e) indigence (CO-4554, CO-4555) and 1631(f) battery (CO-4552) and the 12-month parameter (CO-4553). Reading recorded as OQ-812. Case CO-183. |
+| F-04 | Fixed (08f72e8): expected_annual_income (CO-4556), has_self_employment_seasonal_or_commission_earnings (CO-4557), the counted-members group factored from CO-503 (CO-4558), ma_annualized_household_income (CO-4559), ma_budget_period_household_income_pct_fpl (CO-4567, the lower of monthly and annualized). OQ-810. Case CO-182. |
+| F-05 | Fixed (08f72e8): premium tax credit family (CO-4560), its income ratio against the preceding open enrollment's guideline (CO-4561, CO-4562), the 100% limit (CO-4563) and test (CO-4564); CO-504 takes that figure where lower. Read through 42 CFR 435.603(i) (substitution): OQ-811. Case CO-182. |
+| F-06 | Fixed (08f72e8): ma_is_under_adult_upper_age_through_birthday_month (CO-4550) in CO-548, CO-539, CO-552 and CO-2439. CO-548-T7, T8 (RV-65). |
+| F-07 | Fixed (08f72e8): CO-554 reports incarceration_limited for any inmate who meets a category or is in a pregnancy coverage period (emergency-only stays emergency_only). CO-554-T91 to T93 (RV-INM). |
+| F-08 | Fixed (08f72e8): CO-1990 reads chp_is_in_prenatal_coverage_period. CO-1990-T4; case CO-184 (RV-PP: copayment $0). |
+| F-09 | Fixed (08f72e8): chp_month_is_before_coverage_period (CO-4565) gates CO-707 first (new option ineligible_before_coverage_period; aid-codes no_code). CO-707-T22 (RV-CHPB). |
+| F-10 | Fixed (2299782): OQ-50 resolved from SPA S25 (S3362); CO-544 cites it. |
+| F-11 | Fixed (2299782): OQ-540 partly resolved (Medicaid: primary responsibility, S3362); open for CCCAP only; CO-2606 cites S3362. |
+| F-12 | Fixed (2299782): verification plan D-317 read; OQ-302 reclassified as a state policy choice (no base for the percentage in either text); CO-1402 makes attested-above with data-below compatible (CO-1402-T5 false to true). |
+| F-13 | Fixed (2299782, 08f72e8): OQ-513 resolved from SPA S21 (S3363): the Adult Group, no 65-and-over group; CO-2439 reads CO-4550 (T15, T16). Not quite as the reviewer reported: the page image shows "Individuals above 133% FPL under Age 65" selected, not unselected; the answer is the same. |
+| F-14 | Recorded: renewal coverage continuation (P.3.f-g) is procedure, in docs/colorado-notes.md; a reconsideration-period return is stated as ma_application_date (CO-088 precision), which gives P.5.b's effective date and retroactive request. |
+| F-15 | Fixed: new neutral fact is_in_community_corrections_with_freedom_of_movement (CO-4566), excluded in CO-1105 (shared item; default false, no change where unstated). CO-1105-T8. |
+| F-16 | Deferred P2: applying G.6.a's ending events to the Legal Immigrant Prenatal period needs an item for the G.6 population (CO-509's lawfully residing arm); non-residency is already carried and an inmate is now incarceration_limited (F-07), so the remaining events (death, household, location, withdrawal, reasonable opportunity, error) are rare in a pregnancy period. |
+| F-17 | Fixed: new fact is_required_to_file_tax_return_excluding_social_security (CO-4568), read first by CO-4558 (CO-4558-T4); CO-078's meaning unchanged (precision points to it). |
+| F-18 | Deferred P2: Difficulty of Care payments need a payment fact and three facts about the care recipient (full-time co-residence, HCBS or Buy-In enrollment, foster counts); no stored case has such payments. |
+| F-19 | Fixed: CO-707 precision records the reading (§ 430.2.B's closed list governs during a continuous eligibility period; IMD outside it is ineligible_institution). |
+| F-20 | Fixed: CO-1413 statute_override citing 42 CFR 435.956(b)(2)(ii)(B) (S841). |
+| F-22 | Open question OQ-813 (CHP+ 90 days in § 430.3.A.i against 30 days through § 130.1); CO-2219, CO-2407 list it. |
+| F-23 | Fixed: CO-1395 precision. |
+| F-24 | Fixed: citizenship_verification_document_type (CO-1306) precision names the conditions. |
+| F-25 | Fixed: CO-509 statute_override extended (8 U.S.C. 1613(a), S176). |
+| F-26 | Fixed: CO-705 precision. |
+| F-27 | Already carried: hospital_pe declaration fact CO-3154's meaning names "a legally appointed guardian or conservator"; no change. |
+
+New open questions: OQ-810 (annualization period and scope), OQ-811 (C.5 as 435.603(i) substitution), OQ-812 (sponsor income measure), OQ-813 (CHP+ income reasonable opportunity period). Resolved: OQ-50, OQ-513; partly resolved: OQ-540; reclassified: OQ-302.

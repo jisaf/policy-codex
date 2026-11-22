@@ -1,0 +1,21 @@
+id: CO-4552
+name: "Medicaid: battered spouse or child rule stops sponsor deeming"
+identifier: ma_sponsor_deeming_battery_exception_applies
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether 8 U.S.C. 1631(f) stops the attribution of a sponsor's income to this non-citizen for Medical Assistance: the person (or the person's child), or the person's parent where the person is a child, was battered or subjected to extreme cruelty by a spouse or parent or a member of that family, the county has found the battery substantially connected to the need for benefits, and the person does not live with the batterer; for federal_sponsor_deeming_exception_months from the finding, and after them where a court or the immigration service has recognized the battery."
+precision: "Reads the neutral battery facts every program's rule reads (is_victim_of_battery_or_extreme_cruelty, CO-2363; battery_substantial_connection_finding_date, CO-2717; battery_is_recognized_by_court_or_immigration_service, CO-2719; lives_with_batterer, CO-2718), with the same shape as SNAP's snap_battered_non_citizen_sponsor_exemption_applies (CO-2335) but federal_sponsor_deeming_exception_months from 1631(f)(1)(A). After the twelve months 1631(f)(1)(B) stops only the batterer's income; the volume stops all of it, since the batterer is the sponsor or the sponsor's spouse in the cases 1631(f) reaches and the facts do not say who the batterer is. 10 CCR 2505-10 § 8.100.3.K.1 does not restate 1631(f); the federal statute governs Medicaid deeming directly (1631(a): \"any Federal means-tested public benefits program\"). Unstated battery facts are read as no battery."
+derived: [all, [not, [otherwise, lives_with_batterer, false]], [any, [otherwise, is_victim_of_battery_or_extreme_cruelty, false], [exists_related, [child], [otherwise, [of, [P], is_victim_of_battery_or_extreme_cruelty], false]]], [any, [otherwise, ["<", [det_month], [months_after, federal_sponsor_deeming_exception_months, [month_of, battery_substantial_connection_finding_date]]], false], [otherwise, battery_is_recognized_by_court_or_immigration_service, false]]]
+sources: [S3355]
+implemented: engine
+tags: [ma, immigration, income]
+open: [OQ-812]
+rationale: "Coverage review F-03 (2026-11-22): the new Medicaid sponsor deeming (ma_sponsor_deemed_income, CO-4551) needs 1631(f)'s battered spouse and child rule, which the reviewer named; SNAP's item reads SNAP's own period parameter and Colorado Works and Adult Financial apply their own rules, so none serves Medicaid."
+tests:
+  - {id: CO-4552-T1, as_of: "2026-11-10", title: "Battered by the sponsoring husband, living apart, finding in June: within twelve months", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: false, battery_substantial_connection_finding_date: "2026-06-15", battery_is_recognized_by_court_or_immigration_service: false}, relationships: [], expect: true}
+  - {id: CO-4552-T2, as_of: "2026-11-10", title: "Still living with the batterer (1631(f)(2))", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: true, battery_substantial_connection_finding_date: "2026-06-15"}, relationships: [], expect: false}
+  - {id: CO-4552-T3, as_of: "2026-11-10", title: "Finding in 2025, no order: the twelve months have passed", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: false, battery_substantial_connection_finding_date: "2025-08-01", battery_is_recognized_by_court_or_immigration_service: false}, relationships: [], expect: false}
+  - {id: CO-4552-T4, as_of: "2026-11-10", title: "Finding in 2025, recognized by a court order", given: {is_victim_of_battery_or_extreme_cruelty: true, lives_with_batterer: false, battery_substantial_connection_finding_date: "2025-08-01", battery_is_recognized_by_court_or_immigration_service: true}, relationships: [], expect: true}
+  - {id: CO-4552-T5, as_of: "2026-11-10", title: "No battery stated", given: {}, relationships: [], expect: false}

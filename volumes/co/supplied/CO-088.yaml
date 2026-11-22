@@ -6,7 +6,7 @@ type: calendar date
 scope: person
 program: Medicaid
 meaning: The date the person's (or their household's) Medical Assistance application was filed, the date 10 CCR 2505-10 8.100.3.E.1 and 42 CFR 435.915(a) measure the three-month retroactive coverage period backward from.
-precision: The date recorded when the Single Streamlined Application is filed (CBMS/PEAK), not the date of a later eligibility determination.
+precision: "The date recorded when the Single Streamlined Application is filed (CBMS/PEAK), not the date of a later eligibility determination. Coverage review F-14: a redetermination form and the requested information returned during the 90-day reconsideration period after a termination (10 CCR 2505-10 § 8.100.3.P.5; 10 CCR 2505-3 § 140.2.B) is stated as the application date, since P.5.b makes coverage effective on the first day of the month the form was returned, with up to three months of retroactive coverage on request (ma_retroactive_coverage_requested, CO-4100); keeping coverage while a timely renewal is processed (P.3.f-g) is procedure (docs/colorado-notes.md)."
 supplied_by: Single Streamlined Application filing date (CBMS/PEAK).
 sources: []
 tags: [ma, magi]

@@ -1,0 +1,20 @@
+id: CO-4559
+name: "Medicaid: annualized MAGI household income"
+identifier: ma_annualized_household_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "This person's MAGI household income for the month with the income of each counted member who has self-employment, seasonal or commission earnings (has_self_employment_seasonal_or_commission_earnings) taken as one twelfth of that member's expected income for the year (expected_annual_income) in place of the month's income: the annualized figure 10 CCR 2505-10 § 8.100.4.C.4.a applies to an applicant found ineligible on monthly income whose household has such earnings."
+precision: "C.4.a annualizes \"self-employment, seasonal employment, and commission-based employment income\"; the volume annualizes the whole income of a member who has such earnings, since a steady income of the same member is the same each month and its twelfth is the month's amount. A member with such earnings whose expected annual income is not stated keeps the month's income, as does every other member, so the figure equals ma_magi_household_income (CO-503) when nothing is annualized; it includes the lottery spread and sponsor income CO-503 adds for this person. The year is the calendar year of the determination (expected_annual_income, CO-4556; OQ-810). The rounding is CO-503's. ma_magi_household_income_pct_fpl (CO-504, through CO-4567) takes the lower of the monthly and annualized figures, which is C.4.a's order: the annualized figure is reached only when the monthly one is ineligible."
+derived: [round, [+, ma_magi_household_income, [sum, [filter, ma_magi_household_income_members, [otherwise, [of, [P], has_self_employment_seasonal_or_commission_earnings], false]], [otherwise, ["-", ["/", [of, [P], expected_annual_income], 12], [of, [P], ma_person_magi_income]], 0]]]]
+sources: [S3356]
+implemented: engine
+tags: [ma, magi, income]
+open: [OQ-810]
+rationale: "Coverage review F-04 (2026-11-22): no item annualized income, so a self-employed adult with one high month was ineligible in that month though the year's income is within the standard (RV-SE). No existing item states an annual income."
+tests:
+  - {id: CO-4559-T1, month: "2026-11", as_of: "2026-11-10", title: "Coverage review F-04 (RV-SE): $3,000 net in November, $11,998 for the year - a twelfth is $1,000", given: {ma_magi_household_income: 3000, ma_magi_household_income_members: [p1], has_self_employment_seasonal_or_commission_earnings: true, expected_annual_income: 11998, ma_person_magi_income: 3000}, expect: 1000}
+  - {id: CO-4559-T2, month: "2026-11", as_of: "2026-11-10", title: "A wage-earning spouse's income stays monthly; the self-employed member is annualized", given: {ma_magi_household_income: 5000, ma_magi_household_income_members: [p1, p2], has_self_employment_seasonal_or_commission_earnings: true, expected_annual_income: 12000, ma_person_magi_income: 3000}, others: {p2: {has_self_employment_seasonal_or_commission_earnings: false, ma_person_magi_income: 2000}}, expect: 3000}
+  - {id: CO-4559-T3, month: "2026-11", as_of: "2026-11-10", title: "No such earnings stated: the monthly figure", given: {ma_magi_household_income: 2400, ma_magi_household_income_members: [p1], ma_person_magi_income: 2400}, expect: 2400}
+  - {id: CO-4559-T4, month: "2026-11", as_of: "2026-11-10", title: "Self-employed with no annual figure stated: the monthly figure", given: {ma_magi_household_income: 2400, ma_magi_household_income_members: [p1], has_self_employment_seasonal_or_commission_earnings: true, ma_person_magi_income: 2400}, expect: 2400}

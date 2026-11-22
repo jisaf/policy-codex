@@ -1,0 +1,15 @@
+id: CO-4563
+name: "Medicaid: premium tax credit methodology income limit"
+identifier: ma_premium_tax_credit_methodology_income_limit_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The share of the poverty level below which an applicant ineligible on MAGI household income is found financially eligible when income is computed by the premium tax credit methodology: 100% (1.00) (10 CCR 2505-10 § 8.100.4.C.5; 42 CFR 435.603(i))."
+versions:
+  - from: "2014-01-01"
+    value: 1
+    source: S3357
+sources: [S3357, S3358]
+tags: [ma, magi, income]
+rationale: "Coverage review F-05 (2026-11-22): the C.5 test (ma_meets_premium_tax_credit_income_test, CO-4564) compares with this figure; figures are parameters, not literals."

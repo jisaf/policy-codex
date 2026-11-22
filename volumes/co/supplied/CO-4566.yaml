@@ -1,0 +1,13 @@
+id: CO-4566
+name: In community corrections with freedom of movement
+identifier: is_in_community_corrections_with_freedom_of_movement
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person participates in a community corrections program or lives in a community corrections facility (a halfway house) with freedom of movement and association: the person is not precluded from working outside the facility in employment open to persons not under justice system supervision, can use community resources (libraries, grocery stores, recreation, education) at will, can seek health care in the community as other Medicaid enrollees do, or lives at home (house arrest) or at another location (10 CCR 2505-10 § 8.100.3.G.1.b.i.5)."
+precision: "A statement of the person's custody conditions, not of inmate status: is_inmate_of_public_institution (CO-1105) leaves such a person out of 42 CFR 435.1010's inmates, as G.1.b.i.5 enrolls them without the incarceration limit. Read as false where not stated. The setting itself is residence_setting_type (CO-3330)."
+supplied_by: "The application's living situation question; the community corrections program's or the court's record."
+sources: [S3361]
+tags: [ma, chp]
+rationale: "Coverage review F-15 (2026-11-22): § 8.100.3.G.1.b.i.5 enrolls community corrections participants with freedom of movement, and no fact stated it, so a government-run halfway house of more than 16 beds made its residents inmates (a continuous eligibility child moved to incarceration_limited, a CHP+ child ineligible_institution, and from the coverage round any inmate limited, CO-554)."

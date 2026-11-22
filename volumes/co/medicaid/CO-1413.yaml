@@ -7,6 +7,7 @@ scope: person
 program: Medicaid
 meaning: "The last day of the person's reasonable opportunity period: ma_reasonable_opportunity_period_days days after the notice is considered received, which is five days after the notice date, or a later date to which the eligibility site extended the period for a good faith effort (10 CCR 2505-10 § 8.100.3.H.10.a; 42 CFR 435.956(b)(2)(ii)(B))."
 precision: "The period runs from ma_reasonable_opportunity_notice_date (CO-1747), the notice that opens it, not the verification checklist date. An extension (ma_reasonable_opportunity_extended_end_date, CO-2221) replaces the end only when it is later (OQ-316)."
+statute_override: "Federal law overrides 10 CCR 2505-10 § 8.100.3.G.3.a.i and H.9.a, which start the reasonable opportunity period \"on the date of the Notice of Action\": 42 CFR 435.956(b)(2)(ii)(B) starts the 90 days on the date the notice is received, considered to be five days after the date on the notice, so the period ends five days later than Colorado's text gives (coverage review F-20)."
 derived: [case, [[otherwise, [">", ma_reasonable_opportunity_extended_end_date, [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, ma_reasonable_opportunity_notice_date]]], false], ma_reasonable_opportunity_extended_end_date], [else, [days_after, ma_reasonable_opportunity_period_days, [days_after, ma_notice_receipt_days, ma_reasonable_opportunity_notice_date]]]]
 sources: [S841, S853, S859, S1517]
 implemented: engine

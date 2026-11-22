@@ -20848,3 +20848,248 @@ Document: D-82
 > determine the non-citizen's eligibility without crediting
 > the non-citizen with the former spouse's quarters of
 > coverage.
+### S3350. Colorado Adult MAGI group: from 19 through the end of the month the individual turns 65 (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.1 (definitions; rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Adult MAGI Medical Assistance Group provides Medical Assistance to eligible adults from the age of 19 through the end of the month that the individual turns 65, who do not receive or who are ineligible for Medicare.
+
+### S3351. Colorado MAGI: eligible at any time in a month, eligible for the entire month (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.G.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. For MAGI Medical Assistance, any person who is determined to be eligible for Medical Assistance based on MAGI at any time during a calendar month shall be eligible for benefits during the entire month.
+
+### S3352. Colorado Medical Assistance: the income of an alien sponsor and the sponsor's spouse counts to the sponsored alien, except a pregnant woman or a child (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.K.1, K.1.a (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Income or resources of an alien sponsor or an alien sponsor’s spouse shall be countable to the sponsored alien effective December 19, 1997. Forms used prior to December 19, 1997, including but not limited to forms I-134 or I-136 are legally unenforceable affidavits of support. The attribution of the income and resources of the sponsor and the sponsor's spouse to the alien will continue until the alien becomes a U.S. citizen or has worked or can be credited with 40 qualifying quarters of work, provided that an alien crediting the quarters to the applicant/client has not received any public benefit during any creditable quarter for any period after December 31, 1996.
+>
+> a. Exception: When the sponsored alien is a pregnant woman or a child the income or resources of an alien sponsor or an alien sponsor’s spouse will not be countable to the sponsored alien.
+
+### S3353. Federal: sponsor attribution lasts until naturalization or 40 qualifying quarters
+
+Document: D-275
+
+8 U.S.C. 1631(b). https://www.law.cornell.edu/uscode/text/8/1631
+
+> (b) Duration of attribution periodSubsection (a) shall apply with respect to an alien until such time as the alien—
+> (1)
+> achieves United States citizenship through naturalization pursuant to chapter 2 of title III of the Immigration and Nationality Act [8 U.S.C. 1421 et seq.]; or
+>
+> (2)
+> (A)
+> has worked 40 qualifying quarters of coverage as defined under title II of the Social Security Act [42 U.S.C. 401 et seq.] or can be credited with such qualifying quarters as provided under section 1645 of this title, and (B) in the case of any such qualifying quarter creditable for any period beginning after December 31, 1996, did not receive any Federal means-tested public benefit (as provided under section 1613 of this title) during any such period.
+
+### S3354. Federal: after an indigence determination, the sponsor's income attributed is no more than the amount actually provided, for 12 months
+
+Document: D-275
+
+8 U.S.C. 1631(e). https://www.law.cornell.edu/uscode/text/8/1631
+
+> (e) Indigence exception
+> (1) In general
+>
+> For an alien for whom an affidavit of support under section 213A of the Immigration and Nationality Act [8 U.S.C. 1183a] has been executed, if a determination described in paragraph (2) is made, the amount of income and resources of the sponsor or the sponsor’s spouse which shall be attributed to the sponsored alien shall not exceed the amount actually provided for a period beginning on the date of such determination and ending 12 months after such date.
+>
+> (2) Determination described
+>
+> A determination described in this paragraph is a determination by an agency that a sponsored alien would, in the absence of the assistance provided by the agency, be unable to obtain food and shelter, taking into account the alien’s own income, plus any cash, food, housing, or other assistance provided by other individuals, including the sponsor. The agency shall notify the Attorney General of each such determination, including the names of the sponsor and the sponsored alien involved.
+
+### S3355. Federal: no sponsor attribution for a battered spouse or child for 12 months, and after 12 months (the batterer's income) where recognized by an order; not while the batterer lives in the household
+
+Document: D-275
+
+8 U.S.C. 1631(f). https://www.law.cornell.edu/uscode/text/8/1631
+
+> (f) Special rule for battered spouse and child
+> (1) In generalSubject to paragraph (2) and notwithstanding any other provision of this section, subsection (a) shall not apply to benefits—
+> (A)
+> during a 12 month period if the alien demonstrates that (i) the alien has been battered or subjected to extreme cruelty in the United States by a spouse or a parent, or by a member of the spouse or parent’s family residing in the same household as the alien and the spouse or parent consented to or acquiesced to such battery or cruelty, (ii) the alien’s child has been battered or subjected to extreme cruelty in the United States by the spouse or parent of the alien (without the active participation of the alien in the battery or cruelty), or by a member of the spouse’s or parent’s family residing in the same household as the alien when the spouse or parent consented or acquiesced to and the alien did not actively participate in such battery or cruelty, or (iii) the alien is a child whose parent (who resides in the same household as the alien child) has been battered or subjected to extreme cruelty in the United States by that parent’s spouse, or by a member of the spouse’s family residing in the same household as the parent and the spouse consented to, or acquiesced in, such battery or cruelty, and the battery or cruelty described in clause (i), (ii), or (iii) (in the opinion of the agency providing such public benefits, which opinion is not subject to review by any court) has a substantial connection to the need for the public benefits applied for; and
+>
+> (B)
+> after a 12 month period (regarding the batterer’s income and resources only) if the alien demonstrates that such battery or cruelty under subparagraph (A) has been recognized in an order of a judge or administrative law judge or a prior determination of the Immigration and Naturalization Service, and that such battery or cruelty (in the opinion of the agency providing such public benefits, which opinion is not subject to review by any court) has a substantial connection to the need for the benefits.
+>
+> (2) Limitation
+>
+> The exception under paragraph (1) shall not apply to benefits for an alien during any period in which the individual responsible for such battery or cruelty resides in the same household or family eligibility unit as the individual who was subjected to such battery or cruelty.
+
+### S3356. Colorado MAGI budget period: monthly income; annualized self-employment, seasonal and commission income for an applicant ineligible on monthly income (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.C.4, C.4.a (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. Budget Periods for MAGI-based Income determination – The financial eligibility of applicants for Medical Assistance shall be determined based on current or previous monthly household income and family size.
+>
+> a. Applicants who are found financially ineligible based on current or previous monthly household income and family size, and whose household has earned income from self-employment, seasonal employment, and/or commission-based employment, shall have their financial eligibility determined using annualized self-employment, seasonal employment, and commission-based employment income.
+
+### S3357. Colorado MAGI: eligible when income under the premium tax credit methodology is below 100% of the poverty level (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.4.C.5 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 5. If an applicant does not meet the financial eligibility requirements for Medical Assistance based on MAGI, but meets all other eligibility requirements, the applicant shall be found eligible for MAGI Medical Assistance if the applicant’s income, as calculated using the methodology for determining eligibility for Advanced Premium Tax Credits or Cost Sharing Reductions through the marketplace, is below 100% of the federal poverty level.
+
+### S3358. Federal: Medicaid financial eligibility under the premium tax credit household income when that income is below 100% FPL
+
+Document: D-34
+
+42 CFR 435.603(i). https://www.ecfr.gov/current/title-42/section-435.603
+
+> (i) If the household income of an individual determined in accordance with this section results in financial ineligibility for Medicaid and the household income of such individual determined in accordance with 26 CFR 1.36B-1(e) is below 100 percent FPL, Medicaid financial eligibility will be determined in accordance with 26 CFR 1.36B-1(e).
+
+### S3359. Premium tax credit: the taxpayer's family, household income, and the Federal poverty line of the preceding open enrollment period
+
+Document: D-318
+
+26 CFR 1.36B-1(d), (e), (h). https://www.ecfr.gov/current/title-26/section-1.36B-1
+
+> (d) Family and family size—(1)
+> In general.
+> A taxpayer's family means the individuals for whom a taxpayer properly claims a deduction for a personal exemption under section 151 for the taxable year. Family size means the number of individuals in the family. Family and family size may include individuals who are not subject to or are exempt from the penalty under section 5000A for failing to maintain minimum essential coverage.
+>
+> (2)
+> Special rule for tax years to which section 151(d)(5) applies.
+> For taxable years to which section 151(d)(5) applies, a taxpayer's family means the taxpayer, including both spouses in the case of a joint return, except for individuals who qualify as a dependent of another taxpayer under section 152, and any other individual for whom the taxpayer is allowed a personal exemption deduction and whom the taxpayer properly reports on the taxpayer's income tax return for the taxable year.
+>
+> (e)
+> Household income
+> —(1)
+> In general.
+> Household income means the sum of—
+>
+> (i) A taxpayer's modified adjusted gross income (including the modified adjusted gross income of a child for whom an election under section 1(g)(7) is made for the taxable year);
+>
+> (ii) The aggregate modified adjusted gross income of all other individuals who—
+>
+> (A) Are included in the taxpayer's family under paragraph (d) of this section; and
+>
+> (B) Are required to file a return of tax imposed by section 1 for the taxable year.
+>
+> (2)
+> Modified adjusted gross income.
+> Modified adjusted gross income means adjusted gross income (within the meaning of section 62) increased by—
+>
+> (i) Amounts excluded from gross income under section 911;
+>
+> (ii) Tax-exempt interest the taxpayer receives or accrues during the taxable year; and
+>
+> (iii) Social security benefits (within the meaning of section 86(d)) not included in gross income under section 86.
+>
+> (h)
+> Federal poverty line.
+> The Federal poverty line means the most recently published poverty guidelines (updated periodically in the
+> Federal Register
+> by the Secretary of Health and Human Services under the authority of 42 U.S.C. 9902(2)) as of the first day of the regular enrollment period for coverage by a qualified health plan offered through an Exchange for a calendar year. Thus, the Federal poverty line for computing the premium tax credit for a taxable year is the Federal poverty line in effect on the first day of the initial or annual open enrollment period preceding that taxable year.
+
+### S3360. Exchange annual open enrollment begins November 1 of the year before the benefit year
+
+Document: D-319
+
+45 CFR 155.410(e)(4)(i), (e)(5)(i). https://www.ecfr.gov/current/title-45/section-155.410
+
+> (i) Subject to paragraphs (e)(4)(ii) and (iii) of this section, the annual open enrollment period begins on November 1 of the calendar year preceding the benefit year and extends through January 15 of the benefit year.
+>
+> (i) The annual open enrollment period for all Exchanges must begin no later than November 1 and must end no later than December 31 of the calendar year preceding the benefit year.
+
+### S3361. Colorado Medical Assistance: inmates and community corrections participants (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.G.1.b (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> b. Meet the following requirements while being an inmate, in-patient or resident of a public institution:
+>
+> i) The following individuals, if eligible, may be enrolled for Medical Assistance
+>
+> 5. Individuals participating in community corrections programs or residents in community corrections facilities (“halfway houses”) who have freedom of movement and association which includes individuals who:
+>
+> a) are not precluded from working outside the facility in employment available to individuals who are not under justice system supervision;
+>
+> b) can use community resources (e.g., libraries, grocery stores, recreation, and education) at will;
+>
+> c) can seek health care treatment in the broader community to the same or similar extent as other Medicaid enrollees in the state; and/or
+>
+> d) are residing at their home, such as house arrest, or another location.
+>
+> ii) Inmates who are incarcerated in a correctional institution such as a city, county, state or federal prison may be enrolled, if eligible, with benefits limited to:
+>
+> a) an in-patient stay of 24 hours or longer in a medical institution; and
+>
+> b) 90 days prior to release, Reentry Demonstration Initiative Services authorized by the 1115 Demonstration Waiver titled Colorado Expanding the Substance Use Disorder (SUD) Continuum of Care and described in Attachment G to the Center for Medicare & Medicaid Services’ (“CMS”) Demonstration Approval dated October 14, 2025. Reentry Demonstration Initiative Services are only available while approved by CMS. CMS’s Demonstration Approval dated October 14, 2025 is hereby incorporated by reference.
+
+### S3362. Colorado State Plan S25: caretaker relative is an adult who assumes primary responsibility; the deprivation requirement is eliminated
+
+Document: D-315
+
+Colorado Medicaid State Plan Amendment CO-13-0045-MM1, page S25, page 1 (approved 12/18/2013, effective 01/01/2014), as transcribed from the page image. https://www.medicaid.gov/state-resource-center/medicaid-state-plan-amendments/downloads/co/co-13-0045-mm1.pdf
+
+> [selected] Options relating to the definition of caretaker relative (select any that apply):
+>
+> [not selected] The definition of caretaker relative includes the domestic partner of the parent or other caretaker relative, even after the partnership is terminated.
+>
+> [not selected] The definition of caretaker relative includes other relatives of the child based on blood (including those of half-blood), adoption or marriage.
+>
+> [selected] The definition of caretaker relative includes any adult with whom the child is living and who assumes primary responsibility for the dependent child's care.
+>
+> [selected] Options relating to the definition of dependent child (select the one that applies):
+>
+> [selected] The state elects to eliminate the requirement that a dependent child must be deprived of parental support or care by reason of the death, physical or mental incapacity, or absence from the home or unemployment of at least one parent.
+>
+> [not selected] The child must be deprived of parental support or care, but a less restrictive standard is used to measure unemployment of the parent (select the one that applies):
+
+### S3363. Colorado State Plan S21: the groups for which hospitals determine presumptive eligibility (the Adult Group; no group for individuals 65 and over)
+
+Document: D-316
+
+Colorado Medicaid State Plan Amendment CO-13-051-MM, page S21, page 1 (approved 07/21/2014, effective 01/01/2014), as transcribed from the page image. https://www.medicaid.gov/state-resource-center/medicaid-state-plan-amendments/downloads/co/co-13-051-mm.pdf
+
+> [selected] The eligibility groups or populations for which hospitals determine eligibility presumptively are:
+>
+> [selected] Pregnant Women
+> [selected] Infants and Children under Age 19
+> [selected] Parents and Other Caretaker Relatives
+> [selected] Adult Group, if covered by the state
+> [selected] Individuals above 133% FPL under Age 65, if covered by the state
+> [selected] Individuals Eligible for Family Planning Services, if covered by the state
+> [selected] Former Foster Care Children
+> [selected] Certain Individuals Needing Treatment for Breast or Cervical Cancer, if covered by the state
+> [not selected] Other Family/Adult groups:
+> [not selected] Eligibility groups for individuals age 65 and over
+> [not selected] Eligibility groups for individuals who are blind
+> [not selected] Eligibility groups for individuals with disabilities
+> [not selected] Other Medicaid state plan eligibility groups
+> [not selected] Demonstration populations covered under section 1115
+
+### S3364. Colorado verification plan: the reasonable compatibility threshold, and attested income above the standard with data below it taken as attested, with no further information requested
+
+Document: D-317
+
+Colorado, MAGI-Based Eligibility Verification Plan, Section A, Income (October 2015). https://www.medicaid.gov/sites/default/files/2019-12/colorado-verification-plan-template-final.pdf
+
+> Attested income will be verified through IEVS via post-eligibility. Paper documentation will only be
+> required if self attested income does not meet the standard for reasonable compatibility, AND if the
+> attestation does not meet the standard for a reasonable explanation.
+> The Department has chosen to set its reasonable compatibility threshold at 10% in order to align its
+> policies with those of Connect for Health Colorado, to maintain comparable patterns in eligibility
+> changes experienced under IEVS, and to achieve budget neutrality while remaining within its current
+> legislative authority. If the individual attests to income below the applicable income standard, and the
+> data source indicates income above the applicable standard, and the difference between the two is
+> greater than 10% then a reasonable explanation or paper documentation will be requested.
+>
+> Both are above, at or below
+> the applicable income
+> standard.
+>
+> When an individual attests to income above the applicable standard and data source indicates income
+> below the standard, the state will take the attestation and make the person ineligible and send to
+> Connect for Health Colorado (exchange) for APTC. Additional information will not be requested.

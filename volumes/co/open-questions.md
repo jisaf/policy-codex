@@ -241,7 +241,7 @@ Phase 7 sweep: the current § 8.100.4.G.3 (D-65, S639) states 68% (MAGI-equivale
 
 Open-question sweep (2026-11-21): 42 CFR 435.110(b)-(c) (S1235) makes the May 1, 1988 AFDC standard the minimum for the income standard the State sets in its plan; it is not a second test of the individual. The individual is tested only against the State plan standard (68%, § 8.100.4.G.3), as ma_is_parent_caretaker_category (CO-547) already does. No change.
 
-### OQ-50. Dependent-child deprivation criterion not modeled
+### OQ-50. Resolved: Colorado eliminated the dependent-child deprivation requirement (state plan page S25)
 
 Body: 42 CFR 435.4's "dependent child" definition has a second criterion beyond age - deprivation of parental support by reason of a parent's death, absence, physical or mental incapacity, or unemployment (defined as working fewer than 100 hours a month) - unless the state has elected to eliminate it. Colorado's MAGI conversion at 10 CCR 2505-10 8.100.4.G.3 states the Parents and Caretaker Relatives category's dependent-child requirement without restating a deprivation clause, consistent with MAGI's general elimination of AFDC-era deprivation and resource tests across the mandatory groups (8.100.4.G.2's Children's category and 8.100.4.G.4's Adults category likewise carry no deprivation language), so ma_is_dependent_child (CO-544) assumes Colorado elected to eliminate the deprivation requirement rather than silently applying a federal floor Colorado's own text does not restate. A reviewer with access to Colorado's approved 1902(e)(14) State Plan Amendment could confirm the election. Items: CO-544.
 
@@ -249,11 +249,9 @@ Phase 7 sweep: the current § 8.100.4.G.3 (D-65) still states no deprivation req
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: 42 CFR 435.4 (deprivation unless the State eliminates it in its plan) and the current § 8.100.4.G.3 (D-65), which states no deprivation requirement; the election is in the State plan, which no allowed host publishes; no published rule settles it.
 
-Class: state policy choice
-Owner: Medicaid policy owner, State plan coordinator
-Assumption: Colorado has dropped the old requirement that a child be deprived of a parent's support, so a dependent child is defined by age and living with the parent or caretaker alone.
+Resolution (coverage round, 2026-11-22; coverage review F-10): Colorado's MAGI state plan amendment CO-13-0045-MM1 (D-315, approved 12/18/2013, effective 01/01/2014), page S25 (Parents and Other Caretaker Relatives), selects "The state elects to eliminate the requirement that a dependent child must be deprived of parental support or care by reason of the death, physical or mental incapacity, or absence from the home or unemployment of at least one parent" (S3362). The assumption is confirmed: ma_is_dependent_child (CO-544) defines a dependent child by age and living with the parent or caretaker relative alone, and now cites S3362. No answer changes. Items: CO-544.
 
-Checked 2026-11-22: 42 CFR 435.4 (D-35), whose "dependent child" keeps deprivation of parental support unless the State eliminates it in its plan, and 10 CCR 2505-10 § 8.100.4.G.3 (D-65), which states no deprivation requirement. The election is Colorado's State plan choice, and no published Colorado rule states it; no published rule settles it.
+Checked 2026-11-22: Colorado State Plan Amendment CO-13-0045-MM1, page S25 (D-315, medicaid.gov, transcribed from the page image), 42 CFR 435.4 (D-35) and 10 CCR 2505-10 § 8.100.4.G.3 (D-65).
 
 ### OQ-51. Resolved: Caretaker relative's specific relation categories not separately tested
 
@@ -1217,7 +1215,7 @@ Body: 42 CFR 435.956(b)(2)(i) (S841) begins the reasonable opportunity period on
 
 Resolution (phase-9 fix round, docs/reviews/verification-phase-9.md): Resolved. 42 CFR 435.956(b)(2)(i) (S841) is a federal floor: the period begins when the notice is received, "considered to be 5 days after the date on the notice", and 8.100.3.G.3.a.i and H.9.a (S853, S859) cannot shorten it. The volume's reading stands; ma_reasonable_opportunity_period_end_date (CO-1413) is unchanged and no longer carries this question.
 
-### OQ-302. Partly resolved: reasonable compatibility for aged, blind and disabled applicants uses the program's standard; open: the 20% threshold (20% of what)
+### OQ-302. Partly resolved: reasonable compatibility for aged, blind and disabled applicants uses the program's standard, and attested income above the standard is taken as attested (verification plan); open: the 20% threshold (20% of what)
 
 Body: 10 CCR 2505-10 8.100.4.C.2.a.ii (S864) treats income as reasonably compatible when the attested amount is below the standard, the data amount above it, "and the difference is within the reasonable compatibility threshold percentage of 20%." The text does not say 20% of what. ma_income_is_reasonably_compatible (CO-1402) reads it as the data figure being no more than 20% above the attested figure (data at most attested times 1.2), compared as percentages of the poverty guideline for the MAGI household; a reading as 20 percentage points of FPL, or 20% of the standard, would give different answers near the line. The case the text leaves out (attested above the standard, data below) is treated as not reasonably compatible. 8.100.5.B.1.c (S867) applies the same test to aged, blind and disabled applicants against "the applicable Medical Assistance program income standard"; the item compares against ma_magi_highest_income_standard_pct for everyone, which is the wrong standard for an SSI-related determination. Items: CO-1350, CO-1402, CO-1403.
 
@@ -1225,12 +1223,13 @@ Phase-9 fix round: the second half is resolved. 8.100.5.B.1.c (S867) applies the
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.4.C.2.a.ii (S864, D-65), which does not say 20% of what; Colorado's Medicaid verification plan, which would, is not published on an allowed host; no published rule settles it.
 
-Class: blocked on a named document
+Coverage round (2026-11-22; coverage review F-12): Colorado's MAGI-based eligibility verification plan is on medicaid.gov (D-317, created October 2015) and was read. It states the test as "If the individual attests to income below the applicable income standard, and the data source indicates income above the applicable standard, and the difference between the two is greater than 10% then a reasonable explanation or paper documentation will be requested" (S3364): a 10% threshold, which the current rule's 20% replaces, and, like the rule, no base for the percentage. It also settles the case the rule leaves out: "When an individual attests to income above the applicable standard and data source indicates income below the standard, the state will take the attestation and make the person ineligible ... Additional information will not be requested." ma_income_is_reasonably_compatible (CO-1402) now treats attested-above with data-below as compatible, so ma_requires_verification_of_earned_income (CO-1403) asks for no documentation and the person is determined on the attested income (CO-1402-T5 changed from false to true). The question is reclassified from blocked to a state policy choice: the named document was read and does not state the base. Items: CO-1402, CO-1403.
+
+Class: state policy choice
 Owner: Medicaid policy owner, Eligibility operations owner
 Assumption: Income is reasonably compatible when the data figure is no more than 20 percent above the attested figure.
-Blocked on: Colorado's Medicaid and CHIP eligibility verification plan (42 CFR 435.945(j)), which states the reasonable compatibility threshold (not published on an allowed host; the medicaid.gov verification-plan pages tried on 2026-11-22 return 404)
 
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.2.a.ii (D-65, S864) gives "the reasonable compatibility threshold percentage of 20%" without saying 20 percent of what.
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.2.a.ii (D-65, S864) gives "the reasonable compatibility threshold percentage of 20%" without saying 20 percent of what; Colorado's MAGI-based eligibility verification plan (D-317, S3364) gives "the difference between the two is greater than 10%" without saying 10 percent of what. No published text states the base.
 
 ### OQ-303. The period for Medical Assistance documentation other than citizenship, identity and immigration status
 
@@ -1794,15 +1793,13 @@ Assumption: The needs standard for a young person's family size is the highest M
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.H.1.a and d (D-65, S1717) use "the MAGI needs standard for his/her family size", and neither the definitions of § 8.100.1 nor any other paragraph of § 8.100 (D-65) defines it. No published rule settles it.
 
-### OQ-513. Hospital presumptive eligibility: does "aged 19-65" include 65?
+### OQ-513. Resolved: hospital presumptive eligibility for adults is the Adult Group, 19 through the end of the month the person turns 65 (state plan page S21)
 
 Body: § 8.100.3.R.1.c and R.2.d (S1721, S1722) open hospital presumptive eligibility to "An applicant aged 19-65" at or below 133% FPL. The Adults group the category stands for ends at 65 (42 CFR 435.119(b)(1); ma_adult_upper_age_limit, CO-199), so ma_hospital_presumptive_eligibility_category (CO-2439) reads the range as 19 through 64. Read literally, a 65-year-old would qualify for a presumptive period in a group whose full determination excludes them. Items: CO-2439.
 
-Class: state policy choice
-Owner: Medicaid policy owner
-Assumption: Hospital presumptive eligibility for adults covers ages 19 through 64.
+Resolution (coverage round, 2026-11-22; coverage review F-13): Colorado's hospital presumptive eligibility state plan amendment CO-13-051-MM (D-316, approved 07/21/2014), page S21, lists the groups for which hospitals determine presumptive eligibility: the "Adult Group, if covered by the state" is selected and "Eligibility groups for individuals age 65 and over" is not (S3363; "Individuals above 133% FPL under Age 65, if covered by the state" is also selected, a group Colorado does not cover). R.2.d's "aged 19-65" is therefore the Adult Group as Colorado covers it: from 19 through the end of the month the person turns 65 (§ 8.100.1, S3350; the coverage round's reading of the Adults group, ma_is_under_adult_upper_age_through_birthday_month, CO-4550). ma_hospital_presumptive_eligibility_category (CO-2439) reads CO-4550, so a person whose 65th birthday fell earlier in the determination month is in the adult arm and a person past that month is not (CO-2439-T15, T16). The reviewer's note that the above-133% group was unselected is not borne out by the page image; it does not change the answer. Items: CO-2439, CO-4550.
 
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.R.1.c and R.2.d (D-65, S1721, S1722) say "aged 19-65"; 42 CFR 435.1110(a) and (c) (D-35) apply the requirements of 435.1102 and 435.1103 and let the State permit additional bases under its plan, and the adult group ends at 65 (42 CFR 435.119(b)(1)). Whether Colorado permits a 65-year-old a presumptive period is its plan choice; no published rule settles it.
+Checked 2026-11-22: Colorado State Plan Amendment CO-13-051-MM, page S21 (D-316, medicaid.gov, transcribed from the page image); 10 CCR 2505-10 § 8.100.1 and § 8.100.3.R.1.c, R.2.d (D-65, S3350, S1721, S1722); 42 CFR 435.1110 and 435.119(b)(1) (D-35, D-31).
 
 ### OQ-514. Funding source and CBMS aid codes
 
@@ -1935,7 +1932,7 @@ Assumption: For a protective services household whose children have income, the 
 
 Checked 2026-11-22: 8 CCR 1403-1 3.124.I.6 (D-87, S784) charges no fee "unless the child(ren) has countable income" without saying what the formula of 3.124.P is applied to, and 3.119.A (D-87) counts only the placed children's income. No published rule settles it.
 
-### OQ-540. "Assumes responsibility" (Medicaid caretaker relative) and "loco parentis" (CCCAP adult caretaker) read from one primary-responsibility role
+### OQ-540. Partly resolved: the Medicaid caretaker relative assumes primary responsibility (state plan S25); open: whether CCCAP's "loco parentis" is the same role
 
 Body: § 8.100.1 (S1500) makes a caretaker relative "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care"; 42 CFR 435.4 (S205) says "assumes primary responsibility". 8 CCR 1403-1 3.103.C (S481) names a "person who is acting in 'loco parentis'" with physical custody. Both read the neutral role `has_primary_responsibility_for` (ma_caretaker_relative_of, CO-2606; cccap_adult_caretaker_of, CO-2607). A relative who shares the care of a child while a parent is in the home (a grandmother) may meet Colorado's "assumes responsibility" but not 435.4's "primary" or CCCAP's "in loco parentis"; with one role, a case that states it makes her both a Medicaid caretaker relative and a CCCAP adult caretaker, and a case that does not makes her neither (same-word audit SW-3). The draft reads the role as primary responsibility for both. A second neutral role for shared responsibility, or the CCCAP owner's confirmation that loco parentis means the parent is absent, would settle it. Coverage round (docs/reviews/coverage-cccap.md, F-15): 8 CCR 1403-1 3.111.D.2 (S3254) speaks directly to a second caretaker: "Households are considered households with two adult caretakers or teen parents when two adults or teen parents contribute financially to the welfare of the child and/or assume parent rights, duties, and obligations similar to those of a biological parent, even without legal adoption." Its "and/or" makes financial contribution alone enough, where 3.103.C (S481) asks for both contribution and a parental role. The volume follows D.2, the more specific household-composition rule: an adult or teen parent in the home who contributes financially to the welfare of the child is an adult caretaker, read from the neutral role contributes_financially_to (CO-2607, CO-982, CO-992). Items: CO-2606, CO-2607, CO-982, CO-992.
 
@@ -1944,6 +1941,14 @@ Owner: Medicaid policy owner, Child care policy owner (CDEC)
 Assumption: One relative who has taken primary responsibility for a child's care is both the Medicaid caretaker relative and the child care adult caretaker; a relative who only shares the care with a parent at home is neither. For CCCAP, an adult in the home who contributes financially to the child's welfare is also an adult caretaker (3.111.D.2), whatever his parental role.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.1 (D-65, S1500: "assumes responsibility for the dependent child's care"), 42 CFR 435.4 (S205: "assumes primary responsibility") and 8 CCR 1403-1 3.103.C (D-87, S481: "loco parentis"); none says whether care shared with a parent in the home counts. No published rule settles it. Also checked (coverage round): 8 CCR 1403-1 3.111.D.1-2 and D.4-5 (D-87, S1409, S3254), which make financial contribution alone enough for a second caretaker and do not say whether a contributing adult must also hold a parental role; 3.103.C and D.2 are not reconciled in the rule.
+
+Coverage round (2026-11-22; coverage review F-11): the Medicaid half is settled. Colorado's MAGI state plan amendment CO-13-0045-MM1, page S25 (D-315), selects "The definition of caretaker relative includes any adult with whom the child is living and who assumes primary responsibility for the dependent child's care" (S3362), 42 CFR 435.4's "primary responsibility" (S205), and leaves the domestic partner and other-relatives options unselected. ma_caretaker_relative_of (CO-2606) reads has_primary_responsibility_for as primary responsibility, as the plan states; a relative who only shares the care with a parent at home is not a Medicaid caretaker relative. The open half is CCCAP's: whether "in loco parentis" (8 CCR 1403-1 3.103.C) is the same primary-responsibility role. Items: CO-2607.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: CCCAP's adult caretaker acting in loco parentis is a relative or other adult who has taken primary responsibility for the child's care (the role the Medicaid caretaker relative reads); one who only shares the care with a parent at home is not.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.1 (D-65, S1500), 42 CFR 435.4 (S205) and Colorado State Plan Amendment CO-13-0045-MM1, page S25 (D-315, S3362) settle the Medicaid half; 8 CCR 1403-1 3.103.C (D-87, S481: "loco parentis") does not say whether care shared with a parent in the home counts, and no published CCCAP text does.
 
 ### OQ-541. Resolved: facts that are one value for the application are stated once in the case's case_facts (case scope); household results are one value per unit
 
@@ -2483,3 +2488,43 @@ Blocked on: FNS's approval of a Colorado waiver of 7 CFR 273.2(f)(1)(i) for self
 Assumption: The household's statement of self-employment income, and an LLC or S-corporation owner's statement of the owner's income, are accepted unless questionable, as the State rule says.
 
 Checked 2026-11-22: 10 CCR 2506-1 4.506.C and 4.403.F (D-82, rule version 12718, effective 10/01/2026, re-downloaded 2026-11-22) and 7 CFR 273.2(f)(1)(i) (D-95). The FNS waivers page (fns.usda.gov, redirecting to fna.usda.gov/snap/waivers, fetched 2026-11-22) publishes only a five-row state administration waiver list (snap-state-administration-waivers-05122025.xlsx), with no Colorado entry and none on verification; its state waivers database link returns 404. CDHS's waiver correspondence is on cdhs.colorado.gov, which is refused.
+
+### OQ-810. MAGI annualized income (§ 8.100.4.C.4.a): which year, and which of a member's income is annualized
+
+Body: 10 CCR 2505-10 § 8.100.4.C.4.a (S3356) determines an applicant ineligible on monthly income, whose household has earned income from self-employment, seasonal employment or commission-based employment, "using annualized self-employment, seasonal employment, and commission-based employment income". The rule does not say which twelve months are annualized (the calendar year, the twelve months from the application, or the year before), nor whether a member's other income stays monthly beside the annualized part. The volume takes the member's expected income for the calendar year of the determination (expected_annual_income, CO-4556), the year the premium tax credit methodology of C.5 also uses, and annualizes the whole income of a member with such earnings (has_self_employment_seasonal_or_commission_earnings, CO-4557): a steady income's twelfth is its monthly amount, so the answers differ from annualizing the variable part alone only where the member's other income also varies. The annualized figure is reached only when the monthly figure is higher (ma_budget_period_household_income_pct_fpl, CO-4567). Coverage review F-04. Items: CO-4556, CO-4557, CO-4559, CO-4561, CO-4567.
+
+Class: state policy choice
+Owner: Medicaid policy owner, Eligibility operations owner
+Assumption: The annualized income is one twelfth of the member's expected income for the calendar year of the determination, for every member with self-employment, seasonal or commission earnings; other members' income stays monthly.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.4 and C.4.a (D-65, rule version effective 11/14/2026, S3356); 42 CFR 435.603(h) (D-34), which lets a State base current monthly income on a prorated portion of reasonably predictable income without fixing the period; Colorado's MAGI verification plan (D-317), which does not mention annualizing. No published rule states the period.
+
+### OQ-811. § 8.100.4.C.5 read through 42 CFR 435.603(i): the premium tax credit income replaces the MAGI figure
+
+Body: § 8.100.4.C.5 (S3357) says an applicant who does not meet the MAGI financial requirements but meets all others "shall be found eligible" if income under the premium tax credit methodology is below 100% of the poverty level. 42 CFR 435.603(i) (S3358), which C.5 implements, says Medicaid financial eligibility "will be determined in accordance with 26 CFR 1.36B-1(e)" - the tax-method income replaces the MAGI figure. The volume reads C.5 as 435.603(i): ma_magi_household_income_pct_fpl (CO-504) takes the premium tax credit figure (CO-4561) when it is below 100% and below the MAGI figure, and every category tests it against its own standard. Every MAGI standard but the Parents and Caretaker Relatives 68% is above 100%, so the readings differ only for a parent or caretaker relative between 68% and 100% on the tax method who is outside the Adults group (entitled to Medicare, or whose dependent child lacks minimum essential coverage): eligible under C.5's words, not under the substitution. The tax-method figure uses the guideline of the preceding open enrollment period (26 CFR 1.36B-1(h)), not the one MAGI uses. A person who neither files nor is claimed has no premium tax credit household and C.5 does not reach that person. Coverage review F-05. Items: CO-504, CO-4560, CO-4561, CO-4564.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: The premium tax credit household income replaces the MAGI figure in each category's test (42 CFR 435.603(i)); C.5 does not make a person eligible in a category whose standard that income exceeds.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.5 (D-65, S3357); 42 CFR 435.603(i) (D-34, S3358); 26 CFR 1.36B-1(d), (e), (h) (D-318, S3359); 45 CFR 155.410(e) (D-319, S3360); Colorado's MAGI state plan amendment CO-13-0045-MM1 (D-315), whose pages do not address 435.603(i). No published Colorado text says which group a person found eligible under C.5 is placed in.
+
+### OQ-812. Medicaid sponsor deeming (§ 8.100.3.K.1): which income of the sponsor counts
+
+Body: § 8.100.3.K.1 (S3352) makes the "Income or resources of an alien sponsor or an alien sponsor's spouse ... countable to the sponsored alien" until citizenship or 40 qualifying quarters, except for a pregnant woman or a child (K.1.a). It states no measure of the sponsor's income and no allowance for the sponsor's own household, as SNAP (10 CCR 2506-1 4.305.2.D), Colorado Works (9 CCR 2503-6 3.605.1.A.5) and Adult Financial (9 CCR 2503-5 3.534.D) each do for their programs. ma_sponsor_deemed_income (CO-4551) counts each sponsor's and sponsor's spouse's own MAGI-based income for the month (ma_person_magi_income, CO-502), with no allowance, adds it to the sponsored person's own MAGI household income, and leaves out a sponsor already in that household. It applies 8 U.S.C. 1631(e) (indigence: no more than the support actually provided, for twelve months) and 1631(f) (battered spouse or child), which K.1 does not restate. "A child" is read as under 19 through the birthday month. Coverage review F-03. Items: CO-4551, CO-4552, CO-503.
+
+Class: state policy choice
+Owner: Medicaid policy owner, Legal
+Assumption: The sponsor's and the sponsor's spouse's own MAGI-based monthly income counts in full to a sponsored adult who is not pregnant, added to the adult's own household income, with 1631(e) and (f) applied.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.K.1 and K.1.a (D-65, S3352); 8 U.S.C. 1631(a), (b), (e), (f) (D-275, S2970, S3353-S3355). Neither text states a measure of income or an allowance for Medicaid; no published Colorado text does.
+
+### OQ-813. CHP+ income reasonable opportunity period: 90 days (§ 430.3.A.i) or 30 days (§ 130.1 through § 8.100.4.C.2)
+
+Body: 10 CCR 2505-3 § 430.3.A.i ends a pregnant woman's CHP+ enrollment span if she "Fails to provide a reasonable explanation or paper documentation when self-attested income is not reasonably compatible with income information from an electronic data source, by the end of the 90-day reasonable opportunity period" (S1715). § 130.1 applies the minimal verification of 10 CCR 2505-10 § 8.100.4.B to CHP+, whose income reasonable opportunity period is "30 calendar days" (§ 8.100.4.C.2, S864), and the parallel Medicaid rule for a pregnant woman says "by the end of the 30day reasonable opportunity period" (§ 8.100.4.G.5.a.i). The CHP+ text names a 90-day period for income that no other CHP+ paragraph sets. chp_verification_due_date (CO-2219) gives every CHP+ income documentation request ma_income_reasonable_opportunity_days (30) days; the prenatal span item (chp_is_in_prenatal_coverage_period, CO-2407) leaves the A.i exception to the verification items, so a pregnant woman whose income documentation is 31 to 90 days late is reported past due under the 30-day reading and still enrolled under the 90-day one. Coverage review F-22. Items: CO-2219, CO-2407.
+
+Class: state policy choice
+Owner: CHP+ policy owner, Eligibility operations owner
+Assumption: CHP+ income documentation is due 30 days after the request for every enrollee, as § 130.1 applies § 8.100.4.C.2; § 430.3.A.i's "90-day" is read as the period of § 8.100.4.C.2 that § 130.1 adopts.
+
+Checked 2026-11-22: 10 CCR 2505-3 §§ 130.1 and 430.3.A.i (D-66, rule version effective 08/30/2026, S1715); 10 CCR 2505-10 § 8.100.4.C.2 and G.5.a.i (D-65, S864); 42 CFR 457.380 (D-98, S868), which leaves the period to the State. Colorado's MAGI verification plan (D-317) states a 90-day reasonable opportunity period for citizenship documentation, not for income. No published text reconciles the two figures.

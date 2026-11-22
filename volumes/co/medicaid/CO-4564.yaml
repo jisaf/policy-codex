@@ -1,0 +1,19 @@
+id: CO-4564
+name: "Medicaid: income below the limit under the premium tax credit methodology"
+identifier: ma_meets_premium_tax_credit_income_test
+kind: derived
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether this person, a tax filer or a claimed tax dependent, has household income under the premium tax credit methodology (ma_premium_tax_credit_household_income_pct_fpl) below ma_premium_tax_credit_methodology_income_limit_pct of the poverty level, so that § 8.100.4.C.5 and 42 CFR 435.603(i) determine the person's Medicaid financial eligibility on that income."
+precision: "False for a person who neither files nor is claimed (an empty premium tax credit family, CO-4560). Where a counted family member's expected annual income is not stated the figure is unknown and ma_magi_household_income_pct_fpl (CO-504) reads the test as not met, which leaves the MAGI answer as it was. The rate is compared, not rounded."
+derived: [all, [">", [count, ma_premium_tax_credit_family], 0], ["<", ma_premium_tax_credit_household_income_pct_fpl, ma_premium_tax_credit_methodology_income_limit_pct]]
+sources: [S3357, S3358]
+implemented: engine
+tags: [ma, magi, income]
+open: [OQ-811]
+rationale: "Coverage review F-05 (2026-11-22): no item applied § 8.100.4.C.5; CO-504 reads this test to substitute the premium tax credit figure where it is below the limit and below the MAGI figure."
+tests:
+  - {id: CO-4564-T1, as_of: "2026-11-10", title: "Coverage review F-05 (RV-SE): 76.7% under the methodology", given: {ma_premium_tax_credit_family: [p1], ma_premium_tax_credit_household_income_pct_fpl: 0.767}, expect: true}
+  - {id: CO-4564-T2, as_of: "2026-11-10", title: "At 100%: not below", given: {ma_premium_tax_credit_family: [p1], ma_premium_tax_credit_household_income_pct_fpl: 1}, expect: false}
+  - {id: CO-4564-T3, as_of: "2026-11-10", title: "A non-filer, not claimed", given: {ma_premium_tax_credit_family: []}, expect: false}
