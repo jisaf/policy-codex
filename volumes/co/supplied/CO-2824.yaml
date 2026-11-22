@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person
 program: AdultFinancial
-meaning: "Whether the county has received the State's completed medical disability certification for Aid to the Needy Disabled - State Only, the verification 9 CCR 2503-5 requires of a client's total disability (S1079, S1080). An award letter for another program's disability benefit or a VA rating statement is not this certification. A county record of the State form, recorded as an event."
+meaning: "Whether the county has received the State's completed medical disability certification for Aid to the Needy Disabled - State Only, the verification 9 CCR 2503-5 requires of a client's total disability (S1079, S1080). An award letter for another program's disability benefit or a VA rating statement is not this certification. A county record of the State form, recorded as an event. Coverage review P2-7: a certification counts only when it is dated no earlier than ninety days before the application or recertification (9 CCR 2503-5 3.541.1.A.2.b) and its medical re-examination date, at most twelve months after the application or redetermination, has not passed (A.4, C.2, S3220); an older or expired certification is recorded as not received."
 supplied_by: The county's case record of the completed state medical certification form.
-sources: [S1079, S1080]
+sources: [S1079, S1080, S3220]
 tags: [cash, and, verification, disability]
 rationale: "Same-word audit SW-15: disability_benefit_or_statement_document_received (CO-1333) verified two different elements, SNAP's benefit receipt or statement and AND-SO's medical certification, so an SSI award letter cleared the AND-SO element. AND-SO reads its own record."

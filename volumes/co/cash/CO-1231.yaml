@@ -7,9 +7,9 @@ scope: person
 program: AdultFinancial
 role: outcome
 meaning: Whether a burial benefit is available for the deceased person - the person died while receiving OAP, AND, HCA or Medicaid, the total cost of burial services (less an exempt plot) is at most $2,500, and the decedent's estate and the legally responsible persons' resources leave some cost unmet - per 9 CCR 2503-5 3.570.43.A and F.1.
-precision: The 30-day request window and its good-cause extension to one year (3.570.43.C) are procedural and not modeled.
-derived: [all, af_died_while_receiving_af_or_medicaid, [<=, ["-", burial_services_total_cost, burial_plot_cost_excluded_from_limit], af_burial_cost_limit], [">", af_burial_unmet_cost, 0]]
-sources: [S719, S721, S723]
+precision: "Coverage review P2-8: the request must be made within thirty days of the death, or within one year with the county's good cause (3.570.43.C, S3219): af_burial_request_is_timely (CO-4436), read as true when not stated. The one-year outer limit is a time bar on eligibility, not only procedure."
+derived: [all, af_died_while_receiving_af_or_medicaid, [otherwise, af_burial_request_is_timely, true], [<=, ["-", burial_services_total_cost, burial_plot_cost_excluded_from_limit], af_burial_cost_limit], [">", af_burial_unmet_cost, 0]]
+sources: [S719, S721, S723, S3219]
 open: [OQ-355]
 implemented: engine
 tags: [cash]

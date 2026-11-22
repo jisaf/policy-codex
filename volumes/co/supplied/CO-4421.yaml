@@ -1,0 +1,13 @@
+id: CO-4421
+name: "Adult Financial: extension of the replacement-proceeds exemption"
+identifier: af_replacement_proceeds_extension_granted
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The county department has found good cause, using the prudent person principle, to extend the exemption of replacement proceeds beyond the three- or six-month period (9 CCR 2503-5 3.520.77.E.3, F.3)."
+precision: "If not stated, Adult Financial reads this as false."
+supplied_by: "County department finding."
+sources: [S3206]
+tags: [cash, resources]
+rationale: "Coverage review F-6: 3.520.77.E.3 and F.3 (S3206) count the proceeds after the period \"unless good cause for an extension is determined by the county department\"."

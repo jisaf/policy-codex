@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The value of the person's cash and convertible assets: cash on hand, checking and savings accounts, certificates of deposit, electronic currency and cryptocurrency, stocks, bonds and mutual fund shares, and a lump sum still held. Not retirement accounts (retirement_accounts_value)."
-precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. Every program reads it; a person with none states 0. The parts of it SNAP excludes are also stated on their own (federal_tax_refunds_held_value, snap_eitc_held_while_participating_value, education_savings_accounts_value, liquid_resources_inaccessible_value, CO-4172 to CO-4175; final verification pass 2 N-8)."
+precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. Every program reads it; a person with none states 0. The parts of it SNAP excludes are also stated on their own (federal_tax_refunds_held_value, snap_eitc_held_while_participating_value, education_savings_accounts_value, liquid_resources_inaccessible_value, CO-4172 to CO-4175; final verification pass 2 N-8), and the parts Adult Financial exempts (state_tax_refunds_held_value, retroactive_ssa_benefits_held_value, able_account_value, business_cash_and_convertible_assets_value, replacement_proceeds_held_value, CO-4413 to CO-4417; coverage review F-6)."
 supplied_by: "Application (resources), verified by statements as each program requires."
 sources: [S1958, S2213, S2216]
 implemented: engine

@@ -1,0 +1,13 @@
+id: CO-4423
+name: "Equity of non-business income-producing property"
+identifier: nonbusiness_income_producing_property_equity_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The equity value (fair market value less encumbrances) of the person's real and personal property that produces rent or other income but is not used in a trade or business: houses or apartments rented out, land other than the home rented out, and the like. Not the home (home_equity) and not property in real_property_other_than_home_equity or vehicles_equity_value, which exclude property used to produce income."
+precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. Stated with nonbusiness_income_producing_property_net_annual_income (CO-4424). Where the person has more than one such property, the equity and the income are stated together. If not stated, Adult Financial reads it as 0."
+supplied_by: "The deed, the property's records and the most recent tax return, as the county establishes them."
+sources: [S3207]
+tags: [resources]
+rationale: "Coverage review F-7: 9 CCR 2503-5 3.520.77.D.4 (S3207) exempts $6,000 of the equity of non-business income-producing property that returns at least 6%, and counts the rest; the holdings facts leave such property out, so a rental house counted nothing."

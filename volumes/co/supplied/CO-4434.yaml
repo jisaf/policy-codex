@@ -1,0 +1,14 @@
+id: CO-4434
+name: "Adult Financial: pursuit of a potential resource"
+identifier: af_potential_resource_pursuit_status
+kind: supplied
+type: one of
+scope: person
+program: AdultFinancial
+options: [none, proof_pending, proof_received]
+meaning: "Where the county department referred the client to pursue a potential resource (to sell, liquidate or legally acquire it, 9 CCR 2503-5 3.520.71.H): proof_pending (the verification of the attempt has not been received and the client has not shown good cause), proof_received (received, or good cause shown); none when no referral was made."
+precision: "If not stated, Adult Financial reads this as none. Grant payments are not approved while the proof is pending (H); a refusal is af_refused_potential_resources_value."
+supplied_by: "County department record of the referral and the verification."
+sources: [S3210]
+tags: [cash, resources, verification]
+rationale: "Coverage review F-9: 3.520.71.H (S3210): \"Grant payments shall not be approved prior to verification of the attempt to sell, liquidate, or legally acquire a resource, unless the client demonstrates that good cause exists\"; no verification element stated it."

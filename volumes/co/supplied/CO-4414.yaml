@@ -1,0 +1,13 @@
+id: CO-4414
+name: "Retroactive SSI or Social Security benefits still held"
+identifier: retroactive_ssa_benefits_held_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of the person's liquid resources (liquid_resources_value) that is a retroactive payment of SSI or of Social Security retirement or disability benefits the person received in the month of the determination date or the nine calendar months before it, and still holds."
+precision: "Part of liquid_resources_value, not added to it; as of the determination date. The month's receipt is also income for the month (retroactive_social_security_lump_sum_received, retroactive_ssi_or_public_assistance_lump_sum_received). If not stated, Adult Financial reads it as 0."
+supplied_by: "The SSA award notice and the account statement, as the county establishes them."
+sources: [S3206]
+tags: [resources]
+rationale: "Coverage review F-6: 9 CCR 2503-5 3.520.77.J (S3206) exempts retroactive SSI or Social Security retirement or disability benefits still remaining after the month of receipt \"for nine months following the month they are received\"; no fact stated what remains held."

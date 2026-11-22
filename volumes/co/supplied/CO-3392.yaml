@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The value the person could withdraw from retirement plans and accounts: 401(k), 403(b) and 457 plans, IRAs, PERA and other pension or retirement accounts."
-precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. If not stated, every program reads it as 0."
+precision: "The value before income taxes; the taxes due on withdrawal are retirement_accounts_taxes_due (CO-4429). As of the determination date; the person's own holding, or the person's share of a jointly held one. If not stated, every program reads it as 0."
 supplied_by: "Application (resources), verified by statements as each program requires."
 sources: [S2213, S2216]
 implemented: engine

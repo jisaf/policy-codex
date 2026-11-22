@@ -1,0 +1,13 @@
+id: CO-4431
+name: "Adult Financial: property exempt because it cannot be sold"
+identifier: af_property_exempt_as_unsaleable_value
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The equity value of the person's real and personal property (within real_property_other_than_home_equity, vehicles_equity_value and the self-support property facts) that the county department exempts because the property cannot be sold for two-thirds of its actual value despite continuing reasonable efforts to sell it, its sale would cause a co-owner (other than a spouse or sponsor) undue hardship, or legal technicalities prevent its disposal (9 CCR 2503-5 3.520.741.D.2-4, 3.520.742.C)."
+precision: "Not exempt when the person rejects an offer of at least two-thirds of the actual value or the county finds the efforts to sell are not reasonable (3.520.741.D.3.b-c, 3.520.742.C.2-3). Verified quarterly (D.3.a). If not stated, Adult Financial reads this as 0."
+supplied_by: "County department finding on the listing, offers, co-owner's written hardship statement or legal record."
+sources: [S3209]
+tags: [cash, resources]
+rationale: "Coverage review F-8: 3.520.741.D and 3.520.742.C (S3209) exempt property that cannot be sold at a reasonable price or disposed of; the holdings facts state its equity with no such exemption."

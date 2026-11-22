@@ -1,0 +1,13 @@
+id: CO-4437
+name: "In-kind earned income"
+identifier: in_kind_earned_income_value
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The value of the non-monetary benefits the person received in the month as payment for services performed as an employee or in self-employment (shelter as payment for building maintenance, babysitting, or other goods bartered for services): the value of the item supplied, or its current market value when that value is not given."
+precision: "Not part of wages_gross or self_employment_gross_receipts, which are money received. If not stated, Adult Financial reads it as 0."
+supplied_by: "Applicant statement and the employer's or other party's statement of what is supplied, as the county establishes them."
+sources: [S3211]
+tags: [income]
+rationale: "Coverage review F-10: 9 CCR 2503-5 3.520.782.B (S3211) counts in-kind earned income, at the value of the item supplied, as employment income with the earned income disregards; wages_gross and the self-employment facts state money received, and no fact stated in-kind pay."

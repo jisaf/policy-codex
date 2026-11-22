@@ -1394,7 +1394,7 @@ Resolution (CDHS stakeholder review fix round (2026-11-21), S-5): A.2.b subtract
 
 ### OQ-352. Partly resolved: Adult Financial personal needs allowance - psychiatric and unlicensed facilities are modeled; open: whether income is deducted from the $79
 
-Body: 9 CCR 2503-5 3.532.D-F, 3.543.D-F and 3.548.D-F (S1008-S1010) make an OAP, AND-SO or AND-CS client resident in a listed facility for thirty consecutive days "eligible only for a monthly PNA", at most $79 for every full calendar month. (1) The rule does not say whether countable income is deducted from the $79; af_oap_grant (CO-951) and af_and_grant (CO-952) read the PNA as a grant standard (3.532.C speaks of "the current Personal Needs Allowance (PNA) grant standard") and deduct countable income, with no payment floor - so a resident with income above $79 is paid nothing. The alternative reading pays the regular grant capped at $79. (2) A month only partly in the facility is read through the supplied fact's full-month meaning (af_resides_in_care_facility_thirty_consecutive_days, CO-1510); 3.548.F's rule that an AND-CS grant is not reduced until the month after the first full calendar month is carried by that meaning, not a separate count. (3) OAP's list adds a psychiatric facility for a client 65 or older (3.532.D.3), which the fact does not state. (4) A resident of an unlicensed private or uncertified public facility gets neither a PNA nor a grant (3.532.E.2, 3.543.E.2, 3.548.E.2); no fact states it. Items: CO-951, CO-952, CO-1510.
+Body: 9 CCR 2503-5 3.532.D-F, 3.543.D-F and 3.548.D-F (S1008-S1010) make an OAP, AND-SO or AND-CS client resident in a listed facility for thirty consecutive days "eligible only for a monthly PNA", at most $79 for every full calendar month. (1) The rule does not say whether countable income is deducted from the $79; af_oap_grant (CO-951) and af_and_grant (CO-952) read the PNA as a grant standard (3.532.C speaks of "the current Personal Needs Allowance (PNA) grant standard") and deduct countable income, with no payment floor - so a resident with income above $79 is paid nothing. The alternative reading pays the regular grant capped at $79. (2) A month only partly in the facility is read through the supplied fact's full-month meaning (af_resides_in_care_facility_thirty_consecutive_days, CO-1510); 3.548.F's rule that an AND-CS grant is not reduced until the month after the first full calendar month is carried by that meaning, not a separate count (corrected in the coverage round, F-4: CO-1510 is now derived from institution_entry_date and is true in the first full calendar month, so af_and_grant, CO-952, applies the AND-CS PNA only from the month after it, entry on or before the first day of the previous month). (3) OAP's list adds a psychiatric facility for a client 65 or older (3.532.D.3), which the fact does not state. (4) A resident of an unlicensed private or uncertified public facility gets neither a PNA nor a grant (3.532.E.2, 3.543.E.2, 3.548.E.2); no fact states it. Items: CO-951, CO-952, CO-1510.
 
 Checked 2026-11-21: (1) 9 CCR 2503-5 3.532.C-F, 3.543.D-F, 3.548.D-F (S1008-S1010) call the PNA a "grant standard" and a "PNA maximum" of $79 and say nothing of income; 10 CCR 2505-10 8.100.7.V.3.d.j (D-65) pays a nursing facility resident the difference between reduced SSI and the PNA, which supports the income-deducted reading but does not govern the $79. No published rule settles (1). (3) and (4) are resolved: 3.532.D.3 and 3.532.E.2, 3.543.E.2, 3.548.E.2 (D-80, S1318) are clear. The new supplied af_resides_in_psychiatric_facility_thirty_consecutive_days (CO-2006) gives an OAP client 65 or older the PNA, and af_resides_in_unlicensed_or_uncertified_facility (CO-2007) pays neither a PNA nor a grant in af_oap_grant (CO-951) and af_and_grant (CO-952); new tests CO-951-T6 (psychiatric facility at 66: $79 less $50 = $29) and CO-951-T7 (unlicensed facility: $0). The four case persons who state af_resides_in_care_facility_thirty_consecutive_days (two in CO-07, one each in CO-71 and CO-13) now state both new facts false; no case expectation changed. (1) stays open.
 
@@ -1984,7 +1984,7 @@ Body: 7 CFR 292.2 (S792) makes a child categorically eligible when "one or more 
 
 Resolution (open-question classification pass, 2026-11-22): 7 CFR 292.2 defines the household: "a group of related or nonrelated individuals, who are not residents of an institution or boarding house, but who are living as one economic unit" (D-88, S2301). The new relationship role lives_as_one_economic_unit_with (volume.yaml) states it, and sebt_household_child_receives_snap_or_tanf (CO-2708) reads the receipt records of every person joined to the child by it, so a cousin, a step-sibling or a foster child of the economic unit is read and a sibling who lives elsewhere is not. Receipt is read for every member of the unit, since SNAP and TANF are paid to a SNAP household or an assistance unit that holds the unit's children with the adults who receive. New tests CO-2708-T4 to T6; CO-2708-T3 states no relationships. No household case changed (none relied on a sibling's receipt). CO-1298 no longer carries this question. Items: CO-2708, CO-1298.
 
-### OQ-553. Adult Financial sponsor deeming: other non-citizens the same sponsor sponsors are counted as the sponsor's dependents
+### OQ-553. Resolved: Adult Financial sponsor deeming counts as the sponsor's dependents the children the sponsor claims on income tax
 
 Body: 9 CCR 2503-5 3.534.D.2.C (S1632; 3.544.G.2.c and 3.549.G.2.c, S1633, S1634) deducts half the SSI benefit standard for "each dependent of the sponsor (other than the non-citizen client and the non-citizen client's spouse), as defined in Section 3.520.68.B.2.b.1"; 3.520.68.B.2.b.1 was not read for this round. With the sponsor a person of the case (dual-entry audit 1.5), af_deemed_sponsor_income (CO-2386) counts the dependents stated on the sponsor (sponsor_dependent_count, CO-2387: dependents other than the persons the sponsor sponsors and their spouses) plus the other non-citizens of the case the same sponsors sponsor, other than the client's spouse, reading each as the sponsor's dependent, as an I-864 sponsor's household counts the sponsored immigrants. If 3.520.68.B.2.b.1 defines a dependent more narrowly (for example, only persons the sponsor claims for tax purposes), a sponsored sibling who is not claimed should not be counted. Items: CO-2386, CO-2387.
 
@@ -1993,6 +1993,8 @@ Owner: Cash programs policy owner
 Assumption: Other non-citizens the same sponsor sponsors are counted as the sponsor's dependents when the sponsor's income is deemed.
 
 Checked 2026-11-22: 9 CCR 2503-5 3.534.D.2.C, 3.544.G.2.c and 3.549.G.2.c (D-80, S1632-S1634) deduct for "each person who is a dependent of the sponsor ... as defined in Section 3.520.68.B.2.b.1", but 3.520.68 in the current rule (D-80) and in the earlier Cornell copy (D-62) has only paragraph A, the five-year bar, so the cross-reference defines nothing. No published rule settles who is a dependent.
+
+Resolution (coverage round, docs/reviews/coverage-adult-financial.md F-16): the class was wrong. The Secretary of State serves the archived versions of 9 CCR 2503-5; version 10320, effective 08/30/2022 (D-300, retrieved 2026-11-22), still has 3.520.68.B, the OAP hardship exceptions, and its B.2.b.1 (S3200) is the definition the cross-reference was written for: "the household includes the qualified non-citizen, the qualified non-citizen's spouse, the qualified non-citizen's dependent children, the sponsor(s), the spouse of the sponsor(s), and the sponsor(s)' dependent children, i.e., the children the sponsor(s) claim on his or her income tax." A dependent of the sponsor for D.2.C is therefore a child the sponsor claims on income tax; the sponsor's spouse is D.2.B's own deduction. af_deemed_sponsor_income (CO-2386) now counts sponsor_dependent_count (CO-2387, redefined as the children the sponsor claims, other than the persons the sponsor sponsors) plus the other non-citizens of the case the same sponsor sponsors who are the sponsor's tax dependents (tax_dependent edge), other than the client and the client's spouse; another sponsored non-citizen the sponsor does not claim is no longer a dependent. Changed: CO-2386-T4 (1,509 to 2,006), new CO-2386-T5 and T6; household CO-94 (each child 715 to 1,212: 3,200 - (994 + 497 + 497)).
 
 ### OQ-580. Resolved: CCCAP's monthly poverty guideline above eight persons adds the rule's rounded per-person step
 
@@ -2222,7 +2224,7 @@ Class: state policy choice
 Owner: Cash programs policy owner
 Assumption: Countable resources equal to the Adult Financial resource limit meet it.
 
-Checked 2026-11-22: 9 CCR 2503-5 3.520.71.A.1 ("below the resource limit") and 3.520.72.A (D-80, rule version 12428, effective 03/02/2026) against C.R.S. 26-2-111(2)(a) (D-59). No published rule settles it.
+Checked 2026-11-22: 9 CCR 2503-5 3.520.71.A.1 ("below the resource limit") and 3.520.72.A (D-80, rule version 12428, effective 03/02/2026) against C.R.S. 26-2-111(2)(a) (D-59). No published rule settles it. Coverage round: 3.510 "Eligible client" ("a client whose countable resources are below the resource limit", D-80) uses the same word; C.R.S. 26-2-111(2)(a)(I) and (4)(d) apply the SSI resource eligibility requirements, which support the reading taken.
 
 ### OQ-680. CCCAP: the date the prior thirty days run back from, and the count of a lump sum
 
@@ -2386,3 +2388,43 @@ Owner: Energy assistance (LEAP) policy owner
 Assumption: A foster or kinship child is not a LEAP household member, even with a legal guardian in the household; the foster or kinship payment is not income.
 
 Checked 2026-11-22: 9 CCR 2503-7 3.751.1 "Household", 3.751.2 and 3.752.23.U (D-86, rule version 12221, the Secretary of State's current version re-fetched 2026-11-22); D-173 does not amend them. No paragraph reconciles U with D.2.
+
+### OQ-780. Adult Financial: an absence to care for a family member injured in military duty - 180 days in place of 90, or in addition
+
+Body: 9 CCR 2503-5 3.520.64.E (S3201) presumes a client is no longer a resident after "a period of ninety (90) or more consecutive days" out of the State (E.2, except for documented medical treatment) and, in E.4, when the client "leaves the State to care for an immediate family member injured in the line of military duty for a period of one hundred eighty (180) or more consecutive days". Read literally, E.2's ninety days would reach that client first, and E.4 would add nothing; E.4 has effect only if it replaces E.2's ninety days for this absence. The volume reads E.4 as the period for that absence: af_is_presumed_nonresident_by_absence (CO-4401) applies E.2 to every other absence and E.4's 180 days to an absence to care for an injured family member (is_out_of_state_caring_for_family_member_injured_in_military_duty, CO-4404). The other reading presumes non-residence for that client at ninety days. Items: CO-4401, CO-4404.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A client out of the State to care for an immediate family member injured in the line of military duty is presumed not a resident only at 180 consecutive days.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.520.64.E.1-4 (D-80, rule version 12428, effective 03/02/2026, the Secretary of State's current version, re-fetched 2026-11-22) and 3.520.64.F-G. No paragraph says how E.2 and E.4 relate.
+
+### OQ-781. Adult Financial donated work hours: which "current minimum wage standard"
+
+Body: 9 CCR 2503-5 3.520.784.B (S3211) values countable donated work hours at "The going rate in the community for similar work; or, 2. The current minimum wage standard, whichever is greater." The rule does not say whether the standard is the federal minimum wage (29 U.S.C. 206(a)(1), $7.25 an hour), Colorado's (Colo. Const. art. XVIII, sec. 15 and C.R.S. 8-6-109, adjusted each year by the Colorado Department of Labor and Employment) or a local one (Denver's). af_donated_work_income (CO-4443) reads the federal minimum wage (federal_minimum_wage, CO-160), the only minimum wage this volume carries; the Colorado figure for 2026 is published by the Department of Labor and Employment (cdle.colorado.gov), which is not an allowed host. Where the going rate is stated and is above the minimum wage, as it usually is, the choice does not matter. Items: CO-4443, CO-160.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The federal minimum wage is the floor.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.510 and 3.520.784 (D-80, rule version 12428, effective 03/02/2026). Neither defines the minimum wage standard. If the state reads Colorado's, the figure must come from the Department of Labor and Employment's annual minimum wage order, which no allowed host serves.
+
+### OQ-782. Adult Financial: interest and dividends - countable under 3.520.785.B.10, or excluded under the SSI exclusions 3.520.786.K incorporates
+
+Body: 9 CCR 2503-5 3.520.785.B.10 (D-80) lists as countable unearned income "Dividends and interest received on financial accounts, savings bonds, leases, etc.", while 3.520.786.K incorporates 20 CFR 416.1124 (S2609), whose (c)(22) excludes "Interest and dividend income from a countable resource" and (c)(9) and (c)(20) the interest on excluded burial funds and other excluded resources. The two paragraphs conflict for interest and dividends on a countable resource (a savings account, a bond). af_excluded_unearned_income (CO-2343) follows K: all interest and dividends (taxable_interest_and_dividend_income, tax_exempt_interest) are excluded. Under B.10 they would be counted, dollar for dollar against the grant. Coverage review P2-1. Items: CO-2343, CO-3831.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Interest and dividends are excluded, as the SSI exclusions of 3.520.786.K exclude them.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.520.785.B.10 and 3.520.786.K (D-80, rule version 12428, effective 03/02/2026, re-fetched 2026-11-22) and 20 CFR 416.1124(c)(9), (20), (22) (D-207). Neither paragraph says it governs the other.
+
+### OQ-783. Aid to the Needy Disabled under eighteen: the rule pays AND-CS (and blind AND-SO) from age zero; the statute requires eighteen
+
+Body: C.R.S. 26-2-111(4)(b) (S442) makes "eighteen years of age or older" a condition of aid to the needy disabled. 9 CCR 2503-5 3.520.61.A (D-80) sets the ages at "eighteen (18) through fifty-nine (59) years of age for AND-SO (unless diagnosed with blindness, then age zero (0) through 59 years of age); age 0 through 59 years of age for AND-CS", and 3.549.E deems parents' income to an unemancipated AND-CS child. The volume follows the rule: af_and_cs_eligible (CO-950) and af_and_so_eligible (CO-1203) admit children (af_and_so_min_age with the blind exception), against the principle OQ-430 states that a rule's silence cannot narrow a statutory bar. The rule's reading is plausible: AND-CS is the Colorado supplement to SSI, which pays disabled and blind children, and Aid to the Blind (26-2-111(5)) has no age floor. Coverage review P2-3. Items: CO-950, CO-1203, CO-287, CO-288.
+
+Class: needs Legal
+Owner: Legal, Cash programs policy owner
+Assumption: The rule's ages govern: AND-CS from age zero, AND-SO from eighteen, or from zero if blind.
+
+Checked 2026-11-22: C.R.S. 26-2-111(4)(b) (D-59, 2024 edition, re-fetched 2026-11-22) and 9 CCR 2503-5 3.520.61.A, 3.540, 3.546 and 3.549.E (D-80, rule version 12428, effective 03/02/2026). No statute or rule reconciles them.

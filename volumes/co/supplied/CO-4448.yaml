@@ -1,0 +1,13 @@
+id: CO-4448
+name: "Adult Financial: in an EBT-misuse ineligibility period"
+identifier: af_is_in_ebt_misuse_ineligibility_period
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The county department has denied or discontinued the client's grant payments for continued use of the EBT card in prohibited establishments and the one-month ineligibility period it imposed has not expired (9 CCR 2503-5 3.581.I.3-4)."
+precision: "The warning and the one-month disabling of the card (I.1-2) are not an ineligibility period. If not stated, Adult Financial reads this as false."
+supplied_by: "The county's record of the EBT-misuse action and its notice."
+sources: [S3215]
+tags: [cash, oap, and]
+rationale: "Coverage review F-14: 3.581.I.3 (S3215) imposes \"a one month ineligibility period\" for continued EBT misuse; no fact stated it."
