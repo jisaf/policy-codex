@@ -13997,7 +13997,7 @@
   # p2 (Sam, 40, p1's husband, p3's stepfather) was laid off in September while the household was enrolled and is in
   # job search (six of thirteen weeks used); he receives $300 of unemployment every two weeks ($600 in the thirty days
   # and in November). p3 (Kai, 6) is the eligible child. p4 (Lou, 70, p1's mother) lives with them and buys heat with
-  # p1; she receives SSI of $967.50 and Social Security of $400.70 a month, and won $1,200 in the lottery in November.
+  # p1; she receives SSI of $967.50 and Social Security of $400.70 a month, and won $1,200 in the lottery on October 20.
   # p1 pays $350 a month under a court order for a child who lives with his other parent, $50 of it toward arrears,
   # verified through the child support system.
   as_of: "2026-11-01"
@@ -14151,6 +14151,8 @@
         cccap_declares_assets_within_limit: true
         is_emancipated_minor: false
         leap_is_in_another_approved_household: false
+        # Second-pass N-8: the prize was received on October 20, inside the thirty days before the November 1 application.
+        lottery_gambling_winnings_received_prior_thirty_days: 1200
       month_defaults:
         wages_gross: 0
         hours_worked: 0
@@ -14168,7 +14170,7 @@
         tax_exempt_interest: 0
         lottery_gambling_winnings_received: 0
       months:
-        "2026-11": {lottery_gambling_winnings_received: 1200}
+        "2026-10": {lottery_gambling_winnings_received: 1200}
   expect:
     p1:
       cccap_household_members: [p1, p2, p3]
@@ -14191,7 +14193,9 @@
       #   p1 wages: weekly, $500 x 4 = $2,000 (3.752.22.C.1.a; not the five paydays of the thirty days).
       #   p2 unearned: $600 received in the income verification period (3.752.22.A).
       #   p4 unearned: SSI $967.50 -> $967 and Social Security $400.70 -> $400 (cents dropped, 3.752.21.I, 3.752.211.H),
-      #   plus the $1,200 prize received in November (3.752.21.A).
+      #   plus the $1,200 prize received on October 20, in the income verification period (3.752.21.A, 3.752.22.A; second-pass N-8:
+      #   LEAP now reads prizes by the thirty days, not the calendar month; the prize moved from November to October 20 so the case
+      #   still exercises it, and the total is unchanged).
       #   total $2,000 + $600 + $967 + $400 + $1,200 = $5,167, at or below $7,258 for four (CO-875).
       leap_household_income: {"2026-11": 5167}
       leap_is_eligible: {"2026-11": true}

@@ -1,0 +1,18 @@
+id: CO-4070
+name: "CCCAP: a parent of the child holds a temporary order"
+identifier: cccap_has_parent_with_temporary_order
+kind: derived
+type: yes/no
+scope: person
+program: CCCAP
+meaning: "Whether a parent or stepparent of this child is separated and holds a validly issued temporary order for parental responsibilities or child custody (has_temporary_order_for_parental_responsibilities, CO-4063): the child through whom 8 CCR 1403-1 3.111.D.10's \"other ... parent\" is found."
+precision: "Read by cccap_household_income_members (CO-4064): the child's other parent in the household is the one whose financial resources D.10 does not count. The order is read as false when not stated."
+derived: [otherwise, [exists_related, [child, stepchild], [otherwise, [of, [P], has_temporary_order_for_parental_responsibilities], false]], false]
+sources: [S2856]
+nearest: [CO-4064]
+implemented: engine
+tags: [household]
+rationale: "Second-pass review N-7: cccap_household_income_members (CO-4064) leaves out the other parent of a child whose parent holds a temporary order; the child-side test is an item of its own so the group can read it for each member."
+tests:
+  - {id: CO-4070-T1, title: "The child's mother holds a temporary custody order", as_of: "2026-10-01", given: {}, others: {p2: {has_temporary_order_for_parental_responsibilities: true}, p3: {has_temporary_order_for_parental_responsibilities: false}}, relationships: [[child, p1, p2], [child, p1, p3]], expect: true}
+  - {id: CO-4070-T2, title: "Neither parent holds one", as_of: "2026-10-01", given: {}, others: {p2: {has_temporary_order_for_parental_responsibilities: false}, p3: {}}, relationships: [[child, p1, p2], [child, p1, p3]], expect: false}
