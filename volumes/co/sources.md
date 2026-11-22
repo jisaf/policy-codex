@@ -17636,3 +17636,770 @@ Document: D-55
 > 1. Monthly premium payment paid by the resident for private health insurance.
 >
 > 2. Medical health insurance premiums will be allowed for the resident only. This does not include prescription drug, vision, dental or life insurance.
+
+### S3200. Adult Financial (archived version 10320): the sponsor's dependent children are the children the sponsor claims on income tax (3.520.68.B.2.b.1, the definition 3.534.D.2.C cross-refers to)
+
+Document: D-300
+
+9 CCR 2503-5 3.520.68.A (heading), B (introduction), B.2, B.2.a-b, B.2.b.1) (rule version 10320, effective 08/30/2022, archived; retrieved from the Secretary of State 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=10320&fileName=9%20CCR%202503-5
+
+> 3.520.68 FIVE YEAR BAR FROM ELIGIBILITY
+>
+> B. For OAP only, a client that has a documented hardship, as follows, shall not be subject to a five-
+> year bar from benefits:
+>
+> 2. Indigence: Suspension of the five-year bar from benefits is permitted if the qualified non-
+> citizen's income and resources, and income and resources of the qualified non-citizen's
+> sponsor(s) are inadequate. If the qualified non-citizen does not have a sponsor, then their
+> own income and resources would be considered.
+>
+> a. It is the responsibility of the qualified non-citizen to obtain all required information
+> and documentation from the sponsor(s).
+>
+> b. The county department shall determine if the total household income available
+> exceeds 125% of the Federal poverty guidelines as defined in 3.510 for the
+> household size.
+>
+> 1) For purposes of this section, the household includes the qualified non-
+> citizen, the qualified non-citizen's spouse, the qualified non-citizen's
+> dependent children, the sponsor(s), the spouse of the sponsor(s), and
+> the sponsor(s)' dependent children, i.e., the children the sponsor(s) claim
+> on his or her income tax.
+
+### S3201. Adult Financial: absence from Colorado and the rebuttable presumptions of non-residence (30 days out of the country, 90 days out of State unless for medical treatment, 180 days in a calendar year, 180 days caring for a family member injured in military duty)
+
+Document: D-80
+
+9 CCR 2503-5 3.520.64.E.1-4 (rule version 12428, effective 03/02/2026; the Secretary of State's current version, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> E. A client who is out of State temporarily shall be considered a resident, with the
+> following exceptions:
+>
+> 1. A client who leaves the country for a period of thirty (30) or more
+> consecutive days creates a rebuttable presumption (unless the client
+> comes forward with enough information to prove otherwise) that the client
+> shall no longer be considered a resident and shall be ineligible for Adult
+> Financial programs.
+>
+> 2. A client who leaves the State for a period of ninety (90) or more
+> consecutive days creates a rebuttable presumption (unless the client
+> comes forward with enough information to prove otherwise) that the client
+> shall no longer be considered a resident and shall be ineligible for Adult
+> Financial programs. An exception to this is for individuals temporarily out
+> of the State to receive documented medical treatment.
+>
+> 3. A client who leaves the State for a period of more than one hundred eighty
+> (180) days in any calendar year, even if that time has not been
+> consecutive time away, creates a rebuttable presumption (unless the client
+> comes forward with enough information to prove otherwise) that the client
+> shall no longer be considered a resident and shall be ineligible for Adult
+> Financial programs.
+>
+> 4. A client who leaves the State to care for an immediate family member
+> injured in the line of military duty for a period of one hundred eighty (180)
+> or more consecutive days creates a rebuttable presumption (unless the
+> client comes forward with enough information to prove otherwise) that the
+>
+> client shall no longer be considered a resident and shall be ineligible for
+> Adult Financial programs.
+
+### S3202. Home Care Allowance: a client out of State on a temporary basis is discontinued on day thirty-one; a facility stay of thirty days or more
+
+Document: D-80
+
+9 CCR 2503-5 3.570.17.C.4, C.8 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 4. Facility Status: The CMA or county department shall deny or discontinue
+> when the client:
+>
+> a. Is a resident of a nursing facility, hospital, or any other long-term
+> care facility; or,
+>
+> b. Enters a hospital or other long-term care facility for treatment,
+> hospitalization, or rehabilitation that continues for thirty (30)
+> calendar days or more.
+>
+> 8. Move Out of State: The CMA or county department shall deny or
+> discontinue when the client has moved out of state.
+>
+> a. Discontinuation shall be effective the day after the date of the
+> move.
+>
+> b. Clients who leave the State on a temporary basis with the intent to
+> return to Colorado within thirty (30) calendar days shall not be
+> discontinued. If the client fails to return to Colorado the client shall
+> be discontinued on day thirty one (31).
+
+### S3203. Adult Financial: the end of a sponsor's obligation (forty qualifying quarters, the sponsor's death, departure, new admission) and no sponsor deeming for refugees and asylees
+
+Document: D-80
+
+9 CCR 2503-5 3.520.69.B.1-6, C.1 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. It shall be presumed that an affidavit of support demonstrates the sponsor's
+> ability to make income and resources available to a non-citizen whom he or she
+> sponsors at a minimum of one hundred twenty-five percent (125%) of the Federal
+> Poverty Guidelines, as defined in 3.510. Sponsors are expected to meet their
+> financial commitments to the qualified non-citizen whom they sponsor and for
+> whom they signed an affidavit of support until such time as the:
+>
+> 1. Qualified non-citizen has obtained U.S. citizenship;
+>
+> 2. Qualified non-citizen has worked, or can be credited with forty (40)
+> qualifying quarters of coverage under Title II of the Federal Social Security
+> Act, 42 U.S.C. Section 413 (2018);
+>
+> 3. Qualified non-citizen leaves the United States and gives up lawful
+> permanent resident status;
+>
+> 4. Qualified non-citizen dies;
+>
+> 5. Sponsor of the qualified non-citizen dies. The death of one sponsor does
+> not terminate the support obligation of a joint sponsor. The sponsor's
+> estate shall be required to repay public benefits; or
+>
+> 6. Qualified non-citizen becomes subject to removal proceedings, but he or
+> she applies for and obtains a new grant of admission status in those
+> proceedings based on a new affidavit of support, if one is required.
+>
+> C. Income and resources of the sponsor(s) shall be deemed to the client, as follows:
+>
+> 1. Sponsor deeming shall not apply to qualified non-citizens admitted as
+> refugees or as political asylees. A non-citizen whose status as a political
+> asylee or refugee has not yet been determined or finalized because his or
+> her application to become a qualified noncitizen is in a pending status or
+> for some other reason shall not be considered a qualified non-citizen
+> admitted as a political asylee or refugee, and therefore, such non-citizen is
+> not eligible to receive grant payments.
+
+### S3204. Adult Financial: a client not legally separated is married; the spouse's income is deemed with no living-together condition (OAP)
+
+Document: D-80
+
+9 CCR 2503-5 3.520.63.D; 3.534.A (introduction), B (introduction), B.3 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. Clients who are not legally separated or divorced are considered married.
+>
+> 3.534 DEEMING INCOME
+>
+> A. To determine the amount of income to deem to a client from a the client’s spouse
+> who does not meet the criteria described below in ‘C’, calculate the countable
+> earned income of the spouse as follows:
+>
+> B. To determine the amount of unearned income to deem to a client from the client’s
+> spouse who does not meet the criteria as described below in ‘C’, calculate the
+> countable unearned income of the spouse as follows:
+>
+> 3. Deduct an amount to meet the needs of each dependent child living in the
+> household of the spouse equal to half the maximum SSI grant benefit
+> standard, as defined in Section 3.510, less the dependent child's own
+> income;
+
+### S3205. Adult Financial: "Homeless" defined
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Homeless") (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Homeless” means a person with no permanent living arrangement, i.e., no regular
+> nighttime or fixed place of residence. He or she is neither a member of a household nor
+> a resident of an institution. This can mean someone who sleeps in a doorway;
+> supervised shelter designed for temporary accommodations; a halfway house or similar
+> facility that provides temporary residence; a place not designed for or ordinarily used as
+> regular sleeping accommodations for human beings, such as parks, bus stations, etc.;
+>
+> or a person who stays with a succession of friends or relatives and has no permanent
+> living arrangement.
+
+### S3206. Adult Financial exempt resources: business cash, insurance and home-sale proceeds for replacement, retroactive SSA benefits for nine months, tax refunds for twelve months, loans in the month received, ABLE accounts
+
+Document: D-80
+
+9 CCR 2503-5 3.520.77.D (introduction), D.1.b, E, E.3, F, F.3, J-M (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. Part or all of the value of property may be exempt if it is essential to the self-
+> support of the client. To determine whether property is producing income or being
+> used in a trade or business, the county department shall obtain a copy of the
+> most recent tax returns from the client. If a return has not yet been filed, obtain a
+> current estimate of income and a copy of the previous year's return. Property
+> used for self-support activities include:
+>
+> 1. Property used in self-employment.
+>
+> b. The cash and convertible assets considered necessary for use in
+> the trade or business shall be excluded.
+>
+> E. Proceeds from fire or casualty insurance shall be considered exempt to the
+> extent that they are used to restore or replace an exempt resource. This
+> exemption shall be allowed for up to three (3) months for restoration or
+> replacement of exempt personal property and six (6) months for restoration or
+> replacement of exempt real property from the date the client receives such sums.
+>
+> 3. When the allowable time period ends, proceeds in excess of payments
+> made or contracted to be made must be counted as a resource in the
+> month following the month in which the time period expired, unless good
+> cause for an extension is determined by the county department using the
+> prudent person principle.
+>
+> F. Proceeds from sale of the home property, relocation payments, or condemnation
+> awards from a governmental agency shall be considered exempt to the extent
+> that they are used to purchase or build a replacement home. This exemption is
+> allowed for up to six (6) months from the date the client receives such sums.
+> Proceeds of a home sale are the net payments received by the seller after
+> satisfaction of all actual encumbrances and sales expenses.
+>
+> 3. When the allowable time period ends, proceeds in excess of payments
+> made or contracted to be made must be counted as a resource in the
+> month following the month in which the time period expired, unless good
+> cause for an extension is determined by the county department using the
+> prudent person principle.
+>
+> J. Any retroactive SSI or Social Security retirement or disability benefits still
+> remaining after the month of receipt shall be exempt as a resource for nine
+> months following the month they are received.
+>
+> K. An income tax refund, including the Property Tax/Rent/Heat Credit (PTC) rebate,
+> shall be exempt in the month received. Any remaining balance shall be counted
+> as a resource after twelve (12) months.
+>
+> L. Monies from a bona fide loan are exempt in the month received. Any remaining
+> balance shall be counted as a resource in the following month(s).
+>
+> M. Monies specifically placed in an Achieving a Better Life Experience (ABLE)
+> Account, as described in the Achieving a Better Life Experience Act of 2014, 26
+> U.S.C. Section 529a (2018).
+
+### S3207. Adult Financial exempt resources: non-business property producing goods for the household and non-business income-producing property, $6,000 of equity each, the 6% return test
+
+Document: D-80
+
+9 CCR 2503-5 3.520.77.D.3-4 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3. Non-business property used to produce goods necessary for the client's
+> daily activities.
+>
+> a. A maximum of six thousand dollars ($6,000) of the equity value of
+> such property shall be exempt as a resource. Any equity value in
+> excess of $6,000 shall be a countable resource.
+>
+> b. Examples of this type of property include land which is used to
+> produce vegetables or livestock only for personal consumption in
+> the client's household, and personal property necessary to perform
+> that function (e.g., a garden tractor, a boat used for subsistence
+> fishing), but do not include vehicles, boats used for leisure or
+> recreation, or other special vehicles.
+>
+> c. If property has been but is not currently in use, the exemption for
+> such property shall continue for twelve (12) months if there is a
+> reasonable expectation that the use of the property will resume
+> within that time. The exemption period shall be twenty-four (24)
+> months where nonuse is due to a disabling condition.
+>
+> 4. Non-business, income-producing property shall be exempt, but the income
+> shall be countable.
+>
+> a. If a client owns non-business, income-producing property, a
+> maximum of six thousand dollars ($6,000) of the equity value of
+> such property is an exempt resource, as long as the property
+> produces a net annual income of at least six percent (6%) of the
+> excluded equity. If the equity value of such income-producing, non-
+> business property exceeds $6,000, only the equity value above
+> $6,000 will be counted as a resource. If there is more than one
+> potentially exempt property, the rate-of-return requirement applies
+> individually to each. However, the total combined exemption for all
+> such properties shall not exceed $6,000.
+>
+> b. “Non-business” means that the property is not used in a trade or
+> business as defined in Section 3.520.76. Non-business, income-
+> producing property may include but is not limited to houses or
+> apartments for rent and land other than home property.
+>
+> c. If non-business, income-producing property is not producing net
+> income of at least six percent (6%) of the excluded equity, the entire
+> equity value is counted as a resource. However, the exemption for
+> up to $6,000 of the property's equity may continue if the property is
+> earning less than 6% due to circumstances beyond the client's
+> control (e.g., crop failure, illness, etc.), and there is a reasonable
+> expectation that, within twenty-four (24) months, the property will
+> again produce a 6% return.
+
+### S3208. Adult Financial: a retirement or pension account counts at its gross value less the taxes due, or less 20% when the taxes are not given
+
+Document: D-80
+
+9 CCR 2503-5 3.520.73.B.1 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Convertible assets
+>
+> 1. The value of a retirement or pension account is determined as follows:
+>
+> a. The gross value of the account, less any taxes due, is the amount
+> that is countable as a resource, regardless of whether the client,
+> spouse of the client, or sponsor(s) of the client is receiving any
+> monthly income from the account.
+>
+> b. If the client is not able to provide the amount of taxes that are due,
+> the value shall be determined by deducting 20% from the gross
+> value of the account.
+
+### S3209. Adult Financial: real and personal property that cannot be sold for two-thirds of its value, a co-owner's undue hardship, or legal impediments
+
+Document: D-80
+
+9 CCR 2503-5 3.520.741.D, D.1-4; 3.520.742.C (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. Negotiability and, if applicable, the ability to sell the property interest at a
+> reasonable price must be determined. Negotiability refers to the client, client’s
+> spouse, or sponsor(s)’s legal right to dispose of an ownership interest; ability to
+> sell refers to the client, client’s spouse, or sponsor(s) legal ability to sell.
+> Reasonable price is determined to be two-thirds of the actual value.
+>
+> 1. Negotiability - there may be legal reasons why a client, client’s spouse, or
+> sponsor(s) may not be able to sell the property interest, such as when the
+> estate is in probate or there is a lawsuit pending against the property. The
+> refusal of co-owners to consent to the sale of a property interest is not a
+> legal restriction of the client, client’s spouse, or sponsor(s)’s right to sell.
+>
+> 2. If the co-owner of the property uses the property as the principal place of
+> residence and sale of the property would cause undue hardship, the client,
+> client’s spouse, or sponsor(s)’s equity in the property shall be exempted,
+> unless the co-owner is the spouse or sponsor(s). Undue hardship for this
+> purpose is defined as:
+>
+> a. The co-owner uses the property as his or her primary residence;
+> and,
+>
+> b. The co-owner would have to move as a result of the sale of the
+> property; and,
+>
+> c. The co-owner has no other available housing, including relatives or
+> income to rent at fair market value; and,
+>
+> d. The co-owner documents, in writing, his or her undue hardship
+> allegations; and,
+>
+> e. Using prudent person principle, the county department determines
+> the undue hardship allegations to be reasonable.
+>
+> 3. If the client, client’s spouse or sponsor(s) cannot sell the property for two-
+> thirds of the actual value, the property shall be exempted provided there
+> continues to be reasonable efforts to sell the property such as listing the
+> property with an agency or by advertising in the local media.
+>
+> a. The county department shall verify on a quarterly basis that a
+> reasonable effort is being made to sell the property.
+>
+> b. The property shall not be exempted if the county department, using
+> prudent person principle, determines the client, client’s spouse, or
+> sponsor(s) is not making a reasonable effort to sell.
+>
+> c. If the client, client’s spouse, or sponsor(s) rejects an offer to
+> purchase the property that is at least two-thirds the actual value of
+> the property, the entire equity value of the property shall be
+> considered a countable resource.
+>
+> C. Personal property may be exempted if the client, client’s spouse, or sponsor(s)
+> has made an attempt to sell and has been unable to do so.
+>
+> 1. Failure to sell personal property at the asking price or for a reasonable
+> value shall not exempt the resource from the client’s countable resources.
+> Under such circumstances, the county department shall determine
+> whether the property could be sold for two-thirds of the actual value.
+>
+> 2. If the client, client’s spouse, or sponsor(s) receives an offer for at least
+> two-thirds of the actual value and refuses to sell the property, the property
+> shall not be exempted.
+>
+> 3. If the client, client’s spouse, or sponsor(s) cannot sell the property for two-
+> thirds of the actual value, the property shall be exempted provided there
+> continues to be reasonable efforts to sell the property, such as by listing
+> the property with an agency or by advertising in the local media.
+>
+> a. The county department shall verify on a quarterly basis that a
+> reasonable effort is being made to sell the property.
+>
+> b. The property shall not be exempted if the county department, using
+> prudent person principle, determines the client, client’s spouse, or
+> sponsor(s) is not making a reasonable effort to sell.
+>
+> c. If the client, client’s spouse, or sponsor(s) rejects an offer to
+> purchase the property that is at least two-thirds the actual value of
+> the property, the entire equity value of the property shall be
+> considered a countable resource.
+
+### S3210. Adult Financial: trusts, the estate of an incapacitated client, and potential resources counted as available
+
+Document: D-80
+
+9 CCR 2503-5 3.510 ("Potential resource"); 3.520.71.H; 3.520.72.B.12-13 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> “Potential resource” means a resource to which the client, spouse of a client, or
+> sponsor(s) of a client has the legal ability to acquire or reacquire rights of ownership,
+> such as inheritances, real and personal property, cash and convertible assets, and
+> settlements.
+>
+> H. The client or legal fiduciary shall take reasonable steps to obtain and accept any
+> other potential resources for which the client is eligible. Clients referred to pursue
+> other resources shall be required to provide verification of the pursuit of such
+> resource. Grant payments shall not be approved prior to verification of the
+> attempt to sell, liquidate, or legally acquire a resource, unless the client
+> demonstrates that good cause exists.
+>
+> 1. If the client or legal fiduciary refuses or fails to make a reasonable effort to
+> secure potential resource(s), such resource(s) shall be considered as if
+> available to the client, and timely notice shall be given regarding a
+> proposed action to deny, reduce, or terminate assistance.
+>
+> 2. If the client or legal fiduciary secures the potential resource(s) prior to the
+> effective action date identified in the notice, the proposed action to deny,
+> reduce, or terminate assistance shall be withdrawn by the county, and the
+> case shall be updated. Grant payments may still be denied, reduced, or
+> discontinued due to a change in resource(s).
+>
+> 12. The estate and all resources identified in the estate inventory for a client
+> adjudicated incapacitated by a court.
+>
+> 13. Trusts, both revocable and irrevocable, will be countable as resources or
+> income according to the guidelines of SSA, except as prohibited by
+> Sections 15-14-412.5 through 15-14-412.9, C.R.S. (2025) and is
+>
+> consistent with the provisions of Federal Guidelines found in the SSA
+> Programs Operations Manual System (POMS) at SI CHI01120.201
+> (October 26, 2022) and SI 01120.200 (May 6, 2024), which are hereby
+> incorporated by reference. This rule does not contain any later
+> amendments or editions. These guidelines are available for no cost at
+> https://secure.ssa.gov/poms.NSF/lnx/0501120201CHI and
+> https://secure.ssa.gov/apps10/poms.nsf/lnx/0501120200. These
+> guidelines are also available for public inspection and copying at the
+> Colorado Department of Human Services, Division of Economic and
+> Workforce Support, 1575 Sherman Street, Denver, Colorado, 80203,
+> during regular business hours.
+>
+> a. When all or a portion of the corpus of a trust, cannot be paid to or
+> for the benefit of the client, the portion that cannot be paid is
+> considered a transfer of resources for less than fair market value
+> and a penalty shall be assessed as outlined in Section 3.520.76.D.
+>
+> b. Refusal of a trustee to make payments to or for the benefit of the
+> client does not exempt the trust from being a countable asset and
+> the full amount of the trust shall be considered available as a
+> resource to the client.
+>
+> c. If a client places an exempt resource in a trust the resource
+> exemption may still apply to that resource.
+
+### S3211. Adult Financial: in-kind earned income and donated work hours
+
+Document: D-80
+
+9 CCR 2503-5 3.520.782.B; 3.520.784.A-B (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.782 EARNED INCOME
+>
+> A. Earned income is gross monetary wages received for services performed as an
+> employee or as profit from self-employment.
+>
+> B. In-kind earned income is non-monetary benefits received for services performed
+> as an employee or as self-employment profit, such as shelter as payment for
+> building maintenance or babysitting or other barter goods in exchange for
+> services.
+>
+> 1. In-kind income received in exchange for employment is employment
+> income and shall have the appropriate earned income disregards applied
+> to the total value of the income.
+>
+> 2. The amount considered as earned income when the client, client’s
+> spouse, or sponsor(s) is paid in-kind shall be the value of the item
+> supplied. The current market value of the item is used if the value of the
+> item is not provided.
+>
+> 3.520.784 DONATED WORK HOURS AND VOLUNTEERISM
+>
+> A. Work hours or personal services, for which monetary compensation is not
+> realized, provided to a business, to a person who is self-employed, or to any
+> other person or business in need of a regular, temporary, or non-traditional
+> employee, such as a seasonal worker, shall be considered countable earned
+> income when the work:
+>
+> 1. Is regular and scheduled; and,
+>
+> 2. Is a necessary service; and,
+>
+> 3. If not performed by the client, client’s spouse, or sponsor(s) someone
+> would have to be hired to perform the work; and,
+>
+> 4. Is greater than five (5) hours per week.
+>
+> B. If donated work hours or personal services meet these requirements, the value of
+> these hours is determined by:
+>
+> 1. The going rate in the community for similar work; or,
+>
+> 2. The current minimum wage standard, whichever is greater.
+
+### S3212. Adult Financial countable unearned income: workers' compensation, inheritance, gifts and prizes, insurance and lawsuit proceeds, G.I. Bill and rental income net of their expenses
+
+Document: D-80
+
+9 CCR 2503-5 3.520.785.B (introduction), B.1.a, B.9, B.12-16, B.20 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> B. Countable unearned income includes the following and any other payments that
+> could be construed to be a gain or benefit to the client, client’s spouse, or
+> sponsor(s) and which are not earned income.
+>
+> 1. Benefits issued by the SSA.
+>
+> a. Lump sum payments shall be counted as income in the month
+> received. Any unspent amount will be treated as a resource after
+> nine (9) months.
+>
+> 9. Workers' Compensation payments awarded under Federal and State law
+> to an injured employee. Payments for medical, legal, or related expenses
+> incurred by the client, client’s spouse, or sponsor(s) in connection with
+> such claim are deducted prior to determining the amount of countable
+> unearned income.
+>
+> 12. Inheritance.
+>
+> 13. Gifts and prizes.
+>
+> 14. Proceeds of a life insurance policy to the extent that they exceed the
+> amount expended by the beneficiary for the purpose of the insured
+> recipient's last illness and burial which are not covered by other benefits.
+>
+> 15. Proceeds of a health insurance policy or personal injury lawsuit to the
+> extent that they exceed the amount to be expended or are required to be
+> expended for medical care.
+>
+> 16. VA educational assistance (G.I. Bill) payments or other military or veterans
+> benefits, which are conditional upon school attendance, are income to the
+> extent that they exceed expenses necessary for school attendance.
+>
+> 20. Income from rental property is considered as unearned income when the
+> client is not actively managing the property on an average of at least
+> twenty (20) hours a week. Rental income is countable to the extent it
+> exceeds allowable expenses. Allowable expenses are maintenance,
+> taxes, management fees, interest on mortgage, and utilities paid, and do
+> not include the purchase of the rental property and payments on the
+> principal of loans for the rental property.
+
+### S3213. Public assistance: no payment to an inmate of a public institution or a patient in an institution for tuberculosis or mental diseases (not the OAP class of (2)(a)(III))
+
+Document: D-59
+
+C.R.S. 26-2-111(1) (introduction), (1)(d) (2024 edition; re-fetched 2026-11-22). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> 26-2-111. Eligibility for public assistance - rules. (1) No person shall be granted
+> public assistance in the form of assistance payments under this article unless such person meets
+> all of the following requirements:
+>
+> (d) The person is not an inmate of a public institution, except as a patient in a public
+> medical institution, or is not a patient in any institution for tuberculosis or mental diseases, or is
+> not a patient in any medical institution as a result of having been diagnosed as having
+> tuberculosis or psychosis; but the provisions of this paragraph (d) shall not be applicable to or in
+> any way affect the class of old age pension recipients provided for in subsection (2)(a)(III) of
+> this section.
+
+### S3214. Adult Financial intentional program violation: disqualification for 12 months, 24 months, then permanently; only the individual
+
+Document: D-80
+
+9 CCR 2503-5 3.583.N.2-3 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> N. Disqualification for IPV shall be as follows:
+>
+> 2. The disqualification period shall begin no later than the first day of the
+> following month from the date determined through the ADH process or, if
+> the individual signed an ADH waiver, the date he or she signed the waiver.
+>
+> a. Once the disqualification is imposed it shall continue without
+> interruption. To consider a disqualification period served, the client
+> shall have a break in grant payments totaling the time period of the
+> disqualification. The disqualification period shall remain in effect
+> unless and until the finding is reversed by the Office of Appeals or a
+> court of appropriate jurisdiction or until the period of disqualification
+> is served per Section c below.
+>
+> b. The disqualification may be in addition to any other penalties which
+> may be imposed by a court of law for the same offenses (i.e.
+> criminal or civil sanctions).
+>
+> c. The disqualification shall be in effect for twelve (12) months upon
+> the first occasion of any such offense; twenty-four (24) months
+> upon the second occasion of any such offense and permanently
+> upon the third such offense. All disqualifications imposed shall run
+> and be served consecutively.
+>
+> 3. The disqualification penalizes only the individual(s) found to have
+> committed an IPV. If a client’s spouse and/or sponsor(s) have received an
+> IPV on his or her own case(s), the spouse’s and/or sponsor(s)’ income
+> and resources, when applicable, will be considered available to the client
+> and used for determining eligibility.
+
+### S3215. Adult Financial: EBT use in prohibited establishments - warning, card disabled, then a one-month ineligibility period
+
+Document: D-80
+
+9 CCR 2503-5 3.581.I.1-4 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> I. A client is prohibited from using or allowing the use of his or her EBT card at
+> automated teller machines (ATMs) and point of sale (POS) devices located in
+> prohibited establishments as described in Section 3.520.4.C.4.f.
+>
+> A client’s EBT transactions shall be monitored quarterly. Clients who use
+> prohibited ATMs or POS devices shall be contacted by the county department.
+> Inappropriate usage shall result in:
+>
+> 1. A written warning that the use of the EBT card in prohibited establishments
+> will result in the card being disabled. The county department shall provide
+> education about appropriate use, access, and alternatives;
+>
+> 2. If continued misuse occurs (identified on the quarterly usage report after a
+> warning has occurred), the cash grant payment portion of his or her EBT
+> card shall be disabled for one month, requiring the county to notify the
+> client of additional options for receipt of payment (direct deposit or county
+> warrant) as well as notification of due process in accordance with State
+> rules pursuant to Sections 3.520.1.H-I and 3.554.
+>
+> 3. If misuse continues, the county department shall deny or discontinue the
+> grant payments and impose a one month ineligibility period. The county
+> shall require the client to complete a new application after the one month
+> ineligibility period if he or she wants to receive Adult Financial assistance.
+> The county department shall not accept a new application from the client
+> until the one month ineligibility period expires. The county department
+> shall follow the due process procedures pursuant to Sections 3.520.1.H-I
+> and 3.554; and,
+>
+> 4. After the one month ineligibility period for continued misuse, if/when the
+> client reapplies, any future EBT card usage at prohibited establishments
+> shall be considered continued misuse. Such subsequent violations will
+> result in the one month ineligibility period and reapplication process
+> referred to in subsection 3, above.
+
+### S3216. Adult Financial: AND-SO requires the signed IM-14; refusal to sign required forms means denial
+
+Document: D-80
+
+9 CCR 2503-5 3.520.4.C.5.a; 3.545.A.2 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> a. The county department shall secure signed copies of any other
+> forms necessary to determine eligibility. If the client refuses to sign
+> any required forms, the case shall be denied or discontinued
+>
+> 2. As a condition of eligibility for AND-SO the client shall be required to sign
+> the IM-14, as defined in Section 3.510, at application and at least annually
+> allowing recovery of the funds from the first retroactive SSI payment. This
+> form must also be completed at every redetermination and whenever the
+> client’s case is transferred to another county. The form must include the
+> selection of one payment designation; client’s signature and date; a
+> county representative’s signature and date, which shall not predate the
+> client’s signature and date; and all requirements for the interim assistance
+> agreement including the applicable county Social Security Grant
+> Reimbursement (GR) Code as described in the SSA Interim Assistance
+> Reimbursement State Handbook, Section 4 (December 5, 2024) which is
+
+### S3217. Adult Financial life insurance: sponsors are allowed the same exemptions
+
+Document: D-80
+
+9 CCR 2503-5 3.520.75.A, D, E, E.4, F, F.4 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.75 LIFE INSURANCE
+>
+> A. Life insurance policies owned by the client, client’s spouse, or sponsor(s) that
+> have a cash surrender value available (CSV) must be evaluated for THE original
+> face value at the time of purchase and for the current CSV.
+>
+> D. If the total face value of all life insurance policies owned by a client and his or her
+> spouse is equal to $1,500 or less, the full CSV of all policies is exempt.
+> Sponsor(s) are allowed the same exemption.
+>
+> E. For OAP only, if the total face value of all life insurance policies owned by a client
+> and his or her spouse is equal to more than $1,500 and the CSV of all policies
+> combined is $250,000 or less, then the following applies:
+>
+> 4. Sponsor(s) are allowed the same exemptions.
+>
+> F. For OAP only, if the total face value of all life insurance policies owned by a client
+> and his or her spouse is equal to more than $1,500 and CSV of all policies
+> combined is more than $250,000, then the following applies:
+>
+> 4. Sponsor(s) are allowed the same exemptions.
+
+### S3218. Adult Financial: the home stays exempt during a long-term care stay with intent to return; otherwise its equity counts
+
+Document: D-80
+
+9 CCR 2503-5 3.520.77.C, C.1-5 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. A home in which a client and his or her spouse have an ownership interest and
+> that serves as the client's principal place of residence. This property includes the
+> shelter in which the client resides, the land on which the residence is located,
+> and related outbuildings.
+>
+> 1. The home is not a countable resource regardless of its value. However,
+> when there is an income producing property located on or adjacent to the
+> home property, the income producing resource shall not qualify under the
+> home exemption unless assessed collectively with the principal home.
+>
+> 2. When a client or his or her spouse requires long-term medical care that is
+> outside the client's county of residence, the home continues to be exempt
+> so long as there is intent for the client and/or spouse to return to the home
+> at the conclusion of medical treatment.
+>
+> 3. When a client requires care in a long-term care facility, the home
+> continues to be exempt so long as there is intent for the client to return to
+> the home.
+>
+> a. This intent to return home applies to the home in which the client or
+> spouse was living prior to being admitted to the facility or to the
+> replacement home. Such intent is documented by the following:
+>
+> 1) A written statement from the client indicating the intent to
+> return home for any reason; or,
+>
+> 2) A written statement from the client's spouse, legal fiduciary,
+> doctor, or authorized representative indicating the client's
+> intent to return home.
+>
+> b. An arrangement by the client for occupancy of the home by another
+> person, either on a rental basis, rent free, or in exchange for home
+> maintenance, during a period of temporary absence shall not affect
+> the home property exemption.
+>
+> 4. The home of an OAP-C client, as defined in Section 3.530.1, shall be
+> exempt as a resource during the period of commitment.
+>
+> 5. If a client's home can no longer be excluded due to a change in his or her
+> principal place of residence, the equity value of the property shall count as
+> a resource.
+
+### S3219. Burial assistance: a request more than thirty days after death needs good cause, and never more than one year after
+
+Document: D-80
+
+9 CCR 2503-5 3.570.43.C (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> C. When assistance for funeral, burial, or cremation services is requested within
+> thirty (30) days from the date of death on behalf of a deceased client as
+> described in Section 3.570.43.A, by any interested party; an application
+> requesting a burial benefit shall be completed and submitted to the county
+> department for eligibility determination. Requests made after 30 days shall be
+> evaluated by the county department and an extension may be given if good
+> cause exists, not to exceed one (1) year from the date of death. Good cause
+
+### S3220. AND-SO medical certification: dated within ninety days of the application or recertification; re-examination within twelve months
+
+Document: D-80
+
+9 CCR 2503-5 3.541.1.A.2.b, A.4 (rule version 12428, effective 03/02/2026; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> b. The medical certification must be dated no earlier than ninety (90)
+> days before the application or recertification.
+>
+> 4. The medical re-examination date shall be based upon the date of the
+> application or redetermination and the length of the disability, as
+> documented by the medical provider, but shall not exceed twelve (12)
+> months. However, if the client has been determined disabled by the State
+> disability review contractor, the medical re-examination date shall be
+> established by the review contractor.
