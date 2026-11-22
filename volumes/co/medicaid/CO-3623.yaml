@@ -1,0 +1,19 @@
+id: CO-3623
+name: "Medicaid: QMB coverage is in effect for the month"
+identifier: ma_qmb_is_in_effect
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether Qualified Medicare Beneficiary coverage can be in effect for the month (10 CCR 2505-10 § 8.100.6.L.10-11): a month from the QMB effective month of this determination (ma_qmb_effective_month) on; a past month the eligibility history records as QMB (ma_prior_msp_category); or, for a member already enrolled as QMB in the month before the determination month, the determination month and later months, since the member's coverage continues."
+precision: "'QMB benefits are not retroactive and the three month retroactive Medical Assistance rule does not apply' (L.11): a month before the effective month is never a new QMB month. The continuing member's arm is read first for the history and is false when no history is stated."
+derived: [any, [otherwise, ["=", ma_prior_msp_category, qmb], false], [all, [">=", [month], [det_month]], [otherwise, ["=", [at, ma_prior_msp_category, [month_before, [det_month]]], qmb], false]], [">=", [month], ma_qmb_effective_month]]
+sources: [S2406]
+implemented: engine
+tags: [ma, msp]
+rationale: "Final verification F-5 (docs/reviews/final-medicaid-chp.md): no item gated QMB on the month of determination, so ma_msp_category (CO-617) reported qmb in the determination month and in every retroactive month, while 10 CCR 2505-10 § 8.100.6.L.10-11 (S2406) makes QMB effective the month after the month of determination and not retroactive, and § 8.100.6.O.5 (S2410) makes QDWI effective the month of determination."
+tests:
+  - {id: CO-3623-T1, as_of: "2026-11-20", month: "2026-11", title: "New applicant, determination month: not yet", given: {ma_qmb_effective_month: "2026-12"}, expect: false}
+  - {id: CO-3623-T2, as_of: "2026-11-20", month: "2026-12", title: "New applicant, the month after: in effect", given: {ma_qmb_effective_month: "2026-12"}, expect: true}
+  - {id: CO-3623-T3, as_of: "2026-11-20", month: "2026-09", title: "A retroactive month: QMB is not retroactive", given: {ma_qmb_effective_month: "2026-12"}, expect: false}
+  - {id: CO-3623-T4, as_of: "2026-11-20", month: "2026-11", title: "A QMB member at renewal: coverage continues in the determination month", given: {ma_prior_msp_category: {"2026-10": qmb}, ma_qmb_effective_month: "2026-12"}, expect: true}

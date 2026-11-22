@@ -1,0 +1,12 @@
+id: CO-3632
+name: "CBwD: employer contribution that requires enrollment"
+identifier: ma_cbwd_employer_contribution_min_pct
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The share of the premium an employer must pay toward employer-based family coverage for the family of a child in the Medicaid Buy-In Program for Children with Disabilities to be required to enroll in it (10 CCR 2505-10 § 8.100.6.Q.1.f, \"at least 50%\")."
+value: 0.5
+sources: [S1752]
+tags: [ma, buy_in]
+rationale: "Final verification F-7 (docs/reviews/final-medicaid-chp.md): 10 CCR 2505-10 § 8.100.6.Q.1.f (S1752) requires families to enroll in employer-based family coverage when they are eligible for it and the employer contributes at least 50% of the premium; ma_cbwd_eligible (CO-620) did not test it and no open question recorded it. The 50% figure as a parameter."

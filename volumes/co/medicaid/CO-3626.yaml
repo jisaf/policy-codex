@@ -1,0 +1,16 @@
+id: CO-3626
+name: "Medicaid: SSI-method couple"
+identifier: ma_ssi_couple_members
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "The person and, where the person lives with a spouse (or a person held out as a spouse) and neither is excluded from the other's SSI household, that spouse: the persons whose income and resources an SSI-related, Old Age Pension or Medicare Savings Program determination counts together (10 CCR 2505-10 § 8.100.5.H.1.a, 8.100.6.L.3)."
+precision: "The same group ma_ssi_household_size (CO-604) counts and the SSI countable income items sum over."
+derived: [reachable, [spouse, holds_out_as_spouse_with], [all, [not, ma_excluded_from_ssi_household], [not, [of, [P], ma_excluded_from_ssi_household]]]]
+sources: [S1747]
+implemented: engine
+tags: [ma, non_magi, household]
+rationale: "Final verification F-6 and V-3 (docs/reviews/final-medicaid-chp.md, docs/reviews/final-verification.md): the COLA disregard and the verification of a spouse's income and resources read the couple as a group; the group was written inline in CO-604 and CO-606 only."
+tests:
+  - {id: CO-3626-T1, as_of: "2026-11-01", title: "Living alone", given: {ma_excluded_from_ssi_household: false}, relationships: [], expect: [p1]}

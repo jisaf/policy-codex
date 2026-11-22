@@ -1,0 +1,12 @@
+id: CO-3630
+name: "Employer's share of the family coverage premium"
+identifier: employer_family_coverage_employer_premium_share
+kind: supplied
+type: rate
+scope: person
+program: All
+meaning: "Where a member of the person's family (a parent, or the person) is eligible to enroll the family, the person included, in medical family coverage through an employer-based group health plan, the share of that coverage's premium the employer pays (0.5 for half); 0 when no such coverage is available to the family."
+supplied_by: "The employer's statement of the plan's family premium and contribution, or the applicant's statement."
+sources: [S1752]
+tags: [ma, buy_in]
+rationale: "Final verification F-7 (docs/reviews/final-medicaid-chp.md): 10 CCR 2505-10 § 8.100.6.Q.1.f (S1752) requires families to enroll in employer-based family coverage when they are eligible for it and the employer contributes at least 50% of the premium; ma_cbwd_eligible (CO-620) did not test it and no open question recorded it. No fact stated whether employer family coverage is available or what the employer pays toward it."
