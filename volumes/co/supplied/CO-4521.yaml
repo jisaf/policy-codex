@@ -1,0 +1,13 @@
+id: CO-4521
+name: "Summer EBT: issued benefits for the summer by another State or ITO"
+identifier: sebt_received_benefits_from_another_agency_this_summer
+kind: supplied
+type: yes/no
+scope: person
+program: SunBucks
+meaning: "The child has been issued Summer EBT benefits for the summer the determination is for (sebt_summer_year, CO-2581) by another State's or an Indian Tribal Organization's Summer EBT program, as the agency's duplicate-participation check shows (7 CFR 292.2 \"Dual participation\", 292.15(d))."
+precision: "Another agency's case status (convention rule 13 (i)), so it carries SUN Bucks' prefix. If not stated, SUN Bucks reads it as false."
+supplied_by: "The Summer EBT agency's dual-participation detection procedures (292.15(d)(2))."
+sources: [S3314]
+tags: [sebt]
+rationale: "Coverage review C-10: 292.15(d)(1) (S3314) does not allow \"Dual participation in Summer EBT in the same summer operational period\". No fact stated that another agency had already issued the child's summer benefit, so sebt_benefit_amount (CO-1299) showed the full benefit."

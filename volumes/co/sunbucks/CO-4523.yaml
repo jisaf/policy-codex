@@ -1,0 +1,17 @@
+id: CO-4523
+name: "Summer EBT: household size"
+identifier: sebt_household_size
+kind: derived
+type: whole number
+scope: person
+program: SunBucks
+meaning: "The number of people in the child's school meal and Summer EBT household, the related or unrelated individuals living as one economic unit with the child (7 CFR 292.2 \"Household\"), for the household size and income standards of 292.5(a)."
+precision: "Coverage review C-11 (final pass F-20): read from the household the case states as a group, the persons joined to the child by lives_as_one_economic_unit_with (S2301), the same group sebt_household_child_receives_snap_or_tanf (CO-2708) reads, so the size and the categorical test count the same people. When the case states no economic unit for the child (the child alone, or its relationships unstated), the size reported on the application (school_meal_household_size, CO-1294) is read instead; a child cannot be a household of one in a school meal application with others in it, so the group of one means the unit is not stated. The household's income stays the application's reported figure (school_meal_household_income, CO-1295; 292.2 \"Current income\")."
+derived: [case, [[">", [otherwise, [count, [reachable, [lives_as_one_economic_unit_with]]], 0], 1], [count, [reachable, [lives_as_one_economic_unit_with]]]], [else, school_meal_household_size]]
+sources: [S2301, S791]
+implemented: engine
+tags: [sebt, household]
+rationale: "Coverage review C-11 (final pass F-20, deferred twice): the household was stated twice, as the economic-unit group CO-2708 reads and as a count on the application, and the two could disagree. The size is now read from the group whenever the case states it, so it is entered once."
+tests:
+  - {id: CO-4523-T1, title: "A mother, her child and the mother's partner live as one economic unit: 3", as_of: "2026-10-01", given: {school_meal_household_size: 4}, others: {p2: {}, p3: {}}, relationships: [[lives_as_one_economic_unit_with, p1, p2], [lives_as_one_economic_unit_with, p2, p3]], expect: 3}
+  - {id: CO-4523-T2, title: "No economic unit stated: the size on the application", as_of: "2026-10-01", given: {school_meal_household_size: 4}, relationships: [], expect: 4}
