@@ -1918,7 +1918,7 @@ Assumption: One relative who has taken primary responsibility for a child's care
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.1 (D-65, S1500: "assumes responsibility for the dependent child's care"), 42 CFR 435.4 (S205: "assumes primary responsibility") and 8 CCR 1403-1 3.103.C (D-87, S481: "loco parentis"); none says whether care shared with a parent in the home counts. No published rule settles it.
 
-### OQ-541. Resolved: facts that are one value for the application stay on each person and the check warns when persons differ; household results are one value per unit
+### OQ-541. Resolved: facts that are one value for the application are stated once in the case's case_facts (case scope); household results are one value per unit
 
 Body: docs/reviews/engineering-item-followups.md section 9 (Drools N-3, Corticon N-4, fact-graph S3): snap_application_date, verification_request_date, cccap_application_county and similar facts mean one value for the application but are person-scope and stated on every person; nothing says what happens when persons disagree. Household results (snap_allotment) are likewise one value per member, so a consumer could add up one allotment per member. The engine reads only determination_date from case scope. The options are an engine change that reads case-scope facts (and moves these facts to it), or a check that every person states the same value; and an identity for each assistance unit (a unit-scope item). This is a ledger-design choice for the policy owners and the tech member, not a text question. Items: CO-088, CO-1746, CO-2372, CO-2122, CO-1343, CO-2106, CO-385.
 
