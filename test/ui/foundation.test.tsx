@@ -252,5 +252,5 @@ describe("drafts show as drafts (CDHS F3)", () => {
     draftsShownSig.value = null;
     modeSig.value = "edit";
     expect(viewEngine()!.item("ma_income_limit_child_pct")!.versions![0].value).toBe(9);
-  });
+  }, 30_000); // It validates a staged change against the whole co volume, which exceeds the 5 s default when other work loads the machine.
 });
