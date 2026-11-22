@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: All
 meaning: "The payments the person received in the month from persons who pay to live in the person's home for lodging only, without regular meals (lodgers or roomers), contributions toward the home's shelter expenses included. Not payments for room and meals (room_and_board_payments_received, CO-4161) or for meals only (board_only_payments_received, CO-4832). 0 if none."
-precision: "Part of other_unearned_income_taxable (CO-1714), where a lodger's payment is stated as rent, not added to it; a program that counts it differently takes it out of that fact. If not stated, every program reads it as 0."
+precision: "Part of other_unearned_income_taxable (CO-1714), where a lodger's payment is stated as rent, not added to it; a program that counts it differently takes it out of that fact. If not stated, every program reads it as 0. Coverage pass 3 C3-6: a lodger's payment is not also part of rental_income_received (CO-4457): the room is in the person's own home, whose costs SNAP allows through the shelter deduction, not rental property whose costs of doing business SNAP nets (4.404.D, CO-4322)."
 supplied_by: "Applicant statement, rent receipts, as the county establishes them."
 sources: [S3159]
 tags: [income]

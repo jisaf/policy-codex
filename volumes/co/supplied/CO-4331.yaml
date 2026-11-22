@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The average gross amount of one payment of the unearned income periodic_unearned_income_frequency (CO-4330) describes."
-precision: "Stated with periodic_unearned_income_frequency. If not stated, SNAP reads it as 0."
+precision: "Stated with periodic_unearned_income_frequency. If not stated, SNAP reads it as 0. Coverage pass 3 C3-4: for a weekly, biweekly or semimonthly income, the average of one payment (one week's unemployment compensation, for example)."
 supplied_by: "The payer's statements."
 sources: [S3112]
 tags: [snap, income]

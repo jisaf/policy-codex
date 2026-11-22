@@ -1,0 +1,18 @@
+id: CO-4931
+name: "SNAP: person's stated shelter costs"
+identifier: snap_person_stated_shelter_costs
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The continuing shelter costs the person states for the month that SNAP allows (10 CCR 2506-1 4.407.3.E): rent or mortgage, property tax and home insurance (shelter_cost_monthly, CO-035) plus the other continuing charges for the dwelling - association fees, mobile-home loans, second mortgages and home-equity loans, reverse-mortgage repayments and disaster repairs (shelter_other_continuing_charges, CO-4345)."
+precision: "Coverage pass 3 C3-3: the one sum of the stated shelter costs, read both by snap_shelter_costs (CO-2300), which counts them, and by snap_requires_verification_of_shelter_costs (CO-1379), which asks for them when questionable, so a cost counted is a cost that can be verified."
+derived: ["+", shelter_cost_monthly, [otherwise, shelter_other_continuing_charges, 0]]
+sources: [S818, S3126, S832]
+implemented: engine
+tags: [snap, income]
+rationale: "Coverage pass 3 C3-3: CO-2300 added the other continuing charges (CO-4345) to shelter_cost_monthly in three places, while CO-1379 tested shelter_cost_monthly alone, so questionable charges that were the household's only shelter cost were counted and never verified."
+tests:
+  - {id: CO-4931-T1, title: "Rent of $800 and $150 of association fees", month: "2027-02", as_of: "2027-02-10", given: {shelter_cost_monthly: 800, shelter_other_continuing_charges: 150}, expect: 950}
+  - {id: CO-4931-T2, title: "C3-3: only $400 of home-equity loan payments", month: "2027-02", as_of: "2027-02-10", given: {shelter_cost_monthly: 0, shelter_other_continuing_charges: 400}, expect: 400}
+  - {id: CO-4931-T3, title: "No other charges stated", month: "2027-02", as_of: "2027-02-10", given: {shelter_cost_monthly: 700}, expect: 700}
