@@ -6,6 +6,7 @@ type: whole number
 scope: person
 program: All
 meaning: "The number of qualifying quarters of coverage SSA's quarters record credits to the person under Title II of the Social Security Act for the non-citizen 40-quarter test, including the quarters credited from a spouse's work during the marriage or a parent's work while the person was under 18 (8 U.S.C. 1645). It is the credited total from SSA's record: a case does not add the spouse's or parent's quarters a second time."
+precision: "SSA's record does not remove the quarters after 1996 in which the person, a parent or the spouse received a federal means-tested public benefit; those are stated separately (qualifying_quarters_with_federal_means_tested_benefit, CO-4261), and SNAP subtracts them (snap_creditable_qualifying_quarters, CO-4262; 10 CCR 2506-1 4.505.61.A-B; coverage review C-5)."
 supplied_by: SSA quarters-of-coverage record, verified by the eligibility technician.
 sources: [S13]
 tags: [immigration]

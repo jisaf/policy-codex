@@ -1,0 +1,13 @@
+id: CO-4257
+name: Was disabled and dependent on a parent before eighteen
+identifier: was_disabled_and_dependent_on_parent_before_eighteen
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person, now aged eighteen or older, has a disability that began before the person's eighteenth birthday, and before that birthday the person was dependent on the parent (natural or adoptive) whose military service is read."
+precision: "Stated for an unmarried adult child of a veteran or service member where a reader asks. If not stated, SNAP reads this as false."
+supplied_by: "The person's statement, with the parent's or the VA's dependency record and the disability record."
+sources: [S3054, S3055]
+tags: [immigration, disability]
+rationale: "Coverage review C-4 (docs/reviews/coverage-snap-nonfinancial.md): 7 CFR 273.4(a)(6)(ii)(G)(3) (S3055) and 10 CCR 2506-1 4.305.B.3.f.3.e (S3054) extend the military connection to \"an unmarried disabled child age 18 or older if the child was disabled and dependent on the veteran prior to the child's 18th birthday\". No existing fact states a disability and dependency that began before eighteen."

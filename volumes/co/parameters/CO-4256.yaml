@@ -1,0 +1,14 @@
+id: CO-4256
+name: "SNAP: group living arrangement, maximum residents"
+identifier: snap_group_living_max_residents
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "A group living arrangement whose disabled residents may participate in SNAP serves no more than this number of residents: \"a public or private nonprofit facility with no more than sixteen (16) residents\" (10 CCR 2506-1 4.309.4.A; 7 CFR 271.2, \"serves no more than sixteen residents\")."
+value: 16
+sources: [S3052, S3053]
+implemented: engine
+tags: [snap, household]
+nearest: [CO-3340]
+rationale: "Coverage review C-3: snap_resides_in_institution_providing_meals (CO-007) tests the group-living size. public_community_residence_max_residents (CO-3340) is Medicaid's public-institution figure under 42 CFR 435.1010, a different rule that happens to state the same number; a figure the rule states is a parameter, not a literal (OQ-82)."

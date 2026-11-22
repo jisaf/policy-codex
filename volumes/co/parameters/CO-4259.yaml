@@ -1,0 +1,13 @@
+id: CO-4259
+name: "SNAP: military connection, full-time student dependent child age limit"
+identifier: snap_military_dependent_student_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "An unmarried dependent child of a veteran or service member who is a full-time student has a military connection while under this age: \"if a full-time student, under the age of 22\" (7 CFR 273.4(a)(6)(ii)(G)(3); 10 CCR 2506-1 4.305.B.3.f.3.d, \"under the age of twenty- two (22)\")."
+value: 22
+sources: [S3054, S3055]
+implemented: engine
+tags: [snap, immigration, age]
+rationale: "Coverage review C-4: snap_has_military_connection (CO-4260) tests the student's age. A figure the rule states is a parameter, not a literal (OQ-82)."

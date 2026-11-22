@@ -17636,3 +17636,520 @@ Document: D-55
 > 1. Monthly premium payment paid by the resident for private health insurance.
 >
 > 2. Medical health insurance premiums will be allowed for the resident only. This does not include prescription drug, vision, dental or life insurance.
+
+### S3050. ABAWD time limit exceptions: temporary or permanent disability benefits from government or private sources; a parent of a member under 18; residing in a household with a member under 18
+
+Document: D-202
+
+7 CFR 273.24(c)(2)(i), (c)(3)-(4) (current eCFR, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.24
+
+> (c) Exceptions. The time limit does not apply to an individual if he or she is:
+>
+> (1) Under 18 or 55 years of age or older;
+>
+> (2) Determined by the State agency to be medically certified as physically or mentally unfit for employment. An individual is medically certified as physically or mentally unfit for employment if he or she:
+>
+> (i) Is receiving temporary or permanent disability benefits issued by governmental or private sources;
+>
+> ...
+>
+> (3) Is a parent (natural, adoptive, or step) of a household member under age 18, even if the household member who is under 18 is not himself eligible for SNAP benefits;
+>
+> (4) Is residing in a household where a household member is under age 18, even if the household member who is under 18 is not himself eligible for SNAP benefits;
+
+### S3051. Colorado SNAP: a member whose citizenship is questionable is ineligible until proof is obtained; a third-party statement accepted
+
+Document: D-82
+
+10 CCR 2506-1 4.505.5.B, 4.505.51.C (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. If the above forms of verification cannot be obtained and the household can
+> provide a reasonable explanation as to why verification is not available, the local
+> office shall accept a signed statement from a third party having personal
+> knowledge of the person's status and who declares, under penalty of perjury, that
+> the member in question is a U.S. citizen. The signed statement shall contain a
+> warning of the penalties for helping someone commit fraud.
+>
+> ...
+>
+> C. The member whose citizenship is in question shall be ineligible to participate until
+> proof of citizenship is obtained, except as provided in Section 4.505.6, E. Until
+> proof of citizenship is obtained, the member whose citizenship is in question shall
+> have his or her income, less a prorated share, and all of his or her resources
+> considered available to any remaining household members.
+
+### S3052. Colorado SNAP: residents of treatment centers and group living arrangements: public or nonprofit, certified, no more than sixteen residents; for-profit facilities are institutions
+
+Document: D-82
+
+10 CCR 2506-1 4.309.3.A-B, 4.309.4.A (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.309.3 Drug and Alcohol Treatment and Rehabilitation Centers (Center)
+>
+> A. Residents of publicly operated community mental health centers or private non-
+> profit organizations or institutions, operating a residential drug or alcohol
+> treatment or rehabilitation program, are eligible to participate in SNAP.
+>
+> Applications shall be made through an authorized representative who is
+> employed by the drug or alcohol treatment or rehabilitation facility and
+> designated by the facility for that purpose. Individuals residing in a for-profit
+> facility are considered residents of an institution per Section 4.304.4(E), above.
+>
+> B. The center shall be approved by the Colorado Department of Human Services
+> (CDHS), Office of Behavioral Health (OBH) before its residents are eligible for
+> SNAP participation. The OBH will ensure that the center is providing treatment
+> that can lead to the rehabilitation of drug or alcohol addiction.
+>
+> Before the certification of residents can be accomplished, the local office shall
+> verify that the center has been approved by FNS as a retailer and is certified by
+> the OBH. Proof of OBH certification may be provided in the form of a license or
+> an approval letter issued to the center by that agency, or proof that the center is
+> funded under Part B of Title XIX of the Public Health Service Act (42 U.S.C.
+> 300x-1 through 300x-13).
+>
+> ...
+>
+> 4.309.4 Residents of Group Living Arrangements
+>
+> A. Group living arrangements are residential settings that are considered
+> alternatives to institutional living. Institutional settings are not included in this
+> provision. To be eligible as residents of a group living arrangement, the person
+> must be a person with disabilities. In addition, the local office shall verify that the
+> group living arrangement is a public or private nonprofit facility with no more than
+> sixteen (16) residents and is certified as a group living arrangement by the
+> Colorado Department of Public Health and Environment and the state
+> department under Section 1616(e) of the Social Security Act (codified at 42
+> U.S.C. 1382e(e)). FNS may also certify under standards determined by the
+> USDA that are comparable to standards implemented by the state under 1616(e)
+> of the Social Security Act. Individuals residing in a for-profit facility are
+> considered residents of an institution per Section 4.304.4(E).
+
+### S3053. SNAP definitions: drug addiction or alcoholic treatment and rehabilitation program; group living arrangement
+
+Document: D-6
+
+7 CFR 271.2 (re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-271.2
+
+> *Drug addiction or alcoholic treatment and rehabilitation program* means any drug addiction or alcoholic treatment and rehabilitation program conducted by a private, nonprofit organization or institution, or a publicly operated community mental health center, under part B of title XIX of the Public Health Service Act (42 U.S.C. 300x *et seq.*). Under part B of title XIX of the Public Health Service Act is defined as meeting the criteria which would make it eligible to receive funds, even if it does not actually receive funding under part B of title XIX.
+>
+> ...
+>
+> *Group living arrangement* means a public or private nonprofit residential setting that serves no more than sixteen residents that is certified by the appropriate agency or agencies of the State under regulations issued under section 1616(e) of the Social Security Act or under standards determined by the Secretary to be comparable to standards implemented by appropriate State agencies under section 1616(e) of the Social Security Act. To be eligible for SNAP benefits, a resident of such a group living arrangement must be blind or disabled as defined in paragraphs (2) through (11) of the definition of “Elderly or disabled member” contained in this section.
+
+### S3054. Colorado SNAP military connection: the unmarried dependent child of a veteran
+
+Document: D-82
+
+10 CCR 2506-1 4.305.B.3.f.3.d-e (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> d. An unmarried dependent child of a veteran who is
+> under the age of eighteen (18) or, if a full-time
+> student, under the age of twenty- two (22); or,
+>
+> e. Unmarried dependent child of a deceased veteran
+> provided such child was dependent upon the veteran
+> at the time of the veteran's death; or an unmarried
+> child with disabilities age eighteen (18) or older if the
+> child with disabilities was disabled and dependent
+> upon the deceased veteran prior to the child's
+> eighteenth (18th) birthday.
+>
+> 1. For purposes of this provision, “child” means
+> the legally adopted or biological child of the
+> veteran.
+
+### S3055. SNAP: an unmarried dependent child of a veteran or active-duty member defined
+
+Document: D-9
+
+7 CFR 273.4(a)(6)(ii)(G)(3) (re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.4
+
+> (*3*) The spouse and unmarried dependent children of a person described in paragraphs (a)(6)(ii)(G)(*1*) or (a)(6)(ii)(G)(*2*) of this section, including the spouse of a deceased veteran, provided the marriage fulfilled the requirements of 38 U.S.C. 1304, and the spouse has not remarried. An unmarried dependent child for purposes of this paragraph (a)(6)(ii)(G)(*3*) is: a child who is under the age of 18 or, if a full-time student, under the age of 22; such unmarried dependent child of a deceased veteran provided such child was dependent upon the veteran at the time of the veteran's death; or an unmarried disabled child age 18 or older if the child was disabled and dependent on the veteran prior to the child's 18th birthday. For purposes of this paragraph (a)(6)(ii)(G)(*3*), child means the legally adopted or biological child of the person described in paragraph (a)(6)(ii)(G)(*1*) or (a)(6)(ii)(G)(*2*) of this section.
+
+### S3056. Colorado SNAP: quarters after 1996 in which a federal means-tested public benefit was received are not credited; the benefits that do not count
+
+Document: D-82
+
+10 CCR 2506-1 4.505.61.A-C (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> A. No such qualifying quarter of coverage that is creditable under Title II of the
+> Social Security Act for any period beginning after December 31, 1996, may be
+> credited to a non-citizen if the non-citizen, parent of the non-citizen, or spouse of
+> such non-citizen received any federal means-tested public benefit during the
+> period for which such qualifying quarter of coverage is so credited.
+>
+> B. The local office must evaluate quarters of coverage and receipt of federal means-
+> tested public benefits on a calendar year basis. The local office must first
+> determine the number of quarters creditable in a calendar year, then identify
+> those quarters in which the non-citizen (or the parent(s) or spouse of the non-
+> citizen) received federal means-tested public benefits and then remove those
+> quarters from the number of quarters of coverage earned or credited to the
+> noncitizen in that calendar year. However, if the non-citizen earns the fortieth
+> (40th) quarter of coverage prior to applying for SNAP or any other federal means-
+> tested public benefit in that same quarter, the local office must allow that quarter
+> toward the forty (40) qualifying quarters total.
+>
+> C. Receipt of federal means-tested public benefit shall not include the following:
+>
+> 1. Medical assistance under Title XIX of the Social Security Act (or any
+> successor program to such Title) for care and services that are necessary
+> for the treatment of an emergency medical condition (as defined in Section
+> 1903(v)(3) of such Act) of the non-citizen involved and are not related to
+> an organ transplant procedure, if the non-citizen involved otherwise meets
+> the eligibility requirement for medical assistance under the State Plan
+> approved under such Title (other than the requirement of the receipt of aid
+> or assistance under Title IV of such Act, supplemental security income
+> benefits under Title XVI of such Act, or a state supplementary payment)
+>
+> 2. Short-term non-cash, in-kind emergency disaster relief.
+>
+> 3. Assistance or benefits under the National School Lunch Act.
+>
+> 4. Assistance or benefits under the Child Nutrition Act of 1966.
+>
+> 5. Public health assistance (not including any assistance under Title XIX of
+> the Social Security Act) for immunizations with respect to immunizable
+> diseases and for testing and treatment of symptoms of communicable
+> diseases whether or not such symptoms are caused by a communicable
+> disease.
+>
+> 6. Payments for foster care and adoption assistance under Parts B and E of
+> Title IV of the Social Security Act for a parent or a child who would, in the
+> absence of Subsection (q), be eligible to have such payments made on
+> the child's behalf under such part, but only if the foster or adoptive parent
+> (or parents) of such child is a qualified alien (as defined in Section 431 of
+> the Social Security Act).
+>
+> 7. Programs, services, or assistance (such as soup kitchens, crises
+> counseling and intervention, and short-term shelter) specified by the U.S.
+> Attorney General, in the Attorney General's sole and unreviewable
+> discretion after consultation with appropriate federal agencies and
+> departments, that:
+>
+> a. Deliver in-kind services at the community level, including through
+> public or private nonprofit agencies,
+>
+> b. Do not condition the provision of assistance, the amount of
+> assistance provided, or the cost of assistance provided on the
+> individual recipient's income or resources, and,
+>
+> c. Are necessary for the protection of life or safety.
+>
+> 8. Programs of student assistance under Titles IV, V, IX, and X of the Higher
+> Education Act of 1965.
+>
+> 9. Means-tested programs under the Elementary and Secondary Education
+> Act of 1965.
+>
+> 10. Benefits under the Head Start Act.
+>
+> 11. Benefits under the Workforce Investment Act.
+
+### S3057. Colorado SNAP: no participation in the same period as the Commodity Food Distribution Program; migrant campsites satisfy residency; no intent to remain required
+
+Document: D-82
+
+10 CCR 2506-1 4.303.B (second paragraph), D-E (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> Households on Indian reservations participating in the Commodity Food
+> Distribution Program for a particular period shall not be allowed to participate in
+> SNAP during the same period. Participation shall be limited to participation in the
+> Commodity Food Distribution Program or SNAP.
+>
+> ...
+>
+> D. Applicants who reside in a county, without residing in a permanent dwelling nor
+> having a fixed mailing address, shall be considered eligible for the Program,
+> provided other eligibility requirements are met. Migrant campsites satisfy the
+> residency requirement, as do shelters for the homeless. Homeless persons
+> satisfy the residency requirement as long as dual participation in any month of
+> eligibility is not allowed.
+>
+> E. In no instance shall there be a durational residency requirement imposed upon
+> the applicant. Intent to permanently remain in the state shall not be a condition of
+> eligibility.
+
+### S3058. Colorado SNAP: a level-sanction disqualified member who becomes exempt
+
+Document: D-82
+
+10 CCR 2506-1 4.310.8.C-D (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. If the level sanction disqualified individual is the sole member of the SNAP
+> household and then becomes exempt, the newly exempt individual can reapply
+> for benefits. The newly exempt individual will be eligible based on the date of the
+> application or if in the case of reinstatement, the date exemption information was
+> provided to the local office.
+>
+> D. If the level sanction disqualified individual is in a SNAP household with other
+> eligible members and then becomes exempt, the newly exempt individual will be
+> eligible based on the date exemption information was provided to the local office.
+
+### S3059. SNAP: eligibility reestablished during a voluntary-quit disqualification when the person becomes exempt
+
+Document: D-11
+
+7 CFR 273.7(j)(4) (re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.7
+
+> (4) *Ending a voluntary quit or a reduction in work disqualification.* Except in cases of permanent disqualification, following the end of the mandatory disqualification period for voluntarily quitting a job or reducing work effort without good cause, an individual may begin participation in the program if he or she reapplies and is determined eligible by the State agency. Eligibility may be reestablished during a disqualification and the individual, if otherwise eligible, may be permitted to resume participation if the individual becomes exempt from Program work requirements under paragraph (b)(1) of this section.
+
+### S3060. Colorado SNAP: an ABAWD who missed some work for good cause meets the work requirement
+
+Document: D-82
+
+10 CCR 2506-1 4.311.3.B (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Good cause for countable months
+>
+> If an ABAWD would have worked an average of twenty (20) hours per week but
+> missed some work for good cause, the ABAWD shall be considered to have me
+> the work requirement if the absence from work is temporary and the individual
+> retains work.
+>
+> Good cause for countable months shall include circumstances beyond the
+> individual’s control, such as, but not limited to, illness, illness of another
+> household member requiring the presence of the member, a household
+> emergency, or the unavailability of transportation.
+
+### S3061. ABAWD good cause: hours missed for good cause while the absence is temporary
+
+Document: D-202
+
+7 CFR 273.24(a)(2) (current eCFR, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.24
+
+> (2) Good cause. As determined by the State agency, if an individual would have fulfilled the work requirement as defined in paragraph (a)(1) of this section, but missed some hours for good cause, the individual shall be considered to have fulfilled the work requirement if the absence from work, the work program, or the workfare program is temporary. Good cause shall include circumstances beyond the individual's control, such as, but not limited to, illness, illness of another household member requiring the presence of the member, a household emergency, or the unavailability of transportation. In addition, if the State agency grants an individual good cause under § 273.7(i) for failure or refusal to meet the mandatory E&T requirement, that good cause determination confers good cause under this paragraph, except in the case of § 273.7(i)(4), without the need for a separate good cause determination under this paragraph. Good cause granted under § 273.7(i)(4) only provides good cause to ABAWDs for failure or refusal to participate in a mandatory SNAP E&T program, and does not confer good cause for failure to fulfill the work requirement in paragraph (a)(1) of this section.
+
+### S3062. Colorado SNAP: a further expedited certification only after the last one's postponed verification is completed or a normal certification
+
+Document: D-82
+
+10 CCR 2506-1 4.205.11.C (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. There is no limit to the number of times a household can be certified under
+> expedited procedures, as long as prior to each expedited certification, the
+> household either completes the verification requirements that were postponed at
+> the last expedited certification or the household was certified under normal
+> processing standards since the last expedited certification.
+
+### S3063. Colorado SNAP: benefits from the date verification is provided, from the month after the month of application, or from the date a required action is taken, after a household's delay
+
+Document: D-82
+
+10 CCR 2506-1 4.205.31 (second paragraph), 4.205.4.A, 4.209.1.D (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> If the household provides requested verification after the thirtieth (30th) day and on or
+> before the sixtieth (60th) day from the date of application, the local office shall reopen
+> the case without requiring a new application and benefits will be prorated from the date
+> the requested verification is provided. Any changes in the household situation must be
+> considered for determining eligibility.
+>
+> ...
+>
+> 4.205.4 Delays in Processing Beyond Sixty (60) Days
+>
+> A. If the local office is at fault for not completing the application process by the end
+> of the second thirty (30) day period, and the case record is otherwise complete,
+> the office shall continue to process the original application until an eligibility
+> determination is made. If the household is found to be eligible, and the local
+> office was also at fault for the delay in the initial thirty (30) days, benefits
+> retroactive to the month of application shall be provided to the household.
+> However, if the delay during the initial thirty days was the household's fault,
+> benefits shall only be provided back to the month following the month of
+> application (see Section 4.207.2).
+>
+> ...
+>
+> D. If an application for recertification is denied for a failure of the household to take
+> a required action, the local office shall reopen the case if the required action is
+> taken by the end of the certification period and provide benefits for the first month
+> of the new certification period.
+>
+> If the household takes the required action after the end of the certification period,
+> but within the next thirty (30) calendar days, the local office shall reopen the case
+> and provide benefits retroactive to the date that the action was taken by the
+> household.
+
+### S3064. Colorado SNAP: income verified at recertification when it changed more than fifty dollars
+
+Document: D-82
+
+10 CCR 2506-1 4.506 (first paragraph) (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.506 VERIFICATION OF INCOME
+> Monthly, gross nonexempt income shall be verified prior to initial certification, unless the
+> household is entitled to expedited service and postponed verification for one month.
+> Income is also verified at recertification when a household reports that the amount of
+> income has changed more than fifty dollars ($50), or the source of income has changed.
+
+### S3065. Colorado SNAP: examples of a person physically or mentally unfit for employment
+
+Document: D-82
+
+10 CCR 2506-1 4.310.3.C (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> C. A person physically or mentally unfit for employment;
+>
+> Examples of being physically or mentally unfit for employment can include but
+> are not limited to:
+>
+> 1. Persons experiencing homelessness, as defined in 4.000.1
+>
+> 2. Recently released from an institution
+>
+> 3. Person with disabilities as defined in 4.100 and includes but is not limited
+> to:
+>
+> a. Persons with self-declared temporary conditions that would prevent
+> successful participation in work activities
+>
+> b. Persons receiving temporary or permanent disability benefits
+> issued by government or private sources
+>
+> c. Persons participating in vocational rehabilitation
+>
+> d. Persons applying for and/or appealing SSI benefits
+>
+> 4. Persons unable to maintain employment
+>
+> 5. Persons impacted by domestic violence
+
+### S3066. Colorado SNAP: the four-part fleeing felon test; probation or parole violator; actively seeking
+
+Document: D-82
+
+10 CCR 2506-1 4.304.4.B-C (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Individuals who are fleeing to avoid prosecution or custody for a crime, or an
+> attempt to commit a crime, that would be classified as a felony shall not be
+> considered eligible household members. If an individual is suspected of being a
+> fleeing felon, either by their own admission or based on a report from law
+> enforcement, the fleeing status must be verified in to determine if the client is
+> eligible for SNAP.
+>
+> The following four-part test must be used to determine if the individual would be
+> considered a fleeing felon for SNAP:
+>
+> 1. There is an outstanding felony warrant for the individual by a Federal,
+> State, or local law enforcement agency and the underlying cause for the
+> warrant is for committing, or attempting to commit, a crime that is a felony
+> under the law of the place from which the individual is fleeing or is a high
+> misdemeanor under the law of New Jersey; and
+>
+> 2. The individual is aware of, or should reasonably have been able to expect
+> that, the felony warrant has already or would have been issued; and
+>
+> 3 The individual has taken some action to avoid being arrested or jailed; and
+>
+> 4. The Federal, State, or local law enforcement agency is actively seeking
+> the individual as provided in 4.304.4, C, 1.
+>
+> C. Individuals who are determined to be a parole or probation violator shall not be
+> an eligible household member. To be considered a probation or parole violator,
+> an impartial party, as designated by the agency, must determine that the
+> individual violated a condition of his or her probation or parole imposed under
+> Federal or State law, and that Federal, State, or local law enforcement authorities
+> are actively seeking the individual to enforce the conditions of the probation or
+> parole as outlined below.
+>
+> 1. For the purposes of this provision, actively seeking is defined as follows:
+>
+> a. A Federal, State, or local law enforcement agency informs the local
+> office that it intends to enforce an outstanding felony warrant or to
+> arrest an individual for a probation or parole violation within twenty
+> (20) days of submitting a request for information about the
+> individual to the local office; or,
+>
+> b. A Federal, State, or local law enforcement agency presents a
+> felony arrest warrant as provided in 4.304.4, B, 1; or,
+>
+> c. A Federal, State, or local law enforcement agency states that it
+> intends to enforce an outstanding felony warrant or to arrest an
+> individual for a probation or parole violation within thirty (30) days
+> of the date of a request from a local office about a specific
+> outstanding felony warrant or probation or parole violation.
+
+### S3067. Colorado SNAP: a sincere religious objection to providing an SSN
+
+Document: D-82
+
+10 CCR 2506-1 4.302.C.2 (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 2. If an individual refuses to provide an SSN based on a sincere religious
+> objection, all members of the household may participate in SNAP, if
+> otherwise eligible. In these situations, the local office may check with the
+> SSA to see if the household members already have SSNs and may use
+> any existing SSNs for verification and matching purposes without further
+> notice to the household.
+
+### S3068. Colorado SNAP: residents of a shelter for battered women and children may participate in one additional household that contains the abuser
+
+Document: D-82
+
+10 CCR 2506-1 4.309.21 (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4.309.21 Residents of Shelters for Battered Women and Children
+>
+> Women or women with their children who are temporarily residing in a shelter for
+> battered women and children (which serves over fifty percent (50%) of their meals) shall
+> be considered exempt from the prohibition against residents of institutions.
+>
+> A. They shall be allowed to apply and be considered for eligibility as individual
+> (parent/child) units, rather than considered as part of a household consisting of
+> all shelter residents.
+>
+> B. In many instances battered women and their children who were previously
+> certified in the household of an abuser may not have access to their allotment.
+> Therefore, these individuals shall be allowed to participate in one (1) additional
+> project area and/or household so long as one of the two households with which
+> they are participating contains the individual who abused them. These persons
+> may receive an additional allotment only once in a month.
+
+### S3069. Colorado SNAP: boarders pay a reasonable monthly payment for meals: the maximum allotment, or two-thirds of it for two meals or fewer
+
+Document: D-82
+
+10 CCR 2506-1 4.304.3.C.4-5 (version effective 2026-10-01; re-fetched 2026-11-22 in the SNAP non-financial coverage round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 4. Persons who only work and provide no monetary compensation in
+> exchange for meals or who make payments to a third party on the
+> household’s behalf in exchange for meals would not be classified as
+> boarders.
+>
+> 5. Boarder status shall not be granted to individuals paying less than a
+> reasonable monthly payment for meals. An individual not paying a
+> reasonable monthly payment for meals will be considered a member of
+> the household which provides the meals and lodging.
+>
+> A. A reasonable monthly payment is one of the following:
+>
+> 1) Boarders, whose board arrangement is for more than two (2)
+> meals per day, shall pay an amount that equals or exceeds
+> the maximum SNAP allotment for the number of persons in
+> the boarder SNAP household.
+>
+> 2) Boarders, whose board arrangement is for two (2) meals or
+> fewer per day, shall pay an amount that equals or exceeds
+> two-thirds of the maximum allotment for the number of
+> persons in the boarder household.
+>
+> B. When the boarder's payments for a room are distinguishable from
+> their payments for meals, only the amount paid for meals will be
+>
+> considered in determining if reasonable compensation is being
+> paid for meals.
+
+### S3070. SNAP: no household is eligible if it refuses to cooperate in providing necessary information
+
+Document: D-3
+
+7 U.S.C. 2015(c) (re-fetched 2026-11-22). https://www.law.cornell.edu/uscode/text/7/2015
+
+> (c) Refusal to provide necessary information Except in a case in which a household is receiving transitional benefits during the transitional benefits period under section 2020(s) of this title , no household shall be eligible to participate in the supplemental nutrition assistance program if it refuses to cooperate in providing information to the State agency that is necessary for making a determination of its eligibility or for completing any subsequent review of its eligibility.
+
+### S3071. SNAP: the income and resources of the sponsor's spouse living with the sponsor are deemed
+
+Document: D-2
+
+7 U.S.C. 2014(i)(1) (re-fetched 2026-11-22). https://www.law.cornell.edu/uscode/text/7/2014
+
+> For purposes of determining eligibility for and the amount of benefits under this chapter for an individual who is an alien as described in section 2015(f)(2)(B) of this title , the income and resources of any person who as a sponsor of such individual’s entry into the United States executed an affidavit of support or similar agreement with respect to such individual, and the income and resources of the sponsor’s spouse if such spouse is living with the sponsor, shall be deemed to be the income and resources of such individual for a period of three years after the individual’s entry into the United States. Any such income deemed to be income of such individual shall be treated as unearned income of such individual.

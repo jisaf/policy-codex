@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether the agency has found the person's statement about U.S. citizenship questionable: inconsistent with the person's other statements, the application, earlier applications, documents provided, or information from another source, as the agency documents in the case record."
-precision: The programs' guidelines forbid finding a claim questionable on surname, accent, appearance or limited English (4.505.51.B, 3.520.67.D, 3.753.111); the supplier applies them.
+precision: "The programs' guidelines forbid finding a claim questionable on surname, accent, appearance or limited English (4.505.51.B, 3.520.67.D, 3.753.111); the supplier applies them. If not stated, SNAP's eligibility test for an unverified questionable citizen (snap_is_ineligible_pending_citizenship_verification, CO-4251) reads this as false: a declaration is accepted unless found questionable."
 supplied_by: Eligibility worker's documented determination in CBMS case comments.
 sources: [S827, S886, S895]
 tags: [verification, immigration]

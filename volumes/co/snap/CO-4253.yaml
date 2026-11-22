@@ -1,0 +1,20 @@
+id: CO-4253
+name: "SNAP: meets the residency requirement"
+identifier: snap_meets_residency_requirement
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "The person lives in Colorado for a purpose other than a vacation, however long the person has lived there and whether or not the person intends to remain (10 CCR 2506-1 4.303.C-E; 7 U.S.C. 2015(f)'s \"resident of the United States\" read through Colorado's rule, OQ-3): migrant campsites and homeless shelters satisfy the requirement, and no fixed address is needed (4.303.D)."
+precision: "Reads state_where_living_now (CO-4252) against colorado_state_code. Where it is not stated, the person's state of residence (is_colorado_resident, CO-505) stands in: a person who lives in Colorado and intends to remain lives in Colorado. The county a household applies in is not a condition of eligibility (OQ-393, resolved; CO-309)."
+derived: [otherwise, ["=", state_where_living_now, colorado_state_code], is_colorado_resident]
+sources: [S2300, S3057, S8]
+implemented: engine
+tags: [snap, household]
+nearest: [CO-505]
+rationale: "Coverage review C-6: CO-309 read is_colorado_resident (CO-505), which reads state_of_residence (CO-006), \"the U.S. state in which the person lives and intends to remain\"; 4.303.E (S3057) forbids the intent as a SNAP condition. is_colorado_resident is the shared state-residence fact that Medicaid, CHP+, CCCAP and LEAP read and keeps its meaning; SNAP's own test is this item."
+tests:
+  - {id: CO-4253-T1, title: "C-6: seasonal farm workers in a Colorado camp who intend to return to Texas", as_of: "2026-10-01", given: {state_of_residence: TX, state_where_living_now: CO}, expect: true}
+  - {id: CO-4253-T2, title: "A Colorado resident, nothing else stated", as_of: "2026-10-01", given: {state_of_residence: CO}, expect: true}
+  - {id: CO-4253-T3, title: "A Wyoming resident visiting Colorado on vacation: living in Wyoming", as_of: "2026-10-01", given: {state_of_residence: WY, state_where_living_now: WY}, expect: false}
+  - {id: CO-4253-T4, title: "A Wyoming resident, nothing else stated", as_of: "2026-10-01", given: {state_of_residence: WY}, expect: false}
