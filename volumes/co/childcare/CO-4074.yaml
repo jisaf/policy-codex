@@ -1,0 +1,18 @@
+id: CO-4074
+name: "CCCAP: in the substance use disorder treatment activity"
+identifier: cccap_is_in_sud_treatment_activity
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "This adult caretaker is, this month, in the low-income eligible activity of enrollment in a licensed substance use disorder treatment program at an intensive outpatient level of care or higher (8 CCR 1403-1 3.111.G.4.a.3, from July 1, 2026), within the year that runs from the month containing the start of the instance (cccap_sud_treatment_instance_start_date, CO-3905) for cccap_sud_treatment_activity_max_months months."
+precision: "The arm of cccap_caretaker_in_eligible_activity (CO-984) for this activity, made its own item so cccap_requires_verification_of_eligible_activity (CO-1441) can read it: 3.111.G.4.d and 3.125.CC have the enrollment verified \"through self-attestation\", so no document is asked of a caretaker whose activity this is."
+derived: [all, cccap_is_adult_caretaker, is_in_sud_treatment_iop_or_higher, ["<=", [month_of, cccap_sud_treatment_instance_start_date], [month]], ["<", [month], [months_after, cccap_sud_treatment_activity_max_months, [month_of, cccap_sud_treatment_instance_start_date]]]]
+sources: [S1015, S1412, S2857]
+nearest: [CO-984]
+implemented: engine
+tags: [household]
+rationale: "Second-pass review P2 (SUD self-attestation): 3.111.G.4.d (S2857): \"Adult Caretakers shall verify enrollment in a substance use disorder workforce training activity through self-attestation\"; CO-1441 and CO-1677 asked such a caretaker for an activity document. The activity test was inline in CO-984; it is an item so both read one definition."
+tests:
+  - {id: CO-4074-T1, title: "Treatment begun in July 2026, read in October 2026", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, is_in_sud_treatment_iop_or_higher: true, cccap_sud_treatment_instance_start_date: "2026-07-01"}, expect: true}
+  - {id: CO-4074-T2, title: "The same instance in July 2027, past its year", as_of: "2027-07-01", month: "2027-07", given: {cccap_is_adult_caretaker: true, is_in_sud_treatment_iop_or_higher: true, cccap_sud_treatment_instance_start_date: "2026-07-01"}, expect: false}

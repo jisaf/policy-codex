@@ -1,0 +1,17 @@
+id: CO-4003
+name: "Adult Financial: resources are unverified"
+identifier: af_resources_are_unverified
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether this person's resources other than cash must be verified for Adult Financial and are not (9 CCR 2503-5 3.520.72.D: \"The county department shall obtain verification of all resources and associated values\"), with D.4's twenty-four-month rule and F's SSI rule applied to the person who owns the resources (af_requires_verification_of_resources)."
+precision: "Whoever's resources they are: the client, or the client's spouse, whose countable resources 3.520.72.A counts \"together with all other countable resources of the client, spouse, and sponsor(s)\" (af_spouse_resources_pending_verification_count, CO-4004). A sponsor's resources are the sponsor element (CO-1672). The redetermination facts (af_determination_is_redetermination, af_redetermination_is_twenty_four_month, af_has_newly_reported_resources) are read on the person who owns the resources; a spouse who is not a client has them stated as the client's determination."
+derived: [all, af_requires_verification_of_resources, [not, resources_are_verified]]
+sources: [S454, S888]
+implemented: engine
+tags: [cash, verification, resources]
+rationale: "Final cash review 2, N-2 (the resource half of V-9, which the first fix round deferred): af_client_and_spouse_countable_resources (CO-2389) counts the spouse's resources against the client's limit, but the resource element (af_resources_verification_is_pending, CO-1664) was gated on the person's own Adult Financial applicability, so a spouse under OAP age with no disability was never asked to verify. The ungated condition is stated once, here, as af_earned_income_is_unverified (CO-3882) does for income."
+tests:
+  - {id: CO-4003-T1, title: "A retirement account with no statement", as_of: "2026-10-01", month: "2026-10", given: {af_requires_verification_of_resources: true, resources_verified_by_electronic_data_source: false, resources_verification_document_received: false}, expect: true}
+  - {id: CO-4003-T2, title: "No resources other than cash", as_of: "2026-10-01", month: "2026-10", given: {af_requires_verification_of_resources: false}, expect: false}

@@ -1,0 +1,19 @@
+id: CO-4072
+name: "SUN Bucks: a ground that excepts the child from verification"
+identifier: sebt_child_verification_exception_ground
+kind: derived
+type: yes/no
+scope: person
+program: SunBucks
+meaning: "Whether the child has one of the grounds, other than SNAP or TANF receipt, on which 7 CFR 292.14(f)(1) excepts a household from verification: a member of a household receiving FDPIR or another means-tested program the Secretary has approved, or a foster, homeless, migrant or runaway child as defined in 7 CFR 245.2."
+precision: "Not Head Start enrollment or individual certification for free or reduced price meals, which are categorical grounds (sebt_other_categorical_basis, CO-1296) that (f)(1) does not list. Foster care is the foster_child role, or a foster care payment or IV-B service in the child welfare record, as in CO-1296; FDPIR, migrant, runaway and another approved program are positive identifications, their absence read as no such ground. SNAP and TANF receipt is read by sebt_requires_verification_of_income (CO-1699) from sebt_household_child_receives_snap_or_tanf (CO-2708)."
+derived: [any, sebt_is_homeless_child, [otherwise, [exists_related, [foster_child], true], false], [in, child_welfare_payment_type, [title_iv_e_foster_care, state_funded_foster_care, title_iv_b_services_only]], [otherwise, is_migrant_child, false], [otherwise, is_runaway_child, false], [otherwise, receives_fdpir, false], [otherwise, sebt_other_documented_categorical_basis, false]]
+sources: [S1092, S792, S1952]
+nearest: [CO-1296]
+implemented: engine
+tags: [sebt, verification]
+rationale: "Second-pass review N-9 (was F-21): sebt_requires_verification_of_income (CO-1699) excepted any categorical child, Head Start and individual certification included, though 292.14(f)(1) names only SNAP, FDPIR, TANF or an approved program and foster, homeless, migrant or runaway children. The exception's grounds are one item, and sebt_other_categorical_basis (CO-1296) reads it with the two grounds (f)(1) leaves out."
+tests:
+  - {id: CO-4072-T1, title: "A child placed in foster care", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: title_iv_e_foster_care}, others: {p2: {}}, relationships: [[foster_child, p1, p2]], expect: true}
+  - {id: CO-4072-T2, title: "A Head Start child, no other ground: not an exception (292.14(f)(1))", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: none, is_head_start_child: true}, relationships: [], expect: false}
+  - {id: CO-4072-T3, title: "A migrant child", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: none, is_migrant_child: true}, relationships: [], expect: true}

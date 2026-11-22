@@ -5,11 +5,11 @@ kind: parameter
 type: whole number
 scope: global
 program: SNAP
-meaning: "The age under which a sponsored child of a sponsored non-citizen is exempt from sponsor deeming, and under which a citizen child of a sponsored non-citizen shares in the division of the deemed amount: 18 (7 CFR 273.4(c)(2)(v), (c)(3)(vi)-(vii))."
+meaning: "The age under which a sponsored non-citizen is exempt from sponsor deeming (7 U.S.C. 2014(i)(2)(E); 8 U.S.C. 1631(d)(3) with 1612(a)(2)(J)), and under which a citizen child of a sponsored non-citizen shares in the division of the deemed amount (7 CFR 273.4(c)(2)(v), (c)(3)(vii)): 18."
 versions:
   - from: "2000-01-01"
     value: 18
     source: S2503
-sources: [S2503]
+sources: [S2503, S2959, S2960]
 tags: [snap, immigration]
-rationale: "Final verification F-2: the federal exemptions (c)(3)(vi)-(vii) for children under 18 of a sponsored non-citizen are read by snap_sponsor_deeming_applies (CO-2337) and snap_sponsor_deeming_divisor (CO-3708)."
+rationale: "Final verification F-2: the federal exemptions (c)(3)(vi)-(vii) for children under 18 of a sponsored non-citizen are read by snap_sponsor_deeming_applies (CO-2337) and snap_sponsor_deeming_divisor (CO-3708). Final verification pass 2 N-3: the statute's exemption of every non-citizen under 18 (Pub. L. 107-171 sec. 4401(b), effective October 1, 2003, S2960) is stated with the same figure, so one version still covers every date the volume determines."

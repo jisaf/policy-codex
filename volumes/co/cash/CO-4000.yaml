@@ -1,0 +1,18 @@
+id: CO-4000
+name: "Adult Financial: countable resources of the person other than life insurance"
+identifier: af_person_countable_resources_other_than_life_insurance
+kind: derived
+type: money
+scope: person
+program: AdultFinancial
+meaning: "This person's own countable resources by Adult Financial's own rules (9 CCR 2503-5 3.520.72-3.520.77) other than the cash surrender value of life insurance: cash and convertible assets, retirement and pension accounts (3.520.72.B.5), real and personal property other than the home (B.1, B.3-4), vehicles other than the highest-valued one used for transportation (3.520.77.A), revocable burial trusts and prepaid burial contracts over af_revocable_burial_funds_exemption each (3.520.72.B.8, 3.520.77.G-H), and burial spaces beyond the needs of the immediate family (3.520.72.B.9, 3.520.77.I)."
+precision: "Each holding not stated other than liquid_resources_value is read as 0. Life insurance is counted apart because 3.520.75.E-F apply \"For OAP only\" to the policies of \"a client and his or her spouse\": the client's program governs a spouse's policy, so af_client_and_spouse_countable_resources (CO-2389) adds the spouse's other resources from this item and the spouse's life insurance under the client's program (final cash review 2, N-1). The other 3.520.77 exemptions not stated by the holdings facts are not counted."
+derived: [+, liquid_resources_value, [otherwise, retirement_accounts_value, 0], [otherwise, real_property_other_than_home_equity, 0], [max, 0, ["-", [otherwise, vehicles_equity_value, 0], [otherwise, transportation_vehicle_equity_value, 0]]], [max, 0, ["-", [otherwise, revocable_burial_trust_value, 0], af_revocable_burial_funds_exemption]], [max, 0, ["-", [otherwise, revocable_prepaid_burial_contract_value, 0], af_revocable_burial_funds_exemption]], [otherwise, burial_spaces_value_beyond_family_needs, 0]]
+sources: [S1636, S2213, S2214, S2619]
+implemented: engine
+tags: [cash, resources]
+rationale: "Final cash review 2, N-1 (confirmed with the engine): af_person_countable_resources (CO-3400) applied 3.520.75.E-F's OAP-only life insurance rule by the age of the person who owns the policy, so when af_client_and_spouse_countable_resources (CO-2389) added a spouse's resources, a younger spouse's old policy was counted against an OAP client (and an older spouse's policy was exempted for an AND client). The resources other than life insurance are split out so the spouse's life insurance can be read under the client's program."
+tests:
+  - {id: CO-4000-T1, as_of: "2026-10-01", given: {liquid_resources_value: 700, retirement_accounts_value: 1000, vehicles_equity_value: 4000, transportation_vehicle_equity_value: 4000}, relationships: [], expect: 1700}
+  - {id: CO-4000-T2, title: "A $2,300 revocable prepaid burial contract - $800 over the $1,500 counts (3.520.77.H.2)", as_of: "2026-10-01", given: {liquid_resources_value: 500, revocable_prepaid_burial_contract_value: 2300}, relationships: [], expect: 1300}
+  - {id: CO-4000-T3, title: "Life insurance is not in this item", as_of: "2026-10-01", given: {liquid_resources_value: 100, life_insurance_face_value: 2000, life_insurance_cash_surrender_value: 600}, relationships: [], expect: 100}

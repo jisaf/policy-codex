@@ -1,0 +1,13 @@
+id: CO-4153
+name: "SNAP: first certification after a substantial winnings disqualification"
+identifier: snap_is_first_certification_after_lottery_disqualification
+kind: supplied
+type: yes/no
+scope: case
+program: SNAP
+meaning: "The household lost SNAP eligibility because a member received substantial lottery or gambling winnings (10 CCR 2506-1 4.206.E), and this application is the first on which it is certified since, so it is not yet a household that has received SNAP as a Standard Eligibility household after losing eligibility."
+precision: "If not stated, SNAP reads this as false. Once the household has received SNAP as a Standard Eligibility household, it is re-evaluated for categorical eligibility at the next certification period, and this fact is false for that certification. One value for the case."
+supplied_by: "The household's SNAP case history in CBMS (the closure reason of the earlier certification)."
+sources: [S2950, S2952, S2953]
+tags: [snap, application_wide]
+rationale: "Final verification pass 2 N-1: 4.206.E (S2950) considers such a household under Standard Eligibility \"the next time such a household reapplies and is certified for SNAP after losing eligibility\", and 7 U.S.C. 2015(s)(2) keeps it ineligible until it meets the resource and income requirements. The earlier closure is a finding of an earlier certification, recorded in the case history; no item of this volume states it."

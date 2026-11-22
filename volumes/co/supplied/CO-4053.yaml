@@ -1,0 +1,13 @@
+id: CO-4053
+name: "CCCAP: protective services income requirement waived"
+identifier: cccap_protective_services_income_requirement_waived
+kind: supplied
+type: yes/no
+scope: case
+program: CCCAP
+meaning: "The Child Welfare worker waived the income requirement for this protective services household, case by case, under the county's Department-approved plan, and the waiver is documented in the CCCAP case file (8 CCR 1403-1 3.119.C)."
+precision: "One value for the case. A county without an approved plan has no waiver to grant, so the fact is true only where the county has one. The waiver satisfies the household-of-one income test (cccap_protective_services_income_within_limit, CO-995); it does not change the parent fee, which a protective services household pays only when the children have countable income (3.124.I.6). If not stated, CCCAP reads this as false."
+supplied_by: "The CCCAP case file: the Child Welfare worker's documented waiver."
+sources: [S2852]
+tags: [income]
+rationale: "Second-pass review N-10: 3.119.C lets an approved county plan allow the Child Welfare worker to waive the income requirement for protective services households case by case; the volume tested every such household's income with no way to record a waiver."

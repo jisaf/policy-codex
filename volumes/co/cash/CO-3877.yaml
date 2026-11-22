@@ -7,9 +7,9 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: "Whether the client may receive an Adult Financial disaster assistance payment for the month (9 CCR 2503-5 3.570.52): the client requested it, has an emergent need related to the disaster, a declared disaster is in effect, and the client is approved for or receiving an Adult Financial grant payment (an OAP, AND-SO or AND-CS category, a Home Care Allowance, or a grant received this month)."
-precision: "A client who has not requested it is not eligible, and nothing else is asked. The county may also pay through general assistance (3.570.52.D); that is not this payment."
+precision: "A client who has not requested it is not eligible, and nothing else is asked. The county may also pay through general assistance (3.570.52.D); that is not this payment. Final cash review 2, P2-8, a documented limit: 3.570.53.B (S2625) lets the county \"Only request verification related to the client's request for disaster assistance if the county considers the request questionable\"; the volume states no verification element for the request, since the rule names no document and no due date, and D forbids asking how the payment was used. A county that finds a request questionable asks for verification outside the Adult Financial pending count (af_pending_verification_count, CO-1436)."
 derived: [all, [otherwise, af_has_requested_disaster_assistance, false], has_emergent_need_from_disaster, [otherwise, declared_disaster_in_effect, false], [any, [">", [otherwise, adult_financial_cash_income, 0], 0], [not, ["=", af_category, none]], ["=", af_hca_eligibility_status, eligible]]]
-sources: [S2624]
+sources: [S2624, S2625]
 implemented: engine
 tags: [cash]
 rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. "

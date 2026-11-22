@@ -1,0 +1,14 @@
+id: CO-4051
+name: "CCCAP: reason the parent fee may rise during the eligibility period"
+identifier: cccap_parent_fee_increase_basis
+kind: supplied
+type: one of
+options: [none, regained_income_after_temporary_loss, authorized_care_changed, quality_provider_use_changed]
+scope: case
+program: CCCAP
+meaning: "Which of the circumstances in which 8 CCR 1403-1 3.124.B.1, B.3 and B.4 let a parent fee rise during the twelve-month eligibility period the change being determined is: an adult caretaker or teen parent who was first found eligible with countable income regains income after a temporary loss (B.1); an increase or decrease in the care authorized, an increase not due to a member joining the household (B.3); the household begins or stops using a top-quality-rated provider (B.4); or none of them."
+precision: "One value for the case. B.2 (a change that lowers the fee) needs no value: a lower fee is never capped. If not stated, CCCAP reads this as none."
+supplied_by: "The county's record of the reported change (CHATS)."
+sources: [S2850, S2851]
+tags: [income]
+rationale: "Second-pass review N-1: 3.124.B lets a fee rise during the eligibility period only in the circumstances of B.1-B.4, and 3.124.C otherwise caps it at the fee last determined; the circumstance is a county finding about the change that no other fact states."

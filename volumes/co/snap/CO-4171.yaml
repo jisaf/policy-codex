@@ -1,0 +1,17 @@
+id: CO-4171
+name: "SNAP: net income with disqualified members counted in the size"
+identifier: snap_net_income_with_disqualified_members
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "This person's SNAP household's net income as it would be with the members disqualified under 7 CFR 273.11(c)(1) counted in the size: snap_adjusted_income_with_disqualified_members less the larger of the excess shelter deduction computed from it (half of it subtracted from the shelter costs, capped at snap_excess_shelter_cap unless a member is elderly or disabled) and the homeless shelter deduction, never below zero, rounded to the nearest dollar."
+precision: "The same steps as snap_excess_shelter_deduction (CO-379) and snap_household_net_income (CO-381), on the adjusted income for the larger size. The homeless shelter deduction (CO-380) is read as computed for the household: where it is 0 because the household's own excess shelter deduction is larger, the excess shelter deduction for the larger size, which is never smaller, is larger still."
+derived: [round, [max, 0, ["-", snap_adjusted_income_with_disqualified_members, [max, [case, [snap_household_has_elderly_or_disabled_member, [max, 0, ["-", snap_shelter_costs, ["*", snap_shelter_share_rate, snap_adjusted_income_with_disqualified_members]]]], [else, [min, snap_excess_shelter_cap, [max, 0, ["-", snap_shelter_costs, ["*", snap_shelter_share_rate, snap_adjusted_income_with_disqualified_members]]]]]], snap_homeless_shelter_deduction]]]]
+sources: [S2965]
+implemented: engine
+tags: [snap, income]
+rationale: "Final verification pass 2 N-7: the net income the allotment cap of 273.11(c)(1)(ii) (S2965) is computed from, for the size with the disqualified members counted; snap_household_net_income (CO-381) is for the household's own size."
+tests:
+  - {id: CO-4171-T1, title: "ZZ-9 scale: adjusted 2,663, no shelter cost", as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_with_disqualified_members: 2663, snap_household_has_elderly_or_disabled_member: false, snap_shelter_costs: 0, snap_homeless_shelter_deduction: 0}, expect: 2663}
+  - {id: CO-4171-T2, title: "Adjusted 1,000, shelter 1,200: 1,200 - 500 = 700, capped at 769; net 300", as_of: "2026-10-01", month: "2026-10", given: {snap_adjusted_income_with_disqualified_members: 1000, snap_household_has_elderly_or_disabled_member: false, snap_shelter_costs: 1200, snap_homeless_shelter_deduction: 0}, expect: 300}

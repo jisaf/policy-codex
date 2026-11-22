@@ -1,0 +1,14 @@
+id: CO-4009
+name: "Date a transferred resource was returned in whole"
+identifier: resource_transfer_returned_date
+kind: supplied
+type: calendar date
+scope: person-month
+program: All
+meaning: "For a month in which the person (or the person's spouse) transferred a resource for less than its fair value (resource_transfer_uncompensated_value), the date on which the whole of that resource was returned to the person, in the same month or a later one. Not stated when it has not been returned in whole."
+precision: "A partial return is not stated here: it reduces resource_transfer_uncompensated_value (3.520.76.D.6.b)."
+supplied_by: "Applicant statement, deeds, account and sale records, as the county establishes them."
+sources: [S2806]
+implemented: engine
+tags: [cash, resources]
+rationale: "Final cash review 2, P2-4: 3.520.76.D.6 (S2806) cancels the period when the whole resource is returned in the month of the transfer and, when it is returned in a later month, continues the period through the month of the return; the volume did not state a return (a transfer whose whole resource had been returned was left unstated, so the months up to the return were not penalised)."

@@ -1,0 +1,14 @@
+id: CO-4166
+name: "SNAP: earned income received after the application date"
+identifier: snap_earned_income_received_after_application_date
+kind: supplied
+type: money
+scope: person-month
+program: SNAP
+meaning: "The part of the person's earned income for the month of the SNAP application - wages (wages_gross) and net self-employment income as SNAP counts it - that was received, or is expected, after snap_application_date, so not between the first of the month and the date of application. 0 if all of it was received by the application date."
+precision: "Stated for the month of application, and read only for a destitute migrant or seasonal farmworker household (is_destitute_migrant_or_seasonal_farmworker, CO-055), whose income for that month is only what was received by the date of application (10 CCR 2506-1 4.406.1.A). If not stated, SNAP reads it as 0, that is, all of the month's earned income as received by then."
+supplied_by: "Applicant statement and pay records (pay dates), as the county establishes them for the destitution test."
+sources: [S2964, S1018]
+tags: [snap, income]
+rationale: "Final verification pass 2 N-6 (docs/reviews/final2-snap.md): 4.406.1.A (S2964) calculates a destitute household's eligibility and benefit for the month of application \"by considering only that income received between the first of the month and the date of application\"; the volume's income facts are the month's whole receipts, and nothing stated when in the month they arrived. Stated as the part after the date, so the month's income facts stay as they are and a case that is not destitute states nothing more."
+nearest: [CO-055]

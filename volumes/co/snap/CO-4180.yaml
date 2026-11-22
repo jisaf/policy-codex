@@ -1,0 +1,18 @@
+id: CO-4180
+name: "SNAP: requires verification that the household provides the majority of a child's meals"
+identifier: snap_requires_verification_of_child_majority_meals
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether this household must verify that it provides this child with the majority of the child's meals before it receives benefits for the child: the child already receives SNAP in another household (10 CCR 2506-1 4.505.4.C, 4.304.2.A). Required whether or not the household's statement is questionable."
+precision: "4.505.4.C refers to \"Section 4.304.1.B\"; the rule it describes, for children applied for by two households, is 4.304.2 (Children in Shared Custody Arrangements), which this item follows. The household's other composition statements are verified only when questionable (snap_requires_verification_of_household_composition, CO-1383). receives_snap_in_another_household (CO-4178) is read as false when not stated."
+derived: [otherwise, receives_snap_in_another_household, false]
+sources: [S2969]
+implemented: engine
+tags: [verification, snap, household]
+rationale: "Final verification pass 2 V-13: the fix round deferred this mandatory verification as P2 for want of a fact that the child already receives SNAP elsewhere; CO-1383 asks composition verification only when questionable, so the requirement had no item."
+nearest: [CO-1383]
+tests:
+  - {id: CO-4180-T1, title: "A child already on the father's case, applied for by the mother", month: "2026-10", as_of: "2026-10-01", given: {receives_snap_in_another_household: true}, expect: true}
+  - {id: CO-4180-T2, title: "Not on another case", month: "2026-10", as_of: "2026-10-01", given: {}, expect: false}

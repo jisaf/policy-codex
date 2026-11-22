@@ -1,0 +1,13 @@
+id: CO-4050
+name: "CCCAP: parent fee determined at the most recent referral, application or redetermination"
+identifier: cccap_parent_fee_at_last_determination
+kind: supplied
+type: money
+scope: case
+program: CCCAP
+meaning: "The monthly parent fee the county determined for the household at its most recent Colorado Works Child Care referral, Low-Income Child Care application or redetermination (8 CCR 1403-1 3.124.C), the fee on the notice of that determination; for a household transitioning from Colorado Works, the fee determined at the most recent Colorado Works Child Care referral (3.117.F)."
+precision: "One value for the case, in whole dollars as the notice states it. Read only at a change during the eligibility period or a transition from Colorado Works (cccap_determination_type, CO-3307), where the fee cannot be assessed higher than it (cccap_parent_fee_within_period_cap, CO-4052); CCCAP reads no default there."
+supplied_by: "The CCCAP case record (CHATS): the notice of the most recent determination, or the Colorado Works Child Care Referral Form."
+sources: [S2850, S2851]
+tags: [income]
+rationale: "Second-pass review N-1: 3.124.C and 3.117.F cap the fee during the twelve-month eligibility period at the one determined at the most recent referral, application or redetermination; no item knew that fee, so a change or a transition was assessed on the formula alone."
