@@ -1,3 +1,4 @@
+import { mapHref } from "./map/MapView";
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import { referencesInCases, renameInCasesText } from "../engine/rename";
@@ -400,11 +401,7 @@ export function ItemView() {
             : "nothing"}
         </p>
         <p>
-          <a
-            href={buildHash({
-              ...r, view: "graph", arg: null, params: { focus: item.identifier },
-            })}
-          >View in the graph</a>
+          <a href={mapHref(r, item.id)}>Open in the Map</a>
         </p>
       </details>
 

@@ -1,3 +1,4 @@
+import { mapHref } from "./map/MapView";
 import { useSignal } from "@preact/signals";
 import { useLayoutEffect } from "preact/hooks";
 import type { HouseholdCase } from "../engine/cases";
@@ -330,6 +331,7 @@ function ProgramPage(
       <div class="cardhead">
         <h1>{program.id}</h1>
         <span class="spacer" />
+        <a class="btn" href={mapHref(r, `program:${program.id}`)}>Open in the Map</a>
       </div>
       <ProgramSwitcher programs={programs} current={program.id} route={r} />
 

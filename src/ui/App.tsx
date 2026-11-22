@@ -32,6 +32,7 @@ import { InboxView } from "./views/InboxView";
 import { OutcomesView } from "./views/OutcomesView";
 import { QuestionsView } from "./views/QuestionsView";
 import { WalkthroughView } from "./views/WalkthroughView";
+import { MapPage } from "./map/MapView";
 
 /** The page for the address. It dispatches on the canonical route (what the
  *  address bar shows; router.ts): each place, its sub-pages, the item,
@@ -58,6 +59,7 @@ export function ViewSlot() {
       return <LawPage />;
     case "changes": return <ChangesPage />;
     case "item": return <ItemView />;
+    case "map": return <MapPage />;
     case "search": return <SearchView key={c.params.q ?? ""} />;
     case "table": return <TableView />;
     case "graph": return <GraphView />;

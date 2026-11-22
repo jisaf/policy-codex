@@ -37,6 +37,8 @@ export const PLACE_NAMES: readonly PlaceName[] = [
  *  (internal routes only: their addresses redirect). */
 export type ViewName =
   | PlaceName | "item" | "search"
+  // The focused Map (src/ui/map): policy staff's "what stems from what".
+  | "map"
   // For implementers (the sidebar's secondary menu).
   | "table" | "graph" | "handoff"
   // Older views: an address naming one is redirected to its canonical home.
@@ -54,7 +56,7 @@ export interface Route {
 }
 
 export const VIEWS: ViewName[] = [
-  ...PLACE_NAMES, "item", "search", "table", "graph", "handoff",
+  ...PLACE_NAMES, "item", "search", "map", "table", "graph", "handoff",
   "start", "roles", "inbox", "cases", "walkthrough", "outcomes", "program", "source", "documents", "document",
 ];
 

@@ -64,12 +64,19 @@ export const IMPLEMENTER_LINKS: readonly ImplementerLink[] = [
  *  a rule's or fact's under Programs. `c` is the canonical route. */
 export type ShellPlace = PlaceName | "implementers" | null;
 
-export function placeOf(c: Route, engine?: Pick<Engine, "itemById"> | null): ShellPlace {
+export function placeOf(c: Route, engine?: (Pick<Engine, "itemById"> & Partial<Pick<Engine, "item">>) | null): ShellPlace {
   switch (c.view) {
     case "desk": case "programs": case "figures": case "households": case "questions": case "law": case "changes":
       return c.view;
     case "item":
       return engine?.itemById(c.arg ?? "")?.kind === "parameter" ? "figures" : "programs";
+    case "map": {
+      // Policy staff's Map: under the place of what it is centred on (a
+      // figure's under Figures, a rule's or a program's under Programs).
+      const center = c.params.center ?? c.arg ?? "";
+      const it = engine?.itemById(center) ?? (engine as Pick<Engine, "item"> | null | undefined)?.item?.(center);
+      return it?.kind === "parameter" ? "figures" : "programs";
+    }
     case "table": case "graph": case "handoff":
       return "implementers";
     default:
@@ -157,6 +164,19 @@ export function crumbsFor(c: Route, data: CrumbData = {}): Crumb[] {
       const it = data.engine?.itemById(c.arg ?? "");
       if (it && place === "programs" && it.program !== "All") push(programLabel(it.program), { view: "programs", arg: it.program });
       push(it?.name ?? c.arg ?? "", { view: "item", arg: c.arg });
+      break;
+    }
+    case "map": {
+      const center = c.params.center ?? "";
+      const it = data.engine?.itemById(center) ?? data.engine?.item(center);
+      const program = center.startsWith("program:") ? center.slice("program:".length) : null;
+      if (it) {
+        if (place === "programs" && it.program !== "All") push(programLabel(it.program), { view: "programs", arg: it.program });
+        push(it.name, { view: "item", arg: it.id });
+      } else if (program) {
+        push(programLabel(program), { view: "programs", arg: program });
+      }
+      push("Map", null);
       break;
     }
     case "search":

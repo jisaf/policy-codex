@@ -83,6 +83,9 @@ describe("Sidebar", () => {
       // A figure's page is under Figures; a rule's under Programs.
       [`#/mwr/item/${(ledger.items as Item[]).find((i) => i.kind === "parameter")!.id}`, "figures"],
       [`#/mwr/item/${(ledger.items as Item[]).find((i) => i.kind === "derived")!.id}`, "programs"],
+      // The Map is policy staff's, under the place of what it is centred on.
+      [`#/mwr/map?center=${(ledger.items as Item[]).find((i) => i.kind === "derived")!.id}`, "programs"],
+      [`#/mwr/map?center=${(ledger.items as Item[]).find((i) => i.kind === "parameter")!.id}`, "figures"],
     ];
     for (const [hash, place] of cases) {
       at(hash);
