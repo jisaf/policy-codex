@@ -85,11 +85,19 @@ export interface QuestionNote {
 
 const NOTE_LABEL_WORDS = /\b(round|sweep|review|pass|phase|checked|resolution|audit|answer)\b/i;
 
+/** The explicit lines a question may state (`Class:`, `Owner:`,
+ *  `Assumption:`, `Blocked on:`); the queue shows each in its own place. */
+export const EXPLICIT_FIELDS = ["Class", "Owner", "Assumption", "Blocked on"] as const;
+const FIELD_LINE = new RegExp(`^(?:${EXPLICIT_FIELDS.join("|")}):\\s`);
+
 /** The body as notes: the question as first written, then each later note
- *  with its label split off, in the order the ledger keeps them. */
+ *  with its label split off, in the order the ledger keeps them. A paragraph
+ *  made only of explicit field lines is not a note. */
 export function questionNotes(body: string): QuestionNote[] {
   const out: QuestionNote[] = [];
   for (const raw of body.split(/\n{2,}/)) {
+    const lines = raw.trim().split("\n").map((l) => l.trim()).filter(Boolean);
+    if (lines.length && lines.every((l) => FIELD_LINE.test(l))) continue;
     let text = raw.trim().replace(/\s*\n\s*/g, " ");
     if (!text) continue;
     if (/^Body:\s*/.test(text)) {
@@ -213,9 +221,12 @@ export function questionClass(q: Pick<QuestionInfo, "rawTitle" | "body" | "statu
   return "policy";
 }
 
-/** The sentence naming the document or site the question waits on, from the
- *  latest note that names one; null when none does. */
+/** The document the question waits on: an explicit `Blocked on:` line, else
+ *  the sentence naming the document or site, from the latest note that names
+ *  one; null when none does. */
 export function waitingOn(q: Pick<QuestionInfo, "body">): string | null {
+  const explicit = explicitField(q.body, "Blocked on");
+  if (explicit) return explicit;
   const notes = questionNotes(q.body);
   for (let i = notes.length - 1; i >= 0; i--) {
     const hit = sentences(notes[i].text).find((s) => BLOCKED_TEXT.test(s));
