@@ -1,0 +1,13 @@
+id: CO-3928
+name: "LEAP: a denial hold is on the household"
+identifier: leap_has_denial_hold
+kind: supplied
+type: yes/no
+scope: case
+program: LEAP
+meaning: "The State LEAP office has placed a LEAP denial hold on the household at the address it applies from, because it refused or ended weatherization before completion (9 CCR 2503-7 3.752.26.B.1) or refused an inspection of Crisis Intervention Program work (3.752.27.B.1), for the program year applied for, and has not removed it."
+precision: "A finding of the State LEAP office recorded on the household (convention rule 13(i)); only that office removes a hold (3.752.26.B.1, 3.752.27.B.1). A household that has moved to another address that is weatherized, or after a refused inspection to any other address, has no hold there (3.752.26.B.2, 3.752.27.B.2). One value for the case. If not stated, LEAP reads this as false."
+supplied_by: The State LEAP office's denial hold record.
+sources: [S2715, S2716]
+tags: [household]
+rationale: "Final pass F-12: 3.754.1.L and T (S2715) make a refusal of weatherization or of a CIP inspection a factor for denial, and 3.752.26.B.1 and 3.752.27.B.1 (S2716) say such a household \"shall not be approved for LEAP benefits for the following year\". leap_is_eligible (CO-1007) did not read either."

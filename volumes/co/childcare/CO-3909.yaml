@@ -1,0 +1,16 @@
+id: CO-3909
+name: "CCCAP: verification due date during a homelessness stabilization period"
+identifier: cccap_homelessness_verification_due_date
+kind: derived
+type: calendar date
+scope: person
+program: CCCAP
+meaning: "The date by which a family experiencing homelessness must provide the verification needed for ongoing CCCAP eligibility during its stabilization period: sixty days after the county's request (8 CCR 1403-1 3.121.B, B.1, B.3.b)."
+precision: "Read by cccap_verification_status (CO-1451) in place of the fifteen-day date (cccap_verification_due_date, CO-1450) while cccap_is_in_homelessness_stabilization (CO-3907) holds. The request date is the program's own, else the shared checklist date (OQ-300)."
+derived: [days_after, cccap_homelessness_verification_days, [otherwise, cccap_verification_request_date, verification_request_date]]
+sources: [S1823, S2710]
+implemented: engine
+tags: [verification]
+rationale: "Final pass F-02: the stabilization period gives the family at least sixty days to provide verification; no item stated that date."
+tests:
+  - {id: CO-3909-T1, as_of: "2026-10-01", given: {verification_request_date: "2026-10-01"}, expect: "2026-11-30"}

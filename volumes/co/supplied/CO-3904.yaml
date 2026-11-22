@@ -1,0 +1,13 @@
+id: CO-3904
+name: Date the current substance use disorder treatment began
+identifier: sud_treatment_start_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person's current enrollment in a substance use disorder treatment program began: the start of the episode of treatment the person is in now, not of an earlier one that ended."
+precision: "Stated for a person in treatment; a person who is not needs no value."
+supplied_by: The treatment provider's enrollment verification.
+sources: [S1015]
+tags: [household]
+rationale: "Final pass F-06: 8 CCR 1403-1 3.111.G.4.a.3 (S1015) makes treatment an eligible activity \"for up to one (1) year per instance\". cccap_caretaker_in_eligible_activity (CO-984) counted the year from the activity's July 1, 2026 effective date (CO-1517), so every instance ended on June 30, 2027 whenever it began; no fact stated when an instance began."

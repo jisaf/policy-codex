@@ -1,0 +1,16 @@
+id: CO-3933
+name: Summer EBT adult age
+identifier: sebt_adult_min_age
+kind: parameter
+type: whole number
+scope: global
+program: SunBucks
+meaning: "The age from which 7 CFR 292.2 calls an individual an adult (\"any individual 18 years of age or older\"); a member of the household younger than this is a child for the 292.2 categorical-eligibility test (\"one or more children in that household are receiving assistance under SNAP, TANF, or FDPIR\")."
+precision: "292.2 defines \"Adult\" for completing an application; it defines no \"child\", so the children of the household are its members who are not adults."
+versions:
+  - from: "2024-01-01"
+    value: 18
+    source: S2721
+sources: [S2721]
+tags: [sebt, age]
+rationale: "Final pass F-13: sebt_household_child_receives_snap_or_tanf (CO-2708) read receipt from any member of the economic unit, an adult in a separate SNAP household included; the rule reads it from a child. The age is the rule's figure, not a literal."

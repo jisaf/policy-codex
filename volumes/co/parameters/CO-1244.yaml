@@ -8,6 +8,7 @@ program: SunBucks
 meaning: "The Summer EBT monthly benefit per eligible child in the 48 contiguous States and the District of Columbia, by the calendar year of the summer: the 2024 level of 7 CFR 292.15(e)(1), adjusted each January 1 by the change in the Thrifty Food Plan and rounded down to the dollar, per 292.15(e) and the annual benefit levels notice. The levels are the rows; the meaning does not restate them."
 precision: "Keyed by the summer's calendar year (sebt_summer_year, CO-2581), not by the determination date, since the benefit is one issuance for one summer (CDHS review C-10). 2024: $40 (292.15(e)(1), S794); 2025 and 2026: $40 (the 2026 notice's table, S796-S797). A summer whose notice is not yet published (2027 on November 21, 2026) has no row, so its benefit is unknown. Identifier renamed from sebt_monthly_benefit (a dated single value) in this round; the item ID is kept."
 value: { "2024": 40, "2025": 40, "2026": 40 }
+review_by: "2027-02-28"
 sources: [S794, S796, S797]
 tags: [sebt, income]
-rationale: "No existing parameter states the Summer EBT benefit; sebt_benefit_amount (CO-1299) needs it. CDHS review C-10: re-keyed by summer."
+rationale: "No existing parameter states the Summer EBT benefit; sebt_benefit_amount (CO-1299) needs it. CDHS review C-10: re-keyed by summer. Final pass F-23: the summer 2027 level is set by the FNS notice of 2027 benefit levels, not yet published (fns.usda.gov), so a SUN Bucks benefit determined for summer 2027 is unknown with a lookup-miss warning; review_by marks when the notice is due (FNS has issued the summer levels by early in the year)."

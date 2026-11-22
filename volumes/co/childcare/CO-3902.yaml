@@ -1,0 +1,22 @@
+id: CO-3902
+name: "CCCAP: child support paid deduction"
+identifier: cccap_child_support_paid_deduction
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "The court-ordered child support this adult caretaker or teen parent pays in the month for children not living in the household that 8 CCR 1403-1 3.111.K deducts from the household's monthly gross income, both before the income is compared with the income guidelines and when the parent fee is calculated: the current support paid under a court order, not the part paid toward arrears, and only when the order and the payments are verified (K.2); otherwise nothing."
+precision: "Read for an adult caretaker (cccap_is_adult_caretaker, CO-992) or teen parent (cccap_is_teen_parent, CO-981); any other member deducts nothing. The payment is child_support_paid_legally_obligated (CO-033), which is paid for a person living outside the household, read as 0 when not stated; the order is child_support_paid_order_type (CO-3901); the arrears part, child_support_paid_toward_arrears (CO-3900), is read as 0 when not stated. Verification is child_support_paid_is_verified (CO-1363): electronic data or documents showing both the order and the payments (K.2.a). An unverified payment is not deducted, whether or not the fifteen-day noticing period has run (cccap_verification_status reports deduction_disallowed once it has, CO-1451). cccap_household_income (CO-985) subtracts the household's total, not below zero."
+derived: [case, [["<=", [otherwise, child_support_paid_legally_obligated, 0], 0], 0], [[not, [any, cccap_is_adult_caretaker, cccap_is_teen_parent]], 0], [[not, child_support_paid_is_verified], 0], [[not, ["=", child_support_paid_order_type, court_order]], 0], [else, [max, 0, ["-", child_support_paid_legally_obligated, [otherwise, child_support_paid_toward_arrears, 0]]]]]
+sources: [S892]
+implemented: engine
+tags: [income]
+rationale: "Final pass F-01 and verification pass V-7: 3.111.K.1 (S892) says verified court-ordered child support \"shall be deducted prior to applying the monthly gross income to the maximum gross monthly income guidelines and when calculating parent fees\". The volume modeled the verification (CO-1446, CO-1683, CO-1688) but no item made the deduction, so a household paying support was tested and charged on its unreduced income."
+tests:
+  - {id: CO-3902-T1, title: "Verified, current, court-ordered support of $400 is deducted", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, child_support_paid_legally_obligated: 400, child_support_paid_is_verified: true, child_support_paid_order_type: court_order}, expect: 400}
+  - {id: CO-3902-T2, title: "The same payment, not verified: no deduction (K.2)", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, child_support_paid_legally_obligated: 400, child_support_paid_is_verified: false, child_support_paid_order_type: court_order}, expect: 0}
+  - {id: CO-3902-T3, title: "Every dollar paid is toward arrears: no deduction (K.1.b)", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, child_support_paid_legally_obligated: 250, child_support_paid_toward_arrears: 250, child_support_paid_is_verified: true, child_support_paid_order_type: court_order}, expect: 0}
+  - {id: CO-3902-T4, title: "$300 paid, $100 of it toward arrears: $200 is deducted", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, child_support_paid_legally_obligated: 300, child_support_paid_toward_arrears: 100, child_support_paid_is_verified: true, child_support_paid_order_type: court_order}, expect: 200}
+  - {id: CO-3902-T5, title: "An administrative order, not a court order: no deduction (K.1.a)", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, child_support_paid_legally_obligated: 400, child_support_paid_is_verified: true, child_support_paid_order_type: administrative_order}, expect: 0}
+  - {id: CO-3902-T6, title: "A member who is neither an adult caretaker nor a teen parent deducts nothing", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: false, cccap_is_teen_parent: false, child_support_paid_legally_obligated: 400}, expect: 0}
+  - {id: CO-3902-T7, title: "A caretaker who pays no support", as_of: "2026-10-01", month: "2026-10", given: {cccap_is_adult_caretaker: true, child_support_paid_legally_obligated: 0}, expect: 0}

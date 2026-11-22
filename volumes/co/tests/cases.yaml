@@ -2071,6 +2071,7 @@
     snap_application_date: "2026-10-01"
     snap_determination_is_recertification: false
     leap_application_date: "2026-11-01"
+    leap_verification_request_date: "2026-11-01"  # verification pass V-15: LEAP's own checklist date, on its application date (the shared verification_request_date, 2026-10-01, is before the LEAP application)
     cw_meets_county_diversion_income_limit: false
     is_destitute_migrant_or_seasonal_farmworker: false
     residency_verification_cannot_reasonably_be_accomplished: false
@@ -5669,14 +5670,11 @@
   # FIXED rules actually produce (verified with npx vite-node scripts/eval-case.ts co CO-08 ... against a
   # scratch copy of this file, then restored), not the review's hand-derived pre-fix numbers - see the
   # per-person comments below for the two places the two differ and why.
-  # p6 is an undocumented adult relative living in the dwelling. shares_heating_fuel_with (CO-895) is the
-  # per-person fact that extends the LEAP closure's spouse/parent/child edges to an over-age child or an
-  # affirmatively-stated economic-unit member (OQ-132); it cannot join two people with no relationship edge
-  # between them at all, and p6 has none to p1-p4 (only a buys_prepares_with co-residence edge, added so the
-  # engine registers him as a graph node at all - it is not one of the roles the CCCAP/LEAP closures cross).
-  # So p6 is his own one-person LEAP/CCCAP household on this batch's facts, per OQ-132's own limitation, not
-  # the single five/six-person household 3.751.1's "living together as one economic unit" text would produce
-  # if the engine could register a symmetric relationship role for it.
+  # p6 is an undocumented adult relative living in the dwelling. Final pass F-24: the LEAP and CCCAP closures
+  # join a person over parent, spouse and shares_heat_with edges (the role that replaced the old per-person
+  # shares_heating_fuel_with fact, CO-895, when OQ-132 was resolved). p6 has only a buys_prepares_with edge to p1,
+  # which is SNAP's role and neither closure crosses, and the case states no shares_heat_with edge for him, so he
+  # is his own one-person LEAP and CCCAP household on the case's facts.
   # Engineering follow-up pass, task 3: the case no longer states cw_eligibility_status and cw_grant_amount
   # (Corticon B-3); it states the facts Colorado Works reads (no SSI, Title IV, TANF elsewhere,
   # disqualification, sanction or prior months; p1 head of the unit; all four request inclusion, p6 does
@@ -5868,9 +5866,8 @@
       # Elena, 18, citizen, still in high school, works weekends for $400 a month. A "child in the
       # household" under 3.103.GGG (under 19 and in high school) but NOT an "eligible child" under
       # 3.111.F (over 13, no additional care needs). Not joined to the LEAP household by 3.751.2.D's
-      # unconditional under-18 join (she is 18), so shares_heating_fuel_with states the case's own fact
-      # that she shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit
-      # test), per CO-1000/CO-895 (review C-1).
+      # unconditional under-18 join (she is 18), so the case's shares_heat_with edge to p1 states that she
+      # shares the dwelling's heat-included-in-rent arrangement (3.751.1's general economic-unit test).
       facts:
         residence_setting_type: private_dwelling  # SW-20: one neutral setting (was snap_resides_in_institution_providing_meals false, resides_in_medical_institution false)
         education_program_type: secondary  # same-word audit SW-12: full-time high school student, expected to graduate before 19
@@ -5971,9 +5968,17 @@
       # matching 3.111.J.1 as written, unlike the review's own pre-fix arithmetic (which the review itself
       # flagged would change from $3,000 to $2,600 once C-4 landed).
       cccap_household_income: {"2026-12": 2600}
-      cccap_eligibility_status: {"2026-12": eligible_low_income}
-      # p4 (18) joins via the case's own shares_heating_fuel_with: true, not 3.751.2.D's unconditional
-      # under-18 join; p6 does not join (see the case-level comment above on OQ-132's engine limitation).
+      # Final pass F-05 (8 CCR 1403-1 3.111.G.3.a, G.3.f; S1411, S2702): was eligible_low_income, now ineligible_activity.
+      # Job search is available to a caretaker who "met the eligibility criteria on the most recent eligibility
+      # determination" and ended an activity "while enrolled in the Low-Income program". This is an initial
+      # application (cccap_determination_type: application), so p2's job search is not an activity; he works no hours,
+      # is in no education, treatment or leave, and is neither incapacitated nor involuntarily absent. With two
+      # caretakers, 3.111.D.1.c needs both in an activity, so cccap_household_caretakers_in_eligible_activity is false.
+      # The household has an eligible child (p3) and is not homeless, so the first failing row is ineligible_activity.
+      # Income is unchanged: p1's $2,600 (p4's $400 excluded, J.1); no child support is paid (3.111.K).
+      cccap_eligibility_status: {"2026-12": ineligible_activity}
+      # p4 (18) joins over the case's shares_heat_with edge to p1, not 3.751.2.D's unconditional under-18
+      # join; p6 does not join (no shares_heat_with edge; see the case-level comment above).
       leap_household_members: [p1, p2, p3, p4]
       # $3,000 = p1 $2,600 + p4 $400 (18, so 3.752.23.Q's under-18 earnings zeroing does not reach her).
       leap_household_income: {"2026-12": 3000}
@@ -5984,7 +5989,7 @@
       cccap_household_members: [p1, p2, p3, p4]
       cccap_household_size: 4
       cccap_household_income: {"2026-12": 2600}
-      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      cccap_eligibility_status: {"2026-12": ineligible_activity}  # final pass F-05, see p1
       leap_household_members: [p1, p2, p3, p4]
       leap_household_income: {"2026-12": 3000}
       leap_is_eligible: {"2026-12": true}
@@ -5992,14 +5997,14 @@
       cccap_is_eligible_child: true
       cccap_household_members: [p1, p2, p3, p4]
       cccap_household_size: 4
-      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      cccap_eligibility_status: {"2026-12": ineligible_activity}  # final pass F-05, see p1
       leap_household_members: [p1, p2, p3, p4]
       leap_is_eligible: {"2026-12": true}
     p4:
       cccap_is_eligible_child: false
       cccap_household_members: [p1, p2, p3, p4]
       cccap_household_size: 4
-      cccap_eligibility_status: {"2026-12": eligible_low_income}
+      cccap_eligibility_status: {"2026-12": ineligible_activity}  # final pass F-05, see p1
       leap_household_members: [p1, p2, p3, p4]
       leap_household_income: {"2026-12": 3000}
       leap_is_eligible: {"2026-12": true}
@@ -6008,7 +6013,7 @@
       # closure crosses buys_prepares_with, and his immigration_status (undocumented) then filters him out
       # of even his own solo leap_household_members (3.753.17), so leap_household_members is empty rather
       # than [p6] - this differs from the review's hand-derived answer, which assumed a shares-heat edge to
-      # p1's household that this batch's engine has no relationship role to express (OQ-132).
+      # p1's household; the case states no shares_heat_with edge for him (final pass F-24).
       cccap_household_members: [p6]
       cccap_household_size: 1
       cccap_household_income: {"2026-12": 1500}
@@ -12140,3 +12145,218 @@
       ma_magi_household_income: {"2026-10": 2500, "2026-11": 2500, "2026-12": 2500}
       ma_magi_category: {"2026-10": adult, "2026-11": adult, "2026-12": adult}
       ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible, "2026-12": eligible}
+- id: CO-125
+  title: "Final pass (CCCAP/LEAP): a weekly earner whose thirty days hold five paydays, a stepfather in job search at a CCCAP redetermination, court-ordered child support paid in part toward arrears, and a grandmother with SSI, Social Security and a lottery prize in the LEAP household"
+  # Final pass F-01, F-05, F-09 (SW-35), F-10, F-11, F-19. CCCAP redetermination and LEAP application on 2026-11-01 (a Sunday).
+  # The thirty days before it are October 2-31, which hold five Fridays (Oct 2, 9, 16, 23, 30); November holds four.
+  # p1 (Dana, 38) is paid $500 every Friday: $2,500 in the thirty days, $2,000 in the calendar month of November.
+  # p2 (Sam, 40, p1's husband, p3's stepfather) was laid off in September while the household was enrolled and is in
+  # job search (six of thirteen weeks used); he receives $300 of unemployment every two weeks ($600 in the thirty days
+  # and in November). p3 (Kai, 6) is the eligible child. p4 (Lou, 70, p1's mother) lives with them and buys heat with
+  # p1; she receives SSI of $967.50 and Social Security of $400.70 a month, and won $1,200 in the lottery in November.
+  # p1 pays $350 a month under a court order for a child who lives with his other parent, $50 of it toward arrears,
+  # verified through the child support system.
+  as_of: "2026-11-01"
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: "2026-11-01"
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    cccap_determination_type: redetermination
+    has_primary_heating_source: true
+    uses_top_quality_rated_provider: false
+  parameters: {cccap_entry_income_limit_pct_fpl_table: {denver: 1.85}}
+  relationships:
+    - [spouse, p1, p2]
+    - [parent, p1, p3]
+    - [stepparent, p2, p3]
+    - [parent, p4, p1]
+    - [shares_heat_with, p1, p4]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1988-04-02"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: "CO"
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        # Final pass F-09: five Friday paychecks of $500 in the thirty days before the application.
+        wages_gross_received_prior_thirty_days: 2500
+        wages_pay_frequency: weekly
+        wages_gross_per_pay_period: 500
+        # Final pass F-01: $350 under a court order, $50 of it toward arrears, verified electronically.
+        child_support_paid_order_type: court_order
+        child_support_paid_verified_by_electronic_data_source: true
+      month_defaults:
+        wages_gross: 2000
+        hours_worked: 160
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 350
+        child_support_paid_toward_arrears: 50
+        is_in_sud_treatment_iop_or_higher: false
+    p2:
+      facts:
+        date_of_birth: "1986-01-15"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: "CO"
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_financially_contributing_to_child: true
+        cccap_is_in_job_search_activity: true
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+        unearned_income_received_prior_thirty_days: 600
+      month_defaults:
+        cccap_job_search_weeks_used: 6
+        is_in_sud_treatment_iop_or_higher: false
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 600
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        child_support_paid_legally_obligated: 0
+    p3:
+      facts:
+        date_of_birth: "2020-03-10"
+        sex: male
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: "CO"
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: elementary
+        receives_tanf_cash: false
+        cccap_child_needs_care_for_part_of_day: true
+        cccap_care_is_part_time: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p4:
+      facts:
+        date_of_birth: "1956-07-20"
+        sex: female
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: "CO"
+        county_of_residence: denver
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        education_program_type: none
+        receives_tanf_cash: false
+        is_referred_for_colorado_works_child_care: false
+        cccap_is_in_job_search_activity: false
+        cccap_child_has_additional_care_needs: false
+        cccap_declares_assets_within_limit: true
+        is_emancipated_minor: false
+        leap_is_in_another_approved_household: false
+      month_defaults:
+        wages_gross: 0
+        hours_worked: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 400.7
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 967.5
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+      months:
+        "2026-11": {lottery_gambling_winnings_received: 1200}
+  expect:
+    p1:
+      cccap_household_members: [p1, p2, p3]
+      # CCCAP (8 CCR 1403-1 3.111.H.5, I, J, K), hand derivation:
+      #   p1 earned: wages received in the thirty days, $2,500 (five paydays; the calendar month's $2,000 is not used).
+      #   p2 unearned: unemployment received in the thirty days, $600. p3: none. p4 is not in the CCCAP household.
+      #   countable $2,500 + $600 = $3,100; less the K deduction: p1's verified court-ordered current support,
+      #   $350 - $50 arrears = $300; household income $3,100 - $300 = $2,800.
+      cccap_child_support_paid_deduction: {"2026-11": 300}
+      cccap_household_income: {"2026-11": 2800}
+      # Exit limit (a redetermination, 3.111.H.1.b): 85% SMI for 3 from 2026-10-01, $8,638.03; $2,800 is within it.
+      # Activities: p1 $2,000 / 160 hours = $12.50 an hour, at least $7.25 (G.1.b). p2's job search counts because the
+      # household is enrolled (G.3.a, G.3.f; final pass F-05), six weeks used of thirteen. Both caretakers are active.
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      # Parent fee (3.124.P, formula to July 2028), on the income after the K deduction: 1% x $2,276.67 (100% FPG for 3)
+      # + 15% x ($2,800 - $2,276.67) = $22.7667 + $78.4995 = $101.2662; no quality-rated provider, full-time care,
+      # cents dropped: $101. Without the deduction it would be $146 (on $3,100).
+      cccap_parent_fee: {"2026-11": 101}
+      # LEAP (9 CCR 2503-7 3.752.21-23), hand derivation, household p1, p2, p3, p4:
+      #   p1 wages: weekly, $500 x 4 = $2,000 (3.752.22.C.1.a; not the five paydays of the thirty days).
+      #   p2 unearned: $600 received in the income verification period (3.752.22.A).
+      #   p4 unearned: SSI $967.50 -> $967 and Social Security $400.70 -> $400 (cents dropped, 3.752.21.I, 3.752.211.H),
+      #   plus the $1,200 prize received in November (3.752.21.A).
+      #   total $2,000 + $600 + $967 + $400 + $1,200 = $5,167, at or below $7,258 for four (CO-875).
+      leap_household_income: {"2026-11": 5167}
+      leap_is_eligible: {"2026-11": true}
+    p2:
+      cccap_household_income: {"2026-11": 2800}
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+      cccap_caretaker_in_eligible_activity: {"2026-11": true}
+    p3:
+      cccap_eligibility_status: {"2026-11": eligible_low_income}
+    p4:
+      cccap_household_members: [p4]
+      leap_household_income: {"2026-11": 5167}

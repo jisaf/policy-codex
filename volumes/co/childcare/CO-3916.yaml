@@ -1,0 +1,20 @@
+id: CO-3916
+name: "CCCAP: a person's countable unearned income"
+identifier: cccap_person_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: CCCAP
+meaning: "This person's unearned income that CCCAP counts (8 CCR 1403-1 3.111.I.6-33): the recurring unearned income received in the prior thirty days (pensions, unemployment, child support, interest and the other unearned income, 3.111.H.5.b), plus the month's Social Security (I.25), plus one twelfth of a nonrecurring lump sum or a prize received in the month (I.20; H.4.i: counted in the month received or averaged over twelve months, \"whichever is most beneficial\"), not counting a retroactive SSI or public assistance lump sum, which J.2 and J.26 exclude."
+precision: "The recurring part is unearned_income_prior_thirty_days (CO-3913), which leaves out what 3.111.J excludes and has its own fact (educational aid, J.16, J.19-20; loans, J.25; reimbursements, J.27; LEAP and other home energy assistance, J.12; tax refunds and credits including the EIC, J.14; federally excluded payments, J.3, J.5-9, J.11, J.15, J.21). SSI (J.2) and Colorado Works, OAP and AND grants (J.26) are not read. Social Security is a monthly payment and is read for the month. The lump sum is lump_sum_received (CO-3367) and the prize lottery_gambling_winnings_received (CO-1181), each read as 0 when not stated, less retroactive_ssi_or_public_assistance_lump_sum_received (CO-3920); one twelfth (cccap_lump_sum_averaging_months, CO-3918) is always the more beneficial count for the month received, and a lump sum received in an earlier month is not counted (counting it in its own month is then the more beneficial), OQ-680. Work-study and a household child's earnings are earned income (CO-3915)."
+derived: [+, unearned_income_prior_thirty_days, social_security_income, ["/", [max, 0, ["-", [+, [otherwise, lump_sum_received, 0], [otherwise, lottery_gambling_winnings_received, 0]], [otherwise, retroactive_ssi_or_public_assistance_lump_sum_received, 0]]], cccap_lump_sum_averaging_months]]
+sources: [S891, S2704, S2705, S2706, S2207]
+implemented: engine
+tags: [income]
+open: [OQ-680]
+rationale: "Final pass F-09 and F-11: CCCAP counts unearned income received in the prior thirty days (H.5.b), counts prizes (I.20), and counts a nonrecurring lump sum in the month received or averaged over twelve months, whichever is more beneficial (H.4.i). The volume read the calendar month, did not read lottery winnings at all, and counted a lump sum in full."
+tests:
+  - {id: CO-3916-T1, title: "Child support of $300 in the thirty days and $900 of Social Security", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 300, social_security_income: 900}, expect: 1200}
+  - {id: CO-3916-T2, title: "A $6,000 inheritance received this month counts as $500 (H.4.i)", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, lump_sum_received: 6000}, expect: 500}
+  - {id: CO-3916-T3, title: "A $1,200 lottery win this month counts as $100 (I.20, H.4.i)", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, lottery_gambling_winnings_received: 1200}, expect: 100}
+  - {id: CO-3916-T4, title: "A retroactive SSI lump sum is excluded (J.2)", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, lump_sum_received: 2400, retroactive_ssi_or_public_assistance_lump_sum_received: 2400}, expect: 0}

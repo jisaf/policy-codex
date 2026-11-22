@@ -1,0 +1,21 @@
+id: CO-3926
+name: "LEAP: a person's countable unearned income"
+identifier: leap_person_unearned_income
+kind: derived
+type: money
+scope: person-month
+program: LEAP
+meaning: "This person's countable unearned income for LEAP (9 CCR 2503-7 3.752.21-23): the recurring unearned income received in the income verification period (3.752.22.A), plus the month's Social Security and SSI, each without its cents (3.752.211.H, 3.752.21.I), plus the month's Colorado Works and Adult Financial cash assistance (3.752.21.L), plus prizes and nonrecurring lump sums received (3.752.21.A, C, D), except a retroactive lump-sum Social Security, SSI or public assistance payment (3.752.23.EE)."
+precision: "The recurring part is unearned_income_prior_thirty_days (CO-3913), which leaves out what 3.752.23 excludes and has its own fact: financial aid (P), reimbursements (R, S), bona fide loans (BB), lump-sum tax refunds and credits (EE), payments federal law excludes (F, H, I, K-N), and home energy assistance (LEAP's own benefit, which a program does not count against itself, and assistance paid to the energy supplier on the household's behalf, T). SSI is counted \"in the month received\" (3.752.21.I) and Social Security, cash assistance, lottery winnings (lottery_gambling_winnings_received, CO-1181) and lump sums (lump_sum_received, CO-3367) are read for the month of the application, the month leap_household_income (CO-1002) is read for (OQ-681); winnings and lump sums are read as 0 when not stated. The cents are dropped by rounding down. 3.752.22.A's cap of one month's income is met by the recurring figure being one month's receipts; a case whose thirty days hold two monthly payments of one source states one."
+derived: [+, unearned_income_prior_thirty_days, ["-", 0, [ceil, ["-", 0, social_security_income]]], ["-", 0, [ceil, ["-", 0, ssi_income]]], tanf_cash_income, adult_financial_cash_income, [otherwise, lottery_gambling_winnings_received, 0], [max, 0, ["-", [otherwise, lump_sum_received, 0], [+, [otherwise, retroactive_social_security_lump_sum_received, 0], [otherwise, retroactive_ssi_or_public_assistance_lump_sum_received, 0]]]]]
+sources: [S2712, S2713, S2714, S2208, S1624]
+implemented: engine
+tags: [income]
+open: [OQ-681]
+rationale: "Final pass F-09, F-10, F-11 and F-19: leap_household_income (CO-1002) left out SSI, which 3.752.21.I counts; did not read lottery winnings, which 3.752.21.A counts as prizes; counted a retroactive benefit lump sum that 3.752.23.EE excludes; kept the cents 3.752.21.I and 3.752.211.H drop; and read the calendar month rather than the income verification period."
+tests:
+  - {id: CO-3926-T1, title: "SSI of $967.50 counts as $967 (3.752.21.I)", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, ssi_income: 967.5, tanf_cash_income: 0, adult_financial_cash_income: 0}, expect: 967}
+  - {id: CO-3926-T2, title: "Social Security of $1,204.90 counts as $1,204, with $300 of child support in the period", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 300, social_security_income: 1204.9, ssi_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0}, expect: 1504}
+  - {id: CO-3926-T3, title: "A $2,000 lottery prize counts (3.752.21.A)", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, ssi_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, lottery_gambling_winnings_received: 2000}, expect: 2000}
+  - {id: CO-3926-T4, title: "A $3,000 retroactive Social Security lump sum is excluded; a $500 inheritance in the same month counts (3.752.23.EE)", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, ssi_income: 0, tanf_cash_income: 0, adult_financial_cash_income: 0, lump_sum_received: 3500, retroactive_social_security_lump_sum_received: 3000}, expect: 500}
+  - {id: CO-3926-T5, title: "Colorado Works cash of $400", as_of: "2026-12-01", month: "2026-12", given: {unearned_income_received_prior_thirty_days: 0, social_security_income: 0, ssi_income: 0, tanf_cash_income: 400, adult_financial_cash_income: 0}, expect: 400}

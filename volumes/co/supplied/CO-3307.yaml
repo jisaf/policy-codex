@@ -3,13 +3,13 @@ name: "CCCAP: determination type"
 identifier: cccap_determination_type
 kind: supplied
 type: one of
-options: [application, redetermination, change_during_eligibility_period]
+options: [application, redetermination, change_during_eligibility_period, transition_from_colorado_works]
 scope: case
 program: CCCAP
-meaning: "Which CCCAP determination the case is: an application to enter the program; a redetermination of eligibility for a household already receiving assistance (8 CCR 1403-1 3.111.K.2.c); or a change the receiving household reported during its eligibility period (3.111.H.1.b)."
-precision: "One value for the case; CCCAP reads no default. cccap_redetermination_date (CO-2379) is stated with redetermination."
+meaning: "Which CCCAP determination the case is: an application to enter the program; a redetermination of eligibility for a household already receiving assistance (8 CCR 1403-1 3.111.K.2.c); a change the receiving household reported during its eligibility period (3.111.H.1.b); or a transition of a household leaving Colorado Works to Low-Income Child Care, which 3.117 makes \"without requiring the household to complete the Low-Income Child Care application\", so it is not an application: the exit income limit applies (3.117.A.2) and job search continues (3.117.D)."
+precision: "One value for the case; CCCAP reads no default. Final pass F-16: transition_from_colorado_works added; at a transition no additional verification is required until the twelve-month redetermination (3.117.B), so cccap_verification_status (CO-1451) reports not_required. cccap_redetermination_date (CO-2379) is retired (V-12)."
 supplied_by: "CCCAP case record (CHATS)."
-sources: [S1413]
+sources: [S1413, S2703]
 implemented: engine
 tags: [household]
 rationale: "Dual-entry audit 3.22 (CCCAP half): whether the household already receives assistance was stated twice, as cccap_is_receiving_assistance on every member and implicitly by stating a redetermination date. One case record states the determination type, as ma_determination_type (CO-2831) does for Medicaid; cccap_is_receiving_assistance (CO-2103) is derived from it."

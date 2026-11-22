@@ -1,0 +1,17 @@
+id: CO-3908
+name: CCCAP verification days during a homelessness stabilization period
+identifier: cccap_homelessness_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The days a family experiencing homelessness has, from the county's request, to provide the verification needed for ongoing eligibility during its stabilization period: sixty, the least 8 CCR 1403-1 3.121.B allows (a stabilization period of \"at least sixty (60) consecutive calendar days\"; B.3.b: \"at least sixty (60) days to provide necessary verification\")."
+precision: "A county plan approved under 3.104 may offer a longer stabilization period (3.121.B); the floor is used, as with the job search weeks (OQ-162)."
+versions:
+  - from: "2026-08-14"
+    value: 60
+    source: S2710
+sources: [S1823, S2710]
+tags: [verification]
+open: [OQ-162]
+rationale: "Final pass F-02: cccap_verification_status (CO-1451) applied the fifteen-day noticing period (CO-1354) to a homeless family in its stabilization period, which the rule gives at least sixty days."

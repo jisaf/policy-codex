@@ -6,12 +6,14 @@ type: money
 scope: person-month
 program: LEAP
 meaning: "The person's business-related expenses for the month supported by receipts that 9 CCR 2503-7 3.755.21.I allows as deductions from declared gross self-employment income: the operating costs, interest and business mileage (at the county rate, OQ-614); not rent, mortgage or personal utilities when the business is run from the residence."
-precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0."
-derived: [+, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]], [otherwise, self_employment_business_vehicle_costs, 0]]
-sources: [S1084]
+precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0. Verification pass V-1: the costs are deducted only when receipts for them have been received (self_employment_cost_receipts_received, CO-3927, read as false when not stated; 3.755.21.I.2-3: \"Receipts for business-related expenses are required in order to be considered as deductions\", and credit card and bank statements are not receipts); otherwise nothing is deducted."
+derived: [case, [[otherwise, self_employment_cost_receipts_received, false], [+, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]], [otherwise, self_employment_business_vehicle_costs, 0]]], [else, 0]]
+sources: [S1084, S2719]
 implemented: engine
 tags: [income]
 open: [OQ-614]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
 tests:
-  - {id: CO-1711-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30}, expect: 450}
+  - {id: CO-1711-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_cost_receipts_received: true, self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30}, expect: 450}
+  - {id: CO-1711-T2, title: "V-1: the same costs, claimed with only a bank statement: nothing is deducted (3.755.21.I.2-3)", month: "2026-10", as_of: "2026-10-01", given: {self_employment_cost_receipts_received: false, self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_business_vehicle_costs: 30}, expect: 0}
+  - {id: CO-1711-T3, title: "V-1: receipts not stated: read as none", month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 400}, expect: 0}

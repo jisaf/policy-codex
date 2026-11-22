@@ -5,8 +5,9 @@ kind: supplied
 type: yes/no
 scope: person
 program: CCCAP
-meaning: Whether this adult caretaker or teen parent is currently in the job search low-income eligible activity of 8 CCR 1403-1 3.111.G.3, following a non-temporary cessation of another eligible activity.
+meaning: "Whether this adult caretaker or teen parent is currently in the job search low-income eligible activity of 8 CCR 1403-1 3.111.G.3, following a non-temporary cessation of another eligible activity while enrolled in Low-Income Child Care (G.3.a, G.3.f), or entered on transition from Colorado Works Child Care (3.117.D)."
+precision: "Final pass F-05: job search is not an activity at an initial application; cccap_caretaker_in_eligible_activity (CO-984) counts it only when cccap_is_receiving_assistance (CO-2103) is true (a redetermination, a change during the eligibility period, or a transition from Colorado Works)."
 supplied_by: County child care technician's determination and the household's statement of low-income eligible activity (3.111.C.2.d).
-sources: [S482]
+sources: [S482, S1411, S2702, S2703]
 tags: [household]
 rationale: "3.111.G lists job search as one of the low-income eligible activities alongside employment, self-employment, and training/education; none of this volume's shared supplied facts state it. cccap_caretaker_in_eligible_activity (CO-984) needs it as an alternative to hours_worked > 0. Same-word audit SW-37: renamed from cccap_is_in_job_search_activity so the identifier carries the prefix of the program (or method) whose meaning it states."

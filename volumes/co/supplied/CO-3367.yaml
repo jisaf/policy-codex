@@ -5,8 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "A nonrecurring lump-sum payment the person received in the month: an income tax refund, rebate or credit; a retroactive lump-sum Social Security, SSI, public assistance or railroad retirement payment; a lump-sum insurance settlement; an inheritance; a lottery or gambling win paid at once; or a similar one-time payment."
-precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or _nontaxable), not added to it; what is still held on the determination date is also part of liquid_resources_value. If not stated, every program reads it as 0."
+meaning: "A nonrecurring lump-sum payment the person received in the month: a retroactive lump-sum Social Security, SSI, public assistance or railroad retirement payment; a lump-sum insurance settlement; an inheritance; or a similar one-time payment. An income tax refund, rebate or credit is tax_refunds_and_credits_received (CO-3365) and a lottery or gambling win is lottery_gambling_winnings_received (CO-1181), not part of this fact."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or _nontaxable), not added to it; what is still held on the determination date is also part of liquid_resources_value. The retroactive benefit parts are retroactive_social_security_lump_sum_received (CO-3919) and retroactive_ssi_or_public_assistance_lump_sum_received (CO-3920). Final pass F-11: tax refunds and lottery winnings were also listed here, though each has its own fact (lottery winnings are not part of the unearned income facts, CO-030), so a refund stated in both was subtracted twice by a program that excludes both. If not stated, every program reads it as 0."
 supplied_by: "Application (resources), verified by statements as each program requires."
 sources: [S1957, S1958]
 implemented: engine

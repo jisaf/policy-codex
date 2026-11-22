@@ -268,7 +268,10 @@ outcomes:
       eligible_low_income: {code: PH-CCCAP-LI, label: "Child care assistance: low income"}
       eligible_colorado_works: {code: PH-CCCAP-CW, label: "Child care assistance: Colorado Works"}
       eligible_protective_services: {code: PH-CCCAP-PS, label: "Child care assistance: protective services"}
+      eligible_child_welfare: {code: PH-CCCAP-CWCC, label: "Child care assistance: Child Welfare Child Care"}
+      eligible_homelessness_stabilization: {code: PH-CCCAP-HS, label: "Child care assistance: homelessness stabilization period"}
     no_code:
+      ineligible_disqualified: "Not eligible: a caretaker is disqualified for an intentional program violation."
       ineligible_income: "Not eligible: income."
       ineligible_activity: "Not eligible: no eligible activity."
       ineligible_child: "Not eligible: no eligible child."

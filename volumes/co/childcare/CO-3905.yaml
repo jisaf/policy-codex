@@ -1,0 +1,16 @@
+id: CO-3905
+name: "CCCAP: start of the substance use disorder treatment activity's year"
+identifier: cccap_sud_treatment_instance_start_date
+kind: derived
+type: calendar date
+scope: person
+program: CCCAP
+meaning: "The date from which this adult caretaker's current instance of substance use disorder treatment counts as a CCCAP eligible activity for its year (8 CCR 1403-1 3.111.G.4.a.3): the date the current enrollment began (sud_treatment_start_date, CO-3904), or July 1, 2026, the activity's effective date (cccap_sud_treatment_activity_start_date, CO-1517), whichever is later."
+derived: [case, [[">", sud_treatment_start_date, cccap_sud_treatment_activity_start_date], sud_treatment_start_date], [else, cccap_sud_treatment_activity_start_date]]
+sources: [S1015]
+implemented: engine
+tags: [household]
+rationale: "Final pass F-06: the year \"per instance\" runs from the instance's start, not from the rule's effective date; an instance begun before July 1, 2026 counts from that date, since the activity did not exist before it."
+tests:
+  - {id: CO-3905-T1, title: "Treatment begun in May 2027: its year starts then", as_of: "2027-06-01", given: {sud_treatment_start_date: "2027-05-10"}, expect: "2027-05-10"}
+  - {id: CO-3905-T2, title: "Treatment begun in March 2026: counts from July 1, 2026", as_of: "2026-10-01", given: {sud_treatment_start_date: "2026-03-02"}, expect: "2026-07-01"}
