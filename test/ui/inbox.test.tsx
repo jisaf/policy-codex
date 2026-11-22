@@ -1,9 +1,10 @@
 /* The approvals inbox against the real Colorado volume: one definition of
  * "needs a role" behind every count, the grouping and filters, the plain
- * diff, and the actions that stage signatures and notes in the tray.
+ * diff, and the Desk's sign-off list and approval card, which stage
+ * signatures and notes in the tray.
  * Assertions read the volume's own policy rather than fixed counts, since
  * the fix tracks keep editing the volume. */
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import path from "node:path";
 import { render } from "preact";
 import { act } from "preact/test-utils";
@@ -20,15 +21,16 @@ import {
   NO_FILTER, parseReviewNotes, plainChanges, proposeHint, restingOnUnverified, reviewNoteEntry,
   signatureEntries, signatureNotice, stagedNotes, textMatches, withoutSignature, type InboxRow,
 } from "../../src/ui/inbox";
-import { householdsRestingOn, restingIndex } from "../../src/ui/counts";
+import { householdsRestingOn, restingIndex, signOffGroups } from "../../src/ui/counts";
 import { canSign, isOwnStagedChange } from "../../src/ui/inbox";
 import { unverifiedIds } from "../../src/ui/provenance";
 import { personaSig } from "../../src/ui/personas";
-import { defaultRoute } from "../../src/ui/router";
+import { canonicalRoute, internalRoute, parseHash } from "../../src/ui/router";
 import {
   changeSetSig, credentials, draftsShownSig, engineSig, modeSig, route, volumeSig,
 } from "../../src/ui/state";
-import { INBOX_ROLE_KEY, InboxView, SIGNER_KEY, inboxRole } from "../../src/ui/views/InboxView";
+import { INBOX_ROLE_KEY, SIGNER_KEY, inboxRole } from "../../src/ui/views/ApprovalCard";
+import { SignPage } from "../../src/ui/places/SignPage";
 import { personaById } from "../../src/ui/personas";
 
 const root = path.resolve(__dirname, "../..");
@@ -265,10 +267,9 @@ describe("requests for changes are notes in the tray", () => {
   });
 });
 
-describe("the inbox page", () => {
+describe("Desk › To sign (the sign-off list and the approval card)", () => {
   beforeEach(() => {
     localStorage.clear();
-    route.value = { ...defaultRoute(), volume: "co", view: "inbox" };
     volumeSig.value = vol;
     engineSig.value = engine;
     changeSetSig.value = emptyChangeSet("co", "local");
@@ -278,43 +279,74 @@ describe("the inbox page", () => {
     credentials.clear("github");
   });
 
-  function mount() {
+  function mount(hash: string) {
+    route.value = internalRoute(canonicalRoute(parseHash(hash)));
     const host = document.createElement("div");
     document.body.appendChild(host);
-    act(() => { render(<InboxView />, host); });
+    act(() => { render(<SignPage />, host); });
     return host;
   }
-
-  it("opens on the persona's first role, with counts that match the policy", () => {
-    const host = mount();
-    const c = roleCounts(engine, ["Medicaid policy owner"])[0];
-    const line = host.querySelector(".rolecounts li.on")!.textContent!;
-    expect(line).toContain(`Medicaid policy owner: ${c.awaiting.toLocaleString("en-US")} items awaiting, 0 approved`);
-    expect(host.querySelector(".inbox-definition")!.textContent).toContain(`${c.required.toLocaleString("en-US")} items in all`);
-    expect(host.querySelector(".shown-count")!.textContent).toContain(c.awaiting.toLocaleString("en-US"));
-    // The every-role table states each role's rule beside its count.
-    const legal = host.querySelector('tr[data-role="Legal"]')!;
-    expect(legal.textContent).toContain(String(awaitingRole(engine, "Legal").length));
-    expect(legal.textContent).toContain("immigration status");
-    // Figures come first in the first open group.
-    const kinds = [...host.querySelectorAll("details.inbox-group[open] .kindhead")].map((h) => h.textContent);
-    expect(kinds[0]).toMatch(/^Figures|^Rules|^Facts/);
-  });
-
-  it("asks for a name, then stages an approval and says how it becomes a PR", () => {
-    const host = mount();
-    const first = host.querySelector<HTMLElement>("article.inbox-row")!;
-    const id = first.dataset.item!;
-    act(() => { first.querySelector<HTMLButtonElement>("button.approve")!.click(); });
-    expect(changeSetSig.value.entries).toHaveLength(0);
-    expect(host.querySelector(".signer .bad")!.textContent).toMatch(/Type your name/);
-
+  const typeName = (host: HTMLElement, name: string) => {
     const input = host.querySelector<HTMLInputElement>(".signer input")!;
     act(() => {
-      input.value = "Dana Lee (HCPF)";
+      input.value = name;
       input.dispatchEvent(new Event("input", { bubbles: true }));
     });
+  };
+  const medGroups = () => signOffGroups(engine, "Medicaid policy owner", vol.chapterOf, tainted);
+
+  it("opens on the persona's first role, its groups adding up to the role's count", () => {
+    const host = mount("#/co/desk/sign");
+    expect(host.querySelector("section.signpage")!.getAttribute("data-role")).toBe("Medicaid policy owner");
+    expect(host.querySelector("h1")!.textContent).toBe("To sign as Medicaid policy owner");
+    const nums = [...host.querySelectorAll("ul.signgroups .sg-num")].map((x) => Number(x.textContent!.replace(/,/g, "")));
+    expect(nums.reduce((a, b) => a + b, 0)).toBe(awaitingRole(engine, "Medicaid policy owner").length);
+    expect(nums).toEqual(medGroups().map((g) => g.items.length));
+    // The persona's other roles are one click away.
+    expect([...host.querySelectorAll("nav.rolechips a")].map((a) => a.textContent)).toContain(
+      `CHP+ policy owner ${awaitingRole(engine, "CHP+ policy owner").length.toLocaleString("en-US")}`,
+    );
+  });
+
+  it("a group opens as a reading list: meaning, figure today and why you sign", () => {
+    const g = medGroups()[0];
+    const host = mount(`#/co/desk/sign?role=Medicaid+policy+owner&group=${encodeURIComponent(g.key)}`);
+    const items = [...host.querySelectorAll<HTMLElement>("li.signitem")];
+    expect(items.length).toBe(Math.min(30, g.items.length));
+    expect(items.map((li) => li.dataset.item)).toEqual(g.items.slice(0, 30).map((it) => it.id));
+    const first = items[0];
+    expect(first.querySelector(".si-m")!.textContent!.length).toBeGreaterThan(10);
+    expect(first.textContent).toContain("You sign because");
+    // Each name opens the approval card.
+    expect(first.querySelector(".si-h a")!.getAttribute("href")).toBe(`#/co/desk/sign/${g.items[0].id}?role=Medicaid+policy+owner`);
+  });
+
+  it("approving the ticked asks for a name first, then stages each signature", () => {
+    const g = medGroups()[0];
+    const host = mount(`#/co/desk/sign?role=Medicaid+policy+owner&group=${encodeURIComponent(g.key)}`);
+    const boxes = [...host.querySelectorAll<HTMLInputElement>("li.signitem input.pick")].slice(0, 2);
+    for (const b of boxes) act(() => { b.click(); });
+    const approve = () => act(() => { host.querySelector<HTMLButtonElement>(".signbar button.approve")!.click(); });
+    approve();
+    expect(changeSetSig.value.entries).toHaveLength(0);
+    expect(host.querySelector(".signer .bad")!.textContent).toMatch(/Type your name/);
+    typeName(host, "Dana Lee (HCPF)");
     expect(localStorage.getItem(SIGNER_KEY)).toBe("Dana Lee (HCPF)");
+    approve();
+    expect(changeSetSig.value.entries.map((e) => e.id).sort()).toEqual(g.items.slice(0, 2).map((it) => it.id).sort());
+    expect(host.querySelector(".inbox-notice")!.textContent).toContain("Data steward");
+  });
+
+  it("the card asks for a name, then stages an approval and says how it becomes a PR", () => {
+    const id = medGroups()[0].items[0].id;
+    const host = mount(`#/co/desk/sign/${id}`);
+    const card = host.querySelector<HTMLElement>(`article.inbox-row[data-item="${id}"]`)!;
+    expect(card.querySelector(".change")!.textContent).toBe("New, never approved.");
+    expect(card.textContent).toContain("Why you sign");
+    act(() => { card.querySelector<HTMLButtonElement>("button.approve")!.click(); });
+    expect(changeSetSig.value.entries).toHaveLength(0);
+    expect(host.querySelector(".signer .bad")!.textContent).toMatch(/Type your name/);
+    typeName(host, "Dana Lee (HCPF)");
     act(() => { host.querySelector<HTMLButtonElement>(`article[data-item="${id}"] button.approve`)!.click(); });
     const entry = changeSetSig.value.entries.find((e) => e.id === id)!;
     expect(entry.after!.approval).toEqual([
@@ -323,126 +355,92 @@ describe("the inbox page", () => {
     const notice = host.querySelector(".inbox-notice")!.textContent!;
     expect(notice).toContain("saved in this browser only");
     expect(notice).toContain("Download this change");
-    // The steward codex.json names is in the message.
     expect(notice).toContain("Data steward");
-    // The status sentence says why, not "status would be Reviewed".
     expect(notice).not.toMatch(/status would be/);
     expect(host.querySelector(`article[data-item="${id}"] .staged-note`)!.textContent).toMatch(/signature is staged/);
-
     // Undo takes it back out of the tray.
     act(() => { host.querySelector<HTMLButtonElement>(`article[data-item="${id}"] .staged-note button`)!.click(); });
     expect(changeSetSig.value.entries).toHaveLength(0);
+    // The way back to its group, and on to the next item.
+    expect(host.querySelector(".signcard .backline a")!.getAttribute("href")).toContain("group=");
+    expect(host.querySelector(".signcard .nextline a")!.getAttribute("href")).toBe(`#/co/desk/sign/${medGroups()[0].items[1].id}?role=Medicaid+policy+owner`);
   });
 
   it("never offers Approve on the reader's own staged change", () => {
     const role = "Medicaid policy owner";
-    const it0 = rowsFor(role)[0].item;
+    const it0 = medGroups()[0].items[0];
     const edited = { ...it0, meaning: `${it0.meaning ?? ""} (my edit)` };
     changeSetSig.value = { ...emptyChangeSet("co", "local"), entries: [{ id: it0.id, chapter: vol.chapterOf[it0.id], before: it0, after: edited }] };
     const row = rowsFor(role, changeSetSig.value).find((r) => r.item.id === it0.id)!;
     expect(isOwnStagedChange(row)).toBe(true);
     expect(canSign(row)).toBe(false);
-    // An item someone else staged nothing on can be signed.
     expect(canSign(rowsFor(role)[0])).toBe(true);
     localStorage.setItem(SIGNER_KEY, "Dana Lee (HCPF)");
-    const host = mount();
-    const art = host.querySelector(`article[data-item="${it0.id}"]`)!;
-    expect(art.querySelector("button.approve")).toBeNull();
-    expect(art.querySelector(".own-change")!.textContent).toMatch(/cannot approve it/);
-    expect(art.querySelector<HTMLInputElement>("input.pick")!.disabled).toBe(true);
-  });
-
-  it("signs a whole chapter at once, in one write", async () => {
-    localStorage.setItem(SIGNER_KEY, "Priya (AG)");
-    personaSig.value = "legal";
-    const host = mount();
-    const group = host.querySelector<HTMLDetailsElement>("details.inbox-group[open]")!;
-    const n = Number(/Approve the chapter \((\d+)\)/.exec(group.querySelector("button.sign-chapter")!.textContent!)![1]);
-    vi.stubGlobal("confirm", () => true);
-    const t0 = Date.now();
-    act(() => { group.querySelector<HTMLButtonElement>("button.sign-chapter")!.click(); });
-    vi.unstubAllGlobals();
-    if (n > 20) {
-      // A large chapter says it is working, then stages.
-      expect(host.querySelector(".inbox-notice")!.textContent).toMatch(/Staging \d+ signatures/);
-      await act(() => new Promise((res) => setTimeout(res, 50)));
-    }
-    expect(changeSetSig.value.entries).toHaveLength(n);
-    expect(changeSetSig.value.entries.every((e) => e.after!.approval!.some((a) => a.role === "Legal" && a.by === "Priya (AG)"))).toBe(true);
-    expect(Date.now() - t0).toBeLessThan(20_000);
+    const card = mount(`#/co/desk/sign/${it0.id}`).querySelector(`article[data-item="${it0.id}"]`)!;
+    expect(card.querySelector("button.approve")).toBeNull();
+    expect(card.querySelector(".own-change")!.textContent).toMatch(/cannot approve it/);
+    const list = mount(`#/co/desk/sign?role=Medicaid+policy+owner&group=${encodeURIComponent(medGroups()[0].key)}`);
+    expect(list.querySelector<HTMLInputElement>(`li.signitem[data-item="${it0.id}"] input.pick`)!.disabled).toBe(true);
+    // Ticking everything and approving still leaves it out.
+    act(() => { list.querySelector<HTMLButtonElement>(".signbar button")!.click(); });
+    act(() => { list.querySelector<HTMLButtonElement>(".signbar button.approve")!.click(); });
+    const signedIt = changeSetSig.value.entries.find((e) => e.id === it0.id)!;
+    expect(signedIt.after!.approval ?? []).toEqual(it0.approval ?? []);
   });
 
   it("stages a request for changes as a note", () => {
     localStorage.setItem(SIGNER_KEY, "Dana");
-    const host = mount();
-    const row = host.querySelector<HTMLElement>("article.inbox-row")!;
-    act(() => { row.querySelector<HTMLButtonElement>("button.request")!.click(); });
-    const ta = row.querySelector<HTMLTextAreaElement>("textarea")!;
+    const id = medGroups()[0].items[0].id;
+    const host = mount(`#/co/desk/sign/${id}`);
+    const card = host.querySelector<HTMLElement>("article.inbox-row")!;
+    act(() => { card.querySelector<HTMLButtonElement>("button.request")!.click(); });
+    const ta = card.querySelector<HTMLTextAreaElement>("textarea")!;
     act(() => {
       ta.value = "Show 142% and the 2026 monthly dollars.";
       ta.dispatchEvent(new Event("input", { bubbles: true }));
     });
-    act(() => { row.querySelector<HTMLFormElement>("form.noteform")!.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })); });
+    act(() => { card.querySelector<HTMLFormElement>("form.noteform")!.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })); });
     const files = changeSetSig.value.files ?? [];
     expect(files).toHaveLength(1);
     expect(files[0].path).toMatch(/^volumes\/co\/reviews\/\d{4}-\d{2}-\d{2}-medicaid-policy-owner-[a-z0-9]+\.md$/);
     expect(files[0].after).toContain("Show 142% and the 2026 monthly dollars.");
-    expect(host.querySelector(`article[data-item="${row.dataset.item}"] .staged-note.request`)).not.toBeNull();
+    expect(host.querySelector(`article[data-item="${id}"] .staged-note.request`)).not.toBeNull();
   });
 
   it("opens on the role it was last read as, if it is the persona's own (CDHS cash lead)", () => {
     personaSig.value = "cdhs";
     localStorage.setItem(INBOX_ROLE_KEY, "Cash programs policy owner");
-    const host = mount();
-    expect(host.querySelector("section.inbox")!.getAttribute("data-role")).toBe("Cash programs policy owner");
-    // A role not the persona's is not reopened.
+    const host = mount("#/co/desk/sign");
+    expect(host.querySelector("section.signpage")!.getAttribute("data-role")).toBe("Cash programs policy owner");
     localStorage.setItem(INBOX_ROLE_KEY, "Legal");
-    const ctx = { engine, vol, route: { ...route.value, params: {} }, persona: personaById("cdhs"), today: "2026-11-22" };
+    const ctx = { engine, vol, route: { ...route.value, arg: null, params: {} }, persona: personaById("cdhs"), today: "2026-11-22" };
     expect(inboxRole(ctx as never)).toBe("SNAP policy owner");
   });
 
   it("opens on the persona's role that signs something staged", () => {
-    personaSig.value = "cdhs";
     const it = engine.items().find((i) => i.program === "ColoradoWorks" && i.kind === "parameter")!;
-    const ctx = { engine, vol, route: { ...route.value, params: {} }, persona: personaById("cdhs"), today: "2026-11-22" };
+    const ctx = { engine, vol, route: { ...route.value, arg: null, params: {} }, persona: personaById("cdhs"), today: "2026-11-22" };
     const staged = [{ id: it.id, chapter: vol.chapterOf[it.id], before: it, after: { ...it, value: 1 } }];
     expect(inboxRole(ctx as never, staged)).toBe("Cash programs policy owner");
   });
 
-  it("inbox/<id> opens the item's row at the top, as a role that signs it", () => {
-    const it = engine.items().find((i) => i.id === "CO-191")!;
-    route.value = { ...route.value, arg: it.id, params: {} };
-    const host = mount();
-    const linked = host.querySelector(".inbox-linked")!;
-    expect(linked.querySelector(`article[data-item="${it.id}"]`)).not.toBeNull();
-    expect(engine.approvals(it)).toContain(host.querySelector("section.inbox")!.getAttribute("data-role"));
+  it("desk/sign/<id> opens the item's card, as a role that signs it", () => {
+    const host = mount("#/co/desk/sign/CO-191");
+    expect(host.querySelector('.signcard article[data-item="CO-191"]')).not.toBeNull();
+    expect(engine.approvals(engine.itemById("CO-191")!)).toContain(host.querySelector("section.signpage")!.getAttribute("data-role"));
   });
 
-  it("searches by words and lists my staged changes first", () => {
-    localStorage.setItem(SIGNER_KEY, "Dana");
-    route.value = { ...route.value, params: { role: "Medicaid policy owner", q: "children category percent" } };
-    let host = mount();
-    const found = [...host.querySelectorAll<HTMLElement>("article.inbox-row")].map((a) => a.dataset.item);
+  it("finds by words across the groups, every word in any order", () => {
+    const host = mount("#/co/desk/sign?role=Medicaid+policy+owner&q=children+category+percent");
+    const found = [...host.querySelectorAll<HTMLElement>("li.signitem")].map((a) => a.dataset.item!);
     expect(found.length).toBeGreaterThan(0);
-    for (const id of found) expect(textMatches(engine.itemById(id!)!, "children category percent")).toBe(true);
-    // Stage one signature, then the staged list leads.
-    act(() => { host.querySelector<HTMLButtonElement>("article.inbox-row button.approve")!.click(); });
-    const staged = changeSetSig.value.entries[0].id;
-    host.remove();
-    route.value = { ...route.value, params: { role: "Medicaid policy owner" } };
-    host = mount();
-    expect(host.querySelector(`.inbox-staged article[data-item="${staged}"]`)).not.toBeNull();
-    route.value = { ...route.value, params: { role: "Medicaid policy owner", staged: "1" } };
-    host.remove();
-    host = mount();
-    const onlyStaged = [...host.querySelectorAll<HTMLElement>("article.inbox-row")].map((a) => a.dataset.item);
-    expect(onlyStaged).toEqual([staged]);
+    for (const id of found) expect(textMatches(engine.itemById(id)!, "children category percent")).toBe(true);
   });
 
-  it("without a role, asks whose sign-off to list", () => {
+  it("without a role, asks whose signature", () => {
     personaSig.value = null;
-    const host = mount();
-    expect(host.querySelector(".inbox-pick")).not.toBeNull();
-    expect(host.querySelectorAll(".inbox-pick li")).toHaveLength(roles.length);
+    const host = mount("#/co/desk/sign");
+    expect(host.querySelectorAll("ul.rolelist li")).toHaveLength(roles.length);
   });
 });
+

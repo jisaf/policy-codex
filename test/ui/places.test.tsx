@@ -44,13 +44,13 @@ describe("the seven places", () => {
     expect(host.querySelectorAll(".rolechoice .door")).toHaveLength(6);
     personaSig.value = "cdhs";
     const host2 = show("#/co/desk");
-    expect(host2.querySelector('div.persona[data-persona="cdhs"]')).toBeTruthy();
-    expect(host2.querySelector(".countcard a[href*='/desk/sign']")).toBeTruthy();
+    expect(host2.querySelector('.deskhome[data-persona="cdhs"]')).toBeTruthy();
+    expect(host2.querySelector(".tile a[href*='/desk/sign']")).toBeTruthy();
   });
 
   it("an older role page lands on the Desk for that role", () => {
     const host = show("#/co/roles/legal");
-    expect(host.querySelector('div.persona[data-persona="legal"]')).toBeTruthy();
+    expect(host.querySelector('.deskhome[data-persona="legal"]')).toBeTruthy();
   });
 
   it("Households lists the stored households, and each has a page with four tabs", () => {
@@ -85,12 +85,12 @@ describe("the seven places", () => {
   it("Figures lists every dated figure in force on a date, filtered by words", () => {
     const host = show("#/co/figures?q=children+income+limit");
     expect(host.querySelector(".placehead h1")!.textContent).toBe("Figures");
-    const names = [...host.querySelectorAll("li.figure .fighead a")].map((a) => a.textContent);
+    const names = [...host.querySelectorAll("tr.figure a.figname")].map((a) => a.textContent);
     expect(names.length).toBeGreaterThan(0);
-    expect(host.querySelector('li.figure[data-figure="ma_income_limit_child_pct"]')).toBeTruthy();
+    expect(host.querySelector('tr.figure[data-figure="ma_income_limit_child_pct"]')).toBeTruthy();
     const none = show(`#/co/figures?novalue=1&asof=${todayIso()}`);
     const noValue = new Set(figuresWithoutValue(engine, todayIso()).map((it) => it.identifier));
-    const listed = [...none.querySelectorAll("li.figure")].map((li) => li.getAttribute("data-figure")!);
+    const listed = [...none.querySelectorAll("tr.figure")].map((li) => li.getAttribute("data-figure")!);
     expect(listed.length).toBeGreaterThan(0);
     for (const f of listed) expect(noValue.has(f), f).toBe(true);
   });
@@ -118,7 +118,7 @@ describe("the seven places", () => {
   });
 
   it("Programs, Questions and Law's documents keep their content", () => {
-    expect(show("#/co/programs/SNAP").querySelector(".tabs a.on")!.textContent).toContain("SNAP");
+    expect(show("#/co/programs/SNAP").querySelector("h1")!.textContent).toContain("SNAP");
     expect(show("#/co/questions").querySelector("ul.qlist")).toBeTruthy();
     expect(show("#/co/law/doc").textContent).toContain("D-1");
     expect(show("#/co/programs/Medicaid?tab=aid-codes").querySelector(".codecard")).toBeTruthy();

@@ -127,11 +127,14 @@ export function crumbsFor(c: Route, data: CrumbData = {}): Crumb[] {
   const push = (label: string, patch: Partial<Route> | null) => out.push({ label, href: patch ? at(patch) : null });
   switch (c.view) {
     case "desk":
-      if (parts[0] === "sign") push("Waiting for your signature", { view: "desk", arg: "sign" });
+      if (parts[0] === "sign") push("To sign", { view: "desk", arg: "sign", params: c.params.role ? { role: c.params.role } : {} });
+      if (parts[0] === "sign" && parts[1]) push(data.engine?.itemById(parts[1])?.name ?? parts[1], null);
       break;
     case "programs":
-      if (c.arg) push(programLabel(c.arg), { view: "programs", arg: c.arg });
-      if (c.params.tab === "aid-codes") push("Aid codes", null);
+      if (parts[0]) push(programLabel(parts[0]), { view: "programs", arg: parts[0] });
+      if (parts[1]) push(data.engine?.item(parts[1])?.name ?? parts[1], null);
+      else if (c.params.tab === "aid-codes") push("Aid codes", null);
+      else if (c.params.tab === "map") push("Map", null);
       break;
     case "households": {
       const [caseId, person, outcome] = parts;

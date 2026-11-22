@@ -23,7 +23,7 @@ test("opens the co volume from the working tree and visits each place", async ({
 
   // A role door shows the role's work, and the sidebar's picker says so.
   await page.locator('.door[data-persona="hcpf"]').click();
-  await expect(page.locator('section.desk div.persona[data-persona="hcpf"]')).toContainText("Medicaid", { timeout: 15_000 });
+  await expect(page.locator('section.desk .deskhome[data-persona="hcpf"]')).toContainText("Medicaid", { timeout: 15_000 });
   await expect(page.locator("select[aria-label='Working as']")).toHaveValue("hcpf");
 
   for (const [place, heading] of [
