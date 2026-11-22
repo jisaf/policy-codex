@@ -68,7 +68,7 @@ describe("DocumentsView list", () => {
   it("links each row to its document page", () => {
     const host = show("documents");
     const link = host.querySelector("table.documents tbody a") as HTMLAnchorElement;
-    expect(link.getAttribute("href")).toBe("#/mwr/document/D-1");
+    expect(link.getAttribute("href")).toBe("#/mwr/law/doc/D-1");
   });
 
   it("selects the excerpts of one document, in file order", () => {
@@ -100,7 +100,7 @@ describe("DocumentsView page", () => {
     const excerpts = host.querySelectorAll("article.excerpt");
     expect(excerpts).toHaveLength(6);
     expect(excerpts[0].textContent).toContain("S1. Applicable individual");
-    expect(excerpts[0].querySelector("h4 a")!.getAttribute("href")).toBe("#/mwr/source/S1");
+    expect(excerpts[0].querySelector("h4 a")!.getAttribute("href")).toBe("#/mwr/law/sources/S1");
     // WR-200 cites S1 in the fixture ledger, so the page names it.
     expect(excerpts[0].querySelector(".cited-by")!.textContent).toContain("community engagement");
   });
@@ -279,6 +279,6 @@ describe("SourcesView document links", () => {
     const links = host.querySelectorAll("article.source a.doclink");
     expect(links).toHaveLength(33);
     expect(links[0].textContent).toBe("D-1: where this sits in the document");
-    expect(links[0].getAttribute("href")).toBe("#/mwr/document/D-1?excerpt=S1");
+    expect(links[0].getAttribute("href")).toBe("#/mwr/law/doc/D-1?at=S1");
   });
 });

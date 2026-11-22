@@ -10,9 +10,12 @@ test("the approvals inbox stages a signature and says how it becomes a PR", asyn
     localStorage.setItem("codex.persona", "hcpf");
     localStorage.setItem("codex.door", "reader");
   });
+  // The old address lands on the Desk's sign-off list.
   await page.goto("/#/co/inbox");
   // The first load reads some 1,400 files from the working tree.
   await expect(page.locator(".viewhead h1")).toHaveText("Approvals inbox", { timeout: 30_000 });
+  await expect(page).toHaveURL(/#\/co\/desk\/sign$/);
+  await expect(page.locator('.sidebar a[data-place="desk"]')).toHaveAttribute("aria-current", "page");
   const mine = page.locator(".rolecounts li.on");
   await expect(mine).toContainText(/Medicaid policy owner: [\d,]+ items awaiting, 0 approved/, { timeout: 30_000 });
   const awaiting = Number((/: ([\d,]+) items awaiting/.exec((await mine.textContent())!)![1]).replace(/,/g, ""));
@@ -51,7 +54,7 @@ test("the approvals inbox stages a signature and says how it becomes a PR", asyn
   await page.locator(".tray button", { hasText: "Close" }).click();
 
   // Legal: one definition, one number, in the header, the table and the list.
-  await page.goto("/#/co/inbox?role=Legal");
+  await page.goto("/#/co/desk/sign?role=Legal");
   const legal = page.locator(".rolecounts li.on");
   await expect(legal).toContainText(/Legal: [\d,]+ items awaiting/, { timeout: 30_000 });
   const n = (/: ([\d,]+) items awaiting/.exec((await legal.textContent())!)![1]);
@@ -72,7 +75,7 @@ test("the inbox searches, and a link to an item opens its row", async ({ page })
     localStorage.setItem("codex.tour", "1");
     localStorage.setItem("codex.persona", "hcpf");
   });
-  await page.goto("/#/co/inbox/CO-191");
+  await page.goto("/#/co/desk/sign/CO-191");
   await expect(page.locator('.inbox-linked article[data-item="CO-191"]')).toBeVisible({ timeout: 30_000 });
   await page.locator(".inbox-filters label.search input").fill("children percent");
   await expect(page).toHaveURL(/q=children/);

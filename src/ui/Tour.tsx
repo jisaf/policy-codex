@@ -77,28 +77,28 @@ export function tourItem(): string {
   return engine.items().find((it) => it.kind === "derived")?.id ?? "WR-200";
 }
 
-// Programs -> open a program -> Cases -> open a case -> click the outcome
-// (docs/design-onboarding.md, "Guided first run, hints, help").
+// The sidebar -> open a program -> Households -> open a household -> click
+// the outcome (docs/design-onboarding.md, "Guided first run, hints, help").
 const STEPS: TourStep[] = [
   {
-    target: '.door[data-door="reader"]',
-    body: "Pick a door to start. \"Read the rules for a program\" shows what each program decides, in plain language.",
+    target: ".sidebar nav.places",
+    body: "Seven places, one sidebar. Your Desk holds your role's work; Programs shows what each program decides, in plain language.",
     go: null,
   },
   {
     target: ".tabs a.on",
     body: "A program: its outcomes, the cases that test it, and the rules behind it.",
-    go: () => ({ view: "program", arg: tourProgram(), params: {} }),
+    go: () => ({ view: "programs", arg: tourProgram(), params: {} }),
   },
   {
-    target: 'nav.primary a[href*="/cases"]',
-    body: "Cases shows real households, evaluated end to end.",
-    go: { view: "cases", arg: null, params: {} },
+    target: '.sidebar a[data-place="households"]',
+    body: "Households holds the stored test households, each evaluated end to end.",
+    go: { view: "households", arg: null, params: {} },
   },
   {
     target: "table.expectations",
     body: "This household's facts, and the expectations checked against it.",
-    go: () => ({ view: "cases", arg: tourCase(), params: {} }),
+    go: () => ({ view: "households", arg: tourCase(), params: { tab: "states" } }),
   },
   {
     target: "tr.expectation",

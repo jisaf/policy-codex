@@ -29,24 +29,44 @@ export function caseEdges(hc: HouseholdCase): Edge[] {
   return out;
 }
 
-const SENTENCE: Record<string, string> = {
+/** Each relationship role as a verb phrase, so "p4 gave_birth_to p5" reads
+ *  "Person 4 gave birth to Person 5" (the evaluators found "Person 4 is the
+ *  gave birth to of Person 5"). Every role in every volume's
+ *  `relationship_roles` has one; test/ui/people.test.ts checks that. */
+export const RELATIONSHIP_VERB: Record<string, string> = {
   parent: "is a parent of", child: "is a child of", stepparent: "is a stepparent of", stepchild: "is a stepchild of",
-  spouse: "is married to", holds_out_as_spouse_with: "lives with, as a spouse,",
+  spouse: "is married to", surviving_spouse_of: "is the surviving spouse of", deceased_spouse_of: "was the spouse, now deceased, of",
+  holds_out_as_spouse_with: "lives with, as a spouse,",
   grandparent: "is a grandparent of", grandchild: "is a grandchild of", sibling: "is a sibling of",
-  other_relative: "is a relative of", legal_guardian: "is the legal guardian of", ward: "is the ward of",
+  other_relative: "is a relative of", relative: "is a relative of",
+  gave_birth_to: "gave birth to", born_to: "was born to",
+  legal_guardian: "is the legal guardian of", guardian: "is the guardian of", ward: "is the ward of",
   foster_parent: "is the foster parent of", foster_child: "is a foster child of",
+  caretaker: "is the caretaker of", "caretaker relative": "is the caretaker relative of", dependent: "is a dependent of",
   has_primary_responsibility_for: "has primary responsibility for", in_primary_care_of: "is in the primary care of",
   provides_regular_care_to: "gives regular care to", receives_regular_care_from: "receives regular care from",
   tax_filer: "claims as a tax dependent", tax_dependent: "is claimed as a tax dependent by",
   buys_prepares_with: "buys and prepares food with", shares_heat_with: "shares heating costs with",
+  lives_as_one_economic_unit_with: "lives as one economic unit with",
   files_jointly_with: "files taxes jointly with", sponsor: "is the sponsor (affidavit of support) of",
   sponsored_by: "is sponsored (affidavit of support) by",
 };
 
+/** A role this map does not know still reads as a sentence: "is related
+ *  (<role in words>) to". */
+function verbFor(role: string): string {
+  return RELATIONSHIP_VERB[role] ?? `is related (${role.replace(/_/g, " ")}) to`;
+}
+
 /** "Person 1 files taxes jointly with Person 2". */
 export function relationshipSentence(e: Edge): string {
-  const verb = SENTENCE[e.role] ?? `is the ${e.role.replace(/_/g, " ")} of`;
-  return `${personLabel(e.from)} ${verb} ${personLabel(e.to)}`;
+  return `${personLabel(e.from)} ${verbFor(e.role)} ${personLabel(e.to)}`;
+}
+
+/** The same from the first person's side, without naming them: "gave birth
+ *  to Person 5", "a parent of Person 3". */
+export function relationshipPhrase(role: string, other: string): string {
+  return `${verbFor(role).replace(/^is /, "")} ${personLabel(other)}`;
 }
 
 /** A family role from the person's side, and its inverse. */

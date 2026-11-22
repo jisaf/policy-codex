@@ -263,7 +263,7 @@ describe("the walkthrough page", () => {
     const why = host.querySelector("ol.stepper li.step.why")!;
     expect(why.textContent).toContain("This is why");
     const cite = host.querySelector("ol.stepper a[data-cite]")!;
-    expect(cite.getAttribute("href")).toMatch(/#\/co\/source\/S\d+.*excerpt=S\d+/);
+    expect(cite.getAttribute("href")).toMatch(/#\/co\/law\/sources\/S\d+.*excerpt=S\d+/);
     expect(host.querySelector(".wk-answer")!.textContent).toContain("Statute over rule");
     const print = host.querySelector(".wk-printhead")!;
     expect(print.textContent).toContain("Determination date (as of)");

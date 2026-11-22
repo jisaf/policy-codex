@@ -205,7 +205,7 @@ describe("OutcomesView", () => {
     expect(text).toContain("Usually paid from");
     expect(card.querySelector('a[href*="/item/"]')).toBeTruthy();
     expect(card.querySelector('a[href*="excerpt="]')).toBeTruthy();
-    expect(card.querySelector('a[href*="/walkthrough/"]')).toBeTruthy();
+    expect(card.querySelector('a[href*="/households/"]')).toBeTruthy();
     // Only Medicaid codes on the Medicaid page.
     for (const c of host.querySelectorAll(".codecard")) expect(c.getAttribute("data-code")).toMatch(/^PH-(MA|MSP|RHCP|OAP)/);
   });
@@ -218,7 +218,8 @@ describe("OutcomesView", () => {
     const hc = vol.cases.find((c) => c.id === "CO-01")!;
     expect(table.querySelectorAll("tbody tr").length).toBe(Object.keys(hc.persons).length);
     expect(table.querySelectorAll("thead th").length).toBe(codePrograms(engine, map).length + 1);
-    expect(table.querySelector('a[href*="/walkthrough/CO-01?person=p1"]')).toBeTruthy();
+    // Each cell opens the person's determination: households/<case>/<person>/<outcome>.
+    expect(table.querySelector('a[href*="/households/CO-01/p1/"]')).toBeTruthy();
     expect(host.textContent).toContain("this person does not");
   });
 });
@@ -248,9 +249,9 @@ describe("phase 13 retest fixes: the household grid", () => {
     const snap = host.querySelector('tr[data-person="p2"] td[data-prog="SNAP"]')!;
     expect(snap.querySelector(".amount")!.textContent).toMatch(/\$/);
     const fp = [...host.querySelectorAll('tr[data-person="p2"] td[data-prog="Medicaid"] .held a')]
-      .map((a) => decodeURIComponent(a.getAttribute("href")!)).find((h) => h.includes("/walkthrough/"))!;
+      .map((a) => decodeURIComponent(a.getAttribute("href")!)).find((h) => h.includes("/households/CO-01/p2/"))!;
     const pp = householdCodes(engine, map, kase("CO-01")).find((r) => r.person === "p2")!.programs.find((x) => x.program === "Medicaid")!;
-    expect(fp).toContain(`outcome=${cellOutcome(pp)}`);
+    expect(fp).toContain(`/households/CO-01/p2/${cellOutcome(pp)}`);
     // Relationship sentences read as English.
     expect(host.querySelector(".family")?.textContent ?? "").not.toMatch(/ of of | is the files /);
   });

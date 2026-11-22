@@ -160,9 +160,9 @@ describe("Rich popover, one trace per kind of token", () => {
     const pop = await open(host, "button.tok.source");
     expect(pop.textContent).toContain("42 U.S.C. 1396a");
     expect(pop.textContent).toContain("the term applicable individual");
-    expect(action(pop, "Open definition").getAttribute("href")).toBe("#/mwr/source/S1");
+    expect(action(pop, "Open definition").getAttribute("href")).toBe("#/mwr/law/sources/S1");
     expect(action(pop, "Trace to source").getAttribute("href"))
-      .toBe("#/mwr/document/D-1?excerpt=S1");
+      .toBe("#/mwr/law/doc/D-1?at=S1");
     const external = action(pop, "https://www.law.cornell.edu/uscode/text/42/1396a");
     expect(external.getAttribute("target")).toBe("_blank");
   });
@@ -170,7 +170,7 @@ describe("Rich popover, one trace per kind of token", () => {
   it("traces an excerpt with no document to its own page", async () => {
     const host = show(<Tok text="S2" cls="source" engine={engine} vol={vol} />);
     const pop = await open(host, "button.tok.source");
-    expect(action(pop, "Trace to source").getAttribute("href")).toBe("#/mwr/source/S2");
+    expect(action(pop, "Trace to source").getAttribute("href")).toBe("#/mwr/law/sources/S2");
   });
 
   it("traces a pattern phrase to the pattern catalog", async () => {

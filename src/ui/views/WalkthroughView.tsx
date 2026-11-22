@@ -1,3 +1,4 @@
+import { documentsStillNeeded, isPastDue } from "../counts";
 import "./walkthrough.css";
 import { useSignal } from "@preact/signals";
 import { useEffect, useMemo } from "preact/hooks";
@@ -19,7 +20,7 @@ import {
 } from "../state";
 import {
   BUDGET_ROLE_LABEL, budgetEffect, budgetMoney, budgetRows, budgetText, buildWalk, caseChanges, caseFocus,
-  caseSummaries, defaultOutcome, defaultProgram, determinationDate, documentRows, documentsOwed, foldedBehind,
+  caseSummaries, defaultOutcome, defaultProgram, determinationDate, foldedBehind,
   isHouseholdOutcome, lineSources, overrideNotes, outcomeChoices, participationOutcome, personTitle, programLabel,
   recordedValue, takenLabel, unchangedCount, versionUsed, visibleSteps, type BudgetRow, type DocumentRow,
   type OutcomeChoice, type Walk, type WalkStep,
@@ -120,7 +121,7 @@ function QuestionLinks({ ctx, ids }: { ctx: ViewContext; ids: readonly string[] 
 
 // ---- the case list
 
-function CaseList({ ctx }: { ctx: ViewContext }) {
+export function CaseList({ ctx }: { ctx: ViewContext }) {
   const { engine, vol, route: r } = ctx;
   const all = useMemo(() => caseSummaries(engine, vol.cases, vol.casesText), [engine, vol]);
   const programs = [...new Set(all.flatMap((c) => c.programs))]
@@ -827,15 +828,15 @@ function WhatChanges(
 
 // ---- documents
 
-function DocumentsChecklist({ ctx, hc, person }: { ctx: ViewContext; hc: HouseholdCase; person: string }) {
+export function DocumentsChecklist({ ctx, hc, person }: { ctx: ViewContext; hc: HouseholdCase; person: string }) {
   const { engine } = ctx;
-  const docs = useMemo(() => documentsOwed(engine, hc), [engine, hc]);
+  // The App's computed due dates, the one definition (counts.ts).
+  const needed = useMemo(() => documentsStillNeeded(engine, hc), [engine, hc]);
   const ticked = useSignal<Set<string>>(new Set());
-  const owed = docs.filter((d) => d.applies);
-  const notOwed = docs.filter((d) => !d.applies);
+  const notOwed = needed.notOwed;
   // One row per document; mine first, then the rest of the household.
   const order = (d: DocumentRow) => (d.person === person ? 0 : 1);
-  const rows = documentRows(owed).sort((a, b) => order(a) - order(b) || a.person.localeCompare(b.person));
+  const rows = [...needed.rows].sort((a, b) => order(a) - order(b) || a.person.localeCompare(b.person));
   return (
     <details class="wk-docs-block" open={rows.length > 0}>
       <summary>
@@ -876,8 +877,8 @@ function DocumentsChecklist({ ctx, hc, person }: { ctx: ViewContext; hc: Househo
                           {d.programs.map((p) => {
                             const it = engine.item(p.identifier);
                             const dueIt = p.dueIdentifier ? engine.item(p.dueIdentifier) : undefined;
-                            const past = p.due !== null && p.due < hc.as_of;
-                            const pastToday = p.due !== null && p.due < ctx.today;
+                            const past = isPastDue(p.due, hc.as_of);
+                            const pastToday = isPastDue(p.due, ctx.today);
                             return (
                               <li key={p.program} data-program={p.program}>
                                 {it ? <a href={itemHref(ctx.route, it)}>{programLabel(p.program)}</a> : programLabel(p.program)}:{" "}

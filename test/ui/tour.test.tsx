@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render } from "preact";
 import { startTour, Tour, tourOpenSig, TOUR_KEY } from "../../src/ui/Tour";
-import { StartView } from "../../src/ui/StartView";
+import { DeskPage } from "../../src/ui/places/DeskPage";
 import { defaultRoute, parseHash } from "../../src/ui/router";
 import { engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { ItemView } from "../../src/ui/ItemView";
@@ -26,45 +26,45 @@ describe("Tour", () => {
   beforeEach(() => {
     try { localStorage.removeItem(TOUR_KEY); } catch { /* ignore */ }
     tourOpenSig.value = false;
-    route.value = { ...defaultRoute(), view: "start" };
-    location.hash = "#/mwr/start";
+    route.value = { ...defaultRoute(), view: "desk" };
+    location.hash = "#/mwr/desk";
   });
 
   it("renders nothing until started", () => {
     expect(show().textContent).toBe("");
   });
 
-  it("walks Programs, Medicaid, Cases, C-01, the outcome, then tokens, the card, the trace, the record, and the editor switch, ten steps, without leaving the start view for step 1", async () => {
+  it("walks the sidebar, Medicaid, Households, C-01, the outcome, then tokens, the card, the trace, the record, and the editor switch, ten steps, without leaving the Desk for step 1", async () => {
     startTour();
     const host = show();
     await tick();
     expect(host.textContent).toContain("Step 1 of 10");
-    // MAJOR fix: the first step must not navigate away from the start view.
-    expect(location.hash).toBe("#/mwr/start");
+    // MAJOR fix: the first step must not navigate away from the first page.
+    expect(location.hash).toBe("#/mwr/desk");
 
     const next = () => (host.querySelector("button.tour-next") as HTMLButtonElement).click();
 
     next();
     await tick();
     expect(host.textContent).toContain("Step 2 of 10");
-    expect(location.hash).toBe("#/mwr/program/Medicaid");
+    expect(location.hash).toBe("#/mwr/programs/Medicaid");
 
     next();
     await tick();
     expect(host.textContent).toContain("Step 3 of 10");
-    expect(location.hash).toBe("#/mwr/cases");
+    expect(location.hash).toBe("#/mwr/households");
 
     next();
     await tick();
     expect(host.textContent).toContain("Step 4 of 10");
-    expect(location.hash).toBe("#/mwr/cases/C-01");
+    expect(location.hash).toBe("#/mwr/households/C-01?tab=states");
 
     next();
     await tick();
     expect(host.textContent).toContain("Step 5 of 10");
     // A real interaction (clicking the outcome), not a further navigation:
     // the hash stays on the case just opened.
-    expect(location.hash).toBe("#/mwr/cases/C-01");
+    expect(location.hash).toBe("#/mwr/households/C-01?tab=states");
 
     next();
     await tick();
@@ -112,20 +112,24 @@ describe("Tour", () => {
     expect(localStorage.getItem(TOUR_KEY)).toBe("1");
   });
 
-  it("first visit at '#/' renders the four doors with the tour open", async () => {
+  it("a first visit opens the tour over the Desk's role doors", async () => {
+    engineSig.value = createEngine(ledger.items as unknown as Item[], ledger.meta as unknown as VolumeMeta, refs);
+    volumeSig.value = {
+      volumeId: "mwr", title: "t", path: "volumes/mwr", ref: "main", sha: null, meta: ledger.meta,
+      items: ledger.items, sources: [], openQuestions: [], cases: [], documents: [], chapterOf: {},
+    } as unknown as LoadedVolume;
     const host = document.createElement("div");
     render(
       <>
-        <StartView />
+        <DeskPage />
         <Tour />
       </>,
       host,
     );
     await tick();
     expect(tourOpenSig.value).toBe(true);
-    expect(host.querySelectorAll(".doors.classic .door").length).toBe(4);
     expect(host.querySelectorAll(".doors.roles .door").length).toBe(6);
-    expect(location.hash).toBe("#/mwr/start");
+    expect(location.hash).toBe("#/mwr/desk");
   });
 });
 

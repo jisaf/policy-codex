@@ -4,8 +4,8 @@ import type { HouseholdCase } from "../../engine/cases";
 import type { ChangeEntry } from "../../changes/types";
 import type { DocumentMeta } from "../../ledger/documents";
 import {
-  changedBy, changedPhrase, departureItems, departureSince, documentEffective, householdCount, ownerGroups,
-  personaQuestions, restingIndex, restingPhrase, restingReady,
+  awaitingSignOff, changedBy, changedPhrase, departureItems, departureSince, documentsTakingEffect, householdCount,
+  COUNT_DEFINITIONS, ownedQuestions, ownerGroups, personaQuestions, restingIndex, restingPhrase, restingReady,
 } from "../counts";
 import type { ChangedResult, StoredResult } from "../questionEffects";
 import type { Engine } from "../../engine/engine";
@@ -16,7 +16,7 @@ import { personaById, personaRoles, PERSONAS, type Persona } from "../personas";
 import { formatDate, formatValue, optionLabel, personLabel } from "../present";
 import { noVersionReason, Value } from "../Present";
 import {
-  addYears, awaitingByRole, changesBetween, defaultSince, figuresInForce, firstSentence,
+  addYears, changesBetween, defaultSince, figuresInForce, firstSentence,
   programLabel, roleOutcomes, rolePrograms, signOffCounts,
   type ChangeEvent, type Figure,
 } from "../roles";
@@ -67,7 +67,7 @@ function setParam(r: Route, key: string, value: string | null): void {
   navigate({ params });
 }
 
-function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
+export function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
   const { engine, vol, route: r, today } = ctx;
   const programs = rolePrograms(engine, persona);
   const roles = personaRoles(persona, engine.meta);
@@ -88,7 +88,8 @@ function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
     document.getElementById(`role-${show}`)?.scrollIntoView?.({ block: "start" });
   }, [show, persona.id]);
   const ownsQuestions = roles.length > 0;
-  const totalWaiting = waitingOnAny(engine, roles);
+  const totalWaiting = awaitingSignOff(engine, roles).length;
+  const owned = ownedQuestions(engine, vol.sources, vol.openQuestions, persona);
   const totalSignOffs = signOff.reduce((n, x) => n + x.waiting, 0);
   return (
     <div class="persona" data-persona={persona.id}>
@@ -124,12 +125,16 @@ function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
         )}
         <li class="countcard">
           <a href={buildHash({ ...r, view: "questions", arg: null, params: { persona: persona.id } })}>
-            <span class="num">{questions.length}</span>{" "}
-            {ownsQuestions ? "open questions one of your roles answers" : "open questions across the programs"}
+            <span class="num">{owned.open.length}</span>{" "}
+            {ownsQuestions ? "open questions you own" : "open questions in your programs"}
           </a>
+          {owned.partly.length > 0 && (
+            <small class="muted partly">and {owned.partly.length} partly settled (some part answered, some still open)</small>
+          )}
+          {ownsQuestions && <small class="muted">{COUNT_DEFINITIONS.owns}</small>}
           {qGroups.length > 1 && (
             <>
-              <small class="muted">By the role each is filed under (the role that answers first); these add up.</small>
+              <small class="muted">Open and partly settled, by the role each is filed under (the first role its Owner line names); these add up to {questions.length}.</small>
               <ul>
                 {qGroups.map((g) => (
                   <li key={g.owner}>
@@ -186,14 +191,6 @@ function RoleHome({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
       </section>
     </div>
   );
-}
-
-/** Items waiting on at least one of the roles, each counted once. */
-function waitingOnAny(engine: Engine, roles: string[]): number {
-  const by = awaitingByRole(engine);
-  const ids = new Set<string>();
-  for (const role of roles) for (const it of by.get(role) ?? []) ids.add(it.id);
-  return ids.size;
 }
 
 function addDay(d: string): string {
@@ -282,7 +279,7 @@ const KIND_TEXT: Record<ChangeEvent["kind"], string> = {
 
 /** The stored results resting on each item, worked out after the page has
  *  painted (counts.ts `restingIndex`), shared by the lists below. */
-function useResting(engine: Engine, cases: readonly HouseholdCase[]): Map<string, StoredResult[]> | null {
+export function useResting(engine: Engine, cases: readonly HouseholdCase[]): Map<string, StoredResult[]> | null {
   const ready = restingReady(engine, cases);
   const out = useSignal<Map<string, StoredResult[]> | null>(ready ? restingIndex(engine, cases) : null);
   useEffect(() => {
@@ -309,7 +306,7 @@ export function undoEntry(e: ChangeEvent, chapter: string): ChangeEntry | null {
 
 /** Works out, one event at a time after the page paints, which stored results
  *  each dated figure change moves. */
-function useWorkedOut(engine: Engine, cases: readonly HouseholdCase[], chapterOf: Record<string, string>, events: ChangeEvent[]) {
+export function useWorkedOut(engine: Engine, cases: readonly HouseholdCase[], chapterOf: Record<string, string>, events: ChangeEvent[]) {
   const done = useSignal<Map<string, ChangedResult[]>>(new Map());
   const key = events.map((e) => `${e.item.id}@${e.date}`).join(",");
   useEffect(() => {
@@ -333,27 +330,8 @@ function useWorkedOut(engine: Engine, cases: readonly HouseholdCase[], chapterOf
   return done.value;
 }
 
-/** Documents whose rule text takes effect in [from, to], cited by an item in
- *  the programs (the county supervisor's "the LEAP rule amendment"). */
-export function documentsTakingEffect(
-  engine: Engine, docs: readonly DocumentMeta[], sources: ReadonlyArray<{ id: string; document?: string }>,
-  programs: readonly string[], from: string, to: string,
-): Array<{ doc: DocumentMeta; date: string; programs: string[] }> {
-  const progs = new Set(programs);
-  const out: Array<{ doc: DocumentMeta; date: string; programs: string[] }> = [];
-  for (const d of docs) {
-    const date = documentEffective(d);
-    if (!date || date < from || date > to) continue;
-    const excerpts = new Set(sources.filter((s) => s.document === d.id).map((s) => s.id));
-    const ps = new Set<string>();
-    for (const it of engine.items()) {
-      if (!(it.sources ?? []).some((x) => excerpts.has(x)) && !(it.versions ?? []).some((v) => v.source && excerpts.has(v.source))) continue;
-      if (progs.has(it.program)) ps.add(it.program);
-    }
-    if (ps.size) out.push({ doc: d, date, programs: [...ps] });
-  }
-  return out.sort((a, b) => b.date.localeCompare(a.date));
-}
+/** Rule documents taking effect (counts.ts, the one definition). */
+export { documentsTakingEffect } from "../counts";
 
 function Changes(
   { ctx, programs, since, asOf, upcoming, persona }:
@@ -408,7 +386,7 @@ function tableDiff(a: unknown, b: unknown): number | null {
   return n;
 }
 
-function DocList({ ctx, docs }: { ctx: ViewContext; docs: ReturnType<typeof documentsTakingEffect> }) {
+export function DocList({ ctx, docs }: { ctx: ViewContext; docs: ReturnType<typeof documentsTakingEffect> }) {
   const { route: r } = ctx;
   if (!docs.length) return null;
   return (
@@ -426,7 +404,7 @@ function DocList({ ctx, docs }: { ctx: ViewContext; docs: ReturnType<typeof docu
   );
 }
 
-function ChangeList(
+export function ChangeList(
   { ctx, events, empty, resting, worked }:
   {
     ctx: ViewContext; events: ChangeEvent[]; empty: string;
@@ -561,7 +539,7 @@ function Figures({ ctx, programs, asOf }: { ctx: ViewContext; programs: string[]
   );
 }
 
-function FigureRow(
+export function FigureRow(
   { ctx, figure, asOf, staged, base }:
   { ctx: ViewContext; figure: Figure; asOf: string; staged: Engine | null; base: Engine },
 ) {
@@ -652,7 +630,7 @@ function StagedChange(
 
 // -------------------------------------------------------------- departures
 
-function Departures({ ctx, items }: { ctx: ViewContext; items: Item[] }) {
+export function Departures({ ctx, items }: { ctx: ViewContext; items: Item[] }) {
   const { vol, route: r } = ctx;
   if (!items.length) {
     return <p class="muted">No item in your programs records a statute governing over the Colorado rule text.</p>;

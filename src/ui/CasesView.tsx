@@ -1,3 +1,4 @@
+import { relationshipPhrase, relationshipSentence } from "./people";
 import { useSignal } from "@preact/signals";
 import type { Engine } from "../engine/engine";
 import {
@@ -200,7 +201,7 @@ function FactRows(
 }
 
 function CasePage(
-  { engine, hc, route: r }: { engine: Engine; hc: HouseholdCase; route: Route },
+  { engine, hc, route: r, embedded = false }: { engine: Engine; hc: HouseholdCase; route: Route; embedded?: boolean },
 ) {
   const open = useSignal<string | null>(null);
   const report = engine.runCase(hc);
@@ -210,16 +211,19 @@ function CasePage(
   return (
     <section class="view case">
       <div class="cardhead">
-        <h1>{hc.title}</h1>
+        {/* Inside the household's page the page heading names it already. */}
+        {!embedded && <h1>{hc.title}</h1>}
         <span class="tag">{hc.id}</span>
         <span class="tag">as of {hc.as_of}</span>
         <span class={report.failed ? "tag bad" : "tag ok"}>
           {report.passed}/{report.passed + report.failed} expectations met
         </span>
         <span class="spacer" />
-        <a class="btn" href={buildHash({ ...r, view: "cases", arg: null, params: {} })}>
-          All cases
-        </a>
+        {!embedded && (
+          <a class="btn" href={buildHash({ ...r, view: "cases", arg: null, params: {} })}>
+            All cases
+          </a>
+        )}
       </div>
 
       {parameters.length > 0 && (
@@ -238,8 +242,7 @@ function CasePage(
       {(hc.relationships ?? []).length > 0 && (
         <p class="family">
           <b>Household:</b>{" "}
-          {(hc.relationships ?? []).map(([role, from, to]) =>
-            `${personLabel(from)} is the ${role.replace(/_/g, " ")} of ${personLabel(to)}`).join("; ")}
+          {(hc.relationships ?? []).map(([role, from, to]) => relationshipSentence({ role, from, to })).join("; ")}
         </p>
       )}
 
@@ -258,11 +261,11 @@ function CasePage(
             {(() => {
               // The person's own pairs plus the case-level edges that name
               // them (caseworker S7: the case-level edges were not shown).
-              const own = (person.relationships ?? []).map((rel) => `${rel[0].replace(/_/g, " ")} of ${personLabel(rel[1])}`);
+              const own = (person.relationships ?? []).map((rel) => relationshipPhrase(rel[0], rel[1]));
               const edges = (hc.relationships ?? []).filter(([, from, to]) => from === pid || to === pid)
                 .map(([role, from, to]) => (from === pid
-                  ? `${role.replace(/_/g, " ")} of ${personLabel(to)}`
-                  : `${personLabel(from)} is their ${role.replace(/_/g, " ")}`));
+                  ? relationshipPhrase(role, to)
+                  : relationshipSentence({ role, from, to })));
               const all = [...own, ...edges];
               return all.length ? all.join(", ") : "none stated";
             })()}
@@ -677,7 +680,9 @@ function NewHousehold(
   );
 }
 
-export function CasesView() {
+/** `embedded`: shown as a tab of the household's page (What the case
+ *  states), which carries the household's title itself. */
+export function CasesView({ embedded = false }: { embedded?: boolean } = {}) {
   const engine = viewEngine() ?? engineSig.value;
   const vol = volumeSig.value;
   const r = route.value;
@@ -687,7 +692,7 @@ export function CasesView() {
   if (r.arg) {
     const hc = cases.find((c) => c.id === r.arg);
     if (!hc) return <p class="status bad">No case {r.arg} in this volume.</p>;
-    return <CasePage engine={engine} hc={hc} route={r} />;
+    return <CasePage engine={engine} hc={hc} route={r} embedded={embedded} />;
   }
   return <CaseList engine={engine} cases={cases} route={r} />;
 }

@@ -143,7 +143,7 @@ describe("ItemView", () => {
     const docLink = [...record.querySelectorAll("a")].find(
       (a) => a.textContent === "State plans for medical assistance",
     ) as HTMLAnchorElement;
-    expect(docLink.getAttribute("href")).toBe("#/mwr/document/D-1?excerpt=S1");
+    expect(docLink.getAttribute("href")).toBe("#/mwr/law/doc/D-1?at=S1");
   });
 
   it("makes an excerpt id in the decision record a token", () => {

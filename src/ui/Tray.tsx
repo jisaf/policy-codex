@@ -12,10 +12,23 @@ import {
   volumeSig,
 } from "./state";
 
+/** The change tray as an overlay sheet, opened from the editor and the
+ *  proposal page. */
 export function Tray() {
+  if (!trayOpenSig.value) return null;
+  return (
+    <div class="overlay" onClick={(e) => { if (e.target === e.currentTarget) trayOpenSig.value = false; }}>
+      <TrayPanel />
+    </div>
+  );
+}
+
+/** The tray's content: the staged entries, their effect, sending and
+ *  proposing. `inline` renders it as a page section (Changes > My proposal)
+ *  instead of the overlay's sheet. */
+export function TrayPanel({ inline = false }: { inline?: boolean }) {
   const busy = useSignal(false);
   const error = useSignal("");
-  if (!trayOpenSig.value) return null;
 
   const cs = changeSetSig.value;
   const report = reportSig.value;
@@ -69,16 +82,15 @@ export function Tray() {
   };
 
   return (
-    <div class="overlay" onClick={(e) => { if (e.target === e.currentTarget) trayOpenSig.value = false; }}>
-      <div class="sheet tray">
+      <div class={inline ? "tray inline" : "sheet tray"}>
         <div class="cardhead">
-          <h2>Change tray</h2>
+          <h2>{inline ? "What your proposal holds" : "Change tray"}</h2>
           <span class="tag">{cs.volume} @ {cs.baseRef}</span>
           <span class="spacer" />
           <button class="btn" onClick={() => { trayOpenSig.value = false; openEditor(null); }}>
             New item
           </button>
-          <button class="btn" onClick={() => { trayOpenSig.value = false; }}>Close</button>
+          {!inline && <button class="btn" onClick={() => { trayOpenSig.value = false; }}>Close</button>}
         </div>
 
         {cs.entries.length === 0 && files.length === 0 && (
@@ -179,6 +191,5 @@ export function Tray() {
           {error.value && <span class="bad">{error.value}</span>}
         </div>
       </div>
-    </div>
   );
 }

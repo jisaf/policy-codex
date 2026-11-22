@@ -13,12 +13,13 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   await page.getByRole("button", { name: "Turn on edit mode" }).click();
   await expect(page.getByRole("button", { name: "Turn off edit mode" })).toBeVisible();
 
-  // Search finds an item by id and opens it on Enter. ("age" also ranks
-  // OQ-1 "Age during a month" first by title-hit proximity, so the id
-  // itself is the deterministic query.)
-  const search = page.getByPlaceholder("Search items, sources, questions");
+  // Search: Enter opens the results page, grouped by type, never the first
+  // hit; the item is one click from there.
+  const search = page.getByPlaceholder("Search rules, figures, questions, households");
   await search.fill("wr-003");
   await search.press("Enter");
+  await expect(page).toHaveURL(/#\/mwr\/search\?q=wr-003$/);
+  await page.locator('section.group[data-group="rule"] a[href="#/mwr/item/WR-003"]').click();
   await expect(page).toHaveURL(/#\/mwr\/item\/WR-003/);
   await expect(page.getByRole("heading", { name: "Age" })).toBeVisible();
 
@@ -64,23 +65,24 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   await expect(page.locator("pre.hl")).toContainText("(smoke)");
   await page.getByRole("button", { name: "Save to tray" }).click();
 
-  // The tray count reflects the entry.
-  const tray = page.getByRole("button", { name: /Tray \(1\)/ });
-  await expect(tray).toBeVisible();
-  await tray.click();
+  // Reader URL never changed while editing.
+  await expect(page).toHaveURL(/#\/mwr\/item\/WR-003$/);
+
+  // The proposal pill counts the entry and opens My proposal.
+  const pill = page.locator("a.proposal-pill");
+  await expect(pill).toHaveText("Your proposal 1");
+  await pill.click();
+  await expect(page).toHaveURL(/#\/mwr\/changes\/proposal$/);
   await expect(page.getByRole("link", { name: "WR-003 Age" })).toBeVisible();
 
   // WR-003 has no cited sources, so the tray shows it as invalid and Propose
   // stays disabled (RULING A28: Save to tray always works; Propose does not).
   await expect(
-    page.locator(".sheet.tray").getByText("At least one source excerpt is cited"),
+    page.locator(".tray.inline").getByText("At least one source excerpt is cited"),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Propose" })).toBeDisabled();
 
   // Discard returns the tray to empty.
   await page.getByRole("button", { name: "Discard all" }).click();
-  await expect(page.getByRole("button", { name: /Tray \(0\)/ })).toBeVisible();
-
-  // Reader URL never changed while editing.
-  await expect(page).toHaveURL(/#\/mwr\/item\/WR-003$/);
+  await expect(pill).toHaveText("No proposal");
 });

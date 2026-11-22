@@ -2,17 +2,32 @@ import type { Engine } from "../engine/engine";
 import { tagAncestors, tagLabel } from "../engine/tags";
 import type { LoadedVolume } from "../ledger/load";
 import { questionStatus } from "./questions";
+import { plainCaseTitle } from "./walkthrough";
 import { buildHash, type Route } from "./router";
 
 /** "question" is a question still open (or partly resolved); "resolved" a
  *  settled one, kept apart so a reader looking for what is undecided does
- *  not wade through history (HCPF analyst F16). */
-export type HitKind = "item" | "source" | "question" | "resolved";
+ *  not wade through history (HCPF analyst F16). "household" is a stored test
+ *  household; "document" a whole source document. */
+export type HitKind = "item" | "source" | "question" | "resolved" | "household" | "document";
 
-export const HIT_KINDS: readonly HitKind[] = ["item", "source", "question", "resolved"];
+export const HIT_KINDS: readonly HitKind[] = ["item", "source", "question", "resolved", "household", "document"];
 
 export const HIT_KIND_LABEL: Record<HitKind, string> = {
   item: "Items", source: "Sources", question: "Open questions", resolved: "Resolved questions",
+  household: "Households", document: "Documents",
+};
+
+/** The groups of the search results page (docs/design-unified-ui.md:
+ *  "a results page grouped by type"), in the order shown: an item is a rule,
+ *  a figure or a fact; excerpts and whole documents are both the law's text. */
+export type ResultGroup = "rule" | "figure" | "fact" | "question" | "household" | "document" | "resolved";
+
+export const RESULT_GROUPS: readonly ResultGroup[] = ["rule", "figure", "fact", "question", "household", "document", "resolved"];
+
+export const RESULT_GROUP_LABEL: Record<ResultGroup, string> = {
+  rule: "Rules", figure: "Figures", fact: "Facts", question: "Open questions", household: "Households",
+  document: "Documents and excerpts", resolved: "Settled questions",
 };
 
 export interface SearchEntry {
@@ -27,6 +42,8 @@ export interface SearchEntry {
   primary: string;
   /** An item's program, so a reader's own programs rank first. */
   program?: string;
+  /** The group the results page lists it under. */
+  group: ResultGroup;
 }
 
 export interface SearchOptions {
@@ -96,6 +113,7 @@ export function buildSearchIndex(vol: LoadedVolume, engine: Engine): SearchIndex
       ].join(" ").toLowerCase()),
       primary: withAliases(`${primary} ${override.toLowerCase()}`),
       program: it.program,
+      group: it.kind === "parameter" ? "figure" : it.kind === "supplied" ? "fact" : "rule",
     });
   }
   for (const s of vol.sources) {
@@ -103,15 +121,38 @@ export function buildSearchIndex(vol: LoadedVolume, engine: Engine): SearchIndex
       kind: "source", id: s.id, title: `${s.id}. ${s.title}`, subtitle: s.citation,
       haystack: withAliases([s.id, s.title, s.citation, s.text].join(" ").toLowerCase()),
       primary: withAliases(`${s.title} ${s.citation}`.toLowerCase()),
+      group: "document",
     });
   }
   for (const q of vol.openQuestions) {
+    const resolved = questionStatus(q) === "resolved";
     entries.push({
-      kind: questionStatus(q) === "resolved" ? "resolved" : "question",
+      kind: resolved ? "resolved" : "question",
       id: q.id, title: `${q.id} ${q.title}`,
       subtitle: q.items.join(", "),
       haystack: withAliases([q.id, q.title, q.body].join(" ").toLowerCase()),
       primary: withAliases(q.title.toLowerCase()),
+      group: resolved ? "resolved" : "question",
+    });
+  }
+  for (const c of vol.cases ?? []) {
+    const title = plainCaseTitle(c.title).title;
+    const people = Object.keys(c.persons ?? {}).length;
+    entries.push({
+      kind: "household", id: c.id, title,
+      subtitle: `${c.id} · ${people} ${people === 1 ? "person" : "people"} · as of ${c.as_of}`,
+      haystack: withAliases([c.id, c.title].join(" ").toLowerCase()),
+      primary: withAliases(title.toLowerCase()),
+      group: "household",
+    });
+  }
+  for (const d of vol.documents ?? []) {
+    entries.push({
+      kind: "document", id: d.id, title: d.title,
+      subtitle: `${d.id} · ${d.citation}`,
+      haystack: withAliases([d.id, d.title, d.citation].join(" ").toLowerCase()),
+      primary: withAliases(`${d.title} ${d.citation}`.toLowerCase()),
+      group: "document",
     });
   }
   return { entries };
@@ -189,13 +230,21 @@ export function search(index: SearchIndex, q: string, limit = 30, opts: SearchOp
 }
 
 export function groupHits(hits: readonly SearchHit[]): Record<HitKind, SearchHit[]> {
-  const out: Record<HitKind, SearchHit[]> = { item: [], source: [], question: [], resolved: [] };
+  const out: Record<HitKind, SearchHit[]> = { item: [], source: [], question: [], resolved: [], household: [], document: [] };
   for (const h of hits) out[h.kind].push(h);
   return out;
 }
 
-/** Where a hit goes when it is opened: an item's page, an excerpt on the
- *  Sources page, or a question's own page. */
+/** The hits by results-page group (rules, figures, facts, questions,
+ *  households, documents, settled questions), each in rank order. */
+export function groupResults(hits: readonly SearchHit[]): Record<ResultGroup, SearchHit[]> {
+  const out = Object.fromEntries(RESULT_GROUPS.map((g) => [g, [] as SearchHit[]])) as Record<ResultGroup, SearchHit[]>;
+  for (const h of hits) out[h.group].push(h);
+  return out;
+}
+
+/** Where a hit goes when it is opened: its canonical page (an item, an
+ *  excerpt in Law, a question, a household, a document). */
 export function hitHash(hit: SearchHit, route: Route): string {
   if (hit.kind === "item") {
     return buildHash({ ...route, view: "item", arg: hit.id, params: {} });
@@ -203,5 +252,22 @@ export function hitHash(hit: SearchHit, route: Route): string {
   if (hit.kind === "source") {
     return buildHash({ ...route, view: "source", arg: hit.id, params: {} });
   }
+  if (hit.kind === "household") return buildHash({ ...route, view: "households", arg: hit.id, params: {} });
+  if (hit.kind === "document") return buildHash({ ...route, view: "law", arg: `doc/${hit.id}`, params: {} });
   return buildHash({ ...route, view: "questions", arg: hit.id, params: {} });
+}
+
+/** Whether every word of a filter is in the text, at the start of a word and
+ *  in any order (word match, not phrase match: "children income limit"
+ *  finds "Income limit for children"). The one filter rule the pages use. */
+export function wordsMatch(text: string, query: string): boolean {
+  const terms = queryTerms(query.trim().toLowerCase());
+  if (!terms.length) return true;
+  const hay = text.toLowerCase();
+  return terms.every((t) => t.re.test(hay));
+}
+
+/** The address of the search results page for a query. */
+export function searchHash(route: Route, q: string): string {
+  return buildHash({ ...route, view: "search", arg: null, params: { q: q.trim() } });
 }

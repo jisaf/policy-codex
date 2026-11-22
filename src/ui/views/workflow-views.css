@@ -49,8 +49,15 @@ details.aidwarn { margin: 6px 0; font-size: 13px; }
 /* by outcome: household view */
 .hhwrap { overflow-x: auto; max-width: 100%; }
 table.household caption { caption-side: top; text-align: left; font-size: 12px; padding: 4px 0; }
-table.household th[scope="row"] { white-space: nowrap; }
-table.household td { min-width: 120px; font-size: 13px; }
+/* Fits 1280px beside the sidebar (the evaluators found the Child care
+ * column cut off): fixed columns that share the width, text that wraps. */
+table.household { table-layout: fixed; width: 100%; }
+table.household thead th { font-size: 12px; overflow-wrap: anywhere; vertical-align: bottom; }
+table.household thead th:first-child { width: 10em; }
+table.household th[scope="row"] { white-space: normal; overflow-wrap: anywhere; font-size: 13px; }
+table.household td { min-width: 0; font-size: 12px; overflow-wrap: anywhere; padding: 4px 5px; }
+table.household .codechip { white-space: normal; overflow-wrap: anywhere; }
+table.household .codechip.placeholder::after { content: none; }
 table.household .held { margin-bottom: 3px; }
 table.household .held a { text-decoration: none; }
 table.household .held a:hover { text-decoration: underline; }

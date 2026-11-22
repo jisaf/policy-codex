@@ -13,7 +13,7 @@ import { personaById, personaRoles, PERSONAS } from "../../src/ui/personas";
 import { isOpen, questionInfos } from "../../src/ui/questions";
 import {
   casesReading, changesBetween, defaultSince, departures, figuresInForce, firstSentence,
-  questionCounts, roleOutcomes, rolePrograms, signOffCounts, stagedCaseChanges,
+  ownedQuestions, roleOutcomes, rolePrograms, signOffCounts, stagedCaseChanges,
 } from "../../src/ui/roles";
 import { changeSetSig, draftsShownSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
@@ -66,12 +66,13 @@ describe("counts", () => {
     expect(snap.waiting).toBe(awaitingRole(engine, "SNAP policy owner").length);
   });
 
-  it("counts the open questions on the persona's programs; Legal's are those its signature covers", () => {
+  it("counts the questions a persona owns by the Owner line, open and partly settled apart", () => {
     const all = questionInfos(engine, vol.openQuestions).filter((q) => isOpen(q.status));
-    const cdec = questionCounts(engine, persona("cdec"), vol.openQuestions);
-    expect(cdec.open.every((q) => q.programs.includes("CCCAP"))).toBe(true);
-    expect(cdec.open.length).toBe(all.filter((q) => q.programs.includes("CCCAP")).length);
-    const legal = questionCounts(engine, persona("legal"), vol.openQuestions);
+    const cdec = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("cdec"));
+    const named = all.filter((q) => /Owner:.*Child care policy owner \(CDEC\)/.test(q.body));
+    expect(cdec.open.length + cdec.partly.length).toBe(named.length);
+    expect(cdec.open.every((q) => q.status === "open")).toBe(true);
+    const legal = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("legal"));
     expect(legal.open.length).toBeGreaterThan(0);
     expect(legal.open.length).toBeLessThan(all.length);
   });
@@ -159,7 +160,7 @@ describe("RolesView", () => {
     const host = document.createElement("div");
     render(<RolesView />, host);
     const hrefs = [...host.querySelectorAll(".countcard a")].map((a) => decodeURIComponent(a.getAttribute("href")!));
-    expect(hrefs.some((h) => h.includes("/inbox?role=SNAP policy owner") || h.includes("/inbox?role=SNAP+policy+owner"))).toBe(true);
+    expect(hrefs.some((h) => h.includes("/desk/sign?role=SNAP policy owner") || h.includes("/desk/sign?role=SNAP+policy+owner"))).toBe(true);
     expect(hrefs.some((h) => h.includes("/questions?persona=cdhs"))).toBe(true);
     expect(hrefs.some((h) => h.includes("show=departures"))).toBe(true);
     expect(host.querySelector("#role-changes")).toBeTruthy();
@@ -177,7 +178,7 @@ describe("RolesView", () => {
     const row = host.querySelector(`[data-figure="cw_earned_income_disregard_dollar"]`)!;
     expect(row.querySelector(".staged")!.textContent).toMatch(/Staged, not in force/);
     expect(row.querySelector(".staged")!.textContent).toMatch(/Cash programs policy owner/);
-    expect(row.querySelector(".staged a[href*='/walkthrough/']")).toBeTruthy();
+    expect(row.querySelector(".staged a[href*='/households/']")).toBeTruthy();
     // The rule in force still reads 90.
     expect(row.querySelector(".figvalue")!.textContent).toContain("$90.00");
   });
@@ -190,9 +191,14 @@ describe("RolesView", () => {
       const card = [...host.querySelectorAll(".countcard")].find((c) => /open questions/.test(c.textContent!))!;
       const n = Number(card.querySelector(".num")!.textContent!.replace(/,/g, ""));
       const mine = personaQuestions(engine, vol.sources, vol.openQuestions, persona(pid));
-      expect(n, pid).toBe(mine.length);
+      const owned = ownedQuestions(engine, vol.sources, vol.openQuestions, persona(pid));
+      // The number is the open questions owned; the partly settled ones are
+      // counted apart and labeled.
+      expect(n, pid).toBe(owned.open.length);
+      expect(owned.open.length + owned.partly.length, pid).toBe(mine.length);
+      if (owned.partly.length) expect(card.querySelector(".partly")!.textContent).toContain(`${owned.partly.length} partly settled`);
       const lines = [...card.querySelectorAll("li")].map((li) => Number(/: (\d+)$/.exec(li.textContent!)![1]));
-      if (lines.length) expect(lines.reduce((a, b) => a + b, 0), pid).toBe(n);
+      if (lines.length) expect(lines.reduce((a, b) => a + b, 0), pid).toBe(mine.length);
       expect(ownerGroups(engine, mine, personaRoles(persona(pid), engine.meta)).length).toBe(Math.max(lines.length, 1));
     }
   });

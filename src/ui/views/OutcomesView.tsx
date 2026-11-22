@@ -344,7 +344,7 @@ function Landings({ route: r, landed, program }: { route: Route; landed: Landing
 
 // -------------------------------------------------------------- household
 
-function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
+export function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
   const { engine, vol, route: r } = ctx;
   const cases = vol.cases;
   if (!cases.length) return <p class="status">This volume has no stored test households.</p>;

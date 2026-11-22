@@ -1,47 +1,21 @@
-import { personaById, personaSig } from "./personas";
+/* The top bar (docs/design-unified-ui.md): the menu button on a phone, the
+ * search box, the proposal pill, the edit-mode switch and help, and below it
+ * the breadcrumb trail. The places themselves are in the sidebar
+ * (Sidebar.tsx); the volume and ledger selectors sit at its foot. */
 import { useSignal } from "@preact/signals";
 import { DEFAULT_BRANCH } from "../config";
+import { fileEntries } from "../changes/types";
 import { refLabel } from "../ledger/mode";
 import { LOCAL_REF } from "../ledger/source";
-import { WORKFLOW_VIEWS } from "./views/registry";
-import { programOutcomes } from "./CasesView";
 import { toggleHelp } from "./Help";
-import { buildHash, VIEWS, type ViewName } from "./router";
-import { groupHits, HIT_KIND_LABEL, HIT_KINDS, hitHash, search } from "./search";
+import { personaById, personaSig } from "./personas";
+import { buildHash, canonicalRoute, isPrRef } from "./router";
+import { groupResults, hitHash, RESULT_GROUP_LABEL, RESULT_GROUPS, search, searchHash } from "./search";
+import { crumbsFor, navOpenSig } from "./shell";
 import {
-  baseRefOf, changeSetSig, defaultRefSig, doorSig, editingSig, engineSig, localInfoSig,
-  manifestSig, modeSig, navigate, openEditor, route, searchIndexSig, setMode, settingsOpenSig,
-  trayOpenSig, viewEngine, volumeSig,
+  baseRefOf, changeSetSig, defaultRefSig, editingSig, engineSig, localInfoSig, manifestSig, modeSig, navigate,
+  openEditor, route, searchIndexSig, setMode, settingsOpenSig, viewEngine, volumeSig,
 } from "./state";
-import { isPrRef } from "./router";
-
-interface NavItem {
-  view: ViewName;
-  label: string;
-  /** "program" is the one entry whose link target isn't just its own view:
-   *  it opens the first declared program, computed from the engine at
-   *  render time. Given the render-time `firstProgram`, this returns the
-   *  route `arg` to use; every other entry falls back to `null`. */
-  arg?: (firstProgram: string | null) => string | null;
-}
-
-// Primary: the home view (Programs) plus the two other everyday
-// destinations. The engineer door adds Handoff (see the
-// `VIEWS.includes("handoff")` check below); everything else a reader used
-// before phase 3 moved under the Browse dropdown.
-const PRIMARY: NavItem[] = [
-  { view: "program", label: "Programs", arg: (firstProgram) => firstProgram },
-  { view: "cases", label: "Cases" },
-  { view: "search", label: "Search" },
-];
-
-const BROWSE: NavItem[] = [
-  { view: "table", label: "Table" },
-  { view: "graph", label: "Graph" },
-  { view: "source", label: "Sources" },
-  { view: "documents", label: "Documents" },
-];
-
 
 /** Which ledger the app reads: the working tree a dev or preview server
  *  serves (when it does), main, the current branch, or any other branch
@@ -68,7 +42,7 @@ export function RefSelect() {
     <span class="refselect">
       {other.value ? (
         <input
-          class="ref-input" placeholder="branch name" autoFocus
+          class="ref-input" placeholder="branch name" aria-label="Branch name" autoFocus
           onKeyDown={(e) => {
             if (e.key === "Enter") go((e.target as HTMLInputElement).value);
             if (e.key === "Escape") other.value = false;
@@ -76,7 +50,8 @@ export function RefSelect() {
         />
       ) : (
         <select
-          class="ref-select" title="Which copy of the ledger to read" value={current}
+          class="ref-select" title="Which copy of the ledger to read" aria-label="Which copy of the rules to read"
+          value={current}
           onChange={(e) => {
             const v = (e.target as HTMLSelectElement).value;
             if (v === "__other") other.value = true;
@@ -91,143 +66,155 @@ export function RefSelect() {
   );
 }
 
-export function Header() {
-  const q = useSignal("");
+/** The volume this ledger shows: a selector when the manifest lists more
+ *  than one, else its title. Switching opens the volume's Desk. */
+export function VolumeSelect() {
   const r = route.value;
-  const index = searchIndexSig.value;
-  const hits = index ? search(index, q.value, 12, { programs: personaById(personaSig.value)?.programs }) : [];
-  const grouped = groupHits(hits);
-  const engine = viewEngine() ?? engineSig.value;
-  // The nav opens the first declared program; the program page itself has
-  // the switcher across every program.
-  const firstProgram = (engine ? programOutcomes(engine) : [])[0]?.id ?? null;
-
-  const primary = [...PRIMARY];
-  if (doorSig.value === "engineer" && VIEWS.includes("handoff")) {
-    primary.push({ view: "handoff", label: "Handoff" });
+  const manifest = manifestSig.value;
+  if (!manifest || manifest.volumes.length < 2) {
+    return <span class="volume">{volumeSig.value?.title ?? r.volume}</span>;
   }
+  return (
+    <select
+      class="volume-select" aria-label="Which volume to read" value={r.volume}
+      onChange={(e) => {
+        const volume = (e.target as HTMLSelectElement).value;
+        navigate({ volume, view: "desk", arg: null, params: {} });
+      }}
+    >
+      {manifest.volumes.map((v) => (
+        <option key={v.id} value={v.id}>
+          {v.title}{v.status === "draft" ? " (draft)" : ""}
+        </option>
+      ))}
+    </select>
+  );
+}
 
-  const open = (hash: string) => {
-    q.value = "";
-    location.hash = hash;
-  };
+/** How many changes the reader's proposal holds: every staged entry and
+ *  staged file (a signature and a review note included). */
+export function proposalCount(): number {
+  const cs = changeSetSig.value;
+  return cs.entries.length + fileEntries(cs).length;
+}
 
-  const startHref = buildHash({ ...r, view: "start", arg: null, params: {} });
+/** The proposal pill: always in the top bar, linking to Changes > My
+ *  proposal (Blind B's pattern). */
+export function ProposalPill() {
+  const r = route.value;
+  const n = proposalCount();
+  return (
+    <a
+      class={`proposal-pill${n ? " has" : ""}`}
+      href={buildHash({ ...r, view: "changes", arg: "proposal", params: {} })}
+      title={n ? "What your proposal holds, its effect and who must approve it" : "You have staged no change"}
+    >
+      {n ? <>Your proposal <b>{n}</b></> : "No proposal"}
+    </a>
+  );
+}
 
+/** The header search: suggestions as you type, grouped by type; Enter opens
+ *  the results page and never jumps to the first suggestion (Enter opened
+ *  "AND-SO grant standard" for a Colorado Works query). */
+export function SearchBox() {
+  const r = route.value;
+  const q = useSignal(r.view === "search" ? r.params.q ?? "" : "");
+  const open = useSignal(false);
+  const index = searchIndexSig.value;
+  const programs = personaById(personaSig.value)?.programs;
+  const hits = index && open.value ? search(index, q.value, 10, { programs }) : [];
+  const grouped = groupResults(hits);
+  return (
+    <form
+      class="searchbox" role="search"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!q.value.trim()) return;
+        open.value = false;
+        location.hash = searchHash(r, q.value);
+      }}
+    >
+      <input
+        type="search" name="q" aria-label="Search the rules"
+        placeholder="Search rules, figures, questions, households"
+        value={q.value}
+        onInput={(e) => { q.value = (e.target as HTMLInputElement).value; open.value = true; }}
+        onFocus={() => { open.value = true; }}
+        onBlur={() => { setTimeout(() => { open.value = false; }, 150); }}
+        onKeyDown={(e) => { if (e.key === "Escape") { q.value = ""; open.value = false; } }}
+      />
+      {hits.length > 0 && (
+        <div class="results" role="listbox" aria-label="Suggestions">
+          {RESULT_GROUPS.map((g) =>
+            grouped[g].length ? (
+              <div key={g} class="group">
+                <h4>{RESULT_GROUP_LABEL[g]}</h4>
+                {grouped[g].map((h) => (
+                  <a key={`${h.kind}-${h.id}`} href={hitHash(h, r)} onClick={() => { open.value = false; }}>
+                    <strong>{h.title}</strong>
+                    <small>{h.subtitle}</small>
+                  </a>
+                ))}
+              </div>
+            ) : null,
+          )}
+          <a class="allresults" href={searchHash(r, q.value)} onClick={() => { open.value = false; }}>
+            All results for "{q.value.trim()}" (Enter)
+          </a>
+        </div>
+      )}
+    </form>
+  );
+}
+
+/** The breadcrumb trail. It reads the same `placeOf` the sidebar
+ *  highlights, so the two never disagree. */
+export function Breadcrumbs() {
+  const c = canonicalRoute(route.value);
+  const vol = volumeSig.value;
+  const crumbs = crumbsFor(c, { engine: viewEngine() ?? engineSig.value, cases: vol?.cases, documents: vol?.documents });
+  if (!crumbs.length) return null;
+  return (
+    <nav class="crumbs" aria-label="You are here">
+      <ol>
+        {crumbs.map((cr, i) => (
+          <li key={i}>
+            {cr.href ? <a href={cr.href}>{cr.label}</a> : <span aria-current="page">{cr.label}</span>}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+export function Header() {
   return (
     <>
       <header class="topbar">
-        <a class="brand" href={startHref}>Benefits Codex</a>
-        {manifestSig.value && manifestSig.value.volumes.length > 1 ? (
-          <select
-            class="volume-select"
-            value={r.volume}
-            onChange={(e) => {
-              const volume = (e.target as HTMLSelectElement).value;
-              navigate({ volume, view: "program", arg: null, params: {} });
-            }}
-          >
-            {manifestSig.value.volumes.map((v) => (
-              <option key={v.id} value={v.id}>
-                {v.title}{v.status === "draft" ? " (draft)" : ""}
-              </option>
-            ))}
-          </select>
-        ) : (
-          <span class="volume">{volumeSig.value?.title ?? r.volume}</span>
-        )}
-        <RefSelect />
-        {r.view !== "start" && (
-          <nav class="primary">
-            {primary.map((n) => (
-              <a
-                key={n.view}
-                class={r.view === n.view ? "on" : ""}
-                href={buildHash({ ...r, view: n.view, arg: n.arg ? n.arg(firstProgram) : null, params: {} })}
-              >
-                {n.label}
-              </a>
-            ))}
-          </nav>
-        )}
-        <details class="browse">
-          <summary>Browse</summary>
-          <nav class="dropdown">
-            {BROWSE.map((n) => (
-              <a
-                key={n.view}
-                class={r.view === n.view ? "on" : ""}
-                href={buildHash({ ...r, view: n.view, arg: null, params: {} })}
-              >
-                {n.label}
-              </a>
-            ))}
-          </nav>
-        </details>
-        <div class="searchbox">
-          <input
-            type="search"
-            placeholder="Search items, sources, questions"
-            value={q.value}
-            onInput={(e) => { q.value = (e.target as HTMLInputElement).value; }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && hits.length) open(hitHash(hits[0], r));
-              if (e.key === "Escape") q.value = "";
-            }}
-          />
-          {hits.length > 0 && (
-            <div class="results">
-              {HIT_KINDS.map((kind) =>
-                grouped[kind].length ? (
-                  <div key={kind} class="group">
-                    <h4>{HIT_KIND_LABEL[kind]}</h4>
-                    {grouped[kind].map((h) => (
-                      <a key={h.id} href={hitHash(h, r)} onClick={() => { q.value = ""; }}>
-                        <strong>{h.title}</strong>
-                        <small>{h.subtitle}</small>
-                      </a>
-                    ))}
-                  </div>
-                ) : null,
-              )}
-            </div>
-          )}
-        </div>
+        <button
+          class="btn navtoggle" aria-controls="sidebar" aria-expanded={navOpenSig.value}
+          onClick={() => { navOpenSig.value = !navOpenSig.value; }}
+        >Menu</button>
+        <SearchBox />
+        <ProposalPill />
         {modeSig.value === "edit" && (
           <>
             <button class="btn" onClick={() => openEditor(null)}>New item</button>
-            <button class="btn" onClick={() => { editingSig.value = null; trayOpenSig.value = true; }}>
-              Tray ({changeSetSig.value.entries.length})
-            </button>
-            <button class="btn" onClick={() => { settingsOpenSig.value = true; }}>
+            <button class="btn" onClick={() => { editingSig.value = null; settingsOpenSig.value = true; }}>
               Settings
             </button>
           </>
         )}
-        {r.view !== "start" && (
-          <button
-            class="btn modebtn mode-toggle"
-            onClick={() => { setMode(modeSig.value === "edit" ? "read" : "edit"); }}
-          >
-            {modeSig.value === "edit" ? "Turn off edit mode" : "Turn on edit mode"}
-          </button>
-        )}
-        <button class="btn help-toggle" title="Help" onClick={toggleHelp}>?</button>
+        <button
+          class="btn modebtn mode-toggle"
+          onClick={() => { setMode(modeSig.value === "edit" ? "read" : "edit"); }}
+        >
+          {modeSig.value === "edit" ? "Turn off edit mode" : "Turn on edit mode"}
+        </button>
+        <button class="btn help-toggle" title="Help" aria-label="Help for this page" onClick={toggleHelp}>?</button>
       </header>
-      <div class="hdrfoot">
-        {r.view !== "start" && (
-          <nav class="workflows" aria-label="Workflows">
-            {WORKFLOW_VIEWS.map((w) => (
-              <a
-                key={w.view} data-view={w.view} class={r.view === w.view ? "on" : ""}
-                href={buildHash({ ...r, view: w.view, arg: null, params: {} })}
-              >{w.label}</a>
-            ))}
-          </nav>
-        )}
-        <span class="spacer" />
-        <a class="linkish" href={startHref}>change how you use this</a>
-      </div>
+      <Breadcrumbs />
     </>
   );
 }

@@ -40,6 +40,7 @@ export function closeHelp(): void {
 export function helpKeyFor(view: ViewName, editing: boolean): string | null {
   if (editing) return "editing";
   const known: Partial<Record<ViewName, string>> = {
+    desk: "desk", figures: "figures", households: "households", law: "law", changes: "changes",
     start: "start", program: "programs", cases: "cases", item: "item",
     table: "table", graph: "graph", source: "sources",
     documents: "documents", document: "documents", search: "search",

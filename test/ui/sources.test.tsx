@@ -78,26 +78,30 @@ describe("SearchView", () => {
     route.value = { ...defaultRoute(), view: "search", params: { q: "applicable individual" } };
     const host = document.createElement("div");
     render(<SearchView />, host);
-    expect(host.textContent).toContain("Items");
-    expect(host.textContent).toContain("Sources");
+    expect(host.textContent).toContain("Rules");
+    expect(host.textContent).toContain("Documents and excerpts");
     expect(host.textContent).toContain("Applicable individual");
+    // Grouped by type, in the results page's order.
+    const groups = [...host.querySelectorAll("section.group")].map((g) => g.getAttribute("data-group"));
+    expect(groups).toEqual(["rule", "figure", "document"]);
   });
 
   it("makes the identifier in a result row a token, leaving the name as the link", () => {
     route.value = { ...defaultRoute(), view: "search", params: { q: "date of birth" } };
     const host = document.createElement("div");
     render(<SearchView />, host);
-    const li = host.querySelector("ul.hits li")!;
+    // A supplied fact is listed under Facts.
+    const li = host.querySelector('section[data-group="fact"] ul.hits li')!;
     expect(li.querySelector("a b")!.textContent).toBe("Date of Birth");
     const tok = li.querySelector("small button.tok") as HTMLButtonElement;
     expect(tok.textContent).toBe("date_of_birth");
-    expect(li.querySelector("small")!.textContent).toContain("WR-001 · date_of_birth · supplied");
+    expect(li.querySelector("small")!.textContent).toContain("WR-001 · date_of_birth");
   });
 
   it("says so when nothing matches", () => {
     route.value = { ...defaultRoute(), view: "search", params: { q: "zzzzz" } };
     const host = document.createElement("div");
     render(<SearchView />, host);
-    expect(host.textContent).toContain('Nothing matches "zzzzz".');
+    expect(host.textContent).toContain('Nothing has every word of "zzzzz".');
   });
 });

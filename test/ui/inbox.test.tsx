@@ -21,6 +21,7 @@ import {
   signatureEntries, signatureNotice, stagedNotes, textMatches, withoutSignature, type InboxRow,
 } from "../../src/ui/inbox";
 import { householdsRestingOn, restingIndex } from "../../src/ui/counts";
+import { canSign, isOwnStagedChange } from "../../src/ui/inbox";
 import { unverifiedIds } from "../../src/ui/provenance";
 import { personaSig } from "../../src/ui/personas";
 import { defaultRoute } from "../../src/ui/router";
@@ -331,6 +332,24 @@ describe("the inbox page", () => {
     // Undo takes it back out of the tray.
     act(() => { host.querySelector<HTMLButtonElement>(`article[data-item="${id}"] .staged-note button`)!.click(); });
     expect(changeSetSig.value.entries).toHaveLength(0);
+  });
+
+  it("never offers Approve on the reader's own staged change", () => {
+    const role = "Medicaid policy owner";
+    const it0 = rowsFor(role)[0].item;
+    const edited = { ...it0, meaning: `${it0.meaning ?? ""} (my edit)` };
+    changeSetSig.value = { ...emptyChangeSet("co", "local"), entries: [{ id: it0.id, chapter: vol.chapterOf[it0.id], before: it0, after: edited }] };
+    const row = rowsFor(role, changeSetSig.value).find((r) => r.item.id === it0.id)!;
+    expect(isOwnStagedChange(row)).toBe(true);
+    expect(canSign(row)).toBe(false);
+    // An item someone else staged nothing on can be signed.
+    expect(canSign(rowsFor(role)[0])).toBe(true);
+    localStorage.setItem(SIGNER_KEY, "Dana Lee (HCPF)");
+    const host = mount();
+    const art = host.querySelector(`article[data-item="${it0.id}"]`)!;
+    expect(art.querySelector("button.approve")).toBeNull();
+    expect(art.querySelector(".own-change")!.textContent).toMatch(/cannot approve it/);
+    expect(art.querySelector<HTMLInputElement>("input.pick")!.disabled).toBe(true);
   });
 
   it("signs a whole chapter at once, in one write", async () => {

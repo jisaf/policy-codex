@@ -21,7 +21,9 @@ import type { ChangeEntry, ChangeSet, FileEntry } from "../changes/types";
 import { emptyChangeSet } from "../changes/types";
 import { validateChangeSet, type ChangeSetReport } from "../changes/validate";
 import { buildSearchIndex, type SearchIndex } from "./search";
-import { buildHash, defaultRoute, parseHash, prNumberOf, type Route } from "./router";
+import {
+  buildHash, canonicalRoute, defaultRoute, internalRoute, parseHash, prNumberOf, sameRoute, type Route,
+} from "./router";
 
 export interface EditingState {
   /** Null for a new item. */
@@ -134,14 +136,11 @@ export function setDoor(door: Door | null): void {
 }
 
 /** The route an empty hash (a first visit, or the bare app URL) resolves to:
- *  the door picker until a door has been chosen, the Programs home once one
- *  has. `#/mwr/start` itself, and every other address, is unaffected. */
+ *  the Desk of the volume last opened. A visitor who has not chosen a role
+ *  yet picks one there (docs/design-unified-ui.md: the start doors fold into
+ *  the Desk). */
 export function resolveEmptyHash(): Route {
-  return {
-    ...defaultRoute(),
-    volume: lastVolume() ?? PREFERRED_VOLUME,
-    view: doorSig.value === null ? "start" : "program",
-  };
+  return { ...defaultRoute(), volume: lastVolume() ?? PREFERRED_VOLUME, view: "desk" };
 }
 
 export const credentials: Credentials = createCredentials();
@@ -379,10 +378,24 @@ export function sourceTitles(): Record<string, string> {
   return sourceTitleMap(volumeSig.value?.sources ?? []);
 }
 
-function currentRoute(): Route {
+/** The address bar's route as written (the empty hash resolved). */
+function addressRoute(): Route {
   const raw = location.hash.startsWith("#") ? location.hash.slice(1) : location.hash;
   if (!raw || raw === "/") return resolveEmptyHash();
   return parseHash(location.hash);
+}
+
+/** The route the page reads, or null when the address was rewritten to its
+ *  canonical form: an older address (`#/co/walkthrough/CO-01`) keeps working
+ *  through this redirect, and the rewrite fires hashchange again. */
+export function routeForAddress(): Route | null {
+  const written = addressRoute();
+  const canonical = canonicalRoute(written);
+  if (!sameRoute(written, canonical)) {
+    location.replace(buildHash(canonical));
+    return null;
+  }
+  return internalRoute(canonical);
 }
 
 /** Starts reading the address bar. First asks whether a dev or preview
@@ -397,7 +410,10 @@ export async function startRouter(
   const local = await probe();
   localInfoSig.value = local;
   defaultRefSig.value = defaultRef({ search: location.search, local });
-  const handle = () => { void openRoute(currentRoute()); };
+  const handle = () => {
+    const r = routeForAddress();
+    if (r) void openRoute(r);
+  };
   addEventListener("hashchange", handle);
   handle();
 }

@@ -19,7 +19,7 @@ import {
 } from "../approvals";
 import {
   citeLabel, countBy, figureOn, filterFromParams, filterToParams, FILTER_TAGS, groupRows, inboxRows,
-  isStagedRow, KIND_GROUP_LABEL, KIND_ONE, matches, programOrderFor, restingOnUnverified, reviewNoteEntry,
+  canSign, isOwnStagedChange, isStagedRow, KIND_GROUP_LABEL, KIND_ONE, matches, programOrderFor, restingOnUnverified, reviewNoteEntry,
   signatureEntries, signatureNotice, withoutReviewNote, withoutSignature, type InboxFilter, type InboxGroup,
   type InboxRow,
 } from "../inbox";
@@ -381,7 +381,7 @@ function Row({ row, ctx, role, selected, onSelect, onSign, onUndo, onNote, onDro
     <article class={`inbox-row${row.staged.signed ? " staged" : ""}`} data-item={it.id} aria-labelledby={labelId}>
       <div class="rowhead">
         <input
-          type="checkbox" class="pick" checked={selected} disabled={row.signed || row.staged.signed}
+          type="checkbox" class="pick" checked={selected} disabled={!canSign(row)}
           aria-label={`Select ${it.name}`} onChange={(e) => onSelect((e.target as HTMLInputElement).checked)}
         />
         <h4 id={labelId}><a href={itemHref}>{it.name}</a></h4>
@@ -516,7 +516,13 @@ function Row({ row, ctx, role, selected, onSelect, onSign, onUndo, onNote, onDro
             <button class="linkish" onClick={() => onDropNote(row)}>Withdraw</button>
           </div>
         )}
-        {!row.signed && !row.staged.signed && (
+        {isOwnStagedChange(row) && !row.signed && (
+          <p class="own-change muted" role="note">
+            You staged this change in this browser, so you cannot approve it: another reviewer for this role signs it
+            once it is proposed.
+          </p>
+        )}
+        {canSign(row) && (
           <div class="rowactions">
             <button class="btn approve" onClick={() => onSign([it.id], "approve")}>Approve</button>
             <button class="btn review" onClick={() => onSign([it.id], "review")}>Mark reviewed</button>
@@ -561,7 +567,7 @@ function Group(
     onSignGroup: (action: SignAction) => void;
   },
 ) {
-  const signable = group.rows.filter((r) => !r.signed && !r.staged.signed);
+  const signable = group.rows.filter(canSign);
   const allOn = signable.length > 0 && signable.every((r) => selected.has(r.item.id));
   let left = limit;
   return (
@@ -725,7 +731,11 @@ export function InboxView() {
   const stagedNotes = rows.filter((row) => row.staged.note).length;
   const names = (id: string) => base.itemById(id)?.name ?? "";
 
-  const sign = (ids: string[], action: SignAction) => {
+  const sign = (picked: string[], action: SignAction) => {
+    // Never a signature on the reader's own staged change, whichever button.
+    const own = new Set(rows.filter((row) => !canSign(row)).map((row) => row.item.id));
+    const ids = picked.filter((id) => !own.has(id));
+    if (!ids.length) return;
     const by = signer.value.trim();
     if (!by) { needName.value = true; document.querySelector<HTMLInputElement>(".signer input")?.focus(); return; }
     const sig = { role, by, date: ctx.today };
@@ -881,13 +891,13 @@ export function InboxView() {
             onSelectAll={(on) => {
               const s = new Set(selected.value);
               for (const row of g.rows) {
-                if (row.signed || row.staged.signed) continue;
+                if (!canSign(row)) continue;
                 if (on) s.add(row.item.id); else s.delete(row.item.id);
               }
               selected.value = s;
             }}
             onSignGroup={(action) => {
-              const ids = g.rows.filter((row) => !row.signed && !row.staged.signed).map((row) => row.item.id);
+              const ids = g.rows.filter(canSign).map((row) => row.item.id);
               const what = action === "approve" ? "Approve" : "Mark reviewed";
               if (typeof confirm === "function" && !confirm(`${what}: sign ${ids.length} items in ${programName(g.program)} · ${titles.get(g.chapter) ?? g.chapter} as the ${role}?`)) return;
               sign(ids, action);

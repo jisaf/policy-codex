@@ -1,9 +1,8 @@
-/* The role entry points on the start page (phase 13): who a visitor is, which
- * programs and approval roles are theirs, and where they start. The new views
- * (inbox, questions, roles) read the chosen persona to filter to "mine". */
+/* The roles a visitor works as (the sidebar's "Working as" picker and the
+ * Desk's role doors): who a visitor is, which programs and approval roles
+ * are theirs. The pages read the chosen persona to filter to "mine". */
 import { signal, type Signal } from "@preact/signals";
 import type { VolumeMeta } from "../engine/types";
-import type { Route } from "./router";
 
 export type PersonaId = "hcpf" | "cdhs" | "cdec" | "legal" | "county" | "engineer";
 
@@ -22,8 +21,6 @@ export interface Persona {
    *  `approval_policy.roles`); filtered to the volume's own roles by
    *  `personaRoles`. */
   roles: string[];
-  /** Where the door goes. */
-  home: Pick<Route, "view" | "arg"> & { params?: Record<string, string> };
   /** The older door (docs/design-onboarding.md) this persona implies, so the
    *  engineer still gets the Handoff nav entry and so on. */
   door: "admin" | "reader" | "sme" | "engineer";
@@ -38,7 +35,7 @@ export const PERSONAS: Persona[] = [
       "Medicaid policy owner", "CHP+ policy owner", "LTSS policy owner",
       "Premium and finance owner", "State plan coordinator", "Eligibility operations owner",
     ],
-    home: { view: "roles", arg: "hcpf" }, door: "reader",
+    door: "reader",
   },
   {
     id: "cdhs", label: "CDHS policy", agency: "Human Services",
@@ -48,35 +45,35 @@ export const PERSONAS: Persona[] = [
       "SNAP policy owner", "Cash programs policy owner", "Energy assistance (LEAP) policy owner",
       "School meals (CDE) co-approver",
     ],
-    home: { view: "roles", arg: "cdhs" }, door: "reader",
+    door: "reader",
   },
   {
     id: "cdec", label: "CDEC", agency: "Early Childhood",
     body: "Child care assistance (CCCAP): what needs your sign-off and what is still open.",
     programs: ["CCCAP"],
     roles: ["Child care policy owner (CDEC)"],
-    home: { view: "roles", arg: "cdec" }, door: "reader",
+    door: "reader",
   },
   {
     id: "legal", label: "Legal", agency: "Attorney General's office",
     body: "Questions that need a legal opinion, statute-over-rule departures and unverified figures.",
     programs: [],
     roles: ["Legal"],
-    home: { view: "roles", arg: "legal" }, door: "reader",
+    door: "reader",
   },
   {
     id: "county", label: "County worker", agency: "County human services",
     body: "Step through how a test household's result is reached, rule by rule, in plain words, with the rule text behind each step.",
     programs: [],
     roles: [],
-    home: { view: "walkthrough", arg: null }, door: "admin",
+    door: "admin",
   },
   {
     id: "engineer", label: "Engineer", agency: "Implementation vendor",
     body: "The handoff, the conformance suite, and each rule's decision record back to statute.",
     programs: [],
     roles: ["Data steward"],
-    home: { view: "handoff", arg: null }, door: "engineer",
+    door: "engineer",
   },
 ];
 

@@ -84,7 +84,7 @@ describe("ProgramView", () => {
   it("lists the program switcher and the current program's outcomes with case counts", () => {
     const host = show("Medicaid");
     expect(host.querySelector(".tabs a.on")!.textContent).toBe("Medicaid");
-    expect(host.querySelector('a[href$="/program/SNAP"]')).not.toBeNull();
+    expect(host.querySelector('a[href$="/programs/SNAP"]')).not.toBeNull();
 
     const rows = host.querySelectorAll("table.outcomes tbody tr");
     expect(rows.length).toBeGreaterThan(0);
@@ -118,7 +118,7 @@ describe("ProgramView", () => {
     const rows = host.querySelectorAll("table.progcases tbody tr");
     expect(rows.length).toBeGreaterThan(0);
     const c01 = [...rows].find((tr) => tr.textContent!.includes("C-01"))!;
-    expect(c01.querySelector("a")!.getAttribute("href")).toContain("/cases/C-01");
+    expect(c01.querySelector("a")!.getAttribute("href")).toContain("/households/C-01?tab=states");
   });
 
   it("shows the parameters in force on the chosen date, respecting versions", async () => {
