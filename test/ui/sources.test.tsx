@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render } from "preact";
-import { SourcesView, citingItems } from "../../src/ui/SourcesView";
+import { LawPage } from "../../src/ui/places/LawPage";
+import { excerptMatches } from "../../src/ui/places/LawSources";
+import { itemsCitingExcerpt } from "../../src/ui/counts";
 import { SearchView } from "../../src/ui/SearchView";
 import { buildSearchIndex } from "../../src/ui/search";
 import { createEngine } from "../../src/engine/engine";
@@ -22,48 +24,39 @@ const vol = {
     { id: "S2", title: "Specified excluded individual", citation: "42 U.S.C. 1396a(ii)", text: "specified excluded" },
   ],
   openQuestions: [],
+  documents: [],
+  cases: [],
   chapterOf: {},
 } as unknown as LoadedVolume;
 
-describe("SourcesView", () => {
+describe("Law › Sources", () => {
   beforeEach(() => {
     volumeSig.value = vol;
     engineSig.value = engine;
-    route.value = { ...defaultRoute(), view: "source" };
   });
-
-  it("lists which items cite a source", () => {
-    const citing = citingItems(engine, "S1");
-    expect(citing.map((i) => i.id)).toContain("WR-200");
-  });
-
-  it("renders every excerpt with its citing items", () => {
+  const show = (arg: string, params: Record<string, string> = {}) => {
+    route.value = { ...defaultRoute(), volume: "mwr", view: "law", arg, params };
     const host = document.createElement("div");
-    render(<SourcesView />, host);
-    expect(host.querySelectorAll("article.source")).toHaveLength(2);
-    expect(host.textContent).toContain("S1. Applicable individual");
-    expect(host.textContent).toContain("42 U.S.C. 1396a");
+    render(<LawPage />, host);
+    return host;
+  };
+
+  it("lists which items cite an excerpt", () => {
+    expect(itemsCitingExcerpt(engine, "S1").map((i) => i.id)).toContain("WR-200");
   });
 
-  it("names each citing item with a token", () => {
-    const host = document.createElement("div");
-    render(<SourcesView />, host);
-    const cited = host.querySelector("article.source .cited-by")!;
-    const tok = [...cited.querySelectorAll("button.tok")].find(
-      (b) => b.textContent === "Medicaid: is in the community engagement age range",
-    ) as HTMLButtonElement;
-    expect(tok).toBeDefined();
-    expect(tok.getAttribute("data-id")).toBe("WR-200");
+  it("lists every excerpt, and finds them by every word, not a phrase", () => {
+    expect(show("sources").querySelectorAll("ul.excerptlist li")).toHaveLength(2);
+    expect(show("sources", { q: "excluded specified" }).querySelectorAll("ul.excerptlist li")).toHaveLength(1);
+    expect(excerptMatches(vol.sources[0], "individual 1396a")).toBe(true);
+    expect(excerptMatches(vol.sources[0], "individual 1396b")).toBe(false);
   });
 
-  it("opens one source expanded when the route names it", () => {
-    route.value = { ...defaultRoute(), view: "source", arg: "S2" };
-    const host = document.createElement("div");
-    render(<SourcesView />, host);
-    const open = [...host.querySelectorAll("article.source details")]
-      .filter((d) => (d as HTMLDetailsElement).open);
-    expect(open).toHaveLength(1);
-    expect(open[0].textContent).toContain("specified excluded");
+  it("gives one excerpt its own page, with its text and the items that cite it", () => {
+    const host = show("sources/S1");
+    expect(host.querySelector("h1")!.textContent).toBe("Applicable individual");
+    expect(host.querySelector("blockquote")!.textContent).toContain("the term applicable individual");
+    expect(host.textContent).toContain("Medicaid: is in the community engagement age range");
   });
 });
 

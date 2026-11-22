@@ -2,8 +2,9 @@ import { describe, it, expect, beforeEach } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { render } from "preact";
-import { DocumentsView, excerptsOf } from "../../src/ui/DocumentsView";
-import { SourcesView } from "../../src/ui/SourcesView";
+import { LawPage } from "../../src/ui/places/LawPage";
+import { documentParagraphs, findExcerptRange } from "../../src/ui/places/LawSources";
+import { excerptsOfDocument } from "../../src/ui/counts";
 import { createEngine } from "../../src/engine/engine";
 import { parseDocuments } from "../../src/ledger/documents";
 import { parseSources } from "../../src/ledger/markdown";
@@ -34,110 +35,110 @@ const vol = {
 
 const TEXT = "42 U.S.C. 1396a, as enacted.\n\nSecond paragraph of the text.\n";
 
+/* Law › Documents (`law/doc`) and one document (`law/doc/D-n?at=S-n`). */
 function show(
-  view: "documents" | "document", arg: string | null = null,
+  docId: string | null = null,
   fetchText: (p: string) => Promise<string> = async () => TEXT,
+  params: Record<string, string> = {},
 ) {
-  route.value = { ...defaultRoute(), view, arg };
+  route.value = { ...defaultRoute(), volume: "mwr", view: "law", arg: docId ? `doc/${docId}` : "doc", params };
   const host = document.createElement("div");
-  render(<DocumentsView fetchText={fetchText} />, host);
+  render(<LawPage fetchText={fetchText} />, host);
   return host;
 }
 
-describe("DocumentsView list", () => {
+describe("Law: the documents", () => {
   beforeEach(() => {
     volumeSig.value = vol;
     engineSig.value = engine;
     changeSetSig.value = emptyChangeSet("mwr", "main");
+    modeSig.value = "read";
   });
 
-  it("lists every migrated document with its kind, citation, and excerpt count", () => {
-    const host = show("documents");
-    const rows = host.querySelectorAll("table.documents tbody tr");
+  it("lists every document with its kind, citation and excerpt count", () => {
+    const host = show();
+    const rows = host.querySelectorAll("ul.doclist li");
     expect(rows).toHaveLength(8);
-    const first = rows[0].textContent!;
-    expect(first).toContain("D-1");
-    expect(first).toContain("42 U.S.C. 1396a — State plans for medical assistance");
-    expect(first).toContain("statute");
-    expect(rows[0].querySelector("td:last-child")!.textContent).toBe("6");
-    const snapReg = [...rows].find((tr) => tr.textContent!.startsWith("D-7"))!;
+    expect(rows[0].textContent).toContain("42 U.S.C. 1396a — State plans for medical assistance");
+    expect(rows[0].textContent).toContain("statute");
+    expect(rows[0].textContent).toContain("6 excerpts");
+    const snapReg = host.querySelector('ul.doclist li[data-document="D-7"]')!;
     expect(snapReg.textContent).toContain("regulation");
-    expect(snapReg.querySelector("td:last-child")!.textContent).toBe("7");
+    expect(snapReg.textContent).toContain("7 excerpts");
   });
 
   it("links each row to its document page", () => {
-    const host = show("documents");
-    const link = host.querySelector("table.documents tbody a") as HTMLAnchorElement;
+    const link = show().querySelector("ul.doclist a") as HTMLAnchorElement;
     expect(link.getAttribute("href")).toBe("#/mwr/law/doc/D-1");
   });
 
   it("selects the excerpts of one document, in file order", () => {
-    expect(excerptsOf(sources, "D-1").map((s) => s.id))
+    expect(excerptsOfDocument(sources, "D-1").map((s) => s.id))
       .toEqual(["S1", "S2", "S6", "S8", "S9", "S10"]);
-    expect(excerptsOf(sources, "D-99")).toEqual([]);
+    expect(excerptsOfDocument(sources, "D-99")).toEqual([]);
   });
 });
 
-describe("DocumentsView page", () => {
+describe("Law: one document, open at a passage", () => {
   beforeEach(() => {
     volumeSig.value = vol;
     engineSig.value = engine;
     changeSetSig.value = emptyChangeSet("mwr", "main");
+    modeSig.value = "read";
   });
 
-  it("shows the metadata, the fetched text, and every excerpt with its citing items", async () => {
+  it("shows the document, its fetched text and the excerpts it gives, without a repository path", async () => {
     const asked: string[] = [];
-    const host = show("document", "D-1", async (p) => { asked.push(p); return TEXT; });
+    const host = show("D-1", async (p) => { asked.push(p); return TEXT; });
     await new Promise((r) => setTimeout(r));
-
     expect(asked).toEqual(["volumes/mwr/documents/D-1.md"]);
-    expect(host.textContent).toContain("42 U.S.C. 1396a — State plans for medical assistance");
-    expect(host.textContent).toContain("statute");
+    expect(host.querySelector("h1")!.textContent).toBe("42 U.S.C. 1396a — State plans for medical assistance");
     const paras = host.querySelectorAll(".doctext pre.statute");
     expect(paras).toHaveLength(2);
     expect(paras[1].textContent).toBe("Second paragraph of the text.");
-
-    const excerpts = host.querySelectorAll("article.excerpt");
+    const excerpts = host.querySelectorAll(".docexcerpts li");
     expect(excerpts).toHaveLength(6);
-    expect(excerpts[0].textContent).toContain("S1. Applicable individual");
-    expect(excerpts[0].querySelector("h4 a")!.getAttribute("href")).toBe("#/mwr/law/sources/S1");
-    // WR-200 cites S1 in the fixture ledger, so the page names it.
-    expect(excerpts[0].querySelector(".cited-by")!.textContent).toContain("community engagement");
+    expect(excerpts[0].querySelector("a")!.getAttribute("href")).toBe("#/mwr/law/doc/D-1?at=S1");
+    expect(host.textContent).not.toContain("volumes/mwr");
   });
 
-  it("marks and scrolls to the excerpt a source token traced into", async () => {
-    // jsdom has no scrollIntoView, so the page's request is recorded instead.
-    // Every document page this file has rendered is still mounted on the
-    // route signal, so the excerpt can be asked for more than once.
+  it("highlights the whole passage of ?at= and scrolls to it", async () => {
+    const s = sources.find((x) => x.id === "S2")!;
+    const text = `Preamble.\n\n${s.text.split("\n").join("\n\n")}\n\nAfter it, something else entirely.\n`;
     const seen: string[] = [];
     const proto = Element.prototype as unknown as { scrollIntoView?: unknown };
     proto.scrollIntoView = function (this: Element) { seen.push(this.id); };
     const host = document.createElement("div");
     document.body.appendChild(host);
-    route.value = {
-      ...defaultRoute(), view: "document", arg: "D-1", params: { excerpt: "S2" },
-    };
-    render(<DocumentsView fetchText={async () => TEXT} />, host);
+    route.value = { ...defaultRoute(), volume: "mwr", view: "law", arg: "doc/D-1", params: { at: "S2" } };
+    render(<LawPage fetchText={async () => text} />, host);
     await new Promise((r) => setTimeout(r));
-
-    expect(seen).toContain("S2");
-    expect((host.querySelector("#S2") as HTMLElement).className).toBe("excerpt on");
-    const others = [...host.querySelectorAll("article.excerpt")].filter((a) => a.id !== "S2");
-    expect(others.length).toBeGreaterThan(0);
-    expect(others.every((a) => a.className === "excerpt")).toBe(true);
+    const hits = [...host.querySelectorAll(".doctext pre.hit")].map((p) => p.textContent!.trim());
+    expect(hits.length).toBe(s.text.split("\n").filter((l) => l.trim()).length);
+    expect(hits.join(" ")).not.toContain("Preamble");
+    expect(hits.join(" ")).not.toContain("something else");
+    expect(seen).toContain("passage");
+    expect(host.querySelector(".notice")!.textContent).toContain("highlighted");
     delete proto.scrollIntoView;
+    render(null, host);
     host.remove();
   });
 
-  it("says so when the text cannot be read, and still shows the excerpts", async () => {
-    const host = show("document", "D-3", async () => { throw new Error("D-3.md not found at main (404)"); });
+  it("finds a passage that runs a heading into its first paragraph", () => {
+    const paras = documentParagraphs("Heading\n\n4.407.3 Excess Shelter Deduction\n\nA. Households shall receive a deduction for the allowable monthly shelter costs.\n\nB. Other.");
+    expect(findExcerptRange(paras, "4.407.3 Excess Shelter Deduction\nA. Households shall receive a deduction for the allowable monthly shelter costs.")).toEqual({ start: 1, end: 2 });
+    expect(findExcerptRange(paras, "Nothing like this appears anywhere in the text at all.")).toBeNull();
+  });
+
+  it("says so when the text cannot be read, and still lists the excerpts", async () => {
+    const host = show("D-3", async () => { throw new Error("D-3.md not found at main (404)"); });
     await new Promise((r) => setTimeout(r));
     expect(host.querySelector(".status.bad")!.textContent).toBe("D-3.md not found at main (404)");
-    expect(host.querySelectorAll("article.excerpt")).toHaveLength(1);
+    expect(host.querySelectorAll(".docexcerpts li")).toHaveLength(1);
   });
 
   it("says when a document id is not in the volume", () => {
-    expect(show("document", "D-99").textContent).toContain("No document D-99 in this volume.");
+    expect(show("D-99").textContent).toContain("No document D-99 in this volume.");
   });
 });
 
@@ -159,7 +160,7 @@ describe("Propose new document", () => {
   }
 
   it("stages the re-serialised documents.yaml and the new text as two file entries", async () => {
-    const host = show("documents");
+    const host = show();
     const stage = host.querySelector("button.stage-document") as HTMLButtonElement;
     expect(stage.disabled).toBe(true);
     expect(stage.textContent).toContain("D-9");
@@ -196,7 +197,7 @@ describe("Propose new document", () => {
   });
 
   it("gives a second proposed document the next id and keeps the first", async () => {
-    const host = show("documents");
+    const host = show();
     type(host, "title", "State hardship guidance");
     type(host, "citation", "MWR-2027-01");
     type(host, "text", "First.");
@@ -228,7 +229,7 @@ describe("Propose new document", () => {
   });
 
   it("will not stage without a title, a citation, and text", async () => {
-    const host = show("documents");
+    const host = show();
     type(host, "title", "State hardship guidance");
     type(host, "citation", "MWR-2027-01");
     await new Promise((r) => setTimeout(r));
@@ -237,7 +238,7 @@ describe("Propose new document", () => {
   });
 });
 
-describe("DocumentsView reader mode gates", () => {
+describe("Law documents: reader mode gates", () => {
   beforeEach(() => {
     volumeSig.value = vol;
     engineSig.value = engine;
@@ -246,39 +247,22 @@ describe("DocumentsView reader mode gates", () => {
 
   it("hides 'Propose new document' in read mode and shows it in edit mode", () => {
     modeSig.value = "read";
-    let host = show("documents");
+    let host = show();
     expect(host.querySelector(".newdoc")).toBeNull();
 
     modeSig.value = "edit";
-    host = show("documents");
+    host = show();
     expect(host.querySelector(".newdoc")).not.toBeNull();
     expect(host.textContent).toContain("Propose new document");
   });
 
   it("hides 'Draft from this document' in read mode and shows it in edit mode", () => {
     modeSig.value = "read";
-    let host = show("document", "D-1");
+    let host = show("D-1");
     expect(host.querySelector("button.draft-from-document")).toBeNull();
 
     modeSig.value = "edit";
-    host = show("document", "D-1");
+    host = show("D-1");
     expect(host.querySelector("button.draft-from-document")).not.toBeNull();
-  });
-});
-
-describe("SourcesView document links", () => {
-  beforeEach(() => {
-    volumeSig.value = vol;
-    engineSig.value = engine;
-    route.value = { ...defaultRoute(), view: "source" };
-  });
-
-  it("links every excerpt to the document it was taken from", () => {
-    const host = document.createElement("div");
-    render(<SourcesView />, host);
-    const links = host.querySelectorAll("article.source a.doclink");
-    expect(links).toHaveLength(33);
-    expect(links[0].textContent).toBe("D-1: where this sits in the document");
-    expect(links[0].getAttribute("href")).toBe("#/mwr/law/doc/D-1?at=S1");
   });
 });

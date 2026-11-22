@@ -50,7 +50,7 @@ import { valuesEqual } from "../engine/values";
 import { versionInForce } from "../engine/versions";
 import { personaRoles, type Persona } from "./personas";
 import {
-  groupByOwner, isOpen, queueEntry, questionInfos, type QueueEntry,
+  groupByOwner, isOpen, matchesFilter, queueEntry, questionInfos, type QueueEntry, type QueueFilter,
 } from "./questions";
 import { expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
 import { caseToSpec } from "../engine/cases";
@@ -488,6 +488,216 @@ export function ownerGroups(
   const groups = groupByOwner(engine, filed).map((g) => ({ ...g, mine: mine.includes(g.owner) }));
   return [...groups.filter((g) => g.mine), ...groups.filter((g) => !g.mine)];
 }
+
+// ---- the question queue (Questions)
+
+/** How the queue can be ordered (Blind A's sort control). */
+export type QuestionSort = "owner" | "households" | "items" | "newest" | "number";
+
+export const QUESTION_SORTS: ReadonlyArray<{ id: QuestionSort; label: string }> = [
+  { id: "owner", label: "By owner" },
+  { id: "households", label: "Most households first" },
+  { id: "items", label: "Most items first" },
+  { id: "newest", label: "Newest first" },
+  { id: "number", label: "By number" },
+];
+
+export interface QueueQuery extends QueueFilter {
+  /** Only the questions the persona owns (`ownsEntry`). */
+  mine?: boolean;
+  /** Open only, or partly settled only; both when absent. */
+  state?: "open" | "partly";
+  sort?: QuestionSort;
+  /** Left out: answered in this browser, waiting to be sent. */
+  exclude?: ReadonlySet<string>;
+}
+
+export interface QueueRow {
+  entry: QueueEntry;
+  /** The owner the row names. Always one the filter accepts: the role the
+   *  Owner filter asks for, else under "only mine" the persona's own role,
+   *  else the question's first owner (Blind B's rows named someone else on a
+   *  list filtered to "mine"). */
+  owner: string;
+  /** Its other owners, after `owner`. */
+  others: string[];
+  /** Households that read it (`questionHouseholds`); null until the resting
+   *  index is built. */
+  households: number | null;
+}
+
+export interface QuestionQueue {
+  rows: QueueRow[];
+  /** Every question still to answer (open and partly settled), less the
+   *  excluded ones: "N of TOTAL". */
+  total: number;
+  /** The persona's own roles. */
+  mineRoles: string[];
+  /** The rows by the owner each names, the persona's roles first, then the
+   *  volume's role order (the "By owner" sort). */
+  groups: Array<{ owner: string; rows: QueueRow[]; mine: boolean }>;
+}
+
+/** The households (case ids, in stored order) that read a question: one of
+ *  their stored results' reasoning passes through an item carrying it. */
+export function questionHouseholds(
+  engine: Engine, cases: readonly HouseholdCase[], e: Pick<QueueEntry, "items">,
+): string[] {
+  const ids = new Set(restingOn(engine, cases, e.items.map((it) => it.identifier)).map((r) => r.caseId));
+  return cases.filter((c) => ids.has(c.id)).map((c) => c.id);
+}
+
+const qNumber = (id: string) => Number(id.replace(/\D/g, "")) || 0;
+
+/** The decision queue as the Questions place shows it: filtered, ordered,
+ *  and each row naming an owner that agrees with the filter. With `cases`
+ *  and the resting index built, each row carries its household count. */
+export function questionQueue(
+  engine: Engine, sources: readonly Source[], questions: readonly OpenQuestion[],
+  persona: Persona | null, query: QueueQuery = {}, cases: readonly HouseholdCase[] | null = null,
+): QuestionQueue {
+  const all = unsettledEntries(engine, sources, questions).filter((e) => !query.exclude?.has(e.id));
+  const mineRoles = persona ? personaRoles(persona, engine.meta) : [];
+  const counted = Boolean(cases && restingReady(engine, cases));
+  const rows: QueueRow[] = all
+    .filter((e) => matchesFilter(e, query))
+    .filter((e) => !query.state || e.status === query.state)
+    .filter((e) => !query.mine || !persona || ownsEntry(engine, persona, e))
+    .map((e) => {
+      const owner = (query.owner && e.owners.includes(query.owner) ? query.owner : null)
+        ?? (query.mine ? e.owners.find((o) => mineRoles.includes(o)) : null)
+        ?? e.owner;
+      return {
+        entry: e, owner, others: e.owners.filter((o) => o !== owner),
+        households: counted ? questionHouseholds(engine, cases!, e).length : null,
+      };
+    });
+  const by = query.sort ?? "owner";
+  if (by === "households" && counted) {
+    rows.sort((a, b) => b.households! - a.households! || b.entry.items.length - a.entry.items.length || qNumber(a.entry.id) - qNumber(b.entry.id));
+  } else if (by === "items") {
+    rows.sort((a, b) => b.entry.items.length - a.entry.items.length || qNumber(a.entry.id) - qNumber(b.entry.id));
+  } else if (by === "newest") {
+    rows.sort((a, b) => qNumber(b.entry.id) - qNumber(a.entry.id));
+  } else if (by === "number" || by === "households") {
+    rows.sort((a, b) => qNumber(a.entry.id) - qNumber(b.entry.id));
+  }
+  const roles = engine.meta.approval_policy?.roles ?? [];
+  const rank = (o: string) => { const i = roles.indexOf(o); return i < 0 ? roles.length : i; };
+  const byOwner = new Map<string, QueueRow[]>();
+  for (const r of rows) byOwner.set(r.owner, [...(byOwner.get(r.owner) ?? []), r]);
+  const groups = [...byOwner.entries()]
+    .map(([owner, rs]) => ({ owner, rows: rs, mine: mineRoles.includes(owner) }))
+    .sort((a, b) => Number(b.mine) - Number(a.mine) || rank(a.owner) - rank(b.owner) || a.owner.localeCompare(b.owner));
+  return { rows, total: all.length, mineRoles, groups };
+}
+
+/** The questions no longer open (resolved), in ledger order. */
+export function resolvedQuestions(engine: Engine, questions: readonly OpenQuestion[]) {
+  return questionInfos(engine, questions).filter((q) => !isOpen(q.status));
+}
+
+// ---- Law: unverified sources and what rests on them
+
+/** The excerpts a document gives, in sources.md order. */
+export function excerptsOfDocument<S extends Pick<Source, "document">>(sources: readonly S[], docId: string): S[] {
+  return sources.filter((s) => s.document === docId);
+}
+
+/** The items that cite an excerpt, in their sources or a dated version (the
+ *  same reading as `citedUnverified`), by name. */
+export function itemsCitingExcerpt(engine: Engine, sourceId: string): Item[] {
+  return engine.items()
+    .filter((it) => (it.sources ?? []).includes(sourceId) || (it.versions ?? []).some((v) => v.source === sourceId))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export interface UnverifiedReach {
+  /** The unverified excerpts, in sources.md order. */
+  sources: Source[];
+  /** The items citing one of them themselves. */
+  citing: Item[];
+  /** Every other item that reads one of those, through the rules. */
+  resting: Item[];
+  /** The declared program outcomes they affect (`outcomesAffected`). */
+  outcomes: string[];
+  /** The households that read a citing item (`householdsThatRead`); null
+   *  until the resting index is built. */
+  households: string[] | null;
+}
+
+/** What rests on the unverified excerpts: the items citing them, the items
+ *  reading those, the outcomes and the stored households. One reading for
+ *  the Law page, its overview and the Desk tile. */
+export function unverifiedReach(
+  engine: Engine, sources: readonly Source[], unverified: ReadonlySet<string>,
+  cases: readonly HouseholdCase[] | null = null,
+): UnverifiedReach {
+  const citing = itemsCitingUnverified(engine, unverified);
+  const citingIds = new Set(citing.map((it) => it.identifier));
+  const resting = [...restingOnUnverified(engine, unverified)].filter((id) => !citingIds.has(id))
+    .map((id) => engine.item(id)).filter((it): it is Item => Boolean(it))
+    .sort((a, b) => a.program.localeCompare(b.program) || a.name.localeCompare(b.name));
+  const outcomes = [...new Set(citing.flatMap((it) => outcomesAffected(engine, it.identifier)))];
+  let households: string[] | null = null;
+  if (cases && restingReady(engine, cases)) {
+    const read = new Set(restingOn(engine, cases, [...citingIds]).map((r) => r.caseId));
+    households = cases.filter((c) => read.has(c.id)).map((c) => c.id);
+  }
+  return { sources: sources.filter((s) => unverified.has(s.id)), citing, resting, outcomes, households };
+}
+
+export interface LawCounts {
+  /** Items following a statute over a Colorado rule, in force on the date. */
+  departures: number;
+  /** Excerpts marked unverified. */
+  unverifiedSources: number;
+  /** Items citing an unverified excerpt themselves. */
+  citingUnverified: number;
+  /** Other items resting on those through the rules. */
+  restingOnUnverified: number;
+  /** Figures with no value on the date. */
+  noValue: number;
+  excerpts: number;
+  documents: number;
+}
+
+/** Every number the Law place shows (its tabs and overview). */
+export function lawCounts(
+  engine: Engine, vol: { sources: readonly Source[]; documents: readonly DocumentMeta[] },
+  unverified: ReadonlySet<string>, date: string,
+): LawCounts {
+  const citing = itemsCitingUnverified(engine, unverified);
+  return {
+    departures: departureItems(engine, { asOf: date }).length,
+    unverifiedSources: vol.sources.filter((s) => unverified.has(s.id)).length,
+    citingUnverified: citing.length,
+    restingOnUnverified: restingOnUnverified(engine, unverified).size - citing.length,
+    noValue: figuresWithoutValue(engine, date).length,
+    excerpts: vol.sources.length,
+    documents: vol.documents.length,
+  };
+}
+
+/** The programs with a departure in force on the date, each with its count,
+ *  in the order the departures list them. */
+export function departuresByProgram(engine: Engine, asOf: string): Array<{ program: string; count: number }> {
+  const out = new Map<string, number>();
+  for (const it of departureItems(engine, { asOf })) out.set(it.program, (out.get(it.program) ?? 0) + 1);
+  return [...out.entries()].map(([program, count]) => ({ program, count }));
+}
+
+/** The words behind the Questions and Law numbers, for a page's "how this
+ *  is counted" disclosure. */
+export const QUESTION_LAW_DEFINITIONS = {
+  queue: "Every question not yet resolved: open, or partly settled with part still open.",
+  owner: COUNT_DEFINITIONS.owns,
+  households: "Households that read a question: one of their stored results' reasoning passes through an item carrying it.",
+  unverified: "An unverified excerpt is one whose text could not be fetched from its document, so it is not a quotation. An item rests on one when it cites it, or reads through the rules an item that does.",
+  unverifiedHouseholds: "Households that read an unverified figure: one of their stored results' reasoning passes through an item citing an unverified excerpt.",
+  departures: "An item departs when it follows a statute where a Colorado rule, not yet amended, says otherwise. Counted when in force on the date shown.",
+  noValue: "A figure kept as dated versions with none in force on the date shown, or with no version loaded at all.",
+} as const;
 
 // ---- departures
 
