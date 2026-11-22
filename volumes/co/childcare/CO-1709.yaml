@@ -6,11 +6,13 @@ type: money
 scope: person-month
 program: CCCAP
 meaning: "The person's verified business expenses for the month that 8 CCR 1403-1 3.111.I.2.a allows (rent of business premises, wholesale cost of merchandise, utilities, taxes, business mileage, labor, upkeep of necessary equipment): the operating costs and business vehicle costs; not depreciation, payments on the principal of loans for capital goods, or personal expenses (3.111.I.2.b)."
-precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0."
-derived: [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_business_vehicle_costs, 0]]
-sources: [S1157]
+precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0. Second-pass review N-5 (was F-17): the costs are deducted only when verified (3.111.G.2.a: \"The county shall obtain verification of all expenses ... or they will not be considered\"; I.2: \"minus verified business expenses\"): receipts (self_employment_cost_receipts_received, CO-3927) or other documents (self_employment_costs_verified_by_other_documents, CO-4062), each read as false when not stated; otherwise nothing is deducted."
+derived: [case, [[any, [otherwise, self_employment_cost_receipts_received, false], [otherwise, self_employment_costs_verified_by_other_documents, false]], [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_business_vehicle_costs, 0]]], [else, 0]]
+sources: [S1157, S1637]
 implemented: engine
 tags: [income]
 rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
 tests:
-  - {id: CO-1709-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30}, expect: 430}
+  - {id: CO-1709-T1, month: "2026-10", as_of: "2026-10-01", given: {self_employment_cost_receipts_received: true, self_employment_operating_costs: 400, self_employment_interest_costs: 20, self_employment_capital_principal_payments: 100, self_employment_home_business_space_costs: 50, self_employment_business_vehicle_costs: 30}, expect: 430}
+  - {id: CO-1709-T2, title: "N-5: the same costs verified by bank statements, which CCCAP accepts", month: "2026-10", as_of: "2026-10-01", given: {self_employment_costs_verified_by_other_documents: true, self_employment_operating_costs: 400, self_employment_business_vehicle_costs: 30}, expect: 430}
+  - {id: CO-1709-T3, title: "N-5: costs claimed with no verification are not considered (3.111.G.2.a)", month: "2026-10", as_of: "2026-10-01", given: {self_employment_operating_costs: 3000}, expect: 0}

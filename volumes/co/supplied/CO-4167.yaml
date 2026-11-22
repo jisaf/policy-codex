@@ -1,0 +1,14 @@
+id: CO-4167
+name: "SNAP: unearned income received after the application date"
+identifier: snap_unearned_income_received_after_application_date
+kind: supplied
+type: money
+scope: person-month
+program: SNAP
+meaning: "The part of the person's unearned income for the month of the SNAP application, as SNAP counts it, that was received, or is expected, after snap_application_date, so not between the first of the month and the date of application. 0 if all of it was received by the application date."
+precision: "Stated for the month of application, and read only for a destitute migrant or seasonal farmworker household (is_destitute_migrant_or_seasonal_farmworker, CO-055; 10 CCR 2506-1 4.406.1.A). If not stated, SNAP reads it as 0."
+supplied_by: "Applicant statement and benefit or payment records (payment dates), as the county establishes them for the destitution test."
+sources: [S2964, S1018]
+tags: [snap, income]
+rationale: "Final verification pass 2 N-6: the unearned counterpart of snap_earned_income_received_after_application_date (CO-4166); the two are kept apart because the earned income deduction applies to earned income only (4.407)."
+nearest: [CO-4166]

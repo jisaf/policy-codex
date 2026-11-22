@@ -5,10 +5,10 @@ kind: derived
 type: group of persons
 scope: person
 program: ColoradoWorks
-meaning: "The members of this person's assistance unit counted for its size: every member except one who is disqualified from or ineligible for basic cash assistance (cw_is_disqualified_member), whom 9 CCR 2503-6 3.604.2.M removes \"from the assistance unit for the purposes of determining the assistance unit size\", and one who is an institution patient for tuberculosis or mental disease or an inmate (cw_is_institution_patient_or_inmate, CO-3802), whom 3.604.1.D-E bar as a client."
-precision: "Final cash review FC-1: a member barred by 3.604.1.D-E while still in the home under the absence rules is not paid for; the member's income still counts as a member's (OQ-660)."
-derived: [filter, cw_assistance_unit_members, [not, [any, [of, [P], cw_is_disqualified_member], [of, [P], cw_is_institution_patient_or_inmate]]]]
-sources: [S1004, S2600]
+meaning: "The members of this person's assistance unit counted for its size: every member except one who is disqualified from or ineligible for basic cash assistance (cw_is_disqualified_member), whom 9 CCR 2503-6 3.604.2.M removes \"from the assistance unit for the purposes of determining the assistance unit size\", one who is an institution patient for tuberculosis or mental disease or an inmate (cw_is_institution_patient_or_inmate, CO-3802), whom 3.604.1.D-E bar as a client, and one who has been temporarily out of State for more than ninety consecutive days (3.604.2.O.1)."
+precision: "Final cash review FC-1: a member barred by 3.604.1.D-E while still in the home under the absence rules is not paid for; the member's income still counts as a member's (OQ-660). Final cash review 2, P2-7: a member temporarily out of State for more than cw_temporary_out_of_state_max_days consecutive days (3.604.2.O.1; the same test as cw_meets_residency, CO-904) is an ineligible member and is removed from the size as M requires; a member with no out-of-State date stated stays in it."
+derived: [filter, cw_assistance_unit_members, [not, [any, [of, [P], cw_is_disqualified_member], [of, [P], cw_is_institution_patient_or_inmate], [all, [not, [unknown, [of, [P], temporarily_out_of_state_start_date]]], [">", [days_between, [of, [P], temporarily_out_of_state_start_date], [det_date]], cw_temporary_out_of_state_max_days]]]]]
+sources: [S1004, S2600, S2602]
 implemented: engine
 open: [OQ-660]
 tags: [cash, tanf, household]
@@ -17,3 +17,6 @@ tests:
   - {id: CO-2351-T1, title: "An undocumented parent is removed from the size", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2, p3], cw_is_disqualified_member: true}, others: {p2: {cw_is_disqualified_member: false}, p3: {cw_is_disqualified_member: false}}, expect: [p2, p3]}
   - {id: CO-2351-T2, as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_disqualified_member: false}, others: {p2: {cw_is_disqualified_member: false}}, expect: [p1, p2]}
   - {id: CO-2351-T3, title: "FC-1: a parent in a psychiatric hospital who is still in the home is not paid for (3.604.1.D)", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_disqualified_member: false, cw_is_institution_patient_or_inmate: true}, others: {p2: {cw_is_disqualified_member: false, cw_is_institution_patient_or_inmate: false}}, expect: [p2]}
+  # Final cash review 2, P2-7: 3.604.2.O.1.
+  - {id: CO-2351-T4, title: "P2-7: a mother out of State since June 1 (122 days on October 1) is removed from the size; her child stays", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_disqualified_member: false, cw_is_institution_patient_or_inmate: false, temporarily_out_of_state_start_date: "2026-06-01"}, others: {p2: {cw_is_disqualified_member: false, cw_is_institution_patient_or_inmate: false}}, expect: [p2]}
+  - {id: CO-2351-T5, title: "P2-7: out of State since August 1 (61 days) - still counted", as_of: "2026-10-01", given: {cw_assistance_unit_members: [p1, p2], cw_is_disqualified_member: false, cw_is_institution_patient_or_inmate: false, temporarily_out_of_state_start_date: "2026-08-01"}, others: {p2: {cw_is_disqualified_member: false, cw_is_institution_patient_or_inmate: false}}, expect: [p1, p2]}

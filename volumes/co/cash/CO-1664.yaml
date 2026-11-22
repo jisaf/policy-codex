@@ -7,8 +7,8 @@ scope: person-month
 program: AdultFinancial
 role: outcome
 meaning: Whether Adult Financial requires verification of the client's resources other than cash and it has not been provided.
-precision: "False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days)."
-derived: [all, af_verification_is_applicable, [all, af_requires_verification_of_resources, [not, resources_are_verified]]]
+precision: "False where Adult Financial verification does not apply to the person (af_verification_is_applicable, CO-2584; case worker review B2). Due by: af_verification_due_date (CO-1437: eleven days). Final cash review 2, N-2: the ungated condition is af_resources_are_unverified (CO-4003), which the spouse count (CO-4004) also reads."
+derived: [all, af_verification_is_applicable, af_resources_are_unverified]
 sources: [S888]
 implemented: engine
 tags: [verification, cash]

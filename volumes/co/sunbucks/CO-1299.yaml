@@ -6,14 +6,16 @@ type: money
 scope: person-month
 program: SunBucks
 role: outcome
-meaning: "The total Summer EBT benefit for an eligible child for the summer the determination is for (sebt_summer_year, CO-2581) - that summer's monthly benefit level (sebt_monthly_benefit_table, CO-1244) times the months of benefits for a summer (sebt_summer_benefit_months, CO-3013) - or zero for a child who is not eligible, per 7 CFR 292.15(d)-(e) and the annual benefit levels notice."
-precision: "The benefit is issued in full for the summer regardless of the date of application (292.15(f)(2)(iii)). CDHS review C-10: the level is that of the summer the determination is for, so a determination from July 2026 on is for summer 2027 and is unknown until FNS publishes the 2027 levels."
-derived: [case, [[in, sebt_eligibility_status, [eligible_categorical, eligible_income]], ["*", [lookup, sebt_monthly_benefit_table, sebt_summer_year], sebt_summer_benefit_months]], [else, 0]]
-sources: [S794, S795, S796, S797, S1821]
+meaning: "The total Summer EBT benefit for an eligible child for the summer the determination is for (sebt_summer_year, CO-2581) - that summer's monthly benefit level (sebt_monthly_benefit_table, CO-1244) times the months of benefits for a summer (sebt_summer_benefit_months, CO-3013) - or zero for a child who is not eligible, or while an application selected for verification in the sample is pending verification, per 7 CFR 292.14(f)(9), 292.15(d)-(e) and the annual benefit levels notice."
+precision: "The benefit is issued in full for the summer regardless of the date of application (292.15(f)(2)(iii)). CDHS review C-10: the level is that of the summer the determination is for, so a determination from July 2026 on is for summer 2027 and is unknown until FNS publishes the 2027 levels. Final pass F-21 (second-pass round): 292.14(f)(9) (S1094): \"Benefits cannot be issued for applications selected for verification until the verification process is completed with the exception of verification for cause\", so nothing is issued while sebt_verification_status (CO-1698) is pending, unless the selection was for cause (sebt_selected_for_verification_for_cause, CO-4073, read as false when not stated); the amount is issued in full once verification is complete."
+derived: [case, [[not, [in, sebt_eligibility_status, [eligible_categorical, eligible_income]]], 0], [[all, [not, [otherwise, sebt_selected_for_verification_for_cause, false]], ["=", sebt_verification_status, pending]], 0], [else, ["*", [lookup, sebt_monthly_benefit_table, sebt_summer_year], sebt_summer_benefit_months]]]
+sources: [S794, S795, S796, S797, S1821, S1094]
 implemented: engine
 tags: [sebt, income]
 open: [OQ-535]
 rationale: "No existing item computes the Summer EBT benefit; it is the program's benefit outcome. Hard-coded numbers audit H-6 and R-2: the three months are sebt_summer_benefit_months (CO-3013), and the meaning no longer restates the 2024-2026 level."
 tests:
-  - {id: CO-1299-T1, as_of: "2026-10-01", month: "2026-10", given: {sebt_summer_year: 2026, sebt_eligibility_status: eligible_income}, expect: 120}
+  - {id: CO-1299-T1, as_of: "2026-10-01", month: "2026-10", given: {sebt_summer_year: 2026, sebt_eligibility_status: eligible_income, sebt_verification_status: not_required}, expect: 120}
   - {id: CO-1299-T2, as_of: "2026-10-01", month: "2026-10", given: {sebt_summer_year: 2026, sebt_eligibility_status: ineligible}, expect: 0}
+  - {id: CO-1299-T3, title: "F-21: an application in the verification sample, pending: nothing issued yet (292.14(f)(9))", as_of: "2026-10-01", month: "2026-10", given: {sebt_summer_year: 2026, sebt_eligibility_status: eligible_income, sebt_verification_status: pending}, expect: 0}
+  - {id: CO-1299-T4, title: "F-21: selected for cause, pending: issued (292.14(f)(9))", as_of: "2026-10-01", month: "2026-10", given: {sebt_summer_year: 2026, sebt_eligibility_status: eligible_income, sebt_verification_status: pending, sebt_selected_for_verification_for_cause: true}, expect: 120}

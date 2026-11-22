@@ -1,0 +1,18 @@
+id: CO-4004
+name: "Adult Financial: spouse's resource verifications pending"
+identifier: af_spouse_resources_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: AdultFinancial
+meaning: "The number of resource verification elements still pending for the spouse of this Adult Financial client: one for each spouse whose resources other than cash must be verified and are not (af_resources_are_unverified). 9 CCR 2503-5 3.520.72.A counts a resource \"together with all other countable resources of the client, spouse, and sponsor(s)\", and D requires the county to \"obtain verification of all resources and associated values\"."
+precision: "The spouse of the case wherever the spouse lives, as af_client_and_spouse_countable_resources (CO-2389) counts the spouse's resources. A spouse who is also an Adult Financial client has the spouse's own element too; this count belongs to the client whose limit the spouse's resources are counted against."
+derived: [sum, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [case, [[of, [P], af_resources_are_unverified], 1], [else, 0]]]
+sources: [S454, S888]
+implemented: engine
+tags: [cash, verification, resources]
+rationale: "Final cash review 2, N-2 (engine-confirmed): an OAP client of 72 with every element verified, whose 55-year-old spouse had a $1,500 retirement account and no resource document, had af_countable_resources 2,500 but af_pending_verification_count 0 and af_verification_status complete. af_pending_verification_count (CO-1436) now adds this count, as it adds the spouse's income (CO-3884)."
+tests:
+  - {id: CO-4004-T1, title: "N-2: the spouse's retirement account has no statement", as_of: "2026-10-01", month: "2026-10", given: {}, others: {p2: {af_resources_are_unverified: true}}, relationships: [[spouse, p1, p2]], expect: 1}
+  - {id: CO-4004-T2, title: "The spouse's resources are verified", as_of: "2026-10-01", month: "2026-10", given: {}, others: {p2: {af_resources_are_unverified: false}}, relationships: [[spouse, p1, p2]], expect: 0}
+  - {id: CO-4004-T3, title: "Unmarried client", as_of: "2026-10-01", month: "2026-10", given: {}, relationships: [], expect: 0}

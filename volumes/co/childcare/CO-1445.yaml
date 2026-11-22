@@ -6,14 +6,15 @@ type: yes/no
 scope: person-month
 program: CCCAP
 meaning: "Whether the person's earned income must be verified for CCCAP: the wages or self-employment income of any household member whose earnings count toward household income, that is, anyone but a household child who is not a teen parent."
-precision: Follows cccap_household_income (CO-985), which counts every member's earnings except a household child's who is not a teen parent.
-derived: [all, has_earned_income, [any, [not, cccap_is_household_child], cccap_is_teen_parent]]
+precision: "Follows cccap_household_income (CO-985), which counts every member's earnings except a household child's who is not a teen parent. Second-pass review N-6: not for a protective services case (is_protective_services_child_care_case, CO-873, read as false when not stated), whose only countable income is the placed children's (3.119.A; a placed child's earnings are excluded by 3.111.J.1)."
+derived: [all, has_earned_income, [any, [not, cccap_is_household_child], cccap_is_teen_parent], [not, [otherwise, is_protective_services_child_care_case, false]]]
 sources: [S891]
 implemented: engine
 tags: [verification, income]
 rationale: No existing item states this CCCAP verification requirement; the phase-9 chapter needs it to count the household's pending verifications.
 tests:
-  - {id: CO-1445-T1, month: "2026-10", as_of: "2026-10-01", given: {has_earned_income: true, cccap_is_household_child: false}, expect: true}
+  - {id: CO-1445-T1, month: "2026-10", as_of: "2026-10-01", given: {is_protective_services_child_care_case: false, has_earned_income: true, cccap_is_household_child: false}, expect: true}
   - {id: CO-1445-T2, month: "2026-10", as_of: "2026-10-01", given: {has_earned_income: true, cccap_is_household_child: true, cccap_is_teen_parent: false}, expect: false}
-  - {id: CO-1445-T3, month: "2026-10", as_of: "2026-10-01", given: {has_earned_income: true, cccap_is_household_child: true, cccap_is_teen_parent: true}, expect: true}
+  - {id: CO-1445-T3, month: "2026-10", as_of: "2026-10-01", given: {is_protective_services_child_care_case: false, has_earned_income: true, cccap_is_household_child: true, cccap_is_teen_parent: true}, expect: true}
   - {id: CO-1445-T4, month: "2026-10", as_of: "2026-10-01", given: {has_earned_income: false}, expect: false}
+  - {id: CO-1445-T5, title: "Second-pass N-6: a kinship caretaker's wages in a protective services case are not asked for (3.119.A)", month: "2026-10", as_of: "2026-10-01", given: {is_protective_services_child_care_case: true, has_earned_income: true, cccap_is_household_child: false}, expect: false}
