@@ -361,7 +361,7 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 170.3 (period) | C: CO-708 outcome; dates NA |
 | 170.5 (not already receiving a program) | C: CO-708 (CO-2435) |
 | 170.6 (once in 12 months; once per pregnancy) | C: CO-708 (CO-2436, CO-2437) |
-| 180 preamble; 180.1.A.1-6; 180.1.B.1-2; 180.2.A.1-6 (CHP+ Express Lane) | **GAP: N-05 (P1).** 180.1.B is carried by CO-2440 `free_reduced_lunch_automatic` |
+| 180 preamble; 180.1.A.1-6; 180.1.B.1-2; 180.2.A.1-6 (CHP+ Express Lane) | C (coverage pass 2 fix, was GAP N-05): CO-4792, CO-4793 (S3550). 180.1.B is carried by CO-2440 `free_reduced_lunch_automatic` |
 | 200, 210 (benefits package) | NA: benefits, not eligibility (out of family scope) |
 | 310 (enrollment fee, repealed) | C: CO-213 records it (OQ-57) |
 | 320.1.A (under 101%: copayments waived except emergency $3 and urgent $1) | C: CO-2228 `band_a`, CO-3009, CO-2225 |
@@ -472,3 +472,25 @@ I checked each family question for its class, and checked whether its "Checked" 
 | RV2-ELE | child referred from a Free/Reduced Lunch application, opted in, declared 200.0% | `refer_to_single_streamlined_application` | automatic CHP+ enrollment (§ 180.1.A.2) |
 | RV2-65 | born 1961-11-05, no Medicare, $900 | `adult` / `eligible` | the same (F-06 holds) |
 | RV2-CHPB | child, application 2026-11-02, 205.2% | August `ineligible_before_coverage_period`; November `eligible_child`, `band_d` | the same (F-09 holds) |
+
+## Disposition (coverage pass 2)
+
+Fix round 2026-11-22 on `1743a1d`; code commit `b715ead`. New items CO-4790 to CO-4793; excerpt S3550 (10 CCR 2505-3 § 180, D-66); stored cases CO-202 to CO-205 (from RV2-MEC, RV2-NB, RV2-DSP, RV2-RC, hand derivations in the case comments; all four match). No household expectation already stored changed. No new open question.
+
+| ID | Disposition |
+|---|---|
+| N-01 (P1) | Fixed (`b715ead`): CO-539's adult arm tests G.4.a's minimum essential coverage condition, as CO-548 and CO-552 do. RV2-MEC (CO-202): `parent_caretaker` / `eligible` (was `none` / `ineligible_income`); CO-539-T6. |
+| N-02 (P1) | Fixed (`b715ead`): CO-550 takes age on the last day of the month before the determination month (new CO-4790); CO-552 and CO-1401 read CO-550. RV2-NB (CO-203): `needy_newborn` / `eligible` for November. Sweep of every upper age test in Medicaid/CHP+: fixed CO-559 and CO-2439's child arm and CO-1154's child arm (now CO-564); CO-2419's under-21 and under-22 limits (CO-4790); the dependent child's 18th birthday (new CO-4791, read by CO-539, CO-547, CO-552, CO-2430, CO-2869, CO-4205; CO-544 unchanged for its non-MAGI readers); CO-620 (Children's Buy-In, non-MAGI N2-3 at the coordinator's request; CO-620-T11/T12). Left on the determination date, with the reading recorded: CO-500's household ages (CO-500 precision: E builds the household as declared), CO-1179 (N-12), CO-2410 (N-11). Lower limits (19 for Adults, 16, 18 at responsibility) keep age on the determination date by design (CO-4790 precision). CO-509's under-19 arm is non-MAGI-shared; for MAGI the birthday month is carried by Cover All Coloradans (CO-1173 reads CO-564). |
+| N-03 (P1) | Fixed (`b715ead`): CO-500's filer and claimed-dependent arms take single steps (E.1.a.i-iii; E.1.b.i-iv, incl. a joint-filing spouse's dependents). RV2-DSP (CO-204): p1 {p1, p2}, 83.2%, `adult` / `eligible` (was {p1, p2, p3}, 175.7%); CO-500-T13 to T15. |
+| N-04 (P1) | Fixed (`b715ead`): CO-1402 and CO-1641 compare against the standard plus the 5% disregard (the income the category items grant eligibility at); CO-1403 also asks the earners of a household where any member requesting coverage is not compatible at that member's standard. RV2-RC (CO-205): p2 not compatible, p1 must document earnings (was compatible, no verification). |
+| N-05 (P1) | Fixed (`b715ead`): CHP+ Express Lane `chp_express_lane_status` (CO-4793, new CHP+ outcome) and `chp_express_lane_child_meets_requirements` (CO-4792), citing § 180 (S3550); CO-2442 keeps the Medicaid referral and points to it. RV2-ELE: CO-4792 true; the status is `enrolled` once the verification facts are stated (CO-4793-T1). |
+| N-06 (P2) | Fixed (`b715ead`): `statute_override` (42 CFR 435.603(d)(4) over § 8.100.4.D.1.a) on CO-545 to CO-548. |
+| N-07 (P2) | Fixed in part (`b715ead`): TMA reads the dependent child through CO-4791, so a child aging out keeps TMA to the end of that month. A child moving out: household facts are not dated within a month; the reading (state the household as it stood during that month) is recorded in CO-4205's precision. Accepted: a dated-membership fact would be the volume's first and is not needed for the aging-out case, the common one. |
+| N-08 (P2) | Fixed (`b715ead`): CO-1641 has the attested-above, data-below arm, citing D-317 (S3364); CO-1641-T4. |
+| N-09 (P3) | Fixed: CO-546 precision records the definition/G.5 difference. |
+| N-10 (P3) | Fixed: CO-558 and CO-559 precision read F.2's "viii" as ix. |
+| N-11 (P3) | Fixed: CO-2410 precision records the reading. |
+| N-12 (P3) | Fixed: CO-1179 precision records the age reading (the active-treatment reading was already recorded). |
+| F-16 (P2, carried) | Deferred P2: the Legal Immigrant Prenatal population needs CO-509's qualified-status arm split out (read by non-MAGI groups, whose fix round runs in parallel) before G.6.a's events can be applied; non-residency and incarceration are carried, and the remaining events are rare within a pregnancy period. |
+| F-18 (P2, carried) | Deferred P2: Difficulty of Care needs a payment fact and four care-recipient facts (co-residence, HCBS waiver or Buy-In enrollment, two foster counts) wired into CO-502; no stored case has such payments, and the round's usage went to the five P1s. |
+| OQ-810, OQ-811 | Checked lines now name the S10 search (SPA downloads tried; web search unavailable, out of credits again this round). |
