@@ -895,6 +895,8 @@ Resolution (Phase-10 open-question sweep): K-4 resolved: cccap_is_eligible_child
 
 Open-question classification pass (2026-11-22): the education limits by kind of activity are carried after all. cccap_education_activity_time_limit_reached (CO-2111) states in its meaning the limit for each kind (104 weeks for training or post-secondary education and for workforce training, 208 under an approved county plan, and 52 weeks for basic education, none for a teen parent in basic education; 3.111.G.4, S1412), so the person who supplies it applies the limit for the caretaker's activity and nothing is missing from the ledger. What stays open is a county's approved plan: a longer job search period than 13 weeks, or more weeks of education.
 
+Second-pass review (2026-11-22): the J.28 point is not a county-plan question. J.28 is the state rule's own exclusion and is now modeled (cccap_excluded_irregular_income, CO-4076, with cccap_irregular_income_quarterly_limit, CO-4075, read by cccap_person_unearned_income, CO-3916); its remaining reading is OQ-713. This question keeps only the county-plan periods.
+
 Class: blocked on a named document
 Owner: Child care policy owner (CDEC)
 Assumption: Job search counts for 13 weeks and education for the statewide limits, with no county extension.
@@ -2285,3 +2287,23 @@ Owner: Child care policy owner (CDEC)
 Assumption: Every period runs from the county's request; six months end on the same day of the sixth month after it.
 
 Checked 2026-11-22: 8 CCR 1403-1 3.111.H.5.e, 3.118.E, 3.119.B, F, G (D-87, version effective 2026-08-14, re-fetched 2026-11-22). None states the first day of the sixty days.
+
+### OQ-713. CCCAP: irregular income under $90 a quarter, measured by the month or by the thirty days
+
+Body: 8 CCR 1403-1 3.111.J.28 (S2858) excludes "Irregular income in the certification period that totals less than ninety dollars ($90) in any calendar quarter, such as slight fluctuations in regular monthly income and/or that which is received too infrequently or irregularly to be reasonably anticipated". CCCAP counts the income received in the prior thirty days (3.111.H.4-5), which can straddle two months and, near a quarter's start, two quarters; J.28 measures by calendar quarter. The volume excludes the month's infrequent or irregular receipt (infrequent_or_irregular_income_received, CO-3822) when the calendar quarter containing the month determined totals under $90 (cccap_excluded_irregular_income, CO-4076; infrequent_or_irregular_income_in_quarter, CO-4077), and leaves "slight fluctuations in regular monthly income" to the stated amounts, which a county-determined monthly figure (CO-3914) already averages. The other readings: the quarter of each receipt in the thirty days; "certification period" read as the twelve-month eligibility period, so a quarter not yet ended is projected. This was filed under OQ-162 (county plans) before the second-pass review. Items: CO-3916, CO-4076, CO-985.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: The month's irregular receipt is excluded when its calendar quarter's irregular receipts total under $90.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.111.H.4-5, J.28 (D-87, version effective 2026-08-14, re-fetched 2026-11-22). The rule does not reconcile the thirty-day income period with the calendar quarter.
+
+### OQ-714. LEAP: a household member other than the applicant who is serving a fraud penalty
+
+Body: 9 CCR 2503-7 3.751.563 (S2859): "Individuals who are found guilty of committing fraud, pursuant to section 26-1-127, C.R.S., in a prior program year shall be ineligible to participate in LEAP in the subsequent program year for the first violation, two program years for the second violation, and permanently for the third violation." 3.754.1.U (S2715) makes the applicant's conviction a factor for denial of the household (leap_applicant_is_serving_fraud_penalty, CO-3929). For any other member the rule makes the individual ineligible "to participate" but does not say how the household is affected: whether the member is left out of the household count with the income still counted (as 3.753.17 does for a member who does not meet the citizenship requirement), left out entirely, or the household denied. The volume models only the applicant's penalty; a penalized member who is not the applicant stays in the household and its count. Items: CO-3929, CO-1007.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: Only the applicant's penalty affects the household (denial); another member's penalty is not applied.
+
+Checked 2026-11-22: 9 CCR 2503-7 3.751.56-3.751.563, 3.753.17, 3.754.1.U (D-86, version effective 11/01/2025) and the amendments effective 11/01/2026 (D-173), which do not touch these sections. No section states the household effect of a non-applicant's penalty.
