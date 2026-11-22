@@ -101,6 +101,7 @@ outcomes:
     no_code:
       not_applicable: "No Express Lane referral, or the family did not opt in."
       refer_to_single_streamlined_application: "Referred to the full application."
+      verification_period_expired: "The 90 days of Express Lane eligibility while citizenship or identity was awaited have ended."
 
   - outcome: ma_ssi_related_category
     codes:
@@ -192,6 +193,7 @@ outcomes:
       medicaid_eligible: "Eligible for Medicaid, which carries the code."
       ineligible_oap_c: "Not eligible: OAP-C."
       ineligible_institution: "Not eligible: lives in an institution."
+      ineligible_before_application: "Not eligible: a month before the application (the program is not retroactive)."
 
   # ------------------------------------------------------------------- CHP+
   - outcome: chp_eligibility_status
