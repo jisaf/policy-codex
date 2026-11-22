@@ -1,0 +1,21 @@
+id: CO-4101
+name: "Medicaid: month is before any MAGI coverage can begin"
+identifier: ma_month_is_before_coverage_period
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the month is one in which the person cannot have MAGI Medical Assistance coverage from the application being determined: a month before the month of the person's birth, or a month before the month of application (ma_application_date) that is not a retroactive coverage month - no retroactive coverage was requested (ma_retroactive_coverage_requested, CO-4100), or the month is before the first month of the retroactive period (ma_retroactive_coverage_start_month, CO-557) (10 CCR 2505-10 § 8.100.3.E.1-2)."
+precision: "False, not unknown, where the date it needs is not stated: with no application date the outcomes answer whether the person meets the criteria in the month, as a screening does; with no eligibility start date (CO-557) a requested retroactive month is not marked. A month a continuous eligibility or pregnancy coverage period covers is never before the application without being a requested retroactive month, so the order in ma_magi_eligibility_status (CO-554), which tests this first, takes nothing from those periods. The retroactive period's length is the one CO-557 states (three months for an application before 2027; then one for an expansion adult and two for anyone else)."
+derived: [any, [otherwise, ["<", [month], [month_of, date_of_birth]], false], [otherwise, [all, ["<", [month], [month_of, ma_application_date]], [any, [not, [otherwise, ma_retroactive_coverage_requested, false]], ["<", [month], ma_retroactive_coverage_start_month]]], false]]
+sources: [S1503, S2411]
+implemented: engine
+tags: [ma, magi]
+rationale: "Final verification pass 2, P3-3 (docs/reviews/final2-medicaid-chp.md): the month-level MAGI outcomes answered 'meets the criteria in month m' for any month, so a stored household read pregnant / eligible in a month before the retroactive window, and a newborn read needy_newborn / eligible before his birth. ma_magi_eligibility_status (CO-554) reads this item first, as ma_oap_health_care_status (CO-1156) reports ineligible_before_application. No existing item states which months an application can cover: CO-557 states only the first month of the retroactive window."
+tests:
+  - {id: CO-4101-T1, as_of: "2026-09-20", month: "2026-05", title: "Retroactive coverage requested, window June to August: May is before it", given: {date_of_birth: "1996-08-14", ma_application_date: "2026-09-15", ma_retroactive_coverage_requested: true, ma_retroactive_coverage_start_month: "2026-06"}, expect: true}
+  - {id: CO-4101-T2, as_of: "2026-09-20", month: "2026-06", title: "Retroactive coverage requested: June is a retroactive month", given: {date_of_birth: "1996-08-14", ma_application_date: "2026-09-15", ma_retroactive_coverage_requested: true, ma_retroactive_coverage_start_month: "2026-06"}, expect: false}
+  - {id: CO-4101-T3, as_of: "2026-09-20", month: "2026-08", title: "No retroactive coverage requested: August, before the application month, cannot be covered", given: {date_of_birth: "1996-08-14", ma_application_date: "2026-09-15", ma_retroactive_coverage_requested: false}, expect: true}
+  - {id: CO-4101-T4, as_of: "2026-09-20", month: "2026-09", title: "The application month", given: {date_of_birth: "1996-08-14", ma_application_date: "2026-09-15", ma_retroactive_coverage_requested: false}, expect: false}
+  - {id: CO-4101-T5, as_of: "2026-09-20", month: "2026-07", title: "Born 2026-08-10: July is before his birth, even in a requested retroactive month", given: {date_of_birth: "2026-08-10", ma_application_date: "2026-09-15", ma_retroactive_coverage_requested: true, ma_retroactive_coverage_start_month: "2026-06"}, expect: true}
+  - {id: CO-4101-T6, as_of: "2026-09-20", month: "2026-05", title: "No application date stated: no month is marked", given: {date_of_birth: "1996-08-14"}, expect: false}

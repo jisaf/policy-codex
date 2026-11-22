@@ -1,0 +1,13 @@
+id: CO-4102
+name: Resides in a State Veterans Home
+identifier: resides_in_state_veterans_home
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the medical facility the person lives in on the determination date (residence_setting_type) is a State Veterans Home: a veterans' nursing home the State of Colorado operates. Not a private or other public nursing facility, even one that admits veterans."
+precision: "A fact about the facility, beside residence_setting_type, which states the kind of setting. Each program decides what follows from it: Medical Assistance reads it only for a person who receives a VA pension's Aid and Attendance or Unusual Medical Expenses portion (10 CCR 2505-10 § 8.100.5.K)."
+supplied_by: "The facility's name and licence on the admission record, or the applicant's statement."
+sources: [S2900]
+tags: [ma, ltc, income]
+rationale: "Final verification pass 2, F2-2 (docs/reviews/final2-medicaid-chp.md): § 8.100.5.K.2 (S2900) uses the VA Aid and Attendance and Unusual Medical Expenses portion as patient payment for a veteran or surviving spouse with no dependents in a State Veterans Home, and residence_setting_type (CO-3330) states only the kind of setting (nursing_facility), not who operates it. No fact said whether the person is in a State Veterans Home."
