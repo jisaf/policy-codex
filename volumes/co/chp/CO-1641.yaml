@@ -5,9 +5,10 @@ kind: derived
 type: yes/no
 scope: person-month
 program: CHP+
-meaning: "Whether the attested household income is reasonably compatible with the electronic data source's for CHP+, judged against the CHP+ upper income limit: both at or below it, both above it, or the attested figure at or below it and the data no more than ma_reasonable_compatibility_threshold_pct above the attested figure."
-derived: [any, [all, ["<=", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", ma_electronic_data_source_household_income_pct_fpl, chp_income_limit_pct_upper]], [all, [">", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper], [">", ma_electronic_data_source_household_income_pct_fpl, chp_income_limit_pct_upper]], [all, ["<=", ma_magi_household_income_pct_fpl, chp_income_limit_pct_upper], ["<=", ma_electronic_data_source_household_income_pct_fpl, ["*", ma_magi_household_income_pct_fpl, ["+", 1, ma_reasonable_compatibility_threshold_pct]]]]]
-sources: [S869, S864, S838]
+meaning: "Whether the attested household income is reasonably compatible with the electronic data source's for CHP+, judged against the CHP+ upper income limit plus the ma_magi_income_disregard_pct disregard (10 CCR 2505-3 § 150.2; the income up to which CHP+ grants eligibility, CO-704): both at or below it; the attested figure above it, whatever the data figure (both above, § 8.100.4.C.2.a.iii; or the data below, which Colorado's Medicaid and CHIP verification plan takes as attested, the person ineligible, with no further information requested); or the attested figure at or below it and the data no more than ma_reasonable_compatibility_threshold_pct above the attested figure."
+precision: "Coverage review 2, N-04 and N-08: the limit is compared with the disregard added, as CO-1402 compares the Medicaid standard, so an attestation within the disregard band (260% to 265%), on which CO-704 grants eligibility, is checked against the data rather than counted as above the limit. The attested-above, data-below combination is compatible, as F-12 made it for Medicaid: the verification plan (D-317, S3364) covers Medicaid and CHIP alike, and 10 CCR 2505-3 § 130.1 applies § 8.100.4.B's verification to CHP+."
+derived: [any, [">", ma_magi_household_income_pct_fpl, ["+", chp_income_limit_pct_upper, ma_magi_income_disregard_pct]], ["<=", ma_electronic_data_source_household_income_pct_fpl, ["+", chp_income_limit_pct_upper, ma_magi_income_disregard_pct]], ["<=", ma_electronic_data_source_household_income_pct_fpl, ["*", ma_magi_household_income_pct_fpl, ["+", 1, ma_reasonable_compatibility_threshold_pct]]]]
+sources: [S869, S864, S838, S3364, S243]
 implemented: engine
 tags: [verification, chp, income]
 accepts_from: [ma_magi_household_income_pct_fpl, ma_electronic_data_source_household_income_pct_fpl]
@@ -17,3 +18,5 @@ nearest: [CO-1402]
 tests:
   - {id: CO-1641-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.4, ma_electronic_data_source_household_income_pct_fpl: 1.8}, expect: true}
   - {id: CO-1641-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 2.0, ma_electronic_data_source_household_income_pct_fpl: 2.9}, expect: false}
+  - {id: CO-1641-T3, month: "2026-11", as_of: "2026-11-10", title: "Coverage review 2, N-04: attested 262% (within 260% plus the disregard), data 350% - not compatible; was true", given: {ma_magi_household_income_pct_fpl: 2.62, ma_electronic_data_source_household_income_pct_fpl: 3.5}, expect: false}
+  - {id: CO-1641-T4, month: "2026-11", as_of: "2026-11-10", title: "Coverage review 2, N-08: attested 280%, data 200% - taken as attested (ineligible), no documentation; was false", given: {ma_magi_household_income_pct_fpl: 2.8, ma_electronic_data_source_household_income_pct_fpl: 2.0}, expect: true}

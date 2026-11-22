@@ -56,7 +56,7 @@ programs:
   - id: CHP+
     prefix: chp_
     names: ["Child Health Plan Plus"]
-    outcomes: [chp_eligibility_status, chp_verification_status, chp_pending_verification_count, chp_earned_income_verification_is_pending]
+    outcomes: [chp_eligibility_status, chp_express_lane_status, chp_verification_status, chp_pending_verification_count, chp_earned_income_verification_is_pending]
   - id: SNAP
     prefix: snap_
     names: ["food assistance"]

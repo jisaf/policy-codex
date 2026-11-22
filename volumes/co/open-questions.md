@@ -2508,7 +2508,7 @@ Class: state policy choice
 Owner: Medicaid policy owner, Eligibility operations owner
 Assumption: The annualized income is one twelfth of the member's expected income for the calendar year of the determination, for every member with self-employment, seasonal or commission earnings; other members' income stays monthly.
 
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.4 and C.4.a (D-65, rule version effective 11/14/2026, S3356); 42 CFR 435.603(h) (D-34), which lets a State base current monthly income on a prorated portion of reasonably predictable income without fixing the period; Colorado's MAGI verification plan (D-317), which does not mention annualizing. No published rule states the period.
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.4 and C.4.a (D-65, rule version effective 11/14/2026, S3356); 42 CFR 435.603(h) (D-34), which lets a State base current monthly income on a prorated portion of reasonably predictable income without fixing the period; Colorado's MAGI verification plan (D-317), which does not mention annualizing. No published rule states the period. Not found (coverage review 2, 2026-11-22): Colorado's MAGI-based income methodology state plan page (template S10), which records the State's 435.603(h) budget-period elections; medicaid.gov's SPA downloads co-13-0030 to co-13-0060 (suffixes -mm, -mm1 to -mm4) hold only co-13-0045-mm1 (D-315, no S10), and a web search for the page could not be run (search service out of credits).
 
 ### OQ-811. § 8.100.4.C.5 read through 42 CFR 435.603(i): the premium tax credit income replaces the MAGI figure
 
@@ -2518,7 +2518,7 @@ Class: state policy choice
 Owner: Medicaid policy owner
 Assumption: The premium tax credit household income replaces the MAGI figure in each category's test (42 CFR 435.603(i)); C.5 does not make a person eligible in a category whose standard that income exceeds.
 
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.5 (D-65, S3357); 42 CFR 435.603(i) (D-34, S3358); 26 CFR 1.36B-1(d), (e), (h) (D-318, S3359); 45 CFR 155.410(e) (D-319, S3360); Colorado's MAGI state plan amendment CO-13-0045-MM1 (D-315), whose pages do not address 435.603(i). No published Colorado text says which group a person found eligible under C.5 is placed in.
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.4.C.5 (D-65, S3357); 42 CFR 435.603(i) (D-34, S3358); 26 CFR 1.36B-1(d), (e), (h) (D-318, S3359); 45 CFR 155.410(e) (D-319, S3360); Colorado's MAGI state plan amendment CO-13-0045-MM1 (D-315), whose pages do not address 435.603(i). No published Colorado text says which group a person found eligible under C.5 is placed in. Not found (coverage review 2, 2026-11-22): Colorado's state plan page S10 (MAGI-based income methodologies), which would record a 435.603(i) election; the search is the one recorded on OQ-810.
 
 ### OQ-812. Medicaid sponsor deeming (§ 8.100.3.K.1): which income of the sponsor counts
 
