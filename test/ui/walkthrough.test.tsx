@@ -346,7 +346,7 @@ describe("phase 13 retest fixes", () => {
     const w4 = walkOf("CO-01", "ma_patient_payment", "p1", "2026-10");
     for (const o of overrideNotes(w4)) {
       expect(o.via[0]).toBe(w4.root.name);
-      expect(o.via.length).toBeGreaterThan(1);
+      expect(o.via[o.via.length - 1]).toBe(engine.item(o.item)!.name);
     }
   });
 });

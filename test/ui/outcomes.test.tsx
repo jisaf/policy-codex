@@ -255,11 +255,13 @@ describe("phase 13 retest fixes: the household grid", () => {
     expect(host.querySelector(".family")?.textContent ?? "").not.toMatch(/ of of | is the files /);
   });
 
-  it("links the open question an outcome's reasoning carries (CO-01's family planning and OQ-215)", () => {
+  it("links the open questions an outcome's reasoning carries (CO-01's family planning)", () => {
     const hc = kase("CO-01");
     const pp = householdCodes(engine, map, hc).find((r) => r.person === "p2")!.programs.find((x) => x.program === "Medicaid")!;
     const qs = questionsBehind(engine, hc, cellOutcome(pp)!, "p2", caseMonth(hc));
-    if (pp.codes.some((c) => c.outcome === "ma_family_planning_status")) expect(qs).toContain("OQ-215");
+    // The outcome item's own open questions are among them (OQ-215 was on
+    // family planning until it was decided).
+    for (const q of engine.item(cellOutcome(pp)!)?.open ?? []) expect(qs).toContain(q);
     for (const q of qs) expect(vol.openQuestions.some((x) => x.id === q)).toBe(true);
   });
 });
