@@ -22227,3 +22227,40 @@ Document: D-7
 7 CFR 273.1(c)(4) (eCFR as of 2026-11-18, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/section-273.1
 
 > (4) *Foster care individuals.* Individuals placed in the home of relatives or other individuals or families by a Federal, State, or local governmental foster care program must be considered to be boarders. They cannot participate in the Program independently of the household providing the foster care services. Such foster care individuals may participate, along with a spouse or children living with them, as members of the household providing the foster care services, only at the request of the household providing the foster care.
+### S3680. Federal limited family planning group: not pregnant, and household income within the income standard established in the State plan; household income under § 435.603
+
+Document: D-32
+
+42 CFR 435.214(b)-(c) (text unchanged in the eCFR version current on 2026-11-22). https://www.ecfr.gov/current/title-42/part-435
+
+> (b) *Eligibility.* (1) The agency may provide Medicaid limited to the services described in paragraph (d) of this section to individuals (of any gender) who—
+>
+> (i) Are not pregnant; and
+>
+> (ii) Meet the income eligibility requirements at paragraph (c) of this section.
+>
+> (c) *Income standard.* (1) The income standard established in the State plan may not exceed the higher of the income standard for pregnant women in effect under—
+>
+> (2) The individual's household income is determined in accordance with § 435.603. The agency must indicate in its State plan the options selected by it under § 435.603(k).
+
+### S3681. Colorado State Plan S59: Individuals Eligible for Family Planning Services, household income at or below a standard established by the state (no floor)
+
+Document: D-315
+
+Colorado Medicaid State Plan Amendment CO-13-0045-MM1, page S59 (approved 12/18/2013, effective 01/01/2014), as transcribed from the page image (D-315:2574-2584). https://www.medicaid.gov/state-resource-center/medicaid-state-plan-amendments/downloads/co/co-13-0045-mm1.pdf
+
+> Eligibility Groups - Options for Coverage S59
+> Individuals Eligible for Family Planning Services
+> 42 CFR 435.214
+>
+> Individuals Eligible for Family Planning Services - The state elects to cover individuals who are not pregnant, and have household income at or below a standard established by the state, whose coverage is limited to family planning and related services and in accordance with provisions described at 42 CFR 435.214.
+
+### S3682. Medical Assistance required household: SSI and OAP-A recipients outside the household; the MAGI exception names SSI recipients (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.3.J.2, J.2.a (rule version 12735, effective 11/14/2026; D-65:1261-1263). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. Any family member who is receiving financial assistance from SSI or OAP-A is not considered a member of the Medical Assistance required household, is not counted as a member of the household, and the individual's income and resources are disregarded in making the determination of need for Medical Assistance.
+>
+> a. Exception: For MAGI Medical Assistance a family member who is receiving SSI, when appropriate can be counted as a member of the household and their income when appropriate can be considered in making the determination of eligibility for MAGI Medical Assistance. For treatment of income and household construction for MAGI Medical Assistance cases, see section 8.100.4.

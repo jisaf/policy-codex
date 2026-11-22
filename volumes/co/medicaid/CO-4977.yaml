@@ -1,0 +1,18 @@
+id: CO-4977
+name: "Medicaid: electronic data source household income on the limited Family Planning household size"
+identifier: ma_electronic_data_source_family_planning_income_pct_fpl
+kind: derived
+type: rate
+scope: person-month
+program: Medicaid
+meaning: "The monthly household income an electronic data source reports for the person's Medical Assistance household (the sum ma_electronic_data_source_household_income_pct_fpl, CO-1344, divides), as a fraction of the monthly federal poverty guideline for the limited Family Planning household size (ma_family_planning_household_size, CO-4976), for comparison with the attested Family Planning figure (CO-1153) at that category's standard."
+precision: "The data figure is CO-1344's sum over the same members; only the guideline's size differs, since § 8.100.4.E.3 counts the applicant as two for the category (OQ-204). The guideline is ma_family_planning_monthly_poverty_guideline (CO-4979), the one CO-1153 divides by; no rounding."
+derived: ["/", [sum, ma_magi_household_members, [of, [P], electronic_data_source_monthly_gross_income]], ma_family_planning_monthly_poverty_guideline]
+sources: [S864, S867, S614, S55]
+implemented: engine
+tags: [ma, magi, income]
+open: [OQ-204]
+nearest: [CO-1344]
+rationale: "Coverage review 3, C3-03 (2026-11-22): reasonable compatibility (CO-1402) compared the data source only at the full-coverage standard on the MAGI size; limited Family Planning's standard applies on the enlarged size, and CO-1344 states the data figure on the MAGI size only."
+tests:
+  - {id: CO-4977-T1, month: "2026-11", as_of: "2026-11-10", title: "Coverage review 3, RV3-FPRC: data source $8,000 for a single applicant, counted as two: 8,000 / (21,640 / 12) = 4.436", given: {ma_magi_household_members: [p1], ma_family_planning_household_size: 2, electronic_data_source_monthly_gross_income: 8000}, expect: 4.436229205175601}

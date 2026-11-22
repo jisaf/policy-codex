@@ -65,9 +65,9 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | MAGI; Tax-Filer; Tax Dependent; Non-Filer | C: CO-500, CO-075, CO-076 |
 | Adjusted Gross Income | C: CO-502, CO-080 |
 | Caretaker Relative | C: CO-2606 (state plan S25). OQ-540 (CCCAP half only) |
-| Dependent Child (under 18, or 18, a full-time student finishing by 19) | C: CO-4791 (in the month; C3-07), CO-544 (non-MAGI readers) |
+| Dependent Child (under 18, or 18, a full-time student finishing by 19) | C: CO-4791 (in the month; C3-07 fixed: CO-4978), CO-544 (non-MAGI readers) |
 | Dependent Relative | NA: no MAGI rule reads it (CO-4880 and CO-4622 are non-MAGI) |
-| Medical Assistance Required Household | C: CO-4204, CO-2201. J.2's use of it: see C3-05 |
+| Medical Assistance Required Household | C: CO-4204, CO-2201. J.2's use of it: C3-05 fixed (statute_override on CO-500) |
 | Application Date | C: CO-088 |
 | Alien; Citizen; Legal Immigrant; Legal Immigrant Prenatal | C: CO-002, CO-509 (F-16 deferred) |
 | Earned, Unearned and In-Kind Income | C for MAGI through C.1 (CO-502); the earned income disregards are NA (non-MAGI) |
@@ -80,7 +80,7 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | Minimal Verification; Questionable | C: CO-1403 to CO-1409 |
 | Minimum Essential Coverage | C: CO-085, CO-090 |
 | Qualified Hospital Presumptive Eligibility Site | C: CO-2432 |
-| Reasonable Compatibility; Reasonable Explanation | C: CO-1402, CO-1641 (C3-03) |
+| Reasonable Compatibility; Reasonable Explanation | C: CO-1402 (C3-03 fixed: Family Planning arms, CO-4977), CO-1641 |
 | Resident | C: CO-505, CO-2250 |
 | Secondary School | C: CO-544, CO-4791 (via `is_full_time_secondary_student_finishing_before_nineteen`) |
 | TMA | C: CO-2430, CO-4205 |
@@ -114,7 +114,7 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | D.3-D.7 (no waiting period; SSA appeals; voter registration) | NA: procedure |
 | E.1 (three retroactive months; services received; requirements met) | C: CO-557, CO-4100, CO-4101, CO-2472; Pub. L. 119-21 sec. 71112 through CO-2449 to CO-2451 |
 | E.2 (requested on the application or later) | C: CO-087, CO-4100 |
-| F.1.a (MAGI groups and Family Planning) | C: CO-551, CO-1154 (C3-01) |
+| F.1.a (MAGI groups and Family Planning) | C: CO-551, CO-1154 (C3-01 fixed: CO-1155 statute_override) |
 | F.1.b-j, l-m (non-MAGI groups) | NA (non-MAGI) |
 | F.1.k (meets a category but not citizenship: emergency only) | C: CO-1151, CO-554 (`emergency_only`). OQ-200 |
 | F.1.n (COVID testing group) | NA: expired with the public health emergency |
@@ -162,7 +162,7 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | I.2, I.3 (assignment of rights; third-party information) | NA: no eligibility effect modeled (a cooperation refusal is not a MAGI condition in the text) |
 | I.4 (free choice of provider) | NA |
 | J.1.a-d (choice between MAGI and SSI) | NA: the volume determines both |
-| J.2 (SSI and OAP-A recipients outside the household) | C for income (OAP and SSI are not MAGI income, CO-502). Membership: C3-05 (P2) |
+| J.2 (SSI and OAP-A recipients outside the household) | C for income (OAP and SSI are not MAGI income, CO-502). Membership: C3-05 fixed, statute_override on CO-500 (42 CFR 435.603(f), S3682) |
 | J.2.a (SSI recipients counted for MAGI) | C: CO-500, CO-502 |
 | J.3 (AND payment not counted) | C: CO-502 does not read it |
 | K.1 (sponsor income and resources) | C: CO-4551 to CO-4555, CO-503. OQ-812 |
@@ -183,7 +183,7 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | Q.2 (period start; programs) | C: CO-556, CO-2446, CO-2447 |
 | Q.3 (foster care exit to MAGI continuous eligibility) | C: CO-561 (`foster_care_exit`) |
 | R.1 (who may apply at a qualified hospital) | C: CO-2432, CO-2433, CO-2438, CO-3154 |
-| R.2.a-f (declared income and status by group) | C: CO-2439, CO-3151 to CO-3153, CO-2434. R.2.c: C3-01 (the same floor), OQ-590 |
+| R.2.a-f (declared income and status by group) | C: CO-2439, CO-3151 to CO-3153, CO-2434. R.2.c: C3-01 fixed (CO-2439 statute_override; S59), OQ-590, OQ-204 |
 | R.3, R.4, R.6, R.7 (certification; forwarding; appeals) | NA: procedure |
 | R.5 (presumptive period) | C: CO-2439 outcome (date-scoped) |
 | R.8, R.9 (not while enrolled; once per 12 months or per pregnancy) | C: CO-2435 to CO-2437 |
@@ -212,17 +212,17 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | C.1.c.i-iii (tax-exempt interest, foreign wages, Title II) | C: CO-502 |
 | C.1.d.i-ix (exclusions) | C: CO-502 reads none of them (lump sums are monthly receipts; SSI, VA, workers' compensation, child support not read); AI/AN exclusions through the stated taxable facts |
 | C.1.e.i-xv (allowable deductions) | C: CO-080 `pretax_deductions` |
-| C.1.f.i, f.i.1 (child's income in a parent's household) | C: CO-4558, CO-4568 (F-17 holds). **C3-04** (step parent) |
+| C.1.f.i, f.i.1 (child's income in a parent's household) | C: CO-4558, CO-4568 (F-17 holds). C3-04 fixed (stepchild role) |
 | C.1.f.ii, f.ii.1 (other tax dependents) | C: CO-4558, CO-563 |
 | C.1.f.iii (a child not living with a parent counts own income) | C: CO-4558 (the summing household) |
 | C.2 (reasonable opportunity, 30 days) | C: CO-1413, CO-1414. CHP+: OQ-813 |
-| C.2.a.i-iii (reasonable compatibility arms) | C: CO-1402, CO-1641 (N-04 and N-08 hold). OQ-302. **C3-03** (Family Planning), C3-06 |
+| C.2.a.i-iii (reasonable compatibility arms) | C: CO-1402, CO-1641 (N-04 and N-08 hold). OQ-302. C3-03 fixed (Family Planning arms), C3-06 fixed (CO-1642 member arm) |
 | C.2.b, b.i (explanation, then documents) | C: CO-1403, CO-1642 |
 | C.3 (self-employment ledger) | C: CO-1403 arm c (questionable only) |
 | C.4 (monthly budget) | C: CO-503, CO-504 |
-| C.4.a (annualized income) | C: CO-4556, CO-4557, CO-4559, CO-4567. OQ-810. **C3-02** (Family Planning), C3-08 |
+| C.4.a (annualized income) | C: CO-4556, CO-4557, CO-4559, CO-4567. OQ-810. C3-02 fixed (CO-4975, read by CO-1153 and CO-4567), C3-08 recorded in OQ-810 |
 | C.5 (premium tax credit income below 100%) | C: CO-4560 to CO-4564, CO-504. OQ-811 |
-| D.1 (5-point disregard) | C: CO-183, CO-545 to CO-548, CO-704, CO-1155, CO-1402, CO-1641, CO-3156, CO-4792 (C3-09: S678 uncited) |
+| D.1 (5-point disregard) | C: CO-183, CO-545 to CO-548, CO-704, CO-1155, CO-1402, CO-1641, CO-3156, CO-4792 (C3-09 fixed: CO-183 cites S678) |
 | D.1.a (for each qualifying program, as the last step) | C: `statute_override` to 435.603(d)(4) on CO-545 to CO-548 (N-06 holds); CO-539 (N-01 holds) |
 | D.1.b (no disregard when under the threshold) | C: the first arm of each category item |
 | E.1 (relationship to the tax filer as declared) | C: CO-500 |
@@ -231,18 +231,18 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | E.1.c.i-iii (exceptions to non-filer rules) | C: CO-1976, CO-563, `ma_custodial_parent` |
 | E.1.d.i-iv (non-filer household) | C: CO-500 non-filer arm (F-01 holds; CO-180) |
 | E.2 (pregnant woman counted with the expected children) | C: CO-501 |
-| E.3 (Family Planning counted as two in addition) | C: CO-1153, CO-3029. OQ-204. **C3-01** |
+| E.3 (Family Planning counted as two in addition) | C: CO-1153, CO-3029. OQ-204 (now needs Legal). C3-01 fixed (CO-4976 states the size) |
 | E.4 (married couples living together) | C: CO-500 (F-02 holds; CO-181) |
 | E.5 (child of separated parents filing jointly) | C: CO-1976, CO-500 |
 | E.6 (tax dependent and filer: dependent) | C: CO-500 (the filer arm requires not claimed) |
 | F.1 (presumptive groups: pregnant, child, Family Planning) | C: CO-558, CO-559, CO-3155 |
 | F.2.a (pregnant: attested, 195%, status unless ix) | C: CO-558 (N-10 reading recorded) |
 | F.2.b (child under 19, 142%) | C: CO-559 (birthday-month reading recorded) |
-| F.2.c (Family Planning presumptive, over 133% to 260%, not full coverage, counted as two) | C: CO-3155, CO-3152. OQ-590. C3-01 applies to the floor |
+| F.2.c (Family Planning presumptive, over 133% to 260%, not full coverage, counted as two) | C: CO-3155, CO-3152. OQ-590. C3-01 fixed (statute_override on CO-3155; full-coverage groups read from the declarations) |
 | F.3, F.4, F.6, F.7 (certification; forwarding; appeals) | NA: procedure |
 | F.5 (presumptive period) | C: date-scoped outcomes |
 | F.8, F.9 (not while enrolled; once per 12 months or per pregnancy) | C: CO-558, CO-559, CO-3155, CO-2435 to CO-2437 |
-| G.1 (eligible any time in the month, whole month) | C: CO-564, CO-4550, CO-4790, CO-4791, CO-550 (N-02 holds; CO-203). C3-07 |
+| G.1 (eligible any time in the month, whole month) | C: CO-564, CO-4550, CO-4790, CO-4791, CO-550 (N-02 holds; CO-203). C3-07 fixed (CO-4978 for the under-1 and under-18 limits) |
 | G.2, G.2.a (children 142%; through the 19th-birthday month) | C: CO-545, CO-564, CO-191 |
 | G.3 (parents and caretakers 68%; dependent child in the household) | C: CO-547, CO-192, CO-2606, CO-4791 |
 | G.3.a.i-vi (child considered living in the home) | C: `ma_caretaker_relative_of` (CO-2606) as stated; the absences are read through the stated household. OQ-612 |
@@ -253,9 +253,9 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | G.5.a.i (ends on failure to verify income in the reasonable opportunity period, first time only) | C: CO-566 (start-month pending check), CO-1624 |
 | G.6 (Legal Immigrant Prenatal) | C: CO-509 vii arm |
 | G.6.a.i-viii (ending events) | GAP, carried: F-16 (P2, deferred); ii and iv carried (CO-554, CO-505) |
-| G.7 (Eligible Needy Newborn, one year; retroactive; need not live with the mother) | C: CO-550, CO-4790, `mother_was_enrolled_in_medicaid_at_birth`. C3-07 |
+| G.7 (Eligible Needy Newborn, one year; retroactive; need not live with the mother) | C: CO-550, CO-4790, `mother_was_enrolled_in_medicaid_at_birth`, CO-4978. C3-07 fixed |
 | G.7.a (birth reported) | NA: procedure (the report is the case being stated) |
-| G.8 (Family Planning over 133% to 260%; residency and status; no full coverage) | C: CO-1154, CO-1155, CO-1153, CO-1176. OQ-204. **C3-01, C3-02, C3-03** |
+| G.8 (Family Planning over 133% to 260%; residency and status; no full coverage) | C: CO-1154, CO-1155, CO-1153, CO-1176. OQ-204 (needs Legal). C3-01, C3-02, C3-03 fixed (CO-4975 to CO-4977, CO-4979; CO-226, CO-227) |
 | H.1.a (psych/LTC under 21; extended at 21 in treatment; MAGI needs standard) | C: CO-2419 (CO-4790 ages). OQ-512 |
 | H.1.b-g (foster care, independent living, Alternatives to Foster Care, county custody, subsidized adoption, responsibility at 18 to 21) | C: CO-2419, CO-2414 to CO-2418, CO-2847, CO-3028 |
 | H.2.a, a.i-iii (former foster care to the 26th-birthday month; exclusions; out of state from 2023) | C: CO-549, CO-2420, CO-2421, CO-2853, CO-3025, CO-095 |
@@ -295,9 +295,9 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | 120.1.B (Title XIX eligible) | C: CO-705, CO-706, CO-707 read CO-1176 (F3-2 holds) |
 | 120.1.C (inmate or IMD patient; reentry 90 days) | C: CO-705, CO-706, CO-1105, CO-1104, CO-1749 |
 | 120.2 (no uninsured period) | C: no waiting-period item exists |
-| 130.1 (minimal verification per § 8.100.4.B) | C: CO-1416, CO-1641, CO-1642, CO-2219, CO-3634 (C3-06) |
+| 130.1 (minimal verification per § 8.100.4.B) | C: CO-1416, CO-1641, CO-1642, CO-2219, CO-3634 (C3-06 fixed) |
 | 140.1, 140.1.A.1-6, 140.1.B.1-2 (redetermination, ex parte, reconsideration) | NA: procedure; B.2's effective date through CO-088 (F-14) |
-| 150.1 (income per § 8.100.4.C) | C: CO-504 (C3-08 for the copayment band) |
+| 150.1 (income per § 8.100.4.C) | C: CO-504 (C3-08: the copayment band reading recorded in OQ-810) |
 | 150.2 (disregard per § 8.100.4.D) | C: CO-704, CO-1641, CO-4792 |
 | 170.1.A-C (presumptive: child over 142% to 260%; pregnant over 195% to 260%; status) | C: CO-708, CO-3151, CO-092 |
 | 170.2, 170.2.A, 170.4, 170.4.A-B (certification; forwarding; 45 days; appeals) | NA: procedure |
@@ -306,7 +306,7 @@ Key: **C** = carried by (the derivation was read; correct unless a finding is na
 | 180 preamble; 180.1.A.1-6; 180.1.B.1-2; 180.2.A, A.1-6 (CHP+ Express Lane) | C: CO-4792, CO-4793 (N-05 holds: RV2-ELE re-run, CO-4792 true; CO-4793-T1) |
 | 210 and the rest of 200 (benefits) | NA: benefit package, no eligibility condition |
 | 300, 310 (enrollment fee repealed) | C: CO-213 (no fee) |
-| 320.1.A-D (copayments by band and service) | C: CO-2223, CO-2225 to CO-2228, CO-2230, CO-3009 to CO-3012, `chp_copayment_income_band`. OQ-470. C3-08 |
+| 320.1.A-D (copayments by band and service) | C: CO-2223, CO-2225 to CO-2228, CO-2230, CO-3009 to CO-3012, `chp_copayment_income_band`. OQ-470, OQ-810 (C3-08 recorded) |
 | 320.1.C.3, D.3 (COVID lab copayments waived) | C: CO-2230, CO-3009 to CO-3012 |
 | 330.1 (AI/AN exempt) | C: CO-1989, CO-1990 |
 | 330.2 (5% yearly maximum) | C: CO-2224, CO-2229 |
@@ -387,3 +387,34 @@ In all, 69 stored expectations were re-run with 0 mismatches.
 | RV3-CPB | seasonal self-employed parent, $4,328 this month (240%), $34,624 a year (160%); claimed child | CHP+ `eligible_child`, `band_c` | `band_d` on the monthly figure (C3-08) |
 | RV3-NB1 | child born 2025-11-01 to a mother on Medical Assistance | `needy_newborn` in November 2026 | the year ended 2026-10-31 (C3-07) |
 | RV2-ELE, RV2-MECY, RV2-65, RV2-CHPB, RV2-NB (re-run as RV3-R2*) | as in pass 2 | as in the pass-2 fixed results | the same |
+
+## Disposition (coverage pass 3)
+
+Fix round, 2026-11-22, code commit `439c95e` on the fix worktree branch (base `dbb1159`). Texts re-read: § 8.100.4.G.8, E.3, C.1.f.i, C.2, C.4.a, D.1, F.2.c, G.7 and § 8.100.3.J.2, R.2.c (D-65, rule version 12735, effective 11/14/2026); Colorado State Plan page S59 (D-315:2574-2584); 42 CFR 435.214 (D-32; the eCFR text current on 2026-11-22 is the same) and 435.603(f), (k) (D-34). New excerpts S3680 (435.214(b)-(c)), S3681 (S59), S3682 (J.2, J.2.a). New items CO-4975 to CO-4979. No new open question; OQ-204, OQ-590 and OQ-810 updated.
+
+| ID | Pri | Disposition |
+|---|---|---|
+| C3-01 | P1 | **Fixed** (`439c95e`). The conflict is real: S59 covers individuals "who are not pregnant, and have household income at or below a standard established by the state", with no floor, and 435.214(c) makes the standard the one "established in the State plan"; G.8's floor on E.3's enlarged household excludes people S59 covers. The volume follows the state plan: ma_family_planning_income_in_band (CO-1155) tests only the 260% ceiling (plus the disregard), with a statute_override note; G.8's "not eligible for ... full coverage" is applied by CO-1154's order. Presumptive: CO-2439 drops the floor (the full-coverage groups are tested first) and CO-3155 reads F.2.c's full-coverage exclusion from the declarations (a child at or below the Children's standard, an adult at or below the Adults standard), each with a statute_override. CO-1131 (the floor) is no longer read. OQ-204 records the effect and is re-classed needs Legal (rule against approved state plan); OQ-590 notes it. Stored case CO-226 (RV3-FPH). |
+| C3-02 | P1 | **Fixed** (`439c95e`). The budget-period amount (lower of monthly and annualized, C.4.a) is now its own item, ma_budget_period_household_income (CO-4975), factored out of CO-4567 unchanged; CO-1153 divides it, so Family Planning reads the same income figure as every other MAGI test. RV3-FPA: 332.7% `ineligible_income` → 166.4% `limited_family_planning`; control RV3-FPM unchanged. Rule test CO-1153-T3. |
+| C3-03 | P1 | **Fixed** (`439c95e`). ma_income_is_reasonably_compatible (CO-1402), the one item CO-1403 reads, now applies its three C.2.a arms a second time at the Family Planning standard, on the category's own figures: the attested CO-1153 and the data source on the same size (new CO-4977; the enlarged size CO-4976 and its monthly guideline CO-4979 are shared with CO-1153). Compatible only when compatible at both. Stored case CO-227 (RV3-FPRC); control RV3-FPRCB stays compatible. |
+| C3-04 | P1 | **Fixed** (`439c95e`). CO-4558 tests `[has_relative_in, [child, stepchild], ...]`; CO-503's precision says so. Stored case CO-228 (RV3-STEP); control RV3-STEPN unchanged. Rule test CO-4558-T5. |
+| C3-05 | P2 | **Fixed** (`439c95e`). statute_override on CO-500: 42 CFR 435.603(f) (S162) over § 8.100.3.J.2 (S3682) for an OAP-A recipient in a MAGI household; J.2.a names SSI only. No answer change. |
+| C3-08 | P2 | **Recorded** in OQ-810 (the reviewer's first proposed fix): the lower-of-two figure applies to every test, the CHP+ copayment band (RV3-CPB: `band_c`, `band_d` on the monthly figure) and the Adults/Parent category included; the other reading of "Applicants who are found financially ineligible" is stated with its effect, and the Assumption now names the band. Not changed in code: which reading is right is the owner's policy choice under OQ-810, and the codex keeps C.4.a's per-test order. CO-2228 now lists OQ-810. |
+| C3-06 | P3 | **Fixed** (`439c95e`). CO-1642 mirrors CO-1403's member arm (an earner is asked when a member of the earner's household requesting coverage is not compatible at that member's CHP+ standard). Rule test CO-1642-T4. No stored value moved. |
+| C3-07 | P3 | **Fixed** (`439c95e`). New ma_age_on_first_day_of_determination_month (CO-4978), exact for "under N" limits with G.1's whole month; CO-550 (needy newborn, under 1) and CO-4791 (dependent child, under 18) read it. CO-4790 stays for the "through the end of the month" limits (19, 65). RV3-NB1: `needy_newborn` → not (child at 170%: CHP+ `eligible_child`); RV2-NB (born 2025-11-05) still `needy_newborn`. CO-2419 and CO-620 (non-MAGI, under-21 and Buy-In ages) also read CO-4790; not changed here, outside this family. |
+| C3-09 | P3 | **Fixed** (`439c95e`). CO-183 cites S678. |
+| F-16, F-18 | P2 | Carried, unchanged: the pass-2 deferral reasons hold. |
+
+**Stored cases added** (hand derivations in the case comments):
+- CO-226 (RV3-FPH): single adult, wages $1,995: MAGI 1,995 / 1,330.00 = 150.0%, `ineligible_income`; Family Planning size 2: 1,995 / 1,803.33 = 110.6% ≤ 260% + 5: `limited_family_planning` (was `ineligible_income`); data equal, compatible, no documentation.
+- CO-227 (RV3-FPRC): attests $3,000 (225.6%; 166.4% on size 2), data $8,000 (443.6% on size 2, above 265% and above 166.4% × 1.2 = 199.6%): not compatible (was compatible); earned income documentation required and pending.
+- CO-228 (RV3-STEP): stepfather $2,300, stepchild 16 $600 not required to file: income 2,300 / 1,803.33 = 127.5%; p1 `adult` / `eligible` (was `ineligible_income` at 160.8%), p2 `child` / `eligible`, CHP+ `ineligible_medicaid_eligible` (was CHP+ `eligible_child`).
+
+**Changed expectations** (old → new):
+- CO-01 and CO-02 p2 `ma_family_planning_status`: `ineligible_income` → `limited_family_planning`. p2 is 81, on Medicare, not fully covered, not pregnant: Family Planning size 1 + 2 - 1 = 2, 1,180 / 1,803.33 = 65.4%, within 260% after the disregard; with no floor (S59) the group applies.
+- Rule tests: CO-1155-T2 (133%: false → true), CO-2439-T10 ($1,900 alone, 1.054 on size 2: none → `limited_family_planning`), CO-2439-T16 (66-year-old, 0.9: none → `limited_family_planning`; still not adult), CO-3155-T3 (given a date of birth; still false, now because the Adults standard applies on the declaration). CO-1402-T1 to T8 now state the Family Planning figures (0.75 of the MAGI figures), answers unchanged.
+- UI pins: departures 35 → 39 (CO-1155, CO-2439, CO-3155, CO-500); CO-191 read by 24 → 25 households (CO-228) and reaches 39 → 42 (CO-226 to CO-228).
+
+**Re-run, before and after** (every stored case, 125 before; every Medicaid and CHP+ outcome plus the income, band, compatibility and verification items for every person, and all 13 probes): stored expectations 3,228/3,228 before; 3,255/3,255 after (27 new, 2 re-pinned). The probes move exactly as the review's "Rule" column says (RV3-FPH, FPA, FPRC, STEP, NB1), the controls RV3-FPM, FPRCB, STEPN and the pass-2 re-runs RV3-R2* keep their status values, and RV3-CPB keeps `band_c` (C3-08 recorded, not changed). Unpinned values that moved in stored cases, all explained by the fixes: `ma_family_planning_status` `ineligible_income` → `limited_family_planning` for CO-152 p2, CO-153 p1 and p2, CO-154 p2, CO-188 p2 and CO-204 p3 (C3-01: not fully covered, at or below 133% on size plus one); CO-182 p1's Family Planning ratio 166.4% → 55.5% (C3-02, annualized; status unchanged); `ma_income_is_reasonably_compatible` true → null for 47 person-months in 26 cases and `ma_requires_verification_of_earned_income` false → null for 14 (C3-03: attestation above the full-coverage standard but within Family Planning's, and the case states no data source figure), which reaches one outcome, CO-76 p1 `ma_earned_income_verification_is_pending` false → null (the case is already incomplete: its Family Planning status was null before). Nothing else moved.
+
+Checks: `node scripts/sync-manifest.mjs co`; governance 0 errors; `CHECK_BASE=origin/main npm run check` OK (conformance self-check OK); `npm run typecheck` clean; `npm test` 1,047/1,047.

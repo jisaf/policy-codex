@@ -5,15 +5,16 @@ kind: derived
 type: rate
 scope: person-month
 program: Medicaid
-meaning: The person's MAGI household income as a fraction of the monthly poverty guideline for the person's MAGI household with the applicant counted as ma_family_planning_applicant_household_count persons - 10 CCR 2505-10 § 8.100.4.E.3 counts an individual applying for the limited Family Planning category "as a household of two in addition to any other household members".
-precision: "\"A household of two in addition to any other household members\" is read as the applicant counting as two people, so the size is ma_magi_household_size (CO-501), which counts the applicant once, plus ma_family_planning_applicant_household_count (CO-3029) less one (OQ-204). The table is read beyond its last row with federal_poverty_guideline_annual_each_additional (P51), as ma_magi_household_income_pct_fpl (CO-504) reads it; no rounding."
-derived: ["/", ma_magi_household_income, ["/", [lookup_extended, federal_poverty_guideline_annual_table, ["-", [+, ma_magi_household_size, ma_family_planning_applicant_household_count], 1], federal_poverty_guideline_annual_each_additional], 12]]
-sources: [S614, S613]
+meaning: The person's MAGI household income for the budget period (ma_budget_period_household_income, CO-4975, which applies § 8.100.4.C.4.a's annualized income) as a fraction of the monthly poverty guideline for the person's MAGI household with the applicant counted as ma_family_planning_applicant_household_count persons - 10 CCR 2505-10 § 8.100.4.E.3 counts an individual applying for the limited Family Planning category "as a household of two in addition to any other household members".
+precision: "\"A household of two in addition to any other household members\" is read as the applicant counting as two people, so the size is ma_family_planning_household_size (CO-4976): ma_magi_household_size (CO-501), which counts the applicant once, plus ma_family_planning_applicant_household_count (CO-3029) less one (OQ-204). Coverage review 3, C3-02: the income is the budget-period amount every other MAGI test divides (CO-4975, read by CO-4567), so a self-employed, seasonal or commission earner over the band on the month's income is tested on the annualized income, as C.4.a requires for every applicant found financially ineligible on monthly income. The guideline is ma_family_planning_monthly_poverty_guideline (CO-4979), the table read beyond its last row with federal_poverty_guideline_annual_each_additional (P51), as ma_magi_household_income_pct_fpl (CO-504) reads it; no rounding."
+derived: ["/", ma_budget_period_household_income, ma_family_planning_monthly_poverty_guideline]
+sources: [S614, S613, S3356]
 open: [OQ-204]
 implemented: engine
 tags: [ma, magi, income, household]
 nearest: [CO-504]
 rationale: "ma_magi_household_income_pct_fpl (CO-504) uses the household size itself; § 8.100.4.E.3 gives the family planning applicant a larger household, so the same income is a smaller percentage. ma_family_planning_income_in_band (CO-1155) needs it."
 tests:
-  - {id: CO-1153-T1, as_of: "2026-10-01", month: "2026-10", title: "Household of 3 counted as 4: 5500 / (33000/12) = 2.0", given: {ma_magi_household_income: 5500, ma_magi_household_size: 3}, expect: 2.0}
-  - {id: CO-1153-T2, as_of: "2026-10-01", month: "2026-10", title: "Household of 8 counted as 9: 61400 / ((55720 + 5680)/12) = 12", given: {ma_magi_household_income: 61400, ma_magi_household_size: 8}, expect: 12}
+  - {id: CO-1153-T1, as_of: "2026-10-01", month: "2026-10", title: "Household of 3 counted as 4: 5500 / (33000/12) = 2.0", given: {ma_budget_period_household_income: 5500, ma_magi_household_size: 3}, expect: 2.0}
+  - {id: CO-1153-T2, as_of: "2026-10-01", month: "2026-10", title: "Household of 8 counted as 9: 61400 / ((55720 + 5680)/12) = 12", given: {ma_budget_period_household_income: 61400, ma_magi_household_size: 8}, expect: 12}
+  - {id: CO-1153-T3, as_of: "2026-11-10", month: "2026-11", title: "Coverage review 3, C3-02 (RV3-FPA): a single self-employed seasonal adult with $6,000 this month and $36,000 expected for the year; annualized $3,000 / (21,640 / 12) = 1.664, in the band (was 6,000 / 1,803.33 = 3.327, over it)", given: {ma_magi_household_income: 6000, ma_annualized_household_income: 3000, ma_magi_household_size: 1}, expect: 1.6635859519408502}

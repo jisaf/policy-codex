@@ -1392,7 +1392,7 @@
     p2:
       ma_emergency_medicaid_status: {"2026-10": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-10": ineligible_sex_or_age}
-      ma_family_planning_status: {"2026-10": ineligible_income}  # coverage round F-02: family planning household 1 + 2 - 1 = 2; 1,180 / (21,640 / 12 = 1,803.33) = 65.4%, not over 133% (was limited_family_planning at 3,210 / 2,276.67 = 141.0%)
+      ma_family_planning_status: {"2026-10": limited_family_planning}  # coverage pass 3 C3-01: family planning household 1 + 2 - 1 = 2; 1,180 / (21,640 / 12 = 1,803.33) = 65.4%, within 260% (after the 5% disregard); not pregnant, not fully covered, no age limit; the approved state plan page S59 (S3681) sets no floor, so the rule's 133% floor no longer applies (was ineligible_income; before the coverage round F-02, limited_family_planning at 141.0%)
       ma_oap_health_care_status: {"2026-10": not_oap_recipient}
       ma_protected_group_category: {"2026-10": none}
       # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
@@ -3429,7 +3429,7 @@
     p2:
       ma_emergency_medicaid_status: {"2026-11": not_applicable_status_met}
       ma_bccp_eligibility_status: {"2026-11": ineligible_sex_or_age}
-      ma_family_planning_status: {"2026-11": ineligible_income}  # coverage round F-02: family planning household 1 + 2 - 1 = 2; 1,180 / (21,640 / 12 = 1,803.33) = 65.4%, not over 133% (was limited_family_planning at 3,210 / 2,276.67 = 141.0%)
+      ma_family_planning_status: {"2026-11": limited_family_planning}  # coverage pass 3 C3-01: family planning household 1 + 2 - 1 = 2; 1,180 / (21,640 / 12 = 1,803.33) = 65.4%, within 260% (after the 5% disregard); not pregnant, not fully covered, no age limit; the approved state plan page S59 (S3681) sets no floor, so the rule's 133% floor no longer applies (was ineligible_income; before the coverage round F-02, limited_family_planning at 141.0%)
       ma_oap_health_care_status: {"2026-11": not_oap_recipient}
       ma_protected_group_category: {"2026-11": none}
       # Phase 8 outcomes (Home Care Allowance, burial, diversion, LEAP benefit, CCCAP parent fee, SUN Bucks).
@@ -33228,3 +33228,396 @@
     p1:
       snap_countable_liquid_resources: 4000
       snap_household_countable_resources: 4000
+- id: CO-226
+  title: 'Single adult at 150% of the poverty guideline: over the Adult limit, limited Family Planning (coverage pass 3 C3-01)'
+  # Coverage pass 3 (2026-11-22), promoted from the reviewer's probe RV3-FPH. Determination 2026-11-10; application 2026-11-02.
+  # p1, 40, single filer, wages $1,995 a month, no other income; the data source reports the same $1,995.
+  # MAGI household 1: 1,995 / (15,960 / 12 = 1,330.00) = 150.0%; less the 5-point disregard 145.0% > 133% (Adults): ineligible_income.
+  # Family Planning household 1 + 2 - 1 = 2 (E.3): 1,995 / (21,640 / 12 = 1,803.33) = 110.6%; less the disregard 105.6% <= 260%: in the band.
+  # G.8's floor ("greater than 133%") is not tested: the approved state plan page S59 sets no floor (statute_override on CO-1155),
+  # so p1, not pregnant and not fully covered, is limited_family_planning (was ineligible_income: 110.6% is not over 133%).
+  # Compatibility: the data equals the attestation, compatible at both standards; no earned income documentation.
+  as_of: '2026-11-10'
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: '2026-11-02'
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: '2026-01-01'
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: '1986-03-01'
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        has_self_employment_seasonal_or_commission_earnings: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1995
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+        electronic_data_source_monthly_gross_income: 1995
+      relationships: []
+  expect:
+    p1:
+      ma_magi_household_size: 1
+      ma_family_planning_household_size: 2
+      ma_magi_household_income: {"2026-11": 1995}
+      ma_magi_household_income_pct_fpl: {"2026-11": 1.5}
+      ma_magi_eligibility_status: {"2026-11": ineligible_income}
+      ma_family_planning_household_income_pct_fpl: {"2026-11": 1.1062846580406656}
+      ma_family_planning_income_in_band: {"2026-11": true}
+      ma_family_planning_status: {"2026-11": limited_family_planning}
+      ma_income_is_reasonably_compatible: {"2026-11": true}
+      ma_requires_verification_of_earned_income: {"2026-11": false}
+- id: CO-227
+  title: Family Planning attestation not reasonably compatible with the data source (coverage pass 3 C3-03)
+  # Coverage pass 3 (2026-11-22), promoted from the reviewer's probe RV3-FPRC. Determination 2026-11-10; application 2026-11-02.
+  # p1, 40, single filer, attests wages of $3,000 a month; the electronic data source (matched) reports $8,000.
+  # MAGI household 1: 3,000 / 1,330.00 = 225.6%, above 133% + 5 (Adults): ineligible_income; at the full-coverage standard the
+  # attestation is above it, so compatible there (C.2.a.iii / F-12).
+  # Family Planning household 2: attested 3,000 / 1,803.33 = 166.4%, within 260% + 5: limited_family_planning on the attestation.
+  # At that standard (C.2.a.ii): data 8,000 / 1,803.33 = 443.6% is above 265%, and above 166.4% x 1.2 = 199.6%: not reasonably
+  # compatible (was compatible: only the full-coverage standard was compared). C.2.b: p1 gives a reasonable explanation or
+  # documents; ma_requires_verification_of_earned_income true, and the earned income element is pending (no document received).
+  as_of: '2026-11-10'
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: '2026-11-02'
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: '2026-01-01'
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: false
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: '1986-03-01'
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+        ma_is_requesting_coverage: true
+        has_self_employment_seasonal_or_commission_earnings: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 3000
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+        electronic_data_source_monthly_gross_income: 8000
+      relationships: []
+  expect:
+    p1:
+      ma_magi_eligibility_status: {"2026-11": ineligible_income}
+      ma_family_planning_household_income_pct_fpl: {"2026-11": 1.6635859519408502}
+      ma_electronic_data_source_family_planning_income_pct_fpl: {"2026-11": 4.436229205175601}
+      ma_family_planning_status: {"2026-11": limited_family_planning}
+      ma_income_is_reasonably_compatible: {"2026-11": false}
+      ma_requires_verification_of_earned_income: {"2026-11": true}
+      ma_earned_income_verification_is_pending: {"2026-11": true}
+- id: CO-228
+  title: 'Stepfather claims his stepchild of 16, whose legal parent is not in the case: the child''s income below the filing threshold is excluded (coverage pass 3 C3-04)'
+  # Coverage pass 3 (2026-11-22), promoted from the reviewer's probe RV3-STEP. Determination 2026-11-10; application 2026-11-02.
+  # p1, 46, files and claims his stepchild p2 (16); p2's legal parent is not in the case. p1 earns $2,300; p2 earns $600 and
+  # is not required to file. Both MAGI households are p1 and p2 (E.1.a filer; E.1.b claimed dependent): size 2.
+  # C.1.f.i excludes the income of a child "included in the household of their natural, adopted, or step parent" unless the child
+  # is over the filing threshold: p2's $600 is left out. Household income 2,300 / (21,640 / 12 = 1,803.33) = 127.5%.
+  # p1: 127.5% > 68% + 5 (Parent and Caretaker Relative), <= 133% + 5 (Adults): adult, eligible.
+  # p2: 127.5% <= 142% (Children): child, eligible; CHP+ ineligible_medicaid_eligible.
+  # Before the fix the stepchild's $600 counted: 2,900 / 1,803.33 = 160.8%, p1 ineligible_income and p2 CHP+ eligible_child.
+  as_of: '2026-11-10'
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: male
+        immigration_status: us_citizen
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: '2026-11-02'
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: '2026-01-01'
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: '1980-03-01'
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: true
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 2300
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+      relationships: []
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        has_qualifying_military_service: false
+        medicare_part_b_enrolled: false
+        state_of_residence: CO
+        is_pregnant: false
+        expected_number_of_children: 0
+        qualifying_quarters: 0
+        medicare_part_a_entitled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_lives_apart_due_to_separation_or_pending_divorce: false
+        ma_eligibility_was_erroneously_granted: false
+        sex: female
+        immigration_status: us_citizen
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        dependent_child_has_minimum_essential_coverage: true
+        ma_application_date: '2026-11-02'
+        ma_retroactive_coverage_requested: false
+        ma_eligibility_start_date: '2026-01-01'
+        documentation_not_reasonably_available: false
+        earned_income_attestation_is_questionable: false
+        unearned_income_attestation_is_questionable: false
+        earned_income_verification_document_received: true
+        earned_income_verified_by_electronic_data_source: true
+        ma_is_incapable_of_indicating_intent: false
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_prior_enrollment_category: none
+        date_of_birth: '2010-05-01'
+        dwelling_id: h1
+        is_claimed_by_filer_outside_case: false
+        is_required_to_file_tax_return_excluding_social_security: false
+        is_sponsored_non_citizen: false
+        adult_financial_program_received: none
+        ma_failed_to_pursue_potential_resources_or_income: false
+        ma_refuses_to_release_patient_payment: false
+        ma_wawd_limited_disability_finding: false
+        ma_continuous_eligibility_program: magi
+        continuous_eligibility_period_start_month: 2020-01
+        is_screened_in_need_of_breast_or_cervical_cancer_treatment: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 600
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        shelter_costs_paid_by_others: 0
+        has_emergency_medical_condition: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_needy_young_person_basis: none
+      relationships: []
+  relationships:
+  - - stepparent
+    - p1
+    - p2
+  - - tax_filer
+    - p1
+    - p2
+  expect:
+    p1:
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_income_members: [p1]
+      ma_magi_household_income: {"2026-11": 2300}
+      ma_magi_category: {"2026-11": adult}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+    p2:
+      ma_magi_household_members: [p1, p2]
+      ma_magi_household_income: {"2026-11": 2300}
+      ma_magi_category: {"2026-11": child}
+      ma_magi_eligibility_status: {"2026-11": eligible}
+      chp_eligibility_status: {"2026-11": ineligible_medicaid_eligible}

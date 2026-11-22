@@ -10,4 +10,5 @@ value: 1.33
 sources: [S613]
 tags: [ma, magi, income, state_election]
 nearest: [CO-193, CO-195]
+precision: "Not read since coverage review 3 (C3-01): the approved state plan page S59 (S3681) sets no floor for the 42 CFR 435.214 group, so ma_family_planning_income_in_band (CO-1155) and the presumptive tests (CO-2439, CO-3155) carry a statute_override and test only the ceiling (OQ-204). The figure is kept as the rule states it."
 rationale: "No existing parameter states the family planning floor. ma_income_limit_adult_pct (CO-193) is also 1.33 but is the Adults category ceiling; § 8.100.4.G.8 states its own floor, which could move separately. ma_family_planning_income_in_band (CO-1155) needs it."

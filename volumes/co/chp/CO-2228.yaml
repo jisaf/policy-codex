@@ -13,7 +13,7 @@ accepts_from: [ma_magi_household_income_pct_fpl]
 sources: [S1504]
 implemented: engine
 tags: [chp, income]
-open: [OQ-470]
+open: [OQ-470, OQ-810]
 rationale: "OQ-60: the § 320.1 copayment schedule is keyed by family income band; no item stated the band."
 tests:
   - {id: CO-2228-T1, as_of: "2026-10-01", given: {ma_magi_household_income_pct_fpl: 1.00}, expect: band_a}
