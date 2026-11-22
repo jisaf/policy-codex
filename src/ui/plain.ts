@@ -39,6 +39,30 @@ const isBlock = (e: unknown) => {
   return op !== null && BLOCK_OPS.has(op);
 };
 
+/** A line longer than this reads as several: its conjunctions, sums and
+ *  nested conditions are broken into bulleted clauses (`long`). */
+export const LONG_LINE = 150;
+
+/** Relationship roles in words, read after "this person is the ... of that
+ *  person" or "joined to this person by ...": `legal_guardian` -> "legal
+ *  guardian", `has_primary_responsibility_for` -> "person with primary
+ *  responsibility"; several joined with commas and a final "or". */
+const REL_WORDS: Record<string, string> = {
+  buys_prepares_with: "person buying and preparing food with them",
+  holds_out_as_spouse_with: "person held out as a spouse",
+  has_primary_responsibility_for: "person with primary responsibility",
+  in_primary_care_of: "person in the primary care",
+  legal_guardian: "legal guardian",
+  shares_heat_with: "person sharing heating costs with them",
+  tax_filer: "tax filer",
+  tax_dependent: "tax dependent",
+};
+export function relWords(rels: readonly string[]): string {
+  const ws = (rels ?? []).map((r) => REL_WORDS[r] ?? r.replace(/_/g, " "));
+  if (ws.length <= 1) return ws.join("");
+  return `${ws.slice(0, -1).join(", ")} or ${ws[ws.length - 1]}`;
+}
+
 /** Joins parts, merging adjacent strings. */
 function cat(...xs: Array<PlainPart | PlainPart[]>): PlainPart[] {
   const out: PlainPart[] = [];
@@ -67,6 +91,16 @@ class Renderer {
     /** The item whose rule this is: its options label the case results. */
     private subject: Item | null = null,
   ) {}
+
+  /** Inside a block over other people (reachable, filter, sum, exists) `P`
+   *  is the other end ("that person"), as the engine's own text says it. */
+  private other = 0;
+
+  /** Renders `f` with `P` read as "that person". */
+  over<T>(f: () => T): T {
+    this.other++;
+    try { return f(); } finally { this.other--; }
+  }
 
   item(id: string): Item | undefined {
     return this.engine.item(id);
@@ -143,7 +177,7 @@ class Renderer {
     const p = (x: E) => this.phrase(x);
     const o = (x: E) => this.operand(x);
     switch (op) {
-      case "P": return ["this person"];
+      case "P": return [this.other ? "that person" : "this person"];
       case "det_date": return ["the determination date"];
       case "det_month": return ["the month of the determination date"];
       case "month": return ["the month"];
@@ -216,9 +250,18 @@ class Renderer {
       case "in_group": return cat(p(e[1]), " is in ", p(e[2]));
       case "lookup": return cat("the ", p(e[1]), " figure for ", p(e[2]));
       case "band": return cat("the ", p(e[1]), " figure for the band containing ", p(e[2]));
-      case "filter": return cat("the people in ", p(e[1]), " for whom ", p(e[2]));
-      case "sum": return cat("the total of ", p(e[2]), " over the people in ", p(e[1]));
-      case "rel": return [`this person is the ${(e[1] as string[]).join(" or ")} of `, ...p(e[2])];
+      case "filter": return cat("the people in ", p(e[1]), " for whom ", this.over(() => p(e[2])));
+      case "sum": return cat("the total of ", this.over(() => p(e[2])), " over the people in ", p(e[1]));
+      case "rel": return [`this person is the ${relWords(e[1] as string[])} of `, ...p(e[2])];
+      case "reachable":
+        return e.length > 2
+          ? cat(`the people joined to this person by ${relWords(e[1] as string[])}, crossing only where `, this.over(() => p(e[2])))
+          : [`the people joined to this person by ${relWords(e[1] as string[])}`];
+      case "exists": return cat("someone in ", p(e[1]), " is such that ", this.over(() => p(e[2])));
+      case "exists_related": return cat(`someone this person is the ${relWords(e[1] as string[])} of is such that `, this.over(() => p(e[2])));
+      case "each": return cat("in every one of ", p(e[1]), ", ", p(e[2]));
+      case "some_month": return cat("in at least one of ", p(e[1]), ", ", p(e[2]));
+      case "sum_months": return cat("the total over ", p(e[1]), " of ", p(e[2]));
       case "all": case "any": {
         const kids = e.slice(1);
         if (kids.length === 1) return p(kids[0]);
@@ -290,7 +333,8 @@ class Renderer {
         ...(tail ? [{ depth, parts: [tail] }] : []),
       ];
     }
-    return [{ depth, parts: cat(lead, this.phrase(e), tail ? ", " + tail : "") }];
+    if (tail) return [{ depth, parts: cat(lead, this.phrase(e), ", " + tail) }];
+    return this.long(e, depth, lead);
   }
 
   bullet(e: E, depth: number): PlainLine[] {
@@ -302,7 +346,7 @@ class Renderer {
       return this.condition(e, depth, "• ", "");
     }
     if (isBlock(e) && op !== "all" && op !== "any") return this.value(e, depth, "• ");
-    return [{ depth, parts: cat("• ", this.phrase(e)) }];
+    return this.long(e, depth, "• ");
   }
 
   /** A value as lines: a case becomes If/Otherwise lines, anything else one
@@ -310,6 +354,24 @@ class Renderer {
   value(e: E, depth: number, lead: string): PlainLine[] {
     const op = opOf(e);
     if (op === "case") return this.caseLines(e, depth);
+    // The people of a group that is itself worked out ("the people joined
+    // to this person by ..., crossing only where ...") and then narrowed.
+    if (op === "filter" && isBlock(e[1])) {
+      return [
+        ...this.value(e[1], depth, lead),
+        { depth, parts: ["keeping only the people for whom:"] },
+        ...this.over(() => this.value(e[2], depth + 1, "")),
+      ];
+    }
+    // A total over a group described at length: the total first, then who.
+    if (op === "sum" && (isBlock(e[1]) || partsText(this.phrase(e[1])).length > 60)) {
+      return [
+        { depth, parts: cat(lead, "the total, over the people described below, of:") },
+        ...this.over(() => this.value(e[2], depth + 1, "")),
+        { depth, parts: ["where the people are:"] },
+        ...this.value(e[1], depth + 1, ""),
+      ];
+    }
     if (op === "all" || op === "any" || (op === "not" && isBlock(e[1]))) {
       return this.condition(e, depth, lead + (lead ? "" : ""), "");
     }
@@ -318,16 +380,110 @@ class Renderer {
       || (op === "reachable" && e.length > 2 && isBlock(e[2]))) {
       let head: PlainPart[];
       if (op === "exists") head = cat("someone in ", this.phrase(e[1]), " is such that");
-      else if (op === "exists_related") head = [`someone this person is the ${(e[1] as string[]).join(" or ")} of is such that`];
+      else if (op === "exists_related") head = [`someone this person is the ${relWords(e[1] as string[])} of is such that`];
       else if (op === "each") head = cat("in every one of ", this.phrase(e[1]));
       else if (op === "some_month") head = cat("in at least one of ", this.phrase(e[1]));
       else if (op === "filter") head = cat("the people in ", this.phrase(e[1]), " for whom");
       else if (op === "sum") head = cat("the total, over the people in ", this.phrase(e[1]), ", of");
-      else head = [`the people joined to this person by ${(e[1] as string[]).join(" or ")}, crossing only where`];
-      const body = op === "exists_related" || op === "reachable" ? e[2] : e[2];
-      return [{ depth, parts: cat(lead, head, ":") }, ...this.value(body, depth + 1, "")];
+      else head = [`the people joined to this person by ${relWords(e[1] as string[])}, crossing only where`];
+      const people = op === "exists" || op === "exists_related" || op === "filter" || op === "sum" || op === "reachable";
+      const body = () => this.value(e[2], depth + 1, "");
+      return [{ depth, parts: cat(lead, head, ":") }, ...(people ? this.over(body) : body())];
     }
-    return [{ depth, parts: cat(lead, this.phrase(e)) }];
+    return this.long(e, depth, lead);
+  }
+
+  /** One expression on one line, or, when that line would be longer than
+   *  LONG_LINE, a short head and the parts it joins as bulleted clauses one
+   *  level down: a long sum is "the total of:" and one bullet per term, a
+   *  long "x, but not less than 0" is "the following, but not less than
+   *  0:" and x below it, a long comparison names its short side first. */
+  long(e: E, depth: number, lead: string): PlainLine[] {
+    const one = cat(lead, this.phrase(e));
+    if (partsText(one).length <= LONG_LINE) return [{ depth, parts: one }];
+    const op = opOf(e);
+    const sub = (x: E, l: string) => this.value(x, depth + 1, l);
+    const head = (...xs: Array<PlainPart | PlainPart[]>): PlainLine => ({ depth, parts: cat(lead, ...xs) });
+    const following = (inner: E, ...suffix: Array<PlainPart | PlainPart[]>) => [head("the following", ...suffix, ":"), ...sub(inner, "")];
+    switch (op) {
+      case "+":
+        return [head("the total of:"), ...e.slice(1).flatMap((x: E) => sub(x, "• "))];
+      case "-": {
+        if (e.length === 3 && isZero(e[1]) && opOf(e[2]) === "ceil" && opOf(e[2][1]) === "-" && e[2][1].length === 3) {
+          const inner = e[2][1];
+          if (isZero(inner[1])) return following(inner[2], ", rounded down to the whole dollar");
+          return [head("the following, rounded down to the whole dollar:"), ...sub(inner[2], "• "), ...sub(inner[1], "• minus ")];
+        }
+        if (e.length === 3 && isZero(e[1])) return following(e[2], ", taken away from 0");
+        return [head("worked out as:"), ...sub(e[1], "• "), ...e.slice(2).flatMap((x: E) => sub(x, "• minus "))];
+      }
+      case "*":
+        if (e.length === 3 && e[1] === -1 && opOf(e[2]) === "ceil" && opOf(e[2][1]) === "*" && e[2][1].length === 3 && e[2][1][1] === -1) {
+          return following(e[2][1][2], ", rounded down to the whole dollar");
+        }
+        return [head("worked out as:"), ...sub(e[1], "• "), ...e.slice(2).flatMap((x: E) => sub(x, "• times "))];
+      case "/":
+        return [head("worked out as:"), ...sub(e[1], "• "), ...e.slice(2).flatMap((x: E) => sub(x, "• divided by "))];
+      case "max": case "min": {
+        const [a, b] = [e[1], e[2]];
+        const capA = this.itemOf(a)?.kind === "parameter", capB = this.itemOf(b)?.kind === "parameter";
+        if (op === "max" && (isZero(a) || isZero(b))) return following(isZero(a) ? b : a, ", but not less than 0");
+        if (op === "max" && (capA || capB)) return following(capA ? b : a, ", but at least ", this.ref(capA ? a : b));
+        if (op === "min" && (capA || capB)) return following(capB ? a : b, ", up to ", this.ref(capB ? b : a));
+        return [head(op === "max" ? "the greater of:" : "the lesser of:"), ...sub(a, "• "), ...sub(b, "• ")];
+      }
+      case "ceil": return following(e[1], ", rounded up to the next whole dollar");
+      case "round": return following(e[1], ", rounded to the nearest whole dollar");
+      case "otherwise": {
+        const alt = this.phrase(e[2]);
+        if (partsText(alt).length > LONG_LINE / 2) {
+          return [head("the first of these that is known:"), ...sub(e[1], "• "), ...sub(e[2], "• ")];
+        }
+        return following(e[1], " (or, if that is not known, ", alt, ")");
+      }
+      case "<": case "<=": case ">": case ">=": {
+        const words: Record<string, string> = { "<": "is less than", "<=": "is at most", ">": "is more than", ">=": "is at least" };
+        const [a, b] = [e[1], e[2]];
+        const aLen = partsText(this.phrase(a)).length, bLen = partsText(this.phrase(b)).length;
+        if (aLen <= bLen) return [head(this.operand(a), ` ${words[op]}:`), ...sub(b, "")];
+        return [head("the following ", words[op], " ", this.operand(b), ":"), ...sub(a, "")];
+      }
+      case "not": {
+        const x = e[1];
+        if ((opOf(x) === "all" || opOf(x) === "any") && x.length > 2) return this.condition(e, depth, lead, "");
+        if (opOf(x) === "in") {
+          const it = this.itemOf(x[1]);
+          const labels = ((x[2] ?? []) as string[]).map((v) => optionLabel(it ?? null, v));
+          return [head(this.phrase(x[1]), " is none of:"), ...labels.map((l) => ({ depth: depth + 1, parts: [`• ${l}`] }))];
+        }
+        return [head("it is not the case that:"), ...sub(x, "")];
+      }
+      case "all": case "any":
+        if (e.length > 2) return this.condition(e, depth, lead, "");
+        return [{ depth, parts: one }];
+      case "sum":
+        return [head("the total, over the people in ", this.phrase(e[1]), ", of:"), ...this.over(() => sub(e[2], ""))];
+      case "sum_months":
+        return [head("the total over ", this.phrase(e[1]), " of:"), ...sub(e[2], "")];
+      case "count_months":
+        return [head("the number of months in ", this.phrase(e[1]), " in which:"), ...sub(e[2], "")];
+      case "lookup":
+        return [head("the ", this.phrase(e[1]), " figure for:"), ...sub(e[2], "")];
+      case "case":
+        return [head("the following:"), ...this.caseLines(e, depth + 1)];
+      case "in": {
+        const it = this.itemOf(e[1]);
+        const labels = ((e[2] ?? []) as string[]).map((v) => optionLabel(it ?? null, v));
+        return [head(this.phrase(e[1]), " is one of:"), ...labels.map((l) => ({ depth: depth + 1, parts: [`• ${l}`] }))];
+      }
+      case "filter":
+        return [head("the people in ", this.phrase(e[1]), " for whom:"), ...this.over(() => sub(e[2], ""))];
+      case "reachable":
+        if (e.length > 2) return [head(`the people joined to this person by ${relWords(e[1] as string[])}, crossing only where:`), ...this.over(() => sub(e[2], ""))];
+        return [{ depth, parts: one }];
+      default:
+        return [{ depth, parts: one }];
+    }
   }
 
   /** The arms of a case, a nested case in the last arm read as more
@@ -356,7 +512,7 @@ class Renderer {
       const cond = this.condition(arm[0], depth, lead, "");
       const simpleCond = cond.length === 1;
       const res = this.result(arm[1], depth + (simpleCond ? 0 : 1), "");
-      if (simpleCond && res.length === 1) {
+      if (simpleCond && res.length === 1 && partsText(cat(cond[0].parts, ", ", res[0].parts)).length <= LONG_LINE) {
         out.push({ depth, parts: cat(cond[0].parts, ", ", res[0].parts) });
       } else if (simpleCond) {
         out.push({ depth, parts: cat(cond[0].parts, ":") });
@@ -381,7 +537,11 @@ class Renderer {
       const c = this.condition(e, depth, `${lead}the result is yes when `, "");
       return c;
     }
-    return [{ depth, parts: cat(lead, "the result is ", this.resultValue(e), ".") }];
+    const line = cat(lead, "the result is ", this.resultValue(e), ".");
+    if (partsText(line).length > LONG_LINE && (typeof e !== "string" || this.item(e))) {
+      return this.long(e, depth, `${lead}the result is `);
+    }
+    return [{ depth, parts: line }];
   }
 }
 

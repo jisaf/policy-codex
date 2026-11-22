@@ -30,8 +30,8 @@ test("Dana: the children's income limit beside the rule text that states it", as
   // The law is on the page, not under a fold; no "Decision record" heading above the implementers' foot.
   await expect(page.locator("section#law blockquote.words").first()).toBeVisible();
   await expect(page.locator("section#law")).not.toContainText("Decision record");
-  // Every count reads from counts.ts: 16 read it, it reaches 23.
-  await expect(page.locator("section#households .countline")).toContainText(/Read by 16 of \d+ stored households; it reaches 23/, { timeout: 30_000 });
+  // Every count reads from counts.ts (test/ui/counts.test.ts): 20 read it, it reaches 28.
+  await expect(page.locator("section#households .countline")).toContainText(/Read by 20 of \d+ stored households; it reaches 28/, { timeout: 30_000 });
 });
 
 test("Marcus: the grant standard's versions, the freeze and the gap", async ({ page }) => {
