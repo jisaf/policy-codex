@@ -17262,3 +17262,187 @@ Document: D-86
 
 > Q. Earned income of children under the age of eighteen (18) who are residing with a parent or
 > guardian;
+### S2800. Ukrainian humanitarian parolees: eligible for entitlement programs and other benefits available to refugees, to the same extent as refugees, while the parole is not terminated
+
+Document: D-260
+
+Pub. L. 117-128, title IV, sec. 401(a)-(b)(1) (8 U.S.C. 1101 note), as enacted May 21, 2022. https://www.govinfo.gov/content/pkg/PLAW-117publ128/html/PLAW-117publ128.htm
+
+>     Sec. 401. (a) <<NOTE: 8 USC 1101 note.>>  In General.--
+> Notwithstanding any other provision of law, a citizen or national of
+> Ukraine (or a person who last habitually resided in Ukraine) shall be
+> eligible for the benefits described in subsection (b) if--
+>             (1) such individual completed security and law enforcement
+>         background checks to the satisfaction of the Secretary of
+>         Homeland Security and was subsequently--
+>                     (A) <<NOTE: Time period.>>  paroled into the United
+>                 States between February 24, 2022 and September 30, 2023;
+>                 or
+>                     (B) <<NOTE: Effective date.>>  paroled into the
+>                 United States after September 30, 2023 and--
+>                           (i) is the spouse or child of an individual
+>                       described in subparagraph (A); or
+>                           (ii) <<NOTE: Determination.>>  is the parent,
+>                       legal guardian, or primary caregiver of an
+>                       individual described in subparagraph (A) who is
+>                       determined to be an unaccompanied child under
+>                       section 462(g)(2) of the Homeland Security Act of
+>                       2002 (6 U.S.C. 279(g)(2)) or section 412(d)(2)(B)
+>                       of the Immigration and Nationality Act (8 U.S.C.
+>                       1522(d)(2)(B)); and
+>             (2) such individual's parole has not been terminated by the
+>         Secretary of Homeland Security.
+>
+>     (b) Benefits.--An individual described in subsection (a) shall be
+> eligible for--
+>             (1) resettlement assistance, entitlement programs, and other
+>         benefits available to refugees admitted under section 207 of the
+>         Immigration and Nationality Act (8 U.S.C. 1157) to the same
+>         extent as such refugees, but shall not be eligible for the
+>         program of initial resettlement authorized by section 412(b)(1)
+>         of the Immigration and Nationality Act (8 U.S.C. 1522(b)(1));
+
+### S2801. Afghan humanitarian parolees: eligible for entitlement programs and other benefits available to refugees until March 31, 2023, or the term of parole, whichever is later
+
+Document: D-261
+
+Pub. L. 117-43, div. C, sec. 2502(a)-(b)(1) (8 U.S.C. 1101 note), as enacted September 30, 2021. https://www.govinfo.gov/content/pkg/PLAW-117publ43/html/PLAW-117publ43.htm
+
+>     Sec. 2502. <<NOTE: Eligibility. 8 USC 1101 note.>> (a) In General.--
+> Notwithstanding any other provision of law, a citizen or national of
+> Afghanistan (or a person with no nationality who last habitually resided
+> in Afghanistan) shall be eligible for the benefits described in
+> subsections (b) and (c) if--
+>             (1) such individual completed security and law enforcement
+>         background checks to the satisfaction of the Secretary of
+>         Homeland Security and was subsequently--
+>                     (A) <<NOTE: Time period.>>  paroled into the United
+>                 States between July 31, 2021, and September 30, 2022; or
+>                     (B) <<NOTE: Effective date.>>  paroled into the
+>                 United States after September 30, 2022, and--
+>                           (i) is the spouse or child (as such term is
+>                       defined under section 101(b) of the Immigration
+>                       and Nationality Act (8 U.S.C. 1101(b)) of an
+>                       individual described in subparagraph (A); or
+>                           (ii) is the parent or legal guardian of an
+>                       individual described in subparagraph (A) who is
+>                       determined to be an unaccompanied child under 6
+>                       U.S.C. 279(g)(2); and
+>             (2) such individual's parole has not been terminated by the
+>         Secretary of Homeland Security.
+>
+>     (b) Benefits.--An individual described in subsection (a) shall be
+> eligible for--
+>             (1) <<NOTE: Expiration date.>> resettlement assistance,
+>         entitlement programs, and other benefits available to refugees
+>         admitted under section 207 of the Immigration and Nationality
+>         Act (8 U.S.C. 1157) until March 31, 2023, or the term of parole
+
+### S2802. Colorado Works: refugees are qualified non-citizens exempt from the five-year bar
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.K (rule version 12030, effective 07/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> K. Assistance for Eligible Refugees
+>
+> Refugees are qualified non-citizens exempt from the five-year bar.
+
+### S2803. SSI: unearned income not counted - real property and food tax refunds, one-third of a child's support, uniformed services special pay, gifts to a child with a life-threatening condition, AmeriCorps payments, State veterans' annuities
+
+Document: D-207
+
+20 CFR 416.1124(c)(1), (11), (19), (21), (23), (24) (eCFR as of 2026-11-19), incorporated by 9 CCR 2503-5 3.520.786.K. https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> (c) Other unearned income we do not count. We do not count as unearned income—
+> (1) Any public agency's refund of taxes on real property or food;
+> ...
+> (11) One-third of support payments made to or for you by an absent parent if you are a child;
+> ...
+> (19) Special pay received from one of the uniformed services pursuant to 37 U.S.C. 310;
+> ...
+> (21) Gifts from an organization as described in section 501(c)(3) of the Internal Revenue Code of 1986 which is exempt from taxation under section 501(a) of such Code, to, or for the benefit of, an individual who has not attained 18 years of age and who has a life-threatening condition. We will exclude any in-kind gift that is not converted to cash and cash gifts to the extent that the total gifts excluded pursuant to this paragraph do not exceed $2000 in any calendar year. In-kind gifts converted to cash are considered under income counting rules in the month of conversion;
+> ...
+> (23) AmeriCorps State and National and AmeriCorps National Civilian Community Corps cash or in-kind payments to AmeriCorps participants or on AmeriCorps participants' behalf. These include, but are not limited to: Food and shelter, and clothing allowances;
+> (24) Any annuity paid by a State to a person (or his or her spouse) based on the State's determination that the person is:
+> (i) A veteran (as defined in 38 U.S.C. 101); and
+> (ii) Blind, disabled, or aged.
+
+### S2804. SSI: unearned income not counted - educational grants, home-grown food, disaster assistance, Alaska Longevity Bonus, interest on burial funds and dedicated accounts, support and maintenance assistance, housing assistance, travel tickets, relocation assistance
+
+Document: D-207
+
+20 CFR 416.1124(c)(3)-(5), (7), (9), (10), (14)-(16), (18), (20) (eCFR as of 2026-11-19), incorporated by 9 CCR 2503-5 3.520.786.K. https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> (c) Other unearned income we do not count. We do not count as unearned income—
+> ...
+> (3) Any portion of a grant, scholarship, fellowship, or gift used or set aside for paying tuition, fees, or other necessary educational expenses. However, we do count any portion set aside or actually used for food or shelter;
+> (4) Food which you or your spouse raise if it is consumed by you or your household;
+> (5) Assistance received under the Disaster Relief and Emergency Assistance Act and assistance provided under any Federal statute because of a catastrophe which the President of the United States declares to be a major disaster. See § 416.1150 for a more detailed discussion of this assistance, particularly the treatment of in-kind support and maintenance received as the result of a major disaster;
+> ...
+> (7) Alaska Longevity Bonus payments made to an individual who is a resident of Alaska and who, prior to October 1, 1985: met the 25-year residency requirement for receipt of such payments in effect prior to January 1, 1983; and was eligible for SSI;
+> ...
+> (9) Any interest earned on excluded burial funds and any appreciation in the value of an excluded burial arrangement which are left to accumulate and become a part of the separate burial fund. (See § 416.1231 for an explanation of the exclusion of burial assets.) This exclusion from income applies to interest earned on burial funds or appreciation in the value of excluded burial arrangements which occur beginning November 1, 1982, or the date you first become eligible for SSI benefits, if later;
+> (10) Certain support and maintenance assistance as described in § 416.1157;
+> ...
+> (14) The value of any assistance paid with respect to a dwelling unit under—
+> (i) The United States Housing Act of 1937;
+> (ii) The National Housing Act;
+> (iii) Section 101 of the Housing and Urban Development Act of 1965;
+> (iv) Title V of the Housing Act of 1949; or
+> (v) Section 202(h) of the Housing Act of 1959;
+> (15) Any interest accrued on and left to accumulate as part of the value of an excluded burial space purchase agreement. This exclusion from income applies to interest accrued on or after April 1, 1990;
+> (16) The value of any commercial transportation ticket, for travel by you or your spouse among the 50 States, the District of Columbia, the Commonwealth of Puerto Rico, the Virgin Islands, Guam, American Samoa, and the Northern Mariana Islands, which is received as a gift by you or your spouse and is not converted to cash. If such a ticket is converted to cash, the cash you receive is income in the month you receive the cash;
+> ...
+> (18) Relocation assistance provided you by a State or local government that is comparable to assistance provided under title II of the Uniform Relocation Assistance and Real Property Acquisition Policies Act of 1970 that is subject to the treatment required by section 216 of that Act;
+> ...
+> (20) Interest or other earnings on a dedicated account which is excluded from resources. (See § 416.1247);
+
+### S2805. SSI: who is considered a child (under 18, or under 22 and a student; not married; not the head of a household)
+
+Document: D-262
+
+20 CFR 416.1856 (eCFR as of 2026-11-19), the definition of a child for 20 CFR 416.1124(c)(11), which 9 CCR 2503-5 3.520.786.K incorporates. https://www.ecfr.gov/api/versioner/v1/full/2026-11-19/title-20.xml?part=416&section=416.1856
+
+> § 416.1856 Who is considered a child.
+> We consider you to be a child if—
+> (a)(1) You are under 18 years old; or
+> (2) You are under 22 years old and you are a student regularly attending school or college or training that is designed to prepare you for a paying job;
+> (b) You are not married; and
+> (c) You are not the head of a household.
+
+### S2806. Adult Financial: transfers without fair consideration - several transfers, a returned resource, and the period for each resource transferred
+
+Document: D-80
+
+9 CCR 2503-5 3.520.76.D.5-6, E (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 5. The penalty period begins the month following the date of transfer. If there
+> are multiple transfers, the period of ineligibility would begin the month
+> following the end date of the first transfer’s period of ineligibility.
+>
+> 6. If the client transfers a resource and the entire resource is returned in the
+> same month, the period of ineligibility does not apply.
+>
+> a. If the client transfers a resource and the entire resource is returned
+> in a subsequent month, the period of ineligibility continues through
+> the month the resource is returned (even if the resource is returned
+> on the first day of the month). The period of ineligibility due to the
+> transfer ends as of the month following the month the resource is
+> returned. In that month, the returned resource is counted towards
+> the client's resource limit.
+>
+> b. If the entire resource is not returned, the period of ineligibility does
+> not end. Instead, recompute the uncompensated value based on
+> how much of the resource was not returned. Then, recompute the
+> period of ineligibility based on the adjusted uncompensated value.
+> If additional funds are subsequently returned, it will be necessary to
+> recompute the uncompensated value again.
+>
+> E. A period of ineligibility can be from 1 month up to a maximum of 36 months
+> depending on the amount of the uncompensated value for each resource
+> transferred. A period of ineligibility cannot exceed 36 months regardless of the
+> ...
+> uncompensated value of the transfer. Months in the period of ineligibility can
+> coincide with months of ineligibility for other reasons.
+

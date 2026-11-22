@@ -1279,7 +1279,7 @@
       cw_verification_status: {"2026-10": not_applicable}
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
-      af_pending_verification_count: {"2026-10": 2}
+      af_pending_verification_count: {"2026-10": 3}   # final cash review 2, N-2: was 2 (residency, p1's own resources); + 1 for the spouse p2's resources other than cash (has_resources_other_than_cash, no resource document, no SSI), which 3.520.72.A counts against p1's limit and D requires verified = 3
       af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
       af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
       af_disaster_assistance_payment: {"2026-10": 0}
@@ -1450,7 +1450,7 @@
       cw_verification_status: {"2026-10": not_applicable}
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
-      af_pending_verification_count: {"2026-10": 2}
+      af_pending_verification_count: {"2026-10": 3}   # final cash review 2, N-2: was 2 (residency, p2's own resources); + 1 for the spouse p1's resources other than cash (has_resources_other_than_cash, no resource document, no SSI), which 3.520.72.A counts against p2's limit and D requires verified = 3
       af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
       af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
       af_disaster_assistance_payment: {"2026-10": 0}
@@ -16032,3 +16032,247 @@
       cccap_parent_fee: {"2026-11": 0}
     p3:
       cccap_eligibility_status: {"2026-11": ineligible_income}
+- id: CO-130
+  title: "Final cash review 2, N-1 and N-2: an OAP client whose younger wife owns an old life insurance policy and an unverified retirement account"
+  # Built for the second final cash review's N-1 and N-2 probes, which the reviewer confirmed with the engine.
+  # p1 Walter, 72, and p2 Rosa, 55, are married and live together; each receives $500 of Social Security and is
+  # enrolled in Medicaid. Walter has $1,000 in the bank and every Adult Financial element verified. Rosa has no
+  # cash, a $1,500 retirement account with no statement, and a $10,000 whole-life policy bought in March 2010
+  # with a cash surrender value of $5,000, no premiums paid in the last 48 months.
+  # Countable income (3.533.A.2): 500 less the married client's half of the $20 = 490; nothing deemed from Rosa
+  # (3.534.C: on Medicaid, income 500 <= 1,032).
+  # Resources (3.520.72.A; 3.520.75.E.1, "For OAP only ... all life insurance policies owned by a client and his or
+  # her spouse"): Walter 1,000; Rosa's retirement account 1,500; Rosa's policy, face value over $1,500, all bought
+  # more than 48 months ago with nothing paid in: exempt for an OAP client, whoever owns it. 1,000 + 1,500 + 0 =
+  # 2,500 <= the $3,000 couple limit. Before N-1 Rosa's policy was read by her own age (55): 7,500, over the limit.
+  # Verification (3.520.72.D): Rosa's retirement account is a resource other than cash, not verified; she is not
+  # on SSI, and this is an application: one element pending for Walter's case. Requested 2026-10-01, due eleven
+  # days later (October 12); October 5 is before it: pending. Before N-2 the count was 0, complete.
+  as_of: "2026-10-05"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1954-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 1000
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        age_verified_by_electronic_data_source: true
+        residency_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        identity_verification_document_type: colorado_drivers_license_or_id
+        ssn_exception_applies: false
+        has_been_issued_ssn: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_resources_other_than_cash: false
+        af_determination_is_redetermination: false
+        resources_verified_by_electronic_data_source: false
+        resources_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        unearned_income_verification_document_received: true
+        marital_status_attestation_is_questionable: false
+        marital_status_verification_document_received: true
+        af_referred_to_apply_for_other_income: false
+        verification_request_date: "2026-10-01"
+        earned_income_verification_document_received: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1971-07-22"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 0
+        retirement_accounts_value: 1500
+        life_insurance_face_value: 10000
+        life_insurance_cash_surrender_value: 5000
+        life_insurance_newest_policy_purchase_date: "2010-03-01"
+        life_insurance_payments_in_lookback: 0
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        has_resources_other_than_cash: true
+        af_determination_is_redetermination: false
+        resources_verification_document_received: false
+        resources_verified_by_electronic_data_source: false
+        unearned_income_verified_by_electronic_data_source: true
+        earned_income_verification_document_received: true
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_client_and_spouse_countable_resources: 2500   # 1,000 + 1,500 + 0 (Rosa's old policy exempt for an OAP client, 3.520.75.E.1); was 7,500
+      af_meets_resource_limit: true                     # 2,500 <= 3,000
+      af_countable_income: {"2026-10": 490}             # 500 - 10 (split $20, 3.533.A.2.c.1)
+      af_category: {"2026-10": oap}                     # was none (over the resource limit)
+      af_oap_grant: {"2026-10": 542}                    # 1,032 - 490
+      af_spouse_resources_pending_verification_count: {"2026-10": 1}   # Rosa's retirement account, no statement (3.520.72.A, D)
+      af_pending_verification_count: {"2026-10": 1}     # was 0
+      af_verification_status: {"2026-10": pending}      # due October 12; was complete
+- id: CO-131
+  title: "Final cash review 2, N-4 and N-5: an OAP grandmother who made two small gifts, and her grandson on AND-CS who receives child support"
+  # Built for the second final cash review's N-4 and N-5 probes.
+  # p1 Lucia, 72, widowed, receives $700 of Social Security and has $500 in the bank. She applied for the Old Age
+  # Pension on 2026-10-01. She gave her grandson's father $1,000 on 2026-09-02 and $1,000 more on 2026-10-02 (cash,
+  # nothing received, not found to be for another purpose).
+  # p2 Mateo, 9, lives with her; he is disabled and receives SSI of $500, and his absent father pays $300 of
+  # current child support a month. He has $200 in the bank.
+  # Lucia, income (3.533.A.2): 700 - 20 = 680. Resources 500 <= 2,000.
+  # Transfers (3.520.76.D.3, E): each gift is divided by the OAP grant standard on its own and rounded down:
+  # floor(1,000 / 1,032) = 0 for September and 0 for October, so no period. Before N-5 the total, 2,000, was
+  # divided once: floor(2,000 / 1,032) = 1 month beginning the month after the first transfer, October, and
+  # October's category was none.
+  # Lucia's grant (3.533.B): 1,032 - 680 = 352.
+  # Mateo, AND-CS (3.549.A.2): unearned income other than SSI is the support of 300; 20 CFR 416.1124(c)(11),
+  # which 3.520.786.K incorporates, excludes one-third of support from an absent parent for a child (416.1856:
+  # under 18, not married): 300 / 3 = 100, so 200 counted; less the $20 general disregard = 180; plus SSI 500 =
+  # 680. AND-CS standard 994, so the grant is 994 - 680 = 314. Before N-4 all 300 counted: 780, grant 214.
+  as_of: "2026-10-05"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1954-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: widowed
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 500
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+        af_application_date: "2026-10-01"
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 700
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+      months:
+        "2026-09":
+          resource_transfer_date: "2026-09-02"
+          resource_transfer_uncompensated_value: 1000
+        "2026-10":
+          resource_transfer_date: "2026-10-02"
+          resource_transfer_uncompensated_value: 1000
+    p2:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "2017-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: true
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        liquid_resources_value: 200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 500
+        child_support_received: 300
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_twfc_penalty_months: {"2026-09": 0, "2026-10": 0}   # floor(1,000 / 1,032) each (3.520.76.D.3, E)
+      af_is_in_twfc_penalty_period: {"2026-10": false}        # was true: floor(2,000 / 1,032) = 1 month, October
+      af_countable_income: {"2026-10": 680}                   # 700 - 20
+      af_category: {"2026-10": oap}                           # was none
+      af_oap_grant: {"2026-10": 352}                          # 1,032 - 680
+    p2:
+      af_excluded_unearned_income: {"2026-10": 100}           # one-third of the $300 current support (416.1124(c)(11))
+      af_countable_income: {"2026-10": 680}                   # (300 - 100) - 20 + SSI 500; was 780
+      af_category: {"2026-10": and_cs}
+      af_and_grant: {"2026-10": 314}                          # 994 - 680; was 214

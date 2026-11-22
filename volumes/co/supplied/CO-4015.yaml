@@ -1,0 +1,14 @@
+id: CO-4015
+name: "Charitable gifts received for a life-threatening condition"
+identifier: charitable_gifts_for_life_threatening_condition_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Cash gifts the person received in the month, to or for the person because the person has a life-threatening condition, from an organization described in section 501(c)(3) of the Internal Revenue Code and exempt from tax under section 501(a), and in-kind gifts from such an organization that the person converted to cash in the month."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or other_unearned_income_nontaxable), not added to it. In-kind gifts not converted to cash are not income and are not stated. If not stated, every program reads it as 0."
+supplied_by: "Application (income and expenses), the organization's letter."
+sources: [S2803]
+implemented: engine
+tags: [income]
+rationale: "Final cash review 2, N-4: 20 CFR 416.1124(c)(21), which 9 CCR 2503-5 3.520.786.K incorporates, excludes such gifts to a child under eighteen up to $2,000 in a calendar year (S2803); no fact stated them. The person's age is read from date_of_birth where the exclusion is applied (af_excluded_life_threatening_condition_gifts, CO-4023), not stated again here."

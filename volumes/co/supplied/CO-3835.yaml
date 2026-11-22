@@ -3,11 +3,16 @@ name: "Uncompensated value of a transfer of a resource"
 identifier: resource_transfer_uncompensated_value
 kind: supplied
 type: money
-scope: person
+scope: person-month
 program: All
+<<<<<<< HEAD
 meaning: "The uncompensated value of the transfer resource_transfer_date states: the actual value of the resource less encumbrances, less what the person received for it, and less any part of the resource since returned to the person."
 precision: "Stated with resource_transfer_date. A transfer whose whole resource has been returned is not stated. SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
+=======
+meaning: "The uncompensated value of the resource the person (or the person's spouse) transferred in the month for less than its fair value: the actual value of the resource less encumbrances, less what the person received for it, and less any part of it since returned to the person when the whole resource has not been returned. Where more than one resource was transferred in the same month, their uncompensated values added together. Not stated for a month with no such transfer."
+precision: "Stated with resource_transfer_date (CO-3834) for the same month. A resource returned in whole is stated at its uncompensated value before the return, with the date of the return in resource_transfer_returned_date (CO-4009), since 3.520.76.D.6 ends the period by the month of the return rather than cancelling it."
+>>>>>>> worktree-agent-a3116bf2b0f0fb698
 supplied_by: "Applicant statement, appraisals and sale records, as the county establishes them."
-sources: [S2614]
+sources: [S2614, S2806]
 tags: [cash, resources]
-rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. 3.520.76.D.1 and D.6.b (S2614) compute the penalty from the uncompensated value, recomputed for a part returned."
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. Final cash review 2, N-5 and P2-4: the fact was the total value of all the transfers, divided and rounded down once, and a transfer whose whole resource had been returned was not stated at all; it is now stated for each month in which a transfer was made, and a returned resource keeps its value with the date of the return (3.520.76.D.3-6, E; S2806)."
