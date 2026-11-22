@@ -11,7 +11,12 @@ test("the CDHS role home links its queues and reads figures as of a date", async
 
   await expect(home.locator(".countcard").first()).toContainText("waiting on your sign-off");
   await expect(home.locator('.countcard a[href*="/inbox?role="]').first()).toBeVisible();
-  await expect(home.locator('.countcard a[href*="/questions?persona=cdhs"]')).toBeVisible();
+  await expect(home.locator('.countcard a[href*="/questions?persona=cdhs"]').first()).toBeVisible();
+  // The question card's lines add up to its number.
+  const qcard = home.locator(".countcard", { hasText: "open questions" });
+  const total = Number((await qcard.locator(".num").textContent())!.replace(/,/g, ""));
+  const lines = await qcard.locator("li").allTextContents();
+  if (lines.length) expect(lines.reduce((n, t) => n + Number(/: (\d+)$/.exec(t)![1]), 0)).toBe(total);
 
   // A program opens on plain-language outcome cards.
   await home.locator("details.program summary", { hasText: "Colorado Works" }).click();

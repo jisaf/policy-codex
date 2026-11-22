@@ -54,8 +54,32 @@ test("the decision queue: filter, departures, a question's page, and an answer s
   await form.getByLabel("Decided by").fill("Priya Shah");
   await form.getByRole("button", { name: "Stage the answer" }).click();
   await expect(q.locator(".qstaged")).toContainText("Staged in the change tray");
+  // What happens next, with a download for a reader without a token.
+  await expect(q.locator(".qstaged .sendchange")).toContainText("Data steward");
+  await expect(q.locator(".qstaged button.download")).toBeEnabled();
   await q.getByRole("button", { name: "Open the change tray" }).click();
   await expect(page.locator(".sheet.tray")).toContainText("Answer to OQ-533");
+  await page.locator(".tray button", { hasText: "Close" }).click();
+
+  // The answered question leaves the open list.
+  await page.goto("/#/co/questions?mine=0&q=OQ-533");
+  await expect(page.locator('.qanswered li[data-question="OQ-533"]')).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator('ul.qcards li.qcard[data-question="OQ-533"]')).toHaveCount(0);
+});
+
+test("search finds the long-term care questions", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("codex.tour", "1");
+    localStorage.setItem("codex.door", "reader");
+  });
+  await page.goto("/#/co/questions?mine=0");
+  await expect(page.locator("li.qcard").first()).toBeVisible({ timeout: 60_000 });
+  const all = await page.locator("li.qcard").count();
+  await page.locator(".qfilters input[type=search]").fill("long-term care");
+  await expect(page).toHaveURL(/q=long-term/);
+  const ltc = await page.locator("li.qcard").count();
+  expect(ltc).toBeGreaterThan(0);
+  expect(ltc).toBeLessThan(all);
 });
 
 test("the queue fits a phone screen", async ({ page }) => {

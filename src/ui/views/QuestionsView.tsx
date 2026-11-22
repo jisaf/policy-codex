@@ -677,8 +677,8 @@ function Effects({ q, ctx }: { q: QueueEntry; ctx: ViewContext }) {
           {e.alternative.caveat && <p class="muted">{e.alternative.caveat}</p>}
           <p class="effect-count">
             {e.changed.length
-              ? <>Re-running the {vol.cases.length} stored households with that one change: <b>{e.changed.length} result{e.changed.length === 1 ? "" : "s"} in {households(e.changed)} household{households(e.changed) === 1 ? "" : "s"} change.</b></>
-              : <>Re-running the {vol.cases.length} stored households with that one change: <b>no stored result changes.</b></>}
+              ? <>Re-running the {vol.cases.length} stored households with that one change: <b>{changedPhrase(e.changed.length, households(e.changed))}.</b></>
+              : <>Re-running the {vol.cases.length} stored households with that one change: <b>{changedPhrase(0, 0)}.</b></>}
           </p>
           {e.changed.some((c) => c.after === null || c.after === undefined) && (
             <p class="unknown-note">
@@ -694,7 +694,7 @@ function Effects({ q, ctx }: { q: QueueEntry; ctx: ViewContext }) {
           ? <h3>Every stored result that rests on it</h3>
           : <p class="muted">The question names no single other value, so the new values are not worked out. These stored results rest on the items carrying the assumption and could change with the answer.</p>}
         {e.resting.length
-          ? <p>{e.resting.length} result{e.resting.length === 1 ? "" : "s"} in {households(e.resting)} of {vol.cases.length} stored households.</p>
+          ? <p>{restingPhrase(e.resting.length, households(e.resting))}, of {vol.cases.length} stored households.</p>
           : <p>No stored household result rests on it.</p>}
         <HouseholdResults rs={e.resting} engine={engine} r={r} changed={false} />
       </div>
@@ -740,6 +740,7 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
   const staged = useSignal<{ adoptedAlternative: boolean; keptOpen: boolean } | null>(null);
   const followUpDone = useSignal<string[]>([]);
   const dropped = useSignal(false);
+  const answerAgain = useSignal(false);
   const carrying = q.items.filter((it) => (it.open ?? []).includes(q.id));
 
   const submit = async (ev: Event) => {
@@ -835,9 +836,20 @@ function AnswerForm({ q, ctx, readText }: { q: QueueEntry; ctx: ViewContext; rea
         </ul>
         {followUpDone.value.length > 0 && <p>Staged: {[...new Set(followUpDone.value)].map((id) => engine.itemById(id)?.name ?? id).join("; ")}.</p>}
         <p>
-          <button type="button" class="btn" onClick={() => { trayOpenSig.value = true; }}>Open the change tray</button>{" "}
           <button type="button" class="btn" onClick={() => { staged.value = null; }}>Change the answer</button>
         </p>
+      </div>
+    );
+  }
+
+  // An answer staged earlier (another visit): say so, rather than offer the
+  // form as if the question were unanswered (HCPF analyst task 4).
+  if (stagedQuestionState(vol).get(q.id) === "answered" && !answerAgain.value) {
+    return (
+      <div class="qstaged" role="status">
+        <p><b>An answer to {q.id} is staged in this browser.</b> It is not in the codex yet.</p>
+        <SendChange kind="answer" />
+        <p><button type="button" class="btn" onClick={() => { answerAgain.value = true; }}>Answer it again</button></p>
       </div>
     );
   }
@@ -1016,12 +1028,6 @@ export function QuestionPage({ ctx, id, readText }: { ctx: ViewContext; id: stri
       {open && (
         <div class="qsection" id="answer">
           <h2>Answer this question</h2>
-          {stagedQuestionState(vol).get(q.id) === "answered" && (
-            <div class="qstaged" role="status">
-              <p><b>An answer to {q.id} is staged in this browser.</b> It is not in the codex yet.</p>
-              <SendChange kind="answer" />
-            </div>
-          )}
           <AnswerForm q={q} ctx={ctx} readText={readText} />
         </div>
       )}

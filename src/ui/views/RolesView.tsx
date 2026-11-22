@@ -438,7 +438,7 @@ function ChangeList(
   return (
     <ul class="changes">
       {events.map((e, i) => {
-        const rest = resting?.get(e.item.identifier) ?? null;
+        const rest = resting ? (resting.get(e.item.identifier) ?? []) : null;
         const touchedIds = rest ? [...new Set(rest.map((x) => x.caseId))] : [];
         const touched = vol.cases.filter((c) => touchedIds.includes(c.id));
         const changed = worked.get(`${e.item.id}@${e.date}`);
@@ -467,7 +467,7 @@ function ChangeList(
                 {changed === undefined
                   ? <span class="muted">Working out which stored results the new figure changes…</span>
                   : changed.length === 0
-                    ? <span>{changedPhrase(0, 0)}: no stored household's result differs between the old figure and the new.</span>
+                    ? <span>{changedPhrase(0, 0)} between the old figure and the new.</span>
                     : (
                       <>
                         <b>{changedPhrase(changed.length, householdCount(changed))}</b> between the old figure and the new:

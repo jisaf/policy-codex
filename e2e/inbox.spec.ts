@@ -31,15 +31,23 @@ test("the approvals inbox stages a signature and says how it becomes a PR", asyn
   await page.locator(".signer input").fill("Dana Lee (HCPF)");
   await row.locator("button.approve").click();
   const notice = page.locator(".inbox-notice");
-  await expect(notice).toContainText("Staged in this browser only");
-  await expect(notice).toContainText("Propose");
-  await expect(page.locator(`article[data-item="${itemId}"] .staged-note`)).toContainText("signature is staged");
+  await expect(notice).toContainText("saved in this browser only");
+  // Without a token: download the change and send it to the named steward.
+  await expect(notice).toContainText("Data steward");
+  await expect(notice.locator("button.download")).toBeEnabled();
+  const download = page.waitForEvent("download");
+  await notice.locator("button.download").click();
+  expect((await download).suggestedFilename()).toMatch(/^codex-co-signature-\d{4}-\d{2}-\d{2}\.md$/);
+  // The staged row is pulled to the top.
+  await expect(page.locator(`.inbox-staged article[data-item="${itemId}"] .staged-note`)).toContainText("signature is staged");
   await expect(page.locator(".draftbanner")).toBeVisible();
 
   // The tray holds it, and Propose says it needs a token.
   await notice.locator("button", { hasText: "Open the change tray" }).click();
   await expect(page.locator(".tray .entries")).toContainText(itemId!);
+  await expect(page.locator(".tray .entries")).toContainText("signature");
   await expect(page.locator(".tray .actions")).toContainText("GitHub token");
+  await expect(page.locator(".tray .sendchange button.download")).toBeVisible();
   await page.locator(".tray button", { hasText: "Close" }).click();
 
   // Legal: one definition, one number, in the header, the table and the list.
@@ -57,4 +65,19 @@ test("the approvals inbox stages a signature and says how it becomes a PR", asyn
   await page.locator(".inbox-filters label", { hasText: "Cites unverified text" }).locator("input").check();
   await expect(page).toHaveURL(/unverified=1/);
   await expect(page.locator("article.inbox-row .flag.unverified").first()).toBeVisible();
+});
+
+test("the inbox searches, and a link to an item opens its row", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("codex.tour", "1");
+    localStorage.setItem("codex.persona", "hcpf");
+  });
+  await page.goto("/#/co/inbox/CO-191");
+  await expect(page.locator('.inbox-linked article[data-item="CO-191"]')).toBeVisible({ timeout: 30_000 });
+  await page.locator(".inbox-filters label.search input").fill("children percent");
+  await expect(page).toHaveURL(/q=children/);
+  await expect(page.locator("article.inbox-row").first()).toBeVisible();
+  const n = await page.locator("article.inbox-row").count();
+  expect(n).toBeGreaterThan(0);
+  expect(n).toBeLessThan(60);
 });
