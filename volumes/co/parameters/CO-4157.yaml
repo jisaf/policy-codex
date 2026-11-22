@@ -1,0 +1,14 @@
+id: CO-4157
+name: SNAP transfer of resources disqualification period by amount over the limit
+identifier: snap_resource_transfer_disqualification_months_table
+kind: parameter
+type: table keyed by income band
+scope: global
+program: SNAP
+meaning: "The number of months of disqualification for a knowing transfer of resources to qualify for SNAP, by the amount by which the nonexempt transferred resources, added to the other countable resources, exceed the resource limit, as 10 CCR 2506-1 4.408.2.C charts it: each key is a band's inclusive upper bound in dollars, and the row keyed above is the chart's open top band (\"$5,000\")."
+precision: "The chart's bands are \"$1 to $249\", \"$250 to $999\", \"$1,000 to $2,999\", \"$3,000 to $4,999\" and \"$5,000\"; an amount between two whole dollars (249.50) falls in the band above, as the inclusive upper bounds read it. An amount of 0 or less is no disqualification and is not looked up (snap_resource_transfer_disqualification_months, CO-4158)."
+versions:
+  - {from: "2000-01-01", value: {"249": 1, "999": 3, "2999": 6, "4999": 9, above: 12}, source: S2962}
+sources: [S2962]
+tags: [snap, resources]
+rationale: "Final verification pass 2 N-4: the 4.408.2.C chart (S2962) had no item. A band table (P48), as for the LEAP contribution chart (CO-3000). The chart is undated in the rule and not adjusted annually; one version covers every date the volume determines."

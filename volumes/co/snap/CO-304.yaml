@@ -5,10 +5,10 @@ kind: derived
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person is not excluded from every SNAP household as a resident of an institution that provides the majority of their meals (7 CFR 273.1(b)(7)(vi)) or as a boarder (273.1(c)(3)). The other 273.1(b)(7) exclusions (disqualified for work-requirement noncompliance, intentional program violation, fleeing felon, drug felony) are folded into snap_is_ineligible_member instead, because those persons stay in the household for purposes of assembling the unit and counting income (273.11(c), S19) but are excluded only from the count of eligible members.
-precision: A person who entered the institution on or before the determination date is excluded starting that date; institution_entry_date after the determination date does not yet exclude them.
-derived: [all, [not, [all, snap_resides_in_institution_providing_meals, ["<=", institution_entry_date, [det_date]]]], [not, [otherwise, snap_is_boarder, false]]]
-sources: [S3, S5, S1815]
+meaning: The person is not excluded from every SNAP household as a resident of an institution that provides the majority of their meals (7 CFR 273.1(b)(7)(vi)) or as a boarder (273.1(c)(3)), and is not a child who already receives SNAP in another household and stays there because this household has not verified that it provides the majority of the child's meals (10 CCR 2506-1 4.505.4.C, 4.304.2.B.4). The other 273.1(b)(7) exclusions (disqualified for work-requirement noncompliance, intentional program violation, fleeing felon, drug felony) are folded into snap_is_ineligible_member instead, because those persons stay in the household for purposes of assembling the unit and counting income (273.11(c), S19) but are excluded only from the count of eligible members.
+precision: "A person who entered the institution on or before the determination date is excluded starting that date; institution_entry_date after the determination date does not yet exclude them. Final verification pass 2 V-13: the duplicate child (receives_snap_in_another_household, CO-4178) joins this household once child_majority_of_meals_verified (CO-4179) is true; both are read as false when not stated, so the arm reads nothing more for any other person."
+derived: [all, [not, [all, snap_resides_in_institution_providing_meals, ["<=", institution_entry_date, [det_date]]]], [not, [otherwise, snap_is_boarder, false]], [not, [all, [otherwise, receives_snap_in_another_household, false], [not, [otherwise, child_majority_of_meals_verified, false]]]]]
+sources: [S3, S5, S1815, S2969]
 implemented: engine
 tags: [household]
 rationale: 273.1(b)(7)(vi) (S3) and 10 CCR 2506-1 4.304.4.D (S5) remove institution residents from every household, including their own; this is the one 273.1(b)(7) exclusion that must apply before the P36/P37 closure builds snap_household_members (an institutionalized person cannot be a member of anyone's unit, including their own), so it is computed first and used as the P37 filter condition.
@@ -17,3 +17,5 @@ tests:
   - {id: CO-304-T2, as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, institution_entry_date: "2026-10-01"}, expect: true}
   - {id: CO-304-T3, as_of: "2026-09-15", given: {snap_resides_in_institution_providing_meals: true, institution_entry_date: "2026-10-01"}, expect: true}
   - {id: CO-304-T4, title: "C-2: a boarder is in no SNAP household", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, institution_entry_date: "2026-10-01", snap_is_boarder: true}, expect: false}
+  - {id: CO-304-T5, title: "V-13: a child on the father's case, applied for by the mother, meals not yet verified - stays on the father's case", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, receives_snap_in_another_household: true}, expect: false}
+  - {id: CO-304-T6, title: "V-13: the mother verifies that she provides the majority of meals - the child joins her household", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, receives_snap_in_another_household: true, child_majority_of_meals_verified: true}, expect: true}

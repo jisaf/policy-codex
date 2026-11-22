@@ -1,0 +1,14 @@
+id: CO-4174
+name: "Tax-deferred education savings accounts"
+identifier: education_savings_accounts_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The value of the person's tax-deferred education savings accounts - Section 529 qualified tuition programs and Coverdell education savings accounts - that is part of the person's liquid resources (liquid_resources_value)."
+precision: "Part of liquid_resources_value, not added to it: a case whose liquid_resources_value leaves such an account out states 0 here. As of the determination date. If not stated, SNAP reads it as 0."
+supplied_by: "Account statements, as the county establishes them."
+sources: [S2967]
+tags: [resources]
+rationale: "Final verification pass 2 N-8: 10 CCR 2506-1 4.410.D.3 (S2967) makes \"all tax deferred education accounts\" exempt resources; liquid_resources_value (CO-3390) names stocks, bonds and mutual fund shares, in which such accounts are held, and excludes only retirement accounts, so nothing took them out."
+nearest: [CO-3390, CO-3392]

@@ -6,7 +6,7 @@ type: calendar date
 scope: person
 program: All
 meaning: "The date the person (or the person's spouse) last gave away, sold, traded or otherwise transferred ownership of a resource for less than its fair value: cash or property given away or spent down, a financial instrument transferred, or another person's name added as an owner. Not stated when the person made no such transfer."
-precision: "If not stated, Adult Financial reads it as no transfer. Where several transfers were made, the case states the first, with the total uncompensated value in resource_transfer_uncompensated_value (af_twfc_penalty_months, CO-3840, states what follows)."
+precision: "If not stated, Adult Financial reads it as no transfer. Where several transfers were made, the case states the first, with the total uncompensated value in resource_transfer_uncompensated_value (af_twfc_penalty_months, CO-3840, states what follows). SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
 supplied_by: "Applicant statement, deeds, account and sale records, as the county establishes them."
 sources: [S2614]
 tags: [cash, resources]

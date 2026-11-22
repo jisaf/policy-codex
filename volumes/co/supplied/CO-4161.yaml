@@ -1,0 +1,13 @@
+id: CO-4161
+name: "Room and board payments received"
+identifier: room_and_board_payments_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The payments the person received in the month from people who pay to live and take meals in the person's home (boarders), directly for room and meals, contributions toward the home's shelter expenses included. Not amounts a boarder pays directly to someone outside the home (a landlord, a utility); not the receipts of a commercial boarding house the person owns and operates, which are self-employment gross receipts. 0 if none."
+precision: "Not part of the wages, self-employment or unearned income facts. If not stated, SNAP reads it as 0. The payers are persons who pay a reasonable amount for room and board (snap_is_boarder, CO-2567, when the boarder is a person of the case); a person who pays less than a reasonable amount is a member of the household, and the payment is not stated here."
+supplied_by: "Applicant statement, rent or board receipts, as the county establishes them."
+sources: [S2963]
+tags: [income, snap]
+rationale: "Final verification pass 2 N-5 (docs/reviews/final2-snap.md): boarders were left out of the SNAP household (CO-304), but no fact carried the providing household's board payments, so they were either omitted or entered as other unearned income without the cost of doing business or the earned income deduction (10 CCR 2506-1 4.403.2, S2963). No existing fact states board received; the payment is a neutral receipt, and SNAP's treatment is snap_boarder_income (CO-4165)."

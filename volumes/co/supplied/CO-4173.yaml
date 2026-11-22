@@ -1,0 +1,14 @@
+id: CO-4173
+name: "SNAP: state or local earned income tax credits held, received while participating"
+identifier: snap_eitc_held_while_participating_value
+kind: supplied
+type: money
+scope: person
+program: SNAP
+meaning: "The part of the person's liquid resources (liquid_resources_value) that is a state or local earned income tax credit the person received in the twelve months before the determination date, while participating in SNAP, and still holds, the person having participated since (temporary non-participation for administrative reasons, such as a delayed recertification, does not interrupt it)."
+precision: "Part of liquid_resources_value, not added to it. A federal earned income tax credit is a federal tax refund and is stated in federal_tax_refunds_held_value (CO-4172), whatever the participation. If not stated, SNAP reads it as 0."
+supplied_by: "Applicant statement and the household's SNAP participation history in CBMS."
+sources: [S2966]
+tags: [snap, resources]
+rationale: "Final verification pass 2 N-8: 10 CCR 2506-1 4.410.J.12 (S2966) exempts a federal, state or local earned income tax credit for twelve months \"if the individual receiving the EITC was participating in SNAP when the EITC was received and participation continues\"; the condition is the person's SNAP participation, so the fact carries the SNAP prefix."
+nearest: [CO-4172]
