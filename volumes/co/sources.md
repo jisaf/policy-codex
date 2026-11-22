@@ -19167,3 +19167,334 @@ Document: D-81
 >
 > Members of an Indian Tribe not eligible for assistance under a Tribal Family Assistance Plan are
 > eligible for Colorado Works.
+### S3250. CCCAP: a household that moves to another county during the twelve-month eligibility period keeps its case until the redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.125.GG (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> GG. If the adult caretaker(s) or teen parent(s) moves out of the county in which they
+> are actively receiving Low-Income Child Care assistance benefits during the
+> twelve (12) month eligibility period; remains below eighty-five percent (85%) of
+> the state median income; and, remains in a low-income eligible activity as
+> defined in the originating county’s county plan, which can be found on the
+> Department website at https://cdec.colorado.gov/colorado-child-care-assistance-
+> program-for-families ,the originating county shall maintain the case,
+> authorization(s), and fiscal responsibility until the re-determination date that was
+> previously determined;
+
+### S3251. CCCAP: reasons a case is terminated at redetermination only (age limits, time limits, becoming a Colorado Works participant, immunization records, county residency)
+
+Document: D-87
+
+8 CCR 1403-1 3.114.B (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> B. Child care authorizations and/or cases must be terminated for the following
+> eligibility-related reasons at re-determination only:
+> 1. Eligible child exceeds age limits;
+> 2. Adult caretaker(s) or teen parent(s) did not pay parent fees, an acceptable
+> payment schedule has not been worked out between the child care
+> provider(s) and adult caretaker(s) or teen parent(s), or the adult
+> caretaker(s) or teen parent(s) has/have not followed through with the
+> payment schedule;
+> 3. Adult caretaker(s) or teen parent(s) exceeds time limited low-income
+> eligible activity time limits;
+> 4. Adult caretaker(s) or teen parent(s) fails to comply with re-determination
+> requirements;
+> 5. Adult caretaker(s) or teen parent(s) is not participating in a low-income
+> eligible activity;
+> 6. Adult caretaker(s) or teen parent(s) has become a participant in Colorado
+> Works;
+> 7. Adult caretaker(s) or teen parent(s) did not submit required immunization
+> records;
+> 8. Adult caretaker(s) or teen parent(s) is/are no longer a resident of the
+> county or state;
+> 9. Adult caretaker(s) or teen parent(s) do not meet federal minimum wage
+> requirement for employment or self-employment and are not considered to
+> be in a low-income eligible activity;
+> 10. Household income exceeds eighty-five percent (85%) of State median
+> income as outlined in rule section 3.111(H)(1); or
+> 11. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within thirty (30) days of the re-determination date and two
+> (2) failed documented attempts to contact the adult caretaker or teen
+> parent have been made. The thirty (30) day period must account for
+> temporary breaks or reported breaks in care.
+
+### S3252. CCCAP: households remain eligible for at least twelve months; the closed list of reasons for discontinuing care before the redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.125.Q (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> Q. Once determined eligible for Low-Income Child Care, households should remain
+> eligible for a minimum of twelve (12) months. Counties shall not discontinue child
+> care services prior to a household’s next eligibility re-determination unless:
+> 1. The household’s income exceeds eighty-five percent (85%) of the State
+> Median Income;
+> 2. The adult caretaker(s) or teen parent(s) is no longer in a qualifying low-
+> income eligible activity for the reasons that do not constitute a temporary
+> break as defined in rule section 3.112(C);
+> 3. The adult caretaker(s) or teen parent(s) no longer reside(s) in the state;
+> 4. The adult caretaker(s) or teen parent(s) who are employed or self-
+> employed and do not meet federal minimum wage requirements outlined
+> in rule section 3.111(G) are not considered to be in a low-income eligible
+> activity;
+> 5. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within a thirty (30) day period and two (2) failed
+> documented attempts to contact the adult caretaker or teen parent have
+> been made. The thirty (30) day period must account for temporary breaks
+> or reported breaks in care; or
+> 6. The adult caretaker(s) or teen parent(s) has been disqualified due to a
+> founded Intentional Program Violation.
+
+### S3253. CCCAP: a caretaker who is not work eligible may be Low-Income eligible only if not part of the Colorado Works assistance unit
+
+Document: D-87
+
+8 CCR 1403-1 3.115.C (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> C. Adult caretakers or teen parents that are not determined work eligible per
+> Colorado Works rule (9 CCR 2503-6), incorporated by reference in rule section
+> 3.103(CC), who are caring for children who are receiving basic cash assistance
+> through the Colorado Works Program may be eligible for Low-Income Child Care
+> if the adult caretaker or teen parent is not a part of the Colorado Works
+> assistance unit and they meet all other low-income program criteria.
+
+### S3254. CCCAP: two-caretaker households by financial contribution or parental role; an incapacitated single caretaker not in an activity is not eligible
+
+Document: D-87
+
+8 CCR 1403-1 3.111.D.2, E (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2. Households are considered households with two adult caretakers or teen
+> parents when two adults or teen parents contribute financially to the
+> welfare of the child and/or assume parent rights, duties, and obligations
+> similar to those of a biological parent, even without legal adoption.
+> ...
+> E. Ineligible Household Compositions
+> Incapacitated single adult caretakers or teen parents who are not in a low-income
+> eligible activity are not eligible for the low-income program.
+
+### S3255. CCCAP countable income: in-kind benefits for employment at cost or fair market value; vendor payments that are part of the compensation for employment
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.4-5 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 4. An in-kind benefit is any gain or benefit received by the adult caretaker(s)
+> or teen parent(s) as compensation for employment, which is not in the
+> form of money such as meals, clothing, public housing, or produce from a
+> garden. A dollar amount must be established for this benefit, and it must
+> be counted as other income. The dollar amount is based on the cost or fair
+> market value.
+> 5. Vendor payments are money payments that are not payable directly to an
+> adult caretaker or teen parent but are paid to a third party for a household
+> expense and are countable when the person or organization making the
+> payment on behalf of a household is using funds that otherwise would
+> need to be paid to the adult caretaker(s) or teen parent(s) and are part of
+> the compensation for employment.
+
+### S3256. CCCAP countable income: GI Bill subsistence allowances; pensions less early-payout penalties; net rental income; boarders and lodgers; insurance and lawsuit proceeds net of last-illness, burial and medical costs
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.7.c, I.8, I.12, I.17-18, I.21-22 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 7. Veterans Payments
+> ...
+> c. Subsistence allowances paid to veterans through the GI bill for
+> education and on-the-job training; and
+> ...
+> 8. Pensions and annuities (minus the amount deducted for penalties, if early
+> payouts are received from these accounts)
+> a. Retirement benefit payments;
+> b. 401(k) payments;
+> c. IRA payments;
+> d. Pension payments; or
+> e. Any other payment from an account meant to provide for a retired
+> person or their survivors.
+> ...
+> 12. Net rental income
+> ...
+> 17. Net income from rental of a house, store, or other property to others
+> 18. Receipts from boarders or lodgers
+> ...
+> 21. Proceeds of a life insurance policy, minus the amount expended by the
+> beneficiary for the purpose of the insured individual's last illness and
+> burial, which are not covered by other benefits
+> 22. Proceeds of a health insurance policy or personal injury lawsuit to the
+> extent that they exceed the amount to be expended or shall be expended
+> for medical care
+
+### S3257. CCCAP income exclusions: foster care, kinship care and adoption subsidy payments; Social Security under a self-support plan; WIA training allowances and youth employment projects; Colorado Works supportive services; the Home Care Allowance; early childhood research study income
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.10, J.13, J.17-18, J.23-24, J.29 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Income Exclusions
+> Each of the following are not considered countable income and are not taken into
+> consideration for eligibility for child care.
+> ...
+> 10. Payments received from the county or state for providing foster care,
+> kinship care, or for an adoption subsidy
+> ...
+> 13. Social security benefit payments and the accrued amount thereof to a
+> recipient when an individual plan for self-care and/or self-support has
+> been developed
+> ...
+> 17. Training allowances granted by Workforce Investment Act (WIA) to enable
+> any individual, whether dependent child or caretaker relative, to participate
+> in a training program are exempt
+> 18. Payments received from the youth incentive entitlement pilot projects, the
+> youth community conservation and improvement projects, and the youth
+> employment and training programs under the Youth Employment and
+> Demonstration Project Act
+> ...
+> 23. Supportive service payments under the Colorado Works Program
+> 24. Home Care Allowance under adult categories of assistance
+> ...
+> 29. Income received for participation in grant funded research studies on early
+> childhood development
+
+### S3258. CCCAP: "Training and post-secondary education" means programs for a Bachelor's degree or less, or workforce training
+
+Document: D-87
+
+8 CCR 1403-1 3.103.IIIII (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> IIIII. “Training and post-secondary education” is a Low-Income Child Care eligible
+> activity where an adult caretaker or teen parent attends educational programs
+> including regionally accredited institutions of higher education for a Bachelor's
+> degree or less or a workforce training program. Workforce training includes
+> educational activities such as vocational, technical, or job skills training which
+> result in a diploma, license, or certificate; and, effective July 1, 2026, nationally
+> recognized, evidence-based substance use disorder treatment programs that are
+> licensed by the Colorado Behavioral Health Administration (BHA) at an intensive
+> outpatient service level of care or higher.
+
+### S3259. Child Welfare Child Care (12 CCR 2509-4 § 7.302): no other child care option, a child eligible for Program Area 4, 5 or 6; a client fee when applicable; follow the CCCAP rules
+
+Document: D-305
+
+12 CCR 2509-4 § 7.302, 7.302.1, 7.302.2.E, G (rule version 12039, effective 2025-07-01; section revised effective 2012-04-01). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12039&fileName=12%20CCR%202509-4
+
+> 7.302 CHILD WELFARE CHILD CARE [Rev. eff. 4/1/12]
+>
+> Child Welfare Child Care is a service to maintain children in their own homes or in the least restrictive out-
+> of-home care when there are no other child care options available. Child Welfare Child Care is not
+> twenty-four (24) hour care.
+>
+> 7.302.1 ELIGIBILITY CRITERIA
+>
+> In addition to meeting eligibility requirements in the General Information and Policies section, the county
+> department shall ensure that there are no other child care options available and the child is eligible for
+> Program Area 4, 5, or 6 as described in this manual.
+>
+> 7.302.2 CHILD CARE ARRANGEMENT AND FAMILY SERVICES PLAN [Rev. eff. 4/1/12]
+>
+> The county department shall:
+> ...
+> E. Assess a client fee when applicable. Refer to Section 3.905, B (9 CCR 2503-1).
+> ...
+> G. Follow State rules for the Colorado Child Care Assistance Program (CCCAP) as found in rule
+> manual Volume 3 “Income Maintenance”, Section 3.900 et seq. (9 CCR 2503-1).
+
+### S3260. CCCAP: care is typically authorized for twelve months, except when the caretaker is in a time-limited activity such as job search or education
+
+Document: D-87
+
+8 CCR 1403-1 3.132.B (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3.132 ARRANGEMENT FOR CHILD CARE SERVICES
+> ...
+> B. Child care is typically authorized for twelve (12) consecutive months except:
+> 1. When an eligible child is or will be enrolled in a program that does not
+> intend to operate for the entire eligibility period;
+> 2. When an eligible child’s adult caretaker(s) or teen parent(s) does not
+> intend to keep the child enrolled with their initial child care provider(s)
+> during the entire eligibility period; or,
+> 3. When the adult caretaker(s) or teen parent(s) are participating in time
+> limited activities such as job search or education/training.
+
+### S3261. CCCAP parent fee: fees are updated to the new FPG and formula at the next scheduled redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.124.R (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> R. Counties shall use the FPG and state median income limit as defined in rule
+> sections 3.111(H)(2) and (3). Counties shall update parent fees at the next
+> scheduled re-determination according to the parent fee formula table outlined in
+> this rule section 3.124 that is in effect on the date of redetermination.
+
+### S3262. CCCAP: non-cooperation with the Attendance Tracking System may result in case closure as defined by Department-approved county policy
+
+Document: D-87
+
+8 CCR 1403-1 3.112.J (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> J. Adult caretakers or teen parents must use the Attendance Tracking System
+> (ATS) to check children in and out for the days of care authorized and attended
+> unless the child care provider has been granted an exemption by the
+> Department. Non-cooperation with the use of the ATS may result in case closure
+> and/or non-payment of the child care benefits as defined by Department-
+> approved county policy.
+
+### S3263. CCCAP countable income: farm self-employment, gross receipts minus operating expenses; farm products used for family living not included
+
+Document: D-87
+
+8 CCR 1403-1 3.111.I.3 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 3. Taxable gross income (gross receipts minus operating expenses from the
+> operation of a farm by a person on their own account, as an owner, renter,
+> or tenant farming) from farm self-employment.
+> a. Gross receipts include, but are not limited to:
+> 1) The value of all products sold;
+> 2) Government crop loans;
+> 3) Money received from the rental of farm equipment and/or
+> farm land to others; and
+> 4) Incidental receipts from the sale of wood, sand, gravel, and
+> similar items.
+> b. Operating expenses include, but are not limited to:
+> 1) Cost of feed, fertilizer, seed, and other farming supplies;
+> 2) Cash wages paid to farmhands;
+> 3) Cash rent;
+> 4) Interest on farm mortgages;
+> 5) Farm building repairs; and
+> 6) Farm taxes (not state and federal income taxes).
+> c. The value of fuel, food, or other farm products used for family living
+> is not included as part of net income. If child care is provided for
+> an employment activity, then taxable gross wages divided by the
+> number of hours worked shall equal at least the current federal
+> minimum wage. To determine a valid monthly income, taxable
+> gross income may be averaged for a period of up to twelve (12)
+> months. For all other cases where receipt of income is reasonably
+> certain but the monthly amount is expected to fluctuate, a period
+> of up to twelve (12) months shall be used to arrive at an average
+> monthly amount.
+
+### S3264. CCCAP pre-eligibility applications: supporting documentation within thirty days or the application may be determined ineligible
+
+Document: D-87
+
+8 CCR 1403-1 3.126.C (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> C. All supporting documentation for a pre-eligibility application submitted by an Early
+> Care and Education provider shall be received in thirty (30) calendar-days of the
+> date the application was received or the application may be determined ineligible
+> by the county. If all verifications are received between the thirty-first (31st) and
+> sixtieth (60th) day, counties shall determine eligibility from the date the
+> verification was received.
+
+### S3265. CCCAP: the verification required at application includes incapacitation, if applicable
+
+Document: D-87
+
+8 CCR 1403-1 3.111.C.2, C.2.g (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 2. The required verification supporting the information declared on the
+> application form, including:
+> ...
+> g. Incapacitation, if applicable; and

@@ -101,14 +101,14 @@ Key:
 |---|---|
 | A Accused individual (1-2) | NA: IPV procedure term |
 | B Additional care needs | C: CO-872, CO-4056, CO-1686, CO-1581 |
-| C Adult caretaker | C: CO-992, CO-2607, CO-897; OQ-540 (loco parentis); see F-15 |
+| C Adult caretaker | C: CO-992, CO-2607, CO-897; OQ-540 (loco parentis; D.2 financial contribution, fixed F-15) |
 | D Adverse action | NA: notice procedure |
 | E Affidavit; F Applicant | NA: procedural terms |
 | G Application (G.1-2) | NA: forms; the application determination is CO-3307 `application` |
 | H Application date | C: CO-3910, CO-3911 (anchor of the thirty days); OQ-680 |
 | I Application date for pre-eligibility | NA: 3.126 provider pre-eligibility (see F-24) |
 | J Application process (J.1-2) | C: CO-1451 (verification); forms NA |
-| K Assets (K.1 liquid, K.2 non-liquid; home and car excluded) | C: CO-1741 meaning, CO-1809; see F-02 |
+| K Assets (K.1 liquid, K.2 non-liquid; home and car excluded) | C: CO-1741 meaning, CO-1809, CO-987 (household; fixed F-02) |
 | L Attestation of mental competence | NA: provider-side |
 | M ATS; N Authorization; O Authorization start date; P Base reimbursement rate | NA: provider-side, or authorization with no eligibility effect |
 | Q Basic education | C: CO-1722 (`basic_education`), CO-2111 |
@@ -120,7 +120,7 @@ Key:
 | AA Clear and convincing | NA: IPV standard of proof |
 | BB CCCAP (four components) | C: CO-989 statuses |
 | CC Colorado Works Program | C: CO-013 |
-| DD Colorado Works Child Care | C: CO-988, CO-2709, CO-896; see F-01 |
+| DD Colorado Works Child Care | C: CO-988 (household; fixed F-01), CO-2709, CO-896 |
 | EE Colorado Works households (cash or state diversion) | C: CO-988 diversion arm, CO-3931, CO-3932; OQ-682 |
 | FF Collateral contact; GG Complaint; HH Confirmed abuse; II Consumer education; JJ County | NA: administrative terms |
 | KK County Plan | OQ: OQ-162, OQ-682 (blocked, county plans) |
@@ -136,8 +136,8 @@ Key:
 | YY Entry income eligibility level | C: CO-870, CO-3004, CO-986; OQ-121 |
 | ZZ Equivalent full-time units | C: CO-2864 (supplied), CO-1288 |
 | AAA Exit income eligibility level | C: CO-993 |
-| BBB Fair market value | GAP: used by I.4, see F-08 |
-| CCC Families experiencing homelessness (1-4) | C: CO-2814, CO-2810; see F-13 (campgrounds) |
+| BBB Fair market value | C: CO-4454 (I.4 at cost or fair market value; fixed F-08) |
+| CCC Families experiencing homelessness (1-4) | C: CO-2814, CO-2810 (campground option split; fixed F-13) |
 | DDD Federal poverty level | C: CO-3007, CO-181, CO-182 |
 | EEE Fingerprint check; FFF Fiscal agreement | NA: provider-side |
 | GGG Fraud (1-3) | C: CO-3906 (3.142 verdicts) |
@@ -147,19 +147,19 @@ Key:
 | KKK Hold slots | NA: provider payment |
 | LLL Household | C: CO-982, CO-990, CO-1721, CO-326, CO-327 |
 | MMM In loco parentis | C: CO-2607; OQ-540 |
-| NNN Incapacitated | C: CO-1744; see F-21 |
+| NNN Incapacitated | C: CO-1744, CO-4466, CO-4467 (verification element; fixed F-21) |
 | OOO Income eligibility | C: CO-985 |
 | PPP Inconsistent | C: CO-1303, CO-1307, CO-1338 |
 | QQQ Intentional Program Violation | C: CO-3906 |
-| RRR Involuntarily out of the home | C: CO-898; see F-03 |
+| RRR Involuntarily out of the home | C: CO-898, CO-991 (fixed F-03) |
 | SSS Job search | C: CO-871 |
-| TTT Low-Income Child Care | C: CO-989; see F-12 |
+| TTT Low-Income Child Care | C: CO-989 (3.115.C row; fixed F-12) |
 | UUU Manual claim | NA: provider payment |
 | VVV Maternity/paternity leave; WWW Medical leave | C: CO-3903, CO-984, CO-1744 |
 | XXX Negative licensing action | NA: provider-side |
 | YYY New employment verification | NA: a kind of document (H.5.a.2) |
 | ZZZ Non-traditional care hours | C: CO-2397, CO-2398 |
-| AAAA Originating county; OOOO Receiving county | GAP: see F-05 (3.125.GG) |
+| AAAA Originating county; OOOO Receiving county | C: CO-2107 (cccap_application_county is the originating county at a change; fixed F-05) |
 | BBBB Overpayment; QQQQ Recovery | NA: recovery |
 | CCCC Parent | C: CO-2607 |
 | DDDD Parent fee | C: CO-1290 |
@@ -172,7 +172,7 @@ Key:
 | NNNN Rate notification | NA: provider-side |
 | PPPP Recipient | NA |
 | RRRR Redet form; SSSS Redet process (1-2) | C: CO-3307, CO-1451 |
-| TTTT Regionally accredited institution | C: CO-1722; see F-04 |
+| TTTT Regionally accredited institution | C: CO-1722, CO-4450 (fixed F-04) |
 | UUUU Relative | C: CO-2845 (D.5, immunization) |
 | VVVV Risk-based audit | NA |
 | WWWW Self-employment | C: CO-1700, CO-1710 |
@@ -185,11 +185,11 @@ Key:
 | FFFFF Temporary absence or break | C: CO-3903 |
 | GGGGG Tiered reimbursement | NA: provider rates |
 | HHHHH Timely written notice | NA: notice |
-| IIIII Training and post-secondary education (and SUD treatment) | C: CO-1722, CO-4074; see F-04 |
+| IIIII Training and post-secondary education (and SUD treatment) | C: CO-1722, CO-4450 (Bachelor's degree or less; fixed F-04), CO-4074 |
 | JJJJJ Transition families | C: CO-3307 `transition_from_colorado_works` |
 | KKKKK Undue burden; LLLLL Units | NA |
 | MMMMM Up-to-date immunizations | C: CO-2395, CO-4060 |
-| NNNNN Voluntarily out of the home | C: CO-991 (still a caretaker); OQ-612 (see F-17) |
+| NNNNN Voluntarily out of the home | C: CO-991 (still a caretaker); OQ-612 (Checked line cites it; fixed F-17) |
 | OOOOO Wait list | NA: enrollment capacity |
 | PPPPP Willful misrepresentation | NA: recovery and IPV |
 
@@ -205,48 +205,48 @@ Key:
 | Para | Disposition |
 |---|---|
 | Intro | C: CO-987 |
-| A (verified county residents) | C: CO-2107, CO-1440; see F-02. Second sentence (remain eligible after a county move): see F-05 |
+| A (verified county residents) | C: CO-2107, CO-1440, CO-987 (every caretaker; fixed F-02). Second sentence: CO-2107 (fixed F-05) |
 | B.1 activity | C: CO-991, CO-984 |
 | B.2 income guidelines | C: CO-2104 |
 | B.3 custody | C: CO-982, CO-2607 |
 | C intro, C.1, C.1.a-b (application forms) | NA: forms |
-| C.1.c Head Start redetermination alignment | GAP: see F-18 |
+| C.1.c Head Start redetermination alignment | NA: redetermination scheduling, out of scope (docs/colorado-notes.md, coverage round; F-18) |
 | C.2.a residence | C: CO-1440, CO-1676, CO-1313 |
 | C.2.b, b.1, b.2.a-c child citizenship, age, identity | C: CO-1442 to CO-1444, CO-1678 to CO-1680, attestation facts |
 | C.2.c immunizations | C: CO-4060, CO-2395 |
 | C.2.d activity | C: CO-1441, CO-1677 |
 | C.2.e schedule for non-traditional hours | C: CO-2397, CO-2398, CO-1447, CO-1448 |
 | C.2.f income | C: CO-1445, CO-2873, CO-1681, CO-2590 |
-| C.2.g incapacitation | C (folded into the fact): CO-1744; see F-21 |
+| C.2.g incapacitation | C: CO-4466, CO-4467, CO-1447, CO-1448 (fixed F-21) |
 | C.2.h custody arrangement | C: CO-2399 |
 | D.1.a one caretaker; voluntary absence; temporary caregivers not members | C: CO-991, CO-982 |
-| D.1.b involuntary absence | C: CO-898, CO-991; see F-03 |
+| D.1.b involuntary absence | C: CO-898, CO-991 (fixed F-03) |
 | D.1.c.1 both in activity | C: CO-991 |
 | D.1.c.2 voluntarily absent, both in activity | C: CO-991 |
-| D.1.c.3 one incapacitated | C: CO-991, CO-1744; see F-03 |
-| D.2 two caretakers by financial contribution or parental role | GAP: see F-15 |
+| D.1.c.3 one incapacitated | C: CO-991, CO-1744 (fixed F-03) |
+| D.2 two caretakers by financial contribution or parental role | C: role contributes_financially_to, CO-2607, CO-982, CO-992; OQ-540 (fixed F-15) |
 | D.3 separate applications for shared custody | NA: each household is its own case; custody schedule CO-2399 |
 | D.4 every caretaker in an activity has custody and meets guidelines | C: CO-991, CO-982 |
 | D.5 unrelated caretaker verification | C: CO-2396, CO-2846 |
-| D.6 caretaker not work eligible falls to Low-Income | C: CO-988 (falls through); see F-12 |
+| D.6 caretaker not work eligible falls to Low-Income | C: CO-988 (falls through), CO-989 (3.115.C governs for a unit member; fixed F-12) |
 | D.7 adoptive parents | C: CO-2607 (`parent` includes adoptive) |
 | D.8 maternity/paternity leave | C: CO-984, CO-3903 |
 | D.9 medical leave with an open case | C: CO-984, CO-1744, CO-2103 |
 | D.10 separated caretaker with a temporary order | C: CO-4063, CO-4064, CO-4070 |
-| E incapacitated single caretaker ineligible | C: CO-991; see F-03 |
+| E incapacitated single caretaker ineligible | C: CO-991 (fixed F-03) |
 | F eligible child | C: CO-980, CO-4056, CO-2108, CO-872, CO-320, CO-321 |
 | F.1 citizenship verified, identity if inconsistent | C: CO-998, CO-1442 to CO-1444 |
 | F.2 immunization record | C: CO-4060, CO-2394, CO-2884; OQ-562 |
 | G intro | C: CO-984 |
 | G.1.a employment | C: CO-984 |
 | G.1.b minimum wage | C: CO-984, CO-160 |
-| G.1.c LLC and S-corporation owners are employees | NA: classification on the facts; see F-27 |
+| G.1.c LLC and S-corporation owners are employees | NA: classification on the facts, noted in CO-3915 (F-27) |
 | G.2.a expenses verified or not considered | C: CO-1709, CO-3927, CO-4062 |
 | G.2.b weekly schedule | C: CO-1447, CO-1448 (self-employment arm) |
 | G.2.c income exceeds expenses | C: CO-984 (net at or below 0 fails the wage ratio), CO-1710 |
 | G.2.d minimum wage | C: CO-984 |
 | G.2.e launch period: activity | C: CO-2113, CO-984 |
-| G.2.e launch period: projected income | GAP: see F-11 |
+| G.2.e launch period: projected income | C: CO-1710, CO-4461 (fixed F-11) |
 | G.3.a job search, thirteen weeks per instance | C: CO-984, CO-871, CO-2110, CO-2103; OQ-162 |
 | G.3.b start of the job search activity | NA: authorization start date |
 | G.3.c weeks used | C: CO-2109 |
@@ -254,7 +254,7 @@ Key:
 | G.3.f approved while enrolled | C: CO-871, CO-2103 |
 | G.3.g ineligible once used | C: CO-984 |
 | G.3.h, h.1, h.2 post-eligibility stabilization | C: CO-984 (redetermination reads CO-2103 true) |
-| G.4.a.1 post-secondary, 104 weeks | C: CO-1722, CO-2111; OQ-162; see F-04 |
+| G.4.a.1 post-secondary, 104 weeks | C: CO-1722, CO-4450 (fixed F-04), CO-2111; OQ-162 |
 | G.4.a.2 workforce training, 104 weeks | C: CO-1722, CO-1518, CO-2111; OQ-162 |
 | G.4.a.3 SUD treatment, one year per instance from 2026-07-01 | C: CO-4074, CO-3905, CO-3904, CO-1517, CO-2112, CO-1516 |
 | G.4.b.1 basic education 52 weeks | C: CO-2111; OQ-162 |
@@ -269,14 +269,14 @@ Key:
 | H.3 table from 2026-10-01 | C: CO-1804, CO-1805 (2026-10-01 version), CO-3007 |
 | H.4 prior thirty days | C: CO-3910 to CO-3913, CO-3915 to CO-3917; OQ-680 |
 | H.4.a-d, f, h other periods | C: CO-3914 |
-| H.4.e rental income (self-employment if 20 hours or more; averaging; joint ownership) | C: CO-3914, CO-1714; see F-10 |
+| H.4.e rental income (self-employment if 20 hours or more; averaging; joint ownership) | C: CO-3914, CO-1714, CO-4457, CO-4458 (net; fixed F-10) |
 | H.4.g inclusions and exclusions used | C: CO-3915, CO-3916 |
 | H.4.i lump sums | C: CO-3916, CO-3367, CO-3918, CO-3920; OQ-680 |
 | H.5.a.1 earned income, thirty days or twelve months | C: CO-3910, CO-3912, CO-3914 |
 | H.5.a.2 new employment verification letter | NA: a kind of document |
 | H.5.a.3 self-employment documentation; expenses verified | C: CO-1709, CO-1710, CO-3914 |
 | H.5.b unearned income | C: CO-3911, CO-3913, CO-3914 |
-| H.5.c assets self-declared, $1M | C: CO-1741, CO-1809; see F-02 |
+| H.5.c assets self-declared, $1M | C: CO-1741, CO-1809, CO-987 (household; fixed F-02) |
 | H.5.d verbal verification | NA: a kind of document |
 | H.5.e.1.a fifteen-day noticing period | C: CO-1450, CO-1354, CO-2120, CO-1451 |
 | H.5.e.1.b sixty days, new application | C: CO-1451 (`past_due`) |
@@ -287,44 +287,44 @@ Key:
 | I.2.a allowed expenses (1-7) | C: CO-3370, CO-3374 via CO-1709 |
 | I.2.b disallowed expenses (1-3) | C: CO-1709 (does not read CO-3372, principal) |
 | I.2.c minimum wage; twelve-month average | C: CO-984, CO-3914 |
-| I.3, I.3.a-c farm self-employment | GAP: see F-20 |
-| I.4 in-kind compensation | GAP: see F-08 |
-| I.5 vendor payments as compensation | GAP: see F-08 |
+| I.3, I.3.a-c farm self-employment | C: CO-1710, CO-1709, CO-4465 (farm interest; fixed F-20) |
+| I.4 in-kind compensation | C: CO-4454, CO-4464 (fixed F-08) |
+| I.5 vendor payments as compensation | C: CO-4455, CO-4464 (fixed F-08) |
 | I.6 railroad retirement | C: CO-026 |
 | I.7.a, b, d veterans' pensions and refunds | C: CO-030 |
-| I.7.c GI Bill subsistence | C, see F-09 |
-| I.8 pensions and annuities (a-e) | C: CO-026, CO-3816; penalties see F-10 |
+| I.7.c GI Bill subsistence | C: CO-4456, CO-4464 (fixed F-09) |
+| I.8 pensions and annuities (a-e) | C: CO-026, CO-3816; penalties CO-4459, CO-4463 (fixed F-10) |
 | I.9-11, 13-16, 19 dividends, interest, estates, royalties, memberships, trusts | C: CO-1714, CO-081 |
-| I.12, I.17 net rental income | C, see F-10 |
-| I.18 boarders and lodgers | GAP: see F-08 |
+| I.12, I.17 net rental income | C: CO-4457, CO-4458, CO-4463 (fixed F-10) |
+| I.18 boarders and lodgers | C: CO-4161, CO-4464 (fixed F-08) |
 | I.20 inheritance, gifts, prizes | C: CO-3916, CO-1181, CO-3367, CO-030 |
-| I.21-22 insurance and lawsuit proceeds | C, see F-10 |
+| I.21-22 insurance and lawsuit proceeds | C: CO-3367, CO-4460, CO-3916 (fixed F-10) |
 | I.23 strike benefits; I.27 workers' compensation; I.28 maintenance; I.30 military allotments; I.33 refugee payments | C: CO-030, CO-1714 |
 | I.24 lease bonuses | C: CO-1714 |
 | I.25 Social Security before Medicare | C: CO-025, CO-3916 |
 | I.26 unemployment | C: CO-027 |
 | I.29 child support | C: CO-028 |
 | I.31 WIOA wages | C: CO-023 |
-| I.32 AmeriCorps and VISTA | C: CO-4016 (VISTA exception, see F-27) |
+| I.32 AmeriCorps and VISTA | C: CO-4016; VISTA stated by the I.32 condition, noted in CO-3915 (F-27) |
 | J intro | C: CO-3913, CO-3916 |
 | J.1 child's earnings | C: CO-3915 |
 | J.2 SSI | C: not read by CO-3916 |
 | J.3, J.5-9, J.11, J.15, J.21 federally excluded payments | C: CO-3366 |
 | J.4 (a-d) nutrition assistance | C: no CCCAP income fact holds benefits in kind |
-| J.10 foster, kinship and adoption payments | GAP: see F-07 |
+| J.10 foster, kinship and adoption payments | C: CO-3821, CO-4451, CO-4463 (fixed F-07) |
 | J.12 LEAP | C: CO-3364 |
-| J.13 Social Security under a PASS | GAP: see F-07 |
+| J.13 Social Security under a PASS | C: CO-3825, CO-4463 (fixed F-07) |
 | J.14 EIC | C: CO-3365 |
-| J.16, J.19, J.20 educational grants, loans, work-study, Perkins | C: CO-3360, CO-3361, CO-3912; see F-09 |
-| J.17, J.18 WIA training allowances; youth projects | GAP: see F-07 |
+| J.16, J.19, J.20 educational grants, loans, work-study, Perkins | C: CO-3360, CO-3361, CO-3912; GI Bill subsistence counted back (CO-4456; fixed F-09) |
+| J.17, J.18 WIA training allowances; youth projects | C: CO-3815, CO-4463 (fixed F-07) |
 | J.22 R&P vendor payments | NA: not a receipt to the household |
-| J.23 Colorado Works supportive services | GAP: see F-25 |
-| J.24 Home Care Allowance | GAP: see F-07 |
+| J.23 Colorado Works supportive services | C: CO-4452, CO-4463 (fixed F-25) |
+| J.24 Home Care Allowance | C: CO-3824, CO-4463 (fixed F-07) |
 | J.25 loans | C: CO-3362 |
 | J.26 public cash assistance | C: `tanf_cash_income`, `adult_financial_cash_income` not read; CO-3920 |
 | J.27 settlement reimbursements | C: CO-3363 |
 | J.28 irregular income under $90 a quarter | C: CO-4075 to CO-4077; OQ-713 |
-| J.29 research-study income | GAP: see F-25 |
+| J.29 research-study income | C: CO-4453, CO-4463 (fixed F-25) |
 | K.1 (a-b) court-ordered current support deducted | C: CO-3902, CO-033, CO-3900, CO-3901, CO-985, CO-2578 |
 | K.2.a-b verification of the order and payment | C: CO-1363, CO-1446, CO-1683 |
 | K.2.c verification at approval and each redetermination | C: CO-1446, CO-1688, CO-1451 (`deduction_disallowed`) |
@@ -342,30 +342,30 @@ Key:
 | 3.112.G child citizenship, age, identity | C: CO-1442 to CO-1444 |
 | 3.112.H thirty-day reopening after closure | NA: start date of resumed care |
 | 3.112.I attendance credentials | NA: provider disqualification |
-| 3.112.J ATS non-cooperation closure | GAP: see F-19 |
+| 3.112.J ATS non-cooperation closure | OQ: OQ-162 (county policy, blocked; F-19) |
 | 3.113.A no earlier than twelve months; forms; failure to return | C: CO-3307, CO-1451 (`case_closed`) |
 | 3.113.A.1.a.1-3 earned and self-employment income at redetermination | C: CO-3910 to CO-3915, CO-1709 |
 | 3.113.A.1.b unearned | C: CO-3911, CO-3913 |
 | 3.113.A.1.c schedule | C: CO-2397, CO-2398 |
-| 3.113.A.1.d assets | C: CO-1741; see F-02 |
+| 3.113.A.1.d assets | C: CO-1741, CO-987 (fixed F-02) |
 | 3.113.A.2 training documentation | C: CO-1441 |
 | 3.113.A.3 immunization | C: CO-4060 |
 | 3.113.A.4 (a-d) collateral contacts | NA: kinds of document |
 | 3.113.B fee review (thirty days, 4.33 weekly) | C: CO-1290, CO-2578; the 4.33 conversion is NA (county method) |
-| 3.113.C Head Start alignment | GAP: see F-18 |
+| 3.113.C Head Start alignment | NA: redetermination scheduling, out of scope (docs/colorado-notes.md; F-18) |
 | 3.114.A.1 over 85% SMI during the period | C: CO-993, CO-2104 |
-| 3.114.A.2 no longer a state resident | C: CO-505 via CO-2107; see F-05 |
+| 3.114.A.2 no longer a state resident | C: CO-505 via CO-2107 (state residency alone at a change; fixed F-05) |
 | 3.114.A.3 job search expired | C: CO-984, CO-2109 |
 | 3.114.A.4 minimum wage | C: CO-984 |
 | 3.114.A.5 unexplained absences | C: CO-4055, CO-989; OQ-711 |
 | 3.114.A.6 IPV | C: CO-3906 |
-| 3.114.B.1 age limits (redetermination only) | C: CO-4056, CO-980; see F-06 |
+| 3.114.B.1 age limits (redetermination only) | C: CO-4056, CO-4462 (fixed F-06), CO-980 |
 | 3.114.B.2 parent fees unpaid | C: CO-4054 |
-| 3.114.B.3 time limits (redetermination only) | C: CO-2111; see F-06 |
+| 3.114.B.3 time limits (redetermination only) | C: CO-2111, CO-984 (fixed F-06); OQ-790 (3.132.B.3) |
 | 3.114.B.4 redetermination requirements | C: CO-1451 |
 | 3.114.B.5 not in an activity | C: CO-991 |
-| 3.114.B.6 became a Colorado Works participant | GAP: see F-12 |
-| 3.114.B.7 immunization records | C: CO-4060; see F-06 |
+| 3.114.B.6 became a Colorado Works participant | C: CO-989 (fixed F-12) |
+| 3.114.B.7 immunization records | C: CO-4060, CO-4462 (fixed F-06) |
 | 3.114.B.8 county or state residency | C: CO-2107 |
 | 3.114.B.9 minimum wage | C: CO-984 |
 | 3.114.B.10 over 85% SMI | C: CO-993 |
@@ -375,13 +375,13 @@ Key:
 ### 3.115-3.117 Colorado Works Child Care and transition
 | Para | Disposition |
 |---|---|
-| 3.115.A work-eligible, approved for Colorado Works; twelve months; freeze | C: CO-988; see F-01. Freeze NA |
+| 3.115.A work-eligible, approved for Colorado Works; twelve months; freeze | C: CO-988 (fixed F-01). Freeze NA |
 | 3.115.B, B.1-3, B.5 referral form | NA: form handling |
 | 3.115.B.4 transition | C: CO-3307 |
-| 3.115.C not work eligible and not in the assistance unit | GAP: see F-12 |
+| 3.115.C not work eligible and not in the assistance unit | C: CO-989 (fixed F-12) |
 | 3.116.A plan, activity, referral; twelve months | C: CO-988, CO-896, CO-2709 |
 | 3.116.B twelve-month authorization | NA: authorization |
-| 3.116.C, C.1-2 earned income only | C: CO-2578, CO-2873; see F-23 |
+| 3.116.C, C.1-2 earned income only | C: CO-2578, CO-2873, CO-1445 (fixed F-23) |
 | 3.116.D schedule from the referral | NA |
 | 3.116.E residency verified by Colorado Works | C: CO-1440 |
 | 3.116.F citizenship, age, identity by the referral | C: CO-1442 to CO-1444 (attestation not questionable) |
@@ -421,10 +421,10 @@ Key:
 | 3.120.A Child Welfare Child Care | C: CO-2576, CO-989 |
 | 3.120.B not 24-hour care | C: CO-4056 |
 | 3.120.C school-day services | NA |
-| 3.120.D eligibility by the Child Welfare division (12 CCR 2509-4 7.302) | C: CO-2576; OQ-710 (see F-16); verification see F-14 |
+| 3.120.D eligibility by the Child Welfare division (12 CCR 2509-4 7.302) | C: CO-2576; OQ-710 (7.302 read, D-305; fixed F-16); verification CO-1441, CO-1445, CO-2873 (fixed F-14) |
 | 3.120.E no residency verification | C: CO-1440 |
 | 3.120.F not CCDF-funded | C: CO-4056 (no citizenship test); OQ-710 |
-| 3.121.A definition | C: CO-2814; see F-13 |
+| 3.121.A definition | C: CO-2814 (fixed F-13) |
 | 3.121.B stabilization period of at least sixty days | C: CO-3907, CO-2577, CO-989 |
 | 3.121.B.1 verification within the period | C: CO-3909, CO-3908, CO-1451 |
 | 3.121.B.2 not recoverable | NA: recovery |
@@ -446,7 +446,7 @@ Key:
 | 3.124.D review at redetermination; thirty days; 4.33 | C: CO-985, CO-2578; 4.33 NA (county method) |
 | 3.124.E, F Colorado Works fee on verified gross countable income | C: CO-2578 |
 | 3.124.G Head Start dual-enrollment waiver | C: CO-3505 |
-| 3.124.H 20% quality reduction | C: CO-3508, CO-1287, CO-3002; see F-22 |
+| 3.124.H 20% quality reduction | C: CO-3508 (Low-Income and Colorado Works only; fixed F-22), CO-1287, CO-3002 |
 | 3.124.I intro | C: CO-1290 |
 | 3.124.I.1 teen-parent hardship waiver | C: CO-2575 |
 | 3.124.I.2 quality reduction | C: CO-3508 |
@@ -463,7 +463,7 @@ Key:
 | 3.124.P, P.1-2 formula through 2028-07-31 | C: CO-1289, CO-1284, CO-2115 to CO-2117 |
 | 3.124.P.3 $15 per additional child | C: CO-1286, CO-2579 |
 | 3.124.Q formula from 2028-08-01 | C: CO-1289, CO-2115 to CO-2119; OQ-254 |
-| 3.124.R FPG and SMI per 3.111.H; update at redetermination | C: CO-3007; see F-26 |
+| 3.124.R FPG and SMI per 3.111.H; update at redetermination | C: CO-3007, CO-4052 (noted, F-26) |
 | 3.124.S $5 hardship reduction | C: CO-3506, CO-3507 |
 | 3.124.T Department notifies counties each federal fiscal year | C: CO-3006, CO-3007 |
 | 3.124.U part-time care at 55% | C: CO-1288, CO-2864, CO-3003 |
@@ -475,7 +475,7 @@ Key:
 | Para | Disposition |
 |---|---|
 | A-P (allocations, contracts, controls, forms, training, CHATS, overrides, records, posting, consumer education P.1-6) | NA: county administration |
-| Q, Q.1-6 minimum twelve-month eligibility and its closed list of reasons | C: CO-989, CO-993, CO-505, CO-984, CO-4055, CO-3906; see F-05, F-06 |
+| Q, Q.1-6 minimum twelve-month eligibility and its closed list of reasons | C: CO-989, CO-993, CO-505, CO-984, CO-4055, CO-3906; CO-2107, CO-4056, CO-4060 (fixed F-05, F-06) |
 | R, S wait-list policies | NA |
 | T, T.1-3 fifteen days; applications valid sixty days | C: CO-1450, CO-1451. T.2 start date NA |
 | U misdirected applications | NA |
@@ -488,16 +488,16 @@ Key:
 | BB, BB.1-2 residence verification (documents) | C: CO-1440, CO-1313. Document list NA |
 | CC SUD self-attestation | C: CO-1441, CO-4074 |
 | DD, DD.1-2 reporting responsibilities | NA: reporting duty |
-| EE, EE.1.a-e, EE.2 changes acted on during the period | C: CO-3307 (`change_during_eligibility_period`); see F-06 |
-| FF new child: align the redetermination | GAP: see F-18 |
-| GG, GG.1-4 move to another county during the period | GAP: see F-05. GG.1 provider agreements NA; GG.3 receiving county's activities OQ-162 |
+| EE, EE.1.a-e, EE.2 changes acted on during the period | C: CO-3307 (`change_during_eligibility_period`), CO-4462 (fixed F-06) |
+| FF new child: align the redetermination | NA: redetermination scheduling, out of scope (F-18); the added child is tested as new (CO-4462) |
+| GG, GG.1-4 move to another county during the period | C: CO-2107 (fixed F-05). GG.1 provider agreements NA; GG.3 receiving county's activities OQ-162 |
 | HH requests from agencies | NA |
 | II redetermination: fifteen days | C: CO-1451 |
 | JJ information from other sources | NA |
 | KK 20% quality reduction | C: CO-3508 |
 | LL, LL.1-3 unpaid fees acted on at redetermination | C: CO-4054 |
 | MM, NN authorization by need; Head Start blending | NA: authorization |
-| OO Head Start alignment | GAP: see F-18 |
+| OO Head Start alignment | NA: redetermination scheduling, out of scope (F-18) |
 | PP, PP.1-3 school-day services | NA: authorization |
 | QQ, RR authorization start dates | NA |
 | SS notices | NA |
@@ -508,7 +508,7 @@ Key:
 | Para | Disposition |
 |---|---|
 | Intro, A, B.1-2, D-G | NA: provider reimbursement before the determination (county option) |
-| C thirty days for documents | GAP: see F-24 |
+| C thirty days for documents | GAP: not modeled, recorded in docs/colorado-notes.md (F-24, deferred P2) |
 
 ### 3.127-3.134 Provider side
 | Para | Disposition |
@@ -520,7 +520,7 @@ Key:
 | 3.131 Slot contracts | NA: provider contracting |
 | 3.132 A-I Arrangement for services | NA: authorization and payment (the D-E ages agree with CO-4056) |
 | 3.133.A.1-3, B ATS | NA: attendance billing |
-| 3.133.A.4 ATS non-cooperation closure | GAP: see F-19 |
+| 3.133.A.4 ATS non-cooperation closure | OQ: OQ-162 (county policy, blocked; F-19) |
 | 3.134 Fiscal agreement authority | NA: provider agreements |
 
 ### 3.135-3.147 Program integrity
@@ -594,3 +594,41 @@ From `final-cccap-leap-sebt.md` and `final2-cccap-leap-sebt.md`:
 | N-10 (protective services income waiver) | Holds: CO-4053. |
 
 No regression in the four stored cases recomputed (CO-08, CO-125, CO-133, CO-134 match their expectations).
+
+## Disposition (coverage round)
+
+Fix round 2026-11-22 (branch `worktree-agent-a2cadfae7e8577c94`). Commits: `739c2be` (excerpts S3250-S3265; D-305, 12 CCR 2509-4 7.302), `22b6dd2` (household, composition, activities, eligibility period), `68fbc2b` (income), `8bb8e36` (pathways, verification, fees), `e0ab037` (cases CO-170 to CO-174), and the docs commit that adds this section. 8 CCR 1403-1 was re-fetched from sos.state.co.us (version 12658, effective 2026-08-14) and matches D-87. Every probe was re-run on the fixed ledger (the reviewer's generator, plus variants that state the new facts); results below. No existing household expectation changed; the matrix rows above now name the items that carry each fixed paragraph.
+
+| ID | Pri | Disposition |
+|---|---|---|
+| F-01 | P1 | Fixed (`22b6dd2`): CO-988 tests the referral, the grant and work eligibility on the household's caretakers. RV-L: both members `eligible_colorado_works`, fee 0. Case CO-173; rule tests CO-988-T7, T8. |
+| F-02 | P1 | Fixed (`22b6dd2`): CO-987 tests residency and the asset declaration on every caretaker and teen parent. RV-K1, RV-K2: every member `ineligible`; RV-K3: both `eligible_low_income`, fee 47. Rule tests CO-987-T6, T7. |
+| F-03 | P1 | Fixed (`22b6dd2`): CO-991 needs a caretaker in the home in an activity; incapacity or involuntary absence excuses only the others. RV-A1, RV-A2: `ineligible_activity`. Case CO-170; rule tests CO-991-T9, T10. |
+| F-04 | P1 | Fixed (`22b6dd2`): new neutral fact `post_secondary_program_beyond_first_bachelors_degree` (CO-4450, false when not stated); CO-1722 counts college and post-secondary career programs only for a first bachelor's degree or less. RV-B with the fact stated (RV-B2): `ineligible_activity`. |
+| F-05 | P1 | Fixed (`22b6dd2`): CO-2107 is Colorado residency alone at `change_during_eligibility_period` (3.111.A, 3.125.GG). RV-C: `eligible_low_income`, fee 47. Case CO-172. |
+| F-06 | P1 | Fixed (`22b6dd2`): new case-record fact `cccap_child_was_authorized_at_last_determination` (CO-4462, false when not stated); at a change an authorized child is not tested on age (CO-4056) or asked for immunization records (CO-4060), and the education time limit is not applied (CO-984). RV-D with the fact (RV-D2): `eligible_low_income`, fee 47. Case CO-172. 3.132.B.3 recorded as OQ-790 (state policy choice). |
+| F-07 | P1 | Fixed (`68fbc2b`): `cccap_excluded_unearned_receipts` (CO-4463) takes out J.10 (CO-3821 and new CO-4451 adoption or kinship subsidy), J.13 (CO-3825, up to Social Security), J.17-18 (CO-3815), J.24 (CO-3824); CO-3916 subtracts it. RV-E: income 2,000, `eligible_low_income`, fee 47. Case CO-171. The shared CO-3913 is unchanged. |
+| F-08 | P1 | Fixed (`68fbc2b`): `cccap_other_countable_receipts` (CO-4464) adds boarders (CO-4161), in-kind compensation (new CO-4454) and employer vendor payments (new CO-4455). RV-F: income 3,500, `ineligible_income`. Case CO-171. |
+| F-09 | P1 | Fixed (`68fbc2b`): new part-of fact `gi_bill_subsistence_allowance_received` (CO-4456, part of CO-3360), counted back by CO-4464. RV-G with the part stated (RV-G2): income 3,500, `ineligible_income`. |
+| F-10 | P1 | Fixed (`68fbc2b`): new neutral facts for rents and rental expenses (CO-4457, CO-4458), early-payout penalties (CO-4459) and insurance or injury proceeds spent on last illness, burial or medical care (CO-4460); CO-4463 nets rents and pensions, CO-3916 nets the lump sum. Rule tests CO-4463-T4, T5, CO-3916-T7. |
+| F-11 | P1 | Fixed (`68fbc2b`): in the launch period CO-1710 counts `federal_minimum_wage` x `self_employment_hours_worked` (new CO-4461; all of `hours_worked` when not stated). RV-H: income 870, fee 8. |
+| F-12 | P1 | Fixed (`22b6dd2`): CO-989 row after Colorado Works Child Care: at an application or redetermination a household with a caretaker in the Colorado Works unit who is not Colorado Works Child Care eligible is `ineligible` (3.115.C governs over D.6; 3.114.B.6). RV-I: `ineligible`. |
+| F-13 | P1 | Fixed (`8bb8e36`): CO-2810's combined option split into `trailer_park_for_lack_of_alternative` and `campground_for_lack_of_alternative` (shared fact; every other reader takes both); CO-2814 counts the campground. RV-M (stated with the new option): `eligible_homelessness_stabilization`, fee 0. |
+| F-14 | P1 | Fixed (`8bb8e36`): CO-1441, CO-1445 and CO-2873 exempt `cccap_is_child_welfare_child_care_household`; CO-1684 follows CO-1441. RV-J: `eligible_child_welfare`, verification `not_required`. |
+| F-15 | P1 | Fixed (`22b6dd2`): new neutral relationship role `contributes_financially_to` / `receives_financial_contribution_from` (volume.yaml), read by CO-2607, CO-982, CO-992; OQ-540 now cites D.2 and records the reading. Case CO-174 (household of 3, income 3,500, fee 206); probe RV-N1 (partner not working): `ineligible_activity`. |
+| F-16 | P2 | Fixed (`739c2be`, `22b6dd2`): 12 CCR 2509-4 7.302 fetched (D-305, S3259) and cited in OQ-710's Checked line, with 7.302.2.E and G. Class unchanged. |
+| F-17 | P2 | Fixed (`22b6dd2`): OQ-612's Checked line adds 8 CCR 1403-1 3.111.D.1.a and 3.103.NNNNN. |
+| F-18 | P2 | Out of scope, recorded in docs/colorado-notes.md (coverage round): redetermination scheduling (3.111.C.1.c, 3.113.C, 3.125.FF, OO) changes when a redetermination happens, not a month's answer; the volume evaluates a stated determination type. |
+| F-19 | P2 | Open question: OQ-162 (blocked on the county plans) now carries 3.112.J and 3.133.A.4. |
+| F-20 | P2 | Fixed (`68fbc2b`): new neutral fact `self_employment_is_farm_operation` (CO-4465); CO-1709 deducts a farm's interest (I.3.b.4); CO-1710 states how farm receipts are read. |
+| F-21 | P2 | Fixed (`8bb8e36`): new fact `incapacity_verification_document_received` (CO-4466) and element `cccap_incapacity_verification_is_pending` (CO-4467), counted by CO-1447 and CO-1448; CO-1744 no longer means a verified incapacity. Case CO-170 (`pending`). |
+| F-22 | P2 | Fixed (`8bb8e36`): CO-3508 applies the 20% reduction only for `eligible_low_income` and `eligible_colorado_works`. Rule test CO-3508-T3. |
+| F-23 | P2 | Fixed (`8bb8e36`): CO-1445 exempts a caretaker referred for Colorado Works Child Care. Rule test CO-1445-T7. |
+| F-24 | P2 | Deferred: pre-eligibility applications (3.126.C) are a county option the Department approves under 3.104; modeling the thirty days needs a pre-eligibility flag, the county's approval and the application receipt date. Recorded in docs/colorado-notes.md. |
+| F-25 | P2 | Fixed (`68fbc2b`): new neutral facts CO-4452 (Colorado Works supportive services) and CO-4453 (early childhood research study payments), excluded by CO-4463. |
+| F-26 | P3 | Noted in CO-4052's precision (`8bb8e36`): a decrease the new guideline alone causes is allowed at a change (3.124.R, B.2). |
+| F-27 | P3 | Noted in CO-3915's precision (`68fbc2b`): LLC and S-corporation pay is wages; VISTA payments are stated as wages or federally excluded by I.32's condition. |
+| F-28 | P3 | Noted in CO-1451's meaning (`8bb8e36`): at a change, `past_due` means the change's verification is overdue, not a denial. |
+| F-29 | P3 | No change (the reviewer's note; consistent). |
+
+New items: 15 supplied facts (CO-4450 to CO-4462, CO-4465, CO-4466), 3 derived items (CO-4463, CO-4464, CO-4467) and the relationship role pair. New open question: OQ-790 (education time limit reached during the period against 3.132.B.3; state policy choice). Shared items whose meaning changed: `nighttime_residence_type` (CO-2810, options split), `cccap_caretaker_is_incapacitated` (CO-1744, no longer "as verified"), `cccap_self_employment_in_launch_period` (CO-2113, read as false when not stated).

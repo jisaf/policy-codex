@@ -897,10 +897,12 @@ Open-question classification pass (2026-11-22): the education limits by kind of 
 
 Second-pass review (2026-11-22): the J.28 point is not a county-plan question. J.28 is the state rule's own exclusion and is now modeled (cccap_excluded_irregular_income, CO-4076, with cccap_irregular_income_quarterly_limit, CO-4075, read by cccap_person_unearned_income, CO-3916); its remaining reading is OQ-713. This question keeps only the county-plan periods.
 
+Coverage round (docs/reviews/coverage-cccap.md, F-19): the same county plans define the closure for not using the Attendance Tracking System: 3.112.J (S3262) says "Non-cooperation with the use of the ATS may result in case closure and/or non-payment of the child care benefits as defined by Department-approved county policy" (also 3.133.A.4). The volume closes no case for it; a case the county closes under its policy is not modeled until the county policies are available.
+
 Class: blocked on a named document
 Owner: Child care policy owner (CDEC)
-Assumption: Job search counts for 13 weeks and education for the statewide limits, with no county extension.
-Blocked on: each county's CCCAP county plan approved by the Department under 8 CCR 1403-1 3.104, which states any longer job search or education period (cdec.colorado.gov refused; the plans are not published on an allowed host)
+Assumption: Job search counts for 13 weeks and education for the statewide limits, with no county extension; no case is closed for Attendance Tracking System non-cooperation.
+Blocked on: each county's CCCAP county plan approved by the Department under 8 CCR 1403-1 3.104, which states any longer job search or education period and any closure for Attendance Tracking System non-cooperation (cdec.colorado.gov refused; the plans are not published on an allowed host)
 
 ### OQ-163. Partly resolved: CCCAP/LEAP K-7 (shared-fuel arithmetic) and K-8 (duplicate-household denial) are modeled; open: K-9, the teen-parent household merge
 
@@ -1933,13 +1935,13 @@ Checked 2026-11-22: 8 CCR 1403-1 3.124.I.6 (D-87, S784) charges no fee "unless t
 
 ### OQ-540. "Assumes responsibility" (Medicaid caretaker relative) and "loco parentis" (CCCAP adult caretaker) read from one primary-responsibility role
 
-Body: § 8.100.1 (S1500) makes a caretaker relative "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care"; 42 CFR 435.4 (S205) says "assumes primary responsibility". 8 CCR 1403-1 3.103.C (S481) names a "person who is acting in 'loco parentis'" with physical custody. Both read the neutral role `has_primary_responsibility_for` (ma_caretaker_relative_of, CO-2606; cccap_adult_caretaker_of, CO-2607). A relative who shares the care of a child while a parent is in the home (a grandmother) may meet Colorado's "assumes responsibility" but not 435.4's "primary" or CCCAP's "in loco parentis"; with one role, a case that states it makes her both a Medicaid caretaker relative and a CCCAP adult caretaker, and a case that does not makes her neither (same-word audit SW-3). The draft reads the role as primary responsibility for both. A second neutral role for shared responsibility, or the CCCAP owner's confirmation that loco parentis means the parent is absent, would settle it. Items: CO-2606, CO-2607.
+Body: § 8.100.1 (S1500) makes a caretaker relative "a person who is related to the dependent child or any adult with whom the dependent child is living and who assumes responsibility for the dependent child's care"; 42 CFR 435.4 (S205) says "assumes primary responsibility". 8 CCR 1403-1 3.103.C (S481) names a "person who is acting in 'loco parentis'" with physical custody. Both read the neutral role `has_primary_responsibility_for` (ma_caretaker_relative_of, CO-2606; cccap_adult_caretaker_of, CO-2607). A relative who shares the care of a child while a parent is in the home (a grandmother) may meet Colorado's "assumes responsibility" but not 435.4's "primary" or CCCAP's "in loco parentis"; with one role, a case that states it makes her both a Medicaid caretaker relative and a CCCAP adult caretaker, and a case that does not makes her neither (same-word audit SW-3). The draft reads the role as primary responsibility for both. A second neutral role for shared responsibility, or the CCCAP owner's confirmation that loco parentis means the parent is absent, would settle it. Coverage round (docs/reviews/coverage-cccap.md, F-15): 8 CCR 1403-1 3.111.D.2 (S3254) speaks directly to a second caretaker: "Households are considered households with two adult caretakers or teen parents when two adults or teen parents contribute financially to the welfare of the child and/or assume parent rights, duties, and obligations similar to those of a biological parent, even without legal adoption." Its "and/or" makes financial contribution alone enough, where 3.103.C (S481) asks for both contribution and a parental role. The volume follows D.2, the more specific household-composition rule: an adult or teen parent in the home who contributes financially to the welfare of the child is an adult caretaker, read from the neutral role contributes_financially_to (CO-2607, CO-982, CO-992). Items: CO-2606, CO-2607, CO-982, CO-992.
 
 Class: state policy choice
 Owner: Medicaid policy owner, Child care policy owner (CDEC)
-Assumption: One relative who has taken primary responsibility for a child's care is both the Medicaid caretaker relative and the child care adult caretaker; a relative who only shares the care with a parent at home is neither.
+Assumption: One relative who has taken primary responsibility for a child's care is both the Medicaid caretaker relative and the child care adult caretaker; a relative who only shares the care with a parent at home is neither. For CCCAP, an adult in the home who contributes financially to the child's welfare is also an adult caretaker (3.111.D.2), whatever his parental role.
 
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.1 (D-65, S1500: "assumes responsibility for the dependent child's care"), 42 CFR 435.4 (S205: "assumes primary responsibility") and 8 CCR 1403-1 3.103.C (D-87, S481: "loco parentis"); none says whether care shared with a parent in the home counts. No published rule settles it.
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.1 (D-65, S1500: "assumes responsibility for the dependent child's care"), 42 CFR 435.4 (S205: "assumes primary responsibility") and 8 CCR 1403-1 3.103.C (D-87, S481: "loco parentis"); none says whether care shared with a parent in the home counts. No published rule settles it. Also checked (coverage round): 8 CCR 1403-1 3.111.D.1-2 and D.4-5 (D-87, S1409, S3254), which make financial contribution alone enough for a second caretaker and do not say whether a contributing adult must also hold a parental role; 3.103.C and D.2 are not reconciled in the rule.
 
 ### OQ-541. Resolved: facts that are one value for the application are stated once in the case's case_facts (case scope); household results are one value per unit
 
@@ -2105,7 +2107,7 @@ Class: state policy choice
 Owner: SNAP policy owner, Medicaid policy owner, Child care policy owner (CDEC), Energy assistance (LEAP) policy owner
 Assumption: A temporarily absent person lives in the home they usually live in and intend to return to, with no limit on the absence.
 
-Checked 2026-11-22: 7 CFR 273.1 (D-7, text re-checked against the eCFR of 2026-11-19), 10 CCR 2505-10 § 8.100.4.E (D-65), 9 CCR 2503-7 3.751 (D-86): none states a temporary-absence limit. A state policy choice for the SNAP, Medicaid, CCCAP and LEAP owners.
+Checked 2026-11-22: 7 CFR 273.1 (D-7, text re-checked against the eCFR of 2026-11-19), 10 CCR 2505-10 § 8.100.4.E (D-65), 9 CCR 2503-7 3.751 (D-86): none states a temporary-absence limit. Also checked for CCCAP (coverage round, F-17): 8 CCR 1403-1 3.111.D.1.a (S1409: a caretaker "voluntarily out of the home temporarily ... and has an established intent to return" is part of the household) and 3.103.NNNNN (D-87, "Voluntarily out of the home"); neither states a limit on the absence. A state policy choice for the SNAP, Medicaid, CCCAP and LEAP owners.
 
 ### OQ-613. Colorado Works: what "a part-time student who is not a full-time employee" means
 
@@ -2299,7 +2301,7 @@ Class: state policy choice
 Owner: Child care policy owner (CDEC)
 Assumption: A Child Welfare Child Care household needs a child under thirteen (under nineteen with additional care needs) who needs part-day care; the child's citizenship is not tested.
 
-Checked 2026-11-22: 8 CCR 1403-1 3.103.UU, 3.111.F, 3.118-3.120 (D-87, version effective 2026-08-14, re-fetched from the Secretary of State on 2026-11-22). Neither names the ages that apply to Child Welfare Child Care; 3.120.D defers to 12 CCR 2509-4 7.302, which this volume does not hold. A state policy choice for the CCCAP owner, to settle with the Child Welfare division.
+Checked 2026-11-22: 8 CCR 1403-1 3.103.UU, 3.111.F, 3.118-3.120 (D-87, version effective 2026-08-14, re-fetched from the Secretary of State on 2026-11-22). Neither names the ages that apply to Child Welfare Child Care; 3.120.D defers to 12 CCR 2509-4 7.302. Coverage round (F-16): 12 CCR 2509-4 7.302 (D-305, rule version 12039, effective 07/01/2025, fetched from sos.state.co.us 2026-11-22; 7.302 is "[Rev. eff. 4/1/12]", so it reads as the incorporated 07/31/2023 edition) states no ages: 7.302.1 (S3259) requires "that there are no other child care options available and the child is eligible for Program Area 4, 5, or 6", and 7.302.2.G says to "Follow State rules for the Colorado Child Care Assistance Program (CCCAP)", which supports reading the CCCAP eligible-child ages. Its 7.302.2.E ("Assess a client fee when applicable") is overridden by 8 CCR 1403-1 3.124.I.4, which exempts Child Welfare Child Care from the parent fee (CO-1290). A state policy choice for the CCCAP owner, to settle with the Child Welfare division.
 
 ### OQ-711. CCCAP: whether one child's unexplained absences end the case or that child's authorization
 
@@ -2460,3 +2462,13 @@ Owner: Cash programs policy owner
 Assumption: A tribal member is not barred from Colorado Works because the member is eligible under a Tribal Family Assistance Plan; duplicate receipt is left to the county's coordination with the tribe.
 
 Checked 2026-11-22: 9 CCR 2503-6 3.604.1.A and 3.604.2.J (D-81, rule version 12030, effective 07/01/2025, still current on 2026-11-22). No paragraph of 9 CCR 2503-6 states the negative.
+
+### OQ-790. CCCAP: an education or training time limit reached during the eligibility period
+
+Body: 8 CCR 1403-1 3.114.B.3 (S3251) ends care when a caretaker "exceeds time limited low-income eligible activity time limits" "at re-determination only", and 3.125.Q (S3252) lets a county discontinue care before the redetermination only for six listed reasons, none of them a time limit. 3.132.B.3 (S3260) says care "is typically authorized for twelve (12) consecutive months except ... When the adult caretaker(s) or teen parent(s) are participating in time limited activities such as job search or education/training", so the authorization for the activity may end before the redetermination. Whether a household whose caretaker reaches the 104-week or 52-week limit during the period keeps an eligible status with no authorized care, or moves to job search, is not stated. Items: CO-984.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: The household stays eligible until its redetermination (the time limit is not applied at a change during the period); how long care is authorized for the activity is the authorization, which this volume does not model.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.111.G.4.a-c, 3.114.A-B, 3.125.Q and 3.132.B (D-87, rule version 12658, effective 2026-08-14, re-fetched from sos.state.co.us 2026-11-22). None says whether eligibility or only the authorization ends when the limit is reached during the period.

@@ -1,0 +1,14 @@
+id: CO-4461
+name: "Hours worked in self-employment"
+identifier: self_employment_hours_worked
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: "The hours of the month's hours_worked (CO-022) that the person worked in self-employment, as the person declares them."
+precision: "Part of hours_worked, not added to it. If not stated, the programs that read it take all of hours_worked as self-employment hours, which is right for a person with no wage job; a person who also works for wages states it."
+supplied_by: "Applicant's declared weekly schedule or statement."
+sources: [S1410]
+tags: [income]
+nearest: [CO-022]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-11): 8 CCR 1403-1 3.111.G.2.e (S1410): \"Projected income for the launch period shall be determined based upon the federal minimum wage times the number of declared hours worked.\" hours_worked includes wage-job hours, so a person with a job and a new business needs the self-employment hours on their own."

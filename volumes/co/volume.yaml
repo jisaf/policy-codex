@@ -180,3 +180,5 @@ relationship_roles:
   - {id: sponsor, inverse: sponsored_by, label: "signed the other person's affidavit of support (Form I-864) as sponsor or joint sponsor; the sponsor is declared as a person of the case whether or not the sponsor lives in the home"}
   - {id: sponsored_by, inverse: sponsor, label: "a non-citizen whose affidavit of support the other person signed as sponsor or joint sponsor"}
   - {id: civil_union_partner, inverse: civil_union_partner, label: "has entered into a civil union with the other person (a legal relationship, not a marriage; spouse is a legal marriage)"}
+  - {id: contributes_financially_to, inverse: receives_financial_contribution_from, label: "contributes financially to the welfare of the child (toward the child's food, shelter, clothing or care), whether or not related to the child"}
+  - {id: receives_financial_contribution_from, inverse: contributes_financially_to, label: "the child whose welfare the other person contributes to financially"}

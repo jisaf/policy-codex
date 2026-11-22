@@ -1,0 +1,14 @@
+id: CO-4460
+name: "Insurance or injury proceeds spent on medical care or burial"
+identifier: insurance_proceeds_spent_on_medical_or_burial
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Of the life insurance, health insurance or personal injury lawsuit proceeds the person received in the month, the amount the person has spent or will spend on the insured person's last illness and burial not covered by other benefits (life insurance), or on medical care (health insurance or a personal injury award)."
+precision: "Part of lump_sum_received (CO-3367), which states the proceeds, not added to it. If not stated, every program reads it as 0."
+supplied_by: "Applicant statement with bills or receipts."
+sources: [S3256]
+tags: [income]
+nearest: [CO-3367]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-10): 8 CCR 1403-1 3.111.I.21 and I.22 (S3256) count life insurance proceeds \"minus the amount expended ... for ... last illness and burial\" and health insurance or personal injury proceeds \"to the extent that they exceed the amount to be expended ... for medical care\". lump_sum_received states the proceeds gross, and no fact stated those costs."

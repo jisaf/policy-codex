@@ -1,0 +1,13 @@
+id: CO-4450
+name: "Post-secondary program leads beyond a first bachelor's degree"
+identifier: post_secondary_program_beyond_first_bachelors_degree
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The college, university or post-secondary career and technical program the person is enrolled in leads to a graduate or professional degree (a master's, doctoral or professional degree), or to a bachelor's degree when the person already holds one. False for a program that leads to a certificate, an associate degree or the person's first bachelor's degree."
+precision: "Stated for a person whose education_program_type (CO-2880) is higher_education or postsecondary_career_and_technical; not read otherwise. If not stated, every program reads it as false (a program for a first bachelor's degree or less, the ordinary case)."
+supplied_by: "Applicant statement or the school's enrollment verification."
+sources: [S1412, S3258]
+tags: [income]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-04): 8 CCR 1403-1 3.111.G.4.a.1 (S1412) makes training or post-secondary education an eligible activity only \"for a first bachelor's degree or less\", and 3.103.IIIII (S3258) \"for a Bachelor's degree or less\"; education_program_type says only that the person attends a college or university, and no fact or item stated the degree pursued, so a graduate student was in an eligible activity. The fact states the program's level, program-neutrally; CCCAP's activity item (CO-1722) reads it."

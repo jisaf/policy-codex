@@ -8,7 +8,7 @@ program: AdultFinancial
 meaning: "Whether the person lives in a homeless shelter or other temporary setting, which 9 CCR 2503-5 3.570.12 excludes from \"home\" for the Home Care Allowance: \"A home cannot include a homeless shelter or other temporary setting.\" Read from nighttime_residence_type (CO-2810): a shelter, a halfway house, a temporary stay in another's home, a motel, hotel, trailer park or campground for lack of an alternative, an abandonment in a hospital, or a place not designed for sleeping."
 sources: [S718]
 precision: "A medical institution is tested separately (resides_in_medical_institution). Substandard housing is a home."
-derived: [in, nighttime_residence_type, [shared_housing_due_to_loss_or_hardship, shared_housing_other_temporary, motel_or_hotel_for_lack_of_alternative, trailer_park_or_campground_for_lack_of_alternative, emergency_or_transitional_shelter, halfway_house, abandoned_in_hospital, place_not_designed_for_sleeping]]
+derived: [in, nighttime_residence_type, [shared_housing_due_to_loss_or_hardship, shared_housing_other_temporary, motel_or_hotel_for_lack_of_alternative, trailer_park_for_lack_of_alternative, campground_for_lack_of_alternative, emergency_or_transitional_shelter, halfway_house, abandoned_in_hospital, place_not_designed_for_sleeping]]
 implemented: engine
 tags: [cash]
 rationale: "Same-word audit SW-11: the HCA read the shared is_homeless for the shelter and this supplied fact for any other temporary setting; both are now one derived item over nighttime_residence_type. No existing fact states another temporary setting; af_hca_eligibility_status (CO-1217) read only a facility stay and a homeless shelter (OQ-250)."
