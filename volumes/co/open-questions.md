@@ -2663,3 +2663,33 @@ Owner: Medicaid policy owner
 Assumption: Rents count net of 416.1121(d)'s ordinary and necessary expenses in the SSI method, an exempt home included (J.1's three deductions are among them, and 42 CFR 435.601(b) does not let the state use a stricter methodology than SSI's); the 300% test counts gross rents.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.J.1 and § 8.100.7.A.1 (D-65, version effective 11/14/2026); 20 CFR 416.1121(d) (D-53). J.1 speaks only of an exempt home and does not say whether its list is exclusive; no Colorado text says how other rents are counted.
+
+### OQ-871. CCCAP: a caretaker who leaves the household during the eligibility period
+
+Body: 8 CCR 1403-1 3.125.EE.1 (S3635) acts at once on "Changes to an adult caretaker or teen parent's qualifying low-income eligibility activity" and on a composition change only when "an additional child [is] requesting care"; EE.2 holds every other change "until the adult caretaker or teen parent's re-determination". 3.125.Q.2 (S3252) lets a county discontinue care before the redetermination when "The adult caretaker(s) or teen parent(s) is no longer in a qualifying low-income eligible activity". When a working caretaker leaves during the period and the caretaker who stays was excused only because the other worked (incapacitated, 3.111.D.1.c.3, S1409), the text does not say whether the departure is a composition change held to the redetermination (EE.2) or whether Q.2 reads "the adult caretaker(s)" for the household as it now stands, whose remaining caretaker is in no activity (3.111.E: an incapacitated single caretaker not in an activity is not eligible). The draft reads Q.2 for the household as it stands: the caretaker who left is no longer stated, and the remaining caretakers are tested (cccap_household_caretakers_in_eligible_activity, CO-991), so probe Y-1c is ineligible_activity at the change. A caretaker who joins during the period is the other way round: he was never in an activity, so Q.2's "no longer" does not reach him and EE.2 holds the change (CO-4910). Coverage pass 3 C3-1. Items: CO-991, CO-4910.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A caretaker's departure during the period is acted on at the change when the caretakers who remain are not in an activity or excused from one (Q.2 read for the household as it stands).
+
+Checked 2026-11-22: 8 CCR 1403-1 3.111.D.1, 3.111.E, 3.125.EE and 3.125.Q (D-87, version effective 2026-08-14). None says whether a caretaker's departure is a change in composition (EE.2) or in the household's activity (EE.1.b, Q.2).
+
+### OQ-872. CCCAP: is a caretaker involuntarily out of the home counted in the household's size and income
+
+Body: 8 CCR 1403-1 3.111.D.1.b (S1409) qualifies "Households with two adult caretakers or teen parents, when one adult caretaker or teen parent is involuntarily out of the home. Such a household shall be considered a household with one adult caretaker or teen parent." 3.103.LLL (S3636) says the household "includes" the children "in the home" and "the adult caretaker(s) or teen parent(s)", and D.1.a keeps only a caretaker "voluntarily out of the home temporarily" as "part of the household". D.1 is a list of qualifying compositions for the activity test and does not say in terms whether "considered a household with one adult caretaker" also sets the size the income guidelines and fee are read for, or whether the absent caretaker's income counts. The draft reads D.1.b and D.1.a together: the involuntarily absent caretaker is not a household member (cccap_household_members, CO-982), so he is not tested for county residency or the asset declaration, his documents and income are not read, and he is not counted in the size (probe Y-8c: household of 2, fee 47). Read the other way, he would be counted in the size (fee 20 for 3 at $2,000) and his income would count, while residency, assets and his activity would still not be tested. Coverage pass 3 C3-2. Items: CO-982.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A caretaker involuntarily out of the home is outside the CCCAP household for every purpose: size, income, residency, assets and verification.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.103.LLL, 3.111.A, 3.111.D.1.a-b and 3.111.H.5.c (D-87, version effective 2026-08-14). None says whether D.1.b's one-caretaker household reaches size and income.
+
+### OQ-873. CCCAP: a diversion payment that is not cash assistance
+
+Body: 8 CCR 1403-1 3.103.S (S3638): "All state diversion payments of less than four (4) consecutive months are not cash assistance. For the purpose of child care, county diversion payments are not cash assistance." 3.111.J.26 (S2706) excludes "Public cash assistance grants including ... (TANF)/Colorado Works", so a state diversion paid over four or more consecutive months is excluded (cccap_excluded_unearned_receipts, CO-4463, reading tanf_state_diversion_payment_months, CO-4911). 3.111.I lists countable income ("Each of the following are considered countable income") and does not name a diversion payment; J does not exclude one that is not cash assistance. The draft counts a shorter state diversion and a county diversion as unearned income, as it counts any unearned receipt that J does not exclude; read the other way, I is a closed list and they are not income at all. Coverage pass 3 C3-6. Items: CO-4463, CO-4911.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: A diversion payment that is not cash assistance under 3.103.S is counted as unearned income.
+
+Checked 2026-11-22: 8 CCR 1403-1 3.103.S, 3.111.I and 3.111.J (D-87, version effective 2026-08-14). Neither I nor J names a diversion payment, and S defines cash assistance without saying how a payment that is not cash assistance is treated.

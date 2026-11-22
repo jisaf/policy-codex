@@ -22109,3 +22109,80 @@ Document: D-65
 > ii) Having a disability onset date determined on or prior to the date of a medical service; and
 >
 > c. Meet the financial requirements as described at 8.100.5.E.
+
+### S3635. CCCAP: changes reported during the twelve-month eligibility period that require immediate action; every other change waits for the redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.125.EE (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> EE. Counties shall process any reported change and/or required verification within
+> ten (10) calendar days of receiving the information using the following guidelines:
+>
+> 1. Changes reported during the twelve (12) month low-income eligibility
+> period requiring immediate action:
+>
+> a. Changes to income, if the household’s income exceeds eighty-five
+> percent (85%) of the state median income;
+>
+> b. Changes to an adult caretaker or teen parent’s qualifying low-
+> income eligibility activity, which does not qualify as a temporary
+> break as defined in rule section 3.112(C);
+>
+> c. Changes in parent fee per rule section 3.121
+>
+> d. Changes in state residency; and
+>
+> e. Changes that are beneficial to the household such as, but not
+> limited to:
+>
+> 1) An increase in authorized care;
+>
+> 2) A change of child care provider;
+>
+> 3) Change in household composition due to an additional child
+> requesting care; and
+>
+> 4) Change in mailing address.
+>
+> 2. Changes outside of the above guidelines should be documented in
+> CHATS but shall not be acted upon until the adult caretaker or teen
+> parent’s re-determination.
+
+### S3636. CCCAP: the household is the children in the home and the adult caretaker(s) or teen parent(s) (current text)
+
+Document: D-87
+
+8 CCR 1403-1 3.103.LLL (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> LLL. “Household” includes: all children in the home who are under eighteen (18) years
+> of age; all children under nineteen (19) years of age who are still in high school
+> and the responsibility of the adult caretaker(s); and the adult caretaker(s) or teen
+> parent(s).
+
+### S3637. CCCAP: the Colorado Works Child Care Referral verifies the children's citizenship, age and identity
+
+Document: D-87
+
+8 CCR 1403-1 3.116.E-F (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> E. County residency shall be verified by the county Colorado Works Program.
+>
+> F. Citizenship, age, and identity of the child(ren) for whom care is requested are
+> verified by the county Colorado Works Program. The Colorado Works Child Care
+> Referral serves as verification of citizenship, age, and identity, for CCCAP
+> eligibility and the referral must be maintained in the child care case file.
+
+### S3638. CCCAP: state diversion payments of less than four consecutive months and county diversion payments are not cash assistance
+
+Document: D-87
+
+8 CCR 1403-1 3.103.S (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> S. “Cash assistance” means payments, vouchers, and other forms of benefits
+> designed to meet a household’s ongoing basic needs such as food, clothing,
+> shelter, utilities, household goods, personal care items, and general incidental
+> expenses. Cash assistance may include supportive services to households
+> based on the assessment completed. All state diversion payments of less than
+> four (4) consecutive months are not cash assistance. For the purpose of child
+> care, county diversion payments are not cash assistance.

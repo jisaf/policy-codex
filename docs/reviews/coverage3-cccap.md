@@ -79,7 +79,7 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | L-P, T, V, W, X, FF-JJ, LL, NN, SS, XX, ZZ, EEE, HHH, JJJ, KKK, UUU, XXX, ZZZ, AAAA, BBBB, EEEE, JJJJ-LLLL, NNNN-QQQQ, VVVV, YYYY, AAAAA, DDDDD, GGGGG, HHHHH, KKKKK, LLLLL, OOOOO (provider, authorization, fiscal, notice, wait list and recovery terms) | NA: no eligibility or benefit effect in the volume's scope. ZZZ non-traditional hours drives only verification: C: CO-2397, CO-2398 |
 | Q basic education (middle and high school, HSE, ABE, ESL) | C: CO-1722 (`secondary`, `high_school_equivalency`, `basic_education`), CO-2111 (52 weeks) |
 | R Behavioral Health Administration | C: CO-1516 (licensed and endorsed, in its meaning) |
-| S cash assistance; state diversion under four months and county diversion not cash assistance | **C3-6**: CO-4850 is counted; no reading is recorded |
+| S cash assistance; state diversion under four months and county diversion not cash assistance | C (fix): CO-4463 excludes a state diversion over CO-4912 (four) or more consecutive months (CO-4911); shorter and county diversions counted, OQ-873 (C3-6) |
 | U, Y Child Welfare Child Care | C: CO-2576, CO-989 row 2; OQ-710 |
 | Z citizen/legal resident (the child) | C: CO-998 (citizen, national or qualified non-citizen) |
 | BB CCCAP's components | C: CO-989's status values |
@@ -92,14 +92,14 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | UU eligible child (under 13 part-day; under 19 with additional needs; residing with the caretaker; citizen) | C: CO-980, CO-4056, CO-2108, CO-998, CO-320, CO-321 |
 | WW employment; WWWW self-employment | C: CO-984 (hours and minimum wage), CO-1710 |
 | YY entry level; AAA exit level; DDD FPL; BBBBB SMI | C: CO-870, CO-3005, CO-986, CO-993, CO-3007, CO-181, CO-1804, CO-1805; OQ-121 |
-| BBB fair market value | C: CO-4454 (in-kind at fair market value); see C3-4 |
+| BBB fair market value | C (fix): CO-4506 (in-kind at fair market value; CO-4454 retired into it, C3-4) |
 | CCC families experiencing homelessness (1-4) | C: CO-2814 (campground split, F-13), CO-2810, CO-3907 (household-level since C2-5). See C3-10 |
 | III Head Start | NA: redetermination scheduling (Notes, F-18); fee waiver C: CO-3505 |
 | LLL household (children under 18; under 19 in high school; caretakers and teen parents) | C: CO-982, CO-990, CO-1721, CO-326, CO-327. See **C3-2** |
 | MMM in loco parentis | OQ-540; C: role `has_primary_responsibility_for` in CO-2607 |
 | NNN incapacitated (impairment; physician's statement) | C: CO-1744, CO-4466, CO-4467 |
 | OOO income eligibility (income against size) | C: CO-985, CO-983, CO-986, CO-993 |
-| RRR involuntarily out of the home | C: CO-898, CO-991 (activity only). **C3-2** |
+| RRR involuntarily out of the home | C (fix): CO-898, CO-982 (not a household member), CO-991. C3-2, OQ-872 |
 | SSS job search | C: CO-871, CO-984 |
 | TTT Low-Income Program | C: CO-989 `eligible_low_income` |
 | VVV maternity/paternity leave | C: CO-3903 `maternity_paternity_leave`, CO-984 |
@@ -135,8 +135,8 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | C.2.g incapacitation | C: CO-4466, CO-4467 |
 | C.2.h custody or parenting schedule | C: CO-2399 |
 | D.1.a one caretaker in an activity; voluntary temporary absence keeps the caretaker; a temporary carer is not a member | C: CO-991, CO-898's meaning; OQ-612 |
-| D.1.b two caretakers, one involuntarily out: a one-caretaker household | C: CO-898, CO-991 (activity). **C3-2** (residency, assets, verification, size) |
-| D.1.c.1 both in an activity; c.2 one voluntarily absent, both in an activity; c.3 one active, the other incapacitated | C: CO-991, CO-1744. **C3-1** at a change |
+| D.1.b two caretakers, one involuntarily out: a one-caretaker household | C (fix): CO-982 leaves the absent caretaker out, so CO-983 (size), CO-987 (residency, assets), CO-1440/1441/1445 (verification) and income follow; CO-991 (activity). C3-2, OQ-872 |
+| D.1.c.1 both in an activity; c.2 one voluntarily absent, both in an activity; c.3 one active, the other incapacitated | C: CO-991, CO-1744; at a change CO-4910 (C3-1, fixed; OQ-871 departing caretaker) |
 | D.2 two caretakers: financial contribution and/or parental role | C: role `contributes_financially_to` (label fixed by C2-6), CO-2607, CO-982, CO-992; OQ-540 |
 | D.3 shared custody in separate households, separate applications | C: CO-2607 (`lives_with` on the days of care); OQ-163 |
 | D.4 every caretaker in an activity has custody and meets the guidelines | C: CO-2607, CO-2104 |
@@ -184,10 +184,10 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | I.1 gross earnings including armed forces pay | C: CO-023, CO-3912, CO-3915 |
 | I.2, I.2.a-c non-farm self-employment net of verified expenses (disallowed: depreciation, principal, personal) | C: CO-1709, CO-1710 (CO-3372 not read) |
 | I.3, I.3.a-c farm self-employment | C: CO-4465, CO-1709 (farm interest), CO-1710 |
-| I.4 in-kind compensation for employment | C: CO-4454, CO-4464. **C3-4** |
+| I.4 in-kind compensation for employment | C (fix): CO-4506 (the one in-kind pay fact; CO-4360, CO-4437, CO-4454 retired into it), CO-4464. C3-4 |
 | I.5 vendor payments that are compensation | C: CO-4455, CO-4464 |
 | I.6 railroad retirement; I.7.a-b, d veterans' pensions and refunds; I.8 pensions less early-payout penalties | C: CO-026 (pension_income), CO-4459, CO-4463 |
-| I.7.c GI Bill subsistence allowances | C: CO-4456, CO-4464. **C3-5** |
+| I.7.c GI Bill subsistence allowances | C (fix): CO-4501 (the one living-allowance fact, part of other unearned income; CO-4456 retired into it), counted through CO-3913. C3-5 |
 | I.9-11, I.13-16, I.19, I.24 dividends, interest, estates and trusts, royalties, memberships, lease bonuses | C: other unearned income facts, CO-3913 |
 | I.12, I.17 net rental income | C: CO-4457, CO-4458, CO-4463 (cap fixed by C2-4) |
 | I.18 boarders | C: CO-4161, CO-4464 |
@@ -234,7 +234,7 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | A every twelve months; form forty-five days ahead | NA: scheduling (Notes, F-18) |
 | A.1.a.1-3, b earned, self-employment and unearned income of the prior thirty days | C: as 3.111.H.5 |
 | A.1.c schedule; A.2 training schedule and student status | C: CO-2398, CO-1441, CO-1677 |
-| A.1.d assets at application and redetermination | C: CO-987 (not at a change). **C3-7** (transition) |
+| A.1.d assets at application and redetermination | C: CO-987 (not at a change or a transition; C3-7 fixed) |
 | A.3 immunization records | C: CO-4060 |
 | A.4 collateral contacts | NA |
 | B fee reviewed at redetermination; effective the first full month | C: CO-4052 (no cap at a redetermination); timing NA |
@@ -268,10 +268,10 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | 3.115.C not work eligible: Low-Income only if not in the assistance unit | C: CO-989 row 7, CO-013 precision |
 | 3.116.A eligible, IRP, allowable activity, referred: an eligible activity | C: CO-988 (household-level, F-01) |
 | 3.116.B twelve-month authorization | NA |
-| 3.116.C only earned income reported by the Colorado Works worker | C: CO-2578 (earned income only), CO-2873, CO-1445. **C3-3** |
+| 3.116.C only earned income reported by the Colorado Works worker | C: CO-2578 (earned income only), CO-2873, CO-1445 (referral read over the household; C3-3 fixed) |
 | 3.116.D schedule by the Colorado Works worker | NA |
-| 3.116.E residency verified by Colorado Works | C: CO-1440. **C3-3** |
-| 3.116.F citizenship, age and identity by the referral | C3-8 (P3) |
+| 3.116.E residency verified by Colorado Works | C: CO-1440 (referral read over the household; C3-3 fixed) |
+| 3.116.F citizenship, age and identity by the referral | C (fix): CO-1442-1444 exempt a referred household. C3-8 |
 | 3.116.G immunization | C: CO-4060 |
 | 3.116.H diversion households in electing counties | C: CO-988 diversion arm, CO-3931, CO-3932; OQ-682 |
 | 3.116.I-K worker notices, provider changes, responsibilities | NA |
@@ -291,7 +291,7 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 |---|---|
 | 3.118.A protective services households (placed child, open case); county plan for CCDF | C: CO-873 |
 | 3.118.B-E authorization, not 24-hour care, school hours, referral form | NA (C is the eligible child's "less than twenty-four hours", CO-2108) |
-| 3.119.A household of one; only the placed children's income; no child support | C: CO-3008, CO-994, CO-995. **C3-9** |
+| 3.119.A household of one; only the placed children's income; no child support | C: CO-3008, CO-994 (assumption noted, C3-9), CO-995 |
 | 3.119.B sixty days for the children's income | C: CO-4057, CO-4061; OQ-716 |
 | 3.119.C county waiver of the income requirement | C: CO-4053 |
 | 3.119.D no activity requirement; E no residency verification | C: CO-989 row 4 precedes activity; CO-1440, CO-1441 |
@@ -361,7 +361,7 @@ Legend: **C** = carried by the items listed; I read each derivation against the 
 | BB, BB.1-2 residence verification at application and redetermination; homelessness under 3.121 | C: CO-1440, CO-1676. **C3-2** |
 | CC SUD self-attestation | C: CO-1441 (SUD exempt) |
 | DD reporting duties | NA |
-| EE.1.a-e changes acted on during the period; EE.2 others wait | C: CO-3307, CO-4052, CO-4462 (children). **C3-1** (caretakers) |
+| EE.1.a-e changes acted on during the period; EE.2 others wait | C: CO-3307, CO-4052, CO-4462 (children), CO-4910 (caretakers; C3-1 fixed) |
 | FF new child: redetermination date | NA: scheduling (Notes, F-18) |
 | GG, GG.1-4 county move during the period | C: CO-2107; GG.1 NA; GG.3 receiving county's activities OQ-162; GG.4 NA |
 | HH response times | NA |
@@ -456,3 +456,25 @@ The fix rounds' changed items each show the change described in their dispositio
 - C3-1 and C3-2 change answers and need rule tests and household cases from Y-1, Y-8b and Y-8c. Each may need an open question for the part the text leaves open (a departing caretaker; household size under D.1.b).
 - C3-4 and C3-5 are dual-entry fact pairs that the F-08 and F-09 fixes created next to LEAP-pass facts made a few hours earlier. Fold them into the dual-entry audit (docs/reviews/audit-dual-entry.md).
 - C3-6 updates first-pass F-29 now that the neutral diversion receipt exists (9ef7c0d).
+
+## Disposition (coverage pass 3)
+
+Fix round on origin/ccr-9d19bf4c-wmnwcl at 9898edb; every fix below is in commit 9cfcf0f. New items CO-4910 (`cccap_caretaker_joined_during_eligibility_period`), CO-4911 (`tanf_state_diversion_payment_months`), CO-4912 (`cccap_state_diversion_cash_assistance_months`); excerpts S3635-S3638 (D-87: 3.125.EE, 3.103.LLL, 3.116.E-F, 3.103.S); open questions OQ-871-OQ-873; household cases CO-215 (probe Y-1) and CO-216 (probe Y-8c). Retired into the earlier neutral facts: CO-4360, CO-4437, CO-4454 (into CO-4506) and CO-4456 (into CO-4501).
+
+| Finding | Disposition |
+|---|---|
+| C3-1 (P1) | Fixed. CO-4910, a case-record fact (false when not stated), says a caretaker joined during the period; at `change_during_eligibility_period` CO-991 neither tests nor counts such a caretaker (EE.2, Q.2; S3635, S3252). Rule tests CO-991-T11 (Y-1: true) and T12 (Y-1r: false). Case CO-215. The departing caretaker (Y-1c) is OQ-871 (state policy choice; the draft tests the household as it stands, so Y-1c stays `ineligible_activity`). |
+| C3-2 (P1) | Fixed. CO-982 does not join a caretaker who is involuntarily out of the home, in either direction (D.1.a-b, LLL; S1409, S3636), so residency, the asset declaration, documents, income and size are read on the caretakers in the home. Y-8b, Y-8c, Y-8: `eligible_low_income`, size 2, fee 47, `complete`. The absent caretaker's own household is himself (`ineligible_child`). The size and income reading is OQ-872. Rule tests CO-982-T8, T9; CO-3907-T4 flipped (the father is no longer a member) with T5 for the mother; case CO-216; CO-201 p2 re-pinned (below). |
+| C3-3 (P2) | Fixed. CO-1440, CO-1441 and CO-1445 read the referral over the household, as CO-2873 does. Y-2: `not_required`. |
+| C3-4 (P2) | Fixed (dual-entry). One in-kind pay fact, CO-4506 `in_kind_compensation_value` (the earliest, LEAP pass); CO-4454 (CCCAP), CO-4360 (Colorado Works) and CO-4437 (Adult Financial) retired into it, its meaning widened to self-employment barter and each program's valuation wording. Readers repointed: CO-4464, CO-1716, CO-2340, CO-3830 (CO-3925 already read it). Each reads it once. Y-3: 3,500. |
+| C3-5 (P2) | Fixed (dual-entry). One G.I. Bill living-allowance fact, CO-4501, part of other unearned income and not of CO-3360 (CO-3360's precision says so); CO-4456 retired into it. CO-4464 no longer adds a G.I. Bill term: CO-3913 already counts the allowance, so it is counted once (Y-4: 3,500). CO-4661's rationale repointed. |
+| C3-6 (P2) | Fixed. CO-4911 states the months over which a state diversion is paid (0 for a county diversion or none, the default); CO-4463 excludes a state diversion paid over CO-4912 (four) or more consecutive months (3.103.S, J.26; S3638, S2706). Shorter state diversions and county diversions are counted: OQ-873. Rule tests CO-4463-T9, T10. |
+| C3-7 (P3) | Fixed. CO-987 tests the asset declaration only at an application or a redetermination (3.117, 3.117.B). Rule test CO-987-T10; Y-5 eligible. |
+| C3-8 (P3) | Fixed for Colorado Works: CO-1442-CO-1444 exempt a household referred for Colorado Works Child Care (3.116.F, S3637). Protective services is left as it is: 3.119.F asks for verification when the Child Welfare worker could not attest, with the six months CO-4061 carries. |
+| C3-9 (P3) | Accepted, assumption recorded in CO-994's precision: no fact says which household children are placed (the relationship roles carry foster care but not a kinship placement), so the sum runs over every eligible child; it overstates income only for a caretaker's own unplaced child with unearned income. |
+| C3-10 (P3) | Fixed. CO-2577 cites 3.103.CCC (S1954) and notes 3.121.A's stale "3.103(YY)". |
+| C3-11 (P3) | Fixed. CO-4451's rationale names `cccap_excluded_unearned_receipts`. |
+
+Changed household expectation: CO-201 p2 `cccap_eligibility_status` 2026-11 `eligible_homelessness_stabilization` -> `ineligible_child` (p2 is involuntarily absent, no longer a household member; his own household has no eligible child). p1 and p3 unchanged.
+
+Probes after the fix (every stored CCCAP case passes; the Q-*, Z-* and Y-* probes were re-run after each fix): only these moved, each by the fix named. Q-A2 and Z-4: size 3 -> 2 and the absent father's own status `ineligible_child` (C3-2; the mother's and child's statuses unchanged). Q-G2: income 3,500 -> 2,000, because the probe states the allowance in the retired CO-4456 inside CO-3360; restated in CO-4501 (as Y-4) it is 3,500 (C3-5). Y-2 `past_due` -> `not_required` (C3-3). Y-3 2,000 -> 3,500, Y-3b (the retired CO-4454) 3,500 -> 2,000 (C3-4). Y-4 5,000 -> 3,500 (C3-5). Y-5 `ineligible` -> `eligible_low_income` (C3-7). Y-8, Y-8b, Y-8c -> `eligible_low_income`, size 2, fee 47, `complete` (C3-2). Y-1, Y-7 unchanged as stored (they state neither new fact); with CO-4910 stated Y-1 is `eligible_low_income`, fee 20, and with a six-month state diversion Y-7 is 2,000.
