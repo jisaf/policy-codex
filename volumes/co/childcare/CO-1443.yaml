@@ -14,4 +14,4 @@ rationale: No existing item states this CCCAP verification requirement; the phas
 tests:
   - {id: CO-1443-T1, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: true}, expect: true}
   - {id: CO-1443-T2, month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: false}, expect: false}
-  - {id: CO-1443-T4, title: "F-02: questionable, but the family is in its homelessness stabilization period (3.121.B.5)", month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: true, nighttime_residence_type: motel_or_hotel_for_lack_of_alternative, cccap_is_in_homelessness_stabilization_period: true}, expect: false}
+  - {id: CO-1443-T4, title: "F-02: questionable, but the family is in its homelessness stabilization period (3.121.B.5)", month: "2026-10", as_of: "2026-10-01", given: {cccap_is_eligible_child: true, age_attestation_is_questionable: true, cccap_is_in_homelessness_stabilization: true}, expect: false}

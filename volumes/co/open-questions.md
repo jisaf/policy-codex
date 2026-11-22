@@ -2619,3 +2619,13 @@ Owner: Legal, SNAP policy owner
 Assumption: Colorado's physical-household reading: a person living in the same home as a child under 14 is excepted whether or not the child is in the person's SNAP household.
 
 Checked 2026-11-22: 10 CCR 2506-1 4.311.A.4 (D-82, version effective 2026-10-01, S749); 7 CFR 273.24(c)(4) (D-202, S3050); 7 U.S.C. 2015(o)(3)(C) as amended (D-3, D-5; S127, S128). No text reconciles the two; FNS's implementation memoranda for sec. 10102 are on www.usda.gov, not an allowed host.
+
+### OQ-850. CCCAP medical leave at a redetermination: does D.9's "unable to care for their children" apply, or is any verified medical leave a temporary break
+
+Body: 8 CCR 1403-1 3.111.D.9 (S2700) names as an eligible household caretakers "with an open and active Low-Income Child Care case who are participating in a low-income eligible activity and go on temporary verified medical leave and are unable to care for their children". 3.112.C.2 (S2701) makes "Any temporary absence from low-income eligible activities ... due to extended verified medical leave" a temporary break, with no condition on caring for the children, and 3.103.WWW (S3530) includes leave "to care for a family member". 3.114.B.5 (S3251) ends care at the redetermination for a caretaker no longer in an eligible activity. At a change during the period 3.125.Q.2 (S3252) keeps any temporary break, so CO-984 counts the leave there (coverage pass 2 C2-2); at a redetermination the two paragraphs give different tests. Items: CO-984.
+
+Class: state policy choice
+Owner: Child care policy owner (CDEC)
+Assumption: At a redetermination medical leave is an eligible activity only when the caretaker is unable to care for the children (D.9, the paragraph that states the eligible household); at a change during the period any verified medical leave counts (3.112.C.2, 3.125.Q.2).
+
+Checked 2026-11-22: 8 CCR 1403-1 3.103.WWW, 3.111.D.9, 3.112.C.2, 3.114.B.5 and 3.125.Q.2 (D-87, version effective 2026-08-14). Neither D.9 nor 3.112.C refers to the other.

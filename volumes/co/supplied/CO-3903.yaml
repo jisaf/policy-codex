@@ -6,9 +6,9 @@ type: one of
 options: [none, seasonal_interruption, temporary_layoff, medical_leave, maternity_paternity_leave, scheduled_education_break]
 scope: person-month
 program: All
-meaning: "Why, in the month, the person is temporarily not working or not attending although they remain employed, self-employed, or enrolled in an education or training program: none (no break); between the regular seasons of seasonal work; a temporary layoff from the job they keep; on medical leave for their own health; on maternity or paternity leave; or a holiday or scheduled break in the education or training program."
-precision: "A person who has lost a job or left a program for good is not on a break (none). If not stated, CCCAP reads it as none."
+meaning: "Why, in the month, the person is temporarily not working or not attending although they remain employed, self-employed, or enrolled in an education or training program: none (no break); between the regular seasons of seasonal work; a temporary layoff from the job they keep; on medical leave granted for their own illness or injury or to care for a family member (not maternity or paternity leave); on maternity or paternity leave; or a holiday or scheduled break in the education or training program."
+precision: "A person who has lost a job or left a program for good is not on a break (none). If not stated, CCCAP reads it as none. Coverage pass 2 C2-2: medical leave follows 8 CCR 1403-1 3.103.WWW (S3530), which includes leave to care for a family member."
 supplied_by: "Applicant statement, with the employer's or school's statement of the leave, layoff or break."
-sources: [S2700, S2701]
+sources: [S2700, S2701, S3530]
 tags: [household]
 rationale: "Final pass F-04: 8 CCR 1403-1 3.111.D.8-9 (S2700) names as eligible households caretakers in an activity who go on temporary verified maternity or paternity leave, or, with an open case, on verified medical leave, and 3.112.C (S2701) treats a seasonal interruption, a temporary job loss, verified leave and scheduled education breaks as a temporary break, not a cessation of the activity. No fact stated a leave or a break, so a caretaker on leave worked no hours and the household was ineligible_activity."
