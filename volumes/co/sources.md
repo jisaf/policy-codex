@@ -17636,3 +17636,272 @@ Document: D-55
 > 1. Monthly premium payment paid by the resident for private health insurance.
 >
 > 2. Medical health insurance premiums will be allowed for the resident only. This does not include prescription drug, vision, dental or life insurance.
+
+### S3300. LEAP income exclusions: crime victim compensation, foster care and kinship payments, reverse mortgages, housing utility allowances, G.I. Bill allowances, PASS income
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.G, U, X, Y, Z, DD (version effective 11/01/2025, the Secretary of State's current version, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> G. Compensation received by the applicant or recipient pursuant to the Colorado Crime Victims
+> Compensation Act shall not be considered as income, property, or support available to the
+> applicant or recipient. This is compensation paid to innocent victims or dependents of victims of
+> criminal acts who suffer bodily injury;
+>
+> ...
+>
+> U. Payment received as foster care/kinship income; foster care/kinship individuals are not
+> considered LEAP Household members;
+>
+> ...
+>
+> X. Reverse mortgages;
+>
+> Y. Subsidized housing utility allowances;
+>
+> Z. G.I. Bill educational allowances, including housing and food allowances;
+>
+> ...
+>
+> DD. Income that is deemed necessary for the fulfillment of a Plan for Achieving Self-Support (PASS)
+> under Title XVI of the Social Security Act.
+
+### S3301. LEAP income exclusions: SCSEP funds and employer health insurance subsidies
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.CC, HH (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> CC. Funds received by persons fifty five (55) years of age and older under the Senior Community
+> Service Employment Program (SCSEP) under Title V of the Older Americans Act;
+>
+> ...
+>
+> HH. Any recurring or non-recurring health insurance subsidies paid directly to an employee by an
+> employer to assist with the purchase of private health insurance.
+
+### S3302. LEAP income exclusions: the refugee resettlement grant and the liquidation of personal resources
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.AA, GG (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> AA. A one-time resettlement grant received under the refugee admissions program.
+>
+> ...
+>
+> GG. Money obtained from the liquidation of personal resources.
+
+### S3303. LEAP countable unearned income: life insurance, health insurance and personal injury proceeds above the costs they pay
+
+Document: D-86
+
+9 CCR 2503-7 3.752.21.C-D (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> C. Proceeds of a life insurance policy to the extent that they exceed the amount expended by the
+> beneficiary for the purpose of the insured recipient's last illness or burial that are not covered by
+> other benefits;
+>
+> D. Proceeds of a health insurance policy or personal injury lawsuit to the extent that they exceed the
+> amount to be expended or required to be expended for medical care;
+
+### S3304. LEAP periodic payments: workers' compensation less the award's medical, legal and related expenses
+
+Document: D-86
+
+9 CCR 2503-7 3.752.211.D (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> D. Worker's compensation payments - payments awarded under federal and state law to an injured
+> employee or to such employee's dependents; amounts included in such awards for medical,
+> legal, or related expenses incurred by an applicant or recipient in connection with such claim are
+> deducted in determining the amount of countable unearned income.
+
+### S3305. LEAP: in-kind income received in exchange for employment is earned income at its declared value
+
+Document: D-86
+
+9 CCR 2503-7 3.752.22.C.4 (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 4. In-kind income is income received in exchange for employment and shall be considered
+> as earned income whose value is based on the services rendered. The amount
+> considered as earned income when a recipient is paid in lieu of cash is the declared
+> value of the item or service provided.
+
+### S3306. LEAP: a military allotment is income in the month received
+
+Document: D-86
+
+9 CCR 2503-7 3.752.212 (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.752.212 Military Allotment [Eff. 12/1/14]
+>
+> A military allotment received on behalf of an applicant or recipient for those individuals included in the
+> budget unit shall be considered as income in the month received.
+
+### S3307. LEAP periodic payments: family and medical leave insurance (as amended effective 11/01/2026)
+
+Document: D-173
+
+9 CCR 2503-7 3.752.211.J (adopted rules, eDocket 2026-00287, effective 2026-11-01; re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/Upload/AGORequest/AdoptedRules02026-00287.docx
+
+> 3.752.211 Periodic Payments [Rev. eff.11/01/2026]
+>
+> J. Family and medical leave insurance (FAMLI), which provides eligible workers paid leave annually for personal or family medical needs.
+
+### S3308. LEAP application period: forms received or postmarked in the period; public assistance households' early applications effective November 1
+
+Document: D-86
+
+9 CCR 2503-7 3.752.1 (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> To apply for LEAP, the general public shall submit a State prescribed application form (IML-4) during the
+> period of November 1st through April 30th. If April 30th for a particular calendar year falls on a holiday or
+> weekend, then the eligibility periods shall be extended until midnight the next business day. These
+> programs are contingent upon the continued availability of funds in accordance with Sections 3.750.15
+> and 3.758.48. The county department shall accept all application forms that are received or postmarked
+> during the application period. Facsimile copies of completed application forms shall be accepted as valid.
+> Preference shall be given to application forms received from public assistance households (such as
+> Colorado Works, Old Age Pension (OAP), Aid to the Needy Disabled (AND), Aid to the Blind (AB), and
+> Supplemental Social Security Disability Benefits.) Such applications received prior to November 1st shall
+> be accepted and may be processed; however, eligibility shall not be effective until November 1st.
+> Application forms received or postmarked after the closing date shall be denied. Eligibility will be
+> determined based on the applicant's circumstances on the date the application is received by the county
+> department. Although applications may be accepted and processed earlier, the effective date of
+> application shall not be before November 1st.
+
+### S3309. LEAP: public assistance income defined
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1 "Public Assistance Income" (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Public Assistance Income”: For purposes of verifying income under the Low-Income Energy Assistance
+> Programs, the term public assistance income shall mean income received from the following types of
+> Department of Human Services programs:
+>
+> A. Colorado Works;
+>
+> B. OAP (Old Age Pension, both the SSI-supplement and State-only groups);
+>
+> C. AND (Aid to the Needy Disabled, both the SSI-supplement and State-only groups);
+>
+> D. AB (Aid to the Blind, both the SSI-supplement and State-only groups);
+>
+> E. NCRA (Non-Categorical Refugee Assistance);
+>
+> F. SSDI (Social Security Disability Insurance) for clients on another state program, such as a
+> Medicaid waiver or buy in program.
+
+### S3310. Colorado legal holidays
+
+Document: D-310
+
+C.R.S. 24-11-101(1) (Colorado Revised Statutes 2024). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-24.pdf
+
+> 24-11-101. Legal holidays - effect. (1) The following days, viz: The first day of
+> January, commonly called New Year's day; the third Monday in January, which shall be
+> observed as the birthday of Dr. Martin Luther King, Jr.; the third Monday in February,
+> commonly called Washington-Lincoln day; the last Monday in May, commonly called Memorial
+> day; the nineteenth day of June, commonly called Juneteenth; the fourth day of July, commonly
+> called Independence day; the first Monday in September, commonly called Labor day; the first
+> Monday in October, commonly called Frances Xavier Cabrini day; the eleventh day of
+> November, commonly called Veterans' day; the fourth Thursday in November, commonly called
+> Thanksgiving day; the twenty-fifth day of December, commonly called Christmas day; and any
+> day appointed or recommended by the governor of this state or the president of the United States
+> as a day of fasting or prayer or thanksgiving, are hereby declared to be legal holidays
+
+### S3311. LEAP: emergency applicant (heat included in rent and an eviction notice)
+
+Document: D-86
+
+9 CCR 2503-7 3.751.1 "Emergency Applicant" (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> “Emergency Applicant”: This is a household which has had heat service discontinued or is threatened
+> with discontinuance or is out of fuel or will run out of fuel within fourteen calendar days or the client is
+> responsible for heating costs that are included in rent and has received an eviction notice to vacate the
+> premises within thirty (30) calendar days.
+
+### S3312. LEAP households: civil unions; a separate household after legal separation or divorce; permanent separation; presumption of marriage
+
+Document: D-86
+
+9 CCR 2503-7 3.751.2.D.3, E; 3.751.21; 3.751.22 (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3. Individuals that enter into civil unions.
+>
+> E. A parent with his or her children may be listed as a separate household when residing in the
+> same dwelling with his or her ex-spouse in cases of legal separation or divorce.
+>
+> 3.751.21 Permanent Separation [Eff. 12/1/14]
+>
+> A married couple is considered to be permanently separated when:
+>
+> A. They are divorced or legally separated; or,
+>
+> B. Both physical and financial ties have been dissolved and a relationship as spouses no longer
+> exists.
+>
+> 3.751.22 Presumption of Marriage [Eff. 12/1/14]
+>
+> Unless there has been a divorce or legal separation, the presumption is made that the couple is still
+> married. Such presumption must be refuted by persons, other than the spouses, who can establish that
+> they are in a position to know and assert that a complete and permanent separation does, in fact, exist.
+
+### S3313. LEAP verification: gift income and child support in domestic violence cases verified by declaration
+
+Document: D-86
+
+9 CCR 2503-7 3.755.21.B.4, K (version effective 11/01/2025, re-fetched 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 4. An exception shall be made in cases of domestic violence as defined in Section 18-6-
+> 800.3(1), C.R.S., when the applicant provides evidence from a court or participation in
+> the state’s Address Confidentiality Program (ACP) pursuant to Section 24-30-2104,
+> C.R.S. Client declaration shall be sufficient in such cases.
+>
+> ...
+>
+> K Gift income shall be considered verified with applicant declaration.
+
+### S3314. Summer EBT: no dual participation in the same summer operational period
+
+Document: D-88
+
+7 CFR 292.2 "Dual participation"; 292.15(d)(1) (eCFR as of 2026-11-19, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/part-292
+
+> Dual participation means a child simultaneously receiving benefits from more than one State or ITO-administered Summer EBT Program, or simultaneously receiving multiple allotments from the same State or ITO-administered Summer EBT Program.
+>
+> ...
+>
+> (d) Dual participation. (1) Dual participation in Summer EBT in the same summer operational period is not allowed.
+
+### S3315. Summer EBT: households declining benefits are not issued benefits
+
+Document: D-88
+
+7 CFR 292.12(f)(3) (eCFR as of 2026-11-19, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/part-292/section-292.12
+
+> (3) Households declining benefits. Children from households that notify the Summer EBT agency that they do not want Summer EBT benefits must not be issued benefits, or have their benefits expunged as soon as possible if already issued.
+
+### S3316. Summer EBT: the school meal carryover period does not confer eligibility
+
+Document: D-88
+
+7 CFR 292.7(c) (eCFR as of 2026-11-19, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/part-292/section-292.7
+
+> (c) The carryover period in the school meal programs, as required at § 245.6(c)(1) of this chapter, may not be used to confer eligibility for Summer EBT benefits during the summer operational period following the instructional year in which the carryover benefit was provided as it is outside of the period to establish eligibility, as described in paragraph (a) of this section.
+
+### S3317. Summer EBT: eligibility shown at a single point in time during the period of eligibility
+
+Document: D-117
+
+7 CFR 292.14(e)(2) (eCFR, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/part-292/section-292.14
+
+> (2) For the purposes of direct verification, documentation may indicate participation in an applicable program or income at any point during the period of eligibility. The information provided only needs to indicate eligibility at a single point in time during the period of eligibility, not that the child was eligible at the time of application or verification.
+
+### S3318. Summer EBT: no further benefits after issuance until verification for cause is complete
+
+Document: D-117
+
+7 CFR 292.14(f)(11) (eCFR, re-fetched 2026-11-22). https://www.ecfr.gov/current/title-7/part-292/section-292.14
+
+> (11) Verification after benefit issuance. If a Summer EBT agency is alerted to a questionable application after initial approval or issuance of benefits, no further benefits should be issued until verification for cause, as outlined in paragraph (a)(1) of this section is complete and eligibility is confirmed.
