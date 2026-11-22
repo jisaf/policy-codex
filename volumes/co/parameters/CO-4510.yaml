@@ -1,0 +1,15 @@
+id: CO-4510
+name: "LEAP: age from which SCSEP funds are excluded"
+identifier: leap_scsep_exclusion_min_age
+kind: parameter
+type: whole number
+scope: global
+program: LEAP
+meaning: "The age from which 9 CCR 2503-7 3.752.23.CC excludes the funds a person receives under the Senior Community Service Employment Program: \"persons fifty five (55) years of age and older\"."
+versions:
+  - from: "2015-11-01"
+    value: 55
+    source: S3301
+sources: [S3301]
+tags: [income, age]
+rationale: "Coverage review C-23: leap_person_wages (CO-3925) subtracts SCSEP wages only for a person of the age the rule names; the age is the rule's figure, not a literal."

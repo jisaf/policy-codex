@@ -1,0 +1,17 @@
+id: CO-4527
+name: "SUN Bucks: a foster, homeless, migrant or runaway child"
+identifier: sebt_child_is_foster_homeless_migrant_or_runaway
+kind: derived
+type: yes/no
+scope: person
+program: SunBucks
+meaning: "Whether the child is a foster, homeless, migrant or runaway child as 7 CFR 245.2 defines them: the second group whose members, when all the children of a household belong to it, except the household from verification (7 CFR 292.14(f)(1))."
+precision: "Foster care is the foster_child role, or a foster care payment or IV-B service in the child welfare record, as in sebt_other_categorical_basis (CO-1296); homeless is sebt_is_homeless_child; migrant and runaway are positive identifications, their absence read as no such ground."
+derived: [any, sebt_is_homeless_child, [otherwise, [exists_related, [foster_child], true], false], [in, child_welfare_payment_type, [title_iv_e_foster_care, state_funded_foster_care, title_iv_b_services_only]], [otherwise, is_migrant_child, false], [otherwise, is_runaway_child, false]]
+sources: [S1092, S1952]
+implemented: engine
+tags: [sebt, verification]
+rationale: "Coverage review C-21: 292.14(f)(1) excepts a household when all its children are eligible through SNAP, FDPIR, TANF or an approved program, or when all are foster, homeless, migrant or runaway children; sebt_requires_verification_of_income (CO-1699) tested one combined ground, so a household with one child of each group was excepted. The two groups are now separate items; sebt_child_verification_exception_ground (CO-4072) is their union."
+tests:
+  - {id: CO-4527-T1, title: "A child placed in foster care", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: title_iv_e_foster_care}, others: {p2: {}}, relationships: [[foster_child, p1, p2]], expect: true}
+  - {id: CO-4527-T2, title: "A child in an FDPIR household only: not this group", as_of: "2026-11-01", given: {nighttime_residence_type: fixed_regular_adequate, child_welfare_payment_type: none, receives_fdpir: true}, relationships: [], expect: false}

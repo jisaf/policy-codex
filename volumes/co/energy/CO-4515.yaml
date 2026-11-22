@@ -1,0 +1,19 @@
+id: CO-4515
+name: "LEAP: the closing date of the application period"
+identifier: leap_application_period_closing_date
+kind: derived
+type: calendar date
+scope: case
+program: LEAP
+meaning: "The last day of the LEAP application period of the program year that begins on or before the date the application was filed: April 30, or, when April 30 falls on a weekend or holiday, the next business day (9 CCR 2503-7 3.751.1 \"Eligibility Period\", 3.752.1)."
+precision: "The program year is the one starting in the most recent November (leap_eligibility_period_start_month, CO-1806) on or before leap_application_filing_date (CO-4514); its April (leap_eligibility_period_end_month, CO-1807) is the first April within eleven months after it, and April 30 is the day before the first of May. The extension is leap_application_period_extension_days_table (CO-4513) for the year of that April. For a filing date from November to April this is the coming April 30 (or its extension); for one from May to October it is the April 30 just past."
+derived: [days_after, [lookup, leap_application_period_extension_days_table, [year_of, [latest_month_of_year, leap_eligibility_period_end_month, [months_after, 11, [latest_month_of_year, leap_eligibility_period_start_month, leap_application_filing_date]]]]], [days_after, -1, [first_day, [month_after, [latest_month_of_year, leap_eligibility_period_end_month, [months_after, 11, [latest_month_of_year, leap_eligibility_period_start_month, leap_application_filing_date]]]]]]]
+sources: [S510, S3308, S3310]
+implemented: engine
+tags: [household]
+rationale: "Coverage review C-4 (P1): 3.752.1 denies forms \"received or postmarked after the closing date\" and extends April 30 \"until midnight the next business day\" when it is a weekend or holiday (S3308). No item stated the closing date: leap_month_in_eligibility_period (CO-1008) tests months, and its precision left the extension unmodeled."
+tests:
+  - {id: CO-4515-T1, title: "Filed December 1, 2026: April 30, 2027 (a Friday)", as_of: "2026-12-01", given: {leap_application_filing_date: "2026-12-01"}, expect: "2027-04-30"}
+  - {id: CO-4515-T2, title: "Filed in the 2027-28 season: April 30, 2028 is a Sunday, so the period closes Monday May 1", as_of: "2028-02-01", given: {leap_application_filing_date: "2028-02-01"}, expect: "2028-05-01"}
+  - {id: CO-4515-T3, title: "Filed May 3, 2027: the April 30 just past", as_of: "2027-05-03", given: {leap_application_filing_date: "2027-05-03"}, expect: "2027-04-30"}
+  - {id: CO-4515-T4, title: "Filed in the 2032-33 season: April 30, 2033 is a Saturday, so the period closes Monday May 2", as_of: "2032-11-15", given: {leap_application_filing_date: "2032-11-15"}, expect: "2033-05-02"}

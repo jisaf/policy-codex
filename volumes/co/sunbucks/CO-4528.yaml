@@ -1,0 +1,17 @@
+id: CO-4528
+name: "SUN Bucks: eligible through FDPIR or another approved program"
+identifier: sebt_child_has_fdpir_or_approved_program_basis
+kind: derived
+type: yes/no
+scope: person
+program: SunBucks
+meaning: "Whether the child is determined eligible from documentation of FDPIR or of another means-tested program the Secretary has approved: with SNAP and TANF receipt, the first group whose members, when all the children of a household belong to it, except the household from verification (7 CFR 292.14(f)(1))."
+precision: "receives_fdpir and sebt_other_documented_categorical_basis, each a positive identification, their absence read as no such ground. SNAP and TANF receipt is read by sebt_requires_verification_of_income (CO-1699) from sebt_household_child_receives_snap_or_tanf (CO-2708), which extends to every child of the household."
+derived: [any, [otherwise, receives_fdpir, false], [otherwise, sebt_other_documented_categorical_basis, false]]
+sources: [S1092, S792]
+implemented: engine
+tags: [sebt, verification]
+rationale: "Coverage review C-21: the first of 292.14(f)(1)'s two \"all children\" groups, separated from the foster, homeless, migrant and runaway group (CO-4527) so CO-1699 can test each clause on its own."
+tests:
+  - {id: CO-4528-T1, title: "A child in an FDPIR household", as_of: "2026-11-01", given: {receives_fdpir: true}, expect: true}
+  - {id: CO-4528-T2, title: "Neither", as_of: "2026-11-01", given: {receives_fdpir: false, sebt_other_documented_categorical_basis: false}, expect: false}

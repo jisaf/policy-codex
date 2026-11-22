@@ -63,7 +63,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 11 | 3.751.1 Date of Application | C | CO-2122 (date received). See C-4 for postmarked forms. |
 | 12 | 3.751.1 Disabled or Handicapped; Elderly | N/A | Used only by outreach (3.759.11.A, E). |
 | 13 | 3.751.1 Eligibility Period (Nov 1-Apr 30) | C | CO-1006, CO-1008, CO-1806, CO-1807. |
-| 14 | 3.751.1 Eligibility Period: April 30 weekend or holiday extension | GAP → C-4 | Noted only in CO-1008's precision. |
+| 14 | 3.751.1 Eligibility Period: April 30 weekend or holiday extension | C | Fixed (C-4): CO-4513 (extension days by year), CO-4515 (closing date), CO-4516, read by CO-1007. |
 | 15 | 3.751.1 Emergency Applicant; Life Threatening Crisis | N/A | Processing timelines (3.756.12.B, 3.756.14) and CIP; used as evidence in C-2. |
 | 16 | 3.751.1 Estimated Home Heating Costs | C | CO-1271. |
 | 17 | 3.751.1 Federal Poverty Level | C / OQ | CO-1278 (OQ-253: which table). |
@@ -91,10 +91,10 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 39 | 3.751.2.C fifteen members, nine households | C | CO-875 keyed 1-15; CO-1003 precision (size above 15 unknown). The nine-household cap is administrative. |
 | 40 | 3.751.2.D.1 spouses | C | CO-1000. |
 | 41 | 3.751.2.D.2 children under 18 with parent or guardian | C | CO-1000, CO-325. See C-7 (kinship). |
-| 42 | 3.751.2.D.3 civil unions | GAP P2 | C-8 (F-18 deferred). |
-| 43 | 3.751.2.E separate household after separation or divorce | GAP P2 | C-8. |
-| 44 | 3.751.21 permanent separation | GAP P2 | C-8. |
-| 45 | 3.751.22 presumption of marriage | GAP P2 | C-8 (spouse role is legal marriage, so the presumption is implicit). |
+| 42 | 3.751.2.D.3 civil unions | C | Fixed (C-8): role `civil_union_partner`, crossed as spouse in CO-1000 and CO-1009. |
+| 43 | 3.751.2.E separate household after separation or divorce | C | Fixed (C-8): CO-4519 (the election), CO-4520, in CO-1000 and CO-1009. |
+| 44 | 3.751.21 permanent separation | C | Fixed (C-8): a divorced couple has no spouse edge; a legally separated parent separates through E (CO-4519). |
+| 45 | 3.751.22 presumption of marriage | C | Fixed (C-8): the spouse edge stays unless E is elected, as the presumption reads (CO-1000 precision). |
 | 46 | 3.751.31-3.751.35 non-discrimination, opportunity to apply, interpreters, authorized representative, signature by mark | N/A | Application procedure. |
 | 47 | 3.751.41-3.751.489 notice, hearings, confidentiality, EBT use | N/A | Notice and hearing procedure. |
 | 48 | 3.751.51-3.751.55 recovery of overpayments | N/A | Post-payment recovery. |
@@ -103,15 +103,15 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 51 | 3.751.61-3.751.64 reporting, monitoring, case review | N/A | County administration. |
 | 52 | 3.751.71-72 reimbursements, sanctions | N/A | County administration. |
 | 53 | 3.752.1 application period, Nov 1-Apr 30 | C | CO-1008, CO-1007 (denial J). |
-| 54 | 3.752.1 received or postmarked in the period | GAP → C-4 | |
-| 55 | 3.752.1 PA households' applications before Nov 1 accepted, effective Nov 1 | GAP → C-3 | |
+| 54 | 3.752.1 received or postmarked in the period | C | Fixed (C-4): CO-4512 (postmark), CO-4514 (filing date), CO-4516. |
+| 55 | 3.752.1 PA households' applications before Nov 1 accepted, effective Nov 1 | C / OQ | Fixed (C-3): CO-4517, CO-4518, CO-1007; OQ-800 (which households; SSI or SSDI). |
 | 56 | 3.752.1 eligibility on circumstances on the date received | C | CO-1007. |
 | 57 | 3.752.2 eligibility requirements; factors as of the date of application | C | CO-1007 (residency CO-505, status CO-1005, income CO-1003, vulnerability CO-1004, fuel CO-877, household CO-1000, shared living CO-1274, dwelling CO-1283/CO-2815, EHHC CO-1271). |
 | 58 | 3.752.21 intro, other gain or benefit | C | CO-3926 via `other_unearned_income_*`. |
 | 59 | 3.752.21.A inheritance, gifts, prizes | C | CO-4069 (prizes, lump sums in the period), CO-3913 (gifts). |
 | 60 | 3.752.21.B dividends and interest | C | CO-3913 (`other_unearned_income_taxable`, `tax_exempt_interest`). |
-| 61 | 3.752.21.C life insurance proceeds above last-illness and burial costs | GAP → C-1 | Counted in full as a lump sum. |
-| 62 | 3.752.21.D health insurance and injury proceeds above medical costs | GAP → C-1 | Counted in full. |
+| 61 | 3.752.21.C life insurance proceeds above last-illness and burial costs | C | Fixed (C-1): CO-4509 subtracted in CO-4069. |
+| 62 | 3.752.21.D health insurance and injury proceeds above medical costs | C | Fixed (C-1): CO-4509 subtracted in CO-4069. |
 | 63 | 3.752.21.E strike benefits | C | `other_unearned_*` via CO-3913. |
 | 64 | 3.752.21.F jointly owned property | C (P3) | The person's received amount as stated; no ownership-share floor. |
 | 65 | 3.752.21.G, H lease bonuses and royalties, month received | C | `other_unearned_income_taxable`. |
@@ -122,12 +122,12 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 70 | 3.752.21.M adoption assistance | C | `other_unearned_income_nontaxable`. |
 | 71 | 3.752.21.N child support, spousal maintenance | C | CO-3913 (`child_support_received`, alimony in other unearned). |
 | 72 | 3.752.211.A-C, E-G annuities, pensions, disability, VA, UI, RRB | C | CO-3913 (`pension_income`, `unemployment_income`, other unearned). The VA dependent share (E) is a within-household attribution with no effect on the total. |
-| 73 | 3.752.211.D workers' compensation less medical and legal costs | GAP → C-1 | |
+| 73 | 3.752.211.D workers' compensation less medical and legal costs | C | Fixed (C-1): CO-4502 in CO-4511. |
 | 74 | 3.752.211.H Social Security, no cents | C | CO-3926. |
 | 75 | 3.752.211.I SSI | C | CO-3926. |
-| 76 | 3.752.211.J FAMLI (D-173) | C (P3) | Implicitly in other unearned; C-15. |
+| 76 | 3.752.211.J FAMLI (D-173) | C | Fixed (C-15): CO-3926 meaning, S3307. |
 | 77 | 3.752.211.K trusts in the period | C | `other_unearned_income_taxable` in CO-3913. |
-| 78 | 3.752.212 military allotment | C (P2) | Implicit; C-12. |
+| 78 | 3.752.212 military allotment | C | Fixed (C-12): CO-3926 meaning, S3306. |
 | 79 | 3.752.22.A unearned income of the period, at most one month | C / OQ | CO-3913, CO-3926 precision; OQ-681. |
 | 80 | 3.752.22.B earned ongoing income, four of eight weeks | C / OQ | CO-3925, CO-3922; OQ-681 (average pay). |
 | 81 | 3.752.22.C.1.a weekly x4 | C | CO-3924 (4). Confirmed CO-3925-T1. |
@@ -136,34 +136,34 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 84 | 3.752.22.C.3.a terminated income | C | CO-3925 (CO-3923 → thirty-day wages). |
 | 85 | 3.752.22.C.3.b new earned income | C | CO-3925. |
 | 86 | 3.752.22.C.3.c UI and other unearned not yet received | C | Thirty-day receipts (CO-3911/CO-3913). |
-| 87 | 3.752.22.C.4 in-kind earned income | GAP P2 | C-12. |
+| 87 | 3.752.22.C.4 in-kind earned income | C | Fixed (C-12): CO-4506 added in CO-3925. |
 | 88 | 3.752.22.D 60% SMI, up to and including (FFY 2026 SMI, D-173) | C | CO-1003 (`<=`), CO-875 (sizes 1-15 match D-144). Confirmed. |
 | 89 | 3.752.22.E reapplication after a change | C | CO-2122. |
 | 90 | 3.752.23 intro (exempt as income and resources; ROC notation) | C (partial) | See C-1. |
 | 91 | 3.752.23.A-D food assistance, OAA Title III, school meals/WIC, home produce | N/A | In-kind: not part of any income fact. |
 | 92 | 3.752.23.E housing assistance | N/A | Paid for the dwelling, not received as income. |
 | 93 | 3.752.23.F volunteer payments below minimum wage | C | CO-3366 (DVSA Titles I-III), subtracted in CO-3913. |
-| 94 | 3.752.23.G Colorado Crime Victims Compensation | GAP → **C-1 (P1)** | CO-3813 exists but LEAP does not read it. |
+| 94 | 3.752.23.G Colorado Crime Victims Compensation | C | Fixed (C-1): CO-3813 in CO-4511, subtracted in CO-3926. |
 | 95 | 3.752.23.H, I, K-O federal-law payments | C | CO-3366 in CO-3913. |
 | 96 | 3.752.23.J gifted transportation ticket | N/A | In-kind. |
 | 97 | 3.752.23.P financial aid, loans, work study | C | CO-3913 (educational assistance, loans), CO-3912 (work study). |
 | 98 | 3.752.23.Q children's earned income | C | CO-1002 (case condition; CO-1002-T3, T6). |
 | 99 | 3.752.23.R, S reimbursements | C | CO-3363 in CO-3913. |
 | 100 | 3.752.23.T vendor payments to others | C | Not received; CO-3364 covers energy assistance paid on the household's behalf. |
-| 101 | 3.752.23.U foster care and kinship payments; those individuals not members | GAP → C-1 (payment), C-7 (membership) | |
-| 102 | 3.752.23.V home care or attendant allowance paid to a non-member | GAP → C-1 (P3 part) | CO-3824 not read; when paid to a non-member it is not household income anyway. |
+| 101 | 3.752.23.U foster care and kinship payments; those individuals not members | C / OQ | Fixed (C-1, C-7): payments CO-3821, CO-4503 in CO-4511; membership CO-1000, CO-1009 (OQ-801). |
+| 102 | 3.752.23.V home care or attendant allowance paid to a non-member | N/A | An allowance paid to a non-member is not a member's receipt (CO-4511 precision). |
 | 103 | 3.752.23.W state or county diversion payments | C | Not part of `tanf_cash_income` (basic cash only). |
-| 104 | 3.752.23.X reverse mortgages | GAP → **C-1 (P1)** | CO-3820 not read. |
-| 105 | 3.752.23.Y subsidized-housing utility allowances | GAP → C-1 | |
-| 106 | 3.752.23.Z GI Bill incl. housing and food allowances | C (partial) → C-1 | CO-3913 (educational assistance) covers tuition; housing and food allowances are not covered. |
-| 107 | 3.752.23.AA refugee resettlement grant | GAP → C-1 | |
+| 104 | 3.752.23.X reverse mortgages | C | Fixed (C-1): CO-3820 in CO-4511. |
+| 105 | 3.752.23.Y subsidized-housing utility allowances | C | Fixed (C-1): CO-4500 in CO-4511. |
+| 106 | 3.752.23.Z GI Bill incl. housing and food allowances | C | Fixed (C-1): CO-3360 (tuition, in CO-3913) and CO-4501 (housing and food) in CO-4511. |
+| 107 | 3.752.23.AA refugee resettlement grant | C | Fixed (C-1): CO-4508 in CO-4069. |
 | 108 | 3.752.23.BB bona fide loans | C | CO-3362. |
-| 109 | 3.752.23.CC SCSEP | GAP → C-23 | |
-| 110 | 3.752.23.DD PASS | GAP → **C-1 (P1)** | CO-3825 not read. |
+| 109 | 3.752.23.CC SCSEP | C | Fixed (C-23): CO-4504, CO-4510 in CO-3925. |
+| 110 | 3.752.23.DD PASS | C | Fixed (C-1): CO-3825 in CO-4511. |
 | 111 | 3.752.23.EE tax refunds; retroactive SS/SSI/PA lump sums | C | CO-3913 (CO-3365), CO-4069 (CO-4067, CO-4068). |
 | 112 | 3.752.23.FF Colorado Works supportive services | C | Not part of `tanf_cash_income`. |
-| 113 | 3.752.23.GG liquidation of personal resources | GAP → C-1 | Would be stated as a lump sum and counted. |
-| 114 | 3.752.23.HH employer health-insurance subsidies | GAP → C-1 | Part of wages. |
+| 113 | 3.752.23.GG liquidation of personal resources | C | Fixed (C-1): CO-4507 in CO-4069. |
+| 114 | 3.752.23.HH employer health-insurance subsidies | C | Fixed (C-1): CO-4505 in CO-3925. |
 | 115 | 3.752.24 no resource test | C | No LEAP item reads resources. |
 | 116 | 3.752.25.A.1 pays a vendor | C | CO-876. |
 | 117 | 3.752.25.A.2 non-subsidized, heat in or beside rent | C | CO-876. |
@@ -176,7 +176,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 124 | 3.752.25.B.3 correctional | C | CO-1283. |
 | 125 | 3.752.25.B.4 dormitory | C | CO-1283 (educational_or_vocational_institution). |
 | 126 | 3.752.25.B.5 subsidized without meter or surcharge | C | CO-1283. |
-| 127 | 3.752.25.B.6 homeless or non-traditional dwelling | C / OQ | CO-2815 (OQ-561). **C-2**: the derivation includes imminent loss of housing. |
+| 127 | 3.752.25.B.6 homeless or non-traditional dwelling | C / OQ | CO-2815 (OQ-561); C-2 fixed: an eviction notice is not homelessness (CO-2815-T4). |
 | 128 | 3.752.25.B.7 commercial property | C | CO-1283. |
 | 129 | 3.752.25.B.8 hotel, 30 days, heat in rent | C / OQ | CO-1283, CO-3342 (OQ-610). |
 | 130 | 3.752.25.C landlords | N/A | A landlord is tested like any household. |
@@ -206,7 +206,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 154 | 3.754.1.G incomplete or unverified | N/A | Procedural (CO-1462 past_due). |
 | 155 | 3.754.1.H not a resident | C | CO-505. |
 | 156 | 3.754.1.I unsigned | N/A | Procedural. |
-| 157 | 3.754.1.J outside the application period | C | CO-1008 (see C-3, C-4). |
+| 157 | 3.754.1.J outside the application period | C | CO-1008, CO-1007 with CO-4516 and CO-4517 (C-3, C-4 fixed). |
 | 158 | 3.754.1.K applicant not located | N/A | Procedural (3.756.19). |
 | 159 | 3.754.1.L refused weatherization | C | CO-3928. |
 | 160 | 3.754.1.M-O identification, affidavit (3.753.12, repealed) | N/A | They cite a section absent from the current text; 3.753.111 imposes no identification requirement. |
@@ -219,31 +219,31 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 167 | 3.754.1.V failed to verify income | N/A | Procedural (CO-1462). |
 | 168 | 3.754.1.W homeless | C | CO-2815 (C-2). |
 | 169 | 3.754.11-12 reason and notice of denial | N/A | Notice. |
-| 170 | 3.755.11 income, EHHC, vulnerability verified; prior-year vulnerability | C | CO-1455 (**C-5**), CO-2591, CO-1456, CO-1692, CO-1693. |
+| 170 | 3.755.11 income, EHHC, vulnerability verified; prior-year vulnerability | C | CO-1455 (C-5 fixed: the wages CO-1002 counts), CO-4526, CO-2591, CO-1456, CO-1692, CO-1693. |
 | 171 | 3.755.12 conflicting information | N/A | The case states the correct information; fraud proceedings are procedure. |
 | 172 | 3.755.13-3.755.17 case record, storage, archiving | N/A | County administration. |
 | 173 | 3.755.21.A unearned income in writing | C | CO-2591, CO-1361. |
 | 174 | 3.755.21.B.1-3 child support | C | CO-2591. |
-| 175 | 3.755.21.B.4 DV: declaration suffices | GAP P2 | C-9. |
+| 175 | 3.755.21.B.4 DV: declaration suffices | C | Fixed (C-9): CO-4525 in CO-4526. |
 | 176 | 3.755.21.C Social Security award letter | C | CO-2591. |
-| 177 | 3.755.21.D earned income, four of eight weeks of stubs | C | CO-1455, CO-1689, CO-1316 (**C-5**). |
+| 177 | 3.755.21.D earned income, four of eight weeks of stubs | C | CO-1455 (C-5 fixed), CO-1689, CO-1316. |
 | 178 | 3.755.21.E, F county records | C | CO-1361 (electronic source). |
 | 179 | 3.755.21.G collateral contact | C | Document-received facts (any source). |
 | 180 | 3.755.21.H zero income, adults, DOLE | C | CO-1693, CO-1565. |
 | 181 | 3.755.21.I.1 self-employment declaration, full month prior (D-173) | C / OQ | CO-1712, CO-1002 (`month_before`); OQ-681 (3). |
 | 182 | 3.755.21.I.2 receipts required for deductions; a-d | C / OQ | CO-1711 (CO-3927 gate; rent, utilities, mileage), OQ-614. Rental maintenance (d) is not a separate fact (P3). |
 | 183 | 3.755.21.I.3 card or bank statements not receipts | C | CO-3927 meaning. |
-| 184 | 3.755.21.J LLC and S-corp owners as employees (D-173) | C (P3) | CO-1712 precision; C-16. |
-| 185 | 3.755.21.K gifts verified by declaration | GAP P2 | C-9. |
+| 184 | 3.755.21.J LLC and S-corp owners as employees (D-173) | C / OQ | CO-1712 precision; OQ-681 note (C-16). |
+| 185 | 3.755.21.K gifts verified by declaration | C | Fixed (C-9): CO-4524 in CO-4526. |
 | 186 | 3.755.41 evidence of vulnerability 1-4 | C | CO-1342 via CO-1692. |
 | 187 | 3.755.42 subsidized-housing documentation | C | CO-1692 (one element); CO-876 for the test. |
-| 188 | 3.755.43-45 wood permits, bulk-fuel receipts | C (P3) | CO-1342; C-17. |
+| 188 | 3.755.43-45 wood permits, bulk-fuel receipts | N/A | Evidence procedure, carried by one document-received fact (CO-1342); docs/colorado-notes.md (C-17). |
 | 189 | 3.755.51 EHHC verified from the vendor | C | CO-1692. |
 | 190 | 3.755.6 other factors at discretion | N/A | Discretionary. |
 | 191 | 3.756.11 completed application, no interview | N/A | Procedure. |
 | 192 | 3.756.12.A-C date stamp, screening, entry (B as amended by D-173), duplicates, notice | N/A | Processing administration. Duplicates → CO-2100. |
 | 193 | 3.756.12.D two weeks, good-cause extension up to two weeks | C | CO-1461, CO-1355, CO-2124, CO-2123, CO-2121. |
-| 194 | 3.756.12.D reopening after denial | C (P3) | C-22. |
+| 194 | 3.756.12.D reopening after denial | C | Case processing; CO-1462 precision (C-22). |
 | 195 | 3.756.13 lost applications | N/A | Procedure. |
 | 196 | 3.756.14 thirty-day and eighteen-day determinations; no denial before day 15 | N/A | Timeliness; consistent with CO-1461 (14 days). |
 | 197 | 3.756.15 notification | N/A | Notice. |
@@ -280,10 +280,10 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 223 | 292.2 Continuous school calendar | N/A | Timing alternatives approved in the POM. |
 | 224 | 292.2 Current income | C | CO-1295 ("current monthly gross income ... reported on the application"). |
 | 225 | 292.2 Direct verification | C | CO-1591. |
-| 226 | 292.2 Dual participation | GAP P2 | C-10. |
+| 226 | 292.2 Dual participation | C | Fixed (C-10): CO-4521 in CO-1299. |
 | 227 | 292.2 Eligible child; Eligible household | C | CO-1298. |
 | 228 | 292.2 Enrolled students | C | CO-1293. |
-| 229 | 292.2 Household (economic unit; not institution or boarding house) | C | `lives_as_one_economic_unit_with` role; CO-1294 (C-11). |
+| 229 | 292.2 Household (economic unit; not institution or boarding house) | C | Fixed (C-11): `lives_as_one_economic_unit_with`; CO-4523 derives the size (read by CO-1297). |
 | 230 | 292.2 Income eligibility guidelines | C | CO-1297, CO-1291. |
 | 231 | 292.2 Instructional year; Period of eligibility | C / OQ | CO-3014, CO-2581 (OQ-535). |
 | 232 | 292.2 NSLP/SBP application; Summer EBT application | C | CO-1298 (income route), CO-1633. |
@@ -296,16 +296,16 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 239 | 292.2 remaining definitions (APD, COTS, EBT, firm, ITO, LEA, RFP, trafficking, vendor, etc.) | N/A | Administration and integrity definitions. |
 | 240 | 292.5(a) NSLP/SBP standards: income or categorical | C | CO-1298. |
 | 241 | 292.5(b) guidelines change July 1; those in effect on the application date | C | CO-1297, CO-3015 (FPG as of the latest July 1). Confirmed: $3,337 for 2, $5,088 for 4. |
-| 242 | 292.6 intro "at any time during the period of eligibility" | C (mismatch) | CO-1298. **C-6 (P1)**; C-19 (P3, school age). |
+| 242 | 292.6 intro "at any time during the period of eligibility" | C | CO-2708 (C-6 fixed: receipt in any month of the period); C-19 (P3) accepted, see disposition. |
 | 243 | 292.6(a) school-aged and categorical | C | CO-1298 row 1. |
 | 244 | 292.6(b)(1) enrolled (not special provision) and categorical | C | CO-1298 row 1. |
 | 245 | 292.6(b)(2) income-eligible through an NSLP/SBP application | C | CO-1298 row 2 (`<=`). |
 | 246 | 292.6(b)(3) otherwise eligible for free or reduced price | C | CO-4071 → CO-1296 (C-14). |
 | 247 | 292.6(b)(4) Summer EBT application | C | CO-1298 row 2. |
 | 248 | 292.6(c)(1)-(3) special provision schools | C | CO-1298 (same rows). |
-| 249 | 292.7(a) period to establish eligibility | C / OQ | CO-2581 (OQ-535); C-6. |
+| 249 | 292.7(a) period to establish eligibility | C / OQ | CO-2581 (OQ-535); CO-2708 (C-6 fixed). |
 | 250 | 292.7(b) no change reporting | C | Consistent with C-6's fix: eligibility once established holds. |
-| 251 | 292.7(c) carryover cannot confer eligibility | C (P2) | CO-4071 meaning silent: C-14. |
+| 251 | 292.7(c) carryover cannot confer eligibility | C | Fixed (C-14): CO-4071 meaning, S3316. |
 | 252 | 292.12(a) informational activities | N/A | Notice. |
 | 253 | 292.12(b) general enrolling procedures | N/A | Administration. |
 | 254 | 292.12(c) enrollment database | N/A | Administration. CO-1593 carries the match. |
@@ -320,7 +320,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 263 | 292.12(e)(3) not in an NSLP/SBP school: no application route | C | CO-1298 row 2 requires CO-1293. |
 | 264 | 292.12(e)(4) no income documentation at application | C | CO-1699 asks only when selected. |
 | 265 | 292.12(f)(1)-(2), (4) notices | N/A | Notice. |
-| 266 | 292.12(f)(3) households declining | C (P3) | C-20. |
+| 266 | 292.12(f)(3) households declining | C | Fixed (C-20): CO-4522 in CO-1299. |
 | 267 | 292.12(g)-(h) denial notice, appeals | N/A | Notice and hearing. |
 | 268 | 292.12(i) confidentiality | N/A | Administration. |
 | 269 | 292.13(a)-(f), (h)-(m), (o)-(p) application form, content, statements, disclosure | N/A | Application administration. |
@@ -330,7 +330,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 273 | 292.14(a)(2) 3% sample | C | CO-1590 (selection is the agency's record). |
 | 274 | 292.14(a)(3), (b), (c), (d) alternatives, replacement, rolling sample, after April 1 | N/A | Sampling administration. |
 | 275 | 292.14(e)(1)-(3) direct verification first; any point in the period | C | CO-1591, CO-1695 (C-6 on "any point"). |
-| 276 | 292.14(f)(1) exceptions from verification | C | CO-1699, CO-4072 (N-9 confirmed fixed); C-21 (P3). |
+| 276 | 292.14(f)(1) exceptions from verification | C | CO-1699 with CO-4527 and CO-4528 (C-21 fixed), CO-4072. |
 | 277 | 292.14(f)(2)(i) respond by the agency's date | OQ | OQ-377. |
 | 278 | 292.14(f)(2)(ii)-(iv) alternatives; failure to cooperate | C | CO-1592 (SNAP/FDPIR/TANF proof), CO-1698. |
 | 279 | 292.14(f)(3) sources of information | N/A | Evidence rules (fact assembly). |
@@ -338,13 +338,13 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 281 | 292.14(f)(5) refusal → termination | C / OQ | CO-1698 has no past-due state (OQ-377); CO-1299 withholds while pending. |
 | 282 | 292.14(f)(6)-(8), (10), (12) phone, follow-ups, notices, continuous calendars, nondiscrimination | N/A | Administration and notice. |
 | 283 | 292.14(f)(9) no issuance until verification completes, except for cause | C | CO-1299 (F-21 confirmed fixed). |
-| 284 | 292.14(f)(11) after issuance, no further benefits until for-cause verification | C (P3) | C-18. |
+| 284 | 292.14(f)(11) after issuance, no further benefits until for-cause verification | C | Issuance action; CO-1299 precision (C-18). |
 | 285 | 292.15(a)-(b) timing; continuous calendars | N/A | Issuance timing. |
 | 286 | 292.15(c)(1)(i)-(ii), (v) timely issuance; homeless households helped | N/A | Administration. |
 | 287 | 292.15(c)(1)(iii) a full three months | C | CO-3013. |
 | 288 | 292.15(c)(1)(iv) selected applications not issued until verified | C | CO-1299. |
 | 289 | 292.15(c)(2) method of issuance | N/A | Administration. |
-| 290 | 292.15(d)(1) no dual participation | GAP P2 | C-10. |
+| 290 | 292.15(d)(1) no dual participation | C | Fixed (C-10): CO-4521 in CO-1299. |
 | 291 | 292.15(d)(2) detection procedures | N/A | Administration. |
 | 292 | 292.15(e)(1) $40 in 2024, TFP adjusted, no decrease | C | CO-1244 (2024-2026 $40). |
 | 293 | 292.15(e)(2) AK, HI and territories | N/A | Not Colorado. |
@@ -359,7 +359,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 302 | 245.6(b)(1)-(6), (9)-(10) direct certification procedures | N/A | LEA administration; the results feed CO-4071. |
 | 303 | 245.6(b)(7) all children in the family when any child is in a SNAP, FDPIR or TANF household | C | CO-2708 (S2720). |
 | 304 | 245.6(b)(8) foster, homeless, migrant, runaway, Head Start individually; not extended | C | CO-1296, CO-4072 (per child). |
-| 305 | 245.6(c)(1)-(2) duration; carryover | C (P2) | Via 292.7(c): C-14. |
+| 305 | 245.6(c)(1)-(2) duration; carryover | C | Via 292.7(c): CO-4071 meaning (C-14 fixed). |
 | 306 | 245.6(c)(3) changes during the year | N/A | School meals; 292.7(b) governs Summer EBT. |
 | 307 | 245.6(c)(4) calculating income, at or below | C | CO-1298. |
 | 308 | 245.6(c)(5) categorical via documentation | C | CO-2708, CO-1296. |
@@ -367,7 +367,7 @@ Legend: **C** carried by (item, confirmed against the text unless a finding is n
 | 310 | C.R.S. 26-2-309(1)-(3) declaration, definitions, program created | N/A | No eligibility test beyond federal law. |
 | 311 | C.R.S. 26-2-309(4)(a)(I) eligibility "consistent with federal law" | C | The SUN Bucks chapter follows part 292 (OQ-255, OQ-551). |
 | 312 | C.R.S. 26-2-309(4)(a)(II)-(VI), (b), (c)(I)-(II), (5)-(8) | N/A | Administration, outreach, data, funding. |
-| 313 | C.R.S. 26-2-309(4)(c)(III) opt-out process | C (P3) | C-20. |
+| 313 | C.R.S. 26-2-309(4)(c)(III) opt-out process | C | Fixed (C-20): CO-4522 in CO-1299. |
 | 314 | C.R.S. 22-33-104(1)(a) compulsory attendance ages | C | CO-1292, CO-2101, CO-2102, CO-2605. |
 | 315 | D-143: no Colorado Summer EBT rule | C | OQ-255 (1) confirmed. |
 
@@ -420,3 +420,38 @@ Each probe household was appended to the scratch copy's `volumes/co/tests/cases.
 - **RV-L3**: RV-L0 with `receives_tanf_cash` true ($500) and application 2026-10-20. `leap_is_eligible` 2026-11 and 2026-12 false; `leap_program_year_start_month` at 2026-10 = 2025-11 (C-3).
 - **RV-L4**: RV-L0 with application received 2027-05-03. `leap_is_eligible` 2027-04 and 2027-05 false (C-4: the outcome depends on a postmark the volume cannot state).
 - **RV-S1**: mother and child born 2016-05-01, NSLP school, household of 2, income $6,000. `receives_snap` true, and false for 2027-01 to 2027-03. `sebt_eligibility_status` is `eligible_categorical` for 2026-09 and `ineligible` for 2027-03, where `sebt_benefit_amount` is 0 and `sebt_summer_year` is 2027 in both months (C-6).
+
+## Disposition (coverage round)
+
+Fix track for LEAP and SUN Bucks, 2026-11-22, on the base a2ed7f0. Texts re-read: 9 CCR 2503-7 re-fetched from the Secretary of State (still rule version 12221, D-86; D-173 re-fetched for 3.752.211.J); 7 CFR part 292 re-fetched from eCFR (as of 2026-11-19), the same as D-88 and D-117; C.R.S. 24-11-101 fetched (D-310). Excerpts S3300 to S3318. Commits a5b50bc (excerpts), eb03578 (LEAP income and verification), b1e4c41 (LEAP timing, household, homelessness), f8b3e6a (SUN Bucks), ef0f317 (cases CO-175 to CO-179, notes). The matrix rows above are updated; no row is GAP.
+
+| Finding | Sev | Disposition |
+|---|---|---|
+| C-1 | P1 | Fixed (eb03578). `leap_excluded_unearned_income` (CO-4511) sums G (CO-3813), U (CO-3821, new CO-4503), X (CO-3820), Y (new CO-4500), Z (new CO-4501), DD (CO-3825) and the 211.D claim expenses (new CO-4502); CO-3926 subtracts it from CO-3913, not below zero. CO-4069 subtracts GG (CO-4507), AA (CO-4508) and 21.C-D (CO-4509); CO-3925 subtracts HH (CO-4505). OQ-390 note appended. V is N/A (an allowance paid to a non-member is not a member's receipt). Probe RV-L1 promoted to case CO-175: `leap_household_income` 4,000 → 1,000, `leap_is_eligible` false → true. Tests CO-3926-T6, T7; CO-4069-T4, T5; CO-4511-T1 to T4. |
+| C-2 | P1 | Fixed (b1e4c41). CO-2815 drops `imminently_losing_residence`, following OQ-561's Assumption (3.751.1 "Emergency Applicant", S3311); test CO-2815-T4; OQ-561 note. Case CO-179 (with C-8): eligible. |
+| C-3 | P1 | Fixed (b1e4c41). `leap_application_program_year_start_month` (CO-4517) and `leap_is_public_assistance_household` (CO-4518); CO-1007 accepts a public assistance household's application filed before November 1 for the season starting that November. OQ-800 (state policy choice: which households; "Supplemental Social Security Disability Benefits" read as SSI and SSDI). Probe RV-L3 promoted to case CO-176: `leap_is_eligible` 2026-11 and 2026-12 false → true. Tests CO-1007-T12, T13. |
+| C-4 | P1 | Fixed (b1e4c41). `leap_application_postmark_date` (CO-4512), `leap_application_filing_date` (CO-4514), the extension table (CO-4513, weekends from the calendar; no C.R.S. 24-11-101 holiday falls on April 30 to May 2), `leap_application_period_closing_date` (CO-4515), `leap_application_is_within_application_period` (CO-4516). CO-875's 2026-27 version now runs to 2027-11-01 so a May determination of a season application reads the season's table. Probe RV-L4 promoted to case CO-177 (postmarked April 29, received May 3): `leap_is_eligible` 2027-04 false → true. Tests CO-1007-T14, T15; CO-4515-T1 to T4. |
+| C-5 | P1 | Fixed (eb03578). CO-1455 reads `leap_person_wages` > 0 and excludes only CO-1002's child under eighteen with a parent or guardian among the members; CO-1458 counts the same. Tests CO-1455-T4 (16-year-old with a grandmother), T5 (job ended); T2 restated with the parent. |
+| C-6 | P1 | Fixed (f8b3e6a). CO-2708 reads receipt in any month from the instructional year's first month through the month evaluated (292.6, 292.14(e)(2), S3317). Probe RV-S1 promoted to case CO-178: `sebt_eligibility_status` 2027-03 ineligible → eligible_categorical. Tests CO-2708-T8, T9; CO-1298-T5. |
+| C-7 | P2 | Fixed with an open question (b1e4c41). CO-1000 and CO-1009 leave out a foster or kinship individual (child_welfare_payment_type); OQ-801 (state policy choice: U against D.2). Test CO-1000-T18. |
+| C-8 | P2 | Fixed (b1e4c41; final pass F-18). New role `civil_union_partner` (volume.yaml, appended), crossed as spouse; 3.751.2.E by `leap_is_listed_separately_from_ex_spouse` (CO-4519) and CO-4520. 3.751.21-22 need nothing further (precision). Tests CO-1000-T15 to T17, CO-1009-T7, CO-4520-T1 to T3; case CO-179. |
+| C-9 | P2 | Fixed (eb03578). `gifts_received` (CO-4524), `has_domestic_violence_court_evidence_or_acp_participation` (CO-4525), `leap_requires_verification_of_unearned_income` (CO-4526) read by CO-2591 and CO-1458. Tests CO-4526-T1 to T4, CO-2591-T3. |
+| C-10 | P2 | Fixed (f8b3e6a). `sebt_received_benefits_from_another_agency_this_summer` (CO-4521) in CO-1299; test CO-1299-T5. |
+| C-11 | P2 | Fixed (f8b3e6a; final pass F-20). `sebt_household_size` (CO-4523) counts the economic unit when the case states one and falls back to the application's size only when it does not; CO-1297 reads it. Income stays the application's reported figure (292.2 "Current income"). No existing case states the unit, so no expectation changed; case CO-178 states no size and derives 2. |
+| C-12 | P2 | Fixed (eb03578). `in_kind_compensation_value` (CO-4506) added in CO-3925 (test CO-3925-T7); 3.752.212 cited in CO-3926's meaning (S3306). |
+| C-14 | P2 | Fixed (f8b3e6a). CO-4071's meaning excludes 245.6(c)(2) carryover (S3316). |
+| C-23 | P2 | Fixed (eb03578). `scsep_wages` (CO-4504) subtracted in CO-3925 at `leap_scsep_exclusion_min_age` (CO-4510, 55); test CO-3925-T6. |
+| C-15 | P3 | Fixed (eb03578). FAMLI (3.752.211.J, S3307) cited in CO-3926's meaning. |
+| C-16 | P3 | Open question note: OQ-681 records that 3.755.21.J ties "full month prior" to the verification statement; the Assumption is unchanged. |
+| C-17 | P3 | Accepted, recorded out of scope in docs/colorado-notes.md (document content checks are county evidence procedure; one document-received fact, CO-1342). |
+| C-18 | P3 | Precision note on CO-1299 (an issuance action, not a change in the summer's amount). |
+| C-19 | P3 | Accepted. Whether August 1 of the summer's own year lies inside the period of eligibility depends on Colorado's summer operational period, which is in the POM (OQ-535); CO-1292's precision already states the single date read. |
+| C-20 | P3 | Fixed (f8b3e6a). `sebt_household_declined_benefits` (CO-4522) in CO-1299; test CO-1299-T6. |
+| C-21 | P3 | Fixed (f8b3e6a). The two 292.14(f)(1) groups are separate items (CO-4527, CO-4528; CO-4072 is their union) and CO-1699 tests each "all" clause; test CO-1699-T7. |
+| C-22 | P3 | Precision note on CO-1462; recorded in docs/colorado-notes.md. |
+| OQ-390 | — | LEAP sentence corrected by an appended coverage-round paragraph (CO-4511, CO-4069, CO-3925). |
+| OQ-561 | — | Item aligned with the Assumption (C-2); note appended. |
+
+Changed household expectations: none of the existing cases changed (every expectation passes unchanged). New cases CO-175 to CO-179 carry hand derivations in their comments; the "before" values are the review's probe results (RV-L1, RV-L3, RV-L4, RV-S1) and, for CO-179, the pre-fix reading of CO-2815 with no civil union role.
+
+Shared files touched: volume.yaml (one role appended), open-questions.md (OQ-390, OQ-561, OQ-681 notes; OQ-800, OQ-801 added), sources.md (S3300-S3318 appended), documents.yaml (D-310 appended), cases.yaml (CO-175 to CO-179 appended), CO-1294 and CO-4071 (precision and meaning wording). The shared thirty-day income items CO-3910 to CO-3913 are not changed; no shared supplied fact changed meaning.

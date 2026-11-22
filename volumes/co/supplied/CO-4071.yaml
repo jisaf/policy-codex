@@ -5,10 +5,10 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "The child was individually certified for free or reduced price school meals during the Summer EBT period of eligibility, on an application or by direct certification, as the school food authority's record shows (7 CFR 292.2, 292.6, 292.12(d))."
+meaning: "The child was individually certified for free or reduced price school meals during the Summer EBT period of eligibility, on an application or by direct certification, as the school food authority's record shows (7 CFR 292.2, 292.6, 292.12(d)); not eligibility carried over from the prior school year under 7 CFR 245.6(c)(2), which 292.7(c) bars from conferring Summer EBT eligibility."
 precision: "A fact of the school meal record, stated once for the child. Summer EBT reads it as a categorical ground (sebt_other_categorical_basis, CO-1296), but not as an exception from verification, which 292.14(f)(1) gives only for SNAP, FDPIR, TANF or another approved program and for foster, homeless, migrant or runaway children. If not stated, SUN Bucks reads it as false."
 supplied_by: "The school food authority's certification record."
-sources: [S790, S792, S1092]
+sources: [S790, S792, S1092, S3316]
 tags: [sebt]
 rationale: "Second-pass review N-9 (was F-21): sebt_other_documented_categorical_basis (CO-2852) carried both another approved means-tested program, which 292.14(f)(1) excepts from verification, and individual certification, which it does not; one fact could not tell them apart, so a child individually certified and selected for verification needed none. Individual certification is its own fact and CO-2852 keeps the approved program."
 nearest: [CO-2852]
