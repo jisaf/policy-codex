@@ -2670,6 +2670,6 @@ Body: 10 CCR 2506-1 4.304.3.B.3 (S3475) says the foster child "may not apply for
 
 Class: needs Legal
 Owner: Legal, SNAP policy owner
-Assumption: Colorado's exception, with age 18 or older standing for "over eighteen and no longer under parental control" (CO-4689).
+Assumption: Colorado's exception, with age 18 or older standing for "over eighteen and no longer under parental control".
 
 Checked 2026-11-22: 10 CCR 2506-1 4.304.3.B.3 (D-82, version effective 2026-10-01, re-downloaded 2026-11-22); 7 CFR 273.1(c)(4) (D-7, eCFR as of 2026-11-18). Neither text reconciles the two; no FNS waiver or Colorado state plan provision for 273.1(c)(4) is on an allowed host.
