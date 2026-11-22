@@ -504,3 +504,20 @@ Earlier P1s from `final-cccap-leap-sebt.md` and `final2-cccap-leap-sebt.md` (spo
 - C2-1 and C2-2 change answers and need rule tests and household cases from Z-1 and Z-2.
 - C2-3 and C2-4 are fact-meaning problems. The first round's new reads depend on these facts, so fix the meanings even if no derivation changes.
 - C2-5 is the last household-outcome item read per person (first pass F-01, F-02 class). CO-1290's homelessness row and CO-1440's exemption read the same per-person item.
+
+## Disposition (coverage pass 2)
+
+Fix round on HEAD e4a277f; all fixes in 71465a0. The probes were re-run with `mk2.py` against the fixed tree.
+
+| id | sev | disposition |
+|---|---|---|
+| C2-1 | P1 | Fixed (71465a0). `cccap_is_in_workforce_training_or_post_secondary_education` (CO-1518) also counts `is_in_sud_treatment_iop_or_higher` for the determination month, from `cccap_sud_treatment_activity_start_date`. This follows 3.103.IIIII (S3258). Under EEEEE, a parent under 21 in treatment is an adult caretaker, and her activity is CO-4074. Rule tests CO-1518-T3 and T4. Z-1: `ineligible_activity` → `eligible_low_income`, fee 0. Stored case CO-199. |
+| C2-2 | P1 | Fixed (71465a0). At `change_during_eligibility_period`, CO-984 counts `medical_leave` without the incapacity conjunct (3.112.C.2, 3.125.Q.2). The conjunct is kept at a redetermination (D.9). OQ-850 records that reading (state policy choice). CO-3903's `medical_leave` now includes leave to care for a family member (3.103.WWW, S3530). Rule tests CO-984-T23 and T24. Z-2: `ineligible_activity` → `eligible_low_income`. Stored case CO-200. |
+| C2-3 | P2 | Fixed (71465a0). CO-013 gains a precision: the fact is true only for a member of the assistance unit whose needs the grant includes, and false for a payee or caretaker relative outside the unit. CO-989 row 7 is unchanged. Z-3b, stated under this meaning, gives `eligible_low_income`, fee 47. Shared fact: this clarifies its meaning and changes no derivation. |
+| C2-4 | P2 | Fixed (71465a0). CO-4463 caps `rental_property_expenses_paid` at `rental_income_received` (CO-4457). When that fact is not stated, the cap is `other_unearned_income_taxable`, where CO-4457 says the rents are included. No new rental facts. Rule test CO-4463-T7. Z-5: income 3,500, `ineligible_income` → 2,500, `eligible_low_income`, fee 122. Z-5b is unchanged. |
+| C2-5 | P2 | Fixed (71465a0). CO-3907 now tests whether an eligible child of the household (CO-982) is in a 3.103.CCC setting, so every member gets the same value. Rule test CO-3907-T4. CO-3907-T1/T3 and CO-989-T10 now state the child's residence. CO-1290-T9 and CO-1440/1442/1443/1444-T4 state CO-3907 directly; their expectations are unchanged. Z-4: p2 `ineligible_activity` → `eligible_homelessness_stabilization`. Stored case CO-201. |
+| C2-6 | P3 | Fixed (71465a0). The volume.yaml label of `contributes_financially_to` now says the role is for an adult in the child's home and not for someone living elsewhere who pays support (3.103.C, 3.111.D.2). |
+| C2-7 | P3 | Fixed (71465a0). CO-987 does not test the asset declaration at a change during the period (3.113.A.1.d, S3532; 3.125.Q). It still tests it at an application, a redetermination or a transition. Rule test CO-987-T8. CO-987-T5/T6 now state `application`. |
+| C2-8 | P3 | Fixed (71465a0). At `transition_from_colorado_works`, CO-2107 requires Colorado residency alone (3.116.L, 3.117.B, S3531; 3.117.A). Rule test CO-2107-T7. |
+
+UI test pins: the open-question count moves from 117 to 118 (all) and from 116 to 117 (unanswered in this browser), from OQ-850 alone. No household expectation in an existing stored case changed.
