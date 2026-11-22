@@ -1,0 +1,19 @@
+id: CO-4202
+name: "Medicaid: Children with Disabilities Buy-In countable household income"
+identifier: ma_cbwd_countable_household_income
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The child's Children with Disabilities Buy-In household income for the month after the income disregards of 10 CCR 2505-10 § 8.100.5.H.4 (§ 8.100.6.Q.1.b.iv): the household's unearned income (ma_cbwd_household_unearned_income) less the ssi_general_income_exclusion general income disregard, plus the household's earned income (ma_cbwd_household_earned_income) less any part of that disregard unearned income did not use and the ssi_earned_income_exclusion earned income disregard, then one half."
+precision: "One general and one earned income disregard are applied to the household's pooled income, as § 8.100.5.H.4.a.iii allows one $20 disregard per couple and H.4.b deducts \"the first $65 of all earned income\"; no Ineligible Child or Ineligible Parent allocation (H.3) is taken, since the household's size already enters the poverty-level comparison (OQ-740). The unused part of the general disregard is carried to earned income (H.4.a.ii), as ma_ssi_countable_earned_income (CO-605) and ma_wawd_countable_income (CO-1715) do."
+derived: ["+", [max, 0, ["-", ma_cbwd_household_unearned_income, ssi_general_income_exclusion]], ["*", [max, 0, ["-", ma_cbwd_household_earned_income, ["+", ssi_earned_income_exclusion, [max, 0, ["-", ssi_general_income_exclusion, ma_cbwd_household_unearned_income]]]]], ssi_earned_income_disregard_rate]]
+sources: [S3000, S3002, S1506]
+implemented: engine
+tags: [ma, non_magi, buy_in, income]
+open: [OQ-740]
+rationale: "Final verification pass 3, F3-1: § 8.100.6.Q.1.b.iv and § 8.100.5.H.1 name the Children with Disabilities Buy-In among the programs the § 8.100.5.H disregards apply to; ma_cbwd_eligible (CO-620) applied none. No existing item applies them to a household's pooled income."
+tests:
+  - {id: CO-4202-T1, as_of: "2026-10-12", month: "2026-10", title: "CO-140: wages 5,050 and no unearned income: (5,050 - 20 - 65) / 2", given: {ma_cbwd_household_unearned_income: 0, ma_cbwd_household_earned_income: 5050}, expect: 2482.5}
+  - {id: CO-4202-T2, as_of: "2026-10-12", month: "2026-10", title: "Wages 2,000 and 400 of unearned income: 380 + (2,000 - 65) / 2", given: {ma_cbwd_household_unearned_income: 400, ma_cbwd_household_earned_income: 2000}, expect: 1347.5}
+  - {id: CO-4202-T3, as_of: "2026-10-12", month: "2026-10", title: "Unearned income of 10 only: 10 of the disregard unused, no earnings", given: {ma_cbwd_household_unearned_income: 10, ma_cbwd_household_earned_income: 0}, expect: 0}
