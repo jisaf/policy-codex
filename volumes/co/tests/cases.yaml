@@ -12411,3 +12411,222 @@
       ma_meets_adult_group_community_engagement_condition: {"2027-09": true, "2027-11": false}
       ma_magi_category: {"2027-09": adult, "2027-11": none}
       ma_magi_eligibility_status: {"2027-09": eligible, "2027-11": ineligible_community_engagement}
+
+- id: CO-99
+  title: "Lottery winnings received in two months, a spouse granted the hardship exemption, and a child in a recorded continuous eligibility period"
+  # Audit fix round 4 (OQ-216; heavier-definitions audit H-5). Married citizens p1 and p3 file jointly
+  # and claim their son p2 (11); they apply for Medical Assistance on 2026-10-05. p1 earns $1,000 a
+  # month and p3 $1,500. p1 wins $100,000 in October 2026 and $90,000 in December 2026. CBMS records
+  # p2's continuous eligibility period from April 2026. p3 was denied in October because of p1's
+  # winnings and the county granted p3 the hardship exemption (8.100.4.C.1.b.xiv.5). Community
+  # engagement does not apply before January 2027. Every MAGI household is [p1, p2, p3], size 3:
+  # guideline 27,320 / 12 = 2,276.67 a month.
+  # Spreads: $100,000 -> 1 + ceil((100,000 - 79,999) / 10,000) = 1 + 3 = 4 months, $25,000 a month
+  # October through January; $90,000 -> 1 + ceil(10,001 / 10,000) = 3 months, $30,000 a month
+  # December through February.
+  # p1 (the winner): own installments October 25,000, November 25,000, December 25,000 + 30,000 =
+  #   55,000. Household income = the members' MAGI income (p1's wages plus the month's receipt,
+  #   p3's wages) with p1's receipt replaced by p1's installments:
+  #   October 1,000 + 100,000 + 1,500 - 100,000 + 25,000 = 27,500; November 1,000 + 1,500 + 25,000 =
+  #   27,500; December 1,000 + 90,000 + 1,500 - 90,000 + 55,000 = 57,500. 27,500 / 2,276.67 = 12.08 and
+  #   57,500 / 2,276.67 = 25.26: over every standard -> category none, status ineligible_income.
+  # p3 (not the winner, exemption granted): no member's winnings count in p3's household (xiv.4-5,
+  #   1396a(e)(14)(K)(iii)): 1,000 + 1,500 = 2,500 every month, 2,500 / 2,276.67 = 1.098. A parent of a
+  #   dependent child, but over 68% (the 5% disregard applies only at p3's highest standard, 133%); the
+  #   Adults group (19 to 64, not pregnant, no Medicare, child has coverage): 1.098 <= 1.33 -> adult,
+  #   eligible. Without the exemption p3's household would count p1's receipt in its month (October
+  #   102,500, December 92,500) and only the receipt months would fail.
+  # p2 (11): his household counts p1's receipts in the months received (October 102,500, December
+  #   92,500; November 2,500 -> 1.098 <= 1.42, the Children category on its own). CBMS records his
+  #   period from April 2026 (continuous_eligibility_period_start_month), which stands as recorded
+  #   (H-5): within April 2026 to March 2027, still under 19 and resident -> in the period every month
+  #   -> category child, eligible, whatever the receipts.
+  as_of: "2026-12-15"
+  relationships:
+    - [spouse, p1, p3]
+    - [files_jointly_with, p1, p3]
+    - [parent, p1, p2]
+    - [parent, p3, p2]
+    - [tax_filer, p1, p2]
+  persons:
+    p1:
+      facts:
+        date_of_birth: "1984-03-03"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-10-05"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: application
+        ma_lottery_winnings_hardship_exemption_granted: false
+        ma_is_indian: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1000
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+      months:
+        "2026-10": {lottery_gambling_winnings_received: 100000}
+        "2026-12": {lottery_gambling_winnings_received: 90000}
+    p2:
+      facts:
+        is_deceased: false  # needs-fact round (OQ-53): no continuous eligibility exception
+        is_inmate_of_public_institution: false
+        ma_has_left_required_household: false
+        ma_is_unable_to_be_located: false
+        ma_has_requested_withdrawal_from_continuous_eligibility: false
+        ma_eligibility_was_erroneously_granted: false
+        date_of_birth: "2015-05-09"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        dependent_child_has_minimum_essential_coverage: true
+        is_full_time_secondary_student_finishing_before_nineteen: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-04-08"
+        continuous_eligibility_period_start_month: "2026-04"
+        ma_lottery_winnings_hardship_exemption_granted: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        ma_relies_on_another_for_care: true
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+    p3:
+      facts:
+        date_of_birth: "1982-11-21"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        is_pregnant: false
+        expected_number_of_children: 0
+        is_medicare_entitled_or_enrolled: false
+        has_military_connection: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        age_at_foster_care_exit: 0
+        mother_was_enrolled_in_medicaid_at_birth: false
+        chp_has_other_health_coverage: false
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: "2026-10-05"
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        retains_ssi_status_without_payment: false
+        is_in_title_iv_foster_care_or_adoption_assistance: false
+        receives_tanf_cash: false
+        ma_community_engagement_review_type: application
+        ma_lottery_winnings_hardship_exemption_granted: true
+        ma_is_indian: false
+        ma_persons_cared_for: []
+        is_veteran_rated_totally_disabled: false
+        ma_condition_significantly_impairs_community_engagement: false
+        participates_in_drug_alcohol_treatment: false
+        ma_is_seasonal_worker: false
+        has_disability_under_ada: false
+        ma_relies_on_another_for_care: false
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        wages_gross: 1500
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        is_patient_in_institution_for_mental_diseases: false
+        complies_with_tanf_work_requirements: false
+        receives_snap: false
+        is_inmate_of_public_institution: false
+  expect:
+    p1:
+      ma_lottery_winnings_countable_for_recipient: {"2026-10": 25000, "2026-11": 25000, "2026-12": 55000}
+      ma_magi_household_income: {"2026-10": 27500, "2026-11": 27500, "2026-12": 57500}
+      ma_magi_category: {"2026-10": none, "2026-11": none, "2026-12": none}
+      ma_magi_eligibility_status: {"2026-10": ineligible_income, "2026-11": ineligible_income, "2026-12": ineligible_income}
+    p2:
+      ma_magi_household_income: {"2026-10": 102500, "2026-11": 2500, "2026-12": 92500}
+      ma_child_is_in_continuous_eligibility_period: {"2026-10": true, "2026-11": true, "2026-12": true}
+      ma_magi_category: {"2026-10": child, "2026-11": child, "2026-12": child}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible, "2026-12": eligible}
+    p3:
+      ma_magi_household_income: {"2026-10": 2500, "2026-11": 2500, "2026-12": 2500}
+      ma_magi_category: {"2026-10": adult, "2026-11": adult, "2026-12": adult}
+      ma_magi_eligibility_status: {"2026-10": eligible, "2026-11": eligible, "2026-12": eligible}
