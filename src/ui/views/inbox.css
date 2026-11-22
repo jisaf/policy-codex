@@ -1,16 +1,5 @@
-/* The approvals inbox (src/ui/views/InboxView.tsx). */
-.inbox .inbox-counts { margin: 8px 0; }
-.inbox ul.rolecounts { list-style: none; padding: 0; margin: 6px 0; display: flex; flex-wrap: wrap; gap: 4px 6px; }
-.inbox ul.rolecounts li.on { flex: 1 1 100%; font-size: 17px; border-left: 3px solid var(--accent); padding-left: 8px; }
-.inbox ul.rolecounts li.other { font-size: 12px; }
-.inbox ul.rolecounts li.other a { display: inline-block; padding: 1px 8px; border: 1px solid var(--line);
-  border-radius: 10px; background: var(--all); text-decoration: none; }
-.inbox ul.rolecounts li.other a:hover { background: var(--med); }
-.inbox .inbox-pick ul.rolecounts { flex-direction: column; }
-.inbox details.allroles summary { cursor: pointer; color: var(--accent); }
-.inbox .tablewrap { overflow-x: auto; max-width: 100%; }
-.inbox table.rolecount-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
-.inbox table.rolecount-table td:last-child { min-width: 280px; font-size: 13px; }
+/* The approval card and the signer's bar (src/ui/views/ApprovalCard.tsx,
+ * src/ui/places/SignPage.tsx). */
 
 .inbox .signer { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 10px 0;
   padding: 8px 10px; background: var(--all); border-radius: 4px; }
@@ -18,38 +7,17 @@
 .inbox .signer input, .inbox .signer select { font: inherit; padding: 3px 6px; max-width: 100%; }
 .inbox .signer input[aria-invalid="true"] { outline: 2px solid var(--bad); }
 
-.inbox .inbox-definition { margin: 8px 0; padding: 8px 10px; border-left: 3px solid var(--accent);
-  background: var(--med); border-radius: 0 4px 4px 0; max-width: 100ch; }
-.inbox .inbox-definition p { margin: 2px 0; }
 .inbox .small { font-size: 12px; }
 
 .inbox .inbox-notice { margin: 10px 0; padding: 8px 12px; background: #e3f1e7; border: 1px solid #9cc9a8;
   border-radius: 4px; max-width: 100ch; }
 .inbox .inbox-notice.notoken { background: #fff4d6; border-color: #e3c470; }
 .inbox .inbox-notice p { margin: 4px 0; }
-.inbox .noticeactions { display: flex; flex-wrap: wrap; gap: 6px; }
-
-.inbox .inbox-filters { position: sticky; top: 0; z-index: 5; background: var(--panel);
-  padding: 6px 0; border-bottom: 1px solid var(--line); }
-.inbox .inbox-filters select { max-width: 100%; }
-.inbox .inbox-filters label.check { color: var(--ink); }
-.inbox .shown-count { margin-left: auto; }
-
-.inbox details.inbox-group { border: 1px solid var(--line); border-radius: 6px; margin: 8px 0; background: var(--panel); }
-.inbox details.inbox-group > summary { cursor: pointer; padding: 8px 10px; background: var(--all);
-  border-radius: 6px; font-weight: 600; }
-.inbox details.inbox-group[open] > summary { border-radius: 6px 6px 0 0; border-bottom: 1px solid var(--line); }
-.inbox .gcount { font-weight: 400; font-size: 13px; }
-.inbox .group-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 10px;
-  border-bottom: 1px solid var(--line); }
-.inbox .kindblock { padding: 0 10px 6px; }
-.inbox .kindhead { margin: 10px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
-.inbox button.more { margin: 6px 10px 10px; }
 
 .inbox article.inbox-row { border-top: 1px solid var(--line); padding: 8px 0 10px; }
 .inbox article.inbox-row.staged { background: #f3faf5; }
 .inbox .rowhead { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.inbox .rowhead h4 { margin: 0; font-size: 15px; flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; }
+.inbox .rowhead h2, .inbox .rowhead h4 { margin: 0; font-size: 15px; flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; }
 .inbox .rowhead input.pick { width: 18px; height: 18px; }
 .inbox .rowbody { padding-left: 26px; }
 .inbox .meaning { margin: 4px 0 6px; max-width: 90ch; }
@@ -74,21 +42,12 @@
 .inbox .linkish { background: none; border: none; padding: 0; color: var(--accent); cursor: pointer;
   font: inherit; text-decoration: underline; }
 
-.inbox .bulkbar { position: sticky; bottom: 0; z-index: 6; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
-  padding: 8px 12px; margin-top: 8px; background: var(--panel); border: 1px solid var(--accent);
-  border-radius: 6px; box-shadow: 0 -4px 14px rgba(0,0,0,.1); }
-
 .inbox :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 @media (max-width: 600px) {
   .inbox .rowbody { padding-left: 0; }
   .inbox dl.facts { grid-template-columns: 1fr; gap: 0; }
   .inbox dl.facts dt { margin-top: 6px; }
-  .inbox .inbox-filters { position: static; }
-  .inbox .inbox-filters label { flex: 1 1 100%; }
-  .inbox .inbox-filters label.check { justify-content: flex-start; }
-  .inbox .inbox-filters select { flex: 1; min-width: 0; }
-  .inbox .shown-count { margin-left: 0; }
   .inbox .signer label { flex: 1 1 100%; }
   .inbox .signer input, .inbox .signer select { flex: 1; min-width: 0; }
 }

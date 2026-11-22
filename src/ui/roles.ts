@@ -43,10 +43,8 @@ export function rolePrograms(engine: Engine, persona: Persona): string[] {
 
 /** Whether an outcome is about documents and verification rather than the
  *  decision itself: the cards put those in a fold of their own. */
-export function isVerificationOutcome(it: Item): boolean {
-  return (it.tags ?? []).includes("verification")
-    || /verification|pending|due_date|postponement/.test(it.identifier);
-}
+export { isVerificationOutcome } from "./counts";
+import { isVerificationOutcome } from "./counts";
 
 export interface ProgramOutcomeSet { program: string; decisions: Item[]; verification: Item[] }
 

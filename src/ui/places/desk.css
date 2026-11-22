@@ -1,0 +1,156 @@
+/* Desk, the sign-off list, Programs and Figures (src/ui/places/DeskPage.tsx,
+ * SignPage.tsx, ProgramsPage.tsx, FiguresPage.tsx). The shared tokens
+ * (styles.css :root) and the shell's place header; nothing here redefines
+ * them. */
+
+.place :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.place .linkish { background: none; border: none; padding: 0; color: var(--accent); cursor: pointer;
+  font: inherit; text-decoration: underline; }
+.place .small { font-size: 12px; }
+
+/* "How this is counted": definitions out of the card bodies. */
+details.howcounted { margin: 16px 0 4px; font-size: 13px; color: var(--muted); max-width: 90ch; }
+details.howcounted summary { cursor: pointer; color: var(--accent); width: max-content; }
+details.howcounted dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 8px 0 0; }
+details.howcounted dt { font-weight: 600; color: var(--ink); }
+details.howcounted dd { margin: 0; }
+details.howcounted p { margin: 6px 0; }
+
+/* ---- Desk tiles (Blind A) */
+.deskhome .whoami { margin: 4px 0 10px; }
+.desktiles { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.desktiles .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+  display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.desktiles .tile:hover { border-color: var(--accent); }
+.desktiles .tile > a { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
+.desktiles .tile > a:hover .label { text-decoration: underline; }
+.desktiles .tile .num { font-size: 28px; font-weight: 700; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.desktiles .tile.zero .num { color: var(--muted); }
+.desktiles .tile .label { font-weight: 600; }
+.desktiles .tilelines { list-style: none; padding: 0; margin: 2px 0 0; font-size: 12px; }
+.desktiles .tilelines li { overflow-wrap: anywhere; }
+.desktiles .tilesub { margin: 0; font-size: 12px; }
+
+/* ---- the sign-off list (Blind B's queue, the App's card) */
+.signpage .placehead h1 { overflow-wrap: anywhere; }
+.signpage .rolechips { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 8px; }
+.signpage .rolechips a { font-size: 13px; }
+ul.signgroups { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+ul.signgroups .sgrow { display: grid; grid-template-columns: 1fr auto; gap: 0 12px; padding: 8px 12px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: var(--ink); }
+ul.signgroups .sgrow:hover { border-color: var(--accent); }
+ul.signgroups .sg-name { font-weight: 600; color: var(--accent); overflow-wrap: anywhere; }
+ul.signgroups .sg-num { font-weight: 700; font-variant-numeric: tabular-nums; grid-row: span 2; align-self: center; font-size: 18px; }
+ul.signgroups .sg-sub { font-size: 12px; }
+.signpage .backline, .signpage .nextline { margin: 6px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.chips .chip { display: inline-block; padding: 3px 10px; border: 1px solid var(--line); border-radius: 99px;
+  background: var(--panel); text-decoration: none; color: var(--ink); font-size: 13px; }
+.chips .chip:hover { border-color: var(--accent); }
+.chips .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.signpage .signsearch input { font: inherit; padding: 4px 8px; min-width: 14rem; }
+.signpage .signbar { position: sticky; top: 52px; z-index: 5; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  padding: 8px 10px; margin: 8px 0; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.signpage .signbar > span { margin-right: auto; }
+ul.signlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+li.signitem { display: flex; gap: 10px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+li.signitem.on { border-color: var(--ok); background: #f3faf5; }
+li.signitem.staged { background: #f3faf5; }
+li.signitem input.pick { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+li.signitem .si-body { min-width: 0; flex: 1; }
+li.signitem p { margin: 2px 0; }
+li.signitem .si-h a { font-weight: 600; font-size: 15px; }
+li.signitem .si-m { max-width: 90ch; }
+.tag.qflag { background: #fff4d6; border-color: #e3c470; }
+.signpage .signcard { margin-top: 4px; }
+.signpage .signcard article.inbox-row { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; background: var(--panel); }
+.signpage .signcard .rowhead h2 { margin: 0; font-size: 18px; flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; }
+.signpage .signcard .rowbody { padding-left: 0; }
+
+/* ---- Programs (Blind B) */
+ul.pgrid { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.pcard > a { display: block; height: 100%; padding: 10px 14px; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 8px; text-decoration: none; color: var(--ink); }
+.pcard > a:hover { border-color: var(--accent); }
+.pcard h2 { margin: 0 0 4px; font-size: 17px; color: var(--accent); }
+.pcard p { margin: 4px 0; font-size: 13px; }
+.programs .programtabs { display: flex; flex-wrap: wrap; gap: 0; margin: 4px 0 12px; }
+ul.outcomerows { list-style: none; padding: 0; margin: 0; }
+li.outcomerow { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); }
+li.outcomerow .or-main { flex: 1; min-width: 0; }
+li.outcomerow .or-name { font-weight: 600; font-size: 15px; }
+li.outcomerow p { margin: 2px 0; max-width: 90ch; }
+li.outcomerow .or-kind { font-size: 12px; }
+li.outcomerow .btn.explain { flex: none; text-decoration: none; color: var(--accent); white-space: nowrap; }
+.programs details.verification { margin: 10px 0; }
+.programs details.verification summary { cursor: pointer; color: var(--accent); }
+.explain .eyebrow { margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.explain .explainbar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 8px 0;
+  padding: 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.explain .explainbar .chips { margin: 0; }
+.explain .hhpick { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; color: var(--muted); min-width: 0; }
+.explain .hhpick select { font: inherit; max-width: 100%; min-width: 0; }
+.explain .btn.print { margin-left: auto; }
+ol.steplist { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 8px; }
+li.step { display: grid; grid-template-columns: 72px 1fr; gap: 10px; padding: 10px 12px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; break-inside: avoid; }
+li.step.result { border-color: var(--accent); border-width: 2px; }
+li.step .step-n { font-weight: 700; color: var(--muted); font-size: 13px; }
+li.step.result .step-n { color: var(--accent); }
+li.step .step-b { min-width: 0; }
+li.step h3 { margin: 0; font-size: 15px; }
+li.step p { margin: 3px 0; max-width: 95ch; overflow-wrap: anywhere; }
+li.step .step-v { background: var(--med); display: inline-block; padding: 1px 8px; border-radius: 4px; }
+li.step ul.plain-derivation { margin: 4px 0; }
+.explain .print-only { display: none; }
+.rulebox.clamped ul.plain-derivation { max-height: 10.5em; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent); mask-image: linear-gradient(to bottom, #000 70%, transparent); }
+
+/* ---- Figures (Blind B) */
+.figures .figfilters input[type="search"] { min-width: 12rem; font: inherit; padding: 3px 6px; }
+.figures .figfilters .flags { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.figures .figuregroup h2 { font-size: 17px; margin: 16px 0 4px; }
+table.figtable { width: 100%; border-collapse: collapse; background: var(--panel); font-size: 13px; }
+table.figtable th, table.figtable td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.figtable th { font-size: 12px; color: var(--muted); font-weight: 600; }
+table.figtable td:first-child { width: 48%; }
+table.figtable .figname { font-weight: 600; }
+table.figtable td { overflow-wrap: anywhere; }
+.tag.soon { background: #e3eef6; border-color: var(--accent); }
+.figures button.more { margin: 6px 0; }
+
+@media (max-width: 700px) {
+  details.howcounted dl { grid-template-columns: 1fr; }
+  details.howcounted dt { margin-top: 6px; }
+  .desktiles { grid-template-columns: 1fr 1fr; }
+  .signpage .signbar { top: 0; position: static; }
+  .signpage .signchips, .signpage .rolechips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+  .signpage .signchips .chip, .signpage .rolechips a { flex: none; white-space: nowrap; }
+  .signpage .signsearch label, .signpage .signsearch input { flex: 1; min-width: 0; }
+  li.outcomerow { flex-direction: column; gap: 4px; }
+  li.step { grid-template-columns: 1fr; gap: 2px; }
+  .explain .btn.print { margin-left: 0; }
+  .figures .figfilters label:not(.check) { flex: 1 1 100%; }
+  .figures .figfilters .flags { flex: 1 1 100%; }
+  .figures .figfilters input, .figures .figfilters select { flex: 1; min-width: 0; }
+  table.figtable thead { display: none; }
+  table.figtable, table.figtable tbody, table.figtable tr, table.figtable td { display: block; width: 100%; }
+  table.figtable tr { border-bottom: 1px solid var(--line); padding: 6px 0; }
+  table.figtable td { border: 0; padding: 1px 8px; }
+  table.figtable td:first-child { width: 100%; }
+  table.figtable td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: var(--muted); }
+}
+@media (max-width: 340px) {
+  .desktiles { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .no-print, .howcounted, .draftbanner, .tour, .help, .tokpop { display: none !important; }
+  .explain .print-only { display: block; font-weight: 600; }
+  .explain .steps-note { display: none; }
+  li.step { border: 1px solid #999; }
+  .rulebox.clamped ul.plain-derivation { max-height: none; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .mainwrap > main { max-width: none; padding: 0; }
+}

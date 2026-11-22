@@ -74,7 +74,7 @@ function setParam(r: Route, key: string, value: string | null): void {
 
 // ------------------------------------------------------------------ codes
 
-function CodesTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
+export function CodesTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
   const { engine, vol, route: r, today } = ctx;
   const programs = codePrograms(engine, map);
   const program = programOfArg(engine, map, r.arg);

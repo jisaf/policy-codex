@@ -10,7 +10,6 @@ import { HelpPanel } from "./Help";
 import { ItemEditor } from "./ItemEditor";
 import { ItemView } from "./ItemView";
 import { PrReview } from "./PrReview";
-import { ProgramView } from "./ProgramView";
 import { TokenPopover } from "./Rich";
 import { argParts, canonicalRoute, isPrRef } from "./router";
 import { SearchView } from "./SearchView";
@@ -28,8 +27,8 @@ import { DeskPage } from "./places/DeskPage";
 import { FiguresPage } from "./places/FiguresPage";
 import { HouseholdPage, HouseholdsList } from "./places/HouseholdPage";
 import { LawPage } from "./places/LawPage";
-import { InboxView } from "./views/InboxView";
-import { OutcomesView } from "./views/OutcomesView";
+import { ProgramsPage } from "./places/ProgramsPage";
+import { SignPage } from "./places/SignPage";
 import { QuestionsView } from "./views/QuestionsView";
 import { WalkthroughView } from "./views/WalkthroughView";
 import { MapPage } from "./map/MapView";
@@ -44,8 +43,8 @@ export function ViewSlot() {
   const c = canonicalRoute(route.value);
   const parts = argParts(c);
   switch (c.view) {
-    case "desk": return parts[0] === "sign" ? <InboxView /> : <DeskPage />;
-    case "programs": return c.params.tab === "aid-codes" ? <OutcomesView /> : <ProgramView />;
+    case "desk": return parts[0] === "sign" ? <SignPage /> : <DeskPage />;
+    case "programs": return <ProgramsPage />;
     case "figures": return <FiguresPage />;
     case "households":
       if (!parts.length) return <HouseholdsList />;

@@ -187,10 +187,6 @@ export function internalRoute(c: Route): Route {
   const base = { volume: c.volume, ref: c.ref };
   const parts = argParts(c);
   switch (c.view) {
-    case "desk":
-      // The sign-off list is the approvals inbox, filtered by `?role=`.
-      if (parts[0] === "sign") return { ...base, view: "inbox", arg: join(...parts.slice(1)), params: c.params };
-      return c;
     case "households": {
       if (!parts.length) return { ...base, view: "walkthrough", arg: null, params: c.params };
       if (parts[0] === "new") return { ...base, view: "cases", arg: "new", params: c.params };
@@ -209,8 +205,10 @@ export function internalRoute(c: Route): Route {
       return c;
     }
     case "programs":
+      // The aid-code tab is the aid-code cards' own route (OutcomesView
+      // `CodesTab`); the Programs page reads the canonical route.
       if (c.params.tab === "aid-codes") return { ...base, view: "outcomes", arg: c.arg, params: omit(c.params, ["tab"]) };
-      return { ...base, view: "program", arg: c.arg, params: c.params };
+      return c;
     case "law":
       if (parts[0] === "sources") return { ...base, view: "source", arg: join(...parts.slice(1)), params: c.params };
       if (parts[0] === "doc") {

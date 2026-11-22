@@ -1,39 +1,24 @@
-/* The by-role home (phase 13) against the Colorado volume: each persona's
- * programs and outcomes, the counts that link into the inbox and the
- * question queue, the departures, what changed and what comes next, the
- * figures in force on a date, and what a staged change does to the stored
- * households. */
-import { describe, it, expect, beforeEach } from "vitest";
+/* The role helpers (roles.ts) against the Colorado volume: each persona's
+ * programs and outcomes, its counts, the departures, what changed and what
+ * comes next, the figures in force on a date, and what a staged change does
+ * to the stored households. The Desk's page tests are in desk.test.tsx. */
+import { describe, it, expect } from "vitest";
 import path from "node:path";
-import { render } from "preact";
 import { loadVolume } from "../../src/tools/volumes";
-import { emptyChangeSet, type ChangeSet } from "../../src/changes/types";
 import { awaitingRole } from "../../src/ui/approvals";
-import { personaById, personaRoles, PERSONAS } from "../../src/ui/personas";
+import { personaById, personaRoles } from "../../src/ui/personas";
 import { isOpen, questionInfos } from "../../src/ui/questions";
 import {
   casesReading, changesBetween, defaultSince, departures, figuresInForce, firstSentence,
   ownedQuestions, roleOutcomes, rolePrograms, signOffCounts, stagedCaseChanges,
 } from "../../src/ui/roles";
-import { changeSetSig, draftsShownSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
-import { defaultRoute } from "../../src/ui/router";
-import { RolesView } from "../../src/ui/views/RolesView";
 import { noVersionReason } from "../../src/ui/Present";
-import { changedBy, departureItems, ownerGroups, personaQuestions } from "../../src/ui/counts";
+import { changedBy, departureItems } from "../../src/ui/counts";
 import { documentsTakingEffect, undoEntry } from "../../src/ui/views/RolesView";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
 const persona = (id: string) => personaById(id)!;
-
-function setUp(arg: string, params: Record<string, string> = {}, cs?: ChangeSet) {
-  route.value = { ...defaultRoute(), volume: "co", view: "roles", arg, params };
-  volumeSig.value = vol;
-  engineSig.value = engine;
-  changeSetSig.value = cs ?? emptyChangeSet("co", "local");
-  modeSig.value = "read";
-  draftsShownSig.value = null;
-}
 
 describe("programs and outcomes", () => {
   it("gives each persona its declared programs, and every program to Legal and the county", () => {
@@ -144,85 +129,7 @@ describe("a staged change", () => {
   });
 });
 
-describe("RolesView", () => {
-  beforeEach(() => setUp("cdhs"));
-
-  it("renders every persona without failing", () => {
-    for (const p of PERSONAS) {
-      setUp(p.id);
-      const host = document.createElement("div");
-      render(<RolesView />, host);
-      expect(host.querySelector(`[data-persona="${p.id}"]`)).toBeTruthy();
-    }
-  });
-
-  it("deep-links its counts into the inbox, the question queue and the departures", () => {
-    const host = document.createElement("div");
-    render(<RolesView />, host);
-    const hrefs = [...host.querySelectorAll(".countcard a")].map((a) => decodeURIComponent(a.getAttribute("href")!));
-    expect(hrefs.some((h) => h.includes("/desk/sign?role=SNAP policy owner") || h.includes("/desk/sign?role=SNAP+policy+owner"))).toBe(true);
-    expect(hrefs.some((h) => h.includes("/questions?persona=cdhs"))).toBe(true);
-    expect(hrefs.some((h) => h.includes("show=departures"))).toBe(true);
-    expect(host.querySelector("#role-changes")).toBeTruthy();
-    expect(host.querySelector("#role-figures")).toBeTruthy();
-    expect(host.querySelector(".outcomecard")).toBeTruthy();
-  });
-
-  it("shows a staged figure's draft, its approvers and the households it moves", () => {
-    const it = engine.item("cw_earned_income_disregard_dollar")!;
-    const cs = emptyChangeSet("co", "local");
-    cs.entries.push({ id: it.id, chapter: vol.chapterOf[it.id], before: it, after: { ...it, value: 120 } });
-    setUp("cdhs", { show: "figures" }, cs);
-    const host = document.createElement("div");
-    render(<RolesView />, host);
-    const row = host.querySelector(`[data-figure="cw_earned_income_disregard_dollar"]`)!;
-    expect(row.querySelector(".staged")!.textContent).toMatch(/Staged, not in force/);
-    expect(row.querySelector(".staged")!.textContent).toMatch(/Cash programs policy owner/);
-    expect(row.querySelector(".staged a[href*='/households/']")).toBeTruthy();
-    // The rule in force still reads 90.
-    expect(row.querySelector(".figvalue")!.textContent).toContain("$90.00");
-  });
-
-  it("the question card counts what the queue counts, and its lines add up (four retests: 40 vs 51, 27 vs 28)", () => {
-    for (const pid of ["hcpf", "cdhs", "legal"]) {
-      setUp(pid);
-      const host = document.createElement("div");
-      render(<RolesView />, host);
-      const card = [...host.querySelectorAll(".countcard")].find((c) => /open questions/.test(c.textContent!))!;
-      const n = Number(card.querySelector(".num")!.textContent!.replace(/,/g, ""));
-      const mine = personaQuestions(engine, vol.sources, vol.openQuestions, persona(pid));
-      const owned = ownedQuestions(engine, vol.sources, vol.openQuestions, persona(pid));
-      // The number is the open questions owned; the partly settled ones are
-      // counted apart and labeled.
-      expect(n, pid).toBe(owned.open.length);
-      expect(owned.open.length + owned.partly.length, pid).toBe(mine.length);
-      if (owned.partly.length) expect(card.querySelector(".partly")!.textContent).toContain(`${owned.partly.length} partly settled`);
-      const lines = [...card.querySelectorAll("li")].map((li) => Number(/: (\d+)$/.exec(li.textContent!)![1]));
-      if (lines.length) expect(lines.reduce((a, b) => a + b, 0), pid).toBe(mine.length);
-      expect(ownerGroups(engine, mine, personaRoles(persona(pid), engine.meta)).length).toBe(Math.max(lines.length, 1));
-    }
-  });
-
-  it("the sign-off card says how its role lines relate to its headline", () => {
-    setUp("cdhs");
-    const host = document.createElement("div");
-    render(<RolesView />, host);
-    const card = host.querySelector(".countcard")!;
-    const lines = [...card.querySelectorAll("li")].map((li) => Number(/: ([\d,]+)$/.exec(li.textContent!)![1].replace(/,/g, "")));
-    const sum = lines.reduce((a, b) => a + b, 0);
-    expect(card.textContent).toContain(`${sum.toLocaleString("en-US")} sign-offs in all`);
-  });
-
-  it("departures follow the As of date", () => {
-    const all = departureItems(engine);
-    const early = departureItems(engine, { asOf: "2025-06-01" });
-    expect(early.length).toBeLessThanOrEqual(all.length);
-    setUp("legal", { asof: "2025-06-01" });
-    const host = document.createElement("div");
-    render(<RolesView />, host);
-    expect(host.querySelectorAll("#role-departures li.departure").length).toBe(early.length);
-  });
-
+describe("what changed: the helpers Changes reads", () => {
   it("what changed lists rule text taking effect, and works out who a new figure changes", () => {
     const docs = documentsTakingEffect(engine, vol.documents, vol.sources, ["LEAP"], "2026-11-01", "2026-11-22");
     expect(docs.map((d) => d.doc.id)).toContain("D-173");

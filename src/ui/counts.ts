@@ -50,7 +50,7 @@ import { valuesEqual } from "../engine/values";
 import { versionInForce } from "../engine/versions";
 import { personaRoles, type Persona } from "./personas";
 import {
-  groupByOwner, isOpen, queueEntry, questionInfos, type QueueEntry,
+  groupByOwner, isOpen, queueEntry, questionInfos, questionStatus, type QueueEntry,
 } from "./questions";
 import { expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
 import { caseToSpec } from "../engine/cases";
@@ -979,4 +979,239 @@ export function changesReadBy(
   const events = changes.events.filter((e) => householdsThatRead(engine, cases, e.item.identifier).includes(caseId));
   const documents = changes.documents.filter((d) => documentReaders(engine, cases, sources, d.doc.id, programs).households.includes(caseId));
   return { events, documents, total: events.length + documents.length };
+}
+
+// ---- the Desk, Programs and Figures
+
+/** What each Desk tile, a program's summary and the Figures list count, in
+ *  a sentence each (shown behind "How this is counted"). */
+export const DESK_DEFINITIONS = {
+  signOff: "An item waits for your signature when the volume's approval policy needs one of your roles to sign it and that role has not. An item two of your roles must sign counts once.",
+  soon: `Takes effect soon: a figure version, a rule or a rule document whose own date falls in the next ${NEW_VERSION_SOON_DAYS} days, in your programs or shared by every program.`,
+  departures: "Statute over rule: an item that follows a statute over the Colorado rule text, in force today.",
+  unverified: "Unverified: an item that cites an excerpt not verified against its document, or a figure with no value today (a household then gets \"cannot determine\").",
+  proposal: "Your proposal: every edit, signature, answer and note staged in this browser and not yet sent.",
+  steps: "A step is one rule the result is worked out from. \"The main steps\" are the rules the result reads directly; each level down adds the rules those read. Facts and figures are named inside the steps.",
+  figures: "A figure is a number or table the rules read (a limit, a standard, a rate). Its value on a date is the version in force that day.",
+} as const;
+
+/** The window "soon" looks at: the day after `today` to
+ *  NEW_VERSION_SOON_DAYS after it. */
+export function soonRange(today: string): { from: string; to: string } {
+  const at = (days: number) => {
+    const t = new Date(`${today}T00:00:00Z`);
+    t.setUTCDate(t.getUTCDate() + days);
+    return t.toISOString().slice(0, 10);
+  };
+  return { from: at(1), to: at(NEW_VERSION_SOON_DAYS) };
+}
+
+/** What takes effect soon in `programs` (every program when null): the
+ *  Desk's tile. Soonest first. */
+export function takingEffectSoon(
+  engine: Engine, vol: { documents: readonly DocumentMeta[]; sources: ReadonlyArray<{ id: string; document?: string }> },
+  today: string, programs: readonly string[] | null,
+): ChangesTakingEffect {
+  const { from, to } = soonRange(today);
+  const c = changesTakingEffect(engine, vol, from, to, programs);
+  return {
+    events: [...c.events].sort((a, b) => a.date.localeCompare(b.date) || a.item.name.localeCompare(b.item.name)),
+    documents: [...c.documents].sort((a, b) => a.date.localeCompare(b.date)),
+    total: c.total,
+  };
+}
+
+export interface UnverifiedInPrograms {
+  /** Items that cite an unverified excerpt themselves. */
+  citing: Item[];
+  /** Figures with no value on the date. */
+  noValue: Item[];
+  /** Each item once, whichever list it is on. */
+  total: number;
+}
+
+/** The Desk's "unverified" tile: items in `programs` (and shared ones; every
+ *  program when null) citing an unverified excerpt, and figures with no
+ *  value on `date`. */
+export function unverifiedInPrograms(
+  engine: Engine, unverified: ReadonlySet<string>, programs: readonly string[] | null, date: string,
+): UnverifiedInPrograms {
+  const mine = (it: Item) => !programs || programs.includes(it.program) || it.program === "All";
+  const citing = itemsCitingUnverified(engine, unverified).filter(mine);
+  const noValue = figuresWithoutValue(engine, date).filter(mine);
+  return { citing, noValue, total: new Set([...citing, ...noValue].map((it) => it.id)).size };
+}
+
+export interface SignOffGroup {
+  /** `<program>/<chapter>`: the `?group=` of the sign-off list. */
+  key: string;
+  program: string;
+  chapter: string;
+  items: Item[];
+  /** Of `items`, those carrying an open question. */
+  withOpenQuestion: number;
+  /** Of `items`, those resting on unverified text (`restingOnUnverified`):
+   *  they stay Draft whoever signs. */
+  onUnverified: number;
+}
+
+/** The items waiting on one role, grouped by program and chapter (the
+ *  sign-off list's groups): the role's own programs first, then the shared
+ *  items, then the rest; figures before rules before facts; ledger order
+ *  inside a group. The groups add up to `awaitingSignOff(engine, [role])`.
+ *  `tainted` is `restingOnUnverified`. */
+export function signOffGroups(
+  engine: Engine, role: string, chapterOf: Readonly<Record<string, string>>,
+  tainted: ReadonlySet<string> = new Set(),
+): SignOffGroup[] {
+  const groups = new Map<string, SignOffGroup>();
+  for (const it of awaitingByRole(engine).get(role) ?? []) {
+    const chapter = chapterOf[it.id] ?? "";
+    const key = `${it.program}/${chapter}`;
+    let g = groups.get(key);
+    if (!g) { g = { key, program: it.program, chapter, items: [], withOpenQuestion: 0, onUnverified: 0 }; groups.set(key, g); }
+    g.items.push(it);
+    if ((it.open ?? []).length) g.withOpenQuestion++;
+    if (tainted.has(it.identifier)) g.onUnverified++;
+  }
+  const declared = (engine.meta.programs ?? []).map((p) => p.id);
+  const own = Object.entries(engine.meta.approval_policy?.by_program ?? {})
+    .filter(([p, rs]) => p !== "All" && rs.includes(role)).map(([p]) => p);
+  const rank = (p: string) => (own.includes(p) ? 0 : p === "All" ? 1 : 2) * 1000 + (declared.includes(p) ? declared.indexOf(p) : 999);
+  const chapterRank = (c: string) => (c === "parameters" ? 0 : c === "supplied" ? 2 : 1);
+  return [...groups.values()].sort((a, b) => rank(a.program) - rank(b.program)
+    || chapterRank(a.chapter) - chapterRank(b.chapter) || a.chapter.localeCompare(b.chapter));
+}
+
+// ---- a program
+
+/** Whether an outcome is about documents and verification rather than the
+ *  decision itself. */
+export function isVerificationOutcome(it: Pick<Item, "tags" | "identifier">): boolean {
+  return (it.tags ?? []).includes("verification")
+    || /verification|pending|due_date|postponement/.test(it.identifier);
+}
+
+export interface ProgramSummary {
+  program: string;
+  /** The outcomes it decides, in declared order. */
+  decisions: Item[];
+  /** Its outcomes about documents and verification. */
+  verification: Item[];
+  /** Its own items, by kind. */
+  rules: number;
+  figures: number;
+  facts: number;
+  /** Open or partly settled questions one of its items rests on. */
+  openQuestions: string[];
+}
+
+/** One program at a glance: what it decides and how much is in it. */
+export function programSummary(
+  engine: Engine, program: string, questions: readonly OpenQuestion[],
+): ProgramSummary {
+  const declared = (engine.meta.programs ?? []).find((p) => p.id === program);
+  const outcomes = (declared?.outcomes ?? []).map((o) => engine.item(o)).filter((x): x is Item => !!x);
+  const own = engine.items().filter((it) => it.program === program);
+  const unsettled = new Set(questions.filter((q) => isOpen(questionStatus(q))).map((q) => q.id));
+  const open = [...new Set(own.flatMap((it) => it.open ?? []))].filter((id) => unsettled.has(id)).sort();
+  return {
+    program,
+    decisions: outcomes.filter((it) => !isVerificationOutcome(it)),
+    verification: outcomes.filter(isVerificationOutcome),
+    rules: own.filter((it) => it.kind === "derived").length,
+    figures: own.filter((it) => it.kind === "parameter").length,
+    facts: own.filter((it) => it.kind === "supplied").length,
+    openQuestions: open,
+  };
+}
+
+// ---- explain step by step
+
+export interface ExplainStep {
+  item: Item;
+  /** 0 for the result itself; 1 for a rule it reads directly; and so on. */
+  level: number;
+}
+
+/** "Explain step by step": the rules a result is worked out from, down to
+ *  `depth` levels (Infinity: every rule), in the order they are worked out
+ *  (each rule after the rules it reads); the last step is the result. Facts
+ *  and figures are not steps: each step names the ones it reads. */
+export function explainSteps(engine: Engine, identifier: string, depth: number): ExplainStep[] {
+  const out: ExplainStep[] = [];
+  const seen = new Set<string>();
+  const walk = (id: string, level: number) => {
+    if (seen.has(id)) return;
+    const it = engine.item(id);
+    if (!it) return;
+    seen.add(id);
+    if (level < depth) {
+      for (const u of engine.usesOfItem(id)) if (engine.item(u)?.kind === "derived") walk(u, level + 1);
+    }
+    out.push({ item: it, level });
+  };
+  walk(identifier, 0);
+  return out;
+}
+
+// ---- figures on a date
+
+export interface FigureFilter {
+  asOf: string;
+  /** Words, each matched at the start of a word in the name or meaning. */
+  q?: string;
+  program?: string;
+  soon?: boolean;
+  unverified?: boolean;
+  noValue?: boolean;
+}
+
+export interface FigureOnDate {
+  item: Item;
+  /** The value in force on the date; null when none. */
+  value: unknown;
+  /** The version in force, for a dated figure. */
+  version: ItemVersion | null;
+  /** The next version after the date, if any. */
+  next: ItemVersion | null;
+  /** A new version within NEW_VERSION_SOON_DAYS of the date. */
+  soon: ItemVersion | null;
+  /** Unverified excerpts it cites. */
+  unverified: string[];
+  /** A dated figure with no version in force on the date. */
+  noValue: boolean;
+}
+
+/** Every figure (a parameter) with its value on `asOf`, filtered, sorted by
+ *  program (declared order, shared last) and name: the Figures page's list
+ *  and its count. `matches` is the word filter (search.ts `wordsMatch`). */
+export function figuresOnDate(
+  engine: Engine, unverified: ReadonlySet<string>, f: FigureFilter,
+  matches: (text: string, q: string) => boolean,
+): FigureOnDate[] {
+  const declared = (engine.meta.programs ?? []).map((p) => p.id);
+  const rank = (p: string) => (p === "All" ? 998 : declared.includes(p) ? declared.indexOf(p) : 997);
+  const out: FigureOnDate[] = [];
+  for (const it of engine.items()) {
+    if (it.kind !== "parameter") continue;
+    if (f.program && it.program !== f.program) continue;
+    if (f.q && !matches(`${it.name} ${it.meaning ?? ""} ${it.id} ${it.identifier}`, f.q)) continue;
+    const dated = Array.isArray(it.versions);
+    const version = dated ? versionInForce(it, f.asOf) : null;
+    const row: FigureOnDate = {
+      item: it,
+      value: dated ? (version ? version.value : null) : (it.value ?? null),
+      version,
+      next: [...(it.versions ?? [])].sort((a, b) => a.from.localeCompare(b.from)).find((v) => v.from > f.asOf) ?? null,
+      soon: newVersionSoon(it, f.asOf),
+      unverified: citedUnverified(it, unverified),
+      noValue: dated && !version,
+    };
+    if (f.soon && !row.soon) continue;
+    if (f.unverified && !row.unverified.length) continue;
+    if (f.noValue && !row.noValue) continue;
+    out.push(row);
+  }
+  return out.sort((a, b) => rank(a.item.program) - rank(b.item.program) || a.item.name.localeCompare(b.item.name));
 }
