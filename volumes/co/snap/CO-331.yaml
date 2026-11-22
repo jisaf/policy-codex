@@ -6,8 +6,8 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The person's unearned income for the month for SNAP: Social Security, pension, unemployment, child support received, public assistance (Colorado Works, Adult Financial and SSI), and other unearned income, taxable or not, under 7 CFR 273.9(b)(2)."
-precision: "Vocabulary fix round (R-1): SSI is counted (ssi_income, CO-849), as 273.9(b)(2)(i) lists it; it had no term. The supplied amounts are gross; the 273.9(c) exclusions are not modeled (OQ-390)."
-assumption: "No 273.9(c) exclusion (for example infrequent or irregular income under $30 a quarter) applies to the stated amounts (OQ-390)."
+precision: "Vocabulary fix round (R-1): SSI is counted (ssi_income, CO-849), as 273.9(b)(2)(i) lists it; it had no term. The supplied amounts are gross; the 273.9(c) exclusions of 4.405 are subtracted as snap_excluded_unearned_income (CO-2339; OQ-390 resolved). Income deemed from a sponsor is added in snap_person_gross_income (CO-332; final verification F-2), not here, so that a sponsor's own unearned income can be read through this item."
+assumption: "The exclusions applied are those snap_excluded_unearned_income (CO-2339) names from 4.405; infrequent or irregular income of $30 or less in three months, which 4.405 also excludes but no receipt fact states, is assumed not to be in the stated amounts (final verification F-16: the earlier text said no exclusion was modeled)."
 derived: [max, 0, ["-", ["+", social_security_income, pension_income, unemployment_income, child_support_received, tanf_cash_income, adult_financial_cash_income, ssi_income, other_unearned_income_taxable, other_unearned_income_nontaxable, tax_exempt_interest], [otherwise, snap_excluded_unearned_income, 0]]]
 sources: [S1620, S42]
 implemented: engine
