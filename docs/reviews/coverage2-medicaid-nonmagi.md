@@ -80,14 +80,14 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 5.C.1.a-b | C: ma_month_is_before_coverage_period (CO-4101); the ABD outcomes test each month's criteria. |
 | 5.C.2 | C: § 8.100.7.A-B rows. |
 | 5.C.3 | **N2-3** (age tested on the determination date, not across the month). |
-| 5.C.4.a-c | C (partial): CO-4101 and the month's criteria; dated onset is deferred NM-30. |
+| 5.C.4.a-c | C (partial): CO-4101 and the month's criteria; dated onset is deferred NM-30. Fix round: dated onset carried by ma_month_is_before_disability_onset (CO-4888, disability_onset_date CO-4887) in CO-612. |
 | 5.D.1.a-c | NA: estate recovery notice. |
 | 5.E (lead-in, payer of last resort) | NA: declaration. |
 | 5.E.1 | C: all income facts are monthly amounts. |
 | 5.E.2 | C: ma_ssi_couple_members (CO-3626), ssi_countable_resources_couple (CO-801), CO-608; LTC exceptions at § 8.100.7.C. |
 | 5.E.3.a-c, E.4 | C: availability is the caseworker's valuation in liquid_resources_value and the holdings facts (OQ-390's gross convention). |
 | 5.E.5 | NA: procedure while steps are taken (no delay or termination). |
-| 5.E.6-7 | Deferred NM-28 (non-cooperation denial; notice NA). |
+| 5.E.6-7 | Deferred NM-28 (non-cooperation denial; notice NA). Fix round: carried by ma_abd_denied_for_noncooperation (CO-4886, CO-4884). |
 | 5.E.8 | C: has_trust_interest (CO-1577), trust documents (CO-1578, CO-1634), CO-4643. |
 | 5.E.9, 9.a-c | NA: unknown assets are valued in the month of discovery (caseworker valuation of the holdings facts); 9.b-c are overpayment and repayment. |
 
@@ -104,20 +104,20 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 5.F.5.i | C: lottery_gambling_winnings_received (CO-1181) in CO-663, CO-641, CO-1715. |
 | 5.F.5.i.1, 1.a-b | C: ma_lottery_winnings_hardship_exemption_granted (CO-2222); the request procedure is NA. |
 | 5.F.5.j.i-v, vii | C: pension_income, social_security_income, unemployment_income, CO-030 (workers' compensation, alimony), CO-1714. |
-| 5.F.5.j.vi | **N2-1** (the A&A/UME portion is counted in the SSI method). |
+| 5.F.5.j.vi | **N2-1** (the A&A/UME portion is counted in the SSI method). Fix round: carried by CO-2470 (A&A/UME portion excluded). |
 | 5.F.5.k.i-ii | C: ssi_in_kind_support_and_maintenance (CO-802), CO-3406, shelter_costs_paid_by_others (CO-3404); OQ-823 (PMV against H.1.b's one third). |
 | 5.F.6 (lead-in) | C: ma_ssi_excluded_unearned_income (CO-2470), CO-2471, CO-4629. |
 | 5.F.6.a | C: loan_proceeds_received in CO-2470. |
 | 5.F.6.b, d, e, g, w | C: in-kind food, home produce, housing assistance and expense reimbursements are not stated as cash income (OQ-390's convention). |
 | 5.F.6.c | C: retroactive_social_security_lump_sum_received (CO-3919), retroactive_ssi_or_public_assistance_lump_sum_received (CO-3920) in CO-2470; nine-month resource exclusion in CO-800 (CO-4639, CO-4640). |
 | 5.F.6.f, h, i, k, m, r, s, v, x, aa-cc | C: federally_excluded_payments_received and educational_assistance_received in CO-2470. |
-| 5.F.6.j, o, p, z | Deferred NM-23 (no neutral receipt fact). |
+| 5.F.6.j, o, p, z | Deferred NM-23 (no neutral receipt fact). Fix round: j, o, p carried by CO-2470 (CO-3812, CO-4308, CO-3815 less CO-4300); z by CO-2471 (CO-4881). |
 | 5.F.6.l | C: foster_care_provider_payments_received in CO-2470. |
 | 5.F.6.n | C: energy_assistance_received in CO-2470. |
 | 5.F.6.q | C: pass_set_aside_income (CO-3825) in CO-2470; earned PASS (CO-4618) in CO-4629. |
 | 5.F.6.t | C: the SSI method counts no child's income except against the child allocation (CO-2277); the CBwD MAGI household is OQ-740's reading. |
 | 5.F.6.u | C: tax_refunds_and_credits_received in CO-2470; resource months are valuation. |
-| 5.F.6.y | C: SSI, TANF and Adult Financial grants are not in CO-663 (OQ-822). **N2-5** for the 300% test (CO-641). |
+| 5.F.6.y | C: SSI, TANF and Adult Financial grants are not in CO-663 (OQ-822). **N2-5** for the 300% test (CO-641). Fix round: N2-5 recorded in OQ-822 and CO-641. |
 | 5.F.6.dd | NA: ARRA supplement, expired 2010. |
 | 5.G.1 | C: sponsor deeming of § 8.100.3.K (Adult Financial and MAGI items; other reviews' scope). |
 
@@ -143,9 +143,9 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 5.H.4.e | See § 3.10 (416.1112). |
 | 5.I.1-3 | C: income facts are stated per payee; joint payments split by the stated share (caseworker figure). |
 | 5.I.4 | C: CO-656's allowance is not added to the institutionalized spouse's income; ma_community_spouse_income (CO-2467) reads the community spouse's own facts. |
-| 5.J.1, a-c | Deferred NM-27 (net rent from an exempt home needs a rental-expense fact for Medicaid). |
+| 5.J.1, a-c | Deferred NM-27 (net rent from an exempt home needs a rental-expense fact for Medicaid). Fix round: carried by CO-2470 (rents net of CO-4458); OQ-867. |
 | 5.J.2-3 | C: ma_countable_income_producing_property_value (CO-4621), CO-4601, CO-4602, CO-4607 to CO-4609 (NM-4). |
-| 5.K (lead-in) | C for LTC: CO-641 subtracts CO-837. **N2-1** for the SSI method and the Buy-In and deeming sums. |
+| 5.K (lead-in) | C for LTC: CO-641 subtracts CO-837. **N2-1** for the SSI method and the Buy-In and deeming sums. Fix round: carried by CO-2470. |
 | 5.K.1.a-b | C: CO-658 does not add A&A back; CO-4103. |
 | 5.K.2 | C: ma_va_aid_and_attendance_is_patient_payment (CO-4103), resides_in_state_veterans_home (CO-4102); OQ-720. |
 | 5.L.1 | C: reverse-mortgage payments are not an income fact (OQ-390). |
@@ -162,10 +162,10 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 5.M.2.a (definition), a.i | C: the home is never in CO-800; one home (home_equity, CO-826). |
 | 5.M.2.a.ii.1-2 | C (LTC): ma_home_equity_disqualifies (CO-650), ma_home_equity_limit (CO-831); OQ-820 (outside LTC). **N2-8** (tie). |
 | 5.M.2.a.iii | C: ma_meets_residency (CO-2250), home_is_outside_colorado (CO-4613). |
-| 5.M.2.a.iv, vi, vii | C: ma_home_is_countable_resource (CO-4622), CO-4610 to CO-4615. **N2-4** ("dependent relative"). |
-| 5.M.2.a.v.1-2 | C: CO-4622, intent_to_return_home_is_documented_in_writing (CO-4612). **N2-6** (not institutionalized). |
+| 5.M.2.a.iv, vi, vii | C: ma_home_is_countable_resource (CO-4622), CO-4610 to CO-4615. **N2-4** ("dependent relative"). Fix round: carried by ma_spouse_or_dependent_relative_lives_in_home (CO-4880). |
+| 5.M.2.a.v.1-2 | C: CO-4622, intent_to_return_home_is_documented_in_writing (CO-4612). **N2-6** (not institutionalized). Fix round: N2-6 recorded in CO-4622 precision. |
 | 5.M.2.a.viii, x | C: CO-4622 (no intent: countable); x's month-after timing is in CO-4622's precision. |
-| 5.M.2.a.ix, xi | C: CO-4622's spouse/relative arm. **N2-4**. |
+| 5.M.2.a.ix, xi | C: CO-4622's spouse/relative arm. **N2-4**. Fix round: carried by CO-4880. |
 | 5.M.2.a.xii | C: CO-4622 reads an ALF or facility as living away. |
 | 5.M.2.a.xiii, xiii.1 | C: home_is_held_in_trust_or_entity (CO-4614) for a medical institution, waiver or PACE. |
 | 5.M.2.a.xiv | C: home_has_recorded_beneficiary_deed (CO-4615); revocation regains the exemption (fact false). |
@@ -302,7 +302,7 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 7.A.1 (special income category; existing clients) | C: CO-642, CO-651, CO-652. |
 | 7.A.1 (SEP/CMA notification) | NA: referral procedure. |
 | 7.A.1 (gross income) | C: ma_ltc_gross_income (CO-641). **N2-5** (F.6.y). |
-| 7.A.1 (child leaving parents) | C: CO-4624 (no deeming in an institution). **N2-7** (month of admission). |
+| 7.A.1 (child leaving parents) | C: CO-4624 (no deeming in an institution). **N2-7** (month of admission). Fix round: N2-7 recorded in CO-4624 precision. |
 | 7.A.2.a-b | C: CO-603 in CO-3310. |
 | 7.A.2.c, c.i-iii | C: ma_is_institutionalized (CO-640), CO-822; verification CO-1632, CO-1636, CO-1575. The start date (iii) is date-level (NA). |
 | 7.A.2.d | C: CO-640, CO-642 (hospital or LTC institution). |
@@ -414,14 +414,14 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | 7.S.1.e | C: CO-1949 in CO-1977. |
 | 7.T.1.a | C: ma_personal_needs_allowance (CO-1987) in CO-3616. |
 | 7.T.1.b, e | C: CO-658 deducts the MIA only when CO-1949 is false (NM-14). |
-| 7.T.1.c.i | **N2-2** (federal floor). |
+| 7.T.1.c.i | **N2-2** (federal floor). Fix round: carried by CO-657 (statute_override). |
 | 7.T.1.c.ii | C: ma_family_allowance_members (CO-2469); OQ-95. |
 | 7.T.1.d, f | C: CO-658's deduction list. |
 | 7.U.1-3 | NA: notice and appeal. |
 | 7.V.1.a-d, f-l | NA: AP-5615 procedure. |
 | 7.V.1.e.i-iii | C: CO-3612, medicare_part_b_premium_paid (CO-3602), CO-3603 in CO-658; OQ-520, OQ-721. |
 | 7.V.2.a-b | NA: collection by the facility. |
-| 7.V.2.c | Deferred NM-28. |
+| 7.V.2.c | Deferred NM-28. Fix round: carried by CO-4886 (CO-4885). |
 | 7.V.3.a | NA: cross-reference. |
 | 7.V.3.b.i-ii.1-8 | C: CO-658 (MIA, family allowance, HMA CO-3618, tax CO-3604, garnishment CO-3605, Part B and D); trustee fee within CO-2237; NF PETI (8.c) NA. |
 | 7.V.3.c, c.i.1.a-b | C: CO-3606 added in CO-658; application order against the cost of care NA. |
@@ -446,7 +446,7 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 |---|---|
 | 416.1112(a)-(b) | C: CO-605's order (exclusions, then $20 carryover, $65, one half). |
 | (c)(1) EITC and child tax credit refunds | C: tax_refunds_and_credits_received in CO-2470. |
-| (c)(2) infrequent or irregular earnings | Deferred NM-26. |
+| (c)(2) infrequent or irregular earnings | Deferred NM-26. Fix round: carried by CO-4883 (CO-4882). |
 | (c)(3) student child | C: CO-2471, CO-3387. |
 | (c)(4) unused $20 | C: CO-605. |
 | (c)(5) $65 | C: CO-231. |
@@ -454,7 +454,7 @@ Key: **C** = carried by (the derivation was read and is correct unless a finding
 | (c)(7) one half | C: CO-232. |
 | (c)(8) blind work expenses | C: ma_ssi_earned_income_excluded_after_half (CO-4629), CO-4617. |
 | (c)(9) PASS | C: CO-4629, CO-4618. |
-| (c)(10) AmeriCorps | Deferred NM-26. |
+| (c)(10) AmeriCorps | Deferred NM-26. Fix round: carried by CO-2470 (americorps_payments_received). |
 
 ### 3.11 10 CCR 2505-10 §§ 8.940-8.942 (D-68)
 
@@ -526,3 +526,29 @@ Re-run on HEAD 1743a1d in the scratch copy:
 | NM-15 (court-ordered support) | CO-188: allowance 2,500, patient payment 300. X-COURT still states the order in CO-1950 (the CSRA transfer fact), so it gives 1,671.40; that is the fact split the disposition describes, not a regression. | fixed |
 
 The earlier non-MAGI P1s the first pass spot-checked (final F-3 to F-7, final2 F2-2, final3 F3-1) were not re-run individually; CO-112 (815.34) and CO-139 (1,810) give the same figures as at a2ed7f0.
+
+
+## Disposition (coverage pass 2)
+
+Fix round, 2026-11-22, on branch `ccr-9d19bf4c-wmnwcl` (HEAD be0cac9 at the start). P1s in c9df750, P2s and P3s in deb753e. After each fix every stored case and the probes of this review and of the first pass (`scratchpad/cov2nm/gen/s1-s4.yaml`, `scratchpad/x-cases-nonmagi.yaml`) were re-run on fifteen non-MAGI outcomes and amounts; the only moves are the ones named below.
+
+| ID | Pri | Disposition |
+|---|---|---|
+| N2-1 | P1 | Fixed (c9df750): ma_ssi_excluded_unearned_income (CO-2470) subtracts va_aid_and_attendance_amount when receives_va_aid_and_attendance, so CO-663, CO-1715, CO-4201 and CO-4634 exclude it (§ 8.100.5.K, S2900). Stored CO-212 (Y-VAAA): 1,280 → 880, none → aged. Side effect: CO-139's SSI-method income 1,880 → 1,580 and ma_msp_category none → slmb (not asserted in the case; 1,580 is within 100-120% of the poverty level). |
+| N2-2 | P1 | Fixed (c9df750): CO-657 is (MMMNA - income)/3, a statute_override of § 8.100.7.T.1.c.i by 42 U.S.C. 1396r-5(d)(1)(C) and (a)(1) (S3615, re-fetched 2026-11-22). The state figure is never larger than the federal floor, so the floor is the whole formula; not unsettled ("at least" plus supersession). Stored CO-213 (Y-FAMALLOW): allowance 301.67 → 701.67, patient payment 513.67 → 300 (the review's 113.67 left out that the 2,675.97 of deductions exceed 2,489.64, floored at 0, before the 300 of Long-Term Care insurance). |
+| N2-3 | P1 | Not in this round: the MAGI fix round owns CO-620. |
+| N2-4 | P1 | Fixed (c9df750): new ma_spouse_or_dependent_relative_lives_in_home (CO-4880) reads § 8.100.1's definition, "Dependent Relative ... is defined as one who is claimed as a dependent by an applicant for federal income tax purposes" (S3616), from the tax_filer edge (no new supplied fact), beside CO-889; CO-4622 reads it; CO-889 alone stays in CO-650. Also found: CO-889 followed `[spouse, child]`, which from the owner reaches the owner's parents, so a minor or disabled child at home was never found; now `[spouse, parent]` (T4, T5). No stored case moved. Stored CO-214 (Y-DEPREL with the son claimed as a tax dependent): ineligible_resources → eligible_institutional, patient payment 1,810. |
+| N2-5 | P2 | Fixed (deb753e): OQ-822's body and assumption now record both choices (the SSI method exempts the grants; the 300% test counts them under § 8.100.7.A.1); CO-641's precision cites it. |
+| N2-6 | P2 | Fixed (deb753e): CO-4622's precision records that § 8.100.5.M.2.a.v asks the writing only of an institutionalized person; test T10. |
+| N2-7 | P2 | Fixed by record (deb753e): CO-4624's precision states the reading and why: the deeming lists (CO-4624, CO-4627) are person-scope, so keeping deeming for the admission month alone would keep it for the months after; the only answer that differs is the SSI-related category in the admission month, in the child's favour. |
+| N2-8 | P3 | Already recorded: CO-650's precision says "Equity equal to the limit disqualifies (\">=\"), because § 8.100.5.M.2.a.ii exempts equity that \"Is less than\" the indexed amount; 42 U.S.C. 1396p(f)(1)(A)'s \"exceeds\" sets the federal floor". No change. |
+| N2-9 | P3 | Fixed (deb753e): OQ-98 retitled ("wired into ma_patient_payment's PNA deduction (CO-1986, CO-255)"). |
+| N2-10 | P3 | Corrected in this review's matrix; nothing to fix in the volume (N2-1 is the fix). |
+| NM-17 (parent half) | P2 | Deferred: the Pickle income (CO-1158) reads no deemed parental income at all, so a parent's COLA never raises a Pickle child's countable income and there is nothing for E.3's parent disregard to come off; adding parental deeming to the Pickle test (with a parent's OASDI at the loss) is a new deeming path no case needs, and the present answer errs only in the child's favour. |
+| NM-23 j, o, p, z | P2 | Fixed (deb753e): CO-2470 excludes general_or_emergency_assistance_received (CO-3812) and charitable_need_based_cash_received (CO-4308) for j (and y's General Assistance), workforce_program_payments_received (CO-3815) less vocational_training_allowance_received (CO-4300) for o and p (S3617); z is the new fact decennial_census_wages_received (CO-4881), excluded in CO-2471. These neutral facts now exist (added by other families since the first pass). |
+| NM-26 | P2 | Fixed (deb753e): (c)(2) by ma_ssi_excluded_infrequent_earned_income (CO-4883; quarter running total capped at ssi_infrequent_earned_income_quarterly_exclusion, CO-4882, $30), added in CO-2471; (c)(10) by americorps_payments_received (CO-4016, an unearned fact) in CO-2470 (S3618). Side effect: stored CO-155 (SNAP-only case) p2's deemed parental income 704 → 404 and SSI-method income 684 → 384, its father's 300 of AmeriCorps payments no longer deemed; nothing asserted. |
+| NM-27 (J.1) | P2 | Fixed (deb753e): CO-2470 subtracts rental_property_expenses_paid (CO-4458), capped at rental_income_received, so rents count net (S3619, S3620); the choice of 416.1121(d)'s expenses over J.1's three for an exempt home, and gross rents in the 300% test, is OQ-867 (state policy choice). |
+| NM-28 | P2 | Fixed (deb753e): findings ma_failed_to_pursue_potential_resources_or_income (CO-4884, E.5-7) and ma_refuses_to_release_patient_payment (CO-4885, V.2.c) feed ma_abd_denied_for_noncooperation (CO-4886), read by CO-612 (not for an SSI recipient), CO-617, CO-622, CO-1163 and CO-3310 (new status failed_to_cooperate, with its aid-code reason) (S3621, S3622). |
+| NM-30 | P2 | Fixed (deb753e): disability_onset_date (CO-4887) and ma_month_is_before_disability_onset (CO-4888) gate CO-612's disabled arm in months before the onset month (§ 8.100.5.C.4.b, S3623). The Buy-In and long-term care groups keep their own retroactive rules (§§ 8.100.6.P-Q, 8.100.7) and are not gated. |
+
+New open question: OQ-867 (net rent, state policy choice). No open question was resolved. UI test pins moved only by the counts these changes add (one open question, one figure, one statute departure, the new stored households).
