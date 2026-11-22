@@ -8,11 +8,14 @@ program: Medicaid
 meaning: "The community spouse resource allowance minimum standard - the floor 42 U.S.C. 1396r-5(f)(2)(A)(i) sets at $12,000 \"subject to adjustment under subsection (g)\", CPI-indexed annually and published by CMS. Informational: no rule reads it; Colorado's CSRA (§ 8.100.7.M.1) gives the community spouse resources up to the maximum, so the minimum standard never binds (ma_csra, OQ-126)."
 precision: "Not currently read by any item: 10 CCR 2505-10 § 8.100.7.M.1.a (the current text, S652, unchanged from the Cornell copy) has no spousal-share/minimum-standard shape, so ma_csra (CO-646) applies no minimum standard (OQ-126). Kept, now as a parameter with CMS's published figure, for a future § 8.100.7.M.1.b/§ 8.100.7.S increased-CSRA item."
 versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: 31584
+    source: S3007
   - from: "2026-01-01"
     value: 32532
     source: S644
 review_by: "2027-01-01"
-sources: [S644, S371]
+sources: [S644, S371, S3007]
 tags: [ma, ltc, resources, legal]
-open: [OQ-516]
-rationale: "OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Community Spouse Resources minimum resource standard, $32,532.00, effective January 1, 2026. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from csra_minimum_standard; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-91)."
+rationale: "Final verification pass 3, P2-1 (OQ-516 resolved): the 2025 figure is from CMS's CMCS Informational Bulletin of November 15, 2024 (D-280). OQ-91: no fetched document stated the 2026 figure. CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the Community Spouse Resources minimum resource standard, $32,532.00, effective January 1, 2026. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from csra_minimum_standard; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-91)."

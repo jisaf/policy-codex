@@ -8,11 +8,14 @@ program: Medicaid
 meaning: The home equity value above which an individual's home disqualifies them from Long-Term Care assistance - Colorado's limit is the $500,000 figure (in effect January 1, 2006 through December 31, 2010) increased year to year by the consumer price index for all urban consumers, rounded to the nearest $1,000 (10 CCR 2505-10 § 8.100.5.M.2.a.ii), which is the federal minimum home equity limit of 42 U.S.C. 1396p(f)(1)(A) and (C).
 precision: Colorado's text uses the indexed $500,000 base, not a higher state election up to the $750,000 base, so the figure is CMS's published minimum home equity limit. 
 versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: 730000
+    source: S3007
   - from: "2026-01-01"
     value: 752000
     source: S644
 review_by: "2027-01-01"
-sources: [S645, S644, S369]
+sources: [S645, S644, S369, S3007]
 tags: [ma, ltc, resources]
-open: [OQ-516]
-rationale: "OQ-91 asked which base Colorado elected and the 2026 figure. The current § 8.100.5.M.2.a.ii (D-65) states the $500,000 base indexed by CPI, and CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the minimum home equity limit, $752,000.00, for 2026. ma_home_equity_disqualifies (CO-650) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from home_equity_limit; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-91); identifier and id unchanged."
+rationale: "Final verification pass 3, P2-1 (OQ-516 resolved): the 2025 figure is from CMS's CMCS Informational Bulletin of November 15, 2024 (D-280). OQ-91 asked which base Colorado elected and the 2026 figure. The current § 8.100.5.M.2.a.ii (D-65) states the $500,000 base indexed by CPI, and CMS's 2026 SSI and Spousal Impoverishment Standards chart (D-72) states the minimum home equity limit, $752,000.00, for 2026. ma_home_equity_disqualifies (CO-650) needs it. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from home_equity_limit; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-91); identifier and id unchanged."

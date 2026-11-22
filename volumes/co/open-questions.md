@@ -1810,14 +1810,11 @@ Owner: Medicaid policy owner, CHP+ policy owner
 Assumption: Each year's federal poverty guidelines are used from January 1.
 Blocked on: HCPF's annual memo setting the date Medical Assistance, CHP+ and the Medicare Savings Programs adopt the new poverty guidelines (hcpf.colorado.gov refused)
 
-### OQ-516. 2025 spousal impoverishment and Medicare Savings Program figures not loaded
+### OQ-516. Resolved: 2025 spousal impoverishment and Medicare Savings Program figures loaded from CMS's bulletin of November 15, 2024
 
 Body: The HCPF review (F-2) asked for 2025 versions of the indexed figures so that a 2026 application's retroactive months in late 2025 have a figure. The 2025 SSI federal benefit rates, substantial gainful activity amounts (S1711) and poverty guidelines (S1710) are now versions. CMS's 2025 SSI and Spousal Impoverishment Standards chart (the 2025 CSRA minimum and maximum, the MMMNA maximum and the home equity limit) and the 2025 Medicare Savings Program resource limits were not found at a fetchable URL (medicaid.gov serves only the current chart and a 2021 one at the addresses tried; medicare.gov serves the current limits), so ma_csra_minimum, ma_csra_maximum, ma_mmmna_cap, ma_home_equity_limit and the MSP resource limits (CO-827, CO-828, CO-830, CO-831, CO-807, CO-808) still begin on 2026-01-01 and a 2025 month has no value for them. Items: CO-807, CO-808, CO-827, CO-828, CO-830, CO-831.
 
-Class: blocked on a named document
-Owner: LTSS policy owner, Medicaid policy owner
-Assumption: The spousal impoverishment and Medicare Savings Program resource figures start in January 2026, so a month in 2025 has none.
-Blocked on: CMS's 2025 SSI and Spousal Impoverishment Standards chart and the 2025 Medicare Savings Program resource limits (not found on an allowed host: medicaid.gov serves only the current chart and a 2021 one, rechecked 2026-11-22)
+Resolution (final verification pass 3, P2-1, 2026-11-22): CMS's CMCS Informational Bulletin of November 15, 2024, "2025 SSI, Spousal Impoverishment, and Medicare Savings Program Resource Standards", is on medicaid.gov (https://www.medicaid.gov/federal-policy-guidance/downloads/cib11152024.pdf, fetched 2026-11-22, D-280). It states the 2025 QMB, SLMB and QI resource standards, $9,660 and $14,470 (S3006), and its 2025 chart the Maximum Monthly Maintenance Needs Allowance 3,948.00, the community spouse minimum and maximum resource standards 31,584.00 and 157,920.00, and the minimum home equity limit 730,000.00 (S3007). Each of the six parameters has a 2025 version from 2025-01-01 to 2026-01-01. No household case changed (none has a 2025 month that reads them). Items: CO-807, CO-808, CO-827, CO-828, CO-830, CO-831.
 
 ### OQ-517. How HCPF transitions current members under the October 2026 federal payment limit
 
@@ -2267,3 +2264,13 @@ Owner: LTSS policy owner, Medicaid policy owner
 Assumption: The Part B premium is deducted for the first and second month counted from the month the person entered the Nursing Facility, whether or not she was eligible then.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.V.1.e and V.3.b.ii.8 (D-65, version effective 11/14/2026; the Secretary of State's Word text re-fetched 2026-11-22 reads the same). No published rule says which governs.
+
+### OQ-740. Children with Disabilities Buy-In: how the § 8.100.5.H disregards and allocations apply to a family household
+
+Body: 10 CCR 2505-10 § 8.100.6.Q.1.b (S3000) tests "Household income ... after income disregards" under four rules: the MAGI household (§ 8.100.4.E), § 8.100.5.F's income rules, its F.6 exemptions, and § 8.100.5.H's allocations and disregards. § 8.100.5.H (S1506, S3002) is written for an SSI-related individual or couple: one $20 general disregard "per couple" (H.4.a.iii), "the first $65 of all earned income" (H.4.b), child support to an "applicant/recipient child" reduced by one third (H.4.c), and allocations to ineligible children and parents deducted from a parent's income before it is deemed to an applicant child (H.3). The rule does not say how these apply to a MAGI household of parents and children compared with the poverty level for the household's size. The volume (CO-4200 to CO-4203) counts every member's § 8.100.5.F income (not only the members MAGI's tax-dependent rule of § 8.100.4.C.1.f would count, since Q.1.b takes only the household from § 8.100.4), applies one $20 and one $65-plus-one-half to the household's pooled income, reduces the child support of each blind or disabled child of the Buy-In's age by one third, applies the student earned income exemption to such a child, and takes no H.3 allocation, since the household's size already enters the comparison and an allocation would count the same members twice. Alternatives: a disregard for each earner or each couple in the household; H.3's allocations from the parents' income as in SSI deeming, compared with the poverty level for the child alone; or MAGI income with the § 8.100.5.H disregards. Final verification pass 3, F3-1. Items: CO-4200, CO-4201, CO-4202, CO-620, CO-621.
+
+Class: state policy choice
+Owner: Medicaid policy owner, Premium and finance owner
+Assumption: The household's pooled § 8.100.5.F income takes one $20 general and one $65-plus-one-half earned income disregard, with no ineligible child or parent allocation, and is compared with the poverty level for the MAGI household's size.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.Q.1.b, § 8.100.5.F and § 8.100.5.H.1-4 (D-65, version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). No published rule says how the per-person and per-couple disregards and the allocations apply to a family household; HCPF's Buy-In guidance is on hcpf.colorado.gov, which is refused.

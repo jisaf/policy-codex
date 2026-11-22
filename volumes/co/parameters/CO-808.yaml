@@ -8,12 +8,15 @@ program: Medicaid
 meaning: The QMB/SLMB/QI resource limit for a married individual living with a spouse and no other dependents - $13,020 effective January 1, 2011 under 10 CCR 2505-10 § 8.100.5.M.1, adjusted by CMS each January 1 by the change in the consumer price index as of the previous September.
 precision: Versioned by calendar year from CMS's published figure. 
 versions:
+  - from: "2025-01-01"
+    to: "2026-01-01"
+    value: 14470
+    source: S3006
   - from: "2026-01-01"
     value: 14910
     source: S647
 review_by: "2027-01-01"
-sources: [S646, S647, S301]
+sources: [S646, S647, S301, S3006]
 tags: [non_magi, msp, resources]
-open: [OQ-516]
 nearest: [CO-807]
-rationale: "Companion figure to ma_msp_resource_limit_individual (CO-807): CMS's Medicare.gov publication of the 2026 limits (D-74) states $14,910 for a married couple. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from msp_resource_limit_couple; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-81, resolved), identifier and id unchanged."
+rationale: "Final verification pass 3, P2-1 (OQ-516 resolved): the 2025 figure is from CMS's CMCS Informational Bulletin of November 15, 2024 (D-280). Companion figure to ma_msp_resource_limit_individual (CO-807): CMS's Medicare.gov publication of the 2026 limits (D-74) states $14,910 for a married couple. Vocabulary fix round (docs/reviews/vocabulary-reuse.md, N-1): renamed from msp_resource_limit_couple; a Medicaid parameter without the program prefix. Precision history (moved from precision, engineering follow-up pass task 5): Converted from a supplied fact in phase 7 (OQ-81, resolved), identifier and id unchanged."
