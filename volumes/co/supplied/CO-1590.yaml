@@ -3,10 +3,11 @@ name: Summer EBT application selected for verification
 identifier: sebt_application_is_selected_for_verification
 kind: supplied
 type: yes/no
-scope: person
+scope: case
 program: SunBucks
-meaning: Whether the household's Summer EBT application covering the child was selected for verification, in the three-percent sample or for cause.
+meaning: "Whether the household's Summer EBT application covering the child was selected for verification, in the three-percent sample or for cause."
+precision: "One value for the case."
 supplied_by: Summer EBT verification selection recorded by the Summer EBT agency.
 sources: [S1090]
 tags: [verification, sebt]
-rationale: "No existing fact in the volume states this; the phase-9 verification review (K-5: 7 CFR 292.14(a)) needs it as a supplied fact."
+rationale: "No existing fact in the volume states this; the phase-9 verification review (K-5: 7 CFR 292.14(a)) needs it as a supplied fact. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

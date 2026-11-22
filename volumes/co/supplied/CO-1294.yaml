@@ -3,10 +3,11 @@ name: School meal household size
 identifier: school_meal_household_size
 kind: supplied
 type: whole number
-scope: person
+scope: case
 program: SunBucks
-meaning: The number of people in the child's household for school meal and Summer EBT income eligibility - a group of related or unrelated individuals, not residents of an institution or boarding house, living as one economic unit - per 7 CFR 292.2 ("Household").
+meaning: "The number of people in the child's household for school meal and Summer EBT income eligibility - a group of related or unrelated individuals, not residents of an institution or boarding house, living as one economic unit - per 7 CFR 292.2 (\"Household\")."
+precision: "One value for the case: the one school meal or Summer EBT application."
 supplied_by: NSLP/SBP or Summer EBT application.
 sources: [S791]
 tags: [sebt, household]
-rationale: The Summer EBT household is the economic unit of the school meal programs, not the SNAP, MAGI or CCCAP unit the volume derives, so its size enters as stated on the application; sebt_income_eligibility_limit (CO-1297) needs it.
+rationale: "The Summer EBT household is the economic unit of the school meal programs, not the SNAP, MAGI or CCCAP unit the volume derives, so its size enters as stated on the application; sebt_income_eligibility_limit (CO-1297) needs it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

@@ -4,10 +4,11 @@ identifier: leap_electric_heat_dwelling_type
 kind: supplied
 type: one of
 options: [not_electric, house, attached, apartment, rv]
-scope: person
+scope: case
 program: LEAP
-meaning: For a household that heats with electricity, its dwelling type for the electric heat portion of 9 CCR 2503-7 3.758.47 Step C - house or mobile home; townhouse, duplex, triplex or fourplex (attached); apartment, condominium, hotel, cabin or tiny home (apartment); RV, fifth wheel or camper (rv) - or not_electric when the primary heating fuel is not electricity. Stated on the household head.
+meaning: "For a household that heats with electricity, its dwelling type for the electric heat portion of 9 CCR 2503-7 3.758.47 Step C - house or mobile home; townhouse, duplex, triplex or fourplex (attached); apartment, condominium, hotel, cabin or tiny home (apartment); RV, fifth wheel or camper (rv) - or not_electric when the primary heating fuel is not electricity."
+precision: "One value for the case: a fact about the home."
 supplied_by: LEAP application (primary heating fuel and dwelling type).
 sources: [S771]
 tags: [household]
-rationale: No existing fact states the heating fuel or dwelling type; leap_adjusted_heating_costs (CO-1280) needs it.
+rationale: "No existing fact states the heating fuel or dwelling type; leap_adjusted_heating_costs (CO-1280) needs it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

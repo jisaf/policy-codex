@@ -1,0 +1,15 @@
+id: CO-3300
+name: Home heating cost arrangement
+identifier: home_heating_cost_arrangement
+kind: supplied
+type: one of
+options: [pays_vendor_directly, billed_by_landlord_on_usage, separate_charge_from_landlord, included_in_rent, none]
+scope: case
+program: All
+meaning: "How the household pays for the primary heating of its home: pays_vendor_directly (it pays a fuel or utility vendor, alone or its share of a bill or meter it shares with another household); billed_by_landlord_on_usage (the landlord bills it on the basis of its own metered usage, separately from rent); separate_charge_from_landlord (the landlord charges a flat amount or a percentage surcharge for heat separately from rent); included_in_rent (heat is part of the rent, with no separate charge); none (the household pays nothing toward heating: another person or an institution pays it, or the home has no heat). A space heater, electric blanket or similar supplemental source is not the primary heating."
+precision: "One value for the case: a fact about the home of the application. A household that contributes toward the total expenses of a residence it shares with another household, utilities included, pays its share and is not none."
+supplied_by: "Application (housing and utility expenses), verified by a utility bill, lease or landlord statement where a program verifies it."
+sources: [S743, S492, S513, S1402]
+implemented: engine
+tags: [household]
+rationale: "Dual-entry audit 1.13, 1.14 and 2.8, same-word SW-9 and SW-33: the home's utility and heating arrangements were stated per member as each program's classification (SNAP's 'incurs heating or cooling cost', a count of utilities with the telephone stated again, LEAP's 'responsible for heating costs'). The neutral fact states what the household pays for, once for the case (convention rules 13 and 18); SNAP and LEAP derive their own tests from it."

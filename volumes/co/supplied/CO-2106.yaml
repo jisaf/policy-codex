@@ -4,10 +4,11 @@ identifier: cccap_application_county
 kind: supplied
 type: one of
 options: [adams, alamosa, arapahoe, archuleta, baca, bent, boulder, broomfield, chaffee, cheyenne, clear_creek, conejos, costilla, crowley, custer, delta, denver, dolores, douglas, eagle, el_paso, elbert, fremont, garfield, gilpin, grand, gunnison, hinsdale, huerfano, jackson, jefferson, kiowa, kit_carson, la_plata, lake, larimer, las_animas, lincoln, logan, mesa, mineral, moffat, montezuma, montrose, morgan, otero, ouray, park, phillips, pitkin, prowers, pueblo, rio_blanco, rio_grande, routt, saguache, san_juan, san_miguel, sedgwick, summit, teller, washington, weld, yuma]
-scope: person
+scope: case
 program: CCCAP
 meaning: "The county from which this household seeks or receives Low-Income Child Care assistance (8 CCR 1403-1 3.111.A), written as one of the county_of_residence options (lower case, underscores)."
+precision: "One value for the case."
 supplied_by: The county department that received the CCCAP application or holds the case.
 sources: [S1408]
 tags: [household]
-rationale: "OQ-159: 3.111.A compares the caretaker's county of residence with the county from which assistance is sought; no existing fact names that county. cccap_meets_county_residency (CO-2107) reads it."
+rationale: "OQ-159: 3.111.A compares the caretaker's county of residence with the county from which assistance is sought; no existing fact names that county. cccap_meets_county_residency (CO-2107) reads it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

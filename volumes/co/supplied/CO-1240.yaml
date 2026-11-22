@@ -3,10 +3,11 @@ name: Received energy assistance within twelve months
 identifier: received_energy_assistance_within_twelve_months
 kind: supplied
 type: yes/no
-scope: person
+scope: case
 program: SNAP
-meaning: The person's household received a Low-Income Energy Assistance Program (LEAP) or Energy Electronic Benefit Transfer (E-EBT) payment within the previous twelve months, regardless of whether it still resides at the address for which it received the payment, per 10 CCR 2506-1 4.407.31.A.1.b. Stated once per unit, carried on the head of household.
+meaning: "The person's household received a Low-Income Energy Assistance Program (LEAP) or Energy Electronic Benefit Transfer (E-EBT) payment within the previous twelve months, regardless of whether it still resides at the address for which it received the payment, per 10 CCR 2506-1 4.407.31.A.1.b."
+precision: "One value for the case."
 supplied_by: LEAP and E-EBT payment records in the statewide system.
 sources: [S743]
 tags: [income, snap]
-rationale: No existing fact records prior energy assistance; snap_entitled_to_heating_cooling_allowance (CO-1243) needs it.
+rationale: "No existing fact records prior energy assistance; snap_entitled_to_heating_cooling_allowance (CO-1243) needs it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

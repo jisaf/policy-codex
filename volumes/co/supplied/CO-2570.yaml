@@ -3,11 +3,11 @@ name: "SNAP: is a migrant household needing out-of-state verification"
 identifier: snap_is_migrant_household_needing_out_of_state_verification
 kind: supplied
 type: yes/no
-scope: person
+scope: case
 program: SNAP
-meaning: The household certified under expedited service is a migrant household whose postponed verification must come from out of state, and it has not already received this postponement during the current season (10 CCR 2506-1 4.205.11.B.2.b-c). Stated on the applicant.
-precision: If not stated, SNAP reads this as false.
+meaning: "The household certified under expedited service is a migrant household whose postponed verification must come from out of state, and it has not already received this postponement during the current season (10 CCR 2506-1 4.205.11.B.2.b-c)."
+precision: "One value for the case. If not stated, SNAP reads this as false."
 supplied_by: County worker determination at the expedited interview.
 sources: [S1824]
 tags: [snap, verification]
-rationale: "Case worker review (design limits, OQ-323): the migrant exception to the thirty-day termination had no fact."
+rationale: "Case worker review (design limits, OQ-323): the migrant exception to the thirty-day termination had no fact. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

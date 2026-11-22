@@ -3,10 +3,11 @@ name: Uses a top-three quality-rated child care provider
 identifier: uses_top_quality_rated_provider
 kind: supplied
 type: yes/no
-scope: person
+scope: case
 program: CCCAP
-meaning: The CCCAP household uses at least one child care provider rated in the top three levels of the Department's quality rating system, which reduces the parent fee by 20%, per 8 CCR 1403-1 3.124.H. Stated on the household's adult caretaker or teen parent.
+meaning: "The CCCAP household uses at least one child care provider rated in the top three levels of the Department's quality rating system, which reduces the parent fee by 20%, per 8 CCR 1403-1 3.124.H."
+precision: "One value for the case."
 supplied_by: Child care authorization and the provider's quality rating in the Department's system.
 sources: [S783]
 tags: [income]
-rationale: No existing fact states a provider's quality level; cccap_parent_fee (CO-1290) needs it.
+rationale: "No existing fact states a provider's quality level; cccap_parent_fee (CO-1290) needs it. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

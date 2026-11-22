@@ -1,12 +1,14 @@
 id: CO-1242
-name: Incurs a telephone cost
-identifier: incurs_telephone_cost
+name: Home incurs telephone cost
+identifier: home_incurs_telephone_cost
 kind: supplied
 type: yes/no
-scope: person
-program: SNAP
-meaning: The person's household incurs the cost of one telephone or of telephone service associated with a specific device (land line, cellular including disposable phones, or VOIP; not pay phones, unassociated phone cards, or internet or cable fees), per 10 CCR 2506-1 4.407.3.E.5. Stated once per unit, carried on the head of household.
-supplied_by: Applicant statement.
+scope: case
+program: All
+meaning: "The household pays for one telephone, or telephone service associated with a specific device (a land line, a cellular telephone including a disposable one, or VOIP), for a member of the household; not a pay phone, a phone card not associated with a device, or internet or cable fees."
+precision: "One value for the case. If not stated, SNAP reads this as false."
+supplied_by: "Application (utility expenses)."
 sources: [S746, S753]
-tags: [income, snap]
-rationale: No existing fact states it; snap_utility_allowance_amount (CO-1500) needs it to tell a telephone-only household (telephone allowance) from a one-other-utility household (OUA).
+implemented: engine
+tags: [household]
+rationale: "Phase-8 SNAP standard utility allowances. Dual-entry audit 1.13 and 2.8: renamed from home_incurs_telephone_cost and made one neutral fact for the case; the count of utilities (snap_non_heating_utility_cost_count, CO-1241) is now derived from one fact per utility, so the telephone is no longer stated twice."

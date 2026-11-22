@@ -3,10 +3,11 @@ name: Open Protective Services child care referral
 identifier: is_protective_services_child_care_case
 kind: supplied
 type: yes/no
-scope: person
+scope: case
 program: CCCAP
-meaning: Whether this household has an open child welfare case with the child(ren) placed by the county in foster home care, kinship foster home care, or non-certified kinship care, and a Protective Services Child Care Referral Form on file, per 8 CCR 1403-1 3.118.A, E.
+meaning: "Whether this household has an open child welfare case with the child(ren) placed by the county in foster home care, kinship foster home care, or non-certified kinship care, and a Protective Services Child Care Referral Form on file, per 8 CCR 1403-1 3.118.A, E."
+precision: "One value for the case."
 supplied_by: County Child Welfare worker's Protective Services Child Care Referral Form.
 sources: [S488]
 tags: [household]
-rationale: "3.118-3.119 describe a distinct Protective Services Child Care eligibility track (household of one, no low-income eligible activity or residency-verification requirement) that this volume has no fact to identify; cccap_eligibility_status (CO-989) needs it to branch to eligible_protective_services ahead of the low-income determination."
+rationale: "3.118-3.119 describe a distinct Protective Services Child Care eligibility track (household of one, no low-income eligible activity or residency-verification requirement) that this volume has no fact to identify; cccap_eligibility_status (CO-989) needs it to branch to eligible_protective_services ahead of the low-income determination. Dual-entry audit 1.13-1.17 and 5.9 (OQ-541, same-word SW-9): a fact about the application or the home has one value per case (convention rule 18), stated once in the case's case_facts instead of on each member."

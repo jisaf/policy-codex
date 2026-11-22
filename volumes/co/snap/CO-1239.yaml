@@ -1,0 +1,20 @@
+id: CO-1239
+name: "SNAP: incurs heating or cooling cost"
+identifier: snap_incurs_heating_cooling_cost
+kind: derived
+type: yes/no
+scope: case
+program: SNAP
+meaning: "The household incurs or anticipates heating or cooling costs separate and apart from its rent or mortgage (10 CCR 2506-1 4.407.31.A.1.a): it pays a heating vendor directly or its share of a shared heating bill (A.1.d), its landlord bills it on individual usage or charges a flat rate for heat separately from rent (A.1.c; a public-housing household responsible for excess heating costs, A.1.e), or it pays for cooling separately from its rent or mortgage."
+precision: "Reads the neutral home facts once for the case. Heat included in rent with no separate charge, or no heating cost at all, does not qualify; a supplemental heating source is not the primary heating (A.3). Cooling unstated is read as none."
+derived: [any, [in, home_heating_cost_arrangement, [pays_vendor_directly, billed_by_landlord_on_usage, separate_charge_from_landlord]], [otherwise, home_incurs_separate_cooling_cost, false]]
+sources: [S743]
+implemented: engine
+tags: [snap, household]
+rationale: "Dual-entry audit 1.13 and same-word SW-33: this was a supplied per-member statement of SNAP's own test (with different values on members of one household in CO-83, CO-87, CO-88 and CO-93). It is now SNAP's derived reading of the neutral heating arrangement and cooling facts (CO-3300, CO-3301), stated once for the case. The ID is kept; the identifier takes the SNAP prefix (convention rule 1)."
+tests:
+  - {id: CO-1239-T1, as_of: "2026-10-01", given: {home_heating_cost_arrangement: pays_vendor_directly}, expect: true}
+  - {id: CO-1239-T2, title: "Landlord's flat heat charge separate from rent (A.1.c)", as_of: "2026-10-01", given: {home_heating_cost_arrangement: separate_charge_from_landlord, home_incurs_separate_cooling_cost: false}, expect: true}
+  - {id: CO-1239-T3, title: "Heat in the rent, no cooling cost", as_of: "2026-10-01", given: {home_heating_cost_arrangement: included_in_rent, home_incurs_separate_cooling_cost: false}, expect: false}
+  - {id: CO-1239-T4, title: "Heat in the rent, separate air conditioning cost", as_of: "2026-10-01", given: {home_heating_cost_arrangement: included_in_rent, home_incurs_separate_cooling_cost: true}, expect: true}
+  - {id: CO-1239-T5, title: "No heating cost; cooling unstated reads as none", as_of: "2026-10-01", given: {home_heating_cost_arrangement: none}, expect: false}

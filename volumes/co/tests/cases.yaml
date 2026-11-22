@@ -14,6 +14,30 @@
 - id: CO-01
   title: Three generations in one home; grandmother entering nursing care; minor parent; mixed status
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p2 true; is_responsible_for_heating_costs p1 true, p2 true, p3 true, p4 true, p5 true; non_heating_utility_cost_count 3; incurs_telephone_cost true on members)
+    home_incurs_electricity_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
+    home_incurs_water_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
+    cw_meets_county_diversion_income_limit: false
+    is_destitute_migrant_or_seasonal_farmworker: false
+    residency_verification_cannot_reasonably_be_accomplished: false
+    uses_top_quality_rated_provider: true
+    is_protective_services_child_care_case: false
+    cccap_application_county: adams
+    school_meal_household_size: 4
+    school_meal_household_income: 3560
+    sebt_application_is_selected_for_verification: false
+    school_meal_household_income_verification_received: false
+    estimated_home_heating_costs_for_season: 900
+    leap_electric_heat_dwelling_type: not_electric
+    leap_households_sharing_living_arrangement: 1
+    lives_in_subsidized_housing: false
+    has_primary_heating_source: true
+    cccap_determination_type: application
   # Hard-coded numbers audit H-18: the county entry limit is a State figure (cccap_entry_income_limit_pct_fpl_table, CO-3004)
   # awaiting the CDEC county schedule (OQ-121), no longer stated on each person. The case states the adams row it
   # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
@@ -67,9 +91,7 @@
         ma_csra_annuity_lowest_estimate: 97000
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -82,13 +104,7 @@
         receives_hcbs_services: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -140,12 +156,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -156,12 +170,9 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -171,8 +182,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: married
         expects_institutional_stay_of_thirty_days: true
         has_income_trust: false
@@ -189,7 +198,6 @@
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: true
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -238,7 +246,6 @@
         af_has_total_disability_six_months: false
       month_defaults:
         lottery_gambling_winnings_received: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
@@ -303,9 +310,7 @@
         nighttime_residence_type: fixed_regular_adequate
         receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -319,13 +324,7 @@
         meets_nursing_facility_level_of_care: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -377,12 +376,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -393,13 +390,10 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_pace: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -409,8 +403,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: married
         expects_institutional_stay_of_thirty_days: false
         has_income_trust: false
@@ -429,7 +421,6 @@
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: true
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -453,10 +444,6 @@
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 3
-        incurs_telephone_cost: true
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -476,7 +463,6 @@
         af_has_total_disability_six_months: false
       month_defaults:
         lottery_gambling_winnings_received: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
@@ -542,9 +528,7 @@
         nighttime_residence_type: fixed_regular_adequate
         receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
@@ -560,13 +544,7 @@
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -618,12 +596,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: false
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -634,13 +610,10 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -650,8 +623,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: single
         is_required_to_file_tax_return: true
         expected_number_of_children: 0
@@ -661,7 +632,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
         snap_is_serving_ipv_disqualification: false
@@ -701,7 +671,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
@@ -763,9 +732,7 @@
         receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         ma_eligibility_was_erroneously_granted: false
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
@@ -781,15 +748,7 @@
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: true
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
-        school_meal_household_size: 4
-        school_meal_household_income: 3560
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -841,12 +800,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -857,12 +814,9 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -873,8 +827,6 @@
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: single
         is_required_to_file_tax_return: false
         expected_number_of_children: 0
@@ -884,7 +836,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -924,7 +875,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
@@ -988,9 +938,7 @@
         receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         ma_eligibility_was_erroneously_granted: false
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -1005,13 +953,7 @@
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: checklist sent on the application date; electronic matches as stated.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -1063,12 +1005,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -1079,12 +1019,9 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -1095,8 +1032,6 @@
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: single
         is_required_to_file_tax_return: false
         expected_number_of_children: 0
@@ -1106,7 +1041,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -1146,7 +1080,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
@@ -2151,6 +2084,31 @@
 - id: CO-02
   title: Same household after the grandmother's admission; SNAP unit excludes her; community spouse resource allowance
   as_of: "2026-11-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p2 true; is_responsible_for_heating_costs p1 true, p2 true, p3 true, p4 true, p5 true; non_heating_utility_cost_count 3; incurs_telephone_cost true on members)
+    home_incurs_electricity_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
+    home_incurs_water_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
+    leap_application_date: "2026-11-01"
+    cw_meets_county_diversion_income_limit: false
+    is_destitute_migrant_or_seasonal_farmworker: false
+    residency_verification_cannot_reasonably_be_accomplished: false
+    uses_top_quality_rated_provider: true
+    is_protective_services_child_care_case: false
+    cccap_application_county: adams
+    school_meal_household_size: 4
+    school_meal_household_income: 3560
+    sebt_application_is_selected_for_verification: false
+    school_meal_household_income_verification_received: false
+    estimated_home_heating_costs_for_season: 900
+    leap_electric_heat_dwelling_type: not_electric
+    leap_households_sharing_living_arrangement: 1
+    lives_in_subsidized_housing: false
+    has_primary_heating_source: true
+    cccap_determination_type: application
   # Hard-coded numbers audit H-18: the county entry limit is a State figure (cccap_entry_income_limit_pct_fpl_table, CO-3004)
   # awaiting the CDEC county schedule (OQ-121), no longer stated on each person. The case states the adams row it
   # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
@@ -2202,10 +2160,7 @@
         ma_csra_annuity_lowest_estimate: 97000
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -2219,13 +2174,7 @@
         receives_hcbs_services: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2277,12 +2226,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2293,12 +2240,9 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -2308,8 +2252,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: married
         expects_institutional_stay_of_thirty_days: true
         has_income_trust: false
@@ -2328,7 +2270,6 @@
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: true
         receives_ssi: false
         meets_ssa_disability_criteria: false
@@ -2374,7 +2315,6 @@
         ma_spousal_resources_at_snapshot: 46000
       month_defaults:
         lottery_gambling_winnings_received: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security and pension only
@@ -2438,10 +2378,7 @@
         nighttime_residence_type: fixed_regular_adequate
         receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -2456,13 +2393,7 @@
         meets_nursing_facility_level_of_care: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2514,12 +2445,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2530,13 +2459,10 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_pace: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -2546,8 +2472,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: married
         expects_institutional_stay_of_thirty_days: false
         has_income_trust: false
@@ -2566,7 +2490,6 @@
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: true
         qualifying_quarters: 40
         receives_ssi: false
@@ -2596,10 +2519,6 @@
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
         # Phase 8: the SUA is derived (OQ-36 resolved). The family pays heat and three other utilities (electricity, water, telephone).
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 3
-        incurs_telephone_cost: true
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         is_approved_for_work_study: false
@@ -2612,7 +2531,6 @@
         resides_in_medical_institution: false
       month_defaults:
         lottery_gambling_winnings_received: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_claims_co_owner_hardship_for_real_property: false
         ma_excess_real_property_is_for_sale: false  # needs-fact round (OQ-379)
         electronic_data_source_monthly_earned_income: 0  # needs-fact round (OQ-374): the data reports Social Security only
@@ -2677,10 +2595,7 @@
         nighttime_residence_type: fixed_regular_adequate
         receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
-        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
@@ -2697,13 +2612,7 @@
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2755,12 +2664,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: false
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2771,13 +2678,10 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         identity_verification_document_type: colorado_road_and_community_safety_act_license_or_id
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -2787,8 +2691,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: single
         is_tax_filer: true
         is_required_to_file_tax_return: true
@@ -2799,7 +2701,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         receives_ssi: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -2837,7 +2738,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         complies_with_tanf_work_requirements: false
         complies_with_refugee_program_work_requirements: false
         is_patient_in_institution_for_mental_diseases: false
@@ -2898,10 +2798,7 @@
         receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         ma_eligibility_was_erroneously_granted: false
-        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
         cccap_child_needs_care_for_part_of_day: false    # phase-10 sweep (K-4): no care is requested for this person
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
@@ -2918,15 +2815,7 @@
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: true
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
-        school_meal_household_size: 4
-        school_meal_household_income: 3560
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -2978,12 +2867,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -2994,12 +2881,9 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -3010,8 +2894,6 @@
         received_tanf_from_another_state_this_month: false
         is_requesting_assistance_for_own_child: true
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: single
         is_required_to_file_tax_return: false
         expected_number_of_children: 0
@@ -3021,7 +2903,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         receives_ssi: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -3059,7 +2940,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         cccap_education_activity_time_limit_reached: false    # phase-10 sweep (K-5): a teen parent in basic education has no time limit (3.111.G.4.b.2)
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
@@ -3122,10 +3002,7 @@
         receives_snap: true  # audit fix round (H-1): the October application was approved (CO-01); the household receives SNAP in November
         ma_lost_oap_to_non_oasdi_cost_of_living_adjustment: false  # needs-fact round (OQ-206)
         ma_eligibility_was_erroneously_granted: false
-        leap_application_date: "2026-11-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: adams  # phase-10 sweep (OQ-159)
         county_of_residence: adams  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         # Phase 7 (Medicaid/CHP+ completion) facts.
@@ -3141,13 +3018,7 @@
         meets_hcbs_waiver_target_group: none
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        uses_top_quality_rated_provider: true
         is_enrolled_in_nslp_school: false
-        estimated_home_heating_costs_for_season: 900
-        leap_electric_heat_dwelling_type: not_electric
-        leap_households_sharing_living_arrangement: 1
-        lives_in_subsidized_housing: false
         # Phase 9 verification facts: a month later, the documents requested in October have come in except p4's citizenship and identity.
         identity_attestation_is_questionable: false
         citizenship_attestation_is_questionable: false
@@ -3199,12 +3070,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -3215,12 +3084,9 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         cccap_is_in_job_search_activity: false
         months_of_assistance_received: 0
         cw_months_received_in_exempt_indian_country: 0
@@ -3230,8 +3096,6 @@
         has_hardship_extension_approved: false
         received_tanf_from_another_state_this_month: false
         # Illustrative figure, not from the fetched text: the county CCCAP entry limit (185% FPL).
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         marital_status: single
         is_required_to_file_tax_return: false
         expected_number_of_children: 0
@@ -3241,7 +3105,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         is_tax_filer: false
         receives_ssi: false
         meets_ssa_disability_criteria: false
@@ -3280,7 +3143,6 @@
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_has_requested_withdrawal_from_continuous_eligibility: false
         ma_is_unable_to_be_located: false
         ma_has_left_required_household: false
@@ -4251,6 +4113,12 @@
 - id: CO-03
   title: Elderly couple, one with Medicare and out-of-pocket medical expenses, no utility costs of their own
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: included_in_rent  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-09-15"
+    snap_determination_is_recertification: true
   relationships:
     - [spouse, p1, p2]
     - [buys_prepares_with, p1, p2]
@@ -4271,8 +4139,6 @@
         nighttime_residence_type: fixed_regular_adequate
         # Phase-10 sweep (OQ-38, P-4): the couple recertifies before its certification period ends, so October is not an
         # initial month and the minimum allotment applies (4.000.1 "Initial month of application"; 4.207.3.C).
-        snap_determination_is_recertification: true
-        snap_application_date: "2026-09-15"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -4301,10 +4167,6 @@
         snap_countable_nonliquid_resources: 0
         # Phase-8 fix round (C-5): the rent includes every utility. Stated through the utility facts, so
         # snap_utility_allowance_amount (CO-1500) derives the zero allowance instead of the case stating it.
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1956-01-01"
@@ -4356,8 +4218,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: true  # phase-10 sweep (OQ-38)
-        snap_application_date: "2026-09-15"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -4483,6 +4343,8 @@
   # ma_dependent_is_routed_to_non_filer_rules is true and p4 has the non-filer household of the home
   # he lives in, without p5 (see the p4 notes below).
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    snap_application_date: "2026-10-09"
   relationships:
     - [spouse, p1, p2]
     - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
@@ -4522,7 +4384,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
-        snap_application_date: "2026-10-09"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -4572,7 +4433,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
-        snap_application_date: "2026-10-09"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -4620,7 +4480,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
-        snap_application_date: "2026-10-09"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -4670,7 +4529,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
-        snap_application_date: "2026-10-09"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -4717,7 +4575,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-09"
-        snap_application_date: "2026-10-09"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -4879,6 +4736,8 @@
   # from a shared parent edge, and no parent is a person in this case (both are raised by their
   # grandmother) - the chapter has no `sibling` role, so it is left unexpressed rather than forced.
   as_of: "2026-04-10"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    snap_application_date: "2026-04-10"
   relationships:
     - [grandparent, p1, p2]
     - [grandparent, p1, p3]
@@ -4904,7 +4763,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
-        snap_application_date: "2026-04-10"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -4948,7 +4806,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
-        snap_application_date: "2026-04-10"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -5007,7 +4864,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-04-10"
-        snap_application_date: "2026-04-10"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -5189,6 +5045,12 @@
   #     outcome here since home_equity (240000) is under ma_home_equity_limit (752000, the CMS 2026
   #     minimum home equity limit Colorado's indexed $500,000 rule uses - phase 7) either way.
   as_of: "2026-11-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p2 true; non_heating_utility_cost_count 2; incurs_telephone_cost true on members)
+    home_incurs_electricity_cost: true  # dual-entry 2.8: one fact per utility (illustrative which)
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-11-02"
   relationships:
     - [spouse, p1, p2]
     - [files_jointly_with, p1, p2]  # audit fix round (dual-entry 3.3): one statement for the couple, in place of files_jointly_with_spouse on each spouse
@@ -5241,7 +5103,6 @@
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
-        snap_application_date: "2026-11-02"
       month_defaults:
         lottery_gambling_winnings_received: 0
         social_security_income: 1900
@@ -5272,13 +5133,9 @@
       # Dual-entry audit 1.2: her shelter costs are her own facts. The case once stated
       # shelter_costs_community_spouse 1,250 (utility allowance included) on both spouses; it is split
       # into her rent or mortgage, tax and insurance (634) and the heating and cooling allowance her
-      # home reaches (616, incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
+      # home reaches (616, snap_incurs_heating_cooling_cost), so 634 + 616 = 1,250 and the MMMNA is unchanged.
       facts:
         has_qualifying_military_service: false
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 2
-        incurs_telephone_cost: true
         date_of_birth: "1957-01-09"
         sex: female
         immigration_status: us_citizen
@@ -5309,7 +5166,6 @@
         chp_has_other_health_coverage: true
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
-        snap_application_date: "2026-11-02"
       month_defaults:
         lottery_gambling_winnings_received: 0
         shelter_cost_monthly: 634
@@ -5370,7 +5226,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-11-02"
-        snap_application_date: "2026-11-02"
       month_defaults:
         lottery_gambling_winnings_received: 0
         social_security_income: 0
@@ -5886,6 +5741,14 @@
   # not in the unit) was stated ineligible_income and now derives ineligible_no_dependent_child, grant 0;
   # no expectation reads his Colorado Works status (his CCCAP status is ineligible_child either way).
   as_of: "2026-12-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was is_responsible_for_heating_costs p1 true, p2 true, p3 true, p4 true, p6 true on members)
+    cw_determination_is_redetermination: false
+    leap_application_date: "2026-12-01"
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    has_primary_heating_source: true
+    cccap_determination_type: application
   # Hard-coded numbers audit H-18: the county entry limit is a State figure (cccap_entry_income_limit_pct_fpl_table, CO-3004)
   # awaiting the CDEC county schedule (OQ-121), no longer stated on each person. The case states the denver row it
   # assumes, the 185% floor of 3.111.H.1.a that each person stated before, so its CCCAP expectations are unchanged.
@@ -5905,7 +5768,6 @@
         education_program_type: none
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
-        cw_determination_is_redetermination: false
         receives_tanf_cash: false
         cw_months_received_in_exempt_indian_country: 0
         has_domestic_violence_extension_approved: false
@@ -5921,11 +5783,8 @@
         receives_ssi: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
-        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-06-11"
         sex: female
@@ -5934,12 +5793,9 @@
         state_of_residence: "CO"
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_emancipated_minor: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        is_responsible_for_heating_costs: true      # heat included in rent, non-subsidized (3.752.25.A.2)
-        has_primary_heating_source: true            # building furnace (3.751.1 "Primary Heating Source")
         snap_countable_liquid_resources: 0                # 3.111.H.4.c self-declaration, well under the $1M limit
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -5968,7 +5824,6 @@
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         receives_tanf_cash: false  # audit fix round (H-2): no Colorado Works case; CCCAP reads the case record
-        cw_determination_is_redetermination: false
         cw_months_received_in_exempt_indian_country: 0
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
@@ -5983,11 +5838,8 @@
         receives_ssi: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
-        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_is_financially_contributing_to_child: true    # phase-10 sweep (OQ-135): stated now that CCCAP reads no default
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1990-02-27"
         sex: male
@@ -5996,12 +5848,9 @@
         state_of_residence: "CO"
         cccap_is_in_job_search_activity: true
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_emancipated_minor: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -6036,7 +5885,6 @@
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
         receives_tanf_cash: false  # audit fix round (H-2): no Colorado Works case; CCCAP reads the case record
-        cw_determination_is_redetermination: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
         cw_has_failed_to_apply_for_ssn: false
@@ -6049,11 +5897,8 @@
         receives_ssi: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
-        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2012-05-20"
         sex: male
@@ -6062,12 +5907,9 @@
         state_of_residence: "CO"
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: true
-        is_protective_services_child_care_case: false
         is_emancipated_minor: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -6103,7 +5945,6 @@
         cccap_care_is_part_time: false  # dual-entry 2.13: the household's children were not all in part-time care
         child_welfare_payment_type: none
         nighttime_residence_type: fixed_regular_adequate
-        cw_determination_is_redetermination: false
         receives_tanf_cash: false
         has_domestic_violence_extension_approved: false
         has_hardship_extension_approved: false
@@ -6117,10 +5958,7 @@
         receives_ssi: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: true
-        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2008-03-14"
         sex: female
@@ -6129,12 +5967,9 @@
         state_of_residence: "CO"
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_emancipated_minor: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -6171,10 +6006,7 @@
         receives_ssi: false
         cw_is_optional_member_by_custody_or_support: false
         cw_requests_inclusion_in_assistance_unit: false
-        leap_application_date: "2026-12-01"    # phase-10 sweep (OQ-137): LEAP is decided on the application date (3.751.1 Point in Time)
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1981-09-05"
         sex: male
@@ -6182,12 +6014,9 @@
         state_of_residence: "CO"
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_emancipated_minor: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        is_responsible_for_heating_costs: true
-        has_primary_heating_source: true
         snap_countable_liquid_resources: 0
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
@@ -6297,6 +6126,8 @@
   # on that reading. His Medicaid status is tested against the five-year rule's exemptions (CO-1172):
   # no refugee or other exempt category, no military connection, no work quarters.
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    snap_application_date: "2026-10-05"
   relationships:
     - [parent, p2, p1]
     - [parent, p3, p2]
@@ -6330,7 +6161,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
-        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6392,7 +6222,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
-        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6463,7 +6292,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
-        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6537,7 +6365,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
-        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6631,6 +6458,8 @@
   # the SSI-related standards apart from status: emergency-only, with an emergency in October.
   # OAP: undocumented, so no Old Age Pension (af_category none) and no OAP health care.
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    snap_application_date: "2026-10-05"
   persons:
     p1:
       relationships: []
@@ -6656,7 +6485,6 @@
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
         ma_application_date: "2026-10-05"
-        snap_application_date: "2026-10-05"
         is_blind: false
         meets_ssa_disability_criteria: false
         af_has_total_disability_six_months: false
@@ -6739,6 +6567,8 @@
   # standard $488; she is serving a second-level sanction (3.608.4.C.1, S760), so 25% ($122) comes off: $366.
   # p4 is school aged, enrolled in an NSLP school and in a TANF household: SUN Bucks categorical, $120 (S796).
   as_of: "2026-11-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_meets_county_diversion_income_limit: false
   relationships:
     - [parent, p3, p4]
     - [buys_prepares_with, p1, p2]   # states p1's relationships (none is a spouse, so she is unmarried for is_married)
@@ -6832,7 +6662,6 @@
         is_probation_or_parole_violator: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
         receives_tanf_cash: true
       month_defaults:
         wages_gross: 0
@@ -6875,7 +6704,6 @@
         is_enrolled_in_nslp_school: true
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -6926,6 +6754,18 @@
   # care while he looks for work (CCCAP job search). His daughter's birth certificate and a school record
   # are in. The case is evaluated on 2027-02-10, after every program's period has run.
   as_of: "2027-02-10"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: none  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was is_responsible_for_heating_costs p1 false, p2 false on members)
+    snap_application_date: "2026-11-02"
+    snap_determination_is_recertification: false
+    is_destitute_migrant_or_seasonal_farmworker: false
+    residency_verification_cannot_reasonably_be_accomplished: false
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    sebt_application_is_selected_for_verification: false
+    school_meal_household_income_verification_received: false
+    has_primary_heating_source: false
+    cccap_determination_type: application
   relationships:
     - [parent, p1, p2]
   persons:
@@ -6951,9 +6791,7 @@
         medicare_part_b_enrolled: false
         nighttime_residence_type: emergency_or_transitional_shelter  # same-word audit SW-11: the case's homeless father and child stay in a shelter
         receives_snap: true  # audit fix round (H-1): expedited SNAP was issued on the November application; the household receives SNAP
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "1992-08-15"
         sex: male
@@ -6987,10 +6825,7 @@
         agency_finds_obviously_unfit: false
         cccap_is_financially_contributing_to_child: true
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_referred_for_colorado_works_child_care: false
-        is_responsible_for_heating_costs: false
-        has_primary_heating_source: false
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 20
@@ -6998,7 +6833,6 @@
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 20
         ma_application_date: "2026-11-02"
-        snap_application_date: "2026-11-02"
         # Verification facts.
         verification_request_date: "2026-11-02"
         ma_reasonable_opportunity_notice_date: "2026-11-02"
@@ -7048,12 +6882,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7064,14 +6896,11 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -7116,9 +6945,7 @@
         nighttime_residence_type: emergency_or_transitional_shelter  # same-word audit SW-11: the case's homeless father and child stay in a shelter
         receives_snap: true  # audit fix round (H-1): expedited SNAP was issued on the November application; the household receives SNAP
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         date_of_birth: "2020-05-20"
         sex: female
@@ -7148,10 +6975,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_referred_for_colorado_works_child_care: false
-        is_responsible_for_heating_costs: false
-        has_primary_heating_source: false
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 0
@@ -7159,7 +6983,6 @@
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
         ma_application_date: "2026-11-02"
-        snap_application_date: "2026-11-02"
         verification_request_date: "2026-11-02"
         ma_reasonable_opportunity_notice_date: "2026-11-02"
         identity_attestation_is_questionable: false
@@ -7210,12 +7033,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7226,14 +7047,11 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         electronic_data_source_monthly_gross_income: 0  # dual-entry 2.4: the data sources report no income
         wages_gross: 0
         self_employment_net_earnings_for_tax: 0
@@ -7347,6 +7165,19 @@
   # residency and job are documented, but SAVE has not answered and neither has submitted an immigration
   # document. p1 works 140 hours a month for $1,800; her hours are not yet documented.
   as_of: "2026-10-15"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: none  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 false; is_responsible_for_heating_costs p1 false, p2 false on members)
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
+    is_destitute_migrant_or_seasonal_farmworker: false
+    residency_verification_cannot_reasonably_be_accomplished: false
+    is_protective_services_child_care_case: false
+    cccap_application_county: denver
+    sebt_application_is_selected_for_verification: false
+    school_meal_household_income_verification_received: false
+    has_primary_heating_source: false
+    cccap_determination_type: application
   relationships:
     - [parent, p1, p2]
     - [tax_filer, p1, p2]
@@ -7373,17 +7204,13 @@
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
         receives_snap: false  # audit fix round (H-1): the SNAP application of 2026-10-01 is pending
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         is_tax_filer: true
         is_required_to_file_tax_return: true
         qualifying_quarters: 30
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
         date_of_birth: "1994-05-10"
         sex: female
         immigration_status: lawful_permanent_resident
@@ -7418,10 +7245,7 @@
         agency_finds_obviously_unfit: false
         cccap_is_financially_contributing_to_child: true
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_referred_for_colorado_works_child_care: false
-        is_responsible_for_heating_costs: false
-        has_primary_heating_source: false
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 300
@@ -7429,7 +7253,6 @@
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 300
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         # Verification facts.
         verification_request_date: "2026-10-01"
         ma_reasonable_opportunity_notice_date: "2026-10-01"
@@ -7479,12 +7302,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7495,15 +7316,12 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: false
         is_enrolled_in_nslp_school: false
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -7554,17 +7372,13 @@
         nighttime_residence_type: fixed_regular_adequate
         receives_snap: false  # audit fix round (H-1): the SNAP application of 2026-10-01 is pending
         cccap_child_needs_care_for_part_of_day: true    # phase-10 sweep (K-4, 3.111.F)
-        cccap_application_county: denver  # phase-10 sweep (OQ-159)
         county_of_residence: denver  # phase-10 sweep (OQ-159, illustrative county)
-        cccap_is_receiving_assistance: false    # phase-10 sweep (OQ-133): an application, so the entry limit applies
         leap_is_in_another_approved_household: false    # phase-10 sweep (OQ-163 K-8, 3.751.2.A)
         is_tax_filer: false
         is_required_to_file_tax_return: false
         qualifying_quarters: 0
         chp_has_other_health_coverage: false
         chp_is_eligible_for_public_agency_state_health_benefits_plan: false
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
         date_of_birth: "2018-04-02"
         sex: female
         immigration_status: lawful_permanent_resident
@@ -7595,10 +7409,7 @@
         snap_has_drug_felony_involving_snap_benefits: false
         cccap_is_in_job_search_activity: false
         cccap_child_has_additional_care_needs: false
-        is_protective_services_child_care_case: false
         is_referred_for_colorado_works_child_care: false
-        is_responsible_for_heating_costs: false
-        has_primary_heating_source: false
         is_emancipated_minor: false
         marital_status: single
         snap_countable_liquid_resources: 0
@@ -7606,7 +7417,6 @@
         snap_countable_nonliquid_resources: 0
         ssi_countable_resources_individual: 0
         ma_application_date: "2026-10-01"
-        snap_application_date: "2026-10-01"
         verification_request_date: "2026-10-01"
         ma_reasonable_opportunity_notice_date: "2026-10-01"
         identity_attestation_is_questionable: false
@@ -7655,12 +7465,10 @@
         self_employment_income_verified_by_electronic_data_source: false
         has_been_issued_ssn: true
         zero_income_verified: false
-        snap_determination_is_recertification: false
         is_sponsored_non_citizen: false
         sponsor_information_verified: false
         claims_disability: false
         claims_shelter_costs_for_unoccupied_home: false
-        residency_verification_cannot_reasonably_be_accomplished: false
         ma_application_is_msp_only: false
         marital_status_attestation_is_questionable: false
         marital_status_verification_document_received: false
@@ -7671,15 +7479,12 @@
         trust_documents_received: false
         owns_annuity: false
         annuity_verification_document_received: false
-        sebt_application_is_selected_for_verification: false
         sebt_eligibility_directly_verified: false
-        school_meal_household_income_verification_received: false
         nslp_school_enrollment_confirmed: true
         is_enrolled_in_nslp_school: true
       month_defaults:
         lottery_gambling_winnings_received: 0
         health_insurance_premiums_paid: 0
-        is_destitute_migrant_or_seasonal_farmworker: false
         ma_oap_is_patient_in_tb_or_mental_health_institution: false
         is_patient_in_institution_for_mental_diseases: false
         is_inmate_of_public_institution: false
@@ -8215,6 +8020,13 @@
   # Engineering follow-up pass, task 3: meets_public_assistance_citizenship_requirement is no longer stated; all three
   # are citizens (immigration_status us_citizen), so CO-905 derives true for each, the value the case stated.
   as_of: "2026-10-15"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 true, p3 false; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-12"
+    snap_determination_is_recertification: false
+    cw_application_date: "2026-10-12"
   relationships:
     - [spouse, p1, p2]
     - [parent, p1, p3]
@@ -8238,8 +8050,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -8266,10 +8076,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1995-04-02"
@@ -8279,7 +8085,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
@@ -8330,8 +8135,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -8358,10 +8161,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1990-07-19"
@@ -8372,7 +8171,6 @@
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
         cw_requests_inclusion_in_assistance_unit: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: married
         is_requesting_assistance_for_own_child: false
@@ -8423,8 +8221,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -8451,10 +8247,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2018-05-09"
@@ -8464,7 +8256,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -9878,6 +9669,13 @@
   # p3/p4: p3 has received 72 months of assistance and has no extension, so time_limit_reached; no income, grant before
   # sanction 488, grant 0. p5/p6 live in New Mexico: ineligible_residency; grant before sanction 488, grant 0.
   as_of: "2026-10-15"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: included_in_rent  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 false, p3 false, p4 false, p5 false, p6 false; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-12"
+    snap_determination_is_recertification: false
+    cw_application_date: "2026-10-12"
   relationships:
     - [parent, p1, p2]
     - [parent, p3, p4]
@@ -9899,8 +9697,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -9927,10 +9723,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1996-03-10"
@@ -9940,7 +9732,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -9991,8 +9782,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10019,10 +9808,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2021-06-01"
@@ -10032,7 +9817,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10083,8 +9867,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10111,10 +9893,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1990-01-15"
@@ -10124,7 +9902,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10177,8 +9954,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10205,10 +9980,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2015-09-09"
@@ -10218,7 +9989,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10271,8 +10041,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10299,10 +10067,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1993-11-20"
@@ -10312,7 +10076,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10363,8 +10126,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10391,10 +10152,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2019-02-14"
@@ -10404,7 +10161,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10459,111 +10215,21 @@
   title: "CDHS review B-2: child support in Colorado Works - counted for eligibility at application, never in the grant; at redetermination only consistent support averaging over $500"
   # Built for the CDHS stakeholder review's B-2. Four unrelated one-caretaker, one-child units, no income but child
   # support received for the child. Need standard $331, grant standard $488.
-  # p1/p2 (application): $200 of current support counts against the need standard (3.605.5.A): 200 < 331, eligible.
-  # The grant excludes it (3.605.5.B; C.R.S. 26-2-709(1)(a)(IV)): 488 - 0 = 488 (the review's probe got 288).
+  # p1/p2 (application) moved to CO-100 (dual-entry audit 1.17: the determination type is one fact per case).
   # p3/p4 (redetermination): support received in all six previous months, averaging $550 > $500, is counted (C.2):
   # 550 >= 331, ineligible_income, grant 0.
   # p5/p6 (redetermination): received in five of the six months, so inconsistent and not countable (C.1): eligible, 488.
   # p7/p8 (redetermination): consistent but averaging $450, at or below $500, disregarded (C.2): eligible, 488.
   # The redetermination units receive Colorado Works and are past their first certification period.
   as_of: "2026-11-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    cw_determination_is_redetermination: true
+    cw_meets_county_diversion_income_limit: false
   relationships:
-    - [parent, p1, p2]
     - [parent, p3, p4]
     - [parent, p5, p6]
     - [parent, p7, p8]
   persons:
-    p1:
-      # Applicant mother, no income.
-      facts:
-        is_member_of_federally_recognized_tribe: false
-        is_alaska_native: false
-        is_urban_indian_under_ihcia: false
-        tribal_descendant_degree: none
-        education_program_type: none
-        child_welfare_payment_type: none
-        date_of_birth: "1991-05-01"
-        immigration_status: us_citizen
-        state_of_residence: CO
-        snap_is_head_of_household: true
-        cw_is_head_of_assistance_unit: true
-        is_pregnant: false
-        is_emancipated_minor: false
-        marital_status: single
-        county_approved_living_arrangement: false
-        receives_ssi: false
-        received_tanf_from_another_state_this_month: false
-        months_of_assistance_received: 14
-        cw_months_received_in_exempt_indian_country: 0
-        has_domestic_violence_extension_approved: false
-        has_hardship_extension_approved: false
-        snap_is_serving_ipv_disqualification: false
-        cw_is_serving_ipv_disqualification: false
-        snap_is_disqualified_drug_felony: false
-        snap_has_drug_felony_involving_snap_benefits: false
-        is_fleeing_felon: false
-        is_probation_or_parole_violator: false
-        needs_long_term_cash_assistance: true
-        has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        receives_tanf_cash: false
-      month_defaults:
-        wages_gross: 0
-        self_employment_gross_receipts: 0
-        social_security_income: 0
-        pension_income: 0
-        unemployment_income: 0
-        tanf_cash_income: 0
-        adult_financial_cash_income: 0
-        ssi_income: 0
-        child_support_received: 0
-        other_unearned_income_nontaxable: 0
-        other_unearned_income_taxable: 0
-        tax_exempt_interest: 0
-        work_sanction_level_served: none
-    p2:
-      # Her son; $200 a month of current support.
-      facts:
-        is_member_of_federally_recognized_tribe: false
-        is_alaska_native: false
-        is_urban_indian_under_ihcia: false
-        tribal_descendant_degree: none
-        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
-        education_enrollment_intensity: full_time
-        child_welfare_payment_type: none
-        date_of_birth: "2018-02-11"
-        immigration_status: us_citizen
-        state_of_residence: CO
-        is_pregnant: false
-        receives_ssi: false
-        received_tanf_from_another_state_this_month: false
-        receives_tanf_cash: false
-        has_domestic_violence_extension_approved: false
-        has_hardship_extension_approved: false
-        snap_is_serving_ipv_disqualification: false
-        cw_is_serving_ipv_disqualification: false
-        snap_is_disqualified_drug_felony: false
-        snap_has_drug_felony_involving_snap_benefits: false
-        is_fleeing_felon: false
-        is_probation_or_parole_violator: false
-        is_enrolled_in_nslp_school: true
-        needs_long_term_cash_assistance: true
-        has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-      month_defaults:
-        wages_gross: 0
-        self_employment_gross_receipts: 0
-        social_security_income: 0
-        pension_income: 0
-        unemployment_income: 0
-        tanf_cash_income: 0
-        adult_financial_cash_income: 0
-        ssi_income: 0
-        child_support_received: 200
-        other_unearned_income_nontaxable: 0
-        other_unearned_income_taxable: 0
-        tax_exempt_interest: 0
-        work_sanction_level_served: none
     p3:
       # Recipient mother at redetermination.
       facts:
@@ -10596,9 +10262,7 @@
         is_probation_or_parole_violator: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
         receives_tanf_cash: true
-        cw_determination_is_redetermination: true
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10642,8 +10306,6 @@
         is_enrolled_in_nslp_school: true
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        cw_determination_is_redetermination: true
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10690,9 +10352,7 @@
         is_probation_or_parole_violator: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
         receives_tanf_cash: true
-        cw_determination_is_redetermination: true
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10736,8 +10396,6 @@
         is_enrolled_in_nslp_school: true
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        cw_determination_is_redetermination: true
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10788,9 +10446,7 @@
         is_probation_or_parole_violator: false
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
         receives_tanf_cash: true
-        cw_determination_is_redetermination: true
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10834,8 +10490,6 @@
         is_enrolled_in_nslp_school: true
         needs_long_term_cash_assistance: true
         has_specific_crisis_need: false
-        cw_meets_county_diversion_income_limit: false
-        cw_determination_is_redetermination: true
       month_defaults:
         wages_gross: 0
         self_employment_gross_receipts: 0
@@ -10854,11 +10508,6 @@
   # 488 in November (the size-two grant, child support never counted in the grant, 3.605.5.B); tanf_cash_income states it
   # across parent and child, 244 each, where it was 0. No expectation moves: Colorado Works does not count its own grant.
   expect:
-    p1:
-      cw_countable_income: {"2026-11": 200}
-      cw_eligibility_status: {"2026-11": eligible}
-      cw_payment_countable_income: {"2026-11": 0}
-      cw_grant_amount: {"2026-11": 488}
     p3:
       cw_countable_income: {"2026-11": 550}
       cw_eligibility_status: {"2026-11": ineligible_income}
@@ -10871,6 +10520,115 @@
       cw_countable_income: {"2026-11": 0}
       cw_eligibility_status: {"2026-11": eligible}
       cw_grant_amount: {"2026-11": 488}
+
+- id: CO-100
+  title: "CDHS review B-2: child support in Colorado Works at application - counted for eligibility, never in the grant"
+  # Split from CO-85 (dual-entry audit 1.17, OQ-541): whether the Colorado Works determination is an application or a
+  # redetermination is one fact of the case, so the application unit (p1, p2) is its own case. Facts and expectations
+  # are unchanged: $200 of current support counts against the $331 need standard (3.605.5.A), 200 < 331, eligible; the
+  # grant excludes it (3.605.5.B; C.R.S. 26-2-709(1)(a)(IV)): 488 - 0 = 488.
+  as_of: "2026-11-01"
+  case_facts:
+    cw_determination_is_redetermination: false  # an application (p1 and p2 stated none before: read as an application)
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+    - [parent, p1, p2]
+  persons:
+    p1:
+      # Applicant mother, no income.
+      facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: none
+        child_welfare_payment_type: none
+        date_of_birth: "1991-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        snap_is_head_of_household: true
+        cw_is_head_of_assistance_unit: true
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: single
+        county_approved_living_arrangement: false
+        receives_ssi: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 14
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+        receives_tanf_cash: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+    p2:
+      # Her son; $200 a month of current support.
+      facts:
+        is_member_of_federally_recognized_tribe: false
+        is_alaska_native: false
+        is_urban_indian_under_ihcia: false
+        tribal_descendant_degree: none
+        education_program_type: elementary  # same-word audit SW-12: a full-time elementary pupil
+        education_enrollment_intensity: full_time
+        child_welfare_payment_type: none
+        date_of_birth: "2018-02-11"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        receives_ssi: false
+        received_tanf_from_another_state_this_month: false
+        receives_tanf_cash: false
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        snap_is_serving_ipv_disqualification: false
+        cw_is_serving_ipv_disqualification: false
+        snap_is_disqualified_drug_felony: false
+        snap_has_drug_felony_involving_snap_benefits: false
+        is_fleeing_felon: false
+        is_probation_or_parole_violator: false
+        is_enrolled_in_nslp_school: true
+        needs_long_term_cash_assistance: true
+        has_specific_crisis_need: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 200
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        work_sanction_level_served: none
+  expect:
+    p1:
+      cw_countable_income: {"2026-11": 200}
+      cw_eligibility_status: {"2026-11": eligible}
+      cw_payment_countable_income: {"2026-11": 0}
+      cw_grant_amount: {"2026-11": 488}
 - id: CO-86
   title: "CDHS review B-3: a pregnant woman with no other children qualifies for Colorado Works at the zero-child column"
   # Built for the CDHS stakeholder review's B-3. p1, 24, is pregnant with her first child, has no income and applies
@@ -10880,6 +10638,13 @@
   # 384). p2, 40, is not pregnant and has no child: ineligible_no_dependent_child, grant 0, not in any unit Colorado
   # Works can aid.
   as_of: "2026-10-15"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: included_in_rent  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 false; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-12"
+    snap_determination_is_recertification: false
+    cw_application_date: "2026-10-12"
   relationships: []
   persons:
     p1:
@@ -10899,8 +10664,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -10927,10 +10690,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "2002-02-02"
@@ -10940,7 +10699,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: true
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -10992,8 +10750,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-12"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11020,10 +10776,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1986-05-05"
@@ -11033,7 +10785,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2026-10-12"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11094,6 +10845,12 @@
   # net 514. Maximum allotment for one 306 less 30% of 514 (154.20) = 151.80, rounded down to 151. Before the
   # review p1 stayed eligible: size 2, gross 2100, adjusted 1583, excess shelter 724.50, net 859, 562 - 257.70 = 304.
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 true; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
   relationships:
     - [buys_prepares_with, p1, p2]
   persons:
@@ -11113,8 +10870,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11141,10 +10896,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
@@ -11226,8 +10977,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11254,10 +11003,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
@@ -11331,6 +11076,12 @@
   # Before the review all three were eligible: size 3, gross 1600, adjusted 1143, excess shelter capped at 769,
   # net 374, 808 - 112.20 = 695.
   as_of: "2026-10-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 true, p2 false, p3 false; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2026-10-01"
+    snap_determination_is_recertification: false
   relationships:
     - [parent, p1, p2]
     - [buys_prepares_with, p1, p3]
@@ -11351,8 +11102,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11379,10 +11128,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1991-04-04"
@@ -11443,8 +11188,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11471,10 +11214,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2016-01-20"
@@ -11534,8 +11273,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2026-10-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11562,10 +11299,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1981-07-07"
@@ -11642,6 +11375,13 @@
   # applying in August 2028 therefore has no need or grant standard, and its status and grant cannot be determined -
   # not the stale 2025 figure the review warned of.
   as_of: "2028-08-15"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: included_in_rent  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 false; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2028-08-10"
+    snap_determination_is_recertification: false
+    cw_application_date: "2028-08-10"
   relationships:
     - [parent, p1, p2]
   persons:
@@ -11661,8 +11401,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2028-08-10"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11689,10 +11427,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: true
         date_of_birth: "1994-12-12"
@@ -11702,7 +11436,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2028-08-10"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11753,8 +11486,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2028-08-10"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11781,10 +11512,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "2020-10-10"
@@ -11794,7 +11521,6 @@
         meets_nursing_facility_level_of_care: false
         snap_resides_in_institution_providing_meals: false
         resides_in_medical_institution: false
-        cw_application_date: "2028-08-10"
         is_pregnant: false
         marital_status: single
         is_requesting_assistance_for_own_child: false
@@ -11846,6 +11572,12 @@
   # He is 60 on June 1, 2028, under the ABAWD maximum of 64 (Pub. L. 119-21 sec. 10102). Only the ABAWD items are expected:
   # the allotment would need figures for federal fiscal year 2028, which are not yet loaded.
   as_of: "2028-06-01"
+  case_facts:  # dual-entry audit 1.13-1.17, 5.9 (OQ-541): facts of the application and the home, once for the case, each formerly repeated on members
+    home_heating_cost_arrangement: pays_vendor_directly  # dual-entry 1.13-1.14, SW-33: the neutral heating arrangement (was incurs_heating_cooling_cost p1 false, p2 true; non_heating_utility_cost_count 0; incurs_telephone_cost false on members)
+    home_incurs_telephone_cost: false
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: "2028-06-01"
+    snap_determination_is_recertification: false
   relationships:
     - [buys_prepares_with, p1, p2]
   persons:
@@ -11865,8 +11597,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2028-06-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -11893,10 +11623,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: false
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: true
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1968-03-03"
@@ -11984,8 +11710,6 @@
         medicare_part_a_entitled: false
         medicare_part_b_enrolled: false
         nighttime_residence_type: fixed_regular_adequate
-        snap_determination_is_recertification: false
-        snap_application_date: "2028-06-01"
         is_approved_for_work_study: false
         is_fleeing_felon: false
         is_probation_or_parole_violator: false
@@ -12012,10 +11736,6 @@
         snap_countable_liquid_resources: 300
         cccap_declares_assets_within_limit: true
         snap_countable_nonliquid_resources: 0
-        incurs_heating_cooling_cost: true
-        received_energy_assistance_within_twelve_months: false
-        non_heating_utility_cost_count: 0
-        incurs_telephone_cost: false
         snap_is_head_of_household: false
         cw_is_head_of_assistance_unit: false
         date_of_birth: "1976-08-08"
