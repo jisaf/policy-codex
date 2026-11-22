@@ -78,6 +78,8 @@ export const COUNT_DEFINITIONS = {
   owns: "A role owns a question when the question's Owner line names it. Partly settled questions are counted apart.",
   pastDue: "A due date is past due when it falls before the date shown.",
   affects: "An item affects what reads it, directly or through other rules, and the program outcomes those reach; a path that runs only through document-verification flags is left out of the outcomes.",
+  takesEffect: "A change takes effect in a month when a figure's new version starts or its last version ends, a rule's effective dates start or end, or a rule document's stated effective date falls in that month.",
+  outcome: "An outcome is a result a program declares (eligibility, a category, an amount); every other stored result is a step on the way, such as countable income.",
 } as const;
 
 function n(x: number, one: string, many = `${one}s`): string {
@@ -874,4 +876,107 @@ export function itemAffects(engine: Engine, identifier: string): ItemAffects {
 export function affectsPhrase(a: ItemAffects): string {
   if (!a.dependents) return "Nothing reads it";
   return `Read by ${n(a.direct, "rule")} directly and ${a.dependents.toLocaleString("en-US")} in all, reaching ${n(a.outcomes, "program outcome")}`;
+}
+
+// ---- the Changes place: months, readers of a change, a proposal's reach
+
+/** Every month in which something takes effect (figure versions, rules and
+ *  rule documents, as `changesInMonth` counts them), oldest first, with how
+ *  many changes. The month picker lists these. */
+export function changeMonths(
+  engine: Engine, vol: VolumeSources, programs: readonly string[] | null = null,
+): Array<{ month: string; total: number }> {
+  let per = monthsMemo.get(engine);
+  if (!per) { per = new Map(); monthsMemo.set(engine, per); }
+  const key = `${vol.documents.length}|${programs ? programs.join(",") : "*"}`;
+  const hit = per.get(key);
+  if (hit) return hit;
+  const all = changesTakingEffect(engine, vol, "0000-01-01", "9999-12-31", programs);
+  const by = new Map<string, number>();
+  for (const d of [...all.events.map((e) => e.date), ...all.documents.map((d) => d.date)]) {
+    const m = d.slice(0, 7);
+    by.set(m, (by.get(m) ?? 0) + 1);
+  }
+  const out = [...by.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([month, total]) => ({ month, total }));
+  per.set(key, out);
+  return out;
+}
+
+const monthsMemo = new WeakMap<Engine, Map<string, Array<{ month: string; total: number }>>>();
+
+/** The households (case ids, in stored order) that READ at least one of
+ *  `identifiers`: the union of `householdsThatRead`. */
+export function householdsReadingAny(
+  engine: Engine, cases: readonly HouseholdCase[], identifiers: readonly string[],
+): string[] {
+  const ids = new Set(restingOn(engine, cases, identifiers).map((r) => r.caseId));
+  return cases.filter((c) => ids.has(c.id)).map((c) => c.id);
+}
+
+/** The items that cite an excerpt of document `docId`, in their sources or
+ *  in a dated version: what a rule document taking effect bears on. */
+export function itemsCitingDocument(
+  engine: Engine, sources: VolumeSources["sources"], docId: string,
+): Item[] {
+  const excerpts = new Set(sources.filter((s) => s.document === docId).map((s) => s.id));
+  return engine.items().filter((it) =>
+    (it.sources ?? []).some((x) => excerpts.has(x)) || (it.versions ?? []).some((v) => v.source && excerpts.has(v.source)));
+}
+
+export interface ProposalReach {
+  /** Households that read at least one changed item. */
+  read: string[];
+  /** Households at least one changed item reaches. */
+  reach: string[];
+}
+
+/** The households a proposal's changed items READ and REACH: the unions of
+ *  `householdsThatRead` and `householdsReached` over them, so a proposal of
+ *  one item says exactly what that item's page says (Blind B's proposal said
+ *  32 where the item said 6). */
+export function proposalReach(
+  engine: Engine, cases: readonly HouseholdCase[], identifiers: readonly string[],
+): ProposalReach {
+  const reached = new Set<string>();
+  for (const id of identifiers) for (const c of householdsReached(engine, cases, id)) reached.add(c);
+  return {
+    read: householdsReadingAny(engine, cases, identifiers),
+    reach: cases.filter((c) => reached.has(c.id)).map((c) => c.id),
+  };
+}
+
+/** Results that would change, split into OUTCOMES (a program's declared
+ *  outcome, `outcomeIdentifiers`) and intermediate STEPS (any other stored
+ *  result, such as countable income): a change can move a step without
+ *  moving an outcome, and a page shows both. */
+export function changedSplit(
+  engine: Engine, changed: readonly ChangedResult[],
+): { outcomes: ChangedResult[]; steps: ChangedResult[] } {
+  const outs = outcomeIdentifiers(engine);
+  return {
+    outcomes: changed.filter((c) => outs.has(c.identifier)),
+    steps: changed.filter((c) => !outs.has(c.identifier)),
+  };
+}
+
+/** The households that read a rule document taking effect: those reading
+ *  an item (in `programs`, all when null) that cites one of its excerpts. */
+export function documentReaders(
+  engine: Engine, cases: readonly HouseholdCase[], sources: VolumeSources["sources"], docId: string,
+  programs: readonly string[] | null = null,
+): { items: Item[]; households: string[] } {
+  const items = itemsCitingDocument(engine, sources, docId).filter((it) => !programs || programs.includes(it.program));
+  return { items, households: householdsReadingAny(engine, cases, items.map((it) => it.identifier)) };
+}
+
+/** What takes effect that one stored household reads (Blind A's "Only what
+ *  touches household" filter): the figures and rules it reads, and the rule
+ *  documents an item it reads cites. */
+export function changesReadBy(
+  engine: Engine, cases: readonly HouseholdCase[], sources: VolumeSources["sources"],
+  changes: ChangesTakingEffect, caseId: string, programs: readonly string[] | null = null,
+): ChangesTakingEffect {
+  const events = changes.events.filter((e) => householdsThatRead(engine, cases, e.item.identifier).includes(caseId));
+  const documents = changes.documents.filter((d) => documentReaders(engine, cases, sources, d.doc.id, programs).households.includes(caseId));
+  return { events, documents, total: events.length + documents.length };
 }

@@ -73,12 +73,12 @@ test("load, search, open an item, edit, tray count changes, discard", async ({ p
   await expect(pill).toHaveText("Your proposal 1");
   await pill.click();
   await expect(page).toHaveURL(/#\/mwr\/changes\/proposal$/);
-  await expect(page.getByRole("link", { name: "WR-003 Age" })).toBeVisible();
+  await expect(page.locator('section.holds li.entry[data-entry="WR-003"]').getByRole("link", { name: "Age", exact: true })).toBeVisible();
 
   // WR-003 has no cited sources, so the tray shows it as invalid and Propose
   // stays disabled (RULING A28: Save to tray always works; Propose does not).
   await expect(
-    page.locator(".tray.inline").getByText("At least one source excerpt is cited"),
+    page.locator("section.holds").getByText("At least one source excerpt is cited"),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Propose" })).toBeDisabled();
 

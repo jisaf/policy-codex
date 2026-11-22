@@ -99,7 +99,8 @@ export function downloadStagedChange(kind: StagedKind, cs: ChangeSet = changeSet
 /** The panel every staging surface shows: what happens next, the download,
  *  and the token path. `cs` overrides the tray (the editor's unsaved draft). */
 export function SendChange(
-  { kind, cs, compact = false }: { kind: StagedKind; cs?: ChangeSet; compact?: boolean },
+  { kind, cs, compact = false, onPage = false }:
+  { kind: StagedKind; cs?: ChangeSet; compact?: boolean; onPage?: boolean },
 ) {
   const set = cs ?? changeSetSig.value;
   // A static preview build cannot propose: the download is the only path.
@@ -117,7 +118,7 @@ export function SendChange(
         <button type="button" class="btn download" disabled={!staged} onClick={() => downloadStagedChange(kind, set)}>
           Download this change
         </button>
-        {!cs && (
+        {!cs && !onPage && (
           <button type="button" class="btn" onClick={() => { trayOpenSig.value = true; }}>Open the change tray</button>
         )}
         {!hasToken && !BUNDLED && (
