@@ -3,12 +3,12 @@ name: "Periodic unearned income frequency"
 identifier: periodic_unearned_income_frequency
 kind: supplied
 type: one of
-options: [every_other_month, quarterly, twice_a_year, annual]
+options: [weekly, biweekly, semimonthly, every_other_month, quarterly, twice_a_year, annual]
 scope: person
 program: All
-meaning: "How often the person receives an unearned income that is paid less often than monthly (every other month, every quarter, twice a year or once a year): quarterly dividends or annual royalties, for example."
-precision: "One such income per person; a person with none states nothing. If not stated, SNAP reads the person's unearned income as received."
+meaning: "How often the person receives an unearned income that is not paid once a month: every week, every two weeks or twice a month (weekly unemployment compensation, child support withheld from a payer's biweekly pay), or less often than monthly - every other month, every quarter, twice a year or once a year (quarterly dividends or annual royalties)."
+precision: "One such income per person; a person with none states nothing. If not stated, SNAP reads the person's unearned income as received. Coverage pass 3 C3-4: weekly, biweekly and semimonthly added; the meaning of the existing options is unchanged."
 supplied_by: "Applicant statement; the payer's statements."
 sources: [S3112]
 tags: [snap, income]
-rationale: "Coverage review snap-financial CF-3: 4.402.A.2 (S3112) converts income received every other month, quarterly, twice a year or annually to a monthly amount; the unearned income facts state each month's receipts only."
+rationale: "Coverage pass 3 C3-4: 4.402.A.2 also converts income received weekly (by 4.3), every two weeks (by 2.15) and twice a month (by 2), and the conversion covers income, not only wages, so the weekly, biweekly and semimonthly options were added. Coverage review snap-financial CF-3: 4.402.A.2 (S3112) converts income received every other month, quarterly, twice a year or annually to a monthly amount; the unearned income facts state each month's receipts only."

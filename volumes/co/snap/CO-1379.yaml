@@ -6,9 +6,9 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: "Whether the person's claimed shelter costs must be verified for SNAP: the household's declaration is accepted unless questionable, except that a household claiming costs for a home it is temporarily not occupying verifies the actual utility costs. Colorado's mandatory standard utility allowance leaves no claim of actual utility costs above the standard to verify."
-precision: An unverified expense does not deny the household; it is left out of the shelter deduction (273.2(f)(3)(ii), S812).
-derived: [all, snap_is_household_member, [">", shelter_cost_monthly, 0], [any, shelter_costs_attestation_is_questionable, claims_shelter_costs_for_unoccupied_home]]
-sources: [S832, S818, S812, S1058, S1059, S1060]
+precision: "An unverified expense does not deny the household; it is left out of the shelter deduction (273.2(f)(3)(ii), S812). Coverage pass 3 C3-3: the amount tested is the stated shelter costs SNAP counts (snap_person_stated_shelter_costs, CO-4931), the other continuing charges of 4.407.3.E (CO-4345) included, so questionable charges that are a household's only shelter cost are verified (4.507.B.1: \"unless questionable\"), and an unverified one is left out after the thirtieth day by CO-2300."
+derived: [all, snap_is_household_member, [">", snap_person_stated_shelter_costs, 0], [any, shelter_costs_attestation_is_questionable, claims_shelter_costs_for_unoccupied_home]]
+sources: [S832, S818, S812, S1058, S1059, S1060, S3126]
 implemented: engine
 tags: [verification, snap, income]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
@@ -17,3 +17,4 @@ tests:
   - {id: CO-1379-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 1400, shelter_costs_attestation_is_questionable: false, claims_shelter_costs_for_unoccupied_home: false}, expect: false}
   - {id: CO-1379-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 0, claims_shelter_costs_for_unoccupied_home: false}, expect: false}
   - {id: CO-1379-T4, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, shelter_cost_monthly: 900, shelter_costs_attestation_is_questionable: false, claims_shelter_costs_for_unoccupied_home: true}, expect: true}
+  - {id: CO-1379-T5, title: "Coverage pass 3 C3-3: only $400 of home-equity loan payments, questionable - verified", month: "2027-02", as_of: "2027-02-10", given: {snap_is_household_member: true, snap_person_stated_shelter_costs: 400, shelter_costs_attestation_is_questionable: true}, expect: true}

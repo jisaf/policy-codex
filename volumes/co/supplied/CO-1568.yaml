@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person
 program: SNAP
-meaning: The person's total monthly gross income as SNAP counts it (wages as converted from the pay schedule or averaged, net self-employment income, and unearned income, less the earned and unearned income SNAP excludes) as last verified for SNAP, at the previous certification or a later verified change.
+meaning: "The person's total monthly gross income as SNAP counts it (wages as converted from the pay schedule or averaged, training allowances other than WIOA and VISTA payments SNAP counts as earned income, net self-employment income, net boarder income, and unearned income as converted from its payment schedule, less the earned and unearned income SNAP excludes; snap_person_earned_income, CO-330, without a striker's pre-strike difference, plus snap_person_unearned_income, CO-331) as last verified for SNAP, at the previous certification or a later verified change."
 supplied_by: Verified income amounts in the CBMS SNAP case at the previous certification.
 sources: [S1055, S1056]
 tags: [verification, snap, income]
