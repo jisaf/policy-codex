@@ -129,9 +129,13 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       case "+": case "*": case "-": case "/":
         e.slice(1).forEach((s: Expr, k: number) => need(s, ["number"], `${op} operand ${k + 1}`));
         if (e.length < 3) errors.push(`${op} needs two operands`);
+        // Subtraction and division take exactly two; a third operand was
+        // silently ignored by the evaluator (coverage round, 2026-11-22).
+        if ((op === "-" || op === "/") && e.length > 3) errors.push(`${op} takes exactly two operands (got ${e.length - 1}); nest it`);
         return "number";
       case "min":
         need(e[1], ["number"], "lesser of"); need(e[2], ["number"], "lesser of");
+        if (e.length !== 3) errors.push(`min takes exactly two operands (got ${e.length - 1}); nest it`);
         return "number";
       case "years_between":
         need(e[1], ["date"], "years between"); need(e[2], ["date"], "years between");
@@ -261,6 +265,7 @@ export function check(ix: LedgerIndex, expr: Expr, itemScope: Scope | undefined)
       }
       case "max":
         need(e[1], ["number"], "greater of"); need(e[2], ["number"], "greater of");
+        if (e.length !== 3) errors.push(`max takes exactly two operands (got ${e.length - 1}); nest it`);
         return "number";
       case "ceil": case "round":
         need(e[1], ["number"], op === "ceil" ? "rounded up" : "rounded");

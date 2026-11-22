@@ -32,6 +32,15 @@ describe("check", () => {
     expect(r.errors).toEqual(['unknown reference "no_such_fact"']);
   });
 
+  it("refuses a third operand to subtraction, division, min and max (the evaluator ignored it)", () => {
+    for (const op of ["-", "/", "min", "max"]) {
+      const r = check(ix, [op, 3, 2, 1], "person");
+      expect(r.errors.join(" "), op).toContain("exactly two operands");
+    }
+    expect(check(ix, ["-", 3, 2], "person").errors).toEqual([]);
+    expect(check(ix, ["+", 3, 2, 1], "person").errors).toEqual([]);
+  });
+
   it("lists the facts a derivation uses", () => {
     expect(usesOf(ix, ["years_between", "date_of_birth", ["det_date"]])).toEqual([
       "date_of_birth",
