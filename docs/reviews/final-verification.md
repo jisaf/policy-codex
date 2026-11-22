@@ -146,3 +146,14 @@ The probes cited in V-2, V-3 and V-9 were run on in-memory copies of CO-92 and C
 Resolved questions I re-read against the text and found consistent with the items: OQ-300 (request dates per program), OQ-301, OQ-308 (every declared status verified for children and pregnant persons, CO-1622), OQ-309, OQ-316 (extensions), OQ-318 and OQ-370 (the LEAP member excluded, 3.751.1 B), OQ-321 (SSN never delays), OQ-322 (but see V-8), OQ-323 (thirty days; migrant exception), OQ-373 (but see V-12, which concerns its CCCAP text), OQ-378 and OQ-380.
 
 New questions these findings may need: none for V-1 to V-7, whose texts answer them. V-13 needs one only if the SNAP household reviewer does not model the duplicate-child rule.
+
+## Disposition (SNAP findings)
+
+SNAP fix track, 2026-11-22 (see docs/reviews/final-snap.md, Disposition, for the commits).
+
+| id | sev | disposition |
+|---|---|---|
+| V-4 | P1 | Fixed `20f0a29`: qualifying_quarters_verified (CO-3733), ssa_quarters_review_start_date (CO-3734), snap_quarters_review_certification_months (CO-3735, 6), snap_requires_verification_of_qualifying_quarters (CO-3736), military_connection_verified (CO-3737), snap_requires_verification_of_military_connection (CO-3738). Both are factors of eligible alien status (273.2(f)(1)(ii)(A), S802), so snap_immigration_status_verification_is_pending (CO-1601) includes them: one count element on the non-citizen documentation period (4.505.6.E), and the quarters are not pending while SSA reviews them, for six months (4.505.6.F.2, 4.505.61; S2516). |
+| V-5 | P1 | Fixed `20f0a29` (the same as final-snap F-10): the unverified expense is not deducted after day 30; cases CO-115 and CO-91 (`23719b0`). |
+| V-13 | P2 | Deferred P2: the duplicate-child verification of 4.505.4.C needs a fact that the child already receives SNAP in another household and the household-composition rule it serves; neither is in scope of this P1 round. |
+| V-18 | P3 | The authorized representative's identity is now modeled (F-9); the SSN 8-month limit and periodic-report verifications stay documented limits. |
