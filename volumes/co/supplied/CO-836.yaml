@@ -5,8 +5,8 @@ kind: supplied
 type: yes/no
 scope: person-month
 program: Medicaid
-meaning: Whether this person receives a VA pension with an Aid and Attendance (A&A) or Unusual Medical Expenses (UME) portion, as determined by the VA, per 10 CCR 2505-10 § 8.100.6.C - the condition for excluding that portion from patient payment (unless the person is a veteran or surviving spouse of a veteran with no dependents in a State Veterans Home, where it is instead used as patient payment).
+meaning: Whether this person receives a VA pension with an Aid and Attendance (A&A) or Unusual Medical Expenses (UME) portion, as determined by the VA, per 10 CCR 2505-10 § 8.100.5.K - the condition for excluding that portion from income when determining eligibility and from patient payment (unless the person is a veteran or surviving spouse of a veteran with no dependents in a State Veterans Home, where it is instead used as patient payment, K.2).
 supplied_by: VA pension award letter, verified by the Eligibility Site.
-sources: [S1738]
+sources: [S2900, S1738]
 tags: [ma, ltc, income]
-rationale: "The phase-4 brief's interface directs creating a VA Aid and Attendance fact 'as the text requires.' ma_ltc_gross_income (CO-641) needs it to gate the va_aid_and_attendance_amount (CO-837) exclusion."
+rationale: "The phase-4 brief's interface directs creating a VA Aid and Attendance fact 'as the text requires.' ma_ltc_gross_income (CO-641) needs it to gate the va_aid_and_attendance_amount (CO-837) exclusion. Final verification pass 2, F2-2: cited as § 8.100.6.C; the rule is § 8.100.5.K (S2900). ma_va_aid_and_attendance_is_patient_payment (CO-4103) also reads it."

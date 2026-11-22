@@ -7,7 +7,7 @@ scope: global
 program: All
 meaning: "The most of a student's earned income the SSI method excludes in a month (20 CFR 416.1112(c)(3)), set each calendar year."
 versions:
-  - {from: "2025-01-01", value: 2350, source: S2211}
+  - {from: "2025-01-01", to: "2026-01-01", value: 2350, source: S2211}
   - {from: "2026-01-01", value: 2410, source: S2211}
 sources: [S2210, S2211]
 implemented: engine
