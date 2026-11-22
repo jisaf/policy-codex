@@ -857,14 +857,23 @@ export function mapCounts(engine: Engine, identifier: string): MapCounts {
 export function changeMonths(
   engine: Engine, vol: VolumeSources, programs: readonly string[] | null = null,
 ): Array<{ month: string; total: number }> {
+  let per = monthsMemo.get(engine);
+  if (!per) { per = new Map(); monthsMemo.set(engine, per); }
+  const key = `${vol.documents.length}|${programs ? programs.join(",") : "*"}`;
+  const hit = per.get(key);
+  if (hit) return hit;
   const all = changesTakingEffect(engine, vol, "0000-01-01", "9999-12-31", programs);
   const by = new Map<string, number>();
   for (const d of [...all.events.map((e) => e.date), ...all.documents.map((d) => d.date)]) {
     const m = d.slice(0, 7);
     by.set(m, (by.get(m) ?? 0) + 1);
   }
-  return [...by.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([month, total]) => ({ month, total }));
+  const out = [...by.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([month, total]) => ({ month, total }));
+  per.set(key, out);
+  return out;
 }
+
+const monthsMemo = new WeakMap<Engine, Map<string, Array<{ month: string; total: number }>>>();
 
 /** The households (case ids, in stored order) that READ at least one of
  *  `identifiers`: the union of `householdsThatRead`. */

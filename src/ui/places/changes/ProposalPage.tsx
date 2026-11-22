@@ -45,6 +45,7 @@ import { proposalCount } from "../../Header";
 import type { ViewContext } from "../../views/context";
 import { excerptHref, itemHref } from "../../views/parts";
 import { ChangedTable } from "./ChangedTable";
+import { useReadIndex } from "./TakesEffect";
 
 /** "Added … to your proposal", shown once on the page the editor returns to. */
 export const proposalFlashSig = signal("");
@@ -534,7 +535,8 @@ function Effect(
     return () => clearTimeout(t);
   }, [key, base]);
 
-  const reach = ids.length ? proposalReach(base, vol.cases, ids) : null;
+  const ready = useReadIndex(base, vol.cases);
+  const reach = ids.length && ready ? proposalReach(base, vol.cases, ids) : null;
   const fresh = worked && worked.key === key;
   return (
     <section class="card effect" aria-labelledby="effect-h" aria-busy={!fresh}>
@@ -544,6 +546,7 @@ function Effect(
           {entries.length ? "Signatures and answers change no result: only a change to a figure or rule does." : "Nothing to work out yet."}
         </p>
       )}
+      {ids.length > 0 && !ready && <p class="muted reach-wait">Working out which stored households read it…</p>}
       {reach && (
         <p class="reach">
           {readReachPhrase(reach.read.length, reach.reach.length, vol.cases.length)}.

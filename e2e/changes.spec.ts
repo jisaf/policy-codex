@@ -22,7 +22,7 @@ test("this month by default; October 2026's immigrant restriction compared with 
   await page.locator(".monthpick select").first().selectOption("2026-10");
   await expect(page).toHaveURL(/#\/co\/changes\?month=2026-10$/);
   const row = page.locator('li.change[data-item="CO-3034"]');
-  await expect(row.locator(".readers")).toContainText("CO-75");
+  await expect(row.locator(".readers")).toContainText("CO-75", { timeout: 30_000 });
   await row.locator("button.compare").click();
   await expect(row.locator(".compared")).toContainText("10 stored results in 1 household would change");
   await expect(row.locator('table.changed tr[data-case="CO-75"]').first()).toBeVisible();
@@ -47,7 +47,7 @@ test("Marcus changes the $90 disregard and sees its effect and approvers on one 
 
   await ed.locator('input[name="value"]').fill("100");
   const effect = page.locator("section.effect");
-  await expect(effect.locator(".reach")).toHaveText("Read by 6 of 47 stored households; it reaches 15.");
+  await expect(effect.locator(".reach")).toHaveText("Read by 6 of 47 stored households; it reaches 15.", { timeout: 30_000 });
   await expect(effect).toContainText("8 stored results in 4 households would change", { timeout: 30_000 });
   await expect(effect).toContainText("Steps on the way that change (8)");
 

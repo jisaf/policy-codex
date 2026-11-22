@@ -43,7 +43,9 @@ export function useReadIndex(engine: Engine, cases: readonly HouseholdCase[]): b
   useEffect(() => {
     if (restingReady(engine, cases)) { setReady(true); return; }
     setReady(false);
-    const t = setTimeout(() => { restingIndex(engine, cases); setReady(true); }, 30);
+    // Not for a reader only passing through: the page paints, then waits a
+    // moment before the second of work.
+    const t = setTimeout(() => { restingIndex(engine, cases); setReady(true); }, 250);
     return () => clearTimeout(t);
   }, [engine, cases]);
   return ready || restingReady(engine, cases);
