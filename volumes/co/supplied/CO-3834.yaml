@@ -3,11 +3,11 @@ name: "Date of a transfer of a resource for less than its value"
 identifier: resource_transfer_date
 kind: supplied
 type: calendar date
-scope: person
+scope: person-month
 program: All
-meaning: "The date the person (or the person's spouse) last gave away, sold, traded or otherwise transferred ownership of a resource for less than its fair value: cash or property given away or spent down, a financial instrument transferred, or another person's name added as an owner. Not stated when the person made no such transfer."
-precision: "If not stated, Adult Financial reads it as no transfer. Where several transfers were made, the case states the first, with the total uncompensated value in resource_transfer_uncompensated_value (af_twfc_penalty_months, CO-3840, states what follows)."
+meaning: "For a month in which the person (or the person's spouse) gave away, sold, traded or otherwise transferred ownership of a resource for less than its fair value - cash or property given away or spent down, a financial instrument transferred, or another person's name added as an owner - the date in the month the transfer was made. Not stated for a month with no such transfer."
+precision: "Stated with resource_transfer_uncompensated_value (CO-3835) for the same month. Adult Financial reads it only to place a transfer made in the month thirty-six months before the application month on either side of the look-back's first day (af_twfc_transfer_is_counted, CO-4008)."
 supplied_by: "Applicant statement, deeds, account and sale records, as the county establishes them."
-sources: [S2614]
+sources: [S2614, S2806]
 tags: [cash, resources]
-rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. The Medicaid transfer facts (uncompensated_transfer_value_in_lookback, CO-824; transfer_penalty_period_start_date, CO-886) state the Medicaid sixty-month look-back value and the Eligibility Site's penalty start, not the date of the transfer, so Adult Financial's thirty-six months cannot be read from them."
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. The Medicaid transfer facts (uncompensated_transfer_value_in_lookback, CO-824; transfer_penalty_period_start_date, CO-886) state the Medicaid sixty-month look-back value and the Eligibility Site's penalty start, not the date of the transfer, so Adult Financial's thirty-six months cannot be read from them. Final cash review 2, N-5: the fact was the date of the first of several transfers, with their total value, so the penalty was the total divided and rounded down once; 3.520.76.D.3-5 and E (S2614, S2806) round down the value of each resource transferred and run the periods one after another. The fact is now stated for each month in which a transfer was made."

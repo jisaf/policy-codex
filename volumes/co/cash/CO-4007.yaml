@@ -1,0 +1,17 @@
+id: CO-4007
+name: "Adult Financial: TWFC monthly penalty value"
+identifier: af_twfc_monthly_penalty_value
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The current Adult Financial grant standard of the person's program, which 9 CCR 2503-5 3.520.76.D.2 makes the TWFC monthly penalty value: the OAP grant standard when the person is of OAP age, the AND-CS standard when the person is AND-CS eligible, and the AND-SO standard otherwise."
+precision: "The program is read as af_countable_income reads it, without a cycle through af_category. Read at the determination month by af_twfc_penalty_months (CO-3840), so every transfer is divided by the current standard, as D.2 says."
+derived: [case, [af_is_oap_age, af_oap_grant_standard], [af_and_cs_eligible, af_and_cs_grant_standard], [else, af_and_so_grant_standard]]
+sources: [S2614]
+implemented: engine
+tags: [cash, resources]
+rationale: "Final cash review 2, N-5: the transfers are now stated by month and each month's months of ineligibility are their own item (CO-3840); the divisor, which af_twfc_penalty_months computed inline, is stated once so each month's division reads the determination month's standard."
+tests:
+  - {id: CO-4007-T1, title: "OAP client: $1,032", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: true}, expect: 1032}
+  - {id: CO-4007-T2, title: "AND-SO client: $248", as_of: "2026-10-01", month: "2026-10", given: {af_is_oap_age: false, af_and_cs_eligible: false}, expect: 248}
