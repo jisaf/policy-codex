@@ -5,13 +5,8 @@ kind: supplied
 type: calendar date
 scope: person-month
 program: All
-<<<<<<< HEAD
-meaning: "The date the person (or the person's spouse) last gave away, sold, traded or otherwise transferred ownership of a resource for less than its fair value: cash or property given away or spent down, a financial instrument transferred, or another person's name added as an owner. Not stated when the person made no such transfer."
-precision: "If not stated, Adult Financial reads it as no transfer. Where several transfers were made, the case states the first, with the total uncompensated value in resource_transfer_uncompensated_value (af_twfc_penalty_months, CO-3840, states what follows). SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
-=======
 meaning: "For a month in which the person (or the person's spouse) gave away, sold, traded or otherwise transferred ownership of a resource for less than its fair value - cash or property given away or spent down, a financial instrument transferred, or another person's name added as an owner - the date in the month the transfer was made. Not stated for a month with no such transfer."
-precision: "Stated with resource_transfer_uncompensated_value (CO-3835) for the same month. Adult Financial reads it only to place a transfer made in the month thirty-six months before the application month on either side of the look-back's first day (af_twfc_transfer_is_counted, CO-4008)."
->>>>>>> worktree-agent-a3116bf2b0f0fb698
+precision: "Stated with resource_transfer_uncompensated_value (CO-3835) for the same month. Adult Financial reads it only to place a transfer made in the month thirty-six months before the application month on either side of the look-back's first day (af_twfc_transfer_is_counted, CO-4008). SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
 supplied_by: "Applicant statement, deeds, account and sale records, as the county establishes them."
 sources: [S2614, S2806]
 tags: [cash, resources]

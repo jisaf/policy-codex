@@ -5,13 +5,8 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-<<<<<<< HEAD
-meaning: "The uncompensated value of the transfer resource_transfer_date states: the actual value of the resource less encumbrances, less what the person received for it, and less any part of the resource since returned to the person."
-precision: "Stated with resource_transfer_date. A transfer whose whole resource has been returned is not stated. SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
-=======
 meaning: "The uncompensated value of the resource the person (or the person's spouse) transferred in the month for less than its fair value: the actual value of the resource less encumbrances, less what the person received for it, and less any part of it since returned to the person when the whole resource has not been returned. Where more than one resource was transferred in the same month, their uncompensated values added together. Not stated for a month with no such transfer."
-precision: "Stated with resource_transfer_date (CO-3834) for the same month. A resource returned in whole is stated at its uncompensated value before the return, with the date of the return in resource_transfer_returned_date (CO-4009), since 3.520.76.D.6 ends the period by the month of the return rather than cancelling it."
->>>>>>> worktree-agent-a3116bf2b0f0fb698
+precision: "Stated with resource_transfer_date (CO-3834) for the same month. A resource returned in whole is stated at its uncompensated value before the return, with the date of the return in resource_transfer_returned_date (CO-4009), since 3.520.76.D.6 ends the period by the month of the return rather than cancelling it. SNAP reads it only for a person whose transfer the county found was made knowingly to qualify (snap_resource_transfer_was_to_qualify, CO-4155; final verification pass 2 N-4)."
 supplied_by: "Applicant statement, appraisals and sale records, as the county establishes them."
 sources: [S2614, S2806]
 tags: [cash, resources]
