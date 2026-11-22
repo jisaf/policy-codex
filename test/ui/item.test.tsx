@@ -64,142 +64,102 @@ describe("ItemView", () => {
     modeSig.value = "edit";
   });
 
-  it("leads with the name, its id and identifier, and one sentence from the derivation", () => {
+  it("leads with the name, the kind in words, and the id small", () => {
     const host = show("WR-200");
     expect(host.querySelector("h1")!.textContent).toBe(
       "Medicaid: is in the community engagement age range",
     );
+    expect(host.querySelector(".eyebrow")!.textContent).toMatch(/^A (rule|program outcome) · /);
     expect(host.querySelector(".idline")!.textContent).toContain("WR-200");
     expect(host.querySelector(".idline")!.textContent).toContain("medicaid_in_ce_age_range");
-    expect(host.querySelector("pre.derivation")!.textContent).toBe(
-      "Medicaid: is in the community engagement age range is true when " +
-        "all of the following are true:\n" +
-        "  - Age is at least Medicaid community engagement minimum age (19)\n" +
-        "  - Age is less than Medicaid community engagement age ceiling (65)",
-    );
   });
 
-  it("leads a supplied item with 'a fact we are told'", () => {
-    const host = show("WR-001");
-    expect(host.textContent).toContain(
-      "A fact we are told: The calendar date on which the person was born",
-    );
-  });
-
-  it("leads a parameter item with its value and its source", () => {
-    const host = show("WR-102");
-    expect(host.textContent).toContain("A number set by policy: 19 (S1)");
-  });
-
-  it("shows one worked example from the item's first test", () => {
+  it("says how a rule is decided in plain sentences, each item a token, no identifiers", () => {
     const host = show("WR-200");
-    expect(host.textContent).toContain(
-      'Given date_of_birth="2008-03-16", the answer is no.',
+    const rule = host.querySelector(".decided .derivation")!;
+    expect(rule.textContent).not.toMatch(/[a-z]+_[a-z_]+/);
+    expect(rule.querySelector("button.tok[data-id]")).not.toBeNull();
+    // The ledger's own words stay, at the foot, for implementers.
+    expect(host.querySelector("details.implementers pre.derivation")!.textContent).toContain(
+      "Medicaid: is in the community engagement age range is true when",
     );
   });
 
-  it("shows every rule test with a pass mark", () => {
+  it("shows a fact's meaning and a figure's value on the page", () => {
+    expect(show("WR-001").querySelector(".lead-meaning")!.textContent)
+      .toContain("The calendar date on which the person was born");
+    expect(show("WR-102").querySelector(".figure-today .bigvalue")!.textContent).toBe("19");
+  });
+
+  it("shows the law word for word, visible, with a link into the full document", () => {
     const host = show("WR-200");
-    const rows = host.querySelectorAll("table.tests tbody tr");
+    const law = host.querySelector("section#law")!;
+    expect(law.closest("details")).toBeNull();
+    expect(law.querySelector("blockquote.words")!.textContent).toBe("statute text here");
+    const link = [...law.querySelectorAll("a")].find((a) => a.textContent!.startsWith("Read it in the full document"))!;
+    expect(link.getAttribute("href")).toBe("#/mwr/law/doc/D-1?at=S1");
+  });
+
+  it("lists the questions it rests on, with the reading in force meanwhile", () => {
+    const host = show("WR-004");
+    const qs = host.querySelector("section#questions")!;
+    const a = qs.querySelector("a")!;
+    expect(a.textContent).toBe("Age during a month");
+    expect(a.getAttribute("href")).toBe("#/mwr/questions/OQ-1");
+    expect(qs.textContent).toMatch(/a person keeps the age they hold on the first day of the month/i);
+  });
+
+  it("offers the Map as a tab, centred on the item", () => {
+    const host = show("WR-200");
+    const tab = host.querySelector('.itemtabs a[data-tab="map"]')!;
+    expect(tab.getAttribute("href")).toBe("#/mwr/item/WR-200?tab=map");
+    route.value = { ...defaultRoute(), view: "item", arg: "WR-200", params: { tab: "map" } };
+    render(<ItemView />, host);
+    expect(host.querySelector(".itemmap")).not.toBeNull();
+    expect(host.querySelector(".itemgrid")).toBeNull();
+  });
+
+  it("holds the sign-off panel, Propose a change and Ask a question in the rail", () => {
+    const host = show("WR-200");
+    const rail = host.querySelector("aside.itemrail")!;
+    expect(rail.querySelector("#signoff h2")!.textContent).toBe("Sign-off");
+    expect(rail.querySelector("#propose h2")!.textContent).toBe("Propose a change");
+    expect(rail.querySelector("#ask h2")!.textContent).toBe("Ask a question");
+  });
+
+  it("refuses a change to the meaning that changes nothing, and stages one that does", async () => {
+    const host = show("WR-200");
+    (host.querySelector("#propose button.btn") as HTMLButtonElement).click();
+    await new Promise((r) => setTimeout(r, 0));
+    const form = host.querySelector("#propose form") as HTMLFormElement;
+    form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    await new Promise((r) => setTimeout(r, 0));
+    expect(host.querySelector("#propose .bad")!.textContent).toContain("nothing would change");
+    expect(changeSetSig.value.entries).toHaveLength(0);
+    const ta = host.querySelector("#propose textarea") as HTMLTextAreaElement;
+    ta.value = "A new meaning.";
+    ta.dispatchEvent(new Event("input", { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 0));
+    (host.querySelector("#propose form") as HTMLFormElement).dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    await new Promise((r) => setTimeout(r, 0));
+    expect(changeSetSig.value.entries.map((e) => [e.id, e.after?.meaning])).toEqual([["WR-200", "A new meaning."]]);
+  });
+
+  it("keeps tests, uses and the projection under For implementers", () => {
+    const host = show("WR-200");
+    const impl = host.querySelector("details.implementers")!;
+    const rows = impl.querySelectorAll("table.tests tbody tr");
     expect(rows).toHaveLength(4);
     expect([...rows].every((r) => r.textContent!.includes("pass"))).toBe(true);
-  });
-
-  it("lists what the item uses and what uses it, names first", () => {
-    const host = show("WR-200");
-    const uses = host.querySelector(".uses")!.textContent!;
-    expect(uses).toContain("Age");
-    expect(uses).toContain("Medicaid community engagement minimum age");
-    expect(host.querySelector(".used-by")!.textContent).toContain(
-      "Medicaid: is an applicable individual",
+    expect(impl.querySelector(".uses")!.textContent).toContain("Medicaid community engagement minimum age");
+    expect(impl.querySelector(".used-by")!.textContent).toContain("Medicaid: is an applicable individual");
+    expect(impl.querySelector("pre.projection")!.textContent).toContain(
+      "Rule           RL-001 Medicaid: is in the community engagement age range",
     );
+    expect(impl.querySelector(".decision-record")!.textContent).toContain("none recorded");
   });
 
-  it("makes the derivation, the example, and the dependency lists clickable", () => {
-    const host = show("WR-200");
-    const lead = host.querySelector("pre.derivation")!;
-    expect([...lead.querySelectorAll("button.tok.phrase")].map((b) => b.textContent))
-      .toContain("all of the following are true:");
-    expect([...lead.querySelectorAll("button.tok.param")].map((b) => b.textContent))
-      .toContain("Medicaid community engagement minimum age (19)");
-    // Uses and Used by name each item with a token that carries its id.
-    const uses = host.querySelector(".uses")!;
-    const age = [...uses.querySelectorAll("button.tok")].find((b) => b.textContent === "Age")!;
-    expect(age.getAttribute("data-id")).toBe("WR-003");
-    expect(host.querySelector(".used-by button.tok")).not.toBeNull();
-    expect(host.querySelector(".worked-example button.tok")).not.toBeNull();
-    // Only the machine-syntax fragments are tokenised; the prose around them
-    // ("Given", "the answer is") must not be painted as unknown identifiers.
-    expect(host.querySelector(".worked-example .tok.unknown")).toBeNull();
-    expect(host.querySelector(".worked-example")!.textContent).toMatch(/^Example\. Given .*, the answer is .*\.$/);
-    expect(host.querySelector("table.tests td.mono button.tok")).not.toBeNull();
-  });
-
-  it("shows the decision record with the item's excerpt and its document link", () => {
-    const host = show("WR-200");
-    const record = host.querySelector(".decision-record")!;
-    expect(record.textContent).toContain("S1. Applicable individual");
-    expect(record.textContent).toContain("statute text here");
-    const docLink = [...record.querySelectorAll("a")].find(
-      (a) => a.textContent === "State plans for medical assistance",
-    ) as HTMLAnchorElement;
-    expect(docLink.getAttribute("href")).toBe("#/mwr/law/doc/D-1?at=S1");
-  });
-
-  it("makes an excerpt id in the decision record a token", () => {
-    const host = show("WR-200");
-    const tok = host.querySelector(".decision-record button.tok.source") as HTMLButtonElement;
-    expect(tok.textContent).toBe("S1");
-    expect(host.querySelector(".decision-record")!.textContent)
-      .toContain("S1. Applicable individual");
-  });
-
-  it("shows none recorded when an item carries no rationale", () => {
-    const host = show("WR-200");
-    expect(host.querySelector(".decision-record")!.textContent).toContain("none recorded");
-  });
-
-  it("shows the open question's title and the assumption taken", () => {
-    const host = show("WR-003");
-    expect(host.querySelector(".decision-record")!.textContent).not.toContain("OQ-1");
-    const four = show("WR-004");
-    const record = four.querySelector(".decision-record")!.textContent!;
-    expect(record).toContain("OQ-1 Age during a month");
-    expect(record).toContain("a person keeps the age they hold on the first day of the month");
-  });
-
-  it("shows the scope in Details with its plain label and the ledger term alongside", () => {
-    const host = show("WR-200");
-    const details = [...host.querySelectorAll("details.section")].find(
-      (d) => d.querySelector("summary")!.textContent === "Details",
-    )!;
-    const scopeLine = [...details.querySelectorAll("p")].find(
-      (p) => p.querySelector("b")?.textContent === "Scope.",
-    )!;
-    expect(scopeLine.textContent).toContain("per person");
-    expect(scopeLine.querySelector("code.alias")!.textContent).toBe("person");
-  });
-
-  it("shows a parameter's dated values and its effective range in Details", () => {
-    const details = (host: HTMLElement) => [...host.querySelectorAll("details.section")].find(
-      (d) => d.querySelector("summary")!.textContent === "Details",
-    )!;
-    // WR-101's one version starts 2009-07-24 and has never ended.
-    const rows = [...details(show("WR-101")).querySelectorAll("table.versions tbody tr")];
-    expect(rows).toHaveLength(1);
-    expect([...rows[0].children].map((td) => td.textContent))
-      .toEqual(["2009-07-24", "present", "$7.25", ""]);
-
-    // WR-100 carries an effective range and no versions.
-    const hundred = details(show("WR-100"));
-    expect(hundred.querySelector("table.versions")).toBeNull();
-    const effective = [...hundred.querySelectorAll("p")].find(
-      (p) => p.querySelector("b")?.textContent === "Effective.",
-    )!;
-    expect(effective.textContent).toContain("2027-01-01 to present");
-  });
-
-  it("shows each version's own end date and excerpt when it states them", () => {
+  it("shows each version's own end date and excerpt in the implementers' version table", () => {
     const amended = engine.items().map((it) => it.identifier === "federal_minimum_wage"
       ? {
           ...it,
@@ -219,33 +179,11 @@ describe("ItemView", () => {
       ["2009-07-24", "2026-01-01", "$7.25", "S18"],
       ["2026-01-01", "present", "$9.50", ""],
     ]);
+    // Figures over time: the version in force today and the one before it.
+    const versions = [...host.querySelectorAll(".fversion")].map((a) => a.getAttribute("data-from"));
+    expect(versions).toEqual(["2026-01-01", "2009-07-24"]);
+    expect(host.querySelector(".fversion.current")!.getAttribute("data-from")).toBe("2026-01-01");
     engineSig.value = engine;
-  });
-
-  it("shows the Approach A projection in its own section", () => {
-    const host = show("WR-200");
-    expect(host.querySelector("pre.projection")!.textContent).toContain(
-      "Rule           RL-001 Medicaid: is in the community engagement age range",
-    );
-  });
-
-  it("opens the decision record section when asked via route.params.section", () => {
-    route.value = { ...defaultRoute(), view: "item", arg: "WR-200", params: {} };
-    volumeSig.value = vol;
-    engineSig.value = engine;
-    const host = document.createElement("div");
-    render(<ItemView />, host);
-    const closed = [...host.querySelectorAll("details.section")].find(
-      (d) => d.querySelector("summary")!.textContent === "Decision record",
-    ) as HTMLDetailsElement;
-    expect(closed.open).toBe(false);
-
-    route.value = { ...defaultRoute(), view: "item", arg: "WR-200", params: { section: "record" } };
-    render(<ItemView />, host);
-    const open = [...host.querySelectorAll("details.section")].find(
-      (d) => d.querySelector("summary")!.textContent === "Decision record",
-    ) as HTMLDetailsElement;
-    expect(open.open).toBe(true);
   });
 
   it("says when an item is missing", () => {

@@ -77,6 +77,7 @@ export const COUNT_DEFINITIONS = {
   changed: "Worked out by running the stored households again with the change and comparing every result.",
   owns: "A role owns a question when the question's Owner line names it. Partly settled questions are counted apart.",
   pastDue: "A due date is past due when it falls before the date shown.",
+  affects: "An item affects what reads it, directly or through other rules, and the program outcomes those reach; a path that runs only through document-verification flags is left out of the outcomes.",
 } as const;
 
 function n(x: number, one: string, many = `${one}s`): string {
@@ -845,4 +846,32 @@ export function mapCounts(engine: Engine, identifier: string): MapCounts {
   const out = { reads, readBy };
   per.set(identifier, out);
   return out;
+}
+
+// ---- what an item affects (the item page)
+
+export interface ItemAffects {
+  /** Rules that read it directly. */
+  direct: number;
+  /** Every item that reads it, directly or through other rules
+   *  (`dependentsOf`). */
+  dependents: number;
+  /** Declared outcomes it affects, verification-only paths left out
+   *  (`outcomesAffected`). */
+  outcomes: number;
+}
+
+/** What the item page's "What it affects" counts. */
+export function itemAffects(engine: Engine, identifier: string): ItemAffects {
+  return {
+    direct: engine.usedBy(identifier).length,
+    dependents: dependentsOf(engine, identifier).length,
+    outcomes: outcomesAffected(engine, identifier).length,
+  };
+}
+
+/** "Read by 1 rule directly and 4 in all, reaching 1 program outcome". */
+export function affectsPhrase(a: ItemAffects): string {
+  if (!a.dependents) return "Nothing reads it";
+  return `Read by ${n(a.direct, "rule")} directly and ${a.dependents.toLocaleString("en-US")} in all, reaching ${n(a.outcomes, "program outcome")}`;
 }

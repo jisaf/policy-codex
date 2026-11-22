@@ -7,7 +7,7 @@ import { describe, it, expect } from "vitest";
 import path from "node:path";
 import { loadVolume } from "../../src/tools/volumes";
 import {
-  awaitingByRole, awaitingSignOff, changesInMonth, citedUnverified, COUNT_DEFINITIONS, documentsStillNeeded,
+  affectsPhrase, awaitingByRole, awaitingSignOff, changesInMonth, itemAffects, citedUnverified, COUNT_DEFINITIONS, documentsStillNeeded,
   figuresWithoutValue, householdsReached, householdsThatRead, isPastDue, itemsCitingUnverified, monthRange,
   newVersionSoon, ownedPhrase, ownedQuestions, ownerGroups, pastDueCount, personaQuestions, readReachPhrase,
   restingOnUnverified, unverifiedUpstream,
@@ -171,5 +171,20 @@ describe("items waiting on a sign-off", () => {
     const by = awaitingByRole(engine);
     const ids = new Set(roles.flatMap((r) => (by.get(r) ?? []).map((it) => it.id)));
     expect(awaitingSignOff(engine, roles)).toHaveLength(ids.size);
+  });
+});
+
+describe("affects: what reads an item and the outcomes it reaches (the item page)", () => {
+  const ident = (n: string) => engine.itemById(n)!.identifier;
+
+  it("the grant standard (CO-276): 1 rule directly, 4 in all, 1 outcome", () => {
+    expect(itemAffects(engine, ident("CO-276"))).toEqual({ direct: 1, dependents: 4, outcomes: 1 });
+  });
+
+  it("the children's income limit (CO-191): 3 rules directly, 20 outcomes", () => {
+    const a = itemAffects(engine, ident("CO-191"));
+    expect([a.direct, a.outcomes]).toEqual([3, 20]);
+    expect(affectsPhrase(a)).toMatch(/^Read by 3 rules directly and \d+ in all, reaching 20 program outcomes$/);
+    expect(COUNT_DEFINITIONS.affects).toMatch(/verification/);
   });
 });

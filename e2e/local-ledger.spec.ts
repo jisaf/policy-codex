@@ -52,7 +52,7 @@ test("opens the co volume from the working tree and visits each place", async ({
   // figure's page is under Figures.
   await page.goto("/#/co/item/CO-191");
   await expect(page.locator(".lead-meaning")).toContainText("Children");
-  await expect(page.locator(".param-value")).toContainText("% of FPL");
+  await expect(page.locator(".figure-today")).toContainText("% of FPL");
   await expect(page.locator('.sidebar a[data-place="figures"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator("nav.crumbs li").first()).toHaveText("Figures");
 
