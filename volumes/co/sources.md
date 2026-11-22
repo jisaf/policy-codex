@@ -11592,11 +11592,11 @@ Document: D-65
 
 > ii) Veterans-related personal needs allowance Effective 07/01/91, the personal needs allowance shall be $90 per month for a veteran in a Long-Term Care institution who has no spouse or dependent child and who receives a non-service connected disability pension from the U.S. Veterans Administration.
 
-### S1738. VA Aid and Attendance/Unusual Medical Expenses excluded from patient payment (current text)
+### S1738. VA Aid and Attendance/Unusual Medical Expenses excluded from patient payment: the lead-in of § 8.100.5.K.1 only (current text; the whole of § 8.100.5.K, with K.1.a-b and K.2, is S2900)
 
 Document: D-65
 
-10 CCR 2505-10 § 8.100.6.C (VA pension) (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+10 CCR 2505-10 § 8.100.5.K.1 (lead-in) (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
 
 > 1. The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall not be used as patient payment to the medical facility:
 
@@ -16411,3 +16411,21 @@ Document: D-88
 
 > Adult means, for the purposes of completing an application for eligibility for Program benefits, any individual 18 years of age or older.
 
+
+### S2900. VA Aid and Attendance and Unusual Medical Expenses: not income for eligibility; not used as patient payment except for a veteran or surviving spouse in a State Veterans Home with no dependents (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.K (rule version effective 11/14/2026; the Secretary of State's Word text, re-fetched 2026-11-22, reads the same). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.5.K. Department of Veterans Affairs (VA) Payments
+>
+> The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall not be considered as income when determining eligibility.
+>
+> 1. The portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall not be used as patient payment to the medical facility:
+>
+> a. for a veteran or surviving spouse of a veteran in a medical facility other than State Veterans Home; or
+>
+> b. for a veteran or surviving spouse of a veteran in a State Veterans Home with dependents.
+>
+> 2. For a veteran or surviving spouse of a veteran in a State Veterans Home with no dependents the portion of the pension payments for Aid and Attendance (A&A) and Unusual Medical Expenses (UME), as determined by the VA, shall be used as patient payment to the medical facility.

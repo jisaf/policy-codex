@@ -14568,3 +14568,118 @@
         2026-09: ineligible_income
       chp_eligibility_status:
         2026-09: eligible_child
+- id: CO-139
+  title: A widowed veteran in a State Veterans Home whose VA pension includes Aid and Attendance
+  # Final verification pass 2, F2-2 (docs/reviews/final2-medicaid-chp.md). p1, 80, a widowed veteran with no
+  # children, entered a State Veterans Home (a nursing facility) on 2026-09-14 and applied on 2026-11-02. Social
+  # Security 1,300; a VA non-service-connected pension of 600, of which 300 is Aid and Attendance (the VA award
+  # letter); resources 1,200; the State pays his Part B premium (Medicare Buy-In); no home to keep.
+  # Hand derivation, November 2026:
+  # - Eligibility income leaves out the A&A portion (8.100.5.K lead-in, CO-641): 1,300 + 600 - 300 = 1,600, at or
+  #   under 300% x 994 = 2,982 (special income group); resources 1,200 at or under 2,000: eligible_institutional.
+  # - Personal needs allowance: a VA non-service-connected pensioner with no spouse or dependent child: 90
+  #   (8.100.7.V.3.d.ii, CO-1986).
+  # - Income for the patient payment 1,600 - 90 = 1,510; no Home Maintenance Allowance (no physician's
+  #   certification), no tax, garnishment, premium or Long-Term Care insurance.
+  # - 8.100.5.K.2: a veteran in a State Veterans Home with no dependents: the 300 A&A portion "shall be used as
+  #   patient payment": 1,510 + 300 = 1,810, in November and December.
+  # Before the fix the patient payment was 1,510.
+  as_of: '2026-11-01'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: '2026-11-02'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        dwelling_id: h1
+        residence_setting_type: nursing_facility
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: true
+        receives_va_non_service_connected_pension: true
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        date_of_birth: '1946-03-12'
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        institution_entry_date: '2026-09-14'
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: institutional
+        has_income_trust: false
+        liquid_resources_value: 1200
+        ma_physician_certified_return_home: false
+        ma_is_incapable_of_indicating_intent: false
+        ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: false
+        is_required_to_file_tax_return: false
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: '2026-11-02'
+        marital_status: widowed
+        resides_in_state_veterans_home: true
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        social_security_income: 1300
+        pension_income: 600
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: true
+        va_aid_and_attendance_amount: 300
+        health_insurance_premiums_paid: 0
+        medicare_part_b_premium_paid: 0
+        medicare_part_d_premium_paid: 0
+        mandatory_income_tax_withheld: 0
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 0
+        shelter_cost_monthly: 0
+        housing_maintenance_fee: 0
+        utility_expenses_actual: 0
+        medical_expenses_out_of_pocket: 0
+  expect:
+    p1:
+      ma_ltc_gross_income:
+        2026-11: 1600
+      ma_ltc_eligibility_status:
+        2026-11: eligible_institutional
+      ma_personal_needs_allowance: 90
+      ma_patient_payment_available_income:
+        2026-11: 1510
+      ma_va_aid_and_attendance_is_patient_payment:
+        2026-11: true
+      ma_patient_payment:
+        2026-11: 1810
+        2026-12: 1810

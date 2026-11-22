@@ -5,8 +5,9 @@ kind: parameter
 type: whole number
 scope: global
 program: Medicaid
-meaning: "The number of months, counted from the month the person entered the Nursing Facility, for which a Medicare Part B premium the person pays is deducted in the patient payment (10 CCR 2505-10 § 8.100.7.V.3.b.ii.8.a, \"only for the first and second month in the Nursing Facility\"; V.1.e, \"the first two months\")."
+meaning: "The number of months, counted from the month the person entered the Nursing Facility, for which a Medicare Part B premium the person pays is deducted in the patient payment (10 CCR 2505-10 § 8.100.7.V.3.b.ii.8.a, \"only for the first and second month in the Nursing Facility\"; V.1.e.i, \"the first two months of admission\"). V.1.e.ii counts \"the first two months of Long-Term Care institution eligibility\" (OQ-721)."
 value: 2
 sources: [S2400, S2401]
+open: [OQ-721]
 tags: [ma, ltc, income]
 rationale: "Final verification F-3 (docs/reviews/final-medicaid-chp.md): ma_patient_payment (CO-658) deducted only the personal needs allowance, the community spouse and family allowances and every health insurance premium, in every month; 10 CCR 2505-10 § 8.100.7.V.3.b-i (S2400-S2405) lists further deductions and adds Long-Term Care insurance payments, and limits the Part B premium to the first two months. The two-month limit as a parameter."
