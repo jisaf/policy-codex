@@ -1,0 +1,13 @@
+id: CO-4687
+name: "Declines to provide immigration documentation"
+identifier: declines_to_provide_immigration_documentation
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person, who is not a citizen or national of the United States, or the household for the person, has said that the person is unable or unwilling to provide documentary evidence of the person's immigration status, and the household has chosen to go on without that evidence rather than withdraw."
+precision: "If not stated, SNAP reads it as false. For SNAP the household then participates with the person classified as an ineligible non-citizen, and the local office does not continue efforts to obtain the evidence (10 CCR 2506-1 4.505.6.J, S902; 7 CFR 273.4(b)(2))."
+supplied_by: "Applicant's statement on the application or at the interview."
+sources: [S902]
+tags: [immigration, verification]
+rationale: "Coverage pass 2 N2-P2-3: no fact stated the household's election under 4.505.6.J (S902), so the codex kept asking for the status until the documentation due date before excluding the member."

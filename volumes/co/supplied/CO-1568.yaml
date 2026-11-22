@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person
 program: SNAP
-meaning: The person's total monthly gross income (wages, net self-employment income and unearned income) as last verified for SNAP, at the previous certification or a later verified change.
+meaning: The person's total monthly gross income as SNAP counts it (wages as converted from the pay schedule or averaged, net self-employment income, and unearned income, less the earned and unearned income SNAP excludes) as last verified for SNAP, at the previous certification or a later verified change.
 supplied_by: Verified income amounts in the CBMS SNAP case at the previous certification.
 sources: [S1055, S1056]
 tags: [verification, snap, income]

@@ -21680,3 +21680,183 @@ Document: D-332
 7 CCR 1103-1 (COMPS Order #40) Rule 3.1 (rule version 12406, effective 02/01/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12406&fileName=7%20CCR%201103-1
 
 > 3.1 Statewide Minimum Wage. Under the minimum wage requirements of Article XVIII, Section 15, of the Colorado Constitution, all employees (with the exception detailed in Rule 3.3), whether employed on an hourly, piecework, commission, time, task, or other basis, shall be paid not less than the Colorado minimum wage, as specified for the applicable year in the PAY CALC Order, less any applicable lawful credits or exceptions noted, for all hours worked, if the employee is covered by either:
+### S3470. 7 U.S.C. 2015(e)(3): a higher-education placement through SNAP E&T exempts only a career and technical or remedial course
+
+Document: D-3
+
+7 U.S.C. 2015(e)(3)(A)-(D). https://www.law.cornell.edu/uscode/text/7/2015
+
+> (3) is assigned to or placed in an institution of higher education through or in compliance with the requirements of—
+>
+> (A)
+>
+> a program under title I of the Workforce Innovation and Opportunity Act [ 29 U.S.C. 3111 et seq.];
+>
+> (B) an employment and training program under this section, subject to the condition that the course or program of study—
+>
+> (i)
+>
+> is part of a program of career and technical education (as defined in section 2302 of title 20 ) that may be completed in not more than 4 years at an institution of higher education (as defined in section 1002 of title 20 ); or
+>
+> (ii)
+>
+> is limited to remedial courses, basic adult education, literacy, or English as a second language;
+>
+> (C)
+>
+> a program under section 2296 of title 19 ; or
+>
+> (D)
+>
+> another program for the purpose of employment and training operated by a State or local government, as determined to be appropriate by the Secretary ;
+
+### S3471. 7 CFR 273.5(b)(11)(ii): the SNAP E&T placement condition as the State agency determines it
+
+Document: D-10
+
+7 CFR 273.5(b)(11)-(b)(11)(ii)(B). https://www.ecfr.gov/current/title-7/section-273.5
+
+> (11) Be assigned to or placed in an institution of higher education through or in compliance with the requirements of one of the programs identified in paragraphs (b)(11)(i) through (b)(11)(iv) of this section. Self-initiated placements during the period of time the person is enrolled in one of these employment and training programs shall be considered to be in compliance with the requirements of the employment and training program in which the person is enrolled provided that the program has a component for enrollment in an institution of higher education and that program accepts the placement. Persons who voluntarily participate in one of these employment and training programs and are placed in an institution of higher education through or in compliance with the requirements of the program shall also qualify for the exemption. The programs are:
+>
+> (i) A program under the Job Training Partnership Act of 1974 (29 U.S.C. 1501, *et seq.*);
+>
+> (ii) An employment and training program under § 273.7, subject to the condition that the course or program of study, as determined by the State agency:
+>
+> (A) Is part of a program of career and technical education as defined in section 3 of the Carl D. Perkins Career and Technical Education Act of 2006 (20 U.S.C. 2302) designed to be completed in not more than 4 years at an institution of higher education as defined in section 102 of the Higher Education Act of 1965 (20 U.S.C. 2296); or
+>
+> (B) is limited to remedial courses, basic adult education, literacy, or English as a second language.
+
+### S3472. Colorado SNAP: a student's meal plan over half of meals makes the student a resident of an institution
+
+Document: D-82
+
+10 CCR 2506-1 4.304.4.D.2-3 (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 2. An institution is a place which has not been authorized by FNS to accept
+> SNAP benefits, but which provides its residents with more than fifty
+> percent (50%) of their daily meals as a part of its normal services.
+> Residents of a halfway house for persons with a disability are residents of
+> an institution if they are provided meals as part of their regular service.
+>
+> 3. Students who purchase meal plans through an institution of higher
+> education shall be considered residents of an institution if the meal plan
+> provides the student more than fifty percent (50%) of his/her meals, unless
+> the individual is otherwise exempt from the institution provisions as
+> provided in Section 4.304.41.
+
+### S3473. Colorado SNAP: retirement accounts and 529A ABLE funds exempt
+
+Document: D-82
+
+10 CCR 2506-1 4.410.D.2, D.2.i (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 2. All retirement accounts with Federal tax preferred retirement status are
+> exempt resources. The following retirement accounts are exempt:
+>
+> a. Pension or traditional defined benefit plan;
+>
+> b. 401(K) plan and simple 401(K);
+>
+> c. 501C(18);
+>
+> d. 403(A) and 403(B) plans;
+>
+> e. 408 plans including traditional individual retirement accounts (Roth
+> IRA, SIMPLE IRA, and myRA), traditional Individual Retirement
+> Annuities
+>
+> f. 457 plan;
+>
+> g. Federal employee thrift savings plan;
+>
+> h. Keogh plan;
+>
+> i. 529A funds including funds in a qualified ABLE program
+
+### S3474. Colorado SNAP: a migrant or seasonal farm worker under contract to begin work within thirty days is exempt from work registration
+
+Document: D-82
+
+10 CCR 2506-1 4.310.3.E, E.1 (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. Employed or self-employed individuals who are working a minimum of thirty (30)
+> hours per week or receiving weekly earnings at least equal to the federal
+> minimum wage multiplied by thirty (30) hours;
+>
+> 1. This shall include migrant and seasonal farm workers who are under
+> contract or similar agreement with an employer or crew chief to begin
+> employment within thirty (30) days.
+
+### S3475. Colorado SNAP: a foster child may not apply separately from the foster family
+
+Document: D-82
+
+10 CCR 2506-1 4.304.3.B (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> B. Foster children
+>
+> 1. If a foster parent chooses not to include a foster child in their SNAP
+> household, the foster child not included will not have their income,
+> resources/assets, or needs included in the eligibility determination for the
+> SNAP household.
+>
+> 2. If the foster parent chooses to include the foster child in their SNAP
+> household, the foster child's income, and resources/assets, as well as
+> their needs, are considered in the eligibility determination.
+>
+> 3. The foster child, including a child and/or spouse of the foster child, may
+> not apply for benefits separately from the foster family unless they are
+> over eighteen (18) and no longer under the parental control of the foster
+> parents.
+
+### S3476. Colorado SNAP: Colorado Works diversion payments of ninety days or less excluded as a non-recurring lump sum
+
+Document: D-82
+
+10 CCR 2506-1 4.405.E (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. Non-recurring Lump Sum Payments
+>
+> Money received in the form of non-recurring lump sum payments, includes, but is
+> not limited to, income tax refunds, rebates, or credits; retroactive lump-sum
+> Social Security, SSI, public assistance, railroad retirement benefits or other
+> payments; or retroactive lump-sum insurance settlements; or any money an
+> inmate receives upon release from prison, including earnings from work
+> performed while incarcerated and accumulated over the length of the
+> incarceration.
+>
+> State and county diversion payments under Colorado Works shall be excluded
+> as a non-recurring lump sum payment if the payment does not cover more than
+> ninety (90) days of expenses and is not expected to occur again in a twelve (12)
+> month period.
+
+### S3477. Colorado SNAP: income-producing property and property essential to employment or self-employment exempt
+
+Document: D-82
+
+10 CCR 2506-1 4.410.E.1 (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> E. Income-Producing Property, Including Vehicles
+>
+> 1. Any property that is producing an annual income consistent with its fair
+> market value in the community, even if it is used only on a seasonal basis,
+> shall be an exempt resource. Such property includes farmland and rental
+> homes, or work- related equipment, such as the tools of a tradesman or
+> the machinery of a farmer, and vehicles which are essential to the
+> employment or self-employment of a household member such as semi-
+> tractor/trailer, boat, motor home, utility trailer, or seasonal or recreation
+> vehicles used for income-producing purposes. Such property also includes
+> livestock.
+
+### S3478. Colorado SNAP: Standard Eligibility for a household with a member disqualified for an IPV or a fraud conviction
+
+Document: D-82
+
+10 CCR 2506-1 4.206.C.3.a.1 (version effective 2026-10-01; SNAP coverage pass 2 fix round). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12718&fileName=10%20CCR%202506-1
+
+> 3. Standard Eligibility (SE)
+>
+> a. SE rules shall only be applied to the following households:
+>
+> 1) Households that include a member who is serving a
+> disqualification for an IPV or a fraud conviction;

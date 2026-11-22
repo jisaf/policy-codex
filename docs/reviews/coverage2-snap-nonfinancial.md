@@ -184,7 +184,7 @@ Runs of subparagraphs with one disposition share a row.
 | 4.302.C.2 (sincere religious objection) | C: CO-2562 precision (P2-4 fixed). |
 | 4.303.A (live in the county of application) | C: not an eligibility condition, OQ-393 resolved; CO-309 precision. |
 | 4.303.B first paragraph (one household a month; battered shelter exception) | C: CO-4178, CO-304; battered shelter, CO-4178 precision. |
-| 4.303.B second paragraph (FDPIR) | C: CO-4266, CO-2851, CO-386, CO-387 (C-11 fixed); **N2-1** (allotment). |
+| 4.303.B second paragraph (FDPIR) | C: CO-4266, CO-2851, CO-386, CO-387 (C-11 fixed); N2-1 fixed: CO-4680 gates CO-2307 and CO-2308. |
 | 4.303.C-E (non-vacation residence; no address needed; no durational or intent requirement) | C: CO-4253, CO-4252, CO-309 (C-6 fixed). |
 | 4.303.F | N/A: addresses on the form. |
 | 4.304.A.1-3, 4.304.A.2.A | C: CO-305 (buys_prepares_with; a separate household when purchase and preparation are separate). |
@@ -196,7 +196,7 @@ Runs of subparagraphs with one disposition share a row.
 | 4.304.1.C.2, 4.304.3.A.2 (spouse in the 165% test) | C: CO-419 (spouse always set aside); N2-P3-5. |
 | 4.304.2.A, B, B.1, B.2-B.4, and the unnumbered "A" (shared custody; majority of meals) | C: CO-4178, CO-4179, CO-304, CO-4180, CO-4181 (V-13 fixed). The request for contact is N/A (procedure). |
 | 4.304.3.B.1-2 (foster parent's choice to include a foster child) | C: CO-305 (no foster edge crossed; inclusion stated by buys_prepares_with and not boarder), CO-2567. |
-| 4.304.3.B.3 (foster child may not apply separately) | N2-P3-4 (deferred). |
+| 4.304.3.B.3 (foster child may not apply separately) | C: CO-4689, CO-4690 in CO-311 (N2-P3-4 fixed). |
 | 4.304.3.C.1-3, 4.304.31.A (boarders; included only at the household's request) | C: CO-2567, CO-304; boarder income CO-4165 (Fin). |
 | 4.304.3.C.4-5, C.5.A.1-2, C.5.B (reasonable payment) | C: CO-2567 precision (P2-6 fixed). |
 | 4.304.31.B-C (roomers and live-in attendants may be separate households) | C: CO-2566, CO-305. |
@@ -207,11 +207,11 @@ Runs of subparagraphs with one disposition share a row.
 | 4.304.4.A.4 (work requirements) | C: CO-040, CO-2318. |
 | 4.304.4.A.5 (ABAWD) | C: CO-2564. |
 | 4.304.4.A.6.a-e (violent and sexual felonies after 2014-02-07, out of compliance) | C: CO-2563. |
-| 4.304.4.B, B.1-4 (fleeing felon; four-part test; verification) | C: CO-038, CO-311; **N2-P2-2** (carried open). |
+| 4.304.4.B, B.1-4 (fleeing felon; four-part test; verification) | C: CO-4683 with CO-038, CO-4684, CO-4685, read by CO-311 and CO-2302 (N2-P2-2 fixed). |
 | 4.304.4.C, C.1.a-c (probation or parole violator; impartial party; actively seeking) | C: CO-1732 (P2-3 partly fixed). |
 | 4.304.4.D, D.1 (boarding house residents; the proprietor's household) | C: CO-2567 (commercial boarding house); proprietor's household follows its edges. |
 | 4.304.4.D.2 (institution: majority of meals; halfway house for persons with a disability) | C: CO-007, CO-3330, CO-3334, CO-304. |
-| 4.304.4.D.3 (student meal plan over 50% of meals) | **GAP N2-4**. |
+| 4.304.4.D.3 (student meal plan over 50% of meals) | C: CO-007 meal-plan arm with CO-4686 (N2-4 fixed, coverage pass 2 fix round). |
 | 4.304.41.A (federally subsidized housing for the elderly) | C: CO-007 (private_dwelling). |
 | 4.304.41.B (treatment centre residents and their children) | C: CO-007 arm (B) (C-3 fixed). |
 | 4.304.41.C (public or nonprofit group living, blind or disabled) | C: CO-007 arm (C) (C-3 fixed). |
@@ -250,12 +250,12 @@ Runs of subparagraphs with one disposition share a row.
 | 4.306.C (enrollment from the first day of the term; continuous through breaks) | C: CO-2881 (the enrollment stated as of the determination). |
 | 4.306.1.A (unfit, including vocational rehabilitation; verification) | C: CO-410 (CO-400, CO-044 meaning names vocational rehabilitation, CO-4263); verification CO-1384. |
 | 4.306.1.B first two paragraphs (20 hours paid; self-employed earnings) | C: CO-407, CO-402, CO-175, CO-1702. |
-| 4.306.1.B third paragraph (80 hours a month) | **N2-2**. |
+| 4.306.1.B third paragraph (80 hours a month) | C: CO-407 with CO-4681 (N2-2 fixed). |
 | 4.306.1.C (work study) | C: CO-407 (CO-070). |
 | 4.306.1.D (care of a household member under 6; full-time single parent of a child under 12) | C: CO-408, CO-409, CO-042, CO-173, CO-174. |
 | 4.306.1.E (child 6 to 11, no adequate care) | C: CO-408, CO-071. |
 | 4.306.1.F (TANF cash grant) | C: CO-410 (CO-013). |
-| 4.306.1.G (placement through WIOA, EF, TAA, other E&T, JOBS) | C: CO-410, CO-072; **N2-3**. |
+| 4.306.1.G (placement through WIOA, EF, TAA, other E&T, JOBS) | C: CO-410, CO-072 with the 2015(e)(3)(B) statute override (N2-3 fixed). |
 | 4.306.1.H (on-the-job training) | C: CO-4265 (C-10 fixed). |
 | 4.307.A (striking member; eligible the day before; exempt the day before unless employment) | C: CO-3504, CO-3500, CO-3501, CO-386. |
 | 4.307.B (pre-strike eligibility; the higher income) | C: CO-3501, CO-3502, CO-3503. |
@@ -286,7 +286,7 @@ Runs of subparagraphs with one disposition share a row.
 | 4.310.3.C, C.1-5 (unfit; examples) | C: CO-400, CO-043, CO-044 (examples in meaning, P2-2 fixed), CO-4263 (C-7 fixed). |
 | 4.310.3.D, D.1-3 (student half time; higher education needs student eligibility) | C: CO-405 (CO-020; CO-021 with not CO-411). |
 | 4.310.3.E, E.2 (30 hours or FMW × 30; VISTA) | C: CO-404, CO-402, CO-403, CO-163. |
-| 4.310.3.E.1 (migrant under contract within 30 days) | N2-P3-6 (deferred). |
+| 4.310.3.E.1 (migrant under contract within 30 days) | C: CO-404 with CO-4688 (N2-P3-6 fixed). |
 | 4.310.3.F (UIB applying, receiving, or appealing a denial) | C: CO-046 (P3-8 half fixed). |
 | 4.310.3.G (drug or alcohol treatment) | C: CO-045. |
 | 4.310.3.H (complying with CW or CRSP work programs) | C: CO-1935, CO-2830. |
@@ -299,7 +299,7 @@ Runs of subparagraphs with one disposition share a row.
 | 4.311 intro (client statement unless questionable) | C: CO-1386. |
 | 4.311.A.1-2 (17 or younger, 55 or older) | C: CO-412 (statute override: 18 through 64, OQ-533). |
 | 4.311.A.3.A-C (medically certified unfit) | C: CO-400 (CO-4263, CO-044, CO-043), CO-414. |
-| 4.311.A.4 (same physical household as a minor) | C: CO-4250 (C-1 fixed; age 14 under the statute); **N2-P2-1**. |
+| 4.311.A.4 (same physical household as a minor) | C: CO-4250 (C-1 fixed; age 14 under the statute); OQ-835 (N2-P2-1). |
 | 4.311.B.1, B.1.a.i-iv (work 80 hours: paid, in kind, verified unpaid) | C: CO-415, CO-022, CO-1915, CO-1916, CO-168. |
 | 4.311.B.2, B.2.a.i-iii (work program) | C: CO-415, CO-048, CO-3160. |
 | 4.311.B.3 (combination) | C: CO-415 (sum). |
@@ -323,7 +323,7 @@ Runs of subparagraphs with one disposition share a row.
 | paragraph | disposition |
 |---|---|
 | 4.500.A-D | N/A: definitions and records. |
-| 4.500.E (refusal to cooperate in a later review) | C: CO-4267, CO-386, CO-387 (P2-8 fixed); **N2-1** (allotment). |
+| 4.500.E (refusal to cooperate in a later review) | C: CO-4267, CO-386, CO-387 (P2-8 fixed); N2-1 fixed: CO-4680 gates CO-2307 and CO-2308. |
 | 4.501, 4.503, 4.504 intro, 4.504.1-4.504.4 | N/A: means and records of verification. |
 | 4.502.A.1 (expedited: identity of the head, and of a representative; postpone the rest) | C: CO-1394, CO-1387, CO-3731, CO-1393, CO-4254. |
 | 4.502.A.2.a (identity of the head) | C: CO-1370. |
@@ -348,7 +348,7 @@ Runs of subparagraphs with one disposition share a row.
 | 4.505.51.A-B, D | N/A: guidelines and records. |
 | 4.505.51.C (ineligible until proof; income prorated) | C: CO-4251, CO-311, CO-2565, CO-2571, CO-1394 (C-2 fixed). |
 | 4.505.6.A-D, G-H | N/A: SAVE procedure. |
-| 4.505.6.B last sentence, J (member unwilling: participate without that member) | C in part: CO-4154 after the due date; **N2-P2-3**. |
+| 4.505.6.B last sentence, J (member unwilling: participate without that member) | C: CO-310 and CO-1373 with CO-4687 (N2-P2-3 fixed); CO-4154 after the due date. |
 | 4.505.6.E (30th day or 10 days from the request) | C: CO-1617. |
 | 4.505.6.F, F.1-2 (not certified until documentation; submitted document or SSA review: up to six months) | C: CO-4154, CO-1601, CO-1366, CO-3734, CO-3735; the six-month cap is P3-3 accepted. |
 | 4.505.6.I (remaining members determined; no retroactive benefits) | C: CO-4154, CO-310, CO-1394 `members_excluded`. |
@@ -376,12 +376,12 @@ Runs of subparagraphs with one disposition share a row.
 |---|---|
 | 7 U.S.C. 2015(a), (g), (i), (l)-(n), (p), (q) (D-3) | N/A: State options Colorado does not take (comparable disqualification, child support cooperation), SSI cash-out States, and disqualifications that enter as IPV (CO-039). |
 | 2015(b)(1)-(4) | C: CO-039. |
-| 2015(c) | C: CO-4267, CO-386 (P2-8 fixed); **N2-1**. |
+| 2015(c) | C: CO-4267, CO-386, CO-4680 (P2-8 fixed; N2-1 fixed). |
 | 2015(d)(1)(A)-(B) | C: CO-405, CO-040, CO-2318; (B) household option not taken (4.310.8.A is individual). |
 | 2015(d)(1)(C) durations | C: CO-2318 (Colorado's 1/3/6 months, 4.310.8). |
 | 2015(d)(2) exemptions | C: CO-405. |
 | 2015(d)(4) E&T | N/A: EF voluntary. |
-| 2015(e)(1)-(8) | C: CO-410, CO-411, CO-407, CO-408, CO-409; **N2-3** ((e)(3)(B)). |
+| 2015(e)(1)-(8) | C: CO-410, CO-411, CO-407, CO-408, CO-409; N2-3 fixed ((e)(3)(B), CO-072 override). |
 | 2015(f) as amended by sec. 10108 (D-5) | C: CO-308, CO-309, CO-4253, CO-310 (OQ-1). |
 | 2015(h) | Fin (CO-4160). |
 | 2015(j) | C: CO-039 (10-year duplicate participation). |
@@ -406,9 +406,9 @@ Runs of subparagraphs with one disposition share a row.
 | 273.2(h)(2)(ii) | C: CO-4268, CO-4270. |
 | 273.2(i)(1)-(4) | C: CO-348, CO-1393, CO-1394, CO-4254. |
 | 273.4(a)(6)(ii)(A)-(I), (iv) (D-9) | C: CO-3713, CO-307, CO-4260. |
-| 273.4(b)(2) | **N2-P2-3**. |
+| 273.4(b)(2) | C: CO-4687 in CO-310, CO-1373 (N2-P2-3 fixed). |
 | 273.4(c)(1)-(5) | C: as 4.305.2 above; (c)(2) spouse by statute override (C-14), (c)(3)(vi) by statute override (N-3). |
-| 273.5(a), (b)(1)-(11) (D-10) | C: CO-411, CO-410; **N2-2** ((b)(5) monthly reading), **N2-3** ((b)(11)(ii)). |
+| 273.5(a), (b)(1)-(11) (D-10) | C: CO-411, CO-410; N2-2 fixed (CO-4681), N2-3 fixed (CO-072 override). |
 | 273.7(a)-(b) (D-11) | C: CO-405, CO-406. |
 | 273.7(f), (j)(1)-(4) | C: CO-040, CO-2313, CO-2318 (C-8 fixed). |
 | 273.7(c)-(e), (g)-(i), (k)-(n) | N/A: E&T program administration. |
@@ -473,3 +473,31 @@ Each fix was read in the derivation at HEAD, and the five fix households were re
 Earlier family P1s, spot-checked in the derivations: N-1 (CO-341's lottery arm, CO-4152), N-2 (CO-4154, CO-310), N-3 (CO-2337's age ≥ 18 arm), V-13 (CO-304, CO-4178 to CO-4181), F-3 (CO-3713), F-5 (CO-407, CO-409), F-7 (CO-302), F-9 (CO-3731), F-12 (CO-415 with CO-1915, CO-1916), F-13 (CO-050 in CO-414): all hold.
 
 First-pass P2 and P3 dispositions: P2-1, P2-2, P2-4, P2-5, P2-6, P2-8, P2-9 and P2-10 hold; P2-7 recorded; P2-3 half open (N2-P2-2); P2-8's new bar has the allotment regression (N2-1); P3-5, P3-6 and P3-8's second half remain deferred (N2-P3-4 to N2-P3-6).
+
+## Disposition (coverage pass 2)
+
+Fix round on `6067c89`. Commits: `7cc4dca` (N2-1), `c97135d` (the other non-financial findings), `8942769` (households CO-192 and CO-193). Probes: ZZ-F1 now gives `fdpir_participation` and allotment 0 (was 151); ZZ-F2 `refused_to_cooperate` and 0 (was 151); ZZ-S1 gives p2 exempt, `eligible_member`, household `eligible`, 151 (was `no_eligible_members`). Household cases CO-01 to CO-191 are unchanged; check reports 3118/3118 expectations and 3862 rule tests passing.
+
+| id | disposition |
+|---|---|
+| N2-1 | Fixed, `7cc4dca`. `snap_household_ineligibility_ground` (CO-4680) states the household gates once (no eligible member, FDPIR, refusal to cooperate, winnings, transfer, striker, gross, net, resources). CO-387 reports it, CO-386 requires `none`, and CO-2307 and CO-2308 are 0 unless it is `none`, so the status and the benefit read the same gates and cannot drift. Tests CO-4680-T1 to T10, CO-385-T20 to T22; stored case CO-192 (ZZ-F1). |
+| N2-2 | Fixed, `c97135d`. Parameter `snap_student_employment_hours_per_month` (CO-4681, 80, S135) is an arm of CO-407 beside the weekly test. Tests CO-407-T6 (82 hours, exempt) and T7 (79, not); stored case CO-193 (ZZ-S1). |
+| N2-3 | Fixed, `c97135d`. CO-072 is a SNAP-only fact read only by CO-410, so its meaning now carries the 2015(e)(3)(B) condition on an Employment First placement (career and technical education completable in four years or less, or remedial, basic adult education, literacy or ESL), with a `statute_override` naming 4.306.1.G. The WIOA, Trade Act and other-program placements keep no condition. New excerpts S3470 (D-3) and S3471 (D-10); tests CO-410-T4 and T5. |
+| N2-4 | Fixed, `c97135d`. Neutral fact `has_higher_education_meal_plan_providing_majority_of_meals` (CO-4686, false when not stated) is a second arm of CO-007, whatever the residence setting, unless the treatment-centre (B) or group-living (C) exception applies or the person sleeps in a shelter (D, E). Federally subsidized elderly housing (A) has no fact apart from `private_dwelling`, as CO-007's precision says. Excerpt S3472; tests CO-007-T9 and T10. |
+| N2-P2-1 | Open question OQ-835 (needs Legal; co-owner SNAP policy owner), named in CO-4250's `open` and precision. Assumption: Colorado's physical-household reading. |
+| N2-P2-2 | Fixed, `c97135d` (the first-pass P2-3 deferral). `snap_is_fleeing_felon` (CO-4683) applies the four-part test: `is_fleeing_felon` (parts 2-3), a new outstanding felony warrant fact (CO-4684, part 1) and a new law-enforcement actively-seeking fact (CO-4685, part 4, as 4.304.4.C.1 defines it). The two new facts are law enforcement's statements, which meets "the fleeing status must be verified". CO-311 and CO-2302 read CO-4683; Colorado Works and Adult Financial keep `is_fleeing_felon`, whose meaning is unchanged. Tests CO-4683-T1 to T4, CO-311-T30 and T31. |
+| N2-P2-3 | Fixed, `c97135d`. Neutral fact `declines_to_provide_immigration_documentation` (CO-4687) is an arm of CO-310 (the member is an ineligible non-citizen at once), turns CO-1373 off (nothing is asked), and gives CO-2571 `ineligible_member_non_citizen`. Excerpt S902 (existing). Tests CO-310-T5 and CO-1373-T6. |
+| N2-P2-4 | Fixed, `c97135d`. CO-4265's meaning now excludes an internship, field work or practical experience in a course of higher education (4.306.B.6, S135). |
+| N2-P2-5 | Fixed, `c97135d`. CO-039's meaning now includes a disqualification imposed on a fraud conviction, citing 4.206.C.3.a.1 (new excerpt S3478) and 4.803.3. |
+| N2-P3-1 | Fixed, `c97135d`. CO-2337's precision names `snap_creditable_qualifying_quarters` (CO-4262). |
+| N2-P3-2 | Fixed, `c97135d`. The CF-19 line in docs/colorado-notes.md now points to CO-1746's meaning, which records the release date as the filing date. |
+| N2-P3-3 | Fixed, `c97135d`. CO-348's precision says the interview conditions of 4.204.C and 4.205.1.B.2 are application processing that the volume does not model. |
+| N2-P3-4 | Fixed, `c97135d` (first-pass P3-5). CO-4690 says a foster child's foster parent lives with the child but is not in the child's SNAP unit. CO-4689 applies this to the unit: a foster child under 18 in it makes every member of the unit, including the child's own child or spouse, an ineligible member (an arm of CO-311). Excerpt S3475; tests CO-4689-T1 to T3, CO-4690-T1 and T2. |
+| N2-P3-5 | Resolved on 273.1(b)(2), `c97135d` (first-pass P3-6). D-7 sets the spouse's income aside without condition (S20), and a State may not count income the federal test leaves out. CO-419's precision records this; the derivation is unchanged. |
+| N2-P3-6 | Fixed, `c97135d` (first-pass P3-8, second half). Neutral fact `has_agreement_to_begin_farm_work_within_thirty_days` (CO-4688) is an arm of CO-404. Excerpt S3474; test CO-404-T4. |
+| P3-5, P3-6, P3-8 (first pass) | Closed with N2-P3-4, N2-P3-5 and N2-P3-6 above. |
+
+Shared-file notes:
+- One shared fact's meaning changed: CO-039, which only SNAP reads.
+- Five neutral facts were added (CO-4684 to CO-4688); no existing fact changed meaning for another program.
+- The financial half changed the meanings of CO-1568 and CO-3367 (see coverage2-snap-financial.md).

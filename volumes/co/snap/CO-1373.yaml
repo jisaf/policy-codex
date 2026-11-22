@@ -6,9 +6,9 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: "Whether the person's declared immigration status must be verified for SNAP, through SAVE: every household member who declares a lawful status, at application; a status verified at application is not verified again at recertification unless it has changed."
-precision: "A changed or expired status, or information that is incomplete, inaccurate, inconsistent or outdated, is verified again at recertification (4.502.B.1, S1618): snap_immigration_status_information_is_outdated (CO-2322), read as false when not stated (phase-10 sweep, OQ-371)."
-derived: [all, snap_is_household_member, claims_lawful_immigration_status, [any, [not, snap_determination_is_recertification], [otherwise, snap_immigration_status_information_is_outdated, false]]]
-sources: [S1618, S802, S817, S828, S1055, S1056]
+precision: "A changed or expired status, or information that is incomplete, inaccurate, inconsistent or outdated, is verified again at recertification (4.502.B.1, S1618): snap_immigration_status_information_is_outdated (CO-2322), read as false when not stated (phase-10 sweep, OQ-371). Coverage pass 2 N2-P2-3: nothing is asked for a member the household has chosen to have classified as an ineligible non-citizen rather than document (declines_to_provide_immigration_documentation, CO-4687): \"the local office shall not continue efforts to obtain that documentary evidence\" (4.505.6.J, S902)."
+derived: [all, snap_is_household_member, claims_lawful_immigration_status, [not, [otherwise, declines_to_provide_immigration_documentation, false]], [any, [not, snap_determination_is_recertification], [otherwise, snap_immigration_status_information_is_outdated, false]]]
+sources: [S1618, S802, S817, S828, S1055, S1056, S902]
 implemented: engine
 tags: [verification, snap, immigration]
 rationale: No existing item states this verification requirement; the phase-9 chapter needs one requirement item per element so the household's pending count and status can be derived.
@@ -18,3 +18,4 @@ tests:
   - {id: CO-1373-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, immigration_status: lawful_permanent_resident, snap_determination_is_recertification: true}, expect: false}
   # Phase-10 sweep (OQ-371): a status that has expired since it was verified is verified again at recertification (4.502.B.1).
   - {id: CO-1373-T5, month: "2026-10", as_of: "2026-10-01", given: {snap_resides_in_institution_providing_meals: false, immigration_status: lawful_permanent_resident, snap_determination_is_recertification: true, snap_immigration_status_information_is_outdated: true}, expect: true}
+  - {id: CO-1373-T6, title: "Coverage pass 2 N2-P2-3: the household elected to go on without the documentation", month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, claims_lawful_immigration_status: true, declines_to_provide_immigration_documentation: true}, expect: false}

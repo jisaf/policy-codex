@@ -5,8 +5,9 @@ kind: supplied
 type: yes/no
 scope: person
 program: SNAP
-meaning: The person is assigned to or placed in the institution of higher education through, or in compliance with the requirements of, WIOA, SNAP E&T, TAA, or another listed employment and training program (7 U.S.C. 2015(e)(3); 10 CCR 2506-1 4.306.1.G).
+meaning: "The person is assigned to or placed in the institution of higher education through, or in compliance with the requirements of, a program under title I of WIOA, a program under section 236 of the Trade Act of 1974 (TAA), another employment and training program operated by a State or local government (with at least one component equivalent to the SNAP Employment First program), or the JOBS program; or through SNAP Employment and Training (Employment First) only where the course or program of study is part of a program of career and technical education (20 U.S.C. 2302) that may be completed in not more than four years at an institution of higher education, or is limited to remedial courses, basic adult education, literacy or English as a second language (7 U.S.C. 2015(e)(3)(B); 7 CFR 273.5(b)(11)(ii); 10 CCR 2506-1 4.306.1.G). A self-initiated placement during enrollment in one of these programs counts when the program has a component for enrollment in an institution of higher education and accepts the placement."
 supplied_by: County SNAP E&T or WIOA case record.
-sources: []
+statute_override: "Federal law overrides 10 CCR 2506-1 4.306.1.G (S135), which exempts a student placed through Employment First with no condition on the course: 7 U.S.C. 2015(e)(3)(B) (S3470) and 7 CFR 273.5(b)(11)(ii) (S3471) exempt a SNAP E&T placement only where the course is career and technical education completable in four years or less, or remedial, basic adult education, literacy or English as a second language. The WIOA, Trade Act and other-program placements keep no condition. Coverage pass 2 N2-3."
+sources: [S133, S135, S3470, S3471]
 tags: [student]
 rationale: This is a case-management fact about which program placed the student, not derivable from enrollment status alone; 7 U.S.C. 2015(e)(3) and 10 CCR 2506-1 4.306.1.G (S133, S135) make it a distinct student exemption.

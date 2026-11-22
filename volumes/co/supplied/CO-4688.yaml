@@ -1,0 +1,13 @@
+id: CO-4688
+name: "Has an agreement to begin farm work within thirty days"
+identifier: has_agreement_to_begin_farm_work_within_thirty_days
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is a migrant or seasonal farm worker who is under contract or a similar agreement with an employer or crew chief to begin employment within thirty days of the determination date."
+precision: "If not stated, SNAP reads it as false."
+supplied_by: "Applicant's statement; the contract or agreement."
+sources: [S3474]
+tags: [work_registration]
+rationale: "Coverage pass 2 N2-P3-6 (first-pass P3-8, second half): 4.310.3.E.1 (S3474) and 7 CFR 273.7(b)(1)(vii) count such a farm worker as employed 30 hours for the work registration exemption; no fact stated the agreement."

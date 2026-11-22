@@ -1423,9 +1423,10 @@ Body: 10 CCR 2506-1 4.407.61.A (S1013) uses the $165 SMED "if the total verified
 
 Checked 2026-11-21: 10 CCR 2506-1 4.407.61.A (D-82, S1013), unchanged in the 12/30/2025 version (D-133): the SMED applies when expenses are "greater than thirty-five dollars ($35) and less than or equal to the SMED" and actual expenses when they, "after deducting the first thirty-five dollars ($35), exceed the SMED"; Colorado's SMED demonstration terms are not on an allowed host. No published rule settles it.
 
-Class: state policy choice
+Class: blocked on a named document
 Owner: SNAP policy owner
 Assumption: A household whose medical expenses are between $165 and $200 gets the standard medical deduction.
+Blocked on: Colorado's SNAP Standard Medical Expense Deduction demonstration approval and its terms (FNS's waiver letter to CDHS), which state how the band between the SMED and the SMED plus $35 is treated; neither cdhs.colorado.gov nor www.usda.gov is an allowed host, and fns.usda.gov serves no copy (reclassified in coverage pass 2, C2-8)
 
 Checked 2026-11-22: 10 CCR 2506-1 4.407.61.A (D-82, S1013; unchanged in D-133) gives the standard deduction when expenses are "less than or equal to the SMED" and actual expenses when they, after the first $35, "exceed the SMED", leaving expenses over $165 and up to $200 in neither. No published rule settles it.
 
@@ -2608,3 +2609,13 @@ Owner: Cash programs policy owner
 Assumption: "Household" in 26-2-111(2)(d)(I) is the Colorado Works assistance unit: the bar reaches a person who is a member of the Colorado Works case, not a relative in the same home whom 3.520.71.F.1 leaves out of it.
 
 Checked 2026-11-22: C.R.S. 26-2-111(2)(d)(I) and (4)(c)(I) (D-59); 9 CCR 2503-5 3.520.61.F and 3.520.71.F.1.a-c (D-80, rule version 12428, effective 03/02/2026). Neither text defines "household" for (2)(d).
+
+### OQ-835. ABAWD exception for living with a child: the physical household (Colorado) or the SNAP household (statute)
+
+Body: 10 CCR 2506-1 4.311.A.4 (S749) excepts from the ABAWD time limit an individual "Residing in the same physical household with an individual who is under the age of eighteen (18). The minor individual does not have to be included in the same SNAP household". 7 CFR 273.24(c)(4) (S3050) excepts a person "residing in a household where a household member is under age 18, even if the household member who is under 18 is not himself eligible for SNAP benefits", and 7 U.S.C. 2015(o)(3)(C) as amended by Pub. L. 119-21 sec. 10102 (S127, S128) speaks of "a parent or other member of a household with responsibility for a dependent child under 14". In the Act and the regulation, "household" is the SNAP household (7 U.S.C. 2012; 7 CFR 273.1), and a member under 18 who is "not himself eligible" is still a member of it; Colorado's text reaches a child who is in another SNAP household under the same roof, such as a roommate's child. snap_lives_with_child_under_abawd_dependent_child_age (CO-4250) follows Colorado's physical-household reading, with the statute's age of 14. Elsewhere the volume applies the statute where Colorado's rule is broader (OQ-1, OQ-533, CO-072); whether Colorado may keep the broader exception, or whether it is superseded by the amended 2015(o)(3)(C), is a legal reading. Answers differ only for a person living with a child under 14 who is in a different SNAP household. Coverage pass 2 N2-P2-1. Items: CO-4250, CO-414.
+
+Class: needs Legal
+Owner: Legal, SNAP policy owner
+Assumption: Colorado's physical-household reading: a person living in the same home as a child under 14 is excepted whether or not the child is in the person's SNAP household.
+
+Checked 2026-11-22: 10 CCR 2506-1 4.311.A.4 (D-82, version effective 2026-10-01, S749); 7 CFR 273.24(c)(4) (D-202, S3050); 7 U.S.C. 2015(o)(3)(C) as amended (D-3, D-5; S127, S128). No text reconciles the two; FNS's implementation memoranda for sec. 10102 are on www.usda.gov, not an allowed host.
