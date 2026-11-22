@@ -149,12 +149,26 @@ function SourcePage({ id }: { id: string }) {
   );
 }
 const norm = (s: string) => s.replace(/[*_>]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+// The documents' text comes in a few bundle files (scripts/build-data.ts):
+// `documents.json` says which one holds each document.
+let docIndex: Promise<Record<string, string>> | null = null;
+const docChunks = new Map<string, Promise<Record<string, string>>>();
+const getJson = (url: string): Promise<Record<string, string>> =>
+  fetch(url).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+async function documentText(file: string): Promise<string> {
+  docIndex ??= getJson("./documents.json");
+  const name = (await docIndex)[file];
+  if (!name) return "";
+  let chunk = docChunks.get(name);
+  if (!chunk) docChunks.set(name, (chunk = getJson("./" + name)));
+  return (await chunk)[file] ?? "";
+}
 function DocPage({ id }: { id: string }) {
   const d = docById.get(id);
   const at = route.value.q.at;
   const [text, setText] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => { setText(null); if (d) fetch("./" + d.file).then((r) => (r.ok ? r.text() : "")).then(setText).catch(() => setText("")); }, [id]);
+  useEffect(() => { setText(null); if (d) documentText(d.file).then(setText).catch(() => setText("")); }, [id]);
   const excerpts = D.sources.filter((s) => s.doc === id);
   const target = at ? srcById.get(at) : null;
   const paras = useMemo(() => (text ?? "").split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean), [text]);

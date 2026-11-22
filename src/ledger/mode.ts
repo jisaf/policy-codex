@@ -40,5 +40,6 @@ export function refLabel(ref: string, local: LocalInfo | null): string {
   if (ref !== LOCAL_REF) return ref;
   if (!local) return "working tree";
   const at = local.head ? ` @ ${local.head.slice(0, 7)}` : "";
+  if (local.bundled) return `preview snapshot${local.branch ? ` (${local.branch}${at})` : at}`;
   return `working tree${local.branch ? ` (${local.branch}${at})` : at}${local.dirty ? ", edited" : ""}`;
 }

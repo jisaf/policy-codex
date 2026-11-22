@@ -91,6 +91,10 @@ The bare app URL opens the volume used last in this browser, else `co`. A change
 
 If Playwright's bundled Chromium is unavailable, point `PLAYWRIGHT_CHROMIUM_PATH` at a Chrome binary.
 
+### Static preview builds
+
+`npm run build:bundle` writes `.artifacts/app/`: the app built with `VITE_LEDGER_SOURCE=bundled`, every path relative, and a snapshot of `codex.json`, `volumes/`, `docs/` and any conformance results as a few JSON files under `ledger/` (each under 8 MB; `src/ledger/bundled.ts`). It runs on any static host, from any sub-path, with no GitHub: the header reads "preview snapshot (<branch> @ <sha>)" (`--branch <name>` sets the branch shown), there is no file history, and the tray's Propose is replaced by "Preview build: download the change to send it". `npm run build:blind-a` and `npm run build:blind-b` do the same for the two prototypes, into `.artifacts/blind-a/` and `.artifacts/blind-b/`.
+
 The engine under `src/engine/` is pinned to `test/fixtures/` (53 derivation round trips, 138 item blocks, 133 rule tests). The fixtures are frozen; see `scripts/README.md` for how they were produced.
 
 ## Deploy

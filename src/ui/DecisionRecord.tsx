@@ -1,7 +1,7 @@
 import { useSignal } from "@preact/signals";
 import { useLayoutEffect } from "preact/hooks";
 import { DEFAULT_BRANCH, REPO } from "../config";
-import { gitRefOf } from "../ledger/source";
+import { BUNDLED, gitRefOf } from "../ledger/source";
 import { EXCERPT_KIND_LABEL, excerptKind, isUnverified } from "./provenance";
 import { questionStatus, QUESTION_STATUS_LABEL } from "./questions";
 import { fileHistory, type HistoryEntry } from "../github/history";
@@ -28,7 +28,9 @@ export function DecisionRecord(
   const path = vol.chapterOf[item.id] ? itemFilePath(vol, item.id) : null;
   // The working tree's history is its branch's on GitHub; main stands in.
   const ref = gitRefOf(vol.ref, DEFAULT_BRANCH);
-  const load = fetchHistory ?? ((p, rf) => fileHistory(REPO, p, rf));
+  // A static preview build never reaches GitHub: no history, no request.
+  const load: FetchHistory = fetchHistory ??
+    (BUNDLED ? async () => null : (p, rf) => fileHistory(REPO, p, rf));
 
   // Laid out before paint, like a document's text: the request starts as
   // soon as the record commits rather than after a reader notices it loaded.

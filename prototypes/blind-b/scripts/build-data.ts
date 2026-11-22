@@ -1,7 +1,7 @@
 /* Builds public/data.json for the blind-b prototype from the Colorado volume:
  * the item YAML files (through the engine's own parser), volume.yaml,
  * sources.md, documents.yaml, open-questions.md, tests/cases.yaml and
- * aid-codes.yaml. Copies documents/ so the citation viewer can open the full
+ * aid-codes.yaml. Bundles documents/ so the citation viewer can open the full
  * text. Run from the repository root:
  *   npx vite-node prototypes/blind-b/scripts/build-data.ts */
 import fs from "node:fs";
@@ -127,10 +127,40 @@ const data = {
 };
 fs.writeFileSync(path.join(out, "data.json"), JSON.stringify(data));
 
-const docOut = path.join(out, "documents");
-fs.mkdirSync(docOut, { recursive: true });
-for (const f of fs.readdirSync(path.join(vol, "documents"))) {
-  fs.copyFileSync(path.join(vol, "documents", f), path.join(docOut, f));
+// The documents go out as a few JSON bundles, keyed by their volume path
+// (`documents/D-1.md`), not as one file each.
+fs.rmSync(path.join(out, "documents"), { recursive: true, force: true });
+writeDocumentBundle(out, fs.readdirSync(path.join(vol, "documents")).sort().map((f) => ({
+  key: `documents/${f}`, text: fs.readFileSync(path.join(vol, "documents", f), "utf8"),
+})));
+
+/** Writes the documents' text as a few JSON files (`documents.json`, the
+ *  index from key to file, and `documents-<n>.json`, each under 8 MB), so the
+ *  page fetches a handful of files instead of one per document and a static
+ *  host with a file-count limit can serve it. */
+function writeDocumentBundle(dir: string, docs: Array<{ key: string; text: string }>): number {
+  const LIMIT = 8 * 1024 * 1024;
+  const index: Record<string, string> = {};
+  let chunk: Record<string, string> = {};
+  let size = 2;
+  let n = 0;
+  const flush = () => {
+    if (!Object.keys(chunk).length) return;
+    const name = `documents-${n++}.json`;
+    fs.writeFileSync(path.join(dir, name), JSON.stringify(chunk));
+    for (const k of Object.keys(chunk)) index[k] = name;
+    chunk = {};
+    size = 2;
+  };
+  for (const d of docs) {
+    const bytes = Buffer.byteLength(JSON.stringify(d.key) + ":" + JSON.stringify(d.text) + ",");
+    if (size + bytes > LIMIT) flush();
+    chunk[d.key] = d.text;
+    size += bytes;
+  }
+  flush();
+  fs.writeFileSync(path.join(dir, "documents.json"), JSON.stringify(index));
+  return n;
 }
 const mb = (fs.statSync(path.join(out, "data.json")).size / 1e6).toFixed(1);
 console.log(`data.json: ${items.length} items, ${sources.length} sources, ${questions.length} questions, ${cases.length} cases, ${documents.length} documents; ${mb} MB`);

@@ -54,7 +54,8 @@ export function RefSelect() {
   const current = baseRefOf(r);
   const choices: string[] = [];
   if (local) choices.push(LOCAL_REF);
-  choices.push(DEFAULT_BRANCH);
+  // A static preview build reads its bundled snapshot only: no GitHub.
+  if (!local?.bundled) choices.push(DEFAULT_BRANCH);
   if (!choices.includes(current) && !isPrRef(r.ref)) choices.push(current);
   const go = (ref: string) => {
     other.value = false;
@@ -83,7 +84,7 @@ export function RefSelect() {
           }}
         >
           {choices.map((c) => <option key={c} value={c}>{refLabel(c, local)}</option>)}
-          <option value="__other">Another branch…</option>
+          {!local?.bundled && <option value="__other">Another branch…</option>}
         </select>
       )}
     </span>

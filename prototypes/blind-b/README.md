@@ -10,7 +10,7 @@ From the repository root (the prototype uses the repository's own `preact`, `@pr
 
 ```
 npm ci                                                            # once, for the repository
-npx vite-node prototypes/blind-b/scripts/build-data.ts            # writes public/data.json, copies the documents
+npx vite-node prototypes/blind-b/scripts/build-data.ts            # writes public/data.json, bundles the documents
 npx vite build -c prototypes/blind-b/vite.config.ts               # writes prototypes/blind-b/dist
 npx vite preview -c prototypes/blind-b/vite.config.ts --port 4319 # http://localhost:4319
 ```
@@ -23,7 +23,7 @@ Screenshots (with the preview running): `node prototypes/blind-b/scripts/screens
 
 - **Real:** every item, excerpt, document, question, household and aid code is read from `volumes/co`. The item files go through the engine's own parser rather than the JSON export, because the export leaves out status, approvals, the statute-override note, the rationale and the rule tests. The repository's engine runs in the page: stored households are decided live, so the as-of date, what-if, "with and without this change" and the proposal's before-and-after are computed, not mocked. Required approvers come from the engine's `approvalsFor`.
 - **Not real:** nothing is written anywhere. Signatures, answers, opinions and edits collect in the browser (`localStorage`); "Send for review" describes the pull request that would be opened and empties the tray. "Viewing as" is a choice, not a login.
-- Generated and not committed: `public/data.json` (5 MB), `public/documents/` (11 MB), `dist/`.
+- Generated and not committed: `public/data.json` (5 MB), the documents bundled as `public/documents.json` and `public/documents-<n>.json` (11 MB), `dist/`. `npm run build:blind-b` at the root builds a copy into `.artifacts/blind-b/`.
 
 ## Layout
 

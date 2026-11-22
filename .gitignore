@@ -18,3 +18,6 @@ conformance/results.json
 conformance/*/suite.json
 conformance/*/results.json
 conformance/*/ledger.json
+
+# static preview builds (`npm run build:bundle`, the prototypes)
+.artifacts/

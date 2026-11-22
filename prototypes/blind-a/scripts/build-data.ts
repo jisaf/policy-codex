@@ -5,7 +5,7 @@
  * Reads (never writes) volumes/co/** and conformance/co/ledger.json (run
  * `npm run export -- --volume co` first), plus `git log` for the volume, and
  * writes prototypes/blind-a/public/data/codex.json and a copy of every source
- * document under public/data/documents/. Parsers for sources.md,
+ * document, bundled into public/data/documents*.json. Parsers for sources.md,
  * open-questions.md and the case comments are this prototype's own. */
 import fs from "node:fs";
 import path from "node:path";
@@ -21,7 +21,8 @@ const proto = path.resolve(here, "..");
 const root = path.resolve(proto, "../..");
 const vol = path.join(root, "volumes/co");
 const out = path.join(proto, "public/data");
-fs.mkdirSync(path.join(out, "documents"), { recursive: true });
+fs.rmSync(path.join(out, "documents"), { recursive: true, force: true });
+fs.mkdirSync(out, { recursive: true });
 
 function git(args: string[]): string {
   return execFileSync("git", args, { cwd: root, encoding: "utf8", maxBuffer: 1 << 28 });
@@ -90,9 +91,40 @@ const sources: Record<string, Source> = {};
 
 // ------------------------------------------------------------- documents
 const documents = (parseYaml(fs.readFileSync(path.join(vol, "documents.yaml"), "utf8")) ?? []) as Array<Record<string, unknown>>;
+const docTexts: Array<{ key: string; text: string }> = [];
 for (const d of documents) {
   const src = path.join(vol, String(d.file ?? `documents/${d.id}.md`));
-  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(out, "documents", `${d.id}.md`));
+  if (fs.existsSync(src)) docTexts.push({ key: String(d.id), text: fs.readFileSync(src, "utf8") });
+}
+writeDocumentBundle(out, docTexts);
+
+/** Writes the documents' text as a few JSON files (`documents.json`, the
+ *  index from key to file, and `documents-<n>.json`, each under 8 MB), so the
+ *  page fetches a handful of files instead of one per document and a static
+ *  host with a file-count limit can serve it. */
+function writeDocumentBundle(dir: string, docs: Array<{ key: string; text: string }>): number {
+  const LIMIT = 8 * 1024 * 1024;
+  const index: Record<string, string> = {};
+  let chunk: Record<string, string> = {};
+  let size = 2;
+  let n = 0;
+  const flush = () => {
+    if (!Object.keys(chunk).length) return;
+    const name = `documents-${n++}.json`;
+    fs.writeFileSync(path.join(dir, name), JSON.stringify(chunk));
+    for (const k of Object.keys(chunk)) index[k] = name;
+    chunk = {};
+    size = 2;
+  };
+  for (const d of docs) {
+    const bytes = Buffer.byteLength(JSON.stringify(d.key) + ":" + JSON.stringify(d.text) + ",");
+    if (size + bytes > LIMIT) flush();
+    chunk[d.key] = d.text;
+    size += bytes;
+  }
+  flush();
+  fs.writeFileSync(path.join(dir, "documents.json"), JSON.stringify(index));
+  return n;
 }
 
 // ----------------------------------------------------- open-questions.md

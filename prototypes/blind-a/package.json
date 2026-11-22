@@ -10,6 +10,7 @@
     "serve": "node scripts/serve.mjs",
     "smoke": "cd ../.. && vite-node prototypes/blind-a/scripts/smoke.ts",
     "check-routes": "node scripts/check-routes.mjs",
-    "screenshots": "node scripts/screenshots.mjs"
+    "screenshots": "node scripts/screenshots.mjs",
+    "artifact": "npm run build && node scripts/artifact.mjs"
   }
 }

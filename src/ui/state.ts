@@ -10,7 +10,7 @@ import type { Manifest } from "../ledger/manifest";
 import { sourceTitleMap, unverifiedSourceIds } from "../ledger/markdown";
 import { defaultRef, preferredVolume, PREFERRED_VOLUME, refLabel } from "../ledger/mode";
 import {
-  isLocalRef, pickSource, probeLocal, type LedgerSource, type LocalInfo,
+  BUNDLED, isLocalRef, pickSource, probeBundled, probeLocal, type LedgerSource, type LocalInfo,
 } from "../ledger/source";
 import { applyChangeSet } from "../changes/apply";
 import {
@@ -387,10 +387,11 @@ function currentRoute(): Route {
 
 /** Starts reading the address bar. First asks whether a dev or preview
  *  server serves the working tree (so `npm run dev` and `vite preview` show
- *  the local ledger without any network interception), and settles the
- *  default ref from that and `?ref=`. */
+ *  the local ledger without any network interception), or, in a static
+ *  preview build, reads the bundled snapshot's info; and settles the default
+ *  ref from that and `?ref=`. */
 export async function startRouter(
-  probe: () => Promise<LocalInfo | null> = () => probeLocal(),
+  probe: () => Promise<LocalInfo | null> = () => (BUNDLED ? probeBundled() : probeLocal()),
 ): Promise<void> {
   statusSig.value = { kind: "loading", message: "Looking for the ledger…" };
   const local = await probe();
