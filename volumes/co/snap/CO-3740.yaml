@@ -6,6 +6,7 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The person's medical expenses for the month (snap_medical_expenses) that count toward the household's excess medical deduction: all of them, except that once the expense verification period has ended with the person's medical expenses required to be verified and still unverified, none (10 CCR 2506-1 4.502.A.3; 7 CFR 273.2(f)(3)(ii))."
+precision: "Coverage review snap-financial CF-17 (recorded, not modeled): the 4.407.61.A table lets a household that verifies medical expenses over $35 but chooses not to verify those above the Standard Medical Expense Deduction receive the SMED instead of actual expenses; the verification facts record whether medical expenses are verified, not how much of them, so such a household is read as unverified (none allowed once the period has ended). A case states the verified part as the month's medical_expenses_out_of_pocket to give the SMED. Expenses a household elects to average (4.407.B-C, 4.407.61.C) are stated as the month's averaged figure."
 derived: [case, [[all, snap_medical_expenses_verification_is_pending, snap_expense_verification_period_has_ended], 0], [else, snap_medical_expenses]]
 sources: [S818, S812, S803]
 implemented: engine
