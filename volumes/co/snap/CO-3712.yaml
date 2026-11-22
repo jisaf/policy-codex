@@ -5,7 +5,7 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: "The person's own countable gross income for the month, earned plus unearned income, less the legally obligated child support the person pays to or for a non-household member, never below zero: snap_person_gross_income (CO-332) without the income deemed from or paid by a sponsor (snap_sponsor_deemed_income, CO-3701)."
+meaning: "The person's own countable gross income for the month, earned plus unearned income, less the legally obligated child support the person pays to or for a non-household member, never below zero: the person's earned and unearned income (as in snap_person_gross_income, CO-332) without the income deemed from or paid by a sponsor (snap_sponsor_deemed_income, CO-3701), less the person's own child support exclusion (for the 165 percent test of the others' income, CO-419)."
 precision: "Read by the 165 percent test for an elderly and disabled member's separate household (snap_meets_elderly_disabled_separate_household_election, CO-419), which compares the income of the others the member lives with; a sponsor's deemed income is attributed to a sponsored member only for that member's household's eligibility and benefit (4.305.2.C), and reading it there would make the household's composition depend on itself."
 derived: [max, 0, ["-", ["+", snap_person_earned_income, snap_person_unearned_income], snap_child_support_exclusion]]
 sources: [S41, S42, S99, S1314]

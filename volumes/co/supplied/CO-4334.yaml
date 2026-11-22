@@ -1,0 +1,13 @@
+id: CO-4334
+name: "Furnishes the majority of an attendant's meals"
+identifier: furnishes_majority_of_attendant_meals
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person has an attendant, homemaker, home health aide, child-care provider or housekeeper whose services are needed because of the person's age, infirmity or illness, and the people the person lives and eats with furnish the majority of that attendant's meals."
+precision: "Stated on the person the attendant serves; where one attendant serves two members, on one of them only. If not stated, SNAP reads it as false."
+supplied_by: "Applicant statement."
+sources: [S3116, S3117]
+tags: [snap, medical]
+rationale: "Coverage review snap-financial CF-6: 4.407.6.A.8 (S3116) and 7 CFR 273.9(d)(3)(x) (S3117) allow the one-person maximum allotment as a medical expense when the household furnishes most of an attendant's meals; no fact stated it."

@@ -1,0 +1,13 @@
+id: CO-4337
+name: "Installment sale contract value"
+identifier: installment_sale_contract_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of real_property_other_than_home_equity (CO-3393) in installment contracts the person holds for the sale of land or buildings that produce income consistent with their fair market value, together with the property sold under them or held as security for a purchase price consistent with its fair market value."
+precision: "Part of real_property_other_than_home_equity (whose meaning includes the mortgages and promissory notes the person holds), not added to it. If not stated, SNAP reads it as 0."
+supplied_by: "The installment contract and payment record."
+sources: [S3118]
+tags: [snap, resources]
+rationale: "Coverage review snap-financial CF-7: 4.410.E.2 (S3118) exempts such contracts; real_property_other_than_home_equity counts the notes a person holds, so SNAP counted them."

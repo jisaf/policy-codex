@@ -1,0 +1,13 @@
+id: CO-4338
+name: "Real property costs of sale"
+identifier: real_property_costs_of_sale
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The estimated costs of selling or otherwise disposing of the person's interest in the real property real_property_other_than_home_equity (CO-3393) states (commissions, closing costs and the like)."
+precision: "As of the determination date. If not stated, SNAP reads it as 0."
+supplied_by: "Applicant statement; an estimate from a realtor."
+sources: [S3119]
+tags: [snap, resources]
+rationale: "Coverage review snap-financial CF-7: 4.410.G (S3119) measures a resource's return after the estimated costs of sale."
