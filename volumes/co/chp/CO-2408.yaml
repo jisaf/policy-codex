@@ -11,6 +11,7 @@ derived: ["=", birth_mother_coverage_at_birth, chp]
 sources: [S1716]
 implemented: engine
 tags: [chp, age]
+nearest: [CO-087]
 rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case. The ID is kept; the fact is now derived."
 tests:
   - {id: CO-2408-T1, as_of: "2027-02-01", given: {birth_mother_coverage_at_birth: chp}, expect: true}
