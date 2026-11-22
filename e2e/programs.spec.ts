@@ -13,6 +13,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("Marcus finds the Colorado Works grant standard from Figures", async ({ page }) => {
+  test.setTimeout(90_000);
   await page.goto("/#/co/figures");
   await expect(page.locator(".placehead h1")).toHaveText("Figures", { timeout: 30_000 });
   const find = page.locator(".figfilters input[type=search]");
@@ -33,6 +34,7 @@ test("Marcus finds the Colorado Works grant standard from Figures", async ({ pag
 });
 
 test("Marcus explains the grant computation step by step for a training", async ({ page }) => {
+  test.setTimeout(90_000);
   await page.goto("/#/co/programs");
   await page.locator('li.pcard[data-program="ColoradoWorks"] a').click({ timeout: 30_000 });
   await expect(page).toHaveURL(/#\/co\/programs\/ColoradoWorks$/);

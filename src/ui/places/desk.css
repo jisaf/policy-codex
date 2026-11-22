@@ -126,6 +126,8 @@ table.figtable td { overflow-wrap: anywhere; }
   details.howcounted dt { margin-top: 6px; }
   .desktiles { grid-template-columns: 1fr 1fr; }
   .signpage .signbar { top: 0; position: static; }
+  .signpage .signchips, .signpage .rolechips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+  .signpage .signchips .chip, .signpage .rolechips a { flex: none; white-space: nowrap; }
   .signpage .signsearch label, .signpage .signsearch input { flex: 1; min-width: 0; }
   li.outcomerow { flex-direction: column; gap: 4px; }
   li.step { grid-template-columns: 1fr; gap: 2px; }

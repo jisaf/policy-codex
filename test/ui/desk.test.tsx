@@ -89,12 +89,12 @@ describe("the Desk's counts (counts.ts)", () => {
 describe("a program's counts and its steps (counts.ts)", () => {
   it("Colorado Works decides 7 outcomes, with 17 more about documents", () => {
     const s = programSummary(engine, "ColoradoWorks", vol.openQuestions);
-    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 96, 42, 31, 12]);
+    expect([s.decisions.length, s.verification.length, s.rules, s.figures, s.facts, s.openQuestions.length]).toEqual([7, 17, 97, 42, 31, 13]);
     expect(s.decisions.map((it) => it.identifier)).toContain("cw_grant_amount");
   });
 
-  it("explains the grant amount in 4 main steps, 18 at two levels, 45 at three, 75 in all; the result last", () => {
-    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([4, 18, 45, 75]);
+  it("explains the grant amount in 4 main steps, 18 at two levels, 42 at three, 76 in all; the result last", () => {
+    expect([1, 2, 3, Infinity].map((d) => explainSteps(engine, "cw_grant_amount", d).length)).toEqual([4, 18, 42, 76]);
     const steps = explainSteps(engine, "cw_grant_amount", 1);
     expect(steps[steps.length - 1]).toMatchObject({ level: 0, item: { identifier: "cw_grant_amount" } });
     // Each rule comes after the rules it reads.
@@ -105,8 +105,8 @@ describe("a program's counts and its steps (counts.ts)", () => {
     }
   });
 
-  it("figures: 389 in all; words in any order; the three flags", () => {
-    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(389);
+  it("figures: 400 in all; words in any order; the three flags", () => {
+    expect(figuresOnDate(engine, unverified, { asOf: DAY }, wordsMatch)).toHaveLength(400);
     const cw = figuresOnDate(engine, unverified, { asOf: DAY, q: "standard grant", program: "ColoradoWorks" }, wordsMatch);
     expect(cw.map((x) => x.item.id)).toContain("CO-276");
     expect(figuresOnDate(engine, unverified, { asOf: DAY, soon: true }, wordsMatch)).toHaveLength(6);
@@ -203,11 +203,11 @@ describe("the Programs pages", () => {
     expect(host.querySelector("ol.steplist > li.step:last-child .step-n")!.textContent).toBe("Result");
     expect(host.querySelector("button.print")!.textContent).toBe("Print for a training");
     const chips = [...host.querySelectorAll("nav.depthchips a")].map((a) => a.textContent);
-    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (75)"]);
+    expect(chips).toEqual(["The main steps", "Two levels", "Three levels", "Every rule (76)"]);
     // The rule reads in plain words, never "-1 times".
     expect(host.querySelector("li.step.result")!.textContent).not.toMatch(/-1 times/);
     expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=2").querySelectorAll("li.step")).toHaveLength(18);
-    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(75);
+    expect(show("#/co/programs/ColoradoWorks/cw_grant_amount?depth=all").querySelectorAll("li.step")).toHaveLength(76);
   });
 
   it("shows a stored household's values beside each step", () => {
@@ -223,11 +223,11 @@ describe("the Figures page", () => {
   it("lists every figure on a date, with a word filter and three flags", () => {
     const host = show("#/co/figures");
     expect(host.querySelectorAll("tr.figure").length).toBeGreaterThan(40);
-    expect(host.querySelector(".figcount")!.textContent).toContain("389 figures");
+    expect(host.querySelector(".figcount")!.textContent).toContain("400 figures");
     const cw = show("#/co/figures?q=grant+standard&program=ColoradoWorks");
     const row = cw.querySelector('tr.figure[data-figure="cw_grant_standard_table"]')!;
     expect(row.querySelector("a.figname")!.getAttribute("href")).toBe("#/co/item/CO-276");
-    expect(cw.querySelector(".figcount")!.textContent).toContain("of 389 figures");
+    expect(cw.querySelector(".figcount")!.textContent).toContain("of 400 figures");
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);

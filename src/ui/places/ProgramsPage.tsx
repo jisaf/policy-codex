@@ -357,7 +357,7 @@ function Step(
           ))}</p>
         )}
         {source && (
-          <p class="small muted">Law: <a href={excerptHref(c, source.id)}>{(source.citation || source.title || source.id).replace(/\.$/, "")}</a></p>
+          <p class="small muted">Law: <a href={excerptHref(c, source.id)}>{(source.citation || source.title || source.id).replace(/[.,]?\s*https?:\/\/\S+/g, "").replace(/\.$/, "")}</a></p>
         )}
       </div>
     </li>

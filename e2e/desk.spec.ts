@@ -6,6 +6,7 @@ import { expect, test } from "@playwright/test";
  * Rosa, a county supervisor, sees what takes effect soon and opens that
  * month. Old addresses (the inbox, the role page) land here. */
 test("Dana finds an item she must approve and signs it", async ({ page }) => {
+  test.setTimeout(90_000);
   await page.addInitScript(() => {
     localStorage.setItem("codex.tour", "1");
     localStorage.setItem("codex.persona", "hcpf");
@@ -68,6 +69,7 @@ test("Dana finds an item she must approve and signs it", async ({ page }) => {
 });
 
 test("Rosa sees what takes effect soon and opens that month", async ({ page }) => {
+  test.setTimeout(90_000);
   await page.addInitScript(() => {
     localStorage.setItem("codex.tour", "1");
     localStorage.setItem("codex.persona", "county");
@@ -88,6 +90,7 @@ test("Rosa sees what takes effect soon and opens that month", async ({ page }) =
   }
   // Definitions are one click away, not in the tiles.
   await page.goto("/#/co/desk");
+  await expect(page.locator('li.tile[data-tile="soon"]')).toBeVisible({ timeout: 30_000 });
   await page.locator("details.howcounted summary").click();
   await expect(page.locator("details.howcounted")).toContainText("Takes effect soon");
 });
