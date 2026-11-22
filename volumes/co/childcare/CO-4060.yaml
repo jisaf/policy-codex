@@ -1,0 +1,18 @@
+id: CO-4060
+name: "CCCAP: immunization verification is pending"
+identifier: cccap_immunization_verification_is_pending
+kind: derived
+type: yes/no
+scope: person-month
+program: CCCAP
+meaning: "Whether CCCAP still needs this child's immunization record (or a religious or medical exemption): an eligible child who is not attending school and is in care outside the home from an unrelated qualified exempt provider (8 CCR 1403-1 3.111.F.2), outside a homeless family's stabilization period (3.121.B.6), whose record has not been received, where CCCAP verification applies to the person."
+precision: "The element cccap_person_pending_verification_count (CO-1448) counted inline, made its own item so the protective services due date (cccap_protective_services_verification_due_date, CO-4061) can tell it from the others. Due by: cccap_verification_due_date (CO-1450); sixty days for a protective services household (3.119.G)."
+derived: [all, cccap_verification_is_applicable, cccap_is_eligible_child, [otherwise, cccap_care_is_from_unrelated_exempt_provider_outside_home, false], [not, cccap_is_attending_school], [not, cccap_is_in_homelessness_stabilization], [not, cccap_immunization_record_received]]
+sources: [S1637, S2710, S2852]
+nearest: [CO-1448]
+implemented: engine
+tags: [verification]
+rationale: "Second-pass review N-6: a protective services household has sixty days for the immunization record (3.119.G) and for the children's income (3.119.B), six months for citizenship, age and identity (3.119.F), and the usual fifteen days for anything else; the due date must tell the pending elements apart, and the immunization element had no item."
+tests:
+  - {id: CO-4060-T1, title: "A three-year-old in an unrelated exempt provider's home, no record received", as_of: "2026-10-01", month: "2026-10", given: {cccap_verification_is_applicable: true, cccap_is_eligible_child: true, cccap_care_is_from_unrelated_exempt_provider_outside_home: true, cccap_is_attending_school: false, cccap_is_in_homelessness_stabilization: false, cccap_immunization_record_received: false}, expect: true}
+  - {id: CO-4060-T2, title: "The same child in a licensed center", as_of: "2026-10-01", month: "2026-10", given: {cccap_verification_is_applicable: true, cccap_is_eligible_child: true, cccap_care_is_from_unrelated_exempt_provider_outside_home: false}, expect: false}

@@ -16987,3 +16987,278 @@ Document: D-82
 > The spouse's income and resources shall be counted even if the sponsor
 > and spouse were married after the signing of the agreement.
 
+### S2850. CCCAP parent fee: revisions during the twelve-month eligibility period, and no fee higher than the one determined at the most recent referral, application or redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.124.B-C (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> B. Parent fee revisions for Low-Income and Colorado Works Child Care during the
+> twelve (12) month eligibility period may occur under the below circumstances.
+> Increases in parent fees beyond what is outlined in rule subsections (1)-(4) below
+> shall only go into effect at Low-Income Child Care re-determination or at the end
+> of the twelve (12) month Colorado Works Child Care period.
+>
+> 1. The adult caretaker or teen parent, who was initially determined eligible
+> with countable income, regains income after a temporary loss of income;
+>
+> 2. A change has been reported that results in a decrease in the parent fee
+> for the household;
+>
+> 3. There is an increase or decrease in the amount of care that is authorized
+> and the increase in authorization is not due to the addition of a household
+> member; or
+>
+> 4. The household begins or ceases utilization of care at a high-quality child
+> care provider.
+>
+> C. During the twelve (12) month eligibility period the household parent fee cannot be
+> assessed higher than the parent fee determined at the most recent Colorado
+> Works Child Care referral or low-income application or re-determination.
+
+### S2851. CCCAP transition off Colorado Works: no automatic transition after an IPV, over 85% SMI, or after twenty-two unexplained absences; the fee no higher than at the most recent Colorado Works Child Care referral
+
+Document: D-87
+
+8 CCR 1403-1 3.117.A, F (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. A household that is no longer eligible for the Colorado Works Program shall not
+> be automatically transitioned to Low-Income Child Care if any of the following
+> conditions apply. If a household is not transitioned to Low-Income Child Care for
+> any of the conditions below, the county shall provide timely written notice to the
+> primary adult caretaker or teen parent.
+>
+> 1. The household is ineligible for the Colorado Works Program due to an
+> Intentional Program Violation (IPV) as determined in Colorado Works rule
+> (9 CCR 2503-6), incorporated by reference in rule section 3.103(CC);
+>
+> 2. The household is ineligible for the Colorado Works Program and will be at
+> an income level that exceeds eighty-five percent (85%) of the State
+> Median Income (SMI) as outlined in rule section 3.111(H)(1); or
+>
+> 3. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within the last thirty (30) days prior to the household being
+> determined ineligible for Colorado Works and two (2) failed documented
+> attempts to contact the adult caretaker or teen parent have been made
+> within the thirty (30) day period.
+>
+> ...
+>
+> F. Parent fees for households that transition from Colorado Works to Low-Income
+> Child Care must not be assessed higher than what was determined at the most
+> recent Colorado Works Child Care referral. Parent fee revisions for child care
+> during the twelve (12) month period may occur as outlined in rule section
+> 3.124(B).
+
+### S2852. CCCAP protective services households: sixty days to verify the children's income; a county plan may let the Child Welfare worker waive the income requirement; six months for citizenship, age and identity; sixty days for immunization
+
+Document: D-87
+
+8 CCR 1403-1 3.119.A-C, F-G (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. Protective services households are considered a household of one for purposes
+> of determining income eligibility. The only countable income for a protective
+> services household is the income that is received by the child(ren) that have
+> been placed in kinship or foster care. Child support income shall not be included
+> as income. Child support income is intercepted by the county child welfare
+> department.
+>
+> B. Protective services households shall be allowed up to sixty (60) days to provide
+> verification of the child(ren)’s income.
+>
+> C. Counties may request approval from the Department by submitting a county plan
+> to allow the Child Welfare worker to waive the income requirement for protective
+> services households on a case-by-case basis, subject to the requirements and
+> Department approval as described in rule section 3.104. If the income
+> requirement is waived, it must be documented in the CCCAP case file.
+>
+> ...
+>
+> F. Citizenship, age, and identity shall be verified by the Child Welfare worker. The
+> signed Protective Services Child Care Referral serves as verification of
+> citizenship, age, and identity and must be maintained in the child care case file. If
+> the Child Welfare worker is unable to attest to having verified the child’s
+> citizenship status, age, and/or identity at the time of referral:
+>
+> 1. Protective services households must be allowed up to six (6) months to
+> provide verification of the child(ren)’s U.S. citizenship status and age;
+>
+> 2. Protective services households must be allowed up to six (6) months to
+> provide verification of the child(ren)’s identity; and,
+>
+> 3. If the Child Welfare worker cannot verify and attest to the child’s
+> citizenship status, age, or identity within six (6) months of the referral, the
+> county must not provide child care services for the child(ren) through the
+> use of Protective Services Child Care.
+>
+> G. Protective services households must be allowed up to sixty (60) days to provide
+> verification of immunization or religious or medical exemption (see sections 25-4-
+> 902 and 25-4-908, C.R.S., for exemption requirements) if child care is provided
+> by a qualified exempt child care provider not related to the child where care is
+> provided outside of the home.
+
+### S2853. CCCAP: "Eligible child" (current definition); Child Welfare Child Care is not funded through the Child Care Development Fund
+
+Document: D-87
+
+8 CCR 1403-1 3.103.UU; 3.120.A, D, F (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> UU. “Eligible child” means a child, from birth to the age of thirteen (13) years who
+> needs child care services during a portion of the day, but less than twenty-four
+> (24) hours, and is residing with the eligible adult caretaker(s) or teen parent(s); or
+> a child with additional care needs under the age of nineteen (19) who is
+> physically or mentally incapable of caring for themselves or is under court
+> supervision and is residing with or in the legal custody of the eligible adult
+> caretaker(s) or teen parent(s). Any child served through the Colorado Works
+> program or the Low-Income Child Care program must be a citizen/legal resident.
+>
+> ...
+>
+> A. Child Welfare Child Care is used as a temporary service to maintain children in
+> their own homes or in the least restrictive out-of-home care setting when there
+> are no other child care options available. This may include parents, non-certified
+> kinship care, kinship foster care homes, and foster care homes.
+>
+> ...
+>
+> D. Eligibility for Child Welfare Child Care is determined on a case-by-case basis by
+> the Child Welfare division using the criteria outlined in Colorado Department of
+> Human Services rules at 12 CCR 2509-4, rule section 7.302 (July 31, 2023),
+>
+> ...
+>
+> F. The county shall not provide Child Welfare Child Care utilizing the Child Care
+> Development Fund.
+
+### S2854. CCCAP termination: twenty-two unexplained absences with two failed contacts during the eligibility period; unpaid parent fees and absences at redetermination
+
+Document: D-87
+
+8 CCR 1403-1 3.114.A.5, B.2, B.11 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> A. County departments must terminate child care authorizations and cases during
+> the eligibility period for any of the following eligibility-related reasons:
+>
+> ...
+>
+> 5. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within a thirty (30) day period and two (2) failed
+> documented attempts to contact the adult caretaker or teen parent have
+> been made. The thirty (30) day period must account for temporary breaks
+> or reported breaks in care; or
+>
+> ...
+>
+> B. Child care authorizations and/or cases must be terminated for the following
+> eligibility-related reasons at re-determination only:
+>
+> 1. Eligible child exceeds age limits;
+>
+> 2. Adult caretaker(s) or teen parent(s) did not pay parent fees, an acceptable
+> payment schedule has not been worked out between the child care
+> provider(s) and adult caretaker(s) or teen parent(s), or the adult
+> caretaker(s) or teen parent(s) has/have not followed through with the
+> payment schedule;
+>
+> ...
+>
+> 11. If the child has had twenty-two (22) or more unexplained absences from
+> authorized care within thirty (30) days of the re-determination date and two
+> (2) failed documented attempts to contact the adult caretaker or teen
+> parent have been made. The thirty (30) day period must account for
+> temporary breaks or reported breaks in care.
+
+### S2855. CCCAP parent fees: loss of eligibility for unpaid fees at redetermination or the end of the Colorado Works Child Care period; ineligible until the fees are paid, arranged, or good faith is found
+
+Document: D-87
+
+8 CCR 1403-1 3.124.N (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> N. Loss of eligibility for child care benefits may occur at re-determination or at the
+> end of the twelve (12) month Colorado Works Child Care Period if the adult
+> caretaker(s) or teen parent(s) do not pay their parent fees; do not make
+> acceptable payment arrangements with the child care providers; or do not follow
+> through with the arrangements during the twelve (12) month eligibility period.
+> Notice of termination for such loss of eligibility shall be given in accordance with
+> rule section 3.114. Child care providers shall report nonpayment of parent fees
+> no later than sixty (60) calendar-days after the end of the month following the
+> month the parent fees are due unless the Department-approved county policy
+> requires it earlier. If a household's benefits are terminated at re-determination for
+> non-payment of parent fees, that household will remain ineligible until:
+>
+> 1. Delinquent parent fees are paid in full;
+>
+> 2. Adequate payment arrangements are made with the child care provider to
+> whom the fees are owed and an agreement is signed by both parties; or
+>
+> 3. County determination of verified good faith efforts to make payment to the
+> child care provider(s), when the client was unable to locate the child care
+> provider(s).
+
+### S2856. CCCAP eligible households: a separated caretaker with a temporary order is not found ineligible on the other spouse's or parent's resources
+
+Document: D-87
+
+8 CCR 1403-1 3.111.D.10 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 10. A separated primary adult caretaker or teen parent with a validly issued
+> temporary order for parental responsibilities or child custody shall not be
+> determined ineligible based on the other spouse’s or parent’s financial
+> resources.
+
+### S2857. CCCAP: enrollment in substance use disorder treatment is verified through self-attestation
+
+Document: D-87
+
+8 CCR 1403-1 3.111.G.4.d; 3.125.CC (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> d. The adult caretaker(s) or teen parent(s) shall submit verification of
+> active enrollment in their education or training activity at the time
+> of application; or, when beginning an education or training during
+> the eligibility period or at redetermination according to Department
+> policy. Adult Caretakers shall verify enrollment in a substance use
+> disorder workforce training activity through self-attestation
+> according to Department policy which can be found on the
+> Colorado Department of Early Childhood website at
+> https://cdec.colorado.gov/resources/cdec-memo-series.
+>
+> ...
+>
+> CC. According to Department policy, which can be found on the website at
+> https://cdec.colorado.gov/resources/cdec-memo-series, counties must verify an
+> adult caretaker or teen parent’s enrollment in a substance use disorder workforce
+> training activity through self-attestation and must determine if the substance use
+> disorder program meets the definition outlined in rule section 3.103(EEEEE)
+> based on the adult caretaker or teen parent’s self-attestation.
+
+### S2858. CCCAP income exclusion: irregular income under ninety dollars in a calendar quarter
+
+Document: D-87
+
+8 CCR 1403-1 3.111.J.28 (version effective 2026-08-14). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12658&fileName=8%20CCR%201403-1
+
+> 28. Irregular income in the certification period that totals less than ninety
+> dollars ($90) in any calendar quarter, such as slight fluctuations in regular
+> monthly income and/or that which is received too infrequently or irregularly
+> to be reasonably anticipated
+
+### S2859. LEAP: fraud penalties for individuals
+
+Document: D-86
+
+9 CCR 2503-7 3.751.563 (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> 3.751.563 Penalties for Individuals Who Are Found Guilty of Committing Fraud
+>
+> Individuals who are found guilty of committing fraud, pursuant to section 26-1-127, C.R.S., in a prior
+> program year shall be ineligible to participate in LEAP in the subsequent program year for the first
+> violation, two program years for the second violation, and permanently for the third violation.
+
+### S2860. LEAP income exclusion: earned income of children under eighteen residing with a parent or guardian
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.Q (version effective 11/01/2025). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> Q. Earned income of children under the age of eighteen (18) who are residing with a parent or
+> guardian;

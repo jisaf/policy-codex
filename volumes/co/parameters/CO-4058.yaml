@@ -1,0 +1,15 @@
+id: CO-4058
+name: CCCAP protective services immunization verification days
+identifier: cccap_protective_services_immunization_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: CCCAP
+meaning: "The days a protective services household has, from the county's request, to provide verification of immunization or a religious or medical exemption for a child in care outside the home from an unrelated qualified exempt provider: 8 CCR 1403-1 3.119.G, \"up to sixty (60) days\"."
+versions:
+  - from: "2026-08-14"
+    value: 60
+    source: S2852
+sources: [S2852]
+tags: [verification]
+rationale: "Second-pass review N-6: cccap_verification_status (CO-1451) gave a protective services household fifteen days for the immunization record, which 3.119.G gives sixty."

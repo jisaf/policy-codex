@@ -1,0 +1,14 @@
+id: CO-4067
+name: Retroactive Social Security lump sums received in the thirty days before the application
+identifier: retroactive_social_security_lump_sum_received_prior_thirty_days
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of lump_sum_received_prior_thirty_days (CO-4066) that is a retroactive lump-sum Social Security or railroad retirement payment, as retroactive_social_security_lump_sum_received (CO-3919) describes it, received in the thirty days before the application date."
+precision: "Part of lump_sum_received_prior_thirty_days, not added to it. If not stated while that fact is stated, a program reads it as 0."
+supplied_by: "The applicant's statement and the payer's records, by date received."
+sources: [S2208]
+tags: [income]
+rationale: "Second-pass review N-8 (F-11 residual): 9 CCR 2503-7 3.752.22.A counts \"the countable gross unearned income received in the income verification period\", and LEAP read one-time receipts for the calendar month of the application instead (RV-S4: a $5,000 prize received on October 20 for an application of November 5 was left out). Monthly facts cannot place a receipt within thirty days that straddle two months, so the thirty-day receipt is its own fact, as wages and recurring unearned income already are (CO-3910, CO-3911)."
+nearest: [CO-3919]
