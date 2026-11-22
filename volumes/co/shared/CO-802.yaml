@@ -9,6 +9,7 @@ meaning: "The value of shelter this person receives from someone else, outside o
 precision: "Zero for a person who pays a full share of the home's shelter costs (shelter_costs_paid_by_others 0). The one-third reduction for a person living in another's household throughout the month (416.1131) is not separately modeled; the presumed value rule applies."
 derived: [min, shelter_costs_paid_by_others, ["/", ssi_federal_benefit_rate_individual, ssi_presumed_maximum_value_fbr_divisor]]
 sources: [S306, S307, S668]
+open: [OQ-823]
 implemented: engine
 tags: [non_magi, income]
 rationale: "Same-word audit SW-30 and dual-entry audit 2.7: in-kind support and maintenance was two supplied, already-computed amounts, one per method, whose formula the meaning spelled out. The shelter arrangement is stated in neutral facts; the SSI method's and Adult Financial's ISM are each derived by its own rule."

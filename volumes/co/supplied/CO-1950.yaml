@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person
 program: Medicaid
-meaning: "The amount a court has ordered the institutionalized spouse to transfer to the community spouse for the monthly support of the community spouse or a dependent family member: branch (c) of the CSRA in 10 CCR 2505-10 § 8.100.7.M.1. If not stated, Medicaid reads this as zero (no court order)."
+meaning: "The amount a court has ordered the institutionalized spouse to transfer to the community spouse for the monthly support of the community spouse or a dependent family member: branch (c) of the CSRA in 10 CCR 2505-10 § 8.100.7.M.1. If not stated, Medicaid reads this as zero (no court order). It is the resources ordered transferred, which the CSRA compares; a monthly support amount ordered is court_ordered_spousal_support (CO-4619), which the monthly income allowance reads (§ 8.100.7.R.3)."
 supplied_by: The court order.
 sources: [S1220]
 tags: [ma, ltc, resources, legal]

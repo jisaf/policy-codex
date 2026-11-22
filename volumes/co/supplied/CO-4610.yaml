@@ -1,0 +1,14 @@
+id: CO-4610
+name: "Lives in the home"
+identifier: lives_in_owned_home
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person lives in the home whose equity home_equity (CO-826) states: false when the person has left it to live in an institution, a facility or another dwelling."
+precision: "If not stated, the home is read as lived in when the person's residence_setting_type is private_dwelling and as left otherwise; Medicaid reads it so."
+supplied_by: "Application."
+sources: [S3403]
+tags: [resources, household]
+rationale: "Coverage review NM-5: 10 CCR 2505-10 § 8.100.5.M.2.a.iv-xii decide whether a home the person has left is still exempt; no fact stated that the person had left it."
+nearest: [CO-826]

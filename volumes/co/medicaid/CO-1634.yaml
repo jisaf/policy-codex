@@ -6,11 +6,12 @@ type: yes/no
 scope: person-month
 program: Medicaid
 meaning: "Whether trust documents must be submitted: for a long-term care applicant who (or whose spouse) transferred assets into a trust, is a trust beneficiary, or has an income trust."
-derived: [all, ma_is_long_term_care_applicant, [any, has_trust_interest, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], has_trust_interest]], has_income_trust]]
-sources: [S1741]
+precision: "Coverage review NM-13: a person determined eligible under the Working Adults Buy-In owes no B.2.a documents (§ 8.100.7.B.2.c; ma_owes_long_term_care_asset_disclosure, CO-4631)."
+derived: [all, ma_owes_long_term_care_asset_disclosure, [any, has_trust_interest, [exists, [filter, [persons], [otherwise, [rel, [spouse], [P]], false]], [of, [P], has_trust_interest]], has_income_trust]]
+sources: [S1741, S3408]
 implemented: engine
 tags: [verification, ma, ltc, resources]
 rationale: "Review K-3: 8.100.7.A.2.i requires the trust documents; no item asked for them."
 tests:
-  - {id: CO-1634-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_long_term_care_applicant: true, has_trust_interest: false, has_income_trust: true}, expect: true}
-  - {id: CO-1634-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_long_term_care_applicant: true, has_trust_interest: false, has_income_trust: false}, expect: false}
+  - {id: CO-1634-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_trust_interest: false, has_income_trust: true}, expect: true}
+  - {id: CO-1634-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_owes_long_term_care_asset_disclosure: true, has_trust_interest: false, has_income_trust: false}, expect: false}

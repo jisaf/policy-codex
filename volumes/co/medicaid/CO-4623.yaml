@@ -1,0 +1,18 @@
+id: CO-4623
+name: "Medicaid: SSI-related countable resources of the individual"
+identifier: ma_ssi_countable_resources_individual
+kind: derived
+type: money
+scope: person
+program: Medicaid
+meaning: "This person's own countable resources for the aged, blind and disabled groups and long-term care (10 CCR 2505-10 § 8.100.5.J, M): the SSI-method figure (ssi_countable_resources_individual, CO-800), less the real property left out while for sale or co-owned with a resident (ma_excluded_real_property_value), plus income-producing property above its exclusion (ma_countable_income_producing_property_value) and the home when § 8.100.5.M.2.a makes it countable (ma_home_is_countable_resource). An ABLE account is left out (M.2.k); personal property held as an investment (M.3.j) and the value the Department finds available from a trust, an annuity or a life estate (§ 8.100.7.E, H, I) are added."
+precision: "The person's own holdings, not combined with a spouse's; ma_ssi_countable_resources (CO-608) and ma_institutionalized_spouse_countable_resources (CO-647) combine the spouses' figures. The real property left out is never more than the real property the SSI-method figure counted."
+derived: [+, [max, 0, ["-", ["-", ssi_countable_resources_individual, ma_excluded_real_property_value], [min, [otherwise, able_account_value, 0], liquid_resources_value]]], ma_countable_income_producing_property_value, [case, [ma_home_is_countable_resource, home_equity], [else, 0]], [otherwise, investment_personal_property_value, 0], [otherwise, ma_trust_annuity_life_estate_value_available, 0]]
+sources: [S2215, S1514, S3402, S3403, S3421, S3423]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Coverage review NM-2, NM-4, NM-5: the Medicaid resource rules of § 8.100.5.J and M that the SSI-method figure, which Adult Financial also reads, does not carry (Medicaid's own findings on real property for sale and co-owned, income-producing property, and the home) are applied once per person here, so the couple, long-term care and deeming items read one figure. Coverage review NM-20, NM-27: ABLE accounts, investment personal property and the Department's trust, annuity and life estate findings are Medicaid's resource rules too."
+tests:
+  - {id: CO-4623-T1, as_of: "2026-10-12", given: {ssi_countable_resources_individual: 51000, ma_excluded_real_property_value: 50000, ma_countable_income_producing_property_value: 0, ma_home_is_countable_resource: false, liquid_resources_value: 1000}, expect: 1000}
+  - {id: CO-4623-T2, as_of: "2026-10-12", given: {ssi_countable_resources_individual: 1200, ma_excluded_real_property_value: 0, ma_countable_income_producing_property_value: 144000, ma_home_is_countable_resource: true, home_equity: 240000, liquid_resources_value: 1200}, expect: 385200}
+  - {id: CO-4623-T3, as_of: "2026-10-12", title: "NM-27, NM-20: 6,000 in an ABLE account left out; 2,500 of collectibles and a 10,000 revocable annuity added", given: {ssi_countable_resources_individual: 7000, liquid_resources_value: 7000, able_account_value: 6000, ma_excluded_real_property_value: 0, ma_countable_income_producing_property_value: 0, ma_home_is_countable_resource: false, investment_personal_property_value: 2500, ma_trust_annuity_life_estate_value_available: 10000}, expect: 13500}

@@ -1,0 +1,14 @@
+id: CO-4643
+name: "Medicaid: trust, annuity or life estate value found available"
+identifier: ma_trust_annuity_life_estate_value_available
+kind: supplied
+type: money
+scope: person
+program: Medicaid
+meaning: "The value the Department or the eligibility site has found available to the person as a resource from a trust (the corpus, or the part from which payment could be made to the person: 10 CCR 2505-10 § 8.100.7.E.4.a, E.5.a, E.7.c), an annuity (a revocable or irrevocable assignable annuity, or one not annuitized: § 8.100.7.I), or a life estate or remainder interest on countable property (§ 8.100.7.H.2)."
+precision: "Not part of any other resource fact. As of the determination date. If not stated, Medicaid reads it as 0 (no such finding)."
+supplied_by: "The Department's trust determination and the eligibility site's annuity and life estate valuation."
+sources: [S3423]
+tags: [ma, ltc, resources]
+rationale: "Coverage review NM-20: has_trust_interest and owns_annuity (CO-1577, CO-1579) only trigger verification, and no resource fact said where the value of a trust corpus, a countable annuity or a life estate goes, so it was never counted."
+nearest: [CO-1577, CO-1579]

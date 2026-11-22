@@ -1,0 +1,14 @@
+id: CO-4607
+name: "Income-producing property"
+identifier: income_producing_property_equity_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The equity value (fair market value less encumbrances) of the real and personal property, other than the home, that the person uses to produce income or goods or services for the person's own support: rental property, farm or ranch land, and the property of a trade or business the person runs. It is not part of real_property_other_than_home_equity (CO-3393), whose meaning leaves this property out."
+precision: "As of the determination date; the person's own holding or share. If not stated, every program reads it as 0."
+supplied_by: "Application (resources), with property records and the business's books."
+sources: [S3402]
+tags: [resources]
+rationale: "Coverage review NM-4: real_property_other_than_home_equity leaves out property used to produce income, and no other fact stated it, so 10 CCR 2505-10 § 8.100.5.J.2-3 and M.3.g, which exclude only $6,000 of it, were never applied."
+nearest: [CO-3393]

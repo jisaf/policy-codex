@@ -1,0 +1,17 @@
+id: CO-4633
+name: "Medicaid: Ineligible Child Allocation from the deemed parents' income"
+identifier: ma_ssi_deeming_ineligible_child_allocation
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The Ineligible Child Allocation taken from the income of this child's ma_ssi_deeming_parents before it is deemed (10 CCR 2505-10 § 8.100.5.H.3.a.i, H.3.b.ii; 20 CFR 416.1165(b)): for each other child or stepchild of those parents who is an unemancipated child living with them, is not applying for or eligible for SSI, and is not one of the blind or disabled children sharing the deemed income (ma_ssi_deeming_children), one half of the SSI individual Federal Benefit Rate less that child's own gross income."
+precision: "The child's own income is gross earned and unearned income with child support in full, as in ma_ssi_ineligible_child_allocation (CO-2277), which takes the allocation for the children of an applicant's ineligible spouse; this item takes it for the children of an applicant child's ineligible parents. Zero when no parent's income is deemed."
+derived: [case, [["=", [count, ma_ssi_deeming_parents], 0], 0], [else, [sum, [filter, [persons], [all, [otherwise, [has_relative_in, [child, stepchild], ma_ssi_deeming_parents], false], [not, [in_group, [P], ma_ssi_deeming_children]], [of, [P], ma_is_ssi_unemancipated_child], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]], [not, [otherwise, [of, [P], resides_in_medical_institution], false]]]], [max, 0, ["-", ["*", ma_ssi_ineligible_child_allocation_rate, ssi_federal_benefit_rate_individual], [+, [of, [P], wages_gross], [of, [P], ma_self_employment_net_earnings], [of, [P], social_security_income], [of, [P], pension_income], [of, [P], unemployment_income], [of, [P], other_unearned_income_taxable], [of, [P], other_unearned_income_nontaxable], [of, [P], tax_exempt_interest], [of, [P], child_support_received], [otherwise, [of, [P], lottery_gambling_winnings_received], 0]]]]]]]
+sources: [S308, S3405, S3413]
+implemented: engine
+tags: [ma, non_magi, income, household]
+rationale: "Coverage review NM-10: before a parent's income is deemed to an applicant child, H.3.b.ii and 416.1165(b) deduct an allocation for each ineligible child in the household; CO-2277 takes it only from an applicant's ineligible spouse."
+tests:
+  - {id: CO-4633-T1, as_of: "2026-10-12", month: "2026-10", title: "one ineligible sibling with no income: half the FBR", given: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1]}, others: {p2: {}, p3: {ma_is_ssi_unemancipated_child: true, ma_is_applying_for_or_eligible_for_ssi: false, resides_in_medical_institution: false, wages_gross: 0, ma_self_employment_net_earnings: 0, social_security_income: 0, pension_income: 0, unemployment_income: 0, other_unearned_income_taxable: 0, other_unearned_income_nontaxable: 0, tax_exempt_interest: 0, child_support_received: 0}}, relationships: [[parent, p2, p3]], expect: 497}
+  - {id: CO-4633-T2, as_of: "2026-10-12", month: "2026-10", title: "no deemed parent: none", given: {ma_ssi_deeming_parents: [], ma_ssi_deeming_children: []}, others: {p2: {}}, relationships: [[child, p2]], expect: 0}

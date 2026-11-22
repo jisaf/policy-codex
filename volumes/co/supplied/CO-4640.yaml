@@ -1,0 +1,14 @@
+id: CO-4640
+name: "Date the retroactive SSI or Social Security payment was received"
+identifier: retroactive_benefit_payment_received_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person received the retroactive lump-sum payment of SSI or Social Security benefits whose unspent part retroactive_benefit_payment_unspent_value states."
+precision: "If not stated, the unspent payment is read as received more than nine months before (counted)."
+supplied_by: "The award notice or the deposit record."
+sources: [S3404]
+tags: [resources, income]
+rationale: "Coverage review NM-6, NM-23: the nine months of § 8.100.5.F.6.c run from receipt."
+nearest: [CO-4639]

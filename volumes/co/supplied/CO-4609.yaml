@@ -1,0 +1,14 @@
+id: CO-4609
+name: "Yearly net return of income-producing property"
+identifier: income_producing_property_net_return_annual
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The net income the property income_producing_property_equity_value states produced over the last twelve months: its gross receipts less the expenses of producing them."
+precision: "If not stated, Medicaid reads it as 0."
+supplied_by: "The business's books or tax return."
+sources: [S3402]
+tags: [resources]
+rationale: "Coverage review NM-4: 10 CCR 2505-10 § 8.100.5.J.3 excludes trade or business property only if it produces a 6% return."
+nearest: [CO-4607]

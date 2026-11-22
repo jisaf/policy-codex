@@ -10,4 +10,4 @@ precision: "Part of real_property_other_than_home_equity, not added to it; equit
 supplied_by: "Listing agreement or advertisement; applicant statement."
 sources: [S2968]
 tags: [snap, resources]
-rationale: "Coverage review snap-financial CF-7: 4.410.F.1 (S2968) treats real property the household is trying to sell as inaccessible; SNAP counted it."
+rationale: "Merged with CO-4605 (the non-MAGI Medicaid coverage round added the same fact under the same identifier; Medicaid reads this one too, and applies its own sale conditions in its derived items where they differ). Coverage review snap-financial CF-7: 4.410.F.1 (S2968) treats real property the household is trying to sell as inaccessible; SNAP counted it."

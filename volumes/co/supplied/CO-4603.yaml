@@ -1,0 +1,14 @@
+id: CO-4603
+name: "Irrevocable burial funds"
+identifier: irrevocable_burial_funds_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The value of the burial funds the person holds in an irrevocable burial contract, an irrevocable burial trust, or an irrevocable trust specifically identified as available for burial expenses. An irrevocable burial trust of which the person is both the trustor and the beneficiary is revocable_burial_trust_value (CO-3855), not this fact."
+precision: "As of the determination date. If not stated, every program reads it as 0."
+supplied_by: "The burial contract or trust agreement."
+sources: [S3400]
+tags: [resources]
+rationale: "Coverage review NM-1: 10 CCR 2505-10 § 8.100.5.M.2.j reduces the $1,500 revocable burial fund exclusion by the amount of any irrevocable burial funds (M.2.i); no fact stated them."
+nearest: [CO-3855, CO-3856]

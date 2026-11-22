@@ -1,0 +1,16 @@
+id: CO-4625
+name: "Medicaid: blind or disabled children sharing the deemed parental income"
+identifier: ma_ssi_deeming_children
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "The blind or disabled children under ma_ssi_unemancipated_child_age_limit, not emancipated and not in a medical institution, who are children or stepchildren of a parent in this person's ma_ssi_deeming_parents (this person among them when blind or disabled): the eligible children among whom the parents' deemed income is divided equally (20 CFR 416.1165(e)(2))."
+precision: "Blind is is_blind and disabled is meets_ssa_disability_criteria. A child whose own income already makes the child ineligible is not taken out of the division (416.1165(e)(3) is not modeled); the division is equal."
+derived: [filter, [persons], [all, [otherwise, [has_relative_in, [child, stepchild], ma_ssi_deeming_parents], false], ["<", [of, [P], age], ma_ssi_unemancipated_child_age_limit], [not, [otherwise, [of, [P], is_emancipated_minor], false]], [not, [otherwise, [of, [P], resides_in_medical_institution], false]], [any, [otherwise, [of, [P], is_blind], false], [otherwise, [of, [P], meets_ssa_disability_criteria], false]]]]
+sources: [S3413]
+implemented: engine
+tags: [ma, non_magi, income, household]
+rationale: "Coverage review NM-10: 20 CFR 416.1165(e)(2) divides the parental income to be deemed equally among the eligible children; ma_ssi_parental_income_deemed (CO-4626) needs the count."
+tests:
+  - {id: CO-4625-T1, as_of: "2026-10-12", title: "two disabled children of one parent", given: {date_of_birth: "2016-03-01", meets_ssa_disability_criteria: true, ma_ssi_deeming_parents: [p2]}, others: {p2: {date_of_birth: "1985-01-01"}, p3: {date_of_birth: "2018-03-01", meets_ssa_disability_criteria: true, resides_in_medical_institution: false}}, relationships: [[child, p2], [parent, p2, p3]], expect: [p1, p3]}

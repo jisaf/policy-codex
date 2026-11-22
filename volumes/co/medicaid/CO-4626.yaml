@@ -1,0 +1,18 @@
+id: CO-4626
+name: "Medicaid: parental income deemed to the child"
+identifier: ma_ssi_parental_income_deemed
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The income of this child's ineligible parents deemed to the child as unearned income for the month (10 CCR 2505-10 § 8.100.5.H.3.a, H.3.b.iii; 42 U.S.C. 1382c(f)(2)(A); 20 CFR 416.1165(d)-(e)): the parents' income after the allocations and disregards (ma_ssi_deeming_parents_countable_income), less the Ineligible Parent(s) Allocation - the SSI Federal Benefit Rate for a couple when two deemed parents live with the child, for an individual when one does - divided equally among the blind or disabled children sharing it (ma_ssi_deeming_children); zero when no parent's income is deemed."
+precision: "The child's own $20 general income exclusion then applies to the child's unearned income with the deemed income in it (416.1165(e)(1)): ma_ssi_household_unearned_income_counted (CO-2281) adds this amount. A parent and a stepparent living with the child are read as both parents (416.1160(a)(2), 416.1165(d)(3)). The allocation is deducted for every deemed parent; 416.1165(d)'s exception for a parent receiving public income-maintenance payments is not separated (such a parent's grant is not in the income facts the parents' income reads)."
+derived: [case, [["=", [count, ma_ssi_deeming_parents], 0], 0], [else, ["/", [max, 0, ["-", ma_ssi_deeming_parents_countable_income, [case, [[">=", [count, ma_ssi_deeming_parents], 2], ma_ssi_federal_benefit_rate_couple], [else, ssi_federal_benefit_rate_individual]]]], [max, 1, [count, ma_ssi_deeming_children]]]]]
+sources: [S3405, S3413, S3415]
+implemented: engine
+tags: [ma, non_magi, income, household]
+rationale: "Coverage review NM-10 (OQ-83 resolved): the volume deemed no part of a parent's income to an applicant child. § 8.100.5.H.3.a's allocations reduce 'the gross income that is deemed available to the applicant/client', and H.3.a.ii's Ineligible Parent(s) Allocation is deducted after the standard disregards (H.3.b.iii), the sequence of 20 CFR 416.1165."
+tests:
+  - {id: CO-4626-T1, as_of: "2026-10-12", month: "2026-10", title: "X-DEEM: 3,957.50 - 994", given: {ma_ssi_deeming_parents: [p2], ma_ssi_deeming_children: [p1], ma_ssi_deeming_parents_countable_income: 3957.5}, others: {p2: {}}, relationships: [[child, p2]], expect: 2963.5}
+  - {id: CO-4626-T2, as_of: "2026-10-12", month: "2026-10", title: "two parents, two disabled children: (2,000 - 1,491) / 2", given: {ma_ssi_deeming_parents: [p2, p3], ma_ssi_deeming_children: [p1, p4], ma_ssi_deeming_parents_countable_income: 2000}, others: {p2: {}, p3: {}, p4: {}}, relationships: [[child, p2], [child, p3]], expect: 254.5}
+  - {id: CO-4626-T3, as_of: "2026-10-12", month: "2026-10", title: "no deemed parent", given: {ma_ssi_deeming_parents: [], ma_ssi_deeming_children: []}, expect: 0}

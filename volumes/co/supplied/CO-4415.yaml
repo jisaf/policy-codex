@@ -10,4 +10,4 @@ precision: "Part of liquid_resources_value, not added to it; as of the determina
 supplied_by: "The account statement."
 sources: [S3206]
 tags: [resources]
-rationale: "Coverage review F-6: 9 CCR 2503-5 3.520.77.M (S3206) exempts \"Monies specifically placed in an Achieving a Better Life Experience (ABLE) Account\"; no fact stated one."
+rationale: "Merged with CO-4641 (the non-MAGI Medicaid coverage round added the same fact under the same identifier; Medicaid reads this one too, and applies its own sale conditions in its derived items where they differ). Coverage review F-6: 9 CCR 2503-5 3.520.77.M (S3206) exempts \"Monies specifically placed in an Achieving a Better Life Experience (ABLE) Account\"; no fact stated one."

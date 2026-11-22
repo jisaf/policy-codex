@@ -1,0 +1,14 @@
+id: CO-4612
+name: "Intent to return home is documented in writing"
+identifier: intent_to_return_home_is_documented_in_writing
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person's intent to return to the home is documented in writing (the person's or a representative's signed statement)."
+precision: "If not stated, Medicaid reads it as false."
+supplied_by: "The written statement in the case file."
+sources: [S3403]
+tags: [resources]
+rationale: "Coverage review NM-5: 10 CCR 2505-10 § 8.100.5.M.2.a.v exempts the home of an institutionalized person only if 'The intent to return home is documented in writing'; no fact stated it."
+nearest: [CO-4435]

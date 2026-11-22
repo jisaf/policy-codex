@@ -1,0 +1,18 @@
+id: CO-4631
+name: "Medicaid: owes the long-term care asset disclosure"
+identifier: ma_owes_long_term_care_asset_disclosure
+kind: derived
+type: yes/no
+scope: person-month
+program: Medicaid
+meaning: "Whether the person, as a long-term care applicant (ma_is_long_term_care_applicant), must disclose and document transfers of assets, annuities and trusts (10 CCR 2505-10 § 8.100.7.A.2.h-j, B.2.a-b): every long-term care applicant except one determined eligible under the Buy-In Program for Working Adults with Disabilities who is not in a medical institution (B.2.c)."
+precision: "B.2.c exempts the Buy-In worker from the HCBS and PACE disclosure of B.2.a-b; a Buy-In worker who enters a medical institution is determined under the 300% special income group (§ 8.100.7.A.1), whose A.2.h-j documents apply. The 30-day stay documentation of A.2.c (ma_requires_verification_of_institutional_stay, CO-1632) is not a B.2.a document and still reads ma_is_long_term_care_applicant."
+derived: [all, ma_is_long_term_care_applicant, [not, [all, ma_wawd_eligible, [not, [otherwise, resides_in_medical_institution, false]]]]]
+sources: [S3408, S1741]
+implemented: engine
+tags: [verification, ma, ltc]
+rationale: "Coverage review NM-13: ma_is_long_term_care_applicant made every aged, blind or disabled person designated for a waiver owe the transfer, trust and annuity documents, so a Working Adults Buy-In worker on HCBS read pending and then past due, against § 8.100.7.B.2.c."
+tests:
+  - {id: CO-4631-T1, as_of: "2026-10-12", month: "2026-10", given: {ma_is_long_term_care_applicant: true, ma_wawd_eligible: true, resides_in_medical_institution: false}, expect: false}
+  - {id: CO-4631-T2, as_of: "2026-10-12", month: "2026-10", given: {ma_is_long_term_care_applicant: true, ma_wawd_eligible: false, resides_in_medical_institution: false}, expect: true}
+  - {id: CO-4631-T3, as_of: "2026-10-12", month: "2026-10", title: "Buy-In worker in a nursing facility", given: {ma_is_long_term_care_applicant: true, ma_wawd_eligible: true, resides_in_medical_institution: true}, expect: true}

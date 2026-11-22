@@ -1,0 +1,19 @@
+id: CO-4624
+name: "Medicaid: parents whose income and resources are deemed to the child"
+identifier: ma_ssi_deeming_parents
+kind: derived
+type: group of persons
+scope: person
+program: Medicaid
+meaning: "For a child under ma_ssi_unemancipated_child_age_limit who is not emancipated and does not reside in a medical institution, the child's parents and stepparents who live with the child, do not reside in a medical institution, and are not applying for or eligible for SSI (ineligible parents, 10 CCR 2505-10 § 8.100.5.H.2.c): the persons whose income and resources are deemed to the child (42 U.S.C. 1382c(f)(2)(A), 20 CFR 416.1165, 416.1202(b)); empty for anyone else."
+precision: "Deeming stops once the child is institutionalized (§ 8.100.7.A.1). Living together is lives_with (read as together when not stated). A parent or stepparent who is applying for or eligible for SSI (ma_is_applying_for_or_eligible_for_ssi, CO-2271) is not an ineligible parent. The exception of 20 CFR 416.1165(i) and 416.1202(b)(2) for a child previously paid the reduced SSI benefit of a medical facility is not modeled: a disabled child served by an HCBS waiver reaches Medicaid through the 300% special income group, which counts only the child's own income."
+derived: [filter, [persons], [all, ["<", age, ma_ssi_unemancipated_child_age_limit], [not, [otherwise, is_emancipated_minor, false]], [not, [otherwise, resides_in_medical_institution, false]], [otherwise, [rel, [child, stepchild], [P]], false], [otherwise, [in_group, [P], lives_with], true], [not, [otherwise, [of, [P], resides_in_medical_institution], false]], [not, [of, [P], ma_is_applying_for_or_eligible_for_ssi]]]]
+sources: [S3405, S3406, S3413, S3414, S3415]
+implemented: engine
+tags: [ma, non_magi, income, resources, household]
+rationale: "Coverage review NM-10: no part of a parent's income or resources reached a child applying under the SSI-related rules (OQ-83), though § 8.100.5.H.3.a says the allocations reduce 'the gross income that is deemed available to the applicant/client' and 42 U.S.C. 1382c(f)(2)(A) deems a parent's income and resources to a child under 18. The deeming items read this group."
+tests:
+  - {id: CO-4624-T1, as_of: "2026-10-12", title: "child of 10 living with a working parent", given: {date_of_birth: "2016-03-01", resides_in_medical_institution: false}, others: {p2: {date_of_birth: "1985-01-01", resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: false}}, relationships: [[child, p2]], expect: [p2]}
+  - {id: CO-4624-T2, as_of: "2026-10-12", title: "the parent receives SSI: not an ineligible parent", given: {date_of_birth: "2016-03-01", resides_in_medical_institution: false}, others: {p2: {date_of_birth: "1985-01-01", resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: true}}, relationships: [[child, p2]], expect: []}
+  - {id: CO-4624-T3, as_of: "2026-10-12", title: "a person of 19: no deeming", given: {date_of_birth: "2007-03-01", resides_in_medical_institution: false}, others: {p2: {date_of_birth: "1985-01-01", resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: false}}, relationships: [[child, p2]], expect: []}
+  - {id: CO-4624-T4, as_of: "2026-10-12", title: "child in a medical institution: no deeming", given: {date_of_birth: "2016-03-01", resides_in_medical_institution: true}, others: {p2: {date_of_birth: "1985-01-01", resides_in_medical_institution: false, ma_is_applying_for_or_eligible_for_ssi: false}}, relationships: [[child, p2]], expect: []}

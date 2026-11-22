@@ -6,7 +6,7 @@ type: money
 scope: person
 program: All
 meaning: "The total face value of the life insurance policies the person owns."
-precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. If not stated, every program reads it as 0."
+precision: "As of the determination date; the person's own holding, or the person's share of a jointly held one. If not stated, every program reads it as 0. For Medicaid (10 CCR 2505-10 § 8.100.5.M.2.f, 'on any person') the face value is that of the policies the person owns, which is the face value on the person's life except for a policy the person owns on another's life (coverage review NM-33)."
 supplied_by: "Application (resources), verified by statements as each program requires."
 sources: [S2214, S2215]
 implemented: engine

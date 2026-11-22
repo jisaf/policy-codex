@@ -1,0 +1,13 @@
+id: CO-4600
+name: "SSI method: revocable burial funds excluded"
+identifier: ssi_burial_funds_exclusion
+kind: parameter
+type: money
+scope: global
+program: All
+meaning: "The amount of burial funds held in a revocable account, trust or other arrangement that the person may own without the funds counting as a resource, before the reductions for irrevocable burial funds and excluded life insurance (10 CCR 2505-10 § 8.100.5.M.2.j; a separate amount for each spouse)."
+value: 1500
+sources: [S3400]
+implemented: engine
+tags: [resources, non_magi]
+rationale: "Coverage review NM-1: the SSI method (ssi_countable_resources_individual, CO-800) left every revocable burial fund out of resources whatever its size; § 8.100.5.M.2.j excludes $1,500 only. A figure the rule states is a parameter (OQ-82). Adult Financial's own figure is af_revocable_burial_funds_exemption."

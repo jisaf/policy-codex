@@ -21093,3 +21093,432 @@ Colorado, MAGI-Based Eligibility Verification Plan, Section A, Income (October 2
 > When an individual attests to income above the applicable standard and data source indicates income
 > below the standard, the state will take the attestation and make the person ineligible and send to
 > Connect for Health Colorado (exchange) for APTC. Additional information will not be requested.
+### S3400. Burial funds: irrevocable funds exempt; up to $1,500 of revocable burial funds exempt, reduced by irrevocable funds and exempt life insurance (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.i-j (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> i. An applicant or recipient may own burial funds through an irrevocable trust or other irrevocable arrangement which are available for burial and are held in an irrevocable burial contract, an irrevocable burial trust, or in an irrevocable trust which is specifically identified as available for burial expenses without such funds affecting the person's eligibility for assistance.
+>
+> j. An applicant or recipient may also own up to $1,500 in burial funds through a revocable account, trust, or other arrangement for burial expenses, without such funds affecting the person's eligibility for assistance. This exclusion only applies if the funds set aside for burial expenses are kept separate from all other resources not intended for burial of the individual or spouse's burial expenses. Interest on the burial funds is also excluded if left to accumulate in the burial fund. For a married couple, a separate $1,500 exemption applies to each spouse.
+>
+> The $1,500 exemption is reduced by:
+>
+> i) the amount of any irrevocable burial funds such as are described in the preceding subparagraph, and
+>
+> ii) the face value of any life insurance policy whose cash surrender value is exempt.
+
+### S3401. Self-funded retirement accounts of a spouse living with the applicant are exempt, except a community spouse's for long-term care (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.N.1-4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. The following regulations apply to self-funded retirement accounts such as an Individual Retirement Account (IRA), Keogh Plan, 401(k), 403(b) and any other self-funded retirement account.
+>
+> 2. Self-funded retirement accounts in the name of the applicant are countable as a resource to the applicant.
+>
+> 3. Self-funded retirement accounts in the name of the applicant's spouse who is living with the applicant are exempt in determining eligibility for the applicant, except as set forth in 4. below.
+>
+> 4. Self-funded retirement accounts in the name of a community spouse who is married to an applicant who is applying for Long Term Care in a Long Term Care institution, HCBS or PACE, are countable as a resource to the applicant and may be included in the Community Spouse Resource Allowance (CSRA) up to the maximum amount allowable. The terms community spouse and CSRA are further defined in the regulations on Spousal Protection in this volume.
+
+### S3402. Income-producing property: $6,000 excluded; business property only with a 6% return; real property above it counted (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.J.2-3 and M.3.g (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. Non-business property that is necessary to produce goods or services essential to self- support is excluded up to $6,000.
+>
+> 3. Property used in a trade or business which is essential to self-support is excluded up to a limit of $6,000 if it produces 6% return of the $6,000 excluded value.
+>
+> g. Real property not exempt as the principal place of residence and not exempt as income producing property with a value of $6,000 or less, as described at 8.100.5.J.
+
+### S3403. The home: out of state, intent to return documented in writing, spouse or dependent relative in the home, trust or entity, beneficiary deed (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.a.iii-xiv and M.3.e (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> iii) If an individual or spouse of an individual owns a home of any value located outside Colorado, and if the individual intends to return to that home, then the individual does not meet the residency requirement for Colorado Medicaid eligibility.
+>
+> iv) If an individual or spouse of an individual owns a home of any value located outside Colorado, and if the individual does not intend to return to that home, then the home is a countable resource unless the individual’s spouse or dependent relative lives in the home.
+>
+> v) If an individual or spouse of an individual owns a home located inside Colorado with an equity value lower than the limit in subparagraph (1), above, and if the individual intends to return to that home, then the home is considered an exempt resource if:
+>
+> 1) The individual is institutionalized; and
+>
+> 2) The intent to return home is documented in writing.
+>
+> vi) If an individual or spouse of an individual owns a home with an equity value greater than the limit that is located inside Colorado, and if the individual intends to return to that home, then the home is considered to be a countable resource unless spouse or dependent relative lives in the home.
+>
+> vii) If an individual or spouse of an individual owns a home of any value located inside Colorado, and if the individual does not intend to return to that home, then the home is a countable resource unless spouse or dependent relative lives in the home.
+>
+> viii) If an individual or spouse moves out of his or her home without the intent to return, the home becomes a countable resource because it is no longer the individual's principal place of residence.
+>
+> ix) If an individual leaves his or her home to live in an institution, the home shall still be considered the principal place of residence, irrespective of the individual's intent to return as long as the individual's spouse or dependent relative continues to live there.
+>
+> x) The individual's equity in the former home becomes a countable resource effective with the first day of the month following the month it is no longer his or her principal place of residence.
+>
+> xi) The intent to return home applies to the home in which the individual or spouse of the individual was living prior to being institutionalized or to a replacement home as long as the individual’s spouse or dependent relative continues to live in the home.
+>
+> xii) The intent to return home also applies if the individual is living in an assisted living facility or alternative care facility and receives HCBS while in that facility or transfers into a Long-Term Care institution to receive services.
+>
+> xiii) For an individual in a Long-Term Care institution, receiving HCBS, or enrolled in PACE, the exemption for the principal place of residence does not apply to a residence which has been transferred to a trust or other entity, such as a partnership or corporation.
+>
+> 1) The exemption shall be regained if the residence is transferred back into the name of the individual.
+>
+> xiv) The principal place of residence, which is subject to estate recovery, becomes a countable resource upon the execution and recording of a beneficiary deed.
+>
+> The exemption can be regained if a revocation of the beneficiary deed is executed and recorded.
+>
+> e. Any real property that is subject to a recorded beneficiary deed and on which an estate recovery claim can be made.
+
+### S3404. Exempt as income or resources for the ABD and long-term care categories: retroactive SSI or Title II lump sums, foster care payments, a plan for self-support (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.F.6 (lead-in), F.6.c, F.6.l, F.6.q (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> c. Title XVI (Supplemental Security Income) or Title II (Retirement Survivors or Disability Insurance) retroactive payments (lump sum) for nine months following receipt and the remainder countable as a resource thereafter.
+>
+> l. Payments received for providing foster care.
+>
+> q. Social Security benefit payments and the accrued amount thereof to a applicant/member when an individual plan for self-care and/or self-support has been developed. In order to disregard such income and resources, it shall be determined that (1) SSI permits such disregard under such developed plan for self-care-support goal, and (2) assurance exists that the funds involved will not be for purposes other than those intended.
+
+### S3405. Income allocations reduce the income deemed to the applicant; the Ineligible Parent(s) Allocation after the standard disregards (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.H.2.c, H.3.a-b (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> c. Ineligible parent/spouse is a parent or spouse who is not applying or eligible for SSI.
+>
+> 3. Countable income is calculated by reducing the gross income by the following allocations and disregards.
+>
+> a. Income allocations are the part of the gross income that is allocated to individuals in the home who are not eligible for Supplemental Security Income or Old Age Pension. The allocation reduces the gross income that is deemed available to the applicant/client. The allocation is deducted from the gross income prior to applying the other disregards.
+>
+> The allocations are:
+>
+> i) An Ineligible Child Allocation is an amount equal to one half the current year’s SSI FBR that is disregarded from the ineligible parents’ gross income. This allocation is used to meet the needs of ineligible children in the household. This allocation is available for each ineligible child in the home. The amount of the allocation is reduced by any of the ineligible child’s own income.
+>
+> ii) An Ineligible Parent(s) Allocation is an amount equal to the current year’s SSI FBR for a single individual or a couple, as applicable. This amount is used to meet the needs of the ineligible parent(s) in the home with an applicant/client child.
+>
+> iii) No allocations are allowed for applicant/recipient spouses who do not have children in the home.
+>
+> b. Allocations are applied to the income in the following manner:
+>
+> i) Allocation disregards are deducted from unearned income before earned income.
+>
+> ii) Ineligible child allocation disregards are deducted from parents’ income before any standard disregards are applied.
+>
+> iii) Ineligible parent(s) allocation disregards are deducted after any ineligible child allocation disregards and after the standard income disregards.
+
+### S3406. Parental income and resources stop being deemed to a child once institutionalized (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.A.1, fourth paragraph (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> Medical Assistance will be provided beginning the first day of the month following the month during which a child under the age of 18 ceases to live with his or her parent(s). Once determined to meet the institutional requirement, parental income and resources will cease to be deemed available to the child because the child is institutionalized and not living in the parents' home.
+
+### S3407. QI-1: cannot otherwise be eligible for Medical Assistance (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.N.4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. In order to qualify as a Medicare Qualifying Individual 1, the individual must meet the following:
+>
+> a. be entitled to Part A of Medicare,
+>
+> b. income of at least 120%, but less than 135% of the FPL.
+>
+> c. resources may not exceed the standard as described in section 8.100.5.M, and
+>
+> d. he/she cannot otherwise be eligible for Medical Assistance.
+
+### S3408. HCBS or PACE through SSI (including 1619(b)) or OAP, the 300% group, or the Working Adults Buy-In; the asset disclosure does not apply to the Buy-In (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.B.1-2 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. HCBS or PACE shall be provided to persons who have been assessed by the Single Entry Point/Case Management Agency to have met the institutional level of care and will remain in the community by receiving HCBS or PACE; and
+>
+> a. are SSI (including 1619b) or OAP Medicaid eligible; or
+>
+> b. are eligible under the Institutionalized 300% Special Income category described at 8.100.7.A; or
+>
+> c. are eligible under the Medicaid Buy-In Program for Working Adults with Disabilities described at 8.100.6.P. For this group, access to HCBS:
+>
+> i) Is limited to the Elderly, Blind and Disabled (EBD), Community Mental Health Supports (CMHS), Brain Injury (BI), Spinal Cord Injury (SCI), Supported Living Services (SLS), and Developmental Disabilities waivers; and
+>
+> ii) Is contingent on the Department receiving all necessary federal approval for the waiver amendments that extend access to HCBS to the Working Adults with Disabilities population described at 8.100.6.P.
+>
+> 2. A client who is already Medicaid eligible does not need to submit a new application. The client must request the need for Long-Term Care services and the Eligibility Site must redetermine the client’s eligibility.
+>
+> a. All individuals applying for or requesting Long-Term Care services must disclose and provide documentation of:
+>
+> i) any transfer of assets without fair consideration as described at 8.100.7.F; and
+>
+> ii) any interest in an annuity as described at 8.100.7.I; and
+>
+> iii) any interest in a trust as described at 8.100.7.E.
+>
+> b. Failure to disclose and provide documentation of the assets described at 8.100.7.B.2.a may result in the denial of Long-Term Care services.
+>
+> c. The requirements at 8.100.7.B.2.a and 8.100.7.B.2.b do not apply to individuals who have been determined eligible under the Medicaid Buy-In Program for Working Adults with Disabilities described at 8.100.6.P.
+
+### S3409. Monthly Income Allowance: not less than a court order of monthly support (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.R.3 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. If a court has entered an order against the institutionalized spouse for monthly support of the community spouse, the MIA shall not be less than the monthly amount ordered by the court.
+
+### S3410. Deductions from the institutionalized spouse's income: the MIA only to the extent made available; income not made available goes to the cost of care (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.T.1, T.1.b, T.1.e (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. During each month after the institutionalized spouse becomes Medical Assistance eligible, deductions shall be made from the institutionalized spouse's monthly income in the following order.
+>
+> b. A Monthly Income Allowance (MIA) for the community spouse, but only to the extent that income of the institutionalized spouse is actually made available to, or for the benefit of, the community spouse;
+>
+> e. If the institutionalized spouse fails to make his/her income available to the community spouse or eligible dependent family members in accordance with these regulations, that income shall be applied to the cost of care for the institutionalized spouse.
+
+### S3411. ABD categories take their income and resource criteria from § 8.100.5; disabled widow(er)s meet all other requirements (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.6.A.1 and I.1 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 1. Medical Assistance for ABD includes SSI eligible individuals, OAP recipients, and the Medicare Savings Program (MSP) individuals. Refer to section 8.100.5 of this volume for income and resource criteria for these categories of assistance.
+>
+> 1. Effective January 1, 1991, Medical Assistance shall be provided to disabled widow(er)s age 50 through 64 who lost SSI and/or OAP due to the receipt of Social Security benefits as a disabled widow(er). The individual shall remain eligible for Medical Assistance until he/she becomes eligible for Part A of Medicare (hospital insurance).
+>
+> To qualify these individuals must:
+>
+> a. be a widow(er);
+>
+> b. have received SSI in the past;
+>
+> c. be at least 50 years old but not 65 years old;
+>
+> d. no longer receive SSI payments because of Social Security payments;
+>
+> e. not have hospital insurance under Medicare; and,
+>
+> f. meet all other Medical Assistance requirements.
+
+### S3412. SSI earned income exclusions: order of application; impairment-related work expenses, blind work expenses, a plan to achieve self-support
+
+Document: D-53
+
+20 CFR 416.1112(a), (c) lead-in, (c)(6), (c)(8), (c)(9) (eCFR text fetched 2026-09-18; 10 CCR 2505-10 § 8.100.5.H.4.e incorporates the 2012 edition, whose paragraphs (c)(6), (c)(8) and (c)(9) state the same exclusions). https://www.ecfr.gov/current/title-20/part-416
+
+> (a) *General.* While we must know the source and amount of all of your earned income for SSI, we do not count all of it to determine your eligibility and benefit amount. We first exclude income as authorized by other Federal laws (see paragraph (b) of this section). Then we apply the other exclusions in the order listed in paragraph (c) of this section to the rest of your income in the month. We never reduce your earned income below zero or apply any unused earned income exclusion to unearned income.
+>
+> (b) *Other Federal laws.* Some Federal laws other than the Social Security Act provide that we cannot count some of your earned income for SSI purposes. We list the laws and exclusions in the appendix to this subpart which we update periodically.
+>
+> (c) *Other earned income we do not count.* We do not count as earned income—
+>
+> (6) Earned income you use to pay impairment-related work expenses described in § 416.976, if you are disabled (but not blind) and under age 65 or you are disabled (but not blind) and received SSI as a disabled individual (or received disability payments under a former State plan) for the month before you reached age 65.
+>
+> (8) Earned income used to meet any expenses reasonably attributable to the earning of the income if you are blind and under age 65 or if you receive SSI as a blind person for the month before you reach age 65. (We consider that you “reach” a certain age on the day before that particular birthday.);
+>
+> (9) Any earned income you receive and use to fulfill an approved plan to achieve self-support if you are blind or disabled and under age 65 or blind or disabled and received SSI as a blind or disabled person for the month before you reached age 65. See §§ 416.1180 through 416.1182 for an explanation of plans to achieve self-support and for the rules on when this exclusion applies; and
+
+### S3413. SSI: how an ineligible parent's income is deemed to a child
+
+Document: D-53
+
+20 CFR 416.1165 (lead-in) and (a)-(e)(2) (eCFR text fetched 2026-09-18). https://www.ecfr.gov/current/title-20/part-416
+
+> If you are a child living with your parents, we apply the deeming rules to you through the month in which you reach age 18. We follow the rules in paragraphs (a) through (e) of this section to determine your eligibility. To determine your benefit amount, we follow the rules in paragraph (f) of this section. The rules in paragraph (g) of this section apply to changes in your family situation. Paragraph (i) of this section discusses the conditions under which we will not deem your ineligible parents' income to you if you are a disabled child living with your parents.
+>
+> (a) *Determining your ineligible parent's income.* We first determine how much current monthly earned and unearned income your ineligible parents have, using the appropriate exclusions in § 416.1161(a).
+>
+> (b) *Allocations for ineligible children.* We next deduct an allocation for each ineligible child in the household as described in § 416.1163(b).
+>
+> (c) *Allocations for aliens who are sponsored by and have income deemed from your ineligible parent.* We also deduct an allocation for eligible aliens who have been sponsored by and have income deemed from your ineligible parent as described in § 416.1163(c).
+>
+> (d) *Allocations for your ineligible parent(s).* We next deduct allocations for your parent(s). We do not deduct an allocation for a parent who is receiving public income-maintenance payments (see § 416.1142(a)). The allocations are calculated as follows:
+>
+> (1) We first deduct $20 from the parents' combined unearned income, if any. If they have less than $20 in unearned income, we subtract the balance of the $20 from their combined earned income.
+>
+> (2) Next, we subtract $65 plus one-half the remainder of their earned income.
+>
+> (3) We total the remaining earned and unearned income and subtract—
+>
+> (i) The Federal benefit rate for the month for a couple if both parents live with you; or
+>
+> (ii) The Federal benefit rate for the month for an individual if only one parent lives with you.
+>
+> (e)(1) *When you are the only eligible child.* If you are the only eligible child in the household, we deem any of your parents' current monthly income that remains to be your unearned income. We combine it with your own unearned income and apply the exclusions in § 416.1124 to determine your countable unearned income in the month. We add this to any countable earned income you may have and subtract the total from the Federal benefit rate for an individual to determine whether you are eligible for benefits.
+>
+> (2) *When you are not the only eligible child.* If your parents have more than one eligible child under age 18 in the household, we divide the parental income to be deemed equally among those eligible children.
+
+### S3414. SSI: an ineligible parent's resources over the parent's limit are deemed to a child under 18; pension funds excluded
+
+Document: D-54
+
+20 CFR 416.1202(b)(1), (b)(1)(i) (eCFR text fetched 2026-09-18). https://www.ecfr.gov/current/title-20/part-416
+
+> (b) *Child*—(1) *General.* In the case of a child (as defined in § 416.1856) who is under age 18, we will deem to that child any resources, not otherwise excluded under this subpart, of his or her ineligible parent who is living in the same household with him or her (as described in § 416.1851). We also will deem to the child the resources of his or her ineligible stepparent. As used in this section, the term “parent” means the natural or adoptive parent of a child, and the term “stepparent” means the spouse (as defined in § 416.1806) of such natural or adoptive parent who is living in the same household with the child and parent. We will deem to a child the resources of his or her parent and stepparent whether or not those resources are available to him or her. We will deem to a child the resources of his or her parent and stepparent only to the extent that those resources exceed the resource limits described in § 416.1205. (If the child is living with only one parent, we apply the resource limit for an individual. If the child is living with both parents, or the child is living with one parent and a stepparent, we apply the resource limit for an individual and spouse.) We will not deem to a child the resources of his or her parent or stepparent if the child is excepted from deeming under paragraph (b)(2) of this section. In addition to the exclusions listed in § 416.1210, we also exclude the following items:
+>
+> (i) Pension funds of an ineligible parent (or stepparent). *Pension funds* are defined as funds held in IRAs, as described by the Internal Revenue Code, or in work-related pension plans (including such plans for self-employed persons, sometimes referred to as Keogh plans);
+
+### S3415. SSI: a child's income and resources include a parent's living in the same household
+
+Document: D-45
+
+42 U.S.C. 1382c(f)(2)(A) (Cornell text fetched 2026-09-18). https://www.law.cornell.edu/uscode/text/42/1382c
+
+>   For purposes of determining eligibility for and the amount of benefits for any individual who is a child under age 18, such individual’s income and resources shall be deemed to include any income and resources of a parent of such individual (or the spouse of such a parent) who is living in the same household as such individual, whether or not available to such individual, except to the extent determined by the Commissioner of Social Security to be inequitable under the circumstances.
+
+### S3416. Medicaid retained when SSI is lost upon entitlement to early widow's or widower's benefits, for so long as SSI would be payable without them
+
+Document: D-320
+
+42 U.S.C. 1383c(d) (Cornell text fetched 2026-11-22). https://www.law.cornell.edu/uscode/text/42/1383c
+
+> (d) Retention of medicaid when SSI benefits are lost upon entitlement to early widow’s or widower’s insurance benefits
+>
+> (1) This subsection applies with respect to any person who—
+>
+> (A)
+>
+>  applies for and obtains benefits under subsection (e) or (f) of section 402 of this title (or under any other subsection of section 402 of this title if such person is also eligible for benefits under such subsection (e) or (f)) being then not entitled to hospital insurance benefits under part A of subchapter XVIII, and
+>
+> (B)
+>
+>  is determined to be ineligible (by reason of the receipt of such benefits under section 402 of this title) for supplemental security income benefits under this subchapter or for State supplementary payments of the type described in section 1382e(a) of this title (or payments of the type described in section 212(a) of Public Law 93–66).
+>
+> (2) For purposes of subchapter XIX, each person with respect to whom this subsection applies—
+>
+> (A)
+>
+>  shall be deemed to be a recipient of supplemental security income benefits under this subchapter if such person received such a benefit for the month before the month in which such person began to receive a benefit described in paragraph (1)(A), and
+>
+> (B)
+>
+>  shall be deemed to be a recipient of State supplementary payments of the type referred to in section 1382e(a) of this title (or payments of the type described in section 212(a) of Public Law 93–66) if such person received such a payment for the month before the month in which such person began to receive a benefit described in paragraph (1)(A),
+>
+> for so long as such person (i) would be eligible for such supplemental security income benefits, or such State supplementary payments (or payments of the type described in section 212(a) of Public Law 93–66), in the absence of benefits described in paragraph (1)(A), and (ii) is not entitled to hospital insurance benefits under part A of subchapter XVIII.
+
+### S3417. Disabled widows and widowers deemed title XVI beneficiaries under section 1634(d)
+
+Document: D-31
+
+42 CFR 435.138(a) (eCFR text fetched 2026-09-18). https://www.ecfr.gov/current/title-42/part-435
+
+> ## § 435.138 Disabled widows and widowers aged 60 through 64 who would be eligible for SSI except for early receipt of social security benefits.
+>
+> (a) If the agency provides Medicaid to aged, blind, or disabled individuals receiving SSI or State supplements, the agency must provide Medicaid to disabled widows and widowers who—
+>
+> (1) Are at least age 60;
+>
+> (2) Are not entitled to hospital insurance benefits under Medicare Part A; and
+>
+> (3) Become ineligible for SSI or a State supplement because of mandatory application (under section 1611(e)(2)) for and receipt of widow's or widower's social security disability benefits under section 202(e) or (f) (or any other provision of section 202 if they are also eligible for benefits under subsections (e) or (f)) of the Act.
+>
+> For purposes of title XIX, individuals who meet these requirements are deemed to be title XVI payment beneficiaries under section 1634(d) of the Act.
+
+### S3418. CSRA transfer deadline; resources the community spouse controls and withholds (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.M.3-4 (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 3. The transfer of the CSRA shall be completed as soon as possible, but no later than the next redetermination when the community spouse becomes institutionalizes; whichever is earlier. If the transfer is not completed within this time period, the resources shall be attributed to the institutionalized spouse and shall affect his/her Medical Assistance eligibility. Verification of the transfer of assets to the community spouse shall be provided to the eligibility site.
+>
+> The institutionalized spouse may transfer the resources allotted to the community spouse as the CSRA to another person for the sole benefit of the community spouse.
+>
+> 4. If the community spouse is in control of resources attributed to the institutionalized spouse, but fails to make such resources available for his/her cost of care, this fact shall not make the institutionalized spouse ineligible for Medical Assistance, where:
+>
+> a. The institutionalized spouse has assigned The Department any rights to support from the community spouse; or
+>
+> b. The institutionalized spouse lacks the ability to execute an assignment due to physical or mental impairment but The Department has the right to bring a support proceeding against the community spouse without such assignment; or
+>
+> c. The eligibility site determines that the denial of eligibility would work an undue hardship upon the institutionalized spouse. For the purposes of this subparagraph, undue hardship means that an institutionalized spouse, who meets all the Medical Assistance eligibility criteria except for resource eligibility, has no alternative living arrangement other than the medical institution or Long Term Care institution.
+
+### S3419. Assessment of the couple's resources at the time of the initial application (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.L (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 8.100.7.L. Assessment and Documentation of The Couple's Resources
+>
+> An assessment of the total value of the couple’s resources shall be completed at the time of initial Medical Assistance application or when requested by either spouse of a married couple. All non-exempt resources owned by a married couple are counted, whether owned jointly or individually. There are no exceptions for legal separation, pre-nuptial, or post-nuptial agreements. Once the applicant is approved, the Community Spouses’ resources are not reviewed again unless the Community Spouse applies for Medical Assistance.
+
+### S3420. Reduction of the patient payment: funds committed elsewhere in the admission month, income needed at discharge (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.V.4.a (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. Reduction of the Patient Payment
+>
+> a. Patient payment may be reduced only under the following conditions:
+>
+> i) A resident's income is equal to or less than the personal needs allowance and there is no long term care insurance payment, in which case the patient payment is zero; or
+>
+> ii) A resident's income is equal to or less than the sum of all allowable and appropriate deductions, and there is no long term care insurance payment; or
+>
+> iii) A resident is admitted to the Long Term Care institution from his/her home and the resident's funds are committed elsewhere for that month; or
+>
+> iv) The resident is admitted from his/her home, where his/her funds were previously committed, to the hospital, and subsequently to the Long Term Care institution, in the same calendar month; or
+>
+> v) The resident is discharged to his/her home, and the Eligibility Site determines that the income is necessary for living expenses; or
+>
+> vi) The resident is admitted from another Long Term Care institution or from private pay within the facility and has committed the entire patient payment for the month for payment of care already provided in the month of admission.
+
+### S3421. ABLE accounts exempt; personal effects held as an investment countable (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.5.M.2.k and M.3.j (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 2. The following resources are exempt in determining eligibility:
+>
+> k. Achieving a Better Life Experience (ABLE) Accounts.
+>
+> j. Personal effects acquired or held for their value or as an investment. Such items can include but are not limited to: gems, jewelry that is not worn or held for family significance, or collectibles.
+
+### S3422. Income trust for a Long-Term Care institution resident excluding a hospital; facility eligible for reimbursement (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.A.2.d-e (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> d. Are in a facility eligible for Medical Assistance Program reimbursement if the individual is in a hospital or Long-Term Care institution; and
+>
+> e. Have gross income that does not exceed 300% of the current individual SSI benefit level or;
+>
+> Are in a Long-Term Care institution (excluding hospital) whose gross income exceeds the 300% level and who establishes an income trust in accordance with the rules on income trusts in section 8.100.7 of this volume;
+
+### S3423. Trust corpus, revocable and assignable annuities, and life estates on countable property as available resources; eligibility on the Department's trust determination (current text)
+
+Document: D-65
+
+10 CCR 2505-10 § 8.100.7.E.4.a, E.5.a (corpus), E.7.c, H.2.a.ii.2, I.4 (annuities: revocable, irrevocable assignable) (rule version effective 11/14/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?type=word&ruleVersionId=12735&fileName=10%20CCR%202505-10%208.100
+
+> 4. Revocable Trusts are considered as follows:
+>
+> a. The corpus of the trust shall be considered resources available to the individual,
+>
+> a) The portion of the corpus of the trust, or the income on the corpus, from which payment to the individual could be made, shall be considered as resources available to the individual.
+>
+> c. The eligibility site shall submit any trust which is submitted with an application or at redetermination to The Department. The eligibility site shall determine Medical Assistance eligibility based on the determination of The Department as to the effect of the trust on eligibility.
+>
+> 2) A life estate owned by an individual or individual’s spouse that was established on countable property shall be considered a countable resource.
+>
+> i) A revocable annuity is a countable resource. The value of the annuity is the total value of the annuity principal plus any accumulated interest.
+>
+> i) An irrevocable assignable annuity is a countable resource. The value of the annuity is presumed to be the total value of the annuity principal plus any accumulated interest.

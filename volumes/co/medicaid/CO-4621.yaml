@@ -1,0 +1,19 @@
+id: CO-4621
+name: "Medicaid: countable income-producing property"
+identifier: ma_countable_income_producing_property_value
+kind: derived
+type: money
+scope: person
+program: Medicaid
+meaning: "The part of the person's income-producing property that counts as a resource for the aged, blind and disabled groups: its equity value less ma_income_producing_property_exclusion, which is excluded for non-business property essential to self-support (10 CCR 2505-10 § 8.100.5.J.2) and for trade or business property only if its yearly net return is at least ma_income_producing_property_min_return_rate of the excluded value (J.3); above the exclusion the property counts (M.3.g)."
+precision: "Property the person uses to produce income or goods or services for the person's own support is read as essential to self-support. Unstated facts: no such property, not a trade or business, no return."
+derived: [max, 0, ["-", [otherwise, income_producing_property_equity_value, 0], [case, [[all, [otherwise, income_producing_property_is_used_in_trade_or_business, false], ["<", [otherwise, income_producing_property_net_return_annual, 0], ["*", ma_income_producing_property_min_return_rate, [min, [otherwise, income_producing_property_equity_value, 0], ma_income_producing_property_exclusion]]]], 0], [else, [min, [otherwise, income_producing_property_equity_value, 0], ma_income_producing_property_exclusion]]]]]
+sources: [S3402]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Coverage review NM-4: real_property_other_than_home_equity (CO-3393) leaves out property used to produce income and no other fact stated it, so a person with a $150,000 rental property was resource-eligible; § 8.100.5.J.2-3 exclude at most $6,000 of it."
+tests:
+  - {id: CO-4621-T1, as_of: "2026-10-12", title: "rental house: 150,000 less 6,000", given: {income_producing_property_equity_value: 150000}, expect: 144000}
+  - {id: CO-4621-T2, as_of: "2026-10-12", title: "small non-business property within the exclusion", given: {income_producing_property_equity_value: 5000}, expect: 0}
+  - {id: CO-4621-T3, as_of: "2026-10-12", title: "business property with the 6% return: 360 of 6,000", given: {income_producing_property_equity_value: 8000, income_producing_property_is_used_in_trade_or_business: true, income_producing_property_net_return_annual: 360}, expect: 2000}
+  - {id: CO-4621-T4, as_of: "2026-10-12", title: "business property below the return: counted in full", given: {income_producing_property_equity_value: 8000, income_producing_property_is_used_in_trade_or_business: true, income_producing_property_net_return_annual: 300}, expect: 8000}
