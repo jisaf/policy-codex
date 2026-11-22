@@ -14,8 +14,9 @@ import {
 } from "../../src/ledger/aid-codes";
 import {
   branchesTo, branchFigures, CaseReader, caseMonth, caseMonths, codeEntries, codePrograms,
-  householdCodes, landings, programOfArg,
+  householdCodes, landings, programOfArg, cellOutcome, questionsBehind,
 } from "../../src/ui/aidcodes";
+import { programsOfCase } from "../../src/engine/cases";
 import { changeSetSig, draftsShownSig, engineSig, modeSig, route, volumeSig } from "../../src/ui/state";
 import { defaultRoute } from "../../src/ui/router";
 import { OutcomesView } from "../../src/ui/views/OutcomesView";
@@ -221,3 +222,45 @@ describe("OutcomesView", () => {
     expect(host.textContent).toContain("this person does not");
   });
 });
+
+describe("phase 13 retest fixes: the household grid", () => {
+  const kase = (id: string) => vol.cases.find((c) => c.id === id)!;
+
+  it("says 'not tested in this case' for a program the case never tests (CO-83's Medicaid)", () => {
+    const hc = kase("CO-83");
+    const tested = programsOfCase(engine.index, hc);
+    for (const row of householdCodes(engine, map, hc)) {
+      for (const pp of row.programs) expect(pp.tested).toBe(tested.includes(pp.program));
+    }
+    setUp({ tab: "household", case: "CO-83" });
+    const host = document.createElement("div");
+    render(<OutcomesView />, host);
+    const untested = host.querySelectorAll('td[data-prog="Medicaid"] .untested');
+    if (!tested.includes("Medicaid")) expect(untested.length).toBe(Object.keys(hc.persons).length);
+    expect(host.textContent).not.toMatch(/No needy-young-person group applies/);
+  });
+
+  it("puts amounts and ages in the grid, and opens the walkthrough at the cell's own outcome", () => {
+    setUp({ tab: "household", case: "CO-01" });
+    const host = document.createElement("div");
+    render(<OutcomesView />, host);
+    expect(host.querySelector('tr[data-person="p1"] th')!.textContent).toMatch(/age \d+/);
+    const snap = host.querySelector('tr[data-person="p2"] td[data-prog="SNAP"]')!;
+    expect(snap.querySelector(".amount")!.textContent).toMatch(/\$/);
+    const fp = [...host.querySelectorAll('tr[data-person="p2"] td[data-prog="Medicaid"] .held a')]
+      .map((a) => decodeURIComponent(a.getAttribute("href")!)).find((h) => h.includes("/walkthrough/"))!;
+    const pp = householdCodes(engine, map, kase("CO-01")).find((r) => r.person === "p2")!.programs.find((x) => x.program === "Medicaid")!;
+    expect(fp).toContain(`outcome=${cellOutcome(pp)}`);
+    // Relationship sentences read as English.
+    expect(host.querySelector(".family")?.textContent ?? "").not.toMatch(/ of of | is the files /);
+  });
+
+  it("links the open question an outcome's reasoning carries (CO-01's family planning and OQ-215)", () => {
+    const hc = kase("CO-01");
+    const pp = householdCodes(engine, map, hc).find((r) => r.person === "p2")!.programs.find((x) => x.program === "Medicaid")!;
+    const qs = questionsBehind(engine, hc, cellOutcome(pp)!, "p2", caseMonth(hc));
+    if (pp.codes.some((c) => c.outcome === "ma_family_planning_status")) expect(qs).toContain("OQ-215");
+    for (const q of qs) expect(vol.openQuestions.some((x) => x.id === q)).toBe(true);
+  });
+});
+

@@ -80,7 +80,8 @@ describe("Tray", () => {
     expect(host.querySelectorAll("li.entry")).toHaveLength(1);
     expect(host.textContent).toContain("WR-003 Age");
     expect(host.textContent).toContain("edit");
-    expect(host.querySelector(".impact")!.textContent).toContain("medicaid_is_dependent_child");
+    expect(host.querySelector(".impact a[title='medicaid_is_dependent_child']")).not.toBeNull();
+    expect(host.querySelector(".impact")!.textContent).not.toContain("medicaid_is_dependent_child");
   });
 
   it("disables Propose without a token and says why", () => {

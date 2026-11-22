@@ -14,12 +14,13 @@
  * `tests/cases.yaml`: no intake and nothing typed in. */
 import type { Engine } from "../engine/engine";
 import type { HouseholdCase } from "../engine/cases";
-import { caseToSpec } from "../engine/cases";
+import { caseToSpec, programsOfCase } from "../engine/cases";
 import { evaluate, makeCase, type CaseData } from "../engine/evaluate";
 import type { Expr, Item } from "../engine/types";
 import {
   optionKey, type AidCode, type AidCodeMap, type AidCodeOutcome, type Participation,
 } from "../ledger/aid-codes";
+import { buildWalk } from "./walkthrough";
 
 /** One code, with where it comes from. */
 export interface CodeEntry extends AidCode {
@@ -202,6 +203,14 @@ export class CaseReader {
     return Object.keys(this.hc.persons ?? {});
   }
 
+  private programs: Set<string> | null = null;
+
+  /** Whether the stored case states an expectation in the program. */
+  tested(program: string): boolean {
+    if (!this.programs) this.programs = new Set(programsOfCase(this.engine.index, this.hc));
+    return this.programs.has(program);
+  }
+
   /** The value of an outcome for a person, null when unknown or when it
    *  cannot be evaluated. */
   value(identifier: string, person: string): unknown {
@@ -241,6 +250,14 @@ export interface PersonProgram {
   reason: { outcome: string; option: string; text: string } | null;
   /** Every outcome of the program the file lists, with this person's value. */
   values: OutcomeValue[];
+  /** The stored case states an expectation in this program: false means the
+   *  case was never set up for it, and the cell says "not tested in this
+   *  case" rather than a reason the facts do not support (county
+   *  supervisor task 3). */
+  tested: boolean;
+  /** The program's money outcomes with a value for this person (an
+   *  allotment, a grant, a fee, a patient payment). */
+  amounts: OutcomeValue[];
 }
 
 function keyOf(v: unknown): string | null {
@@ -291,14 +308,56 @@ export function personProgram(
     const v = reader.value(map.funding.outcome, person);
     funding = { outcome: map.funding.outcome, value: v, key: keyOf(v) };
   }
+  // The amounts: the program's declared money outcomes with a value other
+  // than zero, for a member (a household's allotment is not a non-member's).
+  const amounts: OutcomeValue[] = [];
+  if (member) {
+    for (const p of engine.meta.programs ?? []) {
+      if (p.id !== program) continue;
+      for (const o of p.outcomes ?? []) {
+        if (engine.item(o)?.type !== "money") continue;
+        const v = reader.value(o, person);
+        if (typeof v === "number" && v !== 0) amounts.push({ outcome: o, value: v, key: null });
+      }
+    }
+  }
   return {
     program, codes, participation, householdOnly: !member && householdCodes.length > 0,
     household: householdCodes,
-    funding, reason: codes.length ? null : reason, values,
+    funding, reason: codes.length ? null : reason, values, tested: reader.tested(program), amounts,
   };
 }
 
 export interface HouseholdRow { person: string; programs: PersonProgram[] }
+
+/** The outcome a cell stands for: the code's outcome, else the outcome the
+ *  no-code reason comes from, else the participation outcome, else the
+ *  program's first listed outcome. The cell links the walkthrough there. */
+export function cellOutcome(pp: PersonProgram): string | null {
+  return pp.codes[0]?.outcome ?? pp.reason?.outcome ?? pp.participation?.outcome ?? pp.values[0]?.outcome ?? null;
+}
+
+/** The open questions a person's result rests on: those carried by the rules
+ *  and figures that decided it in its trace (county supervisor U16: the
+ *  81-year-old on family planning and OQ-215). */
+export function questionsBehind(
+  engine: Engine, hc: HouseholdCase, identifier: string, person: string, month: string,
+): string[] {
+  const it = engine.item(identifier);
+  if (!it) return [];
+  const m = it.scope === "person-month" || it.scope === "month" ? month : null;
+  const p = it.scope === "person" || it.scope === "person-month" ? person : null;
+  let walk;
+  try { walk = buildWalk(engine.explain(caseToSpec(hc), identifier, p, m)); } catch { return []; }
+  const out: string[] = [];
+  const add = (id: string) => { for (const q of engine.item(id)?.open ?? []) if (!out.includes(q)) out.push(q); };
+  for (const s of walk.steps) {
+    if (!(s.mattered || s.why || s.n === 1)) continue;
+    add(s.node.identifier);
+    for (const i of s.inputs) if (i.mattered && i.step === null) add(i.node.identifier);
+  }
+  return out;
+}
 
 /** Each person of a stored household, with their codes in every program. */
 export function householdCodes(

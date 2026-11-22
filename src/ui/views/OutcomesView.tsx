@@ -5,9 +5,12 @@ import type { Expr, Item } from "../../engine/types";
 import { paramInForce } from "../../engine/versions";
 import { aidCodeWarnings, type AidCodeMap } from "../../ledger/aid-codes";
 import {
-  branchesTo, branchFigures, caseMonth, caseMonths, codeEntries, codePrograms, householdCodes,
-  landings, programOfArg, upstreamFigures, type CodeEntry, type Landing, type PersonProgram,
+  branchesTo, branchFigures, caseMonth, caseMonths, cellOutcome, codeEntries, codePrograms, householdCodes,
+  landings, programOfArg, questionsBehind, upstreamFigures, type CodeEntry, type Landing, type PersonProgram,
 } from "../aidcodes";
+import { caseEdges, relationshipSentence } from "../people";
+import { plainQuestionTitle } from "../questions";
+import { personTitle, plainCaseTitle } from "../walkthrough";
 import { plainDerivation, type PlainLine } from "../plain";
 import { noVersionReason, PlainLines, PlainRule } from "../Present";
 import { formatDate, formatValue, optionLabel, personLabel } from "../present";
@@ -350,7 +353,24 @@ function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
   const month = r.params.month && months.includes(r.params.month) ? r.params.month : caseMonth(hc);
   const rows = householdCodes(engine, map, hc, month);
   const programs = codePrograms(engine, map);
-  const rels = hc.relationships ?? [];
+  const rels = caseEdges(hc).filter((e) => !["tax_dependent", "in_primary_care_of", "child", "grandchild", "stepchild", "sponsored_by"].includes(e.role));
+  // The open questions behind each cell's result, worked out after the grid
+  // paints (one trace per cell).
+  const [questions, setQuestions] = useState<Map<string, string[]> | null>(null);
+  useEffect(() => {
+    setQuestions(null);
+    const t = setTimeout(() => {
+      const out = new Map<string, string[]>();
+      for (const row of rows) {
+        for (const pp of row.programs) {
+          const o = pp.tested ? cellOutcome(pp) : null;
+          if (o) out.set(`${row.person}|${pp.program}`, questionsBehind(engine, hc, o, row.person, month));
+        }
+      }
+      setQuestions(out);
+    }, 40);
+    return () => clearTimeout(t);
+  }, [engine, hc.id, month]);
   return (
     <>
       <div class="controls">
@@ -364,7 +384,7 @@ function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
               navigate({ params });
             }}
           >
-            {cases.map((c) => <option key={c.id} value={c.id}>{c.id}: {shorten(c.title, 70)}</option>)}
+            {cases.map((c) => <option key={c.id} value={c.id}>{c.id}: {shorten(plainCaseTitle(c.title).title, 70)}</option>)}
           </select>
         </label>
         <label>
@@ -375,11 +395,10 @@ function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
         </label>
         <a class="btn" href={walkthroughHref(r, hc.id)}>Walk through this household</a>
       </div>
-      <p class="hhtitle"><b>{hc.id}</b> {hc.title} <span class="muted">· as of {formatDate(hc.as_of)}</span></p>
+      <p class="hhtitle"><b>{hc.id}</b> {plainCaseTitle(hc.title).title} <span class="muted">· as of {formatDate(hc.as_of)}</span></p>
       {rels.length > 0 && (
         <p class="muted family">
-          {rels.slice(0, 8).map(([role, from, to]) =>
-            `${personLabel(from)} is the ${role.replace(/_/g, " ")} of ${personLabel(to)}`).join("; ")}
+          {rels.slice(0, 8).map(relationshipSentence).join("; ")}
           {rels.length > 8 ? `; and ${rels.length - 8} more` : ""}.
         </p>
       )}
@@ -395,10 +414,10 @@ function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
           <tbody>
             {rows.map((row) => (
               <tr key={row.person} data-person={row.person}>
-                <th scope="row">{personLabel(row.person)} <small class="mono muted">{row.person}</small></th>
+                <th scope="row">{personTitle(hc, row.person)} <small class="mono muted">{row.person}</small></th>
                 {row.programs.map((pp) => (
-                  <td key={pp.program} data-program={programLabel(pp.program)} data-prog={pp.program}>
-                    <Cell ctx={ctx} map={map} hc={hc} person={row.person} pp={pp} />
+                  <td key={pp.program} data-program={programLabel(pp.program)} data-prog={pp.program} data-tested={pp.tested ? undefined : "no"}>
+                    <Cell ctx={ctx} map={map} hc={hc} person={row.person} pp={pp} month={month} questions={questions?.get(`${row.person}|${pp.program}`)} />
                   </td>
                 ))}
               </tr>
@@ -407,8 +426,9 @@ function HouseholdTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
         </table>
       </div>
       <p class="muted legend">
-        <b>PH-…</b> placeholder codes, to be replaced with CBMS codes. A blank result means the codex finds none
-        for this person; open the cell to see why, rule by rule, in the walkthrough.
+        <b>PH-…</b> placeholder codes, to be replaced with CBMS codes. A cell without a code says why; "not tested
+        in this case" means the stored household was never set up for that program, so the grid claims nothing.
+        Open a cell to see its result, rule by rule, in the walkthrough.
       </p>
     </>
   );
@@ -418,26 +438,78 @@ function shorten(s: string, n: number): string {
   return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s;
 }
 
+function Amounts({ ctx, pp }: { ctx: ViewContext; pp: PersonProgram }) {
+  if (!pp.amounts.length) return null;
+  const { engine } = ctx;
+  return (
+    <div class="amounts">
+      {pp.amounts.slice(0, 2).map((a) => {
+        const it = engine.item(a.outcome);
+        return (
+          <div key={a.outcome} class="amount">
+            <span class="muted">{(it?.name ?? a.outcome).replace(/^[^:]+:\s*/, "")}:</span> <b>{formatValue(it ?? null, a.value)}</b>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function CellQuestions({ ctx, ids }: { ctx: ViewContext; ids: string[] | undefined }) {
+  if (!ids?.length) return null;
+  const { vol, route: r } = ctx;
+  return (
+    <div class="cellq small">
+      {ids.length === 1 ? "Open question" : "Open questions"} behind it:{" "}
+      {ids.slice(0, 3).map((q, i) => {
+        const oq = vol.openQuestions.find((x) => x.id === q);
+        return (
+          <span key={q}>{i > 0 && "; "}<a href={buildHash({ ...r, view: "questions", arg: q, params: {} })} title={oq ? plainQuestionTitle(oq.title) : q}>{q}</a></span>
+        );
+      })}
+      {ids.length > 3 && <span> and {ids.length - 3} more</span>}
+    </div>
+  );
+}
+
 function Cell(
-  { ctx, map, hc, person, pp }:
-  { ctx: ViewContext; map: AidCodeMap; hc: HouseholdCase; person: string; pp: PersonProgram },
+  { ctx, map, hc, person, pp, month, questions }:
+  { ctx: ViewContext; map: AidCodeMap; hc: HouseholdCase; person: string; pp: PersonProgram; month: string; questions?: string[] },
 ) {
   const { engine, route: r } = ctx;
-  const walk = walkthroughHref(r, hc.id, person, pp.program);
+  const outcome = cellOutcome(pp);
+  const oit = outcome ? engine.item(outcome) : undefined;
+  const atMonth = oit && (oit.scope === "person-month" || oit.scope === "month") ? month : null;
+  const walkTo = (o: string | null) => walkthroughHref(r, hc.id, person, pp.program, { outcome: o ?? undefined, month: o ? atMonth : null });
+  if (!pp.tested) {
+    return (
+      <div class="cell none untested">
+        <span class="muted">Not tested in this case</span>
+      </div>
+    );
+  }
   if (pp.codes.length) {
     return (
       <div class="cell has">
-        {pp.codes.map((c) => (
-          <div key={c.code} class="held">
-            <a href={walk}>{c.label}</a>{" "}
-            <a href={buildHash({ ...r, arg: c.program, params: { code: c.code } })} class="codelink">
-              <CodeChip code={c.code} placeholder={map.status === "placeholder"} />
-            </a>
-          </div>
-        ))}
-        {pp.funding && pp.funding.key && pp.funding.key !== "none" && (
-          <div class="funding muted">Paid from: {optionLabel(engine.item(pp.funding.outcome), pp.funding.key)}</div>
+        {pp.codes.map((c) => {
+          // Each code's own funding where it differs from the person's (a
+          // state-only program beside Emergency Medicaid).
+          const own = c.funding && pp.funding?.key && c.funding !== pp.funding.key ? c.funding : null;
+          return (
+            <div key={c.code} class="held">
+              <a href={walkTo(c.outcome)}>{c.label}</a>{" "}
+              <a href={buildHash({ ...r, arg: c.program, params: { code: c.code } })} class="codelink">
+                <CodeChip code={c.code} placeholder={map.status === "placeholder"} />
+              </a>
+              {own && pp.funding && <div class="funding muted">Paid from: {optionLabel(engine.item(pp.funding.outcome), own)}</div>}
+            </div>
+          );
+        })}
+        {pp.funding && pp.funding.key && pp.funding.key !== "none" && pp.codes.some((c) => !c.funding || c.funding === pp.funding!.key) && (
+          <div class="funding muted">Paid from: {optionLabel(engine.item(pp.funding.outcome), pp.funding.key)}{pp.codes.length > 1 ? ` (${pp.codes.filter((c) => !c.funding || c.funding === pp.funding!.key).map((c) => c.code).join(", ")})` : ""}</div>
         )}
+        <Amounts ctx={ctx} pp={pp} />
+        <CellQuestions ctx={ctx} ids={questions} />
       </div>
     );
   }
@@ -457,7 +529,9 @@ function Cell(
   }
   return (
     <div class="cell none">
-      <a href={walk} class="muted">{text}</a>
+      <a href={walkTo(outcome)} class="muted">{text}</a>
+      <Amounts ctx={ctx} pp={pp} />
+      <CellQuestions ctx={ctx} ids={questions} />
     </div>
   );
 }

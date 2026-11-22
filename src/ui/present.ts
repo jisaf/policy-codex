@@ -208,10 +208,20 @@ export interface TableRows {
 
 /** A parameter table as rows, keys in natural order. Null for a value that
  *  is not a table. */
-export function tableRows(item: Pick<Item, "type"> | null, value: unknown): TableRows | null {
-  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+/** What a table's keys are: the item's own name says it where the type is
+ *  generic or older ("Colorado Works grant standard by number of children",
+ *  typed "table keyed by household size": CDHS cash lead task 1, the 0 row
+ *  read as "a household of nobody"); else the type's "table keyed by X". */
+export function tableKeyMeaning(item: (Pick<Item, "type"> & Partial<Pick<Item, "name">>) | null): string {
+  const named = /\bby (number of [a-z-]+(?: [a-z-]+)?|household size|unit size|family size|income band|poverty band|county|region|dwelling type|age|year|summer|person)\b/i.exec(item?.name ?? "");
+  if (named) return named[1].toLowerCase();
   const m = /^table keyed by (.+)$/.exec(item?.type ?? "");
-  const keyLabel = m ? m[1] : "key";
+  return m ? m[1] : "key";
+}
+
+export function tableRows(item: (Pick<Item, "type"> & Partial<Pick<Item, "name">>) | null, value: unknown): TableRows | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const keyLabel = tableKeyMeaning(item);
   const rows = Object.entries(value as Record<string, unknown>).map(([key, v]) => ({ key, value: v }));
   const numeric = rows.every((r) => /^-?\d+(\.\d+)?$/.test(r.key));
   rows.sort((a, b) => numeric ? Number(a.key) - Number(b.key) : a.key.localeCompare(b.key));

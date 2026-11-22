@@ -1,3 +1,4 @@
+import { personaById, personaSig } from "./personas";
 import { Ident } from "./Rich";
 import { groupHits, HIT_KIND_LABEL, HIT_KINDS, hitHash, search, type SearchHit } from "./search";
 import { route, searchIndexSig } from "./state";
@@ -23,7 +24,9 @@ export function SearchView() {
   const q = r.params.q ?? "";
   const index = searchIndexSig.value;
   if (!index) return <p class="status">No ledger loaded.</p>;
-  const hits = search(index, q, 200);
+  // The reader's own programs rank first (HCPF analyst: "countable income"
+  // went to Colorado Works).
+  const hits = search(index, q, 200, { programs: personaById(personaSig.value)?.programs });
   if (!q.trim()) return <p class="muted">Type a query in the header search box.</p>;
   if (!hits.length) return <p class="muted">Nothing matches "{q}".</p>;
   const grouped = groupHits(hits);
