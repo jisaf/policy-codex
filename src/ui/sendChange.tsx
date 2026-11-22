@@ -10,6 +10,7 @@ import { entryFiles, proposalBody } from "../changes/serialize";
 import { fileEntries, isFileUnchanged, isUnchanged, type ChangeSet } from "../changes/types";
 import { validateChangeSet, type ChangeSetReport } from "../changes/validate";
 import type { Steward } from "../ledger/manifest";
+import { BUNDLED } from "../ledger/source";
 import type { LoadedVolume } from "../ledger/load";
 import { downloadText } from "./Settings";
 import {
@@ -101,7 +102,8 @@ export function SendChange(
   { kind, cs, compact = false }: { kind: StagedKind; cs?: ChangeSet; compact?: boolean },
 ) {
   const set = cs ?? changeSetSig.value;
-  const hasToken = Boolean(credentials.get("github"));
+  // A static preview build cannot propose: the download is the only path.
+  const hasToken = !BUNDLED && Boolean(credentials.get("github"));
   const steward = stewardOf(volumeSig.value);
   const steps = nextSteps({ hasToken, steward, kind });
   const staged = hasStaged(set);
@@ -118,7 +120,7 @@ export function SendChange(
         {!cs && (
           <button type="button" class="btn" onClick={() => { trayOpenSig.value = true; }}>Open the change tray</button>
         )}
-        {!hasToken && (
+        {!hasToken && !BUNDLED && (
           <button type="button" class="btn linkish" onClick={() => { settingsOpenSig.value = true; }}>
             I have a GitHub token
           </button>

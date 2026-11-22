@@ -32,9 +32,15 @@ export interface ProposeResult {
   manifest: Manifest;
 }
 
+/** What the tray says in a static preview build instead of Propose. */
+export const PREVIEW_PROPOSE_REASON = "Preview build: download the change to send it";
+
 export function proposeBlockedReason(args: {
   hasToken: boolean; entryCount: number; valid: boolean; isPrRef: boolean;
+  /** A static preview build (src/ledger/bundled.ts): it cannot reach GitHub. */
+  preview?: boolean;
 }): string | null {
+  if (args.preview) return PREVIEW_PROPOSE_REASON;
   if (!args.hasToken) return "Add a GitHub token in Settings to propose changes.";
   if (args.entryCount === 0) return "The tray is empty.";
   if (!args.valid) return "Fix the validation errors before proposing.";

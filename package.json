@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:bundle": "vite-node scripts/build-bundle.ts",
+    "build:blind-a": "cd prototypes/blind-a && npm run artifact",
+    "build:blind-b": "vite-node prototypes/blind-b/scripts/build-data.ts && vite build -c prototypes/blind-b/vite.config.ts --outDir ../../.artifacts/blind-b --emptyOutDir",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",

@@ -4,6 +4,20 @@ import { esc, html, itemLink, raw, sourceChip } from "../ui";
 import type { View } from "../main";
 
 const cache = new Map<string, string>();
+// The documents' text comes in a few bundle files (scripts/build-data.ts):
+// `documents.json` says which one holds each document.
+let docIndex: Promise<Record<string, string>> | null = null;
+const docChunks = new Map<string, Promise<Record<string, string>>>();
+const getJson = (url: string): Promise<Record<string, string>> =>
+  fetch(url).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+async function documentText(id: string): Promise<string> {
+  docIndex ??= getJson("public/data/documents.json");
+  const name = (await docIndex)[id];
+  if (!name) return "";
+  let chunk = docChunks.get(name);
+  if (!chunk) docChunks.set(name, (chunk = getJson(`public/data/${name}`)));
+  return (await chunk)[id] ?? "";
+}
 const norm = (s: string) => s.toLowerCase().replace(/[“”"’'`*_]/g, "").replace(/\s+/g, " ").trim();
 
 export async function docView([id]: string[], q: URLSearchParams): Promise<View> {
@@ -11,8 +25,7 @@ export async function docView([id]: string[], q: URLSearchParams): Promise<View>
   if (!doc) return { title: "Not found", body: html`<section class="card"><h1>No document ${id}</h1></section>` };
   let text = cache.get(id);
   if (text === undefined) {
-    const r = await fetch(`public/data/documents/${id}.md`);
-    text = r.ok ? await r.text() : "";
+    text = await documentText(id);
     cache.set(id, text);
   }
   const sid = q.get("s");

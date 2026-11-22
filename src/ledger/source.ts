@@ -1,3 +1,5 @@
+import { defaultBundle, type BundleReader } from "./bundled";
+
 export interface Repo { owner: string; name: string }
 
 export interface LedgerSource {
@@ -85,6 +87,39 @@ export interface LocalInfo {
   branch: string | null;
   /** True when the working tree has uncommitted changes. */
   dirty: boolean;
+  /** True when the "working tree" is a snapshot bundled into a static
+   *  preview build (src/ledger/bundled.ts), not a live server. */
+  bundled?: boolean;
+}
+
+/** True in a static preview build (`VITE_LEDGER_SOURCE=bundled`, made by
+ *  `npm run build:bundle`): the ledger is a snapshot shipped beside the page,
+ *  read as the local ref, and nothing can be proposed to GitHub from it. */
+export const BUNDLED: boolean = (() => {
+  // `import.meta.env` is not in this tsconfig's lib; Vite inlines it at build.
+  const env = (import.meta as { env?: Record<string, string | undefined> }).env;
+  return env?.VITE_LEDGER_SOURCE === "bundled";
+})();
+
+/** A reader over a bundled snapshot, under the local ref: never cached by
+ *  sha (head is null), like the working tree it stands in for. */
+export function bundledSource(bundle: BundleReader = defaultBundle()): LedgerSource {
+  return { ref: LOCAL_REF, readText: (path) => bundle.readText(path), head: async () => null };
+}
+
+/** The bundled snapshot's info, in the shape the local probe answers. */
+export async function probeBundled(bundle: BundleReader = defaultBundle()): Promise<LocalInfo | null> {
+  try {
+    const { info } = await bundle.index();
+    return {
+      mode: "local", bundled: true,
+      head: typeof info?.head === "string" ? info.head : null,
+      branch: typeof info?.branch === "string" ? info.branch : null,
+      dirty: info?.dirty === true,
+    };
+  } catch {
+    return null;
+  }
 }
 
 /** A reader over the working tree the dev or preview server serves. `head()`
@@ -135,7 +170,8 @@ export function gitRefOf(ref: string, fallback: string): string {
 
 export function pickSource(
   repo: Repo, ref: string, token: string | null, fetchImpl: typeof fetch = fetch,
+  bundle: BundleReader | null = BUNDLED ? defaultBundle() : null,
 ): LedgerSource {
-  if (isLocalRef(ref)) return localSource(LOCAL_BASE, fetchImpl);
+  if (isLocalRef(ref)) return bundle ? bundledSource(bundle) : localSource(LOCAL_BASE, fetchImpl);
   return token ? apiSource(repo, ref, token, fetchImpl) : rawSource(repo, ref, fetchImpl);
 }

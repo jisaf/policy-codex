@@ -4,6 +4,7 @@ import { buildHash, isPrRef } from "./router";
 import { saveChangeSet } from "../changes/store";
 import { isSignatureOnly } from "../changes/apply";
 import { SendChange } from "./sendChange";
+import { BUNDLED } from "../ledger/source";
 import { proposeBlockedReason, proposeChangeSet } from "./propose";
 import {
   changeSetSig, clearTray, credentials, discardChangeEntry, discardFileChange, engineSig,
@@ -38,6 +39,7 @@ export function Tray() {
       + files.filter((f) => !isFileUnchanged(f)).length,
     valid: report ? report.valid : true,
     isPrRef: isPrRef(r.ref),
+    preview: BUNDLED,
   });
 
   const propose = async () => {

@@ -24,11 +24,14 @@ npm run serve     # http://localhost:4317/
    `public/data/codex.json` (items, English, sources, documents, questions, aid
    codes, cases with their comments, approval roles per item, the items each
    household's determinations read, and this month's diff against the codex at
-   the start of the month) plus a copy of each source document.
+   the start of the month) plus the source documents, bundled into
+   `public/data/documents.json` (which file holds each) and `documents-<n>.json`.
 3. `scripts/build.mjs` bundles `src/main.ts` and the engine into `dist/app.js`.
 
 `dist/` and `public/data/` are generated and not committed. Any static server
 works in place of `npm run serve`; the page must be served (it fetches its data).
+`npm run artifact` builds and copies the page, the bundle and the data into
+`.artifacts/blind-a/` at the repository root, every path relative.
 
 Other scripts:
 
