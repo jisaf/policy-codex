@@ -220,6 +220,8 @@ export interface InboxInputs {
    *  absent, left out (households empty) when null, so a page can paint
    *  first and fill the households in after. */
   resting?: Map<string, StoredResult[]> | null;
+  /** Only these items (the item page's sign-off panel); every item when absent. */
+  only?: readonly Item[];
 }
 
 /** Unverified upstream (counts.ts, the one definition). */
@@ -244,7 +246,7 @@ export function inboxRows(inp: InboxInputs): InboxRow[] {
   const notes = new Map(stagedNotes(inp.changeSet).filter((n) => n.role === role).map((n) => [n.id, n]));
   const proposed = inp.proposedBase ? new Map(inp.proposedBase.map((i) => [i.id, i])) : null;
   const rows: InboxRow[] = [];
-  for (const it of engine.items()) {
+  for (const it of inp.only ?? engine.items()) {
     const a = approvalStatus(engine, it);
     if (!a.required.includes(role)) continue;
     const outcomes = outcomesAffected(engine, it.identifier);
