@@ -1,0 +1,13 @@
+id: CO-3718
+name: Receives disability-based Medical Assistance
+identifier: receives_disability_based_medical_assistance
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is enrolled in Medical Assistance (Health First Colorado, title XIX of the Social Security Act) in a category whose eligibility rests on a determination of disability or blindness under criteria at least as stringent as title XVI's, as the person's Medicaid case record shows: a fact about the person's Medicaid case, not this volume's own Medicaid determination."
+precision: "If not stated, SNAP reads this as false."
+supplied_by: "CBMS / MMIS enrollment record (the Medical Assistance eligibility category)."
+sources: [S2509, S1951]
+tags: [disability]
+rationale: "Final verification F-7: 10 CCR 2506-1 4.000.1 \"Person with disabilities\" 8 (S2509) and 7 CFR 271.2 \"Elderly or disabled member\" (11) (S1951) make a recipient of disability-related medical assistance under title XIX a person with disabilities. is_enrolled_in_medical_assistance (CO-2435) states enrollment in any category, not one resting on disability; receipt of another program's benefit is a supplied case fact (convention rule 11)."

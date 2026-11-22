@@ -6,10 +6,10 @@ type: yes/no
 scope: person-month
 program: SNAP
 role: outcome
-meaning: Whether the person's identity must be verified for SNAP and has not been, by an electronic data source or any document that reasonably establishes it.
-precision: "False where SNAP verification does not apply to the person (snap_is_household_member, CO-304; case worker review B2). Due by: snap_verification_due_date (CO-1392), or snap_expedited_postponement_end_date (CO-1393) for a household certified under expedited service."
-derived: [all, snap_is_household_member, [all, snap_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, identity_verification_document_received]]]]
-sources: [S806, S822, S814]
+meaning: "Whether the person's identity must be verified for SNAP and has not been, by an electronic data source or any document that reasonably establishes it; for the head of a household whose application an authorized representative made, also whether the representative's identity must be verified and has not been (10 CCR 2506-1 4.301, 4.502.A.1, 4.505.1.A)."
+precision: "False where SNAP verification does not apply to the person (snap_is_household_member, CO-304; case worker review B2). Due by: snap_verification_due_date (CO-1392), or snap_expedited_postponement_end_date (CO-1393) for a household certified under expedited service. Final verification F-9: the representative's identity (snap_requires_verification_of_authorized_representative_identity, CO-3731; snap_authorized_representative_identity_verified, CO-3730) is part of the identity element, so expedited service, which postpones everything but identity, does not postpone it (4.502.A.1, S2512)."
+derived: [all, snap_is_household_member, [any, [all, snap_requires_verification_of_identity, [not, [any, identity_verified_by_electronic_data_source, identity_verification_document_received]]], [all, snap_requires_verification_of_authorized_representative_identity, [not, snap_authorized_representative_identity_verified]]]]
+sources: [S806, S822, S814, S2512, S2513]
 implemented: engine
 tags: [verification, snap, household]
 rationale: Identity is the one verification expedited service never postpones (273.2(i)(4)(i)(A), S814); snap_verification_status needs it separately from the other pending elements.
@@ -18,3 +18,5 @@ tests:
   - {id: CO-1387-T2, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: true}, expect: false}
   - {id: CO-1387-T3, month: "2026-10", as_of: "2026-10-01", given: {snap_is_household_member: true, snap_requires_verification_of_identity: false}, expect: false}
   - {id: CO-1387-TNA, title: "B2: not pending where SNAP verification does not apply", as_of: "2026-10-01", month: "2026-10", given: {snap_is_household_member: false}, expect: false}
+  - {id: CO-1387-T4, title: "Final verification F-9: the head's identity is verified, the authorized representative's is not", as_of: "2026-10-01", month: "2026-10", given: {snap_is_household_member: true, snap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: true, snap_requires_verification_of_authorized_representative_identity: true, snap_authorized_representative_identity_verified: false}, expect: true}
+  - {id: CO-1387-T5, title: "Final verification F-9: both identities verified", as_of: "2026-10-01", month: "2026-10", given: {snap_is_household_member: true, snap_requires_verification_of_identity: true, identity_verified_by_electronic_data_source: true, snap_requires_verification_of_authorized_representative_identity: true, snap_authorized_representative_identity_verified: true}, expect: false}

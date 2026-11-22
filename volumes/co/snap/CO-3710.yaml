@@ -1,0 +1,17 @@
+id: CO-3710
+name: "SNAP: sponsor deeming household size"
+identifier: snap_sponsor_deeming_household_size
+kind: derived
+type: whole number
+scope: person
+program: SNAP
+meaning: "The household size whose SNAP gross income limit is subtracted from the sponsor's income before it is deemed to this non-citizen (10 CCR 2506-1 4.305.2.D.2.b; 7 CFR 273.4(c)(2)(i)(B)): the sponsor, the sponsor's spouse, and every other person the sponsor or the spouse claims or could claim as a dependent for federal income tax purposes."
+precision: "Counts this non-citizen's sponsors (sponsors, CO-2713: the sponsor and a co-sponsor spouse), a spouse of a sponsor who did not sign (sponsor_spouses_not_cosigning, CO-2714), and the tax dependents stated on the sponsors (tax_dependents_claimed_or_claimable_count, CO-3705, read as 0 when not stated). Two joint sponsors who are not married to each other are read as one sponsor household; the text states the size of one sponsor's household."
+derived: ["+", [count, sponsors], [count, sponsor_spouses_not_cosigning], [sum, sponsors, [otherwise, [of, [P], tax_dependents_claimed_or_claimable_count], 0]]]
+sources: [S2502, S2503]
+implemented: engine
+tags: [snap, immigration]
+rationale: "Final verification F-2: the 4.305.2.D.2.b reduction is the gross income limit for the sponsor's own tax household; no item counted it. cw_sponsor_deeming_household_size (CO-2360) is Colorado Works' different combined size of the non-citizen's and the sponsor's households."
+tests:
+  - {id: CO-3710-T1, title: "A sponsor, her husband who did not sign, and one tax dependent: 3", as_of: "2026-10-01", given: {sponsors: [p2], sponsor_spouses_not_cosigning: [p3]}, others: {p2: {tax_dependents_claimed_or_claimable_count: 1}, p3: {}}, expect: 3}
+  - {id: CO-3710-T2, title: "A single sponsor with nothing stated: 1", as_of: "2026-10-01", given: {sponsors: [p2], sponsor_spouses_not_cosigning: []}, others: {p2: {}}, expect: 1}

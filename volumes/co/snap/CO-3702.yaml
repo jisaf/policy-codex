@@ -1,0 +1,18 @@
+id: CO-3702
+name: "SNAP: sponsor resources deemed"
+identifier: snap_sponsor_deemed_resources
+kind: derived
+type: money
+scope: person
+program: SNAP
+meaning: "The resources SNAP counts to this eligible sponsored non-citizen from the person's sponsors (10 CCR 2506-1 4.305.2.C, D.6; 7 CFR 273.4(c)(2)(iv)-(v)): the total countable resources of the sponsors less snap_sponsor_resource_reduction, never below zero, divided by snap_sponsor_deeming_divisor; zero when deeming does not apply."
+precision: "Each sponsor's resources are read from the sponsor's own facts as SNAP counts them (liquid_resources_value, CO-3390, and snap_countable_nonliquid_resources, CO-074); the sponsors are those who signed the affidavit (CO-2713), as for income (CO-3711). A citizen is out at the first test."
+derived: [case, [[all, snap_is_eligible_non_citizen, snap_sponsor_deeming_applies], ["/", [max, 0, ["-", [sum, sponsors, ["+", [of, [P], liquid_resources_value], [of, [P], snap_countable_nonliquid_resources]]], snap_sponsor_resource_reduction]], snap_sponsor_deeming_divisor]], [else, 0]]
+sources: [S2502, S2503]
+implemented: engine
+tags: [snap, immigration, resources]
+rationale: "Final verification F-2: no item deemed a sponsor's resources; snap_household_countable_resources (CO-343) adds this amount for each member."
+tests:
+  - {id: CO-3702-T1, title: "Sponsor with $2,600: 2,600 - 1,500 = 1,100, shared by 2 = 550", as_of: "2026-10-01", given: {snap_is_eligible_non_citizen: true, snap_sponsor_deeming_applies: true, sponsors: [p2], snap_sponsor_deeming_divisor: 2}, others: {p2: {liquid_resources_value: 2600, snap_countable_nonliquid_resources: 0}}, expect: 550}
+  - {id: CO-3702-T2, title: "Sponsor with $1,200: below the $1,500 reduction, nothing", as_of: "2026-10-01", given: {snap_is_eligible_non_citizen: true, snap_sponsor_deeming_applies: true, sponsors: [p2], snap_sponsor_deeming_divisor: 1}, others: {p2: {liquid_resources_value: 1200, snap_countable_nonliquid_resources: 0}}, expect: 0}
+  - {id: CO-3702-T3, as_of: "2026-10-01", given: {snap_is_eligible_non_citizen: false}, expect: 0}

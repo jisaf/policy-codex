@@ -1,0 +1,17 @@
+id: CO-3740
+name: "SNAP: allowed medical expenses"
+identifier: snap_allowed_medical_expenses
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The person's medical expenses for the month (snap_medical_expenses) that count toward the household's excess medical deduction: all of them, except that once the expense verification period has ended with the person's medical expenses required to be verified and still unverified, none (10 CCR 2506-1 4.502.A.3; 7 CFR 273.2(f)(3)(ii))."
+derived: [case, [[all, snap_medical_expenses_verification_is_pending, snap_expense_verification_period_has_ended], 0], [else, snap_medical_expenses]]
+sources: [S818, S812, S803]
+implemented: engine
+tags: [verification, snap, income]
+rationale: "Final verification F-10 and V-5: snap_excess_medical_deduction (CO-376) summed the medical expenses whatever their verification; it now sums this item."
+tests:
+  - {id: CO-3740-T1, title: "Verified or not required: the expenses count", as_of: "2026-11-05", month: "2026-11", given: {snap_medical_expenses_verification_is_pending: false, snap_medical_expenses: 120}, expect: 120}
+  - {id: CO-3740-T2, title: "Still unverified after the thirtieth day: nothing", as_of: "2026-11-05", month: "2026-11", given: {snap_medical_expenses_verification_is_pending: true, snap_expense_verification_period_has_ended: true, snap_medical_expenses: 120}, expect: 0}
+  - {id: CO-3740-T3, title: "Unverified within the thirty days: the expenses count meanwhile", as_of: "2026-10-20", month: "2026-10", given: {snap_medical_expenses_verification_is_pending: true, snap_expense_verification_period_has_ended: false, snap_medical_expenses: 120}, expect: 120}

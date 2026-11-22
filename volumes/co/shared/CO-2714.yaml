@@ -5,7 +5,7 @@ kind: derived
 type: group of persons
 scope: person
 program: All
-meaning: "The spouses of this non-citizen's sponsors who did not themselves sign the affidavit of support: \"the sponsor's spouse\" whose income Colorado Works deems with the sponsor's (9 CCR 2503-6 3.605.1.A.5.a) and whose presence in the sponsor's household Adult Financial deducts for (9 CCR 2503-5 3.534.D.2.B; 3.520.72.A.2.b)."
+meaning: "The spouses of this non-citizen's sponsors who did not themselves sign the affidavit of support: \"the sponsor's spouse\" whose income Colorado Works deems with the sponsor's (9 CCR 2503-6 3.605.1.A.5.a), whose presence in the sponsor's household Adult Financial deducts for (9 CCR 2503-5 3.534.D.2.B; 3.520.72.A.2.b), and whom SNAP counts in the size of the sponsor's household for the gross income limit subtracted before deeming (10 CCR 2506-1 4.305.2.D.2.b)."
 precision: "A spouse of a sponsor declared in the case is read as living with the sponsor; a spouse living apart is not declared. A person sponsored by the same sponsors (this non-citizen or a sponsored sibling) is never counted as the sponsor's spouse."
 derived: [filter, [persons], [all, [has_relative_in, [spouse], sponsors], [not, [in_group, [P], sponsors]], [not, [has_relative_in, [sponsored_by], sponsors]]]]
 sources: [S1627, S1632, S1636]

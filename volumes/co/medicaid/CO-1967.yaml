@@ -7,12 +7,12 @@ scope: person-month
 program: Medicaid
 meaning: "The person's total hours in the month across the activities 42 CFR 435.552(a)(1)-(4) and (e) let a person combine: paid work (hours_worked), in-kind and unpaid work, community service, work program participation, and less than half-time education hours."
 precision: The option of 435.552(e)(2)(i)-(ii) to impute work hours from income divided by the minimum wage when hours are not documented is not modeled (OQ-412); hours_worked is the documented hours. hours_worked has no default; the other activity facts read an unstated value as zero, as their meanings say.
-derived: ["+", hours_worked, [otherwise, ma_unpaid_or_in_kind_work_hours, 0], [otherwise, ma_community_service_hours, 0], [otherwise, ma_work_program_hours, 0], ma_community_engagement_education_hours]
+derived: ["+", hours_worked, [otherwise, unpaid_or_in_kind_work_hours, 0], [otherwise, community_service_hours, 0], [otherwise, ma_work_program_hours, 0], ma_community_engagement_education_hours]
 sources: [S1202, S1203, S1204]
 implemented: engine
 tags: [ma, magi]
 open: [OQ-412]
 rationale: "OQ-65: each activity's hours are determined separately and added (435.552(e)(2), (4))."
 tests:
-  - {id: CO-1967-T1, month: "2027-02", as_of: "2027-03-01", given: {hours_worked: 40, ma_community_service_hours: 20, ma_work_program_hours: 25, ma_community_engagement_education_hours: 0}, title: "40 paid, 20 community service, 25 work program", expect: 85}
+  - {id: CO-1967-T1, month: "2027-02", as_of: "2027-03-01", given: {hours_worked: 40, community_service_hours: 20, ma_work_program_hours: 25, ma_community_engagement_education_hours: 0}, title: "40 paid, 20 community service, 25 work program", expect: 85}
   - {id: CO-1967-T2, month: "2027-02", as_of: "2027-03-01", given: {hours_worked: 0, ma_community_engagement_education_hours: 0}, expect: 0}

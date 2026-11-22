@@ -1,0 +1,16 @@
+id: CO-3704
+name: SNAP sponsor deeming, resource reduction
+identifier: snap_sponsor_resource_reduction
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The amount by which the total resources of the sponsor and the sponsor's spouse are reduced before they are deemed to a sponsored non-citizen: $1,500 (10 CCR 2506-1 4.305.2.D.6; 7 CFR 273.4(c)(2)(iv))."
+precision: "10 CCR 2506-1 4.408.B (S2504) states the reduction as $2,000; 4.305.2.D.6 (S2502), the rule that governs sponsored non-citizens, and the federal regulation (S2503) both state $1,500, which the volume follows."
+versions:
+  - from: "2000-01-01"
+    value: 1500
+    source: S2502
+sources: [S2502, S2503, S2504]
+tags: [snap, immigration, resources]
+rationale: "Final verification F-2: snap_sponsor_deemed_resources (CO-3702) needs the reduction 4.305.2.D.6 states. The two Colorado paragraphs disagree; the sponsor section and 7 CFR 273.4(c)(2)(iv), which binds the State agency, agree on $1,500, so the older $2,000 of 4.408.B is not followed."

@@ -1,0 +1,16 @@
+id: CO-3727
+name: SNAP maximum allotment, size of the largest household row
+identifier: snap_maximum_allotment_large_household_size
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The household size from which the single \"18+\" maximum allotment (snap_maximum_allotment_large_household) applies: 18 (FNS fiscal year 2027 Table 1; 10 CCR 2506-1 4.207.3.D)."
+versions:
+  - from: "2000-01-01"
+    value: 18
+    source: S730
+sources: [S730, S2514]
+tags: [income, snap]
+precision: "Dated from 2000-01-01 so that the size is compared before the amount is read; the amount (CO-3726) has a version only from October 1, 2026, and snap_maximum_allotment (CO-383) uses it only when it has one."
+rationale: "Final verification F-11: the row label of the large-household figure is a figure of the table, so it is a parameter rather than a literal in snap_maximum_allotment (CO-383)."

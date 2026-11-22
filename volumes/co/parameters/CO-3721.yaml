@@ -1,0 +1,15 @@
+id: CO-3721
+name: SNAP self-employed farmer, minimum annual gross proceeds
+identifier: snap_self_employed_farmer_annual_gross_minimum
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The annual gross proceeds from a farming enterprise at or above which a person is a self-employed farmer whose farm loss is offset against the household's other income: $1,000 (10 CCR 2506-1 4.403.12.E.2; 7 CFR 273.11(a)(2)(ii))."
+versions:
+  - from: "2000-01-01"
+    value: 1000
+    source: S2510
+sources: [S2510, S2511]
+tags: [income, snap]
+rationale: "Final verification F-8: the $1,000 threshold that makes a person a self-employed farmer (snap_farm_self_employment_loss, CO-3722)."

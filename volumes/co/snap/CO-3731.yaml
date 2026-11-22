@@ -1,0 +1,18 @@
+id: CO-3731
+name: "SNAP: requires verification of the authorized representative's identity"
+identifier: snap_requires_verification_of_authorized_representative_identity
+kind: derived
+type: yes/no
+scope: person-month
+program: SNAP
+meaning: "Whether, for this person as head of a SNAP household whose application an authorized representative made, the representative's identity must be verified: at application, including under expedited service (10 CCR 2506-1 4.301, 4.502.A.1, 4.505.1.A; 7 CFR 273.2(f)(1)(vii)), and at recertification only when the identity information is outdated, as for the head's own identity (CO-1370)."
+precision: "Asked of the head of household only, so the representative counts once; snap_identity_verification_is_pending (CO-1387) treats it as part of the identity element, which expedited service never postpones."
+derived: [all, [otherwise, snap_application_filed_by_authorized_representative, false], snap_is_head_of_household, snap_is_household_member, [any, [not, snap_determination_is_recertification], [otherwise, snap_identity_information_is_outdated, false]]]
+sources: [S2512, S2513, S1618]
+implemented: engine
+tags: [verification, snap]
+rationale: "Final verification F-9: CO-1370's precision recorded the representative's identity as not modeled, though 4.301, 4.502.A.1 and 4.505.1.A require it at application and under expedited service."
+tests:
+  - {id: CO-3731-T1, title: "An authorized representative applied; this person is the head", as_of: "2026-10-01", month: "2026-10", given: {snap_application_filed_by_authorized_representative: true, snap_is_head_of_household: true, snap_is_household_member: true, snap_determination_is_recertification: false}, expect: true}
+  - {id: CO-3731-T2, title: "The household applied itself", as_of: "2026-10-01", month: "2026-10", given: {snap_application_filed_by_authorized_representative: false}, expect: false}
+  - {id: CO-3731-T3, title: "Another member, not the head", as_of: "2026-10-01", month: "2026-10", given: {snap_application_filed_by_authorized_representative: true, snap_is_head_of_household: false}, expect: false}

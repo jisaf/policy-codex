@@ -1,0 +1,19 @@
+id: CO-3722
+name: "SNAP: farm self-employment loss"
+identifier: snap_farm_self_employment_loss
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The monthly loss of a self-employed farmer - a person whose self-employment is farming and whose gross proceeds from it are at least snap_self_employed_farmer_annual_gross_minimum a year - by which the allowable costs of producing the farm income exceed the farm's gross receipts (10 CCR 2506-1 4.403.12.E; 7 CFR 273.11(a)(2)(ii)); zero for anyone else."
+precision: "The receipts and costs are the month's figures, already averaged or prorated over the period as the case states them (snap_self_employment_costs, CO-1701), so the annual gross proceeds are twelve times the month's receipts. The person's own net self-employment income (CO-1702) is then 0, and this loss is offset against other income (CO-3724, CO-3725)."
+derived: [case, [[all, [otherwise, self_employment_is_farming, false], [">=", ["*", self_employment_gross_receipts, 12], snap_self_employed_farmer_annual_gross_minimum]], [max, 0, ["-", snap_self_employment_costs, self_employment_gross_receipts]]], [else, 0]]
+sources: [S2510, S2511]
+implemented: engine
+tags: [income, snap]
+rationale: "Final verification F-8: snap_self_employment_income (CO-1702) floors self-employment at zero and its precision recorded the farm loss offset as not modeled, with no open question; the loss is the first step of the offset."
+tests:
+  - {id: CO-3722-T1, title: "A farmer with $1,500 receipts and $2,300 costs in the month: loss $800", as_of: "2026-10-01", month: "2026-10", given: {self_employment_is_farming: true, self_employment_gross_receipts: 1500, snap_self_employment_costs: 2300}, expect: 800}
+  - {id: CO-3722-T2, title: "Receipts of $50 a month ($600 a year) are under $1,000: not a self-employed farmer", as_of: "2026-10-01", month: "2026-10", given: {self_employment_is_farming: true, self_employment_gross_receipts: 50, snap_self_employment_costs: 400}, expect: 0}
+  - {id: CO-3722-T3, title: "Not farming", as_of: "2026-10-01", month: "2026-10", given: {self_employment_is_farming: false}, expect: 0}
+  - {id: CO-3722-T4, title: "A farm with a profit has no loss", as_of: "2026-10-01", month: "2026-10", given: {self_employment_is_farming: true, self_employment_gross_receipts: 3000, snap_self_employment_costs: 2000}, expect: 0}

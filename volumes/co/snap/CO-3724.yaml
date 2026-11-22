@@ -1,0 +1,17 @@
+id: CO-3724
+name: "SNAP: farm loss offset against other self-employment income"
+identifier: snap_farm_loss_offset_against_self_employment
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The part of this person's SNAP household's farm loss (snap_household_farm_loss) offset first against the other self-employment income of the household's members whose income counts in full: the lesser of the loss and that income (7 CFR 273.11(a)(2)(ii)(A); 10 CCR 2506-1 4.403.12.E.2.a). It reduces the household's earned and gross income."
+precision: "A farmer's own net self-employment income is zero when the farm runs at a loss (CO-1702), so the self-employment income summed is the other enterprises'. With no farm loss nothing is read."
+derived: [case, [["<=", snap_household_farm_loss, 0], 0], [else, [min, snap_household_farm_loss, [sum, [filter, snap_household_members_other_than_ineligible_students, [any, [not, [of, [P], snap_is_ineligible_member]], [of, [P], snap_is_disqualified_member_counted_in_full]]], [of, [P], snap_self_employment_income]]]]]
+sources: [S2510, S2511]
+implemented: engine
+tags: [income, snap]
+rationale: "Final verification F-8: the first step of the farm loss offset; snap_household_gross_income (CO-334) and snap_household_earned_income_for_deduction (CO-372) subtract it."
+tests:
+  - {id: CO-3724-T1, title: "$800 loss, a spouse's $500 of other self-employment income: $500 offset", as_of: "2026-10-01", month: "2026-10", given: {snap_household_farm_loss: 800, snap_household_members_other_than_ineligible_students: [p1, p2], snap_is_ineligible_member: false, snap_self_employment_income: 0}, others: {p2: {snap_is_ineligible_member: false, snap_self_employment_income: 500}}, expect: 500}
+  - {id: CO-3724-T2, title: "No farm loss", as_of: "2026-10-01", month: "2026-10", given: {snap_household_farm_loss: 0}, expect: 0}

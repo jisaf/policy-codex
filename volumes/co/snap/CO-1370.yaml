@@ -6,7 +6,7 @@ type: yes/no
 scope: person-month
 program: SNAP
 meaning: "Whether the person's identity must be verified for SNAP: the identity of the head of a SNAP household, the person making application, is always verified at application, including under expedited service; unchanged identity is not verified again at recertification."
-precision: An authorized representative's identity (also verified under 273.2(f)(1)(vii)) is not modeled; the volume has no authorized-representative fact.
+precision: "An authorized representative's identity (also verified under 273.2(f)(1)(vii) and 4.301) is snap_requires_verification_of_authorized_representative_identity (CO-3731), which snap_identity_verification_is_pending (CO-1387) reads beside this item (final verification F-9)."
 derived: [all, snap_is_head_of_household, snap_is_household_member, [any, [not, snap_determination_is_recertification], [otherwise, snap_identity_information_is_outdated, false]]]
 sources: [S1618, S806, S814, S816, S822, S1055, S1056]
 implemented: engine

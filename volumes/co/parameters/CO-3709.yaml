@@ -1,0 +1,15 @@
+id: CO-3709
+name: SNAP sponsor deeming, child age limit
+identifier: snap_sponsor_deeming_child_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The age under which a sponsored child of a sponsored non-citizen is exempt from sponsor deeming, and under which a citizen child of a sponsored non-citizen shares in the division of the deemed amount: 18 (7 CFR 273.4(c)(2)(v), (c)(3)(vi)-(vii))."
+versions:
+  - from: "2000-01-01"
+    value: 18
+    source: S2503
+sources: [S2503]
+tags: [snap, immigration]
+rationale: "Final verification F-2: the federal exemptions (c)(3)(vi)-(vii) for children under 18 of a sponsored non-citizen are read by snap_sponsor_deeming_applies (CO-2337) and snap_sponsor_deeming_divisor (CO-3708)."

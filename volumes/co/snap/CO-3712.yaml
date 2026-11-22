@@ -1,0 +1,16 @@
+id: CO-3712
+name: "SNAP: person gross income before sponsor income"
+identifier: snap_person_gross_income_before_sponsor_income
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The person's own countable gross income for the month, earned plus unearned income, less the legally obligated child support the person pays to or for a non-household member, never below zero: snap_person_gross_income (CO-332) without the income deemed from or paid by a sponsor (snap_sponsor_deemed_income, CO-3701)."
+precision: "Read by the 165 percent test for an elderly and disabled member's separate household (snap_meets_elderly_disabled_separate_household_election, CO-419), which compares the income of the others the member lives with; a sponsor's deemed income is attributed to a sponsored member only for that member's household's eligibility and benefit (4.305.2.C), and reading it there would make the household's composition depend on itself."
+derived: [max, 0, ["-", ["+", snap_person_earned_income, snap_person_unearned_income], snap_child_support_exclusion]]
+sources: [S41, S42, S99, S1314]
+implemented: engine
+tags: [income, snap]
+rationale: "Final verification F-2: snap_person_gross_income (CO-332) now adds the sponsor's deemed income, which reads the sponsored member's SNAP household; the household's composition reads the 165 percent test, so that test keeps the person's own income through this item."
+tests:
+  - {id: CO-3712-T1, title: "$2,000 wages less $300 child support paid", month: "2026-10", given: {snap_person_earned_income: 2000, snap_person_unearned_income: 0, snap_child_support_exclusion: 300}, expect: 1700}

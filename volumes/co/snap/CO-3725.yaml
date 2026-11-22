@@ -1,0 +1,16 @@
+id: CO-3725
+name: "SNAP: farm loss remaining after the self-employment offset"
+identifier: snap_farm_loss_remaining
+kind: derived
+type: money
+scope: person-month
+program: SNAP
+meaning: "The farm loss of this person's SNAP household left after the offset against other self-employment income (snap_household_farm_loss less snap_farm_loss_offset_against_self_employment), which is offset against the household's total earned and unearned income after the earned income deduction (7 CFR 273.11(a)(2)(ii)(B))."
+statute_override: "The federal regulation overrides 10 CCR 2506-1 4.403.12.E.2.b-c, which deducts the remaining loss from other earned income before the earned income deduction and before the gross income test: 7 CFR 273.11(a)(2)(ii)(B) offsets it against the total of earned and unearned income after the earned income deduction has been applied, so it reduces net income but not gross income or the earned income deduction."
+derived: ["-", snap_household_farm_loss, snap_farm_loss_offset_against_self_employment]
+sources: [S2510, S2511]
+implemented: engine
+tags: [income, snap, legal]
+rationale: "Final verification F-8: the second step of the offset; snap_adjusted_income_before_shelter (CO-378) subtracts it right after the earned income deduction."
+tests:
+  - {id: CO-3725-T1, title: "$800 loss, $500 offset against self-employment: $300 left", as_of: "2026-10-01", month: "2026-10", given: {snap_household_farm_loss: 800, snap_farm_loss_offset_against_self_employment: 500}, expect: 300}

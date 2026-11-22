@@ -1,0 +1,13 @@
+id: CO-3716
+name: Receives Family Preservation services
+identifier: receives_family_preservation_services
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person receives services from Colorado's Family Preservation Program, as the county's child welfare case record shows: a fact about the person's case with that program, not this volume's determination of it."
+precision: "If not stated, SNAP reads this as false."
+supplied_by: "The county's child welfare (Family Preservation) case record, documented in the SNAP case record."
+sources: [S47]
+tags: [snap, household]
+rationale: "Final verification F-4 (docs/reviews/final-snap.md): 10 CCR 2506-1 4.206.C.1.a.2 (S47) makes a household BCE when \"at least one (1) member receives services from the Family Preservation Program\"; no fact stated receipt of those services."

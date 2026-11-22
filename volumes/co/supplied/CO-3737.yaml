@@ -1,0 +1,12 @@
+id: CO-3737
+name: Military connection verified
+identifier: military_connection_verified
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The military connection on which the person's eligibility as a non-citizen rests (has_military_connection: the person's own honorable discharge or active duty, or that of the person's spouse or parent) has been verified, by discharge papers, military records or a VA record."
+supplied_by: "DD Form 214 or other discharge papers; military orders or ID; VA records."
+sources: [S802]
+tags: [immigration, verification]
+rationale: "Final verification V-4: 7 CFR 273.2(f)(1)(ii)(A) (S802) lists the military connection among the alien eligibility factors that \"The State agency must also verify ... if applicable to the alien's eligibility\"; no fact recorded the verification."

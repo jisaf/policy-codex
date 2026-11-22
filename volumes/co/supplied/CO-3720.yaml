@@ -1,0 +1,13 @@
+id: CO-3720
+name: Self-employment is farming
+identifier: self_employment_is_farming
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person's self-employment enterprise (the receipts and costs stated in self_employment_gross_receipts and the self-employment cost facts) is a farming enterprise."
+precision: "If not stated, SNAP reads this as false. A person with both a farm and another self-employment enterprise is not modeled separately; the case states the farm as the person's self-employment."
+supplied_by: "The applicant's statement; Schedule F or farm business records."
+sources: [S2510, S2511]
+tags: [income, snap]
+rationale: "Final verification F-8 (docs/reviews/final-snap.md): a self-employed farmer's loss is offset against the household's other income (10 CCR 2506-1 4.403.12.E, S2510; 7 CFR 273.11(a)(2)(ii), S2511); no fact said whether self-employment was farming."

@@ -6,6 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether the person receives a non-service-connected disability pension from the U.S. Department of Veterans Affairs."
+precision: "If not stated, SNAP reads this as false (snap_is_disabled_member, CO-302)."
 supplied_by: VA award letter.
 sources: [S1737, S1231]
 tags: [ma, ltc]

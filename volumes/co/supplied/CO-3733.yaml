@@ -1,0 +1,12 @@
+id: CO-3733
+name: Qualifying quarters verified
+identifier: qualifying_quarters_verified
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person's forty qualifying quarters of work (qualifying_quarters, including quarters credited from a spouse or parent) have been verified, through the SSA Quarters of Coverage History System or by documentation the person provided."
+supplied_by: "QCHS response; the individual's documentation of quarters QCHS does not show (current-year earnings, uncovered employment)."
+sources: [S2516, S802]
+tags: [immigration, verification]
+rationale: "Final verification V-4 (docs/reviews/final-verification.md): 10 CCR 2506-1 4.505.61 (S2516) bars an LPR whose eligibility rests on forty quarters from participating \"until verification of forty (40) quarters of work is received from either the SSA or the individual\", and 7 CFR 273.2(f)(1)(ii)(A) (S802) requires the factor verified; no fact recorded the verification."
