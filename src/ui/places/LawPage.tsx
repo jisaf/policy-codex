@@ -9,9 +9,11 @@ import type { Item } from "../../engine/types";
 import type { Source } from "../../ledger/markdown";
 import {
   dependentsOf, departureItems, departureSince, departuresByProgram, figuresWithoutValue, householdCount,
-  householdsThatRead, itemsCitingExcerpt, lawCounts, QUESTION_LAW_DEFINITIONS,
+  householdsThatRead, inPrograms, itemsCitingExcerpt, lawCounts, programsParam, QUESTION_LAW_DEFINITIONS,
   restingOn, restingPhrase, unverifiedReach, type LawCounts,
 } from "../counts";
+import { programLabel } from "../roles";
+import { HouseholdRef, ScopeNote as KitScopeNote, UnverifiedBadge } from "../kit";
 import { formatDate, formatValue } from "../present";
 import { excerptKind, unverifiedIds } from "../provenance";
 import { departures, isOpen, questionInfo, type Departure } from "../questions";
@@ -33,14 +35,17 @@ type Section = "" | "departures" | "unverified" | "sources" | "doc";
 
 /** The Law place's own tabs, each with its number. */
 export function LawTabs({ r, on, counts }: { r: Route; on: Section; counts: LawCounts }) {
+  // "Your programs" (the Desk's ?programs=) carries between the two lists
+  // it narrows, so a tab's number is the list it opens.
+  const scoped: Record<string, string> = r.params.programs ? { programs: r.params.programs } : {};
   const tab = (id: Section, label: ComponentChildren) => (
     <a
-      href={buildHash({ ...r, view: "law", arg: id || null, params: {} })}
+      href={buildHash({ ...r, view: "law", arg: id || null, params: id === "departures" || id === "unverified" ? scoped : {} })}
       class={on === id ? "on" : undefined} aria-current={on === id ? "page" : undefined}
     >{label}</a>
   );
   return (
-    <nav class="tabs lawtabs" aria-label="Law">
+    <nav class="pagetabs lawtabs" aria-label="Law">
       {tab("", "Overview")}
       {tab("departures", <>Statute over rule <span class="n">{counts.departures}</span></>)}
       {tab("unverified", <>Unverified and missing <span class="n">{counts.citingUnverified + counts.noValue}</span></>)}
@@ -83,6 +88,12 @@ function Overview({ ctx, counts }: { ctx: ViewContext; counts: LawCounts }) {
       </HowCounted>
     </>
   );
+}
+
+/** The Desk's tile opens the list narrowed to the role's programs
+ *  (counts.ts `inPrograms`), with the way back to all of it. */
+function ScopeNote({ r, programs }: { r: Route; programs: readonly string[] | null }) {
+  return <KitScopeNote programs={programs} allHref={buildHash({ ...r, params: {} })} />;
 }
 
 // ---- statute over rule
@@ -147,25 +158,32 @@ function DepartureRow(
 function Departures({ ctx }: { ctx: ViewContext }) {
   const { engine, vol, route: r, today } = ctx;
   const program = r.params.program || null;
-  const inForce = departureItems(engine, { asOf: today, programs: program ? [program] : null });
+  const scope = programsParam(r.params.programs);
   const all = departureItems(engine, { asOf: today });
+  const scoped = scope ? departureItems(engine, { asOf: today, programs: scope }) : all;
+  const inForce = program ? scoped.filter((it) => it.program === program) : scoped;
   const ids = new Set(inForce.map((it) => it.id));
   const rows = departures(engine, vol.sources, (s) => excerptKind(s, vol.documents)).filter((d) => ids.has(d.item.id))
     .sort((a, b) => inForce.indexOf(a.item) - inForce.indexOf(b.item));
   const ready = useRestingReady(engine, vol);
-  const chip = (p: string | null, label: string, count: number) => (
-    <a
-      class={`chip${program === p ? " on" : ""}`} aria-current={program === p ? "true" : undefined}
-      href={buildHash({ ...r, params: p ? { program: p } : {} })}
-    >{label} <b>{count}</b></a>
-  );
+  const chip = (p: string | null, label: string, count: number) => {
+    const on = program === p && !(scope && !p);
+    return (
+      <a
+        class={`chip${on ? " on" : ""}`} aria-current={on ? "true" : undefined}
+        href={buildHash({ ...r, params: p ? { program: p } : {} })}
+      >{label} <b>{count}</b></a>
+    );
+  };
   return (
     <>
       <p class="lede">
         In these places a statute says something a Colorado rule, not yet amended, does not, and the codex follows the
         statute. Each is Legal's to decide.
       </p>
+      <ScopeNote r={r} programs={scope} />
       <p class="chips" aria-label="Program">
+        {scope && <span class="chip on" aria-current="true">Your programs <b>{scoped.length}</b></span>}
         {chip(null, "All", all.length)}
         {departuresByProgram(engine, today).map((x) => chip(x.program, programName(x.program), x.count))}
       </p>
@@ -207,11 +225,13 @@ function readersPhrase(n: number): string {
 function Unverified({ ctx }: { ctx: ViewContext }) {
   const { engine, vol, route: r, today } = ctx;
   const ready = useRestingReady(engine, vol);
-  const reach = unverifiedReach(engine, vol.sources, unverifiedIds(vol.sources), ready ? vol.cases : null);
-  const missing = figuresWithoutValue(engine, today);
+  const scope = programsParam(r.params.programs);
+  const reach = unverifiedReach(engine, vol.sources, unverifiedIds(vol.sources), ready ? vol.cases : null, scope);
+  const missing = figuresWithoutValue(engine, today).filter((it) => inPrograms(it, scope));
   const outcomes = reach.outcomes.map((o) => engine.item(o)).filter((it): it is Item => Boolean(it));
   return (
     <>
+      <ScopeNote r={r} programs={scope} />
       <section class="card insum">
         <h2>In short</h2>
         <p>
@@ -234,7 +254,7 @@ function Unverified({ ctx }: { ctx: ViewContext }) {
         const items = itemsCitingExcerpt(engine, s.id);
         return (
           <section class="card unvsource" key={s.id} data-excerpt={s.id}>
-            <h3><a href={excerptHref(r, s.id)}>{s.title}</a> <span class="flag unverified">Not a quotation</span> <small class="mono muted">{s.id}</small></h3>
+            <h3><a href={excerptHref(r, s.id)}>{s.title}</a> <UnverifiedBadge of="excerpt" /> <small class="mono muted">{s.id}</small></h3>
             <p class="small muted">{s.citation}</p>
             <p class="small">
               Its text could not be fetched from the document, so these figures were supplied by hand. Nothing resting
@@ -269,10 +289,9 @@ function Unverified({ ctx }: { ctx: ViewContext }) {
 
       <h2 id="households">Stored households that read them ({reach.households ? reach.households.length : "…"})</h2>
       {reach.households
-        ? <p class="hhlist">{reach.households.map((c, i) => {
-          const hc = vol.cases.find((x) => x.id === c);
-          return <span key={c}>{i > 0 && ", "}<a href={householdHref(r, c)} title={hc?.title}>{c}</a></span>;
-        })}</p>
+        ? <ul class="plain hhreadlist">{reach.households.map((c) => (
+          <li key={c}><HouseholdRef r={r} hc={vol.cases.find((x) => x.id === c)} id={c} max={80} /></li>
+        ))}</ul>
         : <p class="muted">Working out…</p>}
 
       <h2 id="missing">No value on {formatDate(today)} ({missing.length})</h2>
@@ -306,7 +325,8 @@ export function LawPage({ fetchText }: { fetchText?: FetchText } = {}) {
   const section = (["departures", "unverified", "sources", "doc"].includes(first) ? first : "") as Section;
   if (section === "doc" && second) return <LawDocumentPage ctx={ctx} id={second} fetchText={fetchText} />;
   if (section === "sources" && second) return <LawExcerptPage ctx={ctx} id={second} />;
-  const counts = lawCounts(engine, vol, unverifiedIds(vol.sources), today);
+  const scoped = section === "departures" || section === "unverified" ? programsParam(r.params.programs) : null;
+  const counts = lawCounts(engine, vol, unverifiedIds(vol.sources), today, scoped);
   return (
     <section class={`view place law${section ? ` law-${section}` : ""}`}>
       {section

@@ -25,6 +25,7 @@ import { alternativeEntry, alternativeFor, type Alternative, type ChangedResult,
 import { stagedAnswers, type StagedAnswer } from "../questionAnswer";
 import { buildHash, type Route } from "../router";
 import { changeSetSig, draftsShown } from "../state";
+import { Prose as KitProse, UnverifiedBadge } from "../kit";
 import { useRestingReady as useRestingReadyFor } from "../useResting";
 
 // ---- links
@@ -103,7 +104,7 @@ export function ExcerptLinks({ excerpts, r, max }: { excerpts: Source[]; r: Rout
         <span key={s.id}>
           {i > 0 && "; "}
           <a href={excerptHref(r, s.id)}>{s.title || s.citation}</a>
-          {isUnverified(s) && <> <span class="flag unverified">Unverified</span></>}
+          {isUnverified(s) && <> <UnverifiedBadge of="excerpt" /></>}
         </span>
       ))}
       {max && excerpts.length > max && <span class="muted"> and {excerpts.length - max} more</span>}
@@ -111,69 +112,18 @@ export function ExcerptLinks({ excerpts, r, max }: { excerpts: Source[]; r: Rout
   );
 }
 
-const PROSE_TOKEN = /`?\b([a-z][a-z0-9]*_[a-z0-9_]+)\b`?(?:'s)?(?:\s*\((CO-\d+)\))?|\b(CO-\d+)(?:-T\d+)?\b|\b(OQ-\d+)\b|\b(S\d+)\b|\b(D-\d+)\b/g;
-
 /** Ledger prose with every item, excerpt, question and document it names
- *  made a link, and an item's identifier read as its name. */
+ *  made a link, and an item's identifier read as its name: the shared
+ *  renderer (kit.tsx `Prose`). */
 export function Prose(
   { text, engine, vol, r, class: extra }:
   { text: string; engine: Engine; vol: LoadedVolume; r: Route; class?: string },
 ) {
-  const out: ComponentChildren[] = [];
-  let last = 0;
-  const sources = new Set(vol.sources.map((s) => s.id));
-  const docs = new Set(vol.documents.map((d) => d.id));
-  // The item the text named last: "x_y (CO-12, 2)" names it once, by name,
-  // and the id that follows stays a small id.
-  let named: string | null = null;
-  for (const m of text.matchAll(PROSE_TOKEN)) {
-    const at = m.index ?? 0;
-    const [whole, ident, identId, coId, oq, src, doc] = m;
-    let node: ComponentChildren = null;
-    if (ident) {
-      const it = engine.item(ident) ?? (identId ? engine.itemById(identId) : undefined);
-      if (it) node = <a class="ref" href={itemHref(r, it.id)} title={`${it.id} · ${it.identifier}`}>{it.name}</a>;
-      named = it?.id ?? null;
-    } else if (coId) {
-      const it = engine.itemById(coId);
-      if (it && it.id === named && /^\s*\($/.test(text.slice(last, at))) {
-        node = <a class="ref mono" href={itemHref(r, it.id)} title={it.name}><small>{it.id}</small></a>;
-      } else if (it) node = <a class="ref" href={itemHref(r, it.id)} title={it.id}>{it.name}</a>;
-      named = null;
-    } else if (oq) {
-      node = <a class="ref" href={qHref(r, oq)}>{oq}</a>;
-    } else if (src && sources.has(src)) {
-      node = <a class="ref" href={excerptHref(r, src)}>{src}</a>;
-    } else if (doc && docs.has(doc)) {
-      node = <a class="ref" href={docHref(r, doc)}>{doc}</a>;
-    }
-    if (!node) continue;
-    // The same item named twice in a row ("x (CO-1), x (CO-2)" for two items
-    // with one name) reads once (HCPF analyst, OQ-410's reading).
-    const between = text.slice(last, at);
-    const prev = out[out.length - 1] as { props?: { children?: unknown; class?: string } } | undefined;
-    const name = (node as { props?: { children?: unknown } }).props?.children;
-    if (typeof name === "string" && prev?.props?.children === name && /^\s*(?:,|and)?\s*$/.test(between)) {
-      last = at + whole.length;
-      continue;
-    }
-    if (at > last) out.push(between);
-    out.push(node);
-    last = at + whole.length;
-  }
-  if (last < text.length) out.push(text.slice(last));
-  return <span class={`prose${extra ? ` ${extra}` : ""}`}>{out}</span>;
+  return <KitProse text={text} engine={engine} vol={vol} r={r} class={extra} />;
 }
 
-/** "How this is counted": a definition kept out of the card body. */
-export function HowCounted({ children }: { children: ComponentChildren }) {
-  return (
-    <details class="howcounted">
-      <summary>How this is counted</summary>
-      <div class="muted">{children}</div>
-    </details>
-  );
-}
+/** "How this is counted": kit.tsx. */
+export { HowCounted } from "../kit";
 
 // ---- the questions as this browser sees them
 

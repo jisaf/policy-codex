@@ -32,14 +32,14 @@ import { firstSentence, programLabel } from "../roles";
 import { argParts, buildHash, isPrRef, type Route } from "../router";
 import { SendChange } from "../sendChange";
 import {
-  changeSetSig, discardFileChange, engineSig, prBaseVolumeSig, putChangeEntries, putFileChange,
+  changeSetSig, discardFileChange, engineSig, prBaseVolumeSig, putChangeEntries, putFileChange, route, volumeSig,
 } from "../state";
 import {
   ApprovalCard, chapterTitles, inboxRole, readSigner, saveRole, saveSigner,
 } from "../views/ApprovalCard";
 import { useRestingIndex } from "../useResting";
+import { Prose, UnverifiedBadge } from "../kit";
 import { viewContext } from "../views/context";
-import { plainMeaning } from "./ProgramsPage";
 import { NoLedger } from "../views/ViewStub";
 import "./desk.css";
 
@@ -160,7 +160,7 @@ export function SignPage() {
       </div>
 
       {mine.length > 1 && (
-        <nav class="tabs rolechips" aria-label="Your roles">
+        <nav class="chips rolechips" aria-label="Your roles">
           {mine.map((x) => (
             <a key={x} class={x === role ? "on" : ""} aria-current={x === role ? "page" : undefined} href={at({ params: { role: x } })}>
               {x} <b>{(awaitingByRole(base).get(x) ?? []).length.toLocaleString("en-US")}</b>
@@ -387,10 +387,10 @@ function SignItem(
           <span class="tag kind">{KIND_ONE[row.kind]}</span>
           {(it.open ?? []).length > 0 && <span class="tag qflag">Open question</span>}
           {row.override && <span class="flag override">Statute over rule</span>}
-          {row.restsOnUnverified && <span class="flag unverified">Unverified text</span>}{" "}
+          {row.restsOnUnverified && <UnverifiedBadge of="rests" />}{" "}
           <small class="mono muted">{it.id}</small>
         </p>
-        {it.meaning && <p class="si-m">{firstSentence(plainMeaning(it.meaning), 300)}</p>}
+        {it.meaning && <Prose engine={engine} vol={volumeSig.value} r={route.value} text={firstSentence(it.meaning, 300)} as="p" class="si-m" />}
         {it.kind === "parameter" && (
           <p class="small">
             Figure today: {noVersionReason(it, today) ?? (isTable ? <a href={href}>a table of {Object.keys(figure as object).length} rows</a> : <b>{formatValue(it, figure)}</b>)}

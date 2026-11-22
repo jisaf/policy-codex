@@ -16,6 +16,7 @@ import { programLabel } from "./roles";
 import {
   argParts, buildHash, householdTab, type HouseholdTab, type PlaceName, type Route, type ViewName,
 } from "./router";
+import { plainQuestionTitle } from "./questions";
 import { plainCaseTitle } from "./walkthrough";
 
 /** Whether the sidebar's drawer is open (phone width only; on a wider
@@ -94,6 +95,8 @@ export interface CrumbData {
   engine?: Pick<Engine, "itemById" | "item"> | null;
   cases?: readonly HouseholdCase[];
   documents?: readonly DocumentMeta[];
+  /** The open questions, so a question's crumb is its title. */
+  questions?: ReadonlyArray<{ id: string; title: string }>;
 }
 
 export const HOUSEHOLD_TAB_LABEL: Record<HouseholdTab, string> = {
@@ -141,7 +144,7 @@ export function crumbsFor(c: Route, data: CrumbData = {}): Crumb[] {
       if (!caseId) break;
       if (caseId === "new") { push("New household", null); break; }
       const hc = data.cases?.find((x) => x.id === caseId);
-      push(hc ? `${caseId}: ${shorten(plainCaseTitle(hc.title).title, 48)}` : caseId, { view: "households", arg: caseId });
+      push(hc ? shorten(plainCaseTitle(hc.title).title, 48) : caseId, { view: "households", arg: caseId });
       if (person) {
         push(personLabel(person), null);
         if (outcome) push(data.engine?.item(outcome)?.name ?? outcome, null);
@@ -150,9 +153,11 @@ export function crumbsFor(c: Route, data: CrumbData = {}): Crumb[] {
       }
       break;
     }
-    case "questions":
-      if (c.arg) push(c.arg, { view: "questions", arg: c.arg });
+    case "questions": {
+      const q = c.arg ? data.questions?.find((x) => x.id === c.arg) : undefined;
+      if (c.arg) push(q ? shorten(plainQuestionTitle(q.title), 56) : c.arg, { view: "questions", arg: c.arg });
       break;
+    }
     case "law":
       if (parts[0]) push(LAW_SECTION_LABEL[parts[0]] ?? parts[0], { view: "law", arg: parts[0] });
       if (parts[1]) {

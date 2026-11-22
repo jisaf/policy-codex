@@ -19,6 +19,7 @@ import { formatDate, formatFor, formatValue, personLabel } from "../present";
 import type { ChangedResult, StoredResult } from "../questionEffects";
 import { programLabel } from "../roles";
 import { useRestingIndex } from "../useResting";
+import { HowCounted as KitHowCounted } from "../kit";
 import { buildHash, type Route } from "../router";
 import { plainCaseTitle } from "../walkthrough";
 import { householdValues, outcomesByProgram, previousVersionComparison } from "./model";
@@ -39,12 +40,7 @@ function determinationHref(r: Route, res: StoredResult): string {
 }
 
 function HowCounted({ keys }: { keys: Array<keyof typeof COUNT_DEFINITIONS> }) {
-  return (
-    <details class="howcounted">
-      <summary>How this is counted</summary>
-      {keys.map((k) => <p key={k}>{COUNT_DEFINITIONS[k]}</p>)}
-    </details>
-  );
+  return <KitHowCounted>{keys.map((k) => <p key={k}>{COUNT_DEFINITIONS[k]}</p>)}</KitHowCounted>;
 }
 
 /** § 5: the value in each stored household that reads the item. */

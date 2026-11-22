@@ -10,8 +10,8 @@ import { loadVolume } from "../../src/tools/volumes";
 import { parseOpenQuestions } from "../../src/ledger/markdown";
 import { affectsPhrase, changedBy, householdsThatRead, itemAffects, restingIndex } from "../../src/ui/counts";
 import {
-  appendQuestion, applyFigureEdit, citedSources, figureGaps, figureTimeline, figureVersions, householdValues,
-  kindWords, markNumbers, nextQuestionId, numberNeedles, outcomesByProgram, parseFigure, previousVersionComparison,
+  appendQuestion, citedSources, figureGaps, figureTimeline, figureVersions, householdValues,
+  kindWords, markNumbers, nextQuestionId, numberNeedles, outcomesByProgram, previousVersionComparison,
   proseParts, proseText, versionSources,
 } from "../../src/ui/item/model";
 
@@ -109,20 +109,6 @@ describe("Marcus: the grant standard's versions and the freeze (CO-276)", () => 
       { program: "ColoradoWorks", decisions: ["cw_grant_amount"], verification: [] },
     ]);
   });
-
-  it("adds a dated version, closing the one before, and refuses one that changes nothing", () => {
-    const value = { ...(it276.versions![1].value as Record<string, number>), 0: 382 };
-    const out = applyFigureEdit(it276, { kind: "add", from: "2028-07-01", value, source: "S1800" });
-    expect("item" in out).toBe(true);
-    const vs = (out as { item: typeof it276 }).item.versions!;
-    expect(vs.map((v) => [v.from, v.to ?? null])).toEqual([
-      ["2025-07-01", "2026-07-01"], ["2026-07-01", "2028-07-01"], ["2028-07-01", null],
-    ]);
-    expect(applyFigureEdit(it276, { kind: "add", from: "2027-01-01", value: it276.versions![1].value })).toEqual({
-      error: "These are the figures already in force on that date: nothing would change.",
-    });
-    expect(applyFigureEdit(it276, { kind: "correct", from: "2026-07-01", value: it276.versions![1].value })).toHaveProperty("error");
-  });
 });
 
 describe("Dana: the children's Medicaid income limit against its rule text (CO-191)", () => {
@@ -162,13 +148,6 @@ describe("Dana: the children's Medicaid income limit against its rule text (CO-1
       expect(r.version?.value).toBe(r.values[0].value);
     }
     expect(rows.some((r) => r.values[0].value === 1.42)).toBe(true);
-  });
-
-  it("reads a figure typed as a percentage as a fraction", () => {
-    expect(parseFigure(it191, "145%")).toBe(1.45);
-    expect(parseFigure(it191, "145")).toBe(1.45);
-    expect(parseFigure({ type: "money" }, "$1,031")).toBe(1031);
-    expect(parseFigure({ type: "money" }, "abc")).toBeNull();
   });
 });
 

@@ -127,22 +127,14 @@ describe("ItemView", () => {
     expect(rail.querySelector("#ask h2")!.textContent).toBe("Ask a question");
   });
 
-  it("refuses a change to the meaning that changes nothing, and stages one that does", async () => {
+  it("'Propose a change' opens the one editor, My proposal with the item chosen (proposal.ts proposeHref)", () => {
     const host = show("WR-200");
-    (host.querySelector("#propose button.btn") as HTMLButtonElement).click();
-    await new Promise((r) => setTimeout(r, 0));
-    const form = host.querySelector("#propose form") as HTMLFormElement;
-    form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
-    await new Promise((r) => setTimeout(r, 0));
-    expect(host.querySelector("#propose .bad")!.textContent).toContain("nothing would change");
+    const link = host.querySelector("#propose a.btn") as HTMLAnchorElement;
+    expect(link.textContent).toBe("Change what it means");
+    expect(link.getAttribute("href")).toBe("#/mwr/changes/proposal?item=WR-200");
+    // No second editor in the rail.
+    expect(host.querySelector("#propose form")).toBeNull();
     expect(changeSetSig.value.entries).toHaveLength(0);
-    const ta = host.querySelector("#propose textarea") as HTMLTextAreaElement;
-    ta.value = "A new meaning.";
-    ta.dispatchEvent(new Event("input", { bubbles: true }));
-    await new Promise((r) => setTimeout(r, 0));
-    (host.querySelector("#propose form") as HTMLFormElement).dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
-    await new Promise((r) => setTimeout(r, 0));
-    expect(changeSetSig.value.entries.map((e) => [e.id, e.after?.meaning])).toEqual([["WR-200", "A new meaning."]]);
   });
 
   it("keeps tests, uses and the projection under For implementers", () => {

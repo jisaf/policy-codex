@@ -658,6 +658,23 @@ export function resolvedQuestions(engine: Engine, questions: readonly OpenQuesti
   return questionInfos(engine, questions).filter((q) => !isOpen(q.status));
 }
 
+// ---- a role's programs
+
+/** Whether an item is in a role's PROGRAMS: its program is one of them, or
+ *  it is shared by every program ("All"); every item when `programs` is
+ *  null. The one reading every Desk tile and the lists it links to use (the
+ *  Desk's statute-over-rule and unverified tiles, Law filtered to them,
+ *  "takes effect soon"). */
+export function inPrograms(it: Pick<Item, "program">, programs: readonly string[] | null): boolean {
+  return !programs || programs.includes(it.program) || it.program === "All";
+}
+
+/** A `?programs=` list from an address ("Medicaid,CHP"), or null. */
+export function programsParam(value: string | undefined): string[] | null {
+  const list = (value ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+  return list.length ? list : null;
+}
+
 // ---- Law: unverified sources and what rests on them
 
 /** The excerpts a document gives, in sources.md order. */
@@ -692,12 +709,13 @@ export interface UnverifiedReach {
  *  the Law page, its overview and the Desk tile. */
 export function unverifiedReach(
   engine: Engine, sources: readonly Source[], unverified: ReadonlySet<string>,
-  cases: readonly HouseholdCase[] | null = null,
+  cases: readonly HouseholdCase[] | null = null, programs: readonly string[] | null = null,
 ): UnverifiedReach {
-  const citing = itemsCitingUnverified(engine, unverified);
+  const citing = itemsCitingUnverified(engine, unverified).filter((it) => inPrograms(it, programs));
   const citingIds = new Set(citing.map((it) => it.identifier));
-  const resting = [...restingOnUnverified(engine, unverified)].filter((id) => !citingIds.has(id))
-    .map((id) => engine.item(id)).filter((it): it is Item => Boolean(it))
+  const resting = [...(programs ? new Set(engine.impact([...citingIds])) : restingOnUnverified(engine, unverified))]
+    .filter((id) => !citingIds.has(id))
+    .map((id) => engine.item(id)).filter((it): it is Item => Boolean(it) && inPrograms(it!, programs))
     .sort((a, b) => a.program.localeCompare(b.program) || a.name.localeCompare(b.name));
   const outcomes = [...new Set(citing.flatMap((it) => outcomesAffected(engine, it.identifier)))];
   let households: string[] | null = null;
@@ -705,7 +723,9 @@ export function unverifiedReach(
     const read = new Set(restingOn(engine, cases, [...citingIds]).map((r) => r.caseId));
     households = cases.filter((c) => read.has(c.id)).map((c) => c.id);
   }
-  return { sources: sources.filter((s) => unverified.has(s.id)), citing, resting, outcomes, households };
+  const cited = new Set(citing.flatMap((it) => citedUnverified(it, unverified)));
+  const shown = sources.filter((s) => unverified.has(s.id) && (!programs || cited.has(s.id)));
+  return { sources: shown, citing, resting, outcomes, households };
 }
 
 export interface LawCounts {
@@ -726,8 +746,20 @@ export interface LawCounts {
 /** Every number the Law place shows (its tabs and overview). */
 export function lawCounts(
   engine: Engine, vol: { sources: readonly Source[]; documents: readonly DocumentMeta[] },
-  unverified: ReadonlySet<string>, date: string,
+  unverified: ReadonlySet<string>, date: string, programs: readonly string[] | null = null,
 ): LawCounts {
+  if (programs) {
+    const reach = unverifiedReach(engine, vol.sources, unverified, null, programs);
+    return {
+      departures: departureItems(engine, { asOf: date, programs }).length,
+      unverifiedSources: reach.sources.length,
+      citingUnverified: reach.citing.length,
+      restingOnUnverified: reach.resting.length,
+      noValue: figuresWithoutValue(engine, date).filter((it) => inPrograms(it, programs)).length,
+      excerpts: vol.sources.length,
+      documents: vol.documents.length,
+    };
+  }
   const citing = itemsCitingUnverified(engine, unverified);
   return {
     departures: departureItems(engine, { asOf: date }).length,
@@ -798,13 +830,14 @@ export function departureSince(it: Pick<Item, "effective" | "statute_override">)
 }
 
 /** Every item that follows a statute over a Colorado rule, in `programs`
- *  (all when null) and in force on `asOf` (all dates when absent). */
+ *  (`inPrograms`: shared items included; all when null) and in force on
+ *  `asOf` (all dates when absent). */
 export function departureItems(
   engine: Engine, opts: { programs?: readonly string[] | null; asOf?: string } = {},
 ): Item[] {
   return engine.items().filter((it) => {
     if (!it.statute_override) return false;
-    if (opts.programs && !opts.programs.includes(it.program)) return false;
+    if (!inPrograms(it, opts.programs ?? null)) return false;
     if (opts.asOf) {
       const since = departureSince(it);
       if (since && since > opts.asOf) return false;
@@ -1268,8 +1301,8 @@ export function changesReadBy(
 export const DESK_DEFINITIONS = {
   signOff: "An item waits for your signature when the volume's approval policy needs one of your roles to sign it and that role has not. An item two of your roles must sign counts once.",
   soon: `Takes effect soon: a figure version, a rule or a rule document whose own date falls in the next ${NEW_VERSION_SOON_DAYS} days, in your programs or shared by every program.`,
-  departures: "Statute over rule: an item that follows a statute over the Colorado rule text, in force today.",
-  unverified: "Unverified: an item that cites an excerpt not verified against its document, or a figure with no value today (a household then gets \"cannot determine\").",
+  departures: "Statute over rule: an item that follows a statute over the Colorado rule text, in force today, in your programs or shared by every program.",
+  unverified: "Unverified: an item that cites an excerpt not verified against its document, or a figure with no value today (a household then gets \"cannot determine\"), in your programs or shared by every program.",
   proposal: "Your proposal: every edit, signature, answer and note staged in this browser and not yet sent.",
   steps: "A step is one rule the result is worked out from. \"The main steps\" are the rules the result reads directly; each level down adds the rules those read. Facts and figures are named inside the steps.",
   figures: "A figure is a number or table the rules read (a limit, a standard, a rate). Its value on a date is the version in force that day.",
@@ -1316,7 +1349,7 @@ export interface UnverifiedInPrograms {
 export function unverifiedInPrograms(
   engine: Engine, unverified: ReadonlySet<string>, programs: readonly string[] | null, date: string,
 ): UnverifiedInPrograms {
-  const mine = (it: Item) => !programs || programs.includes(it.program) || it.program === "All";
+  const mine = (it: Item) => inPrograms(it, programs);
   const citing = itemsCitingUnverified(engine, unverified).filter(mine);
   const noValue = figuresWithoutValue(engine, date).filter(mine);
   return { citing, noValue, total: new Set([...citing, ...noValue].map((it) => it.id)).size };

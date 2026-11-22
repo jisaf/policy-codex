@@ -2,6 +2,7 @@
  * the page with "Read it in the full document" (docs/design-unified-ui.md,
  * Item § 3), and for a figure the same excerpt beside each version with the
  * version's numbers marked (§ 4). */
+import { UnverifiedBadge } from "../kit";
 import { useSignal } from "@preact/signals";
 import type { LoadedVolume } from "../../ledger/load";
 import type { Source } from "../../ledger/markdown";
@@ -26,7 +27,7 @@ export function Excerpt(
         <p class="cite">
           <span class="tag excerpt-kind">{kind}</span>{" "}
           {citeLabel(s.citation)} <small class="refid">{s.id}</small>
-          {isUnverified(s) && <>{" "}<span class="flag unverified">Unverified: not a quotation</span></>}
+          {isUnverified(s) && <>{" "}<UnverifiedBadge of="excerpt" /></>}
         </p>
       </header>
       <blockquote class="words">

@@ -81,14 +81,7 @@ table.household .funding { font-size: 12px; }
 
 /* by role */
 .workflow .persona > h2 { margin-top: 8px; }
-ul.countcards { list-style: none; padding: 0; margin: 12px 0; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-.countcard { border: 1px solid var(--accent); border-radius: 6px; padding: 10px 12px; background: var(--panel); }
-.countcard > a { text-decoration: none; display: block; font-weight: 600; }
-.countcard > a:hover { text-decoration: underline; }
-.countcard .num { font-size: 24px; display: block; line-height: 1.1; }
 .countcard ul { list-style: none; padding: 0; margin: 6px 0 0; font-size: 13px; }
-.countcard small { display: block; margin-top: 2px; }
 .tip { background: var(--med); padding: 6px 10px; border-radius: 4px; }
 details.program { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin: 8px 0; }
 details.program > summary { font-size: 15px; }

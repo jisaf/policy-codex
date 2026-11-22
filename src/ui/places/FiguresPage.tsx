@@ -18,10 +18,11 @@ import { itemHref } from "../views/parts";
 import { NoLedger } from "../views/ViewStub";
 import { PlaceHeader } from "./PlaceHeader";
 import "./desk.css";
+import { UnverifiedBadge } from "../kit";
 
 const FLAGS = [
   { key: "soon", label: "New version soon" },
-  { key: "unverified", label: "Source not verified" },
+  { key: "unverified", label: "Unverified source" },
   { key: "novalue", label: "No value on this date" },
 ] as const;
 
@@ -118,7 +119,7 @@ export function FiguresPage() {
       <details class="howcounted">
         <summary>How this is counted</summary>
         <p>{DESK_DEFINITIONS.figures}</p>
-        <p>New version soon: one starts within {NEW_VERSION_SOON_DAYS} days after the date. Source not verified: the figure cites an excerpt not verified against its document. No value on this date: no version is in force then, so a household determined that day gets "cannot determine".</p>
+        <p>New version soon: one starts within {NEW_VERSION_SOON_DAYS} days after the date. Unverified source: the figure cites an excerpt not verified against its document. No value on this date: no version is in force then, so a household determined that day gets "cannot determine".</p>
       </details>
     </section>
   );
@@ -138,7 +139,7 @@ function FigureRow({ r, x, staged }: { r: Route; x: FigureOnDate; staged: boolea
     <tr class="figure" data-figure={it.identifier}>
       <td data-l="Figure">
         <a class="figname" href={href}>{it.name}</a>{" "}
-        {x.unverified.length > 0 && <span class="flag unverified">Source not verified</span>}
+        {x.unverified.length > 0 && <UnverifiedBadge />}
         {x.soon && <span class="tag soon">New version {formatDate(x.soon.from)}</span>}
         {staged && <a class="tag draft" href={buildHash({ ...r, view: "changes", arg: "proposal", params: {} })}>In your proposal</a>}
         <small class="mono muted"> {it.id}</small>

@@ -31,6 +31,7 @@ import { viewContext, type ViewContext } from "../views/context";
 import { NoLedger } from "../views/ViewStub";
 import { plainCaseTitle } from "../walkthrough";
 import { PlaceHeader } from "./PlaceHeader";
+import { Prose } from "../kit";
 import "./desk.css";
 
 const TABS = [
@@ -142,7 +143,7 @@ function ProgramPage({ ctx, c, program }: { ctx: ViewContext; c: Route; program:
           )}
         </p>
       </div>
-      <nav class="tabs programtabs" aria-label={`${programLabel(program)}: views`}>
+      <nav class="pagetabs programtabs" aria-label={`${programLabel(program)}: views`}>
         {TABS.map((t) => (
           <a
             key={t.id} class={tab === t.id ? "on" : ""} aria-current={tab === t.id ? "page" : undefined}
@@ -151,7 +152,7 @@ function ProgramPage({ ctx, c, program }: { ctx: ViewContext; c: Route; program:
         ))}
       </nav>
       {tab === "aid-codes"
-        ? (map ? <><PlaceholderBanner map={map} /><CodesTab ctx={ctx} map={map} /></> : <p class="status">This volume has no aid-code layer yet.</p>)
+        ? (map ? <><PlaceholderBanner map={map} /><CodesTab ctx={ctx} map={map} chips={false} /></> : <p class="status">This volume has no aid-code layer yet.</p>)
         : tab === "map"
           ? <MapView center={`program:${program}`} />
           : <Decides ctx={ctx} c={c} program={program} decisions={s.decisions} verification={s.verification} />}
@@ -175,12 +176,13 @@ function Decides(
   { ctx, c, program, decisions, verification }:
   { ctx: ViewContext; c: Route; program: string; decisions: Item[]; verification: Item[] },
 ) {
+  const { engine, vol } = ctx;
   const explain = (it: Item) => buildHash({ ...c, arg: `${program}/${it.identifier}`, params: {} });
   const row = (it: Item) => (
     <li key={it.id} class="outcomerow" data-outcome={it.identifier}>
       <div class="or-main">
         <a class="or-name" href={itemHref(c, it)}>{shortName(it.name, program)}</a>
-        <p class="or-m">{firstSentence(plainMeaning(it.meaning), 200)}</p>
+        <Prose engine={engine} vol={vol} r={c} text={firstSentence(it.meaning, 200)} as="p" class="or-m" />
         <p class="or-kind muted">{resultKind(it)}</p>
       </div>
       <a class="btn explain" href={explain(it)}>Explain step by step</a>
@@ -254,7 +256,7 @@ function Explain({ ctx, c, program, identifier }: { ctx: ViewContext; c: Route; 
       <div class="placehead" data-place="programs">
         <p class="eyebrow muted">{programLabel(program)} · step by step</p>
         <h1>{it.name}</h1>
-        <p class="purpose">{firstSentence(plainMeaning(it.meaning), 260)} <a href={itemHref(c, it)}>The rule's own page</a></p>
+        <p class="purpose"><Prose engine={engine} vol={vol} r={c} text={firstSentence(it.meaning, 260)} /> <a href={itemHref(c, it)}>The rule's own page</a></p>
       </div>
 
       <div class="explainbar no-print">
@@ -334,7 +336,7 @@ function Step(
       <div class="step-n">{result ? "Result" : `Step ${n}`}</div>
       <div class="step-b">
         <h3><a href={itemHref(c, item)}>{item.name}</a></h3>
-        {item.meaning && <p class="step-m">{firstSentence(plainMeaning(item.meaning), 260)}</p>}
+        {item.meaning && <Prose engine={engine} vol={vol} r={c} text={firstSentence(item.meaning, 260)} as="p" class="step-m" />}
         <RuleBox engine={engine} item={item} asOf={asOf} />
         {values && (
           <p class="step-v">

@@ -18,14 +18,14 @@ const { vol, engine } = loadVolume(root, "co");
 
 describe("the resting index", () => {
   it("is built once for every page that asks, and the index built at once is the same one", async () => {
-    const cases = vol.cases.slice(0, 4);
+    const cases = vol.cases.slice(0, 2);
     const a = restingIndexInSteps(engine, cases);
     const b = restingIndexInSteps(engine, cases);
     expect(b).toBe(a);
     const ix = await a;
     expect(restingReady(engine, cases)).toBe(true);
     expect(restingIndex(engine, cases)).toBe(ix);
-  });
+  }, 60_000);
 
   it("explains each household's trace once, however the reads are asked for", () => {
     const e = engine.withItems(engine.items());

@@ -1,0 +1,150 @@
+/* The design system's shared classes (docs/design-system.md). Loaded last
+ * (src/main.tsx), after every page's own stylesheet, so one rule decides how
+ * each shared object looks wherever it appears: page wrappers, headers,
+ * tabs, chips, cards and count tiles, "How this is counted", notes, ids and
+ * item references, and the status colours. A page's own stylesheet lays out
+ * what is particular to it; it does not restyle these. */
+
+:root {
+  /* Status colours, by meaning, never by place. Green only for a state that
+   * is done and good (approved, resolved, verified); never for a worse
+   * result, and never for "in your proposal" (pending, blue). */
+  --st-bad-bg: #fde6e6; --st-bad-line: #e0a0a0; --st-bad-ink: #7a1010;
+  --st-warn-bg: #fff4d6; --st-warn-line: #e3c470; --st-warn-ink: #6b4a00;
+  --st-ok-bg: #e3f1e7; --st-ok-line: #9cc9a8; --st-ok-ink: #1f6f3f;
+  --st-info-bg: #e3eef6; --st-info-line: #8fb6cc; --st-info-ink: #0b5d7a;
+  --st-draft-bg: #ffe2b8; --st-draft-line: #e3a040;
+  --radius: 6px;
+}
+
+/* ---- pages: every page sits on the page background, no outer box */
+.view.place, .view.itempage, .view.searchpage, .mapview[data-mode="page"] {
+  background: none; border: 0; padding: 0;
+}
+.view.itempage, .view.searchpage { max-width: 1240px; }
+
+/* ---- headers: a place opens with its name and one line of purpose; an
+ * object's page with a kicker (what it is), its plain name, then a meta
+ * line of badges with the id small and last. */
+.placehead h1, .itemhead h1, .qhead h1, .searchpage > h1, .mapview .viewhead h1 {
+  font-size: 22px; line-height: 1.25; margin: 4px 0 4px;
+}
+.placehead .eyebrow, .itemhead .eyebrow, .qhead .eyebrow, .placehead .kicker {
+  color: var(--muted); font-size: 13px; margin: 0;
+}
+.placehead .meta, .itemhead .badges, .qhead .qmeta {
+  display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; font-size: 12px; margin: 2px 0 8px;
+}
+
+/* ---- ids and item references: plain name first, the id small and last */
+small.idsmall, .idsmall {
+  font: 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); white-space: nowrap;
+}
+a.itemref, a.hhref { overflow-wrap: anywhere; }
+.prose a.refid { font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.hhrefs { overflow-wrap: anywhere; }
+.hhrefs details.more { display: inline; }
+.hhrefs details.more > summary { display: inline; cursor: pointer; color: var(--accent); margin-left: 4px; }
+.hhrefs details.more[open] > summary { margin-right: 6px; }
+.hhrefs .hl > a { background: var(--st-warn-bg); font-weight: 600; padding: 0 2px; border-radius: 2px; }
+
+/* ---- a page's own tabs: one look on every page (kit.tsx PageTabs) */
+nav.pagetabs {
+  display: flex; flex-wrap: wrap; gap: 0 2px; margin: 8px 0 14px; border-bottom: 2px solid var(--line);
+}
+nav.pagetabs a, nav.pagetabs button {
+  padding: 7px 12px; margin-bottom: -2px; border: 0; border-bottom: 3px solid transparent; border-radius: 4px 4px 0 0;
+  background: none; text-decoration: none; color: var(--ink); font: inherit; font-weight: 500; cursor: pointer;
+}
+nav.pagetabs a:hover, nav.pagetabs button:hover { background: var(--med); }
+nav.pagetabs a.on, nav.pagetabs button.on { border-bottom-color: var(--accent); color: var(--accent); font-weight: 600; background: none; }
+nav.pagetabs .n { color: var(--muted); font-size: 12px; margin-left: 3px; font-weight: 400; }
+
+/* ---- chips: a filter or a jump among several (one on at a time) */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.chip, a.chip, button.chip, .chips .chip, .chips > a, .chips > button {
+  display: inline-block; padding: 3px 10px; border: 1px solid var(--line); border-radius: 99px; background: var(--panel);
+  text-decoration: none; color: var(--ink); font: inherit; font-size: 13px; cursor: pointer;
+}
+.chip:hover, .chips .chip:hover, .chips > a:hover, .chips > button:hover { border-color: var(--accent); }
+.chip.on, a.chip.on, button.chip.on, .chips .chip.on, .chips > a.on, .chips > button.on, .chips > [aria-current] {
+  background: var(--med); border-color: var(--accent); color: var(--ink); font-weight: 600;
+}
+
+/* ---- cards and count tiles */
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin: 0 0 12px; }
+.card > h2 { font-size: 17px; margin: 0 0 8px; }
+.card > h3 { font-size: 15px; margin: 0 0 6px; }
+/* A number that opens its list: the Desk's tiles and Law's overview. */
+ul.countcards, ul.desktiles {
+  list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+.countcard, .desktiles .tile {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+  display: flex; flex-direction: column; gap: 4px; min-width: 0;
+}
+.countcard:hover, .desktiles .tile:hover { border-color: var(--accent); }
+.countcard > a, .desktiles .tile > a { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; font-weight: 600; }
+.countcard > a:hover, .desktiles .tile > a:hover .label { text-decoration: underline; }
+.countcard .num, .desktiles .tile .num {
+  font-size: 28px; font-weight: 700; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.desktiles .tile.zero .num { color: var(--muted); }
+.countcard small, .desktiles .tilesub { display: block; margin: 0; font-size: 12px; color: var(--muted); }
+
+/* ---- "How this is counted": a definition behind a small disclosure */
+details.howcounted { margin: 6px 0 10px; font-size: 13px; color: var(--muted); max-width: 90ch; }
+details.howcounted > summary { cursor: pointer; color: var(--accent); width: max-content; max-width: 100%; }
+details.howcounted p { margin: 4px 0; max-width: 80ch; }
+details.howcounted dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 8px 0 0; }
+details.howcounted dt { font-weight: 600; color: var(--ink); }
+details.howcounted dd { margin: 0; }
+
+/* ---- notes: a list narrowed, an overlay counted, a notice */
+.scopenote, .overlaynote {
+  margin: 6px 0 10px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--st-info-bg);
+  border-radius: 0 4px 4px 0; font-size: 13px; max-width: 90ch;
+}
+
+/* ---- badges: one word and one colour per state, on every page */
+.tag, .flag { display: inline-block; padding: 1px 6px; border-radius: 10px; font-size: 12px; line-height: 1.5; border: 1px solid var(--line); background: var(--all); }
+.flag.override, .flag.blocks, .flag.postdated, .tag.qstatus-open, li.took .tag.fed {
+  background: var(--st-bad-bg); border-color: var(--st-bad-line); color: var(--st-bad-ink);
+}
+.flag.unverified, .tag.qstatus-partly, .tag.qflag, .itemhead a.qtag {
+  background: var(--st-warn-bg); border-color: var(--st-warn-line); color: var(--st-warn-ink);
+}
+.tag.qstatus-resolved, .tag.status-approved {
+  background: var(--st-ok-bg); border-color: var(--st-ok-line); color: var(--st-ok-ink);
+}
+/* "In your proposal" is pending: blue, never green. */
+.tag.staged, .tag.qstaged-tag, .tag.soon {
+  background: var(--st-info-bg); border-color: var(--st-info-line); color: var(--st-info-ink);
+}
+.tag.draft { background: var(--st-draft-bg); border-color: var(--st-draft-line); }
+.proposal-pill.has { background: var(--st-info-bg); color: var(--st-info-ink); border-color: var(--st-info-line); }
+.qstaged, .sendchange { background: var(--st-info-bg); border-color: var(--st-info-line); }
+.you { color: var(--ink); font-weight: 600; }
+li.signitem.on { border-color: var(--accent); background: var(--st-info-bg); }
+li.signitem.staged { background: var(--st-info-bg); }
+
+/* ---- empty states: a short sentence, muted, with the next step linked */
+.empty, p.empty { color: var(--muted); }
+
+/* ---- phone: count tiles two to a row (one on the narrowest screens) */
+@media (max-width: 700px) {
+  ul.countcards, ul.desktiles { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 340px) {
+  ul.countcards, ul.desktiles { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  nav.pagetabs a, nav.pagetabs button { padding: 6px 8px; }
+  details.howcounted dl { grid-template-columns: 1fr; }
+  details.howcounted dt { margin-top: 6px; }
+}
+
+@media print {
+  details.howcounted, .scopenote, .overlaynote { display: none !important; }
+}

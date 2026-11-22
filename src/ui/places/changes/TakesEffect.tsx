@@ -24,7 +24,7 @@ import { plainCaseTitle } from "../../walkthrough";
 import { withPreviousFigure } from "../../proposal";
 import { noVersionReason } from "../../Present";
 import { type ViewContext } from "../../views/context";
-import { ItemLink } from "../../views/parts";
+import { householdName, HouseholdRefs, ItemRef } from "../../kit";
 import { ChangedTable, householdHref } from "./ChangedTable";
 
 export function shiftMonth(month: string, by: number): string {
@@ -114,7 +114,7 @@ export function TakesEffect({ ctx }: { ctx: ViewContext }) {
           Only what household{" "}
           <select value={hh} onChange={(e) => set({ hh: (e.target as HTMLSelectElement).value })}>
             <option value="">any</option>
-            {vol.cases.map((c) => <option key={c.id} value={c.id}>{c.id}: {shortTitle(c)}</option>)}
+            {vol.cases.map((c) => <option key={c.id} value={c.id}>{shortTitle(c)} ({c.id})</option>)}
           </select>
           {" "}reads
         </label>
@@ -169,26 +169,17 @@ function monthHref(r: Route, month: string, thisMonth: string): string {
 }
 
 function shortTitle(c: HouseholdCase): string {
-  const t = plainCaseTitle(c.title).title;
-  return t.length > 48 ? `${t.slice(0, 47).replace(/\s+\S*$/, "")}…` : t;
+  return householdName(c, 48);
 }
 
 function Readers({ r, cases, ids, hh }: { r: Route; cases: readonly HouseholdCase[]; ids: string[] | null; hh: string }) {
   if (ids === null) return <p class="readers muted">Working out which stored households read it…</p>;
   if (!ids.length) return <p class="readers muted">No stored household reads it.</p>;
-  const byId = new Map(cases.map((c) => [c.id, c]));
-  const first = ids.slice(0, 10);
   return (
-    <p class="readers">
+    <div class="readers">
       Read by {ids.length} stored household{ids.length === 1 ? "" : "s"}:{" "}
-      {first.map((id, i) => (
-        <span key={id}>
-          {i > 0 && ", "}
-          <a href={householdHref(r, id)} title={byId.get(id)?.title} class={id === hh ? "hl" : ""}>{id}</a>
-        </span>
-      ))}
-      {ids.length > first.length && <> and {ids.length - first.length} more</>}
-    </p>
+      <HouseholdRefs r={r} ids={ids} cases={cases} mark={hh || undefined} />
+    </div>
   );
 }
 
@@ -234,7 +225,7 @@ function ChangeRow({ ctx, e, readers, hh }: { ctx: ViewContext; e: ChangeEvent; 
       <div class="tookhead">
         <span class="date">{formatDate(e.date)}</span>
         <span class="tag">{KIND_TEXT[e.kind]}</span>
-        <span class="name"><ItemLink route={r} item={e.item} /></span>
+        <span class="name"><ItemRef r={r} item={e.item} /></span>
         <span class="tag">{programLabel(e.item.program)}</span>
         {e.item.statute_override && <span class="tag fed">Federal law over the Colorado rule</span>}
       </div>

@@ -28,7 +28,7 @@ export function ChangesPage() {
   return (
     <section class="view place changes">
       <PlaceHeader place="changes" />
-      <nav class="tabs changetabs" aria-label="Changes">
+      <nav class="pagetabs changetabs" aria-label="Changes">
         {SECTIONS.map((s) => (
           <a
             key={s.label} class={section === s.arg ? "on" : ""} aria-current={section === s.arg ? "page" : undefined}

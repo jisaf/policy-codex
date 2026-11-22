@@ -332,6 +332,21 @@ describe("the page", () => {
     expect(host.querySelectorAll(".mcomplexity li").length).toBe(24);
   });
 
+  it("'Awaiting approval' is a count with a note, not a ring on every box, while most boxes await a signature", () => {
+    route.value = { ...defaultRoute(), volume: "co", view: "map", arg: null, params: { center: "CO-191", overlays: "approval" } };
+    const host = document.createElement("div");
+    render(<MapPage />, host);
+    const note = host.querySelector('.overlaynote[data-overlay="approval"]')!;
+    expect(note.textContent).toMatch(/\d+ of the \d+ boxes shown are waiting for a signature/);
+    expect(host.querySelector(".mapview")!.classList.contains("overlaying")).toBe(false);
+    expect(host.querySelectorAll(".mnode.flagged").length).toBe(0);
+    // Another overlay still rings what it singles out.
+    route.value = { ...route.value, params: { center: "CO-191", overlays: "approval,questions" } };
+    render(<MapPage />, host);
+    expect(host.querySelector(".mapview")!.classList.contains("overlaying")).toBe(true);
+    expect(host.querySelectorAll(".mnode.flagged .tag.draft").length).toBe(0);
+  });
+
   it("embeds with its own state, and links to the standalone page", () => {
     route.value = { ...defaultRoute(), volume: "co", view: "item", arg: CW_GRANT, params: {} };
     const host = document.createElement("div");

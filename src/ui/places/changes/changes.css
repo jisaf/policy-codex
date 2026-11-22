@@ -1,13 +1,8 @@
 /* Changes: what takes effect, My proposal, Edits to the codex. Uses the
  * tokens of styles.css. A new value is bold, never green or red. */
 
-.changes .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; margin: 0 0 12px; }
-.changes .card h2 { font-size: 17px; margin: 0 0 8px; }
 .changes .card h3 { font-size: 14px; margin: 12px 0 4px; }
 .changes .small { font-size: 12px; }
-.changes details.howcounted { font-size: 13px; margin: 4px 0 10px; }
-.changes details.howcounted summary { cursor: pointer; color: var(--accent); width: fit-content; }
-.changes details.howcounted p { margin: 4px 0; max-width: 75ch; color: var(--muted); }
 
 /* What takes effect */
 .takeseffect .monthpick { gap: 8px 12px; }
@@ -22,7 +17,6 @@ ul.tooklist li.took { background: var(--panel); border: 1px solid var(--line); b
 li.took .tookhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 li.took .tookhead .name { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
 li.took .tookhead .name small { font-weight: 400; }
-li.took .tag.fed { background: #fde6e6; border-color: #e0a0a0; color: #7a1010; }
 li.took .fromto { margin: 4px 0; font-size: 14px; }
 li.took .readers { margin: 4px 0; font-size: 13px; }
 li.took .readers a.hl { background: #fff1c7; font-weight: 600; padding: 0 2px; border-radius: 2px; }

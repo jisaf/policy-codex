@@ -173,7 +173,7 @@ export function SearchBox() {
 export function Breadcrumbs() {
   const c = canonicalRoute(route.value);
   const vol = volumeSig.value;
-  const crumbs = crumbsFor(c, { engine: viewEngine() ?? engineSig.value, cases: vol?.cases, documents: vol?.documents });
+  const crumbs = crumbsFor(c, { engine: viewEngine() ?? engineSig.value, cases: vol?.cases, documents: vol?.documents, questions: vol?.openQuestions });
   if (!crumbs.length) return null;
   return (
     <nav class="crumbs" aria-label="You are here">

@@ -14,7 +14,6 @@ import {
 } from "../../src/ui/roles";
 import { noVersionReason } from "../../src/ui/Present";
 import { changedBy, departureItems } from "../../src/ui/counts";
-import { documentsTakingEffect, undoEntry } from "../../src/ui/views/RolesView";
 
 const root = path.resolve(__dirname, "../..");
 const { vol, engine } = loadVolume(root, "co");
@@ -128,19 +127,3 @@ describe("a staged change", () => {
     for (const c of changes) expect(c.before).not.toEqual(c.after);
   });
 });
-
-describe("what changed: the helpers Changes reads", () => {
-  it("what changed lists rule text taking effect, and works out who a new figure changes", () => {
-    const docs = documentsTakingEffect(engine, vol.documents, vol.sources, ["LEAP"], "2026-11-01", "2026-11-22");
-    expect(docs.map((d) => d.doc.id)).toContain("D-173");
-    const events = changesBetween(engine, rolePrograms(engine, persona("cdhs")), "2025-10-01", "2026-10-31")
-      .filter((e) => e.kind === "new figure" && e.previous && JSON.stringify(e.previous.value) !== JSON.stringify(e.version!.value));
-    expect(events.length).toBeGreaterThan(0);
-    const e = events[0];
-    const entry = undoEntry(e, vol.chapterOf[e.item.id])!;
-    expect(entry.after!.versions!.find((v) => v.from === e.version!.from)!.value).toEqual(e.previous!.value);
-    // Each changed result is one the stored cases really give differently.
-    for (const c of changedBy(engine, vol.cases, [entry]).slice(0, 5)) expect(JSON.stringify(c.value)).not.toBe(JSON.stringify(c.after));
-  });
-});
-
