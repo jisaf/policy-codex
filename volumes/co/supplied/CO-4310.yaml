@@ -1,0 +1,13 @@
+id: CO-4310
+name: "Combat zone pay received"
+identifier: combat_zone_pay_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Additional pay the person received in the month as a member of the United States Armed Forces deployed to a designated combat zone, paid because of the deployment (hostile fire or imminent danger pay, for example) and not received immediately before the deployment."
+precision: "Part of wages_gross for the month, not added to it; uniformed_services_special_pay_received is part of it while the person is so deployed. If not stated, SNAP reads it as 0."
+supplied_by: "Leave and earnings statement; deployment orders."
+sources: [S3109]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: 4.405.2.A.12 (S3109) excludes combat pay for the duration of the deployment; no fact stated it for SNAP (uniformed_services_special_pay_received covers 37 U.S.C. 310 pay only)."

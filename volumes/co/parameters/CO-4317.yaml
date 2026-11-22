@@ -1,0 +1,13 @@
+id: CO-4317
+name: "SNAP charitable cash quarterly limit"
+identifier: snap_charitable_cash_quarterly_limit
+kind: parameter
+type: money
+scope: global
+program: SNAP
+meaning: "The need-based cash donations from private nonprofit charitable organizations SNAP excludes in a fiscal quarter, in the aggregate: $300 (10 CCR 2506-1 4.405.2.A.10)."
+versions:
+  - {from: "2000-01-01", value: 300, source: S3109}
+sources: [S3109]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: the charitable cash exclusion had no item. The figure is in the rule (P.L. 100-232) and is not indexed."

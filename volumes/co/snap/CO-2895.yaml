@@ -5,11 +5,13 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: "The person's medical expenses for the SNAP excess medical deduction (7 CFR 273.9(d)(3), S87, S91): out-of-pocket medical expenses and health insurance premiums the person pays."
-derived: [+, medical_expenses_out_of_pocket, health_insurance_premiums_paid]
-sources: [S87, S91]
+meaning: "The person's medical expenses for the SNAP excess medical deduction (7 CFR 273.9(d)(3), S87, S91): out-of-pocket medical expenses and health insurance premiums the person pays, plus, when the person's household furnishes the majority of the meals of the person's attendant (furnishes_majority_of_attendant_meals, CO-4334), the maximum allotment for one person in effect at the time of certification (10 CCR 2506-1 4.407.6.A.8; 273.9(d)(3)(x))."
+precision: "Coverage review snap-financial CF-6: the meal allowance is the one-person row of snap_maximum_allotment_table in force on the date of application (snap_application_date), the certification the allowance is fixed at until the next certification (S3116, S3117); a recertification states its own application date and so takes the then-current figure. The attendant's wages are part of medical_expenses_out_of_pocket."
+derived: [+, medical_expenses_out_of_pocket, health_insurance_premiums_paid, [case, [[otherwise, furnishes_majority_of_attendant_meals, false], [lookup, [as_of, snap_maximum_allotment_table, snap_application_date], 1]], [else, 0]]]
+sources: [S87, S91, S3116, S3117]
 implemented: engine
 tags: [snap, income]
 rationale: "Same-word audit SW-34: premiums are stated once (CO-835); SNAP counts them with the other medical expenses, so this item adds the two."
 tests:
   - {id: CO-2895-T1, title: "Prescriptions 80 and Medicare Part B 185", month: "2026-10", as_of: "2026-10-01", given: {medical_expenses_out_of_pocket: 80, health_insurance_premiums_paid: 185}, expect: 265}
+  - {id: CO-2895-T3, title: "CF-6: $100 of medical costs, and the household feeds the attendant: 100 + 306 (the one-person maximum from October 1, 2026)", month: "2027-02", as_of: "2027-02-10", given: {medical_expenses_out_of_pocket: 100, health_insurance_premiums_paid: 0, furnishes_majority_of_attendant_meals: true, snap_application_date: "2026-11-02"}, expect: 406}

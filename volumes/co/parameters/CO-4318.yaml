@@ -1,0 +1,13 @@
+id: CO-4318
+name: "SNAP WIOA on-the-job training exclusion age limit"
+identifier: snap_wioa_ojt_exclusion_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: SNAP
+meaning: "The age under which a member's WIOA on-the-job training earnings are excluded when the member is under the parental control of an adult household member: 19 (10 CCR 2506-1 4.405.2.A.6, 4.403.B.2)."
+versions:
+  - {from: "2000-01-01", value: 19, source: S3108}
+sources: [S3108]
+tags: [snap, income, age]
+rationale: "Coverage review snap-financial CF-1: the under-19 exclusion had no item."

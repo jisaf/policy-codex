@@ -1,0 +1,13 @@
+id: CO-4332
+name: "Periodic unearned income received"
+identifier: periodic_unearned_income_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's unearned income for the month that is a payment of the income periodic_unearned_income_frequency (CO-4330) describes."
+precision: "Part of the gross unearned income facts that name the source, not added to them. If not stated, SNAP reads it as 0."
+supplied_by: "The payer's statements."
+sources: [S3112]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-3: to count the converted amount in every month instead of the payment in the month received, SNAP subtracts the month's payment from the unearned income facts."

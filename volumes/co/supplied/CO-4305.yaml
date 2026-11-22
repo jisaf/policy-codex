@@ -1,0 +1,13 @@
+id: CO-4305
+name: "Overpayment recoupment withheld"
+identifier: overpayment_recoupment_withheld
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The amount withheld in the month, voluntarily or involuntarily, from the person's unearned income from a source to repay a prior overpayment the person received from that same source: a Social Security, unemployment insurance, pension or public assistance benefit reduced to recover its own overpayment, for example."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (the gross amount before the withholding), not added to it. An overpayment of wages that the employer recovers from later pay is stated as the wages paid (wages_gross). garnishment_repaying_federal_assistance_overpayment (CO-3605), which Medical Assistance reads, states a garnishment to repay a federal assistance program from any income; where the two describe the same withholding the case states both. If not stated, SNAP reads it as 0."
+supplied_by: "The benefit award or payment notice showing the amount withheld."
+sources: [S3102]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: 4.405.D.1 (S3102) counts only the net income received when an overpayment is recouped from the same source; garnishment_repaying_federal_assistance_overpayment covers federal assistance only, so a recouped unemployment or pension overpayment was counted gross."

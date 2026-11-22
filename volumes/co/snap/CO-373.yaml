@@ -6,8 +6,9 @@ type: money
 scope: person-month
 program: SNAP
 meaning: "The deduction of snap_earned_income_deduction_rate of this person's SNAP household's earned income (including the prorated or full earned share attributed from any ineligible or disqualified member), to compensate for taxes, other mandatory salary deductions, and work expenses."
+precision: "Coverage review snap-financial CF-18: 10 CCR 2506-1 4.407.2.B (S3127) withholds the deduction from income earned under a work supplementation or work support program that is attributable to a public assistance program. Colorado's work supplementation program, C.R.S. 26-2-111.3, is repealed (D-59), so no Colorado wages are of that kind and no item applies the paragraph; 4.407.2.B's second sentence (an inadvertent household error claim computed without the deduction) concerns overpayment claims, outside this volume."
 derived: ["*", snap_household_earned_income_for_deduction, snap_earned_income_deduction_rate]
-sources: [S86, S90, S95, S107]
+sources: [S86, S90, S95, S107, S3127]
 implemented: engine
 tags: [income]
 rationale: 7 U.S.C. 2014(e)(2)(B) (S86), 7 CFR 273.9(d)(2) (S90), and 10 CCR 2506-1 4.407.2,A and 4.411.1,B,2,c (S95, S107) require the 20% earned income deduction on the full earned-income base, including a disqualified member's attributed share; no existing item multiplies snap_household_earned_income_for_deduction by snap_earned_income_deduction_rate.

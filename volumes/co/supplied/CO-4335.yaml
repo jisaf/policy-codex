@@ -1,0 +1,13 @@
+id: CO-4335
+name: "Real property for sale value"
+identifier: real_property_for_sale_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of real_property_other_than_home_equity (CO-3393) in real property the person is making a good faith effort to sell at a reasonable price, has not sold, and will sell on a reasonable offer."
+precision: "Part of real_property_other_than_home_equity, not added to it; equity value, as of the determination date. If not stated, SNAP reads it as 0."
+supplied_by: "Listing agreement or advertisement; applicant statement."
+sources: [S2968]
+tags: [snap, resources]
+rationale: "Coverage review snap-financial CF-7: 4.410.F.1 (S2968) treats real property the household is trying to sell as inaccessible; SNAP counted it."

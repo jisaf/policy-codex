@@ -1,0 +1,14 @@
+id: CO-4330
+name: "Periodic unearned income frequency"
+identifier: periodic_unearned_income_frequency
+kind: supplied
+type: one of
+options: [every_other_month, quarterly, twice_a_year, annual]
+scope: person
+program: All
+meaning: "How often the person receives an unearned income that is paid less often than monthly (every other month, every quarter, twice a year or once a year): quarterly dividends or annual royalties, for example."
+precision: "One such income per person; a person with none states nothing. If not stated, SNAP reads the person's unearned income as received."
+supplied_by: "Applicant statement; the payer's statements."
+sources: [S3112]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-3: 4.402.A.2 (S3112) converts income received every other month, quarterly, twice a year or annually to a monthly amount; the unearned income facts state each month's receipts only."

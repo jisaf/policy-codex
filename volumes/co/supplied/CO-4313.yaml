@@ -1,0 +1,13 @@
+id: CO-4313
+name: "Military pay education deductions"
+identifier: military_pay_education_deductions
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "Amounts deducted from the person's military pay for the month, mandatorily, for education purposes while the person is enlisted."
+precision: "Part of wages_gross (stated before amounts withheld), not added to it. If not stated, SNAP reads it as 0."
+supplied_by: "Leave and earnings statement."
+sources: [S3109]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-1: 4.405.2.A.13 (S3109) excludes these deductions; no fact stated them."

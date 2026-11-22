@@ -1,0 +1,13 @@
+id: CO-4320
+name: "Rental income received"
+identifier: rental_income_received
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of other_unearned_income_taxable (CO-1714) for the month that is rent from real property the person owns and rents out but does not actively manage."
+precision: "Part of other_unearned_income_taxable, not added to it; the gross rent, before the costs of producing it (rental_property_costs, CO-4321). Rent from property the person actively manages is self-employment receipts (self_employment_gross_receipts). SNAP's line is an average of twenty hours a week of management (10 CCR 2506-1 4.403.E.1): rent from property managed fewer hours is stated here. If not stated, SNAP reads it as 0."
+supplied_by: "Lease; rent receipts; Schedule E."
+sources: [S3111]
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-2: 4.404.D (S3111) counts passive rental income net of the cost of doing business; the rent was in other_unearned_income_taxable gross with no part fact, and its costs had no fact."

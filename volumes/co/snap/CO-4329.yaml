@@ -1,0 +1,20 @@
+id: CO-4329
+name: "SNAP: self-employment income is averaged"
+identifier: snap_self_employment_is_averaged
+kind: derived
+type: yes/no
+scope: person
+program: SNAP
+meaning: "SNAP averages this person's self-employment income over the months snap_self_employment_averaging_months (CO-4349) gives, instead of counting each month's receipts and costs (10 CCR 2506-1 4.402.2.A.1, 4.403.12.A, C, D): the enterprise is the household's annual support (self_employment_is_annual_support, CO-4327), its business has not changed substantially (self_employment_has_changed_substantially, CO-4342), and it was operating before the month of application (self_employment_start_date, CO-4328)."
+precision: "An enterprise whose business has changed substantially is counted on anticipated earnings (4.403.12.A, C), and one that began in the month of application has no past months to average, so for both the month's figures, which are the anticipated amounts, are read. Self-employment that is only part of the year's support (4.403.12.B) is not averaged here; the case states each self-employment month already averaged over the season (CO-4327's precision). Averaging does not apply to a migrant household destitute of income (4.402.2.A, last paragraph), whose month of application counts only the income received before the application date (snap_is_destitute_application_month, CO-4168), which the self-employment receipts of that month then state."
+derived: [all, [otherwise, self_employment_is_annual_support, false], [not, [otherwise, self_employment_has_changed_substantially, false]], [not, [otherwise, is_destitute_migrant_or_seasonal_farmworker, false]], [any, [unknown, self_employment_start_date], ["<", [month_of, self_employment_start_date], [month_of, snap_application_date]]]]
+sources: [S3113, S3114]
+implemented: engine
+tags: [snap, income]
+rationale: "Coverage review snap-financial CF-3: SNAP counted each month's self-employment receipts, so a farmer paid in one month had all the year's income in that month and none in the others, though 4.402.2.A.1 (S3113) and 4.403.12 (S3114) annualize it."
+tests:
+  - {id: CO-4329-T1, title: "A farm that supports the household all year, operating for years", as_of: "2026-11-10", given: {self_employment_is_annual_support: true, snap_application_date: "2026-11-02"}, expect: true}
+  - {id: CO-4329-T2, title: "Self-employment that is only part support: not averaged here", as_of: "2026-11-10", given: {self_employment_is_annual_support: false, snap_application_date: "2026-11-02"}, expect: false}
+  - {id: CO-4329-T3, title: "A substantial change in business: anticipated earnings", as_of: "2026-11-10", given: {self_employment_is_annual_support: true, self_employment_has_changed_substantially: true, snap_application_date: "2026-11-02"}, expect: false}
+  - {id: CO-4329-T4, title: "An enterprise that began in the month of application", as_of: "2026-11-10", given: {self_employment_is_annual_support: true, self_employment_start_date: "2026-11-01", snap_application_date: "2026-11-02"}, expect: false}
+  - {id: CO-4329-T5, title: "No self-employment stated", as_of: "2026-11-10", given: {}, expect: false}

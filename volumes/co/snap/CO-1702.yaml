@@ -5,10 +5,10 @@ kind: derived
 type: money
 scope: person-month
 program: SNAP
-meaning: "The person's monthly net self-employment income for SNAP under 7 CFR 273.9(b)(1)(ii), 273.11(a)(2) and 10 CCR 2506-1 4.403.11: gross receipts less the allowable costs of producing it, not below zero."
-precision: "Capital gains from the sale of business equipment are counted in full under 273.11(a)(3); state them in the gross receipts. A farm loss is offset against the household's other income by snap_farm_self_employment_loss (CO-3722), snap_farm_loss_offset_against_self_employment (CO-3724) and snap_farm_loss_remaining (CO-3725) (final verification F-8; 273.11(a)(2)(ii)). A person with no gross receipts has none, whatever the cost fact says."
-derived: [case, [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, snap_self_employment_costs]]]]
-sources: [S1152, S1153]
+meaning: "The person's monthly net self-employment income for SNAP under 7 CFR 273.9(b)(1)(ii), 273.11(a)(2) and 10 CCR 2506-1 4.403.11: gross receipts less the allowable costs of producing it, not below zero; for self-employment that is the household's annual support (snap_self_employment_is_averaged, CO-4329), the net of the averaging months (snap_self_employment_averaging_months, CO-4349) divided by their number (10 CCR 2506-1 4.402.2.A.1, 4.403.11.A, 4.403.12)."
+precision: "Capital gains from the sale of business equipment are counted in full under 273.11(a)(3); state them in the gross receipts. A farm loss is offset against the household's other income by snap_farm_self_employment_loss (CO-3722), snap_farm_loss_offset_against_self_employment (CO-3724) and snap_farm_loss_remaining (CO-3725) (final verification F-8; 273.11(a)(2)(ii)). A person with no gross receipts has none, whatever the cost fact says. Coverage review snap-financial CF-3: an enterprise that is the household's annual support is averaged over its past twelve months, or the months since it began (4.403.12.A, C, D; S3114), each month's receipts and costs read for that month; an averaged net loss gives 0 here, and a farmer's averaged loss is offset by CO-3722. Self-employment that is part support is read month by month, as stated (CO-4327)."
+derived: [case, [snap_self_employment_is_averaged, [max, 0, [avg, ["-", self_employment_gross_receipts, snap_self_employment_costs], snap_self_employment_averaging_months]]], [["<=", self_employment_gross_receipts, 0], 0], [else, [max, 0, ["-", self_employment_gross_receipts, snap_self_employment_costs]]]]
+sources: [S1152, S1153, S3113, S3114]
 implemented: engine
 tags: [snap, income]
 rationale: "Vocabulary fix round (docs/reviews/vocabulary-reuse.md, R-1): gives self-employment this program's own reading; before, the program read one shared net figure, or none."
@@ -16,3 +16,5 @@ tests:
   - {id: CO-1702-T1, as_of: "2026-10-01", month: "2026-10", given: {self_employment_gross_receipts: 1500, snap_self_employment_costs: 400}, expect: 1100}
   - {id: CO-1702-T2, as_of: "2026-10-01", month: "2026-10", title: "No self-employment - costs not read", given: {self_employment_gross_receipts: 0}, expect: 0}
   - {id: CO-1702-T3, as_of: "2026-10-01", month: "2026-10", title: "Costs above receipts", given: {self_employment_gross_receipts: 300, snap_self_employment_costs: 450}, expect: 0}
+  - {id: CO-1702-T5, title: "CF-3: a farm that supports the household all year, paid $12,000 in September and nothing in October: averaged over the two months given, $6,000 in each", month: "2026-10", as_of: "2026-11-10", given: {snap_self_employment_is_averaged: true, snap_self_employment_averaging_months: ["2026-09", "2026-10"], self_employment_gross_receipts: {"2026-09": 12000, "2026-10": 0}, snap_self_employment_costs: {"2026-09": 0, "2026-10": 0}}, expect: 6000}
+  - {id: CO-1702-T6, title: "CF-3: not averaged, the month's receipts", month: "2026-10", as_of: "2026-11-10", given: {snap_self_employment_is_averaged: false, self_employment_gross_receipts: 0, snap_self_employment_costs: 0}, expect: 0}

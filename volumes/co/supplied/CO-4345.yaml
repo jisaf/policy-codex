@@ -1,0 +1,13 @@
+id: CO-4345
+name: "Other continuing shelter charges"
+identifier: shelter_other_continuing_charges
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the continuing charges for the person's dwelling, other than those shelter_cost_monthly (CO-035) states, billed to or paid by this person in the month: condominium and association fees; payments, interest included, on a loan to buy a mobile home; payments on a second mortgage, home equity loan or other loan secured by a lien on the home; continuing monthly repayments of money drawn on a reverse mortgage; and the unreimbursed cost of repairing or rebuilding the home after a natural disaster substantially damaged or destroyed it."
+precision: "Not part of shelter_cost_monthly; added to it by the programs that count these charges. If not stated, SNAP reads it as 0."
+supplied_by: "Association statements, loan statements, repair invoices."
+sources: [S3126]
+tags: [snap, household]
+rationale: "Coverage review snap-financial CF-15: 4.407.3.E.1-3 (S3126) allow these charges as shelter costs; shelter_cost_monthly names only rent or mortgage, property tax and home insurance, a meaning other programs also read, so the other charges are their own fact."
