@@ -1,0 +1,14 @@
+id: CO-4506
+name: "Value of in-kind pay received for work"
+identifier: in_kind_compensation_value
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The value, as the person declares it, of the goods, services or housing the person received in the month in place of cash in exchange for work done as an employee (for example rent-free housing for managing a building)."
+precision: "Not part of wages_gross (CO-023), which states cash pay, and not added to it by any program that does not count it. Hours of in-kind work are unpaid_or_in_kind_work_hours (CO-1915); this fact states their value. If not stated, every program reads it as 0."
+supplied_by: "The person's declaration of the value of what was provided."
+sources: [S3305]
+tags: [income]
+rationale: "Coverage review C-12: 9 CCR 2503-7 3.752.22.C.4 (S3305) counts in-kind income received in exchange for employment as earned income at \"the declared value of the item or service provided\". wages_gross states cash wages and CO-1915 states hours, not value, so LEAP counted none. The fact states the receipt, program-neutrally (convention rule 13); each program's earned income item decides whether it counts it."
+nearest: [CO-1915]
