@@ -26,6 +26,7 @@ import { OutcomesView } from "./views/OutcomesView";
 import { QuestionsView } from "./views/QuestionsView";
 import { RolesView } from "./views/RolesView";
 import { WalkthroughView } from "./views/WalkthroughView";
+import { MapPage } from "./map/MapView";
 
 function ViewSlot() {
   const r = route.value;
@@ -43,6 +44,7 @@ function ViewSlot() {
   if (r.view === "walkthrough") return <WalkthroughView />;
   if (r.view === "roles") return <RolesView />;
   if (r.view === "outcomes") return <OutcomesView />;
+  if (r.view === "map") return <MapPage />;
   return <SearchView />;
 }
 

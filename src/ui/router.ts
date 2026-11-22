@@ -4,7 +4,9 @@ export type ViewName =
   | "start" | "table" | "graph" | "cases" | "program" | "item" | "source" | "documents"
   | "document" | "search" | "handoff"
   // Phase 13 workflow views (src/ui/views/registry.ts).
-  | "inbox" | "questions" | "walkthrough" | "roles" | "outcomes";
+  | "inbox" | "questions" | "walkthrough" | "roles" | "outcomes"
+  // The focused Map (src/ui/map).
+  | "map";
 
 export interface Route {
   volume: string;
@@ -17,7 +19,7 @@ export interface Route {
 
 export const VIEWS: ViewName[] = [
   "start", "table", "graph", "cases", "program", "item", "source", "documents", "document",
-  "search", "handoff", "inbox", "questions", "walkthrough", "roles", "outcomes",
+  "search", "handoff", "inbox", "questions", "walkthrough", "roles", "outcomes", "map",
 ];
 
 export function defaultRoute(): Route {
