@@ -1279,7 +1279,7 @@
       cw_verification_status: {"2026-10": not_applicable}
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
-      af_pending_verification_count: {"2026-10": 2}
+      af_pending_verification_count: {"2026-10": 3}   # final cash review 2, N-2: was 2 (residency, p1's own resources); + 1 for the spouse p2's resources other than cash (has_resources_other_than_cash, no resource document, no SSI), which 3.520.72.A counts against p1's limit and D requires verified = 3
       af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
       af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
       af_disaster_assistance_payment: {"2026-10": 0}
@@ -1450,7 +1450,7 @@
       cw_verification_status: {"2026-10": not_applicable}
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
-      af_pending_verification_count: {"2026-10": 2}
+      af_pending_verification_count: {"2026-10": 3}   # final cash review 2, N-2: was 2 (residency, p2's own resources); + 1 for the spouse p1's resources other than cash (has_resources_other_than_cash, no resource document, no SSI), which 3.520.72.A counts against p2's limit and D requires verified = 3
       af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
       af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
       af_disaster_assistance_payment: {"2026-10": 0}
