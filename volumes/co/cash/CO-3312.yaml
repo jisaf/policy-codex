@@ -1,0 +1,18 @@
+id: CO-3312
+name: "Burial assistance: legally responsible persons"
+identifier: af_burial_legally_responsible_persons
+kind: derived
+type: group of persons
+scope: person
+program: AdultFinancial
+meaning: "The persons of the case who are the decedent's legally responsible persons (9 CCR 2503-5 3.570.42; for a Colorado Works death reimbursement, 9 CCR 2503-6 3.606.7.F.2.b-c): the decedent's spouse (a spouse edge, or the surviving spouse of a decedent), or, where the decedent is an unemancipated minor under af_burial_responsible_parent_age_limit, the decedent's legal parents."
+precision: "Evaluated for the decedent. Responsible persons who are not persons of the case are stated on the decedent (CO-1226's fallback facts, CO-3314 and CO-3315). The definition's further condition, that the person bears legal responsibility for the charges, is read as met by a spouse or a minor's parent."
+derived: [filter, [persons], [any, [otherwise, [rel, [spouse, deceased_spouse_of], [P]], false], [all, ["<", age, af_burial_responsible_parent_age_limit], [not, [otherwise, is_emancipated_minor, false]], [otherwise, [rel, [child], [P]], false]]]]
+sources: [S722, S1007]
+implemented: engine
+tags: [cash, household]
+rationale: "Dual-entry audit 1.9: the resources of the decedent's spouse or parents, and whether they are a couple, were entered on the decedent, restating the decedent's spouse and parent relationships. The legally responsible persons are now read from the relationships (3.570.42, S722) and their own countable resources; only responsible persons outside the case are stated."
+tests:
+  - {id: CO-3312-T1, title: "A widow is the deceased husband's responsible person", as_of: "2026-11-01", given: {date_of_birth: "1948-01-01"}, others: {p2: {}}, relationships: [[deceased_spouse_of, p2]], expect: [p2]}
+  - {id: CO-3312-T2, title: "Both parents of a deceased 10-year-old", as_of: "2026-11-01", given: {date_of_birth: "2016-05-01", is_emancipated_minor: false}, others: {p2: {}, p3: {}}, relationships: [[child, p2], [child, p3]], expect: [p2, p3]}
+  - {id: CO-3312-T3, title: "The parent of an adult decedent is not responsible", as_of: "2026-11-01", given: {date_of_birth: "1990-05-01"}, others: {p2: {}}, relationships: [[child, p2]], expect: []}

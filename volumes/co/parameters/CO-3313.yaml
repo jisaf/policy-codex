@@ -1,0 +1,13 @@
+id: CO-3313
+name: "Burial assistance: age limit for a parent's responsibility"
+identifier: af_burial_responsible_parent_age_limit
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "A decedent's parent is a legally responsible person when the decedent is an unemancipated minor under this age (9 CCR 2503-5 3.570.42: 'an unemancipated minor who is under the age of eighteen')."
+value: 18
+sources: [S722]
+implemented: engine
+tags: [cash]
+rationale: "Dual-entry audit 1.9: af_burial_legally_responsible_persons (CO-3312) reads the age the definition states; a figure is a parameter, not a literal (OQ-82)."

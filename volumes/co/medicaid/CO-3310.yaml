@@ -1,0 +1,19 @@
+id: CO-3310
+name: "Medicaid LTC: requirement not met before the transfer penalty"
+identifier: ma_ltc_unmet_requirement
+kind: derived
+type: one of
+options: [none, not_institutionalized_or_waiver, ineligible_residency, not_aged_blind_or_disabled, ineligible_status, ineligible_income, ineligible_resources, home_equity_exceeds_limit, ineligible_level_of_care]
+scope: person-month
+program: Medicaid
+meaning: "The first Long-Term Care requirement, in ma_ltc_eligibility_status's order, the person does not meet before the transfer-of-assets penalty is considered - institutionalized or in a waiver or PACE, residency, aged, blind or disabled, citizenship or immigration status, the special income group, the resource standard, home equity, level of care - or none when the person meets them all; with none, the person is eligible for Long-Term Care apart from any transfer penalty and the requested setting."
+precision: "The same arms, in the same order, as the first eight of ma_ltc_eligibility_status (CO-652), which reads this item: separating them changes no status."
+derived: [case, [[not, [any, ma_is_institutionalized, [not, ["=", meets_hcbs_waiver_target_group, none]], ["=", [otherwise, ma_ltc_setting_requested, none], pace]]], not_institutionalized_or_waiver], [[not, ma_meets_residency], ineligible_residency], [[not, ma_is_aged_blind_or_disabled], not_aged_blind_or_disabled], [[not, [any, ma_meets_citizenship_requirement, [all, ma_is_cover_all_coloradans_person, [not, ["=", meets_hcbs_waiver_target_group, none]]]]], ineligible_status], [[not, ma_meets_special_income_group], ineligible_income], [[not, ma_meets_ltc_resource_standard], ineligible_resources], [ma_home_equity_disqualifies, home_equity_exceeds_limit], [[not, [any, meets_nursing_facility_level_of_care, [all, [not, ["=", meets_hcbs_waiver_target_group, none]], ma_meets_designated_waiver_level_of_care]]], ineligible_level_of_care], [else, none]]
+sources: [S354, S1507]
+implemented: engine
+tags: [ma, ltc]
+rationale: "Dual-entry audit 1.7: § 8.100.7.F.8.a apportions a transfer penalty when the individual's spouse 'becomes institutionalized and is otherwise eligible for Medical Assistance'. 'Otherwise eligible' is eligibility apart from the penalty, which the rule determines after the other requirements (§ 8.100.7.F follows the financial and categorical tests); ma_ltc_eligibility_status reads the penalty, so the spouse's eligibility apart from it needs its own item for the apportionment to be derived without a cycle."
+tests:
+  - {id: CO-3310-T1, month: "2026-10", as_of: "2026-10-01", given: {ma_is_institutionalized: true, meets_hcbs_waiver_target_group: none, ma_meets_residency: true, ma_is_aged_blind_or_disabled: true, ma_meets_citizenship_requirement: true, ma_meets_special_income_group: true, ma_meets_ltc_resource_standard: true, ma_home_equity_disqualifies: false, meets_nursing_facility_level_of_care: true}, expect: none}
+  - {id: CO-3310-T2, month: "2026-10", as_of: "2026-10-01", given: {ma_is_institutionalized: true, meets_hcbs_waiver_target_group: none, ma_meets_residency: true, ma_is_aged_blind_or_disabled: true, ma_meets_citizenship_requirement: true, ma_meets_special_income_group: false, ma_meets_ltc_resource_standard: true}, expect: ineligible_income}
+  - {id: CO-3310-T3, month: "2026-10", as_of: "2026-10-01", given: {ma_is_institutionalized: false, meets_hcbs_waiver_target_group: none, ma_ltc_setting_requested: institutional}, expect: not_institutionalized_or_waiver}

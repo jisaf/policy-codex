@@ -6,6 +6,7 @@ type: whole number
 scope: person
 program: Medicaid
 meaning: "The months remaining in the spouse's share of an apportioned period of ineligibility that are assigned to this person because the spouse died or is no longer institutionalized (10 CCR 2505-10 § 8.100.7.F.8.b), or 0."
+precision: "Stays supplied (dual-entry audit 1.7): the months remaining in the spouse's share depend on the months the spouse already served, a penalty history the case does not state. 0 when no months were reassigned."
 supplied_by: The Eligibility Site's transfer-of-assets penalty determination (CBMS).
 sources: [S1507]
 tags: [ma, ltc, legal]

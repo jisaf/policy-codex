@@ -154,6 +154,8 @@ relationship_roles:
   - {id: stepparent, inverse: stepchild, label: "the spouse of the child's parent who is not the child's legal parent"}
   - {id: stepchild, inverse: stepparent, label: "the child of one's spouse who is not one's own legal child"}
   - {id: spouse, inverse: spouse, label: "legally married to"}
+  - {id: surviving_spouse_of, inverse: deceased_spouse_of, label: "was legally married to the other person when the other person died (a widow or widower); not a spouse: is_married does not read it"}
+  - {id: deceased_spouse_of, inverse: surviving_spouse_of, label: "was legally married to the other person at this person's death"}
   - {id: holds_out_as_spouse_with, inverse: holds_out_as_spouse_with, label: "living together, free to marry, and representing themselves to others as spouses, but not legally married"}
   - {id: grandparent, inverse: grandchild}
   - {id: grandchild, inverse: grandparent}

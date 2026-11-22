@@ -1,0 +1,14 @@
+id: CO-3311
+name: "Medicaid: spouse outside the case is institutionalized and otherwise eligible"
+identifier: ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "The person's spouse, who is not a person of this case, has become institutionalized and is otherwise eligible for Medical Assistance, as the Eligibility Site found on the spouse's own case (10 CCR 2505-10 § 8.100.7.F.8.a). Stated only where the spouse is not a person of the case; a spouse in the case is read from the spouse's own facts."
+precision: "If not stated, Medicaid reads this as false."
+supplied_by: "The spouse's Medical Assistance case record (CBMS)."
+sources: [S1507]
+implemented: engine
+tags: [ma, ltc]
+rationale: "Dual-entry audit 1.7: the apportionment (CO-2232) is derived from the spouse's own institutionalization and eligibility when the spouse is a person of the case; a spouse on another case is a finding made outside this case, a record (convention rule 13 (i))."

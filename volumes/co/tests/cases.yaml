@@ -82,7 +82,6 @@
         lost_ssi_due_to_social_security_benefits: false
         nighttime_residence_type: institution
         receives_snap: false  # audit fix round (H-1): the household applies for SNAP on 2026-10-01; no one receives it yet
-        ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         # Dual-entry audit 1.2: the corrected MMMNA leaves the community spouse short (see the expectations),
         # so the increased CSRA of 8.100.7.S applies: the allowance is not refused, and the lowest of the three
@@ -2151,7 +2150,6 @@
         lost_ssi_due_to_social_security_benefits: false
         nighttime_residence_type: institution
         receives_snap: false  # audit fix round (H-1): in a nursing facility, outside the SNAP household
-        ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         # Dual-entry audit 1.2: the corrected MMMNA leaves the community spouse short (see the expectations),
         # so the increased CSRA of 8.100.7.S applies: the allowance is not refused, and the lowest of the three
@@ -5063,7 +5061,6 @@
       facts:
         has_qualifying_military_service: false
         receives_va_non_service_connected_pension: false
-        ma_transfer_penalty_is_apportioned_with_spouse: false  # needs-fact round (OQ-94): the spouse is at home
         ma_transfer_penalty_months_assigned_from_spouse: 0
         ma_is_in_buy_in_program: false  # needs-fact round (OQ-127)
         date_of_birth: "1952-04-18"
@@ -6572,6 +6569,7 @@
   relationships:
     - [parent, p3, p4]
     - [buys_prepares_with, p1, p2]   # states p1's relationships (none is a spouse, so she is unmarried for is_married)
+    - [surviving_spouse_of, p1, p2]  # dual-entry 1.9: Ruth is Walter's widow, his legally responsible person (3.570.42); not a spouse edge
   persons:
     p1:
       facts:
@@ -6629,8 +6627,9 @@
         burial_plot_cost_excluded_from_limit: 600
         burial_insurance_proceeds: 300
         decedent_estate_value: 200
-        burial_responsible_person_resources: 1000
-        burial_responsible_persons_are_couple: false
+        # dual-entry 1.9: the widow's resources are read from Ruth (p1, ssi_countable_resources_individual 1,000) as
+        # Walter's legally responsible person (surviving_spouse_of edge), one person, so the individual limit; was
+        # burial_responsible_person_resources 1000 and burial_responsible_persons_are_couple false stated here.
     p3:
       facts:
         is_member_of_federally_recognized_tribe: false
