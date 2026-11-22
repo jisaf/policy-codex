@@ -94,7 +94,7 @@ Legend: **C** = carried by (derivation read against the text; a mismatch is a fi
 | I.1-3 a caretaker temporarily away (military, medical treatment, under 45 days with intent to return) | C: CO-3354 ("less than" 45, CO-3355) |
 | J tribal members | OQ-772 |
 | K refugees, CRSP referral and assessment | C: the status part through CO-905. K.1-3 are N/A (case management) |
-| L.1 fleeing felons | C: CO-928 and CO-2351 (size), CO-2561; person-level status: **CW2-5** |
+| L.1 fleeing felons | C: CO-928 and CO-2351 (size), CO-2561; CO-921 ineligible_disqualified, read by CO-1511 (CW2-5 fixed) |
 | L.2 a unit with an adult on strike | C: CO-3808 in CO-921 |
 | L.3 five-year bar | C: CO-905 |
 | M disqualified members leave the size; income counted without disregards; the month counts toward 60 | C: CO-2351, CO-910 and CO-923 (OQ-490: A.6 governs status and SSN), CO-840 (supplied count); OQ-143 |
@@ -109,8 +109,8 @@ Legend: **C** = carried by (derivation read against the text; a mismatch is a fi
 | N.2.a not in a caretaker's home: approval, unless emancipated, not single, or living with an adult relative | C: CO-906 |
 | N.2.b emancipated or married: not in a caretaker's home | C: CO-4352 |
 | N.2.c assisted as an adult | C: CO-4352 in CO-926, CO-927, CO-924, CO-916, CO-3808 |
-| N.3.a unrelated non-parent caretaker who does not join: approval required | **GAP, CW2-1 (P1)** |
-| N.3.b unrelated caretaker who joins: county option | C in part: county_approved_living_arrangement CO-845 is supplied; the county option is unrecorded (CW2-1 fix) |
+| N.3.a unrelated non-parent caretaker who does not join: approval required | C: CO-906 (an unrelated caretaker counts only as a member of her unit; otherwise county_approved_living_arrangement), case CO-190 (CW2-1 fixed) |
+| N.3.b unrelated caretaker who joins: county option | C: CO-906 (accepted without approval); the county option is OQ-830 |
 | N.3.c living with her parent needs no approval | C: CO-906 |
 | N.3.d a dependent child of a caretaker is assisted as a child | C: CO-900, CO-4352 (not assisted as an adult when in a caretaker's home) |
 | O.1 out of State up to 90 consecutive days | C: CO-904 ("at most" 90), CO-2351 and CO-2561 ("more than" 90) |
@@ -170,8 +170,8 @@ Legend: **C** = carried by (derivation read against the text; a mismatch is a fi
 | A.2 availability; received means legally available | C: fact convention (R-1, gross received in the month) |
 | A.3.a-b securing potential income | N/A: procedure |
 | A.3.c-d refusal: income considered as if available | C: CO-4362 in CO-908 and CO-2554 |
-| A.4.a stepparent: gross earned − $90 − maintenance and support paid − payments to tax dependents outside + unearned − needs | C: CO-2353 (OQ-102 for "needs"); P3-2 |
-| A.4.a non-participant parent of an unmarried minor parent in the same home: the same formula | C: CO-909 (the deemed set is right); the needs deduction CO-2000 is **CW2-2 (P1)** |
+| A.4.a stepparent: gross earned − $90 − maintenance and support paid − payments to tax dependents outside + unearned − needs | C: CO-2353 (OQ-102 for "needs"; his excluded children in the home only, P3-2 fixed) |
+| A.4.a non-participant parent of an unmarried minor parent in the same home: the same formula | C: CO-909 and CO-2000 both read cw_minor_parent_deemed_parents (CO-4660); case CO-191 (CW2-2 fixed) |
 | A.4.b parents in the same home attributed | C: CO-909 |
 | A.5.a sponsor and sponsor's spouse deemed | C: CO-2365 (sponsors and non-cosigning spouses) |
 | A.5.b net income: gross earned − lesser of 20% or $175 − support to dependents outside + unearned; rebuttal | C: CO-2365 (rate 0.2, cap 175), CO-2361 in CO-2364 |
@@ -211,7 +211,7 @@ Legend: **C** = carried by (derivation read against the text; a mismatch is a fi
 | A preamble: any gain or benefit not earned | C: CO-908 and CO-2554 sum every unearned fact |
 | A.1, A.3, A.7, A.9-10, A.12-13, A.15-20 | C: CO-908 components (pension, Social Security, unemployment, other unearned taxable and nontaxable, interest); loans: bona fide loans are exempt (B.1, CO-2341 loan_proceeds_received); inheritances count as other unearned |
 | A.2 rent above expenses | C: CO-4364 in CO-4369 |
-| A.4 VA educational assistance above school expenses | **CW2-4 (P2)** |
+| A.4 VA educational assistance above school expenses | C: CO-2341 (school_attendance_conditional_benefits_received CO-4661 above school_attendance_expenses_paid CO-4662 counts; CW2-4 fixed) |
 | A.5-6 insurance and injury proceeds above last-illness, burial or medical costs | C: CO-4365 in CO-4369 |
 | A.8 jointly owned property | C: fact convention (the person's share) |
 | A.11 stepparent and sponsor attributable income | C: CO-2353, CO-2365 |
@@ -316,7 +316,7 @@ Legend: **C** = carried by (derivation read against the text; a mismatch is a fi
 | C.1-17, D items and arrangements | N/A: authorization detail |
 | F.1 application and choice of disposition | N/A |
 | F.2.a-b family preference; estate and responsible persons | C: CO-1508 |
-| F.2.c responsible person's resources over $2,000 or $3,000; voluntary contributions | C: af_burial_responsible_person_excess_resources and CO-4373 in CO-1508; OQ-354 (P3-1) |
+| F.2.c responsible person's resources over $2,000 or $3,000; voluntary contributions | C: af_burial_responsible_person_excess_resources and CO-4373 in CO-1508; OQ-354 (P3-1 fixed) |
 | F.2.d prepaid plot of $2,000 or less excluded from the charges | C: burial_plot_cost_excluded_from_limit |
 | F.2.e SS lump-sum death benefit not used | C: not read (correct) |
 | F.2.f insurance to beneficiaries reduces | C: burial_insurance_proceeds; order OQ-354 |
@@ -349,7 +349,7 @@ Legend: **C** = carried by (derivation read against the text; a mismatch is a fi
 | 3.608.3 re-engagement and good cause | N/A: county findings in the sanction level |
 | 3.608.4.A sanctions follow county moves | C: work_sanction_level_served CO-1261 (supplied) |
 | B other States' sanctions not recognized | C: CO-1261's meaning |
-| C.1 $1 first level; 25% second and third, one month each | C: CO-1262, CO-1263, CO-1265; the base in a prorated month is **CW2-3 (P2)** |
+| C.1 $1 first level; 25% second and third, one month each | C: CO-1262, CO-1263, CO-1265 (the partial payment in a prorated month, OQ-831; CW2-3) |
 | C.2 fourth level: 100%, closed one month | C: CO-1265 and CO-921 sanction_closure |
 | D-E serving; a break of one month serves it; the next level | C: CO-1261 (supplied level) |
 | F one level per case, the highest | C: CO-1264 |
@@ -437,3 +437,19 @@ Built in a scratch copy of HEAD 65ed7c8 (`git archive HEAD`). Cases were appende
 | ZR-1 | CW-1 | CO-160 + diversion POI | ineligible_diversion_period | same |
 | ZR-2 | CW-9 | CO-160 + $2,000 prize | countable $2,000, ineligible_income | same |
 | ZR-3 | CW-10 | CO-160 + $1,500 from 2 boarders | countable $798, ineligible_income | same |
+
+## Disposition (coverage pass 2)
+
+Fix round on HEAD 4f6a741, commit c99d7c5 (branch of the fix worktree). I re-read 9 CCR 2503-6 3.604.2.N.1-N.3, 3.605.1.A.4.a, 3.605.3.A.4, 3.605.4.B.26, 3.608.4.C-D and 3.609.2.A.1.e in D-81, and 9 CCR 2503-5 3.520.71.F.2 in D-80, before each change. The probes ZQ-1 and ZQ-2 were rebuilt from `cw2tools/mk.py` and are now stored cases with hand derivations.
+
+| finding | disposition |
+|---|---|
+| CW2-1 (P1) | **Fixed** (c99d7c5). CO-906 accepts an unrelated caretaker only when the caretaker is a member of her assistance unit; a relative (is_related_to) or her parent needs no approval, as before. Otherwise county_approved_living_arrangement decides (N.3.a, new excerpt S3450). The N.3.b county option is OQ-830 (state policy choice, Checked line). Tests CO-906-T8 to T10. Case CO-190 (ZQ-1): p1 and p2 ineligible_living_arrangement, $0 (was eligible, $238). |
+| CW2-2 (P1) | **Fixed** (c99d7c5). New cw_minor_parent_deemed_parents (CO-4660): her parents not in her unit and living in the same home. CO-909 reads it, and CO-2000 counts those parents (One or Two Caretakers) and her siblings in the home who are their children and not in her unit. Tests CO-4660-T1 to T3, CO-2000-T4 and T5. OQ-102 gets a note. Case CO-191 (ZQ-2): needs 253, deemed 600 − 90 − 253 = 257 ≥ 245, ineligible_income (was 357, 153, eligible, $137). |
+| CW2-3 (P2) | **Fixed with an open question** (c99d7c5). CO-1265 takes the 25% of the partial-month payment (grant × cw_partial_month_payment_factor, which is 1 outside the initial month). C.1 measures the 25% against the unit's "grant payment", and A.1.e deducts from the partial-month grant. The base is recorded as OQ-831 (state policy choice, Checked line). Test CO-1265-T5: $488, 11 days, 488 × .36164 × .25 = 44.12, so the grant is $132 instead of $54. |
+| CW2-4 (P2) | **Fixed** (c99d7c5). A.4 is the specific rule for VA and other attendance-conditional benefits, and B.26 still exempts grants, loans, stipends and scholarships. New neutral facts school_attendance_conditional_benefits_received (CO-4661, part of educational_assistance_received) and school_attendance_expenses_paid (CO-4662) both read 0 when not stated. CO-2341 excludes educational assistance less the excess of the first over the second. New excerpt S3451. Tests CO-2341-T5 and T6. No stored household states either fact. |
+| CW2-5 (P2) | **Fixed** (c99d7c5). CO-921 has a new branch after the status check: cw_is_disqualified_member (CO-928) gives `ineligible_disqualified`. It is a person-level result, so the rest of the unit is unaffected (CO-2351 and CO-2561 already handle size and grant). It has an aid-code label. CO-1511 now bars Adult Financial for ineligible_disqualified and closed_demonstrable_evidence, as it does for sanction_closure. 3.520.71.F.2.a (S1011) reads: "Due to a sanction, demonstrable evidence, or disqualification". CO-919 is unchanged: a disqualified parent living with an aided child stays work-eligible through cw_caretaker_of. Tests CO-921-T23 to T25, CO-1511-T6. |
+| P3-1 | **Fixed** (c99d7c5). OQ-354 now names CO-4373 for voluntary contributions. |
+| P3-2 | **Fixed** (c99d7c5). CO-2353's needs count the stepparent's excluded children only when they live in the same home. Test CO-2353-T5. |
+
+Stored expectations: only the two new cases, CO-190 and CO-191. No existing household changed. The UI test pins moved only by what these cases and items explain: CO-273 is read by 8 households and reaches 29, with 11 steps; CO-276 reaches 18; +2 open questions; +1 Colorado Works rule; the grant explanation has 98 steps.
