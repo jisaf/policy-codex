@@ -1,0 +1,14 @@
+id: CO-4854
+name: "SUN Bucks: household refused to cooperate with verification"
+identifier: sebt_household_refused_verification
+kind: supplied
+type: yes/no
+scope: case
+program: SunBucks
+meaning: "The child's household, selected for Summer EBT verification, has refused to cooperate with the Summer EBT agency's efforts to verify its eligibility (7 CFR 292.14(f)(5)), as the agency's verification record shows it: a refusal, not a failure to respond by the date the agency set."
+precision: "One value for the case: the household's refusal. If not stated, SUN Bucks reads it as false."
+supplied_by: "The Summer EBT agency's verification record."
+sources: [S1093]
+tags: [sebt, verification]
+nearest: [CO-4522, CO-4073]
+rationale: "Coverage review 2 N-7 (docs/reviews/coverage2-leap-sunbucks.md): 292.14(f)(5) (S1093): \"If a household refuses to cooperate with efforts to verify, eligibility for Summer EBT benefits must be terminated.\" No fact recorded a refusal and sebt_verification_status (CO-1698) has no terminated state, so a household selected for cause, whose benefits (f)(9) lets the agency issue before verification is complete, was shown the full amount after refusing. snap_household_refused_to_cooperate (a SNAP case fact about SNAP's own determination) is a different refusal to a different agency."

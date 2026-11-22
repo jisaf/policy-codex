@@ -1554,6 +1554,8 @@ Phase-10 open-question sweep. The exceptions are carried after all: foster, migr
 
 CDHS stakeholder review fix round (2026-11-21): the CDHS reviewer confirms the response period is in Colorado's Plan for Operations and Management, which was not fetched. The SUN Bucks pending items say so in their due-date note.
 
+Coverage review 2 N-7 (2026-11-22, docs/reviews/coverage2-leap-sunbucks.md): refusal is separate from the response period. 292.14(f)(5) (S1093): "If a household refuses to cooperate with efforts to verify, eligibility for Summer EBT benefits must be terminated." It is now the supplied sebt_household_refused_verification (CO-4854, read as false when not stated), and sebt_benefit_amount (CO-1299) is 0 when it is true, including for an application selected for cause, whose benefits (f)(9) otherwise lets the agency issue. The date by which a household that has not refused must respond stays open.
+
 Class: blocked on a named document
 Owner: SNAP policy owner, School meals (CDE) co-approver
 Assumption: A household selected for Summer EBT verification has no fixed deadline, so its verification is never reported as past due.
@@ -2040,11 +2042,13 @@ Open-question classification pass (2026-11-22): the non-traditional dwelling hal
 
 Class: state policy choice
 Owner: Energy assistance (LEAP) policy owner
-Assumption: A household is homeless for LEAP when it has no fixed, regular home of its own, lives in a shelter, a halfway house, or a motel or campground for lack of an alternative, or sleeps in a place not meant for it; a household staying in another's home or in substandard housing is not.
+Assumption: A household is homeless for LEAP when it has no fixed, regular home of its own, lives in a shelter, a halfway house, or a motel or campground for lack of an alternative, or sleeps in a place not meant for it; a household staying in another's home or in substandard housing is not. A household in a hotel that meets 3.752.25.B.8's exception (thirty days' continuous residence at the time of application and heat included in rent) is not homeless (coverage review 2 N-4).
 
 Checked 2026-11-22: 9 CCR 2503-7 3.751.1 and 3.752.25.B.6 (D-86, S774, S2303) define a non-traditional dwelling but not "considered homeless", and cite neither 7 CFR 271.2 nor 42 U.S.C. 11434a; the amendment effective November 1, 2026 (D-173) adds no definition. No published rule settles it.
 
 Coverage round (2026-11-22, docs/reviews/coverage-leap-sunbucks.md C-2): CO-2815 also counted a household that will imminently lose its home, which the Assumption above does not list and which 3.751.1's "Emergency Applicant" (S3311) serves (heat in the rent and an eviction notice to vacate within thirty days). The item now follows the Assumption (new test CO-2815-T4); a household facing eviction lives in its traditional dwelling.
+
+Coverage review 2 (2026-11-22, docs/reviews/coverage2-leap-sunbucks.md N-4): 3.752.25.B.8 (S774) is the paragraph that speaks to hotels: "Hotels, unless proof that the household has lived or will live in the hotel continuously for thirty (30) calendar days at the time of application and that heat is included in rent." Reading every hotel stay for lack of an alternative as B.6 homelessness would make B.8's exception empty for exactly the households it describes. The Assumption now adds that a hotel household meeting B.8 is not homeless; CO-2815 follows it (tests CO-2815-T5 and T6), and probe RV2-L1 (in a hotel since September 1, heat in the rent) is eligible as RV2-L0 is.
 
 ### OQ-562. CCCAP: "attending school as defined by the Colorado Department of Education"
 
@@ -2629,3 +2633,13 @@ Owner: Child care policy owner (CDEC)
 Assumption: At a redetermination medical leave is an eligible activity only when the caretaker is unable to care for the children (D.9, the paragraph that states the eligible household); at a change during the period any verified medical leave counts (3.112.C.2, 3.125.Q.2).
 
 Checked 2026-11-22: 8 CCR 1403-1 3.103.WWW, 3.111.D.9, 3.112.C.2, 3.114.B.5 and 3.125.Q.2 (D-87, version effective 2026-08-14). Neither D.9 nor 3.112.C refers to the other.
+
+### OQ-863. LEAP: does 3.752.23.AA's "one-time resettlement grant" cover the Colorado Refugee Services Program's Interim Cash Payment
+
+Body: 9 CCR 2503-7 3.752.23.AA (S3302) excludes "A one-time resettlement grant received under the refugee admissions program." The volume states a month's resettlement receipt in one neutral fact, refugee_resettlement_payments_received (CO-4367: "refugee resettlement funds or reception and placement money (from a resettlement agency), or ... the Interim Cash Payment of the Colorado Refugee Services Program"), which Colorado Works exempts as a whole (9 CCR 2503-6 3.605.4.B.28-29, S3163, two paragraphs). LEAP's paragraph names one grant under the refugee admissions program: reception and placement money is that grant; whether the State's Interim Cash Payment is too, LEAP's rule does not say, and it does not mention the Colorado Refugee Services Program. Coverage review 2 N-6 found the fact unread by LEAP, so a resettlement receipt stated as the month's income was counted. Items: CO-4511.
+
+Class: state policy choice
+Owner: Energy assistance (LEAP) policy owner
+Assumption: LEAP excludes all the resettlement money a newly arrived refugee receives, reception and placement money and the State's Interim Cash Payment alike; a grant the case states both as the month's receipt and as a lump sum in the thirty days is excluded once.
+
+Checked 2026-11-22: 9 CCR 2503-7 3.751.1 and 3.752.23 (D-86, version effective 2025-11-01) and the amendment effective 2026-11-01 (D-173) define neither "resettlement grant" nor "refugee admissions program"; 9 CCR 2503-6 3.605.4.B.28-29 (D-81) lists the two receipts separately. No published LEAP text settles it.

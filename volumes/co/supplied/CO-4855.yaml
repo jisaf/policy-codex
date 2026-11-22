@@ -1,0 +1,13 @@
+id: CO-4855
+name: "SUN Bucks: application date"
+identifier: sebt_application_date
+kind: supplied
+type: calendar date
+scope: case
+program: SunBucks
+meaning: "The date the Summer EBT agency (Colorado's SUN Bucks) received the household's Summer EBT application for the child, or the school meal application it relies on. Not stated for a child certified without an application (streamlined certification, 7 CFR 292.12(d))."
+precision: "One value for the case. If not stated, SUN Bucks reads the income guidelines in effect on the determination date."
+supplied_by: "The Summer EBT agency's application record."
+sources: [S791]
+tags: [sebt]
+rationale: "Coverage review 2 N-10 (docs/reviews/coverage2-leap-sunbucks.md): 7 CFR 292.5(b) (S791): \"The guidelines in effect on the date of application must be used to determine eligibility.\" sebt_income_eligibility_limit (CO-1297) read the guideline year of the determination month, so a June application determined in July read the new guidelines; no fact stated the Summer EBT application date (the other programs' application dates are each that program's own)."

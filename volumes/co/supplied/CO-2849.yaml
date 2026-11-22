@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "The child has been identified as a runaway receiving assistance under a program under the Runaway and Homeless Youth Act by the local educational liaison or another individual FNS names (7 CFR 245.2, S1952). If not stated, SUN Bucks reads this as false."
+meaning: "The child has been identified, at any time in the Summer EBT period of eligibility up to the determination date (7 CFR 292.6, S790, \"at any time during the period of eligibility\"), as a runaway receiving assistance under a program under the Runaway and Homeless Youth Act by the local educational liaison or another individual FNS names (7 CFR 245.2, S1952). If not stated, SUN Bucks reads this as false."
 supplied_by: "The local educational liaison's identification."
 sources: [S790, S792, S1952]
 tags: [sebt]

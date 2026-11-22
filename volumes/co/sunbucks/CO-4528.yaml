@@ -6,12 +6,13 @@ type: yes/no
 scope: person
 program: SunBucks
 meaning: "Whether the child is determined eligible from documentation of FDPIR or of another means-tested program the Secretary has approved: with SNAP and TANF receipt, the first group whose members, when all the children of a household belong to it, except the household from verification (7 CFR 292.14(f)(1))."
-precision: "receives_fdpir and sebt_other_documented_categorical_basis, each a positive identification, their absence read as no such ground. SNAP and TANF receipt is read by sebt_requires_verification_of_income (CO-1699) from sebt_household_child_receives_snap_or_tanf (CO-2708), which extends to every child of the household."
-derived: [any, [otherwise, receives_fdpir, false], [otherwise, sebt_other_documented_categorical_basis, false]]
-sources: [S1092, S792]
+precision: "receives_fdpir and sebt_other_documented_categorical_basis, each a positive identification, their absence read as no such ground. SNAP and TANF receipt is read by sebt_requires_verification_of_income (CO-1699) from sebt_household_child_receives_snap_or_tanf (CO-2708), which extends to every child of the household. Coverage review 2 N-3 (7 CFR 292.6, S790, \"at any time during the period of eligibility\"): receives_fdpir states present enrollment, so FDPIR receipt that ended (fdpir_participation_ended_date, CO-4852) on or after the first day of the period of eligibility (the month numbered sebt_instructional_year_start_month, CO-3014, on or before the determination month) counts too; sebt_other_documented_categorical_basis is stated for any time in the period (CO-2852)."
+derived: [any, [otherwise, receives_fdpir, false], [otherwise, [">=", fdpir_participation_ended_date, [first_day, [latest_month_of_year, sebt_instructional_year_start_month, [det_month]]]], false], [otherwise, sebt_other_documented_categorical_basis, false]]
+sources: [S1092, S792, S790]
 implemented: engine
 tags: [sebt, verification]
 rationale: "Coverage review C-21: the first of 292.14(f)(1)'s two \"all children\" groups, separated from the foster, homeless, migrant and runaway group (CO-4527) so CO-1699 can test each clause on its own."
 tests:
   - {id: CO-4528-T1, title: "A child in an FDPIR household", as_of: "2026-11-01", given: {receives_fdpir: true}, expect: true}
   - {id: CO-4528-T2, title: "Neither", as_of: "2026-11-01", given: {receives_fdpir: false, sebt_other_documented_categorical_basis: false}, expect: false}
+  - {id: CO-4528-T3, title: "Coverage review 2 N-3: the household left FDPIR in January 2027; determined March 1, 2027", as_of: "2027-03-01", given: {receives_fdpir: false, fdpir_participation_ended_date: "2027-01-31", sebt_other_documented_categorical_basis: false}, expect: true}

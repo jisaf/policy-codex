@@ -1,0 +1,14 @@
+id: CO-4851
+name: Homelessness end date
+identifier: homelessness_ended_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person most recently stopped lacking a fixed, regular and adequate nighttime residence (the circumstances of 42 U.S.C. 11434a(2) that nighttime_residence_type, CO-2810, names), as the local educational agency liaison's, a shelter's or the case record shows it. Not stated for a person who has not been homeless, or who is homeless now (nighttime_residence_type states the present)."
+precision: "A program that asks whether the person was homeless at any time in a past period reads the person as homeless in that period when this date falls in it or after its start. If not stated, SUN Bucks reads no earlier homelessness."
+supplied_by: "The local educational agency homeless liaison's record, a shelter director's statement, or the case record."
+sources: [S790, S1952, S1953]
+tags: [household, sebt]
+nearest: [CO-2810, CO-2853]
+rationale: "Coverage review 2 N-3 (docs/reviews/coverage2-leap-sunbucks.md): 7 CFR 292.6 (S790) makes eligible the children who \"at any time during the period of eligibility\" are categorically eligible, a homeless child (7 CFR 245.2, S1952) among them. nighttime_residence_type (CO-2810) states the residence on the determination date, so a child who was homeless in the school year and housed by the summer determination was not read as categorically eligible. foster_care_exit_date (CO-2853) states the same for foster care; this is the homelessness counterpart, neutral so any program asking about a past period can read it."
