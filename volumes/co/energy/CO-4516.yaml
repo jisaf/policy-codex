@@ -1,0 +1,19 @@
+id: CO-4516
+name: "LEAP: the application was filed within the application period"
+identifier: leap_application_is_within_application_period
+kind: derived
+type: yes/no
+scope: case
+program: LEAP
+meaning: "Whether the LEAP application was received or postmarked during an application period, November 1 through April 30 extended to the next business day when April 30 is a weekend or holiday (9 CCR 2503-7 3.752.1, 3.751.1 \"Eligibility Period\"): the filing date is on or before the closing date of the program year that began on or before it."
+precision: "leap_application_filing_date (CO-4514) on or before leap_application_period_closing_date (CO-4515). A filing date from November to April is always within the period; one from May to October is within it only on the extended days after a weekend or holiday April 30. 3.754.1.J denies an application outside the period, except the early application of a public assistance household (leap_is_eligible, CO-1007)."
+derived: ["<=", leap_application_filing_date, leap_application_period_closing_date]
+sources: [S3308, S510]
+implemented: engine
+tags: [household]
+rationale: "Coverage review C-3 and C-4 (P1): leap_is_eligible (CO-1007) read the application period from the month the application was received, so a form postmarked in the period and received after it, one received on the extended day after a weekend April 30, and a public assistance household's application received before November 1 were all denied."
+tests:
+  - {id: CO-4516-T1, title: "Received January 15", as_of: "2027-01-15", given: {leap_application_filing_date: "2027-01-15", leap_application_period_closing_date: "2027-04-30"}, expect: true}
+  - {id: CO-4516-T2, title: "Filed May 3, after the April 30 closing date", as_of: "2027-05-03", given: {leap_application_filing_date: "2027-05-03", leap_application_period_closing_date: "2027-04-30"}, expect: false}
+  - {id: CO-4516-T3, title: "Received Monday May 1, 2028, the next business day after a Sunday April 30", as_of: "2028-05-01", given: {leap_application_filing_date: "2028-05-01"}, expect: true}
+  - {id: CO-4516-T4, title: "Received October 20, before the period opens", as_of: "2026-10-20", given: {leap_application_filing_date: "2026-10-20"}, expect: false}

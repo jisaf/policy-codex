@@ -1,0 +1,14 @@
+id: CO-4513
+name: "LEAP: days the April 30 closing date is extended, by year"
+identifier: leap_application_period_extension_days_table
+kind: parameter
+type: table keyed by year
+scope: global
+program: LEAP
+meaning: "For each calendar year, the number of days the LEAP application period's last day, April 30, is extended because April 30 falls on a weekend or a legal holiday: to midnight of the next business day (9 CCR 2503-7 3.751.1 \"Eligibility Period\" and 3.752.1). 0 when April 30 is a business day. The rows are the values; the meaning does not restate them."
+precision: "Counted from the calendar: April 30 is a Saturday in 2033 (2 days, to Monday May 2) and a Sunday in 2028 and 2034 (1 day, to Monday May 1); every other year shown is a weekday. None of the Colorado legal holidays of C.R.S. 24-11-101(1) (S3310) falls on April 30 or on the first two days of May (the nearest are the third Monday in February and the last Monday in May), so no year is extended for a holiday unless the Governor or the President appoints a day there. A year with no row is unknown, with a lookup-miss warning; review_by marks when rows must be added."
+value: { "2025": 0, "2026": 0, "2027": 0, "2028": 1, "2029": 0, "2030": 0, "2031": 0, "2032": 0, "2033": 2, "2034": 1, "2035": 0, "2036": 0 }
+review_by: "2036-01-31"
+sources: [S3308, S510, S3310]
+tags: [household]
+rationale: "Coverage review C-4 (P1): the application period closes April 30, extended to the next business day when April 30 is a weekend or holiday (S510, S3308). leap_month_in_eligibility_period (CO-1008) noted the extension only as a limit of month-scoped facts, so an application received on the extended day was denied. The extension of each year is a figure of the calendar the rule applies, held as a table rather than computed in the rule."

@@ -1,0 +1,18 @@
+id: CO-4520
+name: "LEAP: a child of a parent listed separately from an ex-spouse"
+identifier: leap_is_child_of_parent_listed_separately
+kind: derived
+type: yes/no
+scope: person
+program: LEAP
+meaning: "Whether this person is a child under eighteen whose parent or legal guardian has asked to be listed, with his or her children, as a LEAP household separate from an ex-spouse in the same dwelling (9 CCR 2503-7 3.751.2.E): the child goes with that parent, not with the ex-spouse."
+precision: "A person under leap_household_child_age_limit (CO-325) who is the child or ward of a person of the case for whom leap_is_listed_separately_from_ex_spouse (CO-4519) is true (read as false when not stated)."
+derived: [all, ["<", age, leap_household_child_age_limit], [exists, [persons], [all, [rel, [child, ward], [P]], [otherwise, [of, [P], leap_is_listed_separately_from_ex_spouse], false]]]]
+sources: [S3312, S490]
+implemented: engine
+tags: [household]
+rationale: "Coverage review C-8 (F-18): the LEAP household closure (CO-1000, CO-1009) must keep a child with the parent who elects a separate household under 3.751.2.E and not join the child to the other parent; this item names those children so the closure can test the edge."
+tests:
+  - {id: CO-4520-T1, title: "A 9-year-old whose divorced mother elects a separate household", as_of: "2026-12-01", given: {date_of_birth: "2017-05-01"}, others: {p2: {leap_is_listed_separately_from_ex_spouse: true}, p3: {}}, relationships: [[parent, p2, p1], [parent, p3, p1]], expect: true}
+  - {id: CO-4520-T2, title: "No election", as_of: "2026-12-01", given: {date_of_birth: "2017-05-01"}, others: {p2: {leap_is_listed_separately_from_ex_spouse: false}, p3: {}}, relationships: [[parent, p2, p1], [parent, p3, p1]], expect: false}
+  - {id: CO-4520-T3, title: "A 19-year-old is not a child under 3.751.2.D.2", as_of: "2026-12-01", given: {date_of_birth: "2007-05-01"}, others: {p2: {leap_is_listed_separately_from_ex_spouse: true}}, relationships: [[parent, p2, p1]], expect: false}
