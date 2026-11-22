@@ -552,7 +552,7 @@ function CenterBox({ ctx }: { ctx: Ctx }) {
           ? <>Reads {c.reads.total}: {plural(c.reads.facts, "fact")}, {plural(c.reads.figures, "figure")}, {plural(c.reads.rules + c.reads.outcomes, "rule")}.</>
           : center.kind === "figure" ? "Set by policy: it reads nothing." : center.kind === "fact" ? "Told to us: it reads nothing." : "Reads nothing."}
         {" "}{c.readBy.total
-          ? <>Read by {plural(c.readBy.total, "item")}{c.readBy.outcomes ? <>, reaching {plural(c.readBy.outcomes, "outcome")}</> : null}.</>
+          ? <>Read by {plural(c.readBy.total, "item")}{c.readBy.outcomes ? <>, reaching {plural(c.readBy.outcomes, "program outcome")}</> : null}.</>
           : "Nothing reads it."}
       </p>
       <ValueLine ctx={ctx} id={it.identifier} />

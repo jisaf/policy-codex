@@ -1050,7 +1050,12 @@ export interface MapCounts {
    *  facts, figures (parameters), rules (derived items that are not a
    *  declared outcome) and declared outcomes. */
   reads: { facts: number; figures: number; rules: number; outcomes: number; total: number };
-  /** Every item that reads it, directly or through other rules. */
+  /** Every item that reads it, directly or through other rules (`total`,
+   *  the same as `dependentsOf`); of those, the items that are not an
+   *  outcome (`rules`); and the PROGRAM OUTCOMES it reaches (`outcomes`),
+   *  which is `outcomesAffected`: the one definition the item page's "What
+   *  it affects" and the Map both show (a path running only through
+   *  document-verification flags is left out). */
   readBy: { rules: number; outcomes: number; total: number };
 }
 
@@ -1070,9 +1075,11 @@ export function outcomeIdentifiers(engine: Engine): Set<string> {
 }
 
 /** How much stands behind and ahead of an item, as the Map shows it at full
- *  depth: every dependency is followed (verification flags included, unlike
- *  `outcomesAffected`), so the counts match what the Map can expand to. A
- *  program's outcome reads "fed by N facts, M figures, R rules". */
+ *  depth: every dependency is followed, so the item counts match what the
+ *  Map can expand to. A program's outcome reads "fed by N facts, M figures,
+ *  R rules". The program outcomes an item reaches are `outcomesAffected`,
+ *  as on the item page (the Map once said CO-191 reached 22 outcomes and the
+ *  item page 20: two definitions of one number). */
 export function mapCounts(engine: Engine, identifier: string): MapCounts {
   let per = mapCountMemo.get(engine);
   if (!per) { per = new Map(); mapCountMemo.set(engine, per); }
@@ -1096,11 +1103,11 @@ export function mapCounts(engine: Engine, identifier: string): MapCounts {
     else if (outcomes.has(id)) reads.outcomes++;
     else reads.rules++;
   }
-  const readBy = { rules: 0, outcomes: 0, total: 0 };
+  const readBy = { rules: 0, outcomes: outcomesAffected(engine, identifier).length, total: 0 };
   for (const id of walk((x) => engine.usedBy(x))) {
     if (!engine.item(id)) continue;
     readBy.total++;
-    if (outcomes.has(id)) readBy.outcomes++; else readBy.rules++;
+    if (!outcomes.has(id)) readBy.rules++;
   }
   const out = { reads, readBy };
   per.set(identifier, out);
