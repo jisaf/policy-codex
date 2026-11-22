@@ -16603,3 +16603,19 @@ CMS, CMCS Informational Bulletin, 2025 SSI, Spousal Impoverishment, and Medicare
 > Home Equity Limits:
 > Minimum: 730,000.00
 > Maximum: 1,097,000.00
+
+### S3008. Nursing Facility PETI-IME: private health insurance premiums of the resident, prior authorized (Cornell text, re-fetched 2026-11-22)
+
+Document: D-55
+
+10 CCR 2505-10 § 8.482.33, 8.482.33.A, 8.482.33.C.1-2 (the Cornell text, re-fetched 2026-11-22, reads the same). https://www.law.cornell.edu/regulations/colorado/10-CCR-2505-10-8.482
+
+> 8.482.33 Nursing Facility Post Eligibility Treatment of Income - Incurred Medical Expenses (PETI-IME) Effective April 8, 1988, with respect to the post-eligibility treatment of income of individuals who are institutionalized there shall be taken into account amounts for incurred expenses for medical or remedial care that are not subject to payment by Colorado Medicaid or third party insurance, including health insurance premiums, deductibles or co-insurance; hearing aids, supplies, and care; corrective lenses, eye care, and supplies; and other incurred expenses for medical or remedial care that are not subject to payment by a third party.
+>
+> A. All PETI-IME expenses shall be prior authorized by the Department or its designee. The purpose of the prior authorization process is to verify the medical necessity of the services or supplies, to validate that the requested expense is not a benefit of the Medicaid program, and to determine if the expenses requested are a duplication of expenses previously prior authorized.
+>
+> C. Private health insurance premiums, deductibles, or co-insurance as defined by state law.
+>
+> 1. Monthly premium payment paid by the resident for private health insurance.
+>
+> 2. Medical health insurance premiums will be allowed for the resident only. This does not include prescription drug, vision, dental or life insurance.

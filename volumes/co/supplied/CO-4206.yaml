@@ -1,0 +1,12 @@
+id: CO-4206
+name: Medical Assistance application is for the Children with Disabilities Buy-In only
+identifier: ma_application_is_children_buy_in_only
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the application made for the child asks only for the Medicaid Buy-In Program for Children with Disabilities, not for a determination in the SSI-related or other aged, blind and disabled categories. If not stated, the application is read as not limited to the Buy-In."
+supplied_by: Program requested on the application as recorded in CBMS.
+sources: [S3000]
+tags: [verification, ma, buy_in]
+rationale: "Final verification pass 3, P2-2: § 8.100.6.Q.3 makes the Children with Disabilities Buy-In follow the MAGI verification requirements of § 8.100.4.B, and Q.1.c counts no resources, but ma_requires_verification_of_unearned_income (CO-1404) and ma_requires_verification_of_resources (CO-1405) asked every disabled applicant for the § 8.100.5.B.1.d-e documents. No existing fact states that the application is limited to the Buy-In; ma_application_is_msp_only (CO-1588) is the same kind of fact for the Medicare Savings Programs."
