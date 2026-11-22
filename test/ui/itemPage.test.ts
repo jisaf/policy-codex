@@ -155,7 +155,7 @@ describe("Dana: the children's Medicaid income limit against its rule text (CO-1
     const resting = restingIndex(engine, vol.cases).get(it191.identifier) ?? [];
     const read = householdsThatRead(engine, vol.cases, it191.identifier);
     const rows = householdValues(engine, vol.cases, it191, read, resting);
-    expect(rows).toHaveLength(16);
+    expect(rows).toHaveLength(20);
     for (const r of rows) {
       expect(r.values).toHaveLength(1);
       expect(r.values[0].person).toBeNull();
