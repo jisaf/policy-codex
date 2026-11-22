@@ -266,33 +266,43 @@ export function blocksCertification(
 
 // ---- owner
 
-/** Who answers the question: Legal first for a "needs Legal" question, then
- *  the program owners of the programs its items belong to (volume.yaml
- *  `approval_policy.by_program`; the shared "All" items' owners only when no
- *  item belongs to one program), then the roles the items' tags call for
- *  (`by_tag`: long-term care, State plan elections, verification). */
+/** The roles a question's `Owner:` line names, in the policy's own spelling
+ *  and in the order written; empty when it has no such line. */
+export function ownerLineRoles(engine: Engine, body: string): string[] {
+  const explicit = explicitField(body, "Owner");
+  if (!explicit) return [];
+  const roles = engine.meta.approval_policy?.roles ?? [];
+  const role = (t: string) => roles.find((x) => x.toLowerCase() === t.toLowerCase());
+  const out: string[] = [];
+  const add = (r: string) => { if (!out.includes(r)) out.push(r); };
+  for (const r of explicit.split(/[,;]/)) {
+    const t = r.trim().replace(/\.$/, "");
+    if (!t) continue;
+    // "Medicaid policy owner and Legal" names two roles; "Premium and
+    // finance owner" is one.
+    const halves = t.split(/\s+and\s+/);
+    if (!role(t) && halves.length > 1 && halves.every((h) => role(h.trim()))) for (const h of halves) add(role(h.trim())!);
+    else add(role(t) ?? t);
+  }
+  return out;
+}
+
+/** Who answers the question. The `Owner:` line, when the question has one,
+ *  is the whole answer: "owns" means that line names the role (counts.ts,
+ *  one definition everywhere; the queue's groups, its "only mine" filter and
+ *  the Desk all read it). A question without one falls back to the reading:
+ *  Legal first for a "needs Legal" question, then the program owners of the
+ *  programs its items belong to (volume.yaml `approval_policy.by_program`;
+ *  the shared "All" items' owners only when no item belongs to one program),
+ *  then the roles the items' tags call for (`by_tag`). */
 export function questionOwners(
   engine: Engine, q: Pick<QuestionInfo, "programs" | "items" | "body">, cls: QuestionClass,
 ): string[] {
+  const named = ownerLineRoles(engine, q.body);
+  if (named.length) return named;
   const policy = engine.meta.approval_policy;
   const out: string[] = [];
   const add = (r: string) => { if (!out.includes(r)) out.push(r); };
-  // An explicit Owner line names who answers first (in the policy's own
-  // spelling of each role); the program and tag owners follow.
-  const explicit = explicitField(q.body, "Owner");
-  if (explicit) {
-    const roles = policy?.roles ?? [];
-    const role = (t: string) => roles.find((x) => x.toLowerCase() === t.toLowerCase());
-    for (const r of explicit.split(/[,;]/)) {
-      const t = r.trim().replace(/\.$/, "");
-      if (!t) continue;
-      // "Medicaid policy owner and Legal" names two roles; "Premium and
-      // finance owner" is one.
-      const halves = t.split(/\s+and\s+/);
-      if (!role(t) && halves.length > 1 && halves.every((h) => role(h.trim()))) for (const h of halves) add(role(h.trim())!);
-      else add(role(t) ?? t);
-    }
-  }
   if (cls === "legal") add("Legal");
   const own = q.programs.filter((p) => p !== "All");
   for (const p of own.length ? own : q.programs) for (const r of policy?.by_program?.[p] ?? []) add(r);

@@ -17,7 +17,7 @@ import {
 import { plainRule, plainText } from "./plain";
 import { formatDate, formatValue } from "./present";
 import { unverifiedIds } from "./provenance";
-import { outcomesAffected, restingIndex } from "./counts";
+import { citedUnverified, outcomesAffected, restingIndex, restingOnUnverified } from "./counts";
 import type { StoredResult } from "./questionEffects";
 
 /* ------------------------------------------------------------------ kinds */
@@ -222,44 +222,8 @@ export interface InboxInputs {
   resting?: Map<string, StoredResult[]> | null;
 }
 
-/** Identifier -> the stored cases whose checked results read it. */
-const householdCache = new WeakMap<Engine, { cases: readonly HouseholdCase[]; map: Map<string, string[]> }>();
-
-export function householdsReading(engine: Engine, cases: readonly HouseholdCase[]): Map<string, string[]> {
-  const hit = householdCache.get(engine);
-  if (hit && hit.cases === cases) return hit.map;
-  const cone = new Map<string, Set<string>>();
-  const map = new Map<string, string[]>();
-  for (const c of cases) {
-    const reach = new Set<string>();
-    for (const exp of Object.values(c.expect ?? {})) {
-      for (const id of Object.keys(exp ?? {})) {
-        let up = cone.get(id);
-        if (!up) { up = upstreamOf(engine, id); cone.set(id, up); }
-        for (const u of up) reach.add(u);
-      }
-    }
-    for (const id of reach) {
-      const list = map.get(id) ?? [];
-      list.push(c.id);
-      map.set(id, list);
-    }
-  }
-  householdCache.set(engine, { cases, map });
-  return map;
-}
-
-/** Identifiers that rest on an unverified excerpt: the items citing one
- *  (in sources or a version) and everything that reads them. */
-export function restingOnUnverified(engine: Engine, unverified: ReadonlySet<string>): Set<string> {
-  const citing = engine.items().filter((it) => citedUnverified(it, unverified).length).map((it) => it.identifier);
-  return new Set([...citing, ...engine.impact(citing)]);
-}
-
-export function citedUnverified(it: Item, unverified: ReadonlySet<string>): string[] {
-  const cited = [...(it.sources ?? []), ...(it.versions ?? []).map((v) => v.source ?? "")];
-  return [...new Set(cited.filter((s) => unverified.has(s)))].sort();
-}
+/** Unverified upstream (counts.ts, the one definition). */
+export { citedUnverified, restingOnUnverified } from "./counts";
 
 /** The review notes staged in the tray (the files `reviewNotesFile` writes). */
 export function stagedNotes(cs: ChangeSet | null): ReviewNote[] {
@@ -385,6 +349,21 @@ export function filterToParams(f: InboxFilter): Record<string, string> {
  *  signature or a request for changes. */
 export function isStagedRow(row: InboxRow): boolean {
   return Boolean(row.staged.entry || row.staged.note);
+}
+
+/** Whether the row's content change (an edit, or a new item) was staged in
+ *  this browser: the change is the reader's own. */
+export function isOwnStagedChange(row: Pick<InboxRow, "staged">): boolean {
+  const e = row.staged.entry;
+  return row.staged.edited || Boolean(e && !e.before && e.after);
+}
+
+/** Whether the reader may sign the row as this role: not signed yet, no
+ *  signature staged, and not a change the reader staged themselves (the
+ *  evaluators could approve their own staged change; nobody signs their
+ *  own proposal). */
+export function canSign(row: Pick<InboxRow, "signed" | "staged">): boolean {
+  return !row.signed && !row.staged.signed && !isOwnStagedChange(row);
 }
 
 /** Every word of the search is in the item's name, meaning, id or

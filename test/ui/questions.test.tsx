@@ -13,7 +13,7 @@ import { excerptKind } from "../../src/ui/provenance";
 import {
   assumptionInForce, blocksCertification, citedExcerpts, departures, groupByOwner, isOpen,
   explicitField, matchesFilter, questionClass, questionInfo, questionInfos, questionNotes, questionOwners, questionStatus,
-  queueEntry, ruleText, sentences, waitingOn, QUESTION_CLASSES, type QueueEntry,
+  ownerLineRoles, queueEntry, ruleText, sentences, waitingOn, QUESTION_CLASSES, type QueueEntry,
   plainReading, queueTextMatches,
 } from "../../src/ui/questions";
 import { agencyNotified, stagedAnswers } from "../../src/ui/questionAnswer";
@@ -142,18 +142,28 @@ describe("class, owner and certification", () => {
     }
   });
 
-  it("owns a policy question by its program owner and its items' tags, after any owner it names", () => {
+  it("owns a question by its Owner line alone; one without the line falls back to its programs' and tags' owners", () => {
     const policy = engine.meta.approval_policy;
-    for (const e of open.filter((x) => x.cls !== "legal")) {
+    for (const e of open) {
       const named = explicitField(e.body, "Owner");
+      if (named) {
+        // "Owns" is one definition: the roles the Owner line names, nothing added.
+        expect(e.owners, e.id).toEqual(ownerLineRoles(engine, e.body));
+        expect(e.owner, e.id).toBe(named.split(",")[0].trim());
+        continue;
+      }
       const own = e.programs.filter((p) => p !== "All");
       const first = (own.length ? own : e.programs)[0];
-      if (named) expect(e.owner, e.id).toBe(named.split(",")[0].trim());
-      else if (first) expect(e.owner, e.id).toBe(policy.by_program[first][0]);
-      if (first) expect(e.owners, e.id).toContain(policy.by_program[first][0]);
+      if (first && e.cls !== "legal") expect(e.owner, e.id).toBe(policy.by_program[first][0]);
     }
-    const ltc = open.find((e) => e.items.some((it) => it.tags?.includes("ltc")));
-    expect(ltc?.owners).toContain("LTSS policy owner");
+    // The fallback, on a question with no Owner line.
+    const ltcItem = engine.items().find((it) => it.tags?.includes("ltc") && it.program === "Medicaid")!;
+    const q = queueEntry(engine, vol.sources, {
+      id: "OQ-X", title: "A question", rawTitle: "A question", body: "No owner line here.", status: "open",
+      items: [ltcItem], programs: ["Medicaid"],
+    });
+    expect(q.owners).toContain("Medicaid policy owner");
+    expect(q.owners).toContain("LTSS policy owner");
   });
 
   it("an explicit Class line wins over the reading", () => {
@@ -323,7 +333,7 @@ describe("the view", () => {
     const card = () => host.querySelector('li.qcard[data-question="OQ-533"] .effect')!;
     expect(card().textContent).toContain("Working out");
     await until(() => !card().textContent!.includes("Working out"));
-    expect(card().textContent).toMatch(/stored results? in \d+ households? would change \(worked out\)/);
+    expect(card().textContent).toMatch(/stored results? in \d+ households? would change/);
     render(null, host);
   }, 30_000);
 

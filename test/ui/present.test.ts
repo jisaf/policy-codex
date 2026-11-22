@@ -6,7 +6,8 @@ import {
   fplAnnual, fplContext, fplMonthlyBySize, isFplRate, optionLabel, personLabel, tableRows,
 } from "../../src/ui/present";
 import { plainRule, plainText } from "../../src/ui/plain";
-import { excerptKind, unverifiedInTrace, unverifiedUpstream } from "../../src/ui/provenance";
+import { excerptKind, unverifiedInTrace } from "../../src/ui/provenance";
+import { unverifiedUpstream } from "../../src/ui/counts";
 import { noVersionReason } from "../../src/ui/Present";
 import { fitInViewport } from "../../src/ui/Rich";
 

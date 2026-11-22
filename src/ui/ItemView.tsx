@@ -15,7 +15,8 @@ import { itemValidation } from "./validation";
 import { approvalStatus } from "./approvals";
 import { FplFigures, noVersionReason, PlainRule, Value } from "./Present";
 import { formatDate, formatValue } from "./present";
-import { unverifiedIds, unverifiedUpstream } from "./provenance";
+import { unverifiedIds } from "./provenance";
+import { unverifiedUpstream } from "./counts";
 import { todayIso } from "./views/context";
 import { paramInForce } from "../engine/versions";
 

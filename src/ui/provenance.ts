@@ -43,33 +43,8 @@ export function unverifiedIds(sources: readonly Source[]): Set<string> {
   return new Set(sources.filter(isUnverified).map((s) => s.id));
 }
 
-export interface UnverifiedUse {
-  /** The item that cites the unverified excerpt. */
-  item: Item;
-  sources: string[];
-}
-
-/** The items at or upstream of `identifier` that cite an unverified excerpt:
- *  what a result built on it would rest on. */
-export function unverifiedUpstream(
-  engine: Engine, identifier: string, unverified: ReadonlySet<string>,
-): UnverifiedUse[] {
-  if (!unverified.size) return [];
-  const out: UnverifiedUse[] = [];
-  const seen = new Set<string>();
-  const stack = [identifier];
-  while (stack.length) {
-    const id = stack.pop()!;
-    if (seen.has(id)) continue;
-    seen.add(id);
-    const it = engine.item(id);
-    if (!it) continue;
-    const bad = (it.sources ?? []).filter((s) => unverified.has(s));
-    if (bad.length) out.push({ item: it, sources: bad });
-    for (const d of engine.usesOfItem(id)) stack.push(d);
-  }
-  return out.sort((a, b) => a.item.name.localeCompare(b.item.name));
-}
+/** What a result rests on that is unverified: counts.ts `unverifiedUpstream`
+ *  (the one definition of "unverified upstream"). */
 
 /** The same, for one evaluated value: every node in its trace (the value
  *  itself included) whose item cites an unverified excerpt, once each. */
