@@ -1,0 +1,13 @@
+id: CO-4458
+name: "Rental property expenses paid"
+identifier: rental_property_expenses_paid
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The expenses the person paid in the month for the property whose rents are rental_income_received (CO-4457): property taxes, insurance, interest on the property's mortgage, repairs and maintenance, utilities the owner pays and management fees. Not payments on the mortgage principal and not depreciation."
+precision: "If not stated, every program reads it as 0."
+supplied_by: "Applicant statement with receipts, as the county establishes them."
+sources: [S3256]
+tags: [income]
+rationale: "Coverage round (docs/reviews/coverage-cccap.md, F-10): 8 CCR 1403-1 3.111.I.12 and I.17 (S3256) count rental income net. No fact stated the landlord's expenses, so a landlord with $1,500 of rent and $1,000 of expenses was counted at $1,500."
