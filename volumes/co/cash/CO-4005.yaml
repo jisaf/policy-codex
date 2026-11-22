@@ -1,0 +1,19 @@
+id: CO-4005
+name: "Colorado Works: meets the citizenship and immigration requirement"
+identifier: cw_meets_citizenship_and_immigration_requirement
+kind: derived
+type: yes/no
+scope: person
+program: ColoradoWorks
+meaning: "Whether the person meets Colorado Works' citizenship and qualified non-citizen requirement (9 CCR 2503-6 3.604.1.B; C.R.S. 26-2-706(1.5)(b)): the requirement the State cash programs share (meets_public_assistance_citizenship_requirement), or a victim of a severe form of trafficking in persons, whom 22 U.S.C. 7105(b)(1)(A) makes eligible for a program funded by the Department of Health and Human Services to the same extent as a refugee, and so exempt from the five-year bar as a refugee is (3.604.2.K)."
+precision: "A trafficking victim is immigration_status trafficking_victim (CO-002): a person under 18 or one certified by HHS, and a T-2 to T-5 family member (OQ-550). Adult Financial does not read this item: Aid to the Needy Disabled, Aid to the Blind and the Old Age Pension are funded and administered by the State and the counties, not by an official or agency 7105(b)(1)(B) names, so 7105 does not reach them and they keep the shared requirement."
+statute_override: "Federal law overrides 9 CCR 2503-6 3.604.1.B.3, which exempts from the five-year bar only the 8 U.S.C. 1613(b) categories: 22 U.S.C. 7105(b)(1)(A) makes a victim of a severe form of trafficking in persons eligible, \"Notwithstanding title IV of the Personal Responsibility and Work Opportunity Reconciliation Act of 1996\", for any Federal or State program funded or administered by the Secretary of Health and Human Services \"to the same extent as an alien who is admitted to the United States as a refugee\"; Colorado Works is the State's TANF program, funded by HHS, and refugees are exempt from its five-year bar (3.604.2.K), so a trafficking victim is accepted with no five-year bar."
+derived: [any, meets_public_assistance_citizenship_requirement, ["=", immigration_status, trafficking_victim]]
+sources: [S407, S1150, S1151, S2414, S2415, S2802]
+implemented: engine
+tags: [cash, tanf, immigration, legal]
+rationale: "Final cash review 2, N-3 (engine-confirmed): Colorado Works read meets_public_assistance_citizenship_requirement (CO-905), which applied the five-year bar to a certified trafficking victim, whom 22 U.S.C. 7105 (D-222, already in the volume) treats as a refugee for HHS-funded programs; the volume already applies 7105 to CHP+ (CO-2706) and Medicaid (CO-1172). The shared item also serves Aid to the Needy Disabled, which 7105 does not reach, so Colorado Works' reading is its own item. The Colorado Works items that read the requirement (CO-919, CO-921, CO-928, CO-2557, CO-2561) read this item."
+tests:
+  - {id: CO-4005-T1, title: "N-3: a certified trafficking victim whose status began in March 2024 - no five-year bar", as_of: "2026-10-01", given: {immigration_status: trafficking_victim, us_entry_date: "2024-03-01", qualified_status_date: "2024-03-01", has_military_connection: false}, expect: true}
+  - {id: CO-4005-T2, title: "A citizen", as_of: "2026-10-01", given: {immigration_status: us_citizen}, expect: true}
+  - {id: CO-4005-T3, title: "A permanent resident inside five years", as_of: "2026-10-01", given: {immigration_status: lawful_permanent_resident, qualified_status_date: "2024-01-01", us_entry_date: "2024-01-01", has_military_connection: false}, expect: false}
