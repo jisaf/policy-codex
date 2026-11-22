@@ -514,3 +514,8 @@ First pass (docs/reviews/coverage-adult-financial.md):
 | CO-4400 to CO-4449 | derivations of CO-4400, CO-4401, CO-4410, CO-4412, CO-4422 and CO-4446 re-read against 3.520.69, 3.520.64.E, 3.510 "Homeless", 3.520.77.E-M, 3.520.77.D and 26-2-111(1)(d) | holds, apart from H-4 |
 
 P2 count: 2 (H-3, H-4). P3: 1 (H-5).
+
+## Disposition (coverage pass 3)
+- H-1 (P1): fixed. CO-4720 adds `lottery_gambling_winnings_received`, as CO-3831 does for the client. Test CO-4720-T3 (QZ-1: 3,000 deemable).
+- H-2 (P1): fixed. CO-4720 subtracts `unearned_income_offsetting_expenses`, never below zero. Tests CO-4720-T4 (QZ-2: 500), T5 (floor).
+- H-3 (P2), H-4 (P2), H-5 (P3): open, handed to the next Adult Financial round (2025 minimum wage version from sos.state.co.us; a needs-Legal question on C.R.S. 26-2-111(1)(d) and OAP in private psychiatric hospitals; HCA stated only in adult_financial_cash_income).
