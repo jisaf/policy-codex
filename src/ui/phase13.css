@@ -15,11 +15,7 @@ h2.otherways { font-size: 15px; margin: 24px 0 0; color: var(--muted); }
 .draftbanner { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 6px 16px;
   background: #fff4d6; border-bottom: 1px solid #e3c470; font-size: 13px; }
 .draftbanner.shown { background: #ffe2b8; }
-.tag.draft { background: #ffe2b8; border-color: #e3a040; }
 
-.tag.qstatus-open { background: #fde6e6; border-color: #e0a0a0; }
-.tag.qstatus-partly { background: #fff4d6; border-color: #e3c470; }
-.tag.qstatus-resolved { background: #e3f1e7; border-color: #9cc9a8; }
 .qbody p { max-width: 80ch; }
 ul.qlist li, ul.qitems li { margin: 4px 0; }
 
@@ -39,8 +35,6 @@ table.valuetable th { background: var(--all); font-weight: 600; }
 table.valuetable caption { text-align: left; font-size: 12px; color: var(--muted); }
 
 .flag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 12px; }
-.flag.override { background: #fde6e6; border: 1px solid #e0a0a0; color: #7a1010; }
-.flag.unverified { background: #fff4d6; border: 1px solid #e3c470; color: #6b4a00; }
 .trace .notes { margin: 6px 0; padding-left: 0; list-style: none; }
 .trace .notes li { margin: 4px 0; }
 .story .who { color: var(--muted); font-size: 12px; margin-right: 4px; }
@@ -86,7 +80,6 @@ article.source.on { background: var(--med); border-left: 3px solid var(--accent)
 .inbox-linked h3, .inbox-staged h3 { margin: 4px 0; }
 .inbox .affects ul.reach { margin: 4px 0; padding-left: 1.2em; font-size: 13px; }
 .inbox .inbox-filters label.search input { min-width: 14em; max-width: 100%; }
-.tag.qstaged-tag { background: #e3f1e7; border-color: #9cc9a8; }
 .qhistory { margin-top: 6px; }
 .qhistory .note { margin: 6px 0; font-size: 13px; }
 .unknown-note { padding: 6px 10px; background: #fff4d6; border: 1px solid #e3c470; border-radius: 4px; max-width: 80ch; }
@@ -99,7 +92,6 @@ article.source.on { background: var(--med); border-left: 3px solid var(--accent)
 .wk-docs-block > summary { cursor: pointer; }
 .wk-docs-block > summary h3 { display: inline; }
 ul.dueprograms { margin: 0; padding-left: 1em; }
-.flag.postdated { background: #fde6e6; border: 1px solid #e0a0a0; color: #7a1010; }
 .wk-test { display: inline; }
 .changes li .worked { margin: 4px 0; }
 .changes.docs li { margin: 4px 0; }

@@ -21,7 +21,7 @@ import { versionInForce } from "../../engine/versions";
 import type { ChangeEntry } from "../../changes/types";
 import type { LoadedVolume } from "../../ledger/load";
 import { isVerificationItem, outcomesAffected } from "../counts";
-import { clean, formatMoney, formatNumber, formatPercent, isFplRate } from "../present";
+import { clean, formatMoney, formatNumber, isFplRate } from "../present";
 import type { StoredResult } from "../questionEffects";
 import { determinationDate, personTitle, recordedValue } from "../walkthrough";
 
@@ -441,72 +441,6 @@ export function previousVersionComparison(
     current, previous, same: sameFigures(current.value, previous.value),
     entry: { id: it.id, chapter, before: it, after },
   };
-}
-
-// ---- "Propose a change": the structured edits
-
-/** Reads a figure as typed: "$1,031", "142%", "0.25", "yes". A rate typed as
- *  a percentage is stored as a fraction. Null when it is not a value. */
-export function parseFigure(it: Pick<Item, "type">, text: string): unknown {
-  const t = text.trim();
-  if (!t) return null;
-  if (/^(yes|true)$/i.test(t)) return true;
-  if (/^(no|false)$/i.test(t)) return false;
-  const pct = /^(-?[\d,]*\.?\d+)\s*(%|percent)$/i.exec(t);
-  if (pct) return clean(Number(pct[1].replace(/,/g, "")) / 100);
-  const num = /^-?\$?[\d,]*\.?\d+$/.exec(t);
-  if (num) {
-    const n = Number(t.replace(/[$,]/g, ""));
-    if (!Number.isFinite(n)) return null;
-    return it.type === "rate" && n > 5 ? clean(n / 100) : n;
-  }
-  return null;
-}
-
-/** A figure as typed into the form: a rate as a percentage. */
-export function figureText(it: Pick<Item, "type">, v: unknown): string {
-  if (typeof v === "number") return it.type === "rate" ? formatPercent(v) : formatNumber(v);
-  if (v === null || v === undefined) return "";
-  return String(v);
-}
-
-export type FigureEdit =
-  | { kind: "add"; from: string; value: unknown; source?: string }
-  | { kind: "correct"; from: string; value: unknown; source?: string };
-
-/** The item with a version added or corrected, or an error in words. A new
- *  version closes the one before it; a version identical to what is there,
- *  or to the version before, is refused: the change would change nothing. */
-export function applyFigureEdit(it: Item, edit: FigureEdit): { item: Item } | { error: string } {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(edit.from)) return { error: "Give the first day the figure applies." };
-  if (edit.value === null || edit.value === undefined) return { error: "Give the figure." };
-  const vs = [...(it.versions ?? [])].map((v) => ({ ...v })).sort((a, b) => a.from.localeCompare(b.from));
-  const src = edit.source?.trim() || undefined;
-  if (edit.kind === "correct") {
-    const v = vs.find((x) => x.from === edit.from);
-    if (!v) return { error: `There is no version from ${edit.from} to correct.` };
-    if (sameFigures(v.value, edit.value) && (src ?? v.source) === v.source) {
-      return { error: "That is the figure the version already has: nothing would change." };
-    }
-    v.value = edit.value;
-    if (src) v.source = src;
-    return { item: { ...it, versions: vs } };
-  }
-  if (vs.some((x) => x.from === edit.from)) {
-    return { error: `A version already starts on ${edit.from}: correct it instead.` };
-  }
-  const prior = vs.filter((x) => x.from < edit.from).pop();
-  const next = vs.find((x) => x.from > edit.from);
-  if (prior && sameFigures(prior.value, edit.value) && (!prior.to || prior.to > edit.from)) {
-    return { error: "These are the figures already in force on that date: nothing would change." };
-  }
-  if (prior && (!prior.to || prior.to > edit.from)) prior.to = edit.from;
-  const added: ItemVersion = { from: edit.from, value: edit.value };
-  if (next) added.to = next.from;
-  if (src) added.source = src;
-  vs.push(added);
-  vs.sort((a, b) => a.from.localeCompare(b.from));
-  return { item: { ...it, versions: vs } };
 }
 
 // ---- "Ask a question": a new open question

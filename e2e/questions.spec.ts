@@ -93,7 +93,7 @@ test("Priya: unverified figures, and what depends on them", async ({ page }) => 
   await expect(page.locator(".insum")).toContainText("items take a figure from an unverified source", { timeout: 60_000 });
   await expect(page.locator("section.unvsource")).toHaveCount(2);
   await expect(page.locator("ul.restlist").first().locator("li").first()).toBeVisible();
-  await expect(page.locator(".hhlist a").first()).toBeVisible({ timeout: 60_000 });
+  await expect(page.locator(".hhreadlist a").first()).toBeVisible({ timeout: 60_000 });
   await expect(page.locator("ul.missing li").first()).toContainText(/no version/);
 });
 

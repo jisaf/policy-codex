@@ -36,6 +36,7 @@ import {
   questionEffect, questionsInView, stagedQuestionState, StatusTag, useRestingReady, type QuestionEffect,
 } from "./questionParts";
 import "./questions-law.css";
+import { IdSmall, UnverifiedBadge } from "../kit";
 
 type ReadText = (path: string) => Promise<string>;
 type Act = "answer" | "opinion";
@@ -174,7 +175,7 @@ function ExcerptBlock({ s, vol, r }: { s: Source; vol: LoadedVolume; r: Route })
       <p class="excerpthead">
         <a href={excerptHref(r, s.id)}>{s.title || s.citation}</a>{" "}
         <span class="tag excerpt-kind">{EXCERPT_KIND_LABEL[excerptKind(s, vol.documents)]}</span>
-        {isUnverified(s) && <> <span class="flag unverified">Unverified: not a quotation</span></>}
+        {isUnverified(s) && <> <UnverifiedBadge of="excerpt" /></>}
         {" "}<small class="mono muted">{s.id}</small>
       </p>
       {s.text && <blockquote class="statute-quote">{s.text}</blockquote>}
@@ -504,14 +505,15 @@ export function QuestionPage({ ctx, id, readText }: { ctx: ViewContext; id: stri
   return (
     <section class="view place question" data-question={q.id}>
       <header class="qhead">
-        <p class="eyebrow qmeta">
+        <p class="eyebrow">An open question</p>
+        <h1>{q.title}</h1>
+        <p class="qmeta">
           <StatusTag q={q} />
           {open && <ClassBadge cls={q.cls} />}
           {open && q.blocksCertification && <span class="flag blocks">Blocks certification</span>}
           <ProgramTags programs={q.programs} />
-          <small class="mono muted">{q.id}</small>
+          <IdSmall id={q.id} />
         </p>
-        <h1>{q.title}</h1>
         <p class="qowner">
           {owner
             ? <>Owner: <b>{owner}</b>{mine.includes(owner) && <span class="you"> (you)</span>}{agencyOf(owner) && <span class="muted">, {agencyOf(owner)}</span>}</>

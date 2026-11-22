@@ -38,6 +38,7 @@ import { NoLedger } from "../views/ViewStub";
 import { programsOfCase } from "../../engine/cases";
 import "../views/walkthrough.css";
 import "./households.css";
+import { UnverifiedBadge } from "../kit";
 
 /** The determination of one person's result: the canonical address. */
 export function determinationHref(
@@ -442,7 +443,7 @@ function Body(
                 <li key={sid}>
                   <a href={excerptHref(r, sid)}>{src ? citationText(src.citation) : sid}</a> <span class="code">{sid}</span>
                   {src && <span class="small"> · {EXCERPT_KIND_LABEL[excerptKind(src, vol.documents)]}{src.title ? `: ${src.title}` : ""}</span>}
-                  {unverified.has(sid) && <> <span class="flag unverified">unverified source</span></>}
+                  {unverified.has(sid) && <> <UnverifiedBadge /></>}
                 </li>
               );
             })}
@@ -589,7 +590,7 @@ function CiteLinks(
               href={excerptHref(ctx.route, s)} data-cite={s} title={src ? `${src.title}: ${src.citation}` : s}
               class={unverified.has(s) ? "unverified" : undefined}
             >{shortCitation(src) || s}</a> <span class="code">{s}</span>
-            {unverified.has(s) && <> <span class="flag unverified">unverified source</span></>}
+            {unverified.has(s) && <> <UnverifiedBadge /></>}
           </span>
         );
       })}
@@ -624,7 +625,7 @@ function Step(
         {it ? <a class="sname" href={itemHref(r, it)}>{n.name}</a> : <span class="sname">{n.name}</span>}
         {n.month && <span class="small">{formatDate(n.month)}</span>}
         <span>is</span> <span class="val">{valueOf(engine, n)}</span>
-        {flagged && <span class="flag unverified" title="cites an excerpt that is not a verified quotation">unverified source</span>}
+        {flagged && <UnverifiedBadge />}
       </div>
       {n.override && <p class="fedbanner small"><b>A statute governs over the Colorado rule.</b> {n.override}</p>}
       {it && <PlainRule engine={engine} item={it} asOf={hc.as_of} />}
@@ -652,7 +653,7 @@ function Step(
                 <span class="small">
                   {i.step !== null ? `step ${i.step}` : ORIGIN_WORDS[i.node.origin] ?? i.node.origin}
                   {i.step === null && <FigureVersion ctx={ctx} node={i.node} hc={hc} />}
-                  {i.step === null && i.node.sources.some((x) => unverified.has(x)) && <> · <span class="flag unverified">unverified source</span></>}
+                  {i.step === null && i.node.sources.some((x) => unverified.has(x)) && <> · <UnverifiedBadge /></>}
                   {i.node.value === null && !i.mattered && s.node.value !== null && <> · did not matter here</>}
                 </span>
               </li>

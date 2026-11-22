@@ -75,6 +75,8 @@ function Tiles({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
   // Legal and a role across every program read every program's lists.
   const everywhere = persona.id === "legal" || !persona.programs.length;
   const scope = everywhere ? null : programs;
+  // The Law lists the two tiles open, narrowed to the same programs.
+  const inScope: Record<string, string> = scope ? { programs: scope.join(",") } : {};
   const keep: Record<string, string> = r.params.persona ? { persona: r.params.persona } : {};
   const at = (patch: Partial<Route>) => buildHash({ ...r, arg: null, ...patch, params: { ...keep, ...(patch.params ?? {}) } });
 
@@ -142,8 +144,8 @@ function Tiles({ ctx, persona }: { ctx: ViewContext; persona: Persona }) {
             </ul>
           )}
         </Tile>
-        <Tile id="statute" num={deps.length} label="follow a statute over the rule" href={at({ view: "law", arg: "departures" })} />
-        <Tile id="unverified" num={unv.total} label="unverified or with no value today" href={at({ view: "law", arg: "unverified" })}>
+        <Tile id="statute" num={deps.length} label="follow a statute over the rule" href={at({ view: "law", arg: "departures", params: inScope })} />
+        <Tile id="unverified" num={unv.total} label="unverified or with no value today" href={at({ view: "law", arg: "unverified", params: inScope })}>
           <p class="tilesub muted">{n(unv.citing.length)} cite unverified text · {n(unv.noValue.length)} figures have no value</p>
         </Tile>
       </ul>

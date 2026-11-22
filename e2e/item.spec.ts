@@ -30,8 +30,8 @@ test("Dana: the children's income limit beside the rule text that states it", as
   // The law is on the page, not under a fold; no "Decision record" heading above the implementers' foot.
   await expect(page.locator("section#law blockquote.words").first()).toBeVisible();
   await expect(page.locator("section#law")).not.toContainText("Decision record");
-  // Every count reads from counts.ts: 16 read it, it reaches 23.
-  await expect(page.locator("section#households .countline")).toContainText(/Read by 16 of \d+ stored households; it reaches 23/, { timeout: 30_000 });
+  // Every count reads from counts.ts (test/ui/counts.test.ts): 20 read it, it reaches 28.
+  await expect(page.locator("section#households .countline")).toContainText(/Read by 20 of \d+ stored households; it reaches 28/, { timeout: 30_000 });
 });
 
 test("Marcus: the grant standard's versions, the freeze and the gap", async ({ page }) => {
@@ -85,19 +85,19 @@ test("the sign-off panel needs a name and stages a signature; never on my own st
   await expect(panel.locator(".staged-note")).toContainText("Your signature is in your proposal");
   await panel.getByRole("button", { name: "Take it back" }).click();
 
-  // Propose a new dated version: refused when it changes nothing, staged when it does.
-  const propose = page.locator("#propose");
-  await propose.getByRole("button", { name: "Change the figure" }).click();
-  await propose.locator('input[name="from"]').fill("2027-01-01");
-  await propose.getByRole("button", { name: "Add to my proposal" }).click();
-  await expect(propose.locator(".bad")).toContainText("nothing would change");
-  await propose.locator('input[name="from"]').fill("2028-07-01");
-  await propose.locator(".tableinputs input").first().fill("382");
-  await propose.locator("select").selectOption({ label: "Colorado Works basic cash assistance: no cost-of-living adjustment for State fiscal years 2026-27 and 2027-28; the annual increase resumes July 1, 2028" });
-  await propose.getByRole("button", { name: "Add to my proposal" }).click();
-  await expect(propose.locator(".notice")).toContainText("A new version from July 1, 2028 is in your proposal");
+  // "Propose a change" opens the one editor (Changes › My proposal, the item
+  // chosen): refused when it changes nothing, staged when it does.
+  await page.locator("#propose").getByRole("link", { name: "Change the figure" }).click();
+  await expect(page).toHaveURL(/#\/co\/changes\/proposal\?item=CO-276$/);
+  const ed = page.locator("section.propose-editor");
+  await ed.locator('input[name="mode"][value="correct"]').check();
+  await expect(ed.locator(".refuse")).toContainText("changes nothing");
+  await ed.locator('input[name="row-0"]').fill("382");
+  await ed.locator("button.addto").click();
+  await expect(page.locator(".flash")).toContainText("Added to your proposal");
   // My own change: no Approve.
-  await expect(panel).toContainText("You changed this item in your proposal, so you cannot sign it");
+  await page.goto("/#/co/item/CO-276");
+  await expect(panel).toContainText("You changed this item in your proposal, so you cannot sign it", { timeout: 30_000 });
   await expect(panel.getByRole("button", { name: /^Approve/ })).toHaveCount(0);
   // Its effect on the stored households is one click away.
   await page.getByRole("button", { name: "Compare the stored households with your staged change" }).click();

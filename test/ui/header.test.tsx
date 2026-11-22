@@ -238,15 +238,21 @@ describe("Breadcrumbs", () => {
   it("names each object down to the page, the page itself not a link", () => {
     const c = canonicalRoute(parseHash("#/mwr/households/C-01/p1/medicaid_ce_status_at_application"));
     const crumbs = crumbsFor(c, { engine, cases: vol.cases });
-    expect(crumbs.map((x) => x.label)).toEqual(["Households", "C-01: A household", "Person 1", engine.item("medicaid_ce_status_at_application")!.name]);
+    expect(crumbs.map((x) => x.label)).toEqual(["Households", "A household", "Person 1", engine.item("medicaid_ce_status_at_application")!.name]);
     expect(crumbs[0].href).toBe("#/mwr/households");
     expect(crumbs[1].href).toBe("#/mwr/households/C-01");
     expect(crumbs[crumbs.length - 1].href).toBeNull();
   });
 
+  it("names a question by its title, not its id (plain words first)", () => {
+    const c = canonicalRoute(parseHash("#/mwr/questions/OQ-9"));
+    const crumbs = crumbsFor(c, { questions: [{ id: "OQ-9", title: "Does the age range count the birthday month?" }] });
+    expect(crumbs.map((x) => x.label)).toEqual(["Questions", "Does the age range count the birthday month?"]);
+  });
+
   it("says the tab of a household's page", () => {
     const c = canonicalRoute(parseHash("#/mwr/households/C-01?tab=documents"));
-    expect(crumbsFor(c, { cases: vol.cases }).map((x) => x.label)).toEqual(["Households", "C-01: A household", "Documents still needed"]);
+    expect(crumbsFor(c, { cases: vol.cases }).map((x) => x.label)).toEqual(["Households", "A household", "Documents still needed"]);
   });
 
   it("puts a rule under its program and a figure under Figures", () => {

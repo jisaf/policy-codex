@@ -52,7 +52,7 @@ import { personaRoles, type Persona } from "./personas";
 import {
   groupByOwner, isOpen, matchesFilter, queueEntry, questionInfos, questionStatus, type QueueEntry, type QueueFilter,
 } from "./questions";
-import { expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
+import { caseReads, expectationReads, type ChangedResult, type StoredResult } from "./questionEffects";
 import { caseToSpec } from "../engine/cases";
 import { buildWalk, documentRows, documentsOwed, type DocumentOwed, type DocumentRow } from "./walkthrough";
 import { approvalStatus } from "./approvals";
@@ -120,8 +120,11 @@ export function householdCount(rs: ReadonlyArray<{ caseId: string }>): number {
 const restMemo = new WeakMap<Engine, WeakMap<readonly HouseholdCase[], Map<string, StoredResult[]>>>();
 
 /** identifier -> the stored results whose trace reads it. Built once per
- *  engine and case list (about a second for the Colorado volume), so views
- *  build it after their first paint. */
+ *  engine and case list (about a second for the Colorado volume, many on a
+ *  loaded machine), so a view never builds it at once: it uses
+ *  `useRestingIndex` (src/ui/useResting.ts), which builds it a household
+ *  at a time with `restingIndexInSteps`, and calls this only once
+ *  `restingReady` says it is built. */
 export function restingIndex(engine: Engine, cases: readonly HouseholdCase[]): Map<string, StoredResult[]> {
   let per = restMemo.get(engine);
   if (!per) { per = new WeakMap(); restMemo.set(engine, per); }
@@ -146,14 +149,22 @@ export function restingIndexInSteps(
   engine: Engine, cases: readonly HouseholdCase[], budgetMs = 30,
 ): Promise<Map<string, StoredResult[]>> {
   if (restingReady(engine, cases)) return Promise.resolve(restingIndex(engine, cases));
-  return new Promise((resolve) => {
+  // One build at a time: every page that asks while it runs waits on it
+  // (two pages each starting their own build doubled the work, and a page
+  // building it at once in a timer held the main thread for seconds on a
+  // loaded machine: the e2e's first click after choosing a role).
+  let per = pendingMemo.get(engine);
+  if (!per) { per = new WeakMap(); pendingMemo.set(engine, per); }
+  const pending = per.get(cases);
+  if (pending) return pending;
+  const p = new Promise<Map<string, StoredResult[]>>((resolve) => {
     const out = new Map<string, StoredResult[]>();
     let i = 0;
     const run = () => {
       if (restingReady(engine, cases)) { resolve(restingIndex(engine, cases)); return; }
       const until = Date.now() + budgetMs;
       while (i < cases.length && Date.now() < until) {
-        for (const e of expectationReads(engine, [cases[i]])) {
+        for (const e of caseReads(engine, cases[i])) {
           const { reads, ...r } = e;
           for (const id of reads) {
             const list = out.get(id);
@@ -163,14 +174,19 @@ export function restingIndexInSteps(
         i++;
       }
       if (i < cases.length) { setTimeout(run, 0); return; }
-      let per = restMemo.get(engine);
-      if (!per) { per = new WeakMap(); restMemo.set(engine, per); }
-      per.set(cases, out);
-      resolve(out);
+      let done = restMemo.get(engine);
+      if (!done) { done = new WeakMap(); restMemo.set(engine, done); }
+      if (!done.has(cases)) done.set(cases, out);
+      per!.delete(cases);
+      resolve(done.get(cases)!);
     };
     setTimeout(run, 0);
   });
+  per.set(cases, p);
+  return p;
 }
+
+const pendingMemo = new WeakMap<Engine, WeakMap<readonly HouseholdCase[], Promise<Map<string, StoredResult[]>>>>();
 
 /** Whether `restingIndex` is already built (a view can then use it at once). */
 export function restingReady(engine: Engine, cases: readonly HouseholdCase[]): boolean {
@@ -642,6 +658,23 @@ export function resolvedQuestions(engine: Engine, questions: readonly OpenQuesti
   return questionInfos(engine, questions).filter((q) => !isOpen(q.status));
 }
 
+// ---- a role's programs
+
+/** Whether an item is in a role's PROGRAMS: its program is one of them, or
+ *  it is shared by every program ("All"); every item when `programs` is
+ *  null. The one reading every Desk tile and the lists it links to use (the
+ *  Desk's statute-over-rule and unverified tiles, Law filtered to them,
+ *  "takes effect soon"). */
+export function inPrograms(it: Pick<Item, "program">, programs: readonly string[] | null): boolean {
+  return !programs || programs.includes(it.program) || it.program === "All";
+}
+
+/** A `?programs=` list from an address ("Medicaid,CHP"), or null. */
+export function programsParam(value: string | undefined): string[] | null {
+  const list = (value ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+  return list.length ? list : null;
+}
+
 // ---- Law: unverified sources and what rests on them
 
 /** The excerpts a document gives, in sources.md order. */
@@ -676,12 +709,13 @@ export interface UnverifiedReach {
  *  the Law page, its overview and the Desk tile. */
 export function unverifiedReach(
   engine: Engine, sources: readonly Source[], unverified: ReadonlySet<string>,
-  cases: readonly HouseholdCase[] | null = null,
+  cases: readonly HouseholdCase[] | null = null, programs: readonly string[] | null = null,
 ): UnverifiedReach {
-  const citing = itemsCitingUnverified(engine, unverified);
+  const citing = itemsCitingUnverified(engine, unverified).filter((it) => inPrograms(it, programs));
   const citingIds = new Set(citing.map((it) => it.identifier));
-  const resting = [...restingOnUnverified(engine, unverified)].filter((id) => !citingIds.has(id))
-    .map((id) => engine.item(id)).filter((it): it is Item => Boolean(it))
+  const resting = [...(programs ? new Set(engine.impact([...citingIds])) : restingOnUnverified(engine, unverified))]
+    .filter((id) => !citingIds.has(id))
+    .map((id) => engine.item(id)).filter((it): it is Item => Boolean(it) && inPrograms(it!, programs))
     .sort((a, b) => a.program.localeCompare(b.program) || a.name.localeCompare(b.name));
   const outcomes = [...new Set(citing.flatMap((it) => outcomesAffected(engine, it.identifier)))];
   let households: string[] | null = null;
@@ -689,7 +723,9 @@ export function unverifiedReach(
     const read = new Set(restingOn(engine, cases, [...citingIds]).map((r) => r.caseId));
     households = cases.filter((c) => read.has(c.id)).map((c) => c.id);
   }
-  return { sources: sources.filter((s) => unverified.has(s.id)), citing, resting, outcomes, households };
+  const cited = new Set(citing.flatMap((it) => citedUnverified(it, unverified)));
+  const shown = sources.filter((s) => unverified.has(s.id) && (!programs || cited.has(s.id)));
+  return { sources: shown, citing, resting, outcomes, households };
 }
 
 export interface LawCounts {
@@ -710,8 +746,20 @@ export interface LawCounts {
 /** Every number the Law place shows (its tabs and overview). */
 export function lawCounts(
   engine: Engine, vol: { sources: readonly Source[]; documents: readonly DocumentMeta[] },
-  unverified: ReadonlySet<string>, date: string,
+  unverified: ReadonlySet<string>, date: string, programs: readonly string[] | null = null,
 ): LawCounts {
+  if (programs) {
+    const reach = unverifiedReach(engine, vol.sources, unverified, null, programs);
+    return {
+      departures: departureItems(engine, { asOf: date, programs }).length,
+      unverifiedSources: reach.sources.length,
+      citingUnverified: reach.citing.length,
+      restingOnUnverified: reach.resting.length,
+      noValue: figuresWithoutValue(engine, date).filter((it) => inPrograms(it, programs)).length,
+      excerpts: vol.sources.length,
+      documents: vol.documents.length,
+    };
+  }
   const citing = itemsCitingUnverified(engine, unverified);
   return {
     departures: departureItems(engine, { asOf: date }).length,
@@ -782,13 +830,14 @@ export function departureSince(it: Pick<Item, "effective" | "statute_override">)
 }
 
 /** Every item that follows a statute over a Colorado rule, in `programs`
- *  (all when null) and in force on `asOf` (all dates when absent). */
+ *  (`inPrograms`: shared items included; all when null) and in force on
+ *  `asOf` (all dates when absent). */
 export function departureItems(
   engine: Engine, opts: { programs?: readonly string[] | null; asOf?: string } = {},
 ): Item[] {
   return engine.items().filter((it) => {
     if (!it.statute_override) return false;
-    if (opts.programs && !opts.programs.includes(it.program)) return false;
+    if (!inPrograms(it, opts.programs ?? null)) return false;
     if (opts.asOf) {
       const since = departureSince(it);
       if (since && since > opts.asOf) return false;
@@ -1050,7 +1099,12 @@ export interface MapCounts {
    *  facts, figures (parameters), rules (derived items that are not a
    *  declared outcome) and declared outcomes. */
   reads: { facts: number; figures: number; rules: number; outcomes: number; total: number };
-  /** Every item that reads it, directly or through other rules. */
+  /** Every item that reads it, directly or through other rules (`total`,
+   *  the same as `dependentsOf`); of those, the items that are not an
+   *  outcome (`rules`); and the PROGRAM OUTCOMES it reaches (`outcomes`),
+   *  which is `outcomesAffected`: the one definition the item page's "What
+   *  it affects" and the Map both show (a path running only through
+   *  document-verification flags is left out). */
   readBy: { rules: number; outcomes: number; total: number };
 }
 
@@ -1070,9 +1124,11 @@ export function outcomeIdentifiers(engine: Engine): Set<string> {
 }
 
 /** How much stands behind and ahead of an item, as the Map shows it at full
- *  depth: every dependency is followed (verification flags included, unlike
- *  `outcomesAffected`), so the counts match what the Map can expand to. A
- *  program's outcome reads "fed by N facts, M figures, R rules". */
+ *  depth: every dependency is followed, so the item counts match what the
+ *  Map can expand to. A program's outcome reads "fed by N facts, M figures,
+ *  R rules". The program outcomes an item reaches are `outcomesAffected`,
+ *  as on the item page (the Map once said CO-191 reached 22 outcomes and the
+ *  item page 20: two definitions of one number). */
 export function mapCounts(engine: Engine, identifier: string): MapCounts {
   let per = mapCountMemo.get(engine);
   if (!per) { per = new Map(); mapCountMemo.set(engine, per); }
@@ -1096,11 +1152,11 @@ export function mapCounts(engine: Engine, identifier: string): MapCounts {
     else if (outcomes.has(id)) reads.outcomes++;
     else reads.rules++;
   }
-  const readBy = { rules: 0, outcomes: 0, total: 0 };
+  const readBy = { rules: 0, outcomes: outcomesAffected(engine, identifier).length, total: 0 };
   for (const id of walk((x) => engine.usedBy(x))) {
     if (!engine.item(id)) continue;
     readBy.total++;
-    if (outcomes.has(id)) readBy.outcomes++; else readBy.rules++;
+    if (!outcomes.has(id)) readBy.rules++;
   }
   const out = { reads, readBy };
   per.set(identifier, out);
@@ -1245,8 +1301,8 @@ export function changesReadBy(
 export const DESK_DEFINITIONS = {
   signOff: "An item waits for your signature when the volume's approval policy needs one of your roles to sign it and that role has not. An item two of your roles must sign counts once.",
   soon: `Takes effect soon: a figure version, a rule or a rule document whose own date falls in the next ${NEW_VERSION_SOON_DAYS} days, in your programs or shared by every program.`,
-  departures: "Statute over rule: an item that follows a statute over the Colorado rule text, in force today.",
-  unverified: "Unverified: an item that cites an excerpt not verified against its document, or a figure with no value today (a household then gets \"cannot determine\").",
+  departures: "Statute over rule: an item that follows a statute over the Colorado rule text, in force today, in your programs or shared by every program.",
+  unverified: "Unverified: an item that cites an excerpt not verified against its document, or a figure with no value today (a household then gets \"cannot determine\"), in your programs or shared by every program.",
   proposal: "Your proposal: every edit, signature, answer and note staged in this browser and not yet sent.",
   steps: "A step is one rule the result is worked out from. \"The main steps\" are the rules the result reads directly; each level down adds the rules those read. Facts and figures are named inside the steps.",
   figures: "A figure is a number or table the rules read (a limit, a standard, a rate). Its value on a date is the version in force that day.",
@@ -1293,7 +1349,7 @@ export interface UnverifiedInPrograms {
 export function unverifiedInPrograms(
   engine: Engine, unverified: ReadonlySet<string>, programs: readonly string[] | null, date: string,
 ): UnverifiedInPrograms {
-  const mine = (it: Item) => !programs || programs.includes(it.program) || it.program === "All";
+  const mine = (it: Item) => inPrograms(it, programs);
   const citing = itemsCitingUnverified(engine, unverified).filter(mine);
   const noValue = figuresWithoutValue(engine, date).filter(mine);
   return { citing, noValue, total: new Set([...citing, ...noValue].map((it) => it.id)).size };

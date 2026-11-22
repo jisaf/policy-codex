@@ -404,7 +404,7 @@ export function ItemView() {
             >Rename</button>
           </p>
         )}
-        <nav class="tabs itemtabs" aria-label="This item">
+        <nav class="pagetabs itemtabs" aria-label="This item">
           <a class={tab === "about" ? "on" : ""} aria-current={tab === "about" ? "page" : undefined} href={tabHref("about")} data-tab="about">The item</a>
           <a class={tab === "map" ? "on" : ""} aria-current={tab === "map" ? "page" : undefined} href={tabHref("map")} data-tab="map">Map</a>
         </nav>

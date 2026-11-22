@@ -3,6 +3,7 @@
  * full text opened at a passage: `#/<vol>/law/doc/D-n?at=S-n` scrolls to the
  * excerpt and highlights the whole passage, every paragraph of it (Blind B;
  * the App highlighted only the first). */
+import { IdSmall, UnverifiedBadge } from "../kit";
 import { useSignal } from "@preact/signals";
 import { useLayoutEffect } from "preact/hooks";
 import type { Source } from "../../ledger/markdown";
@@ -162,7 +163,7 @@ export function LawSources({ ctx }: { ctx: ViewContext }) {
             <li key={s.id} data-excerpt={s.id}>
               <a href={excerptHref(r, s.id)}>{s.title || s.citation}</a>{" "}
               <KindTag s={s} vol={vol} />
-              {isUnverified(s) && <> <span class="flag unverified">Unverified</span></>}{" "}
+              {isUnverified(s) && <> <UnverifiedBadge of="excerpt" /></>}{" "}
               <small class="mono muted">{s.id}</small>
               {doc && <div class="small muted">in <a href={docHref(r, doc.id, s.id)}>{doc.title}</a></div>}
             </li>
@@ -188,8 +189,9 @@ export function LawExcerptPage({ ctx, id }: { ctx: ViewContext; id: string }) {
   return (
     <section class="view place law law-excerpt" data-excerpt={s.id}>
       <div class="placehead" data-place="law">
-        <p class="eyebrow"><KindTag s={s} vol={vol} /> {isUnverified(s) && <span class="flag unverified">Unverified: not a quotation</span>} <small class="mono muted">{s.id}</small></p>
+        <p class="eyebrow">An excerpt of the law</p>
         <h1>{s.title || s.citation}</h1>
+        <p class="meta"><KindTag s={s} vol={vol} /> {isUnverified(s) && <UnverifiedBadge of="excerpt" />} <IdSmall id={s.id} /></p>
         <p class="muted">{s.citation}</p>
       </div>
       {isUnverified(s) && (
@@ -406,7 +408,7 @@ export function LawDocumentPage({ ctx, id, fetchText }: { ctx: ViewContext; id: 
           {excerpts.map((s) => (
             <li key={s.id} id={s.id} class={at === s.id ? "on" : undefined}>
               <a href={docHref(r, doc.id, s.id)}>{s.title || s.citation}</a>{" "}
-              {isUnverified(s) && <span class="flag unverified">Unverified</span>} <small class="mono muted">{s.id}</small>
+              {isUnverified(s) && <UnverifiedBadge of="excerpt" />} <small class="mono muted">{s.id}</small>
             </li>
           ))}
         </ul>

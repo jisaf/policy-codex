@@ -9,6 +9,7 @@ import { useSignal } from "@preact/signals";
 import { useMemo } from "preact/hooks";
 import type { Engine } from "../../engine/engine";
 import type { Item } from "../../engine/types";
+import { isSignatureOnly } from "../../changes/apply";
 import { fileEntries, type ChangeEntry } from "../../changes/types";
 import type { LoadedVolume } from "../../ledger/load";
 import { approvalStatus, type SignAction } from "../approvals";
@@ -23,12 +24,13 @@ import { programLabel } from "../roles";
 import { versionInForce } from "../../engine/versions";
 import { unverifiedIds } from "../provenance";
 import type { StoredResult } from "../questionEffects";
+import { proposeHref } from "../proposal";
 import { buildHash, type Route } from "../router";
 import {
-  changeSetSig, ledgerSource, modeSig, openEditor, putChangeEntries, putChangeEntry, putFileChange,
+  changeSetSig, ledgerSource, modeSig, openEditor, putChangeEntries, putFileChange,
 } from "../state";
 import {
-  appendQuestion, applyFigureEdit, citedSources, figureText, figureVersions, parseFigure,
+  appendQuestion, citedSources,
 } from "./model";
 
 /** The name the sign-off list also signs with (InboxView `SIGNER_KEY`). */
@@ -223,173 +225,23 @@ export function SignOffPanel({ base, vol, route: r, persona, item, today, restin
 
 // ---- propose a change
 
-function stagedEntry(id: string): ChangeEntry | undefined {
-  return changeSetSig.value.entries.find((e) => e.id === id);
-}
-
-/** Stages `after` against the ledger's item, on top of anything already
- *  staged for it (a signature, an earlier edit). */
-function stage(base: Engine, vol: LoadedVolume, item: Item, edit: (current: Item) => Item | string): string | null {
-  const prior = stagedEntry(item.id);
-  const before = prior?.before ?? base.itemById(item.id) ?? item;
-  const current = prior?.after ?? before;
-  const next = edit(JSON.parse(JSON.stringify(current)) as Item);
-  if (typeof next === "string") return next;
-  putChangeEntry({ id: item.id, chapter: prior?.chapter ?? vol.chapterOf[item.id] ?? "parameters", before, after: next });
-  return null;
-}
-
-function TableInputs({ rows, set }: { rows: Record<string, string>; set: (r: Record<string, string>) => void }) {
-  return (
-    <div class="tableinputs">
-      {Object.keys(rows).map((k) => (
-        <label key={k} class="inline">
-          <span>{k}</span>
-          <input inputMode="decimal" value={rows[k]} onInput={(e) => set({ ...rows, [k]: (e.target as HTMLInputElement).value })} />
-        </label>
-      ))}
-    </div>
-  );
-}
-
-function FigureForm({ base, vol, item, today, done }: RailProps & { done: (msg: string) => void }) {
-  const vs = figureVersions(item, today);
-  const versioned = Array.isArray(item.versions);
-  const latest = vs[vs.length - 1]?.version;
-  const mode = useSignal<"add" | "correct">(versioned ? "add" : "correct");
-  const at = useSignal(vs.find((v) => v.current)?.version.from ?? latest?.from ?? "");
-  const startValue = (from: string): unknown => (versioned ? vs.find((v) => v.version.from === from)?.version.value ?? latest?.value : item.value);
-  const seed = mode.value === "add" ? latest?.value : startValue(at.value);
-  const isTable = seed !== null && typeof seed === "object";
-  const from = useSignal("");
-  const text = useSignal(isTable ? "" : figureText(item, seed));
-  const rows = useSignal<Record<string, string>>(isTable ? Object.fromEntries(Object.entries(seed as object).map(([k, v]) => [k, String(v)])) : {});
-  const source = useSignal("");
-  const error = useSignal("");
-  const reseed = (v: unknown) => {
-    if (v !== null && typeof v === "object") rows.value = Object.fromEntries(Object.entries(v as object).map(([k, x]) => [k, String(x)]));
-    else text.value = figureText(item, v);
-  };
-  const excerpts = citedSources(item).map((id) => vol.sources.find((s) => s.id === id)).filter((s) => !!s);
-  const submit = (e: Event) => {
-    e.preventDefault();
-    error.value = "";
-    const value = isTable
-      ? Object.fromEntries(Object.entries(rows.value).map(([k, v]) => [k, parseFigure({ type: "number" }, v)]))
-      : parseFigure(item, text.value);
-    if (isTable && Object.values(value as object).some((v) => typeof v !== "number")) { error.value = "Every row needs a number."; return; }
-    const err = stage(base, vol, item, (cur) => {
-      if (!versioned) {
-        if (JSON.stringify(cur.value) === JSON.stringify(value)) return "That is the figure already there: nothing would change.";
-        return { ...cur, value };
-      }
-      const out = applyFigureEdit(cur, mode.value === "add"
-        ? { kind: "add", from: from.value, value, source: source.value }
-        : { kind: "correct", from: at.value, value, source: source.value });
-      return "error" in out ? out.error : out.item;
-    });
-    if (err) { error.value = err; return; }
-    done(mode.value === "add" ? `A new version from ${formatDate(from.value)} is in your proposal.` : "Your correction is in your proposal.");
-  };
-  return (
-    <form class="propose-form" onSubmit={submit}>
-      {versioned && (
-        <fieldset>
-          <legend>What changes</legend>
-          <label class="radio">
-            <input type="radio" name="pmode" checked={mode.value === "add"} onChange={() => { mode.value = "add"; reseed(latest?.value); }} />
-            Add a new dated version <span class="muted small">(the law or the figure changes on a date)</span>
-          </label>
-          <label class="radio">
-            <input type="radio" name="pmode" checked={mode.value === "correct"} onChange={() => { mode.value = "correct"; reseed(startValue(at.value)); }} />
-            Correct a version <span class="muted small">(it was transcribed wrongly)</span>
-          </label>
-        </fieldset>
-      )}
-      {versioned && mode.value === "add" && (
-        <label class="field">First day it applies
-          <input type="date" name="from" value={from.value} onInput={(e) => { from.value = (e.target as HTMLInputElement).value; }} />
-        </label>
-      )}
-      {versioned && mode.value === "correct" && (
-        <label class="field">The version to correct
-          <select value={at.value} onChange={(e) => { at.value = (e.target as HTMLSelectElement).value; reseed(startValue(at.value)); }}>
-            {vs.map((v) => <option key={v.version.from} value={v.version.from}>From {formatDate(v.version.from)}</option>)}
-          </select>
-        </label>
-      )}
-      {isTable
-        ? <fieldset><legend>The figures</legend><TableInputs rows={rows.value} set={(x) => { rows.value = x; }} /></fieldset>
-        : (
-          <label class="field">The figure{item.type === "rate" ? " (a percentage, e.g. 142%)" : ""}
-            <input name="value" value={text.value} onInput={(e) => { text.value = (e.target as HTMLInputElement).value; }} />
-          </label>
-        )}
-      {versioned && (
-        <label class="field">The text it is taken from
-          <select value={source.value} onChange={(e) => { source.value = (e.target as HTMLSelectElement).value; }}>
-            <option value="">{mode.value === "add" ? "Not cited yet" : "Keep the version's excerpt"}</option>
-            {excerpts.map((s) => <option key={s!.id} value={s!.id}>{s!.title}</option>)}
-          </select>
-        </label>
-      )}
-      {error.value && <p class="bad" role="alert">{error.value}</p>}
-      <button type="submit" class="btn primary">Add to my proposal</button>
-    </form>
-  );
-}
-
-function MeaningForm({ base, vol, item, done }: RailProps & { done: (msg: string) => void }) {
-  const text = useSignal(stagedEntry(item.id)?.after?.meaning ?? item.meaning ?? "");
-  const error = useSignal("");
-  const submit = (e: Event) => {
-    e.preventDefault();
-    const meaning = text.value.trim();
-    const err = stage(base, vol, item, (cur) => {
-      if (!meaning) return "Say what it means.";
-      if (meaning === (cur.meaning ?? "").trim()) return "That is what it already says: nothing would change.";
-      return { ...cur, meaning };
-    });
-    if (err) { error.value = err; return; }
-    error.value = "";
-    done("Your new wording is in your proposal.");
-  };
-  return (
-    <form class="propose-form" onSubmit={submit}>
-      <label class="field">What it means
-        <textarea rows={6} value={text.value} onInput={(e) => { text.value = (e.target as HTMLTextAreaElement).value; }} />
-      </label>
-      <p class="muted small">How the rule is decided is changed in edit mode, by the people who maintain the rules.</p>
-      {error.value && <p class="bad" role="alert">{error.value}</p>}
-      <button type="submit" class="btn primary">Add to my proposal</button>
-    </form>
-  );
-}
-
+/** "Propose a change": one editor for every change, Changes › My proposal
+ *  with this item chosen (proposal.ts `proposeHref`), where its effect on
+ *  the stored households and who must approve sit beside it. The rail only
+ *  links there (one canonical page per task). */
 export function ProposeChange(props: RailProps) {
-  const open = useSignal(false);
-  const msg = useSignal<string | null>(null);
   const { item, route: r } = props;
-  const done = (m: string) => { msg.value = m; open.value = false; };
+  const staged = changeSetSig.value.entries.some((e) => e.id === item.id && e.after && !isSignatureOnly(e));
   return (
     <section class="railcard propose" id="propose" aria-labelledby="propose-h">
       <h2 id="propose-h">Propose a change</h2>
-      {!open.value && (
-        <button type="button" class="btn wide" aria-expanded="false" onClick={() => { open.value = true; msg.value = null; }}>
-          {item.kind === "parameter" ? "Change the figure" : "Change what it means"}
-        </button>
-      )}
-      {open.value && (
-        <>
-          {item.kind === "parameter" ? <FigureForm {...props} done={done} /> : <MeaningForm {...props} done={done} />}
-          <button type="button" class="linkish" onClick={() => { open.value = false; }}>Cancel</button>
-        </>
-      )}
-      {msg.value && (
-        <p class="notice" role="status">
-          {msg.value} <a href="#affects">Compare the stored households</a> · <a href={buildHash({ ...r, view: "changes", arg: "proposal", params: {} })}>See my proposal</a>
-        </p>
-      )}
+      <a class="btn wide" href={proposeHref(r, item)}>
+        {item.kind === "parameter" ? "Change the figure" : "Change what it means"}
+      </a>
+      <p class="muted small">
+        {staged ? "Your proposal already changes it. " : ""}
+        Opens My proposal, with its effect on the stored households and who must approve.
+      </p>
       {modeSig.value === "edit" && (
         <button type="button" class="linkish small" onClick={() => openEditor(item.id)}>Open the full editor (implementers)</button>
       )}

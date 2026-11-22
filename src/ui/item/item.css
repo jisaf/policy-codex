@@ -6,13 +6,7 @@
 .itemhead h1 { font-size: 22px; margin: 2px 0 6px; line-height: 1.25; }
 .itemhead .badges { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 8px; }
 .itemhead .badges .idline { margin-left: 4px; font-size: 12px; }
-.itemhead a.qtag { text-decoration: none; color: var(--warn); background: #fff4d6; border-color: #e3c470; }
-.itemhead .tag.staged { background: var(--med); border-color: var(--accent); }
 .itemhead .editrow { margin: 0 0 8px; }
-.itemtabs { display: flex; gap: 0; margin-top: 4px; }
-.itemtabs a { border-radius: 0; padding: 5px 14px; }
-.itemtabs a:first-child { border-radius: 4px 0 0 4px; }
-.itemtabs a:last-child { border-radius: 0 4px 4px 0; border-left: 0; }
 .itempage .jump { display: none; margin: 8px 0 0; font-size: 13px; }
 
 .itemgrid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
@@ -89,9 +83,6 @@ table.across th[scope="row"] { font-weight: 400; }
 
 /* Households and effects */
 .countline { margin: 0 0 4px; }
-details.howcounted { margin: 0 0 8px; font-size: 12px; color: var(--muted); }
-details.howcounted summary { cursor: pointer; }
-details.howcounted p { margin: 4px 0; max-width: 72ch; }
 table.hhvalues td { vertical-align: top; }
 table.hhvalues th:first-child { width: 55%; }
 table.hhvalues .pval .who { color: var(--muted); }

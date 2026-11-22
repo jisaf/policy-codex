@@ -11,20 +11,20 @@ import type { HouseholdCase } from "../../../engine/cases";
 import type { Item } from "../../../engine/types";
 import {
   changedBy, changedPhrase, changedSplit, changeMonths, changesInMonth, changesReadBy, COUNT_DEFINITIONS,
-  documentReaders, householdCount, householdsReadingAny, householdsThatRead, itemsCitingDocument, restingIndex,
-  restingReady,
+  documentReaders, householdCount, householdsReadingAny, householdsThatRead, itemsCitingDocument,
   type ChangeEvent, type DocumentChange,
 } from "../../counts";
 import type { ChangedResult } from "../../questionEffects";
 import { formatDate, formatValue } from "../../present";
 import { programLabel } from "../../roles";
+import { useRestingReady } from "../../useResting";
 import { buildHash, type Route } from "../../router";
 import { navigate } from "../../state";
 import { plainCaseTitle } from "../../walkthrough";
 import { withPreviousFigure } from "../../proposal";
 import { noVersionReason } from "../../Present";
 import { type ViewContext } from "../../views/context";
-import { ItemLink } from "../../views/parts";
+import { householdName, HouseholdRefs, ItemRef } from "../../kit";
 import { ChangedTable, householdHref } from "./ChangedTable";
 
 export function shiftMonth(month: string, by: number): string {
@@ -36,19 +36,10 @@ export function monthName(month: string): string {
   return new Date(`${month}-01T00:00:00Z`).toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 }
 
-/** Whether the read index (counts.ts `restingIndex`, about a second on the
- *  Colorado volume) is built; it is built after the first paint. */
+/** Whether the read index (counts.ts `restingIndex`) is built; it is built
+ *  a household at a time after the first paint (src/ui/useResting.ts). */
 export function useReadIndex(engine: Engine, cases: readonly HouseholdCase[]): boolean {
-  const [ready, setReady] = useState(() => restingReady(engine, cases));
-  useEffect(() => {
-    if (restingReady(engine, cases)) { setReady(true); return; }
-    setReady(false);
-    // Not for a reader only passing through: the page paints, then waits a
-    // moment before the second of work.
-    const t = setTimeout(() => { restingIndex(engine, cases); setReady(true); }, 250);
-    return () => clearTimeout(t);
-  }, [engine, cases]);
-  return ready || restingReady(engine, cases);
+  return useRestingReady(engine, cases);
 }
 
 const KIND_TEXT: Record<ChangeEvent["kind"], string> = {
@@ -123,7 +114,7 @@ export function TakesEffect({ ctx }: { ctx: ViewContext }) {
           Only what household{" "}
           <select value={hh} onChange={(e) => set({ hh: (e.target as HTMLSelectElement).value })}>
             <option value="">any</option>
-            {vol.cases.map((c) => <option key={c.id} value={c.id}>{c.id}: {shortTitle(c)}</option>)}
+            {vol.cases.map((c) => <option key={c.id} value={c.id}>{shortTitle(c)} ({c.id})</option>)}
           </select>
           {" "}reads
         </label>
@@ -178,26 +169,17 @@ function monthHref(r: Route, month: string, thisMonth: string): string {
 }
 
 function shortTitle(c: HouseholdCase): string {
-  const t = plainCaseTitle(c.title).title;
-  return t.length > 48 ? `${t.slice(0, 47).replace(/\s+\S*$/, "")}…` : t;
+  return householdName(c, 48);
 }
 
 function Readers({ r, cases, ids, hh }: { r: Route; cases: readonly HouseholdCase[]; ids: string[] | null; hh: string }) {
   if (ids === null) return <p class="readers muted">Working out which stored households read it…</p>;
   if (!ids.length) return <p class="readers muted">No stored household reads it.</p>;
-  const byId = new Map(cases.map((c) => [c.id, c]));
-  const first = ids.slice(0, 10);
   return (
-    <p class="readers">
+    <div class="readers">
       Read by {ids.length} stored household{ids.length === 1 ? "" : "s"}:{" "}
-      {first.map((id, i) => (
-        <span key={id}>
-          {i > 0 && ", "}
-          <a href={householdHref(r, id)} title={byId.get(id)?.title} class={id === hh ? "hl" : ""}>{id}</a>
-        </span>
-      ))}
-      {ids.length > first.length && <> and {ids.length - first.length} more</>}
-    </p>
+      <HouseholdRefs r={r} ids={ids} cases={cases} mark={hh || undefined} />
+    </div>
   );
 }
 
@@ -243,7 +225,7 @@ function ChangeRow({ ctx, e, readers, hh }: { ctx: ViewContext; e: ChangeEvent; 
       <div class="tookhead">
         <span class="date">{formatDate(e.date)}</span>
         <span class="tag">{KIND_TEXT[e.kind]}</span>
-        <span class="name"><ItemLink route={r} item={e.item} /></span>
+        <span class="name"><ItemRef r={r} item={e.item} /></span>
         <span class="tag">{programLabel(e.item.program)}</span>
         {e.item.statute_override && <span class="tag fed">Federal law over the Colorado rule</span>}
       </div>

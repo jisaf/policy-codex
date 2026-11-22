@@ -8,7 +8,7 @@ import path from "node:path";
 import { loadVolume } from "../../src/tools/volumes";
 import {
   affectsPhrase, awaitingByRole, awaitingSignOff, changesInMonth, itemAffects, citedUnverified, COUNT_DEFINITIONS, documentsStillNeeded,
-  figuresWithoutValue, householdsReached, householdsThatRead, isPastDue, itemsCitingUnverified, monthRange,
+  figuresWithoutValue, householdsReached, householdsThatRead, isPastDue, itemsCitingUnverified, mapCounts, monthRange,
   newVersionSoon, ownedPhrase, ownedQuestions, ownerGroups, pastDueCount, personaQuestions, readReachPhrase,
   restingOnUnverified, unverifiedUpstream, documentsNeededBy, whatIfPhrase,
 } from "../../src/ui/counts";
@@ -201,5 +201,17 @@ describe("affects: what reads an item and the outcomes it reaches (the item page
     expect([a.direct, a.outcomes]).toEqual([3, 20]);
     expect(affectsPhrase(a)).toMatch(/^Read by 3 rules directly and \d+ in all, reaching 20 program outcomes$/);
     expect(COUNT_DEFINITIONS.affects).toMatch(/verification/);
+  });
+
+  it("the Map and the item page say the same: CO-191 reaches 20 program outcomes, read by 76 items (the Map said 22)", () => {
+    const a = itemAffects(engine, ident("CO-191"));
+    const m = mapCounts(engine, ident("CO-191"));
+    expect(m.readBy.outcomes).toBe(a.outcomes);
+    expect(m.readBy.outcomes).toBe(20);
+    expect(m.readBy.total).toBe(a.dependents);
+    // Every item the page's centre box can name, for every program outcome.
+    for (const id of ["CO-276", "CO-914"]) {
+      expect(mapCounts(engine, ident(id)).readBy.outcomes).toBe(itemAffects(engine, ident(id)).outcomes);
+    }
   });
 });

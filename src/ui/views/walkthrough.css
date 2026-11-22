@@ -17,9 +17,6 @@
 /* Pickers. */
 .wk-pick { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0; }
 .wk-pick > .lbl { color: var(--muted); min-width: 5.5em; }
-.wk-pick a.chip { display: inline-block; padding: 3px 10px; border: 1px solid var(--line); border-radius: 14px;
-  text-decoration: none; color: var(--ink); background: var(--panel); }
-.wk-pick a.chip.on { background: var(--med); border-color: var(--accent); font-weight: 600; }
 .wk-pick select { font: inherit; padding: 3px; max-width: 100%; }
 .wk-pick label { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; max-width: 100%; min-width: 0; }
 .wk-notes summary { cursor: pointer; color: var(--accent); }

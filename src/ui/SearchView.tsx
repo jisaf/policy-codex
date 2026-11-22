@@ -50,7 +50,7 @@ export function SearchView() {
       </form>
       {q.trim() && !hits.length && <p class="muted">Nothing has every word of "{q}". Try fewer words.</p>}
       {shown.length > 1 && (
-        <nav class="tabs resultjump" aria-label="Result types">
+        <nav class="chips resultjump" aria-label="Result types">
           {shown.map((g) => (
             <button key={g} type="button" onClick={() => document.getElementById(`search-${g}`)?.scrollIntoView?.()}>
               {RESULT_GROUP_LABEL[g]} ({grouped[g].length})

@@ -45,7 +45,6 @@ main:focus { outline: none; }
 .results .allresults { border-top: 1px solid var(--line); font-weight: 600; color: var(--accent); }
 .proposal-pill { margin-left: auto; white-space: nowrap; text-decoration: none; font-size: 13px; color: var(--muted);
   padding: 4px 10px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); }
-.proposal-pill.has { background: #e3f1e6; color: var(--ok); border-color: #b9dcc2; font-weight: 600; }
 
 /* breadcrumbs */
 nav.crumbs { padding: 6px 20px 0; font-size: 13px; color: var(--muted); }
@@ -59,16 +58,13 @@ nav.crumbs [aria-current] { color: var(--ink); }
 .placehead .purpose { color: var(--muted); margin: 0 0 8px; max-width: 70ch; }
 .placehead .interim { font-size: 12px; }
 .view.place { background: none; border: 0; padding: 0; }
-.tabs.hhtabs, .tabs.changetabs { display: flex; flex-wrap: wrap; gap: 0; margin: 8px 0 12px; }
 .hhtab { min-width: 0; }
-.lawcards { list-style: none; padding: 0; }
 .rolechoice { margin-top: 12px; }
 .searchpage .controls input[type="search"] { flex: 1; min-width: 12rem; padding: 5px 8px; font: inherit; }
 .searchpage .group h2 { font-size: 17px; margin: 18px 0 6px; }
 .searchpage ul.hits { list-style: none; padding: 0; margin: 0; }
 .searchpage ul.hits li { padding: 6px 0; border-bottom: 1px solid var(--line); }
 .searchpage .snippet { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
-.tabs.resultjump { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
 .figures .figuregroup h2 { font-size: 17px; margin: 16px 0 4px; }
 .controls label.check { color: var(--ink); }
 .own-change { font-size: 13px; }

@@ -148,8 +148,23 @@ describe("the Desk page", () => {
       expect(tile("questions")!.querySelector("a")!.getAttribute("href")).toBe(roles.length ? "#/co/questions?mine=1" : "#/co/questions");
       expect(num(tile("soon")!.querySelector(".num")), pid).toBe(takingEffectSoon(engine, vol, todayIso(), scope).total);
       expect(num(tile("statute")!.querySelector(".num")), pid).toBe(departureItems(engine, { programs: scope, asOf: todayIso() }).length);
-      expect(tile("statute")!.querySelector("a")!.getAttribute("href")).toBe("#/co/law/departures");
-      expect(num(tile("unverified")!.querySelector(".num")), pid).toBe(unverifiedInPrograms(engine, unverified, scope, todayIso()).total);
+      // The Law lists the two tiles open are narrowed to the role's programs.
+      const q = scope ? `?programs=${encodeURIComponent(scope.join(","))}` : "";
+      const statuteHref = tile("statute")!.querySelector("a")!.getAttribute("href")!;
+      const unverifiedHref = tile("unverified")!.querySelector("a")!.getAttribute("href")!;
+      expect(statuteHref).toBe(`#/co/law/departures${q}`);
+      expect(unverifiedHref).toBe(`#/co/law/unverified${q}`);
+      const unv = unverifiedInPrograms(engine, unverified, scope, todayIso());
+      expect(num(tile("unverified")!.querySelector(".num")), pid).toBe(unv.total);
+      const deps = num(tile("statute")!.querySelector(".num"));
+      // ... and the list says the same number as the tile.
+      const law = show(statuteHref);
+      expect(law.querySelectorAll("li.departure").length, pid).toBe(deps);
+      if (scope) expect(law.querySelector(".scopenote")!.textContent).toMatch(/^Only your programs: /);
+      const unvPage = show(unverifiedHref);
+      expect(unvPage.querySelectorAll("section.unvsource li[data-item]").length + unvPage.querySelectorAll("ul.missing li").length, pid)
+        .toBe(unv.citing.length + unv.noValue.length);
+      show("#/co/desk");
       expect(tile("proposal")!.querySelector("a")!.getAttribute("href")).toBe("#/co/changes/proposal");
       // Definitions sit behind a disclosure, not in the tiles.
       expect(host.querySelector("details.howcounted summary")!.textContent).toBe("How this is counted");
@@ -231,6 +246,6 @@ describe("the Figures page", () => {
     const late = show("#/co/figures?asof=2028-08-01&novalue=1&program=ColoradoWorks");
     expect(late.querySelector('tr.figure[data-figure="cw_grant_standard_table"] .warn')!.textContent).toContain("cannot determine");
     const flags = [...show("#/co/figures").querySelectorAll(".flags label")].map((l) => l.textContent);
-    expect(flags).toEqual(["New version soon", "Source not verified", "No value on this date"]);
+    expect(flags).toEqual(["New version soon", "Unverified source", "No value on this date"]);
   });
 });

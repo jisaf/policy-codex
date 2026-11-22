@@ -53,7 +53,9 @@ function setParam(r: Route, key: string, value: string | null): void {
 
 // ------------------------------------------------------------------ codes
 
-export function CodesTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
+/** The aid-code cards. `chips` lists the programs to pick from (the page of
+ *  every program's codes); a program's own Aid codes tab leaves it out. */
+export function CodesTab({ ctx, map, chips = true }: { ctx: ViewContext; map: AidCodeMap; chips?: boolean }) {
   const { engine, vol, route: r, today } = ctx;
   const programs = codePrograms(engine, map);
   const program = programOfArg(engine, map, r.arg);
@@ -67,14 +69,14 @@ export function CodesTab({ ctx, map }: { ctx: ViewContext; map: AidCodeMap }) {
     .filter((g) => g.codes.length);
   return (
     <>
-      <nav class="tabs programs" aria-label="Programs">
+      {chips && <nav class="chips programs" aria-label="Programs">
         <a class={!program ? "on" : ""} href={buildHash({ ...r, arg: null, params: keep(r.params, ["asof"]) })}>All programs</a>
         {programs.map((p) => (
           <a key={p} class={program === p ? "on" : ""} href={buildHash({ ...r, arg: p, params: keep(r.params, ["asof"]) })}>
             {programLabel(p)}
           </a>
         ))}
-      </nav>
+      </nav>}
       <div class="controls">
         <label>
           Figures as of{" "}

@@ -29,7 +29,6 @@ import { LawPage } from "./places/LawPage";
 import { ProgramsPage } from "./places/ProgramsPage";
 import { SignPage } from "./places/SignPage";
 import { QuestionsPage } from "./places/QuestionsPage";
-import { OutcomesView } from "./views/OutcomesView";
 import { MapPage } from "./map/MapView";
 
 /** The page for the address. It dispatches on the canonical route (what the

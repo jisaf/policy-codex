@@ -39,8 +39,8 @@ export function walkthroughHref(
 export function ItemLink({ route: r, item, children }: { route: Route; item: Item; children?: ComponentChildren }) {
   return (
     <>
-      <a href={itemHref(r, item)}>{children ?? item.name}</a>{" "}
-      <small class="mono muted">{item.id} · {item.identifier}</small>
+      <a class="itemref" href={itemHref(r, item)}>{children ?? item.name}</a>{" "}
+      <small class="idsmall">{item.id}</small>
     </>
   );
 }

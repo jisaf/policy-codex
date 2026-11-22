@@ -14,6 +14,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "preact/hooks";
 import type { Engine } from "../../engine/engine";
 import type { Item } from "../../engine/types";
 import type { LoadedVolume } from "../../ledger/load";
+import { approvalStatus } from "../approvals";
+import { IdSmall, Prose } from "../kit";
 import { mapCounts } from "../counts";
 import { formatDate, formatFor, personLabel } from "../present";
 import { programLabel } from "../roles";
@@ -143,16 +145,26 @@ function MapBody(
     );
   }
   const overlays = overlayContext(engine, vol, changeSetSig.value);
-  const flags = (it: Item | null) => (it ? overlayFlags(engine, overlays, it, state.overlays) : []);
   const path = statePath(engine, center, state);
-  const opts = {
+  const base = {
     depth: state.depth,
     expanded: new Set(state.expanded),
     openGroups: new Set(state.open),
     programs: state.programs,
     biggestFirst: state.biggest,
     path,
-    flagged: state.overlays.length ? (id: string) => flags(engine.item(id) ?? null).length > 0 : undefined,
+  };
+  // "Awaiting approval" rings a box only while it singles boxes out: when
+  // more than half the boxes shown await a signature (a volume still in
+  // Draft), it is a count with a note instead of a ring on everything.
+  const awaiting = state.overlays.includes("approval") ? awaitingShown(engine, center, base) : null;
+  const ringed = awaiting && awaiting.count * 2 > awaiting.of
+    ? state.overlays.filter((k) => k !== "approval")
+    : state.overlays;
+  const flags = (it: Item | null) => (it ? overlayFlags(engine, overlays, it, ringed) : []);
+  const opts = {
+    ...base,
+    flagged: ringed.length ? (id: string) => flags(engine.item(id) ?? null).length > 0 : undefined,
   };
   const hc = state.household ? vol?.cases.find((c) => c.id === state.household!.caseId) : undefined;
   const values = hc && center.type === "item"
@@ -170,7 +182,7 @@ function MapBody(
     : null;
 
   return (
-    <section class={`view mapview${state.overlays.length ? " overlaying" : ""}`} data-mode={mode} data-center={centerParam(center)}>
+    <section class={`view mapview${ringed.length ? " overlaying" : ""}`} data-mode={mode} data-center={centerParam(center)}>
       {mode === "page" ? (
         <div class="viewhead">
           <h1>Map of {name}</h1>
@@ -196,6 +208,13 @@ function MapBody(
         </p>
       )}
       <Controls ctx={ctx} lists={lists} />
+      {awaiting && ringed !== state.overlays && (
+        <p class="overlaynote" role="note" data-overlay="approval">
+          <span class="tag draft">Awaiting approval</span>{" "}
+          <b>{awaiting.count}</b> of the {awaiting.of} boxes shown are waiting for a signature. Most of this volume is
+          still in Draft, so they are counted here rather than each ringed.
+        </p>
+      )}
       <PathFinder ctx={ctx} path={path} />
       <div class={`mapgrid${path.length ? " with-steps" : ""}`}>
         <div class="mapmain">
@@ -210,6 +229,20 @@ function MapBody(
       ) : null}
     </section>
   );
+}
+
+/** How many of the items a map shows await a signature (approvals.ts
+ *  `approvalStatus`), and how many it shows: the centre and every box. */
+export function awaitingShown(
+  engine: Engine, center: MapCenter, opts: Parameters<typeof buildMap>[2],
+): { count: number; of: number } {
+  const m = buildMap(engine, center, opts);
+  const items = new Map<string, Item>();
+  for (const n of m.nodes.values()) if (n.item) items.set(n.item.id, n.item);
+  if (center.type === "item") items.set(center.item.id, center.item);
+  let count = 0;
+  for (const it of items.values()) if (approvalStatus(engine, it).missing.length) count++;
+  return { count, of: items.size };
 }
 
 // ---- picking a centre
@@ -460,10 +493,10 @@ function NodeBox({ ctx, node, max, hover, setHover }: {
   const body = (
     <>
       <span class="mkind">
-        {KIND_WORDS[node.kind].title} <small class="mono">{it.id}</small>
+        {KIND_WORDS[node.kind].title}
         {otherProgram && <> <span class="tag">{programLabel(it.program)}</span></>}
       </span>
-      <span class="mname">{it.name}</span>
+      <span class="mname">{it.name} <IdSmall id={it.id} /></span>
       {clickable && <span class="mnext">{nextLabel(node)}</span>}
     </>
   );
@@ -544,15 +577,15 @@ function CenterBox({ ctx }: { ctx: Ctx }) {
   const flags = ctx.flags(it);
   return (
     <div class={`mnode mcenter k-${center.kind}${flags.length ? " flagged" : ""}`} data-key={center.key} data-id={it.id}>
-      <span class="mkind">{KIND_WORDS[center.kind].title} <small class="mono">{it.id}</small></span>
-      <span class="mname">{it.name}</span>
-      {it.meaning && <p class="mmeaning" title={it.meaning}>{it.meaning}</p>}
+      <span class="mkind">{KIND_WORDS[center.kind].title}</span>
+      <span class="mname">{it.name} <IdSmall id={it.id} /></span>
+      {it.meaning && <Prose engine={engine} vol={ctx.vol} r={r} text={it.meaning} as="p" class="mmeaning" />}
       <p class="mcount">
         {c.reads.total
           ? <>Reads {c.reads.total}: {plural(c.reads.facts, "fact")}, {plural(c.reads.figures, "figure")}, {plural(c.reads.rules + c.reads.outcomes, "rule")}.</>
           : center.kind === "figure" ? "Set by policy: it reads nothing." : center.kind === "fact" ? "Told to us: it reads nothing." : "Reads nothing."}
         {" "}{c.readBy.total
-          ? <>Read by {plural(c.readBy.total, "item")}{c.readBy.outcomes ? <>, reaching {plural(c.readBy.outcomes, "outcome")}</> : null}.</>
+          ? <>Read by {plural(c.readBy.total, "item")}{c.readBy.outcomes ? <>, reaching {plural(c.readBy.outcomes, "program outcome")}</> : null}.</>
           : "Nothing reads it."}
       </p>
       <ValueLine ctx={ctx} id={it.identifier} />

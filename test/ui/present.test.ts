@@ -179,7 +179,9 @@ describe("plain derivations", () => {
       "    • SNAP: meets the gross income test",
       "    • SNAP: meets the net income test",
       "    then the result is 0.",
-      "  Otherwise, the result is SNAP: maximum allotment minus SNAP: benefit reduction, rounded down to the whole dollar, but not less than 0, but at least SNAP minimum allotment ($25.00).",
+      // Longer than LONG_LINE: the floor is the head, what it floors below it.
+      "  Otherwise, the result is the following, but at least SNAP minimum allotment ($25.00):",
+      "    SNAP: maximum allotment minus SNAP: benefit reduction, rounded down to the whole dollar, but not less than 0",
     ].join("\n"));
     expect(text("T-8")).toBe("Net income, rounded down is SNAP: maximum allotment, rounded down to the whole dollar.");
     expect(text("T-10")).toBe("Grant, rounded down is SNAP: maximum allotment minus SNAP: benefit reduction, rounded down to the whole dollar.");

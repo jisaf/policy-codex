@@ -28,6 +28,7 @@ import { CodeChip, PlaceholderBanner, itemHref } from "../views/parts";
 import { NoLedger } from "../views/ViewStub";
 import { determinationHref } from "./Determination";
 import { PlaceHeader } from "./PlaceHeader";
+import { IdSmall } from "../kit";
 import "../views/walkthrough.css";
 import "./households.css";
 
@@ -116,8 +117,8 @@ export function HouseholdPage() {
       <div class="placehead">
         <h1>{plainCaseTitle(hc.title).title}</h1>
         <p class="purpose">
-          <span class="code">{hc.id}</span> · {people.length} {people.length === 1 ? "person" : "people"} · determined as of{" "}
-          <b>{formatDate(hc.as_of)}</b> · {summary.programs.map(programLabel).join(", ")}
+          {people.length} {people.length === 1 ? "person" : "people"} · determined as of{" "}
+          <b>{formatDate(hc.as_of)}</b> · {summary.programs.map(programLabel).join(", ")} <IdSmall id={hc.id} />
         </p>
         {summary.notes.length > 0 && (
           <details class="hhnotes">
@@ -126,7 +127,7 @@ export function HouseholdPage() {
           </details>
         )}
       </div>
-      <nav class="hhtabs" aria-label="This household">
+      <nav class="pagetabs hhtabs" aria-label="This household">
         {HOUSEHOLD_TABS.map((t) => (
           <a key={t} class={tab === t ? "on" : ""} aria-current={tab === t ? "page" : undefined} href={tabHref(t)} data-tab={t}>
             {HOUSEHOLD_TAB_LABEL[t]}
