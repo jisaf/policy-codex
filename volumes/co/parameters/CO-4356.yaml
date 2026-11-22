@@ -1,0 +1,13 @@
+id: CO-4356
+name: "Colorado Works: smallest partial month grant that is paid"
+identifier: cw_partial_month_minimum_grant
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: "An authorized Colorado Works grant for a partial month below this amount is not paid: \"unless the authorized grant for the partial month is less than $10, in which case no payment is made\" (9 CCR 2503-6 3.609.2.A.1.e)."
+versions:
+  - {from: "2025-07-01", value: 10, source: S3156}
+sources: [S3156]
+tags: [cash, tanf]
+rationale: "Coverage review CW-8: the partial month payment of cw_grant_amount (CO-914) needs the $10 floor of A.1.e (S3156)."

@@ -1,0 +1,13 @@
+id: CO-4357
+name: "Colorado Works: smallest partial month payment after deductions"
+identifier: cw_partial_month_minimum_payment_after_deductions
+kind: parameter
+type: money
+scope: global
+program: ColoradoWorks
+meaning: "A partial month Colorado Works payment that deductions bring below cw_partial_month_minimum_grant is still paid unless it is less than this amount: \"if the deductions from the authorized grant amount for the partial month results in an amount less than $10, such lesser amount shall be paid except when the amount is less than $1.00\" (9 CCR 2503-6 3.609.2.A.1.e)."
+versions:
+  - {from: "2025-07-01", value: 1, source: S3156}
+sources: [S3156]
+tags: [cash, tanf]
+rationale: "Coverage review CW-8: the partial month payment of cw_grant_amount (CO-914) needs the $1 floor of A.1.e (S3156)."
