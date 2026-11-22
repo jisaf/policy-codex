@@ -146,3 +146,15 @@ The probes cited in V-2, V-3 and V-9 were run on in-memory copies of CO-92 and C
 Resolved questions I re-read against the text and found consistent with the items: OQ-300 (request dates per program), OQ-301, OQ-308 (every declared status verified for children and pregnant persons, CO-1622), OQ-309, OQ-316 (extensions), OQ-318 and OQ-370 (the LEAP member excluded, 3.751.1 B), OQ-321 (SSN never delays), OQ-322 (but see V-8), OQ-323 (thirty days; migrant exception), OQ-373 (but see V-12, which concerns its CCCAP text), OQ-378 and OQ-380.
 
 New questions these findings may need: none for V-1 to V-7, whose texts answer them. V-13 needs one only if the SNAP household reviewer does not model the duplicate-child rule.
+
+## Disposition (Medicaid and CHP+ fix track)
+
+Fix track for Medicaid and CHP+, 2026-11-22; the other tracks add their own lines for the other findings. Commits: ba897ac (items), 09e6740 (changed expectations).
+
+| id | disposition |
+|---|---|
+| V-3 | Fixed (ba897ac, 09e6740). ma_income_verification_members (CO-3633: the MAGI household, or the SSI-method couple, CO-3626, for an aged, blind or disabled person); CO-1411 and CO-1412 sum the earned and unearned income elements over it, CO-1416 and CO-1417 over the MAGI household; the resource element (CO-1405) reads the couple. CO-01 p4: Medicaid and CHP+ status pending_reasonable_opportunity -> pending, counts 2 -> 3 (p3's pay stubs; derivation in the case). |
+| V-6 | Fixed (ba897ac). CO-1405's MSP-only arm reads liquid resources (liquid_resources_value, retirement accounts; 416.1201(b), S2420) or a questionable attestation (435.952(e)(2)(ii), S2418); life insurance and burial funds on attestation ((e)(3)-(4), S2419). |
+| V-8 | Fixed (ba897ac). chp_requires_verification_of_unearned_income and its pending item (CO-3634, CO-3635), counted in CO-1416 and CO-1417. |
+| V-10 | Fixed (ba897ac). CO-2442 reports verification_period_expired after CO-2445 with citizenship or identity still pending; aid-codes label added. |
+| V-14 | Fixed (ba897ac, 09e6740). CO-1417 is 0 when CHP+ verification is not applicable. CO-01 p3, CO-91 p1 and CO-92 p1: chp_pending_verification_count 1 -> 0. |
