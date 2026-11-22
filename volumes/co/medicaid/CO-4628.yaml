@@ -1,0 +1,17 @@
+id: CO-4628
+name: "Medicaid: impairment-related work expenses excluded"
+identifier: ma_ssi_impairment_related_work_expenses
+kind: derived
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The impairment-related work expenses excluded from the earned income of this person's SSI-related household for the month (20 CFR 416.1112(c)(6), incorporated by 10 CCR 2505-10 § 8.100.5.H.4.e): impairment_related_work_expenses_paid of each member living together (the spouse group of ma_ssi_countable_earned_income) who meets the SSA disability criteria, is not blind and is under ma_aged_age."
+precision: "Subtracted after the $65 and any unused $20 and before the one half (416.1112(c)(5)-(7)). A person who received SSI as disabled for the month before turning 65 keeps the exclusion under (c)(6); that history is not stated, so the exclusion stops at 65. The pre-1990 rule of (c)(6)(i) is historical."
+derived: [sum, [reachable, [spouse, holds_out_as_spouse_with], [all, [not, resides_in_medical_institution], [not, [of, [P], resides_in_medical_institution]]]], [case, [[all, [otherwise, [of, [P], meets_ssa_disability_criteria], false], [not, [otherwise, [of, [P], is_blind], false]], ["<", [of, [P], age], ma_aged_age]], [otherwise, [of, [P], impairment_related_work_expenses_paid], 0]], [else, 0]]]
+sources: [S3412]
+implemented: engine
+tags: [ma, non_magi, income, disability]
+rationale: "Coverage review NM-8: § 8.100.5.H.4.e incorporates 20 CFR 416.1112, but impairment-related work expenses had no fact and no exclusion, so a disabled worker's countable earned income was too high."
+tests:
+  - {id: CO-4628-T1, as_of: "2026-10-12", month: "2026-10", given: {resides_in_medical_institution: false, meets_ssa_disability_criteria: true, is_blind: false, date_of_birth: "1986-01-01", impairment_related_work_expenses_paid: 200}, relationships: [], expect: 200}
+  - {id: CO-4628-T2, as_of: "2026-10-12", month: "2026-10", title: "blind: blind work expenses instead", given: {resides_in_medical_institution: false, meets_ssa_disability_criteria: true, is_blind: true, date_of_birth: "1986-01-01", impairment_related_work_expenses_paid: 200}, relationships: [], expect: 0}

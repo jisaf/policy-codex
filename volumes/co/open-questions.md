@@ -397,7 +397,7 @@ Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.6.P.1.f.iii and Q
 
 HCPF fix round (2026-11-21, docs/reviews/stakeholder-hcpf.md), S-8: the reviewer overruled the literal schedules because § 8.100.6.P.1.f.iv and Q.1.g.v re-base the premiums at the start of each State fiscal year (S1727, S1728). The engine now has a parameter type "table keyed by income band" and the pattern P48 (`band`, docs/conventions.md); ma_wawd_premium_table (CO-2457) and ma_cbwd_premium_table (CO-2458) carry the bands as versions from July 1, 2026 with a review_by date, and ma_wawd_premium (CO-619) and ma_cbwd_premium (CO-621) read them. Items: CO-619, CO-621, CO-2457, CO-2458.
 
-### OQ-83. Partly resolved: SSI-related couple income allocations of 8.100.5.H are modeled; open: deeming a parent's income to an applicant child
+### OQ-83. Resolved: a parent's income and resources are deemed to an applicant child under 18, after the allocations of 8.100.5.H
 
 Body: 10 CCR 2505-10 8.100.5.H (S308) describes a fuller income-allocation sequence for a household with ineligible children or an ineligible spouse/parent - the Ineligible Child Allocation and Ineligible Parent(s) Allocation are applied to gross income before the $20 and $65-plus-one-half disregards, and "only one $20 general income disregard is allowed per couple." ma_ssi_countable_earned_income (CO-605) and ma_ssi_countable_unearned_income (CO-606) model only the two-eligible-spouses (or single-applicant) case that combines both spouses' gross income before applying one $20 and one $65-plus-one-half disregard to the combined totals, per 8.100.5.H.1.a's "mutually available" rule; they do not model the ineligible-child or ineligible-parent allocation deductions, or income deeming from an ineligible spouse who is not applying, because this volume has no supplied facts distinguishing an ineligible spouse's income from an eligible applicant's. Items: CO-605, CO-606, CO-607.
 
@@ -407,11 +407,7 @@ Open-question sweep (2026-11-21): the rule is clear (triage: NEEDS FACT) but thi
 
 Phase-10 needs-fact sweep (2026-11-21): partly resolved. The incomes were already in the case (each person's own income facts); what was missing was who is "not applying or eligible for SSI" (H.2.b-c) and the unemancipated-child test (H.2.a). New facts ma_is_applying_for_or_eligible_for_ssi (CO-2271) and ma_is_regularly_attending_school_or_training (CO-2272); parameters CO-2273, CO-2274, CO-2276 and CO-2280; rules ma_is_ssi_unemancipated_child (CO-2275), ma_ssi_ineligible_child_allocation (CO-2277: half the individual FBR per ineligible unemancipated child of the household, less the child's own income, child support in full), ma_ssi_child_allocation_from_spouse_unearned and _earned (CO-2278, CO-2279: taken from an ineligible spouse's income, unearned first, before the standard disregards, H.3.b.i-ii) and ma_ssi_household_unearned_income_counted (CO-2281, which also counts an unemancipated child's child support reduced by one third, H.4.c). ma_ssi_countable_unearned_income (CO-606) and ma_ssi_countable_earned_income (CO-605) now apply the $20 and $65-plus-one-half disregards to the income after the allocation (S1506). Which parent's income bears the allocation is OQ-473. Still open, as a gap in the published text: deeming a parent's income to an applicant child, which the Ineligible Parent(s) Allocation (H.3.a.ii, H.3.b.iii) presupposes but § 8.100.5.H never computes (whose income, and how it is divided among several applicant children); § 8.100.5.H.4.e incorporates 20 CFR 416.1112 only, not the SSI parent-to-child deeming rules. No household case has an ineligible spouse with children in the home, so no case states the new facts and no expectation changed.
 
-Class: state policy choice
-Owner: Medicaid policy owner, LTSS policy owner
-Assumption: No part of a parent's income is counted for a child applying under the SSI-related rules; only the allocations the Colorado rule spells out are taken.
-
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.H.1-4 (D-65, S308, S1506): the Ineligible Parent(s) Allocation (H.3.a.ii, H.3.b.iii) presupposes deeming a parent's income to an applicant child, but the section never computes it, and H.4.e incorporates 20 CFR 416.1112 only, not the SSI deeming rules. Whose income is deemed and how it is divided among several applicant children is left to Colorado; no published rule settles it.
+Coverage round (2026-11-22, docs/reviews/coverage-medicaid-nonmagi.md NM-10): resolved; the class "state policy choice" was wrong. § 8.100.5.H.3.a itself says the allocations reduce "the gross income that is deemed available to the applicant/client" and that the Ineligible Parent(s) Allocation is "used to meet the needs of the ineligible parent(s) in the home with an applicant/client child" (S3405), deducted "after any ineligible child allocation disregards and after the standard income disregards" (H.3.b.iii); § 8.100.7.A.1 says parental income and resources "cease to be deemed available to the child" once the child is institutionalized (S3406); and § 8.100.6.A.1 sends the ABD categories to § 8.100.5 for income and resources under the SSI methodology. The SSI statute and rules the methodology carries say whose income and how: 42 U.S.C. 1382c(f)(2)(A) deems to a child under 18 "any income and resources of a parent of such individual (or the spouse of such a parent) who is living in the same household" (S3415); 20 CFR 416.1165 deducts the ineligible child allocations, then the $20 and $65-plus-one-half, then the parent allocation (the FBR for a couple when both parents live with the child, for an individual when one does), deems the rest to the child as unearned income and divides it equally among several eligible children (S3413); 416.1202(b) deems the parents' resources above the parents' limit, pension funds excluded (S3414). New items: ma_ssi_deeming_parents (CO-4624), ma_ssi_deeming_children (CO-4625), ma_ssi_deeming_ineligible_child_allocation (CO-4633), ma_ssi_deeming_parents_countable_income (CO-4634), ma_ssi_parental_income_deemed (CO-4626, added to unearned income in CO-2281) and ma_ssi_parental_resources_deemed (CO-4627, added in CO-608). 416.1165(e)(3) (a child whose own income already makes the child ineligible gets no more) and the 416.1165(i) / 416.1202(b)(2) exception for a child once paid SSI's reduced facility benefit are not modeled; a waiver child reaches Medicaid through the 300% group, which counts only the child's own income. No stored case had an applicant child living with an ineligible parent, so no expectation changed; new case CO-186 shows the deeming. Which parent's income bears an applicant's ineligible-spouse allocation stays OQ-473.
 
 ### OQ-84. Resolved: QDWI's disability and work history is derived from two supplied history facts
 
@@ -700,6 +696,9 @@ Body: 10 CCR 2505-10 § 8.100.7.M.1.a (S355) states the CSRA as "the total resou
 Phase 7 sweep: the current Secretary of State text of § 8.100.7.M.1.a (D-65, S652) is unchanged - 'The total resources of the couple but no more than the current maximum allowance' - so the published rule still does not say whether Colorado applies the federal spousal-share/minimum shape; ma_csra_minimum (CO-827) now carries the 2026 CMS minimum for a future item.
 
 Open-question sweep (2026-11-21): 42 U.S.C. 1396r-5(f)(2)(A)(i) (S1222) lets the State plan set the community spouse's standard anywhere up to the indexed maximum; a State that sets it at the maximum gives the community spouse the lesser of the couple's resources and the maximum, which is § 8.100.7.M.1.a. Colorado's text is a permitted federal shape, not a drafting gap. The sweep also found that § 8.100.7.M.1 (S1220) makes the CSRA the largest of (a), (b) the increased CSRA of § 8.100.7.S (S1221) and (c) a court-ordered amount, and ma_csra (CO-646) computed (a) only. New facts ma_csra_annuity_lowest_estimate (CO-1948), ma_institutionalized_spouse_refuses_income_allowance (CO-1949), ma_court_ordered_transfer_to_community_spouse (CO-1950) and rule ma_csra_increased (CO-1977: when the community spouse's income plus the income allowance the institutionalized spouse's income can fund is below the MMMNA, the maximum plus the lowest annuity estimate); CO-646 takes the largest of the three. No household case has a shortfall or a court order, so no expectation changed. ma_csra_minimum (CO-827) still has no Colorado consumer.
+
+Coverage round (2026-11-22, docs/reviews/coverage-medicaid-nonmagi.md NM-18): § 8.100.7.L and M.1 (S3419, S1220) assess the couple's resources "at the time of initial Medical Assistance application" and base the CSRA on them "as of the time of Medical Assistance application"; 42 U.S.C. 1396r-5(c)(1)(A) computes the spousal share as of the beginning of the first continuous period of institutionalization. Under the formula this question settled (the couple's resources up to the maximum), the spousal share plays no part, and 1396r-5(c)(2) attributes resources at the time of application, so the application date governs. ma_spousal_resources_at_snapshot (CO-888) now says so.
+
 
 ### OQ-127. Resolved: § 8.7100.C.3's "spousal impoverishment rules do not apply to people in the Medicaid Buy-In program" is not modeled as a bypass of ma_ltc_couple
 
@@ -999,23 +998,28 @@ Body: § 8.100.6.E.1.d-e subtracts the Pickle disregard from the current OASDI i
 
 Open-question sweep (2026-11-21): § 8.100.6.E.1.e subtracts the Pickle disregard from the current OASDI income to give the countable OASDI income, and 42 CFR 435.135(a)(3) (S1233) deducts the increases from current OASDI benefits; the SSI exclusions then apply to the reduced income. ma_pickle_countable_income (CO-1158) now subtracts the disregard from the household's unearned income before the $20 general exclusion and carries any unused part of the $20 to earned income (CO-1158-T2 shows the difference: 207.5, where the old order gave 197.5). The increases of a financially responsible spouse or parent (435.135(b), § 8.100.6.E's S666) remain unmodeled. No household case is a Pickle case.
 
+Coverage round (2026-11-22, docs/reviews/coverage-medicaid-nonmagi.md NM-17): the resolution had left § 8.100.6.E.3 (S666) unmodeled. The cost-of-living increases of a spouse living with the person are now disregarded too: new fact social_security_income_when_spouse_lost_ssi_or_oap (CO-4635, read as the spouse's current benefit when not stated) and CO-1158 subtracts the spouse's current OASDI less that base (CO-1158-T4). A parent's increases have nothing to come off, because the Pickle income (CO-1158) counts the person's and the spouse's income and no deemed parental income; a Pickle child under 18 living with ineligible parents is the one case where E.3's parent clause would matter (deferred, coverage round disposition).
+
+
 ### OQ-208. Resolved: Disabled Adult Child countable income subtracts the OASDI from total countable income
 
 Body: § 8.100.6.J.1.c disregards "the current OASDI income of the applicant" and compares "other countable income" with the SSI FBR. ma_dac_countable_income (CO-1160) subtracts social_security_income from ma_ssi_countable_income and floors at zero, which can overstate the exclusion when the $20 general exclusion was absorbed by the OASDI and would otherwise apply to other income. Items: CO-1160.
 
 Open-question sweep (2026-11-21): § 8.100.6.J.1.c disregards the current OASDI income and tests "other countable income", so the OASDI comes off before the $20 general exclusion. ma_dac_countable_income (CO-1160) now computes the SSI countable income of the household's income other than the person's OASDI, with the unused $20 carried to earned income. No household case is a Disabled Adult Child case.
 
-### OQ-209. Disabled widow(er)s: "meet all other Medical Assistance requirements", and the closed historical groups
+### OQ-209. Disabled widow(er)s: the closed historical groups (the income and resource test is resolved)
 
 Body: § 8.100.6.I.1.f requires disabled widow(er)s to "meet all other Medical Assistance requirements" and states no income or resource test of its own; ma_disabled_widow_eligible (CO-1162) reads it as residency and status. The 1972-disregard, 1973 and 1983-actuarial-change groups (§§ 8.100.6.F-H) are closed cohorts (H requires reapplying before July 1, 1987) and are not modeled; the federal early widow(er)s group (age 60-64) is not stated in Colorado's rule except inside § 8.100.6.I's 50-through-64 group. Items: CO-1162, CO-1163. Phase 7 fix round (S-7): § 8.100.6.I.1.b ('have received SSI in the past') and I.1.d are now read through lost_ssi_due_to_social_security_benefits (CO-1180), so a person who lost only OAP is not a disabled widow(er) although I.1's opening sentence says 'lost SSI and/or OAP'; the lettered conditions are read as controlling.
 
 Open-question sweep (2026-11-21): Checked 2026-11-21: § 8.100.6.I.1.f and §§ 8.100.6.F-H (D-65), which state no income or resource test for disabled widow(er)s and describe closed cohorts; no published rule settles it.
 
+Coverage round (2026-11-22, docs/reviews/coverage-medicaid-nonmagi.md NM-9): the first half is resolved by text; it was not a state policy choice. § 8.100.6.A.1 (S3411) sends every ABD category to § 8.100.5 "for income and resource criteria", and 42 U.S.C. 1383c(d)(2) (D-320, S3416) deems the group SSI recipients only "for so long as such person (i) would be eligible for such supplemental security income benefits ... in the absence of benefits described in paragraph (1)(A)"; 42 CFR 435.138(a) (S3417) deems them "title XVI payment beneficiaries under section 1634(d)". ma_disabled_widow_eligible (CO-1162) now requires the SSI resource standard (ma_meets_ssi_resource_standard) and countable income with the Social Security benefit disregarded (ma_dac_countable_income, CO-1160) below the Federal Benefit Rate. What stays open is the closed cohorts alone.
+
 Class: state policy choice
 Owner: Medicaid policy owner
-Assumption: Disabled widows and widowers need only Colorado residence and a qualifying status besides the conditions the rule lists, and the closed historical groups are not offered.
+Assumption: The closed historical groups of §§ 8.100.6.F-H are not offered.
 
-Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.I.1.f ("meet all other Medical Assistance requirements") and §§ 8.100.6.F-H (D-65), which state no income or resource test for the group and describe cohorts closed to new applicants. No published rule settles it.
+Checked 2026-11-22: 10 CCR 2505-10 §§ 8.100.6.F-H (D-65), which describe cohorts closed to new applicants (H requires reapplying before July 1, 1987), and 42 U.S.C. 1383c(b) (D-320), whose protection needed a written application by July 1, 1988. Whether Colorado still serves anyone in those cohorts is not in any published rule.
 
 ### OQ-210. Resolved: HCBS waiver target groups: only age (and CES marital status) is derived
 
@@ -2360,3 +2364,43 @@ Owner: Medicaid policy owner, Premium and finance owner
 Assumption: The household's pooled § 8.100.5.F income takes one $20 general and one $65-plus-one-half earned income disregard, with no ineligible child or parent allocation, and is compared with the poverty level for the MAGI household's size.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.Q.1.b, § 8.100.5.F and § 8.100.5.H.1-4 (D-65, version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). No published rule says how the per-person and per-couple disregards and the allocations apply to a family household; HCPF's Buy-In guidance is on hcpf.colorado.gov, which is refused.
+
+### OQ-820. Home equity limit outside long-term care
+
+Body: 10 CCR 2505-10 § 8.100.5.M.2.a.ii (S3403) requires the home's equity to be below the indexed limit for the home to be exempt, M.2.a.vi counts a home over the limit that the person intends to return to, and M.3.f counts "an individual's home if the individual's equity interest in the home exceeds the equity value limit". All three sit in the general aged, blind and disabled resource rules, so read literally they apply to every ABD category, not only long-term care. 42 U.S.C. 1396p(f) (S369) is a long-term care rule ("with respect to nursing facility services or other long-term care services"), and 42 CFR 435.601(b)(2) (D-34) has the agency apply the SSI methodology, under which the home is excluded at any value (20 CFR 416.1212). The volume applies the limit to long-term care only: ma_home_equity_disqualifies (CO-650) is read only by the long-term care items, and ma_home_is_countable_resource (CO-4622) does not test it. Coverage review NM-16. Items: CO-650, CO-4622.
+
+Class: needs Legal
+Owner: Medicaid policy owner, LTSS policy owner
+Assumption: The home equity limit applies to long-term care (institutional, HCBS and PACE) only; for the other aged, blind and disabled categories the home is exempt at any equity value unless another rule of § 8.100.5.M.2.a makes it countable.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.M.2.a.ii, vi and M.3.f (D-65, version effective 11/14/2026), 42 U.S.C. 1396p(f)(1)(A) (D-46) and 42 CFR 435.601(b)(2) (D-34). The state text states the limit without restricting it to long-term care; whether Colorado's SSI-related methodology may be more restrictive than SSI's for the home is a legal question.
+
+### OQ-821. Transfer penalty: how the partial month of a penalty period shows in the monthly outcome
+
+Body: 10 CCR 2505-10 § 8.100.7.F.2.d says "The period of ineligibility shall also include partial months, which shall be calculated by multiplying 30 days by the decimal fractional share of the partial month." ma_transfer_penalty_days (CO-659) computes the days, but ma_transfer_penalty_applies (CO-660), which the monthly outcome ma_ltc_eligibility_status (CO-652) reads, covers whole months only, so a transfer worth less than one month of the divisor never stops long-term care in any month, and the last partial month of a longer penalty is reported eligible. The rule does not say whether a month with some penalty days is a month of ineligibility, an eligible month whose long-term care is not paid for those days, or something else. Coverage review NM-21. Items: CO-659, CO-660, CO-652.
+
+Class: state policy choice
+Owner: LTSS policy owner
+Assumption: A month that is only partly within the penalty period is reported eligible; the penalty days in it are counted separately, and the facility's payment for that month reflects them.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.7.F.2.c-e (D-65, version effective 11/14/2026). The rule counts the days but says nothing about the month's eligibility status.
+
+### OQ-822. Adult Financial grants other than OAP-A in the aged, blind and disabled income
+
+Body: 10 CCR 2505-10 § 8.100.5.F.6.y (S3003) exempts "General Assistance, SSI, OAP-A and cash assistance under the Temporary Assistance to Needy Families (TANF) funds". The current Adult Financial grants are OAP (A and B, one category in this volume, OQ-111), Aid to the Needy Disabled (AND-SO and AND-CS) and Aid to the Blind. The SSI-related income (ma_ssi_household_unearned_income_sum, CO-663) reads no Adult Financial grant, so OAP-B, AND and AB grants are not counted; the long-term care gross income (ma_ltc_gross_income, CO-641) counts them, as income before any exemption (§ 8.100.7.A.1). The rule's program names predate the current ones. Coverage review NM-24. Items: CO-663, CO-641.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: Every Adult Financial grant is exempt for the aged, blind and disabled income tests: OAP-B with OAP-A as one OAP program, and AND and AB as the "General Assistance" F.6.y names.
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.F.6.y (D-65, version effective 11/14/2026) and § 8.100.6.K (OAP-A and OAP-B both named). No published rule maps the current Adult Financial programs onto F.6.y's names.
+
+### OQ-823. In-kind support and maintenance: a flat one third of the FBR, or the presumed maximum value of the shelter received
+
+Body: 10 CCR 2505-10 § 8.100.5.H.1.b (S1506) says "For a person living in the household of another and not paying shelter costs, one third of the Federal Benefit Rate (FBR) is counted as in-kind income", while § 8.100.5.F.5.k.ii (S306) says the amount "should not be greater than one third of the Federal Benefit Rate (FBR). Use the Presumed Maximum Value (PMV) of 1/3 of the recipient's portion of the rent ... Use one third of the FBR if an amount is not declared". ssi_in_kind_support_and_maintenance (CO-802) takes the lesser of the shelter others pay and one third of the FBR, F.5.k's reading. Under H.1.b, a person living all month in another's household and paying nothing would count the full one third whatever the shelter is worth (20 CFR 416.1131's one-third reduction). Coverage review NM-25. Items: CO-802.
+
+Class: state policy choice
+Owner: Medicaid policy owner
+Assumption: In-kind support and maintenance is the shelter others provide, up to one third of the FBR, and one third of the FBR when the amount is not declared (F.5.k.ii).
+
+Checked 2026-11-22: 10 CCR 2505-10 § 8.100.5.F.5.k and H.1.b (D-65, version effective 11/14/2026). The two paragraphs state different measures for the same person and neither refers to the other.

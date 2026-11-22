@@ -1,0 +1,14 @@
+id: CO-4605
+name: "Real property listed for sale"
+identifier: real_property_for_sale_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "Of real_property_other_than_home_equity (CO-3393), the equity value of the real property the person has listed for sale at current market value, with a real estate agent, broker, dealer or auction house, or by the owner with advertising and showings to the public, and has not sold."
+precision: "Part of real_property_other_than_home_equity, not added to it. As of the determination date. If not stated, Medicaid reads the whole of real_property_other_than_home_equity as this property when its finding (ma_excess_real_property_is_for_sale or ma_claims_co_owner_hardship_for_real_property) is true, and every other program reads it as 0."
+supplied_by: "The listing agreement or the owner's advertising."
+sources: [S1514]
+tags: [resources]
+rationale: "Coverage review NM-2: ma_excess_real_property_is_for_sale (CO-2242) states that the efforts to sell meet 10 CCR 2505-10 § 8.100.5.M.2.b, but no fact stated which property and how much of it, so no resource item could leave it out."
+nearest: [CO-3393, CO-2242]

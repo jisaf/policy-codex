@@ -1,0 +1,19 @@
+id: CO-4620
+name: "Medicaid: excess real property left out while for sale or co-owned"
+identifier: ma_excluded_real_property_value
+kind: derived
+type: money
+scope: person
+program: Medicaid
+meaning: "The part of the person's real property other than the home that the aged, blind and disabled resource test leaves out: property the person is making reasonable but unsuccessful efforts to sell (10 CCR 2505-10 § 8.100.5.M.2.b), and the person's share of property whose sale would cause the co-owner who lives in it undue hardship through loss of housing (§ 8.100.5.M.3.h); never more than real_property_other_than_home_equity."
+precision: "Read for the determination month (the resource test is as of the determination date): ma_excess_real_property_is_for_sale (CO-2242) and ma_claims_co_owner_hardship_for_real_property (CO-2244) are the findings, and real_property_for_sale_value (CO-4605) and real_property_co_owned_with_resident_value (CO-4606) the values. Where a finding is true and its value is not stated, the whole of real_property_other_than_home_equity is read as that property. The documents the two findings need are verification items (CO-2246 to CO-2249), which keep the case pending until they arrive. Once the property sells, the proceeds are liquid_resources_value (M.2.b.vii, § 8.100.5.P)."
+derived: [min, [otherwise, real_property_other_than_home_equity, 0], [+, [case, [[otherwise, [at, ma_excess_real_property_is_for_sale, [det_month]], false], [otherwise, real_property_for_sale_value, [otherwise, real_property_other_than_home_equity, 0]]], [else, 0]], [case, [[otherwise, [at, ma_claims_co_owner_hardship_for_real_property, [det_month]], false], [otherwise, real_property_co_owned_with_resident_value, [otherwise, real_property_other_than_home_equity, 0]]], [else, 0]]]]
+sources: [S1514, S1515]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Coverage review NM-2: the volume stated both exemptions as findings and verified them, but no resource item read them, so real property for sale or co-owned with a resident was counted in full."
+tests:
+  - {id: CO-4620-T1, as_of: "2026-10-12", title: "for sale: the listed lot is left out", given: {real_property_other_than_home_equity: 60000, real_property_for_sale_value: 50000, ma_excess_real_property_is_for_sale: true, ma_claims_co_owner_hardship_for_real_property: false}, expect: 50000}
+  - {id: CO-4620-T2, as_of: "2026-10-12", title: "for sale, value not stated: the whole of the other real property", given: {real_property_other_than_home_equity: 50000, ma_excess_real_property_is_for_sale: true, ma_claims_co_owner_hardship_for_real_property: false}, expect: 50000}
+  - {id: CO-4620-T3, as_of: "2026-10-12", title: "no finding: nothing left out", given: {real_property_other_than_home_equity: 50000, real_property_for_sale_value: 50000, ma_excess_real_property_is_for_sale: false, ma_claims_co_owner_hardship_for_real_property: false}, expect: 0}
+  - {id: CO-4620-T4, as_of: "2026-10-12", title: "co-owner hardship, capped at the real property", given: {real_property_other_than_home_equity: 30000, real_property_co_owned_with_resident_value: 20000, real_property_for_sale_value: 25000, ma_excess_real_property_is_for_sale: true, ma_claims_co_owner_hardship_for_real_property: true}, expect: 30000}

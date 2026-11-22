@@ -5,12 +5,13 @@ kind: derived
 type: money
 scope: person-month
 program: Medicaid
-meaning: "The SSI-related household's unearned income to which the $20 general income disregard applies (10 CCR 2505-10 § 8.100.5.H.3-4): the combined gross unearned income of the person and a spouse living with the person (ma_ssi_household_unearned_income_sum), less the Ineligible Child Allocation taken from an ineligible spouse's unearned income, plus, for an unemancipated child, the child support the child receives reduced by one third (H.4.c)."
-derived: ["+", ["-", ma_ssi_household_unearned_income_sum, ma_ssi_child_allocation_from_spouse_unearned], [case, [ma_is_ssi_unemancipated_child, ["-", child_support_received, ["/", child_support_received, ma_ssi_child_support_reduction_divisor]]], [else, 0]]]
-sources: [S1506, S308]
+meaning: "The SSI-related household's unearned income to which the $20 general income disregard applies (10 CCR 2505-10 § 8.100.5.H.3-4): the combined gross unearned income of the person and a spouse living with the person (ma_ssi_household_unearned_income_sum), less the Ineligible Child Allocation taken from an ineligible spouse's unearned income, plus, for an unemancipated child, the child support the child receives reduced by one third (H.4.c). For a child under 18 living with ineligible parents, the parents' income deemed to the child (ma_ssi_parental_income_deemed) is added as unearned income, so the child's own $20 general income disregard applies to it (20 CFR 416.1165(e)(1))."
+derived: ["+", ["-", ma_ssi_household_unearned_income_sum, ma_ssi_child_allocation_from_spouse_unearned], [case, [ma_is_ssi_unemancipated_child, ["-", child_support_received, ["/", child_support_received, ma_ssi_child_support_reduction_divisor]]], [else, 0]], ma_ssi_parental_income_deemed]
+sources: [S1506, S308, S3405, S3413]
 implemented: engine
 tags: [ma, non_magi, income]
 rationale: "OQ-83: ma_ssi_countable_unearned_income (CO-606) and ma_ssi_countable_earned_income (CO-605) applied the disregards to the gross sum, with no allocation and no child support."
 tests:
   - {id: CO-2281-T1, as_of: "2026-10-01", month: "2026-10", title: "Adult; $500 of the spouse's pension allocated to the children", given: {ma_ssi_household_unearned_income_sum: 1300, ma_ssi_child_allocation_from_spouse_unearned: 500, date_of_birth: "1980-01-01"}, expect: 800}
   - {id: CO-2281-T2, as_of: "2026-10-01", month: "2026-10", title: "Disabled child of 10 receiving $300 of child support", given: {ma_ssi_household_unearned_income_sum: 0, ma_ssi_child_allocation_from_spouse_unearned: 0, date_of_birth: "2016-01-01", child_support_received: 300}, expect: 200}
+  - {id: CO-2281-T3, as_of: "2026-10-12", month: "2026-10", title: "NM-10 (X-DEEM): 2,963.50 deemed from a parent", given: {ma_ssi_household_unearned_income_sum: 0, ma_ssi_child_allocation_from_spouse_unearned: 0, ma_is_ssi_unemancipated_child: true, child_support_received: 0, ma_ssi_parental_income_deemed: 2963.5}, expect: 2963.5}

@@ -18,10 +18,10 @@ const DATE = "2026-11-22";
 describe("the question queue", () => {
   const all = questionQueue(engine, vol.sources, vol.openQuestions, null, {});
 
-  it("holds every question still to answer: 102, 20 of them partly settled", () => {
-    expect(all.total).toBe(102);
-    expect(all.rows).toHaveLength(102);
-    expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(20);
+  it("holds every question still to answer: 105, 19 of them partly settled", () => {
+    expect(all.total).toBe(105);
+    expect(all.rows).toHaveLength(105);
+    expect(questionQueue(engine, vol.sources, vol.openQuestions, null, { state: "partly" }).rows).toHaveLength(19);
   });
 
   it("'only mine' is the persona's owned questions, the same as the Desk counts", () => {
@@ -67,7 +67,7 @@ describe("the question queue", () => {
   it("leaves out the questions answered in this browser", () => {
     const first = all.rows[0].entry.id;
     const q = questionQueue(engine, vol.sources, vol.openQuestions, null, { exclude: new Set([first]) });
-    expect(q.total).toBe(101);
+    expect(q.total).toBe(104);
     expect(q.rows.some((r) => r.entry.id === first)).toBe(false);
   });
 });
@@ -93,7 +93,7 @@ describe("Law", () => {
     expect(departuresByProgram(engine, DATE).reduce((n, x) => n + x.count, 0)).toBe(22);
   });
 
-  it("what rests on the unverified sources: 14 outcomes, and 6 stored households read them (Blind A said 3, Blind B 11)", () => {
+  it("what rests on the unverified sources: 14 outcomes, and 8 stored households read them (Blind A said 3, Blind B 11)", () => {
     const early = unverifiedReach(engine, vol.sources, unverified, null);
     expect(early.households).toBeNull();
     restingIndex(engine, vol.cases);
@@ -102,7 +102,7 @@ describe("Law", () => {
     expect(r.citing).toHaveLength(6);
     expect(r.resting).toHaveLength(44);
     expect(r.outcomes).toHaveLength(14);
-    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139"]);
+    expect(r.households).toEqual(["CO-01", "CO-02", "CO-06", "CO-112", "CO-113", "CO-139", "CO-187", "CO-188"]);
   }, 60_000);
 
   it("an excerpt is cited by an item through its sources or a dated version", () => {

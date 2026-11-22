@@ -1,0 +1,14 @@
+id: CO-4617
+name: "Blind work expenses paid"
+identifier: blind_work_expenses_paid
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The amount the person paid in the month for expenses reasonably attributable to earning the person's earned income (income taxes, transportation to and from work, guide dog expenses, union dues, work equipment and the like), for a person who is blind."
+precision: "If not stated, every program reads it as 0."
+supplied_by: "Receipts, pay statements and the person's statement."
+sources: [S3412]
+tags: [income, disability]
+rationale: "Coverage review NM-8: 20 CFR 416.1112(c)(8), incorporated by 10 CCR 2505-10 § 8.100.5.H.4.e, excludes earned income used to meet such expenses if the person is blind; no fact stated them."
+nearest: [CO-4616]

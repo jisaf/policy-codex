@@ -6,8 +6,9 @@ type: yes/no
 scope: person
 program: Medicaid
 meaning: "Whether this person's countable resources for Long-Term Care eligibility do not exceed the SSI-related individual resource limit - the institutionalized spouse is resource eligible when the couple's total resources are at or below the CSRA plus the ssi_resource_limit_individual individual resource allowance - per 42 U.S.C. 1396r-5(c)(2) and 10 CCR 2505-10 § 8.100.7.O.1."
-derived: ["<=", ma_institutionalized_spouse_countable_resources, ssi_resource_limit_individual]
-sources: [S1755]
+precision: "A community spouse who controls resources attributed to the institutionalized spouse and withholds them does not make the institutionalized spouse ineligible where support rights are assigned, the Department can proceed without an assignment, or denial would be an undue hardship (§ 8.100.7.M.4; ma_community_spouse_withheld_resources_are_excused, CO-4637; coverage review NM-19)."
+derived: [any, ["<=", ma_institutionalized_spouse_countable_resources, ssi_resource_limit_individual], [all, ma_ltc_couple, [otherwise, ma_community_spouse_withheld_resources_are_excused, false]]]
+sources: [S1755, S3418]
 implemented: engine
 tags: [ma, ltc, resources]
 rationale: "No existing item compares ma_institutionalized_spouse_countable_resources to the individual resource limit. ma_ltc_financially_eligible (CO-651) needs it. Reuses ssi_resource_limit_individual (CO-233, batch 8) rather than a new parameter, since 8.100.7.O.1's '$2,000' is the same SSI-related individual limit 8.100.5.M.1 states."
@@ -15,3 +16,4 @@ nearest: [CO-610]
 tests:
   - {id: CO-648-T1, as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 1600}, expect: true}
   - {id: CO-648-T2, as_of: "2026-10-01", given: {ma_institutionalized_spouse_countable_resources: 16000}, expect: false}
+  - {id: CO-648-T3, as_of: "2026-10-01", title: "NM-19: over the standard, but the community spouse withholds the resources and support rights are assigned", given: {ma_institutionalized_spouse_countable_resources: 16000, ma_ltc_couple: true, ma_community_spouse_withheld_resources_are_excused: true}, expect: true}

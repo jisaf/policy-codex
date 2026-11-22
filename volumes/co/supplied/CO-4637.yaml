@@ -1,0 +1,13 @@
+id: CO-4637
+name: "Medicaid: resources the community spouse withholds are excused"
+identifier: ma_community_spouse_withheld_resources_are_excused
+kind: supplied
+type: yes/no
+scope: person
+program: Medicaid
+meaning: "Whether the community spouse controls resources attributed to the institutionalized spouse and does not make them available for the cost of care, and either the institutionalized spouse has assigned to the Department any rights to support from the community spouse, or cannot assign them because of a physical or mental impairment and the Department may bring a support proceeding without the assignment, or the eligibility site has determined that denial would work an undue hardship (no alternative living arrangement other than the institution) (10 CCR 2505-10 § 8.100.7.M.4.a-c)."
+precision: "Stated for the institutionalized spouse. If not stated, Medicaid reads it as false."
+supplied_by: "The assignment of support rights, or the eligibility site's hardship finding."
+sources: [S3418]
+tags: [ma, ltc, resources]
+rationale: "Coverage review NM-19: § 8.100.7.M.4 keeps the institutionalized spouse eligible in these cases; no fact stated them."

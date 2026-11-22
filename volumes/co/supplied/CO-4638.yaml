@@ -1,0 +1,13 @@
+id: CO-4638
+name: "Medicaid: income committed elsewhere in the admission or discharge month"
+identifier: ma_patient_payment_income_committed_elsewhere
+kind: supplied
+type: money
+scope: person-month
+program: Medicaid
+meaning: "The part of the Long-Term Care institution resident's income for the month that the eligibility site leaves out of the patient payment because, in the month of admission from home, the funds were already committed elsewhere (including after a hospital stay in the same month), or were committed to care already provided in the month of admission from another institution or from private pay, or, in the month of discharge home, are needed for living expenses (10 CCR 2505-10 § 8.100.7.V.4.a.iii-vi)."
+precision: "If not stated, Medicaid reads it as 0."
+supplied_by: "The eligibility site's finding, with the resident's bills or the facility's private-pay statement."
+sources: [S3420]
+tags: [ma, ltc, income]
+rationale: "Coverage review NM-29: § 8.100.7.V.4.a.iii-vi let the patient payment be reduced in those months; no fact stated the amount, so the admission-month patient payment was overstated."

@@ -1,0 +1,14 @@
+id: CO-4615
+name: "Home has a recorded beneficiary deed"
+identifier: home_has_recorded_beneficiary_deed
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether a beneficiary deed on the home whose equity home_equity states has been executed and recorded and not revoked by a recorded revocation."
+precision: "If not stated, every program reads it as false."
+supplied_by: "County property records."
+sources: [S3403]
+tags: [resources]
+rationale: "Coverage review NM-5: 10 CCR 2505-10 § 8.100.5.M.2.a.xiv and M.3.e count the home once a beneficiary deed is executed and recorded; no fact stated it."
+nearest: [CO-826]

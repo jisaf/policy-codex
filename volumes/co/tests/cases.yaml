@@ -13544,6 +13544,9 @@
         ma_is_incapable_of_indicating_intent: false
         ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
         home_equity: 240000
+        intends_to_return_home: true  # coverage review NM-5: her signed statement of intent to return (8.100.5.M.2.a.v keeps the home exempt)
+        intent_to_return_home_is_documented_in_writing: true
+        lives_in_owned_home: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         # 8.100.7.F.2.c.ii: the later of the month after the transfer (2025-07-01) and the date
@@ -14600,7 +14603,12 @@
   # Final verification pass 2, F2-2 (docs/reviews/final2-medicaid-chp.md). p1, 80, a widowed veteran with no
   # children, entered a State Veterans Home (a nursing facility) on 2026-09-14 and applied on 2026-11-02. Social
   # Security 1,300; a VA non-service-connected pension of 600, of which 300 is Aid and Attendance (the VA award
-  # letter); resources 1,200; the State pays his Part B premium (Medicare Buy-In); no home to keep.
+  # letter); resources 1,200; the State pays his Part B premium (Medicare Buy-In); no physician's certification that he
+  # will be home within six months, so no Home Maintenance Allowance. Coverage review NM-5: he owns a home (equity
+  # 240,000) he means to return to, and has signed a statement saying so; under 8.100.5.M.2.a.v the home of an
+  # institutionalized person below the equity limit (752,000) is exempt when the intent to return is documented in
+  # writing, so the resources stay 1,200 and no expectation changes. Without the statement the home would count
+  # (M.2.a.v, vii) and he would be ineligible_resources.
   # Hand derivation, November 2026:
   # - Eligibility income leaves out the A&A portion (8.100.5.K lead-in, CO-641): 1,300 + 600 - 300 = 1,600, at or
   #   under 300% x 994 = 2,982 (special income group); resources 1,200 at or under 2,000: eligible_institutional.
@@ -14651,6 +14659,9 @@
         ma_is_incapable_of_indicating_intent: false
         ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
         home_equity: 240000
+        intends_to_return_home: true  # coverage review NM-5: he means to go home and has said so in writing (8.100.5.M.2.a.v)
+        intent_to_return_home_is_documented_in_writing: true
+        lives_in_owned_home: false
         uncompensated_transfer_value_in_lookback: 0
         transfer_was_exempt: false
         is_tax_filer: false
@@ -16998,3 +17009,727 @@
         2026-11: former_foster_care
       ma_magi_eligibility_status:
         2026-11: eligible
+- id: CO-185
+  title: An aged person with a revocable burial trust over $1,500 and a lot listed for sale
+  # Coverage round (docs/reviews/coverage-medicaid-nonmagi.md NM-1, NM-2; scratch X-BURIAL and X-FORSALE). p1, 76,
+  # single, Social Security 800, Medicare Part A, applied 2026-10-05. Savings 1,000; a revocable burial trust of
+  # 2,000 (no interest left in it, no irrevocable burial funds, no life insurance); a 50,000 lot listed with a real
+  # estate agent at market value, unsold (the efforts to sell verified).
+  # Hand derivation, October 2026:
+  # - Burial funds (8.100.5.M.2.j): 1,500 excluded, reduced by no irrevocable funds and no excluded life insurance:
+  #   2,000 - 1,500 = 500 counts.
+  # - The lot (M.2.b): reasonable efforts to sell have been unsuccessful, so it is not included: 0.
+  # - Resources 1,000 + 500 = 1,500, at or under 2,000. Income 800 - 20 = 780, under 994: aged.
+  # New case. Before the fix the engine counted 1,000 + 50,000 = 51,000 (the burial trust left out whole, the lot
+  # counted whole): none.
+  as_of: '2026-10-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 1000
+        revocable_burial_trust_value: 2000
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 50000
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        education_program_type: none
+        real_property_for_sale_value: 50000
+        sale_efforts_verification_document_received: true
+      month_defaults:
+        social_security_income: 800
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: true
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_ssi_countable_resources: 1500
+      ma_ssi_related_category:
+        2026-10: aged
+- id: CO-186
+  title: A disabled child of ten living with a parent who earns 8,000 a month
+  # Coverage round (NM-10, OQ-83 resolved; scratch X-DEEM). p1, 10, meets the SSA disability criteria, no income,
+  # lives with her mother p2 (41), who earns 8,000 a month, has 1,500 in savings and is not applying for SSI.
+  # Hand derivation, October 2026 (8.100.5.H.3; 42 U.S.C. 1382c(f)(2)(A); 20 CFR 416.1165, 416.1202(b)):
+  # - No ineligible child in the home: no Ineligible Child Allocation. The mother has no unearned income, so the
+  #   whole $20 goes to earnings: (8,000 - 20 - 65) / 2 = 3,957.50; less the Ineligible Parent Allocation for one
+  #   parent (the individual FBR, 994): 2,963.50 deemed to p1, the only eligible child.
+  # - p1's countable income: 2,963.50 unearned less her own $20: 2,943.50, over 994: none (the SSI-related
+  #   groups); the Children's Buy-In is the route for such a child.
+  # - Resources: the mother's 1,500 is within her own 2,000 limit, so none is deemed: 0.
+  # New case. Before the fix no parental income reached the child: countable income 0, disabled.
+  as_of: '2026-10-12'
+  relationships:
+  - - parent
+    - p2
+    - p1
+  persons:
+    p1:
+      facts:
+        date_of_birth: '2016-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        has_applied_for_ssi: false
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 0
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+      month_defaults:
+        social_security_income: 0
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+    p2:
+      facts:
+        date_of_birth: '1986-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        has_applied_for_ssi: false
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 1500
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+      month_defaults:
+        social_security_income: 0
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 8000
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_ssi_parental_income_deemed:
+        2026-10: 2963.5
+      ma_ssi_countable_income:
+        2026-10: 2943.5
+      ma_ssi_countable_resources: 0
+      ma_ssi_related_category:
+        2026-10: none
+- id: CO-187
+  title: A working disabled adult in the Working Adults Buy-In, designated for the EBD waiver
+  # Coverage round (NM-12, NM-13; scratch X-WAWDHCBS). p1, 40, meets the SSA disability criteria, single, no
+  # Medicare; wages 4,000 a month; savings 1,000; designated for the EBD waiver (physically disabled) with the level
+  # of care; requests HCBS; applied 2026-10-05.
+  # Hand derivation, October 2026:
+  # - Working Adults Buy-In (8.100.6.P.1.b): (4,000 - 20 - 65) / 2 = 1,957.50, under 450% of the poverty level for one:
+  #   working_adults_with_disabilities.
+  # - HCBS (8.100.7.B.1.c): a Buy-In member designated for EBD reaches HCBS without the 300% special income group,
+  #   whose limit (2,982) her gross 4,000 exceeds, and without the long-term care resource test (P.1.c):
+  #   ma_ltc_unmet_requirement none, eligible_hcbs.
+  # - B.2.c: the transfer, trust and annuity documents of B.2.a do not apply to a Buy-In member: no asset transfer
+  #   verification is pending.
+  # New case. Before the fix: ineligible_income, and the asset transfer documents pending.
+  as_of: '2026-10-12'
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        date_of_birth: '1986-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: true
+        meets_hcbs_waiver_target_group: ebd
+        ma_ltc_setting_requested: hcbs
+        meets_nursing_facility_level_of_care: true
+        ma_meets_designated_waiver_level_of_care: true
+        expects_institutional_stay_of_thirty_days: true
+        has_income_trust: false
+        receives_va_aid_and_attendance: false
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        ma_is_in_buy_in_program: true
+        ma_hcbs_ebd_subgroup: physically_disabled_or_blind
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 1000
+        marital_status: single
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_spouse_outside_case_is_institutionalized_and_otherwise_eligible: false
+      month_defaults:
+        social_security_income: 0
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 4000
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        hours_worked: 160
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_wawd_countable_income:
+        2026-10: 1957.5
+      ma_buy_in_category:
+        2026-10: working_adults_with_disabilities
+      ma_ltc_unmet_requirement:
+        2026-10: none
+      ma_ltc_eligibility_status:
+        2026-10: eligible_hcbs
+      ma_asset_transfers_verification_is_pending:
+        2026-10: false
+- id: CO-188
+  title: A nursing facility resident ordered by a court to pay his wife 2,500 a month
+  # Coverage round (NM-15; scratch X-COURT). CO-112's couple, with a court order that Robert (p1) pay Linda (p2)
+  # 2,500 a month for her support (no court-ordered transfer of resources). Determined 2026-11-01.
+  # Hand derivation (CO-112 for the figures):
+  # - Monthly income allowance (8.100.7.R.2-3): MMMNA 3,571.40 - her income 1,900 = 1,671.40, but "not less than
+  #   the monthly amount ordered by the court": 2,500.
+  # - Patient payment, November: 2,489.64 (after the personal needs allowance) - (2,500 + 60 tax + 202.90 Part B
+  #   + 40 Part D) is below zero: 0; plus the long-term care insurance 300: 300. December (no Part B deduction):
+  #   2,489.64 - 2,600 is below zero: 0 + 300 = 300.
+  # - Resources and income as in CO-112: eligible_institutional.
+  # New case. Before the fix the allowance was 1,671.40 and the November payment 815.34.
+  as_of: '2026-11-01'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    home_incurs_electricity_cost: true
+    home_incurs_telephone_cost: true
+    received_energy_assistance_within_twelve_months: false
+    snap_application_date: '2026-11-02'
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  - - files_jointly_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        ma_court_ordered_transfer_to_community_spouse: 0
+        dwelling_id: nursing_facility
+        residence_setting_type: nursing_facility
+        residence_setting_provides_majority_of_meals: true
+        has_qualifying_military_service: false
+        receives_va_non_service_connected_pension: false
+        ma_transfer_penalty_months_assigned_from_spouse: 0
+        ma_is_in_buy_in_program: false
+        date_of_birth: '1952-04-18'
+        sex: male
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        institution_entry_date: '2026-10-05'
+        expects_institutional_stay_of_thirty_days: true
+        meets_nursing_facility_level_of_care: true
+        meets_hcbs_waiver_target_group: none
+        ma_ltc_setting_requested: institutional
+        has_income_trust: false
+        liquid_resources_value: 52500
+        ma_spousal_resources_at_snapshot: 60000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: '2026-11-02'
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+        court_ordered_spousal_support: 2500
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        social_security_income: 1900
+        pension_income: 700
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 242.9
+        medicare_part_b_premium_paid: 202.9
+        medicare_part_d_premium_paid: 40
+        mandatory_income_tax_withheld: 60
+        garnishment_repaying_federal_assistance_overpayment: 0
+        long_term_care_insurance_benefits_received: 300
+        medical_expenses_out_of_pocket: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+    p2:
+      facts:
+        dwelling_id: h1
+        residence_setting_type: private_dwelling
+        has_qualifying_military_service: false
+        date_of_birth: '1957-01-09'
+        sex: female
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        expects_institutional_stay_of_thirty_days: false
+        meets_nursing_facility_level_of_care: false
+        meets_hcbs_waiver_target_group: none
+        has_income_trust: false
+        liquid_resources_value: 7500
+        ma_spousal_resources_at_snapshot: 180000
+        home_equity: 240000
+        uncompensated_transfer_value_in_lookback: 0
+        transfer_was_exempt: false
+        is_tax_filer: true
+        is_required_to_file_tax_return: true
+        expected_number_of_children: 0
+        dependent_child_has_minimum_essential_coverage: false
+        was_enrolled_in_medicaid_at_foster_care_exit: false
+        mother_coverage_at_birth: none
+        chp_has_other_health_coverage: true
+        chp_is_eligible_for_public_agency_state_health_benefits_plan: false
+        ma_application_date: '2026-11-02'
+        medical_expenses_verification_document_received: true
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+      month_defaults:
+        lottery_gambling_winnings_received: 0
+        shelter_cost_monthly: 634
+        social_security_income: 1900
+        pension_income: 0
+        wages_gross: 0
+        self_employment_net_earnings_for_tax: 0
+        self_employment_gross_receipts: 0
+        unemployment_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        shelter_costs_paid_by_others: 0
+        magi_other_taxable_income: 0
+        discharged_student_loan_debt: 0
+        tax_exempt_interest: 0
+        foreign_earned_income_excluded: 0
+        pretax_deductions: 0
+        receives_va_aid_and_attendance: false
+        va_aid_and_attendance_amount: 0
+        health_insurance_premiums_paid: 352.9
+        medicare_part_b_premium_paid: 202.9
+        medical_expenses_out_of_pocket: 75
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_community_spouse_income_allowance:
+        2026-11: 2500
+      ma_ltc_eligibility_status:
+        2026-11: eligible_institutional
+      ma_patient_payment:
+        2026-11: 300
+        2026-12: 300
+- id: CO-189
+  title: An aged applicant whose younger spouse, not applying, holds a $40,000 IRA
+  # Coverage round (NM-3; scratch X-IRA). p1, 76, Social Security 800, Medicare Part A, savings 1,000; lives with
+  # his wife p2, 60, who has no income, is not applying and holds a 40,000 IRA. Applied 2026-10-05.
+  # Hand derivation, October 2026:
+  # - Resources (8.100.5.N.3): the IRA in the name of the spouse living with him is exempt for him: 1,000, at or
+  #   under the couple's 3,000 (and the MSP couple limit).
+  # - Income: the couple's 800 - 20 = 780, under the couple FBR (1,491): aged; and at or under 100% of the poverty
+  #   level for two (1,803.33): QMB eligible.
+  # New case. Before the fix the couple's resources were 41,000: none, and not QMB.
+  as_of: '2026-10-12'
+  relationships:
+  - - spouse
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1950-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: true
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 1000
+        marital_status: married
+        retirement_accounts_value: 0
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+      month_defaults:
+        social_security_income: 800
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+    p2:
+      facts:
+        date_of_birth: '1966-03-01'
+        immigration_status: us_citizen
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        receives_ssi: false
+        medicare_part_a_entitled: false
+        ma_application_date: '2026-10-05'
+        liquid_resources_value: 0
+        marital_status: married
+        retirement_accounts_value: 40000
+        real_property_other_than_home_equity: 0
+        vehicles_equity_value: 0
+        transportation_vehicle_equity_value: 0
+        life_insurance_face_value: 0
+        ma_is_incapable_of_indicating_intent: false
+        is_emancipated_minor: false
+        ma_prior_msp_category: none
+        home_equity: 0
+        ma_lottery_winnings_hardship_exemption_granted: false
+        dwelling_id: h1
+        adult_financial_program_received: none
+        irrevocable_burial_funds_value: 0
+        burial_funds_accrued_interest: 0
+        revocable_prepaid_burial_contract_value: 0
+        life_insurance_cash_surrender_value: 0
+        income_producing_property_equity_value: 0
+        income_producing_property_is_used_in_trade_or_business: false
+        retains_ssi_status_without_payment: false
+        retroactive_benefit_payment_unspent_value: 0
+        able_account_value: 0
+        investment_personal_property_value: 0
+        ma_trust_annuity_life_estate_value_available: 0
+        revocable_burial_trust_value: 0
+        education_program_type: none
+      month_defaults:
+        social_security_income: 0
+        shelter_costs_paid_by_others: 0
+        educational_assistance_received: 0
+        loan_proceeds_received: 0
+        energy_assistance_received: 0
+        tax_refunds_and_credits_received: 0
+        federally_excluded_payments_received: 0
+        wages_gross: 0
+        pension_income: 0
+        unemployment_income: 0
+        other_unearned_income_taxable: 0
+        other_unearned_income_nontaxable: 0
+        tax_exempt_interest: 0
+        child_support_received: 0
+        lottery_gambling_winnings_received: 0
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        pass_set_aside_income: 0
+        retroactive_social_security_lump_sum_received: 0
+        retroactive_ssi_or_public_assistance_lump_sum_received: 0
+        foster_care_provider_payments_received: 0
+        impairment_related_work_expenses_paid: 0
+        blind_work_expenses_paid: 0
+        pass_set_aside_earned_income: 0
+        ma_excess_real_property_is_for_sale: false
+        ma_claims_co_owner_hardship_for_real_property: false
+  expect:
+    p1:
+      ma_ssi_countable_resources: 1000
+      ma_ssi_related_category:
+        2026-10: aged
+      ma_qmb_eligible:
+        2026-10: true

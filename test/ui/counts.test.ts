@@ -27,14 +27,14 @@ describe("owns: the question's Owner line names the role", () => {
     expect(unsettled.filter((q) => !explicitField(q.body, "Owner")).map((q) => q.id)).toEqual([]);
   });
 
-  it("counts the Medicaid policy owner's questions once: 36 open and 4 partly settled (the App said 24 and 49)", () => {
+  it("counts the Medicaid policy owner's questions once: 39 open and 3 partly settled (the App said 24 and 49)", () => {
     const med = ownedQuestions(engine, vol.sources, vol.openQuestions, { roles: ["Medicaid policy owner"] });
-    expect(med.open.length).toBe(36);
-    expect(med.partly.length).toBe(4);
+    expect(med.open.length).toBe(39);
+    expect(med.partly.length).toBe(3);
     // The definition, restated: the Owner line names the role.
     const named = unsettled.filter((q) => ownerLineRoles(engine, q.body).includes("Medicaid policy owner"));
     expect(med.open.length + med.partly.length).toBe(named.length);
-    expect(ownedPhrase(med)).toBe("36 open questions you own, and 4 partly settled");
+    expect(ownedPhrase(med)).toBe("39 open questions you own, and 3 partly settled");
   });
 
   it("counts the Cash programs policy owner's: 16 open and 4 partly settled", () => {
@@ -44,8 +44,8 @@ describe("owns: the question's Owner line names the role", () => {
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([40, 6]);
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(46);
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([44, 5]);
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(49);
   });
 
   it("a persona with no role owns nothing and is told so", () => {
@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 6 of ${vol.cases.length} stored households; it reaches 11`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 20 and reaches 28", () => {
+  it("the children's Medicaid income limit (CO-191) is read by 20 and reaches 29", () => {
     expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(20);
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(28);
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(29);
   });
 
   it("every household that reads an item is one it reaches", () => {

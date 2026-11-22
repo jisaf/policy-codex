@@ -1,0 +1,13 @@
+id: CO-4601
+name: "Medicaid: income-producing property excluded"
+identifier: ma_income_producing_property_exclusion
+kind: parameter
+type: money
+scope: global
+program: Medicaid
+meaning: "The equity value of property essential to self-support that the aged, blind and disabled resource test leaves out: non-business property necessary to produce goods or services essential to self-support, and property used in a trade or business essential to self-support that produces the required return (10 CCR 2505-10 § 8.100.5.J.2-3, M.3.g)."
+value: 6000
+sources: [S3402]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Coverage review NM-4: income-producing property had no fact and was never counted; § 8.100.5.J.2-3 exclude $6,000 of it. A figure the rule states is a parameter (OQ-82)."

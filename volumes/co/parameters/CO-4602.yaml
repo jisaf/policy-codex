@@ -1,0 +1,13 @@
+id: CO-4602
+name: "Medicaid: required return on excluded business property"
+identifier: ma_income_producing_property_min_return_rate
+kind: parameter
+type: rate
+scope: global
+program: Medicaid
+meaning: "The yearly net return, as a share of the excluded value, that property used in a trade or business must produce for the exclusion of 10 CCR 2505-10 § 8.100.5.J.3 (\"if it produces 6% return of the $6,000 excluded value\")."
+value: 0.06
+sources: [S3402]
+implemented: engine
+tags: [ma, non_magi, resources]
+rationale: "Coverage review NM-4: § 8.100.5.J.3 conditions the business-property exclusion on a 6% return. A figure the rule states is a parameter (OQ-82)."

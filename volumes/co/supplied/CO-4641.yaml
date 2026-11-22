@@ -1,0 +1,14 @@
+id: CO-4641
+name: "ABLE account value"
+identifier: able_account_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "Of liquid_resources_value (CO-3390), the value of the person's Achieving a Better Life Experience (ABLE) account."
+precision: "Part of liquid_resources_value, not added to it. As of the determination date. If not stated, every program reads it as 0."
+supplied_by: "The account statement."
+sources: [S3421]
+tags: [resources, disability]
+rationale: "Coverage review NM-27: 10 CCR 2505-10 § 8.100.5.M.2.k exempts ABLE accounts; liquid_resources_value names accounts the person holds without separating one."
+nearest: [CO-3390]

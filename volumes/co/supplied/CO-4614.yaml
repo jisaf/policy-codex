@@ -1,0 +1,14 @@
+id: CO-4614
+name: "Home is held in a trust or entity"
+identifier: home_is_held_in_trust_or_entity
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the home whose equity home_equity states has been transferred to a trust or to another entity, such as a partnership or corporation, and not transferred back into the person's name."
+precision: "If not stated, every program reads it as false."
+supplied_by: "Property records and trust documents."
+sources: [S3403]
+tags: [resources]
+rationale: "Coverage review NM-5: 10 CCR 2505-10 § 8.100.5.M.2.a.xiii takes away the home exemption for a home in a trust or entity for long-term care; no fact stated it."
+nearest: [CO-826]

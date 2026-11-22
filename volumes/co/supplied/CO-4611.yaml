@@ -1,0 +1,14 @@
+id: CO-4611
+name: "Intends to return home"
+identifier: intends_to_return_home
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "Whether the person, living away from the home whose equity home_equity states, intends to return to live in it."
+precision: "If not stated, Medicaid reads it as false."
+supplied_by: "The person's statement."
+sources: [S3403]
+tags: [resources]
+rationale: "Coverage review NM-5: 10 CCR 2505-10 § 8.100.5.M.2.a.iii-viii turn on the intent to return home; no fact stated it."
+nearest: [CO-4612]
