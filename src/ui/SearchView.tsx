@@ -6,6 +6,7 @@
 import { useSignal } from "@preact/signals";
 import { personaById } from "./personas";
 import { Ident } from "./Rich";
+import { programLabel } from "./roles";
 import { groupResults, hitHash, RESULT_GROUP_LABEL, RESULT_GROUPS, search, searchHash, type SearchHit } from "./search";
 import { activePersonaId } from "./Sidebar";
 import { route, searchIndexSig } from "./state";
@@ -18,7 +19,7 @@ function Subtitle({ hit }: { hit: SearchHit }) {
   const program = parts[parts.length - 1];
   return (
     <small class="muted">
-      {program !== "All" ? `${program} · ` : ""}{parts[0]} · <Ident id={parts[1]} />
+      {program !== "All" ? `${programLabel(program)} · ` : ""}{parts[0]} · <Ident id={parts[1]} />
     </small>
   );
 }
