@@ -1,0 +1,13 @@
+id: CO-3864
+name: "Date of the application for other benefits"
+identifier: benefit_application_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person applied to the Social Security Administration for the benefit, or for the other income, the person was referred to apply for."
+precision: "Read only for a person referred to apply (CO-3862) outside AND-SO; for AND-SO the period runs from the interview."
+supplied_by: "The SSA application receipt or the client's statement."
+sources: [S2622]
+tags: [cash, verification]
+rationale: "Final cash review FC-9: 3.520.71.C (S2622) counts the eleven days from the client's application for SSA benefits; no fact stated that date."

@@ -1,0 +1,13 @@
+id: CO-3825
+name: "Income set aside under a plan to achieve self-support"
+identifier: pass_set_aside_income
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's income for the month set aside under a Plan to Achieve Self-Support (an individual plan for self-care or self-support) that the Social Security Administration has approved, and used for the plan's purposes."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or other_unearned_income_nontaxable, or the fact that names the source), not added to it. If not stated, every program reads it as 0."
+supplied_by: "SSA's approved plan and the person's records."
+sources: [S2606, S2608, S2609]
+tags: [cash, income]
+rationale: "Final cash review FC-2 and FC-3: Colorado Works' and Adult Financial's exclusion items (CO-2340 to CO-2343) summed a closed list of neutral receipt facts, so income the current exempt-income lists name could not be excluded and was counted. 9 CCR 2503-5 3.520.786.I (S2608) exempts income set aside as part of a PASS approved by SSA, as 20 CFR 416.1124(c)(13) (S2609) does; 9 CCR 2503-6 3.605.4.B.15 (S2606) exempts Social Security payments under such a plan. The fact states the receipt, program-neutrally (convention rule 13); each program's exclusion item decides whether its list exempts it."

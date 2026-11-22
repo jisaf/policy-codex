@@ -1,0 +1,12 @@
+id: CO-3867
+name: "Adult Financial: AND-SO days to prove an application for SSA benefits"
+identifier: af_and_so_benefit_application_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "An AND-SO client referred to the SSA shall provide verification of the application within this many calendar days from the initial interview, the period of conditional approval (9 CCR 2503-5 3.520.71.C: \"sixty (60) calendar days\")."
+value: 60
+sources: [S2622]
+tags: [cash, and, verification]
+rationale: "Final cash review FC-9: The figure is a parameter."

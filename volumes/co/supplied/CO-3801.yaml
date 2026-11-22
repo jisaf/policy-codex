@@ -1,0 +1,13 @@
+id: CO-3801
+name: Is on work release or under court monitoring
+identifier: is_in_work_release_or_court_monitoring
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person, while serving time a court imposed, is released to work in the community under a work release program or serves the sentence under a court monitoring system."
+precision: "If not stated, Colorado Works reads this as false."
+supplied_by: "Applicant statement, or the correctional or court record, as the county establishes it."
+sources: [S2600]
+tags: [cash, tanf]
+rationale: "Final cash review FC-1: 9 CCR 2503-6 3.604.1.E (S2600) bars a client confined in a correction facility as an inmate, but says that \"those on a work release or court monitoring system\" are not inmates. residence_setting_type (CO-3330) says where the person lives, not whether the person is on work release, so no existing fact states the exception."

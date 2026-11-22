@@ -1280,6 +1280,9 @@
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
       af_pending_verification_count: {"2026-10": 2}
+      af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-10": 0}
       cccap_verification_status: {"2026-10": not_applicable}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
@@ -1448,6 +1451,9 @@
       cw_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-10": pending}
       af_pending_verification_count: {"2026-10": 2}
+      af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-10": 0}
       cccap_verification_status: {"2026-10": not_applicable}
       cccap_pending_verification_count: {"2026-10": 0}
       leap_verification_status: {"2026-10": pending}
@@ -1624,6 +1630,9 @@
       leap_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": not_applicable}
       af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-10": 0}
       ma_citizenship_verification_is_pending: {"2026-10": false}
       ma_identity_verification_is_pending: {"2026-10": false}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1791,7 +1800,7 @@
       chp_verification_status: {"2026-10": pending}
       chp_pending_verification_count: {"2026-10": 3}
       cw_verification_status: {"2026-10": pending}
-      cw_pending_verification_count: {"2026-10": 2}
+      cw_pending_verification_count: {"2026-10": 3}   # final cash review FC-12 / final verification review V-2 (was 2): the unit [p4, p5] has p4's and p5's citizenship pending (2), plus the wages of p3, the minor parent's mother, $2,380 deemed to the unit (3.605.1.A.4) with no income document (earned_income_verification_document_received false), which 3.604.3.B.2.e requires verified = 3; status still pending within the eleven days
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
@@ -1801,6 +1810,9 @@
       leap_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": not_applicable}
       af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-10": 0}
       ma_citizenship_verification_is_pending: {"2026-10": true}
       ma_identity_verification_is_pending: {"2026-10": true}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -1954,7 +1966,7 @@
       chp_verification_status: {"2026-10": not_required}
       chp_pending_verification_count: {"2026-10": 0}
       cw_verification_status: {"2026-10": pending}
-      cw_pending_verification_count: {"2026-10": 2}
+      cw_pending_verification_count: {"2026-10": 3}   # final cash review FC-12 / final verification review V-2 (was 2): the unit [p4, p5] has p4's and p5's citizenship pending (2), plus the wages of p3, the minor parent's mother, $2,380 deemed to the unit (3.605.1.A.4) with no income document (earned_income_verification_document_received false), which 3.604.3.B.2.e requires verified = 3; status still pending within the eleven days
       cccap_verification_status: {"2026-10": pending}
       cccap_pending_verification_count: {"2026-10": 3}
       leap_verification_status: {"2026-10": pending}
@@ -1964,6 +1976,9 @@
       leap_pending_verification_count: {"2026-10": 2}
       af_verification_status: {"2026-10": not_applicable}
       af_pending_verification_count: {"2026-10": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_benefit_application_verification_is_pending: {"2026-10": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-10": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-10": 0}
       ma_citizenship_verification_is_pending: {"2026-10": false}
       ma_identity_verification_is_pending: {"2026-10": false}
       ma_immigration_status_verification_is_pending: {"2026-10": false}
@@ -3291,6 +3306,9 @@
       cw_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       af_verification_status: {"2026-11": complete}
       af_pending_verification_count: {"2026-11": 0}
+      af_benefit_application_verification_is_pending: {"2026-11": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-11": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-11": 0}
       cccap_verification_status: {"2026-11": not_applicable}
       cccap_pending_verification_count: {"2026-11": 0}
       cw_death_reimbursement_eligible: false    # K-1: no member is a deceased Colorado Works client
@@ -3463,6 +3481,9 @@
       cw_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": complete}
       af_pending_verification_count: {"2026-11": 0}
+      af_benefit_application_verification_is_pending: {"2026-11": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-11": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-11": 0}
       cccap_verification_status: {"2026-11": not_applicable}
       cccap_pending_verification_count: {"2026-11": 0}
       leap_household_income: {"2026-11": 3560}    # p2's 1,180 + p3's 2,380
@@ -3636,6 +3657,9 @@
       leap_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": not_applicable}
       af_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_benefit_application_verification_is_pending: {"2026-11": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-11": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-11": 0}
       ma_citizenship_verification_is_pending: {"2026-11": false}
       ma_identity_verification_is_pending: {"2026-11": false}
       ma_immigration_status_verification_is_pending: {"2026-11": false}
@@ -3807,6 +3831,9 @@
       leap_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": not_applicable}
       af_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_benefit_application_verification_is_pending: {"2026-11": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-11": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-11": 0}
       ma_citizenship_verification_is_pending: {"2026-11": true}
       ma_identity_verification_is_pending: {"2026-11": true}
       ma_immigration_status_verification_is_pending: {"2026-11": false}
@@ -3970,6 +3997,9 @@
       leap_pending_verification_count: {"2026-11": 0}
       af_verification_status: {"2026-11": not_applicable}
       af_pending_verification_count: {"2026-11": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
+      af_benefit_application_verification_is_pending: {"2026-11": false}   # final cash review FC-9: no referral to SSA or other income stated
+      af_disaster_assistance_eligible: {"2026-11": false}   # final cash review FC-10: no disaster assistance requested (3.570.52.C)
+      af_disaster_assistance_payment: {"2026-11": 0}
       ma_citizenship_verification_is_pending: {"2026-11": false}
       ma_identity_verification_is_pending: {"2026-11": false}
       ma_immigration_status_verification_is_pending: {"2026-11": false}
@@ -13632,3 +13662,320 @@
       ma_qmb_is_in_effect: {"2027-01": true}
       ma_qmb_eligible: {"2027-01": true}
       ma_msp_category: {"2027-01": qmb}
+- id: CO-120
+  title: "Final cash review FC-4: a married couple, both on the Old Age Pension, $500 of Social Security each - the $20 disregard is split"
+  # Built for the final cash review's FC-4 probe, which the reviewer confirmed with the engine.
+  # p1 Harold, 72, and p2 June, 70, are married and live together; each receives $500 of Social Security,
+  # has $1,000 in the bank and is enrolled in Medicaid. Both are citizens, Colorado residents, not on SSI.
+  # Countable income (9 CCR 2503-5 3.533.A.2): gross unearned 500, no SSI; a married client's $20 is
+  # "split equally between the client and the client's spouse" (A.2.c.1), so each deducts $10: 500 - 10 = 490.
+  # No earned income, so nothing rolls (A.2.f). Deeming (3.534.C): each spouse is on Medicaid with income
+  # 500 <= the OAP grant standard 1,032, so nothing is deemed either way. Countable income 490 each (was 480
+  # with the full $20 each, the review's probe).
+  # Resources: 1,000 + 1,000 = 2,000 <= the $3,000 couple limit (3.520.72.A.2). Category oap.
+  # Grant (3.533.B): 1,032 - 490 = 542, above the $189 floor: $542 each (was $552).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+    - [spouse, p1, p2]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1954-04-10"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 1000
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1956-07-22"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: married
+        receives_ssi: false
+        title_ii_benefit_type: retirement_or_survivor
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: false
+        claims_disability: false
+        is_enrolled_in_medical_assistance: true
+        liquid_resources_value: 1000
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 500
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_countable_income: {"2026-10": 490}   # 500 - 10 (split $20, 3.533.A.2.c.1)
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 542}         # 1,032 - 490
+    p2:
+      af_countable_income: {"2026-10": 490}
+      af_category: {"2026-10": oap}
+      af_oap_grant: {"2026-10": 542}
+- id: CO-121
+  title: "Final cash review FC-5: an AND-SO client with $465 of wages and no unearned income - no rollover of the $20"
+  # Built for the final cash review's FC-5 probe, which the reviewer confirmed with the engine.
+  # p1 Dana, 40, single, totally disabled for six months by the county's medical certification, not on SSI
+  # or SSDI, has applied for SSI (the AND-SO duty of 3.520.71.B), a citizen and Colorado resident with $200 in the
+  # bank. She earns $465 a month and has no unearned income.
+  # Countable income (3.544): earned 465 - 65 = 400, divided by two = 200. 3.544 has no paragraph that rolls the
+  # unused $20 onto earnings (3.533.A.2.f and 3.549.A.2.f are OAP's and AND-CS's), so countable income is 200
+  # (was 190 with the rollover). 200 < the $248 AND-SO standard: and_so.
+  # Grant (3.544.C): 248 - 200 = $48 (was $58).
+  as_of: "2026-10-01"
+  case_facts:
+    cw_meets_county_diversion_income_limit: false
+  relationships: []
+  persons:
+    p1:
+      relationships: []
+      facts:
+        residence_setting_type: private_dwelling
+        date_of_birth: "1986-05-01"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_fleeing_felon: false
+        marital_status: single
+        receives_ssi: false
+        title_ii_benefit_type: none
+        is_blind: false
+        meets_ssa_disability_criteria: false
+        af_has_total_disability_six_months: true
+        claims_disability: true
+        af_has_met_and_so_benefit_application_duty: true
+        liquid_resources_value: 200
+        receives_tanf_cash: false
+        is_sponsored_non_citizen: false
+        child_welfare_payment_type: none
+        is_pregnant: false
+      month_defaults:
+        wages_gross: 465
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        shelter_costs_paid_by_others: 0
+  expect:
+    p1:
+      af_countable_income: {"2026-10": 200}   # (465 - 65) / 2; no rollover in 3.544
+      af_category: {"2026-10": and_so}
+      af_and_grant: {"2026-10": 48}           # 248 - 200
+- id: CO-122
+  title: "Final verification review V-2 / final cash review FC-12: a stepfather's undocumented wages are pending for the Colorado Works unit"
+  # Built for V-2. p1 Ana, 30, applies for Colorado Works for herself and her son p2, 6, on October 1; her husband p3
+  # Luis, 33, the boy's stepfather, has not asked to be in the unit. All are citizens and Colorado residents.
+  # Unit (3.604.2.C): Ana and her son; Luis, a stepparent who did not request assistance, is outside it, but as the
+  # spouse of the parent he is in the budgetary unit (3.604.2.D, cw_budgetary_unit_members), and his income is
+  # deemed (3.605.1.A.4.a): wages 2,000 - the $90 disregard = 1,910, plus no unearned income, less no support paid,
+  # less the needs of his own children outside the unit (none: the One Caretaker 0-children need standard, 253)
+  # = 1,657. Unit countable income 1,657 >= the need standard 331 (one caretaker, one child): ineligible_income.
+  # Verification (3.604.3.B.2.e: "income of any member of the assistance unit or other household member whose income
+  # is used"): Ana and her son have provided every document; Luis has given no pay stubs
+  # (earned_income_verification_document_received false). His wages are used, so the unit's count is 1 (was 0
+  # before the V-2 fix, which summed the assistance unit only), and on October 5, within the eleven days, the
+  # status is pending. Luis's own Colorado Works status stays not_applicable (he is in no unit Colorado Works aids).
+  as_of: "2026-10-05"
+  case_facts:
+    cw_application_date: "2026-10-01"
+    cw_meets_county_diversion_income_limit: false
+  relationships:
+    - [parent, p1, p2]
+    - [spouse, p1, p3]
+    - [stepparent, p3, p2]
+  persons:
+    p1:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: "1996-03-03"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        months_of_assistance_received: 0
+        cw_months_received_in_exempt_indian_country: 0
+        has_domestic_violence_extension_approved: false
+        has_hardship_extension_approved: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_is_head_of_assistance_unit: true
+        is_requesting_assistance_for_own_child: true
+        cw_determination_is_redetermination: false
+        verification_request_date: "2026-10-01"
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        identity_verification_document_type: colorado_drivers_license_or_id
+        immigration_status_verified_by_electronic_data_source: false
+        household_composition_attestation_is_questionable: false
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_been_issued_ssn: true
+        ssn_exception_applies: false
+        household_composition_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        self_employment_income_verified_by_electronic_data_source: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p2:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: "2020-06-15"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        is_emancipated_minor: false
+        marital_status: single
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        verification_request_date: "2026-10-01"
+        citizenship_verification_document_received: true
+        citizenship_verification_document_type: us_public_birth_certificate
+        identity_verification_document_type: child_medical_or_school_record
+        immigration_status_verified_by_electronic_data_source: false
+        household_composition_attestation_is_questionable: false
+        residency_verification_document_received: true
+        earned_income_verification_document_received: true
+        identity_verified_by_electronic_data_source: true
+        identity_verification_document_received: true
+        citizenship_verified_by_electronic_data_source: true
+        ssn_verified_by_electronic_data_source: true
+        ssn_furnished_or_application_shown: true
+        has_been_issued_ssn: true
+        ssn_exception_applies: false
+        household_composition_verification_document_received: true
+        unearned_income_verified_by_electronic_data_source: true
+        self_employment_income_verified_by_electronic_data_source: false
+      month_defaults:
+        wages_gross: 0
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+    p3:
+      facts:
+        residence_setting_type: private_dwelling
+        child_welfare_payment_type: none
+        date_of_birth: "1993-01-20"
+        immigration_status: us_citizen
+        state_of_residence: CO
+        is_pregnant: false
+        marital_status: married
+        receives_ssi: false
+        receives_tanf_cash: false
+        received_tanf_from_another_state_this_month: false
+        cw_is_serving_ipv_disqualification: false
+        is_fleeing_felon: false
+        is_sponsored_non_citizen: false
+        cw_requests_inclusion_in_assistance_unit: false
+        earned_income_verification_document_received: false
+      month_defaults:
+        wages_gross: 2000
+        self_employment_gross_receipts: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        child_support_received: 0
+        child_support_paid_legally_obligated: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+  expect:
+    p1:
+      cw_budgetary_unit_members: [p1, p2, p3]
+      cw_countable_income: {"2026-10": 1657}    # Luis's 2,000 - 90 - 253
+      cw_eligibility_status: {"2026-10": ineligible_income}
+      cw_pending_verification_count: {"2026-10": 1}   # Luis's wages, no pay stubs (V-2)
+      cw_verification_status: {"2026-10": pending}
+    p3:
+      cw_budgetary_member_deemed_income: {"2026-10": 1657}
+      cw_verification_status: {"2026-10": not_applicable}

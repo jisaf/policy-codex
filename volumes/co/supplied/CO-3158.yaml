@@ -5,7 +5,7 @@ kind: supplied
 type: money
 scope: person-month
 program: All
-meaning: "The part of other_unearned_income_taxable (CO-1714) that is interest or dividends the person received for the month (taxable interest, not tax-exempt interest, which is tax_exempt_interest, CO-081). It is a part of CO-1714, not an addition to it: no income sum adds it, since CO-1714 already includes it. If not stated, Medicaid reads it as none (all of CO-1714 is other income)."
+meaning: "The part of other_unearned_income_taxable (CO-1714) that is interest or dividends the person received for the month (taxable interest, not tax-exempt interest, which is tax_exempt_interest, CO-081). It is a part of CO-1714, not an addition to it: no income sum adds it, since CO-1714 already includes it. If not stated, Medicaid and Adult Financial read it as none (all of CO-1714 is other income)."
 precision: "Stated so a Medicare Savings Program applicant's interest and dividends can be taken on attestation (42 CFR 435.952(e)(1)(i)) while other unearned income is verified; at most other_unearned_income_taxable for the month."
 supplied_by: "The applicant's statement; bank or brokerage statements, Form 1099-INT or 1099-DIV."
 sources: [S1089]

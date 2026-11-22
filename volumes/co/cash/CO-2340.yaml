@@ -5,12 +5,17 @@ kind: derived
 type: money
 scope: person-month
 program: ColoradoWorks
-meaning: "The part of this person's gross earned income for the month that 9 CCR 2503-6 3.605.4.A.24 exempts: all of a dependent child student's earned income (A.24.b, cw_student_earnings_are_disregarded), otherwise college work-study income (A.24.a)."
-derived: [case, [cw_student_earnings_are_disregarded, [+, wages_gross, cw_self_employment_net_profit]], [else, [otherwise, work_study_earnings, 0]]]
-sources: [S1621, S2205]
+meaning: "The part of this person's gross earned income for the month that 9 CCR 2503-6 does not consider: all of a dependent child student's earned income (3.605.4.B.24.b, cw_student_earnings_are_disregarded); otherwise college work-study income (B.24.a), wages earned through a subsidized employment program (B.35, 3.605.2.C) and wages from short-term employment of ninety days or less unless the job ended through the person's own fault (3.605.2.C)."
+precision: "The sum of the neutral receipt facts the program's rule names (each part of wages_gross, so cw_gross_earned_income subtracts it); an unstated receipt is 0. A wage stated as subsidized is not also stated as short-term."
+derived: [case, [cw_student_earnings_are_disregarded, [+, wages_gross, cw_self_employment_net_profit]], [else, [+, [otherwise, work_study_earnings, 0], [otherwise, subsidized_employment_wages, 0], [case, [[otherwise, short_term_employment_ended_through_own_fault, false], 0], [else, [otherwise, short_term_employment_wages, 0]]]]]]
+sources: [S1621, S2205, S2604, S2606]
 implemented: engine
 tags: [cash, income]
-rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived."
+rationale: "Same-word audit SW-28, dual-entry audit 3.24 and 3.25: each program's excluded income and allowable business costs were program-prefixed supplied amounts, so one receipt or one set of business costs was entered once per program. The neutral fact describes the receipt or the cost; each program's exclusion or allowable cost is its own derived item citing its list (product-owner decision, convention rule 13). The ID and identifier are kept; the amount is now derived. Final cash review FC-2: the item read student and work-study earnings only; 3.605.2.C and 3.605.4.B.35 (S2604, S2606) also leave out subsidized and short-term wages, now stated by subsidized_employment_wages (CO-3817), short_term_employment_wages (CO-3818) and short_term_employment_ended_through_own_fault (CO-3819)."
 tests:
   - {id: CO-2340-T1, month: "2026-10", as_of: "2026-10-01", given: {cw_student_earnings_are_disregarded: true, wages_gross: 400, cw_self_employment_net_profit: 0}, expect: 400}
   - {id: CO-2340-T2, month: "2026-10", as_of: "2026-10-01", given: {cw_student_earnings_are_disregarded: false, work_study_earnings: 250}, expect: 250}
+  # Final cash review FC-2.
+  - {id: CO-2340-T3, title: "FC-2: $600 of on-the-job training wages are not considered (3.605.4.B.35)", as_of: "2026-10-01", month: "2026-10", given: {cw_student_earnings_are_disregarded: false, subsidized_employment_wages: 600}, expect: 600}
+  - {id: CO-2340-T4, title: "FC-2: $500 from a 60-day temporary job (3.605.2.C)", as_of: "2026-10-01", month: "2026-10", given: {cw_student_earnings_are_disregarded: false, short_term_employment_wages: 500}, expect: 500}
+  - {id: CO-2340-T5, title: "FC-2: the temporary job ended through the client's own fault - counted", as_of: "2026-10-01", month: "2026-10", given: {cw_student_earnings_are_disregarded: false, short_term_employment_wages: 500, short_term_employment_ended_through_own_fault: true}, expect: 0}

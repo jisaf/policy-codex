@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: AdultFinancial
-meaning: The person was receiving both Old Age Pension grant payments and Home Care Allowance as of December 31, 2013 and has remained continuously eligible for both since, which is the third route to HCA financial eligibility under 9 CCR 2503-5 3.570.13.B.3.
+meaning: "The person was receiving both Old Age Pension grant payments and Home Care Allowance as of December 31, 2013 and has remained continuously eligible for both since, which is the third route to HCA financial eligibility under 9 CCR 2503-5 3.570.13.B.3 (\"and remain continuously eligible for both benefits\"). A case states it true only while the person remains eligible for both: once either lapses, it is false (final cash review FC-24)."
 supplied_by: Statewide automated system (CBMS) benefit history.
 sources: [S714]
 tags: [cash, oap]

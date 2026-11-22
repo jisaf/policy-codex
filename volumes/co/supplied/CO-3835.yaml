@@ -1,0 +1,13 @@
+id: CO-3835
+name: "Uncompensated value of a transfer of a resource"
+identifier: resource_transfer_uncompensated_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The uncompensated value of the transfer resource_transfer_date states: the actual value of the resource less encumbrances, less what the person received for it, and less any part of the resource since returned to the person."
+precision: "Stated with resource_transfer_date. A transfer whose whole resource has been returned is not stated."
+supplied_by: "Applicant statement, appraisals and sale records, as the county establishes them."
+sources: [S2614]
+tags: [cash, resources]
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. 3.520.76.D.1 and D.6.b (S2614) compute the penalty from the uncompensated value, recomputed for a part returned."

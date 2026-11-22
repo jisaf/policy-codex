@@ -1,0 +1,13 @@
+id: CO-3842
+name: "Adult Financial: AND-SO medical certification identifies substance abuse"
+identifier: af_and_so_certification_identifies_substance_abuse
+kind: supplied
+type: yes/no
+scope: person
+program: AdultFinancial
+meaning: "The AND-SO medical certification identifies alcoholism or controlled substance addiction as the client's primary diagnosis (9 CCR 2503-5 3.541.3)."
+precision: "If not stated, Adult Financial reads this as false."
+supplied_by: "The AND-SO medical certification form (the county's record)."
+sources: [S2616, S2617]
+tags: [cash, and, disability]
+rationale: "Final cash review FC-7: 9 CCR 2503-5 3.541.3 (S2616) and C.R.S. 26-2-111(4)(e)-(f) (S2617) limit AND-SO for a client whose primary diagnosis is alcoholism or controlled substance addiction to twelve cumulative months in a lifetime, on condition of treatment and of not testing positive twice in any three-month period, and nothing in the volume stated it. The finding is the medical certification's, an Adult Financial form, so the fact carries the program's prefix (convention rule 13 (i))."

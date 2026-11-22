@@ -1,0 +1,13 @@
+id: CO-3837
+name: "Adult Financial: application date"
+identifier: af_application_date
+kind: supplied
+type: calendar date
+scope: person
+program: AdultFinancial
+meaning: "The date the client's Adult Financial application was filed with the county department, from which 9 CCR 2503-5 3.520.76.A.3 counts the thirty-six months before the application."
+precision: "One value per client: 3.520.63.B gives each spouse a separate case."
+supplied_by: "County department case record."
+sources: [S2614]
+tags: [cash]
+rationale: "Final cash review FC-6: 9 CCR 2503-5 3.520.76 (S2614) and C.R.S. 26-2-111(1)(c) (S2615) make a transfer without fair consideration within thirty-six months before the application, or while receiving, a ground of ineligibility for a period set by the uncompensated value, and nothing in the volume stated it, so a client in a penalty period was found eligible. No fact stated the Adult Financial application date; af_interview_date (CO-2005) is the interview, which 3.520.76 does not name."

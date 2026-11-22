@@ -1,0 +1,13 @@
+id: CO-3800
+name: Is participating in a strike
+identifier: is_participating_in_strike
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is taking part in a strike: a concerted stoppage of work by employees (including one when a collective-bargaining agreement expires), or a concerted slowdown or other concerted interruption of operations by employees. A person kept from work by an employer's lockout is not taking part in a strike."
+precision: "If not stated, Colorado Works reads this as false. SNAP's striker has its own definition and exceptions (snap_is_striker, CO-3500, 7 CFR 273.1(e)); this fact states only the person's participation, which each reader's rule then classifies."
+supplied_by: "Applicant statement on the household's employment, as the county establishes it."
+sources: [S2601]
+tags: [cash, tanf, household]
+rationale: "Final cash review FC-1: 9 CCR 2503-6 3.604.2.L.2 (S2601) makes an assistance unit with an adult participating in a strike ineligible, and no item, fact or open question stated it. snap_is_striker (CO-3500) carries SNAP's own definition (7 CFR 273.1(e)) and its prefix, so Colorado Works may not read it (convention rule 3); this fact states the participation itself, program-neutrally (rule 13)."

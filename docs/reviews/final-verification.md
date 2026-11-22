@@ -169,3 +169,12 @@ Fix track for Medicaid and CHP+, 2026-11-22; the other tracks add their own line
 | V-8 | Fixed (ba897ac). chp_requires_verification_of_unearned_income and its pending item (CO-3634, CO-3635), counted in CO-1416 and CO-1417. |
 | V-10 | Fixed (ba897ac). CO-2442 reports verification_period_expired after CO-2445 with citizenship or identity still pending; aid-codes label added. |
 | V-14 | Fixed (ba897ac, 09e6740). CO-1417 is 0 when CHP+ verification is not applicable. CO-01 p3, CO-91 p1 and CO-92 p1: chp_pending_verification_count 1 -> 0. |
+
+
+## Disposition (final-pass P1 fix round, cash track: Colorado Works and Adult Financial findings, 2026-11-22)
+
+| Finding | Disposition |
+|---|---|
+| V-2 (P1) | fixed (c5b4590): cw_income_verification_members (CO-3881) and the ungated income conditions (CO-3879, CO-3880); cw_pending_verification_count (CO-1425) adds the unverified income of members whose income is used. CO-01 p4/p5 count 2 → 3 (p3's undocumented wages); new case CO-122 (a stepfather), rule test CO-1425-T3. |
+| V-9 (P2) | income fixed (c5b4590): af_spouse_income_pending_verification_count (CO-3884) in CO-1436. The spouse's resources: deferred P2 - 3.520.72.D requires all resources verified, but the resource element (CO-1433) carries the SSI and 24-month rules and needs the same split; next round. |
+| V-18 (P3, CW part) | left as documented limits, as the reviewer proposes. |

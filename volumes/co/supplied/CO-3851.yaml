@@ -1,0 +1,13 @@
+id: CO-3851
+name: "Life insurance payments in the OAP look-back period"
+identifier: life_insurance_payments_in_lookback
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The total of the premiums paid and other money contributed to the life insurance policies the person owns within the look-back period Adult Financial applies to OAP life insurance: the af_oap_life_insurance_lookback_months months (forty-eight) before the determination date."
+precision: "Read by Adult Financial for an OAP client whose policies' total face value is over $1,500 and which were all bought more than forty-eight months ago."
+supplied_by: "Applicant statement, the insurers' statements."
+sources: [S2618]
+tags: [cash, oap, resources]
+rationale: "Final cash review FC-8: af_person_countable_resources (CO-3400) counted the whole cash surrender value of life insurance over $1,500 face value, though 9 CCR 2503-5 3.520.75.E-F (S2618) exempt it for an OAP client whose policies are more than forty-eight months old, and it never counted revocable burial funds or excess burial spaces, which 3.520.72.B.8-9 (S2619) count. 3.520.75.E.2 and F.2 count the money contributed within the forty-eight months; no fact stated it."

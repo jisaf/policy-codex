@@ -1,0 +1,16 @@
+id: CO-3830
+name: "Adult Financial: gross earned income"
+identifier: af_gross_earned_income
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "This person's gross earned income for the month for Adult Financial: gross wages plus the self-employment net profit of 9 CCR 2503-5 3.520.783.B, less the earned income 3.520.786 exempts (af_excluded_earned_income), never below zero."
+derived: [max, 0, ["-", [+, wages_gross, af_self_employment_net_profit], [otherwise, af_excluded_earned_income, 0]]]
+sources: [S1622, S1002, S2610]
+implemented: engine
+tags: [cash, oap, and, income]
+rationale: "Final cash review FC-4 and FC-5: af_countable_income (CO-946) computed this figure inline; the split $20 and the rollover now read it in their own items (CO-3832, CO-3833), so it is stated once. The derivation is CO-946's former earned-income term."
+tests:
+  - {id: CO-3830-T1, title: "$465 of wages, $100 of it work-study", as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 465, af_self_employment_net_profit: 0, af_excluded_earned_income: 100}, expect: 365}
+  - {id: CO-3830-T2, as_of: "2026-10-01", month: "2026-10", given: {wages_gross: 0, af_self_employment_net_profit: 0}, expect: 0}

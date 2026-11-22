@@ -1,0 +1,13 @@
+id: CO-3874
+name: "Adult Financial: disaster assistance the county approved"
+identifier: af_county_approved_disaster_assistance_amount
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The disaster assistance payment the county department approved for the client's emergent need, after assessing the request (9 CCR 2503-5 3.570.53.A, C)."
+precision: "Read only for an eligible client."
+supplied_by: "County department determination."
+sources: [S2624, S2625]
+tags: [cash]
+rationale: "Final cash review FC-10: 9 CCR 2503-5 3.570.5 (S2624) provides a disaster assistance payment of up to $2,000 per client per disaster to a client approved for or receiving an Adult Financial grant during a declared disaster, and it had no item, outcome or open question. It is modeled as Colorado Works diversion is: eligibility, and the amount the county approves within the maximum. The rule sets a maximum and leaves the amount to the county's assessment of the need, as cw_county_approved_diversion_amount (CO-2559) is for Colorado Works diversion."

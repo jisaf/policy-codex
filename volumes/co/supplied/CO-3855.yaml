@@ -1,0 +1,13 @@
+id: CO-3855
+name: "Value of revocable burial trusts"
+identifier: revocable_burial_trust_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The value of the burial trusts the person holds that can be terminated, sold or transferred (revocable), and of any irrevocable burial trust of which the person is both the trustor and the beneficiary, with interest."
+precision: "If not stated, Adult Financial reads it as 0."
+supplied_by: "The trust agreements."
+sources: [S2619]
+tags: [cash, resources]
+rationale: "Final cash review FC-8: af_person_countable_resources (CO-3400) counted the whole cash surrender value of life insurance over $1,500 face value, though 9 CCR 2503-5 3.520.75.E-F (S2618) exempt it for an OAP client whose policies are more than forty-eight months old, and it never counted revocable burial funds or excess burial spaces, which 3.520.72.B.8-9 (S2619) count. 3.520.77.G.2.d and G.3 (S2619) count the value of such a trust over $1,500; no fact stated it."

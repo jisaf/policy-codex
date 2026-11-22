@@ -6,9 +6,9 @@ type: money
 scope: person-month
 program: ColoradoWorks
 meaning: "At a Colorado Works redetermination, the current child support the assistance unit received for this person in the six months before the redetermination, averaged over those six months (9 CCR 2503-6 3.605.5.C.2). Arrears are not included: 3.605.5.D makes them exempt."
-precision: "The six months before the determination month (cw_child_support_history_months); arrears are not part of child_support_received's current support for this purpose (3.605.5.D)."
-derived: [avg, [at, child_support_received, [month]], [months_ending, cw_child_support_history_months, [month_before, [det_month]]]]
-sources: [S1805]
+precision: "The six months before the determination month (cw_child_support_history_months); each month's current support is child_support_received less the arrears stated within it (child_support_arrears_received, CO-3814; 3.605.5.D; final cash review FC-2)."
+derived: [avg, [max, 0, ["-", child_support_received, [otherwise, child_support_arrears_received, 0]]], [months_ending, cw_child_support_history_months, [month_before, [det_month]]]]
+sources: [S2607, S1805]
 implemented: engine
 tags: [cash, tanf, income]
 rationale: "CDHS review B-2: 3.605.5.C.2 compares the household's six-month average with $500; no fact stated the average. Dual-entry audit 2.2: derived as the average of the months of child_support_received (CO-028) the case states."

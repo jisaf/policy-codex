@@ -14904,3 +14904,1005 @@ Document: D-208
 
 > (b) Liquid resources. Liquid resources are cash or other property which can be converted to cash within 20 days, excluding certain nonwork days as explained in § 416.120(d). Examples of resources that are ordinarily liquid are stocks, bonds, mutual fund shares, promissory notes, mortgages, life insurance policies, financial institution accounts (including savings, checking, and time deposits, also known as certificates of deposit) and similar items. Liquid resources, other than cash, are evaluated according to the individual's equity in the resources. (See § 416.1208 for the treatment of funds held in individual and joint financial institution accounts.)
 > (c) Nonliquid resources. (1) Nonliquid resources are property which is not cash and which cannot be converted to cash within 20 days excluding certain nonwork days as explained in § 416.120(d). Examples of resources that are ordinarily nonliquid are loan agreements, household goods, automobiles, trucks, tractors, boats, machinery, livestock, buildings and land. Nonliquid resources are evaluated according to their equity value except as otherwise provided. (See § 416.1218 for treatment of automobiles.)
+### S2600. Colorado Works: a client must not be an institution patient for tuberculosis or mental disease, or an inmate
+
+Document: D-81
+
+9 CCR 2503-6 3.604.1.D-E (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> D. Not be admitted to an institution as a patient for tuberculosis or mental disease, unless the person
+> is a child and receiving “under 21” psychiatric care under Medicaid benefits.
+> ...
+>
+> E. Not be in the custody of or confined in a county, state, or federal correction facility or institution as
+> an inmate, which is one who is confined or serving time imposed by a court, except as a patient in
+> a public medical institution. Those considered to not be an inmate also include, but are not limited
+> to, those on a work release or court monitoring system.
+
+### S2601. Colorado Works: an assistance unit with an adult participating in a strike is ineligible
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.L.2 (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> L. Individuals Ineligible for Colorado Works Program
+>
+> The following individuals shall not be eligible under Colorado Works:
+> ...
+>
+> 2. Assistance units with an adult participating in a strike;
+
+### S2602. Colorado Works: out of the home - temporarily out of State up to ninety days; a resident of an institution
+
+Document: D-81
+
+9 CCR 2503-6 3.604.2.O.1-2 (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> O. Out of the Home
+>
+> 1. For Colorado Works purposes, a client who is out of State temporarily shall be provided
+> assistance on the same basis as one who is in the state as long as the individual has
+> established intent to return. The client’s temporarily out of the State status shall not
+> exceed ninety (90) consecutive days.
+>
+> 2. A client who is a resident of an institution is not considered to be in the home. A client
+> shall be considered a resident in an institution when the recipient's stay is at least thirty
+> (30) consecutive days. Institutions include general medical and surgical hospitals, nursing
+> homes, assisted living residences, and mental institutions. Residents of an institution who
+> continue to have the responsibility of a dependent child may receive Colorado Works if
+> the dependent child also resides in the institution or continues to be cared for in the
+> home, unless individual needs are provided for through other state.
+
+### S2603. Colorado Works: assignment of support rights and cooperation with Child Support Services; the Family Violence Option waiver of child support services
+
+Document: D-81
+
+9 CCR 2503-6 3.604.4.A, A.1-3; 3.604.5.A.1.c (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> A. As a condition of continued eligibility, clients for Colorado Works are statutorily required to assign
+> all rights to child support on their own behalf or on behalf of any other member of the assistance
+> unit for whom the application is made. A client's failure to sign and date the application form to
+> avoid assignment of support rights precludes eligibility for the assistance unit. Failure to
+> cooperate with Child Support Services at application and/or while receiving basic cash
+> assistance, without good cause, will result in the termination or discontinuation of the Colorado
+> Works basic cash assistance.
+>
+> This assignment is effective for child support due and owed during the period of time the person
+> is receiving public assistance. The assignment takes effect upon a determination of eligibility for
+> Colorado Works cash assistance. The assignment remains in effect with respect to the amount of
+> any unpaid support obligation accrued and owed prior to the termination of Colorado Works cash
+> assistance to the client. The application form shall contain acknowledgement of these provisions
+> and shall be signed and dated by the client.
+> ...
+>
+> 1. Clients may request that their case not be referred to child support services based upon
+> good cause. Claims found to be valid are:
+>
+> a. Potential physical or emotional harm to a child(ren).
+>
+> b. Potential physical or emotional harm to a parent or caretaker.
+>
+> c. Pregnancy or birth of a child related to incest or forcible rape.
+>
+> d. Legal adoption before court or a parent receiving pre-adoption services.
+>
+> e. Other reasons documented by the county department.
+>
+> f. Reasons considered to be in the best interest of the child.
+>
+> g. Other court order.
+>
+> 2. Every client shall be given notice and the opportunity to claim that his or her case should
+> not be referred to Child Support Services based upon good cause.
+>
+> 3. Determination of such good cause must be in writing and documented in the case file by
+> the county director or designee of the county director.
+> ...
+>
+> 1. The FVO waiver allows a county to exempt Colorado Works clients from the following
+> standard program elements if it is determined that participation in these elements would
+> unfairly endanger or penalize an individual or their child(ren) as a result of their
+> experience of family violence:
+> ...
+>
+> c. Child support services
+
+### S2604. Colorado Works: income from short-term and subsidized employment is not considered
+
+Document: D-81
+
+9 CCR 2503-6 3.605.2.C (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> C. Income from Short-Term Employment
+>
+> Income received from short-term employment such as temporary employment (ninety days or
+> less) and subsidized employment shall not be considered to determine eligibility as long as the
+> client has not been terminated or has terminated the employment due to a fault of their own. This
+> employment may be documented in the Individualized Plan.
+
+### S2605. Colorado Works exempt income: emergency assistance, personal care and home care allowances, VA Aid and Attendance, general assistance, crime victim compensation
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.A.3, A.5-8 (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> 3.605.4 Exempt Unearned Income
+>
+> A. For the purpose of determining eligibility for Colorado Works, the following shall be exempt from
+> consideration as income:
+> ...
+>
+> 3. Emergency Assistance- Emergency Assistance received on a one-time basis in cash or
+> in kind from other agencies and organizations.
+> ...
+>
+> 5. Personal Care and Home Care- Personal care or home care allowances paid to a
+> recipient or non-recipient spouse, parent, stepparent, or child, from a federal, state, or
+> local government program for in-home supportive services (attendant, chore,
+> housekeeping) shall be exempt as income in determining the amount of attributable non-
+> recipient spouse, non-recipient parent, or non-recipient stepparent income. However, it
+> shall be classified as employment income in determining the attendant's own eligibility for
+> assistance.
+>
+> 6. VA Aid and Attendance- VA Aid and Attendance may be paid to qualified veterans in
+> addition to their regular VA benefit. VA Aid and Attendance is exempt income to the
+> applicant or recipient to determine eligibility for public assistance in the applicant's or
+> recipient's own home, if the VA Aid and Attendance is used for medical supplies and
+> medical or attendant care not covered by Medicare or Medicaid, or other health insurance
+> programs. The remainder is deducted from the assistance grant. (Amounts for attendant
+> care are treated in the same manner as specified in the preceding paragraph.)
+>
+> 7. General Assistance- General Assistance granted to a client by the county department
+> prior to or as a supplement to categorical assistance.
+>
+> 8. Crime Victims Compensation Act.
+
+### S2606. Colorado Works general income exemptions: bona fide loans, foster care funds, WIOA and youth program payments, self-support plans, IDAs and savings account distributions, subsidized employment wages
+
+Document: D-81
+
+9 CCR 2503-6 3.605.4.B (introduction), B.1, B.11, B.13-16, B.20-22, B.25, B.35 (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> B. General Income Exemptions – Exemptions from Consideration as Income
+>
+> For the purpose of determining eligibility for Colorado Works, the following shall be exempt from
+> consideration as income:
+> ...
+>
+> 1. A bona fide loan. Bona fide loans are loans, either private or commercial, which have a
+> repayment agreement.
+> ...
+>
+> 11. A child receiving foster care or kinship care funds under Title IV of the Social Security Act
+> shall be excluded from the assistance unit and his or her income shall be exempt from
+> consideration for Colorado Works eligibility and payment.
+> ...
+>
+> 13. Training allowances or training scholarships granted by Workforce Innovation and
+> Opportunity (WIOA)or other programs to enable any individual to participate in a training
+> program is exempt.
+>
+> 14. Payments received from the Youth Incentive Entitlement Pilot Projects (YIEPP), the
+> Youth Community Conservation and Improvement Projects (YCCIP), and the Youth
+> Employment and Training Programs (YETP) under the Youth Employment and
+> Demonstration Project Act (YEDPA).
+> ...
+>
+> 15. Social Security benefit payments and the accrued amount thereof paid to a client when
+> an individual plan for self-care and/or self-support has been developed under the
+> following conditions:
+>
+> a. Supplemental Security Income (SSI) permits such disregard under such
+> developed plan for self-care-support goal, and
+>
+> b. Assurance exists that the funds involved will not be for purposes other than those
+> intended.
+>
+> 16. Income received through the Workforce Innovation and Opportunity Act, including
+> supportive services through that program.
+> ...
+>
+> 20. Individual Development Accounts (IDAs).
+>
+> 21. Distributions from retirement savings accounts.
+>
+> 22. Distributions from health care savings accounts.
+> ...
+>
+> 25. Educational savings accounts.
+> ...
+>
+> 35. Wages earned through subsidized employment programs including employment,
+> apprenticeships, on-the-job training, and transitional jobs.
+
+### S2607. Colorado Works: child support arrears are exempt income
+
+Document: D-81
+
+9 CCR 2503-6 3.605.5.D (rule version 12030, effective 07/01/2025; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12030&fileName=9%20CCR%202503-6
+
+> D. Child support arrears are exempt income and are not used for eligibility or grant calculation.
+
+### S2608. Adult Financial exempt income: emergency or general assistance, home care allowances, VA Aid and Attendance, PASS, crime victim compensation, the SSI exclusions, reverse mortgages, foster care payments, infrequent income, child support
+
+Document: D-80
+
+9 CCR 2503-5 3.520.786 (introduction), D-F, I-P (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.786 EXEMPT INCOME
+>
+> Certain earned and unearned income that is not countable to the client, client’s spouse,
+> or sponsor(s) in whole or in part is exempt. Such exempt income is limited to the
+> following:
+> ...
+>
+> D. Emergency or general assistance, other than home energy assistance, received
+> on a one time basis in-cash or in-kind from the county department or other
+> agencies.
+>
+> E. Personal care or home care allowance grants paid to the client from a Federal,
+> State or local government program to purchase in-home supportive services shall
+> be exempt as income. However, if the non-recipient spouse is the provider and
+> receives the payment from the client for in-home services it shall be classified as
+> employment income and is subject to deeming.
+>
+> F. VA Aid and Attendance is exempt income to the client if used for medical supplies
+> and medical or attendant care not covered by Medicare, Medicaid, or other
+> health insurance programs. The remainder is countable and deducted from the
+> assistance grant.
+> ...
+>
+> I. Income and resources set aside as part of a Plan to Achieve Self Support (PASS)
+> approved by the SSA.
+>
+> J. Compensation received by the client pursuant to the Colorado Crime Victim
+> Compensation Act in Article 4.1 of Title 24, C.R.S.
+>
+> K. Unearned income as defined in the Social Security Program Operations Manual
+> System (POMS), Section SI 00830.099 Guide to Unearned Income Exclusions
+> (effective January 20, 2011) and consistent with the provisions of Federal
+> Regulations found at 20 CFR 416.1124 (September 2025), which are hereby
+> incorporated by reference. This rule does not contain any later amendments or
+> ...
+>
+> L. Reverse mortgage loan payments.
+>
+> M. Payments received for providing foster care. Any amount paid to a provider of
+> foster care in excess of the foster care payment not intended for the care of the
+> child is countable income to the provider.
+>
+> N. Child support payments made to the client, client’s spouse, or sponsor(s) for
+> another person. These payments can either be current or arrearage payments.
+>
+> O. Infrequent or irregular income of less than $60 in a calendar quarter.
+>
+> P. Child support arrears payments received for the client.
+
+### S2609. SSI: unearned income not counted - State-funded need-based assistance, infrequent or irregular income, foster care payments, a plan to achieve self-support, crime victim funds, interest and dividends
+
+Document: D-207
+
+20 CFR 416.1124(c)(2), (6), (8), (13), (17), (22) (eCFR as of 2026-11-19), incorporated by 9 CCR 2503-5 3.520.786.K. https://www.ecfr.gov/current/title-20/part-416/subpart-K
+
+> (c) Other unearned income we do not count. We do not count as unearned income—
+> ...
+>
+> (2) Assistance based on need which is wholly funded by a State or one of its political subdivisions. (For purposes of this rule, an Indian tribe is considered a political subdivision of a State.) Assistance is based on need when it is provided under a program which uses the amount of your income as one factor to determine your eligibility. Assistance based on need includes State supplementation of Federal SSI benefits as defined in subpart T of this part but does not include payments under a Federal/State grant program such as Temporary Assistance for Needy Families under title IV-A of the Social Security Act;
+> ...
+>
+> (6) The first $60 of unearned income received in a calendar quarter if you receive it infrequently or irregularly. We consider income to be received infrequently if you receive it only once during a calendar quarter from a single source and you did not receive it in the month immediately preceding that month or in the month immediately subsequent to that month. We consider income to be received irregularly if you cannot reasonably expect to receive it.
+> ...
+>
+> (8) Payments for providing foster care to an ineligible child who was placed in your home by a public or private nonprofit child placement or child care agency;
+> ...
+>
+> (13) Any unearned income you receive and use to fulfill an approved plan to achieve self-support if you are blind or disabled and under age 65 or blind or disabled and received SSI as a blind or disabled person for the month before you reached age 65. See §§ 416.1180 through 416.1182 for an explanation of plans to achieve self-support and for the rules on when this exclusion applies;
+> ...
+>
+> (17) Payments received by you from a fund established by a State to aid victims of crime;
+> ...
+>
+> (22) Interest and dividend income from a countable resource or from a resource excluded under a Federal statute other than section 1613(a) of the Social Security Act; and
+
+### S2610. Adult Financial OAP: countable unearned income - the $20 split equally for a married client; the unused $20 applied to earned income
+
+Document: D-80
+
+9 CCR 2503-5 3.533.A.2 (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 2. To determine countable unearned income:
+>
+> a. Determine the client's gross unearned income from all sources.
+>
+> b. Subtract any amount received from SSI.
+>
+> c. Deduct $20.00 from the remainder.
+>
+> 1) If the client is married, the $20.00 disregard shall be split
+> equally between the client and the client’s spouse so that no
+> more than a $20.00 disregard is applied for the married
+> couple.
+>
+> 2) A client who receives SSI only, and does not receive any
+> other unearned income, does not receive an unearned
+> income disregard.
+>
+> d. Add the full SSI income back to the remainder.
+>
+> e. The remainder is countable unearned income.
+>
+> f. If the client's gross unearned income is less than $20.00, the
+> difference between the gross unearned income and the $20.00
+> deduction shall be applied to the earned income calculation, if
+> applicable.
+
+### S2611. Adult Financial AND-SO: earned and unearned income disregards, with no rollover of the unused $20
+
+Document: D-80
+
+9 CCR 2503-5 3.544 (introduction), A-C (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.544 AND-SO INCOME DISREGARDS AND DEEMED INCOME
+>
+> Disregards shall be applied before calculating a client’s total countable income. If a
+> client's total countable income equals or exceeds the AND-SO grant standard after the
+> disregards are applied, he or she shall be denied following the policies outlined in
+> Section 3.554.
+>
+> A. If the client has earned income, apply the following income disregards:
+>
+> 1. Deduct $65 from the gross earned income; and,
+>
+> 2. Divide the remainder by two (2).
+>
+> 3. The result is the countable earned income.
+>
+> B. If the client has unearned income, apply the following income disregards:
+>
+> 1. Determine the client's gross unearned income from all sources.
+>
+> 2. Deduct $20.00. If the client is married, the $20.00 disregard shall be split
+> between the client and the spouse so that no more than a $20.00
+> disregard is applied.
+
+### S2612. Adult Financial AND-CS: countable unearned income and the married split; the spouse's deemed unearned income takes the client's remaining disregard
+
+Document: D-80
+
+9 CCR 2503-5 3.549.A.2, D.1-3 (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 2. To determine countable unearned income:
+>
+> a. Determine the client's unearned income from all sources.
+>
+> b. Subtract any amount received from SSI.
+>
+> c. Deduct $20 from the remainder.
+>
+> 1) If the client is married, the $20 disregard shall be split
+> between the client and the spouse so that no more than a
+> $20.00 disregard is applied for the married couple.
+>
+> 2) A client who receives SSI only, and does not receive any
+> other unearned income, does not receive an unearned
+> income disregard.
+>
+> d. Add the full SSI income back to the remainder.
+>
+> e. The result is the countable unearned income.
+>
+> f. If the client's unearned income is less than $20.00, the difference
+> between the gross unearned income and the $20.00 deduction
+> shall be applied to the earned income calculation, if applicable.
+> ...
+>
+> 2. Deduct any remaining unearned income disregard remaining from the
+> client or $20.00, whichever is less. A couple shall be allowed a combined
+> $20.00 disregard, which is split between the client and the spouse.
+>
+> 3. The result is countable unearned income and is deemed to the client.
+
+### S2613. Adult Financial AND-SO: the spouse's deemed unearned income and the split $20
+
+Document: D-80
+
+9 CCR 2503-5 3.544.E (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> E. A portion of the unearned income of the AND-SO client's spouse shall be
+> deemed to the client, as follows:
+>
+> 1. Determine the spouse's unearned monthly gross income.
+>
+> 2. Deduct $20.00 unless the client also has unearned income. The $20.00
+> disregard shall be split between the client and the client’s spouse so that
+> no more than a $20.00 disregard is applied.
+>
+> 3. The result is deemed to the client.
+
+### S2614. Adult Financial: transfers without fair consideration - the thirty-six months, the presumption, involuntary transfers, the penalty months
+
+Document: D-80
+
+9 CCR 2503-5 3.520.76.A-E (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.76 TRANSFERS WITHOUT FAIR CONSIDERATION (TWFC)
+>
+> A. Transfers of resource ownership may occur through transactions such as sale of
+> property; trade or exchange of one property for another; spend-down of cash;
+> giving away cash; transferring any financial instrument (e.g., stocks, bonds); or,
+> giving away property (including adding another person's name as an owner of the
+> property). A transfer of a resource shall be considered a TWFC if the transfer
+> was:
+>
+> 1. Voluntary; and,
+>
+> 2. Without fair and valuable consideration, and,
+>
+> 3. Made within thirty-six (36) months prior to the application date or while
+> receiving Adult Financial program grant payments; and,
+>
+> 4. For the purpose of rendering the client eligible for assistance. The county
+> will evaluate evidence provided by the client to determine if the transfer of
+> resources was exclusively for a purpose other than to qualify for benefits.
+>
+> a. The county department shall make a rebuttable presumption that
+> the transaction was made for the purpose of becoming or remaining
+> eligible for Adult Financial program benefits when the transfer was
+> made any time during the thirty-six (36) month period immediately
+> prior to the filing of application for assistance or during such time
+> that assistance was being received.
+>
+> b. A client shall be given the opportunity to disprove the presumption.
+> The presumption shall be nullified if the client can demonstrate with
+> evidence to the county department that the transfer was for another
+> purpose.
+>
+> 1) The client's primary purpose cannot be to acquire money or
+> profit from the transaction; and,
+>
+> 2) The client shall provide written documentation of any
+> agreement made in relation to the transfer of property, that
+> was created at the time of the agreement to transfer
+> property; and,
+>
+> 3) The county department shall weigh the evidence and use the
+> prudent person principle to determine whether there is
+> sufficient evidence to disprove the presumption.
+> ...
+>
+> B. Circumstances at the time of the transaction may indicate a reasonable rationale
+> for a client's willingness to accept a sum which is less than a fair consideration
+> based on a hardship just prior to the transaction. Hardships include:
+> ...
+>
+> C. A documented involuntary transfer of a resource shall not affect eligibility.
+> Transfers that would be considered involuntary are:
+>
+> 1. Loss of property through fraud, provided that the client can demonstrate
+> that every reasonable effort has been made to recover the property by
+> court action or other procedures as indicated; or,
+>
+> 2. Loss of property through legal action such as judgment, foreclosure,
+> delinquent tax sale; or,
+>
+> 3. Other involuntary transfer identified and determined reasonable by the
+> county department using the prudent person principle.
+> ...
+>
+> D. The county department shall determine the eligibility penalty as a result of a
+> TWFC as follows:
+>
+> 1. Determine the actual value of the resource less encumbrances and
+> subtract the amount the client received for the resource from the
+> determined actual value. This is the uncompensated value.
+>
+> 2. Determine the current Adult Financial Program grant standard. This is the
+> TWFC monthly penalty value.
+>
+> 3. Divide the uncompensated value by the TWFC monthly penalty value and
+> round down to the nearest whole number.
+>
+> 4. This equals the number of months of ineligibility for Adult Financial
+> Program grant payments.
+>
+> 5. The penalty period begins the month following the date of transfer. If there
+> are multiple transfers, the period of ineligibility would begin the month
+> following the end date of the first transfer’s period of ineligibility.
+> ...
+>
+> b. If the entire resource is not returned, the period of ineligibility does
+> not end. Instead, recompute the uncompensated value based on
+> how much of the resource was not returned. Then, recompute the
+> period of ineligibility based on the adjusted uncompensated value.
+> If additional funds are subsequently returned, it will be necessary to
+> recompute the uncompensated value again.
+>
+> E. A period of ineligibility can be from 1 month up to a maximum of 36 months
+> depending on the amount of the uncompensated value for each resource
+> transferred. A period of ineligibility cannot exceed 36 months regardless of the
+
+### S2615. C.R.S. 26-2-111(1)(c): no voluntary transfer without fair consideration within thirty-six months, with a rebuttable presumption
+
+Document: D-59
+
+C.R.S. 26-2-111(1)(c)(I) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (c) (I)  The person has not made a voluntary assignment or transfer of property without
+> fair and valuable consideration for the purpose of rendering himself or herself eligible for public
+> assistance under this article at any time within thirty-six months immediately prior to the filing
+> of application for such assistance pursuant to  the provisions  of this  article; or, in  the case of a
+> person already receiving public  assistance under this  article, the person has not  made any such
+> transfer  during  the  time  the  person  has  been  receiving  such  public  assistance;  but,  if  any  such
+> assignment  or  transfer  is  made  during  such  thirty-six  month  period  or  during  such  time  that
+> public  assistance  is  being  received,  there  is  a  rebuttable  presumption  that  the  assignment  or
+> transfer  was  made  for  such  purpose;  but,  within  such  period  of  time,  a  person  may  assign  or
+> transfer the ownership of real property owned and used as a residence by such person if:
+
+### S2616. Adult Financial AND-SO: disability due to substance abuse - twelve cumulative months, treatment, random testing
+
+Document: D-80
+
+9 CCR 2503-5 3.541.3 (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.541.3 DISABILITY DUE TO SUBSTANCE ABUSE
+>
+> For the purpose of AND-SO, when the client's primary diagnosis is alcoholism or
+> controlled substance addiction, the following criteria shall apply pursuant to Section 26-
+> 2-111(4)(E), C.R.S.:
+>
+> A. The client shall only be eligible for twelve (12) cumulative months in a lifetime
+> when substance abuse is identified on the medical certification form.
+>
+> B. The client shall agree to treatment for addiction to be eligible for AND-SO. Upon
+> consent, the county department shall refer the client to an assessment/treatment
+> agency licensed by the State Department’s Office of Behavioral Health.
+>
+> C. The client shall agree to a defined treatment program by the licensed agency.
+>
+> D. If the client fails to comply with treatment, the following steps shall be followed:
+>
+> 1. The treatment center shall contact the county department within twenty-
+> four (24) hours of the client's termination from treatment; and,
+>
+> 2. The county department shall discontinue the client's AND-SO assistance
+> immediately upon termination from treatment effective the following month
+> with timely notice provided.
+>
+> E. The client shall submit to random testing by the licensed agency to ensure the
+> client remains free of alcohol or controlled substance(s).
+>
+> F. Any time a client tests positive for alcohol or controlled substance(s), the client
+> shall be warned by the treatment center in writing. A copy of the written warnings
+> shall be placed in the client's file and noted as either mailed or hand delivered. If
+> a client tests positive for alcohol or controlled substance(s) twice in any three-
+> month period, the county department shall be notified and the client shall be
+> terminated from AND-SO immediately effective the following month with timely
+> notice provided.
+>
+> G. The initial partial month is not counted toward the twelve-month maximum
+> allowed. However, if a client is discontinued and subsequently reapplies and is
+> approved, partial months after re-approval will count as a full month toward the
+> twelve-month maximum allowed.
+
+### S2617. C.R.S. 26-2-111(4)(e)-(f): AND for a substance use disorder - treatment, testing, twelve cumulative months
+
+Document: D-59
+
+C.R.S. 26-2-111(4)(e)-(f) (2024 edition). https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-26.pdf
+
+> (e)    If  the  applicant  is  disabled  as  a  result  of  a  primary  diagnosis  of  a  substance  use
+>
+> disorder, the applicant, as conditions of eligibility, is required to:
+>
+> (I)  Participate in treatment services approved by the behavioral health administration in
+>
+> the state department; and
+>
+> (II)  Demonstrate on a periodic and random basis that he or she remains free of the use of
+> alcohol or any nonprescribed controlled substance on a form verified by the treatment program.
+> Any person whose random test results are positive two times in any three-month period shall be
+> denied eligibility.
+>
+> (f)  A person who is disabled as a result of a primary diagnosis of an alcohol or substance
+> use disorder is not eligible for aid to the needy disabled based upon that primary diagnosis if the
+> person  has  received  aid  to  the  needy  disabled  based  upon  such  diagnosis  for  any  cumulative
+> twelve-month period in the person's lifetime.
+
+### S2618. Adult Financial: life insurance over $1,500 face value - the OAP forty-eight-month and $250,000 rules
+
+Document: D-80
+
+9 CCR 2503-5 3.520.75.D-F (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> D. If the total face value of all life insurance policies owned by a client and his or her
+> spouse is equal to $1,500 or less, the full CSV of all policies is exempt.
+> Sponsor(s) are allowed the same exemption.
+>
+> E. For OAP only, if the total face value of all life insurance policies owned by a client
+> and his or her spouse is equal to more than $1,500 and the CSV of all policies
+> combined is $250,000 or less, then the following applies:
+>
+> 1. If all policies were purchased more than forty-eight (48) months prior to
+> the eligibility determination date, and no further contributions or payments
+> to the policies have been made in the past 48 months, all CSV is exempt;
+> or,
+>
+> 2. If there have been additional monies contributed or payments made to any
+> of the policies within 48 months of the eligibility determination date, those
+> additional monies contributed are counted toward the resource limit; the
+> original cash value amount prior to the 48 month period remains exempt;
+> or,
+>
+> 3. If any of the policies were purchased within the 48 months prior to
+> eligibility determination date, the total CSV is a countable resource; and,
+>
+> 4. Sponsor(s) are allowed the same exemptions.
+>
+> F. For OAP only, if the total face value of all life insurance policies owned by a client
+> and his or her spouse is equal to more than $1,500 and CSV of all policies
+> combined is more than $250,000, then the following applies:
+>
+> 1. If all policies were purchased more than 48 months prior to eligibility
+> determination date, and no further contributions or payments to the
+> policies have been made in the past 48 months, the CSV over $250,000 is
+> countable; the first $250,000 is exempt; or,
+>
+> 2. If there have been additional monies contributed or payments made to any
+> of the policies within 48 months of eligibility determination date, those
+> additional monies contributed are counted toward the resource limit and
+> the CSV over $250,000 is countable; the original cash value amount prior
+> to the 48 month period remains exempt; or,
+>
+> 3. If any of the policies were purchased within the 48 months prior to
+> eligibility determination date, the total CSV is a countable resource; and,
+>
+> 4. Sponsor(s) are allowed the same exemptions.
+
+### S2619. Adult Financial: revocable burial contracts and trusts and excess burial spaces are countable resources; their exemptions
+
+Document: D-80
+
+9 CCR 2503-5 3.520.72.B.8-9; 3.520.77.G.2.d, G.3, H, I (introduction) (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 8. Prepaid revocable funeral or burial expense contracts or trust deposits, as
+> outlined in Section 3.520.77.G-H.
+>
+> 9. The value of the burial space in excess of that required to meet the burial
+> needs of the immediate family, as outlined in Section 3.520.77.I.
+> ...
+>
+> d. The trustor and the beneficiary of the trust cannot be one and the
+> same. If he or she is both the trustor and the beneficiary, the value
+> exceeding $1500 is a countable resource.
+>
+> 3. A revocable burial trust can be terminated, sold, or transferred. A
+> revocable burial trust is exempt if the value of the trust does not exceed
+> one thousand five hundred dollars ($1,500). Any interest on the exempt
+> $1,500 is also exempt. Any amount over $1,500 is a countable resource.
+> ...
+>
+> H. Prepaid burial contracts are exempt if any of the following conditions are met:
+>
+> 1. The prepaid burial contract is irrevocable.
+>
+> 2. The prepaid burial contract is revocable and does not exceed one
+> thousand five hundred dollars ($1,500). Any amount in excess of $1,500
+> shall be a countable resource.
+>
+> a. Only the paid-up amount of the contract, not the face value, is
+> taken into consideration;
+>
+> b. Any interest on the exempt $1500 is also exempt.
+> ...
+>
+> I. The value of burial spaces required to meet the burial needs of the immediate
+> family as well as brothers, sisters, and spouses of those persons, even if not
+> living in the home. A burial space includes:
+
+### S2620. Adult Financial: no eligibility in a month another State pays financial assistance
+
+Document: D-80
+
+9 CCR 2503-5 3.520.64.B (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.64 RESIDENCY REQUIREMENTS
+>
+> A. To be eligible for Adult Financial programs, a client shall be a resident of
+> Colorado.
+>
+> B. Residency is established on the first day the client declares him/herself to be a
+> resident of Colorado.
+>
+> 1. A person shall not acquire residence while the person has established his
+> or her permanent place of residence in another state or country.
+>
+> 2. A person receiving financial assistance from another state shall not be
+> eligible for Adult Financial programs in Colorado during any month in
+> which a payment is made by the other state.
+
+### S2621. Adult Financial: apply for and accept retirement and public assistance benefits, and pursue other income and resources
+
+Document: D-80
+
+9 CCR 2503-5 3.520.61 (introduction), G-H (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> To be eligible for Adult Financial programs, a client shall:
+> ...
+>
+> G. Apply for and accept all retirement and public assistance benefits for which they
+> may be eligible, unless good cause is provided as to why such benefits were not
+> applied for or accepted; and,
+>
+> H. Pursue and accept all other potential income and resources that may be
+> available, as outlined in Section 3.520.71; and,
+
+### S2622. Adult Financial: the OAP duty to apply for Social Security and SSI; proof of application within eleven or sixty days
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.B (OAP paragraphs), C, D (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> For OAP, the client shall apply for and accept Social Security and/or SSI benefits
+> if determined eligible, as follows:
+>
+> 1. Clients sixty (60) years of age and older who report a disability may be
+> eligible for SSI or SSDI.
+>
+> 2. Clients sixty (60) years of age and older may be eligible for Social Security
+> survivor benefits.
+>
+> 3. Clients sixty-two (62) years of age and older may be eligible for early
+> Social Security retirement benefits; otherwise the client shall provide
+> documentation from the SSA that he or she is ineligible due to insufficient
+> work hours.
+>
+> 4. Clients sixty-five (65) years of age and older may be eligible for SSI
+> benefits when the client's income from any source is less than the SSI
+> ...
+>
+> C. For all Adult Financial programs other than AND-SO, clients referred to the SSA
+> to apply for any SSA related benefit shall be required to provide verification of
+> application for such benefits within eleven (11) calendar days of his or her
+> application for SSA benefits.
+>
+> For AND-SO, clients referred to the SSA to apply for any SSA related benefit
+> shall be required to provide verification of application for such benefits within
+> sixty (60) calendar days from the initial interview date with the county
+> department. The client will have up to sixty days of conditional approval from the
+> date of the initial interview with the county department for AND-SO. Subsequent
+> applications for AND-SO submitted by the client shall not be approved prior to
+> receipt of proof of application for SSA benefits. Subsequent applications for AND-
+> SO require verification of application for SSA benefits within thirty (30) calendar
+> days.
+>
+> D. For OAP, if the client has or is eligible to obtain a SSN they shall apply for SSI,
+> unless the client is a non-citizen or qualified non-citizen that does not qualify to
+> receive a SSN. A client with a SSN and shall timely schedule and complete any
+> and all scheduled interviews with the SSA, and in the event of a denial by SSA,
+> the OAP client shall continue to appeal all negative decisions from the SSA until
+> a final resolution is reached and no further right to appeal exists. However, the
+> requirement to continue to appeal all negative decisions may be excused if any
+> of the following apply:
+>
+> 1. The client's and the client's spouse's gross income exceeds the maximum
+> allowed for SSI for an individual or a couple; or,
+>
+> 2. The client's and the client's spouse's total resources exceed that allowed
+> for SSI for an individual or a couple; or,
+>
+> 3. The client is not disabled as defined in Section 3.541; or,
+>
+> 4. As otherwise directed by the SSA; or,
+>
+> 5. Good cause exists as defined in Section 3.510.
+
+### S2623. Adult Financial: pursue other income; no grant before proof of application; refused income counted as available
+
+Document: D-80
+
+9 CCR 2503-5 3.520.71.G (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> G. The client or legal fiduciary shall take reasonable steps to apply for and accept
+> any other income for which the client is eligible. Clients referred to pursue other
+> income shall be required to provide verification of application for or pursuit of
+> such income. Grant payments shall not be approved prior to receipt of proof of
+> application or pursuit of other income, unless it is demonstrated that good cause
+> exists.
+>
+> 1. If the client or legal fiduciary refuses or fails to make a reasonable effort to
+> secure potential income, such income shall be considered as if available
+>
+> to the client, and timely notice shall be given regarding a proposed action
+> to deny, reduce, or terminate assistance.
+>
+> 2. If the client or legal fiduciary secures the potential income prior to the
+> effective action date identified in the notice, the proposed action to deny,
+> reduce, or terminate assistance shall be withdrawn by the county, and the
+> case shall be updated. Grant payments may still be denied, reduced, or
+
+### S2624. Adult Financial disaster assistance payment: purpose, $2,000 per client per disaster, eligibility
+
+Document: D-80
+
+9 CCR 2503-5 3.570.5, 3.570.51-3.570.52 (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.570.5 SUPPORTIVE PAYMENTS (Effective 7/1/2022)
+>
+> 3.570.51 PURPOSE
+>
+> A. The purpose of the disaster assistance payment is to provide disaster assistance
+> to eligible clients to mitigate needs and/or expenses due to a county, Governor,
+> or federally declared disaster. The payment shall not exceed two thousand
+> dollars ($2,000) per client, per disaster.
+>
+> B. The disaster assistance payment period begins when :
+>
+> 1. A county, and/or;
+>
+> 2. Governor, and/or;
+>
+> 3. Federal government declares a disaster.
+>
+> C. The disaster assistance payment period ends when there is no longer:
+>
+> 1. A county, and/or;
+>
+> 2. Governor, and/or;
+>
+> 3. Federally declared disaster.
+>
+> D. In cases where the effects of the disaster appear after the disaster declaration
+> has been rescinded, the client may petition for disaster assistance which may be
+> granted at the county director’s or director designee’s discretion.
+>
+> 3.570.52 ELIGIBILITY
+>
+> In order to be eligible for disaster assistance, the client must:
+>
+> A. Be approved for or receiving a grant payment during the time of the county,
+> Governor, or federally declared disaster.
+>
+> B. Have an emergent need related to the disaster that could include, but is not
+> limited to: a threat to health or safety, lack of food, clothing, shelter,
+> transportation, personal care or medical care, or other unmet expenses.
+>
+> C. Request disaster assistance either verbally or in writing to the county
+> department. Counties have the option to utilize a state prescribed form for a
+> disaster assistance request.
+>
+> D. Nothing precludes the county from making additional payments to the client for
+> the disaster through a general assistance program or other resources. This
+> payment shall also not preclude an individual from accessing additional
+
+### S2625. Adult Financial disaster assistance: county responsibilities
+
+Document: D-80
+
+9 CCR 2503-5 3.570.53 (numbered 3.750.53 in the rule) (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.750.53 COUNTY DEPARTMENT RESPONSIBILITIES
+>
+> When the county receives the disaster assistance request they shall:
+>
+> A. Review the disaster assistance request and determine what the client may
+> potentially be eligible for based on the request.
+>
+> B. Only request verification related to the client’s request for disaster assistance if
+> the county considers the request questionable.
+>
+> C. Assess the client’s needs related to the disaster assistance request and make
+> additional referrals to the client and inform them of other potential assistance that
+> may be available.
+>
+> D. Not request documentation to verify how the client has used their disaster
+> assistance payment.
+>
+> E. Make a determination of eligibility for disaster assistance the same day as the
+> determination of eligibility for adult financial grant payment if the client is pending
+> for adult financial assistance at the time of the request for disaster assistance.
+>
+> F. Make a determination of disaster assistance eligibility within five business days if
+> already active on adult financial assistance.
+
+### S2626. Adult Financial: marital status determined and verified if questionable
+
+Document: D-80
+
+9 CCR 2503-5 3.520.63 (rule version 12428, effective 03/02/2026; the Secretary of State's current version on 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> 3.520.63 MARITAL STATUS
+>
+> A. The county department shall determine and verify if questionable the client's
+> marital status as one of the following:
+>
+> 1. Single, never married;
+>
+> 2. Married;
+>
+> 3. Widowed; or,
+>
+> 4. Divorced or legally separated.
+>
+> B. If married, both spouses may apply for and/or receive Adult Financial programs.
+> Each spouse shall have a separate case.
+>
+> C. If the client is divorced, legally separated or widowed, and this status is
+> questionable, the client shall provide verification in the form of:
+>
+> 1. Legal court documents or alternate verification from a vital statistic source
+> substantiating divorce or legal separation; or,
+>
+> 2. Death certificate or obituary of the client’s spouse.
+
+### S2627. Afghan Allies Protection Act of 2009, sec. 602(b)(8) as enacted: resettlement support for eight months
+
+Document: D-240
+
+Pub. L. 111-8, div. F, title VI, sec. 602(b)(8), 123 Stat. 809 (as enacted). https://www.govinfo.gov/content/pkg/PLAW-111publ8/html/PLAW-111publ8.htm
+
+> (8) Resettlement support.--A citizen or national of
+> Afghanistan who is granted special immigrant status described in
+> section 101(a)(27) of the Immigration and Nationality Act (8
+> U.S.C. 1101(a)(27)) shall be eligible for resettlement
+> assistance, entitlement programs, and other benefits available
+> to refugees admitted under section 207 of such Act (8 U.S.C.
+> 1157) for a period not to exceed 8 months.
+
+### S2628. Refugee Crisis in Iraq Act of 2007, sec. 1244(g) as enacted: resettlement support for eight months
+
+Document: D-241
+
+Pub. L. 110-181, div. A, title XII, sec. 1244(g), 122 Stat. 398 (as enacted). https://www.govinfo.gov/content/pkg/PLAW-110publ181/html/PLAW-110publ181.htm
+
+> (g) Resettlement Support.--Iraqi aliens granted special immigrant
+> status described in section 101(a)(27) of the Immigration and
+> Nationality Act (8 U.S.C. 1101(a)(27)) shall be eligible for
+> resettlement assistance, entitlement programs, and other benefits
+> available to refugees admitted under section 207 of such Act (8 U.S.C.
+> 1157) for a period not to exceed eight months.
+
+### S2629. Pub. L. 111-118 sec. 8120: Iraqi and Afghan special immigrants receive refugee benefits to the same extent and for the same periods as refugees
+
+Document: D-242
+
+Pub. L. 111-118, div. A, title VIII, sec. 8120, 123 Stat. 3457. https://www.govinfo.gov/content/pkg/PLAW-111publ118/html/PLAW-111publ118.htm
+
+> Sec. 8120. (a) Resettlement Support and Other Public Benefits for
+> Certain Iraqi Refugees.--Section 1244(g) of the Refugee Crisis in Iraq
+> Act of 2007 (subtitle C of title XII of division A of Public Law 110-
+> 181; 122 Stat. 398) <<NOTE: 8 USC 1157 note.>> is amended by striking
+> ``for a period not to exceed eight months'' and inserting ``to the same
+> extent, and for the same periods of time, as such refugees''.
+>
+> (b) Resettlement Support and Other Public Benefits for Certain
+> Afghan Allies.--Section 602(b)(8) of the Afghan Allies Protection Act of
+> 2009 (title VI of division F of Public Law 111-8; 123 Stat.
+> 809) <<NOTE: 8 USC 1101 note.>> is amended by striking ``for a period
+> not to exceed 8 months'' and inserting ``to the same extent, and for the
+> same periods of time, as such refugees''.
+>
+
+### S2630. 8 U.S.C. 1101 note and 1157 note: sec. 602(b)(8) and sec. 1244(g) as amended
+
+Document: D-243
+
+8 U.S.C. 1101 note (Pub. L. 111-8, div. F, title VI, sec. 602(b)(8)) and 8 U.S.C. 1157 note (Pub. L. 110-181, sec. 1244(g)), as amended; United States Code, 2023 edition. https://www.govinfo.gov/content/pkg/USCODE-2023-title8/html/USCODE-2023-title8-chap12-subchapI-sec1101.htm
+
+> "(8) Resettlement support.—A citizen or national of Afghanistan who is granted special immigrant status described in section 101(a)(27) of the Immigration and Nationality Act (8 U.S.C. 1101(a)(27)) shall be eligible for resettlement assistance, entitlement programs, and other benefits available to refugees admitted under section 207 of such Act (8 U.S.C. 1157) to the same extent, and for the same periods of time, as such refugees.
+> ...
+>
+> "(g) Resettlement Support.—Iraqi aliens granted special immigrant status described in section 101(a)(27) of the Immigration and Nationality Act (8 U.S.C. 1101(a)(27)) shall be eligible for resettlement assistance, entitlement programs, and other benefits available to refugees admitted under section 207 of such Act (8 U.S.C. 1157) to the same extent, and for the same periods of time, as such refugees.
+
+### S2631. Adult Financial rule history: the entire rule effective March 1, 2020; later amendments by section
+
+Document: D-80
+
+9 CCR 2503-5, history notes at the end of the rule (rule version 12428, effective 03/02/2026). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12428&fileName=9%20CCR%202503-5
+
+> Entire rule eff. 03/01/2020.
+> ...
+> Rules 3.510, 3.520.4 C.4.f.2), 3.520.785 B.25, 3.520.786 N, P, 3.540 A, 3.570.11 A.2,
+> 3.570.5-3.570.53 eff. 04/01/2022.
+> ...
+> Rules 3.510, 3.530, 3.531 D, 3.532 A-B, 3.533 B, 3.546 A, 3.546 C, 3.546 D-E, 3.549 B,
+> 3.549 H, 3.553 E, 3.570.11, 3.585 B.2.d eff. 03/02/2026.

@@ -1,0 +1,19 @@
+id: CO-3827
+name: "Adult Financial: excluded infrequent or irregular income"
+identifier: af_excluded_infrequent_income
+kind: derived
+type: money
+scope: person-month
+program: AdultFinancial
+meaning: "The person's infrequent or irregular income for the month (infrequent_or_irregular_income_received) when the infrequent or irregular income of the calendar quarter containing the month is less than af_infrequent_income_quarterly_limit, which 9 CCR 2503-5 3.520.786.O exempts; otherwise 0."
+precision: "The quarter is the calendar quarter (January-March, April-June, July-September, October-December) containing the month, found from the month's calendar number (its place in the quarter is that number less one, less three times the whole quarters before it); its total adds the fact for each of its three months, a month not stated being 0. The fact is unearned income; Adult Financial's other exclusions do not separate infrequent earned income."
+derived: [case, [["<", [sum_months, [months_from_to, [months_before, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]], [month]], [months_after, ["-", 2, ["-", ["-", [month_of_year, [month]], 1], ["*", 3, ["-", 0, [ceil, ["-", 0, ["/", ["-", [month_of_year, [month]], 1], 3]]]]]]], [month]]], [at, [otherwise, infrequent_or_irregular_income_received, 0], [that_month]]], af_infrequent_income_quarterly_limit], [otherwise, infrequent_or_irregular_income_received, 0]], [else, 0]]
+sources: [S2608, S2609]
+implemented: engine
+tags: [cash, income]
+rationale: "Final cash review FC-3: 3.520.786.O (S2608) exempts infrequent or irregular income of less than $60 in a calendar quarter, and af_excluded_unearned_income (CO-2343) could not exclude it. The quarter total is a sum over the quarter's months, so the case states each month's receipt once."
+tests:
+  - {id: CO-3827-T1, title: "A $40 gift in May, nothing else in the quarter: exempt", as_of: "2026-05-15", month: "2026-05", given: {}, persons: {p1: {months: {"2026-05": {infrequent_or_irregular_income_received: 40}}}}, expect: 40}
+  - {id: CO-3827-T2, title: "$40 in May and $30 in June: $70 in the quarter, counted", as_of: "2026-05-15", month: "2026-05", given: {}, persons: {p1: {months: {"2026-05": {infrequent_or_irregular_income_received: 40}, "2026-06": {infrequent_or_irregular_income_received: 30}}}}, expect: 0}
+  - {id: CO-3827-T3, title: "$40 in May, $30 in July (the next quarter): exempt", as_of: "2026-05-15", month: "2026-05", given: {}, persons: {p1: {months: {"2026-05": {infrequent_or_irregular_income_received: 40}, "2026-07": {infrequent_or_irregular_income_received: 30}}}}, expect: 40}
+  - {id: CO-3827-T4, title: "No infrequent income", as_of: "2026-10-01", month: "2026-10", given: {}, expect: 0}

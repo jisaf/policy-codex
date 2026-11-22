@@ -1,0 +1,12 @@
+id: CO-3868
+name: "Adult Financial: days to prove the SSA application on a subsequent AND-SO application"
+identifier: af_and_so_subsequent_benefit_application_verification_days
+kind: parameter
+type: whole number
+scope: global
+program: AdultFinancial
+meaning: "A subsequent AND-SO application requires verification of the application for SSA benefits within this many calendar days (9 CCR 2503-5 3.520.71.C: \"thirty (30) calendar days\")."
+value: 30
+sources: [S2622]
+tags: [cash, and, verification]
+rationale: "Final cash review FC-9: The figure is a parameter."

@@ -1,0 +1,17 @@
+id: CO-3884
+name: "Adult Financial: spouse's income verifications pending"
+identifier: af_spouse_income_pending_verification_count
+kind: derived
+type: whole number
+scope: person-month
+program: AdultFinancial
+meaning: "The number of income verification elements still pending for the spouse in the home of this Adult Financial client: for each such spouse, one for unverified earned income and one for unverified unearned income (9 CCR 2503-5 3.520.5.A.3: \"Prior to approval of grant payments, the county department shall, at a minimum, verify potential income or unemployment benefits for the client, client's spouse, and sponsor(s)\")."
+precision: "A spouse is in the home as af_deemed_relative_income (CO-2384) reads it: a spouse edge, and living together where dwelling_id is stated. The spouse's income is verified whether or not 3.534.C, 3.544.F or 3.549.F then exempt it from deeming, since the exemption turns on that income. A sponsor's income is the sponsor element (CO-1672)."
+derived: [sum, [filter, [persons], [all, [otherwise, [rel, [spouse], [P]], false], [otherwise, [in_group, [P], lives_with], true]]], [+, [case, [[of, [P], af_earned_income_is_unverified], 1], [else, 0]], [case, [[of, [P], af_unearned_income_is_unverified], 1], [else, 0]]]]
+sources: [S880, S1632]
+implemented: engine
+tags: [cash, verification]
+rationale: "Final cash review FC-12 and final verification review V-2 (and V-9): af_pending_verification_count (CO-1436) read only the client's own elements, so a deemed spouse's income was pending only if the spouse was also of OAP age or disabled; it now adds this count."
+tests:
+  - {id: CO-3884-T1, title: "Wife of an OAP client earns $900 with no pay stubs", as_of: "2026-10-01", month: "2026-10", given: {}, others: {p2: {af_earned_income_is_unverified: true, af_unearned_income_is_unverified: false}}, relationships: [[spouse, p1, p2]], expect: 1}
+  - {id: CO-3884-T2, title: "Unmarried client", as_of: "2026-10-01", month: "2026-10", given: {}, relationships: [], expect: 0}

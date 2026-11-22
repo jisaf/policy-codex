@@ -1,0 +1,13 @@
+id: CO-3823
+name: "VA Aid and Attendance used for uncovered medical care"
+identifier: va_aid_and_attendance_used_for_uncovered_care
+kind: supplied
+type: money
+scope: person-month
+program: All
+meaning: "The part of the person's VA Aid and Attendance (va_aid_and_attendance_amount, CO-837) for the month that the person uses for medical supplies and for medical or attendant care not covered by Medicare, Medicaid or other health insurance."
+precision: "Part of the person's gross unearned income for the month as the unearned income facts state it (other_unearned_income_taxable or other_unearned_income_nontaxable, or the fact that names the source), not added to it. At most va_aid_and_attendance_amount. If not stated, every program reads it as 0."
+supplied_by: "Applicant statement, receipts."
+sources: [S2605, S2608]
+tags: [cash, income]
+rationale: "Final cash review FC-2 and FC-3: Colorado Works' and Adult Financial's exclusion items (CO-2340 to CO-2343) summed a closed list of neutral receipt facts, so income the current exempt-income lists name could not be excluded and was counted. 9 CCR 2503-6 3.605.4.A.6 (S2605) and 9 CCR 2503-5 3.520.786.F (S2608) exempt VA Aid and Attendance used for uncovered medical supplies and care and count the remainder; va_aid_and_attendance_amount (CO-837) states the payment but not its use. The fact states the receipt, program-neutrally (convention rule 13); each program's exclusion item decides whether its list exempts it."
