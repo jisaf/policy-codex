@@ -17,7 +17,7 @@ import type { Item, TestSpec } from "../engine/types";
 import { fileEntries, type ChangeEntry } from "../changes/types";
 import { DecisionRecord } from "./DecisionRecord";
 import { Term } from "./labels";
-import { MapView, mapHref } from "./map/MapView";
+import { MapView } from "./map/MapView";
 import { Ident, Rich } from "./Rich";
 import { buildHash, type Route } from "./router";
 import {
@@ -423,7 +423,6 @@ export function ItemView() {
         ? (
           <div class="itemmap">
             <MapView center={item.id} />
-            <p><a href={mapHref(r, item.id)}>Open in the Map</a></p>
           </div>
         )
         : (
