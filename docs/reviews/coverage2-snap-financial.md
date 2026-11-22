@@ -94,7 +94,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | paragraph | disposition |
 |---|---|
 | 4.402.A.1, prospective anticipation | FL: monthly receipt facts are the anticipated amounts |
-| 4.402.A.2, conversion weekly 4.3, biweekly 2.15, semimonthly 2, every other month 0.5, quarterly 0.333333, twice a year 0.166666, annual .083 | C: CO-4323 (values match), CO-4324 (wages), CO-331 (periodic unearned). **C2-1** (exclusions against the converted figure) |
+| 4.402.A.2, conversion weekly 4.3, biweekly 2.15, semimonthly 2, every other month 0.5, quarterly 0.333333, twice a year 0.166666, annual .083 | C: CO-4323 (values match), CO-4324 (wages), CO-331 (periodic unearned). C2-1 fixed (CO-4682; irregular earnings added back in CO-4324) |
 | 4.402.A.3, all income unless 4.405 excludes; disqualified member's share; month received | C: CO-330, CO-331, CO-333, CO-334 |
 | 4.402.B.1-3, early or late pay; two benefit payments in one month; armed services | FL: the month's anticipated amount; conversion by schedule (CO-4324) |
 | 4.402.C.1, IEVS and IRS data verified before adverse action | NA: case-maintenance procedure; no determination effect |
@@ -162,13 +162,13 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 
 | paragraph | disposition |
 |---|---|
-| 4.405.A, irregular income ≤$30 in three months | C: CO-2338, CO-2339, CO-3822, CO-4010, CO-4077, CO-4316 (calendar quarter = federal quarter). C2-1 for converted wages |
+| 4.405.A, irregular income ≤$30 in three months | C: CO-2338, CO-2339, CO-3822, CO-4010, CO-4077, CO-4316 (calendar quarter = federal quarter). C2-1 fixed |
 | 4.405.B, money for a non-household beneficiary; pro rata rule | C: CO-2339 (income received for a person living elsewhere); pro rata FL |
-| 4.405.C, child student earnings; turning 18 | C: CO-2569 (age timing ok, CF-5). **C2-3** (half-time missing) |
+| 4.405.C, child student earnings; turning 18 | C: CO-2569 (age timing ok, CF-5). C2-3 fixed (half time required) |
 | 4.405.D.1, recoupments except means-tested IPV recoupment | C: CO-4305, CO-4306, CO-2339 |
 | 4.405.D.2, child support passed to IV-D | C: CO-2339 |
 | 4.405.E, nonrecurring lump sums a resource | C: CO-3367, CO-2339, CO-3390 |
-| 4.405.E, Colorado Works diversion payments ≤90 days | **C2-5** (P2) |
+| 4.405.E, Colorado Works diversion payments ≤90 days | C: CO-3367 precision, S3476 (C2-5 fixed) |
 | 4.405.F.1-2, loans; reverse mortgage | C: CO-2339 (loan proceeds, reverse mortgage CO-3820) |
 | 4.405.G, in-kind benefits | FL: the receipt facts are money only |
 | 4.405.H.1-10, vendor payments; diverted legally obligated money counted; energy H.7; court-ordered third-party support H.9-10 | FL: the receipt facts are money paid to the household. H.7: CO-3364 minus nonprofit and supplier energy, counted (CO-2339). H.4 employer housing: in-kind |
@@ -179,7 +179,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 4.405.2.A.2, Uniform Relocation Act | C: CO-3366, CO-2339 |
 | 4.405.2.A.3, DVSA Title II; Title I if on SNAP or PA when joining | C: CO-3366, CO-4303, CO-4304, CO-330 (C2-6, P3) |
 | 4.405.2.A.4, NCSA and AmeriCorps; disaster assistance | C: CO-4016, CO-3366, CO-2339 |
-| 4.405.2.A.6, WIOA; OJT counted except under 19; summer youth | C: CO-3815, CO-2338, CO-2339 (C2-1 for converted pay) |
+| 4.405.2.A.6, WIOA; OJT counted except under 19; summer youth | C: CO-3815, CO-2338, CO-2339 (C2-1 fixed: converted with the pay, CO-4682) |
 | 4.405.2.A.7, federal energy assistance; weatherization and furnace | C: CO-3364, CO-2339 |
 | 4.405.2.A.8, YIEPP, YCCIP, CETA Title IV | C: CO-3815 |
 | 4.405.2.A.9, SCSEP | C: CO-2338 |
@@ -255,7 +255,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 4.407.6.A.8, attendant wages; one-person maximum allotment for meals | C: CO-034 (FL), CO-4334, CO-2895 |
 | 4.407.6.A, billed expenses pending reimbursement | FL |
 | 4.407.6.B.1-6, non-allowable costs; carried-forward bills | FL: CO-034 |
-| 4.407.61.A, SMED $165; actual if over the SMED after $35 | C: CO-1514, CO-376; OQ-353 ($165-$200 band; C2-8 P3 on the class) |
+| 4.407.61.A, SMED $165; actual if over the SMED after $35 | C: CO-1514, CO-376; OQ-353 ($165-$200 band; C2-8 fixed: reclassified as blocked on a named document) |
 | 4.407.61.A table, verification at application and recertification | C: CO-1380, CO-3740 (verified-part limit recorded, CF-17) |
 | 4.407.61.B, weekly and biweekly conversion | FL |
 | 4.407.61.C, one-time expenses: lump or averaged; SMED when averaged over $35 | FL: CO-3740 precision |
@@ -284,10 +284,10 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 4.410.C, prorated income held | C: CO-4319, CO-4176 |
 | 4.410.D.1, household goods, burial plots, life insurance cash value, livestock | C: not read by CO-074 or CO-4176 |
 | 4.410.D.2, retirement accounts | C: CO-3392 not read |
-| 4.410.D.2.i, ABLE (529A) | **C2-2** (counted through CO-3390) |
+| 4.410.D.2.i, ABLE (529A) | C: CO-4176 subtracts able_account_value, S3473 (C2-2 fixed) |
 | 4.410.D.3, education accounts | C: CO-4174, CO-4176 |
 | 4.410.D.4, one funeral agreement ≤$1,500 equity per member | C: CO-3856, CO-4177, CO-074 |
-| 4.410.E.1, income-producing property | FL: CO-3393 excludes property "exempt as income producing" (first-pass reading); business cash C2-7 (P3) |
+| 4.410.E.1, income-producing property | FL: CO-3393 excludes property "exempt as income producing" (first-pass reading); business cash counted, recorded in CO-4176's precision (C2-7 fixed) |
 | 4.410.E.2, installment contracts | C: CO-4337, CO-074 |
 | 4.410.E.3, income-producing vehicles | C: vehicles not read |
 | 4.410.E.4, former farm property for one year | C: CO-4346 to CO-4348, CO-074 |
@@ -331,7 +331,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 4.502.A.4, BCE and ECE: no verification beyond the PA program unless questionable | C: CO-1376, CO-1377 (BCE exempt; ECE's conferring program verifies nothing, so income is verified), CO-1378 (Standard Eligibility only) |
 | 4.502.A.5, declaration of resources over the limit | C: CO-1378 (only questionable resources are verified) |
 | 4.502.B.1, recertification: only incomplete, inaccurate, questionable, inconsistent, outdated | C: CO-1376, CO-1377 (outdated fact), CO-1380 to CO-1382 |
-| 4.502.B.2, income change of more than $50 | C: CO-1619, CO-1596 (OQ-371 resolved: more than $50). **C2-4** (raw wages compared) |
+| 4.502.B.2, income change of more than $50 | C: CO-1619, CO-1596 (OQ-371 resolved: more than $50). C2-4 fixed (SNAP's wages compared) |
 | 4.502.B.3.a-b, dependent care and medical: source changed or more than $25 | C: CO-1380, CO-1381, CO-1597 |
 | 4.502.B.3.c, child support | C: CO-1382 (any change; 273.2(f)(8)(i)(A) override, CF-11) |
 | 4.502.B.4, new SSNs through IEVS or SOLQ-I | Non-financial family |
@@ -345,7 +345,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 4.504.5.A-H, IEVS; DOLE checks before approval; wage and IRS data not verified | C: CO-1318 (VUR sources), CO-1376 (wage data needs a document) |
 | 4.504.6.A-D.1-12, VUR list | C: CO-1318 precision (SSA, SSI, UIB, PA, ACSES; CF-14); D.2, D.7-12 non-financial or case maintenance |
 | 4.504.61, not VUR | C: CO-1318 (wage, IRS, VA, RR, NDNH are not electronic verification) |
-| 4.506, gross nonexempt income verified before certification; recertification on a change of more than $50 or a new source | C: CO-1376, CO-1377, CO-1619 (**C2-4**) |
+| 4.506, gross nonexempt income verified before certification; recertification on a change of more than $50 or a new source | C: CO-1376, CO-1377, CO-1619 (C2-4 fixed) |
 | 4.506.A.1-4, responsibility; PA record; uncooperative third party | FL: `documentation_not_reasonably_available` (CO-1561) |
 | 4.506.B, continuing employment: last month as indication | FL: CO-3922 |
 | 4.506.C, self-employment statement accepted unless questionable | C: CO-1376; OQ-760 (blocked on an FNS waiver; accepted) |
@@ -369,9 +369,9 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | D-83 Table 1 maximum allotments; D-83 standard deductions; cap $769; homeless $205.66; asset limits $3,000 / $4,750; minimum $25 | C: CO-130, CO-131, CO-3726, CO-132, CO-133, CO-134, CO-118, CO-119, CO-135. All match |
 | D-84 Tables 1-3 (100%, 130%, 165%) | C: CO-112, CO-113, CO-110, CO-111, CO-114, CO-3043. All match |
 | 273.8(b) "shall not exceed" | C: CO-344 (override, CF-13) |
-| 273.8(e)(2) and ABLE Act sec. 103 | **C2-2** |
+| 273.8(e)(2) and ABLE Act sec. 103 | C: CO-4176 (C2-2 fixed) |
 | 273.9(b)(2)(ii) rental net of costs | C: CO-4322 |
-| 273.9(c)(1)-(c)(19) exclusions | C: CO-2338, CO-2339 (see 3.6); (c)(7) half-time **C2-3** |
+| 273.9(c)(1)-(c)(19) exclusions | C: CO-2338, CO-2339 (see 3.6); (c)(7) half-time C2-3 fixed |
 | 273.9(d)(1)-(6) deductions | C: as 3.8 |
 | 273.10(a)(1)(ii) proration | C: CO-2308 |
 | 273.10(c)(2)(i) conversion option | C: CO-4324 (Colorado requires the conversion) |
@@ -379,7 +379,7 @@ Matrix size: 251 rows covering every numbered paragraph and subparagraph of the 
 | 273.10(e)(2)(ii)(A)-(C) benefit formula and minimum | C: CO-384, CO-2307, CO-385 |
 | 273.11(a)(2)(ii) farm loss | C: CO-3722 to CO-3725 (override of 4.403.12.E.2.b-c) |
 | 273.11(c)(1)-(2) disqualified members | C: CO-2302, CO-2565 (ABAWD prorated, (c)(2)) |
-| 273.2(f)(1)(i), (f)(8)(i)(A) income verification | C: CO-1376, CO-1377, CO-1619 (**C2-4**); OQ-760 |
+| 273.2(f)(1)(i), (f)(8)(i)(A) income verification | C: CO-1376, CO-1377, CO-1619 (C2-4 fixed); OQ-760 |
 
 ## 4. Open-question confirmations (financial scope)
 
@@ -415,3 +415,25 @@ Each first-pass reproduction was re-run on this HEAD.
 | CF-10 (excluded wages verification) | fixed | p2's $200 of excluded wages: 2 pending, `expenses_disallowed` (was 3, `past_due`). |
 | CF-11 (child support at recertification) | fixed | 300 against 280 at recertification: verification true. |
 | CF-12 (periodic report) | recorded out of scope (P2) | colorado-notes; unchanged. |
+
+## Disposition (coverage pass 2)
+
+Fix round on `6067c89`. Commits: `586a1bd` (C2-1 to C2-7), `c97135d` (C2-8: OQ-353, and excerpts S3476 and S3477), `8942769` (households CO-194 and CO-195). Probes on CO-115:
+- $250 weekly with a $20 odd job: gross 1,075, allotment 369 (was 1,055 and 373).
+- Recertification in a five-payday month: `snap_income_changed_since_last_certification` and `snap_requires_verification_of_earned_income` false (were true).
+- Child in GED classes less than half time with $400: earnings counted, gross 1,400, allotment 291 (was excluded, 387).
+
+The ABLE variant is covered by rule test CO-4176-T11 ($6,000 liquid, $2,000 ABLE: 4,000). Household cases CO-01 to CO-191 are unchanged.
+
+| id | disposition |
+|---|---|
+| C2-1 | Fixed, `586a1bd`. The converted branch of CO-4324 now adds back the month's infrequent or irregular earnings with work-study. These are not regular pay, and CO-2338 subtracts them only when 4.405.A excludes them; before, an excluded odd job was subtracted from a figure that never held it, and a counted one was dropped. The excluded parts of regular pay (WIOA OJT, summer youth, SCSEP, combat pay, military education deductions) are multiplied by `snap_regular_wages_conversion_factor` (CO-4682). That factor reads CO-4324 itself (SNAP wages over the month's receipts, less work-study and irregular earnings), so the exclusion is converted at 4.3 or 2.15 with the pay and the two items cannot disagree about whether a conversion applied. Tests CO-4324-T8, CO-2338-T9, CO-4682-T1 to T3; stored case CO-194. |
+| C2-2 | Fixed, `586a1bd`. CO-4176 subtracts `able_account_value` (4.410.D.2.i, new excerpt S3473). Its precision records that SNAP counts the other parts split out for Adult Financial (CO-4413, CO-4414, CO-4417), since 4.409-4.410 name no exclusion for them. Test CO-4176-T11. |
+| C2-3 | Fixed, `586a1bd`. CO-2569 requires `education_enrollment_intensity` of full_time or half_time; an elementary or secondary student with no stated intensity is read as at least half time. Tests CO-2569-T8 and T9. |
+| C2-4 | Fixed, `586a1bd`. CO-1619 compares SNAP's counted income: `snap_person_wages` plus net self-employment, less `snap_excluded_earned_income`, plus unearned income. CO-1568's meaning says the stored figure is the same SNAP-counted figure. CO-3503 compares the striker's pre-strike income with `snap_person_wages`. Test CO-1619-T4; stored case CO-195. |
+| C2-5 | Fixed, `586a1bd`. CO-3367's precision places a diversion payment of 90 days or less, not expected again within 12 months, in `lump_sum_received`, and any other diversion payment in the unearned income facts only (new excerpt S3476). This is a clarification of a shared fact's meaning; other programs' reading of a lump sum is unchanged. |
+| C2-6 | Not fixed. To fix it, every Title I payment would be moved into CO-4303, and its share at or above the minimum wage taken out of `wages_gross` in CO-330. That changes where a shared receipt is stated (CO-3366, `wages_gross`) for every program. As the reviewer notes, Title I stipends are below the minimum wage in practice, and those are already excluded correctly. Recorded here as accepted. |
+| C2-7 | Fixed (recorded), `586a1bd`. CO-4176's precision records that business cash (CO-4416) is counted: 4.410.E.1 (new excerpt S3477) exempts property, work-related equipment, vehicles and livestock essential to self-employment, not cash. |
+| C2-8 | Fixed, `c97135d`. OQ-353 is reclassified as blocked on a named document: Colorado's SMED demonstration approval, which no allowed host serves. |
+
+Earlier deferred P2s (CF-12, CF-17, CF-19) are unchanged; CF-19's note now points to CO-1746 (non-financial N2-P3-2).

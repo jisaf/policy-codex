@@ -78,7 +78,7 @@ describe("the co suite", () => {
     expect(status.scope).toBe("person-month");
     expect(status.options?.length).toBeGreaterThan(1);
     expect(status.role).toBe("outcome");
-    expect(status.uses).toContain("snap_meets_gross_income_test");
+    expect(status.uses).toContain("snap_household_ineligibility_ground");
     expect(suite.volume.relationship_roles.map((r) => r.id)).toContain("buys_prepares_with");
   });
 
