@@ -6,7 +6,7 @@ type: yes/no
 scope: person
 program: All
 meaning: Whether the person is expected to be required to file a federal tax return under 26 U.S.C. 6012(a)(1) for the taxable year in which the Medicaid eligibility determination or renewal is being made.
-precision: Determined by the filing thresholds of 26 U.S.C. 6012(a)(1) (income, filing status, age, and dependency), which this volume treats as an external fact rather than a derived tax-law computation.
+precision: "Determined by the filing thresholds of 26 U.S.C. 6012(a)(1) (income, filing status, age, and dependency), which this volume treats as an external fact rather than a derived tax-law computation. Medical Assistance's test for a child or tax dependent leaves Title II and Tier I benefits out (10 CCR 2505-10 § 8.100.4.C.1.f.i.1, f.ii.1): that is is_required_to_file_tax_return_excluding_social_security (CO-4568), which ma_magi_household_income_members (CO-4558) reads first; this fact is the plain 6012(a)(1) requirement the premium tax credit methodology reads (CO-4561)."
 supplied_by: Applicant statement (CBMS/PEAK), cross-checked against IRS filing-threshold guidance by the eligibility worker.
 sources: []
 tags: [ma, magi, household, income]

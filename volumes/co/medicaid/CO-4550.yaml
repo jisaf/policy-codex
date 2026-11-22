@@ -11,7 +11,8 @@ derived: ["<", [years_between, date_of_birth, [days_after, -1, [first_day, [det_
 sources: [S3350, S3351, S208]
 implemented: engine
 tags: [ma, magi, age]
-rationale: "Coverage review F-06 (2026-11-22): the Adults category (CO-548), the highest-standard test (CO-539), the demographic test (CO-552) and hospital presumptive eligibility (CO-2439) each tested age under 65 on the determination date, so a person whose 65th birthday fell earlier in the determination month was outside the group, the defect final verification pass 3 (F3-3) fixed at the 19th and 26th birthdays. No existing item states the Adults group's upper age through the birthday month; CO-564 is the 19th-birthday item."
+nearest: [CO-564]
+rationale: "Coverage review F-06 (2026-11-22): the Adults category (CO-548), the highest-standard test (CO-539), the demographic test (CO-552) and hospital presumptive eligibility (CO-2439) each tested age under 65 on the determination date, so a person whose 65th birthday fell earlier in the determination month was outside the group, the defect final verification pass 3 (F3-3) fixed at the 19th and 26th birthdays. No existing item states the Adults group's upper age through the birthday month; ma_is_under_child_age_or_turns_nineteen_this_month (CO-564) is the same test at the 19th birthday against ma_magi_child_age_limit, so it cannot be reused for the 65th."
 tests:
   - {id: CO-4550-T1, as_of: "2026-11-10", title: "Coverage review F-06 (RV-65): the 65th birthday on November 5, determination November 10 - through the end of November", given: {date_of_birth: "1961-11-05"}, expect: true}
   - {id: CO-4550-T2, as_of: "2026-12-01", title: "The month after the 65th birthday month", given: {date_of_birth: "1961-11-05"}, expect: false}

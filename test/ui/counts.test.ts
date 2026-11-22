@@ -44,8 +44,8 @@ describe("owns: the question's Owner line names the role", () => {
 
   it("a persona owns what any of its roles owns, each question once", () => {
     const hcpf = ownedQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"));
-    expect([hcpf.open.length, hcpf.partly.length]).toEqual([40, 6]);
-    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(46);
+    expect([hcpf.open.length, hcpf.partly.length]).toEqual([41, 6]);
+    expect(personaQuestions(engine, vol.sources, vol.openQuestions, persona("hcpf"))).toHaveLength(47);
   });
 
   it("a persona with no role owns nothing and is told so", () => {
@@ -79,9 +79,9 @@ describe("households that read an item, and households it reaches", () => {
     expect(readReachPhrase(read.length, reach.length, vol.cases.length)).toBe(`Read by 6 of ${vol.cases.length} stored households; it reaches 11`);
   });
 
-  it("the children's Medicaid income limit (CO-191) is read by 20 and reaches 28", () => {
-    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(20);
-    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(28);
+  it("the children's Medicaid income limit (CO-191) is read by 21 and reaches 33", () => {
+    expect(householdsThatRead(engine, vol.cases, id("CO-191"))).toHaveLength(21);
+    expect(householdsReached(engine, vol.cases, id("CO-191"))).toHaveLength(33);
   });
 
   it("every household that reads an item is one it reaches", () => {

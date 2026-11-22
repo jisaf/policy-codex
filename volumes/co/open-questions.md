@@ -2389,3 +2389,13 @@ Owner: Medicaid policy owner, Legal
 Assumption: The sponsor's and the sponsor's spouse's own MAGI-based monthly income counts in full to a sponsored adult who is not pregnant, added to the adult's own household income, with 1631(e) and (f) applied.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.3.K.1 and K.1.a (D-65, S3352); 8 U.S.C. 1631(a), (b), (e), (f) (D-275, S2970, S3353-S3355). Neither text states a measure of income or an allowance for Medicaid; no published Colorado text does.
+
+### OQ-813. CHP+ income reasonable opportunity period: 90 days (§ 430.3.A.i) or 30 days (§ 130.1 through § 8.100.4.C.2)
+
+Body: 10 CCR 2505-3 § 430.3.A.i ends a pregnant woman's CHP+ enrollment span if she "Fails to provide a reasonable explanation or paper documentation when self-attested income is not reasonably compatible with income information from an electronic data source, by the end of the 90-day reasonable opportunity period" (S1715). § 130.1 applies the minimal verification of 10 CCR 2505-10 § 8.100.4.B to CHP+, whose income reasonable opportunity period is "30 calendar days" (§ 8.100.4.C.2, S864), and the parallel Medicaid rule for a pregnant woman says "by the end of the 30day reasonable opportunity period" (§ 8.100.4.G.5.a.i). The CHP+ text names a 90-day period for income that no other CHP+ paragraph sets. chp_verification_due_date (CO-2219) gives every CHP+ income documentation request ma_income_reasonable_opportunity_days (30) days; the prenatal span item (chp_is_in_prenatal_coverage_period, CO-2407) leaves the A.i exception to the verification items, so a pregnant woman whose income documentation is 31 to 90 days late is reported past due under the 30-day reading and still enrolled under the 90-day one. Coverage review F-22. Items: CO-2219, CO-2407.
+
+Class: state policy choice
+Owner: CHP+ policy owner, Eligibility operations owner
+Assumption: CHP+ income documentation is due 30 days after the request for every enrollee, as § 130.1 applies § 8.100.4.C.2; § 430.3.A.i's "90-day" is read as the period of § 8.100.4.C.2 that § 130.1 adopts.
+
+Checked 2026-11-22: 10 CCR 2505-3 §§ 130.1 and 430.3.A.i (D-66, rule version effective 08/30/2026, S1715); 10 CCR 2505-10 § 8.100.4.C.2 and G.5.a.i (D-65, S864); 42 CFR 457.380 (D-98, S868), which leaves the period to the State. Colorado's MAGI verification plan (D-317) states a 90-day reasonable opportunity period for citizenship documentation, not for income. No published text reconciles the two figures.

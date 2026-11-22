@@ -11,6 +11,7 @@ derived: [all, [not, [unknown, [otherwise, chp_eligibility_period_start_month, [
 sources: [S1715]
 implemented: engine
 tags: [chp]
+open: [OQ-813]
 accepts_from: [ma_application_date]
 rationale: "B-2 of the HCPF review: a CHP+ prenatal member was dropped at birth. No CHP+ item kept the span open; ma_is_in_pregnancy_coverage_period (CO-566) is the Medicaid span."
 tests:
