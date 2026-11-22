@@ -6,13 +6,14 @@ type: yes/no
 scope: person
 program: All
 meaning: "Whether the person's mother was eligible for and receiving Medical Assistance at the time of the person's birth (including through retroactive Medical Assistance covering the birth), the condition 10 CCR 2505-10 8.100.4.G.7 and 42 CFR 435.117(b)(1) make an \"Eligible Needy Newborn\", and on which the citizenship documentation exemption for a deemed newborn rests at any age."
-precision: "Read from the birth mother's enrollment in the birth month (birth_mother_coverage_at_birth, CO-3322); the child need not live with the mother, per 8.100.4.G.7's third sentence, so no co-residence is read."
-derived: ["=", birth_mother_coverage_at_birth, medical_assistance]
-sources: [S211, S212]
+precision: "Read from the birth mother's enrollment in the birth month (birth_mother_coverage_at_birth, CO-3322); the child need not live with the mother, per 8.100.4.G.7's third sentence, so no co-residence is read. Where the enrollment record does not show Medical Assistance in the birth month and the birth mother is a person of the case, her Pregnant Women coverage period as this case determines it (ma_is_in_pregnancy_coverage_period, CO-566) is read for the birth month, so a birth covered by the mother's retroactive coverage under the same application makes the child a needy newborn (8.100.4.G.7: 'This coverage also applies in instances where the mother received Medical Assistance to cover the child's birth through retroactive Medical Assistance')."
+derived: [any, ["=", birth_mother_coverage_at_birth, medical_assistance], [exists, [filter, [persons], [otherwise, [rel, [born_to], [P]], false]], [at, [of, [P], ma_is_in_pregnancy_coverage_period], [month_of, date_of_birth]]]]
+sources: [S211, S212, S640, S2411]
 implemented: engine
 tags: [ma, magi, age]
+accepts_from: [ma_is_in_pregnancy_coverage_period]
 nearest: [CO-2408]
-rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case. The ID is kept; the fact is now derived."
+rationale: "Dual-entry audit 1.10 and 5.12: the mother's coverage when the child was born was entered on the child as two facts (Medicaid and CHP+), one record about the mother. It is now read from the birth mother (a gave_birth_to edge) and her enrollment in the month of the birth; a supplied fallback states it only where the birth mother is not linked in the case. The ID is kept; the fact is now derived. Final verification F-1 (2026-11-22): a mother who delivers and then applies for herself and the newborn gets retroactive coverage of the birth month through her Pregnant Women period; the enrollment record does not yet show that coverage, so the record alone left the newborn without the needy newborn group."
 tests:
   - {id: CO-087-T1, as_of: "2026-10-01", given: {birth_mother_coverage_at_birth: medical_assistance}, expect: true}
   - {id: CO-087-T2, as_of: "2026-10-01", given: {birth_mother_coverage_at_birth: chp}, expect: false}
