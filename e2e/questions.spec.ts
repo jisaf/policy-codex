@@ -47,10 +47,10 @@ test("Marcus sorts the questions he owns; every card names him", async ({ page }
   await page.getByRole("combobox", { name: /^Owner/ }).selectOption("Cash programs policy owner");
   await page.getByRole("combobox", { name: /^Sort/ }).selectOption("households");
   await expect(page).toHaveURL(/sort=households/);
-  await expect(page.locator(".qsummary")).toContainText("19 questions, owned by Cash programs policy owner");
+  await expect(page.locator(".qsummary")).toContainText("20 questions, owned by Cash programs policy owner");
   await expect(page.locator(".qsummary")).not.toContainText("Working out", { timeout: 60_000 });
   const owners = await page.locator("li.qcard").evaluateAll((els) => els.map((e) => e.getAttribute("data-owner")));
-  expect(owners).toHaveLength(19);
+  expect(owners).toHaveLength(20);
   expect(new Set(owners)).toEqual(new Set(["Cash programs policy owner"]));
 });
 
