@@ -29764,7 +29764,7 @@
   expect:
     p2:
       sebt_household_child_receives_snap_or_tanf: {"2027-03": false}
-      sebt_other_categorical_basis: true
+      sebt_other_categorical_basis: {"2027-03": true}
       sebt_eligibility_status: {"2027-03": eligible_categorical}
 - id: CO-206
   title: "Colorado Works coverage pass 3 CW3-1: a lodger's $400 room-only payment is earned income"
@@ -30990,3 +30990,137 @@
       cccap_parent_fee: {"2026-11": 47}
     p2:
       cccap_eligibility_status: {"2026-11": ineligible_child}
+- id: CO-224
+  title: 'Coverage pass 3 (LEAP): $2,000 of wages and $2,000 of Social Security disability income, $400 of it set aside under a PASS'
+  # Coverage review 3 F3-1 (probe PR3-L1). 9 CCR 2503-7 3.752.23.DD (S3300): "Income that is deemed necessary for the
+  # fulfillment of a Plan for Achieving Self-Support (PASS) under Title XVI of the Social Security Act." One adult applies for
+  # LEAP on November 10, 2026, paying a vendor for heat, no pay schedule stated. The PASS set-aside is part of the SSDI
+  # (pass_set_aside_income, CO-3825: part of "the fact that names the source").
+  # Hand derivation (November 2026):
+  #   unearned_income_prior_thirty_days (CO-3913, monthly fallback) = 0 (Social Security is not part of it)
+  #   leap_excluded_source_receipts (CO-4961) = 0; leap_excluded_receipts_in_lump_sum (CO-4962) = 0
+  #   leap_excluded_unearned_income (CO-4511) = 0 - min(0, ...) + 400 (PASS) + 0 (AmeriCorps) = 400
+  #   leap_person_unearned_income (CO-3926) = max(0, 0 + floor(2,000) - 400) + 0 + 0 + 0 + 0 (CO-4069) = 1,600
+  #   leap_person_wages (CO-3925) = 2,000; leap_household_income (CO-1002) = 3,600
+  #   limit for 1 (CO-875) 3,774: leap_is_eligible true.
+  # Before the fix: CO-3926 subtracted the 400 from CO-3913 (0) and lost it to the clamp: 2,000 + 2,000 = 4,000, ineligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        title_ii_benefit_type: own_disability
+      month_defaults:
+        wages_gross: 2000
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 2000
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+        pass_set_aside_income: 400
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_excluded_unearned_income: {"2026-11": 400}
+      leap_person_unearned_income: {"2026-11": 1600}
+      leap_household_income: {"2026-11": 3600}
+      leap_is_eligible: {"2026-11": true}
+- id: CO-225
+  title: 'Coverage pass 3 (LEAP): $2,500 of wages, $900 of child support and a $3,000 one-time crime victim compensation payment stated also as a lump sum'
+  # Coverage review 3 F3-2 (probe PR3-L3). 9 CCR 2503-7 3.752.23.G (S3300): "Compensation received by the applicant or
+  # recipient pursuant to the Colorado Crime Victims Compensation Act shall not be considered as income". One adult applies on
+  # November 10, 2026, paying a vendor for heat. The $3,000 compensation is one payment, so the case states it as
+  # crime_victim_compensation_received (CO-3813), as lump_sum_received (CO-3367, "a similar one-time payment") and as the
+  # thirty days' lump sum (CO-4066); all are part of other_unearned_income_nontaxable 3,000.
+  # Hand derivation (November 2026):
+  #   unearned_income_prior_thirty_days (CO-3913) = 900 + 3,000 - 3,000 (lump sum, its own fact) = 900
+  #   leap_excluded_source_receipts (CO-4961) = 3,000
+  #   leap_excluded_receipts_in_lump_sum (CO-4962): thirty-day lump sum less its other parts = 3,000; CO-4508 and CO-4960
+  #     not stated, so AA part = min(0, 3,000) = 0 and the other part = min(3,000 - 0, 3,000 - 0) = 3,000; min(3,000, 3,000) = 3,000
+  #   leap_excluded_unearned_income (CO-4511) = 3,000 - min(3,000, min(3,000, 3,000)) + 0 + 0 = 0
+  #   leap_person_one_time_income (CO-4069) = 0 (prizes) + max(0, 3,000 - 3,000) = 0
+  #   leap_person_unearned_income (CO-3926) = max(0, 900 + 0 - 0) + 0 + 0 + 0 + 0 = 900
+  #   leap_person_wages (CO-3925) = 2,500; leap_household_income (CO-1002) = 3,400 <= 3,774: leap_is_eligible true.
+  # Before the fix: CO-4511 subtracted the 3,000 from the 900 of child support (clamped to 0) and CO-4069 counted the 3,000:
+  # 2,500 + 0 + 3,000 = 5,500, ineligible.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+        lump_sum_received_prior_thirty_days: 3000
+        lottery_gambling_winnings_received_prior_thirty_days: 0
+      month_defaults:
+        wages_gross: 2500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 900
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 3000
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 3000
+        crime_victim_compensation_received: 3000
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_excluded_unearned_income: {"2026-11": 0}
+      leap_person_one_time_income: {"2026-11": 0}
+      leap_person_unearned_income: {"2026-11": 900}
+      leap_household_income: {"2026-11": 3400}
+      leap_is_eligible: {"2026-11": true}

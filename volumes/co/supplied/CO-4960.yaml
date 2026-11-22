@@ -1,0 +1,14 @@
+id: CO-4960
+name: Receipts with their own source fact within the lump sums of the thirty days before the application
+identifier: named_source_receipts_in_lump_sum_prior_thirty_days
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of lump_sum_received_prior_thirty_days (CO-4066) that is money the case also states, for the month received, in a fact that names its source: crime_victim_compensation_received (CO-3813), foster_care_provider_payments_received (CO-3821), kinship_care_payments_received (CO-4503), reverse_mortgage_payments_received (CO-3820), housing_utility_allowance_received (CO-4500), gi_bill_housing_and_food_allowances_received (CO-4501), workers_compensation_claim_expense_amounts_received (CO-4502), tanf_diversion_payment_received (CO-4850) or tanf_supportive_service_payments_received (CO-4452). A one-time refugee resettlement grant is refugee_resettlement_grant_received_prior_thirty_days (CO-4508), not part of this fact."
+precision: "Part of lump_sum_received_prior_thirty_days, not added to it. Stated when a payment of one of these sources was paid as a one-time sum in the thirty days; 0 states that none of the lump sum is such a payment. If not stated, LEAP takes the month's receipts of these sources to lie within the month's lump sum as far as it reaches (leap_excluded_receipts_in_lump_sum, CO-4962), the reading the facts force when both are stated within the same gross unearned income."
+supplied_by: "The applicant's statement and the payer's records, by date received."
+sources: [S3300, S3595, S3304, S2712, S2713]
+tags: [income]
+rationale: "Coverage review 3 F3-2 (P1): a one-time payment of a source 9 CCR 2503-7 3.752.23 excludes (crime victim compensation, G) is, as the volume's facts define them, both the source fact and a lump sum (CO-3367 names \"a similar one-time payment\"). LEAP subtracted it from the recurring figure, which had already left the lump sum out, and counted it again in the thirty-day lump sum (probe PR3-L2: $3,000 of wages and a $3,000 one-time compensation payment gave $6,000). The thirty-day lump sum states its other excluded parts as part facts (CO-4067, CO-4068, CO-4507, CO-4508, CO-4509); this states the part that is a receipt with its own source fact, so a payment received in the month before the application month can also be placed."
+nearest: [CO-4508]
