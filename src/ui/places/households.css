@@ -144,5 +144,6 @@ ul.detquestions { margin: 0; padding-left: 18px; }
   .printing-training .wk-citations, .printing-training .wk-changes-panel, .printing-training .detquestions { display: none; }
   .printing-training ol.stepper .inputs .small { display: none; }
 }
+.fedbanner summary { cursor: pointer; }
 .detquestions-block summary { cursor: pointer; }
 .detquestions-block summary h2 { display: inline; }

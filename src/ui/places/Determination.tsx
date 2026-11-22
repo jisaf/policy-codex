@@ -322,8 +322,11 @@ function Body(
         <ul class="banners">
           {overrides.map((o) => (
             <li key={o.text} class="fedbanner" data-override={o.item}>
-              <b>A statute governs over the Colorado rule here</b>{" "}
-              <span class="small">({o.steps.length === 1 ? "step" : "steps"} {o.steps.join(", ")})</span>
+              <details open={overrides.length === 1 || mode !== null}>
+              <summary>
+                <b>A statute governs over the Colorado rule here</b>{" "}
+                <span class="small">({o.steps.length === 1 ? "step" : "steps"} {o.steps.join(", ")}): {firstClause(o.text)}</span>
+              </summary>
               <p>{o.text}</p>
               {o.via.length > 2 && (
                 <p class="small via">
@@ -331,6 +334,7 @@ function Body(
                   <b>{o.via[o.via.length - 1]}</b>.
                 </p>
               )}
+              </details>
             </li>
           ))}
           {unverifiedSteps.length > 0 && (
@@ -446,6 +450,13 @@ function Body(
         )}
     </div>
   );
+}
+
+/** The opening words of a statute-over-rule note, for a folded banner:
+ *  "Federal law overrides 9 CCR 2503-6 3.604.1.B.3 …". */
+function firstClause(text: string): string {
+  const head = text.split(/[,:;]\s/)[0];
+  return head.length > 110 ? head.slice(0, 107).replace(/\s+\S*$/, "") + "…" : head + "…";
 }
 
 function shortLabel(name: string): string {
