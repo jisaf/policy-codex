@@ -7064,8 +7064,10 @@
       cw_pending_verification_count: {"2027-02": 3}
       cccap_verification_status: {"2027-02": past_due}
       cccap_pending_verification_count: {"2027-02": 1}
-      leap_verification_status: {"2027-02": past_due}
-      leap_pending_verification_count: {"2027-02": 1}
+      # V-17 (second-pass round): homeless, with no primary heating source, LEAP denies the household whatever it documents
+      # (leap_is_eligible false), so LEAP verification does not apply (CO-2586): was past_due, pending count 1, zero income pending.
+      leap_verification_status: {"2027-02": not_applicable}
+      leap_pending_verification_count: {"2027-02": 0}
       af_verification_status: {"2027-02": not_applicable}
       af_pending_verification_count: {"2027-02": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       ma_citizenship_verification_is_pending: {"2027-02": true}
@@ -7084,8 +7086,8 @@
       cccap_child_support_paid_verification_is_pending: {"2027-02": true}
       cccap_person_pending_verification_count: {"2027-02": 1}
       cccap_pending_deduction_verification_count: {"2027-02": 1}
-      leap_zero_income_verification_is_pending: {"2027-02": true}
-      leap_person_pending_verification_count: {"2027-02": 1}
+      leap_zero_income_verification_is_pending: {"2027-02": false}
+      leap_person_pending_verification_count: {"2027-02": 0}
       leap_member_is_excluded_for_verification: false
       sebt_verification_status: {"2027-02": not_applicable}
       sebt_pending_verification_count: {"2027-02": 0}
@@ -7098,14 +7100,14 @@
       chp_verification_status: {"2027-02": complete}
       cw_verification_status: {"2027-02": past_due}
       cccap_verification_status: {"2027-02": past_due}
-      leap_verification_status: {"2027-02": past_due}
+      leap_verification_status: {"2027-02": not_applicable}
       af_verification_status: {"2027-02": not_applicable}
       snap_pending_verification_count: {"2027-02": 2}
       chp_pending_verification_count: {"2027-02": 0}
       cw_pending_verification_count: {"2027-02": 3}
       af_pending_verification_count: {"2027-02": 0}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
       cccap_pending_verification_count: {"2027-02": 1}
-      leap_pending_verification_count: {"2027-02": 1}
+      leap_pending_verification_count: {"2027-02": 0}
       snap_person_pending_verification_count: {"2027-02": 0}
       cw_person_pending_verification_count: {"2027-02": 0}
       af_residency_verification_is_pending: {"2027-02": false}   # case worker review B2: the program does not apply to this person (verification status not_applicable), so nothing is pending
@@ -7485,7 +7487,9 @@
       cw_verification_status: {"2026-10": pending}
       af_verification_status: {"2026-10": not_applicable}
       cccap_verification_status: {"2026-10": pending}
-      leap_verification_status: {"2026-10": complete}
+      # V-17 (second-pass round): no primary heating source (case fact false), so LEAP denies the household and its
+      # verification does not apply (CO-2586); was complete.
+      leap_verification_status: {"2026-10": not_applicable}
       snap_pending_verification_count: {"2026-10": 2}
       ma_pending_verification_count: {"2026-10": 1}
       chp_pending_verification_count: {"2026-10": 0}  # final verification V-14: CHP+ verification is not_applicable for this adult, not pregnant, so nothing is pending (was 1)
@@ -7587,7 +7591,9 @@
       cw_verification_status: {"2026-10": pending}
       af_verification_status: {"2026-10": not_applicable}
       cccap_verification_status: {"2026-10": pending}
-      leap_verification_status: {"2026-10": complete}
+      # V-17 (second-pass round): no primary heating source (case fact false), so LEAP denies the household and its
+      # verification does not apply (CO-2586); was complete.
+      leap_verification_status: {"2026-10": not_applicable}
       snap_pending_verification_count: {"2026-10": 2}
       ma_pending_verification_count: {"2026-10": 1}
       chp_pending_verification_count: {"2026-10": 1}
