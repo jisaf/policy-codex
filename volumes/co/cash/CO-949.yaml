@@ -6,7 +6,7 @@ type: money
 scope: person-month
 program: AdultFinancial
 meaning: The Adult Financial grant standard that applies to this person's af_category - the OAP, AND-SO, or AND-CS grant standard, or 0 if the person qualifies under none of them - per 9 CCR 2503-5 3.530.A, 3.540.A, and 3.546.A.
-precision: Reads af_category, which is itself determined without reference to this item (af_category compares af_countable_income directly to each program's grant standard parameter), so there is no circular dependency. Reports the AND-SO grant standard for the "ab" category, per OQ-112 (no separate AB grant standard is stated).
+precision: Reads af_category, which is itself determined without reference to this item (af_category compares af_countable_income directly to each program's grant standard parameter), so there is no circular dependency. af_category has no Aid to the Blind category (OQ-112 resolved; coverage review P3).
 derived: [case, [["=", af_category, "oap"], af_oap_grant_standard], [["=", af_category, "and_so"], af_and_so_grant_standard], [["=", af_category, "and_cs"], af_and_cs_grant_standard], [else, 0]]
 sources: [S455, S458, S462]
 implemented: engine

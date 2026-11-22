@@ -1,0 +1,14 @@
+id: CO-4411
+name: "Stays with a succession of others without a permanent arrangement"
+identifier: stays_with_succession_of_others_without_permanent_arrangement
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person, staying in another person's home (nighttime_residence_type shared_housing_due_to_loss_or_hardship or shared_housing_other_temporary), moves among a succession of friends or relatives and has no permanent living arrangement, rather than living in one home as a member of that household."
+precision: "Stated for a person staying in another person's home. If not stated, Adult Financial reads this as false."
+supplied_by: "Applicant statement, as the county establishes it."
+sources: [S3205]
+tags: [cash, household]
+rationale: "Coverage review F-5: 9 CCR 2503-5 3.510 (S3205) counts as homeless \"a person who stays with a succession of friends or relatives and has no permanent living arrangement\"; nighttime_residence_type's shared-housing options state why the person is in another's home, not whether the stay is one home or a succession of them."
+nearest: [CO-2810]

@@ -2220,7 +2220,7 @@ Class: state policy choice
 Owner: Cash programs policy owner
 Assumption: Countable resources equal to the Adult Financial resource limit meet it.
 
-Checked 2026-11-22: 9 CCR 2503-5 3.520.71.A.1 ("below the resource limit") and 3.520.72.A (D-80, rule version 12428, effective 03/02/2026) against C.R.S. 26-2-111(2)(a) (D-59). No published rule settles it.
+Checked 2026-11-22: 9 CCR 2503-5 3.520.71.A.1 ("below the resource limit") and 3.520.72.A (D-80, rule version 12428, effective 03/02/2026) against C.R.S. 26-2-111(2)(a) (D-59). No published rule settles it. Coverage round: 3.510 "Eligible client" ("a client whose countable resources are below the resource limit", D-80) uses the same word; C.R.S. 26-2-111(2)(a)(I) and (4)(d) apply the SSI resource eligibility requirements, which support the reading taken.
 
 ### OQ-680. CCCAP: the date the prior thirty days run back from, and the count of a lump sum
 
@@ -2362,3 +2362,43 @@ Owner: Medicaid policy owner, Premium and finance owner
 Assumption: The household's pooled § 8.100.5.F income takes one $20 general and one $65-plus-one-half earned income disregard, with no ineligible child or parent allocation, and is compared with the poverty level for the MAGI household's size.
 
 Checked 2026-11-22: 10 CCR 2505-10 § 8.100.6.Q.1.b, § 8.100.5.F and § 8.100.5.H.1-4 (D-65, version effective 11/14/2026; re-read in the Secretary of State's PDF fetched 2026-11-22). No published rule says how the per-person and per-couple disregards and the allocations apply to a family household; HCPF's Buy-In guidance is on hcpf.colorado.gov, which is refused.
+
+### OQ-780. Adult Financial: an absence to care for a family member injured in military duty - 180 days in place of 90, or in addition
+
+Body: 9 CCR 2503-5 3.520.64.E (S3201) presumes a client is no longer a resident after "a period of ninety (90) or more consecutive days" out of the State (E.2, except for documented medical treatment) and, in E.4, when the client "leaves the State to care for an immediate family member injured in the line of military duty for a period of one hundred eighty (180) or more consecutive days". Read literally, E.2's ninety days would reach that client first, and E.4 would add nothing; E.4 has effect only if it replaces E.2's ninety days for this absence. The volume reads E.4 as the period for that absence: af_is_presumed_nonresident_by_absence (CO-4401) applies E.2 to every other absence and E.4's 180 days to an absence to care for an injured family member (is_out_of_state_caring_for_family_member_injured_in_military_duty, CO-4404). The other reading presumes non-residence for that client at ninety days. Items: CO-4401, CO-4404.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A client out of the State to care for an immediate family member injured in the line of military duty is presumed not a resident only at 180 consecutive days.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.520.64.E.1-4 (D-80, rule version 12428, effective 03/02/2026, the Secretary of State's current version, re-fetched 2026-11-22) and 3.520.64.F-G. No paragraph says how E.2 and E.4 relate.
+
+### OQ-781. Adult Financial donated work hours: which "current minimum wage standard"
+
+Body: 9 CCR 2503-5 3.520.784.B (S3211) values countable donated work hours at "The going rate in the community for similar work; or, 2. The current minimum wage standard, whichever is greater." The rule does not say whether the standard is the federal minimum wage (29 U.S.C. 206(a)(1), $7.25 an hour), Colorado's (Colo. Const. art. XVIII, sec. 15 and C.R.S. 8-6-109, adjusted each year by the Colorado Department of Labor and Employment) or a local one (Denver's). af_donated_work_income (CO-4443) reads the federal minimum wage (federal_minimum_wage, CO-160), the only minimum wage this volume carries; the Colorado figure for 2026 is published by the Department of Labor and Employment (cdle.colorado.gov), which is not an allowed host. Where the going rate is stated and is above the minimum wage, as it usually is, the choice does not matter. Items: CO-4443, CO-160.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: The federal minimum wage is the floor.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.510 and 3.520.784 (D-80, rule version 12428, effective 03/02/2026). Neither defines the minimum wage standard. If the state reads Colorado's, the figure must come from the Department of Labor and Employment's annual minimum wage order, which no allowed host serves.
+
+### OQ-782. Adult Financial: interest and dividends - countable under 3.520.785.B.10, or excluded under the SSI exclusions 3.520.786.K incorporates
+
+Body: 9 CCR 2503-5 3.520.785.B.10 (D-80) lists as countable unearned income "Dividends and interest received on financial accounts, savings bonds, leases, etc.", while 3.520.786.K incorporates 20 CFR 416.1124 (S2609), whose (c)(22) excludes "Interest and dividend income from a countable resource" and (c)(9) and (c)(20) the interest on excluded burial funds and other excluded resources. The two paragraphs conflict for interest and dividends on a countable resource (a savings account, a bond). af_excluded_unearned_income (CO-2343) follows K: all interest and dividends (taxable_interest_and_dividend_income, tax_exempt_interest) are excluded. Under B.10 they would be counted, dollar for dollar against the grant. Coverage review P2-1. Items: CO-2343, CO-3831.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: Interest and dividends are excluded, as the SSI exclusions of 3.520.786.K exclude them.
+
+Checked 2026-11-22: 9 CCR 2503-5 3.520.785.B.10 and 3.520.786.K (D-80, rule version 12428, effective 03/02/2026, re-fetched 2026-11-22) and 20 CFR 416.1124(c)(9), (20), (22) (D-207). Neither paragraph says it governs the other.
+
+### OQ-783. Aid to the Needy Disabled under eighteen: the rule pays AND-CS (and blind AND-SO) from age zero; the statute requires eighteen
+
+Body: C.R.S. 26-2-111(4)(b) (S442) makes "eighteen years of age or older" a condition of aid to the needy disabled. 9 CCR 2503-5 3.520.61.A (D-80) sets the ages at "eighteen (18) through fifty-nine (59) years of age for AND-SO (unless diagnosed with blindness, then age zero (0) through 59 years of age); age 0 through 59 years of age for AND-CS", and 3.549.E deems parents' income to an unemancipated AND-CS child. The volume follows the rule: af_and_cs_eligible (CO-950) and af_and_so_eligible (CO-1203) admit children (af_and_so_min_age with the blind exception), against the principle OQ-430 states that a rule's silence cannot narrow a statutory bar. The rule's reading is plausible: AND-CS is the Colorado supplement to SSI, which pays disabled and blind children, and Aid to the Blind (26-2-111(5)) has no age floor. Coverage review P2-3. Items: CO-950, CO-1203, CO-287, CO-288.
+
+Class: needs Legal
+Owner: Legal, Cash programs policy owner
+Assumption: The rule's ages govern: AND-CS from age zero, AND-SO from eighteen, or from zero if blind.
+
+Checked 2026-11-22: C.R.S. 26-2-111(4)(b) (D-59, 2024 edition, re-fetched 2026-11-22) and 9 CCR 2503-5 3.520.61.A, 3.540, 3.546 and 3.549.E (D-80, rule version 12428, effective 03/02/2026). No statute or rule reconciles them.

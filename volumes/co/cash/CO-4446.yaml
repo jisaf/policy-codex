@@ -1,0 +1,22 @@
+id: CO-4446
+name: "Adult Financial: AND barred as a patient of a mental-disease or tuberculosis institution"
+identifier: af_and_is_barred_as_institution_patient
+kind: derived
+type: yes/no
+scope: person-month
+program: AdultFinancial
+meaning: "Whether, this month, C.R.S. 26-2-111(1)(d) bars Aid to the Needy Disabled (AND-SO and AND-CS) payments to the person because the person is a patient in an institution for tuberculosis or mental diseases (a psychiatric or tuberculosis hospital, or another institution whose overall character is the care of persons with mental diseases), or a patient in a medical institution as a result of having been diagnosed as having tuberculosis or psychosis. Not read for the Old Age Pension, to which (1)(d) \"shall not be applicable\" for the class of (2)(a)(III)."
+precision: "Read from the neutral setting facts: residence_setting_type (CO-3330), residence_setting_is_primarily_for_mental_diseases (CO-3333, read as false when not stated), resides_in_medical_institution (CO-1742) and medical_institution_stay_is_for_tuberculosis_or_psychosis (CO-4445, read as false when not stated), as of the determination date. An institution for mental diseases here has no bed-count test: the statute names any institution for mental diseases, as the Old Age Pension Health Care Program's exclusion does (ma_oap_is_patient_in_tb_or_mental_health_institution, CO-1748, a Medicaid item this one does not read). The statute's first clause, an inmate of a public institution other than a patient of a public medical institution, is carried by af_is_inmate_of_correctional_institution (CO-3343) in af_meets_residency (3.520.61.B: a correctional institution); a public non-medical, non-correctional institution housing inmates is not otherwise stated in this volume."
+statute_override: "Colorado statute overrides 9 CCR 2503-5 3.520.61.B, 3.543.D and 3.548.D, which bar only inmates of a correctional institution and pay AND a personal needs allowance in a hospital or long-term care facility: C.R.S. 26-2-111(1)(d) grants no assistance payment to a patient in an institution for tuberculosis or mental diseases, or in a medical institution because of tuberculosis or psychosis, except the Old Age Pension class of 26-2-111(2)(a)(III)."
+derived: [any, [in, residence_setting_type, [psychiatric_hospital, tuberculosis_hospital]], [all, [in, residence_setting_type, [hospital, nursing_facility, assisted_living_residence, group_home, other_long_term_care_facility, substance_use_treatment_facility, child_care_institution, other_institution]], [otherwise, residence_setting_is_primarily_for_mental_diseases, false]], [all, resides_in_medical_institution, [otherwise, medical_institution_stay_is_for_tuberculosis_or_psychosis, false]]]
+sources: [S3213, S1318, S1010]
+implemented: engine
+tags: [cash, and, disability]
+rationale: "Coverage review F-13 (confirmed with the engine on probe PR-IMD): an AND-SO client in a State psychiatric hospital was found eligible and paid, though C.R.S. 26-2-111(1)(d) (S3213) bars assistance payments under the article to a patient in an institution for mental diseases; the rule's silence does not narrow a statutory bar (OQ-430's principle). OAP keeps its psychiatric-facility PNA (3.532.D.3, af_resides_in_psychiatric_facility_thirty_consecutive_days) under (2)(a)(III)."
+nearest: [CO-1748, CO-1104]
+tests:
+  - {id: CO-4446-T1, title: "F-13 (probe PR-IMD): a patient in a State psychiatric hospital", as_of: "2026-10-01", month: "2026-10", given: {residence_setting_type: psychiatric_hospital}, expect: true}
+  - {id: CO-4446-T2, title: "A nursing facility primarily for mental diseases", as_of: "2026-10-01", month: "2026-10", given: {residence_setting_type: nursing_facility, residence_setting_is_primarily_for_mental_diseases: true}, expect: true}
+  - {id: CO-4446-T3, title: "A general hospital, admitted for tuberculosis", as_of: "2026-10-01", month: "2026-10", given: {residence_setting_type: hospital, resides_in_medical_institution: true, medical_institution_stay_is_for_tuberculosis_or_psychosis: true}, expect: true}
+  - {id: CO-4446-T4, title: "A nursing facility for a hip fracture: no bar", as_of: "2026-10-01", month: "2026-10", given: {residence_setting_type: nursing_facility, residence_setting_is_primarily_for_mental_diseases: false, resides_in_medical_institution: true}, expect: false}
+  - {id: CO-4446-T5, title: "At home", as_of: "2026-10-01", month: "2026-10", given: {residence_setting_type: private_dwelling, resides_in_medical_institution: false}, expect: false}

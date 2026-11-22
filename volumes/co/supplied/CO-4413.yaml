@@ -1,0 +1,13 @@
+id: CO-4413
+name: "State income tax refunds and rebates still held"
+identifier: state_tax_refunds_held_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of the person's liquid resources (liquid_resources_value) that is a State income tax refund, rebate or credit (Colorado's Property Tax/Rent/Heat Credit rebate included) the person received in the twelve months before the determination date and still holds."
+precision: "Part of liquid_resources_value, not added to it; as of the determination date. A federal refund is federal_tax_refunds_held_value (CO-4172). Money from a refund that has been spent is no longer held and is not stated. If not stated, Adult Financial reads it as 0."
+supplied_by: "Applicant statement, the refund deposit on the account statement, or the return, as the county establishes them."
+sources: [S3206]
+tags: [resources]
+rationale: "Coverage review F-6 (confirmed with the engine on probe PR-PTC): 9 CCR 2503-5 3.520.77.K (S3206) exempts an income tax refund, \"including the Property Tax/Rent/Heat Credit (PTC) rebate\", for twelve months; federal_tax_refunds_held_value states only a federal refund."

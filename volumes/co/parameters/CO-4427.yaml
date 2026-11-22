@@ -1,0 +1,13 @@
+id: CO-4427
+name: "Adult Financial: minimum return of income-producing property"
+identifier: af_income_producing_property_min_return_rate
+kind: parameter
+type: rate
+scope: global
+program: AdultFinancial
+meaning: "The net annual income, as a share of the excluded equity, that non-business income-producing property must produce for its first $6,000 of equity to be exempt (9 CCR 2503-5 3.520.77.D.4.a, c): 6% (0.06)."
+precision: "The excluded equity is the equity up to af_self_support_property_equity_exemption."
+value: 0.06
+sources: [S3207]
+tags: [cash, resources]
+rationale: "Coverage review F-7: the figure of 3.520.77.D.4 (S3207)."

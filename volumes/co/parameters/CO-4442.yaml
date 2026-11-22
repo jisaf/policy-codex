@@ -1,0 +1,13 @@
+id: CO-4442
+name: "Adult Financial: weekly hours above which donated work counts"
+identifier: af_donated_work_min_weekly_hours
+kind: parameter
+type: hours
+scope: global
+program: AdultFinancial
+meaning: "Donated work counts as earned income only when it is greater than this many hours a week (9 CCR 2503-5 3.520.784.A.4): five."
+precision: "Compared with > (greater than)."
+value: 5
+sources: [S3211]
+tags: [cash, income]
+rationale: "Coverage review F-10: the figure of 3.520.784.A.4 (S3211)."

@@ -1,0 +1,13 @@
+id: CO-4424
+name: "Net annual income of non-business income-producing property"
+identifier: nonbusiness_income_producing_property_net_annual_income
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The net income the property nonbusiness_income_producing_property_equity_value (CO-4423) states produced over the last twelve months (or is expected to produce in the next twelve, for property newly acquired): its rents or other receipts less the costs of producing them."
+precision: "Stated with nonbusiness_income_producing_property_equity_value. If not stated, Adult Financial reads it as 0."
+supplied_by: "The most recent tax return or a current estimate of income (3.520.77.D), as the county establishes it."
+sources: [S3207]
+tags: [resources]
+rationale: "Coverage review F-7: the 6% rate-of-return test of 9 CCR 2503-5 3.520.77.D.4.a and c (S3207)."

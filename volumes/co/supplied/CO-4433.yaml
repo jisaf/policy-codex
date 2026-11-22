@@ -1,0 +1,13 @@
+id: CO-4433
+name: "Adult Financial: potential resources refused"
+identifier: af_refused_potential_resources_value
+kind: supplied
+type: money
+scope: person
+program: AdultFinancial
+meaning: "The value of potential resources (an inheritance, real or personal property, cash and convertible assets, a settlement) to which the person, as the client, the client's spouse or a sponsor, has the legal ability to acquire or reacquire ownership, and which the client or legal fiduciary refused or failed to make a reasonable effort to secure, so that the county department considers them available (9 CCR 2503-5 3.510 \"Potential resource\", 3.520.71.H.1), as the county values them."
+precision: "Removed once the resource is secured (H.2), when it is then stated in the holdings facts. If not stated, Adult Financial reads it as 0."
+supplied_by: "County department finding."
+sources: [S3210]
+tags: [cash, resources]
+rationale: "Coverage review F-9: 3.520.71.H.1 (S3210) counts refused potential resources \"as if available\", as 3.520.71.G.1 counts potential income (af_refused_potential_income, CO-3861); no fact stated them."

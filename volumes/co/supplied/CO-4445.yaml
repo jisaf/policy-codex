@@ -1,0 +1,13 @@
+id: CO-4445
+name: "Medical institution stay is for tuberculosis or psychosis"
+identifier: medical_institution_stay_is_for_tuberculosis_or_psychosis
+kind: supplied
+type: yes/no
+scope: person
+program: All
+meaning: "The person is a patient in a medical institution (a hospital, nursing facility or other institution resides_in_medical_institution, CO-1742, names) as a result of having been diagnosed as having tuberculosis or psychosis."
+precision: "Stated for a person who lives in a medical institution. If not stated, Adult Financial reads this as false."
+supplied_by: "Applicant statement and the institution's admission record, as the county establishes them."
+sources: [S3213]
+tags: [cash, and, disability]
+rationale: "Coverage review F-13: C.R.S. 26-2-111(1)(d) (S3213) bars assistance payments to a person who \"is not a patient in any medical institution as a result of having been diagnosed as having tuberculosis or psychosis\"; the setting facts state the kind of institution (residence_setting_type, residence_setting_is_primarily_for_mental_diseases) but not why a patient of a general hospital or nursing facility is there."

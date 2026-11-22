@@ -1,0 +1,13 @@
+id: CO-4432
+name: "Trust corpus that can be paid to or for the person"
+identifier: trust_corpus_payable_to_person_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The value of the corpus of trusts of which the person is a beneficiary (or which the person established) that can be paid to the person or used for the person's benefit: the whole corpus of a trust the person can revoke, and the part of an irrevocable trust's corpus the trustee may pay to or for the person under the trust's terms, whether or not the trustee pays it."
+precision: "As of the determination date. Not part of liquid_resources_value or the other holdings facts. The part of a trust's corpus that cannot be paid to or for the person is a transfer of resources (resource_transfer_uncompensated_value) in the month the trust was funded, not this fact. If not stated, Adult Financial reads it as 0."
+supplied_by: "The trust documents, as the county establishes them."
+sources: [S3210]
+tags: [resources]
+rationale: "Coverage review F-9: 9 CCR 2503-5 3.520.72.B.13 (S3210) counts trusts, revocable and irrevocable, by SSA's guidelines (POMS SI 01120.200 and .201, which ssa.gov serves and no allowed host does), with the trustee's refusal to pay not exempting them; has_trust_interest (CO-1577) states only that a trust exists, and no fact stated its value."

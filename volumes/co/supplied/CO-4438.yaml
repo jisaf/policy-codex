@@ -1,0 +1,13 @@
+id: CO-4438
+name: "Unpaid work hours donated in the month"
+identifier: donated_work_hours_in_month
+kind: supplied
+type: hours
+scope: person-month
+program: All
+meaning: "The hours in the month the person worked or performed personal services without monetary compensation for a business, a self-employed person, or another person or business in need of a regular, temporary or non-traditional employee (a seasonal worker, for example). Not volunteer work for the betterment of the community (visiting nursing home residents, delivering meals, giving rides to medical appointments)."
+precision: "Stated with donated_work_hours_per_week (CO-4439). If not stated, Adult Financial reads it as 0."
+supplied_by: "Applicant statement and the statement of the business or person served, as the county establishes them."
+sources: [S3211]
+tags: [income]
+rationale: "Coverage review F-10: 9 CCR 2503-5 3.520.784.A-B (S3211) counts donated work hours as earned income, valued at the greater of the going rate and the minimum wage, when four tests are met; no fact stated the hours."

@@ -10,6 +10,7 @@ precision: "K-6 fix round: 3.546 (S462) limits AND-CS to SSI recipients 'not rec
 derived: [all, [<=, age, af_and_max_age], receives_ssi, [any, meets_ssa_disability_criteria, is_blind], af_meets_residency, ["<", ssi_income, ssi_federal_benefit_rate_individual]]
 sources: [S462, S463, S533]
 implemented: engine
+open: [OQ-783]
 tags: [cash, and, age, disability]
 rationale: "No existing item states the AND-CS eligibility test. af_category (CO-953) needs it. Fix round (K-6): adds the 'not receiving the full SSI benefit standard' test now that ssi_income (CO-849) exists, reusing ssi_federal_benefit_rate_individual (CO-235) cross-program as the comparison figure rather than restating the SSI federal benefit rate under a new AND-CS-prefixed parameter."
 tests:

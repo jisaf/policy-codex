@@ -1,0 +1,13 @@
+id: CO-4416
+name: "Cash and convertible assets held for a trade or business"
+identifier: business_cash_and_convertible_assets_value
+kind: supplied
+type: money
+scope: person
+program: All
+meaning: "The part of the person's liquid resources (liquid_resources_value) that is cash and convertible assets held for use in the person's own ongoing trade or business (self-employment intended to make a profit): operating accounts, inventory funds and the like."
+precision: "Part of liquid_resources_value, not added to it; as of the determination date. If not stated, Adult Financial reads it as 0."
+supplied_by: "The business's account statements and tax returns, as the county establishes them."
+sources: [S3206]
+tags: [resources]
+rationale: "Coverage review F-6: 9 CCR 2503-5 3.520.77.D.1.b (S3206): \"The cash and convertible assets considered necessary for use in the trade or business shall be excluded\"; liquid_resources_value does not separate them."
