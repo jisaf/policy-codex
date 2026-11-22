@@ -1960,7 +1960,7 @@ Cash fix round 2 (2026-11-22, docs/reviews/final2-cash.md N-3 and P3): the parol
 
 Class: blocked on a named document
 Owner: Medicaid policy owner, Legal
-Assumption: the immigration_status options correspond to the SAVE responses that fact assembly maps to them; Afghan and Ukrainian humanitarian parolees are read as paroled for at least a year where a program's own list turns on that.
+Assumption: the immigration status categories correspond to the SAVE responses that fact assembly maps to them; Afghan and Ukrainian humanitarian parolees are read as paroled for at least a year where a program's own list turns on that.
 Blocked on: the USCIS SAVE status list and response codes (www.uscis.gov refused, Access Denied, 2026-11-21; not an allowed host)
 
 ### OQ-551. SUN Bucks states no citizenship or immigration test; 8 U.S.C. 1615(b) leaves it to the State
