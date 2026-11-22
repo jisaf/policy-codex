@@ -1,0 +1,14 @@
+id: CO-4852
+name: FDPIR participation end date
+identifier: fdpir_participation_ended_date
+kind: supplied
+type: calendar date
+scope: person
+program: All
+meaning: "The date the person's household most recently stopped receiving assistance under the Food Distribution Program on Indian Reservations (7 CFR part 253), as the FDPIR enrollment record shows it. Not stated for a person whose household has not received FDPIR, or receives it now (receives_fdpir, CO-2851, states the present)."
+precision: "A program that asks whether the household received FDPIR at any time in a past period reads it as received in that period when this date falls in it or after its start. If not stated, SUN Bucks reads no earlier FDPIR receipt."
+supplied_by: "The FDPIR enrollment record (the Indian Tribal Organization or State agency administering FDPIR)."
+sources: [S790, S792, S1952]
+tags: [household, sebt]
+nearest: [CO-2851, CO-2853]
+rationale: "Coverage review 2 N-3 (docs/reviews/coverage2-leap-sunbucks.md): 7 CFR 292.6 (S790) makes eligible the children who \"at any time during the period of eligibility\" are categorically eligible, a member of a household receiving FDPIR (292.2, S792) among them. receives_fdpir (CO-2851) is a present enrollment fact, which SNAP reads as of its determination date (CO-4266), so it cannot also state receipt earlier in the Summer EBT period; this date does, without changing that fact's meaning."

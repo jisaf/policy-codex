@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: SunBucks
-meaning: "The child is categorically eligible for Summer EBT on a documented ground other than SNAP, TANF, FDPIR, foster, homeless, migrant, runaway or Head Start status: a member of a household receiving another means-tested program the Secretary has approved for the Summer EBT agency (7 CFR 292.2, 292.6, 292.12(d), 292.14(f)(1)). Individual certification for free or reduced price meals is is_individually_certified_for_free_or_reduced_price_meals (CO-4071), not this fact. If not stated, SUN Bucks reads this as false."
+meaning: "The child is, or was at any time in the Summer EBT period of eligibility up to the determination date (7 CFR 292.6, S790, \"at any time during the period of eligibility\"), categorically eligible for Summer EBT on a documented ground other than SNAP, TANF, FDPIR, foster, homeless, migrant, runaway or Head Start status: a member of a household receiving another means-tested program the Secretary has approved for the Summer EBT agency (7 CFR 292.2, 292.6, 292.12(d), 292.14(f)(1)). Individual certification for free or reduced price meals is is_individually_certified_for_free_or_reduced_price_meals (CO-4071), not this fact. If not stated, SUN Bucks reads this as false."
 supplied_by: "The school food authority's or the Summer EBT agency's record."
 sources: [S790, S792, S1952, S1092]
 tags: [sebt]

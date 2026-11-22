@@ -5,7 +5,7 @@ kind: supplied
 type: yes/no
 scope: person
 program: All
-meaning: "The child is enrolled as a participant in a Head Start program authorized under the Head Start Act (7 CFR 245.2, S1952). If not stated, SUN Bucks reads this as false."
+meaning: "The child is, or was at any time in the Summer EBT period of eligibility up to the determination date (7 CFR 292.6, S790, \"at any time during the period of eligibility\"), enrolled as a participant in a Head Start program authorized under the Head Start Act (7 CFR 245.2, S1952). If not stated, SUN Bucks reads this as false."
 supplied_by: "The Head Start program's enrollment record."
 sources: [S790, S792, S1952]
 tags: [sebt]

@@ -6,9 +6,9 @@ type: money
 scope: person-month
 program: LEAP
 meaning: "The person's business-related expenses for the month supported by receipts that 9 CCR 2503-7 3.755.21.I allows as deductions from declared gross self-employment income: the operating costs, interest and business mileage (at the county rate, OQ-614); not rent, mortgage or personal utilities when the business is run from the residence."
-precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0. Verification pass V-1: the costs are deducted only when receipts for them have been received (self_employment_cost_receipts_received, CO-3927, read as false when not stated; 3.755.21.I.2-3: \"Receipts for business-related expenses are required in order to be considered as deductions\", and credit card and bank statements are not receipts); otherwise nothing is deducted."
+precision: "The sum of the neutral cost facts the program's rule allows (CO-3370 to CO-3375); an unstated cost is 0. Verification pass V-1: the costs are deducted only when receipts for them have been received (self_employment_cost_receipts_received, CO-3927, read as false when not stated; 3.755.21.I.2-3: \"Receipts for business-related expenses are required in order to be considered as deductions\", and credit card and bank statements are not receipts); otherwise nothing is deducted. Coverage review 2 N-9: 3.755.21.I.2.D (S3596) limits a rental property's allowable expenses to \"the costs of maintenance of the property\"; for self-employment from rental property a case states its maintenance costs in self_employment_operating_costs and no interest or vehicle costs, which the item would otherwise deduct."
 derived: [case, [[otherwise, self_employment_cost_receipts_received, false], [+, [+, [otherwise, self_employment_operating_costs, 0], [otherwise, self_employment_interest_costs, 0]], [otherwise, self_employment_business_vehicle_costs, 0]]], [else, 0]]
-sources: [S1084, S2719]
+sources: [S1084, S2719, S3596]
 implemented: engine
 tags: [income]
 open: [OQ-614]

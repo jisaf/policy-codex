@@ -29583,3 +29583,182 @@
     p2:
       ma_income_is_reasonably_compatible:
         2026-11: false
+- id: CO-209
+  title: 'Coverage pass 2 (LEAP): $3,500 of wages and $400 of Colorado Works supportive services; the supportive services are not income'
+  # Coverage review 2 N-1 (probe RV2-L2). 9 CCR 2503-7 3.752.23.FF (S3595): "Supportive Services income received under the
+  # Colorado Works Program" is exempt from consideration as income. One adult applies for LEAP on November 10, 2026, paying a
+  # vendor for the primary heating source. Wages $3,500 a month (no pay schedule stated, so the month's wages are the thirty
+  # days', CO-3925, CO-3912). Other nontaxable unearned income of $400 is all Colorado Works supportive service payments.
+  # Hand derivation (November 2026):
+  #   unearned_income_prior_thirty_days (CO-3913, monthly fallback) = 400 (no part has its own fact in CO-3913's list)
+  #   leap_excluded_unearned_income (CO-4511) = 400 (tanf_supportive_service_payments_received)
+  #   leap_person_unearned_income (CO-3926) = max(0, 400 - 400) + 0 = 0
+  #   leap_person_wages (CO-3925) = 3,500; leap_household_income (CO-1002) = 3,500
+  #   leap_income_limit_monthly for 1 (CO-875) = 3,774; 3,500 <= 3,774, so leap_is_eligible is true.
+  # Before the fix: leap_excluded_unearned_income 0, leap_household_income 3,900 > 3,774, leap_is_eligible false.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 3500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 400
+        tanf_supportive_service_payments_received: 400
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_excluded_unearned_income: {"2026-11": 400}
+      leap_household_income: {"2026-11": 3500}
+      leap_is_eligible: {"2026-11": true}
+- id: CO-210
+  title: 'Coverage pass 2 (LEAP): $4,000 of wages, $500 of them set aside under a PASS; the set-aside is not income'
+  # Coverage review 2 N-2 (probe RV2-L3). 9 CCR 2503-7 3.752.23.DD (S3300): "Income that is deemed necessary for the
+  # fulfillment of a Plan for Achieving Self-Support (PASS)" is exempt, earned income included. One adult applies for LEAP
+  # on November 10, 2026, paying a vendor for heat. Wages $4,000 a month (no pay schedule stated), of which $500 is set
+  # aside under a plan the Social Security Administration approved (pass_set_aside_earned_income, CO-4618).
+  # Hand derivation (November 2026):
+  #   leap_person_wages (CO-3925) = 4,000 (the thirty days' wages; the set-aside is part of them)
+  #   leap_self_employment_income (CO-1712) for 2026-10 = 0
+  #   earned part in leap_household_income (CO-1002) = max(0, 4,000 + 0 - 500) = 3,500
+  #   leap_person_unearned_income (CO-3926) = 0; leap_household_income = 3,500
+  #   leap_income_limit_monthly for 1 (CO-875) = 3,774; 3,500 <= 3,774, so leap_is_eligible is true.
+  # Before the fix: leap_household_income 4,000 > 3,774, leap_is_eligible false.
+  as_of: '2026-11-10'
+  case_facts:
+    home_heating_cost_arrangement: pays_vendor_directly
+    leap_application_date: '2026-11-10'
+    has_primary_heating_source: true
+  relationships:
+  - - other_relative
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1980-01-01'
+        immigration_status: us_citizen
+        ssn_furnished_or_application_shown: true
+        state_of_residence: CO
+        residence_setting_type: private_dwelling
+        nighttime_residence_type: fixed_regular_adequate
+        leap_is_in_another_approved_household: false
+        is_emancipated_minor: false
+        dwelling_id: d1
+      month_defaults:
+        wages_gross: 4000
+        pass_set_aside_earned_income: 500
+        self_employment_gross_receipts: 0
+        self_employment_net_earnings_for_tax: 0
+        social_security_income: 0
+        pension_income: 0
+        unemployment_income: 0
+        child_support_received: 0
+        tanf_cash_income: 0
+        adult_financial_cash_income: 0
+        ssi_income: 0
+        other_unearned_income_nontaxable: 0
+        other_unearned_income_taxable: 0
+        tax_exempt_interest: 0
+        lottery_gambling_winnings_received: 0
+        lump_sum_received: 0
+    p2:
+      # A relative who lives elsewhere (another dwelling): stated so p1's relationships are known.
+      facts:
+        date_of_birth: '1950-01-01'
+        dwelling_id: d2
+  expect:
+    p1:
+      leap_person_wages: {"2026-11": 4000}
+      leap_household_income: {"2026-11": 3500}
+      leap_is_eligible: {"2026-11": true}
+- id: CO-211
+  title: 'Coverage pass 2 (SUN Bucks): foster care ended in December; the child stays categorically eligible for summer 2027'
+  # Coverage review 2 N-3 (probe RV2-S1). 7 CFR 292.6 (S790): children eligible for Summer EBT include those who "at any
+  # time during the period of eligibility" are categorically eligible; 7 CFR 245.2 (S1952) makes a foster child
+  # categorically eligible. A 10-year-old (born 2016-05-01) in an NSLP school was in Title IV-E foster care with her
+  # guardian from September 2026; the placement ended on December 15, 2026 (foster_care_exit_date, CO-2853) and she now
+  # lives with the same guardian with no child welfare payment. School meal income $6,000 a month; no SNAP or Colorado Works.
+  # Determined March 1, 2027.
+  # Hand derivation (March 2027):
+  #   period of eligibility for summer 2027 begins July 2026 (sebt_instructional_year_start_month, CO-3014), first day 2026-07-01
+  #   sebt_child_is_foster_homeless_migrant_or_runaway (CO-4527): foster_care_exit_date 2026-12-15 >= 2026-07-01, so true
+  #   sebt_other_categorical_basis (CO-1296, through CO-4072) = true
+  #   sebt_household_child_receives_snap_or_tanf (CO-2708) = false (no SNAP, no Colorado Works in any month)
+  #   sebt_is_school_aged: 10 on August 1, 2026, true; sebt_income_eligibility_limit for 2 = 3,337 < 6,000
+  #   sebt_eligibility_status = eligible_categorical. The summer 2027 benefit level is not published (CO-1244), so the
+  #   amount is not asserted.
+  # Before the fix: only the present child_welfare_payment_type (none) was read, so the child was ineligible, benefit 0.
+  as_of: '2027-03-01'
+  case_facts:
+    school_meal_household_income: 6000
+  relationships:
+  - - legal_guardian
+    - p1
+    - p2
+  - - lives_as_one_economic_unit_with
+    - p1
+    - p2
+  persons:
+    p1:
+      facts:
+        date_of_birth: '1988-02-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+      month_defaults:
+        receives_snap: false
+    p2:
+      facts:
+        date_of_birth: '2016-05-01'
+        dwelling_id: d1
+        receives_tanf_cash: false
+        is_enrolled_in_nslp_school: true
+        nighttime_residence_type: fixed_regular_adequate
+        child_welfare_payment_type: none
+        foster_care_exit_date: '2026-12-15'
+        is_migrant_child: false
+        is_runaway_child: false
+        receives_fdpir: false
+        sebt_other_documented_categorical_basis: false
+        is_head_start_child: false
+        is_individually_certified_for_free_or_reduced_price_meals: false
+      month_defaults:
+        receives_snap: false
+  expect:
+    p2:
+      sebt_household_child_receives_snap_or_tanf: {"2027-03": false}
+      sebt_other_categorical_basis: true
+      sebt_eligibility_status: {"2027-03": eligible_categorical}

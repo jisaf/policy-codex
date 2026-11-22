@@ -21949,3 +21949,32 @@ Document: D-66
 > 5. If it would be found that a child does not satisfy an eligibility requirement for Medical Assistance, the child’s eligibility will be evaluated using the Single Streamlined application for Medical Assistance.
 >
 > 6. Individuals whose eligibility is not determined through Express Lane Eligibility may also submit a separate Single Streamlined Application for Medical Assistance to determine eligibility.
+### S3595. LEAP income exclusions: volunteer payments below the minimum wage, diversion payments, Colorado Works supportive services
+
+Document: D-86
+
+9 CCR 2503-7 3.752.23.F, W, FF (version effective 11/01/2025, the Secretary of State's current version, re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> F. Payments to volunteers serving as foster grandparents, senior health aides, or senior
+> companions, and to persons serving in the Service Corps of Retired Executives (score) and
+> Active Corps of Executives (ace), AmeriCorps and any other program under Title I (Vista) when
+> the value of all such payments adjusted to reflect the number of hours such volunteers are
+> serving is not equivalent to or greater than the minimum wage, and Title II and III of the Domestic
+> Volunteer Services Act;
+>
+> ...
+>
+> W. State/county diversion payments;
+>
+> ...
+>
+> FF. Supportive Services income received under the Colorado Works Program.
+
+### S3596. LEAP self-employment: rental property expenses are limited to maintenance
+
+Document: D-86
+
+9 CCR 2503-7 3.755.21.I.2.D (version effective 11/01/2025, re-read 2026-11-22). https://www.sos.state.co.us/CCR/GenerateRulePdf.do?ruleVersionId=12221&fileName=9%20CCR%202503-7
+
+> D. Rental property allowable expenses shall be limited to the costs of maintenance
+> of the property.
