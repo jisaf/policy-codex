@@ -2247,3 +2247,13 @@ Assumption: No county is assumed to provide it; the table is empty (unknown, wit
 Blocked on: the counties' elections to provide Colorado Works Child Care to Colorado Works diversion households under 8 CCR 1403-1 3.116.H (county child care plans and CDEC's county policy listing; cdec.colorado.gov refused)
 
 Checked 2026-11-22: 8 CCR 1403-1 3.116.H and 3.104 (D-87, version effective 2026-08-14) name no county; 9 CCR 2503-6 3.606.8 (D-81) describes the diversion payment, not a county's child care election.
+
+### OQ-700. Colorado Works: personal care and home care allowances exempt for every member, or only in deeming
+
+Body: 9 CCR 2503-6 3.605.4.A.5 (S2605) reads: "Personal care or home care allowances paid to a recipient or non-recipient spouse, parent, stepparent, or child, from a federal, state, or local government program for in-home supportive services (attendant, chore, housekeeping) shall be exempt as income in determining the amount of attributable non-recipient spouse, non-recipient parent, or non-recipient stepparent income. However, it shall be classified as employment income in determining the attendant's own eligibility for assistance." The sentence names the allowance paid to "a recipient" among the persons it is paid to, but states the exemption only "in determining the amount of attributable non-recipient ... income", the deeming of 3.605.6. Read literally, an allowance paid to a member of the assistance unit for services to that member is not exempt, though it pays for the services and not the family's needs; read as a list of whose allowances are exempt, it is exempt for every member. The volume takes the second reading: cw_excluded_unearned_income (CO-2341) exempts in_home_care_allowance_received for every person, so the unit member's allowance and a deemed person's allowance are both left out; the attendant's pay for the services is wages, as the last sentence says, and is counted. The other reading would count an allowance received by a unit member. Items: CO-2341.
+
+Class: state policy choice
+Owner: Cash programs policy owner
+Assumption: A personal care or home care allowance paid to any member, recipient or not, is exempt; the attendant's pay is employment income.
+
+Checked 2026-11-22: 9 CCR 2503-6 3.605.4.A.5 and 3.605.6 (D-81, rule version 12030, effective 07/01/2025, the Secretary of State's current version). No other paragraph of 3.605 treats an allowance paid to a recipient; the Adult Financial counterpart, 9 CCR 2503-5 3.520.786.E (S2608), exempts the allowance "paid to the client" outright.
